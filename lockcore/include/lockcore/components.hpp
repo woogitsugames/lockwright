@@ -75,7 +75,8 @@ class ToolStress {
 
   q16 stress() const { return s_; }
   q16 capacity() const { return s_max_; }
-  q16 ratio() const { return s_max_ > 0 ? q_div(s_, s_max_) : 0; }
+  // S / S_max clamped to [0, 1] (v0.2: S may overshoot S_max in the breaking step).
+  q16 ratio() const { return s_max_ > 0 ? q_min(Q16_ONE, q_div(s_, s_max_)) : 0; }
   q16 peak_ratio() const { return peak_ratio_; }
   bool broken() const { return broken_; }
   std::int32_t wear() const { return wear_; }

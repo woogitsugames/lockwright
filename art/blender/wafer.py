@@ -23,7 +23,7 @@ SAMPLES = int(arg('--samples', '96'))
 MAT = {
     'zamak':  metal('zamak', (0.63, 0.615, 0.58), 0.30, aniso=0.5, marks='mill', marks_amt=0.9, wear=0.4, grime=0.6),
     'zamak_o': metal('zamak_o', (0.61, 0.60, 0.57), 0.34, marks='turn', marks_axis=(1, 0, 0), marks_scale=1.6, wear=0.6, grime=0.7),
-    'brass':  metal('brass2', (0.86, 0.62, 0.30), 0.26, aniso=0.4, marks='mill', marks_amt=0.8, wear=0.5, wear_col=(0.95, 0.75, 0.42), grime=0.6),
+    'brass':  metal('brass2', (0.80, 0.56, 0.26), 0.21, aniso=0.4, marks='mill', marks_amt=0.8, wear=0.5, wear_col=(0.95, 0.75, 0.42), grime=0.6),
     'wafer':  metal('wafer', (0.40, 0.41, 0.43), 0.22, marks='stamp', marks_scale=1.0, wear=0.7, wear_col=(0.66, 0.66, 0.67), grime=0.45, bevel_r=0.03),
     'spring': metal('spring2', (0.56, 0.56, 0.57), 0.24, marks=None, wear=0.0, grime=0.3, bevel_r=0.0),
     'zinc':   metal('zinc', (0.66, 0.67, 0.70), 0.32, marks='stamp', marks_scale=0.5, wear=0.5, grime=0.6, tint_var=0.08),
@@ -137,17 +137,14 @@ flat_tool('wrench', wr, 1.0, 0.75, 0.55, tip='flat').data.materials[0] = MAT['wr
 put(box('back', -120, 160, 70, 72, -160, 160), paint('inside', (0.09, 0.11, 0.10), rough=0.6, chip=0.0))
 
 # ---------------------------------------------------------------- light + camera
-world_hdri(0.22, sat=0.4)
+world_hdri(float(arg('--world', '0.12')), sat=0.4)
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (16, 0, 0)
 area_light('key', (-60, -70, 110), AIM, 30, 1400, (1.0, 0.85, 0.68))
 area_light('fill', (115, -95, 10), AIM, 90, 60, (0.96, 0.97, 1.0))
 area_light('rim', (30, -30, -95), AIM, 30, 110, (1.0, 0.95, 0.9))
 area_light('back', (40, 60, 80), AIM, 40, 300, (1.0, 0.9, 0.8))
-sheen = Vector((math.sin(math.radians(22)), -math.cos(math.radians(22)), -math.sin(math.radians(9)))).normalized() * 260
-S = bpy.data.objects.new('aim2', None); scene.collection.objects.link(S); S.location = (16, 0, 0)
-area_light('sheen', tuple(Vector((16, 0, 0)) + sheen + Vector((0, 0, 40))), S, 160, 240, (1.0, 0.97, 0.92))
-
 look_camera((16.0, 0, -5.0), -30, 16, float(arg('--dist', '100')), lens=float(arg('--lens', '100')))
-render_setup(OUT, RES, SAMPLES, exposure=0.1)
+mirror_softbox('sheen', (16, 0, -2), scene.camera, size=70, size_y=220, energy=float(arg('--sheen', '420')), shift=(float(arg('--sx', '8')), 0, float(arg('--sz', '6'))))
+render_setup(OUT, RES, SAMPLES, exposure=0.1, crop=[float(v) for v in arg('--crop', '').split(',')] if arg('--crop', '') else None)
 bpy.ops.render.render(write_still=True)
 print('WROTE', scene.render.filepath)

@@ -529,7 +529,7 @@ def look_camera(target, yaw_deg, pitch_deg, dist, lens=180, sensor=36, roll_deg=
     if roll_deg: q = q @ Matrix.Rotation(math.radians(roll_deg), 4, 'Z').to_quaternion()
     cam.rotation_euler = q.to_euler(); return cam
 
-def render_setup(out, res, samples, exposure=0.0, look='AgX - Medium High Contrast', bounces=8):
+def render_setup(out, res, samples, exposure=0.0, look='AgX - Medium High Contrast', bounces=8, crop=None):
     s = scene; s.render.engine = 'CYCLES'; s.cycles.device = 'CPU'; s.cycles.samples = samples
     s.cycles.use_denoising = True; s.cycles.denoiser = 'OPENIMAGEDENOISE'
     s.cycles.denoising_input_passes = 'RGB_ALBEDO_NORMAL'; s.cycles.denoising_prefilter = 'ACCURATE'
@@ -539,6 +539,9 @@ def render_setup(out, res, samples, exposure=0.0, look='AgX - Medium High Contra
     s.render.resolution_x, s.render.resolution_y = res; s.render.resolution_percentage = 100
     s.view_settings.view_transform = 'AgX'; s.view_settings.look = look
     s.render.filepath = os.path.abspath(out)
+    if crop:  # (x0, y0, x1, y1) in 0..1, y up: render a region only, for close inspection at final resolution
+        s.render.use_border = True; s.render.use_crop_to_border = True
+        s.render.border_min_x, s.render.border_min_y, s.render.border_max_x, s.render.border_max_y = crop
 
 def cli():
     argv = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else []
@@ -566,3 +569,14 @@ def sawtooth(x0, x1, r_minor, r_major, pitch):
     while x + pitch <= x1 + 1e-6:
         pts += [(x, r_minor), (x + pitch * 0.42, r_major), (x + pitch * 0.58, r_major)]; x += pitch
     pts.append((x, r_minor)); return pts
+
+def mirror_softbox(name, target, cam, normal=(0, -1, 0), dist=260, size=60, size_y=180, energy=300,
+                   color=(1.0, 0.97, 0.92), shift=(0, 0, 0)):
+    """Strip softbox placed where the cut plane mirrors the camera, so flat machined faces catch a soft
+    gradient highlight (product-photo sheen). `shift` (degrees: dx, dz) slides it so only its edge shows."""
+    t = Vector(target); n = Vector(normal).normalized(); d = (cam.location - t).normalized()
+    r = (2 * d.dot(n) * n - d).normalized()
+    r = Matrix.Rotation(math.radians(shift[0]), 3, 'Z') @ r
+    r = (r + Vector((0, 0, math.radians(shift[2])))).normalized()
+    aim = bpy.data.objects.new(name + '_aim', None); scene.collection.objects.link(aim); aim.location = t
+    return area_light(name, tuple(t + r * dist), aim, size, energy, color, size_y=size_y)

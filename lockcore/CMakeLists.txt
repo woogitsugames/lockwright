@@ -56,7 +56,9 @@ if(LOCKCORE_BUILD_TESTS)
     tests/test_json.cpp
     tests/test_pin_tumbler.cpp
     tests/test_wafer.cpp
+    tests/test_wooden_pin.cpp
     tests/test_replay.cpp
+    tests/test_fuzz.cpp
   )
   target_link_libraries(lockcore_tests PRIVATE lockcore)
   target_compile_definitions(lockcore_tests PRIVATE LOCKCORE_GOLDEN_DIR="${CMAKE_CURRENT_SOURCE_DIR}/tests/golden")

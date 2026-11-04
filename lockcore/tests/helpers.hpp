@@ -1,11 +1,15 @@
 #pragma once
 
+#include <algorithm>
+#include <iostream>
 #include <memory>
+#include <stdexcept>
 #include <vector>
 
 #include "lockcore/lockcore.hpp"
 #include "lockcore/pin_tumbler.hpp"
 #include "lockcore/wafer.hpp"
+#include "lockcore/wooden_pin.hpp"
 
 namespace th {
 
@@ -13,6 +17,33 @@ using namespace lockcore;
 
 inline const FamilyModule& pin_module() { return *FamilyRegistry::builtin().find(pin::FAMILY_ID); }
 inline const FamilyModule& wafer_module() { return *FamilyRegistry::builtin().find(wafer::FAMILY_ID); }
+inline const FamilyModule& module(std::string_view id) { return *FamilyRegistry::builtin().find(id); }
+
+// Indices of elements sorted by a binding-offset accessor.
+template <typename Vec, typename Get>
+std::vector<int> binding_order(const Vec& v, Get get) {
+  std::vector<int> order(v.size());
+  for (std::size_t i = 0; i < v.size(); ++i) order[i] = static_cast<int>(i);
+  std::stable_sort(order.begin(), order.end(), [&](int a, int b) {
+    return get(v[static_cast<std::size_t>(a)]) < get(v[static_cast<std::size_t>(b)]);
+  });
+  return order;
+}
+
+// Every bot kind through the real step(): scripted must open, the others must at
+// least run without failing in a forbidden way.
+inline void check_family_solves(const FamilyModule& fam, std::uint64_t seeds) {
+  for (int tier = fam.min_tier(); tier <= fam.max_tier(); ++tier) {
+    for (std::uint64_t seed = 1; seed <= seeds; ++seed) {
+      const LockSpec spec = fam.generate(seed, fam.difficulty_for_tier(tier));
+      const auto errs = fam.validate(spec);
+      if (!errs.empty()) std::cerr << fam.id() << " t" << tier << " seed " << seed << ": " << errs.front().message << "\n";
+      const SolveReport r = fam.solver(spec, fam.required_tools(spec));
+      if (!r.ok) std::cerr << fam.id() << " t" << tier << " seed " << seed << ": " << r.reason << "\n";
+      if (!(errs.empty() && r.ok)) throw std::runtime_error("family does not solve");
+    }
+  }
+}
 
 // Authored 3-stack pin lock with round numbers, for scenario tests.
 inline std::shared_ptr<pin::Params> pin_params() {

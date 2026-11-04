@@ -106,6 +106,7 @@ TEST_CASE("registry: builtin families") {
   const auto& reg = FamilyRegistry::builtin();
   CHECK(reg.find("pin_tumbler") != nullptr);
   CHECK(reg.find("wafer") != nullptr);
-  CHECK(reg.find("lever") == nullptr);
-  CHECK_EQ(reg.all().size(), static_cast<std::size_t>(2));
+  for (const char* id : {"wooden_pin"}) CHECK(reg.find(id) != nullptr);
+  CHECK(reg.find("no_such_family") == nullptr);
+  CHECK(reg.all().size() >= static_cast<std::size_t>(3));
 }
