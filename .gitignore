@@ -4,3 +4,4 @@ art/renders/tray_test.png
 lockcore/build*/
 game/.godot/
 *.import
+game/i18n/*.translation
