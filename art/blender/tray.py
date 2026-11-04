@@ -67,7 +67,7 @@ def area(name, loc, size, energy, color):
 area('key', (-120, -160, 140), 80, 6000, (1.0, 0.85, 0.68)); area('fill', (160, -150, -40), 120, 500, (0.9, 0.93, 1.0))
 cd = bpy.data.cameras.new('cam'); cam = bpy.data.objects.new('cam', cd); scene.collection.objects.link(cam); scene.camera = cam
 cd.lens = 120; cd.sensor_width = 36; cam.location = (0, -400, 16); cam.rotation_euler = (Vector((0, 0, 9)) - cam.location).to_track_quat('-Z', 'Z').to_euler()
-scene.render.engine = 'CYCLES'; scene.cycles.samples = SAMPLES; scene.cycles.use_denoising = True
+scene.render.engine = 'CYCLES'; scene.cycles.samples = SAMPLES; scene.cycles.use_denoising = True; scene.cycles.denoising_input_passes = 'RGB_ALBEDO_NORMAL'; scene.cycles.denoising_prefilter = 'ACCURATE'; scene.cycles.adaptive_threshold = 0.006
 scene.render.resolution_x, scene.render.resolution_y = RES
 scene.view_settings.view_transform = 'AgX'; scene.view_settings.look = 'AgX - Medium High Contrast'
 scene.render.filepath = os.path.abspath(OUT); bpy.ops.render.render(write_still=True); print('WROTE', scene.render.filepath)

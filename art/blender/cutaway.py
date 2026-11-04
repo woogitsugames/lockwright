@@ -118,17 +118,20 @@ yaw = math.radians(-22); pitch = math.radians(10); dist = 158
 target = Vector((13.5, 0, 9.0))
 cam.location = target + Vector((math.sin(yaw) * dist, -math.cos(yaw) * dist * math.cos(pitch), math.sin(pitch) * dist))
 cam.rotation_euler = (target - cam.location).to_track_quat('-Z', 'Y').to_euler()
-cam_d.dof.use_dof = True; cam_d.dof.focus_distance = dist; cam_d.dof.aperture_fstop = 16
+cam_d.dof.use_dof = False  # everything in focus: the player must read every pin
 if SHOT == 'loupe':  # macro through the loupe: shear line at pin c
     tx, tz = [float(v) for v in arg('--target', '%f,%f' % (PINS_X[2], SHEAR)).split(',')]
     target = Vector((tx, 0.0, tz)); dist = float(arg('--dist', '42')); cam_d.lens = 180
     cam.location = target + Vector((math.sin(yaw) * dist, -math.cos(yaw) * dist * math.cos(pitch), math.sin(pitch) * dist))
     cam.rotation_euler = (target - cam.location).to_track_quat('-Z', 'Y').to_euler()
-    cam_d.dof.focus_distance = dist; cam_d.dof.aperture_fstop = 5.6; AIM.location = target
+    cam_d.dof.use_dof = True; cam_d.dof.focus_distance = dist; cam_d.dof.aperture_fstop = 22; AIM.location = target
 
 # ---------------------------------------------------------------- render
 scene.render.engine = 'CYCLES'; scene.cycles.device = 'CPU'; scene.cycles.samples = SAMPLES
 scene.cycles.use_denoising = True; scene.cycles.max_bounces = 8
+scene.cycles.denoising_input_passes = 'RGB_ALBEDO_NORMAL'; scene.cycles.denoising_prefilter = 'ACCURATE'
+scene.cycles.adaptive_threshold = 0.006; scene.render.film_transparent = False
+scene.view_settings.exposure = 0.15
 scene.render.resolution_x, scene.render.resolution_y = RES; scene.render.film_transparent = False
 scene.view_settings.view_transform = 'AgX'; scene.view_settings.look = 'AgX - Medium High Contrast'
 scene.render.filepath = os.path.abspath(OUT)
