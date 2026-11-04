@@ -44,8 +44,12 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
   q16 noise_t = 0, noise_l = 0;
   std::int64_t all_set_since = -1;
   const q16 tol = q16_milli(10);
+  q16 slow_rate = lim.slow_rate;
+  q16 fine_rate = lim.fine_rate;
+  bool felt_near = false;
 
   auto go = [&](Phase p, std::int64_t t) {
+    if (p != Phase::slow) felt_near = false;
     ph = p;
     phase_t = t;
     mark_t = -1;
@@ -85,8 +89,16 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
         case EventKind::false_set:
           if (e.element == cur_elem && ph != Phase::release) go(Phase::spool, t);
           break;
+        case EventKind::near_shear:
+          if (e.element == cur_elem) felt_near = true;
+          break;
         case EventKind::overset:
           if (e.element >= 0 && e.element < n_elem) forget(e.element);
+          if (lim.adaptive) {
+            const q16 floor = q16_per_step(q16_milli(100));
+            slow_rate = q_max(floor, slow_rate - slow_rate / 4);
+            fine_rate = q_max(floor, fine_rate - fine_rate / 4);
+          }
           go(Phase::release, t);
           break;
         case EventKind::drop:
@@ -144,7 +156,7 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
           target_d = st.depth;
           const bool spool = ph == Phase::spool;
           target_t = spool ? st.cr_tension : st.tension;
-          const q16 rate = spool ? lim.spool_rate : lim.slow_rate;
+          const q16 rate = spool ? lim.spool_rate : (felt_near ? q_min(fine_rate, slow_rate) : slow_rate);
           const bool tension_ready = !spool || q_abs(hand_t - st.cr_tension) <= tol;
           target_l = tension_ready ? q_min(hand_l + rate, st.lift_cap) : hand_l;
           if (hand_l >= st.lift_cap) {
@@ -211,6 +223,18 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
     rep.reason = "bot: step budget exhausted";
   }
   return rep;
+}
+
+HumanLimits clumsy_human_limits() {
+  HumanLimits h;
+  h.tension_noise = q16_milli(60);
+  h.lift_noise = q16_milli(20);
+  h.slow_rate = q16_per_step(q16_milli(700));
+  h.fine_rate = q16_per_step(q16_milli(300));
+  h.spool_rate = q16_per_step(q16_milli(500));
+  h.latency_steps = ms_to_steps(250);
+  h.adaptive = true;
+  return h;
 }
 
 SolveReport FamilyModule::solver(const LockSpec& spec, const ToolSet& tools, const SolveOptions& opt) const {
