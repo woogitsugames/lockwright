@@ -1,0 +1,60 @@
+/* Direction: Plansza cechowa (Guild Plate). Engraved technical plate, material = hatching. */
+:root{
+  --paper:#EFEBE1;      /* papier: tło, prześwity */
+  --paper-deep:#DED7C6; /* papier ciemny: pola, pasy */
+  --ink:#1C1A17;        /* tusz: kontur, szraf */
+  --ink-soft:#57514A;   /* tusz szary: opisy drugorzędne */
+  --hand:#B3311D;       /* cynober: wyłącznie ręka gracza (narzędzia, kciuki) */
+  --seal:#24476B;       /* błękit pruski: pieczęcie zleceń, mapa */
+  --ochre:#8A5A14;      /* ochra cechowa: monety, numery gabloty (tylko linie, bez blasku) */
+}
+body{background:var(--paper);color:var(--ink);font-family:"Source Serif 4",serif}
+.screen{width:100vw;height:100vh;display:grid;
+  grid-template-rows:calc(60px + env(safe-area-inset-top)) auto auto auto minmax(0,1fr);
+  padding-bottom:env(safe-area-inset-bottom);
+  background:
+    linear-gradient(var(--paper),var(--paper)) padding-box;
+}
+/* plate frame: double rule like an engraved sheet */
+.screen::before{content:"";position:fixed;inset:6px;border:1.5px solid var(--ink);outline:1px solid var(--ink);outline-offset:-5px;pointer-events:none}
+.bar{display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:10px;padding:8px 16px 0}
+.tap{width:48px;height:48px;border:1.5px solid var(--ink);background:var(--paper);display:grid;place-items:center}
+.tap svg{width:22px;height:22px;stroke:var(--ink);stroke-width:2.4;fill:none}
+.bar-title{display:flex;flex-direction:column;line-height:1.05}
+.kicker{font:italic 500 12px/1.2 "Brygada 1918",serif;color:var(--ink-soft);letter-spacing:.02em}
+.h{font:700 21px/1.1 "Brygada 1918",serif;letter-spacing:.01em}
+.coins{display:flex;align-items:center;gap:6px;font:600 18px "Brygada 1918",serif;font-variant-numeric:oldstyle-nums;color:var(--ochre)}
+.coin{width:24px;height:24px;fill:none;stroke:var(--ochre);stroke-width:1.6}
+.vignette{padding:0 6px}.vignette svg{width:100%;height:auto;display:block}
+.plate{padding:0 6px}
+.section{width:100%;height:auto;display:block}
+.spring{fill:none;stroke:var(--ink);stroke-width:1.6}
+.m{stroke:var(--ink);stroke-width:2}
+.fig text{font:italic 600 15px "Brygada 1918",serif;fill:var(--ink);text-anchor:middle}
+.hud{padding:0 6px}
+.hud-svg{width:100%;height:auto;display:block}
+.lbl{font:700 14px "Brygada 1918",serif;fill:var(--ink)}
+.lbl2{font:italic 400 12px "Source Serif 4",serif;fill:var(--ink-soft)}
+.pick path{fill:none;stroke:var(--ink);stroke-width:5;stroke-linecap:round}
+.pick circle{fill:none;stroke:var(--ink);stroke-width:2}
+.pick.worn .burr{stroke-width:2}
+.pick.empty path,.pick.empty circle{stroke-dasharray:4 4;stroke-width:1.6;stroke:var(--ink-soft)}
+.thumbs{display:grid;grid-template-columns:1fr 1.5fr;gap:12px;padding:4px 18px 20px;min-height:0}
+.zone{display:grid;grid-template-rows:minmax(0,1fr) 22px;justify-items:center;border-top:1px solid var(--ink);padding-top:8px;min-height:0}
+.zone svg{width:100%;height:100%;min-height:0}
+.zlabel{font:italic 600 14px "Brygada 1918",serif;color:var(--ink)}
+.ax{font:italic 11px "Source Serif 4",serif;fill:var(--ink-soft)}
+
+@media (orientation:landscape){
+  .screen.lock{grid-template-columns:190px minmax(0,1fr) 250px;grid-template-rows:56px minmax(0,1fr) 92px}
+  .screen.lock .vignette{display:none}
+  .screen.lock .plate{display:flex;justify-content:center;min-height:0}
+  .screen.lock .section{height:100%;width:auto}
+  .screen.lock .bar{grid-column:1/-1}
+  .screen.lock .plate{grid-column:2;grid-row:2}
+  .screen.lock .hud{grid-column:2;grid-row:3}
+  .screen.lock .hud-svg{height:88px;width:auto;margin:0 auto}
+  .screen.lock .thumbs{display:contents}
+  .screen.lock .zone.left{grid-column:1;grid-row:2/4;padding:0 0 14px 14px;border:0}
+  .screen.lock .zone.right{grid-column:3;grid-row:2/4;padding:0 14px 14px 0;border:0}
+}

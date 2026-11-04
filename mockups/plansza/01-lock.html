@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plansza · zamek</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="plansza.css">
+</head><body>
+<main class="screen lock">
+  <header class="bar">
+    <button class="tap pause" aria-label="Pauza"><svg viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg></button>
+    <div class="bar-title"><span class="kicker">Tryb Ciągły</span><span class="h">Zamek siódmy</span></div>
+    <div class="coins"><svg viewBox="0 0 24 24" class="coin"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="9.5" r="2.6"/><path d="M12 12v6M12 15.5h2.5"/></svg><span>142</span></div>
+  </header>
+
+  <section class="vignette" aria-label="Drzwi">
+    <svg viewBox="0 0 412 84">
+      <text x="22" y="22" class="lbl2">fig. 1 — drzwi, iii piętro, lewe</text>
+      <text x="22" y="40" class="lbl">Pani Halina, rosół na gazie</text>
+      <!-- door leaf in elevation, small -->
+      <g transform="translate(262 6)">
+        <rect x="0" y="0" width="64" height="76" fill="url(#wood)" stroke="var(--ink)" stroke-width="1.6"/>
+        <rect x="8" y="8" width="48" height="26" fill="none" stroke="var(--ink)" stroke-width="1"/>
+        <rect x="8" y="40" width="48" height="30" fill="none" stroke="var(--ink)" stroke-width="1"/>
+        <rect x="46" y="38" width="12" height="20" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.4"/>
+        <circle cx="52" cy="52" r="3" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+        <circle cx="52" cy="52" r="11" fill="none" stroke="var(--hand)" stroke-width="1.6"/>
+        <path d="M63 52H96V82" fill="none" stroke="var(--ink)" stroke-width="1" stroke-dasharray="3 3"/>
+      </g>
+      <text x="364" y="34" class="lbl2">fig. 2</text>
+    </svg>
+  </section>
+  <section class="plate" aria-label="Przekrój mechanizmu">
+    <svg viewBox="0 0 412 372" class="section">
+      <defs>
+        <!-- material code: hatching density/direction, not hue -->
+        <pattern id="iron" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="var(--paper)"/><path d="M0 5L5 0M-1 1L1 -1M4 6L6 4" stroke="var(--ink)" stroke-width="1.5"/><path d="M0 0L5 5" stroke="var(--ink)" stroke-width=".9"/></pattern>
+        <pattern id="brass" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="4" fill="var(--paper)"/><path d="M0 2H4" stroke="var(--ink)" stroke-width=".55"/></pattern>
+        <pattern id="steel" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="4" fill="var(--paper)"/><path d="M0 4L4 0" stroke="var(--ink)" stroke-width=".7"/><path d="M0 0L4 4" stroke="var(--ink)" stroke-width=".7"/></pattern>
+        <pattern id="wood" width="40" height="10" patternUnits="userSpaceOnUse"><rect width="40" height="10" fill="var(--paper)"/><path d="M0 3C10 1 20 5 40 3M0 8C14 6 26 10 40 8" fill="none" stroke="var(--ink)" stroke-width=".8"/></pattern>
+        <pattern id="void" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="var(--paper-deep)"/></pattern>
+      </defs>
+
+      <!-- door leaf (wood) on both sides of the cylinder -->
+      <rect x="0" y="22" width="412" height="330" fill="url(#wood)"/>
+      <rect x="0" y="22" width="412" height="330" fill="none" stroke="var(--ink)" stroke-width="1"/>
+
+      <!-- cylinder housing (iron) -->
+      <path d="M28 40H384V232H28Z" fill="url(#iron)" stroke="var(--ink)" stroke-width="2"/>
+      <!-- plug (brass), drawn shifted +5 = rotated under tension -->
+      <g transform="translate(5 0)">
+        <path d="M23 236H379V334H23Z" fill="url(#brass)" stroke="var(--ink)" stroke-width="2"/>
+        <!-- keyway -->
+        <path d="M23 300H372V328H23Z" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.4"/>
+      </g>
+      <!-- gap between housing and plug: shear line, double rule (dark + light) -->
+      <rect x="24" y="232" width="364" height="4" fill="var(--paper)"/>
+      <path d="M24 232.75H388" stroke="var(--ink)" stroke-width="1.5"/>
+      <path d="M24 235.25H388" stroke="var(--ink)" stroke-width="1.5"/>
+
+      <!-- chambers: housing part (y 52..232), plug part shifted +5 (y 236..300) -->
+      <g id="chambers" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.4">
+        <rect x="79" y="52" width="34" height="180"/><rect x="84" y="236" width="34" height="64"/>
+        <rect x="135" y="52" width="34" height="180"/><rect x="140" y="236" width="34" height="64"/>
+        <rect x="191" y="52" width="34" height="180"/><rect x="196" y="236" width="34" height="64"/>
+        <rect x="247" y="52" width="34" height="180"/><rect x="252" y="236" width="34" height="64"/>
+        <rect x="303" y="52" width="34" height="180"/><rect x="308" y="236" width="34" height="64"/>
+      </g>
+
+      <!-- PIN a: SET. driver rests on plug top with a flat foot; key pin dropped in plug -->
+      <g class="pin">
+        <path d="M84 60c4-3 8 3 12 0s8 3 12 0M84 70c4-3 8 3 12 0s8 3 12 0M84 80c4-3 8 3 12 0s8 3 12 0M84 90c4-3 8 3 12 0s8 3 12 0M84 100c4-3 8 3 12 0s8 3 12 0M84 110c4-3 8 3 12 0s8 3 12 0M84 120c4-3 8 3 12 0s8 3 12 0M84 130c4-3 8 3 12 0s8 3 12 0M84 140c4-3 8 3 12 0s8 3 12 0M84 150c4-3 8 3 12 0s8 3 12 0M84 160c4-3 8 3 12 0s8 3 12 0M84 170c4-3 8 3 12 0s8 3 12 0M84 180c4-3 8 3 12 0s8 3 12 0" class="spring"/>
+        <rect x="81" y="184" width="30" height="46" rx="2" fill="url(#steel)" class="m"/>
+        <rect x="79" y="226" width="34" height="6" fill="var(--ink)"/><!-- foot = set -->
+        <path d="M89 252h24v40c0 5-6 8-12 8s-12-3-12-8z" fill="url(#brass)" class="m"/>
+      </g>
+
+      <!-- PIN b: FALSE SET. spool driver, waist caught on the shear line, dashed outline -->
+      <g class="pin">
+        <path d="M140 60c4-2 8 2 12 0s8 2 12 0M140 68c4-2 8 2 12 0s8 2 12 0M140 76c4-2 8 2 12 0s8 2 12 0M140 84c4-2 8 2 12 0s8 2 12 0M140 92c4-2 8 2 12 0s8 2 12 0M140 100c4-2 8 2 12 0s8 2 12 0M140 108c4-2 8 2 12 0s8 2 12 0M140 116c4-2 8 2 12 0s8 2 12 0M140 124c4-2 8 2 12 0s8 2 12 0M140 132c4-2 8 2 12 0s8 2 12 0M140 140c4-2 8 2 12 0s8 2 12 0M140 148c4-2 8 2 12 0s8 2 12 0M140 156c4-2 8 2 12 0s8 2 12 0M140 164c4-2 8 2 12 0s8 2 12 0M140 172c4-2 8 2 12 0s8 2 12 0M140 180c4-2 8 2 12 0s8 2 12 0M140 188c4-2 8 2 12 0s8 2 12 0" class="spring"/>
+        <path d="M137 192h30v18l-8 14v16l8 14v6h-30v-6l8-14v-16l-8-14z" fill="url(#steel)" stroke="var(--ink)" stroke-width="2" stroke-dasharray="5 3"/>
+        <path d="M145 262h24v30c0 5-6 8-12 8s-12-3-12-8z" fill="url(#brass)" class="m"/>
+        <!-- 'too deep' tick on plug: two short bars -->
+      </g>
+
+      <!-- PIN c: BINDING + NEAR SHEAR. driver pushed sideways against the wall, friction ticks, narrowing wedge -->
+      <g class="pin">
+        <path d="M196 60c4-3 8 3 12 0s8 3 12 0M196 72c4-3 8 3 12 0s8 3 12 0M196 84c4-3 8 3 12 0s8 3 12 0M196 96c4-3 8 3 12 0s8 3 12 0M196 108c4-3 8 3 12 0s8 3 12 0M196 120c4-3 8 3 12 0s8 3 12 0M196 132c4-3 8 3 12 0s8 3 12 0M196 144c4-3 8 3 12 0s8 3 12 0M196 156c4-3 8 3 12 0s8 3 12 0M196 168c4-3 8 3 12 0s8 3 12 0M196 180c4-3 8 3 12 0s8 3 12 0M196 192c4-3 8 3 12 0s8 3 12 0" class="spring"/>
+        <rect x="195" y="196" width="30" height="46" rx="2" fill="url(#steel)" class="m"/>
+        <!-- friction ticks at the contact wall -->
+        <path d="M227 222l8-6M227 229l8-6M227 236l8-6" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="square"/>
+        <path d="M201 244h24v44c0 5-6 8-12 8s-12-3-12-8z" fill="url(#brass)" class="m"/>
+        <!-- near-shear wedge: two triangles almost meeting -->
+        <path d="M184 236l-9-5v10z M184 244l-9-5v10z" fill="var(--ink)" transform="translate(0 -4)"/>
+      </g>
+
+      <!-- PIN d: OVERSET. key pin straddles the shear line; spring compressed into a solid black block; clamp mark -->
+      <g class="pin">
+        <path d="M247 41h34M247 46h34" stroke="var(--ink)" stroke-width="2.4"/><!-- clamp -->
+        <rect x="249" y="52" width="30" height="96" fill="var(--ink)"/>
+        <path d="M249 60h30M249 68h30M249 76h30M249 84h30M249 92h30M249 100h30M249 108h30M249 116h30M249 124h30M249 132h30M249 140h30" stroke="var(--paper)" stroke-width=".7"/>
+        <rect x="249" y="148" width="30" height="46" rx="2" fill="url(#steel)" class="m"/>
+        <path d="M252 194h24v54c0 5-6 8-12 8s-12-3-12-8z" fill="url(#brass)" class="m"/>
+      </g>
+
+      <!-- PIN e: FREE -->
+      <g class="pin">
+        <path d="M308 60c4-3 8 3 12 0s8 3 12 0M308 74c4-3 8 3 12 0s8 3 12 0M308 88c4-3 8 3 12 0s8 3 12 0M308 102c4-3 8 3 12 0s8 3 12 0M308 116c4-3 8 3 12 0s8 3 12 0M308 130c4-3 8 3 12 0s8 3 12 0M308 144c4-3 8 3 12 0s8 3 12 0M308 158c4-3 8 3 12 0s8 3 12 0M308 172c4-3 8 3 12 0s8 3 12 0M308 186c4-3 8 3 12 0s8 3 12 0M308 200c4-3 8 3 12 0s8 3 12 0" class="spring"/>
+        <rect x="305" y="210" width="30" height="46" rx="2" fill="url(#steel)" class="m"/>
+        <path d="M313 256h24v36c0 5-6 8-12 8s-12-3-12-8z" fill="url(#brass)" class="m"/>
+      </g>
+
+      <!-- plate letters -->
+      <g class="fig"><text x="96" y="350">a</text><text x="152" y="350">b</text><text x="208" y="350">c</text><text x="264" y="350">d</text><text x="320" y="350">e</text></g>
+
+      <!-- THE HAND (vermilion): pick with bend + stress scratches, tension wrench -->
+      <g class="hand">
+        <path d="M-6 322C60 324 120 322 168 316C186 314 196 312 204 304L211 296" fill="none" stroke="var(--hand)" stroke-width="6" stroke-linecap="round"/>
+        <path d="M-6 322C60 324 120 322 168 316C186 314 196 312 204 304L211 296" fill="none" stroke="var(--paper)" stroke-width="1" stroke-linecap="round"/>
+        <!-- stress scratches across the bend -->
+        <path d="M150 312l3 10M160 311l3 10" stroke="var(--ink)" stroke-width="1.8"/>
+        <!-- tension wrench: L in the bottom of keyway, bent -->
+        <path d="M34 326H14C10 326 8 330 8 334V356" fill="none" stroke="var(--hand)" stroke-width="7" stroke-linejoin="round"/>
+      </g>
+    </svg>
+  </section>
+
+  <!-- diegetic HUD: plug face with engraved scale + shadow board of picks -->
+  <section class="hud">
+    <svg viewBox="0 0 412 112" class="hud-svg">
+      <defs><pattern id="brass2" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="4" fill="var(--paper)"/><path d="M0 2H4" stroke="var(--ink)" stroke-width=".55"/></pattern></defs>
+      <!-- plug face, engraved scale: 1 tick = set, deep tick = false set -->
+      <g transform="translate(70 58)">
+        <circle r="46" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+        <circle r="34" fill="url(#brass2)" stroke="var(--ink)" stroke-width="1.6"/>
+        <g stroke="var(--ink)" stroke-width="2">
+          <path d="M0-46v8" /><path d="M0-46v8" transform="rotate(12)"/><path d="M0-46v8" transform="rotate(24)"/><path d="M0-46v8" transform="rotate(36)"/><path d="M0-46v8" transform="rotate(48)"/><path d="M0-46v8" transform="rotate(60)"/>
+        </g>
+        <path d="M0-46v12" stroke="var(--ink)" stroke-width="4" transform="rotate(24)"/>
+        <!-- keyway slot rotated 24deg (two ticks deep = false set) -->
+        <g transform="rotate(24)"><rect x="-4" y="-26" width="8" height="40" rx="2" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"/></g>
+        <!-- wrench in the face -->
+        <path d="M0 16 L-38 38" stroke="var(--hand)" stroke-width="7" stroke-linecap="round" transform="rotate(24)"/>
+      </g>
+      <text x="128" y="44" class="lbl">rdzeń</text>
+      <text x="128" y="62" class="lbl2">za głęboko —</text><text x="128" y="78" class="lbl2">popuść</text>
+
+      <!-- shadow board: 3 pick outlines, one empty (broken), one worn -->
+      <g transform="translate(250 8)">
+        <rect x="-8" y="-4" width="160" height="96" fill="var(--paper-deep)" stroke="var(--ink)" stroke-width="1.4"/>
+        <g class="pick"><path d="M6 20h108c8 0 12-4 16-10" /><circle cx="2" cy="20" r="5"/></g>
+        <g class="pick worn"><path d="M6 46h108c8 0 12-4 16-10" /><circle cx="2" cy="46" r="5"/><path d="M124 40l3 3M128 36l3 3" class="burr"/></g>
+        <g class="pick empty"><path d="M6 72h108c8 0 12-4 16-10" /><circle cx="2" cy="72" r="5"/></g>
+        
+      </g>
+    </svg>
+  </section>
+
+  <section class="thumbs">
+    <div class="zone left" aria-label="Napięcie">
+      <svg viewBox="0 0 120 200" class="tension">
+        <rect x="46" y="10" width="28" height="180" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+        <g stroke="var(--ink)" stroke-width="1.5"><path d="M36 10h10M38 46h8M38 82h8M38 118h8M38 154h8M36 190h10"/></g>
+        <!-- danger band hatched (no red) -->
+        <rect x="47" y="11" width="26" height="36" fill="url(#iron)"/>
+        <rect x="40" y="78" width="40" height="24" fill="var(--hand)" stroke="var(--ink)" stroke-width="2"/>
+        <path d="M44 90h32" stroke="var(--paper)" stroke-width="2"/>
+      </svg>
+      <span class="zlabel">napięcie</span>
+    </div>
+    <div class="zone right" aria-label="Wytrych">
+      <svg viewBox="0 0 200 200" class="pad">
+        <rect x="8" y="8" width="184" height="184" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+        <g stroke="var(--ink)" stroke-width=".7" stroke-dasharray="2 4"><path d="M54 8v184M100 8v184M146 8v184M8 54h184M8 100h184M8 146h184"/></g>
+        <path d="M30 170h140M30 170v-140" stroke="var(--ink)" stroke-width="1.4"/>
+        <text x="172" y="186" class="ax">głęb.</text><text x="12" y="26" class="ax">unies.</text>
+        <circle cx="118" cy="92" r="20" fill="none" stroke="var(--hand)" stroke-width="4"/>
+        <circle cx="118" cy="92" r="4" fill="var(--hand)"/>
+      </svg>
+      <span class="zlabel">wytrych</span>
+    </div>
+  </section>
+</main>
+</body></html>
