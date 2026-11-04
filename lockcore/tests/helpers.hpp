@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <vector>
 
+#include "lockcore/lever.hpp"
 #include "lockcore/lockcore.hpp"
 #include "lockcore/pin_tumbler.hpp"
 #include "lockcore/wafer.hpp"

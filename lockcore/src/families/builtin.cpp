@@ -1,3 +1,4 @@
+#include "lockcore/lever.hpp"
 #include "lockcore/pin_tumbler.hpp"
 #include "lockcore/registry.hpp"
 #include "lockcore/wafer.hpp"
@@ -9,6 +10,8 @@ void register_builtin_families(FamilyRegistry& reg) {
   reg.add(pin::make_module());
   reg.add(wafer::make_module());
   reg.add(wooden::make_module());
+  reg.add(lever::make_module());
+  reg.add(lever::make_detector_module());
 }
 
 }  // namespace lockcore

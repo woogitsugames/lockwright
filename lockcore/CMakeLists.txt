@@ -22,6 +22,7 @@ add_library(lockcore
   src/replay.cpp
   src/session.cpp
   src/families/builtin.cpp
+  src/families/lever.cpp
   src/families/pin_tumbler.cpp
   src/families/wafer.cpp
   src/families/wooden_pin.cpp
@@ -57,6 +58,7 @@ if(LOCKCORE_BUILD_TESTS)
     tests/test_pin_tumbler.cpp
     tests/test_wafer.cpp
     tests/test_wooden_pin.cpp
+    tests/test_lever.cpp
     tests/test_replay.cpp
     tests/test_fuzz.cpp
   )
