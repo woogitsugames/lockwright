@@ -5,9 +5,11 @@
 //          <screen>.portrait.dim.png (50% brightness simulation, @1x).
 // Usage: node tools/render.mjs [direction ...]
 import { createRequire } from 'node:module';
-import { readdirSync, mkdirSync, existsSync } from 'node:fs';
+import { readdirSync, mkdirSync, existsSync, readFileSync, statSync } from 'node:fs';
+import { createServer } from 'node:http';
+import { extname } from 'node:path';
 import { join, dirname, basename } from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 
 // Prefer local devDependency; fall back to the preinstalled global Playwright.
 const require = createRequire(import.meta.url);
@@ -28,7 +30,17 @@ const variants = [
   { suffix: 'portrait.dim', w: 412, h: 915, dsf: 1, filter: 'grayscale(1) brightness(0.5)' },
 ];
 
-const browser = await chromium.launch();
+// Static server so ES modules (three.js) load; file:// blocks module scripts.
+const types = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.ttf': 'font/ttf', '.svg': 'image/svg+xml', '.png': 'image/png', '.json': 'application/json' };
+const server = createServer((req, res) => {
+  const f = join(root, decodeURIComponent(new URL(req.url, 'http://x').pathname));
+  try { if (!statSync(f).isFile()) throw 0; res.writeHead(200, { 'content-type': types[extname(f)] || 'application/octet-stream' }); res.end(readFileSync(f)); }
+  catch { res.writeHead(404); res.end(); }
+});
+await new Promise(r => server.listen(0, '127.0.0.1', r));
+const base = `http://127.0.0.1:${server.address().port}`;
+
+const browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
 for (const dir of dirs) {
   const screens = readdirSync(join(root, dir)).filter(f => f.endsWith('.html'));
   if (!screens.length) continue;
@@ -38,8 +50,10 @@ for (const dir of dirs) {
     const ctx = await browser.newContext({ viewport: { width: v.w, height: v.h }, deviceScaleFactor: v.dsf });
     const page = await ctx.newPage();
     for (const s of screens) {
-      await page.goto(pathToFileURL(join(root, dir, s)).href);
+      await page.goto(`${base}/${dir}/${s}`);
       await page.evaluate(() => document.fonts.ready);
+      // Pages that render asynchronously (WebGL) set window.__ready=false, then true when done.
+      await page.waitForFunction(() => window.__ready !== false, null, { timeout: 60000 });
       if (v.filter) await page.addStyleTag({ content: `html{filter:${v.filter}}` });
       await page.waitForTimeout(150);
       const file = join(out, `${basename(s, '.html')}.${v.suffix}.png`);
@@ -50,3 +64,4 @@ for (const dir of dirs) {
   }
 }
 await browser.close();
+server.close();

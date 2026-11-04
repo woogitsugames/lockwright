@@ -9,3 +9,7 @@ Format: **D-NN — tytuł** · data · status (przyjęta / proponowana / czeka n
 ## D-02 — Praca na `main`
 2026-11-04 · przyjęta (właściciel)
 Właściciel polecił pracować bezpośrednio na `main`, pushować i scalać na bieżąco oraz wysyłać zrzuty ekranów w trakcie pracy, żeby kierunek dało się korygować wcześnie. Zastępuje wcześniejszą zasadę gałęzi roboczej.
+
+## D-03 — Kolizja tytułu: lockwright.app (escape room)
+2026-11-04 · **czeka na właściciela**
+Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright · Free Online 3D Escape Room Game” (osoba prywatna). lockwright.com zajęta (pusty szablon). Brak znaku LOCKWRIGHT w USPTO; EUIPO/TMview do sprawdzenia ręcznie. Opcje: (A) zostać przy nazwie i zgłosić znak EUIPO kl. 9/28/41 (ok. 1 050 € opłaty) i zabezpieczyć lockwrightgame.com/.pl/.game; (B) zmienić nazwę teraz, przed publikacją. Rekomendacja koordynatora: patrz podsumowanie etapu.
