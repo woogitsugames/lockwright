@@ -9,6 +9,7 @@
 #include "lockcore/lever.hpp"
 #include "lockcore/lockcore.hpp"
 #include "lockcore/pin_tumbler.hpp"
+#include "lockcore/ring_combo.hpp"
 #include "lockcore/wafer.hpp"
 #include "lockcore/wooden_pin.hpp"
 
