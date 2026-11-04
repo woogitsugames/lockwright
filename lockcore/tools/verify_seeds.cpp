@@ -7,7 +7,11 @@
 // lifting, slower reactions) runs the same plan with the full time budget. Its
 // success rate, drops and oversets indicate how forgiving each tier is.
 //
-//   verify_seeds [--seeds N] [--family ID] [--tier T] [--csv FILE] [--replays N]
+// Stage 3 (report only): the "feeling" bot sees only events and the continuous
+// signals; its success rate and time per tier calibrate difficulty (--feel N
+// limits it to the first N seeds; default all).
+//
+//   verify_seeds [--seeds N] [--family ID] [--tier T] [--csv FILE] [--replays N] [--feel N]
 #include <algorithm>
 #include <chrono>
 #include <cstdio>
@@ -34,6 +38,10 @@ struct Stats {
   std::int64_t c_ok = 0, c_runs = 0, c_drops = 0, c_oversets = 0, c_breaks = 0;
   std::vector<std::int64_t> c_steps;
   std::vector<std::string> c_fail_samples;
+  // feeling bot (stage 3, report only)
+  std::int64_t f_ok = 0, f_runs = 0, f_drops = 0, f_breaks = 0;
+  std::vector<std::int64_t> f_steps;
+  std::vector<std::string> f_fail_samples;
 };
 
 
@@ -61,6 +69,7 @@ std::string ms(std::int64_t steps) {
 int main(int argc, char** argv) {
   std::int64_t n_seeds = 10000;
   std::int64_t n_replays = 100;
+  std::int64_t n_feel = -1;  // default: every seed
   std::string only_family;
   int only_tier = -1;
   std::string csv_path;
@@ -78,23 +87,26 @@ int main(int argc, char** argv) {
     else if (a == "--family") only_family = next();
     else if (a == "--tier") only_tier = std::atoi(next().c_str());
     else if (a == "--csv") csv_path = next();
+    else if (a == "--feel") n_feel = std::atoll(next().c_str());
     else {
-      std::fprintf(stderr, "usage: verify_seeds [--seeds N] [--family ID] [--tier T] [--csv FILE] [--replays N]\n");
+      std::fprintf(stderr, "usage: verify_seeds [--seeds N] [--family ID] [--tier T] [--csv FILE] [--replays N] [--feel N]\n");
       return 2;
     }
   }
 
+  if (n_feel < 0) n_feel = n_seeds;
   std::ofstream csv;
   if (!csv_path.empty()) {
     csv.open(csv_path);
     csv << "family,tier,seeds,failures,steps_p50,steps_p90,steps_max,drops_mean_x100,drops_p90,drops_max,"
-           "oversets,false_sets,retries,peak_stress_q16\n";
+           "oversets,false_sets,retries,peak_stress_q16,clumsy_ok_x1000,feel_runs,feel_ok_x1000,feel_p50,feel_p90\n";
   }
 
   const auto t0 = std::chrono::steady_clock::now();
   const FamilyRegistry& reg = FamilyRegistry::builtin();
   int total_failures = 0;
   std::vector<std::string> clumsy;
+  std::vector<std::string> feeling;
   std::printf("%-12s %4s %7s %5s | %8s %8s %8s | %6s %5s %5s | %7s %7s %6s %6s\n", "family", "tier", "seeds",
               "fail", "t_p50", "t_p90", "t_max", "drop/l", "d_p90", "d_max", "overset", "f_set", "retry", "S_pk");
   for (const FamilyModule* fam : reg.all()) {
@@ -147,13 +159,9 @@ int main(int argc, char** argv) {
           }
         }
         {
-          OracleReport o = fam->oracle(spec, fam->required_tools(spec));
-          // A human does not know where the overset starts: no lift cap from the plan.
-          for (auto& ps : o.plan.steps) ps.lift_cap = q16_milli(980);
-          const std::int64_t budget = static_cast<std::int64_t>(d.time_limit_s) * SIM_HZ;
           SolveOptions copt;
           copt.bot_seed = 2;
-          const SolveReport c = run_plan_bot(*fam, spec, fam->required_tools(spec), o.plan, clumsy_human_limits(), budget, copt);
+          const SolveReport c = fam->run_bot(BotKind::clumsy, spec, fam->required_tools(spec), copt);
           ++st.c_runs;
           st.c_ok += c.ok ? 1 : 0;
           st.c_drops += c.drops;
@@ -161,6 +169,17 @@ int main(int argc, char** argv) {
           st.c_breaks += c.reason.find("failure break") != std::string::npos ? 1 : 0;
           if (c.ok) st.c_steps.push_back(c.steps);
           if (!c.ok && st.c_fail_samples.size() < 3) st.c_fail_samples.push_back("seed " + std::to_string(seed) + ": " + c.reason);
+        }
+        if (i < n_feel) {
+          SolveOptions fopt;
+          fopt.bot_seed = 3;
+          const SolveReport f = fam->run_bot(BotKind::feeling, spec, fam->required_tools(spec), fopt);
+          ++st.f_runs;
+          st.f_ok += f.ok ? 1 : 0;
+          st.f_drops += f.drops;
+          st.f_breaks += f.reason.find("failure break") != std::string::npos ? 1 : 0;
+          if (f.ok) st.f_steps.push_back(f.steps);
+          if (!f.ok && st.f_fail_samples.size() < 3) st.f_fail_samples.push_back("seed " + std::to_string(seed) + ": " + f.reason);
         }
         st.steps.push_back(r.steps);
         st.drops.push_back(r.drops);
@@ -203,16 +222,37 @@ int main(int argc, char** argv) {
         clumsy.push_back(line);
       }
       for (const auto& f : st.c_fail_samples) clumsy.push_back("    e.g. " + f);
+      const std::int64_t f_ok_x1000 = st.f_runs ? (st.f_ok * 1000) / st.f_runs : 0;
+      const std::int64_t c_ok_x1000 = st.c_runs ? (st.c_ok * 1000) / st.c_runs : 0;
+      {
+        const std::int64_t runs = st.f_runs ? st.f_runs : 1;
+        const std::int64_t d_x100 = (st.f_drops * 100) / runs;
+        const std::int64_t limit = static_cast<std::int64_t>(d.time_limit_s) * SIM_HZ;
+        char line[256];
+        std::snprintf(line, sizeof line,
+                      "%s t%d: %lld runs, success %lld.%01lld%%, t_p50 %s, t_p90 %s (limit %s), drops/lock %lld.%02lld, breaks %lld",
+                      std::string(fam->id()).c_str(), tier, static_cast<long long>(st.f_runs),
+                      static_cast<long long>(f_ok_x1000 / 10), static_cast<long long>(f_ok_x1000 % 10),
+                      ms(pct(st.f_steps, 50)).c_str(), ms(pct(st.f_steps, 90)).c_str(), ms(limit).c_str(),
+                      static_cast<long long>(d_x100 / 100), static_cast<long long>(d_x100 % 100),
+                      static_cast<long long>(st.f_breaks));
+        feeling.push_back(line);
+        for (const auto& f : st.f_fail_samples) feeling.push_back("    e.g. " + f);
+      }
       if (csv.is_open()) {
         csv << fam->id() << "," << tier << "," << n_seeds << "," << st.failures << "," << pct(st.steps, 50) << ","
             << pct(st.steps, 90) << "," << smax << "," << drops_x100 << "," << pct(st.drops, 90) << "," << drop_max
-            << "," << st.oversets << "," << st.false_sets << "," << st.retries << "," << st.peak_stress << "\n";
+            << "," << st.oversets << "," << st.false_sets << "," << st.retries << "," << st.peak_stress << ","
+            << c_ok_x1000 << "," << st.f_runs << "," << f_ok_x1000 << "," << pct(st.f_steps, 50) << ","
+            << pct(st.f_steps, 90) << "\n";
       }
       total_failures += st.failures;
     }
   }
   std::printf("\nclumsy bot (soft metric: tremor +-0.06, lift 0.7/s, 0.3/s after near_shear, slows after oversets, 250 ms reaction, no overset knowledge):\n");
   for (const auto& c : clumsy) std::printf("  %s\n", c.c_str());
+  std::printf("\nfeeling bot (stage 3, soft metric: events + continuous signals only, tremor +-0.04, 220 ms reaction, budget = tier time limit):\n");
+  for (const auto& f : feeling) std::printf("  %s\n", f.c_str());
   const auto secs = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - t0).count();
   std::printf("total failures: %d (%lld ms)\n", total_failures, static_cast<long long>(secs));
   return total_failures == 0 ? 0 : 1;

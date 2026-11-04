@@ -187,3 +187,382 @@ def flat_tool(name, path, height, thick, y, mat='pick', tip='round'):
     b = o.modifiers.new('bev', 'BEVEL'); b.width = min(thick, height) * 0.22; b.segments = 3; b.limit_method = 'ANGLE'; b.angle_limit = math.radians(50); b.harden_normals = True
     for poly in me.polygons: poly.use_smooth = True
     me.materials.append(M[mat]); return o
+
+
+# ================================================================ v2 additions (append-only)
+# Used by the family scenes (wafer, lever, warded, wooden_pin, ring_combo). Nothing above this line changes,
+# so cutaway.py / tray.py render exactly as before.
+def _nn(nt, t, x=0, **inputs):
+    nd = nt.nodes.new(t)
+    for k, v in inputs.items():
+        if k in nd.inputs: nd.inputs[k].default_value = v
+        else: setattr(nd, k, v)
+    return nd
+
+def _mix(nt, a, b, fac, mode='MIX', dtype='RGBA'):
+    m = nt.nodes.new('ShaderNodeMix'); m.data_type = dtype
+    if dtype == 'RGBA': m.blend_type = mode
+    l = nt.links
+    def put(sock, val):
+        if hasattr(val, 'is_linked') or hasattr(val, 'links'): l.new(val, sock)
+        else: sock.default_value = val
+    idx = {'FLOAT': (0, 2, 3), 'RGBA': (0, 6, 7)}[dtype]
+    put(m.inputs[idx[0]], fac); put(m.inputs[idx[1]], a); put(m.inputs[idx[2]], b)
+    return m.outputs[{'FLOAT': 0, 'RGBA': 2}[dtype]]
+
+def _maprange(nt, sock, a, b, c=0.0, d=1.0, clamp=True):
+    m = nt.nodes.new('ShaderNodeMapRange'); m.clamp = clamp
+    m.inputs['From Min'].default_value = a; m.inputs['From Max'].default_value = b
+    m.inputs['To Min'].default_value = c; m.inputs['To Max'].default_value = d
+    nt.links.new(sock, m.inputs['Value']); return m.outputs['Result']
+
+def _edge_mask(nt, dist=0.25, lo=0.70, hi=0.98):
+    """Convex-edge mask (1 on worn edges) from Cycles AO in 'inside' mode."""
+    ao = nt.nodes.new('ShaderNodeAmbientOcclusion'); ao.inside = True; ao.only_local = True; ao.samples = 8
+    ao.inputs['Distance'].default_value = dist
+    return _maprange(nt, ao.outputs['AO'], hi, lo)   # AO inside ~1 on flats, drops on sharp convex edges
+
+def _cavity_mask(nt, dist=1.0, lo=0.35, hi=0.95):
+    """Concave mask (1 in crevices) for dust and grime."""
+    ao = nt.nodes.new('ShaderNodeAmbientOcclusion'); ao.only_local = False; ao.samples = 8
+    ao.inputs['Distance'].default_value = dist
+    return _maprange(nt, ao.outputs['AO'], hi, lo)
+
+def _noise(nt, vec, scale, detail=6, rough=0.55, dist=0.0, stretch=None):
+    if stretch is not None:
+        mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Scale'].default_value = stretch
+        nt.links.new(vec, mp.inputs['Vector']); vec = mp.outputs['Vector']
+    n = nt.nodes.new('ShaderNodeTexNoise'); n.inputs['Scale'].default_value = scale; n.inputs['Detail'].default_value = detail
+    n.inputs['Roughness'].default_value = rough; n.inputs['Distortion'].default_value = dist
+    nt.links.new(vec, n.inputs['Vector']); return n.outputs['Fac']
+
+def metal(name, base, rough, aniso=0.0, marks='grind', marks_scale=1.0, marks_axis=(1, 0, 0), marks_amt=1.0,
+          wear=0.5, wear_col=None, grime=0.5, grime_col=(0.05, 0.04, 0.03), smudge=0.5, bevel_r=0.04, metallic=1.0,
+          tint_var=0.04, seed=0.0):
+    """Physically plausible machined metal. marks: 'grind' (linear, along marks_axis), 'mill' (face-mill arcs),
+    'turn' (circumferential lathe lines around marks_axis), 'stamp' (fine isotropic + rolling streaks), None."""
+    m = bpy.data.materials.new(name); m.use_nodes = True; nt = m.node_tree; l = nt.links
+    b = nt.nodes['Principled BSDF']; b.inputs['Metallic'].default_value = metallic; b.inputs['Anisotropic'].default_value = aniso
+    tc = nt.nodes.new('ShaderNodeTexCoord'); P = tc.outputs['Object']
+    if seed:
+        mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Location'].default_value = (seed * 17.3, seed * 5.1, seed * 9.7); l.new(P, mp.inputs['Vector']); P = mp.outputs['Vector']
+    ax = Vector(marks_axis).normalized()
+    # --- machining marks height field
+    mk = None
+    if marks == 'grind':
+        s = [0.03 if abs(a) > 0.5 else 3.0 for a in ax]
+        mk = _noise(nt, P, 9.0 * marks_scale, detail=12, rough=0.7, stretch=s)
+    elif marks == 'turn':
+        s = [3.0 if abs(a) > 0.5 else 0.0 for a in ax]
+        w = nt.nodes.new('ShaderNodeTexWave'); w.wave_type = 'BANDS'; w.bands_direction = 'X'
+        mp = nt.nodes.new('ShaderNodeMapping'); l.new(P, mp.inputs['Vector'])
+        # rotate so that marks_axis maps to X
+        if abs(ax.z) > 0.5: mp.inputs['Rotation'].default_value = (0, math.pi / 2, 0)
+        elif abs(ax.y) > 0.5: mp.inputs['Rotation'].default_value = (0, 0, math.pi / 2)
+        w.inputs['Scale'].default_value = 7.0 * marks_scale; w.inputs['Distortion'].default_value = 0.6
+        w.inputs['Detail'].default_value = 4; l.new(mp.outputs['Vector'], w.inputs['Vector'])
+        fn = _noise(nt, P, 30 * marks_scale, detail=8)
+        mk = _mix(nt, w.outputs['Fac'], fn, 0.35, dtype='FLOAT')
+    elif marks == 'mill':
+        mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Location'].default_value = (-55, 0, 30)
+        mp.inputs['Scale'].default_value = (1, 0.0, 1) if abs(ax.y) > 0.5 else (1, 1, 1)
+        l.new(P, mp.inputs['Vector'])
+        w = nt.nodes.new('ShaderNodeTexWave'); w.wave_type = 'RINGS'; w.inputs['Scale'].default_value = 5.0 * marks_scale
+        w.inputs['Distortion'].default_value = 1.0; w.inputs['Detail'].default_value = 5; l.new(mp.outputs['Vector'], w.inputs['Vector'])
+        fn = _noise(nt, P, 5 * marks_scale, detail=10, rough=0.7, stretch=(0.06, 1, 3))
+        mk = _mix(nt, w.outputs['Fac'], fn, 0.5, dtype='FLOAT')
+    elif marks == 'stamp':
+        a = _noise(nt, P, 3.0 * marks_scale, detail=10, rough=0.65, stretch=(0.05, 2.0, 2.0))
+        bfine = _noise(nt, P, 80 * marks_scale, detail=4)
+        mk = _mix(nt, a, bfine, 0.5, dtype='FLOAT')
+    # --- roughness: base +- fine variation, smudges, marks
+    rv = _noise(nt, P, 25, detail=6)
+    r = _maprange(nt, rv, 0.3, 0.7, rough * 0.85, rough * 1.15)
+    sm = _maprange(nt, _noise(nt, P, 0.35, detail=4, rough=0.6), 0.45, 0.75, 0.0, 1.0)
+    r = _mix(nt, r, min(1.0, rough + 0.14), sm, dtype='FLOAT') if smudge else r
+    if mk is not None:
+        r = _mix(nt, r, _maprange(nt, mk, 0.3, 0.7, rough * 0.7, rough * 1.35), 0.55 * marks_amt, dtype='FLOAT')
+    # --- base colour: subtle tint variation, grime in crevices, brighter worn edges
+    tv = _noise(nt, P, 1.2, detail=3)
+    col = _mix(nt, (*[c * (1 - tint_var) for c in base], 1), (*[min(1, c * (1 + tint_var)) for c in base], 1), tv)
+    em = _edge_mask(nt) if wear else None
+    if wear:
+        wc = wear_col or tuple(min(1, c * 1.08) for c in base)
+        wm = _mix(nt, 0.0, em, _maprange(nt, _noise(nt, P, 3.0, detail=5), 0.35, 0.6), dtype='FLOAT')
+        wm = _maprange(nt, wm, 0.0, 1.0, 0.0, wear)
+        col = _mix(nt, col, (*wc, 1), wm)
+        r = _mix(nt, r, max(0.16, rough * 0.7), wm, dtype='FLOAT')
+    if grime:
+        cm = _cavity_mask(nt, 2.0, 0.3, 0.97)
+        gm = _maprange(nt, _mix(nt, cm, _noise(nt, P, 2.0, detail=6), 0.3, dtype='FLOAT'), 0.0, 1.0, 0.0, grime)
+        col = _mix(nt, col, (*grime_col, 1), gm)
+        r = _mix(nt, r, 0.75, gm, dtype='FLOAT')
+        b.inputs['Metallic'].default_value = metallic
+    l.new(col, b.inputs['Base Color']); l.new(r, b.inputs['Roughness'])
+    # --- normal: bevel-rounded edges + machining relief
+    nrm = None
+    if bevel_r:
+        bv = nt.nodes.new('ShaderNodeBevel'); bv.samples = 6; bv.inputs['Radius'].default_value = bevel_r; nrm = bv.outputs['Normal']
+    if mk is not None:
+        bp = nt.nodes.new('ShaderNodeBump'); bp.inputs['Strength'].default_value = 0.12 * marks_amt; bp.inputs['Distance'].default_value = 0.02
+        l.new(mk, bp.inputs['Height'])
+        if nrm is not None: l.new(nrm, bp.inputs['Normal'])
+        nrm = bp.outputs['Normal']
+    if nrm is not None: l.new(nrm, b.inputs['Normal'])
+    if aniso and marks in ('grind', 'turn'):
+        tg = nt.nodes.new('ShaderNodeTangent'); tg.direction_type = 'RADIAL'
+        tg.axis = 'X' if abs(ax.x) > 0.5 else ('Y' if abs(ax.y) > 0.5 else 'Z'); l.new(tg.outputs['Tangent'], b.inputs['Tangent'])
+    return m
+
+def paint(name, color, rough=0.42, metal_col=(0.55, 0.55, 0.56), chip=0.6, grime=0.5, peel=0.015):
+    """Powder coat / enamel over steel: orange-peel bump, chipped edges exposing metal, dust in corners."""
+    m = bpy.data.materials.new(name); m.use_nodes = True; nt = m.node_tree; l = nt.links
+    out = nt.nodes['Material Output']; pb = nt.nodes['Principled BSDF']
+    tc = nt.nodes.new('ShaderNodeTexCoord'); P = tc.outputs['Object']
+    tv = _noise(nt, P, 0.6, detail=3)
+    col = _mix(nt, (*[c * 0.9 for c in color], 1), (*[min(1, c * 1.06) for c in color], 1), tv)
+    cm = _maprange(nt, _cavity_mask(nt, 1.5), 0, 1, 0, grime)
+    col = _mix(nt, col, (0.09, 0.08, 0.065, 1), cm)
+    l.new(col, pb.inputs['Base Color'])
+    r = _maprange(nt, _noise(nt, P, 2.0, detail=6), 0.3, 0.7, rough - 0.06, rough + 0.08)
+    r = _mix(nt, r, 0.8, cm, dtype='FLOAT'); l.new(r, pb.inputs['Roughness'])
+    pb.inputs['Coat Weight'].default_value = 0.0
+    op = _noise(nt, P, 9.0, detail=2, rough=0.4)
+    bp = nt.nodes.new('ShaderNodeBump'); bp.inputs['Strength'].default_value = 0.08; bp.inputs['Distance'].default_value = peel
+    l.new(op, bp.inputs['Height'])
+    bv = nt.nodes.new('ShaderNodeBevel'); bv.samples = 6; bv.inputs['Radius'].default_value = 0.08; l.new(bv.outputs['Normal'], bp.inputs['Normal'])
+    l.new(bp.outputs['Normal'], pb.inputs['Normal'])
+    # chipped edges: bare steel
+    mb = nt.nodes.new('ShaderNodeBsdfPrincipled'); mb.inputs['Base Color'].default_value = (*metal_col, 1)
+    mb.inputs['Metallic'].default_value = 1.0; mb.inputs['Roughness'].default_value = 0.32
+    l.new(bv.outputs['Normal'], mb.inputs['Normal'])
+    em = _edge_mask(nt, 0.3, 0.6, 0.97)
+    ch = _maprange(nt, _noise(nt, P, 2.5, detail=8, rough=0.7), 0.42, 0.52)
+    msk = _mix(nt, 0.0, em, ch, dtype='FLOAT'); msk = _maprange(nt, msk, 0.35, 0.6, 0.0, chip)
+    sh = nt.nodes.new('ShaderNodeMixShader'); l.new(msk, sh.inputs[0]); l.new(pb.outputs[0], sh.inputs[1]); l.new(mb.outputs[0], sh.inputs[2])
+    l.new(sh.outputs[0], out.inputs['Surface'])
+    return m
+
+def iron(name, rust=0.6, base=(0.16, 0.155, 0.15), rough=0.55, polish=0.5, scale=1.0, seed=0.0):
+    """Wrought / cast iron with patina and rust: rust gathers in crevices and pits, handled edges are rubbed
+    back to dark metal. Rust is a dielectric layer (no metallic shine)."""
+    m = bpy.data.materials.new(name); m.use_nodes = True; nt = m.node_tree; l = nt.links
+    out = nt.nodes['Material Output']; fe = nt.nodes['Principled BSDF']
+    tc = nt.nodes.new('ShaderNodeTexCoord'); P = tc.outputs['Object']
+    if seed:
+        mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Location'].default_value = (seed * 13.1, seed * 7.7, seed * 3.3); l.new(P, mp.inputs['Vector']); P = mp.outputs['Vector']
+    big = _noise(nt, P, 0.18 * scale, detail=8, rough=0.62)
+    mid = _noise(nt, P, 1.4 * scale, detail=10, rough=0.7)
+    fine = _noise(nt, P, 14 * scale, detail=6, rough=0.7)
+    # iron layer: dark, mottled, partly metallic (mill scale + rubbed)
+    ic = _mix(nt, (base[0] * 0.6, base[1] * 0.6, base[2] * 0.62, 1), (*[c * 1.5 for c in base], 1), mid)
+    fe.inputs['Metallic'].default_value = 0.75; l.new(ic, fe.inputs['Base Color'])
+    l.new(_maprange(nt, fine, 0.3, 0.7, rough - 0.15, rough + 0.15), fe.inputs['Roughness'])
+    # rust layer
+    ru = nt.nodes.new('ShaderNodeBsdfPrincipled'); ru.inputs['Metallic'].default_value = 0.0
+    cr = nt.nodes.new('ShaderNodeValToRGB'); e = cr.color_ramp.elements
+    e[0].position = 0.25; e[0].color = (0.10, 0.045, 0.02, 1); e[1].position = 0.75; e[1].color = (0.42, 0.17, 0.06, 1)
+    e2 = cr.color_ramp.elements.new(0.5); e2.color = (0.24, 0.09, 0.035, 1)
+    l.new(_mix(nt, mid, fine, 0.4, dtype='FLOAT'), cr.inputs['Fac']); l.new(cr.outputs['Color'], ru.inputs['Base Color'])
+    l.new(_maprange(nt, fine, 0.3, 0.7, 0.72, 0.95), ru.inputs['Roughness'])
+    # mask: noise patches + crevices - rubbed edges
+    msk = _maprange(nt, _mix(nt, big, mid, 0.45, dtype='FLOAT'), 0.62 - rust * 0.25, 0.70 - rust * 0.25)
+    cav = _cavity_mask(nt, 2.0, 0.3, 0.9)
+    msk = _mix(nt, msk, 1.0, _maprange(nt, cav, 0, 1, 0, rust), dtype='FLOAT')
+    em = _edge_mask(nt, 0.5, 0.6, 0.97)
+    msk = _mix(nt, msk, 0.0, _maprange(nt, em, 0, 1, 0, polish), dtype='FLOAT')
+    # height: rust is raised & pitted, iron has hammer/cast texture
+    h = _mix(nt, _mix(nt, mid, fine, 0.5, dtype='FLOAT'), _maprange(nt, fine, 0.4, 0.8, 0.6, 1.0), msk, dtype='FLOAT')
+    bp = nt.nodes.new('ShaderNodeBump'); bp.inputs['Strength'].default_value = 0.35; bp.inputs['Distance'].default_value = 0.06
+    l.new(h, bp.inputs['Height'])
+    bv = nt.nodes.new('ShaderNodeBevel'); bv.samples = 6; bv.inputs['Radius'].default_value = 0.15; l.new(bv.outputs['Normal'], bp.inputs['Normal'])
+    l.new(bp.outputs['Normal'], fe.inputs['Normal']); l.new(bp.outputs['Normal'], ru.inputs['Normal'])
+    sh = nt.nodes.new('ShaderNodeMixShader'); l.new(msk, sh.inputs[0]); l.new(fe.outputs[0], sh.inputs[1]); l.new(ru.outputs[0], sh.inputs[2])
+    l.new(sh.outputs[0], out.inputs['Surface'])
+    return m
+
+def wood(name, light=(0.42, 0.26, 0.13), dark=(0.20, 0.10, 0.045), axis='X', ring=0.9, rough=0.6, coat=0.0,
+         wear=0.5, grime=0.6, pores=1.0, seed=0.0, oiled=0.2):
+    """Real wood: annual rings around the grain axis (log centre offset), distorted, with stretched pores,
+    medullary flecks, worn lighter edges and dark handling grime in corners."""
+    m = bpy.data.materials.new(name); m.use_nodes = True; nt = m.node_tree; l = nt.links
+    b = nt.nodes['Principled BSDF']
+    tc = nt.nodes.new('ShaderNodeTexCoord'); P = tc.outputs['Object']
+    # map so that the grain axis becomes Z (rings = distance from Z axis)
+    mp = nt.nodes.new('ShaderNodeMapping'); l.new(P, mp.inputs['Vector'])
+    rot = {'X': (0, math.pi / 2, 0), 'Y': (math.pi / 2, 0, 0), 'Z': (0, 0, 0)}[axis]
+    mp.inputs['Rotation'].default_value = rot; mp.inputs['Location'].default_value = (37 + seed * 11, -61 - seed * 7, seed * 23)
+    Q = mp.outputs['Vector']
+    # warp coordinates with low-frequency noise (figure)
+    wn = nt.nodes.new('ShaderNodeTexNoise'); wn.inputs['Scale'].default_value = 0.025; wn.inputs['Detail'].default_value = 3
+    l.new(Q, wn.inputs['Vector'])
+    wv = nt.nodes.new('ShaderNodeVectorMath'); wv.operation = 'SCALE'; wv.inputs['Scale'].default_value = 0.0
+    cen = nt.nodes.new('ShaderNodeVectorMath'); cen.operation = 'SUBTRACT'; l.new(wn.outputs['Color'], cen.inputs[0]); cen.inputs[1].default_value = (0.5, 0.5, 0.5)
+    sc = nt.nodes.new('ShaderNodeVectorMath'); sc.operation = 'SCALE'; sc.inputs['Scale'].default_value = 9.0; l.new(cen.outputs[0], sc.inputs[0])
+    add = nt.nodes.new('ShaderNodeVectorMath'); add.operation = 'ADD'; l.new(Q, add.inputs[0]); l.new(sc.outputs[0], add.inputs[1])
+    flat = nt.nodes.new('ShaderNodeMapping'); flat.inputs['Scale'].default_value = (1, 1, 0); l.new(add.outputs[0], flat.inputs['Vector'])
+    ln = nt.nodes.new('ShaderNodeVectorMath'); ln.operation = 'LENGTH'; l.new(flat.outputs['Vector'], ln.inputs[0])
+    rr = nt.nodes.new('ShaderNodeMath'); rr.operation = 'MULTIPLY'; rr.inputs[1].default_value = ring; l.new(ln.outputs['Value'], rr.inputs[0])
+    fr = nt.nodes.new('ShaderNodeMath'); fr.operation = 'FRACT'; l.new(rr.outputs[0], fr.inputs[0])
+    # late wood: sharp dark band at the end of each ring, early wood soft
+    pw = nt.nodes.new('ShaderNodeMath'); pw.operation = 'POWER'; pw.inputs[1].default_value = 3.0; l.new(fr.outputs[0], pw.inputs[0])
+    jitter = _noise(nt, Q, 0.6, detail=4, stretch=(1, 1, 0.08))
+    band = _mix(nt, pw.outputs[0], jitter, 0.25, dtype='FLOAT')
+    cr = nt.nodes.new('ShaderNodeValToRGB'); e = cr.color_ramp.elements
+    e[0].position = 0.0; e[0].color = (*light, 1); e[1].position = 0.85; e[1].color = (*dark, 1)
+    mid = cr.color_ramp.elements.new(0.45); mid.color = (*[(a * 0.65 + b2 * 0.35) for a, b2 in zip(light, dark)], 1)
+    l.new(band, cr.inputs['Fac'])
+    col = cr.outputs['Color']
+    # pores: fine stretched dark streaks along the grain
+    po = _noise(nt, Q, 40.0, detail=4, rough=0.6, stretch=(1, 1, 0.025))
+    pm = _maprange(nt, po, 0.62, 0.72, 0.0, 0.35 * pores)
+    col = _mix(nt, col, (*[c * 0.45 for c in dark], 1), pm)
+    # colour variation board-to-board
+    tv = _noise(nt, Q, 0.05, detail=2)
+    col = _mix(nt, col, (*[c * 0.8 for c in light], 1), _maprange(nt, tv, 0.3, 0.7, 0.0, 0.35))
+    em = _edge_mask(nt, 0.6, 0.6, 0.97) if wear else None
+    if wear:
+        wm = _maprange(nt, _mix(nt, 0.0, em, _noise(nt, Q, 0.8, detail=5), dtype='FLOAT'), 0.2, 0.5, 0.0, wear)
+        col = _mix(nt, col, (*[min(1, c * 1.25) for c in light], 1), wm)
+    if grime:
+        cm = _maprange(nt, _cavity_mask(nt, 3.0, 0.3, 0.92), 0, 1, 0, grime)
+        col = _mix(nt, col, (0.05, 0.03, 0.018, 1), cm)
+    l.new(col, b.inputs['Base Color'])
+    r = _maprange(nt, band, 0.0, 1.0, rough - 0.08, rough + 0.06)
+    if oiled:
+        r = _mix(nt, r, rough - 0.25, _maprange(nt, _noise(nt, Q, 0.12, detail=3), 0.5, 0.7, 0.0, oiled), dtype='FLOAT')
+    l.new(r, b.inputs['Roughness'])
+    b.inputs['Coat Weight'].default_value = coat; b.inputs['Coat Roughness'].default_value = 0.3
+    b.inputs['Sheen Weight'].default_value = 0.15
+    h = _mix(nt, band, pm, 0.6, dtype='FLOAT')
+    bp = nt.nodes.new('ShaderNodeBump'); bp.inputs['Strength'].default_value = 0.25; bp.inputs['Distance'].default_value = 0.05
+    l.new(h, bp.inputs['Height'])
+    bv = nt.nodes.new('ShaderNodeBevel'); bv.samples = 6; bv.inputs['Radius'].default_value = 0.25; l.new(bv.outputs['Normal'], bp.inputs['Normal'])
+    l.new(bp.outputs['Normal'], b.inputs['Normal'])
+    return m
+
+def dark_mat(name, col=(0.02, 0.018, 0.016), rough=0.85):
+    m = bpy.data.materials.new(name); m.use_nodes = True; b = m.node_tree.nodes['Principled BSDF']
+    b.inputs['Base Color'].default_value = (*col, 1); b.inputs['Roughness'].default_value = rough; return m
+
+def put(o, mat, bev=None, seg=3, harden=True, angle=40):
+    """Assign material, link, bevel + weighted (hardened) normals."""
+    link(o, mat)
+    if o.type == 'MESH':
+        # smooth curved faces, keep flat (cut) faces flat: no shading gradients across n-gons
+        for ob in bpy.context.selected_objects: ob.select_set(False)
+        o.select_set(True); bpy.context.view_layer.objects.active = o
+        bpy.ops.object.shade_smooth_by_angle(angle=math.radians(angle - 5), keep_sharp_edges=True)
+    if bev:
+        md = o.modifiers.new('bev', 'BEVEL'); md.width = bev; md.segments = seg; md.limit_method = 'ANGLE'
+        md.angle_limit = math.radians(angle); md.harden_normals = harden
+        o.modifiers.new('wn', 'WEIGHTED_NORMAL').keep_sharp = True
+    return o
+
+def prism(name, pts, y0, y1, axis='Y'):
+    """Extrude a closed 2D outline [(u, v), ...] (XZ plane) between y0 and y1."""
+    bm = bmesh.new()
+    vs = [bm.verts.new((u, y0, v)) for u, v in pts]
+    f = bm.faces.new(vs)
+    ext = bmesh.ops.extrude_face_region(bm, geom=[f])
+    for v in [g for g in ext['geom'] if isinstance(g, bmesh.types.BMVert)]: v.co.y = y1
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    me = bpy.data.meshes.new(name); bm.to_mesh(me); bm.free()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o); return o
+
+def screw_head(name, loc, r, h, axis='Y', slot=True, kind='pan', mat=None, rot=0.0):
+    """Pan/cheese/dome screw head (or rivet when slot=False, kind='dome'), axis = direction it faces."""
+    if kind == 'dome':
+        prof = [(0.001, 0), (r, 0), (r * 0.97, h * 0.35), (r * 0.8, h * 0.75), (r * 0.45, h * 0.97), (0.001, h)]
+    else:
+        prof = [(0.001, 0), (r, 0), (r, h * 0.55), (r * 0.9, h * 0.9), (r * 0.7, h), (0.001, h)]
+    o = lathe(name, prof, 0, 0, seg=48); o.modifiers.clear()
+    if slot:
+        s = box('slot', -r * 1.2, r * 1.2, -r * 0.11, r * 0.11, h * 0.45, h * 1.5); boolean(o, s)
+        o.rotation_euler = (0, 0, rot); bpy.context.view_layer.objects.active = o
+        o.select_set(True); bpy.ops.object.transform_apply(rotation=True)
+    R = {'Z': Matrix.Identity(4), 'Y': Matrix.Rotation(-math.pi / 2, 4, 'X'), '-Y': Matrix.Rotation(math.pi / 2, 4, 'X'),
+         'X': Matrix.Rotation(math.pi / 2, 4, 'Y'), '-X': Matrix.Rotation(-math.pi / 2, 4, 'Y'), '-Z': Matrix.Rotation(math.pi, 4, 'X')}[axis]
+    o.data.transform(R); o.location = loc
+    smooth(o)
+    if mat: put(o, mat, 0.04, 2)
+    return o
+
+def thread(name, r_minor, r_major, pitch, x0, x1, axis='X', loc=(0, 0, 0)):
+    """Real helical V-thread (Screw modifier on a triangular profile) along X from x0 to x1."""
+    turns = max(1, int((x1 - x0) / pitch))
+    bm = bmesh.new(); hp = pitch / 2
+    prof = [(x0, r_minor), (x0 + hp * 0.9, r_major), (x0 + hp * 1.1, r_major), (x0 + pitch, r_minor)]
+    vs = [bm.verts.new((px, 0, pz)) for px, pz in prof]
+    for a, c in zip(vs, vs[1:]): bm.edges.new((a, c))
+    me = bpy.data.meshes.new(name); bm.to_mesh(me); bm.free()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o)
+    sc = o.modifiers.new('scr', 'SCREW'); sc.axis = 'X'; sc.screw_offset = pitch; sc.iterations = turns; sc.steps = 48; sc.render_steps = 48
+    sc.use_merge_vertices = True; sc.use_normal_calculate = True
+    bpy.context.view_layer.objects.active = o; bpy.ops.object.modifier_apply(modifier='scr')
+    o.location = loc; smooth(o); return o
+
+def world_hdri(strength=0.25, which='interior.exr', rot=0.0, sat=0.45):
+    w = scene.world = bpy.data.worlds.new('w'); w.use_nodes = True; nt = w.node_tree
+    env = nt.nodes.new('ShaderNodeTexEnvironment')
+    env.image = bpy.data.images.load(os.path.join(bpy.utils.resource_path('LOCAL'), 'datafiles', 'studiolights', 'world', which))
+    if rot:
+        tc = nt.nodes.new('ShaderNodeTexCoord'); mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Rotation'].default_value = (0, 0, rot)
+        nt.links.new(tc.outputs['Generated'], mp.inputs['Vector']); nt.links.new(mp.outputs['Vector'], env.inputs['Vector'])
+    bg = nt.nodes['Background']; bg.inputs['Strength'].default_value = strength
+    hs = nt.nodes.new('ShaderNodeHueSaturation'); hs.inputs['Saturation'].default_value = sat
+    nt.links.new(env.outputs['Color'], hs.inputs['Color']); nt.links.new(hs.outputs['Color'], bg.inputs['Color']); return w
+
+def area_light(name, loc, aim, size, energy, color=(1, 1, 1), size_y=None, spread=None):
+    bpy.ops.object.light_add(type='AREA', location=loc); L = bpy.context.object; L.name = name
+    L.data.size = size; L.data.energy = energy; L.data.color = color
+    if size_y: L.data.shape = 'RECTANGLE'; L.data.size_y = size_y
+    if spread: L.data.spread = math.radians(spread)
+    c = L.constraints.new('TRACK_TO'); c.target = aim; c.track_axis = 'TRACK_NEGATIVE_Z'; c.up_axis = 'UP_Y'; return L
+
+def look_camera(target, yaw_deg, pitch_deg, dist, lens=180, sensor=36, roll_deg=0.0):
+    cd = bpy.data.cameras.new('cam'); cam = bpy.data.objects.new('cam', cd); scene.collection.objects.link(cam); scene.camera = cam
+    cd.lens = lens; cd.sensor_fit = 'HORIZONTAL'; cd.sensor_width = sensor; cd.dof.use_dof = False; cd.clip_start = 1; cd.clip_end = 5000
+    t = Vector(target); yaw = math.radians(yaw_deg); pitch = math.radians(pitch_deg)
+    cam.location = t + Vector((math.sin(yaw) * dist * math.cos(pitch), -math.cos(yaw) * dist * math.cos(pitch), math.sin(pitch) * dist))
+    q = (t - cam.location).to_track_quat('-Z', 'Y')
+    if roll_deg: q = q @ Matrix.Rotation(math.radians(roll_deg), 4, 'Z').to_quaternion()
+    cam.rotation_euler = q.to_euler(); return cam
+
+def render_setup(out, res, samples, exposure=0.0, look='AgX - Medium High Contrast', bounces=8):
+    s = scene; s.render.engine = 'CYCLES'; s.cycles.device = 'CPU'; s.cycles.samples = samples
+    s.cycles.use_denoising = True; s.cycles.denoiser = 'OPENIMAGEDENOISE'
+    s.cycles.denoising_input_passes = 'RGB_ALBEDO_NORMAL'; s.cycles.denoising_prefilter = 'ACCURATE'
+    s.cycles.adaptive_threshold = 0.006; s.cycles.max_bounces = bounces; s.cycles.glossy_bounces = 6
+    s.cycles.caustics_reflective = False; s.cycles.caustics_refractive = False; s.cycles.blur_glossy = 0.5
+    s.render.film_transparent = False; s.view_settings.exposure = exposure
+    s.render.resolution_x, s.render.resolution_y = res; s.render.resolution_percentage = 100
+    s.view_settings.view_transform = 'AgX'; s.view_settings.look = look
+    s.render.filepath = os.path.abspath(out)
+
+def cli():
+    argv = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else []
+    def arg(n, d): return argv[argv.index(n) + 1] if n in argv else d
+    return arg
+
+import sys
+
+def lathe_x(name, prof, seg=96, y=0.0, z=0.0):
+    """Closed solid of revolution around the X axis; prof = [(x, r), ...] outline from front to back."""
+    bm = bmesh.new(); rings = []
+    for x, r in prof:
+        rings.append([bm.verts.new((x, y + r * math.sin(2 * math.pi * i / seg), z + r * math.cos(2 * math.pi * i / seg))) for i in range(seg)])
+    for a, b in zip(rings, rings[1:]):
+        for i in range(seg): bm.faces.new((a[i], a[(i + 1) % seg], b[(i + 1) % seg], b[i]))
+    bm.faces.new(rings[0]); bm.faces.new(list(reversed(rings[-1])))
+    bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=1e-5)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    me = bpy.data.meshes.new(name); bm.to_mesh(me); bm.free()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o); smooth(o); return o
+
+def sawtooth(x0, x1, r_minor, r_major, pitch):
+    """(x, r) profile points of a 60-degree thread form between x0 and x1 (for lathe_x)."""
+    pts = []; x = x0
+    while x + pitch <= x1 + 1e-6:
+        pts += [(x, r_minor), (x + pitch * 0.42, r_major), (x + pitch * 0.58, r_major)]; x += pitch
+    pts.append((x, r_minor)); return pts

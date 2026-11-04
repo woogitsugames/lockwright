@@ -34,8 +34,26 @@ inline constexpr q16 HUMAN_TENSION_BAND = q16_milli(80);   // delta_human
 inline constexpr q16 HUMAN_POSITION_PRECISION = q16_milli(30);
 inline constexpr q16 BOT_MAX_STRESS = q16_milli(800);      // S must stay < 0.8 S_max
 
+// Runs an oracle plan through LockSession::step(). Since v0.2 it also handles a
+// detector trip (families with AXIS_ROTATE in input_mask): release tension, turn
+// the bolt back (rotate = -1) until the reset event, then start over.
 SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const ToolSet& tools,
                          const Plan& plan, const HumanLimits& limits, std::int64_t budget_steps,
                          const SolveOptions& opt);
+
+// v0.2: verifier stage 3 ("feeling" / blind bot, LOCKS.md §1.9) for lift-based
+// families. It knows only what a player in "dark" mode knows: the number of
+// elements (they are drawn) and its own hand. Everything else comes from the
+// events and the two continuous signals, delayed by the reaction latency. It
+// searches the tension, probes elements for drag, lifts the bound one slowly and
+// reacts to set / false_set / overset / drop / stress / detector_trip. Report only.
+HumanLimits feeling_human_limits();
+SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const ToolSet& tools,
+                         const HumanLimits& limits, std::int64_t budget_steps, const SolveOptions& opt);
+
+// Shared by family bots: rate-limited approach of a hand axis.
+constexpr q16 bot_approach(q16 cur, q16 target, q16 rate) {
+  return cur < target ? (cur + rate < target ? cur + rate : target) : (cur - rate > target ? cur - rate : target);
+}
 
 }  // namespace lockcore

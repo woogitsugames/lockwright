@@ -24,6 +24,7 @@ add_library(lockcore
   src/families/builtin.cpp
   src/families/pin_tumbler.cpp
   src/families/wafer.cpp
+  src/families/wooden_pin.cpp
 )
 target_include_directories(lockcore PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
 

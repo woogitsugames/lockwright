@@ -112,6 +112,13 @@ struct SolveOptions {
   bool record_inputs = false;
 };
 
+// Verifier bots (LOCKS.md §1.9), v0.2 (additive).
+//  scripted: stage 2, the hard gate (same as solver());
+//  clumsy:   oracle plan with worse human limits and no overset knowledge (soft metric);
+//  feeling:  stage 3, sees only events and the continuous signals, never the state
+//            or the spec (soft metric for difficulty calibration).
+enum class BotKind : std::uint8_t { scripted, clumsy, feeling };
+
 class FamilyModule {
  public:
   virtual ~FamilyModule() = default;
@@ -141,6 +148,11 @@ class FamilyModule {
   virtual OracleReport oracle(const LockSpec& spec, const ToolSet& tools) const = 0;
   virtual SolveReport solver(const LockSpec& spec, const ToolSet& tools,
                              const SolveOptions& opt = {}) const;
+  // v0.2 (additive). Budget: scripted = half the tier time limit, clumsy and
+  // feeling = the full tier time limit. The default serves lift-based families
+  // (run_plan_bot / run_feel_bot); other families override it.
+  virtual SolveReport run_bot(BotKind kind, const LockSpec& spec, const ToolSet& tools,
+                              const SolveOptions& opt = {}) const;
 
   // `lockwright.lock/1` "spec" block.
   virtual json::Value params_to_json(const FamilyParams& p) const = 0;

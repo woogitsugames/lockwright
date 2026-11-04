@@ -1,8 +1,9 @@
 // replay_tool: record, play and inspect replays and lock files.
 //
-//   replay_tool record <family> <tier> <seed> <out.replay.json> [--clumsy]
+//   replay_tool record <family> <tier> <seed> <out.replay.json> [--clumsy|--feel]
 //     --clumsy: record the clumsy bot (no overset knowledge), which exercises
 //     overset / drop / counter-rotation paths
+//     --feel: record the feeling bot (events and continuous signals only)
 //   replay_tool play <file.replay.json>
 //   replay_tool lock <family> <tier> <seed>          (prints lockwright.lock/1)
 #include <cstdio>
@@ -20,7 +21,7 @@ namespace {
 
 int usage() {
   std::fprintf(stderr,
-               "usage:\n  replay_tool record <family> <tier> <seed> <out> [--clumsy]\n  replay_tool play <file>\n"
+               "usage:\n  replay_tool record <family> <tier> <seed> <out> [--clumsy|--feel]\n  replay_tool play <file>\n"
                "  replay_tool lock <family> <tier> <seed>\n");
   return 2;
 }
@@ -33,7 +34,8 @@ int main(int argc, char** argv) {
   const FamilyRegistry& reg = FamilyRegistry::builtin();
 
   const bool clumsy = argc == 7 && std::string(argv[6]) == "--clumsy";
-  if ((cmd == "record" && (argc == 6 || clumsy)) || (cmd == "lock" && argc == 5)) {
+  const bool feel = argc == 7 && std::string(argv[6]) == "--feel";
+  if ((cmd == "record" && (argc == 6 || clumsy || feel)) || (cmd == "lock" && argc == 5)) {
     const FamilyModule* fam = reg.find(argv[2]);
     if (fam == nullptr) {
       std::fprintf(stderr, "unknown family %s\n", argv[2]);
@@ -50,10 +52,9 @@ int main(int argc, char** argv) {
     opt.record_inputs = true;
     SolveReport r;
     if (clumsy) {
-      OracleReport o = fam->oracle(spec, fam->required_tools(spec));
-      for (auto& ps : o.plan.steps) ps.lift_cap = q16_milli(980);
-      r = run_plan_bot(*fam, spec, fam->required_tools(spec), o.plan, clumsy_human_limits(),
-                       static_cast<std::int64_t>(d.time_limit_s) * SIM_HZ, opt);
+      r = fam->run_bot(BotKind::clumsy, spec, fam->required_tools(spec), opt);
+    } else if (feel) {
+      r = fam->run_bot(BotKind::feeling, spec, fam->required_tools(spec), opt);
     } else {
       r = fam->solver(spec, fam->required_tools(spec), opt);
     }
