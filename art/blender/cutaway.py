@@ -119,6 +119,11 @@ target = Vector((13.5, 0, 9.0))
 cam.location = target + Vector((math.sin(yaw) * dist, -math.cos(yaw) * dist * math.cos(pitch), math.sin(pitch) * dist))
 cam.rotation_euler = (target - cam.location).to_track_quat('-Z', 'Y').to_euler()
 cam_d.dof.use_dof = True; cam_d.dof.focus_distance = dist; cam_d.dof.aperture_fstop = 16
+if SHOT == 'loupe':  # macro through the loupe: shear line at pin c
+    target = Vector((PINS_X[2], 0.0, SHEAR)); dist = 42; cam_d.lens = 180
+    cam.location = target + Vector((math.sin(yaw) * dist, -math.cos(yaw) * dist * math.cos(pitch), math.sin(pitch) * dist))
+    cam.rotation_euler = (target - cam.location).to_track_quat('-Z', 'Y').to_euler()
+    cam_d.dof.focus_distance = dist; cam_d.dof.aperture_fstop = 5.6; AIM.location = target
 
 # ---------------------------------------------------------------- render
 scene.render.engine = 'CYCLES'; scene.cycles.device = 'CPU'; scene.cycles.samples = SAMPLES

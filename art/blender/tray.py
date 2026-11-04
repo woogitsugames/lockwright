@@ -20,12 +20,12 @@ def leather(name, color, rough=0.62):
     l.new(noi.outputs['Fac'], cr.inputs['Fac']); l.new(cr.outputs['Color'], b.inputs['Base Color'])
     bump = n.new('ShaderNodeBump'); bump.inputs['Strength'].default_value = 0.25; l.new(vor.outputs['Distance'], bump.inputs['Height']); l.new(bump.outputs['Normal'], b.inputs['Normal'])
     return m
-LE = leather('leather', (0.34, 0.18, 0.085)); LE2 = leather('pocket', (0.24, 0.12, 0.055), 0.7); LE3 = leather('imprint', (0.10, 0.05, 0.025), 0.8)
+LE = leather('leather', (0.34, 0.18, 0.085)); LE2 = leather('pocket', (0.24, 0.12, 0.055), 0.7); LE3 = leather('imprint', (0.17, 0.085, 0.04), 0.8)
 
 # roll body; three pockets side by side, tools standing up, tips out (wear is visible on the tips)
 base = box('roll', -80, 80, -2, 0, -80, 60); base.data.materials.append(LE); bevel(base, 1.2, 4)
 for i in range(3):
-    x = -36 + i * 36
+    x = -50 + i * 32
     flap = box('flap%d' % i, x - 14, x + 14, -4.6, -2, -80, -4); flap.data.materials.append(LE2); bevel(flap, 2.0, 6)
     for k in range(16):  # stitching along both sides of the flap
         for sx in (x - 12.2, x + 11.6):
@@ -41,6 +41,19 @@ for i in range(3):
     if i == 0:
         for k in range(3):
             bb = box('burr', x + 5.2 + k * 0.6, x + 5.8 + k * 0.6, -3.4, -2.7, 29.2 + k * 0.4, 30.1 + k * 0.4); bb.data.materials.append(M['pick'])
+# watchmaker's loupe lying on the leather (tap = magnify): rubber body, brass ring, glass lens
+rub = bpy.data.materials.new('rubber'); rub.use_nodes = True; rb = rub.node_tree.nodes['Principled BSDF']
+rb.inputs['Base Color'].default_value = (0.02, 0.02, 0.02, 1); rb.inputs['Roughness'].default_value = 0.55
+glass = bpy.data.materials.new('glass'); glass.use_nodes = True; gb = glass.node_tree.nodes['Principled BSDF']
+gb.inputs['Transmission Weight'].default_value = 1.0; gb.inputs['Roughness'].default_value = 0.0; gb.inputs['IOR'].default_value = 1.52
+body = cyl('loupe', 13, 16, (44, -10, 6), axis='Y', verts=96)
+boolean(body, cyl('in', 10.5, 20, (44, -10, 6), axis='Y', verts=96)); body.data.materials.append(rub); bevel(body, 1.2, 4); smooth(body)
+for k in range(10):  # grip ribs
+    rib = cyl('rib', 13.4, 0.8, (44, -14 + k * 0.0, 6), axis='Y', verts=96)
+ring = cyl('ring', 11.2, 2.2, (44, -18.4, 6), axis='Y', verts=96); boolean(ring, cyl('in2', 9.6, 4, (44, -18.4, 6), axis='Y', verts=96)); ring.data.materials.append(M['brass']); bevel(ring, 0.3)
+lens = cyl('lens', 10.4, 2.6, (44, -16.6, 6), axis='Y', verts=96); lens.data.materials.append(glass); bevel(lens, 1.0, 6); smooth(lens)
+for o in [o for o in bpy.data.objects if o.name.startswith('rib')]: bpy.data.objects.remove(o, do_unlink=True)
+
 # light + camera (top-down, slight tilt)
 w = scene.world = bpy.data.worlds.new('w'); w.use_nodes = True
 env = w.node_tree.nodes.new('ShaderNodeTexEnvironment')
