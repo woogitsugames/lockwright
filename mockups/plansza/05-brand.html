@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Plansza · znak</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="plansza.css">
+</head><body>
+<script src="defs.js"></script>
+<main class="screen br">
+  <section class="b-word">
+    <span class="kicker">fig. 5 — znak słowny, Brygada 1918 Bold, obrobiona</span>
+    <div id="wm-big" class="wm"></div>
+    <ol class="b-notes">
+      <li><i>a</i> linia podziału tnie słowo; dół przesunięty o 4,5% em, jak rdzeń pod napięciem</li>
+      <li><i>b</i> kropka nad ı to pin, który siedzi nad linią — moment „set”</li>
+    </ol>
+    <div class="b-sizes">
+      <div id="wm-m" class="wm m"></div><div id="wm-s" class="wm s"></div>
+      <div class="inv"><div id="wm-inv" class="wm"></div></div>
+    </div>
+  </section>
+
+  <section class="b-icons">
+    <span class="kicker">fig. 6 — ikona: jedna komora w chwili „set”, wytrych od dołu</span>
+    <div class="icons">
+      <figure class="ic i120"><div id="ic1"></div><figcaption>120</figcaption></figure>
+      <div class="ic-col">
+        <figure class="ic i72"><div id="ic2"></div><figcaption>72</figcaption></figure>
+        <div class="ic-row">
+          <figure class="ic i48"><div id="ic3"></div><figcaption>48</figcaption></figure>
+          <figure class="ic i29"><div id="ic4"></div><figcaption>29</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="b-mini">
+    <span class="kicker">fig. 7 — menu</span>
+    <div class="mini"><iframe src="04-menu.html" title="Menu w miniaturze" tabindex="-1" scrolling="no"></iframe></div>
+  </section>
+
+  <section class="b-rules">
+    <span class="kicker">zasady</span>
+    <ul>
+      <li>tło zawsze papier, kontur zawsze tusz</li>
+      <li>cynober tylko na wytrychu, nigdy w literach</li>
+      <li>bez kłódki, dziurki, złota i blasku</li>
+      <li>poniżej 32 px ikona traci sprężynę, nie traci pinu</li>
+    </ul>
+  </section>
+
+  <section class="b-store">
+    <span class="kicker">fig. 8 — w sklepie, obok archetypów konkurencji</span>
+    <div id="store" data-name="Lockwright"></div>
+  </section>
+</main>
+<script>
+window.__ready = false;
+document.fonts.ready.then(() => {
+  const P = Plansza;
+  document.getElementById('wm-big').innerHTML = P.wordmark();
+  document.getElementById('wm-m').innerHTML = P.wordmark({ rules: false });
+  document.getElementById('wm-s').innerHTML = P.wordmark({ rules: false, shift: 0.06 });
+  document.getElementById('wm-inv').innerHTML = P.wordmark({ rules: false, color: P.PAPER });
+  ['ic1', 'ic2', 'ic3', 'ic4'].forEach(id => document.getElementById(id).innerHTML = P.icon(id, id === 'ic4'));
+  const st = document.getElementById('store');
+  st.dataset.ours = P.icon('ics');
+  const s = document.createElement('script'); s.src = '../shared/store-grid.js';
+  const fr = document.querySelector('iframe');
+  const done = () => { if (s.dataset.ok && fr.dataset.ok) window.__ready = true; };
+  s.onload = () => { s.dataset.ok = 1; done(); };
+  fr.addEventListener('load', () => { const w = fr.contentWindow; const t = setInterval(() => { if (w.__ready) { clearInterval(t); fr.dataset.ok = 1; done(); } }, 50); });
+  if (fr.contentDocument && fr.contentDocument.readyState === 'complete' && fr.contentWindow.__ready) fr.dataset.ok = 1;
+  document.body.appendChild(s);
+});
+</script>
+</body></html>

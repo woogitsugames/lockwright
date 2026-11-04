@@ -43,3 +43,21 @@ function toolSVG(id, mode = 'own', k = 1) {
 const coinG = (onDark = false) => { const a = onDark ? 'var(--light)' : 'var(--ink)', b = onDark ? 'var(--ink)' : 'var(--light)';
   return `<circle cx="13" cy="13" r="11.5" fill="${a}"/><rect x="9.5" y="9.5" width="7" height="7" fill="${b}"/><path d="M13 2.5v3M13 20.5v3M2.5 13h3M20.5 13h3" stroke="${b}" stroke-width="1.2"/>`; };
 const coinSVG = (s = 18, onDark = false) => `<svg viewBox="0 0 26 26" width="${s}" height="${s}">${coinG(onDark)}</svg>`;
+
+// Wordmark: stencil caps with one continuous horizontal shear slit; the lower half sits 1 notch
+// to the right (the plug has turned by one division = "set"). fg = letter colour, the slit stays background.
+let _wm = 0;
+function wordmark(size = 64, fg = 'var(--ink)', text = 'LOCKWRIGHT', track = .02, fit = 0) {
+  const id = 'wm' + (_wm++), gap = Math.max(2, size * .07), cut = size * .44, sh = Math.max(1.5, size * .035);
+  const t = (dx) => `<text x="${dx}" y="${size*.86}" font-family="Big Shoulders Stencil" font-weight="800" font-size="${size}" letter-spacing="${size*track}"${fit ? ` textLength="${fit}" lengthAdjust="spacingAndGlyphs"` : ''} fill="${fg}" style="font-variation-settings:'opsz' 72">${text}</text>`;
+  return `<defs><clipPath id="${id}t"><rect x="-10" y="-10" width="9999" height="${cut + 10}"/></clipPath><clipPath id="${id}b"><rect x="-10" y="${cut + gap}" width="9999" height="${size}"/></clipPath></defs>` +
+    `<g clip-path="url(#${id}t)">${t(0)}</g><g clip-path="url(#${id}b)">${t(sh)}</g>`;
+}
+// App icon (100x100): lightbox tile, cut cross-section, one pin set on the slit, minium tension wrench.
+const ICON = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#FFF4D6"/>
+<rect x="12" y="12" width="76" height="35" fill="#1D1A16"/><rect x="12" y="53" width="76" height="30" fill="#47371A"/>
+<rect x="38" y="20" width="24" height="27" fill="#FFF4D6"/><rect x="38" y="53" width="24" height="17" fill="#FFF4D6"/>
+<rect x="42" y="27" width="16" height="16" fill="#2B3236"/><rect x="40" y="42" width="20" height="5" fill="#1D1A16"/>
+<path d="M42 57h16v9q0 6-8 6t-8-6z" fill="#47371A"/>
+<rect x="12" y="74" width="62" height="6" fill="#FFF4D6"/>
+<path d="M38 77H8V95" fill="none" stroke="#FFF4D6" stroke-width="10"/><path d="M38 77H8V95" fill="none" stroke="#C9532A" stroke-width="6.5"/></svg>`;

@@ -59,13 +59,13 @@ svg{display:block}
 @media (orientation:landscape){
   .screen{--safe-t:max(env(safe-area-inset-top),8px);--safe-b:max(env(safe-area-inset-bottom),10px);
     --safe-l:max(env(safe-area-inset-left),28px);--safe-r:max(env(safe-area-inset-right),28px)}
-  .lock{grid-template-columns:200px minmax(0,1fr) 250px;grid-template-rows:46px minmax(0,1fr) 72px;column-gap:8px}
-  .lock .bar{grid-column:1/-1;height:46px;padding:0 4px}
+  .lock{grid-template-columns:200px minmax(0,1fr) 250px;grid-template-rows:52px minmax(0,1fr) 68px;column-gap:8px}
+  .lock .bar{grid-column:1/-1;height:52px;padding:0 4px}
   .lock .vign{display:none}
   .lock .sect{grid-column:2;grid-row:2;min-height:0;display:flex;justify-content:center}
   .lock .sect svg{height:100%;width:auto;max-width:100%}
   .lock .hud{grid-column:2;grid-row:3;display:flex;justify-content:center}
-  .lock .hud svg{height:72px;width:auto}
+  .lock .hud svg{height:68px;width:auto}
   .lock .thumbs{display:contents}
   .lock .zone.left{grid-column:1;grid-row:2/4;padding:0 0 4px}
   .lock .zone.right{grid-column:3;grid-row:2/4;padding:0 0 4px}

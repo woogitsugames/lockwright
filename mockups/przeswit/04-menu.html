@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Prześwit · menu</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="przeswit.css">
+<style>
+  body{background:var(--shade)}
+  .menu{display:block;padding:0}
+  .menu::after{display:none}
+  .scene{position:absolute;inset:0;width:100%;height:100%}
+  .scene.l{display:none}
+  .wm{position:absolute;left:0;right:0;top:calc(var(--safe-t) + 38px);display:flex;flex-direction:column;align-items:flex-start;padding:0 22px}
+  .wm svg{width:368px;height:84px;overflow:visible}
+  .wm .sub{font:700 12px/1 "Lato";letter-spacing:.32em;text-transform:uppercase;color:var(--light);margin-top:6px;padding-left:2px}
+  .wm .sub2{font:italic 400 13px/1.3 "Lato";color:var(--light);margin-top:8px;padding-left:2px;opacity:.92}
+  .nav{position:absolute;left:16px;right:16px;bottom:var(--safe-b);display:grid;gap:10px;grid-template-columns:1fr 1fr}
+  .tag{position:relative;border:0;background:var(--ink);color:var(--light);text-align:left;display:grid;align-content:center;min-height:56px;padding:8px 14px 8px 42px;
+    clip-path:polygon(0 8px,8px 0,100% 0,100% 100%,8px 100%,0 calc(100% - 8px))}
+  .tag::before{content:"";position:absolute;left:14px;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:var(--shade)} /* punched hole of a key tag */
+  .tag b{font:800 22px/1 "Big Shoulders Stencil";letter-spacing:.05em;text-transform:uppercase}
+  .tag span{font:400 13px/1.25 "Lato";margin-top:3px;opacity:.95}
+  .tag.big{grid-column:1/-1;min-height:72px;background:var(--light);color:var(--ink);box-shadow:inset 0 0 0 3px var(--ink)}
+  .tag.big::before{background:var(--ink)}
+  .tag.big b{font-size:28px}
+  .tag.big .arr{position:absolute;right:16px;top:50%;margin-top:-14px;width:28px;height:28px}
+  .tag.wide{grid-column:1/-1}
+  .foot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;font:400 12px "Lato";color:var(--ink);padding:2px 2px 0}
+  .set{width:48px;height:48px;border:0;background:transparent;display:grid;place-items:center}
+  @media (orientation:landscape){
+    .scene.p{display:none}.scene.l{display:block}
+    .wm{top:calc(var(--safe-t) + 18px);left:var(--safe-l);right:auto;padding:0}
+    .wm svg{width:330px;height:76px}
+    .nav{left:auto;right:var(--safe-r);width:392px;bottom:var(--safe-b);gap:8px;background:var(--light);padding:10px 10px 0;
+      clip-path:polygon(0 6px,6px 0,100% 0,100% 100%,0 100%)} /* a window cut in the wall card: the lightbox shows through */
+    .tag.big{box-shadow:inset 0 0 0 3px var(--ink)}
+    .tag{min-height:52px}.tag.big{min-height:60px}
+    .tag span{display:none}.tag.big span{display:block}
+  }
+</style>
+</head><body>
+<main class="screen menu">
+  <!-- PORTRAIT SCENE: stairwell wall cut from iron card, door ajar, lamp light spills onto the floor -->
+  <svg class="scene p" viewBox="0 0 412 915" preserveAspectRatio="xMidYMax slice" id="sp"></svg>
+  <svg class="scene l" viewBox="0 0 915 412" preserveAspectRatio="xMidYMid slice" id="sl"></svg>
+
+  <div class="wm"><svg id="wm" viewBox="0 0 368 84"></svg><div class="sub">Pogotowie Zamkowe</div><div class="sub2">Ktoś stoi pod drzwiami w kapciach.</div></div>
+
+  <nav class="nav">
+    <button class="tag big"><b>Dalej w serię</b><span>Zamek ósmy · zapas 2/3 · Tryb Ciągły</span>
+      <svg class="arr" viewBox="0 0 28 28"><path d="M4 11h12V4l10 10l-10 10v-7H4z" fill="var(--ink)"/></svg></button>
+    <button class="tag wide"><b>Zlecenia</b><span>Pani Halina czeka. Rosół też.</span></button>
+    <button class="tag"><b>Warsztat</b><span>Haczyk do naprawy</span></button>
+    <button class="tag"><b>Gablota</b><span>7 z 31 pod lampą</span></button>
+    <div class="foot"><span>To gra, nie kurs. Zamki są wymyślone.</span>
+      <button class="set" aria-label="Ustawienia"><svg viewBox="0 0 28 28" width="28" height="28"><rect x="2" y="5" width="24" height="3" fill="var(--ink)"/><rect x="2" y="13" width="24" height="3" fill="var(--ink)"/><rect x="2" y="21" width="24" height="3" fill="var(--ink)"/><rect x="16" y="2" width="5" height="9" fill="var(--ink)"/><rect x="6" y="10" width="5" height="9" fill="var(--ink)"/><rect x="13" y="18" width="5" height="9" fill="var(--ink)"/></svg></button></div>
+  </nav>
+</main>
+<script src="tools.js"></script>
+<script>
+document.getElementById('wm').innerHTML = wordmark(80, 'var(--light)', 'LOCKWRIGHT', .02, 360);
+const woodP = `<pattern id="wd" width="60" height="22" patternUnits="userSpaceOnUse"><rect width="60" height="22" fill="var(--wood)"/><path d="M0 6C14 3 30 10 44 6S56 5 60 6" fill="none" stroke="var(--light)" stroke-width=".9"/></pattern>`;
+const ironP = `<pattern id="ir" width="22" height="22" patternUnits="userSpaceOnUse"><rect width="22" height="22" fill="var(--ink)"/><circle cx="11" cy="11" r="1.2" fill="var(--soft)"/></pattern>`;
+function scene(W, H, door, floorY, sfx) {
+  const [dx, dw, dy] = door, dh = floorY - dy;
+  const leafEdge = dx + dw * .74;
+  return `<defs>${woodP.replace('id="wd"',`id="wd${sfx}"`)}${ironP.replace('id="ir"',`id="ir${sfx}"`)}</defs>
+  <rect width="${W}" height="${H}" fill="var(--shade)"/>
+  <rect width="${W}" height="${floorY}" fill="url(#ir${sfx})"/>
+  <!-- skirting board: a thin light slit where wall meets floor -->
+  <rect x="0" y="${floorY-3}" width="${W}" height="3" fill="var(--light)" opacity=".55"/>
+  <!-- door frame opening = lit apartment (lamp) -->
+  <rect x="${dx-10}" y="${dy-12}" width="${dw+20}" height="${dh+12}" fill="var(--wood)"/>
+  <rect x="${dx}" y="${dy}" width="${dw}" height="${dh}" fill="var(--light)"/>
+  <!-- inside: hallway silhouettes (coat hook, coat, a pot on a shelf) -->
+  <g fill="var(--shade)"><rect x="${dx+dw*.80}" y="${dy+dh*.18}" width="${dw*.16}" height="4"/><path d="M${dx+dw*.86} ${dy+dh*.19}c-8 10-10 40-8 70h18c2-30 0-60-10-70z"/></g>
+  <!-- door leaf swung inward: perspective trapezoid, wood card with grain slits -->
+  <path d="M${dx} ${dy}L${leafEdge} ${dy+10}V${floorY-8}L${dx} ${floorY}Z" fill="url(#wd${sfx})"/>
+  <path d="M${leafEdge} ${dy+10}V${floorY-8}" stroke="var(--ink)" stroke-width="3"/>
+  <rect x="${leafEdge-16}" y="${dy+dh*.5}" width="10" height="4" fill="var(--steel)"/><rect x="${leafEdge-12}" y="${dy+dh*.5-6}" width="4" height="22" fill="var(--steel)"/>
+  <rect x="${dx+dw*.22}" y="${dy+dh*.16}" width="${dw*.28}" height="${dh*.24}" fill="none" stroke="var(--light)" stroke-width="1.4" opacity=".55"/>
+  <rect x="${dx+dw*.22}" y="${dy+dh*.52}" width="${dw*.28}" height="${dh*.3}" fill="none" stroke="var(--light)" stroke-width="1.4" opacity=".55"/>
+  <!-- the locksmith's own flyer taped to the wall, tear-off tabs (one already torn = a light gap) -->
+  <g transform="translate(${dx-132} ${dy+20}) rotate(-2)">
+    <rect width="112" height="146" fill="var(--light)"/>
+    <rect x="38" y="-6" width="36" height="12" fill="var(--shade)" transform="rotate(4 48 0)"/>
+    <text x="10" y="30" font-family="Big Shoulders Stencil" font-weight="800" font-size="17" fill="var(--ink)">ZATRZASNĘŁO</text>
+    <text x="10" y="47" font-family="Big Shoulders Stencil" font-weight="800" font-size="17" fill="var(--ink)">SIĘ?</text>
+    <text x="10" y="66" font-family="Lato" font-size="10.5" fill="var(--ink)">Pogotowie zamkowe,</text><text x="10" y="79" font-family="Lato" font-size="10.5" fill="var(--ink)">całą dobę.</text>
+    <text x="10" y="92" font-family="Lato" font-weight="700" font-size="10.5" fill="var(--ink)">Dowód z adresem.</text>
+    ${Array.from({length:6},(_,i)=> i===2 ? '' : `<rect x="${4+i*18}" y="102" width="15" height="42" fill="var(--light)"/><path d="M${4+i*18} 102h15M${4+i*18} 102v42" stroke="var(--ink)" stroke-width="1" stroke-dasharray="2 2"/><text transform="translate(${14.5+i*18} 141) rotate(-90)" font-family="Lato" font-weight="700" font-size="7.5" fill="var(--ink)">Lockwright</text>`).join('')}
+  </g>
+  <!-- door number plate -->
+  <rect x="${dx+dw+22}" y="${dy+8}" width="30" height="22" fill="var(--light)"/><text x="${dx+dw+37}" y="${dy+25}" text-anchor="middle" font-family="Big Shoulders Stencil" font-weight="800" font-size="17" fill="var(--ink)">12</text>
+  <!-- light spill on the floor: flat lamp light through the gap, no glow -->
+  <path d="M${leafEdge} ${floorY}H${dx+dw}L${dx+dw+ (W-dx-dw)*.95} ${H}H${leafEdge-(leafEdge)*.75}Z" fill="var(--light)"/>
+  <!-- doormat + slippers + locksmith bag (cut card) -->
+  <rect x="${dx-6}" y="${floorY+6}" width="${dw+12}" height="12" fill="var(--ink)"/>
+  <g fill="var(--light)">${Array.from({length:8},(_,i)=>`<rect x="${dx+4+i*(dw/8)}" y="${floorY+9}" width="${dw/16}" height="6"/>`).join('')}</g>
+  <g fill="var(--ink)"><path d="M${dx-44} ${floorY+30}c0-8 22-8 24 0z"/><path d="M${dx-16} ${floorY+34}c0-8 22-8 24 0z"/></g>
+  <g transform="translate(${dx+dw+34} ${floorY-50})"><path d="M0 18h76v34H0z" fill="var(--wood)"/><path d="M18 18v-10h40v10" fill="none" stroke="var(--ink)" stroke-width="6"/><rect x="0" y="30" width="76" height="3" fill="var(--light)"/><rect x="34" y="27" width="8" height="9" fill="var(--steel)"/></g>`;
+}
+document.getElementById('sp').innerHTML = scene(412, 915, [150, 150, 300], 562, 'p');
+document.getElementById('sl').innerHTML = scene(915, 412, [372, 118, 96], 330, 'l');
+</script>
+</body></html>

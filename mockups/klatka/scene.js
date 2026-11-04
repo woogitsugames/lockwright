@@ -169,9 +169,9 @@ export function enamelTexture(text, sub = '') {
 export function buildStairwell(S, M, { doorNo = '14', ajar = false } = {}) {
   const wallM = new THREE.MeshStandardMaterial({ map: lamperiaTexture(), roughness: 0.85 });
   const wall = new THREE.Mesh(new THREE.PlaneGeometry(3200, 900), wallM); wall.position.set(0, 300, -2); wall.receiveShadow = true; S.add(wall);
-  const tex = tileTexture(); tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(11, 3);
-  const floor = new THREE.Mesh(new THREE.PlaneGeometry(3200, 600), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.7 }));
-  floor.rotation.x = -Math.PI / 2; floor.position.set(0, -150, 290); floor.receiveShadow = true; S.add(floor);
+  const tex = tileTexture(); tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(11, 8);
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(3200, 2400), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.7 }));
+  floor.rotation.x = -Math.PI / 2; floor.position.set(0, -150, 1190); floor.receiveShadow = true; S.add(floor);
   // door frame + leaf with two raised panels
   const doorM = new THREE.MeshStandardMaterial({ map: woodTexture(512, 1024, 4, [104, 62, 36]), roughness: 0.6 });
   const g = new THREE.Group(); S.add(g);
@@ -184,7 +184,7 @@ export function buildStairwell(S, M, { doorNo = '14', ajar = false } = {}) {
   const esc = new THREE.Mesh(new RoundedBoxGeometry(22, 80, 4, 2, 2), M.iron); esc.position.set(80, 20, 8); esc.castShadow = true; leaf.add(esc);
   const cyl = new THREE.Mesh(new THREE.CylinderGeometry(6, 6, 4, 32).rotateX(Math.PI / 2), M.brass); cyl.position.set(80, 0, 11); leaf.add(cyl);
   const handle = new THREE.Mesh(new THREE.CylinderGeometry(3, 3, 34, 16).rotateZ(Math.PI / 2), M.iron); handle.position.set(66, 40, 18); handle.castShadow = true; leaf.add(handle);
-  if (ajar) leafPivot.rotation.y = -0.5;
+  if (ajar) leafPivot.rotation.y = -0.9;
   // doormat
   const mat = new THREE.Mesh(new RoundedBoxGeometry(170, 3, 80, 2, 1), new THREE.MeshStandardMaterial({ color: 0x5a4632, roughness: 1 })); mat.position.set(0, -148, 50); mat.receiveShadow = true; S.add(mat);
   // stair light timer switch (minutnik) on the wall

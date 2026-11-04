@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Klatka · warsztat</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="klatka.css">
+<script>window.__ready = false;</script>
+<script type="importmap">{"imports":{"three":"../node_modules/three/build/three.module.js","three/":"../node_modules/three/"}}</script>
+</head><body>
+<main class="screen shop">
+  <header class="bar">
+    <button class="tap" aria-label="Wróć"><svg viewBox="0 0 24 24" class="back"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="plate-enamel"><span class="no">W</span><span class="who">Furgonetka<small>tylne drzwi · narzędzia</small></span></div>
+    <div class="coins"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>142</div>
+  </header>
+  <div class="stage board"><canvas id="c"></canvas><div id="tags" class="tags"></div></div>
+  <section class="detail">
+    <div class="d-head"><h2>Falownik</h2><span class="price">350</span></div>
+    <p class="d-say">Trzy garby na końcu. Rusza kilka płytek naraz — szybko, ale na szpulkach zawsze da ci fałszywe kliknięcie.</p>
+    <div class="d-row">
+      <div class="opens"><span>otwiera</span>
+        <svg viewBox="0 0 40 28" aria-label="płytkowy"><rect x="2" y="4" width="36" height="20" rx="2"/><path d="M10 8v12M18 8v12M26 8v12"/></svg>
+        <svg viewBox="0 0 40 28" aria-label="bębenkowy do t3"><rect x="2" y="4" width="36" height="20" rx="2"/><circle cx="12" cy="14" r="4"/><circle cx="28" cy="14" r="4"/></svg>
+      </div>
+      <button class="enamel buy"><span>Kupuję<small>zostanie 0 · reszta na lizaka</small></span></button>
+    </div>
+  </section>
+</main>
+<script type="module">
+import { THREE, Y, materials, flatPath, makeRenderer, orthoCamera, projector, woodTexture } from './scene.js';
+import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+const st = document.querySelector('.stage'); const W = st.clientWidth, H = st.clientHeight;
+const R = makeRenderer(document.getElementById('c'), W, H); const S = new THREE.Scene(); const M = materials();
+S.environment = new THREE.PMREMGenerator(R).fromScene(new RoomEnvironment(), 0.04).texture; S.environmentIntensity = 0.5;
+S.add(new THREE.HemisphereLight(0xdfe6ee, 0x2a2018, 0.45));
+const key = new THREE.DirectionalLight(0xffe2bf, 2.2); key.position.set(-160, 260, 420); key.castShadow = true; key.shadow.mapSize.set(2048, 2048);
+Object.assign(key.shadow.camera, { left: -400, right: 600, top: 300, bottom: -800 }); key.target.position.set(206, -300, 0); S.add(key, key.target);
+
+// pegboard: painted steel with punched holes + painted outlines of locked tools
+const pb = document.createElement('canvas'); pb.width = 824; pb.height = 1200; const g = pb.getContext('2d');
+g.fillStyle = '#3d443e'; g.fillRect(0, 0, pb.width, pb.height);
+for (let y = 20; y < pb.height; y += 40) for (let x = 20; x < pb.width; x += 40) { g.fillStyle = '#151714'; g.beginPath(); g.arc(x, y, 6, 0, 7); g.fill(); }
+for (let i = 0; i < 300; i++) { g.fillStyle = `rgba(200,200,180,${Math.random() * 0.05})`; g.fillRect(Math.random() * 824, Math.random() * 1200, 4 + Math.random() * 40, 2); }
+const yTop = 0, yBot = 412 * H / W;
+const sx = 824 / 412, sy = 1200 / (yBot - yTop);
+const tex = new THREE.CanvasTexture(pb); tex.colorSpace = THREE.SRGBColorSpace;
+const board = new THREE.Mesh(new THREE.PlaneGeometry(412, yBot - yTop), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.75, metalness: 0.2 }));
+board.position.set(206, Y((yTop + yBot) / 2), -4); board.receiveShadow = true; S.add(board);
+
+const add = (geo, m) => { const o = new THREE.Mesh(geo, m); o.castShadow = true; o.receiveShadow = true; S.add(o); return o; };
+const handle = (x0, y, len = 46, m = M.handle) => { const h = new RoundedBoxGeometry(len, 14, 9, 2, 3); h.translate(x0 + len / 2, Y(y), 4); add(h, m); };
+const peg = (x, y) => { const p = new THREE.CylinderGeometry(2.2, 2.2, 14, 12).rotateX(Math.PI / 2); p.translate(x, Y(y), 3); add(p, M.steel); };
+const bone = new THREE.MeshStandardMaterial({ color: 0xd8cdb4, roughness: 0.6 });
+const blk = new THREE.MeshStandardMaterial({ color: 0x24211d, roughness: 0.55 });
+
+// one tool per row, x 34..300; tag hangs at the right end
+const rows = [];
+const fp = (...a) => flatPath(...a).translate(0, 0, 16); // lift strips in front of the board
+const row = (i) => 46 + i * Math.min(78, (yBot - 70) / 8);
+const T = [
+  ['Napinacz kątowy', 'masz', '', y => { add(fp([[60, y], [270, y], [282, y + 8], [285, y + 26]], 9, 3), M.pick); handle(34, y, 40, blk); }],
+  ['Haczyk', 'masz · 2 zadziory', '', y => { add(fp([[96, y], [262, y], [276, y - 6], [286, y - 22]], 6, 2.4), M.pick); handle(34, y, 64); for (let k = 0; k < 2; k++) { const b = new THREE.BoxGeometry(2, 5, 2); b.translate(282 + k * 4, Y(y - 18 - k * 3), 3); add(b, blk); } }],
+  ['Falownik', '350', 'sel', y => { const pts = [[96, y], [220, y]]; for (let k = 0; k < 6; k++) pts.push([230 + k * 10, y + (k % 2 ? 0 : -9)]); pts.push([290, y]); add(fp(pts, 6, 2.4), M.pick); handle(34, y, 64, blk); }],
+  ['Sonda przelotowa', 'masz', '', y => { add(fp([[80, y], [272, y]], 3.4, 3.4), M.pick); const f = new THREE.BoxGeometry(16, 16, 2.4); f.translate(280, Y(y - 6), 2); add(f, M.pick); handle(34, y, 48, bone); }],
+  ['Korba dźwigniowa', '500', '', y => { add(fp([[34, y - 10], [210, y - 10], [226, y + 6], [290, y + 6]], 8, 3.4), M.pick); add(fp([[70, y + 14], [250, y + 14], [262, y + 2]], 4, 2.4), M.pick); handle(34, y + 14, 36, blk); }],
+  ['Podważka kołkowa', 'masz', '', y => { const st = new RoundedBoxGeometry(240, 16, 12, 2, 5); st.translate(160, Y(y), 4); add(st, new THREE.MeshStandardMaterial({ map: woodTexture(256, 64, 5, [150, 110, 70]), roughness: 0.8 })); const pg = new THREE.BoxGeometry(14, 22, 12); pg.translate(284, Y(y - 8), 4); add(pg, new THREE.MeshStandardMaterial({ color: 0x9a6f45, roughness: 0.8 })); }],
+  ['Ciągadło kabłąka', '150 · masz', '', y => { add(fp([[62, y + 10], [230, y + 10], [264, y + 4], [284, y - 10], [280, y - 26], [262, y - 30], [244, y - 22]], 6.5, 3.4), M.pick); const ring = new THREE.TorusGeometry(14, 3.2, 8, 28); ring.translate(46, Y(y + 10), 3); add(ring, M.steel); }],
+  ['Koronka', 'po t4', 'lock', null],
+];
+T.forEach(([n, p, c, f], i) => { const y = row(i); if (f) f(y); rows.push([298, y, n, p, c]); });
+// painted outline for the locked crown pick
+{ const y = row(7); g.strokeStyle = '#efe9da'; g.lineWidth = 3; g.setLineDash([10, 7]); g.strokeRect(40 * sx, (y - 9) * sy, 220 * sx, 18 * sy); g.beginPath(); g.arc(272 * sx, y * sy, 16 * sx, 0, 7); g.stroke(); tex.needsUpdate = true; }
+R.render(S, new THREE.OrthographicCamera());
+const cam = orthoCamera(0, 412, yTop, yBot, -0.05, 0.03); R.render(S, cam);
+
+// paper price tags on strings (HTML, projected)
+const P = projector(cam, W, H);
+const tags = rows;
+document.getElementById('tags').innerHTML = tags.map(([x, y, n, p, c]) => { const [px, py] = P(x, y); return `<div class="tag ${c || ''}" style="left:${px}px;top:${py}px"><b>${n}</b><span>${p}</span></div>`; }).join('');
+window.__ready = true;
+</script>
+</body></html>

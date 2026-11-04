@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Plansza · warsztat</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="plansza.css">
+</head><body>
+<script src="defs.js"></script>
+<main class="screen ws">
+  <header class="bar">
+    <button class="tap" aria-label="Wróć"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="bar-title"><span class="kicker">Warsztat · furgonetka</span><span class="h">Tablica cieni</span></div>
+    <div class="coins"><svg class="coin"><use href="#coin"/></svg><span>640</span></div>
+  </header>
+
+  <p class="caption"><i>fig. 3 — lewa ściana furgonetki.</i> Pusty cień znaczy jedno: narzędzie jest w naprawie albo jeszcze na nie nie zarobiłeś.</p>
+
+  <section class="board" aria-label="Tablica narzędzi"><svg id="board" class="board-svg" preserveAspectRatio="xMidYMid meet"></svg></section>
+
+  <section class="detail" aria-label="Wybrane narzędzie">
+    <div class="d-head">
+      <div><span class="kicker">fig. g · do kupienia</span><h2 class="h">Korba dźwigniowa</h2></div>
+      <div class="price"><svg class="coin"><use href="#coin"/></svg><span>500</span></div>
+    </div>
+    <svg class="d-tool" viewBox="0 0 400 92" aria-hidden="true">
+      <use href="#t-lever" x="8" y="10" width="360" height="80"/>
+      <g class="leader"><path d="M248 30V8H300"/><text x="304" y="12">ramię</text><path d="M330 74V88H262"/><text x="214" y="91">flaga</text></g>
+    </svg>
+    <p class="voice">„Ramię trzyma rygiel, flaga podnosi zapadki. Dwie roboty naraz, jedną ręką. Na szafy po babci i drzwi do piwnic.”</p>
+    <dl class="facts">
+      <dt>otwiera</dt><dd><span class="fam"><svg><use href="#f-lever"/></svg>dźwigniowy</span><span class="fam"><svg><use href="#f-levdet"/></svg>z detektorem</span></dd>
+      <dt>radełko</dt><dd>jodełka — rękojeść poznasz po palcach</dd>
+      <dt>zużycie</dt><dd><svg class="wear" viewBox="0 0 150 22" id="wear"></svg><span class="wtxt">nowa, 0 z 4 zadziorów</span></dd>
+    </dl>
+    <p class="note">Po zakupie zostaje 140 monet. Zamki dźwigniowe wchodzą do serii od następnego zamku, z krótką lekcją.</p>
+  </section>
+
+  <nav class="actions">
+    <button class="btn wrap">Napraw falownik<span class="num"><svg class="coin"><use href="#coin"/></svg>123</span></button>
+    <button class="btn primary">Kup korbę<span class="num"><svg class="coin inv"><use href="#coin"/></svg>500</span></button>
+  </nav>
+</main>
+<script>
+const { burrs } = Plansza;
+// state: own (on board, wear 0-4) | repair (empty shadow) | sale (empty shadow + price) | locked (outline only + wire seal)
+const items = [
+  ['a', 'angle', 'Napinacz kątowy', 'own', null, ['pin', 'wafer', 'wafer2']],
+  ['b', 'hook', 'Haczyk', 'own', 2, ['pin', 'wafer', 'sidebar']],
+  ['c', 'peg', 'Podważka kołkowa', 'own', 1, ['wooden']],
+  ['d', 'ward', 'Sonda przelotowa', 'own', 0, ['warded']],
+  ['e', 'shackle', 'Ciągadło kabłąka', 'own', null, ['ring']],
+  ['f', 'ripple', 'Falownik', 'repair', 4, ['wafer', 'pin']],
+  ['g', 'lever', 'Korba dźwigniowa', 'sale', 500, ['lever', 'levdet'], true],
+  ['h', 'wedge', 'Klin dwustronny', 'sale', 700, ['wafer2']],
+  ['i', 'bar', 'Napinacz listwowy', 'locked', 't4', ['pin', 'dimple', 'sidebar']],
+  ['j', 'crown', 'Koronka', 'locked', 't4', ['tubular']],
+];
+const land = matchMedia('(orientation:landscape)').matches;
+const cols = land ? 3 : 2, SW = 190, SH = land ? 78 : 76;
+const rows = Math.ceil(items.length / cols);
+const W = cols * SW + 10, Hh = rows * SH + 8;
+const svg = document.getElementById('board');
+svg.setAttribute('viewBox', `0 0 ${W} ${Hh}`);
+let out = `<rect x="1" y="1" width="${W - 2}" height="${Hh - 2}" fill="url(#h-board)" stroke="#1C1A17" stroke-width="2"/>`;
+items.forEach(([L, key, name, st, v, fams, sel], n) => {
+  const x = 6 + (n % cols) * SW, y = 4 + Math.floor(n / cols) * SH, tx = x + 6, ty = y + 2;
+  const tool = `x="${tx}" y="${ty}" width="176" height="39.1"`;
+  let g = '';
+  if (st === 'locked') g += `<use href="#t-${key}" ${tool} filter="url(#shadow-outline)"/>`;
+  else g += `<use href="#t-${key}" ${tool} filter="url(#shadow-paint)"/>`;
+  if (st === 'own') g += `<use href="#t-${key}" ${tool}/>` + (v ? `<g transform="translate(${tx} ${ty}) scale(${176 / 180})">${burrs(key, v)}</g>` : '');
+  // wire seal on locked slots: a lead seal on a looped wire, not a padlock
+  if (st === 'locked') g += `<path d="M${x + 120} ${y + 4}C${x + 128} ${y + 22} ${x + 146} ${y + 22} ${x + 154} ${y + 4}" fill="none" stroke="#57514A" stroke-width="1.2"/><circle cx="${x + 137}" cy="${y + 18}" r="5.5" fill="#57514A"/><path d="M${x + 134} ${y + 18}h6" stroke="#EFEBE1" stroke-width="1.2"/>`;
+  const status = st === 'own' ? (v === null ? 'tylko patyna' : `zadziory ${v}/4`)
+    : st === 'repair' ? 'w naprawie' : st === 'locked' ? `od ${v}` : '';
+  g += `<rect x="${x + 2}" y="${y + 44}" width="${SW - 8}" height="${SH - 47}" fill="#DED7C6"/>`;
+  g += `<text x="${x + 6}" y="${y + 57}" class="slot-l"><tspan class="slot-fig">${L}</tspan> ${name}</text>`;
+  if (st === 'sale') g += `<use href="#coin" x="${x + 136}" y="${y + 60}" width="14" height="14"/><text x="${x + 176}" y="${y + 72}" class="slot-p" text-anchor="end">${v}</text>`;
+  else g += `<text x="${x + 182}" y="${y + 72}" class="slot-s" text-anchor="end">${status}</text>`;
+  fams.forEach((f, i) => g += `<use href="#f-${f}" x="${x + 6 + i * 19}" y="${y + 61}" width="13" height="13"/>`);
+  if (sel) { // the hand: vermilion corner brackets = "your finger is here"
+    const a = x + 1, b = y + 1, c = x + SW - 3, d = y + SH - 3, k = 12;
+    g += `<path d="M${a} ${b + k}V${b}H${a + k}M${c - k} ${b}H${c}V${b + k}M${c} ${d - k}V${d}H${c - k}M${a + k} ${d}H${a}V${d - k}" fill="none" stroke="#B3311D" stroke-width="3.5"/>`;
+  }
+  out += `<g class="slot ${st}">${g}</g>`;
+});
+svg.innerHTML = out;
+// wear scale 0..4 in the detail panel (same burr glyph as on the board)
+let w = '';
+for (let i = 0; i <= 4; i++) {
+  const x = i * 30;
+  w += `<path d="M${x + 2} 16H${x + 26}" stroke="#1C1A17" stroke-width="3" />`;
+  for (let j = 0; j < i; j++) w += `<path d="M${x + 22 - j * 5} 14l1.8 -4.5l1.8 4.5" fill="none" stroke="#1C1A17" stroke-width="1.3"/>`;
+  if (i === 0) w += `<rect x="${x}" y="2" width="28" height="19" fill="none" stroke="#1C1A17" stroke-width="1.6" stroke-dasharray="3 2"/>`;
+}
+document.getElementById('wear').innerHTML = w;
+</script>
+</body></html>

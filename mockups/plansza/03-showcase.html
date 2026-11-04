@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Plansza · gablota</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="plansza.css">
+</head><body>
+<script src="defs.js"></script>
+<main class="screen sc">
+  <header class="bar">
+    <button class="tap" aria-label="Wróć"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="bar-title"><span class="kicker">Gablota · u kustosza</span><span class="h">Zamki za szkłem</span></div>
+    <div class="count"><b>8</b><span>z 20</span></div>
+  </header>
+  <p class="caption"><i>fig. 4 — gablota w warsztacie.</i> Każdy otwarty zamek dostaje numer i kartę. Puste pole czeka na następny.</p>
+
+  <section class="case" aria-label="Gablota">
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <article class="card" aria-label="Karta katalogowa">
+    <div class="c-head">
+      <span class="c-nr">Nr 10</span>
+      <div><h2 class="h">51 godzin w 16 dni</h2><span class="kicker">kłódka Bramaha · Londyn, lipiec–sierpień 1851</span></div>
+    </div>
+    <p class="c-body">Hobbs przyjął wyzwanie Bramaha. Kłódkę zamknięto w drewnianym bloku i opieczętowano, a klucz również zapieczętowano. Hobbs miał 30 dni. Zaczął 24 lipca 1851 r., po sporze o warunki przerwał pracę, wrócił 16 sierpnia, a 23 sierpnia pokazał arbitrom otwartą kłódkę. Według ich raportu spędził przy niej 51 godzin w ciągu 16 dni. Gdy potem kłódkę otwarto oryginalnym kluczem, działała bez zarzutu. Firma Bramaha protestowała, ale zapłaciła 200 gwinei.</p>
+    <p class="c-src"><b>Źródło:</b> „Report of the Arbitrators” (G. Rennie, E. Cowper, J. R. Black), 2 IX 1851, przedruk w: C. Tomlinson (red.), <i>Rudimentary Treatise on the Construction of Locks</i>, Londyn 1853. Pewność: wysoka, dokument z epoki.</p>
+  </article>
+
+  <nav class="actions">
+    <button class="btn wrap">Wróć do gabloty</button>
+    <button class="btn primary">Zagraj ten zamek<span class="num">T2</span></button>
+  </nav>
+</main>
+<script>
+const tiles = [
+  ['01', 'khorsabad', 'Dur-Szarrukin'],
+  ['03', 'ringkey', 'Klucz na palcu'],
+  ['05', 'amen', 'Kłódka AMEN'],
+  ['06', 'barron', 'Barron, 1778'],
+  ['07', 'chubb', 'Chubb, 1818'],
+  ['09', 'bramah', 'Bramah, 1790'],
+  ['10', 'sealed', 'Hobbs, 1851', true],
+  ['11', 'stansbury', 'Stansbury, 1805'],
+  ['12', null, 'jeszcze zamknięty'],
+];
+document.getElementById('grid').innerHTML = tiles.map(([nr, m, name, sel]) => `
+  <button class="tile${m ? '' : ' empty'}${sel ? ' sel' : ''}" aria-label="Nr ${nr}, ${name}">
+    <span class="t-nr">Nr ${nr}</span>
+    <svg viewBox="0 0 100 72">${m ? `<use href="#m-${m}" width="100" height="72"/>` : `<rect x="20" y="10" width="60" height="52" fill="none" stroke="#57514A" stroke-width="1.4" stroke-dasharray="4 3"/>`}</svg>
+    <span class="t-name">${name}</span>${sel ? '<span class="sel-br"></span>' : ''}
+  </button>`).join('');
+</script>
+</body></html>

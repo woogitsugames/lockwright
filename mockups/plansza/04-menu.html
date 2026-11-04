@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Plansza · menu</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="plansza.css">
+</head><body>
+<script src="defs.js"></script>
+<main class="screen mn">
+  <header class="title">
+    <div id="wm" class="wm"></div>
+    <p class="sub"><span>Pogotowie Zamkowe</span></p>
+  </header>
+
+  <section class="scene" aria-label="Kamienica przy Ślusarskiej 7">
+    <svg viewBox="0 -44 412 404" class="scene-svg">
+      <text x="14" y="-28" class="lbl2">fig. 1 — Ślusarska 7, wieczór. Pani Halina dzwoniła dwa razy.</text>
+      <!-- neighbour house: background plane, thinner soft line (depth without shading) -->
+      <g fill="none" stroke="var(--ink-soft)" stroke-width="1">
+        <path d="M0 40H120V306M0 40V306"/><path d="M0 34H126"/>
+        <path d="M14 56h28v40h-28zM66 56h28v40h-28zM14 118h28v40h-28zM66 118h28v40h-28zM14 180h28v34h-28zM66 180h28v34h-28z"/>
+        <path d="M28 56v40M80 56v40M28 118v40M80 118v40"/>
+        <path d="M100 -6v40M92 -6h16"/>
+      </g>
+      <!-- roof -->
+      <path d="M176 58L196 30H392L408 58Z" fill="url(#h-steel)" stroke="var(--ink)" stroke-width="1.6"/>
+      <rect x="352" y="18" width="16" height="16" fill="url(#h-iron)" stroke="var(--ink)" stroke-width="1.4"/>
+      <!-- facade -->
+      <rect x="182" y="58" width="222" height="248" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+      <path d="M178 58H408M182 128H404M182 196H404M182 236H404" stroke="var(--ink)" stroke-width="1"/>
+      <!-- section cut on the left: wall and floor slabs cut through (iron hatch = cut masonry) -->
+      <path d="M168 58H182V306H168Z" fill="url(#h-iron)" stroke="var(--ink)" stroke-width="1.6"/>
+      <!-- upper windows: 3 per floor -->
+      <g fill="url(#h-glass)" stroke="var(--ink)" stroke-width="1.6">
+        <rect x="202" y="72" width="40" height="46"/><rect x="274" y="72" width="40" height="46"/><rect x="346" y="72" width="40" height="46"/>
+        <rect x="202" y="140" width="40" height="46"/><rect x="274" y="140" width="40" height="46"/><rect x="346" y="140" width="40" height="46"/>
+      </g>
+      <path d="M222 72v46M294 72v46M366 72v46M222 140v46M294 140v46M366 140v46" stroke="var(--ink)" stroke-width="1"/>
+      <!-- the client: Pani Halina at the open window, floor iii; soup steam from inside -->
+      <rect x="202" y="72" width="40" height="46" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+      <path d="M210 118v-14c0-6 5-9 12-9s12 3 12 9v14Z" fill="var(--ink)"/>
+      <circle cx="222" cy="88" r="6.5" fill="var(--ink)"/>
+      <circle cx="222" cy="79" r="3.5" fill="var(--ink)"/>
+      <path d="M238 76c-3 4 3 6 0 10M233 78c-3 4 3 6 0 10" fill="none" stroke="var(--ink)" stroke-width="1"/>
+      <!-- fascia -->
+      <rect x="182" y="238" width="222" height="16" fill="var(--paper-deep)" stroke="var(--ink)" stroke-width="1.2"/>
+      <text x="293" y="250" class="fascia" text-anchor="middle">ŚLUSARZ · WARSZTAT · DYŻUR</text>
+      <!-- shop window = showcase -->
+      <rect x="192" y="262" width="96" height="44" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+      <use href="#m-bramah" x="196" y="268" width="28" height="22"/><use href="#m-amen" x="226" y="268" width="28" height="22"/><use href="#m-stansbury" x="256" y="268" width="28" height="22"/>
+      <path d="M194 294H286" stroke="var(--ink)" stroke-width="1.2"/>
+      <path d="M200 300h10M220 300h10M250 300h10" stroke="var(--ochre)" stroke-width="2"/>
+      <!-- workshop door, shadow board visible through it -->
+      <rect x="300" y="258" width="40" height="48" fill="url(#h-board)" stroke="var(--ink)" stroke-width="2"/>
+      <path d="M306 268h26M306 280h22M306 292h28" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M340 258l14 -6v58l-14 -4" fill="url(#h-wood)" stroke="var(--ink)" stroke-width="1.4"/>
+      <!-- intercom -->
+      <rect x="370" y="266" width="12" height="20" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.4"/>
+      <path d="M373 271h6M373 276h6M373 281h6" stroke="var(--ink)" stroke-width="1.2"/>
+      <!-- street -->
+      <path d="M0 306H412" stroke="var(--ink)" stroke-width="2"/>
+      <path d="M0 314H412" stroke="var(--ink)" stroke-width=".8"/>
+      <g stroke="var(--ink-soft)" stroke-width=".8"><path d="M10 322h30M60 322h44M130 322h26M200 322h40M270 322h30M330 322h50"/></g>
+      <!-- street lamp -->
+      <path d="M150 306V150M150 150h-12" fill="none" stroke="var(--ink)" stroke-width="2.4"/>
+      <path d="M132 150h12l-2 10h-8z" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"/>
+      <!-- the van: emergency locksmith, side elevation -->
+      <g>
+        <path d="M10 296V246Q10 238 18 238H104L126 258H138Q144 258 144 264V296Z" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+        <path d="M106 242L122 258H106Z" fill="url(#h-glass)" stroke="var(--ink)" stroke-width="1.4"/>
+        <path d="M10 278H144" stroke="var(--ink)" stroke-width="5"/>
+        <text x="14" y="257" class="van">POGOTOWIE</text><text x="14" y="272" class="van">ZAMKOWE</text>
+        <path d="M100 246V296" stroke="var(--ink)" stroke-width="1"/>
+        <circle cx="38" cy="298" r="11" fill="var(--ink)"/><circle cx="38" cy="298" r="4" fill="var(--paper)"/>
+        <circle cx="116" cy="298" r="11" fill="var(--ink)"/><circle cx="116" cy="298" r="4" fill="var(--paper)"/>
+        <path d="M144 270h4" stroke="var(--ink)" stroke-width="3"/>
+      </g>
+      <!-- figure letters with leaders: they match the legend below -->
+      <g class="figl">
+        <path d="M242 96H262"/><circle cx="274" cy="96" r="11"/><text x="274" y="101">A</text>
+        <path d="M74 236V222"/><circle cx="74" cy="210" r="11"/><text x="74" y="215">B</text>
+        <path d="M240 306V326"/><circle cx="240" cy="338" r="11"/><text x="240" y="343">C</text>
+        <path d="M320 306V326"/><circle cx="320" cy="338" r="11"/><text x="320" y="343">D</text>
+        <path d="M376 286V326"/><circle cx="376" cy="338" r="11"/><text x="376" y="343">E</text>
+      </g>
+    </svg>
+  </section>
+
+  <nav class="legend" aria-label="Menu">
+    <a class="fig primary"><span class="ltr">A</span><span class="nm">Tryb Ciągły<small>zamek siódmy · iii piętro, lewe</small></span><span class="go">dalej</span></a>
+    <a class="fig soon" aria-disabled="true"><span class="ltr">B</span><span class="nm">Zlecenia<small>miasto, klienci, dokumenty</small></span><span class="stamp">wkrótce</span></a>
+    <a class="fig"><span class="ltr">C</span><span class="nm">Gablota</span><span class="lead"></span><span class="dt ochre">8 z 20</span></a>
+    <a class="fig"><span class="ltr">D</span><span class="nm">Warsztat</span><span class="lead"></span><span class="dt ochre"><svg class="coin"><use href="#coin"/></svg>640</span></a>
+    <a class="fig"><span class="ltr">E</span><span class="nm">Ustawienia</span><span class="lead"></span><span class="dt">dźwięk, haptyka</span></a>
+  </nav>
+</main>
+<script>
+window.__ready = false;
+document.fonts.ready.then(() => { document.getElementById('wm').innerHTML = Plansza.wordmark(); window.__ready = true; });
+</script>
+</body></html>

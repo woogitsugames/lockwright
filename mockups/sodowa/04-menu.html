@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sodowa · menu</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="sodowa.css">
+<style>
+.menu{width:100vw;height:100vh;display:grid;grid-template-rows:minmax(0,1fr) auto;padding-bottom:env(safe-area-inset-bottom)}
+.street{min-height:0;overflow:hidden}
+.street svg{display:block;width:100%;height:100%}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 14px 10px;background:var(--atrament)}
+.acts .primary{grid-column:1/-1;min-height:64px;justify-content:space-between}
+.acts .primary span{font-size:20px}
+.acts .btn:not(.primary){min-height:52px;font-size:16px;padding:0 12px;gap:10px}
+.acts .btn small{font-size:12px}
+.note{grid-column:1/-1;font:italic 400 11.5px/1.3 "Bitter",serif;color:var(--popiol);text-align:left;padding:2px 2px 4px}
+@media (orientation:landscape){
+  .menu{grid-template-rows:none;grid-template-columns:minmax(0,1fr) 440px}
+  .acts{align-content:end;padding:14px 16px 12px 8px}
+  .acts .btn small{white-space:nowrap}
+}
+</style>
+</head><body>
+<main class="menu">
+  <section class="street" aria-label="Ulica nocą">
+    <svg viewBox="0 0 412 600" preserveAspectRatio="xMidYMax meet">
+      <defs>
+        <filter id="lino" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="8"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter>
+        <filter id="grainF"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="6"/><feColorMatrix values="0 0 0 0 .93 0 0 0 0 .9 0 0 0 0 .8 0 0 0 -1.7 1.08"/></filter>
+        <pattern id="dots" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.5" fill="var(--sodowa)"/></pattern>
+        <pattern id="sky" width="46" height="14" patternUnits="userSpaceOnUse"><path d="M3 4h20M28 11h14" stroke="var(--noc)" stroke-width="2.2" stroke-linecap="round"/></pattern>
+        <pattern id="rust" width="30" height="10" patternUnits="userSpaceOnUse"><rect width="30" height="10" fill="var(--noc)"/><path d="M0 9.2h30" stroke="var(--atrament)" stroke-width="1.6"/></pattern>
+        <pattern id="cobble" width="16" height="9" patternUnits="userSpaceOnUse"><path d="M1 7q7-6 14 0" fill="none" stroke="var(--atrament)" stroke-width="1.6"/></pattern>
+        <pattern id="cobbleD" width="16" height="9" patternUnits="userSpaceOnUse"><rect width="16" height="9" fill="var(--atrament)"/><path d="M1 7q7-6 14 0" fill="none" stroke="var(--noc)" stroke-width="1.6"/></pattern>
+        <clipPath id="wmTop"><rect x="0" y="0" width="412" height="104"/></clipPath>
+        <clipPath id="wmBot"><rect x="0" y="108.5" width="412" height="80"/></clipPath>
+        <g id="win"><rect width="22" height="30" fill="var(--atrament)" stroke="var(--popiol)" stroke-width="1.4"/><path d="M11 0v30M0 12h22" stroke="var(--popiol)" stroke-width="1"/></g>
+      </defs>
+      <rect width="412" height="600" fill="var(--atrament)"/>
+      <rect width="412" height="360" fill="url(#sky)"/>
+
+      <!-- WORDMARK: cut by a shear line, upper half turned 3 dp like a plug under tension -->
+      <g class="fr" font-size="64" font-weight="700" fill="var(--papier)" style="font-variation-settings:'SOFT' 100,'WONK' 1,'opsz' 144">
+        <text x="26" y="128" fill="var(--sodowa)" transform="translate(2.4 2)" clip-path="url(#wmBot)">Lockwright</text>
+        <text x="26" y="128" clip-path="url(#wmBot)">Lockwright</text>
+        <text x="29" y="128" clip-path="url(#wmTop)">Lockwright</text>
+      </g>
+      <path d="M10 106.2h10M392 106.2h10" stroke="var(--sodowa)" stroke-width="3"/>
+      <text x="26" y="156" font-size="14" font-weight="600" fill="var(--sodowa)" letter-spacing="3.2">POGOTOWIE ZAMKOWE · NOCĄ TEŻ</text>
+
+      <g filter="url(#lino)">
+        <!-- tenement A (left), Halina's stairwell on the 3rd floor -->
+        <path d="M-8 212H160V196H-8Z" fill="var(--noc)" stroke="var(--popiol)" stroke-width="1.4"/>
+        <rect x="-6" y="212" width="160" height="276" fill="url(#rust)"/>
+        <use href="#win" x="12" y="228"/><use href="#win" x="56" y="228"/><use href="#win" x="100" y="228"/>
+        <use href="#win" x="56" y="284"/><use href="#win" x="100" y="284"/><use href="#win" x="12" y="340"/><use href="#win" x="56" y="340"/><use href="#win" x="100" y="340"/>
+        <!-- 3rd floor (top row here): Halina's kitchen, light on, broth steaming the glass -->
+        <rect x="12" y="284" width="22" height="30" fill="var(--papier)" stroke="var(--atrament)" stroke-width="1.6"/>
+        <path d="M17 306q-3-5 0-10M23 306q-3-5 0-10M29 306q-3-5 0-10" fill="none" stroke="var(--popiol)" stroke-width="1.6"/>
+        <!-- stairwell strip: timer light on, two ladies waiting by the window -->
+        <rect x="132" y="236" width="20" height="210" fill="var(--atrament)" stroke="var(--popiol)" stroke-width="1.2"/>
+        <rect x="132" y="282" width="20" height="36" fill="var(--sodowa)" stroke="var(--atrament)" stroke-width="1.4"/>
+        <circle cx="138" cy="300" r="3.6" fill="var(--atrament)"/><path d="M134 318v-10q4-4 8 0v10z" fill="var(--atrament)"/>
+        <circle cx="147" cy="301" r="3.4" fill="var(--atrament)"/><path d="M144.5 296.6h5" stroke="var(--atrament)" stroke-width="2.4" stroke-dasharray="1.6 .8"/><path d="M143 318v-9q4-4 8 0v9z" fill="var(--atrament)"/>
+        <!-- tenement B -->
+        <path d="M158 186H300V172H158Z" fill="var(--noc)" stroke="var(--popiol)" stroke-width="1.4"/>
+        <rect x="160" y="186" width="140" height="302" fill="url(#rust)"/>
+        <use href="#win" x="174" y="194"/><use href="#win" x="218" y="194"/><use href="#win" x="262" y="194"/>
+        <use href="#win" x="174" y="250"/><use href="#win" x="262" y="250"/>
+        <use href="#win" x="174" y="306"/><use href="#win" x="218" y="306"/>
+        <!-- a neighbour with a nightcap at the window, phone in hand: the next call -->
+        <rect x="218" y="250" width="22" height="30" fill="var(--papier)" stroke="var(--atrament)" stroke-width="1.6"/>
+        <circle cx="229" cy="264" r="4.5" fill="var(--atrament)"/><path d="M224.5 263l4.5-9 4.5 9z" fill="var(--atrament)"/><path d="M222 280v-6q7-6 14 0v6z" fill="var(--atrament)"/><rect x="233" y="261" width="3" height="6" fill="var(--atrament)"/>
+        <rect x="262" y="306" width="22" height="30" fill="var(--sodowa)" stroke="var(--atrament)" stroke-width="1.6"/>
+        <!-- tenement C -->
+        <path d="M298 228H420V214H298Z" fill="var(--noc)" stroke="var(--popiol)" stroke-width="1.4"/>
+        <rect x="300" y="228" width="120" height="260" fill="url(#rust)"/>
+        <use href="#win" x="318" y="246"/><use href="#win" x="362" y="246"/><use href="#win" x="318" y="302"/><use href="#win" x="362" y="302"/>
+        <!-- gate of no. 12 -->
+        <path d="M176 488V412Q176 392 202 392H230Q256 392 256 412V488" fill="var(--atrament)" stroke="var(--popiol)" stroke-width="2"/>
+        <text x="216" y="384" font-size="11" font-weight="700" fill="var(--popiol)" text-anchor="middle">12</text>
+
+        <!-- sodium lamp and its pool of light -->
+        <path d="M318 488V322Q318 306 300 306H282" fill="none" stroke="var(--papier)" stroke-width="3.4"/>
+        <path d="M270 300h24l-4 8h-16z" fill="var(--papier)" stroke="var(--atrament)" stroke-width="1.4"/>
+        <path d="M268 309h28L440 600H20Z" fill="url(#dots)"/>
+        <path d="M274 309h16L404 600H60Z" fill="var(--sodowa)"/>
+        <path d="M279 312L150 600M282 312L232 600M285 312L318 600M288 312L392 600" stroke="var(--atrament)" stroke-width="1" stroke-dasharray="26 18 8 30" opacity=".55"/>
+        <!-- what the light reveals: rustication of the ground floor, the gate edge, cobbles -->
+        <path d="M220 420h80M206 440h94M193 460h107M300 420h100M300 440h104M300 460h104" stroke="var(--zelazo)" stroke-width="1.6"/>
+        <path d="M256 488V430" stroke="var(--atrament)" stroke-width="2"/>
+        <rect x="-10" y="488" width="430" height="12" fill="var(--papier)"/>
+        <rect x="-10" y="500" width="430" height="110" fill="url(#cobbleD)"/>
+        <path d="M150 500H352L404 600H96Z" fill="var(--sodowa)"/>
+        <path d="M150 500H352L404 600H96Z" fill="url(#cobble)"/>
+        <path d="M-10 500H420" stroke="var(--atrament)" stroke-width="2"/>
+
+        <!-- the emergency van, parked under the lamp -->
+        <g transform="translate(34 418)">
+          <path d="M8 74V22Q8 6 24 6H152Q166 6 166 20V74Z" fill="var(--cegla)" stroke="var(--atrament)" stroke-width="3"/>
+          <path d="M8 74V40L-14 46Q-22 48 -22 58V74Z" fill="var(--cegla)" stroke="var(--atrament)" stroke-width="3"/>
+          <path d="M-2 44L8 42V24L-2 26Z" fill="var(--atrament)"/>
+          <path d="M8 58h158" stroke="var(--atrament)" stroke-width="2"/>
+          <rect x="18" y="16" width="34" height="22" fill="var(--atrament)" stroke="var(--papier)" stroke-width="1.6"/>
+          <text x="62" y="30" font-size="10.5" font-weight="800" fill="var(--papier)" letter-spacing=".6">POGOTOWIE</text>
+          <text x="62" y="44" font-size="10.5" font-weight="800" fill="var(--papier)" letter-spacing=".6">ZAMKOWE 24 h</text>
+          <path d="M150 16v42" stroke="var(--atrament)" stroke-width="2"/>
+          <circle cx="22" cy="78" r="13" fill="var(--atrament)" stroke="var(--papier)" stroke-width="2.4"/><circle cx="22" cy="78" r="4" fill="var(--papier)"/>
+          <circle cx="138" cy="78" r="13" fill="var(--atrament)" stroke="var(--papier)" stroke-width="2.4"/><circle cx="138" cy="78" r="4" fill="var(--papier)"/>
+          <rect x="-24" y="60" width="8" height="6" fill="var(--sodowa)" stroke="var(--atrament)" stroke-width="1.4"/>
+        </g>
+      </g>
+      <rect width="412" height="600" filter="url(#grainF)" opacity=".08" style="mix-blend-mode:screen"/>
+    </svg>
+  </section>
+
+  <nav class="acts" aria-label="Menu">
+    <button class="btn primary"><span>Odbieram telefon<small>Ogrodowa 12, III piętro. Rosół na gazie.</small></span><svg class="ico" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M7 4l4 1 1 5-3 2q2 5 7 7l2-3 5 1 1 4q-1 3-4 3C11 24 4 17 4 8q0-3 3-4z"/></svg></button>
+    <button class="btn"><svg class="ico" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 4a10 10 0 1 0 6 16A9 9 0 0 1 18 4z"/></svg><span>Nocna zmiana<small>zamek za zamkiem</small></span></button>
+    <button class="btn"><svg class="ico" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 20V9h15l6 6v5M3 20h21"/><circle cx="8" cy="21" r="3"/><circle cx="19" cy="21" r="3"/></svg><span>Furgonetka<small>narzędzia, naprawy</small></span></button>
+    <button class="btn"><svg class="ico" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="4" y="4" width="20" height="20"/><path d="M4 14h20M14 4v20"/></svg><span>Gablota<small>co już otwierałeś</small></span></button>
+    <button class="btn"><svg class="ico" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 8h18M5 14h18M5 20h18"/><circle cx="10" cy="8" r="2.6" fill="var(--noc)"/><circle cx="18" cy="14" r="2.6" fill="var(--noc)"/><circle cx="12" cy="20" r="2.6" fill="var(--noc)"/></svg><span>Ustawienia<small>dźwięk, wibracje</small></span></button>
+    <p class="note">To gra, nie kurs. Zamki i narzędzia są wymyślone.</p>
+  </nav>
+</main>
+</body></html>

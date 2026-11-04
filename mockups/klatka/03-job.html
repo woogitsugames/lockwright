@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Klatka · zlecenie</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="klatka.css">
+<script>window.__ready = false;</script>
+<script type="importmap">{"imports":{"three":"../node_modules/three/build/three.module.js","three/":"../node_modules/three/"}}</script>
+</head><body>
+<main class="screen job">
+  <canvas id="c" class="full"></canvas>
+  <header class="bar ghost">
+    <button class="tap" aria-label="Wróć"><svg viewBox="0 0 24 24" class="back"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="clock">03:12 <small>noc · stawka ×1,5</small></div>
+  </header>
+  <section class="ticket">
+    <div class="t-top"><span class="t-no">Zlecenie 14/III</span><span class="t-addr">ul. Długa 9, III piętro</span></div>
+    <h1>Pani Halina i rosół</h1>
+    <p class="quote">„Wyszłam tylko po gazetę, a drzwi trzasnęły. Klucze wiszą w środku, na haczyku. I gaz jest pod garnkiem, proszę pana!”</p>
+    <p class="voice">Gaz pierwszy: sąsiadka zakręciła zawór na klatce. Teraz spokojnie.</p>
+    <div class="proofs">
+      <div class="proof ok"><svg viewBox="0 0 32 32"><rect x="4" y="7" width="24" height="18" rx="2"/><circle cx="12" cy="15" r="3"/><path d="M18 13h6M18 17h6M9 21h8"/></svg><span><b>mObywatel</b>adres się zgadza</span></div>
+      <div class="proof ok"><svg viewBox="0 0 32 32"><circle cx="11" cy="11" r="4"/><path d="M4 26c1-5 4-8 7-8s6 3 7 8"/><circle cx="23" cy="13" r="3"/><path d="M18 26c1-4 3-6 5-6s4 2 5 6"/></svg><span><b>Sąsiadka z 13</b>zna ją 30 lat</span></div>
+      <div class="proof ask"><svg viewBox="0 0 32 32"><path d="M8 4h12l6 6v18H8z"/><path d="M20 4v6h6"/><path d="M12 16h10M12 20h10M12 24h6"/></svg><span><b>Umowa najmu</b>nie trzeba</span></div>
+    </div>
+    <div class="quoteline"><span>Wycena przed pracą</span><b>60 · noc ×1,5 = 90</b></div>
+    <div class="actions">
+      <button class="enamel big go"><span class="n">→</span><span>Otwieram<small>bez śladów, napiwek możliwy</small></span></button>
+      <div class="row2"><button class="enamel"><span>Poproszę o więcej</span></button><button class="enamel"><span>Odmawiam</span></button></div>
+    </div>
+  </section>
+</main>
+<script type="module">
+import { THREE, materials, makeRenderer, buildStairwell } from './scene.js';
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+const c = document.getElementById('c'); const W = innerWidth, H = innerHeight;
+const R = makeRenderer(c, W, H); const S = new THREE.Scene(); S.background = new THREE.Color(0x141210);
+const M = materials();
+buildStairwell(S, M, { doorNo: '14' });
+// neighbour's door (13) ajar to the right, warm light spilling on the tiles
+const n = new THREE.Group(); n.position.set(420, 0, 0); S.add(n);
+buildStairwell(n, M, { doorNo: '13', ajar: true });
+n.children.filter(o => o.geometry && o.geometry.type === 'PlaneGeometry').forEach(o => o.visible = false);
+const spill = new THREE.PointLight(0xffd29a, 3e4, 0, 2); spill.position.set(330, 40, -60); S.add(spill);
+S.environment = new THREE.PMREMGenerator(R).fromScene(new RoomEnvironment(), 0.04).texture; S.environmentIntensity = 0.3;
+S.add(new THREE.HemisphereLight(0xcfd6e0, 0x2a1d14, 0.25));
+const bulb = new THREE.SpotLight(0xffcf96, 3.4e5, 0, Math.PI / 3, 0.8, 2); bulb.position.set(100, 420, 300); bulb.target.position.set(150, 0, 0); bulb.castShadow = true; bulb.shadow.mapSize.set(2048, 2048); S.add(bulb, bulb.target);
+const portrait = H > W;
+const cam = new THREE.PerspectiveCamera(portrait ? 50 : 36, W / H, 1, 4000);
+if (portrait) { cam.position.set(210, 40, 1750); cam.lookAt(210, 40, 0); cam.setViewOffset(W, H, 0, H * 0.25, W, H); } else { cam.position.set(330, 90, 950); cam.lookAt(330, 90, 0); cam.setViewOffset(W, H, W * 0.22, 0, W, H); }
+R.render(S, cam);
+window.__ready = true;
+</script>
+</body></html>

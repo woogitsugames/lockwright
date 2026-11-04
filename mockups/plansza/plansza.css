@@ -58,3 +58,189 @@ body{background:var(--paper);color:var(--ink);font-family:"Source Serif 4",serif
   .screen.lock .zone.left{grid-column:1;grid-row:2/4;padding:0 0 14px 14px;border:0}
   .screen.lock .zone.right{grid-column:3;grid-row:2/4;padding:0 14px 14px 0;border:0}
 }
+
+/* ---------- shared screen parts (02–05) ---------- */
+.tap{cursor:pointer;color:var(--ink)}
+.caption{font:400 13.5px/1.35 "Source Serif 4",serif;color:var(--ink-soft);padding:2px 20px 8px}
+.caption i{color:var(--ink);font-family:"Brygada 1918",serif;font-weight:500}
+.coin{width:22px;height:22px;flex:none}
+.kicker{display:block}
+.btn{min-height:56px;border:1.5px solid var(--ink);outline:1px solid var(--ink);outline-offset:-5px;background:var(--paper);
+  font:700 16px/1.1 "Brygada 1918",serif;color:var(--ink);display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 16px;text-align:left}
+.btn .num{display:flex;align-items:center;gap:4px;font-variant-numeric:oldstyle-nums;color:var(--ochre)}
+.btn.primary{background:var(--ink);color:var(--paper);outline-color:var(--paper)}
+.btn.primary .num{color:var(--paper)}
+.coin.inv use{filter:brightness(0) invert(1)} /* coin glyph on ink: paper line */
+
+/* ---------- 02 workshop: shadow board ---------- */
+.screen.ws{grid-template-rows:calc(60px + env(safe-area-inset-top)) auto auto minmax(0,1fr) auto}
+.board{padding:0 12px}
+.board-svg{width:100%;height:auto;display:block}
+.slot-l{font:700 13px "Brygada 1918",serif;fill:var(--ink)}
+.slot-fig{font-style:italic;font-weight:600}
+.slot-s{font:italic 400 12px "Source Serif 4",serif;fill:var(--ink-soft)}
+.slot-p{font:600 14px "Brygada 1918",serif;fill:var(--ochre);font-variant-numeric:oldstyle-nums}
+.slot.locked .slot-l{fill:var(--ink-soft)}
+.detail{padding:10px 20px 0;min-height:0;display:flex;flex-direction:column;gap:4px;overflow:hidden}
+.d-head{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--ink);padding-bottom:4px}
+.d-head .h{font-size:22px}
+.price{display:flex;align-items:center;gap:5px;font:600 22px "Brygada 1918",serif;color:var(--ochre);font-variant-numeric:oldstyle-nums}
+.price .coin{width:24px;height:24px}
+.d-tool{width:100%;height:auto;max-height:96px;display:block}
+.leader path{fill:none;stroke:var(--ink);stroke-width:1}
+.leader text{font:italic 400 13px "Source Serif 4",serif;fill:var(--ink)}
+.voice{font:italic 400 14.5px/1.38 "Source Serif 4",serif;color:var(--ink)}
+.facts{display:grid;grid-template-columns:64px 1fr;gap:6px 8px;align-items:center;margin-top:4px}
+.facts dt{font:italic 500 13px "Brygada 1918",serif;color:var(--ink-soft)}
+.facts dd{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font:400 14px "Source Serif 4",serif}
+.fam{display:inline-flex;align-items:center;gap:5px}.fam svg{width:18px;height:18px}
+.wear{width:120px;height:18px}.wtxt{font-size:13px;color:var(--ink-soft);font-style:italic}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 18px calc(18px + env(safe-area-inset-bottom))}
+
+@media (orientation:landscape){
+  .screen.ws{grid-template-columns:minmax(0,1fr) 330px;grid-template-rows:56px auto minmax(0,1fr) auto}
+  .screen.ws .bar{grid-column:1/-1}
+  .screen.ws .caption{grid-column:1;grid-row:2;padding-bottom:4px}
+  .screen.ws .board{grid-column:1;grid-row:3/5;min-height:0;padding:0 8px 16px 16px}
+  .screen.ws .board-svg{height:100%;width:100%}
+  .screen.ws .detail{grid-column:2;grid-row:2/4;padding:0 20px 0 8px}
+  .screen.ws .actions{grid-column:2;grid-row:4;padding:8px 18px 16px 8px}
+  .screen.ws .d-tool{max-height:64px}
+  .screen.ws .voice{font-size:13.5px}
+}
+.note{font:400 13px/1.35 "Source Serif 4",serif;color:var(--ink-soft);border-top:1px dashed var(--ink-soft);padding-top:6px;margin-top:6px}
+.btn i{font-weight:600}
+.btn{white-space:nowrap}
+@media (orientation:landscape){.screen.ws .note,.screen.ws .facts dt:nth-of-type(2),.screen.ws .facts dd:nth-of-type(2){display:none}}
+.btn.wrap{white-space:normal}
+
+/* vermilion corner brackets = the player's finger on a choice (same sign as the board in 02) */
+.sel-br{background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M1.75 14V1.75H14' fill='none' stroke='%23B3311D' stroke-width='3.5'/%3E%3C/svg%3E") top left no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M0 1.75H12.25V14' fill='none' stroke='%23B3311D' stroke-width='3.5'/%3E%3C/svg%3E") top right no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M12.25 0V12.25H0' fill='none' stroke='%23B3311D' stroke-width='3.5'/%3E%3C/svg%3E") bottom right no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M14 12.25H1.75V0' fill='none' stroke='%23B3311D' stroke-width='3.5'/%3E%3C/svg%3E") bottom left no-repeat}
+
+/* ---------- 03 showcase: museum plate, not a grey museum ---------- */
+.screen.sc{grid-template-rows:calc(60px + env(safe-area-inset-top)) auto auto minmax(0,1fr) auto}
+.count{display:flex;align-items:baseline;gap:4px;font:600 15px "Brygada 1918",serif;color:var(--ochre);font-variant-numeric:oldstyle-nums}
+.count b{font-size:26px}
+.case{margin:0 14px;padding:8px;border:1.5px solid var(--ink);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='10'%3E%3Crect width='40' height='10' fill='%23EFEBE1'/%3E%3Cpath d='M0 3C10 1 20 5 40 3M0 8C14 6 26 10 40 8' fill='none' stroke='%231C1A17' stroke-width='.8'/%3E%3C/svg%3E")}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--paper);border:1.5px solid var(--ink);padding:6px}
+.tile{position:relative;min-height:84px;border:1px solid var(--ink);background:var(--paper);display:grid;grid-template-rows:16px 56px 16px;padding:4px 5px;text-align:left;color:var(--ink)}
+.tile svg{width:100%;height:100%;min-height:0}
+.t-nr{font:italic 600 12.5px "Brygada 1918",serif;color:var(--ochre);font-variant-numeric:oldstyle-nums}
+.t-name{font:400 11.5px/16px "Source Serif 4",serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile.empty{border-style:dashed;border-color:var(--ink-soft)}
+.tile.empty .t-name{font-style:italic;color:var(--ink-soft)}
+.tile.sel{outline:2px solid var(--ink);outline-offset:-4px}
+.tile .sel-br{position:absolute;inset:-5px;pointer-events:none}
+.card{margin:12px 18px 0;padding:10px 0 0;border-top:2px solid var(--ink);display:flex;flex-direction:column;gap:8px;min-height:0;overflow:hidden}
+.c-head{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;border-bottom:1px solid var(--ink);padding-bottom:8px}
+.c-nr{font:600 15px/1 "Brygada 1918",serif;color:var(--ochre);border:1.5px solid var(--ochre);padding:10px 8px;font-variant-numeric:oldstyle-nums}
+.c-head .h{font-size:22px}
+.c-body{font:400 14.5px/1.42 "Source Serif 4",serif;color:var(--ink);hyphens:auto}
+.c-body::first-letter{font:700 30px/1 "Brygada 1918",serif;float:left;margin:2px 6px 0 0}
+.c-src{font:400 12.5px/1.4 "Source Serif 4",serif;color:var(--ink-soft);border-top:1px dashed var(--ink-soft);padding-top:6px}
+.c-src b{font-weight:600;color:var(--ink)}
+.btn .num{font-family:"Brygada 1918",serif}
+
+@media (orientation:landscape){
+  .screen.sc{grid-template-columns:400px minmax(0,1fr);grid-template-rows:56px auto minmax(0,1fr) auto}
+  .screen.sc .bar{grid-column:1/-1}
+  .screen.sc .caption{grid-column:1;grid-row:2}
+  .screen.sc .case{grid-column:1;grid-row:3/5;margin:0 8px 16px 16px;min-height:0;display:flex}
+  .screen.sc .grid{flex:1;grid-template-rows:repeat(3,1fr)}
+  .screen.sc .tile{min-height:0;grid-template-rows:16px minmax(0,1fr) 16px}
+  .screen.sc .card{grid-column:2;grid-row:2/4;margin:0 20px 0 10px}
+  .screen.sc .c-body{font-size:13.5px;line-height:1.4}
+  .screen.sc .actions{grid-column:2;grid-row:4;padding:8px 20px 16px 10px}
+}
+
+/* ---------- 04 menu: title plate ---------- */
+.screen.mn{grid-template-rows:auto minmax(0,1fr) auto;padding-top:env(safe-area-inset-top)}
+.title{padding:18px 22px 0}
+.wm svg,.wordmark{width:100%;height:auto;display:block}
+.sub{display:flex;align-items:center;gap:10px;font:italic 500 19px/1 "Brygada 1918",serif;color:var(--ink);margin-top:-2px}
+.sub::before,.sub::after{content:"";flex:1;border-top:1px solid var(--ink)}
+.scene{padding:4px 8px 0;min-height:0;display:flex;justify-content:center}
+.scene-svg{width:100%;height:100%;display:block}
+.fascia{font:700 9px "Brygada 1918",serif;letter-spacing:.08em;fill:var(--ink)}
+.van{font:700 10.5px "Brygada 1918",serif;letter-spacing:.06em;fill:var(--ink)}
+.figl path{stroke:var(--ink);stroke-width:1}
+.figl circle{fill:var(--paper);stroke:var(--ink);stroke-width:1.6}
+.figl text{font:italic 700 13px "Brygada 1918",serif;fill:var(--ink);text-anchor:middle}
+.legend{display:flex;flex-direction:column;padding:6px 18px calc(20px + env(safe-area-inset-bottom));gap:0}
+.fig{display:flex;align-items:center;gap:12px;min-height:64px;border-bottom:1px solid var(--ink);color:var(--ink);text-decoration:none;padding:0 4px}
+.fig:first-child{border-top:1px solid var(--ink)}
+.ltr{flex:none;width:34px;height:34px;border:1.6px solid var(--ink);border-radius:50%;display:grid;place-items:center;font:italic 700 17px "Brygada 1918",serif}
+.nm{font:700 19px/1.1 "Brygada 1918",serif;display:flex;flex-direction:column}
+.nm small{font:italic 400 13px/1.3 "Source Serif 4",serif;color:var(--ink-soft)}
+.lead{flex:1;border-bottom:1.5px dotted var(--ink-soft);margin-top:10px;min-width:12px}
+.dt{display:flex;align-items:center;gap:4px;font:italic 400 14px "Source Serif 4",serif;color:var(--ink-soft)}
+.dt.ochre{font:600 17px "Brygada 1918",serif;color:var(--ochre);font-style:normal;font-variant-numeric:oldstyle-nums}
+.fig.primary{min-height:84px;border:1.5px solid var(--ink);outline:1px solid var(--ink);outline-offset:-5px;padding:0 14px;margin-bottom:6px}
+.fig.primary .ltr{width:40px;height:40px;background:var(--ink);color:var(--paper);font-size:20px}
+.fig.primary .nm{font-size:24px;flex:1}
+.go{font:italic 600 15px "Brygada 1918",serif;display:flex;align-items:center;gap:6px}
+.go::after{content:"";width:22px;height:2px;background:var(--ink);box-shadow:0 0 0 0 var(--ink)}
+.fig.soon .nm{color:var(--ink-soft);flex:1}
+.fig.soon .ltr{border-style:dashed;color:var(--ink-soft)}
+.stamp{font:italic 700 14px "Brygada 1918",serif;color:var(--seal);border:1.6px solid var(--seal);outline:1px solid var(--seal);outline-offset:2px;padding:3px 8px;transform:rotate(-4deg);letter-spacing:.04em}
+
+@media (orientation:landscape){
+  .screen.mn{grid-template-columns:minmax(0,1fr) 380px;grid-template-rows:auto minmax(0,1fr)}
+  .screen.mn .title{grid-column:1;grid-row:1;padding:14px 20px 0 24px}
+  .screen.mn .wm{max-width:300px}
+  .screen.mn .sub{font-size:16px;max-width:300px}
+  .screen.mn .scene{grid-column:1;grid-row:2;padding:0 8px 14px 16px}
+  .screen.mn .legend{grid-column:2;grid-row:1/3;justify-content:center;padding:14px 22px 16px 6px}
+  .screen.mn .fig{min-height:52px}
+  .screen.mn .fig.primary{min-height:64px}
+}
+
+/* ---------- 05 brand sheet ---------- */
+.screen.br{grid-template-columns:minmax(0,1fr) 150px;grid-template-rows:auto auto auto auto;align-content:start;gap:12px 14px;padding:calc(18px + env(safe-area-inset-top)) 20px 18px}
+.br .kicker{margin-bottom:5px}
+.b-word{grid-column:1/-1}
+.b-notes{list-style:none;display:flex;flex-direction:column;gap:2px;font:400 12.5px/1.35 "Source Serif 4",serif;color:var(--ink-soft);margin-top:2px}
+.b-notes i{font:italic 700 13px "Brygada 1918",serif;color:var(--ink);margin-right:4px}
+.b-sizes{display:grid;grid-template-columns:1.3fr .8fr 1fr;gap:12px;align-items:center;margin-top:8px;border-top:1px solid var(--ink);padding-top:8px}
+.b-sizes .inv{background:var(--ink);padding:6px 6px}
+.b-icons{grid-column:1;grid-row:2}
+.icons{display:flex;gap:14px;align-items:flex-start}
+.ic{display:flex;flex-direction:column;align-items:center;gap:3px}
+.ic figcaption{font:italic 400 12px "Source Serif 4",serif;color:var(--ink-soft)}
+.ic div{border-radius:22%;overflow:hidden;box-shadow:0 0 0 1px var(--ink-soft)}
+.ic svg{display:block;width:100%;height:100%}
+.i120 div{width:112px;height:112px}.i72 div{width:72px;height:72px}.i48 div{width:48px;height:48px}.i29 div{width:29px;height:29px}
+.ic-col{display:flex;flex-direction:column;gap:6px}.ic-row{display:flex;gap:12px;align-items:flex-end}
+.b-rules{grid-column:1;grid-row:3}
+.b-rules ul{list-style:none;font:400 13px/1.4 "Source Serif 4",serif;color:var(--ink)}
+.b-rules li::before{content:"— ";color:var(--ink-soft)}
+.b-mini{grid-column:2;grid-row:2/4}
+.mini{width:150px;height:333px;overflow:hidden;border:1.5px solid var(--ink);position:relative}
+.mini iframe{width:412px;height:915px;border:0;transform:scale(.3641);transform-origin:0 0;position:absolute;left:0;top:0;pointer-events:none}
+.b-store{grid-column:1/-1;grid-row:4}
+.b-store #store{padding:10px 4px;gap:10px 4px;border:1px solid var(--ink-soft)}
+.b-store .si-icon{width:64px !important;height:64px !important;border-radius:14px !important}
+
+@media (orientation:landscape){
+  .screen.br{grid-template-columns:300px minmax(0,1fr) 140px;grid-template-rows:auto auto minmax(0,1fr);padding:16px 22px 14px;gap:10px 18px}
+  .b-word{grid-column:1;grid-row:1/4}
+  .b-sizes{grid-template-columns:1fr 1fr}
+  .b-sizes .inv{grid-column:1/-1}
+  .b-icons{grid-column:2;grid-row:1}
+  .b-rules{grid-column:2;grid-row:2}
+  .b-store{grid-column:2;grid-row:3}
+  .b-mini{grid-column:3;grid-row:1/4}
+  .mini{width:140px;height:311px}.mini iframe{transform:scale(.34)}
+  .icons{gap:20px}
+  .b-sizes .inv{padding:4px 40px}
+  .b-rules ul{font-size:12px;line-height:1.22}
+  .b-rules li:nth-child(4){display:none}
+  .b-store #store{padding:6px 2px;gap:4px;grid-template-columns:repeat(6,1fr)}
+  .b-store .si-icon{width:40px !important;height:40px !important;border-radius:9px !important}
+  .b-store .si figcaption{font-size:10px}
+}

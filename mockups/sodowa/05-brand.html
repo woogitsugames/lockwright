@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sodowa · marka</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="sodowa.css">
+<style>
+.brand{width:100vw;height:100vh;padding:calc(env(safe-area-inset-top) + 14px) 16px calc(env(safe-area-inset-bottom) + 12px);display:grid;grid-template-rows:auto auto auto auto auto minmax(0,1fr);gap:12px;overflow:hidden}
+.k{font:italic 400 12.5px "Bitter",serif;color:var(--popiol)}
+.wm svg{display:block;width:100%;height:auto}
+.paper{background:var(--papier);color:var(--atrament);padding:10px 12px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+  clip-path:polygon(0 2px,10% 0,30% 2px,55% 0,80% 3px,100% 0,100% 100%,0 100%)}
+.paper .w{font:700 30px/1 "Fraunces",serif;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72}
+.paper .w2{font:700 19px/1 "Fraunces",serif;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 24}
+.paper .w3{font:700 13px/1 "Fraunces",serif;font-variation-settings:"SOFT" 100,"WONK" 0,"opsz" 9}
+.paper .sub{font:600 10.5px "Bitter",serif;letter-spacing:.2em;color:var(--cegla);width:100%}
+.icons{display:flex;align-items:flex-end;gap:14px}
+.icons figure{display:flex;flex-direction:column;align-items:center;gap:4px}
+.icons figcaption{font:400 11px "Bitter",serif;color:var(--popiol)}
+.ic{border-radius:22.5%;overflow:hidden;display:block}
+.ic svg{display:block;width:100%;height:100%}
+.store-wrap{min-height:0}
+.lang{display:grid;gap:6px}
+.row-ic{display:flex;justify-content:space-between;gap:4px}
+.row-ic figure{display:flex;flex-direction:column;align-items:center;gap:4px}
+.row-ic svg{width:48px;height:48px;padding:10px;border:2px solid var(--papier);background:var(--noc);fill:none;stroke:var(--papier);stroke-width:2.4;stroke-linecap:square;stroke-linejoin:round;border-radius:3px 5px 4px 6px/6px 3px 5px 4px}
+.row-ic figure:nth-child(6) svg{stroke:var(--sodowa)}
+.row-ic figcaption{font:400 10.5px "Bitter",serif;color:var(--popiol)}
+@media (orientation:landscape){
+  .brand{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto minmax(0,1fr);column-gap:20px;padding-top:10px}
+  .brand > .k:first-child{grid-column:1/-1}
+  .wm{grid-column:1;grid-row:2}
+  .paper{grid-column:1;grid-row:3}
+  .icons{grid-column:1;grid-row:4;align-self:start}
+  .lang{display:none}
+  .store-wrap{grid-column:2;grid-row:2/5}
+}
+</style>
+</head><body>
+<main class="brand">
+  <span class="k">Marka · wordmark, ikona, test w sklepie</span>
+
+  <section class="wm" aria-label="Wordmark na nocy">
+    <svg viewBox="0 0 380 118">
+      <defs>
+        <clipPath id="t"><rect x="0" y="0" width="380" height="57"/></clipPath>
+        <clipPath id="b"><rect x="0" y="61.5" width="380" height="60"/></clipPath>
+      </defs>
+      <g font-family="Fraunces" font-size="66" font-weight="700" style="font-variation-settings:'SOFT' 100,'WONK' 1,'opsz' 144">
+        <text x="4" y="82" fill="var(--sodowa)" transform="translate(2.6 2.2)" clip-path="url(#b)">Lockwright</text>
+        <text x="4" y="82" fill="var(--papier)" clip-path="url(#b)">Lockwright</text>
+        <text x="7.5" y="82" fill="var(--papier)" clip-path="url(#t)">Lockwright</text>
+      </g>
+      <path d="M0 59.2h6M369 59.2h11" stroke="var(--sodowa)" stroke-width="3.4"/>
+      <text x="6" y="110" font-size="12.5" font-weight="600" fill="var(--sodowa)" letter-spacing="3.4">POGOTOWIE ZAMKOWE</text>
+      <text x="374" y="110" font-size="11.5" font-style="italic" fill="var(--popiol)" text-anchor="end">EN: Emergency Locksmith</text>
+    </svg>
+  </section>
+
+  <section class="paper" aria-label="Wordmark na papierze, rozmiary">
+    <span class="w">Lockwright</span><span class="w2">Lockwright</span><span class="w3">Lockwright</span>
+    <span class="sub">CIĘCIE LINII PODZIAŁU OD 40 PX · MNIEJSZE BEZ CIĘCIA</span>
+  </section>
+
+  <section class="icons" aria-label="Ikona w rozmiarach">
+    <figure><div class="ic" style="width:112px;height:112px" data-icon></div><figcaption>1024 → 112</figcaption></figure>
+    <figure><div class="ic" style="width:64px;height:64px" data-icon></div><figcaption>64</figcaption></figure>
+    <figure><div class="ic" style="width:48px;height:48px" data-icon></div><figcaption>48</figcaption></figure>
+    <figure><div class="ic" style="width:29px;height:29px" data-icon></div><figcaption>29</figcaption></figure>
+    <figure><div class="ic" style="width:48px;height:48px;filter:grayscale(1)" data-icon></div><figcaption>szarość</figcaption></figure>
+  </section>
+
+  <section class="lang" aria-label="Język ikon">
+    <span class="k">Język ikon UI: odbitka z klocka, kreska 2,4 dp, kwadratowe końce, zero wypełnień gradientem</span>
+    <div class="row-ic">
+      <figure><svg viewBox="0 0 28 28"><path d="M9 6v16M19 6v16"/></svg><figcaption>pauza</figcaption></figure>
+      <figure><svg viewBox="0 0 28 28"><path d="M17 5l-9 9 9 9"/></svg><figcaption>wróć</figcaption></figure>
+      <figure><svg viewBox="0 0 28 28"><path d="M7 4l4 1 1 5-3 2q2 5 7 7l2-3 5 1 1 4q-1 3-4 3C11 24 4 17 4 8q0-3 3-4z"/></svg><figcaption>zlecenie</figcaption></figure>
+      <figure><svg viewBox="0 0 28 28"><path d="M3 20V9h15l6 6v5M3 20h21"/><circle cx="8" cy="21" r="3"/><circle cx="19" cy="21" r="3"/></svg><figcaption>furgonetka</figcaption></figure>
+      <figure><svg viewBox="0 0 28 28"><rect x="4" y="4" width="20" height="20"/><path d="M4 14h20M14 4v20"/></svg><figcaption>gablota</figcaption></figure>
+      <figure><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="11"/><circle cx="10.5" cy="14" r="3.2"/><path d="M13.7 14h7.5M18.5 14v3M21 14v2.2"/></svg><figcaption>moneta</figcaption></figure>
+      <figure><svg viewBox="0 0 28 28"><path d="M4 22L18 8l4 4L8 26z"/><path d="M9 19l2 2M12 16l2 2M15 13l2 2"/></svg><figcaption>naprawa</figcaption></figure>
+    </div>
+  </section>
+  <section class="store-wrap"><div id="store" data-name="Lockwright"></div></section>
+</main>
+<script>
+// App icon: a door left ajar on a sodium-lit landing, home light spilling out onto the floor.
+// No padlock, no keyhole, no gold. Three flat inks + paper, gouge halo around the frame.
+const ICON = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<rect width="100" height="100" fill="#EBAE3E"/>
+<path d="M14 92V18Q14 8 24 8H76Q86 8 86 18V92" fill="none" stroke="#9E3B29" stroke-width="3" stroke-dasharray="22 4 30 5 16 4"/>
+<rect x="27" y="17" width="46" height="66" fill="#EEE4CB"/>
+<path d="M60 87L73 87L98 100H64Z" fill="#EEE4CB"/>
+<path d="M29 19L60 24V80L29 83Z" fill="#9E3B29" stroke="#1C1719" stroke-width="3" stroke-linejoin="round"/>
+<path d="M35 30L54 32.5V48L35 47ZM35 55L54 56V73L35 75Z" fill="none" stroke="#1C1719" stroke-width="2.4" stroke-linejoin="round"/>
+<rect x="54.5" y="50" width="3.4" height="9" fill="#EEE4CB" stroke="#1C1719" stroke-width="1.4"/>
+<rect x="27" y="17" width="46" height="66" fill="none" stroke="#1C1719" stroke-width="5"/>
+<path d="M4 84.3H96" stroke="#EEE4CB" stroke-width="2.6"/><path d="M4 82H96M4 86.6H96" stroke="#1C1719" stroke-width="2.2"/>
+</svg>`;
+document.querySelectorAll('[data-icon]').forEach(e => e.innerHTML = ICON);
+document.getElementById('store').dataset.ours = ICON;
+</script>
+<script src="../shared/store-grid.js"></script>
+</body></html>
