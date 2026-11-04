@@ -1,0 +1,13 @@
+{
+  "name": "lockwright-mockups",
+  "private": true,
+  "description": "Design-only mockups for Lockwright visual directions. Not game code.",
+  "type": "module",
+  "scripts": {
+    "render": "node tools/render.mjs",
+    "check": "node tools/contrast.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}
