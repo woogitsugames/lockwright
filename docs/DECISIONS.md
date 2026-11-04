@@ -37,3 +37,9 @@ Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright �
 
 ## D-11 — Makiety: HTML/SVG/three.js renderowane Playwrightem
 2026-11-04 · przyjęta (koordynator) · `mockups/tools/render.mjs` (lokalny serwer, pion i poziom @2x, skala szarości, 50% jasności), `contrast.mjs` (WCAG + symulacja CVD), `contact.mjs` (zestawienie). Narzędzie projektowe, nie kod gry.
+
+## D-12 — Ekran zamka bez paneli UI
+2026-11-04 · przyjęta (koordynator, po uwagach właściciela „UI/HUD jak AI”) · ekran zamka to wyłącznie fotorealistyczna scena: przekrój i zwijka z narzędziami. Brak nagłówków, pasków, kart i liczników w trakcie otwierania. Napięcie pokazuje napinacz i czoło rdzenia, życia to wytrychy w kieszeniach zwijki, a zużycie widać na grocie. Jedyna afordancja systemowa to pauza (48 dp, róg). Strefy kciuków są niewidoczne i pokazują tylko miękki odcisk pod palcem. Informacje o kliencie i monetach pojawiają się przed zamkiem i po nim.
+
+## D-13 — Narzędzia obserwacji: lupa, potem mikroskop i wziernik
+2026-11-04 · przyjęta (właściciel: „mikroskop albo coś, żeby lepiej widzieć”) · lupa zegarmistrzowska (start) leży na zwijce, a dotknięcie daje okrągłe pole okularu z makro-widokiem linii podziału przy pinie pod wytrychem. Zasady gry: podczas patrzenia przez lupę prawy kciuk trzyma pozycję, a napięcie dalej działa. Później w warsztacie: mikroskop warsztatowy (większe powiększenie, widać zadziory i fałszywe bramki), wziernik (podgląd elementów głęboko w kanale, np. dźwignie, tarcze). Narzędzia obserwacji nie zastępują wyczucia, tylko je potwierdzają (w trybie „w ciemności” są niedostępne).
