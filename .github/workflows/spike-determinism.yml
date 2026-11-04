@@ -1,0 +1,133 @@
+name: spike-determinism
+
+# Spike 5 (TECH.md §4): lockcore must give bit-identical event hashes on every target.
+# Reference corpus (10 000 random replays) is recorded on Linux x86_64 gcc, then replayed on
+# x86_64 clang, Linux aarch64 (qemu), Android arm64 NDK (qemu) and macOS arm64 (native, Apple clang).
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'lockcore/**'
+      - 'spikes/determinism/**'
+      - '.github/workflows/spike-determinism.yml'
+  workflow_dispatch:
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build x86_64 gcc
+        run: |
+          cmake -S spikes/determinism -B spikes/determinism/build/x86_64-gcc -DCMAKE_CXX_COMPILER=g++
+          cmake --build spikes/determinism/build/x86_64-gcc --parallel
+      - name: Record corpus (10 000 replays)
+        run: |
+          spikes/determinism/build/x86_64-gcc/replay_fuzz gen --count 10000 --seed 20261104 --out corpus.lwfz | tee corpus.txt
+          gzip -9 corpus.lwfz
+      - name: Reference run
+        run: |
+          gunzip -k corpus.lwfz.gz
+          spikes/determinism/tools/run_platform.sh x86_64-gcc spikes/determinism/build/x86_64-gcc corpus.lwfz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: corpus
+          path: corpus.lwfz.gz
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: results-x86_64-gcc
+          path: spikes/determinism/results/
+
+  linux-check:
+    needs: record
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [x86_64-clang, linux-aarch64-gcc, android-arm64-clang]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: corpus
+      - name: Install cross tools
+        if: matrix.target != 'x86_64-clang'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq qemu-user-static g++-aarch64-linux-gnu
+      - name: Install NDK 29.0.14206865
+        if: matrix.target == 'android-arm64-clang'
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "ndk;29.0.14206865" > /dev/null
+          echo "NDK=$ANDROID_HOME/ndk/29.0.14206865" >> "$GITHUB_ENV"
+      - name: Configure
+        run: |
+          B=spikes/determinism/build/${{ matrix.target }}
+          case "${{ matrix.target }}" in
+            x86_64-clang) cmake -S spikes/determinism -B $B -DCMAKE_CXX_COMPILER=clang++ ;;
+            linux-aarch64-gcc) cmake -S spikes/determinism -B $B \
+                -DCMAKE_TOOLCHAIN_FILE=$PWD/spikes/determinism/cmake/aarch64-linux-gnu.cmake -DDET_STATIC=ON ;;
+            android-arm64-clang) cmake -S spikes/determinism -B $B \
+                -DCMAKE_TOOLCHAIN_FILE=$NDK/build/cmake/android.toolchain.cmake -DANDROID_ABI=arm64-v8a \
+                -DANDROID_PLATFORM=android-30 -DDET_STATIC=ON -DCMAKE_CROSSCOMPILING_EMULATOR=qemu-aarch64-static ;;
+          esac
+      - name: Build
+        run: cmake --build spikes/determinism/build/${{ matrix.target }} --parallel
+      - name: Checks
+        run: |
+          gunzip corpus.lwfz.gz
+          EMU=""; [ "${{ matrix.target }}" != "x86_64-clang" ] && EMU=qemu-aarch64-static
+          spikes/determinism/tools/run_platform.sh ${{ matrix.target }} spikes/determinism/build/${{ matrix.target }} corpus.lwfz $EMU
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: results-${{ matrix.target }}
+          path: spikes/determinism/results/
+
+  macos-arm64:
+    needs: record
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: corpus
+      - name: Build (Apple clang, native arm64)
+        run: |
+          cmake -S spikes/determinism -B spikes/determinism/build/macos-arm64-appleclang -DCMAKE_CXX_COMPILER=clang++
+          cmake --build spikes/determinism/build/macos-arm64-appleclang --parallel
+      - name: Checks
+        run: |
+          brew list coreutils > /dev/null 2>&1 || brew install coreutils
+          export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+          gunzip corpus.lwfz.gz
+          spikes/determinism/tools/run_platform.sh macos-arm64-appleclang spikes/determinism/build/macos-arm64-appleclang corpus.lwfz
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: results-macos-arm64-appleclang
+          path: spikes/determinism/results/
+
+  summary:
+    needs: [record, linux-check, macos-arm64]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: results-*
+          path: all
+          merge-multiple: true
+      - name: Table
+        run: |
+          python3 spikes/determinism/tools/summarize.py all --reference x86_64-gcc | tee table.md
+          cat table.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: determinism-table
+          path: table.md
