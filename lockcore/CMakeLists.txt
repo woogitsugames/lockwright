@@ -68,6 +68,6 @@ if(LOCKCORE_BUILD_TESTS)
     COMMAND ${CMAKE_COMMAND} -DDIRS=${CMAKE_CURRENT_SOURCE_DIR}/src;${CMAKE_CURRENT_SOURCE_DIR}/include
             -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/no_float.cmake)
   if(LOCKCORE_BUILD_TOOLS)
-    add_test(NAME verify_seeds_smoke COMMAND verify_seeds --seeds 200)
+    add_test(NAME verify_seeds_smoke COMMAND verify_seeds --seeds 200 --feel 50)
   endif()
 endif()
