@@ -368,7 +368,7 @@ Wszystkie 29 profili: wyrocznia akceptuje 1000/1000 (po ponowieniach generatora)
 | P16–P17 | 98,8–98,9% | 10,0 s | ≈ 2,3 |
 | W01–W12 | 100% | 5,6–11,0 s | — |
 
-Wniosek: żaden profil ani zamek nie jest „nieotwieralny”, a bot niezdarny słabnie monotonicznie z profilem pinowej. Boty nie słuchają zdarzeń (wiedzą z planu, gdzie jest okno), więc **czytelność** (`noise`, podobieństwo set/false_set) zmierzy dopiero bot czujący (D-18, v0.2) i playtesty.
+Wniosek: żaden profil ani zamek nie jest „nieotwieralny”, a bot niezdarny słabnie monotonicznie z profilem pinowej. Boty nie słuchają zdarzeń (wiedzą z planu, gdzie jest okno), więc **czytelność** (`noise`, podobieństwo set/false_set) zmierzy dopiero bot czujący (etap 3 weryfikatora, dodany w lockcore równolegle z tym dokumentem: zamki z §2–4 trzeba przez niego przepuścić) i playtesty.
 
 ## 7. Przykład pliku `lockwright.lock/1` (`pin.s1`)
 

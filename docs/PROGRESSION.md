@@ -105,3 +105,16 @@ Dodatek „rodzina X” dostarcza:
 6. klucze i18n PL i EN.
 
 Bramka publikacji: weryfikator na 10 000 seedów, kompletność kanałów i kompletność i18n (`ARCHITECTURE.md` §7).
+
+## 7. Zmiany po ONBOARDING/LEVELS
+
+Dopisane 2026-11-04 po `ONBOARDING.md`, `LEVELS.md` i `HUD.md`. Powyższe sekcje obowiązują, z tymi zmianami:
+
+1. **Kolejność pierwszej sesji (D-21):** pierwsze uruchomienie (język, kalibracja haptyki, notka „to gra, nie kurs”) → `pin.s1`–`pin.s3` w imadle warsztatu → `pin.a1` (własne drzwi warsztatu, zamek testu A1) → Tryb Ciągły. Wkładka bębenkowa jest pierwszą rodziną, bo na niej mierzymy A1. Płytkowa wchodzi z własnym S1–S3 przed pierwszym zamkiem płytkowym w serii.
+2. **Pula MVP przy lockcore v0.1:** tylko `pin_tumbler` (profile P01–P17) i `wafer` (W01–W12) z `LEVELS.md` §5. Tabela §2.2 (egipski, zapadkowy, płytkowy na zamkach 1–3) obowiązuje, gdy te rodziny będą w lockcore. Do tego czasu zamki 1–3 serii biorą W01–W02 i P01.
+3. **Wybór profilu w serii:** najniższy nieukończony profil rodziny o `tier ≤ tier(n)`. Gdy wszystkie z tego tieru są ukończone, losowy z nich. P17 nigdy bezpośrednio po P16 (`LEVELS.md` §5.1).
+4. **S3 to pierwsza pułapka, a nowe zabezpieczenia mają lekcje wtrącone (D-22):** pinowa S3 uczy overset i zrzutu, a szpulka dostaje lekcję `pin.l_spool` przed pierwszym zamkiem z P06 (albo `pin.l_serrated`, jeśli pierwszy trafi się kołek ząbkowany). Płytkowa S3 to „Za mocno” (napięcie powyżej `tau_safe`, złamanie na niby), a falownik ma lekcję przy zakupie (`ONBOARDING.md` §9.2), bo na starcie gracz go nie ma.
+5. **Czas samouczka:** zamiast „poniżej 2 minut” na każdą rodzinę: mediana ≤ 3 min dla pierwszej rodziny (pinowa, z nauką obu kciuków), ≤ 2 min dla kolejnych.
+6. **„W ciemności” (§5):** dostępne po S3, ale gracz poznaje je raz, w skryptowanej scenie (minutnik gaśnie w drugim zamku serii, `ONBOARDING.md` §7). Potem włącznik minutnika przed każdym zamkiem.
+7. **Mistrz rodziny (§5):** `pin_tumbler` ma 5 zamków mistrzowskich (`pin.m1`–`pin.m5`), `wafer` 3 (`wafer.m1`–`wafer.m3`, wbrew „nie dotyczy” w `LOCKS.md` §2.4). Zamek mistrzowski odblokowuje się po ukończeniu profilu tego samego tieru.
+8. **Przegrana w samouczku i lekcjach wtrąconych** nie kosztuje wytrycha (bez zmian), a dotyczy też `wafer.s3`, gdzie złamanie jest częścią lekcji.
