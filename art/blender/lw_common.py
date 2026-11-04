@@ -25,8 +25,8 @@ def node_mat(name, base, metallic, rough, rough_var=0.06, aniso=0.0, scratch=0.0
         # face-milling arcs: large-radius rings ~1.4 mm apart, plus fine stretched noise (lathe/grind)
         mp = n.new('ShaderNodeMapping'); mp.inputs['Location'].default_value = (-60, 0, 25)
         l.new(tc.outputs['Object'], mp.inputs['Vector'])
-        wv = n.new('ShaderNodeTexWave'); wv.wave_type = 'RINGS'; wv.inputs['Scale'].default_value = 2.4
-        wv.inputs['Distortion'].default_value = 5.0; wv.inputs['Detail'].default_value = 6; wv.inputs['Detail Scale'].default_value = 2
+        wv = n.new('ShaderNodeTexWave'); wv.wave_type = 'RINGS'; wv.inputs['Scale'].default_value = 6.0
+        wv.inputs['Distortion'].default_value = 1.2; wv.inputs['Detail'].default_value = 6; wv.inputs['Detail Scale'].default_value = 2
         l.new(mp.outputs['Vector'], wv.inputs['Vector'])
         mp2 = n.new('ShaderNodeMapping'); mp2.inputs['Scale'].default_value = (0.05, 1, 3.0)
         l.new(tc.outputs['Object'], mp2.inputs['Vector'])
@@ -34,10 +34,10 @@ def node_mat(name, base, metallic, rough, rough_var=0.06, aniso=0.0, scratch=0.0
         l.new(mp2.outputs['Vector'], fn.inputs['Vector'])
         mx = n.new('ShaderNodeMix'); mx.data_type = 'FLOAT'; mx.inputs['Factor'].default_value = 0.5
         l.new(wv.outputs['Fac'], mx.inputs['A']); l.new(fn.outputs['Fac'], mx.inputs['B'])
-        mix = n.new('ShaderNodeMix'); mix.data_type = 'FLOAT'; mix.inputs['Factor'].default_value = scratch * 0.28
+        mix = n.new('ShaderNodeMix'); mix.data_type = 'FLOAT'; mix.inputs['Factor'].default_value = scratch * 0.16
         l.new(rough_out, mix.inputs['A']); l.new(mx.outputs['Result'], mix.inputs['B'])
         rough_out = mix.outputs['Result']
-        bump = n.new('ShaderNodeBump'); bump.inputs['Strength'].default_value = 0.025 * scratch; bump.inputs['Distance'].default_value = 0.02
+        bump = n.new('ShaderNodeBump'); bump.inputs['Strength'].default_value = 0.012 * scratch; bump.inputs['Distance'].default_value = 0.02
         l.new(mx.outputs['Result'], bump.inputs['Height']); l.new(bump.outputs['Normal'], bsdf.inputs['Normal'])
     # grime in crevices: ambient occlusion darkens base colour
     ao = n.new('ShaderNodeAmbientOcclusion'); ao.inputs['Distance'].default_value = 0.8
@@ -45,7 +45,7 @@ def node_mat(name, base, metallic, rough, rough_var=0.06, aniso=0.0, scratch=0.0
     dark = n.new('ShaderNodeMix'); dark.data_type = 'RGBA'; dark.blend_type = 'MULTIPLY'; dark.inputs['Factor'].default_value = 0.55
     l.new(ao.outputs['Color'], dark.inputs['A']); l.new(ao.outputs['AO'], dark.inputs['B'])
     if scratch > 0:
-        tone = n.new('ShaderNodeMapRange'); tone.inputs['To Min'].default_value = 0.9; tone.inputs['To Max'].default_value = 1.0
+        tone = n.new('ShaderNodeMapRange'); tone.inputs['To Min'].default_value = 0.95; tone.inputs['To Max'].default_value = 1.0
         l.new(mx.outputs['Result'], tone.inputs['Value'])
         tint = n.new('ShaderNodeMix'); tint.data_type = 'RGBA'; tint.blend_type = 'MULTIPLY'; tint.inputs['Factor'].default_value = 1.0
         l.new(dark.outputs['Result'], tint.inputs['A']); l.new(tone.outputs['Result'], tint.inputs['B'])
@@ -148,17 +148,39 @@ def spring(name, x, z0, z1, coils, r=1.15, wire=0.22, y=1.5):
     o = bpy.data.objects.new(name, cu); bpy.context.collection.objects.link(o); o.data.materials.append(M['spring']); return o
 
 
-def flat_tool(name, path, height, thick, y, mat='pick'):
-    # build a ribbon mesh along an XZ polyline, then solidify
-    bm = bmesh.new(); prev = None; verts = []
-    pts = [Vector((x, y, z)) for x, z in path]
-    for i, p in enumerate(pts):
-        d = (pts[min(i + 1, len(pts) - 1)] - pts[max(i - 1, 0)]).normalized(); nrm = Vector((-d.z, 0, d.x))
-        verts.append((bm.verts.new(p + nrm * height / 2), bm.verts.new(p - nrm * height / 2)))
-    for (a, b), (c, d) in zip(verts, verts[1:]): bm.faces.new((a, b, d, c))
+def _catmull(pts, n=12):
+    """Smooth a polyline (list of Vector) with centripetal-ish Catmull-Rom, n samples per segment."""
+    P = [pts[0]] + pts + [pts[-1]]; out = []
+    for i in range(1, len(P) - 2):
+        p0, p1, p2, p3 = P[i - 1], P[i], P[i + 1], P[i + 2]
+        for k in range(n):
+            t = k / n; t2 = t * t; t3 = t2 * t
+            out.append(0.5 * ((2 * p1) + (-p0 + p2) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t2 + (-p0 + 3 * p1 - 3 * p2 + p3) * t3))
+    out.append(pts[-1]); return out
+
+def flat_tool(name, path, height, thick, y, mat='pick', tip='round'):
+    """Stamped flat-stock tool (pick blade, tension wrench): smooth centreline in XZ, constant height,
+    rounded polished tip, extruded `thick` along Y, edges eased with a small harden-normals bevel."""
+    c = _catmull([Vector((x, 0, z)) for x, z in path])
+    left, right = [], []
+    for i, p in enumerate(c):
+        d = (c[min(i + 1, len(c) - 1)] - c[max(i - 1, 0)]).normalized(); nrm = Vector((-d.z, 0, d.x))
+        left.append(p + nrm * height / 2); right.append(p - nrm * height / 2)
+    outline = left[:]
+    if tip == 'round':  # semicircular cap at the working end
+        d = (c[-1] - c[-2]).normalized(); nrm = Vector((-d.z, 0, d.x))
+        for k in range(1, 12):
+            a = math.pi * k / 12
+            outline.append(c[-1] + nrm * math.cos(a) * height / 2 + d * math.sin(a) * height / 2)
+    outline += right[::-1]
+    bm = bmesh.new()
+    vs = [bm.verts.new((v.x, y - thick / 2, v.z)) for v in outline]
+    f = bm.faces.new(vs)
+    ext = bmesh.ops.extrude_face_region(bm, geom=[f])
+    for v in [g for g in ext['geom'] if isinstance(g, bmesh.types.BMVert)]: v.co.y += thick
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
     me = bpy.data.meshes.new(name); bm.to_mesh(me); bm.free()
     o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o)
-    s = o.modifiers.new('sol', 'SOLIDIFY'); s.thickness = thick; s.offset = 0
-    b = o.modifiers.new('bev', 'BEVEL'); b.width = min(thick, height) * 0.3; b.segments = 2
-    me.materials.append(M[mat]); smooth(o); return o
-
+    b = o.modifiers.new('bev', 'BEVEL'); b.width = min(thick, height) * 0.22; b.segments = 3; b.limit_method = 'ANGLE'; b.angle_limit = math.radians(50); b.harden_normals = True
+    for poly in me.polygons: poly.use_smooth = True
+    me.materials.append(M[mat]); return o

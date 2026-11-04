@@ -72,13 +72,13 @@ pin('e_drv', PINS_X[4], KP_FLOOR + 4.2, 4.0); spring('e_spr', PINS_X[4], KP_FLOO
 
 # ---------------------------------------------------------------- tools: tension wrench + hook pick (spring steel, flat)
 # hook pick: shaft along keyway, slight bend under stress, hook under pin c
-hook = [(-46, -3.4), (-30, -3.35), (-10, -3.2), (2, -3.0), (8, -2.75), (11.2, -2.2), (12.4, -1.2), (12.8, cz - 0.15)]
-flat_tool('pick', hook, 1.0, 0.5, 0.6)
+hook = [(-46, -3.6), (-25, -3.55), (-5, -3.45), (5, -3.3), (9.5, -3.05), (11.6, -2.5), (12.5, -1.4), (12.85, cz - 0.55)]
+flat_tool('pick', hook, 1.1, 0.55, 0.6)
 # pick handle (outside the door, off to the left)
 h = box('pick_handle', -60, -44, 0.1, 2.2, -4.6, -2.2); link(h, M['handle']); bevel(h, 0.5)
 # tension wrench: short leg in the bottom of the keyway, long leg down along the door face
-wr = [(4.0, -4.7), (-3.0, -4.7), (-4.4, -5.4), (-5.0, -7.0), (-5.0, -40)]
-flat_tool('wrench', wr, 1.5, 0.7, 0.4)
+wr = [(4.0, -4.6), (-3.2, -4.6), (-4.3, -4.9), (-4.9, -5.8), (-5.0, -7.2), (-5.0, -40)]
+flat_tool('wrench', wr, 1.5, 0.75, 0.4, tip='flat')
 
 # ---------------------------------------------------------------- door + escutcheon (section)
 door = box('door', 0.0, 44, 0, 24, -60, 60)
@@ -120,7 +120,8 @@ cam.location = target + Vector((math.sin(yaw) * dist, -math.cos(yaw) * dist * ma
 cam.rotation_euler = (target - cam.location).to_track_quat('-Z', 'Y').to_euler()
 cam_d.dof.use_dof = True; cam_d.dof.focus_distance = dist; cam_d.dof.aperture_fstop = 16
 if SHOT == 'loupe':  # macro through the loupe: shear line at pin c
-    target = Vector((PINS_X[2], 0.0, SHEAR)); dist = 42; cam_d.lens = 180
+    tx, tz = [float(v) for v in arg('--target', '%f,%f' % (PINS_X[2], SHEAR)).split(',')]
+    target = Vector((tx, 0.0, tz)); dist = float(arg('--dist', '42')); cam_d.lens = 180
     cam.location = target + Vector((math.sin(yaw) * dist, -math.cos(yaw) * dist * math.cos(pitch), math.sin(pitch) * dist))
     cam.rotation_euler = (target - cam.location).to_track_quat('-Z', 'Y').to_euler()
     cam_d.dof.focus_distance = dist; cam_d.dof.aperture_fstop = 5.6; AIM.location = target
