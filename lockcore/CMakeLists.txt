@@ -8,6 +8,7 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "" FORCE)
 endif()
 
+option(LOCKCORE_BUILD_TESTS "Build lockcore tests" ON)
 option(LOCKCORE_SANITIZE "Build with ASan + UBSan" OFF)
 
 add_library(lockcore
@@ -38,3 +39,22 @@ if(LOCKCORE_SANITIZE)
   target_link_options(lockcore PUBLIC -fsanitize=address,undefined)
 endif()
 
+
+if(LOCKCORE_BUILD_TESTS)
+  enable_testing()
+  add_executable(lockcore_tests
+    tests/test_main.cpp
+    tests/test_core.cpp
+    tests/test_json.cpp
+    tests/test_pin_tumbler.cpp
+    tests/test_wafer.cpp
+    tests/test_replay.cpp
+  )
+  target_link_libraries(lockcore_tests PRIVATE lockcore)
+  target_compile_definitions(lockcore_tests PRIVATE LOCKCORE_GOLDEN_DIR="${CMAKE_CURRENT_SOURCE_DIR}/tests/golden")
+  add_test(NAME lockcore_unit COMMAND lockcore_tests)
+  # No floating point anywhere in the library sources (determinism, D-07).
+  add_test(NAME lockcore_no_float
+    COMMAND ${CMAKE_COMMAND} -DDIRS=${CMAKE_CURRENT_SOURCE_DIR}/src;${CMAKE_CURRENT_SOURCE_DIR}/include
+            -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/no_float.cmake)
+endif()

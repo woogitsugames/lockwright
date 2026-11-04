@@ -1,0 +1,57 @@
+{
+  "schema": "lockwright.replay/1",
+  "family": "pin_tumbler",
+  "rules_version": 1,
+  "seed": "1001",
+  "difficulty": {
+    "tier": 2,
+    "n_min": 3,
+    "n_max": 3,
+    "sec_min": 0,
+    "sec_max": 0,
+    "win_shear_q16": 7864,
+    "tension_band_q16": 18350,
+    "overset_margin_q16": 6554,
+    "noise_q16": 0,
+    "bind_spread_q16": 65536,
+    "multi_bind_p_q16": 0,
+    "drop_grace_ms": 300,
+    "s_max_q16": 65536,
+    "time_limit_s": 60
+  },
+  "input_unit": "1/256",
+  "input_fields": [
+    "run",
+    "tension",
+    "pick_depth",
+    "pick_lift",
+    "rotate",
+    "push",
+    "tool"
+  ],
+  "inputs": [
+    [
+      30,
+      128,
+      213,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      90,
+      256,
+      213,
+      256,
+      0,
+      0,
+      0
+    ]
+  ],
+  "expected": {
+    "event_hash_fnv1a64": "8f0b2bff4f6ac777",
+    "steps": 79,
+    "open": false
+  }
+}

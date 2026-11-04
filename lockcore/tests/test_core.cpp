@@ -1,0 +1,111 @@
+#include "helpers.hpp"
+#include "testing.hpp"
+
+using namespace lockcore;
+
+TEST_CASE("fixed: q16 helpers") {
+  CHECK_EQ(q16_milli(1000), Q16_ONE);
+  CHECK_EQ(q16_milli(500), Q16_ONE / 2);
+  CHECK_EQ(q_mul(Q16_ONE / 2, Q16_ONE / 2), Q16_ONE / 4);
+  CHECK_EQ(q_mul(-Q16_ONE / 2, Q16_ONE / 2), -Q16_ONE / 4);
+  CHECK_EQ(q_div(Q16_ONE / 4, Q16_ONE / 2), Q16_ONE / 2);
+  CHECK_EQ(ms_to_steps(300), 36);
+  CHECK_EQ(ms_to_steps(180), 22);
+  CHECK_EQ(quantize_256(300), 256);
+  CHECK_EQ(quantize_256(-300), -256);
+  CHECK_EQ(quantize_256(100), 0);
+}
+
+TEST_CASE("prng: PCG32 reference vector") {
+  // pcg32-demo: seed 42, stream 54.
+  Pcg32 r(42u, 54u);
+  const std::uint32_t expected[] = {0xa15c02b7u, 0x7b47f409u, 0xba1d3330u, 0x83d2f293u, 0xbfa4784bu, 0xcbed606eu};
+  for (std::uint32_t e : expected) CHECK_EQ(r.next(), e);
+}
+
+TEST_CASE("prng: bounded and streams") {
+  Pcg32 a(7, 1), b(7, 2);
+  bool differ = false;
+  for (int i = 0; i < 16; ++i) differ = differ || a.next() != b.next();
+  CHECK(differ);
+  Pcg32 r(1, 1);
+  for (int i = 0; i < 10000; ++i) {
+    const auto v = r.range(-5, 5);
+    CHECK(v >= -5 && v <= 5);
+  }
+}
+
+TEST_CASE("hash: FNV-1a 64 reference") {
+  CHECK_EQ(fnv1a64(""), 0xcbf29ce484222325ULL);
+  CHECK_EQ(fnv1a64("a"), 0xaf63dc4c8601ec8cULL);
+  CHECK(derive_seed(1, "pin_tumbler", 1, "gen") != derive_seed(1, "wafer", 1, "gen"));
+}
+
+TEST_CASE("input: quantisation to 1/256 and clamping") {
+  InputFrame f;
+  f.tension = Q16_ONE + 5000;
+  f.pick_depth = -10;
+  f.pick_lift = q16_milli(333);
+  const InputFrame q = quantize(f);
+  CHECK_EQ(q.tension, Q16_ONE);
+  CHECK_EQ(q.pick_depth, 0);
+  CHECK_EQ(q.pick_lift % INPUT_QUANTUM, 0);
+  CHECK(q_abs(q.pick_lift - q16_milli(333)) <= INPUT_QUANTUM / 2);
+}
+
+TEST_CASE("components: pick magnet") {
+  CHECK_EQ(locate_element(element_center(0, 5), 5), 0);
+  CHECK_EQ(locate_element(element_center(4, 5), 5), 4);
+  // Exactly between two elements: no contact.
+  CHECK_EQ(locate_element(Q16_ONE / 5, 5), -1);
+}
+
+TEST_CASE("components: tension hold fires once after grace") {
+  TensionHold h;
+  int fired = 0;
+  for (int i = 0; i < 100; ++i) fired += h.update(0, q16_milli(100), 36) ? 1 : 0;
+  CHECK_EQ(fired, 1);
+  CHECK(!h.update(q16_milli(200), q16_milli(100), 36));
+  CHECK_EQ(h.below_steps(), 0);
+}
+
+TEST_CASE("components: tool wear lowers capacity, wear events every 10 points") {
+  ToolStress a, b;
+  a.init(Q16_ONE, 0, q16_milli(100));
+  b.init(Q16_ONE, 100, q16_milli(100));
+  CHECK(b.capacity() < a.capacity());
+  std::vector<LockEvent> ev;
+  EventSink sink(ev);
+  for (int t = 0; t < 1000 && !a.broken(); ++t) {
+    a.load(Q16_ONE / 2, Q16_ONE / 2);
+    a.end_step(t, sink, 0, MaterialId::steel);
+  }
+  CHECK(a.broken());
+  int wear = 0, stress = 0, brk = 0;
+  for (const auto& e : ev) {
+    wear += e.kind == EventKind::wear;
+    stress += e.kind == EventKind::stress;
+    brk += e.kind == EventKind::break_;
+  }
+  CHECK(wear >= 1);
+  CHECK(stress >= 1);
+  CHECK_EQ(brk, 1);
+}
+
+TEST_CASE("events: names and priorities") {
+  CHECK(event_kind_name(EventKind::break_) == "break");
+  EventKind k{};
+  CHECK(event_kind_from_name("counter_rotate", k) && k == EventKind::counter_rotate);
+  CHECK(event_priority(EventKind::break_) > event_priority(EventKind::stress));
+  CHECK(event_priority(EventKind::stress) > event_priority(EventKind::open));
+  CHECK(event_priority(EventKind::set) > event_priority(EventKind::false_set));
+  CHECK(event_priority(EventKind::contact) > event_priority(EventKind::wear));
+}
+
+TEST_CASE("registry: builtin families") {
+  const auto& reg = FamilyRegistry::builtin();
+  CHECK(reg.find("pin_tumbler") != nullptr);
+  CHECK(reg.find("wafer") != nullptr);
+  CHECK(reg.find("lever") == nullptr);
+  CHECK_EQ(reg.all().size(), static_cast<std::size_t>(2));
+}
