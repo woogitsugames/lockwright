@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(lockcore VERSION 0.1.0 LANGUAGES CXX)
+project(lockcore VERSION 0.2.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -40,7 +40,8 @@ elseif(MSVC)
 endif()
 
 if(LOCKCORE_SANITIZE)
-  target_compile_options(lockcore PUBLIC -fsanitize=address,undefined -fno-omit-frame-pointer)
+  # UB is fatal so that ctest fails on it (v0.2).
+  target_compile_options(lockcore PUBLIC -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer)
   target_link_options(lockcore PUBLIC -fsanitize=address,undefined)
 endif()
 
@@ -69,6 +70,9 @@ if(LOCKCORE_BUILD_TESTS)
   target_link_libraries(lockcore_tests PRIVATE lockcore)
   target_compile_definitions(lockcore_tests PRIVATE LOCKCORE_GOLDEN_DIR="${CMAKE_CURRENT_SOURCE_DIR}/tests/golden")
   add_test(NAME lockcore_unit COMMAND lockcore_tests)
+  # Light fuzzing, 100k random steps per family; the timeout catches hangs.
+  add_test(NAME lockcore_fuzz COMMAND lockcore_tests fuzz:)
+  set_tests_properties(lockcore_fuzz PROPERTIES TIMEOUT 300)
   # No floating point anywhere in the library sources (determinism, D-07).
   add_test(NAME lockcore_no_float
     COMMAND ${CMAKE_COMMAND} -DDIRS=${CMAKE_CURRENT_SOURCE_DIR}/src;${CMAKE_CURRENT_SOURCE_DIR}/include

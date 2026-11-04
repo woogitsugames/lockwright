@@ -47,6 +47,10 @@ cmake -S lockcore -B lockcore/build && cmake --build lockcore/build   # lockcore
 ctest --test-dir lockcore/build --output-on-failure  # testy lockcore + złote powtórki + brak float
 lockcore/build/verify_seeds --seeds 1000            # weryfikator (CI); pełny: --seeds 10000 (A3)
 lockcore/build/replay_tool play lockcore/tests/golden/wafer_t2_s77.replay.json   # powtórka → hash
+lockcore/build/verify_seeds --seeds 1000 --family warded     # jedna rodzina (wooden_pin, warded, lever, lever_detector, ring_combo, …)
+lockcore/build/verify_seeds --seeds 10000 --feel 1000       # bot czujący (etap 3, raport) tylko na 1000 pierwszych seedów
+lockcore/build/replay_tool record ring_combo 3 11 out.replay.json --feel   # nagraj bota czującego (--clumsy: niezdarny)
+lockcore/build/lockcore_tests fuzz                          # fuzzing: 100k losowych kroków na rodzinę (pod ASan: build-asan)
 ```
 
 ## Mapa dokumentów
