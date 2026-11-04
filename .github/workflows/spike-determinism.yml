@@ -56,7 +56,11 @@ jobs:
         if: matrix.target != 'x86_64-clang'
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq qemu-user-static g++-aarch64-linux-gnu
+          # Ubuntu >= 25.04 ships the static user emulators in qemu-user (qemu-user-static is gone)
+          sudo apt-get install -y -qq qemu-user-static g++-aarch64-linux-gnu \
+            || sudo apt-get install -y -qq qemu-user g++-aarch64-linux-gnu
+          Q=$(command -v qemu-aarch64-static || command -v qemu-aarch64)
+          echo "QEMU_AARCH64=$Q" >> "$GITHUB_ENV"; "$Q" --version | head -1
       - name: Install NDK 29.0.14206865
         if: matrix.target == 'android-arm64-clang'
         run: |
@@ -72,14 +76,14 @@ jobs:
                 -DCMAKE_TOOLCHAIN_FILE=$PWD/spikes/determinism/cmake/aarch64-linux-gnu.cmake -DDET_STATIC=ON ;;
             android-arm64-clang) cmake -S spikes/determinism -B $B \
                 -DCMAKE_TOOLCHAIN_FILE=$NDK/build/cmake/android.toolchain.cmake -DANDROID_ABI=arm64-v8a \
-                -DANDROID_PLATFORM=android-30 -DDET_STATIC=ON -DCMAKE_CROSSCOMPILING_EMULATOR=qemu-aarch64-static ;;
+                -DANDROID_PLATFORM=android-30 -DDET_STATIC=ON -DCMAKE_CROSSCOMPILING_EMULATOR=$QEMU_AARCH64 ;;
           esac
       - name: Build
         run: cmake --build spikes/determinism/build/${{ matrix.target }} --parallel
       - name: Checks
         run: |
           gunzip corpus.lwfz.gz
-          EMU=""; [ "${{ matrix.target }}" != "x86_64-clang" ] && EMU=qemu-aarch64-static
+          EMU=""; [ "${{ matrix.target }}" != "x86_64-clang" ] && EMU=$QEMU_AARCH64
           spikes/determinism/tools/run_platform.sh ${{ matrix.target }} spikes/determinism/build/${{ matrix.target }} corpus.lwfz $EMU
       - uses: actions/upload-artifact@v4
         if: always()
