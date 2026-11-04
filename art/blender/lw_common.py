@@ -238,7 +238,7 @@ def _noise(nt, vec, scale, detail=6, rough=0.55, dist=0.0, stretch=None):
 
 def metal(name, base, rough, aniso=0.0, marks='grind', marks_scale=1.0, marks_axis=(1, 0, 0), marks_amt=1.0,
           wear=0.5, wear_col=None, grime=0.5, grime_col=(0.05, 0.04, 0.03), smudge=0.5, bevel_r=0.04, metallic=1.0,
-          tint_var=0.04, seed=0.0):
+          tint_var=0.04, seed=0.0, patina=0.0):
     """Physically plausible machined metal. marks: 'grind' (linear, along marks_axis), 'mill' (face-mill arcs),
     'turn' (circumferential lathe lines around marks_axis), 'stamp' (fine isotropic + rolling streaks), None."""
     m = bpy.data.materials.new(name); m.use_nodes = True; nt = m.node_tree; l = nt.links
@@ -285,6 +285,10 @@ def metal(name, base, rough, aniso=0.0, marks='grind', marks_scale=1.0, marks_ax
     # --- base colour: subtle tint variation, grime in crevices, brighter worn edges
     tv = _noise(nt, P, 1.2, detail=3)
     col = _mix(nt, (*[c * (1 - tint_var) for c in base], 1), (*[min(1, c * (1 + tint_var)) for c in base], 1), tv)
+    if patina:  # tarnish: darker, browner, rougher blotches (fingerprints, oxidation), never on worn edges
+        pm = _maprange(nt, _noise(nt, P, 0.6, detail=8, rough=0.65), 0.42, 0.62, 0.0, patina)
+        col = _mix(nt, col, (base[0] * 0.42, base[1] * 0.36, base[2] * 0.30, 1), pm)
+        r = _mix(nt, r, min(1.0, rough + 0.2), pm, dtype='FLOAT')
     em = _edge_mask(nt) if wear else None
     if wear:
         wc = wear_col or tuple(min(1, c * 1.08) for c in base)
@@ -382,7 +386,7 @@ def iron(name, rust=0.6, base=(0.16, 0.155, 0.15), rough=0.55, polish=0.5, scale
     return m
 
 def wood(name, light=(0.42, 0.26, 0.13), dark=(0.20, 0.10, 0.045), axis='X', ring=0.9, rough=0.6, coat=0.0,
-         wear=0.5, grime=0.6, pores=1.0, seed=0.0, oiled=0.2):
+         wear=0.5, grime=0.6, pores=1.0, seed=0.0, oiled=0.2, warp=3.0, center=(37, -61)):
     """Real wood: annual rings around the grain axis (log centre offset), distorted, with stretched pores,
     medullary flecks, worn lighter edges and dark handling grime in corners."""
     m = bpy.data.materials.new(name); m.use_nodes = True; nt = m.node_tree; l = nt.links
@@ -391,18 +395,24 @@ def wood(name, light=(0.42, 0.26, 0.13), dark=(0.20, 0.10, 0.045), axis='X', rin
     # map so that the grain axis becomes Z (rings = distance from Z axis)
     mp = nt.nodes.new('ShaderNodeMapping'); l.new(P, mp.inputs['Vector'])
     rot = {'X': (0, math.pi / 2, 0), 'Y': (math.pi / 2, 0, 0), 'Z': (0, 0, 0)}[axis]
-    mp.inputs['Rotation'].default_value = rot; mp.inputs['Location'].default_value = (37 + seed * 11, -61 - seed * 7, seed * 23)
+    mp.inputs['Rotation'].default_value = rot; mp.inputs['Location'].default_value = (center[0] + seed * 11, center[1] - seed * 7, seed * 23)
     Q = mp.outputs['Vector']
     # warp coordinates with low-frequency noise (figure)
-    wn = nt.nodes.new('ShaderNodeTexNoise'); wn.inputs['Scale'].default_value = 0.025; wn.inputs['Detail'].default_value = 3
-    l.new(Q, wn.inputs['Vector'])
+    wn = nt.nodes.new('ShaderNodeTexNoise'); wn.inputs['Scale'].default_value = 0.05; wn.inputs['Detail'].default_value = 3
+    st = nt.nodes.new('ShaderNodeMapping'); st.inputs['Scale'].default_value = (1, 1, 0.08); l.new(Q, st.inputs['Vector'])
+    l.new(st.outputs['Vector'], wn.inputs['Vector'])
     wv = nt.nodes.new('ShaderNodeVectorMath'); wv.operation = 'SCALE'; wv.inputs['Scale'].default_value = 0.0
     cen = nt.nodes.new('ShaderNodeVectorMath'); cen.operation = 'SUBTRACT'; l.new(wn.outputs['Color'], cen.inputs[0]); cen.inputs[1].default_value = (0.5, 0.5, 0.5)
-    sc = nt.nodes.new('ShaderNodeVectorMath'); sc.operation = 'SCALE'; sc.inputs['Scale'].default_value = 9.0; l.new(cen.outputs[0], sc.inputs[0])
+    sc = nt.nodes.new('ShaderNodeVectorMath'); sc.operation = 'SCALE'; sc.inputs['Scale'].default_value = warp; l.new(cen.outputs[0], sc.inputs[0])
     add = nt.nodes.new('ShaderNodeVectorMath'); add.operation = 'ADD'; l.new(Q, add.inputs[0]); l.new(sc.outputs[0], add.inputs[1])
     flat = nt.nodes.new('ShaderNodeMapping'); flat.inputs['Scale'].default_value = (1, 1, 0); l.new(add.outputs[0], flat.inputs['Vector'])
     ln = nt.nodes.new('ShaderNodeVectorMath'); ln.operation = 'LENGTH'; l.new(flat.outputs['Vector'], ln.inputs[0])
-    rr = nt.nodes.new('ShaderNodeMath'); rr.operation = 'MULTIPLY'; rr.inputs[1].default_value = ring; l.new(ln.outputs['Value'], rr.inputs[0])
+    # uneven ring widths: 1D noise of the radius itself shifts the ring phase
+    rn = nt.nodes.new('ShaderNodeTexNoise'); rn.noise_dimensions = '1D'; rn.inputs['Scale'].default_value = 0.35 * ring; rn.inputs['Detail'].default_value = 4
+    l.new(ln.outputs['Value'], rn.inputs['W'])
+    rj = nt.nodes.new('ShaderNodeMath'); rj.operation = 'MULTIPLY_ADD'; l.new(rn.outputs['Fac'], rj.inputs[0]); rj.inputs[1].default_value = 4.0 / max(ring, 0.05)
+    l.new(ln.outputs['Value'], rj.inputs[2])
+    rr = nt.nodes.new('ShaderNodeMath'); rr.operation = 'MULTIPLY'; rr.inputs[1].default_value = ring; l.new(rj.outputs[0], rr.inputs[0])
     fr = nt.nodes.new('ShaderNodeMath'); fr.operation = 'FRACT'; l.new(rr.outputs[0], fr.inputs[0])
     # late wood: sharp dark band at the end of each ring, early wood soft
     pw = nt.nodes.new('ShaderNodeMath'); pw.operation = 'POWER'; pw.inputs[1].default_value = 3.0; l.new(fr.outputs[0], pw.inputs[0])

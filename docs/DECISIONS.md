@@ -80,7 +80,7 @@ Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright �
 ## D-25 — Informacje przed i po zamku tylko na przedmiotach; pauza jako klapka zwijki
 2026-11-04 · przyjęta (projektant poziomów, rozwinięcie D-12) · Przed zamkiem: telefon w dłoni z wiadomością z dyspozytorni (Tryb Zleceń) albo kartka z bloczka dyżuru z kreskami serii (Tryb Ciągły). Po zamku: rachunek z kalką wypisywany ołówkiem, pieczątki („bez śladów”, „w ciemności”, „mistrz”), monety jako krążki na rachunku, napiwek jako przedmiot od klienta. Pauza to klapka zwijki z napą (48 dp), która zakrywa przekrój. Bez kart SaaS, ikon z paczek i liczników. Szczegóły: `HUD.md` §6–8 i §13.
 
-## D-21 — iOS haptics: klasyczny plugin .gdip zamiast GDExtension
+## D-29 — iOS haptics: klasyczny plugin .gdip zamiast GDExtension
 2026-11-04 · przyjęta (koordynator) · korekta D-20: plik `.gdextension` tylko z wpisami iOS nie przechodzi walidacji konfiguracji przy eksporcie Androida w 4.7.2 („No GDExtension library found for current OS”), więc Android (plugin v2 AAR) i iOS dostają osobne mostki: Android = AAR, iOS = klasyczny `.gdip` + statyczna lib `.a` (TECH.md §1.2 ścieżka 1, fallback z D-20 okazał się właściwy od razu). Kod ObjC++ bez zmian (`platform/ios/lockwright_haptics/`).
 
 ## D-26 — lockcore v0.2: bot „czujący” jako etap 3 weryfikatora (miara miękka)
@@ -91,3 +91,5 @@ Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright �
 
 ## D-28 — lockcore v0.2: API tylko rozszerzane; fuzzing w CI z fatalnym UB
 2026-11-04 · przyjęta (programista lockcore) · Sesja B buduje GDExtension z obecnych nagłówków, więc v0.2 niczego w API nie usuwa ani nie zmienia sygnatur. Dochodzą: `BotKind` i `run_bot`, `run_feel_bot`, nowe bity `ToolBits`, nagłówki nowych rodzin. Jedyna zmiana zachowania: `ToolStress::ratio()` i `ViewModel::stress` są przycięte do [0, 1], bo fuzzing wykrył wartość > 1 w kroku złamania. Hashe zdarzeń się nie zmieniają. Pełna lista jest w `lockcore/README.md`, w sekcji „API changes”. Fuzzing to 100 000 kroków losowych wejść na rodzinę ze sprawdzaniem niezmienników w każdym kroku. Uruchamia go ctest `lockcore_fuzz` (timeout 300 s), a w CI działa pod ASan i UBSan z `-fno-sanitize-recover=undefined`, więc UB przerywa test. Otwarte: lever t4 ma niższy wynik bota czującego niż t5 (90% wobec 95%), a lever_detector t6 tylko 75%. Do sprawdzenia w playtestach, czy reset detektora nie jest za kosztowny.
+
+> Uwaga: wpis D-29 miał pierwotnie zdublowany numer D-21 (dopisany przez sesję B); przenumerowany 2026-11-04.
