@@ -33,19 +33,19 @@ jobs:
 
       - name: Clone godot-cpp 4.7.2-stable
         run: |
-          git clone --depth 1 --branch godot-4.7.2-stable https://github.com/godotengine/godot-cpp.git godot-cpp
+          git clone --depth 1 https://github.com/godotengine/godot-cpp.git godot-cpp
 
       - name: Build godot-cpp (ios release + debug)
         run: |
           cd godot-cpp
-          scons platform=ios target=template_release arch=arm64 -j8
-          scons platform=ios target=template_debug arch=x86_64 -j8
+          scons platform=ios target=template_release arch=arm64 custom_api_file=gdextension/extension_api-4-7.json -j8
+          scons platform=ios target=template_debug arch=x86_64 custom_api_file=gdextension/extension_api-4-7.json -j8
 
       - name: Build LockwrightHaptics xcframeworks
         run: |
           cd platform/ios/lockwright_haptics
-          GODOT_CPP_SCONSTRUCT=$GITHUB_WORKSPACE/godot-cpp/SConstruct scons platform=ios target=template_release arch=arm64 -j8
-          GODOT_CPP_SCONSTRUCT=$GITHUB_WORKSPACE/godot-cpp/SConstruct scons platform=ios target=template_debug arch=x86_64 -j8
+          GODOT_CPP_SCONSTRUCT=$GITHUB_WORKSPACE/godot-cpp/SConstruct scons platform=ios target=template_release arch=arm64 custom_api_file=gdextension/extension_api-4-7.json -j8
+          GODOT_CPP_SCONSTRUCT=$GITHUB_WORKSPACE/godot-cpp/SConstruct scons platform=ios target=template_debug arch=x86_64 custom_api_file=gdextension/extension_api-4-7.json -j8
           mkdir -p ../../../game/addons/lockwright_haptics/ios
           xcodebuild -create-xcframework \
             -library bin/liblockwright_haptics.ios.template_release.arm64.a \
