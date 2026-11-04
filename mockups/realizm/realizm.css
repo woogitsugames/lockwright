@@ -1,0 +1,28 @@
+/* Direction: Realizm (owner decision D-05). Photoreal renders (Blender Cycles look-dev) + minimal diegetic UI. */
+:root{--ink:#121110;--enamel:#F3EFE6;--enamel-ink:#1E2A33;--stripe:#7A2E22;--chalk:#F1EEE6;--label:#CFC8BA}
+body{background:var(--ink);color:var(--enamel);font-family:"Atkinson Hyperlegible Next",sans-serif;font-variant-numeric:lining-nums}
+.screen{position:relative;width:100vw;height:100vh;overflow:hidden;background:var(--ink)}
+.bar{position:absolute;z-index:2;top:0;left:0;right:0;height:calc(60px + env(safe-area-inset-top));padding:calc(6px + env(safe-area-inset-top)) 12px 6px;display:grid;grid-template-columns:48px 1fr auto;gap:10px;align-items:center;background:rgba(10,9,8,.82)}
+.tap{width:48px;height:48px;border:0;border-radius:6px;background:#E9E4D8;display:grid;place-items:center;box-shadow:inset 0 -3px 0 #b9b2a3}
+.tap svg{width:20px;height:20px;stroke:#2a2622;stroke-width:2.8;fill:none}
+.plate{display:flex;align-items:center;gap:8px;color:var(--enamel)}
+.plate .no{font:700 20px/1 "Bona Nova",serif;background:var(--enamel);color:var(--enamel-ink);border-radius:3px;padding:5px 7px;box-shadow:inset 0 0 0 1.5px var(--enamel-ink),inset 0 0 0 3px var(--enamel)}
+.plate b{font:700 17px/1.05 "Bona Nova",serif;display:block}.plate small{font:500 12px "Atkinson Hyperlegible Next",sans-serif;color:var(--label)}
+.coins{font:700 17px "Atkinson Hyperlegible Next",sans-serif;display:flex;gap:6px;align-items:center}.coins i{width:16px;height:16px;border-radius:50%;border:2px solid #C9A35E}
+.section{position:absolute;top:0;left:0;width:100%;aspect-ratio:824/1100;background:url(../../art/renders/section.png) center/cover}
+.tray{position:absolute;left:0;right:0;top:min(133.5vw,600px);aspect-ratio:824/330;background:url(../../art/renders/tray.png) center/cover}
+.leather{position:absolute;left:0;right:0;bottom:0;top:calc(min(133.5vw,600px) + 40vw);background:url(../../art/renders/tray.png) center 82%/220% auto}
+/* thumb zones: embossed into the leather (no floating panels) */
+.zones{position:absolute;left:0;right:0;bottom:0;top:calc(min(133.5vw,600px) + 40vw);display:grid;grid-template-columns:1fr 1.45fr;gap:12px;padding:14px 14px calc(14px + env(safe-area-inset-bottom))}
+.zone{position:relative;border-radius:10px;box-shadow:inset 0 2px 3px rgba(0,0,0,.65),inset 0 -1px 0 rgba(255,230,200,.12);background:rgba(20,12,6,.28)}
+.zone span{position:absolute;bottom:8px;left:0;right:0;text-align:center;font:600 12px "Atkinson Hyperlegible Next",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:rgba(240,225,205,.7)}
+.knob{position:absolute;left:50%;width:52px;height:52px;margin-left:-26px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#e3c58a,#a57f3e 62%,#6e5222);box-shadow:0 3px 4px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.25)}
+.track{position:absolute;left:50%;top:16px;bottom:34px;width:8px;margin-left:-4px;border-radius:4px;background:#0f0a06;box-shadow:inset 0 1px 2px #000,0 1px 0 rgba(255,230,200,.1)}
+.ring{position:absolute;width:56px;height:56px;margin:-28px;border-radius:50%;border:3px solid rgba(241,238,230,.85);box-shadow:0 0 0 1px rgba(0,0,0,.4)}
+@media (orientation:landscape){
+  .section{left:50%;width:auto;height:100%;transform:translateX(-50%)}
+  .tray{display:none}
+  .zones{top:60px;grid-template-columns:200px 1fr 250px;background:none;padding:12px}
+  .zones .zone.left{grid-column:1}.zones .zone.right{grid-column:3}
+  .zone{background:rgba(18,17,16,.55)}
+}
