@@ -9,6 +9,7 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 
 option(LOCKCORE_BUILD_TESTS "Build lockcore tests" ON)
+option(LOCKCORE_BUILD_TOOLS "Build lockcore tools" ON)
 option(LOCKCORE_SANITIZE "Build with ASan + UBSan" OFF)
 
 add_library(lockcore
@@ -39,6 +40,12 @@ if(LOCKCORE_SANITIZE)
   target_link_options(lockcore PUBLIC -fsanitize=address,undefined)
 endif()
 
+if(LOCKCORE_BUILD_TOOLS)
+  add_executable(verify_seeds tools/verify_seeds.cpp)
+  target_link_libraries(verify_seeds PRIVATE lockcore)
+  add_executable(replay_tool tools/replay_tool.cpp)
+  target_link_libraries(replay_tool PRIVATE lockcore)
+endif()
 
 if(LOCKCORE_BUILD_TESTS)
   enable_testing()
@@ -57,4 +64,7 @@ if(LOCKCORE_BUILD_TESTS)
   add_test(NAME lockcore_no_float
     COMMAND ${CMAKE_COMMAND} -DDIRS=${CMAKE_CURRENT_SOURCE_DIR}/src;${CMAKE_CURRENT_SOURCE_DIR}/include
             -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/no_float.cmake)
+  if(LOCKCORE_BUILD_TOOLS)
+    add_test(NAME verify_seeds_smoke COMMAND verify_seeds --seeds 200)
+  endif()
 endif()
