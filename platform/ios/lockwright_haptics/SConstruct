@@ -8,7 +8,7 @@ sources = Glob("Sources/*.cpp") + Glob("Sources/*.mm")
 
 env.Append(CPPPATH=["include"])
 library = env.SharedLibrary(
-    "bin/liblockwright_haptics.{}.{}.a".format(env["platform"], env["target"]),
+    "bin/liblockwright_haptics.{}.{}.{}.a".format(env["platform"], env["target"], env["arch"]),
     sources,
 )
 # ObjC++ + CoreHaptics/AVFAudio frameworks

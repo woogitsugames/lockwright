@@ -1,0 +1,9 @@
+[gdip]
+
+name="LockwrightHaptics"
+stage="post_init"
+compatible_versions=PackedStringArray("4.7")
+
+[dependencies]
+ios=["res://addons/lockwright_haptics/ios/liblockwright_haptics.a"]
+system=["CoreHaptics.framework", "AVFAudio.framework", "Foundation.framework"]

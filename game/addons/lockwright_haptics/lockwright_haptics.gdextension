@@ -1,7 +1,0 @@
-[configuration]
-entry_symbol = "lockwright_haptics_init"
-compatibility_minimum = "4.7"
-
-[libraries]
-ios.debug = "res://addons/lockwright_haptics/ios/liblockwright_haptics.ios.debug.xcframework"
-ios.release = "res://addons/lockwright_haptics/ios/liblockwright_haptics.ios.release.xcframework"

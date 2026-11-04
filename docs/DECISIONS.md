@@ -79,3 +79,6 @@ Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright �
 
 ## D-25 — Informacje przed i po zamku tylko na przedmiotach; pauza jako klapka zwijki
 2026-11-04 · przyjęta (projektant poziomów, rozwinięcie D-12) · Przed zamkiem: telefon w dłoni z wiadomością z dyspozytorni (Tryb Zleceń) albo kartka z bloczka dyżuru z kreskami serii (Tryb Ciągły). Po zamku: rachunek z kalką wypisywany ołówkiem, pieczątki („bez śladów”, „w ciemności”, „mistrz”), monety jako krążki na rachunku, napiwek jako przedmiot od klienta. Pauza to klapka zwijki z napą (48 dp), która zakrywa przekrój. Bez kart SaaS, ikon z paczek i liczników. Szczegóły: `HUD.md` §6–8 i §13.
+
+## D-21 — iOS haptics: klasyczny plugin .gdip zamiast GDExtension
+2026-11-04 · przyjęta (koordynator) · korekta D-20: plik `.gdextension` tylko z wpisami iOS nie przechodzi walidacji konfiguracji przy eksporcie Androida w 4.7.2 („No GDExtension library found for current OS”), więc Android (plugin v2 AAR) i iOS dostają osobne mostki: Android = AAR, iOS = klasyczny `.gdip` + statyczna lib `.a` (TECH.md §1.2 ścieżka 1, fallback z D-20 okazał się właściwy od razu). Kod ObjC++ bez zmian (`platform/ios/lockwright_haptics/`).

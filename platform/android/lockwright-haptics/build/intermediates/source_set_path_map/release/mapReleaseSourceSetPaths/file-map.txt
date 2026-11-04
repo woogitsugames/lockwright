@@ -1,0 +1,7 @@
+org.woogitsugames.lockwright.haptics.lockwright-haptics-pngs-0 /workspace/github__woogitsugames__lockwright/platform/android/lockwright-haptics/build/generated/res/pngs/release
+org.woogitsugames.lockwright.haptics.lockwright-haptics-resValues-1 /workspace/github__woogitsugames__lockwright/platform/android/lockwright-haptics/build/generated/res/resValues/release
+org.woogitsugames.lockwright.haptics.lockwright-haptics-mergeReleaseResources-2 /workspace/github__woogitsugames__lockwright/platform/android/lockwright-haptics/build/intermediates/incremental/release/mergeReleaseResources/merged.dir
+org.woogitsugames.lockwright.haptics.lockwright-haptics-mergeReleaseResources-3 /workspace/github__woogitsugames__lockwright/platform/android/lockwright-haptics/build/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+org.woogitsugames.lockwright.haptics.lockwright-haptics-release-4 /workspace/github__woogitsugames__lockwright/platform/android/lockwright-haptics/build/intermediates/merged_res/release/mergeReleaseResources
+org.woogitsugames.lockwright.haptics.lockwright-haptics-main-5 /workspace/github__woogitsugames__lockwright/platform/android/lockwright-haptics/src/main/res
+org.woogitsugames.lockwright.haptics.lockwright-haptics-release-6 /workspace/github__woogitsugames__lockwright/platform/android/lockwright-haptics/src/release/res

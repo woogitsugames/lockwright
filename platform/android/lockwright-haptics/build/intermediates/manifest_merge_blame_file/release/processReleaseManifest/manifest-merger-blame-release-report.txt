@@ -1,0 +1,17 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="org.woogitsugames.lockwright.haptics" >
+4
+5    <uses-sdk android:minSdkVersion="30" />
+6
+7    <application>
+7-->/workspace/github__woogitsugames__lockwright/platform/android/lockwright-haptics/src/main/AndroidManifest.xml:3:5-7:19
+8        <meta-data
+8-->/workspace/github__woogitsugames__lockwright/platform/android/lockwright-haptics/src/main/AndroidManifest.xml:4:9-6:92
+9            android:name="org.godotengine.plugin.v2.LockwrightHaptics"
+9-->/workspace/github__woogitsugames__lockwright/platform/android/lockwright-haptics/src/main/AndroidManifest.xml:5:13-71
+10            android:value="org.woogitsugames.lockwright.haptics.LockwrightHapticsPlugin" />
+10-->/workspace/github__woogitsugames__lockwright/platform/android/lockwright-haptics/src/main/AndroidManifest.xml:6:13-89
+11    </application>
+12
+13</manifest>
