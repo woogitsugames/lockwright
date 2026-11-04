@@ -73,7 +73,7 @@ items.forEach(([L, key, name, st, v, fams, sel], n) => {
     : st === 'repair' ? 'w naprawie' : st === 'locked' ? `od ${v}` : '';
   g += `<rect x="${x + 2}" y="${y + 44}" width="${SW - 8}" height="${SH - 47}" fill="#DED7C6"/>`;
   g += `<text x="${x + 6}" y="${y + 57}" class="slot-l"><tspan class="slot-fig">${L}</tspan> ${name}</text>`;
-  if (st === 'sale') g += `<use href="#coin" x="${x + 136}" y="${y + 60}" width="14" height="14"/><text x="${x + 176}" y="${y + 72}" class="slot-p" text-anchor="end">${v}</text>`;
+  if (st === 'sale') g += `<rect x="${x + 132}" y="${y + 58}" width="50" height="17" fill="#EFEBE1" stroke="#8A5A14" stroke-width="1"/><use href="#coin" x="${x + 136}" y="${y + 60}" width="14" height="14"/><text x="${x + 176}" y="${y + 72}" class="slot-p" text-anchor="end">${v}</text>`;
   else g += `<text x="${x + 182}" y="${y + 72}" class="slot-s" text-anchor="end">${status}</text>`;
   fams.forEach((f, i) => g += `<use href="#f-${f}" x="${x + 6 + i * 19}" y="${y + 61}" width="13" height="13"/>`);
   if (sel) { // the hand: vermilion corner brackets = "your finger is here"

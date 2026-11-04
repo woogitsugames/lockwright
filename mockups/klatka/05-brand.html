@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Klatka · marka</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="klatka.css">
+</head><body>
+<main class="screen brand">
+  <section class="b-hero">
+    <div class="wordmark xl">Lock<span>wright</span></div>
+    <div class="sub">Pogotowie Zamkowe · Emergency Locksmith</div>
+    <div class="wm-sizes"><span class="wordmark m">Lock<span>wright</span></span><span class="wordmark s">Lock<span>wright</span></span></div>
+  </section>
+  <section class="b-icons">
+    <div class="icon-row">
+      <div class="ic big" id="ic1"></div>
+      <div class="ic mid" id="ic2"></div>
+      <div class="ic sm" id="ic3"></div>
+      <p>Jeden pin w przekroju na lamperii z kamienicy. Kreda zaznacza linię podziału. Bez kłódki i bez dziurki.</p>
+    </div>
+  </section>
+  <section class="b-store">
+    <div class="store-label">App Store · wyniki „lockpick”</div>
+    <div id="store" data-name="Lockwright"></div>
+  </section>
+</main>
+<script>
+const ICON = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<defs>
+ <linearGradient id="st" x1="0" x2="1"><stop offset="0" stop-color="#8f918e"/><stop offset=".45" stop-color="#d6d7d3"/><stop offset="1" stop-color="#9c9e9a"/></linearGradient>
+ <linearGradient id="br" x1="0" x2="1"><stop offset="0" stop-color="#8a6a33"/><stop offset=".45" stop-color="#c9a464"/><stop offset="1" stop-color="#94743c"/></linearGradient>
+ <linearGradient id="dr" x1="0" x2="1"><stop offset="0" stop-color="#6b6e6f"/><stop offset=".5" stop-color="#a9acad"/><stop offset="1" stop-color="#727576"/></linearGradient>
+</defs>
+<rect width="100" height="100" fill="#3f5a4c"/>
+<rect width="100" height="30" fill="#d9d2c2"/>
+<rect y="29" width="100" height="4" fill="#7a2e22"/>
+<!-- housing block (steel) and plug (brass) with one chamber -->
+<rect x="22" y="12" width="56" height="44" fill="url(#st)" stroke="#1b1916" stroke-width="1.4"/>
+<rect x="22" y="58" width="56" height="30" fill="url(#br)" stroke="#1b1916" stroke-width="1.4"/>
+<rect x="38" y="12" width="24" height="44" fill="#15130f"/><rect x="40" y="58" width="24" height="22" fill="#15130f"/>
+<!-- spring -->
+<path d="M41 15l18 3-18 3 18 3-18 3 18 3-18 3" fill="none" stroke="#b9bbbb" stroke-width="2"/>
+<!-- driver resting on the shear line (set) -->
+<rect x="40.5" y="36" width="19" height="20" rx="1.5" fill="url(#dr)" stroke="#1b1916" stroke-width="1"/>
+<!-- key pin -->
+<path d="M42.5 59h19v14c0 4-4.5 6-9.5 6s-9.5-2-9.5-6z" fill="url(#br)" stroke="#1b1916" stroke-width="1"/>
+<!-- chalk: shear line + tick -->
+<path d="M10 57h80" stroke="#f1eee6" stroke-width="2.6" stroke-linecap="round"/>
+<path d="M66 44l8-6M66 50l8-6" stroke="#f1eee6" stroke-width="2.2" stroke-linecap="round"/>
+</svg>`;
+for (const id of ['ic1', 'ic2', 'ic3']) document.getElementById(id).innerHTML = ICON;
+document.getElementById('store').dataset.ours = ICON;
+</script>
+<script src="../shared/store-grid.js"></script>
+</body></html>

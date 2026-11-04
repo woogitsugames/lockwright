@@ -1,0 +1,13 @@
+{
+  "colors": {
+    "lamperia": "#3F5A4C", "wall": "#D9D2C2", "stripe": "#7A2E22", "enamel": "#F3EFE6", "enamel-ink": "#1E2A33",
+    "chalk": "#F1EEE6", "felt": "#2A2622", "brass-ui": "#C9A35E", "steel": "#B5B6B2", "brass": "#A7854A",
+    "recess": "#15130F", "wood": "#6A4026", "label": "#BDB6A8"
+  },
+  "pairs": [
+    ["enamel-ink", "enamel", "text"], ["enamel", "enamel-ink", "text"], ["chalk", "felt", "text"], ["label", "felt", "text"],
+    ["enamel", "lamperia", "text"], ["enamel-ink", "wall", "text"], ["stripe", "enamel", "text"],
+    ["steel", "recess", "graphic"], ["brass", "recess", "graphic"], ["chalk", "wood", "graphic"], ["chalk", "recess", "graphic"],
+    ["steel", "wood", "graphic"], ["brass-ui", "felt", "graphic"]
+  ]
+}

@@ -46,14 +46,14 @@ body{background:var(--paper);color:var(--ink);font-family:"Source Serif 4",serif
 .ax{font:italic 11px "Source Serif 4",serif;fill:var(--ink-soft)}
 
 @media (orientation:landscape){
-  .screen.lock{grid-template-columns:190px minmax(0,1fr) 250px;grid-template-rows:56px minmax(0,1fr) 92px}
+  .screen.lock{grid-template-columns:190px minmax(0,1fr) 250px;grid-template-rows:56px minmax(0,1fr) 76px}
   .screen.lock .vignette{display:none}
   .screen.lock .plate{display:flex;justify-content:center;min-height:0}
   .screen.lock .section{height:100%;width:auto}
   .screen.lock .bar{grid-column:1/-1}
   .screen.lock .plate{grid-column:2;grid-row:2}
   .screen.lock .hud{grid-column:2;grid-row:3}
-  .screen.lock .hud-svg{height:88px;width:auto;margin:0 auto}
+  .screen.lock .hud-svg{height:74px;width:auto;margin:0 auto}
   .screen.lock .thumbs{display:contents}
   .screen.lock .zone.left{grid-column:1;grid-row:2/4;padding:0 0 14px 14px;border:0}
   .screen.lock .zone.right{grid-column:3;grid-row:2/4;padding:0 14px 14px 0;border:0}
@@ -184,7 +184,7 @@ body{background:var(--paper);color:var(--ink);font-family:"Source Serif 4",serif
 .fig.primary .ltr{width:40px;height:40px;background:var(--ink);color:var(--paper);font-size:20px}
 .fig.primary .nm{font-size:24px;flex:1}
 .go{font:italic 600 15px "Brygada 1918",serif;display:flex;align-items:center;gap:6px}
-.go::after{content:"";width:22px;height:2px;background:var(--ink);box-shadow:0 0 0 0 var(--ink)}
+.go::after{content:"";width:22px;height:2px;background:var(--ink)}
 .fig.soon .nm{color:var(--ink-soft);flex:1}
 .fig.soon .ltr{border-style:dashed;color:var(--ink-soft)}
 .stamp{font:italic 700 14px "Brygada 1918",serif;color:var(--seal);border:1.6px solid var(--seal);outline:1px solid var(--seal);outline-offset:2px;padding:3px 8px;transform:rotate(-4deg);letter-spacing:.04em}
@@ -243,4 +243,10 @@ body{background:var(--paper);color:var(--ink);font-family:"Source Serif 4",serif
   .b-store #store{padding:6px 2px;gap:4px;grid-template-columns:repeat(6,1fr)}
   .b-store .si-icon{width:40px !important;height:40px !important;border-radius:9px !important}
   .b-store .si figcaption{font-size:10px}
+}
+.actions .btn{min-width:0}
+@media (orientation:landscape){
+  .screen.ws{grid-template-columns:minmax(0,1fr) 360px}
+  .screen.ws .actions{grid-template-columns:1fr 1.2fr;gap:8px}
+  .screen.ws .btn{font-size:15px;padding:0 12px}
 }

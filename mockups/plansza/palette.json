@@ -1,0 +1,29 @@
+{
+  "colors": {
+    "paper": "#EFEBE1",
+    "paper_deep": "#DED7C6",
+    "ink": "#1C1A17",
+    "ink_soft": "#57514A",
+    "hand": "#B3311D",
+    "seal": "#24476B",
+    "ochre": "#8A5A14"
+  },
+  "pairs": [
+    ["ink", "paper", "text"],
+    ["ink_soft", "paper", "text"],
+    ["ink", "paper_deep", "text"],
+    ["ink_soft", "paper_deep", "text"],
+    ["ochre", "paper", "text"],
+    ["seal", "paper", "text"],
+    ["paper", "ink", "text"],
+    ["hand", "paper", "graphic"],
+    ["hand", "paper_deep", "graphic"],
+    ["ink", "paper", "graphic"],
+    ["ink_soft", "paper_deep", "graphic"],
+    ["ink_soft", "paper", "graphic"],
+    ["paper", "hand", "graphic"],
+    ["seal", "paper", "graphic"],
+    ["ochre", "paper", "graphic"]
+  ],
+  "rules": "hand (vermilion) never carries text and never sits on hatching without a 1 dp paper gap; ochre text only on paper or paper_deep; hatching density, not hue, encodes material"
+}
