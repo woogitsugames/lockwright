@@ -5,3 +5,5 @@ lockcore/build*/
 game/.godot/
 *.import
 game/i18n/*.translation
+*.os
+.sconsign.dblite
