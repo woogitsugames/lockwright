@@ -281,7 +281,7 @@ def metal(name, base, rough, aniso=0.0, marks='grind', marks_scale=1.0, marks_ax
     sm = _maprange(nt, _noise(nt, P, 0.35, detail=4, rough=0.6), 0.45, 0.75, 0.0, 1.0)
     r = _mix(nt, r, min(1.0, rough + 0.14), sm, dtype='FLOAT') if smudge else r
     if mk is not None:
-        r = _mix(nt, r, _maprange(nt, mk, 0.3, 0.7, rough * 0.7, rough * 1.35), 0.55 * marks_amt, dtype='FLOAT')
+        r = _mix(nt, r, _maprange(nt, mk, 0.3, 0.7, rough * 0.8, rough * 1.25), 0.45 * marks_amt, dtype='FLOAT')
     # --- base colour: subtle tint variation, grime in crevices, brighter worn edges
     tv = _noise(nt, P, 1.2, detail=3)
     col = _mix(nt, (*[c * (1 - tint_var) for c in base], 1), (*[min(1, c * (1 + tint_var)) for c in base], 1), tv)
@@ -304,7 +304,7 @@ def metal(name, base, rough, aniso=0.0, marks='grind', marks_scale=1.0, marks_ax
     if bevel_r:
         bv = nt.nodes.new('ShaderNodeBevel'); bv.samples = 6; bv.inputs['Radius'].default_value = bevel_r; nrm = bv.outputs['Normal']
     if mk is not None:
-        bp = nt.nodes.new('ShaderNodeBump'); bp.inputs['Strength'].default_value = 0.12 * marks_amt; bp.inputs['Distance'].default_value = 0.02
+        bp = nt.nodes.new('ShaderNodeBump'); bp.inputs['Strength'].default_value = 0.045 * marks_amt; bp.inputs['Distance'].default_value = 0.01
         l.new(mk, bp.inputs['Height'])
         if nrm is not None: l.new(nrm, bp.inputs['Normal'])
         nrm = bp.outputs['Normal']
