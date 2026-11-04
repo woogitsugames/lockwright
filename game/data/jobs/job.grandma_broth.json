@@ -1,0 +1,15 @@
+{
+  "id": "job.grandma_broth",
+  "chapter": 1,
+  "district": "Śródmieście",
+  "family": "lever",
+  "tier": 1,
+  "verification": "sąsiadka-świadek (2) i list na nazwisko w skrzynce (1), do tego szczegół z wnętrza: „na kredensie zdjęcie z wnukiem w mundurku”. Haczyk: brak.",
+  "reward_coins": 75,
+  "tone": "ciepły",
+  "i18n": {
+    "title": "job.grandma_broth.title",
+    "client": "job.grandma_broth.client",
+    "situation": "job.grandma_broth.situation"
+  }
+}

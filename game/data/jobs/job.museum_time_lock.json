@@ -1,0 +1,15 @@
+{
+  "id": "job.museum_time_lock",
+  "chapter": 6,
+  "district": "Port",
+  "family": "time_lock",
+  "tier": 2,
+  "verification": "pismo instytucji (2) i kuratorka (3). Haczyk: brak.",
+  "reward_coins": 150,
+  "tone": "ciepły, z nutą muzealnej pedanterii",
+  "i18n": {
+    "title": "job.museum_time_lock.title",
+    "client": "job.museum_time_lock.client",
+    "situation": "job.museum_time_lock.situation"
+  }
+}

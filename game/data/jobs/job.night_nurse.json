@@ -1,0 +1,15 @@
+{
+  "id": "job.night_nurse",
+  "chapter": 2,
+  "district": "Osiedle Słoneczne",
+  "family": "magnetic",
+  "tier": 1,
+  "verification": "zarządca (3) i dowód (1). Haczyk: brak.",
+  "reward_coins": 90,
+  "tone": "ciepły, cichy",
+  "i18n": {
+    "title": "job.night_nurse.title",
+    "client": "job.night_nurse.client",
+    "situation": "job.night_nurse.situation"
+  }
+}

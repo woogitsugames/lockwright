@@ -1,0 +1,15 @@
+{
+  "id": "job.refuse_ex_partner",
+  "chapter": 1,
+  "district": "Osiedle Słoneczne",
+  "family": "pin_tumbler",
+  "tier": 2,
+  "verification": "dowód (1). Zgrzyty: `flag.ex_partner` i `flag.no_witness` (odmawia, gdy proponujesz sąsiada).",
+  "reward_coins": 0,
+  "tone": "poważny, spokojny. Bez przemocy, bez wyjaśniania, co Darek chciał zrobić",
+  "i18n": {
+    "title": "job.refuse_ex_partner.title",
+    "client": "job.refuse_ex_partner.client",
+    "situation": "job.refuse_ex_partner.situation"
+  }
+}

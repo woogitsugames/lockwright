@@ -1,0 +1,15 @@
+{
+  "id": "job.time_capsule",
+  "chapter": 6,
+  "district": "Śródmieście",
+  "family": "combo",
+  "tier": 3,
+  "verification": "dyrekcja (3) i świadkowie (2). Haczyk: brak.",
+  "reward_coins": 0,
+  "tone": "wzruszający, zabawny",
+  "i18n": {
+    "title": "job.time_capsule.title",
+    "client": "job.time_capsule.client",
+    "situation": "job.time_capsule.situation"
+  }
+}

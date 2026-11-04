@@ -1,0 +1,15 @@
+{
+  "id": "job.refuse_rush_bribe",
+  "chapter": 2,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 2,
+  "verification": "dowód (1), w którym inne nazwisko niż na drzwiach „ma wyjaśnić” rozwód siostry. Zgrzyty: `flag.rush_bribe`, `flag.absent_owner`, `flag.no_witness`.",
+  "reward_coins": 0,
+  "tone": "napięty, spokojny",
+  "i18n": {
+    "title": "job.refuse_rush_bribe.title",
+    "client": "job.refuse_rush_bribe.client",
+    "situation": "job.refuse_rush_bribe.situation"
+  }
+}

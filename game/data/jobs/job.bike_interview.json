@@ -1,0 +1,15 @@
+{
+  "id": "job.bike_interview",
+  "chapter": 1,
+  "district": "Osiedle Słoneczne",
+  "family": "combo",
+  "tier": 1,
+  "verification": "zdjęcie (1) i paragon (1), czyli rzecz w posiadaniu, próg 2. Haczyk: brak.",
+  "reward_coins": 65,
+  "tone": "ciepły, zabawny",
+  "i18n": {
+    "title": "job.bike_interview.title",
+    "client": "job.bike_interview.client",
+    "situation": "job.bike_interview.situation"
+  }
+}

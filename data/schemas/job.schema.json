@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["id", "chapter", "district", "family", "tier", "verification", "reward_coins", "tone", "i18n"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^job\\.[a-z0-9_]+$"},
+    "chapter": {"type": "integer", "minimum": 1, "maximum": 6},
+    "district": {"type": "string"},
+    "family": {"type": "string"},
+    "tier": {"type": "integer", "minimum": 1, "maximum": 3},
+    "verification": {"type": "string"},
+    "reward_coins": {"type": "integer", "minimum": 0},
+    "tone": {"type": "string"},
+    "i18n": {"type": "object", "required": ["title", "client", "situation"]}
+  }
+}

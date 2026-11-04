@@ -1,0 +1,15 @@
+{
+  "id": "job.bramah_bureau",
+  "chapter": 6,
+  "district": "Port",
+  "family": "bramah",
+  "tier": 2,
+  "verification": "faktura (2) i posiadanie (1). Haczyk: brak.",
+  "reward_coins": 140,
+  "tone": "ciepły",
+  "i18n": {
+    "title": "job.bramah_bureau.title",
+    "client": "job.bramah_bureau.client",
+    "situation": "job.bramah_bureau.situation"
+  }
+}

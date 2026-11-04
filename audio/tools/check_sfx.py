@@ -14,7 +14,9 @@ EVENTS = ["contact", "bind", "near_shear", "set", "false_set", "counter_rotate",
           "drop", "stress", "break", "wear", "gate_align", "detector_trip", "open",
           "tension_resistance", "pick_drag"]
 MATERIALS = ["brass", "steel", "iron", "wood"]
-CLICKS = {"contact", "bind", "set", "false_set", "overset", "gate_align"}
+# Full clicks 20-80 ms; contact is a 10-15 ms quiet tick per docs/TECH.md §3.3.
+CLICKS = {"bind", "set", "false_set", "overset", "gate_align"}
+TICKS = {"contact"}
 
 
 def main() -> int:
@@ -31,11 +33,12 @@ def main() -> int:
                 if info.samplerate != 48000 or info.subtype != "PCM_16" or info.channels != 1:
                     print(f"BAD FORMAT {path}: {info.samplerate} {info.subtype} ch={info.channels}")
                     failures += 1
-                if ev in CLICKS:
+                if ev in CLICKS or ev in TICKS:
                     x, sr = sf.read(path, dtype="float32")
                     dur = len(x) / sr
-                    if not (0.020 <= dur <= 0.080):
-                        print(f"BAD CLICK DUR {path}: {dur*1000:.1f} ms")
+                    lo, hi = (0.020, 0.080) if ev in CLICKS else (0.010, 0.020)
+                    if not (lo - 1e-4 <= dur <= hi + 1e-4):
+                        print(f"BAD CLICK DUR {path}: {dur*1000:.1f} ms (want {lo*1000:.0f}-{hi*1000:.0f})")
                         failures += 1
                     idx = int(np.argmax(np.abs(x) > 1e-4)) if np.any(np.abs(x) > 1e-4) else len(x)
                     if idx > 48:

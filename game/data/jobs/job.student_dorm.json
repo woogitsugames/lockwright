@@ -1,0 +1,15 @@
+{
+  "id": "job.student_dorm",
+  "chapter": 1,
+  "district": "Kampus",
+  "family": "pin_tumbler",
+  "tier": 1,
+  "verification": "portier z listą (3) i dowód (1). Haczyk: brak.",
+  "reward_coins": 70,
+  "tone": "ciepły",
+  "i18n": {
+    "title": "job.student_dorm.title",
+    "client": "job.student_dorm.client",
+    "situation": "job.student_dorm.situation"
+  }
+}

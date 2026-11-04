@@ -1,0 +1,15 @@
+{
+  "id": "job.finnish_sailor",
+  "chapter": 6,
+  "district": "Port",
+  "family": "disc_detainer",
+  "tier": 2,
+  "verification": "kapitan (3) i książeczka żeglarska (1). Haczyk: brak.",
+  "reward_coins": 135,
+  "tone": "ciepły",
+  "i18n": {
+    "title": "job.finnish_sailor.title",
+    "client": "job.finnish_sailor.client",
+    "situation": "job.finnish_sailor.situation"
+  }
+}

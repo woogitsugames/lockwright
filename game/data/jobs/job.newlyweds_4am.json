@@ -1,0 +1,15 @@
+{
+  "id": "job.newlyweds_4am",
+  "chapter": 2,
+  "district": "Osiedle Słoneczne",
+  "family": "pin_tumbler",
+  "tier": 2,
+  "verification": "dowód (1), meldunek w aplikacji (2) i sąsiad (2). Haczyk: brak. Scena pokazuje, że dowód bez adresu to normalna rzecz.",
+  "reward_coins": 150,
+  "tone": "zabawny, ciepły",
+  "i18n": {
+    "title": "job.newlyweds_4am.title",
+    "client": "job.newlyweds_4am.client",
+    "situation": "job.newlyweds_4am.situation"
+  }
+}

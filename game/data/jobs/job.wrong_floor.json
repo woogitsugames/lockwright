@@ -1,0 +1,15 @@
+{
+  "id": "job.wrong_floor",
+  "chapter": 2,
+  "district": "Osiedle Słoneczne",
+  "family": "pin_tumbler",
+  "tier": 1,
+  "verification": "zgrzyty `flag.contradiction` (inne nazwisko na skrzynce) i szczegół (wieniec). Najlepszy wynik daje „Poproszę o coś jeszcze”. Gdy gracz otworzy drzwi, ma −25 rep i scenę „to nie było jego mieszkanie”: mieszkająca tu pani Teresa jest w szoku.",
+  "reward_coins": 20,
+  "tone": "zabawny. Uczy, że weryfikacja chroni też klienta",
+  "i18n": {
+    "title": "job.wrong_floor.title",
+    "client": "job.wrong_floor.client",
+    "situation": "job.wrong_floor.situation"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "showcase.yale_flat_key",
+  "unlocks": "wkładka bębenkowa, T3.",
+  "source": "Google Patents, US 48,475, „Improvement in Locks”, 27 VI 1865 — https://patents.google.com/patent/US48475 · ASME, „Linus Yale Jr.” — https://www.asme.org/topics-resources/content/linus-yale-jr · Lemelson-MIT (jw.) · Wikipedia, „Linus Yale Jr.” — https://en.wikipedia.org/wiki/Linus_Yale_Jr.\n- **Pewność:** wysoka (patent z 1865); średnia (data śmierci: 24 lub 25 XII 1868; wątek malarski za Wikipedią, do potwierdzenia).",
+  "confidence": "wysoka (patent z 1865); średnia (data śmierci: 24 lub 25 XII 1868; wątek malarski za Wikipedią, do potwierdzenia).",
+  "i18n": {
+    "title": "showcase.yale_flat_key.title",
+    "body": "showcase.yale_flat_key.body"
+  }
+}

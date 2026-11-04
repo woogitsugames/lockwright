@@ -1,0 +1,10 @@
+{
+  "id": "showcase.hobbs_westminster",
+  "unlocks": "dźwigniowy z detektorem, T3.",
+  "source": "Tomlinson/Hobbs 1853, rozdz. o sporze z 1851 r. (pełny tekst oświadczenia świadków z 22 VII 1851) — https://www.gutenberg.org/ebooks/63128 · Wikipedia, „Alfred Charles Hobbs” — https://en.wikipedia.org/wiki/A._C._Hobbs\n- **Pewność:** wysoka (dokument z epoki).",
+  "confidence": "wysoka (dokument z epoki).",
+  "i18n": {
+    "title": "showcase.hobbs_westminster.title",
+    "body": "showcase.hobbs_westminster.body"
+  }
+}

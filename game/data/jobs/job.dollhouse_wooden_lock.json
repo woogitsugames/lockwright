@@ -1,0 +1,15 @@
+{
+  "id": "job.dollhouse_wooden_lock",
+  "chapter": 3,
+  "district": "Willowa Górka",
+  "family": "egyptian",
+  "tier": 1,
+  "verification": "rzecz w posiadaniu (2). Haczyk: brak.",
+  "reward_coins": 50,
+  "tone": "ciepły",
+  "i18n": {
+    "title": "job.dollhouse_wooden_lock.title",
+    "client": "job.dollhouse_wooden_lock.client",
+    "situation": "job.dollhouse_wooden_lock.situation"
+  }
+}

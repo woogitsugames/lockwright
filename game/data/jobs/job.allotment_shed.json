@@ -1,0 +1,15 @@
+{
+  "id": "job.allotment_shed",
+  "chapter": 3,
+  "district": "Ogródki działkowe",
+  "family": "wafer",
+  "tier": 2,
+  "verification": "legitymacja działkowca (2) i świadek (2), próg 3. Zgrzyt „inne nazwisko w umowie” wyjaśnia się sam (żona).",
+  "reward_coins": 85,
+  "tone": "zabawny, ciepły",
+  "i18n": {
+    "title": "job.allotment_shed.title",
+    "client": "job.allotment_shed.client",
+    "situation": "job.allotment_shed.situation"
+  }
+}

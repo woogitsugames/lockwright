@@ -1,0 +1,15 @@
+{
+  "id": "job.brussels_townhouse",
+  "chapter": 5,
+  "district": "Bruksela",
+  "family": "dimple",
+  "tier": 2,
+  "verification": "umowa najmu (2), adres z gminy (eID, 2) i sąsiad (2). Haczyk: brak.",
+  "reward_coins": 105,
+  "tone": "zabawny, ciepły",
+  "i18n": {
+    "title": "job.brussels_townhouse.title",
+    "client": "job.brussels_townhouse.client",
+    "situation": "job.brussels_townhouse.situation"
+  }
+}

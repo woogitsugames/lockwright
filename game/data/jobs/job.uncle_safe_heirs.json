@@ -1,0 +1,15 @@
+{
+  "id": "job.uncle_safe_heirs",
+  "chapter": 3,
+  "district": "Willowa Górka",
+  "family": "dial_safe",
+  "tier": 2,
+  "verification": "postanowienie o stwierdzeniu nabycia spadku albo akt poświadczenia dziedziczenia (3), w scenie jako karta „dokument od notariusza”. Haczyk: zgrzyt „niepełny skład”. Wybór „Poproszę o coś jeszcze” (czekamy na Ewę) daje najlepszy wynik. Otwarcie przy samym Marku to −8 rep i kłótnia w rodzinie, w której gracz zostaje świadkiem.",
+  "reward_coins": 120,
+  "tone": "zabawny, potem wzruszający",
+  "i18n": {
+    "title": "job.uncle_safe_heirs.title",
+    "client": "job.uncle_safe_heirs.client",
+    "situation": "job.uncle_safe_heirs.situation"
+  }
+}

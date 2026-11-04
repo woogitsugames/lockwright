@@ -1,0 +1,33 @@
+{
+  "schema": "lockwright.tools/1",
+  "source": "docs/TOOLS.md §3-§4",
+  "tools": [
+    {"id": "tw_angle", "kind": "tensioner", "price": 0, "unlock": "start", "families": ["pin_tumbler", "wafer", "wafer_double", "tubular"], "i18n": "tool.tw_angle.name", "k_tool": 1.0},
+    {"id": "tw_bar", "kind": "tensioner", "price": 600, "unlock": "after_tier4", "families": ["pin_tumbler_wide", "dimple", "sidebar"], "i18n": "tool.tw_bar.name", "k_tool": 0.85},
+    {"id": "tl_shackle", "kind": "puller", "price": 150, "unlock": "after_first_t2", "families": ["ring_combo"], "i18n": "tool.tl_shackle.name"},
+    {"id": "pk_peg", "kind": "pick", "price": 0, "unlock": "start", "families": ["wooden_pin"], "i18n": "tool.pk_peg.name"},
+    {"id": "pk_hook", "kind": "pick", "price": 0, "unlock": "after_tutorial_t1", "families": ["pin_tumbler", "wafer", "sidebar"], "i18n": "tool.pk_hook.name"},
+    {"id": "pk_ward", "kind": "pick", "price": 80, "unlock": "after_t1", "families": ["warded"], "i18n": "tool.pk_ward.name"},
+    {"id": "pk_ripple", "kind": "pick", "price": 350, "unlock": "after_5_locks_t2", "families": ["wafer", "pin_tumbler_unprotected"], "i18n": "tool.pk_ripple.name"},
+    {"id": "pk_wedge", "kind": "pick", "price": 700, "unlock": "after_t3", "families": ["wafer_double"], "i18n": "tool.pk_wedge.name"},
+    {"id": "pk_lever", "kind": "pick", "price": 500, "unlock": "after_t3", "families": ["lever", "lever_detector"], "i18n": "tool.pk_lever.name"},
+    {"id": "pk_crown", "kind": "pick", "price": 900, "unlock": "after_t4", "families": ["tubular"], "i18n": "tool.pk_crown.name"},
+    {"id": "tl_polar", "kind": "probe", "price": 1200, "unlock": "after_t5", "families": ["magnetic"], "i18n": "tool.tl_polar.name"},
+    {"id": "pk_flag", "kind": "pick", "price": 1500, "unlock": "after_t6", "families": ["dimple"], "i18n": "tool.pk_flag.name"},
+    {"id": "pk_plunger", "kind": "pick", "price": 1600, "unlock": "after_t6", "families": ["axial_slider"], "i18n": "tool.pk_plunger.name"},
+    {"id": "pk_disc", "kind": "turner", "price": 1800, "unlock": "after_t7", "families": ["disc_detainer"], "i18n": "tool.pk_disc.name"},
+    {"id": "pk_feather", "kind": "pick", "price": 2000, "unlock": "after_t7_F3", "families": ["sidebar"], "i18n": "tool.pk_feather.name"},
+    {"id": "tl_cup", "kind": "probe", "price": 2200, "unlock": "after_t8", "families": ["safe_wheels"], "i18n": "tool.tl_cup.name", "paired_with": "tl_notes"},
+    {"id": "tl_notes", "kind": "notebook", "price": 0, "unlock": "with_tl_cup", "families": ["safe_wheels"], "i18n": "tool.tl_notes.name"},
+    {"id": "kit_clock", "kind": "kit", "price": 0, "unlock": "event_F2", "families": ["time_lock"], "i18n": "tool.kit_clock.name"},
+    {"id": "tl_drill", "kind": "destructive", "price": 1000, "unlock": "jobs_mode_only", "families": [], "i18n": "tool.tl_drill.name", "jobs_only": true, "reputation_cost": -10}
+  ],
+  "wear_model": {
+    "integrity_max": 100,
+    "per_event": {"contact_under_tension": -0.1, "overset": -1, "stress": -2, "counter_rotate_high_t": -1, "detector_trip": -1, "break": "to_zero"},
+    "s_max_factor": "0.7 + 0.3 * I/100",
+    "repair_cost_pct": 0.15,
+    "repair_broken_pct": 0.35,
+    "spare_blades_per_run": 3
+  }
+}

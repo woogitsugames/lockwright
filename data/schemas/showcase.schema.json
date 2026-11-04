@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["id", "source", "confidence", "i18n"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^showcase\\.[a-z0-9_]+$"},
+    "unlocks": {"type": "string"},
+    "source": {"type": "string", "minLength": 1},
+    "confidence": {"type": "string"},
+    "i18n": {"type": "object", "required": ["title", "body"]}
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "job.refuse_aunt_alive",
+  "chapter": 3,
+  "district": "Willowa Górka",
+  "family": "lever",
+  "tier": 2,
+  "verification": "dowód (1). Zgrzyty: `flag.neighbour_denies`, `flag.absent_owner`.",
+  "reward_coins": 90,
+  "tone": "poważny, z ulgą na końcu",
+  "i18n": {
+    "title": "job.refuse_aunt_alive.title",
+    "client": "job.refuse_aunt_alive.client",
+    "situation": "job.refuse_aunt_alive.situation"
+  }
+}

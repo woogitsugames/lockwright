@@ -1,0 +1,10 @@
+{
+  "id": "showcase.khorsabad_gate",
+  "unlocks": "egipski drewniany, T1 (pierwszy otwarty).",
+  "source": "D. T. Potts, „Lock and Key in Ancient Mesopotamia”, *Mesopotamia* XXV (1990), s. 185–192 — https://www.yeshiva.org.il/midrash/pdf/wiki/potts_1990_-_lock_and_key_in_ancient_mes.pdf · J. Bonomi, *Nineveh and its Palaces*, Londyn 1856, s. 170–171 (cyt. za Pottsem) · Britannica, „Lock” (wersja z „4000 lat”, do kontrastu) — https://www.britannica.com/technology/lock-security\n- **Pewność:** wysoka (kontekst i korekta datowania); znalezisko znamy tylko z opisu XIX-wiecznego.",
+  "confidence": "wysoka (kontekst i korekta datowania); znalezisko znamy tylko z opisu XIX-wiecznego.",
+  "i18n": {
+    "title": "showcase.khorsabad_gate.title",
+    "body": "showcase.khorsabad_gate.body"
+  }
+}

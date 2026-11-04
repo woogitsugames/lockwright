@@ -1,0 +1,10 @@
+{
+  "id": "showcase.krakow_guild_seal",
+  "unlocks": "zapadkowy T3 w rozdziale 4 oraz zlecenie `job.krakow_tenement_gate`.",
+  "source": "A. Chmiel, „Godła rzemieślnicze i przemysłowe krakowskie”, *Przemysł–Rzemiosło–Sztuka* R. II nr 3 (Kraków, lata 20. XX w.), s. 4–8 — https://bcpw.bg.pw.edu.pl/Content/6522/download · E. Rak, „Z historii firmy zegarmistrzowskiej Józefa Płonki”, *Krzysztofory* — https://journals.akademicka.pl/krzysztofory/article/download/6918/6505/9489\n- **Pewność:** wysoka (Chmiel opisuje pieczęć i księgę z Archiwum m. Krakowa; daty 1633 i 1797 potwierdza też Rak). Rok wydania numeru czasopisma do uzupełnienia.",
+  "confidence": "wysoka (Chmiel opisuje pieczęć i księgę z Archiwum m. Krakowa; daty 1633 i 1797 potwierdza też Rak). Rok wydania numeru czasopisma do uzupełnienia.",
+  "i18n": {
+    "title": "showcase.krakow_guild_seal.title",
+    "body": "showcase.krakow_guild_seal.body"
+  }
+}

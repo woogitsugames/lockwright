@@ -1,0 +1,10 @@
+{
+  "id": "showcase.hobbs_51_hours",
+  "unlocks": "Bramah, T2, oraz zlecenie `job.bramah_bureau`.",
+  "source": "„Report of the Arbitrators” (G. Rennie, E. Cowper, J. R. Black), 2 IX 1851, przedruk w Tomlinson/Hobbs 1853 — https://www.gutenberg.org/ebooks/63128\n- **Pewność:** wysoka (dokument z epoki).",
+  "confidence": "wysoka (dokument z epoki).",
+  "i18n": {
+    "title": "showcase.hobbs_51_hours.title",
+    "body": "showcase.hobbs_51_hours.body"
+  }
+}

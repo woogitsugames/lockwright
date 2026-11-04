@@ -1,0 +1,10 @@
+{
+  "id": "showcase.swiatniki_armourers",
+  "unlocks": "zlecenie `job.swiatniki_journeyman_padlock` (kłódka świątnicka).",
+  "source": "Visit Małopolska, „Muzeum Ślusarstwa im. Marcina Mikuły” — https://visitmalopolska.pl/-/swiatniki-gorne-muzeum-slusarstwa · swiatniki.wordpress.com (cytat z mowy F. Weigla w Sejmie krajowym: zbroje, broń, łóżka żelazne, potem kłódki) — https://swiatniki.wordpress.com/tag/szkola-slusarska/\n- **Pewność:** średnia. Liczbę warsztatów i rolę Radziwiłła podaje źródło turystyczne, a ostatnie zdanie o „znaku jakości” to nasze uogólnienie. Przed publikacją potrzebna jest konsultacja z Muzeum.",
+  "confidence": "średnia. Liczbę warsztatów i rolę Radziwiłła podaje źródło turystyczne, a ostatnie zdanie o „znaku jakości” to nasze uogólnienie. Przed publikacją potrzebna jest konsultacja z Muzeum.",
+  "i18n": {
+    "title": "showcase.swiatniki_armourers.title",
+    "body": "showcase.swiatniki_armourers.body"
+  }
+}

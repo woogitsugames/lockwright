@@ -1,0 +1,10 @@
+{
+  "id": "showcase.chubb_detector",
+  "unlocks": "dźwigniowy z detektorem, T2, oraz zlecenie `job.liege_bakery`.",
+  "source": "Tomlinson/Hobbs 1853 (patenty Ruxtona i Chubba, relacja z Portsmouth) — https://www.gutenberg.org/ebooks/63128 · Linda Hall Library, „Alfred Charles Hobbs” (Jeremiah Chubb, 1818) — https://www.lindahall.org/about/news/scientist-of-the-day/alfred-charles-hobbs/\n- **Pewność:** wysoka (daty patentów); średnia (relacja z Portsmouth znana z wystąpienia z epoki, nie z dokumentów sądowych).",
+  "confidence": "wysoka (daty patentów); średnia (relacja z Portsmouth znana z wystąpienia z epoki, nie z dokumentów sądowych).",
+  "i18n": {
+    "title": "showcase.chubb_detector.title",
+    "body": "showcase.chubb_detector.body"
+  }
+}

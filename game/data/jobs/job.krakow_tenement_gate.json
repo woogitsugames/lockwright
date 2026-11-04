@@ -1,0 +1,15 @@
+{
+  "id": "job.krakow_tenement_gate",
+  "chapter": 4,
+  "district": "Kraków",
+  "family": "lever",
+  "tier": 3,
+  "verification": "zarządca (3) i uchwała (1). Haczyk: brak.",
+  "reward_coins": 160,
+  "tone": "ciepły, z szacunkiem dla rzemiosła",
+  "i18n": {
+    "title": "job.krakow_tenement_gate.title",
+    "client": "job.krakow_tenement_gate.client",
+    "situation": "job.krakow_tenement_gate.situation"
+  }
+}

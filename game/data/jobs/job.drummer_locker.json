@@ -1,0 +1,15 @@
+{
+  "id": "job.drummer_locker",
+  "chapter": 2,
+  "district": "Kampus",
+  "family": "unknown",
+  "tier": 1,
+  "verification": "kierownik sali (3). Haczyk: brak.",
+  "reward_coins": 110,
+  "tone": "zabawny",
+  "i18n": {
+    "title": "job.drummer_locker.title",
+    "client": "job.drummer_locker.client",
+    "situation": "job.drummer_locker.situation"
+  }
+}

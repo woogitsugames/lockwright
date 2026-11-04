@@ -1,0 +1,15 @@
+{
+  "id": "job.grandpa_chest",
+  "chapter": 3,
+  "district": "Willowa Górka",
+  "family": "lever",
+  "tier": 3,
+  "verification": "akt (3) i rzecz w posiadaniu (1). Haczyk: brak.",
+  "reward_coins": 140,
+  "tone": "wzruszający",
+  "i18n": {
+    "title": "job.grandpa_chest.title",
+    "client": "job.grandpa_chest.client",
+    "situation": "job.grandpa_chest.situation"
+  }
+}

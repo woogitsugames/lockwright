@@ -1,0 +1,15 @@
+{
+  "id": "job.kiosk_shutter",
+  "chapter": 1,
+  "district": "Osiedle Słoneczne",
+  "family": "wafer",
+  "tier": 1,
+  "verification": "świadek (2) i list z hurtowni prasy na nazwisko (1). Próg dla lokalu firmy to 4, więc zabraknie 1 pewności. Rozwiązanie: „Poproszę o coś jeszcze”, czyli Stefan pokazuje zdjęcie z otwarcia kiosku w 1994. Uczy dopytywania.",
+  "reward_coins": 80,
+  "tone": "ciepły",
+  "i18n": {
+    "title": "job.kiosk_shutter.title",
+    "client": "job.kiosk_shutter.client",
+    "situation": "job.kiosk_shutter.situation"
+  }
+}

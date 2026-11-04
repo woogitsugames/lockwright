@@ -1,0 +1,10 @@
+{
+  "id": "showcase.yale_senior",
+  "unlocks": "wkładka bębenkowa, T2.",
+  "source": "Google Patents, US 18,169 (L. Yale, Newport, N.Y., 8 IX 1857) — https://patents.google.com/patent/US18169 · Wikipedia, „Linus Yale Sr.” — https://en.wikipedia.org/wiki/Linus_Yale_Sr. · Lemelson-MIT, „Linus Yale” — https://lemelson.mit.edu/resources/linus-yale\n- **Pewność:** średnia (rozbieżności w datach otwarcia warsztatu: „wczesne lata 40.” i 1847, oraz w liczbie patentów).",
+  "confidence": "średnia (rozbieżności w datach otwarcia warsztatu: „wczesne lata 40.” i 1847, oraz w liczbie patentów).",
+  "i18n": {
+    "title": "showcase.yale_senior.title",
+    "body": "showcase.yale_senior.body"
+  }
+}

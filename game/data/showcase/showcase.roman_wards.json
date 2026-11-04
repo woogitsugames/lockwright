@@ -1,0 +1,10 @@
+{
+  "id": "showcase.roman_wards",
+  "unlocks": "zapadkowy, T2.",
+  "source": "C. Tomlinson (red.), *Rudimentary Treatise on the Construction of Locks* [A. C. Hobbs], Londyn 1853, rozdz. II — https://www.gutenberg.org/ebooks/63128 · Pitt-Rivers 1883 (jw.)\n- **Pewność:** wysoka (źródło XIX-wieczne, zgodne z kolekcjami muzealnymi); Tomlinsonowi wystarczały „klucze w British Museum”, więc to nie wydanie naukowe.",
+  "confidence": "wysoka (źródło XIX-wieczne, zgodne z kolekcjami muzealnymi); Tomlinsonowi wystarczały „klucze w British Museum”, więc to nie wydanie naukowe.",
+  "i18n": {
+    "title": "showcase.roman_wards.title",
+    "body": "showcase.roman_wards.body"
+  }
+}

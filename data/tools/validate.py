@@ -73,7 +73,7 @@ def main() -> int:
         if jid in job_ids:
             fail(f"duplicate job id: {jid}")
         job_ids.add(jid)
-        required = [f"job.{jid}.title", f"job.{jid}.client"]
+        required = [f"{jid}.title", f"{jid}.client"]
         check_i18n(i18n, required, f"job {jid}")
 
     note_ids = set()
@@ -87,7 +87,7 @@ def main() -> int:
         if nid in note_ids:
             fail(f"duplicate showcase id: {nid}")
         note_ids.add(nid)
-        check_i18n(i18n, [f"showcase.{nid}.title", f"showcase.{nid}.body"], f"showcase {nid}")
+        check_i18n(i18n, [f"{nid}.title", f"{nid}.body"], f"showcase {nid}")
 
     if os.path.exists(tools_path):
         tools = load_json(tools_path)
