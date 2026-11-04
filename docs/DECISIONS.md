@@ -61,3 +61,6 @@ Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright �
 
 ## D-19 — i18n: CSV jako źródło prawdy, ładowane w runtime przez autoload I18n
 2026-11-04 · przyjęta (koordynator) · Godot 4.7 headless nie importuje CSV `internationalization/locale/translations` do zasobów `.translation`, więc runtime ładowałby puste tłumaczenia. `game/i18n/*.csv` (kolumny `keys,en,pl`) są ładowane i parsowane przez `scripts/autoload/i18n.gd` przy starcie — działa identycznie w edytorze, headless i eksporcie. PL i EN od pierwszego dnia, fallback EN.
+
+## D-20 — iOS plugin: GDExtension (godot-cpp + ObjC++) jako xcframework
+2026-11-04 · przyjęta (koordynator) · TECH.md §1.2 ścieżka 2: kod w ObjC++ woła Core Haptics bezpośrednio (CHHapticEngine ma API ObjC), jedna technologia z lockcore (C++) i Androidem (AAR), stabilne ABI GDExtension. Klasyczny plugin `.gdip` zostaje fallbackiem, gdyby spike 1 pokazał problemy z eksportem GDExtension na iOS w 4.7. Most: opór ciągły przez `CHHapticAdvancedPatternPlayer` + `sendParameters` co klatkę, transienty w osobnym playerze, `stoppedHandler`/`resetHandler`, fallback `UIImpactFeedbackGenerator`, iPad = tylko log. Audio: `AVAudioSession` `.ambient` + `preferredIOBufferDuration 0.005`. Kod: `platform/ios/lockwright_haptics/`, build i eksport tylko na macOS w CI (`game-ios.yml`).

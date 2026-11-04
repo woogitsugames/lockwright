@@ -1,0 +1,72 @@
+name: game-ios
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'game/**'
+      - 'platform/ios/**'
+      - '.github/workflows/game-ios.yml'
+  workflow_dispatch:
+
+jobs:
+  ios-build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode 26
+        run: sudo xcode-select -s /Applications/Xcode_26.0.app/Contents/Developer 2>/dev/null || sudo xcode-select -s $(ls -d /Applications/Xcode_*.app | sort -V | tail -1)/Contents/Developer
+
+      - name: Install Godot 4.7.2 + export templates
+        run: |
+          mkdir -p /tmp/godot
+          curl -sL -o /tmp/godot/godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_macos.universal.zip
+          unzip -q /tmp/godot/godot.zip -d /tmp/godot
+          curl -sL -o /tmp/godot/templates.tpz https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz
+          mkdir -p ~/Library/Application\ Support/godot/export_templates/4.7.2.stable
+          unzip -q /tmp/godot/templates.tpz -d ~/Library/Application\ Support/godot/export_templates/4.7.2.stable
+          mv ~/Library/Application\ Support/godot/export_templates/4.7.2.stable/templates/* ~/Library/Application\ Support/godot/export_templates/4.7.2.stable/
+          rmdir ~/Library/Application\ Support/godot/export_templates/4.7.2.stable/templates
+          echo "4.7.2.stable.official.ed1daf0bf" > ~/Library/Application\ Support/godot/export_templates/4.7.2.stable/version.txt
+          /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --version
+
+      - name: Clone godot-cpp 4.7.2-stable
+        run: |
+          git clone --depth 1 --branch 4.7.2-stable https://github.com/godotengine/godot-cpp.git godot-cpp
+
+      - name: Build godot-cpp (ios release + debug)
+        run: |
+          cd godot-cpp
+          scons platform=ios target=template_release arch=arm64 -j8
+          scons platform=ios target=template_debug arch=x86_64 -j8
+
+      - name: Build LockwrightHaptics xcframeworks
+        run: |
+          cd platform/ios/lockwright_haptics
+          GODOT_CPP_SCONSTRUCT=$GITHUB_WORKSPACE/godot-cpp/SConstruct scons platform=ios target=template_release arch=arm64 -j8
+          GODOT_CPP_SCONSTRUCT=$GITHUB_WORKSPACE/godot-cpp/SConstruct scons platform=ios target=template_debug arch=x86_64 -j8
+          mkdir -p ../../../game/addons/lockwright_haptics/ios
+          xcodebuild -create-xcframework \
+            -library bin/liblockwright_haptics.ios.template_release.arm64.a \
+            -library bin/liblockwright_haptics.ios.template_debug.x86_64.a -headers include \
+            -output ../../../game/addons/lockwright_haptics/ios/liblockwright_haptics.ios.release.xcframework
+          xcodebuild -create-xcframework \
+            -library bin/liblockwright_haptics.ios.template_debug.x86_64.a \
+            -output ../../../game/addons/lockwright_haptics/ios/liblockwright_haptics.ios.debug.xcframework
+
+      - name: Import + export Godot project to Xcode (unsigned)
+        env:
+          CODE_SIGNING_ALLOWED: 'NO'
+        run: |
+          mkdir -p build
+          /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --path game --import
+          CODE_SIGNING_ALLOWED=NO /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --path game --export-debug "iOS" build/lockwright-debug.ipa
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lockwright-ios-debug
+          path: |
+            build/lockwright-debug.ipa
+            game/addons/lockwright_haptics/ios/*.xcframework

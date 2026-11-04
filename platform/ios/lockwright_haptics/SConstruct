@@ -1,0 +1,17 @@
+# Build the LockwrightHaptics GDExtension for iOS (xcframework) with godot-cpp 4.7.
+# Usage (macOS): scons platform=ios target=template_release arch=arm64 (and x86_64 for simulator)
+import os
+
+env = SConscript(os.environ.get("GODOT_CPP_SCONSTRUCT", "godot-cpp/SConstruct"))
+
+sources = Glob("Sources/*.cpp") + Glob("Sources/*.mm")
+
+env.Append(CPPPATH=["include"])
+library = env.SharedLibrary(
+    "bin/liblockwright_haptics.{}.{}.a".format(env["platform"], env["target"]),
+    sources,
+)
+# ObjC++ + CoreHaptics/AVFAudio frameworks
+env.Append(LINKFLAGS=["-framework", "CoreHaptics", "-framework", "AVFAudio", "-framework", "Foundation"])
+
+Default(library)
