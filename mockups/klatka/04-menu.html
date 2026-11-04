@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Klatka · menu</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="klatka.css">
+<script>window.__ready = false;</script>
+<script type="importmap">{"imports":{"three":"../node_modules/three/build/three.module.js","three/":"../node_modules/three/"}}</script>
+</head><body>
+<main class="screen menu">
+  <canvas id="c" class="full"></canvas>
+  <header class="sign">
+    <div class="wordmark">Lock<span>wright</span></div>
+    <div class="sub">Pogotowie Zamkowe · całą dobę</div>
+  </header>
+  <p class="note">Trzecie piętro, czternastka.<br>Pani Halina wyszła po pocztę, drzwi trzasnęły. Rosół na gazie.<br><b>— dyspozytor</b></p>
+  <nav class="plates">
+    <button class="enamel big"><span class="n">→</span><span>Jadę<small>Tryb Ciągły · zamek 7</small></span></button>
+    <div class="row">
+      <button class="enamel"><span>Warsztat</span></button>
+      <button class="enamel"><span>Gablota</span></button>
+      <button class="enamel dim"><span>Zlecenia<small>wkrótce</small></span></button>
+    </div>
+    <button class="enamel icon" aria-label="Ustawienia"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg></button>
+  </nav>
+</main>
+<script type="module">
+import { THREE, materials, makeRenderer, stairwellLights, buildStairwell } from './scene.js';
+import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
+const c = document.getElementById('c'); const W = innerWidth, H = innerHeight;
+const R = makeRenderer(c, W, H); const S = new THREE.Scene(); S.background = new THREE.Color(0x1a1816);
+const M = materials();
+buildStairwell(S, M, { doorNo: '14' });
+// locksmith's bag on the landing
+const bag = new THREE.Mesh(new RoundedBoxGeometry(90, 50, 40, 4, 8), new THREE.MeshStandardMaterial({ map: M.leather.map, roughness: 0.85 })); bag.position.set(150, -124, 90); bag.rotation.y = -0.4; bag.castShadow = true; S.add(bag);
+const strap = new THREE.Mesh(new THREE.TorusGeometry(26, 2.5, 8, 32, Math.PI), M.iron); strap.position.set(150, -99, 90); strap.rotation.y = -0.4; S.add(strap);
+// lights: bare bulb above the door (warm), no bloom
+S.environment = new THREE.PMREMGenerator(R).fromScene(new (await import('three/examples/jsm/environments/RoomEnvironment.js')).RoomEnvironment(), 0.04).texture; S.environmentIntensity = 0.35;
+S.add(new THREE.HemisphereLight(0xcfd6e0, 0x2a1d14, 0.35));
+const bulb = new THREE.SpotLight(0xffcf96, 4e5, 0, Math.PI / 3.2, 0.75, 2); bulb.position.set(-60, 420, 260); bulb.target.position.set(0, 0, 0); bulb.castShadow = true; bulb.shadow.mapSize.set(2048, 2048); S.add(bulb, bulb.target);
+const fill = new THREE.DirectionalLight(0x9fb3cc, 0.25); fill.position.set(500, 200, 400); S.add(fill);
+const portrait = H > W;
+const cam = new THREE.PerspectiveCamera(portrait ? 43 : 34, W / H, 1, 4000);
+if (portrait) { cam.position.set(30, 110, 1180); cam.lookAt(10, 80, 0); } else { cam.position.set(330, 90, 1000); cam.lookAt(330, 70, 0); }
+R.render(S, cam);
+window.__ready = true;
+</script>
+</body></html>

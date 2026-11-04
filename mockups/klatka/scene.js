@@ -2,6 +2,7 @@
 // World units = dp of the 412-wide section; y grows DOWN in our layout coordinates, converted with Y().
 import * as THREE from '../node_modules/three/build/three.module.js';
 import { RoomEnvironment } from '../node_modules/three/examples/jsm/environments/RoomEnvironment.js';
+import { RoundedBoxGeometry } from '../node_modules/three/examples/jsm/geometries/RoundedBoxGeometry.js';
 
 export const Y = y => -y;
 
@@ -128,3 +129,66 @@ export function projector(cam, cssW, cssH) {
 }
 
 export { THREE };
+
+// ---------- stairwell set (menu, job card) ----------
+function canvasTex(w, h, draw, srgb = true) { const c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h); const t = new THREE.CanvasTexture(c); if (srgb) t.colorSpace = THREE.SRGBColorSpace; return t; }
+
+export function lamperiaTexture() {
+  // lower wall oil-painted green, dividing stripe, upper distemper; scuffs and a light-switch shadow
+  return canvasTex(1024, 1024, (g, w, h) => {
+    const r = rng(9);
+    g.fillStyle = '#d9d2c2'; g.fillRect(0, 0, w, h);
+    for (let i = 0; i < 3000; i++) { g.fillStyle = `rgba(120,110,95,${r() * 0.05})`; g.fillRect(r() * w, r() * h * 0.45, 2 + r() * 6, 2 + r() * 6); }
+    g.fillStyle = '#3f5a4c'; g.fillRect(0, h * 0.45, w, h * 0.55);
+    for (let i = 0; i < 1200; i++) { g.fillStyle = `rgba(${r() < .5 ? '20,30,25' : '120,140,125'},${r() * 0.08})`; g.fillRect(r() * w, h * 0.45 + r() * h * 0.55, 1 + r() * 30, 1 + r() * 2); }
+    g.fillStyle = '#7a2e22'; g.fillRect(0, h * 0.445, w, 10);
+    // scuffs at shoulder/handrail height
+    for (let i = 0; i < 25; i++) { g.strokeStyle = `rgba(200,200,180,${0.05 + r() * 0.1})`; g.lineWidth = 1 + r() * 3; g.beginPath(); const x = r() * w, y = h * (0.55 + r() * 0.2); g.moveTo(x, y); g.lineTo(x + 30 + r() * 120, y + (r() - .5) * 8); g.stroke(); }
+  });
+}
+export function tileTexture() {
+  // cement tiles, two-tone checker typical for tenement stairwells, worn
+  return canvasTex(512, 512, (g, w, h) => {
+    const r = rng(21), n = 8, s = w / n;
+    for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) { const dark = (i + j) % 2; const v = dark ? [96, 52, 40] : [196, 184, 160]; const k = (r() - .5) * 18; g.fillStyle = `rgb(${v[0] + k},${v[1] + k},${v[2] + k})`; g.fillRect(i * s, j * s, s, s); }
+    for (let i = 0; i < 4000; i++) { g.fillStyle = `rgba(0,0,0,${r() * 0.06})`; g.fillRect(r() * w, r() * h, 1.5, 1.5); }
+    g.strokeStyle = 'rgba(40,30,20,.5)'; g.lineWidth = 1.2; for (let i = 0; i <= n; i++) { g.beginPath(); g.moveTo(i * s, 0); g.lineTo(i * s, h); g.stroke(); g.beginPath(); g.moveTo(0, i * s); g.lineTo(w, i * s); g.stroke(); }
+  });
+}
+export function enamelTexture(text, sub = '') {
+  return canvasTex(512, 256, (g, w, h) => {
+    g.fillStyle = '#1e2a33'; g.fillRect(0, 0, w, h);
+    g.fillStyle = '#f3efe6'; g.beginPath(); g.roundRect(10, 10, w - 20, h - 20, 26); g.fill();
+    g.fillStyle = '#1e2a33'; g.beginPath(); g.roundRect(22, 22, w - 44, h - 44, 18); g.fill();
+    g.fillStyle = '#f3efe6'; g.font = '700 150px "Bona Nova"'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(text, w / 2, h / 2 + 8);
+    // chips in the enamel
+    g.fillStyle = '#2b2622'; [[60, 40, 14], [470, 210, 10], [455, 52, 6]].forEach(([x, y, r]) => { g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); });
+  });
+}
+
+export function buildStairwell(S, M, { doorNo = '14', ajar = false } = {}) {
+  const wallM = new THREE.MeshStandardMaterial({ map: lamperiaTexture(), roughness: 0.85 });
+  const wall = new THREE.Mesh(new THREE.PlaneGeometry(3200, 900), wallM); wall.position.set(0, 300, -2); wall.receiveShadow = true; S.add(wall);
+  const tex = tileTexture(); tex.wrapS = tex.wrapT = THREE.RepeatWrapping; tex.repeat.set(11, 3);
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(3200, 600), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.7 }));
+  floor.rotation.x = -Math.PI / 2; floor.position.set(0, -150, 290); floor.receiveShadow = true; S.add(floor);
+  // door frame + leaf with two raised panels
+  const doorM = new THREE.MeshStandardMaterial({ map: woodTexture(512, 1024, 4, [104, 62, 36]), roughness: 0.6 });
+  const g = new THREE.Group(); S.add(g);
+  const frame = new RoundedBoxGeometry(250, 440, 16, 2, 3); frame.translate(0, 70, 4); const fr = new THREE.Mesh(frame, doorM); fr.receiveShadow = true; g.add(fr);
+  const leafPivot = new THREE.Group(); leafPivot.position.set(-105, 0, 12); g.add(leafPivot);
+  const leaf = new THREE.Group(); leaf.position.set(105, 0, 0); leafPivot.add(leaf);
+  const lb = new THREE.Mesh(new RoundedBoxGeometry(210, 410, 10, 2, 2), doorM); lb.position.set(0, 62, 0); lb.castShadow = lb.receiveShadow = true; leaf.add(lb);
+  for (const [y, h] of [[150, 150], [-30, 170]]) { const p = new THREE.Mesh(new RoundedBoxGeometry(160, h, 8, 3, 3), doorM); p.position.set(0, y, 6); p.castShadow = true; leaf.add(p); }
+  const plate = new THREE.Mesh(new THREE.BoxGeometry(56, 28, 2), new THREE.MeshStandardMaterial({ map: enamelTexture(doorNo), roughness: 0.2, metalness: 0 })); plate.position.set(0, 250, 11); leaf.add(plate);
+  const esc = new THREE.Mesh(new RoundedBoxGeometry(22, 80, 4, 2, 2), M.iron); esc.position.set(80, 20, 8); esc.castShadow = true; leaf.add(esc);
+  const cyl = new THREE.Mesh(new THREE.CylinderGeometry(6, 6, 4, 32).rotateX(Math.PI / 2), M.brass); cyl.position.set(80, 0, 11); leaf.add(cyl);
+  const handle = new THREE.Mesh(new THREE.CylinderGeometry(3, 3, 34, 16).rotateZ(Math.PI / 2), M.iron); handle.position.set(66, 40, 18); handle.castShadow = true; leaf.add(handle);
+  if (ajar) leafPivot.rotation.y = -0.5;
+  // doormat
+  const mat = new THREE.Mesh(new RoundedBoxGeometry(170, 3, 80, 2, 1), new THREE.MeshStandardMaterial({ color: 0x5a4632, roughness: 1 })); mat.position.set(0, -148, 50); mat.receiveShadow = true; S.add(mat);
+  // stair light timer switch (minutnik) on the wall
+  const sw = new THREE.Mesh(new RoundedBoxGeometry(22, 30, 6, 2, 2), new THREE.MeshStandardMaterial({ color: 0xe9e4d8, roughness: 0.5 })); sw.position.set(160, 40, 2); sw.castShadow = true; S.add(sw);
+  const btn = new THREE.Mesh(new THREE.CylinderGeometry(6, 6, 3, 24).rotateX(Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0xe0b04a, emissive: 0x6b4a10, emissiveIntensity: 0.6, roughness: 0.4 })); btn.position.set(160, 40, 6); S.add(btn);
+  return { leafPivot };
+}

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Prześwit · warsztat</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="przeswit.css">
+<style>
+  .ws{grid-template-rows:56px auto auto minmax(0,1fr)}
+  .intro{padding:6px 16px 8px}
+  .board{padding:0 12px}
+  .board svg{width:100%;height:auto}
+  .detail{display:grid;grid-template-rows:auto auto auto 1fr auto;padding:10px 16px 0;min-height:0}
+  .detail .big{width:100%;height:72px}
+  .dname{display:flex;align-items:baseline;gap:10px}
+  .dname .st{font-size:36px;font-weight:800;line-height:1}
+  .dname small{font:italic 400 13px "Lato";color:var(--soft)}
+  .facts{margin-top:6px;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:14px}
+  .facts dt{font:700 11px/20px "Lato";letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+  .facts dd{line-height:20px}
+  .wear{display:flex;align-items:center;gap:4px}
+  .wear i{width:14px;height:14px;background:var(--ink);display:block}
+  .wear i.cut{background:var(--light);box-shadow:inset 0 0 0 2px var(--ink);clip-path:polygon(0 0,100% 0,50% 100%)}
+  .quote{font:italic 400 14px/1.35 "Lato";color:var(--ink);margin-top:8px;align-self:start}
+  .roll{align-self:end}.roll svg{width:100%;height:auto;margin-top:4px}
+  .acts{display:grid;grid-template-columns:1.3fr 1fr;gap:10px;padding:10px 0 4px}
+  .btn{height:56px;border:0;display:flex;align-items:center;justify-content:center;gap:8px;font:800 20px "Big Shoulders Stencil";letter-spacing:.06em;text-transform:uppercase;
+    clip-path:polygon(0 4px,4px 0,100% 0,100% calc(100% - 4px),calc(100% - 4px) 100%,0 100%)}
+  .btn.p{background:var(--ink);color:var(--light)}
+  .btn.s{background:var(--light);color:var(--ink);box-shadow:inset 0 0 0 2.5px var(--ink)}
+  @media (orientation:landscape){
+    .ws{grid-template-columns:1.15fr 1fr;grid-template-rows:46px auto minmax(0,1fr);column-gap:20px}
+    .ws .bar{grid-column:1/-1;height:46px;padding:0 4px}
+    .ws .intro{display:none}
+    .ws .board{grid-column:1;grid-row:2/4;padding:0;min-height:0;display:flex;align-items:flex-start}
+    .ws .board svg{height:100%;width:auto;max-width:100%}
+    .ws .detail{grid-column:2;grid-row:2/4;padding:0}
+    .ws .detail .big{height:56px}
+  }
+</style>
+</head><body>
+<main class="screen ws">
+  <header class="bar">
+    <button class="tap" aria-label="Wróć"><svg viewBox="0 0 24 24"><path d="M15 4L7 12L15 20" fill="none" stroke="var(--light)" stroke-width="3.4" stroke-linejoin="miter"/></svg></button>
+    <div class="bar-title"><span class="kicker">Furgonetka · tablica</span><span class="h">Warsztat</span></div>
+    <div class="coins" aria-label="Monety 142"><span id="coin"></span><span>142</span></div>
+  </header>
+  <div class="intro"><span class="tape it">Wszystko ma swoje miejsce. Jak czegoś brak, widać od razu.</span></div>
+  <section class="board" aria-label="Tablica narzędzi"><svg id="board" viewBox="0 0 388 384"></svg></section>
+  <section class="detail" aria-label="Wybrane narzędzie">
+    <svg class="big" id="big" viewBox="-6 -30 214 50" preserveAspectRatio="xMinYMid meet"></svg>
+    <div class="dname"><span class="st">Haczyk</span><small>rękojeść w kreski · z wyposażenia</small></div>
+    <dl class="facts">
+      <dt>Otwiera</dt><dd>wkładki bębenkowe, płytkowe, z listwą boczną</dd>
+      <dt>Zużycie</dt><dd class="wear"><i></i><i></i><i></i><i class="cut"></i><i class="cut"></i>&nbsp;62 / 100 · dwa nacięcia na trzonie</dd>
+    </dl>
+    <p class="quote">„Grot ma zadziory. Jeszcze pociągnie, ale sejfu bym nim nie ruszał.”</p>
+    <div class="roll"><span class="kicker">Zwijka na zlecenie · 3 kieszenie</span><svg id="roll" viewBox="0 0 380 70"></svg></div>
+    <div class="acts">
+      <button class="btn p">Napraw · 5 <span id="coin2"></span></button>
+      <button class="btn s">Do zwijki</button>
+    </div>
+  </section>
+</main>
+<script src="tools.js"></script>
+<script>
+document.getElementById('coin').innerHTML = coinSVG(26);
+document.getElementById('coin2').innerHTML = coinSVG(22, true);
+// board: iron card with tool-shaped cut-outs. own = lies in its hole; locked = punch line, not cut yet
+const cells = [
+  ['tw_angle', 'own', 'start', 5], ['pk_hook', 'own', 'sel', 3], ['pk_peg', 'own', 'start', 4],
+  ['pk_ward', 'own', '', 5], ['tl_shackle', 'own', '', 5], ['pk_ripple', 'own', '', 4],
+  ['pk_lever', 'buy', 'brakuje 358', 0], ['pk_wedge', 'lock', 'po zamkach t3', 0], ['tw_bar', 'lock', 'po zamkach t4', 0],
+];
+const W = 128, H = 128; let g = `<path d="M0 3L3 0H388V384H3L0 381Z" fill="var(--ink)"/>`;
+// screw holes of the board
+g += [[10,10],[378,10],[10,374],[378,374]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="3" fill="var(--light)"/>`).join('');
+cells.forEach(([id, st, note, wear], i) => {
+  const cx = 4 + (i % 3) * W, cy = 4 + Math.floor(i / 3) * H, t = TOOL[id];
+  const mode = st === 'own' ? 'own' : 'locked';
+  g += `<g transform="translate(${cx + 14} ${cy + 42})">${toolSVG(id, mode)}</g>`;
+  if (id === 'pk_hook') g += `<g transform="translate(${cx+14} ${cy+42})"><path d="M58 -2.2l3 2.6l3-2.6M70 -2.2l3 2.6l3-2.6" fill="var(--light)"/><path d="M94 -15l3 1l-1 3" fill="none" stroke="var(--light)" stroke-width="1.4"/></g>`;
+  if (st === 'lock') g += `<g transform="translate(${cx+28} ${cy+50}) rotate(-6)"><path d="M0 2L5 0L11 3L18 0H74L72 8L74 16H0L2 9Z" fill="var(--shade)"/><text x="37" y="12" text-anchor="middle" font-family="Lato" font-weight="700" font-size="10" fill="var(--ink)">${note}</text></g>`;
+  g += `<text x="${cx + W/2}" y="${cy + 88}" text-anchor="middle" font-family="Lato" font-weight="700" font-size="12.5" fill="var(--light)">${t.name}</text>`;
+  if (st === 'own') {
+    g += Array.from({length: 5}, (_, k) => k < wear
+      ? `<rect x="${cx + W/2 - 32 + k*13}" y="${cy + 98}" width="10" height="10" fill="var(--light)"/>`
+      : `<path d="M${cx + W/2 - 32 + k*13} ${cy+98}h10l-5 10z" fill="none" stroke="var(--light)" stroke-width="1.4"/>`).join('');
+  } else {
+    g += `<g transform="translate(${cx + W/2 - 30} ${cy + 96})">${coinG(true).replace(/<circle/,'<circle').replace(/^/, '<g transform="scale(.55)">')}</g></g><text x="${cx + W/2 - 13} " y="${cy + 108}" font-family="Big Shoulders Stencil" font-weight="800" font-size="15" fill="var(--light)">${t.price}</text>`;
+    if (st === 'buy') g += `<text x="${cx + W/2 + 18}" y="${cy + 108}" font-family="Lato" font-size="10.5" fill="var(--light)">${note}</text>`;
+  }
+  if (note === 'sel') g += `<path d="M${cx+3} ${cy+3}h${W-6}v${H-6}h${-(W-6)}z" fill="none" stroke="var(--light)" stroke-width="2"/><path d="M${cx+8} ${cy+8}h${W-16}v${H-16}h${-(W-16)}z" fill="none" stroke="var(--light)" stroke-width="1"/>`;
+});
+document.getElementById('board').innerHTML = g;
+// tool roll: pockets are cut windows; the third pocket is empty = bright hole in the shape of nothing yet
+document.getElementById('roll').innerHTML = `<path d="M0 6L6 0H380V70H6L0 64Z" fill="var(--wood)"/>` +
+  [0,1,2].map(i => `<rect x="${10+i*124}" y="10" width="116" height="50" fill="${i<2?'var(--ink)':'var(--light)'}"/>`).join('') +
+  `<g transform="translate(18 36) scale(.98)">${toolSVG('tw_angle','own')}</g><g transform="translate(142 37) scale(.98)">${toolSVG('pk_hook','own')}</g>` +
+  `<text x="316" y="40" text-anchor="middle" font-family="Lato" font-style="italic" font-size="12" fill="var(--soft)">dotknij narzędzia</text>` +
+  `<path d="M0 22h380M0 50h380" stroke="var(--light)" stroke-width="1" stroke-dasharray="2 5" opacity=".5"/>`;
+// detail silhouette: worn hook at large size, notches and burrs visible
+document.getElementById('big').innerHTML = `<g transform="scale(1.9)">${toolSVG('pk_hook','own')}<path d="M58 -2.2l3 2.6l3-2.6M70 -2.2l3 2.6l3-2.6" fill="var(--light)"/><path d="M94 -15l3 1l-1 3M97 -10l-2.5 -.5" fill="none" stroke="var(--light)" stroke-width="1"/></g>`;
+</script>
+</body></html>

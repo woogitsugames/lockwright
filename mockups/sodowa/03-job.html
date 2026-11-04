@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sodowa · zlecenie</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="sodowa.css">
+<style>
+.scene svg{display:block;width:100%;height:auto}
+.talk{padding:8px 16px 0;display:grid;gap:3px}
+.talk p{font:400 14.5px/1.3 "Bitter",serif;color:var(--papier)}
+.talk b{font:600 14.5px "Fraunces",serif;font-variation-settings:"SOFT" 100,"WONK" 1;color:var(--sodowa);margin-right:4px}
+.slips{display:grid;grid-template-columns:1fr 1.18fr;gap:10px;padding:10px 12px 0}
+.slip{background:var(--papier);color:var(--atrament);padding:10px 11px 10px;position:relative;
+  clip-path:polygon(0 3px,6% 0,14% 2px,25% 0,37% 3px,50% 0,62% 2px,75% 0,88% 3px,100% 1px,100% 100%,0 100%)}
+.slip h3{font:600 15px/1.1 "Fraunces",serif;font-variation-settings:"SOFT" 100,"WONK" 1;margin-bottom:6px}
+.slip h3 small{display:block;font:italic 400 11.5px "Bitter",serif;color:var(--cegla);margin-top:2px}
+.row{display:flex;justify-content:space-between;font:400 12.5px/1.55 "Bitter",serif;font-variant-numeric:tabular-nums}
+.row.tot{border-top:2px solid var(--atrament);margin-top:4px;padding-top:3px;font-weight:700;font-size:14px}
+.stamp{position:absolute;right:6px;top:8px;transform:rotate(-8deg);border:2px solid var(--cegla);color:var(--cegla);font:700 11px/1 "Bitter",serif;letter-spacing:.12em;padding:3px 5px}
+.fine{font:italic 400 11px/1.3 "Bitter",serif;margin-top:5px}
+.proof{display:grid;grid-template-columns:26px 1fr;gap:6px;align-items:start;padding:5px 0;border-bottom:1px solid var(--atrament)}
+.proof:last-of-type{border-bottom:0}
+.proof svg{width:26px;height:26px}
+.proof p{font:400 12px/1.25 "Bitter",serif}
+.proof p b{font-weight:700;display:block;font-size:12.5px}
+.disc{display:grid;grid-template-columns:22px 1fr;gap:7px;align-items:center;margin-top:10px;min-height:48px;border-top:1px dashed var(--atrament);padding-top:6px;font:400 12px/1.25 "Bitter",serif}.disc svg{width:22px;height:22px}.disc b{display:block;font-size:12.5px}
+.level{display:flex;align-items:center;gap:8px;margin-top:6px}
+.level svg{width:84px;height:24px;flex:none}
+.level span{font:italic 600 12.5px "Bitter",serif}
+.choices{margin-top:auto;padding:10px 12px 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choices .primary{grid-column:1/-1;justify-content:space-between}
+.choices .btn{font-size:16.5px}
+@media (orientation:landscape){
+  .page.job{display:grid;grid-template-columns:380px minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr) auto}
+  .page.job .top{grid-column:1/-1}
+  .page.job .scene{grid-column:1;grid-row:2/5;padding:0 0 12px 12px}
+  .page.job .talk{grid-column:2;grid-row:2;padding-top:0}
+  .page.job .slips{grid-column:2;grid-row:3}
+  .page.job .choices{grid-column:2;grid-row:4;grid-template-columns:1.2fr 1fr 1fr;padding-top:8px}
+  .page.job .choices .primary{grid-column:auto}
+  .page.job .scene svg{height:100%;width:auto}
+}
+</style>
+</head><body>
+<main class="page job">
+  <header class="top">
+    <button class="tap" aria-label="Wróć"><svg viewBox="0 0 24 24"><path d="M15 4l-8 8 8 8"/></svg></button>
+    <div class="bar-t"><span class="kick">Telefon o 23:41 · Ogrodowa 12, III piętro</span><span class="ttl">Rosół na gazie</span></div>
+    <div class="coins"><svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="11" fill="var(--noc)" stroke="var(--sodowa)" stroke-width="2"/><circle cx="9.5" cy="13" r="3.2" fill="none" stroke="var(--sodowa)" stroke-width="2"/><path d="M12.7 13h7.5M17.5 13v3M20 13v2.2" fill="none" stroke="var(--sodowa)" stroke-width="2"/></svg><span>312</span></div>
+  </header>
+
+  <section class="scene" aria-label="Klatka schodowa, trzecie piętro">
+    <svg viewBox="0 0 412 236">
+      <defs>
+        <filter id="lino" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="2.4"/></filter>
+        <filter id="grainF"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="2"/><feColorMatrix values="0 0 0 0 .11 0 0 0 0 .09 0 0 0 0 .1 0 0 0 -1.7 1.08"/></filter>
+        <pattern id="wallcut" width="28" height="12" patternUnits="userSpaceOnUse"><path d="M2 4h18M14 10h12" stroke="var(--zelazo)" stroke-width="2" stroke-linecap="round"/></pattern>
+        <pattern id="tiles" width="20" height="10" patternUnits="userSpaceOnUse"><rect width="20" height="10" fill="var(--noc)"/><path d="M0 0h10v5H0zM10 5h10v5H10z" fill="var(--zelazo)"/></pattern>
+        <pattern id="robe" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="var(--cegla)"/><circle cx="2" cy="2" r="1.3" fill="var(--papier)"/><circle cx="6" cy="6" r="1.3" fill="var(--papier)"/></pattern>
+        <pattern id="doorwood" width="60" height="7" patternUnits="userSpaceOnUse"><rect width="60" height="7" fill="var(--cegla)"/><path d="M0 3.5C18 2.5 40 4.6 60 3.4" stroke="var(--zelazo)" stroke-width="1.4" fill="none"/></pattern>
+      </defs>
+      <g filter="url(#lino)">
+        <!-- landing wall at night -->
+        <rect x="-4" y="-4" width="420" height="244" fill="var(--atrament)"/>
+        <rect x="0" y="0" width="412" height="182" fill="url(#wallcut)"/>
+        <!-- oil-paint dado, every Polish stairwell has one -->
+        <rect x="0" y="118" width="412" height="64" fill="var(--noc)"/><path d="M0 118h412" stroke="var(--papier)" stroke-width="1.6" stroke-dasharray="30 4 60 5"/>
+        <!-- floor tiles -->
+        <rect x="0" y="182" width="412" height="58" fill="url(#tiles)"/>
+        <!-- stairwell window: the sodium lamp outside -->
+        <rect x="300" y="20" width="92" height="96" fill="var(--sodowa)" stroke="var(--papier)" stroke-width="3"/>
+        <path d="M346 20v96M300 68h92" stroke="var(--atrament)" stroke-width="4"/>
+        <path d="M318 34h10l-2 4h-6z M323 38v40" fill="none" stroke="var(--atrament)" stroke-width="2"/>
+        <!-- light falling through the window onto the floor -->
+        <path d="M300 116L392 116L340 240L176 240Z" fill="var(--sodowa)" opacity=".92"/>
+        <path d="M344 116l-34 124M300 180h92" stroke="var(--atrament)" stroke-width="4" opacity=".9"/>
+        <!-- door no. 7 -->
+        <rect x="26" y="20" width="96" height="164" fill="url(#doorwood)" stroke="var(--papier)" stroke-width="2.4"/>
+        <rect x="38" y="34" width="72" height="56" fill="none" stroke="var(--atrament)" stroke-width="2.4"/>
+        <rect x="38" y="102" width="72" height="66" fill="none" stroke="var(--atrament)" stroke-width="2.4"/>
+        <circle cx="74" cy="12" r="8" fill="var(--papier)"/><text x="74" y="16.5" font-size="12" font-weight="700" fill="var(--atrament)" text-anchor="middle">7</text>
+        <rect x="104" y="94" width="10" height="26" rx="2" fill="var(--papier)" stroke="var(--atrament)" stroke-width="1.6"/>
+        <path d="M108 104h-14" stroke="var(--papier)" stroke-width="3" stroke-linecap="round"/>
+        <!-- doormat -->
+        <rect x="30" y="186" width="88" height="14" fill="var(--cegla)" stroke="var(--papier)" stroke-width="1.6"/>
+        <!-- pani Halina: robe in dots, slippers, hands together -->
+        <g>
+          <path d="M150 104C150 92 160 86 170 86S190 92 190 104L198 190H142Z" fill="url(#robe)" stroke="var(--papier)" stroke-width="2"/>
+          <path d="M170 104V190" stroke="var(--papier)" stroke-width="1.6"/>
+          <path d="M156 134h28" stroke="var(--papier)" stroke-width="3"/>
+          <circle cx="170" cy="70" r="15" fill="var(--papier)" stroke="var(--atrament)" stroke-width="2"/>
+          <path d="M155 66C156 52 184 52 185 66C180 58 160 58 155 66Z" fill="var(--popiol)" stroke="var(--atrament)" stroke-width="1.4"/>
+          <circle cx="170" cy="52" r="6" fill="var(--popiol)" stroke="var(--atrament)" stroke-width="1.4"/>
+          <path d="M164 72h3M174 72h3M166 79q4 3 8 0" stroke="var(--atrament)" stroke-width="1.6" fill="none"/>
+          <path d="M140 190h24v8h-26zM176 190h24l2 8h-26z" fill="var(--papier)" stroke="var(--atrament)" stroke-width="1.6"/>
+        </g>
+        <!-- pani Zosia: curlers, cardigan, arms crossed -->
+        <g>
+          <path d="M218 108C218 96 228 90 238 90S258 96 258 108L262 190H214Z" fill="var(--zelazo)" stroke="var(--papier)" stroke-width="2"/>
+          <path d="M222 128C232 136 246 136 254 126" fill="none" stroke="var(--papier)" stroke-width="5" stroke-linecap="round"/>
+          <path d="M224 150v40M252 150v40" stroke="var(--cegla)" stroke-width="2"/>
+          <circle cx="238" cy="72" r="14" fill="var(--papier)" stroke="var(--atrament)" stroke-width="2"/>
+          <g fill="var(--sodowa)" stroke="var(--atrament)" stroke-width="1.4"><rect x="224" y="54" width="9" height="7" rx="3"/><rect x="234" y="52" width="9" height="7" rx="3"/><rect x="244" y="55" width="9" height="7" rx="3"/></g>
+          <path d="M232 74h3M241 74h3M234 81h7" stroke="var(--atrament)" stroke-width="1.6"/>
+          <path d="M214 190h22v8h-22zM240 190h22v8h-22z" fill="var(--atrament)" stroke="var(--papier)" stroke-width="1.6"/>
+        </g>
+        <!-- through the door: the pot (we imagine it) -->
+        <g transform="translate(136 6)">
+          <path d="M0 22q0-18 30-18h44q30 0 30 18v4H0z" fill="var(--noc)" stroke="var(--papier)" stroke-width="1.6" opacity="0"/>
+        </g>
+      </g>
+      <!-- broth counter: bubble with the pot, 3 stages (simmer / bubble / boiled down) -->
+      <g transform="translate(130 6)">
+        <path d="M0 6Q0 0 6 0H96Q102 0 102 6V34Q102 40 96 40H20L-8 58L8 40H6Q0 40 0 34Z" fill="var(--papier)" stroke="var(--atrament)" stroke-width="2"/>
+        <path d="M10 30h26v-10H10z" fill="var(--cegla)" stroke="var(--atrament)" stroke-width="1.8"/>
+        <path d="M7 20h32" stroke="var(--atrament)" stroke-width="2.4"/>
+        <path d="M17 15q-3-4 0-8M24 15q-3-4 0-8M31 15q-3-4 0-8" fill="none" stroke="var(--atrament)" stroke-width="1.6"/>
+        <g stroke="var(--atrament)" stroke-width="1.8"><rect x="50" y="14" width="10" height="12" fill="var(--atrament)"/><rect x="66" y="14" width="10" height="12" fill="none"/><rect x="82" y="14" width="10" height="12" fill="none"/></g>
+        <text x="50" y="36" font-size="9" fill="var(--atrament)" font-style="italic">pyrka</text>
+      </g>
+      <rect width="412" height="236" filter="url(#grainF)" opacity=".18" style="mix-blend-mode:screen"/>
+    </svg>
+  </section>
+
+  <section class="talk">
+    <p><b>Halina:</b>Synku, ja tylko na chwilkę wyszłam. Ze śmieciami.</p>
+    <p><b>Zosia:</b>Gaz zakręciłam na klatce. Czterdzieści lat przez ścianę!</p>
+    <p><b>Halina:</b>Makaron sama robiłam. Zostanie pan na talerz?</p>
+  </section>
+
+  <section class="slips">
+    <div class="slip">
+      <span class="stamp">NOC</span>
+      <h3>Wycena<small>przed robotą, na piśmie</small></h3>
+      <div class="row"><span>zamek zapadkowy</span><span>60</span></div>
+      <div class="row"><span>noc ×1,5</span><span>+30</span></div>
+      <div class="row"><span>dojazd</span><span>15</span></div>
+      <div class="row tot"><span>razem</span><span>105</span></div>
+      <p class="fine">Rachunek nie wyjdzie wyżej niż 115. Słowo.</p>
+      <label class="disc"><svg viewBox="0 0 22 22"><rect x="2" y="2" width="18" height="18" fill="none" stroke="var(--atrament)" stroke-width="2.2"/></svg><span><b>Rabat sąsiedzki</b> −20%, wtedy 85</span></label>
+    </div>
+    <div class="slip">
+      <h3>Czy to jej drzwi?<small>dowód leży w środku, przy rosole</small></h3>
+      <div class="proof"><svg viewBox="0 0 26 26" fill="none" stroke="var(--atrament)" stroke-width="2"><circle cx="9" cy="8" r="4"/><circle cx="18" cy="9" r="3.5"/><path d="M2 24c0-6 3-9 7-9s7 3 7 9M15 24c0-5 1.5-8 4-8s5 3 5 8"/></svg><p><b>Sąsiadka ręczy</b>pani Zosia, spod szóstki</p></div>
+      <div class="proof"><svg viewBox="0 0 26 26" fill="none" stroke="var(--atrament)" stroke-width="2"><rect x="3" y="6" width="20" height="14"/><path d="M3 6l10 8 10-8"/></svg><p><b>List w skrzynce</b>„Halina Wróbel, Ogrodowa 12/7”</p></div>
+      <div class="proof"><svg viewBox="0 0 26 26" fill="none" stroke="var(--atrament)" stroke-width="2"><rect x="7" y="2" width="12" height="22" rx="2"/><path d="M10 7h6M10 11h6M10 15h4"/></svg><p><b>mObywatel w fartuchu</b>zameldowana pod siódemką. „Wnuczek mi ustawił”</p></div>
+      <div class="level"><svg viewBox="0 0 84 24"><rect x="1" y="4" width="82" height="16" rx="8" fill="var(--sodowa)" stroke="var(--atrament)" stroke-width="2"/><path d="M34 4v16M50 4v16" stroke="var(--atrament)" stroke-width="2"/><ellipse cx="42" cy="12" rx="7" ry="4.5" fill="var(--papier)" stroke="var(--atrament)" stroke-width="1.6"/></svg><span>Czuję się pewnie</span></div>
+    </div>
+  </section>
+
+  <section class="choices">
+    <button class="btn primary"><span>Otwieram<small>105 monet, zamek zapadkowy</small></span><svg class="ico" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 14h15M15 7l7 7-7 7"/></svg></button>
+    <button class="btn">Poproszę o coś jeszcze</button>
+    <button class="btn">Odmawiam</button>
+  </section>
+</main>
+</body></html>

@@ -1,0 +1,100 @@
+{
+ "colors": {
+  "light": "#FFF4D6",
+  "shade": "#EADBB2",
+  "ink": "#1D1A16",
+  "steel": "#2B3236",
+  "brass": "#47371A",
+  "wood": "#46291B",
+  "tool": "#C9532A",
+  "soft": "#5C5142"
+ },
+ "pairs": [
+  [
+   "ink",
+   "light",
+   "text"
+  ],
+  [
+   "soft",
+   "light",
+   "text"
+  ],
+  [
+   "ink",
+   "shade",
+   "text"
+  ],
+  [
+   "soft",
+   "shade",
+   "text"
+  ],
+  [
+   "light",
+   "ink",
+   "text"
+  ],
+  [
+   "light",
+   "wood",
+   "text"
+  ],
+  [
+   "light",
+   "brass",
+   "text"
+  ],
+  [
+   "ink",
+   "light",
+   "graphic"
+  ],
+  [
+   "steel",
+   "light",
+   "graphic"
+  ],
+  [
+   "brass",
+   "light",
+   "graphic"
+  ],
+  [
+   "wood",
+   "light",
+   "graphic"
+  ],
+  [
+   "tool",
+   "light",
+   "graphic"
+  ],
+  [
+   "tool",
+   "ink",
+   "graphic"
+  ],
+  [
+   "light",
+   "steel",
+   "graphic"
+  ],
+  [
+   "light",
+   "brass",
+   "graphic"
+  ],
+  [
+   "light",
+   "tool",
+   "graphic"
+  ],
+  [
+   "ink",
+   "shade",
+   "graphic"
+  ]
+ ],
+ "rules": "tool never touches brass/steel/shade directly: it always carries a 1.5 dp light gap (tool vs light is the checked pair)"
+}
