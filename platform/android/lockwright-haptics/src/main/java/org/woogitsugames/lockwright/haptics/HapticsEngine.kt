@@ -2,13 +2,13 @@ package org.woogitsugames.lockwright.haptics
 
 import android.content.Context
 import android.os.Build
-import android.os.VibrationAttributes
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
 import android.os.Handler
 import android.os.HandlerThread
 import android.os.Process
+import android.os.SystemClock
 import android.util.Log
 
 /**
@@ -47,9 +47,13 @@ class HapticsEngine(context: Context) {
         val v = vibrator
         if (v == null || !v.hasVibrator()) {
             tier = Tier.NONE
+            primitives = emptyList()
+            amplitudeControl = false
+            envelopeSupported = false
         } else {
             amplitudeControl = v.hasAmplitudeControl()
-            envelopeSupported = Build.VERSION.SDK_INT >= 36 && runCatching { v.areEnvelopeEffectsSupported() }.getOrDefault(false)
+            envelopeSupported = Build.VERSION.SDK_INT >= 36 &&
+                (runCatching { v.areEnvelopeEffectsSupported() }.getOrDefault(false) as Boolean)
             primitives = detectPrimitives(v)
             tier = when {
                 Build.VERSION.SDK_INT_FULL >= 370200 -> Tier.BUILDER
@@ -79,7 +83,7 @@ class HapticsEngine(context: Context) {
         val out = ArrayList<String>()
         for ((name, id) in all) {
             val ok = if (Build.VERSION.SDK_INT >= 31) {
-                runCatching { v.arePrimitivesSupported(id) }.getOrDefault(false)
+                runCatching { v.arePrimitivesSupported(id).firstOrNull() == true }.getOrDefault(false)
             } else {
                 id == VibrationEffect.Composition.PRIMITIVE_CLICK || id == VibrationEffect.Composition.PRIMITIVE_TICK
             }
@@ -98,7 +102,7 @@ class HapticsEngine(context: Context) {
             "\"native\":true}")
     }
 
-    /** Transient event. intensity/sharpness in 0..1, material shifts the timbre mapping. */
+    /** Transient event. intensity/sharpness in 0..1, material shifts the mapping. */
     fun play(event: String, intensity: Float, material: String) {
         val inten = intensity.coerceIn(0f, 1f)
         handler.post { playOnThread(event, inten, material) }
@@ -116,7 +120,7 @@ class HapticsEngine(context: Context) {
             val c = continuous[id] ?: return@post
             c.intensity = intensity.coerceIn(0f, 1f)
             c.sharpness = sharpness.coerceIn(0f, 1f)
-            pumpContinuous(id, c)
+            pumpContinuous(c)
         }
     }
 
@@ -134,11 +138,11 @@ class HapticsEngine(context: Context) {
         }
     }
 
-    /** Re-arms a short resistance segment; called on every update (and throttled). */
-    private fun pumpContinuous(id: String, c: Continuous) {
+    /** Re-arms a short resistance segment (50-60 ms), throttled to the segment length. */
+    private fun pumpContinuous(c: Continuous) {
         if (!c.active) return
         val v = vibrator ?: return
-        val now = android.os.SystemClock.uptimeMillis()
+        val now = SystemClock.uptimeMillis()
         val segmentMs = 50L
         if (now - lastSegmentAt < segmentMs - 10) return
         lastSegmentAt = now
@@ -162,6 +166,7 @@ class HapticsEngine(context: Context) {
         if (amplitudeControl) {
             v.vibrate(VibrationEffect.createWaveform(longArrayOf(0, ms), intArrayOf(0, amp), -1))
         } else if (tier != Tier.NONE) {
+            @Suppress("DEPRECATION")
             v.vibrate(VibrationEffect.createOneShot(ms, VibrationEffect.DEFAULT_AMPLITUDE))
         }
     }
@@ -176,19 +181,14 @@ class HapticsEngine(context: Context) {
             else -> 1.0f
         }
         val i = (intensity * scale).coerceIn(0f, 1f)
-        val effect = buildEventEffect(event, i)
+        val effect = buildEventEffect(event, i, v)
         if (effect != null) {
-            if (Build.VERSION.SDK_INT >= 33) {
-                v.vibrate(VibrationEffect.createPredefinedSafe(effect))
-            } else {
-                @Suppress("DEPRECATION")
-                v.vibrate(effect)
-            }
+            @Suppress("DEPRECATION")
+            v.vibrate(effect)
         }
     }
 
-    private fun buildEventEffect(event: String, i: Float): VibrationEffect? {
-        val v = vibrator ?: return null
+    private fun buildEventEffect(event: String, i: Float, v: Vibrator): VibrationEffect? {
         return when (tier) {
             Tier.PRIMITIVES, Tier.ENVELOPE, Tier.BUILDER -> compositionFor(event, i, v)
             Tier.AMPLITUDE -> waveformFor(event, i)
@@ -200,11 +200,12 @@ class HapticsEngine(context: Context) {
     /**
      * A2+: composition built ONLY from individually-supported primitives — one
      * unsupported primitive voids the whole composition, so each candidate is
-     * checked via arePrimitivesSupported and unsupported ones are replaced or skipped.
+     * checked via arePrimitivesSupported and unsupported ones are replaced/skipped.
      */
     private fun compositionFor(event: String, i: Float, v: Vibrator): VibrationEffect? {
         fun supported(id: Int): Boolean =
-            Build.VERSION.SDK_INT < 31 || runCatching { v.arePrimitivesSupported(id) }.getOrDefault(false)
+            Build.VERSION.SDK_INT < 31 ||
+                runCatching { v.arePrimitivesSupported(id).firstOrNull() == true }.getOrDefault(false)
 
         fun comp(vararg steps: Pair<Int, Float>): VibrationEffect? {
             val c = VibrationEffect.startComposition()
@@ -239,8 +240,7 @@ class HapticsEngine(context: Context) {
             "contact" -> comp(tick to (0.35f * i).coerceAtLeast(0.05f))
             "near_shear" -> comp(quickRise to (0.2f * i).coerceAtLeast(0.05f))
             "stress" -> comp(tick to (0.3f * i).coerceAtLeast(0.05f))
-            "gate_align" -> comp(click to (0.5f * i).coerceAtLeast(0.05f))
-                ?: comp(tick to 0.6f)
+            "gate_align" -> comp(click to (0.5f * i).coerceAtLeast(0.05f)) ?: comp(tick to 0.6f)
             else -> comp(tick to (0.3f * i).coerceAtLeast(0.05f))
         }
         return effect ?: waveformFor(event, i)
@@ -261,8 +261,7 @@ class HapticsEngine(context: Context) {
 
     private fun oneShotFor(event: String): VibrationEffect {
         val key = event in setOf("set", "false_set", "drop", "break", "open", "detector_trip")
-        val ms = if (key) 30L else 0L
-        if (ms == 0L) return VibrationEffect.createOneShot(1, 1)
+        val ms = if (key) 30L else 1L
         return VibrationEffect.createOneShot(ms, VibrationEffect.DEFAULT_AMPLITUDE)
     }
 

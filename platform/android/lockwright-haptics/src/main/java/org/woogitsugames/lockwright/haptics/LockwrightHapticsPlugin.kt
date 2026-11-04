@@ -2,6 +2,7 @@ package org.woogitsugames.lockwright.haptics
 
 import org.godotengine.godot.Godot
 import org.godotengine.godot.plugin.GodotPlugin
+import org.godotengine.godot.plugin.SignalInfo
 import org.godotengine.godot.plugin.UsedByGodot
 
 /**
@@ -11,11 +12,11 @@ import org.godotengine.godot.plugin.UsedByGodot
  */
 class LockwrightHapticsPlugin(godot: Godot) : GodotPlugin(godot) {
 
-    private val engine by lazy { HapticsEngine(godot) }
+    private val engine by lazy { HapticsEngine(getContext()) }
 
     override fun getPluginName(): String = "LockwrightHaptics"
 
-    override fun getPluginSignals(): Set<String> = emptySet()
+    override fun getPluginSignals(): Set<SignalInfo> = emptySet()
 
     @UsedByGodot
     fun play(event: String, intensity: Double, material: String) {
