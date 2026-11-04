@@ -33,7 +33,7 @@ jobs:
 
       - name: Clone godot-cpp 4.7.2-stable
         run: |
-          git clone --depth 1 --branch 4.7.2-stable https://github.com/godotengine/godot-cpp.git godot-cpp
+          git clone --depth 1 --branch godot-4.7.2-stable https://github.com/godotengine/godot-cpp.git godot-cpp
 
       - name: Build godot-cpp (ios release + debug)
         run: |
