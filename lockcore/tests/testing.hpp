@@ -1,4 +1,4 @@
-// Minimal test runner (D-13): TEST_CASE / CHECK / REQUIRE, no dependencies.
+// Minimal test runner (D-15): TEST_CASE / CHECK / REQUIRE, no dependencies.
 #pragma once
 
 #include <cstdint>

@@ -1,7 +1,7 @@
 // PCG32 (O'Neill, pcg-random.org, XSH-RR 64/32), implemented here so that the
 // sequence never depends on a standard library or engine implementation.
 // Streams: the `stream` argument selects one of 2^63 independent sequences; each
-// family and purpose (generator, simulation, bot) gets its own stream (D-12).
+// family and purpose (generator, simulation, bot) gets its own stream (D-14).
 #pragma once
 
 #include <cstdint>

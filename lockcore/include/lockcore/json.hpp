@@ -1,4 +1,4 @@
-// Minimal JSON for lockcore data files (D-13).
+// Minimal JSON for lockcore data files (D-15).
 //
 // Deliberately restricted: numbers must be integers (int64 range, or uint64 for
 // non-negative values). Fractions and exponents are rejected, because every

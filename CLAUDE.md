@@ -43,6 +43,10 @@ cd mockups && npm run render       # renderuje makiety do PNG (412×915 i 915×4
 cd mockups && node tools/render.mjs klatka         # jeden kierunek
 cd mockups && node tools/contrast.mjs klatka/palette.json   # kontrast WCAG + daltonizm
 cd mockups && node tools/contact.mjs               # zestawienie kierunków: compare/contact.png
+cmake -S lockcore -B lockcore/build && cmake --build lockcore/build   # lockcore (C++20), szczegóły: lockcore/README.md
+ctest --test-dir lockcore/build --output-on-failure  # testy lockcore + złote powtórki + brak float
+lockcore/build/verify_seeds --seeds 1000            # weryfikator (CI); pełny: --seeds 10000 (A3)
+lockcore/build/replay_tool play lockcore/tests/golden/wafer_t2_s77.replay.json   # powtórka → hash
 ```
 
 ## Mapa dokumentów

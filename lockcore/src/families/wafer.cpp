@@ -52,7 +52,7 @@ class Module final : public FamilyModule {
   ToolSet required_tools(const LockSpec&) const override { return ToolSet{TOOL_TENSION_WRENCH | TOOL_HOOK}; }
 
   // The card's ranges (3->5 wafers, 14->10 % window, 0.30->0.22 band) are spread
-  // over three tiers so the family can also serve as an early lock (D-15).
+  // over three tiers so the family can also serve as an early lock (D-17).
   int min_tier() const override { return 1; }
   int max_tier() const override { return 3; }
 

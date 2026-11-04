@@ -82,7 +82,7 @@ which is above `t_hold`, so fixing it costs no drop.
 Generator constants (Q16 thousandths): pin `t_hold 0.10`, `t_release 0.05`,
 `band_lo 0.20..0.25`, `tau_safe = max t_stick + 0.06`, `cr 0.12..0.21`, stress gain 0.095,
 bound pin speed 2/s, spool 0.6/s. Wafer: `t_hold 0.08`, `t_release 0.16`, `band_lo 0.22..0.26`.
-Tier tables: `pin_tumbler` t2–t7 per LOCKS.md §2.6; `wafer` t1–t3 (D-15).
+Tier tables: `pin_tumbler` t2–t7 per LOCKS.md §2.6; `wafer` t1–t3 (D-17).
 
 ## Verifier (LOCKS.md §1.9)
 
