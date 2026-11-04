@@ -1,0 +1,157 @@
+name: spike-haptics
+
+# Spikes 1-2 (docs/TECH.md §4): haptic latency probes. Godot probe (Android AAR + iOS GDExtension) and
+# native control apps (Kotlin/Compose, SwiftUI) with the same effect code. Artifacts: 2 APKs, unsigned iOS builds.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'spikes/haptics-latency/**'
+      - '.github/workflows/spike-haptics.yml'
+  workflow_dispatch:
+
+env:
+  GODOT: Godot_v4.7.2-stable_linux.x86_64
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Android SDK (platform 36, build-tools 36.1.0)
+        run: |
+          SDK=$RUNNER_TEMP/android-sdk
+          mkdir -p $SDK/cmdline-tools
+          curl -sL -o /tmp/cmdtools.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+          unzip -q /tmp/cmdtools.zip -d $SDK/cmdline-tools && mv $SDK/cmdline-tools/cmdline-tools $SDK/cmdline-tools/latest
+          yes | $SDK/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null
+          $SDK/cmdline-tools/latest/bin/sdkmanager "platforms;android-36" "build-tools;36.1.0" "platform-tools" > /dev/null
+          echo "ANDROID_HOME=$SDK" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=$SDK" >> $GITHUB_ENV
+      - name: Gradle 8.11.1
+        run: |
+          curl -sL -o /tmp/gradle.zip https://services.gradle.org/distributions/gradle-8.11.1-bin.zip
+          unzip -q /tmp/gradle.zip -d /tmp && echo "/tmp/gradle-8.11.1/bin" >> $GITHUB_PATH
+      - name: Native control app (Compose) APK
+        working-directory: spikes/haptics-latency/native-android
+        run: gradle --no-daemon :app:assembleRelease
+      - name: Godot probe plugin AAR
+        working-directory: spikes/haptics-latency/godot-plugin-android
+        run: |
+          gradle --no-daemon :plugin:assembleRelease
+          mkdir -p ../godot/addons/lockwright_haptics_probe/bin
+          cp plugin/build/outputs/aar/plugin-release.aar ../godot/addons/lockwright_haptics_probe/bin/lockwright-haptics-probe-release.aar
+      - name: Godot 4.7.2 + templates + editor settings
+        run: |
+          mkdir -p /tmp/godot && cd /tmp/godot
+          curl -sL -o godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/$GODOT.zip
+          unzip -q godot.zip && chmod +x $GODOT
+          curl -sL -o templates.tpz https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz
+          T=~/.local/share/godot/export_templates/4.7.2.stable
+          mkdir -p $T && unzip -q templates.tpz -d /tmp/tpl && mv /tmp/tpl/templates/* $T/
+          mkdir -p ~/.config/godot
+          printf '[gd_resource type="EditorSettings" format=3]\n\n[resource]\nexport/android/android_sdk_path = "%s"\nexport/android/java_sdk_path = "%s"\n' \
+            "$ANDROID_HOME" "$JAVA_HOME" > ~/.config/godot/editor_settings-4.7.tres
+      - name: Godot probe APK
+        working-directory: spikes/haptics-latency/godot
+        run: |
+          keytool -genkeypair -keystore /tmp/debug.keystore -storepass android -alias androiddebugkey \
+            -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+          export GODOT_ANDROID_KEYSTORE_DEBUG_PATH=/tmp/debug.keystore GODOT_ANDROID_KEYSTORE_DEBUG_USER=androiddebugkey GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD=android
+          /tmp/godot/$GODOT --headless --path . --import
+          T=~/.local/share/godot/export_templates/4.7.2.stable
+          mkdir -p android/build && unzip -qo $T/android_source.zip -d android/build
+          cp $T/version.txt android/.build_version && touch android/build/.gdignore
+          mkdir -p build
+          /tmp/godot/$GODOT --headless --path . --export-debug "Android" build/spike-haptics-godot-debug.apk
+          unzip -l build/spike-haptics-godot-debug.apk | grep -c classes
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spike-haptics-android-apks
+          path: |
+            spikes/haptics-latency/godot/build/spike-haptics-godot-debug.apk
+            spikes/haptics-latency/native-android/app/build/outputs/apk/release/*.apk
+
+  ios-native:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: XcodeGen + unsigned build (SwiftUI + Core Haptics)
+        working-directory: spikes/haptics-latency/native-ios
+        run: |
+          brew install xcodegen
+          xcodegen generate
+          xcodebuild -project LWHapticsNative.xcodeproj -scheme LWHapticsNative -configuration Release \
+            -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build
+          cd build/Build/Products/Release-iphoneos && mkdir Payload && cp -R LWHapticsNative.app Payload/ && zip -qr ../../../../LWHapticsNative-unsigned.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spike-haptics-ios-native-unsigned
+          path: spikes/haptics-latency/native-ios/LWHapticsNative-unsigned.ipa
+
+  ios-godot:
+    runs-on: macos-latest
+    continue-on-error: true   # experimental: GDExtension export on iOS is itself under test (TECH §1.2, D-29)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Godot 4.7.2 (macOS) + templates
+        run: |
+          mkdir -p /tmp/godot && cd /tmp/godot
+          curl -sL -o godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_macos.universal.zip
+          unzip -q godot.zip
+          curl -sL -o templates.tpz https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz
+          T=~/Library/Application\ Support/Godot/export_templates/4.7.2.stable
+          mkdir -p "$T" && unzip -q templates.tpz -d /tmp/tpl && mv /tmp/tpl/templates/* "$T/"
+      - name: godot-cpp against the 4.7.2 API dumped from the engine
+        run: |
+          pip3 install --break-system-packages scons || pip3 install --user scons
+          git clone --depth 1 https://github.com/godotengine/godot-cpp.git /tmp/godot-cpp
+          cd /tmp && /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --dump-extension-api
+          cd /tmp/godot-cpp && scons platform=ios arch=arm64 target=template_debug custom_api_file=/tmp/extension_api.json -j8
+      - name: Probe module (ObjC++) -> xcframework + .gdextension (iOS export only)
+        working-directory: spikes/haptics-latency/godot-ios
+        run: |
+          GODOT_CPP=/tmp/godot-cpp scons platform=ios arch=arm64 target=template_debug custom_api_file=/tmp/extension_api.json -j8
+          D=../godot/addons/lockwright_haptics_probe/ios
+          mkdir -p $D
+          xcodebuild -create-xcframework -library bin/liblw_haptics_probe.ios.template_debug.arm64.a \
+            -output $D/lw_haptics_probe.xcframework
+          xcodebuild -create-xcframework -library /tmp/godot-cpp/bin/libgodot-cpp.ios.template_debug.arm64.a \
+            -output $D/godot_cpp.xcframework
+          cat > ../godot/addons/lockwright_haptics_probe/lw_haptics_probe.gdextension <<'GDX'
+          [configuration]
+          entry_symbol = "lw_haptics_probe_init"
+          compatibility_minimum = "4.7"
+
+          [libraries]
+          ios.debug = "res://addons/lockwright_haptics_probe/ios/lw_haptics_probe.xcframework"
+          ios.release = "res://addons/lockwright_haptics_probe/ios/lw_haptics_probe.xcframework"
+
+          [dependencies]
+          ios.debug = {"res://addons/lockwright_haptics_probe/ios/godot_cpp.xcframework": ""}
+          ios.release = {"res://addons/lockwright_haptics_probe/ios/godot_cpp.xcframework": ""}
+          GDX
+          sed -i '' 's/^          //' ../godot/addons/lockwright_haptics_probe/lw_haptics_probe.gdextension
+      - name: Export Xcode project (unsigned) + build
+        working-directory: spikes/haptics-latency/godot
+        run: |
+          G=/tmp/godot/Godot.app/Contents/MacOS/Godot
+          $G --headless --path . --import
+          mkdir -p build/ios
+          $G --headless --path . --export-debug "iOS" build/ios/LWHapticsGodot.ipa || true
+          ls -la build/ios
+          P=$(ls -d build/ios/*.xcodeproj | head -1)
+          xcodebuild -project "$P" -scheme "$(basename "$P" .xcodeproj)" -configuration Debug -sdk iphoneos \
+            -destination 'generic/platform=iOS' -derivedDataPath build/dd CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: spike-haptics-ios-godot
+          path: |
+            spikes/haptics-latency/godot/build/dd/Build/Products/**/*.app
+            spikes/haptics-latency/godot/build/ios/*.log

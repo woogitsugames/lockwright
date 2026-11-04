@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+# scons platform=ios arch=arm64 target=template_debug  (GODOT_CPP=path to godot-cpp checkout)
+import os
+env = SConscript(os.path.join(os.environ.get("GODOT_CPP", "godot-cpp"), "SConstruct"))
+env.Append(CPPPATH=["src/"], CCFLAGS=["-fobjc-arc"], LINKFLAGS=["-framework", "CoreHaptics", "-framework", "QuartzCore"])
+sources = Glob("src/*.cpp") + Glob("src/*.mm")
+lib = env.StaticLibrary("bin/liblw_haptics_probe.{}.{}.{}.a".format(env["platform"], env["target"], env["arch"]), source=sources)
+Default(lib)
