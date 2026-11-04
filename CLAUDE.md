@@ -39,7 +39,10 @@ Mobilna gra premium o ślusarzu z pogotowia zamkowego. iOS wiodący, Android dru
 ## Komendy
 ```bash
 cd mockups && npm install          # zależności makiet (Playwright korzysta z preinstalowanego Chromium)
-cd mockups && npm run render       # renderuje wszystkie makiety do PNG (412×915 i 915×412) + wersje w skali szarości
+cd mockups && npm run render       # renderuje makiety do PNG (412×915 i 915×412 @2x) + skala szarości + 50% jasności
+cd mockups && node tools/render.mjs klatka         # jeden kierunek
+cd mockups && node tools/contrast.mjs klatka/palette.json   # kontrast WCAG + daltonizm
+cd mockups && node tools/contact.mjs               # zestawienie kierunków: compare/contact.png
 ```
 
 ## Mapa dokumentów

@@ -123,5 +123,5 @@ Rodziny mogą dodawać zdarzenia z prefiksem (`lever.gate_skip`). Gdy w tabeli m
 
 ## 10. Otwarte kwestie (do rozstrzygnięcia po wyborze silnika)
 
-- Język logiki: GDScript lub C# (prostota) albo C++ lub Rust jako biblioteka (determinizm, wspólna z narzędziami CI). Rekomendacja w `TECH.md`.
+- Język logiki: rekomendacja z `TECH.md` to biblioteka C++20 `lockcore` niezależna od silnika (stały przecinek, testy natywne w CI). Silnik dostaje ją przez GDExtension (Godot) albo natywny plugin (Unity).
 - Kompresja i podpis powtórek dla „zamka dnia” (bez serwera w MVP, seed liczony z daty UTC).
