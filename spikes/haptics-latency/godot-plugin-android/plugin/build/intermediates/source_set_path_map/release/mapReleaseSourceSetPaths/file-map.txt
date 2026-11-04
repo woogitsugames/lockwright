@@ -1,7 +1,0 @@
-org.woogitsugames.lockwright.hapticsprobe.plugin-pngs-0 /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/build/generated/res/pngs/release
-org.woogitsugames.lockwright.hapticsprobe.plugin-resValues-1 /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/build/generated/res/resValues/release
-org.woogitsugames.lockwright.hapticsprobe.plugin-mergeReleaseResources-2 /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/build/intermediates/incremental/release/mergeReleaseResources/merged.dir
-org.woogitsugames.lockwright.hapticsprobe.plugin-mergeReleaseResources-3 /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/build/intermediates/incremental/release/mergeReleaseResources/stripped.dir
-org.woogitsugames.lockwright.hapticsprobe.plugin-release-4 /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/build/intermediates/merged_res/release/mergeReleaseResources
-org.woogitsugames.lockwright.hapticsprobe.plugin-main-5 /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/res
-org.woogitsugames.lockwright.hapticsprobe.plugin-release-6 /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/release/res
