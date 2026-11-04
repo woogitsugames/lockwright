@@ -1,0 +1,55 @@
+// Lock specification: the family-independent envelope of `lockwright.lock/1`
+// (ARCHITECTURE.md §6) plus a family-owned parameter block.
+#pragma once
+
+#include <cstdint>
+#include <memory>
+#include <string>
+#include <vector>
+
+#include "lockcore/difficulty.hpp"
+#include "lockcore/events.hpp"
+
+namespace lockcore {
+
+// Family parameters; each family derives its own struct.
+struct FamilyParams {
+  virtual ~FamilyParams() = default;
+};
+
+struct LockSpec {
+  std::string family;
+  std::int32_t rules_version = 0;
+  std::string id;
+  std::string source = "generated";  // authored | generated | daily | dlc:<pack>
+  std::uint64_t seed = 0;
+  DifficultyVector difficulty;
+  MaterialId material = MaterialId::brass;
+  std::shared_ptr<const FamilyParams> params;
+};
+
+struct SpecError {
+  std::string path;
+  std::string message;
+};
+
+enum class FailureKind : std::uint8_t { none, break_, detector_trip, timeout };
+std::string_view failure_name(FailureKind f);
+
+// Tool capabilities available to the player (TOOLS.md).
+enum ToolBits : std::uint32_t {
+  TOOL_TENSION_WRENCH = 1u << 0,
+  TOOL_HOOK = 1u << 1,
+  TOOL_RAKE = 1u << 2,
+};
+struct ToolSet {
+  std::uint32_t bits = TOOL_TENSION_WRENCH | TOOL_HOOK;
+  bool has(std::uint32_t b) const { return (bits & b) == b; }
+};
+
+// Persistent tool condition carried between locks (save game).
+struct ToolCondition {
+  std::int32_t wear = 0;  // 0..100 points; lowers stress capacity
+};
+
+}  // namespace lockcore
