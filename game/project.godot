@@ -1,0 +1,47 @@
+; Engine configuration file.
+; Lockwright — Godot 4.7.x (see game/README.md, docs/TECH.md §1)
+
+config_version=5
+
+[application]
+
+config/name="Lockwright"
+config/description="Lockwright: Emergency Locksmith — premium mobile game. This is a game, not a course."
+run/main_scene="res://scenes/boot.tscn"
+config/features=PackedStringArray("4.7", "Mobile")
+boot_splash/bg_color=Color(0.07, 0.07, 0.08, 1)
+boot_splash/show_image=false
+
+[autoload]
+
+Settings="*res://scripts/autoload/settings.gd"
+Save="*res://scripts/autoload/save.gd"
+I18n="*res://scripts/autoload/i18n.gd"
+Events="*res://scripts/autoload/events.gd"
+Haptics="*res://scripts/autoload/haptics.gd"
+Sfx="*res://scripts/autoload/sfx.gd"
+
+[display]
+
+window/size/viewport_width=412
+window/size/viewport_height=915
+window/size/resizable=true
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=6
+
+[internationalization]
+
+; CSV sources are loaded at runtime by the I18n autoload (works headless and in exports)
+locale/fallback="en"
+
+[physics]
+
+common/physics_ticks_per_second=120
+common/physics_jitter_fix=0.0
+
+[rendering]
+
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="mobile"
+textures/vram_compression/import_etc2_astc=true

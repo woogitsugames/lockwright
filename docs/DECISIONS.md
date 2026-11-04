@@ -58,3 +58,6 @@ Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright �
 
 ## D-18 — Weryfikator v0.1: twarda bramka = wyrocznia + bot skryptowy; bot „niezdarny” jako miara miękka
 2026-11-04 · przyjęta (programista lockcore) · Bramka A3 (0 porażek) to wyrocznia analityczna i bot skryptowy z ograniczeniami człowieka (drżenie ±0,03, 1,5/s i 3/s, reakcja 180 ms, dwell 100 ms, budżet = połowa limitu czasu tieru, S < 0,8 S_max). Bot ten prawie nie popełnia błędów, więc rozkład dropów w raporcie jest pusty. Dlatego `verify_seeds` uruchamia też bota „niezdarnego”: drżenie ±0,06, unoszenie 0,7/s (0,3/s po `near_shear`), reakcja 250 ms, bez wiedzy o granicy overset, zwalnia po każdym overset. Jego wskaźnik sukcesu, dropy i oversety to miara balansu, nie bramka. Wynik dla 10 000 seedów: t2–t5 ≥ 99,9%, t6 93,6%, t7 24,2%, wafer 100%. Bot czujący (etap 3 z LOCKS §1.9) jest otwartą kwestią na v0.2.
+
+## D-19 — i18n: CSV jako źródło prawdy, ładowane w runtime przez autoload I18n
+2026-11-04 · przyjęta (koordynator) · Godot 4.7 headless nie importuje CSV `internationalization/locale/translations` do zasobów `.translation`, więc runtime ładowałby puste tłumaczenia. `game/i18n/*.csv` (kolumny `keys,en,pl`) są ładowane i parsowane przez `scripts/autoload/i18n.gd` przy starcie — działa identycznie w edytorze, headless i eksporcie. PL i EN od pierwszego dnia, fallback EN.

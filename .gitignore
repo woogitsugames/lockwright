@@ -2,3 +2,5 @@ __pycache__/
 art/renders/test*.png
 art/renders/tray_test.png
 lockcore/build*/
+game/.godot/
+*.import

@@ -1,0 +1,61 @@
+keys,en,pl
+app.title,Lockwright: Emergency Locksmith,Lockwright: Pogotowie Zamkowe
+common.back,Back,Wstecz
+common.close,Close,Zamknij
+common.on,On,Włączone
+common.off,Off,Wyłączone
+common.coins,coins,monet
+menu.title,Lockwright,Lockwright
+menu.play,Start run,Rozpocznij bieg
+menu.workshop,Workshop,Warsztat
+menu.showcase,Showcase,Gablota
+menu.settings,Settings,Ustawienia
+menu.about,About the game,O grze
+settings.title,Settings,Ustawienia
+settings.haptics,Haptics,Haptyka
+settings.haptics_enabled,Haptics enabled,Haptyka włączona
+settings.haptics_intensity,Haptics intensity,Intensywność haptyki
+settings.haptics_test,Test pulse,Impuls próbny
+settings.haptics_calibration,Calibration,Kalibracja
+settings.haptics_calibration_two_clicks,Do you feel two clicks?,Czujesz dwa kliknięcia?
+settings.haptics_calibration_two_clicks_yes,Two, Dwa
+settings.haptics_calibration_two_clicks_one,One,Jedno
+settings.haptics_calibration_two_clicks_none,Nothing,Nic
+settings.continuous_resistance,Continuous resistance,Opór ciągły
+settings.volume_master,Master volume,Głośność główna
+settings.volume_sfx,Sound effects,Dźwięki efektów
+settings.volume_ambience,Ambience,Tło
+settings.language,Language,Język
+settings.language_system,System,Systemowy
+settings.language_pl,Polski,Polski
+settings.language_en,English,English
+settings.dark_mode_assist,High contrast assist,Wsparcie kontrastu
+settings.reading_aid,Chalk layer,Warstwa kredy
+settings.wide_windows,Wider windows,Szersze okna
+settings.reset,Reset settings,Resetuj ustawienia
+pause.title,Paused,Pauza
+pause.resume,Resume,Wznów
+pause.settings,Settings,Ustawienia
+pause.dark_mode,Dark mode,Tryb ciemny
+pause.restart,Restart lock,Od nowa zamek
+pause.quit,Leave,Wyjdź
+lock.pause,Pause,Pauza
+workshop.title,Workshop,Warsztat
+workshop.coins,Coins,Monety
+workshop.buy,Buy,Kup
+workshop.repair,Repair,Napraw
+workshop.owned,Owned,Masz
+workshop.integrity,Integrity,Integralność
+workshop.repair_cost,Repair: {0} coins,Naprawa: {0} monet
+workshop.broken,Broken,Złamane
+showcase.title,Showcase,Gablota
+showcase.source,Source,Źródło
+showcase.unknown_source,Source not verified,Źródło niezweryfikowane
+about.title,About the game,O grze
+about.notice,"This is a game, not a course. The mechanisms are invented and simplified. A real locksmith always checks that the customer has the right to enter the premises.","To gra, nie kurs. Mechanizmy są wymyślone i uproszczone. Prawdziwy ślusarz zawsze sprawdza, czy klient ma prawo wejść do lokalu."
+about.licensed_assets,Assets and licenses,Zasoby i licencje
+dev.haptics_lab.title,Haptics lab,Laboratorium haptyki
+dev.haptics_lab.tier,Tier,Tier
+dev.haptics_lab.force_fallback,Force fallback,Wymuś fallback
+dev.haptics_lab.resistance,Resistance,Opór
+dev.haptics_lab.caps,Capabilities,Możliwości

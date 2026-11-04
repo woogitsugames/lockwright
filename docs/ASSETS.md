@@ -13,3 +13,4 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | mockups/fonts/AtkinsonHyperlegibleNext-wght.ttf | font | Google Fonts repo | SIL OFL 1.1 (mockups/fonts/OFL-atkinsonhyperlegiblenext.txt) | https://github.com/google/fonts/tree/main/ofl/atkinsonhyperlegiblenext |
 | mockups/fonts/SourceSerif4-opsz-wght.ttf, SourceSerif4-Italic-opsz-wght.ttf | font | Google Fonts repo | SIL OFL 1.1 (mockups/fonts/OFL-sourceserif4.txt) | https://github.com/google/fonts/tree/main/ofl/sourceserif4 |
 | mockups/**/*.html, *.svg (rysunki makiet) | grafika | własne (Claude, rysowane w SVG/Canvas) | własne projektu | — |
+| game/icon.svg | grafika (tymczasowa ikona) | własne (narysowane SVG) | własne projektu | — |
