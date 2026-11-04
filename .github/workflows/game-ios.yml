@@ -31,7 +31,10 @@ jobs:
           echo "4.7.2.stable.official.ed1daf0bf" > ~/Library/Application\ Support/godot/export_templates/4.7.2.stable/version.txt
           /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --version
 
-      - name: Clone godot-cpp 4.7.2-stable
+      - name: Install scons
+        run: pip3 install scons
+
+      - name: Clone godot-cpp (API 4.7 via custom_api_file)
         run: |
           git clone --depth 1 https://github.com/godotengine/godot-cpp.git godot-cpp
 
