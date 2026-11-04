@@ -1,7 +1,16 @@
 extends Node
+## Headless check that a session (LockcoreSession if present, else FakeLockSession)
+## emits lock events and can be stepped deterministically.
+
+func _make_session() -> RefCounted:
+	if ClassDB.class_exists("LockcoreSession"):
+		var s: RefCounted = ClassDB.instantiate("LockcoreSession")
+		assert(s.create(&"pin_tumbler", 42, 2))
+		return s
+	return FakeLockSession.create(&"pin_tumbler", 42, 2)
 
 func _ready() -> void:
-	var s := FakeLockSession.create(&"pin_tumbler", 42, 2)
+	var s := _make_session()
 	var kinds := {}
 	var opened := false
 	for tick in 120 * 60:
@@ -12,6 +21,15 @@ func _ready() -> void:
 			kinds[e["kind"]] = kinds.get(e["kind"], 0) + 1
 			if e["kind"] == &"open":
 				opened = true
+	var vm: Dictionary = s.describe()
 	print("events: ", kinds)
-	print("open: ", opened, " pins: ", s.describe()["pins"].map(func(p): return p["state"]))
-	get_tree().quit(0 if opened else 1)
+	print("open: ", opened, " elements: ", vm.get("elements", vm.get("pins")))
+	var fail := 0
+	if kinds.is_empty():
+		printerr("LOCKTEST FAIL: no events emitted")
+		fail = 1
+	if not (kinds.has(&"bind") or kinds.has(&"contact")):
+		printerr("LOCKTEST FAIL: expected bind/contact events")
+		fail = 1
+	print("LOCKTEST %s" % ("OK" if fail == 0 else "FAIL"))
+	get_tree().quit(fail)

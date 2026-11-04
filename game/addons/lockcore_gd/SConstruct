@@ -1,0 +1,24 @@
+# Build the lockcore GDExtension for Linux (and Android arm64 in CI).
+# Requires godot-cpp built/checked out at $GODOT_CPP (default /tmp/godot-cpp).
+# Usage: scons platform=linux target=template_debug arch=x86_64
+import os
+
+godot_cpp = os.environ.get("GODOT_CPP", "/tmp/godot-cpp")
+lockcore_root = os.path.abspath(os.path.join(os.path.abspath("."), "..", "..", "..", "lockcore"))
+
+env = SConscript(os.path.join(godot_cpp, "SConstruct"))
+
+lockcore_sources = (
+    Glob(os.path.join(lockcore_root, "src", "*.cpp"))
+    + Glob(os.path.join(lockcore_root, "src", "families", "*.cpp"))
+)
+sources = Glob("src/*.cpp") + lockcore_sources
+
+env.Append(CPPPATH=["include", os.path.join(lockcore_root, "include")])
+env.Append(CXXFLAGS=["-std=c++20", "-ffp-contract=off"])
+
+library = env.SharedLibrary(
+    "bin/liblockcore_gd.{}.{}.so".format(env["platform"], env["target"]),
+    sources,
+)
+Default(library)

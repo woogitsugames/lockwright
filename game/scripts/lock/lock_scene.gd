@@ -7,7 +7,7 @@ extends Node3D
 @onready var pause_button: Button = $UILayer/PauseButton
 @onready var pause_menu: Control = $UILayer/PauseMenu
 
-var session: FakeLockSession
+var session: RefCounted  # LockcoreSession (GDExtension) or FakeLockSession fallback
 var _pins_visual: Array = []
 var _core: MeshInstance3D
 var _pick: MeshInstance3D
@@ -16,17 +16,21 @@ var _paused := false
 
 
 func _ready() -> void:
-	session = FakeLockSession.create(&"pin_tumbler", 42, 2)
+	if ClassDB.class_exists("LockcoreSession"):
+		session = ClassDB.instantiate("LockcoreSession")
+		session.create(&"pin_tumbler", 42, 2)
+	else:
+		session = FakeLockSession.create(&"pin_tumbler", 42, 2)
 	pause_button.text = I18n.t(&"lock.pause")
 	pause_button.pressed.connect(_on_pause_pressed)
 	pause_menu.visible = false
-	$UILayer/PauseMenu/Title.text = I18n.t(&"pause.title")
-	$UILayer/PauseMenu/ResumeButton.text = I18n.t(&"pause.resume")
-	$UILayer/PauseMenu/DarkModeCheck.text = I18n.t(&"pause.dark_mode")
-	$UILayer/PauseMenu/QuitButton.text = I18n.t(&"pause.quit")
-	$UILayer/PauseMenu/ResumeButton.pressed.connect(_on_resume_pressed)
-	$UILayer/PauseMenu/DarkModeCheck.toggled.connect(_on_dark_mode_toggled)
-	$UILayer/PauseMenu/QuitButton.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+	$UILayer/PauseMenu/VBox/Title.text = I18n.t(&"pause.title")
+	$UILayer/PauseMenu/VBox/ResumeButton.text = I18n.t(&"pause.resume")
+	$UILayer/PauseMenu/VBox/DarkModeCheck.text = I18n.t(&"pause.dark_mode")
+	$UILayer/PauseMenu/VBox/QuitButton.text = I18n.t(&"pause.quit")
+	$UILayer/PauseMenu/VBox/ResumeButton.pressed.connect(_on_resume_pressed)
+	$UILayer/PauseMenu/VBox/DarkModeCheck.toggled.connect(_on_dark_mode_toggled)
+	$UILayer/PauseMenu/VBox/QuitButton.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 	_build_placeholder_meshes()
 	_collect_visuals()
 	Sfx.begin_loop(&"tension_resistance", &"brass")
@@ -83,33 +87,36 @@ func _physics_process(_delta: float) -> void:
 	if _paused or session.finished():
 		return
 	var input := sampler.sample()
-	var events := session.step(input["tension"], input["pick_depth"], input["pick_lift"])
+	var events: Array = session.step(input["tension"], input["pick_depth"], input["pick_lift"])
 	for e in events:
 		Haptics.play(e["kind"], e["intensity"], e["material"])
 		Sfx.play(e["kind"], e["material"], 0.0, 1.0)
-	Events.lock_event.emit(e)
+		Events.lock_event.emit(e)
 		if e["kind"] == &"open":
 			Events.lock_opened.emit()
 		if e["kind"] == &"break":
 			Events.lock_failed.emit(&"break")
-	var vm := session.describe()
-	Haptics.update_continuous(&"tension_resistance", vm["resistance"], 0.3)
-	Sfx.update_loop(&"tension_resistance", vm["resistance"])
-	Sfx.update_loop(&"pick_drag", vm["pick_drag"])
+	var vm: Dictionary = session.describe()
+	var resistance: float = vm.get("tension_resistance", vm.get("resistance", 0.0))
+	Haptics.update_continuous(&"tension_resistance", resistance, 0.3)
+	Sfx.update_loop(&"tension_resistance", resistance)
+	Sfx.update_loop(&"pick_drag", vm.get("pick_drag", 0.0))
 	_update_visuals(vm, input)
 
 
 func _update_visuals(vm: Dictionary, input: Dictionary) -> void:
-	for i in _pins_visual.size():
-		var pin: Dictionary = vm["pins"][i]
-		_pins_visual[i].position.y = 2.0 + pin["pos"] * 0.35
-		match pin["state"]:
-			"set": _pins_visual[i].get_surface_override_material(0).albedo_color = Color(0.55, 0.75, 0.45)
-			"false_set": _pins_visual[i].get_surface_override_material(0).albedo_color = Color(0.75, 0.55, 0.3)
-			"overset": _pins_visual[i].get_surface_override_material(0).albedo_color = Color(0.7, 0.3, 0.3)
-			"bound": _pins_visual[i].get_surface_override_material(0).albedo_color = Color(0.8, 0.7, 0.4)
-			_: _pins_visual[i].get_surface_override_material(0).albedo_color = Color(0.75, 0.72, 0.68)
-	_core.rotation.y = vm["tension"] * 0.5 + (0.6 if vm["open"] else 0.0)
+	var elements: Array = vm.get("elements", vm.get("pins", []))
+	for i in mini(_pins_visual.size(), elements.size()):
+		var pin: Dictionary = elements[i]
+		var pos: float = pin.get("position", pin.get("pos", 0.0))
+		_pins_visual[i].position.y = 2.0 + pos * 0.35
+		match String(pin.get("state", "free")):
+			"set": _pins_visual[i].material_override.albedo_color = Color(0.55, 0.75, 0.45)
+			"false_set": _pins_visual[i].material_override.albedo_color = Color(0.75, 0.55, 0.3)
+			"overset": _pins_visual[i].material_override.albedo_color = Color(0.7, 0.3, 0.3)
+			"bound", "near": _pins_visual[i].material_override.albedo_color = Color(0.8, 0.7, 0.4)
+			_: _pins_visual[i].material_override.albedo_color = Color(0.75, 0.72, 0.68)
+	_core.rotation.y = vm.get("core_rotation", vm.get("tension", 0.0)) * 1.5
 	_pick.position.z = -2.0 + input["pick_depth"] * 4.0
 	_pick.position.y = 0.4 + input["pick_lift"] * 0.5
 
@@ -128,7 +135,7 @@ func _on_resume_pressed() -> void:
 
 func _on_dark_mode_toggled(on: bool) -> void:
 	_dark_mode = on
-	var env := $WorldEnvironment.environment
+	var env: Environment = $WorldEnvironment.environment
 	if on:
 		env.background_energy_multiplier = 0.05
 		env.ambient_light_energy = 0.05

@@ -1,0 +1,11 @@
+[configuration]
+entry_symbol = "lockcore_gd_init"
+compatibility_minimum = "4.7"
+
+[libraries]
+linux.debug.x86_64 = "res://addons/lockcore_gd/bin/liblockcore_gd.linux.template_debug.so"
+linux.release.x86_64 = "res://addons/lockcore_gd/bin/liblockcore_gd.linux.template_release.so"
+android.debug.arm64 = "res://addons/lockcore_gd/bin/liblockcore_gd.android.template_debug.so"
+android.release.arm64 = "res://addons/lockcore_gd/bin/liblockcore_gd.android.template_release.so"
+ios.debug = "res://addons/lockcore_gd/bin/liblockcore_gd.ios.debug.xcframework"
+ios.release = "res://addons/lockcore_gd/bin/liblockcore_gd.ios.release.xcframework"
