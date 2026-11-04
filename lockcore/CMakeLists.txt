@@ -26,6 +26,7 @@ add_library(lockcore
   src/families/pin_tumbler.cpp
   src/families/ring_combo.cpp
   src/families/wafer.cpp
+  src/families/warded.cpp
   src/families/wooden_pin.cpp
 )
 target_include_directories(lockcore PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
@@ -61,6 +62,7 @@ if(LOCKCORE_BUILD_TESTS)
     tests/test_wooden_pin.cpp
     tests/test_lever.cpp
     tests/test_ring_combo.cpp
+    tests/test_warded.cpp
     tests/test_replay.cpp
     tests/test_fuzz.cpp
   )
