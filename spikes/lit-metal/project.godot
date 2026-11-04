@@ -1,0 +1,29 @@
+; Spike 4 (docs/TECH.md §4): photoreal lit metal on the Mobile renderer.
+config_version=5
+
+[application]
+
+config/name="Lockwright Spike 4 Lit Metal"
+config/description="Spike: real-time PBR vs baked plate. Not game code."
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.7", "Mobile")
+boot_splash/bg_color=Color(0.05, 0.045, 0.04, 1)
+boot_splash/show_image=false
+
+[display]
+
+window/size/viewport_width=1236
+window/size/viewport_height=1650
+window/size/resizable=true
+window/stretch/mode="disabled"
+window/handheld/orientation=1
+window/vsync/vsync_mode=1
+
+[rendering]
+
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="mobile"
+textures/vram_compression/import_etc2_astc=true
+anti_aliasing/quality/msaa_3d=2
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
+environment/defaults/default_clear_color=Color(0.05, 0.045, 0.04, 1)

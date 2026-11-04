@@ -1,0 +1,5 @@
+.godot/
+build/
+android/
+addons/lockwright_haptics_probe/bin/
+addons/lockwright_haptics_probe/ios/*.xcframework

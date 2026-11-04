@@ -1,0 +1,9 @@
+.godot/
+build/
+android/
+plugin-android/build/
+plugin-android/.gradle/
+plugin-android/plugin/build/
+plugin-android/plugin/.cxx/
+addons/lockwright_low_latency_audio/bin/
+!samples/*.wav.import

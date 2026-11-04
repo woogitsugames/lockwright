@@ -1,0 +1,28 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml:2:1-9:12
+INJECTED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml:2:1-9:12
+	package
+		INJECTED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.VIBRATE
+ADDED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml:3:5-66
+	android:name
+		ADDED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml:3:22-63
+application
+ADDED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml:4:5-8:19
+meta-data#org.godotengine.plugin.v2.LockwrightHapticsProbe
+ADDED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml:5:9-7:96
+	android:value
+		ADDED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml:7:13-93
+	android:name
+		ADDED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml:6:13-76
+uses-sdk
+INJECTED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml
+INJECTED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/user/lockwright/spikes/haptics-latency/godot-plugin-android/plugin/src/main/AndroidManifest.xml

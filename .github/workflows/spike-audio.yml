@@ -1,0 +1,92 @@
+name: spike-audio
+
+# Spike 3 (docs/TECH.md §4): Oboe/AAudio click plugin (AAR) + Godot test app, debug APK artifact.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'spikes/audio-latency/**'
+      - '.github/workflows/spike-audio.yml'
+  workflow_dispatch:
+
+env:
+  GODOT: Godot_v4.7.2-stable_linux.x86_64
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Android SDK (platform 36, build-tools 36.1.0, NDK 29.0.14206865, CMake 3.22.1)
+        run: |
+          SDK=$RUNNER_TEMP/android-sdk
+          mkdir -p $SDK/cmdline-tools
+          curl -sL -o /tmp/cmdtools.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+          unzip -q /tmp/cmdtools.zip -d $SDK/cmdline-tools && mv $SDK/cmdline-tools/cmdline-tools $SDK/cmdline-tools/latest
+          yes | $SDK/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null
+          $SDK/cmdline-tools/latest/bin/sdkmanager "platforms;android-36" "build-tools;36.1.0" "platform-tools" \
+            "ndk;29.0.14206865" "cmake;3.22.1" > /dev/null
+          echo "ANDROID_HOME=$SDK" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=$SDK" >> $GITHUB_ENV
+
+      - name: Gradle 8.11.1
+        run: |
+          curl -sL -o /tmp/gradle.zip https://services.gradle.org/distributions/gradle-8.11.1-bin.zip
+          unzip -q /tmp/gradle.zip -d /tmp && echo "/tmp/gradle-8.11.1/bin" >> $GITHUB_PATH
+
+      - name: Build plugin AAR (Oboe 1.9.3 from source, static)
+        working-directory: spikes/audio-latency/plugin-android
+        run: |
+          gradle --no-daemon :plugin:assembleRelease
+          mkdir -p ../addons/lockwright_low_latency_audio/bin
+          cp plugin/build/outputs/aar/plugin-release.aar ../addons/lockwright_low_latency_audio/bin/lockwright-low-latency-audio-release.aar
+          unzip -l plugin/build/outputs/aar/plugin-release.aar | grep -E "\.so|classes"
+
+      - name: Click samples are reproducible
+        run: |
+          pip install -q numpy
+          python3 spikes/audio-latency/tools/synth_clicks.py /tmp/samples
+          for f in spikes/audio-latency/samples/*.wav; do cmp "$f" "/tmp/samples/$(basename $f)" || exit 1; done
+          python3 spikes/audio-latency/tools/measure.py --selftest
+
+      - name: Godot 4.7.2 + export templates
+        run: |
+          mkdir -p /tmp/godot && cd /tmp/godot
+          curl -sL -o godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/$GODOT.zip
+          unzip -q godot.zip && chmod +x $GODOT
+          curl -sL -o templates.tpz https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz
+          T=~/.local/share/godot/export_templates/4.7.2.stable
+          mkdir -p $T && unzip -q templates.tpz -d /tmp/tpl && mv /tmp/tpl/templates/* $T/
+          # Godot reads the SDK/JDK paths from editor settings, not from ANDROID_HOME / JAVA_HOME
+          mkdir -p ~/.config/godot
+          printf '[gd_resource type="EditorSettings" format=3]\n\n[resource]\nexport/android/android_sdk_path = "%s"\nexport/android/java_sdk_path = "%s"\n' \
+            "$ANDROID_HOME" "$JAVA_HOME" > ~/.config/godot/editor_settings-4.7.tres
+
+      - name: Export debug APK
+        working-directory: spikes/audio-latency
+        run: |
+          keytool -genkeypair -keystore /tmp/debug.keystore -storepass android -alias androiddebugkey \
+            -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+          export GODOT_ANDROID_KEYSTORE_DEBUG_PATH=/tmp/debug.keystore
+          export GODOT_ANDROID_KEYSTORE_DEBUG_USER=androiddebugkey
+          export GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD=android
+          /tmp/godot/$GODOT --headless --path . --import
+          # Android build template (what --install-android-build-template does in the editor)
+          T=~/.local/share/godot/export_templates/4.7.2.stable
+          mkdir -p android/build && unzip -qo $T/android_source.zip -d android/build
+          cp $T/version.txt android/.build_version && touch android/build/.gdignore
+          mkdir -p build
+          /tmp/godot/$GODOT --headless --path . --export-debug "Android" build/spike-audio-debug.apk
+          ls -la build
+          unzip -l build/spike-audio-debug.apk | grep -E "liblwaudio|libgodot"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spike-audio-debug-apk
+          path: spikes/audio-latency/build/spike-audio-debug.apk

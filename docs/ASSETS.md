@@ -17,3 +17,5 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | game/assets/audio/sfx/**/*.wav (256 plików: 14 zdarzeń + 2 pętle × 4 materiały × 4 warianty, 48 kHz 16-bit mono) | dźwięk | własne, wygenerowane przez `audio/tools/synth.py` (synteza modalna + szum filtrowany) | własne projektu | — |
 | audio/demo/all_events.wav | dźwięk (demo) | własne, `audio/tools/preview.py` | własne projektu | — |
 | store/screenshots/out/**/*.png (makiety zrzutów sklepu, 256 kolorów) | grafika | własne: kadry z `art/renders/` + podpis fontem Bona Nova / Atkinson Hyperlegible Next (OFL, wpisy wyżej), `store/screenshots/make_screens.py` | własne projektu | — |
+| Oboe 1.9.3 (google/oboe, pobierany przez CMake FetchContent w `spikes/audio-latency/plugin-android`, linkowany statycznie) | biblioteka C++ (audio) | https://github.com/google/oboe | Apache 2.0 | https://github.com/google/oboe/blob/main/LICENSE |
+| spikes/audio-latency/samples/*.wav (8 kliknięć: set, false_set, break, contact × mosiądz/stal + impuls pomiarowy, 48 kHz 16-bit mono) | dźwięk | własne, synteza modalna `spikes/audio-latency/tools/synth_clicks.py` | własne projektu | — |

@@ -1,0 +1,39 @@
+; Spike 3 (docs/TECH.md §4): touch -> click latency, Oboe/AAudio plugin vs Godot AudioStreamPlayer.
+config_version=5
+
+[application]
+
+config/name="Lockwright Spike 3 Audio Latency"
+config/description="Spike: low-latency click audio. Not game code."
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.7", "Mobile")
+boot_splash/bg_color=Color(0.07, 0.065, 0.06, 1)
+boot_splash/show_image=false
+
+[audio]
+
+driver/output_latency=15
+driver/mix_rate=48000
+
+[display]
+
+window/size/viewport_width=412
+window/size/viewport_height=915
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/lockwright_low_latency_audio/plugin.cfg")
+
+[input_devices]
+
+buffering/agile_event_flushing=true
+pointing/emulate_mouse_from_touch=false
+
+[rendering]
+
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="mobile"
+textures/vram_compression/import_etc2_astc=true
