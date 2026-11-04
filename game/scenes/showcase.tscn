@@ -1,12 +1,46 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/ui/placeholder_screen.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/ui/showcase_screen.gd" id="1"]
 
-[node name="showcase" type="Control"]
+[node name="Showcase" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1")
-title_key = &"showcase.title"
-metadata/_custom_type_script = ""
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+offset_bottom = -64.0
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="CoinsLabel" type="Label" parent="VBox"]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NotesList" type="VBoxContainer" parent="VBox/Scroll/VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+offset_bottom = -8.0
+offset_right = 200.0
+custom_minimum_size = Vector2(0, 48)
