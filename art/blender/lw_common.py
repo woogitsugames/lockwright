@@ -142,8 +142,11 @@ def spring(name, x, z0, z1, coils, r=1.15, wire=0.22, y=1.5):
     sp = cu.splines.new('POLY'); n = int(coils * 24); sp.points.add(n)
     for i in range(n + 1):
         t = i / n; a = t * coils * 2 * math.pi
-        # flat ground ends: first/last coil closed
-        zt = t * (z1 - z0)
+        # closed ends: the first and last coil have (almost) zero pitch, like a real compression spring
+        e = 1.0 / coils; L = z1 - z0; w = wire * 2.05
+        if t < e: zt = (t / e) * w
+        elif t > 1 - e: zt = L - ((1 - t) / e) * w
+        else: zt = w + (t - e) / (1 - 2 * e) * (L - 2 * w)
         sp.points[i].co = (x + r * math.cos(a), y + r * math.sin(a), z0 + zt, 1)
     o = bpy.data.objects.new(name, cu); bpy.context.collection.objects.link(o); o.data.materials.append(M['spring']); return o
 
