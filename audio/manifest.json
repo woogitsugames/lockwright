@@ -1,0 +1,1799 @@
+{
+  "sample_rate": 48000,
+  "bit_depth": 16,
+  "schema": "lockwright.sfx/1",
+  "files": [
+    {
+      "file": "contact/brass_1.wav",
+      "event": "contact",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 0.0138
+    },
+    {
+      "file": "contact/brass_2.wav",
+      "event": "contact",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 0.0103
+    },
+    {
+      "file": "contact/brass_3.wav",
+      "event": "contact",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 0.0103
+    },
+    {
+      "file": "contact/brass_4.wav",
+      "event": "contact",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 0.0105
+    },
+    {
+      "file": "contact/steel_1.wav",
+      "event": "contact",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 0.01
+    },
+    {
+      "file": "contact/steel_2.wav",
+      "event": "contact",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 0.0115
+    },
+    {
+      "file": "contact/steel_3.wav",
+      "event": "contact",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 0.012
+    },
+    {
+      "file": "contact/steel_4.wav",
+      "event": "contact",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 0.0144
+    },
+    {
+      "file": "contact/iron_1.wav",
+      "event": "contact",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 0.0107
+    },
+    {
+      "file": "contact/iron_2.wav",
+      "event": "contact",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 0.0123
+    },
+    {
+      "file": "contact/iron_3.wav",
+      "event": "contact",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 0.0107
+    },
+    {
+      "file": "contact/iron_4.wav",
+      "event": "contact",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 0.0144
+    },
+    {
+      "file": "contact/wood_1.wav",
+      "event": "contact",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 0.0127
+    },
+    {
+      "file": "contact/wood_2.wav",
+      "event": "contact",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 0.0131
+    },
+    {
+      "file": "contact/wood_3.wav",
+      "event": "contact",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 0.0117
+    },
+    {
+      "file": "contact/wood_4.wav",
+      "event": "contact",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 0.0141
+    },
+    {
+      "file": "bind/brass_1.wav",
+      "event": "bind",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/brass_2.wav",
+      "event": "bind",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/brass_3.wav",
+      "event": "bind",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/brass_4.wav",
+      "event": "bind",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/steel_1.wav",
+      "event": "bind",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/steel_2.wav",
+      "event": "bind",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/steel_3.wav",
+      "event": "bind",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/steel_4.wav",
+      "event": "bind",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/iron_1.wav",
+      "event": "bind",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/iron_2.wav",
+      "event": "bind",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/iron_3.wav",
+      "event": "bind",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/iron_4.wav",
+      "event": "bind",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/wood_1.wav",
+      "event": "bind",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/wood_2.wav",
+      "event": "bind",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/wood_3.wav",
+      "event": "bind",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 0.02
+    },
+    {
+      "file": "bind/wood_4.wav",
+      "event": "bind",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 0.02
+    },
+    {
+      "file": "near_shear/brass_1.wav",
+      "event": "near_shear",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/brass_2.wav",
+      "event": "near_shear",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/brass_3.wav",
+      "event": "near_shear",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/brass_4.wav",
+      "event": "near_shear",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/steel_1.wav",
+      "event": "near_shear",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/steel_2.wav",
+      "event": "near_shear",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/steel_3.wav",
+      "event": "near_shear",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/steel_4.wav",
+      "event": "near_shear",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/iron_1.wav",
+      "event": "near_shear",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/iron_2.wav",
+      "event": "near_shear",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/iron_3.wav",
+      "event": "near_shear",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/iron_4.wav",
+      "event": "near_shear",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/wood_1.wav",
+      "event": "near_shear",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/wood_2.wav",
+      "event": "near_shear",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/wood_3.wav",
+      "event": "near_shear",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 0.06
+    },
+    {
+      "file": "near_shear/wood_4.wav",
+      "event": "near_shear",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 0.06
+    },
+    {
+      "file": "set/brass_1.wav",
+      "event": "set",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 0.0229
+    },
+    {
+      "file": "set/brass_2.wav",
+      "event": "set",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 0.0282
+    },
+    {
+      "file": "set/brass_3.wav",
+      "event": "set",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 0.0297
+    },
+    {
+      "file": "set/brass_4.wav",
+      "event": "set",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 0.0278
+    },
+    {
+      "file": "set/steel_1.wav",
+      "event": "set",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 0.0249
+    },
+    {
+      "file": "set/steel_2.wav",
+      "event": "set",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 0.0203
+    },
+    {
+      "file": "set/steel_3.wav",
+      "event": "set",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 0.0237
+    },
+    {
+      "file": "set/steel_4.wav",
+      "event": "set",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 0.0265
+    },
+    {
+      "file": "set/iron_1.wav",
+      "event": "set",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 0.0294
+    },
+    {
+      "file": "set/iron_2.wav",
+      "event": "set",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 0.023
+    },
+    {
+      "file": "set/iron_3.wav",
+      "event": "set",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 0.0258
+    },
+    {
+      "file": "set/iron_4.wav",
+      "event": "set",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 0.0298
+    },
+    {
+      "file": "set/wood_1.wav",
+      "event": "set",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 0.0266
+    },
+    {
+      "file": "set/wood_2.wav",
+      "event": "set",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 0.0203
+    },
+    {
+      "file": "set/wood_3.wav",
+      "event": "set",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 0.021
+    },
+    {
+      "file": "set/wood_4.wav",
+      "event": "set",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 0.0287
+    },
+    {
+      "file": "false_set/brass_1.wav",
+      "event": "false_set",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 0.0307
+    },
+    {
+      "file": "false_set/brass_2.wav",
+      "event": "false_set",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 0.0333
+    },
+    {
+      "file": "false_set/brass_3.wav",
+      "event": "false_set",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 0.0381
+    },
+    {
+      "file": "false_set/brass_4.wav",
+      "event": "false_set",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 0.0309
+    },
+    {
+      "file": "false_set/steel_1.wav",
+      "event": "false_set",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 0.0291
+    },
+    {
+      "file": "false_set/steel_2.wav",
+      "event": "false_set",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 0.036
+    },
+    {
+      "file": "false_set/steel_3.wav",
+      "event": "false_set",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 0.0302
+    },
+    {
+      "file": "false_set/steel_4.wav",
+      "event": "false_set",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 0.0397
+    },
+    {
+      "file": "false_set/iron_1.wav",
+      "event": "false_set",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 0.0359
+    },
+    {
+      "file": "false_set/iron_2.wav",
+      "event": "false_set",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 0.0333
+    },
+    {
+      "file": "false_set/iron_3.wav",
+      "event": "false_set",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 0.0276
+    },
+    {
+      "file": "false_set/iron_4.wav",
+      "event": "false_set",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 0.0366
+    },
+    {
+      "file": "false_set/wood_1.wav",
+      "event": "false_set",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 0.033
+    },
+    {
+      "file": "false_set/wood_2.wav",
+      "event": "false_set",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 0.0372
+    },
+    {
+      "file": "false_set/wood_3.wav",
+      "event": "false_set",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 0.0341
+    },
+    {
+      "file": "false_set/wood_4.wav",
+      "event": "false_set",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 0.0269
+    },
+    {
+      "file": "counter_rotate/brass_1.wav",
+      "event": "counter_rotate",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/brass_2.wav",
+      "event": "counter_rotate",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/brass_3.wav",
+      "event": "counter_rotate",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/brass_4.wav",
+      "event": "counter_rotate",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/steel_1.wav",
+      "event": "counter_rotate",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/steel_2.wav",
+      "event": "counter_rotate",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/steel_3.wav",
+      "event": "counter_rotate",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/steel_4.wav",
+      "event": "counter_rotate",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/iron_1.wav",
+      "event": "counter_rotate",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/iron_2.wav",
+      "event": "counter_rotate",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/iron_3.wav",
+      "event": "counter_rotate",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/iron_4.wav",
+      "event": "counter_rotate",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/wood_1.wav",
+      "event": "counter_rotate",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/wood_2.wav",
+      "event": "counter_rotate",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/wood_3.wav",
+      "event": "counter_rotate",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 0.16
+    },
+    {
+      "file": "counter_rotate/wood_4.wav",
+      "event": "counter_rotate",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 0.16
+    },
+    {
+      "file": "overset/brass_1.wav",
+      "event": "overset",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 0.0308
+    },
+    {
+      "file": "overset/brass_2.wav",
+      "event": "overset",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 0.0396
+    },
+    {
+      "file": "overset/brass_3.wav",
+      "event": "overset",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 0.0385
+    },
+    {
+      "file": "overset/brass_4.wav",
+      "event": "overset",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 0.0363
+    },
+    {
+      "file": "overset/steel_1.wav",
+      "event": "overset",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 0.0318
+    },
+    {
+      "file": "overset/steel_2.wav",
+      "event": "overset",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 0.0303
+    },
+    {
+      "file": "overset/steel_3.wav",
+      "event": "overset",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 0.0316
+    },
+    {
+      "file": "overset/steel_4.wav",
+      "event": "overset",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 0.0352
+    },
+    {
+      "file": "overset/iron_1.wav",
+      "event": "overset",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 0.0349
+    },
+    {
+      "file": "overset/iron_2.wav",
+      "event": "overset",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 0.0306
+    },
+    {
+      "file": "overset/iron_3.wav",
+      "event": "overset",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 0.0317
+    },
+    {
+      "file": "overset/iron_4.wav",
+      "event": "overset",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 0.0312
+    },
+    {
+      "file": "overset/wood_1.wav",
+      "event": "overset",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 0.0353
+    },
+    {
+      "file": "overset/wood_2.wav",
+      "event": "overset",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 0.0338
+    },
+    {
+      "file": "overset/wood_3.wav",
+      "event": "overset",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 0.033
+    },
+    {
+      "file": "overset/wood_4.wav",
+      "event": "overset",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 0.0319
+    },
+    {
+      "file": "drop/brass_1.wav",
+      "event": "drop",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/brass_2.wav",
+      "event": "drop",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/brass_3.wav",
+      "event": "drop",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/brass_4.wav",
+      "event": "drop",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/steel_1.wav",
+      "event": "drop",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/steel_2.wav",
+      "event": "drop",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/steel_3.wav",
+      "event": "drop",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/steel_4.wav",
+      "event": "drop",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/iron_1.wav",
+      "event": "drop",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/iron_2.wav",
+      "event": "drop",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/iron_3.wav",
+      "event": "drop",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/iron_4.wav",
+      "event": "drop",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/wood_1.wav",
+      "event": "drop",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/wood_2.wav",
+      "event": "drop",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/wood_3.wav",
+      "event": "drop",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 0.3
+    },
+    {
+      "file": "drop/wood_4.wav",
+      "event": "drop",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 0.3
+    },
+    {
+      "file": "stress/brass_1.wav",
+      "event": "stress",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/brass_2.wav",
+      "event": "stress",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/brass_3.wav",
+      "event": "stress",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/brass_4.wav",
+      "event": "stress",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/steel_1.wav",
+      "event": "stress",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/steel_2.wav",
+      "event": "stress",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/steel_3.wav",
+      "event": "stress",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/steel_4.wav",
+      "event": "stress",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/iron_1.wav",
+      "event": "stress",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/iron_2.wav",
+      "event": "stress",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/iron_3.wav",
+      "event": "stress",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/iron_4.wav",
+      "event": "stress",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/wood_1.wav",
+      "event": "stress",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/wood_2.wav",
+      "event": "stress",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/wood_3.wav",
+      "event": "stress",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 0.2
+    },
+    {
+      "file": "stress/wood_4.wav",
+      "event": "stress",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 0.2
+    },
+    {
+      "file": "break/brass_1.wav",
+      "event": "break",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/brass_2.wav",
+      "event": "break",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/brass_3.wav",
+      "event": "break",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/brass_4.wav",
+      "event": "break",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/steel_1.wav",
+      "event": "break",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/steel_2.wav",
+      "event": "break",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/steel_3.wav",
+      "event": "break",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/steel_4.wav",
+      "event": "break",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/iron_1.wav",
+      "event": "break",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/iron_2.wav",
+      "event": "break",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/iron_3.wav",
+      "event": "break",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/iron_4.wav",
+      "event": "break",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/wood_1.wav",
+      "event": "break",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/wood_2.wav",
+      "event": "break",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/wood_3.wav",
+      "event": "break",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 0.006
+    },
+    {
+      "file": "break/wood_4.wav",
+      "event": "break",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 0.006
+    },
+    {
+      "file": "wear/brass_1.wav",
+      "event": "wear",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 0.05
+    },
+    {
+      "file": "wear/brass_2.wav",
+      "event": "wear",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 0.0499
+    },
+    {
+      "file": "wear/brass_3.wav",
+      "event": "wear",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 0.05
+    },
+    {
+      "file": "wear/brass_4.wav",
+      "event": "wear",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 0.05
+    },
+    {
+      "file": "wear/steel_1.wav",
+      "event": "wear",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 0.05
+    },
+    {
+      "file": "wear/steel_2.wav",
+      "event": "wear",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 0.05
+    },
+    {
+      "file": "wear/steel_3.wav",
+      "event": "wear",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 0.05
+    },
+    {
+      "file": "wear/steel_4.wav",
+      "event": "wear",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 0.0499
+    },
+    {
+      "file": "wear/iron_1.wav",
+      "event": "wear",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 0.05
+    },
+    {
+      "file": "wear/iron_2.wav",
+      "event": "wear",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 0.05
+    },
+    {
+      "file": "wear/iron_3.wav",
+      "event": "wear",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 0.05
+    },
+    {
+      "file": "wear/iron_4.wav",
+      "event": "wear",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 0.05
+    },
+    {
+      "file": "wear/wood_1.wav",
+      "event": "wear",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 0.05
+    },
+    {
+      "file": "wear/wood_2.wav",
+      "event": "wear",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 0.05
+    },
+    {
+      "file": "wear/wood_3.wav",
+      "event": "wear",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 0.05
+    },
+    {
+      "file": "wear/wood_4.wav",
+      "event": "wear",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 0.05
+    },
+    {
+      "file": "gate_align/brass_1.wav",
+      "event": "gate_align",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 0.0201
+    },
+    {
+      "file": "gate_align/brass_2.wav",
+      "event": "gate_align",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 0.0243
+    },
+    {
+      "file": "gate_align/brass_3.wav",
+      "event": "gate_align",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 0.0248
+    },
+    {
+      "file": "gate_align/brass_4.wav",
+      "event": "gate_align",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 0.0202
+    },
+    {
+      "file": "gate_align/steel_1.wav",
+      "event": "gate_align",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 0.0228
+    },
+    {
+      "file": "gate_align/steel_2.wav",
+      "event": "gate_align",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 0.0237
+    },
+    {
+      "file": "gate_align/steel_3.wav",
+      "event": "gate_align",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 0.0208
+    },
+    {
+      "file": "gate_align/steel_4.wav",
+      "event": "gate_align",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 0.0236
+    },
+    {
+      "file": "gate_align/iron_1.wav",
+      "event": "gate_align",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 0.0217
+    },
+    {
+      "file": "gate_align/iron_2.wav",
+      "event": "gate_align",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 0.0226
+    },
+    {
+      "file": "gate_align/iron_3.wav",
+      "event": "gate_align",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 0.0228
+    },
+    {
+      "file": "gate_align/iron_4.wav",
+      "event": "gate_align",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 0.0206
+    },
+    {
+      "file": "gate_align/wood_1.wav",
+      "event": "gate_align",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 0.0206
+    },
+    {
+      "file": "gate_align/wood_2.wav",
+      "event": "gate_align",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 0.0205
+    },
+    {
+      "file": "gate_align/wood_3.wav",
+      "event": "gate_align",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 0.0207
+    },
+    {
+      "file": "gate_align/wood_4.wav",
+      "event": "gate_align",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 0.0205
+    },
+    {
+      "file": "detector_trip/brass_1.wav",
+      "event": "detector_trip",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/brass_2.wav",
+      "event": "detector_trip",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/brass_3.wav",
+      "event": "detector_trip",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/brass_4.wav",
+      "event": "detector_trip",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/steel_1.wav",
+      "event": "detector_trip",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/steel_2.wav",
+      "event": "detector_trip",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/steel_3.wav",
+      "event": "detector_trip",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/steel_4.wav",
+      "event": "detector_trip",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/iron_1.wav",
+      "event": "detector_trip",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/iron_2.wav",
+      "event": "detector_trip",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/iron_3.wav",
+      "event": "detector_trip",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/iron_4.wav",
+      "event": "detector_trip",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/wood_1.wav",
+      "event": "detector_trip",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/wood_2.wav",
+      "event": "detector_trip",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/wood_3.wav",
+      "event": "detector_trip",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 0.3
+    },
+    {
+      "file": "detector_trip/wood_4.wav",
+      "event": "detector_trip",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 0.3
+    },
+    {
+      "file": "open/brass_1.wav",
+      "event": "open",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/brass_2.wav",
+      "event": "open",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/brass_3.wav",
+      "event": "open",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/brass_4.wav",
+      "event": "open",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/steel_1.wav",
+      "event": "open",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/steel_2.wav",
+      "event": "open",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/steel_3.wav",
+      "event": "open",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/steel_4.wav",
+      "event": "open",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/iron_1.wav",
+      "event": "open",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/iron_2.wav",
+      "event": "open",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/iron_3.wav",
+      "event": "open",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/iron_4.wav",
+      "event": "open",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/wood_1.wav",
+      "event": "open",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/wood_2.wav",
+      "event": "open",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/wood_3.wav",
+      "event": "open",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 0.65
+    },
+    {
+      "file": "open/wood_4.wav",
+      "event": "open",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 0.65
+    },
+    {
+      "file": "tension_resistance/brass_1.wav",
+      "event": "tension_resistance",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/brass_2.wav",
+      "event": "tension_resistance",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/brass_3.wav",
+      "event": "tension_resistance",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/brass_4.wav",
+      "event": "tension_resistance",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/steel_1.wav",
+      "event": "tension_resistance",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/steel_2.wav",
+      "event": "tension_resistance",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/steel_3.wav",
+      "event": "tension_resistance",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/steel_4.wav",
+      "event": "tension_resistance",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/iron_1.wav",
+      "event": "tension_resistance",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/iron_2.wav",
+      "event": "tension_resistance",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/iron_3.wav",
+      "event": "tension_resistance",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/iron_4.wav",
+      "event": "tension_resistance",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/wood_1.wav",
+      "event": "tension_resistance",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/wood_2.wav",
+      "event": "tension_resistance",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/wood_3.wav",
+      "event": "tension_resistance",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 1.2
+    },
+    {
+      "file": "tension_resistance/wood_4.wav",
+      "event": "tension_resistance",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/brass_1.wav",
+      "event": "pick_drag",
+      "material": "brass",
+      "variant": 1,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/brass_2.wav",
+      "event": "pick_drag",
+      "material": "brass",
+      "variant": 2,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/brass_3.wav",
+      "event": "pick_drag",
+      "material": "brass",
+      "variant": 3,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/brass_4.wav",
+      "event": "pick_drag",
+      "material": "brass",
+      "variant": 4,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/steel_1.wav",
+      "event": "pick_drag",
+      "material": "steel",
+      "variant": 1,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/steel_2.wav",
+      "event": "pick_drag",
+      "material": "steel",
+      "variant": 2,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/steel_3.wav",
+      "event": "pick_drag",
+      "material": "steel",
+      "variant": 3,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/steel_4.wav",
+      "event": "pick_drag",
+      "material": "steel",
+      "variant": 4,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/iron_1.wav",
+      "event": "pick_drag",
+      "material": "iron",
+      "variant": 1,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/iron_2.wav",
+      "event": "pick_drag",
+      "material": "iron",
+      "variant": 2,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/iron_3.wav",
+      "event": "pick_drag",
+      "material": "iron",
+      "variant": 3,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/iron_4.wav",
+      "event": "pick_drag",
+      "material": "iron",
+      "variant": 4,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/wood_1.wav",
+      "event": "pick_drag",
+      "material": "wood",
+      "variant": 1,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/wood_2.wav",
+      "event": "pick_drag",
+      "material": "wood",
+      "variant": 2,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/wood_3.wav",
+      "event": "pick_drag",
+      "material": "wood",
+      "variant": 3,
+      "duration_s": 1.2
+    },
+    {
+      "file": "pick_drag/wood_4.wav",
+      "event": "pick_drag",
+      "material": "wood",
+      "variant": 4,
+      "duration_s": 1.2
+    }
+  ]
+}
