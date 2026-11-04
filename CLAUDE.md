@@ -28,7 +28,8 @@ Mobilna gra premium o ślusarzu z pogotowia zamkowego. iOS wiodący, Android dru
 - Haptyka nigdy nie jest jedynym kanałem (XAG 103/110).
 
 ## Repo
-- Praca na gałęzi roboczej (`claude/...`), nigdy na `main`. Małe, opisowe commity. PR tylko na prośbę właściciela.
+- Praca bezpośrednio na `main` (decyzja właściciela, D-02): małe, opisowe commity, push na bieżąco. PR tylko na prośbę właściciela.
+- Na bieżąco wysyłamy właścicielowi zrzuty ekranów (makiety, potem gra).
 - Zależności deweloperskie (Vite, Playwright, three.js) tylko w `mockups/`.
 - Fonty tylko OFL; grafiki/dźwięki tylko własne lub CC0; każdy zasób wpisany do `docs/ASSETS.md`.
 - Nie kopiujemy kodu, grafik, nazw ani UI cudzych gier.
