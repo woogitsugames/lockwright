@@ -1,0 +1,71 @@
+/* Direction: Sodowa noc (Sodium Night). Linocut cut into the block, printed on a risograph
+   in three spot inks (atrament, cegła, sodowa) on newsprint. Light = what the gouge removed. */
+:root{
+  --papier:#EEE4CB;    /* newsprint: carved light, brass, text on ink */
+  --atrament:#1C1719;  /* ink plate: night, outlines, text on paper */
+  --noc:#2C2326;       /* ink over brick: panels on night */
+  --sodowa:#EBAE3E;    /* sodium yellow plate: lamp light on the scene, player's controls */
+  --cegla:#9E3B29;     /* brick plate: wood, doors, stamps, warnings */
+  --zelazo:#4A2D29;    /* ink + brick overprint: iron */
+  --stal:#8D8379;      /* ink 45% halftone on paper: steel */
+  --popiol:#B9AE9C;    /* ink 25% halftone: secondary text on night */
+  --reg-x:1.2px; --reg-y:-.8px;  /* risograph misregistration of the yellow drum */
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .08 0 0 0 0 .09 0 0 0 -1.6 1.05'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+body{background:var(--atrament);color:var(--papier);font-family:"Bitter",serif;font-weight:420}
+.fr{font-family:"Fraunces",serif;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 72}
+.fr-i{font-family:"Fraunces",serif;font-style:italic;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 36}
+/* risograph grain: low-contrast ink speckle, never on the shear line (see .no-grain) */
+.grain{position:relative;isolation:isolate}
+.grain::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.16;mix-blend-mode:multiply;pointer-events:none;z-index:5}
+.grain.on-dark::after{mix-blend-mode:screen;opacity:.07;filter:invert(1)}
+svg text{font-family:"Bitter",serif}
+
+/* generic tap target: carved lino block, ≥48 */
+.tap{min-width:48px;min-height:48px;display:grid;place-items:center;background:var(--noc);border:2px solid var(--papier);color:var(--papier);
+  border-radius:3px 5px 4px 6px / 6px 3px 5px 4px}
+.tap svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:square}
+.coins{display:flex;align-items:center;gap:6px;font:600 19px "Bitter",serif;font-variant-numeric:lining-nums tabular-nums;color:var(--sodowa)}
+.coins svg{width:26px;height:26px}
+
+/* buttons: a printed slab. primary = sodium plate, secondary = carved outline on night */
+.btn{display:flex;align-items:center;gap:12px;min-height:56px;padding:0 18px;border:2px solid var(--papier);background:var(--noc);color:var(--papier);
+  font:600 18px/1.1 "Bitter",serif;text-align:left;border-radius:4px 7px 5px 8px / 8px 4px 7px 5px;position:relative}
+.btn small{display:block;font:italic 400 13px/1.25 "Bitter",serif;color:var(--popiol);margin-top:3px}
+.btn.primary{background:var(--sodowa);color:var(--atrament);border-color:var(--atrament);box-shadow:var(--reg-x) calc(var(--reg-y)*-3) 0 0 var(--atrament)}
+.btn.primary small{color:var(--atrament)}
+.btn.brick{background:var(--cegla);color:var(--papier);border-color:var(--papier)}
+.btn .ico{width:28px;height:28px;flex:none}
+
+/* ============== 01 LOCK ============== */
+.lock{width:100vw;height:100vh;display:grid;grid-template-rows:auto auto auto minmax(0,1fr);
+  padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+.lock .bar{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;padding:10px 16px 8px}
+.bar-t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.kick{font:italic 400 13px/1.2 "Bitter",serif;color:var(--popiol);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ttl{font:600 22px/1.05 "Fraunces",serif;font-variation-settings:"SOFT" 100,"WONK" 1,"opsz" 48;color:var(--papier)}
+.ttl em{font-style:italic;color:var(--sodowa);font-weight:500}
+.lock .section{display:block;width:100%;height:auto}
+.lock .hud svg{display:block;width:100%;height:auto}
+.thumbs{display:grid;grid-template-columns:1fr 1.55fr;gap:14px;padding:6px 16px 18px;min-height:0}
+.zone{display:grid;grid-template-rows:minmax(0,1fr) 24px;justify-items:center;min-height:0}
+.zone svg{width:100%;height:100%;min-height:0;display:block}
+.zl{font:italic 500 15px "Fraunces",serif;font-variation-settings:"SOFT" 100,"WONK" 1;color:var(--papier)}
+.rule2{height:7px;border-top:2px solid var(--papier);border-bottom:1px solid var(--papier);margin:0 16px}
+
+@media (orientation:landscape){
+  .lock{grid-template-columns:200px minmax(0,1fr) 250px;grid-template-rows:auto minmax(0,1fr) auto}
+  .lock .bar{grid-column:1/-1;padding:6px 18px 2px}
+  .lock .plate{grid-column:2;grid-row:2;display:flex;justify-content:center;min-height:0}
+  .lock .section{height:100%;width:auto}
+  .lock .hud{grid-column:2;grid-row:3}
+  .lock .hud svg{height:88px;width:auto;margin:0 auto}
+  .lock .rule2{display:none}
+  .lock .thumbs{display:contents}
+  .lock .zone.left{grid-column:1;grid-row:2/4;padding:4px 0 14px 16px}
+  .lock .zone.right{grid-column:3;grid-row:2/4;padding:4px 16px 14px 0}
+}
+
+/* ============== shared page frame for 02–05 ============== */
+.page{width:100vw;height:100vh;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);overflow:hidden}
+.top{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;padding:10px 16px 6px}

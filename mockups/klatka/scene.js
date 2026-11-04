@@ -1,7 +1,7 @@
 // Direction "Klatka schodowa" — physically lit cutaway, three.js. Mockup tool only, not game code.
 // World units = dp of the 412-wide section; y grows DOWN in our layout coordinates, converted with Y().
 import * as THREE from '../node_modules/three/build/three.module.js';
-import { RoundedBoxGeometry } from '../node_modules/three/examples/jsm/geometries/RoundedBoxGeometry.js';
+import { RoomEnvironment } from '../node_modules/three/examples/jsm/environments/RoomEnvironment.js';
 
 export const Y = y => -y;
 
@@ -37,16 +37,16 @@ export function brushedRough(seed = 3, base = 150, dir = 0) {
 export function materials() {
   return {
     // steel housing: light, satin, cool-neutral
-    steel: new THREE.MeshStandardMaterial({ color: 0xb9bab6, metalness: 0.85, roughness: 0.48, roughnessMap: brushedRough(1, 125) }),
+    steel: new THREE.MeshStandardMaterial({ color: 0xc4c5c1, metalness: 0.8, roughness: 0.55, roughnessMap: brushedRough(1, 125) }),
     // brass plug & key pins: mid value, warmer, slightly rougher (aged)
-    brass: new THREE.MeshStandardMaterial({ color: 0xb08a4c, metalness: 0.9, roughness: 0.42, roughnessMap: brushedRough(2, 120, Math.PI / 2) }),
+    brass: new THREE.MeshStandardMaterial({ color: 0xb89252, metalness: 0.8, roughness: 0.58, roughnessMap: brushedRough(2, 120, Math.PI / 2) }),
     // iron: dark, very rough, almost non-reflective (driver pins of security type / door hardware)
     iron: new THREE.MeshStandardMaterial({ color: 0x3e3b37, metalness: 0.55, roughness: 0.82 }),
     // driver pins: hardened steel, darker than housing so they separate inside the steel chamber
-    driver: new THREE.MeshStandardMaterial({ color: 0x7c7f80, metalness: 0.9, roughness: 0.36, roughnessMap: brushedRough(5, 100) }),
-    spring: new THREE.MeshStandardMaterial({ color: 0x9a9c9c, metalness: 0.9, roughness: 0.3 }),
-    recess: new THREE.MeshStandardMaterial({ color: 0x1b1916, metalness: 0.2, roughness: 0.95 }),
-    pick: new THREE.MeshStandardMaterial({ color: 0xdcdcd8, metalness: 0.95, roughness: 0.25 }),
+    driver: new THREE.MeshStandardMaterial({ color: 0x9fa2a3, metalness: 0.75, roughness: 0.42, roughnessMap: brushedRough(5, 100) }),
+    spring: new THREE.MeshStandardMaterial({ color: 0xa8aaaa, metalness: 0.8, roughness: 0.45 }),
+    recess: new THREE.MeshStandardMaterial({ color: 0x15130f, metalness: 0.0, roughness: 1.0 }),
+    pick: new THREE.MeshStandardMaterial({ color: 0xe6e6e2, metalness: 0.7, roughness: 0.38 }),
     handle: new THREE.MeshStandardMaterial({ color: 0x7a2a1c, metalness: 0.0, roughness: 0.7 }),
     wood: new THREE.MeshStandardMaterial({ map: woodTexture(), roughness: 0.78, metalness: 0 }),
     leather: new THREE.MeshStandardMaterial({ map: woodTexture(512, 256, 11, [70, 44, 30]), roughness: 0.9 }),
@@ -101,9 +101,10 @@ export function makeRenderer(canvas, w, h) {
 }
 
 // warm stairwell bulb (key), cool landing window (fill). No bloom, no env-map chrome.
-export function stairwellLights(scene, target = [206, -190, 0]) {
-  scene.add(new THREE.HemisphereLight(0xcfd6e0, 0x3a2a1c, 0.9));
-  const key = new THREE.SpotLight(0xffd7a8, 9e5, 0, Math.PI / 5, 0.6, 2);
+export function stairwellLights(scene, target = [206, -190, 0], renderer) {
+  if (renderer) { const pm = new THREE.PMREMGenerator(renderer); scene.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; scene.environmentIntensity = 0.55; }
+  scene.add(new THREE.HemisphereLight(0xcfd6e0, 0x3a2a1c, 0.5));
+  const key = new THREE.SpotLight(0xffd7a8, 5e5, 0, Math.PI / 5, 0.7, 2);
   key.position.set(-220, 380, 520); key.target.position.set(...target); key.castShadow = true; key.shadow.mapSize.set(2048, 2048); key.shadow.bias = -0.0005;
   scene.add(key, key.target);
   const fill = new THREE.DirectionalLight(0xbfd0e6, 0.55); fill.position.set(600, 100, 300); scene.add(fill);

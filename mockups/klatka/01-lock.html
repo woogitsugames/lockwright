@@ -3,6 +3,7 @@
 <title>Klatka · zamek</title>
 <link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="klatka.css">
 <script>window.__ready = false;</script>
+<script type="importmap">{"imports":{"three":"../node_modules/three/build/three.module.js"}}</script>
 </head><body>
 <main class="screen lock">
   <header class="bar">
@@ -37,15 +38,16 @@ const S = new THREE.Scene();
 const M = materials();
 
 // layout window: x 0..412, y 14..(14+412*H/W)
-const yTop = 14, yBot = yTop + 412 * H / W;
-const cam = orthoCamera(0, 412, yTop, yBot);
-stairwellLights(S);
+let yTop = 14, yBot = yTop + 412 * H / W, x0 = 0, x1 = 412;
+if (yBot < 372) { yTop = 14; yBot = 372; const half = (yBot - yTop) * W / H / 2; x0 = 206 - half; x1 = 206 + half; } // landscape: fit section height
+const cam = orthoCamera(x0, x1, yTop, yBot);
+stairwellLights(S, undefined, R);
 
 const add = (g, m, cast = true) => { const o = new THREE.Mesh(g, m); o.castShadow = cast; o.receiveShadow = true; S.add(o); return o; };
 const box = (x0, y0, x1, y1, z0, z1, m, r = 1.2) => { const g = new RoundedBoxGeometry(x1 - x0, y1 - y0, z1 - z0, 2, r); g.translate((x0 + x1) / 2, Y((y0 + y1) / 2), (z0 + z1) / 2); return add(g, m); };
 
 // door leaf (wood) and recess behind the cut
-box(-20, 0, 432, 362, -46, -34, M.wood, 2);
+box(-300, -40, 712, 362, -46, -34, M.wood, 2);
 box(28, 40, 384, 334, -34, -30, M.recess, 0.5);
 
 // housing (steel): top bar + columns between chambers; chamber x: 79,135,191,247,303 (w34)

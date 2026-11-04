@@ -1,0 +1,33 @@
+{
+  "colors": {
+    "papier":   "#EEE4CB",
+    "atrament": "#1C1719",
+    "noc":      "#2C2326",
+    "sodowa":   "#EBAE3E",
+    "cegla":    "#9E3B29",
+    "zelazo":   "#4A2D29",
+    "stal":     "#8D8379",
+    "popiol":   "#B9AE9C"
+  },
+  "pairs": [
+    ["atrament", "papier",   "text"],
+    ["papier",   "atrament", "text"],
+    ["papier",   "noc",      "text"],
+    ["sodowa",   "atrament", "text"],
+    ["sodowa",   "noc",      "text"],
+    ["atrament", "sodowa",   "text"],
+    ["cegla",    "papier",   "text"],
+    ["papier",   "cegla",    "text"],
+    ["popiol",   "atrament", "text"],
+    ["atrament", "popiol",   "text"],
+    ["zelazo",   "sodowa",   "graphic"],
+    ["papier",   "zelazo",   "graphic"],
+    ["atrament", "stal",     "graphic"],
+    ["atrament", "sodowa",   "graphic"],
+    ["papier",   "noc",      "graphic"],
+    ["sodowa",   "zelazo",   "graphic"],
+    ["papier",   "cegla",    "graphic"],
+    ["cegla",    "sodowa",   "graphic"],
+    ["stal",     "atrament", "graphic"]
+  ]
+}
