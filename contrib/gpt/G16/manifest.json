@@ -1,0 +1,222 @@
+{
+  "date": "2026-11-05",
+  "photos": [
+    {
+      "i": 1,
+      "slug": "khorsabad_gate",
+      "source": "B",
+      "panel": 5,
+      "file": "photos/01_khorsabad_gate.jpg",
+      "description": "Drewniany rygiel z pionowymi kołkami / wooden bolt with drop pins",
+      "size": 75503,
+      "sha256": "1dc3ce965af3eae4ba8278daafa06a4033d83b70eeec9edb4733f015ba5530d6"
+    },
+    {
+      "i": 2,
+      "slug": "egyptian_name",
+      "source": "A",
+      "panel": 4,
+      "file": "photos/02_egyptian_name.jpg",
+      "description": "Drewniany zamek kołkowy w rekonstrukcji / wooden pin lock reconstruction",
+      "size": 69039,
+      "sha256": "4b3208ee8cd352c28c12ae442abc9cdf682d35d847b99f24e369ad2317b53243"
+    },
+    {
+      "i": 3,
+      "slug": "roman_ring_key",
+      "source": "A",
+      "panel": 2,
+      "file": "photos/03_roman_ring_key.jpg",
+      "description": "Stary klucz z małym uchwytem na pierścień / Roman-style ring-key study (symbolic)",
+      "size": 69211,
+      "sha256": "a6c3191aa442e819d9c4d3815ca23f5d848dc8c4436c7544e7737c9e50ce28af"
+    },
+    {
+      "i": 4,
+      "slug": "roman_wards",
+      "source": "B",
+      "panel": 8,
+      "file": "photos/04_roman_wards.jpg",
+      "description": "Zamek zapadkowy z kluczem / warded lock and key",
+      "size": 76604,
+      "sha256": "bfe81449b81d74710c6c0cd95ca0d1a7e29ae2809204345f01866ddc00e6cdf2"
+    },
+    {
+      "i": 5,
+      "slug": "amen_padlock",
+      "source": "B",
+      "panel": 4,
+      "file": "photos/05_amen_padlock.jpg",
+      "description": "Pierścieniowa kłódka szyfrowa / ring combination padlock (numbers, not historical letters)",
+      "size": 53826,
+      "sha256": "215b49f5bb0bed7b64feb597109043a608c1a1ab8fda11add6e1a8f1d90faf03"
+    },
+    {
+      "i": 6,
+      "slug": "barron_1778",
+      "source": "B",
+      "panel": 6,
+      "file": "photos/06_barron_1778.jpg",
+      "description": "Wczesny dwudźwigniowy zamek w przekroju / twin-lever lock",
+      "size": 79023,
+      "sha256": "f5bef13ea9912fc0a38e0ee5687e47fcdafcae93c0b0eed332cf1a19211d8593"
+    },
+    {
+      "i": 7,
+      "slug": "chubb_detector",
+      "source": "A",
+      "panel": 7,
+      "file": "photos/07_chubb_detector.jpg",
+      "description": "Mechanizm dźwigni i zapadki detektora / lever with detector-like pawl",
+      "size": 68718,
+      "sha256": "a7cd030f4feadde772d0eee92252828d20b49dc55ee0ab179598364b56acbf1e"
+    },
+    {
+      "i": 8,
+      "slug": "hobbs_westminster",
+      "source": "B",
+      "panel": 18,
+      "file": "photos/08_hobbs_westminster.jpg",
+      "description": "Otwarta skrzynka z mechanizmem dźwigniowym / lever lock cutaway",
+      "size": 76257,
+      "sha256": "121abf5f33aaf1f655e491ed23e278af4a81117988264ae58f69953fd6cb98f7"
+    },
+    {
+      "i": 9,
+      "slug": "bramah_window",
+      "source": "B",
+      "panel": 14,
+      "file": "photos/09_bramah_window.jpg",
+      "description": "Mechanizm o kluczu rurkowym / tube-key lock (conceptual)",
+      "size": 62465,
+      "sha256": "192b2a3b5047b89c9103f5d4a6f72801c25cb38f0b566c08890d7a6887fe2885"
+    },
+    {
+      "i": 10,
+      "slug": "hobbs_51_hours",
+      "source": "B",
+      "panel": 13,
+      "file": "photos/10_hobbs_51_hours.jpg",
+      "description": "Kłódka w przekroju / cutaway padlock",
+      "size": 67204,
+      "sha256": "3683a5cc0e194e4a0853342d55d52ebd1079db8e0adc210c311726735cbbed18"
+    },
+    {
+      "i": 11,
+      "slug": "stansbury_1805",
+      "source": "A",
+      "panel": 1,
+      "file": "photos/11_stansbury_1805.jpg",
+      "description": "Obracany bęben z pionowymi kołkami / pin mechanism",
+      "size": 67872,
+      "sha256": "8efcf019c04e2098e4e7329616b2fb9e563c709a1255cf997dc7722831494117"
+    },
+    {
+      "i": 12,
+      "slug": "yale_senior",
+      "source": "B",
+      "panel": 19,
+      "file": "photos/12_yale_senior.jpg",
+      "description": "Sprężynujące kołki w korpusie / spring-pin cylinder",
+      "size": 74803,
+      "sha256": "049e3bb10b9f908cc4d28bff8664a7988cff42c470e84add07b6c7354e3b9018"
+    },
+    {
+      "i": 13,
+      "slug": "yale_flat_key",
+      "source": "B",
+      "panel": 1,
+      "file": "photos/13_yale_flat_key.jpg",
+      "description": "Miniaturowa wkładka bębenkowa w przekroju / compact cylinder cutaway",
+      "size": 77774,
+      "sha256": "baead8cad3a57bba11872642f3b56848134aa81e7c048c068bb0a820ef858e9e"
+    },
+    {
+      "i": 14,
+      "slug": "yale_dial",
+      "source": "A",
+      "panel": 18,
+      "file": "photos/14_yale_dial.jpg",
+      "description": "Okrągła tarcza szyfrowa sejfu / circular safe dial",
+      "size": 66733,
+      "sha256": "6f12b3f82e58fa23d80b1a11354330b0a4170ab4498af880dc6d9a2caa84e149"
+    },
+    {
+      "i": 15,
+      "slug": "sargent_time_lock",
+      "source": "A",
+      "panel": 16,
+      "file": "photos/15_sargent_time_lock.jpg",
+      "description": "Mechanizm zegarowy i rygiel / clockwork and bolt",
+      "size": 76852,
+      "sha256": "f65ec2fcf67999aad4c677db0ca009d54325029b4311087893b31a361a0f9e04"
+    },
+    {
+      "i": 16,
+      "slug": "henriksson_disc",
+      "source": "B",
+      "panel": 10,
+      "file": "photos/16_henriksson_disc.jpg",
+      "description": "Stos obracanych dysków / rotating disc stack",
+      "size": 71144,
+      "sha256": "25d87cb96cd9d3525ac3f98ed9794e4f3b1df48bc4412b5a5af80651b4d2e8c2"
+    },
+    {
+      "i": 17,
+      "slug": "swiatniki_armourers",
+      "source": "B",
+      "panel": 3,
+      "file": "photos/17_swiatniki_armourers.jpg",
+      "description": "Kuta kłódka żelazna / forged iron padlock",
+      "size": 71573,
+      "sha256": "2c04d28dbb083ff8fae723fd79352bf8484b471230ab3b2d51fc438177664ef2"
+    },
+    {
+      "i": 18,
+      "slug": "swiatniki_school",
+      "source": "B",
+      "panel": 12,
+      "file": "photos/18_swiatniki_school.jpg",
+      "description": "Dekorowany zamek skrzynkowy / decorated box lock",
+      "size": 86087,
+      "sha256": "99112b56738992ff52a584a60bf97b3186b88876e48409a03b373c562039a379"
+    },
+    {
+      "i": 19,
+      "slug": "krakow_guild_seal",
+      "source": "B",
+      "panel": 16,
+      "file": "photos/19_krakow_guild_seal.jpg",
+      "description": "Otwarty kuty zamek bramowy / forged gate lock cutaway (no guild crest)",
+      "size": 78318,
+      "sha256": "7f371f9dca22a2111909f1b62f6f8f92008f4647134f85f20cf3ff07d808aa18"
+    },
+    {
+      "i": 20,
+      "slug": "wroclaw_iron_world",
+      "source": "A",
+      "panel": 3,
+      "file": "photos/20_wroclaw_iron_world.jpg",
+      "description": "Zamek skrzynkowy o dźwigniowym ryglu / iron box lock (unsigned reconstruction)",
+      "size": 69194,
+      "sha256": "851ec5208a1e80b37d356eba473b3aa57f44d18f8416a445d16885187e36feda"
+    }
+  ],
+  "support_files": [
+    {
+      "file": "props/exhibit_card_blank_pl_en.png",
+      "size": 540768,
+      "sha256": "66a0add7d45489be384294673c4b7970cdbefac5804ead8f52d93873a1775e07"
+    },
+    {
+      "file": "props/showcase_empty_landscape.jpg",
+      "size": 104153,
+      "sha256": "ede149e42169fa8627facf8493f728a380e23b1ac927e679143c6a98d831c8ce"
+    },
+    {
+      "file": "props/showcase_empty_portrait.jpg",
+      "size": 87243,
+      "sha256": "d5c9d3c396ade27ec087fc960ad701bb84f88561a7d6080eb3f0940300cbc235"
+    }
+  ]
+}
