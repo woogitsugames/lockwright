@@ -175,7 +175,7 @@ Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-d
 - Kolejność: (1) strażnik CI — perf-budget, qa-career, game-ios; (4) raport z telefonu (`device-tests/REPORT.md`, `measurements/*.json`) → ingest, TECH §8, N-xx; potem (2) dostawy GPT/Magnific/Gemini, (3) sklep cz. 3, (5) bot QA cz. 3, (6) przegląd ciągły. Z etapu 4 otwarte: zad. 2 (dostawy), 6 (= zad. 4 etapu 5), 7 (strona z G12/G13).
 - W katalogu roboczym leżą niezacommitowane pliki innej sesji (`docs/ASSETS.md`, `art/marketing/`, `art/blender/marketing/`) — nie dotykam ich, commituję tylko własne ścieżki.
 
-## 2026-11-05 14:50 — przejęcie sesji C (druga zmiana w etapie 5)
+## 2026-11-05 14:33 — przejęcie sesji C (druga zmiana w etapie 5)
 - Kolejna nowa sesja C przejmuje rolę po sesji z 14:15 (limit, ostatni commit e0caa51). Przeczytane: CLAUDE.md, SESSION-C-PROMPT 1–5, ten log.
 - Środowisko: skrypt startowy kontenera padł na `/opt/node20/bin/node` (obraz ma node22/node24), pracuję na node 22; Godot 4.7.2 i lockcore zbudowane lokalnie.
 - **Zad. 1 (strażnik CI), runda 1:** `perf-budget` czerwony przez paczkę 288,9 MB (próg 70). Odtworzyłem lokalnie i znalazłem przyczyny: grafiki GPT importowane bezstratnie (128 MB), zrzuty kontrolne Gemini w `game/` (90 MB) i niepodłączone rodziny GEM2 (35 MB). Poprawka sprawdzona lokalnie (289 → 52,5 MB) jest w **N-30** z gotowym diffem dla B i A. Progów nie podnoszę. `game-ios`: poprawka B 9eca512 w toku. `qa-career`: run po e0caa51 w kolejce, odtwarzam lokalnie.

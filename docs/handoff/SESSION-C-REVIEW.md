@@ -752,7 +752,7 @@ Weryfikacja „naprawione” (z `qa/run_matrix.sh`, `qa/bot/a11y_shots.gd`, log�
 
 # Etap 5
 
-## Runda CI 1 + raport z telefonu — 2026-11-05 14:45 (nowa sesja C)
+## Runda CI 1 + raport z telefonu — 2026-11-05 14:30 (nowa sesja C)
 
 Stan CI na `main` @ 6120d07: kolejka runnerów zapchana (runy z 13:16 wciąż `queued`). Ostatnie zakończone: `perf-budget` ❌ (42023529473), `qa-career` ❌ (42022913627), `game-ios` ❌ (42023529618, 81aa034). `game-ios` 42031298421 (poprawka sesji B 9eca512) w toku. `spike-planb` ✅.
 
