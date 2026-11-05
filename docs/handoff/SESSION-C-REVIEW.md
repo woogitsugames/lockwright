@@ -950,3 +950,8 @@ Wynik na 0a1c459: zlecenia 41, **tło G07 41/41** ✅, dźwięki z danych i kodu
   Test GUT: `Sfx.play_voice(&"halina", &"greeting")` zajmuje jeden odtwarzacz z puli.
 
 **N-49 · Medium (treść) · 39 z 51 mówiących postaci nie ma portretu G09 ani głosu** — G09 i S03 objęły 12 postaci z CLIENTS.md, a zlecenia (`data/jobs`, `jobs_ch7`) mają 51 mówiących. Bez twarzy mówią m.in. gosia, iga, elzbieta (po 2 zlecenia), agnieszka, aino, bartek, basia, panna młoda… Lista w `qa/out/assets/report.md` (artefakt `qa-career-report`). Decyzja dla A/właściciela: zlecić G09-v2 i S03-v2 (27 postaci epizodycznych) albo pokazać im neutralny znak zamiast portretu (np. tabliczkę z inicjałem, bez fałszywej twarzy). Gra dziś pokazuje dla nich sam podpis — działa, ale niespójnie.
+
+## Runda 6 — 2026-11-05 15:35 (commity B od 13:15: a551138, a11934f, afbd957)
+- **a551138** (`default_bus_layout.tres`: `sub_resource` przed `[resource]`) — poprawne, zweryfikowane: plik ładuje się bez błędu w imporcie lokalnym, szyna `Music` ma low-pass (wyłączony domyślnie).
+- **a11934f** (jawne typy zamiast `:=` z Variant) — `job_arrival.gd:69` i `jobs_list.gd:25` poprawne. **`workshop_screen.gd:21` poprawione tylko w połowie:** dopisano typ `int`, ale wywołanie `OS.get_time()` (Godot 3) zostało, więc skrypt dalej się nie kompiluje (N-44). Zmiana przeszła bez uruchomienia ekranu: wystarczy `godot --headless --path game --quit-after 5 res://scenes/workshop.tscn` albo lokalny `qa/run_career.sh`.
+- **afbd957** (jawne `.dylib` w nazwie celu scons) — zgodne z przyczyną z rundy CI 3; wynik po runie (w kolejce).
