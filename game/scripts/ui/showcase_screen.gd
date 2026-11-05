@@ -22,7 +22,7 @@ func _show_notebook_entry() -> void:
 	card.add_child(lbl)
 	# G10 notebook page (PL/EN by game language), only if it is in the build
 	var lang := "pl" if Settings.language() == "pl" else "en"
-	var path := "res://assets/ui/gpt/notebook/03-five-rules-%s.jpg" % lang
+	var path := "res://assets/ui/gpt/notebook/%s-five-rules-%s.jpg" % ["03" if lang == "pl" else "04", lang]
 	var page: Texture2D = load(path) if ResourceLoader.exists(path) else null
 	if page != null:
 		var tex := TextureRect.new()
