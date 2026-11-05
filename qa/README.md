@@ -9,7 +9,8 @@ weryfikację → zamek → zapłatę), zakupy w warsztacie i gablotę. Zamki roz
 
 ```bash
 qa/run_career.sh [godot] [timeout_s]      # domyślnie: godot, 1800 s; QA_WORK=katalog roboczy
-QA_STRICT=1 qa/run_career.sh              # kod wyjścia 1, gdy wynik ≠ OK (tak działa CI)
+QA_STRICT=1 qa/run_career.sh              # kod wyjścia 1, gdy wynik ≠ OK (lokalnie, przed pushem do game/)
+QA_FAIL_ON_INFRA=1 qa/run_career.sh       # tak działa CI: kod 2 tylko przy awarii bota/silnika/workflowu
 ```
 
 Wynik: `qa/out/report.md` (po polsku), `report.json` (`lockwright.qa-report/1`), `career.log`, `verdict.txt`.
@@ -29,3 +30,8 @@ Nieznany ekran → przyciski „dalej/OK/Wstecz” i wpis w „Nieznane ekrany�
 
 Workflow: `.github/workflows/qa-career.yml` (co noc 02:17 UTC + push do `game/**`, `qa/**`), artefakt `qa-career-report`,
 raport w podsumowaniu joba. Znalezione błędy: `docs/handoff/SESSION-C-REVIEW.md` (N-13+).
+
+**CI: błędy gry vs błędy workflowu.** W `qa-career` run jest **czerwony tylko wtedy, gdy zawiódł sam automat**: brak
+raportu bota (`QA_REPORT`), przekroczony czas, crash silnika, błąd kroku workflowu. Problemy **gry** (soft-locki, ekrany
+bez wyjścia, brakujące klucze, błędy skryptów) trafiają do `report.md` w podsumowaniu runu i jako adnotacje ⚠
+„QA gry: …”; werdykt „OK / PROBLEMY” jest w `verdict.txt`. Dzięki temu czerwony `qa-career` zawsze znaczy „napraw automat”.

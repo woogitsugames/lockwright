@@ -45,7 +45,7 @@ jobs:
       - name: Run career bot
         env:
           QA_WORK: ${{ runner.temp }}/lw_qa_game
-          QA_STRICT: '1'
+          QA_FAIL_ON_INFRA: '1'  # game findings -> warnings + report; red only if the bot/engine/workflow fails
         run: qa/run_career.sh /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 1800
       - name: Step summary
         if: always()

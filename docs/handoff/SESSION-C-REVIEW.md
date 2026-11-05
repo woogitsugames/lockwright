@@ -568,3 +568,80 @@ Zakres: 0ec9cae (sesja B: `tests/screens.{gd,tscn}`, argumenty gradlew), b45bdd4
   - **Poprawka:** doinstalować `ndk;29.0.14206865` i dodać `ndk_version=29.0.14206865` do obu wywołań scons (działa lokalnie i w `spike-determinism-apk`).
 - `game-android` run 65 (0ec9cae): `plugin-aar` → „Build haptics AAR” failure; inna sesja opisała to w b45bdd4 — nie duplikuję.
 - N-13…N-18, N-20: bez zmian w kodzie (brak nowych commitów w `game/scripts`).
+
+---
+
+# Etap 4
+
+## Runda CI 1 — 2026-11-05 10:30 (zadanie 1: pilnowanie zielonego CI)
+
+Stan workflowów na `main` (ostatnie zakończone runy): **zielone** `lockcore` (#21), `spike-determinism` (#15), `spike-planb` (#13), `perf-budget` (#2); **czerwone** `game-tests` (#61), `game-android` (#65), `game-ios` (#78), `game-screens` (#4; #5 w toku), `qa-career` (#7, mój — rozdzielony niżej). W toku: `spike-determinism-apk` (#1).
+
+**N-22 · High · `game-tests` / `export-pack-test`: smoke z pck nie może się uruchomić** · `.github/workflows/game-tests.yml:104-110`, `game/export_presets.cfg` (preset.2)
+- Log (run 42004110822, job `export-pack-test`):
+  ```
+  ERROR: Can't open dynamic library, file not found: 'addons/lockcore_gd/bin/liblockcore_gd.linux.template_debug.so'.
+  ERROR: GDExtension dynamic library not found: 'res://addons/lockcore_gd/lockcore_gd.gdextension'.
+  ERROR: Cannot open file 'res://tests/smoke.tscn'.
+  ERROR: Failed loading scene: res://tests/smoke.tscn.
+  ```
+- Przyczyny: (1) preset „Linux” ma `exclude_filter="addons/gut/*,tests/*,scenes/dev/*"`, więc `res://tests/smoke.tscn` nie trafia do pck, a krok go uruchamia; (2) pck jest uruchamiany z katalogu repo (`--main-pack game/build/…`), a ścieżka biblioteki w `.gdextension` jest względna — Godot szuka `addons/lockcore_gd/bin/…` względem bieżącego katalogu; (3) `printf '\\n[preset.2]…'` dopisuje drugi, zepsuty (jedna linia z literalnym `\n`) `[preset.2]` do pliku, który już ma preset.2.
+- Poprawka:
+  ```diff
+  -          printf '\\n[preset.2]\\nname="Linux"…' >> game/export_presets.cfg
+  +          # preset.2 "Linux" is already in game/export_presets.cfg; tests must be inside the pck
+  +          sed -i 's#^exclude_filter="addons/gut/\*,tests/\*,scenes/dev/\*"#exclude_filter="addons/gut/*,scenes/dev/*"#' game/export_presets.cfg
+             mkdir -p game/build
+             …--export-debug "Linux" build/lockwright-debug.pck
+  -          /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --main-pack game/build/lockwright-debug.pck res://tests/smoke.tscn
+  +          cd game && /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --main-pack build/lockwright-debug.pck res://tests/smoke.tscn
+  ```
+  (alternatywa bez zmiany filtra w presecie wydaniowym: osobny preset „LinuxTest”).
+
+**N-23 · High · `game-android` / `plugin-aar`: Kotlin nie kompiluje się (API obwiedni Androida 16)** · `platform/android/lockwright-haptics/src/main/java/org/woogitsugames/lockwright/haptics/HapticsEngine.kt:155-163, 195`
+- Log (run 42004110652, job `plugin-aar`):
+  ```
+  HapticsEngine.kt:157:51 Unresolved reference 'startEnvelopeBuilder'.
+  HapticsEngine.kt:163:23 Not enough information to infer type argument for 'T'.
+  HapticsEngine.kt:195:32 Unresolved reference 'duration'.
+  ```
+- Przyczyny: w API 36 obwiednię buduje się konstruktorem `VibrationEffect.BasicEnvelopeBuilder()` (lub `WaveformEnvelopeBuilder()`), a `addControlPoint` przyjmuje `(intensity, sharpness, durationMillis)` — czas trwania odcinka, nie czas bezwzględny; metody `startEnvelopeBuilder()` nie ma. `VibrationEffect.getDuration()` nie jest publicznym API.
+- Poprawka:
+  ```diff
+  -                        val seg = VibrationEffect.startEnvelopeBuilder()
+  -                            .addControlPoint(0L, c.intensity.coerceIn(0.1f, 1f), c.sharpness.coerceIn(0f, 1f))
+  -                            .addControlPoint(20L, c.intensity.coerceIn(0.1f, 1f), c.sharpness.coerceIn(0f, 1f))
+  -                            .addControlPoint(40L, 0f, c.sharpness.coerceIn(0f, 1f))
+  -                            .build()
+  +                        val i = c.intensity.coerceIn(0.1f, 1f); val s = c.sharpness.coerceIn(0f, 1f)
+  +                        val seg = VibrationEffect.BasicEnvelopeBuilder()
+  +                            .addControlPoint(i, s, 20L)   // ramp to i over 20 ms
+  +                            .addControlPoint(i, s, 20L)   // hold 20 ms
+  +                            .addControlPoint(0f, s, 10L)  // release
+  +                            .build()
+  …
+  -            val durMs = effect.duration
+  -            transientUntilMs = SystemClock.uptimeMillis() + (durMs ?: 60L) + 20L
+  +            transientUntilMs = SystemClock.uptimeMillis() + estimateDurationMs(event) + 20L  // own table: FEEL §9 durations
+  ```
+  (oznaczyć funkcję/blok `@RequiresApi(36)`; `estimateDurationMs` z tabeli czasów w `haptics/out/index.json`, np. set 28 ms, false_set 60 ms, drop n×18 ms).
+- Po tej poprawce wyjdzie N-21 (NDK w `export-debug-apk`).
+
+**N-24 · High · `game-ios` / `ios-build`: `godot::memnew` nie kompiluje się** · `platform/ios/lockwright_haptics/Sources/register_types.cpp:16`
+- Log (run 42002634121): `Sources/register_types.cpp:16:81: error: expected unqualified-id … note: expanded from macro 'memnew'` → `scons: *** [Sources/register_types.ios.template_release.arm64.o] Error 1`.
+- Przyczyna: `memnew` to makro (rozwija się do wyrażenia z `::godot::…`), więc prefiks `godot::memnew(…)` daje `godot::(…)`.
+- Poprawka:
+  ```diff
+  -	godot::Engine::get_singleton()->register_singleton("LockwrightHaptics", godot::memnew(lockwright::LockwrightHaptics));
+  +	godot::Engine::get_singleton()->register_singleton("LockwrightHaptics", memnew(lockwright::LockwrightHaptics));
+  ```
+  Przy okazji (ostrzeżenia, nie błąd): deployment target iOS 12 przy API Core Haptics z iOS 13 — ustawić `ios_min_version=13.0` w SConstruct/`scons`, żeby nie zasłaniać prawdziwych ostrzeżeń.
+
+**N-19 (aktualizacja) · `game-screens`:** run #4 — `ERROR: Cannot open file 'res://tests/screens.tscn'` (plik dodany dopiero w 0ec9cae). Run #5 w toku; zostaje niezgodność formatu argumentów (`--out=` w `screens.gd` vs `--out DIR` w workflowie), opis w rundzie 4. Poprawka:
+  ```diff
+  -            res://tests/screens.tscn -- --out $GITHUB_WORKSPACE/docs/handoff/screens --size 412x915
+  +            res://tests/screens.tscn -- --out=$GITHUB_WORKSPACE/docs/handoff/screens --size=412x915
+  ```
+  (i tak samo dla 915x412).
+
+**`qa-career` (mój):** czerwony, bo gra ma soft-locki (N-13), a workflow kończył się błędem przy każdym werdykcie „PROBLEMY”. Od tej rundy: błędy **gry** idą do raportu i adnotacji ⚠ (run zielony), run jest czerwony tylko przy błędzie **workflowu** lub crashu/zawieszeniu silnika (brak raportu bota) — szczegóły w `qa/README.md`.

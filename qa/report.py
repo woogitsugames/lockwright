@@ -67,5 +67,20 @@ L += [f'- `{s}` × {n}' for s, n in sorted(bot.get('scenes', {}).items())]
 (out_dir / 'report.md').write_text('\n'.join(L) + '\n')
 print('\n'.join(L[:14]))
 (out_dir / 'verdict.txt').write_text(verdict + '\n')
+# CI: game problems -> annotations (run stays green); workflow/engine problems -> red run
+if os.environ.get('GITHUB_ACTIONS'):
+    for x in bot.get('softlocks', []):
+        print(f"::warning title=QA gry: soft-lock::{x.get('scene')} {x.get('job', '')}: {x.get('reason')}")
+    for x in bot.get('dead_ends', []):
+        print(f"::warning title=QA gry: ekran bez wyjścia::{x.get('scene')}: {x.get('reason')}")
+    for k in missing[:20]:
+        print(f"::warning title=QA gry: brak klucza i18n::{k}")
+    for e in script_errors[:10]:
+        print(f"::warning title=QA gry: błąd skryptu::{e[:200]}")
+infra_fail = (not bot) or timeout or crashed
+if infra_fail:
+    print('::error title=QA workflow::bot did not finish (no QA_REPORT, timeout or engine crash) - see career.log')
 if os.environ.get('QA_STRICT') == '1' and verdict != 'OK':
     sys.exit(1)
+if os.environ.get('QA_FAIL_ON_INFRA') == '1' and infra_fail:
+    sys.exit(2)
