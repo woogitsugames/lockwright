@@ -1,0 +1,28 @@
+{
+  "id": "job.refuse_sisters_flat",
+  "chapter": 7,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 2,
+  "verification": "Dowód Norberta (1) potwierdza tylko tożsamość. `flag.absent_owner` i `flag.no_witness`: brak zgody lokatorki. Prawidłowe wyjście: odmowa, kontakt do zarządcy lub oczekiwanie na zgodę; bez monet.",
+  "reward_coins": 0,
+  "tone": "spokojny, odmowa bez oskarżeń",
+  "i18n": {
+    "title": "job.refuse_sisters_flat.title",
+    "client": "job.refuse_sisters_flat.client",
+    "situation": "job.refuse_sisters_flat.situation"
+  },
+  "lines": [
+    "norbert",
+    "locksmith",
+    "norbert",
+    "locksmith"
+  ],
+  "after": [
+    "lena"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2
+}

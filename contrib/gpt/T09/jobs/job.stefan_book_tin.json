@@ -1,0 +1,26 @@
+{
+  "id": "job.stefan_book_tin",
+  "chapter": 7,
+  "district": "Osiedle Słoneczne",
+  "family": "ring_combo",
+  "tier": 3,
+  "verification": "Przenośna puszka Stefana: paragon zakupu (1) i zdjęcie z jego kiosku (1), w jego posiadaniu (1). Bez zgrzytu.",
+  "reward_coins": 145,
+  "tone": "zabawny, z wyczuciem",
+  "i18n": {
+    "title": "job.stefan_book_tin.title",
+    "client": "job.stefan_book_tin.client",
+    "situation": "job.stefan_book_tin.situation"
+  },
+  "lines": [
+    "stefan",
+    "locksmith",
+    "stefan",
+    "locksmith"
+  ],
+  "cards": [
+    "receipt",
+    "photo"
+  ],
+  "threshold": 2
+}
