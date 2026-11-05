@@ -22,6 +22,7 @@ void register_builtin_families(FamilyRegistry& reg) {
   reg.add(pin::make_dimple_module());
   reg.add(ring::make_disc_module());
   reg.add(wooden::make_egyptian_module());
+  reg.add(lever::make_slider_module());
 }
 
 }  // namespace lockcore

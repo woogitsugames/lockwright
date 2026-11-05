@@ -16,6 +16,12 @@
 //               every lever is jammed until the bolt is turned back (T < t_hold and
 //               rotate <= -1/2 for reset_steps; "detector.reset", wear). The third
 //               trip blocks the lock (failure detector_trip).
+//
+// axial_slider (v0.6, D-59, LOCKS.md §2.23): the same module with slider_ set
+// (no detector). Sliders round the key axis are pressed in (pick_lift > 0) to the
+// notch that clears the locking plate; spring return, binding order, false notches
+// from t2 ("slider.false_notch", counter-rotation band), overset. Tiers 1-3,
+// rules 1, own ids / seeds, slider pusher tool. lever / lever_detector unchanged.
 #include "lockcore/lever.hpp"
 
 #include <algorithm>
@@ -68,17 +74,17 @@ void to_free(LeverState& s) {
 
 class Module final : public FamilyModule {
  public:
-  explicit Module(bool detector) : detector_(detector) {}
+  explicit Module(bool detector, bool slider = false) : detector_(detector), slider_(slider) {}
 
-  std::string_view id() const override { return detector_ ? DETECTOR_FAMILY_ID : FAMILY_ID; }
-  std::int32_t rules_version() const override { return RULES_VERSION; }
+  std::string_view id() const override { return slider_ ? SLIDER_FAMILY_ID : (detector_ ? DETECTOR_FAMILY_ID : FAMILY_ID); }
+  std::int32_t rules_version() const override { return slider_ ? SLIDER_RULES_VERSION : RULES_VERSION; }
   std::uint32_t input_mask() const override {
     return AXIS_TENSION | AXIS_DEPTH | AXIS_LIFT | (detector_ ? AXIS_ROTATE : 0u);
   }
-  ToolSet required_tools(const LockSpec&) const override { return ToolSet{TOOL_LEVER_CRANK}; }
+  ToolSet required_tools(const LockSpec&) const override { return ToolSet{slider_ ? TOOL_SLIDER_PUSHER : TOOL_LEVER_CRANK}; }
 
-  int min_tier() const override { return detector_ ? 5 : 3; }
-  int max_tier() const override { return detector_ ? 6 : 5; }
+  int min_tier() const override { return slider_ ? 1 : (detector_ ? 5 : 3); }
+  int max_tier() const override { return slider_ ? 3 : (detector_ ? 6 : 5); }
 
   DifficultyVector difficulty_for_tier(int tier) const override {
     // LOCKS.md §2.7 (t3->t5) and §2.8 (t5->t6). sec = false gates per lever.
@@ -94,7 +100,14 @@ class Module final : public FamilyModule {
         {5, 5, 90, 180, 80, 1, 1, 200, 150},
         {6, 6, 80, 160, 80, 1, 2, 170, 180},
     };
-    const Row& r = detector_ ? detector_rows[std::clamp(tier, 5, 6) - 5] : lever_rows[std::clamp(tier, 3, 5) - 3];
+    // axial_slider (new-families.md §6): 4 -> 6 sliders, false notches from t2.
+    static constexpr Row slider_rows[] = {
+        {1, 4, 140, 280, 120, 0, 0, 300, 90},
+        {2, 5, 120, 240, 100, 0, 1, 250, 120},
+        {3, 6, 100, 200, 90, 1, 1, 220, 150},
+    };
+    const Row& r = slider_ ? slider_rows[std::clamp(tier, 1, 3) - 1]
+                           : (detector_ ? detector_rows[std::clamp(tier, 5, 6) - 5] : lever_rows[std::clamp(tier, 3, 5) - 3]);
     DifficultyVector d;
     d.tier = r.tier;
     d.n_min = d.n_max = r.n;
@@ -592,7 +605,7 @@ class Module final : public FamilyModule {
 
   std::string_view event_name(std::uint16_t sub) const override {
     switch (sub) {
-      case SUB_FALSE_GATE: return "lever.false_gate";
+      case SUB_FALSE_GATE: return slider_ ? "slider.false_notch" : "lever.false_gate";
       case SUB_DETECTOR_RESET: return detector_ ? std::string_view("detector.reset") : std::string_view();
       default: return {};
     }
@@ -600,10 +613,11 @@ class Module final : public FamilyModule {
 
  private:
   bool detector_;
+  bool slider_;
 
   LockSpec generate_once(std::uint64_t seed, std::uint32_t attempt, const DifficultyVector& d) const {
     const std::string_view fid = id();
-    Pcg32 rng(derive_seed(seed ^ splitmix64(attempt), fid, RULES_VERSION, "gen"), derive_stream(fid, "gen"));
+    Pcg32 rng(derive_seed(seed ^ splitmix64(attempt), fid, static_cast<std::uint32_t>(rules_version()), "gen"), derive_stream(fid, "gen"));
     auto P = std::make_shared<Params>();
     const int n = rng.range(d.n_min, d.n_max);
     P->win_gate = d.win_shear;
@@ -619,7 +633,7 @@ class Module final : public FamilyModule {
     P->bound_speed = BOUND_SPEED;
     P->false_speed = FALSE_SPEED;
     // spring_force 0.3 (t3) -> 0.5 (t5+): levers fall back 4x that per second.
-    const int sf = std::clamp(300 + 100 * (d.tier - 3), 300, 500);
+    const int sf = std::clamp(300 + 100 * (d.tier - (slider_ ? 1 : 3)), 300, 500);
     P->spring_speed = q16_per_step(q16_milli(4 * sf));
     P->set_speed = SET_SPEED;
     P->detector = detector_;
@@ -656,12 +670,12 @@ class Module final : public FamilyModule {
 
     LockSpec spec;
     spec.family = std::string(fid);
-    spec.rules_version = RULES_VERSION;
+    spec.rules_version = rules_version();
     spec.id = "gen." + std::string(fid) + ".t" + std::to_string(d.tier) + "." + std::to_string(seed);
     spec.source = "generated";
     spec.seed = seed;
     spec.difficulty = d;
-    spec.material = MaterialId::brass;
+    spec.material = slider_ ? MaterialId::steel : MaterialId::brass;
     spec.params = P;
     return spec;
   }
@@ -671,5 +685,6 @@ class Module final : public FamilyModule {
 
 std::unique_ptr<FamilyModule> make_module() { return std::make_unique<Module>(false); }
 std::unique_ptr<FamilyModule> make_detector_module() { return std::make_unique<Module>(true); }
+std::unique_ptr<FamilyModule> make_slider_module() { return std::make_unique<Module>(false, true); }
 
 }  // namespace lockcore::lever

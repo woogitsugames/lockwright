@@ -13,9 +13,12 @@ namespace lockcore::lever {
 inline constexpr std::string_view FAMILY_ID = "lever";
 inline constexpr std::string_view DETECTOR_FAMILY_ID = "lever_detector";
 inline constexpr std::int32_t RULES_VERSION = 2;  // 2: set_speed, D-34
+// v0.6 (D-59): axial slider lock (LOCKS.md §2.23), the same module without detector.
+inline constexpr std::string_view SLIDER_FAMILY_ID = "axial_slider";
+inline constexpr std::int32_t SLIDER_RULES_VERSION = 1;
 
 enum Sub : std::uint16_t {
-  SUB_FALSE_GATE = 1,      // "lever.false_gate", base kind false_set: second knock of the false gate
+  SUB_FALSE_GATE = 1,      // "lever.false_gate" / "slider.false_notch", base kind false_set: second knock
   SUB_DETECTOR_RESET = 2,  // "detector.reset", base kind drop: detector released, levers loose
 };
 
@@ -76,5 +79,6 @@ inline constexpr q16 DETECTOR_MARGIN_T6 = q16_milli(83);
 
 std::unique_ptr<FamilyModule> make_module();           // lever, t3-t5
 std::unique_ptr<FamilyModule> make_detector_module();  // lever_detector, t5-t6
+std::unique_ptr<FamilyModule> make_slider_module();    // axial_slider, t1-t3
 
 }  // namespace lockcore::lever

@@ -72,6 +72,7 @@ if(LOCKCORE_BUILD_TESTS)
     tests/test_dimple.cpp
     tests/test_disc_detainer.cpp
     tests/test_egyptian.cpp
+    tests/test_axial_slider.cpp
     tests/test_replay.cpp
     tests/test_fuzz.cpp
   )
