@@ -27,7 +27,7 @@ func _tier_for(n: int) -> int:
 
 func _next_lock() -> void:
 	var tier := _tier_for(_n)
-	var families := JobRun.IMPLEMENTED
+	var families := JobRun.PHOTOREAL_READY  # N-63: never route the player to the placeholder view
 	var fam: StringName = families[_n % families.size()]
 	JobRun.mode = &"run"
 	JobRun.current_job = {"id": "run.%d" % _n, "family": String(fam), "tier": tier, "reward_coins": 10 * tier, "i18n": {}}

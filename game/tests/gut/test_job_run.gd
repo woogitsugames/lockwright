@@ -5,7 +5,7 @@ func test_unimplemented_families_hidden() -> void:
 	assert_false(JobRun.is_playable({"family": "dial_safe"}))
 	assert_false(JobRun.is_playable({"family": "unknown"}))
 	assert_true(JobRun.is_playable({"family": "pin_tumbler"}))
-	assert_true(JobRun.is_playable({"family": "lever"}))
+	assert_false(JobRun.is_playable({"family": "lever"}))  # N-63: hidden until its plan-B view ships
 
 func test_fnv1a_seed_stable() -> void:
 	# N-06: FNV-1a 64 of "job.grandma_broth"

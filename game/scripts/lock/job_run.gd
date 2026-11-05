@@ -12,6 +12,9 @@ static var last_tip := 0  # N-25: tip paid by JobRun.complete()
 # lockcore families implemented in lockcore (v0.4); jobs with other families are
 # hidden on the list (N-05) instead of silently remapped.
 const IMPLEMENTED := [&"pin_tumbler", &"wafer", &"wooden_pin", &"warded", &"lever", &"lever_detector", &"ring_combo"]
+## N-63: families that already have the photoreal (plan B) lock screen. Only these are offered
+## to the player; the rest stay hidden until their plan-B view ships (no placeholder lock.tscn).
+const PHOTOREAL_READY := [&"pin_tumbler"]
 
 # Authored tutorial locks S1–S3 (docs/LEVELS.md §2.1–2.3, lockwright.lock/1, checked with
 # lockcore/build/check_locks). Loaded through LockcoreSession.create_from_json.
@@ -34,7 +37,7 @@ static func family_for(job: Dictionary) -> StringName:
 
 
 static func is_playable(job: Dictionary) -> bool:
-	return IMPLEMENTED.has(family_for(job))
+	return IMPLEMENTED.has(family_for(job)) and PHOTOREAL_READY.has(family_for(job))
 
 
 static func lock_scene_path() -> String:
