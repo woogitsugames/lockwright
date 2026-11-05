@@ -658,3 +658,14 @@ Zrzuty: `docs/handoff/device-tests/fixes/landscape/` (412×915 i 915×412: menu,
 | game-tests | https://github.com/woogitsugames/lockwright/actions/runs/42100326407 |
 | game-screens | https://github.com/woogitsugames/lockwright/actions/runs/42100326243 |
 | qa-career | https://github.com/woogitsugames/lockwright/actions/runs/42079732741 |
+
+## Od sesji A: N-63, zlecenia z innymi rodzinami pokazują zastępczy widok (KRYTYCZNE, zgłoszenie właściciela, APK run 131)
+Zrzut: `docs/handoff/device-tests/run131_placeholder_lock.jpg`.
+- `JobRun.lock_scene_path()` kieruje do widoku fotorealistycznego (plan B, `lock_job.tscn`) **tylko `pin_tumbler`**. Każda inna rodzina idzie do starego, prowizorycznego `lock.tscn`: płaskie walce, szary pręt, białe kieszenie, przycisk „Lupa”.
+- Dane zleceń (`game/data/jobs/*.json`) mają **5 zleceń `pin_tumbler` na 30**. Reszta to warded 6, wafer 4, lever 3, dial_safe 2, combo 2 i po 1: dimple, disc_detainer, egyptian, axial_slider, time_lock, magnetic, lever_detector. Gracz widzi więc prowizorkę w większości zleceń.
+- **Zasoby do wykorzystania:**
+  - finalne rendery Cycles z materiałami ze zdjęć dla wafer, lever, ring_combo, wooden_pin i warded (`art/renders/*.png`, skrypty `art/blender/*.py`);
+  - widoki GEM2 `game/scenes/photoreal_families/lock_photoreal_{lever,wafer,warded,wooden_pin}.tscn`. Są wyłączone z eksportu, a ich wygląd właściciel ocenił jako „CG”.
+- **Do zrobienia (najwyższy priorytet nowej sesji A):**
+  1. **Natychmiast:** ukryj w liście zleceń te, których rodzina nie ma widoku planu B, albo tymczasowo przypisz im `pin_tumbler` z flagą `family_pending` w danych. Gracz nie może trafić na `lock.tscn`.
+  2. **Docelowo:** plan B dla każdej rodziny (płyta Cycles z `art/renders` + ruchome części z GLB, jak w `lock_photoreal_view.gd`), zaczynając od rodzin z największą liczbą zleceń: warded, wafer, lever. Kreda, czoło rdzenia, samouczek pierwszej lekcji rodziny (ONBOARDING §8) i testy jak dla pinów.

@@ -74,6 +74,9 @@ Utwórz je narzędziem `create_trigger` (fire into this session):
 Sprawdź `git log` i zawartość tych katalogów.
 
 ## 5. Co dalej (kolejność)
+0. **N-63 (KRYTYCZNE, wpis w SESSION-B-LOG.md):** 25 z 30 zleceń to rodziny inne niż `pin_tumbler`, a te idą do starego, prowizorycznego `lock.tscn`. Właściciel trafił na to w APK z runu 131 („jakieś g…”).
+   - **Najpierw:** odetnij to w danych lub liście zleceń.
+   - **Potem:** plan B dla warded, wafer i lever, na bazie `art/renders/*.png` z materiałami ze zdjęć.
 1. **Build i APK dla właściciela:**
    - zielony `game-android` dla najnowszego commitu w `game/`. Jeśli nie ma, użyj `workflow_dispatch`, ale nie pushuj nic do `game/`, dopóki trwa;
    - pobierz artefakt `lockwright-android-debug` przez API GitHub (`/actions/runs/<id>/artifacts` → `archive_download_url`, `curl -L` z tokenem);
