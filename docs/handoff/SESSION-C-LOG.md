@@ -105,7 +105,7 @@ Decyzje tej części: brak nowych D-NN (wszystkie rozstrzygnięcia mieszczą si�
 - **Zadanie 4 (przegląd ciągły):** rundy 1 i 2 w `SESSION-C-REVIEW.md` (N-01, N-03, N-05 zweryfikowane naprawione; N-09 nie działa w praktyce przez N-13).
 - Następne: zadanie 2 (audio v2, część 2).
 
-## 2026-11-05 10:20 — postęp godzinny i podsumowanie listy etapu 3
+## 2026-11-05 10:12 — postęp godzinny i podsumowanie listy etapu 3
 
 Od ostatniego wpisu: zadanie 2 (dźwięk cz. 2, ebae8c2), 5 (strona, f535a8b), 6 (sklep cz. 2: aa30e61, 4b4d4db), 7 (legal, 16c730d),
 8 (A11Y runda 2, 0f86d16), 9 (budżety, 2e85d99), 10 (determinizm w APK, 1ac7395), przegląd rundy 3 (N-17…N-20).
