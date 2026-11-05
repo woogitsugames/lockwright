@@ -18,7 +18,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** In the 1840s Paul-Émile Botta investigated Dur-Sharrukin, the Assyrian capital built under Sargon II in the late eighth century BC. Joseph Bonomi described one of its gates as secured by a large wooden lock. The lock itself does not survive; we know it from a written account. Archaeologist Daniel Potts traced the often-repeated claim of 4,000 years to a dating error. Some 2,700 years is impressive enough.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [POTTS](#potts), [PITT](#pitt) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [POTTS](FACTCHECK.md#potts), [PITT](FACTCHECK.md#pitt) (zob. bibliografia w FACTCHECK.md).
 
 ### 2. showcase.egyptian_name
 
@@ -30,7 +30,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** Wooden bolt-and-pin locks are often called Egyptian locks. Nineteenth-century travellers saw similar devices in Egypt, but that does not establish where the idea originated. In 1883 Augustus Pitt-Rivers already pointed to gaps in the ancient evidence. Related mechanisms are known from the Near East and the Roman world. The name is shorter than the history.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [PITT](#pitt), [POTTS](#potts) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [PITT](FACTCHECK.md#pitt), [POTTS](FACTCHECK.md#potts) (zob. bibliografia w FACTCHECK.md).
 
 ### 3. showcase.roman_ring_key
 
@@ -42,7 +42,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** Roman key-rings combined jewellery with a small locking tool. Surviving examples are documented by the Victoria and Albert Museum and London Museum. They may have served small boxes or compartments, though the exact purpose of an individual ring is not always known. It was a neat way to keep something important close at hand.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [VAM](#vam), [LONDON](#london) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [VAM](FACTCHECK.md#vam), [LONDON](FACTCHECK.md#london) (zob. bibliografia w FACTCHECK.md).
 
 ### 4. showcase.roman_wards
 
@@ -54,7 +54,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** Romans used a variety of bolts and locks. Surviving keys from Pompeii and Herculaneum also point to warded mechanisms, in which fixed internal barriers called for a suitably shaped key. Pin-based mechanisms were known as well. There was no single Roman solution, but a whole craft.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [PITT](#pitt), [TOM](#tom) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [PITT](FACTCHECK.md#pitt), [TOM](FACTCHECK.md#tom) (zob. bibliografia w FACTCHECK.md).
 
 ### 5. showcase.amen_padlock
 
@@ -66,7 +66,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** Locks with rotating letter rings even found their way into literature. Nineteenth-century technology historian Charles Tomlinson cited a play attributed to Beaumont and Fletcher mentioning a lock opened by the word AMEN. A related image appears in the poetry of Thomas Carew. These are traces of the letter lock's cultural life, although the quotations still need checking against critical editions.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [TOM](#tom), [KRUH](#kruh) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [TOM](FACTCHECK.md#tom), [KRUH](FACTCHECK.md#kruh) (zob. bibliografia w FACTCHECK.md).
 
 ### 6. showcase.barron_1778
 
@@ -78,7 +78,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** In 1778 London locksmith Robert Barron patented an important improvement to the lever lock. In his design the bolt stayed blocked when the relevant elements moved either too little or too far. It was a significant step in the development of lever locks. Precision had earned a place in the story.
 
-**Ocena oryginału:** zgodne. **Fakty:** [TOM](#tom), [CHUBB](#chubb) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** zgodne. **Fakty:** [TOM](FACTCHECK.md#tom), [CHUBB](FACTCHECK.md#chubb) (zob. bibliografia w FACTCHECK.md).
 
 ### 7. showcase.chubb_detector
 
@@ -90,7 +90,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** In 1818 Jeremiah Chubb patented a lever lock with a detector that could reveal an attempt to tamper with the mechanism. He was not the first to consider such a warning: Ruxton's patent dates from 1816. Chubb's design became well known and helped bring lock security into public debate.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [TOM](#tom), [LHLH](#lhlh) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [TOM](FACTCHECK.md#tom), [LHLH](FACTCHECK.md#lhlh) (zob. bibliografia w FACTCHECK.md).
 
 ### 8. showcase.hobbs_westminster
 
@@ -102,7 +102,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** In 1851 Alfred C. Hobbs challenged the belief that London's finest locks could not be defeated. The most consequential witnessed test took place on 22 July at Great George Street in Westminster, not on the Great Exhibition floor. According to the signed statement, opening took 25 minutes and relocking seven. It sparked a celebrated public controversy.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [TOM](#tom), [LHLH](#lhlh) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [TOM](FACTCHECK.md#tom), [LHLH](FACTCHECK.md#lhlh) (zob. bibliografia w FACTCHECK.md).
 
 ### 9. showcase.bramah_window
 
@@ -114,7 +114,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** Joseph Bramah patented his lock in 1784. Later, a padlock displayed in his shop window on Piccadilly challenged anyone to open it, with a reward of 200 guineas. The Science Museum dates the surviving challenge padlock to 1801. The challenge lasted half a century before it was settled in 1851. Remarkably patient advertising.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [SCI](#sci), [TOM](#tom) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [SCI](FACTCHECK.md#sci), [TOM](FACTCHECK.md#tom) (zob. bibliografia w FACTCHECK.md).
 
 ### 10. showcase.hobbs_51_hours
 
@@ -126,7 +126,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** Alfred C. Hobbs took on Bramah's challenge padlock in the summer of 1851. The arbiters recorded 51 hours of work spread across 16 working days. His success brought the promised 200-guinea reward. The padlock and the story eventually entered a museum collection. Sixteen working days can feel long. So can half a century of waiting.
 
-**Ocena oryginału:** zgodne. **Fakty:** [TOM](#tom), [SCI](#sci) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** zgodne. **Fakty:** [TOM](FACTCHECK.md#tom), [SCI](FACTCHECK.md#sci) (zob. bibliografia w FACTCHECK.md).
 
 ### 11. showcase.stansbury_1805
 
@@ -138,7 +138,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** As early as 1805 Abraham O. Stansbury obtained a British patent for a lock using spring-loaded pins. Charles Tomlinson described the design as a development of the older wooden pin-lock idea. The path towards the later cylinder lock had more than one contributor. The history of technology rarely fits a single hero.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [TOM](#tom), [CHUBB](#chubb) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [TOM](FACTCHECK.md#tom), [CHUBB](FACTCHECK.md#chubb) (zob. bibliografia w FACTCHECK.md).
 
 ### 12. showcase.yale_senior
 
@@ -150,7 +150,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** Linus Yale Sr. ran a lock workshop in Newport, New York State. He worked, among other things, on bank security, and an 1857 patent preserves both his name and location. His ideas were later developed by his son, also named Linus. The family workshop passed down questions as well as tools.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [YALESR](#yalesr), [MIT](#mit) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [YALESR](FACTCHECK.md#yalesr), [MIT](FACTCHECK.md#mit) (zob. bibliografia w FACTCHECK.md).
 
 ### 13. showcase.yale_flat_key
 
@@ -162,7 +162,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** In the mid-nineteenth century Linus Yale Jr. helped turn bulky locking mechanisms into more convenient everyday devices. A patent dated 27 June 1865 documents one of his designs. The small, flat key became emblematic of this new approach to cylinder locks. He died in 1868, leaving ideas that others would develop for generations.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [YALEJR](#yalejr), [OXF](#oxf) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [YALEJR](FACTCHECK.md#yalejr), [OXF](FACTCHECK.md#oxf) (zob. bibliografia w FACTCHECK.md).
 
 ### 14. showcase.yale_dial
 
@@ -174,7 +174,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** Nineteenth-century designers of bank security sought to reduce access through a traditional keyhole. Linus Yale Jr. worked on bank locks from the 1850s, while dial-operated designs developed further during the following decade. Removing a keyhole did not guarantee perfect security. It changed the problems a lock designer had to solve.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [MIT](#mit), [ASME](#asme) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [MIT](FACTCHECK.md#mit), [ASME](FACTCHECK.md#asme) (zob. bibliografia w FACTCHECK.md).
 
 ### 15. showcase.sargent_time_lock
 
@@ -186,7 +186,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** James Sargent developed a bank-vault time lock in the 1870s. He applied for patent protection in 1873, and his lock was installed at a bank in Morrison, Illinois, in 1874. Clockwork prevented the vault from opening before a designated time, even for someone who knew the combination. The underlying idea was older, but devices of this kind were now gaining ground.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [SARGARCH](#sargarch), [HORO](#horo) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [SARGARCH](FACTCHECK.md#sargarch), [HORO](FACTCHECK.md#horo) (zob. bibliografia w FACTCHECK.md).
 
 ### 16. showcase.henriksson_disc
 
@@ -198,7 +198,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** In the early twentieth century Finnish precision mechanic Emil Henriksson developed a lock based on rotating discs. According to a later account, the idea came while he was repairing a cash register in 1907. He obtained a patent in 1919. In this family of mechanisms rotating elements take the place of spring-loaded pin stacks. The origin story is almost as tidy as the idea itself.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [TEK](#tek), [KALEVA](#kaleva) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [TEK](FACTCHECK.md#tek), [KALEVA](FACTCHECK.md#kaleva) (zob. bibliografia w FACTCHECK.md).
 
 ### 17. showcase.swiatniki_armourers
 
@@ -210,7 +210,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** Świątniki Górne, near Kraków, grew from a settlement associated with service at Wawel Cathedral. Smithing and armour-making flourished there for centuries. As demand for traditional armour declined in the late eighteenth century, local craftspeople increasingly turned to locks and padlocks. The product changed; the knowledge of iron remained.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [PTTK](#pttk), [VISIT](#visit) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [PTTK](FACTCHECK.md#pttk), [VISIT](FACTCHECK.md#visit) (zob. bibliografia w FACTCHECK.md).
 
 ### 18. showcase.swiatniki_school
 
@@ -222,7 +222,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** The decision to establish a locksmithing school at Świątniki Górne came in 1887; teaching began in 1888. In 1891 the school and a local company received an order for 500 padlocks at an exhibition in Vienna. Metalworking skills were taught here for generations. Today the Marcin Mikuła Museum of Locksmithing preserves the story of the local craft. These lessons had real weight.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [TWIERDZA](#twierdza), [PTTK](#pttk) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [TWIERDZA](FACTCHECK.md#twierdza), [PTTK](FACTCHECK.md#pttk) (zob. bibliografia w FACTCHECK.md).
 
 ### 19. showcase.krakow_guild_seal
 
@@ -234,7 +234,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** Kraków locksmiths and clockmakers shared a guild for many years. King Władysław IV confirmed its statute in 1633. The historic guild seal included a lock, a clock face, keys and a crowned serpent. According to a verse recorded in the guild book, the serpent stood for sharpness of mind. The clockmakers formed a separate guild only in 1797.
 
-**Ocena oryginału:** zgodne. **Fakty:** [CHMIEL](#chmiel), [RAK](#rak) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** zgodne. **Fakty:** [CHMIEL](FACTCHECK.md#chmiel), [RAK](FACTCHECK.md#rak) (zob. bibliografia w FACTCHECK.md).
 
 ### 20. showcase.wroclaw_iron_world
 
@@ -246,7 +246,7 @@ Zasada redakcyjna: fikcyjne mechanizmy gry są inne niż rzeczywiste produkty. T
 
 **EN — body:** In 2022 the National Museum in Wrocław presented Iron World, an exhibition of historic locks, keys and other metalwork. One object was a box lock made in 1720 by the Wrocław master Albert Nicolaus Spihrman. According to the museum, it is the only lock in its collection to carry a date, the maker's name and the place of manufacture together. The old craftsman left an unusually clear signature.
 
-**Ocena oryginału:** do poprawy. **Fakty:** [MNWR](#mnwr), [MNWR450](#mnwr450) (zob. bibliografia w FACTCHECK.md).
+**Ocena oryginału:** do poprawy. **Fakty:** [MNWR](FACTCHECK.md#mnwr), [MNWR450](FACTCHECK.md#mnwr450) (zob. bibliografia w FACTCHECK.md).
 
 
 ## B. Proponowane zamienniki sekcji „Epoka” i „Zasada działania” w LOCKS.md — 17 z 17
@@ -259,7 +259,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Wooden pin-bolt devices are known from historical descriptions and comparisons with finds from Egypt and the Near East. The gate at Dur-Sharrukin belongs to the late eighth century BC, but its reported wooden lock has not survived. In this family moving wooden pins restrain a bolt.
 
-**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [POTTS](#potts), [PITT](#pitt) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [POTTS](FACTCHECK.md#potts), [PITT](FACTCHECK.md#pitt) (opis w FACTCHECK.md).
 
 ### 2.2 warded — Zamek z zastawkami / Warded Lock
 
@@ -267,7 +267,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Locks with fixed wards were known in antiquity, including the Roman world. Their internal stationary barriers correspond to the shape of the key. They should not be confused with the moving levers used by other lock families.
 
-**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [PITT](#pitt), [TOM](#tom) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [PITT](FACTCHECK.md#pitt), [TOM](FACTCHECK.md#tom) (opis w FACTCHECK.md).
 
 ### 2.3 ring_combo — Kłódka pierścieniowa / Ring Combination Lock
 
@@ -275,7 +275,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Locks controlled by combinations of symbols existed before the industrial age, including designs recorded in medieval mechanical traditions such as those of al-Jazari around 1206. In the game's fictional family, rotating rings form a mechanical code.
 
-**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [EURO](#euro), [KRUH](#kruh) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [EURO](FACTCHECK.md#euro), [KRUH](FACTCHECK.md#kruh) (opis w FACTCHECK.md).
 
 ### 2.4 wafer — Wkładka płytkowa jednostronna / Single-Sided Wafer Lock
 
@@ -283,7 +283,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Wafer locks developed in the United States during the second half of the nineteenth century. Felter's 1868 patent concerned a double-sided arrangement, while an early single-sided version is associated with H. S. Shepardson around 1870. Moving plates act as the elements that restrain the plug.
 
-**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [PUL](#pul), [FELTER](#felter) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [PUL](FACTCHECK.md#pul), [FELTER](FACTCHECK.md#felter) (opis w FACTCHECK.md).
 
 ### 2.5 wafer_double — Wkładka płytkowa dwustronna / Double-Sided Wafer Lock
 
@@ -291,7 +291,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Double-sided wafer locks date back at least to the nineteenth century: Philo S. Felter patented such a design in the United States in 1868. Broadly speaking, blocking elements are arranged on two sides of the mechanism. The game's implementation simplifies and fictionalises the design.
 
-**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [FELTER](#felter), [PUL](#pul) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [FELTER](FACTCHECK.md#felter), [PUL](FACTCHECK.md#pul) (opis w FACTCHECK.md).
 
 ### 2.6 pin_tumbler — Wkładka bębenkowa / Pin-Tumbler Cylinder
 
@@ -299,7 +299,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Modern pin-tumbler cylinder locks emerged in the nineteenth century from older pin-based designs. Stansbury patented an early approach in 1805, and both Linus Yale Sr. and Jr. contributed improvements later that century. Groups of interacting pins separate the moving plug from its housing.
 
-**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [TOM](#tom), [YALEJR](#yalejr) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [TOM](FACTCHECK.md#tom), [YALEJR](FACTCHECK.md#yalejr) (opis w FACTCHECK.md).
 
 ### 2.7 lever — Zamek dźwigniowy / Lever Lock
 
@@ -307,7 +307,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Robert Barron patented an important lever-lock improvement in 1778. Locks in this family use moving levers interacting with a bolt. Their number and shape changed as designs evolved.
 
-**Ocena dotychczasowego wstępu:** zgodne. **Źródła:** [TOM](#tom), [CHUBB](#chubb) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** zgodne. **Źródła:** [TOM](FACTCHECK.md#tom), [CHUBB](FACTCHECK.md#chubb) (opis w FACTCHECK.md).
 
 ### 2.8 lever_detector — Zamek z detektorem / Detector Lever Lock
 
@@ -315,7 +315,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Jeremiah Chubb patented his detector lock in 1818, building on earlier efforts to signal interference with a lock. In 1851 Alfred C. Hobbs demonstrated the limitations of this approach, with a documented witnessed test in Westminster. A detector adds a mechanism intended to register improper movement.
 
-**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [TOM](#tom), [LHLH](#lhlh) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [TOM](FACTCHECK.md#tom), [LHLH](FACTCHECK.md#lhlh) (opis w FACTCHECK.md).
 
 ### 2.9 tubular — Zamek rurkowy / Tubular Lock
 
@@ -323,7 +323,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Tubular pin locks are a modern variant of the cylinder-lock family. Their pins are arranged around an axis, and the design uses a correspondingly shaped key. This review did not establish a single reliable date for the family's invention.
 
-**Ocena dotychczasowego wstępu:** nie do zweryfikowania. **Źródła:** [PUL](#pul), [BRIT](#brit) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** nie do zweryfikowania. **Źródła:** [PUL](FACTCHECK.md#pul), [BRIT](FACTCHECK.md#brit) (opis w FACTCHECK.md).
 
 ### 2.10 magnetic — Zamek magnetyczny, schemat / Magnetic Lock, Schematic
 
@@ -331,7 +331,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Twentieth-century designers explored locks using magnetic forces without an electrical power supply. Specific mechanisms differ, and this review did not establish a reliable first-invention date. The game presents a schematic fictional interpretation of the general idea.
 
-**Ocena dotychczasowego wstępu:** nie do zweryfikowania. **Źródła:** [PUL](#pul), [MAGPAT](#magpat) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** nie do zweryfikowania. **Źródła:** [PUL](FACTCHECK.md#pul), [MAGPAT](FACTCHECK.md#magpat) (opis w FACTCHECK.md).
 
 ### 2.11 axial_slider — Zamek suwakowy / Axial Slider Lock
 
@@ -339,7 +339,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Joseph Bramah patented his lock design in 1784. The historical mechanism used multiple sliding elements, and its famous challenge padlock was opened during a publicised test in 1851. The surviving museum example is catalogued as dating from 1801.
 
-**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [TOM](#tom), [SCI](#sci) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [TOM](FACTCHECK.md#tom), [SCI](FACTCHECK.md#sci) (opis w FACTCHECK.md).
 
 ### 2.12 disc_detainer — Zamek tarczowy / Disc-Detainer Lock
 
@@ -347,7 +347,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Finnish mechanic Emil Henriksson developed a rotating-disc lock in the early twentieth century and obtained a patent in 1919. In this family the discs interact with a locking element, taking the place of conventional spring-loaded pin stacks. The game's model does not reproduce any particular commercial product.
 
-**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [TEK](#tek), [PUL](#pul) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [TEK](FACTCHECK.md#tek), [PUL](FACTCHECK.md#pul) (opis w FACTCHECK.md).
 
 ### 2.13 safe_wheels — Pakiet tarcz sejfu / Safe Combination Wheel Pack
 
@@ -355,7 +355,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Mechanical combination locks for safes developed particularly rapidly in the nineteenth century. Broadly speaking, a dial moves a set of internal wheels, and their intended configuration allows the bolt to be released. There is no securely established single date of invention.
 
-**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [BRIT](#brit), [TOM](#tom) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [BRIT](FACTCHECK.md#brit), [TOM](FACTCHECK.md#tom) (opis w FACTCHECK.md).
 
 ### 2.14 time_lock — Zamek czasowy / Time Lock
 
@@ -363,7 +363,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Vault time locks spread during the second half of the nineteenth century. James Sargent applied for patent protection in 1873, and his lock was installed at a bank in Morrison in 1874. Clockwork prevented opening before a scheduled time, regardless of who knew the combination.
 
-**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [SARGARCH](#sargarch), [HORO](#horo) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** do poprawy. **Źródła:** [SARGARCH](FACTCHECK.md#sargarch), [HORO](FACTCHECK.md#horo) (opis w FACTCHECK.md).
 
 ### 2.15 dimple — Wkładka z nawierceniami / Dimple Lock
 
@@ -371,7 +371,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Dimple locks are a variety of pin-based cylinder mechanisms whose keys have depressions on a surface. The family includes several different configurations. This review did not establish a reliable date for the earliest use; the game uses its own simplified mechanism.
 
-**Ocena dotychczasowego wstępu:** nie do zweryfikowania. **Źródła:** [PUL](#pul), [BRIT](#brit) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** nie do zweryfikowania. **Źródła:** [PUL](FACTCHECK.md#pul), [BRIT](FACTCHECK.md#brit) (opis w FACTCHECK.md).
 
 ### 2.16 sidebar — Wkładka z listwą boczną / Sidebar Lock
 
@@ -379,7 +379,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** Some cylinder locks use an additional elongated blocking element called a sidebar. It interacts with other internal parts. Many different versions exist, and this note does not assign an unverified date of invention.
 
-**Ocena dotychczasowego wstępu:** nie do zweryfikowania. **Źródła:** [PUL](#pul), [SIDEPAT](#sidepat) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** nie do zweryfikowania. **Źródła:** [PUL](FACTCHECK.md#pul), [SIDEPAT](FACTCHECK.md#sidepat) (opis w FACTCHECK.md).
 
 ### 2.17 hybrid — Hybrydy mechanizmów / Hybrid Mechanisms
 
@@ -387,7 +387,7 @@ Ten fragment jest dodatkiem do właściwego wymogu 20 notek gabloty. Nie wprowad
 
 **EN (era and principle, summary):** In Lockwright a hybrid is a design category combining features from several fictional lock families. It has no single historical inventor or invention date. It describes the game's world rather than a specific historical artefact.
 
-**Ocena dotychczasowego wstępu:** zgodne. **Źródła:** [PUL](#pul), [BRIT](#brit) (opis w FACTCHECK.md).
+**Ocena dotychczasowego wstępu:** zgodne. **Źródła:** [PUL](FACTCHECK.md#pul), [BRIT](FACTCHECK.md#brit) (opis w FACTCHECK.md).
 
 
 ## Zalecane wykorzystanie
