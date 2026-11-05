@@ -60,10 +60,10 @@ jobs:
           GODOT_CPP=$GITHUB_WORKSPACE/godot-cpp scons platform=ios target=template_debug arch=arm64 custom_api_file=$GITHUB_WORKSPACE/godot-cpp/gdextension/extension_api-4-7.json -j8
           mkdir -p bin
           xcodebuild -create-xcframework \
-            -library bin/liblockcore_gd.ios.template_release.so \
+            -library bin/liblockcore_gd.ios.template_release.dylib \
             -output bin/liblockcore_gd.ios.release.xcframework
           xcodebuild -create-xcframework \
-            -library bin/liblockcore_gd.ios.template_debug.so \
+            -library bin/liblockcore_gd.ios.template_debug.dylib \
             -output bin/liblockcore_gd.ios.debug.xcframework
 
       - name: Import + export Godot project to Xcode (unsigned)
