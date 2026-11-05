@@ -1,21 +1,21 @@
 keys,en,pl,de
-boot.calib_title,Two taps 120 ms apart — how many do you feel and hear?,Dwa stuknięcia 120 ms od siebie — ile czujesz i słyszysz?,Two taps 120 ms apart — how many do you feel and hear?
-boot.calib_two,Two,Dwa,Two
-boot.calib_one,One,Jedno,One
-boot.calib_none,None,Nic,None
-boot.calib_skip,Skip,Pomiń,Skip
-settings.feel_section,Feel (haptics),Wyczucie (haptyka),Feel (haptics)
-settings.quality,Graphics quality,Jakość grafiki,Graphics quality
-settings.quality_auto,Auto (measured),Auto (mierzona),Auto (measured)
-settings.quality_high,High,Wysoka,High
-settings.quality_medium,Medium,Średnia,Medium
-settings.quality_low,Low (cheap phones),Niska (tanie telefony),Low (cheap phones)
-showcase.notebook_prefix,From the master's notebook:,Z zeszytu mistrza:,From the master's notebook:
-about.licenses,"Fonts: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Engine: Godot 4 (MIT). Extensions: godot-cpp (MIT), GUT (MIT). Full list: THIRD-PARTY-NOTICES.txt in the app.","Fonty: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Silnik: Godot 4 (MIT). Rozszerzenia: godot-cpp (MIT), GUT (MIT). Pełna lista: THIRD-PARTY-NOTICES.txt w aplikacji.","Fonts: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Engine: Godot 4 (MIT). Extensions: godot-cpp (MIT), GUT (MIT). Full list: THIRD-PARTY-NOTICES.txt in the app."
-about.post_release_unlocked,Chapter 7 (A Shared Key) unlocked.,Rozdział 7 (Wspólny klucz) odblokowany.,Chapter 7 (A Shared Key) unlocked.
-settings.report_problem,Report a problem,Zgłoś problem,Report a problem
-settings.report_copied,Log copied to clipboard. Paste it in your message — nothing is sent automatically.,Log skopiowany do schowka. Wklej go w wiadomość — nic nie jest wysyłane automatycznie.,Log copied to clipboard. Paste it in your message — nothing is sent automatically.
-settings.report_empty,Log is empty.,Log jest pusty.,Log is empty.
+boot.calib_title,Two taps 120 ms apart — how many do you feel and hear?,Dwa stuknięcia 120 ms od siebie — ile czujesz i słyszysz?,Zwei Impulse im Abstand von 120 ms — wie viele spürst und hörst du?
+boot.calib_two,Two,Dwa,Zwei
+boot.calib_one,One,Jedno,Einen
+boot.calib_none,None,Nic,Keinen
+boot.calib_skip,Skip,Pomiń,Überspringen
+settings.feel_section,Feel (haptics),Wyczucie (haptyka),Spielgefühl (Haptik)
+settings.quality,Graphics quality,Jakość grafiki,Grafikqualität
+settings.quality_auto,Auto (measured),Auto (mierzona),Automatisch (gemessen)
+settings.quality_high,High,Wysoka,Hoch
+settings.quality_medium,Medium,Średnia,Mittel
+settings.quality_low,Low (cheap phones),Niska (tanie telefony),Niedrig (einfachere Handys)
+showcase.notebook_prefix,From the master's notebook:,Z zeszytu mistrza:,Aus dem Heft des Meisters:
+about.licenses,"Fonts: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Engine: Godot 4 (MIT). Extensions: godot-cpp (MIT), GUT (MIT). Full list: THIRD-PARTY-NOTICES.txt in the app.","Fonty: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Silnik: Godot 4 (MIT). Rozszerzenia: godot-cpp (MIT), GUT (MIT). Pełna lista: THIRD-PARTY-NOTICES.txt w aplikacji.","Schriften: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Engine: Godot 4 (MIT). Erweiterungen: godot-cpp (MIT), GUT (MIT). Vollständige Liste: THIRD-PARTY-NOTICES.txt in der App."
+about.post_release_unlocked,Chapter 7 (A Shared Key) unlocked.,Rozdział 7 (Wspólny klucz) odblokowany.,Kapitel 7 („Ein gemeinsamer Schlüssel“) freigeschaltet.
+settings.report_problem,Report a problem,Zgłoś problem,Problem melden
+settings.report_copied,Log copied to clipboard. Paste it in your message — nothing is sent automatically.,Log skopiowany do schowka. Wklej go w wiadomość — nic nie jest wysyłane automatycznie.,Protokoll in die Zwischenablage kopiert. Füge es in deine Nachricht ein — es wird nichts automatisch gesendet.
+settings.report_empty,Log is empty.,Log jest pusty.,Protokoll leer.
 app.title,Lockwright: Locksmith on Call,Lockwright: Pogotowie Zamkowe,Lockwright: Schlüsseldienst
 common.back,Back,Wstecz,Zurück
 common.close,Close,Zamknij,Schließen
@@ -180,7 +180,7 @@ tutorial.s1_pick,"Right thumb: sideways to choose, up to lift.","Prawy kciuk: w 
 tutorial.s1_binding,That pin is resisting. Just right.,Ten pin stawia opór. Dobrze.,Der Stift hält dagegen. Genau richtig.
 tutorial.s1_click,Click! One set. Find the next.,Klik! Jeden osiadł. Szukaj następnego.,Klick! Einer sitzt. Such den nächsten.
 tutorial.s1_overset,Too high. Release tension; try more gently.,Za wysoko. Puść napięcie i spróbuj lżej.,"Zu hoch. Spannung lösen, sanfter versuchen."
-tutorial.s1_overset_auto,"Too high — tap the left side to let go of the tension","Za wysoko — stuknij lewą stronę, żeby puścić napięcie","Zu hoch – tipp links, um die Spannung zu lösen"
+tutorial.s1_overset_auto,Too high — tap the left side to let go of the tension,"Za wysoko — stuknij lewą stronę, żeby puścić napięcie","Zu hoch – tipp links, um die Spannung zu lösen"
 tutorial.s1_open,It's open. Nicely done. Steady hands.,"Otwarte. Dobra robota, spokojna ręka.",Offen. Gut gemacht. Ruhige Hand.
 tutorial.frame_tension,Left thumb: gently up — tension.,Lewy kciuk: lekko w górę — napięcie.,Linker Daumen: sanft hoch – Spannung.
 tutorial.frame_lift,"Right thumb: sideways to select, up to lift.","Prawy: w bok wybór, w górę podnoszenie.","Rechts: seitlich wählen, nach oben heben."
