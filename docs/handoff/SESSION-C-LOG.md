@@ -53,3 +53,17 @@ Format: data i godzina (UTC), zadanie, co zrobione, liczby, linki, blokady.
 - Kontener (lavapipe): A — 37 draw calli, 118 tys. prymitywów, 228 MB VRAM; B — 36 draw calli, 55 tys. prymitywów, 188 MB VRAM, czas GPU ~17× mniejszy niż A (tylko względnie).
 - **Brak FPS z telefonu** (kontener bez GPU) — procedura pomiaru i kryteria TECH §4 w README; wpis do RESULTS po pomiarze. Lightmapa (LightmapGI) nie była potrzebna: plan B zastępuje ją pełnym wypiekiem z Cyclesa.
 - Decyzja: D-31 (proponowana).
+
+## 2026-11-05 01:40 — Podsumowanie nocy (sesja C)
+
+| Zadanie | Stan | Liczby | Artefakty CI | Czeka na |
+|---|---|---|---|---|
+| C1 spike 4 (metal, Godot Mobile) | gotowe w kontenerze | plan B SSIM 0,93 / MAE 3,6; wariant A SSIM 0,80 / MAE 16,7 | `spike-lit-metal-debug-apk` | FPS na tanim Androidzie (README), akceptacja D-31 |
+| C2 spike 3 (audio Oboe) | gotowe | selftest analizy: błąd ≤ 0,76 ms | `spike-audio-debug-apk` | pomiar 3×50 stuknięć na telefonach |
+| C3 spike 5 (determinizm) | **przeszło** | 10 000/10 000 hashy, 4 buildy lokalnie + macOS arm64 w CI | tabela `determinism-table` | test na fizycznym Androidzie/iPhonie (instrukcja `adb` w README) |
+| C4 spike 1–2 (haptyka) | gotowe | selftest analizy: błąd ≤ 0,74 ms | `spike-haptics-android-apks`, `spike-haptics-ios-native-unsigned`, `spike-haptics-ios-godot` | pomiar piezo na urządzeniach; podpis iOS kontem dewelopera |
+| C5 sklep | szkic do akceptacji | wszystkie pola w limitach | — | nazwa EN (31 znaków), zakres 1.0, D-06, dane administratora |
+| C6 przegląd | gotowy | 50 uwag (14 High) | — | właściciele `game/`, `platform/`, CI |
+
+Decyzje tej sesji: D-30 (GDExtension na iOS działa przy `.gdextension` tworzonym tylko w jobie iOS), D-31 (proponowana: ekran zamka na planie B).
+Pytania do właściciela: nazwa EN w sklepie (`store/listing.md` §0), akceptacja D-31, zakup urządzeń/interfejsu audio i piezo do pomiarów spike'ów 1–4 (TECH §6.2), skala świateł w `art/blender/cutaway.py` (D-31).
