@@ -33,7 +33,7 @@ static func is_playable(job: Dictionary) -> bool:
 
 static func fnv1a64(s: String) -> int:
 	# N-06: FNV-1a 64 like lockcore, engine-independent
-	var h := 0xcbf29ce484222325
+	var h := -3750763034362895579  # FNV-1a offset basis 0xcbf29ce484222325 as signed int64
 	for i in s.length():
 		h = (h ^ s.unicode_at(i)) * 0x100000001b3
 	return h & 0x7FFFFFFFFFFFFFFF

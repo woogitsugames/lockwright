@@ -21,7 +21,7 @@ func test_coalescing_30ms_window() -> void:
 	fd.reset()
 	fd.emit_event(_event(&"drop", 0.4))
 	fd.emit_event(_event(&"drop", 0.9))  # within 30 ms -> coalesced, not re-emitted
-	assert_eq(fd._last_transient_by_kind["drop/0/-1"]["intensity"], 0.9)
+	assert_eq(fd._last_transient_by_kind["drop/0/0"]["intensity"], 0.9)
 
 func test_essential_floor() -> void:
 	Settings.set_value("haptics_intensity", 0.0)
