@@ -662,7 +662,7 @@ Macierz `qa/run_matrix.sh` (5 przebiegów kariery na HEAD): solver / „średni�
 - Profile nie wpływają na zamki pin_tumbler, bo scena planu B gra zawsze seed 42 / tier 4 (N-14).
 
 **N-25 · Medium · Ekonomia: gra nie wypłaca napiwków, `econ_sim.py` je liczy** · `game/scripts/lock/job_run.gd` (`complete()`), `tools/econ_sim.py:349`, `docs/JOBS.md:164`
-- W grze wypłata = `reward_coins` co do monety (16/16 zleceń z zapłatą). `econ_sim` dolicza napiwek przy czystym otwarciu (`reward × tip / clean`: careful +25%, average +18%, clumsy +12%), a JOBS.md §… obiecuje „napiwek 0–30% za otwarcie bez śladów”. Różnica −19…−20% na 12 zleceniach (> 10%). Bilans ECONOMY.md (suma 2340 + napiwki) jest więc za optymistyczny względem gry.
+- W grze wypłata = `reward_coins` co do monety (16/16 zleceń z zapłatą). `econ_sim` dolicza napiwek przy czystym otwarciu (`reward × tip / clean`: careful +25%, average +18%, clumsy +12%), a `docs/JOBS.md:164` obiecuje „napiwek 0–30% za otwarcie bez śladów”. Różnica −19…−20% na 12 zleceniach (> 10%). Bilans ECONOMY.md (suma 2340 + napiwki) jest więc za optymistyczny względem gry.
 - **Poprawka (jedna z dwóch):** (a) sesja B: napiwek w `JobRun.complete()` według JOBS.md (brak drop/break/overset → do 30%, licznik fabularny), wyświetlany na `job_payment` przez i18n; albo (b) sesja A: `econ_sim` bez napiwków, dopóki gra ich nie ma. Rekomenduję (a) — to obietnica z biblii treści i bodziec do czystej gry.
 - 4 zlecenia mają `reward_coins = 0` (charleroi_letters, pizzeria_pays_pizza, swiatniki_journeyman_padlock, time_capsule) — w danych i w `econ_sim` tak samo, zgodnie z fabułą (zapłata w naturze); bez uwag.
 
