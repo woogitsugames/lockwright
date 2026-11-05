@@ -23,7 +23,7 @@ bricks = brick_wall('bricks', brick=(0.34, 0.19, 0.13), seed=2, wash_amt=0.95)
 plaster = lime_wall('plaster', (0.66, 0.64, 0.58), seed=8, dirt=0.4, cracks=0.4)
 ceil_m = lime_wall('ceil', (0.62, 0.60, 0.55), seed=9, dirt=0.3, cracks=0.2)
 concrete = terrazzo('concrete', matrix=(0.34, 0.33, 0.31), seed=6)
-vice_paint = paint('vice_paint', (0.10, 0.17, 0.20), rough=0.38, metal_col=(0.42, 0.42, 0.41), chip=0.9, grime=0.8)
+vice_paint = paint('vice_paint', (0.05, 0.10, 0.14), rough=0.38, metal_col=(0.42, 0.42, 0.41), chip=0.9, grime=0.8)
 mach_paint = paint('mach_paint', (0.10, 0.13, 0.11), rough=0.35, metal_col=(0.45, 0.45, 0.44), chip=0.6, grime=0.8)
 lamp_paint = paint('lamp_paint', (0.07, 0.12, 0.09), rough=0.3, metal_col=(0.5, 0.5, 0.48), chip=0.5, grime=0.5)
 steel = metal('steel', (0.58, 0.58, 0.57), 0.28, marks='grind', marks_scale=0.6, wear=0.5, grime=0.7, smudge=0.6, bevel_r=0.4)
@@ -59,7 +59,7 @@ tb = tea.node_tree.nodes['Principled BSDF']; tb.inputs['Base Color'].default_val
 void = dark_mat('void')
 
 def beech(seed, center, width=40):
-    l = jitter((0.44, 0.29, 0.16), 0.12, rng); d = jitter((0.27, 0.15, 0.07), 0.12, rng)
+    l = jitter((0.40, 0.26, 0.14), 0.14, rng); d = jitter((0.24, 0.13, 0.06), 0.14, rng)
     c = list(center); c[2] += rng.uniform(-0.4, 0.4) * width
     return oak('beech%d' % seed, light=l, dark=d, axis='X', seed=seed, ring=rng.uniform(2.0, 3.5), incline=rng.uniform(-0.04, 0.04),
                depth=rng.uniform(80, 200), coat=0.0, rough=0.55, wear=0.9, grime=0.9, pores=0.35, flecks=0.6, center=tuple(c), contrast=0.6)
@@ -214,11 +214,11 @@ for k in (0, 1):
     blank_me[k].hide_render = True
 
 # ---------------------------------------------------------------- shelf + glass showcase (opened locks)
-SH_Z, SX0_, SX1_ = 1330, -660, -60
+SH_Z, SX0_, SX1_ = 1330, -640, -45
 bx('shelf', SX0_, SX1_, -250, 0, SH_Z - 28, SH_Z, beech(80, (-360, -125, SH_Z - 14), 200), bev=2)
 for x in (SX0_ + 60, SX1_ - 60):
     tube('bracket', [(x, -6, SH_Z - 200), (x, -6, SH_Z - 30), (x, -200, SH_Z - 30), (x, -6, SH_Z - 200)], 6, vice_paint, smooth_pts=False)
-CX0, CX1, CY0, CY1, CZ0, CZ1 = -620, -100, -235, -20, SH_Z, SH_Z + 270
+CX0, CX1, CY0, CY1, CZ0, CZ1 = -570, -70, -235, -20, SH_Z, SH_Z + 270
 case_wood = oak('case_wood', light=(0.30, 0.16, 0.07), dark=(0.10, 0.045, 0.02), axis='X', seed=17, ring=3.5, coat=1.0, coat_rough=0.12,
                 varnish_tint=0.2, center=(0, CY0, CZ0 + 20))
 bx('case_base', CX0, CX1, CY0, CY1, CZ0, CZ0 + 45, case_wood, bev=2.5)
@@ -422,19 +422,19 @@ tag_case = tag('tag_case', Matrix.Translation(Vector(((CX0 + CX1) / 2 + 30, CY0 
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (0, -350, BZ)
 world_hdri(0.03, 'interior.exr', sat=0.3)
 bpy.ops.object.light_add(type='SPOT', location=tuple(HEAD + Vector((0, 0, 5)))); sp = bpy.context.object
-sp.data.energy = 4.5e7; sp.data.color = (1.0, 0.70, 0.42); sp.data.spot_size = math.radians(84); sp.data.spot_blend = 0.55
+sp.data.energy = 4.5e7; sp.data.color = (1.0, 0.70, 0.42); sp.data.spot_size = math.radians(90); sp.data.spot_blend = 1.0
 sp.data.shadow_soft_size = 14; sp.rotation_euler = SHADE_ROT
 # window on the left wall: evening, cool; plus a dim warm practical bounce from the room
-area_light('window', (-1750, -900, 1900), AIM, 1200, 1.6e7, (0.70, 0.80, 1.0), size_y=1400)
+area_light('window', (-1750, -900, 1900), AIM, 1200, 1.0e7, (0.70, 0.80, 1.0), size_y=1400)
 area_light('room', (600, -2900, 2600), AIM, 1800, 2.5e6, (1.0, 0.82, 0.62))
 # showcase light: a warm strip under the case lid
 a_case = bpy.data.objects.new('aim_case', None); scene.collection.objects.link(a_case); a_case.location = ((CX0 + CX1) / 2, (CY0 + CY1) / 2 - 30, CZ0)
 area_light('case_light', ((CX0 + CX1) / 2, CY1 - 40, CZ1 - 22), a_case, 420, 2.5e6, (1.0, 0.8, 0.58), size_y=40)
 
 # ---------------------------------------------------------------- camera + render
-cam = photo_camera((-20, -930, 1650), yaw=0.0, lens=18.0, pitch=-39.0)
+cam = photo_camera((-20, -930, 1650), yaw=0.0, lens=18.0, pitch=-39.0, shift=(0.0, 0.045))
 cam.data.sensor_fit = 'VERTICAL'; cam.data.sensor_height = 36.0; cam.data.sensor_width = 36.0
-render_setup(OUT, RES, SAMPLES, crop=tuple(float(v) for v in CROP.split(',')) if CROP else None, look='AgX - Medium High Contrast', bounces=10)
+render_setup(OUT, RES, SAMPLES, crop=tuple(float(v) for v in CROP.split(',')) if CROP else None, exposure=-0.25, look='AgX - Medium High Contrast', bounces=10)
 scene.cycles.adaptive_threshold = 0.01
 photo_finish(0.28)
 write_anchors(os.path.splitext(os.path.abspath(OUT))[0] + '.json', {

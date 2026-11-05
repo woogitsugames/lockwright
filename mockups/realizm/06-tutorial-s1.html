@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Realizm · samouczek S1</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="realizm.css"><link rel="stylesheet" href="06-tutorial.css">
+</head><body>
+<!-- Tutorial S1 "Jeden kołek", step 1.2 Napięcie (docs/ONBOARDING.md §4). First lock screen of the game, so the
+     "to gra, nie kurs" stamp is here (§3.3). Practice cylinder in the vice: one live stack (a), the other four blanked.
+     Full chalk in S1: shear line only at this moment (friction ticks are drawn by the chalk when `bind` happens).
+     The thumbprint in the leather is present from the start in S1 (exception in §4, step 1.2). -->
+<main class="screen">
+  <div class="section" role="img" aria-label="Wkładka ćwiczebna w przekroju: jeden czynny kołek, cztery komory zaślepione"></div>
+  <div class="tray" role="img" aria-label="Zwijka narzędzi"></div>
+
+  <div class="t-stage" aria-hidden="true">
+    <!-- blanking plate shadow over chambers b..e -->
+    <div class="t-blank" style="left:31.2%;top:13.6%;width:46.4%;height:52%"></div>
+    <svg class="t-chalk" viewBox="0 0 824 1100" preserveAspectRatio="none">
+      <defs><filter id="chalk" x="-5%" y="-50%" width="110%" height="200%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/>
+        <feDisplacementMap in="SourceGraphic" scale="3.2"/></filter></defs>
+      <!-- shear line, drawn as a chalk stroke along the plug edge (no specular, ±1 dp clean, DESIGN.md §2) -->
+      <path class="c shear" d="M28 640 L 252 640"/>
+    </svg>
+  </div>
+
+  <button class="pause" aria-label="Pauza"><svg viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></svg></button>
+
+  <!-- the master's card tucked under the strap of the roll. PL shown; EN in comments. -->
+  <div class="t-card" style="right:12px;top:calc(133.5vw + 34px)" role="note" aria-label="Kartka od mistrza">
+    <svg class="t-sketch" viewBox="0 0 168 58" aria-hidden="true">
+      <!-- pencil sketch: tension wrench in the keyway, a thumb on the left pushing up, one pin -->
+      <rect x="104" y="6" width="14" height="22" rx="2"/><line x1="96" y1="30" x2="160" y2="30"/>
+      <path d="M100 44 H150 M100 44 v-8"/>
+      <ellipse class="fill" cx="30" cy="40" rx="13" ry="16"/>
+      <path d="M30 20 v-14 M24 12 l6 -7 6 7"/>
+      <path d="M52 34 q20 -10 40 4" stroke-dasharray="3 4"/>
+    </svg>
+    <span class="t-hand">Lewy kciuk: <em>dociśnij</em><br>i trzymaj. Lekko.</span>
+    <!-- EN: "Left thumb: press and hold. Gently." -->
+    <span class="t-sign">— M.</span>
+    <div class="t-stamp" style="position:relative;margin:8px 0 2px 2px;display:inline-block">
+      <b>TO GRA, NIE KURS.</b><span>Mechanizmy są wymyślone.</span>
+      <!-- EN: "A GAME, NOT A COURSE." / "The mechanisms are invented."
+           Longer line (ONBOARDING §3.3) lives in Settings → About: "Ślusarz zawsze sprawdza, czy pomaga właścicielowi." /
+           "A locksmith always checks they're helping the rightful owner." -->
+    </div>
+  </div>
+  <div class="t-strap" style="right:0;width:120px;top:calc(133.5vw + 22px);transform:rotate(-2deg)"></div>
+
+  <!-- thumbprint dent, left half of the roll: where the tension thumb goes -->
+  <div class="t-print l" style="left:24%;top:82%" aria-hidden="true"></div>
+  <!-- invisible thumb zones (aria only): bottom 45% halves -->
+  <button class="t-zone l" aria-label="Napięcie: połóż lewy kciuk i przesuń w górę"></button>
+  <button class="t-zone r" aria-label="Wytrych" style="visibility:hidden"></button>
+</main>
+</body></html>

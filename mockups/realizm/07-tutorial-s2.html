@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Realizm · samouczek S2</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="realizm.css"><link rel="stylesheet" href="06-tutorial.css">
+</head><body>
+<!-- Tutorial S2 "Trzy po kolei", step 2.2 Szukanie, hint H2 after 30 s without progress (docs/ONBOARDING.md §2, §4).
+     Player holds tension with the left thumb (live dent + faint reference mark where it landed), but keeps lifting loose pins.
+     H2: the master's thumb, a lamp shadow, shows the gesture twice: slide along the keyway under the binding pin, then lift.
+     Chalk in S2: shear line only (friction ticks would be H3). Three live stacks (a, b, c); d and e blanked.
+     The master's card was swapped in the strap between S1 and S2 (the hand that changes the cylinder also changes the card). -->
+<main class="screen">
+  <div class="section" role="img" aria-label="Wkładka ćwiczebna: trzy czynne kołki, dwie komory zaślepione"></div>
+  <div class="tray" role="img" aria-label="Zwijka narzędzi"></div>
+
+  <div class="t-stage" aria-hidden="true">
+    <div class="t-blank" style="left:55.4%;top:13.6%;width:22.2%;height:52%"></div>
+    <svg class="t-chalk" viewBox="0 0 824 1100" preserveAspectRatio="none">
+      <defs><filter id="chalk" x="-5%" y="-50%" width="110%" height="200%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="11"/>
+        <feDisplacementMap in="SourceGraphic" scale="3.2"/></filter></defs>
+      <path class="c shear" d="M28 640 L 252 640 M 262 636 L 452 632"/>
+    </svg>
+  </div>
+
+  <button class="pause" aria-label="Pauza"><svg viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></svg></button>
+
+  <div class="t-card" style="left:12px;top:calc(133.5vw + 30px);transform:rotate(2.5deg)" role="note" aria-label="Kartka od mistrza">
+    <svg class="t-sketch" viewBox="0 0 168 58" aria-hidden="true">
+      <!-- pencil sketch: three pins, two loose and upright, one leaning against the wall with three friction ticks -->
+      <line x1="8" y1="40" x2="160" y2="40"/>
+      <rect x="22" y="14" width="16" height="26" rx="3"/>
+      <rect x="128" y="14" width="16" height="26" rx="3"/>
+      <rect class="fill" x="76" y="12" width="16" height="28" rx="3" transform="rotate(-6 84 40)"/>
+      <path d="M96 34 l6 -5 M96 40 l6 -5 M96 46 l6 -5"/>
+      <path d="M84 56 v-8 M80 51 l4 -4 4 4"/>
+    </svg>
+    <span class="t-hand">Wiąże tylko <em>jeden</em>.<br>Szukaj tego, co stawia opór.</span>
+    <!-- EN: "Only one binds. Find the one that pushes back." -->
+    <span class="t-sign">— M.</span>
+  </div>
+  <div class="t-strap" style="left:0;width:110px;top:calc(133.5vw + 18px);transform:rotate(1.5deg)"></div>
+
+  <!-- player's left thumb, holding tension: live dent above the reference mark where it landed -->
+  <div class="t-ref" style="left:22%;top:91%" aria-hidden="true"></div>
+  <div class="t-print l live" style="left:22%;top:85%" aria-hidden="true"></div>
+
+  <!-- H2 ghost thumb on the right: start (fainter) and end of the gesture -->
+  <div class="t-ghost from" style="left:80%;top:91%" aria-hidden="true"></div>
+  <div class="t-ghost to" style="left:63%;top:80%" aria-hidden="true"></div>
+
+  <button class="t-zone l" aria-label="Napięcie"></button>
+  <button class="t-zone r" aria-label="Wytrych: przesuń w bok pod kołek, który stawia opór, i unieś"></button>
+</main>
+</body></html>

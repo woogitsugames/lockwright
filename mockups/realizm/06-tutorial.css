@@ -1,0 +1,77 @@
+/* Tutorial S1-S3 for the Realizm direction (docs/ONBOARDING.md §1-4). Own file: realizm.css is shared and read-only here.
+   Teaching without panels: chalk on metal, a thumbprint pressed into the leather, the master's card tucked in the roll,
+   the ghost thumb as a lamp shadow. No boxes, no arrows-on-glass, no checkmarks, no glow. */
+
+/* stage: same geometry as .section, so overlays can be placed in % of the photograph */
+.t-stage{position:absolute;top:0;left:0;width:100%;aspect-ratio:824/1100;pointer-events:none}
+
+/* practice cylinder: chambers not used in this step are blanked. Shown as the shadow of a blanking plate laid
+   over the cut-away, soft-edged, so the eye goes to the live stack. Readable in grayscale as "not here". */
+.t-blank{position:absolute;background:rgba(10,9,8,.66);border-radius:3px;
+  box-shadow:0 0 14px 8px rgba(10,9,8,.55)}
+
+/* chalk: one stroke vocabulary (DESIGN.md §1): shear line, friction ticks, wedge, clamp. Rough edge via SVG filter. */
+.t-chalk{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.t-chalk .c{fill:none;stroke:rgba(244,240,230,.92);stroke-linecap:round;stroke-linejoin:round;filter:url(#chalk)}
+.t-chalk .shear{stroke-width:2.6}
+.t-chalk .tick{stroke-width:2.4}
+
+/* thumbprint: a soft dent pressed into the leather (HUD.md §5.2) = "put your thumb here".
+   Inner shadow only, no outline, no colour, no pulse ring. Diameter 56 dp; the hit zone is the whole half of the roll. */
+.t-print{position:absolute;width:56px;height:56px;margin:-28px;border-radius:50%;
+  background:radial-gradient(circle at 50% 46%,rgba(0,0,0,.34),rgba(0,0,0,.16) 55%,rgba(0,0,0,0) 72%);
+  box-shadow:inset 0 3px 7px rgba(0,0,0,.5),0 -1px 1px rgba(255,235,210,.10)}
+/* whorl of the print, barely there: it is a thumb, not a button */
+.t-print::after{content:"";position:absolute;inset:12px 14px;border-radius:50%;
+  background:repeating-radial-gradient(ellipse at 50% 60%,rgba(0,0,0,0) 0 2px,rgba(0,0,0,.16) 2px 3px);opacity:.8}
+/* pressed-down live thumb (player is holding): deeper dent */
+.t-print.live{background:radial-gradient(circle at 50% 46%,rgba(0,0,0,.46),rgba(0,0,0,.22) 55%,rgba(0,0,0,0) 72%)}
+/* faint reference mark where the thumb first landed (zero of the relative tension, HUD.md §5.1) */
+.t-ref{position:absolute;width:40px;height:40px;margin:-20px;border-radius:50%;box-shadow:inset 0 2px 5px rgba(0,0,0,.35)}
+
+/* ghost thumb (H2): the master's thumb as a shadow cast by the bench lamp, 35% opacity, 12 dp blur. Two exposures
+   = where it starts and where it goes; the scene answers the ghost, then returns to the player's state. */
+.t-ghost{position:absolute;width:62px;height:84px;margin:-42px -31px;border-radius:48% 48% 44% 44%/58% 58% 40% 40%;
+  background:rgba(0,0,0,.42);filter:blur(12px);transform:rotate(-14deg)}
+.t-ghost.from{opacity:.45}
+
+/* the master's card, tucked under a leather strap of the roll. Paper, pencil, a stamp. Whole card = one touch target
+   (tap: card lifts toward the camera so it can be read at 200% text size). */
+.t-card{position:absolute;width:196px;padding:12px 14px 14px;border:0;text-align:left;color:#2b2620;
+  background:#e2d8c3;transform:rotate(-3.5deg);transform-origin:50% 100%;
+  box-shadow:0 2px 3px rgba(0,0,0,.45),0 8px 18px rgba(0,0,0,.35);pointer-events:auto}
+/* paper tooth: faint ruled lines like a job-pad sheet, not a stock texture */
+.t-card{background-image:repeating-linear-gradient(transparent 0 23px,rgba(70,90,120,.16) 23px 24px)}
+.t-hand{display:block;font:400 18px/24px "Bona Nova",serif;font-style:italic;color:#2b2620}
+.t-hand em{font-style:normal;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
+.t-sign{display:block;text-align:right;font:400 16px/22px "Bona Nova",serif;font-style:italic;color:#4a4136}
+.t-sketch{display:block;width:100%;height:58px;margin:2px 0 4px}
+.t-sketch *{fill:none;stroke:#3b342b;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.t-sketch .fill{fill:rgba(59,52,43,.18)}
+/* strap of the roll holding the card: same leather, darker, two stitch rows */
+.t-strap{position:absolute;height:30px;background:#3a2516;
+  background-image:linear-gradient(rgba(255,255,255,.05),rgba(0,0,0,.25));
+  box-shadow:0 2px 4px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,220,180,.08);pointer-events:none}
+.t-strap::before,.t-strap::after{content:"";position:absolute;left:6px;right:6px;height:0;border-top:1.5px dashed rgba(196,160,120,.45)}
+.t-strap::before{top:5px}.t-strap::after{bottom:5px}
+
+/* locksmith's stamp: "a game, not a course" (CLAUDE.md, ONBOARDING.md §3.3). Ink, double border, slightly uneven. */
+.t-stamp{position:absolute;padding:6px 10px 7px;border:2.5px solid rgba(38,52,86,.82);outline:1px solid rgba(38,52,86,.6);outline-offset:2px;
+  color:rgba(38,52,86,.9);transform:rotate(-6deg);text-align:center;background:none;mix-blend-mode:multiply}
+.t-stamp b{display:block;font:800 16px/1.15 "Atkinson Hyperlegible Next",sans-serif;letter-spacing:.04em}
+.t-stamp span{display:block;font:500 13px/1.25 "Atkinson Hyperlegible Next",sans-serif;margin-top:2px}
+
+/* invisible thumb zones (HUD.md §5.1), drawn only as aria targets; they are the bottom 45% halves */
+.t-zone{position:absolute;bottom:0;height:45%;width:50%;pointer-events:auto;background:none;border:0}
+.t-zone.l{left:0}.t-zone.r{right:0}
+
+@media (orientation:landscape){
+  .t-stage{left:50%;width:auto;height:100%;transform:translateX(-50%)}
+  .t-zone{height:100%;width:30%}
+  .t-print.l{left:13vw!important;top:62%!important}
+  .t-print.r,.t-ghost{left:87vw!important}
+  .t-ghost.to{top:38%!important}.t-ghost.from{top:70%!important}
+  .t-card{left:auto!important;right:calc(2vw + env(safe-area-inset-right))!important;top:6%!important;width:180px}
+  .t-strap{display:none}
+  .t-print.live{left:12vw!important;top:52%!important}.t-ref{left:12vw!important;top:66%!important}
+}

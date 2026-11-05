@@ -475,7 +475,7 @@ def clipboard(name, M, slip_mat, pad_mat, board_mat, clip_mat, W=176, H=250, she
         return M @ Vector((-sheet[0] / 2 + u, H / 2 - 12 - 6 - v, zt))
     return objs, corner
 
-def tag(name, M, mat, eyelet_mat, string_to=None, string_mat=None, w=82, h=40):
+def tag(name, M, mat, eyelet_mat, string_to=None, string_mat=None, w=120, h=60):
     """Manila shipping tag (clipped corners at the eyelet end). M = world matrix (tag in local XY, eyelet at -X).
     string_to: world point the string runs to. Returns corners [tl, tr, br, bl] of the writing field."""
     c = 9

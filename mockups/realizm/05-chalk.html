@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Realizm · kreda</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="realizm.css"><link rel="stylesheet" href="05-chalk.css">
+</head><body>
+<!-- Lock screen with the optional chalk reading aid (on by default in tutorial S1-S3 and via "Pomoc w czytaniu").
+     Pins left to right: 1 set, 2 false set, 3 binding, 4 overset, 5 near shear; the pick is close to breaking.
+     Symbols follow DESIGN.md §1 and are the same in every lock family. -->
+<main class="screen">
+  <div class="section" role="img" aria-label="Przekrój wkładki w drzwiach, z kredowymi znakami stanów">
+    <svg class="chalk" viewBox="0 0 824 1100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <!-- hand-drawn edge: low-frequency wobble of the line -->
+        <filter id="wobble" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <!-- chalk: wobble + dry grain that lets the surface show through -->
+        <filter id="chalk" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G" result="w"/>
+          <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" seed="9" result="g"/>
+          <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.5 1.55" result="ga"/>
+          <feComposite in="w" in2="ga" operator="in"/>
+        </filter>
+      </defs>
+      <g class="ink" filter="url(#chalk)">
+        <!-- 1 SET: solid outline of the driver sitting above the shear line + flat foot (ledge) -->
+        <path d="M158 622 L156 519 Q196 513 235 517 L236 621"/>
+        <path d="M144 628 L248 623"/>
+        <path class="thin" d="M146 628 L147 641 M246 623 L246 636"/>
+        <!-- 2 FALSE SET: dashed outline with a waist (hourglass) caught on the shear line -->
+        <path class="dash" d="M255 515 L342 512 L343 599 L313 618 L344 637 L345 762 L254 764 L255 637 L285 618 L255 600 Z"/>
+        <!-- 3 BINDING: three short diagonal friction strokes on the shear line, pressing side -->
+        <path d="M436 594 L454 574 M436 614 L454 594 M436 634 L454 614"/>
+        <!-- 4 OVERSET: clamp (two horizontal bars) above the chamber -->
+        <path d="M450 112 L534 110 M450 136 L534 134"/>
+        <!-- 5 NEAR SHEAR: wedge, two triangles closing on the shear line -->
+        <path class="fill" d="M640 562 L694 560 L667 586 Z"/>
+        <path class="fill" d="M640 630 L694 628 L667 605 Z"/>
+        <!-- NEAR BREAK: transverse cracks across the pick's bend (three = last warning) + tremor -->
+        <path class="thin" d="M370 764 L414 770 M364 783 L404 813 M350 815 L378 844"/>
+        <path class="thin" d="M424 752 q6 -6 12 0 t12 0"/>
+      </g>
+    </svg>
+  </div>
+  <div class="tray" role="img" aria-label="Zwijka: dwa zapasowe wytrychy, puste miejsce, lupa, kreda"></div>
+  <button class="chalk-stick" aria-pressed="true" aria-label="Pomoc w czytaniu (kreda)"><span></span></button>
+  <button class="pause" aria-label="Pauza"><svg viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></svg></button>
+  <div class="touch" style="left:22%;top:86%"></div>
+  <div class="touch" style="left:70%;top:84%"></div>
+</main>
+<script>
+  // under-stroke: a dark, slightly wider copy of every mark beneath the chalk
+  const ink = document.querySelector('.chalk .ink');
+  const under = ink.cloneNode(true);
+  under.setAttribute('class', 'under'); under.setAttribute('filter', 'url(#wobble)');
+  ink.before(under);
+</script>
+</body></html>
