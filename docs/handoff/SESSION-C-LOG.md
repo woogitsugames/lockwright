@@ -38,3 +38,17 @@ Format: data i godzina (UTC), zadanie, co zrobione, liczby, linki, blokady.
 ## 2026-11-05 00:15 — C6: przegląd techniczny i ryzyka (`docs/handoff/SESSION-C-REVIEW.md`)
 - 50 uwag (14 High, 24 Medium, 12 Low), tylko raport, bez zmian w cudzym kodzie. Najważniejsze: eksport gry nie zawiera tłumaczeń CSV (R-28, zweryfikowane na `.pck`), binding `lockcore_gd` bez osi `rotate`/`push`/`tool` (R-01), puszczenie kciuka nie zwalnia wytrycha (R-02), brak FeedbackDirectora i ClickAudioBridge w grze (R-20/21), mostki haptyki nie trafiają do buildów (R-41/42), `game-android.yml` z nieistniejącymi flagami `--keystore` i bez ścieżki SDK w ustawieniach edytora (R-38…40 — działające kroki są w workflowach spike'ów).
 - Dopisane do ASSETS: HDRI `interior.hdr` (licencja do weryfikacji) i wypieki/rendery spike'u 4.
+
+## 2026-11-05 01:00 — C1: spike 4, fotorealistyczny metal w Godot 4.7 Mobile (`spikes/lit-metal/`)
+- Narzędzia: Blender 4.2.9 LTS, Godot 4.7.2 + szablony, Xvfb + Mesa lavapipe (Vulkan na CPU).
+- Eksport glTF (`cutaway.glb`, opcja `--glb` skryptu `art/`) i **wypiek** (`tools/bake.py`, `art/` bez zmian): atlasy UV na materiał, albedo/roughness/normal/AO → `*_albedo.png`, `*_normal.png`, `*_orm.png`; 2K mosiądz/nikiel/drewno, 1K stal/kołki/sprężyny/wytrych/żelazo; 15 min na 4 rdzeniach.
+- Projekt Godot (renderer Mobile): wariant A (PBR w czasie rzeczywistym) i plan B (płyta Cycles rzutowana przez kamerę + matcap), przełączanie dotknięciem prawego górnego rogu; animacja kołków 1 Hz i wytrycha; nakładka FPS / czas GPU / draw calle; log `LW_PERF` co 10 s.
+- **Zgodność z Cyclesem** (`tools/compare.py`, lewa połowa Cycles / prawa Godot):
+  - 1236×1650: A — MAE 16,7, PSNR 21,0 dB, SSIM 0,80; **B — MAE 3,65, PSNR 25,7 dB, SSIM 0,93**;
+  - 2160×2880: A — MAE 16,8, PSNR 20,9 dB, SSIM 0,79; **B — MAE 3,61, PSNR 25,6 dB, SSIM 0,93**.
+  - Zrzuty: `spikes/lit-metal/screens/compare.png`, `compare_*`, `godot_{a,b}_*`, `cycles_*`. Tabela iteracji: `spikes/lit-metal/RESULTS.md`.
+- Kluczowe ustalenia: (1) wygląd Cyclesa daje HDRI, a nie lampy (jednostki mm vs m) — zgłoszone dla sesji art w D-31; (2) obrót nieba Blender→Godot = +90° (zmierzony; zły znak: MAE 66–78); (3) ReflectionProbe bez okluzji pogarsza wynik — odbicia z nieba + AO w albedo metali; (4) import tekstur musi mieć VRAM + mipmapy (domyślnie Godot dał nieskompresowane 2K bez mipmap).
+- Co odstaje w A: brak cieni od jasnego punktu HDRI (sprężyny i dno komór jaśniejsze), brak odbić wielokrotnych na fazkach, ciemniejszy wytrych.
+- CI `spike-lit-metal.yml`: run [41938834569](https://github.com/woogitsugames/lockwright/actions/runs/41938834569) zielony — artefakt **`spike-lit-metal-debug-apk`** (arm64) i zrzuty smoke z lavapipe.
+- **Brak FPS z telefonu** (kontener bez GPU) — procedura pomiaru i kryteria TECH §4 w README; wpis do RESULTS po pomiarze. Lightmapa (LightmapGI) nie była potrzebna: plan B zastępuje ją pełnym wypiekiem z Cyclesa.
+- Decyzja: D-31 (proponowana).
