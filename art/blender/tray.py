@@ -100,6 +100,10 @@ _rb = RUB.node_tree.nodes['Principled BSDF']; _rb.inputs['Base Color'].default_v
 _rb.inputs['Roughness'].default_value = 0.42; _rb.inputs['Coat Weight'].default_value = 0.0
 
 # ---------------------------------------------------------------- geometry
+def undulation(x, z, seed):
+    random.seed(seed); ph = [random.uniform(0, 6.28) for _ in range(3)]
+    return 0.25 * math.sin(x * 0.11 + ph[0]) * math.sin(z * 0.07 + ph[1]) + 0.15 * math.sin(x * 0.23 + z * 0.19 + ph[2])
+
 def leather_slab(name, x0, x1, z0, z1, y_face, thick, mat, puff=0.0, cuts=40, seed=0, bev=0.9):
     """Subdivided slab with gentle undulation (leather is never flat) and rounded cut edges."""
     o = box(name, x0, x1, y_face, y_face + thick, z0, z1)
@@ -108,12 +112,11 @@ def leather_slab(name, x0, x1, z0, z1, y_face, thick, mat, puff=0.0, cuts=40, se
     bpy.ops.object.mode_set(mode='EDIT'); bpy.ops.mesh.select_all(action='SELECT')
     bpy.ops.mesh.subdivide(number_cuts=cuts); bpy.ops.object.mode_set(mode='OBJECT')
     o.modifiers.clear()
-    random.seed(seed); ph = [random.uniform(0, 6.28) for _ in range(6)]
     cx, cz = (x0 + x1) / 2, (z0 + z1) / 2; hx, hz = (x1 - x0) / 2, (z1 - z0) / 2
     for v in o.data.vertices:
         if v.co.y < y_face + thick * 0.5:  # front face only
             u = (v.co.x - cx) / hx; w = (v.co.z - cz) / hz
-            d = 0.25 * math.sin(v.co.x * 0.11 + ph[0]) * math.sin(v.co.z * 0.07 + ph[1]) + 0.15 * math.sin(v.co.x * 0.23 + v.co.z * 0.19 + ph[2])
+            d = undulation(v.co.x, v.co.z, seed)
             if puff: d += puff * max(0.0, 1 - u * u) * max(0.0, 1 - max(0.0, w) ** 6)  # pocket bulges over the tool
             v.co.y -= d
     put(o, mat, bev, 4, harden=False)
@@ -137,7 +140,7 @@ def stitches_h(zs, x0, x1, pitch, y, ang=28.0):
         bpy.ops.object.transform_apply(scale=True, rotation=True); smooth(s); link(s, TH)
 
 # roll body (big enough to fill any frame), with an edge-stitched fold line near the top
-leather_slab('roll', -110, 110, -130, 130, -2.0, 3.0, LE, cuts=60, seed=1)
+roll = leather_slab('roll', -110, 110, -130, 130, -2.0, 3.0, LE, cuts=60, seed=1)
 fold = leather_slab('fold', -110, 110, 47, 130, -3.6, 1.7, LE, cuts=40, seed=2, bev=0.6)
 stitches_h(50.0, -100, 100, 3.6, -3.62)
 
@@ -148,8 +151,14 @@ for i, x in enumerate(POCKET_X):
         stitches(sx, -128, -6.5, 3.6, -4.15 - 0.4, ang=28 if sx < x else -28)
     if i >= 3 - LOST:  # lost pick: compressed, darker, glossier imprint of its outline left in the leather
         pts = [(x, -10), (x, 18), (x + 0.2, 22), (x + 1.4, 25), (x + 3.0, 26.2)]
-        im = flat_tool('imprint%d' % i, pts, 1.8, 0.10, -2.0, mat='brass')
+        floor = -2.0 - undulation(x, 8, 1) + 0.3   # groove ~0.3 mm deep, following the leather
+        im = flat_tool('imprint%d' % i, pts, 1.9, 8.0, floor - 4.0, mat='brass')
         im.data.materials.clear(); im.data.materials.append(LE3)
+        bpy.context.view_layer.objects.active = im; bpy.ops.object.modifier_apply(modifier='bev')
+        md = roll.modifiers.new('imp', 'BOOLEAN'); md.operation = 'DIFFERENCE'; md.object = im; md.solver = 'EXACT'
+        md.material_mode = 'TRANSFER'
+        bpy.context.view_layer.objects.active = roll; roll.modifiers.move(len(roll.modifiers) - 1, 0)
+        bpy.ops.object.modifier_apply(modifier='imp'); bpy.data.objects.remove(im, do_unlink=True)
         continue
     if i == 0:   # hook: short upturned tip
         pts = [(x, -60), (x, 16), (x + 0.3, 21), (x + 1.5, 24.5), (x + 3.4, 26)]
