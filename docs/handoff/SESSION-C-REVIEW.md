@@ -918,3 +918,5 @@ Raport GEM3 (`docs/handoff/device-tests/REPORT.md`): BUG-01 (`boot.gd`, `first_r
 Pozostałe błędy silnika (nieblokujące): `add_child()` w trakcie `_ready` rodzica (użyć `call_deferred`), brak `res://assets/ui/gpt/notebook/N-five-rules-en.jpg` (literówka w ścieżce: zamiast `N` powinien być numer strony).
 
 **Zmiany w automacie (moje, `qa/`):** martwy przycisk (ten sam przycisk 40× bez zmiany ekranu) kończy przebieg jako `dead_button` z nazwą przycisku zamiast mało mówiącego „decision limit”; raport grupuje błędy skryptów (licznik + miejsce `at:`), błędy parsowania idą na górę, więc jeden powtarzany błąd nie zasłania skryptu, który się nie kompiluje.
+
+**N-47 · Low · Przyjazd: numer na tabliczce UI ≠ numer na drzwiach w tle** · `job_arrival.gd` (`_add_background`) — „Rosół na gazie” (`job.grandma_broth`): tabliczka G01 „7”, a tło G07 pokazuje drzwi z numerem 12 (zrzut `capture_game.sh`, `arrival_pl.png`). Dobrać tło do numeru mieszkania z danych zlecenia albo wybrać tło bez czytelnego numeru.
