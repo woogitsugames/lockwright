@@ -1,9 +1,10 @@
 class_name PauseFlap
 extends Control
 ## Pause = a leather tongue of the tool roll hanging from the top edge of the screen (HUD.md §6,
-## N-56): cut-out shape with a rounded end (alpha from the polygon, not a square photo), stitching
-## along the edge, a brass snap at the end and a soft shadow on the plate. A press lifts it 4 dp
-## with the snap's click (sound + haptics) in 150 ms, then asks for the pause.
+## N-56): a cut-out photo (G21 leather tab, alpha-keyed, rounded end with the brass snap at the
+## bottom) with a soft shadow on the plate. A press lifts it 4 dp with the snap's click
+## (sound + haptics) in 150 ms, then asks for the pause. Without the photo it falls back to a
+## drawn polygon tongue with stitching and the snap texture.
 
 signal pressed
 
@@ -11,16 +12,24 @@ const WIDTH := 56.0
 const TONGUE := 60.0      # visible length below the safe-area top
 const LIFT := 4.0
 const ANIM_S := 0.15
+const TAB_TEX := "res://assets/photo/objects/pause_tab_1k.png"
 
 var safe_top := 0.0       # status bar / notch height in local coordinates
 var _leather: Texture2D
 var _snap: Texture2D
+var _tab: Texture2D
 var _lift := 0.0
 var _busy := false
 
 
 func _init() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
+	if ResourceLoader.exists(TAB_TEX):
+		_tab = load(TAB_TEX)
+
+
+func has_photo() -> bool:
+	return _tab != null
 
 
 func setup(leather: Texture2D, snap: Texture2D) -> void:
@@ -52,6 +61,13 @@ func _draw() -> void:
 		for p in outline(-1.0 + j, _lift):
 			sh.append(p + Vector2(1.5, 3.0 + (2 - j)))
 		draw_colored_polygon(sh, Color(0, 0, 0, 0.16))
+	if _tab != null:
+		# photo tab: full width, rounded end at the bottom; the straight end runs off the top edge
+		var ts := Vector2(_tab.get_size())
+		var h := size.x * ts.y / ts.x
+		var bottom := size.y - 6.0 - _lift
+		draw_texture_rect(_tab, Rect2(Vector2(0.0, bottom - h), Vector2(size.x, h)), false)
+		return
 	if _leather != null:
 		var uvs := PackedVector2Array()
 		for p in body:

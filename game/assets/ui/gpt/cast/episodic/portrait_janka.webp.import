@@ -2,6 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
+uid="uid://c6oiqnwffwdmv"
+path="res://.godot/imported/portrait_janka.webp-47681401c33eb26d6d320aee22ae8f8b.ctex"
 metadata={
 "vram_texture": false
 }
@@ -9,6 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/ui/gpt/cast/episodic/portrait_janka.webp"
+dest_files=["res://.godot/imported/portrait_janka.webp-47681401c33eb26d6d320aee22ae8f8b.ctex"]
 
 [params]
 

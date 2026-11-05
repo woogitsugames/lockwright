@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zeszyt mistrza</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+/* Direction 2 — "Zeszyt mistrza": a squared school notebook kept by the locksmith.
+   Rule: TYPED text (Courier Prime) = what the game offers; PENCIL (Kalam + drawn strokes) = state and the master's notes.
+   Graphite = choices made, red pencil = new / needs attention. Bright clean paper; no stains, no ageing. */
+:root{--paper:#fbfbf7;--grid:#dfe7ed;--margin:#d98a86;--type:#1c1c1e;--type-2:#46464b;--pencil:#3c3e44;--red:#b0312a;--sq:16px}
+body{background:var(--paper);color:var(--type);font-family:"Courier Prime"}
+.page{position:absolute;inset:0;overflow:hidden;background-color:var(--paper);
+  background-image:linear-gradient(to right,var(--grid) 1px,transparent 1px),linear-gradient(to bottom,var(--grid) 1px,transparent 1px);
+  background-size:var(--sq) var(--sq);background-position:-1px -1px}
+.page::before{content:"";position:absolute;top:0;bottom:0;right:84px;width:1.5px;background:var(--margin)} /* margin line */
+.page::after{content:"";position:absolute;top:0;bottom:0;left:0;width:14px;background:linear-gradient(to right,rgba(40,50,60,.10),transparent)} /* spine */
+.col{position:absolute;left:32px;right:96px;top:48px;bottom:32px}
+.mar{position:absolute;right:0;width:84px;top:48px;bottom:32px}
+.t{display:inline-block;white-space:pre}
+.t i{font-style:normal;display:inline-block}
+.h{font-family:"Kalam";font-weight:400;color:var(--pencil)}
+.red{color:var(--red)}
+svg.ink{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5;overflow:visible}
+.line{height:calc(var(--sq)*3);display:flex;align-items:center;font-size:18px}
+.line.two{height:calc(var(--sq)*4);flex-direction:column;align-items:flex-start;justify-content:center}
+a{color:inherit;text-decoration:none}
+.small{font-size:13px;color:var(--type-2)}
+.head{display:flex;justify-content:space-between;align-items:center;height:calc(var(--sq)*2);font-size:12px;color:var(--type-2);letter-spacing:.06em}
+.title{font-size:46px;font-weight:700;letter-spacing:-.02em;height:calc(var(--sq)*4);display:flex;align-items:flex-end;padding-bottom:6px}
+.sub{font-size:19px;height:calc(var(--sq)*2);display:flex;align-items:center}
+.menu{position:absolute;left:0;right:0;bottom:calc(var(--sq)*2)}
+.menu .line{font-size:21px}
+.menu .no{width:34px;color:var(--type-2)}
+.menu .primary{font-size:27px;font-weight:700;height:calc(var(--sq)*5)}
+.note{position:absolute;font-family:"Kalam";font-weight:400;font-size:17px;line-height:1.05;color:var(--pencil)}
+.back{height:48px;display:inline-flex;align-items:center;font-size:17px;padding-right:12px}
+h2{font-size:28px;font-weight:700;height:calc(var(--sq)*3);display:flex;align-items:center;margin-top:var(--sq)}
+.jobs{margin-top:var(--sq)}
+.job{height:calc(var(--sq)*4);display:flex;flex-direction:column;justify-content:center;position:relative}
+.job .tt{font-size:18px;font-weight:700}
+.job .tt .n{font-weight:400;color:var(--type-2);font-size:14px;margin-right:8px}
+.job .dd{font-size:13px;color:var(--type-2);margin-left:43px;margin-top:3px}
+.job.done .tt,.job.done .dd{color:#55555a}
+.sec{font-size:13px;letter-spacing:.18em;height:calc(var(--sq)*2);display:flex;align-items:flex-end;margin-top:var(--sq);color:var(--type-2)}
+.set{height:calc(var(--sq)*3);display:flex;align-items:center;justify-content:space-between;font-size:16px}
+.nomargin::before{display:none}
+.sketch{position:absolute;left:0;width:260px;height:150px}
+.opts{display:flex;gap:2px}
+.opts span{min-width:56px;height:48px;display:flex;align-items:center;justify-content:center}
+.scale{position:relative;width:190px;height:48px;display:flex;align-items:center}
+.scale .tk{font-size:13px;color:var(--type-2);white-space:pre}
+.btn{height:48px;display:inline-flex;align-items:center;padding:0 12px;font-size:17px;font-weight:700}
+.expl{font-size:13px;line-height:16px;color:var(--type-2);padding:0 0 0 0;margin-top:-4px}
+@media (orientation:landscape){
+  .page::before{left:50%;right:auto;width:1px;background:rgba(40,50,60,.25);box-shadow:0 0 18px 6px rgba(40,50,60,.08)}
+  .col{left:40px;right:52%;top:28px;bottom:20px}
+  .col2{position:absolute;left:54%;right:40px;top:28px;bottom:20px}
+  .title{font-size:44px}
+  .menu{bottom:0}
+  .menu .line{height:calc(var(--sq)*2.5)}
+  .menu .primary{height:calc(var(--sq)*4)}
+}
+</style></head><body>
+<div class="page" id="page"></div>
+<svg class="ink" id="ink" xmlns="http://www.w3.org/2000/svg">
+  <defs><filter id="graphite" x="-5%" y="-20%" width="110%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="2" seed="3" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" result="d"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.4 1.25" result="m"/>
+    <feComposite in="d" in2="m" operator="in"/></filter></defs>
+</svg>
+<script src="../data.js"></script>
+<script>
+const R = LW.rng(23);
+// Typewriter: uneven ink per character and a slightly jumpy baseline.
+function T(str) { let o = ''; for (const ch of str) { if (ch === ' ') { o += ' '; continue; }
+  o += `<i style="opacity:${(.8 + R() * .2).toFixed(2)};transform:translateY(${((R() - .5) * .7).toFixed(2)}px)">${ch}</i>`; } return `<span class="t">${o}</span>`; }
+const page = document.getElementById('page'), ink = document.getElementById('ink');
+const land = matchMedia('(orientation:landscape)').matches;
+// ---- pencil strokes ----
+const strokes = [];
+function path(pts) { return 'M' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L'); }
+function wob(a, b, amp = .9, n = 14) { const pts = []; for (let k = 0; k <= n; k++) { const t = k / n;
+  pts.push([a[0] + (b[0] - a[0]) * t + (R() - .5) * amp, a[1] + (b[1] - a[1]) * t + (R() - .5) * amp + Math.sin(t * 3.1) * amp * .6]); } return pts; }
+function ring(cx, cy, rx, ry, turns = 1.12, start = -2.4) { const pts = [], n = 70; for (let k = 0; k <= n; k++) { const t = start + k / n * Math.PI * 2 * turns, w = 1 + (R() - .5) * .03 + k / n * .06;
+  pts.push([cx + Math.cos(t) * rx * w, cy + Math.sin(t) * ry * w]); } return pts; }
+function stroke(pts, color = 'var(--pencil)', w = 1.7) { strokes.push(`<path d="${path(pts)}" fill="none" stroke="${color}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" filter="url(#graphite)"/>`); }
+const box = el => el.getBoundingClientRect();
+function circle(el, color, pad = 8, w) { const b = box(el); stroke(ring(b.x + b.width / 2, b.y + b.height / 2, b.width / 2 + pad, b.height / 2 + pad * .55), color, w); }
+function strike(el) { const b = box(el); const y = b.y + b.height * .55; stroke(wob([b.x - 4, y + 1.5], [b.right + 6, y - 1.5], 1.1), 'var(--pencil)', 1.8); }
+function under(el, color, off = 3, twice) { const b = box(el); stroke(wob([b.x - 2, b.bottom + off], [b.right + 4, b.bottom + off - 1], 1), color, 1.8);
+  if (twice) stroke(wob([b.x + 6, b.bottom + off + 5], [b.right - 2, b.bottom + off + 4], 1), color, 1.6); }
+function arrow(a, b, color) { stroke(wob(a, b, 1.2, 10), color); const ang = Math.atan2(b[1] - a[1], b[0] - a[0]);
+  for (const s of [-1, 1]) stroke([b, [b[0] - Math.cos(ang + s * .5) * 9, b[1] - Math.sin(ang + s * .5) * 9]], color); }
+function rect(el, pad = 4) { const b = box(el); const p = [[b.x - pad, b.y - pad], [b.right + pad, b.y - pad + 1], [b.right + pad + 1, b.bottom + pad], [b.x - pad - 1, b.bottom + pad - 1], [b.x - pad + 2, b.y - pad - 2]];
+  for (let k = 0; k < 4; k++) stroke(wob(p[k], p[k + 1], 1, 8)); }
+const note = (txt, x, y, cls = '', rot = 0, extra = '') => `<div class="note ${cls}" style="left:${x}px;top:${y}px;transform:rotate(${rot}deg);${extra}">${txt}</div>`;
+const $ = s => page.querySelector(s);
+
+if (LW.screen === 'menu') {
+  const items = LW.menu.map((m, i) => `<a class="line ${m.primary ? 'primary' : ''}" id="m-${m.id}"><span class="no">${i + 1}.</span><span class="lb">${T(m.label)}</span></a>`).join('');
+  const left = `<div class="head">${T('ZESZYT DYŻURÓW · NR 3')}</div>
+      <div class="title" id="title">${T('Lockwright')}</div>
+      <div class="sub" id="sub">${T('Pogotowie Zamkowe')}</div>
+      <div class="sketch" style="top:${land ? 400 : 196}px"></div>`;
+  if (land) {
+    page.innerHTML = `<div class="col">${left}
+      ${note('nocka 22–6, telefon<br>zawsze przy sobie', 0, 168, '', -1.5, 'font-size:18px')}
+      ${note('krótka pauza kosztuje mniej<br>niż złamany wytrych', 0, 236, '', 0, 'font-size:16px')}
+      ${note('<s>wtorek</s> czwartek: olej do kłódek', 0, 300, '', -1, 'font-size:16px')}</div>
+      <div class="col2"><div class="menu">${items}</div>
+      ${note('2 nowe', 290, 102, 'red', -4)}</div>`;
+  } else {
+    page.innerHTML = `<div class="col">${left}<div class="menu">${items}</div></div>
+      <div class="mar">${note('nocka<br>22–6', 6, 10, '', -4, 'font-size:19px')}
+      ${note('2 nowe', 8, 556, 'red', -5)}
+      ${note('krótka<br>pauza<br>kosztuje<br>mniej niż<br>złamany<br>wytrych', 6, 150, '', 0, 'font-size:15.5px')}
+      ${note('<s>wtorek</s><br>czwartek:<br>olej do<br>kłódek', 6, 290, '', -2, 'font-size:15.5px')}</div>`;
+  }
+  requestAnimationFrame(() => {
+    under($('#title'), 'var(--pencil)', 2, true);
+    circle($('#m-start .lb'), 'var(--pencil)', 9, 1.9);
+    circle($('#m-start .lb'), 'var(--pencil)', 12, 1.2);
+    sketch($('.sketch'));
+    const z = box($('#m-jobs .lb')), n = box(page.querySelector('.note.red'));
+    arrow([n.x - 4, n.y + 12], [z.right + 10, z.y + z.height / 2], 'var(--red)');
+    draw();
+  });
+}
+
+if (LW.screen === 'jobs') {
+  const rows = LW.jobs.map((j, k) => `<div class="job ${j.state}" id="j${k}"><div class="tt"><span class="n">${j.no.slice(2)}</span>${T(j.title)}</div>
+    <div class="dd">${j.what} · ${j.pay}</div></div>`).join('');
+  page.innerHTML = `<div class="col"><a class="back" id="back">${T('‹ Wstecz')}</a><h2 id="h">${T('Zlecenia')}</h2><div class="jobs">${rows}</div></div>
+    <div class="mar">${LW.jobs.map((j, k) => j.state === 'done' ? note('zrobione<br>' + j.time, 6, 0, '', -3, `font-size:15px;top:var(--y${k})`) : j.state === 'new' ? note('nowe', 14, 0, 'red', -6, `font-size:19px;top:var(--y${k})`) : '').join('')}
+    ${note('sprawdzić<br>dokumenty!', 2, 0, 'red', -3, 'font-size:15px;top:var(--y7b)')}</div>`;
+  requestAnimationFrame(() => {
+    const mar = box($('.mar'));
+    LW.jobs.forEach((j, k) => { const b = box($('#j' + k)); $('.mar').style.setProperty('--y' + k, (b.y - mar.y + 12) + 'px');
+      if (j.state === 'done') strike($(`#j${k} .tt .t`));
+      if (j.state === 'new') circle($(`#j${k} .n`), 'var(--red)', 6, 1.6); });
+    const b7 = box($('#j7')); $('.mar').style.setProperty('--y7b', (b7.y - mar.y + 46) + 'px');
+    under($('#h'), 'var(--pencil)', 0);
+    // bracket grouping the done jobs
+    const a = box($('#j0')), d = box($('#j3')), x = mar.x - 10;
+    stroke(wob([x, a.y + 8], [x + 5, a.y + 6], .4, 3)); stroke(wob([x, a.y + 8], [x, d.bottom - 8], 1, 16)); stroke(wob([x, d.bottom - 8], [x + 5, d.bottom - 6], .4, 3));
+    draw();
+  });
+}
+
+if (LW.screen === 'settings') {
+  const S = LW.settings;
+  const scale = (id, v) => `<span class="scale" id="${id}" data-v="${v}"><span class="tk">0 · · · · · · · · ·</span></span>`;
+  page.innerHTML = `<div class="col" style="right:32px"><a class="back">${T('‹ Wstecz')}</a><h2 id="h">${T('Ustawienia')}</h2>
+    <div class="sec">${T('HAPTYKA')}</div>
+    <div class="set"><span>${T('Haptyka')}</span><span class="opts"><span id="hon">${T('wł.')}</span><span>${T('wył.')}</span></span></div>
+    <div class="set"><span>${T('Intensywność')}</span>${scale('s1', S.intensity)}</div>
+    <div class="set"><span class="btn" id="imp">${T('Impuls próbny')}</span><span class="h" style="font-size:16px">czujesz stuk?</span></div>
+    <div class="sec">${T('DŹWIĘK')}</div>
+    <div class="set"><span>${T('Głośność główna')}</span>${scale('s2', S.master)}</div>
+    <div class="set"><span>${T('Efekty')}</span>${scale('s3', S.sfx)}</div>
+    <div class="set"><span>${T('Tło')}</span>${scale('s4', S.ambient)}</div>
+    <div class="sec">${T('STEROWANIE')}</div>
+    <div class="set"><span>${T('Napięcie automat.')}</span><span class="opts"><span>${T('wł.')}</span><span id="aoff">${T('wył.')}</span></span></div>
+    <div class="expl">${T('Napięcie trzyma się samo,')}<br>${T('a ty prowadzisz wytrych')}<br>${T('jednym kciukiem.')}</div>
+    <div class="sec">${T('JĘZYK')}</div>
+    <div class="set"><span class="opts"><span id="pl" style="min-width:90px">${T('polski')}</span><span style="min-width:100px">${T('English')}</span></span></div>
+  </div>`;
+  page.classList.add('nomargin');
+  requestAnimationFrame(() => {
+    under($('#h'), 'var(--pencil)', 0);
+    circle($('#hon'), 'var(--pencil)', 3); circle($('#aoff'), 'var(--pencil)', 3); circle($('#pl'), 'var(--pencil)', 2);
+    rect($('#imp'), 0);
+    for (const id of ['s1', 's2', 's3', 's4']) { const el = $('#' + id), b = box(el.querySelector('.tk')), v = +el.dataset.v;
+      const x0 = b.x + 3, x1 = b.right - 18, x = x0 + (x1 - x0) * v / 100, y = b.y + b.height / 2;
+      stroke(wob([x0, y + 8], [x, y + 8], .7, 10), 'var(--pencil)', 2.4); // shaded part of the scale
+      stroke(wob([x, y - 12], [x, y + 13], .5, 5), 'var(--pencil)', 2.2);
+      const lab = document.createElement('div'); lab.className = 'note'; lab.textContent = v + '%';
+      lab.style.cssText = `left:${b.right + 4}px;top:${y - 13}px;font-size:18px`; page.appendChild(lab); }
+    draw();
+  });
+}
+// The master's pencil sketch of a pin stack: mechanism explained by drawing, with handwritten labels.
+function sketch(el) {
+  if (!el) return; const b = box(el), X = b.x, Y = b.y, P = 'var(--pencil)';
+  const lines = (pts, w = 1.5, c = P) => { for (let k = 0; k < pts.length - 1; k++) stroke(wob(pts[k], pts[k + 1], .8, 8), c, w); };
+  const shear = Y + 78;
+  lines([[X, Y + 10], [X + 228, Y + 10], [X + 228, Y + 130], [X, Y + 130], [X, Y + 10]], 1.6);
+  stroke(wob([X - 6, shear], [X + 236, shear], .6, 24), P, 1.2);
+  for (let i = 0; i < 4; i++) {
+    const cx = X + 36 + i * 52, w = 22, set = i === 1, bind = i === 2;
+    lines([[cx - w / 2 - 3, Y + 10], [cx - w / 2 - 3, Y + 112]], 1); lines([[cx + w / 2 + 3, Y + 10], [cx + w / 2 + 3, Y + 112]], 1);
+    // spring
+    const sp = []; for (let k = 0; k <= 8; k++) sp.push([cx + (k % 2 ? w / 2 - 2 : -w / 2 + 2), Y + 14 + k * (set ? 3.4 : 3)]); stroke(sp, P, 1.1);
+    const top = set ? shear - 30 : bind ? shear - 18 : shear - 22, sh = bind ? 2.5 : 0;
+    lines([[cx - w / 2 + sh, top], [cx + w / 2 + sh, top], [cx + w / 2 + sh, top + 26], [cx - w / 2 + sh, top + 26], [cx - w / 2 + sh, top]], 1.5); // driver
+    const kt = set ? shear + 4 : top + 28; // key pin, pointed tip
+    lines([[cx - w / 2, kt], [cx + w / 2, kt], [cx + w / 2, kt + 22], [cx, kt + 32], [cx - w / 2, kt + 22], [cx - w / 2, kt]], 1.5);
+    if (bind) for (let k = 0; k < 3; k++) stroke([[cx + w / 2 + 5, shear - 6 + k * 5], [cx + w / 2 + 10, shear - 10 + k * 5]], P, 1.2);
+  }
+  const lab = (t, x, y, r = 0, red) => page.insertAdjacentHTML('beforeend', note(t, x, y, red ? 'red' : '', r, 'font-size:15px'));
+  lab('linia podziału', X + 128, shear - 2 - 72 - 28, -2);
+  arrow([X + 172, shear - 80], [X + 196, shear - 4], P);
+  lab('siedzi', X + 64, Y + 136, -3);
+  arrow([X + 86, Y + 138], [X + 88, shear + 6], P);
+  lab('wiąże — popuść', X + 112, Y + 146, -2, true);
+  arrow([X + 140, Y + 150], [X + 146, shear + 10], 'var(--red)');
+}
+function draw() { ink.insertAdjacentHTML('beforeend', strokes.join('')); }
+</script>
+</body></html>

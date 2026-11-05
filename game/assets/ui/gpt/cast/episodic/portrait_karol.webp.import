@@ -2,6 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
+uid="uid://djo8ypssm3y1p"
+path="res://.godot/imported/portrait_karol.webp-7398b1b3c4457e78d7b253cd780c9135.ctex"
 metadata={
 "vram_texture": false
 }
@@ -9,6 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/ui/gpt/cast/episodic/portrait_karol.webp"
+dest_files=["res://.godot/imported/portrait_karol.webp-7398b1b3c4457e78d7b253cd780c9135.ctex"]
 
 [params]
 

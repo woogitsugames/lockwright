@@ -77,6 +77,7 @@ func test_pause_flap_is_a_tongue_with_a_real_target() -> void:
 	assert_eq(flap.position.y, 0.0, "hangs from the top edge")
 	var o := flap.outline()
 	assert_gt(o.size(), 10, "rounded end (cut-out shape, not a square)")
+	assert_true(flap.has_photo(), "N-56: cut-out G21 leather tab photo, not a drawn square")
 	view.pause_requested.disconnect(scene._on_pause)  # keep the test tree running
 	watch_signals(view)
 	flap.press()
