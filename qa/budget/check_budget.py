@@ -20,6 +20,31 @@ def run_timed(cmd):
     return dt, ru.ru_maxrss / 1024.0, os.waitstatus_to_exitcode(status)
 
 
+def pack_breakdown(work, depth=3, top=15):
+    """Approximate pack contents per source directory: imported artefacts (.godot/imported, via *.import dest_files)
+    for imported sources, raw size for everything else. Folders with .gdignore are skipped like Godot does."""
+    ignored = [p.parent for p in work.rglob('.gdignore')]
+    sizes = {}
+    for f in work.rglob('*'):
+        if not f.is_file() or '.godot' in f.parts or f.suffix == '.import':
+            continue
+        if any(ig == f.parent or ig in f.parents for ig in ignored):
+            continue
+        imp = f.with_name(f.name + '.import')
+        n = 0
+        if imp.exists():
+            for line in imp.read_text(errors='replace').splitlines():
+                if line.startswith('dest_files='):
+                    for d in line.split('"')[1::2]:
+                        q = work / d.replace('res://', '')
+                        n += q.stat().st_size if q.exists() else 0
+        else:
+            n = f.stat().st_size
+        key = '/'.join(f.relative_to(work).parent.parts[:depth]) or '.'
+        sizes[key] = sizes.get(key, 0) + n
+    return sorted(sizes.items(), key=lambda kv: -kv[1])[:top]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--godot', default=os.environ.get('GODOT', 'godot'))
@@ -61,6 +86,14 @@ def main():
             print(f"::{'error' if st == 'PRZEKROCZONY' else 'warning'}::budget {k} = {v} (warn {b['warn']}, fail {b['fail']})")
     md = ['# Budżety wydajności — CI', '', '| Miara | Wartość | Próg ostrz. / błąd | Stan |', '|---|---|---|---|']
     md += [f'| `{k}` | {v} | {lim} | {st} |' for k, v, lim, st in rows]
+    try:
+        bd = pack_breakdown(work)
+    except Exception as e:  # diagnostics only, never fail the budget on it
+        bd, md = [], md + ['', f'(rozbicie paczki niedostępne: {e})']
+    if bd:
+        md += ['', '## Co zajmuje paczkę (przybliżenie: zasoby po imporcie, wg katalogu źródłowego)', '',
+               '| Katalog w `game/` | MB |', '|---|---|']
+        md += [f'| `{k}` | {v / 1e6:.1f} |' for k, v in bd]
     md += ['', 'Progi i uzasadnienie: `docs/handoff/POMIARY.md` §8, `qa/budget/budgets.json`.']
     (out / 'budget.md').write_text('\n'.join(md) + '\n')
     (out / 'budget.json').write_text(json.dumps({'measured': m, 'budgets': budgets}, indent=2))

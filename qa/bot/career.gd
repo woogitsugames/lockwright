@@ -177,7 +177,10 @@ func _profile_rows(fam: String, seed: int, tier: int, profile: String) -> Array:
 		return []
 	var tmp := OS.get_user_data_dir().path_join("qa_profile_%s_%d_%d.json" % [fam, seed, tier])
 	var out := []
-	OS.execute(tool, ["record", fam, str(tier), str(seed), tmp, "--" + profile], out, true)
+	var rc := OS.execute(tool, ["record", fam, str(tier), str(seed), tmp, "--" + profile], out, true)
+	if not FileAccess.file_exists(tmp):
+		printerr("QA_REPLAY_TOOL_FAIL rc=%d tool=%s out=%s" % [rc, tool, " ".join(PackedStringArray(out)).strip_edges()])
+		return []
 	var d: Variant = JSON.parse_string(FileAccess.get_file_as_string(tmp))
 	if typeof(d) != TYPE_DICTIONARY:
 		return []

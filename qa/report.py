@@ -125,6 +125,11 @@ if os.environ.get('GITHUB_ACTIONS'):
 infra_fail = (not bot) or timeout or crashed
 if infra_fail:
     print('::error title=QA workflow::bot did not finish (no QA_REPORT, timeout or engine crash) - see career.log')
+# the bot's own tooling (lockcore replay_tool for the feel/clumsy profiles) is a workflow problem, not a game finding
+tool_fail = [x for x in bot.get('locks', []) if 'replay_tool' in str(x.get('error', ''))]
+if tool_fail:
+    infra_fail = True
+    print(f"::error title=QA workflow::replay_tool failed for {len(tool_fail)} lock(s) (QA_REPLAY_TOOL path/binary) - not a game bug")
 if os.environ.get('QA_STRICT') == '1' and verdict != 'OK':
     sys.exit(1)
 # blockers: the game cannot be played at all (a GDScript that does not compile, or no lock reached) -> red run

@@ -8,6 +8,9 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 ROOT=$(cd "$HERE/.." && pwd)
 GODOT=${1:-godot}
 RT=${2:-$ROOT/lockcore/build/replay_tool}
+# Godot --path changes the working directory to the project copy, so a relative tool path breaks OS.execute
+RT=$(realpath -m "$RT")
+if [ ! -x "$RT" ]; then echo "::error title=QA workflow::replay_tool not found or not executable: $RT"; exit 3; fi
 export QA_REPLAY_TOOL=$RT
 declare -A RUNS=(
   [solver]="QA_PROFILE=solver"
