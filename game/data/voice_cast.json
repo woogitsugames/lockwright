@@ -1,0 +1,998 @@
+{
+ "_doc": "One fixed fictional voice per speaker (D-57). Generated with ElevenLabs Voice Design, never cloned. Same voice for every language; add \"de\" to languages when DE is voiced. Text = content.csv line; TTS input incl. audio tags in contrib/voice/tts_inputs.json.",
+ "provider": "ElevenLabs (via Composio)",
+ "model": "eleven_v4_turbo",
+ "design_model": "eleven_ttv_v3",
+ "created": "2026-11-05",
+ "voices": {
+  "locksmith": {
+   "voice_id": "ykajA4eRsyhUXXnAEPjK",
+   "voice_name": "LW locksmith",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 45,
+   "design_prompt": "Calm, warm Polish man in his mid forties, an emergency locksmith. Low-medium pitch, steady unhurried pace, kind and reassuring, dry humour, a slight smile in the voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (122 Hz median F0) and Polish ASR clarity (avg logprob -0.22).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "halina": {
+   "voice_id": "1EOyola3ckh8FmKtCkGI",
+   "voice_name": "LW halina",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 81,
+   "design_prompt": "Elderly Polish grandmother, 81, warm and motherly but firm about food, slightly shaky older voice, lively, says \"synku\".",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (225 Hz median F0) and Polish ASR clarity (avg logprob -0.32).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "zosia": {
+   "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+   "voice_name": "LW zosia",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 75,
+   "design_prompt": "Polish woman about 75, matter-of-fact neighbour with tender irritation, clear brisk older voice, practical.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (182 Hz median F0) and Polish ASR clarity (avg logprob -0.3).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "stefan": {
+   "voice_id": "i9blRzX2OigtFeDos6xu",
+   "voice_name": "LW stefan",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 67,
+   "design_prompt": "Polish man of 67 who runs a newspaper kiosk, a chatty storyteller, slightly husky friendly voice, amused.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (144 Hz median F0) and Polish ASR clarity (avg logprob -0.35).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "roman": {
+   "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+   "voice_name": "LW roman",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 58,
+   "design_prompt": "Polish building administrator, 58, dry, efficient, few words, flat businesslike baritone.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (134 Hz median F0) and Polish ASR clarity (avg logprob -0.17).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "marta": {
+   "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+   "voice_name": "LW marta",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 34,
+   "design_prompt": "Polish woman, 34, graphic designer: clearly female mid-pitch voice, ironic and witty with warmth underneath, relaxed.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (187 Hz median F0) and Polish ASR clarity (avg logprob -0.23).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "zuzanna": {
+   "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+   "voice_name": "LW zuzanna",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 20,
+   "design_prompt": "Polish student, 20, quick, curious and a bit of a know-it-all, bright youthful energetic voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (174 Hz median F0) and Polish ASR clarity (avg logprob -0.29).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "edek": {
+   "voice_id": "pgdV0sGVYZWYRML1xwQm",
+   "voice_name": "LW edek",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 63,
+   "design_prompt": "Polish dormitory porter, 63, good-humoured, proud of his memory, warm slightly gravelly voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (132 Hz median F0) and Polish ASR clarity (avg logprob -0.3).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "ola": {
+   "voice_id": "wu1DtvHldVyojBw205MB",
+   "voice_name": "LW ola",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 38,
+   "design_prompt": "Polish biology teacher, 38, patient, explains things clearly, kind and composed mid-pitch voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (165 Hz median F0) and Polish ASR clarity (avg logprob -0.23).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "krystyna": {
+   "voice_id": "UCqMuSKXCNw4J0m4W1zN",
+   "voice_name": "LW krystyna",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 68,
+   "design_prompt": "Polish woman in her late sixties, reserved, says little and precisely, soft low older voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (172 Hz median F0) and Polish ASR clarity (avg logprob -0.16).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "wladyslaw": {
+   "voice_id": "t3zIfL8OXHlU967BrrDP",
+   "voice_name": "LW wladyslaw",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 84,
+   "design_prompt": "Very old Polish master locksmith, 84, short sentences, a spark of mischief, firm but aged voice, slow.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (162 Hz median F0) and Polish ASR clarity (avg logprob -0.24).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "rygiel": {
+   "voice_id": "BH6sElg13tTrLskAMLVY",
+   "voice_name": "LW rygiel",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 50,
+   "design_prompt": "Polish museum curator, about 50, pedantic and precise, crisp clear articulate voice, polite.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (168 Hz median F0) and Polish ASR clarity (avg logprob -0.26).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "jadwiga": {
+   "voice_id": "XDA0joI4xCH8unjaVH78",
+   "voice_name": "LW jadwiga",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 72,
+   "design_prompt": "Retired Polish schoolteacher, early seventies, confident teacherly voice, clear diction, a bit theatrical.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (182 Hz median F0) and Polish ASR clarity (avg logprob -0.18).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "kuba": {
+   "voice_id": "VkZzWHJdAdVjOsFVZT0o",
+   "voice_name": "LW kuba",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 23,
+   "design_prompt": "Young Polish man, 23, fresh graduate, nervous and self-ironic, light youthful voice, speaks fast.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (118 Hz median F0) and Polish ASR clarity (avg logprob -0.22).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "iga": {
+   "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+   "voice_name": "LW iga",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 27,
+   "design_prompt": "Young Polish woman, 27, a rock drummer: clearly female mid-pitch voice, punchy, cool and energetic, a little raspy.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (232 Hz median F0) and Polish ASR clarity (avg logprob -0.28).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "hall_manager": {
+   "voice_id": "RY3T4wJNr948hKf9RLlp",
+   "voice_name": "LW hall_manager",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 45,
+   "design_prompt": "Polish rehearsal-hall manager, mid forties, methodical, a bit bored, plain mid-low voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (134 Hz median F0) and Polish ASR clarity (avg logprob -0.26).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "gosia": {
+   "voice_id": "eGqeVQe69NEvejLmfrFG",
+   "voice_name": "LW gosia",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 36,
+   "design_prompt": "Polish furniture restorer, 36, calm, precise and warm, gentle mid-pitch voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (150 Hz median F0) and Polish ASR clarity (avg logprob -0.27).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "magda": {
+   "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+   "voice_name": "LW magda",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 41,
+   "design_prompt": "Polish translator living in Brussels, 41, lively, witty and theatrical, expressive mid-pitch voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (242 Hz median F0) and Polish ASR clarity (avg logprob -0.27).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "jacques": {
+   "voice_id": "taJqYirQraEm0jqJT4Nr",
+   "voice_name": "LW jacques",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 62,
+   "design_prompt": "Belgian man around sixty, gentle and charming, speaks with a noticeable French accent, soft baritone.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (104 Hz median F0) and Polish ASR clarity (avg logprob -0.42).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "martine": {
+   "voice_id": "PzzPLBpVABDDUlZN7ucR",
+   "voice_name": "LW martine",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 78,
+   "design_prompt": "Elderly Belgian woman, late seventies, gentle and emotional, speaks with a French accent, soft older voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (163 Hz median F0) and Polish ASR clarity (avg logprob -0.3).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "hania": {
+   "voice_id": "JzWU21284iaFaYfZncvD",
+   "voice_name": "LW hania",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 7,
+   "design_prompt": "Young adult Polish woman in her early twenties with a light, bright, playful and earnest voice, like a cartoon voice actress, clear diction.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (302 Hz median F0) and Polish ASR clarity (avg logprob -0.18).",
+   "languages": [
+    "pl",
+    "en"
+   ],
+   "note": "ElevenLabs blocks designing child voices; Hania (7) is voiced by a light adult voice (as in animation dubbing). Owner may prefer subtitles + S03 vocalisations only."
+  },
+  "tomasz": {
+   "voice_id": "kmrKRziyBLKhbqe5EalT",
+   "voice_name": "LW tomasz",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 40,
+   "design_prompt": "Polish carpenter, about 40, quiet and grounded, warm low voice, modest.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (125 Hz median F0) and Polish ASR clarity (avg logprob -0.2).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "aino": {
+   "voice_id": "2mwew8QSRrmgW29vxku2",
+   "voice_name": "LW aino",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 50,
+   "design_prompt": "Finnish ship engineer officer, 50, calm, dry and laconic, speaks with a light Nordic accent, low steady female voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (165 Hz median F0) and Polish ASR clarity (avg logprob -0.52).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "captain": {
+   "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+   "voice_name": "LW captain",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 60,
+   "design_prompt": "Bearded ship captain about 60, Nordic, deep authoritative but warm voice, light Finnish accent, measured.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (101 Hz median F0) and Polish ASR clarity (avg logprob -0.19).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "pieter": {
+   "voice_id": "Mci0o6kGpWMOQ5wCCk74",
+   "voice_name": "LW pieter",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 66,
+   "design_prompt": "Flemish lay brother, 66, gentle, humorous and kind, speaks with a light Dutch-Flemish accent, soft warm voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (147 Hz median F0) and Polish ASR clarity (avg logprob -0.36).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "krysia": {
+   "voice_id": "MAdUcSYw2pgceDixE8xr",
+   "voice_name": "LW krysia",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 70,
+   "design_prompt": "Polish woman about 70, cheerful regular at the bus stop, bright friendly older voice, quick.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (239 Hz median F0) and Polish ASR clarity (avg logprob -0.25).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "leopold": {
+   "voice_id": "oTU0zX3uccvQuEQHwLxQ",
+   "voice_name": "LW leopold",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 70,
+   "design_prompt": "Refined Polish antiquarian, 70, cultured and courteous, slow elegant baritone, slightly old-fashioned.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (154 Hz median F0) and Polish ASR clarity (avg logprob -0.36).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "wanda": {
+   "voice_id": "2giFtftrZRatK3g51ddT",
+   "voice_name": "LW wanda",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 60,
+   "design_prompt": "Polish housing-association manager about 60, strict and bureaucratic but fair, firm clear voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (189 Hz median F0) and Polish ASR clarity (avg logprob -0.19).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "nadia": {
+   "voice_id": "Aw18Rz5fTDHznXEpZ44m",
+   "voice_name": "LW nadia",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 29,
+   "design_prompt": "Young baker, 29, warm, practical and a little tired at four in the morning, soft friendly voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (198 Hz median F0) and Polish ASR clarity (avg logprob -0.3).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "bartek": {
+   "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+   "voice_name": "LW bartek",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 28,
+   "design_prompt": "Young Polish groom, 28, tipsy and happy after his wedding, sheepish, friendly light voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (120 Hz median F0) and Polish ASR clarity (avg logprob -0.24).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "bride": {
+   "voice_id": "dnnzdh3AfOZlBnjeEYVD",
+   "voice_name": "LW bride",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 27,
+   "design_prompt": "Young Polish bride, 27, tipsy and giggly after the wedding party, bright warm voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (254 Hz median F0) and Polish ASR clarity (avg logprob -0.28).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "neighbour_robe": {
+   "voice_id": "LAUe05BIFsJhkhztiDlc",
+   "voice_name": "LW neighbour_robe",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 62,
+   "design_prompt": "Polish man in his sixties woken at 4 a.m. in a bathrobe, sleepy, grumpy but good-natured, rough low voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (140 Hz median F0) and Polish ASR clarity (avg logprob -0.22).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "agnieszka": {
+   "voice_id": "rURmE8LZucGG4lBOjAEQ",
+   "voice_name": "LW agnieszka",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 45,
+   "design_prompt": "Polish nurse, 45, exhausted after a twelve-hour shift, soft, slow, gentle voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (242 Hz median F0) and Polish ASR clarity (avg logprob -0.28).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "renata": {
+   "voice_id": "lQgZWwf6S5C9kjabD9rm",
+   "voice_name": "LW renata",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 52,
+   "design_prompt": "Polish pizzeria owner, 52, talks fast, energetic, warm and loud-hearted, full mid voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (184 Hz median F0) and Polish ASR clarity (avg logprob -0.26).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "mietek": {
+   "voice_id": "zMbLG1cGSAY2FkRf79h1",
+   "voice_name": "LW mietek",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 38,
+   "design_prompt": "Polish kebab-shop owner, late thirties, jovial and hearty, friendly mid-low voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (187 Hz median F0) and Polish ASR clarity (avg logprob -0.2).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "claimant": {
+   "voice_id": "5OB4zZIouwPm4cr4WIxt",
+   "voice_name": "LW claimant",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 33,
+   "design_prompt": "Polish woman in her early thirties, too smooth and polite, a little nervous, mid-pitch voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (222 Hz median F0) and Polish ASR clarity (avg logprob -0.18).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "neighbour_lucyna": {
+   "voice_id": "GIcWisXz2jsWKk39INmH",
+   "voice_name": "LW neighbour_lucyna",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 66,
+   "design_prompt": "Polish woman in her sixties, alert, kind and slightly nosy neighbour, clear older voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (201 Hz median F0) and Polish ASR clarity (avg logprob -0.21).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "darek": {
+   "voice_id": "OU43emeja5Y4oGoCp8Vn",
+   "voice_name": "LW darek",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 40,
+   "design_prompt": "Polish man about 40, agitated and defensive, tense clipped speech, mid-low voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (186 Hz median F0) and Polish ASR clarity (avg logprob -0.29).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "stranger": {
+   "voice_id": "W0vU9Sek2r3cKjqRkrrp",
+   "voice_name": "LW stranger",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 45,
+   "design_prompt": "Polish man in a suit, mid forties, polite, slick and talks very fast, smooth mid voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (99 Hz median F0) and Polish ASR clarity (avg logprob -0.21).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "marek": {
+   "voice_id": "Zg4IlQjJwRWlWADvYnPS",
+   "voice_name": "LW marek",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 46,
+   "design_prompt": "Polish man in his mid forties, pushy and a bit scheming, confident mid voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (192 Hz median F0) and Polish ASR clarity (avg logprob -0.24).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "piotr": {
+   "voice_id": "IdPDPKJ2msGj1rtDPoDp",
+   "voice_name": "LW piotr",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 42,
+   "design_prompt": "Polish man in his early forties, practical and calm, easygoing baritone.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (100 Hz median F0) and Polish ASR clarity (avg logprob -0.21).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "ewa": {
+   "voice_id": "J0XDzvhpcN07xGEKHU0P",
+   "voice_name": "LW ewa",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 48,
+   "design_prompt": "Polish woman, late forties, wry and nostalgic, warm mid-low voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (200 Hz median F0) and Polish ASR clarity (avg logprob -0.23).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "irena": {
+   "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+   "voice_name": "LW irena",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 79,
+   "design_prompt": "Polish widow, 79, retired librarian, quiet, gentle, restrained emotion, soft aged voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (154 Hz median F0) and Polish ASR clarity (avg logprob -0.23).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "kazimierz": {
+   "voice_id": "pX3C8X5pB5Ord4v3sYQy",
+   "voice_name": "LW kazimierz",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 60,
+   "design_prompt": "Polish man of 60 coming home from a name-day party, merry and a bit tipsy, jovial warm baritone.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (143 Hz median F0) and Polish ASR clarity (avg logprob -0.33).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "teresa": {
+   "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+   "voice_name": "LW teresa",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 70,
+   "design_prompt": "Polish woman about 70, startled behind her door, then proud and chatty, clear older voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (276 Hz median F0) and Polish ASR clarity (avg logprob -0.33).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "basia": {
+   "voice_id": "slj6yQp264oJ5nXTGiLJ",
+   "voice_name": "LW basia",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 45,
+   "design_prompt": "Polish residents-committee secretary, mid forties, organised and cheerful, bright mid voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (198 Hz median F0) and Polish ASR clarity (avg logprob -0.24).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "elzbieta": {
+   "voice_id": "2piNECYafWT1gDGsSsFT",
+   "voice_name": "LW elzbieta",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 52,
+   "design_prompt": "Polish tenement manager, early fifties, firm and professional, composed clear voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (162 Hz median F0) and Polish ASR clarity (avg logprob -0.16).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "norbert": {
+   "voice_id": "BMzMqh5RnySZCYKBMXhh",
+   "voice_name": "LW norbert",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 43,
+   "design_prompt": "Polish man, 43, worried and evasive, slightly whiny mid voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (137 Hz median F0) and Polish ASR clarity (avg logprob -0.17).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "marcel": {
+   "voice_id": "ffYObf46C5FUlrpRN9k1",
+   "voice_name": "LW marcel",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 29,
+   "design_prompt": "Young courier, 29, harried but polite, light friendly voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (178 Hz median F0) and Polish ASR clarity (avg logprob -0.16).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "waldek": {
+   "voice_id": "6ECEPYinwnizS5hjagZQ",
+   "voice_name": "LW waldek",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 72,
+   "design_prompt": "Polish allotment gardener about 72, gruff, friendly and teasing, rough older voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (198 Hz median F0) and Polish ASR clarity (avg logprob -0.42).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "zbyszek": {
+   "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+   "voice_name": "LW zbyszek",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 74,
+   "design_prompt": "Polish allotment gardener, 74, cheerful and folksy, slightly raspy older voice, proud.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (195 Hz median F0) and Polish ASR clarity (avg logprob -0.27).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  },
+  "headteacher": {
+   "voice_id": "DvT0A47h9AXl1dwoWgyE",
+   "voice_name": "LW headteacher",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 55,
+   "design_prompt": "Polish school headmistress, mid fifties, formal, clear and composed voice.",
+   "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (205 Hz median F0) and Polish ASR clarity (avg logprob -0.14).",
+   "languages": [
+    "pl",
+    "en"
+   ]
+  }
+ }
+}

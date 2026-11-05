@@ -39,7 +39,6 @@ TTS_OVERRIDES = {
     ('job.krakow_tenement_gate.line.3', 'en'): "Hello again. I'm an intern here now. I passed the exam. Room four-twelve helped.",
     ('job.student_dorm.line.2', 'en'): 'Zuzanna Wilk, room four-twelve. On my list and in my head.',
     ('job.kiosk_shutter.line.3', 'en'): "From opening day in ninety-four. My moustache looked better than the kiosk.",
-    ('job.museum_time_lock.line.4', 'pl'): 'Pani doktor, rękawiczki dla pana ślusarza też są. Rozmiar L.',
 }
 
 # Voice Design brief per speaker: gender, age, temperament (docs/CLIENTS.md, job .client texts, cast portraits).
