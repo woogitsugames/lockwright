@@ -306,7 +306,7 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
   constexpr q16 DRAG_BOUND = q16_milli(10);
   constexpr q16 PROBE_HEIGHT = q16_milli(220);
   constexpr q16 PROBE_STEP = q16_milli(50);
-  constexpr q16 PROBE_MAX = q16_milli(370);
+  constexpr q16 PROBE_MAX = q16_milli(400);
   constexpr q16 LIFT_CAP = q16_milli(950);
   constexpr q16 T_START = q16_milli(150);
   constexpr q16 T_STEP = q16_milli(30);
@@ -407,8 +407,12 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
           }
           break;
         case EventKind::false_set:
-          if ((ph == Feel::lift || ph == Feel::probe_lift) && e.element == cand) {
+          // v0.3: the catch is perceived 220 ms late, often after the probe has moved
+          // on; the caught element is still the one to work, whatever the phase.
+          if (e.element >= 0 && e.element < n &&
+              (ph == Feel::lift || ph == Feel::probe_lift || ph == Feel::probe_travel)) {
             caught = e.element;
+            cand = e.element;
             spool_t = spool_t > 0 ? spool_t : q_max(q16_milli(100), work_t - q16_milli(80));
             go(Feel::spool, t);
           }

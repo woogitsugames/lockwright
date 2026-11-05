@@ -213,9 +213,10 @@ int main(int argc, char** argv) {
         const std::int64_t o_x100 = (st.c_oversets * 100) / runs;
         char line[256];
         std::snprintf(line, sizeof line,
-                      "%s t%d: success %lld.%01lld%%, drops/lock %lld.%02lld, oversets/lock %lld.%02lld, breaks %lld, t_p50 %s",
+                      "%s t%d: success %lld.%01lld%% (%lld/%lld), drops/lock %lld.%02lld, oversets/lock %lld.%02lld, breaks %lld, t_p50 %s",
                       std::string(fam->id()).c_str(), tier, static_cast<long long>(ok_x1000 / 10),
-                      static_cast<long long>(ok_x1000 % 10), static_cast<long long>(d_x100 / 100),
+                      static_cast<long long>(ok_x1000 % 10), static_cast<long long>(st.c_ok),
+                      static_cast<long long>(st.c_runs), static_cast<long long>(d_x100 / 100),
                       static_cast<long long>(d_x100 % 100), static_cast<long long>(o_x100 / 100),
                       static_cast<long long>(o_x100 % 100), static_cast<long long>(st.c_breaks),
                       ms(pct(st.c_steps, 50)).c_str());
@@ -230,9 +231,10 @@ int main(int argc, char** argv) {
         const std::int64_t limit = static_cast<std::int64_t>(d.time_limit_s) * SIM_HZ;
         char line[256];
         std::snprintf(line, sizeof line,
-                      "%s t%d: %lld runs, success %lld.%01lld%%, t_p50 %s, t_p90 %s (limit %s), drops/lock %lld.%02lld, breaks %lld",
+                      "%s t%d: %lld runs, success %lld.%01lld%% (%lld ok), t_p50 %s, t_p90 %s (limit %s), drops/lock %lld.%02lld, breaks %lld",
                       std::string(fam->id()).c_str(), tier, static_cast<long long>(st.f_runs),
                       static_cast<long long>(f_ok_x1000 / 10), static_cast<long long>(f_ok_x1000 % 10),
+                      static_cast<long long>(st.f_ok),
                       ms(pct(st.f_steps, 50)).c_str(), ms(pct(st.f_steps, 90)).c_str(), ms(limit).c_str(),
                       static_cast<long long>(d_x100 / 100), static_cast<long long>(d_x100 % 100),
                       static_cast<long long>(st.f_breaks));
