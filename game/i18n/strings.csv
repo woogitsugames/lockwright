@@ -13,6 +13,9 @@ settings.quality_low,"Low (cheap phones)","Niska (tanie telefony)"
 showcase.notebook_prefix,"From the master's notebook:","Z zeszytu mistrza:"
 about.licenses,"Fonts: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Engine: Godot 4 (MIT). Extensions: godot-cpp (MIT), GUT (MIT). Full list: THIRD-PARTY-NOTICES.txt in the app.","Fonty: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Silnik: Godot 4 (MIT). Rozszerzenia: godot-cpp (MIT), GUT (MIT). Pełna lista: THIRD-PARTY-NOTICES.txt w aplikacji."
 about.post_release_unlocked,"Chapter 7 (A Shared Key) unlocked.","Rozdział 7 (Wspólny klucz) odblokowany."
+settings.report_problem,"Report a problem","Zgłoś problem"
+settings.report_copied,"Log copied to clipboard. Paste it in your message — nothing is sent automatically.","Log skopiowany do schowka. Wklej go w wiadomość — nic nie jest wysyłane automatycznie."
+settings.report_empty,"Log is empty.","Log jest pusty."
 app.title,Lockwright: Locksmith on Call,Lockwright: Pogotowie Zamkowe
 common.back,Back,Wstecz
 common.close,Close,Zamknij

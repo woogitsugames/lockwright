@@ -20,6 +20,8 @@ extends Control
 @onready var reduce_motion_check: CheckButton = $Scroll/VBox/ReduceMotionCheck
 @onready var quality_option: OptionButton = $Scroll/VBox/QualityOption
 @onready var reset_button: Button = $Scroll/VBox/ResetButton
+@onready var report_button: Button = $Scroll/VBox/ReportButton
+@onready var report_result: Label = $Scroll/VBox/ReportResult
 @onready var back_button: Button = $BackButton
 
 
@@ -84,7 +86,19 @@ func _ready() -> void:
 			Settings.set_value(key, Settings.DEFAULTS[key])
 		_ready())
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+	report_button.pressed.connect(_report_problem)
 	I18n.language_changed.connect(_refresh_texts)
+
+
+func _report_problem() -> void:
+	# task 12: local log only — copy to clipboard (system share sheet on mobile via
+	# the OS "share" affordance is not wired; nothing is ever sent from the device)
+	var text := ErrorLog.latest_log_text()
+	if text == "":
+		report_result.text = I18n.t(&"settings.report_empty")
+		return
+	DisplayServer.clipboard_set(text)
+	report_result.text = I18n.t(&"settings.report_copied")
 
 
 func _run_two_click_calibration() -> void:
@@ -115,5 +129,7 @@ func _refresh_texts() -> void:
 	$Scroll/VBox/QualityLabel.text = I18n.t(&"settings.quality")
 	$Scroll/VBox/DarkNote.text = I18n.t(&"settings.dark_mode_note")
 	reset_button.text = I18n.t(&"settings.reset")
+	report_button.text = I18n.t(&"settings.report_problem")
+	report_result.text = ""
 	back_button.text = I18n.t(&"common.back")
 	intensity_value.text = "%d%%" % int(Settings.haptics_intensity() * 100)
