@@ -171,7 +171,7 @@ num.matrix_world = Matrix.Translation(Vector((EP[0], LY - 2.5, EP[2] - 1.5))) @ 
 for sx in (-1, 1):
     screw_head('np2_screw', (EP[0] + sx * (PW / 2 - 8), LY - 2.6, EP[2]), 2.0, 1.0, axis='-Y', mat=brass_plate, rot=rng.uniform(0, 3))
 # the card name plate moves down to make room for the wreath (it stays the D-41 text anchor)
-NP_DZ = -95
+NP_DZ = -185
 for o in bpy.data.objects:
     if o.name.startswith(('nameframe', 'namecard', 'np_screw')): o.location.z += NP_DZ
 NPZ = NP[2] + NP_DZ
