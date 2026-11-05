@@ -1,0 +1,106 @@
+key,en_old,en_new,note
+app.title,Lockwright: Locksmith on Call,Lockwright: Locksmith on Call,Bez zmian — naturalny EN i poprawny sens.
+common.back,Back,Back,Bez zmian — naturalny EN i poprawny sens.
+common.close,Close,Close,Bez zmian — naturalny EN i poprawny sens.
+common.on,On,On,Bez zmian — naturalny EN i poprawny sens.
+common.off,Off,Off,Bez zmian — naturalny EN i poprawny sens.
+common.coins,coins,coins,Bez zmian — naturalny EN i poprawny sens.
+menu.title,Lockwright,Lockwright,Bez zmian — naturalny EN i poprawny sens.
+menu.play,Start run,Start shift,Nazwa czynności zgodna z dyżurem ślusarza.
+menu.workshop,Workshop,Workshop,Bez zmian — naturalny EN i poprawny sens.
+menu.showcase,Showcase,Showcase,Bez zmian — naturalny EN i poprawny sens.
+menu.settings,Settings,Settings,Bez zmian — naturalny EN i poprawny sens.
+menu.about,About the game,About the game,Bez zmian — naturalny EN i poprawny sens.
+menu.jobs,Jobs,Jobs,Bez zmian — naturalny EN i poprawny sens.
+jobs.title,Jobs,Jobs,Bez zmian — naturalny EN i poprawny sens.
+job.verify,Verify the right to enter,Check right of entry,Naturalna i zwięzła etykieta weryfikacji.
+job.accept,Open for this client,Proceed with the job,Naturalna akcja po weryfikacji.
+job.refuse,Refuse this job,Decline the job,Uprzejma odmowa.
+job.opened,Lock opened. Receipt settled.,Lock opened. Bill settled.,Spójność z rachunkiem jako przedmiotem.
+job.reward_fmt,Reward: {n} coins,Reward: {n} coins,Bez zmian — naturalny EN i poprawny sens.
+job.tip_fmt,Tip (clean opening): {n} coins,Tip (clean opening): {n} coins,Bez zmian — naturalny EN i poprawny sens.
+common.continue,Continue,Continue,Bez zmian — naturalny EN i poprawny sens.
+verify.title,Verify the right to enter,Check right of entry,Spójne z przyciskiem weryfikacji.
+verify.hint,The client lays out the cards. You decide.,The client shows their evidence. You decide.,"Nie zakłada, że dowody są tylko fizycznymi kartami."
+verify.ask_more,Ask for one more,Ask for more evidence,Jasne określenie czynności.
+verify.card.id,ID document,Identity document,Naturalniejsza nazwa dokumentu.
+verify.card.witness,Witness,Neighbour as witness,Precyzyjna rola sąsiada.
+verify.card.manager,Manager / porter,Building manager / porter,Doprecyzowana funkcja zarządcy.
+verify.card.lease,Lease agreement,Lease agreement,Bez zmian — naturalny EN i poprawny sens.
+verify.card.resolution,Resolution,Residents' resolution,Doprecyzowanie dokumentu wspólnoty.
+verify.card.deed,Deed,Deed,Bez zmian — naturalny EN i poprawny sens.
+verify.card.inheritance,Inheritance papers,Inheritance document,Naturalniejsza forma EN.
+verify.card.institution,Institutional letter,Letter from an institution,Naturalniejsza forma EN.
+verify.card.letter,Letter,Letter,Bez zmian — naturalny EN i poprawny sens.
+verify.card.photo,Photo,Photo,Bez zmian — naturalny EN i poprawny sens.
+verify.card.receipt,Receipt,Receipt,Bez zmian — naturalny EN i poprawny sens.
+verify.card.invoice,Invoice,Invoice,Bez zmian — naturalny EN i poprawny sens.
+verify.card.address_app,Address in the app,Address shown in app,Czytelniejsza etykieta dowodu.
+verify.card.police,Police call,Police call-out,Dokładniejsza nazwa wezwania.
+verify.card.bailiff,Bailiff,Bailiff,Bez zmian — naturalny EN i poprawny sens.
+verify.refused,Not enough. I won't open this one.,Not enough evidence. I can't open this.,Spokojna odmowa z powodem.
+verify.refused_rep,The word spreads: +5 reputation,Word gets around: +5 reputation,Naturalniejsza fraza.
+tutorial.title,Tutorial — practice lock,Tutorial — practice lock,Bez zmian — naturalny EN i poprawny sens.
+tutorial.stage,Stage {n} of 3,Stage {n} of 3,Bez zmian — naturalny EN i poprawny sens.
+tutorial.done,Tutorial done. First real job!,Practice complete. Your first real job is next.,Poprawiono ton; wymaga kontroli zgodności z wydaniem 1.0.
+hud.magnifier,Magnifier,Magnifier,Bez zmian — naturalny EN i poprawny sens.
+settings.title,Settings,Settings,Bez zmian — naturalny EN i poprawny sens.
+settings.haptics,Haptics,Haptics,Bez zmian — naturalny EN i poprawny sens.
+settings.haptics_enabled,Haptics enabled,Haptics enabled,Bez zmian — naturalny EN i poprawny sens.
+settings.haptics_intensity,Haptics intensity,Haptic strength,Zwięzła etykieta ustawień.
+settings.haptics_test,Test pulse,Test pulse,Bez zmian — naturalny EN i poprawny sens.
+settings.haptics_calibration,Calibration,Calibration,Bez zmian — naturalny EN i poprawny sens.
+settings.haptics_calibration_two_clicks,Do you feel two clicks?,Do you feel two clicks?,Bez zmian — naturalny EN i poprawny sens.
+settings.haptics_calibration_two_clicks_yes,Two,Two,Bez zmian — naturalny EN i poprawny sens.
+settings.haptics_calibration_two_clicks_one,One,One,Bez zmian — naturalny EN i poprawny sens.
+settings.haptics_calibration_two_clicks_none,Nothing,No clicks,Spójne z pytaniem o kliknięcia.
+settings.continuous_resistance,Continuous resistance,Continuous resistance,Bez zmian — naturalny EN i poprawny sens.
+settings.volume_master,Master volume,Overall volume,Mniej technicznie niż Master.
+settings.volume_sfx,Sound effects,Sound effects,Bez zmian — naturalny EN i poprawny sens.
+settings.volume_ambience,Ambience,Ambience,Bez zmian — naturalny EN i poprawny sens.
+settings.language,Language,Language,Bez zmian — naturalny EN i poprawny sens.
+settings.language_system,System,Device language,Lepsza etykieta dla użytkownika.
+settings.language_pl,Polski,Polski,Bez zmian — naturalny EN i poprawny sens.
+settings.language_en,English,English,Bez zmian — naturalny EN i poprawny sens.
+settings.dark_mode_assist,High contrast assist,High contrast,Krótka nazwa ułatwienia.
+settings.reading_aid,Chalk layer,Chalk markings,"Pomoc opisuje stan, nie podpowiada rozwiązania."
+settings.wide_windows,Wider windows,Wider windows,Bez zmian — naturalny EN i poprawny sens.
+settings.reset,Reset settings,Reset settings,Bez zmian — naturalny EN i poprawny sens.
+settings.text_scale,Text size,Text size,Bez zmian — naturalny EN i poprawny sens.
+settings.reduce_motion,Reduce motion,Reduce motion,Bez zmian — naturalny EN i poprawny sens.
+settings.dark_mode_note,Dark mode needs sound (and haptics on a phone).,"In the dark, rely on sound. Phone haptics help too.",Nie wymaga haptyki jako jedynej wskazówki.
+run.title,Endless run,Endless shift,Spójność z dyżurem ślusarza.
+run.lock_n,Lock {n},Lock {n},Bez zmian — naturalny EN i poprawny sens.
+run.lives_left,Lives left,Spare picks,Diegetyczne odpowiedniki żyć.
+run.workshop_stop,Workshop stop,Workshop break,Naturalne określenie przerwy.
+run.finished,Run finished — {n} coins,Shift over — {n} coins,Zachowano placeholder i ton.
+run.rubber_band,Take a breath. Simpler lock.,Take a breath. An easier lock next.,Spokojniejszy i płynniejszy tekst.
+optics.loupe,Shear line macro,Shear-line close-up,Zgodność z terminologią.
+optics.microscope,Burrs and false gates,Burrs and false gates,Bez zmian — naturalny EN i poprawny sens.
+optics.borescope,Deep elements,Deep elements,Bez zmian — naturalny EN i poprawny sens.
+pause.title,Paused,Paused,Bez zmian — naturalny EN i poprawny sens.
+pause.resume,Resume,Resume,Bez zmian — naturalny EN i poprawny sens.
+pause.settings,Settings,Settings,Bez zmian — naturalny EN i poprawny sens.
+pause.dark_mode,Dark mode,In the dark,Unika pomylenia z motywem ciemnym UI.
+pause.restart,Restart lock,Restart this lock,Jednoznaczna etykieta.
+pause.quit,Leave,Leave the lock,Jednoznaczna etykieta.
+lock.pause,Pause,Pause,Bez zmian — naturalny EN i poprawny sens.
+workshop.title,Workshop,Workshop,Bez zmian — naturalny EN i poprawny sens.
+workshop.coins,Coins,Coins,Bez zmian — naturalny EN i poprawny sens.
+workshop.buy,Buy,Buy,Bez zmian — naturalny EN i poprawny sens.
+workshop.repair,Repair,Repair,Bez zmian — naturalny EN i poprawny sens.
+workshop.owned,Owned,Owned,Bez zmian — naturalny EN i poprawny sens.
+workshop.integrity,Integrity,Tool condition,Naturalna etykieta kondycji narzędzia.
+workshop.repair_cost,Repair: {0} coins,Repair: {0} coins,Bez zmian — naturalny EN i poprawny sens.
+workshop.broken,Broken,Broken,Bez zmian — naturalny EN i poprawny sens.
+showcase.title,Showcase,Showcase,Bez zmian — naturalny EN i poprawny sens.
+showcase.source,Source,Source,Bez zmian — naturalny EN i poprawny sens.
+showcase.unknown_source,Source not verified,Source not yet verified,Rzeczowe oznaczenie stanu źródła.
+about.title,About the game,About the game,Bez zmian — naturalny EN i poprawny sens.
+about.notice,"This is a game, not a course. The mechanisms are invented and simplified. A real locksmith always checks that the customer has the right to enter the premises.","This is a game, not a course. The mechanisms are invented and simplified. A real locksmith always checks that the customer has the right to enter the premises.",Bez zmian — naturalny EN i poprawny sens.
+about.licensed_assets,Assets and licenses,Assets and licenses,Bez zmian — naturalny EN i poprawny sens.
+dev.haptics_lab.title,Haptics lab,Haptics lab,Bez zmian — naturalny EN i poprawny sens.
+dev.haptics_lab.tier,Tier,Tier,Bez zmian — naturalny EN i poprawny sens.
+dev.haptics_lab.force_fallback,Force fallback,Use fallback,Krótsza etykieta deweloperska.
+dev.haptics_lab.resistance,Resistance,Resistance,Bez zmian — naturalny EN i poprawny sens.
+dev.haptics_lab.caps,Capabilities,Capabilities,Bez zmian — naturalny EN i poprawny sens.
