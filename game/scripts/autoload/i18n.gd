@@ -23,7 +23,10 @@ func _load_csv_translations() -> void:
 	for path in CSV_FILES:
 		var rows := _parse_csv(path)
 		if rows.is_empty():
-			push_error("I18n: cannot parse %s" % path)
+			# R-28: in an exported pck the raw .csv is remapped away; load the compiled
+			# .translation resources (stored next to the source in the pck) instead.
+			if not _load_compiled_translations(path):
+				push_error("I18n: cannot parse %s" % path)
 			continue
 		var header: PackedStringArray = rows[0]
 		if header.is_empty() or header[0] != "keys":
@@ -49,6 +52,19 @@ func _load_csv_translations() -> void:
 				for key in per_locale[locale].get_message_list():
 					_translations[locale].add_message(key, per_locale[locale].get_message(key))
 			TranslationServer.add_translation(per_locale[locale])
+
+
+func _load_compiled_translations(path: String) -> bool:
+	var base := path.get_basename()  # e.g. res://i18n/strings
+	var found := false
+	for locale in SUPPORTED:
+		var tr_path := "%s.%s.translation" % [base, locale]
+		if ResourceLoader.exists(tr_path):
+			var tr := ResourceLoader.load(tr_path)
+			if tr is Translation:
+				TranslationServer.add_translation(tr)
+				found = true
+	return found
 
 
 func _parse_csv(path: String) -> Array:
