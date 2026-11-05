@@ -43,7 +43,7 @@ if photo_enabled():  # photo PBR maps (art/textures/photo, G03 oak); --photo 0 =
         # aged stamped brass: the patina photo only as a faint large-scale tone (scale >= 60 mm, mostly pulled to the
         # clean brass colour, smoother); the darkening sits in recesses (cavity grime) and edges stay bright (wear)
         'brass':  photo_mat('ph_lever_brass', 'brass_patina_grease', scale=float(arg('--pscale', '60')), rot=12, base=(0.80, 0.58, 0.28),
-                            base_mix=float(arg('--pmix', '0.75')), rough_mul=float(arg('--prough', '0.35')), rough_add=float(arg('--padd', '0.14')), bump=0.04, wear=0.9, grime=float(arg('--pgrime', '0.75'))),
+                            base_mix=float(arg('--pmix', '0.75')), rough_mul=float(arg('--prough', '0.45')), rough_add=float(arg('--padd', '0.2')), bump=0.04, wear=0.9, grime=float(arg('--pgrime', '0.9'))),
         'bolt':   photo_mat('ph_bolt', 'brass_face_milled', scale=45, rot=42, tint=(0.95, 0.9, 0.82), bump=0.2, wear=0.6, grime=0.7),
         'forend': photo_mat('ph_forend', 'brass_face_milled', scale=60, rot=90, tint=(1.0, 0.95, 0.85), bump=0.2, wear=0.5, grime=0.6),
         'steel':  photo_mat('ph_stump', 'steel_ground', scale=16, rot=90, tint=(0.85, 0.86, 0.88), wear=0.3, grime=0.4),
