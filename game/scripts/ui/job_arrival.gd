@@ -119,6 +119,7 @@ func _line_row(speaker: String, text: String) -> Control:
 	var is_player := speaker == PLAYER
 	var row := HBoxContainer.new()
 	row.name = "Line_" + speaker
+	row.set_meta("speaker", speaker)
 	row.add_theme_constant_override("separation", 10)
 	var card := PanelContainer.new()
 	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
