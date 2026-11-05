@@ -16,7 +16,7 @@ objc_env.Append(CXXFLAGS=["-x", "objective-c++", "-std=gnu++20", "-fobjc-arc", "
 cpp_objs = env.Object(cpp_sources)
 mm_objs = objc_env.Object(mm_sources)
 
-library = env.SharedLibrary(
+library = env.StaticLibrary(
     "bin/liblockwright_haptics.{}.{}.{}.a".format(env["platform"], env["target"], env["arch"]),
     cpp_objs + mm_objs,
 )
