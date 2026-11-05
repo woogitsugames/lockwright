@@ -70,6 +70,20 @@ Wpisz **oddzielny wiersz na każdy zamek**; nie wpisuj 300 s jako „czas otwarc
 
 **Zachowanie L i P / Thumb behaviour:** L utrzymuje napięcie / holds tension: yes / intermittent / no; P szuka celowo / scans deliberately: yes / no; zauważono zasłonięcie widoku / screen occluded: yes / no.
 
+### D1. Opcjonalny test haptyki ON/OFF / Optional paired haptics test (ścieżka / track D)
+
+| Pole / Field | Próba 1 / Attempt 1 | Próba 2 / Attempt 2 |
+|---|---|---|
+| Warunek / Haptics | ON / OFF | ON / OFF |
+| Zamek / Lock family, tier, seed | ______ | ______ |
+| Kolejność / Order | 1 | 2 |
+| Czas do open / Time to open [s] | ______ | ______ |
+| Open (1/0), cenzurowanie (1/0) | __ / __ | __ / __ |
+| Drop / overset / rozpoznane set / recognised set | __ / __ / __ | __ / __ / __ |
+| Dźwięk i obraz niezmienione? / Sound and visuals unchanged? | yes / no | yes / no |
+
+Uwaga / Note: ten sam telefon, równoważne, ale **różne** seedy; kolejność ON/OFF i seed X/Y zrównoważone pomiędzy uczestnikami. Bez porównania i logów — nie wyciągaj wniosku o przyczynowym wpływie haptyki.
+
 ## E. A7 — odczyt stanów bez barwy / State recognition without colour
 
 **Warunek / Condition:** grayscale + 50% brightness, no audio/haptics. Pokaż krótką legendę i niezależny kadr/animację z innym seedem niż przykład; zapisuj odpowiedź i wynik. / Present a labelled reference, then a different-seed test image or motion clip; record the answer and correctness.
