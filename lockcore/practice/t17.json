@@ -1,0 +1,77 @@
+{
+  "schema": "lockwright.lock/1",
+  "family": "ring_combo",
+  "rules_version": 1,
+  "id": "practice.t17",
+  "source": "authored",
+  "seed": "0",
+  "difficulty": {
+    "tier": 3,
+    "n_min": 4,
+    "n_max": 4,
+    "sec_min": 1,
+    "sec_max": 1,
+    "win_shear_q16": 3932,
+    "tension_band_q16": 14418,
+    "overset_margin_q16": 0,
+    "noise_q16": 32768,
+    "bind_spread_q16": 52429,
+    "multi_bind_p_q16": 0,
+    "drop_grace_ms": 270,
+    "s_max_q16": 65536,
+    "time_limit_s": 150
+  },
+  "spec": {
+    "positions": 10,
+    "gate_win_q16": 3932,
+    "tension_band_q16": 14418,
+    "t_hold_q16": 5243,
+    "drop_grace_steps": 32,
+    "gate_feel_q16": 32768,
+    "rot_speed_q16": 262,
+    "bound_rot_speed_q16": 131,
+    "snap_speed_q16": 197,
+    "rings": [
+      {
+        "gate": 2,
+        "start": 7,
+        "order_q16": 0,
+        "band_lo_q16": 14746,
+        "false_gates": []
+      },
+      {
+        "gate": 4,
+        "start": 0,
+        "order_q16": 6554,
+        "band_lo_q16": 16056,
+        "false_gates": []
+      },
+      {
+        "gate": 6,
+        "start": 3,
+        "order_q16": 13107,
+        "band_lo_q16": 14746,
+        "false_gates": [
+          0
+        ]
+      },
+      {
+        "gate": 8,
+        "start": 6,
+        "order_q16": 19661,
+        "band_lo_q16": 16056,
+        "false_gates": []
+      }
+    ]
+  },
+  "presentation": {
+    "material": "brass",
+    "practice": {
+      "order": 17,
+      "focus": "false_notch",
+      "title_key": "practice.t17.title",
+      "goal_key": "practice.t17.goal",
+      "hint_key": "practice.t17.hint"
+    }
+  }
+}

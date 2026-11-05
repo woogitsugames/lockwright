@@ -94,6 +94,9 @@ if(LOCKCORE_BUILD_TESTS)
     add_test(NAME replay_tool_play_bad_steps COMMAND ${CMAKE_COMMAND} -DTOOL=$<TARGET_FILE:replay_tool>
              -DIN=${CMAKE_CURRENT_SOURCE_DIR}/tests/golden/wafer_t2_s77.replay.json -DOUT=${CMAKE_CURRENT_BINARY_DIR}/bad_steps.replay.json
              -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/play_bad_steps.cmake)
+    # Authored practice locks: parse, no ignored keys, scripted bot opens each one.
+    file(GLOB LOCKCORE_PRACTICE ${CMAKE_CURRENT_SOURCE_DIR}/practice/*.json)
+    add_test(NAME practice_locks COMMAND check_locks --feel 20 ${LOCKCORE_PRACTICE})
     add_test(NAME replay_tool_record_bad_path COMMAND replay_tool record wafer 2 77 /nonexistent-dir/x.replay.json)
     set_tests_properties(replay_tool_record_bad_path PROPERTIES WILL_FAIL TRUE)
   endif()

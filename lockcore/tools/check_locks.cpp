@@ -193,7 +193,10 @@ int main(int argc, char** argv) {
     std::snprintf(fbuf, sizeof fbuf, "%lld.%lld%%", static_cast<long long>(f_x1000 / 10), static_cast<long long>(f_x1000 % 10));
     std::string events;
     for (std::size_t j = 0; j < kWatch.size(); ++j)
-      if (seen_runs[j] > 0) events += std::string(events.empty() ? "" : " ") + kWatch[j].tag + " " + std::to_string(seen_runs[j] * 100 / n) + "%";
+      if (seen_runs[j] > 0) {
+        const std::int64_t pc = seen_runs[j] * 100 / n;
+        events += std::string(events.empty() ? "" : " ") + kWatch[j].tag + " " + (pc == 0 ? "<1" : std::to_string(pc)) + "%";
+      }
     const std::string note = !error.empty() ? error : (f_ok < n ? "feel e.g. " + feel_fail + "; " : "") + events;
     std::printf("%-28s %-14s %4d %5s %8s %8s %7s %8s  %s\n", spec.id.c_str(), spec.family.c_str(), spec.difficulty.tier,
                 "ok", s.ok ? (secs(s.steps) + "s").c_str() : "FAIL", cbuf, fbuf, (secs(median(f_steps)) + "s").c_str(),

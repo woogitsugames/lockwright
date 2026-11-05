@@ -1,0 +1,69 @@
+{
+  "schema": "lockwright.lock/1",
+  "family": "wafer",
+  "rules_version": 1,
+  "id": "practice.t08",
+  "source": "authored",
+  "seed": "0",
+  "difficulty": {
+    "tier": 2,
+    "n_min": 4,
+    "n_max": 4,
+    "sec_min": 0,
+    "sec_max": 0,
+    "win_shear_q16": 7864,
+    "tension_band_q16": 18022,
+    "overset_margin_q16": 4588,
+    "noise_q16": 0,
+    "bind_spread_q16": 65536,
+    "multi_bind_p_q16": 0,
+    "drop_grace_ms": 360,
+    "s_max_q16": 65536,
+    "time_limit_s": 120
+  },
+  "spec": {
+    "win_shear_q16": 7864,
+    "overset_margin_q16": 4588,
+    "tension_band_q16": 18022,
+    "t_hold_q16": 5243,
+    "t_release_q16": 10486,
+    "tau_safe_q16": 42598,
+    "drop_grace_steps": 43,
+    "s_max_q16": 65536,
+    "stress_gain_q16": 6226,
+    "noise_q16": 0,
+    "bound_speed_q16": 1092,
+    "wafers": [
+      {
+        "target_q16": 36045,
+        "order_q16": 6554,
+        "band_lo_q16": 14418
+      },
+      {
+        "target_q16": 40960,
+        "order_q16": 13107,
+        "band_lo_q16": 15073
+      },
+      {
+        "target_q16": 33096,
+        "order_q16": 19661,
+        "band_lo_q16": 15729
+      },
+      {
+        "target_q16": 43254,
+        "order_q16": 0,
+        "band_lo_q16": 14418
+      }
+    ]
+  },
+  "presentation": {
+    "material": "steel",
+    "practice": {
+      "order": 8,
+      "focus": "overset_recovery",
+      "title_key": "practice.t08.title",
+      "goal_key": "practice.t08.goal",
+      "hint_key": "practice.t08.hint"
+    }
+  }
+}
