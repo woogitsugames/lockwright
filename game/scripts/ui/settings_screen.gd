@@ -44,10 +44,13 @@ func _ready() -> void:
 	language_option.add_item(I18n.t(&"settings.language_system"), 0)
 	language_option.add_item(I18n.t(&"settings.language_pl"), 1)
 	language_option.add_item(I18n.t(&"settings.language_en"), 2)
+	if Save.get_value("dev_mode", false):  # T03: DE tylko za flagą deweloperską
+		language_option.add_item(I18n.t(&"settings.language_de"), 3)
 	match Settings.get_value("language"):
 		"": language_option.selected = 0
 		"pl": language_option.selected = 1
 		"en": language_option.selected = 2
+		"de": language_option.selected = 3 if Save.get_value("dev_mode", false) else 0
 
 	haptics_check.toggled.connect(func(on: bool) -> void: Settings.set_value("haptics_enabled", on))
 	intensity_slider.value_changed.connect(func(v: float) -> void:
@@ -63,7 +66,7 @@ func _ready() -> void:
 	text_scale_slider.value_changed.connect(func(v: float) -> void: Settings.set_value("text_scale", v / 100.0))
 	reduce_motion_check.toggled.connect(func(on: bool) -> void: Settings.set_value("reduce_motion", on))
 	language_option.item_selected.connect(func(idx: int) -> void:
-		Settings.set_value("language", ["", "pl", "en"][idx]))
+		Settings.set_value("language", ["", "pl", "en", "de"][mini(idx, 3)]))
 	quality_option.clear()
 	quality_option.add_item(I18n.t(&"settings.quality_auto"), 0)
 	quality_option.add_item(I18n.t(&"settings.quality_high"), 1)

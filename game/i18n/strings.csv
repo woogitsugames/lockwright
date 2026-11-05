@@ -1,123 +1,124 @@
-keys,en,pl
-boot.calib_title,"Two taps 120 ms apart — how many do you feel and hear?","Dwa stuknięcia 120 ms od siebie — ile czujesz i słyszysz?"
-boot.calib_two,"Two","Dwa"
-boot.calib_one,"One","Jedno"
-boot.calib_none,"None","Nic"
-boot.calib_skip,"Skip","Pomiń"
-settings.feel_section,"Feel (haptics)","Wyczucie (haptyka)"
-settings.quality,"Graphics quality","Jakość grafiki"
-settings.quality_auto,"Auto (measured)","Auto (mierzona)"
-settings.quality_high,"High","Wysoka"
-settings.quality_medium,"Medium","Średnia"
-settings.quality_low,"Low (cheap phones)","Niska (tanie telefony)"
-showcase.notebook_prefix,"From the master's notebook:","Z zeszytu mistrza:"
-about.licenses,"Fonts: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Engine: Godot 4 (MIT). Extensions: godot-cpp (MIT), GUT (MIT). Full list: THIRD-PARTY-NOTICES.txt in the app.","Fonty: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Silnik: Godot 4 (MIT). Rozszerzenia: godot-cpp (MIT), GUT (MIT). Pełna lista: THIRD-PARTY-NOTICES.txt w aplikacji."
-about.post_release_unlocked,"Chapter 7 (A Shared Key) unlocked.","Rozdział 7 (Wspólny klucz) odblokowany."
-settings.report_problem,"Report a problem","Zgłoś problem"
-settings.report_copied,"Log copied to clipboard. Paste it in your message — nothing is sent automatically.","Log skopiowany do schowka. Wklej go w wiadomość — nic nie jest wysyłane automatycznie."
-settings.report_empty,"Log is empty.","Log jest pusty."
-app.title,Lockwright: Locksmith on Call,Lockwright: Pogotowie Zamkowe
-common.back,Back,Wstecz
-common.close,Close,Zamknij
-common.on,On,Włączone
-common.off,Off,Wyłączone
-common.coins,coins,monet
-menu.title,Lockwright,Lockwright
-menu.play,Start run,Rozpocznij bieg
-menu.workshop,Workshop,Warsztat
-menu.showcase,Showcase,Gablota
-menu.settings,Settings,Ustawienia
-menu.about,About the game,O grze
-menu.jobs,Jobs,Zlecenia
-jobs.title,Jobs,Zlecenia
-job.verify,Verify the right to enter,Sprawdź prawo do lokalu
-job.accept,Open for this client,Otwórz dla tego klienta
-job.refuse,Refuse this job,Odmów
-job.opened,Lock opened. Receipt settled.,Zamek otwarty. Rachunek rozliczony.
-job.reward_fmt,Reward: {n} coins,Nagroda: {n} monet
-job.tip_fmt,Tip (clean opening): {n} coins,Napiwek (czyste otwarcie): {n} monet
-common.continue,Continue,Kontynuuj
-verify.title,Verify the right to enter,Sprawdź prawo do lokalu
-verify.hint,The client lays out the cards. You decide.,Klient kładzie karty na stole. Ty decydujesz.
-verify.ask_more,Ask for one more,Poproś o jeszcze jeden
-verify.card.id,ID document,Dokument tożsamości
-verify.card.witness,Witness,Sąsiad-świadek
-verify.card.manager,Manager / porter,Zarządca / portier
-verify.card.lease,Lease agreement,Umowa najmu
-verify.card.resolution,Resolution,Uchwała
-verify.card.deed,Deed,Akt własności
-verify.card.inheritance,Inheritance papers,Pismo spadkowe
-verify.card.institution,Institutional letter,Pismo instytucji
-verify.card.letter,Letter,List
-verify.card.photo,Photo,Zdjęcie
-verify.card.receipt,Receipt,Paragon
-verify.card.invoice,Invoice,Faktura
-verify.card.address_app,Address in the app,Adres w aplikacji
-verify.card.police,Police call,Wezwanie policji
-verify.card.bailiff,Bailiff,Bailiff
-verify.refused,Not enough. I won't open this one.,Za mało. Tego nie otwieram.
-verify.refused_rep,The word spreads: +5 reputation,Słowo się niesie: +5 reputacji
-tutorial.title,Tutorial — practice lock,Samouczek — zamek ćwiczebny
-tutorial.stage,Stage {n} of 3,Etap {n} z 3
-tutorial.done,Tutorial done. First real job!,Samouczek ukończony. Pierwsze prawdziwe zlecenie!
-hud.magnifier,Magnifier,Lupa
-settings.title,Settings,Ustawienia
-settings.haptics,Haptics,Haptyka
-settings.haptics_enabled,Haptics enabled,Haptyka włączona
-settings.haptics_intensity,Haptics intensity,Intensywność haptyki
-settings.haptics_test,Test pulse,Impuls próbny
-settings.haptics_calibration,Calibration,Kalibracja
-settings.haptics_calibration_two_clicks,Do you feel two clicks?,Czujesz dwa kliknięcia?
-settings.haptics_calibration_two_clicks_yes,Two,Dwa
-settings.haptics_calibration_two_clicks_one,One,Jedno
-settings.haptics_calibration_two_clicks_none,Nothing,Nic
-settings.continuous_resistance,Continuous resistance,Opór ciągły
-settings.volume_master,Master volume,Głośność główna
-settings.volume_sfx,Sound effects,Dźwięki efektów
-settings.volume_ambience,Ambience,Tło
-settings.language,Language,Język
-settings.language_system,System,Systemowy
-settings.language_pl,Polski,Polski
-settings.language_en,English,English
-settings.dark_mode_assist,High contrast assist,Wsparcie kontrastu
-settings.reading_aid,Chalk layer,Warstwa kredy
-settings.wide_windows,Wider windows,Szersze okna
-settings.reset,Reset settings,Resetuj ustawienia
-settings.text_scale,Text size,Rozmiar tekstu
-settings.reduce_motion,Reduce motion,Ogranicz ruch
-settings.dark_mode_note,Dark mode needs sound (and haptics on a phone).,Tryb ciemny wymaga dźwięku (i haptyki na telefonie).
-run.title,Endless run,Tryb ciągły
-run.lock_n,Lock {n},Zamek {n}
-run.lives_left,Lives left,Pozostałe życia
-run.workshop_stop,Workshop stop,Warsztat
-run.finished,Run finished — {n} coins,Seria zakończona — {n} monet
-run.rubber_band,Take a breath. Simpler lock.,Weź oddech. Prostszy zamek.
-optics.loupe,Shear line macro,Lupa: makro linii podziału
-optics.microscope,Burrs and false gates,Zadziory i fałszywe bramki
-optics.borescope,Deep elements,Elementy głęboko w kanale
-pause.title,Paused,Pauza
-pause.resume,Resume,Wznów
-pause.settings,Settings,Ustawienia
-pause.dark_mode,Dark mode,Tryb ciemny
-pause.restart,Restart lock,Od nowa zamek
-pause.quit,Leave,Wyjdź
-lock.pause,Pause,Pauza
-workshop.title,Workshop,Warsztat
-workshop.coins,Coins,Monety
-workshop.buy,Buy,Kup
-workshop.repair,Repair,Napraw
-workshop.owned,Owned,Masz
-workshop.integrity,Integrity,Integralność
-workshop.repair_cost,Repair: {0} coins,Naprawa: {0} monet
-workshop.broken,Broken,Złamane
-showcase.title,Showcase,Gablota
-showcase.source,Source,Źródło
-showcase.unknown_source,Source not verified,Źródło niezweryfikowane
-about.title,About the game,O grze
-about.notice,"This is a game, not a course. The mechanisms are invented and simplified. A real locksmith always checks that the customer has the right to enter the premises.","To gra, nie kurs. Mechanizmy są wymyślone i uproszczone. Prawdziwy ślusarz zawsze sprawdza, czy klient ma prawo wejść do lokalu."
-about.licensed_assets,Assets and licenses,Zasoby i licencje
-dev.haptics_lab.title,Haptics lab,Laboratorium haptyki
-dev.haptics_lab.tier,Tier,Tier
-dev.haptics_lab.force_fallback,Force fallback,Wymuś fallback
-dev.haptics_lab.resistance,Resistance,Opór
-dev.haptics_lab.caps,Capabilities,Możliwości
+keys,en,pl,de
+boot.calib_title,Two taps 120 ms apart — how many do you feel and hear?,Dwa stuknięcia 120 ms od siebie — ile czujesz i słyszysz?,Two taps 120 ms apart — how many do you feel and hear?
+boot.calib_two,Two,Dwa,Two
+boot.calib_one,One,Jedno,One
+boot.calib_none,None,Nic,None
+boot.calib_skip,Skip,Pomiń,Skip
+settings.feel_section,Feel (haptics),Wyczucie (haptyka),Feel (haptics)
+settings.quality,Graphics quality,Jakość grafiki,Graphics quality
+settings.quality_auto,Auto (measured),Auto (mierzona),Auto (measured)
+settings.quality_high,High,Wysoka,High
+settings.quality_medium,Medium,Średnia,Medium
+settings.quality_low,Low (cheap phones),Niska (tanie telefony),Low (cheap phones)
+showcase.notebook_prefix,From the master's notebook:,Z zeszytu mistrza:,From the master's notebook:
+about.licenses,"Fonts: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Engine: Godot 4 (MIT). Extensions: godot-cpp (MIT), GUT (MIT). Full list: THIRD-PARTY-NOTICES.txt in the app.","Fonty: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Silnik: Godot 4 (MIT). Rozszerzenia: godot-cpp (MIT), GUT (MIT). Pełna lista: THIRD-PARTY-NOTICES.txt w aplikacji.","Fonts: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Engine: Godot 4 (MIT). Extensions: godot-cpp (MIT), GUT (MIT). Full list: THIRD-PARTY-NOTICES.txt in the app."
+about.post_release_unlocked,Chapter 7 (A Shared Key) unlocked.,Rozdział 7 (Wspólny klucz) odblokowany.,Chapter 7 (A Shared Key) unlocked.
+settings.report_problem,Report a problem,Zgłoś problem,Report a problem
+settings.report_copied,Log copied to clipboard. Paste it in your message — nothing is sent automatically.,Log skopiowany do schowka. Wklej go w wiadomość — nic nie jest wysyłane automatycznie.,Log copied to clipboard. Paste it in your message — nothing is sent automatically.
+settings.report_empty,Log is empty.,Log jest pusty.,Log is empty.
+app.title,Lockwright: Locksmith on Call,Lockwright: Pogotowie Zamkowe,Lockwright: Schlüsseldienst
+common.back,Back,Wstecz,Zurück
+common.close,Close,Zamknij,Schließen
+common.on,On,Włączone,Ein
+common.off,Off,Wyłączone,Aus
+common.coins,coins,monet,Münzen
+menu.title,Lockwright,Lockwright,Lockwright
+menu.play,Start shift,Rozpocznij bieg,Einsatz starten
+menu.workshop,Workshop,Warsztat,Werkstatt
+menu.showcase,Showcase,Gablota,Sammlung
+menu.settings,Settings,Ustawienia,Einstellungen
+menu.about,About the game,O grze,Über das Spiel
+menu.jobs,Jobs,Zlecenia,Aufträge
+jobs.title,Jobs,Zlecenia,Aufträge
+job.verify,Check right of entry,Sprawdź prawo do lokalu,Zutrittsberechtigung prüfen
+job.accept,Proceed with the job,Otwórz dla tego klienta,Für diesen Kunden öffnen
+job.refuse,Decline the job,Odmów,Auftrag ablehnen
+job.opened,Lock opened. Bill settled.,Zamek otwarty. Rachunek rozliczony.,Schloss geöffnet. Rechnung beglichen.
+job.reward_fmt,Reward: {n} coins,Nagroda: {n} monet,Belohnung: {n} Münzen
+job.tip_fmt,Tip (clean opening): {n} coins,Napiwek (czyste otwarcie): {n} monet,Trinkgeld (sauber geöffnet): {n} Münzen
+common.continue,Continue,Kontynuuj,Weiter
+verify.title,Check right of entry,Sprawdź prawo do lokalu,Zutrittsberechtigung prüfen
+verify.hint,The client shows their evidence. You decide.,Klient kładzie karty na stole. Ty decydujesz.,Der Kunde legt die Nachweise vor. Du entscheidest.
+verify.ask_more,Ask for more evidence,Poproś o jeszcze jeden,Um einen weiteren Nachweis bitten
+verify.card.id,Identity document,Dokument tożsamości,Ausweis
+verify.card.witness,Neighbour as witness,Sąsiad-świadek,Zeuge
+verify.card.manager,Building manager / porter,Zarządca / portier,Hausverwaltung / Pförtner
+verify.card.lease,Lease agreement,Umowa najmu,Mietvertrag
+verify.card.resolution,Residents' resolution,Uchwała,Beschluss
+verify.card.deed,Deed,Akt własności,Eigentumsurkunde
+verify.card.inheritance,Inheritance document,Pismo spadkowe,Erbnachweis
+verify.card.institution,Letter from an institution,Pismo instytucji,Behördliches Schreiben
+verify.card.letter,Letter,List,Brief
+verify.card.photo,Photo,Zdjęcie,Foto
+verify.card.receipt,Receipt,Paragon,Kassenbon
+verify.card.invoice,Invoice,Faktura,Rechnung
+verify.card.address_app,Address shown in app,Adres w aplikacji,Adresse in der App
+verify.card.police,Police call-out,Wezwanie policji,Polizeianruf
+verify.card.bailiff,Bailiff,Bailiff,Gerichtsvollzieher
+verify.refused,Not enough evidence. I can't open this.,Za mało. Tego nie otwieram.,Das reicht nicht. Dieses Schloss öffne ich nicht.
+verify.refused_rep,Word gets around: +5 reputation,Słowo się niesie: +5 reputacji,Das spricht sich herum: +5 Ruf
+tutorial.title,Tutorial — practice lock,Samouczek — zamek ćwiczebny,Einführung – Übungsschloss
+tutorial.stage,Stage {n} of 3,Etap {n} z 3,Schritt {n} von 3
+tutorial.done,Practice complete. Your first real job is next.,Samouczek ukończony. Pierwsze prawdziwe zlecenie!,Einführung abgeschlossen. Der erste echte Auftrag!
+hud.magnifier,Magnifier,Lupa,Lupe
+settings.title,Settings,Ustawienia,Einstellungen
+settings.haptics,Haptics,Haptyka,Haptik
+settings.haptics_enabled,Haptics enabled,Haptyka włączona,Haptik aktiviert
+settings.haptics_intensity,Haptic strength,Intensywność haptyki,Haptikstärke
+settings.haptics_test,Test pulse,Impuls próbny,Testimpuls
+settings.haptics_calibration,Calibration,Kalibracja,Kalibrierung
+settings.haptics_calibration_two_clicks,Do you feel two clicks?,Czujesz dwa kliknięcia?,Spürst du zwei Klicks?
+settings.haptics_calibration_two_clicks_yes,Two,Dwa,Zwei
+settings.haptics_calibration_two_clicks_one,One,Jedno,Einen
+settings.haptics_calibration_two_clicks_none,No clicks,Nic,Nichts
+settings.continuous_resistance,Continuous resistance,Opór ciągły,Ständiger Widerstand
+settings.volume_master,Overall volume,Głośność główna,Gesamtlautstärke
+settings.volume_sfx,Sound effects,Dźwięki efektów,Soundeffekte
+settings.volume_ambience,Ambience,Tło,Umgebungsgeräusche
+settings.language,Language,Język,Sprache
+settings.language_system,Device language,Systemowy,System
+settings.language_pl,Polski,Polski,Polski
+settings.language_en,English,English,English
+settings.language_de,Deutsch (dev),Niemiecki (dev),Deutsch (dev)
+settings.dark_mode_assist,High contrast,Wsparcie kontrastu,Kontrasthilfe
+settings.reading_aid,Chalk markings,Warstwa kredy,Kreidemarkierungen
+settings.wide_windows,Wider windows,Szersze okna,Größere Sichtfenster
+settings.reset,Reset settings,Resetuj ustawienia,Einstellungen zurücksetzen
+settings.text_scale,Text size,Rozmiar tekstu,Textgröße
+settings.reduce_motion,Reduce motion,Ogranicz ruch,Bewegungen reduzieren
+settings.dark_mode_note,"In the dark, rely on sound. Phone haptics help too.",Tryb ciemny wymaga dźwięku (i haptyki na telefonie).,Dunkelmodus braucht Ton (und Haptik auf dem Handy).
+run.title,Endless shift,Tryb ciągły,Endloslauf
+run.lock_n,Lock {n},Zamek {n},Schloss {n}
+run.lives_left,Spare picks,Pozostałe życia,Verbleibende Versuche
+run.workshop_stop,Workshop break,Warsztat,Werkstattpause
+run.finished,Shift over — {n} coins,Seria zakończona — {n} monet,Lauf beendet – {n} Münzen
+run.rubber_band,Take a breath. An easier lock next.,Weź oddech. Prostszy zamek.,Ganz ruhig. Ein einfacheres Schloss.
+optics.loupe,Shear-line close-up,Lupa: makro linii podziału,Nahaufnahme der Scherlinie
+optics.microscope,Burrs and false gates,Zadziory i fałszywe bramki,Grate und falsche Kerben
+optics.borescope,Deep elements,Elementy głęboko w kanale,Tiefe Sperrelemente
+pause.title,Paused,Pauza,Pausiert
+pause.resume,Resume,Wznów,Fortsetzen
+pause.settings,Settings,Ustawienia,Einstellungen
+pause.dark_mode,In the dark,Tryb ciemny,Dunkelmodus
+pause.restart,Restart this lock,Od nowa zamek,Schloss neu starten
+pause.quit,Leave the lock,Wyjdź,Verlassen
+lock.pause,Pause,Pauza,Pause
+workshop.title,Workshop,Warsztat,Werkstatt
+workshop.coins,Coins,Monety,Münzen
+workshop.buy,Buy,Kup,Kaufen
+workshop.repair,Repair,Napraw,Reparieren
+workshop.owned,Owned,Masz,Im Besitz
+workshop.integrity,Tool condition,Integralność,Zustand
+workshop.repair_cost,Repair: {0} coins,Naprawa: {0} monet,Reparatur: {0} Münzen
+workshop.broken,Broken,Złamane,Defekt
+showcase.title,Showcase,Gablota,Sammlung
+showcase.source,Source,Źródło,Quelle
+showcase.unknown_source,Source not yet verified,Źródło niezweryfikowane,Quelle nicht verifiziert
+about.title,About the game,O grze,Über das Spiel
+about.notice,"This is a game, not a course. The mechanisms are invented and simplified. A real locksmith always checks that the customer has the right to enter the premises.","To gra, nie kurs. Mechanizmy są wymyślone i uproszczone. Prawdziwy ślusarz zawsze sprawdza, czy klient ma prawo wejść do lokalu.","Dies ist ein Spiel, kein Lehrgang. Die Mechanismen sind erfunden und vereinfacht. Ein echter Schlüsseldienst prüft immer, ob der Kunde zum Betreten berechtigt ist."
+about.licensed_assets,Assets and licenses,Zasoby i licencje,Assets und Lizenzen
+dev.haptics_lab.title,Haptics lab,Laboratorium haptyki,Haptik-Labor
+dev.haptics_lab.tier,Tier,Tier,Stufe
+dev.haptics_lab.force_fallback,Use fallback,Wymuś fallback,Fallback erzwingen
+dev.haptics_lab.resistance,Resistance,Opór,Widerstand
+dev.haptics_lab.caps,Capabilities,Możliwości,Möglichkeiten

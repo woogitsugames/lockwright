@@ -258,3 +258,11 @@ Autoload `ErrorLog` (59a56e2): log do `user://logs/` z rotacją (5 plików × 51
 - **S02** → `game/assets/audio/foley/` (39 WAV); `Sfx.play_foley` — pukanie/dzwonek na ekranie przyjazdu.
 - **S03** → `game/assets/audio/voices/<postać>/` (96 WAV), znormalizowane do **−28 LUFS M** wg uwagi sesji C (pomiar `audio/v2/loudness.py`); `Sfx.play_voice` przy liniach dialogu.
 - **S04** vs `audio/v2/out/ui`: kategorie wspólne (`tool_roll_open/close`) wybrane S04 (onset ≤ 1,4 ms, 6 wariantów), reszta kategorii S04 dołączona do `game/assets/audio/ui/`; `check_sfx.py` zielony.
+
+## 2026-11-05 — Etap 5, zadanie 4: teksty ChatGPT (T01–T04, T10)
+
+- **T01+T02:** 179 poprawek EN (`en_new != en_old`) w `game/i18n/content.csv` + `strings.csv`.
+- **T03:** kolumna `de` w obu CSV (105 + 356 kluczy, fallback EN gdy brak DE), `I18n.SUPPORTED += "de"`, język DE tylko gdy `Save.dev_mode` (5-tap w „O grze”); opcja DE w ustawieniach widoczna tylko z flagą.
+- **T04:** 20 notatek gabloty (title/body PL+EN) podmienione z `showcase_notes_fixed.md`.
+- **T10 v2:** osiągnięcia z `contrib/gpt/T10/v2/` (bez „master lock” w EN) → `game/data/achievements.json` + klucze `ach.*`.
+- `loc_qa.py` ✅, `validate.py` ✅, `check_sfx.py` ✅.

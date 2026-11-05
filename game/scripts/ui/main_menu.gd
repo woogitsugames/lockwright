@@ -61,6 +61,7 @@ func _on_about_input(event: InputEvent) -> void:
 		_about_taps += 1
 		if _about_taps >= 5 and not Save.get_value("post_release", false):
 			Save.set_value("post_release", true)  # task 11: chapter 7 unlocked
+			Save.set_value("dev_mode", true)  # T03: odblokowuje język DE w ustawieniach
 			$AboutPanel/VBox/Notice.text = I18n.t(&"about.post_release_unlocked")
 			_about_taps = 0
 

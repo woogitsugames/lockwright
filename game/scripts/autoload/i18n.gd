@@ -6,7 +6,7 @@ extends Node
 
 signal language_changed
 
-const SUPPORTED := ["pl", "en"]
+const SUPPORTED := ["pl", "en", "de"]  # de tylko za flagą deweloperską (Settings.language)
 const FALLBACK := "en"
 const CSV_FILES := ["res://i18n/strings.csv", "res://i18n/content.csv"]
 
