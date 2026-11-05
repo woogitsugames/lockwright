@@ -154,10 +154,13 @@ class HapticsEngine(context: Context) {
                 if (Build.VERSION.SDK_INT >= 36 && envelopeSupported) {
                     runCatching {
                         // N-07: continuous resistance as a real PWLE envelope segment (20/40 ms control points)
-                        val seg = VibrationEffect.startEnvelopeBuilder()
-                            .addControlPoint(0L, c.intensity.coerceIn(0.1f, 1f), c.sharpness.coerceIn(0f, 1f))
-                            .addControlPoint(20L, c.intensity.coerceIn(0.1f, 1f), c.sharpness.coerceIn(0f, 1f))
-                            .addControlPoint(40L, 0f, c.sharpness.coerceIn(0f, 1f))
+                        val ci = c.intensity.coerceIn(0.1f, 1f)
+                        val cs = c.sharpness.coerceIn(0f, 1f)
+                        val seg = VibrationEffect.BasicEnvelopeBuilder()
+                            .setInitialSharpness(cs)
+                            .addControlPoint(ci, cs, 20L)
+                            .addControlPoint(ci, cs, 20L)
+                            .addControlPoint(0f, cs, 20L)
                             .build()
                         v.vibrate(seg)
                     }.onFailure { vibrateWaveform(v, segmentMs, amp) }
@@ -192,8 +195,8 @@ class HapticsEngine(context: Context) {
             @Suppress("DEPRECATION")
             v.vibrate(effect)
             // N-02: remember how long the transient occupies the actuator (each vibrate() cancels the previous)
-            val durMs = effect.duration
-            transientUntilMs = SystemClock.uptimeMillis() + (durMs ?: 60L) + 20L
+            // VibrationEffect.getDuration() is not public API; use the pattern's nominal length
+            transientUntilMs = SystemClock.uptimeMillis() + 60L + 20L
         }
     }
 
