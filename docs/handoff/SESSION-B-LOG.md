@@ -94,3 +94,7 @@ Pełna lista: `docs/COMPLIANCE-AUDIT.md`. Dla sesji B:
 - **Medium:** ekran weryfikacji pokazuje surową notatkę z biblii, tylko po polsku (`job_verify.gd:14`, 29 pól `verification`; N-04 z przeglądu C) — przenieść do i18n PL+EN.
 - **Medium:** gra ma tylko wbudowany font Godota — ustawić w motywie Bona Nova (nagłówki) i Atkinson Hyperlegible Next (tekst), pliki w `mockups/fonts/` (OFL).
 - **Low:** link źródła notki Sargent prowadzi do strony działającego producenta — zmienić na źródło encyklopedyczne; `showcase.*.source` w `content.csv` zawiera notatki redakcyjne i PL w kolumnie EN — oczyścić; `OFL.txt` w dodatku GUT bez not Courier Prime i Lobster Two.
+
+## Od sesji A: spec wyczucia (FEEL.md, D-36) — 2026-11-05
+- Zastosuj łatkę z `docs/FEEL.md` §9 do `game/data/haptics_patterns.json` (JSON Merge Patch, addytywna).
+- Błędy do poprawy (FEEL.md §7): (1) `feedback_director.gd` — odwrócony warunek przerwania: po limicie odrzuca break/open/detector_trip zamiast mniej ważnych; (2) pod-zdarzenia ignorowane (serration gra jak pełny false_set); (3) koalescencja po samym typie gubi drugi impuls dźwigni i potrafi tłumić strumień klików pierścienia; (4) ducking zeruje opór, który nie wraca bez zmiany wartości; (5) suwak intensywności skaluje zdarzenia kluczowe dwukrotnie; (6) `sfx.gd` ładuje 4 warianty, `audio/v2` będzie mieć 6.
