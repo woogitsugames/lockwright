@@ -53,7 +53,8 @@
 }
 
 - (void)setupEngine {
-    _engine = [[CHHapticEngine alloc] init];
+    NSError *engineErr = nil;
+    _engine = [[CHHapticEngine alloc] initAndReturnError:&engineErr];
     __weak typeof(self) weakSelf = self;
     _engine.stoppedHandler = ^(CHHapticEngineStoppedReason reason) {
         NSLog(@"[LockwrightHaptics] engine stopped (%ld), restarting", (long)reason);
@@ -80,8 +81,8 @@
     CHHapticEvent *cont = [[CHHapticEvent alloc] initWithEventType:CHHapticEventTypeHapticContinuous
                                                        parameters:@[inten, sharp]
                                                      relativeTime:0 duration:1.0];
-    CHHapticPattern *resPattern = [[CHHapticPattern alloc] initWithEvents:@[cont] parameters:@[] error:&err];
     NSError *err = nil;
+    CHHapticPattern *resPattern = [[CHHapticPattern alloc] initWithEvents:@[cont] parameters:@[] error:&err];
     _resistancePlayer = [_engine createAdvancedPlayerWithPattern:resPattern error:&err];
     // Transients in a separate player so the intensity curve never scales clicks.
     CHHapticEvent *t = [[CHHapticEvent alloc] initWithEventType:CHHapticEventTypeHapticTransient
