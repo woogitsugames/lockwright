@@ -98,6 +98,11 @@ if(LOCKCORE_BUILD_TESTS)
     file(GLOB LOCKCORE_PRACTICE ${CMAKE_CURRENT_SOURCE_DIR}/practice/*.json)
     # 200 bot seeds: the lesson_target gates (clumsy >= 30 %, feeling open >= 95 %, D-54) need a sample.
     add_test(NAME practice_locks COMMAND check_locks --feel 200 ${LOCKCORE_PRACTICE})
+    # Authored tutorial locks S1–S3 (docs/LEVELS.md §2), loaded by the game via create_from_json.
+    file(GLOB LOCKCORE_TUTORIAL ${CMAKE_CURRENT_SOURCE_DIR}/../game/data/tutorial/*.json)
+    if(LOCKCORE_TUTORIAL)
+      add_test(NAME tutorial_locks COMMAND check_locks --feel 200 ${LOCKCORE_TUTORIAL})
+    endif()
     # lesson_target lives under presentation.practice and must name a known event (D-54).
     add_test(NAME check_locks_rejects_bad_target COMMAND check_locks --feel 5 ${CMAKE_CURRENT_SOURCE_DIR}/tests/data/bad_lesson_target.json)
     add_test(NAME check_locks_rejects_root_target COMMAND check_locks --feel 5 ${CMAKE_CURRENT_SOURCE_DIR}/tests/data/root_lesson_target.json)

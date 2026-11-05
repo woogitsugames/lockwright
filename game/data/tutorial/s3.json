@@ -1,0 +1,64 @@
+{
+  "schema": "lockwright.lock/1",
+  "family": "pin_tumbler",
+  "rules_version": 1,
+  "id": "pin.s3",
+  "source": "authored",
+  "seed": "0",
+  "difficulty": {
+    "tier": 1,
+    "n_min": 3,
+    "n_max": 3,
+    "sec_min": 0,
+    "sec_max": 0,
+    "win_shear_q16": 7864,
+    "tension_band_q16": 19661,
+    "overset_margin_q16": 5243,
+    "noise_q16": 0,
+    "bind_spread_q16": 65536,
+    "multi_bind_p_q16": 0,
+    "drop_grace_ms": 350,
+    "s_max_q16": 65536,
+    "time_limit_s": 120
+  },
+  "spec": {
+    "win_shear_q16": 7864,
+    "overset_margin_q16": 5243,
+    "tension_band_q16": 19661,
+    "t_hold_q16": 6554,
+    "t_release_q16": 3277,
+    "tau_safe_q16": 37356,
+    "cr_lo_q16": 7864,
+    "cr_hi_q16": 13763,
+    "drop_grace_steps": 42,
+    "drop_all": true,
+    "s_max_q16": 65536,
+    "stress_gain_q16": 6226,
+    "noise_q16": 0,
+    "bound_speed_q16": 1092,
+    "spool_speed_q16": 327,
+    "stacks": [
+      {
+        "target_q16": 31457,
+        "order_q16": 6554,
+        "band_lo_q16": 13107,
+        "variant": "standard"
+      },
+      {
+        "target_q16": 36045,
+        "order_q16": 13107,
+        "band_lo_q16": 13763,
+        "variant": "standard"
+      },
+      {
+        "target_q16": 40632,
+        "order_q16": 0,
+        "band_lo_q16": 13107,
+        "variant": "standard"
+      }
+    ]
+  },
+  "presentation": {
+    "material": "brass"
+  }
+}
