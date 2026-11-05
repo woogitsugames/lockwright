@@ -160,7 +160,7 @@ for i, x in enumerate(POCKET_X):
         stitches(sx, -128, -6.5, 3.6, -4.15 - 0.4, ang=28 if sx < x else -28)
     if i >= 3 - LOST:  # lost pick: compressed, darker, glossier imprint of its outline left in the leather
         tip = pick_tip(i, x); pts = [(x, z) for z in range(-10, int(tip[0][1]), 3)] + tip
-        floor = -2.0 - undulation(x, 8, 1) + 0.3   # groove ~0.3 mm deep, following the leather
+        floor = -2.0 - min(undulation(x + dx, z, 1) for z in range(-12, 30, 2) for dx in (0, 3)) + 0.3   # groove >= 0.3 mm deep
         im = flat_tool('imprint%d' % i, pts, 1.9, 8.0, floor - 4.0, mat='brass')
         im.data.materials.clear(); im.data.materials.append(LE3)
         im.modifiers.clear()
