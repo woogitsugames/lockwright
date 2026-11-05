@@ -1,0 +1,224 @@
+{
+  "project": "Lockwright",
+  "task": "G08",
+  "date": "2026-11-05",
+  "assets": [
+    {
+      "name": "01-workshop-morning-portrait.webp",
+      "source": "C",
+      "box": [
+        58,
+        62,
+        313,
+        615
+      ],
+      "size": [
+        720,
+        1560
+      ],
+      "pl": "Warsztat — poranek",
+      "en": "Workshop — morning",
+      "notes": "Okno, rośliny, imadło, tablica i poranna praca.",
+      "size_bytes": 129112,
+      "sha256": "d915346c06d659b2440a5c5d24caa26ce125f86cffbf073a0a0ed856e25a0bd5"
+    },
+    {
+      "name": "02-key-cutter-afternoon-portrait.webp",
+      "source": "C",
+      "box": [
+        421,
+        62,
+        676,
+        615
+      ],
+      "size": [
+        720,
+        1560
+      ],
+      "pl": "Dorabiarka kluczy — popołudnie",
+      "en": "Key cutter — afternoon",
+      "notes": "Wymyślona bezmarkowa maszyna; satynowa stal, metalowe opiłki.",
+      "size_bytes": 95154,
+      "sha256": "029264108fb2375c8291460ad7fab7a072c32d8a7ea4ed80945dffbaeea731aa"
+    },
+    {
+      "name": "03-workshop-evening-portrait.webp",
+      "source": "C",
+      "box": [
+        799,
+        62,
+        1054,
+        615
+      ],
+      "size": [
+        720,
+        1560
+      ],
+      "pl": "Warsztat — wieczór",
+      "en": "Workshop — evening",
+      "notes": "Ciepła przegubowa lampa, notes, kubek i telefon.",
+      "size_bytes": 92686,
+      "sha256": "53cee03c8ea0ce6ac6797a30c58f46ca6369aad5f4ee4ceb4c13ec6f39d9e05f"
+    },
+    {
+      "name": "04-tool-board-portrait.webp",
+      "source": "B",
+      "box": [
+        687,
+        1,
+        849,
+        352
+      ],
+      "size": [
+        720,
+        1560
+      ],
+      "pl": "Tablica narzędzi",
+      "en": "Tool board",
+      "notes": "Ułożone w ręczny sposób narzędzia o różnych wykończeniach.",
+      "size_bytes": 82956,
+      "sha256": "80163978ce7fdd6b05485a8c60118e9669b8c8d1f2aee864ad6ab6498573f941"
+    },
+    {
+      "name": "05-display-cabinet-portrait.webp",
+      "source": "B",
+      "box": [
+        1299,
+        1,
+        1461,
+        352
+      ],
+      "size": [
+        720,
+        1560
+      ],
+      "pl": "Gablota z mechanizmami",
+      "en": "Mechanism display cabinet",
+      "notes": "Drewniana szafka, szklane drzwiczki, wymyślone otwarte mechanizmy.",
+      "size_bytes": 83752,
+      "sha256": "e87c16c62175cf8f195a441d9ad6b78dbed0b3453755d8c1e8707d8fda96710d"
+    },
+    {
+      "name": "06-workbench-afternoon-landscape.webp",
+      "source": "B",
+      "box": [
+        24,
+        416,
+        491,
+        632
+      ],
+      "size": [
+        1560,
+        720
+      ],
+      "pl": "Blat roboczy — popołudnie",
+      "en": "Workbench — afternoon",
+      "notes": "Imadło, zeszyt, telefon, kubek, maszyna, faktura klejonego drewna.",
+      "size_bytes": 146366,
+      "sha256": "b1063d43dc3f53da658ffb6f48d4313f428bb627387f2121e5ee9a489c667bfc"
+    },
+    {
+      "name": "07-workshop-overview-landscape.webp",
+      "source": "B",
+      "box": [
+        548,
+        416,
+        1015,
+        632
+      ],
+      "size": [
+        1560,
+        720
+      ],
+      "pl": "Warsztat — widok ogólny",
+      "en": "Workshop — wide view",
+      "notes": "Ergonomia huba: stół, tablica, gablota i oświetlenie.",
+      "size_bytes": 124748,
+      "sha256": "23b29504f5aea82c28b0dee1234b86f8e9f24ca3d08c5036146092df3eafb71c"
+    },
+    {
+      "name": "08-lamplight-evening-landscape.webp",
+      "source": "B",
+      "box": [
+        1057,
+        416,
+        1524,
+        632
+      ],
+      "size": [
+        1560,
+        720
+      ],
+      "pl": "Wieczór przy lampie",
+      "en": "Evening by the work lamp",
+      "notes": "Ciepłe światło miejscowe i chłodne okno, telefon oraz zeszyt.",
+      "size_bytes": 90406,
+      "sha256": "73ade8a53f87c42a3882fc1a86f9f4b0bcad852d2dc101ffb9f6a2313d6c3342"
+    },
+    {
+      "name": "09-master-notebook-closeup.webp",
+      "source": "C",
+      "box": [
+        28,
+        670,
+        508,
+        940
+      ],
+      "size": [
+        1280,
+        720
+      ],
+      "pl": "Zeszyt mistrza — zbliżenie",
+      "en": "Master’s notebook — close-up",
+      "notes": "Papier, ręczne notatki i szkice; tekst koncepcyjny, nie finalna lokalizacja.",
+      "size_bytes": 105526,
+      "sha256": "b4a620ddd33d3e5cf0c7e019821e5bb09a84aa478e9790cd14f81fac91315623"
+    },
+    {
+      "name": "10-display-cabinet-closeup.webp",
+      "source": "C",
+      "box": [
+        591,
+        670,
+        1071,
+        940
+      ],
+      "size": [
+        1280,
+        720
+      ],
+      "pl": "Gablota — zbliżenie",
+      "en": "Display cabinet — close-up",
+      "notes": "Przekroje wymyślonych zamków w szklanej gablocie.",
+      "size_bytes": 90476,
+      "sha256": "230dbba89d52af3f2ae975fcc44d9049c70f6854a35cd55b04bac0b4c357e11f"
+    },
+    {
+      "name": "11-pick-board-closeup.webp",
+      "source": "C",
+      "box": [
+        1158,
+        670,
+        1638,
+        940
+      ],
+      "size": [
+        1280,
+        720
+      ],
+      "pl": "Tablica wytrychów — zbliżenie",
+      "en": "Pick board — close-up",
+      "notes": "Proste wytrychy fikcyjnego systemu, bez marek.",
+      "size_bytes": 117712,
+      "sha256": "990b63a19f8a7d782ff7f2d4ad4061ce4642bdded2aaafe3e5bac86e4c2844f7"
+    }
+  ],
+  "sheet": {
+    "name": "contact-sheet.webp",
+    "size": [
+      2400,
+      2330
+    ],
+    "sha256": "62111c1eb91beb8023858b53bcf9d884e6c3f3ef4f84eda0990ed0311d9607e1"
+  }
+}
