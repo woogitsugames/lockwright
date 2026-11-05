@@ -964,3 +964,17 @@ Wynik na 0a1c459: zlecenia 41, **tło G07 41/41** ✅, dźwięki z danych i kodu
 **Bot QA cz. 3 — wynik na HEAD (`afbd957`):** ekran przyjazdu ma tło G07 w **22/22** zleceniach; każdy mówca ze stałej obsady (CLIENTS.md §3, `CAST_SLOT`) ma portret G09 (**0 braków**); mówcy epizodyczni (np. zbyszek, kuba, irena) nie mają portretów ani głosów z założenia (G09/S03 obejmują 12 osób) — raport wymienia ich osobno. Dźwięki wołane po nazwie w skryptach (`play_ui/reward/foley/music/jingle/ambience`): wszystkie istnieją; brakuje tylko głosów (N-47).
 
 **S03 — automatyczny odsłuch (Whisper `small`, offline, `qa/contrib/asr_check.py`):** 96 plików × 3 przebiegi (auto, PL, EN). Surowo 8 plików z „tekstem”, wszystkie to typowe halucynacje Whispera na dźwiękach bez mowy: onomatopeje („Bzzzz…”: edek, stefan, władysław) i zapętlenia jednego słowa („nie, nie, nie…”: jadwiga, rygiel; „znowu znowu…”: zosia/farewell). Po filtrze pętli i onomatopei: **0 plików z rozpoznanymi słowami** → S03 **przyjęte** (do jednego odsłuchu ludzkiego: `zosia/farewell.wav`, gdzie wymuszony PL dał „Zobacz, jak się…”).
+
+## Runda CI 4 + przegląd 7 — 2026-11-05 16:40
+| Workflow | Ostatni zakończony run | Wynik | Stan |
+|---|---|---|---|
+| `game-ios` | 42041936606 (afbd957) | ✅ **zielony** | N-24 i kolejne problemy z dylib zamknięte. D-51: iOS nie blokuje prac nad Androidem. |
+| `qa-career` | 42040461297 (1b866fe) | ❌ | **N-44 nadal otwarte** (`workshop_screen.gd:21`, `OS.get_time()`); N-45 naprawione w 6f20264. Następny run po 6f20264 w kolejce. |
+| `perf-budget` | 42035783174 (a11934f) | ❌ | **N-30 otwarte**: import grafik GPT nadal bezstratny (`compress/mode=0`), brak `.gdignore` w `photoreal_families/shots/`, `exclude_filter` bez zmian. |
+| `game-android` | 42034280492 (a551138) | ❌ | `release-aab`: N-44 + brak keystore (runda CI 3). |
+| `spike-planb`, `spike-measure`, `spike-haptics` | 4d41337 | ✅ | moje; spike-planb z `liblockcore_gd` w APK (BUG-05) |
+
+- **6f20264 (N-45)** — `b.expand_icon = true` zamiast `icon_max_width`: poprawne (właściwość istnieje w 4.7; ikona skaluje się do wysokości przycisku 48 px). **N-45 → zweryfikowane.**
+- **D-50 (sesja A):** ikona „L” zatwierdzona (zestaw sklepowy i strona już jej używają), N-49 → portrety z Magnific (`MAGNIFIC-PORTRETY.md`), do tego czasu tabliczka z inicjałem; numer seryjny telefonu usunięty z raportu (moja uwaga z odbioru GEM3 zamknięta).
+- **D-51 (właściciel):** strona → Cloudflare Pages: przygotowane w `site/` (`wrangler.toml`, `_headers`, `deploy/CLOUDFLARE.md`), workflow GitHub Pages usunięty; publikacja na sygnał. Sprawdzone: sklep, strona i scenariusz App Preview nie podają ceny.
+- Nowych dostaw v2 (G04/G05/G06/G13/G14, GEM2, GEM1-v2) w tej rundzie brak.

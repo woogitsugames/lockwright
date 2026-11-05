@@ -7,7 +7,7 @@
 | Element | Wymiar | Źródło | Stan |
 |---|---|---|---|
 | App Store: zrzuty iPhone 6,9" i 6,5" (PL, EN × 8) | 1320×2868, 1284×2778, RGB bez alfy | `make_screens.py --from-game`: kadry 01, 02, 03, 05, 06 z prawdziwego ekranu zamka (Vulkan lavapipe, 1320×2868), reszta z renderów | ✅ w limitach |
-| App Store: ikona | 1024×1024 RGB bez alfy | G12 v2, kierunek **01 tabliczka „L”** (rekomendacja; wybór właściciela) | ✅ |
+| App Store: ikona | 1024×1024 RGB bez alfy | G12 v2, kierunek **01 tabliczka „L”** (D-50) | ✅ |
 | Google Play: zrzuty telefonu (PL, EN × 8) | 1080×1920, ≤ 8 MB, proporcja ≤ 2:1 | jak wyżej | ✅ |
 | Google Play: ikona | 512×512 PNG ≤ 1 MB (+ warstwy adaptive 432) | G12 v2 / 01 | ✅ |
 | Google Play: feature graphic | 1024×500 JPG bez alfy | G13 v1 `google-play-1024x500-title` (bez pasów; G13 v2 zlecone) | ✅ |
@@ -18,5 +18,5 @@
   dziś 3 puste przyciski i domyślne przyciski silnika (N-36) — po poprawce B podmienić nim kadr 02.
 - Kadr 07 (dźwignia) to render, nie gra; rodziny GEM2 mają nierozróżnialne stany (contrib/REVIEW.md) — po poprawce
   zrobić zrzut lever z gry.
-- Ikona i feature graphic czekają na decyzję właściciela (G12: kierunek; G13 v2: logotyp).
+- Ikona zatwierdzona (D-50); feature graphic czeka na G13 v2 (logotyp). D-51: bez ceny i dostępności w materiałach.
 - Na tle przyjazdu „Rosół na gazie” drzwi mają numer 12, a tabliczka w UI pokazuje 7 (N-47).

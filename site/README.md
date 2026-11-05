@@ -13,8 +13,8 @@ python3 site/build.py --check   # buduje site/public/ i sprawdza: zakazane frazy
 - Dostępność: cele nawigacji 48 px, `skip link`, `alt` przy każdym obrazie, safe-area, `prefers-reduced-motion`, brak poziomego przewijania przy 412 px.
 - Pola `[w nawiasach]` (kontakt, administrator, daty, cena wg D-06) są podświetlone — uzupełnia właściciel.
 
-**Publikacja:** workflow `site/deploy/pages.yml` jest przygotowany, ale **niewłączony** (wymaga zgody właściciela i włączenia Pages w ustawieniach repo). Instrukcja w nagłówku pliku.
+**Publikacja (D-51):** Cloudflare Pages, statyczny katalog `site/public/` (`site/wrangler.toml`, nagłówki w `site/_headers`, kopiowane przez build). Przygotowane, **niewłączone** — instrukcja w `site/deploy/CLOUDFLARE.md`; publikacja na sygnał właściciela.
 
 **Część 2 (etap 4):** gdy w `contrib/REVIEW.md` G12 (ikona) i G13 (key art) dostaną status „przyjęte”, ich kopie trafią
 do `site/assets/` (wpis w `docs/ASSETS.md`), a strona główna i press kit dostaną ikonę i key art.
-**Zrobione 2026-11-05 (etap 5):** `site/assets/icon-{180,512}.png` z G12 v2 (kierunek 01, rekomendacja — do potwierdzenia przez właściciela), `key-art-{800,1600}.jpg` z G13 v1 16:9 (bez pasów); ikona jako favicon/apple-touch-icon, key art na stronie głównej (pełne 16:9, bez kadrowania), oba do pobrania w „Dla prasy”. Publikacja dalej wyłączona.
+**Zrobione 2026-11-05 (etap 5):** `site/assets/icon-{180,512}.png` z G12 v2 (kierunek 01, zatwierdzony w D-50), `key-art-{800,1600}.jpg` z G13 v1 16:9 (bez pasów); ikona jako favicon/apple-touch-icon, key art na stronie głównej (pełne 16:9, bez kadrowania), oba do pobrania w „Dla prasy”. Publikacja dalej wyłączona.

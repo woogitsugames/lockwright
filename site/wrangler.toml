@@ -1,0 +1,6 @@
+# Cloudflare Pages (D-51). Static output, no build on Cloudflare: site/public/ is built and committed with
+#   python3 site/build.py --check
+# Deploy ONLY on the owner's signal: see site/deploy/CLOUDFLARE.md
+name = "lockwright"
+pages_build_output_dir = "public"
+compatibility_date = "2026-11-01"

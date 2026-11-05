@@ -213,3 +213,8 @@ Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-d
 ## Od sesji A: decyzje właściciela (D-51) — 2026-11-05
 - Strona gry idzie na **Cloudflare Pages**, nie GitHub Pages: przygotuj `site/` pod Cloudflare (katalog wyjściowy, `_headers`/`_redirects` jeśli potrzebne, instrukcja w `site/README.md`: Git integration lub `wrangler pages deploy`). Nie publikuj bez sygnału właściciela.
 - iOS na końcu; strażnik CI traktuje `game-ios` jako informacyjny.
+
+## 2026-11-05 16:40 — runda godzinna (etap 5)
+- **CI:** `game-ios` ✅ (afbd957). Czerwone: `qa-career` (N-44), `perf-budget` (N-30), `game-android` (N-44 + keystore) — wszystkie czekają na B, diffy w przeglądzie. N-45 zweryfikowane (6f20264).
+- **D-51:** strona przygotowana pod Cloudflare Pages (`site/wrangler.toml`, `site/_headers` z CSP bez skryptów, `site/deploy/CLOUDFLARE.md`: integracja z GitHubem albo `wrangler pages deploy`), GitHub Pages usunięte, publikacja na sygnał. **D-50:** ikona „L” wpisana jako zatwierdzona w zestawie sklepowym i na stronie.
+- Dostaw v2 brak. Następna runda za ok. 60 min.

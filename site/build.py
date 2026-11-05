@@ -337,7 +337,7 @@ def build():
     OUT.mkdir(parents=True)
     images()
     shutil.copy2(SITE / 'style.css', OUT / 'style.css')
-    (OUT / '.nojekyll').write_text('')
+    shutil.copy2(SITE / '_headers', OUT / '_headers')  # Cloudflare Pages headers (D-51)
     for lang in ('pl', 'en'):
         d = OUT if lang == 'pl' else OUT / 'en'
         d.mkdir(exist_ok=True)
