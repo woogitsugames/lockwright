@@ -1,0 +1,35 @@
+1
+00:00:00,000 --> 00:00:01,000
+[suchy wślizg stali, klik napinacza]
+
+2
+00:00:01,000 --> 00:00:04,000
+Który pin wiąże?
+[chropowate tarcie mosiądzu]
+
+3
+00:00:04,000 --> 00:00:05,500
+[czysty klik osadzenia — 3,2 kHz]
+
+4
+00:00:05,500 --> 00:00:07,500
+Szpulowy. Fałszywy luz.
+[głuchy podwójny klik — 1,1 kHz]
+
+5
+00:00:07,500 --> 00:00:09,500
+[tarcie wsteczne, klik osadzenia]
+
+6
+00:00:09,500 --> 00:00:11,500
+Teraz po ciemku.
+[pstryknięcie — ciemność — klik]
+
+7
+00:00:11,500 --> 00:00:13,000
+[ciężki klang zasuwy — 220 Hz]
+
+8
+00:00:13,000 --> 00:00:15,000
+LOCKWRIGHT — Dostępne na Android · iOS
+[stuknięcie odkładanego narzędzia]

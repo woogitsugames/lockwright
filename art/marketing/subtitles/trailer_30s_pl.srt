@@ -1,0 +1,57 @@
+1
+00:00:00,000 --> 00:00:02,500
+[pstryknięcie wyłącznika schodowego, brzęczenie dławika 100 Hz]
+
+2
+00:00:02,500 --> 00:00:05,000
+Trzecia nad ranem.
+[szelest skóry, brzęk stali sprężynowej]
+
+3
+00:00:05,000 --> 00:00:07,000
+Zatrzaśnięte drzwi.
+[szelest papieru]
+
+4
+00:00:07,000 --> 00:00:10,000
+[suchy wślizg metalu w mosiądz]
+
+5
+00:00:10,000 --> 00:00:11,000
+[metaliczny opór, niskie drgnięcie]
+
+6
+00:00:11,000 --> 00:00:14,000
+Żadnych pasków postępu.
+[chropowate tarcie mosiądzu o stal]
+
+7
+00:00:14,000 --> 00:00:15,500
+Tylko mosiądz, stal i sprężyna.
+[czysty, wysoki klik — 3,2 kHz]
+
+8
+00:00:15,500 --> 00:00:17,500
+[głuchy, podwójny klik — 1,1 kHz]
+
+9
+00:00:17,500 --> 00:00:19,500
+[wolne tarcie wsteczne, wysoki klik osadzenia]
+
+10
+00:00:19,500 --> 00:00:22,500
+Kiedy gaśnie światło — zostaje słuch.
+[pstryknięcie wyłącznika — cisza, potem dwa czyste kliknięcia w ciemności]
+
+11
+00:00:22,500 --> 00:00:24,000
+[ciężki, niski klang zasuwy — 220 Hz]
+
+12
+00:00:24,000 --> 00:00:26,000
+[ciche skrzypnięcie zawiasu, oddech klatki]
+
+13
+00:00:26,000 --> 00:00:30,000
+LOCKWRIGHT — Dostępne na Android · iOS
+[pojedyncze stuknięcie odkładanego wytrycha]

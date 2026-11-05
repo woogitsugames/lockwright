@@ -1,0 +1,35 @@
+1
+00:00:00,000 --> 00:00:01,000
+[dry steel slide-in, tension click]
+
+2
+00:00:01,000 --> 00:00:04,000
+Which pin is binding?
+[gritty brass friction]
+
+3
+00:00:04,000 --> 00:00:05,500
+[crisp set click — 3.2 kHz]
+
+4
+00:00:05,500 --> 00:00:07,500
+Spool pin. False set.
+[hollow double click — 1.1 kHz]
+
+5
+00:00:07,500 --> 00:00:09,500
+[reverse scrape, set click]
+
+6
+00:00:09,500 --> 00:00:11,500
+Now in the dark.
+[switch click — darkness — set click]
+
+7
+00:00:11,500 --> 00:00:13,000
+[heavy deadbolt clunk — 220 Hz]
+
+8
+00:00:13,000 --> 00:00:15,000
+LOCKWRIGHT — Available on Android · iOS
+[single tool tap]

@@ -104,3 +104,15 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | `art/renders/variants/plates/plate_{1,3,5,6,7}pin.png`, `art/renders/variants/plates/plate_{1,3,5,6,7}pin_wrench.png` | grafika (render Cycles GPU 2160×2880, 256 spp, statyczne tła planu B bez ruchomych części) | własne, wygenerowane przez `art/blender/variants/render_plate_n.py` (HDRI `interior.exr` — CC0, wpis wyżej) | własne projektu | — |
 | `art/renders/variants/compare_before_after.png` | grafika (zestawienie porównawcze przed/po względem `art/renders/section.jpg`) | własne, wygenerowane przez `art/blender/variants/render_all_variants.py` | własne projektu | — |
 
+
+## Gemini (GEM1 — materiały marketingowe 4K: ujęcia R01–R17, zwiastuny 30 s i 15 s PL/EN, klatki 4K)
+
+| Plik | Typ | Źródło | Licencja | Link |
+|---|---|---|---|---|
+| `art/blender/marketing/gpu_common.py`, `cutaway_anim.py`, `stairwell_anim.py`, `tray_anim.py`, `families_render.py`, `build_trailers.py` | skrypty animacji, renderowania GPU Cycles (OPTIX) i montażu wideo/audio (`docs/MARKETING.md` §1–§4) | własne (Gemini, na bazie `art/blender/{cutaway,stairwell,tray,wafer,warded,lever,wooden_pin,ring_combo,lw_common,env_common}.py`) | własne projektu | — |
+| `art/marketing/previews/*.png` (23 pliki: podglądy 540×960 dla ujęć `R01`–`R17`, w tym 3 przyrządy optyczne `R16_*` oraz 5 rodzin zamków `R17_*` w stanach `free` i `set`) | grafika (render Cycles GPU 540×960, odszumianie OptiX RGB+Albedo+Normal, AgX) | własne, wygenerowane przez `art/blender/marketing/{stairwell_anim,tray_anim,cutaway_anim,families_render}.py` (HDRI `interior.exr` — CC0, fonty Bona Nova / Atkinson Hyperlegible Next — SIL OFL 1.1, wpisy wyżej) | własne projektu | — |
+| `art/marketing/stills/*.png` (12 plików ≤ 10 MB: klatki 4K `2160x3840` 9:16 oraz `3840x2160` 16:9 dla sklepu i prasy — `R01`, `R02`, `R04`, `R06`, `R07`, `R08`, `R10`, `R12`, `R13`) | grafika (render Cycles GPU 256 spp, OptiX RGB+Albedo+Normal, bez DOF na ujęciach mechanizmu, AgX Medium High Contrast) | własne, wygenerowane przez `art/blender/marketing/{stairwell_anim,tray_anim,cutaway_anim}.py` | własne projektu | — |
+| `art/marketing/subtitles/trailer_{30s,15s}_{pl,en}.srt` (4 pliki napisów SRT) | napisy wideo (`.srt`) | własne (`docs/MARKETING.md` §1 i §2) | własne projektu | — |
+| `trailer_30s_{pl,en}.mp4`, `trailer_30s_{pl,en}_sub.mp4`, `trailer_30s_{pl,en}_music.mp4`, `trailer_15s_{pl,en}.mp4`, `trailer_15s_{pl,en}_sub.mp4`, `trailer_15s_{pl,en}_music.mp4` (4K `2160x3840` oraz `_1080p`), `R01.mp4`–`R15.mp4`, `stills_4k_R16_R17.zip` (w GitHub Release `gemini-gem1`) | wideo MP4 (H.264 `libx264` CRF 18 / AAC 192 kbps 48 kHz) i dodatkowe klatki 4K | własne: obraz z `art/blender/marketing/*.py`, dźwięk diegetyczny z `audio/v2/out/` i `game/assets/audio/` + sub-bas haptyczny 40–90 Hz (`-18 dB`), wersje `_music` z utworami `contrib/gpt/S01/audio/` (wpisy wyżej), montaż `art/blender/marketing/build_trailers.py` | własne projektu | https://github.com/woogitsugames/lockwright/releases/tag/gemini-gem1 |
+
+
