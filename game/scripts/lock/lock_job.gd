@@ -1,4 +1,4 @@
-extends "res://scenes/photoreal/lock_photoreal.tscn"
+extends "res://scripts/photoreal/lock_photoreal.gd"
 ## N-14: thin wrapper over the photoreal lock screen (session A's scene). Feeds it the
 ## active job's family/seed/tier from JobRun instead of the @export defaults, so every
 ## pin_tumbler job and the tutorial play their own lock. Dev/CI --lw-* args still win

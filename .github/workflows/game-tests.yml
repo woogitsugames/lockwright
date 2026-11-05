@@ -127,6 +127,7 @@ jobs:
           import json, hashlib, sys
           idx = json.load(open('haptics/out/index.json'))
           missing = []
+          checked = 0
           for fam, fdata in idx['families'].items():
               for ev, edata in fdata['events'].items():
                   for key in ('android', 'ios', 'ios_mod'):
@@ -138,11 +139,12 @@ jobs:
                               h = hashlib.sha256(open(p, 'rb').read()).hexdigest()
                           except OSError:
                               missing.append(p); continue
+                          checked += 1
                           if h != f['sha256']:
                               missing.append(p + ' (hash mismatch)')
           if missing:
               print('MISMATCH:\n' + '\n'.join(missing)); sys.exit(1)
-          print('haptics detail files OK:', sum(len(e) for e in [1]), 'checked via index.json')
+          print('haptics detail files OK:', checked, 'checked via index.json')
           EOF
 
   audio-check:

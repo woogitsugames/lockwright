@@ -9,6 +9,10 @@ mm_sources = Glob("Sources/*.mm")
 
 env.Append(CPPPATH=["include"], CXXFLAGS=["-miphoneos-version-min=18.0"])
 
+# godot-cpp builds static (non-PIC) objects for ios; the shared .dylib target needs PIC objects.
+if env["platform"] == "ios":
+    env.Append(CCFLAGS=["-fPIC"], CXXFLAGS=["-fPIC"])
+
 # .mm must be compiled as ObjC++: separate env with explicit -x objective-c++.
 objc_env = env.Clone()
 objc_env.Append(CXXFLAGS=["-x", "objective-c++", "-std=gnu++20", "-fobjc-arc", "-miphoneos-version-min=18.0"])

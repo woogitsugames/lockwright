@@ -245,3 +245,9 @@ Autoload `ErrorLog` (59a56e2): log do `user://logs/` z rotacją (5 plików × 51
 
 ### Zadanie 14 — Test regresji wyglądu ✅
 `game-screens.yml` (8e6fe3e): po renderze pobiera artefakt `game-screens` z ostatniego zielonego runu na main i `data/tools/compare_screens.py` liczy frakcję zmienionych pikseli per ekran (próg 2%); raport `DIFF-REPORT.md` + miniatury różnic w artefakcie `game-screens-diff`.
+
+## 2026-11-05 — Etap 5 (SESSION-B-PROMPT-5), zadanie 1: CI na zielono — przyczyny czerwonych runów
+
+- **qa-career (czerwony, run 42019016409):** regresja **N-29** — `game/scripts/lock/lock_job.gd` dziedziczył po pliku sceny (`extends "res://scenes/photoreal/lock_photoreal.tscn"`), więc skrypt się nie kompilował (`Could not resolve super class inheritance`), żaden zamek pin_tumbler ani samouczek nie startował, kariera 0/29 „stuck”. Poprawka wg gotowego diffu z `SESSION-C-REVIEW.md` N-29: dziedziczenie po `res://scripts/photoreal/lock_photoreal.gd`, a `game/scenes/lock_job.tscn` instancjonuje scenę photoreal z podpiętym wrapperem.
+- **game-tests (czerwony, run 42018112290):** błąd w inline-Pythonie kroku `data-validation` w `game-tests.yml` — `sum(len(e) for e in [1])` (`TypeError: object of type 'int' has no len()`). Poprawione liczenie sprawdzonych plików (`checked += 1`). Lokalnie: 238 plików OK, `validate.py`/`loc_qa.py`/`haptics/validate.py` zielone.
+- **game-ios (czerwony, run 42017980782):** `scons: *** Source file: Sources/register_types...o is static and is not compatible with shared target` — godot-cpp dla platform=ios kompiluje obiekty statyczne (bez `-fPIC`), a `platform/ios/lockwright_haptics/SConstruct` budował z nich `SharedLibrary` (.dylib). Poprawka: `-fPIC` dla platform=ios w SConstruct.
