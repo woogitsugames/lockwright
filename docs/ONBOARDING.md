@@ -208,7 +208,7 @@ Zamiast pierwotnego S3 płytkowej („falownik kontra haczyk”, D-22). W warszt
 
 ### 9.3 Mikroskop i wziernik (D-13)
 
-Przy zakupie w warsztacie: mikroskop stoi na blacie obok imadła. Pierwsze użycie pokazuje zadziory na grocie własnego wytrycha (zużycie, `TOOLS.md` §2) i talię szpulki w powiększeniu. Wziernik pojawia się z pierwszą rodziną głębokiego kanału (dźwigniowa) i ma lekcję wtrąconą w samouczku tej rodziny. Oba działają jak lupa (§6.2): zamrażają wytrych, napięcie działa dalej, w ciemności są niedostępne.
+Przy zakupie w warsztacie: mikroskop stoi na blacie obok imadła. Pierwsze użycie pokazuje zadziory na grocie własnego wytrycha (zużycie, `TOOLS.md` §2) i talię szpulki w powiększeniu. Wziernik pojawia się z pierwszą rodziną głębokiego kanału (dźwigniowa) i ma lekcję wtrąconą w samouczku tej rodziny. Oba działają jak lupa (§6.2): zamrażają wytrych, napięcie działa dalej, w ciemności są niedostępne. Role, ceny i co dokładnie pokazują: `TOOLS.md` §3.4a, `HUD.md` §4.1 (D-35).
 
 ## 10. Wzór samouczka dla każdej rodziny
 

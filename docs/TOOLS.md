@@ -89,7 +89,27 @@ Zasady wiertarki:
 - Mini-gra jest abstrakcyjna (utrzymanie docisku i chłodzenie), nie pokazuje miejsc wiercenia w realnych zamkach.
 - Gra zawsze proponuje najpierw metody nieniszczące; dialog klienta przypomina, że wiercenie to ostateczność.
 
-### 3.4 Świadomie wykluczone
+### 3.4a Narzędzia obserwacji (D-13, D-35)
+
+Optyka **niczego nie otwiera** i nie zmienia trudności zamka (zasada 1.3): pokazuje to, co gracz już czuje,
+z innej strony. Każde z trzech narzędzi odpowiada na inne pytanie. Wszystkie działają jak lupa (`ONBOARDING.md`
+§6.2): **zamrażają wytrych** w bieżącej pozycji, **lewy kciuk dalej trzyma napięcie**, a napięcie dalej działa
+(drop, stress, binding liczą się normalnie), więc patrzenie kosztuje czas i ryzyko, a nie monety za użycie.
+W trybie „w ciemności” są niedostępne. Nie zużywają się (tylko patyna kosmetyczna). Wszystkie trzy są wymyślone
+i bez marki: `art/blender/optics.py` (modele), `art/blender/cutaway.py --shot loupe|microscope|borescope` (widoki).
+
+| ID | PL / EN | Gdzie | Pytanie, na które odpowiada | Co pokazuje ponad wyczucie | Ograniczenia | Cena | Odblokowanie |
+|---|---|---|---|---|---|---|---|
+| `tl_loupe` | Lupa zegarmistrzowska / Watchmaker's Loupe | kieszeń zwijki, w terenie i w warsztacie | „Jak blisko jest ten stos?” | makro linii podziału przy stosie pod wytrychem: szczelina `near_shear`, przechył `binding` | jedno pole, bez przesuwania; nie rozróżnia rodzaju pinu, dopóki nie stanie na linii | 0 | S3 samouczka pinowej |
+| `tl_microscope` | Mikroskop warsztatowy / Bench Microscope | **tylko warsztat** (wkładka w imadle: samouczki, trening, zlecenia „przynieś wkładkę”), stoi na blacie | „Co to za element i co właśnie zrobił?” | ok. 2× powiększenie lupy, wąskie pole, które **przesuwa się wzdłuż linii podziału** (przeciąganie prawym kciukiem po szynie stolika); widać **talię szpulki i ząbki** na linii podziału (`false_set` obok `set`), **zadziory na grocie** (dokładny stopień integralności, `HUD.md` §3), w dźwigniowej krawędzie bramek | nie ma go przy drzwiach; płytka głębia ostrości (ostre jest tylko pasmo linii podziału); w wyzwaniu „Na czas” czas biegnie | 800 | po t4 (pierwsze piny zabezpieczające w serii) |
+| `tl_borescope` | Wziernik / Borescope | zwinięty w ostatniej kieszeni zwijki, w terenie i w warsztacie | „Który stos jest już wysoko, a który za wysoko?” | sonda z bocznym okiem i pierścieniem 6 LED pod wytrychem; od dołu widać **końce pinów dolnych** w suficie kanału: wiszący koniec = spoczynek, koniec w ciemnym pierścieniu otworu = uniesiony do linii, koniec zniknięty głęboko = `overset`. Liczba i kolejność elementów od razu; w dźwigniowej brzuchy dźwigni i głębokość bramek, w tarczowej położenie wcięć | **nie widzi samej linii podziału** (od tego jest lupa); obraz z ekranu urządzenia (lekka beczka, winieta LED); wsunięcie i wyjęcie 0,6 s; przesuw sondy = pierścienie co 5 mm na kablu | 1 100 | po pierwszym zamku dźwigniowym (krok 4) |
+
+Dlaczego tak: lupa uczy patrzeć na linię podziału, mikroskop uczy rozpoznawać elementy (szpulka vs prosty pin) w
+spokojnym warsztacie, zanim gracz spotka je pod presją, a wziernik daje w terenie drugi punkt widzenia, który przyda
+się dopiero tam, gdzie lupa nie sięga (dźwignie i tarcze leżą głęboko). Żadne z nich nie „rozwiązuje” zamka:
+nie pokazuje kolejności wiązania ani okna napięcia.
+
+### 3.5 Świadomie wykluczone
 
 Nie wprowadzamy narzędzi, które w realnym świecie służą głównie obejściu zabezpieczeń bez umiejętności lub mają
 charakter instruktażowy dla przestępstw: klucze udarowe (bump), narzędzia do łamania wkładek, podkładki do obejścia
@@ -107,6 +127,8 @@ Monety (orientacyjnie, do PROGRESSION.md): zamek = `10 × tier` + premia „czys
 | 2 | po 1. zamku t2 | Ciągadło kabłąka | 150 | ring_combo |
 | 3 | po 5 zamkach t2 | Falownik | 350 | technika „fali” na płytkach |
 | 4 | po t3 | Korba dźwigniowa | 500 | lever (+ detektor w F1/MVP opc.) |
+| 4a | po t4 | Mikroskop warsztatowy | 800 | rozpoznawanie szpulki i ząbków w warsztacie (§3.4a) |
+| 4b | po 1. zamku dźwigniowym | Wziernik | 1 100 | podgląd elementów od dołu, w głąb kanału (§3.4a) |
 | 5 | po t3 (F1) | Klin dwustronny | 700 | wafer_double |
 | 6 | po t4 | Napinacz listwowy | 600 | pin_tumbler „wąski” t5+ |
 | 7 | po t4 (F1) | Koronka | 900 | tubular |

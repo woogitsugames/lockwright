@@ -54,7 +54,7 @@ Nic poza tym. W szczególności brak: licznika monet, numeru zamka w serii, nazw
 | **Złamanie** | grot zostaje w kanale, rękojeść odskakuje 6 dp, odłamek ląduje na progu/blacie i zostaje tam do końca zamka | `break` | trzask, potem 150 ms ciszy | trzask |
 | **Zużycie narzędzia** | **zadziory i nacięcia na grocie** w 5 stopniach (integralność 100 / 80 / 60 / 40 / 20), widoczne w scenie i wyraźnie w lupie/mikroskopie; trzon dostaje patynę | `ToolCondition.wear` (0–100) | tarcie bardziej szorstkie | szorstkość tarcia |
 | **Życia (zapasowe wytrychy)** | **wytrychy w kieszeniach zwijki**: 3 kieszenie, pełna = wystaje rękojeść, pusta = zapadnięta skóra z odciśniętym kształtem | po `break` widmo dłoni (lub sam gracz w 0,5 s automatycznie) wyjmuje nowy wytrych z kieszeni; kieszeń pustoszeje | szelest skóry | szelest |
-| **Lupa / mikroskop** | lupa leży w kieszeni zwijki; mikroskop stoi na blacie (tylko w warsztacie) | dotyk → okular (`ONBOARDING.md` §6) | szklany brzęk | niedostępne (kieszeń zapięta) |
+| **Lupa / mikroskop / wziernik** | lupa leży w kieszeni zwijki; wziernik zwinięty w ostatniej kieszeni; mikroskop stoi na blacie (tylko w warsztacie) | dotyk → okular lub ekran wziernika (§4.1, `ONBOARDING.md` §6) | szklany brzęk; wziernik: szelest oplotu i cichy klik diod | niedostępne (kieszenie zapięte) |
 | **Czas (tylko wyzwanie „Na czas”)** | mechaniczny minutnik kuchenny / stoper na progu obok drzwi, wskazówka biegnie | czas zamka | ciche tykanie (wyłączalne) | tykanie |
 | **Seria, monety, klient** | **brak w zamku**. Są na karcie zlecenia przed (§7) i na rachunku po (§8) | — | — | — |
 
@@ -66,10 +66,26 @@ Reguły:
 ## 4. Zwijka
 
 - Skóra (ziarno, przetarcia, przeszycia), rozwinięta na progu lub blacie, zajmuje dolne ~30% ekranu w pionie.
-- **Kieszenie** (od lewej): napinacz zapasowy · 3 kieszenie wytrychów (życia) · lupa. Każda ≥ 48 dp szerokości. Rękojeści mają radełkowanie z `TOOLS.md` §3 (kreski, kropki, krzyżyki), więc rozróżnia się je bez koloru.
+- **Kieszenie** (od lewej): napinacz zapasowy · 3 kieszenie wytrychów (życia) · lupa · wziernik (od kroku 4b, `TOOLS.md` §4; zwinięty oplot, wystaje stalowa główka). Każda ≥ 48 dp szerokości. Rękojeści mają radełkowanie z `TOOLS.md` §3 (kreski, kropki, krzyżyki), więc rozróżnia się je bez koloru.
 - **Strefy kciuków** są wytłoczone w skórze jako dwa bardzo płytkie, szerokie owale (relief, kontrast ≤ 1,3:1 do reszty skóry), widoczne tylko pod światłem jak naturalne wgniecenia od używania. Nie są przyciskami i nie mają obrysu.
 - Zwijka nie jest menu. Dotknięcie kieszeni wytrycha nic nie robi (wymiana narzędzia w zamku to `tool_swap`, który w v0.1 rodzin pin/wafer nie występuje). Dotknięcie lupy otwiera okular. Klapka w rogu to pauza.
 - Klient z Trybu Zleceń nie „wchodzi” do zwijki. Jeśli trzeba pokazać upływ czasu zlecenia, robi to scena (ktoś stoi za plecami: cień na drzwiach, kroki) i to tylko poza mechaniką.
+
+### 4.1 Narzędzia obserwacji: lupa, mikroskop, wziernik (D-13, D-35)
+
+Wspólna gramatyka: dotknięcie narzędzia → czarne otoczenie i **jedno okrągłe pole** obrazu z tej samej sceny 3D (inna kamera, nie rysunek), klapka „X” 48 dp w rogu jako jedyne wyjście poza ponownym dotknięciem narzędzia. Wejście i wyjście 180 ms (przesłona). Wytrych zamrożony, napięcie działa. Bez poświaty, neonu, ramek „HUD”, liczb i podpisów w kadrze. Zdanie ślusarza pod polem (głos z `DESIGN.md` §3) pojawia się tylko w samouczku i lekcjach wtrąconych.
+
+| | Lupa | Mikroskop | Wziernik |
+|---|---|---|---|
+| Makieta | `mockups/realizm/02-loupe.html` | `03-microscope.html` | `04-borescope.html` |
+| Render | `art/renders/loupe.png` | `art/renders/microscope_view.png` | `art/renders/borescope_view.png` |
+| Kamera | przed płaszczyzną cięcia, pole ~8 mm, f/22 | przed cięciem, pole ~5 mm, płytka głębia (ostre pasmo linii podziału), pierścień LED wokół obiektywu | w kanale nieprzeciętej wkładki, boczne oko pod stosem z wytrychem, pierścień 6 LED, lekka beczka |
+| Optyka (postprodukcja) | winieta okularu w CSS | lekka aberracja barwna rosnąca ku brzegowi + winieta (kompozytor) | lekka beczka + winieta LED (kompozytor) |
+| Drugi gest | brak | przeciąganie prawym kciukiem = przesuw stolika wzdłuż linii podziału; szyna z podziałką pod polem pokazuje, gdzie jesteśmy | przeciąganie prawym kciukiem = wsuwanie/wysuwanie sondy; pierścienie co 5 mm na kablu mijają stałą kreskę |
+| Czytanie w skali szarości | ciemna szczelina między jasnym mosiądzem a niklem | ciemna linia podziału ciągnie się przez całą szerokość pola; talia szpulki to ciemna przewężka **na** tej linii | wiszący koniec pinu = jasna kopułka; uniesiony = kopułka w ciemnym pierścieniu otworu; overset = otwór bez kopułki |
+| Dźwięk / haptyka przy otwarciu | szklany brzęk / brak | stuk metalu o blat, cichy szum zębatki ostrości / brak | szelest oplotu, klik diod / brak |
+
+Mikroskop jest **meblem warsztatu**, nie kieszenią: w terenie go nie ma, więc ekran zamka przy drzwiach nigdy go nie pokazuje. W warsztacie stoi obok imadła i dotyka się go tak jak lupy. Ekran zakupu w warsztacie to blat z przedmiotami i papierowymi metkami (`05-workshop-optics.html`, D-25): bez kart, bez cen „w kafelkach”.
 
 ## 5. Dotyk: strefy kciuków i odcisk kciuka
 
@@ -280,4 +296,4 @@ Każdy zrzut ekranu zamka (makieta i gra) przechodzi przed pokazaniem właścici
 
 - `game/scenes/lock.tscn`: `PauseMenu` (tytuł, przyciski, `DarkModeCheck`) i `PauseButton` z tekstem `lock.pause` zastąpić klapką zwijki (§6). Do zrobienia przez programistę gry, nie w tym etapie.
 - `game/scripts/lock/input_sampler.gd`: strefy w dolnych 45% i mapowanie względne (§5.1, D-24).
-- Klucze i18n (PL + EN): `hud.pause.resume`, `hud.pause.light`, `hud.pause.reading_aid`, `hud.pause.audio_haptics`, `hud.pause.quit`, `hud.stamp.clean`, `hud.stamp.dark`, `hud.stamp.master`, `hud.receipt.*` (pozycje rachunku), `hud.caption.<event>` (tabela §9.1), `hud.dispatch.sender`, `hud.run_end.*`. Teksty stempli i napisów są krótkie, bo muszą zmieścić się na pieczątce i pasku.
+- Klucze i18n (PL + EN): `hud.optics.loupe.hint`, `hud.optics.microscope.hint`, `hud.optics.borescope.hint`, `hud.optics.close` (etykieta dostępności klapki X), `tool.tl_microscope.name/note`, `tool.tl_borescope.name/note`, `hud.pause.resume`, `hud.pause.light`, `hud.pause.reading_aid`, `hud.pause.audio_haptics`, `hud.pause.quit`, `hud.stamp.clean`, `hud.stamp.dark`, `hud.stamp.master`, `hud.receipt.*` (pozycje rachunku), `hud.caption.<event>` (tabela §9.1), `hud.dispatch.sender`, `hud.run_end.*`. Teksty stempli i napisów są krótkie, bo muszą zmieścić się na pieczątce i pasku.
