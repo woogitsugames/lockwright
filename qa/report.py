@@ -127,5 +127,9 @@ if infra_fail:
     print('::error title=QA workflow::bot did not finish (no QA_REPORT, timeout or engine crash) - see career.log')
 if os.environ.get('QA_STRICT') == '1' and verdict != 'OK':
     sys.exit(1)
-if os.environ.get('QA_FAIL_ON_INFRA') == '1' and infra_fail:
+# blockers: the game cannot be played at all (a GDScript that does not compile, or no lock reached) -> red run
+blocker = bool(script_errors) or (bot and not bot.get('locks'))
+if blocker:
+    print('::error title=QA gry: bloker::' + (script_errors[0][:200] if script_errors else 'no lock was reached in the whole career'))
+if os.environ.get('QA_FAIL_ON_INFRA') == '1' and (infra_fail or blocker):
     sys.exit(2)

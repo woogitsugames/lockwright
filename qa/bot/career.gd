@@ -301,7 +301,7 @@ func _play_lock() -> bool:
 	entry["events"] = _ev_counts.duplicate()
 	if not entry.has("opened") and _scene_name() != sc:
 		# job locks switch to job_payment in the same physics step that opens them
-		entry["opened"] = _scene_name().get_file() == "job_payment.tscn"
+		entry["opened"] = _scene_name().get_file() in ["job_payment.tscn", "tutorial.tscn"]  # job -> payment, tutorial stage -> next stage
 	var sess: Variant = current_scene.get("session") if current_scene else null
 	if sess != null and sess.has_method("t_step"):
 		entry["session_t_step"] = sess.t_step()

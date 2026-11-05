@@ -691,3 +691,49 @@ Macierz `qa/run_matrix.sh` (5 przebiegów kariery na HEAD): solver / „średni�
   -          git clone --depth 1 https://github.com/godotengine/godot-cpp.git /tmp/godot-cpp
   +          git init -q /tmp/godot-cpp && git -C /tmp/godot-cpp fetch -q --depth 1 https://github.com/godotengine/godot-cpp.git e103d348c4b2d8df7b819126d855e19381cb9a87 && git -C /tmp/godot-cpp checkout -q FETCH_HEAD
   ```
+
+## Runda 5 — 2026-11-05 11:16 (commity sesji B 1deaa00, 828e019; automat QA na HEAD i na kopii z poprawką N-29)
+
+Weryfikacja „naprawione” (z `qa/run_matrix.sh`, `qa/bot/a11y_shots.gd`, logów CI):
+- **N-22, N-23, N-24 → naprawione w 1deaa00** (export-pack z .so i testami, `BasicEnvelopeBuilder` + refleksja `getDuration`, `memnew` bez prefiksu). Stan runów CI — w następnej rundzie CI.
+- **N-19, N-21, N-28 → naprawione w 828e019** (argumenty `screens.gd`, NDK, przypięty godot-cpp) — do potwierdzenia zielonymi runami.
+- **N-14 → naprawione w 828e019, ale nie działa przez N-29.** Na kopii z poprawką N-29: zlecenia pin_tumbler grają własne seedy i tiery (tutorial tier 1, newlyweds tier 2…), nie 42/4.
+- **N-15 → naprawione** (jedna odmowa na wejście; 3 odmowy w karierze).
+- **N-25 → naprawione** (napiwki: gra = `econ_sim` ±1% na 19 zleceniach).
+- **N-13 → naprawione w 828e019 (`Events`), ale nie działa przez N-29.** Na kopii z poprawką N-29 kariera: **19/29 zleceń** (wszystkie widoczne poza 3 odmowami), **samouczek ukończony** (pierwszy raz od początku przeglądów — N-09 też ✅), 0 soft-locków, 0 brakujących kluczy, 0 błędów skryptów.
+- **A-11 → naprawione** (150% tekstu: najmniejszy font 16 → 24 px).
+- **A-10 → częściowo:** poprawne przeliczenie jednostek; na telefonie (okno = ekran) zadziała. Na desktopie/CI (okno 412×915 na ekranie 1400×3000) `get_display_safe_area()` zwraca obszar **ekranu**, a nie okna → `offset_right/bottom` dodatnie, menu wychodzi poza widok (zrzuty `a11y_shots`: listy 1400 px szerokości). Poprawka (Low, dotyczy edytora, CI i zrzutów):
+  ```diff
+  +	# desktop / editor: the display safe area is the whole screen, not the window - nothing to inset
+  +	if not OS.has_feature("mobile"):
+  +		return
+   	var k := vp / Vector2(win)
+  ```
+- **N-26 →** do sprawdzenia przy następnych zrzutach EN (po A-10).
+
+**N-29 · High (regresja z 828e019) · `lock_job.gd` nie kompiluje się — żaden zamek pin_tumbler ani samouczek nie startuje** · `game/scripts/lock/lock_job.gd:1`, `game/scenes/lock_job.tscn`
+- Log automatu (HEAD):
+  ```
+  SCRIPT ERROR: Parse Error: Could not resolve super class inheritance from "res://scenes/photoreal/lock_photoreal.tscn".
+            at: GDScript::reload (res://scripts/lock/lock_job.gd:1)
+  ERROR: Failed to load script "res://scripts/lock/lock_job.gd" with error "Parse error".
+  QA_SCENE t=3.2 res://scenes/lock_job.tscn   → ekran bez wyjścia (0 przycisków), kariera 0/29
+  ```
+- Przyczyny: (1) skrypt nie może dziedziczyć po pliku sceny, tylko po skrypcie; (2) `lock_job.tscn` to pusty `Node` — nie ma `ViewLayer/View`, `InputSampler`, `UILayer/PauseCover`, których potrzebuje `_ready()` sceny planu B.
+- Poprawka (sprawdzona na kopii `game/`: kariera 19/29, samouczek ukończony, 0 soft-locków):
+  ```diff
+  --- game/scripts/lock/lock_job.gd
+  -extends "res://scenes/photoreal/lock_photoreal.tscn"
+  +extends "res://scripts/photoreal/lock_photoreal.gd"
+  --- game/scenes/lock_job.tscn
+  -[gd_scene load_steps=2 format=3 uid="uid://c7lockj0bscen3"]
+  -[ext_resource type="Script" path="res://scripts/lock/lock_job.gd" uid="uid://b7lockj0bwrapp3r" id="1"]
+  -[node name="LockJob" type="Node"]
+  -script = ExtResource("1")
+  +[gd_scene load_steps=3 format=3 uid="uid://c7lockj0bscen3"]
+  +[ext_resource type="PackedScene" path="res://scenes/photoreal/lock_photoreal.tscn" id="1"]
+  +[ext_resource type="Script" path="res://scripts/lock/lock_job.gd" uid="uid://b7lockj0bwrapp3r" id="2"]
+  +[node name="LockJob" instance=ExtResource("1")]
+  +script = ExtResource("2")
+  ```
+- Dlaczego CI tego nie złapało: `game-tests` (GUT) nie ładuje sceny zamka, a `qa-career` zgłasza problemy gry jako ostrzeżenia ⚠ (run zielony z adnotacją „ekran bez wyjścia”). Od tej rundy `qa-career` traktuje **błąd skryptu GDScript** jak awarię (czerwony run) — patrz niżej.

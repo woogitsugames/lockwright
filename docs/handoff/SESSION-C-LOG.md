@@ -159,3 +159,10 @@ Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-d
 - `spike-determinism-apk` run 3 (42012656332, commit 1117b9c): **API 34 — 630/630 powtórek zgodnych**, `LW_DET_DONE platform=Android arch=arm64 replays=630 ok=630 bad=0`, digest urządzenia = digest hosta (`e091167f18b6…`), 5,1 s na odtworzenie korpusu. To `lockcore_gd` arm64 z APK w prawdziwym runtime Godota na Androidzie (na emulatorze x86_64 przez translację ARM).
 - API 30: job wciąż trwa (czeka do 900 s na wynik) — sprawdzę w rundzie 11:06.
 - Zadanie 10 etapu 3: **gotowe** (API 34); natywny arm64 na telefonie: to samo APK (artefakt `det-apk`) pokaże wynik na ekranie.
+
+## 2026-11-05 11:17 — runda godzinna (etap 4)
+- **Dostawy ChatGPT:** 19 z 30 (G03, G07, G08, G10, G15, S01–S04, T01–T10). Przyjęte 17 (w tym warunkowo / z uwagą S01, S02, S03 — odsłuch właściciela), do poprawki 2: G03 (mapy PNG tylko „w ZIP-ie poza repo”), T10 („pin master lock” koliduje z marką Master Lock). Odrzucone 0. Szczegóły: `contrib/REVIEW.md`.
+- **Sesja B naprawiła** N-14, N-15, N-22…N-26, A-11 (i N-19/N-21/N-28 w workflowach). **Nowa regresja N-29 (High):** `lock_job.gd` dziedziczy po pliku .tscn → nie kompiluje się, żaden zamek pin_tumbler ani samouczek nie startuje (kariera 0/29). Poprawka (2 linie + scena dziedzicząca) sprawdzona na kopii gry: **19/29, samouczek ukończony po raz pierwszy, 0 soft-locków**.
+- **qa-career:** błąd skryptu GDScript albo kariera bez żadnego zamka = czerwony run (bloker); pozostałe problemy gry nadal jako ⚠.
+- **Determinizm APK:** API 34 ✅ 630/630; API 30 — aplikacja startuje, ale bez wyniku w 15 min (starsza translacja ARM/GLES w obrazie) → job informacyjny (`continue-on-error`), w logu wydruk logcat.
+- RELEASE-CHECKLIST zaktualizowana (T9, T11, C2, C7, A2, A4).

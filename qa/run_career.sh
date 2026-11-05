@@ -10,7 +10,7 @@ GODOT=${1:-godot}
 TIMEOUT=${2:-1800}
 WORK=${QA_WORK:-/tmp/lw_qa_game}
 OUT=${QA_OUT:-$HERE/out}
-rm -rf "$WORK" && cp -r "$ROOT/game" "$WORK" && rm -rf "$WORK/.godot"
+rm -rf "$WORK" && cp -r "${QA_GAME:-$ROOT/game}" "$WORK" && rm -rf "$WORK/.godot"
 mkdir -p "$WORK/qa_bot" "$OUT"
 cp "$HERE/bot/"*.gd "$WORK/qa_bot/"
 # fresh user:// (custom user dir name) so every run starts a new career

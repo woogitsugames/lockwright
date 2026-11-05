@@ -1,6 +1,6 @@
 # Lista kontrolna przed wydaniem 1.0
 
-Prowadzi: sesja C (etap 4, zadanie 4). Stan na **2026-11-05 10:28 UTC**. Aktualizuję przy każdej rundzie przeglądu.
+Prowadzi: sesja C (etap 4, zadanie 4). Stan na **2026-11-05 11:17 UTC**. Aktualizuję przy każdej rundzie przeglądu.
 Legenda stanu: ✅ gotowe · 🟡 częściowo / w toku · ❌ brak / czerwone · ⏸ czeka na decyzję lub dane właściciela.
 Odpowiedzialni: **A** (lockcore, art, mockups, `game/*/photoreal/`), **B** (`game/`, `platform/`, `data/`, `game-*.yml`),
 **C** (QA, sklep, prawo, strona, audyty), **W** (właściciel).
@@ -19,7 +19,7 @@ Odpowiedzialni: **A** (lockcore, art, mockups, `game/*/photoreal/`), **B** (`gam
 | T8 | Opóźnienia haptyki i dźwięku (spike 1–3) | progi `TECH.md` §4 | ⏸ aplikacja „LW Pomiary” gotowa, pomiar właściciela | W | `POMIARY.md` §1–6 |
 | T9 | Determinizm lockcore na urządzeniach | identyczne hashe powtórek host ↔ arm64 | ✅ qemu/macOS (spike-determinism); ✅ APK arm64 w emulatorze Android 14: 630/630, digest = host (run 42012656332); 🟡 API 30 i telefon natywny | C | `spike-determinism-apk`, `spikes/determinism/README.md` |
 | T10 | Crash-free | ≥ 99,5% sesji w teście zamkniętym (Play Console vitals / TestFlight) | ⏸ wymaga testu w sklepach | W, B | `TESTY-SKLEPY.md` |
-| T11 | Kariera przechodnia bez soft-locków | `qa-career`: 0 soft-locków, 0 ekranów bez wyjścia | ❌ 10 soft-locków (N-13) | B (A: scena planu B) | `qa-career` raport, N-13…N-15 |
+| T11 | Kariera przechodnia bez soft-locków | `qa-career`: 0 soft-locków, 0 ekranów bez wyjścia | ❌ HEAD: bloker N-29 (`lock_job.gd` nie kompiluje się, 0/29); z poprawką N-29 (2 linie): ✅ 19/29 (wszystkie widoczne poza odmowami), samouczek ukończony, 0 soft-locków | B | `SESSION-C-REVIEW.md` runda 5, `qa/run_matrix.sh` |
 | T12 | Brak `float` w lockcore, testy i fuzz | `ctest`, fuzz 100k | ✅ | A | workflow `lockcore` |
 | T13 | Auto-pauza przy wyjściu z aplikacji, zapis stanu | zachowanie R-03 | 🟡 w `lock_scene.gd`; ekran planu B do sprawdzenia | B, A | `lock_photoreal.gd` |
 
@@ -28,12 +28,12 @@ Odpowiedzialni: **A** (lockcore, art, mockups, `game/*/photoreal/`), **B** (`gam
 | # | Punkt | Wymaganie | Stan | Odp. | Dowód |
 |---|---|---|---|---|---|
 | C1 | i18n PL + EN 100% | każdy klucz w obu językach, brak tekstów na sztywno | ✅ `loc_qa.py`: OK (105 + 357 wierszy); 🟡 ostrzeżenia o długości EN (np. `job.refuse_rush_bribe.title`) | B | `data/tools/loc_qa.py` |
-| C2 | Ucięte teksty na ekranach (PL, EN, 150% tekstu) | brak | ❌ menu poza ekranem (A-10), skalowanie nie działa (A-11) | B | `A11Y-AUDIT.md` runda 2 |
+| C2 | Ucięte teksty na ekranach (PL, EN, 150% tekstu) | brak | 🟡 skalowanie ✅ (A-11); safe-area poprawna na telefonie, na desktopie/CI nadal poza ekranem (A-10) → zrzuty EN do powtórzenia | B | `A11Y-AUDIT.md`, `SESSION-C-REVIEW.md` runda 5 |
 | C3 | Notka „to gra, nie kurs” | w grze (O grze + start), w sklepie, na stronie | 🟡 gra: `about.notice` ✅, start: panel 3 s (N-12); sklep ✅; strona ✅ | B, C | `store/legal/notice_*.md`, `site/` |
 | C4 | Licencje zasobów | każdy plik w `docs/ASSETS.md` (własne / CC0 / OFL / AI z promptem, D-42) | 🟡 do sprawdzenia przed wydaniem automatem (lista plików `game/` vs ASSETS) | C | `docs/ASSETS.md` |
 | C5 | `THIRD-PARTY-NOTICES` w aplikacji (Godot MIT, FreeType, ICU…, godot-cpp, fonty OFL) | ekran „Licencje” lub plik w aplikacji | ❌ pliku nie ma w repo | B, C (lista) | `store/legal/DEPENDENCIES.md` (zad. 8) |
 | C6 | Brak marek, brak instruktażu do realnych zamków, ton „pomagamy” | przegląd tekstów i grafik | 🟡 teksty gry przejrzane pod rating (`store/rating.md` §5); dostawy ChatGPT — przegląd na bieżąco | C | `contrib/REVIEW.md` |
-| C7 | Odmowy zleceń: jednorazowa nagroda, zapis | JOBS.md §5 | ❌ N-15 | B | `SESSION-C-REVIEW.md` |
+| C7 | Odmowy zleceń: jednorazowa nagroda, zapis | JOBS.md §5 | ✅ N-15 naprawione (828e019) | B | `SESSION-C-REVIEW.md` runda 5 |
 
 ## 3. Sklep
 
@@ -65,9 +65,9 @@ Odpowiedzialni: **A** (lockcore, art, mockups, `game/*/photoreal/`), **B** (`gam
 | # | Punkt | Stan | Odp. | Dowód |
 |---|---|---|---|---|
 | A1 | Cele dotyku ≥ 48 dp, elementy ≥ 28 dp | 🟡 cele ✅; klapka pauzy planu B ~14 dp (A-03) | A | `A11Y-AUDIT.md` |
-| A2 | Safe-area na wszystkich ekranach | ❌ A-10 (regres) | B | `A11Y-AUDIT.md` runda 2 |
+| A2 | Safe-area na wszystkich ekranach | 🟡 A-10: poprawne na telefonie (okno = ekran), na desktopie/CI menu poza widokiem | B | `SESSION-C-REVIEW.md` runda 5 |
 | A3 | Stany rozróżnialne w skali szarości, 3 kanały | ✅ ekran zamka | A, B | `A11Y-AUDIT.md`, `DESIGN.md` §1 |
-| A4 | Rozmiar tekstu, ogranicz ruch | ❌ A-11, A-07 | B, A | `A11Y-AUDIT.md` |
+| A4 | Rozmiar tekstu, ogranicz ruch | 🟡 rozmiar tekstu ✅ (A-11); „ogranicz ruch” — do sprawdzenia (A-07) | B, A | `A11Y-AUDIT.md` |
 | A5 | Krój pisma OFL (nie systemowy jako jedyny) | 🟡 Atkinson ✅, Bona Nova nieużyta | B | `A11Y-AUDIT.md` A-04 |
 | A6 | Tryb „w ciemności”: bez nagród na wyłączność, informacja o dźwięku | ✅ nota w ustawieniach | B | A-06 |
 | A7 | Czytniki ekranu (nazwy elementów bez tekstu) | ❌ A-09 | B, A | `A11Y-AUDIT.md` |
