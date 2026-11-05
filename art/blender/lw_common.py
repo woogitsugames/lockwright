@@ -774,7 +774,7 @@ def _photo_files(tex):
 
 def photo_mat(name, tex, scale=40.0, rot=0.0, plane='XZ', metallic=None, tint=(1.0, 1.0, 1.0), rough_add=0.0, rough_mul=1.0,
               bump=0.35, offset=(0.0, 0.0, 0.0), box_blend=0.25, wear=0.0, grime=0.0, chamfer_matte=0.12, coat=0.0, sheen=0.0,
-              flat=False):
+              flat=False, base=None, base_mix=0.0):
     """Photo-based PBR material (art/textures/photo/<tex>/ or 'g03:<name>' for the G03 wood set) for meshes without UVs:
     object-space box projection, `scale` = mm per texture repeat, `rot` = degrees of rotation in the projection
     plane (machining direction), height map as bump (no tangents needed). Metals keep roughness >= 0.16, chamfers
@@ -807,6 +807,8 @@ def photo_mat(name, tex, scale=40.0, rot=0.0, plane='XZ', metallic=None, tint=(1
         else: t.extension = 'EXTEND'
         l.new(V, t.inputs['Vector']); return t.outputs['Color']
     col = img(alb, True)
+    if base is not None and base_mix:  # pull the photo towards a reference colour (keeps detail, fixes hue / contrast)
+        col = _mix(nt, col, (*base, 1), base_mix)
     if tuple(tint) != (1.0, 1.0, 1.0):
         col = _mix(nt, col, (*tint, 1), 1.0, mode='MULTIPLY')
     r = img(rgh, False)
@@ -836,11 +838,11 @@ def photo_mat(name, tex, scale=40.0, rot=0.0, plane='XZ', metallic=None, tint=(1
 def photo_cutaway_set():
     """Photo replacements for the shared M dict used by cutaway.py (pin tumbler section)."""
     return {
-        'brass':   photo_mat('ph_brass_milled', 'brass_face_milled', scale=60, rot=42, tint=(1.12, 1.02, 0.88), bump=0.18, wear=0.3, grime=0.4),
-        'brass_k': photo_mat('ph_brass_turned', 'brass_turned', scale=24, rot=90, tint=(1.05, 1.0, 0.92), wear=0.4),
-        'nickel':  photo_mat('ph_nickel', 'nickel_satin', scale=45, rot=0, wear=0.2, grime=0.5),
-        'steel':   photo_mat('ph_steel_ground', 'steel_ground', scale=18, rot=90, tint=(0.85, 0.86, 0.88), grime=0.3),
+        'brass':   photo_mat('ph_brass_milled', 'brass_face_milled', scale=60, rot=42, base=(0.86, 0.62, 0.30), base_mix=0.55, bump=0.15, wear=0.3, grime=0.4),
+        'brass_k': photo_mat('ph_brass_turned', 'brass_turned', scale=24, rot=90, base=(0.90, 0.68, 0.36), base_mix=0.4, wear=0.4),
+        'nickel':  photo_mat('ph_nickel', 'nickel_satin', scale=60, rot=0, base=(0.60, 0.60, 0.58), base_mix=0.35, wear=0.2, grime=0.5),
+        'steel':   photo_mat('ph_steel_ground', 'steel_ground', scale=40, rot=0, base=(0.50, 0.51, 0.53), base_mix=0.45, bump=0.15, grime=0.3),
         'pick':    photo_mat('ph_spring', 'spring_steel_polished', scale=30, rot=0, bump=0.15),
-        'iron':    photo_mat('ph_iron', 'iron_painted_rust', scale=140, metallic=0.0, rough_add=0.05, grime=0.4),
+        'iron':    photo_mat('ph_iron', 'iron_painted_rust', scale=320, offset=(60, 0, 40), metallic=0.0, rough_add=0.05, grime=0.4),
         'wood':    photo_mat('ph_oak', 'g03:oak_satin', scale=260, rot=0, metallic=0.0, coat=0.35, bump=0.3, grime=0.5),
     }
