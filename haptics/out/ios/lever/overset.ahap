@@ -1,0 +1,25 @@
+{
+  "Metadata": {
+    "Description": "lever / overset / brass (k 1.1, dS -0.1); FEEL §2 overset",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.66
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.0
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.0
+      }
+    }
+  ],
+  "Version": 1.0
+}

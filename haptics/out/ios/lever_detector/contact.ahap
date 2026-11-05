@@ -1,0 +1,25 @@
+{
+  "Metadata": {
+    "Description": "lever_detector / contact / brass (k 1.1, dS -0.1); FEEL §2 contact",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.33
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.6
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.0
+      }
+    }
+  ],
+  "Version": 1.0
+}

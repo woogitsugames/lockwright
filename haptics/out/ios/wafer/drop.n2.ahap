@@ -1,0 +1,41 @@
+{
+  "Metadata": {
+    "Description": "wafer / drop / brass (k 0.85, dS 0.05); FEEL §2 drop, §1.1, §9 events.drop.ios.count_from_event; cascade of 2",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.595
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.65
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.0
+      }
+    },
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.34
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.65
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.04
+      }
+    }
+  ],
+  "Version": 1.0
+}

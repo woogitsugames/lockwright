@@ -1,0 +1,70 @@
+{
+  "Metadata": {
+    "Description": "ring_combo / open / brass (k 0.9, dS 0.0); FEEL §2 open, §1.1",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventDuration": 0.3,
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.27
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.4
+          },
+          {
+            "ParameterID": "AttackTime",
+            "ParameterValue": 0.0
+          },
+          {
+            "ParameterID": "ReleaseTime",
+            "ParameterValue": 0.02
+          },
+          {
+            "ParameterID": "Sustained",
+            "ParameterValue": 1.0
+          }
+        ],
+        "EventType": "HapticContinuous",
+        "Time": 0.0
+      }
+    },
+    {
+      "ParameterCurve": {
+        "ParameterCurveControlPoints": [
+          {
+            "ParameterValue": 0.0,
+            "Time": 0.0
+          },
+          {
+            "ParameterValue": 1.0,
+            "Time": 0.3
+          }
+        ],
+        "ParameterID": "HapticIntensityControl",
+        "Time": 0.0
+      }
+    },
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.9
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.6
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.3
+      }
+    }
+  ],
+  "Version": 1.0
+}

@@ -1,0 +1,41 @@
+{
+  "Metadata": {
+    "Description": "lever_detector / drop / brass (k 1.1, dS -0.1); FEEL §2 drop, §1.1, §9 events.drop.ios.count_from_event; cascade of 2",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.77
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.5
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.0
+      }
+    },
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.44
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.5
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.04
+      }
+    }
+  ],
+  "Version": 1.0
+}

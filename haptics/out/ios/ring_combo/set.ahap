@@ -1,0 +1,25 @@
+{
+  "Metadata": {
+    "Description": "ring_combo / set / brass (k 0.9, dS 0.0); FEEL §2 set; gate_align of the same step folded in (sound -6 dB + image only, FEEL §3.5/§3.7, F-05)",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.81
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.85
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.0
+      }
+    }
+  ],
+  "Version": 1.0
+}

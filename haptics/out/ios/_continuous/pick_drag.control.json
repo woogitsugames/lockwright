@@ -1,0 +1,134 @@
+{
+  "budget_note": "Clamp the final sharpness of this channel to budget_sharpness_max after material x family modifiers (only stress may exceed it, max 4 s; FEEL §5.1). Without the clamp pick_drag reaches 0.80 in wafer (0.75 + family dS +0.05).",
+  "budget_sharpness_max": 0.75,
+  "control_table": [
+    [
+      0.0,
+      0.05,
+      0.55,
+      -0.1
+    ],
+    [
+      0.1,
+      0.07,
+      0.57,
+      -0.08
+    ],
+    [
+      0.2,
+      0.09,
+      0.59,
+      -0.06
+    ],
+    [
+      0.3,
+      0.11,
+      0.61,
+      -0.04
+    ],
+    [
+      0.4,
+      0.13,
+      0.63,
+      -0.02
+    ],
+    [
+      0.5,
+      0.15,
+      0.65,
+      0.0
+    ],
+    [
+      0.6,
+      0.17,
+      0.67,
+      0.02
+    ],
+    [
+      0.7,
+      0.19,
+      0.69,
+      0.04
+    ],
+    [
+      0.8,
+      0.21,
+      0.71,
+      0.06
+    ],
+    [
+      0.9,
+      0.23,
+      0.73,
+      0.08
+    ],
+    [
+      1.0,
+      0.25,
+      0.75,
+      0.1
+    ]
+  ],
+  "control_table_columns": [
+    "input_0_1",
+    "intensity_control",
+    "sharpness_target",
+    "sharpness_control"
+  ],
+  "per_family": {
+    "lever": {
+      "ds": -0.1,
+      "k": 1.1,
+      "material": "brass"
+    },
+    "lever_detector": {
+      "ds": -0.1,
+      "k": 1.1,
+      "material": "brass"
+    },
+    "pin_tumbler": {
+      "ds": 0.0,
+      "k": 1.0,
+      "material": "brass"
+    },
+    "ring_combo": {
+      "ds": 0.0,
+      "k": 0.9,
+      "material": "brass"
+    },
+    "wafer": {
+      "ds": 0.05,
+      "k": 0.85,
+      "material": "brass"
+    },
+    "warded": {
+      "ds": -0.1,
+      "k": 1.1,
+      "material": "iron"
+    },
+    "wooden_pin": {
+      "ds": -0.25,
+      "k": 0.9,
+      "material": "wood"
+    }
+  },
+  "rules": {
+    "idle": {
+      "after_ms": 1500,
+      "fade_ms": 300
+    },
+    "intensity_map": "I = 0.05 + 0.20 * v (v = normalised pick speed 0..1)",
+    "micro_transient": {
+      "I": 0.15,
+      "S": 0.7,
+      "limit_per_s": 20
+    },
+    "sharpness_range": [
+      0.55,
+      0.75
+    ]
+  },
+  "signal": "pick_drag",
+  "source": "FEEL §2 continuous, TECH §3.3",
+  "template": "pick_drag.ahap"
+}

@@ -1,0 +1,116 @@
+{
+  "chain": [
+    {
+      "limit_per_s": 12,
+      "micro": [
+        "TICK",
+        0.15
+      ],
+      "tier": "a2"
+    },
+    {
+      "effect": "EFFECT_TICK",
+      "limit_per_s": 6,
+      "tier": "a1"
+    },
+    {
+      "skip": true,
+      "tier": "a0"
+    }
+  ],
+  "per_family": {
+    "lever": {
+      "ds": -0.1,
+      "k": 1.1,
+      "material": "brass"
+    },
+    "lever_detector": {
+      "ds": -0.1,
+      "k": 1.1,
+      "material": "brass"
+    },
+    "pin_tumbler": {
+      "ds": 0.0,
+      "k": 1.0,
+      "material": "brass"
+    },
+    "ring_combo": {
+      "ds": 0.0,
+      "k": 0.9,
+      "material": "brass"
+    },
+    "wafer": {
+      "ds": 0.05,
+      "k": 0.85,
+      "material": "brass"
+    },
+    "warded": {
+      "ds": -0.1,
+      "k": 1.1,
+      "material": "iron"
+    },
+    "wooden_pin": {
+      "ds": -0.25,
+      "k": 0.9,
+      "material": "wood"
+    }
+  },
+  "priority": 13,
+  "rule": "A2 uses the a1 waveform segment for tension (TECH §2.2 'A2: jak A1'); A0: none.",
+  "selection": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 2,
+      "summary": "skip (sound + image only)"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 1,
+      "summary": "EFFECT_TICK, <= 6/s"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "micro TICK 0.15, <= 12/s"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "micro TICK 0.15, <= 12/s"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "micro TICK 0.15, <= 12/s"
+    }
+  },
+  "selection_min_primitives": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 2,
+      "summary": "skip (sound + image only)"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 1,
+      "summary": "EFFECT_TICK, <= 6/s"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "micro TICK 0.15, <= 12/s"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "micro TICK 0.15, <= 12/s"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "micro TICK 0.15, <= 12/s"
+    }
+  },
+  "signal": "pick_drag",
+  "source": "docs/FEEL.md §2 (continuous) + bank.continuous.pick_drag"
+}

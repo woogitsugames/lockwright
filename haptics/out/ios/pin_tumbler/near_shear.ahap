@@ -1,0 +1,25 @@
+{
+  "Metadata": {
+    "Description": "pin_tumbler / near_shear / brass (k 1.0, dS 0.0); FEEL §2 near_shear (+ §9 events.near_shear.ios.entry_tick_*)",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.12
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.8
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.0
+      }
+    }
+  ],
+  "Version": 1.0
+}

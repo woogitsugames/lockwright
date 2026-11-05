@@ -1,0 +1,41 @@
+{
+  "Metadata": {
+    "Description": "pin_tumbler / false_set / brass (k 1.0, dS 0.0); FEEL §2 false_set, §1.1, F-01, §3.5; second impulse at +28 ms (families.pin_tumbler.false_set_second_delay_ms)",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.85
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.75
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.0
+      }
+    },
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.25
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.3
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.028
+      }
+    }
+  ],
+  "Version": 1.0
+}

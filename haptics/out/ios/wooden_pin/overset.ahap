@@ -1,0 +1,25 @@
+{
+  "Metadata": {
+    "Description": "wooden_pin / overset / wood (k 0.9, dS -0.25); FEEL §2 overset",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.54
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.0
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.0
+      }
+    }
+  ],
+  "Version": 1.0
+}

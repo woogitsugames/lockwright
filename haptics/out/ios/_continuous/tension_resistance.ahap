@@ -1,0 +1,62 @@
+{
+  "Metadata": {
+    "Description": "tension_resistance: looping template (CHHapticAdvancedPatternPlayer, loopEnabled, loopEnd 30.0 s). Event I 1.0, S 0.275; drive HapticIntensityControl (multiplier 0..1) = I = 0.10 + 0.45 * r^1.5 (r = resistance 0..1) x k_material x k_family x slider, HapticSharpnessControl (offset -1..1) = S_target - 0.275; sendParameters <= 60 Hz. FEEL §2 continuous, TECH §3.3",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventDuration": 30.0,
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 1.0
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.275
+          },
+          {
+            "ParameterID": "AttackTime",
+            "ParameterValue": 0.0
+          },
+          {
+            "ParameterID": "ReleaseTime",
+            "ParameterValue": 0.0
+          },
+          {
+            "ParameterID": "Sustained",
+            "ParameterValue": 1.0
+          }
+        ],
+        "EventType": "HapticContinuous",
+        "Time": 0.0
+      }
+    },
+    {
+      "ParameterCurve": {
+        "ParameterCurveControlPoints": [
+          {
+            "ParameterValue": 0.1,
+            "Time": 0.0
+          }
+        ],
+        "ParameterID": "HapticIntensityControl",
+        "Time": 0.0
+      }
+    },
+    {
+      "ParameterCurve": {
+        "ParameterCurveControlPoints": [
+          {
+            "ParameterValue": 0.0,
+            "Time": 0.0
+          }
+        ],
+        "ParameterID": "HapticSharpnessControl",
+        "Time": 0.0
+      }
+    }
+  ],
+  "Version": 1.0
+}

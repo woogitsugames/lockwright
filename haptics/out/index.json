@@ -1,0 +1,2418 @@
+{
+  "continuous": {
+    "pick_drag": {
+      "android": {
+        "file": "android/_continuous/pick_drag.json",
+        "sha256": "7ab18d0acb698ec640b37af19dbfe3aa4614fde6167b73abc671a36adeeb169d"
+      },
+      "ios": {
+        "file": "ios/_continuous/pick_drag.ahap",
+        "sha256": "7c4c71075b12da59b5e66d0be230faa6aa9493ccf3228de87589fbed857d946d"
+      },
+      "ios_control": {
+        "file": "ios/_continuous/pick_drag.control.json",
+        "sha256": "7b76b2383046ce68b0380ab4a9642423a7296d56bed9a05ba6fcf983485cfcc0"
+      }
+    },
+    "tension_resistance": {
+      "android": {
+        "file": "android/_continuous/tension_resistance.json",
+        "sha256": "b50972830b947d96d11caa80e2a27bca67bb5d45e1d55ba3739b88664bb38ff8"
+      },
+      "ios": {
+        "file": "ios/_continuous/tension_resistance.ahap",
+        "sha256": "27af29cd2753021631bb8f3a905e40f15f9031ea27b99f18d4af0bb22c182809"
+      },
+      "ios_control": {
+        "file": "ios/_continuous/tension_resistance.control.json",
+        "sha256": "08700eda3138d21f6aa925f832b36730ee6a3e741fafc223aaa4f7e484d653e9"
+      }
+    }
+  },
+  "counts": {
+    "ahap": 116,
+    "android_event": 73,
+    "family_events_played": 73,
+    "family_events_total": 83,
+    "ios_mod": 51
+  },
+  "families": {
+    "lever": {
+      "delta_sharpness": -0.1,
+      "events": {
+        "bind": {
+          "android": {
+            "file": "android/lever/bind.json",
+            "sha256": "55b77856d28e03d3befba44b6744eb9443cb416ebc36967a53afac9f93503e3b"
+          },
+          "ds": -0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/lever/bind.ahap",
+              "role": "event",
+              "sha256": "4e6a6b565f8b38a7b6102f7544042fddccabd59830249b89f9ad3f1a2a733dab"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever/bind.mod.json",
+            "sha256": "6c671ca28402a7f49e8e73332ea83bf1813154f76013db1dc129372f53e49a08"
+          },
+          "k": 1.1,
+          "material": "brass",
+          "priority": 10,
+          "sfx": {
+            "id": "bind",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "break": {
+          "android": {
+            "file": "android/lever/break.json",
+            "sha256": "d110b5b760bd26fe5018a9474698ee1c3adb95e638252bee33ee6533ab87c78f"
+          },
+          "ds": 0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/lever/break.ahap",
+              "role": "event",
+              "sha256": "1228626314b2bf99c8dd339d147e9b92bd2cb93bb9a00ff3ab67157f11f95b81"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever/break.mod.json",
+            "sha256": "804e0e87979f95c2e1476ae77cca97cb63f1ad4a69cebedfb3daceac3551cdde"
+          },
+          "k": 1.05,
+          "material": "steel",
+          "priority": 1,
+          "sfx": {
+            "duck_all_db": -12,
+            "duck_ms": 300,
+            "id": "break",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "contact": {
+          "android": {
+            "file": "android/lever/contact.json",
+            "sha256": "5034aa665a6b0ba031c5a458bdab437f0ae342713a62e81c835f4eaf39c5fe9d"
+          },
+          "ds": -0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/lever/contact.ahap",
+              "role": "event",
+              "sha256": "ccc15ff87d506c18c34675c7985bb5aa7d6c3bf3ca503f698fedff120233ff84"
+            }
+          ],
+          "k": 1.1,
+          "material": "brass",
+          "priority": 12,
+          "sfx": {
+            "gain_jitter_db": 1.5,
+            "id": "contact",
+            "pitch_jitter": 0.03,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "counter_rotate": {
+          "android": {
+            "file": "android/lever/counter_rotate.json",
+            "sha256": "9bcc81e2a707874f53b755db99cd3469ecc902e1082ffe982db537b3c8d93a98"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/lever/counter_rotate.ahap",
+              "role": "ramp (one-shot, then switch to .loop)",
+              "sha256": "f1f5e8eccb9f74c7b5a207ff0f3805d3ad0c49cdbaef6d5027d241a3e5e40e5e"
+            },
+            {
+              "file": "ios/lever/counter_rotate.loop.ahap",
+              "role": "loop while pressure lasts",
+              "sha256": "1c5f902441a5cc5ee78ff168486e5a002ad6c0c7bb8b8a5df50c57810e8feb9e"
+            }
+          ],
+          "k": 1.1,
+          "material": "brass",
+          "priority": 6,
+          "sfx": {
+            "id": "counter_rotate",
+            "rhythm_from_haptic": true,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "drop": {
+          "android": {
+            "file": "android/lever/drop.json",
+            "sha256": "a2a3e7ac728cc0dddc7921d7689ba5e7b0e139f7a795a76b153dde9d656ce4bd"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/lever/drop.n2.ahap",
+              "role": "count 2 (n = round(2 + 4 * I_event))",
+              "sha256": "fd2d84d2cf787f18ed6ae59c496ae2cf30f308495c1baf802c710ff26e8ec82a"
+            },
+            {
+              "file": "ios/lever/drop.n3.ahap",
+              "role": "count 3 (n = round(2 + 4 * I_event))",
+              "sha256": "c760f4e8d424ef6427c6c296eff4eab557d69ef3df4ff6974469bc2d46aefb02"
+            },
+            {
+              "file": "ios/lever/drop.n4.ahap",
+              "role": "count 4 (n = round(2 + 4 * I_event))",
+              "sha256": "3c391bd2df06af6470c5e5d601a36254d7f461a3a61da4ffbc6cc3ca06539585"
+            },
+            {
+              "file": "ios/lever/drop.n5.ahap",
+              "role": "count 5 (n = round(2 + 4 * I_event))",
+              "sha256": "23e7e8731243683f90af0800e5d6f8911196de46b059fa458fd3a36d7396af70"
+            },
+            {
+              "file": "ios/lever/drop.n6.ahap",
+              "role": "count 6 (n = round(2 + 4 * I_event))",
+              "sha256": "5df09d1c7c67bcc945d9efe45b875912e4814ea9fd06a73947614fcc10b25709"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever/drop.mod.json",
+            "sha256": "9842fd35b0f9db6d4197a25e4e23f65c720e018c674bb0693ca148d04ab5c200"
+          },
+          "k": 1.1,
+          "material": "brass",
+          "priority": 3,
+          "sfx": {
+            "id": "drop",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "false_set": {
+          "android": {
+            "file": "android/lever/false_set.json",
+            "sha256": "13160a1279ac5b7720910f5520c695c03acf43ed01e83ac0ec394f0de8f02b3b"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/lever/false_set.ahap",
+              "role": "event",
+              "sha256": "0230b74e2389b09f6b6209bd5da0995beeee261495fcdbb03fa739cd3415caab"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever/false_set.mod.json",
+            "sha256": "497b10f44a943ca25ce7f52421aa629f26202de8752183b1393becc2cb306f89"
+          },
+          "k": 1.1,
+          "material": "brass",
+          "priority": 5,
+          "sfx": {
+            "id": "false_set",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "gate_align": {
+          "android": null,
+          "ds": -0.1,
+          "essential": false,
+          "ios": [],
+          "k": 1.1,
+          "material": "brass",
+          "priority": 9,
+          "sfx": {
+            "id": "gate_align",
+            "variants": 6
+          },
+          "status": "fold:set"
+        },
+        "lever.false_gate": {
+          "android": null,
+          "ds": -0.1,
+          "essential": true,
+          "ios": [],
+          "k": 1.1,
+          "material": "brass",
+          "priority": 5,
+          "sfx": {
+            "delay_ms": 40,
+            "id": "lever_fall",
+            "variants": 6
+          },
+          "status": "fold:false_set"
+        },
+        "near_shear": {
+          "android": {
+            "file": "android/lever/near_shear.json",
+            "sha256": "57b6f281ad846fead1598ff41c3dffa20ce6866eb19493441481cf0447d88bed"
+          },
+          "ds": -0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/lever/near_shear.ahap",
+              "role": "event",
+              "sha256": "fac87e875db0cd73bd3f601e3247bdb1daf45b38b5d655d69ef4e8e74dc7e3cf"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever/near_shear.mod.json",
+            "sha256": "0739959217f6170eb817b6129b8765a1608e0a061bb4f30c8eb4569a815172dc"
+          },
+          "k": 1.1,
+          "material": "brass",
+          "priority": 11,
+          "sfx": {
+            "hp_shift_hz": 600,
+            "id": "near_shear",
+            "layer": "L1_filter",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "open": {
+          "android": {
+            "file": "android/lever/open.json",
+            "sha256": "d98e43846b5831470424e7d650589ce0dbb8c165fbc4b0c920ad2817680fba46"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/lever/open.ahap",
+              "role": "event",
+              "sha256": "24622afe93e0db78083589eb44ec0c7234d230f14a47c4323cc01eaedd3fbc8a"
+            }
+          ],
+          "k": 1.1,
+          "material": "brass",
+          "priority": 1,
+          "sfx": {
+            "id": "open",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "overset": {
+          "android": {
+            "file": "android/lever/overset.json",
+            "sha256": "f294630614644f969b4276c3be2804b45f9c659aad9b0f85fb1150e0a0a39ade"
+          },
+          "ds": -0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/lever/overset.ahap",
+              "role": "event",
+              "sha256": "e4a7308fa2f987a5dbd8f843bdd7b4518458101c36e7874eef0a0153c8cc182a"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever/overset.mod.json",
+            "sha256": "6a247a1405c7850fd4e26c50962dff4598c44c4a99b99dca99be2e3128aaf773"
+          },
+          "k": 1.1,
+          "material": "brass",
+          "priority": 7,
+          "sfx": {
+            "id": "overset",
+            "mute_element_l1": true,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "set": {
+          "android": {
+            "file": "android/lever/set.json",
+            "sha256": "3dd13abff347668dc7d5df0ea96ea5bd3bf14024631fb1089f4622dec37ba003"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/lever/set.ahap",
+              "role": "event",
+              "sha256": "747d957a706462d13ad60d4c69c627a34a0ddc495d3cd2705f9e385578919903"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever/set.mod.json",
+            "sha256": "0fb67f9ede54346d531984a6c669a9b629a9b171865d651e4c9110337e681f59"
+          },
+          "k": 1.1,
+          "material": "brass",
+          "priority": 5,
+          "sfx": {
+            "id": "set",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "stress": {
+          "android": {
+            "file": "android/lever/stress.json",
+            "sha256": "bd7bfbbd1ce138767976944d86d1c438ffb0f519475c137bdcd8590788686ec5"
+          },
+          "ds": 0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/lever/stress.ahap",
+              "role": "loop unit 1050 ms, tick every 70 ms",
+              "sha256": "b2e7e8001f5c17c95a151265635e4303042e4f5633ec4d283129a8e386526901"
+            },
+            {
+              "file": "ios/lever/stress.high.ahap",
+              "role": "loop unit 945 ms, tick every 45 ms (high)",
+              "sha256": "35bc346a51d5324b13f8c27f17abfd17b70d0d20a0e67b74062509bf96905318"
+            },
+            {
+              "file": "ios/lever/stress.capped.ahap",
+              "role": "loop unit 1120 ms, tick every 140 ms (capped)",
+              "sha256": "4559790166fd504102107d14c39dddbbf7372dae6d735327d67c6c423eedae84"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever/stress.mod.json",
+            "sha256": "1a87f4a44a53e2dfc6d7c86ec0ac67d042f02bddce841dd4deb34f07b34e8836"
+          },
+          "k": 1.05,
+          "material": "steel",
+          "priority": 8,
+          "sfx": {
+            "id": "stress",
+            "pitch_from_event": [
+              1.0,
+              1.08
+            ],
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "wear": {
+          "android": null,
+          "ds": 0.1,
+          "essential": false,
+          "ios": [],
+          "k": 1.05,
+          "material": "steel",
+          "priority": 15,
+          "sfx": {
+            "id": "wear",
+            "in_lock": false,
+            "layer": "L4",
+            "variants": 6
+          },
+          "status": "audio"
+        }
+      },
+      "intensity_scale": 1.1,
+      "material": "brass"
+    },
+    "lever_detector": {
+      "delta_sharpness": -0.1,
+      "events": {
+        "bind": {
+          "android": {
+            "file": "android/lever_detector/bind.json",
+            "sha256": "54339aede353c8f4ae72dc3a08f176780d4187d5e19be548a59ac33172a38415"
+          },
+          "ds": -0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/lever_detector/bind.ahap",
+              "role": "event",
+              "sha256": "4b6edc767d37a348d5c9908c4eedbfe293c8ba0c47df2f476babd8c28acc41e6"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever_detector/bind.mod.json",
+            "sha256": "0831d0bc6ea997f0284e2f147d780ba797881f7629688c7a35befd078436fbc5"
+          },
+          "k": 1.1,
+          "material": "brass",
+          "priority": 10,
+          "sfx": {
+            "id": "bind",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "break": {
+          "android": {
+            "file": "android/lever_detector/break.json",
+            "sha256": "a6bc60ab8e6250e38d504d00124f0f84ade5bd23c33a7357ce204fe8921a77df"
+          },
+          "ds": 0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/lever_detector/break.ahap",
+              "role": "event",
+              "sha256": "715ab5c4c92b131ff52b2e9e572dcb433a9ec4811d74c5f6949037cfa01bc644"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever_detector/break.mod.json",
+            "sha256": "41fea55999d206f5dc113b7832f5987b04ab30cf7015a4be6b901e76f26f178f"
+          },
+          "k": 1.05,
+          "material": "steel",
+          "priority": 1,
+          "sfx": {
+            "duck_all_db": -12,
+            "duck_ms": 300,
+            "id": "break",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "contact": {
+          "android": {
+            "file": "android/lever_detector/contact.json",
+            "sha256": "ba883df9554d02f3cc57a18faea18349de627559b621793766e04ba78d883819"
+          },
+          "ds": -0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/lever_detector/contact.ahap",
+              "role": "event",
+              "sha256": "e5cef5616d2108586d1227913724950927e58f261ac99b1c17970c564e4b85e2"
+            }
+          ],
+          "k": 1.1,
+          "material": "brass",
+          "priority": 12,
+          "sfx": {
+            "gain_jitter_db": 1.5,
+            "id": "contact",
+            "pitch_jitter": 0.03,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "counter_rotate": {
+          "android": {
+            "file": "android/lever_detector/counter_rotate.json",
+            "sha256": "c10833824291bc60acc5f618f1c10d79722857c29a66815c9d9b9be23cdc1363"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/lever_detector/counter_rotate.ahap",
+              "role": "ramp (one-shot, then switch to .loop)",
+              "sha256": "6304a12d1bf80061c8c7202a7cb84a8f90f5f365a434f9fe05f1b6ece5c06547"
+            },
+            {
+              "file": "ios/lever_detector/counter_rotate.loop.ahap",
+              "role": "loop while pressure lasts",
+              "sha256": "5bc92a37d4e61c647357d2276631205fbe432a99b101a4a9a307e1b0e9b5b3ad"
+            }
+          ],
+          "k": 1.1,
+          "material": "brass",
+          "priority": 6,
+          "sfx": {
+            "id": "counter_rotate",
+            "rhythm_from_haptic": true,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "detector.reset": {
+          "android": {
+            "file": "android/lever_detector/detector.reset.json",
+            "sha256": "efe9fcdac2888231cdf77204c2c531bd3e1ae463d9f4e9922e47b8d3401b7c34"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/lever_detector/detector.reset.ahap",
+              "role": "event",
+              "sha256": "4802031eaa3fc41ea554a5c609bb56d3681e13fe7e74839b8815d9f5a3153f18"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever_detector/detector.reset.mod.json",
+            "sha256": "fdbddf5561208f746b9691b4ac4467b426423c2a97d1733ea33f525846d76b4c"
+          },
+          "k": 1.1,
+          "material": "brass",
+          "priority": 3,
+          "sfx": {
+            "count": 3,
+            "id": "lever_fall",
+            "interval_ms": [
+              120,
+              80,
+              60
+            ],
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "detector.reset_hold": {
+          "android": {
+            "file": "android/lever_detector/detector.reset_hold.json",
+            "sha256": "4fbac6c3f115bdf4b69446fce0701ded29b40f988e97de3245e5711ccb0ff9b7"
+          },
+          "ds": -0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/lever_detector/detector.reset_hold.ahap",
+              "role": "event",
+              "sha256": "84ef899b92346b101d92500d5809616148a5899e6d714009ab107a9fbcd2ec17"
+            }
+          ],
+          "k": 1.1,
+          "material": "brass",
+          "priority": 11,
+          "sfx": {
+            "gain_db": -6,
+            "id": "ratchet",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "detector_trip": {
+          "android": {
+            "file": "android/lever_detector/detector_trip.json",
+            "sha256": "2ad43f9d09efd60db01d17f45a8b6cb0487ff35ce165bd4e383aa93e18077ae8"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/lever_detector/detector_trip.ahap",
+              "role": "event",
+              "sha256": "169f4ab15f032ceac6c29b1bfea98ee8fdaf27b8703f7f6816425cc3703de915"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever_detector/detector_trip.mod.json",
+            "sha256": "7ccf611ea8f55ec433cd7a67cd7486359bcc8d810090869ea05e51203916a9c2"
+          },
+          "k": 1.1,
+          "material": "brass",
+          "priority": 2,
+          "sfx": {
+            "id": "detector_trip",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "drop": {
+          "android": {
+            "file": "android/lever_detector/drop.json",
+            "sha256": "4b9fba510c4df644862ef5e28f1d2aef1135b2c04eaa20aec4e375acbae61a11"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/lever_detector/drop.n2.ahap",
+              "role": "count 2 (n = round(2 + 4 * I_event))",
+              "sha256": "e18a6bb32f6e3aa191985108a44f8d6e04d24fbc0918ff65140fb8ac10eedfff"
+            },
+            {
+              "file": "ios/lever_detector/drop.n3.ahap",
+              "role": "count 3 (n = round(2 + 4 * I_event))",
+              "sha256": "c1d5e31a7030b4bf63215be39acaa366078f954e95219c76f66af86ba549bd2b"
+            },
+            {
+              "file": "ios/lever_detector/drop.n4.ahap",
+              "role": "count 4 (n = round(2 + 4 * I_event))",
+              "sha256": "886d59e1a6a2fdab60b87bc43d4d91943c7028bce2c13d553718b23e5499c558"
+            },
+            {
+              "file": "ios/lever_detector/drop.n5.ahap",
+              "role": "count 5 (n = round(2 + 4 * I_event))",
+              "sha256": "02a6d8cd6c26eb2bbfa7c5431ec8a82e22599bdf93dd29b4acd36dceecb5c863"
+            },
+            {
+              "file": "ios/lever_detector/drop.n6.ahap",
+              "role": "count 6 (n = round(2 + 4 * I_event))",
+              "sha256": "33a0f1a7cf24a4bb5d66af3a9dcceee1b206c1c5c8b5122bea94471f37d3e60c"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever_detector/drop.mod.json",
+            "sha256": "32eea155adec2a60df8f8baf30360d90594115a0015373218fbcaa3ad740f5b2"
+          },
+          "k": 1.1,
+          "material": "brass",
+          "priority": 3,
+          "sfx": {
+            "id": "drop",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "false_set": {
+          "android": {
+            "file": "android/lever_detector/false_set.json",
+            "sha256": "eaf6d73cc448424965b48b6f500e833c5a8e218336332c288705dd07510e3215"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/lever_detector/false_set.ahap",
+              "role": "event",
+              "sha256": "1a26cc86ec1effd2250ac258d0f5b9de8e0684507899b5d964bc2e14d76f8741"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever_detector/false_set.mod.json",
+            "sha256": "94a703debe2fa1c6d8bb2c9bfe150549588e2d125e12f5ed6615b72a9f225ccf"
+          },
+          "k": 1.1,
+          "material": "brass",
+          "priority": 5,
+          "sfx": {
+            "id": "false_set",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "gate_align": {
+          "android": null,
+          "ds": -0.1,
+          "essential": false,
+          "ios": [],
+          "k": 1.1,
+          "material": "brass",
+          "priority": 9,
+          "sfx": {
+            "id": "gate_align",
+            "variants": 6
+          },
+          "status": "fold:set"
+        },
+        "lever.false_gate": {
+          "android": null,
+          "ds": -0.1,
+          "essential": true,
+          "ios": [],
+          "k": 1.1,
+          "material": "brass",
+          "priority": 5,
+          "sfx": {
+            "delay_ms": 40,
+            "id": "lever_fall",
+            "variants": 6
+          },
+          "status": "fold:false_set"
+        },
+        "near_shear": {
+          "android": {
+            "file": "android/lever_detector/near_shear.json",
+            "sha256": "3f874ed3bf56fff92abfd6f6d578914b4f86c1c8fd2030b399644895dd716341"
+          },
+          "ds": -0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/lever_detector/near_shear.ahap",
+              "role": "event",
+              "sha256": "66167b23463561aaf2469a2af64635978c34197a399aa428d6953abafa09fb8b"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever_detector/near_shear.mod.json",
+            "sha256": "79a7e34ceaccb0ad5f261cc7023c3aba96b3ccdd16b593594680d5b14908f609"
+          },
+          "k": 1.1,
+          "material": "brass",
+          "priority": 11,
+          "sfx": {
+            "hp_shift_hz": 600,
+            "id": "near_shear",
+            "layer": "L1_filter",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "open": {
+          "android": {
+            "file": "android/lever_detector/open.json",
+            "sha256": "46c7d2d08fbf7aadf6ba09b3ffbb6f1ec0e3c69bb2e5254b34455eae71f2df5b"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/lever_detector/open.ahap",
+              "role": "event",
+              "sha256": "7791093249674a854bce48ed236a2431f707e47ddbfc697c3c3810f83dd0fc16"
+            }
+          ],
+          "k": 1.1,
+          "material": "brass",
+          "priority": 1,
+          "sfx": {
+            "id": "open",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "overset": {
+          "android": {
+            "file": "android/lever_detector/overset.json",
+            "sha256": "107e564e6cca1a9cdcc8af85a6739d149cc7521f86be10df730b4dfef6b3a104"
+          },
+          "ds": -0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/lever_detector/overset.ahap",
+              "role": "event",
+              "sha256": "8adc60c3304c909dc09441fa9a9260059beb539d7a86caf0b119e51e6d2c156b"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever_detector/overset.mod.json",
+            "sha256": "91b44650326e2459b8744c3787bd0ab09d423ae649eebab12dddeb7b9521066d"
+          },
+          "k": 1.1,
+          "material": "brass",
+          "priority": 7,
+          "sfx": {
+            "id": "overset",
+            "mute_element_l1": true,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "set": {
+          "android": {
+            "file": "android/lever_detector/set.json",
+            "sha256": "9ea544363c0908c23c6c7de9d73f99b3910e2d8db981b10842a939d9bc304b2a"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/lever_detector/set.ahap",
+              "role": "event",
+              "sha256": "eda4765fa564d4e634fa7b9b49c803ec22a65ff2295e86dcdd60914d0d9cda73"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever_detector/set.mod.json",
+            "sha256": "06d2367fe423c780cb0d7a2ce366534893da2c1e944a23c77142a36edea4b38c"
+          },
+          "k": 1.1,
+          "material": "brass",
+          "priority": 5,
+          "sfx": {
+            "id": "set",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "stress": {
+          "android": {
+            "file": "android/lever_detector/stress.json",
+            "sha256": "99b2e19417b75612e64cd99158f5c90da508af36395a461b24f3077f09ba9ff2"
+          },
+          "ds": 0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/lever_detector/stress.ahap",
+              "role": "loop unit 1050 ms, tick every 70 ms",
+              "sha256": "106fdd2ddaf1a5ca63e875ccf7a894c3c741de3874cbff5840edd3280b260566"
+            },
+            {
+              "file": "ios/lever_detector/stress.high.ahap",
+              "role": "loop unit 945 ms, tick every 45 ms (high)",
+              "sha256": "33554d8b2774dc2dd5d78df012b0dd3498f0e66fcd4db6891141678d3a6f5bae"
+            },
+            {
+              "file": "ios/lever_detector/stress.capped.ahap",
+              "role": "loop unit 1120 ms, tick every 140 ms (capped)",
+              "sha256": "390c3f3fd114ea9bf59b2a0ebb466dbfe63bd9de28d86772befec87f59904c9f"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/lever_detector/stress.mod.json",
+            "sha256": "846cfc884beb2ce4fc54c4fb251cd13bbc1d3f49498ab6a34448041d3b64b1f5"
+          },
+          "k": 1.05,
+          "material": "steel",
+          "priority": 8,
+          "sfx": {
+            "id": "stress",
+            "pitch_from_event": [
+              1.0,
+              1.08
+            ],
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "wear": {
+          "android": null,
+          "ds": 0.1,
+          "essential": false,
+          "ios": [],
+          "k": 1.05,
+          "material": "steel",
+          "priority": 15,
+          "sfx": {
+            "id": "wear",
+            "in_lock": false,
+            "layer": "L4",
+            "variants": 6
+          },
+          "status": "audio"
+        }
+      },
+      "intensity_scale": 1.1,
+      "material": "brass"
+    },
+    "pin_tumbler": {
+      "delta_sharpness": 0.0,
+      "events": {
+        "bind": {
+          "android": {
+            "file": "android/pin_tumbler/bind.json",
+            "sha256": "d7d51f828593fffd0b3b540fe2be39f6887e95bcb1fba3f08deee0e2c5e0b834"
+          },
+          "ds": 0.0,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/pin_tumbler/bind.ahap",
+              "role": "event",
+              "sha256": "6111b8ee8acf919b6f4b2f0e88d03b0363ff061209c836ce06ec091520275281"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/pin_tumbler/bind.mod.json",
+            "sha256": "4fe6e963fe4b551dad40f6e2a6b9dedeb358d036cfc140b0d92c0fca0ac2cf73"
+          },
+          "k": 1.0,
+          "material": "brass",
+          "priority": 10,
+          "sfx": {
+            "id": "bind",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "break": {
+          "android": {
+            "file": "android/pin_tumbler/break.json",
+            "sha256": "bcea8af8c7418c6c1cf841fb1ab4fa0746297a016d08ddccb51f7c21a18f16b3"
+          },
+          "ds": 0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/pin_tumbler/break.ahap",
+              "role": "event",
+              "sha256": "694cc174d838e2aaa44dd06c4d3fd27f1ed7af952c7313d8e990cc84e5cd59d3"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/pin_tumbler/break.mod.json",
+            "sha256": "5d70dbc4d797f935750d6544f0354c0b98d971f90782a228c3b16a0b510eee6e"
+          },
+          "k": 1.05,
+          "material": "steel",
+          "priority": 1,
+          "sfx": {
+            "duck_all_db": -12,
+            "duck_ms": 300,
+            "id": "break",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "contact": {
+          "android": {
+            "file": "android/pin_tumbler/contact.json",
+            "sha256": "6d67d3c6a77dad922b46677dbb836d66e9977d6965fb4c12ce3e7634cbdfe117"
+          },
+          "ds": 0.0,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/pin_tumbler/contact.ahap",
+              "role": "event",
+              "sha256": "b4ed8ce7829e6979e68f00ba55697be06a9cdf9e414841c0ba6da8e5b827e020"
+            }
+          ],
+          "k": 1.0,
+          "material": "brass",
+          "priority": 12,
+          "sfx": {
+            "gain_jitter_db": 1.5,
+            "id": "contact",
+            "pitch_jitter": 0.03,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "counter_rotate": {
+          "android": {
+            "file": "android/pin_tumbler/counter_rotate.json",
+            "sha256": "f7d0185ebb919c1e9f6369bce6f7438e66903738b729325c4f484015407f9c4c"
+          },
+          "ds": 0.0,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/pin_tumbler/counter_rotate.ahap",
+              "role": "ramp (one-shot, then switch to .loop)",
+              "sha256": "af0a4e9ec54d3508c8fc834da2851778e39a7c107bfbd55aae138f90b93b857c"
+            },
+            {
+              "file": "ios/pin_tumbler/counter_rotate.loop.ahap",
+              "role": "loop while pressure lasts",
+              "sha256": "0462dd81094310a72daba1371abf811e73bf31edd6752652610558e316cb4981"
+            }
+          ],
+          "k": 1.0,
+          "material": "brass",
+          "priority": 6,
+          "sfx": {
+            "id": "counter_rotate",
+            "rhythm_from_haptic": true,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "drop": {
+          "android": {
+            "file": "android/pin_tumbler/drop.json",
+            "sha256": "5f0037788b641d8b589765cb8db3af0552fe397386cdb235db467212ede7d99f"
+          },
+          "ds": 0.0,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/pin_tumbler/drop.n2.ahap",
+              "role": "count 2 (n = round(2 + 4 * I_event))",
+              "sha256": "e50fade9eb871790fc5cfbbd269671d09907fc8cbc92adc0ada2c276ccc313db"
+            },
+            {
+              "file": "ios/pin_tumbler/drop.n3.ahap",
+              "role": "count 3 (n = round(2 + 4 * I_event))",
+              "sha256": "e179db6b9f4581b83c884e5da6d5dbb2f508cc7301bc29cd2abbf1d6bd6f6d83"
+            },
+            {
+              "file": "ios/pin_tumbler/drop.n4.ahap",
+              "role": "count 4 (n = round(2 + 4 * I_event))",
+              "sha256": "b6987bd94ea24590484c0b3f7a0c3ed08bf5bf5240c7d0a38c003941843157c7"
+            },
+            {
+              "file": "ios/pin_tumbler/drop.n5.ahap",
+              "role": "count 5 (n = round(2 + 4 * I_event))",
+              "sha256": "a2e632810f7cbb4ac2161fef748e485017a1bb7a7b1e04e13b703c5e09677721"
+            },
+            {
+              "file": "ios/pin_tumbler/drop.n6.ahap",
+              "role": "count 6 (n = round(2 + 4 * I_event))",
+              "sha256": "5d2f35a4ff53e8ad937cfa47a13e8d6a8d8e55334e2617f5ac8751b11f605af5"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/pin_tumbler/drop.mod.json",
+            "sha256": "d0d34bc639d5c3dc52fd2304a7496c179179e3d332185eb33f7e79902400e55f"
+          },
+          "k": 1.0,
+          "material": "brass",
+          "priority": 3,
+          "sfx": {
+            "id": "drop",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "false_set": {
+          "android": {
+            "file": "android/pin_tumbler/false_set.json",
+            "sha256": "a4c720bdcd3ef826d10a38956818a268fbfd5a7189578326341e5c00fd311fac"
+          },
+          "ds": 0.0,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/pin_tumbler/false_set.ahap",
+              "role": "event",
+              "sha256": "f0c8e016f9d7044984ab10065ed0c22d7e355113bb06411dbdfae00ffc7e2fbc"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/pin_tumbler/false_set.mod.json",
+            "sha256": "531d7bb77895b752fce6665cbad474c16e367f6b68701ba10243f74356661cac"
+          },
+          "k": 1.0,
+          "material": "brass",
+          "priority": 5,
+          "sfx": {
+            "id": "false_set",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "near_shear": {
+          "android": {
+            "file": "android/pin_tumbler/near_shear.json",
+            "sha256": "5396603360df36d4bf1df1058695e7eccafa592bf6822cf192fd0415d435ae01"
+          },
+          "ds": 0.0,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/pin_tumbler/near_shear.ahap",
+              "role": "event",
+              "sha256": "99e9da03b17f83b6fa0cb7c8a9c3ea34019662f5d522bd9a9d0948063c2c148a"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/pin_tumbler/near_shear.mod.json",
+            "sha256": "224dd11495598ac4f3ed9ace1d64608061c0f19599167ff2545f6d7edbc81096"
+          },
+          "k": 1.0,
+          "material": "brass",
+          "priority": 11,
+          "sfx": {
+            "hp_shift_hz": 600,
+            "id": "near_shear",
+            "layer": "L1_filter",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "open": {
+          "android": {
+            "file": "android/pin_tumbler/open.json",
+            "sha256": "fdfeef21d0aca254b9f8521f1cd6801b8490bc1fdf2321d5404862898fed69e4"
+          },
+          "ds": 0.0,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/pin_tumbler/open.ahap",
+              "role": "event",
+              "sha256": "321e18fee1b3253de607ef36b309c50f8626f1bf8c0ef78c529c0dbb49a1375b"
+            }
+          ],
+          "k": 1.0,
+          "material": "brass",
+          "priority": 1,
+          "sfx": {
+            "id": "open",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "overset": {
+          "android": {
+            "file": "android/pin_tumbler/overset.json",
+            "sha256": "fe7fdb923132f06a749d43ac992048778d81459f5b2929d46366736e0e316fc9"
+          },
+          "ds": 0.0,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/pin_tumbler/overset.ahap",
+              "role": "event",
+              "sha256": "b2711959a19d0ba98372b5270652bc13b68564d6a7197aa6eed4e336e71da5aa"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/pin_tumbler/overset.mod.json",
+            "sha256": "765342163865a82aa2b7add0ebf798b4bcf5c8386436c223d293719e9371e3ac"
+          },
+          "k": 1.0,
+          "material": "brass",
+          "priority": 7,
+          "sfx": {
+            "id": "overset",
+            "mute_element_l1": true,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "pin.serration": {
+          "android": {
+            "file": "android/pin_tumbler/pin.serration.json",
+            "sha256": "d5ea91d7b74d694d61cebcdf4ee8d7dca91a2bde967d80ad5f5451ed21bc22e6"
+          },
+          "ds": 0.0,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/pin_tumbler/pin.serration.ahap",
+              "role": "event",
+              "sha256": "25be353571eeb72460b8639b97323dff8d25cd912cdd85d87eb821c9a4f49e16"
+            }
+          ],
+          "k": 1.0,
+          "material": "brass",
+          "priority": 11,
+          "sfx": {
+            "gain_db": -6,
+            "id": "ratchet",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "pin.spring_bounce": {
+          "android": {
+            "file": "android/pin_tumbler/pin.spring_bounce.json",
+            "sha256": "d3c8451e03c38d60e4b0cb911b975f4e2b1a01ce0abe3d1bff5e4636289b20d7"
+          },
+          "ds": 0.0,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/pin_tumbler/pin.spring_bounce.ahap",
+              "role": "event",
+              "sha256": "0cb0aa53b7e566c78971f33d72ede869f8e666d7161e4128c51b925de522effe"
+            }
+          ],
+          "k": 1.0,
+          "material": "brass",
+          "priority": 12,
+          "sfx": {
+            "id": "spring",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "set": {
+          "android": {
+            "file": "android/pin_tumbler/set.json",
+            "sha256": "96466600418b18fb298bedc0bb45457d051104df7ea6176356a97a40149b2346"
+          },
+          "ds": 0.0,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/pin_tumbler/set.ahap",
+              "role": "event",
+              "sha256": "cb34f686c602557649512d6c67f26e68d62d54db001b254c9e497f305648acbd"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/pin_tumbler/set.mod.json",
+            "sha256": "587e2d577e52b960eb407e5d5288269aa6566b0f63104e6bca6123cf606941b2"
+          },
+          "k": 1.0,
+          "material": "brass",
+          "priority": 5,
+          "sfx": {
+            "id": "set",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "stress": {
+          "android": {
+            "file": "android/pin_tumbler/stress.json",
+            "sha256": "9a85cb11c4b56a22dc892894deb7c65d85074897cf6d472726dbd1ecda8b9b18"
+          },
+          "ds": 0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/pin_tumbler/stress.ahap",
+              "role": "loop unit 1050 ms, tick every 70 ms",
+              "sha256": "fda79f364f694a7a424e26cf20b8a521af0a2348bf0a2c330511d3bdd08cc59a"
+            },
+            {
+              "file": "ios/pin_tumbler/stress.high.ahap",
+              "role": "loop unit 945 ms, tick every 45 ms (high)",
+              "sha256": "8088af50f56bb423027f20e098c96ea448620ec163c7d0a1791470ed267fa416"
+            },
+            {
+              "file": "ios/pin_tumbler/stress.capped.ahap",
+              "role": "loop unit 1120 ms, tick every 140 ms (capped)",
+              "sha256": "b42e14f681ea1159544081f08a3656a7c7376e1230320edde58b03f802783220"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/pin_tumbler/stress.mod.json",
+            "sha256": "57f3072bf1fa5d990bc0e24ebe124886978ad8bb6e01ff842c1fe5c7698f2dff"
+          },
+          "k": 1.05,
+          "material": "steel",
+          "priority": 8,
+          "sfx": {
+            "id": "stress",
+            "pitch_from_event": [
+              1.0,
+              1.08
+            ],
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "wear": {
+          "android": null,
+          "ds": 0.1,
+          "essential": false,
+          "ios": [],
+          "k": 1.05,
+          "material": "steel",
+          "priority": 15,
+          "sfx": {
+            "id": "wear",
+            "in_lock": false,
+            "layer": "L4",
+            "variants": 6
+          },
+          "status": "audio"
+        }
+      },
+      "intensity_scale": 1.0,
+      "material": "brass"
+    },
+    "ring_combo": {
+      "delta_sharpness": 0.0,
+      "events": {
+        "bind": {
+          "android": {
+            "file": "android/ring_combo/bind.json",
+            "sha256": "313025bdd4fed92fafd74397a57e2ba5f06fe1e51c6719ce816fdfa12b704919"
+          },
+          "ds": 0.0,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/ring_combo/bind.ahap",
+              "role": "event",
+              "sha256": "cc30cc224ca020b24dbaa93bba2a36e30218e2038d94b6ee71e5b30fe9b823e0"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/ring_combo/bind.mod.json",
+            "sha256": "4e62e96a23362d31e76b50479115dacd25288c3d38f534fc1440ea0c3d8b9ada"
+          },
+          "k": 0.9,
+          "material": "brass",
+          "priority": 10,
+          "sfx": {
+            "id": "bind",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "contact": {
+          "android": {
+            "file": "android/ring_combo/contact.json",
+            "sha256": "6f1f093e685165e59599bdbbb7b38ce891e121b9661ca7c12427dcc57521791d"
+          },
+          "ds": 0.0,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/ring_combo/contact.ahap",
+              "role": "event",
+              "sha256": "9295467542a18a7915868252734b489bdc528c8264e0c42e167899e738a615ad"
+            }
+          ],
+          "k": 0.9,
+          "material": "brass",
+          "priority": 12,
+          "sfx": {
+            "gain_jitter_db": 1.5,
+            "id": "contact",
+            "pitch_jitter": 0.03,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "drop": {
+          "android": {
+            "file": "android/ring_combo/drop.json",
+            "sha256": "2741564e1d4d09c10f7be83cf9a2b3ec3a0dd20b364e23333a90dd504f34fe41"
+          },
+          "ds": 0.0,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/ring_combo/drop.n2.ahap",
+              "role": "count 2 (n = round(2 + 4 * I_event))",
+              "sha256": "9b480d494a722589ec3e6a325ef06347264507bfc5dd8aad71167719b9771f8f"
+            },
+            {
+              "file": "ios/ring_combo/drop.n3.ahap",
+              "role": "count 3 (n = round(2 + 4 * I_event))",
+              "sha256": "f1c8e66d94a610c7d30b2515c76d170b83b922babfc3e51b105d80f95c225ac0"
+            },
+            {
+              "file": "ios/ring_combo/drop.n4.ahap",
+              "role": "count 4 (n = round(2 + 4 * I_event))",
+              "sha256": "03554770dbaff622d193fe5317ac562e8c1b719522bd78f9b4282524acac2ab8"
+            },
+            {
+              "file": "ios/ring_combo/drop.n5.ahap",
+              "role": "count 5 (n = round(2 + 4 * I_event))",
+              "sha256": "0c14a4e04b4f5820d2409b5569ca54f505ee0c54d7784edab88dbed682a4e5b7"
+            },
+            {
+              "file": "ios/ring_combo/drop.n6.ahap",
+              "role": "count 6 (n = round(2 + 4 * I_event))",
+              "sha256": "5d766494ecbaf037382a9deb38e44f4aadb3ddfd31318c445887e53887a2f344"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/ring_combo/drop.mod.json",
+            "sha256": "d032084e63de169f908a3e5097cd56af7b7221237a01688fda3d1f997665c82d"
+          },
+          "k": 0.9,
+          "material": "brass",
+          "priority": 3,
+          "sfx": {
+            "id": "drop",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "false_set": {
+          "android": {
+            "file": "android/ring_combo/false_set.json",
+            "sha256": "d7499625a4a65044f64cd3ed906a6efed3b96c59f82d56afb660ba3924b400a8"
+          },
+          "ds": 0.0,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/ring_combo/false_set.ahap",
+              "role": "event",
+              "sha256": "7cd1c7a81e478c3f661c7fc5e33aa4a03ce6c172a0cd6495c5a2f2d7d74a2003"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/ring_combo/false_set.mod.json",
+            "sha256": "6e78bacaf4ba506cee38f3874c428053fdcc65edb4bb1b6937cb526b16e95f47"
+          },
+          "k": 0.9,
+          "material": "brass",
+          "priority": 5,
+          "sfx": {
+            "id": "false_set",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "gate_align": {
+          "android": null,
+          "ds": 0.0,
+          "essential": false,
+          "ios": [],
+          "k": 0.9,
+          "material": "brass",
+          "priority": 9,
+          "sfx": {
+            "id": "gate_align",
+            "variants": 6
+          },
+          "status": "fold:set"
+        },
+        "near_shear": {
+          "android": {
+            "file": "android/ring_combo/near_shear.json",
+            "sha256": "28f881480840664f33dfc5628e17d79d7ba808edba175a45d6adad9e2021dccf"
+          },
+          "ds": 0.0,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/ring_combo/near_shear.ahap",
+              "role": "event",
+              "sha256": "302d1fe3f67fde0719e7605e9bf970b4369b45ea681147da4d5438762c544eda"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/ring_combo/near_shear.mod.json",
+            "sha256": "93c2889ada6c89c2ddb4f133144b2fe824fc21a18159901da07535718254db9b"
+          },
+          "k": 0.9,
+          "material": "brass",
+          "priority": 11,
+          "sfx": {
+            "hp_shift_hz": 600,
+            "id": "near_shear",
+            "layer": "L1_filter",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "open": {
+          "android": {
+            "file": "android/ring_combo/open.json",
+            "sha256": "0e0e3a8ba6db323f9dcb67a176e1a412a625b11d1c6710709b0c423ff297583c"
+          },
+          "ds": 0.0,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/ring_combo/open.ahap",
+              "role": "event",
+              "sha256": "2d5b12c70c3ce6013d45c46f06b58cec666e7086e08f95426ff22b36114a6141"
+            }
+          ],
+          "k": 0.9,
+          "material": "brass",
+          "priority": 1,
+          "sfx": {
+            "id": "open",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "ring.detent": {
+          "android": {
+            "file": "android/ring_combo/ring.detent.json",
+            "sha256": "047c89d0cc9f6d214815d6ed589539d4f56f633fe6038d3f401d78bd141c7bb4"
+          },
+          "ds": 0.0,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/ring_combo/ring.detent.ahap",
+              "role": "event",
+              "sha256": "b4ea578f9fad2e856ec0fb0bff0cef41079598f1207c2fa852e7e3f43ea581aa"
+            }
+          ],
+          "k": 0.9,
+          "material": "brass",
+          "priority": 12,
+          "sfx": {
+            "audio_limit_per_s": 25,
+            "id": "ring_detent",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "set": {
+          "android": {
+            "file": "android/ring_combo/set.json",
+            "sha256": "6571af6130c1df8c4be46c8913105237b0ad74f6074e8676c8203bc9424f9d74"
+          },
+          "ds": 0.0,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/ring_combo/set.ahap",
+              "role": "event",
+              "sha256": "9541b5a1944fefeb29502abf770f915a4f6a6133dff621f044418a764d5fa524"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/ring_combo/set.mod.json",
+            "sha256": "ff15098f8fb0eb2fc6f0565b1893d0d9a42ed5ed335649ea548854bf9b2fcb53"
+          },
+          "k": 0.9,
+          "material": "brass",
+          "priority": 5,
+          "sfx": {
+            "id": "set",
+            "variants": 6
+          },
+          "status": "play"
+        }
+      },
+      "intensity_scale": 0.9,
+      "material": "brass"
+    },
+    "wafer": {
+      "delta_sharpness": 0.05,
+      "events": {
+        "bind": {
+          "android": {
+            "file": "android/wafer/bind.json",
+            "sha256": "44cab87a1643230c0f98e203922b63f4405df46e3f0211749ed66f11d004b062"
+          },
+          "ds": 0.05,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/wafer/bind.ahap",
+              "role": "event",
+              "sha256": "4cdd063940e211ec03cfd04c45c288abe379056db827ca6e6f343545a387ed41"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/wafer/bind.mod.json",
+            "sha256": "6ca4a40be2052c1eb3dbe988bc1f2e853a4324f080a753e04acf629f96d5d7a0"
+          },
+          "k": 0.85,
+          "material": "brass",
+          "priority": 10,
+          "sfx": {
+            "id": "bind",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "break": {
+          "android": {
+            "file": "android/wafer/break.json",
+            "sha256": "1568fcdeaeed1ec759a73ebd987d0b61fb3191468579955e5a5ebce44e4cf592"
+          },
+          "ds": 0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/wafer/break.ahap",
+              "role": "event",
+              "sha256": "050ee073198cb068ce37b49246f8824214da9f8ce99160fee15bfe5a146c156a"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/wafer/break.mod.json",
+            "sha256": "5b1a75a399dafca56ca39d87d5ec73cf3801bde19860251334cc34a56228c9c0"
+          },
+          "k": 1.05,
+          "material": "steel",
+          "priority": 1,
+          "sfx": {
+            "duck_all_db": -12,
+            "duck_ms": 300,
+            "id": "break",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "contact": {
+          "android": {
+            "file": "android/wafer/contact.json",
+            "sha256": "cf83bd3b847b5fd6039475a9d3913b6d418ffc605d7d91109726dd3755603e9c"
+          },
+          "ds": 0.05,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/wafer/contact.ahap",
+              "role": "event",
+              "sha256": "32e1d5b60b090b91dae73faa5c5d176eaee576b90375feef85265f73a5209fd6"
+            }
+          ],
+          "k": 0.85,
+          "material": "brass",
+          "priority": 12,
+          "sfx": {
+            "gain_jitter_db": 1.5,
+            "id": "contact",
+            "pitch_jitter": 0.03,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "drop": {
+          "android": {
+            "file": "android/wafer/drop.json",
+            "sha256": "40ad8ffb32a4e21f850e49d359321e84e8e1df298942379aff024ba552ca4f6c"
+          },
+          "ds": 0.05,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/wafer/drop.n2.ahap",
+              "role": "count 2 (n = round(2 + 4 * I_event))",
+              "sha256": "189e51fbee5654ef286be0eafe2e485a3a569ada0166be2e44f9c5b58c5aa87a"
+            },
+            {
+              "file": "ios/wafer/drop.n3.ahap",
+              "role": "count 3 (n = round(2 + 4 * I_event))",
+              "sha256": "498e23b7454bbc4b4ecebc8ca4fad9d871c567491b3e32642e0b9245868981d7"
+            },
+            {
+              "file": "ios/wafer/drop.n4.ahap",
+              "role": "count 4 (n = round(2 + 4 * I_event))",
+              "sha256": "3d68ba3bd859937609830493a45a6afea865df62f308fcaf3d814f951747adea"
+            },
+            {
+              "file": "ios/wafer/drop.n5.ahap",
+              "role": "count 5 (n = round(2 + 4 * I_event))",
+              "sha256": "d29737c45db5f7bac34371a69eb6814d39fe8e8ff53f197346a07de6b1464a8e"
+            },
+            {
+              "file": "ios/wafer/drop.n6.ahap",
+              "role": "count 6 (n = round(2 + 4 * I_event))",
+              "sha256": "a0445fbf93aeb3efed5d67e51cf8f75f86a6979abcfd204e9487c9ebe4967c79"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/wafer/drop.mod.json",
+            "sha256": "945d3dfc4dc42bb65aa09bd973b4fa65a70a579ffecc8fbf816b9e8a7ef567d5"
+          },
+          "k": 0.85,
+          "material": "brass",
+          "priority": 3,
+          "sfx": {
+            "id": "drop",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "near_shear": {
+          "android": {
+            "file": "android/wafer/near_shear.json",
+            "sha256": "9f9667faa2b9fc715222f322e1da6d1267a2546fd726b449a371cb2090e9a798"
+          },
+          "ds": 0.05,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/wafer/near_shear.ahap",
+              "role": "event",
+              "sha256": "0bca7fabba1ca78fb3a2f70a3f733d9a8d6ca9994bb9ca91ec43b8502f2b3977"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/wafer/near_shear.mod.json",
+            "sha256": "4207cf942fff27b7d568f4e7685b33534e5215088be3e4579c7700054559410d"
+          },
+          "k": 0.85,
+          "material": "brass",
+          "priority": 11,
+          "sfx": {
+            "hp_shift_hz": 600,
+            "id": "near_shear",
+            "layer": "L1_filter",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "open": {
+          "android": {
+            "file": "android/wafer/open.json",
+            "sha256": "be353c6d7a522e909b8a9b6559a63d6c100b328df948ab3aa3a0f76ee61de989"
+          },
+          "ds": 0.05,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/wafer/open.ahap",
+              "role": "event",
+              "sha256": "798eeb249c5c67f26d99e11a9b892541ce9c7d58361a759b5208b182553e1773"
+            }
+          ],
+          "k": 0.85,
+          "material": "brass",
+          "priority": 1,
+          "sfx": {
+            "id": "open",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "overset": {
+          "android": {
+            "file": "android/wafer/overset.json",
+            "sha256": "e77788f3693cdaa5f43743556a910a39288d34d730fcdacf4cb13e79a41b4b6d"
+          },
+          "ds": 0.05,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/wafer/overset.ahap",
+              "role": "event",
+              "sha256": "21bdaf26b8ce2bc164cc141a7dbc7f7de6d1965fad9da94c966baa1778873ae4"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/wafer/overset.mod.json",
+            "sha256": "0eebfd337570a7276fe02f7af9101c5523e5cc54cf08b51e1bf50c671d84bd72"
+          },
+          "k": 0.85,
+          "material": "brass",
+          "priority": 7,
+          "sfx": {
+            "id": "overset",
+            "mute_element_l1": true,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "set": {
+          "android": {
+            "file": "android/wafer/set.json",
+            "sha256": "6417705d8a03fad2d92392bb6a9640dabac142ebd79d2c44c7ed4b2dd208ef12"
+          },
+          "ds": 0.05,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/wafer/set.ahap",
+              "role": "event",
+              "sha256": "e0e8476493d6f27788f5b7c4c201e5f89e7f7da5f26e85280fbcb5191c435755"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/wafer/set.mod.json",
+            "sha256": "0df2e7f5d940f88a0b9fa9a8933d23ec5e416ee22b580c71ffe1a3959f660642"
+          },
+          "k": 0.85,
+          "material": "brass",
+          "priority": 5,
+          "sfx": {
+            "id": "set",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "stress": {
+          "android": {
+            "file": "android/wafer/stress.json",
+            "sha256": "99ad83838e127174e2fddac4b09c1f7cb99f5181d1eb60bb15642470cd9aa5e4"
+          },
+          "ds": 0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/wafer/stress.ahap",
+              "role": "loop unit 1050 ms, tick every 70 ms",
+              "sha256": "877b4d2063fd2731454abb01253c95b127fdbf69fb9442a8270dd7cbedd9bfd3"
+            },
+            {
+              "file": "ios/wafer/stress.high.ahap",
+              "role": "loop unit 945 ms, tick every 45 ms (high)",
+              "sha256": "e66cfcbb53ef1ebbbc09895aa256157190ddc356663338a0b7510d0828b88022"
+            },
+            {
+              "file": "ios/wafer/stress.capped.ahap",
+              "role": "loop unit 1120 ms, tick every 140 ms (capped)",
+              "sha256": "8a796c18a8be9091ce65324962ecfaeabe5e3900fac211312a124ff5ed61fadb"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/wafer/stress.mod.json",
+            "sha256": "b6e0ef3680a8c09b3766ab5aa475240b897da02cd404931a2fa27f486835c74a"
+          },
+          "k": 1.05,
+          "material": "steel",
+          "priority": 8,
+          "sfx": {
+            "id": "stress",
+            "pitch_from_event": [
+              1.0,
+              1.08
+            ],
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "wafer.rattle": {
+          "android": {
+            "file": "android/wafer/wafer.rattle.json",
+            "sha256": "a602b93860c557e3c74af73e4086058c020151beb96c8743b822b08f415fad4d"
+          },
+          "ds": 0.05,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/wafer/wafer.rattle.ahap",
+              "role": "event",
+              "sha256": "f611067df31e139f0a83d25e5c63b4c4a9ce6a1bd730c3952cd50e83a62a9551"
+            }
+          ],
+          "k": 0.85,
+          "material": "brass",
+          "priority": 12,
+          "sfx": {
+            "gain_db": -4,
+            "id": "contact",
+            "pitch": 1.08,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "wear": {
+          "android": null,
+          "ds": 0.1,
+          "essential": false,
+          "ios": [],
+          "k": 1.05,
+          "material": "steel",
+          "priority": 15,
+          "sfx": {
+            "id": "wear",
+            "in_lock": false,
+            "layer": "L4",
+            "variants": 6
+          },
+          "status": "audio"
+        }
+      },
+      "intensity_scale": 0.85,
+      "material": "brass"
+    },
+    "warded": {
+      "delta_sharpness": 0.0,
+      "events": {
+        "bind": {
+          "android": {
+            "file": "android/warded/bind.json",
+            "sha256": "0f5bf0054c565076124faadc825c5ae6994d60546897d534fefccae14611651c"
+          },
+          "ds": -0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/warded/bind.ahap",
+              "role": "event",
+              "sha256": "dea48df5a63f840a68b0fa894986beda7efd0fdad93b71ebc1b211542c3f519e"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/warded/bind.mod.json",
+            "sha256": "18b03711abe73ec6638fab50474cd6a0877b9f9f2294826f693326ae494c6ecc"
+          },
+          "k": 1.1,
+          "material": "iron",
+          "priority": 10,
+          "sfx": {
+            "id": "bind",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "break": {
+          "android": {
+            "file": "android/warded/break.json",
+            "sha256": "b05a7b2c5c62398add72c39c8bc17d5b6acee77d45401f0961a240d2a5607559"
+          },
+          "ds": 0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/warded/break.ahap",
+              "role": "event",
+              "sha256": "437a4aad2d4d705361d26d7584fd643371f9137d131564a3127b034ed081452f"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/warded/break.mod.json",
+            "sha256": "bb4817c890a35de09b8152380e0b38f48a3547b9050fe9bf65f181d08253df86"
+          },
+          "k": 1.05,
+          "material": "steel",
+          "priority": 1,
+          "sfx": {
+            "duck_all_db": -12,
+            "duck_ms": 300,
+            "id": "break",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "contact": {
+          "android": {
+            "file": "android/warded/contact.json",
+            "sha256": "de139e02cf3948c3a75550ae01cce786b717cee25b37cfe57fdddf8463edabe0"
+          },
+          "ds": -0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/warded/contact.ahap",
+              "role": "event",
+              "sha256": "7dfcfd262c3211bdefed5a96bf8b2063fea049b91205543591f1daf6d03c0416"
+            }
+          ],
+          "k": 1.1,
+          "material": "iron",
+          "priority": 12,
+          "sfx": {
+            "gain_jitter_db": 1.5,
+            "id": "contact",
+            "pitch_jitter": 0.03,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "drop": {
+          "android": {
+            "file": "android/warded/drop.json",
+            "sha256": "c2dfe07b7ffc56560fd4d2287b40ade42d5d91a86fc64e5c1beb4fad58cdf9a9"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/warded/drop.n2.ahap",
+              "role": "count 2 (n = round(2 + 4 * I_event))",
+              "sha256": "cd8c2c079f2318e753cc997f2c81293bb04729937c888dc28cc05104dcc32b35"
+            },
+            {
+              "file": "ios/warded/drop.n3.ahap",
+              "role": "count 3 (n = round(2 + 4 * I_event))",
+              "sha256": "c20873090941f5bb476cb7e01fc54773fd0384c6145ebfbf505639d6e61f8d6a"
+            },
+            {
+              "file": "ios/warded/drop.n4.ahap",
+              "role": "count 4 (n = round(2 + 4 * I_event))",
+              "sha256": "92eab5bf6c4a97d53e72e0c408f978e1e0e84c7a3552f1dd03c1011181d5e5d3"
+            },
+            {
+              "file": "ios/warded/drop.n5.ahap",
+              "role": "count 5 (n = round(2 + 4 * I_event))",
+              "sha256": "bd141b328782e1c192f28a8f8b22dc221d0f934d1eed063e7cc708ec73386b90"
+            },
+            {
+              "file": "ios/warded/drop.n6.ahap",
+              "role": "count 6 (n = round(2 + 4 * I_event))",
+              "sha256": "43840b8d0c3d1439b93df4ea5ffffb38305b7dbbb0a1363e6b29b9651c28dde5"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/warded/drop.mod.json",
+            "sha256": "d43f67d025c28d180fe373e5c428cd7866a7b58b96c1b89b997c8824c58d07b7"
+          },
+          "k": 1.1,
+          "material": "iron",
+          "priority": 3,
+          "sfx": {
+            "id": "drop",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "gate_align": {
+          "android": {
+            "file": "android/warded/gate_align.json",
+            "sha256": "bc91b84de44fcdcbcaeee5157cf765d7535b90f25680dfa3dbea40ba01a37c3d"
+          },
+          "ds": -0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/warded/gate_align.ahap",
+              "role": "event",
+              "sha256": "8be9cf98892830b9bd80d06055d6843929a71b6848045c79d0b1942f6be7b2a6"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/warded/gate_align.mod.json",
+            "sha256": "8195ddc9434527f9eabc494944a4a1e093a60f42d86e8f06879e208186b6a4e7"
+          },
+          "k": 1.1,
+          "material": "iron",
+          "priority": 9,
+          "sfx": {
+            "id": "gate_align",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "open": {
+          "android": {
+            "file": "android/warded/open.json",
+            "sha256": "7cfb2f800160ed2f4cb6586c532ee8813bff548888d7927909bbc439d03f5739"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/warded/open.ahap",
+              "role": "event",
+              "sha256": "8b1741df9fe4bb0007319e27d452003b35bfc63df8274445b6b510f5b270ad45"
+            }
+          ],
+          "k": 1.1,
+          "material": "iron",
+          "priority": 1,
+          "sfx": {
+            "id": "open",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "set": {
+          "android": {
+            "file": "android/warded/set.json",
+            "sha256": "51f013621ad43784305be748dca2fbf73e0338561aee422cb6566b931be8f216"
+          },
+          "ds": -0.1,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/warded/set.ahap",
+              "role": "event",
+              "sha256": "5883d3a33dda41dcdd205c84c81a38a19e9374ccba94b4fbf0f669b547be50e1"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/warded/set.mod.json",
+            "sha256": "ca14bdf1398b3878be5b2bbfee1a7c94b1625f24c26cbdf33ec599ac93dc9439"
+          },
+          "k": 1.1,
+          "material": "iron",
+          "priority": 5,
+          "sfx": {
+            "id": "set",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "stress": {
+          "android": {
+            "file": "android/warded/stress.json",
+            "sha256": "751bd05b227ef288b8261f7f5c791330a27b8f05c967acc60013ea357c0dcd73"
+          },
+          "ds": 0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/warded/stress.ahap",
+              "role": "loop unit 1050 ms, tick every 70 ms",
+              "sha256": "a2ba3880d800396855ec11387a7bb0d3845ca9b09cfb130d3be9f9b254d7fe9b"
+            },
+            {
+              "file": "ios/warded/stress.high.ahap",
+              "role": "loop unit 945 ms, tick every 45 ms (high)",
+              "sha256": "c545e9f8dc493e8093992f73d7e23101d023b62a91a94fc11e50ca28bf5e6f7b"
+            },
+            {
+              "file": "ios/warded/stress.capped.ahap",
+              "role": "loop unit 1120 ms, tick every 140 ms (capped)",
+              "sha256": "e4a15ec8ba59f42160678dc2601a84973e6a4dc4c4bab596b7cbb9f44bbcf5b1"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/warded/stress.mod.json",
+            "sha256": "61dc3e3d6d724931c05ec0598e5738b6d3a02f0dd1ef66552bfb1860e5c829a2"
+          },
+          "k": 1.05,
+          "material": "steel",
+          "priority": 8,
+          "sfx": {
+            "id": "stress",
+            "pitch_from_event": [
+              1.0,
+              1.08
+            ],
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "ward.scrape": {
+          "android": {
+            "file": "android/warded/ward.scrape.json",
+            "sha256": "b0c3b7389e9d571ab037a6ce7688230793fae3fd7eae2a9131b68c9921c93b7f"
+          },
+          "ds": -0.1,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/warded/ward.scrape.ahap",
+              "role": "event",
+              "sha256": "7dc0da31a8a50a88e20b48a6d9e875f6c97848a0685a19a712b8d2cffcec11b1"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/warded/ward.scrape.mod.json",
+            "sha256": "a34f7b7d0c26df973dcdbd0de2acfc7e592cb261189786be3a96efa9c326d568"
+          },
+          "k": 1.1,
+          "material": "iron",
+          "priority": 12,
+          "sfx": {
+            "id": "ward_scrape",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "wear": {
+          "android": null,
+          "ds": 0.1,
+          "essential": false,
+          "ios": [],
+          "k": 1.05,
+          "material": "steel",
+          "priority": 15,
+          "sfx": {
+            "id": "wear",
+            "in_lock": false,
+            "layer": "L4",
+            "variants": 6
+          },
+          "status": "audio"
+        }
+      },
+      "intensity_scale": 1.0,
+      "material": "iron"
+    },
+    "wooden_pin": {
+      "delta_sharpness": 0.0,
+      "events": {
+        "bind": {
+          "android": {
+            "file": "android/wooden_pin/bind.json",
+            "sha256": "cc24c2e878d069ed6b63259831ecf8fb88456fe6e6578bd2d3f092b115c71a34"
+          },
+          "ds": -0.25,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/wooden_pin/bind.ahap",
+              "role": "event",
+              "sha256": "dec53d6d26700b8471e66511e3d6264c4f41786eec2e071283e189c38e58ec70"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/wooden_pin/bind.mod.json",
+            "sha256": "92eb685f0b4992f8e17ac35c42f7f558096653b3de85f6ad41e24b06a052f8b7"
+          },
+          "k": 0.9,
+          "material": "wood",
+          "priority": 10,
+          "sfx": {
+            "id": "bind",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "contact": {
+          "android": {
+            "file": "android/wooden_pin/contact.json",
+            "sha256": "4608600811a796dc70b0af989116231b84e27eac27a5436079b1e88ff047a0a3"
+          },
+          "ds": -0.25,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/wooden_pin/contact.ahap",
+              "role": "event",
+              "sha256": "56cc9b692eaa5a4ec98ec3423455ba97717e0dd22efbaeeb1ffde6133995c2ee"
+            }
+          ],
+          "k": 0.9,
+          "material": "wood",
+          "priority": 12,
+          "sfx": {
+            "gain_jitter_db": 1.5,
+            "id": "contact",
+            "pitch_jitter": 0.03,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "drop": {
+          "android": {
+            "file": "android/wooden_pin/drop.json",
+            "sha256": "eb89bfb84a5e92623eb2cffba13bd8cb05a9baa574cd78a570d6abe392b757a4"
+          },
+          "ds": -0.25,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/wooden_pin/drop.n2.ahap",
+              "role": "count 2 (n = round(2 + 4 * I_event))",
+              "sha256": "8ad6443d93c432024f55eb4fcea691968b5a413f5accc5382a9f817890d3ea4d"
+            },
+            {
+              "file": "ios/wooden_pin/drop.n3.ahap",
+              "role": "count 3 (n = round(2 + 4 * I_event))",
+              "sha256": "f2420f05cfb8176396c73e422db034383d977302c922c91100134237012af5f3"
+            },
+            {
+              "file": "ios/wooden_pin/drop.n4.ahap",
+              "role": "count 4 (n = round(2 + 4 * I_event))",
+              "sha256": "3ee0fbcc9d769318b68f802a45f7f82a046ca754afafdda72b29b71ccf415722"
+            },
+            {
+              "file": "ios/wooden_pin/drop.n5.ahap",
+              "role": "count 5 (n = round(2 + 4 * I_event))",
+              "sha256": "fb939d37ff880b03a009e307c02970a63dd7380272d9b24958f3ab58d52d4b80"
+            },
+            {
+              "file": "ios/wooden_pin/drop.n6.ahap",
+              "role": "count 6 (n = round(2 + 4 * I_event))",
+              "sha256": "c7485d04c6fb324d85664437318e9b460b5fa4ffeb8d356dd28194e56036434b"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/wooden_pin/drop.mod.json",
+            "sha256": "5c08aed82b8b22e505c633cae3bfd08d52bdf05ffd04f1bdef3f058fe53a3795"
+          },
+          "k": 0.9,
+          "material": "wood",
+          "priority": 3,
+          "sfx": {
+            "id": "drop",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "near_shear": {
+          "android": {
+            "file": "android/wooden_pin/near_shear.json",
+            "sha256": "3ccad7a00d9df0fe374b04dc793352654ace4589ffa7d02adef5138646b91929"
+          },
+          "ds": -0.25,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/wooden_pin/near_shear.ahap",
+              "role": "event",
+              "sha256": "da0f9431bf6a71c7c7b039117d805cd5711531c0eee1dcb0b2b6538994439afc"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/wooden_pin/near_shear.mod.json",
+            "sha256": "8986a42a865117aae983c975c9ac81267cd1f9d05d1230b4331820678c9a374a"
+          },
+          "k": 0.9,
+          "material": "wood",
+          "priority": 11,
+          "sfx": {
+            "hp_shift_hz": 600,
+            "id": "near_shear",
+            "layer": "L1_filter",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "open": {
+          "android": {
+            "file": "android/wooden_pin/open.json",
+            "sha256": "94b9f02c1a827a48b49bd63d606a57be6950290803d92d2d91030761a24b2fed"
+          },
+          "ds": -0.25,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/wooden_pin/open.ahap",
+              "role": "event",
+              "sha256": "f1ab7c1f3ee78e02823b8f2a1bed74474f0adc9c49b505fbb6de055bb9b3a317"
+            }
+          ],
+          "k": 0.9,
+          "material": "wood",
+          "priority": 1,
+          "sfx": {
+            "id": "open",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "overset": {
+          "android": {
+            "file": "android/wooden_pin/overset.json",
+            "sha256": "d991ada51c46aeef25ebd150be20c7c39c949ce32e96910da691d36a4b243cfe"
+          },
+          "ds": -0.25,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/wooden_pin/overset.ahap",
+              "role": "event",
+              "sha256": "02254ca049ebc0efc01cbfc8e8899a5eace7fc091192b7e3f7d592e5ca78e285"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/wooden_pin/overset.mod.json",
+            "sha256": "18054ed69a87924e4b90914c5c78c52d7a8c2180580b6659b654c0c20edab5e4"
+          },
+          "k": 0.9,
+          "material": "wood",
+          "priority": 7,
+          "sfx": {
+            "id": "overset",
+            "mute_element_l1": true,
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "set": {
+          "android": {
+            "file": "android/wooden_pin/set.json",
+            "sha256": "290c6ea3c0b8cfdcc92c0acb8fda6c772cb8bfe68e539afa30b5490db4b65204"
+          },
+          "ds": -0.25,
+          "essential": true,
+          "ios": [
+            {
+              "file": "ios/wooden_pin/set.ahap",
+              "role": "event",
+              "sha256": "b1e1a203f2f6d2e06bca050fe253fe100ee381dc9048430cf902d0ba32ead8b1"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/wooden_pin/set.mod.json",
+            "sha256": "a49cad4f7e19265111c2ddff6d71b399b56a93ba31816213c3d6bccbb3593928"
+          },
+          "k": 0.9,
+          "material": "wood",
+          "priority": 5,
+          "sfx": {
+            "id": "set",
+            "variants": 6
+          },
+          "status": "play"
+        },
+        "wood.creak": {
+          "android": {
+            "file": "android/wooden_pin/wood.creak.json",
+            "sha256": "9b9a4efa7eab5839fa146fd4ea3c469ebb586efe8960af274b595e69653f54c3"
+          },
+          "ds": -0.25,
+          "essential": false,
+          "ios": [
+            {
+              "file": "ios/wooden_pin/wood.creak.ahap",
+              "role": "loop unit 1120 ms, tick every 140 ms",
+              "sha256": "675e988fbba4f162230c3b3c1020d8e0b1acf3ba364503260c8255f9bf2f24c7"
+            }
+          ],
+          "ios_mod": {
+            "file": "ios/wooden_pin/wood.creak.mod.json",
+            "sha256": "295dd61b36369098acdb6f53f5b8cca87d000725999da5cd8cf4d38ddd358d45"
+          },
+          "k": 0.9,
+          "material": "wood",
+          "priority": 8,
+          "sfx": {
+            "id": "stress",
+            "material": "wood",
+            "pitch": 0.8,
+            "variants": 6
+          },
+          "status": "play"
+        }
+      },
+      "intensity_scale": 1.0,
+      "material": "wood"
+    }
+  },
+  "feel_version": 2,
+  "generator": "haptics/build.py",
+  "schema": "lockwright.haptics.out/1",
+  "selection_table": {
+    "file": "android/selection_table.json",
+    "sha256": "9ea8dea9bcf40d3ff68f65b8f888b9570d140fb592d75e437ac794ed6d294bd2"
+  },
+  "sources": {
+    "docs/FEEL.md": "c8e915340640ee79225ba2aa7794305d879b3a4e37de0f09fa5960f658767129",
+    "game/data/haptics_patterns.json": "ebe25ebccf6a34f24f31eb6610d831197e6631505293c0169e2ac98feb9bb154"
+  }
+}

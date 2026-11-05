@@ -1,0 +1,100 @@
+{
+  "base": "false_set",
+  "chain": [
+    {
+      "composition": [
+        [
+          "TICK",
+          0.2,
+          0
+        ]
+      ],
+      "onset_ms": [
+        0
+      ],
+      "tier": "a2"
+    },
+    {
+      "tier": "a1",
+      "waveform": {
+        "amps": [
+          50
+        ],
+        "timings": [
+          8
+        ]
+      }
+    },
+    {
+      "skip": true,
+      "tier": "a0"
+    }
+  ],
+  "essential": false,
+  "event": "pin.serration",
+  "family": "pin_tumbler",
+  "material": "brass",
+  "modifiers": {
+    "ds": 0.0,
+    "family_modifier_applied": true,
+    "k": 1.0
+  },
+  "normalization": [],
+  "priority": 11,
+  "rule": "FEEL §1.3: first entry whose tier <= device tier and all primitives in supported_primitives_mask. composition delay_ms is relative to the previous primitive's start (FEEL semantics); onset_ms is cumulative. Android Composition.addPrimitive delay counts from the end of the previous primitive: subtract getPrimitiveDurations().",
+  "selection": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 2,
+      "summary": "skip (sound + image only)"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 1,
+      "summary": "waveform t[8] a[50]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.2"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.2"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.2"
+    }
+  },
+  "selection_min_primitives": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 2,
+      "summary": "skip (sound + image only)"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 1,
+      "summary": "waveform t[8] a[50]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.2"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.2"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.2"
+    }
+  },
+  "source": "docs/FEEL.md §9 sub_events.pin.serration.android_chain"
+}

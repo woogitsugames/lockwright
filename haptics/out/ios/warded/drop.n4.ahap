@@ -1,0 +1,73 @@
+{
+  "Metadata": {
+    "Description": "warded / drop / iron (k 1.1, dS -0.1); FEEL §2 drop, §1.1, §9 events.drop.ios.count_from_event; cascade of 4",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.77
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.5
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.0
+      }
+    },
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.66
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.5
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.04
+      }
+    },
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.55
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.5
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.08
+      }
+    },
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.44
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.5
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.12
+      }
+    }
+  ],
+  "Version": 1.0
+}

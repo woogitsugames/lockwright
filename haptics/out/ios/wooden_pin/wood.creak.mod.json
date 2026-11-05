@@ -1,0 +1,14 @@
+{
+  "apply": "Do not put into the event AHAP: Core Haptics curves only affect their own player (TECH §2.1). Apply on the continuous player of `channel`: intensity_scale = multiply HapticIntensityControl by the curve [[t_ms, factor]]; intensity_add / sharpness_add = add to the control value; sharpness_set = absolute sharpness until the condition ends.",
+  "event": "wood.creak",
+  "family": "wooden_pin",
+  "modulation": {
+    "channel": "tension_resistance",
+    "intensity_add_by_ratio": [
+      0.05,
+      0.2
+    ],
+    "sharpness_set": 0.0
+  },
+  "source": "FEEL §3.3"
+}

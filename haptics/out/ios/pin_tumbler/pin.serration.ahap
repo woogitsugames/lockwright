@@ -1,0 +1,25 @@
+{
+  "Metadata": {
+    "Description": "pin_tumbler / pin.serration / brass (k 1.0, dS 0.0); FEEL §3.1, F-04",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.18
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.9
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.0
+      }
+    }
+  ],
+  "Version": 1.0
+}

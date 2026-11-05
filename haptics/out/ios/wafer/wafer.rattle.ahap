@@ -1,0 +1,25 @@
+{
+  "Metadata": {
+    "Description": "wafer / wafer.rattle / brass (k 0.85, dS 0.05); FEEL §3.2",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.085
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.85
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.0
+      }
+    }
+  ],
+  "Version": 1.0
+}

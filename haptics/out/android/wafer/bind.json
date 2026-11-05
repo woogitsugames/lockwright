@@ -1,0 +1,138 @@
+{
+  "base": null,
+  "chain": [
+    {
+      "composition": [
+        [
+          "LOW_TICK",
+          0.425,
+          0
+        ]
+      ],
+      "envelope": [
+        [
+          0,
+          0.255,
+          0.35
+        ],
+        [
+          80,
+          0.425,
+          0.35
+        ]
+      ],
+      "onset_ms": [
+        0
+      ],
+      "tier": "a3"
+    },
+    {
+      "composition": [
+        [
+          "LOW_TICK",
+          0.425,
+          0
+        ]
+      ],
+      "onset_ms": [
+        0
+      ],
+      "tier": "a2"
+    },
+    {
+      "composition": [
+        [
+          "TICK",
+          0.34,
+          0
+        ]
+      ],
+      "onset_ms": [
+        0
+      ],
+      "tier": "a2"
+    },
+    {
+      "tier": "a1",
+      "waveform": {
+        "amps": [
+          94
+        ],
+        "timings": [
+          15
+        ]
+      }
+    },
+    {
+      "skip": true,
+      "tier": "a0"
+    }
+  ],
+  "essential": false,
+  "event": "bind",
+  "family": "wafer",
+  "material": "brass",
+  "modifiers": {
+    "ds": 0.05,
+    "family_modifier_applied": true,
+    "k": 0.85
+  },
+  "normalization": [],
+  "priority": 10,
+  "rule": "FEEL §1.3: first entry whose tier <= device tier and all primitives in supported_primitives_mask. composition delay_ms is relative to the previous primitive's start (FEEL semantics); onset_ms is cumulative. Android Composition.addPrimitive delay counts from the end of the previous primitive: subtract getPrimitiveDurations().",
+  "selection": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 4,
+      "summary": "skip (sound + image only)"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 3,
+      "summary": "waveform t[15] a[94]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 1,
+      "summary": "LOW_TICK@0 0.425"
+    },
+    "a3": {
+      "entry_tier": "a3",
+      "index": 0,
+      "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.425"
+    },
+    "a4": {
+      "entry_tier": "a3",
+      "index": 0,
+      "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.425"
+    }
+  },
+  "selection_min_primitives": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 4,
+      "summary": "skip (sound + image only)"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 3,
+      "summary": "waveform t[15] a[94]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 2,
+      "summary": "TICK@0 0.34"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 2,
+      "summary": "TICK@0 0.34"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 2,
+      "summary": "TICK@0 0.34"
+    }
+  },
+  "source": "docs/FEEL.md §9 events.bind.android_chain"
+}

@@ -1,0 +1,25 @@
+{
+  "Metadata": {
+    "Description": "ring_combo / bind / brass (k 0.9, dS 0.0); FEEL §2 bind",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.405
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.35
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.0
+      }
+    }
+  ],
+  "Version": 1.0
+}

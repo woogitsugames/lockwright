@@ -1,0 +1,126 @@
+{
+  "base": null,
+  "chain": [
+    {
+      "composition": [
+        [
+          "TICK",
+          0.595,
+          0
+        ],
+        [
+          "TICK",
+          0.51,
+          50
+        ],
+        [
+          "TICK",
+          0.425,
+          50
+        ],
+        [
+          "TICK",
+          0.34,
+          50
+        ]
+      ],
+      "onset_ms": [
+        0,
+        50,
+        100,
+        150
+      ],
+      "tier": "a2"
+    },
+    {
+      "tier": "a1",
+      "waveform": {
+        "amps": [
+          170,
+          0,
+          136,
+          0,
+          102
+        ],
+        "timings": [
+          12,
+          70,
+          12,
+          70,
+          12
+        ]
+      }
+    },
+    {
+      "on_ms": 60,
+      "tier": "a0"
+    }
+  ],
+  "essential": true,
+  "event": "drop",
+  "family": "wafer",
+  "material": "brass",
+  "modifiers": {
+    "ds": 0.05,
+    "family_modifier_applied": true,
+    "k": 0.85
+  },
+  "normalization": [],
+  "priority": 3,
+  "rule": "FEEL §1.3: first entry whose tier <= device tier and all primitives in supported_primitives_mask. composition delay_ms is relative to the previous primitive's start (FEEL semantics); onset_ms is cumulative. Android Composition.addPrimitive delay counts from the end of the previous primitive: subtract getPrimitiveDurations().",
+  "selection": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 2,
+      "summary": "on 60 ms"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 1,
+      "summary": "waveform t[12, 70, 12, 70, 12] a[170, 0, 136, 0, 102]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.595 + TICK@50 0.51 + TICK@100 0.425 + TICK@150 0.34"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.595 + TICK@50 0.51 + TICK@100 0.425 + TICK@150 0.34"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.595 + TICK@50 0.51 + TICK@100 0.425 + TICK@150 0.34"
+    }
+  },
+  "selection_min_primitives": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 2,
+      "summary": "on 60 ms"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 1,
+      "summary": "waveform t[12, 70, 12, 70, 12] a[170, 0, 136, 0, 102]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.595 + TICK@50 0.51 + TICK@100 0.425 + TICK@150 0.34"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.595 + TICK@50 0.51 + TICK@100 0.425 + TICK@150 0.34"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.595 + TICK@50 0.51 + TICK@100 0.425 + TICK@150 0.34"
+    }
+  },
+  "source": "docs/FEEL.md §9 events.drop.android_chain"
+}
