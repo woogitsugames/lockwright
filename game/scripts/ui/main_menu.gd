@@ -5,6 +5,7 @@ extends Control
 const BG_PORTRAIT := "res://assets/ui/menu_workshop_wall_9x16.jpg"  # G20 interim (Magnific later, same name)
 const BG_LANDSCAPE := "res://assets/ui/gpt/workshop/08-lamplight-evening-landscape.webp"
 const CONTROL_CHOICE := "res://scenes/control_choice.tscn"
+const RUN_LOOP := "res://scenes/run_loop.tscn"
 
 @onready var layout: BoxContainer = $Frame/Layout
 @onready var play_button: Button = $Frame/Layout/MenuBlock/PlayButton
@@ -60,7 +61,9 @@ func _on_play() -> void:
 	if not Settings.get_value("control_chosen", false):
 		get_tree().change_scene_to_file(CONTROL_CHOICE)
 	elif Save.get_value("tutorial_done", false):
-		get_tree().change_scene_to_file(JobRun.lock_scene_path())
+		# N-64: "Zacznij dyżur" after the tutorial starts the shift (endless run), never a bare
+		# lock without a job (its opening had nowhere to go and the screen froze)
+		get_tree().change_scene_to_file(RUN_LOOP)
 	else:
 		get_tree().change_scene_to_file("res://scenes/tutorial.tscn")
 

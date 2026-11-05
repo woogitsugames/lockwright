@@ -34,3 +34,6 @@ func _on_lock_opened() -> void:
 		get_tree().change_scene_to_file("res://scenes/tutorial.tscn")  # N-09
 	elif not JobRun.current_job.is_empty():
 		get_tree().change_scene_to_file("res://scenes/job_payment.tscn")
+	else:
+		# N-64: a lock opened with no job and no mode must never leave the player stuck
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

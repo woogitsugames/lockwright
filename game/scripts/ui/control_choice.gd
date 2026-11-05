@@ -115,6 +115,6 @@ func confirm() -> void:
 	Settings.set_value("auto_tension", auto_selected)
 	Settings.set_value("control_chosen", true)
 	if Save.get_value("tutorial_done", false):
-		get_tree().change_scene_to_file(JobRun.lock_scene_path())
+		get_tree().change_scene_to_file("res://scenes/run_loop.tscn")  # N-64
 	else:
 		get_tree().change_scene_to_file("res://scenes/tutorial.tscn")
