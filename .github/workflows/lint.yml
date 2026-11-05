@@ -1,0 +1,32 @@
+name: lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pytest
+        run: pip install pytest
+      - name: Lint tool tests
+        run: python -m pytest tools/tests -q
+      # continue-on-error: known findings in game files must not block CI yet
+      - name: i18n lint
+        continue-on-error: true
+        run: python tools/i18n_lint.py
+      - name: assets lint
+        continue-on-error: true
+        run: python tools/assets_lint.py
