@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _refresh() -> void:
 	var stage: int = JobRun.tutorial_stage
-	var done := Save.get_value("tutorial_done", false)
+	var done: bool = Save.get_value("tutorial_done", false)
 	if done:
 		$VBox/Stage.text = I18n.t(&"tutorial.done")
 		$VBox/StartButton.text = I18n.t(&"common.continue")
