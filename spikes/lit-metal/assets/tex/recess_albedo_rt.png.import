@@ -2,6 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
+uid="uid://dskybw21sx5vk"
+path.bptc="res://.godot/imported/recess_albedo_rt.png-964ea7f72aa23cb85869aebce2f8ec9d.bptc.ctex"
+path.astc="res://.godot/imported/recess_albedo_rt.png-964ea7f72aa23cb85869aebce2f8ec9d.astc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -10,6 +13,7 @@ metadata={
 [deps]
 
 source_file="res://assets/tex/recess_albedo_rt.png"
+dest_files=["res://.godot/imported/recess_albedo_rt.png-964ea7f72aa23cb85869aebce2f8ec9d.bptc.ctex", "res://.godot/imported/recess_albedo_rt.png-964ea7f72aa23cb85869aebce2f8ec9d.astc.ctex"]
 
 [params]
 

@@ -2,6 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
+uid="uid://cadhaforasma4"
+path.bptc="res://.godot/imported/nickel_albedo_rt.png-5d7c160bccd9a3c021a122ca547e811d.bptc.ctex"
+path.astc="res://.godot/imported/nickel_albedo_rt.png-5d7c160bccd9a3c021a122ca547e811d.astc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -10,6 +13,7 @@ metadata={
 [deps]
 
 source_file="res://assets/tex/nickel_albedo_rt.png"
+dest_files=["res://.godot/imported/nickel_albedo_rt.png-5d7c160bccd9a3c021a122ca547e811d.bptc.ctex", "res://.godot/imported/nickel_albedo_rt.png-5d7c160bccd9a3c021a122ca547e811d.astc.ctex"]
 
 [params]
 

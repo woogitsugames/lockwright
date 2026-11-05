@@ -2,6 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
+uid="uid://q7odiwdqh3fj"
+path.bptc="res://.godot/imported/brass_k_albedo_rt.png-4cd050ecb5138cd5e0744b2721cb3067.bptc.ctex"
+path.astc="res://.godot/imported/brass_k_albedo_rt.png-4cd050ecb5138cd5e0744b2721cb3067.astc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -10,6 +13,7 @@ metadata={
 [deps]
 
 source_file="res://assets/tex/brass_k_albedo_rt.png"
+dest_files=["res://.godot/imported/brass_k_albedo_rt.png-4cd050ecb5138cd5e0744b2721cb3067.bptc.ctex", "res://.godot/imported/brass_k_albedo_rt.png-4cd050ecb5138cd5e0744b2721cb3067.astc.ctex"]
 
 [params]
 
