@@ -25,6 +25,7 @@ func _show_tip() -> void:
 
 func _ready() -> void:
 	Sfx.play_ambience(&"night_timer")
+	Sfx.play_music(&"main_theme")
 	SafeArea.apply(self)
 	_show_tip()  # task 10: master's tip on the loading/menu screen
 	title_label.text = I18n.t(&"menu.title")

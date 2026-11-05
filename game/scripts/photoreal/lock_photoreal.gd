@@ -51,6 +51,9 @@ static func blender_pose_vm() -> Dictionary:
 
 
 func _ready() -> void:
+	Sfx.play_music(&"lock_harmony", -10.0)  # S01 quiet lock version
+	Sfx.set_music_lowpass(true)  # 2-6 kHz slowed in the lock (audio/v2 README mix)
+	Sfx.duck_ambience(-6.0, 400.0)
 	_parse_args()
 	family = StringName(args.get("lw-family", family))
 	seed = int(args.get("lw-seed", seed))

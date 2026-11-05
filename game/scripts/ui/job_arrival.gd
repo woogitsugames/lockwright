@@ -86,6 +86,9 @@ func _add_plate(path: String) -> void:
 
 func _ready() -> void:
 	Sfx.play_ambience(&"stairwell")
+	Sfx.play_music(&"main_theme")
+	Sfx.play_foley(&"door_knock")
+	Sfx.play_foley(&"apartment_bell")
 	SafeArea.apply(self)
 	var job: Dictionary = JobRun.current_job
 	_add_background(job)
@@ -118,6 +121,7 @@ func _ready() -> void:
 		row.add_child(plate)
 		row.add_child(line)
 		lines_box.add_child(row)
+		Sfx.play_voice(speaker, &"greeting")  # S03 voice at the dialog line
 	verify_button.text = I18n.t(&"job.verify")
 	back_button.text = I18n.t(&"common.back")
 	verify_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/job_verify.tscn"))

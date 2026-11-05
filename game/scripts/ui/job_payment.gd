@@ -32,6 +32,8 @@ func _ready() -> void:
 
 
 func _play_reward_sequence() -> void:
+	Sfx.play_jingle(&"jingle_door_open")
+	Sfx.play_ui(&"coins_on_counter")  # S04 diegetic payment sound
 	Sfx.play_reward(&"door_open")
 	await get_tree().create_timer(1.4).timeout
 	Sfx.play_reward(&"thanks")

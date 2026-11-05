@@ -66,6 +66,7 @@ func _refuse() -> void:
 	accept_button.disabled = true
 	refuse_button.disabled = true
 	var jid: String = JobRun.current_job.get("id", "")
+	Sfx.play_jingle(&"jingle_dignified_refusal")
 	if jid.begins_with("job.refuse"):
 		var refused: Array = Save.get_value("jobs_refused", [])
 		if not refused.has(jid):

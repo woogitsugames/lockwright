@@ -63,6 +63,7 @@ func _add_map() -> void:
 
 func _ready() -> void:
 	Sfx.play_ambience(&"workshop")
+	Sfx.play_music(&"menu_workshop")
 	SafeArea.apply(self)
 	_add_background()
 	_add_map()

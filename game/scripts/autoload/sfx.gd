@@ -14,6 +14,9 @@ const SFX_ROOT := "res://assets/audio/sfx"
 const AMBIENCE_ROOT := "res://assets/audio/ambience"
 const UI_ROOT := "res://assets/audio/ui"
 const REWARD_ROOT := "res://assets/audio/reward"
+const MUSIC_ROOT := "res://assets/audio/music"
+const FOLEY_ROOT := "res://assets/audio/foley"
+const VOICE_ROOT := "res://assets/audio/voices"
 const AMBIENCES := [&"stairwell", &"workshop", &"night_timer", &"rain_window"]
 
 var _pool: Array[AudioStreamPlayer] = []
@@ -26,6 +29,8 @@ var _ambience: AudioStreamPlayer = null
 var _ambience_name: StringName = &""
 var _ambience_base_db := 0.0
 var _duck_tween: Tween = null
+var _music: AudioStreamPlayer = null
+var _music_name: StringName = &""
 
 
 func _ready() -> void:
@@ -67,6 +72,16 @@ func _preload_all() -> void:
 		for f in DirAccess.get_files_at(dir):
 			if f.ends_with(".wav"):
 				_cache["%s/%s" % [dir, f]] = load(dir + "/" + f)
+	for f in DirAccess.get_files_at(MUSIC_ROOT):
+		if f.ends_with(".ogg"):
+			_cache["mus/%s" % f.get_basename()] = load(MUSIC_ROOT + "/" + f)
+	for f in DirAccess.get_files_at(FOLEY_ROOT):
+		if f.ends_with(".wav"):
+			_cache["%s/%s" % [FOLEY_ROOT, f]] = load(FOLEY_ROOT + "/" + f)
+	for spk in DirAccess.get_directories_at(VOICE_ROOT):
+		for f in DirAccess.get_files_at(VOICE_ROOT + "/" + spk):
+			if f.ends_with(".wav"):
+				_cache["%s/%s/%s" % [VOICE_ROOT, spk, f]] = load(VOICE_ROOT + "/" + spk + "/" + f)
 
 
 func _preload_native() -> void:
@@ -194,6 +209,78 @@ func play_ui(event: StringName, volume_db: float = 0.0) -> void:
 
 func play_reward(event: StringName, volume_db: float = 0.0) -> void:
 	_one_shot_from(REWARD_ROOT, String(event) + "_", volume_db)
+
+
+func play_music(name: StringName, volume_db: float = -6.0) -> void:
+	# S01 music (ChatGPT, D-43): pre-mixed ~-16 LUFS I, so the Music bus sits quiet;
+	# in the lock the low-pass (2-6 kHz slowed, audio/v2 README mix) + ducking applies
+	if _music_name == name and _music != null and _music.playing:
+		return
+	stop_music()
+	if not _cache.has("mus/%s" % name):
+		return
+	_music_name = name
+	_music = AudioStreamPlayer.new()
+	var stream: AudioStream = _cache["mus/%s" % name]
+	if stream is AudioStreamOggVorbis:
+		stream.loop = true
+	_music.stream = stream
+	_music.bus = "Music"
+	_music.volume_db = volume_db + linear_to_db(maxf(Settings.get_value("volume_music", 0.8) * Settings.get_value("volume_master"), 0.001))
+	add_child(_music)
+	_music.play()
+
+
+func stop_music() -> void:
+	if _music != null:
+		_music.stop()
+		_music.queue_free()
+		_music = null
+	_music_name = &""
+	set_music_lowpass(false)
+
+
+func set_music_lowpass(enabled: bool) -> void:
+	# "cicha wersja w zamku": tłumienie 2-6 kHz na magistrali Music
+	var idx := AudioServer.get_bus_index("Music")
+	if idx < 0:
+		return
+	if enabled and AudioServer.get_bus_effect_count(idx) > 0:
+		AudioServer.set_bus_effect_enabled(idx, 0, true)
+	elif not enabled and AudioServer.get_bus_effect_count(idx) > 0:
+		AudioServer.set_bus_effect_enabled(idx, 0, false)
+
+
+func play_foley(event: StringName, volume_db: float = 0.0) -> void:
+	_one_shot_from(FOLEY_ROOT, String(event) + "_", volume_db)
+
+
+func play_voice(speaker: StringName, kind: StringName, volume_db: float = 0.0) -> void:
+	# S03 character voices (normalized to -28 LUFS M): <root>/<speaker>/<kind>_NN.wav
+	var keys: Array = []
+	for k in _cache.keys():
+		if k.begins_with(VOICE_ROOT + "/" + String(speaker) + "/" + String(kind) + "_"):
+			keys.append(k)
+	if keys.is_empty() or _free.is_empty():
+		return
+	var p: AudioStreamPlayer = _free.pop_back()
+	p.stream = _cache[keys[_rng.randi_range(0, keys.size() - 1)]]
+	p.bus = "Sfx"
+	p.volume_db = volume_db + linear_to_db(Settings.get_value("volume_sfx") * Settings.get_value("volume_master"))
+	p.play()
+	p.finished.connect(_on_player_finished.bind(p), CONNECT_ONE_SHOT)
+
+
+func play_jingle(name: StringName, volume_db: float = -4.0) -> void:
+	# S01 one-shot jingles on the Music bus
+	if _free.is_empty() or not _cache.has("mus/%s" % name):
+		return
+	var p: AudioStreamPlayer = _free.pop_back()
+	p.stream = _cache["mus/%s" % name]
+	p.bus = "Music"
+	p.volume_db = volume_db + linear_to_db(maxf(Settings.get_value("volume_music", 0.8) * Settings.get_value("volume_master"), 0.001))
+	p.play()
+	p.finished.connect(_on_player_finished.bind(p), CONNECT_ONE_SHOT)
 
 
 func play_ambience(name: StringName) -> void:

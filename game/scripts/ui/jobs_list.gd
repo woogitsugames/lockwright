@@ -10,6 +10,7 @@ const JOBS_CH7_DIR := "res://data/jobs_ch7"  # task 11: chapter 7, only behind "
 
 func _ready() -> void:
 	Sfx.play_ambience(&"stairwell")
+	Sfx.play_music(&"main_theme")
 	SafeArea.apply(self)
 	$VBox/Title.text = I18n.t(&"jobs.title")
 	back_button.text = I18n.t(&"common.back")
