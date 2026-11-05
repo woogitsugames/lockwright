@@ -41,11 +41,11 @@ if PHOTO:
                             base=(0.035, 0.032, 0.03), base_mix=float(arg('--cmix', '0.5')), rough_add=0.05, bump=0.35, grime=0.6, wear=0.4)
     # forged iron parts: ground-steel photo darkened to old iron, rougher, dark grime in recesses, bright where the key rubs.
     # Lighter than the black case so wards, bolt and tumbler separate from it (>= 3:1).
-    IR = float(arg('--iron', '0.42'))
+    IR = float(arg('--iron', '0.36'))
     MAT['ward'] = photo_mat('ph_ward_iron', 'steel_ground', scale=30, rot=35, base=(IR, IR * 0.95, IR * 0.9), base_mix=0.55,
                             tint=(0.92, 0.84, 0.74), rough_add=0.16, bump=0.25, wear=0.7, grime=0.9)
-    MAT['bolt'] = photo_mat('ph_bolt_iron', 'steel_ground', scale=40, rot=0, base=(IR * 1.1, IR * 1.05, IR), base_mix=0.5,
-                            tint=(0.94, 0.86, 0.76), rough_add=0.12, bump=0.2, wear=0.8, grime=0.8)
+    MAT['bolt'] = photo_mat('ph_bolt_iron', 'steel_ground', scale=40, rot=0, base=(IR * 1.1, IR * 1.05, IR), base_mix=0.62,
+                            tint=(0.94, 0.86, 0.76), rough_add=0.14, bump=0.2, wear=0.8, grime=0.8)
     MAT['tumbler'] = photo_mat('ph_tumb_iron', 'steel_ground', scale=36, rot=0, offset=(13, 0, 7), base=(IR, IR * 0.96, IR * 0.92), base_mix=0.52,
                                tint=(0.93, 0.85, 0.75), rough_add=0.14, bump=0.2, wear=0.8, grime=0.8)
     # probe: satin spring steel (no mirror chrome)
@@ -93,7 +93,8 @@ for (rx, rz) in [(X0 + 5, Z0 + 5), (X1 - 5, Z0 + 5), (X0 + 5, Z1 - 5)]:
 # hand-forged square nails through the ears into the chest board
 for ex, ez in [(X0 - 7, Z1 - 12), (X0 - 7, Z0 + 12), (X1 + 7, Z0 + 12)]:
     nh = box('nail', ex - 2.6, ex + 2.6, DEPTH - 1.4, DEPTH, ez - 2.6, ez + 2.6)
-    nh.rotation_euler = (0, math.radians(17 + ex), 0); bpy.context.view_layer.objects.active = nh; bpy.ops.object.transform_apply(rotation=True)
+    # turn each nail head about its own centre (turning about the world origin threw one below the case)
+    nh.data.transform(Matrix.Translation((ex, 0, ez)) @ Matrix.Rotation(math.radians(17 + ex), 4, 'Y') @ Matrix.Translation((-ex, 0, -ez)))
     put(nh, MAT['ward'], 0.5, 3)
 
 # ---------------------------------------------------------------- drill pin + wards (rings with gaps), riveted to the back plate
@@ -165,12 +166,12 @@ world_hdri(float(arg('--world', '0.05')), sat=0.4)
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (0, 5, 0)
 kx, ky, kz, ks, ke = [float(v) for v in arg('--key', '-110,-120,150,40,190000').split(',')]
 area_light('key', (kx, ky, kz), AIM, ks, ke, (1.0, 0.82, 0.62))
-area_light('fill', (150, -120, -30), AIM, 100, float(arg('--fill', '2200')), (0.92, 0.95, 1.0))
+area_light('fill', (150, -120, -30), AIM, 100, float(arg('--fill', '6000')), (0.92, 0.95, 1.0))
 area_light('rim', (60, 40, -150), AIM, 50, float(arg('--rim', '2500')), (1.0, 0.9, 0.8))
 cam = look_camera((float(arg('--tx', '0')), 5, float(arg('--tz', '-3'))), float(arg('--yaw', '-9')), float(arg('--pitch', '11')),
                   float(arg('--dist', '265')), lens=float(arg('--lens', '120')))
 mirror_softbox('sheen', (0, 0, 0), cam, size=float(arg('--ss', '30')), size_y=float(arg('--ssy', '80')), energy=float(arg('--sheen', '12000')),
                shift=(float(arg('--sx', '-5')), 0, float(arg('--sz', '4'))))
-render_setup(OUT, RES, SAMPLES, exposure=float(arg('--exp', '0.3')), crop=CROP)
+render_setup(OUT, RES, SAMPLES, exposure=float(arg('--exp', '0.6')), crop=CROP)
 bpy.ops.render.render(write_still=True)
 print('WROTE', scene.render.filepath)
