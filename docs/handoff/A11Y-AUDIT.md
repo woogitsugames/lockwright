@@ -72,7 +72,7 @@ Metoda: czytanie scen i skryptów, zrzuty z Godota 4.7.2 (kopia `game/`, Xvfb + 
 
 ---
 
-# Runda 2 (etap 3, 2026-11-05 ok. 11:00) — po zadaniu A11Y sesji B (24cca0b)
+# Runda 2 (etap 3, 2026-11-05 09:40) — po zadaniu A11Y sesji B (24cca0b)
 
 Metoda: `qa/bot/a11y_shots.gd` (kopia `game/`, Xvfb, Godot 4.7.2) — każda scena menu w 412×915, 915×412 i z suwakiem
 „Rozmiar tekstu” 150%; skrypt wypisuje kontrolki, które kończą się poza ekranem, i najmniejszy użyty rozmiar fontu.

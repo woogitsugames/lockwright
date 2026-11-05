@@ -525,7 +525,7 @@ Zakres: commity w `game/`, `platform/`, `data/`, `game-*.yml` od 08:05 (6e0c398,
 - N-02…N-12: bez zmian w kodzie od drugiego przeglądu (sesja B zaczyna etap 3 od zadania 1 = te uwagi).
 - Regresji w nowych commitach nie znalazłem; 48b2d41 tylko dodaje `mkdir -p game/build` w teście eksportu.
 
-## Runda 2 — 2026-11-05 ok. 10:00 (z automatem QA, `qa/`)
+## Runda 2 — 2026-11-05 09:20 (z automatem QA, `qa/`)
 Zakres: commity sesji B 8853863 … efa20ed (09:00–09:10). Automat kariery (`qa/run_career.sh`, workflow `qa-career`) puszczony na HEAD przed i po tych commitach. Przed: 27/29 zleceń (26 + samouczek), 0 soft-locków, 0 brakujących kluczy, 197 s symulacji. Po: **16/29**, 10 soft-locków.
 
 Weryfikacja „naprawione” z 8853863:
@@ -552,7 +552,7 @@ Weryfikacja „naprawione” z 8853863:
 
 Automat QA: `qa/README.md`; nocny raport — artefakt `qa-career-report`. Kryterium „OK” = brak soft-locków, ekranów bez wyjścia, błędów skryptów i brakujących kluczy, więc workflow będzie czerwony, dopóki N-13 nie zostanie naprawione (to zamierzone).
 
-## Runda 3 — 2026-11-05 ok. 11:00 (po zadaniach 5–8)
+## Runda 3 — 2026-11-05 09:40 (po zadaniach 5–8)
 Zakres: commity sesji B od 09:10 (66a8196 „Task 17: perf GUT test”, ed5dfda C-05 i wcześniejsze) + audyt A11Y, runda 2.
 - **N-17 · High · `SafeArea.apply` wypycha menu poza ekran** — szczegóły i poprawka: `A11Y-AUDIT.md` A-10.
 - **N-18 · Medium · Skalowanie tekstu bez efektu** — `A11Y-AUDIT.md` A-11. Do tego „ogranicz ruch” nie jest nigdzie czytane (A-07).
