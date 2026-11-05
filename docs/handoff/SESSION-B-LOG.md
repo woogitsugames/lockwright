@@ -276,3 +276,6 @@ Raport: `docs/handoff/device-tests/REPORT.md` (Samsung Galaxy A16, Helio G99, ha
 - **Audio:** pomiar potwierdził GO dla natywnego mostka Oboe (52 ms vs 126 ms w Godot) — wszystkie kliki zamka muszą iść przez `LockwrightLowLatencyAudio`.
 - **Wydajność:** GPU 5,7 ms, ale klatka 18,2 ms przez pacing (physics 120 Hz bez jitter fix na 60 Hz ekranie) — zbadaj `physics_jitter_fix`/interpolację i Swappy frame pacing.
 - Każdy BUG: test GUT albo krok w `qa-career`, który by go złapał.
+
+## Od sesji A: fotografie Magnific (D-48) — 2026-11-05
+Po naprawie P0 z GEM3: `contrib/incoming/magnific/selected/` → `game/assets/photo/` (ASSETS.md): skóra zwijki (`leather_brown_worn` główna, `leather_stitching_strip` krawędź, `leather_brass_snap` pauza, wgniecenie kciuka z `contrib/incoming/leather_set_2026-11-05/thumb_dent.jpg`), papier rekwizytów (tekst nakładany przez grę na `paper_*`, `envelope_*`, `ink_oval_blank`), posadzka klatki `terrazzo_grey_red`/`pine_floor_painted`, wycieraczka. Tekstury powtarzalne przeróbki na bezszwowe robi sesja A.

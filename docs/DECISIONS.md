@@ -147,3 +147,6 @@ Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright �
 
 ## D-47 — Release: AAB z sekretem, iOS release tylko ręcznie
 2026-11-05 · sesja B (etap 4, zadania 8/9) · `game-android.yml` dostało job `release-aab` (gradle release, AAB, wersja z tagu, raport rozmiaru; podpis z `ANDROID_KEYSTORE_*` gdy sekrety są, inaczej krok się pomija). `game-ios-release.yml` tylko `workflow_dispatch` — czeka na sekrety Apple (certyfikat, profil, team id).
+
+## D-48 — Fotografie Magnific jako źródło materiałów i key artu
+2026-11-05 · sesja A · Z 120 zdjęć (30 motywów × 4 modele, Release `incoming-assets`) wybrano 30 (`contrib/incoming/magnific/selected/README.md`). Zastępują wcześniejsze tekstury proceduralne i dostawy G02/G05/G06/G12/G13/G14 tam, gdzie są lepsze: skóra zwijki, metal (mosiądz toczony/frezowany, stal, nikiel, żelazo), posadzki, papier rekwizytów, obiekty ikony (kierunek: tabliczka „L”), key art (scena „17”) we wszystkich proporcjach. Oryginały 2048² zostają w Release, w repo JPG q92. Zasoby AI wg D-42.
