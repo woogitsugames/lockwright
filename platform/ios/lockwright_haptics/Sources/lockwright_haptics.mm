@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreHaptics/CoreHaptics.h>
 #import <AVFAudio/AVFAudio.h>
+#import <UIKit/UIKit.h>
 
 #include "lockwright_haptics/lockwright_haptics.h"
 

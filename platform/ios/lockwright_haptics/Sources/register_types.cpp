@@ -1,4 +1,4 @@
-#include "register_types.h"
+#include "lockwright_haptics/register_types.h"
 
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/godot.hpp>
