@@ -99,6 +99,17 @@ PICK = metal('pick_steel', (0.64, 0.64, 0.65), 0.2, aniso=0.6, marks='grind', ma
              wear=0.6, wear_col=(0.8, 0.8, 0.8), grime=0.35, smudge=0.6, bevel_r=0.08)
 BRASS = metal('ring_brass', (0.80, 0.58, 0.28), 0.24, marks='turn', marks_axis=(0, 1, 0), wear=0.7, wear_col=(0.95, 0.78, 0.48),
               grime=0.6, patina=0.3)
+PHOTO = photo_enabled()   # photo PBR maps (art/textures/photo); --photo 0 = procedural fallback
+if PHOTO:
+    LE = photo_mat('ph_leather', 'leather_brown_worn', scale=150, offset=(-75, 0, -75), tint=(0.62, 0.5, 0.42), rough_add=0.05, bump=0.5, grime=0.6,
+                   chamfer_matte=0.0, sheen=0.3)
+    LE2 = photo_mat('ph_pocket', 'leather_brown_worn', scale=120, rot=90, offset=(37, 0, 11), tint=(0.5, 0.4, 0.33), rough_add=0.0,
+                    bump=0.5, grime=0.8, chamfer_matte=0.0, sheen=0.3)
+    PICK = photo_mat('ph_pick', 'spring_steel_polished', scale=24, bump=0.12, wear=0.4, grime=0.3)
+    BRASS = photo_mat('ph_ring', 'brass_turned', scale=26, flat=True, tint=(1.0, 0.95, 0.88), wear=0.4, grime=0.4)
+    SNAP = photo_mat('ph_snap', 'brass_turned', scale=11, flat=True, tint=(0.92, 0.85, 0.75), wear=0.6, grime=0.6)
+else:
+    SNAP = BRASS
 RUB = bpy.data.materials.new('loupe_body'); RUB.use_nodes = True
 _rb = RUB.node_tree.nodes['Principled BSDF']; _rb.inputs['Base Color'].default_value = (0.025, 0.024, 0.023, 1)
 _rb.inputs['Roughness'].default_value = 0.42; _rb.inputs['Coat Weight'].default_value = 0.0
@@ -146,8 +157,33 @@ def stitches_h(zs, x0, x1, pitch, y, ang=28.0):
 
 # roll body (big enough to fill any frame), with an edge-stitched fold line near the top
 roll = leather_slab('roll', -110, 110, -130, 130, -2.0, 3.0, LE, cuts=60, seed=1)
-fold = leather_slab('fold', -110, 110, 47, 130, -3.6, 1.7, LE, cuts=40, seed=2, bev=0.6)
-stitches_h(50.0, -100, 100, 3.6, -3.62)
+fold = leather_slab('fold', -110, 110, 44, 130, -3.6, 1.7, LE, cuts=40, seed=2, bev=0.6)
+stitches_h(47.0, -100, 100, 3.6, -3.62)
+# brass press-stud on the folded cover (closes the roll): domed cap, rolled rim, sits in a pressed ring
+snap = lathe('snap', [(0.001, 0.0), (4.6, 0.0), (4.7, 0.5), (4.4, 0.9), (3.6, 1.35), (2.0, 1.75), (0.001, 1.85)], 0, 0, seg=96)
+snap.modifiers.clear(); snap.data.transform(Matrix.Rotation(math.pi / 2, 4, 'X'))
+snap.location = (-30.0, -3.62 - undulation(-30, 52.5, 2), 52.5); put(snap, SNAP)
+if PHOTO:  # thumb rest pressed into the leather where the right thumb lands (decal: alpha + normal from the photo cut-out)
+    import os as _os
+    dd = _os.path.join(PHOTO_DIR, 'objects')
+    dm = bpy.data.materials.new('thumb_dent'); dm.use_nodes = True; dm.blend_method = 'HASHED'; nt = dm.node_tree
+    out = nt.nodes['Material Output']; pb = nt.nodes['Principled BSDF']
+    it = nt.nodes.new('ShaderNodeTexImage'); it.image = bpy.data.images.load(_os.path.join(dd, 'thumb_dent.png'))
+    inr = nt.nodes.new('ShaderNodeTexImage'); inr.image = bpy.data.images.load(_os.path.join(dd, 'thumb_dent_normal.png')); inr.image.colorspace_settings.name = 'Non-Color'
+    nm = nt.nodes.new('ShaderNodeNormalMap'); nm.inputs['Strength'].default_value = 1.6; nt.links.new(inr.outputs['Color'], nm.inputs['Color'])
+    nt.links.new(nm.outputs['Normal'], pb.inputs['Normal'])
+    # colour: darkened, slicker leather (compressed) rather than the decal photo's own pale tone
+    pb.inputs['Base Color'].default_value = (0.13, 0.075, 0.045, 1); pb.inputs['Roughness'].default_value = 0.45; pb.inputs['Sheen Weight'].default_value = 0.3
+    # only the dent itself: radial falloff from the decal centre, so no square patch shows
+    uv = nt.nodes.new('ShaderNodeTexCoord'); dv = nt.nodes.new('ShaderNodeVectorMath'); dv.operation = 'DISTANCE'
+    dv.inputs[1].default_value = (0.5, 0.5, 0.0); nt.links.new(uv.outputs['UV'], dv.inputs[0])
+    rf = _maprange(nt, dv.outputs['Value'], 0.42, 0.22)
+    am = nt.nodes.new('ShaderNodeMath'); am.operation = 'MULTIPLY'; nt.links.new(it.outputs['Alpha'], am.inputs[0]); nt.links.new(rf, am.inputs[1])
+    tr = nt.nodes.new('ShaderNodeBsdfTransparent'); mx = nt.nodes.new('ShaderNodeMixShader')
+    nt.links.new(am.outputs[0], mx.inputs[0]); nt.links.new(tr.outputs[0], mx.inputs[1]); nt.links.new(pb.outputs[0], mx.inputs[2])
+    nt.links.new(mx.outputs[0], out.inputs['Surface'])
+    bpy.ops.mesh.primitive_plane_add(size=22, location=(44.0, -2.06 - undulation(44, -38, 1), -38.0), rotation=(math.pi / 2, 0, 0))
+    td = bpy.context.object; td.name = 'thumb_dent'; td.data.materials.append(dm)
 
 POCKET_X = [-50, -18, 14]   # stable: the game HUD composes per-pocket columns from several renders
 def pick_tip(i, x):

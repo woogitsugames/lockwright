@@ -750,3 +750,97 @@ def oak(name, light=(0.46, 0.30, 0.16), dark=(0.22, 0.12, 0.055), axis='Z', plan
     l.new(h if sc is None else _mix(nt, h, 0.0, sc, dtype='FLOAT'), cb.inputs['Height']); l.new(bv.outputs['Normal'], cb.inputs['Normal'])
     l.new(cb.outputs['Normal'], b.inputs['Coat Normal'])
     return m
+
+
+# ================================================================ v4 additions (append-only): photo PBR materials
+PHOTO_DIR = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'textures', 'photo'))
+G03_DIR = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'contrib', 'gpt', 'G03', 'v2', 'materials'))
+
+def photo_enabled():
+    """Photo materials on unless `--photo 0` is passed (procedural fallback) or LW_PHOTO=0."""
+    argv = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else []
+    if '--photo' in argv: return argv[argv.index('--photo') + 1] != '0'
+    return os.environ.get('LW_PHOTO', '1') != '0'
+
+def _photo_files(tex):
+    if tex.startswith('g03:'):  # contrib/gpt/G03/v2 wood: <n>_albedo_2048.png, _roughness_2048, _height_2048
+        n = tex[4:]; f = lambda k: os.path.join(G03_DIR, '%s_%s_2048.png' % (n, k))
+        return f('albedo'), f('roughness'), f('height'), {}
+    d = os.path.join(PHOTO_DIR, tex); meta = {}
+    try:
+        import json; meta = json.load(open(os.path.join(d, 'material.json')))
+    except Exception: pass
+    return (os.path.join(d, tex + '_albedo.jpg'), os.path.join(d, tex + '_rough.png'), os.path.join(d, tex + '_height_1k.png'), meta)
+
+def photo_mat(name, tex, scale=40.0, rot=0.0, plane='XZ', metallic=None, tint=(1.0, 1.0, 1.0), rough_add=0.0, rough_mul=1.0,
+              bump=0.35, offset=(0.0, 0.0, 0.0), box_blend=0.25, wear=0.0, grime=0.0, chamfer_matte=0.12, coat=0.0, sheen=0.0,
+              flat=False):
+    """Photo-based PBR material (art/textures/photo/<tex>/ or 'g03:<name>' for the G03 wood set) for meshes without UVs:
+    object-space box projection, `scale` = mm per texture repeat, `rot` = degrees of rotation in the projection
+    plane (machining direction), height map as bump (no tangents needed). Metals keep roughness >= 0.16, chamfers
+    a little matter than the faces (edge mask), optional worn edges / grime in crevices. flat=True: single planar
+    projection on the XZ plane (centred radial maps like brass_turned, with `offset` = centre)."""
+    alb, rgh, hgt, meta = _photo_files(tex)
+    m = bpy.data.materials.new(name); m.use_nodes = True; nt = m.node_tree; l = nt.links
+    b = nt.nodes['Principled BSDF']
+    met = meta.get('metallic', 0.0) if metallic is None else metallic
+    b.inputs['Metallic'].default_value = met
+    tc = nt.nodes.new('ShaderNodeTexCoord')
+    mp = nt.nodes.new('ShaderNodeMapping'); l.new(tc.outputs['Object'], mp.inputs['Vector'])
+    mp.inputs['Location'].default_value = tuple(-o / scale for o in offset)
+    mp.inputs['Scale'].default_value = (1.0 / scale,) * 3
+    if rot:
+        axis = {'XZ': 1, 'XY': 2, 'YZ': 0}[plane]; r = [0.0, 0.0, 0.0]; r[axis] = math.radians(rot)
+        mp.inputs['Rotation'].default_value = r
+    V = mp.outputs['Vector']
+    if flat:  # centred planar: XZ -> UV (u = x, v = z), image centre at the offset point
+        sx = nt.nodes.new('ShaderNodeSeparateXYZ'); l.new(V, sx.inputs[0])
+        cx = nt.nodes.new('ShaderNodeCombineXYZ'); l.new(sx.outputs[0], cx.inputs[0]); l.new(sx.outputs[2], cx.inputs[1])
+        ad = nt.nodes.new('ShaderNodeVectorMath'); ad.operation = 'ADD'; ad.inputs[1].default_value = (0.5, 0.5, 0); l.new(cx.outputs[0], ad.inputs[0])
+        V = ad.outputs[0]
+    def img(path, color):
+        t = nt.nodes.new('ShaderNodeTexImage')
+        t.image = bpy.data.images.load(path, check_existing=True)
+        t.image.colorspace_settings.name = 'sRGB' if color else 'Non-Color'
+        t.interpolation = 'Cubic'
+        if not flat: t.projection = 'BOX'; t.projection_blend = box_blend
+        else: t.extension = 'EXTEND'
+        l.new(V, t.inputs['Vector']); return t.outputs['Color']
+    col = img(alb, True)
+    if tuple(tint) != (1.0, 1.0, 1.0):
+        col = _mix(nt, col, (*tint, 1), 1.0, mode='MULTIPLY')
+    r = img(rgh, False)
+    rm = nt.nodes.new('ShaderNodeMath'); rm.operation = 'MULTIPLY_ADD'; rm.inputs[1].default_value = rough_mul; rm.inputs[2].default_value = rough_add
+    l.new(r, rm.inputs[0]); r = rm.outputs[0]
+    em = _edge_mask(nt, 0.3, 0.7, 0.98) if (chamfer_matte or wear) else None
+    if chamfer_matte: r = _mix(nt, r, 0.6, _maprange(nt, em, 0.0, 1.0, 0.0, chamfer_matte), dtype='FLOAT')
+    if wear:
+        wm = _maprange(nt, _mix(nt, 0.0, em, _noise(nt, tc.outputs['Object'], 2.0, detail=5), dtype='FLOAT'), 0.2, 0.55, 0.0, wear)
+        col = _mix(nt, col, _mix(nt, col, (1, 1, 1, 1), 0.25, mode='SCREEN'), wm)
+    if grime:
+        gm = _maprange(nt, _cavity_mask(nt, 2.0, 0.3, 0.95), 0, 1, 0, grime)
+        col = _mix(nt, col, (0.04, 0.03, 0.02, 1), gm); r = _mix(nt, r, 0.75, gm, dtype='FLOAT')
+    if met > 0.5:
+        cl = nt.nodes.new('ShaderNodeMath'); cl.operation = 'MAXIMUM'; cl.inputs[1].default_value = 0.16; l.new(r, cl.inputs[0]); r = cl.outputs[0]
+    l.new(col, b.inputs['Base Color']); l.new(r, b.inputs['Roughness'])
+    b.inputs['Coat Weight'].default_value = coat; b.inputs['Sheen Weight'].default_value = sheen
+    h = img(hgt, False)
+    bp = nt.nodes.new('ShaderNodeBump'); bp.inputs['Strength'].default_value = bump; bp.inputs['Distance'].default_value = 0.02 * scale / 40.0
+    l.new(h, bp.inputs['Height'])
+    bv = nt.nodes.new('ShaderNodeBevel'); bv.samples = 6; bv.inputs['Radius'].default_value = 0.05; l.new(bv.outputs['Normal'], bp.inputs['Normal'])
+    l.new(bp.outputs['Normal'], b.inputs['Normal'])
+    if coat:
+        l.new(bv.outputs['Normal'], b.inputs['Coat Normal'])
+    return m
+
+def photo_cutaway_set():
+    """Photo replacements for the shared M dict used by cutaway.py (pin tumbler section)."""
+    return {
+        'brass':   photo_mat('ph_brass_milled', 'brass_face_milled', scale=30, rot=42, tint=(1.0, 0.96, 0.9), wear=0.3, grime=0.4),
+        'brass_k': photo_mat('ph_brass_turned', 'brass_turned', scale=24, rot=90, tint=(1.05, 1.0, 0.92), wear=0.4),
+        'nickel':  photo_mat('ph_nickel', 'nickel_satin', scale=45, rot=0, wear=0.2, grime=0.5),
+        'steel':   photo_mat('ph_steel_ground', 'steel_ground', scale=18, rot=90, tint=(0.85, 0.86, 0.88), grime=0.3),
+        'pick':    photo_mat('ph_spring', 'spring_steel_polished', scale=30, rot=0, bump=0.15),
+        'iron':    photo_mat('ph_iron', 'iron_painted_rust', scale=140, metallic=0.0, rough_add=0.05, grime=0.4),
+        'wood':    photo_mat('ph_oak', 'g03:oak_satin', scale=260, rot=0, metallic=0.0, coat=0.35, bump=0.3, grime=0.5),
+    }
