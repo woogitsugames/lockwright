@@ -2,10 +2,10 @@
 
 Kontynuujesz jako **sesja B** (repo `woogitsugames/lockwright`, `main`). Zasady z poprzednich promptów obowiązują. Priorytet ma Android (D-51).
 
-Właściciel przetestował APK z runu 92. Zrzuty są w `docs/handoff/device-tests/run92/`. Pełne opisy z gotowymi wskazówkami są w `docs/handoff/SESSION-B-LOG.md` (wpisy „Od sesji A”, N-52…N-61, plus głosy S03v2).
+Właściciel przetestował APK z runu 92. Zrzuty są w `docs/handoff/device-tests/run92/`. Pełne opisy z gotowymi wskazówkami są w `docs/handoff/SESSION-B-LOG.md` (wpisy „Od sesji A”, N-52…N-62, plus głosy S03v2).
 
 Wykonuj **po kolei**:
-0. **N-61 (najpierw):** samouczek S1 jako prowadzone kroki z kredą w widoku planu B (ONBOARDING §4). Teraz gracz po „Zacznij ćwiczenie” nie dostaje żadnej instrukcji.
+0. **N-62 + N-61 (najpierw):** widoczny napinacz, obrót rdzenia, pełna skala uniesienia pinów i stan set w widoku planu B (N-62), a do tego prowadzony samouczek S1 (N-61). samouczek S1 jako prowadzone kroki z kredą w widoku planu B (ONBOARDING §4). Teraz gracz po „Zacznij ćwiczenie” nie dostaje żadnej instrukcji.
 1. **N-52:** przycisk „wstecz” Androida zamyka grę. Ma prowadzić o krok w tył, a z menu wychodzić dopiero po potwierdzeniu.
 2. **N-59 + N-53:** brak scrolla poziomego i marginesy na wszystkich ekranach:
    - wspólny `MarginContainer` 16 dp + safe-area;
@@ -24,6 +24,6 @@ Wykonuj **po kolei**:
 9. **N-54:** menu główne, a w ślad za nim ustawienia i reszta ekranów:
    - tło warsztatu, tytuł Bona Nova, przyciski jako emaliowane tabliczki;
    - pełny motyw `theme/main.tres` (Button, Panel, HSlider, CheckButton, OptionButton).
-10. **Przekazanie właścicielowi:** zielone `game-android`, `game-tests`, `game-screens` i `qa-career`. W logu link do runu z APK, zrzuty 412×915 i 915×412 każdego poprawionego ekranu oraz tabela statusów N-52…N-61.
+10. **Przekazanie właścicielowi:** zielone `game-android`, `game-tests`, `game-screens` i `qa-career`. W logu link do runu z APK, zrzuty 412×915 i 915×412 każdego poprawionego ekranu oraz tabela statusów N-52…N-62.
 
 Kryterium „gotowe”: właściciel przechodzi menu → ustawienia → zlecenie → rozmowa → zamek → pauza → warsztat bez przewijania w poziomie, z wibracją, dźwiękiem i działającym „wstecz”.

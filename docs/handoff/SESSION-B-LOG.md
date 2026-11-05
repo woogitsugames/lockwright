@@ -460,3 +460,25 @@ Zrzuty: `device-tests/run92/tutorial_intro.jpg` i `lock_screen.jpg`.
   Teksty idą przez i18n PL/EN/DE, odręczny font (Caveat OFL, już w `contrib/gpt/G10/v2/fonts`, wpisz do ASSETS.md). Każdy tekst max 2 linie, przy krawędzi płyty, nie na pinach.
 - **Ekran przed samouczkiem:** zamiast szkicu bez podpisu pokaż 2–3 kadry z podpisami (napięcie / podnoszenie / klik), a kartkę „To gra, nie kurs” jako osobną, czytelną notkę, nie wciśniętą w rysunek.
 - **Test GUT:** bot przechodzi S1 przez kroki 1–4 i każdy tekst kroku pojawia się i znika we właściwej kolejności.
+
+## Od sesji A: N-62, w widoku planu B nie widać napięcia ani ruchu pinów (NAJWYŻSZY PRIORYTET, nagranie właściciela)
+Kadry z nagrania 23 s: `device-tests/run92/recording_1fps.jpg` i `recording_plate_4fps.jpg`.
+
+**Co widać na nagraniu:**
+- właściciel trzyma jeden kciuk nisko po lewej (napięcie) i drugim jeździ po płycie. Wytrych przesuwa się w głąb;
+- mimo to przez 23 s:
+  - na płycie nie ma **napinacza**;
+  - **rdzeń się nie obraca**;
+  - piny unoszą się o kilka px;
+  - żaden pin się nie zatrzaskuje.
+- Gracz nie ma po czym poznać, czy napięcie jest, ani czy pin podniósł się wystarczająco.
+
+**Do zrobienia** w `lock_photoreal_view.gd` (DESIGN.md §1, kod stanów):
+1. **Napinacz widoczny zawsze:** węzeł `wrench` z GLB pokazany w otworze klucza (jeśli jest ukryty albo poza kadrem, przesuń kadr albo dorysuj go na płycie). Napięcie obraca rdzeń i napinacz o widoczny kąt, min. 2–3 dp na krawędzi rdzenia przy pełnym napięciu. Przy zbyt mocnym napięciu napinacz się ugina i słychać skrzypienie (bliskie złamanie).
+2. **Skala uniesienia pinów:** pełny zakres `pick_lift` ma przesuwać stos pinu od spoczynku do linii podziału i powyżej (overset). Na ekranie 412 dp to min. ok. 40 dp ruchu. Sprawdź mapowanie jednostek lockcore Q16 → mm w GLB → px; prawdopodobnie brakuje mnożnika.
+3. **Linia podziału czytelna:** jasna, kredowa linia podziału między rdzeniem a korpusem (≥2 dp, CLAUDE.md), żeby było widać, do jakiej wysokości podnosić.
+4. **Stan set:** pin zatrzaśnięty zostaje na linii podziału po puszczeniu, rdzeń przeskakuje o mały kąt, słychać klik, czuć haptykę. Ma być rozróżnialny w skali szarości.
+5. **Strefy kciuków:** wgniecenia kciuków (`thumb_dent`) pokazują, która strefa jest która. Lewa strefa ma mieć kredową etykietę „napięcie” w S1–S2.
+6. **Test w `game-screens`:** sekwencja z replay (bot) zapisuje 4 klatki: spoczynek, napięcie, pin uniesiony, pin set. Porównaj, czy różnice są widoczne gołym okiem i w skali szarości.
+
+Kolejność: N-62 razem z N-61, przed wszystkim innym. Bez tego gra jest niegrywalna.
