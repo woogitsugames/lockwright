@@ -22,7 +22,7 @@
 
 ## Kluczowe ustalenia i ostrzeżenia
 
-1. **Unlokee** posiada już najbliższy Lockwright dwukciukowy rdzeń mechaniczy; nie można reklamować samego ruchu napinacza/wytrycha jako unikalnego.
+1. **Unlokee** posiada już najbliższy Lockwright dwukciukowy rdzeń mechaniczny; nie można reklamować samego ruchu napinacza/wytrycha jako unikalnego.
 2. **Vale & Daughter: Safecracker** deklaruje **Blind mode**, a **SafeCracker: Vault Puzzle** etykiety VoiceOver. Przewaga Lockwright wymaga rzeczywiście **całej gry przechodzalnej bez wzroku** z VoiceOver/TalkBack, a nie samego wygaszenia ekranu lub haptyki.
 3. **Identyczna nazwa „Lockwright”** występuje według istniejącego researchu na `lockwright.app`. Kolizja marketingowa/ASO jest poważna; sytuacja prawna **nie została rozstrzygnięta**. Nie zgłaszać znaku przed niezależnym clearance.
 4. **EUIPO SME Fund 2026 – Voucher 2**: oficjalna strona informuje, że nowe wnioski o wsparcie znaków/wzorów są obecnie zamknięte po wyczerpaniu środków. Nie planować refundacji bez ponownego sprawdzenia.
