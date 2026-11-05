@@ -4,9 +4,14 @@
 Checks:
   1. every binary file in game/assets/** (png, jpg, jpeg, webp, wav, ogg, ttf, otf, glb;
      .import files skipped) is listed in docs/ASSETS.md. An entry matches when it is
-     the file's repo-relative path, a glob pattern matching that path (or any path
-     suffix after a "/", which covers entries written relative to a sibling file),
-     or a directory prefix of the path (entry naming the file's directory).
+     the file's repo-relative path, a glob pattern matching that path, a path suffix
+     at a "/" boundary (an entry naming the file plus its directory, which covers
+     entries written relative to a sibling file), or a directory prefix of the path
+     (entry naming the file's directory).
+     A bare filename with no directory never matches: filenames in a comma list
+     inherit the directory of the first path of the same list, so an entry like
+     "mockups/fonts/X, Y" cannot cover game/assets/**/Y (review V01: no false
+     negatives from same-name files in other directories).
      Backtick entries may list several comma-separated paths and use {a,b} braces.
   2. every font (*.ttf/*.otf) in the repo has an OFL license: either an OFL*.txt file
      in the same directory, or an ASSETS.md line mentioning the font (or its
@@ -68,55 +73,83 @@ SEPARATOR_RE = re.compile(r",|\||\+|\s+i\s+")
 CELL_SPLIT_RE = re.compile(r"\s+\|\s+")
 
 
-def _token_to_patterns(token):
-    """Split one ASSETS.md token into path patterns.
+def _line_patterns(tokens):
+    """Split one ASSETS.md line's tokens into path patterns.
 
     Drops backtick-quoted remarks and (...) notes, turns extension alternations
     like `*.png|webp` into two patterns, expands {a,b} braces, then splits on
-    commas / " i " / " + " / "|".
+    commas / " i " / " + " / "|". A bare filename in a line is written relative
+    to the sibling paths of the same line (often in a separate backtick or a
+    brace expansion), so every token of the line shares one anchor: the
+    directory of the first part that carries one. A bare filename in a line
+    with no directory never matches (it used to cover the same name in any
+    directory).
     """
-    token = BACKTICK_RE.sub(" ", token)
-    token = PAREN_RE.sub(" ", token)
-    token = EXT_ALT_RE.sub(
-        lambda m: f"{m.group(1)}.{m.group(2)}, {m.group(1)}.{m.group(3)}", token)
+    anchor = ""
     patterns = []
-    for expanded in expand_braces(token):
-        for part in SEPARATOR_RE.split(expanded):
-            part = part.strip()
-            if _looks_like_path(part):
+    for token in tokens:
+        token = BACKTICK_RE.sub(" ", token)
+        token = PAREN_RE.sub(" ", token)
+        token = EXT_ALT_RE.sub(
+            lambda m: f"{m.group(1)}.{m.group(2)}, {m.group(1)}.{m.group(3)}", token)
+        for expanded in expand_braces(token):
+            for part in SEPARATOR_RE.split(expanded):
+                part = part.strip()
+                if not _looks_like_path(part):
+                    continue
+                if "/" in part:
+                    if anchor == "":
+                        anchor = part.rsplit("/", 1)[0] + "/"
+                elif anchor:
+                    part = anchor + part
                 patterns.append(part)
     return patterns
+
+
+def _token_to_patterns(token):
+    """Path patterns of a single token (a one-token line)."""
+    return _line_patterns([token])
 
 
 def load_assets_md_entries(root):
     """Extract path patterns from docs/ASSETS.md.
 
     Sources: backtick-quoted tokens anywhere in the file, plus the first cell of
-    every table row (some rows list paths without backticks).
+    every table row (some rows list paths without backticks). Tokens are grouped
+    per line so bare filenames inherit the sibling directory of their line.
     """
     path = os.path.join(root, ASSETS_MD)
     if not os.path.isfile(path):
         return [], None
     with open(path, encoding="utf-8") as fh:
         text = fh.read()
-    tokens = list(BACKTICK_RE.findall(text))
+    patterns = []
     for line in text.splitlines():
         line = line.strip()
+        tokens = BACKTICK_RE.findall(line)
         if line.startswith("|"):
             cells = CELL_SPLIT_RE.split(line[1:])
             if cells and cells[0].strip():
-                tokens.append(cells[0])
-    patterns = []
-    for token in tokens:
-        patterns.extend(_token_to_patterns(token))
+                # Reading order: plain first-cell paths, then backtick tokens.
+                tokens.insert(0, BACKTICK_RE.sub(" ", cells[0]))
+        if tokens:
+            patterns.extend(_line_patterns(tokens))
     return patterns, text
 
 
 def is_listed(rel_path, patterns):
-    """True when any ASSETS.md pattern covers rel_path (path, glob, or directory)."""
+    """True when any ASSETS.md pattern covers rel_path.
+
+    A pattern matches as the full path, as a glob over the full path, as a path
+    suffix (only patterns that name a directory: "fonts/X.ttf" covers
+    "game/assets/fonts/X.ttf", a bare "X.ttf" covers nothing), or as a directory
+    prefix of the path.
+    """
     for pat in patterns:
         pat = pat.strip("/")
-        if fnmatch.fnmatch(rel_path, pat) or fnmatch.fnmatch(rel_path, "*/" + pat):
+        if "/" in pat and fnmatch.fnmatch(rel_path, "*/" + pat):
+            return pat
+        if fnmatch.fnmatch(rel_path, pat):
             return pat
         if rel_path.startswith(pat + "/"):
             return pat

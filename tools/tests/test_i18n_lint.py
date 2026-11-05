@@ -43,12 +43,37 @@ def test_code_keys_must_exist_in_csv(tmp_path):
     assert "sample.gd:3" in missing[0].location
 
 
-def test_dynamic_keys_are_warnings_not_errors(tmp_path):
+def test_dynamic_key_without_csv_match_is_an_error(tmp_path):
     gd = 'var c = I18n.t(&"cast.%s.name")\n'
     findings, _ = i18n_lint.run_lint(make_root(tmp_path, gd_code=gd))
+    dead = [f for f in errors(findings) if f.key == "cast.%s.name"]
+    assert len(dead) == 1
+    assert "no matching key" in dead[0].message
+
+
+def test_dynamic_key_with_matching_csv_keys_passes(tmp_path):
+    gd = ('var a = I18n.t(&"cast.%s.name")\n'
+          'var b = I18n.t(&"%s.line.%d")\n'
+          'var c = I18n.t(&"verify.card.%s")\n')
+    root = make_root(tmp_path, gd_code=gd)
+    with open(os.path.join(root, "game/i18n/content.csv"), "a", encoding="utf-8") as fh:
+        fh.write("cast.hero.name,Hero,Bohater,Held\n")
+        fh.write("job.test.line.1,Line one,Pierwsza linia,Erste Zeile\n")
+        fh.write("verify.card.id,Identity document,Dokument tożsamości,Ausweis\n")
+    findings, _ = i18n_lint.run_lint(root)
     assert errors(findings) == []
-    dyn = [f for f in warns(findings) if f.key == "cast.%s.name"]
-    assert len(dyn) == 1
+    assert not any(f.key in ("cast.%s.name", "%s.line.%d", "verify.card.%s")
+                  for f in findings)
+
+
+def test_dynamic_key_digit_placeholder_needs_digits(tmp_path):
+    gd = 'var c = I18n.t(&"%s.line.%d")\n'
+    root = make_root(tmp_path, gd_code=gd)
+    with open(os.path.join(root, "game/i18n/content.csv"), "a", encoding="utf-8") as fh:
+        fh.write("job.test.line.one,Line one,Pierwsza linia,Erste Zeile\n")
+    findings, _ = i18n_lint.run_lint(root)
+    assert any(f.key == "%s.line.%d" and f.severity == "ERROR"
+               for f in findings)
 
 
 def test_invalid_fixture_reports_all_error_kinds(tmp_path):

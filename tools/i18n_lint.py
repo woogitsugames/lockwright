@@ -9,8 +9,10 @@ comma-separated with quoted fields):
     2. {placeholder} sets differ between languages for the same key
     3. a key used in code (I18n.t("key") / I18n.t(&"key") in game/**/*.gd) missing from CSV
     4. length limits: tutorial.* and lock.* <= 56 chars per language, menu.* <= 28
+    5. a dynamically built key (e.g. "cast.%s.name") with no CSV key matching its
+       pattern: at least one CSV key must match (%s -> any run without commas,
+       %d -> digits), otherwise the pattern can never resolve
   warnings (never affect the exit code):
-    - dynamically built keys in code (e.g. "cast.%s.name")
     - straight " quotes in the PL value instead of „…”
     - PL/DE value identical to EN, longer than 3 chars and not a proper noun
     - the word "włam" in any form (banned by the game tone)
@@ -32,6 +34,7 @@ LENGTH_LIMITS = (("tutorial.", 56), ("lock.", 56), ("menu.", 28))
 PLACEHOLDER_RE = re.compile(r"\{[^{}]+\}")
 CODE_KEY_RE = re.compile(r'I18n\.t\(\s*&?"((?:[^"\\]|\\.)*)"')
 DYNAMIC_RE = re.compile(r"[%{}]")
+PRINTF_TOKEN_RE = re.compile(r"%(?:\d+)?[sd]")
 WLAM_RE = re.compile(r"włam", re.IGNORECASE)
 
 
@@ -151,6 +154,22 @@ def collect_code_keys(root):
             {k: sorted(v) for k, v in dynamic.items()})
 
 
+def dynamic_key_regex(key):
+    """Compile a printf-style dynamic key ("cast.%s.name") into a regex over CSV keys.
+
+    %s matches any run without a comma, %d (also %02d) matches digits; everything
+    else is literal. Used to check that at least one CSV key resolves the pattern.
+    """
+    parts = []
+    last = 0
+    for match in PRINTF_TOKEN_RE.finditer(key):
+        parts.append(re.escape(key[last:match.start()]))
+        parts.append(r"[0-9]+" if match.group(0).endswith("d") else r"[^,]+")
+        last = match.end()
+    parts.append(re.escape(key[last:]))
+    return re.compile("^" + "".join(parts) + "$")
+
+
 def check_code_keys(root, csv_keys, findings):
     static, dynamic = collect_code_keys(root)
     for key, locs in sorted(static.items()):
@@ -159,9 +178,12 @@ def check_code_keys(root, csv_keys, findings):
                 "ERROR", locs[0], key,
                 f"key used in code but missing from CSV (used at {', '.join(locs)})"))
     for key, locs in sorted(dynamic.items()):
-        findings.append(Finding(
-            "WARN", locs[0], key,
-            f"dynamic key, not checked against CSV (used at {', '.join(locs)})"))
+        regex = dynamic_key_regex(key)
+        if not any(regex.match(k) for k in csv_keys):
+            findings.append(Finding(
+                "ERROR", locs[0], key,
+                f"dynamic key pattern has no matching key in CSV "
+                f"(used at {', '.join(locs)})"))
 
 
 def check_warnings(display, rows, findings):
