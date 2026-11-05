@@ -22,8 +22,10 @@ objc_env.Append(CXXFLAGS=["-x", "objective-c++", "-std=gnu++20", "-fobjc-arc", "
 cpp_objs = env.SharedObject(cpp_sources)
 mm_objs = objc_env.SharedObject(mm_sources)
 
+# explicit ".dylib" in the target name: scons does not append SHLIBSUFFIX to a target
+# that already looks suffixed (".template_release"), and xcodebuild needs the .dylib path
 library = env.SharedLibrary(
-    "bin/liblockwright_haptics.{}.{}".format(env["platform"], env["target"]),
+    "bin/liblockwright_haptics.{}.{}.dylib".format(env["platform"], env["target"]),
     cpp_objs + mm_objs,
 )
 env.Append(LINKFLAGS=["-framework", "CoreHaptics", "-framework", "AVFAudio", "-framework", "Foundation", "-framework", "UIKit"])
