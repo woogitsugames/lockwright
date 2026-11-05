@@ -125,3 +125,6 @@ dev.haptics_lab.force_fallback,Forcer le mode de secours,Mode de secours,Skróco
 dev.haptics_lab.resistance,Résistance,Résistance,
 dev.haptics_lab.caps,Capacités,Capacités,
 tutorial.start,,Commencer l'entraînement,Uzupełniono klucz dodany po pierwotnej korekcie.
+nav.quit_confirm,,Quitter le jeu ?,Nowy klucz źródłowy (kontrola zamknięcia gry).
+nav.quit_yes,,Quitter,Nowy klucz źródłowy (potwierdzenie zamknięcia gry).
+nav.quit_no,,Continuer à jouer,Nowy klucz źródłowy (anulowanie zamknięcia gry).
