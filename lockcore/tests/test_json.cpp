@@ -65,3 +65,22 @@ TEST_CASE("lockfile: errors are reported with paths") {
   REQUIRE(!errs.empty());
   CHECK(errs.front().path == "spec.stacks[1].target_q16");
 }
+
+TEST_CASE("json: surrogates and raw UTF-8 are validated (T25-23)") {
+  CHECK(!json::parse(R"("\uDC00")").ok);
+  CHECK(!json::parse(R"("\uD800")").ok);
+  CHECK(!json::parse(R"("\uD800A")").ok);
+  auto pair = json::parse(R"("😀")");
+  REQUIRE(pair.ok);
+  CHECK(pair.value.as_string() == "\xF0\x9F\x98\x80");
+  CHECK(json::parse("\"\xC5\x82\xC3\xB3" "d\xC5\xBA\"").ok);       // valid 2-byte sequences
+  CHECK(json::parse("\"\xE2\x80\x9E\"").ok);                     // 3-byte
+  CHECK(json::parse("\"\xF0\x9F\x98\x80\"").ok);                 // 4-byte
+  CHECK(!json::parse("\"\xC3\"").ok);                            // truncated
+  CHECK(!json::parse("\"\xC0\xAF\"").ok);                        // overlong
+  CHECK(!json::parse("\"\xE0\x80\xAF\"").ok);                    // overlong 3-byte
+  CHECK(!json::parse("\"\xED\xA0\x80\"").ok);                    // encoded surrogate
+  CHECK(!json::parse("\"\xF4\x90\x80\x80\"").ok);                // > U+10FFFF
+  CHECK(!json::parse("\"\x80\"").ok);                            // stray continuation
+  CHECK(!json::parse("\"\xFF\"").ok);
+}

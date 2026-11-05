@@ -221,7 +221,25 @@ class Parser {
       if (c == '"') return true;
       if (static_cast<unsigned char>(c) < 0x20) return fail("control character in string");
       if (c != '\\') {
-        out.push_back(c);
+        const auto b = static_cast<unsigned char>(c);
+        if (b < 0x80) {
+          out.push_back(c);
+          continue;
+        }
+        // Raw non-ASCII: copy only well-formed UTF-8 (no overlong forms, no
+        // surrogates, <= U+10FFFF), so every consumer reads the same text (T25-23).
+        const int len = b >= 0xF0 ? 4 : (b >= 0xE0 ? 3 : (b >= 0xC2 ? 2 : 0));
+        if (len == 0 || b > 0xF4 || pos_ - 1 + static_cast<std::size_t>(len) > t_.size()) return fail("invalid UTF-8");
+        std::uint32_t cp = b & (len == 2 ? 0x1Fu : (len == 3 ? 0x0Fu : 0x07u));
+        for (int k = 1; k < len; ++k) {
+          const auto cb = static_cast<unsigned char>(t_[pos_ - 1 + static_cast<std::size_t>(k)]);
+          if ((cb & 0xC0u) != 0x80u) return fail("invalid UTF-8");
+          cp = (cp << 6) | (cb & 0x3Fu);
+        }
+        if ((len == 3 && cp < 0x800) || (len == 4 && (cp < 0x10000 || cp > 0x10FFFF)) || (cp >= 0xD800 && cp <= 0xDFFF))
+          return fail("invalid UTF-8");
+        out.append(t_.data() + pos_ - 1, static_cast<std::size_t>(len));
+        pos_ += static_cast<std::size_t>(len - 1);
         continue;
       }
       if (pos_ >= t_.size()) break;
@@ -246,6 +264,7 @@ class Parser {
             if (lo < 0xDC00 || lo > 0xDFFF) return fail("bad surrogate pair");
             cp = 0x10000 + ((cp - 0xD800) << 10) + (lo - 0xDC00);
           }
+          if (cp >= 0xDC00 && cp <= 0xDFFF) return fail("lone low surrogate");
           put_utf8(out, cp);
           break;
         }
