@@ -1,0 +1,167 @@
+{
+  "files": {
+    "sources/03_leather_roll_source_354.png": {
+      "width": 354,
+      "height": 354,
+      "mode": "RGB",
+      "bytes": 181131,
+      "sha256": "76b5356f59220afafbe17eddd8eca97584d6a56fd1181993e25f8cf15af9f424"
+    },
+    "sources/02_brass_cylinder_source_354.png": {
+      "width": 354,
+      "height": 354,
+      "mode": "RGB",
+      "bytes": 207093,
+      "sha256": "705cbbf6af623a104316c9984f3e08cccffb5aee71681b8a31d71f3289420573"
+    },
+    "sources/04_old_key_source_354.png": {
+      "width": 354,
+      "height": 354,
+      "mode": "RGB",
+      "bytes": 227107,
+      "sha256": "6adaef0e6be91cf5b450999d646650254fb60f969011102a9c697b69f46a6a4f"
+    },
+    "sources/01_enamel_l_source_354.png": {
+      "width": 354,
+      "height": 354,
+      "mode": "RGB",
+      "bytes": 229157,
+      "sha256": "e39e84c29d27833d2f6fbbfa0c97402190f34ff36a7cd5378845489f9bd308de"
+    },
+    "sources/native_imagegen_contact_sheet.png": {
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2265439,
+      "sha256": "21d546118f4689d7e1f22e90e38eb03df4a685e8b547da5a273e74d4d56cfaa2"
+    },
+    "previews/contact_sheet_v2.png": {
+      "width": 1380,
+      "height": 766,
+      "mode": "RGB",
+      "bytes": 683055,
+      "sha256": "5324dcdd210634e8a99ee92ce77de54f329f86927964a1ebfe2eec795f95eea9"
+    },
+    "previews/android_adaptive_round_mask.png": {
+      "width": 1340,
+      "height": 420,
+      "mode": "RGB",
+      "bytes": 383193,
+      "sha256": "98e58d69bf2ae13388a16f6014719178f00eb1746ef6dd5d21c7667f51759482"
+    },
+    "previews/04_old_key_light_dark_sizes.png": {
+      "width": 1150,
+      "height": 632,
+      "mode": "RGB",
+      "bytes": 250420,
+      "sha256": "f26f82e58a41ca7045f6e66a34d3a13d4010919826b61db7dde78980037c92ed"
+    },
+    "previews/01_enamel_l_light_dark_sizes.png": {
+      "width": 1150,
+      "height": 632,
+      "mode": "RGB",
+      "bytes": 245775,
+      "sha256": "1dd0a48d4ce75ce02d360c32069646a40ec3019a04a0119053f1eade4a263e75"
+    },
+    "previews/03_leather_roll_light_dark_sizes.png": {
+      "width": 1150,
+      "height": 632,
+      "mode": "RGB",
+      "bytes": 212819,
+      "sha256": "64c023931463123310db8699698e6f3e902f0f8db5c4a5852e98ddcae38f1d93"
+    },
+    "previews/02_brass_cylinder_light_dark_sizes.png": {
+      "width": 1150,
+      "height": 632,
+      "mode": "RGB",
+      "bytes": 222511,
+      "sha256": "06e891ee5b6a9ac2ef42193314e1e93e1d50ed6f35181093a98444860a628edd"
+    },
+    "android/04_old_key_foreground_432.png": {
+      "width": 432,
+      "height": 432,
+      "mode": "RGBA",
+      "bytes": 41430,
+      "sha256": "708f8439b4cdafb14bd54938b5c9b324f83ad841ed8fb87d899be599b5a4a903"
+    },
+    "android/01_enamel_l_background_432.png": {
+      "width": 432,
+      "height": 432,
+      "mode": "RGB",
+      "bytes": 195882,
+      "sha256": "23f52d51a898259f678c9e1d31c21c97fd2d1594522d4d8a5dc13042d124fb46"
+    },
+    "android/02_brass_cylinder_foreground_432.png": {
+      "width": 432,
+      "height": 432,
+      "mode": "RGBA",
+      "bytes": 126152,
+      "sha256": "d902c6af8549fa604d9c8c40bfce1965378f3b2880fae24e77c8dd671ad97ef4"
+    },
+    "android/03_leather_roll_foreground_432.png": {
+      "width": 432,
+      "height": 432,
+      "mode": "RGBA",
+      "bytes": 67056,
+      "sha256": "3af5604ac7c12a9cb77c00473b352a5f7d479d5af660a61caf98df54111533b5"
+    },
+    "android/02_brass_cylinder_background_432.png": {
+      "width": 432,
+      "height": 432,
+      "mode": "RGB",
+      "bytes": 194431,
+      "sha256": "469b2f8fd375c0265746d29d8819a3931741fc29f5823938a79d7f424a6040da"
+    },
+    "android/04_old_key_background_432.png": {
+      "width": 432,
+      "height": 432,
+      "mode": "RGB",
+      "bytes": 194794,
+      "sha256": "e69ea0d6a7e4f724fa37da3975df24dd9a097f2c7f312a5dc15557e7b9bd85df"
+    },
+    "android/03_leather_roll_background_432.png": {
+      "width": 432,
+      "height": 432,
+      "mode": "RGB",
+      "bytes": 194707,
+      "sha256": "87b431036ddbc8379a6fc6f7cbdeab8c3a2580426f30e93742a49449945f77df"
+    },
+    "android/01_enamel_l_foreground_432.png": {
+      "width": 432,
+      "height": 432,
+      "mode": "RGBA",
+      "bytes": 92711,
+      "sha256": "2111df4f2c04c377c7c57f0b53e5e0ed43a7729ce3eb74547e239adc19a54617"
+    },
+    "ios/03_leather_roll_1024.png": {
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 858236,
+      "sha256": "21579cf7b8eda8bbcdc8fed1e1739fe8a88fb34595b11b75cb7ac27b309899d3"
+    },
+    "ios/01_enamel_l_1024.png": {
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1271259,
+      "sha256": "1782867b41fdf223c6202ef371e3369fe08c17f27b25bdf17d909f7adaccbeff"
+    },
+    "ios/04_old_key_1024.png": {
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1225121,
+      "sha256": "d325682e62eceb85d6759840b14210d0601b8b12f704e418dd8e4be9febbe7c3"
+    },
+    "ios/02_brass_cylinder_1024.png": {
+      "width": 1024,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1078875,
+      "sha256": "aca7ed7042ab9d5e99f2a5f5ccefc9e22518054b4e998d00a0cd342cce0ad67f"
+    }
+  },
+  "source": "native_imagegen_contact_sheet.png",
+  "review": "visual/manual; no user testing"
+}

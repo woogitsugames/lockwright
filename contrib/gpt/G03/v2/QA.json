@@ -1,0 +1,146 @@
+{
+  "data": "2026-11-05",
+  "generation_source": "3 OpenAI generated image boards, cropped then image-derived quilt",
+  "full_resolution_source": false,
+  "map_resolution": [
+    2048,
+    2048
+  ],
+  "materials": [
+    {
+      "material": "oak_satin",
+      "size": [
+        2048,
+        2048
+      ],
+      "seam_metrics": {
+        "albedo": {
+          "max_x": 0,
+          "max_y": 0,
+          "mean_x": 0.0,
+          "mean_y": 0.0
+        },
+        "height": {
+          "max_x": 0,
+          "max_y": 0,
+          "mean_x": 0.0,
+          "mean_y": 0.0
+        },
+        "roughness": {
+          "max_x": 0,
+          "max_y": 0,
+          "mean_x": 0.0,
+          "mean_y": 0.0
+        }
+      },
+      "bytes": {
+        "albedo": 4126960,
+        "height": 3979506,
+        "roughness": 2301257
+      }
+    },
+    {
+      "material": "oak_bottle_green",
+      "size": [
+        2048,
+        2048
+      ],
+      "seam_metrics": {
+        "albedo": {
+          "max_x": 0,
+          "max_y": 0,
+          "mean_x": 0.0,
+          "mean_y": 0.0
+        },
+        "height": {
+          "max_x": 0,
+          "max_y": 0,
+          "mean_x": 0.0,
+          "mean_y": 0.0
+        },
+        "roughness": {
+          "max_x": 0,
+          "max_y": 0,
+          "mean_x": 0.0,
+          "mean_y": 0.0
+        }
+      },
+      "bytes": {
+        "albedo": 3855811,
+        "height": 3831723,
+        "roughness": 1976080
+      }
+    },
+    {
+      "material": "pine_cream",
+      "size": [
+        2048,
+        2048
+      ],
+      "seam_metrics": {
+        "albedo": {
+          "max_x": 0,
+          "max_y": 0,
+          "mean_x": 0.0,
+          "mean_y": 0.0
+        },
+        "height": {
+          "max_x": 0,
+          "max_y": 0,
+          "mean_x": 0.0,
+          "mean_y": 0.0
+        },
+        "roughness": {
+          "max_x": 0,
+          "max_y": 0,
+          "mean_x": 0.0,
+          "mean_y": 0.0
+        }
+      },
+      "bytes": {
+        "albedo": 3529678,
+        "height": 3967408,
+        "roughness": 1973236
+      }
+    },
+    {
+      "material": "walnut_dark",
+      "size": [
+        2048,
+        2048
+      ],
+      "seam_metrics": {
+        "albedo": {
+          "max_x": 0,
+          "max_y": 0,
+          "mean_x": 0.0,
+          "mean_y": 0.0
+        },
+        "height": {
+          "max_x": 0,
+          "max_y": 0,
+          "mean_x": 0.0,
+          "mean_y": 0.0
+        },
+        "roughness": {
+          "max_x": 0,
+          "max_y": 0,
+          "mean_x": 0.0,
+          "mean_y": 0.0
+        }
+      },
+      "bytes": {
+        "albedo": 3727136,
+        "height": 3669976,
+        "roughness": 2018459
+      }
+    }
+  ],
+  "all_sized_under_20_mb": true,
+  "source_images_1": "/mnt/data/G03-v2-work/contrib/gpt/G03/v2/sources",
+  "notes": [
+    "Generated boards contained only 200-380 px material crops. 2048 maps are synthesized from enlarged photographic patches; not original 2048 photographs.",
+    "Height is contrast-derived and not physical measurement.",
+    "2x2 visual tiling review required before final use."
+  ]
+}
