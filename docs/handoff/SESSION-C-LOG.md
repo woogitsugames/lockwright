@@ -139,3 +139,18 @@ Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-d
 - **Zad. 6:** pomiarów właściciela jeszcze nie ma (`docs/handoff/measurements/` nie istnieje) — czeka.
 - **Zad. 7:** strona „Jak gramy uczciwie” PL/EN; G12/G13 czekają na dostawy.
 - **Zad. 8:** `store/legal/DEPENDENCIES.md` → N-27 (brak not licencyjnych w aplikacji — High przed wydaniem), N-28.
+
+## 2026-11-05 10:41 — etap 4: tabela statusów (po pierwszym przejściu listy)
+
+| # | Zadanie | Stan | Wynik | Czeka na |
+|---|---|---|---|---|
+| P3-10 | Determinizm w APK (domknięcie etapu 3) | **w toku** | build + host 630/630 ✅, APK instaluje się na emulatorze; run 2 po poprawce startu | wynik runu |
+| 1 | Pilnowanie zielonego CI | **trwa (co godzinę)** | runda 1: N-22, N-23, N-24 (+N-19, N-21, N-28) z diffami; moje workflowy: perf-budget ✅, spike-determinism ✅, qa-career przebudowany | poprawki sesji B |
+| 2 | Przegląd dostaw ChatGPT | **gotowe narzędzie, 0/30 dostaw** | ,  | dostawy w `contrib/gpt/` |
+| 3 | Instrukcja testów w sklepach | **gotowe** |  | konta i sekrety właściciela |
+| 4 | Lista kontrolna wydania | **gotowe (żywy dokument)** |  | — |
+| 5 | Bot QA cz. 2 | **gotowe** | 5 przebiegów (solver/średni/niezdarny/EN/ciemność), ekonomia vs econ_sim (N-25), EN ucięcia (N-26), kanały 22/22 ✅ | N-13 (sesja B/A) |
+| 6 | Pomiary właściciela → TECH §8 | **czeka** | — | pliki `docs/handoff/measurements/*.json` |
+| 7 | Strona cz. 2 | **częściowo** | „Jak gramy uczciwie” PL/EN ✅; publikacja wyłączona | G12/G13 przyjęte |
+| 8 | Audyt licencji | **gotowe** | , N-27 (High przed wydaniem), N-28 | sesja B: ekran licencji |
+| 9 | Ciągły przegląd | **trwa** | rundy co godzinę (scheduled task :06) | — |
