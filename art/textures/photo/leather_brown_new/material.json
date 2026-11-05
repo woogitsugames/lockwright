@@ -3,6 +3,10 @@
   "source": "contrib/incoming/magnific/selected/leather_brown_new.jpg",
   "mode": "tile",
   "tiling": "u+v",
+  "size": [
+    2048,
+    2048
+  ],
   "metallic": 0.0,
   "roughness_range": [
     0.48,
@@ -13,8 +17,8 @@
   "height_highpass_sigma_px": 18,
   "lighting_flatten": "full",
   "keystone_freq_ratio": 1.596,
-  "overlap_x": 201,
-  "overlap_y": 261,
+  "overlap_x": 202,
+  "overlap_y": 260,
   "normal_2k_soften_sigma": 1.2,
   "rough_mean": 0.635
 }

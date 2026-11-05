@@ -28,6 +28,11 @@ and tint drift, mean colour kept; fine-detail contrast equalised; `leather_brown
 fix (its grain was 1.6× finer at the top because of camera tilt); (2) seamless via best-match overlap + minimum-error
 boundary cut (image quilting) with a 3 px feather, per axis, then resampled to 2048²; (3) height/normal/roughness
 derived from the tiled albedo with wrap-around filters, so all maps tile identically; (4) 1024² copies.
+Special cases: `pine_floor_painted` / `bench_beech_top` / `wall_paint_divider_line` are deskewed so plank gaps
+or the divider line are exactly axis-aligned; `pegboard_brown` is tiled on the measured hole pitch;
+`steel_heat_tint` uses a wide crossfade (smooth gradient, a cut would show); `brass_turned` has the angular
+highlight “bow-tie” divided out in polar space. Normals above 10 MB as PNG are softened by ≤ 0.6 px
+(`normal_2k_soften_sigma` in `material.json`).
 
 Roughness is a heuristic (inverted local contrast + a little inverted luminance), not a scan —
 tune `roughness_range` in the script, not by painting the maps.
@@ -52,6 +57,21 @@ tune `roughness_range` in the script, not by painting the maps.
 | `cement_tiles` | u+v | no | hallway / kiosk floor (patterned cement tiles, ~4×4 tiles per repeat) |
 | `pine_floor_painted` | u+v | no | apartment / attic floor (painted pine planks) |
 | `workshop_concrete` | u+v | no | workshop and cellar floor |
+| `bench_beech_top` | u+v | no | workbench top (butcher-block beech), lock-screen backdrop in the workshop |
+| `wall_lime_plaster` | u+v | no | old lime-plaster walls: stairwell, cellar, attic |
+| `wall_oil_paint_green` | u+v | no | oil-painted lower wall (dado) of the stairwell |
+| `wall_paint_divider_line` | u only | no | stairwell wall with the painted divider line (plaster above, green oil paint below); 2048×1616, keep aspect |
+| `pegboard_brown` | u+v | no | workshop tool wall; tiled on the hole pitch (19×19 holes per repeat, grid stays regular across seams) |
+| `steel_cast_grey_paint` | u+v | no (painted) | painted cast lock cases, old machine parts (grey-green paint) |
+| `velvet_display_green` | u+v | no | showcase / exhibit display cloth (needs a sheen term in the shader) |
+| `glass_cabinet_dust` | u+v | — | **overlay, not PBR**: `_mask.png` grayscale (white = dust/fingerprints) for showcase glass opacity/roughness |
+
+Notes from the seam check (see `contact_previews.jpg`): photos with one strong hero feature
+(`brass_patina_grease` blotches, `iron_painted_rust` rust edge, `workshop_concrete` stains, `glass_cabinet_dust`
+fingerprints) repeat visibly at 2×2 — use them at large UV scale or on single parts, or break up with decals.
+`brass_face_milled` was rotated so the milling bands are horizontal (rotate the UV ~42° for the original
+diagonal look) and straightened per column; small steps remain where bands of uneven width meet.
+`iron_painted_rust` uses only the sharp upper-left 66 % of the photo (the rest is out of focus).
 
 ## Objects (`objects/`)
 

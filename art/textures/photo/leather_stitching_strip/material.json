@@ -3,6 +3,10 @@
   "source": "contrib/incoming/magnific/selected/leather_stitching_strip.jpg",
   "mode": "strip",
   "tiling": "u only",
+  "size": [
+    2048,
+    2048
+  ],
   "metallic": 0.0,
   "roughness_range": [
     0.45,
@@ -12,7 +16,7 @@
   "normal_strength": 5.0,
   "height_highpass_sigma_px": 24,
   "lighting_flatten": "x",
-  "overlap_x": 275,
+  "overlap_x": 271,
   "normal_2k_soften_sigma": 0.0,
-  "rough_mean": 0.683
+  "rough_mean": 0.686
 }

@@ -236,7 +236,7 @@ def deskew_vertical(img, max_deg=3.0, step=0.1):
     return np.clip(out, 0, 1), dict(deskew_deg=round(ba, 2))
 
 
-def straighten_bands(img, strips=32, max_shift=80):
+def straighten_bands(img, strips=16, max_shift=100):
     """Horizontal bands that bow or drift (milling passes): measure each column strip's vertical
     offset against the centre strip (cross-correlation of row profiles) and shift columns back,
     so a band meets itself across the left/right seam."""
@@ -253,9 +253,20 @@ def straighten_bands(img, strips=32, max_shift=80):
         shifts.append(int(np.argmax(cc)) - max_shift)
         xs.append(i * sw + sw / 2)
     sh = np.array(shifts, np.float64)
-    # robust smoothing: median of 3, then a low-order fit (bands bow smoothly)
-    sh = np.array([np.median(sh[max(0, i - 1):i + 2]) for i in range(len(sh))])
-    fit = np.polyval(np.polyfit(xs, sh, 3), np.arange(W))
+    # band period: the correlation may lock onto the neighbouring band, so unwrap modulo the period
+    full = L[:, W // 2 - sw // 2:W // 2 + sw // 2].mean(axis=1)
+    ac = np.array([float(np.dot(full[:H - k], full[k:])) for k in range(H // 2)])
+    neg = np.where(ac < 0)[0]
+    k0 = (int(neg[0]) + int(np.argmax(ac[neg[0]:H // 3]))) if len(neg) and neg[0] < H // 3 else 10 ** 6
+    for i in range(1, len(sh)):
+        while sh[i] - sh[i - 1] > k0 / 2:
+            sh[i] -= k0
+        while sh[i] - sh[i - 1] < -k0 / 2:
+            sh[i] += k0
+    sh -= sh[len(sh) // 2]
+    sh = np.array([np.median(sh[max(0, i - 1):i + 2]) for i in range(len(sh))])  # robust
+    fit = np.interp(np.arange(W), xs, sh)
+    fit = cv2.GaussianBlur(fit[None, :].astype(np.float32), (0, 0), sw / 2.0)[0].astype(np.float64)
     mapy = (np.arange(H)[:, None] + fit[None, :]).astype(np.float32)
     mapx = np.repeat(np.arange(W, dtype=np.float32)[None, :], H, axis=0)
     out = cv2.remap(img, mapx, mapy, cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REFLECT)
@@ -637,7 +648,7 @@ def build_surface(name, cfg):
 def build_overlay(name, cfg, d, src, img, info):
     """Overlay (dust / smudges on glass): a grayscale opacity mask, not a PBR set."""
     L = lum(img)
-    lo, hi = np.percentile(L, [2, 99.7])
+    lo, hi = np.percentile(L, [cfg.get("clean_pct", 40), 99.7])  # the clean glass (most pixels) -> 0
     m = np.clip((L - lo) / max(hi - lo, 1e-4), 0, 1) ** cfg.get("gamma", 1.2)
     save_png8(os.path.join(d, f"{name}_mask.png"), m)
     save_png8(os.path.join(d, f"{name}_mask_1k.png"), resize_wrap(m, 1024))

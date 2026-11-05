@@ -17,9 +17,9 @@
   "height_highpass_sigma_px": 20,
   "lighting_flatten": "full",
   "stripes_rotated_to_horizontal_deg": -41.9,
-  "band_shift_px_max": 10.6,
-  "overlap_x": 342,
-  "overlap_y": 337,
+  "band_shift_px_max": 54.5,
+  "overlap_x": 271,
+  "overlap_y": 260,
   "normal_2k_soften_sigma": 0.6,
   "rough_mean": 0.34
 }

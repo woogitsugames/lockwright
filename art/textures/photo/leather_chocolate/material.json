@@ -3,6 +3,10 @@
   "source": "contrib/incoming/leather_set_2026-11-05/leather_chocolate.jpg",
   "mode": "tile",
   "tiling": "u+v",
+  "size": [
+    2048,
+    2048
+  ],
   "metallic": 0.0,
   "roughness_range": [
     0.4,
@@ -13,7 +17,7 @@
   "height_highpass_sigma_px": 18,
   "lighting_flatten": "full",
   "overlap_x": 144,
-  "overlap_y": 340,
+  "overlap_y": 336,
   "normal_2k_soften_sigma": 1.2,
-  "rough_mean": 0.598
+  "rough_mean": 0.597
 }
