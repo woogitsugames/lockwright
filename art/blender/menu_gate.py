@@ -2,6 +2,7 @@
 #   blender -b -P art/blender/menu_gate.py -- --out art/renders/menu/menu_portrait.png --res 1080x2400 --samples 160
 #   ... --orient landscape --res 2400x1080           (separate landscape board: title left, menu right)
 #   ... --pressed 2 --crop-row 2                      (row 2 pushed 1 mm into the felt, render only that row)
+#   ... --shot settings                               (close-up: typed index card pinned to the same board)
 # Black ribbed felt letter board in an aluminium frame on the stairwell wall (oil-paint lamperia under lime paint,
 # painted divider line), white push-in plastic letters (Archivo, OFL; every letter a separate mesh: uneven, one crooked,
 # two yellowed). Under the board a beech rail with brass cup hooks, two stamped key tags and an invented key.
@@ -17,7 +18,7 @@ from mathutils import Vector, Matrix
 arg = cli()
 OUT = arg('--out', 'art/renders/menu/test_menu.png'); RES = [int(v) for v in arg('--res', '270x600').split('x')]
 SAMPLES = int(arg('--samples', '16')); ORIENT = arg('--orient', 'portrait')
-PRESSED = int(arg('--pressed', '-1')); CROP_ROW = int(arg('--crop-row', '-1'))
+PRESSED = int(arg('--pressed', '-1')); CROP_ROW = int(arg('--crop-row', '-1')); SHOT = arg('--shot', 'menu')
 HITS = arg('--hits', os.path.splitext(OUT)[0] + '_hits.json')
 rng = random.Random(5)
 FONT = bpy.data.fonts.load(os.path.join(ROOT, 'mockups', 'ui-directions', 'fonts', 'Archivo-wdth-wght.ttf'))
@@ -47,6 +48,8 @@ def felt_mat():
     col = _mix(nt, col, (0.28, 0.27, 0.25, 1), _math(nt, 'MULTIPLY', lint, 0.55))
     dust = _maprange(nt, _noise(nt, P, 0.012, detail=5), 0.55, 0.8, 0, 0.18)
     col = _mix(nt, col, (0.20, 0.19, 0.18, 1), dust)
+    gd = _math(nt, 'MULTIPLY', _maprange(nt, _cavity_mask(nt, 1.5, 0.3, 0.95), 0, 1, 0, 0.55), _maprange(nt, _noise(nt, P, 0.05, detail=6), 0.4, 0.75, 0.2, 1.0))
+    col = _mix(nt, col, (0.26, 0.25, 0.23, 1), gd)
     l.new(col, b.inputs['Base Color']); b.inputs['Roughness'].default_value = 0.95
     b.inputs['Sheen Weight'].default_value = 0.8; b.inputs['Sheen Roughness'].default_value = 0.45
     b.inputs['Sheen Tint'].default_value = (0.55, 0.55, 0.55, 1); b.inputs['Specular IOR Level'].default_value = 0.25
@@ -55,14 +58,16 @@ def felt_mat():
     return m
 
 # lamperia: the same procedural oil paint as the stairwell scene (stairwell.py), so the gate and the landing match
-green = oil_paint('lamperia', (0.055, 0.115, 0.082), rough=0.28, under=(0.42, 0.30, 0.16), base=(0.62, 0.58, 0.50), chips=0.3,
-                  scuffs=0.6, strokes='Z', seed=1, chip_scale=0.012)
+green = oil_paint('lamperia', (0.055, 0.115, 0.082), rough=0.28, under=(0.42, 0.30, 0.16), base=(0.62, 0.58, 0.50), chips=0.55,
+                  scuffs=1.0, strokes='Z', seed=1, chip_scale=0.012, grime=0.9)
 lime = photo_mat('ph_wall_lime', 'wall_lime_plaster', scale=900, metallic=0.0, bump=0.3, grime=0.2)
-stripe = oil_paint('stripe', (0.20, 0.045, 0.03), rough=0.3, chips=0.3, scuffs=0.2, strokes='X', seed=2)
+stripe = oil_paint('stripe', (0.20, 0.045, 0.03), rough=0.3, chips=0.7, scuffs=0.9, strokes='X', seed=2, edge_chips=1.0)
 alu = add_top_dust(photo_mat('ph_alu', 'nickel_satin', scale=140, metallic=1.0, base=(0.66, 0.66, 0.64), base_mix=0.35, rough_add=0.08, wear=0.2, grime=0.6), 0.45)
 felt = felt_mat()
-letter_w = add_top_dust(plastic('letter_white', (0.80, 0.80, 0.77), rough=0.33, grime=0.35, sheen_scuffs=0.2), 0.4)
-letter_y = add_top_dust(plastic('letter_old', (0.76, 0.72, 0.60), rough=0.38, grime=0.5, sheen_scuffs=0.2), 0.45)
+letter_w = add_top_dust(plastic('letter_white', (0.80, 0.80, 0.77), rough=0.24, grime=0.45, sheen_scuffs=0.35), 0.5)
+letter_y = add_top_dust(plastic('letter_old', (0.76, 0.72, 0.60), rough=0.3, grime=0.6, sheen_scuffs=0.3), 0.55)
+for _m in (letter_w, letter_y): _m.node_tree.nodes['Principled BSDF'].inputs['Coat Weight'].default_value = 0.25
+stamp_ink = dark_mat('stamp_grime', (0.03, 0.028, 0.025), rough=0.8)
 beech = add_top_dust(photo_mat('ph_beech', 'bench_beech_top', scale=320, metallic=0.0, coat=0.2, bump=0.2, grime=0.4), 0.3)
 brass = photo_mat('ph_brass', 'brass_patina_grease', scale=60, metallic=1.0, base=(0.70, 0.55, 0.32), base_mix=0.45, rough_add=0.1, wear=0.3, grime=0.6)
 tag_alu = photo_mat('ph_tag_alu', 'nickel_satin', scale=50, metallic=1.0, base=(0.70, 0.70, 0.68), base_mix=0.3, rough_add=0.12, wear=0.4, grime=0.8)
@@ -74,8 +79,8 @@ RIB_FACE, BACK, FRAME_Y = -12.0, -9.0, -21.0
 FR = 22.0                         # frame width
 if ORIENT == 'portrait':
     IW = 420.0; TOP = 2050.0; BX = 0.0
-    TITLE = [('POGOTOWIE ZAMKOWE', 15.0, 24.0, 0), ('LOCKWRIGHT', 36.0, 62.0, 0)]      # text, cap, top (mm from inner top), x
-    MENU_X, MENU_TOP, PRIM_BAND, BAND = 22.0, 136.0, 96.0, 74.0
+    TITLE = [('POGOTOWIE ZAMKOWE', 16.0, 24.0, 0), ('LOCKWRIGHT', 44.0, 58.0, 0)]      # text, cap, top (mm from inner top), x
+    MENU_X, MENU_TOP, PRIM_BAND, BAND = 22.0, 140.0, 104.0, 82.0
     IH = MENU_TOP + PRIM_BAND + 5 * BAND + 22.0
 else:
     IW = 860.0; TOP = 2000.0; BX = -190.0
@@ -83,15 +88,20 @@ else:
              ('KRÓTKA PAUZA KOSZTUJE', 13.0, 372.0, 0), ('MNIEJ NIŻ ZŁAMANY WYTRYCH', 13.0, 398.0, 0)]
     MENU_X, MENU_TOP, PRIM_BAND, BAND = 470.0, 22.0, 88.0, 75.0
     IH = MENU_TOP + PRIM_BAND + 5 * BAND + 22.0
+if SHOT == 'settings': TITLE = [('‹ WSTECZ', 14.0, 22.0, 116.0)]
 X0 = BX - IW / 2; ZT = TOP - FR; ZB = ZT - IH
-MENU = [('ZACZNIJ DYŻUR', 28.0), ('ZLECENIA', 25.0), ('WARSZTAT', 25.0), ('GABLOTA', 25.0), ('USTAWIENIA', 25.0), ('O GRZE', 25.0)]
+MC = 28.0 if ORIENT == 'portrait' else 25.0
+MENU = [('ZACZNIJ DYŻUR', MC + 4), ('ZLECENIA', MC), ('WARSZTAT', MC), ('GABLOTA', MC), ('USTAWIENIA', MC), ('O GRZE', MC)]
 IDS = ['start', 'jobs', 'workshop', 'showcase', 'settings', 'about']
+if SHOT == 'settings': MENU = []
 
 # ---------------------------------------------------------------- wall: lamperia / divider / lime
 DIV = 1560.0
-bx('wall_green', -1600, 1600, 0, 60, 0, DIV, green)
-bx('wall_stripe', -1600, 1600, -0.6, 60, DIV, DIV + 14, stripe)
-bx('wall_lime', -1600, 1600, 0, 60, DIV + 14, 3200, lime)
+bx('wall_green', -1600, 1600, 12, 72, 0, DIV, green)
+bx('wall_stripe', -1600, 1600, 11.4, 72, DIV, DIV + 14, stripe)
+bx('wall_lime', -1600, 1600, 12, 72, DIV + 14, 3200, lime)
+stain_decal('dado_scuffs', 'Y', 11.2, (-1600, 1600, DIV - 140, DIV + 60), [(-300, DIV - 20, 500, 60, 0.35), (380, DIV - 50, 420, 80, 0.3), (0, DIV + 20, 900, 30, 0.2)],
+            color=(0.06, 0.055, 0.045), rough=0.5, noise_scale=0.03)
 
 # ---------------------------------------------------------------- board: backing, ribs, frame
 bx('board_back', X0, X0 + IW, BACK, 0, ZB, ZT, felt)
@@ -129,14 +139,15 @@ def row(text, cap, top_mm, x_mm, tag, crooked=None, old=()):
     for i, (ch, o) in enumerate(zip(text, objs)):
         if o is None: x += 0.34 * size; continue
         bb = [Vector(v) for v in o.bound_box]; minx = min(v.x for v in bb); w = max(v.x for v in bb) - minx
-        rz = math.radians(7.0 if crooked == i else rng.uniform(-0.9, 0.9))
+        rz = math.radians(9.0 if crooked == i else rng.uniform(-1.4, 1.4))
         o.rotation_euler = (math.radians(90) + math.radians(rng.uniform(-0.6, 0.6)), rz, math.radians(rng.uniform(-1.2, 1.2)))
-        o.location = (x - minx, RIB_FACE - 1.5 - rng.uniform(0.0, 0.35), base + rng.uniform(-0.45, 0.45) + (1.2 if crooked == i else 0))
-        x += w + 0.1 * size + rng.uniform(-0.5, 0.5)
+        o.location = (x - minx, RIB_FACE - 1.5 - rng.uniform(0.0, 0.35), base + rng.uniform(-0.9, 0.9) + (1.6 if crooked == i else 0))
+        x += w + 0.1 * size + rng.uniform(-0.9, 0.9)
     return [o for o in objs if o], base
 
+title_rows = []
 for text, cap, top, xm in TITLE:
-    row(text, cap, top, 22.0 + xm, 'title', old=(2, 7) if text == 'LOCKWRIGHT' else ())
+    title_rows.append(row(text, cap, top, 22.0 + xm, 'title', old=(2, 7) if text == 'LOCKWRIGHT' else ()))
 
 rows = []
 top = MENU_TOP
@@ -155,8 +166,9 @@ if PRESSED >= 0:   # baked pressed state: the whole row sits 1 mm deeper in the 
     for o in rows[PRESSED]['objs']: o.location.y += 1.0
 
 # ---------------------------------------------------------------- hook rail, key tags, invented key
-if ORIENT == 'portrait': RX, RZ, RW = 40.0, ZB - FR - 66.0, 300.0
+if ORIENT == 'portrait': RX, RZ, RW = 20.0, ZB - FR - 60.0, 340.0
 else: RX, RZ, RW = BX + IW / 2 + FR + 210.0, 1640.0, 260.0
+if SHOT == 'settings': RZ = ZB - 4000.0   # rail out of shot
 bx('rail', RX - RW / 2, RX + RW / 2, -18, 0, RZ - 26, RZ + 26, beech, bev=2.5)
 for sx in (RX - RW / 2 + 16, RX + RW / 2 - 16):
     screw_head('rail_screw', (sx, -18.2, RZ), 3.6, 1.6, axis='Y', slot=True, kind='pan', mat=brass, rot=rng.uniform(0, 180))
@@ -172,22 +184,26 @@ def split_ring(c, r=11.0, wire=1.1, yaw=25.0):
                                      location=(c.x, c.y, c.z - r + 1.5), rotation=(math.radians(90), 0, math.radians(yaw)))
     o = bpy.context.object; setmat(o, ring_steel); smooth(o); return Vector((c.x, c.y, c.z - 2 * r + 3.0))
 
-def key_tag(name, top, text, mat, w=40.0, h=82.0, rot=0.0):
+def key_tag(name, top, text, mat, w=54.0, h=108.0, rot=0.0):
     """Stamped key tag hanging from its hole: rounded rect in XZ, 1.6 mm thick, number punched 0.4 mm deep."""
     pts = [(u, v - h / 2 - 6) for u, v in rounded_rect(w, h, 7)]
     t = prism(name, [(top.x + u, top.z + v) for u, v in pts], top.y - 0.8, top.y + 0.8); setmat(t, mat)
     hole = cyl('hole', 3.2, 6, (top.x, top.y, top.z - 6.5), axis='Y', verts=24); cut(t, hole)
-    cu = bpy.data.curves.new(name + '_n', 'FONT'); cu.body = text; cu.size = 19.0; cu.font = MONO; cu.extrude = 1.0
+    cu = bpy.data.curves.new(name + '_n', 'FONT'); cu.body = text; cu.size = 30.0; cu.font = MONO; cu.extrude = 1.0
     cu.align_x = 'CENTER'; cu.align_y = 'CENTER'
     s = bpy.data.objects.new(name + '_n', cu); bpy.context.collection.objects.link(s)
     s.rotation_euler = (math.radians(90), 0, 0); s.location = (top.x, top.y - 0.8 - 0.6, top.z - 6 - h * 0.55)
     bpy.context.view_layer.objects.active = s; s.select_set(True); bpy.ops.object.convert(target='MESH'); s.select_set(False)
+    fill = s.copy(); fill.data = s.data.copy(); bpy.context.collection.objects.link(fill)
     cut(t, s); _bev(t, 0.35, 2, 30)
+    fill.scale = (1, 1, 0.08); fill.location.y = top.y - 0.8 + 0.45; setmat(fill, stamp_ink)   # grime packed in the punched numbers
+    fill.data.transform(Matrix.Identity(4)); bpy.context.view_layer.update()
+    fill.matrix_world = (Matrix.Translation(top) @ Matrix.Rotation(math.radians(rot), 4, 'Y') @ Matrix.Translation(-top)) @ fill.matrix_world
     t.rotation_mode = 'XYZ'
     M = Matrix.Translation(top) @ Matrix.Rotation(math.radians(rot), 4, 'Y') @ Matrix.Translation(-top)
     t.data.transform(M); return t
 
-def invented_key(top, rot=0.0):
+def invented_key(top, rot=0.0, sc=1.0):
     """A flat key that matches no real profile: round-cornered bow with a hole, plain blade with three cuts."""
     bow = [(u, v - 16) for u, v in rounded_rect(30, 28, 9)]
     o = prism('key_bow', [(top.x + u, top.z + v) for u, v in bow], top.y - 1.1, top.y + 1.1); setmat(o, ring_steel)
@@ -197,28 +213,111 @@ def invented_key(top, rot=0.0):
     k = prism('key_blade', [(top.x + u, top.z + v) for u, v in blade], top.y - 1.0, top.y + 1.0); setmat(k, ring_steel)
     for p in (o, k):
         _bev(p, 0.4, 2, 30)
-        p.data.transform(Matrix.Translation(top) @ Matrix.Rotation(math.radians(rot), 4, 'Y') @ Matrix.Translation(-top))
+        p.data.transform(Matrix.Translation(top) @ Matrix.Rotation(math.radians(rot), 4, 'Y') @ Matrix.Scale(sc, 4) @ Matrix.Translation(-top))
 
-hx = [RX - 80, RX + 10, RX + 95]
+hx = [RX - 105, RX + 5, RX + 115]
 h1 = cup_hook(hx[0], RZ); r1 = split_ring(h1, yaw=20); key_tag('tag13', r1, '13', tag_alu, rot=-3)
+
 h2 = cup_hook(hx[1], RZ); r2 = split_ring(h2, r=13, yaw=-30); key_tag('tag14', r2 + Vector((-3, 0, 1)), '14', brass, rot=6)
-invented_key(r2 + Vector((5, -2.5, 2)), rot=-10)
+invented_key(r2 + Vector((6, -2.5, 2)), rot=-12, sc=1.35)
 cup_hook(hx[2], RZ)
+
+
+# ---------------------------------------------------------------- settings: typed index card pinned to the board
+CARD_ITEMS = []
+if SHOT == 'settings':
+    MONO_R = bpy.data.fonts.load(os.path.join(ROOT, 'mockups', 'ui-directions', 'fonts', 'CourierPrime-Regular.ttf'))
+    MONO_B = bpy.data.fonts.load(os.path.join(ROOT, 'mockups', 'ui-directions', 'fonts', 'CourierPrime-Bold.ttf'))
+    card_m = paper('card', (0.90, 0.895, 0.87), grime=0.04, seed=4)
+    card_m.node_tree.nodes['Principled BSDF'].inputs['Specular IOR Level'].default_value = 0.2
+    ink = dark_mat('ink', (0.018, 0.018, 0.022), rough=0.6)
+    red = dark_mat('red_ink', (0.40, 0.035, 0.03), rough=0.55)
+    blue = dark_mat('rule_blue', (0.42, 0.52, 0.62), rough=0.7)
+    CW, CH = 150.0, 262.0; CXL = -CW / 2; CZT = ZT - 52.0; CY = RIB_FACE - 3.4      # card front plane (y)
+    # card: subdivided sheet, the bottom-right corner curls towards the camera
+    import bmesh as _bm
+    bm = _bm.new(); NU, NV = 30, 52
+    vs = [[bm.verts.new((CXL + CW * i / NU, CY + 0.3, CZT - CH * j / NV)) for i in range(NU + 1)] for j in range(NV + 1)]
+    for j in range(NV):
+        for i in range(NU): bm.faces.new((vs[j][i], vs[j][i + 1], vs[j + 1][i + 1], vs[j + 1][i]))
+    for j in range(NV + 1):
+        for i in range(NU + 1):
+            u, v = i / NU, 1 - j / NV
+            c = max(0.0, (u - 0.72) / 0.28) * max(0.0, (0.07 - v) / 0.07); vs[j][i].co.y -= 9.0 * c * c
+    me = bpy.data.meshes.new('card'); bm.to_mesh(me); bm.free()
+    co = bpy.data.objects.new('card', me); bpy.context.collection.objects.link(co); co.data.materials.append(card_m)
+    sm = co.modifiers.new('sol', 'SOLIDIFY'); sm.thickness = 0.3; smooth(co)
+    def strip(name, x0, x1, z0, z1, mat):
+        return bx(name, x0, x1, CY - 0.06, CY - 0.02, z0, z1, mat)
+    def typed(name, text, x, base, em=6.2, bold=False, mat=None):
+        cu = bpy.data.curves.new(name, 'FONT'); cu.body = text; cu.size = em; cu.font = MONO_B if (bold or em > 5.5) else MONO_R
+        cu.align_x = 'LEFT'; cu.align_y = 'BOTTOM_BASELINE'; cu.extrude = 0.0; cu.fill_mode = 'BOTH'
+        o = bpy.data.objects.new(name, cu); bpy.context.collection.objects.link(o); o.data.materials.append(mat or ink)
+        o.rotation_euler = (math.radians(90), math.radians(rng.uniform(-0.25, 0.25)), 0)
+        o.location = (x, CY - 0.08, base + rng.uniform(-0.12, 0.12)); return o
+    ADV = 6.2 * 0.6; LM = CXL + 10.0
+    col = lambda n: LM + n * ADV
+    z = CZT - 9.0
+    def line(h): 
+        global z
+        top = z; z -= h; return top, z
+    t, b = line(18); typed('hdr', 'KARTA USTAWIEŃ', col(0), b + 6, bold=True); typed('hdr2', 'dyżurny: ty', col(21), b + 6, em=5.0)
+    strip('hdr_rule', CXL + 6, CXL + CW - 6, b + 2.2, b + 3.0, red)
+    def section(name):
+        t, b = line(11); typed('sec_' + name, name, col(0), b + 2.5, em=5.0, bold=True, mat=red)
+    def ctl(rid, label, tokens, h=21.0, lab_bold=False):
+        t, b = line(h); base = b + h * 0.36
+        if label: typed(rid + '_l', label, col(0), base, bold=lab_bold)
+        objs = []
+        for tid, n, txt, bold in tokens:
+            o = typed(rid + '_' + tid, txt, col(n), base, bold=bold); objs.append((tid, o))
+        strip(rid + '_rule', CXL + 6, CXL + CW - 6, b + 0.6, b + 0.9, blue)
+        CARD_ITEMS.append({'id': rid, 'band': (b, t), 'tokens': objs, 'base': base})
+    scale = lambda v: '0 ' + '=' * (round(v / 10) - 1) + '|' + '·' * (10 - round(v / 10))
+    section('HAPTYKA')
+    ctl('haptics', 'Haptyka', [('on', 17, '[X] wł.', True), ('off', 26, '[ ] wył.', False)])
+    ctl('intensity', 'Intensywność', [('scale', 16, scale(100) + ' 100%', False)])
+    ctl('test_pulse', None, [('button', 0, '[ IMPULS PRÓBNY ]', True)])
+    section('DŹWIĘK')
+    ctl('master', 'Głośność gł.', [('scale', 16, scale(100) + ' 100%', False)])
+    ctl('sfx', 'Efekty', [('scale', 16, scale(100) + ' 100%', False)])
+    ctl('ambient', 'Tło', [('scale', 16, scale(80) + '  80%', False)])
+    section('STEROWANIE')
+    t, b = line(9); typed('auto_l', 'Napięcie automatyczne', col(0), b + 1.5)
+    ctl('auto_tension', None, [('on', 0, '[ ] wł.', False), ('off', 9, '[X] wył.', True)], h=21.0)
+    t, b = line(15)
+    typed('note1', 'Napięcie trzyma się samo, a ty', col(0), b + 8.5, em=4.6); typed('note2', 'prowadzisz wytrych jednym kciukiem.', col(0), b + 3.0, em=4.6)
+    ctl('language', 'Język', [('pl', 9, '[X] polski', True), ('en', 21, '[ ] English', False)])
+    # thumbtack through the top of the card
+    tk = cyl('tack_head', 5.5, 1.3, (0, CY - 1.2, CZT - 5.0), axis='Y', verts=48); setmat(tk, alu); _bev(tk, 0.5, 3)
+    dm = screw_head('tack_dome', (0, CY - 1.9, CZT - 5.0), 3.6, 1.6, axis='Y', slot=False, kind='dome', mat=alu)
 
 # ---------------------------------------------------------------- light
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (BX, 0, (ZT + ZB) / 2)
-bpy.ops.object.light_add(type='POINT', location=(BX - 1100, -900, TOP + 650)); bulb = bpy.context.object
-bulb.data.shadow_soft_size = 40; bulb.data.energy = float(arg('--bulb', '8e7')); bulb.data.color = (1.0, 0.70, 0.43)
-area_light('window', (BX + 1700, -1500, 1500), AIM, 1400, float(arg('--window', '4e6')), (0.75, 0.84, 1.0), size_y=1800)
-area_light('bounce', (BX, -2600, 900), AIM, 2200, 3e5, (1.0, 0.85, 0.7))
-world_hdri(strength=0.06, sat=0.3)
+bpy.ops.object.light_add(type='SPOT', location=(BX - 760, -300, TOP + 480)); bulb = bpy.context.object
+bulb.data.shadow_soft_size = 28; bulb.data.energy = float(arg('--bulb', '4.5e7')); bulb.data.color = (1.0, 0.66, 0.38)
+bulb.data.spot_size = math.radians(100); bulb.data.spot_blend = 1.0
+a_b = bpy.data.objects.new('aim_bulb', None); scene.collection.objects.link(a_b); a_b.location = (BX + 60, 0, (ZT + ZB) / 2 - 160)
+cb = bulb.constraints.new('TRACK_TO'); cb.target = a_b; cb.track_axis = 'TRACK_NEGATIVE_Z'; cb.up_axis = 'UP_Y'
+area_light('window', (BX + 1500, -900, 1600), AIM, 900, float(arg('--window', '3e6')), (0.62, 0.74, 1.0), size_y=1400)
+area_light('bounce', (BX, -2600, 900), AIM, 2200, 6e4, (1.0, 0.85, 0.7))
+world_hdri(strength=0.04, sat=0.3)
 
 # ---------------------------------------------------------------- camera
 LENS = 85.0
-if ORIENT == 'portrait':
-    VW = 560.0; VH = VW * RES[1] / RES[0]; CZ = (TOP + 120 + RZ - 190) / 2; CX = 0.0
+if SHOT == 'settings':
+    VW = 178.0; VH = VW * RES[1] / RES[0]; CZ = CZT + 46.0 - VH / 2; CX = 0.0
     D = VW * LENS / 36.0
     cam = photo_camera((CX, RIB_FACE - D, CZ), lens=LENS); cam.data.sensor_fit = 'HORIZONTAL'; cam.data.sensor_width = 36.0
+elif ORIENT == 'portrait':
+    LENS = 60.0; PITCH_DEG = -4.0
+    VW = 540.0; VH = VW * RES[1] / RES[0]; CX = 0.0
+    TZ = (TOP + 70 + RZ - 230) / 2                     # wall point at the centre of the frame
+    D = VW * LENS / 36.0
+    cam = photo_camera((CX, RIB_FACE - D, TZ - D * math.tan(math.radians(PITCH_DEG))), lens=LENS, pitch=PITCH_DEG)
+    cam.data.sensor_fit = 'HORIZONTAL'; cam.data.sensor_width = 36.0
+    cam.data.dof.use_dof = True; cam.data.dof.focus_distance = D / math.cos(math.radians(PITCH_DEG))
+    cam.data.dof.aperture_fstop = 2.0 / 1000.0          # scene unit = 1 mm: f/2 equivalent
 else:
     VH = 640.0; VW = VH * RES[0] / RES[1]; CZ = (ZT + ZB) / 2; CX = BX + 205.0
     D = VH * LENS / 36.0
@@ -241,6 +340,21 @@ for r in rows:
     capr = px_rect([(x0, RIB_FACE - 3, r['base']), (x0, RIB_FACE - 3, r['base'] + r['cap'])])
     items.append({'id': r['id'], 'label': r['label'], 'text_rect': tr, 'hit_rect': hr, 'cap_px': capr[3],
                   'hit_dp': [round(hr[2] / DP, 1), round(hr[3] / DP, 1)]})
+if SHOT == 'settings':
+    objs, base = title_rows[0]
+    ws = [o.matrix_world @ Vector(v) for o in objs for v in o.bound_box]
+    x0, x1, z0, z1 = min(v.x for v in ws), max(v.x for v in ws), min(v.z for v in ws), max(v.z for v in ws)
+    items.append({'id': 'back', 'label': '‹ WSTECZ', 'text_rect': px_rect([(x0, RIB_FACE - 3, z0), (x1, RIB_FACE - 3, z1)]),
+                  'hit_rect': px_rect([(x0 - 10, RIB_FACE - 3, (z0 + z1) / 2 - 11), (x1 + 10, RIB_FACE - 3, (z0 + z1) / 2 + 11)])})
+    for it in CARD_ITEMS:
+        b0, b1 = it['band']
+        hr = px_rect([(CXL + 4, CY, b0), (CXL + CW - 4, CY, b1)])
+        toks = []
+        for tid, o in it['tokens']:
+            ws = [o.matrix_world @ Vector(v) for v in o.bound_box]
+            toks.append({'id': tid, 'text_rect': px_rect([(min(v.x for v in ws), CY, min(v.z for v in ws)), (max(v.x for v in ws), CY, max(v.z for v in ws))])})
+        capr = px_rect([(CXL, CY, it['base']), (CXL, CY, it['base'] + 6.2 * 0.57)])
+        items.append({'id': it['id'], 'hit_rect': hr, 'hit_dp': [round(hr[2] / DP, 1), round(hr[3] / DP, 1)], 'cap_px': capr[3], 'tokens': toks})
 os.makedirs(os.path.dirname(os.path.abspath(OUT)), exist_ok=True)
 if CROP_ROW < 0:
     with open(HITS, 'w') as f:
@@ -255,7 +369,7 @@ if CROP_ROW >= 0:
     crop = (max(0, (x - m) / W), max(0, 1 - (y + h + m) / H), min(1, (x + w + m) / W), min(1, 1 - (y - m) / H))
 render_setup(OUT, RES, SAMPLES, crop=crop, exposure=float(arg('--exposure', '0.35')), look='AgX - Medium High Contrast', bounces=8)
 scene.cycles.adaptive_threshold = 0.01
-photo_finish(0.2, dispersion=0.004)
+photo_finish(0.34, dispersion=0.004)
 if '--norender' not in sys.argv:
     bpy.ops.render.render(write_still=True)
 print('WROTE', scene.render.filepath)
