@@ -1,0 +1,26 @@
+{
+  "id": "job.attic_drying_room",
+  "chapter": 8,
+  "district": "Śródmieście",
+  "family": "lever",
+  "tier": 3,
+  "verification": "Teresa ma umowę najmu mieszkania z prawem korzystania ze wspólnej suszarni (2). Elżbieta potwierdza regulamin i zarząd (2–3); wycena zaakceptowana.",
+  "reward_coins": 145,
+  "tone": "domowy, spokojny",
+  "i18n": {
+    "title": "job.attic_drying_room.title",
+    "client": "job.attic_drying_room.client",
+    "situation": "job.attic_drying_room.situation"
+  },
+  "lines": [
+    "teresa",
+    "elzbieta",
+    "locksmith",
+    "teresa"
+  ],
+  "cards": [
+    "lease",
+    "manager"
+  ],
+  "threshold": 2
+}

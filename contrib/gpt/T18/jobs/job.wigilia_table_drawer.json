@@ -1,0 +1,27 @@
+{
+  "id": "job.wigilia_table_drawer",
+  "chapter": 8,
+  "district": "Śródmieście",
+  "family": "lever",
+  "tier": 3,
+  "verification": "Szuflada należy do wspólnej świetlicy. Elżbieta jako zarządczyni (2–3), uchwała wspólnoty (2), Basia jako świadek (2). Wycena zaakceptowana.",
+  "reward_coins": 145,
+  "tone": "ciepły, sąsiedzki",
+  "i18n": {
+    "title": "job.wigilia_table_drawer.title",
+    "client": "job.wigilia_table_drawer.client",
+    "situation": "job.wigilia_table_drawer.situation"
+  },
+  "lines": [
+    "basia",
+    "zosia",
+    "locksmith",
+    "basia"
+  ],
+  "cards": [
+    "manager",
+    "institution",
+    "witness"
+  ],
+  "threshold": 3
+}

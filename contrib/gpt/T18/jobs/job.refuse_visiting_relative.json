@@ -1,0 +1,28 @@
+{
+  "id": "job.refuse_visiting_relative",
+  "chapter": 8,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 2,
+  "verification": "Oskar okazuje tylko dowód osobisty (1), który nie potwierdza prawa do mieszkania. Lokatorka jest nieobecna; odmawia kontaktu z nią i świadkiem (`flag.absent_owner`, `flag.no_witness`). Prawidłowa decyzja: odmowa bez otwarcia, bez monet.",
+  "reward_coins": 0,
+  "tone": "spokojna, uprzejma odmowa",
+  "i18n": {
+    "title": "job.refuse_visiting_relative.title",
+    "client": "job.refuse_visiting_relative.client",
+    "situation": "job.refuse_visiting_relative.situation"
+  },
+  "lines": [
+    "oskar",
+    "locksmith",
+    "oskar",
+    "locksmith"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2,
+  "after": [
+    "lena"
+  ]
+}

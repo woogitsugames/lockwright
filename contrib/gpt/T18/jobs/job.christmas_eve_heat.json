@@ -1,0 +1,27 @@
+{
+  "id": "job.christmas_eve_heat",
+  "chapter": 8,
+  "district": "Śródmieście",
+  "family": "lever_detector",
+  "tier": 5,
+  "verification": "Zarządczyni Elżbieta potwierdza uprawnienia do wspólnej kotłowni (2–3), pisemny protokół naprawy i zgodę na dostęp do szafki instalacyjnej (2), Paweł jest obecny jako upoważniony technik (2). Ślusarz odpowiada tylko za zamknięcie; instalację obsługuje Paweł. Cena przed pracą.",
+  "reward_coins": 210,
+  "tone": "finałowy, ciepły i legalny",
+  "i18n": {
+    "title": "job.christmas_eve_heat.title",
+    "client": "job.christmas_eve_heat.client",
+    "situation": "job.christmas_eve_heat.situation"
+  },
+  "lines": [
+    "elzbieta",
+    "pawel",
+    "locksmith",
+    "elzbieta"
+  ],
+  "cards": [
+    "manager",
+    "institution",
+    "witness"
+  ],
+  "threshold": 3
+}

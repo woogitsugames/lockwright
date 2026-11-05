@@ -1,0 +1,106 @@
+key,en,pl
+cast.janka.name,Janka,Janka
+cast.karol.name,Karol,Karol
+cast.leon.name,Leon,Leon
+cast.mila.name,Mila,Mila
+cast.oskar.name,Oskar,Oskar
+cast.pawel.name,Paweł,Paweł
+cast.teresa.name,Teresa,Teresa
+job.attic_drying_room.client,"Mrs Teresa, a tenant, and building manager Elżbieta.","Pani Teresa, lokatorka kamienicy, i zarządczyni Elżbieta."
+job.attic_drying_room.line.1,The choir's coats are upstairs. The children won't sing in icicles.,Płaszcze chóru zostały na górze. Nikt nie będzie kolędował w soplach.
+job.attic_drying_room.line.2,The rental agreement includes access to the drying room. I confirm it.,Umowa najmu obejmuje suszarnię. Potwierdzam dostęp.
+job.attic_drying_room.line.3,Permission and price agreed. Let's return the coats to their owners.,Zgoda i cena ustalone. Oddajmy płaszcze właścicielom.
+job.attic_drying_room.line.4,Good. Mine is the one with the remarkably sensible pockets.,Dobrze. Mój ma wyjątkowo rozsądnie rozmieszczone kieszenie.
+job.attic_drying_room.note,Attic drying room: Mrs Teresa's lease and manager's confirmation checked. Coats returned to the singers.,Suszarnia: umowa Teresy i zgoda zarządczyni sprawdzone. Płaszcze wróciły do kolędników.
+job.attic_drying_room.situation,Wet coats for the carol singers are locked in the shared attic drying room.,Mokre płaszcze kolędników zostały w zamkniętej wspólnej suszarni na poddaszu.
+job.attic_drying_room.title,The Attic Drying Room,Suszarnia na poddaszu
+job.carol_singers_chest.client,"Mila, organiser of the carol singers, and building manager Elżbieta.","Mila, organizatorka kolędników, i zarządczyni Elżbieta."
+job.carol_singers_chest.line.1,Our paper stars are in there. The choir has been ready since Tuesday.,Gwiazdy z papieru są w środku. Chór gotowy jest od wtorku.
+job.carol_singers_chest.line.2,The residents own the chest. I have their decision here.,Skrzynia należy do wspólnoty. Mam tutaj jej uchwałę.
+job.carol_singers_chest.line.3,Permission and fee agreed. The stars can have their entrance.,Zgoda i wycena ustalone. Gwiazdy mogą wejść na scenę.
+job.carol_singers_chest.line.4,Now we only need everyone to sing in the same key.,"Teraz wystarczy, żeby wszyscy śpiewali w tej samej tonacji."
+job.carol_singers_chest.note,Common-room chest: manager and residents' decision confirmed. Scarves rescued; the choir still needed practice.,Skrzynia świetlicy: zarządczyni i uchwała potwierdzone. Szaliki uratowane; chórowi została próba.
+job.carol_singers_chest.situation,The common-room wooden chest holds the carol singers' scarves and paper stars.,Drewniana skrzynia świetlicy skrywa szaliki i papierowe gwiazdy kolędników.
+job.carol_singers_chest.title,The Carol Singers' Chest,Skrzynia kolędników
+job.christmas_eve_heat.client,"Elżbieta, the building manager, and Paweł, authorised heating technician.","Elżbieta, zarządczyni, i Paweł, upoważniony technik ogrzewania."
+job.christmas_eve_heat.line.1,The repair is nearly done. Here's the authorisation for the last cabinet.,Naprawa prawie gotowa. Tu jest upoważnienie do ostatniej szafki.
+job.christmas_eve_heat.line.2,I'll check the heating once it's open. The system is my responsibility.,Po otwarciu sprawdzę ogrzewanie. Instalacja to moja odpowiedzialność.
+job.christmas_eve_heat.line.3,"Authorisation and price checked. I'll handle the lock, nothing else.","Zgoda i cena potwierdzone. Zajmę się zamkiem, niczym więcej."
+job.christmas_eve_heat.line.4,The radiators are warm again. There is still a place at the table.,Grzejniki znowu są ciepłe. Przy stole nadal czeka miejsce.
+job.christmas_eve_heat.note,Boiler-room inspection cabinet: manager and technician authorised access. I handled the lock; heat returned.,Szafka przy kotłowni: zgoda zarządczyni i technika sprawdzona. Ja otworzyłem zamek; wróciło ciepło.
+job.christmas_eve_heat.situation,"After repairs, the technician needs access to the old locked inspection cabinet before confirming the heating is safe.","Po naprawie technik musi uzyskać dostęp do starej szafki kontrolnej, by zakończyć przegląd ogrzewania."
+job.christmas_eve_heat.title,Heat for Christmas Eve,Ciepło na Wigilię
+job.frozen_cellar_padlock.client,"Mrs Janka, cellar tenant, and Elżbieta, the building manager.","Pani Janka, najemczyni piwnicy, i Elżbieta, zarządczyni kamienicy."
+job.frozen_cellar_padlock.line.1,The blankets are in my cellar. Winter reached them before I did.,Koce są w mojej piwnicy. Zima dotarła do nich przede mną.
+job.frozen_cellar_padlock.line.2,The lease annex and cellar register match. This is Mrs Janka's space.,Aneks do najmu i wykaz piwnic się zgadzają. To schowek pani Janki.
+job.frozen_cellar_padlock.line.3,All clear. The price is agreed; I'll take a look.,"Wszystko się zgadza. Cena ustalona, zajrzę do kłódki."
+job.frozen_cellar_padlock.line.4,"Good. Those blankets belong on shoulders, not on shelves.","Dobrze. Koce mają leżeć na ramionach, nie na półkach."
+job.frozen_cellar_padlock.note,Mrs Janka's cellar: lease annex and manager's register checked. The blankets went upstairs.,Piwnica pani Janki: aneks i wykaz zarządczyni sprawdzone. Koce trafiły na górę.
+job.frozen_cellar_padlock.situation,The first frost has seized the padlock on Janka's cellar cage. She needs blankets for her neighbours.,Pierwszy mróz unieruchomił kłódkę piwnicy pani Janki. W środku są koce dla sąsiadów.
+job.frozen_cellar_padlock.title,The First Frost,Pierwszy mróz
+job.halina_christmas_tin.client,"Mrs Halina and Mrs Zosia, neighbours preparing Christmas Eve supper.","Pani Halina i pani Zosia, sąsiadki przygotowujące Wigilię."
+job.halina_christmas_tin.line.1,The recipe's in the tin. My memory is only good for the oven temperature.,Przepis jest w puszce. Pamiętam już tylko temperaturę piekarnika.
+job.halina_christmas_tin.line.2,It's Halina's tin. I took the photo when she last burned a batch.,To puszka Haliny. Sama zrobiłam zdjęcie po ostatniej spalonej partii.
+job.halina_christmas_tin.line.3,Ownership and price settled. I won't ask about the burnt batch.,Własność i cena potwierdzone. O spalone pierniki nie pytam.
+job.halina_christmas_tin.line.4,"Very wise. You'll get the good ones, then.",Rozsądnie. Dostanie pan w takim razie te udane.
+job.halina_christmas_tin.note,Mrs Halina's tin: photo and Mrs Zosia's word. Found the recipe; was offered the successful biscuits.,Puszka Haliny: zdjęcie i słowo Zosi. Przepis odzyskany; obiecano mi udane pierniki.
+job.halina_christmas_tin.situation,A small metal tin with the Christmas biscuit recipe is locked. The neighbours have already set the table.,Zamknięta puszka skrywa przepis na pierniki. Sąsiadki już nakryły do stołu.
+job.halina_christmas_tin.title,The Biscuit Tin,Puszka na pierniki
+job.heating_service_cupboard.client,"Paweł, authorised heating technician, and Elżbieta, the building manager.","Paweł, upoważniony technik ogrzewania, i Elżbieta, zarządczyni."
+job.heating_service_cupboard.line.1,The radiators are cold. I need the service log before I inspect anything.,Grzejniki są zimne. Przed przeglądem potrzebuję dziennika serwisowego.
+job.heating_service_cupboard.line.2,He's authorised. Here's the written order and our building record.,Ma upoważnienie. Oto pisemne zlecenie i dokumentacja budynku.
+job.heating_service_cupboard.line.3,I'll deal with the cupboard. The heating system is yours to inspect.,Zajmę się szafką. Kontrola instalacji należy do pana.
+job.heating_service_cupboard.line.4,Fair enough. One cold mystery at a time.,Słusznie. Jedna zimna zagadka na raz.
+job.heating_service_cupboard.note,Boiler-room corridor: manager and service order checked. Opened the log cupboard; Paweł inspected the heating.,Korytarz kotłowni: sprawdziłem zarządczynię i zlecenie. Otworzyłem szafkę; Paweł zajął się ogrzewaniem.
+job.heating_service_cupboard.situation,The heating has failed. The service log is locked in a cupboard in the shared boiler-room corridor.,Ogrzewanie nie działa. Dziennik serwisowy zamknięto w szafce przy wspólnej kotłowni.
+job.heating_service_cupboard.title,The Heating Register,Rejestr ogrzewania
+job.refuse_unapproved_repair.after.1,That visit wasn't on our list. The authorised technician is already here.,Tej wizyty nie było na liście. Upoważniony technik jest już na miejscu.
+job.refuse_unapproved_repair.client,"Karol, a caller offering to check a locked service cupboard.","Karol, przyjezdny oferujący kontrolę zamkniętej szafki technicznej."
+job.refuse_unapproved_repair.line.1,I've come about the heating. The message says it's urgent.,Przyjechałem w sprawie ogrzewania. W wiadomości napisano: pilne.
+job.refuse_unapproved_repair.line.2,The manager hasn't authorised this visit. I need her confirmation.,Zarządczyni nie potwierdziła wizyty. Potrzebuję jej zgody.
+job.refuse_unapproved_repair.line.3,I can pay extra if we skip the paperwork.,"Mogę dopłacić, jeśli pominiemy formalności."
+job.refuse_unapproved_repair.line.4,"No, thank you. The cupboard stays shut until permission is clear.","Dziękuję, ale nie. Szafka zostaje zamknięta, aż sprawa się wyjaśni."
+job.refuse_unapproved_repair.note,"Refused the service-cupboard call: no manager's approval, extra pay offered. Kept the door shut.","Odmówiłem przy szafce technicznej: brak zgody zarządczyni, oferta dopłaty. Została zamknięta."
+job.refuse_unapproved_repair.situation,A stranger asks for access to the shared service area while the manager cannot confirm his appointment.,Nieznajomy prosi o dostęp do pomieszczenia technicznego bez potwierdzonego zlecenia.
+job.refuse_unapproved_repair.title,A Repair Without Approval,Naprawa bez zgody
+job.refuse_visiting_relative.after.1,The tenant confirmed she hadn't agreed. Thank you for leaving the door shut.,"Lokatorka potwierdziła brak zgody. Dziękuję, że drzwi zostały zamknięte."
+job.refuse_visiting_relative.client,"Oskar, a visitor asking to enter an absent relative's flat.","Oskar, gość proszący o wejście do mieszkania nieobecnej krewnej."
+job.refuse_visiting_relative.line.1,"I'm family. The presents are in the boot, and she's away.","Jestem rodziną. Prezenty mam w bagażniku, a jej nie ma."
+job.refuse_visiting_relative.line.2,"Your ID confirms your name, not permission to enter her home.","Dowód potwierdza pana nazwisko, nie zgodę na wejście do jej mieszkania."
+job.refuse_visiting_relative.line.3,Do we really need to bother her over a few gifts?,Naprawdę trzeba ją niepokoić z powodu kilku prezentów?
+job.refuse_visiting_relative.line.4,"I'm sorry, I won't open it. We can wait or call her together.","Przykro mi, nie otworzę. Możemy poczekać albo wspólnie do niej zadzwonić."
+job.refuse_visiting_relative.note,"Refused Oskar's request: ID, no tenant's consent. Suggested a call. The gifts could wait.","Odmówiłem Oskarowi: dowód, brak zgody lokatorki. Zaproponowałem telefon. Prezenty mogły poczekać."
+job.refuse_visiting_relative.situation,Oskar says he has brought Christmas gifts but cannot obtain the tenant's consent.,"Oskar twierdzi, że przywiózł prezenty, lecz nie ma zgody lokatorki na wejście."
+job.refuse_visiting_relative.title,A Relative at the Door,Krewny pod drzwiami
+job.warm_room_for_neighbours.client,"Marta, organising blankets, and Basia from the residents' committee.","Marta, organizatorka zbiórki koców, i Basia z komitetu mieszkańców."
+job.warm_room_for_neighbours.line.1,The room's warm. The neighbours are not. We need to switch those facts.,Świetlica jest ciepła. Sąsiedzi nie. Wolałabym zamienić te fakty.
+job.warm_room_for_neighbours.line.2,The manager approved it. Here's the residents' decision.,Zarządczyni się zgodziła. Tu jest uchwała mieszkańców.
+job.warm_room_for_neighbours.line.3,The right to enter is clear. The fee stays as agreed.,"Prawo wejścia potwierdzone. Cena zostaje taka, jak ustaliliśmy."
+job.warm_room_for_neighbours.line.4,I'll bring blankets. Ziemniak may volunteer as a hot-water bottle.,Przyniosę koce. Ziemniak może zgłosić się na termofor.
+job.warm_room_for_neighbours.note,Community room: manager and residents' decision checked. Opened for neighbours; Marta brought blankets.,Świetlica: zarządczyni i uchwała sprawdzone. Otworzyłem dla sąsiadów; Marta przyniosła koce.
+job.warm_room_for_neighbours.situation,"The community room has working electric heaters, but its door is locked while the flats are cold.","W świetlicy działają bezpieczne grzejniki elektryczne, ale drzwi są zamknięte, a mieszkania zimne."
+job.warm_room_for_neighbours.title,A Warm Room for Neighbours,Ciepła sala dla sąsiadów
+job.wigilia_table_drawer.client,"Basia, residents' committee secretary, and Mrs Zosia.","Basia, sekretarka komitetu mieszkańców, i pani Zosia."
+job.wigilia_table_drawer.line.1,Every guest has a place. The name cards are locked in that drawer.,Każdy ma miejsce. Tylko winietki zostały zamknięte w szufladzie.
+job.wigilia_table_drawer.line.2,Elżbieta approved it. I've counted the chairs twice.,Elżbieta wyraziła zgodę. Krzesła przeliczyłam już dwa razy.
+job.wigilia_table_drawer.line.3,I've seen the decision and the price is settled. Let's keep those places.,"Widziałem uchwałę, cena ustalona. Niech te miejsca nie stoją puste."
+job.wigilia_table_drawer.line.4,"If one chair is spare, we're keeping it for you.","Jeśli zostanie jedno krzesło, zatrzymamy je dla pana."
+job.wigilia_table_drawer.note,"Common-room sideboard: manager, decision and witness confirmed. Recovered the name cards and an invitation.","Kredens świetlicy: zarządczyni, uchwała i świadek. Odzyskałem winietki oraz zaproszenie."
+job.wigilia_table_drawer.situation,The common room's old sideboard contains the name cards for the neighbours' Christmas Eve meal.,W starym kredensie świetlicy zostały winietki na sąsiedzką Wigilię.
+job.wigilia_table_drawer.title,Places at the Table,Nakrycia do stołu
+job.winter_bicycle_cellar.client,"Leon, a resident who stores bicycles in the basement, and Elżbieta.","Leon, lokator korzystający z piwnicznej rowerowni, i Elżbieta."
+job.winter_bicycle_cellar.line.1,"My bicycle is indoors. Unfortunately, so is its lock.",Mój rower stoi pod dachem. Niestety jego kłódka też.
+job.winter_bicycle_cellar.line.2,"His storage place is on the register, and his lease annex matches.","Miejsce ma w wykazie, a aneks do najmu się zgadza."
+job.winter_bicycle_cellar.line.3,That's enough to confirm access. We'll keep the agreed price.,"To wystarczy, by potwierdzić dostęp. Trzymamy się ustalonej ceny."
+job.winter_bicycle_cellar.line.4,Thank you. The parcels may arrive before the New Year after all.,Dziękuję. Może przesyłki dotrą jeszcze przed Nowym Rokiem.
+job.winter_bicycle_cellar.note,Basement bicycle cage: Leon's annex and manager's register matched. The delivery bicycles were released.,Rowerownia w piwnicy: aneks Leona i wykaz zarządczyni zgodne. Rowery wróciły do pracy.
+job.winter_bicycle_cellar.situation,A second frost-stiffened padlock blocks the basement bicycle cage. Inside are delivery bikes.,Druga przemarznięta kłódka blokuje piwniczną rowerownię. W środku stoją rowery dostawcze.
+job.winter_bicycle_cellar.title,The Bicycle Cellar,Rowerownia pod śniegiem
+job.wooden_winter_village.client,"Zuzanna, museum trainee, with curator Dr Rygiel's written authorisation.","Zuzanna, stażystka muzealna, z pisemnym upoważnieniem dr Rygiel."
+job.wooden_winter_village.line.1,The museum lent us a little winter street. It's hiding in its box.,Muzeum pożyczyło nam małą zimową ulicę. Ulica schowała się w kasecie.
+job.wooden_winter_village.line.2,Dr Rygiel's authorisation and the deposit record match.,Upoważnienie dr Rygiel i protokół depozytu się zgadzają.
+job.wooden_winter_village.line.3,"No scratches, please. The snow is almost a hundred years old.",Proszę bez rys. Ten śnieg ma prawie sto lat.
+job.wooden_winter_village.line.4,Understood. I'll leave the weather exactly as it is.,Rozumiem. Pogody nie zamierzam poprawiać.
+job.wooden_winter_village.note,Museum display box: Dr Rygiel's authorisation and deposit checked. The miniature winter street stayed intact.,Kaseta muzealna: upoważnienie dr Rygiel i depozyt sprawdzone. Zimowa makieta ocalała.
+job.wooden_winter_village.situation,A wooden display box with a miniature snowy street is stuck shut before the winter exhibition.,Drewniana kaseta z makietą zaśnieżonej ulicy nie otwiera się przed wystawą zimową.
+job.wooden_winter_village.title,The Wooden Winter Village,Drewniane miasteczko zimowe

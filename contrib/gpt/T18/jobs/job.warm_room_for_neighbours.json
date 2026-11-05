@@ -1,0 +1,27 @@
+{
+  "id": "job.warm_room_for_neighbours",
+  "chapter": 8,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 3,
+  "verification": "Pomieszczenie świetlicy wspólnotowej: Elżbieta jako zarządczyni (2–3), uchwała o udostępnieniu sali (2), Basia jako świadek (2). Wycena przyjęta.",
+  "reward_coins": 145,
+  "tone": "wspólnotowy, ciepły",
+  "i18n": {
+    "title": "job.warm_room_for_neighbours.title",
+    "client": "job.warm_room_for_neighbours.client",
+    "situation": "job.warm_room_for_neighbours.situation"
+  },
+  "lines": [
+    "marta",
+    "basia",
+    "locksmith",
+    "marta"
+  ],
+  "cards": [
+    "manager",
+    "institution",
+    "witness"
+  ],
+  "threshold": 3
+}

@@ -1,0 +1,29 @@
+{
+  "id": "job.refuse_unapproved_repair",
+  "chapter": 8,
+  "district": "Śródmieście",
+  "family": "wafer",
+  "tier": 2,
+  "verification": "Karol okazuje identyfikator i niepodpisaną wiadomość (poszlaki, bez prawa dostępu). Zarządczyni nie potwierdza zlecenia, klient proponuje dopłatę za pominięcie pytań (`flag.absent_owner`, `flag.rush_bribe`). Bez pisemnego upoważnienia: odmowa, 0 monet.",
+  "reward_coins": 0,
+  "tone": "ostrożna odmowa, bez oskarżeń",
+  "i18n": {
+    "title": "job.refuse_unapproved_repair.title",
+    "client": "job.refuse_unapproved_repair.client",
+    "situation": "job.refuse_unapproved_repair.situation"
+  },
+  "lines": [
+    "karol",
+    "locksmith",
+    "karol",
+    "locksmith"
+  ],
+  "cards": [
+    "id",
+    "letter"
+  ],
+  "threshold": 2,
+  "after": [
+    "elzbieta"
+  ]
+}

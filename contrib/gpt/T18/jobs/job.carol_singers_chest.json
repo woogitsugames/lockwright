@@ -1,0 +1,26 @@
+{
+  "id": "job.carol_singers_chest",
+  "chapter": 8,
+  "district": "Śródmieście",
+  "family": "wooden_pin",
+  "tier": 1,
+  "verification": "Mila prowadzi grupę kolędników; Elżbieta potwierdza, że skrzynia jest własnością świetlicy. Uchwała wspólnoty i zarządczyni (2+2); cena przyjęta.",
+  "reward_coins": 75,
+  "tone": "lekko zabawny, wspólnotowy",
+  "i18n": {
+    "title": "job.carol_singers_chest.title",
+    "client": "job.carol_singers_chest.client",
+    "situation": "job.carol_singers_chest.situation"
+  },
+  "lines": [
+    "mila",
+    "elzbieta",
+    "locksmith",
+    "mila"
+  ],
+  "cards": [
+    "manager",
+    "institution"
+  ],
+  "threshold": 2
+}
