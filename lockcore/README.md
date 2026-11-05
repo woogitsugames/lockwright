@@ -131,6 +131,7 @@ Tier tables: `pin_tumbler` t2–t7 per LOCKS.md §2.6 (t5 5–6 stacks, t7 overs
 | `lever_detector` | t5–t6 | T, D, L, R | `TOOL_LEVER_CRANK` | lever + detector trip and rotate-back reset |
 | `ring_combo` | t2–t3 | T, D, R | `TOOL_SHACKLE_PULLER` | which ring binds, where it drops in, false notches |
 | `dial_safe` | t1–t3 | T, L | `TOOL_LISTENING_CUP` | wheel pack: pick up, listen for the gate, reverse to leave it (LOCKS.md §2.18) |
+| `combo` | t1–t4 | T, D, L | `TOOL_SHACKLE_PULLER` | `ring_combo` module flag: thumbwheels on `pick_lift`, sleeve slip (§2.19) |
 
 `wooden_pin` (§2.1): like `wafer` (set pegs stay up, `t_release` 0.20 above `t_hold` 0.10, so an
 overset costs no drop), but the tool never breaks: a pull above `tau_creak` emits `wood.creak`
@@ -227,7 +228,8 @@ S >= 0. CI runs it under ASan + UBSan with `-fno-sanitize-recover=undefined` and
 
 Additive; hashes and goldens of the earlier families unchanged.
 
-- New families `dial_safe` (`dial_safe.hpp`, LOCKS.md §2.18). They read only `tension`, `pick_depth`,
+- New families `dial_safe` (`dial_safe.hpp`, LOCKS.md §2.18) and `combo` (`ring::make_combo_module()`,
+  §2.19; `ring::Params::slip_speed`, written to lock files only when > 0, sub `combo.slip` = overset + 2). They read only `tension`, `pick_depth`,
   `pick_lift` (no `rotate` / `push`), so a plan-B screen calling `step(t, depth, lift)` drives them.
 - `spec.hpp`: `TOOL_LISTENING_CUP` (dial_safe).
 - `family.hpp`: `ViewModel` gains `q16 dial` (dial reading, fraction of a turn) and `std::int32_t

@@ -1109,6 +1109,58 @@ to gra, nie kurs. Żadnych odniesień do klas zabezpieczeń ani modeli.
 
 ---
 
+### 2.19 Zamek szyfrowy z kółkami — `combo`
+**PL:** Zamek szyfrowy z kółkami · **EN:** Thumbwheel Combination Lock · **Tier:** t1–4 (lockcore v0.6) ·
+**Faza:** D-59 (zlecenia `job.bike_interview` t1 — linka rowerowa, `job.time_capsule` t3 — kapsuła czasu).
+Research: `docs/research/new-families.md` §2.
+
+**Zasada.** Kółka z cyframi na tulejkach z wcięciem; gdy wszystkie wcięcia stoją pod występem zatrzasku, zatrzask
+przechodzi. Pod ciągiem zatrzasku tulejki są dociśnięte nierówno, więc jedno kółko stawia opór (ogólnie znana cecha
+tej klasy, poziom encyklopedyczny).
+
+**Logika zagadki.** Ten sam moduł co `ring_combo` (§2.3, flaga `combo`, `ring_combo.cpp`), z trzema różnicami:
+1. **Wejście:** kółko kręci się **pionowym ruchem kciuka** — `pick_lift` = prędkość kółka (góra = cyfra w górę);
+   `pick_depth` = które kółko (magnes ±30 %), `tension` = ciąg linki/zatrzasku. `rotate` nieużywane.
+2. **Poślizg tulejki (nowa lekcja):** kółko związane (`bound`) kręcone szybciej niż `slip_speed`
+   (wychylenie kciuka > 0,70 na t1 … > 0,55 na t4) „ślizga się”: obraca się dalej, ale wcięcie przechodzi pod
+   zatrzaskiem bez wpadnięcia. Zdarzenie `combo.slip` (podstawa `overset`, raz na epizod), stan `overset`
+   w ViewModel. Wystarczy zwolnić — na następnym przejściu kółko wpadnie. Kółko luźne nie ślizga się nigdy.
+3. **Tiery 1–4**, własne seedy i nazwy zdarzeń (`combo.detent`, `combo.slip`).
+
+Reszta jak §2.3: wiąże kółko o najniższym przesunięciu przy `T ≥ band_lo`, kręci się tylko do `t_stick`
+(za mocny ciąg = kółko stoi, `pick_drag`), w bramce `gate_align` + `set` i wiąże następne; fałszywe wcięcia
+(od t3) łapią do zwolnienia ciągu poniżej `band_lo`; puszczenie ciągu traci tylko flagi `set`, cyfry zostają.
+Brak łamania.
+
+**Parametry generatora (`difficulty_for_tier`).**
+
+| Tier | Kółka | Pasmo ciągu | gate_feel | Fałszywe/kółko | Poślizg przy wychyleniu | Limit |
+|---|---|---|---|---|---|---|
+| t1 | 3 | 0,32 | 0,85 | 0 | > 0,70 | 90 s |
+| t2 | 3–4 | 0,28 | 0,70 | 0 | > 0,65 | 100 s |
+| t3 | 4 | 0,22 | 0,50 | 0–1 | > 0,60 | 120 s |
+| t4 | 4–5 | 0,20 | 0,40 | 1–2 | > 0,55 | 140 s |
+
+(`overset_margin` w wektorze trudności = próg wychylenia poślizgu; w pliku zamka `slip_speed_q16`, zapisywane
+tylko dla `combo`.)
+
+**ViewModel (plan B).** Jak `ring_combo`: `elements[i].position` = ułamek obrotu (cyfra = position × 10),
+okno bramki, `variant` = liczba fałszywych wcięć; stany `free`/`bound`/`near`/`set`/`false_set`/`overset`
+(poślizg); `pick_element` = wybrane kółko; `core_rotation` = ruch zatrzasku (0,02 na ustawione kółko, 1 przy
+otwarciu); `tension_resistance` i `pick_drag` jak w §2.3.
+
+**Haptyka i dźwięk.** `combo.detent` drobne tyknięcia (mocniejsze na związanym kółku), `near_shear` lekkie
+zapadnięcie, `set` wyraźny klik, `false_set` głuchy, `combo.slip` ostry zgrzyt + kółko podskakuje (≥ 2 dp),
+`drop` przy puszczeniu linki.
+
+**Widok.** Rząd kółek z przodu (cyfry widoczne), pod nimi przekrój tulejek i zatrzasku — inny niż bok kłódki
+pierścieniowej.
+
+**Weryfikator (1000 seedów/tier).** Skryptowy 0 porażek (t_p50 8–12 s), niezdarny 100 %, czujący 100 %
+(t_p50 21/25/29/34 s). Złote: `combo_t1_s4`, `combo_t3_s11_feel`.
+
+---
+
 ## 3. Tabela zbiorcza
 
 | # | ID | PL / EN | Tier | Faza | Widok | Wejścia | Kluczowa nowa logika | Narzędzie główne |
@@ -1131,6 +1183,7 @@ to gra, nie kurs. Żadnych odniesień do klas zabezpieczeń ani modeli.
 | 2.16 | `sidebar` | Listwa boczna / Sidebar Lock | 6–9 | F3 | bok + warstwa | T, D, L, R | dwie warstwy warunków | Piórko boczne |
 | 2.17 | `hybrid` | Hybrydy / Hybrid Locks | 8–10 | F3 | dzielony | suma | kompozycja modułów | suma |
 | 2.18 | `dial_safe` | Sejf z pokrętłem / Dial Safe | 1–3 | D-59 | czoło + przekrój kół | T, L | pakiet kół, nasłuch, zmiana kierunku | Słuchawka |
+| 2.19 | `combo` | Zamek z kółkami / Thumbwheel Combination Lock | 1–4 | D-59 | przód + przekrój tulejek | T, D, L | wiązanie + poślizg tulejki | Ciągadło kabłąka |
 
 T = tension, D = pick_depth, L = pick_lift, R = rotate, P = push.
 
