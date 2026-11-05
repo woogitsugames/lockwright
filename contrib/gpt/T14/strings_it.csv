@@ -1,0 +1,126 @@
+key,it
+boot.calib_title,Due tocchi a 120 ms di distanza: quanti ne senti al tatto e all'orecchio?
+boot.calib_two,Due
+boot.calib_one,Uno
+boot.calib_none,Nessuno
+boot.calib_skip,Salta
+settings.feel_section,Sensazioni (feedback aptico)
+settings.quality,Qualità grafica
+settings.quality_auto,Automatica (misurata)
+settings.quality_high,Alta
+settings.quality_medium,Media
+settings.quality_low,Bassa (telefoni economici)
+showcase.notebook_prefix,Dal quaderno del maestro:
+about.licenses,"Caratteri: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Motore: Godot 4 (MIT). Estensioni: godot-cpp (MIT), GUT (MIT). Elenco completo: THIRD-PARTY-NOTICES.txt nell'app."
+about.post_release_unlocked,Capitolo 7 (Una chiave in comune) sbloccato.
+settings.report_problem,Segnala un problema
+settings.report_copied,Registro copiato negli appunti. Incollalo nel messaggio: non viene inviato nulla automaticamente.
+settings.report_empty,Il registro è vuoto.
+app.title,Lockwright: Fabbro a chiamata
+common.back,Indietro
+common.close,Chiudi
+common.on,Attivo
+common.off,Disattivo
+common.coins,monete
+menu.title,Lockwright
+menu.play,Inizia il turno
+menu.workshop,Officina
+menu.showcase,Vetrina
+menu.settings,Impostazioni
+menu.about,Informazioni sul gioco
+menu.jobs,Incarichi
+jobs.title,Incarichi
+job.verify,Verifica il diritto di accesso
+job.accept,Accetta l'incarico
+job.refuse,Rifiuta l'incarico
+job.opened,Serratura aperta. Conto saldato.
+job.reward_fmt,Ricompensa: {n} monete
+job.tip_fmt,Mancia (apertura pulita): {n} monete
+common.continue,Continua
+verify.title,Verifica il diritto di accesso
+verify.hint,Il cliente presenta le prove. Decidi tu.
+verify.ask_more,Chiedi un'altra prova
+verify.card.id,Documento d'identità
+verify.card.witness,Vicino come testimone
+verify.card.manager,Amministratore / portiere
+verify.card.lease,Contratto di locazione
+verify.card.resolution,Delibera dei residenti
+verify.card.deed,Atto di proprietà
+verify.card.inheritance,Documento di successione
+verify.card.institution,Lettera di un ente
+verify.card.letter,Lettera
+verify.card.photo,Foto
+verify.card.receipt,Scontrino
+verify.card.invoice,Fattura
+verify.card.address_app,Indirizzo mostrato nell'app
+verify.card.police,Intervento della polizia
+verify.card.bailiff,Ufficiale giudiziario
+verify.refused,Le prove non bastano. Non posso aprire.
+verify.refused_rep,La voce si sparge: +5 reputazione
+tutorial.title,Tutorial — serratura di prova
+tutorial.stage,Fase {n} di 3
+tutorial.done,Prova completata. Ora il primo incarico vero.
+hud.magnifier,Lente d'ingrandimento
+settings.title,Impostazioni
+settings.haptics,Feedback aptico
+settings.haptics_enabled,Feedback aptico attivo
+settings.haptics_intensity,Intensità del feedback aptico
+settings.haptics_test,Impulso di prova
+settings.haptics_calibration,Calibrazione
+settings.haptics_calibration_two_clicks,Percepisci due scatti?
+settings.haptics_calibration_two_clicks_yes,Due
+settings.haptics_calibration_two_clicks_one,Uno
+settings.haptics_calibration_two_clicks_none,Nessuno
+settings.continuous_resistance,Resistenza continua
+settings.volume_master,Volume generale
+settings.volume_sfx,Effetti sonori
+settings.volume_ambience,Suoni ambientali
+settings.language,Lingua
+settings.language_system,Lingua del dispositivo
+settings.language_pl,Polski
+settings.language_en,English
+settings.language_de,Deutsch (dev)
+settings.dark_mode_assist,Contrasto elevato
+settings.reading_aid,Segni di gesso
+settings.wide_windows,Finestre più ampie
+settings.reset,Ripristina impostazioni
+settings.text_scale,Dimensione del testo
+settings.reduce_motion,Riduci il movimento
+settings.dark_mode_note,Al buio affidati al suono. Anche il feedback aptico aiuta.
+run.title,Turno senza fine
+run.lock_n,Serratura {n}
+run.lives_left,Grimaldelli di riserva
+run.workshop_stop,Pausa in officina
+run.finished,Turno finito — {n} monete
+run.rubber_band,Fai un respiro. La prossima serratura sarà più semplice.
+optics.loupe,Dettaglio della linea di taglio
+optics.microscope,Bave e false gole
+optics.borescope,Elementi in profondità
+pause.title,In pausa
+pause.resume,Riprendi
+pause.settings,Impostazioni
+pause.dark_mode,Al buio
+pause.restart,Ricomincia questa serratura
+pause.quit,Lascia la serratura
+lock.pause,Pausa
+workshop.title,Officina
+workshop.coins,Monete
+workshop.buy,Compra
+workshop.repair,Ripara
+workshop.owned,Già tuo
+workshop.integrity,Stato dell'attrezzo
+workshop.repair_cost,Riparazione: {0} monete
+workshop.broken,Rotto
+workshop.reward,Ricompensa per i progressi
+showcase.title,Vetrina
+showcase.locked,Bloccato — sbloccalo nel gioco
+showcase.source,Fonte
+showcase.unknown_source,Fonte non ancora verificata
+about.title,Informazioni sul gioco
+about.notice,"Questo è un gioco, non un corso. I meccanismi sono inventati e semplificati. Un vero fabbro verifica sempre che il cliente abbia il diritto di entrare."
+about.licensed_assets,Risorse e licenze
+dev.haptics_lab.title,Laboratorio aptico
+dev.haptics_lab.tier,Livello
+dev.haptics_lab.force_fallback,Usa la modalità alternativa
+dev.haptics_lab.resistance,Resistenza
+dev.haptics_lab.caps,Funzionalità
