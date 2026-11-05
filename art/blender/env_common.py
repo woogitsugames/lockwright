@@ -433,3 +433,90 @@ def write_anchors(path, anchors):
             'anchors': {k: project(v) for k, v in anchors.items()}}
     with open(path, 'w') as f: json.dump(data, f, indent=1)
     print('ANCHORS', path)
+
+def photo_finish(vignette=0.22, dispersion=0.006, grain=0.0):
+    """Compositor: a real lens. Slight lateral chromatic aberration toward the corners and a soft vignette."""
+    scene.use_nodes = True; nt = scene.node_tree; nt.nodes.clear(); l = nt.links
+    rl = nt.nodes.new('CompositorNodeRLayers'); out = nt.nodes.new('CompositorNodeComposite')
+    ld = nt.nodes.new('CompositorNodeLensdist'); ld.use_fit = True
+    ld.inputs[1].default_value = 0.0; ld.inputs[2].default_value = dispersion
+    l.new(rl.outputs['Image'], ld.inputs['Image'])
+    em = nt.nodes.new('CompositorNodeEllipseMask'); em.width = 1.15; em.height = 1.05
+    bl = nt.nodes.new('CompositorNodeBlur'); bl.filter_type = 'FAST_GAUSS'; bl.use_relative = True
+    bl.factor_x = 0.35; bl.factor_y = 0.35; l.new(em.outputs['Mask'], bl.inputs['Image'])
+    mr = nt.nodes.new('CompositorNodeMapRange'); mr.inputs['To Min'].default_value = 1 - vignette; mr.inputs['To Max'].default_value = 1.0
+    l.new(bl.outputs['Image'], mr.inputs['Value'])
+    mx = nt.nodes.new('CompositorNodeMixRGB'); mx.blend_type = 'MULTIPLY'; mx.inputs['Fac'].default_value = 1.0
+    l.new(ld.outputs['Image'], mx.inputs[1]); l.new(mr.outputs['Value'], mx.inputs[2])
+    l.new(mx.outputs['Image'], out.inputs['Image'])
+
+def clipboard(name, M, slip_mat, pad_mat, board_mat, clip_mat, W=176, H=250, sheet=(148, 210), sheets=3, rng=None):
+    """Hardboard clipboard with a pad of A5 slips under a pressed-steel clip. M = world matrix of the board
+    (board lies in its local XY plane, +Z up, clip at +Y). Returns (objects, corner(u, v) -> world point on top slip)."""
+    rng = rng or random.Random(3)
+    objs = [slab(name, rounded_rect(W, H, 9), 3.0, board_mat, bev=0.8)]
+    cl = slab(name + '_clip', rounded_rect(110, 34, 6), 5.0, clip_mat, bev=2.2, seg=5); place(cl, (0, H / 2 - 22, 3.2)); objs.append(cl)
+    for sx in (-1, 1):
+        r = cyl(name + '_rivet', 3, 2.0, (sx * 42, H / 2 - 12, 4.0), verts=24); setmat(r, clip_mat); objs.append(r)
+    ro = cyl(name + '_roll', 4.5, 104, (0, H / 2 - 40, 6.0), axis='X', verts=32); setmat(ro, clip_mat); objs.append(ro)
+    top_z = 3.05
+    for i in range(sheets):
+        last = i == sheets - 1
+        dx, dy, rz = (0, -6, 0.0) if last else (rng.uniform(-2, 2), rng.uniform(-5, -1), rng.uniform(-1, 1))
+        s = slab('%s_sheet%d' % (name, i), rounded_rect(sheet[0], sheet[1], 0.6, 2), 0.12, slip_mat if last else pad_mat)
+        place(s, (dx, H / 2 - 12 - sheet[1] / 2 + dy, top_z + i * 0.13), rot=(0, 0, rz)); objs.append(s)
+    zt = top_z + (sheets - 1) * 0.13 + 0.12
+    for o in objs:
+        o.matrix_world = M @ o.matrix_world
+    def corner(u, v):
+        return M @ Vector((-sheet[0] / 2 + u, H / 2 - 12 - 6 - v, zt))
+    return objs, corner
+
+def tag(name, M, mat, eyelet_mat, string_to=None, string_mat=None, w=82, h=40):
+    """Manila shipping tag (clipped corners at the eyelet end). M = world matrix (tag in local XY, eyelet at -X).
+    string_to: world point the string runs to. Returns corners [tl, tr, br, bl] of the writing field."""
+    c = 9
+    outline = [(-w / 2 + c, -h / 2), (w / 2, -h / 2), (w / 2, h / 2), (-w / 2 + c, h / 2), (-w / 2, h / 2 - c), (-w / 2, -h / 2 + c)]
+    t = slab(name, outline, 0.35, mat)
+    cut(t, cyl('hole', 2.5, 4, (-w / 2 + 8, 0, 0), verts=24))
+    ey = lathe(name + '_eyelet', [(2.6, -0.1), (5.2, -0.1), (5.4, 0.25), (4.8, 0.55), (2.6, 0.55)], -w / 2 + 8, 0, seg=32)
+    ey.modifiers.clear(); setmat(ey, eyelet_mat)
+    for o in (t, ey): o.matrix_world = M @ o.matrix_world
+    if string_to is not None:
+        a = M @ Vector((-w / 2 + 8, 0, 0.2)); b = Vector(string_to); mid = (a + b) / 2 + Vector((0, 0, -12))
+        tube(name + '_string', [a, a + (b - a) * 0.15 + Vector((0, 0, -4)), mid, b], 0.6, string_mat, res=3)
+    f = lambda u, v: M @ Vector((-w / 2 + 16 + u * (w - 20), h / 2 - 4 - v * (h - 8), 0.36))
+    return [f(0, 0), f(1, 0), f(1, 1), f(0, 1)]
+
+def brick_wall(name, brick=(0.42, 0.20, 0.12), wash=(0.80, 0.78, 0.72), wash_amt=0.75, seed=0.0, axis='Y'):
+    """Old brick wall under several coats of limewash: bricks show through where the wash wore off,
+    mortar joints recessed, per-brick tone, efflorescence. Wall plane XZ (axis='Y') or YZ (axis='X')."""
+    m, nt, l, b, P = _new(name); P = _offset(nt, P, seed)
+    X, Y, Z = _sep(nt, P)
+    cb = nt.nodes.new('ShaderNodeCombineXYZ'); l.new(Y if axis == 'X' else X, cb.inputs[0]); l.new(Z, cb.inputs[1])
+    dn = nt.nodes.new('ShaderNodeTexNoise'); dn.inputs['Scale'].default_value = 0.02; dn.inputs['Detail'].default_value = 4
+    l.new(cb.outputs[0], dn.inputs['Vector'])
+    dv = nt.nodes.new('ShaderNodeVectorMath'); dv.operation = 'MULTIPLY_ADD'; l.new(dn.outputs['Color'], dv.inputs[0])
+    dv.inputs[1].default_value = (6, 4, 0); l.new(cb.outputs[0], dv.inputs[2])
+    bt = nt.nodes.new('ShaderNodeTexBrick'); bt.offset = 0.5; bt.squash = 1.0
+    bt.inputs['Scale'].default_value = 0.01; bt.inputs['Brick Width'].default_value = 2.6; bt.inputs['Row Height'].default_value = 0.76
+    bt.inputs['Mortar Size'].default_value = 0.11; bt.inputs['Mortar Smooth'].default_value = 0.4; bt.inputs['Bias'].default_value = 0.0
+    bt.inputs['Color1'].default_value = (*brick, 1); bt.inputs['Color2'].default_value = (*[c * 0.7 for c in brick], 1)
+    bt.inputs['Mortar'].default_value = (0.55, 0.52, 0.46, 1)
+    l.new(dv.outputs['Vector'], bt.inputs['Vector'])
+    col = _mix(nt, bt.outputs['Color'], (0.15, 0.08, 0.05, 1), _maprange(nt, _noise(nt, P, 0.05, detail=8), 0.4, 0.8, 0, 0.5))
+    # limewash: thick in the joints, worn thin on brick faces, patchy
+    wn = _noise(nt, P, 0.004, detail=8, rough=0.65)
+    wf = _noise(nt, P, 0.08, detail=6, rough=0.7)
+    wm = _maprange(nt, _mix(nt, wn, wf, 0.35, dtype='FLOAT'), 0.62 - wash_amt * 0.3, 0.70 - wash_amt * 0.3)
+    wm = _math(nt, 'MAXIMUM', wm, bt.outputs['Fac'])
+    wcol = _mix(nt, (*wash, 1), (*[c * 0.82 for c in wash], 1), _noise(nt, P, 0.01, detail=6))
+    col = _mix(nt, col, wcol, wm)
+    cm = _maprange(nt, _cavity_mask(nt, 30.0, 0.4, 0.95), 0, 1, 0, 0.5)
+    col = _mix(nt, col, (0.12, 0.1, 0.08, 1), cm)
+    l.new(col, b.inputs['Base Color'])
+    l.new(_maprange(nt, wf, 0.3, 0.7, 0.75, 0.95), b.inputs['Roughness'])
+    h = _math(nt, 'SUBTRACT', _math(nt, 'MULTIPLY', _noise(nt, P, 0.15, detail=8, rough=0.7), 0.4), _math(nt, 'MULTIPLY', bt.outputs['Fac'], 0.6))
+    h = _math(nt, 'ADD', h, _math(nt, 'MULTIPLY', wm, 0.15))
+    l.new(_bump(nt, h, 0.5, 2.0), b.inputs['Normal'])
+    return m

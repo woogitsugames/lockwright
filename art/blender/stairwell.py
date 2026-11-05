@@ -36,7 +36,7 @@ bakelite = plastic('bakelite', (0.06, 0.035, 0.02), rough=0.25)
 blue = enamel('enamel_blue', (0.012, 0.05, 0.20), chip=0.6)
 white_en = enamel('enamel_white', (0.80, 0.80, 0.76), chip=0.0)
 card = paper('name_card', (0.78, 0.74, 0.64), grime=0.4, seed=3)
-slip = paper('slip', (0.83, 0.81, 0.75), grime=0.1, seed=1, lines=(8.0, 'Y', (0.62, 0.66, 0.72)))
+slip = paper('slip', (0.83, 0.81, 0.75), grime=0.1, seed=1, lines=(8.0, 'Y', (0.70, 0.72, 0.74)))
 pad_paper = paper('pad', (0.80, 0.78, 0.72), grime=0.2, seed=2)
 hardboard = oak('hardboard', light=(0.30, 0.18, 0.09), dark=(0.22, 0.12, 0.06), ring=40, coat=0.3, pores=0.0, seed=9, wear=0.6)
 rail_wood = oak('handrail', light=(0.42, 0.24, 0.11), dark=(0.16, 0.08, 0.035), axis='Y', seed=7, ring=2.0, coat=1.0,
@@ -274,12 +274,12 @@ if HAIR:
 
 # ---------------------------------------------------------------- lights
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (0, 0, 1100)
-world_hdri(0.02 if NIGHT else 0.06, 'interior.exr', sat=0.3)
+world_hdri(0.01 if NIGHT else 0.02, 'interior.exr', sat=0.3)
 if not NIGHT:
     bpy.ops.object.light_add(type='POINT', location=tuple(G)); bulb = bpy.context.object
-    bulb.data.shadow_soft_size = 35; bulb.data.energy = 8.0e7; bulb.data.color = (1.0, 0.68, 0.40)
+    bulb.data.shadow_soft_size = 35; bulb.data.energy = 1.6e8; bulb.data.color = (1.0, 0.68, 0.40)
     # stairwell window up the flight (behind the camera, right): cool, soft
-    area_light('window', (2600, -2600, 3000), AIM, 1800, 6.0e7, (0.78, 0.86, 1.0), size_y=2200)
+    area_light('window', (2600, -2600, 3000), AIM, 1800, 2.2e7, (0.78, 0.86, 1.0), size_y=2200)
     area_light('bounce', (0, -4000, 1800), AIM, 2500, 2e6, (1.0, 0.85, 0.7))
 else:
     area_light('window', (2600, -2600, 3000), AIM, 1800, 1.6e7, (0.55, 0.66, 1.0), size_y=2200)
@@ -292,13 +292,13 @@ else:
 bx('inside_floor', DX0, DX1, 105, 1200, -20, 0, floor)
 
 # ---------------------------------------------------------------- camera + clipboard held in the foreground
-cam = photo_camera((40, -2420, 1520), yaw=0.0, lens=24.5, shift=(0.0, -0.14))
+cam = photo_camera((90, -2420, 1500), yaw=-2.5, lens=24.5, shift=(0.0, -0.14))
 cam.data.sensor_fit = 'VERTICAL'; cam.data.sensor_height = 36.0; cam.data.sensor_width = 36.0
 bpy.context.view_layer.update()
 CB_W, CB_H, A5 = 176, 250, (148, 210)
 board = slab('clipboard', rounded_rect(CB_W, CB_H, 9), 3.0, hardboard, bev=0.8)
 clip_m = metal('clip', (0.60, 0.60, 0.58), 0.3, marks='stamp', wear=0.4, grime=0.5, bevel_r=0.5)
-clip = slab('clip', rounded_rect(110, 34, 6), 1.2, clip_m, bev=0.4); place(clip, (0, CB_H / 2 - 22, 3.2))
+clip = slab('clip', rounded_rect(110, 34, 6), 5.0, clip_m, bev=2.2, seg=5); place(clip, (0, CB_H / 2 - 22, 3.2))
 for sx in (-1, 1):
     cyl('rivet', 3, 2.0, (sx * 42, CB_H / 2 - 12, 4.0), verts=24).data.materials.append(clip_m)
 roll = cyl('clip_roll', 4.5, 104, (0, CB_H / 2 - 40, 6.0), axis='X', verts=32); setmat(roll, clip_m)
@@ -308,7 +308,7 @@ for i, (dx, dy, rz) in enumerate(((1.5, -2, -0.8), (-1, -3.5, 0.6), (0, -6, 0.0)
     place(s, (dx, CB_H / 2 - 12 - A5[1] / 2 + dy, 3.05 + i * 0.13), rot=(0, 0, rz)); sheets.append(s)
 holder = [board, clip, roll] + sheets + [o for o in bpy.data.objects if o.name.startswith('rivet')]
 # held below the eye, facing up towards it, slightly rolled: the frame edge cuts the board (hands out of shot)
-M_cb = cam.matrix_world @ Matrix.Translation(Vector((-95, -300, -430))) @ Matrix.Rotation(math.radians(-6), 4, 'Z') @ Matrix.Rotation(math.radians(-47), 4, 'X')
+M_cb = cam.matrix_world @ Matrix.Translation(Vector((-115, -315, -450))) @ Matrix.Rotation(math.radians(-9), 4, 'Z') @ Matrix.Rotation(math.radians(-50), 4, 'X')
 for o in holder:
     o.matrix_world = M_cb @ o.matrix_world
 TOP = sheets[-1]
@@ -321,6 +321,7 @@ def sheet_pt(u, v):  # u, v in mm from the slip's top-left corner (u right, v do
 CROP = arg('--crop', '')
 render_setup(OUT, RES, SAMPLES, crop=tuple(float(v) for v in CROP.split(',')) if CROP else None, exposure=(-0.6 if NIGHT else 0.0), look='AgX - Medium High Contrast', bounces=10)
 scene.cycles.adaptive_threshold = 0.01
+photo_finish(0.25 if not NIGHT else 0.35)
 scene.view_settings.look = 'AgX - Medium Contrast' if NIGHT else 'AgX - Medium High Contrast'
 write_anchors(os.path.splitext(os.path.abspath(OUT))[0] + '.json', {
     'slip': [sheet_pt(0, 0), sheet_pt(A5[0], 0), sheet_pt(A5[0], A5[1]), sheet_pt(0, A5[1])],

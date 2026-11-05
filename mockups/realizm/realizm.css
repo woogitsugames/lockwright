@@ -22,3 +22,47 @@ body{background:var(--ink);color:#eee;font-family:"Atkinson Hyperlegible Next",s
   .tray{display:none}
   .field{width:92vh;height:92vh;margin:-46vh;top:50%}
 }
+
+/* ---- observation tools after the loupe (D-13). Same ocular grammar: black surround, round field, one way out. */
+/* bench microscope: higher magnification, the field can be slid along the shear line (drag), stage knob = focus */
+.field.mic{background-image:url(img/microscope_view.jpg);width:100vw;height:100vw;margin:-50vw;top:42%}
+/* stereo eyepieces: the two fields fuse into one; the faint second rim is the other eye, not decoration */
+.field.mic::before{content:"";position:absolute;inset:-3px;border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.9)}
+/* stage rail: an engraved scale on the microscope stage edge, the only hint that the field can slide (drag) */
+.rail{position:absolute;left:12vw;right:12vw;top:calc(42% + 54vw);height:48px;display:flex;align-items:center;justify-content:space-between}
+.rail i{display:block;width:2px;height:10px;background:rgba(214,206,190,.38)}
+.rail i.big{height:18px;background:rgba(214,206,190,.6)}
+.rail b{position:absolute;top:2px;width:3px;height:26px;background:#d8cfbd;left:calc(30% - 1.5px);border-radius:1px}
+/* borescope: what the probe sees on the handheld screen: lens image circle on the black display, display bezel = screen edge */
+.display{position:absolute;inset:0;background:#030404;border:calc(10px + env(safe-area-inset-left)) solid #1b1c1c}
+.field.bore{background-image:url(img/borescope_view.jpg);width:94vw;height:94vw;margin:-47vw;top:43%;
+  box-shadow:inset 0 0 26px 10px rgba(0,0,0,.9)}
+.field.bore::after{display:none}
+/* probe depth: rings printed on the cable every 5 mm pass a fixed notch at the keyway mouth (drag = push / pull) */
+.cable{position:absolute;left:50%;width:56px;margin-left:-28px;top:calc(43% + 50vw);bottom:calc(64px + env(safe-area-inset-bottom));
+  background:repeating-linear-gradient(#6d6d6a 0 2px,#8a8a86 2px 3px,#4e4e4b 3px 5px);border-radius:4px;
+  -webkit-mask:linear-gradient(90deg,transparent 0 18px,#000 18px 38px,transparent 38px)}
+.cable::after{content:"";position:absolute;left:0;right:0;top:0;bottom:0;
+  background:repeating-linear-gradient(transparent 0 30px,rgba(225,218,200,.85) 30px 32px)}
+.notch{position:absolute;left:50%;margin-left:-22px;width:44px;height:3px;top:calc(43% + 62vw);background:#c9c0ad}
+/* workshop: two product photographs on the bench, paper price tags tied on with string */
+.bench-top{position:absolute;left:0;right:0;top:0;height:58%;background:url(img/microscope.jpg) center 30%/cover}
+.bench-bot{position:absolute;left:0;right:0;top:58%;bottom:0;background:url(img/borescope.jpg) center 46%/cover}
+.bench-bot::before{content:"";position:absolute;left:0;right:0;top:-14px;height:28px;background:linear-gradient(rgba(13,12,11,0),rgba(13,12,11,.7) 50%,rgba(13,12,11,0))}
+.tag{position:absolute;min-width:132px;min-height:64px;padding:10px 14px 10px 26px;border:0;text-align:left;color:#2a241c;
+  background:#d9cdb2;clip-path:polygon(14px 0,100% 0,100% 100%,14px 100%,0 50%);transform:rotate(-4deg);
+  font:600 15px/1.2 "Atkinson Hyperlegible Next",sans-serif;filter:drop-shadow(0 2px 2px rgba(0,0,0,.55))}
+.tag::before{content:"";position:absolute;left:10px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:#4a3d2c}
+.tag small{display:block;font:400 italic 13px "Bona Nova",serif;color:#4a3d2c;margin-top:3px}
+.tag.lock{background:#bfb49c;color:#3d352a}
+.tag.t1{right:6vw;top:40%}
+.tag.t2{left:6vw;bottom:calc(20px + env(safe-area-inset-bottom));transform:rotate(3deg)}
+@media (orientation:landscape){
+  .field.mic,.field.bore{width:92vh;height:92vh;margin:-46vh;top:50%}
+  .rail,.cable,.notch{display:none}
+  .bench-top{right:50%;height:100%}
+  .bench-bot{left:50%;top:0}
+  .bench-bot::before{display:none}
+  .tag.t1{right:auto;left:4vw;top:auto;bottom:24px}
+  .tag.t2{left:auto;right:4vw}
+}
