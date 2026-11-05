@@ -16,7 +16,7 @@ extends Control
 func _ready() -> void:
 	I18n.apply_language(Settings.language())
 	notice_label.text = I18n.t(&"about.notice")
-	var first_run := not Save.get_value("seen_notice", false)
+	var first_run: bool = not Save.get_value("seen_notice", false)
 	notice.visible = first_run
 	if first_run:
 		Save.set_value("seen_notice", true)

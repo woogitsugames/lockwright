@@ -1,5 +1,5 @@
 extends Node
-class_name ErrorLog
+
 ## Local error log, no telemetry (task 12). Writes to user://logs/ with rotation
 ## (keep the newest LOG_FILES files, LOG_MAX_BYTES each). Nothing ever leaves the
 ## device: the Settings "Report a problem" screen only copies the latest log to the

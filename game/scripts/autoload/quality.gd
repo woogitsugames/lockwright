@@ -1,5 +1,5 @@
 extends Node
-class_name Quality
+
 ## Quality profiles for cheap phones (task 7): render_scale, MSAA and the plan-B
 ## plate (SubViewport) size. Profile "auto" picks after the first 10 s of play from the
 ## average frame time; the player can override it in Settings. Debug builds get an

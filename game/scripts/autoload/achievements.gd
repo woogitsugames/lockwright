@@ -1,5 +1,5 @@
 extends Node
-class_name Achievements
+
 ## Local achievements (task 10, contrib/gpt/T10). No Game Center / Play Games yet —
 ## report_to_platform() is the seam where they plug in later. Progress is stored in
 ## Save under "achievements"; names/descriptions go through i18n (ach.<id>.name/desc).
