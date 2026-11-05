@@ -10,3 +10,4 @@ game/i18n/*.translation
 game/build/
 game/android/build/
 platform/android/gradlew
+art/renders/test_*.json

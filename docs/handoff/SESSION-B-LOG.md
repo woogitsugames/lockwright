@@ -88,3 +88,9 @@
 
 **Zadanie 8 (zrzuty ekranu) — NIE UDAŁO SIĘ, próby:** sandbox nie ma GPU/EGL ani roota: `apt` bez list pakietów i bez sudo; pobrane ręcznie paczki .deb (bookworm i trixie) z deb.debian.org przez proxy Pythona; Xvfb startuje ale pada na „Failed to activate virtual core keyboard” (XKB) przy każdej próbie (±`-xkbdir`, `XKB_CONFIG_ROOT`); weston headless pada na ładowaniu modułów bez roota; `godot --headless --rendering-driver opengl3` daje pusty obraz (brak kontekstu GL). Wniosek: prawdziwe zrzuty ekranu wymagają runnera z GPU (CI ubuntu-latest ma tylko software GL — można dodać tam krok `xvfb-run` z `mesa-utils`, ale to wymaga zmiany obrazu/instalacji w CI; zostawiam jako otwarte). `docs/handoff/screens/` zostaje puste.
 >>>>>>> 5711056 (Stage 2 tasks 5-7: tutorial S1-S3 + chalk + first-launch notice, diegetic HUD (zwijka/loupe/tray), dark mode)
+
+## Od sesji A: audyt zgodności — 2026-11-05
+Pełna lista: `docs/COMPLIANCE-AUDIT.md`. Dla sesji B:
+- **Medium:** ekran weryfikacji pokazuje surową notatkę z biblii, tylko po polsku (`job_verify.gd:14`, 29 pól `verification`; N-04 z przeglądu C) — przenieść do i18n PL+EN.
+- **Medium:** gra ma tylko wbudowany font Godota — ustawić w motywie Bona Nova (nagłówki) i Atkinson Hyperlegible Next (tekst), pliki w `mockups/fonts/` (OFL).
+- **Low:** link źródła notki Sargent prowadzi do strony działającego producenta — zmienić na źródło encyklopedyczne; `showcase.*.source` w `content.csv` zawiera notatki redakcyjne i PL w kolumnie EN — oczyścić; `OFL.txt` w dodatku GUT bez not Courier Prime i Lobster Two.
