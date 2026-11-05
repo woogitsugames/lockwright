@@ -59,7 +59,7 @@
 
 /* locksmith's stamp: "a game, not a course" (CLAUDE.md, ONBOARDING.md §3.3). Ink, double border, slightly uneven. */
 .t-stamp{position:absolute;padding:6px 10px 7px;border:2.5px solid rgba(38,52,86,.82);outline:1px solid rgba(38,52,86,.6);outline-offset:2px;
-  color:rgba(38,52,86,.9);transform:rotate(-6deg);text-align:center;background:none;mix-blend-mode:multiply;white-space:nowrap}
+  color:rgba(38,52,86,.9);transform:rotate(-6deg);text-align:center;background:none;mix-blend-mode:multiply}
 .t-stamp b{display:block;font:800 16px/1.15 "Atkinson Hyperlegible Next",sans-serif;letter-spacing:.02em}
 .t-stamp span{display:block;font:500 15px/1.25 "Atkinson Hyperlegible Next",sans-serif;margin-top:2px}
 
