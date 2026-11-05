@@ -1,0 +1,630 @@
+key,es
+job.allotment_shed.client,"El señor Zbyszek, de 74 años, cultiva un huerto."
+job.allotment_shed.situation,El candado del cobertizo de su huerto se ha oxidado hasta quedar bloqueado. Dentro están las regaderas y las semillas; la parcela está a nombre de su esposa.
+job.allotment_shed.title,El cobertizo del señor Zbyszek
+job.bike_interview.client,"Kuba, de 23 años, va a su primera entrevista de trabajo con una americana prestada."
+job.bike_interview.situation,"Cambió la combinación del candado de su bicicleta y la olvidó. Tiene la entrevista a las 9:30, al otro lado de la ciudad."
+job.bike_interview.title,Entrevista a las 9:30
+job.bramah_bureau.client,"Gosia, de 36 años, restaura muebles y tiene su propio taller en el Puerto."
+job.bramah_bureau.situation,Gosia compró un escritorio inglés antiguo en una subasta. Falta la llave y quiere conservar intacta la cerradura original.
+job.bramah_bureau.title,El escritorio inglés
+job.brussels_townhouse.client,"Magda, de 41 años, es traductora. Lleva 15 años en Bruselas y mezcla palabras francesas con su polaco."
+job.brussels_townhouse.situation,"Una ráfaga de viento la dejó encerrada en el balcón de Saint-Gilles. Monsieur Jacques, que vive abajo, tiene la llave de la verja, pero no la de su piso."
+job.brussels_townhouse.title,Una casa en Saint-Gilles
+job.cat_bathroom.client,"Marta, 34 años, diseñadora gráfica. Trabaja desde casa y tiene un gato llamado Patata."
+job.cat_bathroom.situation,"Patata saltó sobre la manilla del baño y echó el pestillo. Marta está fuera y el gato dentro, protestando a pleno pulmón."
+job.cat_bathroom.title,Patata en el baño
+job.charleroi_letters.client,"Ola está de visita en Bélgica y llama para pedir consejo, no para solicitar una apertura."
+job.charleroi_letters.situation,La señora Martine encontró una caja de caudales de hierro cerrada y relacionada con el abuelo de Ola. Ambas quieren abrirla juntas.
+job.charleroi_letters.title,La dirección en las cartas del abuelo
+job.dollhouse_wooden_lock.client,"Hania, de 7 años, y su padre Tomasz, carpintero de tercera generación."
+job.dollhouse_wooden_lock.situation,El bisabuelo construyó la casa de muñecas con una cerradura de pasadores de madera. La llave de madera se perdió durante la mudanza y la muñeca favorita de Hania está dentro.
+job.dollhouse_wooden_lock.title,La casa de muñecas del bisabuelo
+job.drummer_locker.client,"Iga, de 27 años, toca la batería en «Sour Apples»."
+job.drummer_locker.situation,"Sus baquetas, sus auriculares intrauditivos y la lista de canciones están en una taquilla cerrada del local de ensayo. El concierto empieza dentro de una hora."
+job.drummer_locker.title,Las baquetas en la taquilla
+job.finnish_sailor.client,"Aino, de 50 años, es jefa de máquinas de un barco finlandés que estará atracado dos días."
+job.finnish_sailor.situation,Un cierre de discos protege el arcón de marinero de Aino. Su llave cayó al agua y el capitán confirma que el arcón es suyo.
+job.finnish_sailor.title,El arcón de la marinera
+job.ghent_beguinage.client,"El hermano Pieter, de 66 años, cuida una casa en un beguinaje de Gante. Va en bicicleta con una cesta de mimbre."
+job.ghent_beguinage.situation,En un almacén del beguinaje histórico se guardan antiguos libros parroquiales. Nadie tiene la llave y hay que abrir la puerta sin dejar marcas.
+job.ghent_beguinage.title,Una puerta en el beguinaje
+job.grandma_broth.client,"La señora Halina, de 81 años, salió en zapatillas a tirar la basura. Insiste en que se acuerda de todo."
+job.grandma_broth.situation,La puerta se cerró de golpe y dejó una olla de caldo al fuego. La vecina Zosia ya ha cerrado el gas.
+job.grandma_broth.title,El caldo en el fuego
+job.grandpa_chest.client,"Ola, de 38 años, profesora de Biología, y su madre Krystyna."
+job.grandpa_chest.situation,Ola cree que el viejo arcón guarda cartas de la época en que el abuelo Józef trabajaba en Charleroi. Ahora la casa pertenece a su madre.
+job.grandpa_chest.title,El arcón del abuelo Józef
+job.kiosk_shutter.client,"El señor Stefan, de 67 años, lleva el quiosco desde 1994 y conoce a todos los de la parada de autobús."
+job.kiosk_shutter.situation,El candado de la persiana está oxidado y el primer autobús llega dentro de media hora.
+job.kiosk_shutter.title,El quiosco antes de las seis
+job.krakow_antiquarian.client,"El señor Leopold, de 70 años, es anticuario."
+job.krakow_antiquarian.situation,"Leopold tiene una caja fuerte antigua de combinación, pero también quiere abrir la caja de caudales de un cliente. Esa segunda caja no es suya."
+job.krakow_antiquarian.title,La caja fuerte del anticuario
+job.krakow_tenement_gate.client,La señora Wanda administra una casa de vecinos de 1890 en Kazimierz y guarda los acuerdos de los residentes en una carpeta.
+job.krakow_tenement_gate.situation,"La cerradura de la antigua verja se atascó tras la lluvia, con la llave aún dentro. No se puede perforar ni modificar la verja protegida."
+job.krakow_tenement_gate.title,La verja de Kazimierz
+job.liege_bakery.client,"Nadia, de 29 años, se hizo cargo de la panadería de su tío y prepara gofres con azúcar perlado."
+job.liege_bakery.situation,La cerradura de la puerta trasera de la panadería se bloqueó cuando una llave equivocada activó su detector. Son las 3:50 de la madrugada y la masa está fermentando.
+job.liege_bakery.title,La panadería a las cuatro
+job.museum_time_lock.client,La doctora Anna Rygiel es conservadora del Museo de Tecnología del Puerto. Lleva guantes de algodón hasta para tomar café.
+job.museum_time_lock.situation,La cerradura de tiempo con mecanismo de relojería de una antigua cámara acorazada se ha quedado bloqueada. El museo necesita la placa que hay dentro para una exposición.
+job.museum_time_lock.title,El reloj que vigila la cámara acorazada
+job.newlyweds_4am.client,Kasia y Bartek: ella con el velo torcido y él con el ramo.
+job.newlyweds_4am.situation,"Las llaves están en el bolso de la dama de honor, que ya se ha marchado en coche a Kalisz. La tarta nupcial está en el felpudo."
+job.newlyweds_4am.title,"Las cuatro, tras la boda"
+job.night_nurse.client,"Agnieszka, de 45 años, es enfermera de medicina interna y lleva una chaqueta encima del uniforme."
+job.night_nurse.situation,"Tras un turno de noche de doce horas, Agnieszka se ha dejado la llave en la taquilla del hospital. Son las 7:20 de la mañana."
+job.night_nurse.title,Después de un turno de doce horas
+job.pizzeria_pays_pizza.client,"La señora Renata, de 52 años, es dueña de la pizzería «U Renaty». Habla deprisa y lleva harina hasta en los codos."
+job.pizzeria_pays_pizza.situation,El cuarto trasero se cerró solo a las 23:30. Dentro están la masa para mañana y la caja registradora. Renata ofrece pagar con pizzas.
+job.pizzeria_pays_pizza.title,Pago en pizzas
+job.refuse_aunt_alive.client,Una mujer de unos treinta años que dice ser la única heredera.
+job.refuse_aunt_alive.situation,"Afirma que su tía ha muerto y quiere asegurar el piso, pero no tiene documentación sucesoria. Una vecina escucha la conversación."
+job.refuse_aunt_alive.title,La tía que está tan campante
+job.refuse_ex_partner.client,"Darek, de unos 40 años, está alterado y no deja de poner el móvil boca abajo."
+job.refuse_ex_partner.situation,"Quiere entrar en el piso de su expareja a recoger sus cosas. En el buzón figura un solo apellido, y no es el suyo."
+job.refuse_ex_partner.title,"«La mitad es mía, de todos modos»"
+job.refuse_rush_bribe.client,Un hombre trajeado que habla deprisa y no pierde la cortesía.
+job.refuse_rush_bribe.situation,"A la una de la madrugada quiere entrar en el piso de su hermana, que está en el extranjero. Ella no responde y él ofrece más dinero para saltarse las comprobaciones."
+job.refuse_rush_bribe.title,«Mi hermana me ha dicho que sí»
+job.student_dorm.client,"Zuzanna, de 20 años, estudia Conservación del Patrimonio y lleva una bolsa de pinceles."
+job.student_dorm.situation,"Su llave y su carné de estudiante están dentro de la habitación 412. Su compañera no está; el portero tiene la lista de residentes, pero ninguna llave de repuesto."
+job.student_dorm.title,Habitación 412
+job.swiatniki_journeyman_padlock.client,"El señor Władysław, de 84 años, aprendió el oficio de cerrajero en Świątniki en los años cincuenta."
+job.swiatniki_journeyman_padlock.situation,"Fabricó el candado como pieza de examen de oficial. Su nieto perdió la única llave. Władysław conoce la respuesta, pero quiere poner a prueba a los jóvenes."
+job.swiatniki_journeyman_padlock.title,El candado de oficial de Władysław
+job.time_capsule.client,"La señora Jadwiga, maestra jubilada, se ha reunido con veinte antiguos alumnos que ahora rondan los treinta."
+job.time_capsule.situation,La clase de 3.º B enterró una cápsula del tiempo en 2001. La señora Jadwiga olvidó la combinación y el colegio ha autorizado abrirla con todos presentes.
+job.time_capsule.title,La cápsula del tiempo de 3.º B
+job.uncle_safe_heirs.client,"Los hermanos Ewa, Marek y Piotr, cada uno con su propia teoría sobre la caja fuerte."
+job.uncle_safe_heirs.situation,"Los tres herederos comparten la caja fuerte del tío Bogdan. Marek quiere abrirla ya, pero Ewa está de camino. Deben ponerse de acuerdo antes de empezar."
+job.uncle_safe_heirs.title,La caja fuerte del tío Bogdan
+job.widow_bureau.client,"La señora Irena, de 79 años, bibliotecaria jubilada, enviudó hace un año."
+job.widow_bureau.situation,"La señora Irena conserva el escritorio de su difunto marido, pero le falta la pequeña llave. Quiere abrirlo sin perforarlo ni dejar marcas."
+job.widow_bureau.title,El escritorio
+job.wrong_floor.client,"El señor Kazimierz, de 60 años, vuelve muy animado del santo de su cuñado."
+job.wrong_floor.situation,Está un piso por debajo del suyo.
+job.wrong_floor.title,Un piso más abajo
+showcase.amen_padlock.body,"Incluso las cerraduras con anillos giratorios de letras llegaron a la literatura. El historiador de la tecnología del siglo XIX Charles Tomlinson citó una obra atribuida a Beaumont y Fletcher que menciona una cerradura abierta con la palabra AMEN. Una imagen parecida aparece en la poesía de Thomas Carew. Son huellas de la vida cultural de estas cerraduras, aunque las citas aún deben contrastarse con ediciones críticas."
+showcase.amen_padlock.title,Una cerradura con la palabra AMEN
+showcase.barron_1778.body,"En 1778, el cerrajero londinense Robert Barron patentó una importante mejora de la cerradura de palancas. En su diseño, el pestillo seguía bloqueado si los elementos pertinentes se movían demasiado poco o demasiado. Fue un avance significativo en la evolución de estas cerraduras. La precisión se había ganado un lugar en la historia."
+showcase.barron_1778.title,Ni demasiado abajo ni demasiado arriba
+showcase.bramah_window.body,"Joseph Bramah patentó su cerradura en 1784. Más tarde, un candado expuesto en el escaparate de su tienda de Piccadilly desafiaba a cualquiera a abrirlo, con un premio de 200 guineas. El Science Museum fecha el candado conservado del desafío en 1801. El reto duró medio siglo, hasta que se resolvió en 1851. Una publicidad de paciencia admirable."
+showcase.bramah_window.title,El candado del desafío
+showcase.chubb_detector.body,"En 1818, Jeremiah Chubb patentó una cerradura de palancas con un detector capaz de señalar un intento de manipulación del mecanismo. No fue el primero en pensar en esa advertencia: la patente de Ruxton data de 1816. Su diseño se hizo conocido y ayudó a llevar la seguridad de las cerraduras al debate público."
+showcase.chubb_detector.title,La cerradura que avisa
+showcase.egyptian_name.body,"Las cerraduras de madera con cerrojo y pasadores suelen llamarse egipcias. Los viajeros del siglo XIX vieron dispositivos semejantes en Egipto, pero eso no demuestra dónde surgió la idea. Ya en 1883 Augustus Pitt-Rivers señaló lagunas en las pruebas antiguas. Se conocen mecanismos relacionados en Oriente Próximo y en el mundo romano. El nombre es más corto que la historia."
+showcase.egyptian_name.title,¿Por qué llamarla egipcia?
+showcase.henriksson_disc.body,"A principios del siglo XX, el mecánico de precisión finlandés Emil Henriksson desarrolló una cerradura basada en discos giratorios. Según un relato posterior, la idea surgió mientras reparaba una caja registradora en 1907. Obtuvo una patente en 1919. En esta familia de mecanismos, los elementos giratorios sustituyen a los conjuntos de pasadores con muelle. La historia de su origen es casi tan pulcra como la idea."
+showcase.henriksson_disc.title,Una idea de discos giratorios
+showcase.hobbs_51_hours.body,Alfred C. Hobbs afrontó el desafío del candado de Bramah en el verano de 1851. Los árbitros registraron 51 horas de trabajo repartidas entre 16 jornadas. Su éxito le valió el premio prometido de 200 guineas. El candado y su historia acabaron entrando en una colección museística. Dieciséis jornadas pueden parecer muchas. También medio siglo de espera.
+showcase.hobbs_51_hours.title,51 horas en 16 días
+showcase.hobbs_westminster.body,"En 1851, Alfred C. Hobbs cuestionó la creencia de que las mejores cerraduras de Londres eran invencibles. La prueba presenciada de mayor repercusión se celebró el 22 de julio en Great George Street, Westminster, no en el recinto de la Gran Exposición. Según la declaración firmada, tardó 25 minutos en abrirla y siete en volver a cerrarla. Aquello desató una célebre polémica pública."
+showcase.hobbs_westminster.title,Veinticinco minutos en Westminster
+showcase.khorsabad_gate.body,"En la década de 1840, Paul-Émile Botta investigó Dur-Sharrukin, la capital asiria construida bajo Sargón II a finales del siglo VIII a. C. Joseph Bonomi describió una de sus puertas como protegida por una gran cerradura de madera. La cerradura no se conserva; la conocemos por una descripción escrita. El arqueólogo Daniel Potts rastreó la afirmación, tan repetida, de los 4000 años hasta un error de datación. Unos 2700 años ya impresionan bastante."
+showcase.khorsabad_gate.title,La puerta de Dur-Sharrukin
+showcase.krakow_guild_seal.body,"Los cerrajeros y relojeros de Cracovia compartieron gremio durante muchos años. El rey Vladislao IV confirmó sus estatutos en 1633. El sello histórico del gremio mostraba una cerradura, una esfera de reloj, llaves y una serpiente coronada. Según unos versos recogidos en el libro gremial, la serpiente simbolizaba la agudeza mental. Los relojeros no formaron su propio gremio hasta 1797."
+showcase.krakow_guild_seal.title,La serpiente coronada
+showcase.roman_ring_key.body,"El Victoria and Albert Museum conserva un anillo de bronce del siglo III cuyo engaste tiene forma de llave. Se han hallado anillos parecidos en Londres, Colchester y Pompeya. La variedad de sus paletones sugiere que abrían algo de verdad, probablemente pequeños cofres de joyas. El museo plantea con cautela que quizá los llevasen mujeres, tal vez después de casarse. El London Museum añade una razón práctica: en la Britania romana, un anillo con llave permitía llevarla siempre a mano, cuando los bolsillos cosidos aún eran poco habituales."
+showcase.roman_ring_key.title,Una llave en el dedo
+showcase.roman_wards.body,"Los romanos utilizaban diversos cerrojos y cerraduras. Las llaves conservadas de Pompeya y Herculano también apuntan a mecanismos de guardas, en los que unos obstáculos internos fijos exigían una llave con la forma adecuada. También conocían los mecanismos de pasadores. No había una única solución romana, sino todo un oficio."
+showcase.roman_wards.title,Las guardas romanas
+showcase.sargent_time_lock.body,"James Sargent desarrolló una cerradura de tiempo para cámaras acorazadas bancarias en la década de 1870. Solicitó una patente en 1873 y su cerradura se instaló en un banco de Morrison, Illinois, en 1874. El mecanismo de relojería impedía abrir la cámara antes de la hora fijada, incluso a quien conociera la combinación. La idea de fondo era más antigua, pero estos dispositivos empezaban a extenderse."
+showcase.sargent_time_lock.title,La cerradura que sabe la hora
+showcase.stansbury_1805.body,"Ya en 1805, Abraham O. Stansbury obtuvo una patente británica para una cerradura con pasadores accionados por muelles. Charles Tomlinson la describió como una evolución de la antigua cerradura de pasadores de madera. El camino hacia la posterior cerradura de cilindro tuvo más de un protagonista. La historia de la tecnología rara vez cabe en un solo héroe."
+showcase.stansbury_1805.title,Un precursor olvidado
+showcase.swiatniki_armourers.body,"Świątniki Górne, cerca de Cracovia, surgió de un asentamiento vinculado al servicio de la catedral de Wawel. Durante siglos florecieron allí la forja y la fabricación de armaduras. Al disminuir la demanda de armaduras tradicionales a finales del siglo XVIII, los artesanos locales se dedicaron cada vez más a las cerraduras y los candados. Cambió el producto; el conocimiento del hierro permaneció."
+showcase.swiatniki_armourers.title,De las armaduras a los candados
+showcase.swiatniki_school.body,"La decisión de fundar una escuela de cerrajería en Świątniki Górne se tomó en 1887 y las clases comenzaron en 1888. En 1891, la escuela y una empresa local recibieron un pedido de 500 candados en una exposición de Viena. Durante generaciones se enseñó allí a trabajar el metal. Hoy, el Museo de Cerrajería Marcin Mikuła conserva la historia del oficio local. Aquellas lecciones tenían peso de verdad."
+showcase.swiatniki_school.title,Una escuela para cerrajeros
+showcase.wroclaw_iron_world.body,"En 2022, el Museo Nacional de Breslavia presentó Mundo de hierro, una exposición de cerraduras, llaves y otros trabajos históricos en metal. Entre las piezas había una cerradura de caja fabricada en 1720 por el maestro de Breslavia Albert Nicolaus Spihrman. Según el museo, es la única cerradura de su colección que muestra juntos la fecha, el nombre del fabricante y el lugar de fabricación. El viejo artesano dejó una firma poco habitual por su claridad."
+showcase.wroclaw_iron_world.title,La única firmada
+showcase.yale_dial.body,"Los diseñadores de sistemas de seguridad bancaria del siglo XIX intentaban reducir la dependencia del ojo de una cerradura tradicional. Linus Yale Jr. trabajó en cerraduras bancarias desde la década de 1850, mientras que los diseños accionados mediante dial evolucionaron durante la década siguiente. Eliminar el ojo de la cerradura no garantizaba una seguridad perfecta. Cambiaba los problemas que debía resolver el diseñador."
+showcase.yale_dial.title,Sin ojo de cerradura
+showcase.yale_flat_key.body,"A mediados del siglo XIX, Linus Yale Jr. contribuyó a convertir voluminosos mecanismos de cierre en dispositivos cotidianos más cómodos. Una patente del 27 de junio de 1865 documenta uno de sus diseños. La llave pequeña y plana se convirtió en símbolo de esta nueva concepción de las cerraduras de cilindro. Murió en 1868 y dejó ideas que otros desarrollarían durante generaciones."
+showcase.yale_flat_key.title,La pequeña llave plana
+showcase.yale_senior.body,"Linus Yale Sr. dirigía un taller de cerraduras en Newport, estado de Nueva York. Trabajó, entre otras cosas, en la seguridad bancaria, y una patente de 1857 conserva tanto su nombre como su ubicación. Su hijo, también llamado Linus, desarrolló después sus ideas. En aquel taller familiar se heredaban tanto las preguntas como las herramientas."
+showcase.yale_senior.title,Un taller en el estado de Nueva York
+tool.tw_angle.name,Tensor acodado
+tool.tw_bar.name,Tensor de barra
+tool.tl_shackle.name,Extractor de arco
+tool.pk_peg.name,Elevador de espigas
+tool.pk_hook.name,Ganzúa de gancho
+tool.pk_ward.name,Sonda de guardas
+tool.pk_ripple.name,Ganzúa ondulada
+tool.pk_wedge.name,Cuña doble
+tool.pk_lever.name,Manivela de palancas
+tool.pk_crown.name,Ganzúa de corona
+tool.tl_polar.name,Sonda de polaridad
+tool.pk_flag.name,Ganzúa de bandera
+tool.pk_plunger.name,Émbolo de ranura
+tool.pk_disc.name,Girador de discos
+tool.pk_feather.name,Pluma lateral
+tool.tl_cup.name,Copa de escucha
+tool.tl_notes.name,Cuaderno de contactos
+tool.kit_clock.name,Juego de relojero
+tool.tl_drill.name,Taladro
+cast.agnieszka.name,Agnieszka
+cast.aino.name,Aino
+cast.bartek.name,Bartek
+cast.bride.name,La novia
+cast.captain.name,Capitán
+cast.claimant.name,Mujer ante la puerta
+cast.darek.name,Darek
+cast.edek.name,"Señor Edek, portero"
+cast.ewa.name,Ewa
+cast.gosia.name,Gosia
+cast.halina.name,Señora Halina
+cast.hall_manager.name,Encargado del local de ensayo
+cast.hania.name,Hania
+cast.headteacher.name,Director del colegio
+cast.iga.name,Iga
+cast.irena.name,Señora Irena
+cast.jacques.name,Monsieur Jacques
+cast.jadwiga.name,Señora Jadwiga
+cast.kazimierz.name,Señor Kazimierz
+cast.krysia.name,Señora Krysia
+cast.krystyna.name,Señora Krystyna
+cast.kuba.name,Kuba
+cast.lena.name,Agente Lena Sowa
+cast.leopold.name,Señor Leopold
+cast.locksmith.name,Cerrajero
+cast.magda.name,Magda
+cast.marek.name,Marek
+cast.marta.name,Marta
+cast.martine.name,Madame Martine
+cast.mietek.name,Señor Mietek
+cast.nadia.name,Nadia
+cast.neighbour_lucyna.name,Vecino de la señora Lucyna
+cast.neighbour_robe.name,Vecino en bata
+cast.ola.name,Ola
+cast.pieter.name,Hermano Pieter
+cast.piotr.name,Piotr
+cast.renata.name,Señora Renata
+cast.roman.name,"Señor Roman, administrador"
+cast.rygiel.name,Doctora Anna Rygiel
+cast.stefan.name,Señor Stefan
+cast.stranger.name,Hombre de traje
+cast.teresa.name,Señora Teresa
+cast.tomasz.name,Tomasz
+cast.waldek.name,Señor Waldek
+cast.wanda.name,Señora Wanda
+cast.wladyslaw.name,Señor Władysław
+cast.zbyszek.name,Señor Zbyszek
+cast.zosia.name,Señora Zosia
+cast.zuzanna.name,Zuzanna
+job.allotment_shed.line.1,La parcela está a nombre de mi mujer. Yo cavo. Ella descansa la rodilla en casa.
+job.allotment_shed.line.2,¿Tienes la tarjeta del huerto? ¿Y algún vecino que pueda dar fe?
+job.allotment_shed.line.3,Zbyszek lleva aquí más tiempo que ese cobertizo. Más que yo.
+job.allotment_shed.line.4,¿Qué te parecen unos pepinillos? Nunca llevo efectivo al huerto.
+job.allotment_shed.note,El cobertizo del señor Zbyszek. La parcela estaba a nombre de su mujer. Misterio resuelto. Cobré en pepinillos.
+job.bike_interview.line.1,Lo cambié por un código más seguro. Tan seguro que ni yo lo sé.
+job.bike_interview.line.2,La bici está en la calle. ¿Tienes algo que demuestre que es tuya?
+job.bike_interview.line.3,Una foto de vacaciones y el recibo en mi correo. La bici sale mejor que yo.
+job.bike_interview.line.4,Con eso basta. Arréglate la corbata mientras trabajo.
+job.bike_interview.note,El candado de la bici de Kuba. Foto y recibo coinciden. Corbata enderezada dos veces. Autobús a las 8:52.
+job.bramah_bureau.line.1,"La factura de la subasta, el anuncio y las fotos. La cerradura debe quedar intacta."
+job.bramah_bureau.line.2,Una cerradura así estuvo expuesta en Londres. Ofrecían un premio.
+job.bramah_bureau.line.3,¿Alguien logró abrirla?
+job.bramah_bureau.line.4,Alguien lo consiguió más de sesenta años después. Te diré quién cuando acabe.
+job.bramah_bureau.note,El escritorio de Gosia. Factura y posesión acreditadas. Cerradura original intacta. Le conté lo de Piccadilly.
+job.brussels_townhouse.line.1,Estoy en el balcón como Julieta. Solo que Romeo tiene sesenta años y la llave de la verja.
+job.brussels_townhouse.line.2,Madame Magda lleva aquí toda la vida. Depuis toujours.
+job.brussels_townhouse.line.3,"Contrato, dirección municipal y un vecino. Basta. No se asome a la barandilla."
+job.brussels_townhouse.line.4,Geranios regados. Misión cumplida.
+job.brussels_townhouse.note,"Saint-Gilles. Otro país, la misma norma. Contrato, municipio, Monsieur Jacques. Los geranios están bien."
+job.cat_bathroom.line.1,Lo hizo adrede. Me miró a los ojos al saltar sobre la manilla.
+job.cat_bathroom.line.2,Es tu casa y él está en el baño. Esta vez no hacen falta papeles.
+job.cat_bathroom.line.3,¿Y si se asusta?
+job.cat_bathroom.line.4,Sigue hablándole. Haré menos ruido que él.
+job.cat_bathroom.note,"Patata, el gato. Marta estaba en casa; no hizo falta comprobar nada. Él no se disculpó. Ella pondrá un cartel nuevo."
+job.charleroi_letters.line.1,"Llamo para pedir consejo, no una apertura. La señora Martine tiene la caja del abuelo."
+job.charleroi_letters.line.2,C'est à votre famille. Solo la he cuidado.
+job.charleroi_letters.line.3,¿La ha cuidado durante setenta años?
+job.charleroi_letters.line.4,Las dos estáis de acuerdo en abrirla. La comprobación de permiso más fácil de mi carrera.
+job.charleroi_letters.note,Charleroi. Caja del abuelo Józef. La guardó Martine. Ambas querían abrirla. Lloré por primera vez trabajando. Un poco.
+job.dollhouse_wooden_lock.line.1,Lala lleva encerrada desde el martes. Se aburre.
+job.dollhouse_wooden_lock.line.2,El abuelo la llamaba cerradura egipcia. No sé cuánto hay de cierto.
+job.dollhouse_wooden_lock.line.3,El nombre se quedó. La historia real es mejor. Te la cuento al terminar.
+job.dollhouse_wooden_lock.line.4,¿Harás una llave nueva? ¿De madera? Papá tiene una tabla.
+job.dollhouse_wooden_lock.note,La casa de muñecas del bisabuelo. Cerradura de pasadores de madera. Lala liberada. Tomasz tallará otra llave; Hania supervisa.
+job.drummer_locker.line.1,"Podría tocar con cucharas, pero preferiría no hacerlo. Actuamos dentro de una hora."
+job.drummer_locker.line.2,Iga alquila la taquilla ocho. Paga cada mes. Lo tengo anotado.
+job.drummer_locker.line.3,Tu cuaderno basta. El señor Edek dice que lo apuntas todo.
+job.drummer_locker.line.4,"Si llegas a tiempo, tocaremos una para ti. Bien alto."
+job.drummer_locker.note,"Taquilla 8, local de ensayo. El encargado tenía un cuaderno como el mío. Me dedicaron una canción. Bien alta."
+job.finnish_sailor.line.1,En Finlandia todo el mundo tiene un candado así. Nadie lo abre sin llave.
+job.finnish_sailor.line.2,El arcón es de Aino. Yo respondo por ella. Zarpamos mañana a las seis.
+job.finnish_sailor.line.3,El capitán responde por ella y su libreta marítima coincide. Echemos un vistazo.
+job.finnish_sailor.line.4,"Si lo abres, te contaré de dónde salió este invento."
+job.finnish_sailor.note,"Aino, barco finlandés. Capitán y libreta marítima, comprobados. Antes de las seis. Ahora tengo un cucharón de abedul en el taller."
+job.ghent_beguinage.line.1,Mi polaco se limita a «dzień dobry» y «pierogi».
+job.ghent_beguinage.line.2,Eso ya es medio idioma.
+job.ghent_beguinage.line.3,Una carta del consejo parroquial. Mi predecesor se llevó la llave al cielo.
+job.ghent_beguinage.line.4,"Sin dejar marcas, lo prometo. Esta cerradura es más vieja que mi edificio."
+job.ghent_beguinage.note,Beguinaje de Gante. Carta parroquial y palabra del hermano Pieter. Sin marcas. Ahora sabe decir «rosół».
+job.grandma_broth.line.1,"Solo salí un momento, cariño. A tirar la basura."
+job.grandma_broth.line.2,He cortado el gas desde el rellano. Llevamos cuarenta años siendo vecinas.
+job.grandma_broth.line.3,Eso ayuda. ¿Y la carta del buzón va dirigida a usted?
+job.grandma_broth.line.4,Los fideos los hice yo. Hay un plato para ti y no admito discusiones.
+job.grandma_broth.note,"Señora Halina, centro. La señora Zosia confirma cuarenta años de vecindad. El caldo se redujo. Me tomé un plato."
+job.grandpa_chest.line.1,Papá nunca dijo qué guardaba ahí. Ni siquiera a nosotras.
+job.grandpa_chest.line.2,"Mamá, no pregunta por el arcón. Pregunta si la casa es tuya."
+job.grandpa_chest.line.3,"Es mía. La escritura está en la cómoda, debajo del mantel."
+job.grandpa_chest.line.4,"Cartas. De Charleroi. Para la abuela, en polaco y con sellos belgas."
+job.grandpa_chest.note,"El arcón del abuelo Józef. La escritura bajo el mantel, como siempre. Dentro, cartas de Bélgica. Ola dice que irá."
+job.kiosk_shutter.line.1,Ese candado lleva aquí treinta y dos años. Nunca lo he engrasado.
+job.kiosk_shutter.line.2,La señora Krysia responde por usted. Aquí está la carta del proveedor. Falta una cosa.
+job.kiosk_shutter.line.3,"Del día de la inauguración, en el 94. Mi bigote estaba mejor que el quiosco."
+job.kiosk_shutter.line.4,Stefan lleva aquí más que la parada. Hasta los autobuses lo conocen.
+job.kiosk_shutter.note,"Quiosco del señor Stefan. Por ser un negocio, pedí más pruebas. Foto de 1994, bigote auténtico. Prensa gratis esta semana."
+job.krakow_antiquarian.line.1,La caja fuerte es mía. Alquilo al ayuntamiento. El dueño del café puede confirmarlo.
+job.krakow_antiquarian.line.2,"Y ya que estás, esta cajita. Un cliente la dejó para tasarla."
+job.krakow_antiquarian.line.3,La caja fuerte sí. La caja no. Necesito que esté presente su dueño.
+job.krakow_antiquarian.line.4,Tienes razón. Me hago viejo. E impaciente.
+job.krakow_antiquarian.note,"Señor Leopold. La caja fuerte era suya, la otra no. Un encargo, dos decisiones. Y una historia sobre el gremio."
+job.krakow_tenement_gate.line.1,El técnico de patrimonio dijo que ni un agujero. Ni uno.
+job.krakow_tenement_gate.line.2,Y con razón. Alguien trabajó duro en esto hace ciento treinta años.
+job.krakow_tenement_gate.line.3,Hola de nuevo. Ahora soy becaria aquí. Aprobé el examen. La 412 ayudó.
+job.krakow_tenement_gate.line.4,La comunidad de propietarios lo aprobó. Aquí está la orden por escrito.
+job.krakow_tenement_gate.note,Una verja en Kazimierz. Primera resolución de propietarios de mi carrera. Quizá la enmarque. Zuzanna escribe más deprisa que yo.
+job.liege_bakery.line.1,Mi tío tenía treinta llaves y no etiquetó ninguna.
+job.liege_bakery.line.2,La cerradura notó la llave equivocada y se ofendió. Tampoco se le puede reprochar.
+job.liege_bakery.line.3,Documentos de traspaso y contrato de alquiler. La masa fermenta sin pedir permiso.
+job.liege_bakery.line.4,Los papeles están en regla. Te tomo la palabra con esos gofres de las seis.
+job.liege_bakery.note,"Lieja, 3:50. El detector hizo su trabajo. Traspaso en regla. Un gofre de azúcar perlado."
+job.museum_time_lock.line.1,No es cuestión de combinación. Es cuestión de tiempo.
+job.museum_time_lock.line.2,Una cerradura de tiempo no pregunta quién está ahí. Pregunta qué hora es.
+job.museum_time_lock.line.3,"Carta de la directora, acta de entrega. Todo por triplicado."
+job.museum_time_lock.line.4,"Doctora Rygiel, también tenemos guantes para el cerrajero. Talla L."
+job.museum_time_lock.note,"Museo de Tecnología. La doctora Rygiel archivó todo por triplicado. La cerradura cedió. Zuzanna está de prácticas, claro."
+job.newlyweds_4am.line.1,"Tengo el documento de identidad, pero sin dirección. Ya lo sé. Hoy es lo normal."
+job.newlyweds_4am.line.2,Mi domicilio registrado sale en la aplicación. ¿Ves? Con este velo es complicado.
+job.newlyweds_4am.line.3,Los conozco. Se han casado hoy. Todo el barrio oyó la fiesta.
+job.newlyweds_4am.line.4,Enhorabuena. En dos minutos estaréis en casa.
+job.newlyweds_4am.note,"Recién casados, 4:12. Dirección confirmada por la aplicación y un vecino en bata. Tarta de tres pisos. Probé un trozo."
+job.night_nurse.line.1,Doce horas en planta. Me he dejado la llave en la taquilla del hospital.
+job.night_nurse.line.2,"Señora Agnieszka, piso catorce. Tengo sus datos de alquiler en el sistema."
+job.night_nurse.line.3,El administrador lo confirma. El documento coincide. Dentro de nada estarás durmiendo.
+job.night_nurse.line.4,Perdona que no hable mucho. Ya estoy hablando dormida.
+job.night_nurse.note,"Señora Agnieszka, tras el turno de noche. Señor Roman al telefonillo, eficaz como siempre. Descuento de vecino, sin discusión."
+job.pizzeria_pays_pizza.line.1,El dinero está en la caja. La caja está dentro. Te pago en pizzas. ¿Cuánta hambre tienes?
+job.pizzeria_pays_pizza.line.2,"Primero el presupuesto; después, el menú. ¿Tienes el contrato de alquiler?"
+job.pizzeria_pays_pizza.line.3,La conozco desde hace veinte años. Mi kebab está al lado. Su margarita es arte.
+job.pizzeria_pays_pizza.line.4,"La masa sube. Yo me hundo. Con que acabes antes del alba, vale."
+job.pizzeria_pays_pizza.note,La pizzería de Renata. Contrato y vecino comprobados. Cobré en pizza margarita. La caja está en mi estantería.
+job.refuse_aunt_alive.after.1,La señora Lucyna vuelve el viernes. Entonces querrá que le cambie la cerradura.
+job.refuse_aunt_alive.after.2,Menos mal que dijiste que no. No habría pegado ojo.
+job.refuse_aunt_alive.line.1,La tía murió la semana pasada. Aún arreglan los papeles. Ha sido todo muy reciente.
+job.refuse_aunt_alive.line.2,¿La señora Lucyna? Está en un balneario. Llamó ayer. Ya se encuentra mejor.
+job.refuse_aunt_alive.line.3,Debo de haberme confundido con algo.
+job.refuse_aunt_alive.line.4,Llamemos juntos a la señora Lucyna. Después llamaremos a la agente Sowa.
+job.refuse_aunt_alive.note,La tía estaba viva y bien. La vecina apareció justo a tiempo. La señora Lucyna manda recuerdos desde el balneario.
+job.refuse_ex_partner.after.1,Gracias por llamar. Recogió sus cosas conmigo presente. La inquilina dio su consentimiento.
+job.refuse_ex_partner.after.2,Me enteré en la parada. Eres de fiar. ¿Un periódico?
+job.refuse_ex_partner.line.1,Viví aquí tres años. Tengo derecho a entrar y recoger mis cosas.
+job.refuse_ex_partner.line.2,Solo hay un nombre en el buzón y no es el tuyo. Llamaré al administrador.
+job.refuse_ex_partner.line.3,¿Para qué llamar al administrador? Esto es privado.
+job.refuse_ex_partner.line.4,No puedo abrir. Quizá la policía pueda ayudarte a recoger tus cosas. ¿Los llamo?
+job.refuse_ex_partner.note,"No abrí. Un nombre en la puerta, no el suyo. Lo dejé en manos de la agente Sowa. Sin remordimientos."
+job.refuse_rush_bribe.after.1,La hermana no sabía nada de esos documentos. Gracias por avisar.
+job.refuse_rush_bribe.after.2,Ayer un hombre trajeado preguntó por un cerrajero. Lo mandé a verte. Lo siento.
+job.refuse_rush_bribe.line.1,Te pago el doble. El triple. Pero sáltate los trámites.
+job.refuse_rush_bribe.line.2,Las comprobaciones no se venden. Llama a tu hermana; esperaré.
+job.refuse_rush_bribe.line.3,No contesta. No despertemos a los vecinos. No hace falta montar un circo.
+job.refuse_rush_bribe.line.4,"Buenas noches, entonces. Avisaré al agente de la zona."
+job.refuse_rush_bribe.note,"La una, un traje, prisas y dinero en vez de un testigo. No abrí. Lo comuniqué. Dormí tranquilo."
+job.student_dorm.line.1,Mi carné de estudiante está dentro. Y la llave también. Yo estoy en el pasillo.
+job.student_dorm.line.2,"Zuzanna Wilk, habitación 412. En mi lista y en mi cabeza."
+job.student_dorm.line.3,El señor Edek responde por ti. El nombre coincide. Vamos a entrar.
+job.student_dorm.line.4,Mañana tengo un examen sobre cerraduras históricas. ¿Esto cuenta como prácticas?
+job.student_dorm.note,"Habitación 412, residencia. El portero consultó la lista; el nombre coincidía. Zuzanna preguntó por todo."
+job.swiatniki_journeyman_padlock.line.1,Llevo setenta años guardándolo. Solo había una llave. Mi nieto la perdió.
+job.swiatniki_journeyman_padlock.line.2,¿Y usted sabe abrirlo?
+job.swiatniki_journeyman_padlock.line.3,Claro. Pero quiero ver si los jóvenes todavía saben.
+job.swiatniki_journeyman_padlock.line.4,Reconozco esa letra. Es de Henryk. Yo le enseñé. El cuaderno acabó en buenas manos.
+job.swiatniki_journeyman_padlock.note,"Señor Władysław, Świątniki. Reconoció la letra de Henryk en mi cuaderno. Le enseñó la primera regla."
+job.time_capsule.line.1,Sé que el código era una fecha. Pero ¿de quién?
+job.time_capsule.line.2,"El colegio da su permiso. Ábrela, por favor, delante de todos."
+job.time_capsule.line.3,"Seño, teníamos nueve años. Solo recuerdo recoger castañas."
+job.time_capsule.line.4,Mi carta decía: «Espero que tengas un perro». Tengo un gato. Cuenta.
+job.time_capsule.note,"Clase de 3.º B, bajo el castaño. Permiso del colegio, veinte testigos. Marta estuvo allí. Nota en casa: «Te espera el caldo»."
+job.uncle_safe_heirs.line.1,"Ábrela, yo miro y se lo cuento a los demás. Al final compartiremos."
+job.uncle_safe_heirs.line.2,La abriré cuando estén todos los herederos o tenga su consentimiento por escrito.
+job.uncle_safe_heirs.line.3,"Ewa llega dentro de una hora. Marek, pon el agua a hervir."
+job.uncle_safe_heirs.line.4,El tío se partiría de risa al vernos discutir por una caja con dial.
+job.uncle_safe_heirs.note,La caja fuerte del tío Bogdan. Esperé una hora a Ewa y tomé tres tés. Abrí ante todos. Sin enfados.
+job.widow_bureau.line.1,La señora Zosia dijo que usted no taladra. Mi marido no soportaba los taladros.
+job.widow_bureau.line.2,La abriré sin dejar marcas. Seguirá siendo su escritorio.
+job.widow_bureau.line.3,Entradas de ópera. De mil novecientos ochenta y siete.
+job.widow_bureau.line.4,Me dijo que las había perdido. Las había guardado.
+job.widow_bureau.note,"Señora Irena, por recomendación de la señora Zosia. Escritorio en su casa, sin marcas. Había entradas dentro. No pregunté."
+job.wrong_floor.after.1,¿Eres el cerrajero que no abrió mi puerta? Te hice un pastel. Por no abrirla.
+job.wrong_floor.line.1,La llave no entra. La cerradura se rompió mientras estaba fuera.
+job.wrong_floor.line.2,"Señor Kazimierz, el buzón tiene otro nombre. ¿Y esta corona?"
+job.wrong_floor.line.3,¿Quién anda ahí? Llevo doce años aquí. Yo mismo hice esa corona.
+job.wrong_floor.line.4,"Ah, la llave entra un piso más arriba. Ya lo has arreglado."
+job.wrong_floor.note,"El señor Kazimierz, después de una fiesta del santo. Piso equivocado. No abrí nada. Problema resuelto. Mejor trabajo de la semana."
+notebook.refuse.line,No puedo abrir esta. Pero puedo ayudar de otra manera.
+notebook.rule.1,Primero pregunta de quién es. Después mira la cerradura.
+notebook.rule.2,Un documento es una pista. Dos abren la conversación. Un vecino puede confirmar la historia.
+notebook.rule.3,Quien paga para evitar preguntas paga por la puerta de otro.
+notebook.rule.4,Da el presupuesto antes de empezar. Sin sorpresas en la factura.
+notebook.rule.5,"Lo que veo dentro, dentro se queda."
+tool.ob_loupe.name,Lupa de relojero
+tool.ob_microscope.name,Microscopio de banco
+tool.ob_borescope.name,Boroscopio
+ach.achievement.first_set.name,El primer clic
+ach.achievement.first_set.desc,Consigue tu primer asentamiento limpio fuera del tutorial.
+ach.achievement.first_open.name,Una puerta se abre
+ach.achievement.first_open.desc,Termina tu primera cerradura en el modo Continuo.
+ach.achievement.pin_school.name,Tres lecciones
+ach.achievement.pin_school.desc,Completa las tres lecciones de cerraduras de pernos.
+ach.achievement.wafer_school.name,La siguiente lección
+ach.achievement.wafer_school.desc,Completa las tres lecciones de cerraduras de láminas.
+ach.achievement.false_note.name,Dos notas
+ach.achievement.false_note.desc,Abre una cerradura de pernos tras oír un falso asentamiento.
+ach.achievement.after_drop.name,Vuelta al principio
+ach.achievement.after_drop.desc,Recupérate de una caída y abre sin romper ninguna ganzúa.
+ach.achievement.after_overset.name,Margen para recuperarse
+ach.achievement.after_overset.desc,Abre tras una sobrelevación sin romper ninguna ganzúa.
+ach.achievement.counter_sense.name,Una discusión en voz baja
+ach.achievement.counter_sense.desc,Termina una cerradura después de sentir su contrarrotación.
+ach.achievement.steel_warning.name,Aviso de acero
+ach.achievement.steel_warning.desc,Abre tras una advertencia de tensión sin romper la ganzúa.
+ach.achievement.clean_receipt.name,Sin marcas
+ach.achievement.clean_receipt.desc,Consigue el sello de trabajo limpio: sin caídas ni ganzúas rotas.
+ach.achievement.hard_clean.name,Un trabajo difícil y silencioso
+ach.achievement.hard_clean.desc,Abre una cerradura de nivel cinco o superior sin caídas ni ganzúas rotas.
+ach.achievement.pin_master.name,Paciencia de latón
+ach.achievement.pin_master.desc,Termina la quinta cerradura de pernos de nivel maestro sin romper la ganzúa.
+ach.achievement.wafer_master.name,Un conjunto silencioso
+ach.achievement.wafer_master.desc,Termina la tercera cerradura de láminas de nivel maestro sin romper la ganzúa.
+ach.achievement.wafer_clean.name,Nada se desprendió
+ach.achievement.wafer_clean.desc,Abre una cerradura de láminas sin caídas ni ganzúas rotas.
+ach.achievement.pin_plain.name,Un clic sincero
+ach.achievement.pin_plain.desc,Abre una cerradura de pernos de nivel tres sin falsos asentamientos ni sobrelevaciones.
+ach.achievement.first_gate.name,Una nota suave
+ach.achievement.first_gate.desc,Abre una cerradura de palancas tras alinear una muesca.
+ach.achievement.detector_return.name,Segunda oportunidad
+ach.achievement.detector_return.desc,Abre una cerradura con detector después de activarlo y restablecerlo.
+ach.achievement.ring_false.name,Una promesa a medias
+ach.achievement.ring_false.desc,Abre una cerradura de anillos tras un falso asentamiento.
+ach.achievement.wooden_creak.name,La madera vieja habla
+ach.achievement.wooden_creak.desc,Abre una cerradura de pasadores de madera tras oír cómo cruje.
+ach.achievement.iron_no_drop.name,La puerta de hierro
+ach.achievement.iron_no_drop.desc,Abre una cerradura de guardas sin dejar caer piezas.
+ach.achievement.lever_true.name,Sin falsas promesas
+ach.achievement.lever_true.desc,Abre una cerradura de palancas sin falsos asentamientos.
+ach.achievement.first_dark.name,Cuando se apaga la luz
+ach.achievement.first_dark.desc,Termina tu primera cerradura a oscuras.
+ach.achievement.dark_clean.name,Solo con el oído
+ach.achievement.dark_clean.desc,Abre una cerradura a oscuras sin caídas ni ganzúas rotas.
+ach.achievement.one_pick.name,Una en el estuche
+ach.achievement.one_pick.desc,Termina el desafío Una ganzúa sin perder la única que tienes.
+ach.achievement.daily_lock.name,La puerta de hoy
+ach.achievement.daily_lock.desc,Termina la cerradura diaria una vez. No hace falta mantener una racha.
+ach.achievement.timed_care.name,"Rápido, sin precipitarse"
+ach.achievement.timed_care.desc,Completa un desafío contrarreloj sin romper ninguna ganzúa.
+ach.achievement.bench_stop.name,Cinco en la hoja
+ach.achievement.bench_stop.desc,Alcanza la primera parada en el taller de un recorrido Continuo.
+ach.achievement.tool_care.name,Una reparación cuidadosa
+ach.achievement.tool_care.desc,Repara por primera vez una herramienta desgastada en el taller.
+ach.achievement.permission.name,Antes que la cerradura
+ach.achievement.permission.desc,Comprueba el derecho de entrada antes de abrir en tu primer encargo.
+ach.achievement.witness.name,Alguien puede confirmarlo
+ach.achievement.witness.desc,Termina un encargo después de que un testigo independiente confirme el acceso.
+ach.achievement.first_no.name,El no adecuado
+ach.achievement.first_no.desc,Rechaza un encargo cuando no se haya acreditado el derecho de entrada.
+ach.achievement.ex_partner.name,Esas no son tus llaves
+ach.achievement.ex_partner.desc,Resuelve el caso de la expareja sin abrir la puerta.
+ach.achievement.bribe.name,El silencio no tiene precio
+ach.achievement.bribe.desc,Rechaza un pago extra ofrecido para evitar la comprobación.
+ach.achievement.aunt_alive.name,La tía está bien
+ach.achievement.aunt_alive.desc,Cierra el caso de la tía sin abrir su propiedad.
+ach.achievement.wrong_floor.name,La planta correcta
+ach.achievement.wrong_floor.desc,Resuelve una llamada al piso equivocado sin abrir ninguna puerta.
+ach.achievement.heirs.name,Todos presentes
+ach.achievement.heirs.desc,Espera a que estén todos los herederos con derecho antes de abrir la caja fuerte.
+ach.achievement.partial_refusal.name,Solo lo acordado
+ach.achievement.partial_refusal.desc,"Abre la caja fuerte del cliente, pero rechaza abrir el cofre ajeno."
+ach.achievement.museum_papers.name,Por triplicado
+ach.achievement.museum_papers.desc,Abre la cámara del museo tras obtener la autorización institucional.
+ach.achievement.kazimierz.name,La vieja verja
+ach.achievement.kazimierz.desc,Termina el encargo de restauración documentado en la verja de Kazimierz.
+ach.achievement.capsule.name,Una última página
+ach.achievement.capsule.desc,Abre la cápsula del tiempo con permiso del colegio.
+tip.ethics_01,Primero pregunta de quién es la puerta. El mecanismo puede esperar.
+tip.ethics_02,No tener papeles no convierte a nadie en villano. Tampoco da permiso para entrar.
+tip.ethics_03,"Cuando alguien tiene prisa, las preguntas importan aún más."
+tip.ethics_04,Rechazar con educación también es parte del oficio. Algunas puertas deben seguir cerradas.
+tip.ethics_05,Un suplemento no sustituye al consentimiento del residente.
+tip.ethics_06,Una explicación a gritos sigue sin demostrar el derecho de entrada.
+tip.ethics_07,"Si la historia no cuadra, ofrece llamar al administrador del edificio."
+tip.ethics_08,"Una herencia requiere documentos y personas, no una mano impaciente."
+tip.ethics_09,"Vine por la cerradura, no por el contenido de una casa ajena."
+tip.ethics_10,Acordad el precio primero. Dejad las sorpresas para la tetera.
+tip.feel_01,Un clic claro y aislado y un doble clic apagado cuentan historias distintas.
+tip.feel_02,"El núcleo tiene su propia letra: un pequeño giro, otro más profundo y un retorno."
+tip.feel_03,El silencio también es un sonido. Sobre todo después de un golpe sordo.
+tip.feel_04,Un muelle puede quejarse sin estar roto. Yo también.
+tip.feel_05,"Un chirrido metálico que sube de tono es un aviso, no una fanfarria de victoria."
+tip.feel_06,El clic limpio es breve. El dudoso tiene eco.
+tip.feel_07,"Cuando el núcleo retrocede, sigue participando en la conversación."
+tip.feel_08,"Tres marcas de roce son una pista en este juego, no una nota en tu expediente."
+tip.feel_09,Un contorno puede romperse aunque la herramienta siga intacta.
+tip.feel_10,La pequeña cuña de luz dice más que una página de números.
+tip.feel_11,En este juego las piezas hablan tanto con el movimiento como con el sonido.
+tip.feel_12,Una fila de piezas que caen suena como la lluvia sobre el tejado del taller.
+tip.feel_13,Un asentamiento limpio es una nota. Uno falso insiste en un dúo.
+tip.feel_14,Algunos mecanismos hablan bajito. Eso no los hace sencillos.
+tip.feel_15,El golpe final de la puerta es el único aplauso que necesito.
+tip.workshop_01,El estuche de cuero nunca miente. Un bolsillo vacío está vacío.
+tip.workshop_02,Las herramientas recuerdan cada turno. Revisa los bordes al terminar.
+tip.workshop_03,Un banco ordenado no me convierte en genio. Me deja encontrar el lápiz.
+tip.workshop_04,Cinco marcas en la hoja de avisos significan que el taller está cerca.
+tip.workshop_05,El libro de cuentas recuerda mejor los encargos que las monedas.
+tip.workshop_06,No hay vergüenza en reparar una herramienta. Sí en olvidarse de revisarla.
+tip.workshop_07,"Un recibo es una pequeña promesa, escrita a lápiz y guardada con tinta."
+tip.workshop_08,Conservé el viejo cartel esmaltado. Todavía sabe volver a casa.
+tip.workshop_09,A veces el mejor recuerdo es un trabajo sin un solo arañazo.
+tip.dark_01,"Cuando se apaga la luz de la escalera, los sonidos tienen más espacio."
+tip.dark_02,"La oscuridad es otra forma de escuchar, no otro conjunto de reglas."
+tip.dark_03,El sonido más tenue no siempre es el menos importante.
+tip.dark_04,"Sin imagen, el mecanismo sigue teniendo ritmo."
+tip.dark_05,"He trabajado en pasillos oscuros. Después, la tetera siempre me encontraba."
+tip.dark_06,Un doble clic sigue siendo doble aunque nadie pueda verlo.
+tip.dark_07,El silencio no está vacío. Escucha cuánto dura.
+tip.dark_08,Puedes volver a encender la luz. No hay medalla por cansarse la vista.
+tip.people_01,"La señora Halina espera. Su caldo también, y tiene menos paciencia."
+tip.people_02,La versión de los hechos de un gato suele servir de poco. Pregunta a su dueña.
+tip.people_03,"A veces, un buen vecino es lo mejor que tiene un edificio."
+tip.people_04,El ascensor vuelve a estropearse. Al menos las escaleras siguen funcionando.
+tip.people_05,Un «buenos días» amable abre más conversaciones que cualquier herramienta.
+tip.people_06,Mi trabajo acaba en el umbral. Las historias ajenas continúan.
+tip.people_07,"Una enfermera agotada merece un pasillo tranquilo, no un discurso."
+tip.people_08,Toda puerta tiene dos lados. Recuerda a quien está al otro.
+tip.calm_01,La velocidad ayuda. Las prisas suelen hacer más ruido.
+tip.calm_02,Un error me enseña algo. Cuatro me dicen que prepare té.
+tip.calm_03,No hay nada heroico en acabar con el pulgar dolorido.
+tip.calm_04,"Es un juego de atención, no un concurso de apretar más fuerte."
+tip.calm_05,Una breve pausa cuesta menos que una herramienta rota.
+tip.calm_06,Un éxito discreto también cuenta. No hace falta público.
+tip.calm_07,"Mis mejores turnos acabaron con el banco ordenado, no con una historia espectacular."
+tip.calm_08,Una puerta terca no es un insulto personal. Lo he comprobado.
+tip.calm_09,Las buenas manos tienen paciencia. Y saben cuándo parar.
+tip.calm_10,"Cuando acabes, deja que la gente siga con su día."
+notebook.extra.false_set_streak,Tres dobles clics apagados seguidos. Los anoté. Parecían muy satisfechos consigo mismos.
+notebook.extra.counter_reply,El núcleo opuso resistencia. Escuché su opinión y terminé sin discutir.
+notebook.extra.overset_twice,Dos golpes sordos. Conseguí terminar. Al cuaderno le conté la versión educada.
+notebook.extra.three_drops,"Tres pequeños aludes, una puerta abierta. Ya tuve bastante ruido por hoy."
+notebook.extra.drop_then_set,Todo cayó y después volvió un clic limpio. Agradecí aquella segunda frase.
+notebook.extra.stress_no_break,El metal protestó dos veces. Lo escuché. La herramienta volvió a casa de una pieza.
+notebook.extra.one_break,Una ganzúa rota sobre el banco. La puerta se abrió. No es mi equilibrio favorito.
+notebook.extra.two_breaks,Dos ganzúas rotas y una puerta abierta. Volví a casa con menos de lo que llevaba.
+notebook.extra.near_shear,Cuatro susurros finos antes del golpe final. Casi le pedí a la cerradura que alzara la voz.
+notebook.extra.false_without_drop,"Dos falsas promesas, ninguna pieza caída. La puerta se abrió sin dar explicaciones."
+notebook.extra.dark_double,"A oscuras oí un doble clic. Anoté el sonido, no una suposición."
+notebook.extra.dark_drop,Algo cayó en la oscuridad. Reconocí el sonido antes de ver el hueco.
+notebook.extra.dark_failed,La luz volvió antes de que se abriera la puerta. Recogí el metal y cerré el cuaderno.
+notebook.extra.dark_clean,"Sin luz, sin piezas caídas y sin ganzúas rotas. El recibo quedó sospechosamente impecable."
+notebook.extra.serrations,Dos clics diminutos sin giro. He anotado cosas más ruidosas por menos.
+notebook.extra.spring_bounce,Los muelles traquetearon tres veces. Un mecanismo antiguo aún sabe protestar.
+notebook.extra.wafer_rattle,Las láminas sonaron como cubiertos en un cajón. La puerta acabó abriéndose.
+notebook.extra.wafer_overset,"Un golpe sordo de las láminas, sin reacción en cadena. Anoté la diferencia."
+notebook.extra.wood_creak,Los pasadores de madera crujieron dos veces. Dejé fuera de la comparación la silla del taller.
+notebook.extra.ward_scrapes,Tres raspaduras ásperas del hierro. Anoté el sonido y dejé la historia para el museo.
+notebook.extra.lever_false,Las palancas ofrecieron dos respuestas superficiales. Ninguna era el final.
+notebook.extra.lever_clear,Cada muesca dio una nota limpia. No hubo que dar excusas en el recibo.
+notebook.extra.detector_reset,El detector nos bloqueó y luego cedió. Conté ambos sonidos.
+notebook.extra.detector_failed,El detector tuvo la última palabra. Dejé el mecanismo en paz y anoté la negativa.
+notebook.extra.ring_clicks,Seis pequeños clics de los anillos. Una cerradura abierta. El pasillo por fin quedó en silencio.
+notebook.extra.ring_false,Los anillos ofrecieron dos muescas poco profundas. Mi nota fue breve; ellos no lo fueron.
+notebook.extra.gates_many,Tres muescas alineadas en un solo encargo. Un pequeño concierto sin petición de bis.
+notebook.extra.mixed_recovery,"Un golpe, una cascada y, después, la puerta abierta. Conservé el orden en mis notas."
+notebook.extra.worn_but_whole,"La herramienta se volvió áspera, pero no se rompió. Añadí una marca de reparación al total del día."
+notebook.extra.roll_empty,Se rompió la tercera ganzúa. Enrollé el estuche de cuero vacío y terminé el turno.
+cast.basia.name,Basia
+cast.elzbieta.name,"Elżbieta, administradora"
+cast.marcel.name,Marcel
+cast.norbert.name,Norbert
+job.community_notice_case.client,"Basia, secretaria de la comunidad de vecinos, junto a Elżbieta, administradora del edificio."
+job.community_notice_case.line.1,El turno de limpieza está listo. Solo el tablón se niega a mostrarlo.
+job.community_notice_case.line.2,Administro este edificio. Aquí está el acuerdo firmado por los vecinos.
+job.community_notice_case.line.3,Permiso y precio acordados. Abriré el tablón comunitario.
+job.community_notice_case.line.4,Primer aviso: el turno de limpieza. Una inauguración por todo lo alto.
+job.community_notice_case.note,"Casco antiguo, tablón comunitario. Administradora y acuerdo firmado; el turno de limpieza ya está expuesto."
+job.community_notice_case.situation,El tablón comunitario está cerrado. Los vecinos necesitan colocar el turno de limpieza de la sala común recién aprobada.
+job.community_notice_case.title,El tablón de anuncios
+job.edek_rehearsal_store.client,"El señor Edek, portero del campus, e Iga, del grupo de música estudiantil."
+job.edek_rehearsal_store.line.1,El almacén figura en mi lista. Era del antiguo teatro.
+job.edek_rehearsal_store.line.2,Vamos a tomar unas sillas prestadas. Esta vez nadie pidió tambores.
+job.edek_rehearsal_store.line.3,Tu registro y la carta de la universidad coinciden. Y también el importe.
+job.edek_rehearsal_store.line.4,Bien. Esperemos que las sillas lleven mejor el ritmo que el grupo.
+job.edek_rehearsal_store.note,Almacén del teatro universitario. Señor Edek y autorización de la universidad; sillas prestadas para la reunión vecinal.
+job.edek_rehearsal_store.situation,El viejo almacén teatral del campus guarda sillas plegables prometidas para una reunión del barrio. La universidad autorizó el préstamo.
+job.edek_rehearsal_store.title,Sillas para el ensayo
+job.gosia_workbench_drawer.client,"Gosia, de 36 años, restaura muebles y tiene un taller junto al puerto."
+job.gosia_workbench_drawer.line.1,Compré todo el banco de trabajo. El cajón no reconoce la factura.
+job.gosia_workbench_drawer.line.2,"Factura, foto de recogida y precio acordado. Todo en orden."
+job.gosia_workbench_drawer.line.3,"Por favor, no dejes marcas. El banco irá a la sala común."
+job.gosia_workbench_drawer.line.4,"De acuerdo. Por una vez, los papeles llegaron antes que yo."
+job.gosia_workbench_drawer.note,El cajón del banco de Gosia. Factura y foto de recogida. El banco irá a la sala común sin marcas.
+job.gosia_workbench_drawer.situation,Gosia compró un banco de trabajo antiguo con un cajón cerrado. Quiere donarlo a la sala común sin dañar la madera.
+job.gosia_workbench_drawer.title,El cajón del banco de trabajo
+job.halina_recipe_box.client,"La señora Halina, de 81 años, y su vecina, la señora Zosia."
+job.halina_recipe_box.line.1,Mi receta de pierogi está dentro. Solo recuerdo la palabra «puñado».
+job.halina_recipe_box.line.2,Es la caja de Halina. ¿Ves? Sale junto a su taza en esta foto.
+job.halina_recipe_box.line.3,"Foto, testigo y precio acordado. Podemos empezar."
+job.halina_recipe_box.line.4,Después resolveremos cuánto pesa un puñado. Es una disputa antigua.
+job.halina_recipe_box.note,"Señora Halina, caja de recetas. Foto y palabra de la señora Zosia. Precio acordado; sigue el debate sobre el puñado."
+job.halina_recipe_box.situation,Halina quiere su receta de pierogi para la nueva sala común. Perdió la llave de su antigua caja de recetas; Zosia tiene una foto.
+job.halina_recipe_box.title,Una caja de puñados
+job.krystyna_wooden_album.client,La señora Krystyna y su hija Ola traen fotografías de la familia.
+job.krystyna_wooden_album.line.1,Józef hizo esta caja de fotos. Creo que la llavecita era de madera.
+job.krystyna_wooden_album.line.2,Tenemos una foto suya sosteniéndola. Y la caja está en casa de mamá.
+job.krystyna_wooden_album.line.3,La foto y la palabra de su hija bastan. Anotaré el precio.
+job.krystyna_wooden_album.line.4,De acuerdo. Pero no preguntes qué ropa llevábamos.
+job.krystyna_wooden_album.note,La caja de madera de la señora Krystyna. Foto familiar y palabra de Ola. Eligieron las copias ellas mismas.
+job.krystyna_wooden_album.situation,"El difunto padre de Krystyna, Józef, fabricó una caja de fotos con cerradura de pasadores de madera. Quieren prestar algunas fotografías para la exposición de la sala común."
+job.krystyna_wooden_album.title,La caja de fotos de Józef
+job.marta_poster_studio.client,"Marta, de 34 años, diseñadora gráfica; Patata, el gato, supervisa."
+job.marta_poster_studio.line.1,Los carteles están dentro. Patata los vigila desde el lado equivocado.
+job.marta_poster_studio.line.2,El contrato coincide. Tu vecina confirma que este es tu estudio.
+job.marta_poster_studio.line.3,El gato no va a firmar. Tiene una política de privacidad bastante estricta.
+job.marta_poster_studio.line.4,No hace falta. El precio está acordado y los papeles bastan.
+job.marta_poster_studio.note,El estudio de Marta. Contrato y vecina. Carteles recuperados; Patata rechazó hacer declaraciones.
+job.marta_poster_studio.situation,"Los carteles de la sala común están encerrados en el estudio alquilado de Marta. Dentro están la llave, las copias y su gato."
+job.marta_poster_studio.title,Carteles detrás de la puerta
+job.refuse_sisters_flat.after.1,Hablé con la inquilina. Nos pidió que esperáramos a su regreso.
+job.refuse_sisters_flat.client,"Norbert, de 43 años, está preocupado por las plantas de su hermana."
+job.refuse_sisters_flat.line.1,Mi hermana está fuera. Sus plantas se secarán y no contesta.
+job.refuse_sisters_flat.line.2,Podemos esperar su permiso o preguntar al administrador.
+job.refuse_sisters_flat.line.3,Prefiero no involucrar a los vecinos. Solo son flores.
+job.refuse_sisters_flat.line.4,No puedo abrir sin su consentimiento. Aquí tienes el teléfono del administrador.
+job.refuse_sisters_flat.note,No abrí el piso de la hermana de Norbert. Sin consentimiento de la inquilina. Le di el teléfono del administrador.
+job.refuse_sisters_flat.situation,"Su hermana está fuera y no responde. Norbert quiere que abran el piso para regar las plantas, pero no puede demostrar que ella lo autorice."
+job.refuse_sisters_flat.title,Flores tras una puerta cerrada
+job.refuse_unapproved_stockroom.after.1,Recogieron los paquetes esta mañana. Ahora la tienda tiene mejores horarios de entrega.
+job.refuse_unapproved_stockroom.client,"Marcel, de 29 años, es repartidor y lleva una carretilla llena de paquetes."
+job.refuse_unapproved_stockroom.line.1,"La entrega está aquí, en mi carretilla. El dueño de la tienda no contesta."
+job.refuse_unapproved_stockroom.line.2,Un albarán no autoriza a entrar en la tienda.
+job.refuse_unapproved_stockroom.line.3,¿Podrías abrir solo un poco para dejar los paquetes dentro?
+job.refuse_unapproved_stockroom.line.4,"Sin permiso, no. Mejor organicemos una entrega segura."
+job.refuse_unapproved_stockroom.note,Almacén del Mercado Nocturno. Albarán sin consentimiento del dueño. Paquetes entregados por la mañana.
+job.refuse_unapproved_stockroom.situation,"Una tienda del Mercado Nocturno está cerrada. Marcel pide abrir el almacén para dejar paquetes, sin autorización del propietario."
+job.refuse_unapproved_stockroom.title,Entrega después del cierre
+job.roman_service_cupboard.client,"El señor Roman, de 58 años, administra el complejo de viviendas."
+job.roman_service_cupboard.line.1,Los vecinos votaron donar los números. El armario no se ha enterado.
+job.roman_service_cupboard.line.2,Tengo el registro y el acuerdo firmado. El precio está acordado.
+job.roman_service_cupboard.line.3,"Con cuidado, por favor. Son los únicos números sin faltas de ortografía."
+job.roman_service_cupboard.line.4,Cuidaré el esmalte. Sobre el papeleo no prometo nada.
+job.roman_service_cupboard.note,"Urbanización Soleada, armario de mantenimiento. Señor Roman y votación firmada. Los viejos números irán a la sala común."
+job.roman_service_cupboard.situation,Los vecinos votaron donar los antiguos números esmaltados de sus puertas a la nueva sala común. El armario de mantenimiento cerrado tiene otros planes.
+job.roman_service_cupboard.title,El armario de la escalera
+job.shared_room_door.after.1,Nadie perdió una llave en la primera reunión. Buen comienzo.
+job.shared_room_door.client,"Elżbieta, administradora del edificio, acompañada por Marta y la señora Halina."
+job.shared_room_door.line.1,Acuerdo firmado y lista de vecinos autorizados. Estas puertas son comunitarias.
+job.shared_room_door.line.2,Los documentos coinciden. El precio también. Podemos abrir.
+job.shared_room_door.line.3,He traído el cartel. Patata lo aprobó durmiendo encima.
+job.shared_room_door.line.4,Y yo he traído pierogi. La puerta puede esperar. Ellos no.
+job.shared_room_door.note,"Casco antiguo, sala común. Votación firmada, administradora y testigo. Llegaron primero las sillas, las fotos y los pierogi."
+job.shared_room_door.situation,"Tras la votación de los vecinos, Elżbieta autoriza abrir la antigua sala común. Ya están listos las sillas, las fotos, el cartel y la receta de pierogi."
+job.shared_room_door.title,Una puerta para todos
+job.stefan_book_tin.client,"El señor Stefan, de 67 años, dueño del quiosco y fuente de noticias del barrio."
+job.stefan_book_tin.line.1,"Guardé bien los vales de biblioteca. Hasta de mí mismo, por lo visto."
+job.stefan_book_tin.line.2,Tu recibo coincide con la foto del quiosco. El precio está acordado.
+job.stefan_book_tin.line.3,Me sé todos los horarios de autobús. ¿Estos números? Ni hablar.
+job.stefan_book_tin.line.4,Al menos el recibo sobrevivió. Pondré el mío al lado.
+job.stefan_book_tin.note,"Quiosco de Stefan, lata de vales. Recibo y foto. El dueño sigue sin recordar la combinación."
+job.stefan_book_tin.situation,"Stefan guardó los vales de biblioteca para la nueva sala común en una lata propia, cerrada con un candado de anillos, y luego olvidó la combinación."
+job.stefan_book_tin.title,La lata de vales de libros
+job.zuzanna_catalogue_drawer.client,"Zuzanna Wilk, becaria del museo, con la conservadora doctora Anna Rygiel."
+job.zuzanna_catalogue_drawer.line.1,Tenemos autorización para las copias. El cajón cree que son originales.
+job.zuzanna_catalogue_drawer.line.2,La firma es mía. Los originales se quedan en el museo.
+job.zuzanna_catalogue_drawer.line.3,"Conservadora, protocolo firmado, precio acordado. Solo el cajón, entonces."
+job.zuzanna_catalogue_drawer.line.4,Pondré «Tratar con cuidado» en la exposición. Empezando por este cajón.
+job.zuzanna_catalogue_drawer.note,"Museo, cajón de fichas. La doctora Rygiel autorizó las copias. Los originales siguieron en su lugar."
+job.zuzanna_catalogue_drawer.situation,Las copias autorizadas de unas viejas fotos de la escalera están atrapadas en un cajón cerrado del museo. Los originales permanecerán en el archivo.
+job.zuzanna_catalogue_drawer.title,El cajón del catálogo
