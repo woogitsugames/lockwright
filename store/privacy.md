@@ -148,10 +148,13 @@ potem sprawdzić raport „Privacy Report” w Xcode Organizer po archiwizacji).
 | `NSPrivacyTracking` | `false` | |
 | `NSPrivacyTrackingDomains` | pusta lista | |
 | `NSPrivacyCollectedDataTypes` | pusta lista | zgodne z „Data Not Collected” |
-| `NSPrivacyAccessedAPITypes` → **File timestamp** (`NSPrivacyAccessedAPICategoryFileTimestamp`) | powód **C617.1** (dostęp do znaczników czasu plików w kontenerze aplikacji) | Godot używa `stat`/`FileAccess.get_modified_time` m.in. przy zasobach i `user://`. **Do weryfikacji.** |
-| → **System boot time** (`NSPrivacyAccessedAPICategorySystemBootTime`) | powód **35F9.1** (pomiar czasu między zdarzeniami w aplikacji) | Godot liczy czas klatek przez `mach_absolute_time`. **Do weryfikacji.** |
-| → **Disk space** (`NSPrivacyAccessedAPICategoryDiskSpace`) | powód **E174.1** (sprawdzenie miejsca przed zapisem) lub usunąć, jeśli eksport go nie zgłasza | **Do weryfikacji.** |
-| → **User defaults** (`NSPrivacyAccessedAPICategoryUserDefaults`) | powód **CA92.1** (dostęp tylko do własnych ustawień aplikacji) | Godot/iOS może używać `NSUserDefaults` (np. język, ustawienia silnika). **Do weryfikacji.** |
+| `NSPrivacyAccessedAPITypes` → **File timestamp** (`NSPrivacyAccessedAPICategoryFileTimestamp`) | **C617.1** (znaczniki czasu plików w kontenerze aplikacji) | **Zweryfikowane 2026-11-05:** eksport Godota 4.7.2 domyślnie wpisuje `DDA9.1` + `C617.1`. `DDA9.1` („pokazujemy datę pliku użytkownikowi”) nas nie dotyczy → w presecie iOS ustawić `privacy/file_timestamp_access_reasons` tylko na `C617.1`. |
+| → **System boot time** (`NSPrivacyAccessedAPICategorySystemBootTime`) | **35F9.1** (czas między zdarzeniami w aplikacji) | **Zweryfikowane:** Godot wpisuje `35F9.1` domyślnie. Bez zmian. |
+| → **Disk space** (`NSPrivacyAccessedAPICategoryDiskSpace`) | **E174.1** (sprawdzenie miejsca przed zapisem) | **Zweryfikowane:** Godot wpisuje `E174.1` + `85F4.1`. `85F4.1` (pokazywanie miejsca na dysku) nas nie dotyczy → `privacy/disk_space_access_reasons` = `E174.1`. |
+| → **User defaults** (`NSPrivacyAccessedAPICategoryUserDefaults`) | — | **Zweryfikowane:** Godot 4.7.2 tej kategorii **nie** zgłasza; dopisać `CA92.1` tylko, jeśli nasz mostek iOS zacznie używać `NSUserDefaults`. |
+
+Źródło weryfikacji: `PrivacyInfo.xcprivacy` z eksportu Godota 4.7.2 do projektu Xcode w CI (`spike-haptics`, job `ios-godot`,
+run 41990034047, artefakt `spike-haptics-ios-godot`), `NSPrivacyTracking = false`, brak `NSPrivacyCollectedDataTypes`.
 
 Nasze mostki natywne (`platform/ios/lockwright_haptics/`, D-20): Core Haptics, `AVAudioSession` i
 `UIImpactFeedbackGenerator` nie są „required reason APIs”. Jeśli mostek zacznie używać `NSUserDefaults`

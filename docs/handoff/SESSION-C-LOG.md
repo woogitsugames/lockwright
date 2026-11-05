@@ -93,3 +93,6 @@ Pytania do właściciela: nazwa EN w sklepie (`store/listing.md` §0), akceptacj
 | 6. Audyt dostępności | **gotowe** | cele dotyku ≥ 48 OK; kontrast metal/tło 7,5–7,8:1; braki: safe-area w menu (High), poziom (ucięcia), domyślny font, skalowanie tekstu | — | poprawki sesji B/A |
 
 Decyzje tej części: brak nowych D-NN (wszystkie rozstrzygnięcia mieszczą się w D-31…D-33). Godzinne wznawianie sesji (scheduled task) zaktualizowane na etap 2.
+
+## 2026-11-05 08:35 — manifest prywatności zweryfikowany
+- `PrivacyInfo.xcprivacy` z eksportu Godota 4.7.2 (CI `spike-haptics` run 41990034047): FileTimestamp `DDA9.1`+`C617.1`, SystemBootTime `35F9.1`, DiskSpace `E174.1`+`85F4.1`, tracking `false`, bez zbierania danych, **bez UserDefaults**. Rekomendacja w `store/privacy.md`: w presecie iOS zostawić tylko `C617.1`, `35F9.1`, `E174.1` (powody „pokazywania użytkownikowi” nas nie dotyczą). Zadanie 2 domknięte poza danymi właściciela (domena, administrator, e-mail IARC).
