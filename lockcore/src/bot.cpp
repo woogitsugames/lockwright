@@ -303,7 +303,7 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
     return rep;
   }
   const bool can_reset = (family.input_mask() & AXIS_ROTATE) != 0;
-  constexpr q16 DRAG_BOUND = q16_milli(30);
+  constexpr q16 DRAG_BOUND = q16_milli(10);
   constexpr q16 PROBE_HEIGHT = q16_milli(220);
   constexpr q16 PROBE_STEP = q16_milli(50);
   constexpr q16 PROBE_MAX = q16_milli(370);

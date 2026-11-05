@@ -62,7 +62,7 @@ def leather(name, color, rough=0.55, grain=1.0, wear=0.5, seed=0.0, burnish=0.0)
     b.inputs['Specular IOR Level'].default_value = 0.45
     # relief: grain cells + creases + soft large undulation
     h = _mix(nt, cell, 1.0, crease, dtype='FLOAT')
-    bp = nt.nodes.new('ShaderNodeBump'); bp.inputs['Strength'].default_value = 0.35 * grain; bp.inputs['Distance'].default_value = 0.06
+    bp = nt.nodes.new('ShaderNodeBump'); bp.inputs['Strength'].default_value = 0.6 * grain; bp.inputs['Distance'].default_value = 0.06
     l.new(h, bp.inputs['Height'])
     bv = nt.nodes.new('ShaderNodeBevel'); bv.samples = 6; bv.inputs['Radius'].default_value = 0.5; l.new(bv.outputs['Normal'], bp.inputs['Normal'])
     l.new(bp.outputs['Normal'], b.inputs['Normal'])
@@ -90,7 +90,7 @@ def glass_mat():
 
 LE = leather('leather', (0.30, 0.155, 0.07), 0.55, seed=0.0, wear=0.4)
 LE2 = leather('pocket', (0.25, 0.125, 0.055), 0.5, seed=3.0, wear=0.9, burnish=1.0)
-LE3 = leather('imprint', (0.13, 0.065, 0.03), 0.32, grain=0.35, seed=5.0, wear=0.0)
+LE3 = leather('imprint', (0.2, 0.1, 0.045), 0.3, grain=0.35, seed=5.0, wear=0.0)
 TH = thread_mat(); GL = glass_mat()
 PICK = metal('pick_steel', (0.64, 0.64, 0.65), 0.2, aniso=0.6, marks='grind', marks_axis=(0, 0, 1), marks_scale=1.4,
              wear=0.6, wear_col=(0.8, 0.8, 0.8), grime=0.35, smudge=0.6, bevel_r=0.08)
@@ -209,7 +209,7 @@ cd.lens = 120; cd.sensor_fit = 'HORIZONTAL'; cd.sensor_width = 36; cd.dof.use_do
 cam.location = (0, -400, CZ + 7); cam.rotation_euler = (Vector((0, 0, CZ)) - cam.location).to_track_quat('-Z', 'Z').to_euler()
 # product sheen on the steel: strip softbox near the mirror direction, shifted so its edge grades across the picks
 mirror_softbox('sheen', (0, 0, CZ), cam, dist=380, size=float(arg('--ss', '90')), size_y=float(arg('--ssy', '240')),
-               energy=float(arg('--sheen', '60000')), shift=(float(arg('--sx', '14')), 0, float(arg('--sz', '8'))))
+               energy=float(arg('--sheen', '60000')), shift=(float(arg('--sx', '4')), 0, float(arg('--sz', '8'))))
 render_setup(OUT, RES, SAMPLES, exposure=float(arg('--exp', '0.0')))
 if arg("--norender", "0") == "1":
     for o in bpy.data.objects:
