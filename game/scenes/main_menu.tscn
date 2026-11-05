@@ -75,6 +75,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 autowrap_mode = 3
 script = ExtResource("2")
+plate = &"primary_navy"
 
 [node name="Grid" type="GridContainer" parent="Frame/Layout/MenuBlock"]
 layout_mode = 2
@@ -88,6 +89,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text_overrun_behavior = 3
 script = ExtResource("2")
+plate = &"bottle_green"
 
 [node name="WorkshopButton" type="Button" parent="Frame/Layout/MenuBlock/Grid"]
 custom_minimum_size = Vector2(0, 56)
@@ -95,6 +97,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text_overrun_behavior = 3
 script = ExtResource("2")
+plate = &"burgundy"
 
 [node name="ShowcaseButton" type="Button" parent="Frame/Layout/MenuBlock/Grid"]
 custom_minimum_size = Vector2(0, 56)
@@ -102,6 +105,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text_overrun_behavior = 3
 script = ExtResource("2")
+plate = &"bottle_green"
 
 [node name="SettingsButton" type="Button" parent="Frame/Layout/MenuBlock/Grid"]
 custom_minimum_size = Vector2(0, 56)
@@ -109,6 +113,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text_overrun_behavior = 3
 script = ExtResource("2")
+plate = &"burgundy"
 
 [node name="TipPanel" type="PanelContainer" parent="Frame/Layout/MenuBlock"]
 layout_mode = 2

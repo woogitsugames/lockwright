@@ -23,7 +23,7 @@ func _ready() -> void:
 	DirAccess.make_dir_recursive_absolute(_out)
 	get_window().size = _size
 	await get_tree().process_frame
-	for scene_path in SCREENS:
+	for scene_path: String in SCREENS:
 		var base: String = scene_path.get_file().get_basename()
 		if _only != "" and not (base in _only.split(",")):
 			continue

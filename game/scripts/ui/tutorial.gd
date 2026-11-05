@@ -1,61 +1,126 @@
 extends Control
-## Tutorial S1-S3 (ONBOARDING §4): three practice pin locks, chalk on by default.
+## Tutorial S1-S3 (ONBOARDING §4): three practice pin locks, chalk on by default (D-53).
 ## Stage state lives in JobRun.tutorial_stage, so returning from the lock scene
 ## restores it (N-09).
+##
+## N-61: before a stage the player sees two or three captioned frames (what each thumb does and
+## what a click means) instead of an uncaptioned sketch, and "a game, not a course" as its own
+## readable note under them, not printed into a drawing.
+
+# G11 master's cards (clean variant, no baked-in text): stage -> [card number, caption key]
+const FRAMES := [
+	[[1, &"tutorial.frame_tension"], [3, &"tutorial.frame_lift"], [5, &"tutorial.frame_click"]],
+	[[7, &"tutorial.s2_intro"]],
+	[[9, &"tutorial.s3_intro"]],
+]
+const FRAMES_AUTO_S1 := [[3, &"tutorial.frame_lift_auto"], [5, &"tutorial.frame_click"]]
+const CARD_W := 112.0
+const CARD_H := 140.0
+const CARD_CROP := Rect2(0.08, 0.14, 0.84, 0.66)  # drawing area of a 1200×1500 card (skip margins)
 
 
 func _ready() -> void:
 	Sfx.play_ambience(&"stairwell")
 	SafeArea.apply(self)
-	$VBox/Title.text = I18n.t(&"tutorial.title")
+	var v := $Margin/Scroll/VBox
+	v.get_node("Title").text = I18n.t(&"tutorial.title")
+	v.get_node("Title").theme_type_variation = &"MenuTitle"
+	v.get_node("Title").add_theme_font_size_override("font_size", 30)
+	v.get_node("StartButton").pressed.connect(_start_stage)
+	v.get_node("BackButton").text = I18n.t(&"common.back")
+	v.get_node("BackButton").pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 	_refresh()
-	$VBox/StartButton.pressed.connect(_start_stage)
-	$BackButton.text = I18n.t(&"common.back")
-	$BackButton.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+	resized.connect(_relayout)
+	_relayout()
 
 
-# G11 master's cards: tutorial stage S1-S3 -> first card of the stage (PL/EN, clean with reading aid)
-const STAGE_FIRST_CARD := [1, 7, 10]
+func _relayout() -> void:
+	# portrait: one frame per row (picture left, caption right); landscape: frames side by side
+	var grid: GridContainer = $Margin/Scroll/VBox/Frames
+	var landscape := size.x > size.y
+	grid.columns = maxi(grid.get_child_count(), 1) if landscape else 1
 
 
-func _add_card(stage: int) -> void:
-	var lang := "pl" if Settings.language() == "pl" else "en"
-	if Save.get_value("reading_aid", false):
-		lang = "clean"
-	var n: int = STAGE_FIRST_CARD[clampi(stage, 0, 2)]
-	var tex := load("res://assets/ui/gpt/tutorial/g11-%02d-%s.png" % [n, lang])
-	if tex == null:
-		return
-	var card := TextureRect.new()
-	card.texture = tex
-	card.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	card.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-	card.custom_minimum_size = Vector2(0, 220)
-	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	$VBox.add_child(card)
-	var stamp_lang := "pl" if Settings.language() == "pl" else "en"
-	var stex := load("res://assets/ui/gpt/tutorial/stamp-g11-stamp-%s.png" % stamp_lang)
-	if stex != null:
-		var stamp := TextureRect.new()
-		stamp.texture = stex
-		stamp.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		stamp.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-		stamp.custom_minimum_size = Vector2(96, 96)
-		stamp.position = Vector2(24, 24)
-		stamp.size = Vector2(96, 96)
-		card.add_child(stamp)
+func frame_captions() -> PackedStringArray:
+	var out := PackedStringArray()
+	for row in $Margin/Scroll/VBox/Frames.get_children():
+		out.append((row.get_node("Caption") as Label).text)
+	return out
+
+
+func _add_frame(card: int, caption_key: StringName) -> void:
+	var lang := "clean"
+	var tex: Texture2D = load("res://assets/ui/gpt/tutorial/g11-%02d-%s.png" % [card, lang])
+	var row := HBoxContainer.new()
+	row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_theme_constant_override("separation", 12)
+	var pic := TextureRect.new()
+	if tex != null:
+		var at := AtlasTexture.new()
+		at.atlas = tex
+		var s := Vector2(tex.get_size())
+		at.region = Rect2(CARD_CROP.position * s, CARD_CROP.size * s)
+		pic.texture = at
+	pic.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	pic.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	pic.custom_minimum_size = Vector2(CARD_W, CARD_H)
+	row.add_child(pic)
+	var cap := Label.new()
+	cap.name = "Caption"
+	cap.text = I18n.t(caption_key)
+	cap.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	cap.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	cap.custom_minimum_size = Vector2(0, 0)
+	cap.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	cap.add_theme_font_size_override("font_size", 19)
+	cap.add_theme_color_override("font_color", Color(0.95, 0.91, 0.82))
+	row.add_child(cap)
+	$Margin/Scroll/VBox/Frames.add_child(row)
+
+
+func _add_note() -> void:
+	# "a game, not a course": a separate paper slip with dark text (contrast ≥ 4.5:1)
+	var paper := PanelContainer.new()
+	paper.name = "Note"
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.90, 0.86, 0.76)
+	sb.set_corner_radius_all(2)
+	sb.shadow_color = Color(0, 0, 0, 0.45)
+	sb.shadow_size = 3
+	sb.shadow_offset = Vector2(1, 2)
+	sb.content_margin_left = 14
+	sb.content_margin_right = 14
+	sb.content_margin_top = 10
+	sb.content_margin_bottom = 10
+	paper.add_theme_stylebox_override("panel", sb)
+	var l := Label.new()
+	l.text = I18n.t(&"tutorial.note_game")
+	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	l.add_theme_color_override("font_color", Color(0.16, 0.12, 0.08))
+	l.add_theme_font_size_override("font_size", 17)
+	paper.add_child(l)
+	var v := $Margin/Scroll/VBox
+	v.add_child(paper)
+	v.move_child(paper, v.get_node("StartButton").get_index())
 
 
 func _refresh() -> void:
 	var stage: int = JobRun.tutorial_stage
 	var done: bool = Save.get_value("tutorial_done", false)
+	var v := $Margin/Scroll/VBox
 	if done:
-		$VBox/Stage.text = I18n.t(&"tutorial.done")
-		$VBox/StartButton.text = I18n.t(&"common.continue")
-	else:
-		$VBox/Stage.text = I18n.t(&"tutorial.stage").format({"n": stage + 1})
-		$VBox/StartButton.text = I18n.t(&"tutorial.start")
-		_add_card(stage)
+		v.get_node("Stage").text = I18n.t(&"tutorial.done")
+		v.get_node("StartButton").text = I18n.t(&"common.continue")
+		return
+	v.get_node("Stage").text = I18n.t(&"tutorial.stage").format({"n": stage + 1})
+	v.get_node("StartButton").text = I18n.t(&"tutorial.start")
+	var frames: Array = FRAMES[clampi(stage, 0, 2)]
+	if stage == 0 and bool(Settings.get_value(&"auto_tension", false)):
+		frames = FRAMES_AUTO_S1
+	for f in frames:
+		_add_frame(f[0], f[1])
+	if stage == 0:
+		_add_note()
 
 
 func _start_stage() -> void:
