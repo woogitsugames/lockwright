@@ -11,9 +11,14 @@ namespace lockcore::wafer {
 
 inline constexpr std::string_view FAMILY_ID = "wafer";
 inline constexpr std::int32_t RULES_VERSION = 1;
+// v0.6 (D-59): time lock repair (LOCKS.md §2.24), the same module with a flag.
+inline constexpr std::string_view CLOCK_FAMILY_ID = "time_lock";
+inline constexpr std::int32_t CLOCK_RULES_VERSION = 1;
 
 enum Sub : std::uint16_t {
-  SUB_RATTLE = 1,  // "wafer.rattle", base kind contact
+  SUB_RATTLE = 1,    // "wafer.rattle" / "time.rattle", base kind contact
+  SUB_TICK = 2,      // "time.tick", base kind contact: one escapement beat (every TICK_STEPS)
+  SUB_BEAT_OFF = 3,  // "time.beat_off", base kind near_shear: the run broke off (key out of the band)
 };
 
 struct Wafer {
@@ -35,6 +40,9 @@ struct Params : FamilyParams {
   q16 stress_gain = 0;
   q16 noise = 0;
   q16 bound_speed = 0;
+  // time_lock only (0 = wafer): even beat needed to finish, and the lowest key tension that runs.
+  std::int32_t run_steps = 0;
+  q16 run_lo = 0;
 
   q16 win_lo(const Wafer& w) const { return w.target - win_shear / 2; }
   q16 win_hi(const Wafer& w) const { return w.target + win_shear / 2; }
@@ -49,6 +57,9 @@ inline constexpr q16 TAU_SAFE_MARGIN = q16_milli(60);
 inline constexpr q16 STRESS_GAIN = q16_milli(95);
 inline constexpr q16 BOUND_SPEED = q16_per_step(2 * Q16_ONE);
 
+inline constexpr std::int32_t TICK_STEPS = 60;  // time_lock: a beat every 0.5 s
+
 std::unique_ptr<FamilyModule> make_module();
+std::unique_ptr<FamilyModule> make_clock_module();  // time_lock, t1-t2
 
 }  // namespace lockcore::wafer

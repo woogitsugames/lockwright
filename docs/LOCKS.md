@@ -1294,6 +1294,43 @@ fałszywe wcięcie nad bramką łapie (`false_set` + `slider.false_notch`) i pus
 
 ---
 
+### 2.24 Zamek czasowy — naprawa (wariant D-59) — `time_lock`
+**PL:** Zamek czasowy (naprawa) · **EN:** Time Lock Repair · **Tier:** t1–2 (lockcore v0.6) · **Faza:** D-59
+(zlecenie `job.museum_time_lock` t2). Research: `docs/research/new-families.md` §7. Wczesna, krótsza wersja
+wydarzenia z §2.14.
+
+**Zasada.** Mechanizm zegarowy blokuje rygiel skarbca do ustawionej godziny. **Nie otwieramy** — zegar stanął,
+muzeum prosi o przywrócenie chodu (ton: „pomagamy”).
+
+**Logika zagadki.** Moduł `wafer` (§2.4) z flagą `time_lock` (`wafer.cpp`):
+- `tension` = **klucz nakręcania** sprężyny (lewy kciuk); `pick_depth` = które koło przekładni; `pick_lift` =
+  osadzanie koła pęsetą.
+- **Przekładnia zazębia się po kolei od bębna** (koło 0 pierwsze — kolejność wiązania = kolejność w przekładni,
+  bez losowania). Koło „wiąże” (`bind`), gdy napęd do niego dochodzi, osadza się w oknie (`set` = zazębione),
+  za głęboko = `overset` (zakleszczone zęby; zwolnić klucz poniżej `t_release`, bez zrzutu). Puszczenie klucza
+  (`T < t_hold`) — koła wypadają z zazębienia (`drop`).
+- **Bieg:** wszystkie koła zazębione + klucz w paśmie biegu `[run_lo, tau_safe]` → wychwyt bije: `time.tick`
+  (podstawa `contact`) co 0,5 s, `hold_progress` rośnie przez `run_steps` (t1 2 s, t2 3 s), potem `open`
+  (= zegar chodzi). Klucz poza pasmem: `time.beat_off` (podstawa `near_shear`), bieg od zera.
+- **Przekręcenie sprężyny:** `T > tau_safe` ładuje naprężenie (`stress`), potem `break` = pęknięta sprężyna
+  (porażka; w Zleceniach koszt monet, nie „życie”).
+- Narzędzie `TOOL_CLOCK_KIT` (klucz + pęseta), materiał mosiądz.
+
+| Tier | Koła | Okno | Pasmo | Overset | Bieg | Limit |
+|---|---|---|---|---|---|---|
+| t1 | 3 | 0,14 | 0,30 | 0,12 | 2 s | 90 s |
+| t2 | 4–5 | 0,12 | 0,26 | 0,10 | 3 s | 120 s |
+
+**ViewModel.** Jak `wafer` (pozycja koła = głębokość osadzenia, okno, stany, `stress` = naprężenie sprężyny);
+`hold_progress` = `core_rotation` = postęp równego biegu (wskazówka). W pliku zamka `run_steps`, `run_lo_q16`
+(tylko ta rodzina). Każda zębatka coś robi (DESIGN: zero martwych zębatek).
+
+**Weryfikator (1000 seedów/tier).** Skryptowy 0 porażek (t_p50 7,5/11,3 s), niezdarny 100 %, czujący 100 %
+(t_p50 13/19 s). Boty od v0.6 czekają, dopóki widoczny `hold_progress` rośnie. Złote: `time_lock_t1_s2`,
+`time_lock_t2_s9_feel`.
+
+---
+
 ## 3. Tabela zbiorcza
 
 | # | ID | PL / EN | Tier | Faza | Widok | Wejścia | Kluczowa nowa logika | Narzędzie główne |
@@ -1320,6 +1357,7 @@ fałszywe wcięcie nad bramką łapie (`false_set` + `slider.false_notch`) i pus
 | 2.21 | `disc_detainer` | Zamek tarczowy / Disc Detainer | 1–3 | D-59 | przekrój wzdłuż osi | T, D, L | tarcze w obie strony, przekręcenie | Obracak tarcz |
 | 2.22 | `egyptian` | Zasuwa starożytna / Ancient Pin Bolt | 1–2 | D-59 | bok | T, D, L | grawitacja, klin | Klucz kołkowy |
 | 2.23 | `axial_slider` (D-59) | Zamek suwakowy / Axial Slider | 1–3 | D-59 | czoło, promieniście | T, D, L | wciskanie + fałszywe wcięcia | Popychacz suwaków |
+| 2.24 | `time_lock` (D-59) | Zamek czasowy — naprawa / Time Lock Repair | 1–2 | D-59 | czoło mechanizmu | T, D, L | zazębianie po kolei + bieg | Zestaw zegarmistrza |
 | 2.19 | `combo` | Zamek z kółkami / Thumbwheel Combination Lock | 1–4 | D-59 | przód + przekrój tulejek | T, D, L | wiązanie + poślizg tulejki | Ciągadło kabłąka |
 
 T = tension, D = pick_depth, L = pick_lift, R = rotate, P = push.

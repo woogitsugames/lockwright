@@ -141,6 +141,8 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
       // Everything believed set: keep holding and wait for the open event.
       target_l = 0;
       if (all_set_since < 0) all_set_since = t;
+      // v0.6: a drawn progress (bolt slide, clock run) still filling: keep waiting.
+      if (session.describe().hold_progress > 0) all_set_since = t;
       if (t - all_set_since > lim.latency_steps + 24) {
         // Beliefs are wrong (missed a drop); start over.
         for (auto& b : believed) b = 0;
@@ -505,6 +507,7 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
         break;
       case Feel::wait_open:
         target_l = 0;
+        if (session.describe().hold_progress > 0) phase_t = t;  // v0.6: drawn progress still filling
         if (t - phase_t > lim.latency_steps + SIM_HZ / 2) {
           for (auto& b : believed) b = 0;  // beliefs were wrong: start over
           set_order.clear();

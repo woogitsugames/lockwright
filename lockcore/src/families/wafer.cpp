@@ -4,6 +4,15 @@
 // is (the core holds it), there are no security wafers, and an overset is easy to
 // fix: easing tension below t_release (which is above t_hold) frees the wafer
 // without dropping the others.
+//
+// time_lock (v0.6, D-59, LOCKS.md §2.24): the same module with clock_ set. A
+// repair, not an opening: the wheels of a stopped clock train are seated
+// (pick_lift) and mesh in train order (wheel 0 next to the barrel first); tension
+// is the winding key. Once every wheel meshes and the key is held inside the run
+// band [run_lo, tau_safe], the escapement beats (`time.tick` every 0.5 s) and
+// hold_progress fills over run_steps; leaving the band is `time.beat_off` and the
+// run starts again. Above tau_safe the spring is overwound: stress, then the
+// spring breaks (failure break). `open` = the clock runs. Tiers 1-2.
 #include "lockcore/wafer.hpp"
 
 #include <algorithm>
@@ -40,23 +49,45 @@ struct State : FamilyState {
   q16 resistance = 0;
   q16 drag = 0;
   std::int64_t rattle_last = -1000;
+  std::int32_t run = 0;   // time_lock: steps of even beat so far
+  bool beating = false;   // time_lock: escapement running this step
 };
 
 const Params& params_of(const LockSpec& spec) { return static_cast<const Params&>(*spec.params); }
 
 class Module final : public FamilyModule {
  public:
-  std::string_view id() const override { return FAMILY_ID; }
-  std::int32_t rules_version() const override { return RULES_VERSION; }
+  explicit Module(bool clock) : clock_(clock) {}
+
+  std::string_view id() const override { return clock_ ? CLOCK_FAMILY_ID : FAMILY_ID; }
+  std::int32_t rules_version() const override { return clock_ ? CLOCK_RULES_VERSION : RULES_VERSION; }
   std::uint32_t input_mask() const override { return AXIS_TENSION | AXIS_DEPTH | AXIS_LIFT; }
-  ToolSet required_tools(const LockSpec&) const override { return ToolSet{TOOL_TENSION_WRENCH | TOOL_HOOK}; }
+  ToolSet required_tools(const LockSpec&) const override {
+    return ToolSet{clock_ ? TOOL_CLOCK_KIT : TOOL_TENSION_WRENCH | TOOL_HOOK};
+  }
 
   // The card's ranges (3->5 wafers, 14->10 % window, 0.30->0.22 band) are spread
   // over three tiers so the family can also serve as an early lock (D-17).
   int min_tier() const override { return 1; }
-  int max_tier() const override { return 3; }
+  int max_tier() const override { return clock_ ? 2 : 3; }
 
   DifficultyVector difficulty_for_tier(int tier) const override {
+    if (clock_) {
+      // new-families.md §7: 3 -> 5 wheels, narrower windows; run 2 s -> 3 s (open_hold).
+      const int t = std::clamp(tier, 1, 2);
+      DifficultyVector d;
+      d.tier = t;
+      d.n_min = t == 1 ? 3 : 4;
+      d.n_max = t == 1 ? 3 : 5;
+      d.win_shear = q16_milli(t == 1 ? 140 : 120);
+      d.tension_band = q16_milli(t == 1 ? 300 : 260);
+      d.overset_margin = q16_milli(t == 1 ? 120 : 100);
+      d.bind_spread = Q16_ONE;
+      d.drop_grace_ms = 300;
+      d.s_max = Q16_ONE;
+      d.time_limit_s = t == 1 ? 90 : 120;
+      return d;
+    }
     struct Row {
       int n, win, band, margin, grace;
     };
@@ -89,7 +120,7 @@ class Module final : public FamilyModule {
 
   std::vector<SpecError> validate(const LockSpec& spec) const override {
     std::vector<SpecError> e;
-    if (spec.family != FAMILY_ID) e.push_back({"family", "not wafer"});
+    if (spec.family != id()) e.push_back({"family", "not " + std::string(id())});
     const auto* pp = dynamic_cast<const Params*>(spec.params.get());
     if (pp == nullptr) {
       e.push_back({"spec", "missing or foreign parameters"});
@@ -105,6 +136,8 @@ class Module final : public FamilyModule {
     if (P.tau_safe <= P.t_hold || P.tau_safe > Q16_ONE) e.push_back({"spec.tau_safe_q16", "need t_hold < tau_safe <= 1"});
     if (P.drop_grace_steps < 1) e.push_back({"spec.drop_grace_steps", "must be >= 1"});
     if (P.s_max <= 0 || P.stress_gain <= 0 || P.bound_speed <= 0) e.push_back({"spec.s_max_q16", "s_max, gain, speed must be > 0"});
+    if (P.run_steps < 0 || P.run_lo < 0 || (P.run_steps > 0 && (P.run_lo <= P.t_hold || P.run_lo >= P.tau_safe)))
+      e.push_back({"spec.run_lo_q16", "need t_hold < run_lo < tau_safe when run_steps > 0"});
     for (int i = 0; i < n; ++i) {
       const Wafer& w = P.wafers[static_cast<std::size_t>(i)];
       const std::string path = "spec.wafers[" + std::to_string(i) + "]";
@@ -230,8 +263,25 @@ class Module final : public FamilyModule {
       }
     }
 
-    if (!S.open && T >= P.t_hold &&
-        std::all_of(S.wafers.begin(), S.wafers.end(), [](const WaferState& w) { return w.st == ElementState::set; })) {
+    const bool all_set =
+        std::all_of(S.wafers.begin(), S.wafers.end(), [](const WaferState& w) { return w.st == ElementState::set; });
+    if (P.run_steps > 0) {
+      // time_lock: the key winds the spring; above tau_safe it is overwound.
+      if (T > P.tau_safe) S.tool.load(T - P.tau_safe, PRESS_CAP);
+      const bool beat = all_set && T >= P.run_lo && T <= P.tau_safe;
+      if (beat) {
+        if (S.run % TICK_STEPS == 0) out.emit(t, EventKind::contact, -1, q16_milli(450), S.material, SUB_TICK);
+        ++S.run;
+      } else if (S.beating) {
+        out.emit(t, EventKind::near_shear, -1, q16_milli(400), S.material, SUB_BEAT_OFF);
+        S.run = 0;
+      }
+      S.beating = beat;
+      if (!S.open && S.run >= P.run_steps) {
+        S.open = true;
+        out.emit(t, EventKind::open, -1, Q16_ONE, S.material);
+      }
+    } else if (!S.open && T >= P.t_hold && all_set) {
       S.open = true;
       out.emit(t, EventKind::open, -1, Q16_ONE, S.material);
     }
@@ -266,6 +316,11 @@ class Module final : public FamilyModule {
     v.pick_lift = S.lift;
     v.tension = S.tension;
     v.core_rotation = S.open ? Q16_ONE : q16_milli(15) * sets;
+    if (P.run_steps > 0) {
+      // time_lock: progress of the even beat; core_rotation = the hand sweeping.
+      v.hold_progress = S.open ? Q16_ONE : q16_ratio(q_min(S.run, P.run_steps), P.run_steps);
+      v.core_rotation = v.hold_progress;
+    }
     v.tension_resistance = S.resistance;
     v.pick_drag = S.drag;
     v.stress = S.tool.ratio();
@@ -342,6 +397,10 @@ class Module final : public FamilyModule {
     o.set("stress_gain_q16", Value::integer(P.stress_gain));
     o.set("noise_q16", Value::integer(P.noise));
     o.set("bound_speed_q16", Value::integer(P.bound_speed));
+    if (P.run_steps > 0) {  // time_lock only
+      o.set("run_steps", Value::integer(P.run_steps));
+      o.set("run_lo_q16", Value::integer(P.run_lo));
+    }
     Value arr = Value::array();
     for (const Wafer& w : P.wafers) {
       Value wo = Value::object();
@@ -372,6 +431,9 @@ class Module final : public FamilyModule {
     q(v, "stress_gain_q16", P->stress_gain, path);
     q(v, "noise_q16", P->noise, path);
     q(v, "bound_speed_q16", P->bound_speed, path);
+    if (v.find("run_steps") != nullptr && field::get_int(v, "run_steps", 1, 100000, x, errors, path))
+      P->run_steps = static_cast<std::int32_t>(x);
+    if (v.find("run_lo_q16") != nullptr) q(v, "run_lo_q16", P->run_lo, path);
     const Value* arr = v.find("wafers");
     if (arr == nullptr || !arr->is_array()) {
       errors.push_back({path + ".wafers", "expected array"});
@@ -394,13 +456,20 @@ class Module final : public FamilyModule {
   }
 
   std::string_view event_name(std::uint16_t sub) const override {
-    return sub == SUB_RATTLE ? std::string_view("wafer.rattle") : std::string_view();
+    switch (sub) {
+      case SUB_RATTLE: return clock_ ? "time.rattle" : "wafer.rattle";
+      case SUB_TICK: return clock_ ? "time.tick" : "";
+      case SUB_BEAT_OFF: return clock_ ? "time.beat_off" : "";
+      default: return {};
+    }
   }
 
  private:
+  bool clock_ = false;
+
   LockSpec generate_once(std::uint64_t seed, std::uint32_t attempt, const DifficultyVector& d) const {
-    Pcg32 rng(derive_seed(seed ^ splitmix64(attempt), FAMILY_ID, RULES_VERSION, "gen"),
-              derive_stream(FAMILY_ID, "gen"));
+    Pcg32 rng(derive_seed(seed ^ splitmix64(attempt), id(), static_cast<std::uint32_t>(rules_version()), "gen"),
+              derive_stream(id(), "gen"));
     auto P = std::make_shared<Params>();
     const int n = rng.range(d.n_min, d.n_max);
     P->win_shear = d.win_shear;
@@ -416,7 +485,9 @@ class Module final : public FamilyModule {
     P->wafers.resize(static_cast<std::size_t>(n));
     std::vector<int> perm(static_cast<std::size_t>(n));
     for (int i = 0; i < n; ++i) perm[static_cast<std::size_t>(i)] = i;
-    for (int i = n - 1; i > 0; --i) std::swap(perm[static_cast<std::size_t>(i)], perm[rng.below(static_cast<std::uint32_t>(i + 1))]);
+    // time_lock: the train meshes in order from the barrel (no shuffle).
+    if (!clock_)
+      for (int i = n - 1; i > 0; --i) std::swap(perm[static_cast<std::size_t>(i)], perm[rng.below(static_cast<std::uint32_t>(i + 1))]);
     const q16 unit = q_max(1, q_mul(d.bind_spread, q16_milli(100)));
     q16 max_stick = 0;
     for (int r = 0; r < n; ++r) {
@@ -429,15 +500,22 @@ class Module final : public FamilyModule {
       max_stick = q_max(max_stick, w.band_lo + P->tension_band);
     }
     P->tau_safe = q_min(Q16_ONE, max_stick + TAU_SAFE_MARGIN);
+    if (clock_) {
+      P->run_steps = ms_to_steps(d.tier >= 2 ? 3000 : 2000);
+      q16 lo = Q16_ONE;
+      for (const Wafer& w : P->wafers) lo = q_min(lo, w.band_lo);
+      // Halfway between t_hold and the first wheel's bite: below it the train stalls.
+      P->run_lo = q_max(P->t_hold + q16_milli(60), (P->t_hold + lo) / 2);
+    }
 
     LockSpec spec;
-    spec.family = std::string(FAMILY_ID);
-    spec.rules_version = RULES_VERSION;
-    spec.id = "gen.wafer.t" + std::to_string(d.tier) + "." + std::to_string(seed);
+    spec.family = std::string(id());
+    spec.rules_version = rules_version();
+    spec.id = "gen." + std::string(id()) + ".t" + std::to_string(d.tier) + "." + std::to_string(seed);
     spec.source = "generated";
     spec.seed = seed;
     spec.difficulty = d;
-    spec.material = MaterialId::steel;
+    spec.material = clock_ ? MaterialId::brass : MaterialId::steel;
     spec.params = P;
     return spec;
   }
@@ -445,6 +523,7 @@ class Module final : public FamilyModule {
 
 }  // namespace
 
-std::unique_ptr<FamilyModule> make_module() { return std::make_unique<Module>(); }
+std::unique_ptr<FamilyModule> make_module() { return std::make_unique<Module>(false); }
+std::unique_ptr<FamilyModule> make_clock_module() { return std::make_unique<Module>(true); }
 
 }  // namespace lockcore::wafer
