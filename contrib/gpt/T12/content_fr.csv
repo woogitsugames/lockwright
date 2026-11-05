@@ -530,3 +530,101 @@ cast.elzbieta.name,"Elżbieta, gestionnaire de l'immeuble"
 cast.marcel.name,Marcel
 cast.norbert.name,Norbert
 job.community_notice_case.client,"Basia, secrétaire du comité des résidents, avec Elżbieta, gestionnaire de l'immeuble."
+job.community_notice_case.line.1,Le planning est prêt. Seule l'armoire refuse de l'afficher.
+job.community_notice_case.line.2,Je gère cet immeuble. Voici la décision signée des résidents.
+job.community_notice_case.line.3,Autorisation et prix réglés. Je vais ouvrir l'armoire commune.
+job.community_notice_case.line.4,Première affiche : le planning du ménage. Une entrée en matière audacieuse.
+job.community_notice_case.note,"Vieille Ville, armoire d'affichage commune. Gestionnaire et décision signée. Le planning est en place."
+job.community_notice_case.situation,L'armoire à annonces commune est verrouillée. Les résidents veulent afficher le planning de leur nouvelle salle partagée.
+job.community_notice_case.title,L'armoire à annonces
+job.edek_rehearsal_store.client,"Monsieur Edek, concierge du campus, et Iga, du groupe de musique étudiant."
+job.edek_rehearsal_store.line.1,La réserve est dans mon registre. Elle appartenait à l'ancien théâtre.
+job.edek_rehearsal_store.line.2,On emprunte des chaises. Personne n'a demandé de batterie cette fois.
+job.edek_rehearsal_store.line.3,Votre registre concorde avec la lettre de l'université. Le prix aussi.
+job.edek_rehearsal_store.line.4,Parfait. Espérons que les chaises auront plus le sens du rythme que le groupe.
+job.edek_rehearsal_store.note,Réserve du théâtre du campus. M. Edek et accord universitaire ; chaises prêtées pour la réunion des résidents.
+job.edek_rehearsal_store.situation,L'ancienne réserve du théâtre universitaire contient les chaises pliantes promises à la réunion du quartier. L'université a autorisé le prêt.
+job.edek_rehearsal_store.title,Des chaises pour la répétition
+job.gosia_workbench_drawer.client,"Gosia, 36 ans, restauratrice de meubles, possède un atelier près du port."
+job.gosia_workbench_drawer.line.1,J'ai acheté l'établi entier. Le tiroir refuse de reconnaître la facture.
+job.gosia_workbench_drawer.line.2,"Facture, photo de l'enlèvement, prix convenu. Tout est en ordre."
+job.gosia_workbench_drawer.line.3,"Ne laissez pas de traces, s'il vous plaît. L'établi ira dans la salle commune."
+job.gosia_workbench_drawer.line.4,"Entendu. Pour une fois, les documents sont arrivés avant moi."
+job.gosia_workbench_drawer.note,"Le tiroir de l'établi de Gosia. Facture et photo de l'enlèvement. L'établi ira dans la salle commune, sans marque."
+job.gosia_workbench_drawer.situation,Gosia a acheté un ancien établi dont le tiroir est verrouillé. Elle veut l'offrir à la salle commune sans abîmer le bois.
+job.gosia_workbench_drawer.title,Le tiroir de l'établi
+job.halina_recipe_box.client,"Madame Halina, 81 ans, et sa voisine Madame Zosia."
+job.halina_recipe_box.line.1,Ma recette de raviolis est dedans. Je me souviens juste du mot « poignée ».
+job.halina_recipe_box.line.2,C'est la boîte de Halina. Voyez : elle est près de sa tasse sur la photo.
+job.halina_recipe_box.line.3,"Photo, témoin, prix convenu. Nous pouvons commencer."
+job.halina_recipe_box.line.4,"Après, on décidera combien pèse une poignée. C'est une vieille querelle."
+job.halina_recipe_box.note,"Mme Halina, boîte à recettes. Photo et parole de Mme Zosia. Prix convenu ; le débat sur la poignée continue."
+job.halina_recipe_box.situation,Halina veut retrouver sa recette de raviolis pour la nouvelle salle commune. Elle a perdu la clé de sa vieille boîte ; Zosia a une photo.
+job.halina_recipe_box.title,La boîte des poignées
+job.krystyna_wooden_album.client,Madame Krystyna et sa fille Ola apportent des photos de famille.
+job.krystyna_wooden_album.line.1,Józef a fabriqué cette boîte à photos. Je crois que la petite clé était en bois.
+job.krystyna_wooden_album.line.2,On a une photo où il la tient. Et la boîte est chez maman.
+job.krystyna_wooden_album.line.3,La photo et la parole de votre fille suffisent. Je vais noter le tarif.
+job.krystyna_wooden_album.line.4,Très bien. Mais ne demandez pas ce qu'on portait à l'époque.
+job.krystyna_wooden_album.note,La boîte en bois de Mme Krystyna. Photo de famille et parole d'Ola. Elles ont choisi elles-mêmes les tirages.
+job.krystyna_wooden_album.situation,"Józef, le défunt père de Krystyna, avait fabriqué une boîte à photos en bois à goupilles. Elles veulent prêter quelques tirages pour la salle commune."
+job.krystyna_wooden_album.title,La boîte à photos de Józef
+job.marta_poster_studio.client,"Marta, 34 ans, graphiste ; Patate le chat supervise."
+job.marta_poster_studio.line.1,Les affiches sont dedans. Patate les surveille du mauvais côté de la porte.
+job.marta_poster_studio.line.2,Le bail correspond. Votre voisin confirme que c'est votre atelier.
+job.marta_poster_studio.line.3,Le chat ne signera rien. Sa politique de confidentialité est assez stricte.
+job.marta_poster_studio.line.4,Pas besoin. Le prix est convenu et les documents suffisent.
+job.marta_poster_studio.note,L'atelier de Marta. Bail et voisin. Affiches récupérées ; Patate a refusé de commenter.
+job.marta_poster_studio.situation,"Les affiches destinées à la salle commune sont enfermées dans l'atelier loué par Marta. La clé est dedans, avec les tirages et son chat."
+job.marta_poster_studio.title,Les affiches derrière la porte
+job.refuse_sisters_flat.after.1,J'ai parlé avec la locataire. Elle demande d'attendre son retour.
+job.refuse_sisters_flat.client,"Norbert, 43 ans, s'inquiète pour les plantes de sa sœur."
+job.refuse_sisters_flat.line.1,Ma sœur est absente. Ses plantes vont sécher et elle ne répond pas.
+job.refuse_sisters_flat.line.2,On peut attendre son accord ou contacter le gestionnaire.
+job.refuse_sisters_flat.line.3,Je préfère ne pas déranger les voisins. Ce ne sont que des fleurs.
+job.refuse_sisters_flat.line.4,Je ne peux pas ouvrir sans son accord. Voici le numéro du gestionnaire.
+job.refuse_sisters_flat.note,Je n'ai pas ouvert chez la sœur de Norbert. Pas d'accord de la locataire. Je lui ai donné le numéro du gestionnaire.
+job.refuse_sisters_flat.situation,"Sa sœur est absente et ne répond pas. Norbert veut faire ouvrir son appartement pour arroser les plantes, mais ne peut présenter son accord."
+job.refuse_sisters_flat.title,Des fleurs derrière une porte fermée
+job.refuse_unapproved_stockroom.after.1,Ils ont récupéré les colis ce matin. Le magasin a maintenant de meilleurs horaires de livraison.
+job.refuse_unapproved_stockroom.client,"Marcel, 29 ans, livreur avec un chariot plein de colis."
+job.refuse_unapproved_stockroom.line.1,Ma livraison est sur le chariot. Le patron du magasin ne répond pas.
+job.refuse_unapproved_stockroom.line.2,Un bon de livraison ne vous autorise pas à entrer dans le magasin.
+job.refuse_unapproved_stockroom.line.3,Vous pourriez ouvrir juste assez pour déposer les colis à l'intérieur ?
+job.refuse_unapproved_stockroom.line.4,Pas sans autorisation. Organisons plutôt une remise sécurisée.
+job.refuse_unapproved_stockroom.note,"Réserve du Marché de Nuit. Bon de livraison, pas d'accord du propriétaire. Colis remis le matin."
+job.refuse_unapproved_stockroom.situation,"Une boutique du Marché de Nuit est fermée. Marcel demande l'ouverture de la réserve pour y déposer des colis, sans l'accord du propriétaire."
+job.refuse_unapproved_stockroom.title,Livraison après la fermeture
+job.roman_service_cupboard.client,"Monsieur Roman, 58 ans, gestionnaire des immeubles de la résidence."
+job.roman_service_cupboard.line.1,Les résidents ont voté le don des numéros. Le placard n'a pas été prévenu.
+job.roman_service_cupboard.line.2,J'ai votre registre et la décision signée. Le prix est convenu.
+job.roman_service_cupboard.line.3,Allez-y doucement. Ce sont les seuls numéros sans faute d'orthographe.
+job.roman_service_cupboard.line.4,"Je prendrai soin de l'émail. Pour les papiers, je ne promets rien."
+job.roman_service_cupboard.note,"Résidence du Soleil, placard d'entretien. M. Roman et vote signé. Les vieux numéros iront dans la salle commune."
+job.roman_service_cupboard.situation,Les résidents ont voté pour donner leurs anciennes plaques de porte émaillées à la nouvelle salle commune. Le placard d'entretien verrouillé n'est pas de cet avis.
+job.roman_service_cupboard.title,Le placard de l'escalier
+job.shared_room_door.after.1,Personne n'a perdu de clé à la première réunion. Un début prometteur.
+job.shared_room_door.client,"Elżbieta, gestionnaire de l'immeuble, accompagnée de Marta et de Mme Halina."
+job.shared_room_door.line.1,Décision signée et liste des résidents autorisés. Ce sont des portes communes.
+job.shared_room_door.line.2,Les documents concordent. Le tarif aussi. Nous pouvons ouvrir.
+job.shared_room_door.line.3,J'ai apporté l'enseigne. Patate l'a approuvée en dormant dessus.
+job.shared_room_door.line.4,"Et moi, des raviolis. La porte peut attendre. Eux, non."
+job.shared_room_door.note,"Vieille Ville, salle commune. Vote signé, gestionnaire et témoin. Chaises, photos et raviolis sont arrivés les premiers."
+job.shared_room_door.situation,"Après le vote des résidents, Elżbieta autorise l'ouverture de l'ancienne salle commune. Les chaises, les photos, l'enseigne et la recette de raviolis sont prêtes."
+job.shared_room_door.title,Une porte pour tout le monde
+job.stefan_book_tin.client,"Monsieur Stefan, 67 ans, tient un kiosque et connaît toutes les nouvelles du quartier."
+job.stefan_book_tin.line.1,"J'ai bien mis les jetons de bibliothèque à l'abri. De moi-même, apparemment."
+job.stefan_book_tin.line.2,Votre reçu et la photo du kiosque correspondent. Nous avons convenu du prix.
+job.stefan_book_tin.line.3,Je connais tous les horaires de bus. Mais ces chiffres ? Aucune chance.
+job.stefan_book_tin.line.4,"Au moins, le reçu a survécu. Je rangerai le mien à côté."
+job.stefan_book_tin.note,"Le kiosque de Stefan, boîte à jetons. Reçu et photo. Le propriétaire ne se souvient toujours pas de la combinaison."
+job.stefan_book_tin.situation,"Stefan a enfermé les jetons de bibliothèque de la nouvelle salle commune dans sa propre boîte à cadenas à anneaux, puis a oublié la combinaison."
+job.stefan_book_tin.title,La boîte à jetons de livres
+job.zuzanna_catalogue_drawer.client,"Zuzanna Wilk, stagiaire au musée, avec la conservatrice Dr Anna Rygiel."
+job.zuzanna_catalogue_drawer.line.1,Nous avons l'autorisation pour les copies. Le tiroir les prend pour les originaux.
+job.zuzanna_catalogue_drawer.line.2,C'est ma signature. Les originaux restent au musée.
+job.zuzanna_catalogue_drawer.line.3,"Conservatrice, protocole signé, prix convenu. Juste le tiroir, alors."
+job.zuzanna_catalogue_drawer.line.4,J'étiquetterai l'exposition « À manipuler avec soin ». À commencer par ce tiroir.
+job.zuzanna_catalogue_drawer.note,"Musée, tiroir du catalogue. La docteure Rygiel a autorisé les copies. Les originaux sont restés à leur place."
+job.zuzanna_catalogue_drawer.situation,Des copies autorisées de vieilles photos d'escalier sont coincées dans un tiroir verrouillé du musée. Les originaux resteront aux archives.
+job.zuzanna_catalogue_drawer.title,Le tiroir du catalogue
