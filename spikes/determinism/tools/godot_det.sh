@@ -32,7 +32,8 @@ device)
   adb shell getprop ro.product.cpu.abilist
   adb install -r "$APK"
   adb logcat -c
-  adb shell am start -n "$PKG/com.godot.game.GodotApp"
+  # launcher activity name differs between Godot templates: start whatever the LAUNCHER intent resolves to
+  adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1
   end=$(( $(date +%s) + T ))
   while [ "$(date +%s)" -lt "$end" ]; do
     if adb logcat -d | grep -q "LW_DET_DONE"; then break; fi
