@@ -96,3 +96,11 @@ Decyzje tej części: brak nowych D-NN (wszystkie rozstrzygnięcia mieszczą si�
 
 ## 2026-11-05 08:35 — manifest prywatności zweryfikowany
 - `PrivacyInfo.xcprivacy` z eksportu Godota 4.7.2 (CI `spike-haptics` run 41990034047): FileTimestamp `DDA9.1`+`C617.1`, SystemBootTime `35F9.1`, DiskSpace `E174.1`+`85F4.1`, tracking `false`, bez zbierania danych, **bez UserDefaults**. Rekomendacja w `store/privacy.md`: w presecie iOS zostawić tylko `C617.1`, `35F9.1`, `E174.1` (powody „pokazywania użytkownikowi” nas nie dotyczą). Zadanie 2 domknięte poza danymi właściciela (domena, administrator, e-mail IARC).
+
+# Etap 3 (`SESSION-C-PROMPT-3.md`)
+
+## 2026-11-05 09:25 — postęp godzinny
+- **Zadanie 1 (haptyka, `haptics/`):** gotowe, 15a173c. 7 rodzin, 83 pary rodzina×zdarzenie → 116 AHAP + 2 szablony ciągłe, 51 plików modulacji, 75 kompozycji Androida; `build.py` deterministyczny, `validate.py`: schemat i budżet OK (transjenty/10 s: iOS 17–23 / limit 40, A0 1,2–4,4 / 8; RMS ≤ 0,28; wypełnienie 58–65%). Podgląd HTML zsynchronizowany z audio/v2. Niespójności FEEL.md (9 punktów) — w `haptics/README.md`, do przeglądu.
+- **Zadanie 3 (QA, `qa/`):** gotowe, 2821bee + 741255b. Bot gra karierę headless (wejścia solvera lockcore przez `InputSampler`, 120 Hz), workflow `qa-career` (noc + push `game/**`, `qa/**`), artefakt `qa-career-report`. Wynik: przed commitami sesji B z 09:00 — 27/29 zleceń, 0 soft-locków; po nich — 16/29 i **N-13 High: ekran planu B nie kończy zlecenia ani samouczka**, N-14 (plan B ignoruje seed/tier zlecenia), N-15 (odmowa nalicza reputację wielokrotnie).
+- **Zadanie 4 (przegląd ciągły):** rundy 1 i 2 w `SESSION-C-REVIEW.md` (N-01, N-03, N-05 zweryfikowane naprawione; N-09 nie działa w praktyce przez N-13).
+- Następne: zadanie 2 (audio v2, część 2).
