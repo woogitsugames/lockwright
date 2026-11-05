@@ -403,3 +403,74 @@ Nie sprawdzono:
 - WIP `spikes/lit-metal` przejrzałem pobieżnie (rozmiary, licencje), shaderów nie czytałem.
 
 Pomiar narzutu bindingu (µs na krok) się nie udał: skrypt `-s` przekroczył limit czasu, więc w R-23 nie podaję liczb.
+
+---
+
+# Drugi przegląd (etap 2, 2026-11-05 rano, sesja C)
+
+Zakres: poprawki oznaczone `→ naprawione w …` (commity 5bddbd3, 43a4bf9, ee049f0, 7f9694a, 9981ec0) i nowy kod: pętla zlecenia (`game/scripts/lock/job_run.gd`, `game/scripts/ui/job_*.gd`), 7 rodzin w bindingu, samouczek.
+Metoda: czytanie kodu, lokalnie na kopii `game/` (Godot 4.7.2 headless): **smoke OK (locales en+pl)**, **GUT 34/34, 587 asercji**; walidacja YAML workflowów (`python3 -c 'import yaml…'`); stan runów CI z GitHub Actions.
+
+## Weryfikacja poprawek
+
+| Uwaga | Stan po weryfikacji | Uzasadnienie |
+|---|---|---|
+| R-01 osie rotate/push/tool | **zweryfikowane** | `step(tension, depth, lift, rotate=0, push=0, tool=0)` z `DEFVAL`, kwantyzacja 1/256 (push 1/64) jak w rdzeniu; test `test_families.gd` |
+| R-02 puszczenie prawego kciuka | **zweryfikowane** | `elif event.index == _touch_pick` + reset `_lift_raw`, test GUT |
+| R-03 pauza | **zweryfikowane w kodzie** | `UILayer` `process_mode = 3` (WHEN_PAUSED); w edytorze nie klikałem |
+| R-04 `capabilities()` String vs Dictionary | **zweryfikowane** | `haptics.gd:101-110` parsuje JSON z obu platform |
+| R-05 iOS `playEvent` / `NSString` | **zweryfikowane w kodzie, nie w CI** | `stringWithUTF8String:` w wrapperach; CI iOS nie działa (N-01) |
+| R-06…R-10, R-13 binding i FakeLockSession | **zweryfikowane testami GUT** | ten sam schemat zdarzeń/`describe`, nazwy sub-zdarzeń, okna |
+| R-11 priorytety | bez zmian w lockcore (nie było w zakresie B) | — |
+| R-12 `WorldEnvironment` | **zweryfikowane** | typ węzła poprawny, bez placeholdera przy imporcie |
+| R-15 preset Linux / R-28 i18n w eksporcie | **częściowo** | smoke z projektu OK; krok „export-pack-test” w CI **nie wykonał się** (N-01) |
+| R-16 determinizm przez binding | **zweryfikowane testem GUT** | golden `event_hash` |
+| R-20 ścieżka niskolatencyjna kliknięć | **częściowo** | fasada w `sfx.gd` czeka na singleton `LockwrightClickAudio`, którego **nie ma** w `platform/` ani w eksporcie → kliknięcia nadal przez AudioServer (≥ 46 ms na Androidzie). Patrz N-03 |
+| R-21 FeedbackDirector, transient vs opór | **częściowo** | GDScript: priorytety, limity, koalescencja 30 ms, throttle 60 Hz — OK. **Android: nie** — patrz N-02 |
+| R-22, R-23, R-25, R-26 wydajność | **zweryfikowane w kodzie** | `describe` raz na klatkę, pętle jako loopowane WAV, `CONNECT_ONE_SHOT` |
+| R-29 kolor stanu | **zweryfikowane** | odcienie szarości zamiast zielony/czerwony |
+| R-30, R-31 i18n danych i nazwiska | **zweryfikowane** dla gabloty; **nowe naruszenie** w zleceniach — N-04 |
+| R-32 safe-area pauzy | **zweryfikowane w kodzie** | `DisplayServer.get_display_safe_area()` |
+| R-33 GUT/testy poza eksportem | **zweryfikowane w presetach** | `exclude_filter` z `addons/gut/*`, `tests/*`, `scenes/dev/*` |
+| R-38…R-40, R-44…R-47 CI | **NIEZWERYFIKOWANE — CI nie startuje** | N-01 |
+| R-41 AAR haptyki | **zweryfikowane w kodzie** (`file_exists`, `[editor_plugins]`, `_supports_platform`); budowa APK w CI nie działa (N-01) |
+| R-42 iOS GDExtension (D-30) | **w kodzie zgodne z D-30**; CI iOS nie działa (N-01) |
+| R-43 lockcore_gd na Androida/iOS | **częściowo** | `.so` Androida commitowane do repo (R-48 wraca: artefakty buildu w gicie) |
+
+## Nowe uwagi
+
+**N-01 · High · CI gry nie uruchamia się od 5bddbd3** · `.github/workflows/game-android.yml:111-116`, `game-tests.yml:103-…`, `game-ios.yml:52`
+- **Co:** wszystkie trzy pliki to niepoprawny YAML. W `game-android.yml` i `game-tests.yml` treść heredoków (`<<TRES`, `<<'EOF'`) zaczyna się w kolumnie 0, a w bloku `run: |` musi być wcięta co najmniej jak blok. W `game-ios.yml` nazwa kroku zawiera nieujęte w cudzysłów `: ` („(D-30/D-42: .gdextension…)”). GitHub pokazuje runy jako zakończone porażką w chwili utworzenia, z nazwą pliku zamiast nazwy workflowu (runy 23–27 game-tests, 29–33 game-android, 45–49 game-ios).
+- **Skutek:** żadna z poprawek CI (R-15, R-38…R-47) ani eksport z i18n (R-28) nie przeszły przez CI; brak APK/IPA gry jako artefaktów.
+- **Poprawka:** wciąć treść heredoków razem z blokiem (bash i tak dostaje ją bez wcięcia YAML) albo użyć `printf` jak w `spike-*.yml`; nazwę kroku ująć w cudzysłów. Sprawdzenie lokalne: `python3 -c "import yaml; yaml.safe_load(open('.github/workflows/game-android.yml'))"`.
+
+**N-02 · High · Android: segment oporu przerywa transient (R-21 nie domknięte)** · `platform/android/lockwright-haptics/.../HapticsEngine.kt:140-160`, `game/scripts/autoload/feedback_director.gd:102-104`
+- **Co:** `pumpContinuous` wysyła nowy segment co ≥ 40 ms przez `vibrate()`, a każde `vibrate()` przerywa trwający efekt. Ducking w FeedbackDirectorze woła `update_continuous(…, 0.0, …)`, co przy A1–A3 **wyzwala nowy segment** (amp 30) — czyli ducking przerywa właśnie ten transient, który miał chronić.
+- **Skutek:** `set`/`false_set` (12–40 ms) bywa ucinany; podpis false_set (+28 ms) ginie w haptyce.
+- **Poprawka:** w `HapticsEngine` pamiętać `lastTransientAt` i długość efektu (`getPrimitiveDurations`), w `pumpContinuous` pomijać segmenty do `lastTransientAt + duration + 20 ms` („pominąć jeden segment”, TECH §3.5); w FeedbackDirectorze na Androidzie nie wysyłać aktualizacji przy duckingu.
+
+**N-03 · Medium · Brak natywnej ścieżki kliknięć mimo fasady (R-20)** · `game/scripts/autoload/sfx.gd:20-27, 62-66`
+- **Co:** fasada szuka singletonu `LockwrightClickAudio` z `play(event, volume_db, pitch, pan, tick)`. Takiego pluginu nie ma. Gotowy i zbudowany w CI plugin to `spikes/audio-latency` (`LockwrightLowLatencyAudio`: `load_sample(id, pcm, rate)`, `play(id, gain, pitch)`, `stats()`), a próbek nikt do niego nie ładuje.
+- **Poprawka:** przenieść plugin ze spike'u do `platform/android/` pod docelową nazwą, w `Sfx._ready()` załadować PCM wszystkich krytycznych zdarzeń (`AudioStreamWAV.data`, 16-bit mono 48 kHz), mapować `volume_db` → `gain`. Pomiar efektu: aplikacja D-33 (`spikes/measure`).
+
+**N-04 · Medium · Ekran weryfikacji pokazuje graczowi notatkę projektową, po polsku, bez i18n** · `game/scripts/ui/job_verify.gd:14`, `game/data/jobs/*.json` (`verification`)
+- **Co:** `cards_label.text = job.get("verification", "")` wyświetla surowy tekst z biblii treści, np. „legitymacja działkowca (2) i świadek (2), próg 3. … Haczyk: brak.” — z wagami, progiem i komentarzem autora, tylko po polsku (także w trybie EN).
+- **Skutek:** łamie zasadę „teksty dla gracza tylko przez i18n, PL + EN”, zdradza rozwiązanie (próg, „haczyk”), wygląda jak panel z notatkami.
+- **Poprawka:** rozbić `verification` na dane (`cards: [{id, weight}]`, `threshold`) i klucze i18n dla nazw dokumentów; graczowi pokazywać same przedmioty (D-25: informacje na przedmiotach), bez wag i progu.
+
+**N-05 · Medium · Zlecenia: tier ucinany do 1–3, rodziny bez implementacji mapowane na inne** · `game/scripts/lock/job_run.gd:8-22, 33-34`
+- **Co:** `tier_for` = `clampi(tier, 1, 3)`, a rdzeń sam przycina do zakresu rodziny (pin_tumbler 2–7, lever 3–5, lever_detector 5–6). Zlecenia z tierami 4–7 grają się jak t3, a dźwignie zawsze jak t3. Mapa rodzin zamienia `dial_safe` → `lever_detector`, `magnetic` → `ring_combo`, `axial_slider`/`dimple`/`disc_detainer` → `warded`, `time_lock` → `wafer`: gracz czyta o sejfie z tarczą, a dostaje inny mechanizm.
+- **Poprawka:** przekazywać tier z danych bez cięcia (lockcore przytnie), a zlecenia z rodzinami bez implementacji ukrywać na liście (`jobs_list.gd`) zamiast podmieniać mechanizm; mapę zostawić tylko dla aliasów nazw.
+
+**N-06 · Low · Seed zlecenia z `hash()` GDScriptu** · `job_run.gd:29-30`
+- `hash(String)` zależy od implementacji silnika; po migracji Godota (TECH §1.9) seedy zleceń mogą się zmienić, a z nimi zapis i powtórki. **Poprawka:** FNV-1a 64 jak w lockcore (`fnv1a64(id)`) albo seed zapisany w danych zlecenia.
+
+**N-07 · Medium · Tier „ENVELOPE” na Androidzie to tyki, nie obwiednia** · `HapticsEngine.kt:150-157`
+- Dla API 36 z obwiedniami opór jest wysyłany jako kompozycja `PRIMITIVE_LOW_TICK` co 50 ms — w praktyce seria tyknięć 20 Hz, a nie ciągły opór. Spike 2 (`spikes/haptics-latency/shared-android/HapticCore.kt`) używa `VibrationEffect.BasicEnvelopeBuilder` (control points 20/40 ms). **Poprawka:** przenieść wariant z obwiednią; pomiar przerw: aplikacja D-33 (krok „ciągły opór”).
+
+**N-08 · Low · Artefakty buildu wracają do gita (R-48)** · `game/addons/lockcore_gd/bin/*.so`
+- Commit 9981ec0 podmienia `liblockcore_gd.*.so` w repo. Przy kilku sesjach to konflikty binarne i rosnąca historia. **Poprawka:** budować w CI i przekazywać jako artefakt (jak `spike-*.yml`), lokalnie skrypt `build_gdext.sh`.
+
+**Samouczek (S1–S3, `docs/ONBOARDING.md`)** — w `game/` nie ma jeszcze kodu samouczka (szukane: `tutorial`, `onboarding`, `samouczek`, `imadło` w `game/scripts` i `game/scenes`); przegląd przy następnej rundzie.
+
+**Zmiany wizualne / dostępność nowych ekranów** — w osobnym raporcie `docs/handoff/A11Y-AUDIT.md`.
