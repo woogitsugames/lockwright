@@ -1,5 +1,5 @@
 key,fr
-job.allotment_shed.client,"Un jardinier de 74 ans, M. Zbyszek, cultive une parcelle dans un jardin familial."
+job.allotment_shed.client,"M. Zbyszek, 74 ans, jardinier amateur."
 job.allotment_shed.situation,Le cadenas de son abri de jardin est rouillé et ne s'ouvre plus. Arrosoirs et graines sont à l'intérieur ; la parcelle est au nom de sa femme.
 job.allotment_shed.title,L'abri de M. Zbyszek
 job.bike_interview.client,"Kuba, 23 ans, se rend à son premier entretien d'embauche dans une veste empruntée."
@@ -20,12 +20,12 @@ job.charleroi_letters.title,L'adresse dans les lettres de grand-père
 job.dollhouse_wooden_lock.client,"Hania, 7 ans, et son père Tomasz, menuisier de troisième génération."
 job.dollhouse_wooden_lock.situation,L'arrière-grand-père a fabriqué une maison de poupées avec une serrure à goupilles en bois. La clé en bois s'est perdue dans le déménagement ; la poupée préférée de Hania est dedans.
 job.dollhouse_wooden_lock.title,La maison de poupées de l'arrière-grand-père
-job.drummer_locker.client,"Iga, 27 ans, batteuse du groupe « Pommes acides »."
+job.drummer_locker.client,"Iga, 27 ans, batteuse du groupe « Sour Apples »."
 job.drummer_locker.situation,"Ses baguettes, ses écouteurs de scène et sa liste de morceaux sont dans un casier fermé de la salle de répétition. Le concert commence dans une heure."
 job.drummer_locker.title,Les baguettes dans le casier
 job.finnish_sailor.client,"Aino, 50 ans, mécanicienne en chef sur un navire finlandais à quai pour deux jours."
 job.finnish_sailor.situation,Une serrure à disques protège le coffre de marin d'Aino. Sa clé est tombée à l'eau et le capitaine confirme que le coffre lui appartient.
-job.finnish_sailor.title,Le coffre de la marin
+job.finnish_sailor.title,Le coffre de la navigatrice
 job.ghent_beguinage.client,"Frère Pieter, 66 ans, veille sur une maison d'un béguinage gantois. Il se déplace à vélo, un panier d'osier au guidon."
 job.ghent_beguinage.situation,"Dans le béguinage historique, une réserve abrite d'anciens registres paroissiaux. Personne n'en a la clé ; il faut ouvrir la porte sans laisser de trace."
 job.ghent_beguinage.title,Une porte du béguinage
@@ -47,7 +47,7 @@ job.krakow_tenement_gate.title,Le portail de Kazimierz
 job.liege_bakery.client,"Nadia, 29 ans, a repris la boulangerie de son oncle et prépare des gaufres au sucre perlé."
 job.liege_bakery.situation,La serrure de la porte arrière s'est bloquée lorsqu'une mauvaise clé a déclenché son détecteur. Il est 3 h 50 et la pâte lève.
 job.liege_bakery.title,La boulangerie à quatre heures
-job.museum_time_lock.client,"La docteure Anna Rygiel dirige les collections du musée de la Technologie du Port. Elle porte des gants de coton, même pour boire son café."
+job.museum_time_lock.client,"Dr Anna Rygiel, conservatrice du musée de la Technologie du Port. Elle porte des gants de coton, même pour boire son café."
 job.museum_time_lock.situation,La serrure à minuterie d'un ancien coffre-fort reste bloquée. Le musée a besoin de la plaque qui se trouve dedans pour une exposition.
 job.museum_time_lock.title,L'horloge qui garde le coffre
 job.newlyweds_4am.client,"Kasia et Bartek : elle porte un voile de travers, lui tient le bouquet."
@@ -77,7 +77,7 @@ job.swiatniki_journeyman_padlock.title,Le cadenas de compagnon de M. Władysław
 job.time_capsule.client,"Madame Jadwiga, ancienne professeure principale, a réuni vingt anciens élèves, aujourd'hui trentenaires."
 job.time_capsule.situation,La classe de 3b a enterré une capsule temporelle en 2001. Madame Jadwiga a oublié la combinaison et l'école a accepté de l'ouvrir devant tout le monde.
 job.time_capsule.title,La capsule temporelle de la 3b
-job.uncle_safe_heirs.client,"Ewa, Marek et Piotr sont frère et sœur ; chacun a sa théorie sur le coffre-fort."
+job.uncle_safe_heirs.client,"Ewa, Marek et Piotr, une fratrie ; chacun a sa théorie sur le coffre-fort."
 job.uncle_safe_heirs.situation,"Trois héritiers se partagent le coffre-fort de l'oncle Bogdan. Marek veut l'ouvrir tout de suite, mais Ewa arrive. Ils doivent se mettre d'accord avant le début de l'intervention."
 job.uncle_safe_heirs.title,Le coffre-fort de l'oncle Bogdan
 job.widow_bureau.client,"Madame Irena, 79 ans, bibliothécaire retraitée, est veuve depuis un an."
@@ -194,7 +194,7 @@ cast.wladyslaw.name,Monsieur Władysław
 cast.zbyszek.name,Monsieur Zbyszek
 cast.zosia.name,Madame Zosia
 cast.zuzanna.name,Zuzanna
-job.allotment_shed.line.1,"La parcelle est au nom de ma femme. Moi, je bêche. Elle se repose à la maison, elle a mal au genou."
+job.allotment_shed.line.1,"La parcelle est au nom de ma femme. Moi, je bêche. Elle repose son genou."
 job.allotment_shed.line.2,Vous avez votre carte de jardinier ? Et un voisin qui puisse confirmer ?
 job.allotment_shed.line.3,Zbyszek est ici depuis plus longtemps que cet abri. Plus longtemps que moi.
 job.allotment_shed.line.4,"Ça vous dit, des cornichons ? Je n'apporte jamais d'argent au jardin."
@@ -211,7 +211,7 @@ job.bramah_bureau.line.4,"Oui, plus de soixante ans après. Je vous raconterai q
 job.bramah_bureau.note,Le secrétaire de Gosia. Facture et possession vérifiées. Serrure d'origine préservée. Je lui ai parlé de la vitrine de Piccadilly.
 job.brussels_townhouse.line.1,Je suis Juliette sur mon balcon. Sauf que Roméo a soixante ans et la clé du portail.
 job.brussels_townhouse.line.2,Madame Magda habite ici depuis toujours. Depuis toujours.
-job.brussels_townhouse.line.3,"Le bail, l'adresse délivrée par la commune et un voisin. Ça suffit. Ne vous penchez pas par-dessus la rambarde."
+job.brussels_townhouse.line.3,"Bail, adresse communale, témoin : c'est bon. Éloignez-vous de la rambarde."
 job.brussels_townhouse.line.4,Géraniums arrosés. Mission accomplie.
 job.brussels_townhouse.note,"Saint-Gilles. Autre pays, même règle. Bail, commune, Monsieur Jacques. Les géraniums vont bien."
 job.cat_bathroom.line.1,Il l'a fait exprès. Il m'a regardée dans les yeux avant de sauter sur la poignée.
@@ -219,17 +219,17 @@ job.cat_bathroom.line.2,C'est chez vous et il est dans la salle de bains. Pas de
 job.cat_bathroom.line.3,Et s'il a peur ?
 job.cat_bathroom.line.4,Continuez à lui parler. Je ferai moins de bruit que lui.
 job.cat_bathroom.note,Patate le chat. Marta était chez elle ; aucune vérification nécessaire. Il ne s'est pas excusé. Elle a promis une nouvelle enseigne.
-job.charleroi_letters.line.1,"J'appelle pour un conseil, pas pour commander une intervention. Mme Martine a la boîte de grand-père."
+job.charleroi_letters.line.1,"Je veux un conseil, pas une intervention. Mme Martine a le coffret de grand-père."
 job.charleroi_letters.line.2,"C'est à votre famille. Moi, je l'ai seulement gardée."
 job.charleroi_letters.line.3,Vous l'avez gardée pendant soixante-dix ans ?
-job.charleroi_letters.line.4,Vous êtes toutes les deux d'accord pour l'ouvrir. La vérification la plus simple de ma carrière.
+job.charleroi_letters.line.4,Vous voulez l'ouvrir toutes les deux. Voilà une autorisation facile à vérifier.
 job.charleroi_letters.note,"Charleroi. Le coffret de grand-père Józef, gardé par Mme Martine. Tout le monde voulait l'ouvrir. Première fois que je pleure au travail. Un peu."
 job.dollhouse_wooden_lock.line.1,Lala est enfermée là-dedans depuis mardi. Elle s'ennuie.
 job.dollhouse_wooden_lock.line.2,Grand-père appelait ça une serrure égyptienne. Je ne sais pas si c'est vraiment exact.
 job.dollhouse_wooden_lock.line.3,Le nom est resté. La véritable histoire est plus intéressante. Je vous raconterai après.
 job.dollhouse_wooden_lock.line.4,Vous ferez une nouvelle clé ? En bois ? Papa a une planche.
 job.dollhouse_wooden_lock.note,La maison de poupées de l'arrière-grand-père. Serrure en bois à goupilles. Lala libérée. Tomasz taillera une nouvelle clé sous la surveillance de Hania.
-job.drummer_locker.line.1,"Je pourrais jouer avec des cuillères, mais j'aimerais autant éviter. Le concert est dans une heure."
+job.drummer_locker.line.1,Je pourrais jouer avec des cuillères. Mais le concert est dans une heure.
 job.drummer_locker.line.2,Iga loue le casier huit. Elle paie tous les mois. Tout est écrit dans mon carnet.
 job.drummer_locker.line.3,Votre carnet fera l'affaire. M. Edek dit que vous notez absolument tout.
 job.drummer_locker.line.4,"Si vous arrivez à temps, on jouera un morceau pour vous. Très fort."
@@ -259,7 +259,7 @@ job.kiosk_shutter.line.2,Mme Krysia confirme et j'ai la lettre du grossiste. Enc
 job.kiosk_shutter.line.3,"Le jour de l'ouverture, en 94. Ma moustache avait plus d'allure que le kiosque."
 job.kiosk_shutter.line.4,Stefan est là depuis plus longtemps que l'arrêt de bus. Même les bus le connaissent.
 job.kiosk_shutter.note,"Le kiosque de M. Stefan. Pour un commerce, j'ai demandé davantage. Photo de 1994, moustache authentique. Journal gratuit pour la semaine."
-job.krakow_antiquarian.line.1,Le coffre est à moi. Je loue la boutique à la ville. Le patron du café voisin peut confirmer.
+job.krakow_antiquarian.line.1,Le coffre est à moi. Je loue à la ville ; le café voisin peut confirmer.
 job.krakow_antiquarian.line.2,"Et pendant que vous y êtes, cette petite boîte. Un client l'a laissée pour une estimation."
 job.krakow_antiquarian.line.3,"Le coffre, oui. La boîte, non. Il faudra que son propriétaire soit présent."
 job.krakow_antiquarian.line.4,Vous avez raison. Je vieillis. Et je deviens impatient.
@@ -280,7 +280,7 @@ job.museum_time_lock.line.3,"Lettre de la direction, procès-verbal de remise. L
 job.museum_time_lock.line.4,"Docteure Rygiel, nous avons aussi des gants pour le serrurier. Taille L."
 job.museum_time_lock.note,Musée de la Technologie. La docteure Rygiel avait tout en trois exemplaires. La serrure à minuterie a cédé. Zuzanna y fait évidemment son stage.
 job.newlyweds_4am.line.1,"J'ai ma pièce d'identité, mais pas d'adresse dessus. Je sais. De nos jours, c'est courant."
-job.newlyweds_4am.line.2,"Mon adresse officielle est dans l'application. Vous voyez ? Avec ce voile, c'est compliqué."
+job.newlyweds_4am.line.2,Mon adresse est dans l'application. Regardez. Ce voile ne m'aide pas.
 job.newlyweds_4am.line.3,Je les connais. Ils se sont mariés aujourd'hui. Tout le quartier a entendu la fête.
 job.newlyweds_4am.line.4,Félicitations. Deux minutes et vous êtes chez vous.
 job.newlyweds_4am.note,"Jeunes mariés, 4 h 12. Adresse confirmée par l'application et un voisin en peignoir. Gâteau à trois étages. J'ai eu une part."
@@ -291,12 +291,12 @@ job.night_nurse.line.4,"Pardon, je ne parle pas beaucoup. Je parle déjà dans m
 job.night_nurse.note,"Mme Agnieszka, après une garde de nuit. M. Roman à l'interphone, toujours efficace. Remise de voisinage, bien sûr."
 job.pizzeria_pays_pizza.line.1,L'argent est dans la caisse. La caisse est dedans. Je paie en pizza. Vous avez faim ?
 job.pizzeria_pays_pizza.line.2,"Le devis d'abord, la carte ensuite. Vous avez le bail ?"
-job.pizzeria_pays_pizza.line.3,Je la connais depuis vingt ans. Mon kebab est juste à côté. Sa margherita est une œuvre d'art.
+job.pizzeria_pays_pizza.line.3,Je la connais depuis vingt ans. Je vends des kebabs à côté. Sa margherita est un art.
 job.pizzeria_pays_pizza.line.4,"La pâte monte, moi je descends. Avant l'aube, ce sera parfait."
 job.pizzeria_pays_pizza.note,La pizzeria de Renata. Bail et voisin vérifiés. Payé en margherita. La boîte est sur mon étagère.
 job.refuse_aunt_alive.after.1,Mme Lucyna revient vendredi. Elle vous fera changer la serrure à ce moment-là.
 job.refuse_aunt_alive.after.2,"Heureusement que vous avez refusé. Sinon, je n'aurais pas fermé l'œil."
-job.refuse_aunt_alive.line.1,Ma tante est morte la semaine dernière. La succession n'est pas encore réglée. C'est tout récent.
+job.refuse_aunt_alive.line.1,Ma tante est morte la semaine passée. La succession est en cours. C'est récent.
 job.refuse_aunt_alive.line.2,Mme Lucyna ? Elle est en cure de repos. Elle a appelé hier. Elle se sent mieux.
 job.refuse_aunt_alive.line.3,J'ai dû confondre quelque chose.
 job.refuse_aunt_alive.line.4,Appelons Mme Lucyna ensemble. Puis nous appellerons l'agente Sowa.
@@ -306,7 +306,7 @@ job.refuse_ex_partner.after.2,J'ai entendu ça à l'arrêt de bus. Vous êtes qu
 job.refuse_ex_partner.line.1,J'ai vécu ici trois ans. J'ai le droit d'entrer récupérer mes affaires.
 job.refuse_ex_partner.line.2,"Un seul nom sur la boîte aux lettres, et ce n'est pas le vôtre. J'appelle le gestionnaire."
 job.refuse_ex_partner.line.3,Pourquoi le gestionnaire ? C'est une affaire privée.
-job.refuse_ex_partner.line.4,Je ne peux pas ouvrir. La police pourra peut-être vous aider à récupérer vos affaires. Je l'appelle ?
+job.refuse_ex_partner.line.4,Je ne peux pas ouvrir. La police peut vous aider à récupérer vos affaires. J'appelle ?
 job.refuse_ex_partner.note,"Je n'ai pas ouvert. Un seul nom sur la porte, pas le sien. L'agente Sowa a pris la suite. Aucun regret."
 job.refuse_rush_bribe.after.1,Sa sœur ignorait tout de ces documents. Merci d'avoir appelé.
 job.refuse_rush_bribe.after.2,Un homme en costume cherchait un serrurier hier. Je l'ai envoyé chez vous. Désolé.
@@ -323,7 +323,7 @@ job.student_dorm.note,"Chambre 412, campus. Le concierge a consulté sa liste ; 
 job.swiatniki_journeyman_padlock.line.1,Je le garde depuis soixante-dix ans. Il n'y avait qu'une clé. Mon petit-fils l'a perdue.
 job.swiatniki_journeyman_padlock.line.2,Et vous savez l'ouvrir ?
 job.swiatniki_journeyman_padlock.line.3,Oui. Mais je veux voir si les jeunes savent encore le faire.
-job.swiatniki_journeyman_padlock.line.4,Je connais cette écriture. C'est celle de Henryk. Je lui ai appris le métier. Le carnet est entre de bonnes mains.
+job.swiatniki_journeyman_padlock.line.4,C'est l'écriture de Henryk. Je lui ai enseigné le métier. Ce carnet est bien tombé.
 job.swiatniki_journeyman_padlock.note,"M. Władysław, Świątniki. Il a reconnu l'écriture de Henryk dans mon carnet. C'est lui qui lui avait enseigné la première règle."
 job.time_capsule.line.1,Je sais que le code était une date. Mais laquelle ?
 job.time_capsule.line.2,"L'école a donné son accord. Ouvrez-la devant tout le monde, je vous prie."
@@ -446,12 +446,12 @@ tip.ethics_08,"Une succession exige des documents et des personnes, pas une main
 tip.ethics_09,"Je suis venu pour la serrure, pas pour le contenu du domicile d'autrui."
 tip.ethics_10,Convenez du prix d'abord. Laissez les surprises à la bouilloire.
 tip.feel_01,Un clic sec et clair ne raconte pas la même histoire qu'un double clic sourd.
-tip.feel_02,"Le cylindre a son écriture : un léger tour, un tour plus profond, puis un retour."
+tip.feel_02,"Le rotor a son écriture : un léger tour, un tour plus profond, puis un retour."
 tip.feel_03,Le silence aussi est un son. Surtout après un choc mat.
 tip.feel_04,Un ressort peut se plaindre sans être cassé. Moi aussi.
 tip.feel_05,"Un sifflement métallique montant est une alerte, pas une fanfare de victoire."
 tip.feel_06,Le clic net est bref. Le clic douteux a un écho.
-tip.feel_07,"Quand le cylindre recule, il participe encore à la conversation."
+tip.feel_07,"Quand le rotor recule, il participe encore à la conversation."
 tip.feel_08,"Trois traces de frottement sont un indice du jeu, pas une note sur votre bulletin."
 tip.feel_09,Un contour peut être interrompu alors que l'outil est intact.
 tip.feel_10,Un petit triangle de lumière en dit plus qu'une page de chiffres.
@@ -496,7 +496,7 @@ tip.calm_08,Une porte récalcitrante n'est pas une insulte personnelle. J'ai vé
 tip.calm_09,Les bonnes mains sont patientes. Elles savent aussi quand s'arrêter.
 tip.calm_10,"Le travail fini, laissez les gens reprendre leur journée."
 notebook.extra.false_set_streak,Trois doubles clics sourds à la suite. Je les ai notés. Ils avaient l'air contents d'eux.
-notebook.extra.counter_reply,Le cylindre a résisté. J'ai entendu son avis et terminé sans me disputer.
+notebook.extra.counter_reply,Le rotor a résisté. J'ai entendu son avis et terminé sans me disputer.
 notebook.extra.overset_twice,Deux chocs mats. J'ai fini quand même. Le carnet en donne une version polie.
 notebook.extra.three_drops,"Trois petites avalanches, une porte ouverte. Assez de bruit pour aujourd'hui."
 notebook.extra.drop_then_set,"Tout est retombé, puis un clic net est revenu. Heureux d'avoir eu cette deuxième phrase."
@@ -554,12 +554,12 @@ job.gosia_workbench_drawer.note,"Le tiroir de l'établi de Gosia. Facture et pho
 job.gosia_workbench_drawer.situation,Gosia a acheté un ancien établi dont le tiroir est verrouillé. Elle veut l'offrir à la salle commune sans abîmer le bois.
 job.gosia_workbench_drawer.title,Le tiroir de l'établi
 job.halina_recipe_box.client,"Madame Halina, 81 ans, et sa voisine Madame Zosia."
-job.halina_recipe_box.line.1,Ma recette de raviolis est dedans. Je me souviens juste du mot « poignée ».
+job.halina_recipe_box.line.1,Ma recette de pierogi est dedans. Je me souviens juste du mot « poignée ».
 job.halina_recipe_box.line.2,C'est la boîte de Halina. Voyez : elle est près de sa tasse sur la photo.
 job.halina_recipe_box.line.3,"Photo, témoin, prix convenu. Nous pouvons commencer."
 job.halina_recipe_box.line.4,"Après, on décidera combien pèse une poignée. C'est une vieille querelle."
 job.halina_recipe_box.note,"Mme Halina, boîte à recettes. Photo et parole de Mme Zosia. Prix convenu ; le débat sur la poignée continue."
-job.halina_recipe_box.situation,Halina veut retrouver sa recette de raviolis pour la nouvelle salle commune. Elle a perdu la clé de sa vieille boîte ; Zosia a une photo.
+job.halina_recipe_box.situation,Halina veut retrouver sa recette de pierogi pour la nouvelle salle commune. Elle a perdu la clé de sa vieille boîte ; Zosia a une photo.
 job.halina_recipe_box.title,La boîte des poignées
 job.krystyna_wooden_album.client,Madame Krystyna et sa fille Ola apportent des photos de famille.
 job.krystyna_wooden_album.line.1,Józef a fabriqué cette boîte à photos. Je crois que la petite clé était en bois.
@@ -608,9 +608,9 @@ job.shared_room_door.client,"Elżbieta, gestionnaire de l'immeuble, accompagnée
 job.shared_room_door.line.1,Décision signée et liste des résidents autorisés. Ce sont des portes communes.
 job.shared_room_door.line.2,Les documents concordent. Le tarif aussi. Nous pouvons ouvrir.
 job.shared_room_door.line.3,J'ai apporté l'enseigne. Patate l'a approuvée en dormant dessus.
-job.shared_room_door.line.4,"Et moi, des raviolis. La porte peut attendre. Eux, non."
-job.shared_room_door.note,"Vieille Ville, salle commune. Vote signé, gestionnaire et témoin. Chaises, photos et raviolis sont arrivés les premiers."
-job.shared_room_door.situation,"Après le vote des résidents, Elżbieta autorise l'ouverture de l'ancienne salle commune. Les chaises, les photos, l'enseigne et la recette de raviolis sont prêtes."
+job.shared_room_door.line.4,"Et moi, des pierogi. La porte peut attendre. Eux, non."
+job.shared_room_door.note,"Vieille Ville, salle commune. Vote signé, gestionnaire et témoin. Chaises, photos et pierogi sont arrivés les premiers."
+job.shared_room_door.situation,"Après le vote des résidents, Elżbieta autorise l'ouverture de l'ancienne salle commune. Les chaises, les photos, l'enseigne et la recette de pierogi sont prêtes."
 job.shared_room_door.title,Une porte pour tout le monde
 job.stefan_book_tin.client,"Monsieur Stefan, 67 ans, tient un kiosque et connaît toutes les nouvelles du quartier."
 job.stefan_book_tin.line.1,"J'ai bien mis les jetons de bibliothèque à l'abri. De moi-même, apparemment."
