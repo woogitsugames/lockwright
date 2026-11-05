@@ -333,9 +333,9 @@ if SHOT == 'menu':
     if ORIENT == 'portrait': hx = [RX - 145, RX - 45, RX + 52, RX + 142]
     else: hx = [RX - 100, RX, RX + 100]
     h = cup_hook(hx[0], RZ); r1 = split_ring(h, yaw=20); key_tag('tag13', r1, '13', tag_alu, rot=-4, swing=-8)
-    invented_key(r1 + Vector((4, 3.0, 2)), rot=9, sc=1.5, swing=10)
+    invented_key(r1 + Vector((4, 8.0, 2)), rot=9, sc=1.5, swing=10)
     h = cup_hook(hx[1], RZ); r2 = split_ring(h, r=15, yaw=-30); key_tag('tag14', r2 + Vector((-3, 0, 1)), '14', brass, rot=5, swing=12)
-    invented_key(r2 + Vector((6, 3.0, 2)), rot=-14, sc=1.6, swing=-6)
+    invented_key(r2 + Vector((6, 8.0, 2)), rot=-14, sc=1.6, swing=-6)
     h = cup_hook(hx[2], RZ)
     if ORIENT == 'portrait':
         r3 = split_ring(h, r=12, yaw=15); key_tag('tag7', r3, '7', tag_steel, rot=-2, swing=-18, w=70, h=128)
