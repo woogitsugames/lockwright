@@ -13,6 +13,16 @@ for line in text.splitlines():
         bot = json.loads(line[len('QA_REPORT '):])
 missing = sorted(set(re.findall(r'missing translation for key ([\w.\-]+)', text)))
 script_errors = [l.strip() for l in text.splitlines() if 'SCRIPT ERROR' in l]
+# unique script errors with their location (the "at: ..." line that follows) and count; parse errors first,
+# so one repeated runtime error cannot hide a script that does not compile
+_lines = text.splitlines()
+_uniq = collections.OrderedDict()
+for _i, _l in enumerate(_lines):
+    if 'SCRIPT ERROR' in _l:
+        _at = next((x.strip() for x in _lines[_i + 1:_i + 3] if x.strip().startswith('at:')), '')
+        _k = (_l.strip(), _at)
+        _uniq[_k] = _uniq.get(_k, 0) + 1
+script_errors_unique = sorted(_uniq.items(), key=lambda kv: ('Parse Error' not in kv[0][0], -kv[1]))
 errors = [l.strip() for l in text.splitlines() if l.startswith('ERROR:') and 'ALSA' not in l and 'audio_driver' not in l]
 err_counts = collections.Counter(re.sub(r'\d+', 'N', e)[:160] for e in errors)
 crashed = code not in (0,) or 'Program crashed' in text or 'handle_crash' in text or not bot
@@ -49,8 +59,8 @@ L.append('')
 L.append(f'## Brakujące klucze i18n ({len(missing)})')
 L += [f'- `{k}`' for k in missing] or ['- brak']
 L.append('')
-L.append(f'## Błędy skryptów ({len(script_errors)})')
-L += [f'- `{e[:200]}`' for e in script_errors[:20]] or ['- brak']
+L.append(f'## Błędy skryptów ({len(script_errors)}, unikalnych: {len(script_errors_unique)})')
+L += [f'- {n}× `{e[:200]}` {at}' for (e, at), n in script_errors_unique[:20]] or ['- brak']
 L.append('')
 L.append('## Błędy silnika (najczęstsze)')
 L += [f'- {n}× `{e}`' for e, n in err_counts.most_common(15)] or ['- brak']
@@ -120,8 +130,8 @@ if os.environ.get('GITHUB_ACTIONS'):
         print(f"::warning title=QA gry: ekran bez wyjścia::{x.get('scene')}: {x.get('reason')}")
     for k in missing[:20]:
         print(f"::warning title=QA gry: brak klucza i18n::{k}")
-    for e in script_errors[:10]:
-        print(f"::warning title=QA gry: błąd skryptu::{e[:200]}")
+    for (e, at), n in script_errors_unique[:10]:
+        print(f"::warning title=QA gry: błąd skryptu::{n}x {e[:200]} {at}")
 infra_fail = (not bot) or timeout or crashed
 if infra_fail:
     print('::error title=QA workflow::bot did not finish (no QA_REPORT, timeout or engine crash) - see career.log')
@@ -135,6 +145,6 @@ if os.environ.get('QA_STRICT') == '1' and verdict != 'OK':
 # blockers: the game cannot be played at all (a GDScript that does not compile, or no lock reached) -> red run
 blocker = bool(script_errors) or (bot and not bot.get('locks'))
 if blocker:
-    print('::error title=QA gry: bloker::' + (script_errors[0][:200] if script_errors else 'no lock was reached in the whole career'))
+    print('::error title=QA gry: bloker::' + (' '.join(script_errors_unique[0][0])[:240] if script_errors else 'no lock was reached in the whole career'))
 if os.environ.get('QA_FAIL_ON_INFRA') == '1' and (infra_fail or blocker):
     sys.exit(2)

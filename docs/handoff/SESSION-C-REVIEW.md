@@ -887,3 +887,34 @@ Raport GEM3 (`docs/handoff/device-tests/REPORT.md`): BUG-01 (`boot.gd`, `first_r
 **game-ios (42023529618, 81aa034) · N-24 kontynuacja:** `scons: *** [bin/liblockwright_haptics.ios.template_release] Source file: Sources/register_types.ios.template_release.arm64.o is static and is not compatible with shared target`. Sesja B wypchnęła 9eca512 („build iOS haptics plugin objects with SharedObject”), run 42031298421 w toku — sprawdzę w następnej rundzie. Ostrzeżenia `-Wunguarded-availability-new` (deployment target iOS 12, Core Haptics od iOS 13): podnieść `IPHONEOS_DEPLOYMENT_TARGET`/`ios_min_version` do 15.0 (TECH §6: minimum iOS 17), nie wyciszać.
 
 **qa-career (42022913627):** log zawiera tylko krok uploadu, przyczyna jest w raporcie (artefakt `qa-career-report`). Poprzednia sesja w e0caa51 naprawiła bezwzględną ścieżkę `replay_tool` (Godot `--path` zmienia katalog roboczy, więc profile feel i clumsy nie startowały). Run na e0caa51 (42034400904) czeka w kolejce; lokalne odtworzenie w toku.
+
+## Runda CI 2 — 2026-11-05 15:20 (qa-career odtworzone lokalnie, Godot 4.7.2 + lockcore_gd z godot-cpp e103d34)
+
+**qa-career jest czerwony z powodu błędów gry, nie workflowu.** Macierz 5 profili lokalnie na 4d41337: kod 2 (bloker = błąd skryptu GDScript), wszystkie profile 19/29, soft-lock w warsztacie, 0 zakupów, 23 błędy skryptu.
+
+**N-44 · High (bloker CI) · `workshop_screen.gd` nie kompiluje się: API Godota 3** · `game/scripts/ui/workshop_screen.gd:21`
+  ```
+  SCRIPT ERROR: Parse Error: Static function "get_time()" not found in base "GDScriptNativeClass".
+            at: GDScript::reload (res://scripts/ui/workshop_screen.gd:21)
+  ERROR: Failed to load script "res://scripts/ui/workshop_screen.gd" with error "Parse error".
+  QA: workshop.tscn — button does nothing: BackButton pressed 40 times
+  ```
+  Skutek: warsztat bez skryptu, więc „Wstecz” i „Kup” są martwe (soft-lock na telefonie: wyjście tylko przez zamknięcie aplikacji), nie da się kupić narzędzi.
+  ```diff
+  -	var hour: int = OS.get_time()["hour"]
+  +	var hour: int = Time.get_time_dict_from_system()["hour"]
+  ```
+
+**N-45 · Medium · `job_verify.gd`: `icon_max_width` to stała motywu, nie właściwość przycisku** · `game/scripts/ui/job_verify.gd:56` (22 błędy na karierę, karty dokumentów bez ograniczenia szerokości ikony)
+  ```diff
+  -			b.icon_max_width = 96
+  +			b.add_theme_constant_override("icon_max_width", 96)
+  ```
+
+**Weryfikacja N-44 + N-45 na kopii `game/`:** profil solver → **OK, `career_complete`**, 0 błędów skryptu, 0 soft-locków, 17 zakupów w warsztacie, 3 notki gabloty, 19 zleceń ukończonych + 3 odmowy (pozostałe 7 to rodziny niezaimplementowane w lockcore, ukryte zgodnie z N-05). Po tych dwóch liniach `qa-career` będzie zielony.
+
+**N-46 · Low · Napiwek wypłacany także przy niezdarnym otwarciu** (profil clumsy: 15 zleceń +11…12% względem `tools/econ_sim.py`; solver i feel w normie). Model zakłada napiwek tylko za „czyste otwarcie” (bez złamania i bez false setu). Sprawdzić warunek napiwku w `job_payment.gd` (lub dopisać do ECONOMY.md, że napiwek jest zawsze).
+
+Pozostałe błędy silnika (nieblokujące): `add_child()` w trakcie `_ready` rodzica (użyć `call_deferred`), brak `res://assets/ui/gpt/notebook/N-five-rules-en.jpg` (literówka w ścieżce: zamiast `N` powinien być numer strony).
+
+**Zmiany w automacie (moje, `qa/`):** martwy przycisk (ten sam przycisk 40× bez zmiany ekranu) kończy przebieg jako `dead_button` z nazwą przycisku zamiast mało mówiącego „decision limit”; raport grupuje błędy skryptów (licznik + miejsce `at:`), błędy parsowania idą na górę, więc jeden powtarzany błąd nie zasłania skryptu, który się nie kompiluje.

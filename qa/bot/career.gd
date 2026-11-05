@@ -91,8 +91,18 @@ func _find_button_text(text: String) -> BaseButton:
 	return null
 
 
+var _same_press := 0
+var _last_press := ""
+
+
+const DEAD_BUTTON_PRESSES := 40
+
+
 func _press(b: BaseButton, why: String) -> void:
 	report["decisions"] += 1
+	var key := "%s/%s" % [_scene_name(), b.name]
+	_same_press = _same_press + 1 if key == _last_press else 1
+	_last_press = key
 	print("QA_STEP t=%.1f scene=%s press=%s (%s)" % [_sim, _scene_name().get_file(), b.name, why])
 	b.emit_signal("pressed")
 
@@ -158,6 +168,11 @@ func _run() -> void:
 		if typeof(r) == TYPE_NIL:
 			return _finish("career_complete")
 		var acted: bool = bool(r)
+		if _same_press >= DEAD_BUTTON_PRESSES:
+			# same button on the same screen pressed again and again with no scene change: the button does nothing
+			# (e.g. the screen's script failed to load, so pressed is not connected)
+			report["softlocks"].append({"scene": sc, "reason": "button does nothing: %s pressed %d times" % [_last_press.get_file(), _same_press], "t": _sim})
+			return _finish("dead_button")
 		if not acted and _sim - _last_change_sim > IDLE_LIMIT_S:
 			if _buttons().is_empty():
 				report["dead_ends"].append({"scene": sc, "reason": "no enabled buttons and no automatic exit", "t": _sim})

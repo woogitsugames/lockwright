@@ -42,6 +42,27 @@ def seam_score(im: Image.Image) -> float:
     return float(max(edge_x / max(inner_x, 1e-3), edge_y / max(inner_y, 1e-3)))
 
 
+def to8(im: Image.Image) -> Image.Image:
+    """16-bit grey maps (height/displacement, mode I;16/I) -> 8-bit by their own range; plain convert() clips to white."""
+    if im.mode in ('I;16', 'I;16B', 'I;16L', 'I'):
+        a = np.asarray(im, dtype=np.float64)
+        lo, hi = float(a.min()), float(a.max())
+        return Image.fromarray(((a - lo) / max(hi - lo, 1e-9) * 255).astype(np.uint8), 'L')
+    return im
+
+
+def lf_seam(im: Image.Image) -> float:
+    """Low-frequency tiling seam (vignette, light falloff): difference of the mean brightness of opposite 8% edge
+    strips, in % of the image mean. seam_score misses it because neighbouring pixels still match. > 6% shows in 2x2."""
+    a = np.asarray(im.convert('L'), dtype=np.float32)
+    h, w = a.shape
+    k = max(4, int(0.08 * min(h, w)))
+    m = max(float(a.mean()), 1.0)
+    dx = abs(float(a[:, :k].mean()) - float(a[:, -k:].mean()))
+    dy = abs(float(a[:k, :].mean()) - float(a[-k:, :].mean()))
+    return 100.0 * max(dx, dy) / m
+
+
 def is_tile(path: pathlib.Path, did: str) -> bool:
     n = path.name.lower()
     if any(k in n for k in ('preview', '2x2', 'sheet', 'contact', 'arkusz')):
@@ -126,11 +147,16 @@ def check(did: str, out: pathlib.Path) -> dict:
             try:
                 im = Image.open(p)
                 info = {'file': rel, 'size': im.size, 'mode': im.mode}
+                im = to8(im)
                 if is_tile(p, did):
                     s = seam_score(im)
                     info['seam'] = round(s, 2)
                     if s > 2.0:
                         rep['problems'].append(f'{rel}: prawdopodobny szew (wsk. {s:.1f})')
+                    lf = lf_seam(im)
+                    info['lf_seam_pct'] = round(lf, 1)
+                    if lf > 6.0 and 'height' not in p.name.lower():
+                        rep['problems'].append(f'{rel}: nierówne oświetlenie kafla, szew w 2×2 (krawędzie różnią się o {lf:.0f}% jasności)')
                     t = im.convert('RGB')
                     t = t.resize((512, round(512 * t.height / t.width)))
                     g = Image.new('RGB', (t.width * 2, t.height * 2))
