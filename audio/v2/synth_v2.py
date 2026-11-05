@@ -18,6 +18,9 @@ All filters are causal (IIR impulse responses applied by FFT convolution) so
 nothing rings before the onset. Randomness: numpy PCG64 seeded from CRC32 of
 "seed:event:material:variant" -> bit-identical output for the same seed.
 
+Part 2 (world.py, rendered by the same command): ambience loops, diegetic UI
+one-shots and rewards, with loudness targets (loudness.py = BS.1770 meter).
+
 Usage: python3 audio/v2/synth_v2.py [--seed N] [--out audio/v2/out]
 """
 
@@ -76,6 +79,11 @@ GAIN_DB = {
 PEAK_REF_DB = -1.0
 LOOP_RMS_DB = -18.0      # loops: RMS target (game scales them to -24..-14 dBFS)
 LOOP_PEAK_MAX_DB = -1.0
+# EBU momentary max (400 ms, mean over materials x variants) that the peak table above
+# gives: open/break ~ -24 LUFS M (loudest lock events = top of the mix), set/false_set ~ -29.
+# Anchors of the mix in README ("Miks"); check_v2.py keeps them within +-1.5 LU.
+LOCK_REF_LUFS_M = -24.0
+LOCK_SET_LUFS_M = -29.0
 
 # Expected duration windows (s) per one-shot, used by check_v2.py.
 DUR_RANGE = {
@@ -774,6 +782,10 @@ def render_all(seed, out_dir, verbose=True):
                 })
                 if v == 1 or (event in ("set", "false_set") and mat == "brass"):
                     demo[(event, mat, v)] = xf
+    # part 2: ambience loops, diegetic UI and rewards (world.py) -> ambience/, ui/, reward/
+    import world  # noqa: E402  (imports this module; lazy to avoid a cycle)
+    manifest["world_targets"] = world.TARGETS
+    manifest["world_files"] = world.render_world(seed, out_dir, verbose)
     with open(os.path.join(out_dir, "manifest.json"), "w") as fh:
         json.dump(manifest, fh, indent=1, sort_keys=False)
 

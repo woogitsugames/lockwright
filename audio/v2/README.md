@@ -11,13 +11,19 @@ python3 audio/v2/check_v2.py --determinism     # dodatkowo: ponowny render do ka
 python3 audio/v2/synth_v2.py --seed 7 --out /tmp/x   # inny seed / katalog
 ```
 
-Render trwa ok. 7 s. Wynik trafia do `audio/v2/out/`:
+Render trwa ok. 20 s (część 1: 7 s, część 2 `world.py`: 13 s), checker ok. 15 s (`--determinism` 30 s).
+Wynik trafia do `audio/v2/out/`:
 - `sfx/<event>/<material>_<n>.wav`: 464 pliki, 48 kHz, 16-bit PCM, mono (~9,6 MB);
+- `ambience/<nazwa>.wav`: 4 pętle otoczenia, 30 s, **32 kHz**, 16-bit, mono, chunk `smpl` (~7,7 MB), część 2;
+- `ui/<zdarzenie>_<n>.wav`: 34 diegetyczne dźwięki UI, 48 kHz / 16-bit / mono (~1,8 MB), część 2;
+- `reward/<zdarzenie>_<n>.wav`: 9 nagród, 48 kHz / 16-bit / mono (~1,5 MB), część 2;
 - `manifest.json`: per plik SHA-256, liczba próbek, czas, peak, onset_ms, rms_db (+ punkty pętli), tabela gainów;
+  dla części 2 (`world_files`, `world_targets`) dodatkowo LUFS I / M_max / S_max i true peak;
 - `demo_all.wav`: wszystkie zdarzenia × materiały (wariant 1) po kolei, przerwy 300 ms, pętle jako 1 s wycinki;
+- `demo_world.wav`: UI i nagrody (wariant 1) po kolei, przerwy 400 ms (ambient słuchać z plików, w pętli);
 - `ab_set_false_set.wav`: brass, na przemian set / false_set, warianty 1–6.
 
-Razem ~14,8 MB. Ten sam seed daje pliki identyczne co do bitu (sprawdzone `--determinism`; na innym CPU
+Razem ~27,4 MB (część 1: 14,8 MB). Pomiar głośności dowolnego pliku: `python3 audio/v2/loudness.py plik.wav`. Ten sam seed daje pliki identyczne co do bitu (sprawdzone `--determinism`; na innym CPU
 lub w innej wersji numpy FFT może różnić się o 1 LSB, dlatego hashe w manifeście są per maszyna).
 
 ## Model (w skrócie)
@@ -154,3 +160,156 @@ więc rozróżnienie niesie wtedy rytm i ogon (+10,5 dB energii po 25 ms). Check
 - [ ] `drop`, `break`, `open` wyraźnie najgłośniejsze w kontekście; `near_shear` ledwo słyszalny (tak ma być).
 - [ ] Losowanie wariantów nie daje efektu „karabinu maszynowego” (6 wariantów, ±3% pitch).
 - [ ] Nic nie kojarzy się z alarmem, nagrodą typu „ding” ani z „estetyką włamania” (CLAUDE.md, ton).
+
+---
+
+# Część 2: otoczenie, UI diegetyczne, nagrody (`world.py`)
+
+Ten sam warsztat co w części 1 (mody tłumione + tarcie/szum, numpy, zero sampli), ten sam seed i ten sam
+sposób losowania (PCG64 z CRC32 `seed:world:nazwa:wariant`), więc `--determinism` obejmuje też te pliki.
+Renderuje je to samo polecenie (`synth_v2.py` woła `world.render_world()`); osobno: `python3 audio/v2/world.py`.
+Głośnościomierz: `loudness.py` (ITU-R BS.1770-4 / EBU R128 w numpy, bez pyloudnorm; filtr K wyprowadzony
+z prototypu analogowego dla dowolnego SR, przy 48 kHz zgodny ze współczynnikami z normy, autotest:
+sinus 1 kHz −20 dBFS = −23,0 LUFS; true peak przez 4× nadpróbkowanie FFT).
+
+## Pętle otoczenia (`ambience/`, 30 s, 32 kHz)
+
+| Plik | Co słychać | Zmierzone: I / M_max / S_max / TP |
+|---|---|---|
+| `stairwell` (klatka schodowa) | niski szum budynku (bez subbasu poniżej 45 Hz) + daleki ruch uliczny, 2 serie kroków po schodach (6–10 kroków, ~0,55 s, zbliżają się albo oddalają), daleko zamykane drzwi (1–2), wszystko przez pogłos klatki RT60 2,4 s z ciemnym ogonem | −35,0 / −30,4 / −32,4 LUFS / −17,6 dBTP |
+| `workshop` (warsztat) | ciepły szum pomieszczenia, zegar ścienny tik-tak co 1 s (wychwyt stalowy + drewniana skrzynka), 4–5 razy odkładane narzędzie na drewniany blat (stal + blat + małe odbicie), mały pokój RT60 0,45 s | −35,0 / −33,1 / −33,7 / −19,7 |
+| `night_timer` (noc z minutnikiem) | bardzo cichy pokój nocą, minutnik mechaniczny 4 tyk/s (tyk-tak lekko odstrojone), 2 dalekie przejazdy samochodu za oknem | −35,0 / −32,4 / −33,8 / −19,3 |
+| `rain_window` (deszcz za oknem) | deszcz zza szyby (szum + gęste krople, obcięte wysokie przez szybę i ramę), wolne wahania natężenia, 2 serie kapania na blaszany parapet co 0,85–1,7 s, rzadkie stuknięcia kropli w szybę | −35,0 / −32,3 / −32,7 / −18,5 |
+
+**Szew.** Każda warstwa jest okresowa w długości pętli: szum kształtowany w dziedzinie częstotliwości jednego
+okresu, zdarzenia wstawiane modulo długość, pogłos przez splot kołowy (ogon zdarzenia sprzed końca pliku
+gra na początku). Pętla jest więc bezszwowa z konstrukcji, także z pogłosem. 30 s to całkowita liczba sekund,
+więc zegar 1 Hz i minutnik 4 Hz zachowują rytm na zawinięciu. Render w 48 kHz → 32 kHz przez obcięcie widma
+(dla sygnału okresowego dokładne, idealny filtr antyaliasingowy 16 kHz), normalizacja do −35 LUFS I
+(pomiar kołowy, tak jak słyszy gracz w pętli), dither TPDF ±1 LSB (z seeda).
+
+Dlaczego 32 kHz: treść otoczenia leży poniżej ~12 kHz, a 4 × 30 s w 48 kHz to 11,5 MB zamiast 7,7 MB.
+Godot przelicza częstotliwość sam. Pętle zdarzeń zamka zostają w 48 kHz.
+
+## Diegetyczne UI (`ui/`, 48 kHz)
+
+Każdy zaczyna się od transjentu kontaktu (onset ≤ 0,7 ms, limit 5 ms: to odpowiedź na dotyk).
+
+| Zdarzenie | Warianty | Czas [s] | Opis |
+|---|---|---|---|
+| `tool_roll_open` | 3 | 0,65–0,73 | skórzana zwijka: dotyk, szelest skóry, 3 klapnięcia coraz większe, na końcu ledwo słyszalne stuknięcie narzędzi w środku |
+| `tool_roll_close` | 3 | 0,52–0,58 | zwijanie: szybszy szelest, 2 klapnięcia, krótkie niskie skrzypnięcie zaciąganego paska |
+| `paper_turn` | 3 | 0,41–0,45 | przewrócenie kartki: chwyt rogu, szum z włóknami, opadnięcie |
+| `paper_slide` | 3 | 0,24–0,35 | przesunięcie kartki po blacie |
+| `chalk_stroke` | 4 | 0,22–0,27 | kreska kredą: tarcie stick-slip z dużym jitterem (ziarno, nie pisk) przez mody tablicy + okruchy |
+| `notebook_open` | 3 | 0,36–0,40 | dotyk okładki, krótki szelest kartek, tekturowe klapnięcie okładki |
+| `notebook_close` | 3 | 0,16–0,19 | szelest + plaśnięcie zamykanej okładki |
+| `pencil_tick` | 3 | 0,12–0,14 | ołówek: stuk w kartkę + dwie kreski „ptaszka” (krótka, dłuższa) |
+| `job_phone` | 3 | 2,06–2,10 | telefon zleceń: dwa impulsy wibracji telefonu na drewnianym biurku (~170 Hz) + miękki dwudźwięk pałeczką (G4+D5, potem A4+E5); własny motyw, nie dzwonek żadnego producenta ani „ding-dong” |
+| `drawer_open` | 3 | 0,54–0,68 | szuflada gabloty: palce na mosiężnym uchwycie, drewno po drewnie (stick-slip 55–90 Hz przez mody skrzynki), stuk o ogranicznik, cichutko zadrży szyba gabloty |
+| `drawer_close` | 3 | 0,51–0,56 | jak wyżej, szybszy ślizg i mocniejszy stuk zamknięcia |
+
+## Nagrody (`reward/`, 48 kHz)
+
+| Zdarzenie | Warianty | Czas [s] | Opis |
+|---|---|---|---|
+| `door_open` | 3 | 1,85–2,12 | otwarcie drzwi: klamka i zapadka (mosiądz + sprężyna), zapadka wychodzi z zaczepu i rusza skrzydło (drewno 68–360 Hz), krótki, niski, „naoliwiony” zawias (żadnego horroru), miękki podmuch powietrza i oddech klatki, mały pogłos sieni |
+| `thanks` | 3 | 2,51–2,67 | bezsłowne „dziękuję”: D-dur, szarpane „języczki” (mody belki wspornikowej) + miękka sztabka na D4; 3 wznoszące się dźwięki, krok w dół, łagodnie rozłożony akord rozwiązania. Wariant 1: A4–D5–F♯5–E5 → D-dur, 2: F♯4–A4–D5–C♯5 → D-dur, 3: A4–B4–D5–E5 → D-dur z F♯5 na górze |
+| `coins` | 3 | 0,55–0,88 | 3–5 monet do drewnianej szkatułki: moneta (mody krążka 2,1–3,2 kHz) + blat, kolejne dzwonią o leżące, małe odbicia; wariant 2: ostatnia moneta „dokręca się” na rancie. Bez dzwonków, bez rosnących tonów, bez kaskady: nie kasyno |
+
+---
+
+# Miks: głośność, priorytety, ducking
+
+Zgodne z `docs/FEEL.md` (§5.1: rozgrywka −23 LUFS integr., L2 peak ≤ −1 dBFS, L1 ≤ −20 dBFS krótkoterminowo,
+ducking L1 −6 dB / 50 ms na każde L2; `break` duck reszty −12 dB / 300 ms; priorytety z JSON: 1 = najwyższy).
+**Zasada: pliki części 2 są zmiksowane do poziomu docelowego.** Szyny UI, nagród i otoczenia grają je z 0 dB przy
+suwakach na 100%; gra ich nie normalizuje (import: `edit/normalize=false`). Pętle zamka (`tension_resistance`,
+`pick_drag`) gra skaluje sama (−24…−14 dBFS ∝ r, FEEL).
+
+## Cele głośności (LUFS wg EBU R128; M = maks. momentary 400 ms, I = integrated, S = maks. short-term 3 s)
+
+| Kategoria | Pomiar, cel | Sufity | Zmierzone (średnia [min…max]) |
+|---|---|---|---|
+| Zdarzenia zamka L2 — kotwica miksu | open/break: M −24 ±1,5; set/false_set: M −29 ±1,5 (wynika z tabeli peaków części 1) | sample peak ≤ −1 dBFS (FEEL) | open −23,3, break −24,5, set −28,9, false_set −29,1, drop −25,2, stress −20,9, contact −41,3 |
+| Ciągłe L1 (pętle zamka) | plik: RMS −18 dBFS; w grze ≤ −20 dBFS short-term (FEEL) | peak ≤ −1 dBFS | plik I: tension_resistance −19,3, pick_drag −15,5 (przed skalowaniem w grze) |
+| Nagrody | `door_open`, `coins`: M −25 ±1; `thanks`: I −27,5 ±1, M ≤ −24 | TP ≤ −3 dBTP; żadna nie głośniejsza niż open/break | M −25,0; thanks I −27,5, M −25,0…−24,4; TP max −9,2 |
+| UI diegetyczne | M −32 ±1 (≥ 2 LU pod set) | TP ≤ −6 dBTP | M −32,0; TP max −9,4 |
+| UI: `job_phone` | M −29 ±1 (≥ 3 LU pod open/break) | TP ≤ −6 dBTP | M −29,0; TP −18,5 |
+| Otoczenie | I −35 ±1 (≥ 10 LU pod open/break) | S ≤ −31, M ≤ −30 (≥ 1 LU pod set), TP ≤ −12 dBTP | I −35,0; M −33,1…−30,4; S max −32,4; TP max −17,6 |
+
+Krótkie dźwięki (< 400 ms) mierzymy M, bo integrated dla nich nie istnieje (energia liczona na tle 400 ms,
+jak w R128: tik 30 ms ma niskie M). Przy suwakach 100% sesja z zamkiem (gęste set/bind/contact + opór)
+powinna wypaść w okolicach −23 LUFS I z FEEL; zmierzyć na nagraniu z gry (sesja B), bo tu nie ma miksu.
+
+**Odchylenie (do decyzji, nie zmieniam w tej sesji):** `break` ma sample peak −1,0 dBFS, ale **true peak do
++0,64 dBTP** (międzypróbkowe przekroczenie po DAC/resamplingu). Checker zgłasza to jako WARN, nie FAIL, bo zmiana
+`GAIN_DB["break"]` zmieni pliki i hashe części 1, z których korzysta sesja B. Propozycja: `break` −1,5 dB
+(peak −2,5 dBFS, TP ≈ −0,9 dBTP, M ≈ −26) albo limiter true-peak w `finish_oneshot` dla wszystkich zdarzeń.
+
+## Priorytety (wyższy wygrywa, niższy jest ściszany, a nigdy odwrotnie)
+
+1. **Zdarzenia zamka L2, prio 1–3** (`break`, `open`, `detector_trip`, `drop`): nigdy nie ściszane, nigdy nie
+   odrzucane (essential), przerywają wszystko (`interrupt_priority_max` 3).
+2. **Pozostałe L2** (prio 4–12: set, false_set, bind, contact…): nie ściszane przez nic poza `break`.
+3. **Ciągłe L1** (`tension_resistance`, `pick_drag`): −6 dB / 50 ms na każde L2 (FEEL), po `break` −12 dB / 300 ms
+   i rampa powrotu 300 ms.
+4. **Nagrody**: grają dopiero po zamku. Kolejność po udanym zleceniu: `open` (zamek) → `door_open` od końca
+   ogona `open` (≥ 450 ms od jego startu) → `thanks` 300 ms przed końcem `door_open` → `coins` przy ekranie zapłaty.
+   Nigdy nad aktywnym zamkiem; jeśli w trakcie przyjdzie zdarzenie L2 (np. kolejny zamek w serii), nagroda dostaje
+   −10 dB / 50 ms.
+5. **UI diegetyczne**: nad aktywnym zamkiem (napięcie > 0 albo dotyk zamka < 1,5 s temu) −6 dB; `job_phone` w ogóle
+   nie dzwoni nad aktywnym zamkiem, tylko czeka w kolejce, aż gracz odpuści (idle 1,5 s), potem maks. 3 cykle co
+   1,5 s i dalej już tylko cicha ikona (nie męczy).
+6. **Otoczenie**: zawsze na dole.
+
+## Ducking (szyna → kogo ścisza)
+
+| Wyzwalacz | Otoczenie | UI | L1 | Nagrody | Atak / trzymanie / powrót |
+|---|---|---|---|---|---|
+| tryb zamka (napięcie > 0 lub `pick_drag`) | −6 dB | −6 dB | — | — | 300 ms / do końca / 1,5 s |
+| L2 prio ≥ 4 (set, bind, contact…) | bez zmian (już ≥ 10 LU niżej; ducking na każdy tik dałby „pompowanie”) | — | −6 dB | −10 dB | 5 ms / 50 ms / 60 ms |
+| L2 prio 1–3 (`open`, `detector_trip`, `drop`) | −10 dB | −10 dB | −6 dB | — | 5 ms / długość zdarzenia / 400 ms |
+| `break` | −12 dB | −12 dB | −12 dB | — | 5 ms / 300 ms / 300 ms (FEEL) |
+| nagroda | −8 dB | −6 dB | — | — | 80 ms / długość / 1,0 s |
+| `job_phone` | −4 dB | — | — | — | 100 ms / długość / 800 ms |
+
+Ducking nie dotyczy haptyki (haptyka ma własne zasady w FEEL). Haptyka nigdy nie jest jedynym kanałem, więc
+żadne ściszenie nie może zejść do zera: dolna granica dla otoczenia −18 dB łącznie.
+
+**Głosy:** otoczenie 1 pętla naraz (przejście między pętlami: crossfade 1,5 s equal-power), UI maks. 4 głosy,
+nagrody maks. 2, bez powtórzenia tego samego wariantu pod rząd, ±3% pitch i ±1,5 dB jak w zamku (FEEL §5.1;
+nie dotyczy `thanks`, bo to motyw: pitch stały). **Suwaki gracza (propozycja):** Zamek / Otoczenie / Interfejs i
+nagrody; Otoczenie domyślnie 100% = poziom pliku.
+
+**Import w Godocie:** `ambience/*`: `edit/loop_mode` = Detect From WAV (chunk `smpl`, forward, 0…N−1),
+kompresja QOA/Ogg dozwolona (opóźnienie nieistotne); `ui/*`, `reward/*`: bez pętli, `edit/trim=false`,
+`edit/normalize=false`, kompresja dozwolona; pliki zamka zostają PCM (onset ≤ 2 ms).
+
+## Co sprawdza checker dla części 2
+
+`check_v2.py` (exit ≠ 0 przy błędzie; reguły części 1, w tym onset ≤ 2 ms zdarzeń zamka, bez zmian):
+komplet plików i brak nadmiarowych; format (otoczenie 32 kHz, reszta 48 kHz, 16-bit mono PCM); SHA-256 z manifestem;
+brak clippingu i DC; pętle: chunk `smpl`, długość 30–60 s, szew bez kliku (residuum 2. rzędu na zawinięciu
+ponad p99,9 całego pliku < −40 dBFS **i** ponad p99,9 z ±100 ms wokół szwu < −50 dBFS, krok na zawinięciu ≤ p99,5,
+skok poziomu po filtrze K 50 ms przed/po szwie ≤ 6 dB; wynik: −200 dBFS, czyli brak nadwyżki, skok ≤ 2,6 dB);
+one-shoty: czas w oknie zdarzenia, onset ≤ 5 ms, pierwsza próbka nie jest skokiem, koniec w ciszy;
+głośność: miara kategorii w tolerancji celu, sufity S/M, true peak; hierarchia miksu (nagrody ≤ open/break,
+UI ≥ 2 LU pod set, telefon ≥ 3 LU pod open/break, otoczenie I ≥ 10 LU pod open/break i M ≥ 1 LU pod set).
+Raportuje też M_max i true peak każdego zdarzenia zamka. Test negatywny (sprawdzony ręcznie na kopii `out/`):
+ucięcie 37 albo 1000 próbek z pętli `workshop` / `night_timer`, +4 dB w pliku UI i 200 próbek ciszy przed `set`
+dają FAIL. Ucięcie pętli deszczu (szeroki szum) nie daje mierzalnego kliku i checker go nie zgłasza; to zgodne
+z uchem, ale znaczy, że szew pętli szumowej pilnuje konstrukcja, a nie checker.
+
+## Lista odsłuchowa (część 2)
+
+- [ ] Każda pętla otoczenia zapętlona 3× w odtwarzaczu z loop points `smpl`: brak kliku i „przeskoku” na szwie, nie
+  słychać, że to 30 s (kroki i drzwi w klatce najłatwiej zapamiętać: jeśli przeszkadzają, rozrzedzić).
+- [ ] Otoczenie na głośniku telefonu 50% pod sesją zamka: słychać, ale nie zasłania `contact` / `near_shear`.
+- [ ] Minutnik w `night_timer` nie stresuje (lekki, w tle); zegar w `workshop` nie męczy po 5 min.
+- [ ] `job_phone`: rozpoznawalny po dwóch cyklach, ciepły, nie kojarzy się z dzwonkiem do drzwi ani z żadnym
+  znanym dzwonkiem; nie irytuje po 3 cyklach.
+- [ ] `thanks`: ciepłe, krótkie, nie „wygrana w automacie”; 3 warianty brzmią jak ten sam „głos”.
+- [ ] `coins`: kilka monet do drewna, nie jackpot; `door_open`: zawias spokojny, nie horror.
+- [ ] Kreda bez pisku; papier i zeszyt nie syczą na głośniku telefonu (6–9 kHz).
+- [ ] Nic nie kojarzy się z alarmem, kasynem, neonem ani „estetyką włamania” (CLAUDE.md, ton).
