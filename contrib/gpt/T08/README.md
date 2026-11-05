@@ -6,13 +6,15 @@
 
 Opracowałem kompletny, 30-minutowy protokół dla osoby bez przygotowania UX, obejmujący naukę sterowania, wskazówki H0–H4, rozpoznawanie stanów bez koloru, odczuwalność haptyki, test w ciemności, dostępność przy wyłączonych wibracjach, poziomy trudności t1–t7, ekonomię oraz ciepły i legalny ton gry.
 
+Dodałem również opcjonalny, kontrolowany wariant D: dwa porównywalne zamki na jednym Androidzie przy haptyce ON/OFF, ze zrównoważoną kolejnością i identycznym dźwiękiem/obrazem. Pozwala odróżnić pierwsze oznaki wpływu haptyki od samej deklaracji w ankiecie, choć mała próba pozostaje pilotażowa.
+
 Protokół rozdziela **twarde kryteria projektu A1/A2/A7/A9** od eksploracyjnych sygnałów jakościowych. Ustala rekrutację, przygotowanie Androida, scenariusze testów, neutralne wypowiedzi moderatora po polsku i po angielsku, zasady ochrony prywatności, dokumentację prób nieudanych i prostą procedurę podjęcia decyzji po agregacji wyników. Dostarcza równoległe ankiety o wspólnych kodach Q01–Q20.
 
 ## Pliki
 
 | Plik | Zawartość |
 |---|---|
-| **PLAYTEST-PLAN.md** | cele i progi; 30-minutowe ścieżki A/B/C; próba 16+14+4–6 osób i pilot; testy A1/A2/A7/A9; pomiary, anonimizacja, agregacja i priorytety decyzji |
+| **PLAYTEST-PLAN.md** | cele i progi; 30-minutowe ścieżki A/B/C; próba 16+14+4–6 osób, opcjonalnie 8–12 do haptyki ON/OFF, oraz pilot; testy A1/A2/A7/A9; pomiary, anonimizacja, agregacja i priorytety decyzji |
 | **survey_pl.md** | gotowa polska ankieta po sesji — dokładnie 20 pytań, odpowiedzi 1–5/N/D i kody jednolite z EN |
 | **survey_en.md** | zgodna znaczeniowo wersja angielska — 20 pytań, odpowiedzi 1–5/N/A |
 | **observation_sheet.md** | arkusz sesji PL/EN: metadane bez danych osobowych, oś czasu, samouczek, A1/A2, test stanów, zadania t1–t7, legalność i ekonomia |
