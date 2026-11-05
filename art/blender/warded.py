@@ -42,12 +42,12 @@ if PHOTO:
     # forged iron parts: ground-steel photo darkened to old iron, rougher, dark grime in recesses, bright where the key rubs.
     # Lighter than the black case so wards, bolt and tumbler separate from it (>= 3:1).
     IR = float(arg('--iron', '0.42'))
-    MAT['ward'] = photo_mat('ph_ward_iron', 'steel_ground', scale=30, rot=35, base=(IR, IR * 0.95, IR * 0.9), base_mix=0.45,
-                            tint=(0.92, 0.88, 0.83), rough_add=0.16, bump=0.25, wear=0.7, grime=0.9)
-    MAT['bolt'] = photo_mat('ph_bolt_iron', 'steel_ground', scale=40, rot=0, base=(IR * 1.1, IR * 1.05, IR), base_mix=0.4,
-                            tint=(0.94, 0.9, 0.85), rough_add=0.12, bump=0.2, wear=0.8, grime=0.8)
-    MAT['tumbler'] = photo_mat('ph_tumb_iron', 'steel_ground', scale=36, rot=0, offset=(13, 0, 7), base=(IR, IR * 0.96, IR * 0.92), base_mix=0.42,
-                               tint=(0.93, 0.89, 0.84), rough_add=0.14, bump=0.2, wear=0.8, grime=0.8)
+    MAT['ward'] = photo_mat('ph_ward_iron', 'steel_ground', scale=30, rot=35, base=(IR, IR * 0.95, IR * 0.9), base_mix=0.55,
+                            tint=(0.92, 0.84, 0.74), rough_add=0.16, bump=0.25, wear=0.7, grime=0.9)
+    MAT['bolt'] = photo_mat('ph_bolt_iron', 'steel_ground', scale=40, rot=0, base=(IR * 1.1, IR * 1.05, IR), base_mix=0.5,
+                            tint=(0.94, 0.86, 0.76), rough_add=0.12, bump=0.2, wear=0.8, grime=0.8)
+    MAT['tumbler'] = photo_mat('ph_tumb_iron', 'steel_ground', scale=36, rot=0, offset=(13, 0, 7), base=(IR, IR * 0.96, IR * 0.92), base_mix=0.52,
+                               tint=(0.93, 0.85, 0.75), rough_add=0.14, bump=0.2, wear=0.8, grime=0.8)
     # probe: satin spring steel (no mirror chrome)
     MAT['probe'] = photo_mat('ph_probe', 'spring_steel_polished', scale=24, rot=0, tint=(0.85, 0.85, 0.86), rough_add=0.1, bump=0.12, wear=0.3, grime=0.3)
 

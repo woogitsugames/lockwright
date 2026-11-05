@@ -106,9 +106,9 @@ TEST_CASE("registry: builtin families") {
   const auto& reg = FamilyRegistry::builtin();
   CHECK(reg.find("pin_tumbler") != nullptr);
   CHECK(reg.find("wafer") != nullptr);
-  for (const char* id : {"wooden_pin", "lever", "lever_detector", "ring_combo", "warded"}) CHECK(reg.find(id) != nullptr);
+  for (const char* id : {"wooden_pin", "lever", "lever_detector", "ring_combo", "warded", "dial_safe"}) CHECK(reg.find(id) != nullptr);
   CHECK(reg.find("no_such_family") == nullptr);
-  CHECK_EQ(reg.all().size(), static_cast<std::size_t>(7));
+  CHECK_EQ(reg.all().size(), static_cast<std::size_t>(8));
 }
 
 TEST_CASE("fixed: edge domains are total (T25-17..21)") {
