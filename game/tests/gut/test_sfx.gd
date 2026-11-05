@@ -23,6 +23,8 @@ func test_play_does_not_crash_headless() -> void:
 
 func test_play_voice_finds_plain_file_and_shared_folder() -> void:
 	# N-48: <root>/<speaker>/<kind>.wav (not only <kind>_NN.wav), ola/krystyna -> ola_krystyna
+	# earlier suites leave long one-shots (jingles, foley) in the pool: start from a free pool
+	Sfx.stop_all_one_shots()
 	var before: int = Sfx._free.size()
 	Sfx.play_voice(&"halina", &"greeting")
 	assert_eq(Sfx._free.size(), before - 1, "halina/greeting.wav must occupy a player from the pool")

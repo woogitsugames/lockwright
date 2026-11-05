@@ -698,3 +698,16 @@ Zrzuty: `docs/handoff/device-tests/run135/`.
 - Zrzut: `docs/handoff/device-tests/run135/n66_receipt_arrival_fixed.png`.
 
 **GUT lokalnie:** 110/111. Jedyny błąd to `test_sfx.test_play_voice_finds_plain_file_and_shared_folder` (pliki głosów agenta głosów, niezwiązane).
+
+## Od sesji A: głosy w przyjeździe (D-57)
+- **Ekran przyjazdu mówi:** nowy `game/scripts/ui/dialogue_player.gd`. Kwestie pojawiają się po kolei: bieżąca w pełni, wcześniejsze przygaszone (alfa 0,7). Każda gra swój plik `assets/audio/lines/<język>/<job_id>.line.<N>.ogg` w języku interfejsu. Następna kwestia startuje 250 ms po końcu klipu.
+- **Brak pliku:** tylko napis, przez czas czytania (1,4 s + 55 ms/znak, max 6 s). Nigdy nie gra klipu w innym języku. Gdy w danym języku nie ma żadnego klipu (np. DE albo zanim agent głosów skończy) albo działa czytnik ekranu (TalkBack/VoiceOver), wszystkie kwestie widać od razu i nic nie gra.
+- **Sterowanie:** tap w rozmowę przewija do następnej kwestii (przeciągnięcie przewija listę). W nagłówku jest tabliczka „»” 56×48 dp z opisem dostępności „Pokaż całą rozmowę”. Widać ją tylko podczas odtwarzania.
+- **Wokalizacje S03:** powitanie bez słów gra tylko wtedy, gdy zlecenie nie ma nagranej kwestii. `Sfx.play_voice` gra teraz na magistrali `Voice` z suwakiem „Głosy”.
+- **Audio:** nowa magistrala `Voice` → Master (`default_bus_layout.tres`). Pod kwestią muzyka schodzi o −6 dB (`Sfx.duck_music_for_voice`, magistrala Music, 120/250 ms).
+- **Pula Sfx:** kradnie najstarszy odtwarzacz, gdy pula jest pełna. Nowe `Sfx.stop_all_one_shots()`.
+- **Test `test_sfx.test_play_voice_finds_plain_file_and_shared_folder`:** błąd nie wynikał z plików agenta głosów. Wcześniejsze skrypty GUT zostawiały 12/12 odtwarzaczy zajętych. Test teraz zaczyna od `stop_all_one_shots()`.
+- **Ustawienia:** suwak „Głosy / Voices / Stimmen” pod „Tło” (`volume_voice`, domyślnie 1,0). Nowe klucze: `settings.volume_voice`, `dialogue.skip_all`.
+- **Eksport:** `.ogg` są importowanymi zasobami (`all_resources`) i żaden `exclude_filter` nie obejmuje `assets/audio/lines`, więc filtrów nie trzeba było zmieniać.
+- **Testy:** `tests/gut/test_dialogue_player.gd`, 12 testów na fikstury `tests/fixtures/lines/{pl,en}` (tylko testy, wykluczone z eksportu). Cały GUT lokalnie: 128/128.
+- **Zrzuty** (fikstury, kwestia 2 bieżąca): `docs/handoff/device-tests/d57/arrival_dialogue_{pl,en}_412x915.png`.
