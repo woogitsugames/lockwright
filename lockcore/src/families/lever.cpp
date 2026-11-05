@@ -141,6 +141,7 @@ class Module final : public FamilyModule {
     if (P.drop_grace_steps < 1) e.push_back({"spec.drop_grace_steps", "must be >= 1"});
     if (P.s_max <= 0 || P.stress_gain <= 0) e.push_back({"spec.s_max_q16", "s_max and stress_gain must be > 0"});
     if (P.bound_speed <= 0 || P.false_speed <= 0 || P.spring_speed <= 0) e.push_back({"spec.bound_speed_q16", "speeds must be > 0"});
+    if (P.set_speed < 0) e.push_back({"spec.set_speed_q16", "negative"});
     if (P.detector) {
       if (P.detector_margin <= 0) e.push_back({"spec.detector_margin_q16", "must be > 0"});
       if (P.reset_steps < 1 || P.reset_steps > 1200) e.push_back({"spec.reset_steps", "need 1..1200"});
@@ -332,14 +333,18 @@ class Module final : public FamilyModule {
           gate();
           break;
         }
-        case ElementState::set:
-          // The stump sits in the gate; the lifter can still raise the lever.
-          l.p = q_max(lo, li);
+        case ElementState::set: {
+          // The stump sits in the gate; the lifter can still raise the lever, but
+          // (rules 2) only at set_speed, so a lifter that ran ahead of a caught
+          // lever does not throw it over the gate in one step.
+          const q16 want = q_max(lo, li);
+          l.p = (P.set_speed > 0 && want > l.p) ? q_min(want, l.p + P.set_speed) : want;
           if (T >= P.t_hold && l.p > P.win_hi(k) + P.overset_margin) {
             l.st = ElementState::overset;
             out.emit(t, EventKind::overset, i, Q16_ONE, S.material);
           }
           break;
+        }
         case ElementState::overset: l.p = q_max(P.win_hi(k) + P.overset_margin, li); break;
         default: break;
       }
@@ -497,6 +502,7 @@ class Module final : public FamilyModule {
     o.set("bound_speed_q16", Value::integer(P.bound_speed));
     o.set("false_speed_q16", Value::integer(P.false_speed));
     o.set("spring_speed_q16", Value::integer(P.spring_speed));
+    if (P.set_speed > 0) o.set("set_speed_q16", Value::integer(P.set_speed));
     o.set("detector", Value::boolean(P.detector));
     if (P.detector) {
       o.set("detector_margin_q16", Value::integer(P.detector_margin));
@@ -543,6 +549,7 @@ class Module final : public FamilyModule {
     q(v, "bound_speed_q16", P->bound_speed, path);
     q(v, "false_speed_q16", P->false_speed, path);
     q(v, "spring_speed_q16", P->spring_speed, path);
+    if (v.find("set_speed_q16") != nullptr) q(v, "set_speed_q16", P->set_speed, path);  // optional (rules 1 files)
     field::get_bool(v, "detector", P->detector, errors, path);
     if (P->detector) {
       q(v, "detector_margin_q16", P->detector_margin, path);
@@ -614,6 +621,7 @@ class Module final : public FamilyModule {
     // spring_force 0.3 (t3) -> 0.5 (t5+): levers fall back 4x that per second.
     const int sf = std::clamp(300 + 100 * (d.tier - 3), 300, 500);
     P->spring_speed = q16_per_step(q16_milli(4 * sf));
+    P->set_speed = q16_per_step(q16_milli(EXPV(detector_ ? "SSD" : "SSL", 500)));
     P->detector = detector_;
     if (detector_) {
       // detector_margin 12 % (t5) -> 6 % (t6); reset 1.5 s -> 2.5 s.

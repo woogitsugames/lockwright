@@ -12,7 +12,7 @@ namespace lockcore::lever {
 
 inline constexpr std::string_view FAMILY_ID = "lever";
 inline constexpr std::string_view DETECTOR_FAMILY_ID = "lever_detector";
-inline constexpr std::int32_t RULES_VERSION = 1;
+inline constexpr std::int32_t RULES_VERSION = 2;  // 2: set_speed, D-32
 
 enum Sub : std::uint16_t {
   SUB_FALSE_GATE = 1,      // "lever.false_gate", base kind false_set: second knock of the false gate
@@ -42,6 +42,9 @@ struct Params : FamilyParams {
   q16 bound_speed = 0;   // per step
   q16 false_speed = 0;   // per step, inside a false gate
   q16 spring_speed = 0;  // per step: a bound lever falls back when the lifter drops
+  // v0.3 (rules 2): per step, how fast a set lever follows the lifter above its gate
+  // (the stump rubs in the gate). 0 = it jumps to the lifter at once (rules 1).
+  q16 set_speed = 0;
   // Detector (lever_detector only).
   bool detector = false;
   q16 detector_margin = 0;          // trips when any lever rises above gate top + margin
