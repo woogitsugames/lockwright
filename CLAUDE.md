@@ -31,7 +31,7 @@ Mobilna gra premium o ślusarzu z pogotowia zamkowego. iOS wiodący, Android dru
 - Praca bezpośrednio na `main` (decyzja właściciela, D-02): małe, opisowe commity, push na bieżąco. PR tylko na prośbę właściciela.
 - Na bieżąco wysyłamy właścicielowi zrzuty ekranów (makiety, potem gra).
 - Zależności deweloperskie (Vite, Playwright, three.js) tylko w `mockups/`.
-- Fonty tylko OFL; grafiki/dźwięki tylko własne lub CC0; każdy zasób wpisany do `docs/ASSETS.md`.
+- Fonty tylko OFL; grafiki/dźwięki własne, CC0 lub generowane przez AI (D-41: z promptem i narzędziem); każdy zasób wpisany do `docs/ASSETS.md`.
 - Nie kopiujemy kodu, grafik, nazw ani UI cudzych gier.
 - Decyzje właściciela (styl, silnik, zakres, model biznesowy): pytać z rekomendacją. Pozostałe: rozstrzygać i zapisywać w `docs/DECISIONS.md` (D-NN).
 - Agenci: na etapie researchu max 5 równolegle; w dalszym rozwoju max 2–3. Agenci nie uruchamiają kolejnych agentów.
