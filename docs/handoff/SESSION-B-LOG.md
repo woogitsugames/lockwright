@@ -346,3 +346,28 @@ Kilkanaście runów `game-screens` wisiało „in progress” od 11:00 (bez limi
 ## Od sesji A: APK run 92 (2026-11-05 18:18)
 - Run game-android 92 był zielony we wszystkich jobach: https://github.com/woogitsugames/lockwright/actions/runs/42077893691. APK wysłany właścicielowi.
 - Debug APK ma 130 MB, AAB w artefakcie 70,7 MB. Sprawdź raport rozmiaru: czy kompresja z N-30 działa w presecie debug i czy AAB mieści się w progu 70 MB.
+
+## Od sesji A: testy właściciela na APK z runu 92 (2026-11-05 18:50), PRIORYTET
+Zrzuty z telefonu: `docs/handoff/device-tests/run92/main_menu.jpg` i `settings.jpg`.
+
+- **N-52, przycisk „wstecz” Androida zamyka grę (krytyczne).**
+  - W `project.godot` ustaw `application/config/quit_on_go_back=false`.
+  - Obsłuż `NOTIFICATION_WM_GO_BACK_REQUEST` w autoloadzie nawigacji. Wstecz ma działać jak przycisk „Wstecz” na ekranie: ustawienia/zlecenia/warsztat/gablota/O grze → menu; zamek → pauza (klapka); pauza → zamknij pauzę.
+  - Zamknięcie gry tylko z menu głównego, po potwierdzeniu „Zakończyć grę?” (i18n PL/EN).
+  - Dodaj test GUT, który wysyła notyfikację na każdym ekranie.
+- **N-53, ustawienia dotykają krawędzi ekranu.**
+  - Etykiety i suwaki zaczynają się od x=0, a „Wstecz” ma połowę szerokości.
+  - Wymagane: `MarginContainer` z marginesem bocznym min. 16 dp plus safe-area (wycięcia, pasek gestów), także w poziomie.
+  - Sekcje rozdzielone nagłówkami (Haptyka / Dźwięk / Język i dostępność). Wartości procentowe przy każdym suwaku, nie tylko przy haptyce.
+  - „Wstecz” na pełną szerokość albo jako cel ≥48 dp w lewym górnym rogu.
+  - Dla zgodności sprawdź tym samym kontenerem wszystkie ekrany menu (zlecenia, warsztat, gablota, O grze).
+- **N-54, menu główne to domyślny szary motyw Godota.** Przerób je zgodnie z D-43 (warsztat jako menu, diegetycznie, bez paneli SaaS):
+  - **tło:** `game/assets/ui/workshop.jpg` (G08) lub `contrib/incoming/magnific/selected/keyart_9x16.jpg`, przycięte do 9:16 i przyciemnione winietą w miejscu przycisków, bez gradientów;
+  - **tytuł:** „Lockwright” plus podtytuł z i18n, fontem tytułowym Bona Nova Bold (styl `Title` z `theme/main.tres`, rozmiar ok. 40), wyśrodkowany w górnej 1/3;
+  - **przyciski:** emaliowane tabliczki z G01 (tło przycisku, NinePatch), bez szarych prostokątów. Alternatywa: kartka zlecenia (`paper_card_stock`) przypięta na pegboardzie. Tekst Atkinson, kontrast ≥4,5:1, cel ≥48 dp, stany pressed i focus widoczne w skali szarości (przesunięcie i cień, nie sam kolor);
+  - **kolejność:** „Rozpocznij bieg” wyróżniony jako największa tabliczka, reszta mniejsza; „O grze” może iść do stopki;
+  - **motyw:** uzupełnij `theme/main.tres` o StyleBoxy Button, Panel, HSlider, CheckButton i OptionButton (ciepła skóra, papier, mosiądz zamiast szarości), wtedy ustawienia i pozostałe ekrany zyskają od razu;
+  - **efekt wejścia:** delikatny, 150–250 ms;
+  - **ASSETS.md:** wpisz wszystkie użyte zasoby;
+  - **zrzuty:** dodaj zrzut menu i ustawień do `game-screens` (412×915 i 915×412).
+- Kolejność: N-52 → N-53 → N-54. Po zielonym `game-android` wpisz link do runu, a sesja A wyśle APK właścicielowi.
