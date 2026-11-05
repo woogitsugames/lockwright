@@ -1,10 +1,11 @@
 {
   "id": "showcase.roman_ring_key",
   "unlocks": "zapadkowy, T1, oraz zlecenie `job.student_dorm`.",
-  "source": "V&A, pierścień z kluczem, rzymski, III w. lub później — https://api.vam.ac.uk/v2/object/O122113 · London Museum, rzymski pierścień-klucz — https://www.londonmuseum.org.uk/collections/v/object-7358/key-ring-key\n- **Pewność:** wysoka (opis muzealny); interpretacja „po ślubie” jest hipotezą muzeum i tak ją przedstawiamy.",
+  "source": "https://api.vam.ac.uk/v2/object/O122113 · https://www.londonmuseum.org.uk/collections/v/object-7358/key-ring-key",
   "confidence": "wysoka (opis muzealny); interpretacja „po ślubie” jest hipotezą muzeum i tak ją przedstawiamy.",
   "i18n": {
     "title": "showcase.roman_ring_key.title",
-    "body": "showcase.roman_ring_key.body"
+    "body": "showcase.roman_ring_key.body",
+    "source": "showcase.roman_ring_key.source"
   }
 }

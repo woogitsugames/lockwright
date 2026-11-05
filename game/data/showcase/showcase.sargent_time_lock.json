@@ -1,10 +1,11 @@
 {
   "id": "showcase.sargent_time_lock",
   "unlocks": "zamek czasowy, T1, oraz zlecenie `job.museum_time_lock`.",
-  "source": "Britannica, „James Sargent” — https://www.britannica.com/biography/James-Sargent · Sargent & Greenleaf, historia firmy — https://ftp.sargentandgreenleaf.com/companyInfo.php · D. Erickson, „Sargent & Greenleaf… Introduction” (kolekcjoner zamków czasowych) — https://my-time-machines.net/sargent_intro.htm · nekrolog J. Sargenta, 1910 — https://www.nyscu.org/Archives/Universalist%20Memory%20Garden/Universalist%20Memory%20Garden%20SA-SL/Sargent,%20James%201910.pdf\n- **Pewność:** średnia-wysoka (rok 1874 i miejsce zgodne; dzień instalacji rozbieżny, prototyp z 1873 znamy z relacji firmy).",
+  "source": "https://www.britannica.com/biography/James-Sargent · https://ftp.sargentandgreenleaf.com/companyInfo.php · https://my-time-machines.net/sargent_intro.htm · https://www.nyscu.org/Archives/Universalist%20Memory%20Garden/Universalist%20Memory%20Garden%20SA-SL/Sargent,%20James%201910.pdf",
   "confidence": "średnia-wysoka (rok 1874 i miejsce zgodne; dzień instalacji rozbieżny, prototyp z 1873 znamy z relacji firmy).",
   "i18n": {
     "title": "showcase.sargent_time_lock.title",
-    "body": "showcase.sargent_time_lock.body"
+    "body": "showcase.sargent_time_lock.body",
+    "source": "showcase.sargent_time_lock.source"
   }
 }

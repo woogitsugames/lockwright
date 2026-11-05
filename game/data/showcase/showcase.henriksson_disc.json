@@ -1,10 +1,11 @@
 {
   "id": "showcase.henriksson_disc",
   "unlocks": "tarczowy, T1, oraz zlecenie `job.finnish_sailor`.",
-  "source": "Wikipedia, „Disc tumbler lock” (Henriksson, 1907, patent 15 II 1919) — https://en.wikipedia.org/wiki/Disc_tumbler_lock · Security World Market, 110-lecie systemu (relacja producenta) — https://www.securityworldmarket.com/uk/newsarchive/abloy-celebrates-110-years-of-locking-systems1\n- **Pewność:** średnia. Historia z kasą pochodzi z narracji producenta. Patent z 1919 jest pewniejszy. W tekście dla gracza nie podajemy nazwy firmy.",
+  "source": "https://en.wikipedia.org/wiki/Disc_tumbler_lock · https://www.securityworldmarket.com/uk/newsarchive/abloy-celebrates-110-years-of-locking-systems1",
   "confidence": "średnia. Historia z kasą pochodzi z narracji producenta. Patent z 1919 jest pewniejszy. W tekście dla gracza nie podajemy nazwy firmy.",
   "i18n": {
     "title": "showcase.henriksson_disc.title",
-    "body": "showcase.henriksson_disc.body"
+    "body": "showcase.henriksson_disc.body",
+    "source": "showcase.henriksson_disc.source"
   }
 }

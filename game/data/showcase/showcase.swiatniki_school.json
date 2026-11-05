@@ -1,10 +1,11 @@
 {
   "id": "showcase.swiatniki_school",
   "unlocks": "zlecenie `job.swiatniki_journeyman_padlock` (drugie otwarcie albo rozmowa z panem Władysławem).",
-  "source": "Twierdza Kraków, „Szkoła Ślusarska w Świątnikach Górnych” — https://twierdza.krakow.pl/oum-location/szkola-slusarska-w-swiatnikach-gornych/ · swiatniki.wordpress.com (1887/1888, Bruchnalski, muzeum szkolne od 1892) — https://swiatniki.wordpress.com/tag/szkola-slusarska/ · Dziennik Polski, „Szkoła Ślusarska symbolem Świątnik” — https://dziennikpolski24.pl/szkola-slusarska-symbolem-swiatnik/ar/c3-1971442 · Visit Małopolska (izba regionalna, 1970) — https://visitmalopolska.pl/-/swiatniki-gorne-muzeum-slusarstwa\n- **Pewność:** średnia-wysoka (kilka zgodnych źródeł regionalnych; rozbieżność 1887/1888 rozstrzygnięta jako decyzja/otwarcie).",
+  "source": "https://twierdza.krakow.pl/oum-location/szkola-slusarska-w-swiatnikach-gornych/ · https://swiatniki.wordpress.com/tag/szkola-slusarska/ · https://dziennikpolski24.pl/szkola-slusarska-symbolem-swiatnik/ar/c3-1971442 · https://visitmalopolska.pl/-/swiatniki-gorne-muzeum-slusarstwa",
   "confidence": "średnia-wysoka (kilka zgodnych źródeł regionalnych; rozbieżność 1887/1888 rozstrzygnięta jako decyzja/otwarcie).",
   "i18n": {
     "title": "showcase.swiatniki_school.title",
-    "body": "showcase.swiatniki_school.body"
+    "body": "showcase.swiatniki_school.body",
+    "source": "showcase.swiatniki_school.source"
   }
 }

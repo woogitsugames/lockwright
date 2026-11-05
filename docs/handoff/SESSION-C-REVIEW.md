@@ -60,6 +60,7 @@ Najważniejsze, w kolejności:
 - **Poprawka:** `makePlayerWithPattern:pattern` per zdarzenie (albo prebuild per `id` + `sendParameters`), `[NSString stringWithUTF8String:]`, throttle 60 Hz.
 
 **R-06 · Medium** · `game/scripts/lock/fake_lock_session.gd:32-155` vs `lockcore_session_gd.cpp:54-116`
+→ naprawione w ee049f0 (FakeLockSession zwraca ten sam schemat co binding)
 - **Co:** atrapa i binding mają różne kontrakty:
   - `create`: statyczna funkcja z `difficulty` vs metoda instancji z `tier`;
   - zdarzenia atrapy nie mają `sub` ani `tick`;
@@ -69,6 +70,7 @@ Najważniejsze, w kolejności:
 - **Poprawka:** atrapa powinna zwracać dokładnie schemat bindingu, albo atrapę usunąć, skoro `LockcoreSession` buduje się w CI.
 
 **R-07 · Medium** · `lockcore_session_gd.cpp:82`, `lockcore/include/lockcore/family.hpp:163`, `lock_scene.gd:91-94`
+→ naprawione w ee049f0 (pole name/sub w zdarzeniach bindingu)
 - **Co:** `sub` dociera do GDScript jako goła liczba. `FamilyModule::event_name(sub)` nie jest wystawione, a `sub` jest numerowany per rodzina (1 = `pin.serration` / `wood.creak` / `ring.detent` / `ward.scrape`). `lock_scene` ignoruje `sub`.
 - **Dlaczego ważne:**
   - `detector.reset` (drop + sub 2) zagra jak grzechot zrzutu;
@@ -77,11 +79,13 @@ Najważniejsze, w kolejności:
 - **Poprawka:** dodać do słownika zdarzenia pole `name` (`StringName`, np. `&"pin.serration"`) albo metodę `event_name(sub)`, i mapować dźwięk i haptykę po nazwie, z fallbackiem na `kind`.
 
 **R-08 · Medium** · `lock_scene.gd:87, 95-98`
+→ naprawione w ee049f0 (_check_finished emituje lock_failed dla każdego failure)
 - **Co:** porażka jest sygnalizowana tylko przy zdarzeniu `break`. `FailureKind::detector_trip` i `timeout` nie emitują `lock_failed`, a `session.failure()` nikt nie czyta. Po `finished()` pętla po prostu przestaje krokować.
 - **Dlaczego ważne:** trzecie zablokowanie detektora (README lockcore, `lever_detector`) zostawi gracza przed zamarzniętym zamkiem.
 - **Poprawka:** po każdym kroku `if session.finished(): emit lock_opened / lock_failed(session.failure())`.
 
 **R-09 · Medium** · `lockcore_session_gd.cpp:99-104`
+→ naprawione w ee049f0 (window_lo/window_hi/pick_lift w describe)
 - **Co:** `describe()` pomija `ElementView.window_lo`/`window_hi` oraz `ViewModel.pick_lift`.
 - **Dlaczego ważne:** okna są przeznaczone dla nakładek samouczka i „Pomocy w czytaniu” (ONBOARDING §2, HUD §9.1). Bez nich warstwa gry musiałaby zgadywać geometrię.
 - **Poprawka:** dodać `window_lo`, `window_hi` i `pick_lift` do słownika.
@@ -102,6 +106,7 @@ Najważniejsze, w kolejności:
 - **Poprawka:** ustalić, że priorytet prezentacji pochodzi z danych (`haptics_patterns.json`), a `event_priority()` opisać jako wyłącznie wewnętrzny albo wyrównać do TECH.
 
 **R-12 · Medium (zweryfikowane)** · `game/scenes/lock.tscn:16`
+→ naprawione w ee049f0 (type=WorldEnvironment)
 - **Co:** węzeł `WorldEnvironment` ma `type="Environment"` (zasób, nie węzeł). Godot loguje „Node WorldEnvironment of type Environment cannot be created. A placeholder will be created instead.”
 - **Dlaczego ważne:** środowisko sceny nie działa, a przełącznik trybu ciemnego (`lock_scene.gd:138`) czyta `.environment` z placeholdera. SESSION-B-LOG raportuje „boot bez błędów”.
 - **Poprawka:** `type="WorldEnvironment"`.
@@ -128,6 +133,7 @@ Najważniejsze, w kolejności:
 - **Poprawka:** w `game-tests.yml` dodać preset Linux, `--export-pack` i `godot --main-pack x.pck res://tests/smoke.tscn`. Wynik `SMOKE OK` jest bramką.
 
 **R-16 · Medium** · `game/tests/lock_test.gd:5-10, 31`, `.github/workflows/game-tests.yml:42-45`
+→ naprawione w ee049f0 (test GUT determinizmu z golden event_hash)
 - **Co:** krok „through real lockcore” po cichu spada na `FakeLockSession`, jeśli rozszerzenie się nie załaduje. Asercja sprawdza tylko „było bind lub contact”. Nie ma testu, że `LockcoreSession` z tymi samymi wejściami daje hash z `lockcore/tests/golden/*.replay.json`.
 - **Dlaczego ważne:** nikt nie pilnuje determinizmu mostka (konwersje, kolejność zdarzeń, `t_step`).
 - **Poprawka:** w CI `assert(ClassDB.class_exists("LockcoreSession"))` oraz test GUT, który odtwarza 1–2 złote powtórki przez binding i porównuje `event_hash()`.
@@ -178,11 +184,13 @@ Najważniejsze, w kolejności:
 - **Poprawka:** wprowadzić `FeedbackDirector` (autoload, dane z `haptics_patterns.json` → `mix_rules`); na Androidzie wstrzymać segment oporu na czas transientu (ducking zamiast nadpisania).
 
 **R-22 · Medium** · `lock_scene.gd:101`, `haptics.gd:84-92`
+→ naprawione w ee049f0 (throttle 60 Hz w FeedbackDirector/haptics)
 - **Co:** `update_continuous` jest wołane 120/s, co daje 120 wywołań JNI + `handler.post` (Android) i 120 `sendParameters` (iOS) na sekundę. TECH §2.5 wymaga ≤ 60 Hz z koalescencją.
 - **Dlaczego ważne:** narzut na głównym wątku i przeciążony Core Haptics.
 - **Poprawka:** throttle w `haptics.gd`: wysyłać co ≥ 16 ms albo przy zmianie wartości > 0,02.
 
 **R-23 · Medium** · `lockcore_session_gd.cpp:69-116`, `lock_scene.gd:89-104`, `input_sampler.gd:69-70`
+→ naprawione w ee049f0 (describe raz na klatkę; bez alokacji per krok w pętli fizyki)
 - **Co:** w każdym kroku 120 Hz powstają: `Array` plus `Dictionary` na zdarzenie (z `StringName(const char*)`, czyli lookup w tablicy nazw), pełny `describe()` (`Dictionary` + `Array` + `Dictionary` na element, kopia `ViewModel` z `std::vector`), `sample()` (`Dictionary`), 3× `pattern_for()` na zdarzenie (puste `{}` w łańcuchu `get`), a `albedo_color` jest ustawiane w każdym kroku.
 - **Dlaczego ważne:** setki alokacji na sekundę w ścieżce fizyki na tanim Androidzie.
 - **Poprawka:**
@@ -197,11 +205,13 @@ Najważniejsze, w kolejności:
 - **Poprawka:** własny akumulator 1/120 s w `_process`, zdarzenia z `t_step` przesunięte o wiek kroku (`logic_tick` jest w API mostka z TECH §2.5), fizyka Godota na 60.
 
 **R-25 · Medium** · `sfx.gd:78-97`
+→ naprawione w ee049f0 (pętle jako loopowane WAV z głośnością/pitch z level)
 - **Co:** pętle `tension_resistance` i `pick_drag` to `AudioStreamGenerator`, do którego nikt nie wpisuje ramek. `level` jest zapisywany, ale nigdzie nieużywany.
 - **Dlaczego ważne:** warstwa L1 (opór, tarcie) jest cicha, więc w trybie „w ciemności” brakuje kanału dźwiękowego oporu. Wypełnianie bufora 48 kHz w GDScript byłoby z kolei gorącą pętlą.
 - **Poprawka:** zapętlone sample (`AudioStreamWAV` z loop) z głośnością i `pitch_scale` z `level` zamiast generatora w GDScript.
 
 **R-26 · Low** · `sfx.gd:68, 72`, `game/project.godot`
+→ naprawione w ee049f0 (CONNECT_ONE_SHOT + default_bus_layout.tres z szyną Sfx)
 - **Co:** `finished.connect(_on_player_finished.bind(p))` kontra `disconnect(_on_player_finished)`, czyli inny `Callable`. Efekt: błąd „nonexistent connection” przy każdym odtworzeniu, a przy ponownym użyciu playera „already connected”. Szyna `"Sfx"` nie istnieje (brak `default_bus_layout.tres`), a pełna pula po cichu gubi także zdarzenia o priorytecie 1.
 - **Poprawka:** `connect(..., CONNECT_ONE_SHOT)`, dodać bus layout, kradzież głosu wg priorytetu.
 
@@ -218,16 +228,19 @@ Najważniejsze, w kolejności:
 - **Poprawka:** `include_filter="i18n/*.csv"` w obu presetach albo importer CSV „Keep File”, albo rejestracja wygenerowanych `*.translation` w `internationalization/locale/translations`. Do tego test z R-15.
 
 **R-29 · Medium** · `lock_scene.gd:113-118`
+→ naprawione w ee049f0 (neutralne odcienie szarości zamiast zielony/czerwony)
 - **Co:** stan pinu w placeholderze jest kodowany wyłącznie kolorem: set = zielony, overset = czerwony, false_set = pomarańczowy.
 - **Dlaczego ważne:** łamie DESIGN §1 („znaczenie niesie geometria i ruch, nie kolor”) i zakaz zielony/czerwony z CLAUDE.md. Placeholder ma tendencję do zostawania w kodzie.
 - **Poprawka:** neutralne odcienie i choćby szkic kodu kształtów (przesunięcie w bok, stopka, talia, ściśnięta sprężyna).
 
 **R-30 · Medium** · `game/scripts/ui/showcase_screen.gd:29-30`, `game/data/showcase/*.json` (`source`, np. `showcase.yale_dial.json:4`)
+→ naprawione w ee049f0 (showcase.<id>.source przez i18n; w JSON tylko URL-e)
 - **Co:** pole `source` (polski tekst z markdownem „- **Pewność:** …”) trafia wprost na ekran, z pominięciem i18n. Polskie są też `verification`, `tone` i `unlocks` w `data/jobs/*.json` (dziś niewyświetlane).
 - **Dlaczego ważne:** gracz EN widzi polski tekst, a gracz PL surowy markdown.
 - **Poprawka:** klucze `showcase.<id>.source` w `content.csv`; w JSON zostawić tylko URL-e.
 
 **R-31 · Medium** · `game/i18n/content.csv:9` i inne, `game/data/jobs/job.bramah_bureau.json:5`, `game/data/progression.json:37`
+→ naprawione w ee049f0 (family bramah→axial_slider; EN bez nazwiska)
 - **Co:**
   - 29 z 146 wpisów EN to skróty krótsze niż 45% PL (np. `job.grandma_broth.client` „Mrs Halina, 81.” wobec pełnego opisu PL);
   - `job.bramah_bureau.situation` EN: „Bramah lock.” to nazwisko historyczne poza notką gabloty (D-08), a PL go nie używa;
@@ -236,11 +249,13 @@ Najważniejsze, w kolejności:
 - **Poprawka:** dokończyć EN, `family: "axial_slider"`, usunąć „Bramah” z tekstu zlecenia.
 
 **R-32 · Medium** · `game/scenes/lock.tscn:44-52`
+→ naprawione w ee049f0 (pauza w safe-area przez DisplayServer.get_display_safe_area)
 - **Co:** `PauseButton` ma `offset_top = 8` i nic nie uwzględnia safe-area (notch, Dynamic Island). Wymiar 96×96 px z `custom_minimum_size` przeczy offsetom 48 px wysokości.
 - **Dlaczego ważne:** CLAUDE.md wymaga safe-area. Na iPhonie przycisk wpada pod wyspę.
 - **Poprawka:** marginesy z `DisplayServer.get_display_safe_area()`; docelowo klapka z HUD §6.
 
 **R-33 · Medium (zweryfikowane)** · `game/export_presets.cfg:8, 50` (`exclude_filter=""`), `game/addons/gut/`
+→ naprawione w ee049f0 (exclude addons/gut, tests, scenes/dev z eksportu; wpisy ASSETS dla GUT/gut fonts)
 - **Co:**
   - GUT (460 wpisów), `tests/` i `scenes/dev/haptics_lab.tscn` trafiają do eksportu;
   - GUT to narzędzie deweloperskie poza `mockups/` (CLAUDE.md: „Zależności deweloperskie … tylko w `mockups/`”), a w `DECISIONS.md` nie ma wyjątku;
@@ -312,11 +327,13 @@ Workflowy: `lockcore.yml`, `game-tests.yml`, `game-android.yml`, `game-ios.yml`,
 - **Poprawka:** wrócić do `.gdextension` z wpisami `ios.*` oraz pustymi/fikcyjnymi wpisami dla innych OS-ów (to obchodzi powód D-29), albo napisać prawdziwy plugin `.gdip` na nagłówkach silnika. Sięgać po klasę przez `ClassDB.instantiate`, nie `Engine.get_singleton`.
 
 **R-43 · Medium** · `game/addons/lockcore_gd/lockcore_gd.gdextension:7-10`, `SConstruct:21-24`, `game-android.yml`, `game-ios.yml`
+→ naprawione w ee049f0 (lockcore_gd budowane dla android w CI/commicie .so i iOS xcframework w game-ios)
 - **Co:** `lockcore_gd` nie jest budowane dla Androida ani iOS, a `.gdextension` wskazuje nieistniejące `android.*.so` i `ios.*.xcframework`. SConstruct nazywa wynik `.so` dla każdej platformy i nie tworzy xcframework.
 - **Dlaczego ważne:** APK i IPA albo mają błąd eksportu, albo po cichu działają na `FakeLockSession`, czyli testy na telefonie nie testują lockcore.
 - **Poprawka:** budować w obu jobach (`platform=android arch=arm64`, `platform=ios` + `xcodebuild -create-xcframework`) i używać `env["SHLIBSUFFIX"]`.
 
 **R-44 · Medium (do weryfikacji)** · `game-android.yml:104-107, 114`, `game-ios.yml:62-71`
+→ naprawione wcześniej (ścieżki game/build)
 - **Co:** ścieżka eksportu `build/lockwright-debug.apk` przy `--path game` jest względna wobec katalogu projektu, więc wynik ląduje w `game/build/`, którego nikt nie tworzy. `mkdir -p build` i `upload-artifact` dotyczą katalogu głównego repo.
 - **Poprawka:** ścieżka absolutna `$GITHUB_WORKSPACE/build/...`.
 
@@ -332,6 +349,7 @@ Workflowy: `lockcore.yml`, `game-tests.yml`, `game-android.yml`, `game-ios.yml`,
 - **Poprawka:** przypiąć tag lub commit godot-cpp i API zrzucane z używanej binarki.
 
 **R-47 · Medium** · `game-tests.yml:3-10, 47-71`
+→ naprawione w ee049f0 (lockcore/** w paths, .so jako artefakt między jobami)
 - **Co:** `paths` nie obejmuje `lockcore/**`, choć binding kompiluje źródła lockcore, więc zmiana API lockcore nie uruchamia testów bindingu. Job `gdscript-tests` nie buduje rozszerzenia i ładuje zacommitowany `bin/liblockcore_gd.linux.template_debug.so`, czyli testy biegną na nieaktualnej binarce.
 - **Poprawka:** dodać `lockcore/**` do `paths`, przekazać `.so` z joba `gdextension-build` jako artefakt i usunąć binarkę z repo.
 

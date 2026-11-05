@@ -1,10 +1,11 @@
 {
   "id": "showcase.yale_dial",
   "unlocks": "sejf z tarczami, T1, oraz zlecenie `job.krakow_antiquarian`.",
-  "source": "Lemelson-MIT, „Linus Yale” (motywacja, zamek bankowy z 1851, tarcza i oś) — https://lemelson.mit.edu/resources/linus-yale · ASME (jw.)\n- **Pewność:** średnia (źródła biograficzne, nie patenty; nazwę „Infallible Bank Lock” celowo pomijamy w tekście).",
+  "source": "https://lemelson.mit.edu/resources/linus-yale",
   "confidence": "średnia (źródła biograficzne, nie patenty; nazwę „Infallible Bank Lock” celowo pomijamy w tekście).",
   "i18n": {
     "title": "showcase.yale_dial.title",
-    "body": "showcase.yale_dial.body"
+    "body": "showcase.yale_dial.body",
+    "source": "showcase.yale_dial.source"
   }
 }

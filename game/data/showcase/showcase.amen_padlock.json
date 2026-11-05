@@ -1,10 +1,11 @@
 {
   "id": "showcase.amen_padlock",
   "unlocks": "kłódka szyfrowa, T1, oraz zlecenie `job.time_capsule`.",
-  "source": "Tomlinson/Hobbs 1853, rozdz. „Puzzle or letter-locks” — https://www.gutenberg.org/ebooks/63128 (cytaty z Beaumonta i Fletchera, Carewa i z *Symbola Heroica* S. Petrasancty, Amsterdam 1682)\n- **Pewność:** średnia-wysoka. Cytaty są przytoczone za Tomlinsonem i przed publikacją trzeba je porównać z wydaniem krytycznym sztuki. Datę „początek XVII w.” podaje Tomlinson.",
+  "source": "https://www.gutenberg.org/ebooks/63128",
   "confidence": "średnia-wysoka. Cytaty są przytoczone za Tomlinsonem i przed publikacją trzeba je porównać z wydaniem krytycznym sztuki. Datę „początek XVII w.” podaje Tomlinson.",
   "i18n": {
     "title": "showcase.amen_padlock.title",
-    "body": "showcase.amen_padlock.body"
+    "body": "showcase.amen_padlock.body",
+    "source": "showcase.amen_padlock.source"
   }
 }

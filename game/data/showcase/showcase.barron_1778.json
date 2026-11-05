@@ -1,10 +1,11 @@
 {
   "id": "showcase.barron_1778",
   "unlocks": "dźwigniowy, T1.",
-  "source": "Tomlinson/Hobbs 1853, rozdz. o zamkach zapadkowych (data patentu) — https://www.gutenberg.org/ebooks/63128 · Britannica, „Lock” — https://www.britannica.com/technology/lock-security · Wikipedia, „Lever tumbler lock” (numer patentu GB 1200) — https://en.wikipedia.org/wiki/Lever_tumbler_lock\n- **Pewność:** wysoka (data); numer patentu średnia, bo oryginału nie widzieliśmy.",
+  "source": "https://www.gutenberg.org/ebooks/63128 · https://www.britannica.com/technology/lock-security · https://en.wikipedia.org/wiki/Lever_tumbler_lock",
   "confidence": "wysoka (data); numer patentu średnia, bo oryginału nie widzieliśmy.",
   "i18n": {
     "title": "showcase.barron_1778.title",
-    "body": "showcase.barron_1778.body"
+    "body": "showcase.barron_1778.body",
+    "source": "showcase.barron_1778.source"
   }
 }

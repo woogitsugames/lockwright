@@ -1,10 +1,11 @@
 {
   "id": "showcase.wroclaw_iron_world",
   "unlocks": "dźwigniowy T3 (zamek skrzynkowy), a dodatkowo, jako nagroda kolekcjonerska, otwarcie wszystkich zamków z rozdziału 4.",
-  "source": "wroclaw.pl, „Kłódki, zamki, sejfy sprzed wieków w Muzeum Narodowym. Wystawa »Żelazny świat«” (14 VII 2022) — https://www.wroclaw.pl/kultura/klodki-zamki-zelazny-swiat-wystawa-muzeum-narodowe\n- **Pewność:** średnia-wysoka (relacja miejskiego portalu z udziałem kuratora T. Fercowicza; datę otwarcia i ewentualny podtytuł trzeba potwierdzić na stronie MNWr).\n\n---",
+  "source": "https://www.wroclaw.pl/kultura/klodki-zamki-zelazny-swiat-wystawa-muzeum-narodowe",
   "confidence": "średnia-wysoka (relacja miejskiego portalu z udziałem kuratora T. Fercowicza; datę otwarcia i ewentualny podtytuł trzeba potwierdzić na stronie MNWr).\n\n---",
   "i18n": {
     "title": "showcase.wroclaw_iron_world.title",
-    "body": "showcase.wroclaw_iron_world.body"
+    "body": "showcase.wroclaw_iron_world.body",
+    "source": "showcase.wroclaw_iron_world.source"
   }
 }

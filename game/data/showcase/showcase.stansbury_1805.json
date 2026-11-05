@@ -1,10 +1,11 @@
 {
   "id": "showcase.stansbury_1805",
   "unlocks": "wkładka bębenkowa, T1.",
-  "source": "Tomlinson/Hobbs 1853 (opis zamka Stansbury'ego) — https://www.gutenberg.org/ebooks/63128 · antique-padlocks.com, „Early Pin Tumbler Locks” (patenty 1805/1807, pożar 1836) — https://antique-padlocks.com/pt_early_01.htm · Wikipedia, „Pin tumbler lock” — https://en.wikipedia.org/wiki/Pin_tumbler_lock\n- **Pewność:** średnia (daty patentów znamy ze źródeł wtórnych i kolekcjonerskich, opis mechanizmu za Tomlinsonem).",
+  "source": "https://www.gutenberg.org/ebooks/63128 · https://antique-padlocks.com/pt_early_01.htm · https://en.wikipedia.org/wiki/Pin_tumbler_lock",
   "confidence": "średnia (daty patentów znamy ze źródeł wtórnych i kolekcjonerskich, opis mechanizmu za Tomlinsonem).",
   "i18n": {
     "title": "showcase.stansbury_1805.title",
-    "body": "showcase.stansbury_1805.body"
+    "body": "showcase.stansbury_1805.body",
+    "source": "showcase.stansbury_1805.source"
   }
 }

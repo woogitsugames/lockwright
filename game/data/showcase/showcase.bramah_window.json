@@ -1,10 +1,11 @@
 {
   "id": "showcase.bramah_window",
   "unlocks": "Bramah, T1, oraz rurkowy, T1 (klucz Bramaha to rurka z nacięciami).",
-  "source": "Tomlinson/Hobbs 1853 (treść napisu, Piccadilly, patent z 1784) — https://www.gutenberg.org/ebooks/63128 · Linda Hall Library, „Joseph Bramah” (1790, Maudslay, Science Museum) — https://www.lindahall.org/about/news/scientist-of-the-day/joseph-bramah/\n- **Pewność:** wysoka (napis, patent z 1784); średnio-wysoka (rok 1790); obecnego miejsca ekspozycji w Science Museum nie sprawdziliśmy.",
+  "source": "https://www.gutenberg.org/ebooks/63128 · https://www.lindahall.org/about/news/scientist-of-the-day/joseph-bramah/",
   "confidence": "wysoka (napis, patent z 1784); średnio-wysoka (rok 1790); obecnego miejsca ekspozycji w Science Museum nie sprawdziliśmy.",
   "i18n": {
     "title": "showcase.bramah_window.title",
-    "body": "showcase.bramah_window.body"
+    "body": "showcase.bramah_window.body",
+    "source": "showcase.bramah_window.source"
   }
 }

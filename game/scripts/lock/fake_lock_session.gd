@@ -65,7 +65,7 @@ func step(tension: float, depth: float, lift: float) -> Array:
 				_binding_pin = i
 		if _binding_pin >= 0 and _pins[_binding_pin]["state"] == "free":
 			_pins[_binding_pin]["state"] = "bound"
-			events.append({"kind": &"bind", "element": _binding_pin, "intensity": 0.5, "material": &"brass"})
+			events.append({"kind": &"bind", "sub": 0, "name": &"bind.0", "element": _binding_pin, "intensity": 0.5, "material": &"brass", "tick": _tick})
 			resistance += 0.2
 
 	# move the active pick pin (nearest to depth) with lift, gated by friction mu*T
@@ -77,15 +77,15 @@ func step(tension: float, depth: float, lift: float) -> Array:
 			var dpos := lift * 0.02
 			p["pos"] = clampf(p["pos"] + dpos, 0.0, 1.15)
 			if absf(lift) > 0.05:
-				events.append({"kind": &"contact", "element": active, "intensity": 0.3, "material": &"brass"})
+				events.append({"kind": &"contact", "sub": 0, "name": &"contact.0", "element": active, "intensity": 0.3, "material": &"brass", "tick": _tick})
 			# stress accumulates when forcing a bound pin at high tension
 			if p["state"] == "bound" and _tension > 0.85:
 				_stress += (_tension - 0.85) * absf(dpos) * 8.0
 				if _stress >= STRESS_WARN and _stress < S_MAX:
-					events.append({"kind": &"stress", "element": active, "intensity": _stress / S_MAX, "material": &"steel"})
+					events.append({"kind": &"stress", "sub": 0, "name": &"stress.0", "element": active, "intensity": _stress / S_MAX, "material": &"steel", "tick": _tick})
 			elif _stress >= S_MAX:
 					_broken = true
-					events.append({"kind": &"break", "element": active, "intensity": 1.0, "material": &"steel"})
+					events.append({"kind": &"break", "sub": 0, "name": &"break.0", "element": active, "intensity": 1.0, "material": &"steel", "tick": _tick})
 			else:
 				_stress = maxf(0.0, _stress - 0.002)
 			# set / false_set / overset
@@ -93,14 +93,14 @@ func step(tension: float, depth: float, lift: float) -> Array:
 				if p["pos"] >= 1.0 - SHEAR_WINDOW and p["pos"] <= 1.0 + SHEAR_WINDOW and _tension >= T_HOLD:
 					if p["is_spool"]:
 						p["state"] = "false_set"
-						events.append({"kind": &"false_set", "element": active, "intensity": 0.9, "material": &"brass"})
-						events.append({"kind": &"counter_rotate", "element": active, "intensity": 0.5, "material": &"brass"})
+						events.append({"kind": &"false_set", "sub": 0, "name": &"false_set.0", "element": active, "intensity": 0.9, "material": &"brass", "tick": _tick})
+						events.append({"kind": &"counter_rotate", "sub": 0, "name": &"counter_rotate.0", "element": active, "intensity": 0.5, "material": &"brass", "tick": _tick})
 					else:
 						p["state"] = "set"
-						events.append({"kind": &"set", "element": active, "intensity": 0.95, "material": &"brass"})
+						events.append({"kind": &"set", "sub": 0, "name": &"set.0", "element": active, "intensity": 0.95, "material": &"brass", "tick": _tick})
 				elif p["pos"] > 1.0 + SHEAR_WINDOW + OVERSET_MARGIN:
 					p["state"] = "overset"
-					events.append({"kind": &"overset", "element": active, "intensity": 0.6, "material": &"brass"})
+					events.append({"kind": &"overset", "sub": 0, "name": &"overset.0", "element": active, "intensity": 0.6, "material": &"brass", "tick": _tick})
 			elif p["state"] == "overset" and _tension < T_RELEASE:
 				p["state"] = "free"
 				p["pos"] = 0.0
@@ -116,7 +116,7 @@ func step(tension: float, depth: float, lift: float) -> Array:
 					_pins[i]["pos"] = 0.0
 					dropped = true
 			if dropped:
-				events.append({"kind": &"drop", "element": -1, "intensity": 0.8, "material": &"brass"})
+				events.append({"kind": &"drop", "sub": 0, "name": &"drop.0", "element": -1, "intensity": 0.8, "material": &"brass", "tick": _tick})
 				_low_tension_ticks = 0
 	else:
 		_low_tension_ticks = 0
@@ -124,10 +124,10 @@ func step(tension: float, depth: float, lift: float) -> Array:
 	# open when all pins set
 	if _pins.all(func(p): return p["state"] == "set"):
 		_open = true
-		events.append({"kind": &"open", "element": -1, "intensity": 1.0, "material": &"steel"})
+		events.append({"kind": &"open", "sub": 0, "name": &"open.0", "element": -1, "intensity": 1.0, "material": &"steel", "tick": _tick})
 
 	if absf(resistance - prev_resistance) > 0.05:
-		events.append({"kind": &"near_shear", "element": active, "intensity": 0.4, "material": &"brass"})
+		events.append({"kind": &"near_shear", "sub": 0, "name": &"near_shear.0", "element": active, "intensity": 0.4, "material": &"brass", "tick": _tick})
 	return events
 
 
@@ -144,12 +144,16 @@ func failure() -> StringName:
 
 
 func describe() -> Dictionary:
+	# R-06: identical schema to LockcoreSession.describe() (binding contract)
 	return {
-		"tick": _tick,
+		"elements": _pins.map(func(p): return {"state": StringName(p["state"]), "position": p["pos"], "variant": 0, "window_lo": 0.94, "window_hi": 1.06}),
+		"pick_element": -1,
+		"pick_lift": 0.0,
 		"tension": _tension,
-		"resistance": resistance,
+		"core_rotation": 0.6 if _open else _tension * 0.1,
+		"tension_resistance": resistance,
 		"pick_drag": pick_drag,
+		"stress": _stress,
 		"open": _open,
-		"broken": _broken,
-		"pins": _pins.map(func(p): return {"pos": p["pos"], "state": p["state"]}),
+		"failure": StringName(&"break" if _broken else &"none"),
 	}

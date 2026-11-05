@@ -1,10 +1,11 @@
 {
   "id": "showcase.egyptian_name",
   "unlocks": "egipski drewniany, T2, oraz zlecenie `job.dollhouse_wooden_lock`.",
-  "source": "A. Lane Fox Pitt-Rivers, *On the Development and Distribution of Primitive Locks and Keys*, Londyn 1883 — https://www.gutenberg.org/ebooks/44022 · Potts 1990 (jw.)\n- **Pewność:** wysoka (co mówią źródła); otwarte pozostaje samo pochodzenie mechanizmu.",
+  "source": "https://www.gutenberg.org/ebooks/44022",
   "confidence": "wysoka (co mówią źródła); otwarte pozostaje samo pochodzenie mechanizmu.",
   "i18n": {
     "title": "showcase.egyptian_name.title",
-    "body": "showcase.egyptian_name.body"
+    "body": "showcase.egyptian_name.body",
+    "source": "showcase.egyptian_name.source"
   }
 }
