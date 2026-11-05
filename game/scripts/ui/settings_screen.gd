@@ -83,6 +83,7 @@ func _run_two_click_calibration() -> void:
 
 func _refresh_texts() -> void:
 	$Scroll/VBox/Title.text = I18n.t(&"settings.title")
+	$Scroll/VBox/FeelLabel.text = I18n.t(&"settings.feel_section")
 	haptics_check.text = I18n.t(&"settings.haptics_enabled")
 	$Scroll/VBox/IntensityLabel.text = I18n.t(&"settings.haptics_intensity")
 	test_button.text = I18n.t(&"settings.haptics_test")
