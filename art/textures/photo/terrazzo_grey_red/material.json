@@ -3,6 +3,10 @@
   "source": "contrib/incoming/magnific/selected/terrazzo_grey_red.jpg",
   "mode": "tile",
   "tiling": "u+v",
+  "size": [
+    2048,
+    2048
+  ],
   "metallic": 0.0,
   "roughness_range": [
     0.32,
@@ -12,7 +16,8 @@
   "normal_strength": 2.0,
   "height_highpass_sigma_px": 12,
   "lighting_flatten": "full",
-  "overlap_x": 343,
-  "overlap_y": 283,
+  "overlap_x": 339,
+  "overlap_y": 281,
+  "normal_2k_soften_sigma": 0.6,
   "rough_mean": 0.468
 }
