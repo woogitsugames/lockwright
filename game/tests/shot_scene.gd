@@ -13,7 +13,9 @@ func _ready() -> void:
 		JobRun.tutorial_stage = int(a["tutorial-stage"])
 	if a.has("auto"):
 		Settings._cfg["auto_tension"] = a["auto"] == "1"
-	get_tree().change_scene_to_file.call_deferred(a.get("scene", "res://scenes/tutorial.tscn"))
+	# instance as a child (change_scene would free this runner before it saves)
+	var scene: Node = load(a.get("scene", "res://scenes/tutorial.tscn")).instantiate()
+	add_child(scene)
 	for i in int(a.get("frames", "30")):
 		await get_tree().process_frame
 	var img := get_viewport().get_texture().get_image()
