@@ -360,3 +360,93 @@ ach.achievement.first_set.desc,Effectuez votre premier placement net hors du tut
 ach.achievement.first_open.name,Une porte s'ouvre
 ach.achievement.first_open.desc,Terminez votre première serrure en mode Service continu.
 ach.achievement.pin_school.name,L'école des goupilles
+ach.achievement.pin_school.desc,Terminez les trois leçons sur les serrures à goupilles.
+ach.achievement.wafer_school.name,La leçon suivante
+ach.achievement.wafer_school.desc,Terminez les trois leçons sur les serrures à plaquettes.
+ach.achievement.false_note.name,Deux notes
+ach.achievement.false_note.desc,Ouvrez une serrure à goupilles après avoir entendu un faux placement.
+ach.achievement.after_drop.name,Depuis le début
+ach.achievement.after_drop.desc,Récupérez après une chute et ouvrez sans casser de crochet.
+ach.achievement.after_overset.name,Une seconde chance
+ach.achievement.after_overset.desc,Ouvrez après une surélévation sans casser de crochet.
+ach.achievement.counter_sense.name,Une discrète résistance
+ach.achievement.counter_sense.desc,Terminez une serrure après avoir ressenti sa contre-rotation.
+ach.achievement.steel_warning.name,Vous avez entendu l'alerte
+ach.achievement.steel_warning.desc,Ouvrez après un avertissement de tension sans casser de crochet.
+ach.achievement.clean_receipt.name,Sans trace
+ach.achievement.clean_receipt.desc,"Obtenez le tampon « travail soigné » : aucune chute, aucun crochet cassé."
+ach.achievement.hard_clean.name,Une difficulté tranquille
+ach.achievement.hard_clean.desc,Ouvrez une serrure de niveau 5 ou plus sans chute ni crochet cassé.
+ach.achievement.pin_master.name,Patience de laiton
+ach.achievement.pin_master.desc,Terminez la cinquième serrure à goupilles de maître sans casser de crochet.
+ach.achievement.wafer_master.name,Un empilement discret
+ach.achievement.wafer_master.desc,Terminez la troisième serrure à plaquettes de maître sans casser de crochet.
+ach.achievement.wafer_clean.name,Rien n'a bougé
+ach.achievement.wafer_clean.desc,Ouvrez une serrure à plaquettes sans chute ni crochet cassé.
+ach.achievement.pin_plain.name,Un clic honnête
+ach.achievement.pin_plain.desc,Ouvrez une serrure à goupilles de niveau 3 sans faux placement ni surélévation.
+ach.achievement.first_gate.name,Une note douce
+ach.achievement.first_gate.desc,Ouvrez une serrure à leviers après alignement d'une encoche de passage.
+ach.achievement.detector_return.name,Une deuxième écoute
+ach.achievement.detector_return.desc,Ouvrez une serrure à détecteur après son déclenchement et une remise à zéro réussie.
+ach.achievement.ring_false.name,Une promesse fragile
+ach.achievement.ring_false.desc,Ouvrez une serrure à anneaux après un faux placement.
+ach.achievement.wooden_creak.name,Le vieux bois parle
+ach.achievement.wooden_creak.desc,Ouvrez une serrure à goupilles en bois après avoir entendu son grincement.
+ach.achievement.iron_no_drop.name,La porte de fer
+ach.achievement.iron_no_drop.desc,Ouvrez une serrure à garnitures sans faire tomber de pièce.
+ach.achievement.lever_true.name,Sans fausse promesse
+ach.achievement.lever_true.desc,Ouvrez une serrure à leviers sans faux placement.
+ach.achievement.first_dark.name,Quand la lumière s'éteint
+ach.achievement.first_dark.desc,Terminez votre première serrure dans le noir.
+ach.achievement.dark_clean.name,À l'oreille seulement
+ach.achievement.dark_clean.desc,Ouvrez dans le noir sans chute ni crochet cassé.
+ach.achievement.one_pick.name,Un seul dans la trousse
+ach.achievement.one_pick.desc,Terminez un défi « Un seul crochet » sans perdre votre unique crochet.
+ach.achievement.daily_lock.name,La porte du jour
+ach.achievement.daily_lock.desc,Terminez une fois la serrure du jour. Pas besoin de série.
+ach.achievement.timed_care.name,"Vite, sans précipitation"
+ach.achievement.timed_care.desc,Terminez un défi chronométré sans casser de crochet.
+ach.achievement.bench_stop.name,Cinq sur la feuille
+ach.achievement.bench_stop.desc,Atteignez la première halte à l'atelier d'un service continu.
+ach.achievement.tool_care.name,Une réparation soignée
+ach.achievement.tool_care.desc,Réparez un outil usé à l'atelier pour la première fois.
+ach.achievement.permission.name,Avant la serrure
+ach.achievement.permission.desc,Vérifiez le droit d'accès avant votre première ouverture sous contrat.
+ach.achievement.witness.name,Un témoin confirme
+ach.achievement.witness.desc,Terminez une intervention après confirmation de l'accès par un témoin indépendant.
+ach.achievement.first_no.name,Savoir dire non
+ach.achievement.first_no.desc,Refusez une intervention sans droit d'accès confirmé.
+ach.achievement.ex_partner.name,Ce ne sont pas vos clés
+ach.achievement.ex_partner.desc,Résolvez l'affaire de l'ex-partenaire sans ouvrir la porte.
+ach.achievement.bribe.name,Le silence ne s'achète pas
+ach.achievement.bribe.desc,Refusez le supplément proposé pour éviter les vérifications.
+ach.achievement.aunt_alive.name,La tante va bien
+ach.achievement.aunt_alive.desc,Terminez l'affaire de la tante sans ouvrir son logement.
+ach.achievement.wrong_floor.name,Le bon étage
+ach.achievement.wrong_floor.desc,Résolvez une erreur d'étage sans ouvrir de porte.
+ach.achievement.heirs.name,Tout le monde est là
+ach.achievement.heirs.desc,Attendez tous les héritiers habilités avant d'ouvrir le coffre.
+ach.achievement.partial_refusal.name,Seulement ce qui est convenu
+ach.achievement.partial_refusal.desc,"Ouvrez le coffret du client, mais refusez la cassette d'un tiers."
+ach.achievement.museum_papers.name,En trois exemplaires
+ach.achievement.museum_papers.desc,Ouvrez le coffre du musée après autorisation de l'établissement.
+ach.achievement.kazimierz.name,Le vieux portail
+ach.achievement.kazimierz.desc,Terminez l'intervention documentée sur le portail de Kazimierz.
+ach.achievement.capsule.name,Une dernière page
+ach.achievement.capsule.desc,Ouvrez la capsule temporelle de l'école avec son autorisation.
+tip.ethics_01,Demandez d'abord à qui appartient la porte. Le mécanisme peut attendre.
+tip.ethics_02,L'absence de papiers ne fait pas d'une personne un escroc. Elle ne donne pas le droit d'entrer non plus.
+tip.ethics_03,"Plus quelqu'un est pressé, plus il faut poser les bonnes questions."
+tip.ethics_04,Refuser poliment fait partie du métier. Certaines portes doivent rester fermées.
+tip.ethics_05,Un supplément ne remplace pas l'accord de l'occupant.
+tip.ethics_06,Une explication à voix haute n'est pas une preuve d'accès.
+tip.ethics_07,"Si l'histoire ne tient pas debout, proposez d'appeler le gestionnaire."
+tip.ethics_08,"Une succession exige des documents et des personnes, pas une main impatiente."
+tip.ethics_09,"Je suis venu pour la serrure, pas pour le contenu du domicile d'autrui."
+tip.ethics_10,Convenez du prix d'abord. Laissez les surprises à la bouilloire.
+tip.feel_01,Un clic sec et clair ne raconte pas la même histoire qu'un double clic sourd.
+tip.feel_02,"Le cylindre a son écriture : un léger tour, un tour plus profond, puis un retour."
+tip.feel_03,Le silence aussi est un son. Surtout après un choc mat.
+tip.feel_04,Un ressort peut se plaindre sans être cassé. Moi aussi.
+tip.feel_05,"Un sifflement métallique montant est une alerte, pas une fanfare de victoire."
