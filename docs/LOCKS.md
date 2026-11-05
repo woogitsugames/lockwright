@@ -13,6 +13,7 @@ Spis treści
 4. Ryzyka projektowe
 5. Wzór karty
 6. Źródła
+7. Spec rodziny `radial_pin` (po MVP)
 
 ---
 
@@ -626,6 +627,8 @@ które brzmi jak „zamknięcie drzwi”.
 ### 2.9 Zamek rurkowy — `tubular`
 **PL:** Zamek rurkowy · **EN:** Tubular Lock · **Tier:** t4–5 · **Faza:** F1
 
+Spec modułu (id `radial_pin`, t1–t6, wejścia T, D, P): §7.
+
 **Epoka.** Upowszechniony w USA od 1933 r. przez jednego producenta (znak towarowy — nie podajemy). **Korekta założenia:**
 1933 to data popularyzacji, nie udokumentowanego wynalezienia; wcześniejsze konstrukcje kołkowe ułożone w okrąg
 mogły istnieć. Typowo 6–8 stosów, spotyka się 4–10.
@@ -1177,3 +1180,168 @@ Ogólne i historia (dostęp 2026-11-04):
 
 Uwagi o źródłach: Wikipedia jest punktem startu, nie źródłem ostatecznym; daty oznaczone „niepewność” wymagają
 sprawdzenia w źródłach pierwotnych (rejestry patentowe), zanim trafią do treści dla gracza.
+
+---
+
+## 7. Spec rodziny `radial_pin` (po MVP, F1)
+
+Status: spec projektowy (2026-11-05), do implementacji w lockcore po MVP. Doprecyzowuje kartę 2.9 (`tubular`) do
+poziomu modułu: **id modułu w lockcore to `radial_pin`**, nazwa dla gracza zostaje ogólna („Zamek rurkowy” /
+*Tubular Lock*), a `tubular` w `TOOLS.md` i tabeli 3 czytamy jako alias treści. Powód nowej nazwy: id opisuje
+wymyśloną mechanikę gry (stosy ułożone promieniście wokół osi), a nie realny typ produktu. Mechanizm jest uogólniony
+i częściowo wymyślony; liczby to strojenie pod kciuk, nie wymiary czegokolwiek.
+
+### 7.1 Mechanika w kategoriach gry
+
+- **Budowa (fikcyjna).** Czoło to pierścień `n` otworów wokół środkowego słupka. W każdym otworze siedzi **stos**:
+  element dolny (od strony gracza) i element górny ze sprężyną. Między obrotową **tuleją** a obudową biegnie
+  pierścieniowa **linia podziału**. Napięcie kręci tuleją (moment, jak rdzeń w `pin_tumbler`).
+- **Ruch elementu to wciśnięcie** (`push`, w głąb, wzdłuż osi), nie uniesienie. Stos `bound` wciśnięty do okna
+  `win_shear` przy `T ≥ t_hold` → `set`: przerwa między elementami trafia na linię podziału, tuleja drga o mikrokąt,
+  wiąże kolejny stos. Stan ustawionego stosu trzyma napięcie, nie kciuk (puszczenie `push` nie zrzuca).
+- **Kolejność wiązania** jak §1.5 (najmniejsze `o_i` wiąże pierwsze), ale generator układa `o_i` tak, żeby kolejne
+  stosy **nie leżały obok siebie** na okręgu częściej niż w 50% przejść (inaczej gracz „obiega” okrąg bez myślenia).
+- **Przejścia (indeks).** Po ustawieniu wszystkich stosów i utrzymaniu `T ≥ t_index` przez `index_hold` tuleja
+  przeskakuje o jedną podziałkę (1/`n` obrotu, zdarzenie `radial.index`). Stosy wyskakują do spoczynku, a każdy górny
+  element stoi teraz nad innym dolnym, więc **zamek ma nową kolejność wiązania i nowe okna** (generator losuje je
+  osobno dla każdego przejścia). Otwarcie = `index_count` przejść. To jedyna naprawdę nowa logika rodziny; reszta to
+  wspólny model.
+- **Overset.** Stos `bound` wciśnięty poniżej okna o `overset_margin` blokuje tuleję; wyjście: `T < t_release`
+  (kosztem `drop` w bieżącym przejściu). Overset jest główną pułapką S3 (zgodnie z `ONBOARDING.md`).
+- **Element schodkowy (od t4, `sec_count`).** Dolny element z „schodkiem”: zatrzymuje się na linii podziału płycej
+  niż okno (`false_set` + `radial.step`, tuleja obraca się o dwie podziałki skali), a dalej idzie tylko z napięciem
+  w paśmie kontrrotacji `[cr_lo, cr_hi]` (`counter_rotate` podczas wciskania). To odpowiednik szpulki z `pin_tumbler`,
+  żeby gracz przenosił umiejętność, a nie uczył się trzeciego słownika.
+- **Zrzut.** `T < t_hold` przez `drop_grace` → `drop` w bieżącym przejściu (ukończone przejścia zostają). Tylko t6:
+  pełne puszczenie (`T < t_release` przez 2 × `drop_grace`) cofa tuleję do przejścia 1 (`radial.spring_back`).
+- **Porażka:** `break` (jak §1.5). t1: narzędzie tylko się wygina (S trzymane poniżej `S_max`, jak `warded` t1).
+
+### 7.2 Parametry per tier
+
+Rodzina obejmuje **t1–t6** (karta 2.9 mówiła t4–5; t1–t3 dochodzą, bo zlecenie `job.drummer_locker` jest w
+rozdziale 2 na T1, a progresja i tak potrzebuje łagodnego wejścia). Czasy w ms, w danych w krokach (120 Hz).
+
+| Parametr | t1 | t2 | t3 | t4 | t5 | t6 | Uwagi |
+|---|---|---|---|---|---|---|---|
+| `n_elem` (stosy) | 4 | 5 | 6 | 7 | 8 | 8–10 | 10 to maks. czytelny na 280 dp |
+| `index_count` (przejścia) | 1 | 1 | 2 | 2 | 2–3 | 3 | t1–t2 bez indeksu = jedno przejście |
+| `win_shear` (% skoku) | 14 | 12 | 11 | 10 | 9 | 8 | ≥ 4,5 (1,5 × precyzji 0,03) |
+| `overset_margin` (%) | — (off) | 10 | 8 | 7 | 6 | 5,5 | okno + margines ≥ 9 |
+| `tension_band` | 0,26 | 0,24 | 0,22 | 0,20 | 0,18 | 0,16 | ≥ δ_human 0,08 |
+| `multi_bind_p` | 0 | 0 | 0 | 0,10 | 0,15 | 0,20 | para dzieli `o_i` |
+| `sec_count` (schodkowe) | 0 | 0 | 0 | 0–1 | 1–2 | 2–3 | na przejście |
+| `drop_grace` (ms) | 300 | 250 | 200 | 170 | 150 | 130 | |
+| `index_hold` (ms) | — | — | 250 | 250 | 300 | 350 | |
+| `fb_gain` / `noise` | 1,0 / 0 | 1,0 / 0,05 | 0,9 / 0,1 | 0,8 / 0,15 | 0,7 / 0,2 | 0,6 / 0,25 | |
+| Czas docelowy (s) | 30–60 | 30–60 | 45–120 | 45–120 | 60–150 | 60–150 | §1.8 |
+
+Stałe startowe (do strojenia, wzorowane na `pin_tumbler`): `t_hold` 0,10, `t_release` 0,05, `band_lo` 0,20–0,25,
+`t_index = band_lo` bieżącego przejścia, `tau_safe = max t_stick + 0,06`, `cr` 0,12–0,21, prędkość stosu `bound`
+2/s, schodkowego 0,6/s. Seria w Trybie Ciągłym podnosi najwyżej dwie osie naraz (§1.8): przejścia liczą się do osi
+„Złożoność”.
+
+### 7.3 Zdarzenia (słownik §1.6, bez nowych typów bazowych)
+
+| Zdarzenie | Kiedy | `element` | Uwagi |
+|---|---|---|---|
+| `contact` | magnes wskaźnika złapał stos | i | materiał `brass` / `steel` |
+| `bind` | stos zaczyna wiązać | i | |
+| `near_shear` | stos do 1,5 × okna | i | rampa intensywności |
+| `set` | stos ustawiony | i | |
+| `false_set` (+ sub `radial.step`) | schodek na linii podziału | i | sub 1 |
+| `counter_rotate` | wciskanie schodkowego w paśmie | i | |
+| `overset` | przepchnięcie | i | |
+| `drop` | zrzut w bieżącym przejściu | -1 | intensywność = spadłe / n |
+| `drop` (+ sub `radial.spring_back`) | t6: powrót do przejścia 1 | -1 | sub 3, intensywność 1 |
+| `set` (+ sub `radial.index`) | tuleja przeskoczyła o podziałkę | -1 | sub 2, intensywność 1, `meta` = numer przejścia |
+| `stress`, `break`, `wear` | jak §1.5 | -1 | |
+| `open` | ostatnie przejście zakończone | -1 | |
+
+`radial.index` celowo mapuje na `set`, nie na `open`: to krok, nie koniec. Nie używamy `gate_align` ani
+`detector_trip`. Oba sygnały ciągłe zostają: `tension_resistance` i `pick_drag` (tu: opór wciskania).
+
+### 7.4 Kciuki
+
+`input_mask` = **T, D, P** (zmiana względem karty 2.9, która miała T, R, P). Powód: `rotate` to prędkość, a wybór
+stosu potrzebuje pozycji bezwzględnej, z magnesem i z prostym planem dla bota; `pick_depth` jako kąt (0..1, zawija
+się jak pozycja pierścienia w `ring_combo`) daje to bez zmiany formatu powtórek.
+
+- **Lewy kciuk:** łuk napięcia, jak wszędzie (lewy = siła, ryzyko 6 z §4).
+- **Prawy kciuk: pole pierścieniowe** (pierścień ≥ 200 dp średnicy, szerokość pasa ≥ 64 dp, w dolnych 35% ekranu).
+  Kąt dotyku → `pick_depth` (magnes do najbliższego stosu ± 30% podziałki, `contact` przy złapaniu). Ruch **do
+  środka** pierścienia → `push` (0 na zewnętrznej krawędzi, 1 po 64 dp). Puszczenie = `push` 0, wskaźnik zostaje
+  na stosie.
+- Dotknięcie otworu na czole wybiera stos bezpośrednio (strefa dotyku 48 dp, choć otwór ma 36 dp). Dla 10 stosów
+  odstęp na obwodzie ≈ 77 dp, więc strefy się nie nakładają.
+- Poziom: pole pierścieniowe po prawej, łuk po lewej, czoło w środku. Dostępność: „Przytrzymanie wciśnięcia”
+  (stuknięcie zamraża `push`, drugie zwalnia) i „Szersze okna” ×1,5 (§1.7).
+
+### 7.5 Czytelność (widok i stany w skali szarości)
+
+Kamera jak w 2.9: **czoło** (okrąg 280 dp, otwory 36 dp) + **wstawka przekroju** aktywnego stosu 120 × 200 dp
+w prawym górnym rogu (poza strefą kciuka). Wstawka to przekrój wzdłuż osi otworu: element dolny i górny ≥ 28 dp
+szerokości, linia podziału ≥ 2 dp, sprężyna widoczna. Na obudowie wokół czoła **wygrawerowana skala podziałek**
+i znacznik przejść (kreski 1–3 nad czołem: pełna = zrobione, pusta = przed nami). Kontrast metal/tło ≥ 3:1.
+
+Znaki są te same co w `DESIGN.md` §1 (kreski tarcia, klin, stopka, talia, klamra), dodatkowo każdy stan ma znak
+na **czole**, bo wstawka pokazuje tylko jeden stos:
+
+| Stan | Czoło (każdy otwór) | Wstawka (aktywny stos) |
+|---|---|---|
+| free | otwór pusty, element dolny równo z czołem | równe zwoje sprężyny |
+| bound | element przesunięty do krawędzi otworu (sierp cienia z jednej strony) + 3 kreski tarcia na obwodzie | dociśnięty w bok, kreski tarcia |
+| near | sierp się zwęża, zostaje 1 kreska | klin szczeliny się zwęża |
+| set | element cofnięty w głąb, **pełny koncentryczny pierścień** (stopka) w otworze | stopka na linii podziału, tuleja o 1 podziałkę |
+| false set (schodek) | pierścień **przerywany**, tuleja o 2 podziałki | talia/schodek na linii, obrys przerywany |
+| overset | **klamra**: dwie poziome kreski przez otwór | sprężyna ściśnięta w czarną bryłę |
+| stress / blisko złamania | koronka wygina się, rysy poprzeczne 1→3 | — |
+| indeks | cała tuleja obraca się o podziałkę (200 ms), stosy wyskakują, znacznik przejść +1 | aktywny stos wraca do free |
+
+Bez koloru jako kanału (A7): każdy wiersz różni się sylwetką. Animacje 100–250 ms, bez odbić.
+
+### 7.6 Wyczucie (dźwięk, haptyka, ruch)
+
+- Materiał wyższy i jaśniejszy niż `pin_tumbler`: krótkie metalowe tyknięcia; `set` = suchy klik; `radial.step` =
+  głuchy podwójny („klak-trrt”, jak false set w DESIGN).
+- `pick_drag` rośnie z `push`: wciśnięcie stosu `bound` jest „gęste”, `free` sprężyste. Gracz szuka stosu, który
+  stawia opór, delikatnie dociskając kolejne otwory po okręgu (to rytm tej rodziny, ma być przyjemny, nie mozolny).
+- `radial.index` to **nagroda w środku zamka**: wyraźny obrót z zapadką (mocny transient + 80 ms + słabszy), dźwięk
+  zębatki i szczęk, potem chwila ciszy przed kolejnym przejściem. Ma się różnić od `open` długością (open jest dłuższy
+  i ciepły).
+- Pułapka do pilnowania w playteście: przy 3 przejściach × 10 stosów zamek może się dłużyć. Jeśli p50 bota czującego
+  na t6 przekroczy 150 s, skracamy przejście 3 do `n − 2` stosów (zamiast dokładać okna).
+- Haptyka nigdy sama: każdy sygnał ma obraz (tabela 7.5) i dźwięk.
+
+### 7.7 Weryfikator i wyrocznia
+
+- **Wyrocznia:** plan = lista przejść; w każdym kolejność stosów (z parami multi-bind), napięcie, podejście, limit
+  wciśnięcia. Sprawdza per przejście: pasmo napięcia ≥ 0,08 (także pasmo kontrrotacji schodków i pasmo
+  `[t_index, tau_safe]` dla indeksu), okno ≥ 1,5 × 0,03, okno + margines ≥ 3 × 0,03, precyzja kąta: podziałka
+  1/`n` ≥ 3 × precyzji wskaźnika (0,02 obrotu → `n ≤ 16`, mamy maks. 10). Między przejściami pasma nie muszą się
+  przecinać (gracz ma czas zmienić napięcie po indeksie).
+- **Bot skryptowy:** ten sam `run_plan_bot` z osią wciskania zamiast uniesienia (`push` limit 3/s) i ruchem kąta
+  po krótszym łuku (zawijanie). Warunek jak wszędzie: otwiera w ½ limitu tieru, `S < 0,8·S_max`, bez `break`.
+- **Bot czujący:** dociska kolejne otwory lekkim `push`, wybiera ten z największym `pick_drag`, wciska go powoli do
+  klika; po `overset` strzepuje napięcie; po `radial.step` schodzi do pasma kontrrotacji; po `radial.index` zaczyna
+  sondowanie od nowa (nie pamięta kolejności z poprzedniego przejścia). Raport, nie bramka (jak v0.2).
+- **Fuzzing i inwarianty:** kąt w 0..1 z zawijaniem, `push` w 0..1, numer przejścia ≤ `index_count`, po
+  `radial.index` żaden stos nie jest `set`, `open` tylko po ostatnim przejściu.
+- **Złote powtórki:** dwie (skryptowa t3 z indeksem, czująca t5 z overset i schodkiem). Test czytelności (1.10 p. 6):
+  `set` vs `radial.step` oraz `radial.index` vs `open` muszą się różnić cechami zdarzeń.
+- Pełny przebieg 10 000 seedów per tier, odrzut seedów < 5%, mediana `M` rosnąca t1→t6.
+
+### 7.8 Zlecenie `job.drummer_locker` do czasu wejścia rodziny
+
+**Rekomendacja: `wafer`, tier 1** (istnieje w lockcore t1–t3, uczy overset bez kosztu zrzutu, pasuje do
+taniej szafki w sali prób). W danych: `"family": "wafer"`, `"tier": 1` zamiast `"unknown"`. Tekst
+`job.drummer_locker.situation` (PL) mówi o „rurkowym zamku”: na czas MVP zmienić na „w szafce” bez typu zamka
+(EN już go nie podaje), żeby obraz i tekst się zgadzały. Linie dialogów (`CLIENTS.md` §8) nie nazywają zamka.
+
+Po wejściu `radial_pin`: zlecenie przechodzi na `radial_pin` t1 (4 stosy, jedno przejście, bez overset). Konflikt
+do rozstrzygnięcia przy progresji: Koronka odblokowuje się po t4 (`TOOLS.md`), a zlecenie jest w rozdziale 2.
+Propozycja: w tym jednym zleceniu Koronka „pożyczona od kierownika sali” (jednorazowo, bez zużycia), co jest też
+zapowiedzią narzędzia w sklepie. Alternatywa: przenieść zlecenie do rozdziału po t4.
+
+Checklist (§5): weryfikator na 10 000 seedów · czytelność set / step / index · brak marek · zdarzenia rodzinne
+zmapowane (7.3) · `input_mask` T, D, P zgodny z dwoma kciukami · wpis w `TOOLS.md` (macierz: kolumna `tubular`
+= `radial_pin`).
