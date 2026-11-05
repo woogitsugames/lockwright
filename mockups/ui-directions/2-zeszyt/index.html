@@ -19,7 +19,7 @@ body{background:var(--paper);color:var(--type);font-family:"Courier Prime"}
 .t{display:inline-block;white-space:pre}
 .t i{font-style:normal;display:inline-block}
 .h{font-family:"Kalam";font-weight:400;color:var(--pencil)}
-.red{color:var(--red)}
+.red,.note.red{color:var(--red)}
 svg.ink{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5;overflow:visible}
 .line{height:calc(var(--sq)*3);display:flex;align-items:center;font-size:18px}
 .line.two{height:calc(var(--sq)*4);flex-direction:column;align-items:flex-start;justify-content:center}
@@ -30,13 +30,13 @@ a{color:inherit;text-decoration:none}
 .sub{font-size:19px;height:calc(var(--sq)*2);display:flex;align-items:center}
 .menu{position:absolute;left:0;right:0;bottom:calc(var(--sq)*2)}
 .menu .line{font-size:21px}
-.menu .no{width:34px;color:var(--type-2)}
+.menu .no{width:44px;color:var(--type-2)}
 .menu .primary{font-size:27px;font-weight:700;height:calc(var(--sq)*5)}
 .note{position:absolute;font-family:"Kalam";font-weight:400;font-size:17px;line-height:1.05;color:var(--pencil)}
 .back{height:48px;display:inline-flex;align-items:center;font-size:17px;padding-right:12px}
 h2{font-size:28px;font-weight:700;height:calc(var(--sq)*3);display:flex;align-items:center;margin-top:var(--sq)}
 .jobs{margin-top:var(--sq)}
-.job{height:calc(var(--sq)*4);display:flex;flex-direction:column;justify-content:center;position:relative}
+.job{height:calc(var(--sq)*5);display:flex;flex-direction:column;justify-content:center;position:relative}
 .job .tt{font-size:18px;font-weight:700}
 .job .tt .n{font-weight:400;color:var(--type-2);font-size:14px;margin-right:8px}
 .job .dd{font-size:13px;color:var(--type-2);margin-left:43px;margin-top:3px}
@@ -71,6 +71,7 @@ h2{font-size:28px;font-weight:700;height:calc(var(--sq)*3);display:flex;align-it
 </svg>
 <script src="../data.js"></script>
 <script>
+window.__ready = false;
 const R = LW.rng(23);
 // Typewriter: uneven ink per character and a slightly jumpy baseline.
 function T(str) { let o = ''; for (const ch of str) { if (ch === ' ') { o += ' '; continue; }
@@ -102,14 +103,12 @@ if (LW.screen === 'menu') {
   const left = `<div class="head">${T('ZESZYT DYŻURÓW · NR 3')}</div>
       <div class="title" id="title">${T('Lockwright')}</div>
       <div class="sub" id="sub">${T('Pogotowie Zamkowe')}</div>
-      <div class="sketch" style="top:${land ? 400 : 196}px"></div>`;
+      <div class="sketch" style="top:${land ? 196 : 236}px;${land ? 'left:6px' : ''}"></div>`;
   if (land) {
-    page.innerHTML = `<div class="col">${left}
-      ${note('nocka 22–6, telefon<br>zawsze przy sobie', 0, 168, '', -1.5, 'font-size:18px')}
-      ${note('krótka pauza kosztuje mniej<br>niż złamany wytrych', 0, 236, '', 0, 'font-size:16px')}
-      ${note('<s>wtorek</s> czwartek: olej do kłódek', 0, 300, '', -1, 'font-size:16px')}</div>
+    page.innerHTML = `<div class="col">${left}</div>
       <div class="col2"><div class="menu">${items}</div>
-      ${note('2 nowe', 290, 102, 'red', -4)}</div>`;
+      ${note('nocka 22–6, telefon<br>zawsze przy sobie', 210, 0, '', -2, 'font-size:17px')}
+      ${note('2 nowe', 236, 184, 'red', -4)}</div>`;
   } else {
     page.innerHTML = `<div class="col">${left}<div class="menu">${items}</div></div>
       <div class="mar">${note('nocka<br>22–6', 6, 10, '', -4, 'font-size:19px')}
@@ -117,10 +116,10 @@ if (LW.screen === 'menu') {
       ${note('krótka<br>pauza<br>kosztuje<br>mniej niż<br>złamany<br>wytrych', 6, 150, '', 0, 'font-size:15.5px')}
       ${note('<s>wtorek</s><br>czwartek:<br>olej do<br>kłódek', 6, 290, '', -2, 'font-size:15.5px')}</div>`;
   }
-  requestAnimationFrame(() => {
-    under($('#title'), 'var(--pencil)', 2, true);
-    circle($('#m-start .lb'), 'var(--pencil)', 9, 1.9);
-    circle($('#m-start .lb'), 'var(--pencil)', 12, 1.2);
+  document.fonts.ready.then(() => {
+    under($('#title .t'), 'var(--pencil)', 4, true);
+    circle($('#m-start .lb'), 'var(--pencil)', 6, 1.9);
+    circle($('#m-start .lb'), 'var(--pencil)', 9, 1.2);
     sketch($('.sketch'));
     const z = box($('#m-jobs .lb')), n = box(page.querySelector('.note.red'));
     arrow([n.x - 4, n.y + 12], [z.right + 10, z.y + z.height / 2], 'var(--red)');
@@ -134,13 +133,13 @@ if (LW.screen === 'jobs') {
   page.innerHTML = `<div class="col"><a class="back" id="back">${T('‹ Wstecz')}</a><h2 id="h">${T('Zlecenia')}</h2><div class="jobs">${rows}</div></div>
     <div class="mar">${LW.jobs.map((j, k) => j.state === 'done' ? note('zrobione<br>' + j.time, 6, 0, '', -3, `font-size:15px;top:var(--y${k})`) : j.state === 'new' ? note('nowe', 14, 0, 'red', -6, `font-size:19px;top:var(--y${k})`) : '').join('')}
     ${note('sprawdzić<br>dokumenty!', 2, 0, 'red', -3, 'font-size:15px;top:var(--y7b)')}</div>`;
-  requestAnimationFrame(() => {
+  document.fonts.ready.then(() => {
     const mar = box($('.mar'));
     LW.jobs.forEach((j, k) => { const b = box($('#j' + k)); $('.mar').style.setProperty('--y' + k, (b.y - mar.y + 12) + 'px');
       if (j.state === 'done') strike($(`#j${k} .tt .t`));
       if (j.state === 'new') circle($(`#j${k} .n`), 'var(--red)', 6, 1.6); });
-    const b7 = box($('#j7')); $('.mar').style.setProperty('--y7b', (b7.y - mar.y + 46) + 'px');
-    under($('#h'), 'var(--pencil)', 0);
+    const b7 = box($('#j7')); $('.mar').style.setProperty('--y7b', (b7.y - mar.y + 50) + 'px');
+    under($('#h .t'), 'var(--pencil)', 2);
     // bracket grouping the done jobs
     const a = box($('#j0')), d = box($('#j3')), x = mar.x - 10;
     stroke(wob([x, a.y + 8], [x + 5, a.y + 6], .4, 3)); stroke(wob([x, a.y + 8], [x, d.bottom - 8], 1, 16)); stroke(wob([x, d.bottom - 8], [x + 5, d.bottom - 6], .4, 3));
@@ -165,10 +164,10 @@ if (LW.screen === 'settings') {
     <div class="expl">${T('Napięcie trzyma się samo,')}<br>${T('a ty prowadzisz wytrych')}<br>${T('jednym kciukiem.')}</div>
     <div class="sec">${T('JĘZYK')}</div>
     <div class="set"><span class="opts"><span id="pl" style="min-width:90px">${T('polski')}</span><span style="min-width:100px">${T('English')}</span></span></div>
-  </div>`;
+  </div>${note('to gra, nie kurs.<br>Prawdziwe zamki — do fachowca.', 32, 838, '', -1.5, 'font-size:16px')}`;
   page.classList.add('nomargin');
-  requestAnimationFrame(() => {
-    under($('#h'), 'var(--pencil)', 0);
+  document.fonts.ready.then(() => {
+    under($('#h .t'), 'var(--pencil)', 2);
     circle($('#hon'), 'var(--pencil)', 3); circle($('#aoff'), 'var(--pencil)', 3); circle($('#pl'), 'var(--pencil)', 2);
     rect($('#imp'), 0);
     for (const id of ['s1', 's2', 's3', 's4']) { const el = $('#' + id), b = box(el.querySelector('.tk')), v = +el.dataset.v;
@@ -199,13 +198,13 @@ function sketch(el) {
     if (bind) for (let k = 0; k < 3; k++) stroke([[cx + w / 2 + 5, shear - 6 + k * 5], [cx + w / 2 + 10, shear - 10 + k * 5]], P, 1.2);
   }
   const lab = (t, x, y, r = 0, red) => page.insertAdjacentHTML('beforeend', note(t, x, y, red ? 'red' : '', r, 'font-size:15px'));
-  lab('linia podziału', X + 128, shear - 2 - 72 - 28, -2);
-  arrow([X + 172, shear - 80], [X + 196, shear - 4], P);
+  lab('linia podziału', X + 150, Y - 26, -2);
+  arrow([X + 200, Y - 4], [X + 236, shear - 3], P);
   lab('siedzi', X + 64, Y + 136, -3);
   arrow([X + 86, Y + 138], [X + 88, shear + 6], P);
   lab('wiąże — popuść', X + 112, Y + 146, -2, true);
   arrow([X + 140, Y + 150], [X + 146, shear + 10], 'var(--red)');
 }
-function draw() { ink.insertAdjacentHTML('beforeend', strokes.join('')); }
+function draw() { ink.insertAdjacentHTML('beforeend', strokes.join('')); window.__ready = true; }
 </script>
 </body></html>
