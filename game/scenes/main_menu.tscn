@@ -1,17 +1,11 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/ui/enamel_button.gd" id="2"]
+[ext_resource type="Shader" path="res://theme/vignette.gdshader" id="3"]
 
-[sub_resource type="StyleBoxFlat" id="about_panel_style"]
-bg_color = Color(0.12, 0.11, 0.1, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-content_margin_left = 16.0
-content_margin_top = 16.0
-content_margin_right = 16.0
-content_margin_bottom = 16.0
+[sub_resource type="ShaderMaterial" id="vignette_mat"]
+shader = ExtResource("3")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -20,81 +14,155 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1")
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="Backdrop" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -220.0
-offset_right = 160.0
-offset_bottom = 220.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Vignette" type="ColorRect" parent="."]
+material = SubResource("vignette_mat")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Frame" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Layout" type="BoxContainer" parent="Frame"]
+layout_mode = 2
+theme_override_constants/separation = 16
+vertical = true
+
+[node name="TitleBlock" type="VBoxContainer" parent="Frame/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+alignment = 1
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="Frame/Layout/TitleBlock"]
+layout_mode = 2
+theme_type_variation = &"MenuTitle"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Subtitle" type="Label" parent="Frame/Layout/TitleBlock"]
+layout_mode = 2
+theme_type_variation = &"Heading"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MenuBlock" type="VBoxContainer" parent="Frame/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
 theme_override_constants/separation = 12
 
-[node name="Title" type="Label" parent="VBox"]
+[node name="PlayButton" type="Button" parent="Frame/Layout/MenuBlock"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+autowrap_mode = 3
+script = ExtResource("2")
+
+[node name="Grid" type="GridContainer" parent="Frame/Layout/MenuBlock"]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="JobsButton" type="Button" parent="Frame/Layout/MenuBlock/Grid"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+text_overrun_behavior = 3
+script = ExtResource("2")
+
+[node name="WorkshopButton" type="Button" parent="Frame/Layout/MenuBlock/Grid"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+text_overrun_behavior = 3
+script = ExtResource("2")
+
+[node name="ShowcaseButton" type="Button" parent="Frame/Layout/MenuBlock/Grid"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+text_overrun_behavior = 3
+script = ExtResource("2")
+
+[node name="SettingsButton" type="Button" parent="Frame/Layout/MenuBlock/Grid"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+text_overrun_behavior = 3
+script = ExtResource("2")
+
+[node name="TipPanel" type="PanelContainer" parent="Frame/Layout/MenuBlock"]
 layout_mode = 2
 
-[node name="TipLabel" type="Label" parent="VBox"]
+[node name="TipLabel" type="Label" parent="Frame/Layout/MenuBlock/TipPanel"]
 layout_mode = 2
-autowrap_mode = 2
+theme_type_variation = &"Caption"
+autowrap_mode = 3
 horizontal_alignment = 1
-horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="VBox"]
+[node name="AboutButton" type="Button" parent="Frame/Layout/MenuBlock"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-
-[node name="JobsButton" type="Button" parent="VBox"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-
-[node name="WorkshopButton" type="Button" parent="VBox"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-
-[node name="ShowcaseButton" type="Button" parent="VBox"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-
-[node name="SettingsButton" type="Button" parent="VBox"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-
-[node name="AboutButton" type="Button" parent="VBox"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"LinkButtonDark"
 
 [node name="AboutPanel" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 1
-theme_override_styles/panel = SubResource("about_panel_style")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -180.0
-offset_top = -150.0
-offset_right = 180.0
-offset_bottom = 150.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="VBox" type="VBoxContainer" parent="AboutPanel"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Notice" type="Label" parent="AboutPanel/VBox"]
+[node name="AboutTitle" type="Label" parent="AboutPanel/VBox"]
 layout_mode = 2
-autowrap_mode = 2
+theme_type_variation = &"Title"
+autowrap_mode = 3
 
-[node name="Licenses" type="Label" parent="AboutPanel/VBox"]
+[node name="Scroll" type="ScrollContainer" parent="AboutPanel/VBox"]
 layout_mode = 2
-autowrap_mode = 2
-layout_mode = 2
-autowrap_mode = 2
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Text" type="VBoxContainer" parent="AboutPanel/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Notice" type="Label" parent="AboutPanel/VBox/Scroll/Text"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+autowrap_mode = 3
+
+[node name="Licenses" type="Label" parent="AboutPanel/VBox/Scroll/Text"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"Caption"
+autowrap_mode = 3
 
 [node name="CloseButton" type="Button" parent="AboutPanel/VBox"]
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 2

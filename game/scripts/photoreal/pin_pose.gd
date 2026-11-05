@@ -7,10 +7,11 @@ extends RefCounted
 const SHEAR := 6.4          # top of the plug (shear line), y
 const CAP_UNDERSIDE := 21.6 # underside of the chamber caps: top end of the springs
 const REST_BOTTOM := 1.2    # key-pin tip at rest (Blender KP_FLOOR)
-const TRAVEL := 2.5         # mm of key-pin lift for lockcore position 1.0 (≈ 32 dp in portrait)
+const TRAVEL := 4.2         # mm of key-pin lift for lockcore position 1.0 (≈ 55 dp in portrait, N-62:
+                            # 2.5 mm gave ≈ 18 dp to the shear line and read as "pins barely move")
 const DEFAULT_TARGET := 0.56  # centre of the pin_tumbler generator's target range (0.42–0.70)
 const SET_GAP := 0.2        # driver resting on the plug edge, light gap (realizm.md "set")
-const SET_DROP := 0.35      # key pin drops this far under the shear line once set
+const SET_DROP := 0.5       # key pin drops this far under the shear line once set (≈ 6 dp ledge)
 const SPOOL_WAIST := 0.46   # spool driver: waist height above its bottom (lw_common.spool)
 const BIND_TILT_DEG := 2.2  # binding driver leans against the chamber wall (Blender pin c)
 const SPOOL_VARIANTS := [1, 3]  # lockcore::pin::Variant spool, spool_serrated

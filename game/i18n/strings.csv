@@ -128,6 +128,23 @@ dev.haptics_lab.caps,Capabilities,Możliwości,Möglichkeiten
 nav.quit_confirm,Quit the game?,Zakończyć grę?,Spiel beenden?
 nav.quit_yes,Quit,Zakończ,Beenden
 nav.quit_no,Keep playing,Zostań w grze,Weiterspielen
+menu.subtitle,Emergency Locksmith,Pogotowie Zamkowe,Schlüsselnotdienst
+settings.section_sound,Sound,Dźwięk,Ton
+settings.section_controls,Controls,Sterowanie,Steuerung
+settings.section_access,Language and accessibility,Język i dostępność,Sprache und Barrierefreiheit
+settings.section_other,Graphics and help,Grafika i pomoc,Grafik und Hilfe
+workshop.not_enough,Not enough coins,Za mało monet,Zu wenig Münzen
+workshop.price,Price: {0} coins,Cena: {0} monet,Preis: {0} Münzen
+workshop.reward_hint,Unlocks as you progress,Odblokujesz w trakcie gry,Schaltet sich mit dem Fortschritt frei
+arrival.situation,What happened,Co się stało,Was passiert ist
+ui.controls.title,How do you want to hold the tension?,Jak chcesz trzymać napięcie?,Wie willst du die Spannung halten?
+ui.controls.auto,Automatic tension — for beginners,Napięcie automatyczne — dla zaczynających,Automatische Spannung — für Einsteiger
+ui.controls.auto_desc,The tension holds itself at a safe level; one thumb guides the pick.,"Napięcie trzyma się samo na bezpiecznym poziomie, a ty prowadzisz wytrych jednym kciukiem.",Die Spannung hält sich selbst auf sicherem Niveau; ein Daumen führt den Haken.
+ui.controls.manual,Two thumbs — full feel,Dwa kciuki — pełne wyczucie,Zwei Daumen — volles Gefühl
+ui.controls.manual_desc,"Left thumb holds the tension, right thumb lifts the pins.","Lewy kciuk trzyma napięcie, prawy podnosi piny.","Linker Daumen hält die Spannung, rechter hebt die Stifte."
+ui.controls.note,You can change this anytime in Settings → Controls.,Zmienisz to w każdej chwili w Ustawieniach → Sterowanie.,Jederzeit änderbar unter Einstellungen → Steuerung.
+ui.controls.selected,Selected,Wybrane,Ausgewählt
+ui.controls.auto_toggle,Automatic tension,Napięcie automatyczne,Automatische Spannung
 practice.t01.goal,Hold steady until the wooden bolt yields.,"Trzymaj równo, aż drewniany rygiel ustąpi.","Halte ruhig, bis der Holzriegel nachgibt."
 practice.t02.goal,Feel which peg binds first; let the rest wait.,Wyśledź pierwszy kołek pod oporem. Reszta poczeka.,"Spür, welcher Holzstift zuerst klemmt; der Rest wartet."
 practice.t03.goal,Find the plate that resists; ignore the chatter.,"Szukaj płytki z oporem, nie tej najgłośniejszej.","Such das Plättchen mit Widerstand, nicht das lauteste."

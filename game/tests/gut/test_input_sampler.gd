@@ -60,8 +60,8 @@ func test_d24_touch_point_is_zero_and_drag_is_relative() -> void:
 	s._unhandled_input(_touch(0, Vector2(sz.x * 0.25, 10.0), true))
 	s._physics_process(0.016)
 	assert_lt(s.tension, 0.02, "tension at the touch-down point must be ~0 (relative, D-24)")
-	# drag up by 20% of the screen height -> tension ~0.2
-	s._unhandled_input(_drag(0, Vector2(sz.x * 0.25, 10.0 - sz.y * 0.2)))
+	# N-62: drag up by 60 dp -> tension ~0.3 (TENSION_FULL_DP = 200 dp)
+	s._unhandled_input(_drag(0, Vector2(sz.x * 0.25, 10.0 - 60.0)))
 	for i in 8:
 		s._physics_process(0.016)
 	assert_gt(s.tension, 0.15, "dragging up from the touch point must build tension (D-24)")
@@ -75,8 +75,8 @@ func test_d24_lift_is_relative_to_pick_touch_point() -> void:
 	s._unhandled_input(_touch(0, Vector2(right_x, 10.0), true))
 	s._physics_process(0.016)
 	assert_lt(absf(s.pick_lift), 0.02, "lift at the touch-down point must be ~0 (relative, D-24)")
-	# drag up by 25% of the screen height -> lift ~0.5
-	s._unhandled_input(_drag(0, Vector2(right_x, 10.0 - sz.y * 0.25)))
+	# N-62: drag up by 100 dp -> lift ~0.5 (LIFT_FULL_DP = 200 dp)
+	s._unhandled_input(_drag(0, Vector2(right_x, 10.0 - 100.0)))
 	for i in 8:
 		s._physics_process(0.016)
 	assert_gt(s.pick_lift, 0.35, "lift must follow the drag from the touch point (D-24)")
@@ -91,3 +91,25 @@ func test_new_right_thumb_index_accepted_after_release() -> void:
 	s._unhandled_input(_touch(3, Vector2(right_x, sz.y * 0.5), true))   # different index
 	s._physics_process(0.016)
 	assert_eq(s._touch_pick, 3, "a new right-zone touch must register (R-02)")
+
+
+func test_n62_working_band_within_thumb_reach() -> void:
+	# N-62: the tier-1 working band (T 0.25–0.45) and the shear line (lift ≈ 0.55) must be
+	# reachable with a short thumb drag (≤ 120 dp), not a third of the screen
+	assert_lte(0.45 * InputSampler.TENSION_FULL_DP, 120.0)
+	assert_lte(0.6 * InputSampler.LIFT_FULL_DP, 130.0)
+
+
+func test_d52_auto_tension_holds_level_and_tap_releases() -> void:
+	var s := _make_sampler()
+	s.auto_tension = true
+	for i in 20:
+		s._physics_process(1.0 / 120.0)
+	assert_almost_eq(s.tension, InputSampler.AUTO_LEVEL, 0.02, "auto mode holds a steady tension")
+	s._unhandled_input(_touch(2, Vector2(60, 700), true))
+	s._unhandled_input(_touch(2, Vector2(60, 700), false))  # short tap = let go
+	s._physics_process(1.0 / 120.0)
+	assert_lt(s.tension, 0.05, "a tap on the left zone releases tension (overset recovery)")
+	for i in 60:
+		s._physics_process(1.0 / 120.0)
+	assert_almost_eq(s.tension, InputSampler.AUTO_LEVEL, 0.02, "tension comes back after the release")

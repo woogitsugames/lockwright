@@ -2,10 +2,13 @@ extends Node
 ## Screenshot runner (task 13): walks all main screens at a given resolution and
 ## saves PNGs. Run under xvfb with opengl3:
 ##   xvfb-run godot --path game --display-driver x11 --rendering-driver opengl3 res://tests/screens.tscn -- --out /tmp/shots --size 412x915
-const SCREENS := ["res://scenes/main_menu.tscn", "res://scenes/jobs_list.tscn", "res://scenes/workshop.tscn", "res://scenes/showcase.tscn", "res://scenes/settings.tscn", "res://scenes/lock.tscn"]
+const SCREENS := ["res://scenes/main_menu.tscn", "res://scenes/jobs_list.tscn", "res://scenes/workshop.tscn", "res://scenes/showcase.tscn", "res://scenes/settings.tscn", "res://scenes/control_choice.tscn", "res://scenes/job_arrival.tscn", "res://scenes/lock.tscn"]
+## job shown on the arrival screen (N-60: portrait + locksmith line)
+const ARRIVAL_JOB := "job.bike_interview"
 
 var _out := "/tmp/shots"
 var _size := Vector2i(412, 915)
+var _only := ""  # --only=main_menu,settings: render a subset
 
 
 func _ready() -> void:
@@ -15,10 +18,17 @@ func _ready() -> void:
 		elif a.begins_with("--size="):
 			var p := a.trim_prefix("--size=").split("x")
 			_size = Vector2i(int(p[0]), int(p[1]))
+		elif a.begins_with("--only="):
+			_only = a.trim_prefix("--only=")
 	DirAccess.make_dir_recursive_absolute(_out)
 	get_window().size = _size
 	await get_tree().process_frame
 	for scene_path in SCREENS:
+		var base: String = scene_path.get_file().get_basename()
+		if _only != "" and not (base in _only.split(",")):
+			continue
+		if base == "job_arrival":
+			JobRun.start(JobRun.job_by_id(ARRIVAL_JOB))
 		get_tree().change_scene_to_file(scene_path)
 		for i in 30:
 			await get_tree().process_frame

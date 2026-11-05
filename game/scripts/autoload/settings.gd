@@ -24,6 +24,8 @@ const DEFAULTS := {
 	"calibration": "",  # "" | "two" | "one" | "none" (TECH.md §2.3 first-run test)
 	"quality_profile": "auto",  # "auto" | "high" | "medium" | "low"
 	"quality_auto": "high",     # last auto-picked profile (task 7)
+	"auto_tension": true,       # D-52: tension held by the game; one thumb picks
+	"control_chosen": false,    # D-52: first-launch control choice done
 }
 
 var _cfg := {}
