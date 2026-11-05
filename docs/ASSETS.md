@@ -28,3 +28,5 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | cyfry w ring_combo.py: mockups/fonts/Lato-Bold.ttf | font | jak wyżej (Lato) | SIL OFL 1.1 | — |
 | game/addons/gut/fonts/* (AnonymousPro, CourierPrime, LobsterTwo) | font | GUT v9.7.1 (bitwes/Gut) | SIL OFL 1.1 | https://github.com/bitwes/Gut/tree/master/addons/gut/fonts |
 | game/addons/lockcore_gd/** | kod (GDExtension) | własny + godot-cpp (master, API 4.7) | MIT | https://github.com/godotengine/godot-cpp |
+| spikes/measure/android/app/fonts/BonaNova-Bold.ttf, AtkinsonHyperlegibleNext-wght.ttf (kopie z `mockups/fonts/`) | font | Google Fonts repo (wpisy wyżej) | SIL OFL 1.1 (licencje obok plików) | — |
+| spikes/measure/screens/*.png, spikes/measure/android/app/icon.png | grafika | własne (zrzuty aplikacji pomiarowej, ikona z `spikes/haptics-latency`) | własne projektu | — |

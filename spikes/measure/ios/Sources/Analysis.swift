@@ -121,7 +121,7 @@ enum Analysis {
             v.append(abs(mags[i] - avg))
             sum += mags[i]
         }
-        return Track(count: t.count, time: { t[$0] }, value: { v[$0] }, index: { lowerBound(t, $0) })
+        return Track(count: t.count, time: { t[$0] }, value: { v[$0] }, index: { Analysis.lowerBound(t, $0) })
     }
 
     /// Trailing moving average of |x| over `w` samples.

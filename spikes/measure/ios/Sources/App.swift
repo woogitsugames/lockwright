@@ -113,8 +113,10 @@ final class Wizard: ObservableObject {
 
     var classLabel: String { L.t(deviceClass == "iphone_se" ? "class_iphone_se" : "class_iphone_new") }
 
-    private func after(_ seconds: Double, _ work: @escaping () -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds, execute: work)
+    private func after(_ seconds: Double, _ work: @escaping @MainActor () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            MainActor.assumeIsolated { work() }
+        }
     }
 
     func begin() { step = .prep }
@@ -132,7 +134,7 @@ final class Wizard: ObservableObject {
     }
 
     /// Short pause after pressing Start so the finger leaves the phone before the measurement.
-    private func startRunning(total: Int, then work: @escaping () -> Void) {
+    private func startRunning(total: Int, then work: @escaping @MainActor () -> Void) {
         running = true
         waitingHands = true
         progress = 0
@@ -181,8 +183,9 @@ final class Wizard: ObservableObject {
 
     func runAudio() {
         running = true
+        waitingHands = true
         AVAudioApplication.requestRecordPermission { granted in
-            DispatchQueue.main.async {
+            Task { @MainActor in
                 self.audioPermission(granted)
             }
         }
@@ -266,11 +269,11 @@ final class Wizard: ObservableObject {
         if deviceClass != detectedClass { notes.append("klasa telefonu zmieniona ręcznie (wykryto \(detectedClass))") }
         notes.append("Core Haptics: resety silnika \(haptics.resets), zatrzymania \(haptics.stops)")
 
-        if let (json, name) = Report.build(outcome: outcome, verdicts: verdicts, deviceClass: deviceClass, model: model,
+        if let built = Report.build(outcome: outcome, verdicts: verdicts, deviceClass: deviceClass, model: model,
                                            osVersion: UIDevice.current.systemVersion,
                                            hapticTier: haptics.supported ? "H3" : "H0", audioInfo: audioInfo,
                                            extraNotes: notes, date: Date()) {
-            fileURL = Report.save(json, name: name)
+            fileURL = Report.save(built.0, name: built.1)
         }
         rows = makeRows(outcome, verdicts)
 
@@ -424,7 +427,7 @@ struct AutoStepView: View {
     let title: String
     let text: String
     let progressKey: String
-    let action: () -> Void
+    let action: @MainActor () -> Void
 
     var body: some View {
         StepPage(title: title, text: text) {
@@ -449,7 +452,7 @@ struct AutoStepView: View {
 
 /// UIKit view: UITouch.timestamp is on the same clock as CACurrentMediaTime (system uptime).
 final class TouchView: UIView {
-    var onTouch: ((TimeInterval) -> Void)?
+    var onTouch: (@MainActor (TimeInterval) -> Void)?
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let u = touches.first else { return }
         onTouch?(u.timestamp)
@@ -457,7 +460,7 @@ final class TouchView: UIView {
 }
 
 struct TouchArea: UIViewRepresentable {
-    let onTouch: (TimeInterval) -> Void
+    let onTouch: @MainActor (TimeInterval) -> Void
     func makeUIView(context: Context) -> TouchView {
         let v = TouchView()
         v.backgroundColor = .clear

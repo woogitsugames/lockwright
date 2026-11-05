@@ -258,8 +258,8 @@ enum DeviceInfo {
         return id
     }
 
-    @MainActor
     /// iPhone SE 2 (iPhone12,8) / SE 3 (iPhone14,6), or any 750x1334 screen -> iphone_se; else iphone_new.
+    @MainActor
     static func detectClass(_ model: String) -> String {
         if ["iPhone12,8", "iPhone14,6"].contains(model) { return "iphone_se" }
         let nb = UIScreen.main.nativeBounds
