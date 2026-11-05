@@ -18,6 +18,7 @@ const PHOTOREAL_READY := [&"pin_tumbler"]  # warded joins with its full-res plat
 ## Plan-B scene per family (pin_tumbler: res://scenes/lock_job.tscn).
 const PLANB_SCENES := {
 	&"warded": "res://scenes/photoreal/lock_job_warded.tscn",
+	&"wafer": "res://scenes/photoreal/lock_job_wafer.tscn",
 }
 
 # Authored tutorial locks S1–S3 (docs/LEVELS.md §2.1–2.3, lockwright.lock/1, checked with

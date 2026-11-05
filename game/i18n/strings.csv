@@ -36,6 +36,8 @@ job.refuse,Decline the job,Odmów,Auftrag ablehnen
 job.opened,Lock opened. Bill settled.,Zamek otwarty. Rachunek rozliczony.,Schloss geöffnet. Rechnung beglichen.
 job.reward_fmt,Reward: {n} coins,Nagroda: {n} monet,Belohnung: {n} Münzen
 job.tip_fmt,Tip (clean opening): {n} coins,Napiwek (czyste otwarcie): {n} monet,Trinkgeld (sauber geöffnet): {n} Münzen
+receipt.service,Emergency lock opening,Awaryjne otwarcie zamka,Notöffnung eines Schlosses
+receipt.tip,Tip (clean opening),Napiwek (czyste otwarcie),Trinkgeld (sauber geöffnet)
 common.continue,Continue,Kontynuuj,Weiter
 verify.title,Check right of entry,Sprawdź prawo do lokalu,Zutrittsberechtigung prüfen
 verify.hint,The client shows their evidence. You decide.,Klient kładzie karty na stole. Ty decydujesz.,Der Kunde legt die Nachweise vor. Du entscheidest.

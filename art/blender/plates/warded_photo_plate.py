@@ -24,6 +24,7 @@ def _arg(name, default):
 OUT_DIR = os.path.abspath(_arg('--out-dir', os.path.join(ROOT_DIR, 'game', 'assets', 'photoreal_families', 'warded', 'photo')))
 RES = _arg('--res', '1236x1650')
 SAMPLES = _arg('--samples', '64')
+PASSES = _arg('--passes', 'parts,plate,wards').split(',')
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # warded.py reads its own CLI (--res/--samples/--out): hand it ours, then run it without its final render.
@@ -48,6 +49,8 @@ def hide(lst, on):
 
 
 def render(name):
+    if name.split('.')[0] not in PASSES:
+        return
     scene.render.filepath = os.path.join(OUT_DIR, name)
     bpy.ops.render.render(write_still=True)
     print('WROTE', scene.render.filepath)

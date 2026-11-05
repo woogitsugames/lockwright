@@ -59,10 +59,14 @@ def felt_mat():
     gd = _math(nt, 'MULTIPLY', _maprange(nt, _cavity_mask(nt, 1.5, 0.3, 0.95), 0, 1, 0, 0.6), _maprange(nt, _noise(nt, P, 0.05, detail=6), 0.4, 0.75, 0.2, 1.0))
     col = _mix(nt, col, (0.26, 0.25, 0.23, 1), gd)
     l.new(col, b.inputs['Base Color']); b.inputs['Roughness'].default_value = 0.9
-    b.inputs['Sheen Weight'].default_value = 0.4; b.inputs['Sheen Roughness'].default_value = 0.35
-    b.inputs['Sheen Tint'].default_value = (0.6, 0.6, 0.6, 1); b.inputs['Specular IOR Level'].default_value = 0.3
+    b.inputs['Sheen Weight'].default_value = 0.45; b.inputs['Sheen Roughness'].default_value = 0.6
+    b.inputs['Sheen Tint'].default_value = (0.5, 0.5, 0.5, 1); b.inputs['Specular IOR Level'].default_value = 0.08
     bv = nt.nodes.new('ShaderNodeBevel'); bv.samples = 6; bv.inputs['Radius'].default_value = 0.6
-    l.new(_bump(nt, _mix(nt, fib, _noise(nt, P, 8.0, detail=4), 0.5, dtype='FLOAT'), 0.35, 0.15, bv.outputs['Normal']), b.inputs['Normal'])
+    streak = _noise(nt, P, 0.8, detail=6, rough=0.7, stretch=(0.04, 1, 1))     # fibres combed along the ribs
+    wav = _noise(nt, P, 0.05, detail=3)                                          # ribs not perfectly even
+    hgt = _mix(nt, _mix(nt, fib, _noise(nt, P, 8.0, detail=4), 0.5, dtype='FLOAT'), streak, 0.5, dtype='FLOAT')
+    hgt = _mix(nt, hgt, wav, 0.35, dtype='FLOAT')
+    l.new(_bump(nt, hgt, 0.5, 0.3, bv.outputs['Normal']), b.inputs['Normal'])
     return m
 
 def flake_decal(name, bounds, centre, radii, under=(0.66, 0.62, 0.52), rim=(0.05, 0.045, 0.035), amount=0.6, scale=0.02, y=-0.25):
@@ -351,7 +355,8 @@ bulb.data.spot_size = math.radians(78); bulb.data.spot_blend = 1.0
 a_b = bpy.data.objects.new('aim_bulb', None); scene.collection.objects.link(a_b)
 a_b.location = (BX - 10, 0, (ZT + ZB) / 2 + 20) if ORIENT == 'portrait' else (BX + 160, 0, (ZT + ZB) / 2 - 60)
 cb = bulb.constraints.new('TRACK_TO'); cb.target = a_b; cb.track_axis = 'TRACK_NEGATIVE_Z'; cb.up_axis = 'UP_Y'
-area_light('window', (BX + 1800, -1100, ZB - 200), AIM, 1200, float(arg('--window', '1.2e6')), (0.60, 0.72, 1.0), size_y=1600)
+AIM_T = bpy.data.objects.new('aim_tags', None); scene.collection.objects.link(AIM_T); AIM_T.location = (RX, 0, RZ - 100)
+area_light('window', (RX + 1500, -900, RZ - 300), AIM_T, 900, float(arg('--window', '2.2e6')), (0.72, 0.80, 1.0), size_y=1200)
 area_light('bounce', (BX + 300, -2600, (ZT + ZB) / 2 - 300), AIM, 1600, float(arg('--bounce', '9e4')), (1.0, 0.84, 0.66))
 world_hdri(strength=0.012, sat=0.3)
 

@@ -173,6 +173,8 @@ func _setup_guidance() -> void:
 		coach = TutorialCoach.new(0, false, auto) if jobs_done < 3 else null
 	if args.has("lw-chalk"):
 		level = {"off": ChalkLayer.Level.OFF, "reduced": ChalkLayer.Level.REDUCED, "full": ChalkLayer.Level.FULL}.get(args["lw-chalk"], level)
+	if family != &"pin_tumbler" and not tutorial:
+		coach = null  # the coach's lines talk about pins (N-63: other families get chalk marks only)
 	view.chalk_level = level
 	view.chalk_gauge = auto or (tutorial and stage == 0)
 	view.coach = coach
