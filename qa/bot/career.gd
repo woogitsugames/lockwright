@@ -159,7 +159,8 @@ func _check_audio() -> void:
 	sfx.call("_ensure_dir", sfx.get("REWARD_ROOT"))
 	sfx.call("_ensure_dir", sfx.get("MUSIC_ROOT"))
 	sfx.call("_ensure_dir", sfx.get("FOLEY_ROOT"))
-	sfx.call("_ensure_voices")
+	for d in DirAccess.get_directories_at(sfx.get("VOICE_ROOT")):
+		sfx.call("_ensure_voices", d)
 	var cache: Dictionary = sfx.get("_cache")
 	var keys: Array = cache.keys()
 	var missing := []
