@@ -18,6 +18,7 @@ extends Node
 ##   --lw-tutorial N     run as tutorial stage N (0 = S1 with guided chalk steps)
 ##   --lw-chalk L        off | reduced | full
 ##   --lw-auto 1         D-52 auto tension
+##   --lw-loupe 1        open the eyepiece (N-57)
 ##   --lw-pose blender   show the five stack states of art/renders/section.png (set, false set,
 ##                       binding, overset, free) for a side-by-side check against Cycles;
 ##                       with --lw-tension T --lw-core R --lw-stress S to check the diegetic HUD
@@ -95,6 +96,8 @@ func _ready() -> void:
 		_simulate_stage(String(args["lw-stage"]))
 		_frozen = true
 	view.present(_vm(), _last_input, 1.0)
+	if args.get("lw-loupe", "0") == "1":
+		view.toggle_loupe.call_deferred()
 	if args.has("lw-shot"):
 		_shot_frames = int(args.get("lw-frames", "20"))
 	if args.has("lw-bench"):

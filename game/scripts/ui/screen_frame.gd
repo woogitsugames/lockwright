@@ -27,8 +27,21 @@ static func insets(root: Control) -> Vector4:
 		maxf(0.0, (win.y - safe.end.y) * k.y))
 
 
+## N-59: with the project's 412x915 base and aspect "expand", a landscape phone gets
+## scale = 412/915 (everything 45% size). A 412x412 base keeps "short side = 412 dp"
+## in both orientations (portrait is unchanged). Applied at runtime until
+## project.godot carries window/size/viewport_height=412 (+ window_height_override=915).
+static func orientation_safe_scale(root: Control) -> void:
+	if DisplayServer.get_name() == "headless":
+		return
+	var win := root.get_window()
+	if win != null and win.content_scale_size == Vector2i(412, 915):
+		win.content_scale_size = Vector2i(412, 412)
+
+
 ## Applies margins now and on every resize/rotation. `max_column` <= 0 disables the cap.
 static func fit(root: Control, frame: MarginContainer, max_column := MAX_COLUMN) -> void:
+	orientation_safe_scale(root)
 	var apply := func() -> void:
 		var i := insets(root)
 		var w := root.get_viewport_rect().size.x
