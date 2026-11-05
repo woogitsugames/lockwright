@@ -22,7 +22,7 @@ Wersja 1.0 · 2026-11-05 · status: protokół do wykonania, **nie wyniki testó
 | **A2**: gra bez obrazu | ci sami nowicjusze, pin.a2 z czarną nakładką, dźwięk i haptyka; czas od pierwszego dotyku | **≥60% otwiera w <180 s** |
 | **A7**: stany bez koloru | rozpoznanie 8 stanów z niezależnych ujęć przy 50% jasności w skali szarości, bez audio i drgań; osobno wariant bez kredy i „Pomoc w czytaniu” | **≥90% poprawnych odpowiedzi dla każdego stanu i wariantu**, ≥8 testerów na wariant |
 | **A9**: alternatywa dla haptyki | ukończenie S1, S2 i S3 z wyłączoną haptyką, obraz+dźwięk; próby z pomocą w czytaniu i bez | **wszystkie 3 poziomy możliwe do ukończenia**; raportuj użycie H4, nie ukrywaj barier |
-| Haptyka | wynik kalibracji dwa/jedno/nic; rozpoznanie set vs false_set; subiektywna pomoc Q13; różnica po wyłączeniu | kierunkowe, **nie** formalny dowód skuteczności bez grupy kontrolnej |
+| Haptyka | wynik kalibracji dwa/jedno/nic; rozpoznanie set vs false_set; Q13; **opcjonalny kontrolowany test D on/off** | kierunkowe w A/B/C; w D porównanie wewnątrz osoby po zrównoważeniu kolejności, bez obietnicy istotności przy małym N |
 | Trudność t1–t7 | ukończenie, czas, overset, drop, stress, break, H4, trudność Q14–Q15; rozdzielaj rodzinę i tier | diagnostyczne, bez gotowego progu zaliczenia; porównuj wewnątrz rodzin |
 | Ekonomia | zrozumiałość rachunku i nagród, możliwości zakupu, napraw, skutki odmowy, blokady; Q16–Q17 | jakościowe w 30 min; **nie** deklaruj zrównoważenia całej kariery |
 | Ton i legalność | scena sprawdzenia uprawnienia do lokalu i odmowy; Q19–Q20, wybór i uzasadnienie | P0: brak akcji otwierania bez weryfikacji, jeśli scenariusz jej wymaga |
@@ -35,6 +35,7 @@ Wersja 1.0 · 2026-11-05 · status: protokół do wykonania, **nie wyniki testó
 - **Ścieżka A:** cel 16 nowicjuszy na Androidzie, co najmniej 12 ważnych pomiarów. Nowicjusz: nigdy nie otwierał wytrychem fizycznego zamka, nie korzystał z poradników na ten temat i przez ostatni rok grał w mechaniki otwierania zamków <1 h. W miarę możliwości: 4 osoby grające na telefonie <1 h/tydzień, 4 osoby 50+, 2 osoby leworęczne, około połowa PL i połowa EN. Bez rejestrowania wieku dokładnego, płci, adresu i diagnoz.
 - **Dostępność / A9:** dodatkowe 4–6 sesji, w tym ≥2 osoby, które na co dzień potrzebują powiększenia lub mocniejszego kontrastu, ≥2 z haptyką wyłączoną oraz osoby rzadko grające. Rekrutuj przez opis potrzeb interfejsu, nie pytaj o chorobę ani nie przechowuj statusu niepełnosprawności. Jeśli ktoś z tej grupy spełnia A1, wynik dostępności analizuj oddzielnie od standaryzowanej próby A1.
 - **Ścieżka B:** na początek 14 dodatkowych sesji (2 zadania tierowe/osobę = 28 prób, po 4 na tier), dobór graczy o różnym doświadczeniu; osoby na t6–t7 muszą znać gesty po krótkiej rozgrzewce. Cztery próby/tier to tylko wykrywanie dużych problemów; przed decyzją o balansie zwiększ próbę (docelowo ≥10 prób/tier/rodzinę).
+- **Opcjonalna ścieżka D (wpływ haptyki):** 8–12 dodatkowych sesji osób korzystających z kompatybilnych Androidów, po dwa porównywalne zamki na tej samej słuchawce — raz z haptyką i raz bez, w odwróconej kolejności u połowy osób. Bez ścieżki D można ocenić użyteczność deklarowaną (Q13) i dostępność (A9), **nie przyczynowy wpływ** haptyki.
 - Tester może przerwać w dowolnym momencie. Nie wymuszaj odpowiedzi ani gry w ciemności u osoby, dla której jest to niedostępne; oznacz „nie badano” zamiast „porażka”.
 
 ## 3. Przygotowanie APK i urządzenia: checklista przed każdym testem
@@ -100,6 +101,14 @@ Dla porównywalności trzymaj po jednym ustalonym seedzie na tier i build, zamie
 ### C. Dostępność (osobne 30 min)
 
 02:00–05:00 wybór potrzebnych opcji (bez pytań o diagnozę); 05:00–20:00 pin.s1–s3 **z wyłączoną haptyką** (najpierw ustawienia domyślne, następnie na życzenie „Pomoc w czytaniu” i inne pomoce); 20:00–25:00 próby rozpoznawania stanów w skali szarości; 25:00–29:00 ankieta; 29:00–30:00 koniec. Jeśli instrukcja głosowa TalkBack jest potrzebna, dopuszczaj ją i oznacz opcję. Dla A9 zapisz sukces każdego S1–S3, H4 oraz to, czy gracz potrzebował opcji. Nie zestawiaj tych czasów wprost z A1 bez rozdzielenia warunków.
+
+### D. Czy haptyka rzeczywiście pomaga? / Does haptics help? (osobne 30 min, opcjonalne)
+
+Badanie D nie zastępuje A1/A2/A9. Dobierz 8–12 osób po krótkim treningu, z Androidami o działającej kalibracji („dwa” lub „jedno”); osobom z wynikiem „nic” zaoferuj C/A9, zamiast nazywać brak drgań warunkiem eksperymentalnym. Użyj **dwóch porównywalnych zamków tej samej rodziny i tieru** (np. dwa zaplanowane seedy pin_tumbler t3), bez zmiany dźwięku, obrazu, jasności czy głośności; seedy i ich porównywalność przygotowuje zespół implementacji. Nie powtarzaj dokładnie tego samego seeda, bo pamięć rozwiązań zafałszuje wynik.
+
+**Harmonogram 30 min:** 00–02 zgoda; 02–07 ten sam trening sterowania; 07–12 zamek 1 (limit 240 s); 12–14 odpoczynek i jawna zmiana przełącznika haptyki; 14–19 zamek 2 (limit 240 s); 19–24 krótka retrospekcja rozpoznania dźwięku, set i overset; 24–28 ankieta Q01–Q20; 28–30 zamknięcie. Połowa uczestników ma sekwencję ON→OFF, połowa OFF→ON. **Skrzyżuj kolejność seedów:** w obu grupach połowa zaczyna seedem X, połowa Y. Notuj kolejność, seed, czas, cenzurowanie, overset, drop, błędy rozpoznania i Q13.
+
+Analiza: pary ON/OFF tylko dla tej samej osoby i działającego urządzenia; obok różnicy czasów pokaż odsetek ukończeń i liczbę błędów w obu warunkach. Czasy nieukończonych prób pozostają cenzurowane, nie dopisuj ich do mediany sukcesów. Jeśli różnica zależy od tego, który zamek był drugi, zgłoś **efekt uczenia**, nie „haptyka pomaga”. Przy 8–12 osobach to pilotaż porównawczy, nie mocny dowód przyczynowy; nie ustanawiaj progu p-value po poznaniu danych.
 
 ## 5. Dosłowne skrypty / Read aloud
 
