@@ -75,3 +75,37 @@ overset knowledge. Times are medians of the successful runs.
    clumsy 24 % → 36 %, every t7 parameter still strictly harder than t6).
 
 Reproduce: `lockcore/build/verify_seeds --seeds 10000` (~2.5 min on 1 core; `--family` splits it).
+
+## v0.6: D-59 families (1000 seeds per tier, 2026-11-05)
+
+`verify_seeds --seeds 1000` (all bots). Scripted bot: **0 failures** in every new family and tier.
+The clumsy bot is a weak signal for these families (most of them have no overset to stumble into);
+the feeling bot's time is the calibration figure. 10 000-seed numbers come from the nightly CI run.
+
+| family | tier | scripted p50 | feel ok | feel p50 | feel p90 | clumsy ok |
+|---|---|---|---|---|---|---|
+| `dial_safe` | t1 | 10.7 s | 100 % | 9.3 s | 14.5 s | 100 % |
+| | t2 | 15.3 s | 100 % | 20.1 s | 23.0 s | 100 % |
+| | t3 | 19.5 s | 100 % | 32.4 s | 38.9 s | 100 % |
+| `combo` | t1 | 7.9 s | 100 % | 20.6 s | 28.1 s | 100 % |
+| | t2 | 9.0 s | 100 % | 24.7 s | 35.1 s | 100 % |
+| | t3 | 10.4 s | 100 % | 29.2 s | 37.7 s | 100 % |
+| | t4 | 11.5 s | 100 % | 34.0 s | 45.5 s | 100 % |
+| `dimple` | t1 | 7.6 s | 100 % | 15.4 s | 18.6 s | 100 % |
+| | t2 | 7.5 s | 100 % | 17.8 s | 23.1 s | 100 % |
+| | t3 | 8.8 s | 100 % | 22.7 s | 28.7 s | 100 % |
+| `disc_detainer` | t1 | 10.8 s | 100 % | 28.5 s | 37.5 s | 100 % |
+| | t2 | 13.5 s | 100 % | 39.2 s | 49.3 s | 100 % |
+| | t3 | 14.6 s | 100 % | 45.0 s | 57.4 s | 100 % |
+| `egyptian` | t1 | 6.9 s | 100 % | 13.5 s | 16.3 s | 100 % |
+| | t2 | 9.7 s | 100 % | 22.1 s | 27.6 s | 100 % |
+| `axial_slider` | t1 | 7.6 s | 100 % | 17.6 s | 21.1 s | 100 % |
+| | t2 | 8.8 s | 100 % | 22.9 s | 28.0 s | 100 % |
+| | t3 | 10.6 s | 100 % | 28.3 s | 35.0 s | 100 % |
+| `time_lock` | t1 | 7.5 s | 100 % | 12.9 s | 14.3 s | 100 % |
+| | t2 | 11.3 s | 100 % | 18.6 s | 22.3 s | 100 % |
+| `magnetic` | t1 | 5.6 s | 100 % | 10.8 s | 13.1 s | 100 % |
+| | t2 | 7.0 s | 100 % | 15.4 s | 18.5 s | 100 % |
+
+Open calibration point: every new family is at 100 % for the feeling bot, so the tiers are separated
+only by time. Human playtests should decide whether t2/t3 need narrower windows or more false notches.
