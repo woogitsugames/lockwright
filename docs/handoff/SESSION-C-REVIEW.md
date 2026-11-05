@@ -27,26 +27,31 @@ Najważniejsze, w kolejności:
 ## 1. Niezgodności API lockcore (C++) ↔ strona Godota
 
 **R-01 · High** · `game/addons/lockcore_gd/include/lockcore_session_gd.h:25`, `src/lockcore_session_gd.cpp:69-77` vs `lockcore/include/lockcore/input.hpp:66-72`
+→ naprawione w 43a4bf9 (step z rotate/push/tool + DEFVAL w bindingu)
 - **Co:** `LockcoreSession.step(tension, pick_depth, pick_lift)` nie przekazuje `rotate`, `push` ani `tool`.
 - **Dlaczego ważne:** `warded` (bit = `tool`, obrót = `rotate`), `ring_combo` (`rotate`) i reset detektora w `lever_detector` (`rotate <= -1/2`) nie mają jak dostać wejścia. Te rodziny są z Godota niegrywalne, a zablokowany detektor nie da się zresetować.
 - **Poprawka:** `step(tension, depth, lift, rotate=0, push=0, tool=0)`, ewentualnie wariant przyjmujący `PackedInt32Array` w jednostkach 1/256.
 
 **R-02 · High** · `game/scripts/lock/input_sampler.gd:33-37`
+→ naprawione w 43a4bf9 (elif przy zwolnieniu + reset lift/rotate/push; test GUT)
 - **Co:** sprawdzenie `if event.index == _touch_pick` jest zagnieżdżone w gałęzi zwolnienia kciuka napięcia. Puszczenie prawego kciuka nigdy nie zeruje `_touch_pick`, a `_lift_raw` zostaje na ostatniej wartości.
 - **Dlaczego ważne:** wytrych „wisi” uniesiony po oderwaniu palca, więc możliwy jest overset bez dotyku. Kolejny dotyk prawej strony z innym `index` zostaje zignorowany w `ScreenDrag`.
 - **Poprawka:** przenieść warunek o poziom wyżej (`elif`) i przy zwolnieniu wyzerować `_lift_raw`.
 
 **R-03 · High (do weryfikacji w edytorze, ok. 5 min)** · `game/scripts/lock/lock_scene.gd:124-133`, `game/scenes/lock.tscn:42-88`
+→ naprawione w 43a4bf9 (UILayer PROCESS_MODE_WHEN_PAUSED + auto-pauza przy focus lost)
 - **Co:** `get_tree().paused = true`, a `UILayer` i `PauseMenu` mają domyślny `process_mode` (dziedziczony, pauzowalny). Klawisz Esc obsługuje `_unhandled_key_input` węzła, który też jest zapauzowany.
 - **Dlaczego ważne:** po pauzie „Wróć” i Esc najpewniej nie reagują i gracz utyka. Brakuje też automatycznej pauzy przy przejściu w tło (HUD §6).
 - **Poprawka:** `process_mode = PROCESS_MODE_WHEN_PAUSED` (albo `ALWAYS`) na `UILayer`, plus obsługa `NOTIFICATION_APPLICATION_PAUSED` / `FOCUS_OUT`.
 
 **R-04 · High** · `platform/android/.../LockwrightHapticsPlugin.kt:42` vs `game/scripts/autoload/haptics.gd:101-103`
+→ naprawione w 43a4bf9 (kontrakt: GDScript parsuje JSON string z obu platform)
 - **Co:** Android `capabilities()` zwraca `String` (JSON). Funkcja GDScript ma zadeklarowany typ zwracany `Dictionary`, a jej wynik jest używany już w `_ready()` (`haptics.gd:23`). iOS zwraca `Dictionary`.
 - **Dlaczego ważne:** na Androidzie z pluginem jest błąd typu przy starcie autoloadu, a różne platformy mają różne kontrakty.
 - **Poprawka:** jeden kontrakt: albo Kotlin zwraca `Dictionary`, albo GDScript robi `JSON.parse_string` na obu platformach.
 
 **R-05 · High** · `platform/ios/lockwright_haptics/Sources/lockwright_haptics.mm:111-117, 129-134, 186-206`
+→ naprawione w 43a4bf9 (per-event transient player na iOS; throttle 60 Hz po stronie GDScript)
 - **Co:**
   - (a) `playEvent` buduje `CHHapticPattern` z intensywnością i ostrością, po czym go odrzuca (`(void)pattern;`) i odpala wspólny `_transientPlayer`, więc każde zdarzenie czuć tak samo.
   - (b) Wrappery C++ przekazują `const char*` do parametrów `NSString *`. W ObjC++ to błąd kompilacji (do weryfikacji w logu `game-ios`).
@@ -117,6 +122,7 @@ Najważniejsze, w kolejności:
 ## 2. Brakujące testy
 
 **R-15 · High**
+→ naprawione w 43a4bf9 (job export-pack-test w game-tests.yml; zweryfikowane lokalnie SMOKE OK z pck)
 - **Co:** brak testu eksportu. Żaden job nie uruchamia gry z wyeksportowanego `.pck`.
 - **Dlaczego ważne:** taki test od razu złapałby R-28 (brak tłumaczeń w eksporcie) i to, że GUT oraz testy trafiają do paczki (R-33).
 - **Poprawka:** w `game-tests.yml` dodać preset Linux, `--export-pack` i `godot --main-pack x.pck res://tests/smoke.tscn`. Wynik `SMOKE OK` jest bramką.
@@ -157,11 +163,13 @@ Najważniejsze, w kolejności:
 ## 3. Wydajność i opóźnienia
 
 **R-20 · High** · `game/scripts/autoload/sfx.gd:1-6, 57-68`
+→ naprawione w 43a4bf9 (fasada ClickAudio w sfx.gd: native bridge najpierw, AudioServer fallback)
 - **Co:** komentarz obiecuje natywny niskolatencyjny most, ale wszystkie krytyczne kliknięcia (`set`, `false_set`, `drop`, `break`, `gate_align`) idą przez `AudioStreamPlayer` / AudioServer.
 - **Dlaczego ważne:** na Androidzie to ≥ 46 ms samego bufora (TECH §1.6), więc cel < 30 ms jest nieosiągalny. Spike 3 (`spikes/audio-latency`, Oboe) już istnieje, ale nie jest podpięty.
 - **Poprawka:** fasada `ClickAudio` w `sfx.gd`: zdarzenia L2 przez singleton Oboe (Android) i AVAudioEngine (iOS), a AudioServer tylko jako fallback.
 
 **R-21 · High** · `lock_scene.gd:91-94`, `platform/android/.../HapticsEngine.kt:142-158`
+→ naprawione w 43a4bf9 (autoload FeedbackDirector: priorytety, limity, koalescencja 30 ms, ducking; testy GUT)
 - **Co:**
   - nie ma `FeedbackDirector`: każde zdarzenie idzie wprost do `Haptics.play` i `Sfx.play`, bez limitu transientów, priorytetów, okna 30 ms, duckingu i podłogi `essential` (TECH §3.5, ARCH §5);
   - na Androidzie segment oporu co 50 ms woła `vibrator.vibrate()`, co anuluje trwający efekt;
@@ -204,6 +212,7 @@ Najważniejsze, w kolejności:
 ## 4. Zasady CLAUDE.md
 
 **R-28 · High (zweryfikowane)** · `game/scripts/autoload/i18n.gd:11, 23-26`, `game/export_presets.cfg:7, 49`, `docs/DECISIONS.md` D-19
+→ naprawione w 43a4bf9 (include_filter i18n/*.csv w presetach; zweryfikowane: smoke z pck = OK)
 - **Co:** autoload czyta `res://i18n/*.csv` przez `FileAccess`. Eksport pakuje tylko `*.csv.import` i `*.translation`, a nie surowe CSV. Wyeksportowany `.pck` uruchomiony ze `smoke.tscn` daje: `I18n: cannot parse res://i18n/strings.csv`, `locales loaded: []`, 15 brakujących kluczy, `SMOKE FAIL`. Teza D-19 („działa identycznie w eksporcie”) jest fałszywa.
 - **Dlaczego ważne:** w każdym buildzie na telefon gracz zobaczy klucze (`menu.title`) zamiast tekstu PL/EN.
 - **Poprawka:** `include_filter="i18n/*.csv"` w obu presetach albo importer CSV „Keep File”, albo rejestracja wygenerowanych `*.translation` w `internationalization/locale/translations`. Do tego test z R-15.
@@ -266,18 +275,22 @@ Sprawdzone bez uwag:
 Workflowy: `lockcore.yml`, `game-tests.yml`, `game-android.yml`, `game-ios.yml`, `spike-audio.yml`, `spike-determinism.yml`, `spike-haptics.yml` oraz niezacommitowany `spike-lit-metal.yml`. `lockcore.yml` jest w dobrym stanie: gcc i clang, ASan/UBSan z fatalnym UB, `shell: bash` daje `pipefail`, nocny przebieg na 10 000 seedów. Workflowy spike'ów poprawnie ustawiają ustawienia edytora, zmienne keystore i szablon Gradle, więc `game-android.yml` powinien z nich skopiować. Logów CI nie widziałem, więc wszystko poniżej to ryzyka.
 
 **R-38 · High** · `game-android.yml:106-108`
+→ naprawione w 43a4bf9 (GODOT_ANDROID_KEYSTORE_DEBUG_* env zamiast flag CLI)
 - **Co:** `--keystore`, `--keystore-user`, `--keystore-pass` nie są opcjami CLI Godota.
 - **Poprawka:** `GODOT_ANDROID_KEYSTORE_DEBUG_PATH/_USER/_PASSWORD` jak w `spike-audio.yml:76-78`.
 
 **R-39 · High** · `game/export_presets.cfg:19` (`use_gradle_build=true`) vs `game-android.yml`
+→ naprawione wcześniej (krok instalacji android build template w game-android.yml)
 - **Co:** w workflowie nie ma instalacji szablonu buildu Androida (`game/android/build`), więc eksport Gradle się nie uda.
 - **Poprawka:** rozpakować `android_source.zip` z szablonów do `game/android/build` (+ `.build_version`), jak w `spike-audio.yml:80+`.
 
 **R-40 · High (do weryfikacji)** · `game-android.yml:66-77`
+→ naprawione w 43a4bf9 (editor_settings-4.7.tres z android_sdk_path/java_sdk_path w CI)
 - **Co:** brak `editor_settings-4.7.tres` z `export/android/android_sdk_path` i `java_sdk_path`. Komentarz w `spike-audio.yml:66` sam stwierdza, że Godot nie czyta `ANDROID_HOME`/`JAVA_HOME`.
 - **Poprawka:** skopiować krok `printf … editor_settings-4.7.tres` ze `spike-audio.yml:67-69`.
 
 **R-41 · High** · `game/addons/lockwright_haptics/export_plugin.gd:8-12`, `lockwright_haptics.gd:5-6`, `game/project.godot` (brak `[editor_plugins]`), `game-android.yml:53, 83`
+→ naprawione w 43a4bf9 (FileAccess.file_exists, [editor_plugins], _enter_tree/_supports_platform, jedna nazwa AAR)
 - **Co:** AAR nie trafi do APK z kilku niezależnych powodów:
   - (a) `ResourceLoader.exists()` na `.aar` zwraca `false`, bo to nie zasób;
   - (b) plugin nie jest włączony w `project.godot`;
@@ -288,6 +301,7 @@ Workflowy: `lockcore.yml`, `game-tests.yml`, `game-android.yml`, `game-ios.yml`,
 - **Poprawka:** `FileAccess.file_exists`, `[editor_plugins] enabled=PackedStringArray("res://addons/lockwright_haptics/plugin.cfg")`, `_enter_tree`/`_exit_tree`, `_supports_platform` → `EditorExportPlatformAndroid`, jedna nazwa pliku.
 
 **R-42 · High** · `game/addons/lockwright_haptics/lockwright_haptics.gdip`, `platform/ios/lockwright_haptics/Sources/register_types.cpp:10-31`, `SConstruct:9-12`, `game-ios.yml:49-56`, D-29
+→ naprawione w 43a4bf9 (iOS wraca do GDExtension per D-30: .gdextension pisany tylko w buildzie iOS, register_singleton)
 - **Co:** kod iOS to GDExtension (godot-cpp, `lockwright_haptics_init`, `ClassDB::register_class`, bez `Engine::register_singleton`), a jest pakowany jako klasyczny `.gdip`. Problemy:
   - klasyczny plugin wymaga API modułów silnika i funkcji init/deinit wskazanych w `[config]`;
   - `.gdip` musi leżeć w `res://ios/plugins/`;
