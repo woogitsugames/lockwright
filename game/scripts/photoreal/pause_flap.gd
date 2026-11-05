@@ -87,7 +87,7 @@ func _draw() -> void:
 
 
 func _gui_input(ev: InputEvent) -> void:
-	var down := (ev is InputEventScreenTouch and ev.pressed) or (ev is InputEventMouseButton and ev.pressed)
+	var down: bool = (ev is InputEventScreenTouch and ev.pressed) or (ev is InputEventMouseButton and ev.pressed)
 	if not down or _busy:
 		return
 	accept_event()

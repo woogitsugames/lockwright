@@ -16,6 +16,7 @@ const TICK_DEG := 7.5
 const PLAY_DEG := 4.5        # plug play taken up by full tension: ≈ 3 dp at the 40 dp rim
 const ARM_MAX_DEG := 26.0    # arm angle at T = 1: ≥ 2 dp of tip travel per 0.05 T (HUD.md §3)
 const ARM_LEN := 2.2         # arm length in plug radii
+const GAUGE_W := 40.0
 
 const C_SHADOW := Color(0, 0, 0, 0.35)
 const C_HOUSING := Color(0.56, 0.57, 0.56)
@@ -45,7 +46,7 @@ func _init() -> void:
 
 ## Pivot of the plug in local coordinates (the arm reaches to the left of it).
 func pivot() -> Vector2:
-	return Vector2(size.x - radius - 10.0, size.y * 0.5)
+	return Vector2(size.x - GAUGE_W - radius - 10.0, size.y * 0.5)
 
 
 ## Arm tip in local coordinates (for the chalk hints).
@@ -56,7 +57,7 @@ func arm_tip() -> Vector2:
 
 
 static func size_for(r: float) -> Vector2:
-	return Vector2(r * (ARM_LEN + 1.0) + 24.0, r * 2.0 + 28.0)
+	return Vector2(r * (ARM_LEN + 1.0) + 24.0 + GAUGE_W, r * 2.0 + 28.0)
 
 
 func _draw() -> void:
@@ -111,15 +112,15 @@ func _draw() -> void:
 	draw_line(foot + dir * 2.0, foot + Vector2(0, -r * 0.20).rotated(rot), C_STEEL_EDGE, r * 0.16 + 2.0)
 	draw_line(foot + dir * 2.0, foot + Vector2(0, -r * 0.20).rotated(rot), C_STEEL, r * 0.16)
 	if gauge:
-		_draw_gauge(line[line.size() - 1])
+		_draw_gauge()
 
 
-func _draw_gauge(tip: Vector2) -> void:
-	# chalk scale beside the arm tip: a short upright stroke 0..1 with the working band
+func _draw_gauge() -> void:
+	# chalk scale right of the plug face: a short upright stroke 0..1 with the working band
 	# bracketed and the current tension as a chalk notch (D-52: shown in auto mode too)
-	var h := radius * 1.6
-	var x := tip.x - 14.0
-	var base := Vector2(x, tip.y + h * 0.5)
+	var h := radius * 2.0
+	var x := pivot().x + radius + 22.0
+	var base := Vector2(x, pivot().y + h * 0.5)
 	draw_line(base, base + Vector2(0, -h), Color(C_CHALK, 0.55), 2.0)
 	for k in 5:
 		var y := base.y - h * k / 4.0

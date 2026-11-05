@@ -729,7 +729,7 @@ func loupe_rect() -> Rect2:
 
 
 func _on_loupe_input(ev: InputEvent) -> void:
-	var down := (ev is InputEventScreenTouch and ev.pressed) or (ev is InputEventMouseButton and ev.pressed)
+	var down: bool = (ev is InputEventScreenTouch and ev.pressed) or (ev is InputEventMouseButton and ev.pressed)
 	if down:
 		_loupe_btn.accept_event()
 		toggle_loupe()
@@ -794,9 +794,15 @@ func _update_face(vm: Dictionary, tension: float, delta: float) -> void:
 	if _face == null:
 		return
 	var t := clampf(tension, 0.0, 1.0)
-	var rot := clampf(float(vm.get("core_rotation", 0.0)), 0.0, 1.0)
+	# HUD.md §3: set = +1 tick (7.5°), false set = +2 ticks; lockcore's core_rotation steps are
+	# ≈ 1.8° per set, too small to read on a 40 dp face, so count the states instead
+	var ticks := 0
+	for e in vm.get("elements", []):
+		match String(e.get("state", "")):
+			"set": ticks += 1
+			"false_set": ticks += 2
 	_set_flash = maxf(_set_flash - delta / 0.2, 0.0)
-	var face := rot * 90.0 + PlugFace.PLAY_DEG * t + _set_flash * 1.5
+	var face := ticks * PlugFace.TICK_DEG + PlugFace.PLAY_DEG * t + _set_flash * 1.5
 	if _opened:
 		face = 90.0
 	var k := 1.0 - exp(-delta / SMOOTH_S)
@@ -822,8 +828,8 @@ func _update_chalk(elements: Array, default_target: float, delta: float) -> void
 	if chalk_level == ChalkLayer.Level.OFF:
 		_chalk.level = ChalkLayer.Level.REDUCED  # N-58: the tension hint alone
 	var m := {}
-	var x0 := PINS_X[0] - 2.0
-	var x1 := PINS_X[maxi(_active_stacks, 1) - 1] + 2.0
+	var x0: float = PINS_X[0] - 2.0
+	var x1: float = PINS_X[maxi(_active_stacks, 1) - 1] + 2.0
 	m["shear"] = [mm_to_screen(Vector3(x0, PinPose.SHEAR, 0.0)), mm_to_screen(Vector3(x1, PinPose.SHEAR, 0.0))]
 	var stacks := []
 	var w := (mm_to_screen(Vector3(PINS_X[0] + 1.4, PinPose.SHEAR, 0.0)) - mm_to_screen(Vector3(PINS_X[0] - 1.4, PinPose.SHEAR, 0.0))).x
