@@ -14,7 +14,7 @@ static var last_tip := 0  # N-25: tip paid by JobRun.complete()
 const IMPLEMENTED := [&"pin_tumbler", &"wafer", &"wooden_pin", &"warded", &"lever", &"lever_detector", &"ring_combo"]
 ## N-63: families that already have the photoreal (plan B) lock screen. Only these are offered
 ## to the player; the rest stay hidden until their plan-B view ships (no placeholder lock.tscn).
-const PHOTOREAL_READY := [&"pin_tumbler"]  # warded joins with its full-res plates (N-63)
+const PHOTOREAL_READY := [&"pin_tumbler", &"warded"]
 ## Plan-B scene per family (pin_tumbler: res://scenes/lock_job.tscn).
 const PLANB_SCENES := {
 	&"warded": "res://scenes/photoreal/lock_job_warded.tscn",

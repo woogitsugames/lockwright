@@ -153,7 +153,7 @@ def tts_payload(jobs=None, langs=LANGS):
         for lang in langs:
             out.append({'key': l['key'], 'lang': lang, 'speaker': l['speaker'], 'voice_id': v['voice_id'],
                         'model_id': v.get('model', MODEL), 'voice_settings': v['settings'],
-                        'language_code': lang, 'seed': int(hashlib.sha1(l['key'].encode()).hexdigest()[:6], 16),
+                        'seed': int(hashlib.sha1(l['key'].encode()).hexdigest()[:6], 16),
                         'subtitle': l['text'][lang], 'text': tts_text(l['key'], lang, l['text'][lang], tags)})
     return out
 
@@ -167,7 +167,7 @@ def synth(reqs, raw_dir):
         if p.exists():
             continue
         p.parent.mkdir(parents=True, exist_ok=True)
-        body = {k: r[k] for k in ('text', 'model_id', 'voice_settings', 'seed', 'language_code')}
+        body = {k: r[k] for k in ('text', 'model_id', 'voice_settings', 'seed')}
         req = urllib.request.Request(
             f"https://api.elevenlabs.io/v1/text-to-speech/{r['voice_id']}?output_format=pcm_48000",
             data=json.dumps(body).encode(), headers={'xi-api-key': key, 'Content-Type': 'application/json'})
@@ -198,14 +198,15 @@ bar_beats=4
 
 
 def godot_uid(seed):
-    """Deterministic uid in Godot's base-34-ish alphabet (a-y, 0-8), 13 chars like the editor writes."""
-    chars = 'abcdefghijklmnopqrstuvwxy012345678'
-    n = int(hashlib.sha256(seed.encode()).hexdigest(), 16)
+    """Deterministic uid encoded like Godot's ResourceUID::id_to_text (base 36, a-z then 0-9, 63-bit id)."""
+    chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
+    n = int(hashlib.sha256(seed.encode()).hexdigest(), 16) & ((1 << 63) - 1)
     s = ''
-    while len(s) < 13:
-        s += chars[n % len(chars)]
-        n //= len(chars)
-    return s
+    while True:
+        s = chars[n % 36] + s
+        n //= 36
+        if n == 0:
+            return s
 
 
 def write_import(ogg):

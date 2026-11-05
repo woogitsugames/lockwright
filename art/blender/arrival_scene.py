@@ -1,0 +1,473 @@
+# Lockwright — D-58 arrival scene: a 2-3 s camera move up the last flight of a tenement stair to the client's
+# landing, ending on a door framing shot (the "hold" still) with anchors for compositing the client cut-out.
+# Built on the stairwell kit: art/blender/stairwell.py is executed unchanged (its --norender path) and this
+# script edits the result: arriving flight + stair window cut into the landing, brass number plate, a handmade
+# wreath, wall mailbox with a name card, a moving camera and time-of-day lighting. 1 unit = 1 mm.
+#
+#   blender -b -P art/blender/arrival_scene.py -- --job wrong_floor --time night --mode both
+#       --mode seq|still|both|anchors|shadow   what to render (anchors = JSON only, no render)
+#       --time day|evening|night               lighting
+#       --device CPU|GPU   --spp 12 --still-spp 64   --res 270x480 --still-res 540x960
+#       --frames 30 --fps 12 --step 1          (step > 1 renders every n-th frame for a quick look)
+#       --door closed|ajar                     ajar = opened on the chain (doorway slot for the second speaker)
+#       --figure SLOT=path.png                 with --mode shadow: card that only casts shadows, writes a
+#                                              shadow-ratio map for art/blender/arrival_composite.py
+#       --hair 0|1 (coir doormat fibres; 1 for finals)   --out-dir art/renders/arrival
+import bpy, math, os, sys, json, random, runpy, tempfile
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+from env_common import *
+from env_common import _bev
+from mathutils import Vector, Matrix
+
+arg = cli()
+argv = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else []
+JOB = arg('--job', 'wrong_floor'); TIME = arg('--time', 'night'); MODE = arg('--mode', 'both')
+DEVICE = arg('--device', 'CPU').upper(); SPP = int(arg('--spp', '12')); STILL_SPP = int(arg('--still-spp', '64'))
+RES = [int(v) for v in arg('--res', '270x480').split('x')]; STILL_RES = [int(v) for v in arg('--still-res', '540x960').split('x')]
+FRAMES = int(arg('--frames', '36')); FPS = int(arg('--fps', '12')); STEP = int(arg('--step', '1'))
+DOOR = arg('--door', 'closed'); HAIR = arg('--hair', '0'); NUMBER = arg('--number', '19')
+OUT_DIR = os.path.abspath(arg('--out-dir', os.path.join(ROOT, 'art', 'renders', 'arrival')))
+THREADS = int(arg('--threads', '0'))
+FIGS = dict(v.split('=', 1) for i, v in enumerate(argv) if i and argv[i - 1] == '--figure')
+os.makedirs(OUT_DIR, exist_ok=True)
+BASE = '%s_%s' % (JOB, TIME) + ('_ajar' if DOOR == 'ajar' else '')
+
+# ---------------------------------------------------------------- 1. the stairwell kit, unchanged
+_tmp = tempfile.mkdtemp(prefix='lw_arrival_')
+_saved = sys.argv
+sys.argv = ['blender', '--', '--out', os.path.join(_tmp, 'kit.png'), '--norender', '--number', NUMBER, '--hair', HAIR]
+K = runpy.run_path(os.path.join(HERE, 'stairwell.py'), run_name='stairwell_kit')
+sys.argv = _saved
+g = lambda n: K[n]
+DX0, DX1, DTOP, AW, LY = g('DX0'), g('DX1'), g('DTOP'), g('AW'), g('LY')
+LX0, LX1, LZ0, LZ1, TR = g('LX0'), g('LX1'), g('LZ0'), g('LZ1'), g('TR')
+CEIL, WT, LAMP_Z, STRIPE = g('CEIL'), g('WT'), g('LAMP_Z'), g('STRIPE')
+G, LAMPX, SWX, SWZ, HX, HZ = g('G'), g('LAMPX'), g('SWX'), g('SWZ'), g('HX'), g('HZ')
+NP, NPW, NPH, EP = g('NP'), g('NPW'), g('NPH'), g('EP')
+lamperia, stripe, upper, ceiling_m, cream = g('lamperia'), g('stripe'), g('upper'), g('ceiling'), g('cream')
+floor_m, skirt, black_iron, steel, brass, rail_wood = g('floor'), g('skirt'), g('black_iron'), g('steel'), g('brass'), g('rail_wood')
+card_m, dark, door_wood, rng = g('name_card') if 'name_card' in K else g('card'), g('dark'), g('door_wood'), random.Random(58)
+
+def drop(*prefixes):
+    for o in list(bpy.data.objects):
+        if o.name.startswith(prefixes): bpy.data.objects.remove(o, do_unlink=True)
+# props that belong to the static shot or are rebuilt here
+drop('clipboard', 'pencil', 'body', 'enamel_', 'number', 'ep_screw', 'floor', 'behind', 'ceiling', 'skirt_side',
+     'left_', 'inside_floor', 'aim')
+for o in list(bpy.data.objects):
+    if o.type == 'LIGHT': bpy.data.objects.remove(o, do_unlink=True)
+for c in list(bpy.data.cameras): bpy.data.cameras.remove(c)
+
+# ---------------------------------------------------------------- 2. arriving flight (left), stair window
+# U-stair: we arrive up a flight along the left wall heading +y (towards the door wall); the kit's flight on
+# the right leaves upwards heading -y. Top of our flight at y = TOPY, half-landing NSTEP risers below.
+FX0, FX1 = -1700, -560          # flight channel (between the outer wall and the spine wall)
+RISE, TREAD, NSTEP = 172, 285, 10
+TOPY = -2600
+HALFZ = -RISE * NSTEP           # half-landing level (-1720)
+Y_BOT = TOPY - (NSTEP - 1) * TREAD   # foot of the flight (-5165)
+BACKY, LOWZ = -6400, -1980
+def stair_z(y):
+    """Walking surface height along the flight (continuous, through the nosings)."""
+    if y >= TOPY: return 0.0
+    if y <= Y_BOT: return HALFZ
+    return HALFZ + (y - Y_BOT) / (TOPY - Y_BOT) * (-HALFZ - RISE) + RISE * 0.5
+# floors: landing (with the stair opening), half-landing
+bx('floor_landing', FX1, 2400, -4300, 0, -220, 0, floor_m)
+bx('floor_top', FX0, FX1, TOPY, 0, -220, 0, floor_m)
+bx('floor_nosing', FX0, FX1, TOPY - 25, TOPY + 30, -40, 2, door_wood('X', 300, ((FX0 + FX1) / 2, TOPY, 0), 40), bev=3)
+bx('floor_half', FX0, FX1, BACKY, Y_BOT, HALFZ - 60, HALFZ, terrazzo('half_terrazzo', matrix=(0.34, 0.32, 0.30), seed=7, chip_scale=1.6, mute=0.35))
+for k in range(NSTEP - 1):
+    y0 = Y_BOT + k * TREAD; y1 = y0 + TREAD; z1 = HALFZ + (k + 1) * RISE
+    bx('a_tread%d' % k, FX0, FX1, y0, y1 + 25, z1 - 40, z1, door_wood('X', 310 + k, ((FX0 + FX1) / 2, (y0 + y1) / 2, z1), 40), bev=3)
+    bx('a_riser%d' % k, FX0, FX1, y0, y0 + 22, z1 - RISE, z1 - 40, cream, bev=1.5)
+    bx('a_fill%d' % k, FX0, FX1, y0 + 22, y1 + 25, LOWZ, z1 - 40, upper)
+bx('a_riser_top', FX0, FX1, TOPY - 22, TOPY, -RISE, -40, cream, bev=1.5)
+bx('a_fill_half', FX0, FX1, BACKY, Y_BOT, LOWZ, HALFZ - 60, upper)
+
+def yz_prism(name, pts, x0, x1, mat):
+    """Closed outline in the YZ plane, extruded between x0 and x1 (walls whose paint line follows the stair)."""
+    bm = bmesh.new(); vs = [bm.verts.new((x0, y, z)) for y, z in pts]; f = bm.faces.new(vs)
+    ex = bmesh.ops.extrude_face_region(bm, geom=[f])
+    for v in [q for q in ex['geom'] if isinstance(q, bmesh.types.BMVert)]: v.co.x = x1
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    me = bpy.data.meshes.new(name); bm.to_mesh(me); bm.free()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o); o.data.materials.append(mat); return o
+
+def paint_line(y):   # lamperia top: 1500 above the walking line, level on the landings
+    return min(LAMP_Z, max(HALFZ + LAMP_Z, stair_z(y) - RISE * 0.5 + LAMP_Z))
+ys = [BACKY, Y_BOT, TOPY, 0]
+WIN = (-4050, -3050, 250, 2250)         # stair window in the outer wall: y0, y1, z0, z1
+def walls(name, xa, xb, ya, yb, face, holes=()):
+    """Lamperia / stripe / lime on one wall plane (face = side the paint is on, for a 1 mm proud stripe)."""
+    yy = [y for y in ys if ya <= y <= yb]
+    yy = sorted(set([ya, yb] + yy))
+    lam = yz_prism(name + '_lam', [(y, LOWZ) for y in yy] + [(y, paint_line(y)) for y in reversed(yy)], xa, xb, lamperia)
+    xs = (xa - 1, xb) if face > 0 else (xa, xb + 1)
+    st = yz_prism(name + '_str', [(y, paint_line(y)) for y in yy] + [(y, paint_line(y) + STRIPE) for y in reversed(yy)], *xs, stripe)
+    li = yz_prism(name + '_lime', [(y, paint_line(y) + STRIPE) for y in yy] + [(y, CEIL) for y in reversed(yy)], xa, xb, upper)
+    for o in (lam, st, li):
+        for h in holes:
+            if h[4] < max(paint_line(y) for y in yy) + STRIPE + 2000: cut(o, bx('hole', *h))
+        _bev(o, 1.5, 2, 30)
+    return lam, st, li
+walls('outer', FX0 - WT, FX0, BACKY, 0, +1, holes=[(FX0 - WT - 10, FX0 + 10, WIN[0], WIN[1], WIN[2], WIN[3])])
+walls('spine', FX1, FX1 + 120, BACKY, -4300, -1)
+bx('spine_low', FX1, FX1 + 120, -4300, TOPY, LOWZ, -220, upper)         # under the landing edge
+bx('behind_flight', FX0 - WT, FX1 + 120, BACKY - 100, BACKY, LOWZ, CEIL, upper)
+bx('behind', FX1, 2400, -4400, -4300, -220, CEIL, upper)
+bx('ceiling', FX0 - WT, 2400, BACKY - 100, WT, CEIL, CEIL + 200, ceiling_m)
+bx('skirt_side', FX0, FX0 + 14, TOPY, 0, 0, 95, skirt, bev=3)
+
+# landing edge balustrade over the flight (x = FX1) and a wall rail along the flight on the spine side
+RAIL = 900
+for y in range(TOPY - 60, -4300, -140):
+    bx('lb', FX1 + 40, FX1 + 52, y - 6, y + 6, 0, RAIL - 30, black_iron, bev=1.2)
+lbp = [(FX1 + 46, -4280, RAIL), (FX1 + 46, TOPY - 40, RAIL), (FX1 + 46, TOPY + 120, RAIL)]
+tube('landing_rail', lbp, 28, rail_wood, res=5, smooth_pts=False)
+bx('landing_newel', FX1 + 8, FX1 + 84, TOPY - 40, TOPY + 36, 0, RAIL + 140, door_wood('Z', 330, (FX1 + 46, TOPY, 500), 70), bev=4)
+wr = [(FX0 + 60, y, stair_z(y) + RAIL - 40) for y in (Y_BOT - 300, Y_BOT, TOPY, TOPY + 500)]
+wr[0] = (FX0 + 60, Y_BOT - 300, HALFZ + RAIL - 40); wr[-1] = (FX0 + 60, TOPY + 500, RAIL - 40)
+tube('wall_rail', wr, 24, rail_wood, res=5)
+for y in (Y_BOT + 300, (Y_BOT + TOPY) / 2, TOPY - 200):
+    z = stair_z(y) + RAIL - 40
+    tube('rail_bracket', [(FX0 + 2, y, z - 55), (FX0 + 40, y, z - 55), (FX0 + 60, y, z - 26)], 6, black_iron, smooth_pts=False)
+    cyl('rail_rose', 18, 6, (FX0 + 3, y, z - 55), axis='X', verts=32).data.materials.append(black_iron)
+
+# stair window: painted timber frame, mullion + transom, ribbed (obscured) glass, sky beyond
+win_paint = oil_paint('window_paint', (0.70, 0.66, 0.56), rough=0.35, chips=0.5, scuffs=0.3, strokes='Z', seed=8, edge_chips=1.0)
+wy0, wy1, wz0, wz1 = WIN; WX = FX0 - WT * 0.55
+for nm, a, b, c, d in (('wf_l', wy0, wy0 + 70, wz0, wz1), ('wf_r', wy1 - 70, wy1, wz0, wz1), ('wf_b', wy0, wy1, wz0, wz0 + 80),
+                       ('wf_t', wy0, wy1, wz1 - 70, wz1), ('wf_m', (wy0 + wy1) / 2 - 30, (wy0 + wy1) / 2 + 30, wz0, wz1),
+                       ('wf_tr', wy0, wy1, wz1 - 520, wz1 - 470)):
+    bx(nm, WX - 35, WX + 35, a, b, c, d, win_paint, bev=2)
+bx('w_sill', FX0 - WT * 0.55, FX0 + 40, wy0 - 40, wy1 + 40, wz0 - 30, wz0, terrazzo('sill', matrix=(0.40, 0.38, 0.35), seed=9), bev=3)
+ribbed = bpy.data.materials.new('ribbed_glass'); ribbed.use_nodes = True
+rb = ribbed.node_tree.nodes['Principled BSDF']
+rb.inputs['Transmission Weight'].default_value = 1.0; rb.inputs['Roughness'].default_value = 0.22; rb.inputs['IOR'].default_value = 1.5
+rb.inputs['Base Color'].default_value = (0.86, 0.90, 0.88, 1)
+bx('w_glass', WX - 3, WX + 3, wy0 + 10, wy1 - 10, wz0 + 10, wz1 - 10, ribbed).visible_shadow = False
+SKY = {'night': ((0.10, 0.16, 0.34), 0.35), 'evening': ((0.30, 0.42, 0.85), 2.2), 'day': ((0.86, 0.90, 0.98), 9.0)}[TIME]
+sky = bx('w_sky', FX0 - WT - 900, FX0 - WT - 880, wy0 - 900, wy1 + 900, wz0 - 900, wz1 + 900, emissive('sky', SKY[0], SKY[1], (0, 0, 0)))
+sky.visible_shadow = False
+stain_decal('floor_grime', 'Z', 0.2, (FX1, 2400, -4300, 0), [(0, -30, 900, 70, 0.5), (DX0 - 150, -400, 120, 380, 0.25),
+            (-700, -1300, 500, 1100, 0.35)], color=(0.09, 0.08, 0.065), rough=0.7, noise_scale=0.03)
+
+# ---------------------------------------------------------------- 3. the door dressing for this job
+# brass number plate (engraved, black-filled numerals) replaces the enamel one
+brass_plate = metal('plate_brass', (0.78, 0.56, 0.28), 0.28, marks='grind', marks_axis=(1, 0, 0), wear=0.6, grime=0.8, patina=0.5, bevel_r=0.5)
+black_fill = paint('engrave_fill', (0.015, 0.013, 0.012), rough=0.5, chip=0.2, grime=0.2)
+PW, PH = 112, 74
+pl = slab('number_plate', rounded_rect(PW, PH, 4), 2.2, brass_plate, bev=0.8)
+place(pl, (EP[0], LY - 0.5, EP[2]), rot=(90, -1.2, 0))
+num = text_obj('number_19', NUMBER, 50, extrude=0.25, mat=black_fill); num.data.offset_y = -1.0
+num.matrix_world = Matrix.Translation(Vector((EP[0], LY - 2.5, EP[2] - 1.5))) @ Matrix.Rotation(math.radians(-1.2), 4, 'Y') @ Matrix.Rotation(math.radians(90), 4, 'X')
+for sx in (-1, 1):
+    screw_head('np2_screw', (EP[0] + sx * (PW / 2 - 8), LY - 2.6, EP[2]), 2.0, 1.0, axis='-Y', mat=brass_plate, rot=rng.uniform(0, 3))
+# the card name plate moves down to make room for the wreath (it stays the D-41 text anchor)
+NP_DZ = -95
+for o in bpy.data.objects:
+    if o.name.startswith(('nameframe', 'namecard', 'np_screw')): o.location.z += NP_DZ
+NPZ = NP[2] + NP_DZ
+
+# handmade wreath: twisted willow ring, dried flowers and leaves wired on, linen ribbon to a pin in the top rail
+WC = Vector((0, LY - 34, 1650)); WR, Wr = 150, 34
+willow = oak('willow', light=(0.36, 0.26, 0.15), dark=(0.17, 0.11, 0.06), axis='Z', seed=3, ring=1.5, coat=0.0, rough=0.8, wear=0.0)
+for s in range(7):   # several overlapping twisted rods
+    pts = []; ph = rng.uniform(0, 6.28); tw = rng.uniform(2.5, 4.0)
+    for i in range(97):
+        a = 2 * math.pi * i / 96; r = WR + Wr * 0.45 * math.cos(tw * a + ph); dy = Wr * 0.45 * math.sin(tw * a + ph)
+        pts.append((WC.x + r * math.cos(a), WC.y + dy, WC.z + r * math.sin(a)))
+    tube('willow%d' % s, pts, rng.uniform(4, 6.5), willow, res=3)
+FLOWER = [((0.58, 0.24, 0.24), 'rose'), ((0.36, 0.26, 0.52), 'lavender'), ((0.78, 0.55, 0.12), 'tansy'),
+          ((0.82, 0.76, 0.62), 'statice'), ((0.55, 0.12, 0.08), 'rosehip')]
+fmats = [plastic('dried_%s' % n, c, rough=0.7, seed=i, grime=0.3, sheen_scuffs=0.0) for i, (c, n) in enumerate(FLOWER)]
+leaf_m = plastic('dried_leaf', (0.30, 0.32, 0.20), rough=0.65, seed=9, grime=0.2, sheen_scuffs=0.0)
+bm = bmesh.new()
+for i in range(240):
+    a = rng.uniform(0, 2 * math.pi); rr = WR + rng.uniform(-Wr, Wr) * 0.9
+    if rng.random() < 0.55 and math.sin(a) > -0.2 and abs(math.cos(a)) < 0.45: continue  # sparser at the top (handmade)
+    p = Vector((WC.x + rr * math.cos(a), WC.y - rng.uniform(10, 30), WC.z + rr * math.sin(a)))
+    if rng.random() < 0.38:   # leaf: thin ellipse, tangent-ish
+        ret = bmesh.ops.create_circle(bm, cap_ends=True, segments=8, radius=1.0)
+        L, W_ = rng.uniform(26, 44), rng.uniform(8, 13)
+        M = (Matrix.Translation(p) @ Matrix.Rotation(a + math.pi / 2 + rng.uniform(-0.7, 0.7), 4, 'Y') @
+             Matrix.Rotation(math.radians(90 + rng.uniform(-30, 30)), 4, 'X') @ Matrix.Diagonal((L, W_, 1, 1)))
+        bmesh.ops.transform(bm, matrix=M, verts=ret['verts'])
+        for f in {f for v in ret['verts'] for f in v.link_faces}: f.material_index = len(fmats)
+    else:
+        k = rng.choices(range(len(FLOWER)), weights=(3, 3, 2, 3, 1))[0]
+        ret = bmesh.ops.create_icosphere(bm, subdivisions=1, radius=1.0)
+        s_ = rng.uniform(8, 16) if k != 1 else rng.uniform(5, 7)
+        M = Matrix.Translation(p) @ Matrix.Rotation(rng.uniform(0, 6.3), 4, 'Z') @ Matrix.Diagonal((s_, s_ * 0.75, s_ * (2.4 if k == 1 else 1.0), 1))
+        bmesh.ops.transform(bm, matrix=M, verts=ret['verts'])
+        for f in {f for v in ret['verts'] for f in v.link_faces}: f.material_index = k
+me = bpy.data.meshes.new('wreath_dressing'); bm.to_mesh(me); bm.free()
+wd = bpy.data.objects.new('wreath_dressing', me); bpy.context.collection.objects.link(wd)
+for m_ in fmats + [leaf_m]: wd.data.materials.append(m_)
+for p in wd.data.polygons: p.use_smooth = True
+linen = paper('linen_ribbon', (0.70, 0.64, 0.52), fibre=1.5, seed=4, grime=0.3)
+pin_z = LZ1 - TR - 12
+tube('ribbon_l', [(WC.x - 14, WC.y + 4, WC.z + WR + 10), (WC.x - 6, LY - 6, pin_z - 60), (WC.x, LY - 3, pin_z)], 3.5, linen, res=2)
+tube('ribbon_r', [(WC.x + 14, WC.y + 4, WC.z + WR + 10), (WC.x + 6, LY - 6, pin_z - 60), (WC.x, LY - 3, pin_z)], 3.5, linen, res=2)
+screw_head('wreath_pin', (WC.x, LY - 2, pin_z), 2.4, 2.0, axis='-Y', slot=False, kind='dome', mat=brass)
+for sx in (-1, 1):   # bow at the bottom
+    tube('bow', [(WC.x, WC.y - 22, WC.z - WR - 10), (WC.x + sx * 34, WC.y - 26, WC.z - WR - 2), (WC.x + sx * 42, WC.y - 24, WC.z - WR - 30),
+                 (WC.x, WC.y - 22, WC.z - WR - 10)], 6, linen, res=2)
+    tube('bow_tail', [(WC.x, WC.y - 22, WC.z - WR - 12), (WC.x + sx * 18, WC.y - 18, WC.z - WR - 60), (WC.x + sx * 26, WC.y - 14, WC.z - WR - 105)], 5, linen, res=2)
+
+# wall mailbox (painted steel) right of the door: name card window + slot
+MBX0, MBX1, MBZ0, MBZ1 = 585, 735, 980, 1230
+mb_paint = paint('mailbox_paint', (0.10, 0.17, 0.12), rough=0.38, metal_col=(0.4, 0.4, 0.4), chip=0.4, grime=0.7)
+bx('mailbox', MBX0, MBX1, -82, -1, MBZ0, MBZ1, mb_paint, bev=3)
+bx('mailbox_lid', MBX0 - 3, MBX1 + 3, -90, -60, MBZ1 - 10, MBZ1 + 8, mb_paint, bev=3)
+bx('mailbox_slot', MBX0 + 22, MBX1 - 22, -84, -78, MBZ1 - 52, MBZ1 - 40, dark)
+MC = ((MBX0 + MBX1) / 2, MBZ0 + 70); MCW, MCH = 96, 34
+mcf = slab('mb_cardframe', rounded_rect(MCW + 10, MCH + 10, 2), 1.6, steel, bev=0.4)
+cut(mcf, place(slab('mbwin', rounded_rect(MCW - 4, MCH - 4, 1), 10), (0, 0, -4)))
+place(mcf, (MC[0], -83, MC[1]), rot=(90, 0, 0))
+bx('mb_card', MC[0] - MCW / 2, MC[0] + MCW / 2, -83.4, -82.9, MC[1] - MCH / 2, MC[1] + MCH / 2, card_m)
+bx('mb_lock', MC[0] - 7, MC[0] + 7, -88, -82, MBZ0 + 150, MBZ0 + 164, steel, bev=1)
+
+# ---------------------------------------------------------------- 4. door state and the flat behind it
+leaf = [o for o in bpy.data.objects if o.type in ('MESH', 'CURVE', 'FONT')]
+def in_leaf(o):
+    bpy.context.view_layer.update()
+    pts = [o.matrix_world @ Vector(c) for c in o.bound_box]
+    return (min(p.x for p in pts) > LX0 - 150 and max(p.x for p in pts) < LX1 + 20 and min(p.y for p in pts) > LY - 80
+            and max(p.y for p in pts) < LY + 50 and min(p.z for p in pts) > LZ0 - 2 and max(p.z for p in pts) < LZ1 + 2)
+leaf = [o for o in leaf if in_leaf(o) and not o.name.startswith(('floor', 'stain', 'door_grime'))]
+hinge = bpy.data.objects.new('door_hinge', None); bpy.context.collection.objects.link(hinge)
+hinge.location = (LX0, LY + 45, 0); bpy.context.view_layer.update()
+for o in leaf:
+    o.parent = hinge; o.matrix_parent_inverse = hinge.matrix_world.inverted()
+if DOOR == 'ajar':
+    drop('flyer')
+    hinge.rotation_euler.z = math.radians(38)     # inward (+y), hinge on the left
+    # door chain across the gap: staple on the jamb, slide on the leaf
+    bpy.context.view_layer.update()
+    tip = hinge.matrix_world @ Vector((LX1 - LX0 - 40, -45 + LY - LY, 1500))
+    chain = steel
+    p0 = Vector((DX1 - 12, 40, 1500)); p1 = Vector((tip.x, tip.y - 8, 1500))
+    n = 9
+    for i in range(n):
+        q = p0.lerp(p1, (i + 0.5) / n); q.z -= 30 * math.sin(math.pi * (i + 0.5) / n)
+        tor = bpy.data.objects.new('chain', bpy.data.meshes.new('chain')); bpy.context.collection.objects.link(tor)
+        bmc = bmesh.new(); bmesh.ops.create_circle(bmc, segments=12, radius=7)
+        bmc.to_mesh(tor.data); bmc.free(); tor.location = q
+        tor.rotation_euler = (math.radians(90 * (i % 2)), 0, math.atan2(p1.y - p0.y, p1.x - p0.x))
+        sk = tor.modifiers.new('sk', 'SKIN')
+        for v in tor.data.skin_vertices[0].data: v.radius = (1.6, 1.6)
+        tor.data.materials.append(steel)
+# the hall of the flat (only seen through the gap / under the door)
+hall_wall = lime_wall('hall_wall', (0.70, 0.62, 0.48), seed=11, dirt=0.2, cracks=0.1)
+parquet = oak('parquet', light=(0.42, 0.26, 0.12), dark=(0.20, 0.11, 0.05), axis='Y', seed=12, ring=1.8, coat=1.0, coat_rough=0.25, wear=0.6)
+bx('hall_floor', -1100, 1100, 150, 3200, -30, 0, parquet)
+bx('hall_l', -1200, -1100, 150, 3200, 0, 2900, hall_wall); bx('hall_r', 1100, 1200, 150, 3200, 0, 2900, hall_wall)
+bx('hall_back', -1200, 1200, 3200, 3300, 0, 2900, hall_wall); bx('hall_ceil', -1200, 1200, 150, 3300, 2900, 3000, hall_wall)
+bx('hall_coats', 700, 1080, 900, 1900, 900, 1900, plastic('coats', (0.18, 0.12, 0.10), rough=0.8))   # coats on hooks (dark mass)
+
+# ---------------------------------------------------------------- 5. lighting by time of day
+AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (-1100, -3600, 0)
+AIM2 = bpy.data.objects.new('aim2', None); scene.collection.objects.link(AIM2); AIM2.location = (0, 1200, 0)
+WARM = (1.0, 0.66, 0.38)                       # ~2700 K incandescent behind opal glass
+L = {   # time: bulb W, window W, window colour, world, interior W, exposure, glow
+    'night':   (6.0e7, 2.4e7, (0.50, 0.62, 1.00), 0.004, 1.2e7, -0.2, 2.2),
+    'evening': (1.0e8, 6.0e7, (0.58, 0.68, 1.00), 0.010, 6.0e6, -0.1, 2.0),
+    'day':     (0.0,   3.2e8, (1.00, 0.97, 0.92), 0.030, 0.0,   -0.3, 0.0),
+}[TIME]
+BULB_W, WIN_W, WIN_C, WORLD, IN_W, EXPO, GLOW = L
+world_hdri(WORLD, 'interior.exr', sat=0.3)
+setmat(bpy.data.objects['globe'], opal_glass('opal_' + TIME, glow=GLOW))
+bpy.data.objects['globe'].visible_shadow = False
+if BULB_W:
+    bpy.ops.object.light_add(type='POINT', location=tuple(G)); bulb = bpy.context.object; bulb.name = 'bulb'
+    bulb.data.shadow_soft_size = 35; bulb.data.energy = BULB_W; bulb.data.color = WARM
+    bpy.data.materials['indicator'].node_tree.nodes['Principled BSDF'].inputs['Emission Strength'].default_value = 0.4
+win_light = area_light('window_light', (FX0 - WT - 300, (WIN[0] + WIN[1]) / 2, (WIN[2] + WIN[3]) / 2 + 200), AIM,
+                       WIN[1] - WIN[0], WIN_W, WIN_C, size_y=WIN[3] - WIN[2])
+if TIME == 'day':   # skylight bouncing down the stairwell from above the right-hand flight
+    area_light('skylight', (1300, -2600, CEIL - 50), AIM2, 1600, 2.5e7, (0.92, 0.95, 1.0), size_y=2400)
+if IN_W:   # a lamp left on in the flat: leaks under the door / through the gap and the peephole
+    area_light('flat_lamp', (0, 1600, 2700), AIM2, 600, IN_W * (3.0 if DOOR == 'ajar' else 1.0), (1.0, 0.70, 0.42))
+
+# ---------------------------------------------------------------- 6. camera: up the last steps, onto the landing
+cam = photo_camera((0, 0, 0), lens=22.0)
+cam.data.sensor_fit = 'VERTICAL'; cam.data.sensor_height = 36.0; cam.data.sensor_width = 36.0
+EYE = 1590
+CAM_END = Vector((-170, -2560, EYE - 10)); END_YAW, END_PITCH, END_SHIFT = 1.5, 0.0, (0.0, -0.105)
+KEYS = [  # (t, x, y, yaw, pitch)
+    (0.00, -1150, TOPY - 6.4 * TREAD, -6.0, -6.0),
+    (0.35, -1120, TOPY - 3.6 * TREAD, -7.0, -2.0),
+    (0.72, -930, TOPY - 0.6 * TREAD, -4.0, 0.0),
+    (1.00, CAM_END.x, CAM_END.y, END_YAW, END_PITCH),
+]
+def ease(t): return t * t * (3 - 2 * t) if t < 1 else 1.0
+def ease_walk(t):   # starts already walking, slows to a stop: cubic with initial slope 0.8
+    return 0.8 * t + 1.4 * t * t - 1.2 * t * t * t
+def catmull(p0, p1, p2, p3, u):
+    return 0.5 * ((2 * p1) + (-p0 + p2) * u + (2 * p0 - 5 * p1 + 4 * p2 - p3) * u * u + (-p0 + 3 * p1 - 3 * p2 + p3) * u ** 3)
+def cam_at(t):
+    s = ease_walk(t)
+    ks = KEYS
+    i = max(j for j in range(len(ks) - 1) if ks[j][0] <= s) if s < 1 else len(ks) - 2
+    u = (s - ks[i][0]) / (ks[i + 1][0] - ks[i][0])
+    P = [ks[max(0, min(len(ks) - 1, j))] for j in (i - 1, i, i + 1, i + 2)]
+    val = [catmull(*[p[c] for p in P], u) for c in range(1, 5)]
+    x, y, yaw, pitch = val
+    z = stair_z(min(y, TOPY + 1)) + EYE + (CAM_END.z - EYE) * ease(max(0, (s - 0.7) / 0.3))
+    # footfalls: a 14 mm dip and 0.5 deg roll per step, fading as we stop
+    ph = (y - KEYS[0][2]) / TREAD; fade = 1 - ease(max(0, (s - 0.75) / 0.25))
+    z -= 14 * fade * (0.5 - 0.5 * math.cos(2 * math.pi * ph)); roll = 0.5 * fade * math.sin(math.pi * ph)
+    sh = ease(max(0, (s - 0.45) / 0.55))
+    return Vector((x, y, z)), yaw, pitch, roll, (END_SHIFT[0] * sh, END_SHIFT[1] * sh)
+scene.render.fps = FPS; scene.frame_start = 1; scene.frame_end = FRAMES
+for f in range(1, FRAMES + 1):
+    t = (f - 1) / (FRAMES - 1)
+    p, yaw, pitch, roll, sh = cam_at(t)
+    cam.location = p; cam.rotation_euler = (math.radians(90 + pitch), math.radians(roll), math.radians(yaw))
+    cam.data.shift_x, cam.data.shift_y = sh
+    cam.keyframe_insert('location', frame=f); cam.keyframe_insert('rotation_euler', frame=f)
+    cam.data.keyframe_insert('shift_x', frame=f); cam.data.keyframe_insert('shift_y', frame=f)
+for fc in list(cam.animation_data.action.fcurves) + list(cam.data.animation_data.action.fcurves):
+    for kp in fc.keyframe_points: kp.interpolation = 'LINEAR'
+
+# ---------------------------------------------------------------- 7. figure slots (D-41 style anchors)
+SLOTS = {   # name: feet centre on the floor, nominal height (mm), facing; speaker id from CLIENTS.md
+    'kazimierz': {'feet': (-690, -470, 0), 'height': 1730, 'speaker': 'kazimierz', 'state': 'closed'},
+    'teresa':    {'feet': (250, 420, 0), 'height': 1590, 'speaker': 'teresa', 'state': 'ajar'},
+}
+def light_info(at):
+    """Key/fill lights as seen from a point: colour, relative strength at the point, 3D and image-space direction."""
+    out = []
+    bpy.context.view_layer.update()
+    for o in bpy.data.objects:
+        if o.type != 'LIGHT' or o.data.energy <= 0: continue
+        lp = o.matrix_world.translation; d = Vector(lp) - Vector(at); dist = d.length
+        e = o.data.energy / (dist * dist) if o.data.type == 'POINT' else o.data.energy / (dist * dist) * 0.5
+        a, b = project([at, Vector(at) + d.normalized() * 300])
+        out.append({'name': o.name, 'type': o.data.type, 'color_linear': [round(c, 4) for c in o.data.color],
+                    'strength_rel': e, 'dir3d_to_light': [round(c, 4) for c in d.normalized()],
+                    'dir2d_to_light': [round(b[0] - a[0], 5), round(b[1] - a[1], 5)],
+                    'elevation_deg': round(math.degrees(math.asin(max(-1, min(1, d.normalized().z)))), 1)})
+    mx = max([l['strength_rel'] for l in out] or [1])
+    for l in out: l['strength_rel'] = round(l['strength_rel'] / mx, 4)
+    return sorted(out, key=lambda l: -l['strength_rel'])
+
+def anchors(path, res):
+    scene.render.resolution_x, scene.render.resolution_y = res
+    scene.frame_set(FRAMES)
+    A = {
+        'namecard': [(NP[0] - NPW / 2 + 7, LY - 1, NPZ + NPH / 2 - 6), (NP[0] + NPW / 2 - 7, LY - 1, NPZ + NPH / 2 - 6),
+                     (NP[0] + NPW / 2 - 7, LY - 1, NPZ - NPH / 2 + 6), (NP[0] - NPW / 2 + 7, LY - 1, NPZ - NPH / 2 + 6)],
+        'mailbox_card': [(MC[0] - MCW / 2, -84, MC[1] + MCH / 2), (MC[0] + MCW / 2, -84, MC[1] + MCH / 2),
+                         (MC[0] + MCW / 2, -84, MC[1] - MCH / 2), (MC[0] - MCW / 2, -84, MC[1] - MCH / 2)],
+        'number_plate': [(EP[0] - PW / 2, LY - 3, EP[2] + PH / 2), (EP[0] + PW / 2, LY - 3, EP[2] + PH / 2),
+                         (EP[0] + PW / 2, LY - 3, EP[2] - PH / 2), (EP[0] - PW / 2, LY - 3, EP[2] - PH / 2)],
+        'wreath': [(WC.x - WR - Wr, WC.y, WC.z + WR + Wr), (WC.x + WR + Wr, WC.y, WC.z + WR + Wr),
+                   (WC.x + WR + Wr, WC.y, WC.z - WR - Wr), (WC.x - WR - Wr, WC.y, WC.z - WR - Wr)],
+        'door': [(LX0, LY, LZ1), (LX1, LY, LZ1), (LX1, LY, LZ0), (LX0, LY, LZ0)],
+        'cylinder': [(HX - 60, LY - 20, HZ + 60), (HX + 40, LY - 20, HZ + 60), (HX + 40, LY - 20, HZ - 132), (HX - 60, LY - 20, HZ - 132)],
+    }
+    data = {'width': res[0], 'height': res[1], 'job': JOB, 'time': TIME, 'door': DOOR, 'fps': FPS, 'frames': FRAMES,
+            'note': 'quads: [tl,tr,br,bl] normalised 0..1, origin top-left (D-41). figures: feet line and height in px of this image.',
+            'anchors': {k: project(v) for k, v in A.items()}, 'figures': {}}
+    cdir = (cam.matrix_world.to_quaternion() @ Vector((0, 0, -1)))
+    side = Vector((cdir.y, -cdir.x, 0)).normalized()          # floor direction parallel to the image plane
+    for name, s in SLOTS.items():
+        F = Vector(s['feet']); H = s['height']
+        (fl, fr, fc, top, chest) = project([F - side * 220, F + side * 220, F, F + Vector((0, 0, H)), F + Vector((0, 0, H * 0.72))])
+        hpx = (fc[1] - top[1]) * res[1]
+        data['figures'][name] = {
+            'speaker': s['speaker'], 'door_state': s['state'], 'feet_world_mm': list(F), 'height_mm': H,
+            'feet_center': fc, 'feet_line': [fl, fr], 'head_top': top, 'chest': chest,
+            'height_px': round(hpx, 1), 'px_per_mm': round(hpx / H, 5), 'depth_mm': round((F - cam.matrix_world.translation).dot(cdir), 1),
+            'occluded_by_leaf': s['state'] == 'ajar',
+            'lights': light_info(F + Vector((0, 0, H * 0.72))),
+        }
+    data['camera'] = {'location_mm': [round(c, 2) for c in cam.matrix_world.translation], 'lens_mm': cam.data.lens,
+                      'sensor_height_mm': 36.0, 'sensor_fit': 'VERTICAL', 'shift': [cam.data.shift_x, cam.data.shift_y],
+                      'rotation_euler_deg': [round(math.degrees(a), 3) for a in cam.matrix_world.to_euler()]}
+    with open(path, 'w') as fh: json.dump(data, fh, indent=1)
+    print('ANCHORS', path)
+
+# ---------------------------------------------------------------- 8. render
+def setup_device():
+    scene.render.engine = 'CYCLES'
+    if DEVICE == 'GPU':
+        prefs = bpy.context.preferences.addons['cycles'].preferences
+        for kind in ('OPTIX', 'CUDA', 'HIP', 'METAL', 'ONEAPI'):
+            try:
+                prefs.compute_device_type = kind; prefs.get_devices()
+            except TypeError: continue
+            if any(d.type == kind for d in prefs.devices): break
+        for d in prefs.devices: d.use = d.type != 'CPU'
+        scene.cycles.device = 'GPU'
+        print('GPU', prefs.compute_device_type, [d.name for d in prefs.devices if d.use])
+    else:
+        scene.cycles.device = 'CPU'
+    if THREADS: scene.render.threads_mode = 'FIXED'; scene.render.threads = THREADS
+
+def base_render(res, spp, out):
+    render_setup(out, res, spp, exposure=EXPO, look='AgX - Medium High Contrast', bounces=10)
+    setup_device()
+    scene.cycles.adaptive_threshold = 0.02 if spp < 64 else 0.01
+    if DEVICE == 'GPU' and arg('--denoiser', 'OIDN').upper() == 'OPTIX': scene.cycles.denoiser = 'OPTIX'
+    photo_finish(0.28 if TIME != 'day' else 0.22)
+    scene.view_settings.look = 'AgX - High Contrast' if TIME == 'night' else 'AgX - Base Contrast'
+
+if MODE in ('seq', 'both'):
+    seq_dir = os.path.join(OUT_DIR, BASE + '_seq'); os.makedirs(seq_dir, exist_ok=True)
+    base_render(RES, SPP, os.path.join(seq_dir, 'f_####'))
+    scene.render.use_motion_blur = True; scene.render.motion_blur_shutter = 0.5
+    scene.render.use_persistent_data = True; scene.render.image_settings.file_format = 'PNG'
+    scene.frame_step = STEP
+    bpy.ops.render.render(animation=True)
+    scene.frame_step = 1; scene.render.use_motion_blur = False
+    print('WROTE SEQ', seq_dir)
+if MODE in ('still', 'both', 'anchors', 'shadow'):
+    still = os.path.join(OUT_DIR, BASE + '_hold.png')
+    base_render(STILL_RES, STILL_SPP, still)
+    scene.frame_set(FRAMES)
+    anchors(os.path.splitext(still)[0] + '.json', STILL_RES)
+    if MODE in ('still', 'both'):
+        bpy.ops.render.render(write_still=True); print('WROTE', still)
+if MODE == 'shadow':
+    # The figure as a camera-invisible card that only casts shadows (alpha from the cut-out); every scene
+    # surface becomes a shadow catcher, so the Shadow Catcher pass is the ratio lit-with / lit-without.
+    for o in bpy.data.objects:
+        if o.type in ('MESH', 'CURVE', 'FONT'): o.is_shadow_catcher = True
+    scene.render.film_transparent = True
+    vl = scene.view_layers[0]; vl.cycles.use_pass_shadow_catcher = True
+    cdir = (cam.matrix_world.to_quaternion() @ Vector((0, 0, -1))); yaw = math.atan2(cdir.y, cdir.x) - math.pi / 2
+    for slot, png in FIGS.items():
+        s = SLOTS[slot]; img = bpy.data.images.load(os.path.abspath(png))
+        w, h = img.size; px = list(img.pixels[:])
+        ys_ = [j for j in range(h) if any(px[(j * w + i) * 4 + 3] > 0.5 for i in range(0, w, 4))]
+        xs_ = [i for i in range(0, w, 2) if any(px[(j * w + i) * 4 + 3] > 0.5 for j in range(0, h, 4))]
+        j0, j1, i0, i1 = min(ys_), max(ys_), min(xs_), max(xs_)
+        mm = s['height'] / (j1 - j0)                      # alpha bbox height == figure height
+        me = bpy.data.meshes.new('card'); bm_ = bmesh.new()
+        u0, u1 = (0 - (i0 + i1) / 2) * mm, (w - (i0 + i1) / 2) * mm; z0, z1 = -j0 * mm, (h - j0) * mm
+        vs = [bm_.verts.new((u0, 0, z0)), bm_.verts.new((u1, 0, z0)), bm_.verts.new((u1, 0, z1)), bm_.verts.new((u0, 0, z1))]
+        bm_.faces.new(vs); uv = bm_.loops.layers.uv.new()
+        for f in bm_.faces:
+            for lp, (a, b) in zip(f.loops, ((0, 0), (1, 0), (1, 1), (0, 1))): lp[uv].uv = (a, b)
+        bm_.to_mesh(me); bm_.free()
+        card = bpy.data.objects.new('figure_card_' + slot, me); bpy.context.collection.objects.link(card)
+        card.location = s['feet']; card.rotation_euler.z = yaw
+        m = bpy.data.materials.new('card_' + slot); m.use_nodes = True; nt = m.node_tree
+        tex = nt.nodes.new('ShaderNodeTexImage'); tex.image = img
+        bsdf = nt.nodes['Principled BSDF']; bsdf.inputs['Base Color'].default_value = (0.2, 0.2, 0.2, 1)
+        nt.links.new(tex.outputs['Alpha'], bsdf.inputs['Alpha']); m.blend_method = 'CLIP' if hasattr(m, 'blend_method') else None
+        card.data.materials.append(m); card.is_shadow_catcher = False
+        card.visible_camera = False; card.visible_glossy = False; card.visible_diffuse = True; card.visible_shadow = True
+        # hide the other slots' state: the ajar door only when the doorway figure is composited
+    nt = scene.node_tree; nt.nodes.clear()
+    rl = nt.nodes.new('CompositorNodeRLayers'); out = nt.nodes.new('CompositorNodeComposite')
+    nt.links.new(rl.outputs['Shadow Catcher'], out.inputs['Image'])
+    scene.view_settings.view_transform = 'Standard'; scene.view_settings.look = 'None'; scene.view_settings.exposure = 0
+    scene.render.image_settings.color_depth = '16'; scene.render.film_transparent = True
+    scene.render.filepath = os.path.join(OUT_DIR, BASE + '_shadow_' + '_'.join(FIGS) + '.png')
+    bpy.ops.render.render(write_still=True); print('WROTE', scene.render.filepath)
