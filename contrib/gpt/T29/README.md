@@ -2,7 +2,7 @@
 
 ## Wykonane
 
-- Przygotowano dwujęzyczną pomoc do gry **Lockwright**: **43 pytań i odpowiedzi** po polsku i angielsku, w 7 grupach tematycznych.
+- Przygotowano dwujęzyczną pomoc do gry **Lockwright**: **43 pytania i odpowiedzi** po polsku i angielsku, w 7 grupach tematycznych.
 - Uwzględniono sterowanie dwoma kciukami, wszystkie 14 opisanych stanów i zdarzeń mechanizmu, haptykę i jej brak, wyzwanie „w ciemności”, dostępność, prywatność, zasadę „to gra, nie kurs” oraz zgłaszanie problemów.
 - CSV ma kolumny dokładnie `key,en,pl`. Każde pytanie i odpowiedź otrzymały osobny stabilny klucz i18n; nagłówki i wstęp też mają klucze.
 - Skontrolowano programowo liczbę wpisów, unikalność kluczy i limit odpowiedzi **≤ 300 znaków** w obu językach. Maksimum: PL 169 znaków, EN 172 znaków.
