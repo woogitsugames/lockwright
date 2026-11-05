@@ -2,7 +2,7 @@
 # sectioned slices with their gates). Units: 1 Blender unit = 1 mm. Run:
 #   blender -b -P art/blender/ring_combo.py -- --out art/renders/ring_combo.png --res 1620x2160 --samples 128
 # Generic, invented mechanism with game-tuned proportions (rings 10 mm thick at 13 mm pitch, ~48/64 dp on
-# a 412 dp phone). Digits use Lato Bold (SIL OFL, mockups/fonts). Not a reproduction of any product.
+# a 412 dp phone). Digits 0-9 engraved and ink-filled, Lato Bold (SIL OFL, mockups/fonts). Not a reproduction of any product.
 #
 # The shackle is pulled (tension), so the spindle lugs press on the left faces of the rings that are not
 # gated. States, left to right:
@@ -36,7 +36,10 @@ MAT = {
 
 if photo_enabled():  # photo PBR maps (art/textures/photo); --photo 0 = procedural
     MAT.update({
-        'brass':  photo_mat('ph_ring_brass', 'brass_face_milled', scale=40, rot=90, tint=(1.05, 0.98, 0.86), bump=0.15, wear=0.8, grime=0.6),
+        # outer ring surface: handled brass, same recipe as the lever-lock levers (the milled photo stays on the cut faces,
+        # so section and outside read apart; milled scallops on the narrow flats looked like wood grain)
+        'brass':  photo_mat('ph_ring_brass', 'brass_patina_grease', scale=60, rot=12, base=(0.82, 0.60, 0.29), base_mix=0.75,
+                            rough_mul=0.45, rough_add=0.2, bump=0.04, wear=0.9, grime=0.8),
         'cut':    photo_mat('ph_ring_cut', 'brass_face_milled', scale=30, rot=42, tint=(1.15, 1.05, 0.9), bump=0.15, grime=0.2),
         'cut_s':  photo_mat('ph_spindle_cut', 'steel_ground', scale=14, rot=42, tint=(0.95, 0.95, 0.97), grime=0.2),
         'steel':  photo_mat('ph_spindle', 'steel_ground', scale=16, rot=0, tint=(0.85, 0.86, 0.88), wear=0.3, grime=0.4),
