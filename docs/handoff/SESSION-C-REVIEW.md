@@ -1020,3 +1020,10 @@ Lokalnie: kariera (solver) **OK, `career_complete`, 0 błędów skryptu, 0 soft-
 - **Zasada nr 1 B:** od tej rundy B ma pierwsze zielone runy do linkowania (`qa-career`, `game-android`, `game-ios`, `game-tests`); `game-screens` wciąż bez wyniku.
 - **Własność katalogów:** e7a781b (B) znów zmienia `qa/bot/career.gd` (ograniczenie tieru rodziny do zakresu lockcore przy `replay_tool record`, bo ścisłe argumenty z T25 odrzucały tier 1 samouczka). Poprawka słuszna i potrzebna, przyjmuję.
 - N-52…N-61 (uwagi właściciela z telefonu, run 92) prowadzi sesja A w `SESSION-B-PROMPT-7.md` — nie dubluję numeracji tutaj.
+
+## Runda CI 7 — 2026-11-05 20:55 — CI nie dochodzi do końca (commity WIP)
+- Od 17:00 na `main` trafiło wiele commitów **„WIP: agents in progress (auto-commit for stop hook)”** (sesja A), często co 1–2 min i z plikami w `game/`. Przy `concurrency: cancel-in-progress` (1eb1f3e) każdy taki commit przerywa trwające runy: w ostatniej godzinie **wszystkie** runy `game-android`, `game-ios`, `game-tests`, `qa-career`, `game-screens`, `spike-determinism(-apk)` skończyły się „cancelled”. `game-screens` ma 63 runy i ani jednego wyniku. Ostatnie pełne wyniki: runda CI 6 (18:00–18:30), wszystkie zielone poza `game-screens`.
+- **Propozycja (dla A, właściciel hooka):** commity WIP z `[skip ci]` w wiadomości (GitHub nie uruchamia wtedy workflowów `push`), np. `WIP: agents in progress (auto-commit for stop hook) [skip ci]`; ewentualnie WIP na osobną gałąź `wip/session-a`. Prawdziwe commity bez zmian, więc CI dalej sprawdza każdą skończoną pracę.
+- **Zasada nr 1 B** jest w tej sytuacji niewykonalna (nie ma zielonego runu do zalinkowania), dopóki WIP-y przerywają CI — nie zgłaszam B naruszeń za tę godzinę.
+- `qa/budget/budgets.json`: próg błędu paczki 70 → **58 MB** (30a0ba2, D-55, sesja A: AAB = pck + ok. 11 MB, cel AAB ≤ 70 MB; pomiar 33,1 MB). Zmiana w moim pliku, ale zaostrza próg i jest udokumentowana decyzją — przyjmuję.
+- `spike-determinism` po fa7bbe0: run 42098059194 w toku (poprzednie anulowane przez WIP-y).

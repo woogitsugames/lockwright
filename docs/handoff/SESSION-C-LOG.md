@@ -231,3 +231,8 @@ Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-d
 ## 2026-11-05 19:55 — runda godzinna (etap 5)
 - **CI prawie całe zielone:** `qa-career`, `game-android`, `game-tests`, `game-ios`, `perf-budget` ✅. `game-screens` bez wyniku (anulowany przez kolejne commity). Mój `spike-determinism` był czerwony przez nowe narzędzie lockcore (`check_locks`) linkowane dynamicznie pod qemu — naprawione (statycznie wszystkie programy lockcore), lokalnie 13/13; determinizm 10 000/10 000 zgodny.
 - **Dostawy:** GEM1-v2 — kod i napisy przyjęte, filmy czekają na render na RTX (właściciel); T35–T37 przyjęte (T37 zamknie N-51 po imporcie).
+
+## 2026-11-05 20:55 — runda godzinna (etap 5)
+- **CI:** od ok. 19:00 nic nie dobiega do końca — automatyczne commity WIP sesji A (co 1–2 min, z plikami w `game/`) przerywają runy (`cancel-in-progress`). Propozycja: `[skip ci]` w wiadomościach WIP (runda CI 7 w przeglądzie). Ostatni pełny stan (18:00–18:30): wszystko zielone poza `game-screens` (63 runy bez wyniku).
+- D-55 (A): próg paczki zaostrzony do 58 MB w moim `budgets.json` — przyjęte. Paczka 33,1 MB.
+- Dostaw do odbioru w tej rundzie brak (G04/G05/G06/G13/G14 v2, GEM2 bez zmian; G20/G21 i S03-v2 przyjęła i wpięła sesja A).
