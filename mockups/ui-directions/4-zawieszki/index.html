@@ -8,7 +8,7 @@
    Menu items and jobs are aluminium key tags hand-stamped with letter punches (Chivo Mono, every letter struck separately).
    The header and settings are a riveted machine nameplate: black anodised aluminium, etched lettering (Chivo).
    Job state is physical: new = a manila tie-on label, done = tag cancelled with a ticket punch. Matte metal only. */
-:root{--board:#4f5a53;--board-2:#465049;--alu:#c5c6c1;--alu-edge:#7b7d78;--stamp:#24251f;--plate:#1d1f1e;--etch:#d8d9d4;--etch-2:#a9aba6;--manila:#d8c79e;--red:#9e2a20}
+:root{--board:#4f5a53;--board-2:#465049;--alu:#c5c6c1;--alu-edge:#7b7d78;--stamp:#24251f;--plate:#1d1f1e;--etch:#d8d9d4;--etch-2:#a9aba6;--manila:#d8c79e;--red:#8a2219}
 body{background:var(--board);font-family:"Chivo"}
 .board{position:absolute;inset:0;overflow:hidden;background-color:var(--board);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .9' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .12 0 0 0 0 .1 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -48,8 +48,8 @@ svg.wire{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-
 .sw{display:flex;align-items:center;gap:0;height:48px;border:1px solid #6d706b;border-radius:2px}
 .sw span{min-width:56px;height:46px;display:flex;align-items:center;justify-content:center;font:600 13px "Chivo Mono";color:var(--etch-2);letter-spacing:.06em}
 .sw span.on{background:var(--etch);color:var(--plate)}
-.scale{position:relative;width:150px;height:48px}
-.scale .ticks{position:absolute;left:0;right:0;top:12px;height:10px;background:repeating-linear-gradient(to right,var(--etch-2) 0 1px,transparent 1px 15px);background-size:150px 10px}
+.scale{position:relative;width:132px;height:48px}
+.scale .ticks{position:absolute;left:0;right:0;top:12px;height:10px;background:repeating-linear-gradient(to right,var(--etch-2) 0 1px,transparent 1px 15px);background-size:132px 10px}
 .scale .ticks::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--etch-2)}
 .scale .knob{position:absolute;top:6px;width:14px;height:30px;margin-left:-7px;background:var(--alu);border-radius:2px;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -2px 0 rgba(0,0,0,.3),0 2px 3px rgba(0,0,0,.6)}
 .scale .knob::after{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:var(--stamp)}
@@ -152,7 +152,7 @@ if (LW.screen === 'settings') {
   header('USTAWIENIA');
   const S2 = LW.settings;
   const sw = (a, c, on) => `<span class="sw"><span class="${on ? 'on' : ''}">${a}</span><span class="${on ? '' : 'on'}">${c}</span></span>`;
-  const sc = v => `<span class="sl"><span class="scale"><span class="ticks"></span><span class="knob" style="left:${v * 1.5}px"></span></span><span class="val">${v}%</span></span>`;
+  const sc = v => `<span class="sl"><span class="scale"><span class="ticks"></span><span class="knob" style="left:${v * 1.32}px"></span></span><span class="val">${v}%</span></span>`;
   plate(16, 148, VW - 32, 740, `<div class="sp">
     <div class="sec" style="margin-top:6px">HAPTYKA</div>
     <div class="r"><span class="l">Haptyka</span>${sw('WŁ.', 'WYŁ.', S2.haptics)}</div>
