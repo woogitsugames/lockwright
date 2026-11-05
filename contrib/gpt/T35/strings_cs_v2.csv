@@ -125,3 +125,6 @@ dev.haptics_lab.force_fallback,Vynutit náhradní režim,Záložní režim,Skró
 dev.haptics_lab.resistance,Odpor,Odpor,
 dev.haptics_lab.caps,Možnosti,Možnosti,
 tutorial.start,,Začít cvičení,Uzupełniono nowy klucz interfejsu po korekcie.
+nav.quit_confirm,,Ukončit hru?,Nowy klucz źródłowy (pytanie przy wyjściu).
+nav.quit_yes,,Ukončit,Nowy klucz źródłowy (potwierdzenie).
+nav.quit_no,,Pokračovat ve hře,Nowy klucz źródłowy (pozostanie w grze).
