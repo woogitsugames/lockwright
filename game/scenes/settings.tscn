@@ -98,6 +98,13 @@ value = 100.0
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
+[node name="QualityLabel" type="Label" parent="Scroll/VBox"]
+layout_mode = 2
+
+[node name="QualityOption" type="OptionButton" parent="Scroll/VBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
 [node name="DarkNote" type="Label" parent="Scroll/VBox"]
 layout_mode = 2
 autowrap_mode = 2

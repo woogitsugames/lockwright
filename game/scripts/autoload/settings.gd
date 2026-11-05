@@ -21,6 +21,8 @@ const DEFAULTS := {
 	"continuous_resistance": true,
 	"calibrated": false,
 	"calibration": "",  # "" | "two" | "one" | "none" (TECH.md §2.3 first-run test)
+	"quality_profile": "auto",  # "auto" | "high" | "medium" | "low"
+	"quality_auto": "high",     # last auto-picked profile (task 7)
 }
 
 var _cfg := {}

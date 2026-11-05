@@ -23,6 +23,7 @@ Haptics="*res://scripts/autoload/haptics.gd"
 FeedbackDirector="*res://scripts/autoload/feedback_director.gd"
 UiA11y="*res://scripts/autoload/ui_a11y.gd"
 Sfx="*res://scripts/autoload/sfx.gd"
+Quality="*res://scripts/autoload/quality.gd"
 
 [gui]
 

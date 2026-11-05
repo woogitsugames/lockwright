@@ -18,6 +18,7 @@ extends Control
 @onready var continuous_check: CheckButton = $Scroll/VBox/ContinuousCheck
 @onready var text_scale_slider: HSlider = $Scroll/VBox/TextScaleSlider
 @onready var reduce_motion_check: CheckButton = $Scroll/VBox/ReduceMotionCheck
+@onready var quality_option: OptionButton = $Scroll/VBox/QualityOption
 @onready var reset_button: Button = $Scroll/VBox/ResetButton
 @onready var back_button: Button = $BackButton
 
@@ -61,6 +62,19 @@ func _ready() -> void:
 	reduce_motion_check.toggled.connect(func(on: bool) -> void: Settings.set_value("reduce_motion", on))
 	language_option.item_selected.connect(func(idx: int) -> void:
 		Settings.set_value("language", ["", "pl", "en"][idx]))
+	quality_option.clear()
+	quality_option.add_item(I18n.t(&"settings.quality_auto"), 0)
+	quality_option.add_item(I18n.t(&"settings.quality_high"), 1)
+	quality_option.add_item(I18n.t(&"settings.quality_medium"), 2)
+	quality_option.add_item(I18n.t(&"settings.quality_low"), 3)
+	match Settings.get_value("quality_profile", "auto"):
+		"high": quality_option.selected = 1
+		"medium": quality_option.selected = 2
+		"low": quality_option.selected = 3
+		_: quality_option.selected = 0
+	quality_option.item_selected.connect(func(idx: int) -> void:
+		Settings.set_value("quality_profile", ["auto", "high", "medium", "low"][idx])
+		Quality.apply_profile(["auto", "high", "medium", "low"][idx]))
 	test_button.pressed.connect(func() -> void:
 		Haptics.play(&"set", 1.0, &"brass")
 		Sfx.play(&"set", &"brass"))
@@ -98,6 +112,7 @@ func _refresh_texts() -> void:
 	continuous_check.text = I18n.t(&"settings.continuous_resistance")
 	$Scroll/VBox/TextScaleLabel.text = I18n.t(&"settings.text_scale")
 	reduce_motion_check.text = I18n.t(&"settings.reduce_motion")
+	$Scroll/VBox/QualityLabel.text = I18n.t(&"settings.quality")
 	$Scroll/VBox/DarkNote.text = I18n.t(&"settings.dark_mode_note")
 	reset_button.text = I18n.t(&"settings.reset")
 	back_button.text = I18n.t(&"common.back")

@@ -5,6 +5,11 @@ boot.calib_one,"One","Jedno"
 boot.calib_none,"None","Nic"
 boot.calib_skip,"Skip","Pomiń"
 settings.feel_section,"Feel (haptics)","Wyczucie (haptyka)"
+settings.quality,"Graphics quality","Jakość grafiki"
+settings.quality_auto,"Auto (measured)","Auto (mierzona)"
+settings.quality_high,"High","Wysoka"
+settings.quality_medium,"Medium","Średnia"
+settings.quality_low,"Low (cheap phones)","Niska (tanie telefony)"
 app.title,Lockwright: Locksmith on Call,Lockwright: Pogotowie Zamkowe
 common.back,Back,Wstecz
 common.close,Close,Zamknij
