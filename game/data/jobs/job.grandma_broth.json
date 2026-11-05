@@ -23,5 +23,7 @@
     "letter",
     "photo"
   ],
-  "threshold": 2
+  "threshold": 2,
+  "place": "apartment",
+  "time": "day"
 }

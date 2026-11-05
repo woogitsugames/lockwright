@@ -22,5 +22,7 @@
     "photo",
     "witness"
   ],
-  "threshold": 2
+  "threshold": 2,
+  "place": "apartment",
+  "time": "day"
 }

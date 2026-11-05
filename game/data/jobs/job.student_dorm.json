@@ -23,5 +23,7 @@
     "witness",
     "letter"
   ],
-  "threshold": 2
+  "threshold": 2,
+  "place": "locker",
+  "time": "night"
 }

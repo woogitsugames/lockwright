@@ -8,10 +8,64 @@ extends Control
 
 const TOOLS_PATH := "res://data/tools.json"
 
+# G08 workshop backgrounds by time of day
+const WORKSHOP_BG := {
+	"morning": "01-workshop-morning-portrait.webp",
+	"afternoon": "06-workbench-afternoon-landscape.webp",
+	"evening": "03-workshop-evening-portrait.webp",
+	"night": "08-lamplight-evening-landscape.webp",
+}
+
+
+func _day_part() -> String:
+	var hour := OS.get_time()["hour"]
+	if hour >= 6 and hour < 12:
+		return "morning"
+	if hour >= 12 and hour < 18:
+		return "afternoon"
+	if hour >= 18 and hour < 23:
+		return "evening"
+	return "night"
+
+
+func _add_background() -> void:
+	var tex := load("res://assets/ui/gpt/workshop/" + WORKSHOP_BG[_day_part()])
+	if tex == null:
+		return
+	var bg := TextureRect.new()
+	bg.texture = tex
+	bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.modulate = Color(1, 1, 1, 0.3)
+	add_child(bg)
+	move_child(bg, 0)
+
+
+func _add_map() -> void:
+	# G15 district map with chapter pins for the current chapter
+	var chapter := clampi(int(Save.get_value("chapter", 1)), 1, 6)
+	var path := "res://assets/ui/gpt/map/zameczno_chapter_%d.%s"
+	var tex: Texture2D = load(path % [chapter, "webp" if chapter >= 4 else "png"])
+	if tex == null:
+		tex = load("res://assets/ui/gpt/map/zameczno_base.png")
+	if tex == null:
+		return
+	var map := TextureRect.new()
+	map.texture = tex
+	map.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	map.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	map.custom_minimum_size = Vector2(0, 180)
+	map.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	$VBox.add_child(map)
+	$VBox.move_child(map, 1)
+
 
 func _ready() -> void:
 	Sfx.play_ambience(&"workshop")
 	SafeArea.apply(self)
+	_add_background()
+	_add_map()
 	$VBox/Title.text = I18n.t(&"workshop.title")
 	back_button.text = I18n.t(&"common.back")
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))

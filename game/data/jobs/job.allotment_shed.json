@@ -22,5 +22,7 @@
     "id",
     "witness"
   ],
-  "threshold": 3
+  "threshold": 3,
+  "place": "gate",
+  "time": "evening"
 }

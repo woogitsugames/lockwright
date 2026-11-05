@@ -14,10 +14,31 @@ func _show_notebook_entry() -> void:
 			keys.append(k)
 	if keys.is_empty():
 		return
+	var card := VBoxContainer.new()
 	var lbl := Label.new()
 	lbl.text = I18n.t(&"showcase.notebook_prefix") + " " + I18n.t(keys[randi() % keys.size()])
 	lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	notes_list.add_child(lbl)
+	card.add_child(lbl)
+	# G10 notebook page (PL/EN by game language)
+	var lang := "pl" if Settings.language() == "pl" else "en"
+	var page := load("res://assets/ui/gpt/notebook/03-five-rules-%s.jpg" % lang)
+	if page != null:
+		var tex := TextureRect.new()
+		tex.texture = page
+		tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		tex.custom_minimum_size = Vector2(0, 160)
+		card.add_child(tex)
+	notes_list.add_child(card)
+
+
+func _exhibit_photo(nid: String) -> Texture2D:
+	# G16 showcase photos: showcase.<slug> -> <NN>_<slug>.jpg
+	var slug := nid.replace("showcase.", "")
+	for f in DirAccess.get_files_at("res://assets/ui/gpt/showcase"):
+		if f.ends_with("_%s.jpg" % slug):
+			return load("res://assets/ui/gpt/showcase/" + f)
+	return null
 
 
 func _ready() -> void:
@@ -33,6 +54,14 @@ func _ready() -> void:
 		var note: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(SHOWCASE_DIR + "/" + path))
 		var nid: String = note.get("id", path.get_basename())
 		var card := VBoxContainer.new()
+		var photo := _exhibit_photo(nid)
+		if photo != null:
+			var tex := TextureRect.new()
+			tex.texture = photo
+			tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+			tex.custom_minimum_size = Vector2(0, 160)
+			card.add_child(tex)
 		var title := Button.new()
 		title.text = I18n.t(note.get("i18n", {}).get("title", &"showcase.title"))
 		title.alignment = HORIZONTAL_ALIGNMENT_LEFT

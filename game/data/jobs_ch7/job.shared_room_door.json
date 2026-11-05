@@ -26,5 +26,7 @@
     "institution",
     "witness"
   ],
-  "threshold": 3
+  "threshold": 3,
+  "place": "apartment",
+  "time": "evening"
 }

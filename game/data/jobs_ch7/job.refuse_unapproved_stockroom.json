@@ -25,5 +25,7 @@
     "id",
     "letter"
   ],
-  "threshold": 2
+  "threshold": 2,
+  "place": "cellar",
+  "time": "evening"
 }

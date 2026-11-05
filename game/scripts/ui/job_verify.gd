@@ -29,6 +29,19 @@ func _ready() -> void:
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/job_arrival.tscn"))
 
 
+# G14 verification props: card type -> prop image (PL/EN by game language)
+const CARD_PROP := {
+	"id": "tenant", "witness": "note", "lease": "lease", "manager": "manager",
+	"job": "job", "envelope": "envelope", "note": "note", "tenant": "tenant", "receipt": "receipt",
+}
+
+
+func _card_prop(card: String) -> Texture2D:
+	var lang := "pl" if Settings.language() == "pl" else "en"
+	var prop: String = CARD_PROP.get(card, "note")
+	return load("res://assets/ui/gpt/verify/%s_%s.webp" % [prop, lang])
+
+
 func _render_cards() -> void:
 	for c in cards_box.get_children():
 		c.queue_free()
@@ -37,6 +50,10 @@ func _render_cards() -> void:
 		var b := Button.new()
 		b.text = I18n.t(&"verify.card.%s" % cards[i])
 		b.custom_minimum_size = Vector2(0, 48)
+		var tex := _card_prop(cards[i])
+		if tex != null:
+			b.icon = tex
+			b.icon_max_width = 96
 		cards_box.add_child(b)
 
 

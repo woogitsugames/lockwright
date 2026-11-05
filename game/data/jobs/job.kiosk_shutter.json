@@ -23,5 +23,7 @@
     "letter",
     "photo"
   ],
-  "threshold": 3
+  "threshold": 3,
+  "place": "kiosk",
+  "time": "rainy"
 }
