@@ -7,7 +7,8 @@ env = SConscript(os.environ.get("GODOT_CPP_SCONSTRUCT", "godot-cpp/SConstruct"))
 sources = Glob("Sources/*.cpp") + Glob("Sources/*.mm")
 
 env.Append(CPPPATH=["include"])
-env.Append(OBJCSUFFIXES=[".mm"])  # compile .mm as ObjC++
+env.Tool("objcxx")
+env.Append(OBJCSUFFIXES=[".mm"], OBJCXXFLAGS=["-x", "objective-c++", "-std=gnu++20"])  # compile .mm as ObjC++
 library = env.SharedLibrary(
     "bin/liblockwright_haptics.{}.{}.{}.a".format(env["platform"], env["target"], env["arch"]),
     sources,
