@@ -156,3 +156,10 @@ Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright �
 
 ## D-50 — Ikona: tabliczka emaliowana „L”; portrety dla wszystkich mówiących
 2026-11-05 · sesja A · Ikona aplikacji: kierunek G12 v2 #01 / Magnific `icon_enamel_L` (tabliczka „L”); czoło wkładki odrzucone (zbyt blisko kliszy „dziurka od klucza na ciemnym tle”). N-49: 39 postaci epizodycznych dostaje portrety z Magnific (`docs/handoff/MAGNIFIC-PORTRETY.md`); do czasu dostawy gra pokazuje emaliowaną tabliczkę z inicjałem zamiast twarzy. Numer seryjny telefonu właściciela usunięty z raportów (`[usunięto]`).
+
+## D-51 — Właściciel: strona na Cloudflare Pages, iOS na końcu, sterowanie względne
+2026-11-05 · właściciel ·
+- **Model biznesowy (D-06):** nadal otwarty; sklep, strona i zwiastun bez informacji o cenie i dostępności.
+- **Strona gry:** hosting na **Cloudflare Pages** (nie GitHub Pages). Workflow GitHub Pages zostaje wyłączony; `site/` ma budować się jako statyczny katalog do wdrożenia przez Cloudflare (Git integration lub `wrangler pages deploy`); publikacja dopiero na sygnał właściciela.
+- **iOS:** właściciel ma konto Apple Developer, ale teraz dopracowujemy **Androida**; iOS (TestFlight, podpis) przeprowadzamy na końcu. CI iOS może zostać, ale nie blokuje prac nad Androidem.
+- **D-24 zatwierdzona:** napięcie i uniesienie liczone względnie od punktu dotyku kciuka.

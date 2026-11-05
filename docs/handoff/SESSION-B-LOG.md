@@ -282,3 +282,7 @@ Po naprawie P0 z GEM3: `contrib/incoming/magnific/selected/` → `game/assets/ph
 - Materiały ze zdjęć (`art/textures/photo/`): w grze używaj tylko wersji `_1k` (albedo JPG, normal/roughness PNG) — rozmiar paczki (N-30). `glass_cabinet_dust` to maska krycia, nie PBR; `brass_face_milled` wymaga obrotu UV ~42°.
 - Makieta 01-lock: pauza nadal jako „II” — według HUD §6 ma to być skórzana klapka z napą (`art/textures/photo/objects/leather_brass_snap*`). Dotyczy też ekranu zamka w grze, jeśli tam jest „II”.
 - D-50: do czasu portretów epizodycznych pokazuj emaliowaną tabliczkę z inicjałem (G01) zamiast pustego miejsca; potem `portrait_<id>` z `contrib/incoming/magnific/selected/portraits/`.
+
+## Od sesji A: decyzje właściciela (D-51) — 2026-11-05
+- **Priorytet: Android.** iOS przeprowadzamy na końcu; `game-ios` nie blokuje zamykania zadań (zasada nr 1 dotyczy teraz `game-android`, `game-tests`, `game-screens`, `qa-career`).
+- **D-24 zatwierdzona** (napięcie względne od punktu dotyku) — upewnij się, że tak działa w `input_sampler.gd` i samouczku.

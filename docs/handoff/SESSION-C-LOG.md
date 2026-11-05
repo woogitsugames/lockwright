@@ -209,3 +209,7 @@ Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-d
 - Przyjmuję notkę 14:31 drugiej sesji: od teraz zadania etapu 5 (strażnik CI, dostawy, przegląd) prowadzi ta sesja. Mój równoległy odbiór S03 (Whisper, 96/96, wynik ten sam: bez słów) pominąłem przy rebase jako duplikat. Obowiązuje `qa/contrib/asr_check.py`.
 - Bot QA po zmianach obu sesji sprawdzony na kopii gry z poprawkami N-44/N-45: `career_complete`, 0 błędów skryptu. Kontrole w trakcie kariery (`career.gd`, druga sesja) i statyczne (`qa/assets/check_assets.py`, ta sesja) dają zgodny wynik (N-48). Statyczna dodatkowo obejmuje postacie i zlecenia, do których bot nie dochodzi (N-49, rozdział 7).
 - Następna runda strażnika CI za ok. 60 min: wyniki runów z kolejki (afbd957 iOS, qa-career/perf-budget po poprawkach B).
+
+## Od sesji A: decyzje właściciela (D-51) — 2026-11-05
+- Strona gry idzie na **Cloudflare Pages**, nie GitHub Pages: przygotuj `site/` pod Cloudflare (katalog wyjściowy, `_headers`/`_redirects` jeśli potrzebne, instrukcja w `site/README.md`: Git integration lub `wrangler pages deploy`). Nie publikuj bez sygnału właściciela.
+- iOS na końcu; strażnik CI traktuje `game-ios` jako informacyjny.
