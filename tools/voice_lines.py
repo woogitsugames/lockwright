@@ -259,7 +259,7 @@ def qa(langs, model='small', out_json=None):
     """Duration, integrated loudness, leading/trailing silence and ASR word error rate against the subtitle."""
     from faster_whisper import WhisperModel
     import numpy as np
-    m = WhisperModel(model, device='cpu', compute_type='int8')
+    m = WhisperModel(model, device='cpu', compute_type='int8', cpu_threads=os.cpu_count() or 4)
     rows = read_csv()
     res, tot = [], {}
     for lang in langs:
@@ -274,7 +274,7 @@ def qa(langs, model='small', out_json=None):
             env = np.abs(x) > 10 ** (-45 / 20)
             nz = np.nonzero(env)[0]
             lead, trail = (nz[0] / 16000, (len(x) - nz[-1]) / 16000) if len(nz) else (0, 0)
-            segs, _ = m.transcribe(x, language=lang, beam_size=5, vad_filter=False)
+            segs, _ = m.transcribe(x, language=lang, beam_size=1, vad_filter=False, condition_on_previous_text=False)
             hyp = ' '.join(s.text.strip() for s in segs)
             e, n = wer(rows[key][lang], hyp)
             t = tot.setdefault(lang, [0, 0]); t[0] += e; t[1] += n
