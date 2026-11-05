@@ -19,12 +19,26 @@ Przeczytaj w repo (wystarczy szybko): `CLAUDE.md`, `docs/styles/realizm.md`, `do
 - **Grafiki i dźwięki generowane przez AI są dozwolone** (decyzja właściciela D-42), ale każdy plik musi mieć wpis w `contrib/gpt/G13/ASSETS.md`: nazwa pliku, narzędzie (np. generator obrazów ChatGPT), data, pełny prompt, licencja/warunki narzędzia, czy był edytowany.
 - **Nie zmieniaj niczego poza `contrib/gpt/G13/`.** Inne katalogi należą do innych zespołów (sesje A, B, C). Uwagi do nich wpisz do swojego `README.md`.
 
+
+> **WERSJA 2 (po blokadach generatora obrazów).** Generator obrazów ChatGPT odrzuca obrazy, na których narzędzie jest włożone do zamka albo ktoś „otwiera zamek” (traktuje to jako działanie niedozwolone). Dlatego w tym zleceniu:
+> - **nie pokazuj** wytrycha ani napinacza włożonego w zamek, dłoni manipulujących przy zamku, przekroju zamka z narzędziem w kanale;
+> - w promptach **nie używaj** słów: lockpick, picking, pick the lock, break in, bypass, tension wrench, wytrych, włam;
+> - pokazuj zamiast tego: ślusarza jako fachowca w kontakcie z klientem, narzędzia **schowane w zwiniętej skórzanej zwijce**, mosiężną wkładkę lub klucz **same w sobie**, drzwi, tabliczki, światło, warsztat.
+> Jeśli mimo to generator odmówi, **narysuj grafikę kodem** (SVG lub Python: Pillow, cairo, matplotlib) i wyrenderuj ją do PNG. Wpisz to w `ASSETS.md` jako „wygenerowane kodem”.
+
 ## 3. Zadanie
-Przygotuj **key art** gry i grafiki sklepowe:
-- key art 3840×2160 i 2160×3840: fotorealistyczne zbliżenie dłoni ślusarza z napinaczem i wytrychem przy wkładce w dębowych drzwiach, ciepłe światło klatki, poczucie skupienia i spokoju (nie włamania!). Wersje bez tekstu i z miejscem na logo;
-- Google Play feature graphic 1024×500 (bez tekstu i z tytułem „Lockwright”);
-- 3 banery social (1080×1080, 1080×1920, 1500×500);
-- logotyp tekstowy „Lockwright” (3 propozycje, krój szeryfowy podobny w charakterze do Bona Nova, ale narysowany od zera; dopisek „Pogotowie Zamkowe” / „Locksmith on Call”).
+Przygotuj **key art** gry i grafiki sklepowe. **Bez narzędzi przy zamku i bez otwierania drzwi przez kogokolwiek.** Motywy:
+- **przyjazd ślusarza:** podest klatki schodowej, ciepła żarówka, drzwi z emaliowaną tabliczką, na wycieraczce stoi skórzana torba lub zwinięta zwijka narzędziowa, obok klientka w szlafroku z kubkiem herbaty (ulga, uśmiech); ślusarz widoczny od tyłu lub częściowo (ramię w roboczej kurtce, notes w ręce);
+- **warsztat o zmierzchu:** stół, lampa, zeszyt mistrza, zwinięta zwijka, gablota z eksponatami, telefon z powiadomieniem o zleceniu;
+- **detal:** mosiężna wkładka w dębowych drzwiach w świetle żarówki (sam metal i drewno).
+
+Pliki:
+- key art 3840×2160 i 2160×3840, w wersji bez tekstu i z miejscem na logo;
+- Google Play feature graphic 1024×500, bez tekstu i z tytułem „Lockwright”;
+- 3 banery social: 1080×1080, 1080×1920 i 1500×500;
+- logotyp tekstowy „Lockwright”: 3 propozycje, krój szeryfowy podobny w charakterze do Bona Nova, ale narysowany od zera, z dopiskiem „Pogotowie Zamkowe” / „Locksmith on Call”. Logotyp możesz zrobić kodem, z fontu OFL i własnych modyfikacji.
+
+Ton: pomoc, fach, spokój, ciepło.
 
 ## 4. Jak oddać
 1. Wszystkie pliki zapisz w `contrib/gpt/G13/` (podkatalogi dowolne). Pliki binarne do 20 MB sztuka; jeśli większe, zmniejsz.

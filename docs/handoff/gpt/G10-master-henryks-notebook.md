@@ -19,6 +19,13 @@ Przeczytaj w repo (wystarczy szybko): `CLAUDE.md`, `docs/styles/realizm.md`, `do
 - **Grafiki i dźwięki generowane przez AI są dozwolone** (decyzja właściciela D-42), ale każdy plik musi mieć wpis w `contrib/gpt/G10/ASSETS.md`: nazwa pliku, narzędzie (np. generator obrazów ChatGPT), data, pełny prompt, licencja/warunki narzędzia, czy był edytowany.
 - **Nie zmieniaj niczego poza `contrib/gpt/G10/`.** Inne katalogi należą do innych zespołów (sesje A, B, C). Uwagi do nich wpisz do swojego `README.md`.
 
+
+> **WERSJA 2 (po blokadach generatora obrazów).** Generator obrazów ChatGPT odrzuca obrazy, na których narzędzie jest włożone do zamka albo ktoś „otwiera zamek” (traktuje to jako działanie niedozwolone). Dlatego w tym zleceniu:
+> - **nie pokazuj** wytrycha ani napinacza włożonego w zamek, dłoni manipulujących przy zamku, przekroju zamka z narzędziem w kanale;
+> - w promptach **nie używaj** słów: lockpick, picking, pick the lock, break in, bypass, tension wrench, wytrych, włam;
+> - pokazuj zamiast tego: ślusarza jako fachowca w kontakcie z klientem, narzędzia **schowane w zwiniętej skórzanej zwijce**, mosiężną wkładkę lub klucz **same w sobie**, drzwi, tabliczki, światło, warsztat.
+> Jeśli mimo to generator odmówi, **narysuj grafikę kodem** (SVG lub Python: Pillow, cairo, matplotlib) i wyrenderuj ją do PNG. Wpisz to w `ASSETS.md` jako „wygenerowane kodem”.
+
 ## 3. Zadanie
 Zeszyt poprzednika, mistrza Henryka, to ważny rekwizyt w grze. Wygeneruj **fotorealistyczne strony zeszytu** (kratka lub linia, pożółkły papier, ołówek i atrament, kawowa plama, wklejona karteczka):
 - okładka (płócienna, wytarta) i wyklejka z podpisem „H.” (bez prawdziwych nazwisk);

@@ -19,9 +19,29 @@ Przeczytaj w repo (wystarczy szybko): `CLAUDE.md`, `docs/styles/realizm.md`, `do
 - **Grafiki i dźwięki generowane przez AI są dozwolone** (decyzja właściciela D-42), ale każdy plik musi mieć wpis w `contrib/gpt/G11/ASSETS.md`: nazwa pliku, narzędzie (np. generator obrazów ChatGPT), data, pełny prompt, licencja/warunki narzędzia, czy był edytowany.
 - **Nie zmieniaj niczego poza `contrib/gpt/G11/`.** Inne katalogi należą do innych zespołów (sesje A, B, C). Uwagi do nich wpisz do swojego `README.md`.
 
+
+> **WERSJA 2 (po blokadach generatora obrazów).** Generator obrazów ChatGPT odrzuca obrazy, na których narzędzie jest włożone do zamka albo ktoś „otwiera zamek” (traktuje to jako działanie niedozwolone). Dlatego w tym zleceniu:
+> - **nie pokazuj** wytrycha ani napinacza włożonego w zamek, dłoni manipulujących przy zamku, przekroju zamka z narzędziem w kanale;
+> - w promptach **nie używaj** słów: lockpick, picking, pick the lock, break in, bypass, tension wrench, wytrych, włam;
+> - pokazuj zamiast tego: ślusarza jako fachowca w kontakcie z klientem, narzędzia **schowane w zwiniętej skórzanej zwijce**, mosiężną wkładkę lub klucz **same w sobie**, drzwi, tabliczki, światło, warsztat.
+> Jeśli mimo to generator odmówi, **narysuj grafikę kodem** (SVG lub Python: Pillow, cairo, matplotlib) i wyrenderuj ją do PNG. Wpisz to w `ASSETS.md` jako „wygenerowane kodem”.
+
 ## 3. Zadanie
-Samouczek uczy przez **kartki mistrza wsunięte w zwijkę**: szkic ołówkiem zrozumiały bez czytania plus krótki dopisek. Na podstawie `docs/ONBOARDING.md` (etapy S1–S3) przygotuj **12 kartek** (papier z bloczka, lekko pognieciony, pinezka lub wsunięty pod pasek skóry): każda ze szkicem (kciuk, strzałka, napinacz, piny) i dopiskiem odręcznym PL; osobno ta sama kartka z dopiskiem EN; osobno kartka bez dopisku. Do tego pieczątka „TO GRA, NIE KURS. / Mechanizmy są wymyślone.” i EN „THIS IS A GAME, NOT A COURSE. / The mechanisms are invented.” jako osobne PNG z alfą (tusz, lekko nierówny odcisk).
-Format: PNG z alfą, 1200×1500.
+Samouczek uczy przez **kartki mistrza wsunięte w zwijkę**: prosty szkic plus krótki dopisek. **Nie używaj generatora obrazów do szkiców.** Narysuj je kodem (SVG, a potem PNG przez cairosvg lub Pillow), w stylu szkicu ołówkiem: nierówna linia, lekkie drżenie, szare grafitowe kreski, kreskowanie cieni.
+
+Szkice są **abstrakcyjnymi diagramami gestów i stanów z gry**, nie rysunkami prawdziwych zamków:
+- kciuk lewy: kółko odcisku i strzałka „dociśnij i trzymaj” oraz skala nacisku 0–100%;
+- kciuk prawy: strzałka „w bok i w górę”;
+- „kolumny” z gry: prostokąty w rurce z kreską poziomą (linia podziału);
+- stany w znakach z `docs/DESIGN.md` §1: stopka (ustawiony), talia/klepsydra (fałszywe), 3 ukośne kreski (wiąże), klamra (przepchnięty), klin (blisko).
+
+**12 kartek** według etapów S1–S3 z `docs/ONBOARDING.md`. Każda w 3 wersjach: dopisek PL, dopisek EN, bez dopisku. Dopisek pismem odręcznym: font OFL, np. „Caveat” albo „Kalam” z Google Fonts; podaj font w ASSETS.md.
+
+Tło karteczki możesz wygenerować generatorem obrazów jako **pustą** pożółkłą kartkę z bloczka, z pinezką albo bez (bez żadnych zamków na obrazie), albo zrobić proceduralnie.
+
+Do tego pieczątka „TO GRA, NIE KURS. / Mechanizmy są wymyślone.” i EN „THIS IS A GAME, NOT A COURSE. / The mechanisms are invented.”, też kodem: tusz, nierówny odcisk, PNG z alfą.
+
+Format: PNG z alfą, 1200×1500. Dołącz źródła SVG i skrypt.
 
 ## 4. Jak oddać
 1. Wszystkie pliki zapisz w `contrib/gpt/G11/` (podkatalogi dowolne). Pliki binarne do 20 MB sztuka; jeśli większe, zmniejsz.

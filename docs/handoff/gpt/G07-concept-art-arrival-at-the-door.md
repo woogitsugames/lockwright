@@ -19,6 +19,13 @@ Przeczytaj w repo (wystarczy szybko): `CLAUDE.md`, `docs/styles/realizm.md`, `do
 - **Grafiki i dźwięki generowane przez AI są dozwolone** (decyzja właściciela D-42), ale każdy plik musi mieć wpis w `contrib/gpt/G07/ASSETS.md`: nazwa pliku, narzędzie (np. generator obrazów ChatGPT), data, pełny prompt, licencja/warunki narzędzia, czy był edytowany.
 - **Nie zmieniaj niczego poza `contrib/gpt/G07/`.** Inne katalogi należą do innych zespołów (sesje A, B, C). Uwagi do nich wpisz do swojego `README.md`.
 
+
+> **WERSJA 2 (po blokadach generatora obrazów).** Generator obrazów ChatGPT odrzuca obrazy, na których narzędzie jest włożone do zamka albo ktoś „otwiera zamek” (traktuje to jako działanie niedozwolone). Dlatego w tym zleceniu:
+> - **nie pokazuj** wytrycha ani napinacza włożonego w zamek, dłoni manipulujących przy zamku, przekroju zamka z narzędziem w kanale;
+> - w promptach **nie używaj** słów: lockpick, picking, pick the lock, break in, bypass, tension wrench, wytrych, włam;
+> - pokazuj zamiast tego: ślusarza jako fachowca w kontakcie z klientem, narzędzia **schowane w zwiniętej skórzanej zwijce**, mosiężną wkładkę lub klucz **same w sobie**, drzwi, tabliczki, światło, warsztat.
+> Jeśli mimo to generator odmówi, **narysuj grafikę kodem** (SVG lub Python: Pillow, cairo, matplotlib) i wyrenderuj ją do PNG. Wpisz to w `ASSETS.md` jako „wygenerowane kodem”.
+
 ## 3. Zadanie
 Wygeneruj **10 fotorealistycznych kadrów koncepcyjnych w pionie 9:19,5** (np. 1080×2340) „przyjazd ślusarza pod drzwi klienta” w kamienicy: podest klatki, drzwi mieszkania z wkładką i szyldem, emaliowana tabliczka z numerem, wycieraczka, lamperia. Warianty: dzień (światło z okna klatki), wieczór (ciepła żarówka), noc z gasnącym światłem na minutnik, deszczowy wieczór (mokre ślady butów), drzwi do strychu, drzwi piwnicy, drzwi kiosku z roletą (bez marek), szafka w szatni, brama podwórka, drzwi warsztatu.
 Kompozycja: **dolne 40% kadru spokojne** (wycieraczka, podłoga), bo tam leży interfejs. Bez ludzi albo z postacią widoczną tylko częściowo (dłoń, płaszcz). Bez tekstu, bez marek.

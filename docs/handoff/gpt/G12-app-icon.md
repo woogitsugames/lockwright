@@ -19,10 +19,32 @@ Przeczytaj w repo (wystarczy szybko): `CLAUDE.md`, `docs/styles/realizm.md`, `do
 - **Grafiki i dźwięki generowane przez AI są dozwolone** (decyzja właściciela D-42), ale każdy plik musi mieć wpis w `contrib/gpt/G12/ASSETS.md`: nazwa pliku, narzędzie (np. generator obrazów ChatGPT), data, pełny prompt, licencja/warunki narzędzia, czy był edytowany.
 - **Nie zmieniaj niczego poza `contrib/gpt/G12/`.** Inne katalogi należą do innych zespołów (sesje A, B, C). Uwagi do nich wpisz do swojego `README.md`.
 
+
+> **WERSJA 2 (po blokadach generatora obrazów).** Generator obrazów ChatGPT odrzuca obrazy, na których narzędzie jest włożone do zamka albo ktoś „otwiera zamek” (traktuje to jako działanie niedozwolone). Dlatego w tym zleceniu:
+> - **nie pokazuj** wytrycha ani napinacza włożonego w zamek, dłoni manipulujących przy zamku, przekroju zamka z narzędziem w kanale;
+> - w promptach **nie używaj** słów: lockpick, picking, pick the lock, break in, bypass, tension wrench, wytrych, włam;
+> - pokazuj zamiast tego: ślusarza jako fachowca w kontakcie z klientem, narzędzia **schowane w zwiniętej skórzanej zwijce**, mosiężną wkładkę lub klucz **same w sobie**, drzwi, tabliczki, światło, warsztat.
+> Jeśli mimo to generator odmówi, **narysuj grafikę kodem** (SVG lub Python: Pillow, cairo, matplotlib) i wyrenderuj ją do PNG. Wpisz to w `ASSETS.md` jako „wygenerowane kodem”.
+
 ## 3. Zadanie
-Zaprojektuj **ikonę aplikacji**: 12 propozycji, fotorealistycznych lub półrealistycznych, czytelnych w 48×48 px. Zakazane: dziurka od klucza na czarnym tle, złota kłódka na ciemnym tle, neon, gradient fiolet-niebieski. Kierunki do sprawdzenia: przekrój pinu z widoczną szczeliną linii podziału, wytrych i napinacz na skórze, emaliowana tabliczka z literą L, mosiężna wkładka z boku w ciepłym świetle, zwijka z wytrychami.
-- Każda propozycja: 1024×1024 PNG (bez przezroczystości, iOS) + podgląd w rozmiarach 180, 120, 60, 48, 29 px obok siebie + wersja Android adaptive (foreground 432×432 z alfą + tło).
-- Wybierz 3 najlepsze i uzasadnij.
+Zaprojektuj **ikonę aplikacji**: 12 propozycji, czytelnych w 48×48 px, fotorealistycznych lub półrealistycznych.
+
+**Bez narzędzi przy zamku.** Kierunki:
+- emaliowana tabliczka z literą „L” (granat i kość słoniowa, obtłuczenia);
+- czoło mosiężnej wkładki z przodu w ciepłym świetle (sam metal, bez klucza i narzędzi);
+- zwinięta skórzana zwijka z mosiężną napą;
+- stary klucz na skórze;
+- dzwonek mieszkania lub tabliczka z numerem na zielonej lamperii;
+- czoło wkładki z wygrawerowaną skalą (podziałki jak na tarczy).
+
+Zakazane: dziurka od klucza na czarnym tle, złota kłódka na ciemnym tle, neon, gradient fiolet-niebieski.
+
+Dla każdej propozycji:
+- 1024×1024 PNG (bez przezroczystości, iOS);
+- podgląd w rozmiarach 180, 120, 60, 48 i 29 px obok siebie;
+- wersja Android adaptive (foreground 432×432 z alfą + tło).
+
+Wybierz 3 najlepsze i uzasadnij. Jeśli generator odmówi, zrób ikonę kodem (SVG z gradientami materiału) albo wygeneruj sam obiekt (np. tabliczkę) i złóż ikonę w Pillow.
 
 ## 4. Jak oddać
 1. Wszystkie pliki zapisz w `contrib/gpt/G12/` (podkatalogi dowolne). Pliki binarne do 20 MB sztuka; jeśli większe, zmniejsz.
