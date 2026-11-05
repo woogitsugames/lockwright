@@ -640,3 +640,21 @@ Zrzuty: `docs/handoff/device-tests/fixes/landscape/` (412×915 i 915×412: menu,
   - na ekranie zamka w poziomie pas zwijki (26% wysokości) ucina dół narzędzi i lupy, tak samo jak przed zmianą skali (właściciel: agent zamka);
   - `data/tutorial/*.json` trafia do paczki tak jak `data/jobs` (`all_resources`). Agent rozmiaru może to potwierdzić w pck;
   - `.import` portretów G21 dostały przy moim `--import` brakujące `uid` i `dest_files`. Wpadło to w auto-commit, sama normalizacja Godota.
+
+## 2026-11-05 — Etap 5 (SESSION-B-PROMPT-5) — podsumowanie sesji B
+
+**Zadanie 1 (CI):** naprawione — N-29 (`lock_job.gd` dziedziczy po skrypcie, `.tscn` instancjonuje scenę), `msaa` na `view`, `default_bus_layout.tres` (sub_resource przed `[resource]`), licznik plików haptics w `game-tests.yml`, iOS SConstruct (`SharedObject` + jawny `.dylib`), QA bot: clamp tieru rodziny dla `replay_tool record`. Przyczyny opisane wyżej w logu.
+**Zadanie 2 (grafiki D-43):** G07/G01/G08/G09/G11/G14/G15/G16/G10 → `game/assets/ui/gpt/`, podpięte w scenach (tła przyjazdu wg `place`/`time`, tabliczki PL/EN, tła warsztatu wg pory dnia, awatary przy liniach, kartki S1–S3 + pieczątka, rekwizyty weryfikacji + pokwitowanie, mapa dzielnicy, zdjęcia gabloty, strony zeszytu v2), wpisy w `docs/ASSETS.md`.
+**Zadanie 3 (dźwięki):** S01 muzyka na nowej magistrali `Music` (w zamku low-pass 2,2 kHz + ducking), S02 foley, S03 głosy znormalizowane do −28 LUFS M, S04 UI (wspólne kategorie wybrane S04); `check_sfx.py` ✅.
+**Zadanie 4 (teksty):** T01/T02 (179 poprawek EN), T03 (DE za flagą `dev_mode`), T04 (notki gabloty), T10 v2 (bez „master lock”); `loc_qa.py` ✅, `validate.py` ✅.
+**Zadanie 5:** zrzuty z zielonego runu `game-screens` (42100326243) w `docs/handoff/screens/` — 16 PNG (8 ekranów × pion/poziom). Widać m.in.: przyjazd z fotorealistycznym tłem korytarza, emaliowaną tabliczką „22” i dialogiem z awatarem; ekran zamka z fotoreal planszą, HUD i lupą.
+**Zadanie 6:** brak raportu w `docs/handoff/device-tests/` — do zrobienia, gdy raport się pojawi.
+
+### Tabela statusów (zielone runy na main)
+| Workflow | Ostatni zielony run na main |
+|---|---|
+| game-android | https://github.com/woogitsugames/lockwright/actions/runs/42100326036 |
+| game-ios | https://github.com/woogitsugames/lockwright/actions/runs/42077893497 |
+| game-tests | https://github.com/woogitsugames/lockwright/actions/runs/42100326407 |
+| game-screens | https://github.com/woogitsugames/lockwright/actions/runs/42100326243 |
+| qa-career | https://github.com/woogitsugames/lockwright/actions/runs/42079732741 |
