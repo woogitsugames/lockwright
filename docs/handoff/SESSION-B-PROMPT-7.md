@@ -1,5 +1,7 @@
 # Sesja B, etap 7: poprawki po pierwszym teście właściciela na telefonie (APK run 92)
 
+> **2026-11-05 19:55: PRZEJĘTE PRZEZ SESJĘ A** (decyzja właściciela). Sesja B nie rusza N-52…N-62 ani głosów S03v2, żeby nie było konfliktów. Jeśli sesja B pracuje, niech zajmie się tylko iOS albo CI (`game-screens` hang).
+
 Kontynuujesz jako **sesja B** (repo `woogitsugames/lockwright`, `main`). Zasady z poprzednich promptów obowiązują. Priorytet ma Android (D-51).
 
 Właściciel przetestował APK z runu 92. Zrzuty są w `docs/handoff/device-tests/run92/`. Pełne opisy z gotowymi wskazówkami są w `docs/handoff/SESSION-B-LOG.md` (wpisy „Od sesji A”, N-52…N-62, plus głosy S03v2).
