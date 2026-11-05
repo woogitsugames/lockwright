@@ -1,6 +1,6 @@
 # Lockwright — analiza konkurencji i kolizji nazwy (T07)
 
-**Stan badania: 5 listopada 2026 r.** Zakres: gry na telefon/PC/przeglądarkę, aplikacje pokrewne, urządzenia noszone, wzorce „cozy job sim”, wstępny screening nazwy. **29 pozycji w tabeli** oraz osobno konkurent dokładnie o nazwie Lockwright. To **aneks aktualizujący** [`docs/RESEARCH.md`](../../../../docs/RESEARCH.md) z 4.11.2026; dokumentu źródłowego nie zmieniono, zgodnie z granicą katalogu T07. Nie jest analizą prawną ani dowodem braku kolizji.
+**Stan badania: 5 listopada 2026 r.** Zakres: gry na telefon/PC/przeglądarkę, aplikacje pokrewne, urządzenia noszone, wzorce „cozy job sim”, wstępny screening nazwy. **29 pozycji w tabeli** oraz osobno konkurent dokładnie o nazwie Lockwright. To **aneks aktualizujący** [`docs/RESEARCH.md`](../../../docs/RESEARCH.md) z 4.11.2026; dokumentu źródłowego nie zmieniono, zgodnie z granicą katalogu T07. Nie jest analizą prawną ani dowodem braku kolizji.
 
 ## 1. Zakres, definicje i jakość danych
 
@@ -108,11 +108,11 @@
 
 | Oznaczenie / miejsce | Znaczenie dla nazwy | Stan dowodu i źródło |
 |---|---|---|
-| **Lockwright — lockwright.app** | **Identyczna nazwa** gry przeglądarkowej 3D escape-room, również o mechanicznych zagadkach i pokojach. Wg researchu: 9 pokoi + trening, PWA, bezpłatna. Ryzyko pozycjonowania i pomyłek w wyszukiwaniu, nawet bez potwierdzonej rejestracji znaku. | Opis i daty z [bazowego researchu 04.11.2026](../../../../docs/RESEARCH.md), [domena](https://lockwright.app/). Dostępność strony **niepotwierdzona ponownie 05.11**. |
+| **Lockwright — lockwright.app** | **Identyczna nazwa** gry przeglądarkowej 3D escape-room, również o mechanicznych zagadkach i pokojach. Wg researchu: 9 pokoi + trening, PWA, bezpłatna. Ryzyko pozycjonowania i pomyłek w wyszukiwaniu, nawet bez potwierdzonej rejestracji znaku. | Opis i daty z [bazowego researchu 04.11.2026](../../../docs/RESEARCH.md), [domena](https://lockwright.app/). Dostępność strony **niepotwierdzona ponownie 05.11**. |
 | **LockWright — usługi ślusarskie** | Tożsame fonetycznie i branżowo skojarzenie; zarezerwowany @LockWright na X; **usługa fizyczna ≠ automatycznie konflikt z grą**, ale domeny/SEO/ASO mogą się mieszać. | [X](https://x.com/LockWright), źródłowy wpis 04.11; dziś bez odrębnego potwierdzenia. |
 | **LOCKWRITE** (US) | Podobieństwo wizualno-fonetyczne; w źródłach wtórnych figuruje znak dotyczący przedmiotów piśmienniczych (kl. 16), **nie potwierdza blokady gier**. | [Justia – LockWrite LLC](https://trademarks.justia.com/owners/lockwrite-llc-1501232), serial **77396378**; bieżący status i zgłoszenia trzeba sprawdzić w [USPTO](https://tmsearch.uspto.gov/). |
 | **LOCKRIGHT** (US) | Podobne brzmienie; dawne zgłoszenie kredytów hipotecznych (kl. 36). Historycznie **porzucone 04.05.2001**, wg źródła wtórnego. | Serial **75358158**; [Justia – właściciel](https://trademarks.justia.com/owners/pnc-mortgage-corp-of-america-439156/); [status historyczny](https://www.trademarkia.com/docket-report/high-five-74543569) wymaga rozstrzygnięcia w USPTO dla właściwego numeru. |
-| **Lockwright: Locksmith on Call** / **Lockwright: Emergency Locksmith** | **Sprzeczność wewnętrzna:** opis zlecenia posługuje się „Locksmith on Call”, `CLAUDE.md` używa „Emergency Locksmith”; przed ASO i filingiem ustalić jeden angielski podtytuł (mieszanie wariantów pogarsza wyszukiwanie). | [CLAUDE.md](../../../../CLAUDE.md), zlecenie T07 05.11. |
+| **Lockwright: Locksmith on Call** / **Lockwright: Emergency Locksmith** | **Sprzeczność wewnętrzna:** opis zlecenia posługuje się „Locksmith on Call”, `CLAUDE.md` używa „Emergency Locksmith”; przed ASO i filingiem ustalić jeden angielski podtytuł (mieszanie wariantów pogarsza wyszukiwanie). | [CLAUDE.md](../../../CLAUDE.md), zlecenie T07 05.11. |
 
 **Słowny screening rejestrów (sprawdzać również znaki podobne):** LOCKWRIGHT, LOCK WRIGHT, LOCKWRIGHTS, LOCKRIGHT, LOCKWRITE, LOKWRIGHT, warianty z łącznikiem i fonetyczne. Priorytet: **klasy nicejskie 9 (oprogramowanie/granie), 41 (usługi rozrywki); klasę 28 (gry/zabawki) ocenić osobno pod plan licencji/merch**. Uwzględnić znaki unijne i krajowe, Madrid (WIPO), US/UK/BE/PL, kolizje niezarejestrowane oraz podobieństwo kanałów sprzedaży.
 
@@ -146,7 +146,7 @@
 | X/TikTok/YouTube @lockwrightgame | Według 04.11 dostępne | **Niepotwierdzone dziś**; sprawdzić i ewentualnie zabezpieczyć |
 | Instagram @lockwright / @lockwrightgame | Nieustalone (ograniczenia serwisu) | Sprawdzić w zalogowanej aplikacji |
 
-Dane RDAP/stanów z 04.11: [RDAP lookup .com/.app](https://rdap.org/domain/lockwright.app), [RDAP .com](https://rdap.org/domain/lockwright.com), [NASK](https://rdap.dns.pl/domain/lockwright.pl), [DNS Belgium](https://api.dnsbelgium.be/whois/registration/lockwright.be) oraz [`docs/RESEARCH.md`](../../../../docs/RESEARCH.md). Brak ponownego odczytu 05.11 nie pozwala gwarantować dostępności nawet przez 24 godziny.
+Dane RDAP/stanów z 04.11: [RDAP lookup .com/.app](https://rdap.org/domain/lockwright.app), [RDAP .com](https://rdap.org/domain/lockwright.com), [NASK](https://rdap.dns.pl/domain/lockwright.pl), [DNS Belgium](https://api.dnsbelgium.be/whois/registration/lockwright.be) oraz [`docs/RESEARCH.md`](../../../docs/RESEARCH.md). Brak ponownego odczytu 05.11 nie pozwala gwarantować dostępności nawet przez 24 godziny.
 
 ### 5.3 Ocena ryzyka i decyzja
 
@@ -158,7 +158,7 @@ Dane RDAP/stanów z 04.11: [RDAP lookup .com/.app](https://rdap.org/domain/lockw
 ## 6. Mapa źródeł i ograniczenia
 
 - **Sklepy gier** (daty odczytu 05.11.2026, z wyjątkami wskazanymi w CSV): każdy tytuł w tabeli §2 jest linkiem do odpowiedniej karty Apple App Store, Google Play, Steam albo itch.io; dodatkowy link oznaczony [2] łączy drugą platformę. Szczegółowe adresy i indywidualne daty są w CSV.
-- **Materiały repo** (odczyt 05.11.2026): [`CLAUDE.md`](../../../../CLAUDE.md), [`docs/RESEARCH.md`](../../../../docs/RESEARCH.md) (treść 04.11), [`docs/DESIGN.md`](../../../../docs/DESIGN.md), [`docs/HUD.md`](../../../../docs/HUD.md), [`docs/styles/realizm.md`](../../../../docs/styles/realizm.md).
+- **Materiały repo** (odczyt 05.11.2026): [`CLAUDE.md`](../../../CLAUDE.md), [`docs/RESEARCH.md`](../../../docs/RESEARCH.md) (treść 04.11), [`docs/DESIGN.md`](../../../docs/DESIGN.md), [`docs/HUD.md`](../../../docs/HUD.md), [`docs/styles/realizm.md`](../../../docs/styles/realizm.md).
 - **IP i domeny** (daty wskazane w §5): EUIPO [fees](https://www.euipo.europa.eu/en/trade-marks/before-applying/fees-payments), [SME Fund 2026](https://www.euipo.europa.eu/en/sme-corner/sme-fund/2026), [Search IP](https://www.euipo.europa.eu/en/search-ip), [USPTO](https://tmsearch.uspto.gov/), [WIPO](https://branddb.wipo.int/), [TMview](https://www.tmdn.org/tmview/), [BOIP](https://www.boip.int/en/trademarks-register), [UKIPO](https://www.gov.uk/search-for-trademark), [UPRP](https://ewyszukiwarka.pue.uprp.gov.pl/). Źródła domen i social zob. §5.2.
 - **Bez audytu sprzętowego:** nie instalowano ani nie testowano aplikacji, VoiceOver/TalkBack, urządzeń dotykowych. „Brak deklaracji” oznacza wyłącznie brak potwierdzenia w analizowanych źródłach.
 - **Bez gwarancji kompletności rejestrów:** automatyczny dostęp do TMview/WIPO/UPRP/BOIP i bieżącego RDAP/mediów społecznościowych był niepełny; **nie znaleziono dowodu aktualnych zgłoszeń** to nie to samo co **potwierdzono brak zgłoszeń**.
