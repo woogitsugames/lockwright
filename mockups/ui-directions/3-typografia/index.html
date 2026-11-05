@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Czysta typografia</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+/* Direction 3 — "Czysta typografia": editorial dark. Brygada 1918 (Polish 1918 revival serif) for voice and names,
+   Schibsted Grotesk for data and controls. One accent: brass. 6-column grid, 24 px margins, 8 px baseline. No textures. */
+:root{--bg:#121110;--ink:#ece6da;--ink-2:#a69e90;--rule:#3b3731;--brass:#c9a15a;--m:24px}
+body{background:var(--bg);color:var(--ink);font-family:"Schibsted Grotesk";-webkit-font-smoothing:antialiased}
+.wrap{position:absolute;inset:0;padding:44px var(--m) 28px;display:flex;flex-direction:column}
+.serif{font-family:"Brygada 1918"}
+.meta{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);font-weight:500}
+.top{display:flex;justify-content:space-between;align-items:center;height:24px}
+.title{font-family:"Brygada 1918";font-weight:700;font-size:78px;line-height:.9;letter-spacing:-.025em;margin-top:40px;margin-left:-4px}
+.title .w{display:block;padding-left:56px}
+.sub{display:flex;align-items:center;gap:12px;margin-top:20px}
+.sub .bar{width:32px;height:2px;background:var(--brass)}
+.sub span{font-family:"Brygada 1918";font-style:italic;font-size:20px;color:var(--ink)}
+.lead{margin-top:auto;margin-bottom:32px;max-width:330px}
+.lead .meta{margin-bottom:8px}
+.lead p{font-family:"Brygada 1918";font-style:italic;font-size:31px;line-height:1.12;letter-spacing:-.01em;position:relative}
+.lead p q{quotes:none}
+.lead p .hq{position:absolute;left:-15px;color:var(--brass)}
+.menu{border-top:1px solid var(--rule)}
+.mi{display:flex;align-items:baseline;justify-content:space-between;height:56px;padding-top:15px;border-bottom:1px solid var(--rule);text-decoration:none;color:inherit}
+.mi .l{font-family:"Brygada 1918";font-size:24px;font-weight:500}
+.mi .r{font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.mi.primary{height:84px;padding-top:18px}
+.mi.primary .l{font-size:42px;font-weight:600;letter-spacing:-.015em}
+.mi.primary .r{color:var(--brass);font-size:28px;font-weight:400;align-self:center;margin-top:-14px}
+.brass,.mi .r.brass{color:var(--brass)}
+/* jobs */
+.back{display:inline-flex;align-items:center;height:48px;margin-left:-4px;padding:0 4px;font-size:15px;font-weight:600;color:var(--ink);text-decoration:none;width:max-content}
+h1{font-family:"Brygada 1918";font-weight:700;font-size:52px;line-height:1;letter-spacing:-.02em;margin-top:8px}
+.count{margin-top:12px;margin-bottom:20px}
+.grp{margin-top:10px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
+.job{display:grid;grid-template-columns:52px 1fr auto;column-gap:12px;align-items:baseline;padding:11px 0 11px;border-bottom:1px solid var(--rule);min-height:64px;position:relative}
+.job .tm{font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums;font-weight:500}
+.job .tt{font-family:"Brygada 1918";font-size:21px;font-weight:600;line-height:1.15}
+.job .ds{font-size:13px;color:var(--ink-2);margin-top:3px}
+.job .st{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.job.new::before{content:"";position:absolute;left:-24px;top:12px;bottom:12px;width:4px;background:var(--brass)}
+.job.new .st{color:var(--brass)}
+.job.open .st{color:var(--ink);letter-spacing:0;text-transform:none;font-size:14px;font-variant-numeric:tabular-nums}
+.job.done .tt{font-style:italic;font-weight:400;color:var(--ink-2)}
+.job.done .st{color:var(--ink-2);letter-spacing:0;text-transform:none;font-weight:400;font-size:13px}
+/* settings */
+.sec{margin-top:26px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+.row{display:flex;align-items:center;justify-content:space-between;min-height:56px;border-bottom:1px solid var(--rule)}
+.row .l{font-family:"Brygada 1918";font-size:20px;font-weight:500}
+.seg{display:flex;gap:4px}
+.seg span{height:48px;min-width:52px;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink-2);font-weight:500;position:relative}
+.seg span.on{color:var(--ink);font-weight:700}
+.seg span.on::after{content:"";position:absolute;left:10px;right:10px;bottom:10px;height:2px;background:var(--brass)}
+.sl{display:flex;align-items:center;gap:14px}
+.track{position:relative;width:118px;height:48px}
+.track::before{content:"";position:absolute;left:0;right:0;top:23px;height:2px;background:var(--rule)}
+.track i{position:absolute;left:0;top:23px;height:2px;background:var(--ink)}
+.track b{position:absolute;top:12px;width:4px;height:24px;background:var(--brass);margin-left:-2px}
+.sl .v{width:42px;text-align:right;font-size:15px;font-variant-numeric:tabular-nums;font-weight:600}
+.act{height:48px;display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:700;border-bottom:2px solid var(--ink);padding:0 2px;margin-top:4px}
+.hint{font-size:13px;line-height:1.45;color:var(--ink-2);padding:2px 60px 14px 0;border-bottom:1px solid var(--rule)}
+.row.sub2{min-height:48px;border-bottom:0}
+@media (orientation:landscape){
+  .wrap{padding:28px 44px 20px;display:grid;grid-template-columns:1fr 1fr;column-gap:56px}
+  .left{display:flex;flex-direction:column}
+  .title{font-size:72px;margin-top:22px}
+  .lead{margin-bottom:0}
+  .menu{align-self:end}
+  .mi{height:46px;padding-top:11px}
+  .mi.primary{height:64px;padding-top:14px}
+  .mi.primary .l{font-size:34px}
+  .lead p{font-size:26px}
+}
+</style></head><body>
+<div class="wrap" id="app"></div>
+<script src="../data.js"></script>
+<script>
+const app = document.getElementById('app'), land = matchMedia('(orientation:landscape)').matches;
+if (LW.screen === 'menu') {
+  const meta = { jobs: '2 nowe', workshop: '3 narzędzia', showcase: '14 zamków', settings: '', about: '' };
+  const menu = `<nav class="menu">${LW.menu.map(m => m.primary
+    ? `<a class="mi primary"><span class="l">${m.label}</span><span class="r">→</span></a>`
+    : `<a class="mi"><span class="l">${m.label}</span><span class="r ${m.id === 'jobs' ? 'brass' : ''}">${meta[m.id]}</span></a>`).join('')}</nav>`;
+  const left = `<div class="top"><span class="meta">Dyżur nr 14</span><span class="meta">czw 22:00 — pt 6:00</span></div>
+    <div class="title">Lock<span class="w">wright</span></div>
+    <div class="sub"><i class="bar"></i><span>Pogotowie Zamkowe</span></div>
+    <div class="lead"><div class="meta">Następne · ul. Ogrodowa 12</div><p><span class="hq">„</span>Pani Halina czeka. Rosół też.”</p></div>`;
+  app.innerHTML = land ? `<div class="left">${left}</div>${menu}` : left + menu;
+}
+if (LW.screen === 'jobs') {
+  const order = ['new', 'open', 'done'], name = { new: 'Nowe', open: 'Przyjęte', done: 'Wykonane' };
+  const row = j => `<div class="job ${j.state}"><span class="tm">${j.time}</span>
+    <div><div class="tt">${j.title}</div><div class="ds">${j.who} · ${j.what}</div></div>
+    <span class="st">${j.state === 'new' ? 'nowe' : j.state === 'done' ? 'wykonane' : j.pay}</span></div>`;
+  app.innerHTML = `<a class="back">‹ Wstecz</a><h1>Zlecenia</h1>
+    <div class="meta count">8 zleceń · 2 nowe · 4 wykonane</div>
+    ${order.map(st => `<div class="meta grp">${name[st]}</div>${LW.jobs.filter(j => j.state === st).map(row).join('')}`).join('')}`;
+  app.style.overflow = 'hidden';
+}
+if (LW.screen === 'settings') {
+  const S = LW.settings;
+  const sl = v => `<span class="sl"><span class="track"><i style="width:${v}%"></i><b style="left:${v}%"></b></span><span class="v">${v}%</span></span>`;
+  const seg = (a, b, on) => `<span class="seg"><span class="${on ? 'on' : ''}">${a}</span><span class="${on ? '' : 'on'}">${b}</span></span>`;
+  app.innerHTML = `<a class="back">‹ Wstecz</a><h1>Ustawienia</h1>
+    <div class="meta sec">Haptyka</div>
+    <div class="row"><span class="l">Haptyka</span>${seg('Wł.', 'Wył.', S.haptics)}</div>
+    <div class="row"><span class="l">Intensywność</span>${sl(S.intensity)}</div>
+    <div class="row sub2"><span class="act">Impuls próbny <span class="brass">→</span></span></div>
+    <div class="meta sec">Dźwięk</div>
+    <div class="row"><span class="l">Głośność główna</span>${sl(S.master)}</div>
+    <div class="row"><span class="l">Efekty</span>${sl(S.sfx)}</div>
+    <div class="row"><span class="l">Tło</span>${sl(S.ambient)}</div>
+    <div class="meta sec">Sterowanie</div>
+    <div class="row" style="border:0"><span class="l">Napięcie automatyczne</span>${seg('Wł.', 'Wył.', S.autoTension)}</div>
+    <div class="hint">Napięcie trzyma się samo na bezpiecznym poziomie, a ty prowadzisz wytrych jednym kciukiem.</div>
+    <div class="row"><span class="l">Język</span>${seg('Polski', 'English', true)}</div>`;
+}
+</script>
+</body></html>
