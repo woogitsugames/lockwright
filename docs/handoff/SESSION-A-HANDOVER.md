@@ -65,10 +65,7 @@ Utwórz je narzędziem `create_trigger` (fire into this session):
   - 17 poprawek DE z T40;
   - „Rozpocznij bieg” → „Zacznij dyżur”.
 
-**APK:**
-- ostatni APK u właściciela jest z runu 92 (stary);
-- po commicie `77aba45` ruszył pełny build `game-android` ze wszystkimi poprawkami, **niesprawdzony**;
-- wcześniejsze runy 93–118 były anulowane przez kolejne pushe.
+**APK:** run **131** (https://github.com/woogitsugames/lockwright/actions/runs/42100326036) jest zielony i ma VIBRATE w manifeście. AAB w artefakcie ma 55,6 MB. APK `Lockwright-debug-run131.apk` wysłany właścicielowi 2026-11-05 ok. 20:40 UTC. Czekamy na jego test (lista w §5 pkt 1).
 
 **Agenci, którzy mogli jeszcze pracować w chwili przekazania** (dokończą i wypchną):
 - **Render menu w Blenderze (proof):** `art/blender/menu_gate.py` → `art/renders/menu/` (`menu_portrait.png`, `menu_landscape.png`, `menu_pressed_example.png`, `menu_hits.json`).
