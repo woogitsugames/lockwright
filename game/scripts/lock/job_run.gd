@@ -59,6 +59,17 @@ static func tier_for(job: Dictionary) -> int:
 	return maxi(1, int(job.get("tier", 1)))
 
 
+static func job_by_id(jid: String) -> Dictionary:
+	for dir in ["res://data/jobs", "res://data/jobs_ch7"]:
+		for f in DirAccess.get_files_at(dir):
+			if not f.ends_with(".json"):
+				continue
+			var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(dir + "/" + f))
+			if j.get("id", "") == jid:
+				return j
+	return {}
+
+
 static func start(job: Dictionary) -> void:
 	current_job = job
 	mode = &"job"

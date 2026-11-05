@@ -153,6 +153,13 @@ func _all_nodes(n: Node, acc: Array = []) -> Array:
 ## loaded file in Sfx's cache, using the same key rules as sfx.gd.
 func _check_audio() -> void:
 	var sfx := _al("Sfx")
+	# lazy groups (N-35): force-load everything before comparing against the cache
+	sfx.call("_ensure_ambience")
+	sfx.call("_ensure_dir", sfx.get("UI_ROOT"))
+	sfx.call("_ensure_dir", sfx.get("REWARD_ROOT"))
+	sfx.call("_ensure_dir", sfx.get("MUSIC_ROOT"))
+	sfx.call("_ensure_dir", sfx.get("FOLEY_ROOT"))
+	sfx.call("_ensure_voices")
 	var cache: Dictionary = sfx.get("_cache")
 	var keys: Array = cache.keys()
 	var missing := []
@@ -187,15 +194,17 @@ func _check_audio() -> void:
 					if _cast_slots().has(String(sp)):  # S03 voices exist only for the fixed cast
 						speakers[String(sp)] = true
 	var vroot: String = sfx.get("VOICE_ROOT")
+	var vdir: Dictionary = sfx.get("VOICE_DIR")  # N-48: shared folders (ola/krystyna -> ola_krystyna)
 	for sp in speakers:
-		var prefix := "%s/%s/greeting_" % [vroot, sp]
-		var ok := false
-		for k in keys:
-			if String(k).begins_with(prefix):
-				ok = true
-				break
+		var base := "%s/%s/greeting" % [vroot, vdir.get(sp, sp)]
+		var ok: bool = keys.has(base + ".wav")
 		if not ok:
-			missing.append({"call": "Sfx.play_voice(&\"%s\", &\"greeting\")" % sp, "in": "job_arrival.gd", "expects": prefix + "NN.*"})
+			for k in keys:
+				if String(k).begins_with(base + "_"):
+					ok = true
+					break
+		if not ok:
+			missing.append({"call": "Sfx.play_voice(&\"%s\", &\"greeting\")" % sp, "in": "job_arrival.gd", "expects": base + ".wav or " + base + "_NN.wav"})
 	report["audio_missing"] = missing
 
 

@@ -35,7 +35,12 @@ func _ready() -> void:
 		session.create(family, seed, tier)
 	else:
 		session = FakeLockSession.create(family, seed, tier)
-	pause_button.text = I18n.t(&"lock.pause")
+	# HUD §6: pause is a leather flap with a brass snap (photo material), not a "II" label
+	pause_button.text = ""
+	var snap := load("res://assets/photo/leather_brass_snap_1k.webp")
+	if snap != null:
+		pause_button.icon = snap
+		pause_button.expand_icon = true
 	pause_button.pressed.connect(_on_pause_pressed)
 	pause_menu.visible = false
 	$UILayer/PauseMenu/VBox/Title.text = I18n.t(&"pause.title")
@@ -44,7 +49,9 @@ func _ready() -> void:
 	$UILayer/PauseMenu/VBox/QuitButton.text = I18n.t(&"pause.quit")
 	$UILayer/PauseMenu/VBox/ResumeButton.pressed.connect(_on_resume_pressed)
 	$UILayer/PauseMenu/VBox/DarkModeCheck.toggled.connect(_on_dark_mode_toggled)
-	$UILayer/PauseMenu/VBox/QuitButton.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+	$UILayer/PauseMenu/VBox/QuitButton.pressed.connect(func() -> void:
+		get_tree().paused = false
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 	_apply_safe_area()
 	_tutorial = not Save.get_value("tutorial_done", false)
 	_build_placeholder_meshes()
@@ -171,7 +178,7 @@ func _build_hud() -> void:
 	for i in 3:
 		var pocket := hud.get_node("Zwijka/Pockets/Pocket%d" % i)
 		pocket.self_modulate = Color(1, 1, 1) if i < _lives else Color(0.25, 0.25, 0.25)
-	$UILayer/Hud/Zwijka/Magnifier.pressed.connect(_on_magnifier_pressed)
+	$UILayer/Hud/Magnifier.pressed.connect(_on_magnifier_pressed)
 	_chalk = $UILayer/Chalk
 	_chalk.visible = _tutorial or Settings.get_value("reading_aid")
 	_chalk.draw.connect(_draw_chalk)
@@ -261,9 +268,11 @@ func _on_dark_mode_toggled(on: bool) -> void:
 	if on:
 		env.background_energy_multiplier = 0.05
 		env.ambient_light_energy = 0.05
+		$KeyLight.visible = false
 	else:
 		env.background_energy_multiplier = 1.0
 		env.ambient_light_energy = 0.6
+		$KeyLight.visible = true
 
 
 func _unhandled_key_input(event: InputEvent) -> void:

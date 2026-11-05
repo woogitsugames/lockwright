@@ -10,6 +10,8 @@ func _ready() -> void:
 	$VBox/Title.text = I18n.t(&"tutorial.title")
 	_refresh()
 	$VBox/StartButton.pressed.connect(_start_stage)
+	$BackButton.text = I18n.t(&"common.back")
+	$BackButton.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 
 
 # G11 master's cards: tutorial stage S1-S3 -> first card of the stage (PL/EN, clean with reading aid)

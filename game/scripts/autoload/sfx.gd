@@ -17,6 +17,8 @@ const REWARD_ROOT := "res://assets/audio/reward"
 const MUSIC_ROOT := "res://assets/audio/music"
 const FOLEY_ROOT := "res://assets/audio/foley"
 const VOICE_ROOT := "res://assets/audio/voices"
+# speaker id -> voice folder (S03 delivered one folder for the Ola/Krystyna pair)
+const VOICE_DIR := {&"ola": &"ola_krystyna", &"krystyna": &"ola_krystyna"}
 const AMBIENCES := [&"stairwell", &"workshop", &"night_timer", &"rain_window"]
 
 var _pool: Array[AudioStreamPlayer] = []
@@ -48,40 +50,76 @@ func _ready() -> void:
 		add_child(p)
 		_pool.append(p)
 		_free.append(p)
-	_preload_all()
+	_preload_lock()  # L2 lock events + loops only: cold start must not wait for music/voices (GEM3 BUG-06)
+	_preload_lazy_threaded()
 
 
-func _preload_all() -> void:
-	for event in EVENTS:
+func _preload_lock() -> void:
+	for event in EVENTS + LOOPS:
 		for material in MATERIALS:
 			for n in range(1, VARIANTS + 1):
 				var path := "%s/%s/%s_%d.wav" % [SFX_ROOT, event, material, n]
 				if ResourceLoader.exists(path):
 					_cache["%s/%s/%d" % [event, material, n]] = load(path)
-	for loop in LOOPS:
-		for material in MATERIALS:
-			for n in range(1, VARIANTS + 1):
-				var path := "%s/%s/%s_%d.wav" % [SFX_ROOT, loop, material, n]
-				if ResourceLoader.exists(path):
-					_cache["%s/%s/%d" % [loop, material, n]] = load(path)
+
+
+# ambience/music/ui/reward/foley/voices warm up off the critical path; the getters
+# fall back to a synchronous load on first use so a sound never silently drops
+func _preload_lazy_threaded() -> void:
 	for amb in AMBIENCES:
 		var apath := "%s/%s.wav" % [AMBIENCE_ROOT, amb]
 		if ResourceLoader.exists(apath):
-			_cache["amb/%s" % amb] = load(apath)
-	for dir in [UI_ROOT, REWARD_ROOT]:
+			ResourceLoader.load_threaded_request(apath)
+	for dir in [UI_ROOT, REWARD_ROOT, MUSIC_ROOT, FOLEY_ROOT]:
 		for f in DirAccess.get_files_at(dir):
-			if f.ends_with(".wav"):
-				_cache["%s/%s" % [dir, f]] = load(dir + "/" + f)
-	for f in DirAccess.get_files_at(MUSIC_ROOT):
-		if f.ends_with(".ogg"):
-			_cache["mus/%s" % f.get_basename()] = load(MUSIC_ROOT + "/" + f)
-	for f in DirAccess.get_files_at(FOLEY_ROOT):
-		if f.ends_with(".wav"):
-			_cache["%s/%s" % [FOLEY_ROOT, f]] = load(FOLEY_ROOT + "/" + f)
+			if f.ends_with(".wav") or f.ends_with(".ogg"):
+				ResourceLoader.load_threaded_request(dir + "/" + f)
 	for spk in DirAccess.get_directories_at(VOICE_ROOT):
 		for f in DirAccess.get_files_at(VOICE_ROOT + "/" + spk):
 			if f.ends_with(".wav"):
-				_cache["%s/%s/%s" % [VOICE_ROOT, spk, f]] = load(VOICE_ROOT + "/" + spk + "/" + f)
+				ResourceLoader.load_threaded_request(VOICE_ROOT + "/" + spk + "/" + f)
+
+
+var _lazy_done := {}
+
+
+func _lazy_load(path: String, key: String) -> void:
+	if _cache.has(key):
+		return
+	if ResourceLoader.load_threaded_get_status(path) == ResourceLoader.THREAD_LOAD_LOADED:
+		_cache[key] = ResourceLoader.load_threaded_get(path)
+	else:
+		_cache[key] = load(path)
+
+
+func _ensure_ambience() -> void:
+	if _lazy_done.has("amb"):
+		return
+	_lazy_done["amb"] = true
+	for amb in AMBIENCES:
+		var apath := "%s/%s.wav" % [AMBIENCE_ROOT, amb]
+		if ResourceLoader.exists(apath):
+			_lazy_load(apath, "amb/%s" % amb)
+
+
+func _ensure_dir(root: String) -> void:
+	if _lazy_done.has(root):
+		return
+	_lazy_done[root] = true
+	for f in DirAccess.get_files_at(root):
+		if f.ends_with(".wav") or f.ends_with(".ogg"):
+			var key := "mus/%s" % f.get_basename() if root == MUSIC_ROOT else "%s/%s" % [root, f]
+			_lazy_load(root + "/" + f, key)
+
+
+func _ensure_voices() -> void:
+	if _lazy_done.has(VOICE_ROOT):
+		return
+	_lazy_done[VOICE_ROOT] = true
+	for spk in DirAccess.get_directories_at(VOICE_ROOT):
+		for f in DirAccess.get_files_at(VOICE_ROOT + "/" + spk):
+			if f.ends_with(".wav"):
+				_lazy_load(VOICE_ROOT + "/" + spk + "/" + f, "%s/%s/%s" % [VOICE_ROOT, spk, f])
 
 
 func _preload_native() -> void:
@@ -185,6 +223,7 @@ func set_loop_material(id: StringName, material: StringName) -> void:
 
 func _one_shot_from(root: String, file_key: String, volume_db: float) -> void:
 	# UI/reward one-shots: random variant among the shipped files (audio/v2 part 2)
+	_ensure_dir(root)
 	var keys: Array = []
 	for k in _cache.keys():
 		if k.begins_with(root + "/"):
@@ -217,6 +256,7 @@ func play_music(name: StringName, volume_db: float = -6.0) -> void:
 	if _music_name == name and _music != null and _music.playing:
 		return
 	stop_music()
+	_ensure_dir(MUSIC_ROOT)
 	if not _cache.has("mus/%s" % name):
 		return
 	_music_name = name
@@ -256,10 +296,12 @@ func play_foley(event: StringName, volume_db: float = 0.0) -> void:
 
 
 func play_voice(speaker: StringName, kind: StringName, volume_db: float = 0.0) -> void:
-	# S03 character voices (normalized to -28 LUFS M): <root>/<speaker>/<kind>_NN.wav
+	# S03 character voices (normalized to -28 LUFS M): <root>/<speaker>/<kind>.wav or <kind>_NN.wav
+	_ensure_voices()
 	var keys: Array = []
+	var base := VOICE_ROOT + "/" + String(VOICE_DIR.get(speaker, speaker)) + "/" + String(kind)
 	for k in _cache.keys():
-		if k.begins_with(VOICE_ROOT + "/" + String(speaker) + "/" + String(kind) + "_"):
+		if k == base + ".wav" or k.begins_with(base + "_"):
 			keys.append(k)
 	if keys.is_empty() or _free.is_empty():
 		return
@@ -289,6 +331,7 @@ func play_ambience(name: StringName) -> void:
 	if _ambience_name == name and _ambience != null and _ambience.playing:
 		return
 	stop_ambience()
+	_ensure_ambience()
 	if not _cache.has("amb/%s" % name):
 		return
 	_ambience_name = name

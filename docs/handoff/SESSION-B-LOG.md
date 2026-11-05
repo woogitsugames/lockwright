@@ -286,3 +286,47 @@ Po naprawie P0 z GEM3: `contrib/incoming/magnific/selected/` → `game/assets/ph
 ## Od sesji A: decyzje właściciela (D-51) — 2026-11-05
 - **Priorytet: Android.** iOS przeprowadzamy na końcu; `game-ios` nie blokuje zamykania zadań (zasada nr 1 dotyczy teraz `game-android`, `game-tests`, `game-screens`, `qa-career`).
 - **D-24 zatwierdzona** (napięcie względne od punktu dotyku) — upewnij się, że tak działa w `input_sampler.gd` i samouczku.
+
+## 2026-11-05 — Etap 6 (SESSION-B-PROMPT-6) + dokończenie zadań 5–6 etapu 5
+
+**Zadanie 5 etapu 5 (zrzuty):** brak zielonego runu `game-screens` (kolejka runnerów zablokowana od ~11:45, wszystkie runy `in_progress`); lokalnie sandbox bez GPU/Xvfb — zrzuty z CI artefaktu dokopię do `docs/handoff/screens/` po pierwszym zielonym runie na main. Tymczasowo w repo są zrzuty z telefonu właściciela w `docs/handoff/device-tests/`.
+
+**Zadanie 6 etapu 5 + zadanie 5 etapu 6 (GEM3, N-31…N-43) — naprawione:**
+- **N-44:** `workshop_screen.gd:21` `OS.get_time()` → `Time.get_time_dict_from_system()`; warsztat bootuje headless bez błędów.
+- **N-48:** `sfx.gd play_voice` łapie teraz `<kind>.wav` i `<kind>_NN.wav` + mapa `VOICE_DIR` (ola/krystyna → `ola_krystyna`); test GUT `test_play_voice_finds_plain_file_and_shared_folder`; checkery QA (`qa/assets/check_assets.py`, `qa/bot/career.gd`) z tą samą regułą — głosy S03 12/12 dla stałej obsady.
+- **N-31/BUG-03:** `lock_scene.gd` Quit z pauzy ustawia `paused=false` przed zmianą sceny + test GUT `test_pause_quit.gd`.
+- **N-32/BUG-04:** `Chalk` w `lock.tscn` dostaje `mouse_filter=2`.
+- **N-33:** `physics_jitter_fix=0.5` w `project.godot` (rytm klatek przy 120 Hz na 60 Hz ekranie).
+- **N-35/BUG-06 (zimny start 4,4 s):** `sfx.gd` — tylko L2 zamka preloadowane synchronicznie; ambience/music/ui/reward/foley/voices przez `load_threaded_request` w tle + leniwe doładowanie przy pierwszym użyciu (żaden dźwięk nie znika).
+- **N-36/BUG-07:** puste przyciski (`AcceptButton`/`RefuseButton`/`Result`/`Reward`/`ContinueButton` w `job_arrival.tscn`, `VerifyButton`/`ContinueButton` w `job_verify.tscn`) ustawione `visible=false`.
+- **N-37/BUG-08:** w zleceniach `job.refuse*` przycisk „Otwórz dla tego klienta" ukryty w `job_verify.gd`.
+- **N-38/BUG-09:** `Magnifier` przeniesiony z `Zwijka` do `Hud` (kotwica prawy dolny róg, 96 px); tryb ciemny wygasza też `KeyLight`.
+- **N-39/BUG-10:** `AboutPanel` dostaje nieprzezroczysty `StyleBoxFlat`.
+- **N-40/BUG-11:** warsztat — narzędzia z `price: 0, unlock != start` pokazują „Nagroda za postęp” zamiast „Kup” (nowy klucz `workshop.reward`); gablota — odblokowanie wg `unlocks` z danych (wszystkie `job.*` ukończone + tier) i `RichTextLabel` z BBCode zamiast surowych `*…*` (nowy klucz `showcase.locked`); samouczek dostaje przycisk „Wstecz”.
+- **N-42/BUG-13 (część gry):** dzieci `Scroll/VBox` w ustawieniach `mouse_filter=PASS` + `scroll_deadzone=12`.
+- **N-43/BUG-14:** stały `platform/android/debug.keystore` (debugowy, hasło `android` jak w SDK) commitowany do repo i używany w CI (sekret `ANDROID_DEBUG_KEYSTORE_BASE64` ma priorytet, gdy dodany) — aktualizacje APK przez `adb install -r` zachowują zapis.
+
+**Zadanie 3 etapu 6 (AAB bez sekretów):** `release-aab` przy braku sekretów eksportuje niepodpisany AAB (`package/signed=false`) zamiast padać na `Code Signing`.
+
+**Zadanie 4 etapu 6 (N-30, rozmiar):** grafiki GPT importowane stratnie (`compress/mode=1`, q0,8 na 183 plikach), `scenes/photoreal_families/shots/` ma `.gdignore`, presety Android/iOS (+ preset release w CI) wykluczają `photoreal_families`. Zmierzone lokalnie `qa/budget/check_budget.py`: **pck 53,4 MB** (było 289 MB; próg błędu 70 MB).
+
+**Zadanie 6 etapu 6 (pauza diegetyczna, HUD §6):** klapka 48 dp w safe-area rysuje teraz mosiężną napę z `assets/photo/leather_brass_snap_1k.webp` + haftowaną krawędź `leather_stitching_strip`; w klasycznym `lock.tscn` przycisk pauzy też dostaje ikonę napy zamiast tekstu.
+
+**Zadanie 7 etapu 6 (D-48):** `game/assets/photo/` — wersje `_1k` z `art/textures/photo/` (leather_brown_worn, leather_stitching_strip, leather_brass_snap, tool_roll_pocket_empty_closeup, thumb_dent; wycinki z alfą jako WebP q85, import stratny) użyte w HUD zwijki (tło, puste kieszenie, wgniecenie kciuka); wpis w `docs/ASSETS.md`.
+
+**Zadanie 8 etapu 6 (D-50, N-49):** postać bez portretu G09 dostaje emaliowaną tabliczkę z inicjałem (baza G01 `plate_01.png` + litera) w `job_arrival.gd`.
+
+**Zadanie 9 etapu 6 (D-24):** `input_sampler.gd` — napięcie i uniesienie liczone od punktu dotyku (touch-down = 0), testy GUT `test_d24_*`.
+
+**Lokalnie zielone:** GUT 49/49, smoke OK, lock_test OK (prawdziwe lockcore), `validate.py`/`loc_qa.py`/`haptics/validate.py`/`check_sfx.py` OK, wszystkie sceny bootują headless bez błędów skryptów, bot kariery `career_complete` (19/29 zleceń + odmowy, 0 soft-locków, 0 brakujących dźwięków, 0 błędów skryptów), budżet pck 53,4 MB.
+
+**Zadanie 10 etapu 6 (APK dla właściciela) — „co sprawdzić w 10 minut”:** link do zielonego runu `game-android` dopiszę po pushu (artefakt `lockwright-android-debug`): 1) start → notka „to gra, nie kurs” → kalibracja; 2) samouczek S1–S3 (klapka pauzy = skórzana napa, Wstecz w samouczku); 3) Warsztat (nagrody zamiast „Kup za 0”, przewijanie listy gestem); 4) Zlecenia → przyjazd (tabliczka z inicjałem bez portretu, głos S03, tło G07) → weryfikacja (w odmowie brak „Otwórz”) → zamek (napięcie/uniesienie od punktu dotyku, lupa 96 px, ciemny tryb gasi światło); 5) zapłata → lista; 6) `adb install -r` kolejnego buildu zachowuje zapis (stały debug.keystore).
+
+**Tabela statusów (linki do runów dopiszę po zielonym CI na main):**
+
+| Workflow | Status |
+|---|---|
+| `game-android` | ⏳ po pushu |
+| `game-tests` | ⏳ po pushu |
+| `game-screens` | ⏳ po pushu |
+| `qa-career` | ⏳ po pushu |

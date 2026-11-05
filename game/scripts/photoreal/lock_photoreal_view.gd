@@ -20,6 +20,13 @@ const GLB := DIR + "cutaway_baked.glb"
 const PLATE := DIR + "plate/plate_1236x1650.png"
 const TRAY_FULL := DIR + "tray/tray_full.png"
 const TRAY_EMPTY := DIR + "tray/tray_empty.png"
+# D-48 photo materials (Magnific, _1k versions, lossy import — N-30)
+const PHOTO := "res://assets/photo/"
+const LEATHER_WORN := PHOTO + "leather_brown_worn_albedo_1k.jpg"
+const LEATHER_STITCH := PHOTO + "leather_stitching_strip_albedo_1k.jpg"
+const SNAP_TEX := PHOTO + "leather_brass_snap_1k.webp"
+const POCKET_EMPTY_TEX := PHOTO + "tool_roll_pocket_empty_closeup_1k.webp"
+const DENT_TEX := PHOTO + "thumb_dent_1k.webp"
 const SECTION_ASPECT := 1236.0 / 1650.0  # width / height of the plate (3:4 Cycles frame)
 const PINS_X := [5.0, 9.0, 13.0, 17.0, 21.0]
 const STACK_NAMES := ["a", "b", "c", "d", "e"]
@@ -53,6 +60,11 @@ var _bg: Control
 var _flap: Control
 var _tray_full: Texture2D
 var _tray_empty: Texture2D
+var _leather: Texture2D
+var _stitch: Texture2D
+var _snap: Texture2D
+var _pocket_empty: Texture2D
+var _dent_tex: Texture2D
 var _all_mats: Array[ShaderMaterial] = []
 var _plate_mats: Array[ShaderMaterial] = []  # receive the pins' contact occlusion
 var _occ := PackedVector4Array()
@@ -347,6 +359,11 @@ func _build_overlay() -> void:
 	_tray_empty = _tex(TRAY_EMPTY)
 	if _tray_full == null:
 		_tray_full = _tray_empty
+	_leather = _tex(LEATHER_WORN)
+	_stitch = _tex(LEATHER_STITCH)
+	_snap = _tex(SNAP_TEX)
+	_pocket_empty = _tex(POCKET_EMPTY_TEX)
+	_dent_tex = _tex(DENT_TEX)
 	# Backdrop: the roll's bare leather, out of the light (visible beside the section in landscape).
 	_bg = Control.new()
 	_bg.name = "Backdrop"
@@ -517,8 +534,16 @@ func _pose_pick(vm: Dictionary, input: Dictionary, elements: Array, default_targ
 
 # ------------------------------------------------------------------ 2D: leather roll, flap, thumb dents
 func _draw_tray() -> void:
-	if _tray_full == null:
+	# D-48: the roll's leather base comes from the photo material, not from a crop of the render
+	if _leather != null:
+		var lt := Vector2(_leather.get_size())
+		var tile := lt * 0.5
+		for y in range(0, int(_tray.size.y) + int(tile.y), int(tile.y)):
+			for x in range(0, int(_tray.size.x) + int(tile.x), int(tile.x)):
+				_tray.draw_texture_rect(_leather, Rect2(Vector2(x, y), tile), false, Color(0.85, 0.8, 0.75, 1.0))
+	elif _tray_full == null:
 		_tray.draw_rect(Rect2(Vector2.ZERO, _tray.size), Color(0.18, 0.12, 0.08))
+	if _tray_full == null:
 		return
 	# cover-fit the 1080×960 roll render into the tray rect, then draw each pocket column from the
 	# "full" or "empty" render (same light, same camera, so the seams do not show).
@@ -537,7 +562,8 @@ func _draw_tray() -> void:
 	cols.append(1.0)
 	for c in cols.size() - 1:
 		var tex := _tray_full
-		if c < TRAY_POCKETS and c >= lives:
+		var pocket_lost := c < TRAY_POCKETS and c >= lives
+		if pocket_lost:
 			tex = _tray_empty
 		var x0: float = maxf(cols[c] * img.x, origin.x)
 		var x1: float = minf(cols[c + 1] * img.x, origin.x + shown.x)
@@ -546,6 +572,11 @@ func _draw_tray() -> void:
 		var src := Rect2(Vector2(x0, origin.y), Vector2(x1 - x0, shown.y))
 		var dst := Rect2(Vector2((x0 - origin.x) * sc, 0.0), Vector2((x1 - x0) * sc, sz.y))
 		_tray.draw_texture_rect_region(tex, dst, src)
+		# D-48: lost picks leave the empty-pocket close-up photo, not a flat rect
+		if pocket_lost and _pocket_empty != null:
+			var ps := Vector2(_pocket_empty.get_size())
+			var pdst := Rect2(dst.position + Vector2(4, 4), dst.size - Vector2(8, 8))
+			_tray.draw_texture_rect_region(_pocket_empty, pdst, Rect2(Vector2.ZERO, ps), Color(1, 1, 1, 0.9))
 	# soft contact shadow where the roll meets the section edge (no line, no glow)
 	for j in 6:
 		_tray.draw_rect(Rect2(0, j * 2.0, sz.x, 2.0), Color(0, 0, 0, 0.22 * (1.0 - j / 6.0)))
@@ -559,14 +590,13 @@ func _draw_tray() -> void:
 
 func _draw_bg() -> void:
 	var sz := _bg.size
-	if _tray_empty == null:
+	# D-48: bare leather around the roll from the photo material (leather_brown_worn _1k),
+	# tiled with every other row mirrored (no visible seams), out of the light
+	if _leather == null:
 		_bg.draw_rect(Rect2(Vector2.ZERO, sz), Color(0.12, 0.08, 0.055))
 		return
-	# Bare leather between the roll's top seam and the pick imprints, tiled at render scale with
-	# every other row mirrored (no visible seams), out of the light.
-	var img := Vector2(_tray_empty.get_size())
-	var src := Rect2(Vector2(0, img.y * 0.11), Vector2(img.x, img.y * 0.12))
-	var tile := src.size / maxf(_physical_scale(), 1.0)
+	var img := Vector2(_leather.get_size())
+	var tile := img / maxf(_physical_scale(), 1.0) * 0.5
 	var rows := int(ceil(sz.y / tile.y)) + 1
 	var cols := int(ceil(sz.x / tile.x)) + 1
 	for r in rows:
@@ -575,27 +605,42 @@ func _draw_bg() -> void:
 				_bg.draw_set_transform(Vector2(c * tile.x, (r + 1) * tile.y), 0.0, Vector2(1, -1))
 			else:
 				_bg.draw_set_transform(Vector2(c * tile.x, r * tile.y), 0.0, Vector2.ONE)
-			_bg.draw_texture_rect_region(_tray_empty, Rect2(Vector2.ZERO, tile), src, Color(0.55, 0.55, 0.55))
+			_bg.draw_texture_rect(_leather, Rect2(Vector2.ZERO, tile), false, Color(0.55, 0.55, 0.55))
 	_bg.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
 
 func _dent(c: Vector2, r: float, alpha: float) -> void:
+	# D-48: the thumb hollow is the thumb_dent photo, darkened, not a stack of circles
+	if _dent_tex != null:
+		var s := r * 4.0
+		_tray.draw_texture_rect_region(_dent_tex, Rect2(c - Vector2(s, s) * 0.5, Vector2(s, s)), Rect2(Vector2.ZERO, Vector2(_dent_tex.get_size())), Color(0, 0, 0, alpha))
+		return
 	for j in 8:
 		var f := 1.0 - j / 8.0
 		_tray.draw_circle(c, r * f, Color(0, 0, 0, alpha / 8.0 * 1.6))
 
 
 func _draw_flap() -> void:
-	# Leather flap of the roll with a brass snap: cut from the roll render, no "II" icon (HUD.md §6).
+	# Leather flap of the roll with a brass snap from the photo set: no "II" icon (HUD.md §6).
+	# Touch target is FLAP_DP (48 dp) inside the safe area.
 	var s := _flap.size
-	if _tray_empty:
-		var src := Rect2(Vector2(480, 70), Vector2(110, 110))  # bare leather above the pockets
-		_flap.draw_texture_rect_region(_tray_empty, Rect2(Vector2(4, 4), s - Vector2(8, 8)), src)
-	_flap.draw_rect(Rect2(Vector2(4, s.y - 8), Vector2(s.x - 8, 4)), Color(0, 0, 0, 0.35))
-	var c := s * 0.5
-	_flap.draw_circle(c, 9.0, Color(0.20, 0.15, 0.08))
-	_flap.draw_circle(c, 7.5, Color(0.62, 0.50, 0.28))
-	_flap.draw_circle(c + Vector2(-2, -2), 3.0, Color(0.80, 0.70, 0.45))
+	if _leather != null:
+		_flap.draw_texture_rect_region(_leather, Rect2(Vector2(2, 2), s - Vector2(4, 4)), Rect2(Vector2.ZERO, Vector2(_leather.get_size()) * 0.35))
+	else:
+		_flap.draw_rect(Rect2(Vector2(2, 2), s - Vector2(4, 4)), Color(0.32, 0.2, 0.12))
+	# stitched edge of the flap (leather_stitching_strip along the bottom)
+	if _stitch != null:
+		var st := Vector2(_stitch.get_size())
+		_flap.draw_texture_rect_region(_stitch, Rect2(Vector2(2, s.y - 10), Vector2(s.x - 4, 8)), Rect2(Vector2(0, st.y * 0.45), Vector2(st.x, st.y * 0.1)))
+	# brass snap in the middle
+	if _snap != null:
+		var m := minf(s.x, s.y) * 0.62
+		_flap.draw_texture_rect(_snap, Rect2(s * 0.5 - Vector2(m, m) * 0.5, Vector2(m, m)), false)
+	else:
+		var c := s * 0.5
+		_flap.draw_circle(c, 9.0, Color(0.20, 0.15, 0.08))
+		_flap.draw_circle(c, 7.5, Color(0.62, 0.50, 0.28))
+		_flap.draw_circle(c + Vector2(-2, -2), 3.0, Color(0.80, 0.70, 0.45))
 
 
 func _on_flap_input(ev: InputEvent) -> void:

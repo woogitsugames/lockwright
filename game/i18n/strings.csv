@@ -111,7 +111,9 @@ workshop.owned,Owned,Masz,Im Besitz
 workshop.integrity,Tool condition,Integralność,Zustand
 workshop.repair_cost,Repair: {0} coins,Naprawa: {0} monet,Reparatur: {0} Münzen
 workshop.broken,Broken,Złamane,Defekt
+workshop.reward,Reward for progress,Nagroda za postęp,Belohnung für Fortschritt
 showcase.title,Showcase,Gablota,Sammlung
+showcase.locked,Locked — unlock it in the game,Zablokowane — odblokujesz w grze,Gesperrt — schalte es im Spiel frei
 showcase.source,Source,Źródło,Quelle
 showcase.unknown_source,Source not yet verified,Źródło niezweryfikowane,Quelle nicht verifiziert
 about.title,About the game,O grze,Über das Spiel

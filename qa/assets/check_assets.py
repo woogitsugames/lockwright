@@ -17,6 +17,7 @@ import argparse, json, pathlib, re, sys
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 GAME = ROOT / 'game'
 NARRATOR = {'locksmith'}  # the player character: no portrait, no voice (CLIENTS.md)
+VOICE_DIR = {'ola': 'ola_krystyna', 'krystyna': 'ola_krystyna'}  # sfx.gd VOICE_DIR (N-48): shared S03 folder
 
 
 def gd_dict(src: str, name: str) -> dict:
@@ -105,9 +106,11 @@ def main():
         slot = cast.get(s)
         avatar = GAME / 'assets/ui/gpt/cast' / slot / 'avatar.png' if slot else None
         has_portrait = bool(avatar and avatar.exists())
-        # the game's rule (sfx.gd play_voice): <VOICE_ROOT>/<speaker>/<kind>_*.wav
-        has_voice = (voice_root / s).is_dir() and any((voice_root / s).glob('greeting_*.wav'))
-        # files that exist but the rule does not find (no _NN suffix, or a shared folder named after the cast slot)
+        # the game's rule (sfx.gd play_voice, N-48): <VOICE_ROOT>/<VOICE_DIR[speaker]>/<kind>.wav or <kind>_NN.wav
+        vdir = VOICE_DIR.get(s, s)
+        vd = voice_root / vdir
+        has_voice = vd.is_dir() and bool(list(vd.glob('greeting.wav')) + list(vd.glob('greeting_*.wav')))
+        # files that exist but the rule does not find (a shared folder named after the cast slot)
         near = [d for d in (voice_root / s, voice_root / (slot or '').split('_', 1)[-1]) if d.is_dir()]
         near_file = next((str(f.relative_to(GAME)) for d in near for f in sorted(d.glob('greeting*.wav'))), '')
         cast_rows.append({'speaker': s, 'jobs': sorted(js), 'slot': slot, 'portrait': has_portrait, 'voice': has_voice,

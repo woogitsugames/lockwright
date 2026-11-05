@@ -20,3 +20,11 @@ func test_play_does_not_crash_headless() -> void:
 	Sfx.update_loop(&"tension_resistance", 0.5)
 	Sfx.end_loop(&"tension_resistance")
 	assert_true(true)
+
+func test_play_voice_finds_plain_file_and_shared_folder() -> void:
+	# N-48: <root>/<speaker>/<kind>.wav (not only <kind>_NN.wav), ola/krystyna -> ola_krystyna
+	var before: int = Sfx._free.size()
+	Sfx.play_voice(&"halina", &"greeting")
+	assert_eq(Sfx._free.size(), before - 1, "halina/greeting.wav must occupy a player from the pool")
+	Sfx.play_voice(&"ola", &"greeting")
+	assert_eq(Sfx._free.size(), before - 2, "ola must resolve to the shared ola_krystyna folder")

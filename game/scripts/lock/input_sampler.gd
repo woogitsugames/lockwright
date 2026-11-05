@@ -23,6 +23,9 @@ var _lift_raw := 0.0
 var _rotate_raw := 0.0
 var _push_raw := 0.0
 var _pick_last_pos := Vector2.ZERO
+# D-24: tension and lift are measured relative to the touch-down point, not the screen edge
+var _tension_start := Vector2.ZERO
+var _pick_start := Vector2.ZERO
 
 
 func _dead_zone() -> float:
@@ -36,10 +39,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			var half := maxf(vp.x, 412.0) * 0.5
 			if event.position.x < half:
 				_touch_tension = event.index
+				_tension_start = event.position
+				_tension_raw = 0.0
 				_update_tension(event.position)
 			else:
 				_touch_pick = event.index
+				_pick_start = event.position
 				_pick_last_pos = event.position
+				_lift_raw = 0.0
 				_update_pick(event.position)
 		else:
 			if event.index == _touch_tension:
@@ -67,8 +74,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _update_tension(pos: Vector2) -> void:
+	# D-24: drag up from the touch-down point = tension; the touch point itself is always 0
 	var h := maxf(get_viewport().get_visible_rect().size.y, 1.0)
-	var t := 1.0 - clampf(pos.y / h, 0.0, 1.0)
+	var t := clampf((_tension_start.y - pos.y) / h, 0.0, 1.0)
 	if absf(t - _tension_raw) > _dead_zone() / h:
 		_tension_raw = t
 
@@ -78,11 +86,13 @@ func _update_pick(pos: Vector2) -> void:
 	if size.x <= 0.0 or size.y <= 0.0:
 		size = Vector2(412, 915)  # headless fallback for tests
 	var half := size.x * 0.5
-	var local := Vector2((pos.x - half) / half, pos.y / size.y)
-	if absf(local.x - _depth_raw) * half > _dead_zone():
-		_depth_raw = clampf(local.x, 0.0, 1.0)
-	if absf(local.y - (1.0 - (_lift_raw + 1.0) * 0.5)) * size.y > _dead_zone():
-		_lift_raw = clampf(1.0 - 2.0 * local.y, -1.0, 1.0)
+	var local_x := (pos.x - half) / half
+	if absf(local_x - _depth_raw) * half > _dead_zone():
+		_depth_raw = clampf(local_x, 0.0, 1.0)
+	# D-24: lift is the vertical drag from the touch-down point (up = positive)
+	var l := clampf((_pick_start.y - pos.y) / (size.y * 0.5), -1.0, 1.0)
+	if absf(l - _lift_raw) * size.y * 0.5 > _dead_zone():
+		_lift_raw = l
 
 
 func _physics_process(_delta: float) -> void:

@@ -28,6 +28,11 @@ extends Control
 func _ready() -> void:
 	Sfx.play_ambience(&"rain_window")
 	SafeArea.apply(self)
+	# N-42: a scroll gesture starting on a control must scroll the list, not press the control
+	$Scroll.scroll_deadzone = 12
+	for c in $Scroll/VBox.get_children():
+		if c is Control:
+			c.mouse_filter = Control.MOUSE_FILTER_PASS
 	_refresh_texts()
 	haptics_check.button_pressed = Settings.haptics_enabled()
 	intensity_slider.value = Settings.haptics_intensity()

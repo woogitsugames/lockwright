@@ -18,7 +18,7 @@ const WORKSHOP_BG := {
 
 
 func _day_part() -> String:
-	var hour: int = OS.get_time()["hour"]
+	var hour: int = Time.get_time_dict_from_system()["hour"]
 	if hour >= 6 and hour < 12:
 		return "morning"
 	if hour >= 12 and hour < 18:
@@ -99,6 +99,11 @@ func _refresh() -> void:
 			action.text = I18n.t(&"workshop.repair")
 			action.disabled = integrity >= 100
 			action.pressed.connect(_repair.bind(tool["id"], tool.get("price", 0)))
+		elif tool.get("price", 0) == 0:
+			# reward for progress (unlock: after_t1 etc.), not a purchase
+			state_label.text = I18n.t(&"workshop.reward")
+			action.text = I18n.t(&"workshop.reward")
+			action.disabled = true
 		else:
 			action.text = I18n.t(&"workshop.buy")
 			action.disabled = Save.get_value("coins", 0) < tool.get("price", 0)

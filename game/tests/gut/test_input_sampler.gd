@@ -42,14 +42,45 @@ func test_right_thumb_release_resets_lift() -> void:
 func test_left_thumb_release_resets_tension() -> void:
 	var s := _make_sampler()
 	var sz := _size(s)
-	s._unhandled_input(_touch(1, Vector2(sz.x * 0.25, sz.y * 0.2), true))  # left zone, top = high tension
-	s._physics_process(0.016)
-	assert_gt(s.tension, 0.3)
+	s._unhandled_input(_touch(1, Vector2(sz.x * 0.25, sz.y * 0.5), true))  # left zone press
+	s._unhandled_input(_drag(1, Vector2(sz.x * 0.25, sz.y * 0.2)))       # drag up = tension (D-24)
+	for i in 8:
+		s._physics_process(0.016)
+	assert_gt(s.tension, 0.25)
 	s._unhandled_input(_touch(1, Vector2(sz.x * 0.25, sz.y * 0.2), false))
 	for i in 8:
 		s._physics_process(0.016)
 	assert_eq(s._touch_tension, -1)
 	assert_lt(s.tension, 0.02, "tension must decay to 0 after release")
+
+func test_d24_touch_point_is_zero_and_drag_is_relative() -> void:
+	var s := _make_sampler()
+	var sz := _size(s)
+	# touching near the very top of the left zone must NOT give tension by itself (D-24)
+	s._unhandled_input(_touch(0, Vector2(sz.x * 0.25, 10.0), true))
+	s._physics_process(0.016)
+	assert_lt(s.tension, 0.02, "tension at the touch-down point must be ~0 (relative, D-24)")
+	# drag up by 20% of the screen height -> tension ~0.2
+	s._unhandled_input(_drag(0, Vector2(sz.x * 0.25, 10.0 - sz.y * 0.2)))
+	for i in 8:
+		s._physics_process(0.016)
+	assert_gt(s.tension, 0.15, "dragging up from the touch point must build tension (D-24)")
+	assert_lt(s.tension, 0.45)
+
+func test_d24_lift_is_relative_to_pick_touch_point() -> void:
+	var s := _make_sampler()
+	var sz := _size(s)
+	var right_x := sz.x * 0.75
+	# press near the top of the right zone: absolute position alone must not lift
+	s._unhandled_input(_touch(0, Vector2(right_x, 10.0), true))
+	s._physics_process(0.016)
+	assert_lt(absf(s.pick_lift), 0.02, "lift at the touch-down point must be ~0 (relative, D-24)")
+	# drag up by 25% of the screen height -> lift ~0.5
+	s._unhandled_input(_drag(0, Vector2(right_x, 10.0 - sz.y * 0.25)))
+	for i in 8:
+		s._physics_process(0.016)
+	assert_gt(s.pick_lift, 0.35, "lift must follow the drag from the touch point (D-24)")
+	assert_lt(s.pick_lift, 0.7)
 
 func test_new_right_thumb_index_accepted_after_release() -> void:
 	var s := _make_sampler()

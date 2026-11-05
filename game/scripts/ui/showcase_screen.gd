@@ -41,6 +41,36 @@ func _exhibit_photo(nid: String) -> Texture2D:
 	return null
 
 
+# N-40: a note unlocks with progress — every `job.*` reference in `unlocks` must be
+# a completed job, and a tier ref T<n> needs a completed job of tier >= n.
+func _note_unlocked(note: Dictionary) -> bool:
+	var completed: Array = Save.get_value("jobs_completed", [])
+	var unlocks: String = note.get("unlocks", "")
+	if unlocks == "":
+		return true
+	var re := RegEx.new()
+	re.compile("`([^`]+)`")
+	var max_tier := 0
+	for j in completed:
+		max_tier = maxi(max_tier, JobRun.tier_for(JobRun.job_by_id(j)))
+	for m in re.search_all(unlocks):
+		var token := m.get_string(1)
+		if token.begins_with("job."):
+			if not completed.has(token):
+				return false
+		elif token.begins_with("T") and token.substr(1).is_valid_int():
+			if max_tier < token.substr(1).to_int():
+				return false
+	return true
+
+
+# markdown emphasis *...* -> BBCode [i]...[/i]
+func _bbcode(text: String) -> String:
+	var re := RegEx.new()
+	re.compile("\\*([^*]+)\\*")
+	return re.sub(text, "[i]$1[/i]", true)
+
+
 func _ready() -> void:
 	Sfx.play_ambience(&"workshop")
 	Sfx.play_music(&"menu_workshop")
@@ -54,9 +84,10 @@ func _ready() -> void:
 			continue
 		var note: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(SHOWCASE_DIR + "/" + path))
 		var nid: String = note.get("id", path.get_basename())
+		var unlocked: bool = _note_unlocked(note)
 		var card := VBoxContainer.new()
 		var photo := _exhibit_photo(nid)
-		if photo != null:
+		if photo != null and unlocked:
 			var tex := TextureRect.new()
 			tex.texture = photo
 			tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -65,11 +96,16 @@ func _ready() -> void:
 			card.add_child(tex)
 		var title := Button.new()
 		title.text = I18n.t(note.get("i18n", {}).get("title", &"showcase.title"))
+		if not unlocked:
+			title.text += " — " + I18n.t(&"showcase.locked")
+			title.disabled = true
 		title.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		title.custom_minimum_size = Vector2(0, 48)
-		var body := Label.new()
-		body.text = I18n.t(note.get("i18n", {}).get("body", &"showcase.title"))
+		var body := RichTextLabel.new()
+		body.bbcode_enabled = true
+		body.text = _bbcode(I18n.t(note.get("i18n", {}).get("body", &"showcase.title")))
 		body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		body.fit_content = true
 		body.visible = false
 		var source := Label.new()
 		var src: String = note.get("source", "")

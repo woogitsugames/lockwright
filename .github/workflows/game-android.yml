@@ -127,12 +127,16 @@ jobs:
           echo "4.7.2.stable" > android/.build_version
           find android -name "*.import" -delete
 
-      - name: Editor settings (SDK/Java paths) + debug keystore
+      - name: Editor settings (SDK/Java paths) + stable debug keystore
         run: |
           mkdir -p ~/.config/godot
           printf '[gd_resource type="EditorSettings" format=3]\n\n[resource]\nexport/android/android_sdk_path = "%s"\nexport/android/java_sdk_path = "%s"\n' "$ANDROID_HOME" "$JAVA_HOME" > ~/.config/godot/editor_settings-4.7.tres
-          keytool -genkeypair -v -keystore /tmp/debug.keystore -storepass android -alias androiddebugkey \
-            -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+          # N-43/BUG-14: one stable debug key so `adb install -r` updates keep the save
+          if [ -n "${{ secrets.ANDROID_DEBUG_KEYSTORE_BASE64 }}" ]; then
+            echo "${{ secrets.ANDROID_DEBUG_KEYSTORE_BASE64 }}" | base64 -d > /tmp/debug.keystore
+          else
+            cp platform/android/debug.keystore /tmp/debug.keystore
+          fi
           echo "GODOT_ANDROID_KEYSTORE_DEBUG_PATH=/tmp/debug.keystore" >> $GITHUB_ENV
           echo "GODOT_ANDROID_KEYSTORE_DEBUG_USER=androiddebugkey" >> $GITHUB_ENV
           echo "GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD=android" >> $GITHUB_ENV
@@ -252,11 +256,13 @@ jobs:
           VER=${TAG#v}
           CODE=$(git rev-list --count "$TAG..HEAD" 2>/dev/null || echo 1); CODE=$((1000 + CODE))
           KS_LINE=""
+          SIGNED="false"
           if [ "$HAS_KEYSTORE" = "1" ]; then
             KS_LINE="keystore/release=\"$KEYSTORE_PATH\"\nkeystore/release_user=\"$ANDROID_KEY_ALIAS\"\nkeystore/release_password=\"$ANDROID_KEYSTORE_PASSWORD\"\n"
+            SIGNED="true"
           fi
-          printf '\n[preset.3]\nname="AndroidRelease"\nplatform="Android"\nrunnable=false\nexport_filter="all_resources"\ninclude_filter="i18n/*.csv,data/haptics/**/*.json,data/haptics/**/*.ahap"\nexclude_filter="android/*,addons/gut/*,tests/*,scenes/dev/*"\nexport_path="build/lockwright-release.aab"\nencrypt_pck=false\nencrypt_directory=false\n\n[preset.3.options]\ngradle_build/use_gradle_build=true\ngradle_build/export_format=1\ngradle_build/min_sdk="30"\ngradle_build/target_sdk="36"\narchitectures/arm64-v8a=true\narchitectures/armeabi-v7a=false\narchitectures/x86=false\narchitectures/x86_64=false\nkeystore/debug=""\nkeystore/debug_user=""\nkeystore/debug_password=""\n'"$KS_LINE"'version/code='"$CODE"'\nversion/name="'"$VER"'"\npackage/unique_name="com.woogitsugames.lockwright"\npackage/name="Lockwright: Locksmith on Call"\ngraphics/opengl_debug=false\nxr_features/xr_mode=0\n' >> game/export_presets.cfg
-          echo "version: $VER (code $CODE), keystore: $HAS_KEYSTORE"
+          printf '\n[preset.3]\nname="AndroidRelease"\nplatform="Android"\nrunnable=false\nexport_filter="all_resources"\ninclude_filter="i18n/*.csv,data/haptics/**/*.json,data/haptics/**/*.ahap"\nexclude_filter="android/*,addons/gut/*,tests/*,scenes/dev/*,scenes/photoreal_families/*,assets/photoreal_families/*,scripts/photoreal_families/*"\nexport_path="build/lockwright-release.aab"\nencrypt_pck=false\nencrypt_directory=false\n\n[preset.3.options]\ngradle_build/use_gradle_build=true\ngradle_build/export_format=1\ngradle_build/min_sdk="30"\ngradle_build/target_sdk="36"\narchitectures/arm64-v8a=true\narchitectures/armeabi-v7a=false\narchitectures/x86=false\narchitectures/x86_64=false\nkeystore/debug=""\nkeystore/debug_user=""\nkeystore/debug_password=""\n'"$KS_LINE"'package/signed='"$SIGNED"'\nversion/code='"$CODE"'\nversion/name="'"$VER"'"\npackage/unique_name="com.woogitsugames.lockwright"\npackage/name="Lockwright: Locksmith on Call"\ngraphics/opengl_debug=false\nxr_features/xr_mode=0\n' >> game/export_presets.cfg
+          echo "version: $VER (code $CODE), keystore: $HAS_KEYSTORE (package/signed=$SIGNED - unsigned AAB when no release secrets)"
 
       - name: Import + export release AAB
         run: |

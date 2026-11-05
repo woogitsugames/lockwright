@@ -40,6 +40,27 @@ func _lang() -> String:
 	return "pl" if Settings.language() == "pl" else "en"
 
 
+# D-50/N-49: enamel name plate (G01) with the speaker's initial for characters without a portrait
+func _initial_plate(full_name: String) -> Control:
+	var wrap := Control.new()
+	wrap.custom_minimum_size = Vector2(48, 48)
+	var plate := TextureRect.new()
+	plate.texture = load("res://assets/ui/gpt/plates/plate_01.png")
+	plate.set_anchors_preset(Control.PRESET_FULL_RECT)
+	plate.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	plate.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	wrap.add_child(plate)
+	var initial := Label.new()
+	initial.text = full_name.strip_edges().substr(0, 1).to_upper()
+	initial.set_anchors_preset(Control.PRESET_FULL_RECT)
+	initial.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	initial.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	initial.add_theme_color_override("font_color", Color(0.12, 0.1, 0.08))
+	initial.add_theme_font_size_override("font_size", 22)
+	wrap.add_child(initial)
+	return wrap
+
+
 func _arrival_image(job: Dictionary) -> String:
 	var place: String = job.get("place", "apartment")
 	var time: String = job.get("time", "evening")
@@ -103,15 +124,19 @@ func _ready() -> void:
 		var speaker: String = lines[i]
 		var row := HBoxContainer.new()
 		var slot: String = CAST_SLOT.get(speaker, "")
+		var atex: Texture2D = null
 		if slot != "":
+			atex = load("res://assets/ui/gpt/cast/%s/avatar.png" % slot)
+		if atex != null:
 			var avatar := TextureRect.new()
-			var atex := load("res://assets/ui/gpt/cast/%s/avatar.png" % slot)
-			if atex != null:
-				avatar.texture = atex
-				avatar.custom_minimum_size = Vector2(48, 48)
-				avatar.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-				avatar.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-				row.add_child(avatar)
+			avatar.texture = atex
+			avatar.custom_minimum_size = Vector2(48, 48)
+			avatar.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			avatar.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+			row.add_child(avatar)
+		else:
+			# D-50/N-49: no portrait yet -> enamel plate with the initial (G01 plate as the base)
+			row.add_child(_initial_plate(I18n.t(&"cast.%s.name" % speaker)))
 		var plate := Label.new()
 		plate.text = I18n.t(&"cast.%s.name" % speaker)
 		plate.custom_minimum_size = Vector2(120, 48)

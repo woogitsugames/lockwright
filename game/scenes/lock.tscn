@@ -84,16 +84,18 @@ layout_mode = 2
 custom_minimum_size = Vector2(64, 96)
 layout_mode = 2
 
-[node name="Magnifier" type="Button" parent="UILayer/Hud/Zwijka"]
+[node name="Magnifier" type="Button" parent="UILayer/Hud"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 3
 anchor_left = 1.0
 anchor_right = 1.0
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = -104.0
-offset_top = 8.0
+offset_top = -104.0
 offset_right = -8.0
-offset_bottom = 104.0
+offset_bottom = -8.0
 text = "Lupa"
 
 [node name="Chalk" type="Control" parent="UILayer"]
@@ -101,6 +103,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 visible = false
 
 [node name="PauseMenu" type="Control" parent="UILayer"]

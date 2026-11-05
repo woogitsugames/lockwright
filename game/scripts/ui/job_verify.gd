@@ -24,6 +24,9 @@ func _ready() -> void:
 	_shown = mini(2, job.get("cards", ["id"]).size())  # client shows 1-2 cards first
 	_render_cards()
 	Sfx.play_ui(&"paper_turn")  # audio/v2 UI: client lays out the cards
+	# JOBS.md §2: in a refusal job the client has no right to the flat; opening is not an option
+	if String(job.get("id", "")).begins_with("job.refuse"):
+		accept_button.visible = false
 	accept_button.pressed.connect(_accept)
 	refuse_button.pressed.connect(_refuse)
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/job_arrival.tscn"))
