@@ -206,3 +206,11 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 
 ## D-58: Przyjazd do klienta jako scenka 2.5D z Blendera
 2026-11-05 · właściciel · Ekran przyjazdu zamiast statycznego kadru: krótki (2–3 s) przejazd kamery po schodach kamienicy renderowany w Cycles jak zamki (`art/blender/stairwell.py`, światło zależne od pory dnia z `place`/`time` zlecenia), zakończony kadrem drzwi z klientem w pełnej postaci. Klient to zdjęcie AI (spójne z portretem z gry) wycięte z alfą i wkomponowane w oświetlenie sceny (cień, kolor światła), z lekkim ruchem (oddech, przesunięcie ciężaru). Nad kadrem rozmowa z D-57. Najpierw proof dla 1 zlecenia (`job.wrong_floor`: Kazimierz, Teresa) do akceptacji właściciela, potem reszta. Pełne 3D postaci odrzucone (ryzyko „CG”).
+
+## D-59: Decyzje właściciela przed nocą (2026-11-05 ok. 22:00 UTC)
+2026-11-05 · właściciel ·
+- **Nowe mechanizmy:** 11 zleceń z rodzinami, których lockcore nie ma (dial_safe 2, combo 2, dimple, disc_detainer, egyptian, axial_slider, time_lock, magnetic), dostaje **nowe rodziny w lockcore** z ekranami jak piny (plan B: płyta Cycles + ruchome części, kreda, samouczek pierwszej lekcji rodziny, testy, złote powtórki, `verify_seeds`). Kolejność: najpierw rodziny z największą liczbą zleceń (dial_safe, combo), potem po jednej. Mechanizmy wymyślone, poziom encyklopedyczny (CLAUDE.md).
+- **Ślusarz zostaje mężczyzną:** jedna postać, jeden męski głos lektora, formy „pan” bez zmian.
+- **Lektor (D-57) po PL i EN:** kolejno **DE**, potem **FR i ES** (teksty FR/ES z T31–T37 do korekty przed nagraniem). Pozostałe języki z T31–T37 na razie bez decyzji.
+- **Model biznesowy (D-06):** nadal otwarty, decyzja po pierwszych testach z graczami.
+- **Noc:** sesja A pracuje autonomicznie, do 6 agentów; raport i paczki dla Magnific, ChatGPT i Mistrala rano ok. 9:00 czasu brukselskiego.
