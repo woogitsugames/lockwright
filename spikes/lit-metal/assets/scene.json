@@ -1,0 +1,226 @@
+{
+ "units": "1 Blender unit = 1 mm = 1 Godot unit",
+ "camera": {
+  "position": [
+   -45.687843322753906,
+   36.4364128112793,
+   144.2694549560547
+  ],
+  "lens_mm": 180.0,
+  "sensor_width_mm": 36.0,
+  "sensor_fit": "HORIZONTAL",
+  "hfov_deg": 11.421186274999286,
+  "target": [
+   13.5,
+   9.0,
+   -0.0
+  ]
+ },
+ "aim": [
+  13.0,
+  7.0,
+  -0.0
+ ],
+ "lights": [
+  {
+   "name": "fill",
+   "type": "AREA",
+   "position": [
+    110.0,
+    0.0,
+    90.0
+   ],
+   "direction": [
+    -0.7320389747619629,
+    0.05282755568623543,
+    -0.679211437702179
+   ],
+   "size": 90.0,
+   "energy_w": 120.0,
+   "color": [
+    0.949999988079071,
+    0.949999988079071,
+    1.0
+   ]
+  },
+  {
+   "name": "key",
+   "type": "AREA",
+   "position": [
+    -70.0,
+    120.0,
+    45.0
+   ],
+   "direction": [
+    0.5636615753173828,
+    -0.7673946619033813,
+    -0.3055996298789978
+   ],
+   "size": 50.0,
+   "energy_w": 1100.0,
+   "color": [
+    1.0,
+    0.8399999737739563,
+    0.6600000262260437
+   ]
+  },
+  {
+   "name": "rim",
+   "type": "AREA",
+   "position": [
+    20.0,
+    -90.0,
+    30.0
+   ],
+   "direction": [
+    -0.06877966970205307,
+    0.953089714050293,
+    -0.2947700321674347
+   ],
+   "size": 30.0,
+   "energy_w": 120.0,
+   "color": [
+    1.0,
+    0.949999988079071,
+    0.8999999761581421
+   ]
+  },
+  {
+   "name": "sheen",
+   "type": "AREA",
+   "position": [
+    118.37744903564453,
+    -0.7311668395996094,
+    233.3125457763672
+   ],
+   "direction": [
+    -0.4114331901073456,
+    0.030185382813215256,
+    -0.9109399318695068
+   ],
+   "size": 160.0,
+   "energy_w": 260.0,
+   "color": [
+    1.0,
+    0.9700000286102295,
+    0.9200000166893005
+   ]
+  }
+ ],
+ "world_strength": 0.25,
+ "world_hdri": "interior.exr (Blender bundled studio light)",
+ "exposure": 0.15000000596046448,
+ "view_transform": "AgX",
+ "look": "AgX - Medium High Contrast",
+ "materials": {
+  "steel": {
+   "objects": [
+    "a_drv",
+    "b_drv",
+    "c_drv",
+    "d_drv",
+    "e_drv"
+   ],
+   "size": 1024,
+   "metallic": 1.0,
+   "anisotropy": 0.0,
+   "coat": 0.0
+  },
+  "brass_k": {
+   "objects": [
+    "a_key",
+    "b_key",
+    "c_key",
+    "d_key",
+    "e_key"
+   ],
+   "size": 1024,
+   "metallic": 1.0,
+   "anisotropy": 0.0,
+   "coat": 0.0
+  },
+  "spring": {
+   "objects": [
+    "a_spr",
+    "b_spr",
+    "c_spr",
+    "d_spr",
+    "e_spr"
+   ],
+   "size": 1024,
+   "metallic": 1.0,
+   "anisotropy": 0.0,
+   "coat": 0.0
+  },
+  "recess": {
+   "objects": [
+    "back"
+   ],
+   "size": 512,
+   "metallic": 0.0,
+   "anisotropy": 0.0,
+   "coat": 0.0
+  },
+  "brass": {
+   "objects": [
+    "cap",
+    "cap.001",
+    "cap.002",
+    "cap.003",
+    "cap.004",
+    "plug"
+   ],
+   "size": 2048,
+   "metallic": 1.0,
+   "anisotropy": 0.6000000238418579,
+   "coat": 0.0
+  },
+  "nickel": {
+   "objects": [
+    "collar",
+    "housing"
+   ],
+   "size": 2048,
+   "metallic": 1.0,
+   "anisotropy": 0.699999988079071,
+   "coat": 0.0
+  },
+  "wood": {
+   "objects": [
+    "door"
+   ],
+   "size": 2048,
+   "metallic": 0.0,
+   "anisotropy": 0.0,
+   "coat": 0.25
+  },
+  "iron": {
+   "objects": [
+    "escutcheon"
+   ],
+   "size": 1024,
+   "metallic": 0.800000011920929,
+   "anisotropy": 0.0,
+   "coat": 0.0
+  },
+  "pick": {
+   "objects": [
+    "pick",
+    "wrench"
+   ],
+   "size": 1024,
+   "metallic": 1.0,
+   "anisotropy": 0.6000000238418579,
+   "coat": 0.0
+  },
+  "handle": {
+   "objects": [
+    "pick_handle"
+   ],
+   "size": 512,
+   "metallic": 0.0,
+   "anisotropy": 0.0,
+   "coat": 0.0
+  }
+ }
+}

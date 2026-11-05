@@ -21,10 +21,14 @@ extends Node
 const SCENE_JSON := "res://assets/scene.json"
 const GLB := "res://assets/cutaway_baked.glb"
 const MOVING_PINS := ["a", "b", "c", "d", "e"]
-const LIGHT_K := 60.0          # Blender area watts -> Godot omni energy (1 unit = 1 mm)
-const CARD_K := 0.0016         # Blender area watts / m^2 -> emission energy of the reflection cards
+# Physical conversion. Blender renders 1 unit as 1 m, so the area lights of cutaway.py sit ~150 "m" away and
+# give E ~ P / (pi d^2); the look of the Cycles render comes mostly from the HDRI. Godot omni (decay 2): E = energy / d^2.
+const LIGHT_K := 1.0 / PI      # Blender area watts -> Godot omni energy
+const CARD_K := 1.0 / PI       # area light radiance = P / (pi A): emission of the reflection cards
+const SKY_ROT_Y := -90.0       # Blender equirect centre (-X) vs Godot panorama centre (+Z)
 const REFLECTION_LAYER := 2    # visual layer seen only by the ReflectionProbe
 const AO_LIGHT_AFFECT := 0.7
+const PROBE_FRONT := 40.0
 const KEY_SHADOW := true
 
 var args := {}
@@ -70,6 +74,8 @@ func _ready() -> void:
 		shot_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 		shot_viewport.msaa_3d = _msaa_enum(4 if msaa == 2 else msaa)
 		shot_viewport.use_debanding = true
+		if args.get("debug", "") == "unshaded":
+			shot_viewport.debug_draw = Viewport.DEBUG_DRAW_UNSHADED
 		add_child(shot_viewport)
 		shot_viewport.add_child(root3d)
 		frames_left = int(args.get("frames", "30"))
@@ -194,6 +200,7 @@ func _build_environments() -> void:
 	env_a.sky = sky
 	env_a.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
 	env_a.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
+	env_a.sky_rotation = Vector3(0, deg_to_rad(float(args.get("skyrot", str(SKY_ROT_Y)))), 0)
 	env_a.tonemap_mode = Environment.TONE_MAPPER_AGX
 	env_a.tonemap_exposure = pow(2.0, rig["exposure"])
 	env_a.glow_enabled = false
@@ -223,7 +230,7 @@ func _build_lights_and_probe() -> void:
 		o.omni_attenuation = 2.0
 		o.light_size = L["size"] * 0.5
 		# Area lights reach metal mostly as reflections (cards below); keep a small analytic highlight.
-		o.light_specular = 0.25
+		o.light_specular = 1.0
 		o.shadow_enabled = KEY_SHADOW and L["name"] == "key"
 		o.shadow_blur = 3.0
 		o.shadow_bias = 0.03
@@ -240,7 +247,7 @@ func _build_lights_and_probe() -> void:
 		m.albedo_color = Color(0, 0, 0)
 		m.emission_enabled = true
 		m.emission = col
-		m.emission_energy_multiplier = L["energy_w"] / pow(L["size"] / 1000.0, 2) * CARD_K
+		m.emission_energy_multiplier = L["energy_w"] / pow(L["size"], 2) * CARD_K
 		m.cull_mode = BaseMaterial3D.CULL_DISABLED
 		card.material_override = m
 		card.layers = 1 << (REFLECTION_LAYER - 1)
@@ -249,8 +256,11 @@ func _build_lights_and_probe() -> void:
 		card.look_at_from_position(pos, aim, Vector3.UP)
 		lights.append(card)
 	probe = ReflectionProbe.new()
-	probe.position = aim
+	# The aim point lies on the cut plane, i.e. inside the solids: a probe there would capture the inside of
+	# the plug. Put it in front of the cut (towards the camera, +Z in glTF axes), where the reflected rays go.
+	probe.position = aim + Vector3(0, 0, PROBE_FRONT)
 	probe.size = Vector3(160, 160, 160)
+	probe.origin_offset = Vector3.ZERO
 	probe.max_distance = 1200.0
 	probe.cull_mask = 0xFFFFF
 	probe.update_mode = ReflectionProbe.UPDATE_ONCE
@@ -411,6 +421,8 @@ func _process(delta: float) -> void:
 			img.save_png(args["shot"])
 			print("SHOT ", args["shot"], " ", img.get_size())
 			get_tree().quit()
+			# Some lavapipe runs hang in RenderingDevice teardown after quit(): do not keep the CI job waiting.
+			get_tree().create_timer(3.0).timeout.connect(func() -> void: OS.kill(OS.get_process_id()))
 		return
 	frame_ms.append(delta * 1000.0)
 	var vp := get_viewport().get_viewport_rid()
