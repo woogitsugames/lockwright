@@ -128,3 +128,11 @@ Sesja A zbudowała fotorealistyczny ekran zamka na planie B (D-31, zaakceptowany
 - Błędy w danych: 7 zamków zapadkowych ma `family: lever` (powinno `warded`), `liege_bakery` → `lever_detector`; `drummer_locker` → `wafer` t1 (D-38); warunki `after_t8` nie istnieją (lockcore max t7).
 - Prośba (ekran photoreal): w `lockcore_gd` w `describe()` dodać do słownika elementu `window_lo`, `window_hi` i `pick_lift` — bez tego długość pina dolnego w `pin_pose.gd` to średnia generatora i pin może minąć linię podziału o ±0,14 skoku.
 - Zrzuty ekranu w kontenerze bez GPU działają u sesji A przez Xvfb + lavapipe (Mesa Vulkan software) i Godota 4.7.2 — komendy w sekcji „Od sesji A: ekran zamka photoreal”. Użyj tego w zadaniu 13.
+
+## 2026-11-05 — Etap 3: zadania 1–5
+
+1. **N-01…N-12:** wszystkie uwagi z adnotacjami w SESSION-C-REVIEW.md. Kluczowe: N-02 (Android nie ucina już transientów — `transientUntilMs` + skip segmentu), N-03 (plugin `lockwright-click-audio` z `spikes/audio-latency` w `platform/android/`, Sfx ładuje PCM), N-05 (tier bez cięcia, niezaimplementowane rodziny ukryte), N-06 (FNV-1a), N-07 (`BasicEnvelopeBuilder`), N-08 (.so poza gitem, artefakt CI), N-09 (tryb tutorial kończy się poprawnie, test GUT), N-11 (klamra zamiast X).
+2. **lockcore v0.4:** binding wystawia `hold_progress`/`reset_progress` + `rules_version()`; test GUT: lever/lever_detector = RULES_VERSION 2. Binarki przebudowywane w CI (linux artefakt, android w game-android, iOS xcframework w game-ios).
+3. **FEEL:** łatka §9 (JSON Merge Patch) nałożona na `haptics_patterns.json` (feel_version 2, sub_events, budget); 6 błędów FeedbackDirectora naprawionych + testy.
+4. **audio/v2:** 464 WAV podmienione, `check_sfx.py` zielony (onset ≤ 2 ms, kliki 20–140 ms z ogonem „blizgu”), wpis w ASSETS.md.
+5. **Photoreal:** `JobRun.lock_scene_path()` — pin_tumbler (i puste current_job) otwiera `scenes/photoreal/lock_photoreal.tscn` (D-37), pozostałe rodziny zostają na placeholderze.
