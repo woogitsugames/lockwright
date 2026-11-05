@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- accelerometer above 200 Hz on Android 12+ (normal permission, granted at install) -->
+    <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
+    <application>
+        <meta-data
+            android:name="org.godotengine.plugin.v2.LockwrightMeasure"
+            android:value="org.woogitsugames.lockwright.measure.LockwrightMeasure" />
+    </application>
+</manifest>

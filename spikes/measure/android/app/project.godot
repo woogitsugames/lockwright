@@ -1,0 +1,39 @@
+; LW Pomiary (D-33): owner-run latency measurement on Android. Test tool, not the game.
+config_version=5
+
+[application]
+
+config/name="LW Pomiary"
+config/description="Lockwright latency measurement (haptics, audio). Test tool, not a game."
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.7", "Mobile")
+config/icon="res://icon.png"
+boot_splash/bg_color=Color(0.1, 0.094, 0.086, 1)
+boot_splash/show_image=false
+
+[audio]
+
+driver/mix_rate=48000
+
+[display]
+
+window/size/viewport_width=412
+window/size/viewport_height=915
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/lockwright_measure/plugin.cfg")
+
+[input_devices]
+
+buffering/agile_event_flushing=true
+pointing/emulate_mouse_from_touch=false
+
+[rendering]
+
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="mobile"
+textures/vram_compression/import_etc2_astc=true

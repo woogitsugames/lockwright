@@ -1,0 +1,32 @@
+# XcodeGen spec (brew install xcodegen && xcodegen generate) -> LWMeasure.xcodeproj
+# Measurement app for the owner (D-33, spikes/measure/SPEC.md): haptic + audio latency with the phone's own sensors.
+name: LWMeasure
+options:
+  bundleIdPrefix: com.woogitsugames.lockwright
+  deploymentTarget:
+    iOS: "18.0"
+targets:
+  LWMeasure:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+      # Single source of truth for the thresholds: the shared file next to SPEC.md, bundled as a resource.
+      - path: ../thresholds.json
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.woogitsugames.lockwright.measure
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_CFBundleDisplayName: LW Pomiary
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Mikrofon służy tylko do pomiaru opóźnienia kliknięcia. Nic nie jest nagrywane ani wysyłane. / The microphone is only used to measure click latency. Nothing is recorded or sent."
+        INFOPLIST_KEY_NSMotionUsageDescription: "Czujnik ruchu służy tylko do pomiaru opóźnienia wibracji. Nic nie jest zapisywane poza wynikami w liczbach. / The motion sensor is only used to measure vibration latency. Only numeric results are saved."
+        INFOPLIST_KEY_UIFileSharingEnabled: YES
+        INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace: YES
+        MARKETING_VERSION: 0.2.0
+        CURRENT_PROJECT_VERSION: 1
+        SWIFT_VERSION: 5.0
+        TARGETED_DEVICE_FAMILY: 1
+        CODE_SIGNING_ALLOWED: NO
