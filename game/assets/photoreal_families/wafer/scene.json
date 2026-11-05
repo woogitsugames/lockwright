@@ -1,0 +1,226 @@
+{
+  "family": "wafer",
+  "units": "1 Blender unit = 1 mm = 1 Godot unit",
+  "resolution": [
+    1236,
+    1650
+  ],
+  "camera": {
+    "position": [
+      -12.83785,
+      15.53824,
+      49.94862
+    ],
+    "target": [
+      16.0,
+      -1.0,
+      -0.0
+    ],
+    "lens_mm": 70.0,
+    "sensor_width_mm": 36.0,
+    "sensor_fit": "HORIZONTAL",
+    "hfov_deg": 28.841546,
+    "fov_vertical_deg": 37.891949
+  },
+  "aim": [
+    16.0,
+    0.0,
+    -0.0
+  ],
+  "lights": [
+    {
+      "name": "fill",
+      "type": "AREA",
+      "position": [
+        115.0,
+        10.0,
+        95.0
+      ],
+      "direction": [
+        -0.71962,
+        -0.07269,
+        -0.69055
+      ],
+      "size": 90.0,
+      "energy_w": 2800.0,
+      "color": [
+        0.9599999785423279,
+        0.9700000286102295,
+        1.0
+      ]
+    },
+    {
+      "name": "key",
+      "type": "AREA",
+      "position": [
+        -80.0,
+        100.0,
+        32.0
+      ],
+      "direction": [
+        0.67479,
+        -0.7029,
+        -0.22493
+      ],
+      "size": 28.0,
+      "energy_w": 105000.0,
+      "color": [
+        1.0,
+        0.8500000238418579,
+        0.6800000071525574
+      ]
+    },
+    {
+      "name": "rim",
+      "type": "AREA",
+      "position": [
+        30.0,
+        -95.0,
+        30.0
+      ],
+      "direction": [
+        -0.13916,
+        0.9443,
+        -0.2982
+      ],
+      "size": 30.0,
+      "energy_w": 13000.0,
+      "color": [
+        1.0,
+        0.949999988079071,
+        0.8999999761581421
+      ]
+    },
+    {
+      "name": "sheen",
+      "type": "AREA",
+      "position": [
+        103.28736,
+        -51.6716,
+        239.82004
+      ],
+      "direction": [
+        -0.33572,
+        0.19104,
+        -0.92238
+      ],
+      "size": 42.0,
+      "energy_w": 3600.0,
+      "color": [
+        1.0,
+        0.9700000286102295,
+        0.9200000166893005
+      ]
+    }
+  ],
+  "exposure": 0.08,
+  "view_transform": "AgX",
+  "look": "AgX - Medium High Contrast",
+  "moving_nodes": [
+    "wafer0",
+    "wafer1",
+    "wafer2",
+    "wafer3",
+    "wafer4",
+    "wspr0",
+    "wspr1",
+    "wspr2",
+    "wspr3",
+    "wspr4",
+    "pick",
+    "pick_handle"
+  ],
+  "materials": {
+    "wafer": {
+      "objects": [
+        "wafer0",
+        "wafer1",
+        "wafer2",
+        "wafer3",
+        "wafer4"
+      ],
+      "size": 1024,
+      "metallic": 1.0
+    },
+    "spring2": {
+      "objects": [
+        "wspr0",
+        "wspr1",
+        "wspr2",
+        "wspr3",
+        "wspr4"
+      ],
+      "size": 1024,
+      "metallic": 1.0
+    },
+    "pick2": {
+      "objects": [
+        "pick"
+      ],
+      "size": 1024,
+      "metallic": 1.0
+    },
+    "handle2": {
+      "objects": [
+        "pick_handle"
+      ],
+      "size": 1024,
+      "metallic": 0.0
+    }
+  },
+  "timings": {
+    "gpu_backend": "OPTIX",
+    "plate_render_s": 9.24,
+    "mesh_prep_uv_s": 1.87,
+    "matcap_render_s": 4.06,
+    "bake_textures_s": 27.78,
+    "export_glb_s": 0.38,
+    "total_s": 43.34
+  },
+  "wafer_x": [
+    7.0,
+    12.0,
+    17.0,
+    22.0,
+    27.0
+  ],
+  "plug_r": 7.0,
+  "bore_r": 7.12,
+  "notch_z": 2.6,
+  "bridge_z": 6.2,
+  "win_top": 1.6,
+  "pick_rest_x": 17.0,
+  "pick_rest_tip": 0.42,
+  "blender_showcase_states": [
+    {
+      "state": "set",
+      "dz": 0.0,
+      "tilt": 0.0,
+      "sx": 0.0
+    },
+    {
+      "state": "set",
+      "dz": 0.0,
+      "tilt": 0.0,
+      "sx": 0.0
+    },
+    {
+      "state": "bound",
+      "dz": -0.7,
+      "tilt": 1.3,
+      "sx": 0.06
+    },
+    {
+      "state": "overset",
+      "dz": 1.4,
+      "tilt": 0.0,
+      "sx": 0.0
+    },
+    {
+      "state": "free",
+      "dz": -1.8,
+      "tilt": 0.0,
+      "sx": 0.0
+    }
+  ]
+}

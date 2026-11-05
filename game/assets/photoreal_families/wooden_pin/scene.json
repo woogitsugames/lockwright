@@ -1,0 +1,185 @@
+{
+  "family": "wooden_pin",
+  "units": "1 Blender unit = 1 mm = 1 Godot unit",
+  "resolution": [
+    1236,
+    1650
+  ],
+  "camera": {
+    "position": [
+      -125.58141,
+      107.61465,
+      444.92926
+    ],
+    "target": [
+      2.0,
+      26.0,
+      -0.0
+    ],
+    "lens_mm": 120.0,
+    "sensor_width_mm": 36.0,
+    "sensor_fit": "HORIZONTAL",
+    "hfov_deg": 17.061531,
+    "fov_vertical_deg": 22.64661
+  },
+  "aim": [
+    0.0,
+    20.0,
+    -0.0
+  ],
+  "lights": [
+    {
+      "name": "fill",
+      "type": "AREA",
+      "position": [
+        260.0,
+        0.0,
+        220.0
+      ],
+      "direction": [
+        -0.76207,
+        0.05862,
+        -0.64483
+      ],
+      "size": 160.0,
+      "energy_w": 14000.0,
+      "color": [
+        0.9200000166893005,
+        0.949999988079071,
+        1.0
+      ]
+    },
+    {
+      "name": "key",
+      "type": "AREA",
+      "position": [
+        -200.0,
+        260.0,
+        200.0
+      ],
+      "direction": [
+        0.53916,
+        -0.647,
+        -0.53916
+      ],
+      "size": 85.0,
+      "energy_w": 680000.0,
+      "color": [
+        1.0,
+        0.800000011920929,
+        0.5799999833106995
+      ]
+    },
+    {
+      "name": "rim",
+      "type": "AREA",
+      "position": [
+        80.0,
+        300.0,
+        -60.0
+      ],
+      "direction": [
+        -0.26907,
+        -0.94174,
+        0.2018
+      ],
+      "size": 80.0,
+      "energy_w": 20000.0,
+      "color": [
+        1.0,
+        0.8999999761581421,
+        0.800000011920929
+      ]
+    },
+    {
+      "name": "sheen",
+      "type": "AREA",
+      "position": [
+        92.46354,
+        -59.22289,
+        486.4758
+      ],
+      "direction": [
+        -0.18493,
+        0.13845,
+        -0.97295
+      ],
+      "size": 70.0,
+      "energy_w": 22000.0,
+      "color": [
+        1.0,
+        0.9700000286102295,
+        0.9200000166893005
+      ]
+    }
+  ],
+  "exposure": 0.05,
+  "view_transform": "AgX",
+  "look": "AgX - Medium High Contrast",
+  "moving_nodes": [
+    "bolt",
+    "pin0",
+    "pin1",
+    "pin2",
+    "lifter",
+    "peg",
+    "ferrule"
+  ],
+  "materials": {
+    "boltwood": {
+      "objects": [
+        "bolt"
+      ],
+      "size": 1024,
+      "metallic": 0.0
+    },
+    "pinwood": {
+      "objects": [
+        "pin0",
+        "pin1",
+        "pin2"
+      ],
+      "size": 1024,
+      "metallic": 0.0
+    },
+    "lifter": {
+      "objects": [
+        "lifter"
+      ],
+      "size": 1024,
+      "metallic": 0.0
+    },
+    "bronze": {
+      "objects": [
+        "peg",
+        "ferrule"
+      ],
+      "size": 1024,
+      "metallic": 1.0
+    }
+  },
+  "timings": {
+    "gpu_backend": "OPTIX",
+    "plate_render_s": 12.31,
+    "mesh_prep_uv_s": 3.23,
+    "matcap_render_s": 6.49,
+    "bake_textures_s": 33.01,
+    "export_glb_s": 0.4,
+    "total_s": 55.45
+  },
+  "pin_x": [
+    -22.0,
+    0.0,
+    22.0
+  ],
+  "pin_r": 6.0,
+  "bore_r": 6.35,
+  "wide_r": 7.9,
+  "bolt_top_z": 14.0,
+  "bolt_bot_z": -14.0,
+  "step_z": 36.0,
+  "pin_len": 34.0,
+  "collar_h": 4.0,
+  "rest_foot_z": 6.0,
+  "set_lift_mm": 8.0
+}

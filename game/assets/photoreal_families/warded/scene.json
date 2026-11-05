@@ -1,0 +1,188 @@
+{
+  "family": "warded",
+  "units": "1 Blender unit = 1 mm = 1 Godot unit",
+  "resolution": [
+    1236,
+    1650
+  ],
+  "camera": {
+    "position": [
+      -40.69349,
+      47.56438,
+      251.92856
+    ],
+    "target": [
+      0.0,
+      -3.0,
+      -5.0
+    ],
+    "lens_mm": 120.0,
+    "sensor_width_mm": 36.0,
+    "sensor_fit": "HORIZONTAL",
+    "hfov_deg": 17.061531,
+    "fov_vertical_deg": 22.64661
+  },
+  "aim": [
+    0.0,
+    0.0,
+    -5.0
+  ],
+  "lights": [
+    {
+      "name": "fill",
+      "type": "AREA",
+      "position": [
+        150.0,
+        -30.0,
+        120.0
+      ],
+      "direction": [
+        -0.75931,
+        0.15186,
+        -0.63276
+      ],
+      "size": 100.0,
+      "energy_w": 2600.0,
+      "color": [
+        0.9200000166893005,
+        0.949999988079071,
+        1.0
+      ]
+    },
+    {
+      "name": "key",
+      "type": "AREA",
+      "position": [
+        -110.0,
+        150.0,
+        120.0
+      ],
+      "direction": [
+        0.49083,
+        -0.66932,
+        -0.55776
+      ],
+      "size": 42.0,
+      "energy_w": 185000.0,
+      "color": [
+        1.0,
+        0.8199999928474426,
+        0.6200000047683716
+      ]
+    },
+    {
+      "name": "rim",
+      "type": "AREA",
+      "position": [
+        60.0,
+        -150.0,
+        -40.0
+      ],
+      "direction": [
+        -0.36297,
+        0.90743,
+        0.21173
+      ],
+      "size": 50.0,
+      "energy_w": 2500.0,
+      "color": [
+        1.0,
+        0.8999999761581421,
+        0.800000011920929
+      ]
+    },
+    {
+      "name": "sheen",
+      "type": "AREA",
+      "position": [
+        18.80682,
+        -29.79848,
+        257.60117
+      ],
+      "direction": [
+        -0.07233,
+        0.11461,
+        -0.99077
+      ],
+      "size": 36.0,
+      "energy_w": 8500.0,
+      "color": [
+        1.0,
+        0.9700000286102295,
+        0.9200000166893005
+      ]
+    }
+  ],
+  "exposure": 0.25,
+  "view_transform": "AgX",
+  "look": "AgX - Medium High Contrast",
+  "moving_nodes": [
+    "probe_tube",
+    "bit",
+    "bolt",
+    "tumbler",
+    "tstud",
+    "leaf"
+  ],
+  "materials": {
+    "probe": {
+      "objects": [
+        "probe_tube",
+        "bit"
+      ],
+      "size": 1024,
+      "metallic": 1.0
+    },
+    "bolt_iron": {
+      "objects": [
+        "bolt"
+      ],
+      "size": 1024,
+      "metallic": 0.800000011920929
+    },
+    "tumb_iron": {
+      "objects": [
+        "tumbler"
+      ],
+      "size": 1024,
+      "metallic": 0.800000011920929
+    },
+    "drillpin": {
+      "objects": [
+        "tstud"
+      ],
+      "size": 1024,
+      "metallic": 1.0
+    },
+    "leaf": {
+      "objects": [
+        "leaf"
+      ],
+      "size": 1024,
+      "metallic": 1.0
+    }
+  },
+  "timings": {
+    "gpu_backend": "OPTIX",
+    "plate_render_s": 21.61,
+    "mesh_prep_uv_s": 1.32,
+    "matcap_render_s": 9.62,
+    "bake_textures_s": 31.5,
+    "export_glb_s": 0.4,
+    "total_s": 64.46
+  },
+  "pin_pivot": [
+    0.0,
+    -8.0,
+    -0.0
+  ],
+  "tumbler_pivot": [
+    -24.0,
+    28.799999237060547,
+    -0.0
+  ],
+  "bit_deg_rest": 76.0,
+  "lift_rest_mm": 1.38,
+  "stud_x_rest": -7.2,
+  "bolt_notch_z": 23.400000000000002
+}

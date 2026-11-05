@@ -1,0 +1,248 @@
+{
+  "family": "lever",
+  "units": "1 Blender unit = 1 mm = 1 Godot unit",
+  "resolution": [
+    1236,
+    1650
+  ],
+  "camera": {
+    "position": [
+      98.81238,
+      -51.44272,
+      110.56825
+    ],
+    "target": [
+      1.0,
+      -2.0,
+      -6.0
+    ],
+    "lens_mm": 120.0,
+    "sensor_width_mm": 36.0,
+    "sensor_fit": "HORIZONTAL",
+    "hfov_deg": 17.061531,
+    "fov_vertical_deg": 22.64661
+  },
+  "aim": [
+    -2.0,
+    0.0,
+    -6.0
+  ],
+  "lights": [
+    {
+      "name": "fill",
+      "type": "AREA",
+      "position": [
+        140.0,
+        -20.0,
+        110.0
+      ],
+      "direction": [
+        -0.76988,
+        0.10843,
+        -0.62891
+      ],
+      "size": 90.0,
+      "energy_w": 30000.0,
+      "color": [
+        0.9399999976158142,
+        0.9599999785423279,
+        1.0
+      ]
+    },
+    {
+      "name": "key",
+      "type": "AREA",
+      "position": [
+        -90.0,
+        140.0,
+        110.0
+      ],
+      "direction": [
+        0.43566,
+        -0.6931,
+        -0.57429
+      ],
+      "size": 44.0,
+      "energy_w": 155000.0,
+      "color": [
+        1.0,
+        0.8399999737739563,
+        0.6600000262260437
+      ]
+    },
+    {
+      "name": "kick",
+      "type": "AREA",
+      "position": [
+        110.0,
+        -30.0,
+        90.0
+      ],
+      "direction": [
+        -0.74403,
+        0.19929,
+        -0.63774
+      ],
+      "size": 28.0,
+      "energy_w": 28000.0,
+      "color": [
+        1.0,
+        0.949999988079071,
+        0.8799999952316284
+      ]
+    },
+    {
+      "name": "rim",
+      "type": "AREA",
+      "position": [
+        40.0,
+        -130.0,
+        20.0
+      ],
+      "direction": [
+        -0.30201,
+        0.93479,
+        -0.18696
+      ],
+      "size": 40.0,
+      "energy_w": 24000.0,
+      "color": [
+        1.0,
+        0.949999988079071,
+        0.8999999761581421
+      ]
+    },
+    {
+      "name": "sheen",
+      "type": "AREA",
+      "position": [
+        -177.49303,
+        100.84472,
+        161.01732
+      ],
+      "direction": [
+        0.68267,
+        -0.38786,
+        -0.6193
+      ],
+      "size": 36.0,
+      "energy_w": 9500.0,
+      "color": [
+        1.0,
+        0.9700000286102295,
+        0.9200000166893005
+      ]
+    }
+  ],
+  "exposure": 0.0,
+  "view_transform": "AgX",
+  "look": "AgX - Medium High Contrast",
+  "moving_nodes": [
+    "lever0",
+    "lever1",
+    "lever2",
+    "spring0",
+    "spring1",
+    "spring2",
+    "rivet0",
+    "rivet1",
+    "rivet2",
+    "detector",
+    "stump",
+    "lifter",
+    "tension",
+    "tension_shaft"
+  ],
+  "materials": {
+    "lever_brass": {
+      "objects": [
+        "lever0",
+        "lever1",
+        "lever2"
+      ],
+      "size": 1024,
+      "metallic": 1.0
+    },
+    "blued": {
+      "objects": [
+        "spring0",
+        "spring1",
+        "spring2",
+        "detector"
+      ],
+      "size": 1024,
+      "metallic": 1.0
+    },
+    "stump": {
+      "objects": [
+        "rivet0",
+        "rivet1",
+        "rivet2",
+        "stump"
+      ],
+      "size": 1024,
+      "metallic": 1.0
+    },
+    "lifter": {
+      "objects": [
+        "lifter"
+      ],
+      "size": 1024,
+      "metallic": 1.0
+    },
+    "crank": {
+      "objects": [
+        "tension",
+        "tension_shaft"
+      ],
+      "size": 1024,
+      "metallic": 1.0
+    }
+  },
+  "timings": {
+    "gpu_backend": "OPTIX",
+    "plate_render_s": 27.59,
+    "mesh_prep_uv_s": 1.67,
+    "matcap_render_s": 11.34,
+    "bake_textures_s": 58.19,
+    "export_glb_s": 0.38,
+    "total_s": 99.17
+  },
+  "pivot": [
+    -22.0,
+    4.0,
+    -0.0
+  ],
+  "stump_x": 7.7,
+  "stump_r": 2.2,
+  "lever_specs": [
+    {
+      "y0": 0.9,
+      "need": 3.5,
+      "rest_lift": 3.5,
+      "belly_z": -11.2
+    },
+    {
+      "y0": 4.1,
+      "need": 2.5,
+      "rest_lift": 2.5,
+      "belly_z": -12.0
+    },
+    {
+      "y0": 7.3,
+      "need": 3.0,
+      "rest_lift": 3.0,
+      "belly_z": -11.6
+    }
+  ],
+  "detector_pivot": [
+    10.2,
+    5.8,
+    -8.55
+  ],
+  "keyhole_pivot": [
+    -3.0,
+    -18.0,
+    -11.2
+  ]
+}
