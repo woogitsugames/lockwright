@@ -53,6 +53,19 @@ jobs:
           mkdir -p ../../../game/addons/lockwright_haptics/ios
           cp bin/liblockwright_haptics.ios.template_release.arm64.a ../../../game/addons/lockwright_haptics/ios/liblockwright_haptics.a
 
+      - name: Build lockcore_gd xcframeworks (iOS)
+        run: |
+          cd game/addons/lockcore_gd
+          GODOT_CPP=$GITHUB_WORKSPACE/godot-cpp scons platform=ios target=template_release arch=arm64 custom_api_file=$GITHUB_WORKSPACE/godot-cpp/gdextension/extension_api-4-7.json -j8
+          GODOT_CPP=$GITHUB_WORKSPACE/godot-cpp scons platform=ios target=template_debug arch=arm64 custom_api_file=$GITHUB_WORKSPACE/godot-cpp/gdextension/extension_api-4-7.json -j8
+          mkdir -p bin
+          xcodebuild -create-xcframework \
+            -library bin/liblockcore_gd.ios.template_release.so \
+            -output bin/liblockcore_gd.ios.release.xcframework
+          xcodebuild -create-xcframework \
+            -library bin/liblockcore_gd.ios.template_debug.so \
+            -output bin/liblockcore_gd.ios.debug.xcframework
+
       - name: Import + export Godot project to Xcode (unsigned)
         env:
           CODE_SIGNING_ALLOWED: 'NO'
