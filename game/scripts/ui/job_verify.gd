@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func _start_lock() -> void:
 	# map the job onto a lockcore family + tier and enter the lock scene
-	get_tree().change_scene_to_file("res://scenes/lock.tscn")
+	get_tree().change_scene_to_file(JobRun.lock_scene_path())
 
 
 func _refuse() -> void:

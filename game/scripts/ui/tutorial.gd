@@ -26,4 +26,4 @@ func _start_stage() -> void:
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		return
 	JobRun.start_tutorial(JobRun.tutorial_stage)
-	get_tree().change_scene_to_file("res://scenes/lock.tscn")
+	get_tree().change_scene_to_file(JobRun.lock_scene_path())

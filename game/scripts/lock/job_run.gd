@@ -31,6 +31,14 @@ static func is_playable(job: Dictionary) -> bool:
 	return IMPLEMENTED.has(family_for(job))
 
 
+static func lock_scene_path() -> String:
+	# N-10/D-37: pin_tumbler gets the photoreal screen (plan B); other families stay
+	# on the placeholder view until session A ships their scenes
+	if family_for(current_job) == &"pin_tumbler" or current_job.is_empty():
+		return "res://scenes/photoreal/lock_photoreal.tscn"
+	return "res://scenes/lock.tscn"
+
+
 static func fnv1a64(s: String) -> int:
 	# N-06: FNV-1a 64 like lockcore, engine-independent
 	var h := -3750763034362895579  # FNV-1a offset basis 0xcbf29ce484222325 as signed int64

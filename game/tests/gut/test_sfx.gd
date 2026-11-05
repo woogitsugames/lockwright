@@ -8,7 +8,8 @@ const MATERIALS := ["brass", "steel", "iron", "wood"]
 func test_every_event_has_4_materials() -> void:
 	for e in EVENTS + LOOPS:
 		for m in MATERIALS:
-			for n in range(1, 5):
+			var nv := 4 if e in LOOPS else 6
+			for n in range(1, nv + 1):
 				var path := "res://assets/audio/sfx/%s/%s_%d.wav" % [e, m, n]
 				assert_true(ResourceLoader.exists(path), "missing sample: %s" % path)
 
