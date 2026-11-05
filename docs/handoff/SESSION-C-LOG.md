@@ -71,3 +71,12 @@ Pytania do właściciela: nazwa EN w sklepie (`store/listing.md` §0), akceptacj
 ## 2026-11-05 02:10 — kontrola godzinna
 - Repo czyste, wszystkie workflowy sesji C zielone (spike-determinism, spike-audio, spike-haptics z ios-godot, spike-lit-metal run 41947734926).
 - Wskazówka dla właściciela `platform/ios` (bez zmian w cudzym kodzie): `game-ios` pada od runu 14 do 20 na kompilacji Core Haptics (ObjC++). Działający wzorzec na Xcode 26.6 / SDK iOS 26.5 jest w `spikes/haptics-latency/godot-ios/src/haptics_probe_ios.mm` (selektory `createAdvancedPlayerWithPattern:error:`, `startAtTime:error:`, `sendParameters:atTime:error:`, stałe `CHHapticEventTypeHapticTransient`, `CHHapticDynamicParameterIDHapticIntensityControl`, ARC przez `-fobjc-arc`) oraz w jobie `ios-godot` w `.github/workflows/spike-haptics.yml` (godot-cpp z API zrzuconym przez `godot --dump-extension-api`, osobne xcframework dla modułu i godot-cpp).
+
+# Etap 2 (`SESSION-C-PROMPT-2.md`)
+
+## 2026-11-05 08:15 — postęp godzinny
+- **Zadanie 1 (D-33, pomiary):** aplikacja „LW Pomiary” na Androida (Godot + wtyczka Kotlin: akcelerometr do 400+ Hz z `HIGH_SAMPLING_RATE_SENSORS`, mikrofon jako pętla zwrotna, kliknięcie Oboe vs `AudioStreamPlayer`, 20 stuknięć) i na iOS (SwiftUI: Core Haptics, Core Motion, AVAudioEngine). Kreator po polsku, werdykt słowami i kształtem, JSON zapisywany i udostępniany. CI `spike-measure` run [41989748836](https://github.com/woogitsugames/lockwright/actions/runs/41989748836): **android i ios zielone** (artefakty `measure-android-apk`, `measure-ios-unsigned`). Instrukcja: `docs/handoff/POMIARY.md`; skrypt `spikes/measure/tools/ingest.py` dopisuje tabelę do TECH.md (sekcja 8, znaczniki `MEASURE:BEGIN/END`).
+- **Zadanie 2 (sklep):** nazwa EN „Lockwright: Locksmith on Call” (D-32), słowa kluczowe EN 99 B, `check_lengths.py` ALL OK; szablon zrzutów iPhone 6,9" / 6,5" / Android z renderami 2160 px, podpisy bez obietnic spoza gry, arkusze `contact_pl/en.png`; `out/` poza repo (44 MB). Manifest prywatności: CI wypisze `PrivacyInfo.xcprivacy` generowany przez Godota (weryfikacja w toku).
+- **Zadanie 3 (audio v2):** w toku (subagent).
+- **Zadanie 5 (drugi przegląd):** sekcja w `SESSION-C-REVIEW.md` — GUT 34/34 i smoke OK lokalnie; **N-01 High: wszystkie 3 workflowy gry mają niepoprawny YAML od 5bddbd3 i nie uruchamiają się**; N-02 High: na Androidzie segment oporu ucina transient; N-03…N-08.
+- Zadania 4 i 6: czekają (4 — na scenę `game/scenes/photoreal/`).
