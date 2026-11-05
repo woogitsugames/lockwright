@@ -11,5 +11,17 @@
     "title": "job.student_dorm.title",
     "client": "job.student_dorm.client",
     "situation": "job.student_dorm.situation"
-  }
+  },
+  "lines": [
+    "zuzanna",
+    "edek",
+    "locksmith",
+    "zuzanna"
+  ],
+  "cards": [
+    "id",
+    "witness",
+    "letter"
+  ],
+  "threshold": 2
 }

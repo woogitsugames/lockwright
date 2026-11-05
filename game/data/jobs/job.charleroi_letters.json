@@ -11,5 +11,15 @@
     "title": "job.charleroi_letters.title",
     "client": "job.charleroi_letters.client",
     "situation": "job.charleroi_letters.situation"
-  }
+  },
+  "lines": [
+    "ola",
+    "martine",
+    "ola",
+    "locksmith"
+  ],
+  "cards": [
+    "letter"
+  ],
+  "threshold": 2
 }

@@ -11,5 +11,16 @@
     "title": "job.bike_interview.title",
     "client": "job.bike_interview.client",
     "situation": "job.bike_interview.situation"
-  }
+  },
+  "lines": [
+    "kuba",
+    "locksmith",
+    "kuba",
+    "locksmith"
+  ],
+  "cards": [
+    "photo",
+    "receipt"
+  ],
+  "threshold": 3
 }

@@ -11,5 +11,15 @@
     "title": "job.swiatniki_journeyman_padlock.title",
     "client": "job.swiatniki_journeyman_padlock.client",
     "situation": "job.swiatniki_journeyman_padlock.situation"
-  }
+  },
+  "lines": [
+    "wladyslaw",
+    "locksmith",
+    "wladyslaw",
+    "wladyslaw"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2
 }

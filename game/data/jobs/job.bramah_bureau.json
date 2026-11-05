@@ -11,5 +11,16 @@
     "title": "job.bramah_bureau.title",
     "client": "job.bramah_bureau.client",
     "situation": "job.bramah_bureau.situation"
-  }
+  },
+  "lines": [
+    "gosia",
+    "locksmith",
+    "gosia",
+    "locksmith"
+  ],
+  "cards": [
+    "deed",
+    "invoice"
+  ],
+  "threshold": 2
 }

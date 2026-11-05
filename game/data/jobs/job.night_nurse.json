@@ -11,5 +11,16 @@
     "title": "job.night_nurse.title",
     "client": "job.night_nurse.client",
     "situation": "job.night_nurse.situation"
-  }
+  },
+  "lines": [
+    "agnieszka",
+    "roman",
+    "locksmith",
+    "agnieszka"
+  ],
+  "cards": [
+    "id",
+    "manager"
+  ],
+  "threshold": 2
 }

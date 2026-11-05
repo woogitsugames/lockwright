@@ -11,5 +11,20 @@
     "title": "job.refuse_ex_partner.title",
     "client": "job.refuse_ex_partner.client",
     "situation": "job.refuse_ex_partner.situation"
-  }
+  },
+  "lines": [
+    "darek",
+    "locksmith",
+    "darek",
+    "locksmith"
+  ],
+  "after": [
+    "lena",
+    "stefan"
+  ],
+  "cards": [
+    "id",
+    "witness"
+  ],
+  "threshold": 2
 }

@@ -11,5 +11,16 @@
     "title": "job.uncle_safe_heirs.title",
     "client": "job.uncle_safe_heirs.client",
     "situation": "job.uncle_safe_heirs.situation"
-  }
+  },
+  "lines": [
+    "marek",
+    "locksmith",
+    "piotr",
+    "ewa"
+  ],
+  "cards": [
+    "deed",
+    "inheritance"
+  ],
+  "threshold": 2
 }

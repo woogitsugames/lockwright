@@ -11,5 +11,16 @@
     "title": "job.allotment_shed.title",
     "client": "job.allotment_shed.client",
     "situation": "job.allotment_shed.situation"
-  }
+  },
+  "lines": [
+    "zbyszek",
+    "locksmith",
+    "waldek",
+    "zbyszek"
+  ],
+  "cards": [
+    "id",
+    "witness"
+  ],
+  "threshold": 3
 }

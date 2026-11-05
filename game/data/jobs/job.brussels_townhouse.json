@@ -11,5 +11,16 @@
     "title": "job.brussels_townhouse.title",
     "client": "job.brussels_townhouse.client",
     "situation": "job.brussels_townhouse.situation"
-  }
+  },
+  "lines": [
+    "magda",
+    "jacques",
+    "locksmith",
+    "magda"
+  ],
+  "cards": [
+    "witness",
+    "lease"
+  ],
+  "threshold": 2
 }

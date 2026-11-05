@@ -11,5 +11,17 @@
     "title": "job.kiosk_shutter.title",
     "client": "job.kiosk_shutter.client",
     "situation": "job.kiosk_shutter.situation"
-  }
+  },
+  "lines": [
+    "stefan",
+    "locksmith",
+    "stefan",
+    "krysia"
+  ],
+  "cards": [
+    "witness",
+    "letter",
+    "photo"
+  ],
+  "threshold": 3
 }

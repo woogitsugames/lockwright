@@ -11,5 +11,15 @@
     "title": "job.drummer_locker.title",
     "client": "job.drummer_locker.client",
     "situation": "job.drummer_locker.situation"
-  }
+  },
+  "lines": [
+    "iga",
+    "hall_manager",
+    "locksmith",
+    "iga"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2
 }

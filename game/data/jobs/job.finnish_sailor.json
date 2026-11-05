@@ -11,5 +11,15 @@
     "title": "job.finnish_sailor.title",
     "client": "job.finnish_sailor.client",
     "situation": "job.finnish_sailor.situation"
-  }
+  },
+  "lines": [
+    "aino",
+    "captain",
+    "locksmith",
+    "aino"
+  ],
+  "cards": [
+    "manager"
+  ],
+  "threshold": 2
 }

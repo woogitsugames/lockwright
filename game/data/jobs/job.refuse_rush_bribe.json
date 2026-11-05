@@ -11,5 +11,19 @@
     "title": "job.refuse_rush_bribe.title",
     "client": "job.refuse_rush_bribe.client",
     "situation": "job.refuse_rush_bribe.situation"
-  }
+  },
+  "lines": [
+    "stranger",
+    "locksmith",
+    "stranger",
+    "locksmith"
+  ],
+  "after": [
+    "lena",
+    "stefan"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2
 }

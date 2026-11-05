@@ -36,6 +36,9 @@ layout_mode = 2
 autowrap_mode = 2
 size_flags_vertical = 3
 
+[node name="Lines" type="VBoxContainer" parent="VBox"]
+layout_mode = 2
+
 [node name="VerifyButton" type="Button" parent="VBox"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2

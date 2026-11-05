@@ -11,5 +11,16 @@
     "title": "job.krakow_tenement_gate.title",
     "client": "job.krakow_tenement_gate.client",
     "situation": "job.krakow_tenement_gate.situation"
-  }
+  },
+  "lines": [
+    "wanda",
+    "locksmith",
+    "zuzanna",
+    "wanda"
+  ],
+  "cards": [
+    "manager",
+    "resolution"
+  ],
+  "threshold": 2
 }

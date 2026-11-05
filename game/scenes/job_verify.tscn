@@ -48,9 +48,13 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="Cards" type="Label" parent="VBox"]
+[node name="Hint" type="Label" parent="VBox"]
 layout_mode = 2
 autowrap_mode = 2
+
+[node name="Cards" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
 
 [node name="Result" type="Label" parent="VBox"]
 layout_mode = 2

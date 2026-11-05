@@ -11,5 +11,16 @@
     "title": "job.ghent_beguinage.title",
     "client": "job.ghent_beguinage.client",
     "situation": "job.ghent_beguinage.situation"
-  }
+  },
+  "lines": [
+    "pieter",
+    "locksmith",
+    "pieter",
+    "locksmith"
+  ],
+  "cards": [
+    "manager",
+    "institution"
+  ],
+  "threshold": 2
 }

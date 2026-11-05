@@ -11,5 +11,16 @@
     "title": "job.krakow_antiquarian.title",
     "client": "job.krakow_antiquarian.client",
     "situation": "job.krakow_antiquarian.situation"
-  }
+  },
+  "lines": [
+    "leopold",
+    "leopold",
+    "locksmith",
+    "leopold"
+  ],
+  "cards": [
+    "witness",
+    "lease"
+  ],
+  "threshold": 2
 }

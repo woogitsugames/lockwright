@@ -11,5 +11,15 @@
     "title": "job.museum_time_lock.title",
     "client": "job.museum_time_lock.client",
     "situation": "job.museum_time_lock.situation"
-  }
+  },
+  "lines": [
+    "rygiel",
+    "locksmith",
+    "rygiel",
+    "zuzanna"
+  ],
+  "cards": [
+    "institution"
+  ],
+  "threshold": 2
 }

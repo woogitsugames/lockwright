@@ -50,7 +50,7 @@ job.liege_bakery.title,The Bakery at Four,Piekarnia o czwartej
 job.museum_time_lock.client,"Dr Anna Rygiel, curator at the Port Museum of Technology.","dr Anna Rygiel, kuratorka Muzeum Techniki w porcie. Nosi rękawiczki bawełniane nawet do kawy."
 job.museum_time_lock.situation,The time lock guarding the vault.,"Muzeum dostało drzwi skarbca z dawnej kasy oszczędności z zamkiem czasowym. Mechanizm zegarowy stanął w pozycji „zamknięte” i nie da się otworzyć wnętrza z tabliczką dawnego banku, potrzebną na wystawę."
 job.museum_time_lock.title,The Clock That Guards the Vault,"Zegar, który pilnuje skarbca"
-job.newlyweds_4am.client,"Ola and Bartek; she in a crooked veil, he with the bouquet.","Ola i Bartek, ona w welonie przekrzywionym na bok, on z bukietem pod pachą."
+job.newlyweds_4am.client,"Kasia and Bartek; she in a crooked veil, he with the bouquet.","Kasia i Bartek, ona w welonie przekrzywionym na bok, on z bukietem pod pachą."
 job.newlyweds_4am.situation,"The keys are in the maid of honour's bag, which drove off to Kalisz.","Klucze zostały w torebce świadkowej, która pojechała z ciocią do Kalisza. Na wycieraczce stoi pudło z tortem, a oboje po oczepinach nie mają już siły na nic."
 job.newlyweds_4am.title,"4 a.m., After the Wedding",Czwarta nad ranem po weselu
 job.night_nurse.client,"Agnieszka, 45, internal-medicine nurse, jacket over her uniform.","Agnieszka, 45 lat, pielęgniarka z oddziału wewnętrznego, w kurtce narzuconej na uniform."
@@ -209,3 +209,210 @@ showcase.hobbs_westminster.source,"Tomlinson/Hobbs 1853, rozdz. o sporze z 1851 
 showcase.roman_ring_key.source,"V&A, pierścień z kluczem, rzymski, III w. lub później — https://api.vam.ac.uk/v2/object/O122113 · London Museum, rzymski pierścień-klucz — https://www.londonmuseum.org.uk/collections/v/object-7358/key-ring-key
 - **Pewność:** wysoka (opis muzealny); interpretacja „po ślubie” jest hipotezą muzeum i tak ją przedstawiamy.","V&A, pierścień z kluczem, rzymski, III w. lub później — https://api.vam.ac.uk/v2/object/O122113 · London Museum, rzymski pierścień-klucz — https://www.londonmuseum.org.uk/collections/v/object-7358/key-ring-key
 - **Pewność:** wysoka (opis muzealny); interpretacja „po ślubie” jest hipotezą muzeum i tak ją przedstawiamy."
+cast.agnieszka.name,Agnieszka,Agnieszka
+cast.aino.name,Aino,Aino
+cast.bartek.name,Bartek,Bartek
+cast.bride.name,The bride,Panna młoda
+cast.captain.name,Captain,Kapitan
+cast.claimant.name,Woman at the door,Kobieta przy drzwiach
+cast.darek.name,Darek,Darek
+cast.edek.name,"Mr Edek, porter","Pan Edek, portier"
+cast.ewa.name,Ewa,Ewa
+cast.gosia.name,Gosia,Gosia
+cast.halina.name,Mrs Halina,Pani Halina
+cast.hall_manager.name,Rehearsal room manager,Kierownik sali
+cast.hania.name,Hania,Hania
+cast.headteacher.name,Headteacher,Dyrektorka szkoły
+cast.iga.name,Iga,Iga
+cast.irena.name,Mrs Irena,Pani Irena
+cast.jacques.name,Monsieur Jacques,Monsieur Jacques
+cast.jadwiga.name,Mrs Jadwiga,Pani Jadwiga
+cast.kazimierz.name,Mr Kazimierz,Pan Kazimierz
+cast.krysia.name,Mrs Krysia,Pani Krysia
+cast.krystyna.name,Mrs Krystyna,Pani Krystyna
+cast.kuba.name,Kuba,Kuba
+cast.lena.name,Officer Lena Sowa,Aspirant Lena Sowa
+cast.leopold.name,Mr Leopold,Pan Leopold
+cast.locksmith.name,Locksmith,Ślusarz
+cast.magda.name,Magda,Magda
+cast.marek.name,Marek,Marek
+cast.marta.name,Marta,Marta
+cast.martine.name,Madame Martine,Pani Martine
+cast.mietek.name,Mr Mietek,Pan Mietek
+cast.nadia.name,Nadia,Nadia
+cast.neighbour_lucyna.name,Mrs Lucyna's neighbour,Sąsiadka pani Lucyny
+cast.neighbour_robe.name,Neighbour in a robe,Sąsiad w szlafroku
+cast.ola.name,Ola,Ola
+cast.pieter.name,Brother Pieter,Brat Pieter
+cast.piotr.name,Piotr,Piotr
+cast.renata.name,Mrs Renata,Pani Renata
+cast.roman.name,"Mr Roman, building manager","Pan Roman, administrator"
+cast.rygiel.name,Dr Anna Rygiel,Dr Anna Rygiel
+cast.stefan.name,Mr Stefan,Pan Stefan
+cast.stranger.name,Man in a suit,Mężczyzna w garniturze
+cast.teresa.name,Mrs Teresa,Pani Teresa
+cast.tomasz.name,Tomasz,Tomasz
+cast.waldek.name,Mr Waldek,Pan Waldek
+cast.wanda.name,Mrs Wanda,Pani Wanda
+cast.wladyslaw.name,Mr Władysław,Pan Władysław
+cast.zbyszek.name,Mr Zbyszek,Pan Zbyszek
+cast.zosia.name,Mrs Zosia,Pani Zosia
+cast.zuzanna.name,Zuzanna,Zuzanna
+job.allotment_shed.line.1,"The plot's in my wife's name, but I do the digging. She's home with her knee.","Działka jest na żonę, ale kopię ja. Żona siedzi w domu z kolanem."
+job.allotment_shed.line.2,Got your allotment card? And someone from the next plot?,Legitymacja działkowca jest? I ktoś z sąsiedniej działki?
+job.allotment_shed.line.3,Zbyszek's been here longer than that shed. Longer than me.,Zbyszek tu jest dłużej niż ta altana. I dłużej niż ja.
+job.allotment_shed.line.4,Will you take cucumbers? I don't bring money to the allotment.,Ogórki pan weźmie? Na działkę pieniędzy nie noszę.
+job.allotment_shed.note,Mr Zbyszek's shed. Different name on the lease: his wife. Mystery solved. Paid in a jar of pickles.,Altana pana Zbyszka. Inne nazwisko w umowie: żona. Zgrzyt wyjaśniony. Zapłata: słoik ogórków.
+job.bike_interview.line.1,I changed it to a safer code. So safe that even I don't know it.,"Zmieniłem kod na bezpieczniejszy. Taki bezpieczny, że sam go nie znam."
+job.bike_interview.line.2,The bike's out on the street. Anything that says it's yours?,"Rower stoi na ulicy. Ma pan coś, co mówi, że jest pana?"
+job.bike_interview.line.3,A holiday photo and the receipt in my email. The bike looks better than I do.,Zdjęcie z wakacji i paragon w mailu. Rower wyszedł na nim lepiej niż ja.
+job.bike_interview.line.4,That'll do. Fix your tie while I work.,Wystarczy. Niech pan w tym czasie poprawi krawat.
+job.bike_interview.note,"Kuba, bike padlock. Photo and receipt: it's in his hands. Tie straightened twice. Bus at 8:52.","Kuba, kłódka rowerowa. Zdjęcie i paragon, rzecz w posiadaniu. Krawat poprawiony dwa razy. Autobus 8:52."
+job.bramah_bureau.line.1,"Auction invoice, listing and photos. The lock stays untouched.","Faktura z aukcji, opis i zdjęcia. Zamek ma zostać nietknięty."
+job.bramah_bureau.line.2,A lock like this once hung in a London shop window. With a reward.,Taki zamek wisiał kiedyś w oknie sklepu w Londynie. Z nagrodą.
+job.bramah_bureau.line.3,Did anyone open it?,I ktoś go otworzył?
+job.bramah_bureau.line.4,After more than sixty years. I'll tell you when I'm done.,"Po ponad sześćdziesięciu latach. Opowiem, jak skończę."
+job.bramah_bureau.note,Gosia's bureau. Invoice and possession. The lock stays original. I told her about the Piccadilly window.,Sekretarzyk pani Gosi. Faktura i posiadanie. Zamek zostaje oryginalny. Opowiedziałem jej o oknie przy Piccadilly.
+job.brussels_townhouse.line.1,I'm on the balcony like Juliet. Only Romeo is sixty and has the gate key.,Stoję na balkonie jak Julia. Tylko Romeo ma sześćdziesiąt lat i klucz od bramy.
+job.brussels_townhouse.line.2,Madame Magda has lived here forever. Depuis toujours.,Madame Magda mieszka tu od zawsze. Depuis toujours.
+job.brussels_townhouse.line.3,"Lease, address from the commune and a neighbour. That's the set. Don't lean out.","Umowa najmu, adres z gminy i sąsiad. Komplet. Proszę się nie wychylać."
+job.brussels_townhouse.line.4,The geraniums are watered. That was the mission.,Pelargonie podlane. To był cel misji.
+job.brussels_townhouse.note,"Saint-Gilles. Different country, same rule. Lease, commune, Monsieur Jacques. The geraniums are fine.","Saint-Gilles. Inny kraj, ta sama zasada. Umowa, gmina, monsieur Jacques. Pelargonie mają się dobrze."
+job.cat_bathroom.line.1,He did it on purpose. He looked me in the eye when he jumped on the handle.,"On to zrobił specjalnie. Patrzył mi w oczy, kiedy skakał na klamkę."
+job.cat_bathroom.line.2,"You're in your own home, he's in the bathroom. No papers needed this time.","Pani jest u siebie, a on w łazience. Dokumentów tym razem nie trzeba."
+job.cat_bathroom.line.3,What if he gets scared?,A jak się przestraszy?
+job.cat_bathroom.line.4,Keep talking to him. I'll be quieter than he is.,Niech pani do niego mówi. Ja będę cichszy od niego.
+job.cat_bathroom.note,"Potato, cat. Check: not needed, the client was inside. The cat did not apologise. Marta promised me a new sign.","Ziemniak, kot. Weryfikacja: zbędna, klientka była w środku. Kot nie przeprosił. Marta obiecała mi nową tabliczkę."
+job.charleroi_letters.line.1,"I'm not calling for an opening, just advice. Mrs Martine has Grandpa's box.","Nie dzwonię po otwarcie, tylko po radę. Pani Martine ma kasetkę dziadka."
+job.charleroi_letters.line.2,C'est à votre famille. I only looked after it.,C'est à votre famille. Ja tylko pilnowałam.
+job.charleroi_letters.line.3,You looked after it for seventy years?,Pani pilnowała przez siedemdziesiąt lat?
+job.charleroi_letters.line.4,You both want it open. Easiest check of my career.,"Obie chcecie, żeby się otworzyła. Najprostsza weryfikacja w mojej karierze."
+job.charleroi_letters.note,"Charleroi. Grandpa Józef's box, kept by Mrs Martine. Both sides wanted it open. First time I cried on a job. A little.",Charleroi. Kasetka dziadka Józefa u pani Martine. Obie strony chciały otwarcia. Pierwszy raz płakałem w pracy. Trochę.
+job.dollhouse_wooden_lock.line.1,Lala's been stuck in there since Tuesday. She's bored.,Lala siedzi tam od wtorku. Ona się nudzi.
+job.dollhouse_wooden_lock.line.2,Grandpa called it an Egyptian lock. I'm not sure how true that is.,"Dziadek mówił, że to zamek egipski. Nie wiem, ile w tym prawdy."
+job.dollhouse_wooden_lock.line.3,That's the name that stuck. The real story's better. I'll tell you after.,Taka nazwa się przyjęła. Prawdziwa historia jest lepsza. Opowiem po robocie.
+job.dollhouse_wooden_lock.line.4,Will you make a new key? A wooden one? Dad has a plank.,A zrobi pan nowy klucz? Drewniany? Tata ma deskę.
+job.dollhouse_wooden_lock.note,"Great-grandpa's dollhouse. Wooden pin lock. Lala released. Tomasz will carve a new key, Hania supervises.","Domek pradziadka. Zamek drewniany na kołki. Lala uwolniona. Tomasz wystruga nowy klucz, Hania nadzoruje."
+job.drummer_locker.line.1,"I could play with spoons, but I'd rather not. Gig's in an hour.","Mogę zagrać łyżkami, ale wolałabym nie. Koncert za godzinę."
+job.drummer_locker.line.2,"Locker eight, Iga pays monthly. It's in my notebook.","Szafka numer osiem, Iga płaci co miesiąc. Mam w zeszycie."
+job.drummer_locker.line.3,Your notebook will do. Mr Edek said you write everything down.,"Zeszyt mi wystarczy. Pan Edek mówił, że u pana wszystko jest zapisane."
+job.drummer_locker.line.4,"If you make it in time, we'll play one for you. Loudly.","Jak pan zdąży, gramy numer dla pana. Głośno."
+job.drummer_locker.note,"Locker 8, rehearsal room. The manager keeps a notebook like mine. Respect. They played me a song. It was loud.","Szafka nr 8, sala prób. Kierownik ma zeszyt jak ja. Szanuję. Zagrali dla mnie numer, było głośno."
+job.finnish_sailor.line.1,In Finland everyone has a padlock like this. Nobody opens it without the key.,W Finlandii każdy ma taką kłódkę. Bez klucza nikt jej nie otworzy.
+job.finnish_sailor.line.2,"The chest is Aino's, I vouch for her. We sail at six tomorrow.","Skrzynia jest Aino, ręczę. Odpływamy jutro o szóstej."
+job.finnish_sailor.line.3,"The captain vouches, the seaman's book matches. Let's see, then.","Kapitan ręczy, książeczka żeglarska się zgadza. To zobaczymy."
+job.finnish_sailor.line.4,"If you open it, I'll tell you where this invention came from.","Jeśli pan otworzy, opowiem, skąd ten wynalazek."
+job.finnish_sailor.note,"Aino, a Finnish ship. Captain and seaman's book. Done before six. A birch cup now hangs over my bench.","Aino, statek z Finlandii. Kapitan i książeczka. Zdążyliśmy przed szóstą. Chochla z brzozy wisi nad warsztatem."
+job.ghent_beguinage.line.1,"In Polish I only know ""dzień dobry"" and ""pierogi"".",Po polsku umiem tylko „dzień dobry” i „pierogi”.
+job.ghent_beguinage.line.2,That's half the language.,To już połowa języka.
+job.ghent_beguinage.line.3,A letter from the parish council. The key went to heaven with my predecessor.,Pismo od rady parafii. Klucz poszedł z poprzednim opiekunem do nieba.
+job.ghent_beguinage.line.4,"No marks, I promise. This lock is older than my building.","Bez śladów, obiecuję. Ten zamek jest starszy niż moja kamienica."
+job.ghent_beguinage.note,"Ghent béguinage. A letter from the institution and its caretaker. No marks, as promised. Brother Pieter now knows ""rosół"".","Beginaż w Gandawie. Pismo instytucji i opiekun. Bez śladów, jak obiecałem. Brat Pieter umie już „rosół”."
+job.grandma_broth.line.1,"I only stepped out for a moment, dear. With the rubbish.","Synku, ja tylko na chwilkę wyszłam. Ze śmieciami."
+job.grandma_broth.line.2,I turned the gas off on the landing. Forty years we've lived wall to wall.,Gaz zakręciłam na klatce. Czterdzieści lat mieszkamy przez ścianę.
+job.grandma_broth.line.3,That's as good as paperwork. And the letter in the mailbox is yours?,To mi wystarczy za papiery. List w skrzynce też jest na panią?
+job.grandma_broth.line.4,"I made the noodles myself. There's a bowl for you, no arguing.","Makaron sama robiłam. Talerz zostaje dla pana, nie dyskutujemy."
+job.grandma_broth.note,"Mrs Halina, Old Town. Mrs Zosia vouches: forty years through the wall. Broth status: slightly reduced. I ate it.","Pani Halina, Śródmieście. Ręczy pani Zosia, 40 lat przez ścianę. Rosół w stanie „trochę wyparował”. Zjadłem."
+job.grandpa_chest.line.1,Dad never said what he kept in there. Not even to us.,"Tato nigdy nie mówił, co tam trzyma. Nawet nam."
+job.grandpa_chest.line.2,"Mum, he's not asking about the chest. He's asking if the house is yours.","Mamo, pan nie pyta o skrzynię. Pyta, czy dom jest twój."
+job.grandpa_chest.line.3,"It's mine. The deed is in the dresser, under the tablecloth.","Mój. Akt notarialny leży w kredensie, pod obrusem."
+job.grandpa_chest.line.4,"Letters. From Charleroi. To Grandma, in Polish, with Belgian stamps.","Listy. Z Charleroi. Do babci, po polsku, z belgijskimi znaczkami."
+job.grandpa_chest.note,"Grandpa Józef's chest. Deed under the tablecloth, where they always are. Letters from Belgium inside. Ola says she'll go.","Skrzynia dziadka Józefa. Akt pod obrusem, tam gdzie zawsze. W środku listy z Belgii. Ola mówi, że pojedzie."
+job.kiosk_shutter.line.1,Thirty-two years this padlock's hung here. Never oiled it once.,Trzydzieści dwa lata ta kłódka tu wisi. Ani razu jej nie oliwiłem.
+job.kiosk_shutter.line.2,"Mrs Krysia vouches, the letter's here. I still need one more thing.","Pani Krysia ręczy, list z hurtowni jest. Brakuje mi jeszcze jednej rzeczy."
+job.kiosk_shutter.line.3,"Opening day photo, ninety-four. My moustache was in better shape than the kiosk.","Zdjęcie z otwarcia, dziewięćdziesiąty czwarty. Wąsy miałem lepsze niż kiosk."
+job.kiosk_shutter.line.4,Stefan's been here longer than the bus stop. The bus will back me up.,Stefan stoi tu dłużej niż przystanek. Autobus to potwierdzi.
+job.kiosk_shutter.note,"Mr Stefan's kiosk. A business, so I asked for more. Photo from 1994, moustache genuine. Free paper all week.","Kiosk pana Stefana. Lokal firmy, więc dopytałem. Zdjęcie z 1994, wąsy autentyczne. Gazeta gratis do końca tygodnia."
+job.krakow_antiquarian.line.1,"The safe's mine, I rent from the city, the café lady next door will confirm.","Kasa moja, najem mam od miasta, pani z kawiarni obok potwierdzi."
+job.krakow_antiquarian.line.2,"And while you're at it, this little box. A customer left it for valuation.",A przy okazji ta kasetka. Klient zostawił ją do wyceny.
+job.krakow_antiquarian.line.3,"The safe, yes. The box, no. Let its owner come in person.",Kasę otworzę. Kasetki nie. Niech właściciel przyjdzie sam.
+job.krakow_antiquarian.line.4,"You're right. I'm getting old, and impatient with it.",Ma pan rację. Starzeję się i robię się niecierpliwy.
+job.krakow_antiquarian.note,"Mr Leopold. The safe is his, the box is not. One job, two decisions. Paid extra in guild stories.","Pan Leopold. Kasa jego, kasetka nie. Jedno zlecenie, dwie decyzje. W zamian opowieść o cechu."
+job.krakow_tenement_gate.line.1,The conservator said: not a single hole. Not one.,Konserwator powiedział: ani jednej dziury. Ani jednej.
+job.krakow_tenement_gate.line.2,Quite right. Somebody worked hard on this a hundred and thirty years ago.,Słusznie. Ktoś się tu sto trzydzieści lat temu napracował.
+job.krakow_tenement_gate.line.3,Hello again. I'm interning here. I passed that exam. Room 412 helped.,"Dzień dobry. Mam tu praktykę. Egzamin zdałam, pokój 412 pomógł."
+job.krakow_tenement_gate.line.4,The residents' resolution and a written order. Here you are.,Uchwała wspólnoty i zlecenie na piśmie. Proszę.
+job.krakow_tenement_gate.note,"A gate in Kazimierz. My first residents' resolution, I might frame it. Zuzanna takes notes faster than I do.","Brama na Kazimierzu. Pierwsza uchwała wspólnoty w mojej karierze, chyba ją oprawię. Zuzanna robi notatki szybciej ode mnie."
+job.liege_bakery.line.1,My uncle had thirty keys and labelled none of them.,Wujek miał trzydzieści kluczy i żadnego nie podpisał.
+job.liege_bakery.line.2,The lock felt a stranger's key and took offence. That's its job.,Zamek wyczuł obcy klucz i się obraził. Taki ma zawód.
+job.liege_bakery.line.3,Handover papers and the lease. The dough rises without permission.,Papiery przejęcia i umowa najmu. Ciasto rośnie bez pozwolenia.
+job.liege_bakery.line.4,"The papers will do. Waffles at six, as promised.",Papiery wystarczą. Gofry o szóstej będą.
+job.liege_bakery.note,"Liège, 3:50 a.m. The detector lock was right to lock up. Handover papers in order. One pearl-sugar waffle.","Liège, 3:50. Zamek z detektorem miał rację, że się zablokował. Papiery przejęcia w porządku. Gofr z perłowym cukrem."
+job.museum_time_lock.line.1,It's not about the combination. It's about time.,Tu nie chodzi o szyfr. Tu chodzi o czas.
+job.museum_time_lock.line.2,A time lock doesn't ask who's there. It asks what time it is.,"Zamek czasowy nie pyta, kto przyszedł. Pyta, która godzina."
+job.museum_time_lock.line.3,"Director's letter, transfer protocol. All in triplicate.","Pismo dyrekcji, protokół przekazania. Wszystko w trzech egzemplarzach."
+job.museum_time_lock.line.4,"Doctor, there are gloves for the locksmith too. Size L.","Pani doktor, rękawiczki dla pana ślusarza też są. Rozmiar L."
+job.museum_time_lock.note,"Museum of Technology. Dr Rygiel, triplicate everything. The clock was persuaded. Zuzanna interns here, of course.","Muzeum Techniki. Dr Rygiel, trzy egzemplarze wszystkiego. Zegar przekonany. Zuzanna jest tu na stażu, oczywiście."
+job.newlyweds_4am.line.1,"I've got ID, but there's no address on it. I know. Nobody's has one now.","Dowód mam, ale adresu na nim nie ma. Wiem, wiem. Teraz nikt nie ma."
+job.newlyweds_4am.line.2,My registered address is in the app. See? Hard to aim with a veil on.,"Meldunek mam w aplikacji. Tu, widzi pan? Z welonem trudno celować."
+job.newlyweds_4am.line.3,I know them. They got married today. The whole estate heard the party.,Znam ich. Pobrali się dziś. Całe osiedle słyszało oczepiny.
+job.newlyweds_4am.line.4,Congratulations. Two minutes and you're home.,Wszystkiego najlepszego. Dwie minuty i jesteście w domu.
+job.newlyweds_4am.note,"Newlyweds, 4:12 a.m. ID without an address is normal, hence the app and a neighbour in a robe. Three-tier cake. I took a slice.","Nowożeńcy, 4:12. Dowód bez adresu to norma, dlatego meldunek i sąsiad w szlafroku. Tort trzypiętrowy, wziąłem kawałek."
+job.night_nurse.line.1,Twelve hours on the ward. My key's in my locker at the hospital.,Dwanaście godzin na oddziale. Klucz został w szafce w szpitalu.
+job.night_nurse.line.2,"Mrs Agnieszka, flat fourteen, that's right. Her lease is on my system.","Pani Agnieszka spod czternastki, zgadza się. Umowę mam w systemie."
+job.night_nurse.line.3,"The manager confirms, the ID matches. You'll be asleep in no time.","Administrator potwierdza, dowód się zgadza. Zaraz pani śpi."
+job.night_nurse.line.4,Sorry I'm not chatty. I'm talking in my sleep already.,"Przepraszam, że nie rozmawiam. Ja już mówię przez sen."
+job.night_nurse.note,"Mrs Agnieszka, after a night shift. Mr Roman on the intercom, efficient as ever. Neighbour discount, no question.","Pani Agnieszka, po nocce. Pan Roman przez domofon, sprawnie jak zawsze. Rabat sąsiedzki, bez dyskusji."
+job.pizzeria_pays_pizza.line.1,"The takings are in the till, the till's inside. I'll pay in pizza. How hungry are you?","Utarg jest w kasie, kasa w środku. Płacę w pizzy. Ile pan zje?"
+job.pizzeria_pays_pizza.line.2,"Quote first, menu second. Do you have the lease?","Najpierw wycena, potem menu. Umowa najmu lokalu jest?"
+job.pizzeria_pays_pizza.line.3,"Known her twenty years, my kebab shop's next door. Her margherita is art.","Znam ją dwadzieścia lat, kebab mam przez ścianę. Jej margherita to sztuka."
+job.pizzeria_pays_pizza.line.4,"The dough is rising, I'm sinking. Any time before dawn.","Ciasto rośnie, ja maleję. Byle przed świtem."
+job.pizzeria_pays_pizza.note,Renata's pizzeria. Lease plus the neighbour next door. Paid in margherita. The box is on my shelf.,Pizzeria „U Renaty”. Umowa najmu i sąsiad z lokalu obok. Zapłata: margherita. Pudełko stoi na półce.
+job.refuse_aunt_alive.after.1,"Mrs Lucyna is back on Friday. She'll have the lock changed, with your help.","Pani Lucyna wraca w piątek. Zamek wymieni sama, z pana pomocą."
+job.refuse_aunt_alive.after.2,Good thing you said no. I wouldn't have slept a wink.,"Dobrze, że pan odmówił. Ja bym nie spała."
+job.refuse_aunt_alive.line.1,"Auntie passed away last week. The papers are in progress, it's so recent.","Ciocia zmarła w zeszłym tygodniu. Papiery są w trakcie, to dopiero co."
+job.refuse_aunt_alive.line.2,"Mrs Lucyna? She's at a health resort. She rang yesterday, she's feeling better.","Pani Lucyna? Jest w sanatorium. Wczoraj dzwoniła, że jej lepiej."
+job.refuse_aunt_alive.line.3,I must have got something mixed up.,Musiałam coś pomylić.
+job.refuse_aunt_alive.line.4,Then let's ring Mrs Lucyna together. And then Officer Sowa.,To zadzwońmy do pani Lucyny razem. A potem do aspirant Sowy.
+job.refuse_aunt_alive.note,The aunt who is doing fine. The neighbour stepped out just in time. Mrs Lucyna sends regards from her resort.,"Ciotka, która ma się dobrze. Sąsiadka wyszła na klatkę w porę. Pani Lucyna przesyła pozdrowienia z sanatorium."
+job.refuse_ex_partner.after.1,Good that you called. He collected his things with me there; the tenant agreed.,"Dobrze, że pan zadzwonił. Rzeczy odebrał przy mnie, lokatorka się zgodziła."
+job.refuse_ex_partner.after.2,Heard it at the bus stop. You're a decent sort. Paper?,Słyszałem na przystanku. Porządny z pana człowiek. Gazeta?
+job.refuse_ex_partner.line.1,I lived here three years. I've a right to go in and get my things.,Mieszkałem tu trzy lata. Mam prawo wejść po swoje rzeczy.
+job.refuse_ex_partner.line.2,"There's one name on the mailbox, and it isn't yours. I'll call the manager.","Na skrzynce jest jedno nazwisko, nie pana. Zawołam administratora."
+job.refuse_ex_partner.line.3,Why the manager? This is a private matter.,Po co administrator? To prywatna sprawa.
+job.refuse_ex_partner.line.4,I can't open this one. The police can help you collect your things. Shall I call?,"Tu nie otworzę. Policja pomaga odebrać rzeczy, spokojnie. Zadzwonić?"
+job.refuse_ex_partner.note,"Didn't open. One name on the door, not his. Passed it to Officer Sowa. No regrets.",Nie otworzyłem. Jedno nazwisko na drzwiach i to nie jego. Przekazałem sprawę aspirant Sowie. Nie żałuję.
+job.refuse_rush_bribe.after.1,The sister knew nothing about any documents. Thank you for the call.,Siostra nic nie wiedziała o żadnych dokumentach. Dziękuję za telefon.
+job.refuse_rush_bribe.after.2,Someone in a suit asked about a locksmith yesterday. I sent him to you. Sorry.,Ktoś w garniturze pytał wczoraj o ślusarza. Odesłałem go do pana. Przepraszam.
+job.refuse_rush_bribe.line.1,Double the rate. Triple. Just skip all the procedures.,Podwójna stawka. Potrójna. Tylko bez tych wszystkich procedur.
+job.refuse_rush_bribe.line.2,"Procedures aren't for sale. Call your sister, I'll wait.","Procedur nie da się dopłacić. Proszę zadzwonić do siostry, poczekam."
+job.refuse_rush_bribe.line.3,"She's not answering. Let's not wake the neighbours, no need for a circus.","Nie odbiera. Sąsiadów nie budźmy, po co ten cyrk."
+job.refuse_rush_bribe.line.4,"Then good night. And for the record, I'll let the local officer know.",To dobranoc. A dla porządku dam znać dzielnicowej.
+job.refuse_rush_bribe.note,"1 a.m., a suit, a rush, cash instead of a witness. Didn't open. Reported it. Slept well.","1:00, garnitur, pośpiech, dopłata zamiast sąsiada. Nie otworzyłem. Zgłosiłem. Spałem dobrze."
+job.student_dorm.line.1,My student card is in the room. So is the key. I'm in the corridor.,Legitymacja jest w pokoju. Klucz też. Ja jestem na korytarzu.
+job.student_dorm.line.2,"Wilk, Zuzanna, four-twelve. It's on my list and in my head.","Wilk Zuzanna, czterysta dwanaście. Mam na liście i mam w głowie."
+job.student_dorm.line.3,"Mr Edek vouches, the name matches. We're opening.","Pan Edek ręczy, nazwisko się zgadza. Otwieramy."
+job.student_dorm.line.4,I've an exam on historical locks tomorrow. Does this count as practice?,Jutro mam egzamin z zamków historycznych. To się liczy jako praktyka?
+job.student_dorm.note,"Room 412, campus. A porter with a tenant list: the best proof there is. Zuzanna asked about everything.","Pokój 412, kampus. Portier z listą lokatorów: najlepszy dowód, jaki istnieje. Zuzanna pytała o wszystko."
+job.swiatniki_journeyman_padlock.line.1,I've kept it seventy years. There was one key. My grandson lost it.,Siedemdziesiąt lat ją trzymam. Klucz był jeden. Wnuk go zgubił.
+job.swiatniki_journeyman_padlock.line.2,And you know how to open it?,"A pan wie, jak ją otworzyć?"
+job.swiatniki_journeyman_padlock.line.3,I do. But I want to see if the young ones still can.,"Wiem. Ale chcę zobaczyć, czy młodzi jeszcze umieją."
+job.swiatniki_journeyman_padlock.line.4,I know the handwriting in that notebook. Henryk. I taught him. It found the right hands.,To pismo w zeszycie znam. Henryk. Uczyłem go. Dobrze trafił ten zeszyt.
+job.swiatniki_journeyman_padlock.note,"Mr Władysław, Świątniki. He knew Henryk's hand in my notebook. He taught Henryk that first rule.","Pan Władysław, Świątniki. Rozpoznał pismo Henryka w moim zeszycie. Pierwszej zasady to on nauczył Henryka."
+job.time_capsule.line.1,I know the code was a date. But whose?,"Wiem, że kodem była jakaś data. Tylko czyja?"
+job.time_capsule.line.2,"The school agrees. Please open it, in front of everyone.","Szkoła się zgadza. Proszę otwierać, przy wszystkich."
+job.time_capsule.line.3,"Miss, we were nine. All I remember is conkers.","Pani Jadwigo, my mieliśmy wtedy dziewięć lat. Pamiętam tylko kasztany."
+job.time_capsule.line.4,"My letter: ""I hope you have a dog."" I have a cat. That counts.","Mój list: „Mam nadzieję, że masz psa”. Mam kota. Też się liczy."
+job.time_capsule.note,"Class 3b, the chestnut tree. The school and twenty witnesses. Marta was in that class. A card on my doormat: ""Broth's waiting.""","Klasa 3b, kasztanowiec. Dyrekcja i dwudziestu świadków. Marta była w tej klasie. Na wycieraczce kartka: „Rosół czeka”."
+job.uncle_safe_heirs.line.1,"You open it, I'll have a look and tell the others. We'll share anyway.","Pan otworzy, ja popatrzę i powiem reszcie. Przecież się podzielimy."
+job.uncle_safe_heirs.line.2,"I'll open it when all the heirs are here, or their consent is in writing.","Otworzę, gdy będą wszyscy spadkobiercy albo ich zgoda na piśmie."
+job.uncle_safe_heirs.line.3,"Ewa's an hour away. Marek, put the kettle on.","Ewa będzie za godzinę. Marek, nastaw wodę."
+job.uncle_safe_heirs.line.4,Uncle would laugh to see us fight over a box with a dial.,"Wujek by się śmiał, że się kłócimy o pudło z tarczą."
+job.uncle_safe_heirs.note,Uncle Bogdan's safe. We waited for Ewa: an hour and three teas. Opened in front of everyone. Nobody sulked.,"Sejf wujka Bogdana. Czekaliśmy na Ewę, godzina i trzy herbaty. Otwarte przy wszystkich. Nikt się nie obraził."
+job.widow_bureau.line.1,Mrs Zosia said you don't drill. My husband couldn't stand drilling.,"Pani Zosia mówiła, że pan nie wierci. Mąż nie znosił wiercenia."
+job.widow_bureau.line.2,I'll open it so no one can tell. It stays his desk.,"Otworzę tak, że nikt nie pozna. Mebel zostanie jego."
+job.widow_bureau.line.3,Opera tickets. Nineteen eighty-seven.,Bilety do opery. Osiemdziesiąty siódmy.
+job.widow_bureau.line.4,He told me he'd lost them. He kept them.,"Mówił, że je zgubił. Trzymał je."
+job.widow_bureau.note,"Mrs Irena, sent by Mrs Zosia. The bureau is in her home; no marks left. Tickets inside. I didn't ask.","Pani Irena, z polecenia pani Zosi. Sekretarzyk w jej domu, bez śladów. W środku bilety. Nie dopytywałem."
+job.wrong_floor.after.1,You're the one who didn't open my door? I baked you a cake. For not opening it.,"To pan wczoraj nie otworzył? Upiekłam drożdżowe. Za to, że pan nie otworzył."
+job.wrong_floor.line.1,The key won't go in. The lock broke while I was out.,"Klucz nie wchodzi. Zamek się zepsuł, jak mnie nie było."
+job.wrong_floor.line.2,"Mr Kazimierz, there's another name on the mailbox. And this wreath?","Panie Kazimierzu, na skrzynce jest inne nazwisko. I ten wieniec?"
+job.wrong_floor.line.3,Who's there? I've lived here twelve years. I made that wreath myself.,Kto tam? Mieszkam tu dwanaście lat. Wieniec sama wiłam.
+job.wrong_floor.line.4,"Oh, one floor up the key fits. You've fixed it.","O, piętro wyżej klucz wchodzi. Naprawił pan."
+job.wrong_floor.note,Mr Kazimierz after a name-day party. Wrong floor. I opened nothing and it still worked. Best job of the week.,"Pan Kazimierz po imieninach. Drzwi piętro niżej. Nic nie otwierałem, a i tak się udało. Najlepsza robota tygodnia."
+notebook.refuse.line,I can't open this one. But I can help another way.,Tu nie otworzę. Mogę za to pomóc inaczej.
+notebook.rule.1,First ask whose it is. Then look at the lock.,"Najpierw zapytaj, czyje to. Potem patrz na zamek."
+notebook.rule.2,One paper is a hint. Two is a conversation. A neighbour is certainty.,Jeden papier to poszlaka. Dwa to rozmowa. Sąsiad to pewność.
+notebook.rule.3,Whoever pays to skip questions is paying for someone else's door.,"Kto płaci za brak pytań, płaci za nie swoje drzwi."
+notebook.rule.4,Quote before work. No surprises on the bill.,Wycena przed robotą. Rachunek bez niespodzianek.
+notebook.rule.5,What I saw inside stays inside.,"Co widziałem w środku, zostaje w środku."

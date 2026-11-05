@@ -19,6 +19,26 @@ job.refuse,Refuse this job,Odmów
 job.opened,Lock opened. Receipt settled.,Zamek otwarty. Rachunek rozliczony.
 job.reward_fmt,Reward: {n} coins,Nagroda: {n} monet
 common.continue,Continue,Kontynuuj
+verify.title,Verify the right to enter,Sprawdź prawo do lokalu
+verify.hint,The client lays out the cards. You decide.,Klient kładzie karty na stole. Ty decydujesz.
+verify.ask_more,Ask for one more,Poproś o jeszcze jeden
+verify.card.id,ID document,Dokument tożsamości
+verify.card.witness,Witness,Sąsiad-świadek
+verify.card.manager,Manager / porter,Zarządca / portier
+verify.card.lease,Lease agreement,Umowa najmu
+verify.card.resolution,Resolution,Uchwała
+verify.card.deed,Deed,Akt własności
+verify.card.inheritance,Inheritance papers,Pismo spadkowe
+verify.card.institution,Institutional letter,Pismo instytucji
+verify.card.letter,Letter,List
+verify.card.photo,Photo,Zdjęcie
+verify.card.receipt,Receipt,Paragon
+verify.card.invoice,Invoice,Faktura
+verify.card.address_app,Address in the app,Adres w aplikacji
+verify.card.police,Police call,Wezwanie policji
+verify.card.bailiff,Bailiff,Bailiff
+verify.refused,Not enough. I won't open this one.,Za mało. Tego nie otwieram.
+verify.refused_rep,The word spreads: +5 reputation,Słowo się niesie: +5 reputacji
 tutorial.title,Tutorial — practice lock,Samouczek — zamek ćwiczebny
 tutorial.stage,Stage {n} of 3,Etap {n} z 3
 tutorial.done,Tutorial done. First real job!,Samouczek ukończony. Pierwsze prawdziwe zlecenie!

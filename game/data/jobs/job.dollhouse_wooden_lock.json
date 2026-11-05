@@ -11,5 +11,15 @@
     "title": "job.dollhouse_wooden_lock.title",
     "client": "job.dollhouse_wooden_lock.client",
     "situation": "job.dollhouse_wooden_lock.situation"
-  }
+  },
+  "lines": [
+    "hania",
+    "tomasz",
+    "locksmith",
+    "hania"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2
 }

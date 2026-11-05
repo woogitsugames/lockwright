@@ -11,5 +11,18 @@
     "title": "job.wrong_floor.title",
     "client": "job.wrong_floor.client",
     "situation": "job.wrong_floor.situation"
-  }
+  },
+  "lines": [
+    "kazimierz",
+    "locksmith",
+    "teresa",
+    "kazimierz"
+  ],
+  "after": [
+    "teresa"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2
 }

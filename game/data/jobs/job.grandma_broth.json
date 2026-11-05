@@ -11,5 +11,17 @@
     "title": "job.grandma_broth.title",
     "client": "job.grandma_broth.client",
     "situation": "job.grandma_broth.situation"
-  }
+  },
+  "lines": [
+    "halina",
+    "zosia",
+    "locksmith",
+    "halina"
+  ],
+  "cards": [
+    "witness",
+    "letter",
+    "photo"
+  ],
+  "threshold": 2
 }

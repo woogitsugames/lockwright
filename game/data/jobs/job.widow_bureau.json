@@ -11,5 +11,15 @@
     "title": "job.widow_bureau.title",
     "client": "job.widow_bureau.client",
     "situation": "job.widow_bureau.situation"
-  }
+  },
+  "lines": [
+    "irena",
+    "locksmith",
+    "irena",
+    "irena"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2
 }

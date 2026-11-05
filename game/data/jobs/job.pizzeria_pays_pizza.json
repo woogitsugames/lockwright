@@ -11,5 +11,16 @@
     "title": "job.pizzeria_pays_pizza.title",
     "client": "job.pizzeria_pays_pizza.client",
     "situation": "job.pizzeria_pays_pizza.situation"
-  }
+  },
+  "lines": [
+    "renata",
+    "locksmith",
+    "mietek",
+    "renata"
+  ],
+  "cards": [
+    "witness",
+    "lease"
+  ],
+  "threshold": 2
 }

@@ -11,5 +11,17 @@
     "title": "job.newlyweds_4am.title",
     "client": "job.newlyweds_4am.client",
     "situation": "job.newlyweds_4am.situation"
-  }
+  },
+  "lines": [
+    "bartek",
+    "bride",
+    "neighbour_robe",
+    "locksmith"
+  ],
+  "cards": [
+    "id",
+    "address_app",
+    "witness"
+  ],
+  "threshold": 2
 }

@@ -11,5 +11,19 @@
     "title": "job.refuse_aunt_alive.title",
     "client": "job.refuse_aunt_alive.client",
     "situation": "job.refuse_aunt_alive.situation"
-  }
+  },
+  "lines": [
+    "claimant",
+    "neighbour_lucyna",
+    "claimant",
+    "locksmith"
+  ],
+  "after": [
+    "lena",
+    "neighbour_lucyna"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2
 }

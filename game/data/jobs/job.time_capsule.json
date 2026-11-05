@@ -11,5 +11,15 @@
     "title": "job.time_capsule.title",
     "client": "job.time_capsule.client",
     "situation": "job.time_capsule.situation"
-  }
+  },
+  "lines": [
+    "jadwiga",
+    "headteacher",
+    "marta",
+    "marta"
+  ],
+  "cards": [
+    "manager"
+  ],
+  "threshold": 2
 }
