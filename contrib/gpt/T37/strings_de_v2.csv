@@ -1,0 +1,126 @@
+key,de_old,de_new,note
+boot.calib_title,,Zwei Impulse im Abstand von 120 ms — wie viele spürst und hörst du?,Uzupełniono brakujący klucz na podstawie EN i PL.
+boot.calib_two,,Zwei,Uzupełniono brakujący klucz na podstawie EN i PL.
+boot.calib_one,,Einen,Uzupełniono brakujący klucz na podstawie EN i PL.
+boot.calib_none,,Keinen,Uzupełniono brakujący klucz na podstawie EN i PL.
+boot.calib_skip,,Überspringen,Uzupełniono brakujący klucz na podstawie EN i PL.
+settings.feel_section,,Spielgefühl (Haptik),Uzupełniono brakujący klucz na podstawie EN i PL.
+settings.quality,,Grafikqualität,Uzupełniono brakujący klucz na podstawie EN i PL.
+settings.quality_auto,,Automatisch (gemessen),Uzupełniono brakujący klucz na podstawie EN i PL.
+settings.quality_high,,Hoch,Uzupełniono brakujący klucz na podstawie EN i PL.
+settings.quality_medium,,Mittel,Uzupełniono brakujący klucz na podstawie EN i PL.
+settings.quality_low,,Niedrig (einfachere Handys),Uzupełniono brakujący klucz na podstawie EN i PL.
+showcase.notebook_prefix,,Aus dem Heft des Meisters:,Uzupełniono brakujący klucz na podstawie EN i PL.
+about.licenses,,"Schriften: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Engine: Godot 4 (MIT). Erweiterungen: godot-cpp (MIT), GUT (MIT). Vollständige Liste: THIRD-PARTY-NOTICES.txt in der App.",Uzupełniono brakujący klucz na podstawie EN i PL.
+about.post_release_unlocked,,Kapitel 7 („Ein gemeinsamer Schlüssel“) freigeschaltet.,Uzupełniono brakujący klucz na podstawie EN i PL.
+settings.report_problem,,Problem melden,Uzupełniono brakujący klucz na podstawie EN i PL.
+settings.report_copied,,Protokoll in die Zwischenablage kopiert. Füge es in deine Nachricht ein — es wird nichts automatisch gesendet.,Uzupełniono brakujący klucz na podstawie EN i PL.
+settings.report_empty,,Protokoll leer.,Uzupełniono brakujący klucz na podstawie EN i PL.
+app.title,Lockwright: Schlüsseldienst,Lockwright: Schlüsseldienst,
+common.back,Zurück,Zurück,
+common.close,Schließen,Schließen,
+common.on,Ein,Ein,
+common.off,Aus,Aus,
+common.coins,Münzen,Münzen,
+menu.title,Lockwright,Lockwright,
+menu.play,Einsatz starten,Dienst beginnen,Spójny diegetyczny termin: dyżur zamiast pojedynczej interwencji.
+menu.workshop,Werkstatt,Werkstatt,
+menu.showcase,Sammlung,Sammlung,
+menu.settings,Einstellungen,Einstellungen,
+menu.about,Über das Spiel,Über das Spiel,
+menu.jobs,Aufträge,Aufträge,
+jobs.title,Aufträge,Aufträge,
+job.verify,Zutrittsberechtigung prüfen,Zutrittsberechtigung prüfen,
+job.accept,Für diesen Kunden öffnen,Für diesen Kunden öffnen,
+job.refuse,Auftrag ablehnen,Auftrag ablehnen,
+job.opened,Schloss geöffnet. Rechnung beglichen.,Schloss geöffnet. Rechnung beglichen.,
+job.reward_fmt,Belohnung: {n} Münzen,Belohnung: {n} Münzen,
+job.tip_fmt,Trinkgeld (sauber geöffnet): {n} Münzen,Trinkgeld (sauber geöffnet): {n} Münzen,
+common.continue,Weiter,Weiter,
+verify.title,Zutrittsberechtigung prüfen,Zutrittsberechtigung prüfen,
+verify.hint,Der Kunde legt die Nachweise vor. Du entscheidest.,Der Kunde legt die Nachweise vor. Du entscheidest.,
+verify.ask_more,Um einen weiteren Nachweis bitten,Um einen weiteren Nachweis bitten,
+verify.card.id,Ausweis,Ausweis,
+verify.card.witness,Zeuge,Zeuge,
+verify.card.manager,Hausverwaltung / Pförtner,Hausverwaltung / Pförtner,
+verify.card.lease,Mietvertrag,Mietvertrag,
+verify.card.resolution,Beschluss,Beschluss,
+verify.card.deed,Eigentumsurkunde,Eigentumsurkunde,
+verify.card.inheritance,Erbnachweis,Erbnachweis,
+verify.card.institution,Behördliches Schreiben,Behördliches Schreiben,
+verify.card.letter,Brief,Brief,
+verify.card.photo,Foto,Foto,
+verify.card.receipt,Kassenbon,Kassenbon,
+verify.card.invoice,Rechnung,Rechnung,
+verify.card.address_app,Adresse in der App,Adresse in der App,
+verify.card.police,Polizeianruf,Polizeianruf,
+verify.card.bailiff,Gerichtsvollzieher,Gerichtsvollzieher,
+verify.refused,Das reicht nicht. Dieses Schloss öffne ich nicht.,Das reicht nicht. Dieses Schloss öffne ich nicht.,
+verify.refused_rep,Das spricht sich herum: +5 Ruf,Das spricht sich herum: +5 Ruf,
+tutorial.title,Einführung – Übungsschloss,Einführung – Übungsschloss,
+tutorial.stage,Schritt {n} von 3,Schritt {n} von 3,
+tutorial.done,Einführung abgeschlossen. Der erste echte Auftrag!,Einführung abgeschlossen. Der erste echte Auftrag!,
+hud.magnifier,Lupe,Lupe,
+settings.title,Einstellungen,Einstellungen,
+settings.haptics,Haptik,Haptik,
+settings.haptics_enabled,Haptik aktiviert,Haptik aktiviert,
+settings.haptics_intensity,Haptikstärke,Haptikstärke,
+settings.haptics_test,Testimpuls,Testimpuls,
+settings.haptics_calibration,Kalibrierung,Kalibrierung,
+settings.haptics_calibration_two_clicks,Spürst du zwei Klicks?,Spürst du zwei Klicks?,
+settings.haptics_calibration_two_clicks_yes,Zwei,Zwei,
+settings.haptics_calibration_two_clicks_one,Einen,Einen,
+settings.haptics_calibration_two_clicks_none,Nichts,Nichts,
+settings.continuous_resistance,Ständiger Widerstand,Ständiger Widerstand,
+settings.volume_master,Gesamtlautstärke,Gesamtlautstärke,
+settings.volume_sfx,Soundeffekte,Soundeffekte,
+settings.volume_ambience,Umgebungsgeräusche,Umgebungsgeräusche,
+settings.language,Sprache,Sprache,
+settings.language_system,System,System,
+settings.language_pl,Polski,Polski,
+settings.language_en,English,English,
+settings.language_de,,Deutsch (Entwicklung),Uzupełniono brakujący klucz na podstawie EN i PL.
+settings.dark_mode_assist,Kontrasthilfe,Hoher Kontrast,Przywrócono znaczenie high contrast.
+settings.reading_aid,Kreidemarkierungen,Kreidemarkierungen,
+settings.wide_windows,Größere Sichtfenster,Größere Sichtfenster,
+settings.reset,Einstellungen zurücksetzen,Einstellungen zurücksetzen,
+settings.text_scale,Textgröße,Textgröße,
+settings.reduce_motion,Bewegungen reduzieren,Bewegungen reduzieren,
+settings.dark_mode_note,Dunkelmodus braucht Ton (und Haptik auf dem Handy).,Im Dunkeln hilft der Ton. Handyhaptik unterstützt.,Krótsza i bardziej naturalna nazwa wyzwania.
+run.title,Endloslauf,Endlosdienst,"Zamiast sportowego biegu, dyżur ślusarza."
+run.lock_n,Schloss {n},Schloss {n},
+run.lives_left,Verbleibende Versuche,Ersatz-Dietriche,"Właściwa jednostka zapasu; to narzędzia, nie próby."
+run.workshop_stop,Werkstattpause,Werkstattpause,
+run.finished,Lauf beendet – {n} Münzen,Dienst zu Ende — Münzen: {n},"Skrócono, wyeliminowano zależność odmiany od {n}."
+run.rubber_band,Ganz ruhig. Ein einfacheres Schloss.,Ganz ruhig. Ein einfacheres Schloss.,
+optics.loupe,Nahaufnahme der Scherlinie,Nahaufnahme der Scherlinie,
+optics.microscope,Grate und falsche Kerben,Grate und falsche Kerben,
+optics.borescope,Tiefe Sperrelemente,Tiefe Sperrelemente,
+pause.title,Pausiert,Pausiert,
+pause.resume,Fortsetzen,Fortsetzen,
+pause.settings,Einstellungen,Einstellungen,
+pause.dark_mode,Dunkelmodus,Im Dunkeln,Nazwa trybu zgodna z fabułą i styleguide.
+pause.restart,Schloss neu starten,Schloss neu starten,
+pause.quit,Verlassen,Verlassen,
+lock.pause,Pause,Pause,
+workshop.title,Werkstatt,Werkstatt,
+workshop.coins,Münzen,Münzen,
+workshop.buy,Kaufen,Kaufen,
+workshop.repair,Reparieren,Reparieren,
+workshop.owned,Im Besitz,Im Besitz,
+workshop.integrity,Zustand,Zustand,
+workshop.repair_cost,Reparatur: {0} Münzen,Reparatur: {0} Münzen,
+workshop.broken,Defekt,Defekt,
+workshop.reward,,Belohnung für Fortschritt,Uzupełniono brakujący klucz na podstawie EN i PL.
+showcase.title,Sammlung,Sammlung,
+showcase.locked,,Gesperrt — im Spiel freischalten,Uzupełniono brakujący klucz na podstawie EN i PL.
+showcase.source,Quelle,Quelle,
+showcase.unknown_source,Quelle nicht verifiziert,Quelle nicht verifiziert,
+about.title,Über das Spiel,Über das Spiel,
+about.notice,"Dies ist ein Spiel, kein Lehrgang. Die Mechanismen sind erfunden und vereinfacht. Ein echter Schlüsseldienst prüft immer, ob der Kunde zum Betreten berechtigt ist.","Dies ist ein Spiel, kein Lehrgang. Die Mechanismen sind erfunden und vereinfacht. Ein verantwortungsbewusster Schlüsseldienst prüft, ob der Kunde Zutrittsrecht hat.",Usunięto „immer” sugerujące bezwyjątkową normę prawną.
+about.licensed_assets,Assets und Lizenzen,Assets und Lizenzen,
+dev.haptics_lab.title,Haptik-Labor,Haptik-Labor,
+dev.haptics_lab.tier,Stufe,Stufe,
+dev.haptics_lab.force_fallback,Fallback erzwingen,Fallback erzwingen,
+dev.haptics_lab.resistance,Widerstand,Widerstand,
+dev.haptics_lab.caps,Möglichkeiten,Möglichkeiten,
