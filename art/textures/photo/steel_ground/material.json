@@ -3,6 +3,10 @@
   "source": "contrib/incoming/magnific/selected/steel_ground.jpg",
   "mode": "tile",
   "tiling": "u+v",
+  "size": [
+    2048,
+    2048
+  ],
   "metallic": 1.0,
   "roughness_range": [
     0.2,
@@ -12,7 +16,8 @@
   "normal_strength": 1.5,
   "height_highpass_sigma_px": 6,
   "lighting_flatten": "full",
-  "overlap_x": 151,
-  "overlap_y": 223,
+  "overlap_x": 150,
+  "overlap_y": 219,
+  "normal_2k_soften_sigma": 0.0,
   "rough_mean": 0.291
 }
