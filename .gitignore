@@ -12,3 +12,4 @@ game/android/build/
 platform/android/gradlew
 art/renders/test_*.json
 game/addons/lockcore_gd/bin/
+qa/out/

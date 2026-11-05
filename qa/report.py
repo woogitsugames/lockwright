@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+"""QA career report: merges the bot's QA_REPORT JSON with what the Godot log shows.
+   python3 qa/report.py <career.log> <out-dir> <exit-code>
+Writes report.json and report.md. Findings: crashes (exit code, signals, SCRIPT ERROR), soft-locks, screens without
+an exit, unknown screens, missing i18n keys (I18n warnings), engine errors, per-lock timings, session time."""
+import sys, os, json, re, pathlib, collections
+
+log_path, out_dir, code = sys.argv[1], pathlib.Path(sys.argv[2]), int(sys.argv[3])
+text = pathlib.Path(log_path).read_text(errors='replace')
+bot = {}
+for line in text.splitlines():
+    if line.startswith('QA_REPORT '):
+        bot = json.loads(line[len('QA_REPORT '):])
+missing = sorted(set(re.findall(r'missing translation for key ([\w.\-]+)', text)))
+script_errors = [l.strip() for l in text.splitlines() if 'SCRIPT ERROR' in l]
+errors = [l.strip() for l in text.splitlines() if l.startswith('ERROR:') and 'ALSA' not in l and 'audio_driver' not in l]
+err_counts = collections.Counter(re.sub(r'\d+', 'N', e)[:160] for e in errors)
+crashed = code not in (0,) or 'Program crashed' in text or 'handle_crash' in text or not bot
+timeout = code == 124
+rep = {
+    'schema': 'lockwright.qa-report/1', 'exit_code': code, 'crashed': crashed and not timeout, 'timeout': timeout,
+    'bot': bot, 'missing_i18n_keys': missing, 'script_errors': script_errors[:50], 'engine_errors': dict(err_counts.most_common(30)),
+}
+(out_dir / 'report.json').write_text(json.dumps(rep, indent=2, ensure_ascii=False))
+L = ['# QA kariery — raport', '']
+verdict = 'OK' if (bot.get('finished') and not script_errors and not missing and not crashed
+                  and not bot.get('softlocks') and not bot.get('dead_ends')) else 'PROBLEMY'
+L.append(f"**Wynik: {verdict}** · exit {code}{' (timeout)' if timeout else ''} · koniec: `{bot.get('end_reason', 'brak raportu bota')}`")
+L.append('')
+L.append('| Miara | Wartość |')
+L.append('|---|---|')
+L.append(f"| Zlecenia ukończone / wszystkie | {len(bot.get('jobs_completed', []))} / {bot.get('jobs_total', '?')} |")
+L.append(f"| Samouczek ukończony | {bot.get('tutorial_done')} |")
+L.append(f"| Zakupy w warsztacie (akcje) | {bot.get('purchases', 0)} |")
+L.append(f"| Gablota: otwarte notki | {bot.get('showcase_opened', 0)} |")
+L.append(f"| Monety na końcu | {bot.get('coins', '?')} |")
+L.append(f"| Czas sesji (symulowany, 120 Hz) | {bot.get('sim_seconds', '?')} s |")
+L.append(f"| Czas zegarowy | {bot.get('wall_seconds', '?')} s |")
+L.append(f"| Decyzje bota | {bot.get('decisions', '?')} |")
+L.append('')
+for title, key in (('Soft-locki', 'softlocks'), ('Ekrany bez wyjścia', 'dead_ends')):
+    items = bot.get(key, [])
+    L.append(f'## {title} ({len(items)})')
+    L += [f"- `{i.get('scene', '')}` — {i.get('reason', '')}" + (f" (zlecenie `{i['job']}`)" if i.get('job') else '') for i in items] or ['- brak']
+    L.append('')
+L.append(f"## Nieznane ekrany (polityka ogólna) ({len(bot.get('unknown_scenes', []))})")
+L += [f'- `{s}`' for s in bot.get('unknown_scenes', [])] or ['- brak']
+L.append('')
+L.append(f'## Brakujące klucze i18n ({len(missing)})')
+L += [f'- `{k}`' for k in missing] or ['- brak']
+L.append('')
+L.append(f'## Błędy skryptów ({len(script_errors)})')
+L += [f'- `{e[:200]}`' for e in script_errors[:20]] or ['- brak']
+L.append('')
+L.append('## Błędy silnika (najczęstsze)')
+L += [f'- {n}× `{e}`' for e, n in err_counts.most_common(15)] or ['- brak']
+L.append('')
+locks = bot.get('locks', [])
+L.append(f'## Zamki ({len(locks)})')
+L.append('| Zlecenie | Rodzina | Tier | Kroki bota | Czas [s] | Otwarty | Błąd |')
+L.append('|---|---|---|---|---|---|---|')
+for k in locks:
+    L.append(f"| {k.get('job') or '—'} | {k.get('family')} | {k.get('tier')} | {k.get('bot_steps', '')} | {k.get('sim_s', '')} | {k.get('opened', '')} | {k.get('error', '')} |")
+L.append('')
+L.append('## Odwiedzone ekrany')
+L += [f'- `{s}` × {n}' for s, n in sorted(bot.get('scenes', {}).items())]
+(out_dir / 'report.md').write_text('\n'.join(L) + '\n')
+print('\n'.join(L[:14]))
+(out_dir / 'verdict.txt').write_text(verdict + '\n')
+if os.environ.get('QA_STRICT') == '1' and verdict != 'OK':
+    sys.exit(1)

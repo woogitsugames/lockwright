@@ -1,0 +1,55 @@
+name: qa-career
+# Session C, stage 3, task 3: headless career bot (qa/). Nightly + on changes to game/ or qa/.
+# The bot plays the tutorial, all jobs, workshop purchases and the showcase on a COPY of game/;
+# report (qa/out/report.md + report.json + full log) is uploaded as an artifact and shown in the summary.
+
+on:
+  schedule:
+    - cron: '17 2 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'game/**'
+      - 'qa/**'
+      - '.github/workflows/qa-career.yml'
+  workflow_dispatch:
+
+jobs:
+  career:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Godot 4.7.2
+        run: |
+          mkdir -p /tmp/godot
+          curl -sL -o /tmp/godot/godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/godot/godot.zip -d /tmp/godot
+          chmod +x /tmp/godot/Godot_v4.7.2-stable_linux.x86_64
+      - name: Rebuild lockcore_gd (Linux) if the checked-in binary is missing
+        run: |
+          if [ ! -f game/addons/lockcore_gd/bin/liblockcore_gd.linux.template_debug.so ]; then
+            pip install scons
+            git clone --depth 1 https://github.com/godotengine/godot-cpp.git /tmp/godot-cpp
+            (cd /tmp/godot-cpp && scons platform=linux target=template_debug arch=x86_64 custom_api_file=gdextension/extension_api-4-7.json -j8)
+            (cd game/addons/lockcore_gd && GODOT_CPP=/tmp/godot-cpp scons platform=linux target=template_debug arch=x86_64 custom_api_file=/tmp/godot-cpp/gdextension/extension_api-4-7.json -j8)
+          fi
+      - name: Run career bot
+        env:
+          QA_WORK: ${{ runner.temp }}/lw_qa_game
+          QA_STRICT: '1'
+        run: qa/run_career.sh /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 1800
+      - name: Step summary
+        if: always()
+        run: |
+          if [ -f qa/out/report.md ]; then cat qa/out/report.md >> "$GITHUB_STEP_SUMMARY"; else echo "no report" >> "$GITHUB_STEP_SUMMARY"; fi
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-career-report
+          path: qa/out/
+          retention-days: 30
