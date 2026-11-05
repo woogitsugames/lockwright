@@ -75,9 +75,9 @@
 
 - (void)buildPlayers {
     // Continuous resistance: looped pattern with dynamic intensity/sharpness params.
-    CHHapticEventParameter *inten = [[CHHapticEventParameter alloc] initWithParameterID:CHHapticEventParameterIDHapticIntensityControl value:0.0f];
-    CHHapticEventParameter *sharp = [[CHHapticEventParameter alloc] initWithParameterID:CHHapticEventParameterIDHapticSharpnessControl value:0.3f];
-    CHHapticEvent *cont = [[CHHapticEvent alloc] initWithEventType:CHHapticEventTypeContinuous
+    CHHapticEventParameter *inten = [[CHHapticEventParameter alloc] initWithParameterID:CHHapticEventParameterIDHapticIntensity value:0.0f];
+    CHHapticEventParameter *sharp = [[CHHapticEventParameter alloc] initWithParameterID:CHHapticEventParameterIDHapticSharpness value:0.3f];
+    CHHapticEvent *cont = [[CHHapticEvent alloc] initWithEventType:CHHapticEventTypeHapticContinuous
                                                        parameters:@[inten, sharp]
                                                      relativeTime:0 duration:1.0];
     CHHapticPattern *resPattern = [[CHHapticPattern alloc] initWithEvents:@[cont] parameters:@[]];
@@ -136,8 +136,8 @@
 
 - (void)sendResistanceParameters {
     if (!_resistanceActive || !_resistancePlayer) return;
-    CHHapticDynamicParameter *pI = [[CHHapticDynamicParameter alloc] initWithParameterID:CHHapticEventParameterIDHapticIntensityControl value:_resistanceIntensity];
-    CHHapticDynamicParameter *pS = [[CHHapticDynamicParameter alloc] initWithParameterID:CHHapticEventParameterIDHapticSharpnessControl value:_resistanceSharpness];
+    CHHapticDynamicParameter *pI = [[CHHapticDynamicParameter alloc] initWithParameterID:CHHapticEventParameterIDHapticIntensity value:_resistanceIntensity];
+    CHHapticDynamicParameter *pS = [[CHHapticDynamicParameter alloc] initWithParameterID:CHHapticEventParameterIDHapticSharpness value:_resistanceSharpness];
     NSError *err = nil;
     [_resistancePlayer sendParameters:@[pI, pS] atTime:CHHapticTimeImmediate error:&err];
 }
