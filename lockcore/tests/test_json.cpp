@@ -84,3 +84,19 @@ TEST_CASE("json: surrogates and raw UTF-8 are validated (T25-23)") {
   CHECK(!json::parse("\"\x80\"").ok);                            // stray continuation
   CHECK(!json::parse("\"\xFF\"").ok);
 }
+
+TEST_CASE("lockfile: seeds above 48 bits round-trip (T25-12)") {
+  const FamilyRegistry& reg = FamilyRegistry::builtin();
+  for (const FamilyModule* fam : reg.all()) {
+    for (std::uint64_t seed : {std::uint64_t{UINT64_MAX}, std::uint64_t{0x8000000000000001ULL}, std::uint64_t{0xffff000000000000ULL}}) {
+      const LockSpec spec = fam->generate(seed, fam->difficulty_for_tier(fam->max_tier()));
+      CHECK(fam->oracle(spec, fam->required_tools(spec)).ok);
+      const std::string text = lock_to_json(spec, *fam);
+      const LockParse back = lock_from_json(text, reg);
+      REQUIRE(back.ok);
+      CHECK_EQ(back.spec.seed, seed);
+      CHECK(lock_to_json(back.spec, *fam) == text);
+      CHECK(fam->solver(spec, fam->required_tools(spec)).ok);
+    }
+  }
+}
