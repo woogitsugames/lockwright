@@ -36,7 +36,7 @@ MAT = {
 
 R_OUT, R_IN, SP_R, LUG_R, THK, PITCH = 15.0, 6.0, 4.6, 8.4, 10.0, 13.0   # tall lugs: gates read at phone size
 RX = [-19.5 + PITCH * i for i in range(4)]       # ring centres along X
-STATES = [('set', 0, 0.0), ('bind', 144, 0.0), ('false', 0, 0.0), ('free', 252, 0.3)]  # gate angle (deg from top), gap
+STATES = [('set', 0, 0.0), ('bind', 144, 0.0), ('false', 0, 0.0), ('free', 252, 0.8)]  # gate angle (deg from top), gap
 SHIFT = 0.0
 
 def mark_cut(o, mat):
@@ -46,6 +46,12 @@ def mark_cut(o, mat):
     for pg in o.data.polygons:
         if pg.normal.y < -0.99 and abs(pg.center.y) < 0.02: pg.material_index = mi
     return o
+
+def tri(o):
+    """Triangulate long concave section n-gons (boolean results), so bevel + smooth-by-angle cannot fold them."""
+    bm = bmesh.new(); bm.from_mesh(o.data)
+    bmesh.ops.triangulate(bm, faces=[f for f in bm.faces if len(f.verts) > 4], quad_method='BEAUTY', ngon_method='EAR_CLIP')
+    bm.to_mesh(o.data); bm.free(); return o
 
 def cut_half(o):
     boolean(o, box('cut', -300, 300, -200, 0, -300, 300))
@@ -86,7 +92,8 @@ for i, ((st, gdeg, gap), x) in enumerate(zip(STATES, RX)):
     # fixed spacer washer + detent ball and spring between rings (shown at the bottom of the section)
     if i < 3:
         sx = x + THK / 2 + (PITCH - THK) / 2
-        w = lathe_x('spacer', [(sx - 1.2, LUG_R + 0.3), (sx - 1.2, R_OUT - 2.2), (sx + 1.2, R_OUT - 2.2), (sx + 1.2, LUG_R + 0.3)], seg=128)
+        # a real tube (lathe_x would cap both ends with discs and hide the spindle behind them)
+        w = cyl('spacer', R_OUT - 2.2, 2.4, (sx, 0, 0), axis='X', verts=128); boolean(w, cyl('sb', LUG_R + 0.3, 6, (sx, 0, 0), axis='X', verts=128))
         boolean(w, cyl('bp', 0.8, 4, (sx, 0, -(R_IN + 2.3)), axis='X', verts=24)); cut_half(w); put(w, MAT['body'], 0.12, 2); mark_cut(w, MAT['cut_b'])
         b = bpy.ops.mesh.primitive_uv_sphere_add(radius=0.75, location=(sx - 1.25, 0.7, -(R_IN + 2.3))); put(bpy.context.object, MAT['steel'])
 
@@ -98,7 +105,7 @@ for (st, gdeg, gap), x in zip(STATES, RX):
     else: lx0 = face - 3.0 - gap                         # pressed on the face (gap 0) or just short of it
     lug = box('lug', lx0, lx0 + 3.0, -1.5, 1.5, SP_R - 0.4, LUG_R)
     boolean(sp, lug, 'UNION')
-cut_half(sp); put(sp, MAT['steel'], 0.08, 2); mark_cut(sp, MAT['cut_s'])
+cut_half(sp); tri(sp); put(sp, MAT['steel'], 0.08, 2); mark_cut(sp, MAT['cut_s'])
 
 # ---------------------------------------------------------------- body (left), end cap (right), shackle
 body = prism('body', [(-56 + 3 * (1 - math.cos(math.radians(t))), -17 + 3 * (1 - math.sin(math.radians(t)))) for t in range(0, 91, 15)] +
@@ -130,8 +137,8 @@ kx, ky, kz, ks, ke = [float(v) for v in arg('--key', '-160,-170,220,60,400000').
 area_light('key', (kx, ky, kz), AIM, ks, ke, (1.0, 0.84, 0.66))
 area_light('fill', (220, -180, -10), AIM, 120, float(arg('--fill', '40000')), (0.92, 0.95, 1.0))
 area_light('rim', (60, 80, 220), AIM, 60, float(arg('--rim', '50000')), (1.0, 0.92, 0.85))
-cam = look_camera((float(arg('--tx', '-3')), 0, float(arg('--tz', '4'))), float(arg('--yaw', '-15')), float(arg('--pitch', '30')),
-                  float(arg('--dist', '255')), lens=float(arg('--lens', '120')))
+cam = look_camera((float(arg('--tx', '-2')), 0, float(arg('--tz', '5'))), float(arg('--yaw', '-12')), float(arg('--pitch', '34')),
+                  float(arg('--dist', '215')), lens=float(arg('--lens', '120')))
 mirror_softbox('sheen', (0, 0, 0), cam, dist=400, size=float(arg('--ss', '40')), size_y=float(arg('--ssy', '120')), energy=float(arg('--sheen', '25000')),
                shift=(float(arg('--sx', '-5')), 0, float(arg('--sz', '4'))))
 render_setup(OUT, RES, SAMPLES, exposure=float(arg('--exp', '0.0')), crop=CROP)
