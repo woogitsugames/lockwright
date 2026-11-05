@@ -172,6 +172,7 @@ MAT = {
     'paint':   paint('cast', (0.060, 0.066, 0.062), rough=0.5, chip=0.12, grime=0.45, peel=0.05),
     'ano_nat': anodised('ano_nat', (0.60, 0.61, 0.62), 0.32, seed=1.0),
     'ano_dk':  anodised('ano_dk', (0.075, 0.075, 0.08), 0.36, wear=0.35, seed=2.0),
+    'ano_gm':  anodised('ano_gm', (0.30, 0.30, 0.29), 0.36, wear=0.3, seed=4.0),   # gunmetal frame of the handheld
     'ano_br':  anodised('ano_br', (0.30, 0.22, 0.14), 0.34, wear=0.3, seed=3.0),   # warm bronze accent rings
     'rubber':  rubber('rubber'),
     'rub_soft': rubber('rub_soft', (0.035, 0.034, 0.033), 0.7, grain=140),
@@ -186,6 +187,9 @@ def bench():
     top = slab('bench', rrect(1400, 1000, 4, 2), -30, 0)
     put(top, wood('bench_wood', light=(0.46, 0.30, 0.16), dark=(0.24, 0.13, 0.06), axis='X', ring=0.7, rough=0.55,
                   oiled=0.45, wear=0.5, grime=0.5, warp=2.0), 1.0)
+    # workshop wall behind the bench: limewashed plaster, out of focus distance, catches the warm key
+    wall = slab('wall', rrect(3000, 40, 2, 2, 0, 520), -30, 1600)
+    m = paint('plaster', (0.36, 0.33, 0.28), rough=0.85, chip=0.0, grime=0.2, peel=0.3); put(wall, m)
     return top
 
 # ================================================================ microscope
@@ -260,7 +264,7 @@ def microscope():
     for z in (70, 46):
         c = finish(xform(revolve('cclip', [(11, -2.5), (13.6, -2.5), (13.8, 2.5), (11, 2.5)]), t=(0, PY, z)), MAT['ano_nat'], 0.2, 2)
     bench()
-    return Vector((0, 10, 105)), (95, 215)
+    return Vector((4, 4, 112)), (95, 215)
 
 # ================================================================ borescope
 def borescope():
@@ -273,7 +277,7 @@ def borescope():
     H = Rz(-14); T = Vector((-22, 70, 0))
     lo = slab('shell_lo', sm, 0, 13); finish(xform(lo, H, T), MAT['rubber'], 3.5, 5)
     inset = [(x * 0.955, y * 0.975) for x, y in sm]
-    hi = slab('shell_hi', inset, 12.5, 21); finish(xform(hi, H, T), MAT['ano_dk'], 2.2, 4)
+    hi = slab('shell_hi', inset, 12.5, 21); finish(xform(hi, H, T), MAT['ano_gm'], 2.2, 4)
     bez = slab('bezel', rrect(66, 54, 4, 6, 0, 46), 20.6, 21.6); finish(xform(bez, H, T), MAT['black'], 0.3, 2)
     scr = slab('screen', rrect(60, 45, 1.5, 4, 0, 47), 21.2, 21.75)
     me = scr.data; me.uv_layers.new(name='UVMap')
@@ -302,7 +306,7 @@ def borescope():
     finish(xform(solid_rev('relief', [(0, 11), (6.2, 11), (5.4, 18), (3.6, 30), (2.6, 40), (0, 40)]), CR, C), MAT['rubber'], 0.4, 2)
     # braided probe cable: out of the top, a loose loop to the right, back toward the camera, tip resting on the bench
     d = H @ Vector((0, 1, 0)); p0 = C + d * 39
-    path = [tuple(p0), tuple(p0 + d * 25 + Vector((0, 0, -2))), (62, 140, 2.2), (150, 120, 2.2), (175, 40, 2.2), (150, -40, 2.2),
+    path = [tuple(p0), tuple(p0 + d * 25 + Vector((0, 0, -2))), (62, 140, 2.2), (140, 118, 2.2), (158, 40, 2.2), (136, -40, 2.2),
             (90, -80, 2.2), (30, -92, 2.2), (-5, -96, 2.2)]
     cab, cl = sweep('probe', path, 2.0, 24, 14)
     cab.data.materials.append(braid('braid'))
@@ -321,18 +325,18 @@ def borescope():
         finish(xform(lo_, TR, face), ledm, 0.05, 1)
     # cover glass protecting the head face
     bench()
-    return Vector((30, 30, 8)), (300, 0)
+    return Vector((42, 18, 8)), (300, 0)
 
 # ================================================================ scene
 if OBJ == 'microscope':
     tgt, (dist, _) = microscope()
     world_hdri(float(arg('--world', '0.10')), sat=0.4)
-    cam = look_camera(tuple(tgt), float(arg('--yaw', '-28')), float(arg('--pitch', '14')), float(arg('--dist', '760')),
+    cam = look_camera(tuple(tgt), float(arg('--yaw', '-28')), float(arg('--pitch', '14')), float(arg('--dist', '670')),
                       lens=float(arg('--lens', '85')))
 else:
     tgt, _ = borescope()
     world_hdri(float(arg('--world', '0.10')), sat=0.4)
-    cam = look_camera(tuple(tgt), float(arg('--yaw', '-12')), float(arg('--pitch', '42')), float(arg('--dist', '820')),
+    cam = look_camera(tuple(tgt), float(arg('--yaw', '-12')), float(arg('--pitch', '48')), float(arg('--dist', '480')),
                       lens=float(arg('--lens', '70')))
 cam.data.clip_start = 5; cam.data.clip_end = 20000
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = tgt
@@ -340,6 +344,6 @@ K = float(arg('--k', '1.0'))
 area_light('key', (-520, -380, 620), AIM, 420, 2.2e6 * K, (1.0, 0.88, 0.74))                 # warm softbox, upper left
 area_light('fill', (640, -420, 220), AIM, 600, 4.0e5 * K, (0.92, 0.95, 1.0))                  # cool window fill
 area_light('rim', (260, 720, 420), AIM, 260, 1.4e6 * K, (1.0, 0.96, 0.9))                     # back rim: edges, bevels
-render_setup(OUT, RES, SAMPLES, exposure=float(arg('--exp', '0.0')))
+render_setup(OUT, RES, SAMPLES, exposure=float(arg('--exp', '0.5')))
 bpy.ops.render.render(write_still=True)
 print('WROTE', scene.render.filepath)
