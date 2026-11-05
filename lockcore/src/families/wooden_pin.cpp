@@ -9,6 +9,12 @@
 // below t_release (above t_hold) frees it without a drop. A hard pull only
 // creaks (wood.creak): this family never breaks a tool. Opening needs every peg
 // set and T >= t_hold for open_hold (the bolt slides out).
+//
+// egyptian (v0.6, D-59, LOCKS.md §2.22): the same module with egypt_ set. Pegs
+// have no spring: a free peg falls back by gravity at fall_speed instead of
+// following the lifter down, so a peg left hanging high wedges (overset) when the
+// bolt bites; a dropped or freed peg keeps its height and falls. Tiers 1-2, a
+// longer bolt slide (0.5 s), own ids / seeds. wooden_pin is unchanged.
 #include "lockcore/wooden_pin.hpp"
 
 #include <algorithm>
@@ -49,8 +55,10 @@ const Params& params_of(const LockSpec& spec) { return static_cast<const Params&
 
 class Module final : public FamilyModule {
  public:
-  std::string_view id() const override { return FAMILY_ID; }
-  std::int32_t rules_version() const override { return RULES_VERSION; }
+  explicit Module(bool egypt) : egypt_(egypt) {}
+
+  std::string_view id() const override { return egypt_ ? EGYPT_FAMILY_ID : FAMILY_ID; }
+  std::int32_t rules_version() const override { return egypt_ ? EGYPT_RULES_VERSION : RULES_VERSION; }
   std::uint32_t input_mask() const override { return AXIS_TENSION | AXIS_DEPTH | AXIS_LIFT; }
   // The bolt is pulled by hand (left thumb): no tension wrench.
   ToolSet required_tools(const LockSpec&) const override { return ToolSet{TOOL_PEG_LIFTER}; }
@@ -58,9 +66,25 @@ class Module final : public FamilyModule {
   // The card's tutorials (1-3 pegs, no overset) are authored locks; the
   // procedural tier t1 uses 3-4 pegs with overset.
   int min_tier() const override { return 1; }
-  int max_tier() const override { return 1; }
+  int max_tier() const override { return egypt_ ? 2 : 1; }
 
-  DifficultyVector difficulty_for_tier(int) const override {
+  DifficultyVector difficulty_for_tier(int tier) const override {
+    if (egypt_) {
+      // new-families.md §5: t1 3 pegs, wide window; t2 4-5 pegs.
+      const int t = std::clamp(tier, 1, 2);
+      DifficultyVector d;
+      d.tier = t;
+      d.n_min = t == 1 ? 3 : 4;
+      d.n_max = t == 1 ? 3 : 5;
+      d.win_shear = q16_milli(t == 1 ? 180 : 140);
+      d.tension_band = q16_milli(t == 1 ? 300 : 260);
+      d.overset_margin = q16_milli(t == 1 ? 140 : 100);
+      d.bind_spread = Q16_ONE;
+      d.drop_grace_ms = t == 1 ? 400 : 300;
+      d.s_max = Q16_ONE;  // unused
+      d.time_limit_s = t == 1 ? 60 : 90;
+      return d;
+    }
     DifficultyVector d;
     d.tier = 1;
     d.n_min = 3;
@@ -86,7 +110,7 @@ class Module final : public FamilyModule {
 
   std::vector<SpecError> validate(const LockSpec& spec) const override {
     std::vector<SpecError> e;
-    if (spec.family != FAMILY_ID) e.push_back({"family", "not wooden_pin"});
+    if (spec.family != id()) e.push_back({"family", "not " + std::string(id())});
     const auto* pp = dynamic_cast<const Params*>(spec.params.get());
     if (pp == nullptr) {
       e.push_back({"spec", "missing or foreign parameters"});
@@ -103,6 +127,7 @@ class Module final : public FamilyModule {
     if (P.drop_grace_steps < 1) e.push_back({"spec.drop_grace_steps", "must be >= 1"});
     if (P.open_hold_steps < 1 || P.open_hold_steps > 600) e.push_back({"spec.open_hold_steps", "need 1..600"});
     if (P.bound_speed <= 0) e.push_back({"spec.bound_speed_q16", "must be > 0"});
+    if (P.fall_speed < 0) e.push_back({"spec.fall_speed_q16", "negative"});
     for (int i = 0; i < n; ++i) {
       const Peg& k = P.pegs[static_cast<std::size_t>(i)];
       const std::string path = "spec.pegs[" + std::to_string(i) + "]";
@@ -143,7 +168,7 @@ class Module final : public FamilyModule {
       int dropped = 0;
       for (auto& g : S.pegs) {
         if (g.st == ElementState::set) {
-          g = PegState{};
+          loosen(g, P);
           ++dropped;
         }
       }
@@ -151,7 +176,7 @@ class Module final : public FamilyModule {
     }
     if (T < P.t_release) {
       for (auto& g : S.pegs) {
-        if (g.st == ElementState::overset) g = PegState{};
+        if (g.st == ElementState::overset) loosen(g, P);
       }
     }
 
@@ -190,7 +215,7 @@ class Module final : public FamilyModule {
       const q16 li = (i == pick) ? lift : 0;
       const q16 lo = P.win_lo(k);
       switch (g.st) {
-        case ElementState::free: g.p = li; break;
+        case ElementState::free: g.p = P.fall_speed > 0 ? q_max(li, g.p - P.fall_speed) : li; break;
         case ElementState::bound: {
           if (li > g.p) {
             const q16 press = li - g.p;
@@ -345,6 +370,7 @@ class Module final : public FamilyModule {
     o.set("tau_creak_q16", Value::integer(P.tau_creak));
     o.set("drop_grace_steps", Value::integer(P.drop_grace_steps));
     o.set("open_hold_steps", Value::integer(P.open_hold_steps));
+    if (P.fall_speed > 0) o.set("fall_speed_q16", Value::integer(P.fall_speed));  // egyptian only
     o.set("bound_speed_q16", Value::integer(P.bound_speed));
     Value arr = Value::array();
     for (const Peg& k : P.pegs) {
@@ -375,6 +401,7 @@ class Module final : public FamilyModule {
     if (field::get_int(v, "drop_grace_steps", 1, 100000, x, errors, path)) P->drop_grace_steps = static_cast<std::int32_t>(x);
     if (field::get_int(v, "open_hold_steps", 1, 600, x, errors, path)) P->open_hold_steps = static_cast<std::int32_t>(x);
     q(v, "bound_speed_q16", P->bound_speed, path);
+    if (v.find("fall_speed_q16") != nullptr) q(v, "fall_speed_q16", P->fall_speed, path);
     const Value* arr = v.find("pegs");
     if (arr == nullptr || !arr->is_array()) {
       errors.push_back({path + ".pegs", "expected array"});
@@ -401,10 +428,20 @@ class Module final : public FamilyModule {
   }
 
  private:
+  bool egypt_ = false;
+
+  // A peg let go: with a spring it is back at rest at once; without (egyptian)
+  // it keeps its height and falls by gravity from there.
+  static void loosen(PegState& g, const Params& P) {
+    const q16 p = g.p;
+    g = PegState{};
+    if (P.fall_speed > 0) g.p = p;
+  }
+
   static q16 q_ratio_safe(std::int32_t a, std::int32_t b) { return b > 0 ? q16_ratio(q_min(a, b), b) : 0; }
 
   LockSpec generate_once(std::uint64_t seed, std::uint32_t attempt, const DifficultyVector& d) const {
-    Pcg32 rng(derive_seed(seed ^ splitmix64(attempt), FAMILY_ID, RULES_VERSION, "gen"), derive_stream(FAMILY_ID, "gen"));
+    Pcg32 rng(derive_seed(seed ^ splitmix64(attempt), id(), static_cast<std::uint32_t>(rules_version()), "gen"), derive_stream(id(), "gen"));
     auto P = std::make_shared<Params>();
     const int n = rng.range(d.n_min, d.n_max);
     P->win_shear = d.win_shear;
@@ -414,7 +451,8 @@ class Module final : public FamilyModule {
     P->t_hold = T_HOLD;
     P->t_release = T_RELEASE;
     P->drop_grace_steps = ms_to_steps(d.drop_grace_ms);
-    P->open_hold_steps = ms_to_steps(OPEN_HOLD_MS);
+    P->open_hold_steps = ms_to_steps(egypt_ ? EGYPT_OPEN_HOLD_MS : OPEN_HOLD_MS);
+    if (egypt_) P->fall_speed = EGYPT_FALL_SPEED;
     P->bound_speed = BOUND_SPEED;
     P->pegs.resize(static_cast<std::size_t>(n));
     std::vector<int> perm(static_cast<std::size_t>(n));
@@ -434,9 +472,9 @@ class Module final : public FamilyModule {
     P->tau_creak = q_min(Q16_ONE, max_stick + CREAK_MARGIN);
 
     LockSpec spec;
-    spec.family = std::string(FAMILY_ID);
-    spec.rules_version = RULES_VERSION;
-    spec.id = "gen.wooden_pin.t" + std::to_string(d.tier) + "." + std::to_string(seed);
+    spec.family = std::string(id());
+    spec.rules_version = rules_version();
+    spec.id = "gen." + std::string(id()) + ".t" + std::to_string(d.tier) + "." + std::to_string(seed);
     spec.source = "generated";
     spec.seed = seed;
     spec.difficulty = d;
@@ -448,6 +486,7 @@ class Module final : public FamilyModule {
 
 }  // namespace
 
-std::unique_ptr<FamilyModule> make_module() { return std::make_unique<Module>(); }
+std::unique_ptr<FamilyModule> make_module() { return std::make_unique<Module>(false); }
+std::unique_ptr<FamilyModule> make_egyptian_module() { return std::make_unique<Module>(true); }
 
 }  // namespace lockcore::wooden

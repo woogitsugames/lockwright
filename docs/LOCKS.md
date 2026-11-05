@@ -1232,6 +1232,37 @@ krawędzi; odróżnia się od pierścieni kłódki kierunkiem kamery (wzdłuż o
 
 ---
 
+### 2.22 Zasuwa kołkowa „starożytna” — `egyptian`
+**PL:** Zasuwa kołkowa starożytna · **EN:** Ancient Pin Bolt · **Tier:** t1–2 (lockcore v0.6) · **Faza:** D-59
+(zlecenie `job.dollhouse_wooden_lock` t1 — drewniany zamek domku dla lalek). Research:
+`docs/research/new-families.md` §5.
+
+**Zasada.** Najstarszy znany typ: drewniany rygiel z otworami, z góry opadają w nie kołki; klucz z kołkami podnosi je
+i rygiel można wysunąć (ta sama idea co wkładka bębenkowa).
+
+**Logika zagadki.** Moduł `wooden_pin` (§2.1) z flagą `egyptian` (`wooden_pin.cpp`): ciąg rygla (`tension`),
+kolejność wiązania, set przy krawędzi obudowy, zrzut przy puszczeniu, `wood.creak` zamiast łamania,
+otwarcie po przytrzymaniu (`hold_progress`). Różnice:
+- **Grawitacja zamiast sprężyny:** wolny kołek nie wraca od razu — opada z `fall_speed` 1,2/s. Kołek po zrzucie
+  albo uwolniony z klina też opada z wysokości, na której był.
+- **Klin:** kołek, który jeszcze „wisi” powyżej okna, gdy rygiel zaczyna go wiązać, od razu klinuje się w
+  nadprożu (`overset`). Wyjście: wepchnąć rygiel z powrotem (`tension < t_release` 0,20) — kołek opada.
+  Lekcja: „po podniesieniu kołka na próbę poczekaj, aż opadnie”.
+- Rygiel wysuwa się dłużej: 0,5 s przytrzymania. Tiery 1–2, własne seedy, materiał drewno.
+
+| Tier | Kołki | Okno | Pasmo | Klin nad oknem | Zrzut po | Limit |
+|---|---|---|---|---|---|---|
+| t1 | 3 | 0,18 | 0,30 | 0,14 | 400 ms | 60 s |
+| t2 | 4–5 | 0,14 | 0,26 | 0,10 | 300 ms | 90 s |
+
+**ViewModel.** Jak `wooden_pin`: pozycja kołka (widać opadanie), okno, stany, `hold_progress` = `core_rotation`
+= wysunięcie rygla. W pliku zamka `fall_speed_q16` (tylko ta rodzina).
+
+**Weryfikator (1000 seedów/tier).** Skryptowy 0 porażek (t_p50 6,9/9,7 s), niezdarny 100 %, czujący 100 %
+(t_p50 13/22 s). Złote: `egyptian_t1_s3`, `egyptian_t2_s8_feel`.
+
+---
+
 ## 3. Tabela zbiorcza
 
 | # | ID | PL / EN | Tier | Faza | Widok | Wejścia | Kluczowa nowa logika | Narzędzie główne |
@@ -1256,6 +1287,7 @@ krawędzi; odróżnia się od pierścieni kłódki kierunkiem kamery (wzdłuż o
 | 2.18 | `dial_safe` | Sejf z pokrętłem / Dial Safe | 1–3 | D-59 | czoło + przekrój kół | T, L | pakiet kół, nasłuch, zmiana kierunku | Słuchawka |
 | 2.20 | `dimple` (D-59) | Wkładka nawiercana / Dimple Cylinder | 1–3 | D-59 | bok, dwa rzędy | T, D, L | kołek teleskopowy | Chorągiewka |
 | 2.21 | `disc_detainer` | Zamek tarczowy / Disc Detainer | 1–3 | D-59 | przekrój wzdłuż osi | T, D, L | tarcze w obie strony, przekręcenie | Obracak tarcz |
+| 2.22 | `egyptian` | Zasuwa starożytna / Ancient Pin Bolt | 1–2 | D-59 | bok | T, D, L | grawitacja, klin | Klucz kołkowy |
 | 2.19 | `combo` | Zamek z kółkami / Thumbwheel Combination Lock | 1–4 | D-59 | przód + przekrój tulejek | T, D, L | wiązanie + poślizg tulejki | Ciągadło kabłąka |
 
 T = tension, D = pick_depth, L = pick_lift, R = rotate, P = push.

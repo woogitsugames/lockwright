@@ -133,6 +133,7 @@ Tier tables: `pin_tumbler` t2–t7 per LOCKS.md §2.6 (t5 5–6 stacks, t7 overs
 | `dial_safe` | t1–t3 | T, L | `TOOL_LISTENING_CUP` | wheel pack: pick up, listen for the gate, reverse to leave it (LOCKS.md §2.18) |
 | `combo` | t1–t4 | T, D, L | `TOOL_SHACKLE_PULLER` | `ring_combo` module flag: thumbwheels on `pick_lift`, sleeve slip (§2.19) |
 | `disc_detainer` | t1–t3 | T, D, L | `TOOL_DISC_PICK` | `ring_combo` module, third flavour: discs both ways, over-turn (§2.21) |
+| `egyptian` | t1–t2 | T, D, L | `TOOL_PEG_LIFTER` | `wooden_pin` module flag: pegs fall by gravity, wedge when the bolt bites (§2.22) |
 | `dimple` | t1–t3 | T, D, L | `TOOL_DIMPLE_FLAG` | `pin_tumbler` module flag: telescoping pins (spool rule), side row (§2.20) |
 
 `wooden_pin` (§2.1): like `wafer` (set pegs stay up, `t_release` 0.20 above `t_hold` 0.10, so an
@@ -234,7 +235,8 @@ Additive; hashes and goldens of the earlier families unchanged.
   §2.19; `ring::Params::slip_speed`, written to lock files only when > 0, sub `combo.slip` = overset + 2),
   `dimple` (`pin::make_dimple_module()`, §2.20; `TOOL_DIMPLE_FLAG`, `pin::DIMPLE_SIDE_ROW` variant bit),
   `disc_detainer` (`ring::make_disc_module()`, §2.21; `TOOL_DISC_PICK`, `ring::Params::overturn_speed`,
-  sub `disc.overturn` = overset + 3, 8 positions). They read only `tension`, `pick_depth`,
+  sub `disc.overturn` = overset + 3, 8 positions), `egyptian` (`wooden::make_egyptian_module()`, §2.22;
+  `wooden::Params::fall_speed`, written only when > 0). They read only `tension`, `pick_depth`,
   `pick_lift` (no `rotate` / `push`), so a plan-B screen calling `step(t, depth, lift)` drives them.
 - `spec.hpp`: `TOOL_LISTENING_CUP` (dial_safe).
 - `family.hpp`: `ViewModel` gains `q16 dial` (dial reading, fraction of a turn) and `std::int32_t
