@@ -108,7 +108,7 @@ def undulation(x, z, seed):
     random.seed(seed); ph = [random.uniform(0, 6.28) for _ in range(3)]
     return 0.25 * math.sin(x * 0.11 + ph[0]) * math.sin(z * 0.07 + ph[1]) + 0.15 * math.sin(x * 0.23 + z * 0.19 + ph[2])
 
-def leather_slab(name, x0, x1, z0, z1, y_face, thick, mat, puff=0.0, cuts=40, seed=0, bev=0.9):
+def leather_slab(name, x0, x1, z0, z1, y_face, thick, mat, puff=0.0, cuts=40, seed=0, bev=0.9, shape=None):
     """Subdivided slab with gentle undulation (leather is never flat) and rounded cut edges."""
     o = box(name, x0, x1, y_face, y_face + thick, z0, z1)
     md = o.modifiers.new('sub', 'SUBSURF'); md.subdivision_type = 'SIMPLE'; md.levels = md.render_levels = 0
@@ -122,6 +122,7 @@ def leather_slab(name, x0, x1, z0, z1, y_face, thick, mat, puff=0.0, cuts=40, se
             u = (v.co.x - cx) / hx; w = (v.co.z - cz) / hz
             d = undulation(v.co.x, v.co.z, seed)
             if puff: d += puff * max(0.0, 1 - u * u) * max(0.0, 1 - max(0.0, w) ** 6)  # pocket bulges over the tool
+            if shape: d += shape(v.co.x, v.co.z)
             v.co.y -= d
     put(o, mat, bev, 4, harden=False)
     return o
@@ -131,7 +132,7 @@ def stitches(xs, z0, z1, pitch, y, ang=28.0):
     n = int((z1 - z0) / pitch)
     for k in range(n):
         z = z0 + k * pitch + pitch * 0.5
-        bpy.ops.mesh.primitive_uv_sphere_add(segments=12, ring_count=8, radius=1.0, location=(xs, y, z))
+        bpy.ops.mesh.primitive_uv_sphere_add(segments=12, ring_count=8, radius=1.0, location=(xs, y(z) if callable(y) else y, z))
         s = bpy.context.object; s.scale = (0.26, 0.2, pitch * 0.33); s.rotation_euler = (0, math.radians(ang), 0)
         bpy.ops.object.transform_apply(scale=True, rotation=True); smooth(s); link(s, TH)
 
@@ -155,9 +156,27 @@ def pick_tip(i, x):
     if i == 1: return [(x, 12), (x + 0.9, 16), (x - 0.3, 20), (x + 0.9, 24), (x, 28)]             # rake
     return [(x, 20), (x + 0.4, 22.5), (x + 1.3, 24.6), (x + 0.6, 26.6), (x, 28.5)]                # half-diamond
 for i, x in enumerate(POCKET_X):
-    leather_slab('flap%d' % i, x - 14, x + 14, -130, -4, -4.0, 2.0, LE2, puff=1.8, cuts=30, seed=10 + i, bev=1.4)
+    full = i < 3 - LOST
+    def pocket_shape(px, pz, x=x, full=full):
+        # full: the pick's handle presses its outline up through the flap (pressure mark, readable in gray);
+        # empty: the flap has collapsed, sagging at the mouth with a soft horizontal fold
+        a = abs(px - x)
+        side = 0.35 * math.exp(-((a - 11.8) / 1.0) ** 2)          # leather pulled in along the stitch lines
+        if full:
+            across = 1.0 / (1.0 + math.exp((a - 4.6) / 0.55))
+            along = 1.0 / (1.0 + math.exp((pz + 12.0) / 1.4))
+            return 1.5 * across * along - side
+        sag = -0.7 * math.exp(-((pz + 6.0) / 7.0) ** 2) * max(0.0, 1 - (a / 12.0) ** 2)
+        fold = -0.45 * math.exp(-((pz + 34.0) / 2.2) ** 2) * max(0.0, 1 - (a / 13.0) ** 2)
+        return sag + fold - side
+    leather_slab('flap%d' % i, x - 14, x + 14, -130, -4, -4.0, 2.0, LE2, puff=0.9 if full else 0.25, cuts=44, seed=10 + i, bev=1.4,
+                 shape=pocket_shape)
     for sx in (x - 11.8, x + 11.8):
-        stitches(sx, -128, -6.5, 3.6, -4.15 - 0.4, ang=28 if sx < x else -28)
+        def surf(z, sx=sx, x=x, i=i, full=full):   # stitches sit in the flap surface, wherever it bulges or sags
+            u = (sx - x) / 14.0; w = (z + 67.0) / 63.0
+            d = undulation(sx, z, 10 + i) + (0.9 if full else 0.25) * max(0.0, 1 - u * u) * max(0.0, 1 - max(0.0, w) ** 6) + pocket_shape(sx, z)
+            return -4.0 - d - 0.08
+        stitches(sx, -128, -6.5, 3.6, surf, ang=28 if sx < x else -28)
     if i >= 3 - LOST:  # lost pick: compressed, darker, glossier imprint of its outline left in the leather
         tip = pick_tip(i, x); pts = [(x, z) for z in range(-10, int(tip[0][1]), 3)] + tip
         floor = -2.0 - min(undulation(x + dx, z, 1) for z in range(-12, 30, 2) for dx in (0, 3)) + 0.3   # groove >= 0.3 mm deep
