@@ -1,6 +1,6 @@
 # site/ — strona gry (sesja C, etap 3, zadanie 5)
 
-Statyczny HTML bez frameworków i bez JavaScriptu, PL (`/`) i EN (`/en/`): strona główna, dla prasy, polityka prywatności, kontakt.
+Statyczny HTML bez frameworków i bez JavaScriptu, PL (`/`) i EN (`/en/`): strona główna, „Jak gramy uczciwie” (`fair.html`: weryfikacja prawa do lokalu, odmowy, „to gra, nie kurs”), dla prasy, polityka prywatności, kontakt.
 
 ```bash
 python3 site/build.py --check   # buduje site/public/ i sprawdza: zakazane frazy i style, linki, alt, rozmiar ≤ 8 MB
@@ -14,3 +14,6 @@ python3 site/build.py --check   # buduje site/public/ i sprawdza: zakazane frazy
 - Pola `[w nawiasach]` (kontakt, administrator, daty, cena wg D-06) są podświetlone — uzupełnia właściciel.
 
 **Publikacja:** workflow `site/deploy/pages.yml` jest przygotowany, ale **niewłączony** (wymaga zgody właściciela i włączenia Pages w ustawieniach repo). Instrukcja w nagłówku pliku.
+
+**Część 2 (etap 4):** gdy w `contrib/REVIEW.md` G12 (ikona) i G13 (key art) dostaną status „przyjęte”, ich kopie trafią
+do `site/assets/` (wpis w `docs/ASSETS.md`), a strona główna i press kit dostaną ikonę i key art. Na 2026-11-05 dostaw nie ma.

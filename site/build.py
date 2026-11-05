@@ -39,7 +39,7 @@ FONTS = ['BonaNova-Regular.ttf', 'BonaNova-Bold.ttf', 'AtkinsonHyperlegibleNext-
 T = {
     'pl': dict(
         lang='pl', title='Lockwright: Pogotowie Zamkowe', other='en', other_label='English',
-        nav=[('index', 'Gra'), ('press', 'Dla prasy'), ('privacy', 'Prywatność'), ('contact', 'Kontakt')],
+        nav=[('index', 'Gra'), ('fair', 'Jak gramy uczciwie'), ('press', 'Dla prasy'), ('privacy', 'Prywatność'), ('contact', 'Kontakt')],
         status='W przygotowaniu na iOS i Androida.',
         lede_h='Ktoś stoi pod własnymi drzwiami. Dzwoni po ciebie.', about_h='O grze',
         how_h='Zamek czujesz kciukami',
@@ -51,7 +51,7 @@ T = {
         screens_h='Makiety ekranów', screens_p='Kierunek wizualny „realizm” (makiety, nie zrzuty z gotowej gry).',
         honest='To gra, nie kurs. Zamki są wymyślone. Prawdziwy ślusarz zawsze sprawdza, czy klient ma prawo wejść do lokalu; w grze też.',
         promises='Bez reklam, bez energii, bez kupowania monet.',
-        press_title='Dla prasy', privacy_title='Polityka prywatności', contact_title='Kontakt',
+        press_title='Dla prasy', fair_title='Jak gramy uczciwie', privacy_title='Polityka prywatności', contact_title='Kontakt',
         contact=[('Kontakt ogólny', '[adres e-mail — do uzupełnienia]'), ('Prasa', '[adres e-mail — do uzupełnienia]'),
                  ('Prywatność', 'privacy@[domena — do ustalenia]'), ('Twórca / wydawca', '[nazwa studia lub imię i nazwisko]'),
                  ('Siedziba', '[miasto, kraj]')],
@@ -61,7 +61,7 @@ T = {
         skip='Przejdź do treści'),
     'en': dict(
         lang='en', title='Lockwright: Locksmith on Call', other='pl', other_label='Polski',
-        nav=[('index', 'Game'), ('press', 'Press'), ('privacy', 'Privacy'), ('contact', 'Contact')],
+        nav=[('index', 'Game'), ('fair', 'Playing fair'), ('press', 'Press'), ('privacy', 'Privacy'), ('contact', 'Contact')],
         status='In development for iOS and Android.',
         lede_h='Someone is stuck outside their own door. They call you.', about_h='About the game',
         how_h='You feel the lock with your thumbs',
@@ -73,7 +73,7 @@ T = {
         screens_h='Screen mockups', screens_p='The “realism” visual direction (mockups, not screenshots of a finished game).',
         honest='A game, not a course. The locks are invented. A real locksmith always checks that the customer has the right to enter; so do you.',
         promises='No ads, no energy, coins can’t be bought.',
-        press_title='Press', privacy_title='Privacy policy', contact_title='Contact',
+        press_title='Press', fair_title='Playing fair', privacy_title='Privacy policy', contact_title='Contact',
         contact=[('General', '[e-mail address — to be filled in]'), ('Press', '[e-mail address — to be filled in]'),
                  ('Privacy', 'privacy@[domain — tbd]'), ('Developer / publisher', '[studio name or owner’s name]'),
                  ('Based in', '[city, country]')],
@@ -246,7 +246,73 @@ def contact(lang):
     return f'<section class="prose"><h1>{t["contact_title"]}</h1><p>{t["contact_p"]}</p><table class="facts">{rows}</table><p class="note">{t["todo_note"]}</p></section>'
 
 
-PAGES = {'index': home, 'press': press, 'privacy': privacy, 'contact': contact}
+
+FAIR = {
+    'pl': """
+<p class="lede">Lockwright jest grą o ślusarzu z pogotowia, który pomaga ludziom. Tak samo jak w prawdziwym zawodzie,
+najpierw sprawdzamy, czy ktoś ma prawo wejść, a dopiero potem otwieramy.</p>
+<h2>Najpierw: czy to na pewno twoje drzwi</h2>
+<p>Przed każdym zamkiem jest krótka scena przy drzwiach. Klient kładzie na stole jedną, dwie albo trzy karty: dowód
+tożsamości, umowę najmu, list z adresem, sąsiada, który go zna. Gracz może poprosić o coś jeszcze. Karty są symboliczne
+— gra nigdy nie pokazuje, jak wygląda prawdziwy dokument ani jak go „sprawdzić” technicznie. Liczy się zdrowy rozsądek:
+czy historia klienta trzyma się kupy.</p>
+<h2>Czasem trzeba odmówić</h2>
+<p>Niektóre zlecenia są po to, żeby powiedzieć „nie”: ktoś chce wejść do mieszkania byłej partnerki, ktoś inny proponuje
+podwójną stawkę „bez procedur”. W takich scenach jedyną dobrą decyzją jest spokojna odmowa — albo telefon do rodziny
+czy na policję. Gra nagradza odmowę reputacją, a nie karze za nią. Policja w grze jest zwyczajna i uprzejma; nie ma
+ucieczek ani pościgów.</p>
+<h2>To gra, nie kurs</h2>
+<p>Wszystkie zamki, kłódki i sejfy w grze są wymyślone. Nie mają marek i nie odwzorowują prawdziwych produktów, a ich
+proporcje celowo zmieniliśmy, żeby dało się je czytać (na przykład szczelina linii podziału jest kilka razy szersza niż
+w prawdziwej wkładce). Gra uczy czucia mechanizmu, nie otwierania prawdziwych drzwi. Jeśli zatrzasnęły ci się drzwi,
+zadzwoń do ślusarza albo do zarządcy budynku.</p>
+<h2>Bez estetyki włamywacza</h2>
+<p>W Lockwright nie ma kominiarek, łupów, nocnych skoków ani skradania. Jest klatka schodowa z ciepłym światłem,
+warsztat, kot w łazience i rosół na gazie. Ślusarz wychodzi, kiedy drzwi są otwarte bez jednej rysy, a klient jest u
+siebie.</p>
+<h2>Uczciwie wobec gracza</h2>
+<ul>
+<li>Bez reklam, bez energii, bez kupowania monet i bez losowania nagród. Narzędzia zarabiasz pracą w warsztacie.</li>
+<li>Gra działa bez internetu i nie zbiera danych (szczegóły: <a href="privacy.html">polityka prywatności</a>).</li>
+<li>Haptyka nigdy nie jest jedynym sygnałem: wszystko, co czujesz w kciuku, słychać i widać.</li>
+</ul>
+""",
+    'en': """
+<p class="lede">Lockwright is a game about an emergency locksmith who helps people. Just like in the real trade, we
+check first that someone has the right to enter, and only then do we open the door.</p>
+<h2>First: is this really your door?</h2>
+<p>Before every lock there is a short scene at the door. The customer lays one, two or three cards on the table: an ID,
+a lease, a letter with the address, a neighbour who knows them. The player can ask for one more thing. The cards are
+symbolic — the game never shows what a real document looks like or how to "check" one technically. What counts is
+common sense: does the customer's story hold together?</p>
+<h2>Sometimes the answer is no</h2>
+<p>Some jobs exist to say "no": someone wants to get into an ex-partner's flat, someone else offers double the rate
+"without the procedures". In those scenes the only good choice is a calm refusal — or a call to the family or the
+police. The game rewards refusing with reputation; it never punishes it. The police in the game are ordinary and
+polite; there are no getaways or chases.</p>
+<h2>A game, not a course</h2>
+<p>Every lock, padlock and safe in the game is invented. They carry no brands and depict no real products, and their
+proportions were changed on purpose so you can read them (the shear-line gap, for example, is several times wider than
+in a real cylinder). The game teaches you to feel a mechanism, not to open real doors. If you're locked out, call a
+locksmith or your building manager.</p>
+<h2>No burglar aesthetic</h2>
+<p>There are no balaclavas, no loot, no night-time jobs on the sly in Lockwright. There's a stairwell in warm light, a
+workshop, a cat in the bathroom and soup on the stove. The locksmith leaves when the door is open without a scratch
+and the customer is home.</p>
+<h2>Fair to the player</h2>
+<ul>
+<li>No ads, no energy, no buying coins and no randomised rewards. You earn your tools by working.</li>
+<li>The game works offline and collects no data (details: <a href="privacy.html">privacy policy</a>).</li>
+<li>Haptics are never the only signal: everything you feel under your thumb can also be heard and seen.</li>
+</ul>
+""",
+}
+
+
+def fair(lang):
+    return f'<section class="prose"><h1>{T[lang]["fair_title"]}</h1>{FAIR[lang]}</section>'
+
+PAGES = {'index': home, 'fair': fair, 'press': press, 'privacy': privacy, 'contact': contact}
 
 
 def build():
@@ -268,7 +334,7 @@ def build():
         d.mkdir(exist_ok=True)
         depth = 0 if lang == 'pl' else 1
         for name, fn in PAGES.items():
-            title = {'index': '', 'press': T[lang]['press_title'], 'privacy': T[lang]['privacy_title'],
+            title = {'index': '', 'fair': T[lang]['fair_title'], 'press': T[lang]['press_title'], 'privacy': T[lang]['privacy_title'],
                      'contact': T[lang]['contact_title']}[name]
             doc = page(lang, name, title, fn(lang), depth).replace('IMG/', '../' * depth + 'img/')
             (d / f'{name}.html').write_text(doc)
