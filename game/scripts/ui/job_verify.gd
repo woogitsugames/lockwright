@@ -44,10 +44,16 @@ func _accept() -> void:
 
 
 func _refuse() -> void:
-	# refuse_* jobs: refusal = +5 reputation; opening despite missing proof is impossible
+	# N-15: refusal = +5 reputation, once per job, and the job is closed (saved + hidden)
+	accept_button.disabled = true
+	refuse_button.disabled = true
 	var jid: String = JobRun.current_job.get("id", "")
 	if jid.begins_with("job.refuse"):
-		Save.set_value("reputation", Save.get_value("reputation", 0) + 5)
+		var refused: Array = Save.get_value("jobs_refused", [])
+		if not refused.has(jid):
+			refused.append(jid)
+			Save.set_value("jobs_refused", refused)
+			Save.set_value("reputation", Save.get_value("reputation", 0) + 5)
 		$VBox/Hint.text = I18n.t(&"verify.refused_rep")
 		await get_tree().create_timer(1.2).timeout
 	JobRun.current_job = {}

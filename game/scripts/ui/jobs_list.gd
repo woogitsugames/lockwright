@@ -13,6 +13,7 @@ func _ready() -> void:
 	back_button.text = I18n.t(&"common.back")
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 	var completed: Array = Save.get_value("jobs_completed", [])
+	var refused: Array = Save.get_value("jobs_refused", [])  # N-15: refused jobs are closed
 	var jobs: Array = []
 	for path in DirAccess.get_files_at(JOBS_DIR):
 		if path.ends_with(".json"):
@@ -30,6 +31,8 @@ func _ready() -> void:
 		var jid: String = job.get("id", "")
 		if completed.has(jid):
 			b.text = "✓ " + b.text
+		elif refused.has(jid):
+			continue  # N-15: refused jobs leave the list
 		b.pressed.connect(func() -> void:
 			JobRun.start(job)
 			get_tree().change_scene_to_file("res://scenes/job_arrival.tscn"))

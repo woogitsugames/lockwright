@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7lockj0bscen3"]
+
+[ext_resource type="Script" path="res://scripts/lock/lock_job.gd" uid="uid://b7lockj0bwrapp3r" id="1"]
+
+[node name="LockJob" type="Node"]
+script = ExtResource("1")

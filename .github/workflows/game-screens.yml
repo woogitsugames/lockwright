@@ -28,7 +28,7 @@ jobs:
       - name: Build lockcore_gd (linux)
         run: |
           pip install scons
-          git clone --depth 1 https://github.com/godotengine/godot-cpp.git /tmp/godot-cpp
+          git init -q /tmp/godot-cpp && git -C /tmp/godot-cpp fetch -q --depth 1 https://github.com/godotengine/godot-cpp.git e103d348c4b2d8df7b819126d855e19381cb9a87 && git -C /tmp/godot-cpp checkout -q FETCH_HEAD
           cd /tmp/godot-cpp && scons platform=linux target=template_debug arch=x86_64 custom_api_file=gdextension/extension_api-4-7.json -j8
           cd $GITHUB_WORKSPACE/game/addons/lockcore_gd
           GODOT_CPP=/tmp/godot-cpp scons platform=linux target=template_debug arch=x86_64 custom_api_file=/tmp/godot-cpp/gdextension/extension_api-4-7.json -j8
@@ -37,10 +37,10 @@ jobs:
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path game --import
           xvfb-run -a -s "-screen 0 1000x1000x24" env LIBGL_ALWAYS_SOFTWARE=1 GALLIUM_DRIVER=llvmpipe \
             /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --path game --display-driver x11 --rendering-driver opengl3 \
-            res://tests/screens.tscn -- --out $GITHUB_WORKSPACE/docs/handoff/screens --size 412x915
+            res://tests/screens.tscn -- --out=$GITHUB_WORKSPACE/docs/handoff/screens --size=412x915
           xvfb-run -a -s "-screen 0 1000x1000x24" env LIBGL_ALWAYS_SOFTWARE=1 GALLIUM_DRIVER=llvmpipe \
             /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --path game --display-driver x11 --rendering-driver opengl3 \
-            res://tests/screens.tscn -- --out $GITHUB_WORKSPACE/docs/handoff/screens --size 915x412
+            res://tests/screens.tscn -- --out=$GITHUB_WORKSPACE/docs/handoff/screens --size=915x412
       - name: Upload screenshots
         uses: actions/upload-artifact@v4
         with:

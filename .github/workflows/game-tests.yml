@@ -20,9 +20,9 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install scons
-      - name: Clone + build godot-cpp (API 4.7)
+      - name: Clone + build godot-cpp (API 4.7, pinned N-28)
         run: |
-          git clone --depth 1 https://github.com/godotengine/godot-cpp.git /tmp/godot-cpp
+          git init -q /tmp/godot-cpp && git -C /tmp/godot-cpp fetch -q --depth 1 https://github.com/godotengine/godot-cpp.git e103d348c4b2d8df7b819126d855e19381cb9a87 && git -C /tmp/godot-cpp checkout -q FETCH_HEAD
           cd /tmp/godot-cpp
           scons platform=linux target=template_debug arch=x86_64 custom_api_file=gdextension/extension_api-4-7.json -j8
       - name: Build lockcore_gd GDExtension

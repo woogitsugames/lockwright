@@ -18,6 +18,7 @@ job.accept,Open for this client,Otwórz dla tego klienta
 job.refuse,Refuse this job,Odmów
 job.opened,Lock opened. Receipt settled.,Zamek otwarty. Rachunek rozliczony.
 job.reward_fmt,Reward: {n} coins,Nagroda: {n} monet
+job.tip_fmt,Tip (clean opening): {n} coins,Napiwek (czyste otwarcie): {n} monet
 common.continue,Continue,Kontynuuj
 verify.title,Verify the right to enter,Sprawdź prawo do lokalu
 verify.hint,The client lays out the cards. You decide.,Klient kładzie karty na stole. Ty decydujesz.

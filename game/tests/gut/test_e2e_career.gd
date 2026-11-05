@@ -36,10 +36,15 @@ func test_all_playable_jobs_open_and_save_roundtrip() -> void:
 		var seed := JobRun.seed_for(job)
 		var tier := JobRun.tier_for(job)
 		assert_true(_solve_replay(fam, seed, tier), "job %s (%s t%d) not openable by bot" % [job.get("id"), fam, tier])
-		Save.set_value("jobs_completed/%s" % job.get("id"), true)
+		# N-20: go through the real game path (JobRun.start/complete + lock_scene_path),
+		# not a different save key than the game uses
+		JobRun.start(job)
+		assert_eq(JobRun.lock_scene_path(), JobRun.lock_scene_path())
+		JobRun.complete()
 		Save.save()
 		Save.load_save()
-		assert_true(Save.get_value("jobs_completed/%s" % job.get("id"), false), "save roundtrip failed for %s" % job.get("id"))
+		var completed: Array = Save.get_value("jobs_completed", [])
+		assert_true(completed.has(job.get("id")), "job %s not marked completed via JobRun" % job.get("id"))
 	assert_gt(playable, 10, "expected many playable jobs")
 
 

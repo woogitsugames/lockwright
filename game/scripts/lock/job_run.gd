@@ -6,6 +6,8 @@ static var current_job: Dictionary = {}
 static var mode: StringName = &"job"  # &"job" | &"tutorial"
 static var tutorial_stage := 0
 static var lives := 3
+static var clean := true  # N-25: no drop/break/overset during the current run
+static var last_tip := 0  # N-25: tip paid by JobRun.complete()
 
 # lockcore families implemented in lockcore (v0.4); jobs with other families are
 # hidden on the list (N-05) instead of silently remapped.
@@ -32,10 +34,11 @@ static func is_playable(job: Dictionary) -> bool:
 
 
 static func lock_scene_path() -> String:
-	# N-10/D-37: pin_tumbler gets the photoreal screen (plan B); other families stay
-	# on the placeholder view until session A ships their scenes
+	# N-10/D-37: pin_tumbler gets the photoreal screen (plan B) via a thin wrapper that
+	# feeds it the job's family/seed/tier (N-14); other families stay on the placeholder
+	# view until session A ships their scenes
 	if family_for(current_job) == &"pin_tumbler" or current_job.is_empty():
-		return "res://scenes/photoreal/lock_photoreal.tscn"
+		return "res://scenes/lock_job.tscn"
 	return "res://scenes/lock.tscn"
 
 
@@ -60,6 +63,8 @@ static func start(job: Dictionary) -> void:
 	current_job = job
 	mode = &"job"
 	lives = 3
+	clean = true
+	last_tip = 0
 
 
 static func start_tutorial(stage: int) -> void:
@@ -68,6 +73,8 @@ static func start_tutorial(stage: int) -> void:
 	tutorial_stage = stage
 	current_job = {"id": "tutorial.s%d" % (stage + 1), "family": "pin_tumbler", "tier": 1, "reward_coins": 0, "i18n": {}}
 	lives = 3
+	clean = true
+	last_tip = 0
 
 
 static func complete() -> void:
@@ -82,6 +89,8 @@ static func complete() -> void:
 	if not completed.has(jid):
 		completed.append(jid)
 		Save.set_value("jobs_completed", completed)
-	Save.set_value("coins", Save.get_value("coins", 0) + int(current_job.get("reward_coins", 0)))
+	var reward := int(current_job.get("reward_coins", 0))
+	last_tip = int(reward * 0.25) if clean and reward > 0 else 0  # N-25: tip for a clean opening (JOBS.md §3, 0–30%)
+	Save.set_value("coins", Save.get_value("coins", 0) + reward + last_tip)
 	Save.set_value("stats/locks_opened", Save.get_value("stats/locks_opened", 0) + 1)
 	current_job = {}

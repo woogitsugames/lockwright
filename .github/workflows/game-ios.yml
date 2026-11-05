@@ -39,9 +39,9 @@ jobs:
           pip3 install --user scons || pip3 install --break-system-packages scons
           echo "$(python3 -m site --user-base)/bin" >> $GITHUB_PATH
 
-      - name: Clone godot-cpp (API 4.7 via custom_api_file)
+      - name: Clone godot-cpp (API 4.7 via custom_api_file, pinned N-28)
         run: |
-          git clone --depth 1 https://github.com/godotengine/godot-cpp.git godot-cpp
+          git init -q godot-cpp && git -C godot-cpp fetch -q --depth 1 https://github.com/godotengine/godot-cpp.git e103d348c4b2d8df7b819126d855e19381cb9a87 && git -C godot-cpp checkout -q FETCH_HEAD
 
       - name: Build godot-cpp (ios device, API 4.7)
         run: |

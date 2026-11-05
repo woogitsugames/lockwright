@@ -81,6 +81,7 @@ jobs:
           $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-36" "build-tools;36.1.0" "platform-tools" "ndk;28.1.13356709"
           echo "ANDROID_HOME=$ANDROID_HOME" >> $GITHUB_ENV
           echo "ANDROID_SDK_ROOT=$ANDROID_HOME" >> $GITHUB_ENV
+          echo "ANDROID_NDK_ROOT=$ANDROID_HOME/ndk/28.1.13356709" >> $GITHUB_ENV
 
       - name: Download artifacts
         uses: actions/download-artifact@v4
@@ -111,11 +112,11 @@ jobs:
       - name: Build lockcore_gd for Android arm64
         run: |
           pip install scons
-          git clone --depth 1 https://github.com/godotengine/godot-cpp.git /tmp/godot-cpp
+          git init -q /tmp/godot-cpp && git -C /tmp/godot-cpp fetch -q --depth 1 https://github.com/godotengine/godot-cpp.git e103d348c4b2d8df7b819126d855e19381cb9a87 && git -C /tmp/godot-cpp checkout -q FETCH_HEAD
           cd /tmp/godot-cpp
-          scons platform=android target=template_debug arch=arm64 custom_api_file=gdextension/extension_api-4-7.json -j8
+          scons platform=android target=template_debug arch=arm64 ndk_version=28.1.13356709 custom_api_file=gdextension/extension_api-4-7.json -j8
           cd $GITHUB_WORKSPACE/game/addons/lockcore_gd
-          GODOT_CPP=/tmp/godot-cpp scons platform=android target=template_debug arch=arm64 custom_api_file=/tmp/godot-cpp/gdextension/extension_api-4-7.json -j8
+          GODOT_CPP=/tmp/godot-cpp scons platform=android target=template_debug arch=arm64 ndk_version=28.1.13356709 custom_api_file=/tmp/godot-cpp/gdextension/extension_api-4-7.json -j8
           mkdir -p bin
 
       - name: Install Android build template into project
