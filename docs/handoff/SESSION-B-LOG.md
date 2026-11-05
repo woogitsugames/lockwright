@@ -183,3 +183,4 @@ Sesja A zbudowała fotorealistyczny ekran zamka na planie B (D-31, zaakceptowany
 - **G07** `contrib/gpt/G07/images/*.jpg` (1080×2340): tło ekranu przyjazdu wg typu miejsca i pory (pole `place`/`time` w danych zleceń; dodaj, jeśli brak). Dolne ~40% spokojne pod interfejs.
 - **G08** `contrib/gpt/G08/images/`: tło warsztatu (menu): 01 rano, 06 popołudnie, 08 wieczór — wg godziny gry.
 - Kopiuj do `game/assets/ui/gpt/` (JPG/WebP ≤ 1 MB po kompresji), bez zmiany treści.
+- **G11** `contrib/gpt/G11/png/g11-NN-<pl|en|clean>.png` (+ `cards.json`, `stamps/`): kartki mistrza w zwijce dla samouczka S1–S3 (D-40) — wersja wg języka gry, `clean` gdy włączone „bez tekstu”. Pieczątka „to gra, nie kurs” ze `stamps/`.
