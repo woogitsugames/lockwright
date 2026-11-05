@@ -32,7 +32,7 @@ elif WHAT == 'plate':
 elif WHAT == 'matcap':
     os.makedirs(OUT, exist_ok=True)
     cam = scene.camera
-    fwd = (cam.matrix_world.to_3x3() @ Vector((0, 0, -1))).normalized()
+    fwd = (cam.rotation_euler.to_matrix() @ Vector((0, 0, -1))).normalized()  # matrix_world is stale here
     centre = Vector((13.5, -6.0, 9.0))  # in front of the cut plane, in the same light field as the pins
     for o in bpy.data.objects:
         if o.type in ('MESH', 'CURVE'):

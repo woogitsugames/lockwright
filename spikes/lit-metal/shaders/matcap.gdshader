@@ -11,8 +11,9 @@ uniform float normal_strength = 1.0;
 
 void fragment() {
 	vec3 n = NORMAL;
-	vec3 tn = texture(normal_map, UV).xyz * 2.0 - 1.0;
-	tn.xy *= normal_strength;
+	// Normal maps are imported as two-channel (RG) VRAM textures: rebuild Z.
+	vec2 nxy = (texture(normal_map, UV).xy * 2.0 - 1.0) * normal_strength;
+	vec3 tn = vec3(nxy, sqrt(max(0.0, 1.0 - dot(nxy, nxy))));
 	n = normalize(TANGENT * tn.x + BINORMAL * tn.y + NORMAL * tn.z);
 	vec2 muv = vec2(n.x, -n.y) * 0.49 + 0.5;
 	float ao = mix(1.0, texture(orm, UV).r, 0.6);

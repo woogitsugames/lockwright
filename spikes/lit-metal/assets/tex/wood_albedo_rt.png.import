@@ -2,6 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
+uid="uid://btkgvacllgnkj"
+path.bptc="res://.godot/imported/wood_albedo_rt.png-1d1f330f2e9746438f713ba64706c7d0.bptc.ctex"
+path.astc="res://.godot/imported/wood_albedo_rt.png-1d1f330f2e9746438f713ba64706c7d0.astc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -10,6 +13,7 @@ metadata={
 [deps]
 
 source_file="res://assets/tex/wood_albedo_rt.png"
+dest_files=["res://.godot/imported/wood_albedo_rt.png-1d1f330f2e9746438f713ba64706c7d0.bptc.ctex", "res://.godot/imported/wood_albedo_rt.png-1d1f330f2e9746438f713ba64706c7d0.astc.ctex"]
 
 [params]
 
