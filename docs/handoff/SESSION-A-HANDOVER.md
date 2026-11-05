@@ -67,6 +67,12 @@ Utwórz je narzędziem `create_trigger` (fire into this session):
 
 **APK:** run **131** (https://github.com/woogitsugames/lockwright/actions/runs/42100326036) jest zielony i ma VIBRATE w manifeście. AAB w artefakcie ma 55,6 MB. APK `Lockwright-debug-run131.apk` wysłany właścicielowi 2026-11-05 ok. 20:40 UTC. Czekamy na jego test (lista w §5 pkt 1).
 
+**Restart kontenera ok. 20:50 UTC przerwał obu ostatnich agentów.** Poprzednia sesja ich nie wznawiała, bo kończył się limit. Ich zapisany stan jest w repo:
+- menu: `art/blender/menu_gate.py` (scena), pierwszy roboczy render `art/renders/menu/menu_portrait.png` (commit a4f59d1), `menu_hits*.json`. **Do poprawy** według uwag właściciela i sesji A: dramatyczne światło jak w zamkach, tablica na ok. 75% szerokości, mniej równe litery, większe zawieszki, przetarcia ściany. Dalej wersja pozioma i stan „wciśnięty”;
+- rendery zamków: oddane wafer, lever, ring_combo, wooden_pin. Do zrobienia: warded oraz poprawki lever (patyna) i ring_combo („E” → cyfra).
+
+Te zadania przejmij nowymi agentami.
+
 **Agenci, którzy mogli jeszcze pracować w chwili przekazania** (dokończą i wypchną):
 - **Render menu w Blenderze (proof):** `art/blender/menu_gate.py` → `art/renders/menu/` (`menu_portrait.png`, `menu_landscape.png`, `menu_pressed_example.png`, `menu_hits.json`).
 - **Rendery zamków z materiałami ze zdjęć** (`art/renders/*.png`): zapadkowy (patyna za duża → poprawka), szyfrowy (litera „E” na bębenku → cyfra), z zastawkami.
