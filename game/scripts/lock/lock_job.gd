@@ -11,14 +11,14 @@ func _ready() -> void:
 		seed = JobRun.seed_for(JobRun.current_job)
 		tier = JobRun.tier_for(JobRun.current_job)
 	super._ready()
-	# task 7: quality profile drives the plan-B plate (SubViewport) size + MSAA
+	# task 7 / N-65: quality profile drives the plan-B section resolution scale + MSAA
 	_apply_quality()
 	Quality.profile_changed.connect(func(_p: Dictionary) -> void: _apply_quality())
-	get_tree().create_timer(0.05).timeout.connect(_apply_quality)  # TEMP: auto profile pick
 
 
 func _apply_quality() -> void:
+	# N-65: the section viewport follows the on-screen pixel size (view._layout) scaled by the
+	# profile; never a fixed 824×1100 stretched over a large screen
 	if view:
 		view.msaa = Quality.msaa_index()
-	if view and view.viewport:
-		view.viewport.size = Quality.planb_size(Vector2i(824, 1100))
+		view.render_scale = float(Quality.current.get("planb_scale", 1.0))
