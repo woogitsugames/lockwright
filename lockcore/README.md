@@ -4,8 +4,9 @@ Deterministic lock-logic library for Lockwright (C++20, no engine dependency, no
 third-party code). The Godot layer will reach it through GDExtension (D-04); the
 library itself builds and tests natively on Linux, macOS, Android NDK and iOS.
 
-Status: **v0.5** — core + seven families (`pin_tumbler`, `wafer`, `wooden_pin`, `warded`,
-`lever`, `lever_detector`, `ring_combo`), verifier with three bots, replays, light fuzzing.
+Status: **v0.6** — core + families `pin_tumbler`, `wafer`, `wooden_pin`, `warded`,
+`lever`, `lever_detector`, `ring_combo` and the D-59 families (`dial_safe`, …; see v0.6 below),
+verifier with three bots, replays, light fuzzing.
 Balance per tier (feeling / clumsy bot): [`BALANCE.md`](BALANCE.md).
 
 ## Build and test
@@ -129,6 +130,7 @@ Tier tables: `pin_tumbler` t2–t7 per LOCKS.md §2.6 (t5 5–6 stacks, t7 overs
 | `lever` | t3–t5 | T, D, L | `TOOL_LEVER_CRANK` | gates, false notches, spring fall-back |
 | `lever_detector` | t5–t6 | T, D, L, R | `TOOL_LEVER_CRANK` | lever + detector trip and rotate-back reset |
 | `ring_combo` | t2–t3 | T, D, R | `TOOL_SHACKLE_PULLER` | which ring binds, where it drops in, false notches |
+| `dial_safe` | t1–t3 | T, L | `TOOL_LISTENING_CUP` | wheel pack: pick up, listen for the gate, reverse to leave it (LOCKS.md §2.18) |
 
 `wooden_pin` (§2.1): like `wafer` (set pegs stay up, `t_release` 0.20 above `t_hold` 0.10, so an
 overset costs no drop), but the tool never breaks: a pull above `tau_creak` emits `wood.creak`
@@ -220,6 +222,20 @@ continuous signals in [0, 1], view positions / stress / rotation in [0, 1], wind
 S >= 0. CI runs it under ASan + UBSan with `-fno-sanitize-recover=undefined` and a 300 s timeout.
 
 ## API changes
+
+### v0.6 (D-59 families)
+
+Additive; hashes and goldens of the earlier families unchanged.
+
+- New families `dial_safe` (`dial_safe.hpp`, LOCKS.md §2.18). They read only `tension`, `pick_depth`,
+  `pick_lift` (no `rotate` / `push`), so a plan-B screen calling `step(t, depth, lift)` drives them.
+- `spec.hpp`: `TOOL_LISTENING_CUP` (dial_safe).
+- `family.hpp`: `ViewModel` gains `q16 dial` (dial reading, fraction of a turn) and `std::int32_t
+  dial_divisions` (0 for families without a dial). The GDExtension `describe()` exposes them as
+  `dial` (float) and `dial_divisions` (int).
+- `dial_safe` sub-events: `safe.detent` (contact), `safe.pickup` (bind), `safe.fence_drop` (set),
+  `safe.fence_bounce` (contact). Element `position` = wheel number / divisions; `pick_element` = the
+  wheel being listened to; `hold_progress` = bolt travel after the fence drops.
 
 ### v0.5 (review T25, [`REVIEW-T25.md`](REVIEW-T25.md))
 

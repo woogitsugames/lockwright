@@ -8,7 +8,7 @@ nazwy ogólne (np. „zamek suwakowy”), bez nazwisk i bez marek. Powiązane: `
 
 Spis treści
 1. Wspólny model
-2. Karty rodzin (17)
+2. Karty rodzin (19)
 3. Tabela zbiorcza
 4. Ryzyka projektowe
 5. Wzór karty
@@ -1049,6 +1049,66 @@ przejeżdża przy `tool_swap`.
 
 ---
 
+### 2.18 Sejf z pokrętłem (pakiet kół) — `dial_safe`
+**PL:** Sejf z pokrętłem · **EN:** Dial Safe · **Tier:** t1–3 (lockcore v0.6) · **Faza:** D-59 (zlecenia
+`job.krakow_antiquarian` t1, `job.uncle_safe_heirs` t2). Research: `docs/research/new-families.md` §1.
+Prostsza, krótka wersja idei z §2.13 (`safe_wheels`, t8–10 bez zmian): bez wykresów punktów kontaktu.
+
+**Zasada (encyklopedycznie).** Pokrętło przez krzywkę i zabieraki napędza pakiet kół; każde koło ma bramkę; gdy
+wszystkie bramki stoją pod płotkiem, płotek opada we wcięcie krzywki i klamka cofa rygiel. Zmiana kierunku zostawia
+ustawione koło, bo luz zabieraka to prawie cały obrót.
+
+**Logika zagadki (wymyślona, `lockcore/src/families/dial_safe.cpp`).**
+- 2–4 koła (koło 0 najdalej od pokrętła, ustawiane pierwsze), 20/30/40 działek. Luz każdego zabieraka to dokładnie
+  pół obrotu w każdą stronę, więc koło niesione pokazuje tę samą liczbę co pokrętło.
+- **Nasłuch:** `tension` w paśmie `[band_lo, band_hi]` (środek 0,40) = płotek leży na kołach. Słychać tylko koło,
+  które ostatnie dołączyło do pakietu (najdalsze z niesionych): `near_shear` ~2 działki przed bramką,
+  `gate_align` w oknie, `false_set` w płytkim wcięciu (od t2). Gdy to koło stanie w bramce: `set`. Poniżej pasma
+  cisza (tylko działki); powyżej pasmo zakleszcza pakiet: pokrętło stoi, `pick_drag` = wychylenie kciuka, koła `jammed`.
+- **Zbieranie kół:** każde dołączenie = `safe.pickup` (podstawa `bind`, wyższy ton dla bliższych kół), opór pokrętła
+  rośnie z liczbą niesionych kół. Procedura: w prawo aż dołączy koło 0, słuchaj jego bramki, stań; w lewo aż dołączy
+  koło 1 (po jednym obrocie), stań na jego bramce; itd. Przekręcenie o obrót za daleko zabiera ustawione koło:
+  `drop` z numerem koła (tylko koło zostawione celowo, nie przypadkowe).
+- **Otwarcie:** wszystkie koła stoją w bramkach + pokrętło na znaczniku 0 (wcięcie krzywki) + klamka `tension ≥ band_lo`
+  → `safe.fence_drop` (podstawa `set`), po 0,3 s trzymania `open`. Klamka na znaczniku przy złym kole:
+  `safe.fence_bounce` (podstawa `contact`, raz na przyjazd).
+- Brak łamania, brak zrzutu przy puszczeniu klamki (rodzina łagodna); koszt błędu = czas.
+
+**Wejścia (D-59: tylko T, D, L).** `tension` = docisk klamki/nasłuchu (lewy kciuk); `pick_lift` = **pokrętło jak
+kółko przewijania**: kciuk w górę = w prawo, w dół = w lewo, wychylenie = prędkość (do 0,8 obr./s, martwa strefa
+1/16); puszczone pokrętło dosuwa się do najbliższej działki. `pick_depth` nieużywane.
+
+**Parametry generatora (`difficulty_for_tier`).**
+
+| Tier | Koła | Działki | Okno bramki | Pasmo nasłuchu | Fałszywe/koło | gate_feel | Limit |
+|---|---|---|---|---|---|---|---|
+| t1 | 2 | 20 | ±1,2 dz. | 0,20–0,60 | 0 | 0,90 | 120 s |
+| t2 | 3 | 30 | ±1,2 dz. | 0,25–0,55 | 0–1 | 0,70 | 150 s |
+| t3 | 3–4 | 40 | ±0,6 dz. | 0,29–0,51 | 1 | 0,55 | 180 s |
+
+Generator: kolejne liczby kombinacji różnią się o ≥ 1/5 obrotu, ostatnia o ≥ 1/5 od znacznika; start kół poza
+oknami. Wyrocznia odtwarza sekwencję „prawo, lewo, …, znacznik” analitycznie i odrzuca zamek, w którym któryś
+przystanek wypada < 2 działki przed zabraniem poprzedniego koła.
+
+**ViewModel (dla ekranu planu B).** `elements[i]`: koło i; `position` = liczba koła / działki (ułamek obrotu),
+`window_lo/hi` = bramka, `variant` = liczba fałszywych wcięć, `state`: `free` (stoi poza bramką), `bound` (niesione),
+`near` (niesione, słuchane, przy bramce), `set` (stoi w bramce), `false_set` (stoi w fałszywym), `jammed` (zakleszczone).
+`pick_element` = słuchane koło (−1 brak), `pick_lift` = wychylenie pokrętła, `dial` + `dial_divisions` (v0.6)
+= odczyt pokrętła, `hold_progress` = `core_rotation` = ruch rygla po opadnięciu płotka, `tension_resistance`
+mięknie (×0,5), gdy słuchane koło stoi w bramce, i do ×0,3 po opadnięciu płotka.
+
+**Haptyka i dźwięk.** `safe.detent` drobne tyknięcia (głośniejsze z liczbą kół), `safe.pickup` metaliczne „tok”,
+`near_shear` szmer, `gate_align` wyraźny, `set` głuchy „klap”, `false_set` krótszy i wyższy, `drop` zgrzyt,
+`safe.fence_drop` ciężki opad, `safe.fence_bounce` twardy stuk.
+
+**Weryfikator (1000 seedów/tier).** Bot skryptowy 0 porażek (t_p50 11/15/19 s), niezdarny 100 %, czujący 100 %
+(t_p50 9/20/32 s). Złote: `dial_safe_t2_s3`, `dial_safe_t3_s7_feel`.
+
+**Realizm kontra zabawa.** Działek 20–40 zamiast 100, okna szerokie, słychać pojedyncze koło (realnie nie):
+to gra, nie kurs. Żadnych odniesień do klas zabezpieczeń ani modeli.
+
+---
+
 ## 3. Tabela zbiorcza
 
 | # | ID | PL / EN | Tier | Faza | Widok | Wejścia | Kluczowa nowa logika | Narzędzie główne |
@@ -1070,6 +1130,7 @@ przejeżdża przy `tool_swap`.
 | 2.15 | `dimple` | Wkładka nawiercana / Dimple Lock | 6–9 | F3 | góra 25° | T, D, L, R(rząd) | rzędy | Chorągiewka |
 | 2.16 | `sidebar` | Listwa boczna / Sidebar Lock | 6–9 | F3 | bok + warstwa | T, D, L, R | dwie warstwy warunków | Piórko boczne |
 | 2.17 | `hybrid` | Hybrydy / Hybrid Locks | 8–10 | F3 | dzielony | suma | kompozycja modułów | suma |
+| 2.18 | `dial_safe` | Sejf z pokrętłem / Dial Safe | 1–3 | D-59 | czoło + przekrój kół | T, L | pakiet kół, nasłuch, zmiana kierunku | Słuchawka |
 
 T = tension, D = pick_depth, L = pick_lift, R = rotate, P = push.
 
