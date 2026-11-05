@@ -35,7 +35,7 @@ func _session(sd: int = -1, tier: int = 1, spec: String = "") -> RefCounted:
 
 
 func _native() -> bool:
-	return ClassDB.class_exists("LockcoreSession")
+	return ClassDB.class_exists("LockcoreSession") and ClassDB.class_has_method("LockcoreSession", "create_from_json")
 
 
 ## A patient beginner: left thumb dragged ~70 dp up and held (unless auto), right thumb pressed
@@ -117,8 +117,11 @@ func test_s1_opens_with_two_thumbs() -> void:
 	assert_true(r[0], "S1 must open with a held left thumb and a slow right thumb")
 	assert_lt(r[1], 60.0, "S1 target 20–40 s for a novice; the patient bot needs %.1f s" % r[1])
 	var c: TutorialCoach = r[2]
-	var want := [TutorialCoach.Step.TENSION, TutorialCoach.Step.PICK, TutorialCoach.Step.BINDING, TutorialCoach.Step.CLICK]
-	assert_eq(c.history.slice(0, 4), want, "steps 1–4 in order (N-61): %s" % [c.history])
+	var want := [TutorialCoach.Step.TENSION, TutorialCoach.Step.PICK, TutorialCoach.Step.BINDING]
+	if _session(-1, 1, JobRun.TUTORIAL_SPECS[0]).describe()["elements"].size() > 1:
+		want.append(TutorialCoach.Step.CLICK)  # generated 3-pin fallback: "click, find the next one"
+	# authored pin.s1 has one pin: its set click is the opening, so BINDING goes straight to OPEN
+	assert_eq(c.history.slice(0, want.size()), want, "steps in order (N-61): %s" % [c.history])
 	assert_eq(c.history.back(), TutorialCoach.Step.OPEN)
 
 
@@ -134,7 +137,7 @@ func test_s1_opens_in_auto_tension_with_right_thumb_only() -> void:
 func test_authored_tutorial_locks_load() -> void:
 	# LEVELS.md §2: S1 one pin (window 0.20), S2 and S3 three pins (windows 0.16 / 0.12)
 	if not _native():
-		pending("LockcoreSession GDExtension not loaded (FakeLockSession plays generated t1)")
+		pending("LockcoreSession without create_from_json (FakeLockSession or an old build plays generated t1)")
 		return
 	var want := [["pin.s1", 1, 0.20], ["pin.s2", 3, 0.16], ["pin.s3", 3, 0.12]]
 	for i in 3:
