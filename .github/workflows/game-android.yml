@@ -109,14 +109,14 @@ jobs:
 
       - name: Import + export debug APK
         run: |
-          mkdir -p build
+          mkdir -p game/build
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path game --import
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path game \
-            --export-debug "Android" build/lockwright-debug.apk \
+            --export-debug "Android" game/build/lockwright-debug.apk \
             --keystore /tmp/debug.keystore --keystore-user androiddebugkey --keystore-pass android
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: lockwright-android-debug
-          path: build/lockwright-debug.apk
+          path: game/build/lockwright-debug.apk
