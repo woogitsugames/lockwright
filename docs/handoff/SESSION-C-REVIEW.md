@@ -559,3 +559,12 @@ Zakres: commity sesji B od 09:10 (66a8196 „Task 17: perf GUT test”, ed5dfda 
 - **N-19 · Medium · `game-screens.yml` odwołuje się do nieistniejącej sceny** `res://tests/screens.tscn` (run #2 failure). Zrzuty do sklepu i audytu robię na razie własnym narzędziem (`store/screenshots/capture_game.sh`, `qa/bot/a11y_shots.gd`).
 - **N-20 · Low · Test e2e kariery w GUT (07c1621) przechodzi, a gra nie** — `test_e2e_career.gd` rozwiązuje zamki samą sesją lockcore (bez scen) i zapisuje `Save.set_value("jobs_completed/<id>", true)` (l. 39), czyli **inny klucz** niż gra (`JobRun.complete()` trzyma tablicę `jobs_completed`). Test nie łapie więc ani N-13 (scena planu B nie woła `complete()`), ani rozjazdu kluczy. Automat `qa-career` gra przez sceny i to wykrywa; warto, żeby GUT przechodził choć jedno zlecenie przez `JobRun.start/complete` i `lock_scene_path()`.
 - N-13…N-16: bez zmian w kodzie.
+
+## Runda 4 — 2026-11-05 10:20
+Zakres: 0ec9cae (sesja B: `tests/screens.{gd,tscn}`, argumenty gradlew), b45bdd4 (inna sesja: przywrócone zadania AAR w `game-android.yml`).
+- **N-19 → częściowo:** `res://tests/screens.tscn` już jest, ale `screens.gd` czyta argumenty w formie `--out=DIR` / `--size=WxH`, a `game-screens.yml` podaje `--out DIR --size 412x915` (spacja). Skrypt zignoruje oba, zapisze do `/tmp/shots` w domyślnym rozmiarze, a krok upload (`docs/handoff/screens/*.png`) nic nie znajdzie. **Poprawka:** jedna forma w obu miejscach (np. `--out=$GITHUB_WORKSPACE/docs/handoff/screens --size=412x915`). Przy okazji: lista ekranów ma `lock.tscn`, a gra używa dla pin_tumbler `photoreal/lock_photoreal.tscn` (do sklepu i audytu potrzebny ten drugi).
+- **N-21 · Medium (przewidywane) · Eksport APK: godot-cpp nie znajdzie NDK** · `game-android.yml:111-118`
+  - Job `export-debug-apk` instaluje SDK bez NDK (l. 81) i woła `scons platform=android` bez `ndk_version`. godot-cpp (master) domyślnie szuka NDK 28.1.13356709 → „Could not find NDK toolchain” (odtworzone lokalnie). Dziś job jest pomijany, bo wcześniej pada `plugin-aar`, więc błąd wyjdzie dopiero po naprawie AAR.
+  - **Poprawka:** doinstalować `ndk;29.0.14206865` i dodać `ndk_version=29.0.14206865` do obu wywołań scons (działa lokalnie i w `spike-determinism-apk`).
+- `game-android` run 65 (0ec9cae): `plugin-aar` → „Build haptics AAR” failure; inna sesja opisała to w b45bdd4 — nie duplikuję.
+- N-13…N-18, N-20: bez zmian w kodzie (brak nowych commitów w `game/scripts`).
