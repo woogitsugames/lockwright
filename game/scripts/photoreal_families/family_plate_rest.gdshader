@@ -1,0 +1,21 @@
+// Plan B for parts that are in the Cycles plate but rotate/shift slightly (plug, tension wrench):
+// the plate is projected from the part's REST pose so the picture travels with the geometry.
+shader_type spatial;
+render_mode unshaded, shadows_disabled, ambient_light_disabled, fog_disabled;
+
+uniform sampler2D plate : source_color, filter_linear, repeat_disable;
+uniform mat4 rest_model = mat4(1.0);
+uniform float exposure = 1.0;
+#include "res://scripts/photoreal_families/family_occlusion.gdshaderinc"
+varying vec4 rest_clip;
+varying vec3 world_pos;
+
+void vertex() {
+	rest_clip = PROJECTION_MATRIX * VIEW_MATRIX * rest_model * vec4(VERTEX, 1.0);
+	world_pos = (rest_model * vec4(VERTEX, 1.0)).xyz;
+}
+
+void fragment() {
+	vec2 uv = rest_clip.xy / rest_clip.w * 0.5 + 0.5;
+	ALBEDO = texture(plate, uv).rgb * family_stack_shade(world_pos) * exposure;
+}

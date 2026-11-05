@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/photoreal_families/lock_photoreal_family.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/photoreal_families/lock_photoreal_family_view.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/lock/input_sampler.gd" id="3"]
+
+[node name="LockPhotorealWafer" type="Node"]
+script = ExtResource("1")
+family = &"wafer"
+tier = 2
+
+[node name="ViewLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="View" type="Control" parent="ViewLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2")
+family_id = &"wafer"
+
+[node name="InputSampler" type="Node" parent="."]
+script = ExtResource("3")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="PauseCover" type="ColorRect" parent="UILayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.16, 0.105, 0.07, 1)
+
+[node name="Box" type="VBoxContainer" parent="UILayer/PauseCover"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+theme_override_constants/separation = 8
