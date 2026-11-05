@@ -131,3 +131,4 @@ func _ready() -> void:
 		card.add_child(source)
 		notes_list.add_child(panel)
 	ScreenFrame.enter($Frame/VBox/Scroll)
+	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds

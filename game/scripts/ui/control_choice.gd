@@ -6,23 +6,9 @@ extends Control
 
 const BG := "res://assets/ui/gpt/workshop/02-key-cutter-afternoon-portrait.webp"
 
-# chalk sketches (white strokes on slate), DPITexture keeps them sharp
-const SKETCH_AUTO := """<svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" viewBox="0 0 88 88">
-<rect width="88" height="88" rx="6" fill="#2b2d2a"/>
-<rect x="22" y="10" width="44" height="68" rx="6" fill="none" stroke="#ece8dc" stroke-width="2.5"/>
-<path d="M27 62 a9 9 0 0 1 18 0" fill="none" stroke="#ece8dc" stroke-width="2.5" stroke-linecap="round"/>
-<path d="M36 62 l4 -6" stroke="#ece8dc" stroke-width="2.5" stroke-linecap="round"/>
-<ellipse cx="56" cy="58" rx="9" ry="12" fill="none" stroke="#ece8dc" stroke-width="2.5"/>
-<path d="M56 40 v-14 M51 31 l5 -6 l5 6" fill="none" stroke="#ece8dc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>"""
-const SKETCH_MANUAL := """<svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" viewBox="0 0 88 88">
-<rect width="88" height="88" rx="6" fill="#2b2d2a"/>
-<rect x="22" y="10" width="44" height="68" rx="6" fill="none" stroke="#ece8dc" stroke-width="2.5"/>
-<ellipse cx="32" cy="60" rx="8" ry="11" fill="none" stroke="#ece8dc" stroke-width="2.5"/>
-<path d="M32 44 v-8 M28 39 l4 -5 l4 5" fill="none" stroke="#ece8dc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<ellipse cx="56" cy="58" rx="8" ry="11" fill="none" stroke="#ece8dc" stroke-width="2.5"/>
-<path d="M56 42 v-16 M51 31 l5 -6 l5 6 M46 50 h-4 M66 50 h4" fill="none" stroke="#ece8dc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>"""
+# G19 sketches (pencil on paper; contrib/gpt/G19), ~112 dp next to each plate
+const SKETCH_AUTO := "res://assets/ui/controls/controls_auto.png"
+const SKETCH_MANUAL := "res://assets/ui/controls/controls_two_thumbs.png"
 
 var auto_selected := true
 var _options := {}
@@ -42,6 +28,7 @@ func _ready() -> void:
 	_relayout()
 	_update()
 	ScreenFrame.enter($Frame/VBox/Scroll)
+	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
 
 
 func _relayout() -> void:
@@ -49,7 +36,7 @@ func _relayout() -> void:
 	$Frame/VBox/Scroll/Options.vertical = vp.x < vp.y
 
 
-func _make_option(is_auto: bool, svg: String, title_key: StringName, desc_key: StringName) -> PanelContainer:
+func _make_option(is_auto: bool, sketch_path: String, title_key: StringName, desc_key: StringName) -> PanelContainer:
 	var panel := PanelContainer.new()
 	panel.name = "Auto" if is_auto else "Manual"
 	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -58,8 +45,10 @@ func _make_option(is_auto: bool, svg: String, title_key: StringName, desc_key: S
 	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	panel.add_child(row)
 	var sketch := TextureRect.new()
-	sketch.texture = DPITexture.create_from_string(svg)
-	sketch.custom_minimum_size = Vector2(88, 88)
+	sketch.texture = load(sketch_path) if ResourceLoader.exists(sketch_path) else null
+	sketch.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	sketch.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	sketch.custom_minimum_size = Vector2(112, 112)
 	sketch.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	sketch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	row.add_child(sketch)

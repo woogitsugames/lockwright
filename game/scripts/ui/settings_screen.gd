@@ -44,6 +44,7 @@ func _ready() -> void:
 	if not _wired:
 		_wire()
 	ScreenFrame.enter($Frame/VBox/Scroll)
+	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
 
 
 func _pass_mouse(n: Node) -> void:

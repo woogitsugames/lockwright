@@ -51,3 +51,4 @@ func _ready() -> void:
 		row.add_child(b)
 		list.add_child(row)
 	ScreenFrame.enter($Frame/VBox/Scroll)
+	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds

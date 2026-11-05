@@ -80,6 +80,7 @@ func _ready() -> void:
 	_refresh()
 	Save.changed.connect(_refresh)
 	ScreenFrame.enter($Frame/VBox/Scroll)
+	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
 
 
 static func repair_cost(price: int, integrity: int) -> int:

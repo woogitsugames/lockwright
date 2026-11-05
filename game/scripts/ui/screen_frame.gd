@@ -107,3 +107,37 @@ static func enter(node: Control, delay := 0.0) -> void:
 	var tw := node.create_tween()
 	tw.tween_interval(delay)
 	tw.tween_property(node, "modulate:a", 1.0, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+
+## S05 enamel-plate sounds for every button of a screen (also rows added later):
+## press on button_down, release on button_up, a dull knock when a disabled plate
+## is tapped, and a soft whoosh when the screen comes in. Random variant each time.
+static func wire_sounds(root: Control, whoosh := true) -> void:
+	_wire_tree(root)
+	var on_added := func(n: Node) -> void:
+		if n is BaseButton and root.is_ancestor_of(n):
+			_wire_button(n)
+	root.get_tree().node_added.connect(on_added)
+	root.tree_exiting.connect(func() -> void:
+		if root.get_tree().node_added.is_connected(on_added):
+			root.get_tree().node_added.disconnect(on_added), CONNECT_ONE_SHOT)
+	if whoosh:
+		Sfx.play_ui(&"screen_whoosh_soft")
+
+
+static func _wire_tree(n: Node) -> void:
+	if n is BaseButton:
+		_wire_button(n)
+	for c in n.get_children():
+		_wire_tree(c)
+
+
+static func _wire_button(b: BaseButton) -> void:
+	if b.has_meta(&"ui_sounds"):
+		return
+	b.set_meta(&"ui_sounds", true)
+	b.button_down.connect(func() -> void: Sfx.play_ui(&"plate_press"))
+	b.button_up.connect(func() -> void: Sfx.play_ui(&"plate_release"))
+	b.gui_input.connect(func(e: InputEvent) -> void:
+		if b.disabled and e is InputEventMouseButton and e.pressed:
+			Sfx.play_ui(&"plate_disabled"))

@@ -51,6 +51,7 @@ func _ready() -> void:
 	resized.connect(_relayout)
 	_relayout()
 	ScreenFrame.enter($Frame/Layout/TitleBlock)
+	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
 	ScreenFrame.enter($Frame/Layout/MenuBlock, 0.05)
 
 
