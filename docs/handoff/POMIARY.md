@@ -104,3 +104,35 @@ Artefakt **`planb-perf-apk`** (workflow **spike-planb**) to ekran zamka z gry (`
 3. Po 10 minutach pojawi się wiersz **„Wynik 10 min: Przechodzi / Na granicy / Nie przechodzi”** z liczbami (p95 czasu klatki i „1% low”). **Zrób zrzut ekranu** i wrzuć go do `spikes/lit-metal/results/` (jak JSON w punkcie 5).
 
 Progi (TECH §4, spike 4): czas klatki p95 ≤ 16,7 ms i 1% low ≥ 55 FPS przez 10 minut na tanim Androidzie.
+
+## 8. Budżety wydajności (progi dla gry)
+
+Te progi obowiązują grę od teraz (sesja C, etap 3). „Tani” = klasa urządzeń ze spike'u 4 (Android ok. 4 GB RAM,
+Mali-G52/G57 lub PowerVR, ekran 720p–1080p, haptyka A0/A1); „średni” = Samsung Galaxy A-klasy / iPhone sprzed 4–5 lat
+(6 GB RAM, Mali-G68/Adreno 6xx/A13–A14, haptyka A2/A3 lub Core Haptics). Wartości na telefonie mierzy właściciel
+(aplikacja z punktu 7a dla FPS; reszta w tabeli niżej), w CI pilnujemy tego, co da się zmierzyć bez telefonu.
+
+| Miara | Tani Android | Średni (Android / iPhone) | Skąd próg | Jak mierzymy |
+|---|---|---|---|---|
+| FPS ekranu zamka (plan B) | p95 czasu klatki ≤ 16,7 ms, 1% low ≥ 55 FPS przez 10 min | to samo + ≤ 8,3 ms na 120 Hz (ProMotion) — opcjonalnie | TECH §4 spike 4; haptyka i dźwięk w kroku fizyki 120 Hz nie mogą czekać na klatkę | `planb-perf-apk` (7a), 10 min, bez ładowarki |
+| FPS menu | ≥ 55 FPS, brak przycięć > 50 ms przy przewijaniu list | ≥ 58 FPS | płynność przewijania | ten sam licznik, przewijanie listy zleceń |
+| Logika na krok (lockcore + describe + feedback) | ≤ 0,5 ms (p95) | ≤ 0,25 ms | 8,3 ms budżetu kroku 120 Hz, logika ≤ 6% | GUT `test_perf.gd` (sesja B: 5,7 µs/krok na CI) |
+| Pamięć (PSS całej aplikacji) | ≤ 350 MB w ekranie zamka, ≤ 300 MB w menu | ≤ 450 MB | system ubija aplikacje w tle powyżej ok. 400 MB na 4 GB RAM | `adb shell dumpsys meminfo <pakiet>` / Xcode Memory gauge |
+| VRAM / tekstury | ≤ 150 MB | ≤ 250 MB | plan B: 110 MB przy 1320×2868 (LW_PERF) | licznik `vram_mb` w `planb-perf-apk` |
+| Rozmiar APK (pobranie z Google Play, arm64) | **≤ 80 MB** (ostrzeżenie), twardo ≤ 150 MB | — | tanie telefony mają mało miejsca; Play: limit modułu bazowego AAB 200 MB (sprawdzić aktualny) | artefakt `game-android`, `check_budget.py --apk` |
+| Rozmiar IPA (pobranie z App Store) | — | **≤ 100 MB** pobrania | powyżej 200 MB iOS pyta o pobranie przez sieć komórkową | App Store Connect → „App Store File Sizes” |
+| Zasoby gry (pck z presetem Android) | ≤ 45 MB (ostrzeżenie), ≤ 70 MB (błąd CI) | — | dziś 26,5 MB; większość APK to zasoby + silnik (ok. 15–20 MB skompresowany) | CI: `qa/budget/check_budget.py` |
+| Czas startu do menu (zimny start) | ≤ 4 s (bez 3-sekundowej noty przy pierwszym starcie) | ≤ 2 s | wytyczne Androida: zimny start > 5 s to „wolny” (Android vitals) | `adb shell am start -W` (TotalTime) / Xcode Instruments „App Launch” |
+| Czas startu headless (CI, proxy) | ≤ 1,0 s ostrzeżenie, ≤ 2,0 s błąd | — | dziś 0,36 s (mediana z 5, kontener CI) | CI: `check_budget.py` |
+| Wejście do ekranu zamka headless (CI, proxy) | ≤ 1,2 s ostrzeżenie, ≤ 2,5 s błąd | — | dziś 0,55 s | CI: `check_budget.py` |
+| RSS startu headless (CI, proxy wycieków i zbyt dużych zasobów) | ≤ 200 MB ostrzeżenie, ≤ 300 MB błąd | — | dziś 105 MB | CI: `check_budget.py` |
+| Temperatura / dławienie | 1% low nie spada o > 10% między 1. a 10. minutą | to samo | gra na wyczucie trwa długo | `planb-perf-apk`: zrzut po 1 i 10 min |
+
+**Automat CI:** workflow `perf-budget` (`.github/workflows/perf-budget.yml`) przy każdym pushu do `game/**` i co noc:
+eksport zasobów z presetem Android, pomiar startu headless i wejścia do ekranu zamka, raport `budget.md` w podsumowaniu
+joba (artefakt `perf-budget`). Przekroczenie „ostrzeżenia” daje adnotację ⚠ w runie, przekroczenie „błędu” — czerwony
+run. Progi: `qa/budget/budgets.json`. Rozmiar samego APK sprawdzi ten sam skrypt z `--apk`, gdy `game-android` znowu
+będzie dawał artefakt (na 2026-11-05 runy 62–65 kończą się błędem).
+
+Uwaga: czasy headless z CI nie są czasem startu na telefonie (brak GPU, szybki dysk) — służą do wykrywania regresji
+(np. ktoś ładuje wszystkie tekstury w autoloadzie), nie do oceny wrażeń.

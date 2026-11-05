@@ -1,0 +1,31 @@
+{
+  "schema": "lockwright.budgets/1",
+  "source": "docs/handoff/POMIARY.md §8 (session C, stage 3, task 9)",
+  "ci": {
+    "pck_android_mb": {
+      "warn": 45,
+      "fail": 70,
+      "note": "resources exported with the Android preset (bulk of the APK)"
+    },
+    "apk_mb": {
+      "warn": 100,
+      "fail": 150,
+      "note": "debug/release APK when the game-android artifact exists"
+    },
+    "startup_headless_s": {
+      "warn": 1.0,
+      "fail": 2.0,
+      "note": "median of 5: engine init + autoloads + boot scene + 5 frames, CI runner"
+    },
+    "lock_scene_headless_s": {
+      "warn": 1.2,
+      "fail": 2.5,
+      "note": "median of 3: plan B lock scene + 5 frames"
+    },
+    "startup_rss_mb": {
+      "warn": 200,
+      "fail": 300,
+      "note": "peak RSS of the headless boot (no GPU); proxy for leaks/oversized resources"
+    }
+  }
+}
