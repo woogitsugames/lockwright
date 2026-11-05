@@ -214,3 +214,6 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 - **Lektor (D-57) po PL i EN:** kolejno **DE**, potem **FR i ES** (teksty FR/ES z T31–T37 do korekty przed nagraniem). Pozostałe języki z T31–T37 na razie bez decyzji.
 - **Model biznesowy (D-06):** nadal otwarty, decyzja po pierwszych testach z graczami.
 - **Noc:** sesja A pracuje autonomicznie, do 6 agentów; raport i paczki dla Magnific, ChatGPT i Mistrala rano ok. 9:00 czasu brukselskiego.
+
+## D-60: Nowe rodziny lockcore v0.6 (D-59) — jedna rodzina na id, dłuższa tabela tierów
+2026-11-05 · sesja A · Agent zbudował 8 rodzin (`dial_safe`, `combo`, `dimple`, `disc_detainer`, `egyptian`, `axial_slider`, `time_lock`, `magnetic`), research w `docs/research/new-families.md`, karty `docs/LOCKS.md` §2.18–2.25, balans `lockcore/BALANCE.md`. Kolizja id ze starszymi kartami F1–F3 (§2.10, 2.11, 2.14, 2.15): **zostaje jedna rodzina na id**; nowe karty opisują tiery 1–3, a starsze karty stają się opisem przyszłych, wyższych tierów tej samej rodziny (do dopisania przy rozbudowie). Kalibracja trudności t2/t3 po testach z graczami (bot czujący ma dziś 100 % wszędzie). `time_lock` to naprawa zegara, nie otwieranie (ton CLAUDE.md).

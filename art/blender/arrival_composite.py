@@ -5,6 +5,7 @@
 #       --figure kazimierz=contrib/.../D1_kazimierz_fullbody.png [--figure teresa=...] \
 #       [--shadow art/renders/arrival/wrong_floor_night_shadow_kazimierz.png] --out composite.png
 #   python3 art/blender/arrival_composite.py --placeholder kazimierz --out placeholder_kazimierz.png
+#   python3 art/blender/arrival_composite.py --contact art/renders/arrival/wrong_floor_night_seq --out sheet.png
 #
 # The plate's <plate>.json (written by arrival_scene.py) gives per slot: feet line, height in px, and the lights
 # seen from the figure (colour, relative strength, image-space direction). Per figure:
@@ -21,17 +22,32 @@ import argparse, json, math, os, sys
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
+EXPOSURE = 1.0   # figure brightness relative to the plate's light around it (--exposure)
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
 
 def srgb_to_lin(c): return np.where(c <= 0.04045, c / 12.92, ((c + 0.055) / 1.055) ** 2.4)
 def lin_to_srgb(c):
     c = np.clip(c, 0, None); return np.where(c <= 0.0031308, c * 12.92, 1.055 * np.power(c, 1 / 2.4) - 0.055)
 def lum(c): return c[..., 0] * 0.2126 + c[..., 1] * 0.7152 + c[..., 2] * 0.0722
+def _box(a, k, axis):
+    if k < 1: return a
+    pad = [(0, 0)] * a.ndim; pad[axis] = (k + 1, k)
+    c = np.cumsum(np.pad(a, pad, mode='edge'), axis=axis, dtype=np.float64)
+    n = a.shape[axis]
+    hi = np.take(c, np.arange(2 * k + 1, 2 * k + 1 + n), axis=axis); lo = np.take(c, np.arange(0, n), axis=axis)
+    return ((hi - lo) / (2 * k + 1)).astype(np.float32)
 def blur(a, r):
-    """Gaussian blur of a float HxW or HxWxC array via Pillow (per channel, 32-bit float mode)."""
+    """Approximate Gaussian blur (sigma r px) of a float HxW or HxWxC array: three box passes per axis."""
     if r <= 0: return a
-    if a.ndim == 2: return np.asarray(Image.fromarray(a.astype(np.float32), 'F').filter(ImageFilter.GaussianBlur(r)))
-    return np.stack([blur(a[..., i], r) for i in range(a.shape[2])], -1)
+    k = max(1, int(round(math.sqrt(12 * r * r / 3 + 1) - 1) // 2)) if r >= 0.8 else 0
+    a = a.astype(np.float32)
+    if k == 0:   # sub-pixel softening: 3-tap
+        w = min(0.25, r * 0.3)
+        for ax in (0, 1): a = a * (1 - 2 * w) + (np.roll(a, 1, ax) + np.roll(a, -1, ax)) * w
+        return a
+    for ax in (0, 1):
+        for _ in range(3): a = _box(a, k, ax)
+    return a
 
 # ---------------------------------------------------------------- placeholder (until Magnific section D arrives)
 def placeholder(slot, out, h=1600):
@@ -58,7 +74,7 @@ def load_rgba(p):
     im = Image.open(p).convert('RGBA'); a = np.asarray(im).astype(np.float32) / 255.0
     return srgb_to_lin(a[..., :3]), a[..., 3]
 
-def place_figure(plate_lin, slot, fig_path, meta, shadow_ratio=None, phase=0.0, breath=0.0):
+def place_figure(plate_lin, slot, fig_path, meta, shadow_ratio=None, phase=0.0, breath=0.0, depth=None):
     H, W = plate_lin.shape[:2]
     rgb, a = load_rgba(fig_path)
     ys, xs = np.nonzero(a > 0.5); y0, y1, x0, x1 = ys.min(), ys.max(), xs.min(), xs.max()
@@ -80,10 +96,11 @@ def place_figure(plate_lin, slot, fig_path, meta, shadow_ratio=None, phase=0.0, 
     m = a > 0.9; mid = m & (lum(rgb) > np.percentile(lum(rgb)[m], 20)) & (lum(rgb) < np.percentile(lum(rgb)[m], 80))
     cast = rgb[mid].mean(0); rgb = rgb / (cast / cast.mean())               # neutralise the photo's own white balance
     rgb = rgb * light_col
-    # target exposure: the plate's wall around the upper body (excluding the darkest/brightest 10 %)
-    bx0, bx1 = max(0, ox - nw // 2), min(W, ox + nw + nw // 2); by0, by1 = max(0, oy), min(H, oy + nh // 2)
-    region = lum(plate_lin[by0:by1, bx0:bx1]).ravel(); region = region[(region > np.percentile(region, 10)) & (region < np.percentile(region, 90))]
-    target = float(np.median(region)) * 0.85                                # clothes/skin sit a little under a lit lime wall
+    # target exposure: the light level of the plate around the whole figure (wall behind + floor around the feet).
+    # 65th percentile: a person facing the camera gets the bounce of the lit walls/floor, not the darkest corners.
+    bx0, bx1 = max(0, ox - nw), min(W, ox + 2 * nw); by0, by1 = max(0, oy), min(H, oy + nh + nh // 8)
+    region = lum(plate_lin[by0:by1, bx0:bx1]).ravel()
+    target = float(np.percentile(region, 65)) * EXPOSURE
     cur = float(np.median(lum(rgb)[m])); rgb = rgb * (target / max(cur, 1e-5))
     # contrast towards the scene: compress highlights a bit (photo flash/studio look -> stairwell)
     L = lum(rgb)[..., None]; rgb = rgb * (1.0 / (1.0 + 0.35 * np.clip(L / max(target, 1e-5) - 1, 0, None)))
@@ -99,21 +116,30 @@ def place_figure(plate_lin, slot, fig_path, meta, shadow_ratio=None, phase=0.0, 
     # --- shadows on the plate
     out = plate_lin.copy()
     if shadow_ratio is not None:
-        out = out * shadow_ratio[..., None]
-    else:
-        # contact occlusion: tight dark ellipse under the feet, plus a soft cast blob pushed away from the key light
-        sh = np.zeros((H, W), np.float32); im = Image.fromarray(sh, 'F'); d = ImageDraw.Draw(im)
-        fl = meta['feet_line']; fw = (fl[1][0] - fl[0][0]) * W
-        d.ellipse([fx - fw * 0.42, fy - fw * 0.06, fx + fw * 0.42, fy + fw * 0.05], fill=0.75)
+        # only near this figure (the ratio map is noisy elsewhere at low spp); feathered box 3 widths x 1.6 heights
+        mk = np.zeros((H, W), np.float32)
+        mk[max(0, int(oy - nh * 0.3)):min(H, int(fy + nh * 0.6)), max(0, int(fx - nw * 1.5)):min(W, int(fx + nw * 1.5))] = 1
+        mk = blur(mk, nw * 0.25)
+        out = out * (1 - mk * (1 - shadow_ratio))[..., None]
+    # contact occlusion under the soles (always: too small for the ratio map at preview resolution); without a
+    # ratio map also a soft cast blob pushed away from the key light
+    im = Image.new('F', (W, H), 0.0); d = ImageDraw.Draw(im)
+    fl = meta['feet_line']; fw = (fl[1][0] - fl[0][0]) * W
+    d.ellipse([fx - fw * 0.42, fy - fw * 0.05, fx + fw * 0.42, fy + fw * 0.05], fill=0.8)
+    tight = np.asarray(im).copy(); im2 = Image.new('F', (W, H), 0.0); d2_ = ImageDraw.Draw(im2)
+    if shadow_ratio is None:
         k2 = -d2; cx, cy = fx + k2[0] * fw * 0.9, fy + max(0.05, k2[1]) * fw * 0.25
-        d.ellipse([cx - fw * 0.7, cy - fw * 0.14, cx + fw * 0.7, cy + fw * 0.14], fill=0.45)
-        sh = blur(np.asarray(im), max(1.5, fw * 0.05)) + blur(np.asarray(im), max(3, fw * 0.18)) * 0.6
-        out = out * (1 - np.clip(sh, 0, 0.85))[..., None]
+        d2_.ellipse([cx - fw * 0.7, cy - fw * 0.14, cx + fw * 0.7, cy + fw * 0.14], fill=0.45)
+    sh = blur(tight, max(1.2, fw * 0.04)) + blur(tight, max(3, fw * 0.15)) * 0.5 + blur(np.asarray(im2), max(3, fw * 0.18))
+    out = out * (1 - np.clip(sh, 0, 0.85))[..., None]
 
     # --- light wrap + paste
     X0, Y0, X1, Y1 = max(0, ox), max(0, oy), min(W, ox + nw), min(H, oy + nh)
     sx0, sy0 = X0 - ox, Y0 - oy; sx1, sy1 = sx0 + (X1 - X0), sy0 + (Y1 - Y0)
     fa = a[sy0:sy1, sx0:sx1]; frgb = rgb[sy0:sy1, sx0:sx1]
+    if depth is not None:   # hide the figure behind anything nearer than its front (door leaf, jamb, newel)
+        near = (depth[Y0:Y1, X0:X1] < meta['depth_mm'] - 180).astype(np.float32)
+        fa = fa * (1 - np.clip(blur(near, 0.6), 0, 1))
     bg = out[Y0:Y1, X0:X1]
     rad = max(2.0, nh * 0.012)
     bgb = blur(bg, rad * 2.5)
@@ -128,12 +154,27 @@ def add_grain(lin, amount, seed=7):
     rng = np.random.default_rng(seed); n = rng.normal(0, 1, lin.shape[:2]).astype(np.float32)
     n = blur(n, 0.5); return lin * (1 + amount * n[..., None])
 
+def contact(seq_dir, out, cols=6, width=1080):
+    """Contact sheet of an image sequence (frame numbers burned in, 12 fps timecode)."""
+    fs = sorted(f for f in os.listdir(seq_dir) if f.endswith('.png'))
+    ims = [Image.open(os.path.join(seq_dir, f)).convert('RGB') for f in fs]
+    tw = width // cols; th = int(ims[0].height * tw / ims[0].width); rows = (len(ims) + cols - 1) // cols
+    sheet = Image.new('RGB', (cols * tw, rows * th), (20, 20, 20)); d = ImageDraw.Draw(sheet)
+    for k, (f, im) in enumerate(zip(fs, ims)):
+        x, y = (k % cols) * tw, (k // cols) * th; sheet.paste(im.resize((tw - 2, th - 2), Image.LANCZOS), (x + 1, y + 1))
+        d.text((x + 6, y + 4), f.split('.')[0].replace('f_', '#'), fill=(235, 225, 200))
+    sheet.save(out); print('WROTE', out, len(ims), 'frames')
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--plate'); ap.add_argument('--anchors'); ap.add_argument('--figure', action='append', default=[])
     ap.add_argument('--shadow'); ap.add_argument('--out', required=True); ap.add_argument('--placeholder')
-    ap.add_argument('--grain', type=float, default=0.025); ap.add_argument('--breath', type=int, default=0)
+    ap.add_argument('--grain', type=float, default=0.025); ap.add_argument('--exposure', type=float, default=1.0); ap.add_argument('--no-depth', action='store_true'); ap.add_argument('--breath', type=int, default=0)
+    ap.add_argument('--contact', help='sequence dir: write a contact sheet to --out and exit')
     o = ap.parse_args()
+    if o.contact:
+        contact(o.contact, o.out); return
+    global EXPOSURE; EXPOSURE = o.exposure
     if o.placeholder:
         print('WROTE', placeholder(o.placeholder, o.out)); return
     meta = json.load(open(o.anchors or os.path.splitext(o.plate)[0] + '.json'))
@@ -148,12 +189,21 @@ def main():
         arr = np.asarray(s).astype(np.float32); arr = arr[..., :3].mean(-1) / 255.0 if arr.ndim == 3 else arr / 65535.0
         if arr.shape != (H, W): arr = np.asarray(Image.fromarray(arr, 'F').resize((W, H), Image.BILINEAR))
         shadow = np.clip(blur(arr, 1.0), 0, 1)
+    depth = None
+    dp = meta.get('depth_png')
+    if dp and not o.no_depth:
+        p = os.path.join(os.path.dirname(os.path.abspath(o.plate)), dp['file'])
+        if os.path.exists(p):
+            d = np.asarray(Image.open(p)).astype(np.float32)
+            d = (d[..., 0] if d.ndim == 3 else d) / (65535.0 if d.max() > 255 else 255.0) * dp['depth_max_mm']
+            if d.shape != (H, W): d = np.asarray(Image.fromarray(d, 'F').resize((W, H), Image.NEAREST))
+            depth = d
     figs = [f.split('=', 1) for f in o.figure]
     frames = max(1, o.breath)
     for i in range(frames):
         out = plate_lin
         for slot, path in figs:
-            out = place_figure(out, slot, path, meta['figures'][slot], shadow, phase=i / frames, breath=1.0 if o.breath else 0.0)
+            out = place_figure(out, slot, path, meta['figures'][slot], shadow, phase=i / frames, breath=1.0 if o.breath else 0.0, depth=depth)
         out = add_grain(out, o.grain, seed=7 + i)
         img = Image.fromarray((np.clip(lin_to_srgb(out), 0, 1) * 255 + 0.5).astype(np.uint8))
         p = o.out if frames == 1 else o.out.replace('.png', '_%02d.png' % i)

@@ -13,6 +13,9 @@
 #       --figure SLOT=path.png                 with --mode shadow: card that only casts shadows, writes a
 #                                              shadow-ratio map for art/blender/arrival_composite.py
 #       --hair 0|1 (coir doormat fibres; 1 for finals)   --out-dir art/renders/arrival
+# Outputs (in --out-dir): <job>_<time>[_ajar]_seq/f_####.png, <..>_hold.png, <..>_hold.json (D-41 anchors + figure
+# slots: feet line, height px, lights), <..>_hold_depth.png (16-bit planar depth, occlusion matte for figures),
+# <..>_shadow_<slot>.png (shadow ratio, --mode shadow). Commands for the GPU finals: art/renders/arrival/README.md.
 import bpy, math, os, sys, json, random, runpy, tempfile
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -436,7 +439,25 @@ if MODE in ('still', 'both', 'anchors', 'shadow'):
     scene.frame_set(FRAMES)
     anchors(os.path.splitext(still)[0] + '.json', STILL_RES)
     if MODE in ('still', 'both'):
+        # depth matte for occlusion of composited figures (door leaf, jamb, newel in front of a slot):
+        # planar camera depth in mm, 16-bit PNG, value = depth / DEPTH_MAX (written by the compositor, no extra render)
+        DEPTH_MAX = 20000.0
+        scene.view_layers[0].use_pass_z = True
+        nt = scene.node_tree; rl = [n for n in nt.nodes if n.type == 'R_LAYERS'][0]
+        mr = nt.nodes.new('CompositorNodeMapRange'); mr.inputs['From Max'].default_value = DEPTH_MAX; mr.use_clamp = True
+        nt.links.new(rl.outputs['Depth'], mr.inputs['Value'])
+        fo = nt.nodes.new('CompositorNodeOutputFile'); fo.base_path = OUT_DIR
+        fo.format.file_format = 'PNG'; fo.format.color_mode = 'BW'; fo.format.color_depth = '16'
+        fo.format.color_management = 'OVERRIDE'; fo.format.view_settings.view_transform = 'Standard'
+        fo.format.view_settings.look = 'None'; fo.format.view_settings.exposure = 0
+        fo.file_slots[0].path = BASE + '_hold_depth_'
+        nt.links.new(mr.outputs['Value'], fo.inputs[0])
         bpy.ops.render.render(write_still=True); print('WROTE', still)
+        src = os.path.join(OUT_DIR, BASE + '_hold_depth_%04d.png' % scene.frame_current)
+        if os.path.exists(src): os.replace(src, os.path.join(OUT_DIR, BASE + '_hold_depth.png'))
+        with open(os.path.splitext(still)[0] + '.json') as fh: J = json.load(fh)
+        J['depth_png'] = {'file': BASE + '_hold_depth.png', 'depth_max_mm': DEPTH_MAX, 'encoding': 'planar camera depth = value/65535*depth_max_mm'}
+        with open(os.path.splitext(still)[0] + '.json', 'w') as fh: json.dump(J, fh, indent=1)
 if MODE == 'shadow':
     # The figure as a camera-invisible card that only casts shadows (alpha from the cut-out); every scene
     # surface becomes a shadow catcher, so the Shadow Catcher pass is the ratio lit-with / lit-without.
