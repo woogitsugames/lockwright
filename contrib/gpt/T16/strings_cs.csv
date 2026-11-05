@@ -1,0 +1,126 @@
+key,cs
+boot.calib_title,Dvě klepnutí s odstupem 120 ms — kolik jich cítíš a slyšíš?
+boot.calib_two,Dvě
+boot.calib_one,Jedno
+boot.calib_none,Žádné
+boot.calib_skip,Přeskočit
+settings.feel_section,Hmatová odezva
+settings.quality,Kvalita grafiky
+settings.quality_auto,Auto (změřeno)
+settings.quality_high,Vysoká
+settings.quality_medium,Střední
+settings.quality_low,Nízká (slabší telefony)
+showcase.notebook_prefix,Z mistrova zápisníku:
+about.licenses,"Písma: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Engine: Godot 4 (MIT). Rozšíření: godot-cpp (MIT), GUT (MIT). Úplný seznam: THIRD-PARTY-NOTICES.txt v aplikaci."
+about.post_release_unlocked,Kapitola 7 (Společný klíč) odemčena.
+settings.report_problem,Nahlásit problém
+settings.report_copied,Log zkopírován do schránky. Vlož ho do zprávy — nic se neodesílá automaticky.
+settings.report_empty,Log je prázdný.
+app.title,Lockwright: Zámečník v terénu
+common.back,Zpět
+common.close,Zavřít
+common.on,Zapnuto
+common.off,Vypnuto
+common.coins,mince
+menu.title,Lockwright
+menu.play,Začít směnu
+menu.workshop,Dílna
+menu.showcase,Vitrína
+menu.settings,Nastavení
+menu.about,O hře
+menu.jobs,Zakázky
+jobs.title,Zakázky
+job.verify,Ověřit právo vstupu
+job.accept,Přijmout zakázku
+job.refuse,Odmítnout zakázku
+job.opened,Zámek otevřen. Účet vyrovnán.
+job.reward_fmt,Odměna (v mincích): {n}
+job.tip_fmt,Spropitné za otevření beze stop (mince): {n}
+common.continue,Pokračovat
+verify.title,Ověřit právo vstupu
+verify.hint,Zákazník předkládá doklady. Rozhodnutí je na tobě.
+verify.ask_more,Požádat o další doklad
+verify.card.id,Doklad totožnosti
+verify.card.witness,Soused jako svědek
+verify.card.manager,Správce domu / vrátný
+verify.card.lease,Nájemní smlouva
+verify.card.resolution,Usnesení obyvatel
+verify.card.deed,List vlastnictví
+verify.card.inheritance,Dědický dokument
+verify.card.institution,Dopis od instituce
+verify.card.letter,Dopis
+verify.card.photo,Fotografie
+verify.card.receipt,Účtenka
+verify.card.invoice,Faktura
+verify.card.address_app,Adresa v aplikaci
+verify.card.police,Policejní výjezd
+verify.card.bailiff,Soudní vykonavatel
+verify.refused,Doklady nestačí. Tohle otevřít nemohu.
+verify.refused_rep,Pověst se šíří: +5 reputace
+tutorial.title,Výuka — cvičný zámek
+tutorial.stage,Krok {n} ze 3
+tutorial.done,Cvičení hotovo. Čeká tě první skutečná zakázka.
+hud.magnifier,Lupa
+settings.title,Nastavení
+settings.haptics,Hmatová odezva
+settings.haptics_enabled,Hmatová odezva zapnuta
+settings.haptics_intensity,Síla vibrací
+settings.haptics_test,Zkušební impuls
+settings.haptics_calibration,Kalibrace
+settings.haptics_calibration_two_clicks,Cítíš dvě cvaknutí?
+settings.haptics_calibration_two_clicks_yes,Dvě
+settings.haptics_calibration_two_clicks_one,Jedno
+settings.haptics_calibration_two_clicks_none,Žádné
+settings.continuous_resistance,Souvislý odpor
+settings.volume_master,Celková hlasitost
+settings.volume_sfx,Zvukové efekty
+settings.volume_ambience,Zvuky okolí
+settings.language,Jazyk
+settings.language_system,Jazyk zařízení
+settings.language_pl,Polski
+settings.language_en,English
+settings.language_de,Deutsch (vývoj)
+settings.dark_mode_assist,Vysoký kontrast
+settings.reading_aid,Křídové značky
+settings.wide_windows,Širší toleranční zóny
+settings.reset,Obnovit nastavení
+settings.text_scale,Velikost textu
+settings.reduce_motion,Omezit pohyb
+settings.dark_mode_note,Potmě se řiď zvukem. Vibrace telefonu také pomáhají.
+run.title,Nekonečná směna
+run.lock_n,Zámek {n}
+run.lives_left,Náhradní planžety
+run.workshop_stop,Přestávka v dílně
+run.finished,Směna skončila — výdělek (mince): {n}
+run.rubber_band,Chvilku si oddechni. Další zámek bude snazší.
+optics.loupe,Detail dělicí roviny
+optics.microscope,Otřepy a falešné drážky
+optics.borescope,Prvky hluboko v kanálu
+pause.title,Pozastaveno
+pause.resume,Pokračovat
+pause.settings,Nastavení
+pause.dark_mode,Potmě
+pause.restart,Zkusit zámek znovu
+pause.quit,Odejít od zámku
+lock.pause,Pauza
+workshop.title,Dílna
+workshop.coins,Mince
+workshop.buy,Koupit
+workshop.repair,Opravit
+workshop.owned,Vlastníš
+workshop.integrity,Stav nástroje
+workshop.repair_cost,Oprava (mince): {0}
+workshop.broken,Zlomeno
+workshop.reward,Odměna za pokrok
+showcase.title,Vitrína
+showcase.locked,Zamčeno — odemkneš ve hře
+showcase.source,Zdroj
+showcase.unknown_source,Zdroj zatím neověřen
+about.title,O hře
+about.notice,"Tohle je hra, ne návod. Mechanismy jsou smyšlené a zjednodušené. Skutečný zámečník vždy ověří, zda má zákazník právo vstoupit do objektu."
+about.licensed_assets,Zdroje a licence
+dev.haptics_lab.title,Laboratoř hmatové odezvy
+dev.haptics_lab.tier,Úroveň
+dev.haptics_lab.force_fallback,Vynutit náhradní režim
+dev.haptics_lab.resistance,Odpor
+dev.haptics_lab.caps,Možnosti

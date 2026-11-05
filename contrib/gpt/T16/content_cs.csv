@@ -1,0 +1,630 @@
+key,cs
+job.allotment_shed.client,"Pan Zbyszek, 74 let, zahrádkář."
+job.allotment_shed.situation,Zrezivělý visací zámek na jeho zahradní kůlně nejde otevřít. Uvnitř jsou konve a semínka; pozemek je napsaný na manželku.
+job.allotment_shed.title,Kůlna pana Zbyszka
+job.bike_interview.client,"Kuba, 23 let, míří na svůj první pracovní pohovor v půjčeném saku."
+job.bike_interview.situation,Změnil kombinaci na zámku kola a zapomněl ji. Pohovor má v 9:30 na druhém konci města.
+job.bike_interview.title,Pohovor v 9:30
+job.bramah_bureau.client,"Gosia, 36 let, restaurátorka nábytku s vlastní dílnou v přístavu."
+job.bramah_bureau.situation,Gosia koupila v aukci starožitný anglický sekretář. Klíč chybí a původní zámek chce zachovat nepoškozený.
+job.bramah_bureau.title,Anglický sekretář
+job.brussels_townhouse.client,"Magda, 41 let, překladatelka, žije už 15 let v Bruselu a do polštiny jí občas proklouzne francouzština."
+job.brussels_townhouse.situation,"Poryv větru ji uvěznil na balkoně v Saint-Gilles. Monsieur Jacques z přízemí má klíč od branky, ale ne od jejího bytu."
+job.brussels_townhouse.title,Městský dům v Saint-Gilles
+job.cat_bathroom.client,"Marta, 34 let, grafička pracující z domova. Má kocoura jménem Brambora."
+job.cat_bathroom.situation,"Brambora vyskočil na kliku koupelny a posunul zástrčku. Marta zůstala venku, kocour uvnitř a hlasitě se pohoršuje."
+job.cat_bathroom.title,Brambora v koupelně
+job.charleroi_letters.client,"Ola, která právě navštívila Belgii, volá pro radu, ne kvůli otevření zámku."
+job.charleroi_letters.situation,Paní Martine našla zamčenou železnou pokladničku spojenou s Oliným dědečkem. Obě ji chtějí otevřít společně.
+job.charleroi_letters.title,Adresa v dědečkových dopisech
+job.dollhouse_wooden_lock.client,"Sedmiletá Hania a její otec Tomasz, truhlář už ve třetí generaci."
+job.dollhouse_wooden_lock.situation,Dědečkův otec vyrobil domeček pro panenky s dřevěným stavítkovým zámkem. Při stěhování se ztratil dřevěný klíč. Uvnitř je Haniina oblíbená panenka.
+job.dollhouse_wooden_lock.title,Domeček pro panenky od pradědečka
+job.drummer_locker.client,"Iga, 27 let, bubenice kapely „Sour Apples“."
+job.drummer_locker.situation,"V zamčené skříňce ve zkušebně má paličky, odposlechová sluchátka a seznam skladeb. Koncert začíná za hodinu."
+job.drummer_locker.title,Paličky ve skříňce
+job.finnish_sailor.client,"Aino, 50 let, hlavní strojní důstojnice na finské lodi, která kotví na dva dny."
+job.finnish_sailor.situation,"Aininu lodní truhlu zajišťuje kotoučový zámek. Klíč spadl do vody a kapitán potvrzuje, že truhla patří jí."
+job.finnish_sailor.title,Námořnická truhla
+job.ghent_beguinage.client,"Bratr Pieter, 66 let, pečuje o dům v gentské bekináži. Na kole vozí proutěný košík."
+job.ghent_beguinage.situation,Ve skladu historické bekináže jsou staré farní knihy. Klíč nikdo nemá a dveře je třeba otevřít beze stopy.
+job.ghent_beguinage.title,Dveře v bekináži
+job.grandma_broth.client,"Paní Halina, 81 let, vyšla v pantoflích vynést smetí. Trvá na tom, že si všechno pamatuje."
+job.grandma_broth.situation,Dveře zabouchly a na sporáku stojí hrnec vývaru. Sousedka Zosia už vypnula plyn.
+job.grandma_broth.title,Vývar na sporáku
+job.grandpa_chest.client,"Ola, 38 let, učitelka biologie, a její matka Krystyna."
+job.grandpa_chest.situation,"Ola tuší, že stará truhla skrývá dopisy z doby, kdy dědeček Józef pracoval v Charleroi. Dům dnes patří její matce."
+job.grandpa_chest.title,Truhla dědečka Józefa
+job.kiosk_shutter.client,"Pan Stefan, 67 let, vede stánek od roku 1994 a zná každého z autobusové zastávky."
+job.kiosk_shutter.situation,Zámek na roletě zrezivěl a první autobus přijede za půl hodiny.
+job.kiosk_shutter.title,Stánek před šestou
+job.krakow_antiquarian.client,"Pan Leopold, 70 let, starožitník."
+job.krakow_antiquarian.situation,"Leopold vlastní starý trezor s číselnou kombinací, ale chce otevřít i zákazníkovu pokladničku. Ta druhá mu nepatří."
+job.krakow_antiquarian.title,Starožitníkova pokladna
+job.krakow_tenement_gate.client,Paní Wanda spravuje činžovní dům z roku 1890 v Kazimierzi a usnesení nájemníků uchovává v šanonu.
+job.krakow_tenement_gate.situation,Starý zámek brány se po dešti zasekl a klíč zůstal uvnitř. Památkově chráněnou bránu nelze vrtat ani upravovat.
+job.krakow_tenement_gate.title,Brána v Kazimierzi
+job.liege_bakery.client,"Nadia, 29 let, převzala pekařství po strýci a peče vafle s perlovým cukrem."
+job.liege_bakery.situation,"Zámek zadních dveří pekárny se zablokoval, když cizí klíč spustil jeho detektor. Je 3:50 ráno a těsto kyne."
+job.liege_bakery.title,Pekárna ve čtyři
+job.museum_time_lock.client,Doktorka Anna Rygiel spravuje Technické muzeum v přístavu. Bavlněné rukavice nosí skoro i ke kávě.
+job.museum_time_lock.situation,Hodinový časový zámek starého trezoru zůstal zavřený. Muzeum potřebuje cedulku uvnitř pro výstavu.
+job.museum_time_lock.title,"Hodiny, které střeží trezor"
+job.newlyweds_4am.client,"Kasia a Bartek; ona má nakřivo závoj, on drží kytici."
+job.newlyweds_4am.situation,"Klíče jsou v kabelce svědkyně, která už odjela do Kalisze. Svatební dort stojí na rohožce."
+job.newlyweds_4am.title,Čtyři ráno po svatbě
+job.night_nurse.client,"Agnieszka, 45 let, zdravotní sestra na interně, přes uniformu má bundu."
+job.night_nurse.situation,Po dvanáctihodinové noční směně nechala Agnieszka klíč ve skříňce v nemocnici. Je 7:20 ráno.
+job.night_nurse.title,Po dvanáctihodinové směně
+job.pizzeria_pays_pizza.client,"Paní Renata, 52 let, vlastní pizzerii „U Renaty“. Mluví rychle a lokty má od mouky."
+job.pizzeria_pays_pizza.situation,Zadní místnost se v 23:30 sama zamkla. Uvnitř je těsto na zítřek i pokladna; Renata nabízí platbu pizzou.
+job.pizzeria_pays_pizza.title,Zaplaceno pizzou
+job.refuse_aunt_alive.client,"Žena kolem třicítky, která tvrdí, že je jedinou dědičkou."
+job.refuse_aunt_alive.situation,"Tvrdí, že její teta zemřela, a chce zabezpečit byt, nemá však dědické doklady. Soused to zaslechne."
+job.refuse_aunt_alive.title,Teta se má čile k světu
+job.refuse_ex_partner.client,"Darek, kolem čtyřicítky, je rozrušený a telefon stále pokládá displejem dolů."
+job.refuse_ex_partner.situation,"Chce do bytu bývalé partnerky pro své věci. Na schránce je jen jedno příjmení, a není jeho."
+job.refuse_ex_partner.title,„Stejně mi půlka patří“
+job.refuse_rush_bribe.client,"Muž v obleku, mluví rychle a je neochvějně zdvořilý."
+job.refuse_rush_bribe.situation,"V jednu v noci chce do sestřina bytu, zatímco je sestra v zahraničí. Nezvedá telefon a muž nabízí peníze navíc, aby se přeskočila kontrola."
+job.refuse_rush_bribe.title,"„Sestra říkala, že je to v pořádku“"
+job.student_dorm.client,"Zuzanna, 20 let, studuje restaurování památek a nosí tašku plnou štětců."
+job.student_dorm.situation,"Klíč i studentský průkaz má v pokoji 412. Spolubydlící je pryč; vrátný má seznam ubytovaných, ale žádný náhradní klíč."
+job.student_dorm.title,Pokoj 412
+job.swiatniki_journeyman_padlock.client,"Pan Władysław, 84 let, vyučil se zámečníkem v Świątnikách v padesátých letech."
+job.swiatniki_journeyman_padlock.situation,"Visací zámek vyrobil jako tovaryšský kus. Vnuk ztratil jediný klíč. Władysław řešení zná, ale chce mladé vyzkoušet."
+job.swiatniki_journeyman_padlock.title,Tovaryšský zámek pana Władysława
+job.time_capsule.client,"Paní Jadwiga, bývalá třídní učitelka, se setkala s dvaceti někdejšími žáky, kterým je dnes přes třicet."
+job.time_capsule.situation,Třída 3b zakopala v roce 2001 časovou schránku. Paní Jadwiga zapomněla kombinaci a škola souhlasila s otevřením za přítomnosti všech.
+job.time_capsule.title,Časová schránka třídy 3b
+job.uncle_safe_heirs.client,"Sourozenci Ewa, Marek a Piotr, každý s vlastní teorií o trezoru."
+job.uncle_safe_heirs.situation,"Tři dědici společně vlastní trezor po strýci Bogdanovi. Marek ho chce otevřít hned, ale Ewa je na cestě. Nejdřív se musí dohodnout."
+job.uncle_safe_heirs.title,Trezor strýce Bogdana
+job.widow_bureau.client,"Paní Irena, 79 let, knihovnice v důchodu, rok vdovou."
+job.widow_bureau.situation,"Paní Ireně zůstal po manželovi psací stůl, ale malý klíček se ztratil. Chce jej otevřít bez vrtání a škrábanců."
+job.widow_bureau.title,Psací stůl
+job.wrong_floor.client,"Pan Kazimierz, 60 let, se v dobré náladě vrací ze švagrova svátku."
+job.wrong_floor.situation,"Stojí o patro níž, než má vlastní byt."
+job.wrong_floor.title,O patro níž
+showcase.amen_padlock.body,"Zámky s otočnými kroužky s písmeny se dostaly i do literatury. Historik techniky Charles Tomlinson v 19. století citoval hru připisovanou Beaumontovi a Fletcherovi, v níž se zámek otevírá slovem AMEN. Podobný motiv se objevuje v poezii Thomase Carewa. Jsou to stopy kulturního života písmenkových zámků, přestože citace je ještě třeba ověřit v kritických vydáních."
+showcase.amen_padlock.title,Zámek nastavený na AMEN
+showcase.barron_1778.body,"V roce 1778 si londýnský zámečník Robert Barron patentoval významné zdokonalení pákového zámku. V jeho konstrukci zůstávala závora zablokovaná, pokud se příslušné prvky pohnuly příliš málo nebo naopak příliš daleko. Byl to důležitý krok ve vývoji pákových zámků. Přesnost se zapsala do dějin."
+showcase.barron_1778.title,"Ani příliš nízko, ani příliš vysoko"
+showcase.bramah_window.body,"Joseph Bramah si svůj zámek patentoval v roce 1784. Později ve výloze svého obchodu na Piccadilly vystavil visací zámek a slíbil 200 guinejí tomu, kdo jej otevře. Podle Science Museum pochází dochovaný soutěžní zámek z roku 1801. Výzva vydržela půl století, než byla roku 1851 překonána. Reklama s pozoruhodnou trpělivostí."
+showcase.bramah_window.title,Visací zámek jako výzva
+showcase.chubb_detector.body,"V roce 1818 si Jeremiah Chubb patentoval pákový zámek s detektorem, který dokázal upozornit na pokus o zásah do mechanismu. Nebyl první, koho takové varování napadlo: Ruxtonův patent pochází už z roku 1816. Chubbova konstrukce se proslavila a přispěla k veřejné debatě o bezpečnosti zámků."
+showcase.chubb_detector.title,"Zámek, který varuje"
+showcase.egyptian_name.body,"Dřevěným závorovým zámkům se stavítky se často říká egyptské. Cestovatelé v 19. století viděli podobná zařízení v Egyptě, ale to ještě nedokazuje, kde tato myšlenka vznikla. Augustus Pitt-Rivers už v roce 1883 upozornil na mezery ve starověkých dokladech. Příbuzné mechanismy známe z Předního východu i římského světa. Název je kratší než jejich dějiny."
+showcase.egyptian_name.title,Proč právě egyptský?
+showcase.henriksson_disc.body,Na začátku 20. století vyvinul finský jemný mechanik Emil Henriksson zámek založený na otočných kotoučích. Podle pozdějšího vyprávění ho nápad napadl roku 1907 při opravě pokladny. Patent získal v roce 1919. V této rodině mechanismů nahrazují otočné prvky pružinová stavítka. Příběh vzniku je skoro stejně úhledný jako samotný nápad.
+showcase.henriksson_disc.title,Nápad s otočnými kotouči
+showcase.hobbs_51_hours.body,Alfred C. Hobbs se v létě roku 1851 pustil do Bramahova soutěžního visacího zámku. Rozhodčí zaznamenali 51 hodin práce rozložených do 16 pracovních dnů. Za úspěch získal slíbenou odměnu 200 guinejí. Zámek i příběh se nakonec dostaly do muzejní sbírky. Šestnáct pracovních dnů může být dlouhá doba. Půl století čekání také.
+showcase.hobbs_51_hours.title,51 hodin během 16 dnů
+showcase.hobbs_westminster.body,"V roce 1851 Alfred C. Hobbs zpochybnil přesvědčení, že nejlepší londýnské zámky nelze překonat. Nejdůležitější doložený pokus proběhl 22. července v Great George Street ve Westminsteru, nikoli na výstavišti Velké výstavy. Podle podepsaného prohlášení trvalo otevření 25 minut a opětovné zamčení sedm. Výsledek rozpoutal slavný veřejný spor."
+showcase.hobbs_westminster.title,Dvacet pět minut ve Westminsteru
+showcase.khorsabad_gate.body,"Ve čtyřicátých letech 19. století zkoumal Paul-Émile Botta Dur-Šarrukín, asyrské hlavní město vybudované za Sargona II. na konci 8. století př. n. l. Joseph Bonomi popsal jednu z jeho bran jako zabezpečenou velkým dřevěným zámkem. Samotný zámek se nedochoval; známe ho jen z písemného svědectví. Archeolog Daniel Potts vysledoval často opakovaný údaj o 4 000 letech k chybě v datování. I zhruba 2 700 let je úctyhodné stáří."
+showcase.khorsabad_gate.title,Brána v Dur-Šarrukínu
+showcase.krakow_guild_seal.body,"Krakovští zámečníci a hodináři patřili dlouhá léta do společného cechu. Král Władysław IV. potvrdil jeho stanovy v roce 1633. Na historické cechovní pečeti byl zámek, ciferník, klíče a korunovaný had. Podle verše zapsaného v cechovní knize had představoval bystrou mysl. Hodináři si založili vlastní cech až roku 1797."
+showcase.krakow_guild_seal.title,Korunovaný had
+showcase.roman_ring_key.body,"Victoria and Albert Museum uchovává bronzový prsten ze 3. století, jehož ozdobná hlavice je zároveň klíčem. Podobné prsteny se našly v Londýně, Colchesteru i Pompejích. Rozdílné tvary jejich výřezů naznačují, že skutečně něco odemykaly, nejspíš malé šperkovnice. Muzeum opatrně předpokládá, že je mohly nosit ženy, možná po svatbě. London Museum připomíná praktickou stránku: v římské Británii měl člověk s prstenovým klíčem klíč stále u sebe, v době, kdy kapsy všité do oděvu nebyly běžné."
+showcase.roman_ring_key.title,Klíč na prstu
+showcase.roman_wards.body,"Římané používali mnoho druhů závor a zámků. Dochované klíče z Pompejí a Herculanea ukazují také na mechanismy s pevnými překážkami uvnitř, které vyžadovaly odpovídajícím způsobem tvarovaný klíč. Znali i mechanismy se stavítky. Neexistovalo jediné římské řešení, ale celé řemeslo."
+showcase.roman_wards.title,Římské překážky v zámku
+showcase.sargent_time_lock.body,"James Sargent vyvinul v sedmdesátých letech 19. století časový zámek pro bankovní trezory. O patent požádal v roce 1873 a v roce 1874 byl jeho zámek nainstalován v bance v Morrisonu ve státě Illinois. Hodinový mechanismus bránil otevření trezoru před stanovenou dobou i člověku, který znal kombinaci. Základní myšlenka byla starší, ale zařízení tohoto druhu se začala prosazovat."
+showcase.sargent_time_lock.title,"Zámek, který zná čas"
+showcase.stansbury_1805.body,Už v roce 1805 získal Abraham O. Stansbury britský patent na zámek využívající pružinová stavítka. Charles Tomlinson popsal jeho konstrukci jako pokračování starší myšlenky dřevěných stavítkových zámků. K pozdějšímu cylindrickému zámku vedla práce více lidí. Dějiny techniky se málokdy vejdou do příběhu jediného hrdiny.
+showcase.stansbury_1805.title,Zapomenutý předchůdce
+showcase.swiatniki_armourers.body,"Świątniki Górne poblíž Krakova vyrostly z osady spojené se službou u wawelské katedrály. Po staletí tam vzkvétalo kovářství a výroba zbroje. Když koncem 18. století klesala poptávka po tradičním brnění, místní řemeslníci stále více vyráběli zámky a visací zámky. Výrobek se změnil, znalost železa zůstala."
+showcase.swiatniki_armourers.title,Od zbroje k visacím zámkům
+showcase.swiatniki_school.body,"O založení zámečnické školy v Świątnikách Górnych se rozhodlo roku 1887; vyučovat se začalo v roce 1888. V roce 1891 získaly škola a místní firma na výstavě ve Vídni zakázku na 500 visacích zámků. Dovednosti práce s kovem se tu předávaly po generace. Dnešní Muzeum zámečnictví Marcina Mikuły připomíná historii místního řemesla. To byly lekce, které měly váhu."
+showcase.swiatniki_school.title,Škola pro zámečníky
+showcase.wroclaw_iron_world.body,"V roce 2022 představilo Národní muzeum ve Vratislavi výstavu Železný svět s historickými zámky, klíči a dalšími kovovými výrobky. Jedním z exponátů byl skříňový zámek, který roku 1720 vyrobil vratislavský mistr Albert Nicolaus Spihrman. Podle muzea jde o jediný zámek v jeho sbírce, na němž se společně uvádějí datum, jméno výrobce i místo vzniku. Starý řemeslník zanechal nezvykle jasný podpis."
+showcase.wroclaw_iron_world.title,Jediný s podpisem
+showcase.yale_dial.body,"Konstruktéři bankovního zabezpečení v 19. století se snažili omezit přístup tradiční klíčovou dírkou. Linus Yale mladší pracoval na bankovních zámcích od padesátých let, zatímco konstrukce ovládané číselníkem se dál vyvíjely v následujícím desetiletí. Odstranění klíčové dírky samo o sobě nezaručilo dokonalé zabezpečení. Změnilo však problémy, které musel konstruktér řešit."
+showcase.yale_dial.title,Bez klíčové dírky
+showcase.yale_flat_key.body,"V polovině 19. století pomohl Linus Yale mladší proměnit objemné zamykací mechanismy v praktičtější zařízení pro každodenní použití. Patent ze dne 27. června 1865 zachycuje jednu z jeho konstrukcí. Malý plochý klíč se stal symbolem nového přístupu k cylindrickým zámkům. Yale zemřel v roce 1868 a zanechal myšlenky, které další generace dál rozvíjely."
+showcase.yale_flat_key.title,Malý plochý klíč
+showcase.yale_senior.body,"Linus Yale starší vedl zámečnickou dílnu v Newportu ve státě New York. Věnoval se mimo jiné zabezpečení bank a patent z roku 1857 uchovává jeho jméno i místo působení. Jeho nápady později rozvíjel syn, který se také jmenoval Linus. V rodinné dílně se dědily nejen nástroje, ale i otázky."
+showcase.yale_senior.title,Dílna ve státě New York
+tool.tw_angle.name,Zahnutý napínák
+tool.tw_bar.name,Plochý napínák
+tool.tl_shackle.name,Stahovák třmenu
+tool.pk_peg.name,Zdvihák kolíků
+tool.pk_hook.name,Háčková planžeta
+tool.pk_ward.name,Sonda pro pevné překážky
+tool.pk_ripple.name,Vlnková planžeta
+tool.pk_wedge.name,Dvojitý klín
+tool.pk_lever.name,Páčková klika
+tool.pk_crown.name,Korunková planžeta
+tool.tl_polar.name,Polarizační sonda
+tool.pk_flag.name,Praporková planžeta
+tool.pk_plunger.name,Drážkový píst
+tool.pk_disc.name,Otáčeč kotoučů
+tool.pk_feather.name,Boční jazýček
+tool.tl_cup.name,Poslechová miska
+tool.tl_notes.name,Kontaktní zápisník
+tool.kit_clock.name,Hodinářská sada
+tool.tl_drill.name,Vrtačka
+cast.agnieszka.name,Agnieszka
+cast.aino.name,Aino
+cast.bartek.name,Bartek
+cast.bride.name,Nevěsta
+cast.captain.name,Kapitán
+cast.claimant.name,Žena u dveří
+cast.darek.name,Darek
+cast.edek.name,"Pan Edek, vrátný"
+cast.ewa.name,Ewa
+cast.gosia.name,Gosia
+cast.halina.name,Paní Halina
+cast.hall_manager.name,Správce zkušebny
+cast.hania.name,Hania
+cast.headteacher.name,Ředitel školy
+cast.iga.name,Iga
+cast.irena.name,Paní Irena
+cast.jacques.name,Monsieur Jacques
+cast.jadwiga.name,Paní Jadwiga
+cast.kazimierz.name,Pan Kazimierz
+cast.krysia.name,Paní Krysia
+cast.krystyna.name,Paní Krystyna
+cast.kuba.name,Kuba
+cast.lena.name,Policistka Lena Sowa
+cast.leopold.name,Pan Leopold
+cast.locksmith.name,Zámečník
+cast.magda.name,Magda
+cast.marek.name,Marek
+cast.marta.name,Marta
+cast.martine.name,Madame Martine
+cast.mietek.name,Pan Mietek
+cast.nadia.name,Nadia
+cast.neighbour_lucyna.name,Sousedka paní Lucyny
+cast.neighbour_robe.name,Soused v županu
+cast.ola.name,Ola
+cast.pieter.name,Bratr Pieter
+cast.piotr.name,Piotr
+cast.renata.name,Paní Renata
+cast.roman.name,"Pan Roman, správce"
+cast.rygiel.name,Dr. Anna Rygiel
+cast.stefan.name,Pan Stefan
+cast.stranger.name,Muž v obleku
+cast.teresa.name,Paní Teresa
+cast.tomasz.name,Tomasz
+cast.waldek.name,Pan Waldek
+cast.wanda.name,Paní Wanda
+cast.wladyslaw.name,Pan Władysław
+cast.zbyszek.name,Pan Zbyszek
+cast.zosia.name,Paní Zosia
+cast.zuzanna.name,Zuzanna
+job.allotment_shed.line.1,Pozemek je na manželku. Kopu na něm já. Ona doma šetří koleno.
+job.allotment_shed.line.2,"Máte zahrádkářský průkaz? A souseda, který to potvrdí?"
+job.allotment_shed.line.3,Zbyszek je tu déle než ta kůlna. A déle než já.
+job.allotment_shed.line.4,Co třeba okurky? Na zahrádku si hotovost nenosím.
+job.allotment_shed.note,Kůlna pana Zbyszka. Pozemek na manželku. Záhada vyřešena. Zaplaceno nakládačkami.
+job.bike_interview.line.1,"Změnil jsem kód na bezpečnější. Tak bezpečný, že ho neznám ani já."
+job.bike_interview.line.2,"Kolo je na ulici. Máte něco, čím doložíte, že je vaše?"
+job.bike_interview.line.3,Fotku z dovolené a účtenku v e-mailu. Kolo na ní vypadá líp než já.
+job.bike_interview.line.4,To stačí. Zatím si srovnejte kravatu.
+job.bike_interview.note,Kubův zámek na kole. Fotka i účtenka souhlasí. Kravata upravena dvakrát. Autobus v 8:52.
+job.bramah_bureau.line.1,"Faktura z aukce, inzerát a fotky. Zámek musí zůstat nedotčený."
+job.bramah_bureau.line.2,Podobný zámek vystavovali ve výloze londýnského obchodu. Byla za něj odměna.
+job.bramah_bureau.line.3,Otevřel ho vůbec někdo?
+job.bramah_bureau.line.4,"Ano, o víc než šedesát let později. Až skončím, povím vám kdo."
+job.bramah_bureau.note,Gosiin sekretář. Faktura i vlastnictví ověřeny. Zámek zůstal původní. Příběh z Piccadilly jsem vyprávěl.
+job.brussels_townhouse.line.1,Trčím na balkoně jako Julie. Jen Romeo má šedesát a klíč od branky.
+job.brussels_townhouse.line.2,Madame Magda tu žije odjakživa. Depuis toujours.
+job.brussels_townhouse.line.3,"Nájemní smlouva, adresa od obce a soused. To stačí. Hlavně se nenaklánějte."
+job.brussels_townhouse.line.4,Muškáty zalité. Mise splněna.
+job.brussels_townhouse.note,"Saint-Gilles. Jiná země, stejná pravidla. Smlouva, obec, monsieur Jacques. Muškáty v pořádku."
+job.cat_bathroom.line.1,Udělal to naschvál. Při skoku na kliku se mi díval přímo do očí.
+job.cat_bathroom.line.2,Jste doma. On je v koupelně. Tentokrát žádné papíry nepotřebujeme.
+job.cat_bathroom.line.3,A co když se lekne?
+job.cat_bathroom.line.4,Mluvte na něj dál. Budu tišší než on.
+job.cat_bathroom.note,"Kocour Brambora. Marta byla doma, kontrola nebyla nutná. Neomluvil se. Ona slíbila novou ceduli."
+job.charleroi_letters.line.1,"Volám pro radu, ne kvůli zakázce. Dědečkovu schránku má paní Martine."
+job.charleroi_letters.line.2,C'est à votre famille. Jen jsem ji opatrovala.
+job.charleroi_letters.line.3,Opatrovala jste ji sedmdesát let?
+job.charleroi_letters.line.4,Obě souhlasíte s otevřením. Snazší ověření jsem ještě nezažil.
+job.charleroi_letters.note,Charleroi. Schránka dědečka Józefa u paní Martine. Obě ji chtěly otevřít. Poprvé jsem u zakázky plakal. Trochu.
+job.dollhouse_wooden_lock.line.1,Panenka Lala tam sedí už od úterý. Nudí se.
+job.dollhouse_wooden_lock.line.2,"Děda tomu říkal egyptský zámek. Nevím, nakolik je to pravda."
+job.dollhouse_wooden_lock.line.3,Název se ujal. Skutečný příběh je lepší. Povím ti ho potom.
+job.dollhouse_wooden_lock.line.4,Uděláte nový klíč? Dřevěný? Táta má prkno.
+job.dollhouse_wooden_lock.note,"Domeček od pradědečka. Dřevěný stavítkový zámek. Lala volná. Tomasz vyřeže klíč, Hania dohlédne."
+job.drummer_locker.line.1,"Mohla bych hrát na lžíce, ale radši ne. Za hodinu začínáme."
+job.drummer_locker.line.2,Iga má pronajatou skříňku osm. Platí měsíčně. Mám to v zápisníku.
+job.drummer_locker.line.3,"Váš zápisník stačí. Pan Edek říkal, že si zapisujete všechno."
+job.drummer_locker.line.4,"Když to stihnete, něco vám zahrajeme. Nahlas."
+job.drummer_locker.note,Skříňka 8 ve zkušebně. Správce měl zápisník jako já. Zahráli mi písničku. Nahlas.
+job.finnish_sailor.line.1,Ve Finsku má takový zámek každý. Bez klíče ho nikdo neotevře.
+job.finnish_sailor.line.2,"Truhla patří Aino, ručím za ni. Zítra vyplouváme v šest."
+job.finnish_sailor.line.3,Kapitán za ni ručí a údaje v námořnické knížce souhlasí. Podíváme se.
+job.finnish_sailor.line.4,"Když ho otevřete, povím vám, odkud ten vynález pochází."
+job.finnish_sailor.note,"Aino, finská loď. Kapitán i námořnická knížka souhlasili. Hotovo před šestou. Nad ponkem visí březová naběračka."
+job.ghent_beguinage.line.1,Z polštiny umím jen „dzień dobry“ a „pierogi“.
+job.ghent_beguinage.line.2,To je půlka jazyka.
+job.ghent_beguinage.line.3,Dopis farní rady. Klíč si můj předchůdce vzal s sebou do nebe.
+job.ghent_beguinage.line.4,"Beze stop, slibuji. Ten zámek je starší než můj dům."
+job.ghent_beguinage.note,Gentská bekináž. Farní dopis a slovo bratra Pietera. Beze stop. Teď zná i „rosół“.
+job.grandma_broth.line.1,"Šla jsem jen na chviličku, zlatíčko. Vynést smetí."
+job.grandma_broth.line.2,Vypnula jsem plyn na chodbě. Bydlíme vedle sebe už čtyřicet let.
+job.grandma_broth.line.3,To pomůže. A ten dopis ve schránce je na vaše jméno?
+job.grandma_broth.line.4,Nudle jsem dělala sama. Misku dostanete a žádné řeči.
+job.grandma_broth.note,"Paní Halina, centrum. Paní Zosia potvrdila čtyřicet let sousedství. Vývar se odpařil. Misku jsem dostal."
+job.grandpa_chest.line.1,"Táta nikdy neřekl, co tam schovává. Ani nám."
+job.grandpa_chest.line.2,"Mami, neptá se na truhlu. Ptá se, jestli ti patří dům."
+job.grandpa_chest.line.3,Patří. List vlastnictví je v komodě pod ubrusem.
+job.grandpa_chest.line.4,"Dopisy. Z Charleroi. Pro babičku, polsky, s belgickými známkami."
+job.grandpa_chest.note,"Truhla dědečka Józefa. List vlastnictví pod ubrusem, jako vždycky. Dopisy z Belgie. Ola říká, že pojede."
+job.kiosk_shutter.line.1,Ten visací zámek tu visí dvaatřicet let. Nikdy jsem ho nenaolejoval.
+job.kiosk_shutter.line.2,Paní Krysia za vás ručí a mám tu dopis od dodavatele. Ještě jednu věc.
+job.kiosk_shutter.line.3,Z otevíračky v roce 1994. Knír mi tehdy slušel víc než stánek.
+job.kiosk_shutter.line.4,Stefan je tu déle než zastávka. Znají ho i autobusy.
+job.kiosk_shutter.note,"Stánek pana Stefana. Jde o podnik, tak jsem chtěl víc. Fotka z roku 1994, knír pravý. Noviny zdarma celý týden."
+job.krakow_antiquarian.line.1,Trezor je můj. Obchod si pronajímám od města. Soused z kavárny to potvrdí.
+job.krakow_antiquarian.line.2,"A když už jste tady, tak i tuhle schránku. Zákazník ji nechal ocenit."
+job.krakow_antiquarian.line.3,Trezor ano. Schránku ne. K tomu potřebuji jejího majitele.
+job.krakow_antiquarian.line.4,Máte pravdu. Stárnu. A jsem netrpělivý.
+job.krakow_antiquarian.note,"Pan Leopold. Trezor jeho, schránka cizí. Jedna zakázka, dvě rozhodnutí. A příběh o cechu."
+job.krakow_tenement_gate.line.1,"Památkář říkal, že ani jedinou díru. Ani jednu."
+job.krakow_tenement_gate.line.2,A dobře řekl. Před sto třiceti lety si s tím někdo dal práci.
+job.krakow_tenement_gate.line.3,Zase dobrý den. Teď tu jsem na praxi. Udělala jsem zkoušku. Pokoj 412 pomohl.
+job.krakow_tenement_gate.line.4,Majitelé domu přijali usnesení. Tady je písemná objednávka.
+job.krakow_tenement_gate.note,Brána v Kazimierzi. První usnesení vlastníků v mé kariéře. Možná si ho zarámuju. Zuzanna píše rychleji než já.
+job.liege_bakery.line.1,Strýc měl třicet klíčů a neoznačil ani jeden.
+job.liege_bakery.line.2,Zámek ucítil cizí klíč a urazil se. Ani se mu nedivím.
+job.liege_bakery.line.3,Předávací protokol a nájemní smlouva. Těsto kyne bez dovolení.
+job.liege_bakery.line.4,Doklady sedí. V šest si přijdu pro ty vafle.
+job.liege_bakery.note,"Liège, 3:50 ráno. Detektor zámku udělal svou práci. Doklady v pořádku. Vafle s perlovým cukrem."
+job.museum_time_lock.line.1,Nejde o kombinaci. Jde o čas.
+job.museum_time_lock.line.2,"Časový zámek se neptá, kdo stojí u dveří. Ptá se, kolik je hodin."
+job.museum_time_lock.line.3,"Dopis ředitele, předávací protokol. Všechno třikrát."
+job.museum_time_lock.line.4,"Paní doktorko, máme rukavice i pro zámečníka. Velikost L."
+job.museum_time_lock.note,Technické muzeum. Dr. Rygiel měla všechno třikrát. Časový zámek povolil. Zuzanna tu samozřejmě stážuje.
+job.newlyweds_4am.line.1,"Občanku mám, ale adresu v ní ne. Já vím. Dneska ji tam nikdo nemá."
+job.newlyweds_4am.line.2,Trvalou adresu mám v aplikaci. Vidíte? S tím závojem je to fuška.
+job.newlyweds_4am.line.3,Znám je. Dnes se brali. Svatbu slyšelo celé okolí.
+job.newlyweds_4am.line.4,Blahopřeju. Dvě minuty a jste doma.
+job.newlyweds_4am.note,"Novomanželé, 4:12 ráno. Adresu potvrdila aplikace a soused v županu. Třípatrový dort. Dostal jsem kousek."
+job.night_nurse.line.1,Dvanáct hodin na oddělení. Klíč mám ve skříňce v nemocnici.
+job.night_nurse.line.2,"Paní Agnieszka, byt čtrnáct. Ano, mám její údaje v systému domu."
+job.night_nurse.line.3,Správce to potvrdil. Občanka souhlasí. Brzy budete spát.
+job.night_nurse.line.4,"Promiňte, že nemluvím. Už mluvím ze spaní."
+job.night_nurse.note,"Paní Agnieszka po noční. Pan Roman na interkomu, jako vždy stručný. Sousedská sleva, bez debat."
+job.pizzeria_pays_pizza.line.1,Peníze jsou v kase. Kasa je uvnitř. Zaplatím pizzou. Máte hlad?
+job.pizzeria_pays_pizza.line.2,"Nejdřív cena, potom menu. Máte nájemní smlouvu?"
+job.pizzeria_pays_pizza.line.3,Znám ji dvacet let. Vedle mám kebab. Její margherita je umění.
+job.pizzeria_pays_pizza.line.4,Těsto kyne. Já klesám. Hlavně to stihněte do svítání.
+job.pizzeria_pays_pizza.note,Renatina pizzerie. Nájem a soused ověřeni. Zaplaceno margheritou. Krabice stojí na polici.
+job.refuse_aunt_alive.after.1,Paní Lucyna se vrátí v pátek. Pak vám ten zámek nechá vyměnit.
+job.refuse_aunt_alive.after.2,Ještě že jste odmítl. Jinak bych celou noc oka nezamhouřil.
+job.refuse_aunt_alive.line.1,Teta minulý týden zemřela. Papíry se ještě vyřizují. Stalo se to zrovna teď.
+job.refuse_aunt_alive.line.2,Paní Lucyna? Je v lázních. Včera volala. Už se jí daří líp.
+job.refuse_aunt_alive.line.3,Asi jsem si něco popletla.
+job.refuse_aunt_alive.line.4,Zavoláme paní Lucyně spolu. A pak policistce Sowě.
+job.refuse_aunt_alive.note,Teta je živá a zdravá. Soused přišel v pravou chvíli. Paní Lucyna posílá pozdravy z lázní.
+job.refuse_ex_partner.after.1,Díky za zavolání. Vyzvedl si věci v mé přítomnosti. Nájemnice souhlasila.
+job.refuse_ex_partner.after.2,Slyšel jsem to na zastávce. Jste slušný člověk. Nechcete noviny?
+job.refuse_ex_partner.line.1,Bydlel jsem tady tři roky. Mám právo jít si pro své věci.
+job.refuse_ex_partner.line.2,"Na schránce je jen jedno jméno, a není vaše. Zavolám správci domu."
+job.refuse_ex_partner.line.3,Proč správci? To je soukromá věc.
+job.refuse_ex_partner.line.4,Tohle otevřít nemohu. Policie může pomoci s věcmi. Mám zavolat?
+job.refuse_ex_partner.note,Neotevřeno. Na dveřích bylo jiné jméno. Předáno policistce Sowě. Nelituju.
+job.refuse_rush_bribe.after.1,Sestra o žádných dokladech nevěděla. Děkujeme za zavolání.
+job.refuse_rush_bribe.after.2,Včera se muž v obleku ptal po zámečníkovi. Poslal jsem ho k vám. Promiňte.
+job.refuse_rush_bribe.line.1,Zaplatím dvojnásobek. Trojnásobek. Jen vynechte ty kontroly.
+job.refuse_rush_bribe.line.2,"Kontroly nejsou na prodej. Zavolejte sestře, počkám."
+job.refuse_rush_bribe.line.3,Nezvedá to. Nebudeme budit sousedy. Není třeba dělat divadlo.
+job.refuse_rush_bribe.line.4,Tak dobrou noc. Dám vědět místní policistce.
+job.refuse_rush_bribe.note,"Jedna v noci, oblek, spěch, peníze místo svědka. Neotevřeno. Nahlášeno. Spal jsem dobře."
+job.student_dorm.line.1,Průkaz mám v pokoji. Klíč taky. Já jsem na chodbě.
+job.student_dorm.line.2,"Zuzanna Wilk, pokoj 412. Na seznamu i v hlavě."
+job.student_dorm.line.3,Pan Edek za vás ručí. Jméno souhlasí. Pojďme dovnitř.
+job.student_dorm.line.4,Zítra mám zkoušku z historických zámků. Počítá se to jako praxe?
+job.student_dorm.note,"Pokoj 412, kolej. Vrátný zkontroloval seznam, jméno souhlasilo. Zuzanna se ptala na všechno."
+job.swiatniki_journeyman_padlock.line.1,Schovávám ho sedmdesát let. Klíč byl jediný. Vnuk ho ztratil.
+job.swiatniki_journeyman_padlock.line.2,"A víte, jak ho otevřít?"
+job.swiatniki_journeyman_padlock.line.3,"Vím. Ale chci vidět, jestli to ještě umí mladí."
+job.swiatniki_journeyman_padlock.line.4,Ten rukopis znám. Henrykův. Učil jsem ho. Zápisník se dostal do správných rukou.
+job.swiatniki_journeyman_padlock.note,"Pan Władysław, Świątniki. Poznal Henrykův rukopis v zápisníku. Učil ho první pravidlo."
+job.time_capsule.line.1,"Vím, že kód bylo datum. Jen čí?"
+job.time_capsule.line.2,"Škola souhlasí. Prosím, otevřete ji přede všemi."
+job.time_capsule.line.3,"Paní učitelko, bylo nám devět. Pamatuju si jen sbírání kaštanů."
+job.time_capsule.line.4,"Můj dopis: „Doufám, že máš psa.“ Mám kočku. To se počítá."
+job.time_capsule.note,"Třída 3b pod kaštanem. Souhlas školy, dvacet svědků. Marta tam byla. Vzkaz doma: „Čeká vývar.“"
+job.uncle_safe_heirs.line.1,"Otevřete ho, já se podívám a řeknu ostatním. Stejně se rozdělíme."
+job.uncle_safe_heirs.line.2,"Otevřu, až tu budou všichni dědici, nebo budu mít jejich písemný souhlas."
+job.uncle_safe_heirs.line.3,"Ewa dorazí za hodinu. Marku, postav vodu na čaj."
+job.uncle_safe_heirs.line.4,"Strýc by se smál, kdyby nás viděl hádat se o krabici s číselníkem."
+job.uncle_safe_heirs.note,Trezor strýce Bogdana. Hodinu jsem čekal na Ewu a vypil tři čaje. Otevřeno přede všemi. Bez trucování.
+job.widow_bureau.line.1,"Paní Zosia říkala, že nevrtáte. Manžel vrtání nesnášel."
+job.widow_bureau.line.2,Otevřu ho beze stopy. Pořád to bude jeho stůl.
+job.widow_bureau.line.3,Lístky do opery. Rok 1987.
+job.widow_bureau.line.4,"Říkal, že je ztratil. Nechal si je."
+job.widow_bureau.note,"Paní Irena, poslala ji paní Zosia. Stůl je u ní doma; beze stop. Uvnitř lístky. Neptal jsem se."
+job.wrong_floor.after.1,"Vy jste ten zámečník, co mi neotevřel? Upekl jsem vám dort. Za to neotevření."
+job.wrong_floor.line.1,"Klíč nejde zasunout. Zámek se rozbil, když jsem byl pryč."
+job.wrong_floor.line.2,"Pane Kazimierzi, na schránce je jiné jméno. A ten věnec?"
+job.wrong_floor.line.3,Kdo je tam? Bydlím tady dvanáct let. Ten věnec jsem dělal sám.
+job.wrong_floor.line.4,"Á, klíč pasuje o patro výš. Vy jste to opravil."
+job.wrong_floor.note,Pan Kazimierz po oslavě svátku. Špatné patro. Nic neotevřeno. Problém vyřešen. Nejlepší zakázka týdne.
+notebook.refuse.line,Tohle otevřít nemohu. Ale můžu pomoci jinak.
+notebook.rule.1,"Nejdřív se ptej, komu věc patří. Teprve potom se dívej na zámek."
+notebook.rule.2,Jeden doklad je vodítko. Dva otevřou rozhovor. Soused může příběh potvrdit.
+notebook.rule.3,"Kdo platí za vynechání otázek, platí za cizí dveře."
+notebook.rule.4,Cenu řekni předem. Účet nemá překvapovat.
+notebook.rule.5,"Co jsem viděl uvnitř, zůstane uvnitř."
+tool.ob_loupe.name,Hodinářská lupa
+tool.ob_microscope.name,Dílenský mikroskop
+tool.ob_borescope.name,Inspekční endoskop
+ach.achievement.first_set.name,První cvaknutí
+ach.achievement.first_set.desc,Poprvé správně usaď stavítko mimo výuku.
+ach.achievement.first_open.name,Dveře se otevírají
+ach.achievement.first_open.desc,Dokonči svůj první zámek v nekonečné směně.
+ach.achievement.pin_school.name,Tři lekce
+ach.achievement.pin_school.desc,Dokonči všechny tři lekce stavítkového zámku.
+ach.achievement.wafer_school.name,Další lekce
+ach.achievement.wafer_school.desc,Dokonči všechny tři lekce lamelového zámku.
+ach.achievement.false_note.name,Dva tóny
+ach.achievement.false_note.desc,"Otevři stavítkový zámek poté, co uslyšíš falešné usazení."
+ach.achievement.after_drop.name,Znovu od začátku
+ach.achievement.after_drop.desc,Vzpamatuj se z pádu stavítek a otevři bez zlomení planžety.
+ach.achievement.after_overset.name,Ještě je šance
+ach.achievement.after_overset.desc,Otevři po přetlačení stavítka bez zlomení planžety.
+ach.achievement.counter_sense.name,Tichá hádka
+ach.achievement.counter_sense.desc,"Dokonči zámek poté, co ucítíš zpětné pootočení."
+ach.achievement.steel_warning.name,Varování vyslyšeno
+ach.achievement.steel_warning.desc,Otevři zámek po varování před přetížením a nezlom planžetu.
+ach.achievement.clean_receipt.name,Beze stop
+ach.achievement.clean_receipt.desc,Získej razítko čisté práce: žádné pády stavítek ani zlomené planžety.
+ach.achievement.hard_clean.name,Těžká tichá práce
+ach.achievement.hard_clean.desc,Otevři zámek páté nebo vyšší úrovně bez pádů a zlomených planžet.
+ach.achievement.pin_master.name,Mosazná trpělivost
+ach.achievement.pin_master.desc,Dokonči pátý mistrovský stavítkový zámek bez zlomení planžety.
+ach.achievement.wafer_master.name,Tichá sestava
+ach.achievement.wafer_master.desc,Dokonči třetí mistrovský lamelový zámek bez zlomení planžety.
+ach.achievement.wafer_clean.name,Nic se neuvolnilo
+ach.achievement.wafer_clean.desc,Otevři lamelový zámek bez pádu prvků a zlomené planžety.
+ach.achievement.pin_plain.name,Poctivé cvaknutí
+ach.achievement.pin_plain.desc,Otevři stavítkový zámek třetí úrovně bez falešného usazení a přetlačení.
+ach.achievement.first_gate.name,Jemný tón
+ach.achievement.first_gate.desc,Otevři pákový zámek po srovnání výřezu.
+ach.achievement.detector_return.name,Na druhý pokus
+ach.achievement.detector_return.desc,Otevři zámek s detektorem po jeho spuštění a úspěšném resetu.
+ach.achievement.ring_false.name,Planý slib
+ach.achievement.ring_false.desc,Otevři kroužkový zámek po falešném usazení.
+ach.achievement.wooden_creak.name,Staré dřevo promlouvá
+ach.achievement.wooden_creak.desc,"Otevři dřevěný stavítkový zámek poté, co uslyšíš jeho vrzání."
+ach.achievement.iron_no_drop.name,Železné dveře
+ach.achievement.iron_no_drop.desc,Otevři zámek s pevnými překážkami bez pádu součástí.
+ach.achievement.lever_true.name,Žádné plané sliby
+ach.achievement.lever_true.desc,Otevři pákový zámek bez falešného usazení.
+ach.achievement.first_dark.name,Když zhasne světlo
+ach.achievement.first_dark.desc,Dokonči první zámek potmě.
+ach.achievement.dark_clean.name,Jen podle sluchu
+ach.achievement.dark_clean.desc,Otevři zámek potmě bez pádu prvků a zlomení planžety.
+ach.achievement.one_pick.name,Jediná v pouzdře
+ach.achievement.one_pick.desc,Dokonči výzvu „Jediná planžeta“ a neztrať ji.
+ach.achievement.daily_lock.name,Dnešní dveře
+ach.achievement.daily_lock.desc,Dokonči jednou denní zámek. Bez série dnů.
+ach.achievement.timed_care.name,"Rychle, ne zbrkle"
+ach.achievement.timed_care.desc,Dokonči časovou výzvu bez zlomení planžety.
+ach.achievement.bench_stop.name,Pět čárek na papíře
+ach.achievement.bench_stop.desc,Dojdi k první zastávce v dílně během nekonečné směny.
+ach.achievement.tool_care.name,Pečlivá oprava
+ach.achievement.tool_care.desc,Poprvé oprav opotřebený nástroj v dílně.
+ach.achievement.permission.name,Před zámkem
+ach.achievement.permission.desc,Před první placenou zakázkou ověř právo vstupu.
+ach.achievement.witness.name,Někdo to potvrdí
+ach.achievement.witness.desc,"Dokonči zakázku poté, co nezávislý svědek potvrdí právo vstupu."
+ach.achievement.first_no.name,Správné ne
+ach.achievement.first_no.desc,"Odmítni zakázku, pokud právo vstupu není potvrzené."
+ach.achievement.ex_partner.name,To nejsou tvoje klíče
+ach.achievement.ex_partner.desc,Vyřeš případ bývalého partnera bez otevření dveří.
+ach.achievement.bribe.name,Mlčení není na prodej
+ach.achievement.bribe.desc,Odmítni příplatek za vynechání ověření.
+ach.achievement.aunt_alive.name,Teta je v pořádku
+ach.achievement.aunt_alive.desc,"Uzavři případ tety, aniž otevřeš její byt."
+ach.achievement.wrong_floor.name,Správné patro
+ach.achievement.wrong_floor.desc,Vyřeš výjezd do špatného patra bez otevření dveří.
+ach.achievement.heirs.name,Všichni na místě
+ach.achievement.heirs.desc,Před otevřením trezoru počkej na všechny oprávněné dědice.
+ach.achievement.partial_refusal.name,"Jen to, s čím souhlasí"
+ach.achievement.partial_refusal.desc,"Otevři zákazníkův trezor, ale odmítni otevřít cizí schránku."
+ach.achievement.museum_papers.name,Ve třech vyhotoveních
+ach.achievement.museum_papers.desc,Otevři muzejní trezor po schválení institucí.
+ach.achievement.kazimierz.name,Stará brána
+ach.achievement.kazimierz.desc,Dokonči doloženou restaurátorskou zakázku u brány v Kazimierzi.
+ach.achievement.capsule.name,Poslední stránka
+ach.achievement.capsule.desc,Otevři školní časovou schránku se souhlasem školy.
+tip.ethics_01,"Nejdřív se zeptej, komu patří dveře. Mechanismus počká."
+tip.ethics_02,Bez dokladů není člověk padouch. Ale ani to není povolení ke vstupu.
+tip.ethics_03,"Když někdo spěchá, jsou otázky ještě důležitější."
+tip.ethics_04,Zdvořilé odmítnutí patří k řemeslu. Některé dveře mají zůstat zavřené.
+tip.ethics_05,Příplatek nenahradí souhlas obyvatele.
+tip.ethics_06,Hlasité vysvětlení pořád není důkazem práva vstupu.
+tip.ethics_07,"Když příběh nesedí, nabídni, že zavoláš správci."
+tip.ethics_08,"Dědictví se řeší doklady a lidmi, ne netrpělivou rukou."
+tip.ethics_09,"Přišel jsem kvůli zámku, ne kvůli obsahu cizího bytu."
+tip.ethics_10,Nejdřív domluv cenu. O překvapení se postará konvice.
+tip.feel_01,Jedno jasné cvaknutí a dvě tlumená vyprávějí různé příběhy.
+tip.feel_02,"Vložka má vlastní rukopis: malé pootočení, větší pootočení, návrat."
+tip.feel_03,I ticho je zvuk. Zvlášť po tupém úderu.
+tip.feel_04,"Pružina si může stěžovat, aniž se něco zlomí. Já také."
+tip.feel_05,"Sílící kovové kvílení je varování, ne vítězná fanfára."
+tip.feel_06,Správné cvaknutí je krátké. To nejisté má ozvěnu.
+tip.feel_07,"Když se jádro vrací, pořád se účastní rozhovoru."
+tip.feel_08,"Tři rýhy po tření jsou ve hře vodítko, ne známka na vysvědčení."
+tip.feel_09,"Obrys může být přerušovaný, i když nástroj není zlomený."
+tip.feel_10,Malý světelný klínek řekne víc než stránka čísel.
+tip.feel_11,Součásti této hry mluví pohybem stejně jako zvukem.
+tip.feel_12,Řada padajících součástek zní trochu jako déšť na střeše dílny.
+tip.feel_13,Správné usazení je jeden tón. Falešné trvá na duetu.
+tip.feel_14,Některé mechanismy mluví potichu. Nejsou proto jednoduché.
+tip.feel_15,"Konečné klapnutí dveří je jediný potlesk, který potřebuji."
+tip.workshop_01,Kožené pouzdro nikdy nelže. Prázdná kapsa je prázdná kapsa.
+tip.workshop_02,Nástroje si pamatují každou směnu. Po práci zkontroluj jejich hrany.
+tip.workshop_03,Uklizený ponk ze mě génia neudělá. Aspoň najdu tužku.
+tip.workshop_04,"Pět čárek na dispečerském listu znamená, že dílna je blízko."
+tip.workshop_05,Účetní kniha pamatuje zakázku lépe než mince.
+tip.workshop_06,Opravit nástroj není ostuda. Ostuda je zapomenout ho zkontrolovat.
+tip.workshop_07,"Účtenka je malý slib, napsaný tužkou a uchovaný inkoustem."
+tip.workshop_08,Starou smaltovanou ceduli jsem si nechal. Pořád trefí domů.
+tip.workshop_09,Někdy je nejlepší památkou práce bez jediného škrábnutí.
+tip.dark_01,"Když zhasne světlo na schodišti, zvuky mají víc prostoru."
+tip.dark_02,"Tma je jiný způsob naslouchání, ne jiná pravidla."
+tip.dark_03,Nejtišší zvuk nemusí být nejméně důležitý.
+tip.dark_04,"Obraz chybí, ale mechanismus má stále svůj rytmus."
+tip.dark_05,Pracoval jsem i v tmavých chodbách. Konvice mě pak vždycky našla.
+tip.dark_06,"Dvojité cvaknutí je dvojité, i když ho nikdo nevidí."
+tip.dark_07,"Ticho není prázdno. Všímej si, jak dlouho trvá."
+tip.dark_08,Světlo můžeš zase rozsvítit. Za unavené oči medaile nejsou.
+tip.people_01,"Paní Halina čeká. Vývar také, a má méně trpělivosti."
+tip.people_02,Kočičí verze událostí moc nepomůže. Zeptej se majitele.
+tip.people_03,"Soused je někdy to nejlepší, co dům má."
+tip.people_04,Výtah zase nejede. Schody naštěstí pořád fungují.
+tip.people_05,Zdvořilé dobré ráno otevře víc rozhovorů než kterýkoli nástroj.
+tip.people_06,Moje práce končí na prahu. Příběhy ostatních pokračují.
+tip.people_07,Unavená sestra potřebuje tichou chodbu víc než přednášku.
+tip.people_08,Každé dveře mají dvě strany. Pamatuj na člověka za nimi.
+tip.calm_01,Rychlost se hodí. Spěch bývá jen hlučnější.
+tip.calm_02,"Jedna chyba mě poučí. Čtyři mi říkají, že je čas na čaj."
+tip.calm_03,Na bolavém palci není nic hrdinského.
+tip.calm_04,"Je to hra pozornosti, ne soutěž o nejsilnější stisk."
+tip.calm_05,Krátká pauza stojí méně než zlomený nástroj.
+tip.calm_06,I tichý úspěch se počítá. Publikum není potřeba.
+tip.calm_07,"Moje nejlepší směny končily uklizeným ponkem, ne dramatem."
+tip.calm_08,Tvrdohlavé dveře nejsou osobní urážka. Ověřil jsem si to.
+tip.calm_09,"Šikovné ruce umějí čekat. A také poznají, kdy přestat."
+tip.calm_10,Po dokončení práce nech lidi pokračovat v jejich dni.
+notebook.extra.false_set_streak,"Tři tlumená dvojitá cvaknutí po sobě. Zapsal jsem si je. Zdálo se, že jsou na sebe pyšná."
+notebook.extra.counter_reply,Jádro se zatlačilo zpět. Vyslechl jsem jeho názor a skončil bez hádky.
+notebook.extra.overset_twice,Dva tupé údery. Dokončil jsem to. Do zápisníku se dostala zdvořilá verze.
+notebook.extra.three_drops,"Tři malé laviny, jedny otevřené dveře. Hluk mi na dnešek stačil."
+notebook.extra.drop_then_set,"Všechno spadlo, potom se ozvalo jedno čisté cvaknutí. Za druhou větu jsem byl vděčný."
+notebook.extra.stress_no_break,Kov si dvakrát postěžoval. Poslechl jsem. Nástroj se vrátil domů celý.
+notebook.extra.one_break,Jedna zlomená planžeta na ponku. Dveře otevřené. Takovou rovnováhu nemám rád.
+notebook.extra.two_breaks,"Dvě zlomené planžety a jedny otevřené dveře. Domů jsem nesl méně, než jsem přinesl."
+notebook.extra.near_shear,"Čtyři úzká zašeptání před posledním klapnutím. Málem jsem zámek požádal, ať mluví hlasitěji."
+notebook.extra.false_without_drop,"Dva plané sliby, žádné padající součástky. Dveře se otevřely bez proslovu."
+notebook.extra.dark_double,"Potmě jsem zaslechl dvojité cvaknutí. Zapsal jsem zvuk, ne odhad."
+notebook.extra.dark_drop,Něco ve tmě spadlo. Zvuk jsem poznal dřív než prázdné místo.
+notebook.extra.dark_failed,"Světlo se rozsvítilo dřív, než se dveře otevřely. Zametl jsem kov a zavřel zápisník."
+notebook.extra.dark_clean,"Bez světla, bez pádů, bez zlomené planžety. Účtenka vypadala podezřele úhledně."
+notebook.extra.serrations,Dvě drobná cvaknutí bez pootočení. Za méně důležité věci jsem už psal hlasitější poznámky.
+notebook.extra.spring_bounce,Pružiny třikrát zarachotily. I starý mechanismus si umí postěžovat.
+notebook.extra.wafer_rattle,Lamely rachotily jako příbory v zásuvce. Dveře se nakonec otevřely.
+notebook.extra.wafer_overset,"Jeden tupý úder od lamel, žádná následná lavina. Rozdíl jsem si poznamenal."
+notebook.extra.wood_creak,Dřevěná stavítka dvakrát zavrzala. S dílenskou židlí jsem je nesrovnával.
+notebook.extra.ward_scrapes,Tři hrubá zaskřípání železa. Poznamenal jsem si zvuk a dějiny nechal muzeu.
+notebook.extra.lever_false,Páky nabídly dvě mělké odpovědi. Ani jedna nebyla poslední.
+notebook.extra.lever_clear,Každý výřez čistě cvakl. Účtenka nepotřebovala žádné výmluvy.
+notebook.extra.detector_reset,Detektor nás zastavil a pak povolil. Oba zvuky jsem spočítal.
+notebook.extra.detector_failed,Poslední slovo měl detektor. Nechal jsem mechanismus být a odmítnutí zapsal.
+notebook.extra.ring_clicks,Šest drobných cvaknutí kroužků. Jeden otevřený zámek. Na chodbě konečně klid.
+notebook.extra.ring_false,Kroužky nabídly dva mělké zářezy. Moje poznámka byla stručná. Ony nebyly.
+notebook.extra.gates_many,Tři srovnané výřezy v jedné zakázce. Malý koncert bez přídavku.
+notebook.extra.mixed_recovery,"Tupý úder, lavina, pak otevřené dveře. Pořadí jsem si zapsal."
+notebook.extra.worn_but_whole,"Nástroj zdrsněl, ale nezlomil se. K dennímu součtu jsem přidal značku opravy."
+notebook.extra.roll_empty,Třetí planžeta praskla. Sroloval jsem prázdné kožené pouzdro a ukončil směnu.
+cast.basia.name,Basia
+cast.elzbieta.name,"Elżbieta, správkyně domu"
+cast.marcel.name,Marcel
+cast.norbert.name,Norbert
+job.community_notice_case.client,"Basia, tajemnice domovního výboru, a správkyně domu Elżbieta."
+job.community_notice_case.line.1,Rozpis služeb je hotový. Jen vitrína ho odmítá vystavit.
+job.community_notice_case.line.2,Spravuji tento dům. Tady je podepsané rozhodnutí obyvatel.
+job.community_notice_case.line.3,Oprávnění i cena jsou jasné. Otevřu společnou vitrínu.
+job.community_notice_case.line.4,První oznámení: rozpis úklidu. Odvážný začátek.
+job.community_notice_case.note,"Staré Město, společná informační vitrína. Správkyně a podpisy obyvatel; rozpis úklidu vyvěšen."
+job.community_notice_case.situation,Společná informační vitrína je zamčená. Obyvatelé potřebují vyvěsit rozpis služeb pro nově schválenou společenskou místnost.
+job.community_notice_case.title,Nástěnka pod zámkem
+job.edek_rehearsal_store.client,"Pan Edek, vrátný na koleji, a Iga ze studentské hudební skupiny."
+job.edek_rehearsal_store.line.1,Sklad mám na seznamu. Patřil starému divadlu.
+job.edek_rehearsal_store.line.2,Půjčujeme si židle. Tentokrát nikdo neobjednal bubny.
+job.edek_rehearsal_store.line.3,Váš registr i dopis univerzity souhlasí. Cena také.
+job.edek_rehearsal_store.line.4,Dobře. Snad židle udrží rytmus lépe než kapela.
+job.edek_rehearsal_store.note,Sklad kolejního divadla. Pan Edek a souhlas univerzity; židle půjčeny na schůzi obyvatel.
+job.edek_rehearsal_store.situation,Ve starém univerzitním divadelním skladu jsou skládací židle slíbené na sousedskou schůzi. Univerzita zápůjčku schválila.
+job.edek_rehearsal_store.title,Židle na zkoušku
+job.gosia_workbench_drawer.client,"Gosia, 36 let, restaurátorka nábytku s dílnou u přístavu."
+job.gosia_workbench_drawer.line.1,Koupila jsem celý ponk. Zásuvka fakturu neuznává.
+job.gosia_workbench_drawer.line.2,"Faktura, fotka při převzetí, dohodnutá cena. Všechno sedí."
+job.gosia_workbench_drawer.line.3,Prosím beze stop. Ponk poputuje do společenské místnosti.
+job.gosia_workbench_drawer.line.4,Dohodnuto. Papíry tentokrát dorazily přede mnou.
+job.gosia_workbench_drawer.note,"Gosiina zásuvka v ponku. Faktura a fotka převzetí. Ponk jde do společenské místnosti, bez poškození."
+job.gosia_workbench_drawer.situation,"Gosia koupila starý pracovní ponk se zamčenou zásuvkou. Chce ho darovat do společenské místnosti, aniž poškodí dřevo."
+job.gosia_workbench_drawer.title,Zásuvka pracovního ponku
+job.halina_recipe_box.client,"Paní Halina, 81 let, a její sousedka paní Zosia."
+job.halina_recipe_box.line.1,Recept na knedlíčky je uvnitř. Vzpomínám si jen na slovo „hrst“.
+job.halina_recipe_box.line.2,To je Halinina krabička. Vidíte? Na fotce stojí vedle jejího hrnku.
+job.halina_recipe_box.line.3,"Fotka, svědek, dohodnutá cena. Můžeme začít."
+job.halina_recipe_box.line.4,"Pak si vyjasníme, kolik váží hrst. To je starý spor."
+job.halina_recipe_box.note,"Paní Halina, krabička s recepty. Fotka a slovo paní Zosie. Cena dohodnuta; spor o hrst trvá."
+job.halina_recipe_box.situation,Halina potřebuje recept na knedlíčky do nové společenské místnosti. Ztratila klíček od staré krabičky na recepty; Zosia má fotografii.
+job.halina_recipe_box.title,Krabička plná hrstí
+job.krystyna_wooden_album.client,Paní Krystyna a její dcera Ola přinesly rodinné fotografie.
+job.krystyna_wooden_album.line.1,"Józef vyrobil tuhle krabičku na fotky. Myslím, že klíček byl dřevěný."
+job.krystyna_wooden_album.line.2,"Máme fotku, na které ji drží. A krabička je u maminky."
+job.krystyna_wooden_album.line.3,Fotka a slovo vaší dcery stačí. Zapíšu cenu.
+job.krystyna_wooden_album.line.4,"Dobře. Jen se neptejte, co jsme tehdy nosili."
+job.krystyna_wooden_album.note,Dřevěná krabička paní Krystyny. Rodinná fotka a potvrzení Oly. Snímky si vybraly samy.
+job.krystyna_wooden_album.situation,Zesnulý Krystynin otec Józef vyrobil dřevěnou krabičku na fotografie se stavítkovým zámkem. Rodina chce pár snímků zapůjčit na výstavu do společenské místnosti.
+job.krystyna_wooden_album.title,Józefova krabička na fotky
+job.marta_poster_studio.client,"Marta, 34 let, grafička. Kocour Brambora dohlíží."
+job.marta_poster_studio.line.1,Plakáty jsou uvnitř. Brambora je hlídá ze špatné strany.
+job.marta_poster_studio.line.2,"Nájemní smlouva sedí. Soused potvrzuje, že ateliér je váš."
+job.marta_poster_studio.line.3,Kocour nepodepíše. Jeho zásady ochrany soukromí jsou přísné.
+job.marta_poster_studio.line.4,Netřeba. Cena je dohodnutá a doklady stačí.
+job.marta_poster_studio.note,Martin ateliér. Smlouva a soused. Plakáty vyzvednuty; Brambora odmítl komentář.
+job.marta_poster_studio.situation,Plakáty pro společenskou místnost jsou zamčené v Martině pronajatém ateliéru. Klíč je uvnitř spolu s tisky a kocourem.
+job.marta_poster_studio.title,Plakáty za dveřmi
+job.refuse_sisters_flat.after.1,"Mluvil jsem s nájemnicí. Požádala nás, abychom počkali, až se vrátí."
+job.refuse_sisters_flat.client,"Norbert, 43 let, má starost o sestřiny pokojové rostliny."
+job.refuse_sisters_flat.line.1,Sestra je pryč. Kytky jí uschnou a telefon nebere.
+job.refuse_sisters_flat.line.2,Můžeme počkat na její souhlas nebo se zeptat správce domu.
+job.refuse_sisters_flat.line.3,Radši do toho netahejme sousedy. Jsou to jen kytky.
+job.refuse_sisters_flat.line.4,Bez jejího souhlasu neotevřu. Tady je číslo na správce.
+job.refuse_sisters_flat.note,Byt Norbertovy sestry neotevřen. Chyběl souhlas nájemnice. Předal jsem číslo na správce.
+job.refuse_sisters_flat.situation,"Sestra je pryč a nezvedá telefon. Norbert chce otevřít její byt, aby zalil rostliny, ale nemá její souhlas."
+job.refuse_sisters_flat.title,Květiny za zamčenými dveřmi
+job.refuse_unapproved_stockroom.after.1,Balíky vyzvedli ráno. Obchod má teď rozumnější dobu pro doručování.
+job.refuse_unapproved_stockroom.client,"Marcel, 29 let, kurýr s vozíkem plným balíků."
+job.refuse_unapproved_stockroom.line.1,Zásilku mám na vozíku. Majitel obchodu to nebere.
+job.refuse_unapproved_stockroom.line.2,Dodací list není povolení vstoupit do obchodu.
+job.refuse_unapproved_stockroom.line.3,"Neotevřel byste jen na škvíru, ať tam balíky nechám?"
+job.refuse_unapproved_stockroom.line.4,Bez souhlasu ne. Raději domluvíme bezpečné předání.
+job.refuse_unapproved_stockroom.note,"Sklad na Nočním trhu. Dodací list, bez souhlasu majitele. Balíky předány ráno."
+job.refuse_unapproved_stockroom.situation,"Obchod na Nočním trhu je zavřený. Marcel chce otevřít sklad, aby tam mohl nechat balíky, ale majitel nesouhlasil."
+job.refuse_unapproved_stockroom.title,Doručení po zavíračce
+job.roman_service_cupboard.client,"Pan Roman, 58 let, správce sídliště."
+job.roman_service_cupboard.line.1,Obyvatelé odhlasovali darování čísel. Skříň se to nedozvěděla.
+job.roman_service_cupboard.line.2,Mám váš registr i podepsané rozhodnutí. Cena je dohodnutá.
+job.roman_service_cupboard.line.3,Prosím opatrně. Jsou to jediná čísla bez pravopisných chyb.
+job.roman_service_cupboard.line.4,Na smalt dám pozor. S papírováním nic neslibuji.
+job.roman_service_cupboard.note,"Sluneční sídliště, údržbářská skříň. Pan Roman a podpisy hlasování. Stará čísla míří do společenské místnosti."
+job.roman_service_cupboard.situation,Obyvatelé odhlasovali darování starých smaltovaných čísel dveří do nové společenské místnosti. Zamčená údržbářská skříň si myslí své.
+job.roman_service_cupboard.title,Skříň na schodišti
+job.shared_room_door.after.1,Na první schůzi nikdo neztratil klíč. Slibný začátek.
+job.shared_room_door.client,"Správkyně Elżbieta, s Martou a paní Halinou."
+job.shared_room_door.line.1,Podepsané usnesení a seznam oprávněných obyvatel. Jsou to společné dveře.
+job.shared_room_door.line.2,Doklady i cena souhlasí. Můžeme otevřít.
+job.shared_room_door.line.3,"Přinesla jsem ceduli. Brambora ji schválil tím, že na ní usnul."
+job.shared_room_door.line.4,A já přinesla knedlíčky. Dveře počkají. Ony ne.
+job.shared_room_door.note,"Staré Město, společenská místnost. Usnesení, správkyně, svědek. Židle, fotky a knedlíčky byly první."
+job.shared_room_door.situation,"Po hlasování obyvatel schvaluje Elżbieta otevření staré společenské místnosti. Židle, fotky, cedule i recept na knedlíčky už jsou připravené."
+job.shared_room_door.title,Dveře pro všechny
+job.stefan_book_tin.client,"Pan Stefan, 67 let, majitel stánku a zdroj místních novinek."
+job.stefan_book_tin.line.1,Poukázky do knihovny jsem bezpečně uschoval. Zřejmě i před sebou.
+job.stefan_book_tin.line.2,Vaše účtenka i fotka stánku souhlasí. Cenu jsme domluvili.
+job.stefan_book_tin.line.3,Znám všechny jízdní řády autobusů. Tahle čísla? Ani náhodou.
+job.stefan_book_tin.line.4,Aspoň účtenka přežila. Svou přiložím vedle ní.
+job.stefan_book_tin.note,"Stefanův stánek, plechovka s poukázkami. Účtenka a fotka. Majitel si kód pořád nepamatuje."
+job.stefan_book_tin.situation,Stefan zamkl poukázky na knihy pro novou společenskou místnost do vlastní plechovky s kroužkovým zámkem a zapomněl kombinaci.
+job.stefan_book_tin.title,Plechovka s knižními poukázkami
+job.zuzanna_catalogue_drawer.client,"Zuzanna Wilk, muzejní stážistka, s kurátorkou dr. Annou Rygiel."
+job.zuzanna_catalogue_drawer.line.1,"Na kopie máme souhlas. Zásuvka si myslí, že jsou originály."
+job.zuzanna_catalogue_drawer.line.2,Podpis je můj. Originály zůstávají v muzeu.
+job.zuzanna_catalogue_drawer.line.3,"Kurátorka, podepsaný protokol, domluvená cena. Tak jen tu zásuvku."
+job.zuzanna_catalogue_drawer.line.4,Výstavu označím „Zacházejte opatrně“. Začnu touhle zásuvkou.
+job.zuzanna_catalogue_drawer.note,"Muzeum, katalogová zásuvka. Dr. Rygiel schválila kopie. Originály zůstaly na svém místě."
+job.zuzanna_catalogue_drawer.situation,Schválené kopie starých fotografií schodišť uvízly v zamčené muzejní zásuvce. Originály zůstanou v archivu.
+job.zuzanna_catalogue_drawer.title,Katalogová zásuvka
