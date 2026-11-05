@@ -127,6 +127,9 @@ func _ready() -> void:
 		var atex: Texture2D = null
 		if slot != "":
 			atex = load("res://assets/ui/gpt/cast/%s/avatar.png" % slot)
+		if atex == null:
+			# D-50: episodic Magnific portraits (batch 1) before falling back to the initial plate
+			atex = load("res://assets/ui/gpt/cast/episodic/portrait_%s.webp" % speaker)
 		if atex != null:
 			var avatar := TextureRect.new()
 			avatar.texture = atex
