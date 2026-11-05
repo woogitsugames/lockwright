@@ -67,3 +67,4 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | Kadry przyjazdu (10 × 1080×2340) | `contrib/gpt/G07/images/` | ChatGPT Image Generator, kadrowanie Pillow | `contrib/gpt/G07/ASSETS.md` |
 | Kadry warsztatu (11) | `contrib/gpt/G08/images/` | ChatGPT Image Generator, kadrowanie Pillow | `contrib/gpt/G08/ASSETS.md` |
 | Zeszyt mistrza (strony SVG/JPG) | `contrib/gpt/G10/` | rysowane kodem (SVG) | `contrib/gpt/G10/ASSETS.md` |
+| Zeszyt mistrza v2 (strony 1600×2200) | `contrib/gpt/G10/v2/pages/` | faktury: ChatGPT Image Generator; treść: v1 SVG + font Caveat (OFL, `contrib/gpt/G10/v2/fonts/OFL.txt`), kompozycja sesji A | `contrib/gpt/G10/v2/README.md` |
