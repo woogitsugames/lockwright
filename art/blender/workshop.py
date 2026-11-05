@@ -45,7 +45,7 @@ slip_m = paper('slip', (0.83, 0.81, 0.75), grime=0.1, seed=1, lines=(8.0, 'Y', (
 pad_m = paper('pad', (0.80, 0.78, 0.72), grime=0.25, seed=2)
 label_m = paper('label', (0.84, 0.82, 0.74), grime=0.3, seed=6)
 cotton = paper('string', (0.75, 0.72, 0.64), fibre=0.5)
-hardboard = oak('hardboard', light=(0.30, 0.18, 0.09), dark=(0.22, 0.12, 0.06), ring=40, coat=0.3, pores=0.0, seed=9, wear=0.6)
+hardboard = plastic('hardboard', (0.15, 0.085, 0.04), rough=0.55, seed=2, grime=0.6, sheen_scuffs=0.5)
 cover = oil_paint('notebook_cover', (0.07, 0.11, 0.16), rough=0.6, under=(0.5, 0.45, 0.35), base=(0.45, 0.4, 0.3), chips=0.2,
                   scuffs=0.8, strokes='Y', seed=3, chip_scale=0.05, edge_chips=1.5)
 cloth = rubber('cloth', (0.05, 0.04, 0.035), rough=0.9)

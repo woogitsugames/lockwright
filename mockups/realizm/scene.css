@@ -9,10 +9,10 @@
 .pencil{color:#3b3d42;font-weight:500;letter-spacing:.01em;opacity:.85}
 
 /* dispatch slip, 148 x 210 mm laid out at 2 px/mm; the form's ruled lines are 8 mm (16 px) apart */
-.slip{padding:6px 18px 0 22px;font:500 19px/32px "Atkinson Hyperlegible Next",sans-serif}
-.slip .form{font:700 10.5px/16px "Atkinson Hyperlegible Next",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5b6676;
-  display:flex;justify-content:space-between;margin-bottom:2px}
-.slip .addr{font-weight:700;font-size:23px}
+.slip{padding:48px 18px 0 22px;font:500 19px/32px "Atkinson Hyperlegible Next",sans-serif}
+.slip .form{font:700 12px/32px "Atkinson Hyperlegible Next",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5b6676;
+  display:flex;justify-content:space-between}
+.slip .addr{font-weight:700;font-size:21px;white-space:nowrap;letter-spacing:-.01em}
 .slip .who{font-size:20px}
 .slip .what{font-size:18.5px;line-height:32px}
 .slip .rate{font-size:18px;color:#4a3f30;display:flex;justify-content:space-between}
@@ -35,6 +35,6 @@
 .screen-lit .t{font-size:30px;color:#9aa3a7;letter-spacing:.04em}
 .screen-lit b{display:block;font-size:170px;line-height:1;margin:40px 0 0}
 .screen-lit .from{font-size:32px;color:#9aa3a7;margin-top:40px}
-.duty{padding:8px 18px 0 22px;font:600 23px/32px "Atkinson Hyperlegible Next",sans-serif}
+.duty{padding:44px 18px 0 22px;font:600 23px/32px "Atkinson Hyperlegible Next",sans-serif}
 .duty h2{font:700 54px/64px "Bona Nova",serif}
 .duty .tally{vertical-align:-8px;margin-left:6px;fill:none;stroke:#3b3d42;stroke-width:2.6;stroke-linecap:round}
