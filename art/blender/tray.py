@@ -6,6 +6,7 @@
 import bpy, bmesh, math, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lw_common import *
+from lw_common import _noise, _mix, _maprange, _edge_mask, _cavity_mask
 from mathutils import Vector, Matrix
 
 arg = cli()
@@ -154,11 +155,15 @@ for i, x in enumerate(POCKET_X):
         floor = -2.0 - undulation(x, 8, 1) + 0.3   # groove ~0.3 mm deep, following the leather
         im = flat_tool('imprint%d' % i, pts, 1.9, 8.0, floor - 4.0, mat='brass')
         im.data.materials.clear(); im.data.materials.append(LE3)
-        bpy.context.view_layer.objects.active = im; bpy.ops.object.modifier_apply(modifier='bev')
-        md = roll.modifiers.new('imp', 'BOOLEAN'); md.operation = 'DIFFERENCE'; md.object = im; md.solver = 'EXACT'
-        md.material_mode = 'TRANSFER'
+        im.modifiers.clear()
+        md = roll.modifiers.new('imp', 'BOOLEAN'); md.operation = 'DIFFERENCE'; md.object = im; md.solver = 'FAST'
         bpy.context.view_layer.objects.active = roll; roll.modifiers.move(len(roll.modifiers) - 1, 0)
         bpy.ops.object.modifier_apply(modifier='imp'); bpy.data.objects.remove(im, do_unlink=True)
+        if LE3.name not in roll.data.materials: roll.data.materials.append(LE3)
+        mi = list(roll.data.materials).index(LE3)
+        for pg in roll.data.polygons:
+            c = pg.center
+            if abs(c.x - x - 1.5) < 4 and -11 < c.z < 28 and -0.5 > c.y > -2.0 - undulation(c.x, c.z, 1) + 0.08: pg.material_index = mi
         continue
     if i == 0:   # hook: short upturned tip
         pts = [(x, -60), (x, 16), (x + 0.3, 21), (x + 1.5, 24.5), (x + 3.4, 26)]
@@ -202,5 +207,12 @@ area_light('rim', (120, -60, 230), AIM, 60, float(arg('--rim', '60000')), (1.0, 
 cd = bpy.data.cameras.new('cam'); cam = bpy.data.objects.new('cam', cd); scene.collection.objects.link(cam); scene.camera = cam
 cd.lens = 120; cd.sensor_fit = 'HORIZONTAL'; cd.sensor_width = 36; cd.dof.use_dof = False; cd.clip_start = 1
 cam.location = (0, -400, CZ + 7); cam.rotation_euler = (Vector((0, 0, CZ)) - cam.location).to_track_quat('-Z', 'Z').to_euler()
+# product sheen on the steel: strip softbox near the mirror direction, shifted so its edge grades across the picks
+mirror_softbox('sheen', (0, 0, CZ), cam, dist=380, size=float(arg('--ss', '90')), size_y=float(arg('--ssy', '240')),
+               energy=float(arg('--sheen', '60000')), shift=(float(arg('--sx', '14')), 0, float(arg('--sz', '8'))))
 render_setup(OUT, RES, SAMPLES, exposure=float(arg('--exp', '0.0')))
+if arg("--norender", "0") == "1":
+    for o in bpy.data.objects:
+        if o.type == "MESH" and not o.name.startswith("Sphere"): print("OBJ", o.name, len(o.data.polygons), [m.name for m in o.data.materials], o.dimensions[:])
+    raise SystemExit
 bpy.ops.render.render(write_still=True); print('WROTE', scene.render.filepath)

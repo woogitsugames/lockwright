@@ -305,6 +305,8 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
   const bool can_reset = (family.input_mask() & AXIS_ROTATE) != 0;
   constexpr q16 DRAG_BOUND = q16_milli(30);
   constexpr q16 PROBE_HEIGHT = q16_milli(220);
+  constexpr q16 PROBE_STEP = q16_milli(50);
+  constexpr q16 PROBE_MAX = q16_milli(370);
   constexpr q16 LIFT_CAP = q16_milli(950);
   constexpr q16 T_START = q16_milli(150);
   constexpr q16 T_STEP = q16_milli(30);
@@ -330,6 +332,10 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
   q16 last_drag = 0;  // continuous signal of the previous step
   bool fresh_t = true;  // work_t was just raised to the binding edge
   int caught = -1;      // element perceived in a false gate (it stays drawn there until set or drop)
+  // v0.3: probe height. A probe can leave an element bound at its own height (plus tremor),
+  // where the next probe to the same height no longer presses it; every sweep that finds
+  // nothing probes a little higher (reset on progress).
+  q16 probe_h = PROBE_HEIGHT;
 
   auto go = [&](Feel p, std::int64_t t) {
     ph = p;
@@ -355,6 +361,7 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
       // Nothing binds at this tension: pull harder.
       for (auto& f : free_now) f = 0;
       work_t = work_t + T_STEP > T_MAX ? T_START : work_t + T_STEP;
+      probe_h = probe_h + PROBE_STEP > PROBE_MAX ? PROBE_HEIGHT : probe_h + PROBE_STEP;
       fresh_t = true;
       ++rep.retries;
       c = next_candidate(cand);
@@ -393,6 +400,7 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
             set_order.push_back(e.element);
             for (auto& f : free_now) f = 0;
             if (e.element == caught) caught = -1;
+            probe_h = PROBE_HEIGHT;
             last_progress = t;
             if (unset_count() == 0) go(Feel::wait_open, t);
             else if (ph != Feel::flick) start_probe(t);
@@ -447,14 +455,14 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
         if (hand_d == depth && hand_l == 0 && t - phase_t >= lim.min_hold_steps) go(Feel::probe_lift, t);
         break;
       case Feel::probe_lift:
-        target_l = q_min(hand_l + probe_rate, PROBE_HEIGHT);
+        target_l = q_min(hand_l + probe_rate, probe_h);
         if (t - phase_t > lim.latency_steps) max_drag = q_max(max_drag, felt_drag);
         if (max_drag >= DRAG_BOUND) {
           // Binding found at the edge: pull a little harder so tremor does not unbind it.
           if (fresh_t) work_t = q_min(T_MAX, work_t + T_STEP);
           fresh_t = false;
           go(Feel::lift, t);
-        } else if (hand_l >= PROBE_HEIGHT && t - phase_t > 2 * lim.latency_steps + lim.min_hold_steps) {
+        } else if (hand_l >= probe_h && t - phase_t > 2 * lim.latency_steps + lim.min_hold_steps) {
           free_now[static_cast<std::size_t>(cand)] = 1;  // follows the pick: loose
           start_probe(t);
         }

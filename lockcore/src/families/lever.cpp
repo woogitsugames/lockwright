@@ -19,6 +19,8 @@
 #include "lockcore/lever.hpp"
 
 #include <algorithm>
+#include <cstdlib>
+#define EXPV(n,d) (std::getenv(n)?std::atoi(std::getenv(n)):(d))
 
 #include "lockcore/bot.hpp"
 #include "lockcore/hash.hpp"
@@ -616,9 +618,9 @@ class Module final : public FamilyModule {
     if (detector_) {
       // detector_margin 12 % (t5) -> 6 % (t6); reset 1.5 s -> 2.5 s.
       const bool hard = d.tier >= 6;
-      P->detector_margin = q16_milli(hard ? 60 : 120);
-      P->reset_steps = ms_to_steps(hard ? 2500 : 1500);
-      P->max_trips = 3;
+      P->detector_margin = q16_milli(hard ? EXPV("DM6",60) : EXPV("DM5",120));
+      P->reset_steps = ms_to_steps(hard ? EXPV("RS6",2500) : EXPV("RS5",1500));
+      P->max_trips = hard ? EXPV("MT6",3) : EXPV("MT5",3);
       P->reset_wear = 2;
     }
     P->levers.resize(static_cast<std::size_t>(n));

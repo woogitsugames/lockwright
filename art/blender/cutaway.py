@@ -12,6 +12,12 @@ def arg(name, default):
     return argv[argv.index(name) + 1] if name in argv else default
 OUT = arg('--out', '//cutaway.png'); RES = [int(v) for v in arg('--res', '824x1100').split('x')]
 SAMPLES = int(arg('--samples', '96')); SHOT = arg('--shot', 'section'); GLB = arg('--glb', '')
+# shots: section (default), loupe, microscope (optical views of the cut), borescope (camera inside the keyway of the
+# uncut cylinder: the section cut is skipped so the keyway is a closed, dark channel lit only by the probe's LED ring)
+CUT = SHOT != 'borescope'
+def section_cut(o, cutter):
+    if CUT: boolean(o, cutter)
+    else: bpy.data.objects.remove(cutter, do_unlink=True)
 
 # ---------------------------------------------------------------- geometry (cut plane y = 0, keep y >= 0)
 PINS_X = [5.0, 9.0, 13.0, 17.0, 21.0]
@@ -28,7 +34,7 @@ boolean(house, cap, 'UNION')
 boolean(house, cyl('bore', R_PLUG + 0.2, LEN + 2, (LEN / 2, 0, 0), axis='X', verts=128))  # 0.12 mm clearance = visible shear gap
 for x in PINS_X:
     boolean(house, cyl('ch', CHAMBER_R, TOWER_TOP, (x, 0, SHEAR + (TOWER_TOP - 1.2 - SHEAR) / 2 - 0.4), verts=48))
-boolean(house, box('cut', -1, LEN + 1, -20, 0, -20, 40))  # section cut
+section_cut(house, box('cut', -1, LEN + 1, -20, 0, -20, 40))  # section cut
 link(house, M['nickel']); bevel(house, 0.1)
 
 # plug with keyway and chambers
@@ -37,17 +43,17 @@ boolean(plug, box('keyway', -2, LEN - 1.5, -1.2, 1.2, KEYWAY[0], KEYWAY[1]))
 boolean(plug, box('ward', -2, LEN - 1.5, -2.0, 2.0, -1.4, 0.2))  # profile ward widens the slot
 for x in PINS_X:
     boolean(plug, cyl('pc', CHAMBER_R, 6, (x, 0, KEYWAY[1] + 1.5)))
-boolean(plug, box('cut', -3, LEN + 2, -20, 0, -20, 20))
+section_cut(plug, box('cut', -3, LEN + 2, -20, 0, -20, 20))
 link(plug, M['brass']); bevel(plug, 0.1)
 # front face lip of the plug (rounded collar)
 collar = cyl('collar', R_HOUSE + 0.6, 1.6, (-0.8, 0, 0), axis='X', verts=128)
 boolean(collar, box('kw2', -3, 1, -1.2, 1.2, KEYWAY[0], KEYWAY[1]))
 boolean(collar, cyl('inner', R_PLUG, 4, (-0.8, 0, 0), axis='X', verts=128))
-boolean(collar, box('cut', -3, 2, -20, 0, -20, 20)); link(collar, M['nickel']); bevel(collar, 0.12)
+section_cut(collar, box('cut', -3, 2, -20, 0, -20, 20)); link(collar, M['nickel']); bevel(collar, 0.12)
 
 # bore plugs (caps) closing the chambers at the top of the tower
 for x in PINS_X:
-    c = cyl('cap', CHAMBER_R + 0.02, 1.2, (x, 0, TOWER_TOP - 1.6 - 0.4 + 0.6)); boolean(c, box('cut', x - 3, x + 3, -5, 0, 0, 40)); link(c, M['brass']); bevel(c, 0.08)
+    c = cyl('cap', CHAMBER_R + 0.02, 1.2, (x, 0, TOWER_TOP - 1.6 - 0.4 + 0.6)); section_cut(c, box('cut', x - 3, x + 3, -5, 0, 0, 40)); link(c, M['brass']); bevel(c, 0.08)
 
 # ---------------------------------------------------------------- pin stacks (game states a..e)
 TOP = TOWER_TOP - 2.0 - 0.4  # underside of caps
@@ -125,6 +131,72 @@ if SHOT == 'loupe':  # macro through the loupe: shear line at pin c
     cam.location = target + Vector((math.sin(yaw) * dist, -math.cos(yaw) * dist * math.cos(pitch), math.sin(pitch) * dist))
     cam.rotation_euler = (target - cam.location).to_track_quat('-Z', 'Y').to_euler()
     cam_d.dof.use_dof = True; cam_d.dof.focus_distance = dist; cam_d.dof.aperture_fstop = 22; AIM.location = target
+
+
+def optics_post(dispersion=0.0, distortion=0.0, vignette=0.0, soft=0.25):
+    """Compositor stand-in for real optics: lateral colour fringing that grows toward the edge (Lens Distortion
+    dispersion), optional barrel distortion, and a soft optical vignette. No glare, no bloom."""
+    scene.use_nodes = True; nt = scene.node_tree; nt.nodes.clear()
+    rl = nt.nodes.new('CompositorNodeRLayers'); comp = nt.nodes.new('CompositorNodeComposite'); img = rl.outputs['Image']
+    if dispersion or distortion:
+        ld = nt.nodes.new('CompositorNodeLensdist'); ld.use_fit = distortion > 0
+        ld.inputs['Distortion'].default_value = distortion; ld.inputs['Dispersion'].default_value = dispersion
+        nt.links.new(img, ld.inputs['Image']); img = ld.outputs['Image']
+    if vignette:
+        em = nt.nodes.new('CompositorNodeEllipseMask'); em.width = em.height = 1.0 - soft * 0.6
+        em.inputs['Value'].default_value = 1.0
+        bl = nt.nodes.new('CompositorNodeBlur'); bl.filter_type = 'GAUSS'; bl.use_relative = True
+        bl.factor_x = bl.factor_y = soft * 100; bl.size_x = bl.size_y = 1
+        nt.links.new(em.outputs['Mask'], bl.inputs['Image'])
+        mr = nt.nodes.new('CompositorNodeMapRange'); mr.inputs['To Min'].default_value = 1.0 - vignette
+        nt.links.new(bl.outputs['Image'], mr.inputs['Value'])
+        mx = nt.nodes.new('CompositorNodeMixRGB'); mx.blend_type = 'MULTIPLY'; mx.inputs['Fac'].default_value = 1.0
+        nt.links.new(img, mx.inputs[1]); nt.links.new(mr.outputs['Value'], mx.inputs[2]); img = mx.outputs['Image']
+    nt.links.new(img, comp.inputs['Image'])
+
+def emitter(name, obj, strength, color=(1.0, 0.96, 0.9)):
+    m = bpy.data.materials.new(name); m.use_nodes = True; nt = m.node_tree; nt.nodes.clear()
+    e = nt.nodes.new('ShaderNodeEmission'); e.inputs['Strength'].default_value = strength; e.inputs['Color'].default_value = (*color, 1)
+    o = nt.nodes.new('ShaderNodeOutputMaterial'); nt.links.new(e.outputs[0], o.inputs['Surface'])
+    obj.data.materials.clear(); obj.data.materials.append(m); obj.visible_camera = False; return obj
+
+if SHOT == 'microscope':  # bench microscope: ~2x the loupe's magnification, narrow field, LED ring illuminator
+    # default target sits between pin a (set) and pin b (spool caught in false set): the two states the loupe
+    # cannot tell apart at a glance, side by side at the shear line
+    tx, tz = [float(v) for v in arg('--target', '%f,%f' % ((PINS_X[0] + PINS_X[1]) / 2, SHEAR + 0.2)).split(',')]
+    target = Vector((tx, 0.0, tz)); dist = float(arg('--dist', '24')); cam_d.lens = 180
+    myaw = math.radians(float(arg('--yaw', '-14'))); mpitch = math.radians(float(arg('--pitch', '6')))
+    cam.location = target + Vector((math.sin(myaw) * dist, -math.cos(myaw) * dist * math.cos(mpitch), math.sin(mpitch) * dist))
+    cam.rotation_euler = (target - cam.location).to_track_quat('-Z', 'Y').to_euler(); AIM.location = target
+    cam_d.dof.use_dof = True; cam_d.dof.focus_distance = dist; cam_d.dof.aperture_fstop = float(arg('--fstop', '16'))
+    # LED ring around the objective: a diffuse annulus coaxial with the view, out of frame (behind the camera)
+    ax = (target - cam.location).normalized(); rd = float(arg('--ring_d', '70')); rr = float(arg('--ring_r', '28'))
+    bpy.ops.mesh.primitive_torus_add(major_radius=rr, minor_radius=2.0, major_segments=96, minor_segments=12)
+    ring = bpy.context.object; ring.name = 'led_ring'
+    ring.location = target - ax * rd; ring.rotation_euler = ax.to_track_quat('Z', 'Y').to_euler()
+    emitter('ring_led', ring, float(arg('--ring', '60')), (1.0, 0.97, 0.92))
+    for L in ('key', 'fill', 'rim', 'sheen'): bpy.data.objects[L].data.energy *= float(arg('--amb', '1.0'))
+    optics_post(dispersion=float(arg('--disp', '0.012')), vignette=float(arg('--vig', '0.55')), soft=0.3)
+
+if SHOT == 'borescope':  # flexible probe in the keyway, looking along the plug at the key pins from below
+    for o in list(bpy.data.objects):  # pin stacks were offset behind the cut plane; centre them in their chambers
+        if o.name[:2] in ('a_', 'b_', 'c_', 'd_', 'e_'):
+            o.matrix_world = Matrix.Translation((0, -1.5, 0)) @ o.matrix_world
+    bx, by, bz = [float(v) for v in arg('--probe', '0.6,-0.55,-0.4').split(',')]
+    tx, ty, tz = [float(v) for v in arg('--target', '12,0,2.6').split(',')]
+    cam.location = Vector((bx, by, bz)); cam.rotation_euler = (Vector((tx, ty, tz)) - cam.location).to_track_quat('-Z', 'Z').to_euler()
+    cam_d.lens = float(arg('--lens', '16')); cam_d.clip_start = 0.05; cam_d.dof.use_dof = False
+    # the room is shut out (only a little leaks in through the keyway mouth); the LED ring does the work
+    scene.world.node_tree.nodes['Background'].inputs['Strength'].default_value = float(arg('--world', '0.02'))
+    for L in ('key', 'fill', 'rim', 'sheen'): bpy.data.objects[L].hide_render = True
+    fwd = (Vector((tx, ty, tz)) - cam.location).normalized()
+    q = cam.rotation_euler.to_quaternion(); right = q @ Vector((1, 0, 0)); upv = q @ Vector((0, 1, 0))
+    for k in range(6):  # six warm-white LEDs on a 0.9 mm ring around the lens
+        a = 2 * math.pi * (k + 0.5) / 6
+        p = cam.location + (right * math.cos(a) + upv * math.sin(a)) * 0.9 + fwd * 0.05
+        bpy.ops.object.light_add(type='POINT', location=p); L = bpy.context.object; L.name = 'led%d' % k
+        L.data.energy = float(arg('--led', '0.6')); L.data.shadow_soft_size = 0.12; L.data.color = (1.0, 0.95, 0.86)
+    optics_post(dispersion=0.006, distortion=float(arg('--barrel', '0.06')), vignette=float(arg('--vig', '0.45')), soft=0.35)
 
 # ---------------------------------------------------------------- render
 scene.render.engine = 'CYCLES'; scene.cycles.device = 'CPU'; scene.cycles.samples = SAMPLES
