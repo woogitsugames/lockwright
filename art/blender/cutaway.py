@@ -15,6 +15,8 @@ SAMPLES = int(arg('--samples', '96')); SHOT = arg('--shot', 'section'); GLB = ar
 # shots: section (default), loupe, microscope (optical views of the cut), borescope (camera inside the keyway of the
 # uncut cylinder: the section cut is skipped so the keyway is a closed, dark channel lit only by the probe's LED ring)
 CUT = SHOT != 'borescope'
+if photo_enabled():  # photo PBR maps (art/textures/photo, G03 oak); --photo 0 = the procedural materials
+    M.update(photo_cutaway_set())
 def section_cut(o, cutter):
     if CUT: boolean(o, cutter)
     else: bpy.data.objects.remove(cutter, do_unlink=True)

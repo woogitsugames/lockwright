@@ -36,6 +36,15 @@ MAT = {
     'back':   dark_mat('back2', (0.012, 0.012, 0.013), 0.9),
 }
 
+if photo_enabled():  # photo PBR maps (art/textures/photo); --photo 0 = procedural
+    MAT.update({
+        'zamak':  photo_mat('ph_housing', 'nickel_satin', scale=40, rot=0, tint=(0.92, 0.92, 0.9), wear=0.3, grime=0.7),
+        'brass':  photo_mat('ph_plug', 'brass_face_milled', scale=45, rot=42, tint=(1.05, 0.98, 0.86), bump=0.18, wear=0.4, grime=0.5),
+        'wafer':  photo_mat('ph_wafer', 'steel_ground', scale=14, rot=90, tint=(0.78, 0.79, 0.82), wear=0.5, grime=0.4),
+        'pick':   photo_mat('ph_pick2', 'spring_steel_polished', scale=24, bump=0.12),
+        'wrench': photo_mat('ph_wrench2', 'steel_ground', scale=20, tint=(0.7, 0.7, 0.72), wear=0.5, grime=0.3),
+    })
+
 # ---------------------------------------------------------------- dimensions (cut plane y = 0, keep y >= 0)
 R_P, R_B, R_H = 7.0, 7.12, 11.0          # plug, bore, housing thread major radius
 T, PITCH = 2.4, 5.0                      # wafer thickness, wafer pitch

@@ -34,6 +34,10 @@ MAT = {
     'dark':   dark_mat('hole', (0.01, 0.008, 0.006), 0.95),
 }
 
+PHOTO = photo_enabled()   # photo PBR maps (art/textures/photo, G03 oak); --photo 0 = procedural
+if PHOTO:
+    MAT['case'] = photo_mat('ph_case_iron', 'iron_painted_rust', scale=150, offset=(31, 0, -17), metallic=0.0, rough_add=0.05, bump=0.5, grime=0.6, wear=0.4)
+
 PIN = Vector((0.0, 0.0, -8.0))
 DZ = 2.8   # bolt / tumbler group offset above the original layout
 BIT_R = 25.6
@@ -136,6 +140,9 @@ put(box('lblock', -32.2, -25.0, 0.2, DEPTH, Z1 - WALL - 2.4, Z1 - WALL), MAT['ca
 for i, (bz0, bz1) in enumerate([(-170, -58.4), (-58.0, 51.6), (52.0, 170)]):
     wm = oak('chest_oak%d' % i, light=(0.36, 0.23, 0.115), dark=(0.15, 0.085, 0.04), axis='X', ring_mm=2.0 + 0.5 * i, lacquer=0.45,
              rough=0.5, coat_rough=0.22, wear=0.7, grime=0.9, scratches=0.8, seed=2.0 + i * 1.7)
+    if PHOTO:
+        wm = photo_mat('ph_chest_oak%d' % i, 'g03:oak_satin', scale=280, rot=90, offset=(i * 83, 0, i * 57), metallic=0.0,
+                       tint=(0.85 - 0.05 * i, 0.8 - 0.05 * i, 0.74), rough_add=0.15, coat=0.15, bump=0.35, grime=0.9, wear=0.6)
     bd = box('board%d' % i, -140, 140, DEPTH + BP, DEPTH + BP + 22, bz0, bz1); put(bd, wm, 0.6, 3)
 kd = cyl('khd', 3.0, 1.0, (PIN.x, DEPTH + BP + 0.6, PIN.z), axis='Y', verts=48)
 boolean(kd, box('khds', PIN.x - 1.3, PIN.x + 1.3, DEPTH, DEPTH + 4, PIN.z - BIT_R, PIN.z), 'UNION'); put(kd, MAT['dark'])

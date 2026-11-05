@@ -34,6 +34,15 @@ MAT = {
     'bench':  wood('bench', light=(0.22, 0.15, 0.09), dark=(0.07, 0.045, 0.03), axis='X', ring=0.4, rough=0.6, wear=0.4, grime=0.8, warp=5, center=(0, -80), sawn=0.3, checks=0.5),
 }
 
+if photo_enabled():  # photo PBR maps (art/textures/photo); --photo 0 = procedural
+    MAT.update({
+        'brass':  photo_mat('ph_ring_brass', 'brass_face_milled', scale=40, rot=90, tint=(1.05, 0.98, 0.86), bump=0.15, wear=0.8, grime=0.6),
+        'cut':    photo_mat('ph_ring_cut', 'brass_face_milled', scale=30, rot=42, tint=(1.15, 1.05, 0.9), bump=0.15, grime=0.2),
+        'cut_s':  photo_mat('ph_spindle_cut', 'steel_ground', scale=14, rot=42, tint=(0.95, 0.95, 0.97), grime=0.2),
+        'steel':  photo_mat('ph_spindle', 'steel_ground', scale=16, rot=0, tint=(0.85, 0.86, 0.88), wear=0.3, grime=0.4),
+        'shackle': photo_mat('ph_shackle', 'spring_steel_polished', scale=30, bump=0.12, wear=0.4, grime=0.3),
+    })
+
 R_OUT, R_IN, SP_R, LUG_R, THK, PITCH = 15.0, 6.0, 4.6, 8.4, 10.0, 13.0   # tall lugs: gates read at phone size
 RX = [-19.5 + PITCH * i for i in range(4)]       # ring centres along X
 STATES = [('set', 0, 0.0), ('bind', 144, 0.0), ('false', 0, 0.0), ('free', 252, 0.8)]  # gate angle (deg from top), gap
@@ -127,7 +136,7 @@ for pp, p in zip(spl.points, pts): pp.co = (*p, 1)
 sh = bpy.data.objects.new('shackle', cu); bpy.context.collection.objects.link(sh); cu.materials.append(MAT['shackle'])
 # a groove machined in the left leg where the latch catches it
 # backdrop: a worn bench top far behind
-put(box('bench', -300, 300, 90, 110, -300, 300), oak('bench_oak', light=(0.30, 0.20, 0.11), dark=(0.12, 0.07, 0.035), axis='X', plank=72, ring_mm=2.6,
+put(box('bench', -300, 300, 90, 110, -300, 300), photo_mat('ph_bench', 'bench_beech_top', scale=220, metallic=0.0, bump=0.4, grime=0.5) if photo_enabled() else oak('bench_oak', light=(0.30, 0.20, 0.11), dark=(0.12, 0.07, 0.035), axis='X', plank=72, ring_mm=2.6,
                                                     lacquer=0.3, rough=0.55, wear=0.6, grime=0.9, scratches=0.8, seed=3.0), 0.0)
 
 # ---------------------------------------------------------------- light + camera

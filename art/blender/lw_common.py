@@ -836,7 +836,7 @@ def photo_mat(name, tex, scale=40.0, rot=0.0, plane='XZ', metallic=None, tint=(1
 def photo_cutaway_set():
     """Photo replacements for the shared M dict used by cutaway.py (pin tumbler section)."""
     return {
-        'brass':   photo_mat('ph_brass_milled', 'brass_face_milled', scale=30, rot=42, tint=(1.0, 0.96, 0.9), wear=0.3, grime=0.4),
+        'brass':   photo_mat('ph_brass_milled', 'brass_face_milled', scale=60, rot=42, tint=(1.12, 1.02, 0.88), bump=0.18, wear=0.3, grime=0.4),
         'brass_k': photo_mat('ph_brass_turned', 'brass_turned', scale=24, rot=90, tint=(1.05, 1.0, 0.92), wear=0.4),
         'nickel':  photo_mat('ph_nickel', 'nickel_satin', scale=45, rot=0, wear=0.2, grime=0.5),
         'steel':   photo_mat('ph_steel_ground', 'steel_ground', scale=18, rot=90, tint=(0.85, 0.86, 0.88), grime=0.3),

@@ -38,6 +38,18 @@ MAT = {
     'dark':   dark_mat('cavity', (0.012, 0.011, 0.010), 0.9),
 }
 
+if photo_enabled():  # photo PBR maps (art/textures/photo, G03 oak); --photo 0 = procedural
+    MAT.update({
+        'brass':  photo_mat('ph_lever_brass', 'brass_patina_grease', scale=90, rot=12, tint=(1.05, 1.0, 0.92), bump=0.15, wear=0.8, grime=0.6),
+        'bolt':   photo_mat('ph_bolt', 'brass_face_milled', scale=45, rot=42, tint=(0.95, 0.9, 0.82), bump=0.2, wear=0.6, grime=0.7),
+        'forend': photo_mat('ph_forend', 'brass_face_milled', scale=60, rot=90, tint=(1.0, 0.95, 0.85), bump=0.2, wear=0.5, grime=0.6),
+        'steel':  photo_mat('ph_stump', 'steel_ground', scale=16, rot=90, tint=(0.85, 0.86, 0.88), wear=0.3, grime=0.4),
+        'pick':   photo_mat('ph_crank', 'spring_steel_polished', scale=24, bump=0.12),
+        'wire':   photo_mat('ph_lifter', 'spring_steel_polished', scale=18, rot=90, bump=0.1),
+        'wood':   photo_mat('ph_door_oak', 'g03:oak_satin', scale=300, metallic=0.0, coat=0.4, bump=0.3, grime=0.6, wear=0.3),
+        'wood2':  photo_mat('ph_jamb_oak', 'g03:oak_satin', scale=260, offset=(97, 0, 41), tint=(0.9, 0.86, 0.82), metallic=0.0, coat=0.3, bump=0.3, grime=0.7, wear=0.4),
+    })
+
 # ---------------------------------------------------------------- layout (cover side y = 0, back plate at y = 14)
 PIV = Vector((-22.0, 0, 4.0))
 STUMP_X, STUMP_R = 7.7, 2.2            # stump bearing on the pocket walls (bolt pushed back by 0.3 mm)

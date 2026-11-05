@@ -35,6 +35,10 @@ MAT = {
     'nail':    wood('treenail', light=(0.36, 0.26, 0.16), dark=(0.14, 0.09, 0.05), axis='Y', ring=0.9, rough=0.6, wear=0.3, grime=1.0, warp=0.6, center=(1.2, 0.7), oiled=0.0, sawn=0.5, seed=7),
 }
 
+if photo_enabled():  # photo PBR maps (G03 oak) for the door boards; --photo 0 = procedural
+    MAT['door'] = photo_mat('ph_plank', 'g03:oak_satin', scale=320, metallic=0.0, tint=(0.82, 0.8, 0.76), rough_add=0.25, bump=0.5, grime=0.9, wear=0.5)
+    MAT['door2'] = photo_mat('ph_plank2', 'g03:oak_satin', scale=300, offset=(140, 0, 77), metallic=0.0, tint=(0.76, 0.74, 0.7), rough_add=0.28, bump=0.5, grime=0.9, wear=0.5)
+
 PX = [-22.0, 0.0, 22.0]
 PIN_R, BORE_R, WIDE_R, HOLE_R = 6.0, 6.35, 7.9, 6.45
 BOLT_Z = (-14.0, 14.0); BOLT_Y = (-15.0, 15.0)
