@@ -1,0 +1,90 @@
+{
+  "schema": "lockwright.lock/1",
+  "family": "lever",
+  "rules_version": 2,
+  "id": "practice.t26",
+  "source": "authored",
+  "seed": "0",
+  "difficulty": {
+    "tier": 5,
+    "n_min": 5,
+    "n_max": 5,
+    "sec_min": 4,
+    "sec_max": 4,
+    "win_shear_q16": 6226,
+    "tension_band_q16": 12452,
+    "overset_margin_q16": 5571,
+    "noise_q16": 0,
+    "bind_spread_q16": 32768,
+    "multi_bind_p_q16": 0,
+    "drop_grace_ms": 210,
+    "s_max_q16": 65536,
+    "time_limit_s": 210
+  },
+  "spec": {
+    "win_gate_q16": 6226,
+    "overset_margin_q16": 5571,
+    "tension_band_q16": 12452,
+    "t_hold_q16": 6554,
+    "t_release_q16": 3277,
+    "tau_safe_q16": 34079,
+    "cr_lo_q16": 7864,
+    "cr_hi_q16": 13763,
+    "drop_grace_steps": 25,
+    "s_max_q16": 65536,
+    "stress_gain_q16": 6226,
+    "bound_speed_q16": 874,
+    "false_speed_q16": 327,
+    "spring_speed_q16": 2184,
+    "set_speed_q16": 327,
+    "detector": false,
+    "levers": [
+      {
+        "target_q16": 36045,
+        "order_q16": 6554,
+        "band_lo_q16": 14418,
+        "false_gates_q16": []
+      },
+      {
+        "target_q16": 40960,
+        "order_q16": 13107,
+        "band_lo_q16": 15401,
+        "false_gates_q16": [
+          21299,
+          28508
+        ]
+      },
+      {
+        "target_q16": 33096,
+        "order_q16": 19661,
+        "band_lo_q16": 16384,
+        "false_gates_q16": []
+      },
+      {
+        "target_q16": 43254,
+        "order_q16": 26214,
+        "band_lo_q16": 14418,
+        "false_gates_q16": [
+          23593,
+          30802
+        ]
+      },
+      {
+        "target_q16": 37356,
+        "order_q16": 0,
+        "band_lo_q16": 15401,
+        "false_gates_q16": []
+      }
+    ]
+  },
+  "presentation": {
+    "material": "iron",
+    "practice": {
+      "order": 26,
+      "focus": "two_false_gates",
+      "title_key": "practice.t26.title",
+      "goal_key": "practice.t26.goal",
+      "hint_key": "practice.t26.hint"
+    }
+  }
+}
