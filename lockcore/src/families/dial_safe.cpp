@@ -784,7 +784,7 @@ class Module final : public FamilyModule {
     };
     const q16 fast = q16_milli(700);
     const q16 seek = q_min(fast, lift_for(9));
-    const q16 slow = lift_for(3) / 2;
+    const q16 slow = lift_for(2);
     auto go = [&](Ph p, std::int64_t t) {
       ph = p;
       phase_t = t;
