@@ -1,6 +1,22 @@
-# Lockwright: prompty do Magnific (Nano Banana), po jednym obrazie
+# Lockwright: prompty do Magnific, po jednym obrazie (v2)
 
-**Jak używać:** w Magnific wybierz model **Nano Banana**, ustaw podane proporcje, wklej prompt, wygeneruj i pobierz w najwyższej rozdzielczości. Nazwij plik tak jak w nagłówku. Gotowe pliki spakuj do jednego ZIP-a (np. `magnific-1.zip`) i wyślij do sesji A. Obróbkę (tekstury bezszwowe, mapy, przycinanie) robi sesja A.
+**Jak używać:** wybierz model według tabeli niżej, ustaw podane proporcje i rozdzielczość **2K** (albo najwyższą dostępną), wklej prompt i pobierz obraz w najwyższej rozdzielczości. Nazwij plik tak jak w nagłówku. Gotowe pliki spakuj do jednego ZIP-a (np. `magnific-1.zip`) i wyślij do sesji A. Obróbkę (tekstury bezszwowe, mapy, przycinanie) robi sesja A.
+
+## Który model do czego
+| Grupa | Model | Uwagi |
+|---|---|---|
+| **A, B, C** (skóra, metal, posadzki) | **ten, który dał wynik nr 2 w teście `leather_brown_new`** (równe, matowe ziarno, płaskie światło) | Jeśli wolisz porównywać, zrób pierwszy obraz z każdej grupy na 2 modelach i przyślij oba. |
+| **D** (papier) | ten sam co A | Papier może mieć ciemne tło dookoła, bo przytnę go po krawędzi kartki. |
+| **E** (ikona z literą/cyfrą) | **Ideogram** | Najlepiej radzi sobie z literami i cyframi. |
+| **F** (key art) | **Nano Banana** | Zrób F1, potem F2–F4 z F1 jako obrazem referencyjnym i dopiskiem „same people, same scene, same clothes”. |
+
+## Czego unikać w teksturach (z testu skóry)
+- **Regularne plamy i cętki** (test nr 1): po powieleniu robi się wzór.
+- **Ramka albo tło dookoła materiału** (testy nr 2 i 3): materiał ma wypełniać cały kadr.
+- **Jedna oś symetrii pośrodku** (test nr 3, „grzbiet” skóry): po powieleniu widać powtórzenia.
+- **Odblask, winieta, perspektywa** (test nr 4): ładne zdjęcie, ale nie tekstura.
+
+Prompty w grupach A, B i C mają już te zakazy dopisane na końcu.
 
 **Zasady w każdym prompcie:** w zdjęciu nie ma narzędzi w zamkach, ludzi przy zamkach, tekstu, logo ani marek. Jeśli generator odmówi, usuń z promptu słowa „lock” i „key” i spróbuj jeszcze raz.
 
@@ -10,12 +26,12 @@
 
 ### A1 `leather_brown_new.png` (1:1)
 ```
-Top-down macro photograph of smooth new brown full-grain cowhide leather, fine natural grain and pores, evenly lit with soft diffused light, no shadows, no perspective, sharp focus across the whole frame, 30 cm wide sample, photorealistic texture reference, no text, no logo
+Top-down macro photograph of smooth new brown full-grain cowhide leather, fine natural grain and pores, evenly lit with soft diffused light, no shadows, no perspective, sharp focus across the whole frame, 30 cm wide sample, photorealistic texture reference, no text, no logo, the material fills the entire frame edge to edge, no border, no background visible, uniform flat lighting with no hotspot or vignette, no perspective, no single central axis or symmetry
 ```
 
 ### A2 `leather_brown_worn.png` (1:1)
 ```
-Top-down macro photograph of old brown leather worn smooth and slightly glossy by hands, subtle lighter rubbed areas, fine creases, small scuffs, evenly lit with soft diffused light, no shadows, no perspective, sharp focus, photorealistic texture reference, no text, no logo
+Top-down macro photograph of old brown leather worn smooth and slightly glossy by hands, subtle lighter rubbed areas, fine creases, small scuffs, evenly lit with soft diffused light, no shadows, no perspective, sharp focus, photorealistic texture reference, no text, no logo, the material fills the entire frame edge to edge, no border, no background visible, uniform flat lighting with no hotspot or vignette, no perspective, no single central axis or symmetry
 ```
 
 ### A3 `leather_stitching_strip.png` (3:1)
@@ -34,42 +50,42 @@ Top-down close-up photograph of a single round antique brass snap button set in 
 
 ### B1 `brass_turned.png` (1:1)
 ```
-Extreme macro photograph of a flat turned brass surface with fine concentric lathe marks, satin finish, soft diffused light, no mirror reflections, no chrome, sharp focus, photorealistic material reference, no text
+Extreme macro photograph of a flat turned brass surface with fine concentric lathe marks, satin finish, soft diffused light, no mirror reflections, no chrome, sharp focus, photorealistic material reference, no text, the material fills the entire frame edge to edge, no border, no background visible, uniform flat lighting with no hotspot or vignette, no perspective, no single central axis or symmetry
 ```
 
 ### B2 `brass_face_milled.png` (1:1)
 ```
-Extreme macro photograph of a face-milled brass surface showing overlapping curved tool arcs, satin finish, soft diffused light, no mirror reflections, sharp focus, photorealistic material reference, no text
+Extreme macro photograph of a face-milled brass surface showing overlapping curved tool arcs, satin finish, soft diffused light, no mirror reflections, sharp focus, photorealistic material reference, no text, the material fills the entire frame edge to edge, no border, no background visible, uniform flat lighting with no hotspot or vignette, no perspective, no single central axis or symmetry
 ```
 
 ### B3 `steel_ground.png` (1:1)
 ```
-Extreme macro photograph of surface-ground steel with fine straight parallel grinding lines, matte satin grey, soft diffused light, no mirror reflections, sharp focus, photorealistic material reference, no text
+Extreme macro photograph of surface-ground steel with fine straight parallel grinding lines, matte satin grey, soft diffused light, no mirror reflections, sharp focus, photorealistic material reference, no text, the material fills the entire frame edge to edge, no border, no background visible, uniform flat lighting with no hotspot or vignette, no perspective, no single central axis or symmetry
 ```
 
 ### B4 `steel_heat_tint.png` (1:1)
 ```
-Extreme macro photograph of hardened steel with a very subtle straw-gold to faint blue heat tint, matte satin, soft diffused light, no neon, no mirror reflections, sharp focus, photorealistic material reference, no text
+Extreme macro photograph of hardened steel with a very subtle straw-gold to faint blue heat tint, matte satin, soft diffused light, no neon, no mirror reflections, sharp focus, photorealistic material reference, no text, the material fills the entire frame edge to edge, no border, no background visible, uniform flat lighting with no hotspot or vignette, no perspective, no single central axis or symmetry
 ```
 
 ### B5 `spring_steel_polished.png` (1:1)
 ```
-Extreme macro photograph of polished spring steel strip with fine micro scratches running lengthwise, satin sheen not chrome, soft diffused light, sharp focus, photorealistic material reference, no text
+Extreme macro photograph of polished spring steel strip with fine micro scratches running lengthwise, satin sheen not chrome, soft diffused light, sharp focus, photorealistic material reference, no text, the material fills the entire frame edge to edge, no border, no background visible, uniform flat lighting with no hotspot or vignette, no perspective, no single central axis or symmetry
 ```
 
 ### B6 `brass_patina_grease.png` (1:1)
 ```
-Extreme macro photograph of old machined brass with uneven brown patina and dark grease residue in small grooves and corners, satin finish, soft diffused light, sharp focus, photorealistic material reference, no text
+Extreme macro photograph of old machined brass with uneven brown patina and dark grease residue in small grooves and corners, satin finish, soft diffused light, sharp focus, photorealistic material reference, no text, the material fills the entire frame edge to edge, no border, no background visible, uniform flat lighting with no hotspot or vignette, no perspective, no single central axis or symmetry
 ```
 
 ### B7 `nickel_satin.png` (1:1)
 ```
-Extreme macro photograph of satin brushed nickel plate with light everyday scratches and slight fingerprints, soft diffused light, no mirror reflections, sharp focus, photorealistic material reference, no text
+Extreme macro photograph of satin brushed nickel plate with light everyday scratches and slight fingerprints, soft diffused light, no mirror reflections, sharp focus, photorealistic material reference, no text, the material fills the entire frame edge to edge, no border, no background visible, uniform flat lighting with no hotspot or vignette, no perspective, no single central axis or symmetry
 ```
 
 ### B8 `iron_painted_rust.png` (1:1)
 ```
-Extreme macro photograph of black painted iron plate with chipped paint, worn edge showing bare metal and orange rust, matte, soft diffused light, sharp focus, photorealistic material reference, no text
+Extreme macro photograph of black painted iron plate with chipped paint, worn edge showing bare metal and orange rust, matte, soft diffused light, sharp focus, photorealistic material reference, no text, the material fills the entire frame edge to edge, no border, no background visible, uniform flat lighting with no hotspot or vignette, no perspective, no single central axis or symmetry
 ```
 
 ---
@@ -78,22 +94,22 @@ Extreme macro photograph of black painted iron plate with chipped paint, worn ed
 
 ### C1 `terrazzo_grey_red.png` (1:1)
 ```
-Top-down photograph of an old polished terrazzo floor, grey base with red, white and black stone chips 2 to 15 mm, slightly dull from foot traffic, evenly lit, no shadows, no perspective, about 1 m wide, sharp, photorealistic texture reference, no text
+Top-down photograph of an old polished terrazzo floor, grey base with red, white and black stone chips 2 to 15 mm, slightly dull from foot traffic, evenly lit, no shadows, no perspective, about 1 m wide, sharp, photorealistic texture reference, no text, the material fills the entire frame edge to edge, no border, no background visible, uniform flat lighting with no hotspot or vignette, no perspective, no single central axis or symmetry
 ```
 
 ### C2 `cement_tiles.png` (1:1)
 ```
-Top-down photograph of old encaustic cement floor tiles with a simple original geometric pattern in muted red, grey-blue and cream, slight colour variation between tiles, worn pattern, grout lines, a few hairline cracks, evenly lit, no shadows, no perspective, photorealistic texture reference, no text
+Top-down photograph of old encaustic cement floor tiles with a simple original geometric pattern in muted red, grey-blue and cream, slight colour variation between tiles, worn pattern, grout lines, a few hairline cracks, evenly lit, no shadows, no perspective, photorealistic texture reference, no text, the material fills the entire frame edge to edge, no border, no background visible, uniform flat lighting with no hotspot or vignette, no perspective, no single central axis or symmetry
 ```
 
 ### C3 `pine_floor_painted.png` (1:1)
 ```
-Top-down photograph of old pine floorboards painted red-brown floor paint, worn through to bare wood along a walking path, gaps between boards, small nail heads, evenly lit, no shadows, no perspective, photorealistic texture reference, no text
+Top-down photograph of old pine floorboards painted red-brown floor paint, worn through to bare wood along a walking path, gaps between boards, small nail heads, evenly lit, no shadows, no perspective, photorealistic texture reference, no text, the material fills the entire frame edge to edge, no border, no background visible, uniform flat lighting with no hotspot or vignette, no perspective, no single central axis or symmetry
 ```
 
 ### C4 `workshop_concrete.png` (1:1)
 ```
-Top-down photograph of a workshop concrete floor with natural irregular oil stains, fine cracks and small chips, evenly lit, no shadows, no perspective, photorealistic texture reference, no text
+Top-down photograph of a workshop concrete floor with natural irregular oil stains, fine cracks and small chips, evenly lit, no shadows, no perspective, photorealistic texture reference, no text, the material fills the entire frame edge to edge, no border, no background visible, uniform flat lighting with no hotspot or vignette, no perspective, no single central axis or symmetry
 ```
 
 ### C5 `coconut_doormat.png` (3:2)
