@@ -166,3 +166,11 @@ Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-d
 - **qa-career:** błąd skryptu GDScript albo kariera bez żadnego zamka = czerwony run (bloker); pozostałe problemy gry nadal jako ⚠.
 - **Determinizm APK:** API 34 ✅ 630/630; API 30 — aplikacja startuje, ale bez wyniku w 15 min (starsza translacja ARM/GLES w obrazie) → job informacyjny (`continue-on-error`), w logu wydruk logcat.
 - RELEASE-CHECKLIST zaktualizowana (T9, T11, C2, C7, A2, A4).
+
+# Etap 5 (`SESSION-C-PROMPT-5.md`)
+
+## 2026-11-05 14:15 — przejęcie sesji C
+- Nowa sesja C przejmuje rolę po poprzedniej (limit). Przeczytane: CLAUDE.md, SESSION-C-PROMPT 1–5, ten log (ostatni wpis 11:17).
+- Stan na start: `main` @ 094eeb8. CI czerwone: `game-ios` (sesja B, run 42031298421 na 9eca512 w toku), `perf-budget` i `qa-career` (moje) od 11:49. Kolejka runnerów zapchana (`game-tests`/`game-android` queued od ~11:44).
+- Kolejność: (1) strażnik CI — perf-budget, qa-career, game-ios; (4) raport z telefonu (`device-tests/REPORT.md`, `measurements/*.json`) → ingest, TECH §8, N-xx; potem (2) dostawy GPT/Magnific/Gemini, (3) sklep cz. 3, (5) bot QA cz. 3, (6) przegląd ciągły. Z etapu 4 otwarte: zad. 2 (dostawy), 6 (= zad. 4 etapu 5), 7 (strona z G12/G13).
+- W katalogu roboczym leżą niezacommitowane pliki innej sesji (`docs/ASSETS.md`, `art/marketing/`, `art/blender/marketing/`) — nie dotykam ich, commituję tylko własne ścieżki.
