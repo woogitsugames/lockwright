@@ -26,7 +26,7 @@ upper = lime_wall('lime', (0.72, 0.68, 0.58), seed=3, dirt=0.55, cracks=0.6)
 ceiling = lime_wall('ceiling', (0.70, 0.67, 0.60), seed=5, dirt=0.3, cracks=0.3)
 cream = oil_paint('architrave', (0.62, 0.56, 0.43), rough=0.32, under=(0.30, 0.42, 0.33), base=(0.32, 0.2, 0.1), chips=0.35,
                   scuffs=0.3, strokes='Z', seed=4, chip_scale=0.03, edge_chips=1.0)
-floor = terrazzo('terrazzo', seed=1, worn_center=(0, -700), worn_r=(700, 650))
+floor = terrazzo('terrazzo', matrix=(0.36, 0.34, 0.31), chip_scale=1.6, mute=0.35, seed=1, worn_center=(0, -700), worn_r=(700, 650))
 steel = metal('satin_steel', (0.62, 0.62, 0.60), 0.26, aniso=0.5, marks='grind', marks_axis=(0, 0, 1), marks_scale=0.3,
               wear=0.3, grime=0.4, smudge=0.6, bevel_r=0.6)
 nickel = metal('cyl_nickel', (0.66, 0.65, 0.62), 0.22, marks='turn', marks_axis=(0, 1, 0), wear=0.3, grime=0.6, bevel_r=0.3)
@@ -46,11 +46,11 @@ mat_rubber = rubber('mat_rubber')
 
 def door_wood(axis, seed, center=(0, 0, 0), width=120):
     """Each piece gets its own log: pith offset across the board (so arches sit off-centre), own ring width and tone."""
-    l = jitter((0.36, 0.20, 0.09), 0.14, rng); d = jitter((0.10, 0.045, 0.02), 0.12, rng)
+    l = jitter((0.33, 0.20, 0.10), 0.14, rng); d = jitter((0.12, 0.06, 0.028), 0.12, rng)
     c = list(center)
     k = {'Z': 0, 'X': 2, 'Y': 0}[axis]                      # across-board coordinate
     c[k] += rng.uniform(-0.3, 0.3) * width
-    return oak('door_%s_%d' % (axis, seed), light=l, dark=d, axis=axis, seed=seed, ring=rng.uniform(3.2, 5.5),
+    return oak('door_%s_%d' % (axis, seed), light=l, dark=d, axis=axis, seed=seed, ring=rng.uniform(1.7, 2.8),
                incline=rng.choice((-1, 1)) * rng.uniform(0.03, 0.06), depth=rng.uniform(70, 160), coat=1.0, coat_rough=0.22,
                rough=0.5, wear=0.6, grime=0.8, flecks=0.0, varnish_tint=0.3, center=tuple(c), contrast=0.72)
 
@@ -263,12 +263,13 @@ if HAIR:
     bmp.to_mesh(pm_); bmp.free(); top = bpy.data.objects.new('fibre_bed', pm_); bpy.context.collection.objects.link(top)
     top.data.materials.append(coir_base)
     mp = top.modifiers.new('fibres', 'PARTICLE_SYSTEM'); ps = mp.particle_system; st = ps.settings
-    st.type = 'HAIR'; st.count = 26000; st.hair_length = 15; st.emit_from = 'FACE'; st.use_advanced_hair = True
-    st.normal_factor = 1.0; st.factor_random = 0.25; st.use_modifier_stack = True
-    st.child_type = 'INTERPOLATED'; st.child_percent = 3; st.rendered_child_count = 16; st.child_radius = 3.0
-    st.clump_factor = 0.35; st.roughness_1 = 0.6; st.roughness_1_size = 1.0; st.roughness_endpoint = 1.2; st.roughness_2 = 0.4
-    st.child_length = 0.85; st.child_length_threshold = 0.3
-    st.root_radius = 1.0; st.tip_radius = 0.35; st.radius_scale = 0.45; st.render_step = 3; st.display_step = 2
+    # coir: stiff, coarse fibres standing in tufts, tips splayed, dark gaps between tufts
+    st.type = 'HAIR'; st.count = 9000; st.hair_length = 17; st.emit_from = 'FACE'; st.use_advanced_hair = True
+    st.normal_factor = 1.0; st.factor_random = 0.45; st.use_modifier_stack = True
+    st.child_type = 'INTERPOLATED'; st.child_percent = 3; st.rendered_child_count = 34; st.child_radius = 3.2
+    st.clump_factor = -0.6; st.clump_shape = 0.3; st.roughness_1 = 0.9; st.roughness_1_size = 0.6; st.roughness_endpoint = 2.2
+    st.roughness_2 = 0.6; st.roughness_2_size = 1.5; st.child_length = 0.9; st.child_length_threshold = 0.35
+    st.root_radius = 1.0; st.tip_radius = 0.5; st.radius_scale = 0.75; st.render_step = 3; st.display_step = 2
     top.data.materials.append(hair_mat('coir', border=(MX0, MX1, MY0, MY1, 48, (0.06, 0.035, 0.02))))
     st.material = 2
 

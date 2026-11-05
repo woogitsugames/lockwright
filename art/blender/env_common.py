@@ -256,7 +256,7 @@ def lime_wall(name, color=(0.74, 0.70, 0.62), seed=0.0, dirt=0.5, cracks=0.5):
     b.inputs['Specular IOR Level'].default_value = 0.3
     return m
 
-def terrazzo(name, matrix=(0.42, 0.40, 0.36), seed=0.0, polish=0.6, worn_center=None, worn_r=(500, 400)):
+def terrazzo(name, matrix=(0.42, 0.40, 0.36), seed=0.0, polish=0.6, worn_center=None, worn_r=(500, 400), chip_scale=1.0, mute=0.0):
     """Cast terrazzo (lastryko): marble chips of several sizes in grey cement, ground and polished, then worn."""
     m, nt, l, b, P = _new(name); P = _offset(nt, P, seed)
     def chips(scale, thr, pal):
@@ -274,9 +274,12 @@ def terrazzo(name, matrix=(0.42, 0.40, 0.36), seed=0.0, polish=0.6, worn_center=
     pal1 = [(0.0, (0.80, 0.78, 0.72)), (0.30, (0.55, 0.53, 0.50)), (0.50, (0.12, 0.11, 0.105)), (0.62, (0.62, 0.42, 0.30)),
             (0.75, (0.86, 0.84, 0.78)), (0.88, (0.38, 0.22, 0.16)), (1.0, (0.70, 0.66, 0.58))]
     pal2 = [(0.0, (0.74, 0.72, 0.66)), (0.4, (0.20, 0.19, 0.18)), (0.6, (0.88, 0.86, 0.80)), (0.8, (0.52, 0.36, 0.26)), (1.0, (0.60, 0.58, 0.54))]
-    m1, c1, k1 = chips(0.05, 0.10, pal1)
-    m2, c2, k2 = chips(0.16, 0.13, pal2)
-    m3, c3, k3 = chips(0.55, 0.22, pal2)
+    if mute:  # duller, closer-valued aggregate
+        pal1 = [(p, tuple(c * (1 - mute) + m * mute for c, m in zip(col, matrix))) for p, col in pal1]
+        pal2 = [(p, tuple(c * (1 - mute) + m * mute for c, m in zip(col, matrix))) for p, col in pal2]
+    m1, c1, k1 = chips(0.05 * chip_scale, 0.10, pal1)
+    m2, c2, k2 = chips(0.16 * chip_scale, 0.13, pal2)
+    m3, c3, k3 = chips(0.55 * chip_scale, 0.22, pal2)
     mtx = _mix(nt, (*[c * 0.85 for c in matrix], 1), (*matrix, 1), _noise(nt, P, 0.02, detail=6))
     col = _mix(nt, mtx, c3, m3); col = _mix(nt, col, c2, m2); col = _mix(nt, col, c1, m1)
     # inside each chip: marble veining / tone variation
