@@ -108,6 +108,16 @@ jobs:
           rmdir ~/.local/share/godot/export_templates/4.7.2.stable/templates
           echo "4.7.2.stable.official.ed1daf0bf" > ~/.local/share/godot/export_templates/4.7.2.stable/version.txt
 
+      - name: Build lockcore_gd for Android arm64
+        run: |
+          pip install scons
+          git clone --depth 1 https://github.com/godotengine/godot-cpp.git /tmp/godot-cpp
+          cd /tmp/godot-cpp
+          scons platform=android target=template_debug arch=arm64 custom_api_file=gdextension/extension_api-4-7.json -j8
+          cd $GITHUB_WORKSPACE/game/addons/lockcore_gd
+          GODOT_CPP=/tmp/godot-cpp scons platform=android target=template_debug arch=arm64 custom_api_file=/tmp/godot-cpp/gdextension/extension_api-4-7.json -j8
+          mkdir -p bin
+
       - name: Install Android build template into project
         run: |
           cd game
