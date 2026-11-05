@@ -65,10 +65,30 @@ def tri(o):
 def cut_half(o):
     boolean(o, box('cut', -300, 300, -200, 0, -300, 300))
 
+def digit_mesh(name, text, x, ang, size, z0, z1):
+    """Digit glyph as a closed mesh between radii z0..z1 on the flat at `ang` (deg from the top, towards +y).
+    Every digit has the same orientation on the wheel (glyph X = ring axis, glyph up = direction of rotation),
+    like stamped dial wheels, so nothing is ever turned or mirrored."""
+    cu = bpy.data.curves.new(name, 'FONT'); cu.body = text; cu.align_x = 'CENTER'; cu.align_y = 'CENTER'
+    cu.size = size; cu.extrude = (z1 - z0) / 2; cu.offset_y = 0.0
+    try: cu.font = bpy.data.fonts.load(FONT, check_existing=True)
+    except Exception: pass
+    t = bpy.data.objects.new(name, cu); bpy.context.collection.objects.link(t)
+    for ob in bpy.context.selected_objects: ob.select_set(False)
+    t.select_set(True); bpy.context.view_layer.objects.active = t
+    bpy.ops.object.convert(target='MESH')
+    t = bpy.context.view_layer.objects.active
+    t.data.transform(Matrix.Rotation(-math.radians(ang), 4, 'X') @ Matrix.Translation((x, 0, (z0 + z1) / 2)))
+    t.matrix_world = Matrix.Identity(4)
+    return t
+
+ENGRAVE, INK_TOP, DIGIT_SIZE = 0.32, 0.07, 7.4   # mm deep, ink fill sits 0.07 mm below the flat, glyph size
+
 def ring(i, x, st, gate_deg):
-    # 10-sided dial with eased corners (one flat per digit), bore, gate notch, detent grooves
+    # 10-sided dial with eased corners (one flat per digit), bore, gate notch, detent grooves.
+    # Flats at 18 + 36k deg: the section plane (y = 0) runs along two edges, so every flat that is left after the cut
+    # is whole and so is its digit; the flat at 18 deg faces the camera and shows the current digit.
     o = cyl('ring%d' % i, R_OUT / math.cos(math.pi / 10), THK, (x, 0, 0), axis='X', verts=10)
-    o.data.transform(Matrix.Rotation(math.pi / 10, 4, 'X'))
     boolean(o, lathe_x('round', [(x - THK, R_OUT - 0.05 + 0.9), (x + THK, R_OUT + 0.9)], seg=160), 'INTERSECT')
     boolean(o, lathe_x('bore', [(x - 10, R_IN), (x + 10, R_IN)], seg=128))
     # gate: a slot through the ring thickness at gate_deg from the top
@@ -81,21 +101,14 @@ def ring(i, x, st, gate_deg):
     for k in range(10):  # detent V-grooves on the right face
         v = box('dv', x + THK / 2 - 0.5, x + THK / 2 + 1, -0.45, 0.45, R_IN + 1.6, R_IN + 3.0)
         v.data.transform(Matrix.Rotation(math.radians(36 * k + 18), 4, 'X')); boolean(o, v)
-    cut_half(o); put(o, MAT['brass'], 0.25, 3); mark_cut(o, MAT['cut'])
-    # digits (black-filled engraving) on the flats; the flat at the top shows the current digit
-    for k in range(10):
-        ang = math.radians(36 * k)
-        cu = bpy.data.curves.new('d', 'FONT'); cu.body = str((k + i * 3) % 10); cu.align_x = 'CENTER'; cu.align_y = 'CENTER'
-        cu.size = 8.6; cu.extrude = 0.12
-        try: cu.font = bpy.data.fonts.load(FONT, check_existing=True)
-        except Exception: pass
-        t = bpy.data.objects.new('digit', cu); bpy.context.collection.objects.link(t)
-        t.matrix_world = Matrix.Rotation(-ang, 4, 'X') @ Matrix.Translation((x, 0, R_OUT + 0.04))
-        if math.cos(ang) < 0:  # flats on the underside: turn the digit so it reads upright from the camera (no '3' seen as 'E')
-            t.matrix_world = t.matrix_world @ Matrix.Rotation(math.pi, 4, 'Z')
-        t.data.materials.append(MAT['ink'])
-        # only keep digits facing the camera side that still exists after the cut (y >= 0)
-        if (Matrix.Rotation(-ang, 4, 'X') @ Vector((0, 0, 1))).y < -0.05: bpy.data.objects.remove(t, do_unlink=True)
+    cut_half(o)
+    # digits 0-9 engraved into the flats (only the five flats left after the cut), filled with black ink
+    for k in range(5):
+        ang, txt = 18 + 36 * k, str((k + i * 3) % 10)
+        boolean(o, digit_mesh('engrave', txt, x, ang, DIGIT_SIZE, R_OUT - ENGRAVE, R_OUT + 1.0))
+        ink = digit_mesh('digit', txt, x, ang, DIGIT_SIZE * 0.995, R_OUT - ENGRAVE - 0.05, R_OUT - INK_TOP)
+        ink.data.materials.append(MAT['ink'])
+    put(o, MAT['brass'], 0.25, 3); mark_cut(o, MAT['cut'])
     return o
 
 for i, ((st, gdeg, gap), x) in enumerate(zip(STATES, RX)):
