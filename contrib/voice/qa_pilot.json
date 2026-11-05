@@ -1,0 +1,408 @@
+{
+ "wer": {
+  "pl": 0.0638,
+  "en": 0.0293
+ },
+ "files": [
+  {
+   "file": "pl/job.newlyweds_4am.line.1.ogg",
+   "dur": 6.13,
+   "lufs": -17.9,
+   "lead_ms": 49,
+   "trail_ms": 42,
+   "wer": 0.0,
+   "ref": "Dowód mam, ale adresu na nim nie ma. Wiem, wiem. Teraz nikt nie ma.",
+   "asr": "Dowód mam, ale adresu na nim nie ma. Wiem, wiem. Teraz nikt nie ma."
+  },
+  {
+   "file": "pl/job.newlyweds_4am.line.2.ogg",
+   "dur": 5.7,
+   "lufs": -18.0,
+   "lead_ms": 38,
+   "trail_ms": 4,
+   "wer": 0.091,
+   "ref": "Meldunek mam w aplikacji. Tu, widzi pan? Z welonem trudno celować.",
+   "asr": "Meldunek mam w aplikacji. Tu widzi pan? Z melonem trudno celować."
+  },
+  {
+   "file": "pl/job.newlyweds_4am.line.3.ogg",
+   "dur": 5.71,
+   "lufs": -18.3,
+   "lead_ms": 49,
+   "trail_ms": 41,
+   "wer": 0.0,
+   "ref": "Znam ich. Pobrali się dziś. Całe osiedle słyszało oczepiny.",
+   "asr": "Znam ich, pobrali się dziś. Całe osiedle słyszało oczepiny."
+  },
+  {
+   "file": "pl/job.newlyweds_4am.line.4.ogg",
+   "dur": 4.05,
+   "lufs": -17.8,
+   "lead_ms": 56,
+   "trail_ms": 41,
+   "wer": 0.0,
+   "ref": "Wszystkiego najlepszego. Dwie minuty i są państwo w domu.",
+   "asr": "Wszystkiego najlepszego. Dwie minuty i są państwo w domu."
+  },
+  {
+   "file": "pl/job.refuse_ex_partner.line.1.ogg",
+   "dur": 3.51,
+   "lufs": -18.3,
+   "lead_ms": 58,
+   "trail_ms": 47,
+   "wer": 0.1,
+   "ref": "Mieszkałem tu trzy lata. Mam prawo wejść po swoje rzeczy.",
+   "asr": "Mieszkałem tu trzy lata. Mam brawo wejść po swoje rzeczy."
+  },
+  {
+   "file": "pl/job.refuse_ex_partner.line.2.ogg",
+   "dur": 4.62,
+   "lufs": -17.8,
+   "lead_ms": 53,
+   "trail_ms": 43,
+   "wer": 0.333,
+   "ref": "Na skrzynce jest jedno nazwisko, nie pana. Zawołam administratora.",
+   "asr": "Na skrzynce jest jedno nazwisko – Niepana. Zawałam administratora."
+  },
+  {
+   "file": "pl/job.refuse_ex_partner.line.3.ogg",
+   "dur": 2.56,
+   "lufs": -19.1,
+   "lead_ms": 56,
+   "trail_ms": 48,
+   "wer": 0.0,
+   "ref": "Po co administrator? To prywatna sprawa.",
+   "asr": "Po co administrator? To prywatna sprawa."
+  },
+  {
+   "file": "pl/job.refuse_ex_partner.line.4.ogg",
+   "dur": 5.26,
+   "lufs": -18.4,
+   "lead_ms": 34,
+   "trail_ms": 45,
+   "wer": 0.0,
+   "ref": "Tu nie otworzę. Spokojnie, policja może pomóc odebrać rzeczy. Zadzwonić?",
+   "asr": "Tu nie otworzę. Spokojnie. Policja może pomóc odebrać rzeczy. Zadzwonić?"
+  },
+  {
+   "file": "pl/job.refuse_rush_bribe.line.1.ogg",
+   "dur": 3.63,
+   "lufs": -18.2,
+   "lead_ms": 40,
+   "trail_ms": 46,
+   "wer": 0.25,
+   "ref": "Podwójna stawka. Potrójna. Tylko bez tych wszystkich procedur.",
+   "asr": "Wodwójna stawka. Potrujna. Tylko bez tych wszystkich procedur."
+  },
+  {
+   "file": "pl/job.refuse_rush_bribe.line.2.ogg",
+   "dur": 4.33,
+   "lufs": -18.0,
+   "lead_ms": 45,
+   "trail_ms": 33,
+   "wer": 0.0,
+   "ref": "Procedur nie da się dopłacić. Proszę zadzwonić do siostry, poczekam.",
+   "asr": "Procedur nie da się dopłacić. Proszę zadzwonić do siostry. Poczekam."
+  },
+  {
+   "file": "pl/job.refuse_rush_bribe.line.3.ogg",
+   "dur": 3.4,
+   "lufs": -18.1,
+   "lead_ms": 0,
+   "trail_ms": 48,
+   "wer": 0.0,
+   "ref": "Nie odbiera. Sąsiadów nie budźmy, po co ten cyrk.",
+   "asr": "Nie odbiera. Sąsiadów nie budźmy. Po co ten cyrk?"
+  },
+  {
+   "file": "pl/job.refuse_rush_bribe.line.4.ogg",
+   "dur": 3.5,
+   "lufs": -18.0,
+   "lead_ms": 54,
+   "trail_ms": 37,
+   "wer": 0.0,
+   "ref": "To dobranoc. A dla porządku dam znać dzielnicowej.",
+   "asr": "To dobranoc, a dla porządku dam znać dzielnicowej."
+  },
+  {
+   "file": "pl/job.student_dorm.line.1.ogg",
+   "dur": 5.02,
+   "lufs": -18.2,
+   "lead_ms": 15,
+   "trail_ms": 12,
+   "wer": 0.0,
+   "ref": "Legitymacja jest w pokoju. Klucz też. Ja jestem na korytarzu.",
+   "asr": "Legitymacja jest w pokoju. Klucz też. Ja jestem na korytarzu."
+  },
+  {
+   "file": "pl/job.student_dorm.line.2.ogg",
+   "dur": 5.5,
+   "lufs": -18.3,
+   "lead_ms": 24,
+   "trail_ms": 51,
+   "wer": 0.182,
+   "ref": "Wilk Zuzanna, czterysta dwanaście. Mam na liście i mam w głowie.",
+   "asr": "Wilk Zuzanna 412. Mam na liście i mam w głowie."
+  },
+  {
+   "file": "pl/job.student_dorm.line.3.ogg",
+   "dur": 3.45,
+   "lufs": -17.6,
+   "lead_ms": 39,
+   "trail_ms": 45,
+   "wer": 0.0,
+   "ref": "Pan Edek ręczy, nazwisko się zgadza. Otwieramy.",
+   "asr": "Pan Edek ręczy. Nazwisko się zgadza. Otwieramy."
+  },
+  {
+   "file": "pl/job.student_dorm.line.4.ogg",
+   "dur": 4.17,
+   "lufs": -18.1,
+   "lead_ms": 56,
+   "trail_ms": 33,
+   "wer": 0.0,
+   "ref": "Jutro mam egzamin z zamków historycznych. To się liczy jako praktyka?",
+   "asr": "Jutro mam egzamin z zamków historycznych. To się liczy jako praktyka?"
+  },
+  {
+   "file": "pl/job.wrong_floor.line.1.ogg",
+   "dur": 4.21,
+   "lufs": -18.1,
+   "lead_ms": 52,
+   "trail_ms": 43,
+   "wer": 0.2,
+   "ref": "Klucz nie wchodzi. Zamek się zepsuł, jak mnie nie było.",
+   "asr": "Klucznie wchodzi. Zamek się zepsuł, jak mnie nie było."
+  },
+  {
+   "file": "pl/job.wrong_floor.line.2.ogg",
+   "dur": 4.84,
+   "lufs": -17.8,
+   "lead_ms": 51,
+   "trail_ms": 36,
+   "wer": 0.0,
+   "ref": "Panie Kazimierzu, na skrzynce jest inne nazwisko. I ten wieniec?",
+   "asr": "Panie Kazimierzu, na skrzynce jest inne nazwisko. I ten wieniec?"
+  },
+  {
+   "file": "pl/job.wrong_floor.line.3.ogg",
+   "dur": 4.74,
+   "lufs": -17.6,
+   "lead_ms": 58,
+   "trail_ms": 43,
+   "wer": 0.111,
+   "ref": "Kto tam? Mieszkam tu dwanaście lat. Wieniec sama wiłam.",
+   "asr": "Kto tam? Mieszkam tu 12 lat, wieniec sama wiłam."
+  },
+  {
+   "file": "pl/job.wrong_floor.line.4.ogg",
+   "dur": 4.56,
+   "lufs": -18.5,
+   "lead_ms": 43,
+   "trail_ms": 53,
+   "wer": 0.0,
+   "ref": "O, piętro wyżej klucz wchodzi. Naprawił pan.",
+   "asr": "O, piętro wyżej klucz wchodzi. Naprawił pan."
+  },
+  {
+   "file": "en/job.newlyweds_4am.line.1.ogg",
+   "dur": 5.91,
+   "lufs": -18.5,
+   "lead_ms": 48,
+   "trail_ms": 44,
+   "wer": 0.0,
+   "ref": "I've got ID, but no address on it. I know. Nobody's ID does these days.",
+   "asr": "I've got ID but no address on it. I know nobody's ID does these days"
+  },
+  {
+   "file": "en/job.newlyweds_4am.line.2.ogg",
+   "dur": 5.61,
+   "lufs": -18.3,
+   "lead_ms": 54,
+   "trail_ms": 5,
+   "wer": 0.0,
+   "ref": "My registered address is in the app. See? It's tricky with this veil.",
+   "asr": "My registered address is in the app. See? It's tricky with this veil."
+  },
+  {
+   "file": "en/job.newlyweds_4am.line.3.ogg",
+   "dur": 5.15,
+   "lufs": -18.2,
+   "lead_ms": 54,
+   "trail_ms": 51,
+   "wer": 0.091,
+   "ref": "I know them. Married today. The whole neighbourhood heard the party.",
+   "asr": "I know them. Married today. The whole neighborhood heard the party."
+  },
+  {
+   "file": "en/job.newlyweds_4am.line.4.ogg",
+   "dur": 3.19,
+   "lufs": -18.0,
+   "lead_ms": 0,
+   "trail_ms": 59,
+   "wer": 0.0,
+   "ref": "Congratulations. Two minutes and you're home.",
+   "asr": "Congratulations, two minutes and you're home."
+  },
+  {
+   "file": "en/job.refuse_ex_partner.line.1.ogg",
+   "dur": 4.09,
+   "lufs": -18.1,
+   "lead_ms": 51,
+   "trail_ms": 53,
+   "wer": 0.0,
+   "ref": "I lived here three years. I've a right to go in and get my things.",
+   "asr": "I lived here three years. I've a right to go in and get my things."
+  },
+  {
+   "file": "en/job.refuse_ex_partner.line.2.ogg",
+   "dur": 4.99,
+   "lufs": -17.8,
+   "lead_ms": 59,
+   "trail_ms": 50,
+   "wer": 0.0,
+   "ref": "Only one name on the mailbox, and it isn't yours. I'll call the building manager.",
+   "asr": "Only one name on the mailbox, and it isn't yours. I'll call the building manager."
+  },
+  {
+   "file": "en/job.refuse_ex_partner.line.3.ogg",
+   "dur": 2.69,
+   "lufs": -19.0,
+   "lead_ms": 57,
+   "trail_ms": 52,
+   "wer": 0.0,
+   "ref": "Why the manager? This is a private matter.",
+   "asr": "Why the manager? This is a private matter."
+  },
+  {
+   "file": "en/job.refuse_ex_partner.line.4.ogg",
+   "dur": 5.13,
+   "lufs": -18.0,
+   "lead_ms": 54,
+   "trail_ms": 51,
+   "wer": 0.0,
+   "ref": "I can't open this one. The police may be able to help you collect your things. Shall I call?",
+   "asr": "I can't open this one. The police may be able to help you collect your things. Shall I call?"
+  },
+  {
+   "file": "en/job.refuse_rush_bribe.line.1.ogg",
+   "dur": 3.37,
+   "lufs": -18.2,
+   "lead_ms": 40,
+   "trail_ms": 19,
+   "wer": 0.0,
+   "ref": "Double the rate. Triple. Just skip all the procedures.",
+   "asr": "Double the rate. Triple. Just skip all the procedures."
+  },
+  {
+   "file": "en/job.refuse_rush_bribe.line.2.ogg",
+   "dur": 3.46,
+   "lufs": -17.9,
+   "lead_ms": 57,
+   "trail_ms": 28,
+   "wer": 0.0,
+   "ref": "Those checks aren't for sale. Call your sister; I'll wait.",
+   "asr": "Those checks aren't for sale. Call your sister. I'll wait."
+  },
+  {
+   "file": "en/job.refuse_rush_bribe.line.3.ogg",
+   "dur": 4.18,
+   "lufs": -18.1,
+   "lead_ms": 54,
+   "trail_ms": 50,
+   "wer": 0.077,
+   "ref": "She's not answering. Let's not wake the neighbours. No need for a circus.",
+   "asr": "She's not answering. Let's not wig the neighbours. No need for a circus."
+  },
+  {
+   "file": "en/job.refuse_rush_bribe.line.4.ogg",
+   "dur": 2.61,
+   "lufs": -18.8,
+   "lead_ms": 58,
+   "trail_ms": 49,
+   "wer": 0.0,
+   "ref": "Good night, then. I'll let the local officer know.",
+   "asr": "Good night then. I'll let the local officer know."
+  },
+  {
+   "file": "en/job.student_dorm.line.1.ogg",
+   "dur": 4.83,
+   "lufs": -17.5,
+   "lead_ms": 12,
+   "trail_ms": 21,
+   "wer": 0.0,
+   "ref": "My student card is in the room. So is the key. I'm in the corridor.",
+   "asr": "My student card is in the room, so is the key. I'm in the corridor."
+  },
+  {
+   "file": "en/job.student_dorm.line.2.ogg",
+   "dur": 5.42,
+   "lufs": -18.1,
+   "lead_ms": 40,
+   "trail_ms": 56,
+   "wer": 0.182,
+   "ref": "Zuzanna Wilk, room 412. On my list and in my head.",
+   "asr": "Susanna Zilk, Room 412, on my list and in my head."
+  },
+  {
+   "file": "en/job.student_dorm.line.3.ogg",
+   "dur": 4.16,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 47,
+   "wer": 0.167,
+   "ref": "Mr Edek vouches for you. The name matches. Let's get you inside.",
+   "asr": "Mr. Eddick vouchers for you. The name matches. Let's get you inside."
+  },
+  {
+   "file": "en/job.student_dorm.line.4.ogg",
+   "dur": 4.19,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 45,
+   "wer": 0.0,
+   "ref": "I have an exam on historic locks tomorrow. Does this count as practice?",
+   "asr": "I have an exam on historic locks tomorrow. Does this count as practice?"
+  },
+  {
+   "file": "en/job.wrong_floor.line.1.ogg",
+   "dur": 4.28,
+   "lufs": -18.2,
+   "lead_ms": 48,
+   "trail_ms": 56,
+   "wer": 0.0,
+   "ref": "The key won't go in. The lock broke while I was out.",
+   "asr": "The key won't go in. The lock broke while I was out."
+  },
+  {
+   "file": "en/job.wrong_floor.line.2.ogg",
+   "dur": 4.45,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 40,
+   "wer": 0.0,
+   "ref": "Mr Kazimierz, there's another name on the mailbox. And this wreath?",
+   "asr": "Mr. Kazimierz, there's another name on the mailbox, and this wreath?"
+  },
+  {
+   "file": "en/job.wrong_floor.line.3.ogg",
+   "dur": 5.0,
+   "lufs": -17.4,
+   "lead_ms": 44,
+   "trail_ms": 35,
+   "wer": 0.0,
+   "ref": "Who's there? I've lived here twelve years. I made that wreath myself.",
+   "asr": "Who's there? I've lived here twelve years. I made that wreath myself."
+  },
+  {
+   "file": "en/job.wrong_floor.line.4.ogg",
+   "dur": 4.15,
+   "lufs": -18.6,
+   "lead_ms": 53,
+   "trail_ms": 59,
+   "wer": 0.1,
+   "ref": "Oh, the key fits one floor up. You've fixed it.",
+   "asr": "Oh, the key fits one floor up. You fixed it."
+  }
+ ]
+}

@@ -239,6 +239,55 @@ def finish(raw_dir):
     print('done')
 
 
+def _norm_words(t):
+    t = re.sub(r'\[[^\]]*\]', ' ', t.lower())
+    return re.findall(r"[^\W_]+(?:'[^\W_]+)?", t)
+
+
+def wer(ref, hyp):
+    r, h = _norm_words(ref), _norm_words(hyp)
+    d = list(range(len(h) + 1))
+    for i in range(1, len(r) + 1):
+        prev, d[0] = d[0], i
+        for j in range(1, len(h) + 1):
+            cur = min(d[j] + 1, d[j - 1] + 1, prev + (r[i - 1] != h[j - 1]))
+            prev, d[j] = d[j], cur
+    return d[len(h)], max(len(r), 1)
+
+
+def qa(langs, model='small', out_json=None):
+    """Duration, integrated loudness, leading/trailing silence and ASR word error rate against the subtitle."""
+    from faster_whisper import WhisperModel
+    import numpy as np
+    m = WhisperModel(model, device='cpu', compute_type='int8')
+    rows = read_csv()
+    res, tot = [], {}
+    for lang in langs:
+        for ogg in sorted((OUT / lang).glob('*.ogg')):
+            key = ogg.stem
+            pcm = subprocess.run(['ffmpeg', '-v', 'error', '-i', str(ogg), '-ac', '1', '-ar', '16000', '-f', 'f32le', '-'],
+                                 capture_output=True, check=True).stdout
+            x = np.frombuffer(pcm, np.float32)
+            lu = subprocess.run(['ffmpeg', '-hide_banner', '-nostats', '-i', str(ogg), '-af', 'ebur128', '-f', 'null', '-'],
+                                capture_output=True, text=True).stderr
+            li = float(re.findall(r'I:\s+(-?[\d.]+) LUFS', lu)[-1])
+            env = np.abs(x) > 10 ** (-45 / 20)
+            nz = np.nonzero(env)[0]
+            lead, trail = (nz[0] / 16000, (len(x) - nz[-1]) / 16000) if len(nz) else (0, 0)
+            segs, _ = m.transcribe(x, language=lang, beam_size=5, vad_filter=False)
+            hyp = ' '.join(s.text.strip() for s in segs)
+            e, n = wer(rows[key][lang], hyp)
+            t = tot.setdefault(lang, [0, 0]); t[0] += e; t[1] += n
+            res.append({'file': f'{lang}/{ogg.name}', 'dur': round(len(x) / 16000, 2), 'lufs': li,
+                        'lead_ms': round(lead * 1000), 'trail_ms': round(trail * 1000),
+                        'wer': round(e / n, 3), 'ref': rows[key][lang], 'asr': hyp})
+            print(json.dumps(res[-1], ensure_ascii=False), flush=True)
+    summary = {l: round(e / n, 4) for l, (e, n) in tot.items()}
+    print('WER', summary)
+    if out_json:
+        pathlib.Path(out_json).write_text(json.dumps({'wer': summary, 'files': res}, ensure_ascii=False, indent=1) + '\n')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('cmd')
@@ -264,6 +313,8 @@ def main():
         print(MANIFEST, len(reqs))
     elif a.cmd == 'synth':
         synth(tts_payload(jobs, langs), a.arg or 'contrib/voice/raw')
+    elif a.cmd == 'qa':
+        qa(langs, out_json=a.arg)
     elif a.cmd == 'finish':
         finish(a.arg)
     else:
