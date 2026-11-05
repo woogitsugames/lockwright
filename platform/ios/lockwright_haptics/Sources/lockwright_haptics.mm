@@ -111,6 +111,7 @@
     else if ([event isEqualToString:@"overset"]) sharp = 0.10f;
     else if ([event isEqualToString:@"break"]) sharp = 1.0f;
     // transient pattern with absolute intensity/sharpness baked into the event
+    NSError *err = nil;
     CHHapticEventParameter *pI = [[CHHapticEventParameter alloc] initWithParameterID:CHHapticEventParameterIDHapticIntensity value:i];
     CHHapticEventParameter *pS = [[CHHapticEventParameter alloc] initWithParameterID:CHHapticEventParameterIDHapticSharpness value:sharp];
     CHHapticEvent *e = [[CHHapticEvent alloc] initWithEventType:CHHapticEventTypeHapticTransient parameters:@[pI, pS] relativeTime:0];
@@ -192,23 +193,23 @@ LockwrightHaptics::~LockwrightHaptics() {
 }
 
 void LockwrightHaptics::play(const godot::StringName &event, double intensity, const godot::StringName &material) {
-	[(__bridge LockwrightHapticsImpl *)engine_impl playEvent:godot::String(event).utf8().get_data()
+	[(__bridge LockwrightHapticsImpl *)engine_impl playEvent:(__bridge NSString *)godot::String(event).utf8().get_data()
 	                                                  intensity:(float)intensity
-	                                                   material:godot::String(material).utf8().get_data()];
+	                                                   material:(__bridge NSString *)godot::String(material).utf8().get_data()];
 }
 
 void LockwrightHaptics::begin_continuous(const godot::StringName &id) {
-	[(__bridge LockwrightHapticsImpl *)engine_impl beginContinuous:godot::String(id).utf8().get_data()];
+	[(__bridge LockwrightHapticsImpl *)engine_impl beginContinuous:(__bridge NSString *)godot::String(id).utf8().get_data()];
 }
 
 void LockwrightHaptics::update_continuous(const godot::StringName &id, double intensity, double sharpness) {
-	[(__bridge LockwrightHapticsImpl *)engine_impl updateContinuous:godot::String(id).utf8().get_data()
+	[(__bridge LockwrightHapticsImpl *)engine_impl updateContinuous:(__bridge NSString *)godot::String(id).utf8().get_data()
 	                                                      intensity:(float)intensity
 	                                                      sharpness:(float)sharpness];
 }
 
 void LockwrightHaptics::end_continuous(const godot::StringName &id) {
-	[(__bridge LockwrightHapticsImpl *)engine_impl endContinuous:godot::String(id).utf8().get_data()];
+	[(__bridge LockwrightHapticsImpl *)engine_impl endContinuous:(__bridge NSString *)godot::String(id).utf8().get_data()];
 }
 
 godot::Dictionary LockwrightHaptics::capabilities() const {
