@@ -31,6 +31,11 @@ jobs:
           unzip -q /tmp/godot/templates.tpz -d ~/.local/share/godot/export_templates/4.7.2.stable
           mv ~/.local/share/godot/export_templates/4.7.2.stable/templates/* ~/.local/share/godot/export_templates/4.7.2.stable/
           rmdir ~/.local/share/godot/export_templates/4.7.2.stable/templates
+      - name: Cache lockcore_gd (Linux)
+        uses: actions/cache@v4
+        with:
+          path: game/addons/lockcore_gd/bin/liblockcore_gd.linux.template_debug.so
+          key: lockcore-gd-linux-${{ hashFiles('lockcore/include/**', 'lockcore/src/**', 'game/addons/lockcore_gd/src/**', 'game/addons/lockcore_gd/include/**', 'game/addons/lockcore_gd/SConstruct') }}
       - name: Build lockcore_gd (Linux) when missing
         run: |
           if [ ! -f game/addons/lockcore_gd/bin/liblockcore_gd.linux.template_debug.so ]; then
