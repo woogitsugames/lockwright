@@ -65,7 +65,52 @@ L.append('')
 L.append('## Odwiedzone ekrany')
 L += [f'- `{s}` × {n}' for s, n in sorted(bot.get('scenes', {}).items())]
 (out_dir / 'report.md').write_text('\n'.join(L) + '\n')
+# ---- stage 4: economy vs tools/econ_sim.py, channels for "in the dark", profile/lang
+econ_rows, econ_flags = [], []
+try:
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / 'tools'))
+    import econ_sim
+    prof_map = {'solver': 'careful', 'feel': 'average', 'clumsy': 'clumsy'}
+    prof = econ_sim.PROFILES[prof_map.get(bot.get('profile', 'solver'), 'average')]
+    for k in locks:
+        if 'coins_after' not in k or not k.get('job', '').startswith('job.'):
+            continue
+        ev = k.get('events', {})
+        clean = k.get('opened') and not ev.get('drop') and not ev.get('break')
+        r = int(k.get('reward_data', 0))
+        exp = round(r + (r * prof['tip'] / prof['clean'] if clean else 0))
+        got = int(k['coins_after']) - int(k.get('coins_before', 0))
+        diff = (got - exp) / exp * 100 if exp else 0.0
+        econ_rows.append((k['job'], r, exp, got, diff, clean))
+        if abs(diff) > 10:
+            econ_flags.append(k['job'])
+except Exception as e:  # econ_sim missing or changed: report, do not fail
+    econ_rows.append(('(błąd porównania)', 0, 0, 0, 0.0, str(e)[:80]))
+rep['economy'] = {'rows': econ_rows, 'over_10pct': econ_flags}
+ch = bot.get('channels', {})
+silent = sorted(k for k, v in ch.items() if not v.get('audio'))
+nohap = sorted(k for k, v in ch.items() if not v.get('haptic'))
+rep['channels'] = {'kinds_seen': len(ch), 'without_audio': silent, 'without_haptic': nohap}
+(out_dir / 'report.json').write_text(json.dumps(rep, indent=2, ensure_ascii=False))
+L.append('')
+L.append(f"## Zlecenia niewidoczne na liście w grze ({len(bot.get('not_listed', []))}): {', '.join(bot.get('not_listed', [])) or 'brak'}")
+L.append('')
+L.append(f"## Profil, język, tryb: `{bot.get('profile', 'solver')}` · `{bot.get('lang', 'system')}` · ciemność: {bot.get('dark', False)}")
+L.append('')
+L.append(f'## Kanały informacji (zdarzenia zamka → dźwięk / haptyka): {len(ch)} par zdarzenie/materiał')
+L.append(f"- bez dźwięku: {', '.join(silent) or 'brak'}")
+L.append(f"- bez haptyki: {', '.join(nohap) or 'brak'}")
+L.append('')
+L.append('## Ekonomia: gra vs `tools/econ_sim.py` (ten sam profil)')
+L.append('| Zlecenie | Nagroda w danych | Oczekiwane (econ_sim: nagroda + napiwek przy czystym otwarciu) | W grze | Różnica |')
+L.append('|---|---|---|---|---|')
+for j, r, e, g, d, c in econ_rows:
+    L.append(f"| {j} | {r} | {e} | {g} | {d:+.0f}%{' ⚠' if abs(d) > 10 else ''} |")
+if not econ_rows:
+    L.append('| — | — | — | — | brak zleceń z zapłatą |')
+
 print('\n'.join(L[:14]))
+(out_dir / 'report.md').write_text('\n'.join(L) + '\n')
 (out_dir / 'verdict.txt').write_text(verdict + '\n')
 # CI: game problems -> annotations (run stays green); workflow/engine problems -> red run
 if os.environ.get('GITHUB_ACTIONS'):

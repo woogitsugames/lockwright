@@ -645,3 +645,26 @@ Stan workflowów na `main` (ostatnie zakończone runy): **zielone** `lockcore` (
   (i tak samo dla 915x412).
 
 **`qa-career` (mój):** czerwony, bo gra ma soft-locki (N-13), a workflow kończył się błędem przy każdym werdykcie „PROBLEMY”. Od tej rundy: błędy **gry** idą do raportu i adnotacji ⚠ (run zielony), run jest czerwony tylko przy błędzie **workflowu** lub crashu/zawieszeniu silnika (brak raportu bota) — szczegóły w `qa/README.md`.
+
+## Runda QA 2 — 2026-11-05 10:38 (zadanie 5: profile graczy, EN, „w ciemności”, ekonomia)
+Macierz `qa/run_matrix.sh` (5 przebiegów kariery na HEAD): solver / „średni” (`replay_tool --feel`) / „niezdarny” (`--clumsy`) / EN / „w ciemności” (`--feel` + tryb ciemny).
+
+| Przebieg | Zlecenia | Zamki otwarte | Soft-locki | Brak. klucze | Czas sym. | Zdarzenia bez dźwięku / haptyki |
+|---|---|---|---|---|---|---|
+| solver | 16 / 29 | 26 / 26 | 10 | 0 | 199 s | 0 / 0 |
+| średni (feel) | 16 / 29 | 26 / 26 | 10 | 0 | 575 s | 0 / 0 |
+| niezdarny (clumsy) | 16 / 29 | 26 / 26 | 10 | 0 | 339 s | 0 / 0 |
+| EN | 16 / 29 | 26 / 26 | 10 | 0 | 199 s | 0 / 0 |
+| w ciemności | 16 / 29 | 26 / 26 | 10 | 0 | 575 s | 0 / 0 |
+
+- Soft-locki we wszystkich przebiegach to N-13 (ekran planu B). 7 zleceń jest niewidocznych na liście (rodziny nie w lockcore: axial_slider, time_lock, magnetic, dial_safe…) — zgodnie z N-05; 3 to odmowy.
+- **„W ciemności”:** wszystkie 22 pary zdarzenie/materiał, które padły w karierze, mają dźwięk (`Sfx._stream_for`) i wzorzec haptyki (`Haptics.pattern_for`) → zamki są przechodnie bez obrazu. Menu i dialogi **nie** są (brak czytnika ekranu, A-09) — tryb dotyczy tylko zamka, co trzeba jasno napisać w ustawieniach.
+- Profile nie wpływają na zamki pin_tumbler, bo scena planu B gra zawsze seed 42 / tier 4 (N-14).
+
+**N-25 · Medium · Ekonomia: gra nie wypłaca napiwków, `econ_sim.py` je liczy** · `game/scripts/lock/job_run.gd` (`complete()`), `tools/econ_sim.py:349`, `docs/JOBS.md:164`
+- W grze wypłata = `reward_coins` co do monety (16/16 zleceń z zapłatą). `econ_sim` dolicza napiwek przy czystym otwarciu (`reward × tip / clean`: careful +25%, average +18%, clumsy +12%), a JOBS.md §… obiecuje „napiwek 0–30% za otwarcie bez śladów”. Różnica −19…−20% na 12 zleceniach (> 10%). Bilans ECONOMY.md (suma 2340 + napiwki) jest więc za optymistyczny względem gry.
+- **Poprawka (jedna z dwóch):** (a) sesja B: napiwek w `JobRun.complete()` według JOBS.md (brak drop/break/overset → do 30%, licznik fabularny), wyświetlany na `job_payment` przez i18n; albo (b) sesja A: `econ_sim` bez napiwków, dopóki gra ich nie ma. Rekomenduję (a) — to obietnica z biblii treści i bodziec do czystej gry.
+- 4 zlecenia mają `reward_coins = 0` (charleroi_letters, pizzeria_pays_pizza, swiatniki_journeyman_padlock, time_capsule) — w danych i w `econ_sim` tak samo, zgodnie z fabułą (zapłata w naturze); bez uwag.
+
+**N-26 · Low · EN: karty dokumentów w weryfikacji mogą się nie mieścić** · `game/scripts/ui/job_verify.gd:_render_cards`
+- `qa/bot/a11y_shots.gd --lang en`: „ID document” potrzebuje ok. 104 px tekstu, przycisk ma 112 px (z marginesami 16 px brakuje ok. 8 px), „Witness” 63 > 55. Do potwierdzenia po naprawie A-10 (dziś safe-area rozpycha szerokości). **Poprawka:** `size_flags_horizontal = EXPAND_FILL` i `clip_text = false` dla kart albo układ w kolumnie.

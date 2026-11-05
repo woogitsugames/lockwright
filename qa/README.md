@@ -35,3 +35,20 @@ raport w podsumowaniu joba. Znalezione błędy: `docs/handoff/SESSION-C-REVIEW.m
 raportu bota (`QA_REPORT`), przekroczony czas, crash silnika, błąd kroku workflowu. Problemy **gry** (soft-locki, ekrany
 bez wyjścia, brakujące klucze, błędy skryptów) trafiają do `report.md` w podsumowaniu runu i jako adnotacje ⚠
 „QA gry: …”; werdykt „OK / PROBLEMY” jest w `verdict.txt`. Dzięki temu czerwony `qa-career` zawsze znaczy „napraw automat”.
+
+## Część 2 (etap 4): profile graczy, EN, „w ciemności”, ekonomia
+```bash
+cmake -S lockcore -B lockcore/build && cmake --build lockcore/build --target replay_tool
+qa/run_matrix.sh godot lockcore/build/replay_tool     # 5 przebiegów -> qa/out/<przebieg>/, qa/out/matrix.md
+```
+| Zmienna | Znaczenie |
+|---|---|
+| `QA_PROFILE=solver\|feel\|clumsy` | ręka gracza: skryptowany solver (`LockcoreSession.solve`) albo natywne boty lockcore `replay_tool record … --feel` („średni”) / `--clumsy` („niezdarny”) dla tego samego zamka (rodzina, seed, tier ze sceny) |
+| `QA_REPLAY_TOOL` | ścieżka do `lockcore/build/replay_tool` |
+| `QA_LANG=en` | cała kariera po angielsku (`Settings.language` + `I18n.apply_language`) |
+| `QA_DARK=1` | tryb „w ciemności” na każdym zamku; raport sprawdza, czy każde zdarzenie zamka ma dźwięk i haptykę |
+| `QA_OUT` | katalog raportu |
+
+Raport ma też: **ekonomię** (wypłata w grze vs model `tools/econ_sim.py` dla odpowiadającego profilu: solver→careful,
+feel→average, clumsy→clumsy; różnice > 10% oznaczone ⚠), **kanały** (pary zdarzenie/materiał bez dźwięku lub haptyki)
+i **zlecenia niewidoczne na liście**. Ucięte teksty EN na ekranach: `qa/bot/a11y_shots.gd -- --lang en` (wymaga X/Xvfb).

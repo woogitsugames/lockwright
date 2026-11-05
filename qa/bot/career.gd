@@ -14,7 +14,7 @@ const FORWARD_NAMES := ["Continue", "Accept", "Start", "Verify", "Next", "Ok", "
 var report := {
 	"schema": "lockwright.qa/1", "jobs_total": 0, "jobs_completed": [], "tutorial_done": false,
 	"scenes": {}, "unknown_scenes": [], "softlocks": [], "dead_ends": [], "locks": [],
-	"purchases": 0, "showcase_opened": 0, "decisions": 0, "sim_seconds": 0.0, "wall_seconds": 0.0, "finished": false,
+	"purchases": 0, "showcase_opened": 0, "profile_expected": {}, "not_listed": [], "decisions": 0, "sim_seconds": 0.0, "wall_seconds": 0.0, "finished": false,
 }
 var _jobs: Array = []
 var _attempts := {}          # job id -> tries
@@ -24,6 +24,8 @@ var _t0 := 0
 var _sim := 0.0
 var _last_scene := ""
 var _refused_visit := -1
+var _ev_counts := {}         # lock event kind -> count for the current lock
+var _channels := {}          # "kind/material" -> {"audio": bool, "haptic": bool}
 var _last_change_sim := 0.0
 
 
@@ -100,6 +102,7 @@ func _finish(reason: String) -> void:
 	report["end_reason"] = reason
 	report["tutorial_done"] = bool(_al("Save").get_value("tutorial_done", false))
 	report["coins"] = _al("Save").get_value("coins", 0)
+	report["channels"] = _channels
 	report["jobs_completed"] = _al("Save").get_value("jobs_completed", [])
 	report["sim_seconds"] = snappedf(_sim, 0.1)
 	report["wall_seconds"] = snappedf((Time.get_ticks_msec() - _t0) / 1000.0, 0.1)
@@ -124,6 +127,14 @@ func _pending_jobs() -> Array:
 # ------------------------------------------------------------------ main loop
 func _run() -> void:
 	await _wait_frames(5)
+	var lang := OS.get_environment("QA_LANG")
+	if lang != "":
+		_al("Settings").call("set_value", "language", lang)
+		_al("I18n").call("apply_language", lang)
+		report["lang"] = lang
+	report["profile"] = OS.get_environment("QA_PROFILE") if OS.get_environment("QA_PROFILE") != "" else "solver"
+	report["dark"] = OS.get_environment("QA_DARK") == "1"
+	_al("Events").connect("lock_event", _on_lock_event)
 	while report["decisions"] < MAX_DECISIONS:
 		var sc := _scene_name()
 		if sc != _last_scene:
@@ -159,6 +170,39 @@ func _run() -> void:
 
 
 # ------------------------------------------------------------------ lock scenes
+## Inputs of lockcore's "feel" (average player) or "clumsy" bot for this lock, as rows of floats (1/256 units, RLE).
+func _profile_rows(fam: String, seed: int, tier: int, profile: String) -> Array:
+	var tool := OS.get_environment("QA_REPLAY_TOOL")
+	if tool == "":
+		return []
+	var tmp := OS.get_user_data_dir().path_join("qa_profile_%s_%d_%d.json" % [fam, seed, tier])
+	var out := []
+	OS.execute(tool, ["record", fam, str(tier), str(seed), tmp, "--" + profile], out, true)
+	var d: Variant = JSON.parse_string(FileAccess.get_file_as_string(tmp))
+	if typeof(d) != TYPE_DICTIONARY:
+		return []
+	var rows := []
+	for r in d.get("inputs", []):
+		for k in int(r[0]):
+			rows.append([r[1] / 256.0, r[2] / 256.0, r[3] / 256.0, r[4] / 256.0, r[5] / 256.0, int(r[6])])
+	report["profile_expected"][str(seed)] = d.get("expected", {})
+	return rows
+
+
+func _on_lock_event(e: Variant) -> void:
+	if typeof(e) != TYPE_DICTIONARY:
+		return
+	var kind := String(e.get("kind", "?"))
+	_ev_counts[kind] = _ev_counts.get(kind, 0) + 1
+	var key := "%s/%s" % [kind, String(e.get("material", "brass"))]
+	if not _channels.has(key):
+		var sfx := _al("Sfx")
+		var hap := _al("Haptics")
+		var audio: bool = sfx.call("_stream_for", StringName(kind), StringName(e.get("material", "brass"))) != null
+		var haptic: bool = not (hap.call("pattern_for", StringName(kind)) as Dictionary).is_empty()
+		_channels[key] = {"audio": audio, "haptic": haptic}
+
+
 func _play_lock() -> bool:
 	var sc := _scene_name()
 	await _wait_frames(2)
@@ -179,7 +223,17 @@ func _play_lock() -> bool:
 		seed = _jr().seed_for(_jr().current_job)
 		tier = _jr().tier_for(_jr().current_job)
 	print("QA_LOCK vars family=%s seed=%s tier=%s job=%s" % [current_scene.get("family"), current_scene.get("seed"), current_scene.get("tier"), _jr().current_job.get("id", "")])
-	var entry := {"scene": sc.get_file(), "job": _jr().current_job.get("id", ""), "family": fam, "seed": seed, "tier": tier}
+	var entry := {"scene": sc.get_file(), "job": _jr().current_job.get("id", ""), "family": fam, "seed": seed, "tier": tier,
+		"coins_before": int(_al("Save").get_value("coins", 0)), "reward_data": int(_jr().current_job.get("reward_coins", 0))}
+	_ev_counts = {}
+	if OS.get_environment("QA_DARK") == "1":
+		# "in the dark": the picture is off; the bot never looks anyway, so what matters is that every state event
+		# reaches sound and haptics (checked per event kind in the report)
+		if current_scene.has_method("_on_dark_mode_toggled"):
+			current_scene.call("_on_dark_mode_toggled", true)
+		elif current_scene.get("view") != null and current_scene.get("view").has_method("set_dark"):
+			current_scene.get("view").call("set_dark", true)
+		entry["dark"] = true
 	if not ClassDB.class_exists("LockcoreSession"):
 		entry["error"] = "LockcoreSession GDExtension not loaded"
 		report["locks"].append(entry)
@@ -191,9 +245,21 @@ func _play_lock() -> bool:
 		report["locks"].append(entry)
 		report["softlocks"].append({"scene": sc, "reason": entry["error"]})
 		return false
+	var rows: Array = sol.get("inputs", [])
+	var profile := OS.get_environment("QA_PROFILE")
+	if profile in ["feel", "clumsy"]:
+		# player profiles from lockcore's native bots (replay_tool record … --feel / --clumsy), same lock as the game
+		var alt := _profile_rows(fam, seed, tier, profile)
+		if alt.is_empty():
+			entry["error"] = "replay_tool --%s failed" % profile
+			report["locks"].append(entry)
+			report["softlocks"].append({"scene": sc, "reason": entry["error"], "job": entry["job"]})
+			return false
+		rows = alt
+	entry["profile"] = profile if profile != "" else "solver"
 	var sampler: Node = current_scene.find_child("InputSampler", true, false)
 	sampler.set_script(load("res://qa_bot/qa_sampler.gd"))
-	sampler.rows = sol.get("inputs", [])
+	sampler.rows = rows
 	entry["bot_steps"] = sampler.rows.size()
 	var t_start := _sim
 	while _scene_name() == sc and _sim - t_start < LOCK_SIM_LIMIT_S:
@@ -232,6 +298,7 @@ func _play_lock() -> bool:
 					return false
 			break
 	entry["sim_s"] = snappedf(_sim - t_start, 0.1)
+	entry["events"] = _ev_counts.duplicate()
 	if not entry.has("opened") and _scene_name() != sc:
 		# job locks switch to job_payment in the same physics step that opens them
 		entry["opened"] = _scene_name().get_file() == "job_payment.tscn"
@@ -271,20 +338,18 @@ func _act_ui(base: String) -> Variant:
 			var pending := _pending_jobs()
 			if pending.is_empty():
 				return _press_named(["BackButton", "Back"], "no jobs left")
-			var want: Dictionary = pending[0]
-			var title: String = _al("I18n").t(want.get("i18n", {}).get("title", &"jobs.title"))
-			for b in _buttons():
-				if b is Button and (b.text == title or b.text.ends_with(title)):
-					_attempts[want["id"]] = _attempts.get(want["id"], 0) + 1
-					_press(b, "job " + want["id"])
-					return true
-			# list layout changed: take the first job-like button that is not Back
-			for b in _buttons():
-				if String(b.name).findn("Back") < 0:
-					_attempts[want["id"]] = _attempts.get(want["id"], 0) + 1
-					_press(b, "first job button (title not matched)")
-					return true
-			return false
+			for want in pending:
+				var title: String = _al("I18n").t(want.get("i18n", {}).get("title", &"jobs.title"))
+				for b in _buttons():
+					if b is Button and (b.text == title or b.text.ends_with(title)):
+						_attempts[want["id"]] = _attempts.get(want["id"], 0) + 1
+						_press(b, "job " + want["id"])
+						return true
+				# not on the list (hidden by the game, e.g. family not implemented): note once and skip it
+				if not report["not_listed"].has(want["id"]):
+					report["not_listed"].append(want["id"])
+				_attempts[want["id"]] = 99
+			return _press_named(["BackButton", "Back"], "no listed jobs left")
 		"job_arrival":
 			return _press_named(["VerifyButton", "Verify", "Continue", "Accept"], "arrival")
 		"job_verify":
@@ -297,7 +362,13 @@ func _act_ui(base: String) -> Variant:
 				return _press_named(["RefuseButton", "Refuse"], "refuse job")
 			return _press_named(["AcceptButton", "Accept", "Open", "Continue"], "accept job")
 		"job_payment":
-			return _press_named(["ContinueButton", "Continue", "Ok"], "payment")
+			var pressed := _press_named(["ContinueButton", "Continue", "Ok"], "payment")
+			if pressed and not report["locks"].is_empty():
+				await _wait_frames(4)
+				var last: Dictionary = report["locks"][-1]
+				last["coins_after"] = int(_al("Save").get_value("coins", 0))
+				last["reward_data"] = int(_jr().current_job.get("reward_coins", last.get("reward_data", 0))) if not _jr().current_job.is_empty() else last.get("reward_data", 0)
+			return pressed
 		"workshop":
 			if not _done_once.has("workshop_buy"):
 				_done_once["workshop_buy"] = true

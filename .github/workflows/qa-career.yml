@@ -17,7 +17,7 @@ on:
 jobs:
   career:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -42,15 +42,21 @@ jobs:
             (cd /tmp/godot-cpp && scons platform=linux target=template_debug arch=x86_64 custom_api_file=gdextension/extension_api-4-7.json -j8)
             (cd game/addons/lockcore_gd && GODOT_CPP=/tmp/godot-cpp scons platform=linux target=template_debug arch=x86_64 custom_api_file=/tmp/godot-cpp/gdextension/extension_api-4-7.json -j8)
           fi
-      - name: Run career bot
+      - name: Build lockcore tools (replay_tool for the feel/clumsy player profiles)
+        run: |
+          cmake -S lockcore -B lockcore/build -DCMAKE_BUILD_TYPE=Release > /dev/null
+          cmake --build lockcore/build --target replay_tool -j4
+      - name: Run career matrix (solver, feel, clumsy, EN, in the dark)
         env:
           QA_WORK: ${{ runner.temp }}/lw_qa_game
           QA_FAIL_ON_INFRA: '1'  # game findings -> warnings + report; red only if the bot/engine/workflow fails
-        run: qa/run_career.sh /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 1800
+          QA_TIMEOUT: '1500'
+        run: qa/run_matrix.sh /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 lockcore/build/replay_tool
       - name: Step summary
         if: always()
         run: |
-          if [ -f qa/out/report.md ]; then cat qa/out/report.md >> "$GITHUB_STEP_SUMMARY"; else echo "no report" >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ -f qa/out/matrix.md ]; then cat qa/out/matrix.md >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ -f qa/out/solver/report.md ]; then cat qa/out/solver/report.md >> "$GITHUB_STEP_SUMMARY"; else echo "no report" >> "$GITHUB_STEP_SUMMARY"; fi
       - name: Upload report
         if: always()
         uses: actions/upload-artifact@v4

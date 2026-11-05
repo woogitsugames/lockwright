@@ -7,6 +7,7 @@ const SCENES := ["main_menu", "settings", "jobs_list", "job_arrival", "job_verif
 var out := "/tmp"
 var scale := 1.0
 var tag := ""
+var lang := "pl"
 
 
 func _initialize() -> void:
@@ -16,6 +17,7 @@ func _initialize() -> void:
 			"--out": out = a[i + 1]
 			"--scale": scale = float(a[i + 1])
 			"--tag": tag = a[i + 1]
+			"--lang": lang = a[i + 1]
 	_run.call_deferred()
 
 
@@ -26,8 +28,9 @@ func _frames(n: int) -> void:
 
 func _run() -> void:
 	await _frames(2)
-	root.get_node("I18n").call("set_locale", "pl") if root.get_node("I18n").has_method("set_locale") else TranslationServer.set_locale("pl")
 	var st: Node = root.get_node("Settings")
+	st.set_value("language", lang)
+	root.get_node("I18n").call("apply_language", lang)
 	st.set_value("text_scale", scale)
 	var jr: GDScript = load("res://scripts/lock/job_run.gd")
 	var job: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/job.student_dorm.json"))
@@ -38,6 +41,7 @@ func _run() -> void:
 		var vp := root.get_visible_rect().size
 		var outside := []
 		var min_font := 999
+		var truncated := []
 		for c in _controls(current_scene):
 			if not c.is_visible_in_tree():
 				continue
@@ -46,9 +50,18 @@ func _run() -> void:
 				outside.append("%s(%d,%d %dx%d)" % [c.name, r.position.x, r.position.y, r.size.x, r.size.y])
 			if c is Label or c is Button:
 				min_font = mini(min_font, c.get_theme_font_size("font_size"))
+				# text wider than its control (no wrapping): the player sees a cut word or an ellipsis
+				var wraps: bool = c is Label and (c as Label).autowrap_mode != TextServer.AUTOWRAP_OFF
+				if not wraps and c.text != "":
+					var f: Font = c.get_theme_font("font")
+					var need: float = f.get_string_size(c.text, HORIZONTAL_ALIGNMENT_LEFT, -1, c.get_theme_font_size("font_size")).x
+					var have: float = r.size.x - (16.0 if c is Button else 0.0)
+					if need > have + 1.0 and r.size.x > 0:
+						truncated.append("%s(\"%s\" %d>%d)" % [c.name, c.text.substr(0, 40), need, have])
 		var img := root.get_texture().get_image()
 		img.save_png("%s/%s_%dx%d%s.png" % [out, sc, int(vp.x), int(vp.y), tag])
 		print("A11Y scene=%s vp=%s min_font=%d outside=%s" % [sc, vp, min_font, outside])
+		print("A11Y_TRUNC scene=%s lang=%s n=%d %s" % [sc, lang, truncated.size(), truncated])
 	quit()
 
 

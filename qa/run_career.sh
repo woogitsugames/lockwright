@@ -9,7 +9,7 @@ ROOT=$(cd "$HERE/.." && pwd)
 GODOT=${1:-godot}
 TIMEOUT=${2:-1800}
 WORK=${QA_WORK:-/tmp/lw_qa_game}
-OUT="$HERE/out"
+OUT=${QA_OUT:-$HERE/out}
 rm -rf "$WORK" && cp -r "$ROOT/game" "$WORK" && rm -rf "$WORK/.godot"
 mkdir -p "$WORK/qa_bot" "$OUT"
 cp "$HERE/bot/"*.gd "$WORK/qa_bot/"
