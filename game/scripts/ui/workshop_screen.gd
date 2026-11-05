@@ -128,7 +128,6 @@ func _tool_card(tool: Dictionary, coins: int) -> Control:
 	action.custom_minimum_size = Vector2(112, 48)
 	action.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	action.mouse_filter = Control.MOUSE_FILTER_PASS
-	action.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	row.add_child(action)
 	if owned:
 		if integrity >= 100:

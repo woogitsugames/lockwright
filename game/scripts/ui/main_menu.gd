@@ -2,7 +2,7 @@ extends Control
 ## Main menu (N-54, D-43): the workshop at night as the menu — G08 photo, Bona Nova
 ## title, blank G01 enamel plates as buttons. Buttons >= 48 dp; all text via i18n.
 
-const BG_PORTRAIT := "res://assets/ui/gpt/workshop/03-workshop-evening-portrait.webp"
+const BG_PORTRAIT := "res://assets/ui/menu_workshop_wall_9x16.jpg"  # G20 interim (Magnific later, same name)
 const BG_LANDSCAPE := "res://assets/ui/gpt/workshop/08-lamplight-evening-landscape.webp"
 const CONTROL_CHOICE := "res://scenes/control_choice.tscn"
 
@@ -70,13 +70,18 @@ func _relayout() -> void:
 	var vp := get_viewport_rect().size
 	_landscape = vp.x > vp.y
 	layout.vertical = not _landscape
-	$Frame/Layout/TitleBlock.size_flags_stretch_ratio = 1.0 if _landscape else 0.8
+	$Frame/Layout/TitleBlock.size_flags_stretch_ratio = 1.0 if _landscape else 0.6
 	var path := BG_LANDSCAPE if _landscape else BG_PORTRAIT
 	if ResourceLoader.exists(path):
 		$Backdrop.texture = load(path)
 	var mat := $Vignette.material as ShaderMaterial
 	mat.set_shader_parameter("landscape", _landscape)
-	mat.set_shader_parameter("split", 0.3 if _landscape else 0.34)
+	mat.set_shader_parameter("top_end", 0.45 if _landscape else 0.3)
+	mat.set_shader_parameter("base", 0.3 if _landscape else 0.08)
+	# portrait: plates hang on the empty pegboard in the middle of the G20 wall
+	# (portrait: plates right under the title, tip + About pushed down onto the bench)
+	$Frame/Layout/MenuBlock.alignment = BoxContainer.ALIGNMENT_END if _landscape else BoxContainer.ALIGNMENT_BEGIN
+	$Frame/Layout/MenuBlock/Push.visible = not _landscape
 	play_button.custom_minimum_size.y = 64 if _landscape else 72
 	for b in [jobs_button, workshop_button, showcase_button, settings_button]:
 		b.custom_minimum_size.y = 52 if _landscape else 56

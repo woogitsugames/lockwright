@@ -9,6 +9,7 @@ const ARRIVAL_JOB := "job.bike_interview"
 var _out := "/tmp/shots"
 var _size := Vector2i(412, 915)
 var _shown: Node = null
+var _demo := false  # --demo-save: fresh-ish save (few coins, a worn tool) to show the N-59 row states
 var _only := ""  # --only=main_menu,settings: render a subset
 
 
@@ -21,7 +22,19 @@ func _ready() -> void:
 			_size = Vector2i(int(p[0]), int(p[1]))
 		elif a.begins_with("--only="):
 			_only = a.trim_prefix("--only=")
+		elif a.begins_with("--lang="):
+			I18n.apply_language(a.trim_prefix("--lang="))
+		elif a == "--demo-save":
+			_demo = true
 	DirAccess.make_dir_recursive_absolute(_out)
+	var backup: Dictionary = Save.data.duplicate(true)
+	if _demo:
+		Save.set_value("coins", 200)
+		Save.set_value("tools/pk_hook/owned", true)
+		Save.set_value("tools/pk_hook/integrity", 40)
+		Save.set_value("tools/pk_ward/owned", false)
+		Save.set_value("tools/tw_bar/owned", false)
+		Save.set_value("tools/tl_shackle/owned", false)
 	get_window().size = _size
 	await get_tree().process_frame
 	for scene_path: String in SCREENS:
@@ -43,4 +56,7 @@ func _ready() -> void:
 		var name := scene_path.get_file().get_basename() + "_%dx%d.png" % [_size.x, _size.y]
 		img.save_png(_out + "/" + name)
 		print("SHOT ", name)
+	if _demo:
+		Save.data = backup
+		Save.save()
 	get_tree().quit()

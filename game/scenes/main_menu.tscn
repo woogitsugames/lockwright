@@ -59,6 +59,9 @@ text_overrun_behavior = 3
 [node name="Subtitle" type="Label" parent="Frame/Layout/TitleBlock"]
 layout_mode = 2
 theme_type_variation = &"Heading"
+theme_override_colors/font_color = Color(0.96, 0.89, 0.74, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_constants/shadow_offset_y = 2
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -114,6 +117,11 @@ size_flags_horizontal = 3
 text_overrun_behavior = 3
 script = ExtResource("2")
 plate = &"burgundy"
+
+[node name="Push" type="Control" parent="Frame/Layout/MenuBlock"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="TipPanel" type="PanelContainer" parent="Frame/Layout/MenuBlock"]
 layout_mode = 2
