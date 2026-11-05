@@ -84,3 +84,79 @@ job.widow_bureau.client,"Madame Irena, 79 ans, bibliothécaire retraitée, est v
 job.widow_bureau.situation,"Madame Irena possède l'écritoire de son défunt mari, mais la petite clé a disparu. Elle veut l'ouvrir sans percer ni laisser de marques."
 job.widow_bureau.title,L'écritoire
 job.wrong_floor.client,"Monsieur Kazimierz, 60 ans, rentre tout guilleret de la fête du prénom de son beau-frère."
+job.wrong_floor.situation,Il se trouve un étage en dessous de son appartement.
+job.wrong_floor.title,Un étage trop bas
+showcase.amen_padlock.body,"Les cadenas à bagues rotatives portant des lettres ont même trouvé leur place dans la littérature. L'historien des techniques du XIXe siècle Charles Tomlinson citait une pièce attribuée à Beaumont et Fletcher, évoquant une serrure que le mot AMEN permettait d'ouvrir. On retrouve une image voisine dans la poésie de Thomas Carew. Ces références témoignent de la vie culturelle des cadenas à lettres, même si les citations restent à vérifier dans les éditions critiques."
+showcase.amen_padlock.title,Un cadenas réglé sur AMEN
+showcase.barron_1778.body,"En 1778, le serrurier londonien Robert Barron fit breveter une amélioration majeure de la serrure à leviers. Dans son modèle, le pêne restait bloqué si les éléments concernés bougeaient trop peu ou trop loin. Cette innovation marqua une étape importante dans l'évolution des serrures à leviers. La précision venait de faire son entrée dans l'histoire."
+showcase.barron_1778.title,"Ni trop bas, ni trop haut"
+showcase.bramah_window.body,"Joseph Bramah breveta sa serrure en 1784. Plus tard, un cadenas exposé dans la vitrine de sa boutique de Piccadilly mettait quiconque au défi de l'ouvrir, contre une récompense de 200 guinées. Le Science Museum date l'exemplaire conservé de 1801. Il fallut un demi-siècle pour relever le défi, en 1851. Une publicité remarquablement patiente."
+showcase.bramah_window.title,Le cadenas du défi
+showcase.chubb_detector.body,"En 1818, Jeremiah Chubb fit breveter une serrure à leviers munie d'un détecteur capable de signaler une tentative de manipulation. Il n'était pas le premier à envisager une telle alerte : le brevet de Ruxton date de 1816. Le dispositif de Chubb devint célèbre et contribua au débat public sur la sécurité des serrures."
+showcase.chubb_detector.title,La serrure qui donne l'alerte
+showcase.egyptian_name.body,"On appelle souvent « serrures égyptiennes » les serrures en bois à pêne et goupilles. Des voyageurs du XIXe siècle en ont observé des modèles semblables en Égypte, sans que cela prouve où l'idée est née. Dès 1883, Augustus Pitt-Rivers soulignait les lacunes des sources antiques. On connaît des mécanismes apparentés au Proche-Orient et dans le monde romain. Le nom est plus court que l'histoire."
+showcase.egyptian_name.title,Pourquoi « égyptienne » ?
+showcase.henriksson_disc.body,"Au début du XXe siècle, le mécanicien de précision finlandais Emil Henriksson développa une serrure fondée sur des disques rotatifs. Selon un récit ultérieur, l'idée lui serait venue en réparant une caisse enregistreuse en 1907. Il obtint un brevet en 1919. Dans cette famille de mécanismes, les éléments rotatifs remplacent les groupes de goupilles à ressort. L'histoire de sa naissance est presque aussi bien ordonnée que l'idée."
+showcase.henriksson_disc.title,Une idée de disques tournants
+showcase.hobbs_51_hours.body,"À l'été 1851, Alfred C. Hobbs releva le défi du cadenas de Bramah. Les arbitres consignèrent 51 heures de travail réparties sur 16 jours ouvrés. Son succès lui valut la récompense promise de 200 guinées. Le cadenas et son histoire finirent dans une collection de musée. Seize jours de travail, c'est long. Un demi-siècle d'attente aussi."
+showcase.hobbs_51_hours.title,51 heures sur 16 jours
+showcase.hobbs_westminster.body,"En 1851, Alfred C. Hobbs remit en cause la réputation d'inviolabilité des meilleures serrures de Londres. L'essai le plus marquant, réalisé devant témoins, eut lieu le 22 juillet à Great George Street, Westminster, et non sur le site de la Grande Exposition. Selon la déclaration signée, l'ouverture prit 25 minutes et la refermeture sept. La controverse publique fut retentissante."
+showcase.hobbs_westminster.title,Vingt-cinq minutes à Westminster
+showcase.khorsabad_gate.body,"Dans les années 1840, Paul-Émile Botta étudia Dur-Sharrukin, capitale assyrienne construite sous Sargon II à la fin du VIIIe siècle avant notre ère. Joseph Bonomi décrivit l'une de ses portes comme protégée par une grande serrure en bois. La serrure elle-même n'a pas été conservée ; nous la connaissons par un témoignage écrit. L'archéologue Daniel Potts a montré que l'affirmation souvent reprise de 4 000 ans découle d'une erreur de datation. Quelque 2 700 ans, c'est déjà impressionnant."
+showcase.khorsabad_gate.title,La porte de Dur-Sharrukin
+showcase.krakow_guild_seal.body,"Les serruriers et horlogers de Cracovie ont longtemps appartenu à la même corporation. Le roi Władysław IV en confirma les statuts en 1633. L'ancien sceau de la corporation portait une serrure, un cadran d'horloge, des clés et un serpent couronné. D'après un vers conservé dans le registre, le serpent symbolisait la vivacité d'esprit. Les horlogers ne formèrent leur propre corporation qu'en 1797."
+showcase.krakow_guild_seal.title,Le serpent couronné
+showcase.roman_ring_key.body,"Le Victoria and Albert Museum conserve une bague en bronze du IIIe siècle dont le chaton est une clé. On en a retrouvé de semblables à Londres, Colchester et Pompéi. Leurs pannetons variés indiquent qu'elles servaient probablement à ouvrir quelque chose, peut-être de petites boîtes à bijoux. Le musée suggère prudemment que les femmes les portaient, éventuellement après leur mariage. Le London Museum ajoute un détail pratique : en Bretagne romaine, la clé-bague gardait la clé à portée de main, à une époque où les poches cousues étaient rares."
+showcase.roman_ring_key.title,Une clé au doigt
+showcase.roman_wards.body,"Les Romains utilisaient des pênes et des serrures de toutes sortes. Des clés conservées à Pompéi et Herculanum témoignent aussi de mécanismes à garnitures, où des obstacles fixes imposaient une forme de clé particulière. On connaissait également les mécanismes à goupilles. Il n'existait pas une seule solution romaine, mais tout un savoir-faire."
+showcase.roman_wards.title,Les garnitures romaines
+showcase.sargent_time_lock.body,"James Sargent développa dans les années 1870 une serrure à minuterie pour les coffres de banque. Il déposa une demande de brevet en 1873, et une de ses serrures fut installée dans une banque de Morrison, dans l'Illinois, en 1874. Un mécanisme d'horlogerie empêchait l'ouverture avant l'heure définie, même pour quelqu'un connaissant la combinaison. L'idée était plus ancienne, mais ce type de dispositif gagnait alors du terrain."
+showcase.sargent_time_lock.title,La serrure qui connaît l'heure
+showcase.stansbury_1805.body,"Dès 1805, Abraham O. Stansbury obtint un brevet britannique pour une serrure à goupilles actionnées par des ressorts. Charles Tomlinson décrivit ce modèle comme une évolution des anciennes serrures en bois à goupilles. La voie vers la serrure à cylindre moderne compta plus d'un contributeur. L'histoire des techniques tient rarement en un seul héros."
+showcase.stansbury_1805.title,Un précurseur oublié
+showcase.swiatniki_armourers.body,"Świątniki Górne, près de Cracovie, s'est développé à partir d'une communauté liée au service de la cathédrale du Wawel. Le travail de la forge et la fabrication d'armures y prospérèrent pendant des siècles. À mesure que la demande d'armures traditionnelles déclinait à la fin du XVIIIe siècle, les artisans locaux se tournèrent vers les serrures et cadenas. Le produit changeait ; le savoir-faire du fer demeurait."
+showcase.swiatniki_armourers.title,Des armures aux cadenas
+showcase.swiatniki_school.body,"La décision de créer une école de serrurerie à Świątniki Górne fut prise en 1887 ; l'enseignement commença en 1888. En 1891, l'école et une entreprise locale reçurent une commande de 500 cadenas lors d'une exposition à Vienne. Des générations y apprirent le travail du métal. Aujourd'hui, le musée de la Serrurerie Marcin Mikuła perpétue l'histoire de l'artisanat local. Des leçons qui pesaient leur poids."
+showcase.swiatniki_school.title,Une école de serrurerie
+showcase.wroclaw_iron_world.body,"En 2022, le Musée national de Wrocław présenta « Iron World », une exposition consacrée aux serrures, clés et autres objets métalliques anciens. Parmi les pièces figurait une serrure de coffret fabriquée en 1720 par le maître de Wrocław Albert Nicolaus Spihrman. Selon le musée, c'est la seule serrure de sa collection portant à la fois une date, le nom de son auteur et son lieu de fabrication. Cet artisan a laissé une signature remarquablement précise."
+showcase.wroclaw_iron_world.title,La seule serrure signée
+showcase.yale_dial.body,"Au XIXe siècle, les spécialistes de la sécurité bancaire cherchèrent à limiter l'accès par les trous de serrure traditionnels. Linus Yale fils travailla sur des serrures bancaires à partir des années 1850 ; les modèles à cadran évoluèrent encore au cours de la décennie suivante. Supprimer le trou de serrure ne garantissait pas une sécurité parfaite : cela changeait les problèmes à résoudre."
+showcase.yale_dial.title,Sans trou de serrure
+showcase.yale_flat_key.body,"Au milieu du XIXe siècle, Linus Yale fils contribua à transformer les dispositifs de verrouillage encombrants en mécanismes plus pratiques au quotidien. Un brevet du 27 juin 1865 décrit l'un de ses modèles. La petite clé plate devint emblématique de cette approche des serrures à cylindre. Il mourut en 1868, laissant des idées que d'autres feraient évoluer pendant des générations."
+showcase.yale_flat_key.title,La petite clé plate
+showcase.yale_senior.body,"Linus Yale père dirigeait un atelier de serrurerie à Newport, dans l'État de New York. Il travailla notamment sur la sécurité bancaire ; un brevet de 1857 conserve son nom et le lieu de son activité. Ses idées furent ensuite développées par son fils, lui aussi prénommé Linus. L'atelier familial transmettait autant de questions que d'outils."
+showcase.yale_senior.title,Un atelier dans l'État de New York
+tool.tw_angle.name,Tendeur coudé
+tool.tw_bar.name,Tendeur plat
+tool.tl_shackle.name,Extracteur d'anse
+tool.pk_peg.name,Lève-cheville
+tool.pk_hook.name,Crochet à bec
+tool.pk_ward.name,Sonde à garnitures
+tool.pk_ripple.name,Crochet ondulé
+tool.pk_wedge.name,Double coin
+tool.pk_lever.name,Manivelle à leviers
+tool.pk_crown.name,Crochet couronne
+tool.tl_polar.name,Sonde de polarité
+tool.pk_flag.name,Crochet drapeau
+tool.pk_plunger.name,Poussoir à fente
+tool.pk_disc.name,Tourne-disque
+tool.pk_feather.name,Lamelle latérale
+tool.tl_cup.name,Coupelle d'écoute
+tool.tl_notes.name,Carnet de contact
+tool.kit_clock.name,Kit d'horloger
+tool.tl_drill.name,Perceuse
+cast.agnieszka.name,Agnieszka
+cast.aino.name,Aino
+cast.bartek.name,Bartek
+cast.bride.name,La mariée
+cast.captain.name,Le capitaine
+cast.claimant.name,La femme devant la porte
+cast.darek.name,Darek
+cast.edek.name,"M. Edek, concierge"
+cast.ewa.name,Ewa
+cast.gosia.name,Gosia
+cast.halina.name,Mme Halina
+cast.hall_manager.name,Le responsable de la salle de répétition
+cast.hania.name,Hania
+cast.headteacher.name,La direction de l'école
+cast.iga.name,Iga
