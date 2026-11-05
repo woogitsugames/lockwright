@@ -17,8 +17,10 @@ if env["platform"] == "ios":
 objc_env = env.Clone()
 objc_env.Append(CXXFLAGS=["-x", "objective-c++", "-std=gnu++20", "-fobjc-arc", "-miphoneos-version-min=18.0"])
 
-cpp_objs = env.Object(cpp_sources)
-mm_objs = objc_env.Object(mm_sources)
+# SharedObject (not Object): on the ios toolchain SCons flags plain Object() output as
+# static and rejects it in a SharedLibrary target ("is static and is not compatible")
+cpp_objs = env.SharedObject(cpp_sources)
+mm_objs = objc_env.SharedObject(mm_sources)
 
 library = env.SharedLibrary(
     "bin/liblockwright_haptics.{}.{}".format(env["platform"], env["target"]),
