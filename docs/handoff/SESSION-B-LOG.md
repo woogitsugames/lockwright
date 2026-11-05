@@ -603,3 +603,40 @@ Zrzuty (PL, zapis demo): `docs/handoff/device-tests/fixes/ui/` — menu, ustawie
 - **Testy:** `smoke.tscn` OK. GUT: 77/77 testów, 7762 asercje. Statyczny test: każda ścieżka `res://assets/...` ładowana w `scripts/`, `scenes/` i `theme/` (także wzorce `%s`/`%02d`) jest w paczce.
 - **Budżet:** `pck_android_mb` fail 70 → 58 (D-55).
 - **Ryzyka:** (1) Kto zacznie ładować wykluczony plik (np. diagramy notesu), musi usunąć go z `exclude_filter`. Inaczej `ResourceLoader.exists` zwróci false tylko na telefonie. (2) Stary błąd, nie z tej zmiany: `showcase_screen.gd` szuka `03-five-rules-en.jpg`, a plik nazywa się `04-five-rules-en.jpg`. Oba pliki są w paczce.
+
+## Od sesji A (agent poprawek): klapka/poziom/SafeArea/S1
+Zrzuty: `docs/handoff/device-tests/fixes/landscape/` (412×915 i 915×412: menu, ustawienia, ekran samouczka, zamek z napięciem, autorski S1 z kredą).
+
+- **N-56, klapka pauzy ze zdjęcia:**
+  - `game/assets/photo/objects/pause_tab_1k.png` (256×511) wycięty z G21 `leather_tab_snap_topdown.png`: alfa z kluczowania szarego tła i cienia, pióro 1,5 px, obrót tak, że zaokrąglony koniec z napą wisi w dół. Import stratny 0,8 (`.import` dodany przez `git add -f`). Wpis w ASSETS.md.
+  - `pause_flap.gd` rysuje teksturę na całą szerokość 56 dp, dolnym końcem 6 dp nad dołem kontrolki. Prosty koniec wychodzi za górną krawędź. Zostały: cień z wielokąta, uniesienie o 4 dp w 150 ms, `brass_snap_pause` i haptyka. Wielokąt z przeszyciem jest już tylko zapasem, gdy brakuje pliku. `test_lock_view_n62` sprawdza teraz też `has_photo()`.
+- **Skala w poziomie (D-56):**
+  - nowy autoload `DpScale` ustawia `content_scale_size` na 412×915 w pionie i 915×412 w poziomie, więc 1 dp ma tę samą wielkość fizyczną w obu orientacjach;
+  - hack 412×412 z `ScreenFrame` usunięty;
+  - pion bez zmian. Poziom: menu, ustawienia i samouczek mają pełną wielkość, a na ekranie zamka klapka i czoło rdzenia są w prawdziwej skali.
+- **SafeArea:**
+  - `SafeArea.window_insets_px()` liczy safe area ekranu przeciętą z prostokątem okna i przyciętą do okna, a `insets()`, `shrink()` i `apply()` podają wynik w dp;
+  - z tej jednej funkcji korzystają ScreenFrame, samouczek (obejście „tylko mobile” usunięte), `lock_scene` i oba widoki photoreal (`_safe_rect`);
+  - na xvfb korzeń UI nie jest już szerszy niż okno.
+- **Autorski samouczek S1–S3:**
+  - `game/data/tutorial/s1.json`, `s2.json`, `s3.json` to `pin.s1`, `pin.s2` i `pin.s3` z LEVELS.md §2 (`lockwright.lock/1`);
+  - wynik `check_locks --feel 200`: wszystkie się parsują, bot skryptowy otwiera każdy (2,1 / 5,8 / 5,1 s), a bot niezdarny i bot czujący mają po 100%;
+  - nowy test ctest `tutorial_locks` w `lockcore/CMakeLists.txt`.
+- **GDExtension:**
+  - `LockcoreSession.create_from_json(json)` przyjmuje plik przez ścisły parser lockcore (`lock_from_json` + `validate`). Przy błędzie zwraca false i nie zostawia sesji;
+  - nowe metody `last_errors()` („ścieżka: komunikat”) i `spec_id()`.
+- **Gra:**
+  - `JobRun.start_tutorial` dopisuje `lock_spec`, a `lock_photoreal.make_spec_session()` ładuje plik;
+  - bez GDExtension, ze starszym buildem albo przy błędzie gra pokazuje ostrzeżenie i gra generowany t1, jak dotąd;
+  - `--lw-tutorial N` ładuje autorski zamek etapu, a `--lw-spec PATH` dowolny plik.
+- **Testy:**
+  - GUT: **79/79** zielone, z lockcore_gd zbudowanym lokalnie jak w CI (godot-cpp e103d34, API 4.7);
+  - `test_tutorial_s1`: S1 otwiera się dwoma kciukami i w trybie auto, a S2 i S3 w obu trybach. Nowe testy: wczytanie S1–S3 (liczba pinów, okno 0,20 / 0,16 / 0,12) i odrzucenie złego pliku;
+  - zmiana w teście: S1 ma 1 pin, więc klik jest od razu otwarciem i coach przechodzi BINDING → OPEN bez CLICK („znajdź następny” nie ma sensu przy jednym pinie). Na starym `.so` testy autorskie są pending, reszta zielona;
+  - smoke i `lock_test` OK, ctest `tutorial_locks` i `practice_locks` OK.
+- **Otwarte:**
+  - S1 bot otwiera w 1,35 s. Cel dla człowieka to 20–40 s, do sprawdzenia na telefonie;
+  - napis kroku PICK „wybierz w bok” przy jednym pinie jest trochę na wyrost;
+  - na ekranie zamka w poziomie pas zwijki (26% wysokości) ucina dół narzędzi i lupy, tak samo jak przed zmianą skali (właściciel: agent zamka);
+  - `data/tutorial/*.json` trafia do paczki tak jak `data/jobs` (`all_resources`). Agent rozmiaru może to potwierdzić w pck;
+  - `.import` portretów G21 dostały przy moim `--import` brakujące `uid` i `dest_files`. Wpadło to w auto-commit, sama normalizacja Godota.
