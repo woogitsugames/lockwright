@@ -401,3 +401,12 @@ Zrzuty z telefonu: `docs/handoff/device-tests/run92/main_menu.jpg` i `settings.j
   - animacja 150–250 ms;
   - test GUT: stuknięcie przełącza `zoomed`.
 - Jeśli lupa ma być narzędziem odblokowywanym później, pokaż ją jako wyszarzoną i po stuknięciu wyświetl krótką informację (i18n), zamiast żeby nic się nie działo.
+
+## Od sesji A: N-58, bez napięcia gra milczy (zgłoszenie właściciela, run 92)
+- Właściciel podnosił piny samym wytrychem (prawy kciuk) i nic się nie działo: nie było dźwięku ani podpowiedzi. Nie wiedział, że lewa połowa ekranu to napinacz (D-24, `input_sampler.gd`).
+- **Do zrobienia:**
+  - **dźwięki bez napięcia:** każdy kontakt wytrycha z pinem i ugięcie sprężyny daje cichy dźwięk (`pin_contact`/`spring`) i lekką haptykę. Przy podnoszeniu bez napięcia pin musi słyszalnie i widocznie opadać;
+  - **podpowiedź kredą:** gdy przez ok. 2 s jest uniesienie, a napięcie = 0, pojawia się kredowa strzałka w górę i kciuk po lewej stronie płyty z tekstem i18n „Lewy kciuk: lekki nacisk w górę = napięcie”. Znika po pierwszym napięciu. Pokazuj ją też poza samouczkiem w pierwszych 3 zleceniach;
+  - **wcięcia kciuków:** wgniecenie kciuka (`thumb_dent`) ma być widoczne od razu po dotknięciu obu stref, także lewej;
+  - **samouczek:** sprawdź, czy pierwszy krok naprawdę uczy dwóch kciuków i nie przepuszcza dalej bez napięcia;
+  - **dźwięk w ogóle:** potwierdź na APK, że SFX grają (zimny start z asynchronicznym wczytywaniem SFX mógł zostawić puste bufory). Dodaj test GUT `Sfx.play` po starcie, który sprawdza, że strumień nie jest null.
