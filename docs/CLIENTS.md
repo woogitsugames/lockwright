@@ -257,8 +257,8 @@ Mówca w nawiasie to id z `cast.*`. Klucz linii: `job.<id>.line.<n>`.
 
 **Dzień po** (`job.refuse_ex_partner.after.n`):
 
-- 1. (lena) Dobrze, że pan zadzwonił. Rzeczy odebrał przy mnie, lokatorka się zgodziła. / *Good that you called. He collected his things with me there; the tenant agreed.*
-- 2. (stefan) Słyszałem na przystanku. Porządny z pana człowiek. Gazeta? / *Heard it at the bus stop. You're a decent sort. Paper?*
+- `1` (lena) Dobrze, że pan zadzwonił. Rzeczy odebrał przy mnie, lokatorka się zgodziła. / *Good that you called. He collected his things with me there; the tenant agreed.*
+- `2` (stefan) Słyszałem na przystanku. Porządny z pana człowiek. Gazeta? / *Heard it at the bus stop. You're a decent sort. Paper?*
 
 
 ### Rozdział 2 — Nocne dyżury
@@ -317,7 +317,7 @@ Mówca w nawiasie to id z `cast.*`. Klucz linii: `job.<id>.line.<n>`.
 
 **Dzień po** (`job.wrong_floor.after.n`):
 
-- 1. (teresa) To pan wczoraj nie otworzył? Upiekłam drożdżowe. Za to, że pan nie otworzył. / *You're the one who didn't open my door? I baked you a cake. For not opening it.*
+- `1` (teresa) To pan wczoraj nie otworzył? Upiekłam drożdżowe. Za to, że pan nie otworzył. / *You're the one who didn't open my door? I baked you a cake. For not opening it.*
 
 
 #### `job.refuse_rush_bribe` — „Siostra kazała” / *"My Sister Said It's Fine"*
@@ -334,8 +334,8 @@ Mówca w nawiasie to id z `cast.*`. Klucz linii: `job.<id>.line.<n>`.
 
 **Dzień po** (`job.refuse_rush_bribe.after.n`):
 
-- 1. (lena) Siostra nic nie wiedziała o żadnych dokumentach. Dziękuję za telefon. / *The sister knew nothing about any documents. Thank you for the call.*
-- 2. (stefan) Ktoś w garniturze pytał wczoraj o ślusarza. Odesłałem go do pana. Przepraszam. / *Someone in a suit asked about a locksmith yesterday. I sent him to you. Sorry.*
+- `1` (lena) Siostra nic nie wiedziała o żadnych dokumentach. Dziękuję za telefon. / *The sister knew nothing about any documents. Thank you for the call.*
+- `2` (stefan) Ktoś w garniturze pytał wczoraj o ślusarza. Odesłałem go do pana. Przepraszam. / *Someone in a suit asked about a locksmith yesterday. I sent him to you. Sorry.*
 
 
 #### `job.drummer_locker` — Pałki w szafce / *Drumsticks in the Locker*
@@ -433,8 +433,8 @@ Mówca w nawiasie to id z `cast.*`. Klucz linii: `job.<id>.line.<n>`.
 
 **Dzień po** (`job.refuse_aunt_alive.after.n`):
 
-- 1. (lena) Pani Lucyna wraca w piątek. Zamek wymieni sama, z pana pomocą. / *Mrs Lucyna is back on Friday. She'll have the lock changed, with your help.*
-- 2. (neighbour_lucyna) Dobrze, że pan odmówił. Ja bym nie spała. / *Good thing you said no. I wouldn't have slept a wink.*
+- `1` (lena) Pani Lucyna wraca w piątek. Zamek wymieni sama, z pana pomocą. / *Mrs Lucyna is back on Friday. She'll have the lock changed, with your help.*
+- `2` (neighbour_lucyna) Dobrze, że pan odmówił. Ja bym nie spała. / *Good thing you said no. I wouldn't have slept a wink.*
 
 
 ### Rozdział 4 — Małopolska
@@ -813,63 +813,34 @@ Indeks w tablicy `lines` odpowiada `job.<id>.line.<n>` (n = indeks + 1). To samo
 
 ```json
 {
- "job.grandma_broth": { "lines": [  "halina",  "zosia",  "locksmith",  "halina" ]
- },
- "job.cat_bathroom": { "lines": [  "marta",  "locksmith",  "marta",  "locksmith" ]
- },
- "job.bike_interview": { "lines": [  "kuba",  "locksmith",  "kuba",  "locksmith" ]
- },
- "job.student_dorm": { "lines": [  "zuzanna",  "edek",  "locksmith",  "zuzanna" ]
- },
- "job.kiosk_shutter": { "lines": [  "stefan",  "locksmith",  "stefan",  "krysia" ]
- },
- "job.refuse_ex_partner": { "lines": [  "darek",  "locksmith",  "darek",  "locksmith" ], "after": [  "lena",  "stefan" ]
- },
- "job.newlyweds_4am": { "lines": [  "bartek",  "bride",  "neighbour_robe",  "locksmith" ]
- },
- "job.pizzeria_pays_pizza": { "lines": [  "renata",  "locksmith",  "mietek",  "renata" ]
- },
- "job.night_nurse": { "lines": [  "agnieszka",  "roman",  "locksmith",  "agnieszka" ]
- },
- "job.wrong_floor": { "lines": [  "kazimierz",  "locksmith",  "teresa",  "kazimierz" ], "after": [  "teresa" ]
- },
- "job.refuse_rush_bribe": { "lines": [  "stranger",  "locksmith",  "stranger",  "locksmith" ], "after": [  "lena",  "stefan" ]
- },
- "job.drummer_locker": { "lines": [  "iga",  "hall_manager",  "locksmith",  "iga" ]
- },
- "job.grandpa_chest": { "lines": [  "krystyna",  "ola",  "krystyna",  "ola" ]
- },
- "job.uncle_safe_heirs": { "lines": [  "marek",  "locksmith",  "piotr",  "ewa" ]
- },
- "job.dollhouse_wooden_lock": { "lines": [  "hania",  "tomasz",  "locksmith",  "hania" ]
- },
- "job.allotment_shed": { "lines": [  "zbyszek",  "locksmith",  "waldek",  "zbyszek" ]
- },
- "job.widow_bureau": { "lines": [  "irena",  "locksmith",  "irena",  "irena" ]
- },
- "job.refuse_aunt_alive": { "lines": [  "claimant",  "neighbour_lucyna",  "claimant",  "locksmith" ], "after": [  "lena",  "neighbour_lucyna" ]
- },
- "job.krakow_tenement_gate": { "lines": [  "wanda",  "locksmith",  "zuzanna",  "wanda" ]
- },
- "job.swiatniki_journeyman_padlock": { "lines": [  "wladyslaw",  "locksmith",  "wladyslaw",  "wladyslaw" ]
- },
- "job.krakow_antiquarian": { "lines": [  "leopold",  "leopold",  "locksmith",  "leopold" ]
- },
- "job.brussels_townhouse": { "lines": [  "magda",  "jacques",  "locksmith",  "magda" ]
- },
- "job.ghent_beguinage": { "lines": [  "pieter",  "locksmith",  "pieter",  "locksmith" ]
- },
- "job.liege_bakery": { "lines": [  "nadia",  "locksmith",  "nadia",  "locksmith" ]
- },
- "job.charleroi_letters": { "lines": [  "ola",  "martine",  "ola",  "locksmith" ]
- },
- "job.museum_time_lock": { "lines": [  "rygiel",  "locksmith",  "rygiel",  "zuzanna" ]
- },
- "job.bramah_bureau": { "lines": [  "gosia",  "locksmith",  "gosia",  "locksmith" ]
- },
- "job.finnish_sailor": { "lines": [  "aino",  "captain",  "locksmith",  "aino" ]
- },
- "job.time_capsule": { "lines": [  "jadwiga",  "headteacher",  "marta",  "marta" ]
- }
+  "job.grandma_broth": {"lines": ["halina", "zosia", "locksmith", "halina"]},
+  "job.cat_bathroom": {"lines": ["marta", "locksmith", "marta", "locksmith"]},
+  "job.bike_interview": {"lines": ["kuba", "locksmith", "kuba", "locksmith"]},
+  "job.student_dorm": {"lines": ["zuzanna", "edek", "locksmith", "zuzanna"]},
+  "job.kiosk_shutter": {"lines": ["stefan", "locksmith", "stefan", "krysia"]},
+  "job.refuse_ex_partner": {"lines": ["darek", "locksmith", "darek", "locksmith"], "after": ["lena", "stefan"]},
+  "job.newlyweds_4am": {"lines": ["bartek", "bride", "neighbour_robe", "locksmith"]},
+  "job.pizzeria_pays_pizza": {"lines": ["renata", "locksmith", "mietek", "renata"]},
+  "job.night_nurse": {"lines": ["agnieszka", "roman", "locksmith", "agnieszka"]},
+  "job.wrong_floor": {"lines": ["kazimierz", "locksmith", "teresa", "kazimierz"], "after": ["teresa"]},
+  "job.refuse_rush_bribe": {"lines": ["stranger", "locksmith", "stranger", "locksmith"], "after": ["lena", "stefan"]},
+  "job.drummer_locker": {"lines": ["iga", "hall_manager", "locksmith", "iga"]},
+  "job.grandpa_chest": {"lines": ["krystyna", "ola", "krystyna", "ola"]},
+  "job.uncle_safe_heirs": {"lines": ["marek", "locksmith", "piotr", "ewa"]},
+  "job.dollhouse_wooden_lock": {"lines": ["hania", "tomasz", "locksmith", "hania"]},
+  "job.allotment_shed": {"lines": ["zbyszek", "locksmith", "waldek", "zbyszek"]},
+  "job.widow_bureau": {"lines": ["irena", "locksmith", "irena", "irena"]},
+  "job.refuse_aunt_alive": {"lines": ["claimant", "neighbour_lucyna", "claimant", "locksmith"], "after": ["lena", "neighbour_lucyna"]},
+  "job.krakow_tenement_gate": {"lines": ["wanda", "locksmith", "zuzanna", "wanda"]},
+  "job.swiatniki_journeyman_padlock": {"lines": ["wladyslaw", "locksmith", "wladyslaw", "wladyslaw"]},
+  "job.krakow_antiquarian": {"lines": ["leopold", "leopold", "locksmith", "leopold"]},
+  "job.brussels_townhouse": {"lines": ["magda", "jacques", "locksmith", "magda"]},
+  "job.ghent_beguinage": {"lines": ["pieter", "locksmith", "pieter", "locksmith"]},
+  "job.liege_bakery": {"lines": ["nadia", "locksmith", "nadia", "locksmith"]},
+  "job.charleroi_letters": {"lines": ["ola", "martine", "ola", "locksmith"]},
+  "job.museum_time_lock": {"lines": ["rygiel", "locksmith", "rygiel", "zuzanna"]},
+  "job.bramah_bureau": {"lines": ["gosia", "locksmith", "gosia", "locksmith"]},
+  "job.finnish_sailor": {"lines": ["aino", "captain", "locksmith", "aino"]},
+  "job.time_capsule": {"lines": ["jadwiga", "headteacher", "marta", "marta"]}
 }
 ```
