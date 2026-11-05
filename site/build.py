@@ -51,7 +51,7 @@ T = {
         screens_h='Makiety ekranów', screens_p='Kierunek wizualny „realizm” (makiety, nie zrzuty z gotowej gry).',
         honest='To gra, nie kurs. Zamki są wymyślone. Prawdziwy ślusarz zawsze sprawdza, czy klient ma prawo wejść do lokalu; w grze też.',
         promises='Bez reklam, bez energii, bez kupowania monet.',
-        press_title='Dla prasy', fair_title='Jak gramy uczciwie', privacy_title='Polityka prywatności', contact_title='Kontakt',
+        press_title='Dla prasy', keyart_alt='Ślusarz z notesem i torbą na klatce schodowej kamienicy, w drzwiach mieszkania 3A uśmiechnięta klientka w szlafroku z kubkiem w dłoni.', keyart_cap='Przyjazd: najpierw rozmowa i sprawdzenie, czyje to mieszkanie.', dl_h='Do pobrania', dl_icon='Ikona (512 px, PNG)', dl_key='Key art 16:9 (1600 px, JPG)', dl_note='Grafiki robocze (generowane AI, D-42), ostateczne wersje przed premierą.', fair_title='Jak gramy uczciwie', privacy_title='Polityka prywatności', contact_title='Kontakt',
         contact=[('Kontakt ogólny', '[adres e-mail — do uzupełnienia]'), ('Prasa', '[adres e-mail — do uzupełnienia]'),
                  ('Prywatność', 'privacy@[domena — do ustalenia]'), ('Twórca / wydawca', '[nazwa studia lub imię i nazwisko]'),
                  ('Siedziba', '[miasto, kraj]')],
@@ -73,7 +73,7 @@ T = {
         screens_h='Screen mockups', screens_p='The “realism” visual direction (mockups, not screenshots of a finished game).',
         honest='A game, not a course. The locks are invented. A real locksmith always checks that the customer has the right to enter; so do you.',
         promises='No ads, no energy, coins can’t be bought.',
-        press_title='Press', fair_title='Playing fair', privacy_title='Privacy policy', contact_title='Contact',
+        press_title='Press', keyart_alt='A locksmith with a notepad and a bag on a tenement staircase; in the doorway of flat 3A a smiling client in a bathrobe holds a mug.', keyart_cap='Arrival: first a chat and a check of whose flat it is.', dl_h='Downloads', dl_icon='Icon (512 px, PNG)', dl_key='Key art 16:9 (1600 px, JPG)', dl_note='Work-in-progress art (AI-generated, D-42); final versions before launch.', fair_title='Playing fair', privacy_title='Privacy policy', contact_title='Contact',
         contact=[('General', '[e-mail address — to be filled in]'), ('Press', '[e-mail address — to be filled in]'),
                  ('Privacy', 'privacy@[domain — tbd]'), ('Developer / publisher', '[studio name or owner’s name]'),
                  ('Based in', '[city, country]')],
@@ -144,6 +144,9 @@ def images():
         w = 480
         im.resize((w, round(im.height * w / im.width)), Image.LANCZOS).save(
             OUT / 'img' / f'{f}-{w}.jpg', quality=82, optimize=True, progressive=True)
+    # stage 4 task 7: accepted G12 v2 icon (direction 01) and G13 key art 16:9, derived copies in site/assets/
+    for f in (SITE / 'assets').glob('*'):
+        shutil.copy2(f, OUT / 'img' / f.name)
     (OUT / 'fonts').mkdir(exist_ok=True)
     for f in FONTS:
         shutil.copy2(ROOT / 'mockups/fonts' / f, OUT / 'fonts' / f)
@@ -170,6 +173,8 @@ def page(lang: str, name: str, title: str, body: str, depth: int) -> str:
 <meta name="description" content="{html.escape(t['lede_h'])}">
 <link rel="alternate" hreflang="{t['other']}" href="{other_href}">
 <link rel="stylesheet" href="{up}style.css">
+<link rel="icon" type="image/png" href="{up}img/icon-180.png">
+<link rel="apple-touch-icon" href="{up}img/icon-180.png">
 </head>
 <body>
 <a class="skip" href="#main">{t['skip']}</a>
@@ -216,6 +221,7 @@ def home(lang):
   <h2>{t['about_h']}</h2>
   <p>{inline(about)}</p>
 </section>
+<section>{fig('key-art', 800, t['keyart_alt'], 'wide', t['keyart_cap'])}</section>
 <section class="channels" aria-labelledby="how">
   <h2 id="how">{t['how_h']}</h2>
   <div class="channel-row">{how}</div>
@@ -231,7 +237,10 @@ def home(lang):
 def press(lang):
     mk = MARKETING_PL if lang == 'pl' else MARKETING_EN
     body = re.sub(r'^\*\*Lockwright:[^*]+\*\*\s*$', '', mk, flags=re.M)
-    return f'<section class="prose wide"><h1>{T[lang]["press_title"]}</h1><p class="note">{T[lang]["todo_note"]}</p>\n{md(body, 1)}</section>'
+    t = T[lang]
+    dl = (f'<h2>{t["dl_h"]}</h2><ul><li><a href="IMG/icon-512.png">{t["dl_icon"]}</a></li>'
+          f'<li><a href="IMG/key-art-1600.jpg">{t["dl_key"]}</a></li></ul><p class="note">{t["dl_note"]}</p>')
+    return f'<section class="prose wide"><h1>{t["press_title"]}</h1><p class="note">{t["todo_note"]}</p>\n{md(body, 1)}{dl}</section>'
 
 
 def privacy(lang):

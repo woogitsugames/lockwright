@@ -86,3 +86,6 @@ li { margin: 0.3rem 0; }
 .foot .honest { color: var(--ink); }
 @media (prefers-reduced-motion: no-preference) { a { transition: text-decoration-thickness 150ms; } }
 @media (max-width: 30rem) { .facts th { width: auto; display: block; border-bottom: 0; padding-bottom: 0; } .facts td { display: block; padding-top: 0.15rem; } }
+
+/* key art (G13): full 16:9 frame, never cropped (the client must stay in the picture) */
+figure.wide img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; }

@@ -16,4 +16,5 @@ python3 site/build.py --check   # buduje site/public/ i sprawdza: zakazane frazy
 **Publikacja:** workflow `site/deploy/pages.yml` jest przygotowany, ale **niewłączony** (wymaga zgody właściciela i włączenia Pages w ustawieniach repo). Instrukcja w nagłówku pliku.
 
 **Część 2 (etap 4):** gdy w `contrib/REVIEW.md` G12 (ikona) i G13 (key art) dostaną status „przyjęte”, ich kopie trafią
-do `site/assets/` (wpis w `docs/ASSETS.md`), a strona główna i press kit dostaną ikonę i key art. Na 2026-11-05 dostaw nie ma.
+do `site/assets/` (wpis w `docs/ASSETS.md`), a strona główna i press kit dostaną ikonę i key art.
+**Zrobione 2026-11-05 (etap 5):** `site/assets/icon-{180,512}.png` z G12 v2 (kierunek 01, rekomendacja — do potwierdzenia przez właściciela), `key-art-{800,1600}.jpg` z G13 v1 16:9 (bez pasów); ikona jako favicon/apple-touch-icon, key art na stronie głównej (pełne 16:9, bez kadrowania), oba do pobrania w „Dla prasy”. Publikacja dalej wyłączona.

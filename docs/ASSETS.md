@@ -134,3 +134,10 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | `art/textures/photo/objects/thumb_dent{,_1k,_normal}.png` | naklejka (decal) wgniecenia kciukiem w skórze, alfa promieniowa + normal | Gemini Nano Banana (generowane AI) + obróbka skryptem | generowane AI, warunki Gemini (D-42) | `contrib/incoming/leather_set_2026-11-05/` |
 | `art/textures/photo/contact_previews.jpg`, `contact_objects.jpg` | arkusze kontrolne (nie do gry) | własne, skrypt | własne projektu | — |
 | `tools/make_photo_materials.py` | skrypt obróbki (Python, numpy, Pillow, OpenCV) | własne | własne projektu | — |
+
+## Strona gry (`site/assets/`, sesja C, etap 5)
+| Plik | Co | Źródło | Licencja | Pochodzenie |
+|---|---|---|---|---|
+| `site/assets/icon-180.png`, `icon-512.png` | ikona strony (favicon, apple-touch-icon, press kit), skalowana | `contrib/gpt/G12/v2/ios/01_enamel_l_1024.png` (generowane AI, ChatGPT; prompty w `contrib/gpt/G12/v2/ASSETS.md`) | generowane AI, warunki narzędzia (D-42) | `contrib/REVIEW.md` G12 v2 przyjęte |
+| `site/assets/key-art-800.jpg`, `key-art-1600.jpg` | key art 16:9 na stronie głównej i w press kicie, skalowany | `contrib/gpt/G13/key-art/key-art-3840x2160-clean.jpg` (generowane AI, ChatGPT; prompty w `contrib/gpt/G13/ASSETS.md`) | generowane AI, warunki narzędzia (D-42) | `contrib/REVIEW.md` G13 (16:9 użyteczne, v2 zlecone) |
+
