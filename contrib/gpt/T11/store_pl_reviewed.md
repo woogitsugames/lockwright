@@ -67,7 +67,7 @@ Dla każdego
 • Nikt cię nie pogania. Timer jest tylko w osobnym wyzwaniu, jeśli go chcesz.
 
 Uczciwie
-Każdy zamek w grze jest wymyślony i nie ma marki. Mechanizmy są celowo uproszczone, żeby dało się je czytać. To gra, nie kurs. Prawdziwy ślusarz zawsze sprawdza, czy klient ma prawo wejść do lokalu. 
+Każdy zamek w grze jest wymyślony i nie ma marki. Mechanizmy są celowo uproszczone, żeby dało się je czytać. To gra, nie kurs. Prawdziwy ślusarz zawsze sprawdza, czy klient ma prawo wejść do lokalu.
 
 Prywatność: gra nie zbiera żadnych danych. Postęp zapisuje się tylko na twoim urządzeniu.
 ```
@@ -149,7 +149,7 @@ Dla każdego
 • Nikt cię nie pogania. Timer jest tylko w osobnym wyzwaniu, jeśli go chcesz.
 
 Uczciwie
-Każdy zamek w grze jest wymyślony i nie ma marki. Mechanizmy są celowo uproszczone, żeby dało się je czytać. To gra, nie kurs. Prawdziwy ślusarz zawsze sprawdza, czy klient ma prawo wejść do lokalu. 
+Każdy zamek w grze jest wymyślony i nie ma marki. Mechanizmy są celowo uproszczone, żeby dało się je czytać. To gra, nie kurs. Prawdziwy ślusarz zawsze sprawdza, czy klient ma prawo wejść do lokalu.
 
 Prywatność: gra nie zbiera żadnych danych. Postęp zapisuje się tylko na twoim urządzeniu.
 ```

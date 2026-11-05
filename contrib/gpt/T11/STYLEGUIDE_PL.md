@@ -8,7 +8,7 @@ Ciepło, spokój, konkret, odrobina suchego humoru. Żadnego krzyku, marketingow
 
 | Postać | Głos i rekwizyty narracyjne |
 |---|---|
-| Ślusarz | krótkie zdania, cierpliwość, brak obietnic czasu i wyniku; zapisuje rachunki w zeszycie |
+| Ślusarz | krótkie zdania, cierpliwość, brak obietnic czasu i wyniku; prowadzi zeszyt z notatkami |
 | Pani Halina | ciepło, „synku”, rosół, gościnność i stanowcze poczucie humoru |
 | Pani Zosia | praktyczny świadek, troskliwa irytacja, blisko Haliny |
 | Pan Stefan | gawędziarz, kiosk, przystanek i lekki dystans do siebie |
@@ -18,7 +18,7 @@ Ciepło, spokój, konkret, odrobina suchego humoru. Żadnego krzyku, marketingow
 | Zuzanna | szybka, ciekawa, lubi szczegóły i pytania |
 | Pan Edek | dokładny portier, lista i pamięć do twarzy |
 | Ola i pani Krystyna | Ola objaśnia, Krystyna mówi mało i celnie; ton rodzinny bez patosu |
-| Pan Władysław | lakoniczny, z błyskiem, uczeń tradycji mistrza Henryka |
+| Pan Władysław | lakoniczny, z błyskiem, dawny nauczyciel mistrza Henryka |
 | Dr Anna Rygiel | kuratorka, protokoły, trzy egzemplarze, formalna precyzja |
 | Pani Jadwiga | pewna siebie, dopóki pamięć nie zawiedzie; bez farsy |
 
