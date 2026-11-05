@@ -1,0 +1,2503 @@
+{
+  "format": "48 kHz PCM16 mono WAV",
+  "target_LUFS_momentary": -28.0,
+  "method": "deterministic formant-based, non-lexical synthesized vocalizations",
+  "voices": {
+    "agnieszka": {
+      "character": "Agnieszka",
+      "age": 45,
+      "voice_register": "f",
+      "personality": "spokojna, opiekuńcza pielęgniarka",
+      "files": [
+        {
+          "file": "voices/agnieszka/greeting.wav",
+          "seconds": 0.6552,
+          "LUFS": -28.0,
+          "onset_ms": 3.4,
+          "tail_ms": 5.58
+        },
+        {
+          "file": "voices/agnieszka/surprise.wav",
+          "seconds": 0.6279,
+          "LUFS": -28.0,
+          "onset_ms": 3.23,
+          "tail_ms": 6.92
+        },
+        {
+          "file": "voices/agnieszka/relief.wav",
+          "seconds": 0.9464,
+          "LUFS": -28.0,
+          "onset_ms": 3.58,
+          "tail_ms": 8.08
+        },
+        {
+          "file": "voices/agnieszka/thanks.wav",
+          "seconds": 0.7917,
+          "LUFS": -28.0,
+          "onset_ms": 2.98,
+          "tail_ms": 5.83
+        },
+        {
+          "file": "voices/agnieszka/impatient.wav",
+          "seconds": 0.8099,
+          "LUFS": -28.0,
+          "onset_ms": 2.9,
+          "tail_ms": 5.6
+        },
+        {
+          "file": "voices/agnieszka/sad.wav",
+          "seconds": 1.0192,
+          "LUFS": -28.0,
+          "onset_ms": 3.85,
+          "tail_ms": 9.94
+        },
+        {
+          "file": "voices/agnieszka/laugh.wav",
+          "seconds": 0.9828,
+          "LUFS": -28.0,
+          "onset_ms": 2.46,
+          "tail_ms": 7.0
+        },
+        {
+          "file": "voices/agnieszka/goodbye.wav",
+          "seconds": 0.7098,
+          "LUFS": -28.0,
+          "onset_ms": 3.12,
+          "tail_ms": 7.92
+        }
+      ]
+    },
+    "aino": {
+      "character": "Aino",
+      "age": 50,
+      "voice_register": "f",
+      "personality": "rzeczowa fińska mechanik okrętowa",
+      "files": [
+        {
+          "file": "voices/aino/greeting.wav",
+          "seconds": 0.6732,
+          "LUFS": -28.0,
+          "onset_ms": 3.31,
+          "tail_ms": 6.02
+        },
+        {
+          "file": "voices/aino/surprise.wav",
+          "seconds": 0.6451,
+          "LUFS": -28.0,
+          "onset_ms": 3.4,
+          "tail_ms": 7.92
+        },
+        {
+          "file": "voices/aino/relief.wav",
+          "seconds": 0.9724,
+          "LUFS": -28.0,
+          "onset_ms": 3.6,
+          "tail_ms": 9.21
+        },
+        {
+          "file": "voices/aino/thanks.wav",
+          "seconds": 0.8134,
+          "LUFS": -28.0,
+          "onset_ms": 3.0,
+          "tail_ms": 6.58
+        },
+        {
+          "file": "voices/aino/impatient.wav",
+          "seconds": 0.8321,
+          "LUFS": -28.0,
+          "onset_ms": 3.19,
+          "tail_ms": 7.56
+        },
+        {
+          "file": "voices/aino/sad.wav",
+          "seconds": 1.0472,
+          "LUFS": -28.0,
+          "onset_ms": 3.83,
+          "tail_ms": 12.6
+        },
+        {
+          "file": "voices/aino/laugh.wav",
+          "seconds": 1.0098,
+          "LUFS": -28.0,
+          "onset_ms": 2.65,
+          "tail_ms": 6.56
+        },
+        {
+          "file": "voices/aino/goodbye.wav",
+          "seconds": 0.7293,
+          "LUFS": -28.0,
+          "onset_ms": 3.12,
+          "tail_ms": 9.21
+        }
+      ]
+    },
+    "bartek": {
+      "character": "Bartek",
+      "age": 29,
+      "voice_register": "m",
+      "personality": "roześmiany pan młody",
+      "files": [
+        {
+          "file": "voices/bartek/greeting.wav",
+          "seconds": 0.6912,
+          "LUFS": -28.0,
+          "onset_ms": 3.98,
+          "tail_ms": 7.02
+        },
+        {
+          "file": "voices/bartek/surprise.wav",
+          "seconds": 0.6624,
+          "LUFS": -28.0,
+          "onset_ms": 3.85,
+          "tail_ms": 7.54
+        },
+        {
+          "file": "voices/bartek/relief.wav",
+          "seconds": 0.9984,
+          "LUFS": -28.0,
+          "onset_ms": 4.35,
+          "tail_ms": 12.67
+        },
+        {
+          "file": "voices/bartek/thanks.wav",
+          "seconds": 0.8352,
+          "LUFS": -28.0,
+          "onset_ms": 2.88,
+          "tail_ms": 8.33
+        },
+        {
+          "file": "voices/bartek/impatient.wav",
+          "seconds": 0.8544,
+          "LUFS": -28.0,
+          "onset_ms": 3.33,
+          "tail_ms": 7.62
+        },
+        {
+          "file": "voices/bartek/sad.wav",
+          "seconds": 1.0752,
+          "LUFS": -28.0,
+          "onset_ms": 4.44,
+          "tail_ms": 11.02
+        },
+        {
+          "file": "voices/bartek/laugh.wav",
+          "seconds": 1.0368,
+          "LUFS": -28.0,
+          "onset_ms": 2.85,
+          "tail_ms": 7.4
+        },
+        {
+          "file": "voices/bartek/goodbye.wav",
+          "seconds": 0.7488,
+          "LUFS": -28.0,
+          "onset_ms": 3.71,
+          "tail_ms": 5.94
+        }
+      ]
+    },
+    "basia": {
+      "character": "Basia",
+      "age": 42,
+      "voice_register": "f",
+      "personality": "dokładna sekretarka wspólnoty",
+      "files": [
+        {
+          "file": "voices/basia/greeting.wav",
+          "seconds": 0.7092,
+          "LUFS": -28.0,
+          "onset_ms": 3.25,
+          "tail_ms": 5.44
+        },
+        {
+          "file": "voices/basia/surprise.wav",
+          "seconds": 0.6796,
+          "LUFS": -28.0,
+          "onset_ms": 3.21,
+          "tail_ms": 6.67
+        },
+        {
+          "file": "voices/basia/relief.wav",
+          "seconds": 1.0244,
+          "LUFS": -28.0,
+          "onset_ms": 3.56,
+          "tail_ms": 12.58
+        },
+        {
+          "file": "voices/basia/thanks.wav",
+          "seconds": 0.8569,
+          "LUFS": -28.0,
+          "onset_ms": 2.71,
+          "tail_ms": 5.85
+        },
+        {
+          "file": "voices/basia/impatient.wav",
+          "seconds": 0.8766,
+          "LUFS": -28.0,
+          "onset_ms": 2.94,
+          "tail_ms": 7.62
+        },
+        {
+          "file": "voices/basia/sad.wav",
+          "seconds": 1.1032,
+          "LUFS": -28.0,
+          "onset_ms": 3.67,
+          "tail_ms": 12.27
+        },
+        {
+          "file": "voices/basia/laugh.wav",
+          "seconds": 1.0638,
+          "LUFS": -28.0,
+          "onset_ms": 2.62,
+          "tail_ms": 7.52
+        },
+        {
+          "file": "voices/basia/goodbye.wav",
+          "seconds": 0.7683,
+          "LUFS": -28.0,
+          "onset_ms": 2.98,
+          "tail_ms": 8.29
+        }
+      ]
+    },
+    "bride": {
+      "character": "Panna młoda",
+      "age": 28,
+      "voice_register": "f",
+      "personality": "poruszona, pogodna",
+      "files": [
+        {
+          "file": "voices/bride/greeting.wav",
+          "seconds": 0.7272,
+          "LUFS": -28.0,
+          "onset_ms": 3.06,
+          "tail_ms": 5.65
+        },
+        {
+          "file": "voices/bride/surprise.wav",
+          "seconds": 0.6969,
+          "LUFS": -28.0,
+          "onset_ms": 3.04,
+          "tail_ms": 5.79
+        },
+        {
+          "file": "voices/bride/relief.wav",
+          "seconds": 1.0504,
+          "LUFS": -28.0,
+          "onset_ms": 3.33,
+          "tail_ms": 11.21
+        },
+        {
+          "file": "voices/bride/thanks.wav",
+          "seconds": 0.8787,
+          "LUFS": -28.0,
+          "onset_ms": 2.75,
+          "tail_ms": 6.4
+        },
+        {
+          "file": "voices/bride/impatient.wav",
+          "seconds": 0.8989,
+          "LUFS": -28.0,
+          "onset_ms": 2.81,
+          "tail_ms": 7.46
+        },
+        {
+          "file": "voices/bride/sad.wav",
+          "seconds": 1.1312,
+          "LUFS": -28.0,
+          "onset_ms": 3.65,
+          "tail_ms": 13.9
+        },
+        {
+          "file": "voices/bride/laugh.wav",
+          "seconds": 1.0908,
+          "LUFS": -28.0,
+          "onset_ms": 2.83,
+          "tail_ms": 8.48
+        },
+        {
+          "file": "voices/bride/goodbye.wav",
+          "seconds": 0.7878,
+          "LUFS": -28.0,
+          "onset_ms": 2.9,
+          "tail_ms": 8.75
+        }
+      ]
+    },
+    "captain": {
+      "character": "Kapitan",
+      "age": 55,
+      "voice_register": "m",
+      "personality": "stanowczy, opanowany",
+      "files": [
+        {
+          "file": "voices/captain/greeting.wav",
+          "seconds": 0.7452,
+          "LUFS": -28.0,
+          "onset_ms": 3.1,
+          "tail_ms": 5.83
+        },
+        {
+          "file": "voices/captain/surprise.wav",
+          "seconds": 0.7141,
+          "LUFS": -28.0,
+          "onset_ms": 3.23,
+          "tail_ms": 9.85
+        },
+        {
+          "file": "voices/captain/relief.wav",
+          "seconds": 1.0764,
+          "LUFS": -28.0,
+          "onset_ms": 4.27,
+          "tail_ms": 8.71
+        },
+        {
+          "file": "voices/captain/thanks.wav",
+          "seconds": 0.9004,
+          "LUFS": -28.0,
+          "onset_ms": 2.67,
+          "tail_ms": 9.33
+        },
+        {
+          "file": "voices/captain/impatient.wav",
+          "seconds": 0.9211,
+          "LUFS": -28.0,
+          "onset_ms": 2.88,
+          "tail_ms": 8.08
+        },
+        {
+          "file": "voices/captain/sad.wav",
+          "seconds": 1.1592,
+          "LUFS": -28.0,
+          "onset_ms": 4.48,
+          "tail_ms": 12.19
+        },
+        {
+          "file": "voices/captain/laugh.wav",
+          "seconds": 1.1178,
+          "LUFS": -28.0,
+          "onset_ms": 3.04,
+          "tail_ms": 8.29
+        },
+        {
+          "file": "voices/captain/goodbye.wav",
+          "seconds": 0.8073,
+          "LUFS": -28.0,
+          "onset_ms": 3.85,
+          "tail_ms": 13.15
+        }
+      ]
+    },
+    "claimant": {
+      "character": "Kobieta przy drzwiach",
+      "age": 34,
+      "voice_register": "f",
+      "personality": "niepewna, zdenerwowana",
+      "files": [
+        {
+          "file": "voices/claimant/greeting.wav",
+          "seconds": 0.7632,
+          "LUFS": -28.0,
+          "onset_ms": 3.04,
+          "tail_ms": 7.62
+        },
+        {
+          "file": "voices/claimant/surprise.wav",
+          "seconds": 0.7314,
+          "LUFS": -28.0,
+          "onset_ms": 3.15,
+          "tail_ms": 8.29
+        },
+        {
+          "file": "voices/claimant/relief.wav",
+          "seconds": 1.1024,
+          "LUFS": -28.0,
+          "onset_ms": 3.52,
+          "tail_ms": 9.31
+        },
+        {
+          "file": "voices/claimant/thanks.wav",
+          "seconds": 0.9222,
+          "LUFS": -28.0,
+          "onset_ms": 2.75,
+          "tail_ms": 6.46
+        },
+        {
+          "file": "voices/claimant/impatient.wav",
+          "seconds": 0.9434,
+          "LUFS": -28.0,
+          "onset_ms": 2.81,
+          "tail_ms": 7.98
+        },
+        {
+          "file": "voices/claimant/sad.wav",
+          "seconds": 1.1872,
+          "LUFS": -28.0,
+          "onset_ms": 3.73,
+          "tail_ms": 11.83
+        },
+        {
+          "file": "voices/claimant/laugh.wav",
+          "seconds": 1.1448,
+          "LUFS": -28.0,
+          "onset_ms": 3.08,
+          "tail_ms": 7.71
+        },
+        {
+          "file": "voices/claimant/goodbye.wav",
+          "seconds": 0.8268,
+          "LUFS": -28.0,
+          "onset_ms": 2.98,
+          "tail_ms": 7.83
+        }
+      ]
+    },
+    "darek": {
+      "character": "Darek",
+      "age": 40,
+      "voice_register": "m",
+      "personality": "zdenerwowany, natarczywy",
+      "files": [
+        {
+          "file": "voices/darek/greeting.wav",
+          "seconds": 0.6552,
+          "LUFS": -28.0,
+          "onset_ms": 3.56,
+          "tail_ms": 4.88
+        },
+        {
+          "file": "voices/darek/surprise.wav",
+          "seconds": 0.6279,
+          "LUFS": -28.0,
+          "onset_ms": 3.56,
+          "tail_ms": 6.31
+        },
+        {
+          "file": "voices/darek/relief.wav",
+          "seconds": 0.9464,
+          "LUFS": -28.0,
+          "onset_ms": 3.69,
+          "tail_ms": 7.5
+        },
+        {
+          "file": "voices/darek/thanks.wav",
+          "seconds": 0.7917,
+          "LUFS": -28.0,
+          "onset_ms": 3.17,
+          "tail_ms": 8.08
+        },
+        {
+          "file": "voices/darek/impatient.wav",
+          "seconds": 0.8099,
+          "LUFS": -28.0,
+          "onset_ms": 3.42,
+          "tail_ms": 8.15
+        },
+        {
+          "file": "voices/darek/sad.wav",
+          "seconds": 1.0192,
+          "LUFS": -28.0,
+          "onset_ms": 3.85,
+          "tail_ms": 11.96
+        },
+        {
+          "file": "voices/darek/laugh.wav",
+          "seconds": 0.9828,
+          "LUFS": -28.0,
+          "onset_ms": 2.58,
+          "tail_ms": 6.81
+        },
+        {
+          "file": "voices/darek/goodbye.wav",
+          "seconds": 0.7098,
+          "LUFS": -28.0,
+          "onset_ms": 3.27,
+          "tail_ms": 8.67
+        }
+      ]
+    },
+    "elzbieta": {
+      "character": "Elżbieta",
+      "age": 47,
+      "voice_register": "f",
+      "personality": "rzeczowa zarządczyni",
+      "files": [
+        {
+          "file": "voices/elzbieta/greeting.wav",
+          "seconds": 0.6732,
+          "LUFS": -28.0,
+          "onset_ms": 2.96,
+          "tail_ms": 6.52
+        },
+        {
+          "file": "voices/elzbieta/surprise.wav",
+          "seconds": 0.6451,
+          "LUFS": -28.0,
+          "onset_ms": 3.1,
+          "tail_ms": 6.81
+        },
+        {
+          "file": "voices/elzbieta/relief.wav",
+          "seconds": 0.9724,
+          "LUFS": -28.0,
+          "onset_ms": 3.33,
+          "tail_ms": 11.98
+        },
+        {
+          "file": "voices/elzbieta/thanks.wav",
+          "seconds": 0.8134,
+          "LUFS": -28.0,
+          "onset_ms": 2.65,
+          "tail_ms": 5.9
+        },
+        {
+          "file": "voices/elzbieta/impatient.wav",
+          "seconds": 0.8321,
+          "LUFS": -28.0,
+          "onset_ms": 2.77,
+          "tail_ms": 7.65
+        },
+        {
+          "file": "voices/elzbieta/sad.wav",
+          "seconds": 1.0472,
+          "LUFS": -28.0,
+          "onset_ms": 3.58,
+          "tail_ms": 12.56
+        },
+        {
+          "file": "voices/elzbieta/laugh.wav",
+          "seconds": 1.0098,
+          "LUFS": -28.0,
+          "onset_ms": 2.81,
+          "tail_ms": 6.73
+        },
+        {
+          "file": "voices/elzbieta/goodbye.wav",
+          "seconds": 0.7293,
+          "LUFS": -28.0,
+          "onset_ms": 2.9,
+          "tail_ms": 7.98
+        }
+      ]
+    },
+    "ewa": {
+      "character": "Ewa",
+      "age": 46,
+      "voice_register": "f",
+      "personality": "zdecydowana siostra",
+      "files": [
+        {
+          "file": "voices/ewa/greeting.wav",
+          "seconds": 0.6912,
+          "LUFS": -28.0,
+          "onset_ms": 3.35,
+          "tail_ms": 8.02
+        },
+        {
+          "file": "voices/ewa/surprise.wav",
+          "seconds": 0.6624,
+          "LUFS": -28.0,
+          "onset_ms": 2.88,
+          "tail_ms": 7.81
+        },
+        {
+          "file": "voices/ewa/relief.wav",
+          "seconds": 0.9984,
+          "LUFS": -28.0,
+          "onset_ms": 3.71,
+          "tail_ms": 11.94
+        },
+        {
+          "file": "voices/ewa/thanks.wav",
+          "seconds": 0.8352,
+          "LUFS": -28.0,
+          "onset_ms": 2.96,
+          "tail_ms": 6.83
+        },
+        {
+          "file": "voices/ewa/impatient.wav",
+          "seconds": 0.8544,
+          "LUFS": -28.0,
+          "onset_ms": 2.75,
+          "tail_ms": 8.77
+        },
+        {
+          "file": "voices/ewa/sad.wav",
+          "seconds": 1.0752,
+          "LUFS": -28.0,
+          "onset_ms": 3.9,
+          "tail_ms": 13.58
+        },
+        {
+          "file": "voices/ewa/laugh.wav",
+          "seconds": 1.0368,
+          "LUFS": -28.0,
+          "onset_ms": 2.54,
+          "tail_ms": 6.81
+        },
+        {
+          "file": "voices/ewa/goodbye.wav",
+          "seconds": 0.7488,
+          "LUFS": -28.0,
+          "onset_ms": 3.1,
+          "tail_ms": 7.79
+        }
+      ]
+    },
+    "gosia": {
+      "character": "Gosia",
+      "age": 36,
+      "voice_register": "f",
+      "personality": "spokojna renowatorka",
+      "files": [
+        {
+          "file": "voices/gosia/greeting.wav",
+          "seconds": 0.7092,
+          "LUFS": -28.0,
+          "onset_ms": 3.35,
+          "tail_ms": 6.73
+        },
+        {
+          "file": "voices/gosia/surprise.wav",
+          "seconds": 0.6796,
+          "LUFS": -28.0,
+          "onset_ms": 3.27,
+          "tail_ms": 7.44
+        },
+        {
+          "file": "voices/gosia/relief.wav",
+          "seconds": 1.0244,
+          "LUFS": -28.0,
+          "onset_ms": 3.77,
+          "tail_ms": 13.15
+        },
+        {
+          "file": "voices/gosia/thanks.wav",
+          "seconds": 0.8569,
+          "LUFS": -28.0,
+          "onset_ms": 2.88,
+          "tail_ms": 5.58
+        },
+        {
+          "file": "voices/gosia/impatient.wav",
+          "seconds": 0.8766,
+          "LUFS": -28.0,
+          "onset_ms": 3.21,
+          "tail_ms": 7.21
+        },
+        {
+          "file": "voices/gosia/sad.wav",
+          "seconds": 1.1032,
+          "LUFS": -28.0,
+          "onset_ms": 3.83,
+          "tail_ms": 8.77
+        },
+        {
+          "file": "voices/gosia/laugh.wav",
+          "seconds": 1.0638,
+          "LUFS": -28.0,
+          "onset_ms": 2.69,
+          "tail_ms": 7.65
+        },
+        {
+          "file": "voices/gosia/goodbye.wav",
+          "seconds": 0.7683,
+          "LUFS": -28.0,
+          "onset_ms": 3.08,
+          "tail_ms": 5.96
+        }
+      ]
+    },
+    "hall_manager": {
+      "character": "Kierownik sali",
+      "age": 44,
+      "voice_register": "m",
+      "personality": "nieco zniecierpliwiony",
+      "files": [
+        {
+          "file": "voices/hall_manager/greeting.wav",
+          "seconds": 0.7272,
+          "LUFS": -28.0,
+          "onset_ms": 4.04,
+          "tail_ms": 5.69
+        },
+        {
+          "file": "voices/hall_manager/surprise.wav",
+          "seconds": 0.6969,
+          "LUFS": -28.0,
+          "onset_ms": 3.92,
+          "tail_ms": 7.1
+        },
+        {
+          "file": "voices/hall_manager/relief.wav",
+          "seconds": 1.0504,
+          "LUFS": -28.0,
+          "onset_ms": 4.38,
+          "tail_ms": 12.65
+        },
+        {
+          "file": "voices/hall_manager/thanks.wav",
+          "seconds": 0.8787,
+          "LUFS": -28.0,
+          "onset_ms": 2.83,
+          "tail_ms": 8.33
+        },
+        {
+          "file": "voices/hall_manager/impatient.wav",
+          "seconds": 0.8989,
+          "LUFS": -28.0,
+          "onset_ms": 3.69,
+          "tail_ms": 8.44
+        },
+        {
+          "file": "voices/hall_manager/sad.wav",
+          "seconds": 1.1312,
+          "LUFS": -28.0,
+          "onset_ms": 4.48,
+          "tail_ms": 9.19
+        },
+        {
+          "file": "voices/hall_manager/laugh.wav",
+          "seconds": 1.0908,
+          "LUFS": -28.0,
+          "onset_ms": 2.81,
+          "tail_ms": 6.52
+        },
+        {
+          "file": "voices/hall_manager/goodbye.wav",
+          "seconds": 0.7878,
+          "LUFS": -28.0,
+          "onset_ms": 3.69,
+          "tail_ms": 9.58
+        }
+      ]
+    },
+    "hania": {
+      "character": "Hania",
+      "age": 7,
+      "voice_register": "child",
+      "personality": "dziecko, radosna i ciekawa",
+      "files": [
+        {
+          "file": "voices/hania/greeting.wav",
+          "seconds": 0.7452,
+          "LUFS": -28.0,
+          "onset_ms": 2.52,
+          "tail_ms": 6.73
+        },
+        {
+          "file": "voices/hania/surprise.wav",
+          "seconds": 0.7141,
+          "LUFS": -28.0,
+          "onset_ms": 2.5,
+          "tail_ms": 6.4
+        },
+        {
+          "file": "voices/hania/relief.wav",
+          "seconds": 1.0764,
+          "LUFS": -28.0,
+          "onset_ms": 3.0,
+          "tail_ms": 9.65
+        },
+        {
+          "file": "voices/hania/thanks.wav",
+          "seconds": 0.9004,
+          "LUFS": -28.0,
+          "onset_ms": 2.46,
+          "tail_ms": 6.67
+        },
+        {
+          "file": "voices/hania/impatient.wav",
+          "seconds": 0.9211,
+          "LUFS": -28.0,
+          "onset_ms": 2.35,
+          "tail_ms": 7.94
+        },
+        {
+          "file": "voices/hania/sad.wav",
+          "seconds": 1.1592,
+          "LUFS": -28.0,
+          "onset_ms": 3.06,
+          "tail_ms": 9.02
+        },
+        {
+          "file": "voices/hania/laugh.wav",
+          "seconds": 1.1178,
+          "LUFS": -28.0,
+          "onset_ms": 2.71,
+          "tail_ms": 7.65
+        },
+        {
+          "file": "voices/hania/goodbye.wav",
+          "seconds": 0.8073,
+          "LUFS": -28.0,
+          "onset_ms": 2.71,
+          "tail_ms": 8.75
+        }
+      ]
+    },
+    "headteacher": {
+      "character": "Dyrektorka szkoły",
+      "age": 54,
+      "voice_register": "f",
+      "personality": "uprzejma, zdecydowana",
+      "files": [
+        {
+          "file": "voices/headteacher/greeting.wav",
+          "seconds": 0.7632,
+          "LUFS": -28.0,
+          "onset_ms": 3.23,
+          "tail_ms": 9.44
+        },
+        {
+          "file": "voices/headteacher/surprise.wav",
+          "seconds": 0.7314,
+          "LUFS": -28.0,
+          "onset_ms": 3.31,
+          "tail_ms": 8.42
+        },
+        {
+          "file": "voices/headteacher/relief.wav",
+          "seconds": 1.1024,
+          "LUFS": -28.0,
+          "onset_ms": 3.62,
+          "tail_ms": 10.1
+        },
+        {
+          "file": "voices/headteacher/thanks.wav",
+          "seconds": 0.9222,
+          "LUFS": -28.0,
+          "onset_ms": 2.96,
+          "tail_ms": 7.9
+        },
+        {
+          "file": "voices/headteacher/impatient.wav",
+          "seconds": 0.9434,
+          "LUFS": -28.0,
+          "onset_ms": 3.08,
+          "tail_ms": 9.08
+        },
+        {
+          "file": "voices/headteacher/sad.wav",
+          "seconds": 1.1872,
+          "LUFS": -28.0,
+          "onset_ms": 3.85,
+          "tail_ms": 14.17
+        },
+        {
+          "file": "voices/headteacher/laugh.wav",
+          "seconds": 1.1448,
+          "LUFS": -28.0,
+          "onset_ms": 3.06,
+          "tail_ms": 7.62
+        },
+        {
+          "file": "voices/headteacher/goodbye.wav",
+          "seconds": 0.8268,
+          "LUFS": -28.0,
+          "onset_ms": 3.12,
+          "tail_ms": 10.19
+        }
+      ]
+    },
+    "iga": {
+      "character": "Iga",
+      "age": 27,
+      "voice_register": "f",
+      "personality": "energiczna perkusistka",
+      "files": [
+        {
+          "file": "voices/iga/greeting.wav",
+          "seconds": 0.6552,
+          "LUFS": -28.0,
+          "onset_ms": 3.04,
+          "tail_ms": 7.25
+        },
+        {
+          "file": "voices/iga/surprise.wav",
+          "seconds": 0.6279,
+          "LUFS": -28.0,
+          "onset_ms": 3.02,
+          "tail_ms": 5.5
+        },
+        {
+          "file": "voices/iga/relief.wav",
+          "seconds": 0.9464,
+          "LUFS": -28.0,
+          "onset_ms": 3.29,
+          "tail_ms": 11.79
+        },
+        {
+          "file": "voices/iga/thanks.wav",
+          "seconds": 0.7917,
+          "LUFS": -28.0,
+          "onset_ms": 2.58,
+          "tail_ms": 6.77
+        },
+        {
+          "file": "voices/iga/impatient.wav",
+          "seconds": 0.8099,
+          "LUFS": -28.0,
+          "onset_ms": 2.77,
+          "tail_ms": 6.23
+        },
+        {
+          "file": "voices/iga/sad.wav",
+          "seconds": 1.0192,
+          "LUFS": -28.0,
+          "onset_ms": 3.4,
+          "tail_ms": 11.02
+        },
+        {
+          "file": "voices/iga/laugh.wav",
+          "seconds": 0.9828,
+          "LUFS": -28.0,
+          "onset_ms": 2.44,
+          "tail_ms": 7.42
+        },
+        {
+          "file": "voices/iga/goodbye.wav",
+          "seconds": 0.7098,
+          "LUFS": -28.0,
+          "onset_ms": 2.79,
+          "tail_ms": 8.69
+        }
+      ]
+    },
+    "irena": {
+      "character": "Irena",
+      "age": 79,
+      "voice_register": "f",
+      "personality": "starsza, cicha bibliotekarka",
+      "files": [
+        {
+          "file": "voices/irena/greeting.wav",
+          "seconds": 0.6732,
+          "LUFS": -28.0,
+          "onset_ms": 3.31,
+          "tail_ms": 8.35
+        },
+        {
+          "file": "voices/irena/surprise.wav",
+          "seconds": 0.6451,
+          "LUFS": -28.0,
+          "onset_ms": 3.5,
+          "tail_ms": 8.0
+        },
+        {
+          "file": "voices/irena/relief.wav",
+          "seconds": 0.9724,
+          "LUFS": -28.0,
+          "onset_ms": 3.52,
+          "tail_ms": 11.56
+        },
+        {
+          "file": "voices/irena/thanks.wav",
+          "seconds": 0.8134,
+          "LUFS": -28.0,
+          "onset_ms": 2.92,
+          "tail_ms": 6.31
+        },
+        {
+          "file": "voices/irena/impatient.wav",
+          "seconds": 0.8321,
+          "LUFS": -28.0,
+          "onset_ms": 3.02,
+          "tail_ms": 5.98
+        },
+        {
+          "file": "voices/irena/sad.wav",
+          "seconds": 1.0472,
+          "LUFS": -28.0,
+          "onset_ms": 3.75,
+          "tail_ms": 13.08
+        },
+        {
+          "file": "voices/irena/laugh.wav",
+          "seconds": 1.0098,
+          "LUFS": -28.0,
+          "onset_ms": 2.92,
+          "tail_ms": 8.25
+        },
+        {
+          "file": "voices/irena/goodbye.wav",
+          "seconds": 0.7293,
+          "LUFS": -28.0,
+          "onset_ms": 3.06,
+          "tail_ms": 7.96
+        }
+      ]
+    },
+    "jacques": {
+      "character": "Jacques",
+      "age": 58,
+      "voice_register": "m",
+      "personality": "uprzejmy, przyjazny sąsiad",
+      "files": [
+        {
+          "file": "voices/jacques/greeting.wav",
+          "seconds": 0.6912,
+          "LUFS": -28.0,
+          "onset_ms": 3.69,
+          "tail_ms": 8.15
+        },
+        {
+          "file": "voices/jacques/surprise.wav",
+          "seconds": 0.6624,
+          "LUFS": -28.0,
+          "onset_ms": 3.71,
+          "tail_ms": 6.77
+        },
+        {
+          "file": "voices/jacques/relief.wav",
+          "seconds": 0.9984,
+          "LUFS": -28.0,
+          "onset_ms": 3.88,
+          "tail_ms": 13.58
+        },
+        {
+          "file": "voices/jacques/thanks.wav",
+          "seconds": 0.8352,
+          "LUFS": -28.0,
+          "onset_ms": 2.67,
+          "tail_ms": 6.38
+        },
+        {
+          "file": "voices/jacques/impatient.wav",
+          "seconds": 0.8544,
+          "LUFS": -28.0,
+          "onset_ms": 3.5,
+          "tail_ms": 7.17
+        },
+        {
+          "file": "voices/jacques/sad.wav",
+          "seconds": 1.0752,
+          "LUFS": -28.0,
+          "onset_ms": 4.15,
+          "tail_ms": 12.92
+        },
+        {
+          "file": "voices/jacques/laugh.wav",
+          "seconds": 1.0368,
+          "LUFS": -28.0,
+          "onset_ms": 3.04,
+          "tail_ms": 8.58
+        },
+        {
+          "file": "voices/jacques/goodbye.wav",
+          "seconds": 0.7488,
+          "LUFS": -28.0,
+          "onset_ms": 3.4,
+          "tail_ms": 7.88
+        }
+      ]
+    },
+    "kazimierz": {
+      "character": "Kazimierz",
+      "age": 60,
+      "voice_register": "m",
+      "personality": "wesoły i nieco zamyślony",
+      "files": [
+        {
+          "file": "voices/kazimierz/greeting.wav",
+          "seconds": 0.7092,
+          "LUFS": -28.0,
+          "onset_ms": 3.67,
+          "tail_ms": 9.04
+        },
+        {
+          "file": "voices/kazimierz/surprise.wav",
+          "seconds": 0.6796,
+          "LUFS": -28.0,
+          "onset_ms": 3.69,
+          "tail_ms": 7.02
+        },
+        {
+          "file": "voices/kazimierz/relief.wav",
+          "seconds": 1.0244,
+          "LUFS": -28.0,
+          "onset_ms": 3.9,
+          "tail_ms": 10.75
+        },
+        {
+          "file": "voices/kazimierz/thanks.wav",
+          "seconds": 0.8569,
+          "LUFS": -28.0,
+          "onset_ms": 2.71,
+          "tail_ms": 7.46
+        },
+        {
+          "file": "voices/kazimierz/impatient.wav",
+          "seconds": 0.8766,
+          "LUFS": -28.0,
+          "onset_ms": 2.71,
+          "tail_ms": 9.65
+        },
+        {
+          "file": "voices/kazimierz/sad.wav",
+          "seconds": 1.1032,
+          "LUFS": -28.0,
+          "onset_ms": 4.04,
+          "tail_ms": 10.29
+        },
+        {
+          "file": "voices/kazimierz/laugh.wav",
+          "seconds": 1.0638,
+          "LUFS": -28.0,
+          "onset_ms": 2.85,
+          "tail_ms": 7.38
+        },
+        {
+          "file": "voices/kazimierz/goodbye.wav",
+          "seconds": 0.7683,
+          "LUFS": -28.0,
+          "onset_ms": 3.5,
+          "tail_ms": 8.79
+        }
+      ]
+    },
+    "krysia": {
+      "character": "Krysia",
+      "age": 65,
+      "voice_register": "f",
+      "personality": "doświadczona, serdeczna",
+      "files": [
+        {
+          "file": "voices/krysia/greeting.wav",
+          "seconds": 0.7272,
+          "LUFS": -28.0,
+          "onset_ms": 3.44,
+          "tail_ms": 7.65
+        },
+        {
+          "file": "voices/krysia/surprise.wav",
+          "seconds": 0.6969,
+          "LUFS": -28.0,
+          "onset_ms": 3.52,
+          "tail_ms": 5.92
+        },
+        {
+          "file": "voices/krysia/relief.wav",
+          "seconds": 1.0504,
+          "LUFS": -28.0,
+          "onset_ms": 3.79,
+          "tail_ms": 11.08
+        },
+        {
+          "file": "voices/krysia/thanks.wav",
+          "seconds": 0.8787,
+          "LUFS": -28.0,
+          "onset_ms": 2.98,
+          "tail_ms": 6.69
+        },
+        {
+          "file": "voices/krysia/impatient.wav",
+          "seconds": 0.8989,
+          "LUFS": -28.0,
+          "onset_ms": 3.25,
+          "tail_ms": 7.06
+        },
+        {
+          "file": "voices/krysia/sad.wav",
+          "seconds": 1.1312,
+          "LUFS": -28.0,
+          "onset_ms": 3.96,
+          "tail_ms": 10.21
+        },
+        {
+          "file": "voices/krysia/laugh.wav",
+          "seconds": 1.0908,
+          "LUFS": -28.0,
+          "onset_ms": 2.9,
+          "tail_ms": 7.31
+        },
+        {
+          "file": "voices/krysia/goodbye.wav",
+          "seconds": 0.7878,
+          "LUFS": -28.0,
+          "onset_ms": 3.19,
+          "tail_ms": 9.69
+        }
+      ]
+    },
+    "kuba": {
+      "character": "Kuba",
+      "age": 23,
+      "voice_register": "m",
+      "personality": "młody, nieco zdenerwowany",
+      "files": [
+        {
+          "file": "voices/kuba/greeting.wav",
+          "seconds": 0.7452,
+          "LUFS": -28.0,
+          "onset_ms": 3.6,
+          "tail_ms": 5.96
+        },
+        {
+          "file": "voices/kuba/surprise.wav",
+          "seconds": 0.7141,
+          "LUFS": -28.0,
+          "onset_ms": 3.65,
+          "tail_ms": 6.77
+        },
+        {
+          "file": "voices/kuba/relief.wav",
+          "seconds": 1.0764,
+          "LUFS": -28.0,
+          "onset_ms": 4.38,
+          "tail_ms": 11.35
+        },
+        {
+          "file": "voices/kuba/thanks.wav",
+          "seconds": 0.9004,
+          "LUFS": -28.0,
+          "onset_ms": 3.35,
+          "tail_ms": 7.69
+        },
+        {
+          "file": "voices/kuba/impatient.wav",
+          "seconds": 0.9211,
+          "LUFS": -28.0,
+          "onset_ms": 2.54,
+          "tail_ms": 8.48
+        },
+        {
+          "file": "voices/kuba/sad.wav",
+          "seconds": 1.1592,
+          "LUFS": -28.0,
+          "onset_ms": 4.33,
+          "tail_ms": 11.92
+        },
+        {
+          "file": "voices/kuba/laugh.wav",
+          "seconds": 1.1178,
+          "LUFS": -28.0,
+          "onset_ms": 2.83,
+          "tail_ms": 7.96
+        },
+        {
+          "file": "voices/kuba/goodbye.wav",
+          "seconds": 0.8073,
+          "LUFS": -28.0,
+          "onset_ms": 3.54,
+          "tail_ms": 8.35
+        }
+      ]
+    },
+    "leopold": {
+      "character": "Leopold",
+      "age": 70,
+      "voice_register": "m",
+      "personality": "starszy antykwariusz, łagodny",
+      "files": [
+        {
+          "file": "voices/leopold/greeting.wav",
+          "seconds": 0.7632,
+          "LUFS": -28.0,
+          "onset_ms": 3.75,
+          "tail_ms": 6.56
+        },
+        {
+          "file": "voices/leopold/surprise.wav",
+          "seconds": 0.7314,
+          "LUFS": -28.0,
+          "onset_ms": 3.4,
+          "tail_ms": 6.27
+        },
+        {
+          "file": "voices/leopold/relief.wav",
+          "seconds": 1.1024,
+          "LUFS": -28.0,
+          "onset_ms": 4.56,
+          "tail_ms": 14.33
+        },
+        {
+          "file": "voices/leopold/thanks.wav",
+          "seconds": 0.9222,
+          "LUFS": -28.0,
+          "onset_ms": 2.73,
+          "tail_ms": 6.58
+        },
+        {
+          "file": "voices/leopold/impatient.wav",
+          "seconds": 0.9434,
+          "LUFS": -28.0,
+          "onset_ms": 3.12,
+          "tail_ms": 8.69
+        },
+        {
+          "file": "voices/leopold/sad.wav",
+          "seconds": 1.1872,
+          "LUFS": -28.0,
+          "onset_ms": 4.88,
+          "tail_ms": 13.5
+        },
+        {
+          "file": "voices/leopold/laugh.wav",
+          "seconds": 1.1448,
+          "LUFS": -28.0,
+          "onset_ms": 3.31,
+          "tail_ms": 8.62
+        },
+        {
+          "file": "voices/leopold/goodbye.wav",
+          "seconds": 0.8268,
+          "LUFS": -28.0,
+          "onset_ms": 3.96,
+          "tail_ms": 10.31
+        }
+      ]
+    },
+    "magda": {
+      "character": "Magda",
+      "age": 41,
+      "voice_register": "f",
+      "personality": "żywa tłumaczka",
+      "files": [
+        {
+          "file": "voices/magda/greeting.wav",
+          "seconds": 0.6552,
+          "LUFS": -28.0,
+          "onset_ms": 3.17,
+          "tail_ms": 5.81
+        },
+        {
+          "file": "voices/magda/surprise.wav",
+          "seconds": 0.6279,
+          "LUFS": -28.0,
+          "onset_ms": 3.19,
+          "tail_ms": 5.92
+        },
+        {
+          "file": "voices/magda/relief.wav",
+          "seconds": 0.9464,
+          "LUFS": -28.0,
+          "onset_ms": 3.42,
+          "tail_ms": 10.48
+        },
+        {
+          "file": "voices/magda/thanks.wav",
+          "seconds": 0.7917,
+          "LUFS": -28.0,
+          "onset_ms": 2.73,
+          "tail_ms": 6.12
+        },
+        {
+          "file": "voices/magda/impatient.wav",
+          "seconds": 0.8099,
+          "LUFS": -28.0,
+          "onset_ms": 2.77,
+          "tail_ms": 7.25
+        },
+        {
+          "file": "voices/magda/sad.wav",
+          "seconds": 1.0192,
+          "LUFS": -28.0,
+          "onset_ms": 3.54,
+          "tail_ms": 8.48
+        },
+        {
+          "file": "voices/magda/laugh.wav",
+          "seconds": 0.9828,
+          "LUFS": -28.0,
+          "onset_ms": 2.48,
+          "tail_ms": 6.5
+        },
+        {
+          "file": "voices/magda/goodbye.wav",
+          "seconds": 0.7098,
+          "LUFS": -28.0,
+          "onset_ms": 2.98,
+          "tail_ms": 7.29
+        }
+      ]
+    },
+    "marcel": {
+      "character": "Marcel",
+      "age": 29,
+      "voice_register": "m",
+      "personality": "zabiegany kurier",
+      "files": [
+        {
+          "file": "voices/marcel/greeting.wav",
+          "seconds": 0.6732,
+          "LUFS": -28.0,
+          "onset_ms": 3.67,
+          "tail_ms": 6.1
+        },
+        {
+          "file": "voices/marcel/surprise.wav",
+          "seconds": 0.6451,
+          "LUFS": -28.0,
+          "onset_ms": 3.67,
+          "tail_ms": 7.9
+        },
+        {
+          "file": "voices/marcel/relief.wav",
+          "seconds": 0.9724,
+          "LUFS": -28.0,
+          "onset_ms": 4.08,
+          "tail_ms": 11.96
+        },
+        {
+          "file": "voices/marcel/thanks.wav",
+          "seconds": 0.8134,
+          "LUFS": -28.0,
+          "onset_ms": 3.29,
+          "tail_ms": 8.15
+        },
+        {
+          "file": "voices/marcel/impatient.wav",
+          "seconds": 0.8321,
+          "LUFS": -28.0,
+          "onset_ms": 3.5,
+          "tail_ms": 6.88
+        },
+        {
+          "file": "voices/marcel/sad.wav",
+          "seconds": 1.0472,
+          "LUFS": -28.0,
+          "onset_ms": 4.21,
+          "tail_ms": 12.96
+        },
+        {
+          "file": "voices/marcel/laugh.wav",
+          "seconds": 1.0098,
+          "LUFS": -28.0,
+          "onset_ms": 2.48,
+          "tail_ms": 7.56
+        },
+        {
+          "file": "voices/marcel/goodbye.wav",
+          "seconds": 0.7293,
+          "LUFS": -28.0,
+          "onset_ms": 3.38,
+          "tail_ms": 9.85
+        }
+      ]
+    },
+    "marek": {
+      "character": "Marek",
+      "age": 43,
+      "voice_register": "m",
+      "personality": "ostrożny spadkobierca",
+      "files": [
+        {
+          "file": "voices/marek/greeting.wav",
+          "seconds": 0.6912,
+          "LUFS": -28.0,
+          "onset_ms": 3.69,
+          "tail_ms": 6.6
+        },
+        {
+          "file": "voices/marek/surprise.wav",
+          "seconds": 0.6624,
+          "LUFS": -28.0,
+          "onset_ms": 3.69,
+          "tail_ms": 7.6
+        },
+        {
+          "file": "voices/marek/relief.wav",
+          "seconds": 0.9984,
+          "LUFS": -28.0,
+          "onset_ms": 4.08,
+          "tail_ms": 12.56
+        },
+        {
+          "file": "voices/marek/thanks.wav",
+          "seconds": 0.8352,
+          "LUFS": -28.0,
+          "onset_ms": 3.33,
+          "tail_ms": 7.06
+        },
+        {
+          "file": "voices/marek/impatient.wav",
+          "seconds": 0.8544,
+          "LUFS": -28.0,
+          "onset_ms": 3.1,
+          "tail_ms": 5.69
+        },
+        {
+          "file": "voices/marek/sad.wav",
+          "seconds": 1.0752,
+          "LUFS": -28.0,
+          "onset_ms": 4.12,
+          "tail_ms": 8.85
+        },
+        {
+          "file": "voices/marek/laugh.wav",
+          "seconds": 1.0368,
+          "LUFS": -28.0,
+          "onset_ms": 3.08,
+          "tail_ms": 8.0
+        },
+        {
+          "file": "voices/marek/goodbye.wav",
+          "seconds": 0.7488,
+          "LUFS": -28.0,
+          "onset_ms": 3.4,
+          "tail_ms": 10.88
+        }
+      ]
+    },
+    "martine": {
+      "character": "Martine",
+      "age": 64,
+      "voice_register": "f",
+      "personality": "dostojna, serdeczna",
+      "files": [
+        {
+          "file": "voices/martine/greeting.wav",
+          "seconds": 0.7092,
+          "LUFS": -28.0,
+          "onset_ms": 3.06,
+          "tail_ms": 5.77
+        },
+        {
+          "file": "voices/martine/surprise.wav",
+          "seconds": 0.6796,
+          "LUFS": -28.0,
+          "onset_ms": 3.15,
+          "tail_ms": 7.12
+        },
+        {
+          "file": "voices/martine/relief.wav",
+          "seconds": 1.0244,
+          "LUFS": -28.0,
+          "onset_ms": 3.48,
+          "tail_ms": 8.31
+        },
+        {
+          "file": "voices/martine/thanks.wav",
+          "seconds": 0.8569,
+          "LUFS": -28.0,
+          "onset_ms": 2.85,
+          "tail_ms": 6.88
+        },
+        {
+          "file": "voices/martine/impatient.wav",
+          "seconds": 0.8766,
+          "LUFS": -28.0,
+          "onset_ms": 2.88,
+          "tail_ms": 9.19
+        },
+        {
+          "file": "voices/martine/sad.wav",
+          "seconds": 1.1032,
+          "LUFS": -28.0,
+          "onset_ms": 3.73,
+          "tail_ms": 13.69
+        },
+        {
+          "file": "voices/martine/laugh.wav",
+          "seconds": 1.0638,
+          "LUFS": -28.0,
+          "onset_ms": 2.96,
+          "tail_ms": 7.04
+        },
+        {
+          "file": "voices/martine/goodbye.wav",
+          "seconds": 0.7683,
+          "LUFS": -28.0,
+          "onset_ms": 2.94,
+          "tail_ms": 7.62
+        }
+      ]
+    },
+    "mietek": {
+      "character": "Mietek",
+      "age": 62,
+      "voice_register": "m",
+      "personality": "starszy rzemieślnik",
+      "files": [
+        {
+          "file": "voices/mietek/greeting.wav",
+          "seconds": 0.7272,
+          "LUFS": -28.0,
+          "onset_ms": 3.71,
+          "tail_ms": 9.83
+        },
+        {
+          "file": "voices/mietek/surprise.wav",
+          "seconds": 0.6969,
+          "LUFS": -28.0,
+          "onset_ms": 3.83,
+          "tail_ms": 6.96
+        },
+        {
+          "file": "voices/mietek/relief.wav",
+          "seconds": 1.0504,
+          "LUFS": -28.0,
+          "onset_ms": 3.98,
+          "tail_ms": 12.46
+        },
+        {
+          "file": "voices/mietek/thanks.wav",
+          "seconds": 0.8787,
+          "LUFS": -28.0,
+          "onset_ms": 2.73,
+          "tail_ms": 5.71
+        },
+        {
+          "file": "voices/mietek/impatient.wav",
+          "seconds": 0.8989,
+          "LUFS": -28.0,
+          "onset_ms": 2.94,
+          "tail_ms": 7.85
+        },
+        {
+          "file": "voices/mietek/sad.wav",
+          "seconds": 1.1312,
+          "LUFS": -28.0,
+          "onset_ms": 4.19,
+          "tail_ms": 12.23
+        },
+        {
+          "file": "voices/mietek/laugh.wav",
+          "seconds": 1.0908,
+          "LUFS": -28.0,
+          "onset_ms": 2.88,
+          "tail_ms": 8.62
+        },
+        {
+          "file": "voices/mietek/goodbye.wav",
+          "seconds": 0.7878,
+          "LUFS": -28.0,
+          "onset_ms": 3.58,
+          "tail_ms": 9.83
+        }
+      ]
+    },
+    "nadia": {
+      "character": "Nadia",
+      "age": 29,
+      "voice_register": "f",
+      "personality": "energiczna piekarka",
+      "files": [
+        {
+          "file": "voices/nadia/greeting.wav",
+          "seconds": 0.7452,
+          "LUFS": -28.0,
+          "onset_ms": 3.04,
+          "tail_ms": 8.1
+        },
+        {
+          "file": "voices/nadia/surprise.wav",
+          "seconds": 0.7141,
+          "LUFS": -28.0,
+          "onset_ms": 3.06,
+          "tail_ms": 6.6
+        },
+        {
+          "file": "voices/nadia/relief.wav",
+          "seconds": 1.0764,
+          "LUFS": -28.0,
+          "onset_ms": 3.4,
+          "tail_ms": 9.02
+        },
+        {
+          "file": "voices/nadia/thanks.wav",
+          "seconds": 0.9004,
+          "LUFS": -28.0,
+          "onset_ms": 2.56,
+          "tail_ms": 6.0
+        },
+        {
+          "file": "voices/nadia/impatient.wav",
+          "seconds": 0.9211,
+          "LUFS": -28.0,
+          "onset_ms": 2.67,
+          "tail_ms": 6.75
+        },
+        {
+          "file": "voices/nadia/sad.wav",
+          "seconds": 1.1592,
+          "LUFS": -28.0,
+          "onset_ms": 3.75,
+          "tail_ms": 12.29
+        },
+        {
+          "file": "voices/nadia/laugh.wav",
+          "seconds": 1.1178,
+          "LUFS": -28.0,
+          "onset_ms": 2.85,
+          "tail_ms": 7.08
+        },
+        {
+          "file": "voices/nadia/goodbye.wav",
+          "seconds": 0.8073,
+          "LUFS": -28.0,
+          "onset_ms": 2.92,
+          "tail_ms": 7.65
+        }
+      ]
+    },
+    "neighbour_lucyna": {
+      "character": "Sąsiadka Lucyny",
+      "age": 61,
+      "voice_register": "f",
+      "personality": "troskliwa, dyskretna",
+      "files": [
+        {
+          "file": "voices/neighbour_lucyna/greeting.wav",
+          "seconds": 0.7632,
+          "LUFS": -28.0,
+          "onset_ms": 3.56,
+          "tail_ms": 8.46
+        },
+        {
+          "file": "voices/neighbour_lucyna/surprise.wav",
+          "seconds": 0.7314,
+          "LUFS": -28.0,
+          "onset_ms": 3.54,
+          "tail_ms": 7.0
+        },
+        {
+          "file": "voices/neighbour_lucyna/relief.wav",
+          "seconds": 1.1024,
+          "LUFS": -28.0,
+          "onset_ms": 3.92,
+          "tail_ms": 14.58
+        },
+        {
+          "file": "voices/neighbour_lucyna/thanks.wav",
+          "seconds": 0.9222,
+          "LUFS": -28.0,
+          "onset_ms": 3.1,
+          "tail_ms": 8.65
+        },
+        {
+          "file": "voices/neighbour_lucyna/impatient.wav",
+          "seconds": 0.9434,
+          "LUFS": -28.0,
+          "onset_ms": 3.23,
+          "tail_ms": 8.48
+        },
+        {
+          "file": "voices/neighbour_lucyna/sad.wav",
+          "seconds": 1.1872,
+          "LUFS": -28.0,
+          "onset_ms": 4.02,
+          "tail_ms": 13.48
+        },
+        {
+          "file": "voices/neighbour_lucyna/laugh.wav",
+          "seconds": 1.1448,
+          "LUFS": -28.0,
+          "onset_ms": 3.12,
+          "tail_ms": 8.25
+        },
+        {
+          "file": "voices/neighbour_lucyna/goodbye.wav",
+          "seconds": 0.8268,
+          "LUFS": -28.0,
+          "onset_ms": 3.27,
+          "tail_ms": 9.15
+        }
+      ]
+    },
+    "neighbour_robe": {
+      "character": "Sąsiad w szlafroku",
+      "age": 52,
+      "voice_register": "m",
+      "personality": "zaspany, zirytowany",
+      "files": [
+        {
+          "file": "voices/neighbour_robe/greeting.wav",
+          "seconds": 0.6552,
+          "LUFS": -28.0,
+          "onset_ms": 3.96,
+          "tail_ms": 5.33
+        },
+        {
+          "file": "voices/neighbour_robe/surprise.wav",
+          "seconds": 0.6279,
+          "LUFS": -28.0,
+          "onset_ms": 3.85,
+          "tail_ms": 7.12
+        },
+        {
+          "file": "voices/neighbour_robe/relief.wav",
+          "seconds": 0.9464,
+          "LUFS": -28.0,
+          "onset_ms": 4.4,
+          "tail_ms": 7.81
+        },
+        {
+          "file": "voices/neighbour_robe/thanks.wav",
+          "seconds": 0.7917,
+          "LUFS": -28.0,
+          "onset_ms": 2.81,
+          "tail_ms": 7.15
+        },
+        {
+          "file": "voices/neighbour_robe/impatient.wav",
+          "seconds": 0.8099,
+          "LUFS": -28.0,
+          "onset_ms": 2.62,
+          "tail_ms": 7.46
+        },
+        {
+          "file": "voices/neighbour_robe/sad.wav",
+          "seconds": 1.0192,
+          "LUFS": -28.0,
+          "onset_ms": 4.52,
+          "tail_ms": 7.77
+        },
+        {
+          "file": "voices/neighbour_robe/laugh.wav",
+          "seconds": 0.9828,
+          "LUFS": -28.0,
+          "onset_ms": 2.81,
+          "tail_ms": 7.25
+        },
+        {
+          "file": "voices/neighbour_robe/goodbye.wav",
+          "seconds": 0.7098,
+          "LUFS": -28.0,
+          "onset_ms": 3.58,
+          "tail_ms": 9.02
+        }
+      ]
+    },
+    "norbert": {
+      "character": "Norbert",
+      "age": 43,
+      "voice_register": "m",
+      "personality": "zaniepokojony o siostrę",
+      "files": [
+        {
+          "file": "voices/norbert/greeting.wav",
+          "seconds": 0.6732,
+          "LUFS": -28.0,
+          "onset_ms": 3.81,
+          "tail_ms": 5.71
+        },
+        {
+          "file": "voices/norbert/surprise.wav",
+          "seconds": 0.6451,
+          "LUFS": -28.0,
+          "onset_ms": 3.73,
+          "tail_ms": 7.02
+        },
+        {
+          "file": "voices/norbert/relief.wav",
+          "seconds": 0.9724,
+          "LUFS": -28.0,
+          "onset_ms": 4.23,
+          "tail_ms": 12.96
+        },
+        {
+          "file": "voices/norbert/thanks.wav",
+          "seconds": 0.8134,
+          "LUFS": -28.0,
+          "onset_ms": 3.42,
+          "tail_ms": 6.04
+        },
+        {
+          "file": "voices/norbert/impatient.wav",
+          "seconds": 0.8321,
+          "LUFS": -28.0,
+          "onset_ms": 2.67,
+          "tail_ms": 7.79
+        },
+        {
+          "file": "voices/norbert/sad.wav",
+          "seconds": 1.0472,
+          "LUFS": -28.0,
+          "onset_ms": 4.4,
+          "tail_ms": 9.1
+        },
+        {
+          "file": "voices/norbert/laugh.wav",
+          "seconds": 1.0098,
+          "LUFS": -28.0,
+          "onset_ms": 2.75,
+          "tail_ms": 6.54
+        },
+        {
+          "file": "voices/norbert/goodbye.wav",
+          "seconds": 0.7293,
+          "LUFS": -28.0,
+          "onset_ms": 3.5,
+          "tail_ms": 9.06
+        }
+      ]
+    },
+    "pieter": {
+      "character": "Pieter",
+      "age": 66,
+      "voice_register": "m",
+      "personality": "spokojny opiekun domu",
+      "files": [
+        {
+          "file": "voices/pieter/greeting.wav",
+          "seconds": 0.6912,
+          "LUFS": -28.0,
+          "onset_ms": 4.15,
+          "tail_ms": 8.1
+        },
+        {
+          "file": "voices/pieter/surprise.wav",
+          "seconds": 0.6624,
+          "LUFS": -28.0,
+          "onset_ms": 3.92,
+          "tail_ms": 8.21
+        },
+        {
+          "file": "voices/pieter/relief.wav",
+          "seconds": 0.9984,
+          "LUFS": -28.0,
+          "onset_ms": 4.29,
+          "tail_ms": 9.83
+        },
+        {
+          "file": "voices/pieter/thanks.wav",
+          "seconds": 0.8352,
+          "LUFS": -28.0,
+          "onset_ms": 2.62,
+          "tail_ms": 8.46
+        },
+        {
+          "file": "voices/pieter/impatient.wav",
+          "seconds": 0.8544,
+          "LUFS": -28.0,
+          "onset_ms": 3.15,
+          "tail_ms": 6.35
+        },
+        {
+          "file": "voices/pieter/sad.wav",
+          "seconds": 1.0752,
+          "LUFS": -28.0,
+          "onset_ms": 4.48,
+          "tail_ms": 13.06
+        },
+        {
+          "file": "voices/pieter/laugh.wav",
+          "seconds": 1.0368,
+          "LUFS": -28.0,
+          "onset_ms": 3.31,
+          "tail_ms": 6.31
+        },
+        {
+          "file": "voices/pieter/goodbye.wav",
+          "seconds": 0.7488,
+          "LUFS": -28.0,
+          "onset_ms": 3.75,
+          "tail_ms": 8.42
+        }
+      ]
+    },
+    "piotr": {
+      "character": "Piotr",
+      "age": 38,
+      "voice_register": "m",
+      "personality": "praktyczny brat",
+      "files": [
+        {
+          "file": "voices/piotr/greeting.wav",
+          "seconds": 0.7092,
+          "LUFS": -28.0,
+          "onset_ms": 3.69,
+          "tail_ms": 7.27
+        },
+        {
+          "file": "voices/piotr/surprise.wav",
+          "seconds": 0.6796,
+          "LUFS": -28.0,
+          "onset_ms": 3.73,
+          "tail_ms": 8.29
+        },
+        {
+          "file": "voices/piotr/relief.wav",
+          "seconds": 1.0244,
+          "LUFS": -28.0,
+          "onset_ms": 4.12,
+          "tail_ms": 9.44
+        },
+        {
+          "file": "voices/piotr/thanks.wav",
+          "seconds": 0.8569,
+          "LUFS": -28.0,
+          "onset_ms": 3.25,
+          "tail_ms": 8.25
+        },
+        {
+          "file": "voices/piotr/impatient.wav",
+          "seconds": 0.8766,
+          "LUFS": -28.0,
+          "onset_ms": 3.52,
+          "tail_ms": 6.94
+        },
+        {
+          "file": "voices/piotr/sad.wav",
+          "seconds": 1.1032,
+          "LUFS": -28.0,
+          "onset_ms": 4.23,
+          "tail_ms": 11.06
+        },
+        {
+          "file": "voices/piotr/laugh.wav",
+          "seconds": 1.0638,
+          "LUFS": -28.0,
+          "onset_ms": 2.79,
+          "tail_ms": 8.75
+        },
+        {
+          "file": "voices/piotr/goodbye.wav",
+          "seconds": 0.7683,
+          "LUFS": -28.0,
+          "onset_ms": 3.5,
+          "tail_ms": 9.44
+        }
+      ]
+    },
+    "renata": {
+      "character": "Renata",
+      "age": 52,
+      "voice_register": "f",
+      "personality": "szybka i rezolutna właścicielka pizzerii",
+      "files": [
+        {
+          "file": "voices/renata/greeting.wav",
+          "seconds": 0.7272,
+          "LUFS": -28.0,
+          "onset_ms": 3.15,
+          "tail_ms": 8.42
+        },
+        {
+          "file": "voices/renata/surprise.wav",
+          "seconds": 0.6969,
+          "LUFS": -28.0,
+          "onset_ms": 3.12,
+          "tail_ms": 7.52
+        },
+        {
+          "file": "voices/renata/relief.wav",
+          "seconds": 1.0504,
+          "LUFS": -28.0,
+          "onset_ms": 3.46,
+          "tail_ms": 9.77
+        },
+        {
+          "file": "voices/renata/thanks.wav",
+          "seconds": 0.8787,
+          "LUFS": -28.0,
+          "onset_ms": 2.65,
+          "tail_ms": 7.88
+        },
+        {
+          "file": "voices/renata/impatient.wav",
+          "seconds": 0.8989,
+          "LUFS": -28.0,
+          "onset_ms": 2.9,
+          "tail_ms": 8.31
+        },
+        {
+          "file": "voices/renata/sad.wav",
+          "seconds": 1.1312,
+          "LUFS": -28.0,
+          "onset_ms": 3.69,
+          "tail_ms": 10.48
+        },
+        {
+          "file": "voices/renata/laugh.wav",
+          "seconds": 1.0908,
+          "LUFS": -28.0,
+          "onset_ms": 2.88,
+          "tail_ms": 7.58
+        },
+        {
+          "file": "voices/renata/goodbye.wav",
+          "seconds": 0.7878,
+          "LUFS": -28.0,
+          "onset_ms": 2.96,
+          "tail_ms": 8.94
+        }
+      ]
+    },
+    "stranger": {
+      "character": "Mężczyzna w garniturze",
+      "age": 39,
+      "voice_register": "m",
+      "personality": "grzeczny, naciskający",
+      "files": [
+        {
+          "file": "voices/stranger/greeting.wav",
+          "seconds": 0.7452,
+          "LUFS": -28.0,
+          "onset_ms": 3.73,
+          "tail_ms": 8.9
+        },
+        {
+          "file": "voices/stranger/surprise.wav",
+          "seconds": 0.7141,
+          "LUFS": -28.0,
+          "onset_ms": 3.75,
+          "tail_ms": 10.0
+        },
+        {
+          "file": "voices/stranger/relief.wav",
+          "seconds": 1.0764,
+          "LUFS": -28.0,
+          "onset_ms": 4.0,
+          "tail_ms": 14.19
+        },
+        {
+          "file": "voices/stranger/thanks.wav",
+          "seconds": 0.9004,
+          "LUFS": -28.0,
+          "onset_ms": 3.29,
+          "tail_ms": 7.19
+        },
+        {
+          "file": "voices/stranger/impatient.wav",
+          "seconds": 0.9211,
+          "LUFS": -28.0,
+          "onset_ms": 3.56,
+          "tail_ms": 8.02
+        },
+        {
+          "file": "voices/stranger/sad.wav",
+          "seconds": 1.1592,
+          "LUFS": -28.0,
+          "onset_ms": 4.23,
+          "tail_ms": 12.29
+        },
+        {
+          "file": "voices/stranger/laugh.wav",
+          "seconds": 1.1178,
+          "LUFS": -28.0,
+          "onset_ms": 3.54,
+          "tail_ms": 7.62
+        },
+        {
+          "file": "voices/stranger/goodbye.wav",
+          "seconds": 0.8073,
+          "LUFS": -28.0,
+          "onset_ms": 3.54,
+          "tail_ms": 6.85
+        }
+      ]
+    },
+    "teresa": {
+      "character": "Teresa",
+      "age": 68,
+      "voice_register": "f",
+      "personality": "serdeczna, powściągliwa",
+      "files": [
+        {
+          "file": "voices/teresa/greeting.wav",
+          "seconds": 0.7632,
+          "LUFS": -28.0,
+          "onset_ms": 3.12,
+          "tail_ms": 9.42
+        },
+        {
+          "file": "voices/teresa/surprise.wav",
+          "seconds": 0.7314,
+          "LUFS": -28.0,
+          "onset_ms": 3.21,
+          "tail_ms": 8.4
+        },
+        {
+          "file": "voices/teresa/relief.wav",
+          "seconds": 1.1024,
+          "LUFS": -28.0,
+          "onset_ms": 3.62,
+          "tail_ms": 10.35
+        },
+        {
+          "file": "voices/teresa/thanks.wav",
+          "seconds": 0.9222,
+          "LUFS": -28.0,
+          "onset_ms": 2.94,
+          "tail_ms": 7.88
+        },
+        {
+          "file": "voices/teresa/impatient.wav",
+          "seconds": 0.9434,
+          "LUFS": -28.0,
+          "onset_ms": 2.96,
+          "tail_ms": 10.4
+        },
+        {
+          "file": "voices/teresa/sad.wav",
+          "seconds": 1.1872,
+          "LUFS": -28.0,
+          "onset_ms": 4.06,
+          "tail_ms": 14.1
+        },
+        {
+          "file": "voices/teresa/laugh.wav",
+          "seconds": 1.1448,
+          "LUFS": -28.0,
+          "onset_ms": 3.08,
+          "tail_ms": 8.73
+        },
+        {
+          "file": "voices/teresa/goodbye.wav",
+          "seconds": 0.8268,
+          "LUFS": -28.0,
+          "onset_ms": 3.08,
+          "tail_ms": 10.38
+        }
+      ]
+    },
+    "tomasz": {
+      "character": "Tomasz",
+      "age": 37,
+      "voice_register": "m",
+      "personality": "cierpliwy stolarz, ojciec Hani",
+      "files": [
+        {
+          "file": "voices/tomasz/greeting.wav",
+          "seconds": 0.6552,
+          "LUFS": -28.0,
+          "onset_ms": 3.56,
+          "tail_ms": 6.08
+        },
+        {
+          "file": "voices/tomasz/surprise.wav",
+          "seconds": 0.6279,
+          "LUFS": -28.0,
+          "onset_ms": 3.6,
+          "tail_ms": 5.02
+        },
+        {
+          "file": "voices/tomasz/relief.wav",
+          "seconds": 0.9464,
+          "LUFS": -28.0,
+          "onset_ms": 3.58,
+          "tail_ms": 11.5
+        },
+        {
+          "file": "voices/tomasz/thanks.wav",
+          "seconds": 0.7917,
+          "LUFS": -28.0,
+          "onset_ms": 3.04,
+          "tail_ms": 7.52
+        },
+        {
+          "file": "voices/tomasz/impatient.wav",
+          "seconds": 0.8099,
+          "LUFS": -28.0,
+          "onset_ms": 3.44,
+          "tail_ms": 8.02
+        },
+        {
+          "file": "voices/tomasz/sad.wav",
+          "seconds": 1.0192,
+          "LUFS": -28.0,
+          "onset_ms": 3.88,
+          "tail_ms": 10.48
+        },
+        {
+          "file": "voices/tomasz/laugh.wav",
+          "seconds": 0.9828,
+          "LUFS": -28.0,
+          "onset_ms": 2.69,
+          "tail_ms": 6.38
+        },
+        {
+          "file": "voices/tomasz/goodbye.wav",
+          "seconds": 0.7098,
+          "LUFS": -28.0,
+          "onset_ms": 3.27,
+          "tail_ms": 10.77
+        }
+      ]
+    },
+    "waldek": {
+      "character": "Waldek",
+      "age": 59,
+      "voice_register": "m",
+      "personality": "rzeczowy sąsiad",
+      "files": [
+        {
+          "file": "voices/waldek/greeting.wav",
+          "seconds": 0.6732,
+          "LUFS": -28.0,
+          "onset_ms": 4.42,
+          "tail_ms": 8.65
+        },
+        {
+          "file": "voices/waldek/surprise.wav",
+          "seconds": 0.6451,
+          "LUFS": -28.0,
+          "onset_ms": 4.06,
+          "tail_ms": 7.02
+        },
+        {
+          "file": "voices/waldek/relief.wav",
+          "seconds": 0.9724,
+          "LUFS": -28.0,
+          "onset_ms": 4.54,
+          "tail_ms": 9.33
+        },
+        {
+          "file": "voices/waldek/thanks.wav",
+          "seconds": 0.8134,
+          "LUFS": -28.0,
+          "onset_ms": 2.79,
+          "tail_ms": 5.54
+        },
+        {
+          "file": "voices/waldek/impatient.wav",
+          "seconds": 0.8321,
+          "LUFS": -28.0,
+          "onset_ms": 3.48,
+          "tail_ms": 7.83
+        },
+        {
+          "file": "voices/waldek/sad.wav",
+          "seconds": 1.0472,
+          "LUFS": -28.0,
+          "onset_ms": 4.79,
+          "tail_ms": 11.62
+        },
+        {
+          "file": "voices/waldek/laugh.wav",
+          "seconds": 1.0098,
+          "LUFS": -28.0,
+          "onset_ms": 2.9,
+          "tail_ms": 6.77
+        },
+        {
+          "file": "voices/waldek/goodbye.wav",
+          "seconds": 0.7293,
+          "LUFS": -28.0,
+          "onset_ms": 3.94,
+          "tail_ms": 8.33
+        }
+      ]
+    },
+    "wanda": {
+      "character": "Wanda",
+      "age": 63,
+      "voice_register": "f",
+      "personality": "konkretna zarządczyni kamienicy",
+      "files": [
+        {
+          "file": "voices/wanda/greeting.wav",
+          "seconds": 0.6912,
+          "LUFS": -28.0,
+          "onset_ms": 3.38,
+          "tail_ms": 5.33
+        },
+        {
+          "file": "voices/wanda/surprise.wav",
+          "seconds": 0.6624,
+          "LUFS": -28.0,
+          "onset_ms": 3.46,
+          "tail_ms": 5.42
+        },
+        {
+          "file": "voices/wanda/relief.wav",
+          "seconds": 0.9984,
+          "LUFS": -28.0,
+          "onset_ms": 3.71,
+          "tail_ms": 7.62
+        },
+        {
+          "file": "voices/wanda/thanks.wav",
+          "seconds": 0.8352,
+          "LUFS": -28.0,
+          "onset_ms": 3.1,
+          "tail_ms": 7.52
+        },
+        {
+          "file": "voices/wanda/impatient.wav",
+          "seconds": 0.8544,
+          "LUFS": -28.0,
+          "onset_ms": 3.19,
+          "tail_ms": 7.23
+        },
+        {
+          "file": "voices/wanda/sad.wav",
+          "seconds": 1.0752,
+          "LUFS": -28.0,
+          "onset_ms": 3.94,
+          "tail_ms": 11.52
+        },
+        {
+          "file": "voices/wanda/laugh.wav",
+          "seconds": 1.0368,
+          "LUFS": -28.0,
+          "onset_ms": 2.83,
+          "tail_ms": 6.96
+        },
+        {
+          "file": "voices/wanda/goodbye.wav",
+          "seconds": 0.7488,
+          "LUFS": -28.0,
+          "onset_ms": 3.17,
+          "tail_ms": 8.35
+        }
+      ]
+    },
+    "zbyszek": {
+      "character": "Zbyszek",
+      "age": 74,
+      "voice_register": "m",
+      "personality": "starszy działkowiec, pogodny",
+      "files": [
+        {
+          "file": "voices/zbyszek/greeting.wav",
+          "seconds": 0.7092,
+          "LUFS": -28.0,
+          "onset_ms": 3.31,
+          "tail_ms": 5.81
+        },
+        {
+          "file": "voices/zbyszek/surprise.wav",
+          "seconds": 0.6796,
+          "LUFS": -28.0,
+          "onset_ms": 3.4,
+          "tail_ms": 8.42
+        },
+        {
+          "file": "voices/zbyszek/relief.wav",
+          "seconds": 1.0244,
+          "LUFS": -28.0,
+          "onset_ms": 4.48,
+          "tail_ms": 11.29
+        },
+        {
+          "file": "voices/zbyszek/thanks.wav",
+          "seconds": 0.8569,
+          "LUFS": -28.0,
+          "onset_ms": 2.67,
+          "tail_ms": 7.4
+        },
+        {
+          "file": "voices/zbyszek/impatient.wav",
+          "seconds": 0.8766,
+          "LUFS": -28.0,
+          "onset_ms": 3.15,
+          "tail_ms": 6.4
+        },
+        {
+          "file": "voices/zbyszek/sad.wav",
+          "seconds": 1.1032,
+          "LUFS": -28.0,
+          "onset_ms": 4.65,
+          "tail_ms": 14.54
+        },
+        {
+          "file": "voices/zbyszek/laugh.wav",
+          "seconds": 1.0638,
+          "LUFS": -28.0,
+          "onset_ms": 3.1,
+          "tail_ms": 7.12
+        },
+        {
+          "file": "voices/zbyszek/goodbye.wav",
+          "seconds": 0.7683,
+          "LUFS": -28.0,
+          "onset_ms": 3.94,
+          "tail_ms": 9.44
+        }
+      ]
+    }
+  }
+}
