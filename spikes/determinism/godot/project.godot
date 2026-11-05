@@ -1,0 +1,21 @@
+; Determinism check of lockcore_gd inside a Godot build (session C, stage 3, task 10).
+; addons/lockcore_gd is copied from game/ by tools/godot_det.sh (not committed here).
+config_version=5
+
+[application]
+
+config/name="LW Determinism"
+run/main_scene="res://det.tscn"
+config/features=PackedStringArray("4.7")
+
+[display]
+
+window/size/viewport_width=412
+window/size/viewport_height=915
+window/handheld/orientation=1
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

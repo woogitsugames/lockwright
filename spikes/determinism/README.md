@@ -31,3 +31,23 @@ python3 spikes/determinism/tools/summarize.py spikes/determinism/results
 - `bench [--steps N]` — koszt `step()` p50/p99/p99.9.
 
 Na telefonie (bez roota): `adb push build/android-arm64-clang/replay_fuzz /tmp/corpus.lwfz /data/local/tmp/` i `adb shell /data/local/tmp/replay_fuzz check /data/local/tmp/corpus.lwfz` oraz `... bench`.
+
+## Determinizm w buildzie gry (etap 3, zadanie 10)
+
+`godot/` to minimalny projekt Godota z samym `lockcore_gd` (kopiowanym z `game/addons/` przez `tools/godot_det.sh`).
+Host (Linux x86_64) nagrywa korpus 630 powtórek — 7 rodzin × tier 1–3 × 10 seedów × trzy ręce (solver, niezdarna z
+deterministycznym szumem całkowitym, przerwana po 60%) — z wejściami w jednostkach 1/256 i RLE, razem z oczekiwanymi
+hashami zdarzeń. APK arm64 (eksport bez Gradle, ta sama biblioteka co w grze) odtwarza korpus i drukuje
+`LW_DET_DONE … digest=<sha256 wszystkich hashy>`; CI porównuje digest z hostem.
+
+```bash
+spikes/determinism/tools/godot_det.sh prepare godot /tmp/det 10   # korpus + samosprawdzenie hosta
+spikes/determinism/tools/godot_det.sh apk godot /tmp/det          # APK (wymaga liblockcore_gd.android.template_debug.so)
+spikes/determinism/tools/godot_det.sh device /tmp/det/build/lw-determinism.apk /tmp/det/host_result.txt   # adb
+```
+
+CI: `spike-determinism-apk.yml` — emulator Androida (obrazy x86_64 API 30 i 34 z translacją ARM, KVM). To uruchamia
+kod arm64 lockcore_gd w prawdziwym runtime Godota na Androidzie, ale przez tłumacza instrukcji; natywny arm64 nadal
+sprawdzają `spike-determinism` (qemu, macOS arm64) i telefon właściciela (to samo APK, wynik na ekranie).
+Uwaga dla sesji B: godot-cpp (master) domyślnie szuka NDK 28.1 — przy NDK 29 trzeba podać `ndk_version=29.0.14206865`
+do scons (inaczej „Could not find NDK toolchain”).
