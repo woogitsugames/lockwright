@@ -1263,6 +1263,37 @@ otwarcie po przytrzymaniu (`hold_progress`). Różnice:
 
 ---
 
+### 2.23 Zamek suwakowy (wariant D-59) — `axial_slider`
+**PL:** Zamek suwakowy · **EN:** Axial Slider Lock · **Tier:** t1–3 (lockcore v0.6) · **Faza:** D-59
+(zlecenie `job.bramah_bureau` t2 — biurko). Research: `docs/research/new-families.md` §6. Wczesna wersja idei
+z §2.11.
+
+**Zasada.** Klucz rurkowy z podłużnymi nacięciami różnej głębokości wciska suwaki rozłożone wokół osi; gdy każdy
+zejdzie na swoją głębokość, jego wcięcie mija płytkę zamykającą i rdzeń się obraca. Od 1817 r. fałszywe wcięcia
+(poziom encyklopedyczny, `new-families.md` §6).
+
+**Logika zagadki.** Moduł `lever` (§2.7) z flagą `slider` (bez detektora, `lever.cpp`): suwak wiąże w kolejności,
+idzie w dół tylko do `t_stick`, sprężyna go cofa, gdy popychacz odpuści; w bramce `gate_align` + `set`;
+fałszywe wcięcie nad bramką łapie (`false_set` + `slider.false_notch`) i puszcza tylko w paśmie przeciwobrotu
+`[0,12; 0,21]` (`counter_rotate`); przepchnięcie poza okno = `overset` (zwolnić poniżej `t_release`, kosztem zrzutu).
+- **Wejścia:** `tension` = moment rdzenia; `pick_depth` = który suwak (na ekranie po obwodzie, kolejno zgodnie
+  z ruchem wskazówek); `pick_lift` > 0 = **wciśnięcie suwaka** (kciuk w górę na ekranie = głębiej).
+- Narzędzie `TOOL_SLIDER_PUSHER` (klucz do bębna + popychacz), materiał stal, rules 1, tiery 1–3.
+
+| Tier | Suwaki | Okno | Pasmo | Overset | Fałszywe/suwak | Limit |
+|---|---|---|---|---|---|---|
+| t1 | 4 | 0,14 | 0,28 | 0,12 | 0 | 90 s |
+| t2 | 5 | 0,12 | 0,24 | 0,10 | 0–1 | 120 s |
+| t3 | 6 | 0,10 | 0,20 | 0,09 | 1 | 150 s |
+
+**ViewModel.** Jak `lever`: `position` = głębokość wciśnięcia, okno, `variant` = liczba fałszywych wcięć, stany,
+`stress`. Widok z czoła: suwaki promieniście (≤ 8 na pierścieniu 280 dp, ≥ 28 dp każdy).
+
+**Weryfikator (1000 seedów/tier).** Skryptowy 0 porażek (t_p50 ~7/8,8/10,6 s), niezdarny 100 %, czujący 100 %
+(t_p50 18/23/28 s). Złote: `axial_slider_t2_s5`, `axial_slider_t3_s12_feel`.
+
+---
+
 ## 3. Tabela zbiorcza
 
 | # | ID | PL / EN | Tier | Faza | Widok | Wejścia | Kluczowa nowa logika | Narzędzie główne |
@@ -1288,6 +1319,7 @@ otwarcie po przytrzymaniu (`hold_progress`). Różnice:
 | 2.20 | `dimple` (D-59) | Wkładka nawiercana / Dimple Cylinder | 1–3 | D-59 | bok, dwa rzędy | T, D, L | kołek teleskopowy | Chorągiewka |
 | 2.21 | `disc_detainer` | Zamek tarczowy / Disc Detainer | 1–3 | D-59 | przekrój wzdłuż osi | T, D, L | tarcze w obie strony, przekręcenie | Obracak tarcz |
 | 2.22 | `egyptian` | Zasuwa starożytna / Ancient Pin Bolt | 1–2 | D-59 | bok | T, D, L | grawitacja, klin | Klucz kołkowy |
+| 2.23 | `axial_slider` (D-59) | Zamek suwakowy / Axial Slider | 1–3 | D-59 | czoło, promieniście | T, D, L | wciskanie + fałszywe wcięcia | Popychacz suwaków |
 | 2.19 | `combo` | Zamek z kółkami / Thumbwheel Combination Lock | 1–4 | D-59 | przód + przekrój tulejek | T, D, L | wiązanie + poślizg tulejki | Ciągadło kabłąka |
 
 T = tension, D = pick_depth, L = pick_lift, R = rotate, P = push.
