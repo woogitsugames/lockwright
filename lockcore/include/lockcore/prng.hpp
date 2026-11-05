@@ -41,7 +41,11 @@ class Pcg32 {
   // Uniform integer in [lo, hi] (inclusive).
   std::int32_t range(std::int32_t lo, std::int32_t hi) {
     if (hi <= lo) return lo;
-    return lo + static_cast<std::int32_t>(below(static_cast<std::uint32_t>(hi - lo) + 1u));
+    // Span in uint32 (well defined, equals hi - lo); the full int32 range has
+    // 2^32 values, which every next() covers uniformly (T25-22).
+    const std::uint32_t span = static_cast<std::uint32_t>(hi) - static_cast<std::uint32_t>(lo);
+    const std::uint32_t off = span == UINT32_MAX ? next() : below(span + 1u);
+    return static_cast<std::int32_t>(static_cast<std::int64_t>(lo) + off);
   }
 
   // True with probability p (Q16).

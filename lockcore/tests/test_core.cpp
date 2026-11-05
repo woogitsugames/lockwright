@@ -110,3 +110,50 @@ TEST_CASE("registry: builtin families") {
   CHECK(reg.find("no_such_family") == nullptr);
   CHECK_EQ(reg.all().size(), static_cast<std::size_t>(7));
 }
+
+TEST_CASE("fixed: edge domains are total (T25-17..21)") {
+  // In-range values are unchanged.
+  CHECK_EQ(q16_ratio(1, 2), Q16_ONE / 2);
+  CHECK_EQ(q16_ratio(-3, 4), -(3 * Q16_ONE) / 4);
+  CHECK_EQ(q16_ratio(30, 100), 19660);
+  // Out of domain: no UB, saturation / 0.
+  CHECK_EQ(q16_ratio(1, 0), 0);
+  CHECK_EQ(q16_ratio(INT64_MAX, 1), INT32_MAX);
+  CHECK_EQ(q16_ratio(INT64_MIN + 1, 1), INT32_MIN);
+  CHECK_EQ(q16_ratio(INT64_MAX, INT64_MAX), Q16_ONE);
+  CHECK_EQ(q16_ratio(1000000, 1), INT32_MAX);
+  CHECK_EQ(q_div(Q16_ONE, 1), INT32_MAX);
+  CHECK_EQ(q_div(-Q16_ONE, 1), INT32_MIN);
+  CHECK_EQ(q_abs(INT32_MIN), INT32_MAX);
+  CHECK_EQ(q_abs(-5), 5);
+  CHECK_EQ(ms_to_steps(INT32_MAX), static_cast<std::int32_t>((static_cast<std::int64_t>(INT32_MAX) * 120 + 500) / 1000));
+  CHECK_EQ(ms_to_steps(20000000), 2400000);
+  CHECK_EQ(quantize_256(INT32_MAX), INT32_MAX / 256 * 256);
+  CHECK_EQ(quantize_256(INT32_MIN), INT32_MIN);
+  CHECK_EQ(quantize_256(INT32_MAX) % INPUT_QUANTUM, 0);
+}
+
+TEST_CASE("prng: full int32 range (T25-22)") {
+  Pcg32 a(9, 3), b(9, 3);
+  // Same sequence as before for ordinary ranges.
+  for (int i = 0; i < 1000; ++i) CHECK_EQ(a.range(10, 20), 10 + static_cast<std::int32_t>(b.below(11)));
+  Pcg32 r(5, 5), raw(5, 5);
+  for (int i = 0; i < 100; ++i) CHECK_EQ(r.range(INT32_MIN, INT32_MAX), static_cast<std::int32_t>(static_cast<std::int64_t>(INT32_MIN) + raw.next()));
+  Pcg32 w(1, 2);
+  for (int i = 0; i < 1000; ++i) {
+    const std::int32_t v = w.range(INT32_MIN, 7);
+    CHECK(v <= 7);
+  }
+}
+
+TEST_CASE("components: stress ratio with a tiny capacity (T25-18)") {
+  ToolStress t;
+  t.init(1, 0, Q16_ONE);  // S_max = 1 (smallest legal)
+  t.load(Q16_ONE, Q16_ONE);
+  std::vector<LockEvent> ev;
+  EventSink sink(ev);
+  t.end_step(0, sink, 0, MaterialId::steel);
+  CHECK_EQ(t.ratio(), Q16_ONE);
+  CHECK_EQ(t.peak_ratio(), Q16_ONE);
+  CHECK(t.broken());
+}
