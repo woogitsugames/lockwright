@@ -77,7 +77,7 @@ Wspólna gramatyka: dotknięcie narzędzia → czarne otoczenie i **jedno okrąg
 
 | | Lupa | Mikroskop | Wziernik |
 |---|---|---|---|
-| Makieta | `mockups/realizm/02-loupe.html` | `03-microscope.html` | `04-borescope.html` |
+| Makieta | `mockups/realizm/02-loupe.html` | `08-microscope.html` | `09-borescope.html` |
 | Render | `art/renders/loupe.png` | `art/renders/microscope_view.png` | `art/renders/borescope_view.png` |
 | Kamera | przed płaszczyzną cięcia, pole ~8 mm, f/22 | przed cięciem, pole ~5 mm, płytka głębia (ostre pasmo linii podziału), pierścień LED wokół obiektywu | w kanale nieprzeciętej wkładki, boczne oko pod stosem z wytrychem, pierścień 6 LED, lekka beczka |
 | Optyka (postprodukcja) | winieta okularu w CSS | lekka aberracja barwna rosnąca ku brzegowi + winieta (kompozytor) | lekka beczka + winieta LED (kompozytor) |
@@ -85,7 +85,7 @@ Wspólna gramatyka: dotknięcie narzędzia → czarne otoczenie i **jedno okrąg
 | Czytanie w skali szarości | ciemna szczelina między jasnym mosiądzem a niklem | ciemna linia podziału ciągnie się przez całą szerokość pola; talia szpulki to ciemna przewężka **na** tej linii | wiszący koniec pinu = jasna kopułka; uniesiony = kopułka w ciemnym pierścieniu otworu; overset = otwór bez kopułki |
 | Dźwięk / haptyka przy otwarciu | szklany brzęk / brak | stuk metalu o blat, cichy szum zębatki ostrości / brak | szelest oplotu, klik diod / brak |
 
-Mikroskop jest **meblem warsztatu**, nie kieszenią: w terenie go nie ma, więc ekran zamka przy drzwiach nigdy go nie pokazuje. W warsztacie stoi obok imadła i dotyka się go tak jak lupy. Ekran zakupu w warsztacie to blat z przedmiotami i papierowymi metkami (`05-workshop-optics.html`, D-25): bez kart, bez cen „w kafelkach”.
+Mikroskop jest **meblem warsztatu**, nie kieszenią: w terenie go nie ma, więc ekran zamka przy drzwiach nigdy go nie pokazuje. W warsztacie stoi obok imadła i dotyka się go tak jak lupy. Ekran zakupu w warsztacie to blat z przedmiotami i papierowymi metkami (`10-workshop-optics.html`, D-25): bez kart, bez cen „w kafelkach”.
 
 ## 5. Dotyk: strefy kciuków i odcisk kciuka
 

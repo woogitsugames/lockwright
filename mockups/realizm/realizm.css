@@ -51,7 +51,7 @@ body{background:var(--ink);color:#eee;font-family:"Atkinson Hyperlegible Next",s
 .tag.t1{right:6vw;top:40%}
 .tag.t2{left:6vw;bottom:calc(20px + env(safe-area-inset-bottom));transform:rotate(3deg)}
 @media (orientation:landscape){
-  .field.mic,.field.bore{width:92vh;height:92vh;margin:-46vh;top:50%}
+  .field.mic,.field.bore{width:82vh;height:82vh;margin:-41vh;top:45%}
   .rail{display:none}
   .bench-top{right:50%;height:100%}
   .bench-bot{left:50%;top:0}
