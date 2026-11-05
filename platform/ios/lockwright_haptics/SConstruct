@@ -1,19 +1,25 @@
-# Build the LockwrightHaptics GDExtension for iOS (xcframework) with godot-cpp 4.7.
-# Usage (macOS): scons platform=ios target=template_release arch=arm64 (and x86_64 for simulator)
+# Build the LockwrightHaptics iOS plugin (static .a for the .gdip, D-21) with godot-cpp 4.7.
+# Usage (macOS): GODOT_CPP_SCONSTRUCT=<godot-cpp>/SConstruct scons platform=ios target=template_release arch=arm64
 import os
 
 env = SConscript(os.environ.get("GODOT_CPP_SCONSTRUCT", "godot-cpp/SConstruct"))
 
-sources = Glob("Sources/*.cpp") + Glob("Sources/*.mm")
+cpp_sources = Glob("Sources/*.cpp")
+mm_sources = Glob("Sources/*.mm")
 
 env.Append(CPPPATH=["include"])
-env.Tool("objcxx")
-env.Append(OBJCSUFFIXES=[".mm"], OBJCXXFLAGS=["-x", "objective-c++", "-std=gnu++20"])  # compile .mm as ObjC++
+
+# .mm must be compiled as ObjC++: separate env with explicit -x objective-c++.
+objc_env = env.Clone()
+objc_env.Append(CXXFLAGS=["-x", "objective-c++", "-std=gnu++20", "-fobjc-arc"])
+
+cpp_objs = env.Object(cpp_sources)
+mm_objs = objc_env.Object(mm_sources)
+
 library = env.SharedLibrary(
     "bin/liblockwright_haptics.{}.{}.{}.a".format(env["platform"], env["target"], env["arch"]),
-    sources,
+    cpp_objs + mm_objs,
 )
-# ObjC++ + CoreHaptics/AVFAudio frameworks
-env.Append(LINKFLAGS=["-framework", "CoreHaptics", "-framework", "AVFAudio", "-framework", "Foundation"])
+env.Append(LINKFLAGS=["-framework", "CoreHaptics", "-framework", "AVFAudio", "-framework", "Foundation", "-framework", "UIKit"])
 
 Default(library)
