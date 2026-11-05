@@ -295,7 +295,7 @@ def build_audio_tracks(tmp_dir: str, out_dir: str):
 
 
 def render_endcard_image(bg_png_path: str, out_png_path: str, lang: str = 'pl'):
-    """Render LOCKWRIGHT title and store availability subtitle onto R13 enamel plate."""
+    """Render LOCKWRIGHT title and localized identity subtitle onto R13 enamel plate."""
     im = Image.open(bg_png_path).convert('RGBA')
     W, H = im.size
     overlay = Image.new('RGBA', (W, H), (0, 0, 0, 0))
@@ -307,7 +307,7 @@ def render_endcard_image(bg_png_path: str, out_png_path: str, lang: str = 'pl'):
     f_sub = ImageFont.truetype(FONT_SANS, sub_size)
 
     title_txt = 'LOCKWRIGHT'
-    sub_txt = 'Dostępne na Android · iOS' if lang == 'pl' else 'Available on Android · iOS'
+    sub_txt = 'Pogotowie Zamkowe' if lang == 'pl' else 'Locksmith on Call'
 
     # Enamel plate sits centered horizontally and right around Y = 0.49 * H (well inside 14%..80% safe area)
     cx = W // 2
