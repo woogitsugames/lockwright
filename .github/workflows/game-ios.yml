@@ -40,28 +40,26 @@ jobs:
         run: |
           git clone --depth 1 https://github.com/godotengine/godot-cpp.git godot-cpp
 
-      - name: Build godot-cpp (ios release + debug)
+      - name: Build godot-cpp (ios device, API 4.7)
         run: |
           cd godot-cpp
           scons platform=ios target=template_release arch=arm64 custom_api_file=gdextension/extension_api-4-7.json -j8
-          scons platform=ios target=template_debug arch=x86_64 custom_api_file=gdextension/extension_api-4-7.json -j8
+          scons platform=ios target=template_debug arch=arm64 custom_api_file=gdextension/extension_api-4-7.json -j8
 
       - name: Build LockwrightHaptics static lib (fat .a for .gdip, D-21)
         run: |
           cd platform/ios/lockwright_haptics
           GODOT_CPP_SCONSTRUCT=$GITHUB_WORKSPACE/godot-cpp/SConstruct scons platform=ios target=template_release arch=arm64 custom_api_file=$GITHUB_WORKSPACE/godot-cpp/gdextension/extension_api-4-7.json -j8
-          GODOT_CPP_SCONSTRUCT=$GITHUB_WORKSPACE/godot-cpp/SConstruct scons platform=ios target=template_debug arch=x86_64 custom_api_file=$GITHUB_WORKSPACE/godot-cpp/gdextension/extension_api-4-7.json -j8
           mkdir -p ../../../game/addons/lockwright_haptics/ios
-          lipo -create bin/liblockwright_haptics.ios.template_release.arm64.a bin/liblockwright_haptics.ios.template_debug.x86_64.a \
-            -output ../../../game/addons/lockwright_haptics/ios/liblockwright_haptics.a
+          cp bin/liblockwright_haptics.ios.template_release.arm64.a ../../../game/addons/lockwright_haptics/ios/liblockwright_haptics.a
 
       - name: Import + export Godot project to Xcode (unsigned)
         env:
           CODE_SIGNING_ALLOWED: 'NO'
         run: |
-          mkdir -p build
+          mkdir -p game/build
           /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --path game --import
-          CODE_SIGNING_ALLOWED=NO /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --path game --export-debug "iOS" build/lockwright-debug.ipa
+          CODE_SIGNING_ALLOWED=NO /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --path game --export-debug "iOS" game/build/lockwright-debug.ipa
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
