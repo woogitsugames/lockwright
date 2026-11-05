@@ -112,7 +112,7 @@ jobs:
           mkdir -p game/build
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path game --import
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path game \
-            --export-debug "Android" game/build/lockwright-debug.apk \
+            --export-debug "Android" build/lockwright-debug.apk \
             --keystore /tmp/debug.keystore --keystore-user androiddebugkey --keystore-pass android
 
       - name: Upload APK

@@ -59,7 +59,7 @@ jobs:
         run: |
           mkdir -p game/build
           /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --path game --import
-          CODE_SIGNING_ALLOWED=NO /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --path game --export-debug "iOS" game/build/lockwright-debug.ipa
+          CODE_SIGNING_ALLOWED=NO /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --path game --export-debug "iOS" build/lockwright-debug.ipa
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
