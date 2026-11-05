@@ -1,0 +1,126 @@
+key,fr
+boot.calib_title,Deux impulsions à 120 ms d'intervalle : combien en sentez-vous et en entendez-vous ?
+boot.calib_two,Deux
+boot.calib_one,Une
+boot.calib_none,Aucune
+boot.calib_skip,Passer
+settings.feel_section,Sensations (retour haptique)
+settings.quality,Qualité graphique
+settings.quality_auto,Auto (mesurée)
+settings.quality_high,Élevée
+settings.quality_medium,Moyenne
+settings.quality_low,Faible (petits appareils)
+showcase.notebook_prefix,Extrait du carnet du maître :
+about.licenses,"Polices : Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Moteur : Godot 4 (MIT). Extensions : godot-cpp (MIT), GUT (MIT). Liste complète : THIRD-PARTY-NOTICES.txt dans l'application."
+about.post_release_unlocked,Chapitre 7 (« Une clé pour tous ») débloqué.
+settings.report_problem,Signaler un problème
+settings.report_copied,Journal copié dans le presse-papiers. Collez-le dans votre message : aucun envoi automatique.
+settings.report_empty,Le journal est vide.
+app.title,Lockwright: Serrurier de garde
+common.back,Retour
+common.close,Fermer
+common.on,Activé
+common.off,Désactivé
+common.coins,pièces
+menu.title,Lockwright
+menu.play,Prendre son service
+menu.workshop,Atelier
+menu.showcase,Vitrine
+menu.settings,Paramètres
+menu.about,À propos du jeu
+menu.jobs,Interventions
+jobs.title,Interventions
+job.verify,Vérifier le droit d'accès
+job.accept,Accepter l'intervention
+job.refuse,Refuser l'intervention
+job.opened,Serrure ouverte. Facture réglée.
+job.reward_fmt,Récompense : {n} pièces
+job.tip_fmt,Pourboire (ouverture soignée) : {n} pièces
+common.continue,Continuer
+verify.title,Vérifier le droit d'accès
+verify.hint,Le client présente ses justificatifs. À vous de décider.
+verify.ask_more,Demander un autre justificatif
+verify.card.id,Pièce d'identité
+verify.card.witness,Voisin témoin
+verify.card.manager,Gestionnaire / concierge
+verify.card.lease,Contrat de bail
+verify.card.resolution,Décision des résidents
+verify.card.deed,Acte de propriété
+verify.card.inheritance,Document de succession
+verify.card.institution,Courrier d'un organisme
+verify.card.letter,Lettre
+verify.card.photo,Photo
+verify.card.receipt,Ticket de caisse
+verify.card.invoice,Facture
+verify.card.address_app,Adresse dans l'application
+verify.card.police,Intervention de la police
+verify.card.bailiff,Huissier de justice
+verify.refused,Les justificatifs ne suffisent pas. Je ne peux pas ouvrir.
+verify.refused_rep,La nouvelle circule : +5 de réputation
+tutorial.title,Tutoriel — serrure d'entraînement
+tutorial.stage,Étape {n} sur 3
+tutorial.done,Entraînement terminé. Place à la première intervention.
+hud.magnifier,Loupe
+settings.title,Paramètres
+settings.haptics,Retour haptique
+settings.haptics_enabled,Retour haptique activé
+settings.haptics_intensity,Intensité haptique
+settings.haptics_test,Impulsion d'essai
+settings.haptics_calibration,Étalonnage
+settings.haptics_calibration_two_clicks,Sentez-vous deux clics ?
+settings.haptics_calibration_two_clicks_yes,Deux
+settings.haptics_calibration_two_clicks_one,Un
+settings.haptics_calibration_two_clicks_none,Aucun
+settings.continuous_resistance,Résistance continue
+settings.volume_master,Volume général
+settings.volume_sfx,Effets sonores
+settings.volume_ambience,Ambiance sonore
+settings.language,Langue
+settings.language_system,Langue de l'appareil
+settings.language_pl,Polski
+settings.language_en,English
+settings.language_de,Deutsch (développement)
+settings.dark_mode_assist,Contraste élevé
+settings.reading_aid,Repères à la craie
+settings.wide_windows,Fenêtres élargies
+settings.reset,Réinitialiser les paramètres
+settings.text_scale,Taille du texte
+settings.reduce_motion,Réduire les animations
+settings.dark_mode_note,"Dans le noir, fiez-vous au son. Les vibrations du téléphone aident aussi."
+run.title,Service sans fin
+run.lock_n,Serrure {n}
+run.lives_left,Crochets de rechange
+run.workshop_stop,Pause à l'atelier
+run.finished,Fin du service — {n} pièces
+run.rubber_band,Un instant de répit. La prochaine serrure sera plus simple.
+optics.loupe,Gros plan sur la ligne de césure
+optics.microscope,Bavures et fausses encoches
+optics.borescope,Éléments au fond du canal
+pause.title,En pause
+pause.resume,Reprendre
+pause.settings,Paramètres
+pause.dark_mode,Dans le noir
+pause.restart,Recommencer cette serrure
+pause.quit,Quitter la serrure
+lock.pause,Pause
+workshop.title,Atelier
+workshop.coins,Pièces
+workshop.buy,Acheter
+workshop.repair,Réparer
+workshop.owned,Possédé
+workshop.integrity,État de l'outil
+workshop.repair_cost,Réparation : {0} pièces
+workshop.broken,Cassé
+workshop.reward,Récompense de progression
+showcase.title,Vitrine
+showcase.locked,Verrouillé — à débloquer dans le jeu
+showcase.source,Source
+showcase.unknown_source,Source non encore vérifiée
+about.title,À propos du jeu
+about.notice,"Ceci est un jeu, pas une formation. Les mécanismes sont inventés et simplifiés. Un vrai serrurier vérifie toujours que son client a le droit d'entrer dans les lieux."
+about.licensed_assets,Ressources et licences
+dev.haptics_lab.title,Laboratoire haptique
+dev.haptics_lab.tier,Niveau
+dev.haptics_lab.force_fallback,Forcer le mode de secours
+dev.haptics_lab.resistance,Résistance
+dev.haptics_lab.caps,Capacités
