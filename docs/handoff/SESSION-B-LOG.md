@@ -52,3 +52,13 @@
 - **CI zielone:** `game-android` (AAR + APK, artefakty) i `game-tests` (gdextension-build + lock_test przez prawdziwe lockcore, GUT, smoke, walidacja danych, check_sfx). `game-ios` w toku — buduje godot-cpp + obie liby i eksportuje projekt do Xcode na macos-latest.
 
 **Otwarte:** game-ios CI jeszcze w toku (długi build godot-cpp na macOS); zrzuty ekranu nadal niemożliwe lokalnie (brak GPU).
+
+## 2026-11-05 — Sesja B zakończona: wszystkie 8 zadań wypchnięte, CI zielone
+
+**Status CI na main (commit 13ab571):** `game-ios` ✅ (buduje godot-cpp + liblockwright_haptics.a + lockcore_gd xcframeworks, eksportuje projekt do Xcode i kompiluje `xcodebuild ... CODE_SIGNING_ALLOWED=NO`), `game-android` ✅ (AAR pluginu + debug APK 87 MB jako artefakt), `game-tests` ✅ (gdextension-build + lock_test przez prawdziwe lockcore, GUT, smoke, validate.py, check_sfx.py).
+
+**Lokalnie zweryfikowane:** smoke OK, GUT all passed, lock_test OK przez LockcoreSession, wszystkie sceny (boot/main_menu/lock/workshop/showcase/settings/haptics_lab) bootują headless bez błędów, `check_sfx.py` OK, `validate.py` OK (29 zleceń, 20 notek, 146 kluczy i18n), debug APK zbudowany lokalnie.
+
+**Decyzje dodane:** D-19 (i18n CSV w runtime), D-20→D-21 (iOS: .gdip zamiast GDExtension — .gdextension tylko-iOS blokował walidację eksportu Androida).
+
+**Znane ograniczenia:** zrzuty ekranu wymagają GPU (brak w sandboxie) — `docs/handoff/screens/` puste; menu 2D zamiast pełnej sceny 3D (czeka na assety z `art/`); fizyczne testy haptyki/audio na urządzeniach (spike 1–3) poza zakresem tego środowiska.
