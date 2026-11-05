@@ -306,13 +306,23 @@ func _run() -> void:
 
 # ------------------------------------------------------------------ lock scenes
 ## Inputs of lockcore's "feel" (average player) or "clumsy" bot for this lock, as rows of floats (1/256 units, RLE).
+# lockcore family tier ranges (lockcore/src/families/* min_tier/max_tier); the game clamps
+# internally, replay_tool record validates strictly, so clamp here the same way
+const FAMILY_TIER_RANGE := {
+	"pin_tumbler": [2, 7], "ring_combo": [2, 3], "lever": [3, 5], "lever_detector": [5, 6],
+	"wafer": [1, 3], "warded": [1, 2], "wooden_pin": [1, 1],
+}
+
+
 func _profile_rows(fam: String, seed: int, tier: int, profile: String) -> Array:
 	var tool := OS.get_environment("QA_REPLAY_TOOL")
 	if tool == "":
 		return []
-	var tmp := OS.get_user_data_dir().path_join("qa_profile_%s_%d_%d.json" % [fam, seed, tier])
+	var rng: Array = FAMILY_TIER_RANGE.get(fam, [1, 7])
+	var rec_tier: int = clampi(tier, int(rng[0]), int(rng[1]))
+	var tmp := OS.get_user_data_dir().path_join("qa_profile_%s_%d_%d.json" % [fam, seed, rec_tier])
 	var out := []
-	var rc := OS.execute(tool, ["record", fam, str(tier), str(seed), tmp, "--" + profile], out, true)
+	var rc := OS.execute(tool, ["record", fam, str(rec_tier), str(seed), tmp, "--" + profile], out, true)
 	if not FileAccess.file_exists(tmp):
 		printerr("QA_REPLAY_TOOL_FAIL rc=%d tool=%s out=%s" % [rc, tool, " ".join(PackedStringArray(out)).strip_edges()])
 		return []
