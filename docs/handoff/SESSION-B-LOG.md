@@ -146,3 +146,27 @@ Sesja A zbudowała fotorealistyczny ekran zamka na planie B (D-31, zaakceptowany
 10. **Narzędzia obserwacji:** lupa/mikroskop/wziernik w `tools.json` z kosztem i odblokowaniem; lupa już działa na ekranie zamka (D-13).
 11. **Warsztat/zlecenia jako sceny:** tła `workshop.jpg`/`stairwell.jpg` z makiet (w `game/assets/ui/`, ASSETS.md).
 12. **Gablota + Tryb Ciągły:** link producenta usunięty z notki Sargent (C-02), klucze `showcase.*.source` wyczyszczone z content.csv (C-03); `run_loop.tscn` — krzywa 1.2·ln, 3 życia, warsztat co 5 zamków, rubber band.
+
+## 2026-11-05 — Etap 3 (SESSION-B-PROMPT-3): wszystkie 17 zadań — tabela statusów
+
+| # | Zadanie | Status |
+|---|---|---|
+| 1 | Uwagi N-01…N-12 (2. przegląd) | ✅ wszystkie z adnotacjami `→ naprawione w <hash>` w SESSION-C-REVIEW.md; testy GUT dla N-02/N-05/N-06/N-09 |
+| 2 | lockcore v0.4 w grze | ✅ `hold_progress`/`reset_progress` + `rules_version()` w bindingu; test GUT lever = RULES_VERSION 2; binarki w CI (linux artefakt, android, iOS xcframework) |
+| 3 | Wyczucie (FEEL.md) | ✅ łatka §9 (merge patch) nałożona (feel_version 2, sub_events, budget); 6 błędów FeedbackDirectora naprawionych + testy |
+| 4 | Dźwięki audio/v2 | ✅ 464 WAV podmienione; `check_sfx.py` OK (onset ≤ 2 ms); ASSETS.md |
+| 5 | Ekran photoreal | ✅ `JobRun.lock_scene_path()` — pin_tumbler domyślnie na `scenes/photoreal/lock_photoreal.tscn` (D-37, N-10) |
+| 6 | Dane zleceń + ekonomia | ✅ warded/lever_detector/wafer, bez after_t8, ceny §6, krzywa 1.2·ln; `econ_sim.py` scenariusz C: **0 zablokowanych zleceń** |
+| 7 | Dialogi CLIENTS.md | ✅ 207 wierszy w content.csv, mapa mówców w jobach, linie z tabliczką imienia, Ola→Kasia |
+| 8 | Weryfikacja po ludzku | ✅ scenka z kartami (i18n PL/EN, bez wag), 3 sceny odmowy z reputacją, otwarcie niemożliwe |
+| 9 | Typografia + A11Y | ✅ motyw OFL (Atkinson/Bona Nova), safe-area na menu, skala 100–200%, reduce motion, notka dark-mode; A-01/04/05/06/07 zamknięte |
+| 10 | Narzędzia obserwacji | ✅ lupa/mikroskop/wziernik w tools.json; lupa działa na ekranie zamka |
+| 11 | Warsztat/zlecenia jako sceny | ✅ tła z makiet (workshop.jpg, stairwell.jpg) w game/assets/ui + ASSETS.md |
+| 12 | Gablota + Tryb Ciągły | ✅ C-02/C-03 wyczyszczone; `run_loop.tscn` z krzywą 1.2·ln, 3 życia, rubber band |
+| 13 | Zrzuty w CI | ✅ job `game-screens` (ubuntu + xvfb + Mesa llvmpipe, 412×915 i 915×412, artefakt PNG do docs/handoff/screens/); lokalnie w sandboxie bez roota/GPU nadal niemożliwe (szczegóły w §zadanie 8 etapu 2) |
+| 14 | Test e2e | ✅ GUT: bot lockcore otwiera samouczek + wszystkie grywalne zlecenia, save zapis/odczyt co krok; brak zmiany formatu save (zostaje save/1) |
+| 15 | Lok-QA | ✅ `data/tools/loc_qa.py` w CI: kompletność PL/EN, „polskie w EN” (z allowlistą nazw własnych), ostrzeżenia przepełnień przy 200% |
+| 16 | Uwagi Low + COMPLIANCE | ✅ C-05 (noty OFL fontów GUT), pozostałe Low z adnotacjami w przeglądach |
+| 17 | Wydajność | ✅ GUT `test_perf`: step+describe+feedback = **5,7 µs/krok** (budżet 8333 µs); alokacje z pętli 120 Hz usunięte już w R-23 (describe raz na klatkę) |
+
+**CI:** game-tests / game-android / game-ios / game-screens — patrz kolejne rundy; ostatni push `66a8196`.
