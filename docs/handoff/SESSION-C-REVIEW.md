@@ -471,6 +471,21 @@ Metoda: czytanie kodu, lokalnie na kopii `game/` (Godot 4.7.2 headless): **smoke
 **N-08 · Low · Artefakty buildu wracają do gita (R-48)** · `game/addons/lockcore_gd/bin/*.so`
 - Commit 9981ec0 podmienia `liblockcore_gd.*.so` w repo. Przy kilku sesjach to konflikty binarne i rosnąca historia. **Poprawka:** budować w CI i przekazywać jako artefakt (jak `spike-*.yml`), lokalnie skrypt `build_gdext.sh`.
 
-**Samouczek (S1–S3, `docs/ONBOARDING.md`)** — w `game/` nie ma jeszcze kodu samouczka (szukane: `tutorial`, `onboarding`, `samouczek`, `imadło` w `game/scripts` i `game/scenes`); przegląd przy następnej rundzie.
+**Samouczek, HUD diegetyczny, tryb ciemności (commit 3b6d9ed, sprawdzone 2026-11-05 ok. 08:05)**
+
+**N-09 · High · Samouczek nigdy się nie kończy** · `game/scripts/ui/tutorial.gd:17-34`, `game/scripts/lock/lock_scene.gd:134-142`, `game/scripts/lock/job_run.gd`
+- **Co:** `tutorial._start_stage()` ustawia `JobRun.current_job = {"id": "tutorial.sN", …}` i przechodzi do `lock.tscn` przez `change_scene_to_file` (scena samouczka jest zwalniana). Po otwarciu zamka `_check_finished` widzi niepuste `current_job` i idzie do **`job_payment.tscn`**, a `JobRun.complete()` dopisuje `tutorial.s1` do `jobs_completed` i wraca do **listy zleceń**. `tutorial.on_lock_finished()` nie jest nigdzie wywoływane, więc `tutorial_done` nigdy nie jest ustawiane.
+- **Skutek:** każde „Rozpocznij bieg” w menu wraca do S1 (pętla), a samouczki pojawiają się jako „zlecenia wykonane” z ekranem zapłaty 0 monet.
+- **Poprawka:** osobny tryb w `JobRun` (np. `mode = &"tutorial"`) i w `_check_finished` powrót do `tutorial.tscn` ze stanem etapu w `Save`/`JobRun` (scena po powrocie odtwarza `_stage`), bez `job_payment`; test GUT przejścia S1→S3.
+
+**N-10 · Medium · Menu wciąż prowadzi do starego `lock.tscn`, nie do ekranu planu B (D-31)** · `game/scripts/ui/main_menu.gd:22-25`, `job_verify.gd:26`
+- D-31 jest zaakceptowana, a scena sesji A (`scenes/photoreal/lock_photoreal.tscn`) ma tę samą „hydraulikę” sesji. Gra i samouczek dalej otwierają `lock.tscn` (prymitywy 3D + nowa nakładka HUD z `assets/ui/tray.jpg` jako quad 3D). Ryzyko: dwa ekrany zamka rozjadą się w zachowaniu (lupa, kreda, życia są tylko w starym).
+- **Poprawka:** jedna ścieżka do sceny zamka (stała w `JobRun`/`Events`), przełączenie na plan B, a funkcje HUD przenieść do widoku sesji A (uzgodnić podział z sesją A).
+
+**N-11 · Low · Kreda: krzyżyk dla overset** · `lock_scene.gd` `_draw_chalk`
+- Krzyżyk jest biały (nie czerwony), więc nie łamie wprost zakazu „czerwony X”, ale DESIGN §1 opisuje overset kształtem mechanizmu (stopka nad linią, sztywny rdzeń). Lepiej znak, który opisuje stan („kreska nad linią podziału”), niż ocenę „źle”.
+
+**N-12 · Low · Notka „to gra, nie kurs” jako panel na 3 s** · `game/scripts/ui/boot.gd`, `boot.tscn:12`
+- ONBOARDING §3.3 / D-21: pieczątka na kartce bloczka, bez okna. Teraz to `PanelContainer` wyświetlany 3 s przy pierwszym starcie (tekst przez i18n — OK). Kosmetyka zgodności z D-21.
 
 **Zmiany wizualne / dostępność nowych ekranów** — w osobnym raporcie `docs/handoff/A11Y-AUDIT.md`.
