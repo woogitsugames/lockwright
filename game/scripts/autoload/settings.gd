@@ -13,6 +13,7 @@ const DEFAULTS := {
 	"volume_sfx": 1.0,
 	"volume_ambience": 0.8,
 	"volume_music": 0.8,
+	"volume_voice": 1.0,  # D-57: "Voices" slider (Voice bus: dialogue lines + vocalizations)
 	"language": "",  # empty = follow system
 	"dark_mode_assist": false,
 	"reading_aid": false,

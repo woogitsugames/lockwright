@@ -78,6 +78,8 @@ settings.continuous_resistance,Continuous resistance,Opór ciągły,Ständiger W
 settings.volume_master,Overall volume,Głośność główna,Gesamtlautstärke
 settings.volume_sfx,Sound effects,Dźwięki efektów,Soundeffekte
 settings.volume_ambience,Ambience,Tło,Umgebungsgeräusche
+settings.volume_voice,Voices,Głosy,Stimmen
+dialogue.skip_all,Show whole conversation,Pokaż całą rozmowę,Ganzes Gespräch zeigen
 settings.language,Language,Język,Sprache
 settings.language_system,Device language,Systemowy,System
 settings.language_pl,Polski,Polski,Polski
