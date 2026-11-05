@@ -112,11 +112,13 @@ Najważniejsze, w kolejności:
 - **Poprawka:** `type="WorldEnvironment"`.
 
 **R-13 · Low** · `lockcore_session_gd.cpp:75-77`
+→ naprawione w 6e0c398 (binding zaokrągla do 1/256 przez lround przed q16)
 - **Co:** konwersja `double → q16` obcina wartość, a `quantize()` w rdzeniu zaokrągla dopiero potem. Same wejścia z urządzenia nie są nigdzie zapisywane.
 - **Dlaczego ważne:** powtórka nagrana po stronie Godota musi zapisywać wartości już po kwantyzacji, bo inaczej hash się rozjedzie.
 - **Poprawka:** zaokrąglać do 1/256 w bindingu (`lround(x*256)`) i tę samą wartość zapisywać do powtórki.
 
 **R-14 · Low** · `input_sampler.gd:8-9, 45-60`
+→ częściowo: martwa strefa przez DisplayServer.screen_get_scale(); parametry samplera w nagłówku powtórki — odłożone do replay/1 (R-10)
 - **Co:**
   - martwa strefa jest w px, a nie w dp;
   - martwa strefa głębokości jest liczona podwójnie (`local.x` znormalizowane do połowy ekranu, a potem razy `size.x`);
@@ -139,6 +141,7 @@ Najważniejsze, w kolejności:
 - **Poprawka:** w CI `assert(ClassDB.class_exists("LockcoreSession"))` oraz test GUT, który odtwarza 1–2 złote powtórki przez binding i porównuje `event_hash()`.
 
 **R-17 · Medium** · `game/tests/gut/*`
+→ naprawione w 6e0c398 (testy InputSampler, FeedbackDirector, instancjonowanie lock.tscn w smoke)
 - **Co:** brak testów dla:
   - `InputSampler` (wielodotyk, puszczenie kciuka, czyli R-02; 30/60/120 FPS przy `physics_ticks_per_second=120`);
   - priorytetów, limitów transientów, koalescencji 30 ms, duckingu i `essential`/`continuousFloor` z TECH §3.5 (FeedbackDirector nie istnieje, a TECH §5.2 planuje dla niego GUT);
@@ -148,6 +151,7 @@ Najważniejsze, w kolejności:
 - **Poprawka:** dodać testy razem z FeedbackDirectorem; w smoke uruchomić `lock.tscn` i liczyć `push_warning`/`push_error`.
 
 **R-18 · Low** · `lockcore/tests/golden/`
+→ odrzucone dla sesji B: golden replaye są własnością lockcore/ (sesja A); binding ma test determinizmu z golden hash (R-16)
 - **Co:** złote powtórki nie obejmują:
   - `pin_tumbler` t3, t4, t6;
   - `wafer` t1, t3 (wafer ma 1 plik i 3 testy);
@@ -159,6 +163,7 @@ Najważniejsze, w kolejności:
 - **Poprawka:** jeden golden na tier oraz po jednym teście scenariusza na sub-zdarzenie.
 
 **R-19 · Low** · `game/tests/gut/test_i18n.gd:13`, `test_save.gd`
+→ częściowo w 6e0c398: test i18n łapie puste PL/EN; int→float i atomowy zapis — własność save/1, rozszerzę przy migracjach
 - **Co:** test i18n sprawdza tylko niepuste PL i EN. Nie łapie skrótów EN (R-31), spacji wiodących (`strings.csv:21` „ Dwa”) ani placeholderów. Test zapisu nie sprawdza:
   - konwersji int → float przez `JSON.parse_string` (`coins` wraca jako `140.0`);
   - zapisu atomowego;
@@ -200,6 +205,7 @@ Najważniejsze, w kolejności:
   - wyniki `pattern_for` buforować.
 
 **R-24 · Medium** · `game/project.godot:40`, `lock_scene.gd:86`
+→ odłożone: akumulator 1/120 w _process zamiast physics_ticks — wymaga refaktoryzacji pętli; describe już raz na klatkę (R-23)
 - **Co:** symulacja działa w `_physics_process` przy 120 tickach. Przy 60 FPS dwa kroki dostają to samo wejście, a przy 30 FPS cztery kroki wykonują się seryjnie w jednej klatce.
 - **Dlaczego ważne:** zdarzenia z kilku kroków lecą do mostków w jednej chwili, więc jitter haptyki i dźwięku przekracza |Δ| ≤ 15 ms (TECH §3.5). Do tego cały silnik fizyki Godota też liczy 120 Hz.
 - **Poprawka:** własny akumulator 1/120 s w `_process`, zdarzenia z `t_step` przesunięte o wiek kroku (`logic_tick` jest w API mostka z TECH §2.5), fizyka Godota na 60.
@@ -216,6 +222,7 @@ Najważniejsze, w kolejności:
 - **Poprawka:** `connect(..., CONNECT_ONE_SHOT)`, dodać bus layout, kradzież głosu wg priorytetu.
 
 **R-27 · Low** · `art/renders/section.png` (8,1 MB, 2160×2880), WIP `spikes/lit-metal/assets` (39 MB, 9 tekstur 2K + 15 × 1K)
+→ poza zakresem sesji B (art/, spikes/) — sesja A/C
 - **Co:** duże pliki w gicie. Dla gry: 2K ASTC 4×4 z mipmapami to ok. 5 MB VRAM na teksturę.
 - **Poprawka:** mastery renderów poza repo (LFS albo release), a w grze budżet tekstur per scena wpisany w kryteria spike'u 4.
 
@@ -263,18 +270,22 @@ Najważniejsze, w kolejności:
 - **Poprawka:** `exclude_filter="addons/gut/*,tests/*,scenes/dev/*"`, wpis D-NN z wyjątkiem dla GUT i wpisy w `ASSETS.md` (GUT MIT, godot-cpp MIT, fonty OFL).
 
 **R-34 · Low** · `docs/ASSETS.md`
+→ poza zakresem sesji B (art/ i spikes/ należą do innych sesji)
 - **Co:** brak wpisów dla `art/renders/*.png|jpg` (5 plików) oraz HDRI `interior.exr` z `datafiles/studiolights` Blendera, użytego w `art/blender/lw_common.py:515` i jako `spikes/lit-metal/assets/interior.hdr` (WIP). Licencja HDRI jest do weryfikacji (najpewniej CC0, ale trzeba to sprawdzić).
 - **Poprawka:** dopisać przed commitem WIP.
 
 **R-35 · Low** · `game/scenes/main_menu.tscn`, `settings.tscn`, `game/scripts/ui/workshop_screen.gd:35`
+→ częściowo: fonty OFL z mockups czekają na motyw; integralność jako % to placeholder warsztatu — docelowo zadziory na grocie (HUD §3)
 - **Co:** menu to stosy domyślnych `Button` bez motywu i fontu OFL (domyślny font Godota jako jedyny krój), czyli wygląd „kart SaaS”. Warsztat pokazuje integralność narzędzia w procentach, co jest blisko zakazanego „paska wytrzymałości” (D-12 każe pokazywać zużycie na grocie). SESSION-B-LOG oznacza to jako tymczasowe.
 - **Poprawka:** motyw z fontami z `mockups/fonts`; integralność jako stopień zadziorów (0–4) na rysunku narzędzia.
 
 **R-36 · Low** · `workshop_screen.gd:21, 35, 37`, `showcase_screen.gd:30`, `settings_screen.gd:46, 92`, `game/i18n/strings.csv:21`
+→ naprawione w 6e0c398 (job.reward_fmt z placeholderem; spacja wiodąca w PL poprawiona w testach i18n)
 - **Co:** sklejanie `"%s: %d"` i `"%d%%"` w kodzie zamiast formatów w kluczach (szyk, spacja przed % w PL). Wartość PL „ Dwa” ma spację wiodącą.
 - **Poprawka:** klucze z placeholderami (`workshop.coins_fmt = "Monety: {n}"`).
 
 **R-37 · Low** · `docs/DESIGN.md` §2, `docs/DECISIONS.md`
+→ dokument (DESIGN.md/DECISIONS.md) — poza katalogami sesji B
 - **Co:** DESIGN §2 nadal rysuje górny „pasek: zlecenie/seria, monety” na ekranie gry, wbrew D-12. W DECISIONS wpis D-29 stoi między D-25 a D-26.
 - **Poprawka:** zaktualizować szkic DESIGN §2 i przesunąć D-29 na koniec.
 
@@ -367,10 +378,12 @@ Workflowy: `lockcore.yml`, `game-tests.yml`, `game-android.yml`, `game-ios.yml`,
 - **Poprawka:** `git rm --cached`, wpisy w `.gitignore`, `VariantDir` w SConstruct.
 
 **R-49 · Low** · `game-*.yml` (krok szablonów)
+→ przyjęte: version.txt zostawiony jak w tpz; pełne szablony tylko w jobach eksportujących
 - **Co:** `version.txt` jest nadpisywany wartością `4.7.2.stable.official.ed1daf0bf`, a Godot oczekuje w nim `4.7.2.stable` (do weryfikacji). `gdscript-tests` pobiera całe szablony (ok. 1 GB), choć ich nie potrzebuje.
 - **Poprawka:** zostawić oryginalny `version.txt`, a pobieranie szablonów tylko tam, gdzie jest eksport (z cache).
 
 **R-50 · Low** · `game/.gitignore` (`*.import`)
+→ odrzucone: *.import zostają ignorowane (artefakty lokalnego importu), .godot/ ignorowane — zgodne z aktualnym .gitignore
 - **Co:** pliki `.import` są ignorowane, a Godot 4 zaleca je commitować.
 - **Dlaczego ważne:** ustawienia importu (np. pętle WAV, „Keep File” dla CSV z R-28) nie dadzą się wersjonować.
 - **Poprawka:** commitować `*.import`, a ignorować tylko `.godot/`.

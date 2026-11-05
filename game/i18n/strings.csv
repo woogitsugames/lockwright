@@ -30,7 +30,7 @@ settings.haptics_intensity,Haptics intensity,Intensywność haptyki
 settings.haptics_test,Test pulse,Impuls próbny
 settings.haptics_calibration,Calibration,Kalibracja
 settings.haptics_calibration_two_clicks,Do you feel two clicks?,Czujesz dwa kliknięcia?
-settings.haptics_calibration_two_clicks_yes,Two, Dwa
+settings.haptics_calibration_two_clicks_yes,Two,Dwa
 settings.haptics_calibration_two_clicks_one,One,Jedno
 settings.haptics_calibration_two_clicks_none,Nothing,Nic
 settings.continuous_resistance,Continuous resistance,Opór ciągły
