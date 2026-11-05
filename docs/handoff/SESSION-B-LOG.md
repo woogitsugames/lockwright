@@ -376,3 +376,17 @@ Zrzuty z telefonu: `docs/handoff/device-tests/run92/main_menu.jpg` i `settings.j
 - Właściciel ma haptykę włączoną, a telefon nie wibruje. Przyczyna: w manifeście APK z runu 92 nie było `android.permission.VIBRATE`. Manifest pluginu `platform/android/lockwright-haptics` go nie deklarował, a preset nie miał `permissions/vibrate`.
 - Poprawka sesji A: `uses-permission VIBRATE` w manifeście AAR oraz `permissions/vibrate=true` w presecie Android.
 - **Sesja B:** sprawdź, czy krok „Release preset” w CI nie nadpisuje tej opcji. Dodaj do CI asercję, że zmergowany manifest APK zawiera VIBRATE (aapt dump permissions).
+
+## Od sesji A: N-56, przycisk pauzy wygląda jak wklejony kwadrat (zrzut `device-tests/run92/lock_screen.jpg`)
+- Właściciel nie wiedział, do czego służy, i uznał, że wygląda brzydko. Teraz to kwadratowe zdjęcie skóry z napą w prawym górnym rogu: ostre krawędzie, bez cienia, bez związku ze zwijką.
+- Proponowany kształt:
+  - **klapka:** skórzany język zwisający z górnej krawędzi ekranu, za safe-area. Kształt wycięty alfą (zaokrąglony dół), przeszycie wzdłuż brzegu z `leather_stitching_strip`, napa z `leather_brass_snap` na końcu, miękki cień na płycie (2–4 dp);
+  - **wymiary:** szerokość ok. 56 dp, cel dotyku ≥48 dp;
+  - **reakcja na dotyk:** klapka unosi się o 4 dp z kliknięciem napy (dźwięk i haptyka), animacja 150 ms;
+  - **pierwsze uruchomienie:** podpowiedź w samouczku „Klapka = pauza” (i18n);
+  - **alternatywa:** napa na prawym brzegu zwijki (dolny pas), skąd zwijka „odpina się”. Wybierz wersję czytelniejszą w zrzucie 412×915.
+- Przy okazji zrzutu:
+  - komory 4 i 5 w płycie są puste (nie ma sprężyn ani pinów). Jeśli zamek ma 3 piny, płyta powinna mieć 3 komory albo puste otwory zaślepione;
+  - napinacza nie widać.
+
+  Sprawdź, czy zgadza się to ze specyfikacją zamka.
