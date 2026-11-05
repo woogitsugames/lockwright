@@ -197,13 +197,13 @@ bar_beats=4
 
 
 def godot_uid(seed):
-    """Deterministic uid encoded like Godot's ResourceUID::id_to_text (base 36, a-z then 0-9, 63-bit id)."""
-    chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
+    """Deterministic uid encoded like Godot's ResourceUID::id_to_text (base 35: a-z then 0-8, 63-bit id)."""
+    chars = 'abcdefghijklmnopqrstuvwxyz012345678'
     n = int(hashlib.sha256(seed.encode()).hexdigest(), 16) & ((1 << 63) - 1)
     s = ''
     while True:
-        s = chars[n % 36] + s
-        n //= 36
+        s = chars[n % 35] + s
+        n //= 35
         if n == 0:
             return s
 
