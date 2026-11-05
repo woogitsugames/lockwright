@@ -67,3 +67,7 @@ Format: data i godzina (UTC), zadanie, co zrobione, liczby, linki, blokady.
 
 Decyzje tej sesji: D-30 (GDExtension na iOS działa przy `.gdextension` tworzonym tylko w jobie iOS), D-31 (proponowana: ekran zamka na planie B).
 Pytania do właściciela: nazwa EN w sklepie (`store/listing.md` §0), akceptacja D-31, zakup urządzeń/interfejsu audio i piezo do pomiarów spike'ów 1–4 (TECH §6.2), skala świateł w `art/blender/cutaway.py` (D-31).
+
+## 2026-11-05 02:10 — kontrola godzinna
+- Repo czyste, wszystkie workflowy sesji C zielone (spike-determinism, spike-audio, spike-haptics z ios-godot, spike-lit-metal run 41947734926).
+- Wskazówka dla właściciela `platform/ios` (bez zmian w cudzym kodzie): `game-ios` pada od runu 14 do 20 na kompilacji Core Haptics (ObjC++). Działający wzorzec na Xcode 26.6 / SDK iOS 26.5 jest w `spikes/haptics-latency/godot-ios/src/haptics_probe_ios.mm` (selektory `createAdvancedPlayerWithPattern:error:`, `startAtTime:error:`, `sendParameters:atTime:error:`, stałe `CHHapticEventTypeHapticTransient`, `CHHapticDynamicParameterIDHapticIntensityControl`, ARC przez `-fobjc-arc`) oraz w jobie `ios-godot` w `.github/workflows/spike-haptics.yml` (godot-cpp z API zrzuconym przez `godot --dump-extension-api`, osobne xcframework dla modułu i godot-cpp).
