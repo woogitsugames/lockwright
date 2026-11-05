@@ -125,3 +125,6 @@ dev.haptics_lab.force_fallback,Usa la modalità alternativa,Modalità alternativ
 dev.haptics_lab.resistance,Resistenza,Resistenza,
 dev.haptics_lab.caps,Funzionalità,Funzionalità,
 tutorial.start,,Inizia l'esercizio,Uzupełniono nowy klucz interfejsu po korekcie.
+nav.quit_confirm,,Vuoi uscire dal gioco?,Nowy klucz źródłowy (pytanie przy wyjściu).
+nav.quit_yes,,Esci,Nowy klucz źródłowy (potwierdzenie).
+nav.quit_no,,Continua a giocare,Nowy klucz źródłowy (pozostanie w grze).
