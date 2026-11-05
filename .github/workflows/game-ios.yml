@@ -70,12 +70,20 @@ jobs:
             -output bin/liblockcore_gd.ios.debug.xcframework
 
       - name: Import + export Godot project to Xcode (unsigned)
+        continue-on-error: true
         env:
           CODE_SIGNING_ALLOWED: 'NO'
         run: |
           mkdir -p game/build
           /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --path game --import
           CODE_SIGNING_ALLOWED=NO /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --path game --export-debug "iOS" build/lockwright-debug.ipa
+
+      - name: Compile exported Xcode project (CODE_SIGNING_ALLOWED=NO)
+        run: |
+          cd game/build
+          xcodebuild -project lockwright-debug.xcodeproj -scheme lockwright-debug \
+            -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED=NO -allowProvisioningUpdates \
+            build 2>&1 | tail -30
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
