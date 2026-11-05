@@ -349,35 +349,46 @@ def paint(name, color, rough=0.42, metal_col=(0.55, 0.55, 0.56), chip=0.6, grime
 
 def iron(name, rust=0.6, base=(0.16, 0.155, 0.15), rough=0.55, polish=0.5, scale=1.0, seed=0.0):
     """Wrought / cast iron with patina and rust: rust gathers in crevices and pits, handled edges are rubbed
-    back to dark metal. Rust is a dielectric layer (no metallic shine)."""
+    back to dark metal. Rust is a dielectric, crusty, pitted layer (no metallic shine)."""
     m = bpy.data.materials.new(name); m.use_nodes = True; nt = m.node_tree; l = nt.links
     out = nt.nodes['Material Output']; fe = nt.nodes['Principled BSDF']
     tc = nt.nodes.new('ShaderNodeTexCoord'); P = tc.outputs['Object']
     if seed:
         mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Location'].default_value = (seed * 13.1, seed * 7.7, seed * 3.3); l.new(P, mp.inputs['Vector']); P = mp.outputs['Vector']
-    big = _noise(nt, P, 0.18 * scale, detail=8, rough=0.62)
-    mid = _noise(nt, P, 1.4 * scale, detail=10, rough=0.7)
-    fine = _noise(nt, P, 14 * scale, detail=6, rough=0.7)
-    # iron layer: dark, mottled, partly metallic (mill scale + rubbed)
-    ic = _mix(nt, (base[0] * 0.6, base[1] * 0.6, base[2] * 0.62, 1), (*[c * 1.5 for c in base], 1), mid)
-    fe.inputs['Metallic'].default_value = 0.75; l.new(ic, fe.inputs['Base Color'])
-    l.new(_maprange(nt, fine, 0.3, 0.7, rough - 0.15, rough + 0.15), fe.inputs['Roughness'])
+    big = _noise(nt, P, 0.12 * scale, detail=8, rough=0.62)
+    mid = _noise(nt, P, 0.9 * scale, detail=12, rough=0.7)
+    fine = _noise(nt, P, 5.0 * scale, detail=12, rough=0.75)
+    grain = _noise(nt, P, 28.0 * scale, detail=3, rough=0.6)
+    vo = nt.nodes.new('ShaderNodeTexVoronoi'); vo.inputs['Scale'].default_value = 1.8 * scale; vo.inputs['Randomness'].default_value = 1.0
+    l.new(P, vo.inputs['Vector'])
+    pits = _maprange(nt, vo.outputs['Distance'], 0.05, 0.28, 1.0, 0.0)   # 1 inside a pit
+    vh = nt.nodes.new('ShaderNodeTexVoronoi'); vh.feature = 'SMOOTH_F1'; vh.inputs['Scale'].default_value = 0.35 * scale; l.new(P, vh.inputs['Vector'])
+    # iron layer: dark, mottled, partly metallic (mill scale + rubbed), faint hammer facets
+    ic = _mix(nt, (base[0] * 0.55, base[1] * 0.5, base[2] * 0.48, 1), (*[c * 1.45 for c in base], 1), _mix(nt, mid, fine, 0.4, dtype='FLOAT'))
+    fe.inputs['Metallic'].default_value = 0.8; l.new(ic, fe.inputs['Base Color'])
+    l.new(_maprange(nt, _mix(nt, fine, mid, 0.5, dtype='FLOAT'), 0.3, 0.7, rough - 0.15, rough + 0.15), fe.inputs['Roughness'])
     # rust layer
     ru = nt.nodes.new('ShaderNodeBsdfPrincipled'); ru.inputs['Metallic'].default_value = 0.0
     cr = nt.nodes.new('ShaderNodeValToRGB'); e = cr.color_ramp.elements
-    e[0].position = 0.25; e[0].color = (0.10, 0.045, 0.02, 1); e[1].position = 0.75; e[1].color = (0.42, 0.17, 0.06, 1)
-    e2 = cr.color_ramp.elements.new(0.5); e2.color = (0.24, 0.09, 0.035, 1)
-    l.new(_mix(nt, mid, fine, 0.4, dtype='FLOAT'), cr.inputs['Fac']); l.new(cr.outputs['Color'], ru.inputs['Base Color'])
-    l.new(_maprange(nt, fine, 0.3, 0.7, 0.72, 0.95), ru.inputs['Roughness'])
+    e[0].position = 0.25; e[0].color = (0.055, 0.03, 0.016, 1); e[1].position = 0.8; e[1].color = (0.40, 0.17, 0.06, 1)
+    e2 = cr.color_ramp.elements.new(0.52); e2.color = (0.17, 0.072, 0.03, 1)
+    rc = _mix(nt, _mix(nt, mid, fine, 0.55, dtype='FLOAT'), grain, 0.18, dtype='FLOAT')
+    l.new(rc, cr.inputs['Fac'])
+    l.new(_mix(nt, cr.outputs['Color'], (0.035, 0.02, 0.012, 1), _maprange(nt, pits, 0, 1, 0, 0.7)), ru.inputs['Base Color'])
+    l.new(_maprange(nt, grain, 0.3, 0.7, 0.75, 0.97), ru.inputs['Roughness'])
     # mask: noise patches + crevices - rubbed edges
-    msk = _maprange(nt, _mix(nt, big, mid, 0.45, dtype='FLOAT'), 0.62 - rust * 0.25, 0.70 - rust * 0.25)
+    msk = _maprange(nt, _mix(nt, _mix(nt, big, mid, 0.45, dtype='FLOAT'), fine, 0.3, dtype='FLOAT'), 0.58 - rust * 0.22, 0.70 - rust * 0.22)
     cav = _cavity_mask(nt, 2.0, 0.3, 0.9)
     msk = _mix(nt, msk, 1.0, _maprange(nt, cav, 0, 1, 0, rust), dtype='FLOAT')
+    msk = _mix(nt, msk, 1.0, _maprange(nt, pits, 0, 1, 0, rust * 0.8), dtype='FLOAT')
     em = _edge_mask(nt, 0.5, 0.6, 0.97)
-    msk = _mix(nt, msk, 0.0, _maprange(nt, em, 0, 1, 0, polish), dtype='FLOAT')
-    # height: rust is raised & pitted, iron has hammer/cast texture
-    h = _mix(nt, _mix(nt, mid, fine, 0.5, dtype='FLOAT'), _maprange(nt, fine, 0.4, 0.8, 0.6, 1.0), msk, dtype='FLOAT')
-    bp = nt.nodes.new('ShaderNodeBump'); bp.inputs['Strength'].default_value = 0.35; bp.inputs['Distance'].default_value = 0.06
+    msk = _mix(nt, msk, 0.0, _maprange(nt, _mix(nt, em, fine, 0.3, dtype='FLOAT'), 0.3, 0.8, 0, polish), dtype='FLOAT')
+    # height: rust crust is raised and grainy, pits are holes, the iron has broad hammer facets
+    crust = _mix(nt, fine, grain, 0.35, dtype='FLOAT')
+    h_rust = _mix(nt, _maprange(nt, crust, 0.3, 0.8, 0.55, 1.0), 0.15, pits, dtype='FLOAT')
+    h_iron = _maprange(nt, vh.outputs['Distance'], 0.0, 1.0, 0.4, 0.55)
+    h = _mix(nt, h_iron, h_rust, msk, dtype='FLOAT')
+    bp = nt.nodes.new('ShaderNodeBump'); bp.inputs['Strength'].default_value = 0.55; bp.inputs['Distance'].default_value = 0.12
     l.new(h, bp.inputs['Height'])
     bv = nt.nodes.new('ShaderNodeBevel'); bv.samples = 6; bv.inputs['Radius'].default_value = 0.15; l.new(bv.outputs['Normal'], bp.inputs['Normal'])
     l.new(bp.outputs['Normal'], fe.inputs['Normal']); l.new(bp.outputs['Normal'], ru.inputs['Normal'])
@@ -386,7 +397,7 @@ def iron(name, rust=0.6, base=(0.16, 0.155, 0.15), rough=0.55, polish=0.5, scale
     return m
 
 def wood(name, light=(0.42, 0.26, 0.13), dark=(0.20, 0.10, 0.045), axis='X', ring=0.9, rough=0.6, coat=0.0,
-         wear=0.5, grime=0.6, pores=1.0, seed=0.0, oiled=0.2, warp=3.0, center=(37, -61)):
+         wear=0.5, grime=0.6, pores=1.0, seed=0.0, oiled=0.2, warp=3.0, center=(37, -61), sawn=0.0, checks=0.0):
     """Real wood: annual rings around the grain axis (log centre offset), distorted, with stretched pores,
     medullary flecks, worn lighter edges and dark handling grime in corners."""
     m = bpy.data.materials.new(name); m.use_nodes = True; nt = m.node_tree; l = nt.links
@@ -437,6 +448,17 @@ def wood(name, light=(0.42, 0.26, 0.13), dark=(0.20, 0.10, 0.045), axis='X', rin
     if grime:
         cm = _maprange(nt, _cavity_mask(nt, 3.0, 0.3, 0.92), 0, 1, 0, grime)
         col = _mix(nt, col, (0.05, 0.03, 0.018, 1), cm)
+    ck = None
+    if checks:  # drying checks: sparse thin dark cracks along the grain, plus darker weathered streaks
+        cn = _noise(nt, Q, 0.9, detail=6, rough=0.6, stretch=(1, 1, 0.012))
+        line = nt.nodes.new('ShaderNodeMath'); line.operation = 'PINGPONG'; line.inputs[1].default_value = 0.5
+        sub = nt.nodes.new('ShaderNodeMath'); sub.operation = 'SUBTRACT'; l.new(cn, sub.inputs[0]); sub.inputs[1].default_value = 0.5
+        ab = nt.nodes.new('ShaderNodeMath'); ab.operation = 'ABSOLUTE'; l.new(sub.outputs[0], ab.inputs[0])
+        gate = _maprange(nt, _noise(nt, Q, 0.08, detail=2, stretch=(1, 1, 0.2)), 0.5, 0.62)
+        ck = _mix(nt, 0.0, _maprange(nt, ab.outputs[0], 0.012 * checks, 0.0), gate, dtype='FLOAT')
+        col = _mix(nt, col, (0.02, 0.014, 0.01, 1), ck)
+        stk = _maprange(nt, _noise(nt, Q, 0.25, detail=5, stretch=(1, 1, 0.03)), 0.35, 0.75, 0.0, 0.35 * checks)
+        col = _mix(nt, col, (*[c * 0.55 for c in dark], 1), stk)
     l.new(col, b.inputs['Base Color'])
     r = _maprange(nt, band, 0.0, 1.0, rough - 0.08, rough + 0.06)
     if oiled:
@@ -445,7 +467,13 @@ def wood(name, light=(0.42, 0.26, 0.13), dark=(0.20, 0.10, 0.045), axis='X', rin
     b.inputs['Coat Weight'].default_value = coat; b.inputs['Coat Roughness'].default_value = 0.3
     b.inputs['Sheen Weight'].default_value = 0.15
     h = _mix(nt, band, pm, 0.6, dtype='FLOAT')
-    bp = nt.nodes.new('ShaderNodeBump'); bp.inputs['Strength'].default_value = 0.25; bp.inputs['Distance'].default_value = 0.05
+    if sawn:  # saw / adze marks across the grain + raised fibres
+        sw = _noise(nt, Q, 1.2, detail=10, rough=0.7, stretch=(0.04, 3.0, 1.0))
+        fz = _noise(nt, Q, 60.0, detail=3, stretch=(1, 1, 0.1))
+        h = _mix(nt, h, _mix(nt, sw, fz, 0.4, dtype='FLOAT'), 0.5 * sawn, dtype='FLOAT')
+    if ck is not None:
+        h = _mix(nt, h, 0.0, ck, dtype='FLOAT')
+    bp = nt.nodes.new('ShaderNodeBump'); bp.inputs['Strength'].default_value = 0.25 + 0.2 * sawn; bp.inputs['Distance'].default_value = 0.05 + 0.1 * sawn
     l.new(h, bp.inputs['Height'])
     bv = nt.nodes.new('ShaderNodeBevel'); bv.samples = 6; bv.inputs['Radius'].default_value = 0.25; l.new(bv.outputs['Normal'], bp.inputs['Normal'])
     l.new(bp.outputs['Normal'], b.inputs['Normal'])

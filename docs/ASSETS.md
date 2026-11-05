@@ -22,3 +22,7 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | spikes/haptics-latency/godot/icon.png (ikona aplikacji testowej) | grafika | własne, narysowane skryptem Pillow (prostokąty) | własne projektu | — |
 | spikes/lit-metal/assets/interior.hdr (HDRI otoczenia; konwersja EXR→HDR) | grafika (HDRI) | `datafiles/studiolights/world/interior.exr` dołączony do Blendera 4.2 (to samo HDRI, którego używa `art/blender/cutaway.py`) | CC0 (HDRI studia Blendera pochodzą z Poly Haven) — **do weryfikacji** w `blender/release/datafiles/studiolights/world/license.txt` | https://polyhaven.com/license |
 | spikes/lit-metal/assets/tex/*.png, cutaway*.glb, plate/*.png, screens/*.png | grafika (wypieki, rendery) | własne: wypiek i rendery sceny `art/blender/cutaway.py` skryptami `spikes/lit-metal/tools/` | własne projektu | — |
+| art/blender/wafer.py, lever.py, warded.py, wooden_pin.py, ring_combo.py, lw_common.py (sekcja v2) | skrypty look-dev (proceduralne modele i materiały) | własne (Claude) | własne projektu | — |
+| art/renders/wafer.png, lever.png, warded.png, wooden_pin.png | grafika (render Cycles) | własne, wygenerowane skryptami z `art/blender/` | własne projektu | — |
+| HDRI `interior.exr` (używane w renderach, nie w repo) | oświetlenie | Blender 4.2 datafiles/studiolights/world (Greg Zaal, Poly Haven) | CC0 | https://polyhaven.com |
+| cyfry w ring_combo.py: mockups/fonts/Lato-Bold.ttf | font | jak wyżej (Lato) | SIL OFL 1.1 | — |
