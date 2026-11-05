@@ -410,3 +410,30 @@ Zrzuty z telefonu: `docs/handoff/device-tests/run92/main_menu.jpg` i `settings.j
   - **wcięcia kciuków:** wgniecenie kciuka (`thumb_dent`) ma być widoczne od razu po dotknięciu obu stref, także lewej;
   - **samouczek:** sprawdź, czy pierwszy krok naprawdę uczy dwóch kciuków i nie przepuszcza dalej bez napięcia;
   - **dźwięk w ogóle:** potwierdź na APK, że SFX grają (zimny start z asynchronicznym wczytywaniem SFX mógł zostawić puste bufory). Dodaj test GUT `Sfx.play` po starcie, który sprawdza, że strumień nie jest null.
+
+## Od sesji A: N-59, ekrany szersze niż telefon, trzeba przewijać w poziomie (PRIORYTET, zgłoszenie właściciela)
+Zrzuty: `device-tests/run92/workshop.jpg`, `workshop_scrolled.jpg`, `dialog.jpg`.
+
+Problem jest systemowy, nie dotyczy jednego ekranu. Wiersze warsztatu (`HBox`: nazwa + stan + przycisk) mają minimalną szerokość większą niż 412 px, bo etykiety nie mają `autowrap` ani `clip`/`text_overrun`, a `ScrollContainer` pozwala na scroll poziomy.
+
+**Reguły dla WSZYSTKICH ekranów UI** (warsztat, zlecenia, gablota, ustawienia, przyjazd, O grze):
+1. **Bez scrolla poziomego:** `ScrollContainer.horizontal_scroll_mode = SCROLL_MODE_DISABLED`. Dziecko ma `size_flags_horizontal = EXPAND_FILL` i szerokość = szerokość kontenera.
+2. **Etykiety w wierszach:**
+   - nazwa: `autowrap_mode = AUTOWRAP_WORD_SMART`, `size_flags_horizontal = EXPAND_FILL`, `custom_minimum_size.x = 0`;
+   - wartości i stany: `text_overrun_behavior = OVERRUN_TRIM_ELLIPSIS` albo przeniesienie pod nazwę.
+3. **Wiersz warsztatu jako karta na 2 linie:** linia 1 to nazwa narzędzia, linia 2 to stan albo cena po lewej i przycisk po prawej (min. 96×48 dp).
+   - przyciski nieaktywne (brak monet) wyraźnie inne: przygaszone **i** inny kształt/etykieta, np. „Za mało monet” (nie sam kolor);
+   - „Nagroda za postęp” nie powtarza się w etykiecie i w przycisku, przycisk jest ukryty;
+   - przy „Integralność 100%” przycisk „Napraw” jest ukryty albo nieaktywny.
+4. **Wspólny `MarginContainer` (N-53):** 16 dp z boków + safe-area. Szary pas u góry (status bar) ma być wypełniony tłem ekranu, a nie szarym `clear_color`. Ustaw `rendering/environment/defaults/default_clear_color` na ciemny brąz tła albo rozciągnij tło pod status bar.
+5. **Mapa w warsztacie:** maks. 30% wysokości, przycięta „cover”, nie zasłania listy.
+6. **Test automatyczny:** dla każdego ekranu przy 360×800, 412×915 i 915×412 sprawdź, że `get_combined_minimum_size().x <= viewport.x` dla korzenia UI, i dodaj zrzuty do `game-screens`. 360 dp to najwęższe popularne Androidy.
+
+## Od sesji A: N-60, rozmowa przy przyjeździe (zrzut `device-tests/run92/dialog.jpg`)
+- **Tabliczka z inicjałem jest zepsuta:** `_initial_plate` używa `plate_01.png`, na której jest wydrukowana cyfra „1”, więc inicjał „K” nakłada się na „1”. Potrzebna jest pusta emaliowana tabliczka. Weź z G01 tabliczkę bez cyfry albo wymaż cyfrę z `plate_01` (PIL: wypełnij pole emalii jej kolorem), zapisz jako `plate_blank.png` i dodaj do ASSETS.md.
+- **Brak portretów:** Kuba ma portret (`contrib/incoming/magnific/selected/portraits/portrait_kuba.jpg`), ale w grze jest tylko 16 z 39 (`assets/ui/gpt/cast/episodic/`). Zaimportuj wszystkie 39 (webp, 256², lossy) i dodaj test, że każdy mówca epizodyczny z `jobs` ma portret.
+- **Ślusarz** (gracz) nie dostaje tabliczki z „Ś”. Jego linie są wyrównane do prawej bez awatara, jak w komunikatorze, albo mają ikonę zwijki.
+- **Układ:** teraz nazwy i linie są w dwóch rozjechanych kolumnach, więc tekst nie stoi przy swoim mówcy. Każda linia ma być jednym wierszem: awatar 48 dp, a obok w kolumnie imię (mała, przygaszona etykieta) i nad nią lub pod nią tekst linii z autowrap. Odstęp między liniami 8–12 dp.
+- **Pozostałe:**
+  - tekst na zdjęciu potrzebuje podkładu (ciemny papier z ~70% kryciem, bez glassmorphism), żeby spełniał kontrast 4,5:1;
+  - „Wstecz” jest na pół szerokości i przy krawędzi (N-53).
