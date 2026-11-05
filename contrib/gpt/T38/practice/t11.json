@@ -1,0 +1,73 @@
+{
+  "schema": "lockwright.lock/1",
+  "family": "lever",
+  "rules_version": 2,
+  "id": "practice.t11",
+  "source": "authored",
+  "seed": "0",
+  "difficulty": {
+    "tier": 3,
+    "n_min": 3,
+    "n_max": 3,
+    "sec_min": 0,
+    "sec_max": 0,
+    "win_shear_q16": 9503,
+    "tension_band_q16": 17695,
+    "overset_margin_q16": 7209,
+    "noise_q16": 0,
+    "bind_spread_q16": 52429,
+    "multi_bind_p_q16": 0,
+    "drop_grace_ms": 300,
+    "s_max_q16": 65536,
+    "time_limit_s": 150
+  },
+  "spec": {
+    "win_gate_q16": 9503,
+    "overset_margin_q16": 7209,
+    "tension_band_q16": 17695,
+    "t_hold_q16": 6554,
+    "t_release_q16": 3277,
+    "tau_safe_q16": 42598,
+    "cr_lo_q16": 7864,
+    "cr_hi_q16": 13763,
+    "drop_grace_steps": 36,
+    "s_max_q16": 65536,
+    "stress_gain_q16": 6226,
+    "bound_speed_q16": 874,
+    "false_speed_q16": 327,
+    "spring_speed_q16": 2184,
+    "set_speed_q16": 327,
+    "detector": false,
+    "levers": [
+      {
+        "target_q16": 36045,
+        "order_q16": 13107,
+        "band_lo_q16": 14418,
+        "false_gates_q16": []
+      },
+      {
+        "target_q16": 40960,
+        "order_q16": 0,
+        "band_lo_q16": 15401,
+        "false_gates_q16": []
+      },
+      {
+        "target_q16": 33096,
+        "order_q16": 6554,
+        "band_lo_q16": 16384,
+        "false_gates_q16": []
+      }
+    ]
+  },
+  "presentation": {
+    "material": "iron",
+    "practice": {
+      "order": 11,
+      "focus": "lever_gate",
+      "title_key": "practice.t18.title",
+      "goal_key": "practice.t38.t11.goal",
+      "hint_key": "practice.t18.hint",
+      "lesson_target": "gate_align"
+    }
+  }
+}

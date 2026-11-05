@@ -1,0 +1,69 @@
+{
+  "schema": "lockwright.lock/1",
+  "family": "ring_combo",
+  "rules_version": 1,
+  "id": "practice.t18",
+  "source": "authored",
+  "seed": "0",
+  "difficulty": {
+    "tier": 2,
+    "n_min": 3,
+    "n_max": 3,
+    "sec_min": 0,
+    "sec_max": 0,
+    "win_shear_q16": 3932,
+    "tension_band_q16": 17039,
+    "overset_margin_q16": 0,
+    "noise_q16": 18350,
+    "bind_spread_q16": 65536,
+    "multi_bind_p_q16": 0,
+    "drop_grace_ms": 300,
+    "s_max_q16": 65536,
+    "time_limit_s": 120
+  },
+  "spec": {
+    "positions": 10,
+    "gate_win_q16": 3932,
+    "tension_band_q16": 17039,
+    "t_hold_q16": 5243,
+    "drop_grace_steps": 36,
+    "gate_feel_q16": 47186,
+    "rot_speed_q16": 262,
+    "bound_rot_speed_q16": 131,
+    "snap_speed_q16": 197,
+    "rings": [
+      {
+        "gate": 2,
+        "start": 7,
+        "order_q16": 0,
+        "band_lo_q16": 14746,
+        "false_gates": []
+      },
+      {
+        "gate": 4,
+        "start": 0,
+        "order_q16": 6554,
+        "band_lo_q16": 16056,
+        "false_gates": []
+      },
+      {
+        "gate": 6,
+        "start": 3,
+        "order_q16": 13107,
+        "band_lo_q16": 14746,
+        "false_gates": []
+      }
+    ]
+  },
+  "presentation": {
+    "material": "brass",
+    "practice": {
+      "order": 18,
+      "focus": "ring_binding",
+      "title_key": "practice.t12.title",
+      "goal_key": "practice.t38.t18.goal",
+      "hint_key": "practice.t12.hint",
+      "lesson_target": "bind"
+    }
+  }
+}

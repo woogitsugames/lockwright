@@ -1,0 +1,96 @@
+{
+  "schema": "lockwright.lock/1",
+  "family": "pin_tumbler",
+  "rules_version": 1,
+  "id": "practice.t30",
+  "source": "authored",
+  "seed": "0",
+  "difficulty": {
+    "tier": 6,
+    "n_min": 6,
+    "n_max": 6,
+    "sec_min": 3,
+    "sec_max": 3,
+    "win_shear_q16": 5243,
+    "tension_band_q16": 10486,
+    "overset_margin_q16": 4260,
+    "noise_q16": 7209,
+    "bind_spread_q16": 26214,
+    "multi_bind_p_q16": 0,
+    "drop_grace_ms": 180,
+    "s_max_q16": 65536,
+    "time_limit_s": 240
+  },
+  "spec": {
+    "win_shear_q16": 5243,
+    "overset_margin_q16": 4260,
+    "tension_band_q16": 10486,
+    "t_hold_q16": 6554,
+    "t_release_q16": 3277,
+    "tau_safe_q16": 32768,
+    "cr_lo_q16": 7864,
+    "cr_hi_q16": 13763,
+    "drop_grace_steps": 22,
+    "drop_all": true,
+    "s_max_q16": 65536,
+    "stress_gain_q16": 6226,
+    "noise_q16": 7209,
+    "bound_speed_q16": 1092,
+    "spool_speed_q16": 327,
+    "stacks": [
+      {
+        "target_q16": 36045,
+        "order_q16": 6554,
+        "band_lo_q16": 14418,
+        "variant": "standard"
+      },
+      {
+        "target_q16": 40960,
+        "order_q16": 13107,
+        "band_lo_q16": 15401,
+        "variant": "spool",
+        "false_gate_q16": 30474
+      },
+      {
+        "target_q16": 33096,
+        "order_q16": 19661,
+        "band_lo_q16": 16384,
+        "variant": "serrated",
+        "serrations_q16": [
+          15073,
+          19661
+        ]
+      },
+      {
+        "target_q16": 43254,
+        "order_q16": 26214,
+        "band_lo_q16": 14418,
+        "variant": "standard"
+      },
+      {
+        "target_q16": 37356,
+        "order_q16": 32768,
+        "band_lo_q16": 15401,
+        "variant": "spool",
+        "false_gate_q16": 26870
+      },
+      {
+        "target_q16": 39977,
+        "order_q16": 0,
+        "band_lo_q16": 16384,
+        "variant": "standard"
+      }
+    ]
+  },
+  "presentation": {
+    "material": "brass",
+    "practice": {
+      "order": 30,
+      "focus": "quiet_precision",
+      "title_key": "practice.t29.title",
+      "goal_key": "practice.t38.t30.goal",
+      "hint_key": "practice.t29.hint",
+      "lesson_target": "set"
+    }
+  }
+}

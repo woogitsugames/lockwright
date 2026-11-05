@@ -1,0 +1,91 @@
+{
+  "schema": "lockwright.lock/1",
+  "family": "lever_detector",
+  "rules_version": 2,
+  "id": "practice.t19",
+  "source": "authored",
+  "seed": "0",
+  "difficulty": {
+    "tier": 5,
+    "n_min": 5,
+    "n_max": 5,
+    "sec_min": 1,
+    "sec_max": 1,
+    "win_shear_q16": 5898,
+    "tension_band_q16": 11796,
+    "overset_margin_q16": 5571,
+    "noise_q16": 0,
+    "bind_spread_q16": 32768,
+    "multi_bind_p_q16": 0,
+    "drop_grace_ms": 210,
+    "s_max_q16": 65536,
+    "time_limit_s": 210
+  },
+  "spec": {
+    "win_gate_q16": 5898,
+    "overset_margin_q16": 5571,
+    "tension_band_q16": 11796,
+    "t_hold_q16": 6554,
+    "t_release_q16": 3277,
+    "tau_safe_q16": 34079,
+    "cr_lo_q16": 7864,
+    "cr_hi_q16": 13763,
+    "drop_grace_steps": 25,
+    "s_max_q16": 65536,
+    "stress_gain_q16": 6226,
+    "bound_speed_q16": 874,
+    "false_speed_q16": 327,
+    "spring_speed_q16": 2184,
+    "set_speed_q16": 327,
+    "detector": true,
+    "levers": [
+      {
+        "target_q16": 36045,
+        "order_q16": 0,
+        "band_lo_q16": 14418,
+        "false_gates_q16": []
+      },
+      {
+        "target_q16": 40960,
+        "order_q16": 6554,
+        "band_lo_q16": 15401,
+        "false_gates_q16": []
+      },
+      {
+        "target_q16": 33096,
+        "order_q16": 13107,
+        "band_lo_q16": 16384,
+        "false_gates_q16": [
+          19988
+        ]
+      },
+      {
+        "target_q16": 43254,
+        "order_q16": 19661,
+        "band_lo_q16": 14418,
+        "false_gates_q16": []
+      },
+      {
+        "target_q16": 37356,
+        "order_q16": 26214,
+        "band_lo_q16": 15401,
+        "false_gates_q16": []
+      }
+    ],
+    "detector_margin_q16": 5898,
+    "reset_steps": 150,
+    "max_trips": 3,
+    "reset_wear": 2
+  },
+  "presentation": {
+    "material": "iron",
+    "practice": {
+      "order": 19,
+      "focus": "detector_reset",
+      "title_key": "practice.t28.title",
+      "goal_key": "practice.t38.t19.goal",
+      "hint_key": "practice.t28.hint",
+      "lesson_target": "detector.reset"
+    }
+  }
+}
