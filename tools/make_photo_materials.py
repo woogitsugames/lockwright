@@ -42,18 +42,34 @@ SURFACES = {
     "leather_chocolate":     dict(src=SRC_L, mode="tile", flat="full", rough=(0.40, 0.76), metal=False, hs=18, ns=4.0),
     "leather_stitching_strip": dict(src=SRC_M, mode="strip", flat="x", rough=(0.45, 0.80), metal=False, hs=24, ns=5.0),
     "brass_turned":          dict(src=SRC_M, mode="radial", flat="polar", rough=(0.18, 0.34), metal=True, hs=6, ns=2.0),
-    "brass_face_milled":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.22, 0.42), metal=True, hs=20, ns=3.0, deskew="h"),
+    "brass_face_milled":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.22, 0.42), metal=True, hs=20, ns=3.0, deskew="h", straighten=True),
     "brass_patina_grease":   dict(src=SRC_M, mode="tile", flat="full", rough=(0.30, 0.82), metal=True, hs=16, ns=3.0),
     "steel_ground":          dict(src=SRC_M, mode="tile", flat="full", rough=(0.20, 0.38), metal=True, hs=6, ns=1.5),
     "steel_heat_tint":       dict(src=SRC_M, mode="strip", flat="x", rough=(0.18, 0.34), metal=True, hs=6, ns=1.2, linear=True),
     "spring_steel_polished": dict(src=SRC_M, mode="tile", flat="full", rough=(0.16, 0.28), metal=True, hs=6, ns=1.2),
     "nickel_satin":          dict(src=SRC_M, mode="tile", flat="full", rough=(0.22, 0.40), metal=True, hs=8, ns=1.5),
-    "iron_painted_rust":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.35, 0.92), metal=True, hs=20, ns=4.0,
+    "iron_painted_rust":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.35, 0.92), metal=True, hs=20, ns=4.0, metallic=0.0,
+                                  note="painted iron: dielectric paint; rust/bare spots could get a metal mask later",
                                   crop=(0.0, 0.0, 0.66, 0.66)),  # lower part of the photo is out of focus
     "terrazzo_grey_red":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.32, 0.62), metal=False, hs=12, ns=2.0),
     "cement_tiles":          dict(src=SRC_M, mode="tile", flat="full", rough=(0.40, 0.70), metal=False, hs=10, ns=2.0),
     "pine_floor_painted":    dict(src=SRC_M, mode="tile", flat="full", rough=(0.45, 0.82), metal=False, hs=24, ns=4.0, deskew="v"),
     "workshop_concrete":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.62, 0.95), metal=False, hs=24, ns=3.0),
+    # round 2 (2026-11-05)
+    "bench_beech_top":       dict(src=SRC_M, mode="tile", flat="full", rough=(0.45, 0.80), metal=False, hs=20, ns=3.0,
+                                  deskew=("h", 3.0)),
+    "wall_lime_plaster":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.75, 0.96), metal=False, hs=20, ns=3.0),
+    "wall_oil_paint_green":  dict(src=SRC_M, mode="tile", flat="full", rough=(0.30, 0.60), metal=False, hs=16, ns=2.5),
+    "wall_paint_divider_line": dict(src=SRC_M, mode="strip", flat="x", rough=(0.30, 0.90), metal=False, hs=16, ns=2.5,
+                                    deskew=("h", 3.0)),
+    "pegboard_brown":        dict(src=SRC_M, mode="tile", flat="full", rough=(0.55, 0.85), metal=False, hs=14, ns=3.0,
+                                  crop=(0.035, 0.035, 0.965, 0.965), pitch=True),
+    "steel_cast_grey_paint": dict(src=SRC_M, mode="tile", flat="full", rough=(0.45, 0.80), metal=True, hs=18, ns=3.5,
+                                  metallic=0.0, crop=(0.02, 0.02, 0.72, 0.72),
+                                  note="painted cast steel: dielectric paint (rusty right/bottom edge of the photo cropped)"),
+    "velvet_display_green":  dict(src=SRC_M, mode="tile", flat="full", rough=(0.78, 0.98), metal=False, hs=10, ns=1.5,
+                                  note="velvet: use a sheen/rim term in the shader; roughness alone reads as felt"),
+    "glass_cabinet_dust":    dict(src=SRC_M, mode="overlay", flat="full", crop=(0.03, 0.03, 0.97, 0.97), gamma=1.2),
 }
 
 # Objects: GrabCut initialised with a rect (fractions x0, y0, x1, y1 of the photo).
@@ -205,19 +221,47 @@ def deskew_vertical(img, max_deg=3.0, step=0.1):
     H, W = img.shape[:2]
     g = cv2.resize(lum(img), (W // 2, H // 2), interpolation=cv2.INTER_AREA)
     h, w = g.shape
-    best, ba = -1, 0.0
-    for a in np.arange(-max_deg, max_deg + 1e-6, step):
+    def score(a):
         M = cv2.getRotationMatrix2D((w / 2, h / 2), a, 1.0)
         r = cv2.warpAffine(g, M, (w, h), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
         c = r[h // 8:-h // 8, w // 8:-w // 8].mean(axis=0)
-        v = float(np.var(c - cv2.GaussianBlur(c[None, :], (0, 0), 20)[0]))
-        if v > best:
-            best, ba = v, float(a)
+        return float(np.var(c - cv2.GaussianBlur(c[None, :], (0, 0), 20)[0]))
+
+    ba = max(np.arange(-max_deg, max_deg + 1e-6, step), key=score)
+    ba = float(max(np.arange(ba - step, ba + step + 1e-6, 0.05), key=score))  # refine
     t = np.radians(abs(ba))
     s = 1.0 / (np.cos(t) + np.sin(t))  # largest centred square fully inside the rotated image
     M = cv2.getRotationMatrix2D((W / 2, H / 2), ba, 1.0 / s)
     out = cv2.warpAffine(img, M, (W, H), flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REFLECT)
     return np.clip(out, 0, 1), dict(deskew_deg=round(ba, 2))
+
+
+def straighten_bands(img, strips=32, max_shift=80):
+    """Horizontal bands that bow or drift (milling passes): measure each column strip's vertical
+    offset against the centre strip (cross-correlation of row profiles) and shift columns back,
+    so a band meets itself across the left/right seam."""
+    H, W = img.shape[:2]
+    L = lum(img)
+    L = L - blur_reflect(L, 40)
+    sw = W // strips
+    ref = L[:, W // 2 - sw // 2:W // 2 + sw // 2].mean(axis=1)
+    ref = ref[max_shift:-max_shift]
+    xs, shifts = [], []
+    for i in range(strips):
+        pr = L[:, i * sw:(i + 1) * sw].mean(axis=1)
+        cc = [float(np.dot(ref, pr[max_shift + k:H - max_shift + k])) for k in range(-max_shift, max_shift + 1)]
+        shifts.append(int(np.argmax(cc)) - max_shift)
+        xs.append(i * sw + sw / 2)
+    sh = np.array(shifts, np.float64)
+    # robust smoothing: median of 3, then a low-order fit (bands bow smoothly)
+    sh = np.array([np.median(sh[max(0, i - 1):i + 2]) for i in range(len(sh))])
+    fit = np.polyval(np.polyfit(xs, sh, 3), np.arange(W))
+    mapy = (np.arange(H)[:, None] + fit[None, :]).astype(np.float32)
+    mapx = np.repeat(np.arange(W, dtype=np.float32)[None, :], H, axis=0)
+    out = cv2.remap(img, mapx, mapy, cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REFLECT)
+    m = int(np.ceil(np.abs(fit).max()))
+    out = out[m:H - m] if m > 0 else out
+    return np.clip(out, 0, 1), dict(band_shift_px_max=round(float(np.abs(fit).max()), 1))
 
 
 def equalize_detail(img, fine=6.0, wide=96.0):
@@ -276,12 +320,17 @@ def seam_x(img, omin, omax, feather=3, linear=False):
     H, W, _ = img.shape
     best, best_o = None, omin
     g = cv2.resize(img, (W // 4, H // 4), interpolation=cv2.INTER_AREA)
-    for o in range(omin, omax + 1, 4):
+    for o in range(omin, omax + 1, 4) if omax > omin else [omin]:
         q = o // 4
         e = float(((g[:, :q] - g[:, W // 4 - q:]) ** 2).mean())
         if best is None or e < best:
             best, best_o = e, o
-    o = best_o
+    if omax > omin:  # refine the overlap to 1 px at full resolution
+        lf = lum(img)
+        o = min(range(max(omin, best_o - 4), min(omax, best_o + 4) + 1),
+                key=lambda k: float(((lf[:, :k] - lf[:, W - k:]) ** 2).mean()))
+    else:
+        o = best_o
     L = img[:, :o]
     R = img[:, W - o:]
     err = ((L - R) ** 2).sum(axis=2)
@@ -325,16 +374,66 @@ def resize(a, size, interp=cv2.INTER_LANCZOS4):
 
 
 def resize_wrap(a, size):
-    """Resize a tileable map (any aspect) to size x size without edge artefacts: pad wrap, resize, crop."""
+    """Resize a tileable map (any aspect) to size (int or (w, h)) without edge artefacts:
+    pad wrap, resize, crop."""
+    tw, th = (size, size) if np.isscalar(size) else size
     h, w = a.shape[:2]
     p = 16
     pad = ((p, p), (p, p)) + ((0, 0),) * (a.ndim - 2)
     big = np.pad(a, pad, mode="wrap")
-    sx, sy = size / w, size / h
+    sx, sy = tw / w, th / h
     r = cv2.resize(big, (int(round((w + 2 * p) * sx)), int(round((h + 2 * p) * sy))),
                    interpolation=cv2.INTER_LANCZOS4)
     qx, qy = int(round(p * sx)), int(round(p * sy))
-    return r[qy:qy + size, qx:qx + size]
+    return r[qy:qy + th, qx:qx + tw]
+
+
+def pitch_tile(img, lo=24, hi=320):
+    """Regular hole grids (pegboard): measure the hole pitch per axis, resample so the pitch is an
+    integer, crop between hole rows/columns and join with an overlap of exactly one pitch, so the
+    grid stays regular across the seam."""
+    info = {}
+    for axis in (1, 0):  # x then y
+        D = 1.0 - lum(img)
+        prof = D.mean(axis=0 if axis == 1 else 1)
+        prof = prof - cv2.GaussianBlur(prof[None, :].astype(np.float32), (0, 0), hi)[0]
+        n = len(prof)
+        def acf(k):
+            return float(np.dot(prof[:n - k], prof[k:]) / (n - k))
+        ac = np.array([acf(k) for k in range(hi + 1)])
+        k0 = lo + int(np.argmax(ac[lo:hi + 1]))
+        # refine over m periods (peak near m*k0) with a sub-pixel parabola
+        m = max(1, min(8, (n // 2) // k0))
+        ks = range(m * k0 - 2 * m, m * k0 + 2 * m + 1)
+        vals = [acf(k) for k in ks]
+        j = int(np.argmax(vals))
+        km = ks[j]
+        if 0 < j < len(vals) - 1:
+            y0, y1, y2 = vals[j - 1], vals[j], vals[j + 1]
+            den = y0 - 2 * y1 + y2
+            km = km + (0.5 * (y0 - y2) / den if den < 0 else 0.0)
+        pitch = km / m
+        P = int(round(pitch))
+        sc = P / pitch
+        if axis == 1:
+            img = cv2.resize(img, (int(round(img.shape[1] * sc)), img.shape[0]), interpolation=cv2.INTER_LANCZOS4)
+        else:
+            img = cv2.resize(img, (img.shape[1], int(round(img.shape[0] * sc))), interpolation=cv2.INTER_LANCZOS4)
+        D = 1.0 - lum(img)
+        prof = D.mean(axis=0 if axis == 1 else 1)
+        L = len(prof)
+        fold = np.array([prof[k::P].mean() for k in range(P)])
+        start = (int(np.argmax(fold)) + P // 2) % P  # half-way between hole centres
+        N = (L - start) // P - 1
+        img = img[:, start:start + (N + 1) * P] if axis == 1 else img[start:start + (N + 1) * P]
+        if axis == 1:
+            img, _ = seam_x(img, P, P)
+        else:
+            t, _ = seam_x(np.ascontiguousarray(img.transpose(1, 0, 2)), P, P)
+            img = np.ascontiguousarray(t.transpose(1, 0, 2))
+        info["pitch_" + ("x" if axis == 1 else "y")] = round(float(pitch), 2)
+        info["holes_" + ("x" if axis == 1 else "y")] = int(N)
+    return img, info
 
 
 def height_map(albedo, sigma, wrap):
@@ -416,9 +515,15 @@ def save_png16(path, h):
 
 def preview(name, albedo, nrm, mode):
     t = 512
-    a = resize(albedo, t, cv2.INTER_AREA)
-    s = resize(shade(None, nrm), t, cv2.INTER_AREA)
-    s = np.repeat(s[..., None], 3, axis=2)
+    th = int(round(t * albedo.shape[0] / albedo.shape[1]))
+    a = cv2.resize(albedo, (t, th), interpolation=cv2.INTER_AREA)
+    if nrm is None:  # overlay: show the mask over a dark and a light backing
+        m = a[..., None] if a.ndim == 2 else a
+        a = (0.08 + 0.85 * m) * np.ones(3)
+        s = (0.55 * (1 - m) + 0.95 * m) * np.ones(3) * np.array([0.8, 0.85, 0.8])
+    else:
+        s = cv2.resize(shade(None, nrm), (t, th), interpolation=cv2.INTER_AREA)
+        s = np.repeat(s[..., None], 3, axis=2)
     if mode == "radial":
         tile_a, tile_s = a, s
     elif mode == "strip":
@@ -444,36 +549,54 @@ def build_surface(name, cfg):
     img = flatten_polar(img) if cfg["flat"] == "polar" else flatten(img, cfg["flat"])
     mode = cfg["mode"]
     info = {}
-    if cfg.get("deskew") == "v":
-        img, di = deskew_vertical(img)
+    dsk, dmax = (cfg["deskew"] if isinstance(cfg.get("deskew"), tuple) else (cfg.get("deskew"), None))
+    if dsk == "v":
+        img, di = deskew_vertical(img, max_deg=dmax or 3.0)
         info.update(di)
-    elif cfg.get("deskew") == "h":  # stripes made horizontal (rotate the UV in-engine for a diagonal look)
-        t, di = deskew_vertical(np.ascontiguousarray(img.transpose(1, 0, 2)), max_deg=60.0, step=0.5)
+    elif dsk == "h":  # stripes made horizontal (rotate the UV in-engine for a diagonal look)
+        dmax = dmax or 60.0
+        t, di = deskew_vertical(np.ascontiguousarray(img.transpose(1, 0, 2)), max_deg=dmax,
+                                step=0.5 if dmax > 10 else 0.1)
         img = np.ascontiguousarray(t.transpose(1, 0, 2))
         info["stripes_rotated_to_horizontal_deg"] = -di["deskew_deg"]
+    if cfg.get("straighten"):
+        img, si = straighten_bands(img)
+        info.update(si)
+        h, w = img.shape[:2]
+        x0 = (w - h) // 2 if w > h else 0
+        img = img[:, x0:x0 + min(h, w)]
     if cfg.get("keystone"):
         img, ki = keystone_fix(img)
         info.update(ki)
-    if mode in ("tile", "strip") and cfg.get("eq", True):
+    if mode in ("tile", "strip", "overlay") and cfg.get("eq", True):
         img = equalize_detail(img)
-    if mode == "tile":
-        img, ti = make_tileable(img, "xy")
+    out_wh = (SIZE, SIZE)
+    if mode in ("tile", "overlay"):
+        if cfg.get("pitch"):
+            img, ti = pitch_tile(img)
+        else:
+            img, ti = make_tileable(img, "xy")
         info.update(ti)
         albedo = resize_wrap(img, SIZE)
     elif mode == "strip":
         img, ti = make_tileable(img, "x", linear=cfg.get("linear", False))
         info.update(ti)
         h, w = img.shape[:2]
-        y0 = (h - w) // 2
-        img = img[y0:y0 + w]
-        albedo = resize_wrap(img, SIZE)  # wrap matters in x only; top/bottom rows are never tiled
+        if h >= w:
+            y0 = (h - w) // 2
+            img = img[y0:y0 + w]
+        else:  # wide source: keep the aspect, height rounded to a multiple of 16
+            out_wh = (SIZE, int(round(SIZE * h / w / 16.0)) * 16)
+        albedo = resize_wrap(img, out_wh)  # wrap matters in x only; top/bottom rows are never tiled
     else:  # radial: the turning centre is the photo centre
         h, w = img.shape[:2]
         s = min(h, w)
         albedo = cv2.resize(img[(h - s) // 2:(h + s) // 2, (w - s) // 2:(w + s) // 2], (SIZE, SIZE),
                             interpolation=cv2.INTER_LANCZOS4)
     albedo = np.clip(albedo, 0, 1)
-    wrap = mode == "tile"
+    wrap = mode in ("tile", "overlay")
+    if mode == "overlay":
+        return build_overlay(name, cfg, d, src, albedo, info)
     # strips wrap horizontally only; vertical edges are free, so reflect is the safer choice there
     if mode == "strip":
         hgt = height_map_strip(albedo, cfg["hs"])
@@ -487,9 +610,10 @@ def build_surface(name, cfg):
     save_jpg(os.path.join(d, f"{name}_albedo.jpg"), albedo)
     info["normal_2k_soften_sigma"] = save_normal(os.path.join(d, f"{name}_normal.png"), nrm)
     save_png8(os.path.join(d, f"{name}_rough.png"), rgh)
-    save_png16(os.path.join(d, f"{name}_height_1k.png"),
-               (resize_wrap(hgt, 1024) if wrap else resize(hgt, 1024, cv2.INTER_AREA)))
-    rs = (lambda a: resize_wrap(a, 1024)) if wrap else (lambda a: resize(a, 1024, cv2.INTER_AREA))
+    wh1 = (out_wh[0] // 2, out_wh[1] // 2)
+    rs = (lambda a: resize_wrap(a, wh1)) if mode in ("tile", "strip") else \
+        (lambda a: cv2.resize(a, wh1, interpolation=cv2.INTER_AREA))
+    save_png16(os.path.join(d, f"{name}_height_1k.png"), rs(hgt))
     save_jpg(os.path.join(d, f"{name}_albedo_1k.jpg"), rs(albedo))
     n1 = rs(nrm) * 2 - 1
     n1 /= np.linalg.norm(n1, axis=-1, keepdims=True)
@@ -497,16 +621,32 @@ def build_surface(name, cfg):
     save_png8(os.path.join(d, f"{name}_rough_1k.png"), rs(rgh))
     meta = dict(name=name, source=os.path.relpath(src, ROOT), mode=mode,
                 tiling={"tile": "u+v", "strip": "u only", "radial": "none (centred)"}[mode],
-                metallic=1.0 if cfg["metal"] and name != "iron_painted_rust" else 0.0,
+                size=list(out_wh),
+                metallic=cfg.get("metallic", 1.0 if cfg["metal"] else 0.0),
                 roughness_range=list(cfg["rough"]), normal="OpenGL (+Y up)",
                 normal_strength=cfg["ns"], height_highpass_sigma_px=cfg["hs"],
                 lighting_flatten=cfg["flat"], **info,
                 rough_mean=round(float(rgh.mean()), 3))
-    if name == "iron_painted_rust":
-        meta["metallic_note"] = "painted iron: treat as dielectric; rust/bare spots could use a mask later"
+    if cfg.get("note"):
+        meta["note"] = cfg["note"]
     with open(os.path.join(d, "material.json"), "w") as f:
         json.dump(meta, f, indent=2)
     return preview(name, albedo, nrm, mode)
+
+
+def build_overlay(name, cfg, d, src, img, info):
+    """Overlay (dust / smudges on glass): a grayscale opacity mask, not a PBR set."""
+    L = lum(img)
+    lo, hi = np.percentile(L, [2, 99.7])
+    m = np.clip((L - lo) / max(hi - lo, 1e-4), 0, 1) ** cfg.get("gamma", 1.2)
+    save_png8(os.path.join(d, f"{name}_mask.png"), m)
+    save_png8(os.path.join(d, f"{name}_mask_1k.png"), resize_wrap(m, 1024))
+    meta = dict(name=name, source=os.path.relpath(src, ROOT), mode="overlay", tiling="u+v",
+                size=[SIZE, SIZE], use="opacity / dust mask: multiply into glass alpha or roughness, white = dust",
+                lighting_flatten=cfg["flat"], **info, mask_mean=round(float(m.mean()), 3))
+    with open(os.path.join(d, "material.json"), "w") as f:
+        json.dump(meta, f, indent=2)
+    return preview(name, m, None, "tile")
 
 
 def _blur_xwrap(a, sigma):

@@ -3,6 +3,10 @@
   "source": "contrib/incoming/magnific/selected/pine_floor_painted.jpg",
   "mode": "tile",
   "tiling": "u+v",
+  "size": [
+    2048,
+    2048
+  ],
   "metallic": 0.0,
   "roughness_range": [
     0.45,
@@ -12,7 +16,9 @@
   "normal_strength": 4.0,
   "height_highpass_sigma_px": 24,
   "lighting_flatten": "full",
-  "overlap_x": 271,
-  "overlap_y": 143,
-  "rough_mean": 0.675
+  "deskew_deg": -1.0,
+  "overlap_x": 255,
+  "overlap_y": 279,
+  "normal_2k_soften_sigma": 0.6,
+  "rough_mean": 0.676
 }

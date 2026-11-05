@@ -1,0 +1,23 @@
+{
+  "name": "wall_paint_divider_line",
+  "source": "contrib/incoming/magnific/selected/wall_paint_divider_line.jpg",
+  "mode": "strip",
+  "tiling": "u only",
+  "size": [
+    2048,
+    1616
+  ],
+  "metallic": 0.0,
+  "roughness_range": [
+    0.3,
+    0.9
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 2.5,
+  "height_highpass_sigma_px": 16,
+  "lighting_flatten": "x",
+  "stripes_rotated_to_horizontal_deg": -0.0,
+  "overlap_x": 380,
+  "normal_2k_soften_sigma": 0.0,
+  "rough_mean": 0.73
+}

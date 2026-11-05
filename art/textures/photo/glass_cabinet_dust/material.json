@@ -1,0 +1,15 @@
+{
+  "name": "glass_cabinet_dust",
+  "source": "contrib/incoming/magnific/selected/glass_cabinet_dust.jpg",
+  "mode": "overlay",
+  "tiling": "u+v",
+  "size": [
+    2048,
+    2048
+  ],
+  "use": "opacity / dust mask: multiply into glass alpha or roughness, white = dust",
+  "lighting_flatten": "full",
+  "overlap_x": 326,
+  "overlap_y": 326,
+  "mask_mean": 0.199
+}

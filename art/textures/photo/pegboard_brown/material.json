@@ -1,0 +1,25 @@
+{
+  "name": "pegboard_brown",
+  "source": "contrib/incoming/magnific/selected/pegboard_brown.jpg",
+  "mode": "tile",
+  "tiling": "u+v",
+  "size": [
+    2048,
+    2048
+  ],
+  "metallic": 0.0,
+  "roughness_range": [
+    0.55,
+    0.85
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 3.0,
+  "height_highpass_sigma_px": 14,
+  "lighting_flatten": "full",
+  "pitch_x": 91.81,
+  "holes_x": 19,
+  "pitch_y": 94.06,
+  "holes_y": 19,
+  "normal_2k_soften_sigma": 0.0,
+  "rough_mean": 0.738
+}
