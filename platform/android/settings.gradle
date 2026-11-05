@@ -13,3 +13,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "lockwright-android"
 include(":lockwright-haptics")
+include(":lockwright-click-audio")

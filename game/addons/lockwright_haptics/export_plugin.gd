@@ -9,7 +9,9 @@ func _supports_platform(platform: EditorExportPlatform) -> bool:
 	return platform is EditorExportPlatformAndroid
 
 func _get_android_libraries(_platform: EditorExportPlatform, _debug: bool) -> PackedStringArray:
-	var aar := "res://addons/lockwright_haptics/android/lockwright_haptics.aar"
-	if FileAccess.file_exists(aar):  # R-41a: ResourceLoader.exists() is false for .aar
-		return PackedStringArray([aar])
-	return PackedStringArray()
+	var out := PackedStringArray()
+	for aar in ["res://addons/lockwright_haptics/android/lockwright_haptics.aar",
+			"res://addons/lockwright_click_audio/android/lockwright_click_audio.aar"]:
+		if FileAccess.file_exists(aar):  # R-41a: ResourceLoader.exists() is false for .aar
+			out.append(aar)
+	return out

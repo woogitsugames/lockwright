@@ -13,6 +13,7 @@ var _last_transient_by_kind: Dictionary = {}
 var _last_continuous_sent := 0.0
 var _last_continuous: Dictionary = {}
 var _continuous_floor := 0.1
+var _duck_until_ms := 0.0
 
 
 func _ready() -> void:
@@ -88,6 +89,8 @@ func emit_event(event: Dictionary) -> void:
 func update_continuous(id: StringName, intensity: float, sharpness: float) -> void:
 	# R-22: throttle to <= 60 Hz and skip no-op updates
 	var now_ms := _now_ms()
+	if now_ms < _duck_until_ms:
+		return  # N-02/FEEL 7.4: ducking pauses updates instead of zeroing the channel
 	if now_ms - _last_continuous_sent < UPDATE_MIN_INTERVAL_MS:
 		_last_continuous[id] = [intensity, sharpness]
 		return
@@ -100,8 +103,9 @@ func update_continuous(id: StringName, intensity: float, sharpness: float) -> vo
 
 
 func _duck_continuous() -> void:
-	# brief dip of the resistance channel; Android A1/A3 skip one segment instead
-	Haptics.update_continuous(&"tension_resistance", 0.0, 0.1)
+	# FEEL 7.4 / TECH §3.5: duck x0.3 for 35 ms + 60 ms ramp — implemented as a pause
+	# of updates (the bridge never sees a zero, so A1/A3 don't cut the transient — N-02)
+	_duck_until_ms = _now_ms() + 95.0
 
 
 func reset() -> void:

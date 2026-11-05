@@ -50,4 +50,4 @@ textures/vram_compression/import_etc2_astc=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/lockwright_haptics/plugin.cfg")
+enabled=PackedStringArray("res://addons/lockwright_haptics/plugin.cfg", "res://addons/lockwright_click_audio/plugin.cfg")

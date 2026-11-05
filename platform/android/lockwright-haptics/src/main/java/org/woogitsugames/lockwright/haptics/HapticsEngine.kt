@@ -42,6 +42,7 @@ class HapticsEngine(context: Context) {
     private data class Continuous(var active: Boolean = false, var intensity: Float = 0f, var sharpness: Float = 0f)
     private val continuous = HashMap<String, Continuous>()
     private var lastSegmentAt = 0L
+    private var transientUntilMs = 0L  // N-02: resistance segments pause while a transient plays
 
     init {
         val v = vibrator
@@ -143,6 +144,7 @@ class HapticsEngine(context: Context) {
         if (!c.active) return
         val v = vibrator ?: return
         val now = SystemClock.uptimeMillis()
+        if (now < transientUntilMs) return  // N-02: skip one segment instead of cutting the transient
         val segmentMs = 50L
         if (now - lastSegmentAt < segmentMs - 10) return
         lastSegmentAt = now
@@ -151,9 +153,13 @@ class HapticsEngine(context: Context) {
             Tier.ENVELOPE, Tier.BUILDER -> {
                 if (Build.VERSION.SDK_INT >= 36 && envelopeSupported) {
                     runCatching {
-                        val seg = VibrationEffect.startComposition()
-                            .addPrimitive(VibrationEffect.Composition.PRIMITIVE_LOW_TICK, c.intensity.coerceIn(0.1f, 1f))
-                        v.vibrate(seg.compose())
+                        // N-07: continuous resistance as a real PWLE envelope segment (20/40 ms control points)
+                        val seg = VibrationEffect.startEnvelopeBuilder()
+                            .addControlPoint(0L, c.intensity.coerceIn(0.1f, 1f), c.sharpness.coerceIn(0f, 1f))
+                            .addControlPoint(20L, c.intensity.coerceIn(0.1f, 1f), c.sharpness.coerceIn(0f, 1f))
+                            .addControlPoint(40L, 0f, c.sharpness.coerceIn(0f, 1f))
+                            .build()
+                        v.vibrate(seg)
                     }.onFailure { vibrateWaveform(v, segmentMs, amp) }
                 } else vibrateWaveform(v, segmentMs, amp)
             }
@@ -185,6 +191,9 @@ class HapticsEngine(context: Context) {
         if (effect != null) {
             @Suppress("DEPRECATION")
             v.vibrate(effect)
+            // N-02: remember how long the transient occupies the actuator (each vibrate() cancels the previous)
+            val durMs = effect.duration
+            transientUntilMs = SystemClock.uptimeMillis() + (durMs ?: 60L) + 20L
         }
     }
 

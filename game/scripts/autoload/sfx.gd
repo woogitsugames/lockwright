@@ -9,7 +9,7 @@ const EVENTS := [&"contact", &"bind", &"near_shear", &"set", &"false_set", &"cou
 const MATERIALS := [&"brass", &"steel", &"iron", &"wood"]
 const LOOPS := [&"tension_resistance", &"pick_drag"]
 const POOL_SIZE := 12
-const VARIANTS := 4
+const VARIANTS := 6  # FEEL F-09: audio/v2 ships 6 variants
 const SFX_ROOT := "res://assets/audio/sfx"
 
 var _pool: Array[AudioStreamPlayer] = []
@@ -22,9 +22,13 @@ var _native_click: Object = null
 
 func _ready() -> void:
 	_rng.randomize()
-	if Engine.has_singleton("LockwrightClickAudio"):
-		_native_click = Engine.get_singleton("LockwrightClickAudio")
-		print("Sfx: native click audio bridge detected")
+	for name in ["LockwrightClickAudio", "LockwrightLowLatencyAudio"]:
+		if Engine.has_singleton(name):
+			_native_click = Engine.get_singleton(name)
+			print("Sfx: native click audio bridge detected: %s" % name)
+			break
+	if _native_click != null and _native_click.has_method("load_sample"):
+		_preload_native()
 	for i in POOL_SIZE:
 		var p := AudioStreamPlayer.new()
 		p.bus = "Sfx"
@@ -49,6 +53,24 @@ func _preload_all() -> void:
 					_cache["%s/%s/%d" % [loop, material, n]] = load(path)
 
 
+func _preload_native() -> void:
+	# N-03: preload decoded PCM of all L2 events into the native bridge (48 kHz 16-bit mono)
+	for event in EVENTS:
+		for material in MATERIALS:
+			for n in range(1, VARIANTS + 1):
+				var path := "%s/%s/%s_%d.wav" % [SFX_ROOT, event, material, n]
+				if not ResourceLoader.exists(path):
+					continue
+				var wav := load(path) as AudioStreamWAV
+				if wav == null or wav.format != AudioStreamWAV.FORMAT_16_BITS:
+					continue
+				var pcm := PackedByteArray()
+				pcm.resize(wav.data.size())
+				for i in wav.data.size():
+					pcm[i] = wav.data[i]
+				_native_click.load_sample("%s/%s/%d" % [event, material, n], pcm, 48000)
+
+
 func _stream_for(event: StringName, material: StringName) -> AudioStream:
 	var n := _rng.randi_range(1, VARIANTS)
 	var key := "%s/%s/%d" % [event, material, n]
@@ -62,7 +84,9 @@ func play(event: StringName, material: StringName = &"brass", volume_db: float =
 	# R-20: L2 clicks prefer the native low-latency bridge (Oboe/AAudio, AVAudioEngine);
 	# AudioServer pool is the fallback (and the only path on desktop/editor).
 	if _native_click != null and _native_click.has_method("play"):
-		_native_click.play(event, volume_db, pitch, 0.0, 0)
+		var n := _rng.randi_range(1, VARIANTS)
+		var gain := db_to_linear(volume_db)
+		_native_click.play("%s/%s/%d" % [event, material, n], gain, pitch)
 		return
 	if _free.is_empty():
 		return

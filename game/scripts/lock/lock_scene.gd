@@ -136,7 +136,11 @@ func _check_finished() -> void:
 	if session.finished():
 		if session.is_open():
 			Events.lock_opened.emit()
-			if not JobRun.current_job.is_empty():
+			if JobRun.mode == &"tutorial":
+				get_tree().paused = false
+				JobRun.complete()
+				get_tree().change_scene_to_file("res://scenes/tutorial.tscn")  # N-09
+			elif not JobRun.current_job.is_empty():
 				get_tree().paused = false
 				get_tree().change_scene_to_file("res://scenes/job_payment.tscn")
 		else:
@@ -192,8 +196,9 @@ func _draw_chalk() -> void:
 		elif st == "set":
 			_chalk.draw_arc(sp, 8, 0, TAU, 16, Color(1, 1, 1, 0.9), 2)
 		elif st == "overset":
-			_chalk.draw_line(sp + Vector2(-8, -8), sp + Vector2(8, 8), Color(1, 1, 1, 0.9), 2)
-			_chalk.draw_line(sp + Vector2(-8, 8), sp + Vector2(8, -8), Color(1, 1, 1, 0.9), 2)
+			# N-11: klamra = dwie poziome kreski nad komorą (DESIGN §1), not an X
+			_chalk.draw_line(sp + Vector2(-10, -8), sp + Vector2(10, -8), Color(1, 1, 1, 0.9), 2)
+			_chalk.draw_line(sp + Vector2(-10, -4), sp + Vector2(10, -4), Color(1, 1, 1, 0.9), 2)
 
 
 func _process(_delta: float) -> void:

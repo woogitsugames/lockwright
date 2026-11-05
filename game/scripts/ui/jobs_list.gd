@@ -18,6 +18,8 @@ func _ready() -> void:
 			jobs.append(JSON.parse_string(FileAccess.get_file_as_string(JOBS_DIR + "/" + path)))
 	jobs.sort_custom(func(a, b): return str(int(a.get("chapter", 9))) + a.get("id", "") < str(int(b.get("chapter", 9))) + b.get("id", ""))
 	for job in jobs:
+		if not JobRun.is_playable(job):
+			continue  # N-05: hide jobs whose family is not implemented in lockcore
 		var row := HBoxContainer.new()
 		var b := Button.new()
 		b.text = I18n.t(job.get("i18n", {}).get("title", &"jobs.title"))
