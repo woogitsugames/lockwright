@@ -40,3 +40,10 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | docs/handoff/img/a11y_portrait.png, a11y_landscape.png | grafika (zrzuty do audytu dostępności) | własne, zrzuty z gry | własne projektu | — |
 | store/screenshots/contact_pl.png, contact_en.png | grafika (zestawienie zrzutów sklepu) | własne, `store/screenshots/make_screens.py` | własne projektu | — |
 | game/addons/gut/images/*, gui/*.png, gui/*.tres, icon.png | grafika (ikony edytora GUT) | GUT v9.7.1 (bitwes/Gut), tylko edytor, poza eksportem | MIT (`game/addons/gut/LICENSE.md`) | https://github.com/bitwes/Gut |
+| art/blender/optics.py, art/blender/cutaway.py (ujęcia `microscope`, `borescope`) | skrypty look-dev (wymyślony mikroskop warsztatowy i wziernik, widoki przez optykę) | własne (Claude) | własne projektu | — |
+| art/renders/microscope.png, borescope.png, microscope_view.png, borescope_view.png | grafika (render Cycles) | własne, wygenerowane skryptami z `art/blender/` | własne projektu | — |
+| mockups/realizm/img/microscope.jpg, borescope.jpg, microscope_view.jpg, borescope_view.jpg | grafika (JPEG z renderów powyżej) | własne | własne projektu | — |
+| game/assets/photoreal/cutaway_baked.glb, tex/*_normal.png, tex/*_orm.png, matcap/*.png, scene.json | model 3D, wypieki, matcapy | własne: kopia wypieku spike'u 4 (`spikes/lit-metal/tools/bake.py`, `render_refs.py --what matcap`) ze sceny `art/blender/cutaway.py` | własne projektu | — |
+| game/assets/photoreal/plate/plate_1236x1650.png | grafika (render Cycles, płyta planu B bez ruchomych części) | własne, `game/assets/photoreal/tools/render_plate.py` (scena `art/blender/cutaway.py`, HDRI `interior` — wpis wyżej) | własne projektu | — |
+| game/assets/photoreal/tray/tray_full.png, tray_empty.png | grafika (render Cycles zwijki, `--lost 0` / `--lost 3`, 1080×960) | własne, `art/blender/tray.py` | własne projektu | — |
+| game/scenes/photoreal/shots/*.png | zrzuty ekranu gry (lavapipe) | własne | własne projektu | — |

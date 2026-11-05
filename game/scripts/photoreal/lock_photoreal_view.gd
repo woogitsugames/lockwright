@@ -343,6 +343,8 @@ func _set_active_stacks(n: int) -> void:
 func _build_overlay() -> void:
 	_tray_full = _tex(TRAY_FULL)
 	_tray_empty = _tex(TRAY_EMPTY)
+	if _tray_full == null:
+		_tray_full = _tray_empty
 	# Backdrop: the roll's bare leather, out of the light (visible beside the section in landscape).
 	_bg = Control.new()
 	_bg.name = "Backdrop"
@@ -544,8 +546,8 @@ func _draw_tray() -> void:
 	for t in _touches.values():
 		var p: Vector2 = t["pos"] - _tray.position
 		var s: Vector2 = t["start"] - _tray.position
-		_dent(s, 20.0, 0.06)
-		_dent(p, 28.0, 0.15)
+		_dent(s, 20.0, 0.10)
+		_dent(p, 28.0, 0.28)
 
 
 func _draw_bg() -> void:
