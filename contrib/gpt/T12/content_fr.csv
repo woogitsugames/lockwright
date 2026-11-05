@@ -1,0 +1,86 @@
+key,fr
+job.allotment_shed.client,"Un jardinier de 74 ans, M. Zbyszek, cultive une parcelle dans un jardin familial."
+job.allotment_shed.situation,Le cadenas de son abri de jardin est rouillé et ne s'ouvre plus. Arrosoirs et graines sont à l'intérieur ; la parcelle est au nom de sa femme.
+job.allotment_shed.title,L'abri de M. Zbyszek
+job.bike_interview.client,"Kuba, 23 ans, se rend à son premier entretien d'embauche dans une veste empruntée."
+job.bike_interview.situation,"Il a changé le code de son cadenas de vélo, puis l'a oublié. L'entretien est à 9 h 30, de l'autre côté de la ville."
+job.bike_interview.title,Un entretien à 9 h 30
+job.bramah_bureau.client,"Gosia, 36 ans, restaure des meubles dans son propre atelier près du port."
+job.bramah_bureau.situation,Gosia a acheté un secrétaire anglais ancien aux enchères. La clé manque et elle veut préserver la serrure d'origine.
+job.bramah_bureau.title,Le secrétaire anglais
+job.brussels_townhouse.client,"Magda, 41 ans, est traductrice. Elle vit à Bruxelles depuis quinze ans et glisse du français dans son polonais."
+job.brussels_townhouse.situation,"Une rafale l'a enfermée sur son balcon à Saint-Gilles. Monsieur Jacques, en bas, a la clé du portail, pas celle de son appartement."
+job.brussels_townhouse.title,Une maison à Saint-Gilles
+job.cat_bathroom.client,"Marta, 34 ans, graphiste en télétravail, vit avec un chat appelé Patate."
+job.cat_bathroom.situation,"Patate a sauté sur la poignée de la salle de bains et tiré le verrou. Marta est dehors ; le chat, dedans, proteste à grands cris."
+job.cat_bathroom.title,Patate dans la salle de bains
+job.charleroi_letters.client,"Ola, de passage en Belgique, appelle pour un conseil, pas pour une ouverture."
+job.charleroi_letters.situation,"Madame Martine a trouvé une cassette en fer verrouillée, liée au grand-père d'Ola. Toutes deux veulent l'ouvrir ensemble."
+job.charleroi_letters.title,L'adresse dans les lettres de grand-père
+job.dollhouse_wooden_lock.client,"Hania, 7 ans, et son père Tomasz, menuisier de troisième génération."
+job.dollhouse_wooden_lock.situation,L'arrière-grand-père a fabriqué une maison de poupées avec une serrure à goupilles en bois. La clé en bois s'est perdue dans le déménagement ; la poupée préférée de Hania est dedans.
+job.dollhouse_wooden_lock.title,La maison de poupées de l'arrière-grand-père
+job.drummer_locker.client,"Iga, 27 ans, batteuse du groupe « Pommes acides »."
+job.drummer_locker.situation,"Ses baguettes, ses écouteurs de scène et sa liste de morceaux sont dans un casier fermé de la salle de répétition. Le concert commence dans une heure."
+job.drummer_locker.title,Les baguettes dans le casier
+job.finnish_sailor.client,"Aino, 50 ans, mécanicienne en chef sur un navire finlandais à quai pour deux jours."
+job.finnish_sailor.situation,Une serrure à disques protège le coffre de marin d'Aino. Sa clé est tombée à l'eau et le capitaine confirme que le coffre lui appartient.
+job.finnish_sailor.title,Le coffre de la marin
+job.ghent_beguinage.client,"Frère Pieter, 66 ans, veille sur une maison d'un béguinage gantois. Il se déplace à vélo, un panier d'osier au guidon."
+job.ghent_beguinage.situation,"Dans le béguinage historique, une réserve abrite d'anciens registres paroissiaux. Personne n'en a la clé ; il faut ouvrir la porte sans laisser de trace."
+job.ghent_beguinage.title,Une porte du béguinage
+job.grandma_broth.client,"Madame Halina, 81 ans, est sortie en pantoufles jeter ses poubelles. Elle assure se souvenir de tout."
+job.grandma_broth.situation,La porte a claqué ; une marmite de bouillon est sur le feu. Sa voisine Zosia a déjà coupé le gaz.
+job.grandma_broth.title,Le bouillon sur le feu
+job.grandpa_chest.client,"Ola, 38 ans, professeure de biologie, et sa mère Krystyna."
+job.grandpa_chest.situation,Ola pense que la vieille malle contient des lettres datant du séjour de son grand-père Józef à Charleroi. Sa mère est désormais propriétaire de la maison.
+job.grandpa_chest.title,La malle du grand-père Józef
+job.kiosk_shutter.client,"Monsieur Stefan, 67 ans, tient son kiosque depuis 1994 et connaît tout le monde à l'arrêt de bus."
+job.kiosk_shutter.situation,Le cadenas du volet est rouillé et le premier bus arrive dans une demi-heure.
+job.kiosk_shutter.title,Le kiosque avant six heures
+job.krakow_antiquarian.client,"Monsieur Leopold, 70 ans, antiquaire."
+job.krakow_antiquarian.situation,"Leopold possède un vieux coffre à combinaison, mais veut aussi faire ouvrir la cassette d'un client. Cette seconde cassette ne lui appartient pas."
+job.krakow_antiquarian.title,Le coffret de l'antiquaire
+job.krakow_tenement_gate.client,Madame Wanda gère un immeuble de 1890 à Kazimierz et conserve les décisions des résidents dans un classeur.
+job.krakow_tenement_gate.situation,"La vieille serrure du portail s'est bloquée après la pluie, la clé toujours dedans. Ce portail protégé ne doit être ni percé ni modifié."
+job.krakow_tenement_gate.title,Le portail de Kazimierz
+job.liege_bakery.client,"Nadia, 29 ans, a repris la boulangerie de son oncle et prépare des gaufres au sucre perlé."
+job.liege_bakery.situation,La serrure de la porte arrière s'est bloquée lorsqu'une mauvaise clé a déclenché son détecteur. Il est 3 h 50 et la pâte lève.
+job.liege_bakery.title,La boulangerie à quatre heures
+job.museum_time_lock.client,"La docteure Anna Rygiel dirige les collections du musée de la Technologie du Port. Elle porte des gants de coton, même pour boire son café."
+job.museum_time_lock.situation,La serrure à minuterie d'un ancien coffre-fort reste bloquée. Le musée a besoin de la plaque qui se trouve dedans pour une exposition.
+job.museum_time_lock.title,L'horloge qui garde le coffre
+job.newlyweds_4am.client,"Kasia et Bartek : elle porte un voile de travers, lui tient le bouquet."
+job.newlyweds_4am.situation,"Les clés sont dans le sac de la demoiselle d'honneur, déjà repartie en voiture pour Kalisz. Le gâteau de mariage attend sur le paillasson."
+job.newlyweds_4am.title,"Quatre heures du matin, après le mariage"
+job.night_nurse.client,"Agnieszka, 45 ans, infirmière en médecine interne, porte une veste sur sa blouse."
+job.night_nurse.situation,"Après une garde de nuit de douze heures, Agnieszka a laissé sa clé dans son casier à l'hôpital. Il est 7 h 20."
+job.night_nurse.title,Après douze heures de garde
+job.pizzeria_pays_pizza.client,"Madame Renata, 52 ans, possède la pizzeria « Chez Renata ». Elle parle vite et a de la farine jusqu'aux coudes."
+job.pizzeria_pays_pizza.situation,L'arrière-salle s'est verrouillée à 23 h 30. La pâte de demain et la caisse sont dedans ; Renata propose de payer en pizzas.
+job.pizzeria_pays_pizza.title,Paiement en pizzas
+job.refuse_aunt_alive.client,Une femme d'une trentaine d'années qui se dit seule héritière.
+job.refuse_aunt_alive.situation,"Elle affirme que sa tante est morte et veut mettre son appartement en sécurité, sans aucun document de succession. Un voisin entend la conversation."
+job.refuse_aunt_alive.title,La tante qui se porte très bien
+job.refuse_ex_partner.client,"Darek, environ 40 ans, est nerveux et garde son téléphone face cachée."
+job.refuse_ex_partner.situation,Il veut entrer chez son ex-compagne pour récupérer ses affaires. Un seul nom figure sur la boîte aux lettres : ce n'est pas le sien.
+job.refuse_ex_partner.title,"« C'est aussi chez moi, à moitié »"
+job.refuse_rush_bribe.client,"Un homme en costume, au débit rapide et à la politesse irréprochable."
+job.refuse_rush_bribe.situation,"À une heure du matin, il veut entrer chez sa sœur, partie à l'étranger. Elle ne répond pas et il propose un supplément pour éviter les vérifications."
+job.refuse_rush_bribe.title,« Ma sœur a dit que c'était bon »
+job.student_dorm.client,"Zuzanna, 20 ans, étudie la conservation du patrimoine et porte un sac de pinceaux."
+job.student_dorm.situation,"Sa clé et sa carte d'étudiante sont restées dans la chambre 412. Sa colocataire est absente ; le concierge a la liste des résidents, mais pas de clé de secours."
+job.student_dorm.title,Chambre 412
+job.swiatniki_journeyman_padlock.client,"Monsieur Władysław, 84 ans, a appris le métier de serrurier à Świątniki dans les années 1950."
+job.swiatniki_journeyman_padlock.situation,"Il a fabriqué ce cadenas pour son chef-d'œuvre de compagnon. Son petit-fils en a perdu l'unique clé. Władysław connaît la solution, mais veut mettre les jeunes à l'épreuve."
+job.swiatniki_journeyman_padlock.title,Le cadenas de compagnon de M. Władysław
+job.time_capsule.client,"Madame Jadwiga, ancienne professeure principale, a réuni vingt anciens élèves, aujourd'hui trentenaires."
+job.time_capsule.situation,La classe de 3b a enterré une capsule temporelle en 2001. Madame Jadwiga a oublié la combinaison et l'école a accepté de l'ouvrir devant tout le monde.
+job.time_capsule.title,La capsule temporelle de la 3b
+job.uncle_safe_heirs.client,"Ewa, Marek et Piotr sont frère et sœur ; chacun a sa théorie sur le coffre-fort."
+job.uncle_safe_heirs.situation,"Trois héritiers se partagent le coffre-fort de l'oncle Bogdan. Marek veut l'ouvrir tout de suite, mais Ewa arrive. Ils doivent se mettre d'accord avant le début de l'intervention."
+job.uncle_safe_heirs.title,Le coffre-fort de l'oncle Bogdan
+job.widow_bureau.client,"Madame Irena, 79 ans, bibliothécaire retraitée, est veuve depuis un an."
+job.widow_bureau.situation,"Madame Irena possède l'écritoire de son défunt mari, mais la petite clé a disparu. Elle veut l'ouvrir sans percer ni laisser de marques."
+job.widow_bureau.title,L'écritoire
+job.wrong_floor.client,"Monsieur Kazimierz, 60 ans, rentre tout guilleret de la fête du prénom de son beau-frère."
