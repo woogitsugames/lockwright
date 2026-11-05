@@ -62,3 +62,13 @@
 **Decyzje dodane:** D-19 (i18n CSV w runtime), D-20→D-21 (iOS: .gdip zamiast GDExtension — .gdextension tylko-iOS blokował walidację eksportu Androida).
 
 **Znane ograniczenia:** zrzuty ekranu wymagają GPU (brak w sandboxie) — `docs/handoff/screens/` puste; menu 2D zamiast pełnej sceny 3D (czeka na assety z `art/`); fizyczne testy haptyki/audio na urządzeniach (spike 1–3) poza zakresem tego środowiska.
+
+## 2026-11-05 — Etap 2 (SESSION-B-PROMPT-2): zadania 1–4
+
+**Zadanie 1 (przegląd sesji C):** naprawione wszystkie 14 High (R-01…R-42) i kluczowe Medium — każda pozycja w `SESSION-C-REVIEW.md` ma adnotację `→ naprawione w <hash>`. Nowe testy GUT: `test_input_sampler` (R-02), `test_feedback_director` (R-21/22), `test_determinism` (R-16, golden event_hash), `test_families` (zadanie 4). Nowy autoload `FeedbackDirector` (priorytety/limity/koalescencja/ducking z `haptics_patterns.json`). Eksport zweryfikowany lokalnie: smoke z `.pck` = OK (R-28).
+
+**Zadanie 2 (D-32):** EN „Lockwright: Locksmith on Call” w i18n i prezecie Android.
+
+**Zadanie 3 (pętla zlecenia):** `jobs_list → job_arrival → job_verify → lock → job_payment`, 29 zleceń z `data/jobs`, mapowanie rodzin job→lockcore (`JobRun.FAMILY_MAP`), postęp w `save/1` (`jobs_completed`, monety, reputacja za odmowę).
+
+**Zadanie 4 (7 rodzin):** binding dostał `rotate/push/tool` + statyczne `LockcoreSession.solve()` (bot lockcore z nagranymi wejściami). Test GUT: bot lockcore otwiera wszystkie 7 rodzin przez warstwę Godota z identycznym `event_hash`.

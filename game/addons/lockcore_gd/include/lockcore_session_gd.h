@@ -23,6 +23,9 @@ public:
 	// One 1/120 s step. Returns events as Array of Dictionary
 	// {kind: StringName, sub: int, element: int, intensity: float, material: StringName, tick: int}.
 	godot::Array step(double tension, double pick_depth, double pick_lift, double rotate = 0.0, double push = 0.0, int tool = 0);
+	// Runs lockcore's own scripted bot (solver with recorded inputs) and returns
+	// {ok, reason, steps, event_hash, inputs: Array of [tension, depth, lift, rotate, push, tool]}.
+	static godot::Dictionary solve(const godot::String &family, std::uint64_t seed, int tier);
 	godot::Dictionary describe() const;
 	bool is_open() const;
 	bool finished() const;

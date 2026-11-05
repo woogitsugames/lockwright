@@ -5,6 +5,7 @@
 #include <algorithm>
 
 #include "lockcore/registry.hpp"
+#include "lockcore/bot.hpp"
 
 using namespace godot;
 
@@ -17,6 +18,7 @@ void LockcoreSession::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("failure"), &LockcoreSession::failure);
 	ClassDB::bind_method(D_METHOD("event_hash"), &LockcoreSession::event_hash);
 	ClassDB::bind_method(D_METHOD("t_step"), &LockcoreSession::t_step);
+	ClassDB::bind_static_method("LockcoreSession", D_METHOD("solve", "family", "seed", "tier"), &LockcoreSession::solve);
 }
 
 bool LockcoreSession::create(const String &family, std::uint64_t seed, int tier) {
@@ -88,6 +90,40 @@ Dictionary LockcoreSession::describe() const {
 	vm["open"] = v.open;
 	vm["failure"] = StringName(lockcore::failure_name(v.failure).data());
 	return vm;
+}
+
+Dictionary LockcoreSession::solve(const String &family, std::uint64_t seed, int tier) {
+	Dictionary out;
+	const lockcore::FamilyModule *module = lockcore::FamilyRegistry::builtin().find(
+			std::string_view(family.utf8().get_data()));
+	if (module == nullptr) {
+		out["ok"] = false;
+		out["reason"] = "unknown family";
+		return out;
+	}
+	lockcore::LockSpec spec = module->generate(seed, module->difficulty_for_tier(tier));
+	spec.family = std::string(family.utf8().get_data());
+	spec.seed = seed;
+	lockcore::SolveOptions opt;
+	opt.record_inputs = true;
+	lockcore::SolveReport rep = module->solver(spec, module->required_tools(spec), opt);
+	out["ok"] = rep.ok;
+	out["reason"] = String(rep.reason.c_str());
+	out["steps"] = static_cast<int64_t>(rep.steps);
+	out["event_hash"] = static_cast<int64_t>(rep.event_hash);
+	Array inputs;
+	for (const lockcore::InputFrame &f : rep.inputs) {
+		Array row;
+		row.append(static_cast<double>(f.tension) / lockcore::Q16_ONE);
+		row.append(static_cast<double>(f.pick_depth) / lockcore::Q16_ONE);
+		row.append(static_cast<double>(f.pick_lift) / lockcore::Q16_ONE);
+		row.append(static_cast<double>(f.rotate) / lockcore::Q16_ONE);
+		row.append(static_cast<double>(f.push) / lockcore::Q16_ONE);
+		row.append(static_cast<int64_t>(f.tool));
+		inputs.append(row);
+	}
+	out["inputs"] = inputs;
+	return out;
 }
 
 bool LockcoreSession::is_open() const { return session_ != nullptr && session_->is_open(); }
