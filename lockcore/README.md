@@ -33,7 +33,10 @@ lockcore/build/replay_tool lock pin_tumbler 4 123             # print a generate
 lockcore/build/replay_tool record wafer 2 77 out.replay.json  # record the bot's run [--clumsy|--feel]
 lockcore/build/replay_tool play lockcore/tests/golden/wafer_t2_s77.replay.json
 lockcore/build/replay_tool trace lockcore/tests/golden/wafer_t2_s77.replay.json out.trace.json  # per-step trace
+lockcore/build/check_locks [--feel N] [--csv FILE] lockcore/practice/*.json   # authored locks: parse, format, all bots
 ```
+
+Authored practice locks (30, validated, with the results table): [`practice/`](practice/README.md).
 
 ### Replay debugger (lockviz)
 
@@ -79,7 +82,8 @@ Run a single test group: `lockcore/build/lockcore_tests pin:` (substring filter)
 | `include/lockcore/lockfile.hpp`, `replay.hpp`, `json.hpp` | `lockwright.lock/1`, `lockwright.replay/1`, minimal JSON |
 | `src/families/` | one file per family, `builtin.cpp` (registration) |
 | `tests/` | own minimal runner (`testing.hpp`), scenario tests per family, `test_fuzz.cpp`, `golden/*.replay.json` |
-| `tools/` | `verify_seeds`, `replay_tool` |
+| `tools/` | `verify_seeds`, `replay_tool`, `check_locks` (authored lock files) |
+| `practice/` | 30 authored practice locks (`lockwright.lock/1`) + results table |
 
 ## Rules of the core
 
@@ -245,6 +249,8 @@ invalid or out of domain before, or in a step that both opened and broke, which 
   `peak_ratio()` no longer drops after a reset. `end_step(..., can_break)`: the step that opens a
   lock cannot break the tool (`pin_tumbler`, `wafer`, `lever`, `warded`); open wins.
 - JSON: lone low surrogates and malformed raw UTF-8 are rejected.
+- New tool `check_locks` (authored lock files: parse, ignored-key check, scripted / clumsy /
+  feeling bot, lesson events) and ctest `practice_locks` over `practice/*.json`.
 - `verify_seeds`: `--seeds` ≥ 1, strict integers, unknown `--family` / empty tier selection and
   CSV errors exit 2; replay check also round-trips `expected`. `replay_tool play` / `trace`
   compare hash, steps and open and name the mismatching field; write errors exit 1.
