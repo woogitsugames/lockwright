@@ -14,6 +14,7 @@ from gpu_common import (
     ART_BLENDER_DIR, setup_gpu_cycles, ease_out_cubic, ease_in_out_cubic,
     clamp01, remap, ensure_under_10mb
 )
+from photo_materials_v2 import apply_photo_materials
 from lw_common import *
 from mathutils import Vector, Matrix
 
@@ -34,6 +35,7 @@ BIT_DEPTH = arg('--bit_depth', '16')
 
 PRESETS = {
     'R04': {'shot': 'push',        'anim': 'push',      'states': 'e,e,e,e,e', 'frames': 90,  'still_frame': 65, 'tension': 2.0, 'dim': 0.0},
+    'R04_V2_FULL': {'shot': 'full_tools', 'anim': 'push', 'states': 'e,e,e,e,e', 'frames': 75, 'still_frame': 55, 'tension': 2.0, 'dim': 0.0},
     'R05': {'shot': 'tension_07',  'anim': 'tension',   'states': 'e,e,e,e,e', 'frames': 30,  'still_frame': 25, 'tension': 2.0, 'dim': 0.0},
     'R06': {'shot': 'pin_c_05',    'anim': 'bind_c',    'states': 'a,e,c,e,e', 'frames': 90,  'still_frame': 55, 'tension': 2.2, 'dim': 0.0},
     'R07': {'shot': 'macro_shear', 'anim': 'set_c',     'states': 'a,b,c,e,e', 'frames': 45,  'still_frame': 30, 'tension': 2.5, 'dim': 0.0},
@@ -97,6 +99,10 @@ M['brass_k'] = MAT_SATIN['brass_key']
 M['steel'] = MAT_SATIN['steel_drv']
 M['spring'] = MAT_SATIN['spring_st']
 M['pick'] = MAT_SATIN['pick_st']
+
+# D-48 / D-49: use photographic PBR maps if available, keeping procedural fallback.
+# Supply --require_photo 1 for GEM1-v2 final renders to prohibit silent fallback.
+PHOTO_PBR_REPORT = apply_photo_materials(MAT_SATIN, strict=(arg('--require_photo', '0') == '1'))
 
 # ---------------------------------------------------------------- Static housing, door, escutcheon
 PINS_X = [5.0, 9.0, 13.0, 17.0, 21.0]
@@ -458,7 +464,11 @@ def update_scene_for_frame(f, prev_sig=None):
     bolt_retract = 0.0
 
     # --- Camera framing per shot ---
-    if SHOT == 'push':  # R04
+    if SHOT == 'full_tools':  # R04_V2_FULL, deliberately frame both pick and tension wrench
+        u = ease_in_out_cubic(t_norm)
+        set_cam_orbit((-7.5, 0.0, -8.0), 330.0 - 14.0 * u,
+                      yaw_deg=-18.0, pitch_deg=8.0, lens=82.0)
+    elif SHOT == 'push':  # R04
         u = ease_in_out_cubic(t_norm)
         tx = 13.5 * (1 - u) + 13.0 * u
         tz = 9.0 * (1 - u) + 6.8 * u
