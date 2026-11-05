@@ -266,12 +266,12 @@ EN: “Thanks for contacting us. We'll review the moderation decision in context
 ## 10. Źródła i status ustaleń (odczyt 2026-11-05)
 
 **Wewnętrzne — źródło prawdy o grze:**
-- [CLAUDE.md](../../../../CLAUDE.md) — ton, legalność, PL/EN, zakaz marek i instruktażu.
-- [docs/DESIGN.md](../../../../docs/DESIGN.md) — trzy kanały sygnału, stany i czytelność.
-- [docs/CLIENTS.md](../../../../docs/CLIENTS.md) i [docs/JOBS.md](../../../../docs/JOBS.md) — klienci, odmowa, notka „to gra, nie kurs” oraz zastrzeżenia co do dostępności Trybu Zleceń.
-- [docs/DECISIONS.md](../../../../docs/DECISIONS.md) — D-06 (otwarta), D-32 (nazwa EN), D-42 (AI), D-49 (animatik), D-51 (Cloudflare Pages, Android najpierw i brak obietnic).
-- [docs/MARKETING.md](../../../../docs/MARKETING.md) — ton, zakazy, 10 scen wideo i format 9:16.
-- [docs/RESEARCH.md](../../../../docs/RESEARCH.md) — nieuregulowana do końca kolizja nazwy/uchwytów; nie jest opinią prawną.
+- [CLAUDE.md](../../../CLAUDE.md) — ton, legalność, PL/EN, zakaz marek i instruktażu.
+- [docs/DESIGN.md](../../../docs/DESIGN.md) — trzy kanały sygnału, stany i czytelność.
+- [docs/CLIENTS.md](../../../docs/CLIENTS.md) i [docs/JOBS.md](../../../docs/JOBS.md) — klienci, odmowa, notka „to gra, nie kurs” oraz zastrzeżenia co do dostępności Trybu Zleceń.
+- [docs/DECISIONS.md](../../../docs/DECISIONS.md) — D-06 (otwarta), D-32 (nazwa EN), D-42 (AI), D-49 (animatik), D-51 (Cloudflare Pages, Android najpierw i brak obietnic).
+- [docs/MARKETING.md](../../../docs/MARKETING.md) — ton, zakazy, 10 scen wideo i format 9:16.
+- [docs/RESEARCH.md](../../../docs/RESEARCH.md) — nieuregulowana do końca kolizja nazwy/uchwytów; nie jest opinią prawną.
 
 **Zewnętrzne — regulaminy weryfikowane, nie gwarancja zgody na post:**
 - [Reddit Spam, aktualizacja 2026-10-30](https://support.reddithelp.com/hc/en-us/articles/360043504051-Spam) oraz [Reddit: spam i „10%”, 2026-10-02](https://support.reddithelp.com/hc/en-us/articles/28012014962580-How-do-I-keep-spam-out-of-my-community) — brak masowej autopromocji, zasady społeczności są rozstrzygające.
