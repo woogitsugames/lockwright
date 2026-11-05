@@ -669,3 +669,11 @@ Zrzut: `docs/handoff/device-tests/run131_placeholder_lock.jpg`.
 - **Do zrobienia (najwyższy priorytet nowej sesji A):**
   1. **Natychmiast:** ukryj w liście zleceń te, których rodzina nie ma widoku planu B, albo tymczasowo przypisz im `pin_tumbler` z flagą `family_pending` w danych. Gracz nie może trafić na `lock.tscn`.
   2. **Docelowo:** plan B dla każdej rodziny (płyta Cycles z `art/renders` + ruchome części z GLB, jak w `lock_photoreal_view.gd`), zaczynając od rodzin z największą liczbą zleceń: warded, wafer, lever. Kreda, czoło rdzenia, samouczek pierwszej lekcji rodziny (ONBOARDING §8) i testy jak dla pinów.
+
+## Od sesji A: test właściciela na Samsungu Fold 8 Ultra (APK run 135), 2026-11-05 ok. 21:45 UTC
+Zrzuty: `docs/handoff/device-tests/run135/`.
+- **N-64 (krytyczne):** po samouczku „Zacznij dyżur” otwierał zamek bez zlecenia; po otwarciu ekran stawał (działa tylko pauza). Przekierowanie na dyżur + powrót do menu wypchnięte (be5e183); agent QA odtwarza całą ścieżkę w Godot (czy sterowanie też było martwe) i naprawia tryb ciągły (licznik zamków się zerował).
+- **N-65:** jakość „wysoka” na dużym ekranie — kanty wytrycha, pinów i linia podziału rozpikselowane: płyta planu B ma stałe 824×1100 px i jest rozciągana ~2,3×. Agent planu B: SubViewport według rzeczywistej rozdzielczości, MSAA, ostrzejsza płyta.
+- **N-66:** rachunek po zleceniu pusty (Klient/Usługa/pozycje bez wartości), trzy przyciski i przycisk w lewym dole bez napisów. Przycisk „‹ Wstecz” w przyjeździe ucięty. Agent QA.
+- **Głosy:** „słychać tylko mmm” — to wokalizacje S03 bez słów. Decyzja właściciela **D-57**: pełne kwestie czytane przez lektora AI (PL+EN). Agent głosów generuje nagrania; integracja w `job_arrival.gd` po agencie QA.
+- **Scenka przyjazdu:** decyzja **D-58** (2.5D z Blendera), proof dla `job.wrong_floor` po zwolnieniu renderera.
