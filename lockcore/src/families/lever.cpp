@@ -19,8 +19,6 @@
 #include "lockcore/lever.hpp"
 
 #include <algorithm>
-#include <cstdlib>
-#define EXPV(n,d) (std::getenv(n)?std::atoi(std::getenv(n)):(d))
 
 #include "lockcore/bot.hpp"
 #include "lockcore/hash.hpp"
@@ -621,14 +619,14 @@ class Module final : public FamilyModule {
     // spring_force 0.3 (t3) -> 0.5 (t5+): levers fall back 4x that per second.
     const int sf = std::clamp(300 + 100 * (d.tier - 3), 300, 500);
     P->spring_speed = q16_per_step(q16_milli(4 * sf));
-    P->set_speed = q16_per_step(q16_milli(EXPV(detector_ ? "SSD" : "SSL", 500)));
+    P->set_speed = SET_SPEED;
     P->detector = detector_;
     if (detector_) {
-      // detector_margin 12 % (t5) -> 6 % (t6); reset 1.5 s -> 2.5 s.
+      // detector_margin 10 % (t5) -> 8.3 % (t6) (rules 2, D-34; was 12 % -> 6 %); reset 1.5 s -> 2.5 s.
       const bool hard = d.tier >= 6;
-      P->detector_margin = q16_milli(hard ? EXPV("DM6",60) : EXPV("DM5",120));
-      P->reset_steps = ms_to_steps(hard ? EXPV("RS6",2500) : EXPV("RS5",1500));
-      P->max_trips = hard ? EXPV("MT6",3) : EXPV("MT5",3);
+      P->detector_margin = hard ? DETECTOR_MARGIN_T6 : DETECTOR_MARGIN_T5;
+      P->reset_steps = ms_to_steps(hard ? 2500 : 1500);
+      P->max_trips = 3;
       P->reset_wear = 2;
     }
     P->levers.resize(static_cast<std::size_t>(n));

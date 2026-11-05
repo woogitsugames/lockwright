@@ -12,7 +12,7 @@ namespace lockcore::lever {
 
 inline constexpr std::string_view FAMILY_ID = "lever";
 inline constexpr std::string_view DETECTOR_FAMILY_ID = "lever_detector";
-inline constexpr std::int32_t RULES_VERSION = 2;  // 2: set_speed, D-32
+inline constexpr std::int32_t RULES_VERSION = 2;  // 2: set_speed, D-34
 
 enum Sub : std::uint16_t {
   SUB_FALSE_GATE = 1,      // "lever.false_gate", base kind false_set: second knock of the false gate
@@ -68,6 +68,11 @@ inline constexpr q16 CR_HI = q16_milli(210);
 inline constexpr q16 STRESS_GAIN = q16_milli(95);
 inline constexpr q16 BOUND_SPEED = q16_per_step(q16_milli(1600));
 inline constexpr q16 FALSE_SPEED = q16_per_step(q16_milli(600));
+// Rules 2 (D-34): a set lever follows the lifter above its gate at most 0.6/s, and the
+// detector margins are 10 % (t5) / 8.3 % (t6) of the travel.
+inline constexpr q16 SET_SPEED = q16_per_step(q16_milli(600));
+inline constexpr q16 DETECTOR_MARGIN_T5 = q16_milli(100);
+inline constexpr q16 DETECTOR_MARGIN_T6 = q16_milli(83);
 
 std::unique_ptr<FamilyModule> make_module();           // lever, t3-t5
 std::unique_ptr<FamilyModule> make_detector_module();  // lever_detector, t5-t6

@@ -107,6 +107,37 @@ TEST_CASE("lever: false gate catches; escape only in the counter-rotation band")
   CHECK_EQ(log.count(EventKind::drop), 0);
 }
 
+TEST_CASE("lever: set_speed keeps a lever that leaves a false gate from jumping over its gate") {
+  // The lifter runs ahead of a caught lever (working tension, no rise). When the
+  // tension is eased, the lever sets; with set_speed it then follows the lifter only
+  // slowly (rules 2), with set_speed = 0 (rules 1) it jumps to the lifter and oversets.
+  for (const bool slow : {true, false}) {
+    auto P = authored(false, 2);
+    P->levers[0].false_gates = {q16_milli(360)};
+    P->set_speed = slow ? lever::SET_SPEED : 0;
+    CHECK(lever_fam().validate(spec_of(P)).empty());
+    LockSession s(lever_fam(), spec_of(P));
+    Log log;
+    REQUIRE(th::lift_until(s, 0, WORK, q16_milli(5), q16_milli(900), EventKind::false_set, log));
+    th::run(s, th::frame(WORK, element_center(0, 2), q16_milli(900)), 30, log);
+    const q16 cr = (lever::CR_LO + lever::CR_HI) / 2;
+    for (int i = 0; i < 90 && log.first(EventKind::set, 0) < 0; ++i)
+      th::run(s, th::frame(cr, element_center(0, 2), q16_milli(900)), 1, log);
+    const std::int64_t t_set = log.first(EventKind::set, 0);
+    REQUIRE(t_set >= 0);
+    // A reaction time later (~170 ms) the slow lever is still well below the overset.
+    th::run(s, th::frame(cr, element_center(0, 2), q16_milli(900)), 20, log);
+    if (slow) {
+      CHECK_EQ(log.count(EventKind::overset, 0), 0);
+      CHECK(s.describe().elements[0].state == ElementState::set);
+      CHECK(s.describe().elements[0].position <= P->levers[0].target - P->win_gate / 2 + 22 * lever::SET_SPEED);
+    } else {
+      CHECK_EQ(log.count(EventKind::overset, 0), 1);
+      CHECK(log.first(EventKind::overset, 0) - t_set <= 1);
+    }
+  }
+}
+
 TEST_CASE("lever: overset jams until T < t_release, which drops") {
   LockSession s(lever_fam(), spec_of(authored(false)));
   Log log;
