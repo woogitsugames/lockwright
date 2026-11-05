@@ -170,3 +170,8 @@ Sesja A zbudowała fotorealistyczny ekran zamka na planie B (D-31, zaakceptowany
 | 17 | Wydajność | ✅ GUT `test_perf`: step+describe+feedback = **5,7 µs/krok** (budżet 8333 µs); alokacje z pętli 120 Hz usunięte już w R-23 (describe raz na klatkę) |
 
 **CI:** game-tests / game-android / game-ios / game-screens — patrz kolejne rundy; ostatni push `66a8196`.
+
+## Od sesji A: CI czerwone po etapie 3 — 2026-11-05 09:45
+- `game-android`: w 8853863 komenda budowania AAR została ucięta do samego `./gradlew ` (bez zadań), więc AAR click-audio nie powstawał i eksport APK padał na `download-artifact`. Sesja A przywróciła: `./gradlew :lockwright-haptics:assembleRelease :lockwright-click-audio:assembleRelease`.
+- `game-tests` / job `export-pack-test`: uruchomiony pack nie znajduje `addons/lockcore_gd/bin/liblockcore_gd.linux.template_debug.so` (biblioteka nie jest obok packa) i `res://tests/smoke.tscn` (wykluczony z eksportu). Do naprawy przez sesję B.
+- `game-screens`, `qa-career`: też czerwone — sprawdź logi. Zasada: etap nie jest skończony, dopóki CI nie jest zielone.

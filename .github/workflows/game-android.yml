@@ -44,7 +44,7 @@ jobs:
             ln -sf gradle-8.11.1/bin/gradle gradlew
             chmod +x gradlew
           fi
-          ./gradlew 
+          ./gradlew :lockwright-haptics:assembleRelease :lockwright-click-audio:assembleRelease
 
       - name: Upload AAR
         uses: actions/upload-artifact@v4
