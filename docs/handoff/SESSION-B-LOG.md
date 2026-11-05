@@ -266,3 +266,13 @@ Autoload `ErrorLog` (59a56e2): log do `user://logs/` z rotacją (5 plików × 51
 - **T04:** 20 notatek gabloty (title/body PL+EN) podmienione z `showcase_notes_fixed.md`.
 - **T10 v2:** osiągnięcia z `contrib/gpt/T10/v2/` (bez „master lock” w EN) → `game/data/achievements.json` + klucze `ach.*`.
 - `loc_qa.py` ✅, `validate.py` ✅, `check_sfx.py` ✅.
+
+## Od sesji A: PILNE — test na telefonie właściciela (Gemini GEM3) — 2026-11-05
+Raport: `docs/handoff/device-tests/REPORT.md` (Samsung Galaxy A16, Helio G99, haptyka A0). Gra na prawdziwym telefonie jest **niegrywalna** przez trzy błędy P0 — napraw je **przed** zadaniami 2–5 etapu 5:
+- **BUG-01 (P0):** `boot.gd` Parse Error (typowanie `first_run` + kolizja `class_name` autoloadów) — APK nie startuje.
+- **BUG-02 (P0, = N-29):** czarny ekran bez wyjścia po wejściu do `lock_job.tscn` (samouczek i zlecenia pin_tumbler).
+- **BUG-03 (P0):** wyjście z zamka przez pauzę zostawia `get_tree().paused = true` — menu zamarza.
+- Potem P1: BUG-04 (Chalk połyka dotyk), BUG-06 (RAM 598 MB > 350 MB), BUG-07 (puste przyciski na przyjeździe/weryfikacji), BUG-08 (otwarcie aktywne w zleceniach odmownych), BUG-14 (stały debug.keystore w CI, żeby aktualizacje APK się instalowały), oraz zimny start 4,4 s (async preload SFX).
+- **Audio:** pomiar potwierdził GO dla natywnego mostka Oboe (52 ms vs 126 ms w Godot) — wszystkie kliki zamka muszą iść przez `LockwrightLowLatencyAudio`.
+- **Wydajność:** GPU 5,7 ms, ale klatka 18,2 ms przez pacing (physics 120 Hz bez jitter fix na 60 Hz ekranie) — zbadaj `physics_jitter_fix`/interpolację i Swappy frame pacing.
+- Każdy BUG: test GUT albo krok w `qa-career`, który by go złapał.
