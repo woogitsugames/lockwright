@@ -31,8 +31,39 @@ int usage() {
   return 2;
 }
 
+// Which of the expected fields (hash, steps, open) differ; empty = all match (T25-09).
+std::string expected_mismatch(const Replay& rp, std::uint64_t hash, std::int64_t steps, bool open) {
+  std::string d;
+  auto add = [&](const std::string& x) { d += (d.empty() ? "" : ", ") + x; };
+  if (hash != rp.expected_hash) add("hash " + hash_hex(hash) + " != expected " + hash_hex(rp.expected_hash));
+  if (steps != rp.expected_steps)
+    add("steps " + std::to_string(steps) + " != expected " + std::to_string(rp.expected_steps));
+  if (open != rp.expected_open) add(std::string("open ") + (open ? "1" : "0") + " != expected " + (rp.expected_open ? "1" : "0"));
+  return d;
+}
+
+// Writes the whole file or reports why not (T25-24).
+bool write_file(const char* path, const std::string& text) {
+  std::ofstream f(path, std::ios::binary);
+  if (!f) {
+    std::fprintf(stderr, "cannot open %s for writing\n", path);
+    return false;
+  }
+  f << text;
+  f.close();
+  if (!f) {
+    std::fprintf(stderr, "write to %s failed\n", path);
+    return false;
+  }
+  return true;
+}
+
 bool load_replay(const char* path, Replay& rp) {
   std::ifstream f(path, std::ios::binary);
+  if (!f) {
+    std::fprintf(stderr, "cannot open %s\n", path);
+    return false;
+  }
   std::stringstream ss;
   ss << f.rdbuf();
   std::string err;
@@ -59,6 +90,10 @@ int trace(const FamilyRegistry& reg, const char* in_path, const char* out_path) 
   }
   // Same construction as run_replay(), so the hash is identical.
   LockSpec spec = fam->generate(rp.seed, rp.difficulty);
+  if (const OracleReport o = fam->oracle(spec, fam->required_tools(spec)); !o.ok) {
+    std::fprintf(stderr, "generated lock refused by the oracle: %s\n", o.reason.c_str());
+    return 1;
+  }
   LockSession s(*fam, spec);
   using json::Value;
   Value frames = Value::array();
@@ -113,7 +148,7 @@ int trace(const FamilyRegistry& reg, const char* in_path, const char* out_path) 
   for (int k = 0; k <= static_cast<int>(ElementState::jammed); ++k)
     states.push(Value::string(std::string(element_state_name(static_cast<ElementState>(k)))));
   Value fails = Value::array();
-  for (int k = 0; k <= static_cast<int>(FailureKind::timeout); ++k)
+  for (int k = 0; k <= static_cast<int>(FailureKind::invalid_spec); ++k)
     fails.push(Value::string(std::string(failure_name(static_cast<FailureKind>(k)))));
   Value mats = Value::array();
   for (int k = 0; k <= static_cast<int>(MaterialId::steel); ++k)
@@ -164,12 +199,14 @@ int trace(const FamilyRegistry& reg, const char* in_path, const char* out_path) 
   res.set("failure", Value::string(std::string(failure_name(s.failure()))));
   res.set("event_hash_fnv1a64", Value::string(hash_hex(s.event_hash())));
   res.set("hash_matches", Value::boolean(s.event_hash() == rp.expected_hash));
+  const std::string diff = expected_mismatch(rp, s.event_hash(), s.t_step(), s.is_open());
+  res.set("expected_matches", Value::boolean(diff.empty()));
   o.set("result", std::move(res));
-  std::ofstream(out_path, std::ios::binary) << json::write(o, 1);
-  std::printf("%s: %lld frames, %zu events, hash %s (%s)\n", out_path, static_cast<long long>(s.t_step()),
-              o.find("events")->items().size(), hash_hex(s.event_hash()).c_str(),
-              s.event_hash() == rp.expected_hash ? "matches" : "MISMATCH");
-  return s.event_hash() == rp.expected_hash ? 0 : 1;
+  const std::size_t n_events = o.find("events")->items().size();
+  if (!write_file(out_path, json::write(o, 1))) return 1;
+  std::printf("%s: %lld frames, %zu events, hash %s (%s)\n", out_path, static_cast<long long>(s.t_step()), n_events,
+              hash_hex(s.event_hash()).c_str(), diff.empty() ? "matches" : ("MISMATCH: " + diff).c_str());
+  return diff.empty() ? 0 : 1;
 }
 
 }  // namespace
@@ -187,9 +224,22 @@ int main(int argc, char** argv) {
       std::fprintf(stderr, "unknown family %s\n", argv[2]);
       return 1;
     }
-    const DifficultyVector d = fam->difficulty_for_tier(std::atoi(argv[3]));
-    const std::uint64_t seed = std::strtoull(argv[4], nullptr, 10);
+    std::uint64_t tier = 0, seed = 0;
+    if (!field::parse_u64(argv[3], tier) || tier < static_cast<std::uint64_t>(fam->min_tier()) ||
+        tier > static_cast<std::uint64_t>(fam->max_tier())) {
+      std::fprintf(stderr, "%s has tiers %d..%d\n", argv[2], fam->min_tier(), fam->max_tier());
+      return 2;
+    }
+    if (!field::parse_u64(argv[4], seed)) {
+      std::fprintf(stderr, "seed must be a decimal uint64\n");
+      return 2;
+    }
+    const DifficultyVector d = fam->difficulty_for_tier(static_cast<int>(tier));
     const LockSpec spec = fam->generate(seed, d);
+    if (const OracleReport o = fam->oracle(spec, fam->required_tools(spec)); !o.ok) {
+      std::fprintf(stderr, "generated lock refused by the oracle: %s\n", o.reason.c_str());
+      return 1;
+    }
     if (cmd == "lock") {
       std::cout << lock_to_json(spec, *fam);
       return 0;
@@ -217,7 +267,7 @@ int main(int argc, char** argv) {
     rp.expected_hash = r.event_hash;
     rp.expected_steps = r.steps;
     rp.expected_open = true;
-    std::ofstream(argv[5], std::ios::binary) << replay_to_json(rp);
+    if (!write_file(argv[5], replay_to_json(rp))) return 1;
     std::printf("%s: %lld steps, %d drops, %d oversets, %d false sets, hash %s\n", argv[5],
                 static_cast<long long>(r.steps), r.drops, r.oversets, r.false_sets, hash_hex(r.event_hash).c_str());
     return 0;
@@ -226,24 +276,17 @@ int main(int argc, char** argv) {
   if (cmd == "trace" && argc == 4) return trace(reg, argv[2], argv[3]);
 
   if (cmd == "play" && argc == 3) {
-    std::ifstream f(argv[2], std::ios::binary);
-    std::stringstream ss;
-    ss << f.rdbuf();
     Replay rp;
-    std::string err;
-    if (!replay_from_json(ss.str(), rp, err)) {
-      std::fprintf(stderr, "%s\n", err.c_str());
-      return 1;
-    }
+    if (!load_replay(argv[2], rp)) return 1;
     const ReplayResult res = run_replay(reg, rp);
     if (!res.ok) {
       std::fprintf(stderr, "%s\n", res.error.c_str());
       return 1;
     }
-    const bool match = res.hash == rp.expected_hash;
+    const std::string diff = expected_mismatch(rp, res.hash, res.steps, res.open);
     std::printf("steps %lld, open %d, hash %s (%s)\n", static_cast<long long>(res.steps), res.open ? 1 : 0,
-                hash_hex(res.hash).c_str(), match ? "matches" : "MISMATCH");
-    return match ? 0 : 1;
+                hash_hex(res.hash).c_str(), diff.empty() ? "matches" : ("MISMATCH: " + diff).c_str());
+    return diff.empty() ? 0 : 1;
   }
   return usage();
 }

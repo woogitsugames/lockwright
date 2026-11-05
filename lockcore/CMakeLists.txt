@@ -79,5 +79,20 @@ if(LOCKCORE_BUILD_TESTS)
             -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/no_float.cmake)
   if(LOCKCORE_BUILD_TOOLS)
     add_test(NAME verify_seeds_smoke COMMAND verify_seeds --seeds 200 --feel 50)
+    # A run that checks nothing, or a bad argument, must not pass (T25-10/11).
+    add_test(NAME verify_seeds_rejects_zero COMMAND verify_seeds --seeds 0)
+    add_test(NAME verify_seeds_rejects_text COMMAND verify_seeds --seeds 12x)
+    add_test(NAME verify_seeds_rejects_family COMMAND verify_seeds --seeds 1 --family does_not_exist)
+    add_test(NAME verify_seeds_rejects_tier COMMAND verify_seeds --seeds 1 --tier 999)
+    add_test(NAME verify_seeds_rejects_csv COMMAND verify_seeds --seeds 1 --family wafer --tier 1 --csv /nonexistent-dir/x.csv)
+    set_tests_properties(verify_seeds_rejects_zero verify_seeds_rejects_text verify_seeds_rejects_family
+                         verify_seeds_rejects_tier verify_seeds_rejects_csv PROPERTIES WILL_FAIL TRUE)
+    # play compares hash, steps and open (T25-09): a golden with a wrong step count fails.
+    add_test(NAME replay_tool_play_golden COMMAND replay_tool play ${CMAKE_CURRENT_SOURCE_DIR}/tests/golden/wafer_t2_s77.replay.json)
+    add_test(NAME replay_tool_play_bad_steps COMMAND ${CMAKE_COMMAND} -DTOOL=$<TARGET_FILE:replay_tool>
+             -DIN=${CMAKE_CURRENT_SOURCE_DIR}/tests/golden/wafer_t2_s77.replay.json -DOUT=${CMAKE_CURRENT_BINARY_DIR}/bad_steps.replay.json
+             -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/play_bad_steps.cmake)
+    add_test(NAME replay_tool_record_bad_path COMMAND replay_tool record wafer 2 77 /nonexistent-dir/x.replay.json)
+    set_tests_properties(replay_tool_record_bad_path PROPERTIES WILL_FAIL TRUE)
   endif()
 endif()

@@ -82,12 +82,22 @@ int main(int argc, char** argv) {
       }
       return argv[++i];
     };
-    if (a == "--seeds") n_seeds = std::atoll(next().c_str());
-    else if (a == "--replays") n_replays = std::atoll(next().c_str());
+    // Strict integers (T25-10): --seeds >= 1, --replays / --feel / --tier >= 0.
+    auto count = [&](std::int64_t lo) -> std::int64_t {
+      const std::string v = next();
+      std::uint64_t u = 0;
+      if (!field::parse_u64(v, u) || u > static_cast<std::uint64_t>(INT64_MAX) || static_cast<std::int64_t>(u) < lo) {
+        std::fprintf(stderr, "%s needs an integer >= %lld, got '%s'\n", a.c_str(), static_cast<long long>(lo), v.c_str());
+        std::exit(2);
+      }
+      return static_cast<std::int64_t>(u);
+    };
+    if (a == "--seeds") n_seeds = count(1);
+    else if (a == "--replays") n_replays = count(0);
     else if (a == "--family") only_family = next();
-    else if (a == "--tier") only_tier = std::atoi(next().c_str());
+    else if (a == "--tier") only_tier = static_cast<int>(std::min<std::int64_t>(count(0), 1000));
     else if (a == "--csv") csv_path = next();
-    else if (a == "--feel") n_feel = std::atoll(next().c_str());
+    else if (a == "--feel") n_feel = count(0);
     else {
       std::fprintf(stderr, "usage: verify_seeds [--seeds N] [--family ID] [--tier T] [--csv FILE] [--replays N] [--feel N]\n");
       return 2;
@@ -95,15 +105,33 @@ int main(int argc, char** argv) {
   }
 
   if (n_feel < 0) n_feel = n_seeds;
+  const FamilyRegistry& reg = FamilyRegistry::builtin();
+  // An unknown family or tier must not pass with nothing run (T25-11).
+  if (!only_family.empty() && reg.find(only_family) == nullptr) {
+    std::fprintf(stderr, "unknown family '%s'\n", only_family.c_str());
+    return 2;
+  }
+  int selected = 0;
+  for (const FamilyModule* fam : reg.all()) {
+    if (!only_family.empty() && fam->id() != only_family) continue;
+    for (int tier = fam->min_tier(); tier <= fam->max_tier(); ++tier) selected += (only_tier < 0 || tier == only_tier) ? 1 : 0;
+  }
+  if (selected == 0) {
+    std::fprintf(stderr, "no family has tier %d%s%s\n", only_tier, only_family.empty() ? "" : " in ", only_family.c_str());
+    return 2;
+  }
   std::ofstream csv;
   if (!csv_path.empty()) {
     csv.open(csv_path);
+    if (!csv) {
+      std::fprintf(stderr, "cannot open %s for writing\n", csv_path.c_str());
+      return 2;
+    }
     csv << "family,tier,seeds,failures,steps_p50,steps_p90,steps_max,drops_mean_x100,drops_p90,drops_max,"
            "oversets,false_sets,retries,peak_stress_q16,clumsy_ok_x1000,feel_runs,feel_ok_x1000,feel_p50,feel_p90\n";
   }
 
   const auto t0 = std::chrono::steady_clock::now();
-  const FamilyRegistry& reg = FamilyRegistry::builtin();
   int total_failures = 0;
   std::vector<std::string> clumsy;
   std::vector<std::string> feeling;
@@ -146,14 +174,22 @@ int main(int argc, char** argv) {
           rp.seed = seed;
           rp.difficulty = d;
           rp.inputs = r.inputs;
+          rp.expected_hash = r.event_hash;
+          rp.expected_steps = r.steps;
+          rp.expected_open = true;
           Replay parsed;
           std::string err;
           if (!replay_from_json(replay_to_json(rp), parsed, err)) {
             fail(seed, "replay parse: " + err);
             continue;
           }
+          // Full round trip of the expected block too (T25-13).
+          if (parsed.expected_hash != r.event_hash || parsed.expected_steps != r.steps || !parsed.expected_open) {
+            fail(seed, "replay expected metadata mismatch");
+            continue;
+          }
           const ReplayResult rr = run_replay(reg, parsed);
-          if (!rr.ok || rr.hash != r.event_hash || !rr.open) {
+          if (!rr.ok || rr.hash != r.event_hash || rr.steps != r.steps || !rr.open) {
             fail(seed, "replay hash mismatch");
             continue;
           }
@@ -257,5 +293,12 @@ int main(int argc, char** argv) {
   for (const auto& f : feeling) std::printf("  %s\n", f.c_str());
   const auto secs = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - t0).count();
   std::printf("total failures: %d (%lld ms)\n", total_failures, static_cast<long long>(secs));
+  if (csv.is_open()) {
+    csv.close();
+    if (!csv) {
+      std::fprintf(stderr, "writing %s failed\n", csv_path.c_str());
+      return 2;
+    }
+  }
   return total_failures == 0 ? 0 : 1;
 }
