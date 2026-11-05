@@ -125,3 +125,6 @@ dev.haptics_lab.tier,Tier,Tier,Stufe
 dev.haptics_lab.force_fallback,Use fallback,Wymuś fallback,Fallback erzwingen
 dev.haptics_lab.resistance,Resistance,Opór,Widerstand
 dev.haptics_lab.caps,Capabilities,Możliwości,Möglichkeiten
+nav.quit_confirm,Quit the game?,Zakończyć grę?,Spiel beenden?
+nav.quit_yes,Quit,Zakończ,Beenden
+nav.quit_no,Keep playing,Zostań w grze,Weiterspielen

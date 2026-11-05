@@ -12,6 +12,8 @@ run/main_scene="res://scenes/boot.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
 boot_splash/bg_color=Color(0.07, 0.07, 0.08, 1)
 boot_splash/show_image=false
+; N-52: Android back is handled by the Nav autoload, never quits directly
+config/quit_on_go_back=false
 
 [autoload]
 
@@ -26,6 +28,7 @@ Sfx="*res://scripts/autoload/sfx.gd"
 Quality="*res://scripts/autoload/quality.gd"
 Achievements="*res://scripts/autoload/achievements.gd"
 ErrorLog="*res://scripts/autoload/error_log.gd"
+Nav="*res://scripts/autoload/nav.gd"
 
 [gui]
 
@@ -55,6 +58,7 @@ common/physics_jitter_fix=0.5
 renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="mobile"
 textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.11, 0.085, 0.065, 1)
 
 [editor_plugins]
 
