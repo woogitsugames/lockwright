@@ -48,3 +48,12 @@ Oryginały (PNG 2048²) zostają w Release; tu JPG q92. Wybór sesji A (wariant 
 | `steel_heat_tint.jpg` | steel_heat_tint.v2 wariant 3 (poprawki runda 1) | `creation_3828799042.png` |
 | `tool_roll_open_empty.jpg` | tool_roll_open_empty.v2 wariant 1 (poprawki runda 1) | `creation_3828802087.png` |
 | `tool_roll_pocket_empty_closeup.jpg` | tool_roll_pocket_empty_closeup wariant 4 (poprawki runda 1) | `creation_3828803689.png` |
+
+| `bench_beech_top.jpg` | runda 2, wariant 2 | `creation_3828911744.png` |
+| `glass_cabinet_dust.jpg` | runda 2, wariant 4 | `creation_3828918412.png` |
+| `pegboard_brown.jpg` | runda 2, wariant 2 | `creation_3828913524.png` |
+| `steel_cast_grey_paint.jpg` | runda 2, wariant 4 | `creation_3828915901.png` |
+| `velvet_display_green.jpg` | runda 2, wariant 2 | `creation_3828916563.png` |
+| `wall_lime_plaster.jpg` | runda 2, wariant 2 | `creation_3828906478.png` |
+| `wall_oil_paint_green.jpg` | runda 2, wariant 2 | `creation_3828907610.png` |
+| `wall_paint_divider_line.jpg` | runda 2, wariant 2 | `creation_3828909622.png` |
