@@ -31,7 +31,7 @@ const WRENCH_MAX_DEG := 14.0   # HUD.md §3: wrench arm 0° → 14° for T 0 →
 const PICK_BEND_MM := 0.45     # HUD.md §3: shaft bow at stress 1 (≈ 6 dp)
 const SMOOTH_S := 0.06         # critically damped follow, no overshoot (DESIGN.md: 100–250 ms)
 # Tray (art/blender/tray.py, 1080×960): pocket column boundaries as fractions of the image width.
-const TRAY_COLUMNS := [0.0, 0.215, 0.4825, 0.75]
+const TRAY_COLUMNS := [0.0, 0.233, 0.503, 0.76]
 const TRAY_POCKETS := 3
 const FLAP_DP := 48.0
 
@@ -54,6 +54,8 @@ var _flap: Control
 var _tray_full: Texture2D
 var _tray_empty: Texture2D
 var _all_mats: Array[ShaderMaterial] = []
+var _plate_mats: Array[ShaderMaterial] = []  # receive the pins' contact occlusion
+var _occ := PackedVector4Array()
 var _plug: Node3D
 var _wrench: Node3D
 var _pick: MeshInstance3D
@@ -112,8 +114,13 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	_plug_deg = lerpf(_plug_deg, _plug_target(vm, tension), k)
 	_wrench_deg = lerpf(_wrench_deg, _plug_deg + WRENCH_MAX_DEG * clampf(tension, 0.0, 1.0), k)
 	_apply_plug_and_wrench()
+	_occ.resize(_stacks.size())
+	for i in _stacks.size():
+		_occ[i] = Vector4(PINS_X[i], 0.0, 0.0, 0.0)
 	for i in n:
 		_pose_stack(i, elements[i], default_target)
+	for m in _plate_mats:
+		m.set_shader_parameter("stacks", _occ)
 	_pose_pick(vm, input, elements, default_target, k)
 
 
@@ -246,6 +253,7 @@ func _build_materials() -> void:
 	var plate := _tex(PLATE)
 	var static_mat := _mat("plate.gdshader")
 	static_mat.set_shader_parameter("plate", plate)
+	_plate_mats.append(static_mat)
 	var matcaps := {}
 	for mi: MeshInstance3D in _model.find_children("*", "MeshInstance3D", true, false):
 		var nm := String(mi.name)
@@ -255,6 +263,7 @@ func _build_materials() -> void:
 			var r := _mat("plate_rest.gdshader")
 			r.set_shader_parameter("plate", plate)
 			r.set_shader_parameter("rest_model", Projection(_rest[mi]))
+			_plate_mats.append(r)
 			override = r
 		elif _is_moving(nm):
 			var src := mi.mesh.surface_get_material(0)
@@ -456,6 +465,7 @@ func _pose_stack(i: int, el: Dictionary, default_target: float) -> void:
 	var tilt := Transform3D(Basis(Vector3.BACK, deg_to_rad(pose["tilt_deg"])), Vector3.ZERO)
 	var place := Transform3D(Basis.IDENTITY, Vector3(st["x"] - x0, pose["driver_bottom"] - b0, 0.0))
 	drv.transform = Transform3D(Basis.IDENTITY, pivot) * tilt * Transform3D(Basis.IDENTITY, -pivot) * place
+	_occ[i] = Vector4(st["x"], pose["key_bottom"], pose["driver_bottom"] + dlen, 1.0)
 	# spring: squeezed between the driver top and the cap
 	var spr: MeshInstance3D = st["spr"]
 	if spr:
