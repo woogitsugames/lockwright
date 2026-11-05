@@ -488,10 +488,10 @@ między kołkiem dolnym i górnym w każdym stosie leży na linii podziału.
 
 | Parametr | t2 | t3 | t4 | t5 | t6 | t7 | Jedn. |
 |---|---|---|---|---|---|---|---|
-| `n_elem` | 3 | 4 | 5 | 5 | 6 | 6–7 | stosy |
+| `n_elem` | 3 | 4 | 5 | 5–6 | 6 | 6–7 | stosy (t5 5–6: D-34) |
 | `win_shear` | 12 | 11 | 10 | 9 | 8 | 7 | % |
 | `tension_band` | 0,28 | 0,24 | 0,20 | 0,18 | 0,15 | 0,12 | szerokość |
-| `overset_margin` | 10 | 9 | 8 | 7 | 6 | 5 | % |
+| `overset_margin` | 10 | 9 | 8 | 7 | 6 | 5,5 | % (t7 5,5: D-34) |
 | `bind_spread` | 1,0 | 0,8 | 0,6 | 0,5 | 0,4 | 0,3 | względny |
 | `multi_bind_p` | 0 | 0 | 0,05 | 0,10 | 0,15 | 0,20 | — |
 | `sec_count` (F1) | 0 | 0 | 1 | 1–2 | 2–3 | 3–4 | kołki zab. |
@@ -540,6 +540,8 @@ by jej wycięcie (bramka) przepuściło trzpień.
   Fałszywe bramki (wycięcia w przedniej krawędzi; od t4) dają `false_set`: trzpień wpada płytko, dźwignia „trzyma”,
   ale zasuwa nie idzie; wyjście: lekko zmniejszyć napięcie i unieść wyżej (`lever.false_gate` → `counter_rotate`).
 - Zbyt wysokie uniesienie: dźwignia ponad bramką = `overset`.
+- Dźwignia w bramce idzie za podnośnikiem w górę najwyżej 0,6 skoku/s (`set_speed`, D-34): po wyjściu z fałszywej
+  bramki nie „przeskakuje” od razu ponad bramkę, gracz ma czas na reakcję po kliknięciu `set`.
 - Wejścia: `tension` = nacisk na zasuwę; `pick_depth` = wybór dźwigni (w głąb pakietu); `pick_lift`.
 - Zdarzenia: `contact`, `bind`, `near_shear`, `gate_align`, `set`, `false_set`, `counter_rotate`, `overset`, `drop`,
   `stress`, `break`, `wear`, `open`. Rodzinne: `lever.false_gate` (mapuje na `false_set`).
@@ -600,7 +602,7 @@ blokuje zamek i sygnalizuje właścicielowi próbę manipulacji.
 | Parametr | Zakres | Jednostka | Skalowanie t5→t6 |
 |---|---|---|---|
 | `n_elem` | 5–6 | dźwignie | 5 → 6 |
-| `detector_margin` | 12–6 | % nad bramką | maleje |
+| `detector_margin` | 10–8,3 | % nad bramką | maleje (D-34; było 12–6) |
 | `false_gates` | 1–2 | — | rośnie |
 | `reset_time` | 1,5–2,5 | s | rośnie |
 

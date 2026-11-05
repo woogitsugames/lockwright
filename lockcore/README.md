@@ -4,8 +4,9 @@ Deterministic lock-logic library for Lockwright (C++20, no engine dependency, no
 third-party code). The Godot layer will reach it through GDExtension (D-04); the
 library itself builds and tests natively on Linux, macOS, Android NDK and iOS.
 
-Status: **v0.2** — core + seven families (`pin_tumbler`, `wafer`, `wooden_pin`, `warded`,
+Status: **v0.3** — core + seven families (`pin_tumbler`, `wafer`, `wooden_pin`, `warded`,
 `lever`, `lever_detector`, `ring_combo`), verifier with three bots, replays, light fuzzing.
+Balance per tier (feeling / clumsy bot): [`BALANCE.md`](BALANCE.md).
 
 ## Build and test
 
@@ -86,7 +87,7 @@ which is above `t_hold`, so fixing it costs no drop.
 Generator constants (Q16 thousandths): pin `t_hold 0.10`, `t_release 0.05`,
 `band_lo 0.20..0.25`, `tau_safe = max t_stick + 0.06`, `cr 0.12..0.21`, stress gain 0.095,
 bound pin speed 2/s, spool 0.6/s. Wafer: `t_hold 0.08`, `t_release 0.16`, `band_lo 0.22..0.26`.
-Tier tables: `pin_tumbler` t2–t7 per LOCKS.md §2.6; `wafer` t1–t3 (D-17).
+Tier tables: `pin_tumbler` t2–t7 per LOCKS.md §2.6 (t5 5–6 stacks, t7 overset 5.5 %, D-34); `wafer` t1–t3 (D-17).
 
 ## Families (v0.2)
 
@@ -119,8 +120,9 @@ exactly one offered bit work. Tiers: t1 1–2 wards, 2 bits; t2 2–3 wards, 3 b
 binding and stress; a bound lever falls back on its spring (0.3→0.5 × 4/s) when the lifter drops;
 gate = `gate_align` + `set`; false notches below the gate (`sec` per lever) catch the lever
 (`false_set` + `lever.false_gate`) and release it only with `T` in `[cr_lo, cr_hi]` =
-`[0.12, 0.21]` (`counter_rotate`); overset clears below `t_release` 0.05 (costs a drop). Detector:
-any lever above gate top + `detector_margin` (t5 0.12, t6 0.06) trips (`detector_trip`, every lever
+`[0.12, 0.21]` (`counter_rotate`); overset clears below `t_release` 0.05 (costs a drop). A set
+lever follows the lifter above its gate at most `set_speed` 0.6/s (rules 2). Detector:
+any lever above gate top + `detector_margin` (t5 0.10, t6 0.083; rules 2) trips (`detector_trip`, every lever
 `jammed`); reset = `T < t_hold` and `rotate <= -1/2` for 1.5 s (t5) / 2.5 s (t6) →
 `detector.reset` (base `drop`, sub 2), 2 wear points; the third trip blocks the lock
 (`FailureKind::detector_trip`).
@@ -155,11 +157,11 @@ the set flags go). `gate_feel` = 1 − `noise` scales the cues (t2 0.7, t3 0.45)
 `FamilyModule::run_bot(kind, ...)` runs any of the three bots; the default serves lift-based
 families (`run_plan_bot` / `run_feel_bot`), `warded` and `ring_combo` override it (and `solver()`).
 
-Results (10 000 seeds per tier, scripted gate: 0 failures in every family and tier). Feeling bot
-success / time p50: `pin_tumbler` t2–t7 98.0–99.9 % / 12–30 s, `wafer` 95–98 % / 13–23 s,
-`wooden_pin` 97.9 % / 18 s, `warded` t1 99.9 % / 15 s, t2 99.9 % / 19 s, `lever` t3 100 %,
-t4 90.3 %, t5 94.6 % / 14–25 s, `lever_detector` t5 94.4 %, t6 75.5 % / 24–30 s, `ring_combo`
-t2–t3 100 % / 25–34 s.
+Results (10 000 seeds per tier, scripted gate: 0 failures in every family and tier; full table
+in [`BALANCE.md`](BALANCE.md)). Feeling bot success is 99.9–100 % everywhere since v0.3; its time
+p50 rises with every tier: `pin_tumbler` t2–t7 11–27 s, `wafer` 12–22 s, `wooden_pin` 16 s,
+`warded` 15–19 s, `lever` 13–23 s, `lever_detector` 23–29 s, `ring_combo` 25–34 s. Clumsy bot on
+the top tiers: `pin_tumbler` t6 93.7 % → t7 36.0 %, `lever_detector` t5 99.9 % → t6 42.5 %.
 
 `generate()` retries up to 16 times (`seed' = hash(seed, attempt)`) until the oracle accepts.
 Per seed `verify_seeds` also checks `validate()`, the lock-file round trip (bit-exact) and,
@@ -174,9 +176,10 @@ as RLE rows `[run, tension, depth, lift, rotate, push, tool]` in 1/256 units, pl
 expected FNV-1a 64 event hash. A replay with another `rules_version` is rejected explicitly.
 
 Golden files (`tests/golden/`): two per v0.2 family, one of them recorded from the feeling bot
-(`--feel`); `lever_detector_t6_s1_feel_reset` includes a detector trip and reset.
+(`--feel`); `lever_detector_t6_s8_feel_reset` includes a detector trip and reset.
 
-Regenerate a golden file only on an intentional rules change (and bump `rules_version`):
+Regenerate a golden file only on an intentional rules change (and bump `rules_version`; a
+replay stores the difficulty vector, so tier-table changes do not touch goldens):
 `replay_tool record <family> <tier> <seed> lockcore/tests/golden/<name>.replay.json`.
 
 ## Fuzzing
@@ -188,6 +191,29 @@ continuous signals in [0, 1], view positions / stress / rotation in [0, 1], wind
 S >= 0. CI runs it under ASan + UBSan with `-fno-sanitize-recover=undefined` and a 300 s timeout.
 
 ## API changes
+
+### v0.3 (balance, D-34)
+
+Additive for the API; behaviour changes are listed here.
+
+- `lever.hpp`: `lever::RULES_VERSION` 1 → **2** (both `lever` and `lever_detector`). New
+  `Params::set_speed` (per step; 0 = rules-1 behaviour, the set lever jumps to the lifter) and
+  constants `SET_SPEED` (0.6/s), `DETECTOR_MARGIN_T5` (0.10), `DETECTOR_MARGIN_T6` (0.083; was
+  0.12 / 0.06). Lock files gain an optional `set_speed_q16` (written only when > 0; files without
+  it still parse). The rules version feeds the generator seed, so every generated lever lock
+  changes; lever replays recorded under rules 1 are rejected.
+- Goldens regenerated on purpose: `lever_t5_s5` (rules 2), `lever_detector_t6_s1_feel_reset`
+  replaced by `lever_detector_t6_s8_feel_reset` (seed 1 no longer trips the detector under
+  rules 2; seed 8 does, once, and resets). Other goldens unchanged (same hashes).
+- `pin_tumbler::difficulty_for_tier`: t5 `n` 5 → 5–6, t7 `overset_margin` 0.05 → 0.055.
+  `RULES_VERSION` unchanged (the generator code is the same; replays carry their vector).
+- `run_feel_bot` (report only): keeps working an element perceived in a false gate (also when
+  the catch is perceived after the probe moved on), drag threshold 0.03 → 0.01, empty sweeps
+  probe higher (0.22 → 0.37 in 0.05 steps). Fixes stuck loops; see `BALANCE.md`.
+- `verify_seeds`: clumsy and feeling lines also print exact counts (`(9987/10000)`, `(9996 ok)`).
+  CSV unchanged.
+
+### v0.2
 
 v0.2 only **adds** to the public headers; code written against v0.1 compiles unchanged.
 
