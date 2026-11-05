@@ -181,3 +181,20 @@ Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-d
 - **Zad. 1 (strażnik CI), runda 1:** `perf-budget` czerwony przez paczkę 288,9 MB (próg 70). Odtworzyłem lokalnie i znalazłem przyczyny: grafiki GPT importowane bezstratnie (128 MB), zrzuty kontrolne Gemini w `game/` (90 MB) i niepodłączone rodziny GEM2 (35 MB). Poprawka sprawdzona lokalnie (289 → 52,5 MB) jest w **N-30** z gotowym diffem dla B i A. Progów nie podnoszę. `game-ios`: poprawka B 9eca512 w toku. `qa-career`: run po e0caa51 w kolejce, odtwarzam lokalnie.
 - **Zad. 4 (raport z telefonu):** `ingest.py` → TECH §8, plus §8.1 (spike 4 na A16: GPU 6,4 ms p95, klatka 18,2 ms przez tempo klatek, RAM 598 MB, start 4,4 s, zero throttlingu) i §8.2: **werdykt GO warunkowy dla Godota** (żaden warunek zmiany z §1.9 nie zachodzi; Oboe +73 ms zysku, więc natywny mostek audio jest obowiązkowy; haptyka i iOS nie rozstrzygnięte). BUG-01/02 już naprawione, BUG-03…14 → **N-31…N-43**; moje (BUG-05 `planb-perf` bez `.so`, BUG-12 klasa urządzenia, BUG-13 PerfHud) naprawione od razu (0ba0931, 184fa84).
 - Następne: qa-career lokalnie → dostawy (zad. 2: contrib/gpt, Magnific, Gemini) → sklep cz. 3 → bot QA cz. 3.
+
+## 2026-11-05 15:28 — postęp godzinny (etap 5)
+- **Zad. 1 (CI):** wszystkie trzy moje czerwone workflowy mają przyczynę po stronie gry, poprawki zweryfikowane lokalnie. `qa-career`: **N-44** (`workshop_screen.gd`, API Godota 3: warsztat martwy, zero zakupów) i **N-45** (`icon_max_width`). Z obiema poprawkami kariera kończy się `career_complete`, 0 błędów, 0 soft-locków, 17 zakupów. `perf-budget`: **N-30** (289 → 52,5 MB). `game-ios`: B iteruje (afbd957 w kolejce). `release-aab`: N-44 i brak keystore. Zasada nr 1 B: wpisy zadań 3 i 4 bez linku do zielonego runu (zgłoszone). Automat QA zgłasza teraz martwy przycisk wprost i grupuje błędy skryptów.
+- **Zad. 2 (dostawy):** `contrib/REVIEW.md`. GPT: przyjęte G01, G03 v2, G09, G10 v2 (brak ASSETS v2), G11, G12 v2 (rekomenduję kierunek 01 „L”), G16 (z uwagami: `yale`/`sargent` w nazwach plików), T10 v2. Do poprawki: G04 (winieta, szwy do 170%), G05 i G14 (czekają na v2), G06 (mory), G13 (v2 zlecone; 16:9 i feature graphic użyteczne). Magnific: 43 zdjęcia przyjęte. Gemini: GEM1 jako animatik, **GEM2 do poprawki (stany nierozróżnialne: lever bound↔overset 0,01% pikseli)**, GEM3 i GEM4 przyjęte. Automat: obsługa 16-bit i miara szwu niskoczęstotliwościowego. S03 (Whisper small, offline): 77/96 plików, **0 ze słowami** (dokańcza się).
+- **Zad. 3 (sklep cz. 3):** `store/tools/build_store_set.py`: komplet App Store (6,9" i 6,5", PL/EN × 8, ikona 1024 bez alfy) i Google Play (1080×1920 × 8, ikona 512, feature graphic 1024×500), **57/57 kontroli limitów OK**. Prawdziwe ekrany zamka wyrenderowane lokalnie (Vulkan lavapipe). Słabość: kadry 01–03 i 06 są podobne; kadr z klientką czeka na N-36 i N-47.
+- **Zad. 4:** zrobione (wpis 14:33).
+- **Zad. 5 (QA cz. 3):** `qa/assets/check_assets.py` w `qa-career`: tła G07 41/41, dźwięki 34/34, portrety G09 12/51 (**N-49**), głosy 0/51, bo **N-48**: `play_voice` nie znajduje żadnego pliku S03.
+- **Etap 4, zad. 7 (strona):** ikona G12 v2 i key art G13 na stronie i w press kicie (84211a9), publikacja dalej wyłączona.
+
+| # | Zadanie etapu 5 | Stan |
+|---|---|---|
+| 1 | Strażnik CI | trwa; 3 rundy, N-30, N-44, N-45 z diffami; czeka na B |
+| 2 | Odbiór dostaw (GPT, Magnific, Gemini, S03) | gotowe; S03 Whisper 77/96 bez słów, reszta w toku |
+| 3 | Sklep cz. 3 | gotowe (57/57 OK); do podmiany kadr z klientką po N-36 |
+| 4 | Raport z telefonu → TECH §8, N-xx | gotowe (GO warunkowo; N-31…N-43) |
+| 5 | Bot QA cz. 3 | gotowe (N-48, N-49) |
+| 6 | Ciągły przegląd | trwa |
