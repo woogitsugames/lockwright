@@ -25,7 +25,7 @@ const MOVING_PINS := ["a", "b", "c", "d", "e"]
 # give E ~ P / (pi d^2); the look of the Cycles render comes mostly from the HDRI. Godot omni (decay 2): E = energy / d^2.
 const LIGHT_K := 1.0 / PI      # Blender area watts -> Godot omni energy
 const CARD_K := 1.0 / PI       # area light radiance = P / (pi A): emission of the reflection cards
-const SKY_ROT_Y := -90.0       # Blender equirect centre (-X) vs Godot panorama centre (+Z)
+const SKY_ROT_Y := 90.0        # Blender equirect u = 0.5 - atan2(y,x)/2pi vs Godot u = atan2(x,-z)/2pi: +90 deg (measured)
 const REFLECTION_LAYER := 2    # visual layer seen only by the ReflectionProbe
 const AO_LIGHT_AFFECT := 0.7
 const PROBE_FRONT := 40.0
@@ -266,7 +266,7 @@ func _build_lights_and_probe() -> void:
 	probe.update_mode = ReflectionProbe.UPDATE_ONCE
 	probe.intensity = 1.0
 	probe.ambient_mode = ReflectionProbe.AMBIENT_ENVIRONMENT
-	if args.get("probe", "1") == "1":
+	if args.get("probe", "0") == "1":   # off by default: without occlusion it made chamber interiors too bright
 		root3d.add_child(probe)
 		lights.append(probe)
 	if args.get("omni", "1") == "0":
@@ -317,7 +317,7 @@ func _tex(path: String) -> Texture2D:
 func _pbr(mname: String, info: Dictionary) -> Material:
 	var m := ORMMaterial3D.new()
 	m.resource_name = mname + "_pbr"
-	m.albedo_texture = _tex("res://assets/tex/%s_albedo.png" % mname)
+	m.albedo_texture = _tex("res://assets/tex/%s_albedo_rt.png" % mname)  # AO folded in for metals (tools/ao_into_albedo.py)
 	m.orm_texture = _tex("res://assets/tex/%s_orm.png" % mname)
 	m.metallic = 1.0
 	m.roughness = 1.0
