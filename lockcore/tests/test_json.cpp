@@ -100,3 +100,26 @@ TEST_CASE("lockfile: seeds above 48 bits round-trip (T25-12)") {
     }
   }
 }
+
+TEST_CASE("lockfile: presentation.practice.lesson_target is accepted and not written back (D-54)") {
+  // Practice locks carry game metadata under presentation.practice (order, i18n keys,
+  // lesson_target). The parser accepts it, the spec is the same as without it, and
+  // lock_to_json() does not write it (check_locks skips presentation in its format check).
+  const auto& fam = th::pin_module();
+  const LockSpec spec = fam.generate(77, fam.difficulty_for_tier(3));
+  const std::string plain = lock_to_json(spec, fam);
+  auto doc = json::parse(plain);
+  REQUIRE(doc.ok);
+  json::Value practice = json::Value::object();
+  practice.set("order", json::Value::integer(7));
+  practice.set("lesson_target", json::Value::string("overset"));
+  json::Value pres = *doc.value.find("presentation");
+  pres.set("practice", std::move(practice));
+  doc.value.set("presentation", std::move(pres));
+  const std::string with_target = json::write(doc.value);
+  REQUIRE(with_target.find("lesson_target") != std::string::npos);
+  const LockParse p = lock_from_json(with_target, FamilyRegistry::builtin());
+  REQUIRE(p.ok);
+  CHECK(lock_to_json(p.spec, fam) == plain);
+  CHECK(lock_to_json(p.spec, fam).find("lesson_target") == std::string::npos);
+}

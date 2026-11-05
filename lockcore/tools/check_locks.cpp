@@ -6,7 +6,7 @@
 // detector_trip (does the lesson show its event?). A file with
 // presentation.practice.lesson_target (an event name, base kind or sub-event) must
 // have the clumsy bot meet it in >= 30 % of runs and the feeling bot open >= 95 %
-// (D-52); otherwise the file fails. Exit 1 if any file
+// (D-54); otherwise the file fails. Exit 1 if any file
 // fails to parse, carries a key the parser ignores (or a value that does not read back
 // the same), or the scripted bot fails.
 //
@@ -109,7 +109,7 @@ bool known_event(const FamilyModule& fam, const std::string& name) {
   return false;
 }
 
-// Practice gates (D-52): the clumsy bot meets the lesson target in >= 30 % of runs,
+// Practice gates (D-54): the clumsy bot meets the lesson target in >= 30 % of runs,
 // the feeling bot opens >= 95 %.
 constexpr std::int64_t kTargetMinX1000 = 300;
 constexpr std::int64_t kFeelMinX1000 = 950;

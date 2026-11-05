@@ -96,7 +96,12 @@ if(LOCKCORE_BUILD_TESTS)
              -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/play_bad_steps.cmake)
     # Authored practice locks: parse, no ignored keys, scripted bot opens each one.
     file(GLOB LOCKCORE_PRACTICE ${CMAKE_CURRENT_SOURCE_DIR}/practice/*.json)
-    add_test(NAME practice_locks COMMAND check_locks --feel 20 ${LOCKCORE_PRACTICE})
+    # 200 bot seeds: the lesson_target gates (clumsy >= 30 %, feeling open >= 95 %, D-54) need a sample.
+    add_test(NAME practice_locks COMMAND check_locks --feel 200 ${LOCKCORE_PRACTICE})
+    # lesson_target lives under presentation.practice and must name a known event (D-54).
+    add_test(NAME check_locks_rejects_bad_target COMMAND check_locks --feel 5 ${CMAKE_CURRENT_SOURCE_DIR}/tests/data/bad_lesson_target.json)
+    add_test(NAME check_locks_rejects_root_target COMMAND check_locks --feel 5 ${CMAKE_CURRENT_SOURCE_DIR}/tests/data/root_lesson_target.json)
+    set_tests_properties(check_locks_rejects_bad_target check_locks_rejects_root_target PROPERTIES WILL_FAIL TRUE)
     add_test(NAME replay_tool_record_bad_path COMMAND replay_tool record wafer 2 77 /nonexistent-dir/x.replay.json)
     set_tests_properties(replay_tool_record_bad_path PROPERTIES WILL_FAIL TRUE)
   endif()
