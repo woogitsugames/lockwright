@@ -17,8 +17,8 @@
   "height_highpass_sigma_px": 20,
   "lighting_flatten": "lum",
   "overlap_x": 94,
-  "overlap_y": 211,
+  "overlap_y": 114,
   "normal_2k_soften_sigma": 0.0,
-  "rough_mean": 0.765,
+  "rough_mean": 0.823,
   "note": "painted iron: dielectric paint; rust/bare spots could get a metal mask later"
 }

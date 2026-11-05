@@ -57,3 +57,7 @@ Oryginały (PNG 2048²) zostają w Release; tu JPG q92. Wybór sesji A (wariant 
 | `wall_lime_plaster.jpg` | runda 2, wariant 2 | `creation_3828906478.png` |
 | `wall_oil_paint_green.jpg` | runda 2, wariant 2 | `creation_3828907610.png` |
 | `wall_paint_divider_line.jpg` | runda 2, wariant 2 | `creation_3828909622.png` |
+
+| `brass_patina_grease.jpg` | poprawki runda 2, wariant 2 (zastępuje poprzedni) | `creation_3829724677.png` |
+| `iron_painted_rust.jpg` | poprawki runda 2, wariant 2 (zastępuje poprzedni) | `creation_3829722560.png` |
+| `spring_steel_polished.jpg` | poprawki runda 2, wariant 2 (zastępuje poprzedni) | `creation_3829723793.png` |
