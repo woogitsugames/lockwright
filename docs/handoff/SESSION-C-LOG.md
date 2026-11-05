@@ -126,3 +126,16 @@ zgody i włączenia Pages w ustawieniach repo (instrukcja w nagłówku pliku).
 | 10 | Determinizm w APK | **gotowe lokalnie, CI w toku** | host 630/630 zgodnych; APK arm64 z lockcore_gd + korpus zbudowany | `spike-determinism-apk` (emulator x86_64 API 30/34 z translacją ARM) | wynik runu CI; natywnie: Twój telefon (to samo APK) |
 
 Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-determinism-apk`, `perf-budget`, `qa-career`.
+
+# Etap 4 (`SESSION-C-PROMPT-4.md`)
+
+## 2026-11-05 10:40 — start etapu 4, pierwsza godzina
+- **Etap 3, zadanie 10 (domknięcie):** `spike-determinism-apk` run 1: build + korpus hosta (630/630) + eksport APK arm64 **zielone**; emulatory API 30/34 zainstalowały APK arm64 na obrazie x86_64 (translacja ARM działa), ale `am start` odrzucił niewyeksportowaną aktywność `GodotApp`. Poprawka 1117b9c (start przez intencję LAUNCHER) — czekam na run 2.
+- **Zad. 1 (CI):** runda 1 w `SESSION-C-REVIEW.md` — N-22 (`game-tests`: smoke z pck bez `tests/` i bez .so), N-23 (`game-android`: API obwiedni Androida 16 w Kotlinie), N-24 (`game-ios`: `godot::memnew`), N-19 (argumenty `screens.gd`), N-21 (NDK), N-28 (godot-cpp z `master`) — każde z linią logu i diffem. `qa-career` przebudowany: błędy gry → raport i ⚠, czerwony tylko przy awarii automatu.
+- **Zad. 2 (contrib/gpt):** 0/30 dostaw; automat odbioru `qa/contrib/check_gpt.py` + tabela `contrib/REVIEW.md`.
+- **Zad. 3:** `docs/handoff/TESTY-SKLEPY.md` (Google Play internal testing, TestFlight; koszty, czasy, czego nie zrobię bez Ciebie).
+- **Zad. 4:** `docs/handoff/RELEASE-CHECKLIST.md` (43 punkty, stan + odpowiedzialny + dowód).
+- **Zad. 5:** bot QA cz. 2 — profile „średni”/„niezdarny” (boty lockcore `--feel`/`--clumsy`), kariera po angielsku, „w ciemności”, ekonomia vs `econ_sim` → N-25 (gra nie wypłaca napiwków, −20% vs model), N-26 (EN: karty dokumentów). Macierz w `qa-career`.
+- **Zad. 6:** pomiarów właściciela jeszcze nie ma (`docs/handoff/measurements/` nie istnieje) — czeka.
+- **Zad. 7:** strona „Jak gramy uczciwie” PL/EN; G12/G13 czekają na dostawy.
+- **Zad. 8:** `store/legal/DEPENDENCIES.md` → N-27 (brak not licencyjnych w aplikacji — High przed wydaniem), N-28.
