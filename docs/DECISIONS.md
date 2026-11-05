@@ -163,3 +163,14 @@ Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright �
 - **Strona gry:** hosting na **Cloudflare Pages** (nie GitHub Pages). Workflow GitHub Pages zostaje wyłączony; `site/` ma budować się jako statyczny katalog do wdrożenia przez Cloudflare (Git integration lub `wrangler pages deploy`); publikacja dopiero na sygnał właściciela.
 - **iOS:** właściciel ma konto Apple Developer, ale teraz dopracowujemy **Androida**; iOS (TestFlight, podpis) przeprowadzamy na końcu. CI iOS może zostać, ale nie blokuje prac nad Androidem.
 - **D-24 zatwierdzona:** napięcie i uniesienie liczone względnie od punktu dotyku kciuka.
+
+## D-52: Tryb automatycznego napięcia, wybierany na starcie
+2026-11-05 · właściciel · Poza sterowaniem dwoma kciukami (D-24, względnym) gra ma tryb **„Napięcie automatyczne”**: napięcie trzyma się samo na bezpiecznym poziomie, a gracz prowadzi wytrych jednym kciukiem. Przy pierwszym uruchomieniu, przed samouczkiem, gracz wybiera tryb. Na ekranie są dwie duże tabliczki z krótkim opisem, a **domyślnie podświetlony jest tryb automatyczny** („dla zaczynających”). Wybór można zmienić w ustawieniach (sekcja Sterowanie). W trybie automatycznym:
+- kreda pokazuje bieżące napięcie na napinaczu;
+- stany binding, set, overset i false set zostają rozróżnialne;
+- overset rozwiązuje się przez krótkie stuknięcie lewej strefy, czyli „puszczenie napięcia”.
+
+Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa sterowania. Wyniki i osiągnięcia liczą się w obu trybach. Przyczyna: test na telefonie pokazał, że nowy gracz nie łapie dwóch kciuków naraz bez wyraźnego prowadzenia.
+
+## D-53: Kreda domyślnie w samouczku i pierwszych 3 zleceniach
+2026-11-05 · właściciel · Domyślnie kreda działa według ONBOARDING §1 pkt 8: pełna w S1, malejąca w S2–S3, a potem w pierwszych 3 prawdziwych zleceniach (kreski tarcia, linia podziału, klamra overset, podpowiedź napięcia). Potem znika, a gracz może ją włączyć na stałe w ustawieniach („Warstwa kredy”). Zestawu głosów S03v2 z repo nie da się porównać ze słuchu, więc w grze zostaje wersja JS `contrib/gpt/S03v2`. Wersja z generatora w Pythonie (`S03v2-py`) czeka jako zapasowa.

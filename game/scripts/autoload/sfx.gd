@@ -19,6 +19,13 @@ const FOLEY_ROOT := "res://assets/audio/foley"
 const VOICE_ROOT := "res://assets/audio/voices"
 # speaker id -> voice folder (S03 delivered one folder for the Ola/Krystyna pair)
 const VOICE_DIR := {&"ola": &"ola_krystyna", &"krystyna": &"ola_krystyna"}
+# S03 cast files use farewell/impatience/laughter/sadness, S03v2 goodbye/impatient/laugh/sad
+const VOICE_KIND_ALIAS := {
+	&"farewell": &"goodbye", &"goodbye": &"farewell",
+	&"impatience": &"impatient", &"impatient": &"impatience",
+	&"laughter": &"laugh", &"laugh": &"laughter",
+	&"sadness": &"sad", &"sad": &"sadness",
+}
 const AMBIENCES := [&"stairwell", &"workshop", &"night_timer", &"rain_window"]
 
 var _pool: Array[AudioStreamPlayer] = []
@@ -112,14 +119,20 @@ func _ensure_dir(root: String) -> void:
 			_lazy_load(root + "/" + f, key)
 
 
-func _ensure_voices() -> void:
-	if _lazy_done.has(VOICE_ROOT):
+# per speaker folder, on first use: 12 cast (.wav, prefetched) + 39 episodic S03v2 (.ogg)
+func _ensure_voices(folder: String) -> void:
+	var tag := VOICE_ROOT + "/" + folder
+	if _lazy_done.has(tag):
 		return
-	_lazy_done[VOICE_ROOT] = true
-	for spk in DirAccess.get_directories_at(VOICE_ROOT):
-		for f in DirAccess.get_files_at(VOICE_ROOT + "/" + spk):
-			if f.ends_with(".wav"):
-				_lazy_load(VOICE_ROOT + "/" + spk + "/" + f, "%s/%s/%s" % [VOICE_ROOT, spk, f])
+	_lazy_done[tag] = true
+	for f in DirAccess.get_files_at(tag):
+		if f.ends_with(".wav") or f.ends_with(".ogg"):
+			_lazy_load(tag + "/" + f, "%s/%s" % [tag, f])
+		elif f.ends_with(".import") or f.ends_with(".remap"):
+			# exported pck: only <file>.import/.remap are listed next to the stripped source
+			var src := f.get_basename()
+			if (src.ends_with(".wav") or src.ends_with(".ogg")) and not _cache.has(tag + "/" + src):
+				_lazy_load(tag + "/" + src, "%s/%s" % [tag, src])
 
 
 func _preload_native() -> void:
@@ -295,14 +308,26 @@ func play_foley(event: StringName, volume_db: float = 0.0) -> void:
 	_one_shot_from(FOLEY_ROOT, String(event) + "_", volume_db)
 
 
+func voice_keys(speaker: StringName, kind: StringName) -> Array:
+	# S03 cast (12, .wav) and S03v2 episodic (39, .ogg) voices, all ~-28 LUFS M:
+	# <root>/<speaker>/<kind>.(wav|ogg) or <kind>_NN.*; the two batches name four emotions
+	# differently (VOICE_KIND_ALIAS); a missing emotion falls back to greeting
+	var folder := String(VOICE_DIR.get(speaker, speaker))
+	_ensure_voices(folder)
+	var dir := VOICE_ROOT + "/" + folder + "/"
+	for k in [kind, VOICE_KIND_ALIAS.get(kind, kind), &"greeting"]:
+		var base := dir + String(k)
+		var keys: Array = []
+		for key in _cache.keys():
+			if key == base + ".wav" or key == base + ".ogg" or key.begins_with(base + "_"):
+				keys.append(key)
+		if not keys.is_empty():
+			return keys
+	return []
+
+
 func play_voice(speaker: StringName, kind: StringName, volume_db: float = 0.0) -> void:
-	# S03 character voices (normalized to -28 LUFS M): <root>/<speaker>/<kind>.wav or <kind>_NN.wav
-	_ensure_voices()
-	var keys: Array = []
-	var base := VOICE_ROOT + "/" + String(VOICE_DIR.get(speaker, speaker)) + "/" + String(kind)
-	for k in _cache.keys():
-		if k == base + ".wav" or k.begins_with(base + "_"):
-			keys.append(k)
+	var keys := voice_keys(speaker, kind)
 	if keys.is_empty() or _free.is_empty():
 		return
 	var p: AudioStreamPlayer = _free.pop_back()

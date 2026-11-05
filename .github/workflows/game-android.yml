@@ -154,6 +154,12 @@ jobs:
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path game \
             --export-debug "Android" build/lockwright-debug.apk
 
+      - name: Assert APK manifest has VIBRATE (N-55)
+        run: |
+          AAPT2=$ANDROID_HOME/build-tools/36.1.0/aapt2
+          $AAPT2 dump permissions game/build/lockwright-debug.apk | tee /tmp/apk-perms.txt
+          grep -q "android.permission.VIBRATE" /tmp/apk-perms.txt || { echo "::error::android.permission.VIBRATE missing from APK manifest (N-55)"; exit 1; }
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
@@ -268,7 +274,9 @@ jobs:
             KS_LINE="keystore/release=\"$KEYSTORE_PATH\"\nkeystore/release_user=\"$ANDROID_KEY_ALIAS\"\nkeystore/release_password=\"$ANDROID_KEYSTORE_PASSWORD\"\n"
             SIGNED="true"
           fi
-          printf '\n[preset.3]\nname="AndroidRelease"\nplatform="Android"\nrunnable=false\nexport_filter="all_resources"\ninclude_filter="i18n/*.csv,data/haptics/**/*.json,data/haptics/**/*.ahap"\nexclude_filter="android/*,addons/gut/*,tests/*,scenes/dev/*,scenes/photoreal_families/*,assets/photoreal_families/*,scripts/photoreal_families/*"\nexport_path="build/lockwright-release.aab"\nencrypt_pck=false\nencrypt_directory=false\n\n[preset.3.options]\ngradle_build/use_gradle_build=true\ngradle_build/export_format=1\ngradle_build/min_sdk="30"\ngradle_build/target_sdk="36"\narchitectures/arm64-v8a=true\narchitectures/armeabi-v7a=false\narchitectures/x86=false\narchitectures/x86_64=false\nkeystore/debug=""\nkeystore/debug_user=""\nkeystore/debug_password=""\n'"$KS_LINE"'package/signed='"$SIGNED"'\nversion/code='"$CODE"'\nversion/name="'"$VER"'"\npackage/unique_name="com.woogitsugames.lockwright"\npackage/name="Lockwright: Locksmith on Call"\ngraphics/opengl_debug=false\nxr_features/xr_mode=0\n' >> game/export_presets.cfg
+          printf '\n[preset.3]\nname="AndroidRelease"\nplatform="Android"\nrunnable=false\nexport_filter="all_resources"\ninclude_filter="i18n/*.csv,data/haptics/**/*.json,data/haptics/**/*.ahap"\nexclude_filter="android/*,addons/gut/*,tests/*,scenes/dev/*,scenes/photoreal_families/*,assets/photoreal_families/*,scripts/photoreal_families/*"\nexport_path="build/lockwright-release.aab"\nencrypt_pck=false\nencrypt_directory=false\n\n[preset.3.options]\ngradle_build/use_gradle_build=true\ngradle_build/export_format=1\ngradle_build/min_sdk="30"\ngradle_build/target_sdk="36"\narchitectures/arm64-v8a=true\narchitectures/armeabi-v7a=false\narchitectures/x86=false\narchitectures/x86_64=false\nkeystore/debug=""\nkeystore/debug_user=""\nkeystore/debug_password=""\n'"$KS_LINE"'package/signed='"$SIGNED"'\nversion/code='"$CODE"'\nversion/name="'"$VER"'"\npackage/unique_name="com.woogitsugames.lockwright"\npackage/name="Lockwright: Locksmith on Call"\ngraphics/opengl_debug=false\nxr_features/xr_mode=0\npermissions/vibrate=true\n' >> game/export_presets.cfg
+          # N-55: the release preset must keep VIBRATE (haptics), like preset.0
+          awk '/^\[preset.3.options\]/{f=1} f&&/^permissions\/vibrate=true/{ok=1} END{exit !ok}' game/export_presets.cfg
           echo "version: $VER (code $CODE), keystore: $HAS_KEYSTORE (package/signed=$SIGNED - unsigned AAB when no release secrets)"
 
       - name: Import + export release AAB
@@ -276,6 +284,13 @@ jobs:
           mkdir -p game/build
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path game --import
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path game --export-release "AndroidRelease" build/lockwright-release.aab
+
+      - name: Assert AAB manifest has VIBRATE (N-55)
+        run: |
+          # base/manifest/AndroidManifest.xml in an AAB is protobuf; permission names are plain UTF-8
+          unzip -p game/build/lockwright-release.aab base/manifest/AndroidManifest.xml > /tmp/aab-manifest.pb
+          grep -aq "android.permission.VIBRATE" /tmp/aab-manifest.pb || { echo "::error::android.permission.VIBRATE missing from AAB manifest (N-55)"; exit 1; }
+          echo "AAB manifest: android.permission.VIBRATE present"
 
       - name: Package size report
         run: |
