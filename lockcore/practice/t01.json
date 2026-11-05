@@ -47,7 +47,8 @@
       "focus": "open_hold",
       "title_key": "practice.t01.title",
       "goal_key": "practice.t01.goal",
-      "hint_key": "practice.t01.hint"
+      "hint_key": "practice.t01.hint",
+      "lesson_target": "open"
     }
   }
 }

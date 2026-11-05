@@ -54,11 +54,12 @@
   "presentation": {
     "material": "steel",
     "practice": {
-      "order": 4,
+      "order": 6,
       "focus": "set_cue",
       "title_key": "practice.t04.title",
       "goal_key": "practice.t04.goal",
-      "hint_key": "practice.t04.hint"
+      "hint_key": "practice.t04.hint",
+      "lesson_target": "set"
     }
   }
 }

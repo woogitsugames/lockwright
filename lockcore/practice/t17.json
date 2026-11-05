@@ -50,9 +50,9 @@
         "gate": 6,
         "start": 3,
         "order_q16": 13107,
-        "band_lo_q16": 14746,
+        "band_lo_q16": 10486,
         "false_gates": [
-          0
+          4
         ]
       },
       {
@@ -67,11 +67,12 @@
   "presentation": {
     "material": "brass",
     "practice": {
-      "order": 17,
+      "order": 19,
       "focus": "false_notch",
       "title_key": "practice.t17.title",
       "goal_key": "practice.t17.goal",
-      "hint_key": "practice.t17.hint"
+      "hint_key": "practice.t17.hint",
+      "lesson_target": "false_set"
     }
   }
 }

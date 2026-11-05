@@ -51,11 +51,12 @@
   "presentation": {
     "material": "brass",
     "practice": {
-      "order": 11,
+      "order": 7,
       "focus": "detents",
       "title_key": "practice.t11.title",
       "goal_key": "practice.t11.goal",
-      "hint_key": "practice.t11.hint"
+      "hint_key": "practice.t11.hint",
+      "lesson_target": "ring.detent"
     }
   }
 }

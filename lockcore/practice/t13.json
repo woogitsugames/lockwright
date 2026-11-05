@@ -52,11 +52,12 @@
   "presentation": {
     "material": "iron",
     "practice": {
-      "order": 13,
+      "order": 8,
       "focus": "spring_bolt",
       "title_key": "practice.t13.title",
       "goal_key": "practice.t13.goal",
-      "hint_key": "practice.t13.hint"
+      "hint_key": "practice.t13.hint",
+      "lesson_target": "set"
     }
   }
 }

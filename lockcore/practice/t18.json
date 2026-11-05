@@ -62,11 +62,12 @@
   "presentation": {
     "material": "iron",
     "practice": {
-      "order": 18,
+      "order": 15,
       "focus": "lever_gate",
       "title_key": "practice.t18.title",
       "goal_key": "practice.t18.goal",
-      "hint_key": "practice.t18.hint"
+      "hint_key": "practice.t18.hint",
+      "lesson_target": "gate_align"
     }
   }
 }

@@ -49,11 +49,12 @@
   "presentation": {
     "material": "steel",
     "practice": {
-      "order": 3,
+      "order": 4,
       "focus": "binding",
       "title_key": "practice.t03.title",
       "goal_key": "practice.t03.goal",
-      "hint_key": "practice.t03.hint"
+      "hint_key": "practice.t03.hint",
+      "lesson_target": "bind"
     }
   }
 }

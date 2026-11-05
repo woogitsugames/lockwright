@@ -67,11 +67,12 @@
   "presentation": {
     "material": "brass",
     "practice": {
-      "order": 14,
+      "order": 16,
       "focus": "narrow_window",
       "title_key": "practice.t14.title",
       "goal_key": "practice.t14.goal",
-      "hint_key": "practice.t14.hint"
+      "hint_key": "practice.t14.hint",
+      "lesson_target": "set"
     }
   }
 }

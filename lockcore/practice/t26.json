@@ -80,11 +80,12 @@
   "presentation": {
     "material": "iron",
     "practice": {
-      "order": 26,
+      "order": 27,
       "focus": "two_false_gates",
       "title_key": "practice.t26.title",
       "goal_key": "practice.t26.goal",
-      "hint_key": "practice.t26.hint"
+      "hint_key": "practice.t26.hint",
+      "lesson_target": "lever.false_gate"
     }
   }
 }

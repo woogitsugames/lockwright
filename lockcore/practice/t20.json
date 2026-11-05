@@ -40,32 +40,32 @@
     "stacks": [
       {
         "target_q16": 36045,
-        "order_q16": 6554,
+        "order_q16": 0,
         "band_lo_q16": 14418,
         "variant": "standard"
       },
       {
         "target_q16": 40960,
-        "order_q16": 13107,
+        "order_q16": 6554,
         "band_lo_q16": 15401,
         "variant": "spool",
         "false_gate_q16": 30474
       },
       {
         "target_q16": 33096,
-        "order_q16": 19661,
+        "order_q16": 13107,
         "band_lo_q16": 16384,
         "variant": "standard"
       },
       {
         "target_q16": 43254,
-        "order_q16": 26214,
+        "order_q16": 19661,
         "band_lo_q16": 14418,
         "variant": "standard"
       },
       {
         "target_q16": 37356,
-        "order_q16": 0,
+        "order_q16": 26214,
         "band_lo_q16": 15401,
         "variant": "standard"
       }
@@ -74,11 +74,12 @@
   "presentation": {
     "material": "brass",
     "practice": {
-      "order": 20,
+      "order": 21,
       "focus": "false_set",
       "title_key": "practice.t20.title",
       "goal_key": "practice.t20.goal",
-      "hint_key": "practice.t20.hint"
+      "hint_key": "practice.t20.hint",
+      "lesson_target": "false_set"
     }
   }
 }

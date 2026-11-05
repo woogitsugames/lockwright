@@ -11,9 +11,9 @@
     "n_max": 5,
     "sec_min": 1,
     "sec_max": 1,
-    "win_shear_q16": 6226,
+    "win_shear_q16": 5898,
     "tension_band_q16": 12452,
-    "overset_margin_q16": 5898,
+    "overset_margin_q16": 5243,
     "noise_q16": 0,
     "bind_spread_q16": 32768,
     "multi_bind_p_q16": 0,
@@ -22,8 +22,8 @@
     "time_limit_s": 210
   },
   "spec": {
-    "win_gate_q16": 6226,
-    "overset_margin_q16": 5898,
+    "win_gate_q16": 5898,
+    "overset_margin_q16": 5243,
     "tension_band_q16": 12452,
     "t_hold_q16": 6554,
     "t_release_q16": 3277,
@@ -72,7 +72,7 @@
         "false_gates_q16": []
       }
     ],
-    "detector_margin_q16": 6554,
+    "detector_margin_q16": 5439,
     "reset_steps": 180,
     "max_trips": 3,
     "reset_wear": 2
@@ -80,11 +80,12 @@
   "presentation": {
     "material": "iron",
     "practice": {
-      "order": 27,
+      "order": 25,
       "focus": "detector_trip",
       "title_key": "practice.t27.title",
       "goal_key": "practice.t27.goal",
-      "hint_key": "practice.t27.hint"
+      "hint_key": "practice.t27.hint",
+      "lesson_target": "detector_trip"
     }
   }
 }

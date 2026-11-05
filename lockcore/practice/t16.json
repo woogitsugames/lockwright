@@ -64,11 +64,12 @@
   "presentation": {
     "material": "steel",
     "practice": {
-      "order": 16,
+      "order": 17,
       "focus": "multi_binding",
       "title_key": "practice.t16.title",
       "goal_key": "practice.t16.goal",
-      "hint_key": "practice.t16.hint"
+      "hint_key": "practice.t16.hint",
+      "lesson_target": "bind"
     }
   }
 }

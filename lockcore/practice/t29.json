@@ -85,11 +85,12 @@
   "presentation": {
     "material": "brass",
     "practice": {
-      "order": 29,
+      "order": 30,
       "focus": "quiet_precision",
       "title_key": "practice.t29.title",
       "goal_key": "practice.t29.goal",
-      "hint_key": "practice.t29.hint"
+      "hint_key": "practice.t29.hint",
+      "lesson_target": "set"
     }
   }
 }

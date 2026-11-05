@@ -11,9 +11,9 @@
     "n_max": 3,
     "sec_min": 0,
     "sec_max": 0,
-    "win_shear_q16": 8192,
+    "win_shear_q16": 4588,
     "tension_band_q16": 18022,
-    "overset_margin_q16": 4915,
+    "overset_margin_q16": 3604,
     "noise_q16": 0,
     "bind_spread_q16": 65536,
     "multi_bind_p_q16": 0,
@@ -22,8 +22,8 @@
     "time_limit_s": 120
   },
   "spec": {
-    "win_shear_q16": 8192,
-    "overset_margin_q16": 4915,
+    "win_shear_q16": 4588,
+    "overset_margin_q16": 3604,
     "tension_band_q16": 18022,
     "t_hold_q16": 5243,
     "t_release_q16": 10486,
@@ -54,11 +54,12 @@
   "presentation": {
     "material": "steel",
     "practice": {
-      "order": 7,
+      "order": 9,
       "focus": "overset",
       "title_key": "practice.t07.title",
       "goal_key": "practice.t07.goal",
-      "hint_key": "practice.t07.hint"
+      "hint_key": "practice.t07.hint",
+      "lesson_target": "overset"
     }
   }
 }

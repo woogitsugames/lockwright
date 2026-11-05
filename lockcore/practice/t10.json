@@ -65,7 +65,8 @@
       "focus": "tension_hold",
       "title_key": "practice.t10.title",
       "goal_key": "practice.t10.goal",
-      "hint_key": "practice.t10.hint"
+      "hint_key": "practice.t10.hint",
+      "lesson_target": "set"
     }
   }
 }

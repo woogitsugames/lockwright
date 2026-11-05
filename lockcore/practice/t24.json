@@ -68,11 +68,12 @@
   "presentation": {
     "material": "iron",
     "practice": {
-      "order": 24,
+      "order": 22,
       "focus": "multiple_gates",
       "title_key": "practice.t24.title",
       "goal_key": "practice.t24.goal",
-      "hint_key": "practice.t24.hint"
+      "hint_key": "practice.t24.hint",
+      "lesson_target": "gate_align"
     }
   }
 }

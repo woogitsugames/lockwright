@@ -43,7 +43,9 @@
         "target_q16": 36045,
         "order_q16": 0,
         "band_lo_q16": 14418,
-        "false_gates_q16": []
+        "false_gates_q16": [
+          23593
+        ]
       },
       {
         "target_q16": 40960,
@@ -70,11 +72,12 @@
   "presentation": {
     "material": "iron",
     "practice": {
-      "order": 22,
+      "order": 20,
       "focus": "false_gate",
       "title_key": "practice.t22.title",
       "goal_key": "practice.t22.goal",
-      "hint_key": "practice.t22.hint"
+      "hint_key": "practice.t22.hint",
+      "lesson_target": "lever.false_gate"
     }
   }
 }

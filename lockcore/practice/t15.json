@@ -11,9 +11,9 @@
     "n_max": 4,
     "sec_min": 0,
     "sec_max": 0,
-    "win_shear_q16": 7209,
+    "win_shear_q16": 4588,
     "tension_band_q16": 15729,
-    "overset_margin_q16": 4588,
+    "overset_margin_q16": 3604,
     "noise_q16": 0,
     "bind_spread_q16": 52429,
     "multi_bind_p_q16": 0,
@@ -22,8 +22,8 @@
     "time_limit_s": 150
   },
   "spec": {
-    "win_shear_q16": 7209,
-    "overset_margin_q16": 4588,
+    "win_shear_q16": 4588,
+    "overset_margin_q16": 3604,
     "tension_band_q16": 15729,
     "t_hold_q16": 6554,
     "t_release_q16": 3277,
@@ -67,11 +67,12 @@
   "presentation": {
     "material": "brass",
     "practice": {
-      "order": 15,
+      "order": 18,
       "focus": "overset_recovery",
       "title_key": "practice.t15.title",
       "goal_key": "practice.t15.goal",
-      "hint_key": "practice.t15.hint"
+      "hint_key": "practice.t15.hint",
+      "lesson_target": "overset"
     }
   }
 }
