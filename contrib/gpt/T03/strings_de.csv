@@ -1,0 +1,106 @@
+key,de
+app.title,Lockwright: Schlüsseldienst
+common.back,Zurück
+common.close,Schließen
+common.on,Ein
+common.off,Aus
+common.coins,Münzen
+menu.title,Lockwright
+menu.play,Einsatz starten
+menu.workshop,Werkstatt
+menu.showcase,Sammlung
+menu.settings,Einstellungen
+menu.about,Über das Spiel
+menu.jobs,Aufträge
+jobs.title,Aufträge
+job.verify,Zutrittsberechtigung prüfen
+job.accept,Für diesen Kunden öffnen
+job.refuse,Auftrag ablehnen
+job.opened,Schloss geöffnet. Rechnung beglichen.
+job.reward_fmt,Belohnung: {n} Münzen
+job.tip_fmt,Trinkgeld (sauber geöffnet): {n} Münzen
+common.continue,Weiter
+verify.title,Zutrittsberechtigung prüfen
+verify.hint,Der Kunde legt die Nachweise vor. Du entscheidest.
+verify.ask_more,Um einen weiteren Nachweis bitten
+verify.card.id,Ausweis
+verify.card.witness,Zeuge
+verify.card.manager,Hausverwaltung / Pförtner
+verify.card.lease,Mietvertrag
+verify.card.resolution,Beschluss
+verify.card.deed,Eigentumsurkunde
+verify.card.inheritance,Erbnachweis
+verify.card.institution,Behördliches Schreiben
+verify.card.letter,Brief
+verify.card.photo,Foto
+verify.card.receipt,Kassenbon
+verify.card.invoice,Rechnung
+verify.card.address_app,Adresse in der App
+verify.card.police,Polizeianruf
+verify.card.bailiff,Gerichtsvollzieher
+verify.refused,Das reicht nicht. Dieses Schloss öffne ich nicht.
+verify.refused_rep,Das spricht sich herum: +5 Ruf
+tutorial.title,Einführung – Übungsschloss
+tutorial.stage,Schritt {n} von 3
+tutorial.done,Einführung abgeschlossen. Der erste echte Auftrag!
+hud.magnifier,Lupe
+settings.title,Einstellungen
+settings.haptics,Haptik
+settings.haptics_enabled,Haptik aktiviert
+settings.haptics_intensity,Haptikstärke
+settings.haptics_test,Testimpuls
+settings.haptics_calibration,Kalibrierung
+settings.haptics_calibration_two_clicks,Spürst du zwei Klicks?
+settings.haptics_calibration_two_clicks_yes,Zwei
+settings.haptics_calibration_two_clicks_one,Einen
+settings.haptics_calibration_two_clicks_none,Nichts
+settings.continuous_resistance,Ständiger Widerstand
+settings.volume_master,Gesamtlautstärke
+settings.volume_sfx,Soundeffekte
+settings.volume_ambience,Umgebungsgeräusche
+settings.language,Sprache
+settings.language_system,System
+settings.language_pl,Polski
+settings.language_en,English
+settings.dark_mode_assist,Kontrasthilfe
+settings.reading_aid,Kreidemarkierungen
+settings.wide_windows,Größere Sichtfenster
+settings.reset,Einstellungen zurücksetzen
+settings.text_scale,Textgröße
+settings.reduce_motion,Bewegungen reduzieren
+settings.dark_mode_note,Dunkelmodus braucht Ton (und Haptik auf dem Handy).
+run.title,Endloslauf
+run.lock_n,Schloss {n}
+run.lives_left,Verbleibende Versuche
+run.workshop_stop,Werkstattpause
+run.finished,Lauf beendet – {n} Münzen
+run.rubber_band,Ganz ruhig. Ein einfacheres Schloss.
+optics.loupe,Nahaufnahme der Scherlinie
+optics.microscope,Grate und falsche Kerben
+optics.borescope,Tiefe Sperrelemente
+pause.title,Pausiert
+pause.resume,Fortsetzen
+pause.settings,Einstellungen
+pause.dark_mode,Dunkelmodus
+pause.restart,Schloss neu starten
+pause.quit,Verlassen
+lock.pause,Pause
+workshop.title,Werkstatt
+workshop.coins,Münzen
+workshop.buy,Kaufen
+workshop.repair,Reparieren
+workshop.owned,Im Besitz
+workshop.integrity,Zustand
+workshop.repair_cost,Reparatur: {0} Münzen
+workshop.broken,Defekt
+showcase.title,Sammlung
+showcase.source,Quelle
+showcase.unknown_source,Quelle nicht verifiziert
+about.title,Über das Spiel
+about.notice,"Dies ist ein Spiel, kein Lehrgang. Die Mechanismen sind erfunden und vereinfacht. Ein echter Schlüsseldienst prüft immer, ob der Kunde zum Betreten berechtigt ist."
+about.licensed_assets,Assets und Lizenzen
+dev.haptics_lab.title,Haptik-Labor
+dev.haptics_lab.tier,Stufe
+dev.haptics_lab.force_fallback,Fallback erzwingen
+dev.haptics_lab.resistance,Widerstand
+dev.haptics_lab.caps,Möglichkeiten
