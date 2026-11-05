@@ -46,3 +46,29 @@ jobs:
         with:
           name: game-screens
           path: docs/handoff/screens/*.png
+
+      - name: Visual regression vs previous green run (task 14)
+        run: |
+          pip install pillow
+          PREV_RUN=$(gh run list --repo ${{ github.repository }} --branch main --workflow game-screens \
+            --status success --limit 20 --json databaseId,headSha --jq \
+            '[.[] | select(.headSha != "${{ github.sha }}")] | .[0].databaseId // empty')
+          echo "previous green run: $PREV_RUN"
+          mkdir -p /tmp/prev_screens /tmp/screens_diff
+          if [ -n "$PREV_RUN" ]; then
+            gh run download "$PREV_RUN" --repo ${{ github.repository }} --name game-screens --dir /tmp/prev_screens || true
+          fi
+          python3 data/tools/compare_screens.py --old /tmp/prev_screens --new docs/handoff/screens \
+            --report /tmp/screens_diff --threshold 0.02
+          cp /tmp/screens_diff/report.md docs/handoff/screens/DIFF-REPORT.md 2>/dev/null || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload diff report + thumbnails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-screens-diff
+          path: |
+            docs/handoff/screens/DIFF-REPORT.md
+            /tmp/screens_diff/
