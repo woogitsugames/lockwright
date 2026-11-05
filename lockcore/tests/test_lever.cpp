@@ -166,18 +166,56 @@ TEST_CASE("lever_detector: trip jams everything, rotate-back resets, third trip 
     // Turning forward or holding tension does not reset.
     th::run(s, th::frame(WORK, 0, 0), P.reset_steps + 5, log);
     CHECK_EQ(log.count(EventKind::drop, -2, lever::SUB_DETECTOR_RESET), trip - 1);
+    CHECK_EQ(s.describe().reset_progress, 0);  // forward / tension: no progress
     InputFrame back = th::frame(0, 0, 0);
     back.rotate = -Q16_ONE;
+    q16 prev = 0;
     for (int i = 0; i < P.reset_steps; ++i) {
       const auto& out = s.step(back);
       log.events.insert(log.events.end(), out.events.begin(), out.events.end());
+      const q16 r = s.describe().reset_progress;
+      if (i + 1 < P.reset_steps) {
+        CHECK(r > prev);
+        CHECK(r < Q16_ONE);
+        prev = r;
+      } else {
+        CHECK_EQ(r, 0);  // reset done: detector released
+      }
     }
+    CHECK_EQ(s.describe().hold_progress, 0);
     CHECK_EQ(log.count(EventKind::drop, -2, lever::SUB_DETECTOR_RESET), trip);
     CHECK(s.describe().elements[0].state == ElementState::free);
     CHECK_EQ(s.state().tool.wear(), 2 * trip);
   }
   CHECK(s.failure() == FailureKind::detector_trip);
   CHECK(s.finished());
+}
+
+TEST_CASE("lever_detector: letting go of the rotate-back clears reset_progress") {
+  const LockSpec spec = spec_of(authored(true));
+  LockSession s(det_fam(), spec);
+  Log log;
+  th::run(s, th::frame(0, element_center(2, 3), Q16_ONE), 4, log);
+  REQUIRE(log.count(EventKind::detector_trip) == 1);
+  InputFrame back = th::frame(0, 0, 0);
+  back.rotate = -Q16_ONE;
+  for (int i = 0; i < 10; ++i) s.step(back);
+  CHECK(s.describe().reset_progress > 0);
+  s.step(th::frame(0, 0, 0));
+  CHECK_EQ(s.describe().reset_progress, 0);
+}
+
+TEST_CASE("progress fields stay 0 in families without them") {
+  for (const char* id : {"pin_tumbler", "wafer", "warded", "lever", "ring_combo"}) {
+    const FamilyModule& f = th::module(id);
+    const LockSpec spec = f.generate(1, f.difficulty_for_tier(2));
+    LockSession s(f, spec);
+    for (int i = 0; i < 50; ++i) {
+      s.step(th::frame(WORK, element_center(0, 3), q16_milli(300)));
+      CHECK_EQ(s.describe().hold_progress, 0);
+      CHECK_EQ(s.describe().reset_progress, 0);
+    }
+  }
 }
 
 TEST_CASE("lever_detector: overset or detector depends on the margins") {

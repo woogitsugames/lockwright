@@ -265,6 +265,7 @@ class Module final : public FamilyModule {
     // core_rotation = bolt travel: a small shift per set peg, then the slide-out.
     const q16 slide = q_ratio_safe(S.open_hold, P.open_hold_steps);
     v.core_rotation = S.open ? Q16_ONE : q16_milli(20) * sets + q_mul(slide, q16_milli(100));
+    v.hold_progress = S.open ? Q16_ONE : q_clamp(slide, 0, Q16_ONE);
     v.tension_resistance = S.resistance;
     v.pick_drag = S.drag;
     v.stress = 0;

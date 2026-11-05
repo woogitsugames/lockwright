@@ -40,7 +40,7 @@ lockcore/build/replay_tool trace lockcore/tests/golden/wafer_t2_s77.replay.json 
 `replay_tool trace <file.replay.json> <out.trace.json>` plays a replay exactly like `play`
 (same session, same hash; exit 1 on mismatch) and writes `lockwright.trace/1`: one flat row per
 step (`frame_fields` = inputs, continuous signals, stress, core rotation, pick element, failure,
-then `state, position` per element), every event `[t_step, kind, sub, element, intensity,
+hold/reset progress, then `state, position` per element), every event `[t_step, kind, sub, element, intensity,
 material]`, name tables and the element windows. All values stay Q16 integers (65536 = 1.0).
 
 `mockups/tools/lockviz/` is a plain HTML+JS viewer for it (design/debug tool, not game code):
@@ -216,6 +216,20 @@ continuous signals in [0, 1], view positions / stress / rotation in [0, 1], wind
 S >= 0. CI runs it under ASan + UBSan with `-fno-sanitize-recover=undefined` and a 300 s timeout.
 
 ## API changes
+
+### v0.4 (progress fields, FEEL.md F-07)
+
+Additive; code written against v0.3 compiles unchanged, hashes and goldens unchanged.
+
+- `family.hpp`: `ViewModel` gains `q16 hold_progress` and `q16 reset_progress` (Q16 0..1,
+  read-only, never hashed; 0 where not applicable). `wooden_pin`: fraction of `open_hold_steps`
+  for which all pegs are set and the bolt is held (`T >= t_hold`), back to 0 when the hold
+  breaks, 1 once open. `lever_detector`: while tripped, fraction of `reset_steps` the rotate-back
+  (`T < t_hold`, `rotate <= -1/2`) has been held; 0 when released or after the reset. All other
+  families: always 0.
+- `replay_tool trace`: `frame_fields` gains `hold_progress`, `reset_progress` after `failure`
+  (per-element columns follow them; lockviz reads the layout from `frame_fields`). Traces in
+  `mockups/tools/lockviz/traces/` regenerated.
 
 ### v0.3 (balance, D-34)
 

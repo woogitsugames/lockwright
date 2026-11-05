@@ -89,6 +89,8 @@ int trace(const FamilyRegistry& reg, const char* in_path, const char* out_path) 
     fr.push(Value::integer(vm.pick_element));
     fr.push(Value::integer(vm.pick_lift));
     fr.push(Value::integer(static_cast<std::int64_t>(vm.failure)));
+    fr.push(Value::integer(vm.hold_progress));
+    fr.push(Value::integer(vm.reset_progress));
     for (const ElementView& e : vm.elements) {
       fr.push(Value::integer(static_cast<std::int64_t>(e.state)));
       fr.push(Value::integer(e.position));
@@ -125,7 +127,8 @@ int trace(const FamilyRegistry& reg, const char* in_path, const char* out_path) 
   }
   Value frame_fields = Value::array();
   for (const char* f : {"tension", "pick_depth", "pick_lift", "rotate", "push", "tool", "tension_resistance", "pick_drag",
-                        "stress", "core_rotation", "pick_element", "view_pick_lift", "failure"})
+                        "stress", "core_rotation", "pick_element", "view_pick_lift", "failure",
+                        "hold_progress", "reset_progress"})
     frame_fields.push(Value::string(f));
   Value event_fields = Value::array();
   for (const char* f : {"t_step", "kind", "sub", "element", "intensity", "material"}) event_fields.push(Value::string(f));

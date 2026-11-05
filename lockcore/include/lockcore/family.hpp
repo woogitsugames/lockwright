@@ -42,6 +42,9 @@ struct ViewModel {
   q16 stress = 0;  // S / S_max
   bool open = false;
   FailureKind failure = FailureKind::none;
+  // v0.4 (additive, read-only; not part of any hash). 0 where not applicable.
+  q16 hold_progress = 0;   // wooden_pin: all pegs set and bolt held, fraction of open_hold_steps
+  q16 reset_progress = 0;  // lever_detector: rotate-back held while tripped, fraction of reset_steps
 };
 
 // Base of every family's mutable state. Common components live here so that the

@@ -71,6 +71,29 @@ TEST_CASE("wooden: pegs set in order, open needs the bolt held for 0.3 s") {
   CHECK_EQ(log.count(EventKind::open), 1);
 }
 
+TEST_CASE("wooden: hold_progress rises with the bolt hold, resets on release, 1 when open") {
+  LockSession s(fam(), spec_of(tutorial(2, true)));
+  Log log;
+  CHECK_EQ(s.describe().hold_progress, 0);
+  CHECK_EQ(s.describe().reset_progress, 0);
+  REQUIRE(th::lift_until(s, 0, WORK, q16_milli(5), q16_milli(800), EventKind::set, log));
+  th::run(s, th::frame(WORK, 0, 0), 2, log);
+  CHECK_EQ(s.describe().hold_progress, 0);  // one peg set: not all set yet
+  REQUIRE(th::lift_until(s, 1, WORK, q16_milli(5), q16_milli(800), EventKind::set, log));
+  q16 prev = s.describe().hold_progress;
+  for (int i = 0; i < 10; ++i) {
+    th::run(s, th::frame(WORK, element_center(1, 2), 0), 1, log);
+    const q16 h = s.describe().hold_progress;
+    CHECK(h > prev);
+    CHECK(h < Q16_ONE);
+    prev = h;
+  }
+  th::run(s, th::frame(WORK, element_center(1, 2), 0), 30, log);
+  REQUIRE(s.is_open());
+  CHECK_EQ(s.describe().hold_progress, Q16_ONE);
+  CHECK_EQ(s.describe().reset_progress, 0);
+}
+
 TEST_CASE("wooden: letting go of the bolt drops every set peg") {
   LockSession s(fam(), spec_of(tutorial(3, true)));
   Log log;

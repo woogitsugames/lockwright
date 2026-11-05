@@ -407,6 +407,8 @@ class Module final : public FamilyModule {
     v.tension_resistance = S.resistance;
     v.pick_drag = S.drag;
     v.stress = S.tool.ratio();
+    // reset_count is only advanced while tripped (detector family); 0 otherwise.
+    v.reset_progress = (S.tripped && P.reset_steps > 0) ? q16_ratio(q_min(S.reset_count, P.reset_steps), P.reset_steps) : 0;
     v.open = S.open;
     v.failure = S.failure;
     return v;
