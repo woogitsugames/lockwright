@@ -144,6 +144,20 @@ Tabela pomiarów (1 wiersz na próbę): session_code, track, build, rules_versio
 
 Nagrania nie są konieczne. Gdy naprawdę potrzebne: osobna zgoda, tylko ekran i dłonie (bez twarzy, głosu i powiadomień), lokalny zapis, minimalny dostęp, usunięcie po kodowaniu wyników, np. po 14 dniach. Nagranie głosu lub twarzy wymaga osobnej, wyraźnej decyzji organizatora i informacji o przetwarzaniu danych; nie zakładaj, że anonimowość obejmuje wideo. Zgodność z RODO wymaga ustalenia administratora, celu, podstawy i terminu retencji **przed** testem, jeśli jakiekolwiek dane osobowe powstaną.
 
+### 8a. Samodzielne testowanie po wysłaniu APK znajomym / Unmoderated APK distribution
+
+Jeśli właściciel **tylko przesyła APK**, dołącz do niego jedną prostą instrukcję i link do anonimowej ankiety; **nie** oczekuj od znajomego wypełniania arkusza obserwatora. W tym wariancie dane pochodzą tylko z ankiety i ewentualnych **lokalnych logów gry**, jeśli aplikacja potrafi wyeksportować je bez danych identyfikacyjnych. Samo kliknięcie ankiety nie potwierdza A1/A2/A7.
+
+**Wiadomość PL do skopiowania:** „Testuję prototyp gry Lockwright na Androida. Jeśli chcesz pomóc, uruchom załączony APK na świeżym profilu i przez około 30 minut graj bez szukania instrukcji. Możesz przerwać w dowolnej chwili. Na koniec odpowiedz na krótką ankietę: [link do formularza PL]. Nie podawaj imienia, kontaktu ani danych z telefonu. Jeśli funkcji nie było w grze, wybierz N/D.”
+
+**Copyable EN message:** “I'm testing an early Android build of Lockwright. If you'd like to help, start the APK with a new profile and play for about 30 minutes without looking up instructions. You can stop at any time. Afterwards, please fill in this short survey: [EN form link]. Please don't provide your name, contact details or phone data. Select N/A for features you didn't see.”
+
+- Udostępnij APK przez zaufany kanał, podaj build i minimalną wymaganą wersję Androida. Nie sugeruj omijania ostrzeżeń systemowych ani wyłączania zabezpieczeń telefonu; zapewnij zaufaną metodę instalacji lub dystrybucję testową.
+- Wariant domowy ma cel: **usability i ankieta**. Dla pełnych A1/A2 konieczny jest automatyczny tryb badawczy z pin.s1–s3 → pin.a1 bez H → pin.a2 na ustalonych seedach, stałymi limitami i eksportem czasów; gdy go nie ma, wynik z domu nie spełnia protokołu A1/A2.
+- Dla A7 potrzebne są kontrolowane obrazy w skali szarości/50% jasności, znana kolejność wariantów i odpowiedzi na poziomie stanu. Bez tego domowy komentarz „stany czytelne” jest obserwacją, nie wynikiem A7.
+- Nie proś o zrzuty telefonu zawierające powiadomienia, zdjęcia domowników ani filmy twarzy. Jeżeli APK nie umie eksportować anonimowego raportu, poprzestań na 20 pytaniach formularza; brak logu to brak danych, nie domyślny sukces.
+- Przy samodzielnym testowaniu oddziel w raporcie wyniki „remote, unmoderated” od 30-minutowych sesji A/B/C z moderatorem. Nie łącz tych populacji w mianowniku kryteriów akceptacji bez identycznych warunków.
+
 ## 9. Wklej do arkusza — obliczenia
 
 Przygotuj tabelę w Excel/Sheets lub CSV. Oddziel ścieżki i wersje APK; nie łącz prób z różnych buildów w jedną statystykę zaliczeniową.
