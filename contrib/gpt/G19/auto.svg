@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="768" viewBox="0 0 768 768">
+<defs><style>.pencil{stroke:#4e483e;stroke-linecap:round;stroke-linejoin:round}</style></defs>
+
+<!-- simplified, imaginary horizontal lock cutaway; not a real lock mechanism -->
+<g class="pencil" stroke-width="4.6" fill="none" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M255 264 Q258 249 270 250 H502 Q511 254 511 266 V364 Q510 379 499 379 H267 Q253 374 255 359 Z" />
+  <path d="M265 310 H501" stroke-width="3.5"/>
+  <path d="M267 344 H499" stroke-width="6"/>
+  <path d="M276 285 H491" stroke-width="2.7" opacity=".65"/>
+  <path d="M269 367 H501" stroke-width="2.3" opacity=".64"/>
+  <path d="M295 258 V246 M472 257 V246" opacity=".5" stroke-width="2.3"/>
+  <path d="M303 281 V308 M351 281 V308 M400 281 V308 M449 281 V308" opacity=".7" stroke-width="3"/>
+  <path d="M303 319 V347 M351 319 V347 M400 319 V347 M449 319 V347" opacity=".7" stroke-width="3"/>
+  <path d="M289 379 V405 H324" stroke-width="8"/>
+  <path d="M289 380 V399 H316" stroke="white" stroke-width="2" opacity=".9"/>
+</g>
+<g fill="#655e50" fill-opacity=".12" stroke="#4a463c" stroke-width="3" stroke-linejoin="round">
+  <rect x="288" y="302" width="29" height="32" rx="6"/>
+  <rect x="336" y="295" width="29" height="39" rx="6"/>
+  <rect x="385" y="304" width="29" height="30" rx="6"/>
+  <rect x="434" y="299" width="29" height="35" rx="6"/>
+</g>
+<g class="pencil" stroke-width="2" opacity=".42">
+  <path d="M272 293 l16 -8 M275 299 l22 -9 M462 354 l18 -8 M463 360 l27 -11"/>
+  <path d="M329 266 l9 -7 M385 269 l10 -7 M430 267 l12 -8"/>
+</g>
+<!-- common phone outline and frame -->
+<g class="pencil" fill="none" stroke-linejoin="round" stroke-linecap="round">
+  <rect x="198" y="73" width="370" height="628" rx="52" stroke-width="7"/>
+  <rect x="203" y="79" width="362" height="617" rx="49" stroke-width="1.8" opacity=".36"/>
+  <rect x="218" y="111" width="330" height="535" rx="24" stroke-width="3.8"/>
+  <path d="M343 94 H423" stroke-width="4" opacity=".62"/>
+  <path d="M368 674 H405" stroke-width="3" opacity=".44"/>
+  <path d="M208 162 V208 M556 495 V547" stroke-width="1.6" opacity=".45"/>
+</g>
+<g class="pencil" opacity=".29" stroke-width="2.1" fill="none">
+  <path d="M228 129 L232 164 M231 570 L237 613 M535 128 L531 178"/>
+  <path d="M234 191 L238 205 M529 573 L532 609"/>
+</g>
+
+<g fill="#ebe3d2" fill-opacity=".86" stroke="#514b42" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M720 739 Q706 706 682 677 Q656 652 625 649 L561 635 Q537 626 527 605 
+           Q517 587 514 566 L498 511 Q491 492 478 490 Q461 491 455 503 Q450 514 459 535
+           L475 581 Q461 572 445 572 Q425 573 429 591 Q432 609 455 617
+           Q445 610 436 612 Q422 615 427 629 Q429 644 453 651
+           Q443 644 440 652 Q435 664 455 678 L510 712 L544 739 Z"/>
+</g>
+<g class="pencil" stroke-width="2.6" opacity=".76" fill="none" stroke-linecap="round">
+  <path d="M481 503 Q476 497 468 505 M468 546 Q475 566 475 580"/>
+  <path d="M455 617 L486 626 M454 652 L486 663 M504 583 Q515 632 556 651"/>
+  <path d="M549 687 Q596 687 629 714" opacity=".45"/>
+</g>
+
+<!-- held-tension anchor mark, chalk, near the tensioner: a notched loop + latch -->
+<g stroke="#9b927f" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M288 415 V430 Q273 439 277 451 Q286 470 305 457 L305 432" stroke-width="7"/>
+  <path d="M281 449 H307 M292 410 V420" stroke-width="3.5" opacity=".76"/>
+  <path d="M310 424 L318 417" stroke-width="4"/>
+</g>
+<g stroke="#fdfaf2" fill="none" stroke-width="2.3" opacity=".88" stroke-linecap="round">
+  <path d="M292 416 V430 Q279 443 286 455 M290 451 H301"/>
+</g>
+<!-- intuitive right-thumb lift -->
+<g stroke="#3a3935" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M475 484 L475 433" stroke-width="9"/>
+  <path d="M454 452 L475 426 L496 452" stroke-width="9"/>
+  <path d="M467 481 L466 456" stroke-width="2" opacity=".33"/>
+</g>
+<g stroke="#fff9ed" fill="none" stroke-width="2.1" opacity=".91" stroke-linecap="round">
+  <path d="M477 480 V438 M459 450 L475 430 L490 447"/>
+</g>
+
+</svg>
