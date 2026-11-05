@@ -20,6 +20,12 @@ def export(path, width, height, title=False, language="en"):
     target.parent.mkdir(parents=True, exist_ok=True)
     image = ImageOps.fit(source, (width, height), Image.Resampling.LANCZOS,
                         centering=(0.5, 0.47))
+    if "logo-space" in path:
+        safe = ImageDraw.Draw(image, "RGBA")
+        if height > width:
+            safe.rectangle((0, 0, width, round(height * .31)), fill=(18, 15, 12, 125))
+        else:
+            safe.rectangle((0, 0, round(width * .43), height), fill=(18, 15, 12, 130))
     if title:
         draw = ImageDraw.Draw(image, "RGBA")
         band_h = round(height*0.32 if height>width else height*0.68)
@@ -27,17 +33,20 @@ def export(path, width, height, title=False, language="en"):
         font = fsize(round(width * (0.09 if width>height else 0.125)))
         draw.text((round(width*.07),round(height*.1)),"Lockwright",
                   font=font,fill=(242,231,211,255))
-        if language in ("pl", "en"):
+        if language in ("pl", "en") and "feature/" not in path:
             subtitle = "Pogotowie Zamkowe" if language=="pl" else "Locksmith on Call"
             draw.text((round(width*.07),round(height*.22 if height>width else height*.18)),
                       subtitle,font=fsize(round(width*.027)),fill=(220,188,144,255))
-    image.save(target,quality=91,optimize=True,subsampling=0)
+    if target.suffix.lower() == '.png':
+        image.save(target,optimize=True)
+    else:
+        image.save(target,quality=91,optimize=True,subsampling=0)
 for name,w,h in [("key-art/key-art-3840x2160-clean.jpg",3840,2160),
                  ("key-art/key-art-3840x2160-logo-space.jpg",3840,2160),
                  ("key-art/key-art-2160x3840-clean.jpg",2160,3840),
                  ("key-art/key-art-2160x3840-logo-space.jpg",2160,3840),
-                 ("feature/google-play-1024x500-clean.jpg",1024,500),
-                 ("feature/google-play-1024x500-title.jpg",1024,500)]:
+                 ("feature/google-play-1024x500-clean.png",1024,500),
+                 ("feature/google-play-1024x500-title.png",1024,500)]:
     export(name,w,h,"title" in name)
 for w,h in [(1080,1080),(1080,1920),(1500,500)]:
     for lang in ("pl","en"):
