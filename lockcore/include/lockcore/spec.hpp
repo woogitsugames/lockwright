@@ -46,7 +46,9 @@ enum ToolBits : std::uint32_t {
   TOOL_PEG_LIFTER = 1u << 3,      // wooden_pin
   TOOL_WARD_PROBE = 1u << 4,      // warded (interchangeable bits, InputFrame::tool = bit)
   TOOL_LEVER_CRANK = 1u << 5,     // lever, lever_detector
-  TOOL_SHACKLE_PULLER = 1u << 6,  // ring_combo
+  TOOL_SHACKLE_PULLER = 1u << 6,  // ring_combo, combo
+  // v0.6 (additive)
+  TOOL_LISTENING_CUP = 1u << 7,   // dial_safe
 };
 struct ToolSet {
   std::uint32_t bits = TOOL_TENSION_WRENCH | TOOL_HOOK;

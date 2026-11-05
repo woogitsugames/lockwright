@@ -22,6 +22,7 @@ add_library(lockcore
   src/replay.cpp
   src/session.cpp
   src/families/builtin.cpp
+  src/families/dial_safe.cpp
   src/families/lever.cpp
   src/families/pin_tumbler.cpp
   src/families/ring_combo.cpp
@@ -66,6 +67,7 @@ if(LOCKCORE_BUILD_TESTS)
     tests/test_lever.cpp
     tests/test_ring_combo.cpp
     tests/test_warded.cpp
+    tests/test_dial_safe.cpp
     tests/test_replay.cpp
     tests/test_fuzz.cpp
   )

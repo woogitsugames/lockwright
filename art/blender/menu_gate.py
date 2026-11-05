@@ -94,7 +94,7 @@ green = photo_mat('ph_lamperia', 'wall_oil_paint_green', scale=760, metallic=0.0
 lime = photo_mat('ph_wall_lime', 'wall_lime_plaster', scale=1000, metallic=0.0, bump=0.5, grime=0.5, tint=(0.80, 0.76, 0.68))
 patch_m = lime_wall('patch', color=(0.80, 0.78, 0.72), seed=3, dirt=0.25, cracks=0.0)
 stripe = oil_paint('stripe', (0.16, 0.04, 0.03), rough=0.3, chips=0.8, scuffs=0.9, strokes='X', seed=2, edge_chips=1.0)
-wood_fr = photo_mat('ph_frame', 'bench_beech_top', scale=420, rot=0, metallic=0.0, base=(0.10, 0.055, 0.03), base_mix=0.42,
+wood_fr = photo_mat('ph_frame', 'bench_beech_top', scale=420, rot=0, metallic=0.0, base=(0.075, 0.04, 0.022), base_mix=0.5,
                     coat=0.45, bump=0.25, wear=0.55, grime=0.7)
 wood_fr = add_top_dust(wood_fr, 0.45)
 alu = add_top_dust(photo_mat('ph_alu', 'nickel_satin', scale=140, metallic=1.0, base=(0.66, 0.66, 0.64), base_mix=0.35, rough_add=0.08, wear=0.2, grime=0.6), 0.45)
@@ -109,7 +109,7 @@ stamp_ink = dark_mat('stamp_grime', (0.025, 0.022, 0.02), rough=0.8)
 beech = add_top_dust(photo_mat('ph_beech', 'bench_beech_top', scale=320, metallic=0.0, coat=0.25, bump=0.25, grime=0.6, wear=0.4,
                                base=(0.30, 0.18, 0.09), base_mix=0.3), 0.35)
 brass = photo_mat('ph_brass', 'brass_patina_grease', scale=60, metallic=1.0, base=(0.62, 0.48, 0.28), base_mix=0.45, rough_add=0.14, wear=0.3, grime=0.7)
-tag_alu = photo_mat('ph_tag_alu', 'nickel_satin', scale=50, metallic=1.0, base=(0.74, 0.74, 0.72), base_mix=0.4, rough_add=0.12, wear=0.4, grime=0.9)
+tag_alu = photo_mat('ph_tag_alu', 'nickel_satin', scale=50, metallic=0.55, base=(0.80, 0.80, 0.78), base_mix=0.4, rough_add=0.22, wear=0.4, grime=0.9)
 tag_steel = photo_mat('ph_tag_steel', 'iron_painted_rust', scale=90, metallic=0.0, rough_add=0.05, grime=0.6, wear=0.6,
                       base=(0.30, 0.06, 0.04), base_mix=0.35)
 ring_steel = photo_mat('ph_ring', 'steel_ground', scale=30, metallic=1.0, rough_add=0.08, grime=0.5)
@@ -132,8 +132,8 @@ if ORIENT == 'portrait':
     IH = 242.0 + 5 * 84.0 + 18.0
 else:
     IW = 846.0; TOP = 1990.0; BX = -170.0
-    TITLE = [('POGOTOWIE ZAMKOWE', 16.0, 30.0, 2.0), ('LOCKWRIGHT', 52.0, 62.0, 0.0)]
-    MENU = [('start', 'ZACZNIJ DYŻUR', 38.0, 180.0, 112.0, 20.0, 0, 452)]
+    TITLE = [('POGOTOWIE ZAMKOWE', 17.0, 34.0, 2.0), ('LOCKWRIGHT', 62.0, 70.0, 0.0)]
+    MENU = [('start', 'ZACZNIJ DYŻUR', 42.0, 236.0, 120.0, 20.0, 0, 452)]
     for i, (iid, t) in enumerate((('jobs', 'ZLECENIA'), ('workshop', 'WARSZTAT'), ('showcase', 'GABLOTA'), ('settings', 'USTAWIENIA'), ('about', 'O GRZE'))):
         MENU.append((iid, t, 30.0, 20.0 + i * 78.0, 78.0, 488.0, 466, IW))
     IH = 20.0 + 5 * 78.0 + 18.0
@@ -174,10 +174,12 @@ screw_head('old_nail_head', (X0 - 66, -13, TOP + 96), 2.4, 0.8, axis='-Y', slot=
 # a painted-over surface cable: down the wall left of the board, saddle clips every ~160 mm
 CXW = X0 - FR - 34 if ORIENT == 'portrait' else X0 - FR - 60
 cpts = [(CXW + 400, -5, 3600), (CXW + 400, -5, TOP + 330), (CXW + 340, -5, TOP + 270), (CXW, -5, TOP + 200), (CXW, -5, -400)]
-tube('cable', [(CXW + 900, -5, TOP + 330), (CXW + 60, -5, TOP + 330), (CXW, -5, TOP + 270), (CXW, -5, -400)], 4.5, cable_paint, res=4)
+tube('cable', [(CXW + 900, -5, TOP + 330), (CXW + 60, -5, TOP + 330), (CXW, -5, TOP + 270), (CXW, -5, DIV + 6)], 4.5, cable_paint, res=4)
+tube('cable_low', [(CXW, -5, DIV + 6), (CXW, -5, -400)], 4.5, green, res=4)   # painted with the lamperia below the line
 for zc in range(int(TOP + 140), -400, -310):
-    s = bx('clip', CXW - 5.5, CXW + 5.5, -10.0, 0, zc - 3, zc + 3, cable_paint, bev=1.4, seg=2)
-    screw_head('clip_nail', (CXW + 8.0, -1.0, zc), 1.8, 0.9, axis='-Y', slot=False, kind='dome', mat=ring_steel)
+    cm_ = cable_paint if zc > DIV else green
+    s = bx('clip', CXW - 5.5, CXW + 5.5, -10.0, 0, zc - 3, zc + 3, cm_, bev=1.4, seg=2)
+    screw_head('clip_nail', (CXW + 8.0, -1.0, zc), 1.8, 0.9, axis='-Y', slot=False, kind='dome', mat=cm_)
 
 # ---------------------------------------------------------------- board: backing, ribs, frame
 bx('board_back', X0, X0 + IW, -12.0, BACK, ZB, ZT, felt)
@@ -262,7 +264,7 @@ if SHOT == 'menu':
 
 # ---------------------------------------------------------------- hook rail, key tags, invented keys
 if ORIENT == 'portrait': RX, RZ, RW = BX + 10.0, ZB - FR - 70.0, 380.0
-else: RX, RZ, RW = X0 + IW + FR + 210.0, ZT - 30.0, 300.0
+else: RX, RZ, RW = X0 + IW + FR + 190.0, ZT - 30.0, 300.0
 if SHOT == 'settings': RZ = ZB - 4000.0   # rail out of shot
 bx('rail', RX - RW / 2, RX + RW / 2, -20, 0, RZ - 30, RZ + 30, beech, bev=3.0)
 for sx in (RX - RW / 2 + 18, RX + RW / 2 - 18):
@@ -349,9 +351,9 @@ if SHOT == 'settings':
 # ---------------------------------------------------------------- light: one warm bulb raking from high left, deep fall-off
 CTR = Vector((BX, 0, (ZT + ZB) / 2))
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = CTR
-bpy.ops.object.light_add(type='SPOT', location=(X0 - 170, -300, TOP + 200)); bulb = bpy.context.object
+bpy.ops.object.light_add(type='SPOT', location=(X0 - 170, -380, TOP + 220)); bulb = bpy.context.object
 bulb.data.shadow_soft_size = float(arg('--soft', '22')); bulb.data.energy = float(arg('--bulb', '5.5e7')); bulb.data.color = (1.0, 0.70, 0.44)
-bulb.data.spot_size = math.radians(115); bulb.data.spot_blend = 0.8
+bulb.data.spot_size = math.radians(100); bulb.data.spot_blend = 1.0
 a_b = bpy.data.objects.new('aim_bulb', None); scene.collection.objects.link(a_b)
 a_b.location = (BX - 10, 0, (ZT + ZB) / 2 + 20) if ORIENT == 'portrait' else (BX + 160, 0, (ZT + ZB) / 2 - 60)
 cb = bulb.constraints.new('TRACK_TO'); cb.target = a_b; cb.track_axis = 'TRACK_NEGATIVE_Z'; cb.up_axis = 'UP_Y'

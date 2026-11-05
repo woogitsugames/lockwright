@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <vector>
 
+#include "lockcore/dial_safe.hpp"
 #include "lockcore/lever.hpp"
 #include "lockcore/lockcore.hpp"
 #include "lockcore/pin_tumbler.hpp"
