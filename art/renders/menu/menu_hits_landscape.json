@@ -1,0 +1,136 @@
+{
+ "image": "menu_landscape.png",
+ "width": 2400,
+ "height": 1080,
+ "orient": "landscape",
+ "px_per_dp": 2.6214,
+ "rect": "[x, y, w, h] px, origin top-left",
+ "items": [
+  {
+   "id": "start",
+   "label": "ZACZNIJ DY\u017bUR",
+   "text_rect": [
+    921,
+    203,
+    415,
+    41
+   ],
+   "hit_rect": [
+    901,
+    149,
+    680,
+    149
+   ],
+   "cap_px": 47,
+   "hit_dp": [
+    259.4,
+    56.8
+   ]
+  },
+  {
+   "id": "jobs",
+   "label": "ZLECENIA",
+   "text_rect": [
+    921,
+    357,
+    221,
+    31
+   ],
+   "hit_rect": [
+    901,
+    297,
+    680,
+    127
+   ],
+   "cap_px": 42,
+   "hit_dp": [
+    259.4,
+    48.4
+   ]
+  },
+  {
+   "id": "workshop",
+   "label": "WARSZTAT",
+   "text_rect": [
+    921,
+    477,
+    265,
+    30
+   ],
+   "hit_rect": [
+    901,
+    424,
+    680,
+    127
+   ],
+   "cap_px": 42,
+   "hit_dp": [
+    259.4,
+    48.4
+   ]
+  },
+  {
+   "id": "showcase",
+   "label": "GABLOTA",
+   "text_rect": [
+    921,
+    609,
+    223,
+    31
+   ],
+   "hit_rect": [
+    901,
+    551,
+    680,
+    127
+   ],
+   "cap_px": 42,
+   "hit_dp": [
+    259.4,
+    48.4
+   ]
+  },
+  {
+   "id": "settings",
+   "label": "USTAWIENIA",
+   "text_rect": [
+    921,
+    730,
+    287,
+    31
+   ],
+   "hit_rect": [
+    901,
+    678,
+    680,
+    127
+   ],
+   "cap_px": 42,
+   "hit_dp": [
+    259.4,
+    48.4
+   ]
+  },
+  {
+   "id": "about",
+   "label": "O GRZE",
+   "text_rect": [
+    921,
+    862,
+    175,
+    31
+   ],
+   "hit_rect": [
+    901,
+    805,
+    680,
+    127
+   ],
+   "cap_px": 42,
+   "hit_dp": [
+    259.4,
+    48.4
+   ]
+  }
+ ]
+}
