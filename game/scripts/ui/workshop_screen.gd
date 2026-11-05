@@ -10,6 +10,7 @@ const TOOLS_PATH := "res://data/tools.json"
 
 
 func _ready() -> void:
+	Sfx.play_ambience(&"workshop")
 	SafeArea.apply(self)
 	$VBox/Title.text = I18n.t(&"workshop.title")
 	back_button.text = I18n.t(&"common.back")

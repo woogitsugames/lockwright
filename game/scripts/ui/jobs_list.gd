@@ -8,6 +8,7 @@ const JOBS_DIR := "res://data/jobs"
 
 
 func _ready() -> void:
+	Sfx.play_ambience(&"stairwell")
 	SafeArea.apply(self)
 	$VBox/Title.text = I18n.t(&"jobs.title")
 	back_button.text = I18n.t(&"common.back")

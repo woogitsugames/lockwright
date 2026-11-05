@@ -8,6 +8,7 @@ const SHOWCASE_DIR := "res://data/showcase"
 
 
 func _ready() -> void:
+	Sfx.play_ambience(&"workshop")
 	SafeArea.apply(self)
 	$VBox/Title.text = I18n.t(&"showcase.title")
 	back_button.text = I18n.t(&"common.back")

@@ -11,6 +11,7 @@ extends Control
 
 
 func _ready() -> void:
+	Sfx.play_ambience(&"stairwell")
 	SafeArea.apply(self)
 	var job: Dictionary = JobRun.current_job
 	var i18n: Dictionary = job.get("i18n", {})

@@ -5,6 +5,7 @@ extends Control
 
 
 func _ready() -> void:
+	Sfx.play_ambience(&"stairwell")
 	SafeArea.apply(self)
 	$VBox/Title.text = I18n.t(&"tutorial.title")
 	_refresh()

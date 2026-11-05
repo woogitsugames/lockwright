@@ -23,6 +23,7 @@ func _ready() -> void:
 	back_button.text = I18n.t(&"common.back")
 	_shown = mini(2, job.get("cards", ["id"]).size())  # client shows 1-2 cards first
 	_render_cards()
+	Sfx.play_ui(&"paper_turn")  # audio/v2 UI: client lays out the cards
 	accept_button.pressed.connect(_accept)
 	refuse_button.pressed.connect(_refuse)
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/job_arrival.tscn"))

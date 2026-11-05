@@ -17,6 +17,15 @@ func _ready() -> void:
 		tip_label.text = I18n.t(&"job.tip_fmt").format({"n": JobRun.last_tip})
 	else:
 		tip_label.text = ""
+	_play_reward_sequence()  # audio/v2 rewards: door_open -> thanks -> coins (mix README)
+
+
+func _play_reward_sequence() -> void:
+	Sfx.play_reward(&"door_open")
+	await get_tree().create_timer(1.4).timeout
+	Sfx.play_reward(&"thanks")
+	await get_tree().create_timer(1.2).timeout
+	Sfx.play_reward(&"coins")
 	continue_button.text = I18n.t(&"common.continue")
 	continue_button.pressed.connect(func() -> void:
 		JobRun.complete()

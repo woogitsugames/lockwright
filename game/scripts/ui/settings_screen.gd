@@ -23,6 +23,7 @@ extends Control
 
 
 func _ready() -> void:
+	Sfx.play_ambience(&"rain_window")
 	SafeArea.apply(self)
 	_refresh_texts()
 	haptics_check.button_pressed = Settings.haptics_enabled()

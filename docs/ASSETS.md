@@ -57,6 +57,7 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | audio/v2/out/ambience/*.wav (4 pętle otoczenia: stairwell, workshop, night_timer, rain_window; 30 s, 32 kHz / 16-bit / mono, chunk `smpl`) | dźwięk | własne, synteza `audio/v2/world.py` (numpy, seed 20261105: szum kształtowany, mody, pogłos syntetyczny), bez sampli zewnętrznych | własne projektu | — |
 | audio/v2/out/ui/*.wav (34 diegetyczne dźwięki UI: zwijka skórzana, kartka, kreda, zeszyt, ołówek, telefon zleceń, szuflada gabloty; 48 kHz / 16-bit / mono) | dźwięk | własne, synteza modalna `audio/v2/world.py` (numpy, seed 20261105), bez sampli zewnętrznych; motyw telefonu własny (nie dzwonek producenta) | własne projektu | — |
 | audio/v2/out/reward/*.wav (9 nagród: otwarcie drzwi, motyw „dziękuję”, monety; 48 kHz / 16-bit / mono) oraz audio/v2/out/demo_world.wav (odsłuch, nie do builda) | dźwięk | własne, synteza modalna `audio/v2/world.py` (numpy, seed 20261105), bez sampli zewnętrznych; motyw „dziękuję” własny | własne projektu | — |
+| game/assets/audio/ambience/*.wav, game/assets/audio/ui/*.wav, game/assets/audio/reward/*.wav | dźwięk (kopie do builda) | kopie z `audio/v2/out/` (wiersze powyżej: synteza `world.py`) | własne projektu | — |
 
 
 ## Dostawy ChatGPT przyjęte do gry (D-42, D-43)

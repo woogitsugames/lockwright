@@ -11,6 +11,10 @@ const LOOPS := [&"tension_resistance", &"pick_drag"]
 const POOL_SIZE := 12
 const VARIANTS := 6  # FEEL F-09: audio/v2 ships 6 variants
 const SFX_ROOT := "res://assets/audio/sfx"
+const AMBIENCE_ROOT := "res://assets/audio/ambience"
+const UI_ROOT := "res://assets/audio/ui"
+const REWARD_ROOT := "res://assets/audio/reward"
+const AMBIENCES := [&"stairwell", &"workshop", &"night_timer", &"rain_window"]
 
 var _pool: Array[AudioStreamPlayer] = []
 var _free: Array[AudioStreamPlayer] = []
@@ -18,6 +22,10 @@ var _cache: Dictionary = {}  # "event/material/n" -> AudioStream
 var _loops: Dictionary = {}  # loop id -> {player, generator, playback, active}
 var _rng := RandomNumberGenerator.new()
 var _native_click: Object = null
+var _ambience: AudioStreamPlayer = null
+var _ambience_name: StringName = &""
+var _ambience_base_db := 0.0
+var _duck_tween: Tween = null
 
 
 func _ready() -> void:
@@ -51,6 +59,14 @@ func _preload_all() -> void:
 				var path := "%s/%s/%s_%d.wav" % [SFX_ROOT, loop, material, n]
 				if ResourceLoader.exists(path):
 					_cache["%s/%s/%d" % [loop, material, n]] = load(path)
+	for amb in AMBIENCES:
+		var apath := "%s/%s.wav" % [AMBIENCE_ROOT, amb]
+		if ResourceLoader.exists(apath):
+			_cache["amb/%s" % amb] = load(apath)
+	for dir in [UI_ROOT, REWARD_ROOT]:
+		for f in DirAccess.get_files_at(dir):
+			if f.ends_with(".wav"):
+				_cache["%s/%s" % [dir, f]] = load(dir + "/" + f)
 
 
 func _preload_native() -> void:
@@ -81,6 +97,12 @@ func _stream_for(event: StringName, material: StringName) -> AudioStream:
 
 
 func play(event: StringName, material: StringName = &"brass", volume_db: float = 0.0, pitch: float = 1.0) -> void:
+	# audio/v2 mix (README "Miks"): every L2 lock event ducks the ambience -6 dB / 50 ms,
+	# `break` ducks everything else -12 dB / 300 ms (FEEL §5.1)
+	if event in [&"break"]:
+		duck_ambience(-12.0, 300.0)
+	elif not LOOPS.has(event):
+		duck_ambience(-6.0, 50.0)
 	# R-20: L2 clicks prefer the native low-latency bridge (Oboe/AAudio, AVAudioEngine);
 	# AudioServer pool is the fallback (and the only path on desktop/editor).
 	if _native_click != null and _native_click.has_method("play"):
@@ -144,3 +166,73 @@ func end_loop(id: StringName) -> void:
 func set_loop_material(id: StringName, material: StringName) -> void:
 	if _loops.has(id):
 		_loops[id]["material"] = material
+
+
+func _one_shot_from(root: String, file_key: String, volume_db: float) -> void:
+	# UI/reward one-shots: random variant among the shipped files (audio/v2 part 2)
+	var keys: Array = []
+	for k in _cache.keys():
+		if k.begins_with(root + "/"):
+			keys.append(k)
+	var pool := keys.filter(func(k): return k.trim_prefix(root + "/").begins_with(file_key))
+	if pool.is_empty():
+		return
+	if _free.is_empty():
+		return
+	var stream: AudioStream = _cache[pool[_rng.randi_range(0, pool.size() - 1)]]
+	var p: AudioStreamPlayer = _free.pop_back()
+	p.stream = stream
+	p.bus = "Sfx"
+	p.volume_db = volume_db + linear_to_db(Settings.get_value("volume_sfx") * Settings.get_value("volume_master"))
+	p.play()
+	p.finished.connect(_on_player_finished.bind(p), CONNECT_ONE_SHOT)
+
+
+func play_ui(event: StringName, volume_db: float = 0.0) -> void:
+	_one_shot_from(UI_ROOT, String(event) + "_", volume_db)
+
+
+func play_reward(event: StringName, volume_db: float = 0.0) -> void:
+	_one_shot_from(REWARD_ROOT, String(event) + "_", volume_db)
+
+
+func play_ambience(name: StringName) -> void:
+	# Ambience loops are pre-mixed to -35 LUFS I (audio/v2 README); play at 0 dB with the
+	# ambience slider on the Ambience bus (never ducked below -6/-12 dB transiently only)
+	if _ambience_name == name and _ambience != null and _ambience.playing:
+		return
+	stop_ambience()
+	if not _cache.has("amb/%s" % name):
+		return
+	_ambience_name = name
+	_ambience = AudioStreamPlayer.new()
+	var stream: AudioStream = _cache["amb/%s" % name]
+	if stream is AudioStreamWAV:
+		stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+	_ambience.stream = stream
+	_ambience.bus = "Ambience"
+	_ambience_base_db = linear_to_db(maxf(Settings.get_value("volume_ambience", 0.8) * Settings.get_value("volume_master"), 0.001))
+	_ambience.volume_db = _ambience_base_db
+	add_child(_ambience)
+	_ambience.play()
+
+
+func stop_ambience() -> void:
+	if _duck_tween != null:
+		_duck_tween.kill()
+		_duck_tween = null
+	if _ambience != null:
+		_ambience.stop()
+		_ambience.queue_free()
+		_ambience = null
+	_ambience_name = &""
+
+
+func duck_ambience(db: float, ms: float) -> void:
+	if _ambience == null or not _ambience.playing:
+		return
+	if _duck_tween != null:
+		_duck_tween.kill()
+	_duck_tween = create_tween()
+	_duck_tween.tween_property(_ambience, "volume_db", _ambience_base_db + db, ms / 1000.0)
+	_duck_tween.tween_property(_ambience, "volume_db", _ambience_base_db, 0.05)
