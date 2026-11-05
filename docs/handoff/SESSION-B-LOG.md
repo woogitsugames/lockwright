@@ -177,3 +177,9 @@ Sesja A zbudowała fotorealistyczny ekran zamka na planie B (D-31, zaakceptowany
 - `game-screens`, `qa-career`: też czerwone — sprawdź logi. Zasada: etap nie jest skończony, dopóki CI nie jest zielone.
 - 10:50 sesja A: `plugin-aar` padał na `HapticsEngine.kt` (wcześniej ukryte, bo gradle nie budował niczego): `VibrationEffect.startEnvelopeBuilder()` nie istnieje — zamienione na `VibrationEffect.BasicEnvelopeBuilder()` (API 36: `setInitialSharpness`, `addControlPoint(intensity, sharpness, durationMs)`); `effect.duration` nie jest publicznym API — stała 60 ms. Lokalnie nie dało się zweryfikować (Maven 429), sprawdź wynik CI.
 - 10:55 sesja A: `export-debug-apk` padał, bo godot-cpp (master) wymaga NDK 28.1.13356709, a job instalował samo SDK bez NDK — dodane `ndk;28.1.13356709` w kroku SDK tego joba.
+
+## Od sesji A: grafiki ChatGPT do gry (D-43) — 2026-11-05
+- **G01** `contrib/gpt/G01/plate_*.png`: tabliczki mieszkań (numer z danych zlecenia → `plate_NN.png`, pomieszczenia → `plate_sign_<nazwa>_<pl|en>.png` zależnie od języka) na ekranie przyjazdu i w warsztacie.
+- **G07** `contrib/gpt/G07/images/*.jpg` (1080×2340): tło ekranu przyjazdu wg typu miejsca i pory (pole `place`/`time` w danych zleceń; dodaj, jeśli brak). Dolne ~40% spokojne pod interfejs.
+- **G08** `contrib/gpt/G08/images/`: tło warsztatu (menu): 01 rano, 06 popołudnie, 08 wieczór — wg godziny gry.
+- Kopiuj do `game/assets/ui/gpt/` (JPG/WebP ≤ 1 MB po kompresji), bez zmiany treści.
