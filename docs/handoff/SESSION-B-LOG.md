@@ -126,3 +126,5 @@ Sesja A zbudowała fotorealistyczny ekran zamka na planie B (D-31, zaakceptowany
 ## Od sesji A: ekonomia (ECONOMY.md, D-39) — 2026-11-05
 - Wprowadź liczby ze scenariusza C (`docs/ECONOMY.md` §6) do `game/data` i sprawdź `python3 tools/econ_sim.py` (0 zablokowanych zleceń).
 - Błędy w danych: 7 zamków zapadkowych ma `family: lever` (powinno `warded`), `liege_bakery` → `lever_detector`; `drummer_locker` → `wafer` t1 (D-38); warunki `after_t8` nie istnieją (lockcore max t7).
+- Prośba (ekran photoreal): w `lockcore_gd` w `describe()` dodać do słownika elementu `window_lo`, `window_hi` i `pick_lift` — bez tego długość pina dolnego w `pin_pose.gd` to średnia generatora i pin może minąć linię podziału o ±0,14 skoku.
+- Zrzuty ekranu w kontenerze bez GPU działają u sesji A przez Xvfb + lavapipe (Mesa Vulkan software) i Godota 4.7.2 — komendy w sekcji „Od sesji A: ekran zamka photoreal”. Użyj tego w zadaniu 13.

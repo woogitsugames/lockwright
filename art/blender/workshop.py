@@ -32,6 +32,7 @@ dark_steel = metal('dark_steel', (0.22, 0.22, 0.22), 0.4, marks='stamp', wear=0.
 brass = metal('brass', (0.80, 0.58, 0.30), 0.28, marks='stamp', wear=0.5, grime=0.7, patina=0.5, bevel_r=0.3)
 nickel = metal('nickel', (0.66, 0.65, 0.62), 0.24, marks='stamp', wear=0.4, grime=0.5, bevel_r=0.3)
 iron_old = iron('iron_old', rust=0.5, scale=0.5)
+brass_c = metal('brass_clean', (0.86, 0.64, 0.34), 0.2, marks='grind', marks_scale=2.0, wear=0.3, grime=0.3, patina=0.1, bevel_r=0.3)
 pegboard_m = None
 handle_wood = oak('handle_wood', light=(0.55, 0.36, 0.18), dark=(0.30, 0.16, 0.07), axis='Z', ring=1.5, coat=0.4, seed=3, wear=0.8)
 amber = plastic('amber', (0.45, 0.20, 0.03), rough=0.15)
@@ -199,7 +200,7 @@ def blank_outline(kind):
 blank_me = {}
 for kind in (0, 1):
     o = prism('blank_proto%d' % kind, blank_outline(kind), -1.0, 1.0)
-    cut(o, cyl('bh', 3.2, 6, (0, 0, 17), axis='Y', verts=24)); _bev(o, 0.3, 1); setmat(o, brass)
+    cut(o, cyl('bh', 3.2, 6, (0, 0, 17), axis='Y', verts=24)); _bev(o, 0.3, 1); setmat(o, brass_c)
     blank_me[kind] = o
 for r_ in range(3):
     for c_ in range(8):
@@ -208,7 +209,7 @@ for r_ in range(3):
         for n in range(rng.randint(1, 3)):
             kind = rng.randint(0, 1); src = blank_me[kind]
             b = src.copy(); b.data = src.data; bpy.context.collection.objects.link(b)
-            b.material_slots[0].link = 'OBJECT'; b.material_slots[0].material = rng.choice((brass, brass, nickel))
+            b.material_slots[0].link = 'OBJECT'; b.material_slots[0].material = rng.choice((brass_c, brass_c, nickel))
             b.matrix_world = Matrix.Translation(Vector((x, -32 - n * 2.2, z - 19 + 6))) @ Matrix.Rotation(math.radians(rng.uniform(-6, 6)), 4, 'Y')
 for k in (0, 1):
     blank_me[k].hide_render = True
@@ -409,7 +410,7 @@ padlock('padlock2', -10, -470, 22, w=46, h=40, d=20, mat=dark_steel, shackle_h=3
 # loose keys on a ring
 for k in range(3):
     kk = prism('lkey', [(u, v) for u, v in blank_outline(k % 2)], -1.0, 1.0)
-    setmat(kk, brass if k else nickel)
+    setmat(kk, brass_c if k else nickel)
     kk.matrix_world = Matrix.Translation(Vector((95 + k * 12, -440 + k * 4, BZ + 1.5 + k * 2.2))) @ Matrix.Rotation(math.radians(30 + k * 40), 4, 'Z') @ Matrix.Rotation(math.radians(90), 4, 'X')
 tube('keyring', [(103 + 12 * math.cos(a), -425 + 12 * math.sin(a), BZ + 4) for a in [i * math.pi / 8 for i in range(17)]], 1.2, bright)
 

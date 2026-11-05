@@ -312,7 +312,7 @@ bpy.context.view_layer.update()
 A5 = (148, 210)
 clip_m = metal('clip', (0.48, 0.48, 0.47), 0.24, marks='stamp', wear=0.5, grime=0.6, bevel_r=0.5)
 # held below the eye, facing up towards it, slightly rolled: the frame edge cuts the board (hands out of shot)
-M_cb = cam.matrix_world @ Matrix.Translation(Vector((-120, -350, -520))) @ Matrix.Rotation(math.radians(-13), 4, 'Z') @ Matrix.Rotation(math.radians(-54), 4, 'X')
+M_cb = cam.matrix_world @ Matrix.Translation(Vector((-62, -300, -560))) @ Matrix.Rotation(math.radians(-8), 4, 'Z') @ Matrix.Rotation(math.radians(-54), 4, 'X')
 cb_objs, sheet_pt = clipboard('clipboard', M_cb, slip, pad_paper, hardboard, clip_m, rng=rng)
 # a pencil tucked under the clip
 pen = lathe_x('pencil', [(0, 0.01), (0, 1.0), (16, 3.6), (18, 3.7), (165, 3.7), (165, 0.01)], seg=6)

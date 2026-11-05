@@ -32,7 +32,7 @@ MAT = {
     'bench':  wood('bench', light=(0.22, 0.15, 0.09), dark=(0.07, 0.045, 0.03), axis='X', ring=0.4, rough=0.6, wear=0.4, grime=0.8, warp=5, center=(0, -80), sawn=0.3, checks=0.5),
 }
 
-R_OUT, R_IN, SP_R, LUG_R, THK, PITCH = 15.0, 6.0, 4.6, 6.7, 10.0, 13.0
+R_OUT, R_IN, SP_R, LUG_R, THK, PITCH = 15.0, 6.0, 4.6, 8.4, 10.0, 13.0   # tall lugs: gates read at phone size
 RX = [-19.5 + PITCH * i for i in range(4)]       # ring centres along X
 STATES = [('set', 0, 0.0), ('bind', 144, 0.0), ('false', 0, 0.0), ('free', 252, 0.3)]  # gate angle (deg from top), gap
 SHIFT = 0.0
@@ -49,9 +49,9 @@ def ring(i, x, st, gate_deg):
     # gate: a slot through the ring thickness at gate_deg from the top
     a = math.radians(gate_deg)
     if st == 'false':
-        g = box('fgate', x - THK, x + THK, -1.7, 1.7, R_IN - 1, R_IN + 0.55)
+        g = box('fgate', x - THK, x + THK, -1.7, 1.7, R_IN - 1, R_IN + 1.1)   # shallow: the lug dips in, cannot pass
     else:
-        g = box('gate', x - THK, x + THK, -1.8, 1.8, R_IN - 1, LUG_R + 0.35)
+        g = box('gate', x - THK, x + THK, -1.8, 1.8, R_IN - 1, LUG_R + 0.45)
     g.data.transform(Matrix.Rotation(-a, 4, 'X')); boolean(o, g)
     for k in range(10):  # detent V-grooves on the right face
         v = box('dv', x + THK / 2 - 0.5, x + THK / 2 + 1, -0.45, 0.45, R_IN + 1.6, R_IN + 3.0)
@@ -61,7 +61,7 @@ def ring(i, x, st, gate_deg):
     for k in range(10):
         ang = math.radians(36 * k)
         cu = bpy.data.curves.new('d', 'FONT'); cu.body = str((k + i * 3) % 10); cu.align_x = 'CENTER'; cu.align_y = 'CENTER'
-        cu.size = 7.0; cu.extrude = 0.12
+        cu.size = 8.6; cu.extrude = 0.12
         try: cu.font = bpy.data.fonts.load(FONT, check_existing=True)
         except Exception: pass
         t = bpy.data.objects.new('digit', cu); bpy.context.collection.objects.link(t)
@@ -110,17 +110,18 @@ for pp, p in zip(spl.points, pts): pp.co = (*p, 1)
 sh = bpy.data.objects.new('shackle', cu); bpy.context.collection.objects.link(sh); cu.materials.append(MAT['shackle'])
 # a groove machined in the left leg where the latch catches it
 # backdrop: a worn bench top far behind
-put(box('bench', -300, 300, 90, 110, -300, 300), paint('wall', (0.10, 0.095, 0.085), rough=0.7, chip=0.0, grime=0.0), 0.0)
+put(box('bench', -300, 300, 90, 110, -300, 300), oak('bench_oak', light=(0.30, 0.20, 0.11), dark=(0.12, 0.07, 0.035), axis='X', plank=72, ring_mm=2.6,
+                                                    lacquer=0.3, rough=0.55, wear=0.6, grime=0.9, scratches=0.8, seed=3.0), 0.0)
 
 # ---------------------------------------------------------------- light + camera
 world_hdri(float(arg('--world', '0.05')), sat=0.4)
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (-6, 0, 8)
 kx, ky, kz, ks, ke = [float(v) for v in arg('--key', '-160,-170,220,60,400000').split(',')]
 area_light('key', (kx, ky, kz), AIM, ks, ke, (1.0, 0.84, 0.66))
-area_light('fill', (220, -180, -10), AIM, 120, float(arg('--fill', '6000')), (0.92, 0.95, 1.0))
-area_light('rim', (60, 80, 220), AIM, 60, float(arg('--rim', '12000')), (1.0, 0.92, 0.85))
-cam = look_camera((float(arg('--tx', '-5')), 0, float(arg('--tz', '12'))), float(arg('--yaw', '-15')), float(arg('--pitch', '30')),
-                  float(arg('--dist', '345')), lens=float(arg('--lens', '120')))
+area_light('fill', (220, -180, -10), AIM, 120, float(arg('--fill', '40000')), (0.92, 0.95, 1.0))
+area_light('rim', (60, 80, 220), AIM, 60, float(arg('--rim', '50000')), (1.0, 0.92, 0.85))
+cam = look_camera((float(arg('--tx', '-3')), 0, float(arg('--tz', '4'))), float(arg('--yaw', '-15')), float(arg('--pitch', '30')),
+                  float(arg('--dist', '255')), lens=float(arg('--lens', '120')))
 mirror_softbox('sheen', (0, 0, 0), cam, dist=400, size=float(arg('--ss', '40')), size_y=float(arg('--ssy', '120')), energy=float(arg('--sheen', '25000')),
                shift=(float(arg('--sx', '-5')), 0, float(arg('--sz', '4'))))
 render_setup(OUT, RES, SAMPLES, exposure=float(arg('--exp', '0.0')), crop=CROP)
