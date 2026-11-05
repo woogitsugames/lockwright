@@ -1,0 +1,272 @@
+{
+  "project": "Lockwright",
+  "task": "G13",
+  "date": "2026-11-05",
+  "files": [
+    {
+      "file": "feature/google-play-1024x500-clean.png",
+      "bytes": 868332,
+      "sha256": "e60d9dfd1e594dfb824f3deb1f9f3ca22783f18a18511dff484fa444ea3bf3cb",
+      "size": [
+        1024,
+        500
+      ]
+    },
+    {
+      "file": "feature/google-play-1024x500-title.png",
+      "bytes": 830034,
+      "sha256": "08ac339a0c20b782a1f30838ffed8e991e3ba29345ffaaffbb2b963f1b04f2af",
+      "size": [
+        1024,
+        500
+      ]
+    },
+    {
+      "file": "feature/google-play-title-overlay.svg",
+      "bytes": 7874,
+      "sha256": "35df7899c8de04795153ff263b89102126f14b3f869024d6d2390172a5a6efb6"
+    },
+    {
+      "file": "generate_g13.py",
+      "bytes": 12320,
+      "sha256": "c13e9b4ce73ab706fd33733a1fec909663f384bb81a5278c9c160ffa3d9cb65d"
+    },
+    {
+      "file": "key-art/key-art-2160x3840-clean.jpg",
+      "bytes": 1430129,
+      "sha256": "2b4649ab0e0c371756337e6571bb864cee2c1baffd93da7d5492fddabf4a0a38",
+      "size": [
+        2160,
+        3840
+      ]
+    },
+    {
+      "file": "key-art/key-art-2160x3840-logo-space.jpg",
+      "bytes": 1381601,
+      "sha256": "586e2cc4be44c723b70607ae560983dbc670649651dfb5eba8357828da863df0",
+      "size": [
+        2160,
+        3840
+      ]
+    },
+    {
+      "file": "key-art/key-art-3840x2160-clean.jpg",
+      "bytes": 1887424,
+      "sha256": "8c6d1516cccd1c7db067052068ff4ff880d47b012dc664766eb886862992e774",
+      "size": [
+        3840,
+        2160
+      ]
+    },
+    {
+      "file": "key-art/key-art-3840x2160-logo-space.jpg",
+      "bytes": 1934609,
+      "sha256": "df37308acb2d290fc1b91348f2dfcbc4f10965d3934f4a8a2c183c13e8e8a5b5",
+      "size": [
+        3840,
+        2160
+      ]
+    },
+    {
+      "file": "logos/concept-01-en.png",
+      "bytes": 50333,
+      "sha256": "f3437dcc0c15f7d14e6c75634d074184852a65f28a8b72e48ec54d9bdc3b7ee2",
+      "size": [
+        1600,
+        470
+      ]
+    },
+    {
+      "file": "logos/concept-01-en.svg",
+      "bytes": 18378,
+      "sha256": "8f86cba1e097e7de9657fa2eb5c803bc532ecaf10b914ef9137aa644c91d562b"
+    },
+    {
+      "file": "logos/concept-01-pl.png",
+      "bytes": 54656,
+      "sha256": "f6062d10b3a4bfe3a4a6e394367d228bf85bc23302168da97663aa1dcabf715f",
+      "size": [
+        1600,
+        470
+      ]
+    },
+    {
+      "file": "logos/concept-01-pl.svg",
+      "bytes": 20549,
+      "sha256": "7b2a315acd42ef9aa46df537ba8c5d14ae06299054a15f635a1fd8b48e77401d"
+    },
+    {
+      "file": "logos/concept-02-en.png",
+      "bytes": 47302,
+      "sha256": "5d2cbb11b70a37f0f2b2b89c488a6b2acd8a7d2936a0ce74219bb41c88e06387",
+      "size": [
+        1600,
+        470
+      ]
+    },
+    {
+      "file": "logos/concept-02-en.svg",
+      "bytes": 18777,
+      "sha256": "7d8400a1d8ad6bbc8fd7af822d684a6ab6a99c2ab5b3bbc98b35a0eef9da7a8a"
+    },
+    {
+      "file": "logos/concept-02-pl.png",
+      "bytes": 50841,
+      "sha256": "8fc65933a0f3733aca4bcf4ff7474860f2e264b30e6bc8337dbfbc13aa71043a",
+      "size": [
+        1600,
+        470
+      ]
+    },
+    {
+      "file": "logos/concept-02-pl.svg",
+      "bytes": 19868,
+      "sha256": "f4c189245aaa95155033e77f1f88a49ac77e4e70f2d73b299a75f93ade738cc0"
+    },
+    {
+      "file": "logos/concept-03-en.png",
+      "bytes": 58069,
+      "sha256": "9518e79aefa3fa1a253232cf57d87ea0a8a6ec52349f0344c6768b0bcd593352",
+      "size": [
+        1600,
+        470
+      ]
+    },
+    {
+      "file": "logos/concept-03-en.svg",
+      "bytes": 17919,
+      "sha256": "2eb93d1c62b01df9040ef330c67b348ccca8edb47b0c609c89fe85306027eb7c"
+    },
+    {
+      "file": "logos/concept-03-pl.png",
+      "bytes": 60492,
+      "sha256": "bb6ac89c99a19783092b2a79492ece5ac0805b59b06d9e7de22a106be385c427",
+      "size": [
+        1600,
+        470
+      ]
+    },
+    {
+      "file": "logos/concept-03-pl.svg",
+      "bytes": 20090,
+      "sha256": "0f0cc6efd81926764d3e62e8c6d06edc9faedf6b902c10acabefc36d0fd3517c"
+    },
+    {
+      "file": "preview/contact-sheet.jpg",
+      "bytes": 1658783,
+      "sha256": "c9aa5030db3a3a2b9e73835d31ed6748f49ec018ccfaffda7fec6f87a60141ec",
+      "size": [
+        2600,
+        4200
+      ]
+    },
+    {
+      "file": "preview/oak-and-brass-detail-1080x1920.jpg",
+      "bytes": 537933,
+      "sha256": "9da9d0797d851243dbbc370cdc7f1719239fc19e469569a5bc487336d0e3ba07",
+      "size": [
+        1080,
+        1920
+      ]
+    },
+    {
+      "file": "preview/workshop-concept-lowres.jpg",
+      "bytes": 243772,
+      "sha256": "7327a18e391068abc3611e7b74b1d4b90a312053a13bdd9cfda1b7b33e35122b",
+      "size": [
+        1500,
+        840
+      ]
+    },
+    {
+      "file": "social/social-1080x1080-en.jpg",
+      "bytes": 307316,
+      "sha256": "7fa600b7c648e161c33a09edca29492e247d7236508c13099bd4baa352148cdb",
+      "size": [
+        1080,
+        1080
+      ]
+    },
+    {
+      "file": "social/social-1080x1080-pl.jpg",
+      "bytes": 307807,
+      "sha256": "6ab035cfd2cd888c7effc82149774fcc257f64ddd4ef2f26a7c5a72255aca394",
+      "size": [
+        1080,
+        1080
+      ]
+    },
+    {
+      "file": "social/social-1080x1920-en.jpg",
+      "bytes": 553583,
+      "sha256": "4674a084877316915ab1c2764f59134713b69a95224cbfedd1fd896420247aa2",
+      "size": [
+        1080,
+        1920
+      ]
+    },
+    {
+      "file": "social/social-1080x1920-pl.jpg",
+      "bytes": 554498,
+      "sha256": "58fad26d2f9f86648e312b11d18b63c1330aaeacc026bf74e2a2a8a52683ec41",
+      "size": [
+        1080,
+        1920
+      ]
+    },
+    {
+      "file": "social/social-1500x500-en.jpg",
+      "bytes": 262928,
+      "sha256": "5da45dfbda8dd2f9899a603744fcd9a247e49ac37ad66305b049a380ef06e75f",
+      "size": [
+        1500,
+        500
+      ]
+    },
+    {
+      "file": "social/social-1500x500-pl.jpg",
+      "bytes": 263373,
+      "sha256": "feb464dc3bc07b48b2e990450892811a3b11ae9fe708742de49399e67f49d39f",
+      "size": [
+        1500,
+        500
+      ]
+    },
+    {
+      "file": "source/arrival-bag.png",
+      "bytes": 2484635,
+      "sha256": "f49defca1f5e3e9a69a4b947c3efcc137c1c330a98dc1b0bbdcbbd65800e3592",
+      "size": [
+        1672,
+        941
+      ]
+    },
+    {
+      "file": "source/arrival-evening.png",
+      "bytes": 2452442,
+      "sha256": "eb61c630cabcf88d103bb1541946cc98d76acab2537879a660d3c831142c6e66",
+      "size": [
+        1672,
+        941
+      ]
+    },
+    {
+      "file": "source/arrival-landing.png",
+      "bytes": 2614331,
+      "sha256": "3194da0ecde15639d73fcf187de4da51d0c5eefa66b852037a5e86860f31d42e",
+      "size": [
+        1672,
+        941
+      ]
+    },
+    {
+      "file": "source/study-sheet.png",
+      "bytes": 2212779,
+      "sha256": "e8915b613cb526f4889d4c02ee870cd1d00eb6e8462976c10b5013d1e8141b52",
+      "size": [
+        1672,
+        941
+      ]
+    }
+  ]
+}

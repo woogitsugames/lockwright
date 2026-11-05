@@ -1,39 +1,94 @@
-# G13 — ASSETS / pochodzenie i warunki
+# G13 — Rejestr pochodzenia zasobów (ASSETS.md)
 
-**2026-11-05**. Każdy plik ma opis narzędzia i źródła. Skrypt i konfiguracje SVG są edytowalnym źródłem.
+Data: **2026-11-05**. Właściciel materiałów: projekt Lockwright. Pliki z wyjściem w `contrib/gpt/G13/`.
 
-## Źródła zapisane w tym commicie
+## 1. Źródłowe obrazy AI
 
-| Plik | Narzędzie / pochodzenie | Prompt | Warunki | Edytowany |
-|---|---|---|---|---|
-| `source/stairwell-render.png` | Blender / skrypt repo `art/blender/stairwell.py`, kopia bloba `art/renders/stairwell.png` | Proceduralna klatka starej kamienicy z dębowymi drzwiami, emaliowaną tabliczką i ciepłą żarówką, jak w pliku skryptu | Praca projektu; zob. `docs/ASSETS.md` | Nie |
-| `source/workshop-reference.jpg` | Blender + render podglądowy repo `mockups/realizm/img/workshop.jpg` | Proceduralny warsztat przyjaznego ślusarza o zmierzchu, jak w `art/blender/workshop.py` | Praca projektu; zob. `docs/ASSETS.md` | Nie |
+Narzędzie każdego źródła: **generator obrazów ChatGPT / OpenAI**. Warunki: wyniki podlegają [Warunkom korzystania z usług OpenAI](https://openai.com/policies/terms-of-use/) i pozostałym obowiązującym zasadom; wygenerowane obrazy **nie są oznaczone licencją CC0**. OpenAI nie rości praw do wyników w zakresie dozwolonym przez prawo; przed publikacją należy sprawdzić prawa osób trzecich. Osoby przedstawione są fikcyjne.
 
-## Wszystkie pliki SVG
-
-**Pliki:** `key-art/*.svg`, `feature/*.svg`, `social/*.svg`, `logos/*.svg`, `preview/contact-sheet.svg`.
-**Narzędzie:** programowy SVG / połączenie konturów, tekstu, kompozycji i istniejących renderów za pomocą GitHub connector; **data:** 2026-11-05.
-**Pełna instrukcja projektowa („prompt”):** „Zbuduj fotorealistyczny plakat promocyjny Lockwright na podstawie własnego renderu kamienicy; oprawa ciepła, spokojna, legalna, bez przestępstwa i instruktażu. Cztery key arty o proporcjach 16:9 i 9:16, 2 feature graphic Google Play 1024×500, trzy banery social w PL/EN. Trzy typograficzne znaki Lockwright w klasycznej antykwie, z podpisami Pogotowie Zamkowe lub Locksmith on Call, w barwach kości słoniowej i mosiądzu, z indywidualnym rytmem linii i ornamentów. Bez fioletowo-niebieskich gradientów, blasku neonu, HUD i obcych znaków towarowych.”
-**Licencja/warunki:** kompozycje wykonane dla projektu; materiał bazowy to wewnętrzny render gry, zasady `docs/ASSETS.md`; **edytowane:** tak, kadrowanie/winieta/napisy/ornamenty.
-
-**Uwaga o fontach:** GitHubowe SVG odwołują się przez CSS do **EB Garamond** (SIL Open Font License 1.1) i mogą podstawić inny serif, jeżeli font nie jest zainstalowany. ZIP dostarczony w rozmowie zawiera **autorskie kontury wektorowe**, niezależne od zainstalowanego fontu, z fontu EB Garamond 12 na licencji OFL.
-
-## Obrazy AI w pełnej paczce ZIP (binaria nieobecne w GitHub)
-
-Każdy z poniższych obrazów jest wygenerowany w **ChatGPT image generation** dnia 2026-11-05; nie są automatycznie licencjonowane jako CC0. Zastosowanie według aktualnych [warunków OpenAI](https://openai.com/policies/terms-of-use/). W ZIP źródła są nieedytowane, a ich eksporty są edytowane kodem Python / Pillow (kadrowanie, skalowanie, winieta, typografia). Metadane generatora nie zawierały tekstu promptu, poniżej zapis instrukcji z sesji:
+Metadane udostępnione przez generator dla tych wyjść nie zawierały treści promptu (`prompt: ""`), dlatego poniżej zapisano treść polecenia na podstawie sesji; jest to zapis tekstowy, nie metadana kryptograficzna.
 
 ### `source/arrival-evening.png`
-**Pełny prompt:** Cinematic, photorealistic key art set in a warmly lit historic tenement hallway: a bearded locksmith in a worn cap and work jacket stands in the left foreground with a leather tool bag, notebook, and pen, speaking with a relieved woman in a cozy robe who smiles from the open apartment doorway while holding a blue-floral mug. Rich oak paneling, a “3A” enamel plate, brass lock cylinder left untouched, aged plaster, ornate stair railing, window plants, and a glowing globe sconce create a welcoming, textured scene focused on professional human interaction.
+- **Narzędzie:** generator obrazów ChatGPT. **Data:** 2026-11-05.
+- **Edytowany:** nie (plik źródłowy skopiowany bez zmian); eksporty pochodne były kadrowane, skalowane, miejscowo przyciemniane i typograficznie opracowane.
+- **Licencja/warunki:** jw., OpenAI Terms of Use; nie jest CC0.
+- **Pełny prompt:**
+
+```text
+Cinematic, photorealistic key art set in a warmly lit historic tenement hallway: a bearded locksmith in a worn cap and work jacket stands in the left foreground with a leather tool bag, notebook, and pen, speaking with a relieved woman in a cozy robe who smiles from the open apartment doorway while holding a blue-floral mug. Rich oak paneling, a “3A” enamel plate, brass lock cylinder left untouched, aged plaster, ornate stair railing, window plants, and a glowing globe sconce create a welcoming, textured scene focused on professional human interaction—not lockpicking or tools in use.
+```
 
 ### `source/arrival-landing.png`
-**Pełny prompt:** A warm, cinematic promo package for Lockwright presents a photorealistic locksmith visit in a weathered Polish-style tenement, with the primary 16:9 key art leaving clear logo space on the left and showing a relieved resident greeting a professional tradesman at apartment 12. Supporting assets include a vertical poster, dusk workshop, lock close-up, Google Play banner, three social formats, and three bilingual logo concepts.
+- **Narzędzie:** generator obrazów ChatGPT. **Data:** 2026-11-05.
+- **Edytowany:** nie (plik źródłowy skopiowany bez zmian); eksporty pochodne były kadrowane, skalowane, miejscowo przyciemniane i typograficznie opracowane.
+- **Licencja/warunki:** jw., OpenAI Terms of Use; nie jest CC0.
+- **Pełny prompt:**
+
+```text
+A warm, cinematic promo package for Lockwright presents a photorealistic locksmith visit in a weathered Polish-style tenement, with the primary 16:9 key art leaving clear logo space on the left and showing a relieved resident greeting a professional tradesman at apartment 12. Supporting assets include a vertical poster, dusk workshop, lock close-up, Google Play banner, three social formats, and three bilingual logo concepts, all documented in Polish with prompts, file details, licensing notes, limitations, and placement guidance for contrib/gpt/G13/.
+```
 
 ### `source/arrival-bag.png`
-**Pełny prompt:** A warm, cinematic key art for Lockwright set in a richly textured old tenement hallway, showing a professional locksmith in a worn olive work jacket with a leather satchel and clipboard speaking helpfully to a smiling woman in a beige robe holding a blue-floral mug at the apartment door. Amber lighting, dark wood, aged green-and-cream walls, ornate stairs, globe lamp, window, and plants.
+- **Narzędzie:** generator obrazów ChatGPT. **Data:** 2026-11-05.
+- **Edytowany:** nie (plik źródłowy skopiowany bez zmian); eksporty pochodne były kadrowane, skalowane, miejscowo przyciemniane i typograficznie opracowane.
+- **Licencja/warunki:** jw., OpenAI Terms of Use; nie jest CC0.
+- **Pełny prompt:**
+
+```text
+A warm, cinematic key art for Lockwright set in a richly textured old tenement hallway, showing a professional locksmith in a worn olive work jacket with a leather satchel and clipboard speaking helpfully to a smiling woman in a beige robe holding a blue-floral mug at the open apartment door marked “12.” Amber lighting, dark wood, aged green-and-cream walls, ornate stairs, globe lamp, window, and plants create a cozy storybook realism, with no on-screen manipulation of door hardware.
+```
 
 ### `source/study-sheet.png`
-**Pełny prompt:** A polished, grid-based promotional collage for the narrative game Lockwright blends warm cinematic realism with cozy yet serious locksmith motifs, including an old apartment hallway, a grateful resident, a workshop, close-up material studies, and logo variations featuring “Pogotowie Zamkowe” and “Locksmith on Call”. The layout includes cinematic key art, vertical images, three logo concepts, and square, vertical and wide social tiles.
+- **Narzędzie:** generator obrazów ChatGPT. **Data:** 2026-11-05.
+- **Edytowany:** nie (plik źródłowy skopiowany bez zmian); eksporty pochodne były kadrowane, skalowane, miejscowo przyciemniane i typograficznie opracowane.
+- **Licencja/warunki:** jw., OpenAI Terms of Use; nie jest CC0.
+- **Pełny prompt:**
 
-**Eksporty ZIP:** `key-art/*.{jpg}`, `feature/*.{png,svg}`, `social/*.jpg`, `logos/*.{png,svg}`, `preview/*.{jpg}`. Dla każdego pliku: narzędzie Python 3 + Pillow + FontTools + CairoSVG; data 2026-11-05; kompletna instrukcja w `generate_g13.py` z ZIP (kod zastępuje prompt, bo są to przekształcenia deterministyczne); edytowany tak; warunki jak dla obrazu źródłowego i EB Garamond OFL 1.1 dla konturów.
+```text
+A polished, grid-based promotional collage for the narrative game Lockwright blends warm cinematic realism with cozy yet serious locksmith motifs, including an old apartment hallway, a grateful resident, detailed locks and tools, workshop scenes, and logo variations featuring “Pogotowie Zamkowe” and “Locksmith on Call.” The layout includes cinematic key art, a vertical lock close-up, three logo concepts, a dusk rooftop feature banner, and square, vertical, and wide social tiles, all presented with refined typography, realistic lighting, and understated asset labels.
+```
 
-**Ograniczenie jakości:** źródła AI 1672×941, formaty docelowe uzyskane przez skalowanie i kadrowanie. `preview/workshop-concept-lowres.jpg` tylko studium, nie finalny baner.
+## 2. Eksporty pochodne — ewidencja plik po pliku
+
+**Narzędzia:** Python 3 + Pillow (kadrowanie, skalowanie, winieta, napisy, zapis JPEG/PNG); FontTools (kontury liter z EB Garamond 12); CairoSVG (renderowanie wektora). **Data:** 2026-11-05. **Licencja/warunki obrazów:** takie jak w `source/`; wektory i układ własne. **Font wejściowy:** EB Garamond 12, SIL Open Font License 1.1, autor Georg Duffner; plików fontu nie udostępniamy, do logo trafiają jedynie kontury liter i autorskie modyfikacje. **Edycja:** tak, względem źródeł.
+
+Dla grafik powstałych programowo „prompt” oznacza dokładną regułę produkcji w `generate_g13.py` (kod jest pełnym źródłem instrukcji), a nie prompt do modelu generatywnego.
+
+| Plik | Narzędzie / prompt produkcyjny | Edytowany? | Warunki |
+|---|---|---|---|
+| `feature/google-play-1024x500-clean.png` | Pillow/FontTools/CairoSVG: kadr 1024×500; wariant title dodaje wektor Lockwright | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `feature/google-play-1024x500-title.png` | Pillow/FontTools/CairoSVG: kadr 1024×500; wariant title dodaje wektor Lockwright | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `feature/google-play-title-overlay.svg` | Pillow/FontTools/CairoSVG: kadr 1024×500; wariant title dodaje wektor Lockwright | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `key-art/key-art-2160x3840-clean.jpg` | Pillow: kompozycja źródłowa + kadr do docelowego wymiaru, winieta; logo-space ma dodatkowe przyciemnienie pola tytułu | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `key-art/key-art-2160x3840-logo-space.jpg` | Pillow: kompozycja źródłowa + kadr do docelowego wymiaru, winieta; logo-space ma dodatkowe przyciemnienie pola tytułu | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `key-art/key-art-3840x2160-clean.jpg` | Pillow: kompozycja źródłowa + kadr do docelowego wymiaru, winieta; logo-space ma dodatkowe przyciemnienie pola tytułu | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `key-art/key-art-3840x2160-logo-space.jpg` | Pillow: kompozycja źródłowa + kadr do docelowego wymiaru, winieta; logo-space ma dodatkowe przyciemnienie pola tytułu | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `logos/concept-01-en.png` | FontTools: EB Garamond OFL → własne ścieżki SVG, ręcznie opisane ornamenty; CairoSVG → przezroczysty PNG | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `logos/concept-01-en.svg` | FontTools: EB Garamond OFL → własne ścieżki SVG, ręcznie opisane ornamenty; CairoSVG → przezroczysty PNG | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `logos/concept-01-pl.png` | FontTools: EB Garamond OFL → własne ścieżki SVG, ręcznie opisane ornamenty; CairoSVG → przezroczysty PNG | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `logos/concept-01-pl.svg` | FontTools: EB Garamond OFL → własne ścieżki SVG, ręcznie opisane ornamenty; CairoSVG → przezroczysty PNG | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `logos/concept-02-en.png` | FontTools: EB Garamond OFL → własne ścieżki SVG, ręcznie opisane ornamenty; CairoSVG → przezroczysty PNG | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `logos/concept-02-en.svg` | FontTools: EB Garamond OFL → własne ścieżki SVG, ręcznie opisane ornamenty; CairoSVG → przezroczysty PNG | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `logos/concept-02-pl.png` | FontTools: EB Garamond OFL → własne ścieżki SVG, ręcznie opisane ornamenty; CairoSVG → przezroczysty PNG | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `logos/concept-02-pl.svg` | FontTools: EB Garamond OFL → własne ścieżki SVG, ręcznie opisane ornamenty; CairoSVG → przezroczysty PNG | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `logos/concept-03-en.png` | FontTools: EB Garamond OFL → własne ścieżki SVG, ręcznie opisane ornamenty; CairoSVG → przezroczysty PNG | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `logos/concept-03-en.svg` | FontTools: EB Garamond OFL → własne ścieżki SVG, ręcznie opisane ornamenty; CairoSVG → przezroczysty PNG | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `logos/concept-03-pl.png` | FontTools: EB Garamond OFL → własne ścieżki SVG, ręcznie opisane ornamenty; CairoSVG → przezroczysty PNG | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `logos/concept-03-pl.svg` | FontTools: EB Garamond OFL → własne ścieżki SVG, ręcznie opisane ornamenty; CairoSVG → przezroczysty PNG | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `preview/contact-sheet.jpg` | Pillow: kompozycja kontrolna / wycinek materiału; workshop ma wyłącznie niską rozdzielczość koncepcyjną | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `preview/oak-and-brass-detail-1080x1920.jpg` | Pillow: kompozycja kontrolna / wycinek materiału; workshop ma wyłącznie niską rozdzielczość koncepcyjną | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `preview/workshop-concept-lowres.jpg` | Pillow: kompozycja kontrolna / wycinek materiału; workshop ma wyłącznie niską rozdzielczość koncepcyjną | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `social/social-1080x1080-en.jpg` | Pillow/FontTools/CairoSVG: wariant PL/EN, kadr, dyskretny cień pod tekst i logotyp | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `social/social-1080x1080-pl.jpg` | Pillow/FontTools/CairoSVG: wariant PL/EN, kadr, dyskretny cień pod tekst i logotyp | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `social/social-1080x1920-en.jpg` | Pillow/FontTools/CairoSVG: wariant PL/EN, kadr, dyskretny cień pod tekst i logotyp | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `social/social-1080x1920-pl.jpg` | Pillow/FontTools/CairoSVG: wariant PL/EN, kadr, dyskretny cień pod tekst i logotyp | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `social/social-1500x500-en.jpg` | Pillow/FontTools/CairoSVG: wariant PL/EN, kadr, dyskretny cień pod tekst i logotyp | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+| `social/social-1500x500-pl.jpg` | Pillow/FontTools/CairoSVG: wariant PL/EN, kadr, dyskretny cień pod tekst i logotyp | Tak, wygenerowany programowo | Źródło AI: OpenAI; kontury: EB Garamond OFL 1.1 |
+
+## 3. Weryfikacja i ograniczenia
+
+- Zdjęcia źródłowe miały **1672 × 941 px**. Eksporty 4K mają wymagane rozmiary pikselowe, ale skalowanie nie przywraca drobnych szczegółów nieobecnych w źródłach.
+- `preview/workshop-concept-lowres.jpg` jest **studyjnym wycinkiem kolażu**, NIE grafiką sklepową produkcyjną. Zastąpić pełnowymiarowym renderem warsztatu, gdy będzie gotowy.
+- `key-art/...logo-space` nie zawiera tytułu: to osobne wersje z obszarem gotowym do nałożenia lokalizowanego logotypu.
+- Zdjęcia są materiałami promocyjnymi, nie przedstawiają rzeczywistego zrzutu rozgrywki. Nie zastępują obowiązkowych zrzutów ekranu aplikacji.
+- Wszystkie pliki mają mniej niż 20 MiB; suma kontrolna i wymiary w `manifest.json`.
