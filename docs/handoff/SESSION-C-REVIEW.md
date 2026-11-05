@@ -955,3 +955,27 @@ Wynik na 0a1c459: zlecenia 41, **tło G07 41/41** ✅, dźwięki z danych i kodu
 - **a551138** (`default_bus_layout.tres`: `sub_resource` przed `[resource]`) — poprawne, zweryfikowane: plik ładuje się bez błędu w imporcie lokalnym, szyna `Music` ma low-pass (wyłączony domyślnie).
 - **a11934f** (jawne typy zamiast `:=` z Variant) — `job_arrival.gd:69` i `jobs_list.gd:25` poprawne. **`workshop_screen.gd:21` poprawione tylko w połowie:** dopisano typ `int`, ale wywołanie `OS.get_time()` (Godot 3) zostało, więc skrypt dalej się nie kompiluje (N-44). Zmiana przeszła bez uruchomienia ekranu: wystarczy `godot --headless --path game --quit-after 5 res://scenes/workshop.tscn` albo lokalny `qa/run_career.sh`.
 - **afbd957** (jawne `.dylib` w nazwie celu scons) — zgodne z przyczyną z rundy CI 3; wynik po runie (w kolejce).
+## Runda 3 (etap 5) — 2026-11-05 14:29 (bot QA cz. 3, odsłuch S03, zgodność sesji B z regułą „bez ✅ przy czerwonym CI”)
+
+**Zasada z `SESSION-B-PROMPT-5.md`:** w logu sesji B (sekcja etap 5) zadania 3 i 4 są opisane jako wykonane, ale **bez ✅ przy zadaniu** — reguła formalnie dotrzymana. Natomiast opis zadania 3 („S03 … `Sfx.play_voice` przy liniach dialogu”) **nie odpowiada działaniu gry** — patrz N-47. Na HEAD nadal otwarte blokery N-44 i N-45 (potwierdzone botem na `afbd957`: warsztat `dead_button`, 22× `icon_max_width`), więc `qa-career` pozostanie czerwony do ich wprowadzenia.
+
+**N-47 · High · Głosy postaci (S03) nigdy nie grają** · `game/scripts/autoload/sfx.gd:258-268` (`play_voice`), `game/assets/audio/voices/`
+- Bot QA cz. 3 (`_check_audio` w `qa/bot/career.gd` — te same klucze cache co `sfx.gd`): dla **12/12** postaci stałej obsady `Sfx.play_voice(<postać>, &"greeting")` nie znajduje pliku. `play_voice` szuka kluczy z prefiksem `<VOICE_ROOT>/<postać>/greeting_` (pliki `greeting_NN.wav`), a w grze leżą `greeting.wav`, `farewell.wav`… (jeden plik na emocję). Dodatkowo katalog `ola_krystyna` nie pasuje do mówców `ola` i `krystyna` z danych.
+- Poprawka:
+  ```diff
+   func play_voice(speaker: StringName, kind: StringName, volume_db: float = 0.0) -> void:
+  -	# S03 character voices (normalized to -28 LUFS M): <root>/<speaker>/<kind>_NN.wav
+  +	# S03 character voices (normalized to -28 LUFS M): <root>/<speaker>/<kind>.wav or <kind>_NN.wav
+  +	var dir := String({&"ola": &"ola_krystyna", &"krystyna": &"ola_krystyna"}.get(speaker, speaker))
+   	var keys: Array = []
+   	for k in _cache.keys():
+  -		if k.begins_with(VOICE_ROOT + "/" + String(speaker) + "/" + String(kind) + "_"):
+  +		var stem: String = String(k).get_file().get_basename()
+  +		if String(k).begins_with(VOICE_ROOT + "/" + dir + "/") and (stem == String(kind) or stem.begins_with(String(kind) + "_")):
+   			keys.append(k)
+  ```
+  Test: `qa/run_career.sh` → sekcja „Dźwięki wołane przez grę…” ma być pusta.
+
+**Bot QA cz. 3 — wynik na HEAD (`afbd957`):** ekran przyjazdu ma tło G07 w **22/22** zleceniach; każdy mówca ze stałej obsady (CLIENTS.md §3, `CAST_SLOT`) ma portret G09 (**0 braków**); mówcy epizodyczni (np. zbyszek, kuba, irena) nie mają portretów ani głosów z założenia (G09/S03 obejmują 12 osób) — raport wymienia ich osobno. Dźwięki wołane po nazwie w skryptach (`play_ui/reward/foley/music/jingle/ambience`): wszystkie istnieją; brakuje tylko głosów (N-47).
+
+**S03 — automatyczny odsłuch (Whisper `small`, offline, `qa/contrib/asr_check.py`):** 96 plików × 3 przebiegi (auto, PL, EN). Surowo 8 plików z „tekstem”, wszystkie to typowe halucynacje Whispera na dźwiękach bez mowy: onomatopeje („Bzzzz…”: edek, stefan, władysław) i zapętlenia jednego słowa („nie, nie, nie…”: jadwiga, rygiel; „znowu znowu…”: zosia/farewell). Po filtrze pętli i onomatopei: **0 plików z rozpoznanymi słowami** → S03 **przyjęte** (do jednego odsłuchu ludzkiego: `zosia/farewell.wav`, gdzie wymuszony PL dał „Zobacz, jak się…”).

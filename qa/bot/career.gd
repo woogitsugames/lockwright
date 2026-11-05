@@ -14,7 +14,7 @@ const FORWARD_NAMES := ["Continue", "Accept", "Start", "Verify", "Next", "Ok", "
 var report := {
 	"schema": "lockwright.qa/1", "jobs_total": 0, "jobs_completed": [], "tutorial_done": false,
 	"scenes": {}, "unknown_scenes": [], "softlocks": [], "dead_ends": [], "locks": [],
-	"purchases": 0, "showcase_opened": 0, "profile_expected": {}, "not_listed": [], "decisions": 0, "sim_seconds": 0.0, "wall_seconds": 0.0, "finished": false,
+	"purchases": 0, "showcase_opened": 0, "profile_expected": {}, "not_listed": [], "arrival": {}, "audio_missing": [], "decisions": 0, "sim_seconds": 0.0, "wall_seconds": 0.0, "finished": false,
 }
 var _jobs: Array = []
 var _attempts := {}          # job id -> tries
@@ -98,6 +98,116 @@ var _last_press := ""
 const DEAD_BUTTON_PRESSES := 40
 
 
+## QA part 3: the arrival screen shows a G07 background and a G09 portrait for every speaking character.
+func _check_arrival() -> void:
+	var job: Dictionary = _jr().current_job
+	var jid: String = job.get("id", "?")
+	if report["arrival"].has(jid):
+		return
+	var bg := ""
+	var portraits := []
+	for n in _all_nodes(current_scene):
+		if n is TextureRect and n.texture != null:
+			var path: String = n.texture.resource_path
+			if path.contains("/gpt/arrival/"):
+				bg = path.get_file()
+			elif path.contains("/gpt/cast/"):
+				portraits.append(path.get_base_dir().get_file())
+	# G09 covers the fixed cast (CLIENTS.md §3, the game's CAST_SLOT); one-off clients have no portrait by design
+	var cast: Dictionary = _cast_slots()
+	var speakers := []
+	var episodic := []
+	for sp in job.get("lines", []).slice(0, 4):
+		var id := String(sp)
+		if id == "locksmith" or speakers.has(id) or episodic.has(id):
+			continue
+		if cast.has(id):
+			speakers.append(id)
+		else:
+			episodic.append(id)
+	var rec := {"background": bg, "speakers": speakers, "episodic": episodic, "portraits": portraits}
+	if bg == "":
+		rec["problem"] = "no G07 background"
+	else:
+		for sp in speakers:
+			if not portraits.has(String(cast[sp])):
+				rec["problem"] = "cast member %s has no portrait" % sp
+	report["arrival"][jid] = rec
+
+
+func _cast_slots() -> Dictionary:
+	var scr: Variant = load("res://scripts/ui/job_arrival.gd")
+	if scr == null:
+		return {}
+	return (scr as GDScript).get_script_constant_map().get("CAST_SLOT", {})
+
+
+func _all_nodes(n: Node, acc: Array = []) -> Array:
+	acc.append(n)
+	for c in n.get_children():
+		_all_nodes(c, acc)
+	return acc
+
+
+## QA part 3: every sound the game asks for by name (scripts) and every speaking character (data) resolves to a
+## loaded file in Sfx's cache, using the same key rules as sfx.gd.
+func _check_audio() -> void:
+	var sfx := _al("Sfx")
+	var cache: Dictionary = sfx.get("_cache")
+	var keys: Array = cache.keys()
+	var missing := []
+	var re := RegEx.create_from_string("Sfx\\.play_(ui|reward|foley|music|jingle|ambience)\\(&\"([a-z0-9_]+)\"")
+	var calls := {}
+	for f in _list_files("res://scripts", ".gd"):
+		for m in re.search_all(FileAccess.get_file_as_string(f)):
+			calls["%s/%s" % [m.get_string(1), m.get_string(2)]] = f.get_file()
+	var roots := {"ui": sfx.get("UI_ROOT"), "reward": sfx.get("REWARD_ROOT"), "foley": sfx.get("FOLEY_ROOT")}
+	for c in calls:
+		var kind: String = c.get_slice("/", 0)
+		var name: String = c.get_slice("/", 1)
+		var ok := false
+		if kind in ["music", "jingle"]:
+			ok = cache.has("mus/" + name)
+		elif kind == "ambience":
+			ok = cache.has("amb/" + name)
+		else:
+			var prefix: String = "%s/%s_" % [roots[kind], name]
+			for k in keys:
+				if String(k).begins_with(prefix):
+					ok = true
+					break
+		if not ok:
+			missing.append({"call": "Sfx.play_%s(&\"%s\")" % [kind, name], "in": calls[c]})
+	var speakers := {}
+	for dir in ["res://data/jobs", "res://data/jobs_ch7"]:
+		for f in _list_files(dir, ".json"):
+			var j: Variant = JSON.parse_string(FileAccess.get_file_as_string(f))
+			if typeof(j) == TYPE_DICTIONARY:
+				for sp in j.get("lines", []):
+					if _cast_slots().has(String(sp)):  # S03 voices exist only for the fixed cast
+						speakers[String(sp)] = true
+	var vroot: String = sfx.get("VOICE_ROOT")
+	for sp in speakers:
+		var prefix := "%s/%s/greeting_" % [vroot, sp]
+		var ok := false
+		for k in keys:
+			if String(k).begins_with(prefix):
+				ok = true
+				break
+		if not ok:
+			missing.append({"call": "Sfx.play_voice(&\"%s\", &\"greeting\")" % sp, "in": "job_arrival.gd", "expects": prefix + "NN.*"})
+	report["audio_missing"] = missing
+
+
+func _list_files(dir: String, ext: String, acc: Array = []) -> Array:
+	for f in DirAccess.get_files_at(dir):
+		if f.ends_with(ext):
+			acc.append(dir.path_join(f))
+	for d in DirAccess.get_directories_at(dir):
+		_list_files(dir.path_join(d), ext, acc)
+	return acc
+
+
 func _press(b: BaseButton, why: String) -> void:
 	report["decisions"] += 1
 	var key := "%s/%s" % [_scene_name(), b.name]
@@ -145,6 +255,7 @@ func _run() -> void:
 	report["profile"] = OS.get_environment("QA_PROFILE") if OS.get_environment("QA_PROFILE") != "" else "solver"
 	report["dark"] = OS.get_environment("QA_DARK") == "1"
 	_al("Events").connect("lock_event", _on_lock_event)
+	_check_audio()
 	while report["decisions"] < MAX_DECISIONS:
 		var sc := _scene_name()
 		if sc != _last_scene:
@@ -369,6 +480,7 @@ func _act_ui(base: String) -> Variant:
 				_attempts[want["id"]] = 99
 			return _press_named(["BackButton", "Back"], "no listed jobs left")
 		"job_arrival":
+			_check_arrival()
 			return _press_named(["VerifyButton", "Verify", "Continue", "Accept"], "arrival")
 		"job_verify":
 			var jid: String = _jr().current_job.get("id", "")

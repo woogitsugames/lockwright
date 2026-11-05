@@ -103,6 +103,16 @@ nohap = sorted(k for k, v in ch.items() if not v.get('haptic'))
 rep['channels'] = {'kinds_seen': len(ch), 'without_audio': silent, 'without_haptic': nohap}
 (out_dir / 'report.json').write_text(json.dumps(rep, indent=2, ensure_ascii=False))
 L.append('')
+arr = bot.get('arrival', {})
+arr_bad = {k: v for k, v in arr.items() if v.get('problem')}
+L.append(f"## Ekran przyjazdu: tło G07 i portrety G09 ({len(arr)} zleceń, problemy: {len(arr_bad)})")
+L += [f"- `{k}`: {v['problem']} (tło: `{v.get('background') or '—'}`, mówcy: {', '.join(v.get('speakers', []))}, portrety: {', '.join(v.get('portraits', [])) or '—'})" for k, v in sorted(arr_bad.items())] or ['- wszystkie OK']
+L.append('')
+am = bot.get('audio_missing', [])
+L.append(f'## Dźwięki wołane przez grę, których nie ma w załadowanych plikach ({len(am)})')
+L += [f"- `{m['call']}` ({m.get('in', '')}){' — oczekiwany plik ' + m['expects'] if m.get('expects') else ''}" for m in am] or ['- brak']
+L.append('')
+rep['assets'] = {'arrival_problems': arr_bad, 'audio_missing': am}
 L.append(f"## Zlecenia niewidoczne na liście w grze ({len(bot.get('not_listed', []))}): {', '.join(bot.get('not_listed', [])) or 'brak'}")
 L.append('')
 L.append(f"## Profil, język, tryb: `{bot.get('profile', 'solver')}` · `{bot.get('lang', 'system')}` · ciemność: {bot.get('dark', False)}")
