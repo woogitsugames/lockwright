@@ -19,3 +19,4 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | store/screenshots/out/**/*.png (makiety zrzutów sklepu, 256 kolorów) | grafika | własne: kadry z `art/renders/` + podpis fontem Bona Nova / Atkinson Hyperlegible Next (OFL, wpisy wyżej), `store/screenshots/make_screens.py` | własne projektu | — |
 | Oboe 1.9.3 (google/oboe, pobierany przez CMake FetchContent w `spikes/audio-latency/plugin-android`, linkowany statycznie) | biblioteka C++ (audio) | https://github.com/google/oboe | Apache 2.0 | https://github.com/google/oboe/blob/main/LICENSE |
 | spikes/audio-latency/samples/*.wav (8 kliknięć: set, false_set, break, contact × mosiądz/stal + impuls pomiarowy, 48 kHz 16-bit mono) | dźwięk | własne, synteza modalna `spikes/audio-latency/tools/synth_clicks.py` | własne projektu | — |
+| spikes/haptics-latency/godot/icon.png (ikona aplikacji testowej) | grafika | własne, narysowane skryptem Pillow (prostokąty) | własne projektu | — |
