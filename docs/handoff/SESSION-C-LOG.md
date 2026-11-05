@@ -80,3 +80,16 @@ Pytania do właściciela: nazwa EN w sklepie (`store/listing.md` §0), akceptacj
 - **Zadanie 3 (audio v2):** w toku (subagent).
 - **Zadanie 5 (drugi przegląd):** sekcja w `SESSION-C-REVIEW.md` — GUT 34/34 i smoke OK lokalnie; **N-01 High: wszystkie 3 workflowy gry mają niepoprawny YAML od 5bddbd3 i nie uruchamiają się**; N-02 High: na Androidzie segment oporu ucina transient; N-03…N-08.
 - Zadania 4 i 6: czekają (4 — na scenę `game/scenes/photoreal/`).
+
+## 2026-11-05 08:25 — Etap 2: podsumowanie
+
+| Zadanie | Stan | Liczby | Artefakty CI | Czeka na |
+|---|---|---|---|---|
+| 1. Pomiary na telefonach właściciela (D-33) | **gotowe** | kreator 4 kroki (~4 min); akcelerometr + mikrofon + znaczniki; werdykt słowami i kształtem; JSON + udostępnianie; `ingest.py` → TECH.md §8 | `measure-android-apk`, `measure-ios-unsigned` (spike-measure, zielone) | pomiar właściciela według `docs/handoff/POMIARY.md`; iPhone wymaga Maca (darmowe Apple ID, 7 dni) albo konta Apple Developer (TestFlight) |
+| 2. Sklep (`store/`) | **gotowe** (poza danymi właściciela) | nazwa EN wg D-32 (29 znaków), słowa kluczowe EN 99 B, `check_lengths.py` ALL OK; zrzuty iPhone 6,9" / 6,5" / Android × 8 kadrów × PL/EN generowane skryptem | — | domena, administrator danych, e-mail do IARC; manifest prywatności — w toku weryfikacji z eksportu Godota |
+| 3. Dźwięk realistyczny (`audio/v2/`) | **gotowe** | 464 WAV (20 zdarzeń, 4 materiały, 6 wariantów; 2 pętle × 4 × 4), onset ≤ 0,21 ms, deterministyczne; false_set vs set: centroid −34…−45%, energia po 25 ms +5…+12 dB | — | podmiana w `game/` przez sesję B (instrukcja w `audio/v2/README.md`) |
+| 4. Wydajność planu B | **gotowe (APK)** | scena sesji A + HUD: p50/p95/p99, 1% low, GPU, VRAM; werdykt po 10 min | `planb-perf-apk` (spike-planb, zielone) | 10-min test na tanim Androidzie (POMIARY §7a) |
+| 5. Drugi przegląd | **gotowe** | ~35 poprawek sprawdzonych (GUT 34/34, smoke OK), nowe N-01…N-12; **N-01 High: workflowy gry to niepoprawny YAML (CI gry nie startuje)**, **N-09 High: samouczek nigdy się nie kończy**, N-02 High: Android ucina transient segmentem oporu | — | poprawki sesji B |
+| 6. Audyt dostępności | **gotowe** | cele dotyku ≥ 48 OK; kontrast metal/tło 7,5–7,8:1; braki: safe-area w menu (High), poziom (ucięcia), domyślny font, skalowanie tekstu | — | poprawki sesji B/A |
+
+Decyzje tej części: brak nowych D-NN (wszystkie rozstrzygnięcia mieszczą się w D-31…D-33). Godzinne wznawianie sesji (scheduled task) zaktualizowane na etap 2.
