@@ -14,7 +14,7 @@ extends Control
 const TICKS := 12
 const TICK_DEG := 7.5
 const PLAY_DEG := 4.5        # plug play taken up by full tension: ≈ 3 dp at the 40 dp rim
-const ARM_MAX_DEG := 26.0    # arm angle at T = 1: ≥ 2 dp of tip travel per 0.05 T (HUD.md §3)
+const ARM_MAX_DEG := 28.0    # arm angle at T = 1: ≥ 2 dp of tip travel per 0.05 T (HUD.md §3)
 const ARM_LEN := 2.2         # arm length in plug radii
 const GAUGE_W := 40.0
 

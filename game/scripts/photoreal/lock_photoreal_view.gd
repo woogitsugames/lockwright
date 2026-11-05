@@ -422,7 +422,6 @@ func _build_overlay() -> void:
 	add_child(_face)
 	_chalk = ChalkLayer.new()
 	_chalk.name = "Chalk"
-	_chalk.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(_chalk)
 	_eyepiece = Eyepiece.new()
 	_eyepiece.name = "Eyepiece"
