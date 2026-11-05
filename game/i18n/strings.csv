@@ -68,6 +68,15 @@ settings.reset,Reset settings,Resetuj ustawienia
 settings.text_scale,Text size,Rozmiar tekstu
 settings.reduce_motion,Reduce motion,Ogranicz ruch
 settings.dark_mode_note,Dark mode needs sound (and haptics on a phone).,Tryb ciemny wymaga dźwięku (i haptyki na telefonie).
+run.title,Endless run,Tryb ciągły
+run.lock_n,Lock {n},Zamek {n}
+run.lives_left,Lives left,Pozostałe życia
+run.workshop_stop,Workshop stop,Warsztat
+run.finished,Run finished — {n} coins,Seria zakończona — {n} monet
+run.rubber_band,Take a breath. Simpler lock.,Weź oddech. Prostszy zamek.
+optics.loupe,Shear line macro,Lupa: makro linii podziału
+optics.microscope,Burrs and false gates,Zadziory i fałszywe bramki
+optics.borescope,Deep elements,Elementy głęboko w kanale
 pause.title,Paused,Pauza
 pause.resume,Resume,Wznów
 pause.settings,Settings,Ustawienia

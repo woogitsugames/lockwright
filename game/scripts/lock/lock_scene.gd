@@ -136,7 +136,10 @@ func _check_finished() -> void:
 	if session.finished():
 		if session.is_open():
 			Events.lock_opened.emit()
-			if JobRun.mode == &"tutorial":
+			if JobRun.mode == &"run":
+				get_tree().paused = false
+				get_tree().change_scene_to_file("res://scenes/run_loop.tscn")  # endless run
+			elif JobRun.mode == &"tutorial":
 				get_tree().paused = false
 				JobRun.complete()
 				get_tree().change_scene_to_file("res://scenes/tutorial.tscn")  # N-09

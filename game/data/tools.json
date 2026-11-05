@@ -203,6 +203,33 @@
       "i18n": "tool.tl_drill.name",
       "jobs_only": true,
       "reputation_cost": -10
+    },
+    {
+      "id": "ob_loupe",
+      "kind": "optics",
+      "price": 0,
+      "unlock": "start",
+      "families": [],
+      "i18n": "tool.ob_loupe.name",
+      "observes": "shear_line_macro"
+    },
+    {
+      "id": "ob_microscope",
+      "kind": "optics",
+      "price": 250,
+      "unlock": "after_t2",
+      "families": [],
+      "i18n": "tool.ob_microscope.name",
+      "observes": "burrs_false_gates"
+    },
+    {
+      "id": "ob_borescope",
+      "kind": "optics",
+      "price": 400,
+      "unlock": "after_t3",
+      "families": [],
+      "i18n": "tool.ob_borescope.name",
+      "observes": "deep_elements"
     }
   ],
   "wear_model": {

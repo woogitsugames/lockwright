@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/workshop.jpg" id="bg"]
 
 [ext_resource type="Script" path="res://scripts/ui/workshop_screen.gd" id="1"]
 
@@ -8,6 +10,15 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1")
+[node name="Backdrop" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("bg")
+stretch_mode = 6
+modulate = Color(1, 1, 1, 0.25)
+
 
 [node name="VBox" type="VBoxContainer" parent="."]
 layout_mode = 1
