@@ -93,9 +93,17 @@ def place_figure(plate_lin, slot, fig_path, meta, shadow_ratio=None, phase=0.0, 
     lights = meta['lights']; key = lights[0]
     w = np.array([l['strength_rel'] for l in lights]); cols = np.array([l['color_linear'] for l in lights])
     light_col = (cols * w[:, None]).sum(0) / w.sum(); light_col = light_col / light_col.max()
-    m = a > 0.9; mid = m & (lum(rgb) > np.percentile(lum(rgb)[m], 20)) & (lum(rgb) < np.percentile(lum(rgb)[m], 80))
-    cast = rgb[mid].mean(0); rgb = rgb / (cast / cast.mean())               # neutralise the photo's own white balance
-    rgb = rgb * light_col
+    m = a > 0.9; mid = m & (lum(rgb) >= np.percentile(lum(rgb)[m], 20)) & (lum(rgb) <= np.percentile(lum(rgb)[m], 80))
+    if mid.sum() < 50: mid = m                                          # flat cut-outs (placeholders)
+    cast = np.maximum(rgb[mid].mean(0), 1e-4); rgb = rgb / (cast / cast.mean())               # neutralise the photo's own white balance
+    # tint: the plate's own colour of light around the figure (it already went through the AgX look), mixed with the
+    # light colours from the anchors (so a figure in a neutral spot still gets the bulb's warmth)
+    rx0, rx1 = max(0, ox - nw), min(W, ox + 2 * nw); ry0, ry1 = max(0, oy), min(H, oy + nh)
+    reg = plate_lin[ry0:ry1, rx0:rx1].reshape(-1, 3); rl_ = lum(reg); reg = reg[rl_ > np.percentile(rl_, 40)]
+    pc = reg.mean(0); pc = pc / max(lum(pc[None])[0], 1e-6)
+    lc = light_col / max(lum(light_col[None])[0], 1e-6)
+    tint = np.clip(0.7 * pc + 0.3 * lc, 0, None); tint = tint / lum(tint[None])[0]
+    rgb = rgb * tint
     # target exposure: the light level of the plate around the whole figure (wall behind + floor around the feet).
     # 65th percentile: a person facing the camera gets the bounce of the lit walls/floor, not the darkest corners.
     bx0, bx1 = max(0, ox - nw), min(W, ox + 2 * nw); by0, by1 = max(0, oy), min(H, oy + nh + nh // 8)

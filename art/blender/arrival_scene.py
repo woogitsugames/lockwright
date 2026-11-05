@@ -155,7 +155,7 @@ rb.inputs['Transmission Weight'].default_value = 1.0; rb.inputs['Roughness'].def
 rb.inputs['Base Color'].default_value = (0.86, 0.90, 0.88, 1)
 bx('w_glass', wx0 + 10, wx1 - 10, WY - 3, WY + 3, wz0 + 10, wz1 - 10, ribbed).visible_shadow = False
 SKY = {'night': ((0.10, 0.16, 0.34), 0.25), 'evening': ((0.22, 0.34, 0.80), 1.2), 'day': ((0.86, 0.90, 0.98), 4.0)}[TIME]
-sky = bx('w_sky', wx0 - 1500, wx1 + 1500, WT + 2500, WT + 2520, wz0 - 1500, wz1 + 1500, emissive('sky', SKY[0], SKY[1], (0, 0, 0)))
+sky = bx('w_sky', wx0 - 1500, -820, WT + 2500, WT + 2520, wz0 - 1500, wz1 + 1500, emissive('sky', SKY[0], SKY[1], (0, 0, 0)))
 sky.visible_shadow = False
 stain_decal('floor_grime', 'Z', 0.2, (FX1, 2400, -4300, 0), [(0, -30, 900, 70, 0.5), (DX0 - 150, -400, 120, 380, 0.25)], color=(0.09, 0.08, 0.065), rough=0.7, noise_scale=0.03)
 
@@ -235,6 +235,12 @@ place(mcf, (MC[0], -83, MC[1]), rot=(90, 0, 0))
 bx('mb_card', MC[0] - MCW / 2, MC[0] + MCW / 2, -83.4, -82.9, MC[1] - MCH / 2, MC[1] + MCH / 2, card_m)
 bx('mb_lock', MC[0] - 7, MC[0] + 7, -88, -82, MBZ0 + 150, MBZ0 + 164, steel, bev=1)
 
+# stain decals (env_common.stain_decal): no specular on the dirt layer, otherwise the decal adds a sheen the matte
+# paint/terrazzo under it does not have and shows as a pale oval under a grazing light (also visible in stairwell.png)
+for m_ in bpy.data.materials:
+    if m_.use_nodes and any(n.type == 'BSDF_TRANSPARENT' for n in m_.node_tree.nodes) and 'Principled BSDF' in m_.node_tree.nodes:
+        pb = m_.node_tree.nodes['Principled BSDF']; pb.inputs['Specular IOR Level'].default_value = 0.0
+
 # ---------------------------------------------------------------- 4. door state and the flat behind it
 leaf = [o for o in bpy.data.objects if o.type in ('MESH', 'CURVE', 'FONT')]
 def in_leaf(o):
@@ -249,7 +255,7 @@ for o in leaf:
     o.parent = hinge; o.matrix_parent_inverse = hinge.matrix_world.inverted()
 if DOOR == 'ajar':
     drop('flyer')
-    hinge.rotation_euler.z = math.radians(38)     # inward (+y), hinge on the left
+    hinge.rotation_euler.z = math.radians(38)     # inward (+y), hinge on the left; chain hooked but slack
     # door chain across the gap: staple on the jamb, slide on the leaf
     bpy.context.view_layer.update()
     tip = hinge.matrix_world @ Vector((LX1 - LX0 - 40, -45 + LY - LY, 1500))
@@ -268,9 +274,9 @@ if DOOR == 'ajar':
 # the hall of the flat (only seen through the gap / under the door)
 hall_wall = lime_wall('hall_wall', (0.70, 0.62, 0.48), seed=11, dirt=0.2, cracks=0.1)
 parquet = oak('parquet', light=(0.42, 0.26, 0.12), dark=(0.20, 0.11, 0.05), axis='Y', seed=12, ring=1.8, coat=1.0, coat_rough=0.25, wear=0.6)
-bx('hall_floor', -1100, 1100, 150, 3200, -30, 0, parquet)
-bx('hall_l', -1200, -1100, 150, 3200, 0, 2900, hall_wall); bx('hall_r', 1100, 1200, 150, 3200, 0, 2900, hall_wall)
-bx('hall_back', -1200, 1200, 3200, 3300, 0, 2900, hall_wall); bx('hall_ceil', -1200, 1200, 150, 3300, 2900, 3000, hall_wall)
+bx('hall_floor', -700, 1100, 150, 3200, -30, 0, parquet)
+bx('hall_l', -800, -700, 150, 3200, 0, 2900, hall_wall); bx('hall_r', 1100, 1200, 150, 3200, 0, 2900, hall_wall)
+bx('hall_back', -800, 1200, 3200, 3300, 0, 2900, hall_wall); bx('hall_ceil', -800, 1200, 150, 3300, 2900, 3000, hall_wall)
 bx('hall_coats', 700, 1080, 900, 1900, 900, 1900, plastic('coats', (0.18, 0.12, 0.10), rough=0.8))   # coats on hooks (dark mass)
 
 # ---------------------------------------------------------------- 5. lighting by time of day
