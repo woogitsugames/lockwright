@@ -11,6 +11,14 @@ menu.workshop,Workshop,Warsztat
 menu.showcase,Showcase,Gablota
 menu.settings,Settings,Ustawienia
 menu.about,About the game,O grze
+menu.jobs,Jobs,Zlecenia
+jobs.title,Jobs,Zlecenia
+job.verify,Verify the right to enter,Sprawdź prawo do lokalu
+job.accept,Open for this client,Otwórz dla tego klienta
+job.refuse,Refuse this job,Odmów
+job.opened,Lock opened. Receipt settled.,Zamek otwarty. Rachunek rozliczony.
+job.reward_fmt,Reward: {n} coins,Nagroda: {n} monet
+common.continue,Continue,Kontynuuj
 settings.title,Settings,Ustawienia
 settings.haptics,Haptics,Haptyka
 settings.haptics_enabled,Haptics enabled,Haptyka włączona

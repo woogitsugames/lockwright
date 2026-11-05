@@ -19,11 +19,18 @@ var _vm: Dictionary = {}
 
 
 func _ready() -> void:
+	var family := &"pin_tumbler"
+	var seed := 42
+	var tier := 2
+	if not JobRun.current_job.is_empty():
+		family = JobRun.family_for(JobRun.current_job)
+		seed = JobRun.seed_for(JobRun.current_job)
+		tier = JobRun.tier_for(JobRun.current_job)
 	if ClassDB.class_exists("LockcoreSession"):
 		session = ClassDB.instantiate("LockcoreSession")
-		session.create(&"pin_tumbler", 42, 2)
+		session.create(family, seed, tier)
 	else:
-		session = FakeLockSession.create(&"pin_tumbler", 42, 2)
+		session = FakeLockSession.create(family, seed, tier)
 	pause_button.text = I18n.t(&"lock.pause")
 	pause_button.pressed.connect(_on_pause_pressed)
 	pause_menu.visible = false
@@ -123,6 +130,9 @@ func _check_finished() -> void:
 	if session.finished():
 		if session.is_open():
 			Events.lock_opened.emit()
+			if not JobRun.current_job.is_empty():
+				get_tree().paused = false
+				get_tree().change_scene_to_file("res://scenes/job_payment.tscn")
 		else:
 			Events.lock_failed.emit(session.failure())
 		set_physics_process(false)
