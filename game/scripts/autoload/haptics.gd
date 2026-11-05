@@ -60,7 +60,7 @@ func _scaled_intensity(event: StringName, intensity: float, material: StringName
 	return clampf(i * Settings.haptics_intensity(), 0.0, 1.0)
 
 
-func play(event: StringName, intensity: float = 1.0, material: StringName = &"brass") -> void:
+func play(event: StringName, intensity: float = 1.0, material: StringName = &"brass", scale_intensity: bool = true) -> void:
 	if not Settings.haptics_enabled():
 		return
 	var spec := pattern_for(event)
@@ -68,7 +68,7 @@ func play(event: StringName, intensity: float = 1.0, material: StringName = &"br
 		push_warning("Haptics: no pattern for event %s" % event)
 		return
 	var sharpness := clampf(float(spec.get("ios", {}).get("sharpness", 0.5)) + float(material_modifier(material).get("delta_sharpness", 0.0)), 0.0, 1.0)
-	var inten := _scaled_intensity(event, intensity, material)
+	var inten := _scaled_intensity(event, intensity, material) if scale_intensity else clampf(intensity, 0.0, 1.0)
 	if _native != null and _native.has_method("play"):
 		_native.play(event, inten, material)
 	else:

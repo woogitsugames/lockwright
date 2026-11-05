@@ -16,9 +16,15 @@ var _continuous_floor := 0.1
 var _duck_until_ms := 0.0
 
 
+var _budget := {}
+
 func _ready() -> void:
-	var rules: Dictionary = Haptics.patterns.get("mix_rules", {})
+	_budget = Haptics.patterns.get("budget", {})
 	_continuous_floor = 0.1
+
+
+func budget() -> Dictionary:
+	return _budget
 
 
 func continuous_floor() -> float:
@@ -50,40 +56,47 @@ func _prune(now_ms: float) -> void:
 func emit_event(event: Dictionary) -> void:
 	# event: {kind, sub, element, intensity, material, tick}
 	var kind: StringName = event.get("kind", &"contact")
-	var pattern: Dictionary = Haptics.pattern_for(kind)
+	var sub: int = event.get("sub", 0)
+	var element: int = event.get("element", -1)
+	var name: String = event.get("name", String(kind) + "." + str(sub))
+	# FEEL 7.2: sub-events route by family name first (sub_events), fallback to base kind
+	var pattern: Dictionary = Haptics.patterns.get("sub_events", {}).get(name, {})
+	if pattern.is_empty():
+		pattern = Haptics.pattern_for(kind)
 	if pattern.is_empty():
 		return
-	var priority: int = int(pattern.get("priority", 15))
-	var essential: bool = pattern.get("essential", false)
+	var priority: int = int(pattern.get("priority", Haptics.pattern_for(kind).get("priority", 15)))
+	var essential: bool = pattern.get("essential", Haptics.pattern_for(kind).get("essential", false))
 	var intensity: float = event.get("intensity", 1.0)
 	var material: StringName = event.get("material", &"brass")
 
 	var now_ms := _now_ms()
 	_prune(now_ms)
-	# coalesce same-kind events inside the 30 ms window to max intensity (TECH §3.5)
-	if _last_transient_by_kind.has(kind):
-		var last: Dictionary = _last_transient_by_kind[kind]
+	# FEEL 7.3: coalesce by (kind, sub, element), window does NOT move
+	var ckey := "%s/%d/%d" % [kind, sub, element]
+	if _last_transient_by_kind.has(ckey):
+		var last: Dictionary = _last_transient_by_kind[ckey]
 		if now_ms - last["at"] < COALESCE_WINDOW_MS:
 			last["intensity"] = maxf(last["intensity"], intensity)
-			last["at"] = now_ms
 			return
 	# transient rate limit: drop lowest-priority excess (never queued)
 	if _transient_times.size() >= _transient_limit():
-		if priority >= 3:
-			_transient_times.pop_front()  # priorities 1-3 interrupt everything
+		if priority <= int(Haptics.patterns.get("mix_rules", {}).get("interrupt_priority_max", 3)):
+			_transient_times.pop_front()  # FEEL 7.1: priorities 1-3 interrupt everything (low number = high priority)
 		else:
 			return
 	_transient_times.append(now_ms)
-	_last_transient_by_kind[kind] = {"at": now_ms, "intensity": intensity}
+	_last_transient_by_kind[ckey] = {"at": now_ms, "intensity": intensity}
 
-	var scaled := intensity
-	if essential and Settings.haptics_enabled():
-		scaled = maxf(intensity * Settings.haptics_intensity(), _continuous_floor)
+	# FEEL 7.5: scale by the slider exactly once; essential floor applied at the very end
+	var scaled := intensity * Settings.haptics_intensity() if Settings.haptics_enabled() else 0.0
+	if essential and scaled > 0.0:
+		scaled = maxf(scaled, _continuous_floor)
 	# ducking: transient prio <= 10 ducks the resistance channel (TECH §3.5)
 	if priority <= 10:
 		_duck_continuous()
-	Haptics.play(kind, scaled, material)
-	Sfx.play(kind, material)
+	Haptics.play(kind, scaled, material, false)  # no second scaling inside Haptics
+	Sfx.play(pattern.get("sfx", {}).get("id", kind), material)
 
 
 func update_continuous(id: StringName, intensity: float, sharpness: float) -> void:
