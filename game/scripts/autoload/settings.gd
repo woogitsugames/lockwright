@@ -16,6 +16,8 @@ const DEFAULTS := {
 	"dark_mode_assist": false,
 	"reading_aid": false,
 	"wide_windows": false,
+	"text_scale": 1.0,
+	"reduce_motion": false,
 	"continuous_resistance": true,
 }
 
@@ -42,8 +44,9 @@ func save_settings() -> void:
 	file.save(PATH)
 
 
-func get_value(key: StringName) -> Variant:
-	return _cfg.get(key, DEFAULTS.get(key))
+func get_value(key: StringName, default: Variant = null) -> Variant:
+	var d: Variant = DEFAULTS.get(key, default)
+	return _cfg.get(key, d)
 
 
 func set_value(key: StringName, value: Variant) -> void:

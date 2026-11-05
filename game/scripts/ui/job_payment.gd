@@ -8,6 +8,7 @@ extends Control
 
 
 func _ready() -> void:
+	SafeArea.apply(self)
 	var job: Dictionary = JobRun.current_job
 	result_label.text = I18n.t(&"job.opened")
 	reward_label.text = I18n.t(&"job.reward_fmt").format({"n": int(job.get("reward_coins", 0))})

@@ -5,13 +5,14 @@ extends Control
 
 
 func _ready() -> void:
+	SafeArea.apply(self)
 	$VBox/Title.text = I18n.t(&"tutorial.title")
 	_refresh()
 	$VBox/StartButton.pressed.connect(_start_stage)
 
 
 func _refresh() -> void:
-	var stage := JobRun.tutorial_stage
+	var stage: int = JobRun.tutorial_stage
 	var done := Save.get_value("tutorial_done", false)
 	if done:
 		$VBox/Stage.text = I18n.t(&"tutorial.done")

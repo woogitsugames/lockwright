@@ -65,6 +65,9 @@ settings.dark_mode_assist,High contrast assist,Wsparcie kontrastu
 settings.reading_aid,Chalk layer,Warstwa kredy
 settings.wide_windows,Wider windows,Szersze okna
 settings.reset,Reset settings,Resetuj ustawienia
+settings.text_scale,Text size,Rozmiar tekstu
+settings.reduce_motion,Reduce motion,Ogranicz ruch
+settings.dark_mode_note,Dark mode needs sound (and haptics on a phone).,Tryb ciemny wymaga dźwięku (i haptyki na telefonie).
 pause.title,Paused,Pauza
 pause.resume,Resume,Wznów
 pause.settings,Settings,Ustawienia

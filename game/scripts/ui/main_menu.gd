@@ -11,6 +11,7 @@ extends Control
 
 
 func _ready() -> void:
+	SafeArea.apply(self)
 	title_label.text = I18n.t(&"menu.title")
 	play_button.text = I18n.t(&"menu.play")
 	jobs_button.text = I18n.t(&"menu.jobs")

@@ -11,6 +11,7 @@ extends Control
 
 
 func _ready() -> void:
+	SafeArea.apply(self)
 	var job: Dictionary = JobRun.current_job
 	var i18n: Dictionary = job.get("i18n", {})
 	title_label.text = I18n.t(i18n.get("title", &"jobs.title"))

@@ -8,6 +8,7 @@ const SHOWCASE_DIR := "res://data/showcase"
 
 
 func _ready() -> void:
+	SafeArea.apply(self)
 	$VBox/Title.text = I18n.t(&"showcase.title")
 	back_button.text = I18n.t(&"common.back")
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))

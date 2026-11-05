@@ -16,11 +16,14 @@ extends Control
 @onready var reading_aid_check: CheckButton = $Scroll/VBox/ReadingAidCheck
 @onready var wide_windows_check: CheckButton = $Scroll/VBox/WideWindowsCheck
 @onready var continuous_check: CheckButton = $Scroll/VBox/ContinuousCheck
+@onready var text_scale_slider: HSlider = $Scroll/VBox/TextScaleSlider
+@onready var reduce_motion_check: CheckButton = $Scroll/VBox/ReduceMotionCheck
 @onready var reset_button: Button = $Scroll/VBox/ResetButton
 @onready var back_button: Button = $BackButton
 
 
 func _ready() -> void:
+	SafeArea.apply(self)
 	_refresh_texts()
 	haptics_check.button_pressed = Settings.haptics_enabled()
 	intensity_slider.value = Settings.haptics_intensity()
@@ -31,6 +34,8 @@ func _ready() -> void:
 	reading_aid_check.button_pressed = Settings.get_value("reading_aid")
 	wide_windows_check.button_pressed = Settings.get_value("wide_windows")
 	continuous_check.button_pressed = Settings.get_value("continuous_resistance")
+	text_scale_slider.value = float(Settings.get_value("text_scale", 1.0)) * 100.0
+	reduce_motion_check.button_pressed = Settings.get_value("reduce_motion")
 	language_option.clear()
 	language_option.add_item(I18n.t(&"settings.language_system"), 0)
 	language_option.add_item(I18n.t(&"settings.language_pl"), 1)
@@ -51,6 +56,8 @@ func _ready() -> void:
 	reading_aid_check.toggled.connect(func(on: bool) -> void: Settings.set_value("reading_aid", on))
 	wide_windows_check.toggled.connect(func(on: bool) -> void: Settings.set_value("wide_windows", on))
 	continuous_check.toggled.connect(func(on: bool) -> void: Settings.set_value("continuous_resistance", on))
+	text_scale_slider.value_changed.connect(func(v: float) -> void: Settings.set_value("text_scale", v / 100.0))
+	reduce_motion_check.toggled.connect(func(on: bool) -> void: Settings.set_value("reduce_motion", on))
 	language_option.item_selected.connect(func(idx: int) -> void:
 		Settings.set_value("language", ["", "pl", "en"][idx]))
 	test_button.pressed.connect(func() -> void:
@@ -87,6 +94,9 @@ func _refresh_texts() -> void:
 	reading_aid_check.text = I18n.t(&"settings.reading_aid")
 	wide_windows_check.text = I18n.t(&"settings.wide_windows")
 	continuous_check.text = I18n.t(&"settings.continuous_resistance")
+	$Scroll/VBox/TextScaleLabel.text = I18n.t(&"settings.text_scale")
+	reduce_motion_check.text = I18n.t(&"settings.reduce_motion")
+	$Scroll/VBox/DarkNote.text = I18n.t(&"settings.dark_mode_note")
 	reset_button.text = I18n.t(&"settings.reset")
 	back_button.text = I18n.t(&"common.back")
 	intensity_value.text = "%d%%" % int(Settings.haptics_intensity() * 100)

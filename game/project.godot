@@ -21,7 +21,12 @@ I18n="*res://scripts/autoload/i18n.gd"
 Events="*res://scripts/autoload/events.gd"
 Haptics="*res://scripts/autoload/haptics.gd"
 FeedbackDirector="*res://scripts/autoload/feedback_director.gd"
+UiA11y="*res://scripts/autoload/ui_a11y.gd"
 Sfx="*res://scripts/autoload/sfx.gd"
+
+[gui]
+
+theme/custom="res://theme/main.tres"
 
 [display]
 

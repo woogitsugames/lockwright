@@ -81,6 +81,25 @@ custom_minimum_size = Vector2(0, 48)
 [node name="ContinuousCheck" type="CheckButton" parent="Scroll/VBox"]
 layout_mode = 2
 custom_minimum_size = Vector2(0, 48)
+[node name="TextScaleLabel" type="Label" parent="Scroll/VBox"]
+layout_mode = 2
+
+[node name="TextScaleSlider" type="HSlider" parent="Scroll/VBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+min_value = 100.0
+max_value = 200.0
+step = 25.0
+value = 100.0
+
+[node name="ReduceMotionCheck" type="CheckButton" parent="Scroll/VBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="DarkNote" type="Label" parent="Scroll/VBox"]
+layout_mode = 2
+autowrap_mode = 2
+
 [node name="ResetButton" type="Button" parent="Scroll/VBox"]
 layout_mode = 2
 custom_minimum_size = Vector2(0, 48)

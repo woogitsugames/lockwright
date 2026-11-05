@@ -14,6 +14,7 @@ var _shown := 0
 
 
 func _ready() -> void:
+	SafeArea.apply(self)
 	var job: Dictionary = JobRun.current_job
 	title_label.text = I18n.t(job.get("i18n", {}).get("title", &"jobs.title"))
 	hint_label.text = I18n.t(&"verify.hint")
