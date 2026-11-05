@@ -121,3 +121,13 @@ Patrz `docs/handoff/SESSION-A-START-PROMPT.md`.
 - `game-tests` 131 czerwony tylko przez `test_e2e_career` (5 grywalnych zleceń < 10 po N-63) — test poprawiony (7cb0deb): każde zlecenie rodziny z `PHOTOREAL_READY` musi być grywalne.
 - Proof menu `art/renders/menu/menu_portrait.png` **nie pokazany** właścicielowi: płaskie światło, tablica za mała obok renderów zamków. Do poprawy po instalacji Blendera (pobranie z blender.org czeka na zgodę właściciela w nowym środowisku).
 - Agenci: plan B dla warded → wafer → lever (N-63, zakres `game/scripts/photoreal*`, `game/scripts/lock`, sceny photoreal, `export_presets.cfg`); odbiór Mistral V01 (`tools/`, `lint.yml`, `game/i18n/*.csv`, `docs/ASSETS.md`).
+
+## 9. Noc 2026-11-05/06 (tryb autonomiczny, do 6 agentów, raport rano 9:00 Bruksela)
+Agenci w toku (stan 22:00 UTC): menu w Blenderze (`menu_gate.py`), poprawki renderów zamków (lever/ring_combo/warded), plan B warded → wafer → lever + N-65 rozdzielczość, QA N-64/N-66 (przepływ po samouczku, rachunek, tryb ciągły), głosy ElevenLabs PL+EN (D-57, korekta tekstów), nowe rodziny lockcore dial_safe → combo (D-59).
+Kolejka, gdy ktoś skończy:
+1. Integracja głosów w `job_arrival.gd` (kwestia po kwestii, napisy, tap przewija, magistrala `Voice`) — po agencie QA.
+2. Wpięcie V02 (`HintLadder`, `GhostHand`) w `tutorial_coach.gd` / widok zamka — po agencie planu B; odbiór `V02-REPORT.md`.
+3. Proof scenki przyjazdu D-58 (`job.wrong_floor`) w Blenderze — po agencie menu (CPU); postacie z Magnific D (do tego czasu sylwetki zastępcze).
+4. Głosy DE, potem FR/ES (teksty z T31–T37 po korekcie).
+5. Plan B dla nowych rodzin lockcore, gdy będą gotowe.
+6. Rano: paczki Magnific (sekcje C, D), ChatGPT (`gpt5/`), Mistral (V03) + APK + zestawienia.
