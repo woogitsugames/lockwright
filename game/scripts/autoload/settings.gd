@@ -19,6 +19,8 @@ const DEFAULTS := {
 	"text_scale": 1.0,
 	"reduce_motion": false,
 	"continuous_resistance": true,
+	"calibrated": false,
+	"calibration": "",  # "" | "two" | "one" | "none" (TECH.md §2.3 first-run test)
 }
 
 var _cfg := {}

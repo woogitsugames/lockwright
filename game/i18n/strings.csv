@@ -1,4 +1,10 @@
 keys,en,pl
+boot.calib_title,"Two taps 120 ms apart — how many do you feel and hear?","Dwa stuknięcia 120 ms od siebie — ile czujesz i słyszysz?"
+boot.calib_two,"Two","Dwa"
+boot.calib_one,"One","Jedno"
+boot.calib_none,"None","Nic"
+boot.calib_skip,"Skip","Pomiń"
+settings.feel_section,"Feel (haptics)","Wyczucie (haptyka)"
 app.title,Lockwright: Locksmith on Call,Lockwright: Pogotowie Zamkowe
 common.back,Back,Wstecz
 common.close,Close,Zamknij

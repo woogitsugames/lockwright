@@ -28,3 +28,41 @@ layout_mode = 2
 layout_mode = 2
 autowrap_mode = 2
 horizontal_alignment = 1
+
+[node name="CalibPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -140.0
+offset_right = 200.0
+offset_bottom = 140.0
+
+[node name="VBox" type="VBoxContainer" parent="CalibPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Question" type="Label" parent="CalibPanel/VBox"]
+layout_mode = 2
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="TwoButton" type="Button" parent="CalibPanel/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 48)
+
+[node name="OneButton" type="Button" parent="CalibPanel/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 48)
+
+[node name="NoneButton" type="Button" parent="CalibPanel/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 48)
+
+[node name="SkipButton" type="Button" parent="CalibPanel/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 48)
