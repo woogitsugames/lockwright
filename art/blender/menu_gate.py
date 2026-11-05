@@ -59,7 +59,7 @@ def felt_mat():
     gd = _math(nt, 'MULTIPLY', _maprange(nt, _cavity_mask(nt, 1.5, 0.3, 0.95), 0, 1, 0, 0.6), _maprange(nt, _noise(nt, P, 0.05, detail=6), 0.4, 0.75, 0.2, 1.0))
     col = _mix(nt, col, (0.26, 0.25, 0.23, 1), gd)
     l.new(col, b.inputs['Base Color']); b.inputs['Roughness'].default_value = 0.9
-    b.inputs['Sheen Weight'].default_value = 1.0; b.inputs['Sheen Roughness'].default_value = 0.4
+    b.inputs['Sheen Weight'].default_value = 0.4; b.inputs['Sheen Roughness'].default_value = 0.35
     b.inputs['Sheen Tint'].default_value = (0.6, 0.6, 0.6, 1); b.inputs['Specular IOR Level'].default_value = 0.3
     bv = nt.nodes.new('ShaderNodeBevel'); bv.samples = 6; bv.inputs['Radius'].default_value = 0.6
     l.new(_bump(nt, _mix(nt, fib, _noise(nt, P, 8.0, detail=4), 0.5, dtype='FLOAT'), 0.35, 0.15, bv.outputs['Normal']), b.inputs['Normal'])
@@ -90,7 +90,7 @@ green = photo_mat('ph_lamperia', 'wall_oil_paint_green', scale=760, metallic=0.0
 lime = photo_mat('ph_wall_lime', 'wall_lime_plaster', scale=1000, metallic=0.0, bump=0.5, grime=0.5, tint=(0.80, 0.76, 0.68))
 patch_m = lime_wall('patch', color=(0.80, 0.78, 0.72), seed=3, dirt=0.25, cracks=0.0)
 stripe = oil_paint('stripe', (0.16, 0.04, 0.03), rough=0.3, chips=0.8, scuffs=0.9, strokes='X', seed=2, edge_chips=1.0)
-wood_fr = photo_mat('ph_frame', 'bench_beech_top', scale=420, rot=0, metallic=0.0, base=(0.11, 0.06, 0.032), base_mix=0.62,
+wood_fr = photo_mat('ph_frame', 'bench_beech_top', scale=420, rot=0, metallic=0.0, base=(0.10, 0.055, 0.03), base_mix=0.42,
                     coat=0.45, bump=0.25, wear=0.55, grime=0.7)
 wood_fr = add_top_dust(wood_fr, 0.45)
 alu = add_top_dust(photo_mat('ph_alu', 'nickel_satin', scale=140, metallic=1.0, base=(0.66, 0.66, 0.64), base_mix=0.35, rough_add=0.08, wear=0.2, grime=0.6), 0.45)
@@ -105,14 +105,14 @@ stamp_ink = dark_mat('stamp_grime', (0.025, 0.022, 0.02), rough=0.8)
 beech = add_top_dust(photo_mat('ph_beech', 'bench_beech_top', scale=320, metallic=0.0, coat=0.25, bump=0.25, grime=0.6, wear=0.4,
                                base=(0.30, 0.18, 0.09), base_mix=0.3), 0.35)
 brass = photo_mat('ph_brass', 'brass_patina_grease', scale=60, metallic=1.0, base=(0.62, 0.48, 0.28), base_mix=0.45, rough_add=0.14, wear=0.3, grime=0.7)
-tag_alu = photo_mat('ph_tag_alu', 'nickel_satin', scale=50, metallic=1.0, base=(0.62, 0.62, 0.60), base_mix=0.3, rough_add=0.16, wear=0.4, grime=0.9)
+tag_alu = photo_mat('ph_tag_alu', 'nickel_satin', scale=50, metallic=1.0, base=(0.74, 0.74, 0.72), base_mix=0.4, rough_add=0.12, wear=0.4, grime=0.9)
 tag_steel = photo_mat('ph_tag_steel', 'iron_painted_rust', scale=90, metallic=0.0, rough_add=0.05, grime=0.6, wear=0.6,
                       base=(0.30, 0.06, 0.04), base_mix=0.35)
 ring_steel = photo_mat('ph_ring', 'steel_ground', scale=30, metallic=1.0, rough_add=0.08, grime=0.5)
 key_nickel = photo_mat('ph_key', 'nickel_satin', scale=40, metallic=1.0, base=(0.70, 0.69, 0.66), base_mix=0.25, rough_add=0.1, wear=0.5, grime=0.8)
 card_tag = paper('ring_tag_paper', (0.80, 0.76, 0.64), grime=0.5, seed=7)
 pencil = dark_mat('pencil', (0.06, 0.06, 0.07), rough=0.55)
-cable_paint = photo_mat('ph_cable', 'wall_lime_plaster', scale=300, metallic=0.0, bump=0.2, grime=0.8, tint=(0.74, 0.70, 0.62))
+cable_paint = photo_mat('ph_cable', 'wall_lime_plaster', scale=300, metallic=0.0, bump=0.2, grime=0.8, tint=(0.52, 0.49, 0.43))
 
 # ---------------------------------------------------------------- layout (x right, z up, y into the wall; wall face y = 0)
 PITCH = 6.5                         # felt rib pitch; letter baselines sit in a groove
@@ -282,7 +282,7 @@ def hang(objs, pivot, rot_y, rot_z):
         if o.type == 'MESH': o.data.transform(o.matrix_world); o.matrix_world = Matrix.Identity(4); o.data.transform(M)
         else: o.matrix_world = M @ o.matrix_world
 
-def key_tag(name, top, text, mat, w=70.0, h=132.0, rot=0.0, swing=0.0, num=44.0):
+def key_tag(name, top, text, mat, w=80.0, h=150.0, rot=0.0, swing=0.0, num=54.0):
     """Stamped key tag hanging from its hole: rounded rect, 1.8 mm thick, number punched 0.5 mm deep with grime packed in."""
     pts = [(u, v - h / 2 - 7) for u, v in rounded_rect(w, h, 9)]
     t = prism(name, [(top.x + u, top.z + v) for u, v in pts], top.y - 0.9, top.y + 0.9); setmat(t, mat)
@@ -324,15 +324,15 @@ def invented_key(top, rot=0.0, sc=1.0, swing=0.0):
     hang([o, k], top, rot, swing)
 
 if SHOT == 'menu':
-    if ORIENT == 'portrait': hx = [RX - 140, RX - 48, RX + 46, RX + 138]
+    if ORIENT == 'portrait': hx = [RX - 145, RX - 45, RX + 52, RX + 142]
     else: hx = [RX - 100, RX, RX + 100]
     h = cup_hook(hx[0], RZ); r1 = split_ring(h, yaw=20); key_tag('tag13', r1, '13', tag_alu, rot=-4, swing=-8)
-    invented_key(r1 + Vector((4, -2.6, 2)), rot=9, sc=1.5, swing=10)
+    invented_key(r1 + Vector((4, 3.0, 2)), rot=9, sc=1.5, swing=10)
     h = cup_hook(hx[1], RZ); r2 = split_ring(h, r=15, yaw=-30); key_tag('tag14', r2 + Vector((-3, 0, 1)), '14', brass, rot=5, swing=12)
-    invented_key(r2 + Vector((6, -2.6, 2)), rot=-14, sc=1.6, swing=-6)
+    invented_key(r2 + Vector((6, 3.0, 2)), rot=-14, sc=1.6, swing=-6)
     h = cup_hook(hx[2], RZ)
     if ORIENT == 'portrait':
-        r3 = split_ring(h, r=12, yaw=15); key_tag('tag7', r3, '7', tag_steel, rot=-2, swing=-18, w=62, h=118)
+        r3 = split_ring(h, r=12, yaw=15); key_tag('tag7', r3, '7', tag_steel, rot=-2, swing=-18, w=70, h=128)
         h = cup_hook(hx[3], RZ); r4 = split_ring(h, r=10, yaw=-10); ring_tag('rtag', r4, 'piwnica', rot=3, swing=14)
     else:
         r3 = split_ring(h, r=12, yaw=15); ring_tag('rtag', r3, 'piwnica', rot=3, swing=14)
@@ -345,14 +345,14 @@ if SHOT == 'settings':
 # ---------------------------------------------------------------- light: one warm bulb raking from high left, deep fall-off
 CTR = Vector((BX, 0, (ZT + ZB) / 2))
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = CTR
-bpy.ops.object.light_add(type='SPOT', location=(X0 - 260, -400, TOP + 330)); bulb = bpy.context.object
-bulb.data.shadow_soft_size = float(arg('--soft', '22')); bulb.data.energy = float(arg('--bulb', '1.1e8')); bulb.data.color = (1.0, 0.70, 0.44)
-bulb.data.spot_size = math.radians(95); bulb.data.spot_blend = 0.9
+bpy.ops.object.light_add(type='SPOT', location=(X0 - 170, -300, TOP + 200)); bulb = bpy.context.object
+bulb.data.shadow_soft_size = float(arg('--soft', '22')); bulb.data.energy = float(arg('--bulb', '5.5e7')); bulb.data.color = (1.0, 0.70, 0.44)
+bulb.data.spot_size = math.radians(78); bulb.data.spot_blend = 1.0
 a_b = bpy.data.objects.new('aim_bulb', None); scene.collection.objects.link(a_b)
-a_b.location = (BX + 120, 0, (ZT + ZB) / 2 - 140) if ORIENT == 'portrait' else (BX + 160, 0, (ZT + ZB) / 2 - 60)
+a_b.location = (BX - 10, 0, (ZT + ZB) / 2 + 20) if ORIENT == 'portrait' else (BX + 160, 0, (ZT + ZB) / 2 - 60)
 cb = bulb.constraints.new('TRACK_TO'); cb.target = a_b; cb.track_axis = 'TRACK_NEGATIVE_Z'; cb.up_axis = 'UP_Y'
 area_light('window', (BX + 1800, -1100, ZB - 200), AIM, 1200, float(arg('--window', '1.2e6')), (0.60, 0.72, 1.0), size_y=1600)
-area_light('bounce', (BX - 400, -2400, ZB - 900), AIM, 2000, float(arg('--bounce', '4e4')), (1.0, 0.82, 0.62))
+area_light('bounce', (BX + 300, -2600, (ZT + ZB) / 2 - 300), AIM, 1600, float(arg('--bounce', '9e4')), (1.0, 0.84, 0.66))
 world_hdri(strength=0.012, sat=0.3)
 
 # ---------------------------------------------------------------- camera: slightly from the right and above, 50 mm

@@ -47,8 +47,11 @@ const LOUPE_MIN_DP := 56.0     # N-57: loupe touch target (≥ 48 dp)
 
 @export var lives := 3: set = set_lives
 @export var dark := false: set = set_dark
-@export_range(0.5, 3.0) var render_scale := 1.0  ## 3D pixels per physical pixel (1.0 = native)
-@export_enum("Disabled", "2x", "4x") var msaa := 1
+@export_range(0.25, 3.0) var render_scale := 1.0: set = set_render_scale  ## 3D pixels per physical pixel (1.0 = native)
+@export_enum("Disabled", "2x", "4x") var msaa := 1: set = set_msaa
+## N-65: the section is rendered at the real on-screen pixel size × render_scale (Quality
+## planb_scale), capped so a large tablet / foldable does not render more than this many pixels.
+const MAX_VP_PIXELS := 5_400_000
 
 var viewport: SubViewport
 var section_rect := Rect2()
@@ -126,6 +129,20 @@ func _ready() -> void:
 
 
 # ------------------------------------------------------------------ public API
+## N-65: MSAA on the section viewport (Quality: high 4×, medium 2×); FXAA when MSAA is off.
+func set_msaa(v: int) -> void:
+	msaa = clampi(v, 0, 2)
+	if viewport:
+		viewport.msaa_3d = [Viewport.MSAA_DISABLED, Viewport.MSAA_2X, Viewport.MSAA_4X][msaa]
+		viewport.screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA if msaa == 0 else Viewport.SCREEN_SPACE_AA_DISABLED
+
+
+func set_render_scale(v: float) -> void:
+	render_scale = clampf(v, 0.25, 3.0)
+	if viewport and _tray and is_inside_tree():
+		_layout()
+
+
 ## Applies one lockcore ViewModel (LockcoreSession.describe() or FakeLockSession.describe()) and the
 ## sampled input ({tension, pick_depth, pick_lift}). Call once per physics step.
 func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> void:
@@ -217,8 +234,8 @@ func _build_viewport() -> void:
 	viewport.own_world_3d = true
 	viewport.transparent_bg = false
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
-	viewport.msaa_3d = [Viewport.MSAA_DISABLED, Viewport.MSAA_2X, Viewport.MSAA_4X][msaa]
 	viewport.size = Vector2i(824, 1100)
+	set_msaa(msaa)
 	add_child(viewport)
 	var env := Environment.new()
 	# The plate is display-referred (AgX in Cycles): pass it through untouched.
@@ -468,6 +485,11 @@ func _layout() -> void:
 	if section_rect.size.x / section_rect.size.y > SECTION_ASPECT:
 		vp_w = int(round(section_rect.size.x * px_scale * render_scale))
 		vp_h = int(round(vp_w / SECTION_ASPECT))
+	var px := float(vp_w) * float(vp_h)
+	if px > MAX_VP_PIXELS:
+		var f := sqrt(MAX_VP_PIXELS / px)
+		vp_w = int(vp_w * f)
+		vp_h = int(vp_h * f)
 	viewport.size = Vector2i(maxi(vp_w, 16), maxi(vp_h, 16))
 	_tray.position = tray_rect.position
 	_tray.size = tray_rect.size

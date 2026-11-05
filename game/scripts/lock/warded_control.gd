@@ -20,7 +20,8 @@ const A_BOLT := 0.82
 const A_SET := 0.92
 const LIFT_GAIN := 1.0       # h per unit of InputSampler lift (200 dp of drag = whole range)
 const AUTO_MARGIN := 0.06    # auto force: this far under the bit's safe torque
-const ROTATE_GAIN := 3.0     # turn rate = force × gain (full speed from T ≈ 0.33)
+const ROTATE_GAIN := 2.0     # turn rate = force × gain (full speed from T = 0.5)
+const AUTO_RATE := 0.5       # D-52 auto: half speed (a full turn in 3 s), time to feel a fence
 
 var bit := 0
 var options := 2             # bit slots offered: tier 1 → 2, tier 2 → 3 (lockcore sec_max)
@@ -53,9 +54,9 @@ func map(inp: Dictionary, sampler: InputSampler, vm: Dictionary) -> Dictionary:
 	if auto:
 		t = BIT_TAU_SAFE[bit] - AUTO_MARGIN
 		if right:
-			rot = 1.0
+			rot = AUTO_RATE
 		elif left:
-			rot = -1.0
+			rot = -AUTO_RATE
 	else:
 		var s := sampler.tension_signed
 		t = absf(s)

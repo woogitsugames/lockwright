@@ -31,6 +31,7 @@ const R_H0 := 17.0                         # tip radius at h = 0
 const R_HS := 12.0                         # mm per unit of h
 const FENCE_R := Vector2(16.0, 30.0)       # ward slab (wards.png)
 const FENCE_Z := Vector2(-10.0, -7.0)      # back plate .. fence top
+const FENCE_PAD_DEG := 4.0                 # half the bar's width at the fences: a stopped bar touches the fence
 const TPIV := Vector3(-24.0, 28.8, 0.0)    # tumbler pivot
 const TUMB_ARM := 16.8
 const LIFT_REST := 1.38                    # tumbler lift in the renders (stud clears the notch)
@@ -181,8 +182,8 @@ func _rebuild_fences(gaps: Array) -> void:
 	_n_wards = gaps.size()
 	var sp := spans if spans.size() == gaps.size() else WardedControl.default_spans(gaps.size())
 	for i in gaps.size():
-		var a0 := turn_deg(sp[i].x)
-		var a1 := turn_deg(sp[i].y)
+		var a0 := turn_deg(sp[i].x) + FENCE_PAD_DEG
+		var a1 := turn_deg(sp[i].y) + FENCE_PAD_DEG
 		var g: Vector2 = gaps[i]
 		var r_lo := reach_mm(g.x)
 		var r_hi := reach_mm(g.y)
@@ -383,8 +384,8 @@ func _update_w_chalk(els: Array, delta: float) -> void:
 	var sp := spans if spans.size() == _gaps.size() else WardedControl.default_spans(_gaps.size())
 	# the channel of each ward: two chalk arcs along its edges, over the span
 	for i in _gaps.size():
-		var a0 := turn_deg(sp[i].x) - 4.0
-		var a1 := turn_deg(sp[i].y) + 2.0
+		var a0 := turn_deg(sp[i].x)
+		var a1 := turn_deg(sp[i].y) + FENCE_PAD_DEG
 		paths.append(_arc_pts(a0, a1, reach_mm(_gaps[i].x), FENCE_Z.y))
 		paths.append(_arc_pts(a0, a1, reach_mm(_gaps[i].y), FENCE_Z.y))
 	# the bolt band at the top: where the bit has to reach to catch the bolt

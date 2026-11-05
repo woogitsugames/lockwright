@@ -14,6 +14,7 @@ func _ready() -> void:
 	# task 7: quality profile drives the plan-B plate (SubViewport) size + MSAA
 	_apply_quality()
 	Quality.profile_changed.connect(func(_p: Dictionary) -> void: _apply_quality())
+	get_tree().create_timer(0.05).timeout.connect(_apply_quality)  # TEMP: auto profile pick
 
 
 func _apply_quality() -> void:
