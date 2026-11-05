@@ -104,3 +104,25 @@ Decyzje tej części: brak nowych D-NN (wszystkie rozstrzygnięcia mieszczą si�
 - **Zadanie 3 (QA, `qa/`):** gotowe, 2821bee + 741255b. Bot gra karierę headless (wejścia solvera lockcore przez `InputSampler`, 120 Hz), workflow `qa-career` (noc + push `game/**`, `qa/**`), artefakt `qa-career-report`. Wynik: przed commitami sesji B z 09:00 — 27/29 zleceń, 0 soft-locków; po nich — 16/29 i **N-13 High: ekran planu B nie kończy zlecenia ani samouczka**, N-14 (plan B ignoruje seed/tier zlecenia), N-15 (odmowa nalicza reputację wielokrotnie).
 - **Zadanie 4 (przegląd ciągły):** rundy 1 i 2 w `SESSION-C-REVIEW.md` (N-01, N-03, N-05 zweryfikowane naprawione; N-09 nie działa w praktyce przez N-13).
 - Następne: zadanie 2 (audio v2, część 2).
+
+## 2026-11-05 10:20 — postęp godzinny i podsumowanie listy etapu 3
+
+Od ostatniego wpisu: zadanie 2 (dźwięk cz. 2, ebae8c2), 5 (strona, f535a8b), 6 (sklep cz. 2: aa30e61, 4b4d4db), 7 (legal, 16c730d),
+8 (A11Y runda 2, 0f86d16), 9 (budżety, 2e85d99), 10 (determinizm w APK, 1ac7395), przegląd rundy 3 (N-17…N-20).
+**Strona (`site/`): workflow GitHub Pages przygotowany w `site/deploy/pages.yml`, celowo NIEWŁĄCZONY** — wymaga Twojej
+zgody i włączenia Pages w ustawieniach repo (instrukcja w nagłówku pliku).
+
+| # | Zadanie | Stan | Liczby | CI / artefakty | Czeka na |
+|---|---|---|---|---|---|
+| 1 | Haptyka (`haptics/`) | **gotowe** | 7 rodzin, 83 pary zdarzeń → 116 AHAP + 75 kompozycji Androida + 51 modulacji; budżet OK (iOS 17–23 transjentów/10 s przy limicie 40, A0 ≤ 4,4/8) | — (`build.py`, `validate.py` lokalnie) | 9 niespójności FEEL.md do decyzji (README) |
+| 2 | Dźwięk cz. 2 (`audio/v2/`) | **gotowe** | 4 pętle otoczenia 30 s, 34 dźwięki UI, 9 nagród; LUFS: zamek open −23,3 M, set −28,9 M, nagrody −25 M, UI −32 M, otoczenie −35 I; onset zdarzeń ≤ 2 ms | `check_v2.py` OK | odsłuch właściciela (lista w README); `break` true peak +0,6 dBTP (WARN) |
+| 3 | Automat QA (`qa/`) | **gotowe** | przed 09:00: 27/29 zleceń, 0 soft-locków; teraz 16/29, 10 soft-locków (N-13) | `qa-career` (noc + push), artefakt `qa-career-report`; czerwony do naprawy N-13 | sesja B: N-13, N-14, N-15 |
+| 4 | Przegląd ciągły | **trwa** | rundy 1–3, nowe N-13…N-20; zweryfikowane N-01, N-03, N-05 | — | — |
+| 5 | Strona (`site/`) | **gotowe** | 8 stron PL/EN, 2,9 MB, sprawdzacz zakazów/linków/alt OK | Pages **niewłączone** | zgoda właściciela, dane kontaktowe, domena |
+| 6 | Sklep cz. 2 | **gotowe** (zrzuty: wersja robocza) | 5 z 8 kadrów z prawdziwego ekranu zamka 1320×2868; scenariusz App Preview 30/15 s + 9 ujęć; ankiety przejrzane pod Tryb Zleceń + deklaracje Play/App Store | — | N-13/N-14 (nagranie), menu w domyślnym wyglądzie, dane właściciela |
+| 7 | Legal (`store/legal/`) | **gotowe (szkic)** | warunki PL/EN z miejscami D-06, polityka (kopia z kontrolą zgodności), nota „to gra, nie kurs” w 3 długościach | `check_sync.py` OK | prawnik, D-06 |
+| 8 | A11Y runda 2 | **gotowe** | naprawione 2/9 (A-06, A-08), częściowo 2, regres 1 (safe-area → A-10 High), nowe A-10…A-12 | `qa/bot/a11y_shots.gd` | sesja B: A-10, A-11 |
+| 9 | Budżety wydajności | **gotowe** | POMIARY §8: progi FPS/pamięć/APK ≤ 80 MB/IPA ≤ 100 MB/start; dziś pck 26,5 MB, start headless 0,36 s, RSS 105 MB | `perf-budget` (noc + push `game/**`) | pomiar na telefonach (POMIARY §7a) |
+| 10 | Determinizm w APK | **gotowe lokalnie, CI w toku** | host 630/630 zgodnych; APK arm64 z lockcore_gd + korpus zbudowany | `spike-determinism-apk` (emulator x86_64 API 30/34 z translacją ARM) | wynik runu CI; natywnie: Twój telefon (to samo APK) |
+
+Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-determinism-apk`, `perf-budget`, `qa-career`.
