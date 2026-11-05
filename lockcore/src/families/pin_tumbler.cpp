@@ -349,7 +349,7 @@ class Module final : public FamilyModule {
     }
 
     // 6. Tool stress (steel pick).
-    S.tool.end_step(t, out, pick, MaterialId::steel);
+    S.tool.end_step(t, out, pick, MaterialId::steel, !S.open);  // open wins over break (T25-16)
     if (S.tool.broken()) S.failure = FailureKind::break_;
 
     // 7. Continuous signals.

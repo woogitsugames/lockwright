@@ -32,6 +32,7 @@ TEST_CASE("fuzz: 100k random steps per family keep the invariants") {
       const int tier = fam->min_tier() + static_cast<int>(rng.below(static_cast<std::uint32_t>(fam->max_tier() - fam->min_tier() + 1)));
       const LockSpec spec = fam->generate(seed++, fam->difficulty_for_tier(tier));
       LockSession s(*fam, spec, fam->required_tools(spec));
+      REQUIRE(s.valid());
       ++locks;
       const int n = static_cast<int>(s.describe().elements.size());
       for (std::int64_t k = 0; k < MAX_LOCK_STEPS && done < FUZZ_STEPS && !s.finished(); ++k, ++done) {
@@ -54,6 +55,8 @@ TEST_CASE("fuzz: 100k random steps per family keep the invariants") {
              v.pick_element >= -1 && v.pick_element < n;
         for (const auto& el : v.elements) ok = ok && in01(el.position) && el.window_lo <= el.window_hi;
         ok = ok && s.state().tool.stress() >= 0;
+        // One end per session (T25-16): never open and failed at once.
+        ok = ok && !(s.is_open() && s.failure() != FailureKind::none);
         if (!ok && bad++ < 5) {
           std::cerr << "fuzz " << fam->id() << " t" << tier << " seed " << spec.seed << " step " << t
                     << ": invariant broken (res " << out.tension_resistance << " drag " << out.pick_drag << " stress "

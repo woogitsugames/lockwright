@@ -18,6 +18,14 @@ void ToolStress::init(q16 s_max, std::int32_t wear_points, q16 gain) {
   last_stress_t_ = -1000;
 }
 
+void ToolStress::add_wear(std::int32_t points) {
+  const std::int64_t w64 = static_cast<std::int64_t>(wear_) + points;
+  const std::int32_t w = w64 < 0 ? 0 : (w64 > 100 ? 100 : static_cast<std::int32_t>(w64));
+  wear_ = w;
+  s_max_ = static_cast<q16>((static_cast<std::int64_t>(base_s_max_) * (250 - w)) / 250);
+  if (s_max_ < 1) s_max_ = 1;
+}
+
 void ToolStress::load(q16 over, q16 press) {
   if (broken_ || over <= 0 || press <= 0) return;
   const q16 inc = q_mul(q_mul(over, press), gain_);
@@ -27,7 +35,7 @@ void ToolStress::load(q16 over, q16 press) {
   wear_acc_ += inc;
 }
 
-void ToolStress::end_step(std::int64_t t, EventSink& sink, int element, MaterialId material) {
+void ToolStress::end_step(std::int64_t t, EventSink& sink, int element, MaterialId material, bool can_break) {
   if (broken_) return;
   if (!loaded_) {
     const q16 decay = s_max_ / DECAY_STEPS > 0 ? s_max_ / DECAY_STEPS : 1;
@@ -46,6 +54,7 @@ void ToolStress::end_step(std::int64_t t, EventSink& sink, int element, Material
   const q16 r = ratio();
   if (r > peak_ratio_) peak_ratio_ = r;
   if (s_ >= s_max_) {
+    if (!can_break) return;
     broken_ = true;
     sink.emit(t, EventKind::break_, element, Q16_ONE, material);
     return;

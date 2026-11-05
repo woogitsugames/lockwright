@@ -66,12 +66,17 @@ class ToolStress {
   void init(q16 s_max, std::int32_t wear_points, q16 gain);
   // Re-applies tool wear to the base capacity given to init().
   void set_wear(std::int32_t wear_points) { init(base_s_max_, wear_points, gain_); }
+  // Adds wear during a session (v0.5, T25-15): lowers S_max like set_wear() but keeps
+  // the current stress, the peak ratio, the wear accumulator and the stress-event timer.
+  void add_wear(std::int32_t points);
 
   // over: how far tension exceeds the safe limit; press: how hard the tool pushes
   // an element that does not move. Both Q16 >= 0.
   void load(q16 over, q16 press);
 
-  void end_step(std::int64_t t, EventSink& sink, int element, MaterialId material);
+  // can_break = false (v0.5, T25-16): the lock opened in this step, so S >= S_max
+  // does not break the tool (no break event, broken() stays false).
+  void end_step(std::int64_t t, EventSink& sink, int element, MaterialId material, bool can_break = true);
 
   q16 stress() const { return s_; }
   q16 capacity() const { return s_max_; }

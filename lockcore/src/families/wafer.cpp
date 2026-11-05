@@ -236,7 +236,7 @@ class Module final : public FamilyModule {
       out.emit(t, EventKind::open, -1, Q16_ONE, S.material);
     }
 
-    S.tool.end_step(t, out, pick, MaterialId::steel);
+    S.tool.end_step(t, out, pick, MaterialId::steel, !S.open);  // open wins over break (T25-16)
     if (S.tool.broken()) S.failure = FailureKind::break_;
 
     bool any_bound = false;

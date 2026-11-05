@@ -206,3 +206,40 @@ TEST_CASE("session: refuses missing tools, missing / foreign params (T25-01/02/1
     }
   }
 }
+
+TEST_CASE("components: add_wear keeps the stress history (T25-15)") {
+  ToolStress t;
+  t.init(Q16_ONE, 0, Q16_ONE);
+  std::vector<LockEvent> ev;
+  EventSink sink(ev);
+  t.load(q16_milli(700), Q16_ONE);  // S = 0.7
+  t.end_step(0, sink, 0, MaterialId::steel);
+  const q16 peak = t.peak_ratio();
+  const q16 s = t.stress();
+  CHECK(peak >= q16_milli(690));
+  const std::int32_t w0 = t.wear();  // loading itself wore the tool
+  t.add_wear(2);
+  CHECK_EQ(t.wear(), w0 + 2);
+  CHECK_EQ(t.peak_ratio(), peak);
+  CHECK_EQ(t.stress(), s);
+  CHECK_EQ(t.capacity(), static_cast<q16>((static_cast<std::int64_t>(Q16_ONE) * (250 - w0 - 2)) / 250));
+  // set_wear() (save-game wear at session start) still starts from scratch.
+  t.set_wear(2);
+  CHECK_EQ(t.peak_ratio(), 0);
+  t.add_wear(500);
+  CHECK_EQ(t.wear(), 100);
+}
+
+TEST_CASE("components: end_step without breaking (T25-16)") {
+  ToolStress t;
+  t.init(Q16_ONE / 2, 0, Q16_ONE);
+  std::vector<LockEvent> ev;
+  EventSink sink(ev);
+  t.load(Q16_ONE, Q16_ONE);  // S = 1 > S_max
+  t.end_step(5, sink, 0, MaterialId::steel, false);
+  CHECK(!t.broken());
+  for (const auto& e : ev) CHECK(e.kind != EventKind::break_);
+  t.load(Q16_ONE, Q16_ONE);
+  t.end_step(6, sink, 0, MaterialId::steel);
+  CHECK(t.broken());
+}

@@ -308,7 +308,8 @@ class Module final : public FamilyModule {
       S.aligned[static_cast<std::size_t>(i)] = now ? 1 : 0;
     }
 
-    S.tool.end_step(t, out, S.blocked_ward >= 0 ? S.blocked_ward : (S.engaged ? bolt_el : -1), MaterialId::steel);
+    // open wins over break (T25-16): a step that opens the lock cannot also break the probe.
+    S.tool.end_step(t, out, S.blocked_ward >= 0 ? S.blocked_ward : (S.engaged ? bolt_el : -1), MaterialId::steel, !S.open);
     const q16 ratio = S.tool.ratio();
     if (ratio >= ToolStress::STRESS_WARN && !S.warned) {
       S.warned = true;
@@ -318,7 +319,7 @@ class Module final : public FamilyModule {
     }
     if (S.tool.broken()) {
       S.failure = FailureKind::break_;
-    } else if (P.bend_limit > 0 && S.bends >= P.bend_limit && S.failure == FailureKind::none) {
+    } else if (P.bend_limit > 0 && S.bends >= P.bend_limit && S.failure == FailureKind::none && !S.open) {
       S.failure = FailureKind::break_;
       out.emit(t, EventKind::break_, -1, Q16_ONE, MaterialId::steel);
     }

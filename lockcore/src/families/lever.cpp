@@ -202,7 +202,7 @@ class Module final : public FamilyModule {
             l.p = 0;
           }
           S.hold.reset();
-          S.tool.set_wear(S.tool.wear() + P.reset_wear);
+          S.tool.add_wear(P.reset_wear);  // keeps stress history (T25-15)
           out.emit(t, EventKind::drop, -1, Q16_ONE, S.material, SUB_DETECTOR_RESET);
         }
       } else {
@@ -368,7 +368,7 @@ class Module final : public FamilyModule {
       out.emit(t, EventKind::open, -1, Q16_ONE, S.material);
     }
 
-    S.tool.end_step(t, out, pick, MaterialId::steel);
+    S.tool.end_step(t, out, pick, MaterialId::steel, !S.open);  // open wins over break (T25-16)
     if (S.tool.broken()) S.failure = FailureKind::break_;
 
     bool any_bound = false;
