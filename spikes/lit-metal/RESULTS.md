@@ -15,9 +15,10 @@ Referencja: `screens/cycles_1236x1650.png` (Cycles, 64 próbki, denoise, AgX Med
 | it5 | bez sondy, HDRI −90° | 70,1 | 9,7 dB | 0,39 | 38,5 |
 | **it6** | **bez sondy, HDRI +90°** (zmierzone mapowanie Blender↔Godot) | **16,3** | **20,6 dB** | **0,80** | 85,4 |
 | it8 (A, bieżący) | + AO wypieczone w albedo metali (okluzja odbić nieba) | 16,7 | 21,0 dB | 0,80 | 80,5 |
-| it7 (B) | plan B: płyta Cycles + matcap (matcapy jeszcze puste — błąd kamery, poprawiony) | 8,8 | 18,2 dB | 0,87 | 81,1 |
+| it7 (B) | plan B: płyta Cycles + matcap (matcapy puste — błąd kamery) | 8,8 | 18,2 dB | 0,87 | 81,1 |
+| **it9 (B, bieżący)** | **plan B z poprawionymi matcapami** | **3,65** | **25,7 dB** | **0,93** | 90,8 |
 
-Porównania obrazowe: `screens/compare_it6_split.png` (lewa połowa Cycles, prawa Godot), finalne `screens/compare_*`.
+Porównania obrazowe (lewa połowa Cycles, prawa Godot): **`screens/compare.png`** (lewa para: wariant A, prawa para: plan B), osobno `screens/compare_A_1236x1650.png`, `screens/compare_planB_1236x1650.png`, historia `screens/compare_it6_split.png`. Surowe zrzuty: `screens/godot_{a,b}_1236x1650.png`, referencja `screens/cycles_1236x1650.png`.
 
 ### Najważniejsze ustalenia
 1. **Wygląd renderów Cycles pochodzi prawie w całości z HDRI.** W `cutaway.py` scena jest w milimetrach, ale Cycles liczy światło w metrach, więc cztery lampy obszarowe stoją „150 m” od zamka i dają natężenie ~P/(π d²) ≈ 0,016 — o rząd mniej niż niebo (siła 0,25). Chłodny, niebieskawy połysk płaskiego niklu to odbicie jasnego okna w HDRI `interior` (radiancja 4–9 w kierunku odbicia). Konsekwencja dla gry: żeby zachować wygląd, wystarczy niebo + odbicia nieba; lampy są prawie niewidoczne. Wniosek dla sesji art: jeśli światło klucza ma grać, trzeba je przeskalować (×10⁴) albo przejść na jednostki metryczne (zgłoszone w logu).
