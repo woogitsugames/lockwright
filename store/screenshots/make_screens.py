@@ -57,6 +57,11 @@ SHOTS = [
 ]
 
 
+# --from-game: shot index -> capture from capture_game.sh (real plan B lock screen, 1320x2868)
+GAME_SHOTS = {0: "lock_early.png", 1: "lock_late.png", 2: "lock_spool.png", 4: "lock_dark.png", 5: "lock_lastpick.png"}
+GAME_DIR = None
+
+
 def font(name, size, weight=None):
     f = ImageFont.truetype(str(FONTS / name), size)
     if weight is not None:
@@ -143,8 +148,18 @@ def render_shot(shot, lang, W, H):
     # image area
     area = (0, band_h, W, H)
     aw, ah = W, H - band_h
-    src = Image.open(RENDERS / shot["src"]).convert("RGB")
-    if shot["mode"] == "cover":
+    game = shot.get("game")
+    if game:
+        # real game frame: fill the image area, keep the cutaway (top) and the roll (bottom) in view
+        src = Image.open(game).convert("RGB")
+        crop = cover_crop(src, (0.5, 0.5), 1.0, aw / ah)
+        canvas.paste(crop.resize((aw, ah), Image.LANCZOS), (0, band_h))
+        src = None
+    else:
+        src = Image.open(RENDERS / shot["src"]).convert("RGB")
+    if src is None:
+        pass
+    elif shot["mode"] == "cover":
         crop = cover_crop(src, shot["focus"], shot["zoom"], aw / ah)
         pic = crop.resize((aw, ah), Image.LANCZOS)
         if "darken" in shot:
@@ -193,7 +208,17 @@ def main():
                     help="comma list of: " + ",".join(SIZES) + " (or 'all')")
     ap.add_argument("--quantize", action="store_true",
                     help="write 256-colour dithered PNGs (much smaller, slight grain)")
+    ap.add_argument("--from-game", metavar="DIR",
+                    help="use real game captures (capture_game.sh) for the lock-screen shots")
     args = ap.parse_args()
+    shots = [dict(sh) for sh in SHOTS]
+    if args.from_game:
+        for i, name in GAME_SHOTS.items():
+            f = Path(args.from_game) / name
+            if f.exists():
+                shots[i]["game"] = f
+            else:
+                print(f"missing capture {f}, keeping the render for shot {i + 1:02d}")
     langs = ["pl", "en"] if args.lang == "all" else [args.lang]
     sizes = list(SIZES) if args.sizes == "all" else args.sizes.split(",")
     total = 0
@@ -202,7 +227,7 @@ def main():
             W, H = SIZES[sz]
             d = OUT / lang / sz
             d.mkdir(parents=True, exist_ok=True)
-            for i, shot in enumerate(SHOTS, 1):
+            for i, shot in enumerate(shots, 1):
                 im = render_shot(shot, lang, W, H)
                 p = d / f"{i:02d}.png"
                 if args.quantize:
@@ -211,7 +236,7 @@ def main():
                 else:
                     im.save(p, optimize=True)
                 total += p.stat().st_size
-    print(f"wrote {len(langs) * len(sizes) * len(SHOTS)} files, {total / 1e6:.1f} MB")
+    print(f"wrote {len(langs) * len(sizes) * len(shots)} files, {total / 1e6:.1f} MB")
 
 
 if __name__ == "__main__":

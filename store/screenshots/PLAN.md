@@ -55,3 +55,20 @@ Każdy nowy render wpisać do `docs/ASSETS.md`. Po dostarczeniu zmienić `src`, 
 - Rendery `section.png` mają już 2160 × 2880 px; zbliżenie 02 (kadr 0,52) jest nadal ok. 1,2× powiększone.
 - W kadrach 04 i 07 widać krawędź renderu zwijki na jednolitym tle skóry (tło próbkowane z renderu, ale render ma winietę).
 - Kadr 03 to zestawienie dwóch renderów, nie zrzut z gry; po ekranie zamka w planie B (D-31) zastąpić prawdziwym zrzutem.
+
+## Etap 3: zrzuty z prawdziwej gry (2026-11-05)
+
+`capture_game.sh` renderuje ekran zamka planu B (`lock_photoreal.tscn`, argumenty `--lw-sim/--lw-shot/--lw-dark/--lw-lives`)
+w natywnym 1320 × 2868 na kopii `game/`; `make_screens.py --from-game <katalog>` podmienia kadry 01, 02, 03, 05, 06 na te
+klatki (reszta zostaje z renderów). Podgląd: `contact_game_pl.png`, `contact_game_en.png`.
+
+Job `game-screens` sesji B istnieje, ale na dziś nie daje artefaktu (`res://tests/screens.tscn` nie ma w repo, run #2
+zakończony błędem) i renderuje 412 × 915 — za mało na 1320 × 2868. Dlatego własne przechwytywanie w rozdzielczości sklepu.
+
+Uwagi do jakości (do poprawy przed wysyłką):
+- kadry 01–03 są zbyt podobne: prosty skryptowany „wytrych” (`--lw-sim`) nie ustawia wyraźnie różnych stanów; lepiej
+  odtworzyć powtórkę lockcore do wybranych chwil (set, false set) — potrzebny argument `--lw-replay` w scenie (sesja A);
+- wgniecenia kciuków (`--lw-touch 1`) nie są widoczne w tej rozdzielczości; podpis 03 („Lewy kciuk napina…”) wymaga ich;
+- kadr 06 („Zapasowe wytrychy”) — `--lw-lives 1` do sprawdzenia na pełnym rozmiarze;
+- menu (lista zleceń, warsztat, gablota) przy `--write-movie` renderują się w 412 × 915 i w domyślnym wyglądzie
+  silnika — nie nadają się do sklepu (zob. audyt A11Y, runda 2).
