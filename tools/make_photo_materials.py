@@ -298,7 +298,7 @@ def height_map(albedo, sigma, wrap):
     L = lum(albedo)
     bl = blur_wrap if wrap else blur_reflect
     hp = L - bl(L, sigma)
-    hp = bl(hp, 0.8)
+    hp = bl(hp, 1.0)
     lo, hi = np.percentile(hp, [1, 99])
     s = max(abs(lo), abs(hi), 1e-4)
     return np.clip(0.5 + 0.5 * hp / s, 0, 1)
@@ -349,6 +349,22 @@ def save_jpg(path, a, q=92):
 
 def save_png8(path, a):
     Image.fromarray(to_srgb8(a)).save(path, optimize=True)
+
+
+def save_normal(path, n, cap=9.8e6):
+    """8-bit PNG normal; if it would exceed the 10 MB repo cap, soften it slightly until it fits."""
+    sig = 0.0
+    while True:
+        m = cv2.GaussianBlur(n, (0, 0), sig) if sig else n
+        m = m * 2 - 1
+        m /= np.linalg.norm(m, axis=-1, keepdims=True)
+        rgb = to_srgb8(m * 0.5 + 0.5)
+        ok, buf = cv2.imencode(".png", rgb[..., ::-1], [cv2.IMWRITE_PNG_COMPRESSION, 9])
+        if len(buf) <= cap or sig >= 2.0:
+            with open(path, "wb") as f:
+                f.write(buf.tobytes())
+            return sig
+        sig += 0.3
 
 
 def save_png16(path, h):
@@ -421,7 +437,7 @@ def build_surface(name, cfg):
         rgh = rough_map(albedo, cfg["rough"], cfg["metal"], wrap)
 
     save_jpg(os.path.join(d, f"{name}_albedo.jpg"), albedo)
-    save_png8(os.path.join(d, f"{name}_normal.png"), nrm)
+    info["normal_2k_soften_sigma"] = save_normal(os.path.join(d, f"{name}_normal.png"), nrm)
     save_png8(os.path.join(d, f"{name}_rough.png"), rgh)
     save_png16(os.path.join(d, f"{name}_height_1k.png"),
                (resize_wrap(hgt, 1024) if wrap else resize(hgt, 1024, cv2.INTER_AREA)))
@@ -429,7 +445,7 @@ def build_surface(name, cfg):
     save_jpg(os.path.join(d, f"{name}_albedo_1k.jpg"), rs(albedo))
     n1 = rs(nrm) * 2 - 1
     n1 /= np.linalg.norm(n1, axis=-1, keepdims=True)
-    save_png8(os.path.join(d, f"{name}_normal_1k.png"), n1 * 0.5 + 0.5)
+    save_normal(os.path.join(d, f"{name}_normal_1k.png"), n1 * 0.5 + 0.5)
     save_png8(os.path.join(d, f"{name}_rough_1k.png"), rs(rgh))
     meta = dict(name=name, source=os.path.relpath(src, ROOT), mode=mode,
                 tiling={"tile": "u+v", "strip": "u only", "radial": "none (centred)"}[mode],
@@ -456,7 +472,7 @@ def _blur_xwrap(a, sigma):
 def height_map_strip(albedo, sigma):
     L = lum(albedo)
     hp = L - _blur_xwrap(L, sigma)
-    hp = _blur_xwrap(hp, 0.8)
+    hp = _blur_xwrap(hp, 1.0)
     lo, hi = np.percentile(hp, [1, 99])
     s = max(abs(lo), abs(hi), 1e-4)
     return np.clip(0.5 + 0.5 * hp / s, 0, 1)
@@ -531,10 +547,16 @@ def circle_mask(rgb8, rect_frac):
     return np.clip((r + 2 - d) / 4.0, 0, 1).astype(np.float32)
 
 
-def ink_alpha(rgb):
+def ink_alpha(rgb, rect):
+    H, W = rgb.shape[:2]
     paper = np.percentile(rgb.reshape(-1, 3), 70, axis=0)
     dark = np.clip((paper - rgb).max(axis=2) / 0.45, 0, 1)
-    a = np.clip((dark - 0.06) / 0.6, 0, 1) ** 0.9
+    blue = np.clip((rgb[..., 2] - rgb[..., 0]) / 0.25, 0, 1)  # blue ink, not paper shadow / wood
+    a = np.clip((dark - 0.06) / 0.6, 0, 1) ** 0.9 * np.clip(blue * 1.5, 0, 1)
+    x0, y0, x1, y1 = rect
+    box = np.zeros((H, W), np.float32)
+    box[int(y0 * H):int(y1 * H), int(x0 * W):int(x1 * W)] = 1
+    a = a * cv2.GaussianBlur(box, (0, 0), 20)
     ink = np.array([0.08, 0.12, 0.42])
     col = np.broadcast_to(ink, rgb.shape).copy()
     # keep the photographed ink colour where it is solid, flat ink colour where faint
@@ -569,7 +591,7 @@ def build_object(name, cfg):
         a = circle_mask(rgb8, cfg["rect"])
         col = rgb
     elif cfg["kind"] == "ink":
-        col, a = ink_alpha(rgb)
+        col, a = ink_alpha(rgb, cfg["rect"])
     else:
         col, a = decal(rgb, cfg["circle"])
         hgt = height_map(col, 40, False)
