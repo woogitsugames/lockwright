@@ -79,3 +79,10 @@ Automat (`qa/contrib/check_gpt.py`): 25 dostaw, 0 problemów formalnych (CSV/JSO
 | T30 | niezależny audyt ekonomii | **przyjęte** | do zestawienia z `tools/econ_sim.py` i N-25/N-46 przy następnej rundzie. |
 | T31–T34 | druga korekta FR/ES/IT/pt-BR + sklepy | **przyjęte (automat)** | CSV poprawne; te same historyczne nazwiska co wyżej. |
 
+## Runda 5 — 2026-11-05 19:55 (Gemini GEM1-v2, ChatGPT T35–T37)
+
+| Dostawa | Status | Uwagi |
+|---|---|---|
+| GEM1-v2 — zwiastun „story-first” | **częściowo: kod i napisy przyjęte, filmy czekają na render** | `REPORT-v2.md` uczciwie: storyboard (`build_trailers_v2.py`), PBR (`photo_materials_v2.py`), ujęcie całego przekroju z napinaczem i wytrychem, 4 SRT v2; obietnica „Dostępne na Android · iOS” usunięta z planszy i starych SRT (zgodnie z D-51). Ekstremalne zbliżenia 11,7% / 13,3% ≤ 40%. **Brak MP4 i Release `gemini-gem1-v2`** — render Cycles wymaga komputera z RTX (właściciel). Drobne: `REPORT.md` (v1) zawiera linki `file:///c:/Users/matma/...` — ścieżki lokalnego dysku właściciela; zamienić na ścieżki względne. |
+| T35–T37 — druga korekta CS/UK + uzupełnienie DE (99 zleceń, 80 osiągnięć) | **przyjęte (automat)** | CSV poprawne. T37 uzupełnia kolumnę DE — po imporcie zamyka N-51 (stare „master lock” w DE). |
+

@@ -1005,3 +1005,18 @@ Lokalnie: kariera (solver) **OK, `career_complete`, 0 błędów skryptu, 0 soft-
 - **`perf-budget` ✅** (42075127465, 1eb1f3e) — **N-30 zamknięte** (775c578: główny `.gitignore` ignorował `*.import`, więc ustawienia stratnego importu nie trafiały do repo; force-add naprawia; dobra diagnoza B). Zalecenie: w `.gitignore` dodać wyjątek `!game/**/*.import`, żeby kolejne zmiany importu nie ginęły tak samo.
 - `qa-career`, `game-android`, `game-tests`, `game-screens`: ostatnie runy **anulowane** — po 1eb1f3e (sesja A: `concurrency: cancel-in-progress`) każdy commit w `game/`/`lockcore/` przerywa poprzedni run (775c578 → 1eb1f3e → f8dffc5 i commity lockcore 17:17–17:33). To zamierzone, ale na razie **żaden run po poprawkach B (400363b) nie dobiegł końca**; zielone `qa-career` potwierdzone tylko lokalnie (runda 8). Dostawy `contrib/**` workflowów gry nie uruchamiają (filtry `paths` są).
 - **N-51 · Low · Kolumna DE ma stary tekst EN z „master lock”** · `game/i18n/content.csv:381,383` (`ach.achievement.pin_master.desc`, `wafer_master.desc`, kolumna `de`): „Finish the fifth pin master lock…”. DE jest za flagą deweloperską (T03), ale tekst wpada do repo i paczki. Podmienić na tłumaczenie DE albo pusty (fallback EN v2).
+
+## Runda CI 6 — 2026-11-05 19:55 — pierwsze pełne runy po poprawkach B
+| Workflow | Run | Wynik |
+|---|---|---|
+| `qa-career` | 42079732741 (e7a781b) | ✅ **zielony** (pierwszy raz od 11:49) |
+| `game-android` | 42077893691 (f8dffc5) | ✅ |
+| `game-tests` | 42077893744 (f8dffc5) | ✅ |
+| `game-ios` | 42077893497 (f8dffc5) | ✅ |
+| `perf-budget` | 42086964280 (bd8f9dc) | ✅ |
+| `game-screens` | 42086964482 | anulowany (kolejne commity w `game/`), wyniku brak od rana |
+| `spike-determinism` (mój) | 42076210238 | ❌ → **naprawione u mnie**: nowy test lockcore `practice_locks` (3e02e1c, sesja A) uruchamia nowe narzędzie `check_locks`, którego `DET_STATIC` nie linkował statycznie (lista celów wpisana na sztywno) → pod qemu `Could not open '/lib/ld-linux-aarch64.so.1'`. Teraz statycznie linkowane są wszystkie programy lockcore (`BUILDSYSTEM_TARGETS`); lokalnie 13/13 testów. Determinizm nie był naruszony: 10 000/10 000 powtórek zgodnych na aarch64. |
+
+- **Zasada nr 1 B:** od tej rundy B ma pierwsze zielone runy do linkowania (`qa-career`, `game-android`, `game-ios`, `game-tests`); `game-screens` wciąż bez wyniku.
+- **Własność katalogów:** e7a781b (B) znów zmienia `qa/bot/career.gd` (ograniczenie tieru rodziny do zakresu lockcore przy `replay_tool record`, bo ścisłe argumenty z T25 odrzucały tier 1 samouczka). Poprawka słuszna i potrzebna, przyjmuję.
+- N-52…N-61 (uwagi właściciela z telefonu, run 92) prowadzi sesja A w `SESSION-B-PROMPT-7.md` — nie dubluję numeracji tutaj.

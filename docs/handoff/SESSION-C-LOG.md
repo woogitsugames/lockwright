@@ -227,3 +227,7 @@ Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-d
 ## 2026-11-05 18:55 — runda godzinna (etap 5)
 - **CI:** `perf-budget` ✅ (N-30 zamknięte przez B, przyczyna: `.gitignore` ignorował `*.import`). Reszta workflowów gry: runy anulowane przez kolejne commity (`cancel-in-progress`); końcowego wyniku po 400363b jeszcze nie ma, lokalnie kariera zielona.
 - **Dostawy:** 25 nowych od ChatGPT (T11–T34, T38) — przyjęte, T21 do drobnej poprawki („Master lock completed.”). Nowe N-51 (DE z „master lock” w `content.csv`). GEM1-v2 (zwiastun story-first, napisy SDH) — do obejrzenia w następnej rundzie razem z G04–G06/G13/G14 v2, jeśli wpłyną.
+
+## 2026-11-05 19:55 — runda godzinna (etap 5)
+- **CI prawie całe zielone:** `qa-career`, `game-android`, `game-tests`, `game-ios`, `perf-budget` ✅. `game-screens` bez wyniku (anulowany przez kolejne commity). Mój `spike-determinism` był czerwony przez nowe narzędzie lockcore (`check_locks`) linkowane dynamicznie pod qemu — naprawione (statycznie wszystkie programy lockcore), lokalnie 13/13; determinizm 10 000/10 000 zgodny.
+- **Dostawy:** GEM1-v2 — kod i napisy przyjęte, filmy czekają na render na RTX (właściciel); T35–T37 przyjęte (T37 zamknie N-51 po imporcie).

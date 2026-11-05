@@ -19,8 +19,12 @@ target_link_libraries(replay_fuzz PRIVATE lockcore)
 
 option(DET_STATIC "Link executables statically (qemu-user, Android without adb)" OFF)
 if(DET_STATIC)
-  foreach(t replay_fuzz lockcore_tests verify_seeds replay_tool)
-    if(TARGET ${t})
+  # every executable of lockcore (incl. tools added later, e.g. check_locks for practice_locks) + ours:
+  # a dynamically linked binary under qemu-user fails with "Could not open /lib/ld-linux-aarch64.so.1"
+  get_property(_lc_targets DIRECTORY ${LOCKCORE_DIR} PROPERTY BUILDSYSTEM_TARGETS)
+  foreach(t replay_fuzz ${_lc_targets})
+    get_target_property(_type ${t} TYPE)
+    if(_type STREQUAL "EXECUTABLE")
       target_link_options(${t} PRIVATE -static)
     endif()
   endforeach()
