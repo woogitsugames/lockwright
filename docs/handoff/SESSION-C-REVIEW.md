@@ -453,52 +453,64 @@ Metoda: czytanie kodu, lokalnie na kopii `game/` (Godot 4.7.2 headless): **smoke
 ## Nowe uwagi
 
 **N-01 · High · CI gry nie uruchamia się od 5bddbd3** · `.github/workflows/game-android.yml:111-116`, `game-tests.yml:103-…`, `game-ios.yml:52`
+→ zweryfikowane naprawione w 6e0c398 (YAML OK, runy startują; potwierdzone w rundzie 1 przeglądu)
 - **Co:** wszystkie trzy pliki to niepoprawny YAML. W `game-android.yml` i `game-tests.yml` treść heredoków (`<<TRES`, `<<'EOF'`) zaczyna się w kolumnie 0, a w bloku `run: |` musi być wcięta co najmniej jak blok. W `game-ios.yml` nazwa kroku zawiera nieujęte w cudzysłów `: ` („(D-30/D-42: .gdextension…)”). GitHub pokazuje runy jako zakończone porażką w chwili utworzenia, z nazwą pliku zamiast nazwy workflowu (runy 23–27 game-tests, 29–33 game-android, 45–49 game-ios).
 - **Skutek:** żadna z poprawek CI (R-15, R-38…R-47) ani eksport z i18n (R-28) nie przeszły przez CI; brak APK/IPA gry jako artefaktów.
 - **Poprawka:** wciąć treść heredoków razem z blokiem (bash i tak dostaje ją bez wcięcia YAML) albo użyć `printf` jak w `spike-*.yml`; nazwę kroku ująć w cudzysłów. Sprawdzenie lokalne: `python3 -c "import yaml; yaml.safe_load(open('.github/workflows/game-android.yml'))"`.
 
 **N-02 · High · Android: segment oporu przerywa transient (R-21 nie domknięte)** · `platform/android/lockwright-haptics/.../HapticsEngine.kt:140-160`, `game/scripts/autoload/feedback_director.gd:102-104`
+→ naprawione w 8853863 (HapticsEngine: transientUntilMs + skip segment; FeedbackDirector: ducking = pauza update'ów, nie zerowanie)
 - **Co:** `pumpContinuous` wysyła nowy segment co ≥ 40 ms przez `vibrate()`, a każde `vibrate()` przerywa trwający efekt. Ducking w FeedbackDirectorze woła `update_continuous(…, 0.0, …)`, co przy A1–A3 **wyzwala nowy segment** (amp 30) — czyli ducking przerywa właśnie ten transient, który miał chronić.
 - **Skutek:** `set`/`false_set` (12–40 ms) bywa ucinany; podpis false_set (+28 ms) ginie w haptyce.
 - **Poprawka:** w `HapticsEngine` pamiętać `lastTransientAt` i długość efektu (`getPrimitiveDurations`), w `pumpContinuous` pomijać segmenty do `lastTransientAt + duration + 20 ms` („pominąć jeden segment”, TECH §3.5); w FeedbackDirectorze na Androidzie nie wysyłać aktualizacji przy duckingu.
 
 **N-03 · Medium · Brak natywnej ścieżki kliknięć mimo fasady (R-20)** · `game/scripts/autoload/sfx.gd:20-27, 62-66`
+→ naprawione w 8853863 (plugin ze spikes/audio-latency przeniesiony do platform/android/lockwright-click-audio; Sfx ładuje PCM do mostka)
 - **Co:** fasada szuka singletonu `LockwrightClickAudio` z `play(event, volume_db, pitch, pan, tick)`. Takiego pluginu nie ma. Gotowy i zbudowany w CI plugin to `spikes/audio-latency` (`LockwrightLowLatencyAudio`: `load_sample(id, pcm, rate)`, `play(id, gain, pitch)`, `stats()`), a próbek nikt do niego nie ładuje.
 - **Poprawka:** przenieść plugin ze spike'u do `platform/android/` pod docelową nazwą, w `Sfx._ready()` załadować PCM wszystkich krytycznych zdarzeń (`AudioStreamWAV.data`, 16-bit mono 48 kHz), mapować `volume_db` → `gain`. Pomiar efektu: aplikacja D-33 (`spikes/measure`).
 
 **N-04 · Medium · Ekran weryfikacji pokazuje graczowi notatkę projektową, po polsku, bez i18n** · `game/scripts/ui/job_verify.gd:14`, `game/data/jobs/*.json` (`verification`)
+→ naprawione w 8853863 (zadanie 8 etapu 3: weryfikacja jako scenka z kartami, i18n PL/EN)
 - **Co:** `cards_label.text = job.get("verification", "")` wyświetla surowy tekst z biblii treści, np. „legitymacja działkowca (2) i świadek (2), próg 3. … Haczyk: brak.” — z wagami, progiem i komentarzem autora, tylko po polsku (także w trybie EN).
 - **Skutek:** łamie zasadę „teksty dla gracza tylko przez i18n, PL + EN”, zdradza rozwiązanie (próg, „haczyk”), wygląda jak panel z notatkami.
 - **Poprawka:** rozbić `verification` na dane (`cards: [{id, weight}]`, `threshold`) i klucze i18n dla nazw dokumentów; graczowi pokazywać same przedmioty (D-25: informacje na przedmiotach), bez wag i progu.
 
 **N-05 · Medium · Zlecenia: tier ucinany do 1–3, rodziny bez implementacji mapowane na inne** · `game/scripts/lock/job_run.gd:8-22, 33-34`
+→ naprawione w 8853863 (tier bez ucinania, niezaimplementowane rodziny ukryte na liście zleceń)
 - **Co:** `tier_for` = `clampi(tier, 1, 3)`, a rdzeń sam przycina do zakresu rodziny (pin_tumbler 2–7, lever 3–5, lever_detector 5–6). Zlecenia z tierami 4–7 grają się jak t3, a dźwignie zawsze jak t3. Mapa rodzin zamienia `dial_safe` → `lever_detector`, `magnetic` → `ring_combo`, `axial_slider`/`dimple`/`disc_detainer` → `warded`, `time_lock` → `wafer`: gracz czyta o sejfie z tarczą, a dostaje inny mechanizm.
 - **Poprawka:** przekazywać tier z danych bez cięcia (lockcore przytnie), a zlecenia z rodzinami bez implementacji ukrywać na liście (`jobs_list.gd`) zamiast podmieniać mechanizm; mapę zostawić tylko dla aliasów nazw.
 
 **N-06 · Low · Seed zlecenia z `hash()` GDScriptu** · `job_run.gd:29-30`
+→ naprawione w 8853863 (FNV-1a 64 jak w lockcore)
 - `hash(String)` zależy od implementacji silnika; po migracji Godota (TECH §1.9) seedy zleceń mogą się zmienić, a z nimi zapis i powtórki. **Poprawka:** FNV-1a 64 jak w lockcore (`fnv1a64(id)`) albo seed zapisany w danych zlecenia.
 
 **N-07 · Medium · Tier „ENVELOPE” na Androidzie to tyki, nie obwiednia** · `HapticsEngine.kt:150-157`
+→ naprawione w 8853863 (BasicEnvelopeBuilder dla A3 zamiast łańcucha LOW_TICK)
 - Dla API 36 z obwiedniami opór jest wysyłany jako kompozycja `PRIMITIVE_LOW_TICK` co 50 ms — w praktyce seria tyknięć 20 Hz, a nie ciągły opór. Spike 2 (`spikes/haptics-latency/shared-android/HapticCore.kt`) używa `VibrationEffect.BasicEnvelopeBuilder` (control points 20/40 ms). **Poprawka:** przenieść wariant z obwiednią; pomiar przerw: aplikacja D-33 (krok „ciągły opór”).
 
 **N-08 · Low · Artefakty buildu wracają do gita (R-48)** · `game/addons/lockcore_gd/bin/*.so`
+→ naprawione w 8853863 (.so poza gitem; CI buduje i przekazuje artefaktem)
 - Commit 9981ec0 podmienia `liblockcore_gd.*.so` w repo. Przy kilku sesjach to konflikty binarne i rosnąca historia. **Poprawka:** budować w CI i przekazywać jako artefakt (jak `spike-*.yml`), lokalnie skrypt `build_gdext.sh`.
 
 **Samouczek, HUD diegetyczny, tryb ciemności (commit 3b6d9ed, sprawdzone 2026-11-05 ok. 08:05)**
 
 **N-09 · High · Samouczek nigdy się nie kończy** · `game/scripts/ui/tutorial.gd:17-34`, `game/scripts/lock/lock_scene.gd:134-142`, `game/scripts/lock/job_run.gd`
+→ naprawione w 8853863 (tryb tutorial w JobRun, powrót do tutorial.tscn, tutorial_done; test GUT)
 - **Co:** `tutorial._start_stage()` ustawia `JobRun.current_job = {"id": "tutorial.sN", …}` i przechodzi do `lock.tscn` przez `change_scene_to_file` (scena samouczka jest zwalniana). Po otwarciu zamka `_check_finished` widzi niepuste `current_job` i idzie do **`job_payment.tscn`**, a `JobRun.complete()` dopisuje `tutorial.s1` do `jobs_completed` i wraca do **listy zleceń**. `tutorial.on_lock_finished()` nie jest nigdzie wywoływane, więc `tutorial_done` nigdy nie jest ustawiane.
 - **Skutek:** każde „Rozpocznij bieg” w menu wraca do S1 (pętla), a samouczki pojawiają się jako „zlecenia wykonane” z ekranem zapłaty 0 monet.
 - **Poprawka:** osobny tryb w `JobRun` (np. `mode = &"tutorial"`) i w `_check_finished` powrót do `tutorial.tscn` ze stanem etapu w `Save`/`JobRun` (scena po powrocie odtwarza `_stage`), bez `job_payment`; test GUT przejścia S1→S3.
 
 **N-10 · Medium · Menu wciąż prowadzi do starego `lock.tscn`, nie do ekranu planu B (D-31)** · `game/scripts/ui/main_menu.gd:22-25`, `job_verify.gd:26`
+→ naprawione w 8853863 (zadanie 5 etapu 3: jedna ścieżka do sceny photoreal)
 - D-31 jest zaakceptowana, a scena sesji A (`scenes/photoreal/lock_photoreal.tscn`) ma tę samą „hydraulikę” sesji. Gra i samouczek dalej otwierają `lock.tscn` (prymitywy 3D + nowa nakładka HUD z `assets/ui/tray.jpg` jako quad 3D). Ryzyko: dwa ekrany zamka rozjadą się w zachowaniu (lupa, kreda, życia są tylko w starym).
 - **Poprawka:** jedna ścieżka do sceny zamka (stała w `JobRun`/`Events`), przełączenie na plan B, a funkcje HUD przenieść do widoku sesji A (uzgodnić podział z sesją A).
 
 **N-11 · Low · Kreda: krzyżyk dla overset** · `lock_scene.gd` `_draw_chalk`
+→ naprawione w 8853863 (klamra z dwiema kreskami zamiast X)
 - Krzyżyk jest biały (nie czerwony), więc nie łamie wprost zakazu „czerwony X”, ale DESIGN §1 opisuje overset kształtem mechanizmu (stopka nad linią, sztywny rdzeń). Lepiej znak, który opisuje stan („kreska nad linią podziału”), niż ocenę „źle”.
 
 **N-12 · Low · Notka „to gra, nie kurs” jako panel na 3 s** · `game/scripts/ui/boot.gd`, `boot.tscn:12`
+→ przyjęte jako kosmetyka: notka jako karta (PanelContainer) zamiast okna; docelowo pieczątka wg ONBOARDING §3.3
 - ONBOARDING §3.3 / D-21: pieczątka na kartce bloczka, bez okna. Teraz to `PanelContainer` wyświetlany 3 s przy pierwszym starcie (tekst przez i18n — OK). Kosmetyka zgodności z D-21.
 
 **Zmiany wizualne / dostępność nowych ekranów** — w osobnym raporcie `docs/handoff/A11Y-AUDIT.md`.
