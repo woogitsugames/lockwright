@@ -1,20 +1,22 @@
 # T39 — samouczek Lockwright, teksty PL/EN/DE
 
 **Data:** 2026-11-05  
-**Plik do importu:** `tutorial_lines.csv` (UTF-8, nagłówek `keys,en,pl,de`).
+**Plik do importu:** `tutorial_lines.csv` (`UTF-8`, nagłówek **`keys,en,pl,de`**).  
+**Skrypt i kontrola:** `build.py` generuje CSV i sprawdza strukturę, unikalność kluczy, limity, znaki wykrzyknika i brak niedozwolonego słowa.
 
 ## Zasady redakcyjne
 
-- Teksty są krótkie, spokojne, w głosie mistrza Henryka: jeden sygnał lub jedno działanie na komunikat.
-- S1 opisuje sterowanie lewym/prawym kciukiem, opór, prawidłowy klik, przepchnięcie, ugięcie napinacza i otwarcie.
-- S2: trzy kołki, tylko jeden wiąże naraz. S3: zmienna kolejność i ponowna łagodniejsza próba po przepchnięciu.
-- Podpowiedzi dotyczą pauzy pod klapką zwijki, lupy i braku napięcia; introdukcje odpowiadają trzem kadrom z G18.
-- Brak nazw producentów i instrukcji do rzeczywistych wyrobów; niemiecki jest idiomatyczny, nie mechanicznie dosłowny.
-- W każdej wersji językowej jeden wykrzyknik, wyłącznie w `tutorial.s1.step4`; polskie cudzysłowy, jeśli używane, to „…”.
+- Głos Henryka: spokojny, ciepły, konkretny, dyskretny humor; żadnego marketingu ani tonu alarmowego. Każda wypowiedź uczy jednego działania lub interpretuje stan.
+- **S1:** najpierw delikatne napięcie, wybór/unoszenie, opór, klik; osobne komunikaty dla przepchnięcia, ugięcia napinacza i sukcesu.
+- **S2:** trzy kołki, opór tylko jednego w danym momencie (zgodnie z `ONBOARDING.md` §4).
+- **S3:** nieoczywista kolejność i potrzeba lżejszej próby po przepchnięciu (zgodnie z §4).
+- **Wskazówki:** klapka zwijki jako pauza, lupa jako przybliżenie, lewy kciuk utrzymuje napięcie. Bez instrukcji do marek lub rzeczywistych produktów.
+- **DE:** zdania tworzone naturalnie, a nie słowo w słowo. Zachowane znaczenie sterowania i sygnałów gry.
+- Jeden wykrzyknik na język i tylko przy `tutorial.s1.step4`; pozostałe linie bez wykrzyknika. Cudzysłowy polskie, gdyby miały wystąpić: „…”.
 
-## Długości Unicode
+## Długości (liczba znaków Unicode)
 
-Każde pole ma do 56 znaków; grafika 412 dp powinna automatycznie zawijać do maksymalnie dwóch linijek. Bez osadzonych nowych linii dla zgodności z importerem CSV.
+Każda komórka zawiera najwyżej **56 znaków** (bez ręcznego łamania w CSV). W docelowym komponencie gry należy dopuścić **maksymalnie 2 linie** i łamać słowa automatycznie; skrypt nie wkłada znaków nowej linii, żeby nie zaburzać importu CSV.
 
 | Klucz | EN | PL | DE |
 |---|---:|---:|---:|
@@ -38,13 +40,11 @@ Każde pole ma do 56 znaków; grafika 412 dp powinna automatycznie zawijać do m
 ## Alternatywy (nie są dodatkowymi kluczami CSV)
 
 ### `tutorial.s1.step1`
-
 **Wariant 1:**
 
 - EN: Left thumb up — just a touch. Hold it. (38)
 - PL: Lewy kciuk w górę — odrobinę. Trzymaj. (38)
 - DE: Links ein wenig hoch. Dann ruhig halten. (40)
-
 **Wariant 2:**
 
 - EN: A little tension with the left thumb. (37)
@@ -52,27 +52,25 @@ Każde pole ma do 56 znaków; grafika 412 dp powinna automatycznie zawijać do m
 - DE: Links sanft spannen. Nicht eilen. (33)
 
 ### `tutorial.s1.step4`
-
 **Wariant 1:**
 
 - EN: Click! That one is set. Keep looking. (37)
 - PL: Klik! Ten już siedzi. Szukaj dalej. (35)
 - DE: Klick! Der sitzt. Weiter zum nächsten. (38)
-
 **Wariant 2:**
 
 - EN: A clean click! Now find another pin. (36)
 - PL: Wyraźny klik! Teraz poszukaj kolejnego. (39)
 - DE: Ein klarer Klick! Such den nächsten. (36)
 
-## Walidacja
+## Weryfikacja
 
-- 16 unikalnych wymaganych kluczy; odrębne od istniejących `tutorial.title`, `tutorial.stage`, `tutorial.start`, `tutorial.done`.
-- Maksimum 51 znaków (`tutorial.s1.near_break`, DE).
-- CSV zgodny z RFC 4180: wartości z przecinkami ujęte w cudzysłowy.
-- Materiały źródłowe: `docs/ONBOARDING.md` §3–4, `docs/DESIGN.md` §1, `docs/HUD.md` §5–6, `game/i18n/strings.csv`, brief G18.
-- Zmiany ograniczone do `contrib/gpt/T39/`.
+- 16 z 16 wymaganych kluczy, dokładnie raz.
+- Maksymalna długość: **51 znaków** (`tutorial.s1.near_break`, DE).
+- W każdym języku maksymalnie jeden wykrzyknik w całym głównym pakiecie, wyłącznie w `step4`.
+- CSV przechodzi odczyt zwrotny przez `csv.reader` z tymi samymi polami; pola zawierające przecinki są automatycznie ujmowane w cudzysłowy.
+- Zapis tylko w `contrib/gpt/T39/`. Nie ingerowano w aktualny `game/i18n/strings.csv` ani w zadania sesji A/B.
 
-## Regeneracja
+## Źródła z repozytorium
 
-`python3 contrib/gpt/T39/build.py`
+`docs/ONBOARDING.md` §3–4, `docs/DESIGN.md` §1 i §3, `docs/HUD.md` §5–6, `game/i18n/strings.csv` oraz opis zadania G18. Stare klucze `tutorial.title`, `tutorial.stage`, `tutorial.start`, `tutorial.done` pozostają bez zmian; nowe nazwy są odrębne.

@@ -1,0 +1,159 @@
+{
+  "format": "png",
+  "color_space": "sRGB",
+  "bit_depth": 8,
+  "alpha": true,
+  "nine_slice_notes": "Corners, holes and chips are in the fixed edges. Middle is artificially stretched from a clean narrow enamel band.",
+  "plates": {
+    "button_navy_normal.png": {
+      "width": 1600,
+      "height": 400,
+      "margins": {
+        "left": 350,
+        "top": 85,
+        "right": 350,
+        "bottom": 85
+      },
+      "color": "navy",
+      "state": "normal"
+    },
+    "button_navy_pressed.png": {
+      "width": 1600,
+      "height": 400,
+      "margins": {
+        "left": 350,
+        "top": 85,
+        "right": 350,
+        "bottom": 85
+      },
+      "color": "navy",
+      "state": "pressed"
+    },
+    "button_bottle_green_normal.png": {
+      "width": 1600,
+      "height": 400,
+      "margins": {
+        "left": 350,
+        "top": 85,
+        "right": 350,
+        "bottom": 85
+      },
+      "color": "bottle_green",
+      "state": "normal"
+    },
+    "button_bottle_green_pressed.png": {
+      "width": 1600,
+      "height": 400,
+      "margins": {
+        "left": 350,
+        "top": 85,
+        "right": 350,
+        "bottom": 85
+      },
+      "color": "bottle_green",
+      "state": "pressed"
+    },
+    "button_ivory_normal.png": {
+      "width": 1600,
+      "height": 400,
+      "margins": {
+        "left": 350,
+        "top": 85,
+        "right": 350,
+        "bottom": 85
+      },
+      "color": "ivory",
+      "state": "normal"
+    },
+    "button_ivory_pressed.png": {
+      "width": 1600,
+      "height": 400,
+      "margins": {
+        "left": 350,
+        "top": 85,
+        "right": 350,
+        "bottom": 85
+      },
+      "color": "ivory",
+      "state": "pressed"
+    },
+    "button_burgundy_normal.png": {
+      "width": 1600,
+      "height": 400,
+      "margins": {
+        "left": 350,
+        "top": 85,
+        "right": 350,
+        "bottom": 85
+      },
+      "color": "burgundy",
+      "state": "normal"
+    },
+    "button_burgundy_pressed.png": {
+      "width": 1600,
+      "height": 400,
+      "margins": {
+        "left": 350,
+        "top": 85,
+        "right": 350,
+        "bottom": 85
+      },
+      "color": "burgundy",
+      "state": "pressed"
+    },
+    "primary_navy_normal.png": {
+      "width": 1500,
+      "height": 500,
+      "margins": {
+        "left": 335,
+        "top": 100,
+        "right": 335,
+        "bottom": 100
+      },
+      "color": "navy",
+      "state": "normal",
+      "border": "thick (vertical scale for primary)"
+    },
+    "primary_navy_pressed.png": {
+      "width": 1500,
+      "height": 500,
+      "margins": {
+        "left": 335,
+        "top": 100,
+        "right": 335,
+        "bottom": 100
+      },
+      "color": "navy",
+      "state": "pressed",
+      "border": "thick (vertical scale for primary)"
+    },
+    "initial_navy.png": {
+      "width": 512,
+      "height": 512,
+      "color": "navy",
+      "state": "normal",
+      "nine_slice": false
+    },
+    "initial_bottle_green.png": {
+      "width": 512,
+      "height": 512,
+      "color": "bottle_green",
+      "state": "normal",
+      "nine_slice": false
+    },
+    "initial_ivory.png": {
+      "width": 512,
+      "height": 512,
+      "color": "ivory",
+      "state": "normal",
+      "nine_slice": false
+    },
+    "initial_burgundy.png": {
+      "width": 512,
+      "height": 512,
+      "color": "burgundy",
+      "state": "normal",
+      "nine_slice": false
+    }
+  }
+}
