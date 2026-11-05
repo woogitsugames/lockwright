@@ -72,6 +72,9 @@ fingerprints) repeat visibly at 2×2 — use them at large UV scale or on single
 `brass_face_milled` was rotated so the milling bands are horizontal (rotate the UV ~42° for the original
 diagonal look) and straightened per column; small steps remain where bands of uneven width meet.
 `iron_painted_rust` uses only the sharp upper-left 66 % of the photo (the rest is out of focus).
+`spring_steel_polished`: the photo has a band of stronger brush marks, so the normal shows a faint band at
+2×2 (albedo is clean); keep its normal strength low. `paper_note_torn` / `paper_receipt_pad` keep their
+perforation holes transparent.
 
 ## Objects (`objects/`)
 
