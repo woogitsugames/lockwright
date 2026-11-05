@@ -266,8 +266,13 @@ func _build_lights_and_probe() -> void:
 	probe.update_mode = ReflectionProbe.UPDATE_ONCE
 	probe.intensity = 1.0
 	probe.ambient_mode = ReflectionProbe.AMBIENT_ENVIRONMENT
-	root3d.add_child(probe)
-	lights.append(probe)
+	if args.get("probe", "1") == "1":
+		root3d.add_child(probe)
+		lights.append(probe)
+	if args.get("omni", "1") == "0":
+		for n in lights:
+			if n is OmniLight3D:
+				n.light_energy = 0.0
 
 
 func _build_materials() -> void:
@@ -355,7 +360,7 @@ func _apply_variant() -> void:
 		for s in l.size():
 			mi.set_surface_override_material(s, l[s])
 		mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF if b else GeometryInstance3D.SHADOW_CASTING_SETTING_ON
-	if not b:
+	if not b and probe.is_inside_tree():
 		probe.update_mode = ReflectionProbe.UPDATE_ONCE  # re-capture after material swap
 
 
