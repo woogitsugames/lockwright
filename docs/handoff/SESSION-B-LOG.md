@@ -330,3 +330,4 @@ Po naprawie P0 z GEM3: `contrib/incoming/magnific/selected/` → `game/assets/ph
 | `game-tests` | ⏳ po pushu |
 | `game-screens` | ⏳ po pushu |
 | `qa-career` | ⏳ po pushu |
+- **Portrety epizodyczne (D-50): komplet 39** w `contrib/incoming/magnific/selected/portraits/portrait_<id>.jpg` (id = nazwa mówcy z `lines` w zleceniach; `bride` = Kasia). Podmień tabliczki z inicjałem na portrety (wersja 512 px do gry, ASSETS.md).
