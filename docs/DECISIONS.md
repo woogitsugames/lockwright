@@ -120,3 +120,6 @@ Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright �
 
 ## D-38 — Rodzina `radial_pin` (post-MVP) i zlecenie perkusistki
 2026-11-05 · sesja A · Spec w `docs/LOCKS.md` §7. Id modułu `radial_pin` (alias „rurkowy” tylko w treści), wejścia T, D, P (kąt przez `pick_depth`, wciskanie przez `push`), więc format powtórek bez zmian; tiery t1–t6. Do czasu wejścia rodziny `job.drummer_locker` używa `wafer` t1, a tekst sytuacji mówi o „szafce” bez typu zamka. Gdy rodzina wejdzie: narzędzie „Koronka” jest w tym zleceniu jednorazowo pożyczone od kierownika sali (zlecenie zostaje w rozdziale 2).
+
+## D-39 — Ekonomia: przyjmujemy scenariusz C z ECONOMY.md
+2026-11-05 · sesja A · Symulacja `tools/econ_sim.py` (`docs/ECONOMY.md`) pokazała blokady zleceń i grind (~10 h Trybu Ciągłego dla średniego gracza), co łamie zasadę „bez grind-to-win”. Przyjmujemy liczby z §6 (scenariusz C): poprawione rodziny w danych zleceń, współczynnik krzywej Trybu Ciągłego 1,2, sonda startowa za 0, niższe ceny narzędzi (m.in. korba 300, sonda biegunowa 700, obrotnik 1100, słuchawka 1200 z `after_t4`), wcześniejsze warunki odblokowań (bez `after_t8` — lockcore ma najwyżej t7), tańsza naprawa. Cel: 0 zablokowanych zleceń, grind ≤ 12 sesji. Do potwierdzenia w playtestach.

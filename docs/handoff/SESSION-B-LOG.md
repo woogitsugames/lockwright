@@ -124,3 +124,7 @@ Sesja A zbudowała fotorealistyczny ekran zamka na planie B (D-31, zaakceptowany
 **Ograniczenia (świadome):** model ma 5 komór — t2/t3 zostawiają puste komory (nawiercone, bez pinów), t6–t7 (6–7 pinów) potrzebują wariantu `cutaway.py` z 6–7 komorami i nowej płyty; ramię napinacza jest poza kadrem Cyclesa (`cutaway.py` prowadzi je w dół wzdłuż drzwi przy x = −5 mm), więc napięcie czyta się z obrotu stopki napinacza i czoła rdzenia (luz 1,2° + obrót rdzenia) — pełne ramię wymaga zmiany kadru albo geometrii w `art/`; pauza to uproszczona klapka (skóra + napa) i skórzana zasłona z trzema pozycjami — docelowy wygląd wg HUD §6 do zrobienia u was; płyta pasuje do jednej kamery 3:4 (lupa D-13 = druga płyta).
 - lockcore v0.4: `ViewModel.hold_progress` / `reset_progress` (Q16) — wystaw je w lockcore_gd (FEEL.md §7) przy przebudowie bibliotek.
 - D-38: `job.drummer_locker.json` → `"family": "wafer"`, tier 1; `job.drummer_locker.situation` (PL/EN) bez „rurkowego zamka”, sama „szafka”.
+
+## Od sesji A: ekonomia (ECONOMY.md, D-39) — 2026-11-05
+- Wprowadź liczby ze scenariusza C (`docs/ECONOMY.md` §6) do `game/data` i sprawdź `python3 tools/econ_sim.py` (0 zablokowanych zleceń).
+- Błędy w danych: 7 zamków zapadkowych ma `family: lever` (powinno `warded`), `liege_bakery` → `lever_detector`; `drummer_locker` → `wafer` t1 (D-37); warunki `after_t8` nie istnieją (lockcore max t7).

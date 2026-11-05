@@ -51,7 +51,7 @@ def door_wood(axis, seed, center=(0, 0, 0), width=120):
     k = {'Z': 0, 'X': 2, 'Y': 0}[axis]                      # across-board coordinate
     c[k] += rng.uniform(-0.3, 0.3) * width
     return oak('door_%s_%d' % (axis, seed), light=l, dark=d, axis=axis, seed=seed, ring=rng.uniform(1.7, 2.8),
-               incline=rng.choice((-1, 1)) * rng.uniform(0.03, 0.06), depth=rng.uniform(70, 160), coat=1.0, coat_rough=0.22,
+               incline=rng.choice((-1, 1)) * rng.uniform(0.03, 0.06), depth=rng.uniform(70, 160), coat=1.0, coat_rough=0.32,
                rough=0.5, wear=0.6, grime=0.8, flecks=0.0, varnish_tint=0.3, center=tuple(c), contrast=0.72)
 
 # ---------------------------------------------------------------- architecture
@@ -316,7 +316,7 @@ M_cb = cam.matrix_world @ Matrix.Translation(Vector((-120, -350, -520))) @ Matri
 cb_objs, sheet_pt = clipboard('clipboard', M_cb, slip, pad_paper, hardboard, clip_m, rng=rng)
 # a pencil tucked under the clip
 pen = lathe_x('pencil', [(0, 0.01), (0, 1.0), (16, 3.6), (18, 3.7), (165, 3.7), (165, 0.01)], seg=6)
-pen.matrix_world = M_cb @ Matrix.Translation(Vector((40, 112, 7.5))) @ Matrix.Rotation(math.radians(-100), 4, 'Z')
+pen.matrix_world = M_cb @ Matrix.Translation(Vector((-84, 109, 8.2))) @ Matrix.Rotation(math.radians(2), 4, 'Z')
 setmat(pen, oil_paint('pencil_paint', (0.55, 0.36, 0.05), rough=0.3, chips=0.1, scuffs=0.1, strokes='X'))
 # the locksmith himself, out of shot: blocks the window light behind him (shadow on the floor and the board)
 body = bx('body', cam.location.x - 230, cam.location.x + 230, cam.location.y - 200, cam.location.y + 30, 0, cam.location.z - 120, dark)
