@@ -41,17 +41,18 @@ SURFACES = {
     "leather_brown_worn":    dict(src=SRC_M, mode="tile", flat="full", rough=(0.42, 0.82), metal=False, hs=22, ns=4.0),
     "leather_chocolate":     dict(src=SRC_L, mode="tile", flat="full", rough=(0.40, 0.76), metal=False, hs=18, ns=4.0),
     "leather_stitching_strip": dict(src=SRC_M, mode="strip", flat="x", rough=(0.45, 0.80), metal=False, hs=24, ns=5.0),
-    "brass_turned":          dict(src=SRC_M, mode="radial", flat="none", rough=(0.18, 0.34), metal=True, hs=6, ns=2.0),
-    "brass_face_milled":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.22, 0.42), metal=True, hs=20, ns=3.0),
+    "brass_turned":          dict(src=SRC_M, mode="radial", flat="polar", rough=(0.18, 0.34), metal=True, hs=6, ns=2.0),
+    "brass_face_milled":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.22, 0.42), metal=True, hs=20, ns=3.0, deskew="h"),
     "brass_patina_grease":   dict(src=SRC_M, mode="tile", flat="full", rough=(0.30, 0.82), metal=True, hs=16, ns=3.0),
     "steel_ground":          dict(src=SRC_M, mode="tile", flat="full", rough=(0.20, 0.38), metal=True, hs=6, ns=1.5),
-    "steel_heat_tint":       dict(src=SRC_M, mode="strip", flat="x", rough=(0.18, 0.34), metal=True, hs=6, ns=1.2),
+    "steel_heat_tint":       dict(src=SRC_M, mode="strip", flat="x", rough=(0.18, 0.34), metal=True, hs=6, ns=1.2, linear=True),
     "spring_steel_polished": dict(src=SRC_M, mode="tile", flat="full", rough=(0.16, 0.28), metal=True, hs=6, ns=1.2),
     "nickel_satin":          dict(src=SRC_M, mode="tile", flat="full", rough=(0.22, 0.40), metal=True, hs=8, ns=1.5),
-    "iron_painted_rust":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.35, 0.92), metal=True, hs=20, ns=4.0),
+    "iron_painted_rust":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.35, 0.92), metal=True, hs=20, ns=4.0,
+                                  crop=(0.0, 0.0, 0.66, 0.66)),  # lower part of the photo is out of focus
     "terrazzo_grey_red":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.32, 0.62), metal=False, hs=12, ns=2.0),
     "cement_tiles":          dict(src=SRC_M, mode="tile", flat="full", rough=(0.40, 0.70), metal=False, hs=10, ns=2.0),
-    "pine_floor_painted":    dict(src=SRC_M, mode="tile", flat="full", rough=(0.45, 0.82), metal=False, hs=24, ns=4.0, deskew=True),
+    "pine_floor_painted":    dict(src=SRC_M, mode="tile", flat="full", rough=(0.45, 0.82), metal=False, hs=24, ns=4.0, deskew="v"),
     "workshop_concrete":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.62, 0.95), metal=False, hs=24, ns=3.0),
 }
 
@@ -126,6 +127,22 @@ def flatten(img, how):
     full = [np.ones_like(Xf), Xf, Xf * Xf] if how == "x" else \
         [np.ones_like(Xf), Xf, Yf, Xf * Xf, Yf * Yf, Xf * Yf]
     out = np.empty_like(img)
+    if how == "x":
+        # per row band: fit colour drift along x for each of the n rows, smoothed across rows
+        Xs = np.linspace(-0.5, 0.5, n)
+        Ax = np.stack([np.ones(n), Xs, Xs * Xs], axis=1)
+        lg = np.log(np.maximum(small, 1e-3))  # n x n x 3
+        coef = np.stack([np.linalg.lstsq(Ax, lg[r], rcond=None)[0] for r in range(n)])  # n x 3 x 3
+        kern = np.exp(-0.5 * (np.arange(-6, 7) / 2.0) ** 2)
+        kern /= kern.sum()
+        cp = np.pad(coef, ((6, 6), (0, 0), (0, 0)), mode="edge")
+        coef = sum(kern[i] * cp[i:i + n] for i in range(13))
+        rows = np.linspace(0, n - 1, H)
+        for c in range(3):
+            k1 = np.interp(rows, np.arange(n), coef[:, 1, c])[:, None]
+            k2 = np.interp(rows, np.arange(n), coef[:, 2, c])[:, None]
+            out[..., c] = img[..., c] * np.exp(-(k1 * Xf + k2 * Xf * Xf))
+        return np.clip(out, 0, 1)
     for c in range(3):
         lg = np.log(np.maximum(small[..., c], 1e-3)).ravel()
         coef, *_ = np.linalg.lstsq(A, lg, rcond=None)
@@ -182,14 +199,14 @@ def keystone_fix(img):
     return out[y0:y0 + W], dict(keystone_freq_ratio=round(float(f.max() / f.min()), 3))
 
 
-def deskew_vertical(img, max_deg=3.0):
+def deskew_vertical(img, max_deg=3.0, step=0.1):
     """Rotate so that long vertical structures (plank gaps) are exactly vertical; then the top/bottom
     seam joins gaps that line up. Angle = argmax of the variance of the column-mean profile."""
     H, W = img.shape[:2]
     g = cv2.resize(lum(img), (W // 2, H // 2), interpolation=cv2.INTER_AREA)
     h, w = g.shape
     best, ba = -1, 0.0
-    for a in np.arange(-max_deg, max_deg + 1e-6, 0.1):
+    for a in np.arange(-max_deg, max_deg + 1e-6, step):
         M = cv2.getRotationMatrix2D((w / 2, h / 2), a, 1.0)
         r = cv2.warpAffine(g, M, (w, h), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
         c = r[h // 8:-h // 8, w // 8:-w // 8].mean(axis=0)
@@ -214,6 +231,26 @@ def equalize_detail(img, fine=6.0, wide=96.0):
     return np.clip(base + det * f[..., None], 0, 1)
 
 
+def flatten_polar(img):
+    """Radial (turned) metal: divide out the angular highlight 'bow-tie' baked in by the photo light,
+    by normalising mean luminance per angle (and a mild per-radius trend)."""
+    H, W = img.shape[:2]
+    c = (W / 2.0, H / 2.0)
+    R = W / 2.0
+    na = 720
+    pol = cv2.warpPolar(img, (W // 2, na), c, R, cv2.WARP_POLAR_LINEAR)
+    L = lum(pol)
+    m = L.mean()
+    ang = L[:, W // 40:].mean(axis=1)
+    ang = cv2.GaussianBlur(np.tile(ang, 3)[None, :].astype(np.float32), (0, 0), 8)[0][na:2 * na]
+    rad = cv2.GaussianBlur(L.mean(axis=0)[None, :].astype(np.float32), (0, 0), 40)[0]
+    g = np.clip(m / (ang[:, None] * rad[None, :] / m), 0.6, 1.6).astype(np.float32)
+    gc = cv2.warpPolar(g, (W, H), c, R, cv2.WARP_POLAR_LINEAR | cv2.WARP_INVERSE_MAP)
+    gc[gc == 0] = 1.0
+    gc = cv2.GaussianBlur(gc, (0, 0), 2)
+    return np.clip(img * gc[..., None], 0, 1)
+
+
 def min_cut_path(err):
     """Vertical path of minimum cumulative error through err (H x W)."""
     H, W = err.shape
@@ -234,7 +271,7 @@ def min_cut_path(err):
     return path
 
 
-def seam_x(img, omin, omax, feather=3):
+def seam_x(img, omin, omax, feather=3, linear=False):
     """Make img horizontally tileable. Returns (H, W - o) image."""
     H, W, _ = img.shape
     best, best_o = None, omin
@@ -252,8 +289,14 @@ def seam_x(img, omin, omax, feather=3):
     m = 2 * feather + 2  # keep the cut away from the overlap borders
     err[:, :m] = 1e3
     err[:, o - m:] = 1e3
-    path = min_cut_path(err)
     xs = np.arange(o)[None, :]
+    if linear:  # smooth content (heat tint): plain smoothstep crossfade over the whole overlap
+        t = np.repeat(xs / (o - 1.0), H, axis=0).astype(np.float32)
+        mask = t * t * (3 - 2 * t)
+        out = img[:, :W - o].copy()
+        out[:, :o] = R * (1 - mask[..., None]) + L * mask[..., None]
+        return out, o
+    path = min_cut_path(err)
     mask = (xs >= path[:, None]).astype(np.float32)  # 1 -> left (L), 0 -> right (R)
     if feather > 0:
         mask = cv2.GaussianBlur(mask, (0, 0), feather)
@@ -265,12 +308,12 @@ def seam_x(img, omin, omax, feather=3):
     return out, o
 
 
-def make_tileable(img, axes="xy"):
+def make_tileable(img, axes="xy", linear=False):
     W = img.shape[1]
-    omin, omax = int(W * 0.07), int(W * 0.17)
+    omin, omax = (int(W * 0.20), int(W * 0.25)) if linear else (int(W * 0.07), int(W * 0.17))
     info = {}
     if "x" in axes:
-        img, info["overlap_x"] = seam_x(img, omin, omax)
+        img, info["overlap_x"] = seam_x(img, omin, omax, linear=linear)
     if "y" in axes:
         t, info["overlap_y"] = seam_x(np.ascontiguousarray(img.transpose(1, 0, 2)), omin, omax)
         img = np.ascontiguousarray(t.transpose(1, 0, 2))
@@ -282,16 +325,16 @@ def resize(a, size, interp=cv2.INTER_LANCZOS4):
 
 
 def resize_wrap(a, size):
-    """Resize a tileable map without introducing edge artefacts (pad wrap, resize, crop)."""
-    h = a.shape[0]
+    """Resize a tileable map (any aspect) to size x size without edge artefacts: pad wrap, resize, crop."""
+    h, w = a.shape[:2]
     p = 16
     pad = ((p, p), (p, p)) + ((0, 0),) * (a.ndim - 2)
     big = np.pad(a, pad, mode="wrap")
-    s = size / h
-    n = int(round((h + 2 * p) * s))
-    r = cv2.resize(big, (n, n), interpolation=cv2.INTER_LANCZOS4)
-    q = int(round(p * s))
-    return r[q:q + size, q:q + size]
+    sx, sy = size / w, size / h
+    r = cv2.resize(big, (int(round((w + 2 * p) * sx)), int(round((h + 2 * p) * sy))),
+                   interpolation=cv2.INTER_LANCZOS4)
+    qx, qy = int(round(p * sx)), int(round(p * sy))
+    return r[qy:qy + size, qx:qx + size]
 
 
 def height_map(albedo, sigma, wrap):
@@ -394,12 +437,20 @@ def build_surface(name, cfg):
     img = load(src)
     d = os.path.join(OUT, name)
     os.makedirs(d, exist_ok=True)
-    img = flatten(img, cfg["flat"])
+    if cfg.get("crop"):  # drop unusable photo edges (out of focus, other material)
+        x0, y0, x1, y1 = cfg["crop"]
+        H, W = img.shape[:2]
+        img = img[int(y0 * H):int(y1 * H), int(x0 * W):int(x1 * W)]
+    img = flatten_polar(img) if cfg["flat"] == "polar" else flatten(img, cfg["flat"])
     mode = cfg["mode"]
     info = {}
-    if cfg.get("deskew"):
+    if cfg.get("deskew") == "v":
         img, di = deskew_vertical(img)
         info.update(di)
+    elif cfg.get("deskew") == "h":  # stripes made horizontal (rotate the UV in-engine for a diagonal look)
+        t, di = deskew_vertical(np.ascontiguousarray(img.transpose(1, 0, 2)), max_deg=60.0, step=0.5)
+        img = np.ascontiguousarray(t.transpose(1, 0, 2))
+        info["stripes_rotated_to_horizontal_deg"] = -di["deskew_deg"]
     if cfg.get("keystone"):
         img, ki = keystone_fix(img)
         info.update(ki)
@@ -408,18 +459,15 @@ def build_surface(name, cfg):
     if mode == "tile":
         img, ti = make_tileable(img, "xy")
         info.update(ti)
-        albedo = resize_wrap(img, SIZE) if img.shape[0] == img.shape[1] else None
-        if albedo is None:
-            albedo = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_LANCZOS4)
-            # one more light cut-free wrap smoothing is not needed: both edges already continue
+        albedo = resize_wrap(img, SIZE)
     elif mode == "strip":
-        img, ti = make_tileable(img, "x")
+        img, ti = make_tileable(img, "x", linear=cfg.get("linear", False))
         info.update(ti)
         h, w = img.shape[:2]
         y0 = (h - w) // 2
         img = img[y0:y0 + w]
-        albedo = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_LANCZOS4)
-    else:  # radial: centre on the brightest radial symmetry point (image centre for this photo)
+        albedo = resize_wrap(img, SIZE)  # wrap matters in x only; top/bottom rows are never tiled
+    else:  # radial: the turning centre is the photo centre
         h, w = img.shape[:2]
         s = min(h, w)
         albedo = cv2.resize(img[(h - s) // 2:(h + s) // 2, (w - s) // 2:(w + s) // 2], (SIZE, SIZE),
