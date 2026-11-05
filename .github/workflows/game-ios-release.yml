@@ -1,0 +1,103 @@
+name: game-ios-release
+
+# Task 9: release IPA for TestFlight. Manual only (workflow_dispatch) until the
+# Apple Developer secrets exist:
+#   APPLE_CERTIFICATE_BASE64, APPLE_CERTIFICATE_PASSWORD, APPLE_PROVISIONING_PROFILE_BASE64,
+#   APPLE_TEAM_ID, APPLE_BUNDLE_ID.
+# Until then the job exports and compiles an unsigned IPA (CODE_SIGNING_ALLOWED=NO),
+# which is what TestFlight needs a signed build for, but proves the pipeline.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ios-release:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode 26
+        run: sudo xcode-select -s /Applications/Xcode_26.0.app/Contents/Developer 2>/dev/null || sudo xcode-select -s $(ls -d /Applications/Xcode_*.app | sort -V | tail -1)/Contents/Developer
+
+      - name: Install Godot 4.7.2 + export templates
+        run: |
+          mkdir -p /tmp/godot
+          curl -sL -o /tmp/godot/godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_macos.universal.zip
+          unzip -q /tmp/godot/godot.zip -d /tmp/godot
+          curl -sL -o /tmp/godot/templates.tpz https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz
+          mkdir -p ~/Library/Application\ Support/godot/export_templates/4.7.2.stable
+          unzip -q /tmp/godot/templates.tpz -d ~/Library/Application\ Support/godot/export_templates/4.7.2.stable
+          mv ~/Library/Application\ Support/godot/export_templates/4.7.2.stable/templates/* ~/Library/Application\ Support/godot/export_templates/4.7.2.stable/
+          rmdir ~/Library/Application\ Support/godot/export_templates/4.7.2.stable/templates
+          echo "4.7.2.stable.official.ed1daf0bf" > ~/Library/Application\ Support/godot/export_templates/4.7.2.stable/version.txt
+
+      - name: Install iOS platform for xcodebuild
+        run: sudo xcodebuild -downloadPlatform iOS || echo "platform already present or download failed, continuing"
+
+      - name: Install scons
+        run: |
+          pip3 install --user scons || pip3 install --break-system-packages scons
+          echo "$(python3 -m site --user-base)/bin" >> $GITHUB_PATH
+
+      - name: Clone godot-cpp (API 4.7, pinned N-28)
+        run: |
+          git init -q godot-cpp && git -C godot-cpp fetch -q --depth 1 https://github.com/godotengine/godot-cpp.git e103d348c4b2d8df7b819126d855e19381cb9a87 && git -C godot-cpp checkout -q FETCH_HEAD
+
+      - name: Build godot-cpp (ios device, API 4.7)
+        run: |
+          cd godot-cpp
+          scons platform=ios target=template_release arch=arm64 custom_api_file=gdextension/extension_api-4-7.json -j8
+
+      - name: Build LockwrightHaptics + lockcore_gd xcframeworks (iOS release)
+        run: |
+          cd platform/ios/lockwright_haptics
+          GODOT_CPP_SCONSTRUCT=$GITHUB_WORKSPACE/godot-cpp/SConstruct scons platform=ios target=template_release arch=arm64 custom_api_file=$GITHUB_WORKSPACE/godot-cpp/gdextension/extension_api-4-7.json -j8
+          mkdir -p bin ../../../game/addons/lockwright_haptics/ios
+          xcodebuild -create-xcframework \
+            -library bin/liblockwright_haptics.ios.template_release.dylib \
+            -output ../../../game/addons/lockwright_haptics/ios/liblockwright_haptics.ios.release.xcframework
+          printf '[configuration]\nentry_symbol = "lockwright_haptics_init"\ncompatibility_minimum = "4.7"\n\n[libraries]\nios.release = "res://addons/lockwright_haptics/ios/liblockwright_haptics.ios.release.xcframework"\n' > ../../../game/addons/lockwright_haptics/lockwright_haptics.gdextension
+          cd $GITHUB_WORKSPACE/game/addons/lockcore_gd
+          GODOT_CPP=$GITHUB_WORKSPACE/godot-cpp scons platform=ios target=template_release arch=arm64 custom_api_file=$GITHUB_WORKSPACE/godot-cpp/gdextension/extension_api-4-7.json -j8
+          mkdir -p bin
+          xcodebuild -create-xcframework \
+            -library bin/liblockcore_gd.ios.template_release.dylib \
+            -output bin/liblockcore_gd.ios.release.xcframework
+
+      - name: Export release IPA (unsigned unless Apple secrets are set)
+        env:
+          APPLE_CERTIFICATE_BASE64: ${{ secrets.APPLE_CERTIFICATE_BASE64 }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          APPLE_PROVISIONING_PROFILE_BASE64: ${{ secrets.APPLE_PROVISIONING_PROFILE_BASE64 }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          mkdir -p game/build
+          SIGN_ARGS="CODE_SIGNING_ALLOWED=NO"
+          if [ -n "$APPLE_CERTIFICATE_BASE64" ] && [ -n "$APPLE_PROVISIONING_PROFILE_BASE64" ]; then
+            echo "$APPLE_CERTIFICATE_BASE64" | base64 -d > /tmp/apple.p12
+            echo "$APPLE_PROVISIONING_PROFILE_BASE64" | base64 -d > /tmp/profile.mobileprovision
+            keychain_name="build.keychain"
+            security create-keychain -p actions "$keychain_name"
+            security set-keychain-settings -lock-timeout 21600 "$keychain_name"
+            security unlock-keychain -p actions "$keychain_name"
+            security import /tmp/apple.p12 -k "$keychain_name" -P "$APPLE_CERTIFICATE_PASSWORD" -T /usr/bin/codesign
+            security set-key-partition-list -S apple-tool:,apple: -k actions "$keychain_name"
+            mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+            cp /tmp/profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+            SIGN_ARGS="CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=\"iPhone Distribution\" PROVISIONING_PROFILE_SPECIFIER=lockwright"
+          fi
+          /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --path game --import
+          env $SIGN_ARGS /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --path game --export-release "iOS" build/lockwright-release.ipa
+
+      - name: Compile exported Xcode project (release)
+        run: |
+          cd game/build
+          xcodebuild -project lockwright-release.xcodeproj -scheme lockwright-release \
+            -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED=NO -allowProvisioningUpdates \
+            build 2>&1 | tail -30
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: lockwright-ios-release
+          path: game/build/lockwright-release.ipa

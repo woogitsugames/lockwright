@@ -149,3 +149,129 @@ jobs:
         with:
           name: lockwright-android-debug
           path: game/build/lockwright-debug.apk
+
+  release-aab:
+    # Task 8: gradle release + AAB. Signs with GitHub Secrets when present
+    # (ANDROID_KEYSTORE_BASE64, ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS,
+    # ANDROID_KEY_PASSWORD); without them the step is skipped without failing.
+    runs-on: ubuntu-latest
+    needs: plugin-aar
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # version comes from the tag
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install Android SDK (platform 36, build-tools 36.1.0, NDK 28.1)
+        env:
+          ANDROID_HOME: ${{ runner.temp }}/android-sdk
+        run: |
+          mkdir -p $ANDROID_HOME/cmdline-tools
+          curl -sL -o /tmp/cmdtools.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+          unzip -q /tmp/cmdtools.zip -d $ANDROID_HOME/cmdline-tools
+          mv $ANDROID_HOME/cmdline-tools/cmdline-tools $ANDROID_HOME/cmdline-tools/latest
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-36" "build-tools;36.1.0" "platform-tools" "ndk;28.1.13356709"
+          echo "ANDROID_HOME=$ANDROID_HOME" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=$ANDROID_HOME" >> $GITHUB_ENV
+          echo "ANDROID_NDK_ROOT=$ANDROID_HOME/ndk/28.1.13356709" >> $GITHUB_ENV
+
+      - name: Download AARs
+        uses: actions/download-artifact@v4
+        with:
+          name: lockwright-haptics-aar
+          path: game/addons/lockwright_haptics/android
+      - uses: actions/download-artifact@v4
+        with:
+          name: lockwright-click-audio-aar
+          path: game/addons/lockwright_click_audio/android
+      - name: Normalize AAR names (R-41e)
+        run: |
+          mv game/addons/lockwright_haptics/android/lockwright-haptics-release.aar game/addons/lockwright_haptics/android/lockwright_haptics.aar 2>/dev/null || true
+          mv game/addons/lockwright_click_audio/android/lockwright-click-audio-release.aar game/addons/lockwright_click_audio/android/lockwright_click_audio.aar 2>/dev/null || true
+
+      - name: Install Godot 4.7.2 + templates
+        run: |
+          mkdir -p /tmp/godot
+          curl -sL -o /tmp/godot/godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/godot/godot.zip -d /tmp/godot && chmod +x /tmp/godot/Godot_v4.7.2-stable_linux.x86_64
+          curl -sL -o /tmp/godot/templates.tpz https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz
+          mkdir -p ~/.local/share/godot/export_templates/4.7.2.stable
+          unzip -q /tmp/godot/templates.tpz -d ~/.local/share/godot/export_templates/4.7.2.stable
+          mv ~/.local/share/godot/export_templates/4.7.2.stable/templates/* ~/.local/share/godot/export_templates/4.7.2.stable/
+          rmdir ~/.local/share/godot/export_templates/4.7.2.stable/templates
+          echo "4.7.2.stable.official.ed1daf0bf" > ~/.local/share/godot/export_templates/4.7.2.stable/version.txt
+
+      - name: Build lockcore_gd for Android arm64 (release)
+        run: |
+          pip install scons
+          git init -q /tmp/godot-cpp && git -C /tmp/godot-cpp fetch -q --depth 1 https://github.com/godotengine/godot-cpp.git e103d348c4b2d8df7b819126d855e19381cb9a87 && git -C /tmp/godot-cpp checkout -q FETCH_HEAD
+          cd /tmp/godot-cpp
+          scons platform=android target=template_release arch=arm64 ndk_version=28.1.13356709 custom_api_file=gdextension/extension_api-4-7.json -j8
+          cd $GITHUB_WORKSPACE/game/addons/lockcore_gd
+          GODOT_CPP=/tmp/godot-cpp scons platform=android target=template_release arch=arm64 ndk_version=28.1.13356709 custom_api_file=/tmp/godot-cpp/gdextension/extension_api-4-7.json -j8
+          mkdir -p bin
+          cp bin/liblockcore_gd.android.template_release.so bin/liblockcore_gd.android.template_debug.so 2>/dev/null || true
+
+      - name: Install Android build template into project
+        run: |
+          cd game
+          mkdir -p android/build
+          unzip -oq ~/.local/share/godot/export_templates/4.7.2.stable/android_source.zip -d android/build
+          echo "4.7.2.stable" > android/.build_version
+          find android -name "*.import" -delete
+
+      - name: Editor settings (SDK/Java paths)
+        run: |
+          mkdir -p ~/.config/godot
+          printf '[gd_resource type="EditorSettings" format=3]\n\n[resource]\nexport/android/android_sdk_path = "%s"\nexport/android/java_sdk_path = "%s"\n' "$ANDROID_HOME" "$JAVA_HOME" > ~/.config/godot/editor_settings-4.7.tres
+
+      - name: Release keystore from GitHub Secrets (skipped when absent)
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          if [ -z "$ANDROID_KEYSTORE_BASE64" ]; then
+            echo "No ANDROID_KEYSTORE_BASE64 secret - release signing skipped (unsigned AAB)."
+            echo "HAS_KEYSTORE=0" >> $GITHUB_ENV
+            exit 0
+          fi
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > /tmp/release.keystore
+          echo "HAS_KEYSTORE=1" >> $GITHUB_ENV
+          echo "KEYSTORE_PATH=/tmp/release.keystore" >> $GITHUB_ENV
+
+      - name: Release preset (version from tag, AAB, signing when keystore present)
+        run: |
+          TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.1.0")
+          VER=${TAG#v}
+          CODE=$(git rev-list --count "$TAG..HEAD" 2>/dev/null || echo 1); CODE=$((1000 + CODE))
+          KS_LINE=""
+          if [ "$HAS_KEYSTORE" = "1" ]; then
+            KS_LINE="keystore/release=\"$KEYSTORE_PATH\"\nkeystore/release_user=\"$ANDROID_KEY_ALIAS\"\nkeystore/release_password=\"$ANDROID_KEYSTORE_PASSWORD\"\n"
+          fi
+          printf '\n[preset.3]\nname="AndroidRelease"\nplatform="Android"\nrunnable=false\nexport_filter="all_resources"\ninclude_filter="i18n/*.csv,data/haptics/**/*.json,data/haptics/**/*.ahap"\nexclude_filter="android/*,addons/gut/*,tests/*,scenes/dev/*"\nexport_path="build/lockwright-release.aab"\nencrypt_pck=false\nencrypt_directory=false\n\n[preset.3.options]\ngradle_build/use_gradle_build=true\ngradle_build/export_format=1\ngradle_build/min_sdk="30"\ngradle_build/target_sdk="36"\narchitectures/arm64-v8a=true\narchitectures/armeabi-v7a=false\narchitectures/x86=false\narchitectures/x86_64=false\nkeystore/debug=""\nkeystore/debug_user=""\nkeystore/debug_password=""\n'"$KS_LINE"'version/code='"$CODE"'\nversion/name="'"$VER"'"\npackage/unique_name="com.woogitsugames.lockwright"\npackage/name="Lockwright: Locksmith on Call"\ngraphics/opengl_debug=false\nxr_features/xr_mode=0\n' >> game/export_presets.cfg
+          echo "version: $VER (code $CODE), keystore: $HAS_KEYSTORE"
+
+      - name: Import + export release AAB
+        run: |
+          mkdir -p game/build
+          /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path game --import
+          /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path game --export-release "AndroidRelease" build/lockwright-release.aab
+
+      - name: Package size report
+        run: |
+          echo "## Package sizes" >> $GITHUB_STEP_SUMMARY
+          ls -la game/build/ | tee /dev/stderr
+          du -h game/build/lockwright-release.aab >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: lockwright-android-release-aab
+          path: game/build/lockwright-release.aab
