@@ -20,7 +20,7 @@ const SMOOTHING := 0.45
 const TENSION_FULL_DP := 200.0  # left-thumb drag for tension 1.0 (working band 0.25–0.45 ≈ 50–90 dp)
 const LIFT_FULL_DP := 200.0     # right-thumb drag for lift 1.0 (shear line ≈ 0.55 ≈ 110 dp)
 const AUTO_LEVEL := 0.35        # D-52: centre of the tier 1–2 working band (probe: 0.25–0.45 opens)
-const RELEASE_S := 0.2          # D-52: tap on the left zone = let go of tension this long
+const RELEASE_S := 0.1          # D-52: tap on the left zone = let go of tension this long (< drop grace)
 const TAP_MAX_S := 0.35
 
 var tension := 0.0

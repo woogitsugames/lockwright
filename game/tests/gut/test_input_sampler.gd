@@ -5,6 +5,7 @@ extends GutTest
 func _make_sampler() -> InputSampler:
 	var s := InputSampler.new()
 	add_child_autofree(s)
+	s.auto_tension = false  # two-thumb mode (D-24); D-52 auto mode has its own test
 	return s
 
 func _touch(idx: int, pos: Vector2, pressed: bool) -> InputEventScreenTouch:

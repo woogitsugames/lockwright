@@ -175,18 +175,21 @@ practice.t27.goal,Trip the detector once; recognise its warning.,Raz uruchom det
 practice.t28.goal,Trip it once; turn back and wait for the reset.,"Raz uruchom detektor, cofnij i zaczekaj na reset.",Löse ihn einmal aus; dreh zurück und warte auf den Reset.
 practice.t29.goal,Find the right resistance among faint signals.,Wśród cichych sygnałów znajdź właściwy opór.,Finde zwischen leisen Signalen den richtigen Widerstand.
 practice.t30.goal,Trip and reset once; then open without haste.,Raz uruchom i zresetuj detektor. Potem otwórz bez pośpiechu.,Einmal auslösen und zurücksetzen; dann ohne Eile öffnen.
-tutorial.s1_tension,"Left thumb: gently up — that's tension","Lewy kciuk: delikatnie w górę — to napięcie","Linker Daumen: sanft nach oben – das ist Spannung"
-tutorial.s1_pick,"Right thumb: sideways picks a pin, up lifts it","Prawy kciuk: w bok wybierasz pin, w górę podnosisz","Rechter Daumen: seitlich Stift wählen, nach oben anheben"
-tutorial.s1_binding,"This pin resists — lift it slowly","Ten pin stawia opór — podnoś go powoli","Dieser Stift klemmt – heb ihn langsam an"
-tutorial.s1_click,"Click! It's set. Find the next one","Klik! Zatrzaśnięty. Szukaj następnego","Klick! Er sitzt. Such den nächsten"
-tutorial.s1_overset,"Too high — ease off the tension and start again","Za wysoko — zwolnij napięcie i zacznij od nowa","Zu hoch – Spannung lösen und neu anfangen"
+tutorial.s1_tension,Left thumb gently up. Easy does it.,"Lewy kciuk lekko w górę. Spokojnie, trzymaj.",Linker Daumen sanft hoch. Schön ruhig.
+tutorial.s1_pick,"Right thumb: sideways to choose, up to lift.","Prawy kciuk: w bok wybierz, w górę unieś.","Rechter Daumen: seitlich wählen, hochheben."
+tutorial.s1_binding,That pin is resisting. Just right.,Ten pin stawia opór. Dobrze.,Der Stift hält dagegen. Genau richtig.
+tutorial.s1_click,Click! One set. Find the next.,Klik! Jeden osiadł. Szukaj następnego.,Klick! Einer sitzt. Such den nächsten.
+tutorial.s1_overset,Too high. Release tension; try more gently.,Za wysoko. Puść napięcie i spróbuj lżej.,"Zu hoch. Spannung lösen, sanfter versuchen."
 tutorial.s1_overset_auto,"Too high — tap the left side to let go of the tension","Za wysoko — stuknij lewą stronę, żeby puścić napięcie","Zu hoch – tipp links, um die Spannung zu lösen"
-tutorial.s1_open,"Open. Nicely done — by feel, not by force","Otwarte. Ładnie — czuciem, nie siłą","Offen. Gut gemacht – mit Gefühl, nicht mit Kraft"
-tutorial.frame_tension,"1. Tension: the left thumb turns the plug a little","1. Napięcie: lewy kciuk lekko obraca rdzeń","1. Spannung: der linke Daumen dreht den Kern ein wenig"
-tutorial.frame_lift,"2. Lift: the right thumb raises one pin at a time","2. Podnoszenie: prawy kciuk unosi po jednym pinie","2. Anheben: der rechte Daumen hebt einen Stift nach dem anderen"
-tutorial.frame_click,"3. Click: the pin sets on the shear line, the plug turns","3. Klik: pin siada na linii podziału, rdzeń się obraca","3. Klick: der Stift sitzt an der Trennlinie, der Kern dreht sich"
+tutorial.s1_open,It's open. Nicely done. Steady hands.,"Otwarte. Dobra robota, spokojna ręka.",Offen. Gut gemacht. Ruhige Hand.
+tutorial.frame_tension,Left thumb: gently up — tension.,Lewy kciuk: lekko w górę — napięcie.,Linker Daumen: sanft hoch – Spannung.
+tutorial.frame_lift,"Right thumb: sideways to select, up to lift.","Prawy: w bok wybór, w górę podnoszenie.","Rechts: seitlich wählen, nach oben heben."
+tutorial.frame_click,Click — pin set. Find the next.,Klik — pin osiadł. Szukaj następnego.,Klick – Stift sitzt. Such den nächsten.
 tutorial.frame_lift_auto,"1. Lift: one thumb raises one pin at a time — tension is held for you","1. Podnoszenie: jeden kciuk unosi po jednym pinie — napięcie trzyma gra","1. Anheben: ein Daumen hebt Stift für Stift – die Spannung hält das Spiel"
-tutorial.note_game,"This is a game, not a course. The mechanisms are invented.","To gra, nie kurs. Mechanizmy są wymyślone.","Das ist ein Spiel, kein Kurs. Die Mechanik ist erfunden."
+tutorial.note_game,"A game, not a course. The parts are invented.","To gra, nie kurs. Mechanizmy są wymyślone.","Ein Spiel, kein Kurs. Die Mechanik ist erfunden."
 lock.zone_tension,tension,napięcie,Spannung
 lock.flap_pause,pause,pauza,Pause
-lock.hint_tension,"Left thumb: light push up = tension","Lewy kciuk: lekki nacisk w górę = napięcie","Linker Daumen: leicht nach oben = Spannung"
+lock.hint_tension,Pins feel loose? Hold a little left tension.,Piny luźne? Lewym kciukiem trzymaj napięcie.,Stifte locker? Links etwas Spannung halten.
+tutorial.s2_intro,Three pins. Only one resists at a time.,Trzy piny. Opór stawia tylko jeden naraz.,Drei Stifte. Nur einer sperrt zugleich.
+tutorial.s3_intro,A new order. Too far? Start lighter.,Inna kolejność. Za wysoko? Zacznij lżej.,Andere Reihenfolge. Zu hoch? Sanfter neu.
+tutorial.s1_near_break,Too much force. The tool is bending. Ease off.,Za mocno. Napinacz się ugina. Poluzuj.,Zu viel Druck. Der Spanner biegt sich. Lass locker.
