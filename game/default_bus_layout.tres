@@ -1,5 +1,9 @@
 [gd_resource type="AudioBusLayout" format=3]
 
+[sub_resource type="AudioEffectLowPassFilter" id="lp"]
+cutoff_hz = 2200.0
+resonance = 0.5
+
 [resource]
 bus/1/name = &"Sfx"
 bus/1/solo = false
@@ -21,6 +25,3 @@ bus/3/volume_db = 0.0
 bus/3/send = &"Master"
 bus/3/effect/0/effect = SubResource("lp")
 bus/3/effect/0/enabled = false
-[sub_resource type="AudioEffectLowPassFilter" id="lp"]
-cutoff_hz = 2200.0
-resonance = 0.5
