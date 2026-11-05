@@ -450,3 +450,83 @@ tip.feel_02,"Le cylindre a son écriture : un léger tour, un tour plus profond,
 tip.feel_03,Le silence aussi est un son. Surtout après un choc mat.
 tip.feel_04,Un ressort peut se plaindre sans être cassé. Moi aussi.
 tip.feel_05,"Un sifflement métallique montant est une alerte, pas une fanfare de victoire."
+tip.feel_06,Le clic net est bref. Le clic douteux a un écho.
+tip.feel_07,"Quand le cylindre recule, il participe encore à la conversation."
+tip.feel_08,"Trois traces de frottement sont un indice du jeu, pas une note sur votre bulletin."
+tip.feel_09,Un contour peut être interrompu alors que l'outil est intact.
+tip.feel_10,Un petit triangle de lumière en dit plus qu'une page de chiffres.
+tip.feel_11,Les pièces de ce jeu s'expriment autant par le mouvement que par le son.
+tip.feel_12,Une rangée de pièces qui tombent ressemble à la pluie sur le toit de mon atelier.
+tip.feel_13,"Un placement net, c'est une note. Un faux placement tient au duo."
+tip.feel_14,Certains mécanismes murmurent. Cela ne les rend pas simples.
+tip.feel_15,Le dernier clac de la porte me suffit comme applaudissement.
+tip.workshop_01,La trousse de cuir ne ment jamais. Une poche vide reste vide.
+tip.workshop_02,Les outils gardent le souvenir de chaque service. Examinez leurs bords après l'intervention.
+tip.workshop_03,Un établi rangé ne fait pas de moi un génie. Il m'aide à retrouver mon crayon.
+tip.workshop_04,Cinq coches sur la feuille d'intervention : l'atelier approche.
+tip.workshop_05,Le registre se souvient mieux des travaux que les pièces de monnaie.
+tip.workshop_06,Il n'y a aucune honte à réparer un outil. Seulement à oublier de l'examiner.
+tip.workshop_07,"Un reçu est une petite promesse, écrite au crayon et tenue à l'encre."
+tip.workshop_08,J'ai conservé la vieille enseigne émaillée. Elle connaît encore le chemin de la maison.
+tip.workshop_09,"Parfois, le meilleur souvenir, c'est un travail sans rayure."
+tip.dark_01,"Quand la lumière de l'escalier s'éteint, les sons prennent de la place."
+tip.dark_02,"L'obscurité est une autre façon d'écouter, pas un autre règlement."
+tip.dark_03,Le son le plus faible n'est pas forcément le moins important.
+tip.dark_04,"Pas d'image, mais le mécanisme garde son rythme."
+tip.dark_05,J'ai travaillé dans des couloirs sombres. La bouilloire m'a toujours retrouvé ensuite.
+tip.dark_06,"Un double clic reste un double clic, même quand personne ne le voit."
+tip.dark_07,Le silence n'est pas vide. Écoutez combien de temps il dure.
+tip.dark_08,Vous pouvez rallumer. Il n'y a pas de médaille pour les yeux fatigués.
+tip.people_01,"Mme Halina attend. Son bouillon aussi, et il est moins patient."
+tip.people_02,La version des faits d'un chat aide rarement. Demandez au propriétaire.
+tip.people_03,Un bon voisin est parfois le plus grand atout d'un immeuble.
+tip.people_04,"L'ascenseur est encore en panne. Heureusement, l'escalier fonctionne."
+tip.people_05,Un bonjour poli ouvre plus de conversations que n'importe quel outil.
+tip.people_06,Mon travail s'arrête sur le seuil. Les histoires des autres continuent.
+tip.people_07,"Une infirmière épuisée mérite un couloir calme, pas un grand discours."
+tip.people_08,Chaque porte a deux côtés. Pensez à la personne de l'autre.
+tip.calm_01,La rapidité sert. La précipitation fait surtout plus de bruit.
+tip.calm_02,Une erreur m'apprend quelque chose. Quatre me disent de faire du thé.
+tip.calm_03,Un pouce douloureux n'a rien d'héroïque.
+tip.calm_04,"Ce jeu demande de l'attention, pas de serrer plus fort que les autres."
+tip.calm_05,Une petite pause coûte moins cher qu'un outil cassé.
+tip.calm_06,Une réussite discrète compte aussi. Pas besoin de public.
+tip.calm_07,"Mes meilleures gardes finissaient sur un établi rangé, pas sur une histoire spectaculaire."
+tip.calm_08,Une porte récalcitrante n'est pas une insulte personnelle. J'ai vérifié.
+tip.calm_09,Les bonnes mains sont patientes. Elles savent aussi quand s'arrêter.
+tip.calm_10,"Le travail fini, laissez les gens reprendre leur journée."
+notebook.extra.false_set_streak,Trois doubles clics sourds à la suite. Je les ai notés. Ils avaient l'air contents d'eux.
+notebook.extra.counter_reply,Le cylindre a résisté. J'ai entendu son avis et terminé sans me disputer.
+notebook.extra.overset_twice,Deux chocs mats. J'ai fini quand même. Le carnet en donne une version polie.
+notebook.extra.three_drops,"Trois petites avalanches, une porte ouverte. Assez de bruit pour aujourd'hui."
+notebook.extra.drop_then_set,"Tout est retombé, puis un clic net est revenu. Heureux d'avoir eu cette deuxième phrase."
+notebook.extra.stress_no_break,Le métal s'est plaint deux fois. J'ai écouté. L'outil est rentré entier.
+notebook.extra.one_break,Un crochet cassé sur l'établi. La porte ouverte. Ce n'est pas mon équilibre préféré.
+notebook.extra.two_breaks,"Deux crochets cassés, une porte ouverte. Je suis rentré avec moins de matériel."
+notebook.extra.near_shear,Quatre murmures ténus avant le clac final. J'ai failli demander à la serrure de parler plus fort.
+notebook.extra.false_without_drop,"Deux fausses promesses, aucune pièce tombée. La porte s'est ouverte sans discours."
+notebook.extra.dark_double,"Dans le noir, j'ai entendu un double clic. J'ai noté le son, pas une supposition."
+notebook.extra.dark_drop,Quelque chose est tombé dans le noir. J'ai reconnu le bruit avant de voir le vide.
+notebook.extra.dark_failed,La lumière est revenue avant l'ouverture. J'ai ramassé le métal et refermé mon carnet.
+notebook.extra.dark_clean,"Sans lumière, sans chute, sans crochet cassé. Le reçu était presque suspect tant il était net."
+notebook.extra.serrations,Deux minuscules clics sans rotation. J'ai déjà noté des choses plus bruyantes pour moins que ça.
+notebook.extra.spring_bounce,Les ressorts ont vibré trois fois. Un vieux mécanisme sait encore se plaindre.
+notebook.extra.wafer_rattle,Les plaquettes ont tinté comme des couverts dans un tiroir. La porte s'est finalement ouverte.
+notebook.extra.wafer_overset,"Un choc sourd des plaquettes, sans cascade ensuite. J'ai noté la différence."
+notebook.extra.wood_creak,Les goupilles en bois ont grincé deux fois. Je n'ai pas fait la comparaison avec ma chaise d'atelier.
+notebook.extra.ward_scrapes,Trois frottements rugueux du fer. J'ai noté le son et laissé l'histoire au musée.
+notebook.extra.lever_false,Les leviers ont donné deux réponses incertaines. L'histoire n'était pas finie.
+notebook.extra.lever_clear,Chaque encoche de passage a donné une note nette. Aucun besoin de s'excuser sur la facture.
+notebook.extra.detector_reset,Le détecteur a bloqué le tout avant de se relâcher. J'ai compté les deux sons.
+notebook.extra.detector_failed,Le détecteur a eu le dernier mot. J'ai laissé le mécanisme en paix et consigné le refus.
+notebook.extra.ring_clicks,Six petits clics d'anneaux. Une serrure ouverte. Le couloir a enfin retrouvé le silence.
+notebook.extra.ring_false,"Les anneaux ont offert deux encoches trompeuses. J'ai fait court dans mon carnet, pas eux."
+notebook.extra.gates_many,"Trois encoches alignées en une intervention. Petit concert, sans rappel."
+notebook.extra.mixed_recovery,"Un choc, une cascade, puis une porte ouverte. J'ai conservé l'ordre dans mes notes."
+notebook.extra.worn_but_whole,L'outil s'est usé sans casser. J'ai noté une réparation à côté du total du jour.
+notebook.extra.roll_empty,Le troisième crochet s'est brisé. J'ai roulé la trousse de cuir vide et terminé mon service.
+cast.basia.name,Basia
+cast.elzbieta.name,"Elżbieta, gestionnaire de l'immeuble"
+cast.marcel.name,Marcel
+cast.norbert.name,Norbert
+job.community_notice_case.client,"Basia, secrétaire du comité des résidents, avec Elżbieta, gestionnaire de l'immeuble."
