@@ -17,7 +17,7 @@ Odpowiedzialni: **A** (lockcore, art, mockups, `game/*/photoreal/`), **B** (`gam
 | T6 | FPS ekranu zamka (plan B) | p95 ≤ 16,7 ms, 1% low ≥ 55 FPS przez 10 min na tanim Androidzie | ⏸ APK `planb-perf-apk` gotowe, pomiar właściciela | W | `POMIARY.md` §7a |
 | T7 | Pamięć | ≤ 350 MB PSS (tani), ≤ 450 MB (średni) | ⏸ pomiar na telefonie | W, C | `POMIARY.md` §8 |
 | T8 | Opóźnienia haptyki i dźwięku (spike 1–3) | progi `TECH.md` §4 | ⏸ aplikacja „LW Pomiary” gotowa, pomiar właściciela | W | `POMIARY.md` §1–6 |
-| T9 | Determinizm lockcore na urządzeniach | identyczne hashe powtórek host ↔ arm64 | 🟡 qemu/macOS ✅ (spike-determinism); APK w emulatorze w toku | C | `spike-determinism-apk`, `spikes/determinism/README.md` |
+| T9 | Determinizm lockcore na urządzeniach | identyczne hashe powtórek host ↔ arm64 | ✅ qemu/macOS (spike-determinism); ✅ APK arm64 w emulatorze Android 14: 630/630, digest = host (run 42012656332); 🟡 API 30 i telefon natywny | C | `spike-determinism-apk`, `spikes/determinism/README.md` |
 | T10 | Crash-free | ≥ 99,5% sesji w teście zamkniętym (Play Console vitals / TestFlight) | ⏸ wymaga testu w sklepach | W, B | `TESTY-SKLEPY.md` |
 | T11 | Kariera przechodnia bez soft-locków | `qa-career`: 0 soft-locków, 0 ekranów bez wyjścia | ❌ 10 soft-locków (N-13) | B (A: scena planu B) | `qa-career` raport, N-13…N-15 |
 | T12 | Brak `float` w lockcore, testy i fuzz | `ctest`, fuzz 100k | ✅ | A | workflow `lockcore` |

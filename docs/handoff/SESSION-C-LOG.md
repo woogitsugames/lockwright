@@ -154,3 +154,8 @@ Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-d
 | 7 | Strona cz. 2 | **częściowo** | „Jak gramy uczciwie” PL/EN ✅; publikacja wyłączona | G12/G13 przyjęte |
 | 8 | Audyt licencji | **gotowe** | `store/legal/DEPENDENCIES.md`, N-27 (High przed wydaniem), N-28 | sesja B: ekran licencji |
 | 9 | Ciągły przegląd | **trwa** | rundy co godzinę (scheduled task :06) | — |
+
+## 2026-11-05 10:54 — determinizm w APK: wynik (etap 3, zadanie 10)
+- `spike-determinism-apk` run 3 (42012656332, commit 1117b9c): **API 34 — 630/630 powtórek zgodnych**, `LW_DET_DONE platform=Android arch=arm64 replays=630 ok=630 bad=0`, digest urządzenia = digest hosta (`e091167f18b6…`), 5,1 s na odtworzenie korpusu. To `lockcore_gd` arm64 z APK w prawdziwym runtime Godota na Androidzie (na emulatorze x86_64 przez translację ARM).
+- API 30: job wciąż trwa (czeka do 900 s na wynik) — sprawdzę w rundzie 11:06.
+- Zadanie 10 etapu 3: **gotowe** (API 34); natywny arm64 na telefonie: to samo APK (artefakt `det-apk`) pokaże wynik na ekranie.
