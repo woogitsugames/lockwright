@@ -130,3 +130,60 @@ Uwaga: celowo „professional”, a nie „licensed”: w PL ślusarz nie jest z
 | Zakup w aplikacji (wariant A D-06) | Deskryptor „In-Game Purchases”, wiek bez zmian. |
 | Ranking online, Game Center, udostępnianie wyników z poziomu gry | Pytania o UGC/interakcję, prywatność (`privacy.md`). |
 | Dowolny SDK sieciowy (analityka, crash reporting) | Najpierw `privacy.md`, potem odpowiedzi w obu formularzach. |
+
+---
+
+## 5. Stan na 2026-11-05 (etap 3): Tryb Zleceń jest w grze — odpowiedzi po przeglądzie treści
+
+Gra ma już 29 zleceń z dialogami (`game/i18n/content.csv`, `data/jobs/`), w tym 3 zlecenia do odmowy
+(`job.refuse_aunt_alive`, `job.refuse_ex_partner`, `job.refuse_rush_bribe`): ktoś próbuje wejść do cudzego mieszkania,
+ślusarz odmawia, proponuje telefon do rodziny lub na policję. Przejrzałem teksty pod kątem kwestionariuszy (§4).
+
+| Pytanie | Było | Teraz | Dlaczego |
+|---|---|---|---|
+| Apple: Mature or Suggestive Themes | None | **None** | Odmowa jest spokojna, bez gróźb i przemocy; rozstanie pary (`refuse_ex_partner`) to tło, bez konfliktu na ekranie. |
+| Apple: Violence (Realistic / Cartoon) | None | **None** | Brak. |
+| IARC: Criminal / illegal acts | No | **No** (z opisem) | Gra pokazuje **próbę** nakłonienia do otwarcia cudzego lokalu i propozycję łapówki (`refuse_rush_bribe`: „Podwójna stawka…”), ale gracz nie może jej przyjąć — jedyna akcja to odmowa (+ reputacja). Jeśli formularz pyta „does the game reference or depict illegal activity”, odpowiedzieć **Yes — reference, not depicted or rewarded**; ocena nie powinna wzrosnąć ponad PEGI 3/7. Wariant ostrożny: jeżeli kwestionariusz potraktuje „bribery” jako odniesienie do przestępstwa, możliwe **PEGI 7 / USK 6** — wtedy rozważyć złagodzenie linii o stawce (decyzja treściowa, sesja B / właściciel). |
+| IARC: Language | No | **No** | Sprawdzone: brak wulgaryzmów w PL i EN. |
+| Apple: Contests / Gambling | None | **None** | Monety tylko z pracy, brak losowania. |
+
+**Oczekiwany wynik bez zmian:** 4+ / PEGI 3 / ESRB E / USK 0 — z zastrzeżeniem wariantu ostrożnego wyżej.
+
+## 6. Pozostałe deklaracje (do wypełnienia w konsolach)
+
+### 6.1 Google Play Console → App content
+| Deklaracja | Odpowiedź | Uwagi |
+|---|---|---|
+| Privacy policy URL | `[URL strony /privacy.html — do uzupełnienia]` | strona gotowa w `site/` (publikacja czeka na zgodę) |
+| Ads | **No, my app does not contain ads** | |
+| App access | **All functionality is available without special access** | brak logowania |
+| Content rating | kwestionariusz IARC §2 i §5 | e-mail do certyfikatu: `[ratings@domena]` |
+| Target audience and content | grupy wiekowe **13–15, 16–17, 18+** | Zaznaczenie grup poniżej 13 lat włącza program „Families” (wymogi i przegląd). Gra jest odpowiednia dla dzieci (PEGI 3), ale nie jest do nich kierowana (`privacy.md` §5). „Appeals to children?” → **No** (bez postaci dziecięcych, bez stylistyki dla dzieci). Decyzja właściciela, jeśli chce rynku rodzinnego. |
+| News app | No | |
+| COVID-19 contact tracing / status | No | |
+| Data safety | `privacy.md` §4: **No data collected, no data shared** | |
+| Government app | No | |
+| Financial features | **My app doesn't provide any financial features** | |
+| Health apps | No | |
+| Advertising ID (Android 13+) | **No** | brak uprawnienia `AD_ID` w manifeście — sprawdzić w eksporcie release |
+
+### 6.2 App Store Connect
+| Pole | Odpowiedź | Uwagi |
+|---|---|---|
+| Export Compliance (`ITSAppUsesNonExemptEncryption`) | **NO** — gra nie używa szyfrowania poza systemowym | dodać klucz do Info.plist w presecie iOS, żeby nie pytało przy każdej kompilacji |
+| Content Rights | **Does not contain, show, or access third-party content** | grafiki i dźwięki własne, fonty OFL (`docs/ASSETS.md`) |
+| Age Rating | §1 + §5 | |
+| App Privacy | `privacy.md` §3: **Data Not Collected** | |
+| Privacy Policy URL | `[URL — do uzupełnienia]` | |
+| Support URL | `[URL strony /contact.html — do uzupełnienia]` | |
+| Copyright | `[© 2026 nazwa właściciela]` | |
+| App Review: Sign-in required | **No** | |
+| App Review: Notes | tekst z §3 | |
+| App Review: Contact | `[imię, nazwisko, telefon, e-mail]` | |
+| Kids Category | **nie** | |
+
+### 6.3 Dane właściciela (wspólne)
+- [Nazwa wydawcy / sprzedawcy (Apple: Seller name, Google: Developer name)]
+- [Adres e-mail kontaktowy publiczny] · [e-mail do IARC] · [telefon dla App Review]
+- [Domena strony] → URL-e: polityka prywatności, wsparcie, strona marketingowa
+- [Kraj siedziby (DSA: status „trader” w UE — Apple i Google wymagają deklaracji i publicznego adresu, jeśli sprzedajesz jako przedsiębiorca)]
