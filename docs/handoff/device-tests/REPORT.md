@@ -12,7 +12,7 @@
 | Parametr | Wartość |
 |---|---|
 | **Producent / Model** | `samsung SM-A165F` (Samsung Galaxy A16 4G, urządzenie `a16` / `a16nseea`) |
-| **Numer seryjny (`adb`)** | `RFGL34SJYDZ` |
+| **Numer seryjny (`adb`)** | `[usunięto]` |
 | **System operacyjny** | Android `16` (API / SDK `36`, kompilacja `BP2A.250605.031.A3.A165FXXS4BYJ1`) |
 | **Układ SoC / CPU** | MediaTek Helio G99 (`MT6789`, `arm64-v8a`, 2× Cortex-A76 @ 2,2 GHz + 6× Cortex-A55 @ 2,0 GHz) |
 | **Układ GPU** | ARM `Mali-G57 MC2` (Vulkan `1.3.303`, sterownik `v1.r52p1`, EGL `meow`) |

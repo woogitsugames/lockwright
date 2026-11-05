@@ -153,3 +153,6 @@ Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright �
 
 ## D-49 — Zwiastun GEM1 to animatik, nie wersja finalna
 2026-11-05 · sesja A · Przegląd Release `gemini-gem1` (30 s i 15 s, PL/EN, z napisami i muzyką). Montaż, rytm i napisy opisowe dźwięku są dobre, ale: (1) prawie cały czas to zbliżenia przekroju o wyglądzie CAD; (2) brak ludzi i historii pomocy (klient, weryfikacja), a to rdzeń tonu gry; (3) plansza końcowa „Dostępne na Android · iOS” jest niedozwolona przed wydaniem (MARKETING §0, D-06). Wersja traktowana jako animatik. Wersja 2: przeplot ujęć z key artu (scena „17”, Magnific), przekrój z nowymi materiałami (`art/textures/photo/`), plansza końcowa bez obietnic dostępności.
+
+## D-50 — Ikona: tabliczka emaliowana „L”; portrety dla wszystkich mówiących
+2026-11-05 · sesja A · Ikona aplikacji: kierunek G12 v2 #01 / Magnific `icon_enamel_L` (tabliczka „L”); czoło wkładki odrzucone (zbyt blisko kliszy „dziurka od klucza na ciemnym tle”). N-49: 39 postaci epizodycznych dostaje portrety z Magnific (`docs/handoff/MAGNIFIC-PORTRETY.md`); do czasu dostawy gra pokazuje emaliowaną tabliczkę z inicjałem zamiast twarzy. Numer seryjny telefonu właściciela usunięty z raportów (`[usunięto]`).
