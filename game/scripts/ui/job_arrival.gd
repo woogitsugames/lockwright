@@ -1,13 +1,21 @@
 extends Control
 ## Arrival + verification scene: client, situation, then the symbolic ID check
 ## (JOBS.md §2 — the game teaches that the locksmith always verifies the right to enter).
+## N-60: every dialogue line is one row — 48 dp avatar, then the speaker's name
+## (small, muted) above the line text (wraps) on a dark-paper underlay (>= 4.5:1).
+## The locksmith (the player) has no avatar or plate: his lines sit on the right
+## on a light enamel card, like the other side of a conversation.
 
-@onready var title_label: Label = $VBox/Title
-@onready var client_label: Label = $VBox/Client
-@onready var situation_label: Label = $VBox/Situation
-@onready var lines_box: VBoxContainer = $VBox/Lines
-@onready var verify_button: Button = $VBox/VerifyButton
-@onready var back_button: Button = $BackButton
+const T := "Frame/VBox/Scroll/Body/"
+const PLAYER := "locksmith"
+
+@onready var title_label: Label = $Frame/VBox/Header/Title
+@onready var client_label: Label = get_node(T + "Intro/Row/Texts/Client")
+@onready var situation_label: Label = get_node(T + "Intro/Row/Texts/Situation")
+@onready var place_plate: TextureRect = get_node(T + "Intro/Row/Place")
+@onready var lines_box: VBoxContainer = get_node(T + "Lines")
+@onready var verify_button: Button = $Frame/VBox/VerifyButton
+@onready var back_button: Button = $Frame/VBox/Header/BackButton
 
 # G07 arrival backgrounds: place + time of day -> image
 const ARRIVAL_BG := {
@@ -34,29 +42,52 @@ const CAST_SLOT := {
 	"ola": "09_ola_krystyna", "krystyna": "09_ola_krystyna", "wladyslaw": "10_wladyslaw",
 	"rygiel": "11_rygiel", "jadwiga": "12_jadwiga",
 }
+# G17 blank enamel initial plates; light letters except on ivory
+const INITIAL_PLATES := ["navy", "bottle_green", "burgundy", "ivory"]
 
 
 func _lang() -> String:
 	return "pl" if Settings.language() == "pl" else "en"
 
 
-# D-50/N-49: enamel name plate (G01) with the speaker's initial for characters without a portrait
-func _initial_plate(full_name: String) -> Control:
+static func _tex(path: String) -> Texture2D:
+	return load(path) as Texture2D if ResourceLoader.exists(path) else null
+
+
+## Avatar for a speaker: G09 cast avatar, then the episodic portrait, else null.
+static func portrait_for(speaker: String) -> Texture2D:
+	var slot: String = CAST_SLOT.get(speaker, "")
+	var tex: Texture2D = null
+	if slot != "":
+		tex = _tex("res://assets/ui/gpt/cast/%s/avatar.png" % slot)
+	if tex == null:
+		tex = _tex("res://assets/ui/gpt/cast/episodic/portrait_%s.webp" % speaker)
+	return tex
+
+
+# D-50/N-49/N-60: blank G17 enamel plate with the speaker's initial (no printed digit)
+static func initial_plate(speaker: String, full_name: String) -> Control:
 	var wrap := Control.new()
+	wrap.name = "InitialPlate"
 	wrap.custom_minimum_size = Vector2(48, 48)
+	var colour: String = INITIAL_PLATES[absi(speaker.hash()) % INITIAL_PLATES.size()]
 	var plate := TextureRect.new()
-	plate.texture = load("res://assets/ui/gpt/plates/plate_01.png")
+	plate.texture = _tex("res://assets/ui/plates/initial_%s.png" % colour)
 	plate.set_anchors_preset(Control.PRESET_FULL_RECT)
 	plate.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	plate.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	plate.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	wrap.add_child(plate)
 	var initial := Label.new()
+	initial.name = "Initial"
 	initial.text = full_name.strip_edges().substr(0, 1).to_upper()
 	initial.set_anchors_preset(Control.PRESET_FULL_RECT)
 	initial.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	initial.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	initial.add_theme_color_override("font_color", Color(0.12, 0.1, 0.08))
-	initial.add_theme_font_size_override("font_size", 22)
+	initial.add_theme_font_override("font", load("res://assets/fonts/BonaNova-Bold.ttf"))
+	initial.add_theme_font_size_override("font_size", 24)
+	var light := colour != "ivory"
+	initial.add_theme_color_override("font_color", Color(0.96, 0.92, 0.84) if light else Color(0.11, 0.09, 0.07))
+	initial.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0))
 	wrap.add_child(initial)
 	return wrap
 
@@ -69,41 +100,71 @@ func _arrival_image(job: Dictionary) -> String:
 
 
 func _add_background(job: Dictionary) -> void:
-	var tex := load("res://assets/ui/gpt/arrival/" + _arrival_image(job))
-	if tex == null:
-		return
-	var bg := TextureRect.new()
-	bg.texture = tex
-	bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
-	bg.modulate = Color(1, 1, 1, 0.35)
-	add_child(bg)
-	move_child(bg, 0)
+	ScreenFrame.backdrop(self, "res://assets/ui/gpt/arrival/" + _arrival_image(job), 0.45)
 	var place: String = job.get("place", "apartment")
+	var path := ""
 	if place != "apartment":
 		var signs: Array = PLACE_SIGN.get(place, [])
 		if signs.size() == 2:
-			_add_plate("res://assets/ui/gpt/plates/" + signs[0 if _lang() == "pl" else 1])
+			path = "res://assets/ui/gpt/plates/" + signs[0 if _lang() == "pl" else 1]
 	else:
 		# apartment number plate (G01) from the job id
 		var jid: String = job.get("id", "")
-		var n: int = (jid.hash() % 24 + 24) % 24 + 1
-		_add_plate("res://assets/ui/gpt/plates/plate_%02d.png" % n)
+		path = "res://assets/ui/gpt/plates/plate_%02d.png" % ((jid.hash() % 24 + 24) % 24 + 1)
+	place_plate.texture = _tex(path)
+	place_plate.visible = place_plate.texture != null
 
 
-func _add_plate(path: String) -> void:
-	var tex := load(path)
-	if tex == null:
-		return
-	var plate := TextureRect.new()
-	plate.texture = tex
-	plate.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	plate.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-	plate.custom_minimum_size = Vector2(96, 96)
-	plate.position = Vector2(12, 12)
-	plate.size = Vector2(96, 96)
-	add_child(plate)
+func _line_row(speaker: String, text: String) -> Control:
+	var is_player := speaker == PLAYER
+	var row := HBoxContainer.new()
+	row.name = "Line_" + speaker
+	row.add_theme_constant_override("separation", 10)
+	var card := PanelContainer.new()
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	card.size_flags_stretch_ratio = 5.0
+	if is_player:
+		card.theme_type_variation = &"EnamelPanel"
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 2)
+	card.add_child(col)
+	var who := ScreenFrame.wrap(Label.new())
+	who.name = "Speaker"
+	who.text = I18n.t(&"cast.%s.name" % speaker)
+	who.theme_type_variation = &"Caption"
+	var said := ScreenFrame.wrap(Label.new())
+	said.name = "Text"
+	said.text = text
+	if is_player:
+		who.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		who.add_theme_color_override("font_color", Color(0.32, 0.27, 0.22))
+		who.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0))
+		said.theme_type_variation = &"OnEnamel"
+		# indent from the left, no avatar (the player is never shown)
+		var gap := Control.new()
+		gap.custom_minimum_size = Vector2(40, 0)
+		gap.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		gap.size_flags_stretch_ratio = 1.0
+		row.add_child(gap)
+	else:
+		var avatar_tex := portrait_for(speaker)
+		if avatar_tex != null:
+			var avatar := TextureRect.new()
+			avatar.name = "Avatar"
+			avatar.texture = avatar_tex
+			avatar.custom_minimum_size = Vector2(48, 48)
+			avatar.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+			avatar.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			avatar.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+			row.add_child(avatar)
+		else:
+			var plate := initial_plate(speaker, who.text)
+			plate.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+			row.add_child(plate)
+	col.add_child(who)
+	col.add_child(said)
+	row.add_child(card)
+	return row
 
 
 func _ready() -> void:
@@ -111,47 +172,25 @@ func _ready() -> void:
 	Sfx.play_music(&"main_theme")
 	Sfx.play_foley(&"door_knock")
 	Sfx.play_foley(&"apartment_bell")
-	SafeArea.apply(self)
+	ScreenFrame.fit(self, $Frame)
+	$Frame/VBox/Scroll.scroll_deadzone = 12
 	var job: Dictionary = JobRun.current_job
 	_add_background(job)
 	var i18n: Dictionary = job.get("i18n", {})
 	title_label.text = I18n.t(i18n.get("title", &"jobs.title"))
 	client_label.text = I18n.t(i18n.get("client", &"jobs.title"))
 	situation_label.text = I18n.t(i18n.get("situation", &"jobs.title"))
-	# dialog lines from CLIENTS.md: speaker avatar (G09) + enamel plate + the line
+	# dialog lines from CLIENTS.md
 	var lines: Array = job.get("lines", [])
+	var voiced := false
 	for i in mini(lines.size(), 4):
 		var speaker: String = lines[i]
-		var row := HBoxContainer.new()
-		var slot: String = CAST_SLOT.get(speaker, "")
-		var atex: Texture2D = null
-		if slot != "":
-			atex = load("res://assets/ui/gpt/cast/%s/avatar.png" % slot)
-		if atex == null:
-			# D-50: episodic Magnific portraits (batch 1) before falling back to the initial plate
-			atex = load("res://assets/ui/gpt/cast/episodic/portrait_%s.webp" % speaker)
-		if atex != null:
-			var avatar := TextureRect.new()
-			avatar.texture = atex
-			avatar.custom_minimum_size = Vector2(48, 48)
-			avatar.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-			avatar.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-			row.add_child(avatar)
-		else:
-			# D-50/N-49: no portrait yet -> enamel plate with the initial (G01 plate as the base)
-			row.add_child(_initial_plate(I18n.t(&"cast.%s.name" % speaker)))
-		var plate := Label.new()
-		plate.text = I18n.t(&"cast.%s.name" % speaker)
-		plate.custom_minimum_size = Vector2(120, 48)
-		var line := Label.new()
-		line.text = I18n.t(&"%s.line.%d" % [job.get("id", ""), i + 1])
-		line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		row.add_child(plate)
-		row.add_child(line)
-		lines_box.add_child(row)
-		Sfx.play_voice(speaker, &"greeting")  # S03 voice at the dialog line
+		lines_box.add_child(_line_row(speaker, I18n.t(&"%s.line.%d" % [job.get("id", ""), i + 1])))
+		if speaker != PLAYER and not voiced:
+			Sfx.play_voice(speaker, &"greeting")  # S03 voice of the client
+			voiced = true
 	verify_button.text = I18n.t(&"job.verify")
-	back_button.text = I18n.t(&"common.back")
+	back_button.text = "‹ " + I18n.t(&"common.back")
 	verify_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/job_verify.tscn"))
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/jobs_list.tscn"))
+	ScreenFrame.enter($Frame/VBox/Scroll)

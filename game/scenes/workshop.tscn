@@ -34,9 +34,10 @@ size_flags_horizontal = 3
 theme_type_variation = &"Title"
 text_overrun_behavior = 3
 
-[node name="CoinsLabel" type="Label" parent="Frame/VBox/Header"]
+[node name="CoinsLabel" type="Label" parent="Frame/VBox"]
 layout_mode = 2
 theme_type_variation = &"Heading"
+text_overrun_behavior = 3
 
 [node name="Scroll" type="ScrollContainer" parent="Frame/VBox"]
 layout_mode = 2

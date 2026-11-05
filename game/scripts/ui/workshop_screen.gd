@@ -6,7 +6,7 @@ extends Control
 ## Repair is hidden at 100%; a progress reward has no button; a purchase you cannot
 ## afford reads "Not enough coins" on an outline-only plate (not colour alone).
 
-@onready var coins_label: Label = $Frame/VBox/Header/CoinsLabel
+@onready var coins_label: Label = $Frame/VBox/CoinsLabel
 @onready var tools_list: VBoxContainer = $Frame/VBox/Scroll/ToolsList
 @onready var back_button: Button = $Frame/VBox/Header/BackButton
 
@@ -53,7 +53,7 @@ func _add_map() -> void:
 	_map.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	frame.add_child(_map)
 	$Frame/VBox.add_child(frame)
-	$Frame/VBox.move_child(frame, 1)
+	$Frame/VBox.move_child(frame, 2)
 	resized.connect(_size_map)
 	_size_map()
 
