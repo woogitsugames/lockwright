@@ -647,13 +647,14 @@ def oak(name, light=(0.46, 0.30, 0.16), dark=(0.22, 0.12, 0.055), axis='Z', plan
     sx = nt.nodes.new('ShaderNodeSeparateXYZ'); l.new(Q, sx.inputs[0]); U, V, Z = sx.outputs
     # low-frequency waviness of the whole grain (crooked growth)
     wn = _noise(nt, Q, 0.012, detail=3, rough=0.5, stretch=(0.3, 0.3, 1.0))
-    U = mth('MULTIPLY_ADD', mth('SUBTRACT', wn, 0.5), 18.0 * warp, U)
-    # planks
+    Uw = mth('MULTIPLY_ADD', mth('SUBTRACT', wn, 0.5), 8.0 * warp, U)
+    # planks (straight seams; the warp only bends the grain inside a board)
     if plank > 0:
         pid = mth('FLOOR', mth('DIVIDE', U, plank))
-        ul = mth('SUBTRACT', U, mth('MULTIPLY_ADD', pid, plank, plank / 2))
+        off = mth('MULTIPLY_ADD', pid, plank, plank / 2)
+        ul = mth('SUBTRACT', U, off); ulw = mth('SUBTRACT', Uw, off)
     else:
-        pid = None; ul = U
+        pid = None; ul = U; ulw = Uw
     def rnd(k):
         w = nt.nodes.new('ShaderNodeTexWhiteNoise'); w.noise_dimensions = '1D'
         if pid is not None: l.new(mth('ADD', pid, seed * 3.1 + k * 17.0), w.inputs['W'])
@@ -667,7 +668,7 @@ def oak(name, light=(0.46, 0.30, 0.16), dark=(0.22, 0.12, 0.055), axis='Z', plan
     zn = _noise(nt, Q, 0.006, detail=2, stretch=(0.0, 0.0, 1.0))
     dd = mth('ADD', mth('MULTIPLY_ADD', slope, Z, d0), mth('MULTIPLY', mth('SUBTRACT', zn, 0.5), ring_mm * 10.0))
     dd = mth('MAXIMUM', dd, ring_mm * 4.0)   # never cross the pith: no bull's-eyes, only cathedrals
-    du = mth('SUBTRACT', ul, u0)
+    du = mth('SUBTRACT', ulw, u0)
     rad = mth('SQRT', mth('ADD', mth('MULTIPLY', du, du), mth('MULTIPLY', dd, dd)))
     # irregular ring widths + fine wobble
     rw = nt.nodes.new('ShaderNodeTexNoise'); rw.noise_dimensions = '1D'; rw.inputs['Scale'].default_value = 0.25 / ring_mm
@@ -677,6 +678,9 @@ def oak(name, light=(0.46, 0.30, 0.16), dark=(0.22, 0.12, 0.055), axis='Z', plan
     f = mth('FRACT', ph)
     # earlywood band (porous, darker) at the start of each ring, sharp leading edge, soft trailing edge
     early = mth('MULTIPLY', _maprange(nt, f, 0.0, 0.04), _maprange(nt, f, 0.26, 0.08))
+    rs = nt.nodes.new('ShaderNodeTexNoise'); rs.noise_dimensions = '1D'; rs.inputs['Scale'].default_value = 0.6 / ring_mm
+    rs.inputs['Detail'].default_value = 2; l.new(rad, rs.inputs['W'])
+    early = mth('MULTIPLY', early, _maprange(nt, rs.outputs['Fac'], 0.3, 0.7, 0.35, 1.0))   # some rings faint, some strong
     # fibre streaks along the grain
     st = _noise(nt, Q, 0.6, detail=8, rough=0.65, stretch=(1.0, 1.0, 0.025))
     # colour per plank
