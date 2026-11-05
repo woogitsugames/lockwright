@@ -1,0 +1,151 @@
+{
+  "base": "drop",
+  "chain": [
+    {
+      "composition": [
+        [
+          "QUICK_FALL",
+          0.44,
+          0
+        ],
+        [
+          "LOW_TICK",
+          0.275,
+          120
+        ],
+        [
+          "LOW_TICK",
+          0.275,
+          80
+        ],
+        [
+          "LOW_TICK",
+          0.275,
+          60
+        ]
+      ],
+      "onset_ms": [
+        0,
+        120,
+        200,
+        260
+      ],
+      "tier": "a2"
+    },
+    {
+      "composition": [
+        [
+          "TICK",
+          0.33,
+          120
+        ],
+        [
+          "TICK",
+          0.33,
+          80
+        ],
+        [
+          "TICK",
+          0.33,
+          60
+        ]
+      ],
+      "onset_ms": [
+        120,
+        200,
+        260
+      ],
+      "tier": "a2"
+    },
+    {
+      "tier": "a1",
+      "waveform": {
+        "amps": [
+          132,
+          0,
+          110,
+          0,
+          88
+        ],
+        "timings": [
+          12,
+          110,
+          12,
+          70,
+          12
+        ]
+      }
+    },
+    {
+      "on_ms": 40,
+      "tier": "a0"
+    }
+  ],
+  "essential": true,
+  "event": "detector.reset",
+  "family": "lever_detector",
+  "material": "brass",
+  "modifiers": {
+    "ds": -0.1,
+    "family_modifier_applied": true,
+    "k": 1.1
+  },
+  "normalization": [],
+  "priority": 3,
+  "rule": "FEEL §1.3: first entry whose tier <= device tier and all primitives in supported_primitives_mask. composition delay_ms is relative to the previous primitive's start (FEEL semantics); onset_ms is cumulative. Android Composition.addPrimitive delay counts from the end of the previous primitive: subtract getPrimitiveDurations().",
+  "selection": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 3,
+      "summary": "on 40 ms"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 2,
+      "summary": "waveform t[12, 110, 12, 70, 12] a[132, 0, 110, 0, 88]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "QUICK_FALL@0 0.44 + LOW_TICK@120 0.275 + LOW_TICK@200 0.275 + LOW_TICK@260 0.275"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "QUICK_FALL@0 0.44 + LOW_TICK@120 0.275 + LOW_TICK@200 0.275 + LOW_TICK@260 0.275"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "QUICK_FALL@0 0.44 + LOW_TICK@120 0.275 + LOW_TICK@200 0.275 + LOW_TICK@260 0.275"
+    }
+  },
+  "selection_min_primitives": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 3,
+      "summary": "on 40 ms"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 2,
+      "summary": "waveform t[12, 110, 12, 70, 12] a[132, 0, 110, 0, 88]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 1,
+      "summary": "TICK@120 0.33 + TICK@200 0.33 + TICK@260 0.33"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 1,
+      "summary": "TICK@120 0.33 + TICK@200 0.33 + TICK@260 0.33"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 1,
+      "summary": "TICK@120 0.33 + TICK@200 0.33 + TICK@260 0.33"
+    }
+  },
+  "source": "docs/FEEL.md §9 sub_events.detector.reset.android_chain"
+}

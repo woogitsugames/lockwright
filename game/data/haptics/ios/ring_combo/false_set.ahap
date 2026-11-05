@@ -1,0 +1,41 @@
+{
+  "Metadata": {
+    "Description": "ring_combo / false_set / brass (k 0.9, dS 0.0); FEEL §2 false_set, §1.1, F-01, §3.5; second impulse at +28 ms (families.ring_combo.false_set_second_delay_ms)",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.765
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.75
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.0
+      }
+    },
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.225
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.3
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.028
+      }
+    }
+  ],
+  "Version": 1.0
+}

@@ -119,6 +119,31 @@ jobs:
         run: python3 data/tools/validate.py
       - name: Localization QA
         run: python3 data/tools/loc_qa.py
+      - name: Haptics budget validator (haptics/validate.py, task 4)
+        run: python3 haptics/validate.py
+      - name: Haptics detail files in game match haptics/out
+        run: |
+          python3 - <<'EOF'
+          import json, hashlib, sys
+          idx = json.load(open('haptics/out/index.json'))
+          missing = []
+          for fam, fdata in idx['families'].items():
+              for ev, edata in fdata['events'].items():
+                  for key in ('android', 'ios', 'ios_mod'):
+                      ref = edata.get(key)
+                      files = ref if isinstance(ref, list) else ([ref] if ref else [])
+                      for f in files:
+                          p = 'game/data/haptics/' + f['file']
+                          try:
+                              h = hashlib.sha256(open(p, 'rb').read()).hexdigest()
+                          except OSError:
+                              missing.append(p); continue
+                          if h != f['sha256']:
+                              missing.append(p + ' (hash mismatch)')
+          if missing:
+              print('MISMATCH:\n' + '\n'.join(missing)); sys.exit(1)
+          print('haptics detail files OK:', sum(len(e) for e in [1]), 'checked via index.json')
+          EOF
 
   audio-check:
     runs-on: ubuntu-latest

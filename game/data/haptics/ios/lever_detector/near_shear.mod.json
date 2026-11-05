@@ -1,0 +1,23 @@
+{
+  "apply": "Do not put into the event AHAP: Core Haptics curves only affect their own player (TECH §2.1). Apply on the continuous player of `channel`: intensity_scale = multiply HapticIntensityControl by the curve [[t_ms, factor]]; intensity_add / sharpness_add = add to the control value; sharpness_set = absolute sharpness until the condition ends.",
+  "event": "near_shear",
+  "family": "lever_detector",
+  "modulation": {
+    "channel": "tension_resistance",
+    "sharpness_add": [
+      [
+        0,
+        0.15
+      ],
+      [
+        150,
+        0.15
+      ],
+      [
+        450,
+        0.0
+      ]
+    ]
+  },
+  "source": "FEEL §2 near_shear (+ §9 events.near_shear.ios.entry_tick_*)"
+}

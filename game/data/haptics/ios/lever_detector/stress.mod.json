@@ -1,0 +1,16 @@
+{
+  "apply": "Do not put into the event AHAP: Core Haptics curves only affect their own player (TECH §2.1). Apply on the continuous player of `channel`: intensity_scale = multiply HapticIntensityControl by the curve [[t_ms, factor]]; intensity_add / sharpness_add = add to the control value; sharpness_set = absolute sharpness until the condition ends.",
+  "event": "stress",
+  "family": "lever_detector",
+  "modulation": {
+    "channel": "tension_resistance",
+    "high_threshold": 0.9,
+    "intensity_add_by_ratio": [
+      0.1,
+      0.35
+    ],
+    "sharpness_set": 0.95,
+    "sustain_cap_ms": 4000
+  },
+  "source": "FEEL §2 stress, F-06, §5.2 rule 3"
+}

@@ -1,0 +1,4148 @@
+{
+  "columns": {
+    "full": "all 8 primitives supported",
+    "min_primitives": "only CLICK + TICK (A2 minimum)"
+  },
+  "families": {
+    "lever": {
+      "bind": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[121]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "LOW_TICK@0 0.55"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.55"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.55"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[121]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.44"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.44"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.44"
+          }
+        }
+      },
+      "break": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[40] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[40] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          }
+        }
+      },
+      "contact": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[10] a[77]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[10] a[77]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          }
+        }
+      },
+      "counter_rotate": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 25 ms, every 250 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15, 135] a[110, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "LOW_TICK@0 0.385, every 120 ms"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 600 ms, tick LOW_TICK 0.385"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 600 ms, tick LOW_TICK 0.385"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 25 ms, every 250 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15, 135] a[110, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.385, every 120 ms"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.385, every 120 ms"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.385, every 120 ms"
+          }
+        }
+      },
+      "drop": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[12, 70, 12, 70, 12] a[220, 0, 176, 0, 132]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[12, 70, 12, 70, 12] a[220, 0, 176, 0, 132]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          }
+        }
+      },
+      "false_set": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms + 25 ms after 150"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[18, 40, 10] a[255, 0, 77]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.935 + LOW_TICK@40 0.275"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.935 + LOW_TICK@40 0.275"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.935 + LOW_TICK@40 0.275"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms + 25 ms after 150"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[18, 40, 10] a[255, 0, 77]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.935 + TICK@40 0.22"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.935 + TICK@40 0.22"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.935 + TICK@40 0.22"
+          }
+        }
+      },
+      "gate_align": {
+        "folded_into": "set"
+      },
+      "lever.false_gate": {
+        "folded_into": "false_set"
+      },
+      "near_shear": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "resistance amp +20%"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "QUICK_RISE@0 0.22"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "resistance amp +20%"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.132"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          }
+        }
+      },
+      "open": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 50 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[300, 30] a[66, 255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "SLOW_RISE@0 0.33 + CLICK@0 1.0"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 50 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[300, 30] a[66, 255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "CLICK@0 1.0"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          }
+        }
+      },
+      "overset": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[25] a[176]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.66"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.66"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.66"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[25] a[176]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.44"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.44"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.44"
+          }
+        }
+      },
+      "set": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[18] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[18] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          }
+        }
+      },
+      "stress": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[10, 110] a[94, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@0 0.315, every 80 ms"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[10, 110] a[94, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@0 0.315, every 80 ms"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          }
+        }
+      },
+      "wear": {
+        "audio_only": true
+      }
+    },
+    "lever_detector": {
+      "bind": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[121]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "LOW_TICK@0 0.55"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.55"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.55"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[121]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.44"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.44"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.44"
+          }
+        }
+      },
+      "break": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[40] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[40] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          }
+        }
+      },
+      "contact": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[10] a[77]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[10] a[77]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          }
+        }
+      },
+      "counter_rotate": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 25 ms, every 250 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15, 135] a[110, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "LOW_TICK@0 0.385, every 120 ms"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 600 ms, tick LOW_TICK 0.385"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 600 ms, tick LOW_TICK 0.385"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 25 ms, every 250 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15, 135] a[110, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.385, every 120 ms"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.385, every 120 ms"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.385, every 120 ms"
+          }
+        }
+      },
+      "detector.reset": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 40 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[12, 110, 12, 70, 12] a[132, 0, 110, 0, 88]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "QUICK_FALL@0 0.44 + LOW_TICK@120 0.275 + LOW_TICK@200 0.275 + LOW_TICK@260 0.275"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "QUICK_FALL@0 0.44 + LOW_TICK@120 0.275 + LOW_TICK@200 0.275 + LOW_TICK@260 0.275"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "QUICK_FALL@0 0.44 + LOW_TICK@120 0.275 + LOW_TICK@200 0.275 + LOW_TICK@260 0.275"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 40 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[12, 110, 12, 70, 12] a[132, 0, 110, 0, 88]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@120 0.33 + TICK@200 0.33 + TICK@260 0.33"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@120 0.33 + TICK@200 0.33 + TICK@260 0.33"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@120 0.33 + TICK@200 0.33 + TICK@260 0.33"
+          }
+        }
+      },
+      "detector.reset_hold": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "EFFECT_TICK"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.165, every 250 ms"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.165, every 250 ms"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.165, every 250 ms"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "EFFECT_TICK"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.165, every 250 ms"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.165, every 250 ms"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.165, every 250 ms"
+          }
+        }
+      },
+      "detector_trip": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on/off [60, 80, 60]"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[60, 80, 60] a[242, 0, 242]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "THUD@0 0.77 + THUD@140 0.77"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 7 pts / 221 ms"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 7 pts / 221 ms"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on/off [60, 80, 60]"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[60, 80, 60] a[242, 0, 242]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "CLICK@0 0.88 + CLICK@140 0.88"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 7 pts / 221 ms"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 7 pts / 221 ms"
+          }
+        }
+      },
+      "drop": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[12, 70, 12, 70, 12] a[220, 0, 176, 0, 132]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[12, 70, 12, 70, 12] a[220, 0, 176, 0, 132]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          }
+        }
+      },
+      "false_set": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms + 25 ms after 150"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[18, 40, 10] a[255, 0, 77]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.935 + LOW_TICK@40 0.275"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.935 + LOW_TICK@40 0.275"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.935 + LOW_TICK@40 0.275"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms + 25 ms after 150"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[18, 40, 10] a[255, 0, 77]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.935 + TICK@40 0.22"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.935 + TICK@40 0.22"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.935 + TICK@40 0.22"
+          }
+        }
+      },
+      "gate_align": {
+        "folded_into": "set"
+      },
+      "lever.false_gate": {
+        "folded_into": "false_set"
+      },
+      "near_shear": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "resistance amp +20%"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "QUICK_RISE@0 0.22"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "resistance amp +20%"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.132"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          }
+        }
+      },
+      "open": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 50 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[300, 30] a[66, 255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "SLOW_RISE@0 0.33 + CLICK@0 1.0"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 50 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[300, 30] a[66, 255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "CLICK@0 1.0"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          }
+        }
+      },
+      "overset": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[25] a[176]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.66"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.66"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.66"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[25] a[176]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.44"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.44"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.44"
+          }
+        }
+      },
+      "set": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[18] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[18] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          }
+        }
+      },
+      "stress": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[10, 110] a[94, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@0 0.315, every 80 ms"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[10, 110] a[94, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@0 0.315, every 80 ms"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          }
+        }
+      },
+      "wear": {
+        "audio_only": true
+      }
+    },
+    "pin_tumbler": {
+      "bind": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[110]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "LOW_TICK@0 0.5"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.5"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.5"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[110]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.4"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.4"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.4"
+          }
+        }
+      },
+      "break": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[40] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[40] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          }
+        }
+      },
+      "contact": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[10] a[70]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.35"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.35"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.35"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[10] a[70]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.35"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.35"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.35"
+          }
+        }
+      },
+      "counter_rotate": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 25 ms, every 250 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15, 135] a[100, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "LOW_TICK@0 0.35, every 120 ms"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 600 ms, tick LOW_TICK 0.35"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 600 ms, tick LOW_TICK 0.35"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 25 ms, every 250 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15, 135] a[100, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.35, every 120 ms"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.35, every 120 ms"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.35, every 120 ms"
+          }
+        }
+      },
+      "drop": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[12, 70, 12, 70, 12] a[200, 0, 160, 0, 120]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.7 + TICK@50 0.6 + TICK@100 0.5 + TICK@150 0.4"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.7 + TICK@50 0.6 + TICK@100 0.5 + TICK@150 0.4"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.7 + TICK@50 0.6 + TICK@100 0.5 + TICK@150 0.4"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[12, 70, 12, 70, 12] a[200, 0, 160, 0, 120]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.7 + TICK@50 0.6 + TICK@100 0.5 + TICK@150 0.4"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.7 + TICK@50 0.6 + TICK@100 0.5 + TICK@150 0.4"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.7 + TICK@50 0.6 + TICK@100 0.5 + TICK@150 0.4"
+          }
+        }
+      },
+      "false_set": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms + 25 ms after 150"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[18, 40, 10] a[240, 0, 70]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.85 + LOW_TICK@28 0.25"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.85 + LOW_TICK@28 0.25"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.85 + LOW_TICK@28 0.25"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms + 25 ms after 150"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[18, 40, 10] a[240, 0, 70]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.85 + TICK@28 0.2"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.85 + TICK@28 0.2"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.85 + TICK@28 0.2"
+          }
+        }
+      },
+      "near_shear": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "resistance amp +20%"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "QUICK_RISE@0 0.2"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "resistance amp +20%"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.12"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          }
+        }
+      },
+      "open": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 50 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[300, 30] a[60, 255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "SLOW_RISE@0 0.3 + CLICK@0 1.0"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 50 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[300, 30] a[60, 255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "CLICK@0 1.0"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          }
+        }
+      },
+      "overset": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[25] a[160]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.6"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.6"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.6"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[25] a[160]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.4"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.4"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.4"
+          }
+        }
+      },
+      "pin.serration": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[8] a[50]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.2"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.2"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.2"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[8] a[50]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.2"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.2"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.2"
+          }
+        }
+      },
+      "pin.spring_bounce": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "skip (sound + image only)"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.12"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.12"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.12"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "skip (sound + image only)"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.12"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.12"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.12"
+          }
+        }
+      },
+      "set": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[18] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.9"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.9"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.9"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[18] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.9"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.9"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.9"
+          }
+        }
+      },
+      "stress": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[10, 110] a[94, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@0 0.315, every 80 ms"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[10, 110] a[94, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@0 0.315, every 80 ms"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          }
+        }
+      },
+      "wear": {
+        "audio_only": true
+      }
+    },
+    "ring_combo": {
+      "bind": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[99]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "LOW_TICK@0 0.45"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.45"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.45"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[99]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.36"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.36"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.36"
+          }
+        }
+      },
+      "contact": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[10] a[63]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.315"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.315"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.315"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[10] a[63]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.315"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.315"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.315"
+          }
+        }
+      },
+      "drop": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[12, 70, 12, 70, 12] a[180, 0, 144, 0, 108]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.63 + TICK@50 0.54 + TICK@100 0.45 + TICK@150 0.36"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.63 + TICK@50 0.54 + TICK@100 0.45 + TICK@150 0.36"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.63 + TICK@50 0.54 + TICK@100 0.45 + TICK@150 0.36"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[12, 70, 12, 70, 12] a[180, 0, 144, 0, 108]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.63 + TICK@50 0.54 + TICK@100 0.45 + TICK@150 0.36"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.63 + TICK@50 0.54 + TICK@100 0.45 + TICK@150 0.36"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.63 + TICK@50 0.54 + TICK@100 0.45 + TICK@150 0.36"
+          }
+        }
+      },
+      "false_set": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms + 25 ms after 150"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[18, 40, 10] a[216, 0, 63]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.765 + LOW_TICK@28 0.225"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.765 + LOW_TICK@28 0.225"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.765 + LOW_TICK@28 0.225"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms + 25 ms after 150"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[18, 40, 10] a[216, 0, 63]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.765 + TICK@28 0.18"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.765 + TICK@28 0.18"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.765 + TICK@28 0.18"
+          }
+        }
+      },
+      "gate_align": {
+        "folded_into": "set"
+      },
+      "near_shear": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "resistance amp +20%"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "QUICK_RISE@0 0.18"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "resistance amp +20%"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.108"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          }
+        }
+      },
+      "open": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 50 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[300, 30] a[54, 230]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "SLOW_RISE@0 0.27 + CLICK@0 0.9"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 0.9"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 0.9"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 50 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[300, 30] a[54, 230]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "CLICK@0 0.9"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 0.9"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 0.9"
+          }
+        }
+      },
+      "ring.detent": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "EFFECT_TICK"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.198"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.198"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.198"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "EFFECT_TICK"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.198"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.198"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.198"
+          }
+        }
+      },
+      "set": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[18] a[230]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.81"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.81"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.81"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[18] a[230]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.81"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.81"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.81"
+          }
+        }
+      }
+    },
+    "wafer": {
+      "bind": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[94]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "LOW_TICK@0 0.425"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.425"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.425"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[94]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.34"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.34"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.34"
+          }
+        }
+      },
+      "break": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[40] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[40] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          }
+        }
+      },
+      "contact": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[10] a[60]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.297"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.297"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.297"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[10] a[60]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.297"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.297"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.297"
+          }
+        }
+      },
+      "drop": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[12, 70, 12, 70, 12] a[170, 0, 136, 0, 102]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.595 + TICK@50 0.51 + TICK@100 0.425 + TICK@150 0.34"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.595 + TICK@50 0.51 + TICK@100 0.425 + TICK@150 0.34"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.595 + TICK@50 0.51 + TICK@100 0.425 + TICK@150 0.34"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[12, 70, 12, 70, 12] a[170, 0, 136, 0, 102]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.595 + TICK@50 0.51 + TICK@100 0.425 + TICK@150 0.34"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.595 + TICK@50 0.51 + TICK@100 0.425 + TICK@150 0.34"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.595 + TICK@50 0.51 + TICK@100 0.425 + TICK@150 0.34"
+          }
+        }
+      },
+      "near_shear": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "resistance amp +20%"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "QUICK_RISE@0 0.17"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "resistance amp +20%"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.102"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          }
+        }
+      },
+      "open": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 50 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[300, 30] a[51, 217]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "SLOW_RISE@0 0.255 + CLICK@0 0.85"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 0.85"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 0.85"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 50 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[300, 30] a[51, 217]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "CLICK@0 0.85"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 0.85"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 0.85"
+          }
+        }
+      },
+      "overset": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[25] a[136]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.51"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.51"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.51"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[25] a[136]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.34"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.34"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.34"
+          }
+        }
+      },
+      "set": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[18] a[217]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.765"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.765"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.765"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[18] a[217]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.765"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.765"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.765"
+          }
+        }
+      },
+      "stress": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[10, 110] a[94, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@0 0.315, every 80 ms"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[10, 110] a[94, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@0 0.315, every 80 ms"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          }
+        }
+      },
+      "wafer.rattle": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "skip (sound + image only)"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.085"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.085"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.085"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "skip (sound + image only)"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.085"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.085"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.085"
+          }
+        }
+      },
+      "wear": {
+        "audio_only": true
+      }
+    },
+    "warded": {
+      "bind": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[121]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "LOW_TICK@0 0.55"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.55"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.55"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[121]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.44"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.44"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.44"
+          }
+        }
+      },
+      "break": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[40] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 1.0 + QUICK_FALL@0 0.63"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[40] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 1.0"
+          }
+        }
+      },
+      "contact": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[10] a[77]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[10] a[77]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.385"
+          }
+        }
+      },
+      "drop": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[12, 70, 12, 70, 12] a[220, 0, 176, 0, 132]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[12, 70, 12, 70, 12] a[220, 0, 176, 0, 132]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.77 + TICK@50 0.66 + TICK@100 0.55 + TICK@150 0.44"
+          }
+        }
+      },
+      "gate_align": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 25 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[154]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "LOW_TICK@0 0.66"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "LOW_TICK@0 0.66"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "LOW_TICK@0 0.66"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 25 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[154]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.55"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.55"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.55"
+          }
+        }
+      },
+      "open": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 50 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[300, 30] a[66, 255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "SLOW_RISE@0 0.33 + CLICK@0 1.0"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 50 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[300, 30] a[66, 255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "CLICK@0 1.0"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 1.0"
+          }
+        }
+      },
+      "set": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[18] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[18] a[255]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.99"
+          }
+        }
+      },
+      "stress": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[10, 110] a[94, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@0 0.315, every 80 ms"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[10, 110] a[94, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@0 0.315, every 80 ms"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+          }
+        }
+      },
+      "ward.scrape": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "EFFECT_TICK, <= 5/s"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.198, every 100 ms"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.198, every 100 ms"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.198, every 100 ms"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "EFFECT_TICK, <= 5/s"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.198, every 100 ms"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.198, every 100 ms"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.198, every 100 ms"
+          }
+        }
+      },
+      "wear": {
+        "audio_only": true
+      }
+    },
+    "wooden_pin": {
+      "bind": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[99]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "LOW_TICK@0 0.45"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.45"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 80 ms, LOW_TICK@0 0.45"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[15] a[99]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.36"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.36"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.36"
+          }
+        }
+      },
+      "contact": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[10] a[63]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.315"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.315"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.315"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[10] a[63]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.315"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.315"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.315"
+          }
+        }
+      },
+      "drop": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[12, 70, 12, 70, 12] a[180, 0, 144, 0, 108]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.63 + TICK@50 0.54 + TICK@100 0.45 + TICK@150 0.36"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.63 + TICK@50 0.54 + TICK@100 0.45 + TICK@150 0.36"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.63 + TICK@50 0.54 + TICK@100 0.45 + TICK@150 0.36"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 2,
+            "summary": "on 60 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[12, 70, 12, 70, 12] a[180, 0, 144, 0, 108]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.63 + TICK@50 0.54 + TICK@100 0.45 + TICK@150 0.36"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.63 + TICK@50 0.54 + TICK@100 0.45 + TICK@150 0.36"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "TICK@0 0.63 + TICK@50 0.54 + TICK@100 0.45 + TICK@150 0.36"
+          }
+        }
+      },
+      "near_shear": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "resistance amp +20%"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "QUICK_RISE@0 0.18"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "resistance amp +20%"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "TICK@0 0.108"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 3 pts / 450 ms"
+          }
+        }
+      },
+      "open": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 50 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[300, 30] a[54, 230]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "SLOW_RISE@0 0.27 + CLICK@0 0.9"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 0.9"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 0.9"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 4,
+            "summary": "on 50 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 3,
+            "summary": "waveform t[300, 30] a[54, 230]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 2,
+            "summary": "CLICK@0 0.9"
+          },
+          "a3": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 0.9"
+          },
+          "a4": {
+            "entry_tier": "a3",
+            "index": 0,
+            "summary": "envelope 2 pts / 300 ms, then CLICK 0.9"
+          }
+        }
+      },
+      "overset": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[25] a[144]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.54"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.54"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "THUD@0 0.54"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[25] a[144]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.36"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.36"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "CLICK@0 0.36"
+          }
+        }
+      },
+      "set": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[18] a[230]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.81"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.81"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.81"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "on 30 ms"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 1,
+            "summary": "waveform t[18] a[230]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.81"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.81"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "CLICK@0 0.81"
+          }
+        }
+      },
+      "wood.creak": {
+        "full": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[12, 148] a[72, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "LOW_TICK@0 0.225, every 160 ms"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "LOW_TICK@0 0.225, every 160 ms"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 0,
+            "summary": "LOW_TICK@0 0.225, every 160 ms"
+          }
+        },
+        "min_primitives": {
+          "a0": {
+            "entry_tier": "a0",
+            "index": 3,
+            "summary": "skip (sound + image only)"
+          },
+          "a1": {
+            "entry_tier": "a1",
+            "index": 2,
+            "summary": "waveform t[12, 148] a[72, 0]"
+          },
+          "a2": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@0 0.18, every 160 ms"
+          },
+          "a3": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@0 0.18, every 160 ms"
+          },
+          "a4": {
+            "entry_tier": "a2",
+            "index": 1,
+            "summary": "TICK@0 0.18, every 160 ms"
+          }
+        }
+      }
+    }
+  },
+  "source": "FEEL §1.3",
+  "tiers": [
+    "a4",
+    "a3",
+    "a2",
+    "a1",
+    "a0"
+  ]
+}

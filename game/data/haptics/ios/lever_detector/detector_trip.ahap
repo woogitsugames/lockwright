@@ -1,0 +1,67 @@
+{
+  "Metadata": {
+    "Description": "lever_detector / detector_trip / brass (k 1.1, dS -0.1); FEEL §2 detector_trip, §1.1",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventDuration": 0.08,
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.77
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.2
+          },
+          {
+            "ParameterID": "AttackTime",
+            "ParameterValue": 0.0
+          },
+          {
+            "ParameterID": "ReleaseTime",
+            "ParameterValue": 0.02
+          },
+          {
+            "ParameterID": "Sustained",
+            "ParameterValue": 1.0
+          }
+        ],
+        "EventType": "HapticContinuous",
+        "Time": 0.0
+      }
+    },
+    {
+      "Event": {
+        "EventDuration": 0.08,
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.77
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.2
+          },
+          {
+            "ParameterID": "AttackTime",
+            "ParameterValue": 0.0
+          },
+          {
+            "ParameterID": "ReleaseTime",
+            "ParameterValue": 0.02
+          },
+          {
+            "ParameterID": "Sustained",
+            "ParameterValue": 1.0
+          }
+        ],
+        "EventType": "HapticContinuous",
+        "Time": 0.14
+      }
+    }
+  ],
+  "Version": 1.0
+}

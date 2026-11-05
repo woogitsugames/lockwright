@@ -1,0 +1,113 @@
+{
+  "base": null,
+  "chain": [
+    {
+      "composition": [
+        [
+          "THUD",
+          0.6,
+          0
+        ]
+      ],
+      "onset_ms": [
+        0
+      ],
+      "tier": "a2"
+    },
+    {
+      "composition": [
+        [
+          "CLICK",
+          0.4,
+          0
+        ]
+      ],
+      "onset_ms": [
+        0
+      ],
+      "tier": "a2"
+    },
+    {
+      "tier": "a1",
+      "waveform": {
+        "amps": [
+          160
+        ],
+        "timings": [
+          25
+        ]
+      }
+    },
+    {
+      "on_ms": 30,
+      "tier": "a0"
+    }
+  ],
+  "essential": false,
+  "event": "overset",
+  "family": "pin_tumbler",
+  "material": "brass",
+  "modifiers": {
+    "ds": 0.0,
+    "family_modifier_applied": true,
+    "k": 1.0
+  },
+  "normalization": [],
+  "priority": 7,
+  "rule": "FEEL §1.3: first entry whose tier <= device tier and all primitives in supported_primitives_mask. composition delay_ms is relative to the previous primitive's start (FEEL semantics); onset_ms is cumulative. Android Composition.addPrimitive delay counts from the end of the previous primitive: subtract getPrimitiveDurations().",
+  "selection": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 3,
+      "summary": "on 30 ms"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 2,
+      "summary": "waveform t[25] a[160]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "THUD@0 0.6"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "THUD@0 0.6"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "THUD@0 0.6"
+    }
+  },
+  "selection_min_primitives": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 3,
+      "summary": "on 30 ms"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 2,
+      "summary": "waveform t[25] a[160]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 1,
+      "summary": "CLICK@0 0.4"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 1,
+      "summary": "CLICK@0 0.4"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 1,
+      "summary": "CLICK@0 0.4"
+    }
+  },
+  "source": "docs/FEEL.md §9 events.overset.android_chain"
+}

@@ -1,0 +1,100 @@
+{
+  "base": null,
+  "chain": [
+    {
+      "composition": [
+        [
+          "TICK",
+          0.385,
+          0
+        ]
+      ],
+      "onset_ms": [
+        0
+      ],
+      "tier": "a2"
+    },
+    {
+      "tier": "a1",
+      "waveform": {
+        "amps": [
+          77
+        ],
+        "timings": [
+          10
+        ]
+      }
+    },
+    {
+      "skip": true,
+      "tier": "a0"
+    }
+  ],
+  "essential": false,
+  "event": "contact",
+  "family": "warded",
+  "material": "iron",
+  "modifiers": {
+    "ds": -0.1,
+    "family_modifier_applied": true,
+    "k": 1.1
+  },
+  "normalization": [],
+  "priority": 12,
+  "rule": "FEEL §1.3: first entry whose tier <= device tier and all primitives in supported_primitives_mask. composition delay_ms is relative to the previous primitive's start (FEEL semantics); onset_ms is cumulative. Android Composition.addPrimitive delay counts from the end of the previous primitive: subtract getPrimitiveDurations().",
+  "selection": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 2,
+      "summary": "skip (sound + image only)"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 1,
+      "summary": "waveform t[10] a[77]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.385"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.385"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.385"
+    }
+  },
+  "selection_min_primitives": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 2,
+      "summary": "skip (sound + image only)"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 1,
+      "summary": "waveform t[10] a[77]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.385"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.385"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.385"
+    }
+  },
+  "source": "docs/FEEL.md §9 events.contact.android_chain"
+}
