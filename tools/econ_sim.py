@@ -95,7 +95,7 @@ SCENARIOS = {
               changes={
                   "price": {"pk_ward": 0, "pk_lever": 300, "tl_polar": 700, "pk_crown": 600, "tw_bar": 450,
                             "pk_flag": 900, "pk_plunger": 1000, "pk_disc": 1100, "tl_cup": 1200},
-                  "unlock": {"tl_cup": "after_t4", "pk_disc": "after_t6", "tl_polar": "after_t4",
+                  "unlock": {"tl_cup": "after_t4", "pk_disc": "after_t5", "tl_polar": "after_t4",
                              "pk_crown": "after_t3", "pk_lever": "after_t2",
                              "pk_flag": "after_t5", "pk_plunger": "after_t5"},
                   "reward_x": 1.0,
@@ -584,9 +584,11 @@ def FINDINGS(results, jobs, tools, prog, cont):
         f"zanim przyjmie pierwsze zlecenie. Sondę trzeba dać w samouczku (cena 0). `tl_shackle` (150, `after_first_t2`) i potem "
         f"korba (C: 300) kupuje się bez decyzji, bo monet z rozdziału 1–2 starcza z zapasem: to formalność, nie wybór. "
         f"Można je dać jako nagrodę rzeczową zlecenia, a monety zostawić na narzędzia z alternatywą.",
-        f"6. **Naprawy rozwarstwiają profile.** Koszt napraw przez karierę (C): careful "
-        f"{m(c, 'careful', lambda x: x.totals['repair']):.0f}, average {m(c, 'average', lambda x: x.totals['repair']):.0f}, clumsy "
-        f"{m(c, 'clumsy', lambda x: x.totals['repair']):.0f} monet ({m(c, 'clumsy', lambda x: x.totals['breaks']):.0f} złamań). "
+        f"6. **Naprawy rozwarstwiają profile.** Koszt napraw przez karierę, B (z grindem): careful "
+        f"{m(b, 'careful', lambda x: x.totals['repair']):.0f}, average {m(b, 'average', lambda x: x.totals['repair']):.0f}, clumsy "
+        f"{m(b, 'clumsy', lambda x: x.totals['repair']):.0f} monet ({m(b, 'clumsy', lambda x: x.totals['breaks']):.0f} złamań); "
+        f"C: {m(c, 'careful', lambda x: x.totals['repair']):.0f}/{m(c, 'average', lambda x: x.totals['repair']):.0f}/"
+        f"{m(c, 'clumsy', lambda x: x.totals['repair']):.0f}. "
         f"Złamanie drogiego narzędzia (35 % ceny, np. obrotnik 1 800 → 630) zjada 4–6 zleceń, więc gracz niezdarny wpada w pętlę "
         f"grind → naprawa → grind. Propozycja: naprawa złamanego = 15 % + 10 monet stałe, z limitem 150; uczy ostrożności bez spirali. "
         f"Narzędzia startowe (cena 0) naprawia się za minimum 5, czyli w praktyce za darmo.",
