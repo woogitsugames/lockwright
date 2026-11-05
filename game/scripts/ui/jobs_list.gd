@@ -1,8 +1,8 @@
 extends Control
 ## Job list (Tryb Zleceń): all jobs from game/data/jobs/*.json, grouped by chapter.
 
-@onready var list: VBoxContainer = $VBox/Scroll/VBox/JobsList
-@onready var back_button: Button = $BackButton
+@onready var list: VBoxContainer = $Frame/VBox/Scroll/JobsList
+@onready var back_button: Button = $Frame/VBox/Header/BackButton
 
 const JOBS_DIR := "res://data/jobs"
 const JOBS_CH7_DIR := "res://data/jobs_ch7"  # task 11: chapter 7, only behind "po premierze"
@@ -11,9 +11,11 @@ const JOBS_CH7_DIR := "res://data/jobs_ch7"  # task 11: chapter 7, only behind "
 func _ready() -> void:
 	Sfx.play_ambience(&"stairwell")
 	Sfx.play_music(&"main_theme")
-	SafeArea.apply(self)
-	$VBox/Title.text = I18n.t(&"jobs.title")
-	back_button.text = I18n.t(&"common.back")
+	ScreenFrame.backdrop(self, "res://assets/ui/stairwell.jpg", 0.55)
+	ScreenFrame.fit(self, $Frame)  # N-53/N-59: 16 dp + safe-area, no sideways scroll
+	$Frame/VBox/Scroll.scroll_deadzone = 12
+	$Frame/VBox/Header/Title.text = I18n.t(&"jobs.title")
+	back_button.text = "‹ " + I18n.t(&"common.back")
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 	var completed: Array = Save.get_value("jobs_completed", [])
 	var refused: Array = Save.get_value("jobs_refused", [])  # N-15: refused jobs are closed
@@ -34,8 +36,10 @@ func _ready() -> void:
 		var b := Button.new()
 		b.text = I18n.t(job.get("i18n", {}).get("title", &"jobs.title"))
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		b.custom_minimum_size = Vector2(0, 48)
+		b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART  # N-59: long titles wrap
+		b.custom_minimum_size = Vector2(0, 52)
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		b.mouse_filter = Control.MOUSE_FILTER_PASS
 		var jid: String = job.get("id", "")
 		if completed.has(jid):
 			b.text = "✓ " + b.text
@@ -46,3 +50,4 @@ func _ready() -> void:
 			get_tree().change_scene_to_file("res://scenes/job_arrival.tscn"))
 		row.add_child(b)
 		list.add_child(row)
+	ScreenFrame.enter($Frame/VBox/Scroll)
