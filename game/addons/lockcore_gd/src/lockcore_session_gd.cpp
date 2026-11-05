@@ -124,6 +124,8 @@ Dictionary LockcoreSession::describe() const {
 	vm["stress"] = static_cast<double>(v.stress) / lockcore::Q16_ONE;
 	vm["hold_progress"] = static_cast<double>(v.hold_progress) / lockcore::Q16_ONE;  // v0.4, FEEL F-07
 	vm["reset_progress"] = static_cast<double>(v.reset_progress) / lockcore::Q16_ONE;
+	vm["dial"] = static_cast<double>(v.dial) / lockcore::Q16_ONE;  // v0.6: dial_safe dial reading, fraction of a turn
+	vm["dial_divisions"] = v.dial_divisions;  // v0.6: 0 when the family has no dial
 	vm["open"] = v.open;
 	vm["failure"] = StringName(lockcore::failure_name(v.failure).data());
 	return vm;
