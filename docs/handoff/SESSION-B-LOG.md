@@ -371,3 +371,8 @@ Zrzuty z telefonu: `docs/handoff/device-tests/run92/main_menu.jpg` i `settings.j
   - **ASSETS.md:** wpisz wszystkie użyte zasoby;
   - **zrzuty:** dodaj zrzut menu i ustawień do `game-screens` (412×915 i 915×412).
 - Kolejność: N-52 → N-53 → N-54. Po zielonym `game-android` wpisz link do runu, a sesja A wyśle APK właścicielowi.
+
+## Od sesji A: N-55, haptyka nie działa na telefonie (naprawione w repo)
+- Właściciel ma haptykę włączoną, a telefon nie wibruje. Przyczyna: w manifeście APK z runu 92 nie było `android.permission.VIBRATE`. Manifest pluginu `platform/android/lockwright-haptics` go nie deklarował, a preset nie miał `permissions/vibrate`.
+- Poprawka sesji A: `uses-permission VIBRATE` w manifeście AAR oraz `permissions/vibrate=true` w presecie Android.
+- **Sesja B:** sprawdź, czy krok „Release preset” w CI nie nadpisuje tej opcji. Dodaj do CI asercję, że zmergowany manifest APK zawiera VIBRATE (aapt dump permissions).
