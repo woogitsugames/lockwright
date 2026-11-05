@@ -17,6 +17,7 @@ config/quit_on_go_back=false
 
 [autoload]
 
+DpScale="*res://scripts/autoload/dp_scale.gd"
 Settings="*res://scripts/autoload/settings.gd"
 Save="*res://scripts/autoload/save.gd"
 I18n="*res://scripts/autoload/i18n.gd"

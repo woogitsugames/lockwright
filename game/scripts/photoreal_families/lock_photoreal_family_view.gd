@@ -386,12 +386,7 @@ func _physical_scale() -> float:
 
 
 func _safe_rect(r: Rect2) -> Rect2:
-	var safe := Rect2(DisplayServer.get_display_safe_area())
-	var win := Vector2(get_window().size) if get_window() else r.size
-	if safe.size.x <= 0.0 or win.x <= 0.0 or not OS.has_feature("mobile"):
-		return r
-	var s := r.size / win
-	return Rect2(safe.position * s, safe.size * s).intersection(r)
+	return SafeArea.shrink(self, r)  # window-relative, clamped to the window (desktop and mobile)
 
 
 # ------------------------------------------------------------------ family pose application

@@ -21,10 +21,7 @@ const CARD_CROP := Rect2(0.08, 0.14, 0.84, 0.66)  # drawing area of a 1200×1500
 
 func _ready() -> void:
 	Sfx.play_ambience(&"stairwell")
-	# SafeArea uses the display's safe area; on desktop/xvfb that is the whole screen, not the
-	# window, and widens the root past the viewport (seen in 412×915 screenshots)
-	if OS.has_feature("mobile"):
-		SafeArea.apply(self)
+	SafeArea.apply(self)
 	var v := $Margin/Scroll/VBox
 	v.get_node("Title").text = I18n.t(&"tutorial.title")
 	v.get_node("Title").theme_type_variation = &"MenuTitle"

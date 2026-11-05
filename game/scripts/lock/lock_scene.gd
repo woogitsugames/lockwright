@@ -64,15 +64,13 @@ func _ready() -> void:
 
 
 func _apply_safe_area() -> void:
-	# R-32: pause button lives inside the display safe area (notch / Dynamic Island)
-	var safe := DisplayServer.get_display_safe_area()
-	var size := get_viewport().get_visible_rect().size
-	pause_button.position = Vector2(size.x - safe.position.x - safe.size.x + safe.position.x, 0)  # placeholder, refined below
+	# R-32: pause button lives inside the window's safe area (notch / Dynamic Island)
+	var i := SafeArea.insets(self)
 	pause_button.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	pause_button.offset_left = -104.0
-	pause_button.offset_top = safe.position.y + 8.0
-	pause_button.offset_right = -maxf(8.0, size.x - (safe.position.x + safe.size.x))
-	pause_button.offset_bottom = pause_button.offset_top + 48.0 * DisplayServer.screen_get_scale()
+	pause_button.offset_left = -104.0 - maxf(8.0, i.z)
+	pause_button.offset_top = i.y + 8.0
+	pause_button.offset_right = -maxf(8.0, i.z)
+	pause_button.offset_bottom = pause_button.offset_top + 48.0
 
 
 func _build_placeholder_meshes() -> void:

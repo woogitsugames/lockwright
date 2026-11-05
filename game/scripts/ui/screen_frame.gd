@@ -2,7 +2,7 @@ class_name ScreenFrame
 extends RefCounted
 ## N-53/N-59: shared frame for every menu screen.
 ## - the screen root stays full-rect, so its backdrop also fills the status-bar band;
-## - the content lives in a MarginContainer with 16 dp sides + the display safe-area
+## - the content lives in a MarginContainer with 16 dp sides + the window's safe-area
 ##   (cut-outs, gesture bar), in portrait and landscape;
 ## - on wide (landscape) viewports the content column is capped at MAX_COLUMN dp.
 
@@ -10,38 +10,14 @@ const SIDE := 16.0
 const MAX_COLUMN := 640.0
 
 
-## Safe-area insets (left, top, right, bottom) in canvas units of `root`'s viewport.
+## Safe-area insets (left, top, right, bottom) in canvas units of `root`'s viewport
+## (window-relative, see SafeArea).
 static func insets(root: Control) -> Vector4:
-	var vp := root.get_viewport_rect().size
-	if DisplayServer.get_name() == "headless":
-		return Vector4.ZERO
-	var win := DisplayServer.window_get_size()
-	var safe := DisplayServer.get_display_safe_area()
-	if win.x <= 0 or win.y <= 0 or vp.x <= 0 or vp.y <= 0 or safe.size.x <= 0:
-		return Vector4.ZERO
-	var k := vp / Vector2(win)
-	return Vector4(
-		maxf(0.0, safe.position.x * k.x),
-		maxf(0.0, safe.position.y * k.y),
-		maxf(0.0, (win.x - safe.end.x) * k.x),
-		maxf(0.0, (win.y - safe.end.y) * k.y))
-
-
-## N-59: with the project's 412x915 base and aspect "expand", a landscape phone gets
-## scale = 412/915 (everything 45% size). A 412x412 base keeps "short side = 412 dp"
-## in both orientations (portrait is unchanged). Applied at runtime until
-## project.godot carries window/size/viewport_height=412 (+ window_height_override=915).
-static func orientation_safe_scale(root: Control) -> void:
-	if DisplayServer.get_name() == "headless":
-		return
-	var win := root.get_window()
-	if win != null and win.content_scale_size == Vector2i(412, 915):
-		win.content_scale_size = Vector2i(412, 412)
+	return SafeArea.insets(root)
 
 
 ## Applies margins now and on every resize/rotation. `max_column` <= 0 disables the cap.
 static func fit(root: Control, frame: MarginContainer, max_column := MAX_COLUMN) -> void:
-	orientation_safe_scale(root)
 	var apply := func() -> void:
 		var i := insets(root)
 		var w := root.get_viewport_rect().size.x
