@@ -18,7 +18,11 @@ func _ready() -> void:
 	showcase_button.text = I18n.t(&"menu.showcase")
 	settings_button.text = I18n.t(&"menu.settings")
 	about_button.text = I18n.t(&"menu.about")
-	play_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/lock.tscn"))
+	play_button.pressed.connect(func() -> void:
+		if Save.get_value("tutorial_done", false):
+			get_tree().change_scene_to_file("res://scenes/lock.tscn")
+		else:
+			get_tree().change_scene_to_file("res://scenes/tutorial.tscn"))
 	jobs_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/jobs_list.tscn"))
 	workshop_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/workshop.tscn"))
 	showcase_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/showcase.tscn"))

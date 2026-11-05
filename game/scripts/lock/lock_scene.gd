@@ -16,6 +16,10 @@ var _tensioner: MeshInstance3D
 var _dark_mode := false
 var _paused := false
 var _vm: Dictionary = {}
+var _chalk: Control  # chalk overlay (tutorial / reading aid, ONBOARDING §1.8)
+var _tutorial := false
+var _zoomed := false
+var _lives := 3
 
 
 func _ready() -> void:
@@ -42,7 +46,9 @@ func _ready() -> void:
 	$UILayer/PauseMenu/VBox/DarkModeCheck.toggled.connect(_on_dark_mode_toggled)
 	$UILayer/PauseMenu/VBox/QuitButton.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 	_apply_safe_area()
+	_tutorial = not Save.get_value("tutorial_done", false)
 	_build_placeholder_meshes()
+	_build_hud()
 	_collect_visuals()
 	Sfx.begin_loop(&"tension_resistance", &"brass")
 	Sfx.begin_loop(&"pick_drag", &"steel")
@@ -138,6 +144,58 @@ func _check_finished() -> void:
 		set_physics_process(false)
 
 
+func _build_hud() -> void:
+	# HUD diegetyczny (D-12, HUD.md): tło zwijki z mockups/realizm, kieszenie wytrychów
+	# (życia), lupa. Bez pasków i liczb.
+	var tray_tex := load("res://assets/ui/tray.jpg")
+	if tray_tex:
+		var bg := MeshInstance3D.new()
+		var qm := QuadMesh.new()
+		qm.size = Vector2(16, 9)
+		bg.mesh = qm
+		var m := StandardMaterial3D.new()
+		m.albedo_texture = tray_tex
+		m.roughness = 0.9
+		bg.material_override = m
+		bg.position = Vector3(0, 0, -4)
+		$LockRig.add_child(bg)
+	var hud := $UILayer/Hud
+	hud.visible = true
+	for i in 3:
+		var pocket := hud.get_node("Zwijka/Pockets/Pocket%d" % i)
+		pocket.self_modulate = Color(1, 1, 1) if i < _lives else Color(0.25, 0.25, 0.25)
+	$UILayer/Hud/Zwijka/Magnifier.pressed.connect(_on_magnifier_pressed)
+	_chalk = $UILayer/Chalk
+	_chalk.visible = _tutorial or Settings.get_value("reading_aid")
+	_chalk.draw.connect(_draw_chalk)
+
+
+func _on_magnifier_pressed() -> void:
+	# D-13: lupa daje okrągłe pole okularu z makro-widokiem (tu: zbliżenie kamery)
+	_zoomed = not _zoomed
+	$Camera3D.fov = 28.0 if _zoomed else 45.0
+	Sfx.play(&"gate_align", &"brass", -6.0)
+
+
+func _draw_chalk() -> void:
+	# kreda: znaki stanów z DESIGN.md §1 (kreski tarcia przy binding, stopka przy set)
+	if _vm.is_empty():
+		return
+	var elements: Array = _vm.get("elements", [])
+	for i in mini(elements.size(), _pins_visual.size()):
+		var st: String = elements[i].get("state", "free")
+		var pin_pos: Vector3 = _pins_visual[i].position
+		var sp: Vector2 = $Camera3D.unproject_position(Vector3(pin_pos.x, pin_pos.y, 0))
+		if st == "bound" or st == "near":
+			_chalk.draw_line(sp + Vector2(-10, 0), sp + Vector2(10, 0), Color(1, 1, 1, 0.8), 2)
+			_chalk.draw_line(sp + Vector2(-8, 4), sp + Vector2(8, 4), Color(1, 1, 1, 0.6), 2)
+		elif st == "set":
+			_chalk.draw_arc(sp, 8, 0, TAU, 16, Color(1, 1, 1, 0.9), 2)
+		elif st == "overset":
+			_chalk.draw_line(sp + Vector2(-8, -8), sp + Vector2(8, 8), Color(1, 1, 1, 0.9), 2)
+			_chalk.draw_line(sp + Vector2(-8, 8), sp + Vector2(8, -8), Color(1, 1, 1, 0.9), 2)
+
+
 func _process(_delta: float) -> void:
 	# R-23: describe() once per render frame, not per physics step
 	if _paused or session == null:
@@ -148,6 +206,8 @@ func _process(_delta: float) -> void:
 	Sfx.update_loop(&"tension_resistance", resistance)
 	Sfx.update_loop(&"pick_drag", _vm.get("pick_drag", 0.0))
 	_update_visuals(_vm, sampler.sample())
+	if _chalk.visible:
+		_chalk.queue_redraw()
 
 
 func _update_visuals(vm: Dictionary, input: Dictionary) -> void:

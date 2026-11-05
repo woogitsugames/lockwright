@@ -30,3 +30,4 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | game/addons/lockcore_gd/** | kod (GDExtension) | własny + godot-cpp (master, API 4.7) | MIT | https://github.com/godotengine/godot-cpp |
 | spikes/measure/android/app/fonts/BonaNova-Bold.ttf, AtkinsonHyperlegibleNext-wght.ttf (kopie z `mockups/fonts/`) | font | Google Fonts repo (wpisy wyżej) | SIL OFL 1.1 (licencje obok plików) | — |
 | spikes/measure/screens/*.png, spikes/measure/android/app/icon.png | grafika | własne (zrzuty aplikacji pomiarowej, ikona z `spikes/haptics-latency`) | własne projektu | — |
+| game/assets/ui/tray.jpg, section.jpg, loupe.jpg | grafika (tła HUD) | skopiowane z `mockups/realizm/img/` (własne sesji projektowej) | własne projektu | — |

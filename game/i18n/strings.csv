@@ -19,6 +19,10 @@ job.refuse,Refuse this job,Odmów
 job.opened,Lock opened. Receipt settled.,Zamek otwarty. Rachunek rozliczony.
 job.reward_fmt,Reward: {n} coins,Nagroda: {n} monet
 common.continue,Continue,Kontynuuj
+tutorial.title,Tutorial — practice lock,Samouczek — zamek ćwiczebny
+tutorial.stage,Stage {n} of 3,Etap {n} z 3
+tutorial.done,Tutorial done. First real job!,Samouczek ukończony. Pierwsze prawdziwe zlecenie!
+hud.magnifier,Magnifier,Lupa
 settings.title,Settings,Ustawienia
 settings.haptics,Haptics,Haptyka
 settings.haptics_enabled,Haptics enabled,Haptyka włączona

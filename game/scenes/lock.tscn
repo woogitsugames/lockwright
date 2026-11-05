@@ -54,6 +54,55 @@ offset_top = 8.0
 offset_right = -8.0
 offset_bottom = 56.0
 
+[node name="Hud" type="Control" parent="UILayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -220.0
+
+[node name="Zwijka" type="PanelContainer" parent="UILayer/Hud"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 200.0
+
+[node name="Pockets" type="HBoxContainer" parent="UILayer/Hud/Zwijka"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Pocket0" type="ColorRect" parent="UILayer/Hud/Zwijka/Pockets"]
+custom_minimum_size = Vector2(64, 96)
+layout_mode = 2
+
+[node name="Pocket1" type="ColorRect" parent="UILayer/Hud/Zwijka/Pockets"]
+custom_minimum_size = Vector2(64, 96)
+layout_mode = 2
+
+[node name="Pocket2" type="ColorRect" parent="UILayer/Hud/Zwijka/Pockets"]
+custom_minimum_size = Vector2(64, 96)
+layout_mode = 2
+
+[node name="Magnifier" type="Button" parent="UILayer/Hud/Zwijka"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 104.0
+text = "Lupa"
+
+[node name="Chalk" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+
 [node name="PauseMenu" type="Control" parent="UILayer"]
 visible = false
 layout_mode = 3
