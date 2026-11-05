@@ -5,7 +5,8 @@ third-party code). The Godot layer will reach it through GDExtension (D-04); the
 library itself builds and tests natively on Linux, macOS, Android NDK and iOS.
 
 Status: **v0.6** — core + families `pin_tumbler`, `wafer`, `wooden_pin`, `warded`,
-`lever`, `lever_detector`, `ring_combo` and the D-59 families (`dial_safe`, …; see v0.6 below),
+`lever`, `lever_detector`, `ring_combo` and the D-59 families (`dial_safe`, `combo`, `dimple`,
+`disc_detainer`, `egyptian`, `axial_slider`, `time_lock`, `magnetic`; see v0.6 below),
 verifier with three bots, replays, light fuzzing.
 Balance per tier (feeling / clumsy bot): [`BALANCE.md`](BALANCE.md).
 
@@ -136,6 +137,7 @@ Tier tables: `pin_tumbler` t2–t7 per LOCKS.md §2.6 (t5 5–6 stacks, t7 overs
 | `egyptian` | t1–t2 | T, D, L | `TOOL_PEG_LIFTER` | `wooden_pin` module flag: pegs fall by gravity, wedge when the bolt bites (§2.22) |
 | `axial_slider` | t1–t3 | T, D, L | `TOOL_SLIDER_PUSHER` | `lever` module flag: sliders pressed in, false notches from t2 (§2.23) |
 | `time_lock` | t1–t2 | T, D, L | `TOOL_CLOCK_KIT` | `wafer` module flag: mesh the train in order, wind and keep the beat (§2.24) |
+| `magnetic` | t1–t2 | T, D, L | `TOOL_MAGNET_PROBE` | `pin_tumbler` module, third flavour: pins trail the probe field (§2.25) |
 | `dimple` | t1–t3 | T, D, L | `TOOL_DIMPLE_FLAG` | `pin_tumbler` module flag: telescoping pins (spool rule), side row (§2.20) |
 
 `wooden_pin` (§2.1): like `wafer` (set pegs stay up, `t_release` 0.20 above `t_hold` 0.10, so an
@@ -241,7 +243,9 @@ Additive; hashes and goldens of the earlier families unchanged.
   `wooden::Params::fall_speed`, written only when > 0), `axial_slider` (`lever::make_slider_module()`,
   §2.23; `TOOL_SLIDER_PUSHER`, sub 1 named `slider.false_notch`, rules 1), `time_lock`
   (`wafer::make_clock_module()`, §2.24; `TOOL_CLOCK_KIT`, `wafer::Params::run_steps` / `run_lo`, subs
-  `time.tick` = contact + 2, `time.beat_off` = near_shear + 3; `hold_progress` = run progress).
+  `time.tick` = contact + 2, `time.beat_off` = near_shear + 3; `hold_progress` = run progress),
+  `magnetic` (`pin::make_magnetic_module()`, §2.25; `TOOL_MAGNET_PROBE`, `pin::Params::field_speed`,
+  written only when > 0; `pick_lift` in the view = field position).
 - `bot.cpp`: the scripted and feeling bots keep waiting for `open` while the drawn `hold_progress` is
   above 0 (a run or a bolt slide in progress). Earlier families open within the old wait anyway; goldens
   replay inputs, so their hashes are unchanged. They read only `tension`, `pick_depth`,

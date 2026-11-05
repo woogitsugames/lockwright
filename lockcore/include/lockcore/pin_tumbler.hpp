@@ -14,6 +14,10 @@ inline constexpr std::int32_t RULES_VERSION = 1;
 inline constexpr std::string_view DIMPLE_FAMILY_ID = "dimple";
 inline constexpr std::int32_t DIMPLE_RULES_VERSION = 1;
 inline constexpr std::uint8_t DIMPLE_SIDE_ROW = 16;  // ElementView::variant bit: pin in the side row
+// v0.6 (D-59): magnetic pins (LOCKS.md §2.25), third flavour: the pins follow a
+// probe field that trails the thumb (Params::field_speed).
+inline constexpr std::string_view MAGNETIC_FAMILY_ID = "magnetic";
+inline constexpr std::int32_t MAGNETIC_RULES_VERSION = 1;
 
 enum class Variant : std::uint8_t { standard, spool, serrated, spool_serrated };
 std::string_view variant_name(Variant v);
@@ -51,6 +55,7 @@ struct Params : FamilyParams {
   q16 noise = 0;
   q16 bound_speed = 0;  // per step
   q16 spool_speed = 0;  // per step
+  q16 field_speed = 0;  // magnetic: per step, how fast the probe field follows the thumb (0 = rigid)
 
   q16 win_lo(const Stack& s) const { return s.target - win_shear / 2; }
   q16 win_hi(const Stack& s) const { return s.target + win_shear / 2; }
@@ -71,5 +76,6 @@ inline constexpr q16 SPOOL_SPEED = q16_per_step(q16_milli(600));
 
 std::unique_ptr<FamilyModule> make_module();
 std::unique_ptr<FamilyModule> make_dimple_module();  // dimple, t1-t3
+std::unique_ptr<FamilyModule> make_magnetic_module();  // magnetic, t1-t2
 
 }  // namespace lockcore::pin

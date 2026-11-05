@@ -8,7 +8,7 @@ nazwy ogólne (np. „zamek suwakowy”), bez nazwisk i bez marek. Powiązane: `
 
 Spis treści
 1. Wspólny model
-2. Karty rodzin (19)
+2. Karty rodzin (25; §2.18–2.25 = rodziny D-59 w lockcore v0.6)
 3. Tabela zbiorcza
 4. Ryzyka projektowe
 5. Wzór karty
@@ -1331,6 +1331,35 @@ muzeum prosi o przywrócenie chodu (ton: „pomagamy”).
 
 ---
 
+### 2.25 Zamek z kołkami magnetycznymi (wariant D-59) — `magnetic`
+**PL:** Zamek magnetyczny · **EN:** Magnetic Pin Lock · **Tier:** t1–2 (lockcore v0.6) · **Faza:** D-59
+(zlecenie `job.night_nurse` t1). Research: `docs/research/new-families.md` §8. Wczesna wersja idei z §2.10.
+
+**Zasada.** Kołki z magnesami ukryte w rdzeniu; magnesy klucza przesuwają je na właściwą pozycję. Nie da się ich
+podnieść mechanicznie (poziom encyklopedyczny).
+
+**Logika zagadki.** Trzecia odmiana modułu `pin_tumbler` (`Kind::magnetic`): wspólny model napięcia, kolejność
+wiązania, set, overset, zrzut, łamanie. Różnica: **sonda magnetyczna zamiast haczyka** — kołki podążają za polem
+sondy, a pole idzie za kciukiem z opóźnieniem (`field_speed`: t1 1,6/s, t2 1,0/s). Gracz prowadzi kciuk
+z wyprzedzeniem i czeka, aż kołek „dojedzie”; szybkie szarpnięcie nic nie daje. Opór pod kciukiem (`pick_drag`)
+= odstęp kciuka od związanego kołka (kołek „ciągnie się” za magnesem). Bez kołków zabezpieczających, bez
+odbicia sprężyny jako osobnego sygnału. Narzędzie: napinacz + `TOOL_MAGNET_PROBE`, stal.
+(Wersja z biegunami z researchu odłożona: wymagałaby ujemnego `pick_lift`, którego wspólne boty nie obsługują.)
+
+| Tier | Kołki | Okno | Pasmo | Overset | Pole | Limit |
+|---|---|---|---|---|---|---|
+| t1 | 3 | 0,14 | 0,30 | 0,12 | 1,6/s | 90 s |
+| t2 | 4 | 0,12 | 0,26 | 0,10 | 1,0/s | 120 s |
+
+**ViewModel.** Jak `pin_tumbler`; `pick_lift` = położenie pola (nie kciuka) — rysować sondę w miejscu kciuka,
+a „poświatę”/obwódkę pola (bez neonu i blasku, DESIGN.md) na wysokości `pick_lift`. W pliku zamka
+`field_speed_q16` (tylko ta rodzina).
+
+**Weryfikator (1000 seedów/tier).** Skryptowy 0 porażek (t_p50 5,6/7,0 s), niezdarny 100 %, czujący 100 %
+(t_p50 11/15 s). Złote: `magnetic_t1_s4`, `magnetic_t2_s10_feel`.
+
+---
+
 ## 3. Tabela zbiorcza
 
 | # | ID | PL / EN | Tier | Faza | Widok | Wejścia | Kluczowa nowa logika | Narzędzie główne |
@@ -1353,12 +1382,13 @@ muzeum prosi o przywrócenie chodu (ton: „pomagamy”).
 | 2.16 | `sidebar` | Listwa boczna / Sidebar Lock | 6–9 | F3 | bok + warstwa | T, D, L, R | dwie warstwy warunków | Piórko boczne |
 | 2.17 | `hybrid` | Hybrydy / Hybrid Locks | 8–10 | F3 | dzielony | suma | kompozycja modułów | suma |
 | 2.18 | `dial_safe` | Sejf z pokrętłem / Dial Safe | 1–3 | D-59 | czoło + przekrój kół | T, L | pakiet kół, nasłuch, zmiana kierunku | Słuchawka |
+| 2.19 | `combo` | Zamek z kółkami / Thumbwheel Combination Lock | 1–4 | D-59 | przód + przekrój tulejek | T, D, L | wiązanie + poślizg tulejki | Ciągadło kabłąka |
 | 2.20 | `dimple` (D-59) | Wkładka nawiercana / Dimple Cylinder | 1–3 | D-59 | bok, dwa rzędy | T, D, L | kołek teleskopowy | Chorągiewka |
 | 2.21 | `disc_detainer` | Zamek tarczowy / Disc Detainer | 1–3 | D-59 | przekrój wzdłuż osi | T, D, L | tarcze w obie strony, przekręcenie | Obracak tarcz |
 | 2.22 | `egyptian` | Zasuwa starożytna / Ancient Pin Bolt | 1–2 | D-59 | bok | T, D, L | grawitacja, klin | Klucz kołkowy |
 | 2.23 | `axial_slider` (D-59) | Zamek suwakowy / Axial Slider | 1–3 | D-59 | czoło, promieniście | T, D, L | wciskanie + fałszywe wcięcia | Popychacz suwaków |
 | 2.24 | `time_lock` (D-59) | Zamek czasowy — naprawa / Time Lock Repair | 1–2 | D-59 | czoło mechanizmu | T, D, L | zazębianie po kolei + bieg | Zestaw zegarmistrza |
-| 2.19 | `combo` | Zamek z kółkami / Thumbwheel Combination Lock | 1–4 | D-59 | przód + przekrój tulejek | T, D, L | wiązanie + poślizg tulejki | Ciągadło kabłąka |
+| 2.25 | `magnetic` (D-59) | Zamek magnetyczny / Magnetic Pin Lock | 1–2 | D-59 | bok | T, D, L | pole z opóźnieniem | Sonda magnetyczna |
 
 T = tension, D = pick_depth, L = pick_lift, R = rotate, P = push.
 

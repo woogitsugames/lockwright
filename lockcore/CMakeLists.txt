@@ -74,6 +74,7 @@ if(LOCKCORE_BUILD_TESTS)
     tests/test_egyptian.cpp
     tests/test_axial_slider.cpp
     tests/test_time_lock.cpp
+    tests/test_magnetic.cpp
     tests/test_replay.cpp
     tests/test_fuzz.cpp
   )

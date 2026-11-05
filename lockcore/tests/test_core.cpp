@@ -106,9 +106,9 @@ TEST_CASE("registry: builtin families") {
   const auto& reg = FamilyRegistry::builtin();
   CHECK(reg.find("pin_tumbler") != nullptr);
   CHECK(reg.find("wafer") != nullptr);
-  for (const char* id : {"wooden_pin", "lever", "lever_detector", "ring_combo", "warded", "dial_safe", "combo", "dimple", "disc_detainer", "egyptian", "axial_slider", "time_lock"}) CHECK(reg.find(id) != nullptr);
+  for (const char* id : {"wooden_pin", "lever", "lever_detector", "ring_combo", "warded", "dial_safe", "combo", "dimple", "disc_detainer", "egyptian", "axial_slider", "time_lock", "magnetic"}) CHECK(reg.find(id) != nullptr);
   CHECK(reg.find("no_such_family") == nullptr);
-  CHECK_EQ(reg.all().size(), static_cast<std::size_t>(14));
+  CHECK_EQ(reg.all().size(), static_cast<std::size_t>(15));
 }
 
 TEST_CASE("fixed: edge domains are total (T25-17..21)") {
@@ -191,7 +191,7 @@ TEST_CASE("session: refuses missing tools, missing / foreign params (T25-01/02/1
     CHECK(!LockSession(*fam, bare).valid());
     {
       // dimple shares the pin parameter type (v0.6): take another family's block.
-      const FamilyModule& other = (fam == &pin || fam->id() == "dimple") ? th::wafer_module() : pin;
+      const FamilyModule& other = (fam == &pin || fam->id() == "dimple" || fam->id() == "magnetic") ? th::wafer_module() : pin;
       LockSpec foreign = spec;
       foreign.params = other.generate(3, other.difficulty_for_tier(2)).params;
       CHECK(!LockSession(*fam, foreign, need).valid());

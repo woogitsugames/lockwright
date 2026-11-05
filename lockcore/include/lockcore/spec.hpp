@@ -53,6 +53,7 @@ enum ToolBits : std::uint32_t {
   TOOL_DISC_PICK = 1u << 9,       // disc_detainer (tension tip + disc turner)
   TOOL_SLIDER_PUSHER = 1u << 10,  // axial_slider (barrel wrench + slider pusher)
   TOOL_CLOCK_KIT = 1u << 11,      // time_lock (winding key + wheel tweezers)
+  TOOL_MAGNET_PROBE = 1u << 12,   // magnetic (probe magnet on a slide)
 };
 struct ToolSet {
   std::uint32_t bits = TOOL_TENSION_WRENCH | TOOL_HOOK;

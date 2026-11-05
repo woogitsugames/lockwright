@@ -213,9 +213,19 @@ ton: to klient z kartą najmu, sonda to narzędzie warsztatowe; zero odwołań d
 
 ---
 
-## Kolejność i stan implementacji
+## Stan implementacji (lockcore v0.6, 2026-11-05/06)
 
-1. `dial_safe` — t1–t3 (ta noc)
-2. `combo` — t1–t4 (ta noc)
-3. dalej `dimple`, `disc_detainer`, `egyptian`, `axial_slider`, `time_lock`, `magnetic` — w miarę czasu;
-   stan w `lockcore/README.md` i kartach `docs/LOCKS.md`.
+Wszystkie osiem rodzin zbudowane; karty z ostatecznymi regułami i tabelami: `docs/LOCKS.md` §2.18–2.25.
+`dial_safe` to nowy moduł; pozostałe to flagi istniejących modułów (jak `lever_detector`), żeby dzielić
+sprawdzony model napięcia i boty weryfikatora:
+
+| Rodzina | Moduł | Tiery | Różnice wobec szkicu powyżej |
+|---|---|---|---|
+| `dial_safe` | nowy (`dial_safe.cpp`) | 1–3 | pasmo nasłuchu 0,20–0,60 / 0,25–0,55 / 0,29–0,51 |
+| `combo` | `ring_combo` + flaga | 1–4 | — |
+| `dimple` | `pin_tumbler` + flaga | 1–3 | teleskop = reguła szpulki (fałszywe ustawienie + pasmo przeciwobrotu) |
+| `disc_detainer` | `ring_combo` + flaga | 1–3 | 5–6 tarcz zamiast 5–9; tarcza zerująca odłożona |
+| `egyptian` | `wooden_pin` + flaga | 1–2 | — |
+| `axial_slider` | `lever` + flaga | 1–3 | — |
+| `time_lock` | `wafer` + flaga | 1–2 | jeden mechanizm; bieg 2–3 s zamiast 5 s (tempo); koła zazębiają się po kolei |
+| `magnetic` | `pin_tumbler` + flaga | 1–2 | bez biegunów (wymagałyby ujemnego `pick_lift`); zostaje opóźnienie pola |

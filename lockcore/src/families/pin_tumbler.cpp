@@ -17,6 +17,11 @@
 // ElementView::variant bit 4), telescoping pins = the spool rule (outer sleeve
 // catches at its false gate, inner pin lifts only in the counter-rotation band),
 // no serrations, tiers 1-3, own ids / seeds, flag pick tool. pin_tumbler unchanged.
+//
+// magnetic (v0.6, D-59, LOCKS.md §2.25): third flavour. Nothing lifts the pins
+// mechanically: they follow the probe's field, which trails the thumb at
+// field_speed (Params, 0 = off), so the player leads and waits. No security pins,
+// tiers 1-2, magnet probe tool.
 #include "lockcore/pin_tumbler.hpp"
 
 #include <algorithm>
@@ -52,6 +57,7 @@ struct State : FamilyState {
   std::vector<int> set_order;
   int pick = -1;
   q16 lift = 0;
+  q16 field = 0;  // magnetic: probe field position acting on the pins
   q16 tension = 0;
   q16 resistance = 0;
   q16 drag = 0;
@@ -67,20 +73,27 @@ void to_free(StackState& s) {
 
 class Module final : public FamilyModule {
  public:
-  explicit Module(bool dimple) : dimple_(dimple) {}
+  enum class Kind : std::uint8_t { pin, dimple, magnetic };
+  explicit Module(Kind kind) : dimple_(kind == Kind::dimple), magnetic_(kind == Kind::magnetic) {}
 
-  std::string_view id() const override { return dimple_ ? DIMPLE_FAMILY_ID : FAMILY_ID; }
-  std::int32_t rules_version() const override { return dimple_ ? DIMPLE_RULES_VERSION : RULES_VERSION; }
+  std::string_view id() const override {
+    return dimple_ ? DIMPLE_FAMILY_ID : (magnetic_ ? MAGNETIC_FAMILY_ID : FAMILY_ID);
+  }
+  std::int32_t rules_version() const override {
+    return dimple_ ? DIMPLE_RULES_VERSION : (magnetic_ ? MAGNETIC_RULES_VERSION : RULES_VERSION);
+  }
   std::uint32_t input_mask() const override { return AXIS_TENSION | AXIS_DEPTH | AXIS_LIFT; }
   ToolSet required_tools(const LockSpec&) const override {
+    if (magnetic_) return ToolSet{TOOL_TENSION_WRENCH | TOOL_MAGNET_PROBE};
     return ToolSet{dimple_ ? TOOL_TENSION_WRENCH | TOOL_DIMPLE_FLAG : TOOL_TENSION_WRENCH | TOOL_HOOK};
   }
 
-  int min_tier() const override { return dimple_ ? 1 : 2; }
-  int max_tier() const override { return dimple_ ? 3 : 7; }
+  int min_tier() const override { return dimple_ || magnetic_ ? 1 : 2; }
+  int max_tier() const override { return dimple_ ? 3 : (magnetic_ ? 2 : 7); }
 
   DifficultyVector difficulty_for_tier(int tier) const override {
     if (dimple_) return dimple_difficulty(tier);
+    if (magnetic_) return magnetic_difficulty(tier);
     // LOCKS.md §2.6 generator table, t2..t7.
     struct Row {
       int n_min, n_max, win, band, margin, spread, mbp, sec_min, sec_max, noise, grace, limit;
@@ -124,7 +137,7 @@ class Module final : public FamilyModule {
 
   std::vector<SpecError> validate(const LockSpec& spec) const override {
     std::vector<SpecError> e;
-    if (spec.family != id()) e.push_back({"family", dimple_ ? "not dimple" : "not pin_tumbler"});
+    if (spec.family != id()) e.push_back({"family", "not " + std::string(id())});
     if (!spec.params) {
       e.push_back({"spec", "missing parameters"});
       return e;
@@ -145,6 +158,7 @@ class Module final : public FamilyModule {
     if (P.drop_grace_steps < 1) e.push_back({"spec.drop_grace_steps", "must be >= 1"});
     if (P.s_max <= 0 || P.stress_gain <= 0) e.push_back({"spec.s_max_q16", "s_max and stress_gain must be > 0"});
     if (P.bound_speed <= 0 || P.spool_speed <= 0) e.push_back({"spec.bound_speed_q16", "speeds must be > 0"});
+    if (P.field_speed < 0) e.push_back({"spec.field_speed_q16", "negative"});
     if (P.noise < 0 || P.noise > Q16_ONE) e.push_back({"spec.noise_q16", "out of range"});
     bool any_spool = false;
     for (int i = 0; i < n; ++i) {
@@ -187,7 +201,10 @@ class Module final : public FamilyModule {
     const std::int64_t t = ctx.t_step;
     const int n = static_cast<int>(P.stacks.size());
     const q16 T = in.tension;
-    const q16 lift = q_max(0, in.pick_lift);
+    // magnetic: the pins feel the probe's field, which trails the thumb.
+    const q16 hand = q_max(0, in.pick_lift);
+    S.field = P.field_speed > 0 ? bot_approach(S.field, hand, P.field_speed) : hand;
+    const q16 lift = S.field;
     const q16 hard = material_hardness(S.material);
 
     // Pick location and contact.
@@ -284,6 +301,8 @@ class Module final : public FamilyModule {
             if (T > P.tau_safe) S.tool.load(T - P.tau_safe, q_min(press, PRESS_CAP));
             drag = q_max(drag, press);
           }
+          // magnetic: the thumb feels the bound pin pull against the magnet.
+          if (P.field_speed > 0 && i == pick) drag = q_max(drag, q_max(0, hand - s.p));
           while (s.serr_idx < static_cast<int>(k.serrations.size()) &&
                  s.p >= k.serrations[static_cast<std::size_t>(s.serr_idx)]) {
             ++s.serr_idx;
@@ -498,6 +517,7 @@ class Module final : public FamilyModule {
     o.set("noise_q16", Value::integer(P.noise));
     o.set("bound_speed_q16", Value::integer(P.bound_speed));
     o.set("spool_speed_q16", Value::integer(P.spool_speed));
+    if (P.field_speed > 0) o.set("field_speed_q16", Value::integer(P.field_speed));  // magnetic only
     Value arr = Value::array();
     for (const Stack& s : P.stacks) {
       Value so = Value::object();
@@ -539,6 +559,7 @@ class Module final : public FamilyModule {
     q("noise_q16", P->noise);
     q("bound_speed_q16", P->bound_speed);
     q("spool_speed_q16", P->spool_speed);
+    if (v.find("field_speed_q16") != nullptr) q("field_speed_q16", P->field_speed);
     const Value* stacks = v.find("stacks");
     if (stacks == nullptr || !stacks->is_array()) {
       errors.push_back({path + ".stacks", "expected array"});
@@ -595,6 +616,26 @@ class Module final : public FamilyModule {
 
  private:
   bool dimple_ = false;
+  bool magnetic_ = false;
+
+  static DifficultyVector magnetic_difficulty(int tier) {
+    // new-families.md §8: 3 -> 4 pins, no security pins; the field lag (generator,
+    // from the tier) grows 0.12 s -> 0.2 s per 0.2 of travel.
+    const int t = std::clamp(tier, 1, 2);
+    DifficultyVector d;
+    d.tier = t;
+    d.n_min = t == 1 ? 3 : 4;
+    d.n_max = t == 1 ? 3 : 4;
+    d.win_shear = q16_milli(t == 1 ? 140 : 120);
+    d.tension_band = q16_milli(t == 1 ? 300 : 260);
+    d.overset_margin = q16_milli(t == 1 ? 120 : 100);
+    d.bind_spread = Q16_ONE;
+    d.noise = 0;
+    d.drop_grace_ms = 300;
+    d.s_max = Q16_ONE;
+    d.time_limit_s = t == 1 ? 90 : 120;
+    return d;
+  }
 
   static DifficultyVector dimple_difficulty(int tier) {
     // new-families.md §3: 4 -> 6 pins, telescoping (sec) from t2, window 0.14 -> 0.10.
@@ -699,7 +740,8 @@ class Module final : public FamilyModule {
     spec.source = "generated";
     spec.seed = seed;
     spec.difficulty = d;
-    spec.material = dimple_ ? MaterialId::steel : MaterialId::brass;
+    if (magnetic_) P->field_speed = q16_per_step(q16_milli(d.tier >= 2 ? 1000 : 1600));
+    spec.material = dimple_ || magnetic_ ? MaterialId::steel : MaterialId::brass;
     spec.params = P;
     return spec;
   }
@@ -717,7 +759,8 @@ std::string_view variant_name(Variant v) {
   return "standard";
 }
 
-std::unique_ptr<FamilyModule> make_module() { return std::make_unique<Module>(false); }
-std::unique_ptr<FamilyModule> make_dimple_module() { return std::make_unique<Module>(true); }
+std::unique_ptr<FamilyModule> make_module() { return std::make_unique<Module>(Module::Kind::pin); }
+std::unique_ptr<FamilyModule> make_dimple_module() { return std::make_unique<Module>(Module::Kind::dimple); }
+std::unique_ptr<FamilyModule> make_magnetic_module() { return std::make_unique<Module>(Module::Kind::magnetic); }
 
 }  // namespace lockcore::pin
