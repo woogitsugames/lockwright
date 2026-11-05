@@ -495,6 +495,88 @@ Kolejność: N-62 razem z N-61, przed wszystkim innym. Bez tego gra jest niegryw
 - **Rozmiar:** `pck_android_mb` = 58,9 MB lokalnie (przed głosami w CI 53,8). AAB z runu 92 miał 70,7 MB, czyli był ponad progiem 70 MB już przed głosami. Głosy dokładają ok. 4 MB, a q2/24 kHz oszczędziłoby tylko ok. 1,5 MB. Główny ciężar to tekstury (`assets/photoreal/tex` 22 MB, `ui/gpt` 18 MB, rodziny photoreal 35 MB) i tam trzeba ciąć, żeby AAB zmieścił się w 70 MB.
 - **Otwarte:** `showcase_screen.gd` ładuje brakujący `notebook/03-five-rules-en.jpg`, a `job_arrival.gd` brakujące portrety (np. `portrait_zbyszek.webp`, `portrait_locksmith.webp`). W teście nawigacji te dwa ekrany są sprawdzane przez zaślepkę ścieżki. Pliki `.import` audio są w `.gitignore` (konwencja repo), więc ich nie commituję.
 
+## Od sesji A (agent zamka): status N-56/N-57/N-58/N-61/N-62
+Zrzuty: `docs/handoff/device-tests/fixes/` (412×915 i 915×412: spoczynek, napięcie, pin uniesiony, pin set, krok 1 samouczka, tryb auto, okular lupy, ekran samouczka).
+
+**Co było zepsute i dlaczego (N-62):**
+- **Napinacz niewidoczny:** w GLB napinacz wisi pod rdzeniem (y −40…−4 mm) i siedzi w szyldzie (z −0,8…0), więc w kadrze Cycles go nie ma; a plate_rest rzutuje na niego tylko piksele płyty, czyli szyld. Nie da się go „odkryć” w tym kadrze.
+- **Rdzeń się nie obraca:** przekrój patrzy z boku, a rdzeń obraca się wokół osi X (w płaszczyźnie ekranu, od kamery). 12° obrotu przesuwa krawędź rdzenia o <1 px. To nie błąd kodu, tylko geometria widoku.
+- **Piny ledwo się ruszają, nic się nie zatrzaskuje:** 3 przyczyny naraz.
+  1. `InputSampler` liczył napięcie jako przeciągnięcie / pełna wysokość ekranu (915 dp), a uniesienie jako przeciągnięcie / pół wysokości. Pasmo pracy t1 (T 0,25–0,45) wymagało ok. 230–410 dp przeciągnięcia lewym kciukiem. Trzymanie kciuka w miejscu daje T = 0 (D-24), więc nic nie wiązało.
+  2. Bez napięcia luźny pin idzie 1:1 za wytrychem, a uniesienie 0,2 (≈90 dp ruchu kciuka) dawało w widoku tylko ~7 dp.
+  3. `PinPose.TRAVEL` 2,5 mm ≈ 33 dp na pełny skok, więc do linii podziału było ~18 dp.
+
+**Co zmieniłem:**
+- `input_sampler.gd`:
+  - skala w dp: napięcie 1,0 = 200 dp przeciągnięcia, uniesienie 1,0 = 200 dp; pasmo t1 to teraz 50–90 dp, a linia podziału ≈110 dp;
+  - D-52 tryb auto: `auto_tension` z Settings, stałe 0,35; scena zamka obniża je do 0,17, gdy szpulka jest w false set;
+  - stuknięcie lewej strefy puszcza napięcie na 0,1 s: overset znika, ustawione piny zostają;
+  - `frozen` dla lupy.
+- `pin_pose.gd`: TRAVEL 4,2 mm (pełny skok ≈55 dp na 412 dp), SET_DROP 0,5 mm (półka ≈6 dp).
+- Nowe `plug_face.gd`, czyli **czoło rdzenia** (HUD §3) w zwijce pod przekrojem, a w poziomie z lewej strony przekroju:
+  - mosiężna tarcza z grawerowaną skalą 12 kresek co 7,5° i rysą „0” na obudowie;
+  - kanał klucza i stalowy napinacz z ramieniem w lewo, czyli po stronie lewego kciuka;
+  - ramię obraca się 0→28° przy T 0→1 (≥2 dp końca na 0,05 T; HUD podaje 14°, ale przy 14° wychodzi 1 dp, więc podwoiłem);
+  - rdzeń: luz 4,5° (≈3 dp na krawędzi), set = +1 kreska, false set = +2. `core_rotation` z lockcore daje tylko ~1,8° na set, więc liczę stany;
+  - ramię ugina się z `tension_resistance` i drży przy stress > 0,6;
+  - kredowa skala napięcia z zaznaczonym pasmem pracy (S1 i tryb auto).
+- Nowe `chalk_layer.gd` (kreda, D-53):
+  - przerywana linia podziału 2,5 dp, kreski tarcia przy pinie binding, podkreślenie półki przy set, klamra nad komorą przy overset;
+  - kredowe kciuki ze strzałkami, etykieta „napięcie” w lewej strefie w S1–S2, „pauza” przy klapce;
+  - tekst kroku fontem Caveat (OFL, `game/assets/fonts`, wpis w ASSETS.md), maks. 2 linie, u górnej krawędzi płyty, fade 180 ms.
+  - Poziomy kredy: S1 pełna, S2–S3 zredukowana, pierwsze 3 zlecenia zredukowana, potem tylko z `Settings.chalk_layer` (klucz czytam z domyślnym false; przełącznik należy do agenta UI).
+- Nowe `tutorial_coach.gd` (N-61), kroki S1:
+  1. napięcie: koniec, gdy pin wiąże przez 0,5 s;
+  2. wytrych;
+  3. pin z oporem;
+  4. klik;
+  5. overset (przerywa każdy krok);
+  6. otwarcie, z pochwałą przez 1,8 s przed powrotem.
+
+  W trybie auto krok 1 jest pominięty. W trybie dwóch kciuków puszczenie napięcia na 1,5 s cofa do kroku 1. Teksty T39 wstawione pod moimi kluczami (`tutorial.s1_*`), kołek → pin.
+- N-58:
+  - bez napięcia każde +0,08 uniesienia daje cichy `contact` i lekką haptykę, a opadnięcie pinu daje niższy `contact` (sprężyna) i haptykę;
+  - po 2 s unoszenia bez napięcia pojawia się kredowa podpowiedź `lock.hint_tension` z kciukiem i strzałką. Działa w S1–S3 i w pierwszych 3 zleceniach i znika po pierwszym wiązaniu.
+- N-57 (`eyepiece.gd` + `.gdshader`):
+  - cel dotyku ≥56 dp nad lupą w zwijce, w pionie i w poziomie;
+  - okrągłe pole Ø 60% krótszego boku z mosiężnym pierścieniem, powiększenie ×2,6 żywego przekroju wokół linii podziału pinu pod wytrychem;
+  - przesłona 180 ms, `loupe_apply`/`loupe_set_down` + `gate_align` + haptyka;
+  - wytrych zamrożony; drugie stuknięcie, Esc lub „wstecz” (`go_back()` dla Nav) zamyka okular.
+- N-56 (`pause_flap.gd`):
+  - skórzany język 56 dp zwisający od górnej krawędzi (spod paska stanu): kształt z wielokąta z zaokrąglonym końcem, przeszycie, napa, cień 3 dp;
+  - stuknięcie: uniesienie o 4 dp w 150 ms, `brass_snap_pause` + haptyka, potem pauza.
+  - Komory 4–5 przy zamku 3-pinowym są zaślepione stalowym prętem.
+- Ekran samouczka (`tutorial.gd/.tscn`):
+  - 3 kadry G11 (clean) z podpisami T39: napięcie, podnoszenie, klik; w trybie auto 2 kadry;
+  - „To gra, nie kurs” jako osobna kartka;
+  - pion: jeden kadr na wiersz; poziom: kadry obok siebie.
+- Nowe `game/tests/shot_scene.tscn` to zrzut dowolnej sceny (`--scene= --size= --out=`). Do sceny zamka doszły argumenty `--lw-stage rest|tension|lift|set`, `--lw-tutorial N`, `--lw-chalk`, `--lw-auto`, `--lw-loupe`.
+
+**Testy:**
+- GUT lokalnie (Godot 4.7.2 + lockcore_gd z runu CI): **77/77 zielone**, smoke OK.
+- Nowe `test_tutorial_s1.gd`:
+  - bot na prawdziwym `InputSampler` (zdarzenia dotyku w dp) i lockcore otwiera S1 dwoma kciukami w 9,8 s, a kroki 1–4 idą w kolejności;
+  - otwiera S1 samym prawym kciukiem w trybie auto (D-52);
+  - otwiera S2, S3 i zamki t1/t2 (seedy 1, 7, 42) w obu trybach;
+  - bez napięcia nie ma set i pojawia się podpowiedź;
+  - krok 1 nie przechodzi bez wiązania;
+  - klucze PL/EN/DE są kompletne.
+- Nowe `test_lock_view_n62.gd`:
+  - pełny skok ≥40 dp;
+  - krawędź rdzenia i koniec napinacza ≥2 dp;
+  - set = +1 kreska;
+  - stuknięcie lupy przełącza `zoomed`, wstecz zamyka;
+  - klapka ≥48 dp, wisi od góry i emituje pauzę;
+  - zaślepione komory.
+- `test_input_sampler.gd` dostosowany do dp i dostał test trybu auto.
+
+**Otwarte:**
+- Samouczek gra proceduralny `pin_tumbler` t1 (3 piny, okna 0,12, pasmo T 0,25–0,45), a nie autorski `pin.s1` z LEVELS.md (1 pin, okno 0,20). GDExtension `LockcoreSession` umie tylko `create(family, seed, tier)`. Potrzebna metoda `create_from_json` (lockcore_gd, poza moimi plikami). Bot pokazuje, że t1 i tak jest wyrozumiały.
+- `Settings.auto_tension` ma teraz domyślnie **true** (zmiana agenta UI). Koordynator prosił o false do czasu wyboru. Nie ruszałem cudzego pliku, do rozstrzygnięcia z agentem UI (D-52: auto podświetlone na ekranie wyboru, czyli może celowo true).
+- `SafeArea.apply` na desktopie/xvfb bierze safe area całego ekranu (1000×1000), nie okna, i poszerza korzeń UI poza viewport. W samouczku ograniczyłem wywołanie do `mobile`. W `game-screens` (xvfb 1000×1000) inne ekrany mogą mieć ten sam błąd (właściciel: agent UI).
+- W poziomie projekt (stretch `expand`, baza 412×915) renderuje UI menu w skali ~0,45, więc ekran samouczka 915×412 jest drobny. Dotyczy całego projektu.
+- „Widmo dłoni” (H2/H4) i eskalacja po 15 s z ONBOARDING §2 nie są zrobione. Jest tylko kreda.
+
 ## Od sesji A (agent UI): status N-53/N-54/N-59/N-60
 Zrzuty (PL, zapis demo): `docs/handoff/device-tests/fixes/ui/` — menu, ustawienia, warsztat, zlecenia, gablota, wybór sterowania, przyjazd; każdy w 360×800, 412×915 i 915×412.
 
