@@ -329,6 +329,7 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
   std::int64_t last_progress = 0;
   q16 last_drag = 0;  // continuous signal of the previous step
   bool fresh_t = true;  // work_t was just raised to the binding edge
+  int caught = -1;      // element perceived in a false gate (it stays drawn there until set or drop)
 
   auto go = [&](Feel p, std::int64_t t) {
     ph = p;
@@ -379,6 +380,7 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
           for (auto& b : believed) b = 0;
           for (auto& f : free_now) f = 0;
           set_order.clear();
+          caught = -1;
           start_probe(t);
         }
         continue;
@@ -390,6 +392,7 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
             believed[static_cast<std::size_t>(e.element)] = 1;
             set_order.push_back(e.element);
             for (auto& f : free_now) f = 0;
+            if (e.element == caught) caught = -1;
             last_progress = t;
             if (unset_count() == 0) go(Feel::wait_open, t);
             else if (ph != Feel::flick) start_probe(t);
@@ -397,6 +400,7 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
           break;
         case EventKind::false_set:
           if ((ph == Feel::lift || ph == Feel::probe_lift) && e.element == cand) {
+            caught = e.element;
             spool_t = spool_t > 0 ? spool_t : q_max(q16_milli(100), work_t - q16_milli(80));
             go(Feel::spool, t);
           }
@@ -409,11 +413,13 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
             believed[static_cast<std::size_t>(e.element)] = 0;
             set_order.erase(std::remove(set_order.begin(), set_order.end(), static_cast<int>(e.element)), set_order.end());
           }
+          caught = -1;
           go(Feel::flick, t);
           break;
         case EventKind::drop: {
           const int lost = static_cast<int>((static_cast<std::int64_t>(e.intensity) * n + Q16_ONE / 2) >> 16);
           forget_last(lost > 0 ? lost : 1);
+          caught = -1;
           if (ph == Feel::spool) spool_t += q16_milli(20);  // eased too far in the false gate
           if (ph != Feel::flick) start_probe(t);
           break;
@@ -467,10 +473,17 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
       case Feel::spool:
         target_t = spool_t;
         if (q_abs(hand_t - spool_t) <= q16_milli(15)) target_l = q_min(hand_l + lim.spool_rate, LIFT_CAP);
-        if (hand_l >= LIFT_CAP || t - phase_t > SIM_HZ * 3) {
+        if ((hand_l >= LIFT_CAP && t - phase_t > lim.latency_steps) || t - phase_t > SIM_HZ * 3) {
           spool_t = q_max(q16_milli(60), spool_t - q16_milli(20));
           ++rep.retries;
-          go(Feel::probe_travel, t);
+          // v0.3: the caught element stays in its false gate (a player sees it there):
+          // keep working it instead of probing below it, which found nothing and looped.
+          if (caught >= 0) {
+            cand = caught;
+            go(Feel::spool, t);
+          } else {
+            go(Feel::probe_travel, t);
+          }
         }
         break;
       case Feel::flick:
