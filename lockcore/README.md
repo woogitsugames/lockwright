@@ -4,7 +4,7 @@ Deterministic lock-logic library for Lockwright (C++20, no engine dependency, no
 third-party code). The Godot layer will reach it through GDExtension (D-04); the
 library itself builds and tests natively on Linux, macOS, Android NDK and iOS.
 
-Status: **v0.3** — core + seven families (`pin_tumbler`, `wafer`, `wooden_pin`, `warded`,
+Status: **v0.5** — core + seven families (`pin_tumbler`, `wafer`, `wooden_pin`, `warded`,
 `lever`, `lever_detector`, `ring_combo`), verifier with three bots, replays, light fuzzing.
 Balance per tier (feeling / clumsy bot): [`BALANCE.md`](BALANCE.md).
 
@@ -216,6 +216,38 @@ continuous signals in [0, 1], view positions / stress / rotation in [0, 1], wind
 S >= 0. CI runs it under ASan + UBSan with `-fno-sanitize-recover=undefined` and a 300 s timeout.
 
 ## API changes
+
+### v0.5 (review T25, [`REVIEW-T25.md`](REVIEW-T25.md))
+
+Hashes and goldens unchanged (every fix only changes behaviour on input that was
+invalid or out of domain before, or in a step that both opened and broke, which no golden has).
+
+- `session.hpp`: `LockSession` checks its input (`session_input_error()`: `spec.family` names the
+  module, `validate()` is empty, `tools` hold `required_tools(spec)`). A refused session never
+  calls `init_state()`: `valid()` false, `error()` says why, `finished()` at t = 0 with the new
+  `FailureKind::invalid_spec` (appended to the enum), `state()` an empty base state.
+  `LockSession(family, spec)` (two arguments) now uses `family.required_tools(spec)` instead of
+  `ToolSet{}` (wrench + hook); code that passed a `ToolSet` explicitly is unchanged.
+- `FamilyModule::run_bot()` (all three bots; `warded` / `ring_combo` overrides too) returns
+  `ok = false` with the refusal reason; the feeling bot still skips only the oracle gate.
+- `run_replay()` (and `replay_tool trace` / `lock` / `record`) refuses a generated lock the oracle
+  rejects (`generate()` returns its 16th attempt for vectors outside the tier tables).
+- `replay_from_json()` is strict: seed via `field::parse_u64()` (now public in `lockfile.hpp`),
+  `difficulty`, `input_unit` "1/256", `input_fields`, `expected` with `event_hash_fnv1a64`
+  required; axes in range (tension / depth / push 0..256, lift / rotate −256..256, tool 0..255)
+  before scaling; inputs must be canonical (`quantize(f) == f`, push on its 1/64 grid); at most
+  `MAX_REPLAY_STEPS` (3600 s × 120) frames over all runs. `out` is assigned only on success.
+- `fixed.hpp` / `prng.hpp` / `components.hpp`: `q16_saturate()`; `q16_ratio` (den 0 → 0, saturates),
+  `q_div` (saturates), `q_abs(INT32_MIN)`, `ms_to_steps`, `quantize_256` are total; `Pcg32::range`
+  covers the full int32 range; `ToolStress::ratio()` clamps before dividing. In-range results
+  and PCG sequences are bit-identical.
+- `ToolStress::add_wear()` (keeps S, peak, wear accumulator); the `lever_detector` reset uses it, so
+  `peak_ratio()` no longer drops after a reset. `end_step(..., can_break)`: the step that opens a
+  lock cannot break the tool (`pin_tumbler`, `wafer`, `lever`, `warded`); open wins.
+- JSON: lone low surrogates and malformed raw UTF-8 are rejected.
+- `verify_seeds`: `--seeds` ≥ 1, strict integers, unknown `--family` / empty tier selection and
+  CSV errors exit 2; replay check also round-trips `expected`. `replay_tool play` / `trace`
+  compare hash, steps and open and name the mismatching field; write errors exit 1.
 
 ### v0.4 (progress fields, FEEL.md F-07)
 

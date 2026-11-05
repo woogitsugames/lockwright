@@ -14,6 +14,10 @@ on:
       - '.github/workflows/qa-career.yml'
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   career:
     runs-on: ubuntu-latest

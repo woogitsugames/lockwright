@@ -11,9 +11,14 @@ on:
       - '.github/workflows/game-tests.yml'
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   gdextension-build:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -52,6 +57,7 @@ jobs:
 
   gdscript-tests:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     needs: gdextension-build
     steps:
       - uses: actions/checkout@v4
@@ -83,6 +89,7 @@ jobs:
 
   export-pack-test:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     needs: gdextension-build
     steps:
       - uses: actions/checkout@v4
@@ -110,6 +117,7 @@ jobs:
 
   data-validation:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -149,6 +157,7 @@ jobs:
 
   audio-check:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

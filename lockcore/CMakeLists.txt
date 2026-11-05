@@ -50,6 +50,8 @@ if(LOCKCORE_BUILD_TOOLS)
   target_link_libraries(verify_seeds PRIVATE lockcore)
   add_executable(replay_tool tools/replay_tool.cpp)
   target_link_libraries(replay_tool PRIVATE lockcore)
+  add_executable(check_locks tools/check_locks.cpp)
+  target_link_libraries(check_locks PRIVATE lockcore)
 endif()
 
 if(LOCKCORE_BUILD_TESTS)

@@ -12,6 +12,10 @@ on:
       - '.github/workflows/spike-determinism.yml'
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   record:
     runs-on: ubuntu-latest

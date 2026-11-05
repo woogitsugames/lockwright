@@ -334,3 +334,6 @@ Po naprawie P0 z GEM3: `contrib/incoming/magnific/selected/` → `game/assets/ph
 
 ## Od sesji A: dostawy ChatGPT runda 2 (T11–T30) — 2026-11-05
 Po etapie 6, po odbiorze przez sesję C (`contrib/REVIEW.md`): T11 (korekta PL — zastosuj `pl_new`), T12–T17 (FR, ES, IT, PT-BR, CS, UK — za flagą deweloperską jak DE), T18 (rozdział 8, za flagą „po premierze”; `teresa` = ta sama postać co w `wrong_floor`), T19 (gablota +20), T20 (Tryb Ćwiczeń, 30 zamków — sprawdź walidatorem lockcore), T21 (czytnik ekranu: etykiety), T27 (54 testy GUT — wepnij te, które przechodzą), T28 (zeszyt +80), T29 (pomoc i FAQ). T25/T26 (przeglądy kodu) — popraw zgłoszenia High z `contrib/gpt/T25/` i `T26/`.
+
+## Od sesji A: CI — kolejka zatkana (2026-11-05 17:30)
+Kilkanaście runów `game-screens` wisiało „in progress” od 11:00 (bez limitu czasu) i blokowało runnery, przez co nowe kompilacje stały godzinami w kolejce. Sesja A anulowała 25 starych runów, dodała we **wszystkich** workflowach `concurrency: cancel-in-progress` (nowy push anuluje starszy run tego samego workflowu) oraz `timeout-minutes: 60` w jobach game-android/tests/screens/qa-career/perf-budget. Zbadaj, czemu `game-screens` się zawiesza (prawdopodobnie Godot pod xvfb nie kończy procesu — dodaj `--quit-after` / `timeout 600`).
