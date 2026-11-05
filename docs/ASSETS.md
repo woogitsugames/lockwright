@@ -143,3 +143,9 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | `site/assets/icon-180.png`, `icon-512.png` | ikona strony (favicon, apple-touch-icon, press kit), skalowana | `contrib/gpt/G12/v2/ios/01_enamel_l_1024.png` (generowane AI, ChatGPT; prompty w `contrib/gpt/G12/v2/ASSETS.md`) | generowane AI, warunki narzędzia (D-42) | `contrib/REVIEW.md` G12 v2 przyjęte |
 | `site/assets/key-art-800.jpg`, `key-art-1600.jpg` | key art 16:9 na stronie głównej i w press kicie, skalowany | `contrib/gpt/G13/key-art/key-art-3840x2160-clean.jpg` (generowane AI, ChatGPT; prompty w `contrib/gpt/G13/ASSETS.md`) | generowane AI, warunki narzędzia (D-42) | `contrib/REVIEW.md` G13 (16:9 użyteczne, v2 zlecone) |
 
+
+## Głosy epizodyczne S03v2 (sesja A, agent nawigacji, 2026-11-05)
+| Plik | Co | Źródło | Licencja | Pochodzenie |
+|---|---|---|---|---|
+| `game/assets/audio/voices/<id>/{greeting,surprise,relief,thanks,impatient,sad,laugh,goodbye}.ogg` (39 postaci epizodycznych × 8 = 312 plików, Ogg Vorbis mono q4, ok. 4 MB; −28 LUFS M jak w źródle) | bezsłowne wokalizacje przy liniach dialogu (`Sfx.play_voice`, brak emocji → `greeting`) | własny generator DSP (synteza formantowa w Node.js, bez TTS, bez modeli AI, bez klonowania i bez sampli; prompt i parametry każdej postaci w `contrib/gpt/S03v2/ASSETS.md`), konwersja `tools/import_episodic_voices.py` (ffmpeg libvorbis) | własne projektu (kod generatora w repo) | `contrib/gpt/S03v2/` (`manifest.json`, `QA.md`); zestaw A/B `contrib/gpt/S03v2-py/` przełączany stałą `VOICE_SRC` w skrypcie, aktywne źródło w `game/assets/audio/voices/EPISODIC_SOURCE.txt` |
+| `tools/import_episodic_voices.py` | skrypt konwersji WAV → Ogg | własne | własne projektu | — |
