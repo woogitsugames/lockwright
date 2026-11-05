@@ -11,14 +11,42 @@ void hash_event(Fnv1a64& h, const LockEvent& e) {
   h.byte(static_cast<std::uint8_t>(e.material));
 }
 
+std::string session_input_error(const FamilyModule& family, const LockSpec& spec, const ToolSet& tools) {
+  if (spec.family != family.id()) return "spec is for family '" + spec.family + "', module is '" + std::string(family.id()) + "'";
+  if (const auto errs = family.validate(spec); !errs.empty()) return "invalid spec: " + errs.front().path + ": " + errs.front().message;
+  if (!tools.has(family.required_tools(spec).bits)) return "missing required tools";
+  return {};
+}
+
+namespace {
+ToolSet tools_for(const FamilyModule& family, const LockSpec& spec) {
+  // required_tools() may read the parameter block, so only for a valid spec.
+  return family.validate(spec).empty() ? family.required_tools(spec) : ToolSet{};
+}
+}  // namespace
+
+LockSession::LockSession(const FamilyModule& family, LockSpec spec)
+    : LockSession(family, spec, tools_for(family, spec)) {}
+
 LockSession::LockSession(const FamilyModule& family, LockSpec spec, ToolSet tools, ToolCondition tool)
     : family_(family),
       spec_(std::move(spec)),
       tools_(tools),
-      state_(family.init_state(spec_)),
+      error_(session_input_error(family, spec_, tools_)),
       rng_(derive_seed(spec_.seed, family.id(), static_cast<std::uint32_t>(family.rules_version()), "sim"),
            derive_stream(family.id(), "sim")) {
+  if (!error_.empty()) return;
+  state_ = family.init_state(spec_);
   state_->tool.set_wear(tool.wear);
+}
+
+const FamilyState& LockSession::state() const {
+  static const FamilyState rejected = [] {
+    FamilyState s;
+    s.failure = FailureKind::invalid_spec;
+    return s;
+  }();
+  return state_ ? *state_ : rejected;
 }
 
 const StepOutput& LockSession::step(const InputFrame& in) {
@@ -41,8 +69,13 @@ const StepOutput& LockSession::step(const InputFrame& in) {
   return out_;
 }
 
-bool LockSession::is_open() const { return family_.is_open(*state_); }
-FailureKind LockSession::failure() const { return family_.failure(*state_); }
-ViewModel LockSession::describe() const { return family_.describe(*state_); }
+bool LockSession::is_open() const { return state_ && family_.is_open(*state_); }
+FailureKind LockSession::failure() const { return state_ ? family_.failure(*state_) : FailureKind::invalid_spec; }
+ViewModel LockSession::describe() const {
+  if (state_) return family_.describe(*state_);
+  ViewModel vm;
+  vm.failure = FailureKind::invalid_spec;
+  return vm;
+}
 
 }  // namespace lockcore

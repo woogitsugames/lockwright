@@ -33,7 +33,8 @@ struct SpecError {
   std::string message;
 };
 
-enum class FailureKind : std::uint8_t { none, break_, detector_trip, timeout };
+// invalid_spec (v0.5): a LockSession refused the spec or the tool set (T25-01/02).
+enum class FailureKind : std::uint8_t { none, break_, detector_trip, timeout, invalid_spec };
 std::string_view failure_name(FailureKind f);
 
 // Tool capabilities available to the player (TOOLS.md).

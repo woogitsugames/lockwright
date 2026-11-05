@@ -564,6 +564,12 @@ SolveReport run_feel_bot(const FamilyModule& family, const LockSpec& spec, const
 
 SolveReport FamilyModule::run_bot(BotKind kind, const LockSpec& spec, const ToolSet& tools,
                                   const SolveOptions& opt) const {
+  // Every bot, the feeling one included, needs a spec and tools a session accepts (T25-14).
+  if (std::string e = session_input_error(*this, spec, tools); !e.empty()) {
+    SolveReport r;
+    r.reason = e;
+    return r;
+  }
   const std::int64_t full = static_cast<std::int64_t>(spec.difficulty.time_limit_s) * SIM_HZ;
   switch (kind) {
     case BotKind::scripted: return solver(spec, tools, opt);

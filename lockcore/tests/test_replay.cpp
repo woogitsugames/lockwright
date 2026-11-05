@@ -147,3 +147,19 @@ TEST_CASE("replay: output is untouched on a failed parse (T25-08)") {
   CHECK_EQ(r.seed, 5u);
   CHECK(r.inputs.empty());
 }
+
+TEST_CASE("replay: a vector the generator cannot satisfy is refused (T25-03)") {
+  const FamilyModule& fam = th::pin_module();
+  Replay r;
+  r.family = std::string(fam.id());
+  r.rules_version = fam.rules_version();
+  r.seed = 1;
+  r.difficulty = fam.difficulty_for_tier(2);
+  r.difficulty.win_shear = 0;       // no window: every attempt is refused by the oracle
+  r.difficulty.tension_band = 0;
+  const LockSpec spec = fam.generate(r.seed, r.difficulty);
+  CHECK(!fam.oracle(spec, fam.required_tools(spec)).ok);
+  const ReplayResult res = run_replay(FamilyRegistry::builtin(), r);
+  CHECK(!res.ok);
+  CHECK(res.error.find("oracle") != std::string::npos);
+}

@@ -74,6 +74,7 @@ std::string_view failure_name(FailureKind f) {
     case FailureKind::break_: return "break";
     case FailureKind::detector_trip: return "detector_trip";
     case FailureKind::timeout: return "timeout";
+    case FailureKind::invalid_spec: return "invalid_spec";
   }
   return "none";
 }

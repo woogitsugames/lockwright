@@ -157,3 +157,52 @@ TEST_CASE("components: stress ratio with a tiny capacity (T25-18)") {
   CHECK_EQ(t.peak_ratio(), Q16_ONE);
   CHECK(t.broken());
 }
+
+TEST_CASE("session: refuses missing tools, missing / foreign params (T25-01/02/14)") {
+  const FamilyRegistry& reg = FamilyRegistry::builtin();
+  const FamilyModule& pin = *reg.find("pin_tumbler");
+  for (const FamilyModule* fam : reg.all()) {
+    const LockSpec spec = fam->generate(3, fam->difficulty_for_tier(fam->min_tier()));
+    const ToolSet need = fam->required_tools(spec);
+    {
+      LockSession ok(*fam, spec);  // required tools by default
+      CHECK(ok.valid());
+      CHECK(ok.failure() == FailureKind::none);
+      LockSession explicit_ok(*fam, spec, need);
+      CHECK(explicit_ok.valid());
+    }
+    // No tools at all: rejected, finished at t = 0, step() is a no-op.
+    LockSession none(*fam, spec, ToolSet{0});
+    CHECK(!none.valid());
+    CHECK(none.finished());
+    CHECK(!none.is_open());
+    CHECK(none.failure() == FailureKind::invalid_spec);
+    CHECK(none.error().find("tools") != std::string::npos);
+    InputFrame f;
+    f.tension = Q16_ONE / 4;
+    CHECK(none.step(f).events.empty());
+    CHECK_EQ(none.t_step(), 0);
+    CHECK(none.describe().elements.empty());
+    CHECK(none.state().failure == FailureKind::invalid_spec);
+    // Missing parameter block, parameters of another family, wrong family id.
+    LockSpec bare = spec;
+    bare.params.reset();
+    CHECK(!LockSession(*fam, bare, need).valid());
+    CHECK(!LockSession(*fam, bare).valid());
+    if (fam != &pin) {
+      LockSpec foreign = spec;
+      foreign.params = pin.generate(3, pin.difficulty_for_tier(2)).params;
+      CHECK(!LockSession(*fam, foreign, need).valid());
+    }
+    LockSpec renamed = spec;
+    renamed.family = "something_else";
+    CHECK(!LockSession(*fam, renamed, need).valid());
+    // Every bot reports the rejection instead of running (feeling included).
+    for (BotKind k : {BotKind::scripted, BotKind::clumsy, BotKind::feeling}) {
+      const SolveReport r = fam->run_bot(k, spec, ToolSet{0});
+      CHECK(!r.ok);
+      const SolveReport rb = fam->run_bot(k, bare, need);
+      CHECK(!rb.ok);
+    }
+  }
+}

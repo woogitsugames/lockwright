@@ -377,6 +377,12 @@ class Module final : public FamilyModule {
   }
 
   SolveReport run_bot(BotKind kind, const LockSpec& spec, const ToolSet& tools, const SolveOptions& opt) const override {
+    // The feeling bot skips the oracle gate, not the input check (T25-14).
+    if (std::string e = session_input_error(*this, spec, tools); !e.empty()) {
+      SolveReport r;
+      r.reason = e;
+      return r;
+    }
     const OracleReport o = oracle(spec, tools);
     if (!o.ok && kind != BotKind::feeling) {
       SolveReport r;

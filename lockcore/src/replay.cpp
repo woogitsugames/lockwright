@@ -194,6 +194,12 @@ ReplayResult run_replay(const FamilyRegistry& registry, const Replay& r) {
     return res;
   }
   LockSpec spec = fam->generate(r.seed, r.difficulty);
+  // generate() returns its last attempt when all 16 are refused (possible only for
+  // a difficulty vector outside the tier tables): such a lock is not replayable (T25-03).
+  if (const OracleReport o = fam->oracle(spec, fam->required_tools(spec)); !o.ok) {
+    res.error = "generated lock refused by the oracle: " + o.reason;
+    return res;
+  }
   LockSession s(*fam, spec);
   for (const InputFrame& f : r.inputs) {
     if (s.finished()) break;

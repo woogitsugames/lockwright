@@ -137,7 +137,10 @@ class FamilyModule {
   virtual DifficultyVector difficulty_for_tier(int tier) const = 0;
 
   // Pure and deterministic. Retries internally (seed' = hash(seed, attempt)) until
-  // the oracle accepts the lock.
+  // the oracle accepts the lock. If all 16 attempts are refused (only possible for a
+  // difficulty vector outside difficulty_for_tier()), the last attempt is returned
+  // anyway: callers with their own vectors check oracle(spec, required_tools(spec)).ok
+  // (run_replay() does, T25-03).
   virtual LockSpec generate(std::uint64_t seed, const DifficultyVector& d) const = 0;
   virtual std::vector<SpecError> validate(const LockSpec& spec) const = 0;
 
