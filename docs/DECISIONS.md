@@ -123,3 +123,6 @@ Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright �
 
 ## D-39 — Ekonomia: przyjmujemy scenariusz C z ECONOMY.md
 2026-11-05 · sesja A · Symulacja `tools/econ_sim.py` (`docs/ECONOMY.md`) pokazała blokady zleceń i grind (~10 h Trybu Ciągłego dla średniego gracza), co łamie zasadę „bez grind-to-win”. Przyjmujemy liczby z §6 (scenariusz C): poprawione rodziny w danych zleceń, współczynnik krzywej Trybu Ciągłego 1,2, sonda startowa za 0, niższe ceny narzędzi (m.in. korba 300, sonda biegunowa 700, obrotnik 1100, słuchawka 1200 z `after_t4`), wcześniejsze warunki odblokowań (bez `after_t8` — lockcore ma najwyżej t7), tańsza naprawa. Cel: 0 zablokowanych zleceń, grind ≤ 12 sesji. Do potwierdzenia w playtestach.
+
+## D-40 — Samouczek: kartka mistrza w zwijce
+2026-11-05 · sesja A · Makiety `mockups/realizm/06-tutorial-s1.html`, `07-tutorial-s2.html`. Kartka mistrza wsunięta w zwijkę zostaje jako wyjątek od „zero tekstu w zamku” (ONBOARDING §1): szkic ołówkiem musi być zrozumiały bez czytania, a dopisek jest tylko dodatkiem. Kartka nie jest celem dotyku i przepuszcza dotyk do strefy kciuka. Pieczątka „to gra, nie kurs” jest na pierwszej kartce S1 (pierwszy ekran gry), a w bloczku zleceń powtarza się w „O grze”. Do zrobienia w art: renderowane wkładki ćwiczebne z 1 i 3 pinami; układ zwijki w poziomie.

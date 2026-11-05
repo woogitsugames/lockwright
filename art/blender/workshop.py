@@ -223,7 +223,7 @@ case_wood = oak('case_wood', light=(0.30, 0.16, 0.07), dark=(0.10, 0.045, 0.02),
                 varnish_tint=0.2, center=(0, CY0, CZ0 + 20))
 bx('case_base', CX0, CX1, CY0, CY1, CZ0, CZ0 + 45, case_wood, bev=2.5)
 bx('case_felt', CX0 + 12, CX1 - 12, CY0 + 12, CY1 - 12, CZ0 + 45, CZ0 + 48, felt)
-bx('case_back', CX0 + 18, CX1 - 18, CY1 - 20, CY1 - 18, CZ0 + 45, CZ1 - 18, paper('linen', (0.55, 0.50, 0.40), fibre=1.0, seed=7))
+bx('case_back', CX0 + 18, CX1 - 18, CY1 - 20, CY1 - 18, CZ0 + 45, CZ1 - 18, paper('linen', (0.36, 0.32, 0.25), fibre=1.0, seed=7))
 for x0, x1 in ((CX0, CX0 + 18), (CX1 - 18, CX1)):
     for y0, y1 in ((CY0, CY0 + 18), (CY1 - 18, CY1)):
         bx('case_post', x0, x1, y0, y1, CZ0 + 45, CZ1, case_wood, bev=1.5)
@@ -237,20 +237,21 @@ knob = lathe_x('case_knob', [(0, 0.01), (0, 5), (6, 6), (10, 9), (13, 8), (14, 0
 knob.data.transform(Matrix.Rotation(math.radians(-90), 4, 'Z')); knob.location = ((CX0 + CX1) / 2, CY0, CZ0 + 22); setmat(knob, brass)
 # exhibits: open padlock, warded box lock with its key, wooden pin lock
 FZ = CZ0 + 48
-pl = slab('ex_padlock', rounded_rect(54, 46, 6), 20, brass, bev=1.5); place(pl, (-520, -140, FZ + 23), rot=(90, 0, 0))
-sh = tube('ex_shackle', [(-536, -150, FZ + 44), (-536, -150, FZ + 92), (-520, -150, FZ + 108), (-504, -150, FZ + 92), (-504, -150, FZ + 72)], 4.5, bright)
-bl = bx('ex_boxlock', -420, -275, -170, -150, FZ, FZ + 110, iron_old, bev=2)
-cut(bl, prism('kh', [(-352, FZ + 70), (-342, FZ + 70), (-344, FZ + 52), (-340, FZ + 34), (-354, FZ + 34), (-350, FZ + 52)], -200, -100))
-bx('ex_boxlock_back', -416, -279, -150, -144, FZ + 4, FZ + 106, void)
-for x, z in ((-410, FZ + 10), (-285, FZ + 10), (-410, FZ + 100), (-285, FZ + 100)):
+EXP = -470
+pl = slab('ex_padlock', rounded_rect(54, 46, 6), 20, brass, bev=1.5); place(pl, (EXP, -140, FZ + 23), rot=(90, 0, 0))
+sh = tube('ex_shackle', [(EXP - 16, -150, FZ + 44), (EXP - 16, -150, FZ + 92), (EXP, -150, FZ + 108), (EXP + 16, -150, FZ + 92), (EXP + 16, -150, FZ + 72)], 4.5, bright)
+bl = bx('ex_boxlock', -405, -260, -170, -150, FZ, FZ + 110, iron_old, bev=2)
+cut(bl, prism('kh', [(-337, FZ + 70), (-327, FZ + 70), (-329, FZ + 52), (-325, FZ + 34), (-339, FZ + 34), (-335, FZ + 52)], -200, -100))
+bx('ex_boxlock_back', -401, -264, -150, -144, FZ + 4, FZ + 106, void)
+for x, z in ((-395, FZ + 10), (-270, FZ + 10), (-395, FZ + 100), (-270, FZ + 100)):
     screw_head('bl_screw', (x, -170.5, z), 4, 2, axis='-Y', mat=iron_old, rot=rng.uniform(0, 3))
 key = lathe_x('ex_key', [(0, 0.01), (0, 4), (70, 4), (72, 6), (78, 6), (80, 4), (84, 4), (84, 0.01)], seg=24)
-key.location = (-420, -205, FZ + 6); key.rotation_euler = (0, 0, math.radians(14)); setmat(key, iron_old)
-tor = tube('ex_key_ring', [(-420 + 14 * math.cos(a) - 14, -205 - 3 * math.sin(a), FZ + 6 + 14 * math.sin(a)) for a in [i * math.pi / 8 for i in range(17)]], 3, iron_old)
-bit = bx('ex_key_bit', -342, -332, -205 - 2, -205 + 2, FZ + 6 - 18, FZ + 6, iron_old, bev=0.8)
-wl = bx('ex_woodlock', -230, -110, -190, -130, FZ, FZ + 70, oak('ex_wood', light=(0.5, 0.36, 0.2), dark=(0.3, 0.18, 0.08), axis='X', seed=4,
+key.location = (-405, -205, FZ + 6); key.rotation_euler = (0, 0, math.radians(14)); setmat(key, iron_old)
+tor = tube('ex_key_ring', [(-405 + 14 * math.cos(a) - 14, -205 - 3 * math.sin(a), FZ + 6 + 14 * math.sin(a)) for a in [i * math.pi / 8 for i in range(17)]], 3, iron_old)
+bit = bx('ex_key_bit', -327, -317, -205 - 2, -205 + 2, FZ + 6 - 18, FZ + 6, iron_old, bev=0.8)
+wl = bx('ex_woodlock', -215, -105, -190, -130, FZ, FZ + 70, oak('ex_wood', light=(0.5, 0.36, 0.2), dark=(0.3, 0.18, 0.08), axis='X', seed=4,
                                                                ring=2.5, coat=0.1, center=(-170, -160, FZ + 35)), bev=4)
-bx('ex_woodbolt', -260, -90, -175, -150, FZ + 25, FZ + 45, oak('ex_bolt', light=(0.45, 0.30, 0.15), dark=(0.25, 0.14, 0.06), axis='X', seed=5,
+bx('ex_woodbolt', -240, -85, -175, -150, FZ + 25, FZ + 45, oak('ex_bolt', light=(0.45, 0.30, 0.15), dark=(0.25, 0.14, 0.06), axis='X', seed=5,
                                                                ring=2.5, coat=0.1, center=(-170, -160, FZ + 35)), bev=3)
 
 # ---------------------------------------------------------------- bench vice with a practice cylinder
@@ -421,15 +422,15 @@ tag_case = tag('tag_case', Matrix.Translation(Vector(((CX0 + CX1) / 2 + 30, CY0 
 # ---------------------------------------------------------------- lights
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (0, -350, BZ)
 world_hdri(0.03, 'interior.exr', sat=0.3)
-bpy.ops.object.light_add(type='SPOT', location=tuple(HEAD + Vector((0, 0, 5)))); sp = bpy.context.object
-sp.data.energy = 4.5e7; sp.data.color = (1.0, 0.70, 0.42); sp.data.spot_size = math.radians(90); sp.data.spot_blend = 1.0
-sp.data.shadow_soft_size = 14; sp.rotation_euler = SHADE_ROT
+bpy.ops.object.light_add(type='AREA', location=tuple(HEAD)); sp = bpy.context.object
+sp.data.shape = 'DISK'; sp.data.size = 60; sp.data.spread = math.radians(80)
+sp.data.energy = 9.0e7; sp.data.color = (1.0, 0.70, 0.42); sp.rotation_euler = SHADE_ROT
 # window on the left wall: evening, cool; plus a dim warm practical bounce from the room
 area_light('window', (-1750, -900, 1900), AIM, 1200, 1.0e7, (0.70, 0.80, 1.0), size_y=1400)
 area_light('room', (600, -2900, 2600), AIM, 1800, 2.5e6, (1.0, 0.82, 0.62))
 # showcase light: a warm strip under the case lid
 a_case = bpy.data.objects.new('aim_case', None); scene.collection.objects.link(a_case); a_case.location = ((CX0 + CX1) / 2, (CY0 + CY1) / 2 - 30, CZ0)
-area_light('case_light', ((CX0 + CX1) / 2, CY1 - 40, CZ1 - 22), a_case, 420, 2.5e6, (1.0, 0.8, 0.58), size_y=40)
+area_light('case_light', ((CX0 + CX1) / 2, CY1 - 40, CZ1 - 22), a_case, 420, 7e5, (1.0, 0.8, 0.58), size_y=40)
 
 # ---------------------------------------------------------------- camera + render
 cam = photo_camera((-20, -930, 1650), yaw=0.0, lens=18.0, pitch=-39.0, shift=(0.0, 0.045))

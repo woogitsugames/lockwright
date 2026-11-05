@@ -137,14 +137,16 @@ flat_tool('wrench', wr, 1.0, 0.75, 0.55, tip='flat').data.materials[0] = MAT['wr
 put(box('back', -120, 160, 70, 72, -160, 160), paint('inside', (0.07, 0.085, 0.075), rough=0.5, chip=0.0, grime=0.0), 0.0)
 
 # ---------------------------------------------------------------- light + camera
+# Grazing warm key does the modelling; the mirror softbox is kept weak and off-axis (a strong one flattens
+# every cut face to the same grey), so the faces fall off from lit to dark like a product photo.
 world_hdri(float(arg('--world', '0.04')), sat=0.4)
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (16, 0, 0)
 kx, ky, kz, ks, ke = [float(v) for v in arg('--key', '-80,-32,100,26,110000').split(',')]
 area_light('key', (kx, ky, kz), AIM, ks, ke, (1.0, 0.85, 0.68))
-area_light('fill', (115, -95, 10), AIM, 90, float(arg('--fill', '9000')), (0.96, 0.97, 1.0))
+area_light('fill', (115, -95, 10), AIM, 90, float(arg('--fill', '2500')), (0.96, 0.97, 1.0))
 area_light('rim', (30, -30, -95), AIM, 30, float(arg('--rim', '14000')), (1.0, 0.95, 0.9))
-look_camera((float(arg('--tx', '16')), 0, float(arg('--tz', '-5'))), float(arg('--yaw', '-30')), float(arg('--pitch', '16')), float(arg('--dist', '70')), lens=float(arg('--lens', '70')))
-mirror_softbox('sheen', (16, 0, -2), scene.camera, size=float(arg('--ss', '30')), size_y=float(arg('--ssy', '90')), energy=float(arg('--sheen', '40000')), shift=(float(arg('--sx', '-6')), 0, float(arg('--sz', '0'))))
+look_camera((float(arg('--tx', '16')), 0, float(arg('--tz', '-1'))), float(arg('--yaw', '-30')), float(arg('--pitch', '16')), float(arg('--dist', '60')), lens=float(arg('--lens', '70')))
+mirror_softbox('sheen', (16, 0, -2), scene.camera, size=float(arg('--ss', '30')), size_y=float(arg('--ssy', '90')), energy=float(arg('--sheen', '7000')), shift=(float(arg('--sx', '-10')), 0, float(arg('--sz', '6'))))
 render_setup(OUT, RES, SAMPLES, exposure=0.1, crop=[float(v) for v in arg('--crop', '').split(',')] if arg('--crop', '') else None)
 bpy.ops.render.render(write_still=True)
 print('WROTE', scene.render.filepath)
