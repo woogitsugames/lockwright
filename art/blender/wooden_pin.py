@@ -20,11 +20,15 @@ SAMPLES = int(arg('--samples', '96'))
 CROP = [float(v) for v in arg('--crop', '').split(',')] if arg('--crop', '') else None
 
 MAT = {
-    'housing': wood('housing', light=(0.24, 0.17, 0.11), dark=(0.085, 0.06, 0.04), axis='Z', ring=0.35, rough=0.7, wear=0.7, grime=1.0, warp=5.0, center=(-30, 70), oiled=0.15, sawn=1.0, seed=1, checks=1.0),
-    'bolt':    wood('boltwood', light=(0.60, 0.45, 0.28), dark=(0.33, 0.22, 0.12), axis='X', ring=0.5, rough=0.55, wear=0.9, grime=0.8, warp=4.0, center=(55, -40), oiled=0.5, sawn=0.8, seed=2, checks=0.5),
+    'housing': oak('housing', light=(0.27, 0.19, 0.12), dark=(0.10, 0.07, 0.045), axis='Z', ring_mm=2.6, lacquer=0.15, rough=0.62, coat_rough=0.35,
+                   var=0.1, wear=0.8, grime=1.0, scratches=0.3, warp=1.2, seed=1.0, bump=1.5),
+    'bolt':    oak('boltwood', light=(0.58, 0.43, 0.27), dark=(0.30, 0.20, 0.11), axis='X', ring_mm=2.0, lacquer=0.25, rough=0.5, coat_rough=0.3,
+                   var=0.1, wear=1.0, grime=0.8, scratches=0.6, warp=0.8, seed=2.0, bump=1.5),
     'pin':     wood('pinwood', light=(0.12, 0.07, 0.04), dark=(0.04, 0.022, 0.013), axis='Z', ring=1.4, rough=0.45, coat=0.15, wear=1.0, grime=0.6, warp=1.5, center=(14, 9), oiled=0.6, seed=3),
-    'door':    wood('doorplank', light=(0.30, 0.26, 0.21), dark=(0.12, 0.10, 0.08), axis='Z', ring=0.3, rough=0.75, wear=0.4, grime=1.0, warp=8.0, center=(80, 160), oiled=0.0, sawn=0.6, seed=4, checks=1.0),
-    'door2':   wood('doorplank2', light=(0.27, 0.235, 0.19), dark=(0.11, 0.09, 0.075), axis='Z', ring=0.42, rough=0.75, wear=0.4, grime=1.0, warp=7.0, center=(-90, 150), oiled=0.0, sawn=0.6, seed=5, checks=1.0),
+    'door':    oak('doorplank', light=(0.33, 0.27, 0.20), dark=(0.14, 0.11, 0.08), axis='Z', ring_mm=3.0, lacquer=0.0, rough=0.7,
+                   coat_rough=0.3, var=0.12, wear=0.5, grime=1.0, scratches=0.0, warp=1.6, seed=4.0, bump=1.8),
+    'door2':   oak('doorplank2', light=(0.30, 0.25, 0.19), dark=(0.13, 0.10, 0.075), axis='Z', ring_mm=2.4, lacquer=0.0, rough=0.72,
+                   coat_rough=0.3, var=0.12, wear=0.5, grime=1.0, scratches=0.0, warp=1.4, seed=7.0, bump=1.8),
     'lifter':  wood('lifter', light=(0.42, 0.28, 0.15), dark=(0.18, 0.10, 0.05), axis='X', ring=1.0, rough=0.35, coat=0.2, wear=1.0, grime=0.3, warp=1.0, center=(0, 20), oiled=0.8, seed=6),
     'bronze':  metal('bronze', (0.55, 0.36, 0.20), 0.32, marks='stamp', marks_scale=0.3, wear=0.9, wear_col=(0.80, 0.55, 0.32), grime=0.9, grime_col=(0.08, 0.10, 0.07), patina=0.6),
     'dark':    dark_mat('gap', (0.01, 0.008, 0.006), 0.95),

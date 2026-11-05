@@ -182,20 +182,20 @@ if SHOT == 'borescope':  # flexible probe in the keyway, looking along the plug 
     for o in list(bpy.data.objects):  # pin stacks were offset behind the cut plane; centre them in their chambers
         if o.name[:2] in ('a_', 'b_', 'c_', 'd_', 'e_'):
             o.matrix_world = Matrix.Translation((0, -1.5, 0)) @ o.matrix_world
-    bx, by, bz = [float(v) for v in arg('--probe', '0.6,-0.55,-0.4').split(',')]
+    bx, by, bz = [float(v) for v in arg('--probe', '0.6,-0.4,-0.5').split(',')]
     tx, ty, tz = [float(v) for v in arg('--target', '12,0,2.6').split(',')]
-    cam.location = Vector((bx, by, bz)); cam.rotation_euler = (Vector((tx, ty, tz)) - cam.location).to_track_quat('-Z', 'Z').to_euler()
+    cam.location = Vector((bx, by, bz)); cam.rotation_euler = (Vector((tx, ty, tz)) - cam.location).to_track_quat('-Z', 'Y').to_euler()
     cam_d.lens = float(arg('--lens', '16')); cam_d.clip_start = 0.05; cam_d.dof.use_dof = False
     # the room is shut out (only a little leaks in through the keyway mouth); the LED ring does the work
     scene.world.node_tree.nodes['Background'].inputs['Strength'].default_value = float(arg('--world', '0.02'))
     for L in ('key', 'fill', 'rim', 'sheen'): bpy.data.objects[L].hide_render = True
     fwd = (Vector((tx, ty, tz)) - cam.location).normalized()
     q = cam.rotation_euler.to_quaternion(); right = q @ Vector((1, 0, 0)); upv = q @ Vector((0, 1, 0))
-    for k in range(6):  # six warm-white LEDs on a 0.9 mm ring around the lens
+    for k in range(6):  # six warm-white LEDs on a 0.6 mm ring around the lens
         a = 2 * math.pi * (k + 0.5) / 6
-        p = cam.location + (right * math.cos(a) + upv * math.sin(a)) * 0.9 + fwd * 0.05
+        p = cam.location + (right * math.cos(a) + upv * math.sin(a)) * 0.6 + fwd * 0.05
         bpy.ops.object.light_add(type='POINT', location=p); L = bpy.context.object; L.name = 'led%d' % k
-        L.data.energy = float(arg('--led', '0.6')); L.data.shadow_soft_size = 0.12; L.data.color = (1.0, 0.95, 0.86)
+        L.data.energy = float(arg('--led', '40')); L.data.shadow_soft_size = 0.12; L.data.color = (1.0, 0.97, 0.93)
     optics_post(dispersion=0.006, distortion=float(arg('--barrel', '0.06')), vignette=float(arg('--vig', '0.45')), soft=0.35)
 
 # ---------------------------------------------------------------- render

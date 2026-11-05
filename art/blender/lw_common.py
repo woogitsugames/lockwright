@@ -618,3 +618,131 @@ def mirror_softbox(name, target, cam, normal=(0, -1, 0), dist=260, size=60, size
     r = (r + Vector((0, 0, math.radians(shift[2])))).normalized()
     aim = bpy.data.objects.new(name + '_aim', None); scene.collection.objects.link(aim); aim.location = t
     return area_light(name, tuple(t + r * dist), aim, size, energy, color, size_y=size_y)
+
+
+# ================================================================ v3 additions (append-only)
+def oak(name, light=(0.46, 0.30, 0.16), dark=(0.22, 0.12, 0.055), axis='Z', plank=0.0, ring_mm=2.2, lacquer=0.8,
+        rough=0.45, coat_rough=0.14, coat_tint=(1.0, 0.9, 0.74), var=0.18, pores=1.0, rays=0.6, wear=0.4, grime=0.6,
+        scratches=0.5, warp=1.0, seed=0.0, seam=1.0, bump=1.0):
+    """Lacquered oak boards. Flat-sawn grain: each ring is the distance to a log axis lying behind the board,
+    so tapering logs draw irregular 'cathedral' arches instead of regular stripes. Per plank (width `plank` mm
+    across the grain, 0 = one board): own log position, taper, colour and figure. Open earlywood pores, ray
+    flecks, fibre streaks, satin coat with roughness variation, fine coat scratches, worn edges, grime.
+    axis = grain direction ('X' or 'Z' for boards in the XZ plane, 'Y' for boards in the XY plane)."""
+    m = bpy.data.materials.new(name); m.use_nodes = True; nt = m.node_tree; l = nt.links
+    b = nt.nodes['Principled BSDF']
+    def mth(op, a, c=None, d=None):
+        n = nt.nodes.new('ShaderNodeMath'); n.operation = op
+        for i, v in enumerate((a, c, d)):
+            if v is None: continue
+            if hasattr(v, 'links'): l.new(v, n.inputs[i])
+            else: n.inputs[i].default_value = v
+        return n.outputs[0]
+    tc = nt.nodes.new('ShaderNodeTexCoord'); P = tc.outputs['Object']
+    mp = nt.nodes.new('ShaderNodeMapping'); l.new(P, mp.inputs['Vector'])
+    # grain -> Z, across -> X, board normal -> Y
+    mp.inputs['Rotation'].default_value = {'Z': (0, 0, 0), 'X': (0, -math.pi / 2, 0), 'Y': (-math.pi / 2, 0, 0)}[axis]
+    mp.inputs['Location'].default_value = (seed * 7.3, 0, seed * 131.0)
+    Q = mp.outputs['Vector']
+    sx = nt.nodes.new('ShaderNodeSeparateXYZ'); l.new(Q, sx.inputs[0]); U, V, Z = sx.outputs
+    # low-frequency waviness of the whole grain (crooked growth)
+    wn = _noise(nt, Q, 0.012, detail=3, rough=0.5, stretch=(0.3, 0.3, 1.0))
+    U = mth('MULTIPLY_ADD', mth('SUBTRACT', wn, 0.5), 18.0 * warp, U)
+    # planks
+    if plank > 0:
+        pid = mth('FLOOR', mth('DIVIDE', U, plank))
+        ul = mth('SUBTRACT', U, mth('MULTIPLY_ADD', pid, plank, plank / 2))
+    else:
+        pid = None; ul = U
+    def rnd(k):
+        w = nt.nodes.new('ShaderNodeTexWhiteNoise'); w.noise_dimensions = '1D'
+        if pid is not None: l.new(mth('ADD', pid, seed * 3.1 + k * 17.0), w.inputs['W'])
+        else: w.inputs['W'].default_value = seed * 3.1 + k * 17.0
+        return w.outputs['Value']
+    r0, r1, r2, r3 = rnd(0), rnd(1), rnd(2), rnd(3)
+    W = max(plank, 60.0)
+    u0 = mth('MULTIPLY', mth('SUBTRACT', r0, 0.5), W * 1.4)                 # log centre across the board
+    d0 = mth('MULTIPLY_ADD', r1, ring_mm * 18.0, ring_mm * 3.0)              # log centre depth behind the face
+    slope = mth('MULTIPLY', mth('SUBTRACT', r2, 0.5), 0.18)                 # taper: arches along the grain
+    zn = _noise(nt, Q, 0.008, detail=2, stretch=(0.0, 0.0, 1.0))
+    dd = mth('ADD', mth('MULTIPLY_ADD', slope, Z, d0), mth('MULTIPLY', mth('SUBTRACT', zn, 0.5), ring_mm * 14.0))
+    dd = mth('ABSOLUTE', dd)
+    du = mth('SUBTRACT', ul, u0)
+    rad = mth('SQRT', mth('ADD', mth('MULTIPLY', du, du), mth('MULTIPLY', dd, dd)))
+    # irregular ring widths + fine wobble
+    rw = nt.nodes.new('ShaderNodeTexNoise'); rw.noise_dimensions = '1D'; rw.inputs['Scale'].default_value = 0.25 / ring_mm
+    rw.inputs['Detail'].default_value = 3; l.new(rad, rw.inputs['W'])
+    fw = _noise(nt, Q, 0.9 / ring_mm, detail=4, stretch=(1.0, 1.0, 0.06))
+    ph = mth('ADD', mth('DIVIDE', rad, ring_mm), mth('ADD', mth('MULTIPLY', rw.outputs['Fac'], 2.2), mth('MULTIPLY', fw, 0.5)))
+    f = mth('FRACT', ph)
+    # earlywood band (porous, darker) at the start of each ring, sharp leading edge, soft trailing edge
+    early = mth('MULTIPLY', _maprange(nt, f, 0.0, 0.05), _maprange(nt, f, 0.38, 0.12))
+    # fibre streaks along the grain
+    st = _noise(nt, Q, 0.6, detail=8, rough=0.65, stretch=(1.0, 1.0, 0.025))
+    # colour per plank
+    lt = _mix(nt, (*[c * (1 - var) for c in light], 1), (*[min(1, c * (1 + var)) for c in light], 1), r3)
+    dk = _mix(nt, (*[c * (1 - var) for c in dark], 1), (*[min(1, c * (1 + var * 0.6)) for c in dark], 1), r3)
+    hue = _mix(nt, lt, (light[0] * 1.05, light[1] * 0.93, light[2] * 0.8, 1), _maprange(nt, r0, 0.6, 1.0, 0.0, 0.6))
+    col = _mix(nt, hue, dk, mth('ADD', mth('MULTIPLY', early, 0.75), mth('MULTIPLY', _maprange(nt, st, 0.35, 0.7), 0.3)))
+    # broad tone drift along a board
+    td = _noise(nt, Q, 0.02, detail=2, stretch=(0.5, 0.5, 1.0))
+    col = _mix(nt, col, (*[c * 0.78 for c in light], 1), _maprange(nt, td, 0.35, 0.7, 0.0, 0.35))
+    # open pores: short dark dashes concentrated in the earlywood
+    po = _noise(nt, Q, 5.0, detail=2, rough=0.5, stretch=(1.0, 1.0, 0.07))
+    pm = mth('MULTIPLY', _maprange(nt, po, 0.6, 0.72), mth('ADD', mth('MULTIPLY', early, 0.85), 0.15))
+    pm = mth('MULTIPLY', pm, pores)
+    col = _mix(nt, col, (*[c * 0.35 for c in dark], 1), mth('MULTIPLY', pm, 0.8))
+    # ray flecks: small lighter lenses along the grain
+    if rays:
+        vo = nt.nodes.new('ShaderNodeTexVoronoi'); vo.inputs['Scale'].default_value = 0.9; vo.inputs['Randomness'].default_value = 1.0
+        rm = nt.nodes.new('ShaderNodeMapping'); rm.inputs['Scale'].default_value = (3.0, 1.0, 0.45); l.new(Q, rm.inputs['Vector']); l.new(rm.outputs['Vector'], vo.inputs['Vector'])
+        rf = mth('MULTIPLY', _maprange(nt, vo.outputs['Distance'], 0.16, 0.08), rays * 0.5)
+        col = _mix(nt, col, (*[min(1, c * 1.3) for c in light], 1), rf)
+    # plank seams
+    sm = None
+    if plank > 0 and seam:
+        sm = _maprange(nt, mth('ABSOLUTE', ul), plank / 2 - 0.35, plank / 2 - 0.05, 0.0, seam)
+        col = _mix(nt, col, (0.02, 0.012, 0.006, 1), sm)
+    # wear: lacquer rubbed through on edges (lighter, drier wood), grime in corners and seams
+    wm = None
+    if wear:
+        em = _edge_mask(nt, 0.8, 0.6, 0.97)
+        wm = _maprange(nt, _mix(nt, 0.0, em, _noise(nt, Q, 0.6, detail=5), dtype='FLOAT'), 0.15, 0.45, 0.0, wear)
+        col = _mix(nt, col, (*[min(1, c * 1.35) for c in light], 1), wm)
+    if grime:
+        cm = _maprange(nt, _cavity_mask(nt, 3.0, 0.3, 0.93), 0, 1, 0, grime)
+        col = _mix(nt, col, (0.035, 0.02, 0.01, 1), cm)
+    l.new(col, b.inputs['Base Color'])
+    # roughness: satin, pores and worn spots rougher
+    r = _maprange(nt, _noise(nt, Q, 0.15, detail=4), 0.3, 0.7, rough - 0.07, rough + 0.07)
+    r = _mix(nt, r, min(1.0, rough + 0.25), pm, dtype='FLOAT')
+    l.new(r, b.inputs['Roughness'])
+    # satin coat: uneven sheen (hand-rubbed), scratches, missing where worn through
+    cw = _maprange(nt, _noise(nt, Q, 0.05, detail=3), 0.3, 0.7, lacquer * 0.8, lacquer)
+    if wm is not None: cw = _mix(nt, cw, 0.0, wm, dtype='FLOAT')
+    l.new(cw, b.inputs['Coat Weight'])
+    cr = _maprange(nt, _noise(nt, Q, 0.08, detail=5, rough=0.6), 0.3, 0.7, coat_rough * 0.6, coat_rough * 1.7)
+    b.inputs['Coat Tint'].default_value = (*coat_tint, 1); b.inputs['Coat IOR'].default_value = 1.5
+    sc = None
+    if scratches:
+        lines = []
+        for ang in (0.6, -0.9, 0.15):
+            smp = nt.nodes.new('ShaderNodeMapping'); smp.inputs['Rotation'].default_value = (0, ang, 0)
+            smp.inputs['Location'].default_value = (ang * 37, 0, ang * 11); l.new(Q, smp.inputs['Vector'])
+            n2 = _noise(nt, smp.outputs['Vector'], 0.25, detail=2, stretch=(1.0, 1.0, 0.004))
+            ln = _maprange(nt, mth('ABSOLUTE', mth('SUBTRACT', n2, 0.5)), 0.004, 0.0)
+            gate = _maprange(nt, _noise(nt, Q, 0.04, detail=2), 0.5, 0.65)
+            lines.append(mth('MULTIPLY', ln, gate))
+        sc = mth('MULTIPLY', mth('MAXIMUM', mth('MAXIMUM', lines[0], lines[1]), lines[2]), scratches)
+        cr = _mix(nt, cr, 0.45, sc, dtype='FLOAT')
+    l.new(cr, b.inputs['Coat Roughness'])
+    # relief: sunken pores and earlywood, seams, slight raised latewood; coat stays smoother
+    h = mth('SUBTRACT', 1.0, mth('ADD', mth('MULTIPLY', pm, 0.8), mth('MULTIPLY', early, 0.25)))
+    if sm is not None: h = mth('SUBTRACT', h, mth('MULTIPLY', sm, 2.0))
+    bv = nt.nodes.new('ShaderNodeBevel'); bv.samples = 6; bv.inputs['Radius'].default_value = 0.3
+    bp = nt.nodes.new('ShaderNodeBump'); bp.inputs['Strength'].default_value = 0.3 * bump; bp.inputs['Distance'].default_value = 0.04
+    l.new(h, bp.inputs['Height']); l.new(bv.outputs['Normal'], bp.inputs['Normal']); l.new(bp.outputs['Normal'], b.inputs['Normal'])
+    cb = nt.nodes.new('ShaderNodeBump'); cb.inputs['Strength'].default_value = 0.08 * bump; cb.inputs['Distance'].default_value = 0.02
+    l.new(h if sc is None else _mix(nt, h, 0.0, sc, dtype='FLOAT'), cb.inputs['Height']); l.new(bv.outputs['Normal'], cb.inputs['Normal'])
+    l.new(cb.outputs['Normal'], b.inputs['Coat Normal'])
+    return m

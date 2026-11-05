@@ -36,7 +36,7 @@ def leather(name, color, rough=0.55, grain=1.0, wear=0.5, seed=0.0, burnish=0.0)
     cn = _noise(nt, P, 0.35, detail=8, rough=0.62, dist=0.6)
     sub = nt.nodes.new('ShaderNodeMath'); sub.operation = 'SUBTRACT'; l.new(cn, sub.inputs[0]); sub.inputs[1].default_value = 0.5
     ab = nt.nodes.new('ShaderNodeMath'); ab.operation = 'ABSOLUTE'; l.new(sub.outputs[0], ab.inputs[0])
-    crease = _maprange(nt, ab.outputs[0], 0.018, 0.0)
+    crease = _maprange(nt, ab.outputs[0], 0.012, 0.0)
     cgate = _maprange(nt, _noise(nt, P, 0.12, detail=2), 0.45, 0.65)
     crease = _mix(nt, 0.0, crease, cgate, dtype='FLOAT')
     # colour: mottled tone + handled darker patches + crease darkening + valleys of the grain darker
@@ -45,8 +45,11 @@ def leather(name, color, rough=0.55, grain=1.0, wear=0.5, seed=0.0, burnish=0.0)
     hp = _maprange(nt, _noise(nt, P, 0.05, detail=3), 0.5, 0.75, 0.0, 0.55)
     col = _mix(nt, col, (*[c * 0.55 for c in color], 1), hp)
     col = _mix(nt, col, (*[c * 0.6 for c in color], 1), _maprange(nt, cell, 0.5, 1.0, 0.0, 0.5))
-    col = _mix(nt, col, (*[c * 0.35 for c in color], 1), crease)
+    col = _mix(nt, col, (*[c * 0.62 for c in color], 1), crease)
     em = _edge_mask(nt, 1.2, 0.55, 0.97)
+    if burnish:  # cut edges slicked and darkened with wax (bone-folded), glossy
+        bm_ = _maprange(nt, em, 0.2, 0.8, 0.0, burnish)
+        col = _mix(nt, col, (*[c * 0.4 for c in color], 1), bm_)
     if wear:  # scuffed lighter, drier edges
         wm = _maprange(nt, _mix(nt, 0.0, em, _noise(nt, P, 1.5, detail=5), dtype='FLOAT'), 0.15, 0.45, 0.0, wear)
         col = _mix(nt, col, (*[min(1, c * 1.55) for c in color], 1), wm)
@@ -89,7 +92,7 @@ def glass_mat():
     return m
 
 LE = leather('leather', (0.30, 0.155, 0.07), 0.55, seed=0.0, wear=0.4)
-LE2 = leather('pocket', (0.25, 0.125, 0.055), 0.5, seed=3.0, wear=0.9, burnish=1.0)
+LE2 = leather('pocket', (0.25, 0.125, 0.055), 0.5, seed=3.0, wear=0.5, burnish=1.0)
 LE3 = leather('imprint', (0.2, 0.1, 0.045), 0.3, grain=0.35, seed=5.0, wear=0.0)
 TH = thread_mat(); GL = glass_mat()
 PICK = metal('pick_steel', (0.64, 0.64, 0.65), 0.2, aniso=0.6, marks='grind', marks_axis=(0, 0, 1), marks_scale=1.4,
@@ -129,7 +132,7 @@ def stitches(xs, z0, z1, pitch, y, ang=28.0):
     for k in range(n):
         z = z0 + k * pitch + pitch * 0.5
         bpy.ops.mesh.primitive_uv_sphere_add(segments=12, ring_count=8, radius=1.0, location=(xs, y, z))
-        s = bpy.context.object; s.scale = (0.32, 0.22, pitch * 0.36); s.rotation_euler = (0, math.radians(ang), 0)
+        s = bpy.context.object; s.scale = (0.26, 0.2, pitch * 0.33); s.rotation_euler = (0, math.radians(ang), 0)
         bpy.ops.object.transform_apply(scale=True, rotation=True); smooth(s); link(s, TH)
 
 def stitches_h(zs, x0, x1, pitch, y, ang=28.0):
@@ -137,7 +140,7 @@ def stitches_h(zs, x0, x1, pitch, y, ang=28.0):
     for k in range(n):
         x = x0 + k * pitch + pitch * 0.5
         bpy.ops.mesh.primitive_uv_sphere_add(segments=12, ring_count=8, radius=1.0, location=(x, y, zs))
-        s = bpy.context.object; s.scale = (pitch * 0.36, 0.22, 0.32); s.rotation_euler = (0, math.radians(ang), 0)
+        s = bpy.context.object; s.scale = (pitch * 0.33, 0.2, 0.26); s.rotation_euler = (0, math.radians(ang), 0)
         bpy.ops.object.transform_apply(scale=True, rotation=True); smooth(s); link(s, TH)
 
 # roll body (big enough to fill any frame), with an edge-stitched fold line near the top
@@ -147,11 +150,11 @@ stitches_h(50.0, -100, 100, 3.6, -3.62)
 
 POCKET_X = [-48, -16, 16]
 for i, x in enumerate(POCKET_X):
-    leather_slab('flap%d' % i, x - 14, x + 14, -130, -4, -4.0, 2.0, LE2, puff=0.9, cuts=30, seed=10 + i, bev=1.4)
+    leather_slab('flap%d' % i, x - 14, x + 14, -130, -4, -4.0, 2.0, LE2, puff=1.8, cuts=30, seed=10 + i, bev=1.4)
     for sx in (x - 11.8, x + 11.8):
         stitches(sx, -128, -6.5, 3.6, -4.15 - 0.4, ang=28 if sx < x else -28)
     if i >= 3 - LOST:  # lost pick: compressed, darker, glossier imprint of its outline left in the leather
-        pts = [(x, -10), (x, 18), (x + 0.2, 22), (x + 1.4, 25), (x + 3.0, 26.2)]
+        pts = [(x, z) for z in range(-10, 18, 3)] + [(x, 18), (x + 0.2, 22), (x + 1.4, 25), (x + 3.0, 26.2)]
         floor = -2.0 - undulation(x, 8, 1) + 0.3   # groove ~0.3 mm deep, following the leather
         im = flat_tool('imprint%d' % i, pts, 1.9, 8.0, floor - 4.0, mat='brass')
         im.data.materials.clear(); im.data.materials.append(LE3)
@@ -169,8 +172,14 @@ for i, x in enumerate(POCKET_X):
         pts = [(x, -60), (x, 16), (x + 0.3, 21), (x + 1.5, 24.5), (x + 3.4, 26)]
     else:        # rake: smooth humps
         pts = [(x, -60), (x, 12), (x + 0.9, 16), (x - 0.3, 20), (x + 0.9, 24), (x, 28)]
+    pts = [(x, z) for z in range(-60, int(pts[1][1]), 3)] + pts[1:]   # even spacing: no folded offset quads
     t = flat_tool('pick%d' % i, pts, 1.5, 0.6, -2.42)
     t.data.materials.clear(); t.data.materials.append(PICK)
+    # the stamped outline is one long concave n-gon per face: triangulate it so the bevel cannot fold it
+    bm = bmesh.new(); bm.from_mesh(t.data)
+    bmesh.ops.triangulate(bm, faces=[f for f in bm.faces if len(f.verts) > 4], quad_method='BEAUTY', ngon_method='EAR_CLIP')
+    bm.to_mesh(t.data); bm.free()
+    t.modifiers['bev'].harden_normals = False
     t.rotation_euler = (0, math.radians((-1.2, 0.8)[i]), 0)
 
 # watchmaker's loupe standing lens-up on the leather: conical ribbed body, turned brass ring, glass
@@ -210,7 +219,8 @@ cam.location = (0, -400, CZ + 7); cam.rotation_euler = (Vector((0, 0, CZ)) - cam
 # product sheen on the steel: strip softbox near the mirror direction, shifted so its edge grades across the picks
 mirror_softbox('sheen', (0, 0, CZ), cam, dist=380, size=float(arg('--ss', '90')), size_y=float(arg('--ssy', '240')),
                energy=float(arg('--sheen', '60000')), shift=(float(arg('--sx', '4')), 0, float(arg('--sz', '8'))))
-render_setup(OUT, RES, SAMPLES, exposure=float(arg('--exp', '0.0')))
+CROP = [float(v) for v in arg('--crop', '').split(',')] if arg('--crop', '') else None
+render_setup(OUT, RES, SAMPLES, exposure=float(arg('--exp', '0.0')), crop=CROP)
 if arg("--norender", "0") == "1":
     for o in bpy.data.objects:
         if o.type == "MESH" and not o.name.startswith("Sphere"): print("OBJ", o.name, len(o.data.polygons), [m.name for m in o.data.materials], o.dimensions[:])

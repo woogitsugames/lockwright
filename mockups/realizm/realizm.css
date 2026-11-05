@@ -3,7 +3,7 @@
 body{background:var(--ink);color:#eee;font-family:"Atkinson Hyperlegible Next",sans-serif}
 .screen{position:relative;width:100vw;height:100vh;overflow:hidden;background:var(--ink)}
 .section{position:absolute;top:0;left:0;width:100%;aspect-ratio:824/1100;background:url(img/section.jpg) center/cover}
-.tray{position:absolute;left:0;right:0;top:133.5vw;bottom:0;background:url(img/tray.jpg) center top/100% auto no-repeat,#2a170b}
+.tray{position:absolute;left:0;right:0;top:133.5vw;bottom:0;background:url(img/tray.jpg) center top/cover no-repeat,#2a170b}
 /* soft seam between the two photographs, like depth of field, not a panel edge */
 .tray::before{content:"";position:absolute;left:0;right:0;top:-18px;height:36px;background:linear-gradient(rgba(13,12,11,0),rgba(13,12,11,.75) 50%,rgba(13,12,11,0))}
 /* only system affordance: pause, small, top-left inside the safe area */

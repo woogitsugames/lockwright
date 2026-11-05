@@ -15,6 +15,5 @@ void vertex() {
 
 void fragment() {
 	vec2 uv = rest_clip.xy / rest_clip.w * 0.5 + 0.5;
-	uv.y = 1.0 - uv.y;
 	ALBEDO = texture(plate, uv).rgb * exposure;
 }

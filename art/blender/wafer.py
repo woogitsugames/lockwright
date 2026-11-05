@@ -62,7 +62,7 @@ for (st, dz, tilt, sx), x in zip(STATE, WX):
     w = T / 2 + HC
     boolean(house, box('hs_top', x - w, x + w, -W_HALF_Y - 0.2, W_HALF_Y + 0.2, 5.0, 8.9))
     boolean(house, box('hs_bot', x - w, x + w, -W_HALF_Y - 0.2, W_HALF_Y + 0.2, -9.0, -5.0))
-cut_half(house); put(house, MAT['zamak'], 0.08)
+cut_half(house); put(house, MAT['zamak'], 0.16, 3)
 
 # ---------------------------------------------------------------- plug (brass) with keyway, wafer slots, tail
 plug = lathe_x('plug', [(-2.25, 5.6), (-2.25, 6.85), (-2.1, R_P), (L_H + 0.4, R_P), (L_H + 0.4, 4.2), (L_H + 3.4, 4.2), (L_H + 3.4, 3.6)], seg=160)
@@ -73,11 +73,11 @@ for x in WX:
     boolean(plug, box('ps', x - T / 2 - PC, x + T / 2 + PC, -W_HALF_Y - 0.15, W_HALF_Y + 0.15, -9, 9))
 # tail: flats for the cam and a tapped hole
 boolean(plug, box('flat', L_H + 0.6, L_H + 4, -9, 9, 3.0, 9)); boolean(plug, box('flat2', L_H + 0.6, L_H + 4, -9, 9, -9, -3.0))
-cut_half(plug); put(plug, MAT['brass'], 0.07)
+cut_half(plug); put(plug, MAT['brass'], 0.14, 3)
 # staking bridges the springs bear against
 for x in WX:
     br = box('bridge', x - T / 2 - PC, x + T / 2 + PC, -NOTCH_Y - 0.3, NOTCH_Y + 0.3, BRIDGE_Z, 7.4)
-    boolean(br, lathe_x('bc', [(x - 3, R_P), (x + 3, R_P)], seg=96), 'INTERSECT'); cut_half(br); put(br, MAT['brass'], 0.05)
+    boolean(br, lathe_x('bc', [(x - 3, R_P), (x + 3, R_P)], seg=96), 'INTERSECT'); cut_half(br); put(br, MAT['brass'], 0.1, 2)
 
 # ---------------------------------------------------------------- wafers + springs
 def wafer(name, x, dz, tilt, sx):
@@ -92,7 +92,7 @@ def wafer(name, x, dz, tilt, sx):
     piv = Vector((x, 0, 0))
     o.matrix_world = Matrix.Translation(Vector((sx, 0, dz))) @ Matrix.Translation(piv) @ Matrix.Rotation(math.radians(tilt), 4, 'Y') @ Matrix.Translation(-piv)
     bpy.data.objects.remove(ch, do_unlink=True)
-    return put(o, MAT['wafer'], 0.06, 2)
+    return put(o, MAT['wafer'], 0.11, 3)
 
 for i, ((st, dz, tilt, sx), x) in enumerate(zip(STATE, WX)):
     wafer('wafer%d' % i, x, dz, tilt, sx)
@@ -134,16 +134,16 @@ wr = [(3.8, -4.28), (-3.0, -4.28), (-4.1, -4.6), (-4.7, -5.6), (-4.8, -7.0), (-4
 flat_tool('wrench', wr, 1.0, 0.75, 0.55, tip='flat').data.materials[0] = MAT['wrench']
 
 # backdrop: dark interior of the box far behind the cut
-put(box('back', -120, 160, 70, 72, -160, 160), paint('inside', (0.09, 0.11, 0.10), rough=0.6, chip=0.0))
+put(box('back', -120, 160, 70, 72, -160, 160), paint('inside', (0.16, 0.19, 0.17), rough=0.55, chip=0.0, grime=0.0), 0.0)
 
 # ---------------------------------------------------------------- light + camera
 world_hdri(float(arg('--world', '0.04')), sat=0.4)
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (16, 0, 0)
-kx, ky, kz, ks, ke = [float(v) for v in arg('--key', '-60,-70,110,30,100000').split(',')]
+kx, ky, kz, ks, ke = [float(v) for v in arg('--key', '-80,-32,100,26,110000').split(',')]
 area_light('key', (kx, ky, kz), AIM, ks, ke, (1.0, 0.85, 0.68))
-area_light('fill', (115, -95, 10), AIM, 90, float(arg('--fill', '1200')), (0.96, 0.97, 1.0))
-area_light('rim', (30, -30, -95), AIM, 30, float(arg('--rim', '2500')), (1.0, 0.95, 0.9))
-look_camera((16.0, 0, -5.0), -30, 16, float(arg('--dist', '70')), lens=float(arg('--lens', '70')))
+area_light('fill', (115, -95, 10), AIM, 90, float(arg('--fill', '9000')), (0.96, 0.97, 1.0))
+area_light('rim', (30, -30, -95), AIM, 30, float(arg('--rim', '14000')), (1.0, 0.95, 0.9))
+look_camera((float(arg('--tx', '16')), 0, float(arg('--tz', '-5'))), float(arg('--yaw', '-30')), float(arg('--pitch', '16')), float(arg('--dist', '70')), lens=float(arg('--lens', '70')))
 mirror_softbox('sheen', (16, 0, -2), scene.camera, size=float(arg('--ss', '30')), size_y=float(arg('--ssy', '90')), energy=float(arg('--sheen', '40000')), shift=(float(arg('--sx', '-6')), 0, float(arg('--sz', '0'))))
 render_setup(OUT, RES, SAMPLES, exposure=0.1, crop=[float(v) for v in arg('--crop', '').split(',')] if arg('--crop', '') else None)
 bpy.ops.render.render(write_still=True)

@@ -134,8 +134,8 @@ put(box('lblock', -32.2, -25.0, 0.2, DEPTH, Z1 - WALL - 2.4, Z1 - WALL), MAT['ca
 
 # ---------------------------------------------------------------- chest board behind (oak planks), keyhole through it
 for i, (bz0, bz1) in enumerate([(-170, -58.4), (-58.0, 51.6), (52.0, 170)]):
-    wm = wood('chest_oak%d' % i, light=(0.33, 0.21, 0.11), dark=(0.12, 0.07, 0.035), axis='X', ring=0.5 + 0.15 * i, rough=0.72, wear=0.6, grime=0.9,
-              warp=4.0, center=(0, 40 + 25 * i), oiled=0.0, seed=i * 1.7)
+    wm = oak('chest_oak%d' % i, light=(0.36, 0.23, 0.115), dark=(0.15, 0.085, 0.04), axis='X', ring_mm=2.0 + 0.5 * i, lacquer=0.45,
+             rough=0.5, coat_rough=0.22, wear=0.7, grime=0.9, scratches=0.8, seed=2.0 + i * 1.7)
     bd = box('board%d' % i, -140, 140, DEPTH + BP, DEPTH + BP + 22, bz0, bz1); put(bd, wm, 0.6, 3)
 kd = cyl('khd', 3.0, 1.0, (PIN.x, DEPTH + BP + 0.6, PIN.z), axis='Y', verts=48)
 boolean(kd, box('khds', PIN.x - 1.3, PIN.x + 1.3, DEPTH, DEPTH + 4, PIN.z - BIT_R, PIN.z), 'UNION'); put(kd, MAT['dark'])

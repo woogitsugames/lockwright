@@ -19,6 +19,7 @@ from mathutils import Vector, Matrix
 arg = cli()
 OUT = arg('--out', 'lever.png'); RES = [int(v) for v in arg('--res', '824x1100').split('x')]
 SAMPLES = int(arg('--samples', '96')); DETECTOR = int(arg('--detector', '0'))
+OPEN = int(arg('--open', '1'))   # stump pocket open towards the forend: each lever's gate face is seen past the one in front
 CROP = [float(v) for v in arg('--crop', '').split(',')] if arg('--crop', '') else None
 
 MAT = {
@@ -29,7 +30,8 @@ MAT = {
     'steel':  metal('stump', (0.46, 0.46, 0.47), 0.26, marks='turn', marks_axis=(0, 1, 0), wear=0.5, grime=0.6),
     'blued':  metal('blued', (0.10, 0.12, 0.17), 0.28, marks='grind', marks_axis=(1, 0, 0), wear=0.6, wear_col=(0.45, 0.45, 0.46), grime=0.4),
     'screw':  metal('screw_br', (0.70, 0.52, 0.28), 0.32, marks='turn', marks_axis=(1, 0, 0), wear=0.4, grime=1.0),
-    'wood':   wood('door_oak', light=(0.30, 0.18, 0.085), dark=(0.11, 0.055, 0.025), axis='Z', ring=0.55, rough=0.5, coat=0.35, wear=0.3, grime=0.7, warp=2.0, center=(31, -18)),
+    'wood':   oak('door_oak', light=(0.40, 0.25, 0.12), dark=(0.17, 0.09, 0.04), axis='Z', ring_mm=2.4, lacquer=0.8, rough=0.42, wear=0.5, grime=0.7, seed=1.0),
+    'wood2':  oak('jamb_oak', light=(0.36, 0.22, 0.10), dark=(0.15, 0.08, 0.035), axis='Z', ring_mm=1.8, lacquer=0.7, rough=0.45, wear=0.6, grime=0.8, seed=5.0),
     'paint':  paint('door_paint', (0.30, 0.20, 0.12), rough=0.5, metal_col=(0.36, 0.22, 0.11), chip=0.5),
     'pick':   metal('crank', (0.60, 0.60, 0.61), 0.2, aniso=0.6, marks='grind', marks_axis=(1, 0, 0), wear=0.3, grime=0.1),
     'wire':   metal('lifter', (0.62, 0.62, 0.63), 0.22, marks='turn', marks_axis=(0, 1, 0), wear=0.2, grime=0.1),
@@ -56,7 +58,7 @@ def lever_outline(belly):
 def make_lever(i, y0, need, lift, belly):
     o = prism('lever%d' % i, lever_outline(belly), y0, y0 + LT)
     gz = -need  # gate centre (lever coords, stump at z = 0)
-    boolean(o, box('pocketA', STUMP_X + 0.3 - 2.6, STUMP_X + 0.3 + 2.6, -5, 20, -9.0, 2.7))
+    boolean(o, box('pocketA', STUMP_X + 0.3 - 2.6, 20.0 if OPEN else STUMP_X + 0.3 + 2.6, -5, 20, -9.0, 2.7))
     boolean(o, box('pocketB', -6.6, -1.4, -5, 20, -9.0, 2.7))
     boolean(o, box('gate', -2.0, STUMP_X, -5, 20, gz - 2.45, gz + 2.45))
     boolean(o, cyl('pivh', 2.08, 30, (PIV.x, 0, PIV.z), axis='Y', verts=48))
@@ -129,7 +131,7 @@ boolean(stile, box('mortise', CX0 - 0.4, CX1 + 1, -0.0, BACK_Y + FL + 0.3, CZ0 -
 boolean(stile, box('cutfront', -100, CX1 + 10, -20, 0.0, -130, 130))
 put(stile, MAT['wood'], 0.4, 3)
 jamb = box('jamb', CX1 + 4.2, 120, 0.0, 60, -120, 120)
-boolean(jamb, box('strike_pocket', CX1 + 3, CX1 + 18, 8.0, 14.4, -7.6, 7.6)); put(jamb, MAT['wood'], 0.4, 3)
+boolean(jamb, box('strike_pocket', CX1 + 3, CX1 + 18, 8.0, 14.4, -7.6, 7.6)); put(jamb, MAT['wood2'], 0.4, 3)
 sk = box('strike', CX1 + 4.2, CX1 + 6.0, -3.0, BACK_Y + 5, -30, 30)
 boolean(sk, box('skh', CX1 + 3, CX1 + 7, 8.4, 14.2, -7.2, 7.2)); boolean(sk, box('cutfront2', CX1, CX1 + 8, -10, 0.0, -40, 40))
 put(sk, MAT['forend'], 0.3, 3)
@@ -153,8 +155,10 @@ world_hdri(float(arg('--world', '0.05')), sat=0.4)
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (-2, 6, 0)
 kx, ky, kz, ks, ke = [float(v) for v in arg('--key', '-90,-110,140,40,160000').split(',')]
 area_light('key', (kx, ky, kz), AIM, ks, ke, (1.0, 0.84, 0.66))
-area_light('fill', (140, -110, -20), AIM, 90, float(arg('--fill', '2500')), (0.94, 0.96, 1.0))
-area_light('rim', (40, -20, -130), AIM, 40, float(arg('--rim', '3000')), (1.0, 0.95, 0.9))
+area_light('fill', (140, -110, -20), AIM, 90, float(arg('--fill', '30000')), (0.94, 0.96, 1.0))
+area_light('rim', (40, -20, -130), AIM, 40, float(arg('--rim', '25000')), (1.0, 0.95, 0.9))
+# kicker from the forend side, low: lights the open stump pockets so all three gate faces read
+area_light('kick', tuple(float(v) for v in arg('--kpos', '110,-90,-30').split(',')), AIM, 25, float(arg('--kick', '30000')), (1.0, 0.95, 0.88))
 cam = look_camera((float(arg('--tx', '-1')), 6, float(arg('--tz', '-2'))), float(arg('--yaw', '32')), float(arg('--pitch', '-18')),
                   float(arg('--dist', '190')), lens=float(arg('--lens', '120')))
 mirror_softbox('sheen', (0, 0, 0), cam, size=float(arg('--ss', '25')), size_y=float(arg('--ssy', '60')), energy=float(arg('--sheen', '15000')),

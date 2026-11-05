@@ -23,7 +23,11 @@ void fragment() {
 	vec2 nxy = (texture(normal_map, UV).xy * 2.0 - 1.0) * normal_strength;
 	vec3 tn = vec3(nxy, sqrt(max(0.0, 1.0 - dot(nxy, nxy))));
 	vec3 n = normalize(TANGENT * tn.x + BINORMAL * tn.y + NORMAL * tn.z);
-	vec2 muv = vec2(n.x, -n.y) * 0.49 + 0.5;
+	// Grazing normals would sample the transparent rim of the matcap render (black fringe): stay inside.
+	vec2 nm = vec2(n.x, -n.y);
+	float l = length(nm);
+	nm *= min(l, 0.94) / max(l, 1e-4);
+	vec2 muv = nm * 0.49 + 0.5;
 	float ao = mix(1.0, texture(orm, UV).r, 0.6);
 	ALBEDO = texture(matcap, muv).rgb * ao * exposure;
 }
