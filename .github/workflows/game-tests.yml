@@ -101,9 +101,8 @@ jobs:
           mv ~/.local/share/godot/export_templates/4.7.2.stable/templates/* ~/.local/share/godot/export_templates/4.7.2.stable/
           rmdir ~/.local/share/godot/export_templates/4.7.2.stable/templates
           cp ~/.local/share/godot/export_templates/4.7.2.stable/version.txt /tmp/vt && head -1 /tmp/vt
-      - name: Add Linux preset + export-pack + run smoke from pck (R-15, R-28)
+      - name: Export-pack + run smoke from pck (R-15, R-28; preset.2 "Linux" is in game/export_presets.cfg)
         run: |
-          printf '\\n[preset.2]\\nname="Linux"\\nplatform="Linux"\\nrunnable=true\\nexport_filter="all_resources"\\ninclude_filter="i18n/*.csv"\\nexclude_filter="addons/gut/*,tests/*,scenes/dev/*"\\nexport_path="build/lockwright-debug.pck"\\n' >> game/export_presets.cfg
           mkdir -p game/build
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path game --import
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path game --export-debug "Linux" build/lockwright-debug.pck

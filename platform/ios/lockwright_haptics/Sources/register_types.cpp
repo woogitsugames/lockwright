@@ -13,7 +13,7 @@ void initialize_lockwright_haptics_module(ModuleInitializationLevel p_level) {
 		return;
 	}
 	ClassDB::register_class<lockwright::LockwrightHaptics>();
-	godot::Engine::get_singleton()->register_singleton("LockwrightHaptics", godot::memnew(lockwright::LockwrightHaptics));
+	godot::Engine::get_singleton()->register_singleton("LockwrightHaptics", memnew(lockwright::LockwrightHaptics));
 }
 
 void uninitialize_lockwright_haptics_module(ModuleInitializationLevel p_level) {

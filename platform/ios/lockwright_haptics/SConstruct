@@ -1,4 +1,4 @@
-# Build the LockwrightHaptics iOS plugin (static .a for the .gdip, D-21) with godot-cpp 4.7.
+# Build the LockwrightHaptics iOS plugin (shared .dylib for the .gdextension xcframework, D-30) with godot-cpp 4.7.
 # Usage (macOS): GODOT_CPP_SCONSTRUCT=<godot-cpp>/SConstruct scons platform=ios target=template_release arch=arm64
 import os
 
@@ -16,8 +16,8 @@ objc_env.Append(CXXFLAGS=["-x", "objective-c++", "-std=gnu++20", "-fobjc-arc", "
 cpp_objs = env.Object(cpp_sources)
 mm_objs = objc_env.Object(mm_sources)
 
-library = env.StaticLibrary(
-    "bin/liblockwright_haptics.{}.{}.{}.a".format(env["platform"], env["target"], env["arch"]),
+library = env.SharedLibrary(
+    "bin/liblockwright_haptics.{}.{}".format(env["platform"], env["target"]),
     cpp_objs + mm_objs,
 )
 env.Append(LINKFLAGS=["-framework", "CoreHaptics", "-framework", "AVFAudio", "-framework", "Foundation", "-framework", "UIKit"])
