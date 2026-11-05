@@ -125,3 +125,6 @@ dev.haptics_lab.force_fallback,Fallback erzwingen,Fallback erzwingen,
 dev.haptics_lab.resistance,Widerstand,Widerstand,
 dev.haptics_lab.caps,Möglichkeiten,Möglichkeiten,
 tutorial.start,,Übung starten,Uzupełniono nowy klucz interfejsu po korekcie.
+nav.quit_confirm,,Spiel beenden?,Nowy klucz źródłowy (pytanie przy wyjściu).
+nav.quit_yes,,Beenden,Nowy klucz źródłowy (potwierdzenie).
+nav.quit_no,,Weiterspielen,Nowy klucz źródłowy (pozostanie w grze).
