@@ -42,7 +42,7 @@ func _ready() -> void:
 		b.mouse_filter = Control.MOUSE_FILTER_PASS
 		var jid: String = job.get("id", "")
 		if completed.has(jid):
-			b.text = "✓ " + b.text
+			b.text += " — " + I18n.t(&"ui.job_done")
 		elif refused.has(jid):
 			continue  # N-15: refused jobs leave the list
 		b.pressed.connect(func() -> void:

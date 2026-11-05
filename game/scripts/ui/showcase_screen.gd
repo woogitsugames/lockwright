@@ -1,8 +1,8 @@
 extends Control
 ## Showcase: historical notes from game/data/showcase/*.json with source field.
 
-@onready var notes_list: VBoxContainer = $VBox/Scroll/VBox/NotesList
-@onready var back_button: Button = $BackButton
+@onready var notes_list: VBoxContainer = $Frame/VBox/Scroll/NotesList
+@onready var back_button: Button = $Frame/VBox/Header/BackButton
 
 const SHOWCASE_DIR := "res://data/showcase"
 
@@ -14,14 +14,16 @@ func _show_notebook_entry() -> void:
 			keys.append(k)
 	if keys.is_empty():
 		return
+	var panel := PanelContainer.new()
 	var card := VBoxContainer.new()
-	var lbl := Label.new()
+	panel.add_child(card)
+	var lbl := ScreenFrame.wrap(Label.new())
 	lbl.text = I18n.t(&"showcase.notebook_prefix") + " " + I18n.t(keys[randi() % keys.size()])
-	lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	card.add_child(lbl)
-	# G10 notebook page (PL/EN by game language)
+	# G10 notebook page (PL/EN by game language), only if it is in the build
 	var lang := "pl" if Settings.language() == "pl" else "en"
-	var page := load("res://assets/ui/gpt/notebook/03-five-rules-%s.jpg" % lang)
+	var path := "res://assets/ui/gpt/notebook/03-five-rules-%s.jpg" % lang
+	var page: Texture2D = load(path) if ResourceLoader.exists(path) else null
 	if page != null:
 		var tex := TextureRect.new()
 		tex.texture = page
@@ -29,13 +31,13 @@ func _show_notebook_entry() -> void:
 		tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		tex.custom_minimum_size = Vector2(0, 160)
 		card.add_child(tex)
-	notes_list.add_child(card)
+	notes_list.add_child(panel)
 
 
 func _exhibit_photo(nid: String) -> Texture2D:
 	# G16 showcase photos: showcase.<slug> -> <NN>_<slug>.jpg
 	var slug := nid.replace("showcase.", "")
-	for f in DirAccess.get_files_at("res://assets/ui/gpt/showcase"):
+	for f in ResourceLoader.list_directory("res://assets/ui/gpt/showcase"):
 		if f.ends_with("_%s.jpg" % slug):
 			return load("res://assets/ui/gpt/showcase/" + f)
 	return null
@@ -74,9 +76,11 @@ func _bbcode(text: String) -> String:
 func _ready() -> void:
 	Sfx.play_ambience(&"workshop")
 	Sfx.play_music(&"menu_workshop")
-	SafeArea.apply(self)
-	$VBox/Title.text = I18n.t(&"showcase.title")
-	back_button.text = I18n.t(&"common.back")
+	ScreenFrame.backdrop(self, "res://assets/ui/gpt/workshop/05-display-cabinet-portrait.webp", 0.6)
+	ScreenFrame.fit(self, $Frame)  # N-53/N-59
+	$Frame/VBox/Scroll.scroll_deadzone = 12
+	$Frame/VBox/Header/Title.text = I18n.t(&"showcase.title")
+	back_button.text = "‹ " + I18n.t(&"common.back")
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 	_show_notebook_entry()  # task 10: master's notebook entries (contrib/gpt/T10 notebook_extra.csv)
 	for path in DirAccess.get_files_at(SHOWCASE_DIR):
@@ -85,7 +89,11 @@ func _ready() -> void:
 		var note: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(SHOWCASE_DIR + "/" + path))
 		var nid: String = note.get("id", path.get_basename())
 		var unlocked: bool = _note_unlocked(note)
+		var panel := PanelContainer.new()
+		panel.mouse_filter = Control.MOUSE_FILTER_PASS
 		var card := VBoxContainer.new()
+		card.add_theme_constant_override("separation", 8)
+		panel.add_child(card)
 		var photo := _exhibit_photo(nid)
 		if photo != null and unlocked:
 			var tex := TextureRect.new()
@@ -100,14 +108,17 @@ func _ready() -> void:
 			title.text += " — " + I18n.t(&"showcase.locked")
 			title.disabled = true
 		title.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART  # N-59
 		title.custom_minimum_size = Vector2(0, 48)
+		title.mouse_filter = Control.MOUSE_FILTER_PASS
 		var body := RichTextLabel.new()
 		body.bbcode_enabled = true
 		body.text = _bbcode(I18n.t(note.get("i18n", {}).get("body", &"showcase.title")))
 		body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		body.fit_content = true
 		body.visible = false
-		var source := Label.new()
+		var source := ScreenFrame.wrap(Label.new())
+		source.theme_type_variation = &"Caption"
 		var src: String = note.get("source", "")
 		source.text = "%s: %s" % [I18n.t(&"showcase.source"), src if src != "" else I18n.t(&"showcase.unknown_source")]
 		source.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -118,4 +129,5 @@ func _ready() -> void:
 		card.add_child(title)
 		card.add_child(body)
 		card.add_child(source)
-		notes_list.add_child(card)
+		notes_list.add_child(panel)
+	ScreenFrame.enter($Frame/VBox/Scroll)

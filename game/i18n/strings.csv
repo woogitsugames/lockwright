@@ -193,3 +193,4 @@ lock.hint_tension,Pins feel loose? Hold a little left tension.,Piny luźne? Lewy
 tutorial.s2_intro,Three pins. Only one resists at a time.,Trzy piny. Opór stawia tylko jeden naraz.,Drei Stifte. Nur einer sperrt zugleich.
 tutorial.s3_intro,A new order. Too far? Start lighter.,Inna kolejność. Za wysoko? Zacznij lżej.,Andere Reihenfolge. Zu hoch? Sanfter neu.
 tutorial.s1_near_break,Too much force. The tool is bending. Ease off.,Za mocno. Napinacz się ugina. Poluzuj.,Zu viel Druck. Der Spanner biegt sich. Lass locker.
+ui.job_done,done,wykonane,erledigt
