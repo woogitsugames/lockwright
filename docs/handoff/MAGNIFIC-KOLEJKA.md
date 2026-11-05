@@ -237,3 +237,40 @@ Marcel, 29, courier with a hand trolley of parcels, high-visibility vest without
 ```
 a fast-talking man in his forties in a neat suit, polite smile, holding out an envelope (no money visible), photorealistic portrait photograph, head and shoulders, natural soft window light in an old Central European tenement stairwell, warm tones, shallow depth of field, everyday clothes, no logos, no text, fictional person, not resembling any celebrity
 ```
+
+
+---
+
+## Rozdział 8 (zima): 6 nowych portretów
+Teresa z rozdziału 8 to ta sama osoba co w `wrong_floor`, więc ma już portret.
+
+### 1. `portrait_janka.png`
+```
+Mrs Janka, 73, grey hair under a burgundy beret, short quilted coat, canvas tote bag with folded blankets, kind and busy, winter clothing, a few snowflakes melting on the shoulders, photorealistic portrait photograph, head and shoulders, natural soft window light in an old Central European tenement stairwell in winter, warm tones with a slight cold window light, shallow depth of field, no logos, no text, fictional person, not resembling any celebrity
+```
+
+### 2. `portrait_mila.png`
+```
+Mila, 23, dark curls tied with a scarf, wool sweater, a paper carol star under her arm, energetic friendly smile, winter clothing, a few snowflakes melting on the shoulders, photorealistic portrait photograph, head and shoulders, natural soft window light in an old Central European tenement stairwell in winter, warm tones with a slight cold window light, shallow depth of field, no logos, no text, fictional person, not resembling any celebrity
+```
+
+### 3. `portrait_oskar.png`
+```
+Oskar, 32, short chestnut hair, wool coat, bag of wrapped presents, slightly impatient but polite (not threatening), winter clothing, a few snowflakes melting on the shoulders, photorealistic portrait photograph, head and shoulders, natural soft window light in an old Central European tenement stairwell in winter, warm tones with a slight cold window light, shallow depth of field, no logos, no text, fictional person, not resembling any celebrity
+```
+
+### 4. `portrait_pawel.png`
+```
+Paweł, 46, short beard, navy work jacket, document folder, calm technician, winter clothing, a few snowflakes melting on the shoulders, photorealistic portrait photograph, head and shoulders, natural soft window light in an old Central European tenement stairwell in winter, warm tones with a slight cold window light, shallow depth of field, no logos, no text, fictional person, not resembling any celebrity
+```
+
+### 5. `portrait_karol.png`
+```
+Karol, 41, grey knitted cap, thick quilted jacket, small shoulder bag, a bit impatient but polite (not threatening), winter clothing, a few snowflakes melting on the shoulders, photorealistic portrait photograph, head and shoulders, natural soft window light in an old Central European tenement stairwell in winter, warm tones with a slight cold window light, shallow depth of field, no logos, no text, fictional person, not resembling any celebrity
+```
+
+### 6. `portrait_leon.png`
+```
+Leon, 55, courier, gloves, reflective scarf without any logo, worn courier jacket, patient tired smile, winter clothing, a few snowflakes melting on the shoulders, photorealistic portrait photograph, head and shoulders, natural soft window light in an old Central European tenement stairwell in winter, warm tones with a slight cold window light, shallow depth of field, no logos, no text, fictional person, not resembling any celebrity
+```
+

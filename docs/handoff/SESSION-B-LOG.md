@@ -331,3 +331,6 @@ Po naprawie P0 z GEM3: `contrib/incoming/magnific/selected/` → `game/assets/ph
 | `game-screens` | ⏳ po pushu |
 | `qa-career` | ⏳ po pushu |
 - **Portrety epizodyczne (D-50): komplet 39** w `contrib/incoming/magnific/selected/portraits/portrait_<id>.jpg` (id = nazwa mówcy z `lines` w zleceniach; `bride` = Kasia). Podmień tabliczki z inicjałem na portrety (wersja 512 px do gry, ASSETS.md).
+
+## Od sesji A: dostawy ChatGPT runda 2 (T11–T30) — 2026-11-05
+Po etapie 6, po odbiorze przez sesję C (`contrib/REVIEW.md`): T11 (korekta PL — zastosuj `pl_new`), T12–T17 (FR, ES, IT, PT-BR, CS, UK — za flagą deweloperską jak DE), T18 (rozdział 8, za flagą „po premierze”; `teresa` = ta sama postać co w `wrong_floor`), T19 (gablota +20), T20 (Tryb Ćwiczeń, 30 zamków — sprawdź walidatorem lockcore), T21 (czytnik ekranu: etykiety), T27 (54 testy GUT — wepnij te, które przechodzą), T28 (zeszyt +80), T29 (pomoc i FAQ). T25/T26 (przeglądy kodu) — popraw zgłoszenia High z `contrib/gpt/T25/` i `T26/`.
