@@ -133,7 +133,7 @@ if ORIENT == 'portrait':
 else:
     IW = 846.0; TOP = 1990.0; BX = -170.0
     TITLE = [('POGOTOWIE ZAMKOWE', 16.0, 30.0, 2.0), ('LOCKWRIGHT', 52.0, 62.0, 0.0)]
-    MENU = [('start', 'ZACZNIJ DYŻUR', 36.0, 296.0, 110.0, 20.0, 0, 452)]
+    MENU = [('start', 'ZACZNIJ DYŻUR', 38.0, 180.0, 112.0, 20.0, 0, 452)]
     for i, (iid, t) in enumerate((('jobs', 'ZLECENIA'), ('workshop', 'WARSZTAT'), ('showcase', 'GABLOTA'), ('settings', 'USTAWIENIA'), ('about', 'O GRZE'))):
         MENU.append((iid, t, 30.0, 20.0 + i * 78.0, 78.0, 488.0, 466, IW))
     IH = 20.0 + 5 * 78.0 + 18.0
@@ -351,12 +351,12 @@ CTR = Vector((BX, 0, (ZT + ZB) / 2))
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = CTR
 bpy.ops.object.light_add(type='SPOT', location=(X0 - 170, -300, TOP + 200)); bulb = bpy.context.object
 bulb.data.shadow_soft_size = float(arg('--soft', '22')); bulb.data.energy = float(arg('--bulb', '5.5e7')); bulb.data.color = (1.0, 0.70, 0.44)
-bulb.data.spot_size = math.radians(78); bulb.data.spot_blend = 1.0
+bulb.data.spot_size = math.radians(115); bulb.data.spot_blend = 0.8
 a_b = bpy.data.objects.new('aim_bulb', None); scene.collection.objects.link(a_b)
 a_b.location = (BX - 10, 0, (ZT + ZB) / 2 + 20) if ORIENT == 'portrait' else (BX + 160, 0, (ZT + ZB) / 2 - 60)
 cb = bulb.constraints.new('TRACK_TO'); cb.target = a_b; cb.track_axis = 'TRACK_NEGATIVE_Z'; cb.up_axis = 'UP_Y'
 AIM_T = bpy.data.objects.new('aim_tags', None); scene.collection.objects.link(AIM_T); AIM_T.location = (RX, 0, RZ - 100)
-area_light('window', (RX + 1500, -900, RZ - 300), AIM_T, 900, float(arg('--window', '2.2e6')), (0.72, 0.80, 1.0), size_y=1200)
+area_light('window', (RX + 1500, -900, RZ - 300), AIM_T, 900, float(arg('--window', '6e6')), (0.72, 0.80, 1.0), size_y=1200)
 area_light('bounce', (BX + 300, -2600, (ZT + ZB) / 2 - 300), AIM, 1600, float(arg('--bounce', '9e4')), (1.0, 0.84, 0.66))
 world_hdri(strength=0.012, sat=0.3)
 
@@ -369,7 +369,7 @@ elif ORIENT == 'portrait':
     TZ = (TOP + 90 + RZ - 250) / 2
     cam = look_camera((BX + 2, RIB_FACE, TZ), float(arg('--yaw', '7')), float(arg('--pitch', '4')), VW * LENS / 36.0, lens=LENS)
 else:
-    LENS = 50.0; VH = float(arg('--vh', '560')); VW = VH * RES[0] / RES[1]
+    LENS = 50.0; VH = float(arg('--vh', '650')); VW = VH * RES[0] / RES[1]
     CXL = (X0 - FR + RX + RW / 2) / 2
     cam = look_camera((CXL, RIB_FACE, (ZT + ZB) / 2 - 6), float(arg('--yaw', '6')), float(arg('--pitch', '3')), VW * LENS / 36.0, lens=LENS)
 cam.data.dof.use_dof = True; cam.data.dof.focus_object = None

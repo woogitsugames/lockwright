@@ -9,6 +9,7 @@ Subcommands
   python3 tools/voice_lines.py inventory                 # list lines, speakers, counts
   python3 tools/voice_lines.py design-payload            # JSON of CAST descriptions + sample texts (for Voice Design)
   python3 tools/voice_lines.py tts-payload [--jobs a,b] [--lang pl,en]   # JSON list of TTS requests
+  python3 tools/voice_lines.py manifest                  # contrib/voice/tts_inputs.json: exact tagged TTS input per file
   python3 tools/voice_lines.py synth  [--jobs ...] [--lang ...]           # call the API directly (needs ELEVENLABS_API_KEY)
   python3 tools/voice_lines.py finish DIR                # raw PCM/WAV in DIR (<lang>/<key>.pcm) -> normalised .ogg + .import
   python3 tools/voice_lines.py qa [--lang pl,en]         # duration/loudness/ASR word error rate (faster-whisper)
@@ -26,7 +27,9 @@ GAME = ROOT / 'game'
 OUT = GAME / 'assets/audio/lines'
 CAST_JSON = GAME / 'data/voice_cast.json'
 LANGS = ('pl', 'en')            # D-57: PL + EN now; 'de' can be added later with the same voices
-MODEL = 'eleven_v3'             # final choice after the pilot, see contrib/voice/CAST.md
+MODEL = 'eleven_v4_turbo'       # owner's choice (cheaper); fallback 'eleven_v4'. Not v3 / multilingual v2.
+TAGS_JSON = ROOT / 'contrib/voice/tags.json'   # audio tags per line key, e.g. "[tired]" (TTS input only)
+MANIFEST = ROOT / 'contrib/voice/tts_inputs.json'
 TARGET_LUFS = -18.0
 PAD_MS = 60                     # silence kept at both ends after trimming (<= 150 ms)
 
@@ -120,8 +123,11 @@ def inventory():
     return out
 
 
-def tts_text(key, lang, text):
-    return TTS_OVERRIDES.get((key, lang), text)
+def tts_text(key, lang, text, tags=None):
+    """Exact TTS input: optional audio tag(s) + spoken form. Subtitles (content.csv) never contain tags."""
+    t = TTS_OVERRIDES.get((key, lang), text)
+    tag = (tags or {}).get(key)
+    return f'{tag} {t}' if tag else t
 
 
 def design_payload():
@@ -138,6 +144,7 @@ def design_payload():
 
 def tts_payload(jobs=None, langs=LANGS):
     cast = json.load(open(CAST_JSON, encoding='utf-8'))['voices']
+    tags = json.load(open(TAGS_JSON, encoding='utf-8')) if TAGS_JSON.exists() else {}
     out = []
     for l in inventory():
         if jobs and l['job'] not in jobs:
@@ -147,7 +154,7 @@ def tts_payload(jobs=None, langs=LANGS):
             out.append({'key': l['key'], 'lang': lang, 'speaker': l['speaker'], 'voice_id': v['voice_id'],
                         'model_id': v.get('model', MODEL), 'voice_settings': v['settings'],
                         'language_code': lang, 'seed': int(hashlib.sha1(l['key'].encode()).hexdigest()[:6], 16),
-                        'text': tts_text(l['key'], lang, l['text'][lang])})
+                        'subtitle': l['text'][lang], 'text': tts_text(l['key'], lang, l['text'][lang], tags)})
     return out
 
 
@@ -249,6 +256,12 @@ def main():
         print(json.dumps(design_payload(), ensure_ascii=False, indent=1))
     elif a.cmd == 'tts-payload':
         print(json.dumps(tts_payload(jobs, langs), ensure_ascii=False))
+    elif a.cmd == 'manifest':
+        reqs = tts_payload(None, langs)
+        MANIFEST.write_text(json.dumps({f"{r['lang']}/{r['key']}.ogg": {k: r[k] for k in (
+            'speaker', 'voice_id', 'model_id', 'voice_settings', 'seed', 'text', 'subtitle')} for r in reqs},
+            ensure_ascii=False, indent=1, sort_keys=True) + '\n', encoding='utf-8')
+        print(MANIFEST, len(reqs))
     elif a.cmd == 'synth':
         synth(tts_payload(jobs, langs), a.arg or 'contrib/voice/raw')
     elif a.cmd == 'finish':

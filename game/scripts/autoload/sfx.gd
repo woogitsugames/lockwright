@@ -17,6 +17,10 @@ const REWARD_ROOT := "res://assets/audio/reward"
 const MUSIC_ROOT := "res://assets/audio/music"
 const FOLEY_ROOT := "res://assets/audio/foley"
 const VOICE_ROOT := "res://assets/audio/voices"
+# D-57: voiced dialogue lines <root>/<lang>/<job_id>.line.<N>.ogg (tools/voice_lines.py)
+const LINES_ROOT := "res://assets/audio/lines"
+const VOICE_BUS := &"Voice"
+const VOICE_DUCK_DB := -6.0  # D-57: music under a voiced line, never lower than -6 dB
 # speaker id -> voice folder (S03 delivered one folder for the Ola/Krystyna pair)
 const VOICE_DIR := {&"ola": &"ola_krystyna", &"krystyna": &"ola_krystyna"}
 # S03 cast files use farewell/impatience/laughter/sadness, S03v2 goodbye/impatient/laugh/sad
@@ -40,6 +44,8 @@ var _ambience_base_db := 0.0
 var _duck_tween: Tween = null
 var _music: AudioStreamPlayer = null
 var _music_name: StringName = &""
+var _voice_duck_tween: Tween = null
+var _busy: Array[AudioStreamPlayer] = []  # pool players in use, oldest first (voice stealing)
 
 
 func _ready() -> void:
@@ -178,13 +184,14 @@ func play(event: StringName, material: StringName = &"brass", volume_db: float =
 		var gain := db_to_linear(volume_db)
 		_native_click.play("%s/%s/%d" % [event, material, n], gain, pitch)
 		return
-	if _free.is_empty():
-		return
 	var stream := _stream_for(event, material)
 	if stream == null:
 		return
-	var p: AudioStreamPlayer = _free.pop_back()
+	var p := _take_player()
+	if p == null:
+		return
 	p.stream = stream
+	p.bus = "Sfx"
 	p.volume_db = volume_db + linear_to_db(Settings.get_value("volume_sfx") * Settings.get_value("volume_master"))
 	p.pitch_scale = pitch * _rng.randf_range(0.97, 1.03)
 	p.play()
@@ -193,8 +200,35 @@ func play(event: StringName, material: StringName = &"brass", volume_db: float =
 
 func _on_player_finished(p: AudioStreamPlayer) -> void:
 	p.stream = null
+	_busy.erase(p)
 	if not _free.has(p):
 		_free.append(p)
+
+
+# A free pool player, or the oldest busy one (stopped and reused) so a new sound is never
+# silently dropped when long one-shots (jingles, foley) still hold the whole pool.
+func _take_player() -> AudioStreamPlayer:
+	var p: AudioStreamPlayer
+	if not _free.is_empty():
+		p = _free.pop_back()
+	elif not _busy.is_empty():
+		p = _busy.pop_front()
+		p.stop()
+		for c in p.finished.get_connections():
+			p.finished.disconnect(c["callable"])
+	else:
+		return null
+	_busy.append(p)
+	return p
+
+
+## Stops every pool one-shot and returns the players to the free list (scene change, tests).
+func stop_all_one_shots() -> void:
+	for p in _busy.duplicate():
+		p.stop()
+		for c in p.finished.get_connections():
+			p.finished.disconnect(c["callable"])
+		_on_player_finished(p)
 
 
 func begin_loop(id: StringName, material: StringName = &"brass") -> void:
@@ -246,10 +280,10 @@ func _one_shot_from(root: String, file_key: String, volume_db: float) -> void:
 	var pool := keys.filter(func(k): return k.trim_prefix(root + "/").begins_with(file_key))
 	if pool.is_empty():
 		return
-	if _free.is_empty():
-		return
 	var stream: AudioStream = _cache[pool[_rng.randi_range(0, pool.size() - 1)]]
-	var p: AudioStreamPlayer = _free.pop_back()
+	var p := _take_player()
+	if p == null:
+		return
 	p.stream = stream
 	p.bus = "Sfx"
 	p.volume_db = volume_db + linear_to_db(Settings.get_value("volume_sfx") * Settings.get_value("volume_master"))
@@ -329,22 +363,27 @@ func voice_keys(speaker: StringName, kind: StringName) -> Array:
 
 
 func play_voice(speaker: StringName, kind: StringName, volume_db: float = 0.0) -> void:
+	# S03 wordless vocalizations (reactions) are character voices: Voice bus + "Voices" slider
 	var keys := voice_keys(speaker, kind)
-	if keys.is_empty() or _free.is_empty():
+	if keys.is_empty():
 		return
-	var p: AudioStreamPlayer = _free.pop_back()
+	var p := _take_player()
+	if p == null:
+		return
 	p.stream = _cache[keys[_rng.randi_range(0, keys.size() - 1)]]
-	p.bus = "Sfx"
-	p.volume_db = volume_db + linear_to_db(Settings.get_value("volume_sfx") * Settings.get_value("volume_master"))
+	p.bus = voice_bus()
+	p.volume_db = volume_db + voice_volume_db()
 	p.play()
 	p.finished.connect(_on_player_finished.bind(p), CONNECT_ONE_SHOT)
 
 
 func play_jingle(name: StringName, volume_db: float = -4.0) -> void:
 	# S01 one-shot jingles on the Music bus
-	if _free.is_empty() or not _cache.has("mus/%s" % name):
+	if not _cache.has("mus/%s" % name):
 		return
-	var p: AudioStreamPlayer = _free.pop_back()
+	var p := _take_player()
+	if p == null:
+		return
 	p.stream = _cache["mus/%s" % name]
 	p.bus = "Music"
 	p.volume_db = volume_db + linear_to_db(maxf(Settings.get_value("volume_music", 0.8) * Settings.get_value("volume_master"), 0.001))
@@ -393,3 +432,37 @@ func duck_ambience(db: float, ms: float) -> void:
 	_duck_tween = create_tween()
 	_duck_tween.tween_property(_ambience, "volume_db", _ambience_base_db + db, ms / 1000.0)
 	_duck_tween.tween_property(_ambience, "volume_db", _ambience_base_db, 0.05)
+
+
+# --- D-57 voiced dialogue lines -------------------------------------------------------
+
+## Bus for voices: "Voice" (default_bus_layout.tres), "Sfx" if a layout lacks it.
+func voice_bus() -> StringName:
+	return VOICE_BUS if AudioServer.get_bus_index(VOICE_BUS) >= 0 else &"Sfx"
+
+
+func voice_volume_db() -> float:
+	return linear_to_db(maxf(float(Settings.get_value("volume_voice", 1.0)) * float(Settings.get_value("volume_master")), 0.001))
+
+
+## res:// path of a voiced line in exactly this language, or "" (no fallback to another
+## language: a missing clip means subtitle-only, never a mismatched voice).
+func line_clip_path(key: String, lang: String, root: String = LINES_ROOT) -> String:
+	if key == "" or lang == "":
+		return ""
+	var path := "%s/%s/%s.ogg" % [root, lang, key]
+	return path if ResourceLoader.exists(path) else ""
+
+
+## Music under a voiced line: Music bus -6 dB (120 ms), back to 0 dB (250 ms).
+func duck_music_for_voice(on: bool) -> void:
+	var idx := AudioServer.get_bus_index("Music")
+	if idx < 0:
+		return
+	if _voice_duck_tween != null:
+		_voice_duck_tween.kill()
+	var from := AudioServer.get_bus_volume_db(idx)
+	var to := VOICE_DUCK_DB if on else 0.0
+	_voice_duck_tween = create_tween()
+	_voice_duck_tween.tween_method(func(db: float) -> void: AudioServer.set_bus_volume_db(idx, db),
+		from, to, 0.12 if on else 0.25)
