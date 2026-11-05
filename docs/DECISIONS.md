@@ -174,3 +174,17 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 
 ## D-53: Kreda domyślnie w samouczku i pierwszych 3 zleceniach
 2026-11-05 · właściciel · Domyślnie kreda działa według ONBOARDING §1 pkt 8: pełna w S1, malejąca w S2–S3, a potem w pierwszych 3 prawdziwych zleceniach (kreski tarcia, linia podziału, klamra overset, podpowiedź napięcia). Potem znika, a gracz może ją włączyć na stałe w ustawieniach („Warstwa kredy”). Zestawu głosów S03v2 z repo nie da się porównać ze słuchu, więc w grze zostaje wersja JS `contrib/gpt/S03v2`. Wersja z generatora w Pythonie (`S03v2-py`) czeka jako zapasowa.
+
+## D-54: Zamki treningowe po T38: kolejność w tierze, lesson_target, strojenie lekcji zdarzeń
+2026-11-05 · sesja A (weryfikacja dostawy ChatGPT T38 botami lockcore) · Szczegóły i tabela: `lockcore/practice/README.md`.
+- **Kolejność:** ścieżka nadal idzie tierami, a w tierze według mediany czasu bota czującego (rośnie ściśle w każdym tierze). `practice.t25` (tier 5) ma 25,3 s, więcej niż każdy zamek tieru 4 (maks. 20,8 s). Globalna kolejność z T38 (tiery przemieszane, numery od nowa) **odrzucona**: lekcje tieru 5–6 trafiałyby przed tier 3. **Id zostają stałe** (klucze i18n, zapisy). Pozycję w ścieżce daje `presentation.practice.order`.
+- **`presentation.practice.lesson_target`** (z T38, przyjęte): nazwa zdarzenia lekcji. Lockcore go nie czyta i nie zapisuje z powrotem. `check_locks` wymaga znanego zdarzenia rodziny, a dla każdego pliku z celem: bot niezdarny spotyka je w ≥ 30 % prób, bot czujący otwiera ≥ 95 %. ctest `practice_locks` liczy na 200 seedach. Są testy na cel w złym miejscu i na nieznaną nazwę.
+- **Strojenie** (zmiany T38 bez pomiaru nie spełniały progu):
+  - overset t07/t08/t15: okno 0,07 i margines 0,055 (wartości `pin_tumbler` t7);
+  - fałszywy rowek t17: na drodze obrotu, `band_lo` pierścienia 0,16;
+  - detektor t27/t28: overset 0,08 < detektor 0,083 (wartości tabel); t28 dostał też inną kolejność wiązania;
+  - t25: zmiany T38 (6 stosów, tabela t5) plus inna kolejność wiązania;
+  - t20: kolejność wiązania po indeksie, żeby lekcje szpulek szły po kolei;
+  - t22: zmiana T38 przyjęta bez zmian;
+  - t30: zmiana T38 **odrzucona** (próg był spełniony już przed zmianą, a zmiana dawała 4 wyzwolenia).
+- **Cele lekcji** z `practice_goals.csv` (PL/EN, poprawka PL dla t26, dopisany DE) trafiają do `game/i18n/strings.csv` jako `practice.<tNN>.goal` (stare id) i zastępują cele z T20. Tytuły i wskazówki zostają w T20. Złote powtórki bez zmian, bo reguły się nie zmieniły.
