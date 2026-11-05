@@ -9,7 +9,7 @@
   ],
   "use": "opacity / dust mask: multiply into glass alpha or roughness, white = dust",
   "lighting_flatten": "full",
-  "overlap_x": 326,
-  "overlap_y": 326,
-  "mask_mean": 0.199
+  "overlap_x": 325,
+  "overlap_y": 325,
+  "mask_mean": 0.091
 }

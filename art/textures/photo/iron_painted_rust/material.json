@@ -15,7 +15,7 @@
   "normal": "OpenGL (+Y up)",
   "normal_strength": 4.0,
   "height_highpass_sigma_px": 20,
-  "lighting_flatten": "full",
+  "lighting_flatten": "lum",
   "overlap_x": 94,
   "overlap_y": 211,
   "normal_2k_soften_sigma": 0.0,

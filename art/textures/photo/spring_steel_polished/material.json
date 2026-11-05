@@ -13,7 +13,7 @@
     0.28
   ],
   "normal": "OpenGL (+Y up)",
-  "normal_strength": 1.2,
+  "normal_strength": 0.6,
   "height_highpass_sigma_px": 6,
   "lighting_flatten": "full",
   "overlap_x": 167,

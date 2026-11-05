@@ -1,0 +1,23 @@
+{
+  "name": "wall_lime_plaster",
+  "source": "contrib/incoming/magnific/selected/wall_lime_plaster.jpg",
+  "mode": "tile",
+  "tiling": "u+v",
+  "size": [
+    2048,
+    2048
+  ],
+  "metallic": 0.0,
+  "roughness_range": [
+    0.75,
+    0.96
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 3.0,
+  "height_highpass_sigma_px": 20,
+  "lighting_flatten": "full",
+  "overlap_x": 172,
+  "overlap_y": 192,
+  "normal_2k_soften_sigma": 0.6,
+  "rough_mean": 0.878
+}

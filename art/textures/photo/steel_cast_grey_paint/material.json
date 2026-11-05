@@ -1,0 +1,24 @@
+{
+  "name": "steel_cast_grey_paint",
+  "source": "contrib/incoming/magnific/selected/steel_cast_grey_paint.jpg",
+  "mode": "tile",
+  "tiling": "u+v",
+  "size": [
+    2048,
+    2048
+  ],
+  "metallic": 0.0,
+  "roughness_range": [
+    0.45,
+    0.8
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 3.5,
+  "height_highpass_sigma_px": 18,
+  "lighting_flatten": "full",
+  "overlap_x": 202,
+  "overlap_y": 234,
+  "normal_2k_soften_sigma": 0.8999999999999999,
+  "rough_mean": 0.659,
+  "note": "painted cast steel: dielectric paint (rusty right/bottom edge of the photo cropped)"
+}

@@ -16,6 +16,6 @@
   "normal_strength": 2.0,
   "height_highpass_sigma_px": 6,
   "lighting_flatten": "polar",
-  "normal_2k_soften_sigma": 0.0,
-  "rough_mean": 0.256
+  "normal_2k_soften_sigma": 1.2,
+  "rough_mean": 0.269
 }

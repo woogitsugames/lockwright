@@ -17,7 +17,7 @@
   "height_highpass_sigma_px": 16,
   "lighting_flatten": "x",
   "stripes_rotated_to_horizontal_deg": -0.0,
-  "overlap_x": 380,
+  "overlap_x": 379,
   "normal_2k_soften_sigma": 0.0,
   "rough_mean": 0.73
 }

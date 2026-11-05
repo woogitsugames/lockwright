@@ -1,0 +1,24 @@
+{
+  "name": "bench_beech_top",
+  "source": "contrib/incoming/magnific/selected/bench_beech_top.jpg",
+  "mode": "tile",
+  "tiling": "u+v",
+  "size": [
+    2048,
+    2048
+  ],
+  "metallic": 0.0,
+  "roughness_range": [
+    0.45,
+    0.8
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 3.0,
+  "height_highpass_sigma_px": 20,
+  "lighting_flatten": "full",
+  "stripes_rotated_to_horizontal_deg": -0.3,
+  "overlap_x": 183,
+  "overlap_y": 321,
+  "normal_2k_soften_sigma": 0.0,
+  "rough_mean": 0.649
+}
