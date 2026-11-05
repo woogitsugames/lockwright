@@ -81,7 +81,7 @@ Wspólna gramatyka: dotknięcie narzędzia → czarne otoczenie i **jedno okrąg
 | Render | `art/renders/loupe.png` | `art/renders/microscope_view.png` | `art/renders/borescope_view.png` |
 | Kamera | przed płaszczyzną cięcia, pole ~8 mm, f/22 | przed cięciem, pole ~5 mm, płytka głębia (ostre pasmo linii podziału), pierścień LED wokół obiektywu | w kanale nieprzeciętej wkładki, boczne oko pod stosem z wytrychem, pierścień 6 LED, lekka beczka |
 | Optyka (postprodukcja) | winieta okularu w CSS | lekka aberracja barwna rosnąca ku brzegowi + winieta (kompozytor) | lekka beczka + winieta LED (kompozytor) |
-| Drugi gest | brak | przeciąganie prawym kciukiem = przesuw stolika wzdłuż linii podziału; szyna z podziałką pod polem pokazuje, gdzie jesteśmy | przeciąganie prawym kciukiem = wsuwanie/wysuwanie sondy; pierścienie co 5 mm na kablu mijają stałą kreskę |
+| Drugi gest | brak | przeciąganie prawym kciukiem = przesuw stolika wzdłuż linii podziału; szyna z podziałką pod polem pokazuje, gdzie jesteśmy | przeciąganie prawym kciukiem = wsuwanie/wysuwanie sondy (obraz przesuwa się pod kolejny stos, bez kontrolki na ekranie) |
 | Czytanie w skali szarości | ciemna szczelina między jasnym mosiądzem a niklem | ciemna linia podziału ciągnie się przez całą szerokość pola; talia szpulki to ciemna przewężka **na** tej linii | wiszący koniec pinu = jasna kopułka; uniesiony = kopułka w ciemnym pierścieniu otworu; overset = otwór bez kopułki |
 | Dźwięk / haptyka przy otwarciu | szklany brzęk / brak | stuk metalu o blat, cichy szum zębatki ostrości / brak | szelest oplotu, klik diod / brak |
 
