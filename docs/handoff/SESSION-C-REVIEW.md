@@ -668,3 +668,26 @@ Macierz `qa/run_matrix.sh` (5 przebiegów kariery na HEAD): solver / „średni�
 
 **N-26 · Low · EN: karty dokumentów w weryfikacji mogą się nie mieścić** · `game/scripts/ui/job_verify.gd:_render_cards`
 - `qa/bot/a11y_shots.gd --lang en`: „ID document” potrzebuje ok. 104 px tekstu, przycisk ma 112 px (z marginesami 16 px brakuje ok. 8 px), „Witness” 63 > 55. Do potwierdzenia po naprawie A-10 (dziś safe-area rozpycha szerokości). **Poprawka:** `size_flags_horizontal = EXPAND_FILL` i `clip_text = false` dla kart albo układ w kolumnie.
+
+## Runda licencje — 2026-11-05 10:50 (zadanie 8, `store/legal/DEPENDENCIES.md`)
+**N-27 · High (przed wydaniem) · Brak not licencyjnych w aplikacji** · `game/` (brak `THIRD-PARTY-NOTICES`, brak ekranu licencji)
+- MIT Godota i godot-cpp wymagają dołączenia noty copyright i tekstu licencji; Oboe (Apache-2.0, statycznie w `lockwright-click-audio`) — tekstu Apache-2.0; komponenty silnika (FreeType FTL, mbedTLS Apache-2.0, ICU…) — swoich not.
+- **Poprawka:** ekran „Licencje” z „O grze” + `game/THIRD-PARTY-NOTICES.txt` w eksporcie:
+  ```gdscript
+  # licenses_screen.gd (szkic)
+  var t := "Godot Engine\n" + Engine.get_license_text() + "\n\n"
+  for c in Engine.get_copyright_info():
+      t += "%s\n" % c["name"]
+      for part in c["parts"]:
+          t += "  %s — %s\n" % [", ".join(part["copyright"]), part["license"]]
+  var lic := Engine.get_license_info()
+  for name in lic: t += "\n--- %s ---\n%s\n" % [name, lic[name]]
+  t += FileAccess.get_file_as_string("res://THIRD-PARTY-NOTICES.txt")  # godot-cpp MIT, Oboe Apache-2.0, AndroidX, OFL fonts
+  ```
+**N-28 · Medium · godot-cpp z gałęzi `master` bez przypięcia** · `game-tests.yml`, `game-android.yml:113`, `game-ios.yml`
+- Każdy build bierze aktualny `master` → nieodtwarzalne binaria i niespodzianki (np. N-21: nowy domyślny NDK). Moje workflowy przypiąłem do `e103d348c4b2` (na nim działa Linux x86_64 + Android arm64 z NDK 29).
+- **Poprawka:**
+  ```diff
+  -          git clone --depth 1 https://github.com/godotengine/godot-cpp.git /tmp/godot-cpp
+  +          git init -q /tmp/godot-cpp && git -C /tmp/godot-cpp fetch -q --depth 1 https://github.com/godotengine/godot-cpp.git e103d348c4b2d8df7b819126d855e19381cb9a87 && git -C /tmp/godot-cpp checkout -q FETCH_HEAD
+  ```

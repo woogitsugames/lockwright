@@ -40,7 +40,7 @@ jobs:
         run: |
           if [ ! -f game/addons/lockcore_gd/bin/liblockcore_gd.linux.template_debug.so ]; then
             pip install scons
-            git clone --depth 1 https://github.com/godotengine/godot-cpp.git /tmp/godot-cpp
+            git init -q /tmp/godot-cpp && git -C /tmp/godot-cpp fetch -q --depth 1 https://github.com/godotengine/godot-cpp.git e103d348c4b2d8df7b819126d855e19381cb9a87 && git -C /tmp/godot-cpp checkout -q FETCH_HEAD  # pinned (store/legal/DEPENDENCIES.md, N-28)
             (cd /tmp/godot-cpp && scons platform=linux target=template_debug arch=x86_64 custom_api_file=gdextension/extension_api-4-7.json -j8)
             (cd game/addons/lockcore_gd && GODOT_CPP=/tmp/godot-cpp scons platform=linux target=template_debug arch=x86_64 custom_api_file=/tmp/godot-cpp/gdextension/extension_api-4-7.json -j8)
           fi
