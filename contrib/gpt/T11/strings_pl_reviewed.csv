@@ -1,0 +1,126 @@
+key,pl_old,pl_new,note
+boot.calib_title,Dwa stuknięcia 120 ms od siebie — ile czujesz i słyszysz?,Ile stuknięć czujesz? Powinny być dwa.,Zwięzła kalibracja bez parametru technicznego.
+boot.calib_two,Dwa,Dwa,Bez zmian.
+boot.calib_one,Jedno,Jedno,Bez zmian.
+boot.calib_none,Nic,Nic,Bez zmian.
+boot.calib_skip,Pomiń,Pomiń,Bez zmian.
+settings.feel_section,Wyczucie (haptyka),Wyczucie (haptyka),Bez zmian.
+settings.quality,Jakość grafiki,Jakość grafiki,Bez zmian.
+settings.quality_auto,Auto (mierzona),Automatyczna (po pomiarze),Zgodność gramatyczna z „jakością”.
+settings.quality_high,Wysoka,Wysoka,Bez zmian.
+settings.quality_medium,Średnia,Średnia,Bez zmian.
+settings.quality_low,Niska (tanie telefony),Niska (słabsze urządzenia),Neutralny ton UI.
+showcase.notebook_prefix,Z zeszytu mistrza:,Z zeszytu mistrza:,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+about.licenses,"Fonty: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Silnik: Godot 4 (MIT). Rozszerzenia: godot-cpp (MIT), GUT (MIT). Pełna lista: THIRD-PARTY-NOTICES.txt w aplikacji.","Fonty: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Silnik: Godot 4 (MIT). Rozszerzenia: godot-cpp (MIT), GUT (MIT). Pełna lista: THIRD-PARTY-NOTICES.txt w aplikacji.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+about.post_release_unlocked,Rozdział 7 (Wspólny klucz) odblokowany.,Odblokowano rozdział 7: „Wspólny klucz”.,Polski tytuł i naturalny komunikat.
+settings.report_problem,Zgłoś problem,Zgłoś problem,Bez zmian.
+settings.report_copied,Log skopiowany do schowka. Wklej go w wiadomość — nic nie jest wysyłane automatycznie.,Dziennik diagnostyczny skopiowany do schowka. Wklej go w wiadomość – nic nie jest wysyłane automatycznie.,Język przyjazny graczowi. Ujednolicono półpauzę. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+settings.report_empty,Log jest pusty.,Log jest pusty.,Bez zmian.
+app.title,Lockwright: Pogotowie Zamkowe,Lockwright: Pogotowie Zamkowe,Bez zmian.
+common.back,Wstecz,Wstecz,Bez zmian.
+common.close,Zamknij,Zamknij,Bez zmian.
+common.on,Włączone,Włączone,Bez zmian.
+common.off,Wyłączone,Wyłączone,Bez zmian.
+common.coins,monet,Monety,Samodzielna etykieta w mianowniku.
+menu.title,Lockwright,Lockwright,Bez zmian.
+menu.play,Rozpocznij bieg,Rozpocznij serię,Spójność z trybem ciągłym.
+menu.workshop,Warsztat,Warsztat,Bez zmian.
+menu.showcase,Gablota,Gablota,Bez zmian.
+menu.settings,Ustawienia,Ustawienia,Bez zmian.
+menu.about,O grze,O grze,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+menu.jobs,Zlecenia,Zlecenia,Bez zmian.
+jobs.title,Zlecenia,Zlecenia,Bez zmian.
+job.verify,Sprawdź prawo do lokalu,Sprawdź prawo do lokalu,Bez zmian.
+job.accept,Otwórz dla tego klienta,Otwórz dla tego klienta,Bez zmian.
+job.refuse,Odmów,Odmów,Bez zmian.
+job.opened,Zamek otwarty. Rachunek rozliczony.,Zamek otwarty. Rachunek wystawiony.,Usunięcie niezręcznego powtórzenia.
+job.reward_fmt,Nagroda: {n} monet,Monety za zlecenie: {n},Brak błędnej odmiany po liczbie.
+job.tip_fmt,Napiwek (czyste otwarcie): {n} monet,Napiwek za otwarcie bez śladów: {n},Terminologia i odmiana.
+common.continue,Kontynuuj,Kontynuuj,Bez zmian.
+verify.title,Sprawdź prawo do lokalu,Sprawdź prawo do lokalu,Bez zmian.
+verify.hint,Klient kładzie karty na stole. Ty decydujesz.,Klient kładzie karty na stole. Ty decydujesz.,Bez zmian.
+verify.ask_more,Poproś o jeszcze jeden,Poproś o kolejny dowód,Doprecyzowanie etykiety. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+verify.card.id,Dokument tożsamości,Dokument tożsamości,Bez zmian.
+verify.card.witness,Sąsiad-świadek,Sąsiad-świadek,Bez zmian.
+verify.card.manager,Zarządca / portier,Zarządca / portier,Bez zmian.
+verify.card.lease,Umowa najmu,Umowa najmu,Bez zmian.
+verify.card.resolution,Uchwała,Uchwała,Bez zmian.
+verify.card.deed,Akt własności,Akt własności,Bez zmian.
+verify.card.inheritance,Pismo spadkowe,Pismo spadkowe,Bez zmian.
+verify.card.institution,Pismo instytucji,Pismo instytucji,Bez zmian.
+verify.card.letter,List,List,Bez zmian.
+verify.card.photo,Zdjęcie,Zdjęcie,Bez zmian.
+verify.card.receipt,Paragon,Paragon,Bez zmian.
+verify.card.invoice,Faktura,Faktura,Bez zmian.
+verify.card.address_app,Adres w aplikacji,Adres w aplikacji,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+verify.card.police,Wezwanie policji,Wezwanie policji,Bez zmian.
+verify.card.bailiff,Bailiff,Komornik,Przetłumaczenie angielskiego napisu.
+verify.refused,Za mało. Tego nie otwieram.,Nie mogę potwierdzić prawa do wejścia. Tu nie otworzę.,"Rzeczowa, życzliwa odmowa."
+verify.refused_rep,Słowo się niesie: +5 reputacji,Słowo się niesie: +5 reputacji,Bez zmian.
+tutorial.title,Samouczek — zamek ćwiczebny,Samouczek – zamek ćwiczebny,Ujednolicono półpauzę.
+tutorial.stage,Etap {n} z 3,Etap {n} z 3,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+tutorial.done,Samouczek ukończony. Pierwsze prawdziwe zlecenie!,Samouczek ukończony. Czas na pierwszy prawdziwy zamek.,Pierwszy zamek to warsztat ślusarza (D-21).
+hud.magnifier,Lupa,Lupa,Bez zmian.
+settings.title,Ustawienia,Ustawienia,Bez zmian.
+settings.haptics,Haptyka,Haptyka,Bez zmian.
+settings.haptics_enabled,Haptyka włączona,Haptyka włączona,Bez zmian.
+settings.haptics_intensity,Intensywność haptyki,Intensywność haptyki,Bez zmian.
+settings.haptics_test,Impuls próbny,Impuls próbny,Bez zmian.
+settings.haptics_calibration,Kalibracja,Kalibracja,Bez zmian.
+settings.haptics_calibration_two_clicks,Czujesz dwa kliknięcia?,Czujesz dwa stuknięcia?,Spójne nazewnictwo impulsów kalibracji.
+settings.haptics_calibration_two_clicks_yes,Dwa,Dwa,Bez zmian.
+settings.haptics_calibration_two_clicks_one,Jedno,Jedno,Bez zmian.
+settings.haptics_calibration_two_clicks_none,Nic,Nic,Bez zmian.
+settings.continuous_resistance,Opór ciągły,Opór ciągły,Bez zmian.
+settings.volume_master,Głośność główna,Głośność ogólna,Naturalna etykieta.
+settings.volume_sfx,Dźwięki efektów,Efekty dźwiękowe,Poprawna kolokacja.
+settings.volume_ambience,Tło,Dźwięki otoczenia,Jasny opis ustawienia.
+settings.language,Język,Język,Bez zmian.
+settings.language_system,Systemowy,Systemowy,Bez zmian.
+settings.language_pl,Polski,Polski,Bez zmian.
+settings.language_en,English,English,Bez zmian.
+settings.language_de,Niemiecki (dev),Niemiecki (wersja robocza),Polski tekst zamiast skrótu dev.
+settings.dark_mode_assist,Wsparcie kontrastu,Wsparcie kontrastu,Bez zmian.
+settings.reading_aid,Warstwa kredy,Warstwa kredy,Bez zmian.
+settings.wide_windows,Szersze okna,Szersze okna,Bez zmian.
+settings.reset,Resetuj ustawienia,Przywróć ustawienia domyślne,Jednoznaczne działanie przycisku.
+settings.text_scale,Rozmiar tekstu,Rozmiar tekstu,Bez zmian.
+settings.reduce_motion,Ogranicz ruch,Ogranicz ruch,Bez zmian.
+settings.dark_mode_note,Tryb ciemny wymaga dźwięku (i haptyki na telefonie).,W trybie „w ciemności” korzystaj z dźwięku. Na telefonie pomaga też haptyka.,"Spójna nazwa trybu, zrozumiała wskazówka. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach."
+run.title,Tryb ciągły,Tryb ciągły,Bez zmian.
+run.lock_n,Zamek {n},Zamek {n},Bez zmian.
+run.lives_left,Pozostałe życia,Pozostałe wytrychy,Zgodność ze zwijką i diegezą; wymaga kontroli UI.
+run.workshop_stop,Warsztat,Warsztat,Bez zmian.
+run.finished,Seria zakończona — {n} monet,Seria zakończona. Zdobyte monety: {n},Brak nieodmienionej liczby monet.
+run.rubber_band,Weź oddech. Prostszy zamek.,Spokojnie. Teraz coś prostszego.,Naturalna fraza.
+optics.loupe,Lupa: makro linii podziału,Lupa: makro linii podziału,Bez zmian.
+optics.microscope,Zadziory i fałszywe bramki,Zadziory i fałszywe bramki,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+optics.borescope,Elementy głęboko w kanale,Elementy głęboko w kanale,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+pause.title,Pauza,Pauza,Bez zmian.
+pause.resume,Wznów,Wznów,Bez zmian.
+pause.settings,Ustawienia,Ustawienia,Bez zmian.
+pause.dark_mode,Tryb ciemny,Tryb ciemny,Bez zmian.
+pause.restart,Od nowa zamek,Powtórz próbę,Poprawa etykiety czynności.
+pause.quit,Wyjdź,Wyjdź,Bez zmian.
+lock.pause,Pauza,Pauza,Bez zmian.
+workshop.title,Warsztat,Warsztat,Bez zmian.
+workshop.coins,Monety,Monety,Bez zmian.
+workshop.buy,Kup,Kup,Bez zmian.
+workshop.repair,Napraw,Napraw,Bez zmian.
+workshop.owned,Masz,W wyposażeniu,Precyzyjny status narzędzia. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+workshop.integrity,Integralność,Stan narzędzia,Zrozumiały odpowiednik.
+workshop.repair_cost,Naprawa: {0} monet,Koszt naprawy w monetach: {0},Prawidłowa odmiana niezależna od liczby. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+workshop.broken,Złamane,Złamane,Bez zmian.
+workshop.reward,Nagroda za postęp,Nagroda za postęp,Bez zmian.
+showcase.title,Gablota,Gablota,Bez zmian.
+showcase.locked,Zablokowane — odblokujesz w grze,Jeszcze nieodkryte,Usunięcie powtórzenia.
+showcase.source,Źródło,Źródło,Bez zmian.
+showcase.unknown_source,Źródło niezweryfikowane,Źródło niezweryfikowane,Bez zmian.
+about.title,O grze,O grze,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+about.notice,"To gra, nie kurs. Mechanizmy są wymyślone i uproszczone. Prawdziwy ślusarz zawsze sprawdza, czy klient ma prawo wejść do lokalu.","To gra, nie kurs. Mechanizmy są wymyślone i uproszczone. Prawdziwy ślusarz zawsze sprawdza, czy klient ma prawo wejść do lokalu.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+about.licensed_assets,Zasoby i licencje,Zasoby i licencje,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+dev.haptics_lab.title,Laboratorium haptyki,Laboratorium haptyki,Bez zmian.
+dev.haptics_lab.tier,Tier,Poziom,Polski termin.
+dev.haptics_lab.force_fallback,Wymuś fallback,Wymuś tryb zastępczy,Usunięcie anglicyzmu.
+dev.haptics_lab.resistance,Opór,Opór,Bez zmian.
+dev.haptics_lab.caps,Możliwości,Możliwości urządzenia,Doprecyzowanie opisu.

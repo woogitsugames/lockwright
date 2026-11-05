@@ -1,0 +1,630 @@
+key,pl_old,pl_new,note
+job.allotment_shed.client,"pan Zbyszek, 74 lata, działkowiec. Pomidory „Malinowy Ożarowski” to jego duma.","Pan Zbyszek, 74 lata, działkowiec. Pomidory „Malinowy Ożarowski” to jego duma.",Wielka litera na początku opisu.
+job.allotment_shed.situation,"Kłódka na altanie zarosła rdzą po zimie. W środku są konewki i nasiona na wysiew. Działka jest zapisana na żonę, która „siedzi w domu z kolanem”.","Kłódka na altanie zarosła rdzą po zimie. W środku są konewki i nasiona na wysiew. Działka jest zapisana na żonę, która „siedzi w domu z kolanem”.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.allotment_shed.title,Altana pana Zbyszka,Altana pana Zbyszka,Bez zmian.
+job.bike_interview.client,"Kuba, 23 lata, świeżo po studiach, ma pożyczoną marynarkę i jedzie na pierwszą rozmowę o pracę.","Kuba, 23 lata, świeżo po studiach, ma pożyczoną marynarkę i jedzie na pierwszą rozmowę o pracę.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.bike_interview.situation,"Zmienił kod w kłódce rowerowej „na bezpieczniejszy” i go zapomniał. Rower stoi przy stojaku pod jego blokiem, a rozmowa jest o 9:30 na drugim końcu miasta.","Zmienił kod w kłódce rowerowej „na bezpieczniejszy” i go zapomniał. Rower stoi przy stojaku pod jego blokiem, a rozmowa jest o 9:30 na drugim końcu miasta.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.bike_interview.title,Rozmowa o 9:30,Rozmowa o 9:30,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.bramah_bureau.client,"Gosia, 36 lat, renowatorka mebli z własną pracownią przy Porcie.","Gosia, 36 lat, renowatorka mebli z własną pracownią przy Porcie.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.bramah_bureau.situation,"Na aukcji kupiła XIX-wieczny angielski sekretarzyk z zamkiem na klucz rurkowy z nacięciami. Klucza nie było, a ona chce mebel otworzyć, odnowić i zachować zamek w oryginale.","Na aukcji kupiła XIX-wieczny angielski sekretarzyk z zamkiem na klucz rurkowy z nacięciami. Klucza nie było, a ona chce mebel otworzyć, odnowić i zachować zamek w oryginale.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.bramah_bureau.title,Angielski sekretarzyk,Angielski sekretarzyk,Bez zmian.
+job.brussels_townhouse.client,"Magda, 41 lat. Od 15 lat jest tłumaczką w Brukseli i mówi po polsku z francuskimi wtrąceniami.","Magda, 41 lat. Od 15 lat jest tłumaczką w Brukseli i mówi po polsku z francuskimi wtrąceniami.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.brussels_townhouse.situation,"Wyszła na balkon podlać pelargonie, a drzwi tarasowe zatrzasnęły się z wiatrem. Telefon ma przy sobie. Na dole czeka sąsiad z parteru, monsieur Jacques, który ma klucz do bramy, ale nie do mieszkania.","Wyszła na balkon podlać pelargonie, a drzwi tarasowe zatrzasnęły się z wiatrem. Telefon ma przy sobie. Na dole czeka sąsiad z parteru, monsieur Jacques, który ma klucz do bramy, ale nie do mieszkania.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.brussels_townhouse.title,Kamienica w Saint-Gilles,Kamienica w Saint-Gilles,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.cat_bathroom.client,"Marta, 34 lata, grafik, pracuje z domu, ma kota Ziemniaka.","Marta, 34 lata, graficzka. Pracuje z domu i ma kota Ziemniaka.",Poprawa rodzaju i składni. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.cat_bathroom.situation,"Kot skoczył na klamkę i zamknął się od środka w łazience na zasuwkę z zapadką. Marta stoi w swoim mieszkaniu, a kot miauczy przez drzwi z coraz większym oburzeniem.","Kot skoczył na klamkę i zamknął się od środka w łazience na zasuwkę z zapadką. Marta stoi w swoim mieszkaniu, a kot miauczy przez drzwi z coraz większym oburzeniem.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.cat_bathroom.title,Ziemniak w łazience,Ziemniak w łazience,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.charleroi_letters.client,"Ola z `job.grandpa_chest` przyjeżdża do Belgii i dzwoni do gracza po radę, nie po otwarcie.","Ola, znana ze sprawy skrzyni dziadka, przyjeżdża do Belgii i dzwoni po radę, nie po otwarcie.",Usunięcie technicznego klucza z tekstu dla gracza. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.charleroi_letters.situation,"Pod adresem z listów dziadka stoi dziś dom pani Martine. Pani Martine znalazła w piwnicy żelazną kasetkę z polskimi napisami i chce ją oddać rodzinie, ale kasetka jest zamknięta. Obie chcą ją otworzyć razem.","Pod adresem z listów dziadka stoi dziś dom pani Martine. Pani Martine znalazła w piwnicy żelazną kasetkę z polskimi napisami i chce ją oddać rodzinie, ale kasetka jest zamknięta. Obie chcą ją otworzyć razem.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.charleroi_letters.title,Adres z listów dziadka,Adres z listów dziadka,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.dollhouse_wooden_lock.client,"Hania, 7 lat, i jej tata Tomasz, stolarz z trzeciego pokolenia.","Hania, 7 lat, i jej tata Tomasz, stolarz z trzeciego pokolenia.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.dollhouse_wooden_lock.situation,"Pradziadek zrobił domek dla lalek z drewnianym zamkiem na kołki, „takim jak w starożytności”. Drewniany klucz zginął w przeprowadzce, a w środku jest ulubiona lalka Hani.","Pradziadek zrobił domek dla lalek z drewnianym zamkiem na kołki, „takim jak w starożytności”. Drewniany klucz zginął w przeprowadzce, a w środku jest ulubiona lalka Hani.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.dollhouse_wooden_lock.title,Domek pradziadka,Domek pradziadka,Bez zmian.
+job.drummer_locker.client,"Iga, 27 lat, perkusistka zespołu „Kwaśne Jabłka”, z kolczykiem w brwi i bardzo dobrą punktualnością.","Iga, 27 lat, perkusistka zespołu „Kwaśne Jabłka”, z kolczykiem w brwi i bardzo dobrą punktualnością.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.drummer_locker.situation,"W sali prób na kampusie zatrzasnęła kluczyk w szafce z rurkowym zamkiem. Są tam pałki, odsłuchy i setlista, a koncert w klubie zaczyna się za godzinę.","W sali prób na kampusie zatrzasnęła kluczyk w szafce z rurkowym zamkiem. Są tam pałki, odsłuchy i setlista, a koncert w klubie zaczyna się za godzinę.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.drummer_locker.title,Pałki w szafce,Pałki w szafce,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.finnish_sailor.client,"Aino, 50 lat, oficer mechanik z fińskiego statku, który stoi w porcie dwa dni.","Aino, 50 lat, oficer mechanik z fińskiego statku, który stoi w porcie dwa dni.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.finnish_sailor.situation,"Na jej skrzyni z narzędziami wisi kłódka z obrotowymi tarczami, „taka jak u nas w domu”. Kluczyk wpadł między nabrzeże a burtę. Kapitan potwierdza, że skrzynia jest jej, i patrzy na zegarek.","Na jej skrzyni z narzędziami wisi kłódka z obrotowymi tarczami, „taka jak u nas w domu”. Kluczyk wpadł między nabrzeże a burtę. Kapitan potwierdza, że skrzynia jest jej, i patrzy na zegarek.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.finnish_sailor.title,Skrzynia marynarza,Skrzynia marynarza,Bez zmian.
+job.ghent_beguinage.client,"brat Pieter, 66 lat, opiekun domu wspólnoty w gandawskim beginażu. Jeździ na rowerze z wiklinowym koszykiem.","Brat Pieter, 66 lat, opiekun domu wspólnoty w gandawskim beginażu. Jeździ na rowerze z wiklinowym koszykiem.",Wielka litera na początku opisu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.ghent_beguinage.situation,"Do schowka z księgami parafialnymi nikt nie zaglądał od dziesięcioleci, a klucz „poszedł z poprzednim opiekunem do nieba”. Dom jest zabytkowy, więc wolno otworzyć tylko bez śladów.","Do schowka z księgami parafialnymi nikt nie zaglądał od dziesięcioleci, a klucz „poszedł z poprzednim opiekunem do nieba”. Dom jest zabytkowy, więc otwarcie nie może pozostawić śladów.",Poprawa składni. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.ghent_beguinage.title,Drzwi w beginażu,Drzwi w beginażu,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.grandma_broth.client,"pani Halina, 81 lat. Wyszła wyrzucić śmieci w kapciach, mówi „synku” i jest pewna, że wszystko pamięta.","Pani Halina, 81 lat. Wyszła wyrzucić śmieci w kapciach, mówi „synku” i jest pewna, że wszystko pamięta.",Wielka litera na początku opisu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.grandma_broth.situation,"Drzwi się zatrzasnęły, a w środku na małym ogniu stoi rosół. Sąsiadka pani Zosia już zakręciła gaz głównym zaworem na klatce, więc nikomu nic nie grozi. Chodzi tylko o rosół.","Drzwi się zatrzasnęły, a w środku na małym ogniu stoi rosół. Sąsiadka pani Zosia już zakręciła gaz głównym zaworem na klatce, więc nikomu nic nie grozi. Chodzi tylko o rosół.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.grandma_broth.title,Rosół na gazie,Rosół na gazie,Bez zmian.
+job.grandpa_chest.client,"Ola, 38 lat, nauczycielka biologii, i jej mama Krystyna.","Ola, 38 lat, nauczycielka biologii, i jej mama Krystyna.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.grandpa_chest.situation,"Na strychu domu po dziadku stoi okuta skrzynia, do której klucza nikt nie widział od pogrzebu. Dom należy teraz do mamy. Ola podejrzewa, że w skrzyni są listy z czasów, gdy dziadek pracował w Belgii w kopalni.","Na strychu domu po dziadku stoi okuta skrzynia, do której klucza nikt nie widział od pogrzebu. Dom należy teraz do mamy. Ola podejrzewa, że w skrzyni są listy z czasów, gdy dziadek pracował w Belgii w kopalni.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.grandpa_chest.title,Skrzynia dziadka Józefa,Skrzynia dziadka Józefa,Bez zmian.
+job.kiosk_shutter.client,"pan Stefan, 67 lat. Kiosk prowadzi od 1994 r. i zna wszystkich na przystanku po imieniu.","Pan Stefan, 67 lat. Kiosk prowadzi od 1994 r. i zna wszystkich na przystanku po imieniu.",Wielka litera na początku opisu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.kiosk_shutter.situation,"Zardzewiała kłódka przy rolecie nie chce się otworzyć, a za pół godziny przyjedzie pierwszy autobus z ludźmi, którzy chcą gazetę i bilet.","Zardzewiała kłódka przy rolecie nie chce się otworzyć, a za pół godziny przyjedzie pierwszy autobus z ludźmi, którzy chcą gazetę i bilet.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.kiosk_shutter.title,Kiosk przed szóstą,Kiosk przed szóstą,Bez zmian.
+job.krakow_antiquarian.client,"pan Leopold, 70 lat, antykwariusz z ulicy Józefa. Nosi muszkę i lupę na łańcuszku.","Pan Leopold, 70 lat, antykwariusz z ulicy Józefa. Nosi muszkę i lupę na łańcuszku.",Wielka litera na początku opisu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krakow_antiquarian.situation,"Stara kasa pancerna z tarczą szyfrową stoi w jego sklepie od 40 lat, a pan Leopold zapomniał szyfr po wakacjach. Przy okazji prosi, żeby otworzyć też „kasetkę, którą klient zostawił do wyceny”. Klienta nie ma.","Stara kasa pancerna z tarczą szyfrową stoi w jego sklepie od 40 lat, a pan Leopold zapomniał szyfr po wakacjach. Przy okazji prosi, żeby otworzyć też „kasetkę, którą klient zostawił do wyceny”. Klienta nie ma.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krakow_antiquarian.title,Kasa antykwariusza,Kasa antykwariusza,Bez zmian.
+job.krakow_tenement_gate.client,"pani Wanda, zarządczyni wspólnoty mieszkaniowej kamienicy z 1890 r. Ma segregator z uchwałami.","Pani Wanda, zarządczyni wspólnoty mieszkaniowej kamienicy z 1890 r. Ma segregator z uchwałami.",Wielka litera na początku opisu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krakow_tenement_gate.situation,"Ogromny zamek w drewnianej bramie przestał chodzić po deszczu, a jedyny stary klucz utknął w środku. Brama jest pod opieką konserwatora, więc niczego nie wolno wymieniać ani wiercić. Lokatorzy wchodzą przez podwórko sąsiedniej kamienicy.","Ogromny zamek w drewnianej bramie przestał chodzić po deszczu, a jedyny stary klucz utknął w środku. Brama jest pod opieką konserwatora, więc niczego nie wolno wymieniać ani wiercić. Lokatorzy wchodzą przez podwórko sąsiedniej kamienicy.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krakow_tenement_gate.title,Brama na Kazimierzu,Brama na Kazimierzu,Bez zmian.
+job.liege_bakery.client,"Nadia, 29 lat. Przejęła piekarnię po wujku i piecze gofry z perłowym cukrem.","Nadia, 29 lat. Przejęła piekarnię po wujku i piecze gofry z perłowym cukrem.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.liege_bakery.situation,"O 3:50 drzwi zaplecza nie chcą się otworzyć, bo zamek dźwigniowy „coś wyczuł” i się zablokował po tym, jak Nadia próbowała go otworzyć niewłaściwym kluczem z pęku wujka. Ciasto rośnie.","O 3:50 drzwi zaplecza nie chcą się otworzyć, bo zamek dźwigniowy „coś wyczuł” i się zablokował po tym, jak Nadia próbowała go otworzyć niewłaściwym kluczem z pęku wujka. Ciasto rośnie.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.liege_bakery.title,Piekarnia o czwartej,Piekarnia o czwartej,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.museum_time_lock.client,"dr Anna Rygiel, kuratorka Muzeum Techniki w porcie. Nosi rękawiczki bawełniane nawet do kawy.","Dr Anna Rygiel, kuratorka Muzeum Techniki w porcie. Nosi rękawiczki bawełniane nawet do kawy.",Wielka litera na początku opisu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.museum_time_lock.situation,"Muzeum dostało drzwi skarbca z dawnej kasy oszczędności z zamkiem czasowym. Mechanizm zegarowy stanął w pozycji „zamknięte” i nie da się otworzyć wnętrza z tabliczką dawnego banku, potrzebną na wystawę.","Muzeum dostało drzwi skarbca z dawnej kasy oszczędności, wyposażone w zamek czasowy. Mechanizm zegarowy zatrzymał się w pozycji zamkniętej. W środku jest tabliczka dawnego banku potrzebna na wystawę.",Nienaturalna konstrukcja i powtórzenia. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.museum_time_lock.title,"Zegar, który pilnuje skarbca","Zegar, który pilnuje skarbca",Bez zmian.
+job.newlyweds_4am.client,"Kasia i Bartek, ona w welonie przekrzywionym na bok, on z bukietem pod pachą.","Kasia i Bartek, ona w welonie przekrzywionym na bok, on z bukietem pod pachą.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.newlyweds_4am.situation,"Klucze zostały w torebce świadkowej, która pojechała z ciocią do Kalisza. Na wycieraczce stoi pudło z tortem, a oboje po oczepinach nie mają już siły na nic.","Klucze zostały w torebce świadkowej, która pojechała z ciocią do Kalisza. Na wycieraczce stoi pudło z tortem, a oboje po oczepinach nie mają już siły na nic.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.newlyweds_4am.title,Czwarta nad ranem po weselu,Czwarta nad ranem po weselu,Bez zmian.
+job.night_nurse.client,"Agnieszka, 45 lat, pielęgniarka z oddziału wewnętrznego, w kurtce narzuconej na uniform.","Agnieszka, 45 lat, pielęgniarka z oddziału wewnętrznego, w kurtce narzuconej na uniform.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.night_nurse.situation,"O 7:20 wraca z nocnego dyżuru, a klucz zostawiła w szafce w szpitalu. Nowy blok ma wkładkę z kluczem magnetycznym, którą zamontował deweloper.","O 7:20 wraca z nocnego dyżuru, a klucz zostawiła w szafce w szpitalu. Nowy blok ma wkładkę z kluczem magnetycznym, którą zamontował deweloper.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.night_nurse.title,Po dwunastu godzinach,Po dwunastu godzinach,Bez zmian.
+job.pizzeria_pays_pizza.client,"pani Renata, 52 lata, właścicielka pizzerii „U Renaty”. Mówi szybko i ma mąkę na łokciach.","Pani Renata, 52 lata, właścicielka pizzerii „U Renaty”. Mówi szybko i ma mąkę na łokciach.",Wielka litera na początku opisu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.pizzeria_pays_pizza.situation,"O 23:30, po zamknięciu, zatrzasnęło się zaplecze, a w środku jest ciasto na jutro i kasa fiskalna. Pani Renata ma przy sobie wszystko poza kluczem i nie ma pieniędzy, bo utarg jest w kasie.","O 23:30, po zamknięciu, zatrzasnęło się zaplecze, a w środku jest ciasto na jutro i kasa fiskalna. Pani Renata ma przy sobie wszystko poza kluczem i nie ma pieniędzy, bo utarg jest w kasie.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.pizzeria_pays_pizza.title,Zapłata w pizzy,Zapłata w pizzy,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_aunt_alive.client,"kobieta ok. 30 lat. Mówi, że jest „jedyną spadkobierczynią”.","Kobieta ok. 30 lat. Mówi, że jest „jedyną spadkobierczynią”.",Wielka litera na początku opisu.
+job.refuse_aunt_alive.situation,"Chce otworzyć mieszkanie „świętej pamięci ciotki”, żeby „zabezpieczyć rzeczy przed rodziną”. Nie ma żadnego dokumentu od notariusza, bo „to dopiero co”. Sąsiadka zza ściany słyszy rozmowę i wychodzi na klatkę.","Chce otworzyć mieszkanie „świętej pamięci ciotki”, żeby „zabezpieczyć rzeczy przed rodziną”. Nie ma żadnego dokumentu od notariusza, bo „to dopiero co”. Sąsiadka zza ściany słyszy rozmowę i wychodzi na klatkę.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_aunt_alive.title,"Ciotka, która ma się dobrze","Ciotka, która ma się dobrze",Bez zmian.
+job.refuse_ex_partner.client,"mężczyzna ok. 40 lat. Przedstawia się jako „Darek”, jest zdenerwowany i trzyma telefon ekranem do dołu.","Mężczyzna ok. 40 lat. Przedstawia się jako „Darek”, jest zdenerwowany i trzyma telefon ekranem do dołu.",Wielka litera na początku opisu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_ex_partner.situation,"Chce wejść do mieszkania byłej partnerki, „po swoje rzeczy”. Mówi, że ona „nie odbiera specjalnie”. Na skrzynce jest jedno nazwisko i nie jest to jego nazwisko.","Chce wejść do mieszkania byłej partnerki, „po swoje rzeczy”. Mówi, że ona „nie odbiera specjalnie”. Na skrzynce jest jedno nazwisko i nie jest to jego nazwisko.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_ex_partner.title,„To przecież też moje”,„To przecież też moje”,Bez zmian.
+job.refuse_rush_bribe.client,"mężczyzna w garniturze, mówi uprzejmie i bardzo szybko.","Mężczyzna w garniturze, mówi uprzejmie i bardzo szybko.",Wielka litera na początku opisu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_rush_bribe.situation,"O 1:00 w nocy chce wejść do mieszkania „siostry, która jest za granicą”, bo „zostawiła dokumenty, które muszę wysłać rano”. Siostra nie odbiera. Na pytanie o sąsiada odpowiada propozycją dopłaty.","O 1:00 w nocy chce wejść do mieszkania „siostry, która jest za granicą”, bo „zostawiła dokumenty, które muszę wysłać rano”. Siostra nie odbiera. Na pytanie o sąsiada odpowiada propozycją dopłaty.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_rush_bribe.title,„Siostra kazała”,„Siostra kazała”,Bez zmian.
+job.student_dorm.client,"Zuzanna, 20 lat, studentka konserwacji zabytków, przyniosła torbę pełną pędzli.","Zuzanna, 20 lat, studentka konserwacji zabytków, przyniosła torbę pełną pędzli.",Bez zmian.
+job.student_dorm.situation,"Klucz został w środku, a współlokatorka jest na praktykach w Toruniu. Portier ma listę lokatorów, ale nie ma zapasowego klucza, bo „ktoś nie oddał”.","Klucz został w środku, a współlokatorka jest na praktykach w Toruniu. Portier ma listę lokatorów, ale nie ma zapasowego klucza, bo „ktoś nie oddał”.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.student_dorm.title,Pokój 412,Pokój 412,Bez zmian.
+job.swiatniki_journeyman_padlock.client,"pan Władysław, 84 lata. W latach 50. ukończył szkołę ślusarską w Świątnikach Górnych i ma dłonie jak imadło.","Pan Władysław, 84 lata. W latach 50. ukończył szkołę ślusarską w Świątnikach Górnych i ma dłonie jak imadło.",Wielka litera na początku opisu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.swiatniki_journeyman_padlock.situation,"Na pracę czeladniczą zrobił kłódkę z „sekretem”. Klucz zgubił wnuk. Pan Władysław wie, jak ją otworzyć, ale „chce zobaczyć, czy młodzi jeszcze umieją”.","Na pracę czeladniczą zrobił kłódkę z „sekretem”. Klucz zgubił wnuk. Pan Władysław wie, jak ją otworzyć, ale „chce zobaczyć, czy młodzi jeszcze umieją”.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.swiatniki_journeyman_padlock.title,Kłódka czeladnicza pana Władysława,Kłódka czeladnicza pana Władysława,Bez zmian.
+job.time_capsule.client,"pani Jadwiga, emerytowana wychowawczyni, i dwudziestu trzydziestoparolatków na zjeździe absolwentów.","Pani Jadwiga, emerytowana wychowawczyni, i dwudziestu trzydziestoparolatków na zjeździe absolwentów.",Wielka litera na początku opisu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.time_capsule.situation,"W 2001 r. klasa zakopała pod kasztanowcem metalową skrzynkę z kłódką szyfrową. Kod znała tylko pani Jadwiga, która go „zapisała w bezpiecznym miejscu”, i to miejsce też już zapomniała. Dyrekcja szkoły zgadza się na otwarcie przy wszystkich.","W 2001 r. klasa zakopała pod kasztanowcem metalową skrzynkę z kłódką szyfrową. Kod znała tylko pani Jadwiga. Zapisała go „w bezpiecznym miejscu”, ale już nie pamięta gdzie. Dyrekcja szkoły zgadza się na otwarcie przy wszystkich.",Poprawa błędu składniowego. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.time_capsule.title,Kapsuła czasu klasy 3b,Kapsuła czasu klasy 3b,Bez zmian.
+job.uncle_safe_heirs.client,"rodzeństwo Ewa, Marek i Piotr, każde z własną teorią, co jest w sejfie.","Rodzeństwo Ewa, Marek i Piotr, każde z własną teorią, co jest w sejfie.",Wielka litera na początku opisu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.uncle_safe_heirs.situation,"Wujek zostawił sejf z tarczami, a szyfr zabrał do grobu. Spadek jest wspólny. Marek przyjechał pierwszy i chce otworzyć „od razu, przecież i tak się podzielimy”. Ewa jedzie z Gdańska.","Wujek zostawił sejf z tarczami, a szyfr zabrał do grobu. Spadek jest wspólny. Marek przyjechał pierwszy i chce otworzyć „od razu, przecież i tak się podzielimy”. Ewa jedzie z Gdańska.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.uncle_safe_heirs.title,Sejf wujka Bogdana,Sejf wujka Bogdana,Bez zmian.
+job.widow_bureau.client,"pani Irena, 79 lat, emerytowana bibliotekarka, wdowa od roku.","Pani Irena, 79 lat, emerytowana bibliotekarka, wdowa od roku.",Wielka litera na początku opisu.
+job.widow_bureau.situation,"Mąż zamykał sekretarzyk na kluczyk, który zawsze nosił przy zegarku. Zegarek jest, kluczyka nie ma. Pani Irena nie chce niczego wiercić, bo „to jego mebel”.","Mąż zamykał sekretarzyk na kluczyk, który zawsze nosił przy zegarku. Zegarek jest, kluczyka nie ma. Pani Irena nie chce niczego wiercić, bo „to jego mebel”.",Bez zmian.
+job.widow_bureau.title,Sekretarzyk,Sekretarzyk,Bez zmian.
+job.wrong_floor.client,"pan Kazimierz, 60 lat, wraca z imienin szwagra i jest w świetnym humorze.","Pan Kazimierz, 60 lat, wraca z imienin szwagra i jest w świetnym humorze.",Wielka litera na początku opisu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.wrong_floor.situation,"Dzwoni, że „zamek się zepsuł, bo klucz nie pasuje”. Na drzwiach wisi wieniec z suszonych kwiatów, którego pan Kazimierz „nie pamięta”, a na skrzynce jest inne nazwisko.","Dzwoni, że „zamek się zepsuł, bo klucz nie pasuje”. Na drzwiach wisi wieniec z suszonych kwiatów, którego pan Kazimierz „nie pamięta”, a na skrzynce jest inne nazwisko.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.wrong_floor.title,Piętro niżej,Piętro niżej,Bez zmian.
+showcase.amen_padlock.body,"Zamki z obrotowymi pierścieniami liter trafiły nawet do literatury. Dziewiętnastowieczny historyk techniki Charles Tomlinson przytoczył wzmiankę ze sztuki przypisywanej Beaumontowi i Fletcherowi o zamku, który otwiera słowo AMEN. Podobny motyw pojawia się w poezji Thomasa Carewa. To ślad dawnej popularności zamków literowych, choć dokładne brzmienie cytatów wymaga jeszcze porównania z wydaniami krytycznymi.","Zamki z obrotowymi pierścieniami liter trafiły nawet do literatury. Dziewiętnastowieczny historyk techniki Charles Tomlinson przytoczył fragment sztuki przypisywanej Beaumontowi i Fletcherowi, opisujący zamek otwierany słowem AMEN. Podobny motyw pojawia się w poezji Thomasa Carewa. To ślad dawnej popularności zamków literowych, choć dokładne brzmienie cytatów wymaga jeszcze porównania z wydaniami krytycznymi.","Poprawa składni, bez zmiany faktu historycznego. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach."
+showcase.amen_padlock.title,Zamek na AMEN,Zamek na AMEN,Bez zmian.
+showcase.barron_1778.body,"W 1778 roku londyński ślusarz Robert Barron opatentował ważne udoskonalenie zamka dźwigniowego. W jego konstrukcji rygiel pozostawał zablokowany zarówno przy zbyt małym, jak i przy zbyt dużym wychyleniu odpowiednich elementów. Była to istotna zmiana w rozwoju zamków dźwigniowych. Precyzja dostała własne miejsce w historii.","W 1778 roku londyński ślusarz Robert Barron opatentował ważne udoskonalenie zamka dźwigniowego. W jego konstrukcji rygiel pozostawał zablokowany zarówno przy zbyt małym, jak i przy zbyt dużym wychyleniu odpowiednich elementów. Była to istotna zmiana w rozwoju zamków dźwigniowych. Precyzja dostała własne miejsce w historii.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.barron_1778.title,"Ani za nisko, ani za wysoko","Ani za nisko, ani za wysoko",Bez zmian.
+showcase.bramah_window.body,"Joseph Bramah opatentował swój zamek w 1784 roku. Później w witrynie londyńskiego sklepu przy Piccadilly wystawił kłódkę z wyzwaniem i nagrodą 200 gwinei dla osoby, która potrafi ją otworzyć. Science Museum datuje zachowany egzemplarz tej kłódki na 1801 rok. Wyzwanie przetrwało pół stulecia i zostało rozstrzygnięte w 1851 roku. Niezwykle cierpliwa reklama.","Joseph Bramah opatentował swój zamek w 1784 roku. Później w witrynie londyńskiego sklepu przy Piccadilly wystawił kłódkę z wyzwaniem i nagrodą 200 gwinei dla osoby, która potrafi ją otworzyć. Science Museum datuje zachowany egzemplarz tej kłódki na 1801 rok. Wyzwanie przetrwało pół stulecia i zostało rozstrzygnięte w 1851 roku. Niezwykle cierpliwa reklama.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.bramah_window.title,Kłódka z wystawy wyzwań,Wyzwanie za 200 gwinei,Naturalniejszy tytuł.
+showcase.chubb_detector.body,"W 1818 roku Jeremiah Chubb opatentował zamek dźwigniowy z detektorem, który mógł wskazywać, że ktoś próbował manipulować mechanizmem. Nie był jednak pierwszym, który pomyślał o takim ostrzeżeniu: patent Ruxtona pochodzi z 1816 roku. Pomysł Chubba zdobył rozgłos i stał się częścią publicznej debaty o bezpieczeństwie zamków.","W 1818 roku Jeremiah Chubb opatentował zamek dźwigniowy z detektorem, który mógł wskazywać, że ktoś próbował manipulować mechanizmem. Nie był jednak pierwszym, który pomyślał o takim ostrzeżeniu: patent Ruxtona pochodzi z 1816 roku. Pomysł Chubba zdobył rozgłos i stał się częścią publicznej debaty o bezpieczeństwie zamków.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.chubb_detector.title,"Zamek, który ostrzega","Zamek, który ostrzega",Bez zmian.
+showcase.egyptian_name.body,"Drewniane zamki z zasuwą i kołkami często nazywa się egipskimi. Dziewiętnastowieczni podróżnicy widywali podobne konstrukcje w Egipcie, lecz to nie rozstrzyga, gdzie powstały. Już w 1883 roku Augustus Pitt-Rivers zwracał uwagę na niepewność starożytnych świadectw. Pokrewne rozwiązania znamy także z Bliskiego Wschodu i świata rzymskiego. Nazwa jest krótsza niż historia.","Drewniane zamki z zasuwą i kołkami często nazywa się egipskimi. Dziewiętnastowieczni podróżnicy widywali podobne konstrukcje w Egipcie, lecz to nie rozstrzyga, gdzie powstały. Już w 1883 roku Augustus Pitt-Rivers zwracał uwagę na niepewność starożytnych świadectw. Pokrewne rozwiązania znamy także z Bliskiego Wschodu i świata rzymskiego. Nazwa jest krótsza niż historia.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.egyptian_name.title,Skąd nazwa „egipski”?,Skąd nazwa „egipski”?,Bez zmian.
+showcase.henriksson_disc.body,Na początku XX wieku fiński mechanik precyzyjny Emil Henriksson opracował nowy typ zamka z obracającymi się tarczami. Według późniejszej opowieści inspirację podsunęła mu naprawiana kasa sklepowa w 1907 roku. Patent uzyskał w 1919 roku. W takim rodzaju mechanizmu zamiast sprężynujących kołków ważną rolę odgrywają obracające się elementy. Historia pomysłu jest niemal równie zgrabna jak sam pomysł.,Na początku XX wieku fiński mechanik precyzyjny Emil Henriksson opracował nowy typ zamka z obracającymi się tarczami. Według późniejszej opowieści inspirację podsunęła mu naprawiana kasa sklepowa w 1907 roku. Patent uzyskał w 1919 roku. W tym typie mechanizmu zamiast sprężynujących kołków ważną rolę odgrywają obracające się elementy. Historia pomysłu jest niemal równie zgrabna jak sam pomysł.,Płynniejsza fraza. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.henriksson_disc.title,Pomysł na obrotowe tarcze,Pomysł na obrotowe tarcze,Bez zmian.
+showcase.hobbs_51_hours.body,"Alfred C. Hobbs podjął wyzwanie kłódki Bramaha latem 1851 roku. Arbitrzy odnotowali, że spędził przy niej łącznie 51 godzin rozłożonych na 16 dni pracy. Gdy otwarcie uznano, wypłacono nagrodę 200 gwinei. Kłódka i historia wyzwania trafiły do muzeum. Szesnaście dni pracy potrafi wydać się długie. Pół wieku oczekiwania też.","Alfred C. Hobbs podjął wyzwanie kłódki Bramaha latem 1851 roku. Arbitrzy odnotowali, że spędził przy niej łącznie 51 godzin rozłożonych na 16 dni pracy. Po potwierdzeniu otwarcia wypłacono nagrodę 200 gwinei. Kłódka i historia wyzwania trafiły do muzeum. Szesnaście dni pracy potrafi wydać się długie. Pół wieku oczekiwania też.",Poprawa składni. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.hobbs_51_hours.title,51 godzin w 16 dni,51 godzin w 16 dni,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.hobbs_westminster.body,"W 1851 roku Alfred C. Hobbs podważył przekonanie, że najlepsze londyńskie zamki są nie do sforsowania. Najgłośniejszy sprawdzian odbył się 22 lipca przy Great George Street w Westminsterze, nie na terenie Wystawy Światowej. Według podpisanego oświadczenia świadków otwarcie zamka zajęło mu 25 minut, a ponowne zamknięcie 7 minut. Wywołało to głośny spór o bezpieczeństwo.","W 1851 roku Alfred C. Hobbs podważył przekonanie, że najlepsze londyńskie zamki są nie do sforsowania. Najgłośniejszy sprawdzian odbył się 22 lipca przy Great George Street w Westminsterze, nie na terenie Wystawy Światowej. Według podpisanego oświadczenia świadków otwarcie zamka zajęło mu 25 minut, a ponowne zamknięcie 7 minut. Wywołało to głośny spór o bezpieczeństwo.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.hobbs_westminster.title,Dwadzieścia pięć minut w Westminsterze,Dwadzieścia pięć minut w Westminsterze,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.khorsabad_gate.body,"W latach 40. XIX wieku Paul-Émile Botta badał Dur-Szarrukin, stolicę asyryjskiego króla Sargona II z końca VIII wieku p.n.e. Joseph Bonomi opisał jedną z bram jako zabezpieczoną wielkim drewnianym zamkiem. Sam zamek się nie zachował; znamy go tylko z relacji. Często powtarzane 4000 lat to błędne datowanie, które wskazał archeolog Daniel Potts. Dwa tysiące siedemset lat też robi wrażenie.","W latach 40. XIX wieku Paul-Émile Botta badał Dur-Szarrukin, stolicę asyryjskiego króla Sargona II z końca VIII wieku p.n.e. Joseph Bonomi opisał jedną z bram jako zabezpieczoną wielkim drewnianym zamkiem. Sam zamek się nie zachował; znamy go tylko z relacji. Często powtarzane 4000 lat to błędne datowanie, które wskazał archeolog Daniel Potts. Dwa tysiące siedemset lat też robi wrażenie.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.khorsabad_gate.title,Brama w Dur-Szarrukin,Brama w Dur-Szarrukin,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.krakow_guild_seal.body,"Krakowscy ślusarze i zegarmistrze przez długi czas dzielili jeden cech. Jego statut zatwierdził w 1633 roku król Władysław IV. Na dawnej pieczęci cechowej przedstawiono między innymi zamek, tarczę zegarową, klucze i węża w koronie. Według wiersza zapisanego w księdze cechu wąż miał symbolizować bystrość umysłu. Zegarmistrze wyodrębnili własny cech dopiero w 1797 roku.","Krakowscy ślusarze i zegarmistrze przez długi czas dzielili jeden cech. Jego statut zatwierdził w 1633 roku król Władysław IV. Na dawnej pieczęci cechowej przedstawiono między innymi zamek, tarczę zegarową, klucze i węża w koronie. Według wiersza zapisanego w księdze cechu wąż miał symbolizować bystrość umysłu. Zegarmistrze wyodrębnili własny cech dopiero w 1797 roku.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.krakow_guild_seal.title,Wąż w koronie,Wąż w koronie,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.roman_ring_key.body,"Rzymskie pierścienie-klucze łączyły ozdobę z niewielkim narzędziem do zamykania. Zachowane egzemplarze opisują między innymi Victoria and Albert Museum oraz London Museum. Mogły służyć do małych skrzynek lub schowków; szczegółowe przeznaczenie konkretnego pierścienia nie zawsze jest pewne. Pomysł był prosty: drobiazg, który łatwo mieć stale przy sobie.","Rzymskie pierścienie-klucze były jednocześnie ozdobą i niewielkim kluczem. Zachowane egzemplarze opisują między innymi Victoria and Albert Museum oraz London Museum. Mogły służyć do małych skrzynek lub schowków; szczegółowe przeznaczenie konkretnego pierścienia nie zawsze jest pewne. Pomysł był prosty: drobiazg, który łatwo mieć stale przy sobie.",Zwięzła definicja. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.roman_ring_key.title,Klucz na palcu,Klucz na palcu,Bez zmian.
+showcase.roman_wards.body,Rzymianie korzystali z różnych zamków i zasuw. Zachowane klucze z Pompejów i Herkulanum świadczą również o zamkach z nieruchomymi zastawkami: wewnętrzne przegrody wymagały klucza o odpowiednim kształcie. Znano także konstrukcje kołkowe. Zamiast jednej rzymskiej recepty istniało całe rzemiosło.,Rzymianie korzystali z różnych zamków i zasuw. Zachowane klucze z Pompejów i Herkulanum świadczą również o zamkach z nieruchomymi zastawkami: wewnętrzne przegrody wymagały klucza o odpowiednim kształcie. Znano także konstrukcje kołkowe. Zamiast jednej rzymskiej recepty istniało całe rzemiosło.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.roman_wards.title,Rzymskie zastawki,Rzymskie zastawki,Bez zmian.
+showcase.sargent_time_lock.body,"James Sargent rozwijał zamek czasowy dla skarbców bankowych w latach 70. XIX wieku. W 1873 roku zgłosił rozwiązanie patentowe, a w 1874 roku zainstalowano jego zamek w banku w Morrison w stanie Illinois. Mechanizm zegarowy nie pozwalał otworzyć skarbca przed wyznaczoną porą, nawet osobie znającej szyfr. Sam pomysł był starszy, lecz takie rozwiązania zaczęły wtedy zdobywać uznanie.","James Sargent rozwijał zamek czasowy dla skarbców bankowych w latach 70. XIX wieku. W 1873 roku zgłosił rozwiązanie patentowe, a w 1874 roku zainstalowano jego zamek w banku w Morrison w stanie Illinois. Mechanizm zegarowy nie pozwalał otworzyć skarbca przed wyznaczoną porą, nawet osobie znającej szyfr. Sam pomysł był starszy, lecz takie rozwiązania zaczęły wtedy zdobywać uznanie.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.sargent_time_lock.title,"Zamek, który zna godzinę","Zamek, który zna godzinę",Bez zmian.
+showcase.stansbury_1805.body,Już w 1805 roku Abraham O. Stansbury uzyskał w Wielkiej Brytanii patent na zamek wykorzystujący sprężynujące kołki. Charles Tomlinson opisywał tę konstrukcję jako rozwinięcie starszej idei drewnianych zamków kołkowych. Pomysły prowadzące do późniejszej wkładki bębenkowej miały więc więcej niż jednego autora. Historia techniki nie zawsze lubi jednego bohatera.,Już w 1805 roku Abraham O. Stansbury uzyskał w Wielkiej Brytanii patent na zamek wykorzystujący sprężynujące kołki. Charles Tomlinson opisywał tę konstrukcję jako rozwinięcie starszej idei drewnianych zamków kołkowych. Pomysły prowadzące do późniejszej wkładki bębenkowej miały więc więcej niż jednego autora. Historia techniki nie zawsze lubi jednego bohatera.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.stansbury_1805.title,Zapomniany prekursor,Zapomniany prekursor,Bez zmian.
+showcase.swiatniki_armourers.body,"Świątniki Górne koło Krakowa wyrosły z osady związanej ze służbą przy katedrze wawelskiej. Przez stulecia rozwijało się tu kowalstwo i płatnerstwo. Gdy pod koniec XVIII wieku zmalało zapotrzebowanie na dawne uzbrojenie, miejscowi rzemieślnicy coraz częściej wykonywali zamki i kłódki. Zmienił się wyrób, ale znajomość żelaza została.","Świątniki Górne koło Krakowa wyrosły z osady związanej ze służbą przy katedrze wawelskiej. Przez stulecia rozwijało się tu kowalstwo i płatnerstwo. Gdy pod koniec XVIII wieku zmalało zapotrzebowanie na dawne uzbrojenie, miejscowi rzemieślnicy coraz częściej wykonywali zamki i kłódki. Zmieniły się wyroby, lecz znajomość żelaza pozostała.",Naturalna puenta. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.swiatniki_armourers.title,Od zbroi do kłódki,Od zbroi do kłódki,Bez zmian.
+showcase.swiatniki_school.body,"W Świątnikach Górnych decyzję o założeniu szkoły ślusarskiej podjęto w 1887 roku, a naukę rozpoczęto w 1888. W 1891 roku szkoła i miejscowa spółka otrzymały na wystawie w Wiedniu zamówienie na 500 kłódek. Przez kolejne pokolenia uczono tu pracy z metalem. Dziś historię miejscowych warsztatów przypomina Muzeum Ślusarstwa im. Marcina Mikuły. Tu nawet lekcja miała konkretny ciężar.","W Świątnikach Górnych decyzję o założeniu szkoły ślusarskiej podjęto w 1887 roku, a naukę rozpoczęto w 1888 roku. W 1891 roku szkoła i miejscowa spółka otrzymały na wystawie w Wiedniu zamówienie na 500 kłódek. Przez kolejne pokolenia uczono tu pracy z metalem. Dziś historię miejscowych warsztatów przypomina Muzeum Ślusarstwa im. Marcina Mikuły. Tu nawet lekcja miała konkretny ciężar.",Poprawny zapis daty. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.swiatniki_school.title,Szkoła ślusarzy,Szkoła ślusarzy,Bez zmian.
+showcase.wroclaw_iron_world.body,"W 2022 roku Muzeum Narodowe we Wrocławiu pokazało wystawę Żelazny świat, poświęconą zamkom, kluczom i innym wyrobom ślusarskim. Wśród eksponatów znalazł się zamek skrzynkowy z 1720 roku, wykonany przez wrocławskiego mistrza Alberta Nicolausa Spihrmana. Według muzeum to jedyny zamek w jego zbiorach opisany jednocześnie datą, nazwiskiem twórcy i miejscem wykonania. Dawny ślusarz zostawił wyjątkowo czytelny podpis.","W 2022 roku Muzeum Narodowe we Wrocławiu pokazało wystawę „Żelazny świat”, poświęconą zamkom, kluczom i innym wyrobom ślusarskim. Wśród eksponatów znalazł się zamek skrzynkowy z 1720 roku, wykonany przez wrocławskiego mistrza Alberta Nicolausa Spihrmana. Według muzeum to jedyny zamek w jego zbiorach opisany jednocześnie datą, nazwiskiem twórcy i miejscem wykonania. Dawny ślusarz zostawił wyjątkowo czytelny podpis.",Cudzysłów tytułu wystawy. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.wroclaw_iron_world.title,Jedyny podpisany,Jedyny podpisany,Bez zmian.
+showcase.yale_dial.body,"W XIX wieku konstruktorzy zabezpieczeń bankowych szukali sposobu, by ograniczyć dostęp do wnętrza mechanizmu przez otwór na klucz. Linus Yale junior pracował nad zamkami bankowymi już w latach 50. XIX wieku, a w następnej dekadzie rozwijały się konstrukcje obsługiwane pokrętłem. Brak tradycyjnej dziurki nie oznaczał doskonałego bezpieczeństwa. Oznaczał zmianę pytań, które musiał rozwiązać ślusarz.","W XIX wieku konstruktorzy zabezpieczeń bankowych szukali sposobu, by ograniczyć dostęp do wnętrza mechanizmu przez otwór na klucz. Linus Yale junior pracował nad zamkami bankowymi już w latach 50. XIX wieku, a w następnej dekadzie rozwijały się konstrukcje obsługiwane pokrętłem. Brak tradycyjnej dziurki nie oznaczał doskonałego bezpieczeństwa. Oznaczał zmianę pytań, które musiał rozwiązać ślusarz.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.yale_dial.title,Bez otworu na klucz,Bez otworu na klucz,Bez zmian.
+showcase.yale_flat_key.body,"W połowie XIX wieku Linus Yale junior pomagał przekształcić ciężkie mechanizmy zamkowe w wygodniejsze urządzenia codziennego użytku. Patent z 27 czerwca 1865 roku dokumentuje jedną z jego konstrukcji. Płaski, niewielki klucz stał się symbolem nowego podejścia do wkładek. Wynalazca zmarł w 1868 roku, pozostawiając po sobie pomysły, które rozwijano przez kolejne pokolenia.","W połowie XIX wieku Linus Yale junior pomagał przekształcić ciężkie mechanizmy zamkowe w wygodniejsze urządzenia codziennego użytku. Patent z 27 czerwca 1865 roku dokumentuje jedną z jego konstrukcji. Płaski, niewielki klucz stał się symbolem nowego podejścia do wkładek. Wynalazca zmarł w 1868 roku, pozostawiając po sobie pomysły, które rozwijano przez kolejne pokolenia.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.yale_flat_key.title,"Mały, płaski klucz","Mały, płaski klucz",Bez zmian.
+showcase.yale_senior.body,"Linus Yale senior prowadził warsztat zamków w Newport, w stanie Nowy Jork. Pracował między innymi nad zabezpieczeniami bankowymi, a dokumentacja patentowa zachowała jego nazwisko i miejscowość przy patencie z 1857 roku. Pomysły ojca rozwijał później syn, również Linus. W rodzinnym warsztacie dziedziczyło się nie tylko narzędzia, lecz także pytania.","Linus Yale senior prowadził warsztat ślusarski w Newport, w stanie Nowy Jork. Pracował między innymi nad zabezpieczeniami bankowymi, a dokumentacja patentowa zachowała jego nazwisko i miejscowość przy patencie z 1857 roku. Pomysły ojca rozwijał później syn, również Linus. W rodzinnym warsztacie dziedziczyło się nie tylko narzędzia, lecz także pytania.",Poprawa frazy. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+showcase.yale_senior.title,Warsztat w stanie Nowy Jork,Warsztat w stanie Nowy Jork,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+tool.tw_angle.name,Napi­niacz kątowy,Napiniacz kątowy,Usunięto niewidoczny miękki dywiz.
+tool.tw_bar.name,Napinacz listwowy,Napinacz listwowy,Bez zmian.
+tool.tl_shackle.name,Ciągadło kabłąka,Ciągadło kabłąka,Bez zmian.
+tool.pk_peg.name,Podważka kołkowa,Podważka kołkowa,Bez zmian.
+tool.pk_hook.name,Haczyk,Haczyk,Bez zmian.
+tool.pk_ward.name,Sonda przelotowa,Sonda przelotowa,Bez zmian.
+tool.pk_ripple.name,Falownik,Falownik,Bez zmian.
+tool.pk_wedge.name,Klin dwustronny,Klin dwustronny,Bez zmian.
+tool.pk_lever.name,Korba dźwigniowa,Korba dźwigniowa,Bez zmian.
+tool.pk_crown.name,Koronka,Koronka,Bez zmian.
+tool.tl_polar.name,Sonda biegunowa,Sonda biegunowa,Bez zmian.
+tool.pk_flag.name,Chorągiewka,Chorągiewka,Bez zmian.
+tool.pk_plunger.name,Trzpień szczelinowy,Trzpień szczelinowy,Bez zmian.
+tool.pk_disc.name,Obrotnik tarcz,Obrotnik tarcz,Bez zmian.
+tool.pk_feather.name,Piórko boczne,Piórko boczne,Bez zmian.
+tool.tl_cup.name,Słuchawka,Słuchawka,Bez zmian.
+tool.tl_notes.name,Notes kontaktów,Notes kontaktów,Bez zmian.
+tool.kit_clock.name,Zestaw zegarmistrza,Zestaw zegarmistrza,Bez zmian.
+tool.tl_drill.name,Wiertarka,Wiertarka,Bez zmian.
+cast.agnieszka.name,Agnieszka,Agnieszka,Bez zmian.
+cast.aino.name,Aino,Aino,Bez zmian.
+cast.bartek.name,Bartek,Bartek,Bez zmian.
+cast.bride.name,Panna młoda,Panna młoda,Bez zmian.
+cast.captain.name,Kapitan,Kapitan,Bez zmian.
+cast.claimant.name,Kobieta przy drzwiach,Kobieta przy drzwiach,Bez zmian.
+cast.darek.name,Darek,Darek,Bez zmian.
+cast.edek.name,"Pan Edek, portier","Pan Edek, portier",Bez zmian.
+cast.ewa.name,Ewa,Ewa,Bez zmian.
+cast.gosia.name,Gosia,Gosia,Bez zmian.
+cast.halina.name,Pani Halina,Pani Halina,Bez zmian.
+cast.hall_manager.name,Kierownik sali,Kierownik sali,Bez zmian.
+cast.hania.name,Hania,Hania,Bez zmian.
+cast.headteacher.name,Dyrektorka szkoły,Dyrektorka szkoły,Bez zmian.
+cast.iga.name,Iga,Iga,Bez zmian.
+cast.irena.name,Pani Irena,Pani Irena,Bez zmian.
+cast.jacques.name,Monsieur Jacques,Monsieur Jacques,Bez zmian.
+cast.jadwiga.name,Pani Jadwiga,Pani Jadwiga,Bez zmian.
+cast.kazimierz.name,Pan Kazimierz,Pan Kazimierz,Bez zmian.
+cast.krysia.name,Pani Krysia,Pani Krysia,Bez zmian.
+cast.krystyna.name,Pani Krystyna,Pani Krystyna,Bez zmian.
+cast.kuba.name,Kuba,Kuba,Bez zmian.
+cast.lena.name,Aspirant Lena Sowa,Aspirant Lena Sowa,Bez zmian.
+cast.leopold.name,Pan Leopold,Pan Leopold,Bez zmian.
+cast.locksmith.name,Ślusarz,Ślusarz,Bez zmian.
+cast.magda.name,Magda,Magda,Bez zmian.
+cast.marek.name,Marek,Marek,Bez zmian.
+cast.marta.name,Marta,Marta,Bez zmian.
+cast.martine.name,Pani Martine,Pani Martine,Bez zmian.
+cast.mietek.name,Pan Mietek,Pan Mietek,Bez zmian.
+cast.nadia.name,Nadia,Nadia,Bez zmian.
+cast.neighbour_lucyna.name,Sąsiadka pani Lucyny,Sąsiadka pani Lucyny,Bez zmian.
+cast.neighbour_robe.name,Sąsiad w szlafroku,Sąsiad w szlafroku,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+cast.ola.name,Ola,Ola,Bez zmian.
+cast.pieter.name,Brat Pieter,Brat Pieter,Bez zmian.
+cast.piotr.name,Piotr,Piotr,Bez zmian.
+cast.renata.name,Pani Renata,Pani Renata,Bez zmian.
+cast.roman.name,"Pan Roman, administrator","Pan Roman, administrator",Bez zmian.
+cast.rygiel.name,Dr Anna Rygiel,Dr Anna Rygiel,Bez zmian.
+cast.stefan.name,Pan Stefan,Pan Stefan,Bez zmian.
+cast.stranger.name,Mężczyzna w garniturze,Mężczyzna w garniturze,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+cast.teresa.name,Pani Teresa,Pani Teresa,Bez zmian.
+cast.tomasz.name,Tomasz,Tomasz,Bez zmian.
+cast.waldek.name,Pan Waldek,Pan Waldek,Bez zmian.
+cast.wanda.name,Pani Wanda,Pani Wanda,Bez zmian.
+cast.wladyslaw.name,Pan Władysław,Pan Władysław,Bez zmian.
+cast.zbyszek.name,Pan Zbyszek,Pan Zbyszek,Bez zmian.
+cast.zosia.name,Pani Zosia,Pani Zosia,Bez zmian.
+cast.zuzanna.name,Zuzanna,Zuzanna,Bez zmian.
+job.allotment_shed.line.1,"Działka jest na żonę, ale kopię ja. Żona siedzi w domu z kolanem.","Działka jest żony, ale uprawiam ją ja. Żona siedzi w domu z kolanem.",Naturalniejsza składnia Zbyszka. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.allotment_shed.line.2,Legitymacja działkowca jest? I ktoś z sąsiedniej działki?,Legitymacja działkowca jest? I ktoś z sąsiedniej działki?,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.allotment_shed.line.3,Zbyszek tu jest dłużej niż ta altana. I dłużej niż ja.,Zbyszek tu jest dłużej niż ta altana. I dłużej niż ja.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.allotment_shed.line.4,Ogórki pan weźmie? Na działkę pieniędzy nie noszę.,Ogórki pan weźmie? Na działkę pieniędzy nie noszę.,Bez zmian.
+job.allotment_shed.note,Altana pana Zbyszka. Inne nazwisko w umowie: żona. Zgrzyt wyjaśniony. Zapłata: słoik ogórków.,Altana pana Zbyszka. Inne nazwisko w umowie: żona. Zgrzyt wyjaśniony. Zapłata: słoik ogórków.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.bike_interview.line.1,"Zmieniłem kod na bezpieczniejszy. Taki bezpieczny, że sam go nie znam.","Zmieniłem kod na bezpieczniejszy. Taki bezpieczny, że sam go nie znam.",Bez zmian.
+job.bike_interview.line.2,"Rower stoi na ulicy. Ma pan coś, co mówi, że jest pana?","Rower stoi na ulicy. Ma pan coś, co potwierdzi, że to pana rower?",Jasny przedmiot weryfikacji.
+job.bike_interview.line.3,Zdjęcie z wakacji i paragon w mailu. Rower wyszedł na nim lepiej niż ja.,Zdjęcie z wakacji i paragon w mailu. Rower wyszedł na nim lepiej niż ja.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.bike_interview.line.4,Wystarczy. Niech pan w tym czasie poprawi krawat.,Wystarczy. Niech pan w tym czasie poprawi marynarkę.,Zgodność z opisem Kuby (marynarka). Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.bike_interview.note,"Kuba, kłódka rowerowa. Zdjęcie i paragon, rzecz w posiadaniu. Krawat poprawiony dwa razy. Autobus 8:52.","Kuba, kłódka rowerowa. Zdjęcie i paragon, rzecz w posiadaniu. Marynarka poprawiona dwa razy. Autobus 8:52.",Zgodność rekwizytu z dialogiem. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.bramah_bureau.line.1,"Faktura z aukcji, opis i zdjęcia. Zamek ma zostać nietknięty.","Faktura z aukcji, opis i zdjęcia. Zamek ma zostać nietknięty.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.bramah_bureau.line.2,Taki zamek wisiał kiedyś w oknie sklepu w Londynie. Z nagrodą.,Taki zamek wisiał kiedyś w oknie sklepu w Londynie. Z nagrodą.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.bramah_bureau.line.3,I ktoś go otworzył?,I ktoś go otworzył?,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.bramah_bureau.line.4,"Po ponad sześćdziesięciu latach. Opowiem, jak skończę.","Po ponad sześćdziesięciu latach. Opowiem, jak skończę.",Bez zmian.
+job.bramah_bureau.note,Sekretarzyk pani Gosi. Faktura i posiadanie. Zamek zostaje oryginalny. Opowiedziałem jej o oknie przy Piccadilly.,Sekretarzyk pani Gosi. Faktura i posiadanie. Zamek zostaje oryginalny. Opowiedziałem jej o oknie przy Piccadilly.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.brussels_townhouse.line.1,Stoję na balkonie jak Julia. Tylko Romeo ma sześćdziesiąt lat i klucz od bramy.,Stoję na balkonie jak Julia. Tylko Romeo ma sześćdziesiąt lat i klucz od bramy.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.brussels_townhouse.line.2,Madame Magda mieszka tu od zawsze. Depuis toujours.,Madame Magda mieszka tu od zawsze. Depuis toujours.,Bez zmian.
+job.brussels_townhouse.line.3,"Umowa najmu, adres z gminy i sąsiad. Komplet. Proszę się nie wychylać.","Umowa najmu, adres z gminy i sąsiad. Komplet. Proszę się nie wychylać.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.brussels_townhouse.line.4,Pelargonie podlane. To był cel misji.,Pelargonie podlane. To był cel misji.,Bez zmian.
+job.brussels_townhouse.note,"Saint-Gilles. Inny kraj, ta sama zasada. Umowa, gmina, monsieur Jacques. Pelargonie mają się dobrze.","Saint-Gilles. Inny kraj, ta sama zasada. Umowa, gmina, monsieur Jacques. Pelargonie mają się dobrze.",Bez zmian.
+job.cat_bathroom.line.1,"On to zrobił specjalnie. Patrzył mi w oczy, kiedy skakał na klamkę.","On to zrobił specjalnie. Patrzył mi w oczy, kiedy skakał na klamkę.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.cat_bathroom.line.2,"Pani jest u siebie, a on w łazience. Dokumentów tym razem nie trzeba.","Pani jest u siebie, a on w łazience. Dokumentów tym razem nie trzeba.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.cat_bathroom.line.3,A jak się przestraszy?,A jak się przestraszy?,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.cat_bathroom.line.4,Niech pani do niego mówi. Ja będę cichszy od niego.,Niech pani do niego mówi. Ja będę cichszy od niego.,Bez zmian.
+job.cat_bathroom.note,"Ziemniak, kot. Weryfikacja: zbędna, klientka była w środku. Kot nie przeprosił. Marta obiecała mi nową tabliczkę.","Ziemniak, kot. Weryfikacja: zbędna, klientka była w środku. Kot nie przeprosił. Marta obiecała mi nową tabliczkę.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.charleroi_letters.line.1,"Nie dzwonię po otwarcie, tylko po radę. Pani Martine ma kasetkę dziadka.","Nie dzwonię po otwarcie, tylko po radę. Pani Martine ma kasetkę dziadka.",Bez zmian.
+job.charleroi_letters.line.2,C'est à votre famille. Ja tylko pilnowałam.,C'est à votre famille. Ja tylko pilnowałam.,Bez zmian.
+job.charleroi_letters.line.3,Pani pilnowała przez siedemdziesiąt lat?,Pani pilnowała przez siedemdziesiąt lat?,Bez zmian.
+job.charleroi_letters.line.4,"Obie chcecie, żeby się otworzyła. Najprostsza weryfikacja w mojej karierze.","Obie chcecie, żeby się otworzyła. Najprostsza weryfikacja w mojej karierze.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.charleroi_letters.note,Charleroi. Kasetka dziadka Józefa u pani Martine. Obie strony chciały otwarcia. Pierwszy raz płakałem w pracy. Trochę.,Charleroi. Kasetka dziadka Józefa u pani Martine. Obie strony chciały otwarcia. Pierwszy raz płakałem w pracy. Trochę.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.dollhouse_wooden_lock.line.1,Lala siedzi tam od wtorku. Ona się nudzi.,Lala siedzi tam od wtorku. Ona się nudzi.,Bez zmian.
+job.dollhouse_wooden_lock.line.2,"Dziadek mówił, że to zamek egipski. Nie wiem, ile w tym prawdy.","Dziadek mówił, że to zamek egipski. Nie wiem, ile w tym prawdy.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.dollhouse_wooden_lock.line.3,Taka nazwa się przyjęła. Prawdziwa historia jest lepsza. Opowiem po robocie.,Taka nazwa się przyjęła. Prawdziwa historia jest lepsza. Opowiem po robocie.,Bez zmian.
+job.dollhouse_wooden_lock.line.4,A zrobi pan nowy klucz? Drewniany? Tata ma deskę.,A zrobi pan nowy klucz? Drewniany? Tata ma deskę.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.dollhouse_wooden_lock.note,"Domek pradziadka. Zamek drewniany na kołki. Lala uwolniona. Tomasz wystruga nowy klucz, Hania nadzoruje.","Domek pradziadka. Zamek drewniany na kołki. Lala uwolniona. Tomasz wystruga nowy klucz, Hania nadzoruje.",Bez zmian.
+job.drummer_locker.line.1,"Mogę zagrać łyżkami, ale wolałabym nie. Koncert za godzinę.","Mogę zagrać łyżkami, ale wolałabym nie. Koncert za godzinę.",Bez zmian.
+job.drummer_locker.line.2,"Szafka numer osiem, Iga płaci co miesiąc. Mam w zeszycie.","Szafka numer osiem, Iga płaci co miesiąc. Mam w zeszycie.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.drummer_locker.line.3,"Zeszyt mi wystarczy. Pan Edek mówił, że u pana wszystko jest zapisane.","Zeszyt mi wystarczy. Pan Edek mówił, że u pana wszystko jest zapisane.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.drummer_locker.line.4,"Jak pan zdąży, gramy numer dla pana. Głośno.","Jak pan zdąży, gramy numer dla pana. Głośno.",Bez zmian.
+job.drummer_locker.note,"Szafka nr 8, sala prób. Kierownik ma zeszyt jak ja. Szanuję. Zagrali dla mnie numer, było głośno.","Szafka nr 8, sala prób. Kierownik ma zeszyt jak ja. Szanuję. Zagrali dla mnie numer, było głośno.",Bez zmian.
+job.finnish_sailor.line.1,W Finlandii każdy ma taką kłódkę. Bez klucza nikt jej nie otworzy.,U mnie w domu każdy miał taką kłódkę. Bez klucza nikt jej nie otworzy.,Usunięcie nieuzasadnionego uogólnienia. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.finnish_sailor.line.2,"Skrzynia jest Aino, ręczę. Odpływamy jutro o szóstej.","Skrzynia jest Aino, ręczę. Odpływamy jutro o szóstej.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.finnish_sailor.line.3,"Kapitan ręczy, książeczka żeglarska się zgadza. To zobaczymy.","Kapitan ręczy, książeczka żeglarska się zgadza. To zobaczymy.",Bez zmian.
+job.finnish_sailor.line.4,"Jeśli pan otworzy, opowiem, skąd ten wynalazek.","Jeśli pan otworzy, opowiem, skąd ten wynalazek.",Bez zmian.
+job.finnish_sailor.note,"Aino, statek z Finlandii. Kapitan i książeczka. Zdążyliśmy przed szóstą. Chochla z brzozy wisi nad warsztatem.","Aino, statek z Finlandii. Kapitan i książeczka. Zdążyliśmy przed szóstą. Chochla z brzozy wisi nad warsztatem.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.ghent_beguinage.line.1,Po polsku umiem tylko „dzień dobry” i „pierogi”.,Po polsku umiem tylko „dzień dobry” i „pierogi”.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.ghent_beguinage.line.2,To już połowa języka.,To już połowa języka.,Bez zmian.
+job.ghent_beguinage.line.3,Pismo od rady parafii. Klucz poszedł z poprzednim opiekunem do nieba.,Pismo od rady parafii. Klucz poszedł z poprzednim opiekunem do nieba.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.ghent_beguinage.line.4,"Bez śladów, obiecuję. Ten zamek jest starszy niż moja kamienica.","Bez śladów, obiecuję. Ten zamek jest starszy niż moja kamienica.",Bez zmian.
+job.ghent_beguinage.note,"Beginaż w Gandawie. Pismo instytucji i opiekun. Bez śladów, jak obiecałem. Brat Pieter umie już „rosół”.","Beginaż w Gandawie. Pismo instytucji i opiekun. Bez śladów, jak obiecałem. Brat Pieter umie już „rosół”.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.grandma_broth.line.1,"Synku, ja tylko na chwilkę wyszłam. Ze śmieciami.","Synku, ja tylko na chwilkę wyszłam. Ze śmieciami.",Bez zmian.
+job.grandma_broth.line.2,Gaz zakręciłam na klatce. Czterdzieści lat mieszkamy przez ścianę.,Gaz zakręciłam na klatce. Czterdzieści lat mieszkamy przez ścianę.,Bez zmian.
+job.grandma_broth.line.3,To mi wystarczy za papiery. List w skrzynce też jest na panią?,To mi wystarczy za papiery. List w skrzynce też jest na panią?,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.grandma_broth.line.4,"Makaron sama robiłam. Talerz zostaje dla pana, nie dyskutujemy.","Makaron sama robiłam. Talerz zostaje dla pana, nie dyskutujemy.",Bez zmian.
+job.grandma_broth.note,"Pani Halina, Śródmieście. Ręczy pani Zosia, 40 lat przez ścianę. Rosół w stanie „trochę wyparował”. Zjadłem.","Pani Halina, Śródmieście. Ręczy pani Zosia, 40 lat przez ścianę. Rosół w stanie „trochę wyparował”. Zjadłem.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.grandpa_chest.line.1,"Tato nigdy nie mówił, co tam trzyma. Nawet nam.","Tato nigdy nie mówił, co tam trzyma. Nawet nam.",Bez zmian.
+job.grandpa_chest.line.2,"Mamo, pan nie pyta o skrzynię. Pyta, czy dom jest twój.","Mamo, pan nie pyta o skrzynię. Pyta, czy dom jest twój.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.grandpa_chest.line.3,"Mój. Akt notarialny leży w kredensie, pod obrusem.","Mój. Akt notarialny leży w kredensie, pod obrusem.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.grandpa_chest.line.4,"Listy. Z Charleroi. Do babci, po polsku, z belgijskimi znaczkami.","Listy. Z Charleroi. Do babci, po polsku, z belgijskimi znaczkami.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.grandpa_chest.note,"Skrzynia dziadka Józefa. Akt pod obrusem, tam gdzie zawsze. W środku listy z Belgii. Ola mówi, że pojedzie.","Skrzynia dziadka Józefa. Akt pod obrusem, tam gdzie zawsze. W środku listy z Belgii. Ola mówi, że pojedzie.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.kiosk_shutter.line.1,Trzydzieści dwa lata ta kłódka tu wisi. Ani razu jej nie oliwiłem.,Trzydzieści dwa lata ta kłódka tu wisi. Ani razu jej nie oliwiłem.,Bez zmian.
+job.kiosk_shutter.line.2,"Pani Krysia ręczy, list z hurtowni jest. Brakuje mi jeszcze jednej rzeczy.","Pani Krysia ręczy, list z hurtowni jest. Brakuje mi jeszcze jednej rzeczy.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.kiosk_shutter.line.3,"Zdjęcie z otwarcia, dziewięćdziesiąty czwarty. Wąsy miałem lepsze niż kiosk.","Zdjęcie z otwarcia, dziewięćdziesiąty czwarty. Wąsy miałem lepsze niż kiosk.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.kiosk_shutter.line.4,Stefan stoi tu dłużej niż przystanek. Autobus to potwierdzi.,Stefan stoi tu dłużej niż przystanek. Autobus to potwierdzi.,Bez zmian.
+job.kiosk_shutter.note,"Kiosk pana Stefana. Lokal firmy, więc dopytałem. Zdjęcie z 1994, wąsy autentyczne. Gazeta gratis do końca tygodnia.","Kiosk pana Stefana. Lokal firmy, więc dopytałem. Zdjęcie z 1994, wąsy autentyczne. Gazeta gratis do końca tygodnia.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krakow_antiquarian.line.1,"Kasa moja, najem mam od miasta, pani z kawiarni obok potwierdzi.","Kasa moja, najem mam od miasta, pani z kawiarni obok potwierdzi.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krakow_antiquarian.line.2,A przy okazji ta kasetka. Klient zostawił ją do wyceny.,A przy okazji ta kasetka. Klient zostawił ją do wyceny.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krakow_antiquarian.line.3,Kasę otworzę. Kasetki nie. Niech właściciel przyjdzie sam.,Kasę otworzę. Kasetki nie. Niech właściciel przyjdzie sam.,Bez zmian.
+job.krakow_antiquarian.line.4,Ma pan rację. Starzeję się i robię się niecierpliwy.,Ma pan rację. Starzeję się i robię się niecierpliwy.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krakow_antiquarian.note,"Pan Leopold. Kasa jego, kasetka nie. Jedno zlecenie, dwie decyzje. W zamian opowieść o cechu.","Pan Leopold. Kasa jego, kasetka nie. Jedno zlecenie, dwie decyzje. W zamian opowieść o cechu.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krakow_tenement_gate.line.1,Konserwator powiedział: ani jednej dziury. Ani jednej.,Konserwator powiedział: ani jednej dziury. Ani jednej.,Bez zmian.
+job.krakow_tenement_gate.line.2,Słusznie. Ktoś się tu sto trzydzieści lat temu napracował.,Słusznie. Ktoś się tu sto trzydzieści lat temu napracował.,Bez zmian.
+job.krakow_tenement_gate.line.3,"Dzień dobry. Mam tu praktykę. Egzamin zdałam, pokój 412 pomógł.","Dzień dobry. Mam tu praktykę. Egzamin zdałam, pokój 412 pomógł.",Bez zmian.
+job.krakow_tenement_gate.line.4,Uchwała wspólnoty i zlecenie na piśmie. Proszę.,Uchwała wspólnoty i zlecenie na piśmie. Proszę.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krakow_tenement_gate.note,"Brama na Kazimierzu. Pierwsza uchwała wspólnoty w mojej karierze, chyba ją oprawię. Zuzanna robi notatki szybciej ode mnie.","Brama na Kazimierzu. Pierwsza uchwała wspólnoty w mojej karierze, chyba ją oprawię. Zuzanna robi notatki szybciej ode mnie.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.liege_bakery.line.1,Wujek miał trzydzieści kluczy i żadnego nie podpisał.,Wujek miał trzydzieści kluczy i żadnego nie podpisał.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.liege_bakery.line.2,Zamek wyczuł obcy klucz i się obraził. Taki ma zawód.,Zamek wyczuł obcy klucz i się obraził. Taki ma zawód.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.liege_bakery.line.3,Papiery przejęcia i umowa najmu. Ciasto rośnie bez pozwolenia.,Papiery przejęcia i umowa najmu. Ciasto rośnie bez pozwolenia.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.liege_bakery.line.4,Papiery wystarczą. Gofry o szóstej będą.,Papiery wystarczą. Gofry o szóstej będą.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.liege_bakery.note,"Liège, 3:50. Zamek z detektorem miał rację, że się zablokował. Papiery przejęcia w porządku. Gofr z perłowym cukrem.","Liège, 3:50. Zamek z detektorem miał rację, że się zablokował. Papiery przejęcia w porządku. Gofr z perłowym cukrem.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.museum_time_lock.line.1,Tu nie chodzi o szyfr. Tu chodzi o czas.,Tu nie chodzi o szyfr. Tu chodzi o czas.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.museum_time_lock.line.2,"Zamek czasowy nie pyta, kto przyszedł. Pyta, która godzina.","Zamek czasowy nie pyta, kto przyszedł. Pyta, która godzina.",Bez zmian.
+job.museum_time_lock.line.3,"Pismo dyrekcji, protokół przekazania. Wszystko w trzech egzemplarzach.","Pismo dyrekcji, protokół przekazania. Wszystko w trzech egzemplarzach.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.museum_time_lock.line.4,"Pani doktor, rękawiczki dla pana ślusarza też są. Rozmiar L.","Pani doktor, rękawiczki dla pana ślusarza też są. Rozmiar L.",Bez zmian.
+job.museum_time_lock.note,"Muzeum Techniki. Dr Rygiel, trzy egzemplarze wszystkiego. Zegar przekonany. Zuzanna jest tu na stażu, oczywiście.","Muzeum Techniki. Dr Rygiel, trzy egzemplarze wszystkiego. Zegar przekonany. Zuzanna jest tu na stażu, oczywiście.",Bez zmian.
+job.newlyweds_4am.line.1,"Dowód mam, ale adresu na nim nie ma. Wiem, wiem. Teraz nikt nie ma.","Dowód mam, ale adresu na nim nie ma. Wiem, wiem. Teraz nikt nie ma.",Bez zmian.
+job.newlyweds_4am.line.2,"Meldunek mam w aplikacji. Tu, widzi pan? Z welonem trudno celować.","Meldunek mam w aplikacji. Tu, widzi pan? Z welonem trudno celować.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.newlyweds_4am.line.3,Znam ich. Pobrali się dziś. Całe osiedle słyszało oczepiny.,Znam ich. Pobrali się dziś. Całe osiedle słyszało oczepiny.,Bez zmian.
+job.newlyweds_4am.line.4,Wszystkiego najlepszego. Dwie minuty i jesteście w domu.,Wszystkiego najlepszego. Zostały już tylko te drzwi.,Bez obietnicy czasu pracy.
+job.newlyweds_4am.note,"Nowożeńcy, 4:12. Dowód bez adresu to norma, dlatego meldunek i sąsiad w szlafroku. Tort trzypiętrowy, wziąłem kawałek.","Nowożeńcy, 4:12. Dowód bez adresu to norma, dlatego meldunek i sąsiad w szlafroku. Tort trzypiętrowy, wziąłem kawałek.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.night_nurse.line.1,Dwanaście godzin na oddziale. Klucz został w szafce w szpitalu.,Dwanaście godzin na oddziale. Klucz został w szafce w szpitalu.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.night_nurse.line.2,"Pani Agnieszka spod czternastki, zgadza się. Umowę mam w systemie.","Pani Agnieszka spod czternastki, zgadza się. Umowę mam w systemie.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.night_nurse.line.3,"Administrator potwierdza, dowód się zgadza. Zaraz pani śpi.","Administrator potwierdza, dowód się zgadza. Zaraz pani śpi.",Bez zmian.
+job.night_nurse.line.4,"Przepraszam, że nie rozmawiam. Ja już mówię przez sen.","Przepraszam, że nie rozmawiam. Ja już mówię przez sen.",Bez zmian.
+job.night_nurse.note,"Pani Agnieszka, po nocce. Pan Roman przez domofon, sprawnie jak zawsze. Rabat sąsiedzki, bez dyskusji.","Pani Agnieszka, po nocce. Pan Roman przez domofon, sprawnie jak zawsze. Rabat sąsiedzki, bez dyskusji.",Bez zmian.
+job.pizzeria_pays_pizza.line.1,"Utarg jest w kasie, kasa w środku. Płacę w pizzy. Ile pan zje?","Utarg jest w kasie, kasa w środku. Płacę w pizzy. Ile pan zje?",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.pizzeria_pays_pizza.line.2,"Najpierw wycena, potem menu. Umowa najmu lokalu jest?","Najpierw wycena, potem menu. Umowa najmu lokalu jest?",Bez zmian.
+job.pizzeria_pays_pizza.line.3,"Znam ją dwadzieścia lat, kebab mam przez ścianę. Jej margherita to sztuka.","Znam ją dwadzieścia lat, kebab mam przez ścianę. Jej margherita to sztuka.",Bez zmian.
+job.pizzeria_pays_pizza.line.4,"Ciasto rośnie, ja maleję. Byle przed świtem.","Ciasto rośnie, ja maleję. Byle przed świtem.",Bez zmian.
+job.pizzeria_pays_pizza.note,Pizzeria „U Renaty”. Umowa najmu i sąsiad z lokalu obok. Zapłata: margherita. Pudełko stoi na półce.,Pizzeria „U Renaty”. Umowa najmu i sąsiad z lokalu obok. Zapłata: margherita. Pudełko stoi na półce.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_aunt_alive.after.1,"Pani Lucyna wraca w piątek. Zamek wymieni sama, z pana pomocą.","Pani Lucyna wraca w piątek. Sama zdecyduje, czy zlecić panu wymianę zamka.",Usunięcie sprzeczności. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_aunt_alive.after.2,"Dobrze, że pan odmówił. Ja bym nie spała.","Dobrze, że pan odmówił. Ja bym nie spała.",Bez zmian.
+job.refuse_aunt_alive.line.1,"Ciocia zmarła w zeszłym tygodniu. Papiery są w trakcie, to dopiero co.","Ciocia zmarła w zeszłym tygodniu. Papiery są w trakcie, to dopiero co.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_aunt_alive.line.2,"Pani Lucyna? Jest w sanatorium. Wczoraj dzwoniła, że jej lepiej.","Pani Lucyna? Jest w sanatorium. Wczoraj dzwoniła, że jej lepiej.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_aunt_alive.line.3,Musiałam coś pomylić.,Musiałam coś pomylić.,Bez zmian.
+job.refuse_aunt_alive.line.4,To zadzwońmy do pani Lucyny razem. A potem do aspirant Sowy.,Zadzwońmy do pani Lucyny. A potem do pani aspirant Sowy.,Naturalne zwracanie się do dzielnicowej. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_aunt_alive.note,"Ciotka, która ma się dobrze. Sąsiadka wyszła na klatkę w porę. Pani Lucyna przesyła pozdrowienia z sanatorium.","Ciotka, która ma się dobrze. Sąsiadka wyszła na klatkę w porę. Pani Lucyna przesyła pozdrowienia z sanatorium.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_ex_partner.after.1,"Dobrze, że pan zadzwonił. Rzeczy odebrał przy mnie, lokatorka się zgodziła.","Dobrze, że pan zadzwonił. Rzeczy odebrał przy mnie, lokatorka się zgodziła.",Bez zmian.
+job.refuse_ex_partner.after.2,Słyszałem na przystanku. Porządny z pana człowiek. Gazeta?,Słyszałem na przystanku. Porządny z pana człowiek. Gazeta?,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_ex_partner.line.1,Mieszkałem tu trzy lata. Mam prawo wejść po swoje rzeczy.,Mieszkałem tu trzy lata. Mam prawo wejść po swoje rzeczy.,Bez zmian.
+job.refuse_ex_partner.line.2,"Na skrzynce jest jedno nazwisko, nie pana. Zawołam administratora.","Na skrzynce jest jedno nazwisko, nie pana. Zawołam administratora.",Bez zmian.
+job.refuse_ex_partner.line.3,Po co administrator? To prywatna sprawa.,Po co administrator? To prywatna sprawa.,Bez zmian.
+job.refuse_ex_partner.line.4,"Tu nie otworzę. Policja pomaga odebrać rzeczy, spokojnie. Zadzwonić?","Tu nie otworzę. Policja pomaga odebrać rzeczy, spokojnie. Zadzwonić?",Bez zmian.
+job.refuse_ex_partner.note,Nie otworzyłem. Jedno nazwisko na drzwiach i to nie jego. Przekazałem sprawę aspirant Sowie. Nie żałuję.,Nie otworzyłem. Jedno nazwisko na drzwiach i to nie jego. Przekazałem sprawę pani aspirant Sowie. Nie żałuję.,Ujednolicenie formy grzecznościowej. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_rush_bribe.after.1,Siostra nic nie wiedziała o żadnych dokumentach. Dziękuję za telefon.,Siostra nic nie wiedziała o żadnych dokumentach. Dziękuję za telefon.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_rush_bribe.after.2,Ktoś w garniturze pytał wczoraj o ślusarza. Odesłałem go do pana. Przepraszam.,Ktoś w garniturze pytał wczoraj o ślusarza. Odesłałem go do pana. Przepraszam.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_rush_bribe.line.1,Podwójna stawka. Potrójna. Tylko bez tych wszystkich procedur.,Podwójna stawka. Potrójna. Tylko bez tych wszystkich procedur.,Bez zmian.
+job.refuse_rush_bribe.line.2,"Procedur nie da się dopłacić. Proszę zadzwonić do siostry, poczekam.","Dopłata nie zastąpi zgody. Proszę zadzwonić do siostry, poczekam.","Jasny, spokojny komunikat odmowy."
+job.refuse_rush_bribe.line.3,"Nie odbiera. Sąsiadów nie budźmy, po co ten cyrk.","Nie odbiera. Sąsiadów nie budźmy, po co ten cyrk.",Bez zmian.
+job.refuse_rush_bribe.line.4,To dobranoc. A dla porządku dam znać dzielnicowej.,To dobranoc. A dla porządku dam znać dzielnicowej.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_rush_bribe.note,"1:00, garnitur, pośpiech, dopłata zamiast sąsiada. Nie otworzyłem. Zgłosiłem. Spałem dobrze.","1:00, garnitur, pośpiech, dopłata zamiast sąsiada. Nie otworzyłem. Zgłosiłem. Spałem dobrze.",Bez zmian.
+job.student_dorm.line.1,Legitymacja jest w pokoju. Klucz też. Ja jestem na korytarzu.,Legitymacja jest w pokoju. Klucz też. Ja jestem na korytarzu.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.student_dorm.line.2,"Wilk Zuzanna, czterysta dwanaście. Mam na liście i mam w głowie.","Wilk Zuzanna, czterysta dwanaście. Mam na liście i mam w głowie.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.student_dorm.line.3,"Pan Edek ręczy, nazwisko się zgadza. Otwieramy.","Pan Edek ręczy, nazwisko się zgadza. Otwieramy.",Bez zmian.
+job.student_dorm.line.4,Jutro mam egzamin z zamków historycznych. To się liczy jako praktyka?,Jutro mam egzamin z zamków historycznych. To się liczy jako praktyka?,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.student_dorm.note,"Pokój 412, kampus. Portier z listą lokatorów: najlepszy dowód, jaki istnieje. Zuzanna pytała o wszystko.","Pokój 412, kampus. Portier z listą lokatorów: tutaj wystarczyło. Zuzanna pytała o wszystko.",Bez generalizacji o dowodach. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.swiatniki_journeyman_padlock.line.1,Siedemdziesiąt lat ją trzymam. Klucz był jeden. Wnuk go zgubił.,Siedemdziesiąt lat ją trzymam. Klucz był jeden. Wnuk go zgubił.,Bez zmian.
+job.swiatniki_journeyman_padlock.line.2,"A pan wie, jak ją otworzyć?","A pan wie, jak ją otworzyć?",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.swiatniki_journeyman_padlock.line.3,"Wiem. Ale chcę zobaczyć, czy młodzi jeszcze umieją.","Wiem. Ale chcę zobaczyć, czy młodzi jeszcze umieją.",Bez zmian.
+job.swiatniki_journeyman_padlock.line.4,To pismo w zeszycie znam. Henryk. Uczyłem go. Dobrze trafił ten zeszyt.,"Pismo w zeszycie znam. Henryk. Uczyłem go. Dobrze, że ten zeszyt trafił do pana.",Naturalny i zwięzły głos pana Władysława. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.swiatniki_journeyman_padlock.note,"Pan Władysław, Świątniki. Rozpoznał pismo Henryka w moim zeszycie. Pierwszej zasady to on nauczył Henryka.","Pan Władysław, Świątniki. Rozpoznał pismo Henryka w moim zeszycie. Pierwszej zasady to on nauczył Henryka.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.time_capsule.line.1,"Wiem, że kodem była jakaś data. Tylko czyja?","Wiem, że kodem była jakaś data. Tylko czyja?",Bez zmian.
+job.time_capsule.line.2,"Szkoła się zgadza. Proszę otwierać, przy wszystkich.","Szkoła się zgadza. Proszę otwierać, przy wszystkich.",Bez zmian.
+job.time_capsule.line.3,"Pani Jadwigo, my mieliśmy wtedy dziewięć lat. Pamiętam tylko kasztany.","Pani Jadwigo, my mieliśmy wtedy dziewięć lat. Pamiętam tylko kasztany.",Bez zmian.
+job.time_capsule.line.4,"Mój list: „Mam nadzieję, że masz psa”. Mam kota. Też się liczy.","Mój list: „Mam nadzieję, że masz psa”. Mam kota. Też się liczy.",Bez zmian.
+job.time_capsule.note,"Klasa 3b, kasztanowiec. Dyrekcja i dwudziestu świadków. Marta była w tej klasie. Na wycieraczce kartka: „Rosół czeka”.","Klasa 3b, kasztanowiec. Dyrekcja i dwudziestu świadków. Marta była w tej klasie. Na wycieraczce kartka: „Rosół czeka”.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.uncle_safe_heirs.line.1,"Pan otworzy, ja popatrzę i powiem reszcie. Przecież się podzielimy.","Pan otworzy, ja popatrzę i powiem reszcie. Przecież się podzielimy.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.uncle_safe_heirs.line.2,"Otworzę, gdy będą wszyscy spadkobiercy albo ich zgoda na piśmie.","Otworzę, gdy będą wszyscy spadkobiercy albo ich zgoda na piśmie.",Bez zmian.
+job.uncle_safe_heirs.line.3,"Ewa będzie za godzinę. Marek, nastaw wodę.","Ewa będzie za godzinę. Marek, nastaw wodę.",Bez zmian.
+job.uncle_safe_heirs.line.4,"Wujek by się śmiał, że się kłócimy o pudło z tarczą.","Wujek by się śmiał, że się kłócimy o pudło z tarczą.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.uncle_safe_heirs.note,"Sejf wujka Bogdana. Czekaliśmy na Ewę, godzina i trzy herbaty. Otwarte przy wszystkich. Nikt się nie obraził.","Sejf wujka Bogdana. Czekaliśmy na Ewę, godzina i trzy herbaty. Otwarte przy wszystkich. Nikt się nie obraził.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.widow_bureau.line.1,"Pani Zosia mówiła, że pan nie wierci. Mąż nie znosił wiercenia.","Pani Zosia mówiła, że pan nie wierci. Mąż nie znosił wiercenia.",Bez zmian.
+job.widow_bureau.line.2,"Otworzę tak, że nikt nie pozna. Mebel zostanie jego.",Postaram się otworzyć bez śladu. Mebel zostanie jego.,"Ostrożna, nieabsolutna obietnica."
+job.widow_bureau.line.3,Bilety do opery. Osiemdziesiąty siódmy.,Bilety do opery. Osiemdziesiąty siódmy.,Bez zmian.
+job.widow_bureau.line.4,"Mówił, że je zgubił. Trzymał je.","Mówił, że je zgubił. Trzymał je.",Bez zmian.
+job.widow_bureau.note,"Pani Irena, z polecenia pani Zosi. Sekretarzyk w jej domu, bez śladów. W środku bilety. Nie dopytywałem.","Pani Irena, z polecenia pani Zosi. Sekretarzyk w jej domu, bez śladów. W środku bilety. Nie dopytywałem.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.wrong_floor.after.1,"To pan wczoraj nie otworzył? Upiekłam drożdżowe. Za to, że pan nie otworzył.","To pan wczoraj nie otworzył? Upiekłam drożdżowe. Za to, że pan nie otworzył.",Bez zmian.
+job.wrong_floor.line.1,"Klucz nie wchodzi. Zamek się zepsuł, jak mnie nie było.","Klucz nie wchodzi. Zamek się zepsuł, jak mnie nie było.",Bez zmian.
+job.wrong_floor.line.2,"Panie Kazimierzu, na skrzynce jest inne nazwisko. I ten wieniec?","Panie Kazimierzu, na skrzynce jest inne nazwisko. I ten wieniec?",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.wrong_floor.line.3,Kto tam? Mieszkam tu dwanaście lat. Wieniec sama wiłam.,Kto tam? Mieszkam tu dwanaście lat. Wieniec sama wiłam.,Bez zmian.
+job.wrong_floor.line.4,"O, piętro wyżej klucz wchodzi. Naprawił pan.","O, piętro wyżej klucz wchodzi. Naprawił pan.",Bez zmian.
+job.wrong_floor.note,"Pan Kazimierz po imieninach. Drzwi piętro niżej. Nic nie otwierałem, a i tak się udało. Najlepsza robota tygodnia.","Pan Kazimierz po imieninach. Drzwi piętro niżej. Nic nie otwierałem, a i tak się udało. Najlepsza robota tygodnia.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.refuse.line,Tu nie otworzę. Mogę za to pomóc inaczej.,Tu nie otworzę. Mogę za to pomóc inaczej.,Bez zmian.
+notebook.rule.1,"Najpierw zapytaj, czyje to. Potem patrz na zamek.","Najpierw zapytaj, czyje to. Potem patrz na zamek.",Bez zmian.
+notebook.rule.2,Jeden papier to poszlaka. Dwa to rozmowa. Sąsiad to pewność.,Jeden papier to poszlaka. Dwa to rozmowa. Sąsiad też może się pomylić.,Świadek nie daje absolutnej pewności.
+notebook.rule.3,"Kto płaci za brak pytań, płaci za nie swoje drzwi.","Kto płaci za brak pytań, płaci za nie swoje drzwi.",Bez zmian.
+notebook.rule.4,Wycena przed robotą. Rachunek bez niespodzianek.,Wycena przed robotą. Rachunek bez niespodzianek.,Bez zmian.
+notebook.rule.5,"Co widziałem w środku, zostaje w środku.","Co widziałem w środku, zostaje w środku.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+tool.ob_loupe.name,Lupa zegarmistrzowska,Lupa zegarmistrzowska,Bez zmian.
+tool.ob_microscope.name,Mikroskop warsztatowy,Mikroskop warsztatowy,Bez zmian.
+tool.ob_borescope.name,Wziernik,Wziernik,Bez zmian.
+ach.achievement.first_set.name,Pierwszy klik,Pierwszy klik,Bez zmian.
+ach.achievement.first_set.desc,Uzyskaj pierwsze prawdziwe ustawienie poza samouczkiem.,Uzyskaj pierwsze prawdziwe ustawienie poza samouczkiem.,Bez zmian.
+ach.achievement.first_open.name,Drzwi otwarte,Drzwi otwarte,Bez zmian.
+ach.achievement.first_open.desc,Ukończ pierwszy zamek w Trybie Ciągłym.,Ukończ pierwszy zamek w trybie ciągłym.,Małe litery nazwy trybu w zdaniu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+ach.achievement.pin_school.name,Trzy lekcje,Trzy lekcje,Bez zmian.
+ach.achievement.pin_school.desc,Ukończ trzy lekcje wkładki bębenkowej.,Ukończ trzy lekcje wkładki bębenkowej.,Bez zmian.
+ach.achievement.wafer_school.name,Kolejna lekcja,Kolejna lekcja,Bez zmian.
+ach.achievement.wafer_school.desc,Ukończ trzy lekcje zamka płytkowego.,Ukończ trzy lekcje zamka płytkowego.,Bez zmian.
+ach.achievement.false_note.name,Dwa dźwięki,Dwa dźwięki,Bez zmian.
+ach.achievement.false_note.desc,Otwórz wkładkę po fałszywym ustawieniu.,Otwórz wkładkę po fałszywym ustawieniu.,Bez zmian.
+ach.achievement.after_drop.name,Od początku,Od początku,Bez zmian.
+ach.achievement.after_drop.desc,Otwórz po zrzucie bez złamania wytrycha.,Otwórz po zrzucie bez złamania wytrycha.,Bez zmian.
+ach.achievement.after_overset.name,Jest jeszcze czas,Jest jeszcze czas,Bez zmian.
+ach.achievement.after_overset.desc,Otwórz po przepchnięciu bez złamania wytrycha.,Otwórz po przepchnięciu bez złamania wytrycha.,Bez zmian.
+ach.achievement.counter_sense.name,Cicha rozmowa,Cicha rozmowa,Bez zmian.
+ach.achievement.counter_sense.desc,Ukończ zamek po wystąpieniu kontrrotacji.,Ukończ zamek po wystąpieniu kontrrotacji.,Bez zmian.
+ach.achievement.steel_warning.name,Usłyszany sygnał,Usłyszany sygnał,Bez zmian.
+ach.achievement.steel_warning.desc,Otwórz po ostrzeżeniu o naprężeniu bez złamania wytrycha.,Otwórz po ostrzeżeniu o naprężeniu bez złamania wytrycha.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+ach.achievement.clean_receipt.name,Bez śladów,Bez śladów,Bez zmian.
+ach.achievement.clean_receipt.desc,Zdobądź pieczątkę czystej pracy: bez zrzutów i złamań.,Zdobądź pieczątkę czystej pracy: bez zrzutów i złamań.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+ach.achievement.hard_clean.name,Trudny spokój,Trudny spokój,Bez zmian.
+ach.achievement.hard_clean.desc,Otwórz zamek poziomu 5 lub wyżej bez zrzutów i złamań.,Otwórz zamek poziomu 5 lub wyżej bez zrzutów i złamań.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+ach.achievement.pin_master.name,Mosiężna cierpliwość,Mosiężna cierpliwość,Bez zmian.
+ach.achievement.pin_master.desc,Ukończ piąty mistrzowski zamek bębenkowy bez złamania wytrycha.,Ukończ piąty mistrzowski zamek bębenkowy bez złamania wytrycha.,Bez zmian.
+ach.achievement.wafer_master.name,Ciche płytki,Ciche płytki,Bez zmian.
+ach.achievement.wafer_master.desc,Ukończ trzeci mistrzowski zamek płytkowy bez złamania wytrycha.,Ukończ trzeci mistrzowski zamek płytkowy bez złamania wytrycha.,Bez zmian.
+ach.achievement.wafer_clean.name,Nic nie opadło,Nic nie opadło,Bez zmian.
+ach.achievement.wafer_clean.desc,Otwórz zamek płytkowy bez zrzutów i złamań.,Otwórz zamek płytkowy bez zrzutów i złamań.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+ach.achievement.pin_plain.name,Uczciwy klik,Uczciwy klik,Bez zmian.
+ach.achievement.pin_plain.desc,Otwórz wkładkę poziomu 3 bez fałszywego ustawienia i przepchnięcia.,Otwórz wkładkę poziomu 3 bez fałszywego ustawienia i przepchnięcia.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+ach.achievement.first_gate.name,Cichy znak,Cichy znak,Bez zmian.
+ach.achievement.first_gate.desc,Otwórz zamek dźwigniowy po zgraniu bramki.,Otwórz zamek dźwigniowy po zgraniu bramki.,Bez zmian.
+ach.achievement.detector_return.name,Drugie podejście,Drugie podejście,Bez zmian.
+ach.achievement.detector_return.desc,Otwórz zamek z detektorem po jego uruchomieniu i skasowaniu.,Otwórz zamek z detektorem po uruchomieniu detektora i jego zresetowaniu.,Precyzyjna nazwa działania. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+ach.achievement.ring_false.name,Płytka obietnica,Płytka obietnica,Bez zmian.
+ach.achievement.ring_false.desc,Otwórz zamek pierścieniowy po fałszywym ustawieniu.,Otwórz zamek pierścieniowy po fałszywym ustawieniu.,Bez zmian.
+ach.achievement.wooden_creak.name,Stare drewno mówi,Stare drewno mówi,Bez zmian.
+ach.achievement.wooden_creak.desc,Otwórz drewniany zamek kołkowy po usłyszeniu skrzypienia.,Otwórz drewniany zamek kołkowy po usłyszeniu skrzypienia.,Bez zmian.
+ach.achievement.iron_no_drop.name,Żelazne drzwi,Żelazne drzwi,Bez zmian.
+ach.achievement.iron_no_drop.desc,Otwórz zamek zapadkowy bez zrzutu elementów.,Otwórz zamek zapadkowy bez zrzutu elementów.,Bez zmian.
+ach.achievement.lever_true.name,Bez złudzeń,Bez złudzeń,Bez zmian.
+ach.achievement.lever_true.desc,Otwórz zamek dźwigniowy bez fałszywych ustawień.,Otwórz zamek dźwigniowy bez fałszywych ustawień.,Bez zmian.
+ach.achievement.first_dark.name,Kiedy gaśnie światło,Kiedy gaśnie światło,Bez zmian.
+ach.achievement.first_dark.desc,Ukończ pierwszy zamek w trybie „w ciemności”.,Ukończ pierwszy zamek w trybie „w ciemności”.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+ach.achievement.dark_clean.name,Samym słuchem,Samym słuchem,Bez zmian.
+ach.achievement.dark_clean.desc,Otwórz zamek w ciemności bez zrzutu i złamania wytrycha.,Otwórz zamek w ciemności bez zrzutu i złamania wytrycha.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+ach.achievement.one_pick.name,Jeden w zwijce,Jeden w zwijce,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+ach.achievement.one_pick.desc,Ukończ wyzwanie „Jeden wytrych” bez jego złamania.,Ukończ wyzwanie „Jeden wytrych” bez jego złamania.,Bez zmian.
+ach.achievement.daily_lock.name,Dzisiejsze drzwi,Dzisiejsze drzwi,Bez zmian.
+ach.achievement.daily_lock.desc,Ukończ zamek dnia. Bez wymogu serii dni.,Ukończ zamek dnia. Nie musisz grać codziennie.,Czytelna wskazówka.
+ach.achievement.timed_care.name,"Szybko, nie pochopnie","Szybko, nie pochopnie",Bez zmian.
+ach.achievement.timed_care.desc,Ukończ wyzwanie na czas bez złamania wytrycha.,Ukończ wyzwanie na czas bez złamania wytrycha.,Bez zmian.
+ach.achievement.bench_stop.name,Pięć kresek,Pięć kresek,Bez zmian.
+ach.achievement.bench_stop.desc,Dotrzyj do pierwszego postoju w warsztacie w Trybie Ciągłym.,Dotrzyj do pierwszego postoju w warsztacie w trybie ciągłym.,Małe litery nazwy trybu w zdaniu. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+ach.achievement.tool_care.name,Dobra naprawa,Dobra naprawa,Bez zmian.
+ach.achievement.tool_care.desc,Po raz pierwszy napraw zużyte narzędzie w warsztacie.,Po raz pierwszy napraw zużyte narzędzie w warsztacie.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+ach.achievement.permission.name,Przed zamkiem,Przed zamkiem,Bez zmian.
+ach.achievement.permission.desc,Potwierdź prawo do wejścia przed pierwszym otwarciem na zleceniu.,Potwierdź prawo do wejścia przed pierwszym otwarciem na zleceniu.,Bez zmian.
+ach.achievement.witness.name,Ktoś potwierdzi,Ktoś potwierdzi,Bez zmian.
+ach.achievement.witness.desc,Ukończ zlecenie po potwierdzeniu prawa do lokalu przez świadka.,Ukończ zlecenie po potwierdzeniu prawa do lokalu przez świadka.,Bez zmian.
+ach.achievement.first_no.name,Właściwe nie,Właściwe nie,Bez zmian.
+ach.achievement.first_no.desc,"Odmów otwarcia, gdy nie potwierdzono prawa do lokalu.","Odmów otwarcia, gdy nie potwierdzono prawa do lokalu.",Bez zmian.
+ach.achievement.ex_partner.name,To nie te klucze,To nie te klucze,Bez zmian.
+ach.achievement.ex_partner.desc,Zakończ sprawę byłego partnera bez otwierania drzwi.,Zakończ sprawę byłego partnera bez otwierania drzwi.,Bez zmian.
+ach.achievement.bribe.name,Nie sprzedaję ciszy,Nie sprzedaję ciszy,Bez zmian.
+ach.achievement.bribe.desc,Odmów przyjęcia dopłaty za pominięcie weryfikacji.,Odmów przyjęcia dopłaty za pominięcie weryfikacji.,Bez zmian.
+ach.achievement.aunt_alive.name,Ciotka ma się dobrze,Ciotka ma się dobrze,Bez zmian.
+ach.achievement.aunt_alive.desc,Zakończ sprawę ciotki bez otwierania jej lokalu.,Zakończ sprawę ciotki bez otwierania jej lokalu.,Bez zmian.
+ach.achievement.wrong_floor.name,Właściwe piętro,Właściwe piętro,Bez zmian.
+ach.achievement.wrong_floor.desc,Rozwiąż pomyłkę pięter bez otwierania drzwi.,Rozwiąż pomyłkę pięter bez otwierania drzwi.,Bez zmian.
+ach.achievement.heirs.name,Wszyscy obecni,Wszyscy obecni,Bez zmian.
+ach.achievement.heirs.desc,Poczekaj na wszystkich uprawnionych spadkobierców przed otwarciem sejfu.,Poczekaj na wszystkich uprawnionych spadkobierców przed otwarciem sejfu.,Bez zmian.
+ach.achievement.partial_refusal.name,Tylko uzgodnione,Tylko uzgodnione,Bez zmian.
+ach.achievement.partial_refusal.desc,"Otwórz kasę klienta, ale odmów otwarcia cudzej kasetki.","Otwórz kasę klienta, ale odmów otwarcia cudzej kasetki.",Bez zmian.
+ach.achievement.museum_papers.name,W trzech egzemplarzach,W trzech egzemplarzach,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+ach.achievement.museum_papers.desc,Otwórz muzealny skarbiec po potwierdzeniu upoważnienia instytucji.,Otwórz muzealny skarbiec po potwierdzeniu upoważnienia instytucji.,Bez zmian.
+ach.achievement.kazimierz.name,Stara brama,Stara brama,Bez zmian.
+ach.achievement.kazimierz.desc,Ukończ zlecenie przy bramie na Kazimierzu po weryfikacji uprawnień.,Ukończ zlecenie przy bramie na Kazimierzu po weryfikacji uprawnień.,Bez zmian.
+ach.achievement.capsule.name,Ostatnia strona,Ostatnia strona,Bez zmian.
+ach.achievement.capsule.desc,Otwórz szkolną kapsułę czasu za zgodą szkoły.,Otwórz szkolną kapsułę czasu za zgodą szkoły.,Bez zmian.
+tip.ethics_01,"Najpierw zapytaj, czyje to drzwi. Mechanizm poczeka.","Najpierw zapytaj, czyje to drzwi. Mechanizm poczeka.",Bez zmian.
+tip.ethics_02,Brak dokumentów nie czyni nikogo złym. Nie daje też prawa do wejścia.,Brak dokumentów nie czyni nikogo złym. Nie daje też prawa do wejścia.,Bez zmian.
+tip.ethics_03,"Gdy ktoś się śpieszy, pytania są jeszcze ważniejsze.","Gdy ktoś się śpieszy, pytania są jeszcze ważniejsze.",Bez zmian.
+tip.ethics_04,Grzeczna odmowa to część zawodu. Niektóre drzwi muszą zostać zamknięte.,Grzeczna odmowa to część zawodu. Niektóre drzwi muszą zostać zamknięte.,Bez zmian.
+tip.ethics_05,Dopłata nie zastępuje zgody lokatora.,Dopłata nie zastępuje zgody lokatora.,Bez zmian.
+tip.ethics_06,Głośne tłumaczenie nadal nie jest dowodem prawa do wejścia.,Głośne tłumaczenie nadal nie jest dowodem prawa do wejścia.,Bez zmian.
+tip.ethics_07,"Gdy historia się nie zgadza, zaproponuj telefon do zarządcy.","Gdy historia się nie zgadza, zaproponuj telefon do zarządcy.",Bez zmian.
+tip.ethics_08,"Spadek wymaga dokumentów i uprawnionych osób, nie niecierpliwej ręki.","W sprawach spadkowych liczą się dokumenty i uprawnieni, nie pośpiech.",Naturalniejsza polszczyzna. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+tip.ethics_09,"Przyszedłem do zamka, nie do zawartości cudzego mieszkania.","Przyszedłem do zamka, nie do zawartości cudzego mieszkania.",Bez zmian.
+tip.ethics_10,Cenę uzgodnij wcześniej. Niespodzianki niech robi czajnik.,Cenę uzgodnij wcześniej. Niespodzianki niech robi czajnik.,Bez zmian.
+tip.feel_01,Jasny pojedynczy klik i głuchy podwójny opowiadają inne historie.,Jasny pojedynczy klik i głuchy podwójny opowiadają inne historie.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+tip.feel_02,"Rdzeń ma własne pismo: mały obrót, większy obrót, powrót.","Rdzeń ma własne pismo: mały obrót, większy obrót, powrót.",Bez zmian.
+tip.feel_03,Cisza też jest dźwiękiem. Zwłaszcza po tępym stuknięciu.,Cisza też jest dźwiękiem. Zwłaszcza po tępym stuknięciu.,Bez zmian.
+tip.feel_04,"Sprężyna może narzekać, choć nic się nie zepsuło. Ja też.","Sprężyna może narzekać, choć nic się nie zepsuło. Ja też.",Bez zmian.
+tip.feel_05,"Narastający jęk metalu to ostrzeżenie, nie fanfary zwycięstwa.","Narastający jęk metalu to ostrzeżenie, nie fanfary zwycięstwa.",Bez zmian.
+tip.feel_06,Pewny klik jest krótki. Ten wątpliwy ma echo.,Pewny klik jest krótki. Ten wątpliwy ma echo.,Bez zmian.
+tip.feel_07,"Gdy rdzeń się cofa, nadal bierze udział w rozmowie.","Gdy rdzeń się cofa, nadal bierze udział w rozmowie.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+tip.feel_08,"Trzy kreski tarcia to w tej grze znak, nie ocena w dzienniku.","Trzy kreski tarcia to w tej grze znak, nie ocena w dzienniku.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+tip.feel_09,"Obrys bywa przerywany, choć narzędzie pozostaje całe.","Obrys bywa przerywany, choć narzędzie pozostaje całe.",Bez zmian.
+tip.feel_10,Mały klin prześwitu mówi więcej niż cała strona liczb.,Zwężający się klin szczeliny mówi więcej niż cała strona liczb.,Terminologia z DESIGN.
+tip.feel_11,Elementy tej gry mówią ruchem równie wyraźnie jak dźwiękiem.,Elementy tej gry mówią ruchem równie wyraźnie jak dźwiękiem.,Bez zmian.
+tip.feel_12,Kaskada opadających części przypomina deszcz na dachu warsztatu.,Kaskada opadających części przypomina deszcz na dachu warsztatu.,Bez zmian.
+tip.feel_13,Prawdziwe ustawienie to jedna nuta. Fałszywe upiera się przy duecie.,Prawdziwe ustawienie to jedna nuta. Fałszywe upiera się przy duecie.,Bez zmian.
+tip.feel_14,"Niektóre mechanizmy mówią cicho. Nie znaczy to, że są proste.","Niektóre mechanizmy mówią cicho. Nie znaczy to, że są proste.",Bez zmian.
+tip.feel_15,"Końcowy szczęk rygla to jedyne oklaski, jakich potrzebuję.","Końcowy szczęk rygla to jedyne oklaski, jakich potrzebuję.",Bez zmian.
+tip.workshop_01,Skórzana zwijka nie kłamie. Pusta kieszeń jest pusta.,Skórzana zwijka nie kłamie. Pusta kieszeń jest pusta.,Bez zmian.
+tip.workshop_02,Narzędzia pamiętają każdy dyżur. Po pracy obejrzyj ich krawędzie.,Narzędzia pamiętają każdy dyżur. Po pracy obejrzyj ich krawędzie.,Bez zmian.
+tip.workshop_03,Porządny blat nie robi ze mnie geniusza. Pozwala znaleźć ołówek.,Porządny blat nie robi ze mnie geniusza. Pozwala znaleźć ołówek.,Bez zmian.
+tip.workshop_04,Pięć kresek na kartce dyżuru oznacza powrót do warsztatu.,Pięć kresek na kartce dyżuru oznacza powrót do warsztatu.,Bez zmian.
+tip.workshop_05,Zeszyt pamięta zlecenie lepiej niż monety.,Zeszyt pamięta zlecenie lepiej niż monety.,Bez zmian.
+tip.workshop_06,Naprawa narzędzia to nie wstyd. Zapomnienie o przeglądzie już tak.,Naprawa narzędzia to nie wstyd. Zapomnienie o przeglądzie już tak.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+tip.workshop_07,"Rachunek to mała obietnica. Zapisana ołówkiem, zachowana na dłużej.","Rachunek to mała obietnica. Zapisana ołówkiem, zachowana na dłużej.",Bez zmian.
+tip.workshop_08,Zostawiłem starą emaliowaną tabliczkę. Nadal zna drogę do domu.,Zostawiłem starą emaliowaną tabliczkę. Nadal zna drogę do domu.,Bez zmian.
+tip.workshop_09,Czasem najlepszą pamiątką jest zlecenie bez jednej rysy.,Czasem najlepszą pamiątką jest zlecenie bez jednej rysy.,Bez zmian.
+tip.dark_01,"Gdy gaśnie światło na klatce, dźwięki mają więcej miejsca.","Gdy gaśnie światło na klatce, dźwięki mają więcej miejsca.",Bez zmian.
+tip.dark_02,"Ciemność zmienia sposób słuchania, nie zasady gry.","Ciemność zmienia sposób słuchania, nie zasady gry.",Bez zmian.
+tip.dark_03,Najcichszy dźwięk nie zawsze jest najmniej ważny.,Najcichszy dźwięk nie zawsze jest najmniej ważny.,Bez zmian.
+tip.dark_04,"Obrazu nie ma, ale mechanizm nadal ma swój rytm.","Obrazu nie ma, ale mechanizm nadal ma swój rytm.",Bez zmian.
+tip.dark_05,Pracowałem w ciemnych korytarzach. Czajnik i tak mnie potem znajdował.,Pracowałem w ciemnych korytarzach. Czajnik i tak mnie potem znajdował.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+tip.dark_06,"Podwójny klik pozostaje podwójny, nawet gdy nikt go nie widzi.","Podwójny klik pozostaje podwójny, nawet gdy nikt go nie widzi.",Bez zmian.
+tip.dark_07,"Cisza nie jest pusta. Posłuchaj, jak długo trwa.","Cisza nie jest pusta. Posłuchaj, jak długo trwa.",Bez zmian.
+tip.dark_08,Możesz zapalić światło. Za zmęczone oczy nie dają medali.,Możesz zapalić światło. Za zmęczone oczy nie dają medali.,Bez zmian.
+tip.people_01,"Pani Halina czeka. Rosół też, a ma mniej cierpliwości.","Pani Halina czeka. Rosół też, a ma mniej cierpliwości.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+tip.people_02,Zeznania kota rzadko pomagają. Zapytaj właściciela.,Zeznania kota rzadko pomagają. Zapytaj właściciela.,Bez zmian.
+tip.people_03,Sąsiad bywa najlepszym wyposażeniem kamienicy.,Sąsiad bywa najlepszym wyposażeniem kamienicy.,Bez zmian.
+tip.people_04,"Winda znowu nie działa. Dobrze, że schody jeszcze pracują.","Winda znowu nie działa. Dobrze, że schody jeszcze pracują.",Bez zmian.
+tip.people_05,Grzeczne „dzień dobry” otwiera więcej rozmów niż narzędzia.,Grzeczne „dzień dobry” otwiera więcej rozmów niż narzędzia.,Bez zmian.
+tip.people_06,Moja praca kończy się na progu. Cudze historie idą dalej.,Moja praca kończy się na progu. Cudze historie idą dalej.,Bez zmian.
+tip.people_07,"Zmęczona pielęgniarka potrzebuje spokojnej klatki, nie przemowy.","Zmęczona pielęgniarka potrzebuje spokojnej klatki, nie przemowy.",Bez zmian.
+tip.people_08,Każde drzwi mają dwie strony. Pamiętaj o człowieku po drugiej.,Każde drzwi mają dwie strony. Pamiętaj o człowieku po drugiej.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+tip.calm_01,Tempo pomaga. Pośpiech zazwyczaj tylko bardziej hałasuje.,Tempo pomaga. Pośpiech zazwyczaj tylko bardziej hałasuje.,Bez zmian.
+tip.calm_02,Jeden błąd czegoś mnie uczy. Cztery każą nastawić herbatę.,Jeden błąd czegoś mnie uczy. Cztery każą nastawić herbatę.,Bez zmian.
+tip.calm_03,Obolały kciuk nie jest powodem do bohaterstwa.,Obolały kciuk nie jest powodem do bohaterstwa.,Bez zmian.
+tip.calm_04,"To gra uważności, nie konkurs na najmocniejszy chwyt.","To gra uważności, nie konkurs na najmocniejszy chwyt.",Bez zmian.
+tip.calm_05,Krótka pauza kosztuje mniej niż złamane narzędzie.,Krótka pauza kosztuje mniej niż złamane narzędzie.,Bez zmian.
+tip.calm_06,Cichy sukces też się liczy. Publiczność nie jest potrzebna.,Cichy sukces też się liczy. Publiczność nie jest potrzebna.,Bez zmian.
+tip.calm_07,"Najlepsze dyżury kończyły się czystym blatem, nie dramatem.","Najlepsze dyżury kończyły się czystym blatem, nie dramatem.",Bez zmian.
+tip.calm_08,Uparte drzwi nie obrażają cię osobiście. Sprawdzałem.,Uparte drzwi nie obrażają cię osobiście. Sprawdzałem.,Bez zmian.
+tip.calm_09,"Dobre ręce są cierpliwe. Wiedzą też, kiedy przestać.","Dobre ręce są cierpliwe. Wiedzą też, kiedy przestać.",Bez zmian.
+tip.calm_10,Po pracy pozwól ludziom wrócić do swojego dnia.,Po pracy pozwól ludziom wrócić do swojego dnia.,Bez zmian.
+notebook.extra.false_set_streak,Trzy głuche podwójne kliknięcia z rzędu. Zapisałem je. Brzmiały na zadowolone z siebie.,Trzy głuche podwójne kliknięcia z rzędu. Zapisałem je. Brzmiały na zadowolone z siebie.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.counter_reply,Rdzeń się cofnął. Wysłuchałem jego zdania i skończyłem pracę bez kłótni.,Rdzeń się cofnął. Wysłuchałem jego zdania i skończyłem pracę bez kłótni.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.overset_twice,Dwa tępe stuknięcia. Udało się skończyć. Zeszyt dostał wersję uprzejmą.,Dwa tępe stuknięcia. Zamek w końcu ustąpił. Zeszyt dostał wersję uprzejmą.,Mniej ogólna puenta. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.three_drops,"Trzy małe lawiny, jedne otwarte drzwi. Hałasu wystarczyło mi na dziś.","Trzy małe lawiny, jedne otwarte drzwi. Hałasu wystarczyło mi na dziś.",Bez zmian.
+notebook.extra.drop_then_set,"Wszystko opadło, potem wrócił jeden czysty klik. Ucieszyło mnie drugie zdanie.","Wszystko opadło, potem wrócił jeden czysty klik. Ucieszyło mnie drugie zdanie.",Bez zmian.
+notebook.extra.stress_no_break,Metal narzekał dwa razy. Posłuchałem. Narzędzie wróciło w jednym kawałku.,Metal narzekał dwa razy. Posłuchałem. Narzędzie wróciło w jednym kawałku.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.one_break,Jeden złamany wytrych na blacie. Drzwi otwarte. Nie tak lubię bilansować dyżur.,Jeden złamany wytrych na blacie. Drzwi otwarte. Nie tak lubię bilansować dyżur.,Bez zmian.
+notebook.extra.two_breaks,"Dwa złamane wytrychy i otwarte drzwi. Do domu niosłem mniej, niż przyniosłem.","Dwa złamane wytrychy i otwarte drzwi. Do domu niosłem mniej, niż przyniosłem.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.near_shear,"Cztery ciche zwężenia przed szczękiem rygla. Już miałem prosić zamek, by mówił głośniej.","Cztery ciche zwężenia przed szczękiem rygla. Już miałem prosić zamek, by mówił głośniej.",Bez zmian.
+notebook.extra.false_without_drop,"Dwie fałszywe obietnice, nic nie opadło. Drzwi otworzyły się bez przemowy.","Dwie fałszywe obietnice, nic nie opadło. Drzwi otworzyły się bez przemowy.",Bez zmian.
+notebook.extra.dark_double,"W ciemności usłyszałem podwójny klik. Zapisałem dźwięk, nie domysł.","W ciemności usłyszałem podwójny klik. Zapisałem dźwięk, nie domysł.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.dark_drop,"W ciemności coś opadło. Rozpoznałem odgłos, zanim zobaczyłem pustkę.","W ciemności coś opadło. Rozpoznałem odgłos, zanim zobaczyłem pustkę.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.dark_failed,Światło wróciło przed otwarciem drzwi. Zebrałem metal i zamknąłem zeszyt.,Światło wróciło przed otwarciem drzwi. Odłożyłem narzędzia i zamknąłem zeszyt.,Jednoznaczna czynność. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.dark_clean,"Bez światła, bez zrzutów, bez złamania. Rachunek wyglądał podejrzanie schludnie.","Bez światła, bez zrzutów, bez złamania. Rachunek wyglądał podejrzanie schludnie.",Bez zmian.
+notebook.extra.serrations,Dwa małe tyknięcia bez obrotu. Zdarzało mi się zapisać głośniejsze rzeczy bez powodu.,Dwa małe tyknięcia bez obrotu. Zdarzało mi się zapisać głośniejsze rzeczy bez powodu.,Bez zmian.
+notebook.extra.spring_bounce,Sprężyny zadźwięczały trzy razy. Stary mechanizm wciąż umie narzekać.,Sprężyny zadźwięczały trzy razy. Stary mechanizm wciąż umie narzekać.,Bez zmian.
+notebook.extra.wafer_rattle,Płytki grzechotały jak sztućce w szufladzie. Drzwi w końcu się otworzyły.,Płytki grzechotały jak sztućce w szufladzie. Drzwi w końcu się otworzyły.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.wafer_overset,"Tępy stuk płytek, a po nim żadnej kaskady. Odnotowałem tę różnicę.","Tępy stuk płytek, a po nim żadnej kaskady. Odnotowałem tę różnicę.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.wood_creak,Drewniane kołki skrzypnęły dwa razy. Postanowiłem nie porównywać ich z krzesłem w warsztacie.,Drewniane kołki skrzypnęły dwa razy. Postanowiłem nie porównywać ich z krzesłem w warsztacie.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.ward_scrapes,"Trzy szorstkie zgrzyty żelaza. Zapisałem dźwięk, a historię zostawiłem muzeum.","Trzy szorstkie zgrzyty żelaza. Zapisałem dźwięk, a historię zostawiłem muzeum.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.lever_false,Dźwignie dwa razy odpowiedziały zbyt płytko. Żadna odpowiedź nie była ostatnia.,Dźwignie dwa razy odpowiedziały zbyt płytko. Żadna odpowiedź nie była ostatnia.,Bez zmian.
+notebook.extra.lever_clear,Każda bramka zabrzmiała czysto. Rachunek nie wymagał wyjaśnień.,Każda bramka zabrzmiała czysto. Rachunek nie wymagał wyjaśnień.,Bez zmian.
+notebook.extra.detector_reset,"Detektor zatrzymał pracę, a potem odpuścił. Policzyłem oba dźwięki.","Detektor zatrzymał pracę, a potem odpuścił. Policzyłem oba dźwięki.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.detector_failed,Detektor miał ostatnie słowo. Zostawiłem mechanizm w spokoju i zapisałem wynik.,Detektor miał ostatnie słowo. Zostawiłem mechanizm w spokoju i zapisałem wynik.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.ring_clicks,Sześć drobnych kliknięć pierścieni. Jedna otwarta kłódka. Na klatce znów zapadła cisza.,Sześć drobnych kliknięć pierścieni. Jedna otwarta kłódka. Na klatce znów zapadła cisza.,Bez zmian.
+notebook.extra.ring_false,Pierścienie dwa razy dały płytkie nacięcie. Notatkę skróciłem. One się nie spieszyły.,Pierścienie dwa razy zatrzymały się na fałszywym wycięciu. Notatkę skróciłem. One się nie spieszyły.,Naturalna nazwa stanu.
+notebook.extra.gates_many,Trzy zgrane bramki podczas jednego zlecenia. Mały koncert bez bisu.,Trzy zgrane bramki podczas jednego zlecenia. Mały koncert bez bisu.,Bez zmian.
+notebook.extra.mixed_recovery,"Tępy stuk, kaskada, a potem otwarte drzwi. Zapisałem kolejność.","Tępy stuk, kaskada, a potem otwarte drzwi. Zapisałem kolejność.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+notebook.extra.worn_but_whole,"Narzędzie zrobiło się szorstkie, lecz nie pękło. Przy rachunku zaznaczyłem naprawę.","Narzędzie zrobiło się szorstkie, lecz nie pękło. Przy rachunku zaznaczyłem naprawę.",Bez zmian.
+notebook.extra.roll_empty,Trzeci wytrych pękł. Zwinąłem pustą skórzaną zwijkę i skończyłem dyżur.,Trzeci wytrych pękł. Zwinąłem pustą skórzaną zwijkę i skończyłem dyżur.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+cast.basia.name,Basia,Basia,Bez zmian.
+cast.elzbieta.name,"Elżbieta, zarządczyni","Elżbieta, zarządczyni",Bez zmian.
+cast.marcel.name,Marcel,Marcel,Bez zmian.
+cast.norbert.name,Norbert,Norbert,Bez zmian.
+job.community_notice_case.client,"Basia, sekretarka komitetu mieszkańców, z zarządczynią Elżbietą.","Basia, sekretarka komitetu mieszkańców, z zarządczynią Elżbietą.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.community_notice_case.line.1,Dyżury gotowe. Tylko gablota odmawia współpracy.,Dyżury gotowe. Tylko gablota odmawia współpracy.,Bez zmian.
+job.community_notice_case.line.2,Zarządzam tą kamienicą. Tu jest podpisana uchwała wspólnoty.,Zarządzam tą kamienicą. Tu jest podpisana uchwała wspólnoty.,Bez zmian.
+job.community_notice_case.line.3,Zgoda i cena ustalone. Otworzę wspólną gablotę.,Zgoda i cena ustalone. Otworzę wspólną gablotę.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.community_notice_case.line.4,Pierwsza kartka: dyżur odkurzania. Mocny początek.,Pierwsza kartka: dyżur odkurzania. Mocny początek.,Bez zmian.
+job.community_notice_case.note,"Śródmieście, wspólna gablota. Zarządczyni i uchwała; dyżury już wiszą.","Śródmieście, wspólna gablota. Zarządczyni i uchwała; dyżury już wiszą.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.community_notice_case.situation,Wspólna gablota na klatce nie otwiera się. Mieszkańcy chcą powiesić dyżury do nowej świetlicy.,Wspólna gablota na klatce się nie otwiera. Mieszkańcy chcą wywiesić w niej grafik dyżurów nowej świetlicy.,Poprawa kolokacji i jednoznaczności. Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.community_notice_case.title,Gablota ogłoszeń,Gablota ogłoszeń,Bez zmian.
+job.edek_rehearsal_store.client,"Pan Edek, portier akademika, i Iga ze studenckiego zespołu.","Pan Edek, portier akademika, i Iga ze studenckiego zespołu.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.edek_rehearsal_store.line.1,Magazynek mam na liście. Został po starym teatrze.,Magazynek mam na liście. Został po starym teatrze.,Bez zmian.
+job.edek_rehearsal_store.line.2,Pożyczamy krzesła. Bębnów tym razem nikt nie zamawiał.,Pożyczamy krzesła. Bębnów tym razem nikt nie zamawiał.,Bez zmian.
+job.edek_rehearsal_store.line.3,Pańska lista i pismo uczelni się zgadzają. Cena też.,Pańska lista i pismo uczelni się zgadzają. Cena też.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.edek_rehearsal_store.line.4,Dobrze. Oby krzesła lepiej trzymały rytm niż zespół.,Dobrze. Oby krzesła lepiej trzymały rytm niż zespół.,Bez zmian.
+job.edek_rehearsal_store.note,"Kampus, magazynek teatralny. Edek i zgoda uczelni; krzesła pożyczone na zebranie.","Kampus, magazynek teatralny. Edek i zgoda uczelni; krzesła pożyczone na zebranie.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.edek_rehearsal_store.situation,W starym magazynku teatralnym na kampusie są krzesła obiecane na zebranie mieszkańców. Uczelnia zgodziła się je wypożyczyć.,W starym magazynku teatralnym na kampusie są krzesła obiecane na zebranie mieszkańców. Uczelnia zgodziła się je wypożyczyć.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.edek_rehearsal_store.title,Krzesła na próbę,Krzesła na próbę,Bez zmian.
+job.gosia_workbench_drawer.client,"Gosia, 36 lat, renowatorka mebli z pracownią przy porcie.","Gosia, 36 lat, renowatorka mebli z pracownią przy porcie.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.gosia_workbench_drawer.line.1,Kupiłam cały stół. Szuflada nie uznaje faktury.,Kupiłam cały stół. Szuflada nie uznaje faktury.,Bez zmian.
+job.gosia_workbench_drawer.line.2,"Faktura, zdjęcie odbioru, ustalona cena. Wszystko się zgadza.","Faktura, zdjęcie odbioru, ustalona cena. Wszystko się zgadza.",Bez zmian.
+job.gosia_workbench_drawer.line.3,Proszę bez śladów. Stół pojedzie do świetlicy.,Proszę bez śladów. Stół pojedzie do świetlicy.,Bez zmian.
+job.gosia_workbench_drawer.line.4,Zgoda. Dla odmiany papiery dotarły przede mną.,Zgoda. Dla odmiany papiery dotarły przede mną.,Bez zmian.
+job.gosia_workbench_drawer.note,"Gosia, szuflada stołu. Faktura i zdjęcie odbioru; stół pojedzie do świetlicy bez śladów.","Gosia, szuflada stołu. Faktura i zdjęcie odbioru; stół pojedzie do świetlicy bez śladów.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.gosia_workbench_drawer.situation,Gosia kupiła stary stół warsztatowy z zamkniętą szufladą. Chce oddać go do świetlicy bez uszkodzenia drewna.,Gosia kupiła stary stół warsztatowy z zamkniętą szufladą. Chce oddać go do świetlicy bez uszkodzenia drewna.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.gosia_workbench_drawer.title,Szuflada stołu,Szuflada stołu,Bez zmian.
+job.halina_recipe_box.client,"Pani Halina, 81 lat, z sąsiadką panią Zosią.","Pani Halina, 81 lat, z sąsiadką panią Zosią.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.halina_recipe_box.line.1,W środku jest przepis na kluski. Pamiętam tylko słowo „garść”.,W środku jest przepis na kluski. Pamiętam tylko słowo „garść”.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.halina_recipe_box.line.2,To skrzynka Haliny. Na zdjęciu stoi obok jej kubka.,To skrzynka Haliny. Na zdjęciu stoi obok jej kubka.,Bez zmian.
+job.halina_recipe_box.line.3,"Zdjęcie, świadek, ustalona cena. Możemy zaczynać.","Zdjęcie, świadek, ustalona cena. Możemy zaczynać.",Bez zmian.
+job.halina_recipe_box.line.4,"Potem ustalimy, ile waży garść. To nasz stary spór.","Potem ustalimy, ile waży garść. To nasz stary spór.",Bez zmian.
+job.halina_recipe_box.note,"Halina, skrzynka z przepisami. Zdjęcie i słowo Zosi. Cena przyjęta; spór o garść trwa.","Halina, skrzynka z przepisami. Zdjęcie i słowo Zosi. Cena przyjęta; spór o garść trwa.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.halina_recipe_box.situation,Halina chce przynieść do nowej świetlicy przepis na kluski. Klucz do skrzynki zaginął; Zosia ma jej zdjęcie.,Halina chce przynieść do nowej świetlicy przepis na kluski. Klucz do skrzynki zaginął; Zosia ma zdjęcie tej skrzynki.,Wyjaśnienie zaimka.
+job.halina_recipe_box.title,Skrzynka pełna garści,Skrzynka pełna garści,Bez zmian.
+job.krystyna_wooden_album.client,"Pani Krystyna i jej córka Ola, które wybierają rodzinne zdjęcia.","Pani Krystyna i jej córka Ola, które wybierają rodzinne zdjęcia.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krystyna_wooden_album.line.1,Józef zrobił tę skrzynkę. Kluczyk chyba też był drewniany.,Józef zrobił tę skrzynkę. Kluczyk chyba też był drewniany.,Bez zmian.
+job.krystyna_wooden_album.line.2,"Mamy zdjęcie, jak ją trzyma. A skrzynka stoi u mamy.","Mamy zdjęcie, jak ją trzyma. A skrzynka stoi u mamy.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krystyna_wooden_album.line.3,Zdjęcie i słowo córki wystarczą. Zapiszę cenę.,Zdjęcie i słowo córki wystarczą. Zapiszę cenę.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krystyna_wooden_album.line.4,"Dobrze. Tylko niech pan nie pyta, co wtedy nosiliśmy.","Dobrze. Tylko niech pan nie pyta, co wtedy nosiliśmy.",Bez zmian.
+job.krystyna_wooden_album.note,Drewniana skrzynka Krystyny. Zdjęcie rodzinne i słowo Oli; odbitki wybrały same.,Drewniana skrzynka Krystyny. Zdjęcie rodzinne i słowo Oli; odbitki wybrały same.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krystyna_wooden_album.situation,"Ojciec Krystyny, Józef, zrobił skrzynkę z drewnianą zasuwą. Rodzina chce wypożyczyć kilka odbitek do świetlicy.","Ojciec Krystyny, Józef, zrobił skrzynkę z drewnianą zasuwą. Rodzina chce wypożyczyć kilka odbitek do świetlicy.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.krystyna_wooden_album.title,Skrzynka na zdjęcia Józefa,Skrzynka na zdjęcia Józefa,Bez zmian.
+job.marta_poster_studio.client,"Marta, 34 lata, graficzka; nad pracą czuwa kot Ziemniak.","Marta, 34 lata, graficzka; nad pracą czuwa kot Ziemniak.",Bez zmian.
+job.marta_poster_studio.line.1,Plakaty są w środku. Ziemniak pilnuje ich z niewłaściwej strony.,Plakaty są w środku. Ziemniak pilnuje ich z niewłaściwej strony.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.marta_poster_studio.line.2,"Umowa się zgadza. Sąsiadka potwierdza, że to pani pracownia.","Umowa się zgadza. Sąsiadka potwierdza, że to pani pracownia.",Bez zmian.
+job.marta_poster_studio.line.3,Kot niczego nie podpisze. Ma surową politykę prywatności.,Kot niczego nie podpisze. Ma surową politykę prywatności.,Bez zmian.
+job.marta_poster_studio.line.4,"Nie musi. Cena uzgodniona, dokumenty wystarczą.","Nie musi. Cena uzgodniona, dokumenty wystarczą.",Bez zmian.
+job.marta_poster_studio.note,Pracownia Marty. Umowa i sąsiadka; plakaty odebrane. Ziemniak odmówił komentarza.,Pracownia Marty. Umowa i sąsiadka; plakaty odebrane. Ziemniak odmówił komentarza.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.marta_poster_studio.situation,"Plakaty do świetlicy zostały w wynajętej pracowni Marty. Klucz jest w środku, razem z odbitkami i kotem.","Plakaty do świetlicy zostały w wynajętej pracowni Marty. Klucz jest w środku, razem z odbitkami i kotem.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.marta_poster_studio.title,Plakaty za drzwiami,Plakaty za drzwiami,Bez zmian.
+job.refuse_sisters_flat.after.1,"Rozmawiałam z lokatorką. Poprosiła, żeby zaczekać na jej powrót.","Rozmawiałam z lokatorką. Poprosiła, żeby zaczekać na jej powrót.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_sisters_flat.client,"Norbert, 43 lata, martwi się o kwiaty siostry.","Norbert, 43 lata, martwi się o kwiaty siostry.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_sisters_flat.line.1,"Siostra wyjechała. Kwiaty uschną, a ona nie odbiera.","Siostra wyjechała. Kwiaty uschną, a ona nie odbiera.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_sisters_flat.line.2,Możemy poczekać na jej zgodę albo zadzwonić do zarządcy.,Możemy poczekać na jej zgodę albo zadzwonić do zarządcy.,Bez zmian.
+job.refuse_sisters_flat.line.3,Wolałbym nie mieszać sąsiadów. To przecież tylko kwiaty.,Wolałbym nie mieszać sąsiadów. To przecież tylko kwiaty.,Bez zmian.
+job.refuse_sisters_flat.line.4,Bez jej zgody nie otworzę. Tu jest numer do zarządcy.,Bez jej zgody nie otworzę. Tu jest numer do zarządcy.,Bez zmian.
+job.refuse_sisters_flat.note,Nie otworzyłem mieszkania siostry Norberta. Brak zgody lokatorki; podałem numer zarządcy.,Nie otworzyłem mieszkania siostry Norberta. Brak zgody lokatorki; podałem numer zarządcy.,Bez zmian.
+job.refuse_sisters_flat.situation,"Siostra Norberta wyjechała i nie odbiera. Brat chce podlać jej kwiaty, ale nie ma potwierdzenia zgody na wejście.","Siostra Norberta wyjechała i nie odbiera. Brat chce podlać jej kwiaty, ale nie ma potwierdzenia zgody na wejście.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_sisters_flat.title,Kwiaty za zamkniętymi drzwiami,Kwiaty za zamkniętymi drzwiami,Bez zmian.
+job.refuse_unapproved_stockroom.after.1,Paczki odebrano rano. Sklep ma teraz lepsze godziny dostaw.,Paczki odebrano rano. Sklep ma teraz lepsze godziny dostaw.,Bez zmian.
+job.refuse_unapproved_stockroom.client,"Marcel, 29 lat, kurier z wózkiem paczek.","Marcel, 29 lat, kurier z wózkiem paczek.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_unapproved_stockroom.line.1,Dostawa stoi na wózku. Właściciel sklepu nie odbiera.,Dostawa stoi na wózku. Właściciel sklepu nie odbiera.,Bez zmian.
+job.refuse_unapproved_stockroom.line.2,List przewozowy nie daje zgody na wejście do sklepu.,List przewozowy nie daje zgody na wejście do sklepu.,Bez zmian.
+job.refuse_unapproved_stockroom.line.3,"Może pan tylko uchyli drzwi, żebym zostawił paczki?","Może pan tylko uchyli drzwi, żebym zostawił paczki?",Bez zmian.
+job.refuse_unapproved_stockroom.line.4,Bez zgody nie otworzę. Ustalmy bezpieczny odbiór paczek.,Bez zgody nie otworzę. Ustalmy bezpieczny odbiór paczek.,Bez zmian.
+job.refuse_unapproved_stockroom.note,"Nocny Rynek, magazyn sklepu. List przewozowy bez zgody; paczki odebrane rano.","Nocny Rynek, magazyn sklepu. List przewozowy bez zgody; paczki odebrane rano.",Bez zmian.
+job.refuse_unapproved_stockroom.situation,"Sklep na Nocnym Rynku jest zamknięty. Marcel prosi o otwarcie magazynu na paczki, ale właściciel nie udzielił zgody.","Sklep na Nocnym Rynku jest zamknięty. Marcel prosi o otwarcie magazynu na paczki, ale właściciel nie udzielił zgody.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.refuse_unapproved_stockroom.title,Dostawa po zamknięciu,Dostawa po zamknięciu,Bez zmian.
+job.roman_service_cupboard.client,"Pan Roman, 58 lat, administrator bloków na osiedlu.","Pan Roman, 58 lat, administrator bloków na osiedlu.",Bez zmian.
+job.roman_service_cupboard.line.1,Wspólnota oddała stare numerki. Szafki nikt nie poinformował.,Wspólnota oddała stare numerki. Szafki nikt nie poinformował.,Bez zmian.
+job.roman_service_cupboard.line.2,Jest pańska lista i uchwała wspólnoty. Cenę uzgodniliśmy.,Jest pańska lista i uchwała wspólnoty. Cenę uzgodniliśmy.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.roman_service_cupboard.line.3,Tylko ostrożnie. To jedyne numerki bez literówek.,Tylko ostrożnie. To jedyne numerki bez literówek.,Bez zmian.
+job.roman_service_cupboard.line.4,O emalię zadbam. Za ortografię w protokole nie ręczę.,O emalię zadbam. Za ortografię w protokole nie ręczę.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.roman_service_cupboard.note,"Osiedle, szafka konserwacyjna. Roman i uchwała wspólnoty; numerki jadą do świetlicy.","Osiedle, szafka konserwacyjna. Roman i uchwała wspólnoty; numerki jadą do świetlicy.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.roman_service_cupboard.situation,Mieszkańcy przekazali do świetlicy stare emaliowane numerki. Szafka konserwacyjna pozostała zamknięta.,Mieszkańcy przekazali do świetlicy stare emaliowane numerki. Szafka konserwacyjna pozostała zamknięta.,Bez zmian.
+job.roman_service_cupboard.title,Szafka na klatce,Szafka na klatce,Bez zmian.
+job.shared_room_door.after.1,Na pierwszym zebraniu nikt nie zgubił klucza. To dobry początek.,Na pierwszym zebraniu nikt nie zgubił klucza. To dobry początek.,Bez zmian.
+job.shared_room_door.client,"Elżbieta, zarządczyni kamienicy, z Martą i panią Haliną.","Elżbieta, zarządczyni kamienicy, z Martą i panią Haliną.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.shared_room_door.line.1,Uchwała i lista uprawnionych. To wspólne drzwi.,Uchwała i lista uprawnionych. To wspólne drzwi.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.shared_room_door.line.2,Dokumenty się zgadzają. Cena też. Możemy otwierać.,Dokumenty się zgadzają. Cena też. Możemy otwierać.,Bez zmian.
+job.shared_room_door.line.3,"Przyniosłam tabliczkę. Ziemniak zatwierdził ją, śpiąc na niej.","Przyniosłam tabliczkę. Ziemniak zatwierdził ją, śpiąc na niej.",Bez zmian.
+job.shared_room_door.line.4,A ja kluski. Drzwi mogą poczekać. Kluski nie.,A ja kluski. Drzwi mogą poczekać. Kluski nie.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.shared_room_door.note,"Śródmieście, świetlica. Uchwała, zarządczyni i świadek; krzesła, zdjęcia i kluski były przed nami.","Śródmieście, świetlica. Uchwała, zarządczyni i świadek; krzesła, zdjęcia i kluski były przed nami.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.shared_room_door.situation,"Po uchwale wspólnoty Elżbieta zleca otwarcie starej świetlicy. Czekają już krzesła, zdjęcia, tabliczka i przepis na kluski.","Po uchwale wspólnoty Elżbieta zleca otwarcie starej świetlicy. Czekają już krzesła, zdjęcia, tabliczka i przepis na kluski.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.shared_room_door.title,Drzwi dla wszystkich,Drzwi dla wszystkich,Bez zmian.
+job.stefan_book_tin.client,"Pan Stefan, 67 lat, właściciel kiosku i kronikarz przystanku.","Pan Stefan, 67 lat, właściciel kiosku i kronikarz przystanku.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.stefan_book_tin.line.1,Zabezpieczyłem numerki do wypożyczalni. Przed samym sobą.,Zabezpieczyłem numerki do wypożyczalni. Przed samym sobą.,Bez zmian.
+job.stefan_book_tin.line.2,Paragon i zdjęcie z kiosku się zgadzają. Cenę już ustaliliśmy.,Paragon i zdjęcie z kiosku się zgadzają. Cenę już ustaliliśmy.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.stefan_book_tin.line.3,Znam wszystkie rozkłady autobusów. Tych cyfr już nie.,Znam wszystkie rozkłady autobusów. Tych cyfr już nie.,Bez zmian.
+job.stefan_book_tin.line.4,Przynajmniej paragon się zachował. Mój położę obok.,Przynajmniej paragon się zachował. Mój położę obok.,Bez zmian.
+job.stefan_book_tin.note,"Kiosk Stefana, puszka na numerki. Paragon i zdjęcie; właściciel wciąż nie pamięta kodu.","Kiosk Stefana, puszka na numerki. Paragon i zdjęcie; właściciel wciąż nie pamięta kodu.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.stefan_book_tin.situation,Stefan zamknął numerki do świetlicowej wypożyczalni w swojej puszce z kłódką pierścieniową i zapomniał kodu.,Stefan zamknął numerki do świetlicowej wypożyczalni w swojej puszce z kłódką pierścieniową i zapomniał kodu.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.stefan_book_tin.title,Puszka na numerki,Puszka na numerki,Bez zmian.
+job.zuzanna_catalogue_drawer.client,"Zuzanna Wilk, stażystka w muzeum, z kuratorką dr Anną Rygiel.","Zuzanna Wilk, stażystka w muzeum, z kuratorką dr Anną Rygiel.",Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.zuzanna_catalogue_drawer.line.1,Mamy zgodę na kopie. Szuflada uważa je za oryginały.,Mamy zgodę na kopie. Szuflada uważa je za oryginały.,Bez zmian.
+job.zuzanna_catalogue_drawer.line.2,Podpis jest mój. Oryginały zostają w muzeum.,Podpis jest mój. Oryginały zostają w muzeum.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.zuzanna_catalogue_drawer.line.3,"Kuratorka, protokół, ustalona cena. Otwieramy tylko szufladę.","Kuratorka, protokół, ustalona cena. Otwieramy tylko szufladę.",Bez zmian.
+job.zuzanna_catalogue_drawer.line.4,Podpiszę wystawę „Obchodzić się ostrożnie”. Od tej szuflady zacznę.,Nazwę wystawę „Obchodzić się ostrożnie”. Od tej szuflady zacznę.,Poprawa kolokacji.
+job.zuzanna_catalogue_drawer.note,"Muzeum, szuflada katalogowa. Zgoda dr Rygiel na kopie; oryginały zostały na miejscu.","Muzeum, szuflada katalogowa. Zgoda dr Rygiel na kopie; oryginały zostały na miejscu.",Bez zmian.
+job.zuzanna_catalogue_drawer.situation,Zatwierdzone kopie zdjęć starych klatek schodowych utknęły w szufladzie muzeum. Oryginały zostają w archiwum.,Zatwierdzone kopie zdjęć starych klatek schodowych utknęły w szufladzie muzeum. Oryginały zostają w archiwum.,Spacje nierozdzielające po jednoliterowych przyimkach/spójnikach.
+job.zuzanna_catalogue_drawer.title,Szuflada katalogowa,Szuflada katalogowa,Bez zmian.
