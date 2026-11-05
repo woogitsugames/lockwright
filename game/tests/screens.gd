@@ -8,6 +8,7 @@ const ARRIVAL_JOB := "job.bike_interview"
 
 var _out := "/tmp/shots"
 var _size := Vector2i(412, 915)
+var _shown: Node = null
 var _only := ""  # --only=main_menu,settings: render a subset
 
 
@@ -29,7 +30,13 @@ func _ready() -> void:
 			continue
 		if base == "job_arrival":
 			JobRun.start(JobRun.job_by_id(ARRIVAL_JOB))
-		get_tree().change_scene_to_file(scene_path)
+		# instantiate next to the runner (change_scene_to_file would free the runner
+		# itself, since it is the current scene, and stop this loop)
+		if _shown != null:
+			_shown.queue_free()
+		_shown = load(scene_path).instantiate()
+		get_tree().root.add_child(_shown)
+		get_tree().current_scene = _shown
 		for i in 30:
 			await get_tree().process_frame
 		var img := get_viewport().get_texture().get_image()

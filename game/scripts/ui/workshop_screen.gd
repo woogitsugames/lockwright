@@ -1,10 +1,14 @@
 extends Control
 ## Workshop: tool list from game/data/tools.json, buy/repair with in-game coins only
 ## (no real money, TOOLS.md §1). All text via i18n.
+## N-59: every tool is a two-line card that never widens the screen:
+##   line 1 = tool name (wraps), line 2 = state/price (wraps) + action plate (>= 96x48).
+## Repair is hidden at 100%; a progress reward has no button; a purchase you cannot
+## afford reads "Not enough coins" on an outline-only plate (not colour alone).
 
-@onready var coins_label: Label = $VBox/CoinsLabel
-@onready var tools_list: VBoxContainer = $VBox/Scroll/VBox/ToolsList
-@onready var back_button: Button = $BackButton
+@onready var coins_label: Label = $Frame/VBox/Header/CoinsLabel
+@onready var tools_list: VBoxContainer = $Frame/VBox/Scroll/ToolsList
+@onready var back_button: Button = $Frame/VBox/Header/BackButton
 
 const TOOLS_PATH := "res://data/tools.json"
 
@@ -15,6 +19,8 @@ const WORKSHOP_BG := {
 	"evening": "03-workshop-evening-portrait.webp",
 	"night": "08-lamplight-evening-landscape.webp",
 }
+
+var _map: TextureRect
 
 
 func _day_part() -> String:
@@ -28,88 +34,126 @@ func _day_part() -> String:
 	return "night"
 
 
-func _add_background() -> void:
-	var tex := load("res://assets/ui/gpt/workshop/" + WORKSHOP_BG[_day_part()])
-	if tex == null:
-		return
-	var bg := TextureRect.new()
-	bg.texture = tex
-	bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
-	bg.modulate = Color(1, 1, 1, 0.3)
-	add_child(bg)
-	move_child(bg, 0)
-
-
 func _add_map() -> void:
-	# G15 district map with chapter pins for the current chapter
+	# G15 district map with chapter pins for the current chapter; N-59: <= 30% height, cover
 	var chapter := clampi(int(Save.get_value("chapter", 1)), 1, 6)
-	var path := "res://assets/ui/gpt/map/zameczno_chapter_%d.%s"
-	var tex: Texture2D = load(path % [chapter, "webp" if chapter >= 4 else "png"])
-	if tex == null:
-		tex = load("res://assets/ui/gpt/map/zameczno_base.png")
-	if tex == null:
+	var path := "res://assets/ui/gpt/map/zameczno_chapter_%d.%s" % [chapter, "webp" if chapter >= 4 else "png"]
+	if not ResourceLoader.exists(path):
+		path = "res://assets/ui/gpt/map/zameczno_base.png"
+	if not ResourceLoader.exists(path):
 		return
-	var map := TextureRect.new()
-	map.texture = tex
-	map.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	map.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-	map.custom_minimum_size = Vector2(0, 180)
-	map.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	$VBox.add_child(map)
-	$VBox.move_child(map, 1)
+	var frame := PanelContainer.new()
+	frame.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	frame.clip_contents = true
+	_map = TextureRect.new()
+	_map.texture = load(path)
+	_map.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_map.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	_map.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_map.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	frame.add_child(_map)
+	$Frame/VBox.add_child(frame)
+	$Frame/VBox.move_child(frame, 1)
+	resized.connect(_size_map)
+	_size_map()
+
+
+func _size_map() -> void:
+	if _map == null:
+		return
+	var vp := get_viewport_rect().size
+	# portrait: 30% of the height at most; landscape: a short strip (list stays usable)
+	_map.custom_minimum_size.y = roundf(vp.y * (0.24 if vp.x < vp.y else 0.2))
 
 
 func _ready() -> void:
 	Sfx.play_ambience(&"workshop")
 	Sfx.play_music(&"menu_workshop")
-	SafeArea.apply(self)
-	_add_background()
+	ScreenFrame.backdrop(self, "res://assets/ui/gpt/workshop/" + WORKSHOP_BG[_day_part()], 0.55)
+	ScreenFrame.fit(self, $Frame)
 	_add_map()
-	$VBox/Title.text = I18n.t(&"workshop.title")
-	back_button.text = I18n.t(&"common.back")
+	$Frame/VBox/Header/Title.text = I18n.t(&"workshop.title")
+	ScreenFrame.ellipsis($Frame/VBox/Header/Title)
+	back_button.text = "‹ " + I18n.t(&"common.back")
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+	$Frame/VBox/Scroll.scroll_deadzone = 12
 	_refresh()
 	Save.changed.connect(_refresh)
+	ScreenFrame.enter($Frame/VBox/Scroll)
+
+
+static func repair_cost(price: int, integrity: int) -> int:
+	return maxi(5, int(price * (0.35 if integrity <= 0 else 0.15)))
 
 
 func _refresh() -> void:
-	coins_label.text = "%s: %d" % [I18n.t(&"workshop.coins"), Save.get_value("coins", 0)]
+	var coins: int = Save.get_value("coins", 0)
+	coins_label.text = "%s: %d" % [I18n.t(&"workshop.coins"), coins]
 	for c in tools_list.get_children():
 		c.queue_free()
 	var tools: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(TOOLS_PATH))
 	for tool in tools.get("tools", []):
-		var row := HBoxContainer.new()
-		var owned: bool = Save.get_value("tools/%s/owned" % tool["id"], tool.get("price", 0) == 0 and tool.get("unlock") == "start")
-		var integrity: int = Save.get_value("tools/%s/integrity" % tool["id"], 100)
-		var name_label := Label.new()
-		name_label.text = I18n.t(tool.get("i18n", &"common.close"))
-		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		row.add_child(name_label)
-		var state_label := Label.new()
-		if owned:
+		tools_list.add_child(_tool_card(tool, coins))
+
+
+## One tool as a two-line card. Public for tests (N-59 rules).
+func _tool_card(tool: Dictionary, coins: int) -> Control:
+	var id: String = tool["id"]
+	var price: int = int(tool.get("price", 0))
+	var owned: bool = Save.get_value("tools/%s/owned" % id, price == 0 and tool.get("unlock") == "start")
+	var integrity: int = Save.get_value("tools/%s/integrity" % id, 100)
+	var card := PanelContainer.new()
+	card.name = "Tool_" + id
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	card.mouse_filter = Control.MOUSE_FILTER_PASS
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 6)
+	card.add_child(box)
+	var name_label := ScreenFrame.wrap(Label.new())
+	name_label.name = "Name"
+	name_label.text = I18n.t(tool.get("i18n", &"common.close"))
+	name_label.add_theme_font_size_override("font_size", 18)
+	box.add_child(name_label)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+	box.add_child(row)
+	var state_label := ScreenFrame.wrap(Label.new())
+	state_label.name = "State"
+	state_label.theme_type_variation = &"Caption"
+	state_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	row.add_child(state_label)
+	var action := Button.new()
+	action.name = "Action"
+	action.custom_minimum_size = Vector2(112, 48)
+	action.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	action.mouse_filter = Control.MOUSE_FILTER_PASS
+	action.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	row.add_child(action)
+	if owned:
+		if integrity >= 100:
 			state_label.text = "%s %d%%" % [I18n.t(&"workshop.integrity"), integrity]
+			action.visible = false  # N-59: nothing to repair
 		else:
-			state_label.text = "%d %s" % [tool.get("price", 0), I18n.t(&"common.coins")]
-		row.add_child(state_label)
-		var action := Button.new()
-		action.custom_minimum_size = Vector2(96, 48)
-		if owned:
+			var cost := repair_cost(price, integrity)
+			state_label.text = "%s %d%%\n%s" % [I18n.t(&"workshop.integrity"), integrity,
+				I18n.t(&"workshop.repair_cost").format([cost])]
 			action.text = I18n.t(&"workshop.repair")
-			action.disabled = integrity >= 100
-			action.pressed.connect(_repair.bind(tool["id"], tool.get("price", 0)))
-		elif tool.get("price", 0) == 0:
-			# reward for progress (unlock: after_t1 etc.), not a purchase
-			state_label.text = I18n.t(&"workshop.reward")
-			action.text = I18n.t(&"workshop.reward")
-			action.disabled = true
-		else:
-			action.text = I18n.t(&"workshop.buy")
-			action.disabled = Save.get_value("coins", 0) < tool.get("price", 0)
-			action.pressed.connect(_buy.bind(tool["id"], tool.get("price", 0)))
-		row.add_child(action)
-		tools_list.add_child(row)
+			action.disabled = coins < cost
+			if action.disabled:
+				action.text = I18n.t(&"workshop.not_enough")
+			action.pressed.connect(_repair.bind(id, price))
+	elif price == 0:
+		# reward for progress (unlock: after_t1 etc.), not a purchase: label only (N-59)
+		state_label.text = "%s — %s" % [I18n.t(&"workshop.reward"), I18n.t(&"workshop.reward_hint")]
+		action.visible = false
+	else:
+		state_label.text = I18n.t(&"workshop.price").format([price])
+		action.text = I18n.t(&"workshop.buy")
+		action.disabled = coins < price
+		if action.disabled:
+			action.text = I18n.t(&"workshop.not_enough")
+		action.pressed.connect(_buy.bind(id, price))
+	return card
 
 
 func _buy(tool_id: String, price: int) -> void:
@@ -123,7 +167,7 @@ func _buy(tool_id: String, price: int) -> void:
 
 func _repair(tool_id: String, price: int) -> void:
 	var integrity: int = Save.get_value("tools/%s/integrity" % tool_id, 100)
-	var cost := maxi(5, int(price * (0.35 if integrity <= 0 else 0.15)))
+	var cost := repair_cost(price, integrity)
 	var coins: int = Save.get_value("coins", 0)
 	if coins < cost:
 		return
