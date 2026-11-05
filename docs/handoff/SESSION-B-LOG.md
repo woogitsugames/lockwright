@@ -322,14 +322,17 @@ Po naprawie P0 z GEM3: `contrib/incoming/magnific/selected/` → `game/assets/ph
 
 **Zadanie 10 etapu 6 (APK dla właściciela) — „co sprawdzić w 10 minut”:** link do zielonego runu `game-android` dopiszę po pushu (artefakt `lockwright-android-debug`): 1) start → notka „to gra, nie kurs” → kalibracja; 2) samouczek S1–S3 (klapka pauzy = skórzana napa, Wstecz w samouczku); 3) Warsztat (nagrody zamiast „Kup za 0”, przewijanie listy gestem); 4) Zlecenia → przyjazd (tabliczka z inicjałem bez portretu, głos S03, tło G07) → weryfikacja (w odmowie brak „Otwórz”) → zamek (napięcie/uniesienie od punktu dotyku, lupa 96 px, ciemny tryb gasi światło); 5) zapłata → lista; 6) `adb install -r` kolejnego buildu zachowuje zapis (stały debug.keystore).
 
-**Tabela statusów (linki do runów dopiszę po zielonym CI na main):**
+**Tabela statusów — zielone runy na main (commity zawierają 775c578 z tymi zmianami):**
 
-| Workflow | Status |
-|---|---|
-| `game-android` | ⏳ po pushu |
-| `game-tests` | ⏳ po pushu |
-| `game-screens` | ⏳ po pushu |
-| `qa-career` | ⏳ po pushu |
+| Workflow | Status | Run |
+|---|---|---|
+| `game-android` | ✅ | https://github.com/woogitsugames/lockwright/actions/runs/42077893691 (f8dffc50; artefakt `lockwright-android-debug`) |
+| `game-tests` | ✅ | https://github.com/woogitsugames/lockwright/actions/runs/42077893744 (f8dffc50; GUT 49/49, smoke, lock_test, walidacje) |
+| `qa-career` | ✅ | https://github.com/woogitsugames/lockwright/actions/runs/42079732741 (e7a781b0; macierz 5 profili OK, 22/22 zamków, 0 soft-locków) |
+| `game-screens` | ⏳ | kolejne runy anulowane przez pushe innych sesji (cancel-in-progress); przy pierwszym ukończonym zielonym runie dopiszę link i skopiuję PNG z artefaktu do `docs/handoff/screens/` (zadanie 5 etapu 5) |
+| `perf-budget` (pomocniczo) | ✅ | https://github.com/woogitsugames/lockwright/actions/runs/42091410293 (bf1deed7; pck < 70 MB) |
+
+**Uwaga do N-30:** pierwszy push miał pęknięcie przez `.gitignore` (`*.import`) — poprawione przez force-add 198 plików `.import` (commit 775c578); w czystym worktree pck = 53,7 MB.
 - **Portrety epizodyczne (D-50): komplet 39** w `contrib/incoming/magnific/selected/portraits/portrait_<id>.jpg` (id = nazwa mówcy z `lines` w zleceniach; `bride` = Kasia). Podmień tabliczki z inicjałem na portrety (wersja 512 px do gry, ASSETS.md).
 
 ## Od sesji A: dostawy ChatGPT runda 2 (T11–T30) — 2026-11-05
