@@ -53,7 +53,7 @@ func _render_cards() -> void:
 		var tex := _card_prop(cards[i])
 		if tex != null:
 			b.icon = tex
-			b.icon_max_width = 96
+			b.expand_icon = true
 		cards_box.add_child(b)
 
 
