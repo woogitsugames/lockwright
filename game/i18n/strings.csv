@@ -128,3 +128,33 @@ dev.haptics_lab.caps,Capabilities,Możliwości,Möglichkeiten
 nav.quit_confirm,Quit the game?,Zakończyć grę?,Spiel beenden?
 nav.quit_yes,Quit,Zakończ,Beenden
 nav.quit_no,Keep playing,Zostań w grze,Weiterspielen
+practice.t01.goal,Hold steady until the wooden bolt yields.,"Trzymaj równo, aż drewniany rygiel ustąpi.","Halte ruhig, bis der Holzriegel nachgibt."
+practice.t02.goal,Feel which peg binds first; let the rest wait.,Wyśledź pierwszy kołek pod oporem. Reszta poczeka.,"Spür, welcher Holzstift zuerst klemmt; der Rest wartet."
+practice.t03.goal,Find the plate that resists; ignore the chatter.,"Szukaj płytki z oporem, nie tej najgłośniejszej.","Such das Plättchen mit Widerstand, nicht das lauteste."
+practice.t04.goal,Hear the true click before you move on.,"Usłysz prawdziwy klik, zanim ruszysz dalej.","Hör den echten Klick, bevor du weitermachst."
+practice.t05.goal,Find the clear gap; do not force the ward.,"Znajdź prześwit, nie forsuj przeszkody.",Finde die Lücke; zwing nichts an der Besatzung vorbei.
+practice.t06.goal,Compare the bits; the right fit speaks softly.,Porównaj końcówki. Dobre dopasowanie mówi cicho.,Vergleiche die Bärte; der passende spricht leise.
+practice.t07.goal,Push past the first click once; recognise the jam.,Raz dociśnij za klik i rozpoznaj zacięcie.,Drück einmal über den Klick hinaus; erkenne das Klemmen.
+practice.t08.goal,Overset a plate once; ease off without dropping the rest.,Raz przepchnij płytkę; cofnij nacisk bez utraty reszty.,"Drück ein Plättchen einmal zu weit; lass nach, ohne den Rest zu verlieren."
+practice.t09.goal,Listen for the first binding stack.,Wyłap pierwszy stos stawiający opór.,"Hör auf den ersten Stift, der klemmt."
+practice.t10.goal,Keep the settled stacks in place as you move.,"Trzymaj osadzone stosy, gdy zmieniasz pozycję.","Halte die gesetzten Stifte, während du weiterarbeitest."
+practice.t11.goal,Hear the detents; the gate sounds different.,Usłysz zapadki cyfr. Bramka brzmi inaczej.,Hör die Rasten; das Tor klingt anders.
+practice.t12.goal,Find the ring that binds; leave the others alone.,Znajdź wiążący pierścień. Pozostałe zostaw.,Finde den klemmenden Ring; lass die anderen in Ruhe.
+practice.t13.goal,Meet the spring bolt with measured force.,Podejdź do rygla sprężynowego z wyczuciem.,Begegne dem Federriegel mit maßvoller Kraft.
+practice.t14.goal,Work the narrower window with a quieter hand.,W wąskim oknie pracuj spokojniejszą ręką.,Im engeren Fenster arbeitet eine ruhigere Hand.
+practice.t15.goal,Cause one overset; release and recover calmly.,"Raz przepchnij stos, potem spokojnie go uwolnij.",Drück einmal zu weit; dann löse es in Ruhe.
+practice.t16.goal,Hear two binding wafers before lifting either.,"Usłysz opór dwóch płytek, zanim ruszysz którąkolwiek.","Hör zwei klemmende Plättchen, bevor du eines hebst."
+practice.t17.goal,"Feel the false notch, then seek the real gate.",Poczuj fałszywy rowek. Prawdziwa bramka jest dalej.,Spür die falsche Kerbe; das echte Tor liegt weiter.
+practice.t18.goal,Wait for the lever's proper gate click.,Poczekaj na właściwe kliknięcie bramki zapadki.,Warte auf den richtigen Klick am Tor der Zuhaltung.
+practice.t19.goal,Let the lever fall once; learn its spring.,Pozwól raz opaść zapadce. Zapamiętaj sprężynę.,Lass die Zuhaltung einmal fallen; lerne ihre Feder.
+practice.t20.goal,Separate a false set from the honest click.,Odróżnij fałszywe osadzenie od szczerego kliku.,Unterscheide den falschen Halt vom ehrlichen Klick.
+practice.t21.goal,"When the core turns back, keep your hand light.","Gdy rdzeń się cofa, prowadź narzędzie lekko.","Dreht der Kern zurück, führe die Hand leicht."
+practice.t22.goal,Catch the false gate; trust the second knock.,Złap fałszywą bramkę. Posłuchaj drugiego stuku.,Erkenne das falsche Tor; vertrau dem zweiten Klopfen.
+practice.t23.goal,Do not mistake a serration for a settled stack.,Nie pomyl ząbkowania z osadzonym stosem.,Verwechsle die Riffelung nicht mit einem gesetzten Stift.
+practice.t24.goal,Count every lever gate; no skipping.,Policz bramki każdej zapadki. Bez skrótów.,Zähl jedes Tor jeder Zuhaltung; nichts auslassen.
+practice.t25.goal,Hear spool and serration; do not confuse them.,Słuchaj szpulki i ząbkowania. Nie mieszaj ich sygnałów.,Hör Spule und Riffelung; verwechsle sie nicht.
+practice.t26.goal,Pass both false notches before the true gate.,"Miń dwa fałszywe rowki, zanim trafisz na bramkę.","Lass zwei falsche Kerben hinter dir, dann kommt das Tor."
+practice.t27.goal,Trip the detector once; recognise its warning.,Raz uruchom detektor i zapamiętaj ostrzeżenie.,Löse den Melder einmal aus; merk dir seine Warnung.
+practice.t28.goal,Trip it once; turn back and wait for the reset.,"Raz uruchom detektor, cofnij i zaczekaj na reset.",Löse ihn einmal aus; dreh zurück und warte auf den Reset.
+practice.t29.goal,Find the right resistance among faint signals.,Wśród cichych sygnałów znajdź właściwy opór.,Finde zwischen leisen Signalen den richtigen Widerstand.
+practice.t30.goal,Trip and reset once; then open without haste.,Raz uruchom i zresetuj detektor. Potem otwórz bez pośpiechu.,Einmal auslösen und zurücksetzen; dann ohne Eile öffnen.
