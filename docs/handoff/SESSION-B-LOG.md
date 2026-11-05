@@ -136,3 +136,13 @@ Sesja A zbudowała fotorealistyczny ekran zamka na planie B (D-31, zaakceptowany
 3. **FEEL:** łatka §9 (JSON Merge Patch) nałożona na `haptics_patterns.json` (feel_version 2, sub_events, budget); 6 błędów FeedbackDirectora naprawionych + testy.
 4. **audio/v2:** 464 WAV podmienione, `check_sfx.py` zielony (onset ≤ 2 ms, kliki 20–140 ms z ogonem „blizgu”), wpis w ASSETS.md.
 5. **Photoreal:** `JobRun.lock_scene_path()` — pin_tumbler (i puste current_job) otwiera `scenes/photoreal/lock_photoreal.tscn` (D-37), pozostałe rodziny zostają na placeholderze.
+
+## 2026-11-05 — Etap 3: zadania 6–12
+
+6. **Dane/ekonomia (D-38/D-39):** rodziny poprawione (7 zapadkowych → `warded`, `liege_bakery` → `lever_detector`, `drummer_locker` → `wafer` t1), `after_t8` usunięte, ceny z ECONOMY §6, krzywa `1 + 1.2*ln(1+n)*skill`, `session_income=385`. `econ_sim.py` (scenariusz C): **0 zablokowanych zleceń** (careful/average/clumsy 0/0/0).
+7. **Dialogi (CLIENTS.md):** 207 wierszy Załącznika A w `content.csv`, mapa mówców (Załącznik B) w JSON-ach zleceń, linie na ekranie przyjazdu z imieniem na emaliowanej tabliczce, `newlyweds_4am`: Ola → Kasia.
+8. **Weryfikacja (N-04/C-01):** scenka z kartami jako przedmiotami (klucze i18n, PL+EN), bez wag/progów; 3 sceny odmowy (`refuse_*`) — odmowa +5 reputacji, otwarcie niemożliwe.
+9. **Typografia/A11Y:** motyw `theme/main.tres` — Atkinson Hyperlegible Next (tekst) + Bona Nova (nagłówki), OFL, wpis w ASSETS.md; safe-area na wszystkich menu (`SafeArea.apply`); skala tekstu 100–200%; „ogranicz ruch”; notka o dźwięku w trybie ciemnym. A-01/A-04/A-05/A-06/A-07 z audytu zamknięte.
+10. **Narzędzia obserwacji:** lupa/mikroskop/wziernik w `tools.json` z kosztem i odblokowaniem; lupa już działa na ekranie zamka (D-13).
+11. **Warsztat/zlecenia jako sceny:** tła `workshop.jpg`/`stairwell.jpg` z makiet (w `game/assets/ui/`, ASSETS.md).
+12. **Gablota + Tryb Ciągły:** link producenta usunięty z notki Sargent (C-02), klucze `showcase.*.source` wyczyszczone z content.csv (C-03); `run_loop.tscn` — krzywa 1.2·ln, 3 życia, warsztat co 5 zamków, rubber band.
