@@ -14,7 +14,11 @@ static var last_tip := 0  # N-25: tip paid by JobRun.complete()
 const IMPLEMENTED := [&"pin_tumbler", &"wafer", &"wooden_pin", &"warded", &"lever", &"lever_detector", &"ring_combo"]
 ## N-63: families that already have the photoreal (plan B) lock screen. Only these are offered
 ## to the player; the rest stay hidden until their plan-B view ships (no placeholder lock.tscn).
-const PHOTOREAL_READY := [&"pin_tumbler"]
+const PHOTOREAL_READY := [&"pin_tumbler", &"warded"]
+## Plan-B scene per family (pin_tumbler: res://scenes/lock_job.tscn).
+const PLANB_SCENES := {
+	&"warded": "res://scenes/photoreal/lock_job_warded.tscn",
+}
 
 # Authored tutorial locks S1–S3 (docs/LEVELS.md §2.1–2.3, lockwright.lock/1, checked with
 # lockcore/build/check_locks). Loaded through LockcoreSession.create_from_json.
@@ -44,8 +48,11 @@ static func lock_scene_path() -> String:
 	# N-10/D-37: pin_tumbler gets the photoreal screen (plan B) via a thin wrapper that
 	# feeds it the job's family/seed/tier (N-14); other families stay on the placeholder
 	# view until session A ships their scenes
-	if family_for(current_job) == &"pin_tumbler" or current_job.is_empty():
+	var fam := family_for(current_job)
+	if fam == &"pin_tumbler" or current_job.is_empty():
 		return "res://scenes/lock_job.tscn"
+	if PLANB_SCENES.has(fam):
+		return PLANB_SCENES[fam]
 	return "res://scenes/lock.tscn"
 
 

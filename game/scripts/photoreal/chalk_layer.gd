@@ -123,6 +123,16 @@ func _draw() -> void:
 				stroke(Vector2(x - w * 0.6, top + 12), Vector2(x - w * 0.6, top), 3.0)
 				stroke(Vector2(x - w * 0.6, top), Vector2(x + w * 0.6, top), 3.0)
 				stroke(Vector2(x + w * 0.6, top), Vector2(x + w * 0.6, top + 12), 3.0)
+	# free chalk polylines (warded: the channel of each ward, the bolt band)
+	for path in marks.get("paths", []):
+		var pts: PackedVector2Array = path
+		for i in pts.size() - 1:
+			stroke(pts[i], pts[i + 1], 2.5, 0.8)
+	if marks.get("hint_vertical", false) and marks.has("right_anchor"):
+		var rv: Vector2 = marks["right_anchor"]
+		thumb(rv)
+		arrow(rv + Vector2(0, -30), rv + Vector2(0, -92))
+		arrow(rv + Vector2(0, 30), rv + Vector2(0, 80))
 	if marks.get("hint_left", false):
 		var l: Vector2 = marks["left_anchor"]
 		thumb(l)

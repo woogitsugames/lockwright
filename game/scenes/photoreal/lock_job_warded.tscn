@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/photoreal/lock_photoreal.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/lock/lock_job.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/photoreal/warded_view.gd" id="3"]
+
+[node name="LockJobWarded" instance=ExtResource("1")]
+script = ExtResource("2")
+family = &"warded"
+seed = 7
+tier = 1
+
+[node name="View" parent="ViewLayer" index="0"]
+script = ExtResource("3")

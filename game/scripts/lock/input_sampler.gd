@@ -29,6 +29,9 @@ var pick_lift := 0.0
 var rotate := 0.0   # ring_combo / warded: circular gesture on the right zone
 var push := 0.0     # axial sliders: press-and-hold on the right zone
 var tool := 0       # active tool slot (tool_swap button elsewhere)
+## Left thumb, signed: drag up from the touch-down point = +, down = - (warded probe: turn
+## forward / back, |value| = turning force). Same dp scale as tension, no auto level.
+var tension_signed := 0.0
 
 ## D-52: steady tension from the control layer instead of the left thumb.
 var auto_tension := false
@@ -45,6 +48,7 @@ var _depth_raw := 0.5
 var _lift_raw := 0.0
 var _rotate_raw := 0.0
 var _push_raw := 0.0
+var _signed_raw := 0.0
 var _pick_last_pos := Vector2.ZERO
 # D-24: tension and lift are measured relative to the touch-down point, not the screen edge
 var _tension_start := Vector2.ZERO
@@ -96,6 +100,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if event.index == _touch_tension:
 				_touch_tension = -1
 				_tension_raw = 0.0
+				_signed_raw = 0.0
 				if auto_tension and Time.get_ticks_msec() - _tension_down_ms <= int(TAP_MAX_S * 1000.0):
 					release_tension()
 			elif event.index == _touch_pick:  # R-02: elif, not nested — right thumb release must reset
@@ -126,6 +131,10 @@ func release_tension(seconds: float = RELEASE_S) -> void:
 func _update_tension(pos: Vector2) -> void:
 	# D-24: drag up from the touch-down point = tension; the touch point itself is always 0
 	var t := clampf((_tension_start.y - pos.y) / TENSION_FULL_DP, 0.0, 1.0)
+	var sg := clampf((_tension_start.y - pos.y) / TENSION_FULL_DP, -1.0, 1.0)
+	if absf(sg) * TENSION_FULL_DP <= _dead_zone() * 0.5:
+		sg = 0.0
+	_signed_raw = sg
 	if absf(t - _tension_raw) * TENSION_FULL_DP > _dead_zone() * 0.5 or t == 0.0:
 		_tension_raw = t
 
@@ -155,6 +164,7 @@ func _physics_process(delta: float) -> void:
 		pick_depth = lerpf(pick_depth, _depth_raw, SMOOTHING)
 		pick_lift = lerpf(pick_lift, _lift_raw, SMOOTHING)
 	rotate = lerpf(rotate, _rotate_raw, SMOOTHING)
+	tension_signed = lerpf(tension_signed, _signed_raw, SMOOTHING)
 	push = lerpf(push, _push_raw, SMOOTHING)
 
 

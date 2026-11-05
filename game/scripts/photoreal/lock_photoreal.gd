@@ -42,6 +42,8 @@ var _bench_left := -1.0
 var _frame_ms: PackedFloat32Array = []
 var _pose_vm := {}  # fixed ViewModel for --lw-pose
 var coach: TutorialCoach
+## N-63: families with their own thumb mapping (warded probe: turn, reach, bit). null = pins.
+var control: WardedControl
 var fb_gain := 1.0  # ONBOARDING §4: S1 ×1.5, S2 ×1.3, S3 ×1.15
 var _open_pending := -1.0
 # N-58: quiet contact / spring cues while lifting with no tension
@@ -78,6 +80,8 @@ func _ready() -> void:
 		spec_path = JobRun.TUTORIAL_SPECS[clampi(int(args["lw-tutorial"]), 0, JobRun.TUTORIAL_SPECS.size() - 1)]
 	spec_path = String(args.get("lw-spec", spec_path))
 	session = make_spec_session(spec_path, family, seed, tier) if spec_path != "" else make_session(family, seed, tier)
+	if family == &"warded":
+		_setup_warded(spec_path)
 	view.pause_requested.connect(_on_pause)
 	view.set_lives(int(args.get("lw-lives", "3")))
 	view.set_dark(args.get("lw-dark", "0") == "1")
@@ -98,7 +102,10 @@ func _ready() -> void:
 		_frozen = true
 	_setup_guidance()
 	if args.has("lw-stage"):
-		_simulate_stage(String(args["lw-stage"]))
+		if control != null:
+			_simulate_warded(String(args["lw-stage"]))
+		else:
+			_simulate_stage(String(args["lw-stage"]))
 		_frozen = true
 	view.present(_vm(), _last_input, 1.0)
 	if args.get("lw-loupe", "0") == "1":
@@ -138,6 +145,17 @@ func _setup_guidance() -> void:
 	if args.has("lw-auto"):
 		sampler.auto_tension = args["lw-auto"] == "1"
 	var auto := sampler.auto_tension
+	if control != null:
+		control.auto = auto
+		var done: int = (Save.get_value("jobs_completed", []) as Array).size()
+		var lvl := ChalkLayer.Level.REDUCED if done < 3 or bool(Settings.get_value(&"chalk_layer", false)) else ChalkLayer.Level.OFF
+		if args.has("lw-chalk"):
+			lvl = {"off": ChalkLayer.Level.OFF, "reduced": ChalkLayer.Level.REDUCED, "full": ChalkLayer.Level.FULL}.get(args["lw-chalk"], lvl)
+		view.chalk_level = lvl
+		view.chalk_gauge = false
+		view.coach = null
+		view.loupe_toggled.connect(func(on: bool) -> void: sampler.frozen = on)
+		return
 	var tutorial := JobRun.mode == &"tutorial" and not JobRun.current_job.is_empty()
 	var stage := JobRun.tutorial_stage
 	if args.has("lw-tutorial"):
@@ -190,8 +208,13 @@ func _physics_process(delta: float) -> void:
 				Events.lock_opened.emit()
 		return
 	var input := sampler.sample()
+	var events: Array
+	if control != null:
+		input = control.map(input, sampler, session.describe())
+		events = session.step(input["tension"], input["pick_depth"], input["pick_lift"], input["rotate"], input["push"], input["tool"])
+	else:
+		events = session.step(input["tension"], input["pick_depth"], input["pick_lift"])
 	_last_input = input
-	var events: Array = session.step(input["tension"], input["pick_depth"], input["pick_lift"])
 	for e in events:
 		Haptics.play(e["kind"], minf(e["intensity"] * fb_gain, 1.0), e["material"])
 		Sfx.play(e["kind"], e["material"], 0.0 if fb_gain <= 1.0 else 2.0, 1.0)
@@ -202,8 +225,9 @@ func _physics_process(delta: float) -> void:
 		if e["kind"] == &"break":
 			Events.lock_failed.emit(&"break")
 	var vm: Dictionary = session.describe()
-	_no_tension_cues(vm, input)
-	if sampler.auto_tension:
+	if control == null:
+		_no_tension_cues(vm, input)
+	if sampler.auto_tension and control == null:
 		sampler.auto_level = AUTO_SPOOL_LEVEL if _has_state(vm, "false_set") else InputSampler.AUTO_LEVEL
 	if coach != null:
 		coach.update(vm, input, events, sampler.left_down(), sampler.right_down(), delta)
@@ -340,6 +364,66 @@ func _simulate(steps: int) -> void:
 			view.on_event(e)
 		if session.finished():
 			break
+
+
+# ------------------------------------------------------------------ N-63 warded
+func _setup_warded(spec_path: String) -> void:
+	control = WardedControl.new(tier, sampler.auto_tension)
+	var twin: RefCounted = make_spec_session(spec_path, family, seed, tier) if spec_path != "" else make_session(family, seed, tier)
+	var spans: Array = WardedControl.measure_spans(twin) if twin is not FakeLockSession else []
+	if view.has_method("set_wards"):
+		view.call("set_wards", spans)
+		view.call("set_bit", control.bit, control.bit_width())
+	if view.has_signal("bit_pressed"):
+		view.connect("bit_pressed", _on_bit_pressed)
+
+
+func _on_bit_pressed() -> void:
+	if control == null or _frozen or _paused:
+		return
+	if control.cycle_bit(session.describe(), sampler.left_down() or sampler.right_down()):
+		view.call("set_bit", control.bit, control.bit_width())
+		Sfx.play(&"contact", &"steel", -6.0, 1.3)
+		Haptics.play(&"contact", 0.3, &"steel")
+	else:
+		# only out of the keyhole and unturned: a dull knock, nothing changes
+		Sfx.play(&"contact", &"iron", -10.0, 0.7)
+		Haptics.play(&"contact", 0.15, &"iron")
+
+
+## Screenshots / tests: replay lockcore's scripted plan (solver inputs) until a moment.
+##   blocked: the probe pressed against the first ward with the reach outside its channel;
+##   turn: a third of the turn done; bolt: the bit on the bolt; set: tumbler lifted; open.
+func _simulate_warded(stage: String) -> void:
+	if not ClassDB.class_exists("LockcoreSession"):
+		return
+	var rep: Dictionary = ClassDB.class_call_static(&"LockcoreSession", &"solve", family, seed, tier)
+	var rows: Array = rep.get("inputs", [])
+	if rows.is_empty():
+		return
+	control.bit = int(rows[rows.size() - 1][5])
+	view.call("set_bit", control.bit, control.bit_width())
+	var feed := func(r: Array) -> void:
+		_last_input = {"tension": r[0], "pick_depth": r[1], "pick_lift": r[2], "rotate": r[3], "push": r[4], "tool": r[5]}
+		for e in session.step(r[0], r[1], r[2], r[3], r[4], r[5]):
+			view.on_event(e)
+		view.present(session.describe(), _last_input, 1.0 / 120.0)
+	if stage == "blocked":
+		var first: Array = rows[rows.size() - 1]
+		feed.call([0.0, 0.0, 0.0, 0.0, 0.0, first[5]])
+		for i in 240:
+			feed.call([first[0] * 0.8, 1.0, 0.0, 1.0, 0.0, first[5]])
+		return
+	for r in rows:
+		feed.call(r)
+		var vm: Dictionary = session.describe()
+		var els: Array = vm["elements"]
+		var bolt := String(els[els.size() - 1]["state"])
+		var th := float(vm["core_rotation"])
+		if (stage == "turn" and th >= 0.33) or (stage == "bolt" and bolt == "bound" and th > 0.86) or (stage == "set" and bolt == "set") or session.finished():
+			break
+	for i in 30:
+		view.present(session.describe(), _last_input, 1.0 / 120.0)
 
 
 # ------------------------------------------------------------------ pause (HUD.md §6, simplified)
