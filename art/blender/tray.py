@@ -148,13 +148,18 @@ roll = leather_slab('roll', -110, 110, -130, 130, -2.0, 3.0, LE, cuts=60, seed=1
 fold = leather_slab('fold', -110, 110, 47, 130, -3.6, 1.7, LE, cuts=40, seed=2, bev=0.6)
 stitches_h(50.0, -100, 100, 3.6, -3.62)
 
-POCKET_X = [-48, -16, 16]
+POCKET_X = [-50, -18, 14]   # stable: the game HUD composes per-pocket columns from several renders
+def pick_tip(i, x):
+    """Working end of the pick that lives in pocket i (straight shaft below the first point)."""
+    if i == 0: return [(x, 16), (x + 0.3, 21), (x + 1.5, 24.5), (x + 3.4, 26)]                  # hook
+    if i == 1: return [(x, 12), (x + 0.9, 16), (x - 0.3, 20), (x + 0.9, 24), (x, 28)]             # rake
+    return [(x, 20), (x + 0.4, 22.5), (x + 1.3, 24.6), (x + 0.6, 26.6), (x, 28.5)]                # half-diamond
 for i, x in enumerate(POCKET_X):
     leather_slab('flap%d' % i, x - 14, x + 14, -130, -4, -4.0, 2.0, LE2, puff=1.8, cuts=30, seed=10 + i, bev=1.4)
     for sx in (x - 11.8, x + 11.8):
         stitches(sx, -128, -6.5, 3.6, -4.15 - 0.4, ang=28 if sx < x else -28)
     if i >= 3 - LOST:  # lost pick: compressed, darker, glossier imprint of its outline left in the leather
-        pts = [(x, z) for z in range(-10, 18, 3)] + [(x, 18), (x + 0.2, 22), (x + 1.4, 25), (x + 3.0, 26.2)]
+        tip = pick_tip(i, x); pts = [(x, z) for z in range(-10, int(tip[0][1]), 3)] + tip
         floor = -2.0 - undulation(x, 8, 1) + 0.3   # groove ~0.3 mm deep, following the leather
         im = flat_tool('imprint%d' % i, pts, 1.9, 8.0, floor - 4.0, mat='brass')
         im.data.materials.clear(); im.data.materials.append(LE3)
@@ -168,11 +173,8 @@ for i, x in enumerate(POCKET_X):
             c = pg.center
             if abs(c.x - x - 1.5) < 4 and -11 < c.z < 28 and -0.5 > c.y > -2.0 - undulation(c.x, c.z, 1) + 0.08: pg.material_index = mi
         continue
-    if i == 0:   # hook: short upturned tip
-        pts = [(x, -60), (x, 16), (x + 0.3, 21), (x + 1.5, 24.5), (x + 3.4, 26)]
-    else:        # rake: smooth humps
-        pts = [(x, -60), (x, 12), (x + 0.9, 16), (x - 0.3, 20), (x + 0.9, 24), (x, 28)]
-    pts = [(x, z) for z in range(-60, int(pts[1][1]), 3)] + pts[1:]   # even spacing: no folded offset quads
+    tip = pick_tip(i, x)
+    pts = [(x, z) for z in range(-60, int(tip[0][1]), 3)] + tip   # even spacing: no folded offset quads
     t = flat_tool('pick%d' % i, pts, 1.5, 0.6, -2.42)
     t.data.materials.clear(); t.data.materials.append(PICK)
     # the stamped outline is one long concave n-gon per face: triangulate it so the bevel cannot fold it
@@ -180,7 +182,7 @@ for i, x in enumerate(POCKET_X):
     bmesh.ops.triangulate(bm, faces=[f for f in bm.faces if len(f.verts) > 4], quad_method='BEAUTY', ngon_method='EAR_CLIP')
     bm.to_mesh(t.data); bm.free()
     t.modifiers['bev'].harden_normals = False
-    t.rotation_euler = (0, math.radians((-1.2, 0.8)[i]), 0)
+    t.rotation_euler = (0, math.radians((-1.2, 0.8, -0.5)[i]), 0)
 
 # watchmaker's loupe standing lens-up on the leather: conical ribbed body, turned brass ring, glass
 def revolve_y(name, loop, seg=128):
