@@ -22,10 +22,11 @@ OUT = Path(__file__).resolve().parent / "out"
 
 SIZES = {
     "iphone69": (1320, 2868),  # App Store 6.9" portrait (required)
+    "iphone65": (1284, 2778),  # App Store 6.5" portrait (older iPhones; optional when 6.9" is given)
     "android": (1080, 1920),   # Google Play phone portrait
     "ipad13": (2064, 2752),    # App Store 13" iPad portrait (only if iPad support stays, D-10)
 }
-DEFAULT_SIZES = ["iphone69", "android"]
+DEFAULT_SIZES = ["iphone69", "iphone65", "android"]
 
 INK = (20, 17, 14)          # warm near-black, realism palette --ink family
 LEATHER = (42, 23, 11)      # tool-roll leather, mockups/realizm/realizm.css
@@ -41,14 +42,14 @@ SHOTS = [
          pl="Klik. Ten już siedzi.", en="Click. That one's set."),
     dict(src="section.png", mode="stack", focus=(0.42, 0.62), zoom=0.8,
          pl="Lewy kciuk napina, prawy szuka.", en="Left thumb tensions, right thumb picks."),
-    dict(src="tray.png", mode="strip", focus=(0.25, 0.5), zoom=1.7,
-         pl="Zapasowe wytrychy. Licz je.", en="Spare picks. Count them."),
+    dict(src="loupe.png", mode="cover", focus=(0.5, 0.5), zoom=0.9,
+         pl="Lupa pokazuje linię podziału.", en="The loupe shows the shear line."),
     dict(src="section.png", mode="cover", focus=(0.46, 0.5), zoom=1.0, darken=0.10,
          pl="Zgaś ekran. Graj dotykiem i słuchem.", en="Screen off. Play by touch and ear."),
-    dict(src="section.png", mode="cover", focus=(0.86, 0.28), zoom=0.56,
-         pl="Pani Halina czeka. Rosół też.", en="Mrs Halina is waiting. So is the soup."),
-    dict(src="tray.png", mode="strip", focus=(0.87, 0.5), zoom=2.4,
-         pl="Lupa, a potem gablota z historią.", en="The loupe, then the history case."),
+    dict(src="tray.png", mode="strip", focus=(0.25, 0.5), zoom=1.7,
+         pl="Zapasowe wytrychy. Licz je.", en="Spare picks. Count them."),
+    dict(src="lever.png", mode="cover", focus=(0.5, 0.5), zoom=0.85,
+         pl="Każdy mechanizm prosi o inną rękę.", en="Every mechanism asks for a different hand."),
     dict(src="section.png", mode="cover", focus=(0.5, 0.3), zoom=0.56, darken=0.55,
          pl="Bez reklam. Bez sieci. Bez pośpiechu.", en="No ads. Offline. No rush.",
          sub_pl="To gra, nie kurs. Zamki są wymyślone.",
