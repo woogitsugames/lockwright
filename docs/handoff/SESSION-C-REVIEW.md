@@ -669,7 +669,7 @@ Macierz `qa/run_matrix.sh` (5 przebiegów kariery na HEAD): solver / „średni�
 **N-26 · Low · EN: karty dokumentów w weryfikacji mogą się nie mieścić** · `game/scripts/ui/job_verify.gd:_render_cards`
 - `qa/bot/a11y_shots.gd --lang en`: „ID document” potrzebuje ok. 104 px tekstu, przycisk ma 112 px (z marginesami 16 px brakuje ok. 8 px), „Witness” 63 > 55. Do potwierdzenia po naprawie A-10 (dziś safe-area rozpycha szerokości). **Poprawka:** `size_flags_horizontal = EXPAND_FILL` i `clip_text = false` dla kart albo układ w kolumnie.
 
-## Runda licencje — 2026-11-05 10:50 (zadanie 8, `store/legal/DEPENDENCIES.md`)
+## Runda licencje — 2026-11-05 10:39 (zadanie 8, `store/legal/DEPENDENCIES.md`)
 **N-27 · High (przed wydaniem) · Brak not licencyjnych w aplikacji** · `game/` (brak `THIRD-PARTY-NOTICES`, brak ekranu licencji)
 - MIT Godota i godot-cpp wymagają dołączenia noty copyright i tekstu licencji; Oboe (Apache-2.0, statycznie w `lockwright-click-audio`) — tekstu Apache-2.0; komponenty silnika (FreeType FTL, mbedTLS Apache-2.0, ICU…) — swoich not.
 - **Poprawka:** ekran „Licencje” z „O grze” + `game/THIRD-PARTY-NOTICES.txt` w eksporcie:
