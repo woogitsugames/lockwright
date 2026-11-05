@@ -241,7 +241,7 @@ cam.location = (0, -400, CZ + 7); cam.rotation_euler = (Vector((0, 0, CZ)) - cam
 mirror_softbox('sheen', (0, 0, CZ), cam, dist=380, size=float(arg('--ss', '90')), size_y=float(arg('--ssy', '240')),
                energy=float(arg('--sheen', '60000')), shift=(float(arg('--sx', '4')), 0, float(arg('--sz', '8'))))
 CROP = [float(v) for v in arg('--crop', '').split(',')] if arg('--crop', '') else None
-render_setup(OUT, RES, SAMPLES, exposure=float(arg('--exp', '0.0')), crop=CROP)
+render_setup(OUT, RES, SAMPLES, exposure=float(arg('--exp', '0.35')), crop=CROP)
 if arg("--norender", "0") == "1":
     for o in bpy.data.objects:
         if o.type == "MESH" and not o.name.startswith("Sphere"): print("OBJ", o.name, len(o.data.polygons), [m.name for m in o.data.materials], o.dimensions[:])
