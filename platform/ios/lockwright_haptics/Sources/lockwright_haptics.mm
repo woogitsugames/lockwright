@@ -80,14 +80,14 @@
     CHHapticEvent *cont = [[CHHapticEvent alloc] initWithEventType:CHHapticEventTypeHapticContinuous
                                                        parameters:@[inten, sharp]
                                                      relativeTime:0 duration:1.0];
-    CHHapticPattern *resPattern = [[CHHapticPattern alloc] initWithEvents:@[cont] parameters:@[]];
+    CHHapticPattern *resPattern = [[CHHapticPattern alloc] initWithEvents:@[cont] parameters:@[] error:&err];
     NSError *err = nil;
-    _resistancePlayer = [_engine makeAdvancedPlayerWithPattern:resPattern error:&err];
+    _resistancePlayer = [_engine createAdvancedPlayerWithPattern:resPattern error:&err];
     // Transients in a separate player so the intensity curve never scales clicks.
-    CHHapticEvent *t = [[CHHapticEvent alloc] initWithEventType:CHHapticEventTypeTransient
+    CHHapticEvent *t = [[CHHapticEvent alloc] initWithEventType:CHHapticEventTypeHapticTransient
                                                      parameters:@[] relativeTime:0];
-    CHHapticPattern *tPattern = [[CHHapticPattern alloc] initWithEvents:@[t] parameters:@[]];
-    _transientPlayer = [_engine makeAdvancedPlayerWithPattern:tPattern error:&err];
+    CHHapticPattern *tPattern = [[CHHapticPattern alloc] initWithEvents:@[t] parameters:@[] error:&err];
+    _transientPlayer = [_engine createAdvancedPlayerWithPattern:tPattern error:&err];
 }
 
 - (float)materialScale:(NSString *)material {
@@ -112,10 +112,10 @@
     // transient pattern with absolute intensity/sharpness baked into the event
     CHHapticEventParameter *pI = [[CHHapticEventParameter alloc] initWithParameterID:CHHapticEventParameterIDHapticIntensity value:i];
     CHHapticEventParameter *pS = [[CHHapticEventParameter alloc] initWithParameterID:CHHapticEventParameterIDHapticSharpness value:sharp];
-    CHHapticEvent *e = [[CHHapticEvent alloc] initWithEventType:CHHapticEventTypeTransient parameters:@[pI, pS] relativeTime:0];
-    CHHapticPattern *pattern = [[CHHapticPattern alloc] initWithEvents:@[e] parameters:@[]];
+    CHHapticEvent *e = [[CHHapticEvent alloc] initWithEventType:CHHapticEventTypeHapticTransient parameters:@[pI, pS] relativeTime:0];
+    CHHapticPattern *pattern = [[CHHapticPattern alloc] initWithEvents:@[e] parameters:@[] error:&err];
     NSError *err = nil;
-    [_transientPlayer startPlayerAtTime:CHHapticTimeImmediate error:&err];
+    [_transientPlayer startAtTime:CHHapticTimeImmediate error:&err];
     (void)pattern;
 }
 
@@ -123,7 +123,7 @@
     if (!_supportsCoreHaptics || ![cid isEqualToString:@"tension_resistance"]) return;
     _resistanceActive = YES;
     NSError *err = nil;
-    [_resistancePlayer startPlayerAtTime:CHHapticTimeImmediate error:&err];
+    [_resistancePlayer startAtTime:CHHapticTimeImmediate error:&err];
     [self sendResistanceParameters];
 }
 
@@ -146,13 +146,13 @@
     if (![cid isEqualToString:@"tension_resistance"]) return;
     _resistanceActive = NO;
     NSError *err = nil;
-    [_resistancePlayer stopPlayerAtTime:CHHapticTimeImmediate error:&err];
+    [_resistancePlayer stopAtTime:CHHapticTimeImmediate error:&err];
 }
 
 - (void)stopAll {
     _resistanceActive = NO;
-    [_resistancePlayer stopPlayerAtTime:CHHapticTimeImmediate error:nil];
-    [_transientPlayer stopPlayerAtTime:CHHapticTimeImmediate error:nil];
+    [_resistancePlayer stopAtTime:CHHapticTimeImmediate error:nil];
+    [_transientPlayer stopAtTime:CHHapticTimeImmediate error:nil];
 }
 
 - (NSDictionary *)capabilities {
