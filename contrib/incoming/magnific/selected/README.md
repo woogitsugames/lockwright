@@ -43,3 +43,8 @@ Oryginały (PNG 2048²) zostają w Release; tu JPG q92. Wybór sesji A (wariant 
 | `terrazzo_grey_red.jpg` | 2 | `creation_3828657356.png` 2048×2048 |
 | `workshop_concrete.jpg` | 2 | `creation_3828674352.png` 2048×2048 |
 | `keyart_3x1.jpg` | wycinek z `keyart_16x9` | — |
+
+| `brass_face_milled.jpg` | brass_face_milled.v2 wariant 2 (poprawki runda 1) | `creation_3828800453.png` |
+| `steel_heat_tint.jpg` | steel_heat_tint.v2 wariant 3 (poprawki runda 1) | `creation_3828799042.png` |
+| `tool_roll_open_empty.jpg` | tool_roll_open_empty.v2 wariant 1 (poprawki runda 1) | `creation_3828802087.png` |
+| `tool_roll_pocket_empty_closeup.jpg` | tool_roll_pocket_empty_closeup wariant 4 (poprawki runda 1) | `creation_3828803689.png` |
