@@ -127,4 +127,4 @@ Sesja A zbudowała fotorealistyczny ekran zamka na planie B (D-31, zaakceptowany
 
 ## Od sesji A: ekonomia (ECONOMY.md, D-39) — 2026-11-05
 - Wprowadź liczby ze scenariusza C (`docs/ECONOMY.md` §6) do `game/data` i sprawdź `python3 tools/econ_sim.py` (0 zablokowanych zleceń).
-- Błędy w danych: 7 zamków zapadkowych ma `family: lever` (powinno `warded`), `liege_bakery` → `lever_detector`; `drummer_locker` → `wafer` t1 (D-37); warunki `after_t8` nie istnieją (lockcore max t7).
+- Błędy w danych: 7 zamków zapadkowych ma `family: lever` (powinno `warded`), `liege_bakery` → `lever_detector`; `drummer_locker` → `wafer` t1 (D-38); warunki `after_t8` nie istnieją (lockcore max t7).
