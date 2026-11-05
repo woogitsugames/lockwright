@@ -31,3 +31,4 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | spikes/measure/android/app/fonts/BonaNova-Bold.ttf, AtkinsonHyperlegibleNext-wght.ttf (kopie z `mockups/fonts/`) | font | Google Fonts repo (wpisy wyżej) | SIL OFL 1.1 (licencje obok plików) | — |
 | spikes/measure/screens/*.png, spikes/measure/android/app/icon.png | grafika | własne (zrzuty aplikacji pomiarowej, ikona z `spikes/haptics-latency`) | własne projektu | — |
 | game/assets/ui/tray.jpg, section.jpg, loupe.jpg | grafika (tła HUD) | skopiowane z `mockups/realizm/img/` (własne sesji projektowej) | własne projektu | — |
+| audio/v2/out/sfx/** (464 WAV, 48 kHz / 16-bit / mono: 14 zdarzeń gry × 4 materiały × 6 wariantów, 6 nowych zdarzeń, 2 pętle × 4 materiały × 4 warianty) oraz audio/v2/out/demo_all.wav, ab_set_false_set.wav (odsłuch, nie do builda) | dźwięk | własne, synteza modalna `audio/v2/synth_v2.py` (numpy, seed 20261105), bez sampli zewnętrznych | własne projektu | — |
