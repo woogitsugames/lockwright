@@ -52,7 +52,7 @@ def door_wood(axis, seed, center=(0, 0, 0), width=120):
     c[k] += rng.uniform(-0.3, 0.3) * width
     return oak('door_%s_%d' % (axis, seed), light=l, dark=d, axis=axis, seed=seed, ring=rng.uniform(3.2, 5.5),
                incline=rng.choice((-1, 1)) * rng.uniform(0.03, 0.06), depth=rng.uniform(70, 160), coat=1.0, coat_rough=0.22,
-               rough=0.5, wear=0.6, grime=0.8, flecks=0.0, varnish_tint=0.25, center=tuple(c), contrast=1.0)
+               rough=0.5, wear=0.6, grime=0.8, flecks=0.0, varnish_tint=0.3, center=tuple(c), contrast=0.72)
 
 # ---------------------------------------------------------------- architecture
 W0, W1 = -1700, 1900          # back wall extent (x)
@@ -292,30 +292,14 @@ else:
 bx('inside_floor', DX0, DX1, 105, 1200, -20, 0, floor)
 
 # ---------------------------------------------------------------- camera + clipboard held in the foreground
-cam = photo_camera((90, -2420, 1500), yaw=-2.5, lens=24.5, shift=(0.0, -0.14))
+cam = photo_camera((150, -2420, 1500), yaw=3.5, lens=24.5, shift=(0.0, -0.14))
 cam.data.sensor_fit = 'VERTICAL'; cam.data.sensor_height = 36.0; cam.data.sensor_width = 36.0
 bpy.context.view_layer.update()
-CB_W, CB_H, A5 = 176, 250, (148, 210)
-board = slab('clipboard', rounded_rect(CB_W, CB_H, 9), 3.0, hardboard, bev=0.8)
-clip_m = metal('clip', (0.60, 0.60, 0.58), 0.3, marks='stamp', wear=0.4, grime=0.5, bevel_r=0.5)
-clip = slab('clip', rounded_rect(110, 34, 6), 5.0, clip_m, bev=2.2, seg=5); place(clip, (0, CB_H / 2 - 22, 3.2))
-for sx in (-1, 1):
-    cyl('rivet', 3, 2.0, (sx * 42, CB_H / 2 - 12, 4.0), verts=24).data.materials.append(clip_m)
-roll = cyl('clip_roll', 4.5, 104, (0, CB_H / 2 - 40, 6.0), axis='X', verts=32); setmat(roll, clip_m)
-sheets = []
-for i, (dx, dy, rz) in enumerate(((1.5, -2, -0.8), (-1, -3.5, 0.6), (0, -6, 0.0))):
-    s = slab('sheet%d' % i, rounded_rect(A5[0], A5[1], 0.6, 2), 0.12, pad_paper if i < 2 else slip)
-    place(s, (dx, CB_H / 2 - 12 - A5[1] / 2 + dy, 3.05 + i * 0.13), rot=(0, 0, rz)); sheets.append(s)
-holder = [board, clip, roll] + sheets + [o for o in bpy.data.objects if o.name.startswith('rivet')]
+A5 = (148, 210)
+clip_m = metal('clip', (0.42, 0.42, 0.41), 0.32, marks='stamp', wear=0.5, grime=0.6, bevel_r=0.5)
 # held below the eye, facing up towards it, slightly rolled: the frame edge cuts the board (hands out of shot)
-M_cb = cam.matrix_world @ Matrix.Translation(Vector((-115, -315, -450))) @ Matrix.Rotation(math.radians(-9), 4, 'Z') @ Matrix.Rotation(math.radians(-50), 4, 'X')
-for o in holder:
-    o.matrix_world = M_cb @ o.matrix_world
-TOP = sheets[-1]
-def sheet_pt(u, v):  # u, v in mm from the slip's top-left corner (u right, v down), on the top face
-    x = -A5[0] / 2 + u; y = A5[1] / 2 - v
-    loc = Matrix.Translation(Vector((0, CB_H / 2 - 12 - A5[1] / 2 - 6, 3.05 + 2 * 0.13 + 0.12)))
-    return M_cb @ loc @ Vector((x, y, 0))
+M_cb = cam.matrix_world @ Matrix.Translation(Vector((-120, -335, -470))) @ Matrix.Rotation(math.radians(-13), 4, 'Z') @ Matrix.Rotation(math.radians(-54), 4, 'X')
+cb_objs, sheet_pt = clipboard('clipboard', M_cb, slip, pad_paper, hardboard, clip_m, rng=rng)
 
 # ---------------------------------------------------------------- render
 CROP = arg('--crop', '')

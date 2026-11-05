@@ -455,7 +455,7 @@ def clipboard(name, M, slip_mat, pad_mat, board_mat, clip_mat, W=176, H=250, she
     (board lies in its local XY plane, +Z up, clip at +Y). Returns (objects, corner(u, v) -> world point on top slip)."""
     rng = rng or random.Random(3)
     objs = [slab(name, rounded_rect(W, H, 9), 3.0, board_mat, bev=0.8)]
-    cl = slab(name + '_clip', rounded_rect(110, 34, 6), 5.0, clip_mat, bev=2.2, seg=5); place(cl, (0, H / 2 - 22, 3.2)); objs.append(cl)
+    cl = slab(name + '_clip', rounded_rect(110, 34, 6), 2.6, clip_mat, bev=1.1, seg=4); place(cl, (0, H / 2 - 22, 3.2)); objs.append(cl)
     for sx in (-1, 1):
         r = cyl(name + '_rivet', 3, 2.0, (sx * 42, H / 2 - 12, 4.0), verts=24); setmat(r, clip_mat); objs.append(r)
     ro = cyl(name + '_roll', 4.5, 104, (0, H / 2 - 40, 6.0), axis='X', verts=32); setmat(ro, clip_mat); objs.append(ro)
