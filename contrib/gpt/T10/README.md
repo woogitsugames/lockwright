@@ -79,3 +79,26 @@ Nagłówek: `key,en,pl,trigger,scope,family,priority,phase`.
 3. Potrzebne uzgodnienie z zespołem silnika dotyczące stabilnych sygnałów `job_refused`, `challenge_complete`, sposobu zapisu historii zdarzeń i synchronizacji osiągnięć. Następnie test automatyczny: każdy klucz dostaje nagrodę maksymalnie raz, tryb samouczka nie daje niedozwolonych nagród, nieudana weryfikacja nigdy nie prowadzi do osiągnięcia za otwarcie.
 
 Dokumenty referencyjne: `CLAUDE.md`, `docs/styles/realizm.md`, `docs/DESIGN.md`, `docs/HUD.md`, `docs/PROGRESSION.md`, `docs/CLIENTS.md`, `docs/FEEL.md`.
+
+## v2 — korekta kolizji z nazwą producenta (2026-11-05)
+
+Przyczyną poprawki były dwa opisy angielskie, w których kolejność słów tworzyła nazwę handlową. Zachowano znaczenie poziomu mistrzowskiego, klucze i wszystkie warunki odblokowania.
+
+| Miejsce | Zmiana |
+| --- | --- |
+| `v2/achievements.csv` | Pełna wersja 40 osiągnięć PL/EN; zmieniono tylko opis EN w `achievement.pin_master` i `achievement.wafer_master`. |
+| `v2/tips.csv` | Pełna kopia 60 wskazówek PL/EN, identyczna treściowo i bajtowo z plikiem źródłowym. |
+| `v2/notebook_extra.csv` | Pełna kopia 30 wpisów PL/EN, identyczna treściowo i bajtowo z plikiem źródłowym. |
+| `achievements.csv` | Skorygowano te same dwa opisy EN również w dotychczasowym pliku, aby katalog T10 nie zachował niepoprawnych tekstów. Pliku nie usunięto; pozostałe pola są niezmienione. |
+| `README.md`, `ASSETS.md` | Dodano dokumentację wersji v2 i rejestr pochodzenia zmian. |
+
+Nowe opisy EN:
+
+- `achievement.pin_master`: „Finish the fifth master-tier pin tumbler without breaking a pick.”
+- `achievement.wafer_master`: „Finish the third master-tier wafer lock without breaking a pick.”
+
+**Wynik audytu nazw producentów:** przed korektą **2** trafienia (oba w angielskich opisach osiągnięć); po korekcie **0**. Sprawdzono PL i EN wszystkich 40 osiągnięć, 60 wskazówek, 30 wpisów, identyczne zbiory w `v2/` oraz `README.md` i `ASSETS.md`. Wyszukiwanie było niewrażliwe na wielkość liter i obejmowało nazwy producentów zamków, kłódek, sejfów i samochodów z listy w poprawce oraz dodatkowe popularne nazwy i warianty pisowni. Wyrażenie z dwuczłonową nazwą handlową sprawdzono jako całe wyrażenie, aby nie mylić go z opisowym „master-tier”.
+
+**Walidacja po zmianie:** 40/40 osiągnięć, 60/60 wskazówek (10/10 etycznych), 30/30 wpisów zeszytu. Maksima: nazwy osiągnięć EN/PL **22/22** (limit 30), opisy EN/PL **65/72** (limit 100), wskazówki EN/PL **73/71** (limit 110), zeszyt EN/PL **90/93** (limit 130). Łączna punktacja **1000**, klucze unikatowe; kolejność wierszy, format CSV, pola `trigger`, `phase`, `hidden`, `points` i wszystkie polskie teksty zachowano.
+
+Zawartość historycznych plików poza dwoma wskazanymi opisami pozostawiono bez zmian. Bez edycji kodu gry, bez nowych grafik lub dźwięków. Podczas integracji jako aktualną bazę tekstów należy przyjąć `v2/`; starsze CSV zachowano dla zgodności z dotychczasowymi odwołaniami.
