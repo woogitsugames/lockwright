@@ -29,6 +29,8 @@ LockParse lock_from_json(std::string_view text, const FamilyRegistry& registry);
 namespace field {
 bool get_int(const json::Value& obj, std::string_view key, std::int64_t lo, std::int64_t hi, std::int64_t& out,
              std::vector<SpecError>& errors, const std::string& path);
+// Strict decimal uint64 (digits only, no sign, no overflow); used for seeds.
+bool parse_u64(const std::string& s, std::uint64_t& out);
 bool get_bool(const json::Value& obj, std::string_view key, bool& out, std::vector<SpecError>& errors,
               const std::string& path);
 }  // namespace field

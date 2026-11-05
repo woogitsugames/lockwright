@@ -12,6 +12,9 @@
 namespace lockcore {
 
 inline constexpr std::string_view REPLAY_SCHEMA = "lockwright.replay/1";
+// Upper bound on the expanded input frames of one replay: the longest tier time
+// limit a difficulty vector accepts (3600 s) at SIM_HZ (T25-06).
+inline constexpr std::size_t MAX_REPLAY_STEPS = 3600u * SIM_HZ;
 
 struct Replay {
   std::string family;
@@ -26,6 +29,8 @@ struct Replay {
 };
 
 std::string replay_to_json(const Replay& r);
+// Strict parser: every header field, the expected block and canonical (quantised,
+// in-range) inputs are required. `out` is assigned only on success.
 bool replay_from_json(std::string_view text, Replay& out, std::string& error);
 
 struct ReplayResult {

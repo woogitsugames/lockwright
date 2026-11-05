@@ -40,21 +40,6 @@ bool get_bool(const Value& obj, std::string_view key, bool& out, std::vector<Spe
   return true;
 }
 
-}  // namespace field
-
-namespace {
-
-bool get_string(const Value& obj, std::string_view key, std::string& out, std::vector<SpecError>& errors,
-                const std::string& path) {
-  const Value* v = obj.find(key);
-  if (v == nullptr || !v->is_string()) {
-    errors.push_back({path + "." + std::string(key), v == nullptr ? "missing" : "expected string"});
-    return false;
-  }
-  out = v->as_string();
-  return true;
-}
-
 // Seeds are 64-bit; JSON consumers that read numbers as doubles (Godot, JS) would
 // lose precision, so seeds are written as decimal strings.
 bool parse_u64(const std::string& s, std::uint64_t& out) {
@@ -67,6 +52,21 @@ bool parse_u64(const std::string& s, std::uint64_t& out) {
     v = v * 10 + d;
   }
   out = v;
+  return true;
+}
+
+}  // namespace field
+
+namespace {
+
+bool get_string(const Value& obj, std::string_view key, std::string& out, std::vector<SpecError>& errors,
+                const std::string& path) {
+  const Value* v = obj.find(key);
+  if (v == nullptr || !v->is_string()) {
+    errors.push_back({path + "." + std::string(key), v == nullptr ? "missing" : "expected string"});
+    return false;
+  }
+  out = v->as_string();
   return true;
 }
 
@@ -172,7 +172,7 @@ LockParse lock_from_json(std::string_view text, const FamilyRegistry& registry) 
   get_string(v, "id", r.spec.id, r.errors, "");
   get_string(v, "source", r.spec.source, r.errors, "");
   std::string seed;
-  if (get_string(v, "seed", seed, r.errors, "") && !parse_u64(seed, r.spec.seed))
+  if (get_string(v, "seed", seed, r.errors, "") && !field::parse_u64(seed, r.spec.seed))
     r.errors.push_back({".seed", "expected decimal uint64 string"});
   if (const Value* d = v.find("difficulty")) {
     difficulty_from_json(*d, r.spec.difficulty, r.errors, ".difficulty");
