@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tablica lokatorów</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+/* Direction 1 — "Tablica lokatorów": black felt letter board from a tenement gate.
+   One typeface on the board (Archivo, condensed). Printed slips and the typed card: IBM Plex Mono. */
+:root{
+  --felt:#151515; --felt-groove:#0b0b0b; --letter:#eeede7; --frame:#8e908b; --frame-dark:#5b5d59;
+  --paper:#f2efe6; --ink:#1d1c1a; --ink-2:#4b4842; --red:#a3241c; --rule:#9fb3c4;
+  --g:12px; /* groove pitch: every letter sits on this grid */
+}
+body{background:#2a2a28;font-family:"Archivo";color:var(--letter)}
+.board{position:absolute;inset:0;background:var(--felt);overflow:hidden;
+  border:10px solid var(--frame);box-shadow:inset 0 0 0 2px var(--frame-dark)}
+/* felt ribs: a groove every --g px, letters are pushed into them */
+.board::before{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(to bottom,transparent 0 calc(var(--g) - 3px),var(--felt-groove) calc(var(--g) - 3px) var(--g));opacity:.9}
+.board::after{content:"";position:absolute;inset:0;opacity:.55;mix-blend-mode:screen;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .2 0 0 0 0 .2 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.layer{position:absolute;inset:0;z-index:2;padding:calc(var(--g)*4) 22px calc(var(--g)*3)}
+
+/* push-in letters */
+.lt{display:inline-block;font-stretch:78%;font-weight:560;color:var(--letter);line-height:1;
+  text-shadow:0 1.5px 0 #000,0 2px 2px rgba(0,0,0,.6)}
+.lt i{display:inline-block;font-style:normal}
+.lt i.gap{width:.5em}
+.row{display:flex;align-items:center;height:calc(var(--g)*4);text-decoration:none}
+.s1{font-size:15px;letter-spacing:.14em}
+.s2{font-size:24px;letter-spacing:.06em}
+.s3{font-size:36px;letter-spacing:.05em}
+.s4{font-size:58px;letter-spacing:.03em}
+
+.title{margin-bottom:var(--g)}
+.title .row{height:calc(var(--g)*6)}
+.title .sub{height:calc(var(--g)*2)}
+.menu{margin-top:calc(var(--g)*3)}
+.menu .row{justify-content:space-between;border-bottom:0}
+.menu .row .no{opacity:.92}
+.menu .primary{height:calc(var(--g)*6);margin-bottom:var(--g)}
+.spacer{height:calc(var(--g)*2)}
+.foot{position:absolute;left:22px;right:22px;bottom:calc(var(--g)*3)}
+.foot .row{height:calc(var(--g)*2)}
+
+/* aluminium name plate screwed to frame — plain, matte */
+.plate{position:absolute;z-index:3;right:16px;top:14px;background:#b7b8b3;color:#1d1d1b;
+  font:600 10px/1 "IBM Plex Mono";letter-spacing:.12em;padding:5px 8px;border-radius:1px;box-shadow:0 1px 0 #000}
+
+/* ---------- jobs: paper slips pinned to felt ---------- */
+.back{height:48px;display:flex;align-items:center;margin:-6px 0 0 -4px;padding-left:4px;width:150px}
+.jhead{display:flex;align-items:center;justify-content:space-between;height:calc(var(--g)*5)}
+.slips{position:relative;display:grid;grid-template-columns:1fr 1fr;column-gap:12px;row-gap:14px;margin-top:var(--g);align-items:start}
+.slip{position:relative;background:var(--paper);color:var(--ink);font-family:"IBM Plex Mono";padding:16px 11px 10px;
+  box-shadow:0 2px 0 rgba(0,0,0,.45),0 6px 10px rgba(0,0,0,.35);min-height:48px}
+.slip .hdr{display:flex;justify-content:space-between;font-size:10.5px;letter-spacing:.06em;color:var(--ink-2);border-bottom:1px dashed #8d897f;padding-bottom:4px}
+.slip h3{font:600 15.5px/1.15 "IBM Plex Mono";margin:7px 0 6px;letter-spacing:-.01em}
+.slip p{font-size:11.5px;line-height:1.35;color:var(--ink-2)}
+.slip .pay{display:flex;justify-content:space-between;margin-top:7px;font-size:12px;color:var(--ink);font-weight:600}
+.slip.new .hdr{background:var(--ink);color:var(--paper);border:0;padding:3px 5px;margin:0 -3px}
+/* done: slip folded in half upwards — only the title strip remains, back of the sheet shows */
+.slip.done{padding:14px 11px 9px;background:#e4e0d5}
+.slip.done::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;background:#cfcabd;clip-path:polygon(0 0,100% 0,96% 100%,4% 100%)}
+.slip.done h3{margin:0 0 3px;font-size:14px;color:#3a3833;text-decoration:line-through;text-decoration-thickness:1.5px}
+.slip.done .st{font-size:11px;color:var(--ink-2);letter-spacing:.04em}
+.tack{position:absolute;top:-5px;left:50%;width:15px;height:15px;margin-left:-7px;border-radius:50%;
+  background:#d9d8d2;box-shadow:inset 0 -2px 0 #8f8e89,0 2px 2px rgba(0,0,0,.6)}
+.tack::after{content:"";position:absolute;left:5px;top:5px;width:5px;height:5px;border-radius:50%;background:#8f8e89}
+
+/* ---------- settings: typed index card ---------- */
+.card{position:relative;margin-top:calc(var(--g)*1);background:var(--paper);color:var(--ink);font-family:"IBM Plex Mono";
+  padding:22px 16px 18px;box-shadow:0 2px 0 rgba(0,0,0,.45),0 8px 14px rgba(0,0,0,.35);
+  background-image:repeating-linear-gradient(to bottom,transparent 0 31px,rgba(110,140,165,.42) 31px 32px);background-position:0 54px;transform:rotate(-.4deg)}
+.card .tack{left:50%;top:-6px}
+.card .cardtop{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--red);padding-bottom:6px;height:32px}
+.card .cardtop b{font-weight:600;font-size:15px;letter-spacing:.08em}
+.card .cardtop span{font-size:11px;color:var(--ink-2)}
+.sec{font-size:11px;letter-spacing:.16em;color:var(--red);font-weight:600;height:32px;display:flex;align-items:flex-end;padding-bottom:5px}
+.opt{display:flex;align-items:center;justify-content:space-between;min-height:48px;font-size:14.5px}
+.opt .lab{white-space:nowrap}
+.choice{display:flex;gap:4px}
+.choice span{min-width:58px;height:44px;display:flex;align-items:center;justify-content:center;font-size:14px}
+.choice span::before{content:"[ ]";margin-right:4px;white-space:pre}
+.choice span.on::before{content:"[X]";font-weight:600}
+.choice span.on{font-weight:600}
+.typed-scale{display:flex;align-items:center;gap:8px;font-size:14px}
+.typed-scale .bar{letter-spacing:-.02em;white-space:pre}
+.typed-scale .bar b{font-weight:600}
+.typed-scale .val{min-width:44px;text-align:right;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 14px;border:2px solid var(--ink);font-size:14px;font-weight:600;letter-spacing:.04em}
+.note{font-size:11.5px;line-height:1.38;color:var(--ink-2);padding:2px 0 8px}
+
+/* ---------- landscape ---------- */
+@media (orientation:landscape){
+  .layer{padding:calc(var(--g)*2) 30px}
+  .s4{font-size:52px}
+  .mwrap{display:grid;grid-template-columns:1fr 1.15fr;column-gap:44px;height:100%}
+  .menu{margin-top:calc(var(--g)*1)}
+  .foot{position:static;margin-top:calc(var(--g)*3)}
+}
+</style></head><body>
+<div class="board"><div class="layer" id="app"></div></div>
+<script src="../data.js"></script>
+<script>
+const R = LW.rng(7);
+// Board text: every letter is a separate piece; '^' tilts the next letter, '~' lifts it, '_' is a missing letter.
+function L(str, cls = 's2') {
+  let out = '', tilt = false, lift = false;
+  for (const ch of str) {
+    if (ch === '^') { tilt = true; continue; }
+    if (ch === '~') { lift = true; continue; }
+    if (ch === '_') { out += '<i class="gap"></i>'; continue; }
+    if (ch === ' ') { out += '<i style="width:.36em"></i>'; continue; }
+    const r = tilt ? 7 : (R() - .5) * 1.4, y = lift ? -3 : (R() - .5) * 1.1, m = (R() - .5) * 1.6;
+    out += `<i style="transform:translateY(${y.toFixed(2)}px) rotate(${r.toFixed(2)}deg);margin-right:${m.toFixed(2)}px">${ch}</i>`;
+    tilt = lift = false;
+  }
+  return `<span class="lt ${cls}">${out}</span>`;
+}
+const up = s => s.toLocaleUpperCase('pl');
+const app = document.getElementById('app');
+const land = matchMedia('(orientation:landscape)').matches;
+
+if (LW.screen === 'menu') {
+  const num = ['', '2', '3', '4', '5', '6'];
+  const items = LW.menu.map((m, i) => m.primary
+    ? `<a class="row primary">${L('→ ' + up(m.label), 's3')}</a>`
+    : `<a class="row">${L(i === 3 ? 'GAB^LOTA' : up(m.label), 's2')}${L('M. ' + (i + 1), 's1 no')}</a>`).join('');
+  app.innerHTML = `<div class="mwrap"><div>
+    <div class="title">
+      <div class="row sub">${L('POGOTOWIE ZAMKOWE · CAŁĄ DOBĘ', 's1')}</div>
+      <div class="row">${L('LOCKWRIGHT', 's4')}</div>
+    </div>
+    <div class="foot">
+      <div class="row">${L('KRÓTKA PAUZA KOSZTUJE', 's1')}</div>
+      <div class="row">${L('MNIEJ NIŻ ZŁAMANY WYTR_CH', 's1')}</div>
+      <div class="spacer"></div>
+      <div class="row">${L('DYŻURNY: PARTER, M. 1', 's1')}</div>
+    </div></div>
+    <div class="menu">${items}</div></div>`;
+  if (!land) { const f = app.querySelector('.foot'); app.appendChild(f); }
+}
+
+if (LW.screen === 'jobs') {
+  const slip = (j, k) => {
+    const rot = [-1.2, .9, .5, -.8, 1.1, -.6, -1, .7][k];
+    if (j.state === 'done') return `<div class="slip done" style="transform:rotate(${rot}deg)"><div class="tack"></div>
+      <h3>${j.title}</h3><div class="st">wykonane · ${j.time}</div></div>`;
+    return `<div class="slip ${j.state}" style="transform:rotate(${rot}deg)"><div class="tack"></div>
+      <div class="hdr"><span>${j.state === 'new' ? 'NOWE' : 'ZLECENIE'}</span><span>NR ${j.no}</span></div>
+      <h3>${j.title}</h3><p>${j.who}<br>${j.what}<br>${j.where}</p>
+      <div class="pay"><span>${j.time}</span><span>${j.pay}</span></div></div>`;
+  };
+  // pinned order: open & new on top, done below (the board fills up from the top)
+  const order = [...LW.jobs.filter(j => j.state !== 'done'), ...LW.jobs.filter(j => j.state === 'done')];
+  app.innerHTML = `<div class="jhead"><a class="back">${L('‹ WSTECZ', 's2')}</a>${L('ZLECENIA', 's2')}</div>
+    <div class="slips">${order.map(slip).join('')}</div>`;
+}
+
+if (LW.screen === 'settings') {
+  const S = LW.settings;
+  const scale = v => { const n = Math.round(v / 10); return `<span class="bar">0 <b>${'='.repeat(n)}</b>${'·'.repeat(10 - n)} </span><span class="val">${v}%</span>`; };
+  app.innerHTML = `<div class="jhead"><a class="back">${L('‹ WSTECZ', 's2')}</a>${L('USTAWIENIA', 's2')}</div>
+  <div class="card"><div class="tack"></div>
+    <div class="cardtop"><b>KARTA USTAWIEŃ</b><span>dyżurny: ty</span></div>
+    <div class="sec">HAPTYKA</div>
+    <div class="opt"><span class="lab">Haptyka</span><span class="choice"><span class="on">wł.</span><span>wył.</span></span></div>
+    <div class="opt"><span class="lab">Intensywność</span><span class="typed-scale">${scale(S.intensity)}</span></div>
+    <div class="opt"><span class="btn">IMPULS PRÓBNY</span><span class="note" style="padding:0;max-width:150px">czujesz krótkie stuknięcie?</span></div>
+    <div class="sec">DŹWIĘK</div>
+    <div class="opt"><span class="lab">Głośność główna</span><span class="typed-scale">${scale(S.master)}</span></div>
+    <div class="opt"><span class="lab">Efekty</span><span class="typed-scale">${scale(S.sfx)}</span></div>
+    <div class="opt"><span class="lab">Tło</span><span class="typed-scale">${scale(S.ambient)}</span></div>
+    <div class="sec">STEROWANIE</div>
+    <div class="opt"><span class="lab">Napięcie automatyczne</span><span class="choice"><span>wł.</span><span class="on">wył.</span></span></div>
+    <div class="note">Napięcie trzyma się samo na bezpiecznym poziomie, a ty prowadzisz wytrych jednym kciukiem.</div>
+    <div class="opt"><span class="lab">Język</span><span class="choice"><span class="on">polski</span><span>English</span></span></div>
+  </div>`;
+}
+</script>
+</body></html>
