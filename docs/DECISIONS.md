@@ -188,3 +188,10 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
   - t22: zmiana T38 przyjęta bez zmian;
   - t30: zmiana T38 **odrzucona** (próg był spełniony już przed zmianą, a zmiana dawała 4 wyzwolenia).
 - **Cele lekcji** z `practice_goals.csv` (PL/EN, poprawka PL dla t26, dopisany DE) trafiają do `game/i18n/strings.csv` jako `practice.<tNN>.goal` (stare id) i zastępują cele z T20. Tytuły i wskazówki zostają w T20. Złote powtórki bez zmian, bo reguły się nie zmieniły.
+
+## D-55: Rozmiar paczki Android (N-30 bis): wykluczenia z eksportu i import stratny
+2026-11-05 · sesja A (agent rozmiaru) · Szczegóły, tabela i zrzuty: `docs/handoff/SESSION-B-LOG.md` („N-30 bis”), `docs/handoff/device-tests/fixes/size/`.
+- **Nieużywane pliki** zostają w `game/` (źródła), ale nie trafiają do paczki: lista w `exclude_filter` presetów Android i iOS w `game/export_presets.cfg`. Release AAB w CI bierze filtry z `preset.0` (jedno źródło prawdy, bez kopii w workflow). Kto zacznie ładować wykluczony plik, usuwa go z `exclude_filter` w tym samym commicie.
+- **Tekstury 3D planu B:** mapy normalnych są praktycznie płaskie (odchylenie < 1 poziom), więc `size_limit=256`. ORM (shader czyta tylko AO z kanału R) dostaje `size_limit=512`. Obie zostają VRAM (ASTC), mipmapy włączone.
+- **Grafiki 2D** w paczce: stratny WebP (0,8–0,85), mipmapy wyłączone, `size_limit` najwyżej 2× rozmiar na ekranie (mapa Zameczna 4096 → 2048, `ui/tray.jpg` → 1080). Matcapy zostają bezstratne, bo to tablica oświetlenia metalu. Wszystkie `.import` grafik z paczki są w repo (`git add -f`).
+- **Budżet:** `pck_android_mb` fail 70 → 58 (AAB ≈ pck + ~11 MB, więc AAB zostaje < 70 MB).

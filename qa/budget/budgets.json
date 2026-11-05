@@ -4,8 +4,8 @@
   "ci": {
     "pck_android_mb": {
       "warn": 45,
-      "fail": 70,
-      "note": "resources exported with the Android preset (bulk of the APK)"
+      "fail": 58,
+      "note": "resources exported with the Android preset (bulk of the AAB). N-30 bis: AAB = pck + ~11 MB (engine, plugins), so pck fail 58 keeps the AAB under the 70 MB budget; measured 33.1 MB on 2026-11-05"
     },
     "apk_mb": {
       "warn": 100,
