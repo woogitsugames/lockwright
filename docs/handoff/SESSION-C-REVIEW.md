@@ -502,3 +502,13 @@ Metoda: czytanie kodu, lokalnie na kopii `game/` (Godot 4.7.2 headless): **smoke
 - ONBOARDING §3.3 / D-21: pieczątka na kartce bloczka, bez okna. Teraz to `PanelContainer` wyświetlany 3 s przy pierwszym starcie (tekst przez i18n — OK). Kosmetyka zgodności z D-21.
 
 **Zmiany wizualne / dostępność nowych ekranów** — w osobnym raporcie `docs/handoff/A11Y-AUDIT.md`.
+
+---
+
+# Przegląd ciągły (etap 3)
+
+## Runda 1 — 2026-11-05 09:00
+Zakres: commity w `game/`, `platform/`, `data/`, `game-*.yml` od 08:05 (6e0c398, 48b2d41, b9ec491 i migawki WIP; commity sesji A w `game/*/photoreal/` tylko czytane).
+- **N-01 → zweryfikowane naprawione w 6e0c398** (adnotacji w tym pliku nie było): `game-android.yml`, `game-ios.yml`, `game-tests.yml` parsują się jako YAML (`yaml.safe_load` OK); runy 44–46 `game-tests` wystartowały normalnie (nie kończą się już w chwili utworzenia). Wynik runów — w następnej rundzie.
+- N-02…N-12: bez zmian w kodzie od drugiego przeglądu (sesja B zaczyna etap 3 od zadania 1 = te uwagi).
+- Regresji w nowych commitach nie znalazłem; 48b2d41 tylko dodaje `mkdir -p game/build` w teście eksportu.
