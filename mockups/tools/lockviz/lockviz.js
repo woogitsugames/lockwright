@@ -193,24 +193,26 @@ function elementLabel(g, i, st, x, y, extra) {
 function drawLift(g, box, f, kind) {
   const n = T.n, cw = Math.min(90, box.w / (n + 1.5));
   const x0 = box.x + (box.w - cw * n) / 2 + cw * 0.25;
-  const base = box.y + box.h - 70, H = Math.min(box.h - 130, 260);
+  const base = box.y + box.h - 70, H = Math.min((box.h - 110) * 0.55, 240);
   // plug / shell schematic: the shear band is each element's set window.
-  g.fillStyle = '#ddd6c8'; g.fillRect(x0 - 20, base - H - 20, cw * n + 10, H + 40);
+  g.fillStyle = '#ddd6c8'; g.fillRect(x0 - 20, base - H * 1.75 - 20, cw * n + 10, H * 1.75 + 30);
   for (let i = 0; i < n; i++) {
     const cx = x0 + i * cw, ew = cw * 0.42;
     const [lo, hi, variant] = T.elements[i];
     const st = elState(f, i), p = elPos(f, i);
-    g.fillStyle = '#f8f6f1'; g.fillRect(cx, base - H - 10, ew + 8, H + 20);   // chamber
-    g.strokeStyle = '#6b665c'; g.lineWidth = 1; g.strokeRect(cx, base - H - 10, ew + 8, H + 20);
+    g.fillStyle = '#f8f6f1'; g.fillRect(cx, base - H * 1.75 - 10, ew + 8, H * 1.75 + 10);   // chamber
+    g.strokeStyle = '#6b665c'; g.lineWidth = 1; g.strokeRect(cx, base - H * 1.75 - 10, ew + 8, H * 1.75 + 10);
     // set window: two engraved lines + wedge
-    const ylo = base - (lo / Q) * H, yhi = base - (hi / Q) * H;
+    const len = kind === 'wafer' ? 34 : Math.max(40, H * 0.4);
+    // window lines mark where the element's top edge must sit (position in [lo, hi])
+    const ylo = base - len - (lo / Q) * H, yhi = base - len - (hi / Q) * H;
     g.strokeStyle = '#2f5d7c'; g.lineWidth = 2; g.setLineDash([3, 3]);
     g.beginPath(); g.moveTo(cx - 6, ylo); g.lineTo(cx + ew + 14, ylo); g.moveTo(cx - 6, yhi); g.lineTo(cx + ew + 14, yhi); g.stroke();
     g.setLineDash([]);
     // element: top edge at the current position
-    const top = base - p * H, len = kind === 'wafer' ? 34 : Math.max(40, H * 0.45);
+    const top = base - len - p * H;
     body(g, st, cx + 4, top, ew, len, kind);
-    elementLabel(g, i, st, cx + ew / 2 + 4, base + 34, `${p.toFixed(3)}${variant ? ' v' + variant : ''}`);
+    elementLabel(g, i, st, cx + ew / 2 + 4, base + 44, `${p.toFixed(3)}${variant ? ' v' + variant : ''}`);
   }
   // shear line across the housing (nominal, mid of all windows)
   g.strokeStyle = '#23211d'; g.lineWidth = 2;
@@ -224,11 +226,12 @@ function drawPick(g, x0, cw, base, H, f) {
   const lift = f[T.col.view_pick_lift] / Q;
   const depth = val(f, 'pick_depth');
   const tipX = pe >= 0 ? x0 + pe * cw + cw * 0.21 + 4 : x0 + depth * cw * T.n;
-  const tipY = base + 14 - lift * H * 0.5;
+  const tipY = base - lift * H * 0.5;
   g.strokeStyle = '#4a4f55'; g.lineWidth = 4; g.lineCap = 'round';
   g.beginPath(); g.moveTo(x0 - 60, base + 22); g.lineTo(tipX - 6, base + 22); g.lineTo(tipX, tipY); g.stroke();
   g.lineCap = 'butt';
-  text(g, `pick → ${pe}  lift ${lift.toFixed(2)}`, x0 - 60, base + 52, { size: 11, color: '#6b665c' });
+  text(g, `pick → ${pe}`, x0 - 66, base + 20, { size: 11, color: '#6b665c', align: 'right' });
+  text(g, `lift ${lift.toFixed(2)}`, x0 - 66, base + 34, { size: 11, color: '#6b665c', align: 'right' });
 }
 
 // Core rotation dial (fraction of the opening rotation) + tension wrench.
@@ -252,7 +255,7 @@ function drawCore(g, box, f, what) {
 function drawLevers(g, box, f) {
   const n = T.n, cw = Math.min(90, box.w / (n + 1.5));
   const x0 = box.x + (box.w - cw * n) / 2;
-  const base = box.y + box.h - 60, H = Math.min(box.h - 150, 220), plateH = H + 40;
+  const base = box.y + box.h - 84, H = Math.min(box.h - 170, 220), plateH = H + 40;
   const stumpY = base - H * 0.5 - 40;
   for (let i = 0; i < n; i++) {
     const cx = x0 + i * cw, ew = cw * 0.7;
@@ -268,14 +271,12 @@ function drawLevers(g, box, f) {
     g.strokeRect(cx, yb - plateH, ew, plateH);
     g.setLineDash([]);
     // gate slot: where the stump sits when p is inside [lo, hi]
-    const slotTop = stumpY - (hi / Q - p) * H * 0.5 * -1;
     const sTop = stumpY + (p - hi / Q) * H * 0.5, sBot = stumpY + (p - lo / Q) * H * 0.5;
     g.fillStyle = '#efebe2'; g.fillRect(cx + ew * 0.3, sTop - 6, ew * 0.4, sBot - sTop + 12);
     g.strokeRect(cx + ew * 0.3, sTop - 6, ew * 0.4, sBot - sTop + 12);
     if (st === 'false_set') { g.beginPath(); g.moveTo(cx, yb - plateH); g.lineTo(cx + ew, yb); g.moveTo(cx + ew, yb - plateH); g.lineTo(cx, yb); g.stroke(); }
-    void slotTop;
     g.restore();
-    elementLabel(g, i, st, cx + ew / 2, base + 22, `${p.toFixed(3)}${falseGates ? ' fg' + falseGates : ''}`);
+    elementLabel(g, i, st, cx + ew / 2, base + 50, `${p.toFixed(3)}${falseGates ? ' fg' + falseGates : ''}`);
   }
   // bolt stump: a fixed bar across all levers
   g.fillStyle = '#4a4f55';
@@ -452,7 +453,7 @@ function drawTimeline() {
   const yAx = TL.height - 6;
   for (let s = 0; s <= N / T.step_hz; s += N / T.step_hz > 20 ? 5 : 1) {
     const x = X(s * T.step_hz);
-    g.fillStyle = '#6b665c'; g.fillRect(x, yAx - 10, 1, 4);
+    g.fillStyle = '#6b665c'; g.fillRect(x, yAx - 16, 1, 5);
     text(g, s + ' s', x, yAx, { align: 'center', size: 10, color: '#6b665c' });
   }
   // cursor

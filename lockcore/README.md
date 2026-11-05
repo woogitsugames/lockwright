@@ -32,7 +32,32 @@ lockcore/build/verify_seeds [--seeds N] [--family warded] [--tier 2] [--replays 
 lockcore/build/replay_tool lock pin_tumbler 4 123             # print a generated lockwright.lock/1
 lockcore/build/replay_tool record wafer 2 77 out.replay.json  # record the bot's run [--clumsy|--feel]
 lockcore/build/replay_tool play lockcore/tests/golden/wafer_t2_s77.replay.json
+lockcore/build/replay_tool trace lockcore/tests/golden/wafer_t2_s77.replay.json out.trace.json  # per-step trace
 ```
+
+### Replay debugger (lockviz)
+
+`replay_tool trace <file.replay.json> <out.trace.json>` plays a replay exactly like `play`
+(same session, same hash; exit 1 on mismatch) and writes `lockwright.trace/1`: one flat row per
+step (`frame_fields` = inputs, continuous signals, stress, core rotation, pick element, failure,
+then `state, position` per element), every event `[t_step, kind, sub, element, intensity,
+material]`, name tables and the element windows. All values stay Q16 integers (65536 = 1.0).
+
+`mockups/tools/lockviz/` is a plain HTML+JS viewer for it (design/debug tool, not game code):
+per-family schematic (pins/wafers, levers + stump, wards + key bit + bolt, rings + reading line),
+input and signal curves, per-element state strips (pattern per state), event lanes, scrubbing
+(drag the timeline, arrows, Shift+arrows ×10, `[`/`]` previous/next event, space = play).
+
+```bash
+# regenerate traces for all golden replays
+for f in lockcore/tests/golden/*.replay.json; do b=$(basename $f .replay.json); \
+  lockcore/build/replay_tool trace $f mockups/tools/lockviz/traces/$b.trace.json; done
+python3 -m http.server -d . 8000   # open http://localhost:8000/mockups/tools/lockviz/?trace=wafer_t2_s77&t=400
+node mockups/tools/lockviz/shot.mjs [trace-name] [frame|end] [out.png]   # Playwright screenshot
+```
+
+A new trace name must also be added to `mockups/tools/lockviz/traces/index.json`; any other
+trace/replay can be opened with the file pickers.
 
 Run a single test group: `lockcore/build/lockcore_tests pin:` (substring filter);
 `lockcore/build/lockcore_tests fuzz` runs only the fuzz test (ctest `lockcore_fuzz`; under
