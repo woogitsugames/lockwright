@@ -523,3 +523,42 @@ def brick_wall(name, brick=(0.42, 0.20, 0.12), wash=(0.80, 0.78, 0.72), wash_amt
     h = _math(nt, 'ADD', h, _math(nt, 'MULTIPLY', wm, 0.15))
     l.new(_bump(nt, h, 0.5, 2.0), b.inputs['Normal'])
     return m
+
+def lathe_open(name, profile, x=0.0, y=0.0, seg=64, thick=0.0, mat=None):
+    """Open surface of revolution (no caps) around a vertical axis at (x, y): shades, mugs, bowls.
+    profile: [(r, z), ...]; thick > 0 adds a Solidify shell (outward)."""
+    bm = bmesh.new(); rings = []
+    for r, z in profile:
+        rings.append([bm.verts.new((x + r * math.cos(2 * math.pi * i / seg), y + r * math.sin(2 * math.pi * i / seg), z)) for i in range(seg)])
+    for a, b in zip(rings, rings[1:]):
+        for i in range(seg): bm.faces.new((a[i], a[(i + 1) % seg], b[(i + 1) % seg], b[i]))
+    me = bpy.data.meshes.new(name); bm.to_mesh(me); bm.free()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o)
+    for p in me.polygons: p.use_smooth = True
+    if thick:
+        s = o.modifiers.new('sol', 'SOLIDIFY'); s.thickness = thick; s.offset = 0.0
+    if mat: me.materials.append(mat)
+    return o
+
+def stain_decal(name, axis, plane, bounds, spots, color=(0.08, 0.06, 0.04), rough=0.8, noise_scale=0.02):
+    """Transparent decal plane carrying soft localised dirt (soot above a lamp, hand grime round a switch).
+    axis: plane normal 'Y' (wall/door) or 'Z' (floor); plane: its coordinate; bounds: (u0, u1, v0, v1) in the other two axes;
+    spots: [(cu, cv, ru, rv, strength), ...] elliptical falloffs, broken up by noise."""
+    m, nt, l, b, P = _new(name)
+    out = nt.nodes['Material Output']
+    X, Y, Z = _sep(nt, P); U, V = (X, Z) if axis == 'Y' else (X, Y)
+    acc = None
+    for cu, cv, ru, rv, k in spots:
+        du = _math(nt, 'DIVIDE', _math(nt, 'SUBTRACT', U, cu), ru); dv = _math(nt, 'DIVIDE', _math(nt, 'SUBTRACT', V, cv), rv)
+        d = _math(nt, 'ADD', _math(nt, 'MULTIPLY', du, du), _math(nt, 'MULTIPLY', dv, dv))
+        f = _math(nt, 'MULTIPLY', _math(nt, 'EXPONENT', _math(nt, 'MULTIPLY', d, -2.5)), k)
+        acc = f if acc is None else _math(nt, 'ADD', acc, f)
+    n = _maprange(nt, _noise(nt, P, noise_scale, detail=8, rough=0.7, dist=0.4), 0.3, 0.75, 0.25, 1.0)
+    mask = _math(nt, 'MINIMUM', _math(nt, 'MULTIPLY', acc, n), 0.95)
+    b.inputs['Base Color'].default_value = (*color, 1); b.inputs['Roughness'].default_value = rough
+    tr = nt.nodes.new('ShaderNodeBsdfTransparent'); ms = nt.nodes.new('ShaderNodeMixShader')
+    l.new(mask, ms.inputs[0]); l.new(tr.outputs[0], ms.inputs[1]); l.new(b.outputs[0], ms.inputs[2]); l.new(ms.outputs[0], out.inputs['Surface'])
+    u0, u1, v0, v1 = bounds
+    o = bx(name, u0, u1, plane - 0.05, plane, v0, v1, m) if axis == 'Y' else bx(name, u0, u1, v0, v1, plane, plane + 0.05, m)
+    o.visible_shadow = False
+    return o

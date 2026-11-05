@@ -134,7 +134,7 @@ wr = [(3.8, -4.28), (-3.0, -4.28), (-4.1, -4.6), (-4.7, -5.6), (-4.8, -7.0), (-4
 flat_tool('wrench', wr, 1.0, 0.75, 0.55, tip='flat').data.materials[0] = MAT['wrench']
 
 # backdrop: dark interior of the box far behind the cut
-put(box('back', -120, 160, 70, 72, -160, 160), paint('inside', (0.16, 0.19, 0.17), rough=0.55, chip=0.0, grime=0.0), 0.0)
+put(box('back', -120, 160, 70, 72, -160, 160), paint('inside', (0.07, 0.085, 0.075), rough=0.5, chip=0.0, grime=0.0), 0.0)
 
 # ---------------------------------------------------------------- light + camera
 world_hdri(float(arg('--world', '0.04')), sat=0.4)

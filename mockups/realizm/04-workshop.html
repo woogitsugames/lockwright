@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Realizm · warsztat</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="scene.css">
+</head><body>
+<!-- Workshop bench = the hub. Every way out is an object on the bench, named on something a locksmith would write on:
+     the shift pad (Tryb Ciągły), the phone (Tryb Zleceń), the vice (practice), the showcase (history notes),
+     the notebook (settings), the drawer (tools). No menu, no panels. -->
+<main class="scene" data-scene="img/workshop.jpg" data-anchors="img/workshop.json" aria-label="Warsztat ślusarza">
+  <div class="ink tagtext" data-anchor="tag_case" data-w="264" data-h="128">Gablota<small>14 z 20</small></div>
+  <div class="ink tagtext" data-anchor="tag_vice" data-w="264" data-h="128">Ćwiczenia<small>imadło</small></div>
+  <div class="ink label" data-anchor="notebook_label" data-w="352" data-h="144">Zeszyt<small>ustawienia</small></div>
+  <div class="ink drawer" data-anchor="drawer_card" data-w="272" data-h="96">Narzędzia</div>
+  <article class="ink duty" data-anchor="slip" data-w="296" data-h="420">
+    <h2>Dyżur</h2>
+    <div>Śródmieście, od 20:00</div>
+    <div class="pencil">wczoraj: <svg class="tally" viewBox="0 0 130 30" width="130" height="30" aria-label="12"><path d="M4 4v22"/><path d="M13 4v22"/><path d="M22 4v22"/><path d="M31 4v22"/><path d="M0 22L36 8"/><path d="M50 4v22"/><path d="M59 4v22"/><path d="M68 4v22"/><path d="M77 4v22"/><path d="M46 22L82 8"/><path d="M96 4v22"/><path d="M105 4v22"/></svg></div>
+    <div class="pencil">najlepiej: 17</div>
+  </article>
+  <div class="screen-lit" data-anchor="phone_screen" data-w="264" data-h="560">
+    <div class="t">21:12</div><b>2</b>zlecenia czekają<div class="from">Dyspozytornia</div>
+  </div>
+
+  <button class="hit" data-hit="slip" aria-label="Dyżur: zacznij serię zamków"></button>
+  <button class="hit" data-hit="phone_screen" data-pad="6" aria-label="Zlecenia: 2 czekają"></button>
+  <button class="hit" data-hit="vice" aria-label="Ćwiczenia w imadle"></button>
+  <button class="hit" data-hit="case" aria-label="Gablota: 14 z 20 notek"></button>
+  <button class="hit" data-hit="notebook_label" data-pad="20" aria-label="Zeszyt: ustawienia"></button>
+  <button class="hit" data-hit="drawer_card" data-pad="10" aria-label="Szuflada: narzędzia"></button>
+</main>
+<script src="anchors.js"></script>
+</body></html>

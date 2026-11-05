@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Realizm · zlecenie: przyjazd</title>
+<link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="scene.css">
+</head><body>
+<!-- Job arrival (Tryb Zleceń, HUD.md §7.1): the stairwell is the screen. The order is printed on the dispatch slip
+     clipped to the board in the locksmith's hand; the client's name is on the card in the door's nameplate.
+     Strings are i18n keys in the game (job.grandma_broth.*, hud.dispatch.*); PL shown. -->
+<main class="scene" data-scene="img/stairwell.jpg" data-anchors="img/stairwell.json" aria-label="Klatka schodowa, drzwi mieszkania 12">
+  <div class="ink card" data-anchor="namecard" data-w="208" data-h="56">H. Nowak</div>
+
+  <article class="ink slip" data-anchor="slip" data-w="296" data-h="420">
+    <div class="form"><span>Zlecenie</span><span>nr 14 · 21:40</span></div>
+    <div class="addr">ul. Lipowa 7 m. 12, III p.</div>
+    <div class="who">pani Halina, 81 lat</div>
+    <div class="what">Zatrzasnęła drzwi, w środku rosół na&nbsp;gazie. Sąsiadka zakręciła gaz na&nbsp;klatce.</div>
+    <div class="rate pencil"><span>stawka dzienna</span><span>75</span></div>
+    <div class="acts"><span>Pytam o&nbsp;dokumenty</span><span>Odmawiam</span></div>
+  </article>
+
+  <!-- touch targets: the two pencilled boxes (extended to >= 48 px), the timer switch, the cylinder -->
+  <button class="hit" data-hit="slip" data-sub="0.04,0.8,0.5,0.97" data-extend="down" aria-label="Pytam o dokumenty: sprawdzam prawo do lokalu"></button>
+  <button class="hit" data-hit="slip" data-sub="0.5,0.8,0.96,0.97" data-extend="down" aria-label="Odmawiam zlecenia"></button>
+  <button class="hit" data-hit="switch" data-pad="8" aria-label="Światło na klatce (minutnik)"></button>
+  <button class="hit" data-hit="cylinder" data-pad="4" aria-label="Obejrzyj wkładkę"></button>
+</main>
+<script src="anchors.js"></script>
+</body></html>

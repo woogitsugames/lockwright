@@ -38,7 +38,7 @@ white_en = enamel('enamel_white', (0.80, 0.80, 0.76), chip=0.0)
 card = paper('name_card', (0.78, 0.74, 0.64), grime=0.4, seed=3)
 slip = paper('slip', (0.83, 0.81, 0.75), grime=0.1, seed=1, lines=(8.0, 'Y', (0.70, 0.72, 0.74)))
 pad_paper = paper('pad', (0.80, 0.78, 0.72), grime=0.2, seed=2)
-hardboard = oak('hardboard', light=(0.30, 0.18, 0.09), dark=(0.22, 0.12, 0.06), ring=40, coat=0.3, pores=0.0, seed=9, wear=0.6)
+hardboard = oak('hardboard', light=(0.20, 0.12, 0.06), dark=(0.14, 0.08, 0.04), ring=40, coat=0.3, pores=0.0, seed=9, wear=0.6)
 rail_wood = oak('handrail', light=(0.42, 0.24, 0.11), dark=(0.16, 0.08, 0.035), axis='Y', seed=7, ring=2.0, coat=1.0,
                 coat_rough=0.15, wear=0.8, varnish_tint=0.2)
 dark = dark_mat('void', (0.01, 0.009, 0.008))
@@ -254,23 +254,23 @@ hr.data.bevel_mode = 'ROUND'
 # ---------------------------------------------------------------- doormat (coir on rubber backing)
 MX0, MX1, MY0, MY1 = -385, 385, -585, -55
 bx('mat_back', MX0, MX1, MY0, MY1, 0, 7, mat_rubber, bev=2)
-coir_base = oak('coir_base', light=(0.40, 0.25, 0.11), dark=(0.20, 0.11, 0.05), axis='Y', ring=1.2, coat=0.0, rough=0.9, seed=12, wear=0, grime=0)
+coir_base = rubber('coir_base', (0.05, 0.032, 0.018), rough=0.95)
 bx('mat_top', MX0 + 6, MX1 - 6, MY0 + 6, MY1 - 6, 7, 13, coir_base)
 if HAIR:
     pm_ = bpy.data.meshes.new('fibre_bed'); bmp = bmesh.new()
-    bmesh.ops.create_grid(bmp, x_segments=24, y_segments=16, size=0.5)
+    bmesh.ops.create_grid(bmp, x_segments=94, y_segments=64, size=0.5)      # one tuft every ~8 mm, in rows
     for v in bmp.verts: v.co = Vector(((MX0 + MX1) / 2 + v.co.x * (MX1 - MX0 - 12), (MY0 + MY1) / 2 + v.co.y * (MY1 - MY0 - 12), 12.5))
     bmp.to_mesh(pm_); bmp.free(); top = bpy.data.objects.new('fibre_bed', pm_); bpy.context.collection.objects.link(top)
     top.data.materials.append(coir_base)
     mp = top.modifiers.new('fibres', 'PARTICLE_SYSTEM'); ps = mp.particle_system; st = ps.settings
     # coir: stiff, coarse fibres standing in tufts, tips splayed, dark gaps between tufts
-    st.type = 'HAIR'; st.count = 9000; st.hair_length = 17; st.emit_from = 'FACE'; st.use_advanced_hair = True
-    st.normal_factor = 1.0; st.factor_random = 0.45; st.use_modifier_stack = True
-    st.child_type = 'INTERPOLATED'; st.child_percent = 3; st.rendered_child_count = 34; st.child_radius = 3.2
-    st.clump_factor = -0.6; st.clump_shape = 0.3; st.roughness_1 = 0.9; st.roughness_1_size = 0.6; st.roughness_endpoint = 2.2
-    st.roughness_2 = 0.6; st.roughness_2_size = 1.5; st.child_length = 0.9; st.child_length_threshold = 0.35
-    st.root_radius = 1.0; st.tip_radius = 0.5; st.radius_scale = 0.75; st.render_step = 3; st.display_step = 2
-    top.data.materials.append(hair_mat('coir', border=(MX0, MX1, MY0, MY1, 48, (0.06, 0.035, 0.02))))
+    st.type = 'HAIR'; st.count = 95 * 65; st.hair_length = 16; st.emit_from = 'VERT'; st.use_emit_random = False
+    st.use_advanced_hair = True; st.normal_factor = 1.0; st.factor_random = 0.12; st.use_modifier_stack = True
+    st.child_type = 'SIMPLE'; st.child_percent = 2; st.rendered_child_count = 36; st.child_radius = 3.4; st.child_roundness = 1.0
+    st.clump_factor = -0.45; st.clump_shape = 0.2; st.roughness_1 = 0.5; st.roughness_1_size = 0.5; st.roughness_endpoint = 1.4
+    st.roughness_2 = 0.5; st.roughness_2_size = 1.2; st.child_length = 0.92; st.child_length_threshold = 0.3
+    st.root_radius = 1.0; st.tip_radius = 0.45; st.radius_scale = 0.7; st.render_step = 3; st.display_step = 2
+    top.data.materials.append(hair_mat('coir', light=(0.44, 0.30, 0.16), dark=(0.21, 0.13, 0.065), border=(MX0, MX1, MY0, MY1, 48, (0.045, 0.03, 0.02))))
     st.material = 2
 
 # ---------------------------------------------------------------- lights
@@ -292,15 +292,35 @@ else:
     area_light('inside', (0, 400, 300), a3, 700, 3.0e6, (1.0, 0.62, 0.32))
 bx('inside_floor', DX0, DX1, 105, 1200, -20, 0, floor)
 
+# ---------------------------------------------------------------- traces of use
+stain_decal('soot', 'Y', -0.6, (LAMPX - 400, LAMPX + 400, LAMPZ - 120, CEIL), [(LAMPX, LAMPZ + 250, 160, 380, 0.55), (LAMPX, LAMPZ + 700, 260, 400, 0.25)],
+            color=(0.10, 0.085, 0.06))
+stain_decal('hand_grime', 'Y', -0.6, (SWX - 160, SWX + 160, SWZ - 200, SWZ + 170), [(SWX + 10, SWZ - 10, 70, 60, 0.45), (SWX + 40, SWZ - 60, 40, 40, 0.3)],
+            color=(0.05, 0.06, 0.045), rough=0.5, noise_scale=0.05)
+stain_decal('door_grime', 'Y', LY - 0.3, (HX - 200, LX1, HZ - 220, HZ + 180), [(HX - 40, HZ - 30, 110, 120, 0.22), (HX + 20, HZ + 20, 50, 70, 0.2)],
+            color=(0.05, 0.03, 0.016), rough=0.6, noise_scale=0.04)
+stain_decal('floor_grime', 'Z', 0.2, (W0, 2400, -4200, 0), [(0, -30, 900, 70, 0.5), (-1100, -30, 600, 60, 0.6), (DX0 - 150, -400, 120, 380, 0.25)],
+            color=(0.09, 0.08, 0.065), rough=0.7, noise_scale=0.03)
+# a takeaway menu someone pushed into the door gap
+fly = slab('flyer', rounded_rect(96, 150, 0.5, 2), 0.25, paper('flyer', (0.78, 0.74, 0.62), grime=0.3, seed=9))
+place(fly, (LX1 + 1, 18, 1250), rot=(90, 3, 78))
+
 # ---------------------------------------------------------------- camera + clipboard held in the foreground
 cam = photo_camera((150, -2420, 1500), yaw=3.5, lens=24.5, shift=(0.0, -0.14))
 cam.data.sensor_fit = 'VERTICAL'; cam.data.sensor_height = 36.0; cam.data.sensor_width = 36.0
 bpy.context.view_layer.update()
 A5 = (148, 210)
-clip_m = metal('clip', (0.42, 0.42, 0.41), 0.32, marks='stamp', wear=0.5, grime=0.6, bevel_r=0.5)
+clip_m = metal('clip', (0.48, 0.48, 0.47), 0.24, marks='stamp', wear=0.5, grime=0.6, bevel_r=0.5)
 # held below the eye, facing up towards it, slightly rolled: the frame edge cuts the board (hands out of shot)
-M_cb = cam.matrix_world @ Matrix.Translation(Vector((-120, -335, -470))) @ Matrix.Rotation(math.radians(-13), 4, 'Z') @ Matrix.Rotation(math.radians(-54), 4, 'X')
+M_cb = cam.matrix_world @ Matrix.Translation(Vector((-120, -350, -520))) @ Matrix.Rotation(math.radians(-13), 4, 'Z') @ Matrix.Rotation(math.radians(-54), 4, 'X')
 cb_objs, sheet_pt = clipboard('clipboard', M_cb, slip, pad_paper, hardboard, clip_m, rng=rng)
+# a pencil tucked under the clip
+pen = lathe_x('pencil', [(0, 0.01), (0, 1.0), (16, 3.6), (18, 3.7), (165, 3.7), (165, 0.01)], seg=6)
+pen.matrix_world = M_cb @ Matrix.Translation(Vector((40, 112, 7.5))) @ Matrix.Rotation(math.radians(-100), 4, 'Z')
+setmat(pen, oil_paint('pencil_paint', (0.55, 0.36, 0.05), rough=0.3, chips=0.1, scuffs=0.1, strokes='X'))
+# the locksmith himself, out of shot: blocks the window light behind him (shadow on the floor and the board)
+body = bx('body', cam.location.x - 230, cam.location.x + 230, cam.location.y - 200, cam.location.y + 30, 0, cam.location.z - 120, dark)
+body.visible_camera = False; body.visible_glossy = False
 
 # ---------------------------------------------------------------- render
 CROP = arg('--crop', '')

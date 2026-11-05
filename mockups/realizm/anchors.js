@@ -42,7 +42,12 @@
         el.style.transform = matrix3d(w, h, q.map(px));
       });
       stage.querySelectorAll('[data-hit]').forEach(el => {
-        const q = data.anchors[el.dataset.hit]; if (!q) return;
+        let q = data.anchors[el.dataset.hit]; if (!q) return;
+        if (el.dataset.sub) {  // sub-rectangle of the quad in its own (u, v) units, bilinear
+          const [u0, v0, u1, v1] = el.dataset.sub.split(',').map(Number);
+          const at = (u, v) => [0, 1].map(i => (1 - u) * (1 - v) * q[0][i] + u * (1 - v) * q[1][i] + u * v * q[2][i] + (1 - u) * v * q[3][i]);
+          q = [at(u0, v0), at(u1, v0), at(u1, v1), at(u0, v1)];
+        }
         const P = q.map(px), xs = P.map(p => p[0]), ys = P.map(p => p[1]);
         const pad = +(el.dataset.pad || 0);
         let x0 = Math.min(...xs) - pad, x1 = Math.max(...xs) + pad, y0 = Math.min(...ys) - pad, y1 = Math.max(...ys) + pad;

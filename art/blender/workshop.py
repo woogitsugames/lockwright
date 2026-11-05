@@ -19,12 +19,12 @@ BZ = 900                                   # bench top height
 BY0, BY1 = -690, -30                       # bench front / back
 
 # ---------------------------------------------------------------- materials
-bricks = brick_wall('bricks', seed=2, wash_amt=0.7)
+bricks = brick_wall('bricks', brick=(0.34, 0.19, 0.13), seed=2, wash_amt=0.95)
 plaster = lime_wall('plaster', (0.66, 0.64, 0.58), seed=8, dirt=0.4, cracks=0.4)
 ceil_m = lime_wall('ceil', (0.62, 0.60, 0.55), seed=9, dirt=0.3, cracks=0.2)
 concrete = terrazzo('concrete', matrix=(0.34, 0.33, 0.31), seed=6)
 vice_paint = paint('vice_paint', (0.10, 0.17, 0.20), rough=0.38, metal_col=(0.42, 0.42, 0.41), chip=0.9, grime=0.8)
-mach_paint = paint('mach_paint', (0.20, 0.25, 0.20), rough=0.45, metal_col=(0.45, 0.45, 0.44), chip=0.6, grime=0.8)
+mach_paint = paint('mach_paint', (0.10, 0.13, 0.11), rough=0.35, metal_col=(0.45, 0.45, 0.44), chip=0.6, grime=0.8)
 lamp_paint = paint('lamp_paint', (0.07, 0.12, 0.09), rough=0.3, metal_col=(0.5, 0.5, 0.48), chip=0.5, grime=0.5)
 steel = metal('steel', (0.58, 0.58, 0.57), 0.28, marks='grind', marks_scale=0.6, wear=0.5, grime=0.7, smudge=0.6, bevel_r=0.4)
 bright = metal('bright_steel', (0.70, 0.70, 0.69), 0.18, marks='turn', marks_axis=(1, 0, 0), wear=0.3, grime=0.5, bevel_r=0.3)
@@ -59,7 +59,7 @@ tb = tea.node_tree.nodes['Principled BSDF']; tb.inputs['Base Color'].default_val
 void = dark_mat('void')
 
 def beech(seed, center, width=40):
-    l = jitter((0.60, 0.42, 0.26), 0.10, rng); d = jitter((0.42, 0.27, 0.15), 0.10, rng)
+    l = jitter((0.44, 0.29, 0.16), 0.12, rng); d = jitter((0.27, 0.15, 0.07), 0.12, rng)
     c = list(center); c[2] += rng.uniform(-0.4, 0.4) * width
     return oak('beech%d' % seed, light=l, dark=d, axis='X', seed=seed, ring=rng.uniform(2.0, 3.5), incline=rng.uniform(-0.04, 0.04),
                depth=rng.uniform(80, 200), coat=0.0, rough=0.55, wear=0.9, grime=0.9, pores=0.35, flecks=0.6, center=tuple(c), contrast=0.6)
@@ -82,8 +82,8 @@ dm = bpy.data.materials.new('bench_grime'); dm.use_nodes = True; nt = dm.node_tr
 from env_common import _noise, _mix, _maprange, _math, _sep, _bump
 outn = nt.nodes['Material Output']; pb = nt.nodes['Principled BSDF']
 P = nt.nodes.new('ShaderNodeTexCoord').outputs['Object']; X, Y, Z = _sep(nt, P)
-stain = _maprange(nt, _noise(nt, P, 0.006, detail=8, rough=0.7, dist=0.5), 0.56, 0.68, 0, 0.75)
-spots = _maprange(nt, _noise(nt, P, 0.05, detail=6, rough=0.6), 0.70, 0.74, 0, 0.6)
+stain = _maprange(nt, _noise(nt, P, 0.006, detail=8, rough=0.7, dist=0.5), 0.58, 0.72, 0, 0.6)
+spots = _maprange(nt, _noise(nt, P, 0.05, detail=6, rough=0.6), 0.74, 0.77, 0, 0.4)
 def ring_mask(cx, cy, r, w):
     dx = _math(nt, 'SUBTRACT', X, cx); dy = _math(nt, 'SUBTRACT', Y, cy)
     d = _math(nt, 'SQRT', _math(nt, 'ADD', _math(nt, 'MULTIPLY', dx, dx), _math(nt, 'MULTIPLY', dy, dy)))
@@ -187,7 +187,7 @@ def pliers(name, x, z, ang):
     cyl(name + 'pivot', 5.5, 18, (x + (R @ Vector((0, 0, -40))).x, PY - 45, z + (R @ Vector((0, 0, -40))).z), axis='Y', verts=24).data.materials.append(bright)
 peg(22, 13, 50, 12); pliers('pliers', hole_pt(22, 13)[0], hole_pt(22, 13)[1] + 70, 180)
 # ---------------------------------------------------------------- key blank board (left, under the shelf)
-KX0, KX1, KZ0, KZ1 = -610, -170, 1010, 1330
+KX0, KX1, KZ0, KZ1 = -610, -170, 985, 1270
 bx('kb_board', KX0, KX1, -24, 0, KZ0, KZ1, beech(70, (-390, -12, 1170), 300), bev=2)
 def blank_outline(kind):
     blade = [(-4.5, 1.5), (-4.5, -6), (-4.2, -36), (-1, -40), (4.2, -36), (4.2, -6), (4.5, 1.5)]
@@ -214,15 +214,16 @@ for k in (0, 1):
     blank_me[k].hide_render = True
 
 # ---------------------------------------------------------------- shelf + glass showcase (opened locks)
-SH_Z, SX0_, SX1_ = 1400, -660, -60
+SH_Z, SX0_, SX1_ = 1330, -660, -60
 bx('shelf', SX0_, SX1_, -250, 0, SH_Z - 28, SH_Z, beech(80, (-360, -125, SH_Z - 14), 200), bev=2)
 for x in (SX0_ + 60, SX1_ - 60):
     tube('bracket', [(x, -6, SH_Z - 200), (x, -6, SH_Z - 30), (x, -200, SH_Z - 30), (x, -6, SH_Z - 200)], 6, vice_paint, smooth_pts=False)
-CX0, CX1, CY0, CY1, CZ0, CZ1 = -630, -90, -235, -20, SH_Z, SH_Z + 300
+CX0, CX1, CY0, CY1, CZ0, CZ1 = -620, -100, -235, -20, SH_Z, SH_Z + 270
 case_wood = oak('case_wood', light=(0.30, 0.16, 0.07), dark=(0.10, 0.045, 0.02), axis='X', seed=17, ring=3.5, coat=1.0, coat_rough=0.12,
                 varnish_tint=0.2, center=(0, CY0, CZ0 + 20))
 bx('case_base', CX0, CX1, CY0, CY1, CZ0, CZ0 + 45, case_wood, bev=2.5)
 bx('case_felt', CX0 + 12, CX1 - 12, CY0 + 12, CY1 - 12, CZ0 + 45, CZ0 + 48, felt)
+bx('case_back', CX0 + 18, CX1 - 18, CY1 - 20, CY1 - 18, CZ0 + 45, CZ1 - 18, paper('linen', (0.55, 0.50, 0.40), fibre=1.0, seed=7))
 for x0, x1 in ((CX0, CX0 + 18), (CX1 - 18, CX1)):
     for y0, y1 in ((CY0, CY0 + 18), (CY1 - 18, CY1)):
         bx('case_post', x0, x1, y0, y1, CZ0 + 45, CZ1, case_wood, bev=1.5)
@@ -253,15 +254,19 @@ bx('ex_woodbolt', -260, -90, -175, -150, FZ + 25, FZ + 45, oak('ex_bolt', light=
                                                                ring=2.5, coat=0.1, center=(-170, -160, FZ + 35)), bev=3)
 
 # ---------------------------------------------------------------- bench vice with a practice cylinder
-VX, VY = -230, -400
+VX, VY = -250, -380
 bx('vice_base', VX - 80, VX + 80, VY - 60, VY + 60, BZ, BZ + 14, vice_paint, bev=3)
 for sx in (-1, 1):
     for sy in (-1, 1):
         screw_head('vb', (VX + sx * 62, VY + sy * 42, BZ + 14), 7, 5, axis='Z', slot=False, kind='pan', mat=dark_steel)
-rear = bx('vice_rear', VX - 70, VX + 70, VY + 0, VY + 55, BZ + 14, BZ + 120, vice_paint, bev=6, seg=4)
+def casting(name, prof, half_w, mat):
+    o = prism(name, prof, -half_w, half_w)
+    o.data.transform(Matrix.Translation(Vector((VX, VY, BZ))) @ Matrix.Rotation(math.radians(90), 4, 'Z'))
+    setmat(o, mat); _bev(o, 5, 4, 30); return o
+casting('vice_rear', [(-4, 14), (62, 14), (78, 26), (82, 58), (72, 90), (54, 102), (40, 122), (-4, 122)], 68, vice_paint)
 bx('vice_anvil', VX - 45, VX + 45, VY + 55, VY + 110, BZ + 100, BZ + 122, vice_paint, bev=5)
 bx('vice_slide', VX - 32, VX + 32, VY - 210, VY + 40, BZ + 40, BZ + 92, bright, bev=2)
-bx('vice_front', VX - 70, VX + 70, VY - 85, VY - 32, BZ + 30, BZ + 120, vice_paint, bev=6, seg=4)
+casting('vice_front', [(-90, 34), (-32, 34), (-32, 122), (-58, 122), (-78, 104), (-90, 72)], 68, vice_paint)
 jaw_m = metal('jaw', (0.5, 0.5, 0.49), 0.35, marks='grind', marks_axis=(0, 0, 1), marks_scale=3, marks_amt=2.5, wear=0.6, grime=0.8, bevel_r=0.3)
 bx('jaw_r', VX - 66, VX + 66, VY - 4, VY + 2, BZ + 92, BZ + 122, jaw_m, bev=0.8)
 bx('jaw_f', VX - 66, VX + 66, VY - 32, VY - 26, BZ + 92, BZ + 122, jaw_m, bev=0.8)
@@ -284,7 +289,7 @@ for k in range(5):
 face = lathe('pc_face', [(0.1, PCZ + 50), (8.5, PCZ + 50), (9, PCZ + 52), (0.1, PCZ + 52)], PCX, VY - 14, seg=48); setmat(face, brass)
 
 # ---------------------------------------------------------------- key-cutting machine (invented, generic)
-KMX, KMY = 330, -300
+KMX, KMY = 270, -290
 km_base = slab('km_base', rounded_rect(330, 230, 24), 55, mach_paint, bev=6, seg=4); place(km_base, (KMX, KMY, BZ))
 for sx in (-1, 1):
     for sy in (-1, 1):
@@ -332,29 +337,33 @@ for n in range(260):
 sh_me.materials.append(brass)
 
 # ---------------------------------------------------------------- articulated lamp (warm key light)
-LBX, LBY = 600, -120
+LBX, LBY = 720, -140
 bx('lamp_clamp', LBX - 25, LBX + 25, LBY - 25, LBY + 25, BZ, BZ + 40, lamp_paint, bev=4)
-J1 = Vector((LBX, LBY, BZ + 40)); J2 = Vector((LBX - 120, LBY - 60, BZ + 520)); J3 = Vector((VX + 70, VY - 40, BZ + 470))
+LT = Vector((float(arg('--lampx', '170')), float(arg('--lampy', '-600')), float(arg('--lampz', '1640'))))
+J1 = Vector((LBX, LBY, BZ + 40)); J2 = Vector((LBX - 60, LBY - 120, BZ + 640)); J3 = LT + Vector((60, 40, 50))
 for a, b in ((J1, J2), (J2, J3)):
     d = (b - a); n = Vector((0, 0, 1)).cross(d).normalized() * 9
     tube('lamp_arm', [a + n, b + n], 4.5, lamp_paint, smooth_pts=False); tube('lamp_arm', [a - n, b - n], 4.5, lamp_paint, smooth_pts=False)
     tube('lamp_spring', [a + (b - a) * 0.15 + Vector((0, 0, 18)), a + (b - a) * 0.75 + Vector((0, 0, 18))], 3, bright, smooth_pts=False)
 for j in (J1, J2, J3):
     cyl('lamp_joint', 12, 30, tuple(j), axis='Y', verts=32).data.materials.append(bright)
-HEAD = J3 + Vector((10, -10, -40))
-shade = lathe('lamp_shade', [(18, 70), (24, 58), (26, 40), (50, 10), (72, -20), (76, -26)], 0, 0, seg=64)
-shade.modifiers.clear(); s2 = shade.modifiers.new('sol', 'SOLIDIFY'); s2.thickness = 1.2
-shade.location = HEAD; shade.rotation_euler = (math.radians(-12), math.radians(14), 0)
+HEAD = LT
+AIMV = Vector((VX + 40, VY - 60, BZ)) - HEAD
+SHADE_ROT = AIMV.to_track_quat('-Z', 'Y').to_euler()
+SPROF = [(16, 72), (24, 60), (26, 40), (50, 10), (72, -20), (77, -27)]
 inside = paint('shade_in', (0.75, 0.72, 0.64), rough=0.4, chip=0.0, grime=0.6)
-shade.data.materials.append(lamp_paint); shade.data.materials.append(inside)
-s2.material_offset = 1
+shade = lathe_open('lamp_shade', SPROF, thick=0.9, mat=lamp_paint)
+shade_in = lathe_open('lamp_shade_in', [(r - 1.2, z) for r, z in SPROF], thick=0.3, mat=inside)
+cap = lathe('lamp_cap', [(0.1, 66), (17, 66), (17, 84), (10, 92), (0.1, 92)], 0, 0, seg=32); setmat(cap, lamp_paint)
+for o in (shade, shade_in, cap):
+    o.location = HEAD; o.rotation_euler = SHADE_ROT
 bulbm = emissive('bulb', (1.0, 0.72, 0.45), 30.0, (0.9, 0.85, 0.8))
 bulb = lathe('lamp_bulb', [(0.1, -18), (12, -14), (17, 0), (14, 14), (9, 22), (8, 32), (0.1, 33)], 0, 0, seg=32)
-bulb.location = HEAD; bulb.rotation_euler = shade.rotation_euler; bulb.data.materials.append(bulbm)
+bulb.location = HEAD; bulb.rotation_euler = SHADE_ROT; bulb.data.materials.append(bulbm)
 bulb.visible_shadow = False
 
 # ---------------------------------------------------------------- bench items: notebook, phone, clipboard, mug, padlocks, pencil
-NBX, NBY, NBR = -400, -575, 7
+NBX, NBY, NBR = -40, -300, 11
 for z0, nm in ((0, 'nb_back'), (7.6, 'notebook')):
     nb = slab(nm, rounded_rect(152, 212, 3), 1.45, cover, bev=0.5); place(nb, (NBX, NBY, BZ + z0), rot=(0, 0, NBR))
 bx('nb_pages', -72, 74, -104, 104, 1.45, 7.6, pad_m).data.transform(Matrix.Translation(Vector((NBX, NBY, BZ))) @ Matrix.Rotation(math.radians(NBR), 4, 'Z'))
@@ -366,7 +375,7 @@ pen = lathe_x('pencil', [(0, 0.01), (0, 1.0), (16, 3.6), (18, 3.7), (170, 3.7), 
 pen.location = (NBX - 70, NBY - 50, BZ + 13); pen.rotation_euler = (0, 0, math.radians(32))
 pen_m = oil_paint('pencil_paint', (0.55, 0.36, 0.05), rough=0.3, chips=0.1, scuffs=0.1, strokes='X'); setmat(pen, pen_m)
 # phone, screen up
-PHX, PHY, PHR = -95, -560, -14
+PHX, PHY, PHR = 35, -600, -10
 ph = slab('phone', rounded_rect(74, 152, 10, 6), 8, alu, bev=2.4, seg=4); place(ph, (PHX, PHY, BZ), rot=(0, 0, PHR))
 scr = slab('phone_glass', rounded_rect(71, 149, 9, 6), 0.4, screen_m, bev=0.15); place(scr, (PHX, PHY, BZ + 7.8), rot=(0, 0, PHR))
 PH_M = Matrix.Translation(Vector((PHX, PHY, BZ + 8.3))) @ Matrix.Rotation(math.radians(PHR), 4, 'Z')
@@ -377,9 +386,8 @@ clip_m = metal('clip', (0.60, 0.60, 0.58), 0.3, marks='stamp', wear=0.4, grime=0
 cb_objs, cb_corner = clipboard('clipboard', CBM, slip_m, pad_m, hardboard, clip_m, rng=rng)
 slip = [cb_corner(0, 0), cb_corner(148, 0), cb_corner(148, 210), cb_corner(0, 210)]
 # mug of tea
-MX, MY = 70, -250
-mug = lathe('mug', [(0.1, BZ), (38, BZ), (40, BZ + 3), (40, BZ + 92), (41.5, BZ + 95)], MX, MY, seg=64); mug.modifiers.clear()
-ms_ = mug.modifiers.new('s', 'SOLIDIFY'); ms_.thickness = 2.2; ms_.offset = -1; setmat(mug, mug_m)
+MX, MY = 115, -150
+mug = lathe_open('mug', [(0.1, BZ), (38, BZ), (40, BZ + 3), (40, BZ + 92), (41.5, BZ + 95)], MX, MY, thick=2.2, mat=mug_m)
 lathe('mug_rim', [(37.5, BZ + 93.5), (41.8, BZ + 93.5), (41.8, BZ + 96.5), (37.5, BZ + 96.5)], MX, MY, seg=64).data.materials.append(mug_rim)
 cyl('tea', 37.5, 1, (MX, MY, BZ + 72), verts=64).data.materials.append(tea)
 tube('mug_handle', [(MX + 38, MY, BZ + 78), (MX + 62, MY, BZ + 74), (MX + 66, MY, BZ + 45), (MX + 58, MY, BZ + 22), (MX + 38, MY, BZ + 20)], 5.5, mug_m)
@@ -396,17 +404,17 @@ def padlock(name, x, y, rz, w=58, h=50, d=24, mat=brass, shackle_h=44):
     kh = R @ Vector((0, -h / 4, d / 2 + 0.1))
     bx(name + '_kw', kh.x - 1.2, kh.x + 1.2, kh.y - 5, kh.y + 5, BZ + d - 0.3, BZ + d + 0.05, void)
 padlock('padlock1', 520, -440, -28)
-padlock('padlock2', -20, -380, 22, w=46, h=40, d=20, mat=dark_steel, shackle_h=36)
+padlock('padlock2', -10, -470, 22, w=46, h=40, d=20, mat=dark_steel, shackle_h=36)
 # loose keys on a ring
 for k in range(3):
     kk = prism('lkey', [(u, v) for u, v in blank_outline(k % 2)], -1.0, 1.0)
     setmat(kk, brass if k else nickel)
-    kk.matrix_world = Matrix.Translation(Vector((-10 + k * 12, -470 + k * 4, BZ + 1.5 + k * 2.2))) @ Matrix.Rotation(math.radians(30 + k * 40), 4, 'Z') @ Matrix.Rotation(math.radians(90), 4, 'X')
-tube('keyring', [(-2 + 12 * math.cos(a), -455 + 12 * math.sin(a), BZ + 4) for a in [i * math.pi / 8 for i in range(17)]], 1.2, bright)
+    kk.matrix_world = Matrix.Translation(Vector((95 + k * 12, -440 + k * 4, BZ + 1.5 + k * 2.2))) @ Matrix.Rotation(math.radians(30 + k * 40), 4, 'Z') @ Matrix.Rotation(math.radians(90), 4, 'X')
+tube('keyring', [(103 + 12 * math.cos(a), -425 + 12 * math.sin(a), BZ + 4) for a in [i * math.pi / 8 for i in range(17)]], 1.2, bright)
 
 # ---------------------------------------------------------------- tags (diegetic menu labels)
-tag_vice = tag('tag_vice', Matrix.Translation(Vector((VX - 20, VY - 330, BZ + 0.3))) @ Matrix.Rotation(math.radians(-6), 4, 'Z'),
-               manila, brass, string_to=(VX - 85, VY - 255, BZ + 66), string_mat=cotton)
+tag_vice = tag('tag_vice', Matrix.Translation(Vector((VX + 115, VY - 175, BZ + 0.3))) @ Matrix.Rotation(math.radians(14), 4, 'Z'),
+               manila, brass, string_to=(VX + 40 + 112, VY - 255, BZ + 60), string_mat=cotton)
 tag_case = tag('tag_case', Matrix.Translation(Vector(((CX0 + CX1) / 2 + 30, CY0 - 16, CZ0 - 34))) @ Matrix.Rotation(math.radians(-4), 4, 'Y') @
                Matrix.Rotation(math.radians(90), 4, 'X'), manila, brass, string_to=((CX0 + CX1) / 2, CY0 - 12, CZ0 + 22), string_mat=cotton)
 
@@ -414,14 +422,17 @@ tag_case = tag('tag_case', Matrix.Translation(Vector(((CX0 + CX1) / 2 + 30, CY0 
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (0, -350, BZ)
 world_hdri(0.03, 'interior.exr', sat=0.3)
 bpy.ops.object.light_add(type='SPOT', location=tuple(HEAD + Vector((0, 0, 5)))); sp = bpy.context.object
-sp.data.energy = 6.0e7; sp.data.color = (1.0, 0.70, 0.42); sp.data.spot_size = math.radians(115); sp.data.spot_blend = 0.6
-sp.data.shadow_soft_size = 14; sp.rotation_euler = shade.rotation_euler
+sp.data.energy = 4.5e7; sp.data.color = (1.0, 0.70, 0.42); sp.data.spot_size = math.radians(84); sp.data.spot_blend = 0.55
+sp.data.shadow_soft_size = 14; sp.rotation_euler = SHADE_ROT
 # window on the left wall: evening, cool; plus a dim warm practical bounce from the room
-area_light('window', (-1750, -900, 1900), AIM, 1200, 2.4e7, (0.70, 0.80, 1.0), size_y=1400)
+area_light('window', (-1750, -900, 1900), AIM, 1200, 1.6e7, (0.70, 0.80, 1.0), size_y=1400)
 area_light('room', (600, -2900, 2600), AIM, 1800, 2.5e6, (1.0, 0.82, 0.62))
+# showcase light: a warm strip under the case lid
+a_case = bpy.data.objects.new('aim_case', None); scene.collection.objects.link(a_case); a_case.location = ((CX0 + CX1) / 2, (CY0 + CY1) / 2 - 30, CZ0)
+area_light('case_light', ((CX0 + CX1) / 2, CY1 - 40, CZ1 - 22), a_case, 420, 2.5e6, (1.0, 0.8, 0.58), size_y=40)
 
 # ---------------------------------------------------------------- camera + render
-cam = photo_camera((20, -1260, 1690), yaw=0.0, lens=20.0, pitch=-36.0)
+cam = photo_camera((-20, -930, 1650), yaw=0.0, lens=18.0, pitch=-39.0)
 cam.data.sensor_fit = 'VERTICAL'; cam.data.sensor_height = 36.0; cam.data.sensor_width = 36.0
 render_setup(OUT, RES, SAMPLES, crop=tuple(float(v) for v in CROP.split(',')) if CROP else None, look='AgX - Medium High Contrast', bounces=10)
 scene.cycles.adaptive_threshold = 0.01

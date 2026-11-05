@@ -14,7 +14,8 @@ extends Node
 ##   --lw-touch 1        draw two example thumb dents (screenshots)
 ##   --lw-bench S        print LW_PERF frame statistics after S seconds and quit
 ##   --lw-pose blender   show the five stack states of art/renders/section.png (set, false set,
-##                       binding, overset, free) for a side-by-side check against Cycles
+##                       binding, overset, free) for a side-by-side check against Cycles;
+##                       with --lw-tension T --lw-core R --lw-stress S to check the diegetic HUD
 
 @export var family: StringName = &"pin_tumbler"
 @export var seed := 42
@@ -68,7 +69,10 @@ func _ready() -> void:
 		view.touch(1, Vector2(s.x * 0.72, s.y * 0.80), true)
 	if args.get("lw-pose", "") == "blender":
 		_pose_vm = blender_pose_vm()
-		_last_input = {"tension": 0.35, "pick_depth": 0.5, "pick_lift": 0.3}
+		_pose_vm["tension"] = float(args.get("lw-tension", "0.35"))
+		_pose_vm["core_rotation"] = float(args.get("lw-core", "0.0"))
+		_pose_vm["stress"] = float(args.get("lw-stress", "0.0"))
+		_last_input = {"tension": _pose_vm["tension"], "pick_depth": 0.5, "pick_lift": 0.3}
 		_frozen = true
 	view.present(_vm(), _last_input, 1.0)
 	if args.has("lw-shot"):

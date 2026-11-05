@@ -622,7 +622,7 @@ def mirror_softbox(name, target, cam, normal=(0, -1, 0), dist=260, size=60, size
 
 # ================================================================ v3 additions (append-only)
 def oak(name, light=(0.46, 0.30, 0.16), dark=(0.22, 0.12, 0.055), axis='Z', plank=0.0, ring_mm=2.2, lacquer=0.8,
-        rough=0.45, coat_rough=0.14, coat_tint=(1.0, 0.9, 0.74), var=0.18, pores=1.0, rays=0.6, wear=0.4, grime=0.6,
+        rough=0.45, coat_rough=0.14, coat_tint=(1.0, 0.9, 0.74), var=0.24, pores=1.0, rays=0.6, wear=0.4, grime=0.6,
         scratches=0.5, warp=1.0, seed=0.0, seam=1.0, bump=1.0):
     """Lacquered oak boards. Flat-sawn grain: each ring is the distance to a log axis lying behind the board,
     so tapering logs draw irregular 'cathedral' arches instead of regular stripes. Per plank (width `plank` mm

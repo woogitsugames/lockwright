@@ -46,7 +46,7 @@ LEVERS = [  # (y0, needed lift, actual lift, belly z)
     (4.1, 2.5, 2.5, -12.0),
     (7.3, 3.0, 5.0, -11.6),
 ]
-LT = 1.6   # lever thickness
+LT = 1.25  # lever thickness (thin stock: a clear gap between levers lets light reach each gate face)
 BACK_Y = 14.0
 
 def lever_outline(belly):
@@ -159,8 +159,8 @@ area_light('fill', (140, -110, -20), AIM, 90, float(arg('--fill', '30000')), (0.
 area_light('rim', (40, -20, -130), AIM, 40, float(arg('--rim', '25000')), (1.0, 0.95, 0.9))
 # kicker from the forend side, low: lights the open stump pockets so all three gate faces read
 area_light('kick', tuple(float(v) for v in arg('--kpos', '110,-90,-30').split(',')), AIM, 25, float(arg('--kick', '30000')), (1.0, 0.95, 0.88))
-cam = look_camera((float(arg('--tx', '-1')), 6, float(arg('--tz', '-2'))), float(arg('--yaw', '32')), float(arg('--pitch', '-18')),
-                  float(arg('--dist', '190')), lens=float(arg('--lens', '120')))
+cam = look_camera((float(arg('--tx', '1')), 6, float(arg('--tz', '-2'))), float(arg('--yaw', '40')), float(arg('--pitch', '-18')),
+                  float(arg('--dist', '160')), lens=float(arg('--lens', '120')))
 mirror_softbox('sheen', (0, 0, 0), cam, size=float(arg('--ss', '25')), size_y=float(arg('--ssy', '60')), energy=float(arg('--sheen', '15000')),
                shift=(float(arg('--sx', '-6')), 0, float(arg('--sz', '4'))))
 render_setup(OUT, RES, SAMPLES, exposure=float(arg('--exp', '0.0')), crop=CROP)

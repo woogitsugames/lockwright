@@ -1,0 +1,40 @@
+/* Realizm: environment screens (job arrival, workshop hub). The photograph is the screen; text only on objects.
+   Writable surfaces are positioned by anchors.js from the corners Blender exports next to each render. */
+.scene{position:relative;width:100vw;height:100vh;overflow:hidden;background:#0d0c0b no-repeat}
+.scene [data-anchor]{position:absolute;left:0;top:0;transform-origin:0 0;overflow:hidden;pointer-events:none}
+.scene .hit{position:absolute;display:block;border:0;background:none;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.scene .hit:focus-visible{outline:2px dashed rgba(241,238,230,.8);outline-offset:2px}
+/* printing and writing on paper: ink sits in the paper (multiply), never glows */
+.ink{color:#23262d;mix-blend-mode:multiply}
+.pencil{color:#3b3d42;font-weight:500;letter-spacing:.01em;opacity:.85}
+
+/* dispatch slip, 148 x 210 mm laid out at 2 px/mm; the form's ruled lines are 8 mm (16 px) apart */
+.slip{padding:6px 18px 0 22px;font:500 19px/32px "Atkinson Hyperlegible Next",sans-serif}
+.slip .form{font:700 10.5px/16px "Atkinson Hyperlegible Next",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#5b6676;
+  display:flex;justify-content:space-between;margin-bottom:2px}
+.slip .addr{font-weight:700;font-size:23px}
+.slip .who{font-size:20px}
+.slip .what{font-size:18.5px;line-height:32px}
+.slip .rate{font-size:18px;color:#4a3f30;display:flex;justify-content:space-between}
+.slip .acts{position:absolute;left:18px;right:16px;bottom:22px;display:flex;gap:14px}
+.slip .acts span{flex:1;height:58px;display:grid;place-items:center;font:700 19px/1.1 "Atkinson Hyperlegible Next",sans-serif;text-align:center;
+  border:2.5px solid #3b3d42;border-radius:6px 9px 7px 5px;transform:rotate(-.6deg)}
+.slip .acts span + span{border-style:dashed;transform:rotate(.8deg);font-weight:600}
+
+/* card in the brass nameplate frame on the door (104 x 28 mm at 2 px/mm) */
+.card{display:grid;place-items:center;font:700 25px/1 "Bona Nova",serif;letter-spacing:.06em;color:#211c16}
+
+/* workshop: manila tags (66 x 32 mm writing field), notebook label, drawer card, phone screen */
+.tagtext{display:grid;place-items:center;text-align:center;font:700 24px/1 "Atkinson Hyperlegible Next",sans-serif;color:#2a2219}
+.tagtext small{display:block;font:400 italic 16px/1.2 "Bona Nova",serif;color:#4a3d2c;margin-top:4px}
+.label{display:grid;place-items:center;text-align:center;font:700 30px/1 "Bona Nova",serif;color:#1f2430}
+.label small{display:block;font:500 15px/1.3 "Atkinson Hyperlegible Next",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#4e5560;margin-top:6px}
+.drawer{display:grid;place-items:center;font:700 22px/1 "Bona Nova",serif;color:#231d15}
+.screen-lit{background:#0e1114;color:#e9ece8;padding:34px 22px;font:500 26px/1.25 "Atkinson Hyperlegible Next",sans-serif;
+  box-shadow:inset 0 0 0 3px #050607}
+.screen-lit .t{font-size:20px;color:#9aa3a7;letter-spacing:.04em}
+.screen-lit b{display:block;font-size:56px;line-height:1;margin:26px 0 4px}
+.screen-lit .from{font-size:21px;color:#9aa3a7;margin-top:28px}
+.duty{padding:8px 18px 0 22px;font:500 19px/32px "Atkinson Hyperlegible Next",sans-serif}
+.duty h2{font:700 30px/48px "Bona Nova",serif}
+.duty .tally{vertical-align:-8px;margin-left:6px;fill:none;stroke:#3b3d42;stroke-width:2.6;stroke-linecap:round}
