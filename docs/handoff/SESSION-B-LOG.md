@@ -409,7 +409,7 @@ Zrzuty z telefonu: `docs/handoff/device-tests/run92/main_menu.jpg` i `settings.j
   - **podpowiedź kredą:** gdy przez ok. 2 s jest uniesienie, a napięcie = 0, pojawia się kredowa strzałka w górę i kciuk po lewej stronie płyty z tekstem i18n „Lewy kciuk: lekki nacisk w górę = napięcie”. Znika po pierwszym napięciu. Pokazuj ją też poza samouczkiem w pierwszych 3 zleceniach;
   - **wcięcia kciuków:** wgniecenie kciuka (`thumb_dent`) ma być widoczne od razu po dotknięciu obu stref, także lewej;
   - **samouczek:** sprawdź, czy pierwszy krok naprawdę uczy dwóch kciuków i nie przepuszcza dalej bez napięcia;
-  - **dźwięk w ogóle:** potwierdź na APK, że SFX grają (zimny start z asynchronicznym wczytywaniem SFX mógł zostawić puste bufory). Dodaj test GUT `Sfx.play` po starcie, który sprawdza, że strumień nie jest null.
+  - **dźwięk w ogóle:** właściciel potwierdził, że na APK z runu 92 grają wszystkie dźwięki. Brakuje tylko dźwięku kontaktu i sprężyny przy podnoszeniu bez napięcia.
 
 ## Od sesji A: N-59, ekrany szersze niż telefon, trzeba przewijać w poziomie (PRIORYTET, zgłoszenie właściciela)
 Zrzuty: `device-tests/run92/workshop.jpg`, `workshop_scrolled.jpg`, `dialog.jpg`.

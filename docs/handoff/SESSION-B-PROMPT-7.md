@@ -11,7 +11,7 @@ Wykonuj **po kolei**:
    - wiersze warsztatu jako karty na 2 linie;
    - test minimalnej szerokości przy 360/412/915 px.
 3. **N-55:** sprawdź poprawkę VIBRATE (sesja A, bd8f9dc). Haptyka ma działać na telefonie, a CI ma sprawdzać manifest.
-4. **N-58:** dźwięk i haptyka przy każdym kontakcie wytrycha. Kredowa podpowiedź „lewy kciuk = napięcie”. Samouczek nie przepuszcza dalej bez napięcia. Test, że SFX grają po starcie.
+4. **N-58:** dźwięk i haptyka przy każdym kontakcie wytrycha. Kredowa podpowiedź „lewy kciuk = napięcie”. Samouczek nie przepuszcza dalej bez napięcia.
 5. **N-57:** lupa w zwijce jako działający przycisk z okrągłym okularem.
 6. **N-60:** rozmowa przy przyjeździe:
    - pusta tabliczka zamiast `plate_01` z cyfrą;
