@@ -424,7 +424,7 @@ AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM
 world_hdri(0.03, 'interior.exr', sat=0.3)
 bpy.ops.object.light_add(type='AREA', location=tuple(HEAD)); sp = bpy.context.object
 sp.data.shape = 'DISK'; sp.data.size = 60; sp.data.spread = math.radians(80)
-sp.data.energy = 9.0e7; sp.data.color = (1.0, 0.70, 0.42); sp.rotation_euler = SHADE_ROT
+sp.data.energy = 2.6e7; sp.data.color = (1.0, 0.70, 0.42); sp.rotation_euler = SHADE_ROT
 # window on the left wall: evening, cool; plus a dim warm practical bounce from the room
 area_light('window', (-1750, -900, 1900), AIM, 1200, 1.0e7, (0.70, 0.80, 1.0), size_y=1400)
 area_light('room', (600, -2900, 2600), AIM, 1800, 2.5e6, (1.0, 0.82, 0.62))

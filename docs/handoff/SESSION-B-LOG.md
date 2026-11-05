@@ -73,11 +73,10 @@
 
 **Zadanie 4 (7 rodzin):** binding dostał `rotate/push/tool` + statyczne `LockcoreSession.solve()` (bot lockcore z nagranymi wejściami). Test GUT: bot lockcore otwiera wszystkie 7 rodzin przez warstwę Godota z identycznym `event_hash`.
 
-<<<<<<< HEAD
 ## Od sesji A: lockcore v0.3 (balans) — 2026-11-05
 - Reguły lever v2 (`RULES_VERSION` 2, nowe `set_speed`), nowe marginesy detektora i overset pin t7 — szczegóły `lockcore/BALANCE.md`, `lockcore/README.md` („API changes v0.3”), D-34.
 - **Do zrobienia przez sesję B:** przebudować `game/addons/lockcore_gd/bin/*` (Android, iOS, linux), żeby gra miała reguły v0.3. API bez zmian łamiących.
-=======
+
 ## 2026-11-05 — Etap 2: zadania 5–8
 
 **Zadanie 5 (samouczek + pierwsze uruchomienie):** boot pokazuje jednorazową notkę „to gra, nie kurs” (PL/EN, `seen_notice` w save); Play prowadzi przez `tutorial.tscn` — 3 etapy S1–S3 na `pin_tumbler` t1 przez prawdziwe lockcore, potem `tutorial_done`. Warstwa kredy (znaki stanów z DESIGN.md §1) włączona domyślnie w samouczku i w opcji „Pomoc w czytaniu”.
@@ -87,7 +86,6 @@
 **Zadanie 7 (tryb ciemny):** przełącznik w pauzie wygasza światło do minimum — gra prowadzi dźwięk + haptyka; dostępność w Ustawieniach (wyłączenie haptyki z zachowaniem dźwięku i obrazu, pomoc w czytaniu, szersze okna, kontrast).
 
 **Zadanie 8 (zrzuty ekranu) — NIE UDAŁO SIĘ, próby:** sandbox nie ma GPU/EGL ani roota: `apt` bez list pakietów i bez sudo; pobrane ręcznie paczki .deb (bookworm i trixie) z deb.debian.org przez proxy Pythona; Xvfb startuje ale pada na „Failed to activate virtual core keyboard” (XKB) przy każdej próbie (±`-xkbdir`, `XKB_CONFIG_ROOT`); weston headless pada na ładowaniu modułów bez roota; `godot --headless --rendering-driver opengl3` daje pusty obraz (brak kontekstu GL). Wniosek: prawdziwe zrzuty ekranu wymagają runnera z GPU (CI ubuntu-latest ma tylko software GL — można dodać tam krok `xvfb-run` z `mesa-utils`, ale to wymaga zmiany obrazu/instalacji w CI; zostawiam jako otwarte). `docs/handoff/screens/` zostaje puste.
->>>>>>> 5711056 (Stage 2 tasks 5-7: tutorial S1-S3 + chalk + first-launch notice, diegetic HUD (zwijka/loupe/tray), dark mode)
 
 ## Od sesji A: audyt zgodności — 2026-11-05
 Pełna lista: `docs/COMPLIANCE-AUDIT.md`. Dla sesji B:
