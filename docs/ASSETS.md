@@ -52,3 +52,5 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | mockups/realizm/img/stairwell.jpg, stairwell_night.jpg, workshop.jpg (+ `.json`) | grafika (JPG z renderów powyżej) | własne | własne projektu | — |
 | numer na tabliczce w stairwell.py: mockups/fonts/BonaNova-Bold.ttf | font | jak wyżej (Bona Nova) | SIL OFL 1.1 | — |
 | game/assets/ui/stairwell.jpg, workshop.jpg, microscope.jpg, microscope_view.jpg, borescope.jpg, borescope_view.jpg | grafika | skopiowane z `mockups/realizm/img/` (własne sesji projektowej) | własne projektu | — |
+| site/public/img/*.jpg | grafika (pochodna) | własne: przeskalowane kopie `art/renders/*` i `mockups/realizm/png/*.portrait.png` (site/build.py) | jak źródła (własne) | — |
+| site/public/fonts/BonaNova-*.ttf, AtkinsonHyperlegibleNext-wght.ttf | font (kopia) | kopie z `mockups/fonts/` | SIL OFL 1.1 (licencje skopiowane obok: OFL-bonanova.txt, OFL-atkinsonhyperlegiblenext.txt) | jak wyżej |
