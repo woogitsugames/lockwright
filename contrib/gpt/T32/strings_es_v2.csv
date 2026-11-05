@@ -128,3 +128,69 @@ tutorial.start,,Empezar la práctica,Uzupełniono nowy klucz interfejsu po korek
 nav.quit_confirm,,¿Salir del juego?,Nowy klucz źródłowy (pytanie przy wyjściu).
 nav.quit_yes,,Salir,Nowy klucz źródłowy (potwierdzenie).
 nav.quit_no,,Seguir jugando,Nowy klucz źródłowy (pozostanie w grze).
+menu.subtitle,,Cerrajero de guardia,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_sound,,Sonido,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_controls,,Controles,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_access,,Idioma y accesibilidad,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_other,,Gráficos y ayuda,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.not_enough,,Faltan monedas,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.price,,Precio: {0} monedas,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.reward_hint,,Se desbloquea al avanzar,Uzupełniono brakujący klucz według EN i PL (T40).
+arrival.situation,,Qué pasó,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.title,,¿Cómo quieres mantener la tensión?,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto,,Tensión automática — para empezar,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto_desc,,La tensión se regula sola; un pulgar guía la ganzúa.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.manual,,Dos pulgares — control total,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.manual_desc,,Pulgar izquierdo: tensión; derecho: eleva los pernos.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.note,,Puedes cambiarlo en Ajustes → Controles cuando quieras.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.selected,,Elegido,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto_toggle,,Tensión automática,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t01.goal,,Mantén firme hasta que ceda el cerrojo de madera.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t02.goal,,Siente qué clavija se atasca primero; las demás esperan.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t03.goal,,"Busca la placa que ofrece resistencia, no el ruido.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t04.goal,,Oye el clic verdadero antes de seguir.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t05.goal,,Halla el hueco; no fuerces el obstáculo.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t06.goal,,Compara las puntas; la correcta habla bajito.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t07.goal,,Ve más allá del primer clic; nota el atasco.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t08.goal,,Pasa una placa de más; afloja sin perder las otras.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t09.goal,,Escucha qué conjunto se atasca primero.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t10.goal,,Mantén los pernos colocados mientras te mueves.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t11.goal,,Escucha las muescas; el paso suena distinto.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t12.goal,,Halla el aro atascado; deja los demás.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t13.goal,,Trata el pestillo de resorte con tacto.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t14.goal,,"En el hueco estrecho, manos más suaves.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t15.goal,,Aprieta de más una vez; suelta y recupera.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t16.goal,,Escucha dos placas trabadas antes de moverlas.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t17.goal,,Siente la muesca falsa; busca el paso real.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t18.goal,,Espera el clic correcto de la palanca.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t19.goal,,Deja caer la palanca una vez; nota el resorte.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t20.goal,,Distingue el falso ajuste del clic auténtico.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t21.goal,,"Si el núcleo retrocede, mantén la mano ligera.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t22.goal,,Detecta la puerta falsa; escucha el segundo toque.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t23.goal,,No confundas las muescas con un perno colocado.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t24.goal,,"Cuenta cada puerta de palanca, sin saltos.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t25.goal,,Escucha bobina y estrías; no las confundas.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t26.goal,,Pasa dos muescas falsas antes de la real.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t27.goal,,Activa el detector una vez; recuerda su aviso.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t28.goal,,"Actívalo, vuelve y espera el reinicio.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t29.goal,,Halla la resistencia entre señales leves.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t30.goal,,Activa y reinicia; luego abre sin prisas.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_tension,,"Pulgar izquierdo arriba, suave. Sin prisa.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_pick,,"Pulgar derecho: al lado eliges, arriba elevas.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_binding,,Ese perno se resiste. Así está bien.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_click,,¡Clic! Uno listo. Busca el siguiente.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_overset,,Muy alto. Suelta tensión y prueba más suave.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_overset_auto,,Muy alto: toca a la izquierda para soltar tensión.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_open,,Abierto. Bien hecho. Mano tranquila.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_tension,,"Pulgar izquierdo: arriba con suavidad, tensión.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_lift,,"Pulgar derecho: al lado eliges, arriba elevas.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_click,,Clic: perno colocado. Sigue con otro.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_lift_auto,,Un pulgar elige y eleva; el juego da tensión.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.note_game,,"Un juego, no un curso. Piezas inventadas.",Uzupełniono brakujący klucz według EN i PL (T40).
+lock.zone_tension,,tensión,Uzupełniono brakujący klucz według EN i PL (T40).
+lock.flap_pause,,pausa,Uzupełniono brakujący klucz według EN i PL (T40).
+lock.hint_tension,,¿Pernos sueltos? Pon algo de tensión a la izquierda.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s2_intro,,Tres pernos. Solo uno ofrece resistencia.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s3_intro,,Nuevo orden. ¿Muy alto? Empieza más suave.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_near_break,,Fuerza excesiva. La herramienta se dobla. Afloja.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.job_done,,listo,Uzupełniono brakujący klucz według EN i PL (T40).

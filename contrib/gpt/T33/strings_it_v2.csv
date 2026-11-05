@@ -128,3 +128,69 @@ tutorial.start,,Inizia l'esercizio,Uzupełniono nowy klucz interfejsu po korekci
 nav.quit_confirm,,Vuoi uscire dal gioco?,Nowy klucz źródłowy (pytanie przy wyjściu).
 nav.quit_yes,,Esci,Nowy klucz źródłowy (potwierdzenie).
 nav.quit_no,,Continua a giocare,Nowy klucz źródłowy (pozostanie w grze).
+menu.subtitle,,Fabbro d'emergenza,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_sound,,Suono,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_controls,,Comandi,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_access,,Lingua e accessibilità,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_other,,Grafica e aiuto,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.not_enough,,Monete insufficienti,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.price,,Prezzo: {0} monete,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.reward_hint,,Si sblocca proseguendo,Uzupełniono brakujący klucz według EN i PL (T40).
+arrival.situation,,Cos'è successo,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.title,,Come vuoi tenere la tensione?,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto,,Tensione automatica — per iniziare,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto_desc,,La tensione resta lieve da sola; un pollice guida il grimaldello.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.manual,,Due pollici — senti tutto,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.manual_desc,,Pollice sinistro: tensione; destro: solleva i perni.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.note,,"Puoi cambiarlo in Impostazioni → Comandi, quando vuoi.",Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.selected,,Scelto,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto_toggle,,Tensione automatica,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t01.goal,,Tieni fermo finché il chiavistello di legno cede.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t02.goal,,Senti il perno che frena per primo; gli altri aspettano.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t03.goal,,"Trova la piastra che oppone resistenza, non il rumore.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t04.goal,,Ascolta il clic vero prima di andare avanti.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t05.goal,,Trova il varco; non forzare l'ostacolo.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t06.goal,,Confronta le punte; quella giusta parla piano.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t07.goal,,Oltrepassa il primo clic una volta; nota il blocco.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t08.goal,,Spingi una piastra troppo su; allenta senza perdere le altre.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t09.goal,,Ascolta il primo gruppo che si blocca.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t10.goal,,Tieni i perni a posto mentre ti muovi.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t11.goal,,Ascolta gli scatti; il varco suona diverso.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t12.goal,,Trova l'anello che si blocca; lascia gli altri.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t13.goal,,Affronta il chiavistello a molla con misura.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t14.goal,,"Nello spazio stretto, mano più leggera.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t15.goal,,Esagera una volta; allenta e riprendi con calma.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t16.goal,,Senti due piastrine bloccate prima di muoverle.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t17.goal,,"Senti la falsa tacca, poi cerca il varco vero.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t18.goal,,Aspetta il clic giusto della leva.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t19.goal,,Lascia scendere la leva; senti la sua molla.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t20.goal,,Distingui il falso incastro dal clic sincero.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t21.goal,,"Se il nucleo torna indietro, usa mano leggera.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t22.goal,,Scova il falso varco; fidati del secondo tocco.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t23.goal,,Non confondere le zigrinature con un perno assestato.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t24.goal,,Conta ogni varco delle leve; niente salti.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t25.goal,,Ascolta spola e zigrinatura; distinguili.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t26.goal,,Supera due false tacche prima del varco vero.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t27.goal,,Attiva una volta il sensore; ricorda l'avviso.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t28.goal,,"Attivalo, torna indietro e attendi il reset.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t29.goal,,Trova la resistenza tra i segnali leggeri.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t30.goal,,Attiva e ripristina; poi apri con calma.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_tension,,"Pollice sinistro, piano verso l'alto. Bene.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_pick,,"Pollice destro: lato per scegliere, su per alzare.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_binding,,Questo perno oppone resistenza. Proprio così.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_click,,Clic! Uno a posto. Cerca il prossimo.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_overset,,"Troppo alto. Allenta, poi prova più piano.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_overset_auto,,Troppo alto: tocca a sinistra per allentare.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_open,,Aperto. Bel lavoro. Mano ferma.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_tension,,"Pollice sinistro: piano in alto, tensione.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_lift,,"Pollice destro: lato per scegliere, su per alzare.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_click,,"Clic, perno a posto. Cerca il prossimo.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_lift_auto,,Un pollice sceglie e alza; il gioco tiene tensione.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.note_game,,"È un gioco, non un corso. Pezzi inventati.",Uzupełniono brakujący klucz według EN i PL (T40).
+lock.zone_tension,,tensione,Uzupełniono brakujący klucz według EN i PL (T40).
+lock.flap_pause,,pausa,Uzupełniono brakujący klucz według EN i PL (T40).
+lock.hint_tension,,Perni liberi? Tieni un po' di tensione a sinistra.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s2_intro,,Tre perni. Solo uno resiste alla volta.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s3_intro,,Nuovo ordine. Troppo su? Ricomincia piano.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_near_break,,Troppa forza. L'attrezzo si piega. Allenta.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.job_done,,fatto,Uzupełniono brakujący klucz według EN i PL (T40).

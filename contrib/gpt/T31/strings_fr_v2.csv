@@ -128,3 +128,69 @@ tutorial.start,,Commencer l'entraînement,Uzupełniono klucz dodany po pierwotne
 nav.quit_confirm,,Quitter le jeu ?,Nowy klucz źródłowy (kontrola zamknięcia gry).
 nav.quit_yes,,Quitter,Nowy klucz źródłowy (potwierdzenie zamknięcia gry).
 nav.quit_no,,Continuer à jouer,Nowy klucz źródłowy (anulowanie zamknięcia gry).
+menu.subtitle,,Serrurier de garde,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_sound,,Son,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_controls,,Commandes,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_access,,Langue et accessibilité,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_other,,Graphismes et aide,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.not_enough,,Pas assez de pièces,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.price,,Prix : {0} pièces,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.reward_hint,,Se débloque en avançant,Uzupełniono brakujący klucz według EN i PL (T40).
+arrival.situation,,Situation,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.title,,Comment tenir la tension ?,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto,,Tension auto — pour débuter,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto_desc,,La tension reste douce; un pouce guide le crochet.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.manual,,Deux pouces — tout sentir,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.manual_desc,,Pouce gauche : tension; pouce droit : goupilles.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.note,,"Modifiable dans Réglages → Commandes, à tout moment.",Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.selected,,Choisi,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto_toggle,,Tension automatique,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t01.goal,,Garde l'effort régulier; le verrou cède.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t02.goal,,Repère la cheville qui coince; les autres attendent.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t03.goal,,"Trouve la plaque qui résiste, oublie le bruit.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t04.goal,,Écoute le vrai clic avant de poursuivre.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t05.goal,,"Trouve le passage, sans forcer l'obstacle.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t06.goal,,Compare les embouts; le bon se fait discret.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t07.goal,,Va trop loin après un clic; reconnais le blocage.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t08.goal,,Pousse une plaque trop loin; relâche sans perdre les autres.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t09.goal,,Écoute quelle pile résiste en premier.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t10.goal,,Garde les piles placées en changeant de position.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t11.goal,,Écoute les crans; le passage sonne autrement.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t12.goal,,Trouve l'anneau bloqué; laisse les autres.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t13.goal,,Aborde le pêne à ressort avec mesure.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t14.goal,,"Dans l'ouverture étroite, gestes plus doux.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t15.goal,,Va trop loin une fois; relâche et reprends calmement.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t16.goal,,Écoute deux lamelles qui résistent avant d'agir.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t17.goal,,"Sens le faux cran, puis cherche le vrai passage.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t18.goal,,Attends le clic juste du levier.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t19.goal,,Laisse tomber le levier; retiens l'effet du ressort.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t20.goal,,Distingue le faux calage du clic net.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t21.goal,,"Quand le noyau revient, garde la main légère.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t22.goal,,Repère la fausse encoche; écoute le second toc.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t23.goal,,Ne confonds pas rainures et pile bien posée.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t24.goal,,"Compte les encoches des leviers, sans sauter.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t25.goal,,Écoute bobine et stries; distingue-les.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t26.goal,,Passe deux faux crans avant le vrai passage.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t27.goal,,Active le détecteur une fois; reconnais l'alerte.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t28.goal,,"Active-le, reviens et attends la remise à zéro.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t29.goal,,Trouve la bonne résistance parmi les signes faibles.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t30.goal,,Déclenche et réarme; puis ouvre sans te presser.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_tension,,"Pouce gauche, doucement vers le haut. Voilà.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_pick,,"Pouce droit : côté pour choisir, haut pour lever.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_binding,,Cette goupille résiste. Bien vu.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_click,,Clic ! Une en place. La suivante.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_overset,,"Trop haut. Relâche la tension, plus doucement.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_overset_auto,,Trop haut : touche à gauche pour relâcher.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_open,,"Ouvert. Bravo, la main tranquille.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_tension,,"Pouce gauche : monte doucement, tension.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_lift,,"Pouce droit : côté pour choisir, haut pour lever.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_click,,"Clic, goupille posée. À la suivante.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_lift_auto,,Un pouce choisit et lève; le jeu garde la tension.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.note_game,,"Un jeu, pas un cours. Les pièces sont imaginaires.",Uzupełniono brakujący klucz według EN i PL (T40).
+lock.zone_tension,,force,Uzupełniono brakujący klucz według EN i PL (T40).
+lock.flap_pause,,arrêt,Uzupełniono brakujący klucz według EN i PL (T40).
+lock.hint_tension,,Goupilles libres ? Tends doucement à gauche.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s2_intro,,Trois goupilles. Une seule résiste à la fois.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s3_intro,,Nouvel ordre. Trop haut ? Reprends doucement.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_near_break,,Trop fort. L'outil plie. Relâche un peu.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.job_done,,fait,Uzupełniono brakujący klucz według EN i PL (T40).

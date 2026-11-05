@@ -128,3 +128,69 @@ tutorial.start,,Iniciar treino,Uzupełniono nowy klucz interfejsu po korekcie.
 nav.quit_confirm,,Sair do jogo?,Nowy klucz źródłowy (pytanie przy wyjściu).
 nav.quit_yes,,Sair,Nowy klucz źródłowy (potwierdzenie).
 nav.quit_no,,Continuar jogando,Nowy klucz źródłowy (pozostanie w grze).
+menu.subtitle,,Chaveiro de plantão,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_sound,,Som,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_controls,,Controles,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_access,,Idioma e acessibilidade,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_other,,Gráficos e ajuda,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.not_enough,,Moedas insuficientes,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.price,,Preço: {0} moedas,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.reward_hint,,Libera conforme avança,Uzupełniono brakujący klucz według EN i PL (T40).
+arrival.situation,,O que houve,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.title,,Como quer segurar a tensão?,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto,,Tensão automática — para começar,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto_desc,,A tensão fica leve sozinha; um polegar guia a gazua.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.manual,,Dois polegares — sinta tudo,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.manual_desc,,Polegar esquerdo: tensão; direito: levanta os pinos.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.note,,Dá para mudar em Ajustes → Controles a qualquer hora.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.selected,,Escolhido,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto_toggle,,Tensão automática,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t01.goal,,Segure firme até o ferrolho de madeira ceder.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t02.goal,,Sinta qual pino trava primeiro; os demais esperam.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t03.goal,,Ache a placa resistente; ignore o barulho.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t04.goal,,Ouça o clique certo antes de seguir.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t05.goal,,Encontre a fresta; não force o obstáculo.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t06.goal,,Compare as pontas; a certa fala baixinho.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t07.goal,,Passe do primeiro clique uma vez; note o travamento.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t08.goal,,Empurre a placa longe demais; alivie sem perder as outras.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t09.goal,,Escute qual conjunto trava primeiro.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t10.goal,,Mantenha os pinos no lugar enquanto se move.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t11.goal,,Ouça os encaixes; a passagem soa diferente.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t12.goal,,Ache o anel que trava; deixe os outros.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t13.goal,,Aborde o ferrolho com mola com cuidado.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t14.goal,,"Na abertura estreita, pegue mais leve.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t15.goal,,Exagere uma vez; solte e recupere com calma.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t16.goal,,Ouça duas placas travadas antes de agir.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t17.goal,,Sinta a ranhura falsa; busque a passagem real.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t18.goal,,Espere o clique correto da alavanca.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t19.goal,,Deixe a alavanca cair; sinta a mola.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t20.goal,,Distinga o encaixe falso do clique verdadeiro.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t21.goal,,"Se o miolo voltar, mantenha a mão leve.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t22.goal,,Perceba a passagem falsa; confie no segundo toque.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t23.goal,,Não confunda ranhura com pino assentado.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t24.goal,,"Conte cada vão das alavancas, sem pular.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t25.goal,,Ouça carretel e serrilha; não confunda.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t26.goal,,Passe duas ranhuras falsas antes da passagem certa.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t27.goal,,Ative o sensor uma vez; lembre o aviso.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t28.goal,,"Ative, volte e espere a reinicialização.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t29.goal,,Ache a resistência entre sinais discretos.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t30.goal,,Ative e reinicie; depois abra sem pressa.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_tension,,"Polegar esquerdo, devagar para cima. Isso.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_pick,,"Polegar direito: lado para escolher, cima para erguer.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_binding,,Esse pino resiste. Isso mesmo.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_click,,Clique! Um no lugar. Ache o próximo.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_overset,,Alto demais. Solte a tensão e tente mais leve.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_overset_auto,,Alto demais: toque à esquerda para aliviar.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_open,,Abriu. Muito bem. Mão firme.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_tension,,Polegar esquerdo: suba leve — tensão.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_lift,,"Direito: ao lado escolhe, acima ergue.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_click,,"Clique, pino no lugar. Próximo.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_lift_auto,,Um polegar escolhe e ergue; o jogo segura a tensão.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.note_game,,"É um jogo, não uma aula. Peças inventadas.",Uzupełniono brakujący klucz według EN i PL (T40).
+lock.zone_tension,,tensão,Uzupełniono brakujący klucz według EN i PL (T40).
+lock.flap_pause,,pausa,Uzupełniono brakujący klucz według EN i PL (T40).
+lock.hint_tension,,Pinos soltos? Segure um pouco a tensão à esquerda.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s2_intro,,Três pinos. Só um resiste por vez.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s3_intro,,Nova ordem. Alto demais? Recomece mais leve.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_near_break,,Força demais. A ferramenta entorta. Alivie.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.job_done,,feito,Uzupełniono brakujący klucz według EN i PL (T40).

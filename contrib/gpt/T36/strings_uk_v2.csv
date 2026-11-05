@@ -128,3 +128,69 @@ tutorial.start,,Почати вправу,Uzupełniono nowy klucz interfejsu po 
 nav.quit_confirm,,Вийти з гри?,Nowy klucz źródłowy (pytanie przy wyjściu).
 nav.quit_yes,,Вийти,Nowy klucz źródłowy (potwierdzenie).
 nav.quit_no,,Продовжити гру,Nowy klucz źródłowy (pozostanie w grze).
+menu.subtitle,,Аварійний слюсар,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_sound,,Звук,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_controls,,Керування,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_access,,Мова й доступність,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_other,,Графіка й допомога,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.not_enough,,Замало монет,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.price,,Ціна: {0} монет,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.reward_hint,,Відкриється з поступом,Uzupełniono brakujący klucz według EN i PL (T40).
+arrival.situation,,Що сталося,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.title,,Як триматимеш натяг?,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto,,Автонатяг — для новачків,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto_desc,,Натяг зберігається сам; одним пальцем ведеш відмичку.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.manual,,Два пальці — повний контроль,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.manual_desc,,"Лівий палець тримає натяг, правий піднімає штифти.",Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.note,,Зміниш будь-коли в Налаштуваннях → Керування.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.selected,,Обрано,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto_toggle,,Автоматичний натяг,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t01.goal,,"Тримай рівно, доки дерев'яний засув піддасться.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t02.goal,,"Відчуй, який штифт застряг першим; інші зачекають.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t03.goal,,"Знайди пластину, що чинить опір, а не шумить.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t04.goal,,"Почуй справжнє клацання, тоді далі.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t05.goal,,"Знайди просвіт, не тисни на перешкоду.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t06.goal,,Порівняй наконечники; правильний озветься тихо.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t07.goal,,Раз натисни після клацання; упізнай заїдання.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t08.goal,,Раз посунь пластину надто далеко; послаб без втрат.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t09.goal,,Почуй перший затиснутий набір.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t10.goal,,"Утримуй штифти на місці, коли рухаєшся.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t11.goal,,Слухай фіксатори; прохід звучить інакше.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t12.goal,,Знайди затиснуте кільце; інші не чіпай.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t13.goal,,Доторкнись до пружинного засува з мірою.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t14.goal,,У вузькому отворі діюй обережніше.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t15.goal,,"Раз натисни зайве, послаб і спокійно віднови.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t16.goal,,Почуй дві затиснуті пластини до підняття.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t17.goal,,"Відчуй хибну виїмку, шукай справжній прохід.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t18.goal,,Дочекайся правильного клацання важеля.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t19.goal,,Раз відпусти важіль; відчуй його пружину.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t20.goal,,Розрізни хибну посадку й справжнє клацання.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t21.goal,,"Коли серцевина вертає, тримай руку легко.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t22.goal,,Знайди хибний прохід; довірся другому стуку.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t23.goal,,Не плутай насічку з посадженим штифтом.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t24.goal,,"Полічи всі проходи важелів, без пропусків.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t25.goal,,Слухай котушку й насічку; не плутай.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t26.goal,,Минай дві хибні виїмки до справжнього проходу.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t27.goal,,Раз увімкни датчик; запам'ятай попередження.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t28.goal,,"Раз увімкни, повернись і дочекайся скидання.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t29.goal,,Знайди потрібний опір серед тихих сигналів.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t30.goal,,Раз увімкни й скинь; потім відкрий без поспіху.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_tension,,Лівий палець м'яко вгору. Спокійно.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_pick,,"Правий палець: убік вибрати, вгору підняти.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_binding,,Цей штифт чинить опір. Саме так.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_click,,Клац! Один став. Шукай наступний.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_overset,,Надто високо. Послаб натяг і спробуй лагідніше.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_overset_auto,,"Надто високо — торкнись ліворуч, щоб послабити.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_open,,Відкрито. Гарно. Рука спокійна.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_tension,,Лівий палець: м'яко вгору — натяг.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_lift,,"Правий палець: убік вибір, вгору підйом.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_click,,Клац — штифт став. Далі наступний.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_lift_auto,,Один палець вибирає й підіймає; гра тримає натяг.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.note_game,,"Це гра, не навчання. Деталі вигадані.",Uzupełniono brakujący klucz według EN i PL (T40).
+lock.zone_tension,,натяг,Uzupełniono brakujący klucz według EN i PL (T40).
+lock.flap_pause,,пауза,Uzupełniono brakujący klucz według EN i PL (T40).
+lock.hint_tension,,Штифти вільні? Тримай трохи натягу зліва.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s2_intro,,Три штифти. Опір чинить лише один за раз.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s3_intro,,Інший порядок. Занадто високо? Почни лагідно.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_near_break,,Забагато сили. Інструмент гнеться. Послаб.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.job_done,,Є!,Uzupełniono brakujący klucz według EN i PL (T40).

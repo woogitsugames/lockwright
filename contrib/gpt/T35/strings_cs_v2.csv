@@ -128,3 +128,69 @@ tutorial.start,,Začít cvičení,Uzupełniono nowy klucz interfejsu po korekcie
 nav.quit_confirm,,Ukončit hru?,Nowy klucz źródłowy (pytanie przy wyjściu).
 nav.quit_yes,,Ukončit,Nowy klucz źródłowy (potwierdzenie).
 nav.quit_no,,Pokračovat ve hře,Nowy klucz źródłowy (pozostanie w grze).
+menu.subtitle,,Zámečnická pohotovost,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_sound,,Zvuk,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_controls,,Ovládání,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_access,,Jazyk a přístupnost,Uzupełniono brakujący klucz według EN i PL (T40).
+settings.section_other,,Grafika a nápověda,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.not_enough,,Málo mincí,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.price,,Cena: {0} mincí,Uzupełniono brakujący klucz według EN i PL (T40).
+workshop.reward_hint,,Odemkne se postupem,Uzupełniono brakujący klucz według EN i PL (T40).
+arrival.situation,,Co se stalo,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.title,,Jak chceš držet napětí?,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto,,Automatické napětí — pro začátečníky,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto_desc,,Napětí se drží samo v bezpečné míře; palec vede planžetu.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.manual,,Dva palce — plný cit,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.manual_desc,,"Levý palec drží napětí, pravý zvedá stavítka.",Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.note,,Můžeš změnit v Nastavení → Ovládání kdykoli.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.selected,,Vybráno,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.controls.auto_toggle,,Automatické napětí,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t01.goal,,"Drž rovnoměrně, než povolí dřevěná závora.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t02.goal,,"Poznej první kolík, který drhne; ostatní počkají.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t03.goal,,"Najdi destičku s odporem, ne tu nejhlučnější.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t04.goal,,"Poslechni správné cvaknutí, pak pokračuj.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t05.goal,,"Najdi mezeru, nic netlač silou.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t06.goal,,Porovnej konce; ten pravý se ozve potichu.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t07.goal,,Jednou přitlač za cvaknutí a poznej zaseknutí.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t08.goal,,"Posuň destičku moc daleko; povol, ostatní podrž.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t09.goal,,"Slyš první sestavu, která drhne.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t10.goal,,Udrž usazená stavítka i při přesunu.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t11.goal,,Poslouchej zarážky; průchod zní jinak.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t12.goal,,Najdi drhnoucí kroužek; ostatní nech být.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t13.goal,,Na pružinovou závoru jdi s citem.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t14.goal,,V užším okénku pracuj lehkou rukou.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t15.goal,,"Jednou přetlač, povol a klidně to naprav.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t16.goal,,"Vyslechni dva drhnoucí plíšky, než je zvedneš.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t17.goal,,Poznej falešný zářez a hledej pravý průchod.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t18.goal,,Počkej na správné cvaknutí páky.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t19.goal,,Nech páku jednou spadnout; poznej její pružinu.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t20.goal,,Rozeznáš falešné usazení od pravého cvaknutí.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t21.goal,,"Když se jádro vrací, drž lehkou ruku.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t22.goal,,Najdi falešný průchod; věř druhému klepnutí.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t23.goal,,Nepleť si zoubky s usazeným stavítkem.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t24.goal,,"Spočítej průchody pák, nic nepřeskakuj.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t25.goal,,Poslouchej cívku a vroubky; nepleť je.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t26.goal,,Přejdi dva falešné zářezy před pravým průchodem.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t27.goal,,Jednou spusť čidlo; poznej varování.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t28.goal,,"Spusť ho, vrať se a počkej na reset.",Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t29.goal,,Mezi tichými signály najdi pravý odpor.,Uzupełniono brakujący klucz według EN i PL (T40).
+practice.t30.goal,,Spusť a obnov; pak otevři bez spěchu.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_tension,,Levý palec jemně nahoru. Klid.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_pick,,"Pravý palec: bokem vyber, nahoru zvedni.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_binding,,Tohle stavítko klade odpor. Správně.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_click,,Cvak! Jedno sedí. Najdi další.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_overset,,Moc vysoko. Povol napětí a zkus jemněji.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_overset_auto,,Moc vysoko: klepni vlevo a povol napětí.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_open,,Otevřeno. Pěkně. Klidná ruka.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_tension,,Levý palec: jemně nahoru — napětí.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_lift,,"Pravý palec: bokem vyber, nahoru zvedni.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_click,,"Cvak, stavítko sedí. Najdi další.",Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.frame_lift_auto,,Jeden palec vybírá a zvedá; hra drží napětí.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.note_game,,"Je to hra, ne kurz. Součástky jsou smyšlené.",Uzupełniono brakujący klucz według EN i PL (T40).
+lock.zone_tension,,napětí,Uzupełniono brakujący klucz według EN i PL (T40).
+lock.flap_pause,,pauza,Uzupełniono brakujący klucz według EN i PL (T40).
+lock.hint_tension,,Volná stavítka? Vlevo jemně drž napětí.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s2_intro,,Tři stavítka. Vždy klade odpor jen jedno.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s3_intro,,Nové pořadí. Moc vysoko? Začni jemně.,Uzupełniono brakujący klucz według EN i PL (T40).
+tutorial.s1_near_break,,Příliš síly. Nástroj se ohýbá. Povol.,Uzupełniono brakujący klucz według EN i PL (T40).
+ui.job_done,,OK,Uzupełniono brakujący klucz według EN i PL (T40).
