@@ -92,3 +92,15 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | `game/assets/photoreal_families/{wafer,lever,warded,wooden_pin}/matcap/matcap_*.png` | grafika (render Cycles GPU 512×512, 128 spp, kule matcap w oświetleniu danej sceny dla ruchomych materiałów) | własne, wygenerowane przez `art/blender/plates/*_plate.py` (HDRI `interior.exr` — CC0, wpis wyżej) | własne projektu | — |
 | `game/assets/photoreal_families/{wafer,lever,warded,wooden_pin}/tex/*_{normal,orm,albedo}.png`, `*_baked.glb`, `scene.json` | modele 3D i tekstury wypieków (Smart UV Project 1024×1024 normal/ORM/albedo, modele glTF 2.0 + opis kamery i materiałów) | własne, wypieczone w Blenderze 5.2 LTS przez `art/blender/plates/*_plate.py` | własne projektu | — |
 | `game/scenes/photoreal_families/shots/*.png` (168 plików: 4 rodziny × 7 stanów × 2 orientacje `824x1830` i `1830x824` × 3 warianty: kolor, `.gray.png`, `.dim.png`) | grafika (zrzuty kontrolne ekranów fotorealistycznych w Godot 4.7.2 Vulkan Forward Mobile) | własne, wygenerowane przez `game/scripts/photoreal_families/capture_all_shots.gd` | własne projektu | — |
+
+
+## Gemini (GEM4 — warianty przekroju 1, 3, 5, 6 i 7 pinów oraz pełny napinacz)
+
+| Plik | Typ | Źródło | Licencja | Link |
+|---|---|---|---|---|
+| `art/blender/variants/cutaway_n.py`, `art/blender/variants/render_plate_n.py`, `art/blender/variants/render_all_variants.py`, `art/blender/variants/render_all_variants.sh` | skrypty look-dev i wsadowe (parametryczny przekrój 1–7 pinów, zaślepione komory S1/S2, pełny napinacz 0–14°, stany per-pin, płyty planu B) | własne (Gemini, na bazie `art/blender/cutaway.py` i `art/blender/lw_common.py`) | własne projektu | — |
+| `art/renders/variants/cutaway_{1,3,5,6,7}pin.png` + `.gray.png` | grafika (render Cycles GPU 2160×2880, 256 spp, OIDN RGB+Albedo+Normal, bez DOF + skala szarości) | własne, wygenerowane przez `art/blender/variants/cutaway_n.py` (HDRI `interior.exr` — CC0, wpis wyżej) | własne projektu | — |
+| `art/renders/variants/cutaway_{1,3,5,6,7}pin_wrench.png` + `.gray.png` | grafika (render Cycles GPU 2160×2880, 256 spp, pełne ramię napinacza `--wrench-in-frame`, kąty 4°–14° + skala szarości) | własne, wygenerowane przez `art/blender/variants/cutaway_n.py` (HDRI `interior.exr` — CC0, wpis wyżej) | własne projektu | — |
+| `art/renders/variants/plates/plate_{1,3,5,6,7}pin.png`, `art/renders/variants/plates/plate_{1,3,5,6,7}pin_wrench.png` | grafika (render Cycles GPU 2160×2880, 256 spp, statyczne tła planu B bez ruchomych części) | własne, wygenerowane przez `art/blender/variants/render_plate_n.py` (HDRI `interior.exr` — CC0, wpis wyżej) | własne projektu | — |
+| `art/renders/variants/compare_before_after.png` | grafika (zestawienie porównawcze przed/po względem `art/renders/section.jpg`) | własne, wygenerowane przez `art/blender/variants/render_all_variants.py` | własne projektu | — |
+
