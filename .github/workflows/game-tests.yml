@@ -118,6 +118,8 @@ jobs:
           python-version: '3.12'
       - name: Validate content data
         run: python3 data/tools/validate.py
+      - name: Localization QA
+        run: python3 data/tools/loc_qa.py
 
   audio-check:
     runs-on: ubuntu-latest
