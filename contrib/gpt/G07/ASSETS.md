@@ -1,117 +1,157 @@
-# ASSETS — provenance i prompt G07
+# ASSETS — rejestr zasobów G07
 
-**Ważne:** generator obrazu użył kontekstu zlecenia bez zwrócenia dosłownego promptu (pole metadanych prompt było puste). Każdy opis „pełny prompt rekonstrukcyjny” poniżej jest kompletnym rekonstrukcyjnym briefem kreatywnym użytym na podstawie polecenia i dokumentów gry, **nie technicznym zapisem ukrytego promptu**. Jeden wspólny obraz zawiera dziesięć scen; pozostałe pliki są jego pochodnymi.
+**Data generacji:** 2026-11-05. **Generator:** natywne generowanie obrazu w ChatGPT (OpenAI).
 
-Narzędzie: natywne generowanie obrazów ChatGPT (OpenAI), 2026-11-05. Warunki: aktualne OpenAI Terms of Use / warunki planu użytkownika, https://openai.com/policies/terms-of-use/ . Bez deklaracji CC0 ani wyłączności: wyniki AI nie muszą być unikalne. Przed publikacją należy zweryfikować aktualne warunki i podobieństwa do cudzych elementów. Przycięcie i eksport wykonane przez Python/Pillow.
+**Pochodzenie:** wygenerowano jeden wspólny arkusz z dziesięcioma kadrami; następnie wykadrowano dziesięć plików i wykonano własny arkusz podglądowy. Wykorzystana sesja generatora nie zwróciła literalnego tekstu promptu (pole metadanych `prompt` było puste); poniższe kompletne opisy są jawnie oznaczoną **rekonstrukcją kreatywnego briefu widocznego dla modelu** ze zlecenia G07 i wytycznych repozytorium. Nie należy ich traktować jako zapisu bajt-po-bajcie wewnętrznego promptu narzędzia.
 
-## Każdy obraz oddzielnie
+**Warunki użycia, wspólne dla wszystkich zasobów:** obraz wygenerowany przez ChatGPT (OpenAI); korzystanie zgodnie z aktualnymi [warunkami OpenAI](https://openai.com/policies/terms-of-use/) oraz ewentualnymi warunkami planu użytkownika. Wykorzystanie w produkcji wymaga sprawdzenia bieżących warunków, praw osób trzecich i ewentualnych podobieństw. Grafiki AI nie muszą być unikalne; nie przypisano licencji CC0 ani wyłącznej licencji autorskiej, których generator nie udziela. Lokalny skrypt eksportu jest własną pracą autorstwa sesji.
 
-### 01: `images/01_apartment_day.webp`
+## Zasoby graficzne — każdy plik osobno
 
-- **Narzędzie:** ChatGPT image generation (jeden arkusz) + Python Pillow. **Data:** 2026-11-05.
-- **Warunki/licencja:** jak we wspólnej sekcji powyżej (OpenAI Terms, brak przypisania CC0).
-- **Edycja:** TAK — wycięcie, dopasowanie 9:19,5, skalowanie do 1080 × 2340, niewielkie wyostrzenie i konwersja do WebP quality 70.
+### 01 — `images/01_apartment_day.jpg`
+
+- **Narzędzie:** natywny generator obrazów ChatGPT (OpenAI); wycięcie/skalowanie: Python Pillow.
+- **Data:** 2026-11-05.
+- **Warunki:** jak w sekcji wspólnej powyżej (OpenAI Terms; bez deklaracji CC0).
+- **Edycja:** TAK — wycięcie z jednego arkusza 1199 × 1312, korekcja kadru, interpolacja Lanczos do 1080 × 2340, delikatne wyostrzenie, eksport JPEG 88%. Nie dodano napisów ani znaków do obrazu.
 - **Pełny prompt rekonstrukcyjny:**
 
-> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call. Legal on-call locksmith arriving at a customer's door, warm, peaceful, understated humane atmosphere, no criminal aesthetics. Polish old tenement / authentic well-used city spaces, straight vertical architectural photography with 24 mm-equivalent field of view, 9:19.5 upright mobile framing. A calm bottom 40 percent reserved for the physical diegetic HUD, no floating interface. Believable material detail: patinated timber, matte iron, worn painted wainscoting, terrazzo, scratched enamel apartment plate, coir doormat, realistic natural illumination. No brands, logos, business names, real people, named commercial lock models, instructive technical visuals, neon, purple-blue or teal-orange grading, glassmorphism, chrome, exaggerated bloom, gold glows, game UI or overlaid lettering. A fictional mechanism, ordinary legal professional service. One of ten mutually distinct scenes. Daytime old apartment door with cool sunlight streaming in from a tall stairwell window to the left, enamel apartment number, railings, doormat and bright worn terrazzo floor.
+> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call; honest legal locksmith arrive-at-customer-door setting in an old Polish tenement, framed like a vertical 9:19.5 phone camera shot, straight architecture, perspective at eye level, 24 mm equivalent view, sharply focused realistic wood grain, matte patinated metal, scratched enamel, worn painted lower walls and terrazzo, natural imperfections and believable light. No persons, no criminal imagery, no brands or logos, no readable corporate signage, no floating UI, no writing overlays, no neon, no teal-orange grade, no purple-blue gradient, no glassmorphism, no chrome, no bloom, no stock textures, no other-game visual references; quiet relatively uncluttered bottom 40 percent reserved for the physical diegetic game interface. Use invented unbranded mechanical details only. No letters within image apart from plausible enamel apartment numbers. Daylight apartment door / Mieszkanie dzienne: chłodne światło przez duże okno po lewej, ozdobne drewniane drzwi, skromna emaliowana tabliczka z numerem i kokosowa wycieraczka, wytarta posadzka lastrykowa.
 
-### 02: `images/02_apartment_evening.webp`
+### 02 — `images/02_apartment_evening.jpg`
 
-- **Narzędzie:** ChatGPT image generation (jeden arkusz) + Python Pillow. **Data:** 2026-11-05.
-- **Warunki/licencja:** jak we wspólnej sekcji powyżej (OpenAI Terms, brak przypisania CC0).
-- **Edycja:** TAK — wycięcie, dopasowanie 9:19,5, skalowanie do 1080 × 2340, niewielkie wyostrzenie i konwersja do WebP quality 70.
+- **Narzędzie:** natywny generator obrazów ChatGPT (OpenAI); wycięcie/skalowanie: Python Pillow.
+- **Data:** 2026-11-05.
+- **Warunki:** jak w sekcji wspólnej powyżej (OpenAI Terms; bez deklaracji CC0).
+- **Edycja:** TAK — wycięcie z jednego arkusza 1199 × 1312, korekcja kadru, interpolacja Lanczos do 1080 × 2340, delikatne wyostrzenie, eksport JPEG 88%. Nie dodano napisów ani znaków do obrazu.
 - **Pełny prompt rekonstrukcyjny:**
 
-> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call. Legal on-call locksmith arriving at a customer's door, warm, peaceful, understated humane atmosphere, no criminal aesthetics. Polish old tenement / authentic well-used city spaces, straight vertical architectural photography with 24 mm-equivalent field of view, 9:19.5 upright mobile framing. A calm bottom 40 percent reserved for the physical diegetic HUD, no floating interface. Believable material detail: patinated timber, matte iron, worn painted wainscoting, terrazzo, scratched enamel apartment plate, coir doormat, realistic natural illumination. No brands, logos, business names, real people, named commercial lock models, instructive technical visuals, neon, purple-blue or teal-orange grading, glassmorphism, chrome, exaggerated bloom, gold glows, game UI or overlaid lettering. A fictional mechanism, ordinary legal professional service. One of ten mutually distinct scenes. Evening old apartment door with warm incandescent hanging lamp above the paneled timber and brass handle, muted old plaster and mat.
+> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call; honest legal locksmith arrive-at-customer-door setting in an old Polish tenement, framed like a vertical 9:19.5 phone camera shot, straight architecture, perspective at eye level, 24 mm equivalent view, sharply focused realistic wood grain, matte patinated metal, scratched enamel, worn painted lower walls and terrazzo, natural imperfections and believable light. No persons, no criminal imagery, no brands or logos, no readable corporate signage, no floating UI, no writing overlays, no neon, no teal-orange grade, no purple-blue gradient, no glassmorphism, no chrome, no bloom, no stock textures, no other-game visual references; quiet relatively uncluttered bottom 40 percent reserved for the physical diegetic game interface. Use invented unbranded mechanical details only. No letters within image apart from plausible enamel apartment numbers. Evening apartment door / Mieszkanie wieczorem: stara klatka w świetle ciepłej żarówki, matowa lamperia, płycinowe drzwi, wycieraczka i ślady życia na tynku.
 
-### 03: `images/03_apartment_night_timer.webp`
+### 03 — `images/03_apartment_night_timer.jpg`
 
-- **Narzędzie:** ChatGPT image generation (jeden arkusz) + Python Pillow. **Data:** 2026-11-05.
-- **Warunki/licencja:** jak we wspólnej sekcji powyżej (OpenAI Terms, brak przypisania CC0).
-- **Edycja:** TAK — wycięcie, dopasowanie 9:19,5, skalowanie do 1080 × 2340, niewielkie wyostrzenie i konwersja do WebP quality 70.
+- **Narzędzie:** natywny generator obrazów ChatGPT (OpenAI); wycięcie/skalowanie: Python Pillow.
+- **Data:** 2026-11-05.
+- **Warunki:** jak w sekcji wspólnej powyżej (OpenAI Terms; bez deklaracji CC0).
+- **Edycja:** TAK — wycięcie z jednego arkusza 1199 × 1312, korekcja kadru, interpolacja Lanczos do 1080 × 2340, delikatne wyostrzenie, eksport JPEG 88%. Nie dodano napisów ani znaków do obrazu.
 - **Pełny prompt rekonstrukcyjny:**
 
-> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call. Legal on-call locksmith arriving at a customer's door, warm, peaceful, understated humane atmosphere, no criminal aesthetics. Polish old tenement / authentic well-used city spaces, straight vertical architectural photography with 24 mm-equivalent field of view, 9:19.5 upright mobile framing. A calm bottom 40 percent reserved for the physical diegetic HUD, no floating interface. Believable material detail: patinated timber, matte iron, worn painted wainscoting, terrazzo, scratched enamel apartment plate, coir doormat, realistic natural illumination. No brands, logos, business names, real people, named commercial lock models, instructive technical visuals, neon, purple-blue or teal-orange grading, glassmorphism, chrome, exaggerated bloom, gold glows, game UI or overlaid lettering. A fictional mechanism, ordinary legal professional service. One of ten mutually distinct scenes. Dark apartment landing after stairwell light timer switched off, faint cool ambient illumination and nearly invisible brown paneled door, subtle reflections only.
+> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call; honest legal locksmith arrive-at-customer-door setting in an old Polish tenement, framed like a vertical 9:19.5 phone camera shot, straight architecture, perspective at eye level, 24 mm equivalent view, sharply focused realistic wood grain, matte patinated metal, scratched enamel, worn painted lower walls and terrazzo, natural imperfections and believable light. No persons, no criminal imagery, no brands or logos, no readable corporate signage, no floating UI, no writing overlays, no neon, no teal-orange grade, no purple-blue gradient, no glassmorphism, no chrome, no bloom, no stock textures, no other-game visual references; quiet relatively uncluttered bottom 40 percent reserved for the physical diegetic game interface. Use invented unbranded mechanical details only. No letters within image apart from plausible enamel apartment numbers. Apartment at night, stairwell timer expired / Noc: zgaszona żarówka na minutnik, ciemne drzwi z szyldem, subtelne chłodne światło szczątkowe, bez latarki i estetyki przestępstwa.
 
-### 04: `images/04_apartment_rainy_evening.webp`
+### 04 — `images/04_apartment_rainy_evening.jpg`
 
-- **Narzędzie:** ChatGPT image generation (jeden arkusz) + Python Pillow. **Data:** 2026-11-05.
-- **Warunki/licencja:** jak we wspólnej sekcji powyżej (OpenAI Terms, brak przypisania CC0).
-- **Edycja:** TAK — wycięcie, dopasowanie 9:19,5, skalowanie do 1080 × 2340, niewielkie wyostrzenie i konwersja do WebP quality 70.
+- **Narzędzie:** natywny generator obrazów ChatGPT (OpenAI); wycięcie/skalowanie: Python Pillow.
+- **Data:** 2026-11-05.
+- **Warunki:** jak w sekcji wspólnej powyżej (OpenAI Terms; bez deklaracji CC0).
+- **Edycja:** TAK — wycięcie z jednego arkusza 1199 × 1312, korekcja kadru, interpolacja Lanczos do 1080 × 2340, delikatne wyostrzenie, eksport JPEG 88%. Nie dodano napisów ani znaków do obrazu.
 - **Pełny prompt rekonstrukcyjny:**
 
-> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call. Legal on-call locksmith arriving at a customer's door, warm, peaceful, understated humane atmosphere, no criminal aesthetics. Polish old tenement / authentic well-used city spaces, straight vertical architectural photography with 24 mm-equivalent field of view, 9:19.5 upright mobile framing. A calm bottom 40 percent reserved for the physical diegetic HUD, no floating interface. Believable material detail: patinated timber, matte iron, worn painted wainscoting, terrazzo, scratched enamel apartment plate, coir doormat, realistic natural illumination. No brands, logos, business names, real people, named commercial lock models, instructive technical visuals, neon, purple-blue or teal-orange grading, glassmorphism, chrome, exaggerated bloom, gold glows, game UI or overlaid lettering. A fictional mechanism, ordinary legal professional service. One of ten mutually distinct scenes. Rainy evening apartment, warm ceiling bulb, wet shoe marks on textured tiled landing, side window and realistic reflections.
+> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call; honest legal locksmith arrive-at-customer-door setting in an old Polish tenement, framed like a vertical 9:19.5 phone camera shot, straight architecture, perspective at eye level, 24 mm equivalent view, sharply focused realistic wood grain, matte patinated metal, scratched enamel, worn painted lower walls and terrazzo, natural imperfections and believable light. No persons, no criminal imagery, no brands or logos, no readable corporate signage, no floating UI, no writing overlays, no neon, no teal-orange grade, no purple-blue gradient, no glassmorphism, no chrome, no bloom, no stock textures, no other-game visual references; quiet relatively uncluttered bottom 40 percent reserved for the physical diegetic game interface. Use invented unbranded mechanical details only. No letters within image apart from plausible enamel apartment numbers. Rainy evening apartment / Deszczowy wieczór: ciepły plafon, mokre ślady podeszew na starej posadzce, numer mieszkania na emaliowanej tabliczce.
 
-### 05: `images/05_attic.webp`
+### 05 — `images/05_attic.jpg`
 
-- **Narzędzie:** ChatGPT image generation (jeden arkusz) + Python Pillow. **Data:** 2026-11-05.
-- **Warunki/licencja:** jak we wspólnej sekcji powyżej (OpenAI Terms, brak przypisania CC0).
-- **Edycja:** TAK — wycięcie, dopasowanie 9:19,5, skalowanie do 1080 × 2340, niewielkie wyostrzenie i konwersja do WebP quality 70.
+- **Narzędzie:** natywny generator obrazów ChatGPT (OpenAI); wycięcie/skalowanie: Python Pillow.
+- **Data:** 2026-11-05.
+- **Warunki:** jak w sekcji wspólnej powyżej (OpenAI Terms; bez deklaracji CC0).
+- **Edycja:** TAK — wycięcie z jednego arkusza 1199 × 1312, korekcja kadru, interpolacja Lanczos do 1080 × 2340, delikatne wyostrzenie, eksport JPEG 88%. Nie dodano napisów ani znaków do obrazu.
 - **Pełny prompt rekonstrukcyjny:**
 
-> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call. Legal on-call locksmith arriving at a customer's door, warm, peaceful, understated humane atmosphere, no criminal aesthetics. Polish old tenement / authentic well-used city spaces, straight vertical architectural photography with 24 mm-equivalent field of view, 9:19.5 upright mobile framing. A calm bottom 40 percent reserved for the physical diegetic HUD, no floating interface. Believable material detail: patinated timber, matte iron, worn painted wainscoting, terrazzo, scratched enamel apartment plate, coir doormat, realistic natural illumination. No brands, logos, business names, real people, named commercial lock models, instructive technical visuals, neon, purple-blue or teal-orange grading, glassmorphism, chrome, exaggerated bloom, gold glows, game UI or overlaid lettering. A fictional mechanism, ordinary legal professional service. One of ten mutually distinct scenes. Attic door made of aged vertical wooden planks, heavy matte hinges, beams and small roof window, dust and gently lit aged timber.
+> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call; honest legal locksmith arrive-at-customer-door setting in an old Polish tenement, framed like a vertical 9:19.5 phone camera shot, straight architecture, perspective at eye level, 24 mm equivalent view, sharply focused realistic wood grain, matte patinated metal, scratched enamel, worn painted lower walls and terrazzo, natural imperfections and believable light. No persons, no criminal imagery, no brands or logos, no readable corporate signage, no floating UI, no writing overlays, no neon, no teal-orange grade, no purple-blue gradient, no glassmorphism, no chrome, no bloom, no stock textures, no other-game visual references; quiet relatively uncluttered bottom 40 percent reserved for the physical diegetic game interface. Use invented unbranded mechanical details only. No letters within image apart from plausible enamel apartment numbers. Attic door / Strych: proste, stare drewniane drzwi pod belkami stropowymi, ciemne matowe okucia, miękkie światło niewielkiego okna dachowego.
 
-### 06: `images/06_cellar.webp`
+### 06 — `images/06_cellar.jpg`
 
-- **Narzędzie:** ChatGPT image generation (jeden arkusz) + Python Pillow. **Data:** 2026-11-05.
-- **Warunki/licencja:** jak we wspólnej sekcji powyżej (OpenAI Terms, brak przypisania CC0).
-- **Edycja:** TAK — wycięcie, dopasowanie 9:19,5, skalowanie do 1080 × 2340, niewielkie wyostrzenie i konwersja do WebP quality 70.
+- **Narzędzie:** natywny generator obrazów ChatGPT (OpenAI); wycięcie/skalowanie: Python Pillow.
+- **Data:** 2026-11-05.
+- **Warunki:** jak w sekcji wspólnej powyżej (OpenAI Terms; bez deklaracji CC0).
+- **Edycja:** TAK — wycięcie z jednego arkusza 1199 × 1312, korekcja kadru, interpolacja Lanczos do 1080 × 2340, delikatne wyostrzenie, eksport JPEG 88%. Nie dodano napisów ani znaków do obrazu.
 - **Pełny prompt rekonstrukcyjny:**
 
-> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call. Legal on-call locksmith arriving at a customer's door, warm, peaceful, understated humane atmosphere, no criminal aesthetics. Polish old tenement / authentic well-used city spaces, straight vertical architectural photography with 24 mm-equivalent field of view, 9:19.5 upright mobile framing. A calm bottom 40 percent reserved for the physical diegetic HUD, no floating interface. Believable material detail: patinated timber, matte iron, worn painted wainscoting, terrazzo, scratched enamel apartment plate, coir doormat, realistic natural illumination. No brands, logos, business names, real people, named commercial lock models, instructive technical visuals, neon, purple-blue or teal-orange grading, glassmorphism, chrome, exaggerated bloom, gold glows, game UI or overlaid lettering. A fictional mechanism, ordinary legal professional service. One of ten mutually distinct scenes. Cellar access door of dark weathered matte steel with a metal vent, under arched exposed brick vault, warm caged lamp and floor drain.
+> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call; honest legal locksmith arrive-at-customer-door setting in an old Polish tenement, framed like a vertical 9:19.5 phone camera shot, straight architecture, perspective at eye level, 24 mm equivalent view, sharply focused realistic wood grain, matte patinated metal, scratched enamel, worn painted lower walls and terrazzo, natural imperfections and believable light. No persons, no criminal imagery, no brands or logos, no readable corporate signage, no floating UI, no writing overlays, no neon, no teal-orange grade, no purple-blue gradient, no glassmorphism, no chrome, no bloom, no stock textures, no other-game visual references; quiet relatively uncluttered bottom 40 percent reserved for the physical diegetic game interface. Use invented unbranded mechanical details only. No letters within image apart from plausible enamel apartment numbers. Cellar door / Piwnica: masywne drzwi użytkowe w sklepionej ceglanej piwnicy, matowa stal, odpływ w posadzce, ciepła żarówka.
 
-### 07: `images/07_kiosk_shutter.webp`
+### 07 — `images/07_kiosk_shutter.jpg`
 
-- **Narzędzie:** ChatGPT image generation (jeden arkusz) + Python Pillow. **Data:** 2026-11-05.
-- **Warunki/licencja:** jak we wspólnej sekcji powyżej (OpenAI Terms, brak przypisania CC0).
-- **Edycja:** TAK — wycięcie, dopasowanie 9:19,5, skalowanie do 1080 × 2340, niewielkie wyostrzenie i konwersja do WebP quality 70.
+- **Narzędzie:** natywny generator obrazów ChatGPT (OpenAI); wycięcie/skalowanie: Python Pillow.
+- **Data:** 2026-11-05.
+- **Warunki:** jak w sekcji wspólnej powyżej (OpenAI Terms; bez deklaracji CC0).
+- **Edycja:** TAK — wycięcie z jednego arkusza 1199 × 1312, korekcja kadru, interpolacja Lanczos do 1080 × 2340, delikatne wyostrzenie, eksport JPEG 88%. Nie dodano napisów ani znaków do obrazu.
 - **Pełny prompt rekonstrukcyjny:**
 
-> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call. Legal on-call locksmith arriving at a customer's door, warm, peaceful, understated humane atmosphere, no criminal aesthetics. Polish old tenement / authentic well-used city spaces, straight vertical architectural photography with 24 mm-equivalent field of view, 9:19.5 upright mobile framing. A calm bottom 40 percent reserved for the physical diegetic HUD, no floating interface. Believable material detail: patinated timber, matte iron, worn painted wainscoting, terrazzo, scratched enamel apartment plate, coir doormat, realistic natural illumination. No brands, logos, business names, real people, named commercial lock models, instructive technical visuals, neon, purple-blue or teal-orange grading, glassmorphism, chrome, exaggerated bloom, gold glows, game UI or overlaid lettering. A fictional mechanism, ordinary legal professional service. One of ten mutually distinct scenes. Shuttered street kiosk without any branding, old dark metal roller shutter in a wooden shopfront, wet sidewalk reflecting muted evening light.
+> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call; honest legal locksmith arrive-at-customer-door setting in an old Polish tenement, framed like a vertical 9:19.5 phone camera shot, straight architecture, perspective at eye level, 24 mm equivalent view, sharply focused realistic wood grain, matte patinated metal, scratched enamel, worn painted lower walls and terrazzo, natural imperfections and believable light. No persons, no criminal imagery, no brands or logos, no readable corporate signage, no floating UI, no writing overlays, no neon, no teal-orange grade, no purple-blue gradient, no glassmorphism, no chrome, no bloom, no stock textures, no other-game visual references; quiet relatively uncluttered bottom 40 percent reserved for the physical diegetic game interface. Use invented unbranded mechanical details only. No letters within image apart from plausible enamel apartment numbers. Kiosk shutter / Kiosk: mały uliczny lokal z opuszczoną niemarkową roletą, tradycyjne obramowanie, odbicia na mokrym chodniku.
 
-### 08: `images/08_changing_room_locker.webp`
+### 08 — `images/08_changing_room_locker.jpg`
 
-- **Narzędzie:** ChatGPT image generation (jeden arkusz) + Python Pillow. **Data:** 2026-11-05.
-- **Warunki/licencja:** jak we wspólnej sekcji powyżej (OpenAI Terms, brak przypisania CC0).
-- **Edycja:** TAK — wycięcie, dopasowanie 9:19,5, skalowanie do 1080 × 2340, niewielkie wyostrzenie i konwersja do WebP quality 70.
+- **Narzędzie:** natywny generator obrazów ChatGPT (OpenAI); wycięcie/skalowanie: Python Pillow.
+- **Data:** 2026-11-05.
+- **Warunki:** jak w sekcji wspólnej powyżej (OpenAI Terms; bez deklaracji CC0).
+- **Edycja:** TAK — wycięcie z jednego arkusza 1199 × 1312, korekcja kadru, interpolacja Lanczos do 1080 × 2340, delikatne wyostrzenie, eksport JPEG 88%. Nie dodano napisów ani znaków do obrazu.
 - **Pełny prompt rekonstrukcyjny:**
 
-> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call. Legal on-call locksmith arriving at a customer's door, warm, peaceful, understated humane atmosphere, no criminal aesthetics. Polish old tenement / authentic well-used city spaces, straight vertical architectural photography with 24 mm-equivalent field of view, 9:19.5 upright mobile framing. A calm bottom 40 percent reserved for the physical diegetic HUD, no floating interface. Believable material detail: patinated timber, matte iron, worn painted wainscoting, terrazzo, scratched enamel apartment plate, coir doormat, realistic natural illumination. No brands, logos, business names, real people, named commercial lock models, instructive technical visuals, neon, purple-blue or teal-orange grading, glassmorphism, chrome, exaggerated bloom, gold glows, game UI or overlaid lettering. A fictional mechanism, ordinary legal professional service. One of ten mutually distinct scenes. Vintage communal changing room with three metal lockers, small unbranded locker locks, dull metal patina, worn floor tiles and daylight.
+> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call; honest legal locksmith arrive-at-customer-door setting in an old Polish tenement, framed like a vertical 9:19.5 phone camera shot, straight architecture, perspective at eye level, 24 mm equivalent view, sharply focused realistic wood grain, matte patinated metal, scratched enamel, worn painted lower walls and terrazzo, natural imperfections and believable light. No persons, no criminal imagery, no brands or logos, no readable corporate signage, no floating UI, no writing overlays, no neon, no teal-orange grade, no purple-blue gradient, no glassmorphism, no chrome, no bloom, no stock textures, no other-game visual references; quiet relatively uncluttered bottom 40 percent reserved for the physical diegetic game interface. Use invented unbranded mechanical details only. No letters within image apart from plausible enamel apartment numbers. Changing-room lockers / Szatnia: szereg starych stalowych szafek bez marek, małe zamki, płytki podłogowe, światło z wysokiego okna.
 
-### 09: `images/09_courtyard_gate.webp`
+### 09 — `images/09_courtyard_gate.jpg`
 
-- **Narzędzie:** ChatGPT image generation (jeden arkusz) + Python Pillow. **Data:** 2026-11-05.
-- **Warunki/licencja:** jak we wspólnej sekcji powyżej (OpenAI Terms, brak przypisania CC0).
-- **Edycja:** TAK — wycięcie, dopasowanie 9:19,5, skalowanie do 1080 × 2340, niewielkie wyostrzenie i konwersja do WebP quality 70.
+- **Narzędzie:** natywny generator obrazów ChatGPT (OpenAI); wycięcie/skalowanie: Python Pillow.
+- **Data:** 2026-11-05.
+- **Warunki:** jak w sekcji wspólnej powyżej (OpenAI Terms; bez deklaracji CC0).
+- **Edycja:** TAK — wycięcie z jednego arkusza 1199 × 1312, korekcja kadru, interpolacja Lanczos do 1080 × 2340, delikatne wyostrzenie, eksport JPEG 88%. Nie dodano napisów ani znaków do obrazu.
 - **Pełny prompt rekonstrukcyjny:**
 
-> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call. Legal on-call locksmith arriving at a customer's door, warm, peaceful, understated humane atmosphere, no criminal aesthetics. Polish old tenement / authentic well-used city spaces, straight vertical architectural photography with 24 mm-equivalent field of view, 9:19.5 upright mobile framing. A calm bottom 40 percent reserved for the physical diegetic HUD, no floating interface. Believable material detail: patinated timber, matte iron, worn painted wainscoting, terrazzo, scratched enamel apartment plate, coir doormat, realistic natural illumination. No brands, logos, business names, real people, named commercial lock models, instructive technical visuals, neon, purple-blue or teal-orange grading, glassmorphism, chrome, exaggerated bloom, gold glows, game UI or overlaid lettering. A fictional mechanism, ordinary legal professional service. One of ten mutually distinct scenes. Iron courtyard gate beneath old stone archway, view of a small leafy courtyard and residential windows, wet cobblestone paving.
+> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call; honest legal locksmith arrive-at-customer-door setting in an old Polish tenement, framed like a vertical 9:19.5 phone camera shot, straight architecture, perspective at eye level, 24 mm equivalent view, sharply focused realistic wood grain, matte patinated metal, scratched enamel, worn painted lower walls and terrazzo, natural imperfections and believable light. No persons, no criminal imagery, no brands or logos, no readable corporate signage, no floating UI, no writing overlays, no neon, no teal-orange grade, no purple-blue gradient, no glassmorphism, no chrome, no bloom, no stock textures, no other-game visual references; quiet relatively uncluttered bottom 40 percent reserved for the physical diegetic game interface. Use invented unbranded mechanical details only. No letters within image apart from plausible enamel apartment numbers. Courtyard gate / Brama podwórka: żelazna brama pod kamiennym łukiem i otwierająca się perspektywa zielonego podwórka, bruk mokry od deszczu.
 
-### 10: `images/10_workshop_door.webp`
+### 10 — `images/10_workshop_door.jpg`
 
-- **Narzędzie:** ChatGPT image generation (jeden arkusz) + Python Pillow. **Data:** 2026-11-05.
-- **Warunki/licencja:** jak we wspólnej sekcji powyżej (OpenAI Terms, brak przypisania CC0).
-- **Edycja:** TAK — wycięcie, dopasowanie 9:19,5, skalowanie do 1080 × 2340, niewielkie wyostrzenie i konwersja do WebP quality 70.
+- **Narzędzie:** natywny generator obrazów ChatGPT (OpenAI); wycięcie/skalowanie: Python Pillow.
+- **Data:** 2026-11-05.
+- **Warunki:** jak w sekcji wspólnej powyżej (OpenAI Terms; bez deklaracji CC0).
+- **Edycja:** TAK — wycięcie z jednego arkusza 1199 × 1312, korekcja kadru, interpolacja Lanczos do 1080 × 2340, delikatne wyostrzenie, eksport JPEG 88%. Nie dodano napisów ani znaków do obrazu.
 - **Pełny prompt rekonstrukcyjny:**
 
-> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call. Legal on-call locksmith arriving at a customer's door, warm, peaceful, understated humane atmosphere, no criminal aesthetics. Polish old tenement / authentic well-used city spaces, straight vertical architectural photography with 24 mm-equivalent field of view, 9:19.5 upright mobile framing. A calm bottom 40 percent reserved for the physical diegetic HUD, no floating interface. Believable material detail: patinated timber, matte iron, worn painted wainscoting, terrazzo, scratched enamel apartment plate, coir doormat, realistic natural illumination. No brands, logos, business names, real people, named commercial lock models, instructive technical visuals, neon, purple-blue or teal-orange grading, glassmorphism, chrome, exaggerated bloom, gold glows, game UI or overlaid lettering. A fictional mechanism, ordinary legal professional service. One of ten mutually distinct scenes. Old locksmith workshop entrance: glazed timber panels with unbranded workshop tools visible beyond, warm lit interior contrasting with cool hallway.
+> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call; honest legal locksmith arrive-at-customer-door setting in an old Polish tenement, framed like a vertical 9:19.5 phone camera shot, straight architecture, perspective at eye level, 24 mm equivalent view, sharply focused realistic wood grain, matte patinated metal, scratched enamel, worn painted lower walls and terrazzo, natural imperfections and believable light. No persons, no criminal imagery, no brands or logos, no readable corporate signage, no floating UI, no writing overlays, no neon, no teal-orange grade, no purple-blue gradient, no glassmorphism, no chrome, no bloom, no stock textures, no other-game visual references; quiet relatively uncluttered bottom 40 percent reserved for the physical diegetic game interface. Use invented unbranded mechanical details only. No letters within image apart from plausible enamel apartment numbers. Workshop door / Warsztat: ciężkie drewniane drzwi z przeszkleniami, za szybą widoczna pracownia z ciepłym światłem, bez logotypu.
 
-### `source/concept_sheet_source.webp`
+### `source/concept_sheet_original.png`
 
-- **Narzędzie:** ChatGPT image generation, następnie Pillow WebP (quality 70). **Data:** 2026-11-05.
-- **Warunki/licencja:** jak w sekcji wspólnej.
-- **Edycja:** TAK — konwersja oryginalnego PNG generatora na WebP o tych samych wymiarach 1199 × 1312, zachowane dwujęzyczne podpisy pod źródłowymi panelami.
+- **Narzędzie:** natywny generator obrazów ChatGPT (OpenAI).
+- **Data:** 2026-11-05.
+- **Warunki:** jak w sekcji wspólnej powyżej.
+- **Edycja:** NIE — oryginalny zapis arkusza, wraz z podpisami PL/EN spoza samych kadrów.
 - **Pełny prompt rekonstrukcyjny:**
 
-> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call. Legal on-call locksmith arriving at a customer's door, warm, peaceful, understated humane atmosphere, no criminal aesthetics. Polish old tenement / authentic well-used city spaces, straight vertical architectural photography with 24 mm-equivalent field of view, 9:19.5 upright mobile framing. A calm bottom 40 percent reserved for the physical diegetic HUD, no floating interface. Believable material detail: patinated timber, matte iron, worn painted wainscoting, terrazzo, scratched enamel apartment plate, coir doormat, realistic natural illumination. No brands, logos, business names, real people, named commercial lock models, instructive technical visuals, neon, purple-blue or teal-orange grading, glassmorphism, chrome, exaggerated bloom, gold glows, game UI or overlaid lettering. A fictional mechanism, ordinary legal professional service. One of ten mutually distinct scenes. Create one two-row, five-column 10-scene photographic concept sheet in order: daytime apartment, evening apartment, night after timer goes dark, rainy evening apartment with wet prints, attic door, cellar door, unbranded kiosk roller shutter, changing-room lockers, courtyard iron gate, workshop door. Each composition should keep the lower floor area relatively unbusy. Outside image panels add PL and EN scene captions; no in-scene graphics or logos.
+> Photorealistic editorial architectural still frame for the original premium mobile game Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call; honest legal locksmith arrive-at-customer-door setting in an old Polish tenement, framed like a vertical 9:19.5 phone camera shot, straight architecture, perspective at eye level, 24 mm equivalent view, sharply focused realistic wood grain, matte patinated metal, scratched enamel, worn painted lower walls and terrazzo, natural imperfections and believable light. No persons, no criminal imagery, no brands or logos, no readable corporate signage, no floating UI, no writing overlays, no neon, no teal-orange grade, no purple-blue gradient, no glassmorphism, no chrome, no bloom, no stock textures, no other-game visual references; quiet relatively uncluttered bottom 40 percent reserved for the physical diegetic game interface. Use invented unbranded mechanical details only. No letters within image apart from plausible enamel apartment numbers. Create a single editorial contact sheet with two rows and five columns of distinct scenes, in order: apartment by daylight; evening incandescent apartment; apartment night after a stairwell lighting timer expires; wet-footprint rainy evening; attic; cellar; unbranded kiosk shutter; changing-room lockers; courtyard gate; workshop door. All ten should be naturally lit photorealistic images with usable floor space, no people, and no overlaid interface. Provide bilingual PL/EN captions outside the panels.
 
-### `preview.webp`
+### `preview.jpg`
 
-- **Narzędzie:** Python Pillow z dziesięciu kadrów ChatGPT, 2026-11-05.
-- **Warunki/licencja:** jak w sekcji wspólnej.
-- **Edycja:** TAK — arkusz 5 × 2, podpisy pod kadrami, tło neutralne, wyjście WebP quality 80.
-- **Pełny prompt produkcyjny:** „Zmontuj dziesięć wygenerowanych wariantów G07 w arkusz 5 kolumn i 2 rzędów. Zachowaj proporcje 9:19,5 i kolejność 01–10. Na jasnym, matowym tle pod każdym obrazem dodaj krótki podpis w języku polskim i angielskim. Nie nakładaj tekstu na właściwe fotografie.”
+- **Narzędzie:** Python Pillow (`tools/build_assets.py`), montaż z dziesięciu kadrów generowanych przez ChatGPT.
+- **Data:** 2026-11-05.
+- **Warunki:** jak w sekcji wspólnej powyżej (pochodny materiał).
+- **Edycja:** TAK — pięć kolumn, dwa rzędy, jasne neutralne tło, podpisy PL i EN umieszczone wyłącznie pod kadrami.
+- **Pełny prompt produkcyjny:** „Złóż 10 obrazów scen ślusarza G07 w arkusz 5 × 2 na neutralnym matowym tle; zachowaj 9:19,5 każdej miniatury; pod miniaturą umieść krótki tytuł polski i angielski; nie nakładaj tekstu na właściwe zdjęcia.”
 
-### `tools/rebuild.py`
+### `tools/build_assets.py`
 
-Autorski skrypt Python (Pillow), 2026-11-05; nie jest osobnym assetem graficznym. Służy do odtwarzania zdefiniowanych kadrowań z zapisanego obrazu źródłowego; wtórny eksport nie jest gwarantowany pikselowo.
+Autorski skrypt Python opracowany w bieżącej sesji; nie jest plikiem graficznym ani audio. Do użycia potrzebna jest biblioteka Pillow. Jego zadaniem jest powtarzalne odtworzenie dziesięciu obrazów i podglądu ze źródłowego arkusza.
+
+## Dodatkowe warianty osadzone (SVG i WebP)
+
+- **Pliki:** `images/01_apartment_day.svg`, `images/02_apartment_evening.svg`, `images/03_apartment_night_timer.svg`, `images/04_apartment_rainy_evening.svg`, `images/05_attic.svg`, `images/06_cellar.svg`, `images/07_kiosk_shutter.svg`, `images/08_changing_room_locker.svg`, `images/09_courtyard_gate.svg`, `images/10_workshop_door.svg`. Każdy jest niezależnym plikiem SVG z osadzonym rasterem, ma wymiary logiczne 1080 × 2340 i odpowiada numerowanej scenie JPEG o tej samej nazwie.
+- **Narzędzie i data:** Python Pillow + ręcznie zbudowany dokument SVG, 2026-11-05. Materiał bazowy: natywna generacja obrazów ChatGPT.
+- **Prompt każdego SVG:** dokładnie jak przypisany wyżej prompt odpowiedniego pliku `images/*.jpg`; format SVG jest jedynie pochodną techniczną tego samego motywu.
+- **Licencja/warunki:** jak w części wspólnej (OpenAI Terms).
+- **Edycja:** TAK — dodatkowe zmniejszenie i stratna kompresja źródła WebP, kadrowanie przez SVG `viewBox`, osadzenie danych Base64 w kontenerze SVG. Zawartość SVG nie jest wektorową rekonstrukcją obiektów 3D.
+
+### `source/concept_sheet_compact.webp`
+
+- **Narzędzie:** Pillow (zmniejszenie i stratna kompresja wygenerowanego przez ChatGPT arkusza), 2026-11-05.
+- **Pełny prompt rekonstrukcyjny:** jak `source/concept_sheet_original.png` powyżej.
+- **Warunki:** OpenAI Terms, jak w części wspólnej.
+- **Edycja:** TAK — odcięcie sekcji podpisów, zmniejszenie do 720 × 636 px, WebP quality 7.
+
+### `preview.svg`
+
+- **Narzędzie:** skrypt Python `tools/build_compact_svg.py`, 2026-11-05.
+- **Pełny prompt produkcyjny:** „Użyj pełnego źródłowego arkusza z dziesięcioma scenami i przygotuj pojedyncze samodzielne SVG podglądowe na neutralnym tle; podpisy nazw scen umieść poza obrazami w języku polskim i angielskim”.
+- **Warunki:** OpenAI Terms, jak w części wspólnej.
+- **Edycja:** TAK — montaż tekstu pod fotografiami, kompresja pochodnej WebP.
+
+### `tools/build_compact_svg.py`
+
+Autorski skrypt pomocniczy w Pythonie; nie jest samodzielną grafiką, wymaga Pillow.

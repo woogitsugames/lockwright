@@ -1,0 +1,61 @@
+# G01 — Rejestr zasobów i pochodzenie
+
+**Data:** 2026-11-05.  **Narzędzie źródłowe:** ChatGPT Images (generator obrazów OpenAI).
+
+## Pełny prompt źródłowy (AI)
+
+> A high-resolution PNG-style contact sheet presents 36 weathered vintage enamel plaques—24 numbered 1–24 and 12 labeled signs in Polish and English—arranged in six evenly spaced columns on a transparent checkerboard background. Each rectangular, rounded or scalloped plate features distinct navy, ivory, green, or burgundy enamel, varied retro typography and borders, readable text, chipped paint, scratches, rusted screws and edges, subtle grime, glossy reflections, and consistent shadowless lighting, with no people, scenery, borders, or other elements.
+
+Tekst na tabliczkach został wskazany też w zleceniu G01 (liczby 1–24, sześć napisów PL i odpowiadające im sześć napisów EN). Generator przygotował jednolity arkusz wzorcowy 1536×1024, który został obrobiony lokalnie.
+
+## Wpisy per plik
+
+Każdy plik wykorzystuje **dokładnie poniższy pełny prompt** (wskazany przy każdym wierszu jako `P1`); szczegółowa treść P1 jest podana w całości powyżej, bez skrótu. Przetworzenie odbyło się w `generate.py` (Pillow, OpenCV GrabCut, Python; bez dodatkowych assetów).
+
+| Nazwa pliku | Narzędzie | Data | Pełny prompt | Licencja/warunki | Edytowany? |
+|---|---|---|---|---|---|
+| `plate_01.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_02.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_03.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_04.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_05.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_06.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_07.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_08.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_09.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_10.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_11.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_12.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_13.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_14.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_15.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_16.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_17.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_18.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_19.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_20.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_21.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_22.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_23.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_24.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_sign_administracja_pl.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_sign_dozorca_pl.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_sign_pralnia_pl.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_sign_strych_pl.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_sign_piwnica_pl.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_sign_warsztat_slusarski_pl.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_sign_administration_en.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_sign_caretaker_en.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_sign_laundry_en.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_sign_attic_en.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_sign_cellar_en.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `plate_sign_locksmith_workshop_en.png` | ChatGPT Images + Pillow/OpenCV | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: segmentacja, przycięcie, skalowanie 1024×1024, usunięcie tła |
+| `contact_sheet.png` | ChatGPT Images + Pillow | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; font etykiet systemowy DejaVu Sans (licencja fontu) | Tak: złożono 36 wydzielonych grafik, dodano podpisy i szachownicę alfa |
+| `source_sheet.webp` | ChatGPT Images + Pillow | 2026-11-05 | P1 (pełna treść wyżej) | OpenAI Terms; bez cudzych stocków | Tak: bezstratna konwersja oryginalnego arkusza PNG → WebP w celu zapewnienia powtarzalności |
+
+## Pełen tekst warunków/proweniencji
+
+- **Źródło:** OpenAI Terms of Use / Service Terms (output generated with ChatGPT Images; rights to output as provided under applicable terms and law); no third-party stock images.
+- **Kod przetwarzania:** `generate.py` jest oryginalnym skryptem napisanym do tego zlecenia, nie wykorzystuje grafik, fontów ani znaków innych firm w tabliczkach.
+- **Czy edytowane:** wszystkie 36 tabliczek zostały wycięte z arkusza (GrabCut), otrzymały przezroczystość, zostały przeskalowane metodą Lanczos i lekko wyostrzone. Contact sheet został ponownie złożony. Nie zmieniano treści cyfr i napisów.
+- **Ograniczenia:** 1024×1024 jest wymiarem eksportu; faktyczna rozdzielczość detali odpowiada źródłowemu arkuszowi 1536×1024 i jest niższa niż natywny render pojedynczej tabliczki 1024×1024.

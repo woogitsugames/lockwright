@@ -1,46 +1,59 @@
-# Lockwright — G07: Koncepty przyjazdu pod drzwi klienta
+# G07 — Koncepty przyjazdu ślusarza pod drzwi klienta
 
-**Data:** 2026-11-05  
-**Repo:** `woogitsugames/lockwright`  
-**Zakres zmian:** tylko `contrib/gpt/G07/`.
+**Projekt:** Lockwright: Pogotowie Zamkowe / Lockwright: Locksmith on Call  
+**Data opracowania:** 2026-11-05  
+**Status:** 10 wariantów koncepcyjnych + arkusz podglądowy, do przeglądu artystycznego  
+**Obszar pracy:** wyłącznie `contrib/gpt/G07/`
 
-## Rezultat
+## Co wykonano
 
-Dziesięć pionowych fotorealistycznych kadrów koncepcyjnych w formacie **WebP, 1080 × 2340 px, dokładnie 9:19,5**, plus arkusz podglądowy `preview.webp`. Wszystkie obrazy zachowują spokojniejszy dolny obszar przeznaczony pod diegetyczny HUD. Zdjęciowy charakter: stara kamienica, ślady użytkowania, drewno, tynki, lamperia, emalia i matowy metal; różne warunki oświetlenia. Brak widocznych ludzi, marek, logotypów, zewnętrznych nakładek UI i przestępczej narracji.
+Przygotowano dziesięć pionowych, fotorealistycznie stylizowanych kadrów otoczenia z perspektywy ślusarza przybywającego na legalne zlecenie, bez widocznych osób, marek, UI i instrukcji otwierania zamków. Kadry obejmują wnętrza kamienicy i obiekty z biblii zleceń. Warianty oświetlenia obejmują światło dzienne, lampę żarową, noc po zgaśnięciu minutnika i mokre odbicia deszczowego wieczoru. Materiały: drewno, poobijana lamperia, emalia, lastryko, matowa stal, kamień, mokry bruk i szorstki metal.
 
-| # | Plik | Opis (PL / EN) |
+Kompozycje zachowują względnie spokojne dolne pole na diegetyczny interfejs gry. **Żadne napisy ani elementy interfejsu nie zostały nałożone na pojedyncze kadry.** Numery mieszkań na emaliowanych tabliczkach pozostają, zgodnie z charakterem otoczenia.
+
+Jeden wspólny arkusz został wygenerowany narzędziem ChatGPT; dziesięć pól wycięto i przeskalowano do **1080 × 2340 px (9:19,5)** w formacie JPEG. Powstały także dziesięć samodzielnych dokumentów SVG o tych samych wymiarach logicznych, zawierających skompresowany arkusz obrazów i odpowiednie wykadrowanie; ich szczegółowość rastrowa jest mniejsza. Arkusz `preview.jpg` ponownie złożono z kadrów, z polskimi i angielskimi podpisami **pod** obrazami. Źródło oraz narzędzie do powtarzalnego eksportu są dołączone. Pochodzenie i warunki wykorzystania podano w `ASSETS.md`.
+
+## Lista kadrów
+
+| Nr | Plik | Opis PL / EN |
 |---|---|---|
-| 01 | `images/01_apartment_day.webp` | **Dzień:** światło z okna klatki, drewniane drzwi, numer i wycieraczka. / **Daytime apartment:** window daylight, timber door, enamel number, mat. |
-| 02 | `images/02_apartment_evening.webp` | **Wieczór:** ciepła żarówka nad drzwiami. / **Evening apartment:** warm stairwell bulb. |
-| 03 | `images/03_apartment_night_timer.webp` | **Noc:** minutnik zgasił światło, chłodny półmrok. / **Night:** stairwell timer has switched the light off. |
-| 04 | `images/04_apartment_rainy_evening.webp` | **Deszczowy wieczór:** mokre ślady butów i odbicia. / **Rainy evening:** wet shoe prints and reflections. |
-| 05 | `images/05_attic.webp` | **Strych:** stara drewniana stolarka pod belkami. / **Attic:** weathered plank door below rafters. |
-| 06 | `images/06_cellar.webp` | **Piwnica:** stalowe drzwi pod ceglanym sklepieniem. / **Cellar:** matte steel door, vaulted brick. |
-| 07 | `images/07_kiosk_shutter.webp` | **Kiosk:** opuszczona roleta bez marki, mokry chodnik. / **Kiosk:** unbranded shutter, damp pavement. |
-| 08 | `images/08_changing_room_locker.webp` | **Szatnia:** metalowe szafki i płytki. / **Changing room:** worn lockers and floor tiles. |
-| 09 | `images/09_courtyard_gate.webp` | **Brama podwórza:** żelazna krata, bruk. / **Courtyard gate:** iron gate and wet cobbles. |
-| 10 | `images/10_workshop_door.webp` | **Warsztat:** oszklone drzwi z ciepłym wnętrzem. / **Workshop:** glazed timber door with warm interior. |
+| 01 | `images/01_apartment_day.jpg` | Mieszkanie w dzień: chłodne światło z okna, dębowe drzwi, emaliowany numer, wycieraczka i lamperia. / **Apartment, daytime:** cool window light, oak door, enamel number plate, mat and painted lower wall. |
+| 02 | `images/02_apartment_evening.jpg` | Wieczór: żółta żarówka i spokojne cienie na starych drzwiach. / **Apartment, evening:** warm bare bulb and calm shadows on old timber. |
+| 03 | `images/03_apartment_night_timer.jpg` | Noc: klatka po zgaśnięciu minutnika, tylko resztkowe światło. / **Apartment, night:** stairwell after timer light goes out, minimal ambient light. |
+| 04 | `images/04_apartment_rainy_evening.jpg` | Deszczowy wieczór: mokry podest i ślady butów, ciepłe światło. / **Rainy evening:** wet landing and shoe marks in tungsten light. |
+| 05 | `images/05_attic.jpg` | Strych: nierówne deski, belki i nieduże okno dachowe. / **Attic:** rough plank door, exposed rafters, small rooflight. |
+| 06 | `images/06_cellar.jpg` | Piwnica: masywne matowe drzwi, sklepienie ceglane, posadzka z odpływem. / **Cellar:** utilitarian iron door, brick vault, drain. |
+| 07 | `images/07_kiosk_shutter.jpg` | Kiosk: zamknięta żaluzja bez marki, mokry chodnik. / **Kiosk:** unbranded roller shutter above wet pavement. |
+| 08 | `images/08_changing_room_locker.jpg` | Szatnia: zmatowiałe metalowe szafki i zużyta podłoga. / **Changing room:** dull metal lockers and worn tiles. |
+| 09 | `images/09_courtyard_gate.jpg` | Brama: otwarta perspektywa podwórka, żelazo i mokry bruk. / **Courtyard gate:** iron gate, courtyard view, wet cobbles. |
+| 10 | `images/10_workshop_door.jpg` | Warsztat: drewniano-szklane drzwi, ciepłe światło za szybą. / **Workshop door:** framed glass panels, warm workshop light beyond. |
 
-## Dodatkowe pliki
+## Pozostałe pliki
 
-- `preview.webp` — arkusz podglądowy 5 × 2 z podpisami PL i EN umieszczonymi poza kadrami.
-- `source/concept_sheet_source.webp` — jeden źródłowy arkusz generatywny, zachowany do ponownego kadrowania i kontroli pochodzenia.
-- `tools/rebuild.py` — pomocnicze powtarzalne wycinanie 10 kadrów ze źródła (Pillow).
-- `ASSETS.md` — rejestr każdego pliku i jego promptu, narzędzia, daty, warunków oraz modyfikacji.
+- `preview.jpg` — arkusz podglądowy 5 × 2, podpisy PL i EN pod kadrówkami.
+- `preview.svg` — lekki, samodzielny arkusz wektorowo-rastrowy (sam obraz wewnątrz jest WebP).
+- `images/*.svg` — dziesięć samodzielnych tła SVG o wymiarach logicznych 1080 × 2340.
+- `source/concept_sheet_compact.webp` — skompresowana wersja źródła użyta w SVG.
+- `source/concept_sheet_original.png` — oryginalny arkusz z generatora ChatGPT, zachowany dla pochodzenia zasobów.
+- `tools/build_assets.py` — reprodukcja cropów JPEG i arkusza JPG z zachowanego źródła (Pillow).
+- `tools/build_compact_svg.py` — reprodukcja wariantów SVG z osadzonym źródłem WebP (Pillow).
+- `ASSETS.md` — rejestr wszystkich grafik z narzędziem, datą, pełnym opisem promptów, warunkami wykorzystania i edycją.
 
-## Odbiór i ograniczenia
+## QA i ograniczenia
 
-- Wszystkie dziesięć plików ma rozmiar **1080 × 2340 px** i mieści się dużo poniżej limitu **20 MB na plik**.
-- Kadry nie zawierają instrukcji otwierania zamka, nazw producentów ani bezpośrednich odniesień do innych gier.
-- **Ograniczenie istotne:** źródłem jest *jeden* wspólny arkusz generatywny z dziesięcioma panelami. Detale każdego wycinka mają naturalną szczegółowość około 220–260 × 500–540 px; 1080 × 2340 jest efektem skalowania, **nie natywnej generacji/rendera**.
-- Ciemna scena 03 wymaga sprawdzenia czytelności interaktywnych punktów; scena 08 ma w dolnej części widoczne szafki i należy zweryfikować ją z HUD.
-- `tools/rebuild.py` odtwarza kompozycje z zapisanej, stratnie skompresowanej kopii arkusza, zatem ponowny eksport może różnić się pikselowo od dostarczonych plików WebP.
+- **Wymiary:** 10 × 1080 × 2340 px, dokładnie 9:19,5. Każdy pojedynczy plik jest mniejszy niż 20 MB.
+- **Bezpieczeństwo narracji:** nie ma ludzi identyfikowalnych, marek, kodów rzeczywistych produktów, scen włamania ani instruktażu; grafiki przedstawiają spokojną sytuację obsługi klienta.
+- **Jakość:** źródłem jest wspólny arkusz, zatem wycięte fragmenty mają naturalną szczegółowość rzędu 220–260 × 500–540 px; rozdzielczość 1080 × 2340 uzyskano przez interpolację, **nie przez niezależny render natywny**. To karty do wyboru kierunku, a nie jeszcze gotowe assety produkcyjne 1:1.
+- **Kadry 05–10:** różnią się typem obiektu; nie wszystkie mają charakterystyczną emaliowaną tabliczkę numeru i wycieraczkę, gdy nie pasowałoby to do obiektu.
+- **Kadr 03:** jest celowo ciemny i wymaga testu czytelności interaktywnych punktów w Godot.
+- **Dół 40%:** pole uproszczone kompozycyjnie, ale w scenie szatni dolna część szafek pozostaje widoczna. Przed użyciem UI zalecany test z rzeczywistą zwijką HUD.
+- **Kompozycje:** pełne zdjęciowe tła; interfejs, weryfikacja prawa do lokalu i przejścia stanów nie są pokazane jako samodzielne elementy (będą nakładane diegetycznie przez grę).
 
-## Sugestie do wersji produkcyjnej
+## Propozycje dalszych działań
 
-1. Po wyborze najbardziej udanych wariantów wykonać osobne rendery natywnie w 9:19,5 (Blender Cycles / nowe generacje).
-2. Sprawdzić rzeczywistą strefę dotyku i dolny HUD na tle 01, 03, 04, 08 i 09, bez pływających paneli.
-3. Zweryfikować kontrast stanów nocnych także przy ograniczonej jasności ekranu, bez neonu, bloom i kolorowych klisz.
-4. Odtwarzać w docelowym Godot materiały zgodnie z `docs/styles/realizm.md` i lokalnymi skryptami proceduralnymi, nie zamieniać generatywnego zdjęcia automatycznie w model 3D.
+1. Po wyborze 2–3 kompozycji wykonać indywidualne rendery w Blender Cycles / narzędziu generatywnym **bezpośrednio w 9:19,5**; nie opierać finalnego artu na interpolowanych cropach.
+2. Zweryfikować w makiecie `mockups/realizm/03-job.html` podział strefy: weryfikacja dokumentów, podgląd wkładki, opcjonalny włącznik minutnika oraz diegetyczny HUD w dolnych 40%.
+3. Przetestować dostępność nocnego kadru bez sztucznych błysków, neonu i bloomu; zachować czytelność w skali szarości.
+4. Przy docelowym oświetleniu używać materiałów z `art/blender/env_common.py` zamiast przenosić generatywne detale 1:1 do modelu gry.
 
-**Niczego poza `contrib/gpt/G07/` nie zmieniano.**
+Nie zmieniano plików poza katalogiem `contrib/gpt/G07/`.
