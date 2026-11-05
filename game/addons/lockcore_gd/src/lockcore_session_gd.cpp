@@ -19,6 +19,7 @@ void LockcoreSession::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("event_hash"), &LockcoreSession::event_hash);
 	ClassDB::bind_method(D_METHOD("t_step"), &LockcoreSession::t_step);
 	ClassDB::bind_static_method("LockcoreSession", D_METHOD("solve", "family", "seed", "tier"), &LockcoreSession::solve);
+	ClassDB::bind_static_method("LockcoreSession", D_METHOD("rules_version", "family"), &LockcoreSession::rules_version);
 }
 
 bool LockcoreSession::create(const String &family, std::uint64_t seed, int tier) {
@@ -87,6 +88,8 @@ Dictionary LockcoreSession::describe() const {
 	vm["tension_resistance"] = static_cast<double>(v.tension_resistance) / lockcore::Q16_ONE;
 	vm["pick_drag"] = static_cast<double>(v.pick_drag) / lockcore::Q16_ONE;
 	vm["stress"] = static_cast<double>(v.stress) / lockcore::Q16_ONE;
+	vm["hold_progress"] = static_cast<double>(v.hold_progress) / lockcore::Q16_ONE;  // v0.4, FEEL F-07
+	vm["reset_progress"] = static_cast<double>(v.reset_progress) / lockcore::Q16_ONE;
 	vm["open"] = v.open;
 	vm["failure"] = StringName(lockcore::failure_name(v.failure).data());
 	return vm;
@@ -124,6 +127,12 @@ Dictionary LockcoreSession::solve(const String &family, std::uint64_t seed, int 
 	}
 	out["inputs"] = inputs;
 	return out;
+}
+
+int LockcoreSession::rules_version(const String &family) {
+	const lockcore::FamilyModule *module = lockcore::FamilyRegistry::builtin().find(
+			std::string_view(family.utf8().get_data()));
+	return module == nullptr ? 0 : module->rules_version();
 }
 
 bool LockcoreSession::is_open() const { return session_ != nullptr && session_->is_open(); }

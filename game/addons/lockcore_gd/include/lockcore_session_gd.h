@@ -26,6 +26,7 @@ public:
 	// Runs lockcore's own scripted bot (solver with recorded inputs) and returns
 	// {ok, reason, steps, event_hash, inputs: Array of [tension, depth, lift, rotate, push, tool]}.
 	static godot::Dictionary solve(const godot::String &family, std::uint64_t seed, int tier);
+	static int rules_version(const godot::String &family);
 	godot::Dictionary describe() const;
 	bool is_open() const;
 	bool finished() const;
