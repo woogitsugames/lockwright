@@ -268,13 +268,17 @@ jobs:
           TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.1.0")
           VER=${TAG#v}
           CODE=$(git rev-list --count "$TAG..HEAD" 2>/dev/null || echo 1); CODE=$((1000 + CODE))
+          # N-30 bis: same include/exclude filters as preset.0 "Android" (one source of truth)
+          INC=$(awk -F'"' '/^\[preset.0\]/{f=1} f&&/^include_filter=/{print $2; exit}' game/export_presets.cfg)
+          EXCL=$(awk -F'"' '/^\[preset.0\]/{f=1} f&&/^exclude_filter=/{print $2; exit}' game/export_presets.cfg)
+          test -n "$EXCL" || { echo "::error::preset.0 exclude_filter not found"; exit 1; }
           KS_LINE=""
           SIGNED="false"
           if [ "$HAS_KEYSTORE" = "1" ]; then
             KS_LINE="keystore/release=\"$KEYSTORE_PATH\"\nkeystore/release_user=\"$ANDROID_KEY_ALIAS\"\nkeystore/release_password=\"$ANDROID_KEYSTORE_PASSWORD\"\n"
             SIGNED="true"
           fi
-          printf '\n[preset.3]\nname="AndroidRelease"\nplatform="Android"\nrunnable=false\nexport_filter="all_resources"\ninclude_filter="i18n/*.csv,data/haptics/**/*.json,data/haptics/**/*.ahap"\nexclude_filter="android/*,addons/gut/*,tests/*,scenes/dev/*,scenes/photoreal_families/*,assets/photoreal_families/*,scripts/photoreal_families/*"\nexport_path="build/lockwright-release.aab"\nencrypt_pck=false\nencrypt_directory=false\n\n[preset.3.options]\ngradle_build/use_gradle_build=true\ngradle_build/export_format=1\ngradle_build/min_sdk="30"\ngradle_build/target_sdk="36"\narchitectures/arm64-v8a=true\narchitectures/armeabi-v7a=false\narchitectures/x86=false\narchitectures/x86_64=false\nkeystore/debug=""\nkeystore/debug_user=""\nkeystore/debug_password=""\n'"$KS_LINE"'package/signed='"$SIGNED"'\nversion/code='"$CODE"'\nversion/name="'"$VER"'"\npackage/unique_name="com.woogitsugames.lockwright"\npackage/name="Lockwright: Locksmith on Call"\ngraphics/opengl_debug=false\nxr_features/xr_mode=0\npermissions/vibrate=true\n' >> game/export_presets.cfg
+          printf '\n[preset.3]\nname="AndroidRelease"\nplatform="Android"\nrunnable=false\nexport_filter="all_resources"\ninclude_filter="'"$INC"'"\nexclude_filter="'"$EXCL"'"\nexport_path="build/lockwright-release.aab"\nencrypt_pck=false\nencrypt_directory=false\n\n[preset.3.options]\ngradle_build/use_gradle_build=true\ngradle_build/export_format=1\ngradle_build/min_sdk="30"\ngradle_build/target_sdk="36"\narchitectures/arm64-v8a=true\narchitectures/armeabi-v7a=false\narchitectures/x86=false\narchitectures/x86_64=false\nkeystore/debug=""\nkeystore/debug_user=""\nkeystore/debug_password=""\n'"$KS_LINE"'package/signed='"$SIGNED"'\nversion/code='"$CODE"'\nversion/name="'"$VER"'"\npackage/unique_name="com.woogitsugames.lockwright"\npackage/name="Lockwright: Locksmith on Call"\ngraphics/opengl_debug=false\nxr_features/xr_mode=0\npermissions/vibrate=true\n' >> game/export_presets.cfg
           # N-55: the release preset must keep VIBRATE (haptics), like preset.0
           awk '/^\[preset.3.options\]/{f=1} f&&/^permissions\/vibrate=true/{ok=1} END{exit !ok}' game/export_presets.cfg
           echo "version: $VER (code $CODE), keystore: $HAS_KEYSTORE (package/signed=$SIGNED - unsigned AAB when no release secrets)"
