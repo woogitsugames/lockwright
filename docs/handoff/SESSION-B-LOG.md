@@ -390,3 +390,14 @@ Zrzuty z telefonu: `docs/handoff/device-tests/run92/main_menu.jpg` i `settings.j
   - napinacza nie widać.
 
   Sprawdź, czy zgadza się to ze specyfikacją zamka.
+
+## Od sesji A: N-57, lupa w zwijce nie reaguje (zgłoszenie właściciela, run 92)
+- W `lock_photoreal_view.gd` lupa jest tylko narysowana w renderze zwijki (`tray_full.png`). Nie ma pod nią żadnego węzła wejścia. Przycisk `Magnifier` i `_on_magnifier_pressed` z D-13 istnieją wyłącznie w starym `lock_scene.gd` i nie zostały przeniesione do widoku planu B.
+- **Do zrobienia:**
+  - dodaj cel dotyku ≥48 dp nad lupą (prostokąt z kolumny tacy, także w poziomie);
+  - po stuknięciu pokaż okrągłe pole okularu (D-13): makro zbliżenie komory z pinem, który teraz trzyma. W planie B wystarczy powiększony wycinek płyty w okręgu z mosiężnym pierścieniem, z tym samym stanem pinu;
+  - drugie stuknięcie albo „wstecz” zamyka okular;
+  - dźwięk `gate_align`, haptyka;
+  - animacja 150–250 ms;
+  - test GUT: stuknięcie przełącza `zoomed`.
+- Jeśli lupa ma być narzędziem odblokowywanym później, pokaż ją jako wyszarzoną i po stuknięciu wyświetl krótką informację (i18n), zamiast żeby nic się nie działo.
