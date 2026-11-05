@@ -572,9 +572,9 @@ func _dent(c: Vector2, r: float, alpha: float) -> void:
 func _draw_flap() -> void:
 	# Leather flap of the roll with a brass snap: cut from the roll render, no "II" icon (HUD.md §6).
 	var s := _flap.size
-	if _tray_full:
-		var src := Rect2(Vector2(560, 300), Vector2(120, 120))
-		_flap.draw_texture_rect_region(_tray_full, Rect2(Vector2(4, 4), s - Vector2(8, 8)), src)
+	if _tray_empty:
+		var src := Rect2(Vector2(480, 70), Vector2(110, 110))  # bare leather above the pockets
+		_flap.draw_texture_rect_region(_tray_empty, Rect2(Vector2(4, 4), s - Vector2(8, 8)), src)
 	_flap.draw_rect(Rect2(Vector2(4, s.y - 8), Vector2(s.x - 8, 4)), Color(0, 0, 0, 0.35))
 	var c := s * 0.5
 	_flap.draw_circle(c, 9.0, Color(0.20, 0.15, 0.08))
