@@ -1,0 +1,337 @@
+{
+ "width": 540,
+ "height": 960,
+ "job": "wrong_floor",
+ "time": "night",
+ "door": "ajar",
+ "fps": 12,
+ "frames": 36,
+ "note": "quads: [tl,tr,br,bl] normalised 0..1, origin top-left (D-41). figures: feet line and height in px of this image.",
+ "anchors": {
+  "namecard": [
+   [
+    0.57749,
+    0.4588
+   ],
+   [
+    0.62081,
+    0.45886
+   ],
+   [
+    0.62081,
+    0.46542
+   ],
+   [
+    0.57749,
+    0.46534
+   ]
+  ],
+  "mailbox_card": [
+   [
+    0.87467,
+    0.52272
+   ],
+   [
+    0.91758,
+    0.52285
+   ],
+   [
+    0.91758,
+    0.53132
+   ],
+   [
+    0.87467,
+    0.53118
+   ]
+  ],
+  "number_plate": [
+   [
+    0.57586,
+    0.27842
+   ],
+   [
+    0.62255,
+    0.27829
+   ],
+   [
+    0.62255,
+    0.29561
+   ],
+   [
+    0.57586,
+    0.29573
+   ]
+  ],
+  "wreath": [
+   [
+    0.52256,
+    0.33496
+   ],
+   [
+    0.67781,
+    0.33474
+   ],
+   [
+    0.67781,
+    0.42205
+   ],
+   [
+    0.52256,
+    0.42195
+   ]
+  ],
+  "door": [
+   [
+    0.41506,
+    0.27307
+   ],
+   [
+    0.7848,
+    0.27198
+   ],
+   [
+    0.7848,
+    0.75913
+   ],
+   [
+    0.41506,
+    0.7559
+   ]
+  ],
+  "cylinder": [
+   [
+    0.7352,
+    0.50606
+   ],
+   [
+    0.77747,
+    0.50617
+   ],
+   [
+    0.77747,
+    0.55159
+   ],
+   [
+    0.7352,
+    0.55143
+   ]
+  ]
+ },
+ "figures": {
+  "kazimierz": {
+   "speaker": "kazimierz",
+   "door_state": "closed",
+   "feet_world_mm": [
+    -690.0,
+    -470.0,
+    0.0
+   ],
+   "height_mm": 1730,
+   "feet_center": [
+    0.25971,
+    0.85416
+   ],
+   "feet_line": [
+    [
+     0.14605,
+     0.85416
+    ],
+    [
+     0.37337,
+     0.85416
+    ]
+   ],
+   "head_top": [
+    0.25971,
+    0.35141
+   ],
+   "chest": [
+    0.25971,
+    0.49218
+   ],
+   "height_px": 482.6,
+   "px_per_mm": 0.27898,
+   "depth_mm": 2102.9,
+   "occluded_by_leaf": false,
+   "lights": [
+    {
+     "name": "bulb",
+     "type": "POINT",
+     "color_linear": [
+      1.0,
+      0.66,
+      0.38
+     ],
+     "strength_rel": 1.0,
+     "dir3d_to_light": [
+      -0.0472,
+      0.2876,
+      0.9566
+     ],
+     "dir2d_to_light": [
+      0.00361,
+      -0.08394
+     ],
+     "elevation_deg": 73.1
+    },
+    {
+     "name": "window_light",
+     "type": "AREA",
+     "color_linear": [
+      0.5,
+      0.62,
+      1.0
+     ],
+     "strength_rel": 0.2143,
+     "dir3d_to_light": [
+      -0.341,
+      0.8172,
+      0.4646
+     ],
+     "dir2d_to_light": [
+      -0.01897,
+      -0.04648
+     ],
+     "elevation_deg": 27.7
+    },
+    {
+     "name": "flat_lamp",
+     "type": "AREA",
+     "color_linear": [
+      1.0,
+      0.7,
+      0.42
+     ],
+     "strength_rel": 0.0589,
+     "dir3d_to_light": [
+      0.2631,
+      0.7894,
+      0.5546
+     ],
+     "dir2d_to_light": [
+      0.06368,
+      -0.05326
+     ],
+     "elevation_deg": 33.7
+    }
+   ]
+  },
+  "teresa": {
+   "speaker": "teresa",
+   "door_state": "ajar",
+   "feet_world_mm": [
+    250.0,
+    420.0,
+    0.0
+   ],
+   "height_mm": 1590,
+   "feet_center": [
+    0.68224,
+    0.72032
+   ],
+   "feet_line": [
+    [
+     0.60171,
+     0.72032
+    ],
+    [
+     0.76277,
+     0.72032
+    ]
+   ],
+   "head_top": [
+    0.68224,
+    0.39294
+   ],
+   "chest": [
+    0.68224,
+    0.48461
+   ],
+   "height_px": 314.3,
+   "px_per_mm": 0.19766,
+   "depth_mm": 2968.0,
+   "occluded_by_leaf": true,
+   "lights": [
+    {
+     "name": "bulb",
+     "type": "POINT",
+     "color_linear": [
+      1.0,
+      0.66,
+      0.38
+     ],
+     "strength_rel": 1.0,
+     "dir3d_to_light": [
+      -0.618,
+      -0.3652,
+      0.6962
+     ],
+     "dir2d_to_light": [
+      -0.06475,
+      -0.0413
+     ],
+     "elevation_deg": 44.1
+    },
+    {
+     "name": "window_light",
+     "type": "AREA",
+     "color_linear": [
+      0.5,
+      0.62,
+      1.0
+     ],
+     "strength_rel": 0.4329,
+     "dir3d_to_light": [
+      -0.8192,
+      0.2969,
+      0.4906
+     ],
+     "dir2d_to_light": [
+      -0.09198,
+      -0.03215
+     ],
+     "elevation_deg": 29.4
+    },
+    {
+     "name": "flat_lamp",
+     "type": "AREA",
+     "color_linear": [
+      1.0,
+      0.7,
+      0.42
+     ],
+     "strength_rel": 0.2385,
+     "dir3d_to_light": [
+      -0.127,
+      0.5996,
+      0.7902
+     ],
+     "dir2d_to_light": [
+      -0.02198,
+      -0.05115
+     ],
+     "elevation_deg": 52.2
+    }
+   ]
+  }
+ },
+ "camera": {
+  "location_mm": [
+   -170.0,
+   -2560.0,
+   1580.0
+  ],
+  "lens_mm": 22.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   -0.10499999672174454
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   1.5
+  ]
+ }
+}

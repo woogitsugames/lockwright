@@ -198,3 +198,5 @@ tutorial.s2_intro,Three pins. Only one resists at a time.,Trzy piny. Opór stawi
 tutorial.s3_intro,A new order. Too far? Start lighter.,Inna kolejność. Za wysoko? Zacznij lżej.,Andere Reihenfolge. Zu hoch? Sanfter neu.
 tutorial.s1_near_break,Too much force. The tool is bending. Ease off.,Za mocno. Napinacz się ugina. Poluzuj.,Zu viel Druck. Der Spanner biegt sich. Lass locker.
 ui.job_done,done,wykonane,erledigt
+lock.dial_hint,Turn the dial with your right thumb; stop on each gate.,Prawy kciuk kręci pokrętłem. Zatrzymaj koło w bramce.,Rechter Daumen dreht die Scheibe; im Tor anhalten.
+lock.combo_hint,"Pull gently, roll the stiff wheel slowly to its notch.","Ciągnij lekko, oporne kółko kręć powoli do wcięcia.","Sanft ziehen, das schwere Rad langsam zur Kerbe drehen."
