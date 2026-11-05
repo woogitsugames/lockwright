@@ -1,0 +1,157 @@
+{
+  "app": "android-godot",
+  "app_version": "0.2.0",
+  "created_utc": "2026-11-05T11:21:09Z",
+  "device": {
+    "audio": {
+      "api": "AAudio",
+      "buffer_frames": 512.0,
+      "device_native_rate": "48000",
+      "estimated_output_latency_ms": -1.0,
+      "frames_per_burst": 256.0,
+      "low_latency_feature": true,
+      "pro_audio_feature": false,
+      "sample_rate": 48000.0,
+      "sharing": "Shared"
+    },
+    "class": "samsung_a",
+    "haptic_caps": {
+      "envelopes": false,
+      "hasAmplitudeControl": false,
+      "model": "samsung SM-A165F",
+      "primitives": "CLICK:-1,TICK:-1,LOW_TICK:-1,THUD:-1,QUICK_RISE:-1,SLOW_RISE:-1,QUICK_FALL:-1",
+      "sdk": 36.0,
+      "tier": "A0",
+      "usage": "MEDIA"
+    },
+    "haptic_tier": "A0",
+    "manufacturer": "samsung",
+    "model": "SM-A165F",
+    "os": "16",
+    "platform": "android",
+    "sdk": 36.0
+  },
+  "metrics": {
+    "accel_hz": 250.0,
+    "audio_call_engine": {
+      "n": 30.0,
+      "p50_ms": 125.7,
+      "p95_ms": 137.7,
+      "rejected": 0.0,
+      "samples_ms": [
+        121.1,
+        125.7,
+        136.5,
+        121.1,
+        106.9,
+        118.3,
+        123.0,
+        132.5,
+        116.1,
+        127.0,
+        133.6,
+        118.9,
+        128.5,
+        135.9,
+        120.0,
+        130.0,
+        137.7,
+        122.8,
+        131.2,
+        117.1,
+        124.2,
+        110.1,
+        118.9,
+        126.7,
+        136.0,
+        143.7,
+        127.5,
+        136.3,
+        120.3,
+        106.9
+      ]
+    },
+    "audio_call_fast": {
+      "n": 30.0,
+      "p50_ms": 52.5,
+      "p95_ms": 54.9,
+      "rejected": 0.0,
+      "samples_ms": [
+        54.9,
+        52.4,
+        50.5,
+        54.6,
+        52.3,
+        50.6,
+        53.8,
+        50.6,
+        53.8,
+        52.7,
+        50.9,
+        53.4,
+        51.4,
+        54.6,
+        52.8,
+        50.9,
+        54.3,
+        52.5,
+        50.6,
+        54.0,
+        52.1,
+        50.0,
+        53.4,
+        51.6,
+        49.8,
+        53.3,
+        51.9,
+        55.5,
+        53.4,
+        51.6
+      ]
+    },
+    "audio_haptic_sync": {
+      "n": 0.0,
+      "p50_ms": -1.0,
+      "p95_ms": -1.0,
+      "rejected": 20.0,
+      "samples_ms": []
+    },
+    "audio_oboe_gain_ms": 73.2,
+    "audio_tap": {
+      "n": 0.0,
+      "p50_ms": -1.0,
+      "p95_ms": -1.0,
+      "rejected": 20.0,
+      "samples_ms": []
+    },
+    "continuous_max_gap_ms": 716.0,
+    "continuous_tier": "A0",
+    "haptic_call": {
+      "n": 0.0,
+      "p50_ms": -1.0,
+      "p95_ms": -1.0,
+      "rejected": 30.0,
+      "samples_ms": []
+    },
+    "haptic_tap": {
+      "n": 0.0,
+      "p50_ms": -1.0,
+      "p95_ms": -1.0,
+      "rejected": 20.0,
+      "samples_ms": []
+    }
+  },
+  "notes": [
+    "Ten telefon nie ma ciągłego oporu (tier A0) — zgodnie z TECH §2.2.",
+    "Mikrofon: źródło UNPROCESSED."
+  ],
+  "schema": "lockwright.measure/1",
+  "verdicts": {
+    "audio_haptic_sync_ms": "no_data",
+    "audio_oboe_gain_ms": "pass",
+    "audio_tap_p95_ms": "no_data",
+    "continuous_max_gap_ms": "fail",
+    "haptic_call_p95_ms": "no_data",
+    "haptic_tap_p95_ms": "no_data"
+  }
+}

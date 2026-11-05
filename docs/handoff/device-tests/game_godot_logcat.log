@@ -1,0 +1,14 @@
+﻿--------- beginning of main
+11-05 12:57:26.554 14418 14456 I godot   : Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+11-05 12:57:26.634 14418 14456 I godot   : Vulkan 1.3.303 - Forward Mobile - Using Device #0: ARM - Mali-G57 MC2
+11-05 12:57:27.504 14418 14456 I godot   : 
+11-05 12:57:28.543 14418 14456 I godot   : Haptics: native plugin LockwrightHaptics detected, caps={ "tier": "fallback", "primitives": [], "amplitude_control": false, "envelope": false, "native": false }
+11-05 12:57:28.543 14418 14456 I godot   : Sfx: native click audio bridge detected: LockwrightLowLatencyAudio
+11-05 12:57:30.826 14418 14456 E godot   : SCRIPT ERROR: Parse Error: Could not resolve super class inheritance from "res://scenes/photoreal/lock_photoreal.tscn".
+11-05 12:57:30.827 14418 14456 E godot   :    at: GDScript::reload (res://scripts/lock/lock_job.gd:1)
+11-05 12:57:30.827 14418 14456 E godot   :    GDScript backtrace (most recent call first):
+11-05 12:57:30.827 14418 14456 E godot   :        [0] _start_stage (res://scripts/ui/tutorial.gd:31)
+11-05 12:57:30.827 14418 14456 E godot   : ERROR: Failed to load script "res://scripts/lock/lock_job.gd" with error "Parse error".
+11-05 12:57:30.827 14418 14456 E godot   :    at: load (modules/gdscript/gdscript_resource_format.cpp:46)
+11-05 12:57:30.827 14418 14456 E godot   :    GDScript backtrace (most recent call first):
+11-05 12:57:30.827 14418 14456 E godot   :        [0] _start_stage (res://scripts/ui/tutorial.gd:31)

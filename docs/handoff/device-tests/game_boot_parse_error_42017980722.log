@@ -1,0 +1,10 @@
+﻿--------- beginning of main
+11-05 12:41:49.782 10743 10794 I godot   : Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+11-05 12:41:49.892 10743 10794 I godot   : Vulkan 1.3.303 - Forward Mobile - Using Device #0: ARM - Mali-G57 MC2
+11-05 12:41:53.401 10743 10794 I godot   : 
+11-05 12:41:54.124 10743 10794 E godot   : SCRIPT ERROR: Parse Error: Cannot infer the type of "first_run" variable because the value doesn't have a set type.
+11-05 12:41:54.124 10743 10794 E godot   :    at: GDScript::reload (res://scripts/ui/boot.gd:19)
+11-05 12:41:54.125 10743 10794 E godot   : ERROR: Failed to load script "res://scripts/ui/boot.gd" with error "Parse error".
+11-05 12:41:54.125 10743 10794 E godot   :    at: load (modules/gdscript/gdscript_resource_format.cpp:46)
+11-05 12:41:54.132 10743 10794 I godot   : Haptics: native plugin LockwrightHaptics detected, caps={ "tier": "fallback", "primitives": [], "amplitude_control": false, "envelope": false, "native": false }
+11-05 12:41:54.134 10743 10794 I godot   : Sfx: native click audio bridge detected: LockwrightLowLatencyAudio
