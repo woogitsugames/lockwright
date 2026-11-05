@@ -5,7 +5,8 @@ extends Control
 ## Inputs are stored as integers in 1/256 units with run-length (like lockcore golden replays), so every platform
 ## receives bit-identical float inputs.
 
-const FAMILIES := ["pin_tumbler", "wafer", "warded", "lever", "lever_detector", "ring_combo", "wooden_pin"]
+const FAMILIES := ["pin_tumbler", "wafer", "warded", "lever", "lever_detector", "ring_combo", "wooden_pin",
+		"dial_safe", "combo", "dimple", "disc_detainer", "egyptian", "axial_slider", "time_lock", "magnetic"]
 
 
 func _ready() -> void:

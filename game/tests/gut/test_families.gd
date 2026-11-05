@@ -3,7 +3,8 @@ extends GutTest
 ## and lockcore's own scripted bot (solve) opens each family when its recorded
 ## inputs are replayed through step() — i.e. through the Godot layer.
 
-const FAMILIES := [&"pin_tumbler", &"wafer", &"wooden_pin", &"warded", &"lever", &"lever_detector", &"ring_combo"]
+const FAMILIES := [&"pin_tumbler", &"wafer", &"wooden_pin", &"warded", &"lever", &"lever_detector", &"ring_combo",
+		&"dial_safe", &"combo", &"dimple", &"disc_detainer", &"egyptian", &"axial_slider", &"time_lock", &"magnetic"]
 
 func _make(family: StringName, seed: int = 7, tier: int = 1) -> RefCounted:
 	assert_true(ClassDB.class_exists("LockcoreSession"))
