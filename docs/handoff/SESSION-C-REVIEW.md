@@ -749,3 +749,141 @@ Weryfikacja „naprawione” (z `qa/run_matrix.sh`, `qa/bot/a11y_shots.gd`, log�
   +script = ExtResource("2")
   ```
 - Dlaczego CI tego nie złapało: `game-tests` (GUT) nie ładuje sceny zamka, a `qa-career` zgłasza problemy gry jako ostrzeżenia ⚠ (run zielony z adnotacją „ekran bez wyjścia”). Od tej rundy `qa-career` traktuje **błąd skryptu GDScript** jak awarię (czerwony run) — patrz niżej.
+
+# Etap 5
+
+## Runda CI 1 + raport z telefonu — 2026-11-05 14:45 (nowa sesja C)
+
+Stan CI na `main` @ 6120d07: kolejka runnerów zapchana (runy z 13:16 wciąż `queued`). Ostatnie zakończone: `perf-budget` ❌ (42023529473), `qa-career` ❌ (42022913627), `game-ios` ❌ (42023529618, 81aa034). `game-ios` 42031298421 (poprawka sesji B 9eca512) w toku. `spike-planb` ✅.
+
+Raport GEM3 (`docs/handoff/device-tests/REPORT.md`): BUG-01 (`boot.gd`, `first_run`) i BUG-02 (= N-29, `lock_job.gd`) są **już naprawione** na `main` (`boot.gd:18` ma typ `bool`; `lock_job.gd` dziedziczy po `.gd`), więc ich nie przenoszę. BUG-05, BUG-12 i BUG-13 (PerfHud) dotyczą moich spike'ów i naprawiłem je sam (patrz niżej). Pozostałe sprawdziłem w kodzie na 6120d07 i przenoszę jako N-xx.
+
+**N-30 · High (CI czerwone) · `perf-budget`: paczka Android 288,9 MB przy progu 70 MB** · `game/assets/ui/gpt/**/*.import`, `game/scenes/photoreal_families/shots/`, `game/export_presets.cfg`
+- Log runu 42023529473 (artefakt `perf-budget/budget.md`):
+  ```
+  | `pck_android_mb` | 288.9 | 45 / 70 | PRZEKROCZONY |
+  ##[error]Process completed with exit code 1.
+  ```
+- Odtworzone lokalnie (Godot 4.7.2, `--export-pack Android`): **289,2 MB**. Rozbicie po imporcie:
+  `assets/ui/gpt` 128,5 MB (57 JPG i 28 WebP z dostaw GPT importowane **bezstratnie**, `compress/mode=0`; okładka 1600×2200 z JPG 0,9 MB → 6,6 MB w paczce), `scenes/photoreal_families/shots` 89,9 MB (168 zrzutów kontrolnych Gemini, PNG z `.gray`/`.dim`, trafiają do gry jako tekstury), `assets/photoreal_families` 35 MB (4 rodziny GEM2, jeszcze niepodłączone do gry: używają ich tylko skrypty `scripts/photoreal_families/`).
+- Poprawka (sprawdzona lokalnie: **289 → 52,5 MB**, poziom ostrzeżenia zamiast błędu):
+  ```diff
+  # 1) grafiki UI z dostaw GPT: import stratny (WebP q=0,8); bez widocznej różnicy na ekranie telefonu
+  --- game/assets/ui/gpt/**/*.{png,jpg,webp}.import   (sed na 183 plikach)
+  -compress/mode=0
+  -compress/lossy_quality=0.7
+  +compress/mode=1
+  +compress/lossy_quality=0.8
+  # 2) zrzuty kontrolne Gemini nie są zasobem gry
+  +++ game/scenes/photoreal_families/shots/.gdignore   (pusty plik; albo przenieść zrzuty do art/renders/variants/)
+  # 3) rodziny GEM2 poza eksportem, dopóki sesja A ich nie podłączy
+  --- game/export_presets.cfg   ([preset.0] Android i [preset.1] iOS)
+  -exclude_filter="android/*,addons/gut/*,tests/*,scenes/dev/*"
+  +exclude_filter="android/*,addons/gut/*,tests/*,scenes/dev/*,scenes/photoreal_families/*,assets/photoreal_families/*,scripts/photoreal_families/*"
+  ```
+  Polecenie do 1): `find game/assets/ui/gpt -name '*.import' -exec sed -i 's/^compress\/mode=0/compress\/mode=1/; s/^compress\/lossy_quality=0.7/compress\/lossy_quality=0.8/' {} +`
+- Właściciele: 1) i 3) sesja B (`game/assets/ui`, `export_presets.cfg`); 2) sesja A / Gemini (`photoreal_families`). Progów w `qa/budget/budgets.json` **nie podnoszę**: 52,5 MB to nadal ostrzeżenie (> 45), więc kolejny duży zasób (np. tekstury rodzin 2K) trzeba będzie od razu kompresować (ASTC/ETC2 z `size_limit=1024` dla tła).
+
+**N-31 · High · Wyjście z pauzy zostawia `get_tree().paused = true` i zamraża menu główne** (GEM3 BUG-03, P0) · `game/scripts/lock/lock_scene.gd:47`
+  ```diff
+  -	$UILayer/PauseMenu/VBox/QuitButton.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+  +	$UILayer/PauseMenu/VBox/QuitButton.pressed.connect(func() -> void:
+  +		get_tree().paused = false
+  +		get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+  ```
+  To samo sprawdzić w `scripts/photoreal/lock_photoreal.gd` (sesja A), jeśli jej pauza ma „Wyjdź”. Test GUT: po `QuitButton.pressed.emit()` → `get_tree().paused == false`.
+
+**N-32 · High · Warstwa kredy `Chalk` połyka dotyk: „Pauza” i „Lupa” nie działają** (GEM3 BUG-04) · `game/scenes/lock.tscn:99`
+  ```diff
+   [node name="Chalk" type="Control" parent="UILayer"]
+   layout_mode = 3
+   anchors_preset = 15
+   anchor_right = 1.0
+   anchor_bottom = 1.0
+  +mouse_filter = 2
+   visible = false
+  ```
+  Kreda to warstwa tylko do odczytu (HUD §8), więc nie powinna nigdy przechwytywać wejścia. Dotyczy też dzieci `Chalk` tworzonych w kodzie (`mouse_filter = MOUSE_FILTER_IGNORE`).
+
+**N-33 · Medium · Tempo klatek 55 FPS i 1% low 30 FPS mimo GPU 6,4 ms** (GEM3 §3.3, spike 4) · `game/project.godot:50-51`
+- Na Mali-G57 GPU robi klatkę w 6,4 ms (p95), a odstęp `_process` to stałe 18,18 ms z podwójną klatką co ok. 11 klatek. Fizyka 120 Hz przy wyłączonym `physics_jitter_fix` i 60 Hz ekranu daje nierówne kroki.
+  ```diff
+   common/physics_ticks_per_second=120
+  -common/physics_jitter_fix=0.0
+  +common/physics_jitter_fix=0.5
+  ```
+  oraz w scenie zamka próbkowanie wejścia 120 Hz bez `_physics_process`, jeśli lockcore nie wymaga stałego kroku silnika (krok lockcore jest i tak liczony z `InputSampler`). Po zmianie: powtórzyć `planb-perf-apk` 10 min (kryterium: p95 ≤ 16,7 ms, 1% low ≥ 55).
+
+**N-34 · (moje, naprawione) · `planb-perf-apk` bez `liblockcore_gd` (0 B) i bez i18n** (GEM3 BUG-05) — `.so` nie jest w gicie, a workflow go nie budował. Od tego commitu `spike-planb.yml` buduje `liblockcore_gd` arm64 (NDK 29, godot-cpp przypięty), a run kończy się błędem, gdy biblioteka w APK ma < 100 kB. Filtry eksportu jak w grze (bez spacji po przecinkach, `.translation`). Werdykt PerfHud zawija się (BUG-13, część spike'owa).
+
+**N-35 · High przed wydaniem · RAM 598 MB (spike) / 388 MB (menu) i zimny start ok. 4,4 s** (GEM3 BUG-06) · `game/scripts/autoload/sfx.gd` (`_preload_all`, `_preload_native`), tekstury planu B
+- Progi (POMIARY §8 / TECH §4): PSS ≤ 350 MB tani, ≤ 450 MB średni; start ≤ 3,5 s tani.
+- Propozycja: wczytywać przy starcie tylko krótkie zdarzenia zamka (L2, kilkadziesiąt kB), a pętle otoczenia, muzykę i głosy strumieniować (`AudioStreamOggVorbis`/WAV `load` przy wejściu na ekran, zwalniane przy wyjściu):
+  ```diff
+  -func _ready() -> void:
+  -	_preload_all()
+  -	_preload_native()
+  +func _ready() -> void:
+  +	_preload_group(&"lock")        # L2: set/false_set/drop/break/open... (natychmiast, bez alokacji w grze)
+  +	_preload_native()              # tylko próbki L2 do mostka Oboe
+  +	# ambience/music/voices/foley: ResourceLoader.load_threaded_request() przy wejściu na ekran
+  ```
+  Graphics 317 MB w scenie planu B: tekstury 2K bez `size_limit` i mipmap → sesja A: `process/size_limit=1024` dla map ORM/normal pinów, ASTC 6×6.
+
+**N-36 · Medium · Puste przyciski na przyjeździe (3) i weryfikacji (2)** (GEM3 BUG-07) · `game/scenes/job_arrival.tscn:46-68`, `game/scenes/job_verify.tscn:39,67`
+- `job_arrival.gd` nie używa już `AcceptButton`, `RefuseButton`, `ContinueButton` (przeniesione do `job_verify`), a `job_verify.gd` nie używa `VerifyButton` ani `ContinueButton`. Węzły zostały w scenach z pustym tekstem.
+  ```diff
+  --- game/scenes/job_arrival.tscn   (usunąć 5 węzłów: AcceptButton, RefuseButton, Result, Reward, ContinueButton)
+  --- game/scenes/job_verify.tscn    (usunąć VerifyButton i ContinueButton)
+  ```
+  Wariant minimalny: `visible = false` na tych węzłach. Automat QA (`qa/`) dostanie w części 3 kontrolę „widoczny przycisk bez tekstu i ikony”.
+
+**N-37 · High (ton i zasady) · W zleceniach odmownych „Otwórz dla tego klienta” jest aktywne** (GEM3 BUG-08) · `game/scripts/ui/job_verify.gd:14-27`
+  ```diff
+   	accept_button.pressed.connect(_accept)
+   	refuse_button.pressed.connect(_refuse)
+  +	# JOBS.md §2: in a refusal job the client has no right to the flat; opening is not an option
+  +	if String(job.get("id", "")).begins_with("job.refuse"):
+  +		accept_button.visible = false
+  ```
+  Nie wystarczy `disabled = true`: przycisk „Otwórz” w zleceniu odmownym podsuwa graczowi otwarcie mimo braku prawa do lokalu (CLAUDE.md, „ślusarz weryfikuje prawo do lokalu”).
+
+**N-38 · Medium · `lock.tscn`: lupa na całą zwijkę, placeholder 5 pinów dla każdej rodziny, tryb ciemny bez wygaszenia `KeyLight`** (GEM3 BUG-09) · `game/scenes/lock.tscn:87`, `game/scripts/lock/lock_scene.gd:258`
+  ```diff
+  --- lock_scene.gd
+   	if on:
+   		env.background_energy_multiplier = 0.05
+   		env.ambient_light_energy = 0.05
+  +		$KeyLight.visible = false
+   	else:
+   		env.background_energy_multiplier = 1.0
+   		env.ambient_light_energy = 0.6
+  +		$KeyLight.visible = true
+  ```
+  `Magnifier` jako dziecko `PanelContainer` ignoruje kotwice: przenieść go do `UILayer/Hud` (rodzeństwo `Zwijka`) z kotwicą prawego dolnego rogu. Geometria zastępcza dla rodzin innych niż pin_tumbler: ekran `lock.tscn` powinien w ogóle nie być używany dla rodzin, które mają scenę planu B (`JobRun.lock_scene_path()`), a dla pozostałych pokazać informację zamiast fałszywych pinów (D-12: bez paneli, więc diegetyczna kartka z zeszytu).
+
+**N-39 · Low · Panel „O grze” półprzezroczysty, przyciski menu prześwitują** (GEM3 BUG-10) · `game/scenes/main_menu.tscn:58`. Dodać `theme_override_styles/panel` z nieprzezroczystym tłem (kolor papieru z motywu) albo pełnoekranowy `ColorRect` przyciemnienia pod panelem z `mouse_filter = STOP`.
+
+**N-40 · Low · Warsztat: narzędzie za darmo ma przycisk „Kup” za 0 monet; Gablota: wszystko odblokowane i surowe `*…*`; samouczek bez „Wstecz” i kart G11** (GEM3 BUG-11) · `game/scripts/ui/workshop_screen.gd`, `showcase*.gd`, `tutorial.gd`. `pk_ward` ma w `data/tools.json` `price: 0, unlock: after_t1` — to nagroda, nie zakup: pokazać „Dostaniesz po 1. etapie” zamiast „Kup”. W Gablocie: odblokowanie wg `unlock` z danych i `RichTextLabel` z BBCode (`[i]…[/i]`) zamiast gwiazdek w CSV.
+
+**N-41 · (moje, naprawione) · Aplikacja pomiarowa klasyfikowała Galaxy A16 jako „Samsung A”** (GEM3 BUG-12). `guessClass()`: tier A0 albo SM-A0x/A1x/A2x/M0x–M2x → `budget`; `ingest.py` poprawia klasę także w starych plikach JSON. Progi detekcji obniżone (akcelerometr 0,02 → 0,005 m/s², mikrofon 0,01 → 0,002), impuls A0 30 → 40 ms; pomiar haptyki do powtórzenia.
+
+**N-42 · Low · Ustawienia: przewijanie zaczęte na przycisku nie przewija listy** (GEM3 BUG-13, część gry) · `game/scenes/settings.tscn`. Dzieci `ScrollContainer/VBox`: `mouse_filter = 1` (PASS) i w `ScrollContainer` `scroll_deadzone = 12`, żeby krótki gest był dotknięciem, a dłuższy przewijaniem.
+
+**N-43 · Medium · Każdy run `game-android` podpisuje APK nowym kluczem debug → aktualizacja kasuje zapis gry** (GEM3 BUG-14) · `.github/workflows/game-android.yml:134`
+  ```diff
+  -          keytool -genkeypair -v -keystore /tmp/debug.keystore -storepass android -alias androiddebugkey \
+  -            -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+  +          if [ -n "${{ secrets.ANDROID_DEBUG_KEYSTORE_BASE64 }}" ]; then
+  +            echo "${{ secrets.ANDROID_DEBUG_KEYSTORE_BASE64 }}" | base64 -d > /tmp/debug.keystore
+  +          else
+  +            keytool -genkeypair -v -keystore /tmp/debug.keystore -storepass android -alias androiddebugkey \
+  +              -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+  +            echo "::warning::random debug key: installing over a previous build will fail (N-43)"
+  +          fi
+  ```
+  Sekret `ANDROID_DEBUG_KEYSTORE_BASE64` (stały klucz debug, nie wydaniowy) musi dodać właściciel; dopisane do `TESTY-SKLEPY.md` przy najbliższej aktualizacji.
+
+**game-ios (42023529618, 81aa034) · N-24 kontynuacja:** `scons: *** [bin/liblockwright_haptics.ios.template_release] Source file: Sources/register_types.ios.template_release.arm64.o is static and is not compatible with shared target`. Sesja B wypchnęła 9eca512 („build iOS haptics plugin objects with SharedObject”), run 42031298421 w toku — sprawdzę w następnej rundzie. Ostrzeżenia `-Wunguarded-availability-new` (deployment target iOS 12, Core Haptics od iOS 13): podnieść `IPHONEOS_DEPLOYMENT_TARGET`/`ios_min_version` do 15.0 (TECH §6: minimum iOS 17), nie wyciszać.
+
+**qa-career (42022913627):** log zawiera tylko krok uploadu, przyczyna jest w raporcie (artefakt `qa-career-report`). Poprzednia sesja w e0caa51 naprawiła bezwzględną ścieżkę `replay_tool` (Godot `--path` zmienia katalog roboczy, więc profile feel i clumsy nie startowały). Run na e0caa51 (42034400904) czeka w kolejce; lokalne odtworzenie w toku.
