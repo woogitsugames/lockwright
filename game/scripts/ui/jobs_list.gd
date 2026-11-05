@@ -1,7 +1,7 @@
 extends Control
 ## Job list (Tryb Zleceń): all jobs from game/data/jobs/*.json, grouped by chapter.
 
-@onready var list: VBoxContainer = $Scroll/VBox/JobsList
+@onready var list: VBoxContainer = $VBox/Scroll/VBox/JobsList
 @onready var back_button: Button = $BackButton
 
 const JOBS_DIR := "res://data/jobs"
