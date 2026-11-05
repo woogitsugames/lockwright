@@ -1,0 +1,562 @@
+{
+  "schema": "lockwright.G15.district_map.v1",
+  "fictional_city": {
+    "pl": "Zameczno",
+    "en": "Zameczno"
+  },
+  "dimensions_px": [
+    4096,
+    4096
+  ],
+  "origin": "top-left",
+  "note_pl": "Współrzędne odnoszą się do obrazów 4096×4096. Napisy PL/EN nakładać dynamicznie; nie są wypalone w teksturze mapy.",
+  "note_en": "Coordinates refer to 4096x4096 map textures. Render PL/EN labels dynamically; names are not baked into the image.",
+  "chapters": [
+    {
+      "number": 1,
+      "pl": "Pierwsza zmiana",
+      "en": "First shift",
+      "roman": "I",
+      "zone_polygon_px": [
+        [
+          1580,
+          1460
+        ],
+        [
+          2140,
+          1248
+        ],
+        [
+          2660,
+          1300
+        ],
+        [
+          3080,
+          1712
+        ],
+        [
+          2952,
+          2500
+        ],
+        [
+          2388,
+          2744
+        ],
+        [
+          1776,
+          2440
+        ],
+        [
+          1492,
+          1900
+        ]
+      ],
+      "job_marks_px": [
+        [
+          1972,
+          2196
+        ],
+        [
+          2380,
+          1896
+        ],
+        [
+          1844,
+          1396
+        ]
+      ]
+    },
+    {
+      "number": 2,
+      "pl": "Nocne dyżury",
+      "en": "Night calls",
+      "roman": "II",
+      "zone_polygon_px": [
+        [
+          1640,
+          732
+        ],
+        [
+          2400,
+          500
+        ],
+        [
+          3144,
+          848
+        ],
+        [
+          3088,
+          1448
+        ],
+        [
+          2660,
+          1612
+        ],
+        [
+          2144,
+          1304
+        ],
+        [
+          1592,
+          1424
+        ]
+      ],
+      "job_marks_px": [
+        [
+          2440,
+          940
+        ],
+        [
+          2844,
+          1272
+        ],
+        [
+          2236,
+          1144
+        ]
+      ]
+    },
+    {
+      "number": 3,
+      "pl": "Strychy i spadki",
+      "en": "Attics and inheritances",
+      "roman": "III",
+      "zone_polygon_px": [
+        [
+          536,
+          1548
+        ],
+        [
+          1600,
+          1448
+        ],
+        [
+          1796,
+          2456
+        ],
+        [
+          1624,
+          3080
+        ],
+        [
+          980,
+          3352
+        ],
+        [
+          484,
+          2528
+        ]
+      ],
+      "job_marks_px": [
+        [
+          1044,
+          1916
+        ],
+        [
+          1172,
+          2768
+        ],
+        [
+          1520,
+          2496
+        ]
+      ]
+    },
+    {
+      "number": 4,
+      "pl": "Szlak rzemiosła",
+      "en": "Craft trail",
+      "roman": "IV",
+      "zone_polygon_px": [
+        [
+          968,
+          3164
+        ],
+        [
+          1644,
+          2972
+        ],
+        [
+          2332,
+          2860
+        ],
+        [
+          2636,
+          3648
+        ],
+        [
+          1788,
+          3744
+        ],
+        [
+          896,
+          3584
+        ]
+      ],
+      "job_marks_px": [
+        [
+          1608,
+          3288
+        ],
+        [
+          2136,
+          3460
+        ],
+        [
+          1872,
+          3040
+        ]
+      ]
+    },
+    {
+      "number": 5,
+      "pl": "Droga na dworzec",
+      "en": "Road to the station",
+      "roman": "V",
+      "zone_polygon_px": [
+        [
+          2336,
+          2704
+        ],
+        [
+          2984,
+          2472
+        ],
+        [
+          3436,
+          2880
+        ],
+        [
+          3684,
+          3656
+        ],
+        [
+          2628,
+          3664
+        ]
+      ],
+      "job_marks_px": [
+        [
+          2772,
+          3280
+        ],
+        [
+          3272,
+          3408
+        ],
+        [
+          2592,
+          3044
+        ]
+      ]
+    },
+    {
+      "number": 6,
+      "pl": "Skarbiec",
+      "en": "The vault",
+      "roman": "VI",
+      "zone_polygon_px": [
+        [
+          3024,
+          1304
+        ],
+        [
+          3664,
+          964
+        ],
+        [
+          3848,
+          1768
+        ],
+        [
+          3760,
+          2772
+        ],
+        [
+          3364,
+          2960
+        ],
+        [
+          3032,
+          2512
+        ]
+      ],
+      "job_marks_px": [
+        [
+          3468,
+          1800
+        ],
+        [
+          3496,
+          2424
+        ],
+        [
+          3676,
+          2200
+        ]
+      ]
+    }
+  ],
+  "streets": [
+    {
+      "pl": "Lipowa",
+      "en": "Linden Street",
+      "position_px": [
+        1560,
+        1776
+      ]
+    },
+    {
+      "pl": "Wąska",
+      "en": "Narrow Street",
+      "position_px": [
+        2120,
+        1568
+      ]
+    },
+    {
+      "pl": "Młynarska",
+      "en": "Mill Street",
+      "position_px": [
+        2540,
+        1584
+      ]
+    },
+    {
+      "pl": "Kamienna",
+      "en": "Stone Street",
+      "position_px": [
+        2144,
+        2312
+      ]
+    },
+    {
+      "pl": "Zaułek Sąsiadów",
+      "en": "Neighbours Lane",
+      "position_px": [
+        1868,
+        2048
+      ]
+    },
+    {
+      "pl": "Targowa",
+      "en": "Market Street",
+      "position_px": [
+        2328,
+        1092
+      ]
+    },
+    {
+      "pl": "Podcienia",
+      "en": "Arcades Street",
+      "position_px": [
+        2840,
+        1112
+      ]
+    },
+    {
+      "pl": "Nadbrzeżna",
+      "en": "Riverside Street",
+      "position_px": [
+        2896,
+        2248
+      ]
+    },
+    {
+      "pl": "Działkowa",
+      "en": "Allotment Street",
+      "position_px": [
+        1244,
+        2664
+      ]
+    },
+    {
+      "pl": "Wierzbowa",
+      "en": "Willow Street",
+      "position_px": [
+        936,
+        2184
+      ]
+    },
+    {
+      "pl": "Cechowa",
+      "en": "Guild Street",
+      "position_px": [
+        1512,
+        3464
+      ]
+    },
+    {
+      "pl": "Kowalska",
+      "en": "Smith Street",
+      "position_px": [
+        2116,
+        3216
+      ]
+    },
+    {
+      "pl": "Torowa",
+      "en": "Rail Street",
+      "position_px": [
+        2644,
+        3036
+      ]
+    },
+    {
+      "pl": "Dworcowa",
+      "en": "Station Street",
+      "position_px": [
+        2964,
+        3360
+      ]
+    },
+    {
+      "pl": "Portowa",
+      "en": "Harbour Street",
+      "position_px": [
+        3588,
+        2332
+      ]
+    },
+    {
+      "pl": "Muzealna",
+      "en": "Museum Street",
+      "position_px": [
+        3440,
+        1528
+      ]
+    }
+  ],
+  "places": [
+    {
+      "id": "workshop",
+      "chapter": 1,
+      "pl": "Warsztat Henryka",
+      "en": "Henryk's Workshop",
+      "position_px": [
+        2040,
+        2192
+      ]
+    },
+    {
+      "id": "town_square",
+      "chapter": 1,
+      "pl": "Stary Rynek",
+      "en": "Old Market Square",
+      "position_px": [
+        2392,
+        1856
+      ]
+    },
+    {
+      "id": "housing",
+      "chapter": 1,
+      "pl": "Osiedle Słoneczne",
+      "en": "Sunny Estate",
+      "position_px": [
+        1796,
+        1320
+      ]
+    },
+    {
+      "id": "night_market",
+      "chapter": 2,
+      "pl": "Nocny Rynek",
+      "en": "Night Market",
+      "position_px": [
+        2496,
+        944
+      ]
+    },
+    {
+      "id": "inn",
+      "chapter": 2,
+      "pl": "Gospoda pod Lipą",
+      "en": "Linden Inn",
+      "position_px": [
+        2824,
+        1288
+      ]
+    },
+    {
+      "id": "hill",
+      "chapter": 3,
+      "pl": "Dębowe Wzgórze",
+      "en": "Oak Hill",
+      "position_px": [
+        1012,
+        1848
+      ]
+    },
+    {
+      "id": "gardens",
+      "chapter": 3,
+      "pl": "Ogrody nad Kanałkiem",
+      "en": "Canal Gardens",
+      "position_px": [
+        1172,
+        2796
+      ]
+    },
+    {
+      "id": "guild",
+      "chapter": 4,
+      "pl": "Dziedziniec Cechowy",
+      "en": "Guild Courtyard",
+      "position_px": [
+        1644,
+        3292
+      ]
+    },
+    {
+      "id": "forge",
+      "chapter": 4,
+      "pl": "Stara Kuźnia",
+      "en": "Old Forge",
+      "position_px": [
+        2112,
+        3488
+      ]
+    },
+    {
+      "id": "station",
+      "chapter": 5,
+      "pl": "Dworzec Dolny",
+      "en": "Lower Station",
+      "position_px": [
+        2808,
+        3292
+      ]
+    },
+    {
+      "id": "yard",
+      "chapter": 5,
+      "pl": "Plac Kolejowy",
+      "en": "Railway Yard",
+      "position_px": [
+        3240,
+        3444
+      ]
+    },
+    {
+      "id": "museum",
+      "chapter": 6,
+      "pl": "Muzeum Mechanizmów",
+      "en": "Museum of Mechanisms",
+      "position_px": [
+        3504,
+        1792
+      ]
+    },
+    {
+      "id": "port",
+      "chapter": 6,
+      "pl": "Port Rzeczny",
+      "en": "River Port",
+      "position_px": [
+        3488,
+        2496
+      ]
+    }
+  ]
+}
