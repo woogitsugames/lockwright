@@ -53,7 +53,7 @@ def drop(*prefixes):
     for o in list(bpy.data.objects):
         if o.name.startswith(prefixes): bpy.data.objects.remove(o, do_unlink=True)
 # props that belong to the static shot or are rebuilt here
-drop('clipboard', 'pencil', 'body', 'enamel_', 'number', 'ep_screw', 'floor', 'behind', 'ceiling', 'skirt_side',
+drop('hand_grime', 'clipboard', 'pencil', 'body', 'enamel_', 'number', 'ep_screw', 'floor', 'behind', 'ceiling', 'skirt_side',
      'left_', 'inside_floor', 'aim')
 for o in list(bpy.data.objects):
     if o.type == 'LIGHT': bpy.data.objects.remove(o, do_unlink=True)
@@ -98,7 +98,7 @@ def yz_prism(name, pts, x0, x1, mat):
 def paint_line(y):   # lamperia top: 1500 above the walking line, level on the landings
     return min(LAMP_Z, max(HALFZ + LAMP_Z, stair_z(y) - RISE * 0.5 + LAMP_Z))
 ys = [BACKY, Y_BOT, TOPY, 0]
-WIN = (-4050, -3050, 250, 2250)         # stair window in the outer wall: y0, y1, z0, z1
+WIN = (-1580, -1010, 980, 2560)          # stair window in the landing's back wall (courtyard side): x0, x1, z0, z1
 def walls(name, xa, xb, ya, yb, face, holes=()):
     """Lamperia / stripe / lime on one wall plane (face = side the paint is on, for a 1 mm proud stripe)."""
     yy = [y for y in ys if ya <= y <= yb]
@@ -112,7 +112,9 @@ def walls(name, xa, xb, ya, yb, face, holes=()):
             if h[4] < max(paint_line(y) for y in yy) + STRIPE + 2000: cut(o, bx('hole', *h))
         _bev(o, 1.5, 2, 30)
     return lam, st, li
-walls('outer', FX0 - WT, FX0, BACKY, 0, +1, holes=[(FX0 - WT - 10, FX0 + 10, WIN[0], WIN[1], WIN[2], WIN[3])])
+walls('outer', FX0 - WT, FX0, BACKY, 0, +1)
+for nm in ('back_lamp', 'back_str', 'back_lime'):
+    cut(bpy.data.objects[nm], bx('hole', WIN[0], WIN[1], -10, WT + 10, WIN[2], WIN[3]))
 walls('spine', FX1, FX1 + 120, BACKY, -4300, -1)
 bx('spine_low', FX1, FX1 + 120, -4300, TOPY, LOWZ, -220, upper)         # under the landing edge
 bx('behind_flight', FX0 - WT, FX1 + 120, BACKY - 100, BACKY, LOWZ, CEIL, upper)
@@ -137,22 +139,22 @@ for y in (Y_BOT + 300, (Y_BOT + TOPY) / 2, TOPY - 200):
 
 # stair window: painted timber frame, mullion + transom, ribbed (obscured) glass, sky beyond
 win_paint = oil_paint('window_paint', (0.70, 0.66, 0.56), rough=0.35, chips=0.5, scuffs=0.3, strokes='Z', seed=8, edge_chips=1.0)
-wy0, wy1, wz0, wz1 = WIN; WX = FX0 - WT * 0.55
-for nm, a, b, c, d in (('wf_l', wy0, wy0 + 70, wz0, wz1), ('wf_r', wy1 - 70, wy1, wz0, wz1), ('wf_b', wy0, wy1, wz0, wz0 + 80),
-                       ('wf_t', wy0, wy1, wz1 - 70, wz1), ('wf_m', (wy0 + wy1) / 2 - 30, (wy0 + wy1) / 2 + 30, wz0, wz1),
-                       ('wf_tr', wy0, wy1, wz1 - 520, wz1 - 470)):
-    bx(nm, WX - 35, WX + 35, a, b, c, d, win_paint, bev=2)
-bx('w_sill', FX0 - WT * 0.55, FX0 + 40, wy0 - 40, wy1 + 40, wz0 - 30, wz0, terrazzo('sill', matrix=(0.40, 0.38, 0.35), seed=9), bev=3)
+wx0, wx1, wz0, wz1 = WIN; WY = WT * 0.55
+for nm, a, b, c, d in (('wf_l', wx0, wx0 + 70, wz0, wz1), ('wf_r', wx1 - 70, wx1, wz0, wz1), ('wf_b', wx0, wx1, wz0, wz0 + 80),
+                       ('wf_t', wx0, wx1, wz1 - 70, wz1), ('wf_m', (wx0 + wx1) / 2 - 28, (wx0 + wx1) / 2 + 28, wz0, wz1 - 520),
+                       ('wf_tr', wx0, wx1, wz1 - 520, wz1 - 470)):
+    bx(nm, a, b, WY - 35, WY + 35, c, d, win_paint, bev=2)
+bx('w_sill', wx0 - 40, wx1 + 40, -40, WY, wz0 - 30, wz0, terrazzo('sill', matrix=(0.40, 0.38, 0.35), seed=9), bev=3)
+bx('w_reveal_paint', wx0 - 2, wx1 + 2, 0, WY - 34, wz1 - 1, wz1 + 1, upper)
 ribbed = bpy.data.materials.new('ribbed_glass'); ribbed.use_nodes = True
 rb = ribbed.node_tree.nodes['Principled BSDF']
 rb.inputs['Transmission Weight'].default_value = 1.0; rb.inputs['Roughness'].default_value = 0.22; rb.inputs['IOR'].default_value = 1.5
 rb.inputs['Base Color'].default_value = (0.86, 0.90, 0.88, 1)
-bx('w_glass', WX - 3, WX + 3, wy0 + 10, wy1 - 10, wz0 + 10, wz1 - 10, ribbed).visible_shadow = False
-SKY = {'night': ((0.10, 0.16, 0.34), 0.35), 'evening': ((0.30, 0.42, 0.85), 2.2), 'day': ((0.86, 0.90, 0.98), 9.0)}[TIME]
-sky = bx('w_sky', FX0 - WT - 900, FX0 - WT - 880, wy0 - 900, wy1 + 900, wz0 - 900, wz1 + 900, emissive('sky', SKY[0], SKY[1], (0, 0, 0)))
+bx('w_glass', wx0 + 10, wx1 - 10, WY - 3, WY + 3, wz0 + 10, wz1 - 10, ribbed).visible_shadow = False
+SKY = {'night': ((0.10, 0.16, 0.34), 0.25), 'evening': ((0.22, 0.34, 0.80), 1.2), 'day': ((0.86, 0.90, 0.98), 4.0)}[TIME]
+sky = bx('w_sky', wx0 - 1500, wx1 + 1500, WT + 2500, WT + 2520, wz0 - 1500, wz1 + 1500, emissive('sky', SKY[0], SKY[1], (0, 0, 0)))
 sky.visible_shadow = False
-stain_decal('floor_grime', 'Z', 0.2, (FX1, 2400, -4300, 0), [(0, -30, 900, 70, 0.5), (DX0 - 150, -400, 120, 380, 0.25),
-            (-700, -1300, 500, 1100, 0.35)], color=(0.09, 0.08, 0.065), rough=0.7, noise_scale=0.03)
+stain_decal('floor_grime', 'Z', 0.2, (FX1, 2400, -4300, 0), [(0, -30, 900, 70, 0.5), (DX0 - 150, -400, 120, 380, 0.25)], color=(0.09, 0.08, 0.065), rough=0.7, noise_scale=0.03)
 
 # ---------------------------------------------------------------- 3. the door dressing for this job
 # brass number plate (engraved, black-filled numerals) replaces the enamel one
@@ -273,9 +275,9 @@ AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM
 AIM2 = bpy.data.objects.new('aim2', None); scene.collection.objects.link(AIM2); AIM2.location = (0, 1200, 0)
 WARM = (1.0, 0.66, 0.38)                       # ~2700 K incandescent behind opal glass
 L = {   # time: bulb W, window W, window colour, world, interior W, exposure, glow
-    'night':   (6.0e7, 2.4e7, (0.50, 0.62, 1.00), 0.004, 1.2e7, -0.2, 2.2),
-    'evening': (1.0e8, 6.0e7, (0.58, 0.68, 1.00), 0.010, 6.0e6, -0.1, 2.0),
-    'day':     (0.0,   3.2e8, (1.00, 0.97, 0.92), 0.030, 0.0,   -0.3, 0.0),
+    'night':   (5.0e7, 6.0e7, (0.50, 0.62, 1.00), 0.004, 1.2e7, -0.2, 2.2),
+    'evening': (4.5e7, 1.1e8, (0.45, 0.58, 1.00), 0.010, 6.0e6, -0.2, 2.0),
+    'day':     (0.0,   4.5e8, (1.00, 0.96, 0.90), 0.050, 0.0,    0.5, 0.0),
 }[TIME]
 BULB_W, WIN_W, WIN_C, WORLD, IN_W, EXPO, GLOW = L
 world_hdri(WORLD, 'interior.exr', sat=0.3)
@@ -285,10 +287,12 @@ if BULB_W:
     bpy.ops.object.light_add(type='POINT', location=tuple(G)); bulb = bpy.context.object; bulb.name = 'bulb'
     bulb.data.shadow_soft_size = 35; bulb.data.energy = BULB_W; bulb.data.color = WARM
     bpy.data.materials['indicator'].node_tree.nodes['Principled BSDF'].inputs['Emission Strength'].default_value = 0.4
-win_light = area_light('window_light', (FX0 - WT - 300, (WIN[0] + WIN[1]) / 2, (WIN[2] + WIN[3]) / 2 + 200), AIM,
+AIMW = bpy.data.objects.new('aimw', None); scene.collection.objects.link(AIMW); AIMW.location = ((WIN[0] + WIN[1]) / 2 + 300, -2000, 0)
+win_light = area_light('window_light', ((WIN[0] + WIN[1]) / 2, WT + 600, (WIN[2] + WIN[3]) / 2 + 300), AIMW,
                        WIN[1] - WIN[0], WIN_W, WIN_C, size_y=WIN[3] - WIN[2])
+win_light.visible_camera = False; win_light.visible_glossy = False; win_light.visible_transmission = False   # the glass shows the sky plane, not the lamp
 if TIME == 'day':   # skylight bouncing down the stairwell from above the right-hand flight
-    area_light('skylight', (1300, -2600, CEIL - 50), AIM2, 1600, 2.5e7, (0.92, 0.95, 1.0), size_y=2400)
+    area_light('skylight', (1300, -2600, CEIL - 50), AIM2, 1600, 6e7, (0.92, 0.95, 1.0), size_y=2400)
 if IN_W:   # a lamp left on in the flat: leaks under the door / through the gap and the peephole
     area_light('flat_lamp', (0, 1600, 2700), AIM2, 600, IN_W * (3.0 if DOOR == 'ajar' else 1.0), (1.0, 0.70, 0.42))
 
@@ -414,7 +418,7 @@ def base_render(res, spp, out):
     setup_device()
     scene.cycles.adaptive_threshold = 0.02 if spp < 64 else 0.01
     if DEVICE == 'GPU' and arg('--denoiser', 'OIDN').upper() == 'OPTIX': scene.cycles.denoiser = 'OPTIX'
-    photo_finish(0.28 if TIME != 'day' else 0.22)
+    photo_finish({'night': 0.36, 'evening': 0.3}.get(TIME, 0.22))
     scene.view_settings.look = 'AgX - High Contrast' if TIME == 'night' else 'AgX - Base Contrast'
 
 if MODE in ('seq', 'both'):
