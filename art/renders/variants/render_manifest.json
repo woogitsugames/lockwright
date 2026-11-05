@@ -1,0 +1,193 @@
+{
+  "resolution": "2160x2880",
+  "samples": 256,
+  "device": "GPU",
+  "total_seconds": 1692.98,
+  "jobs": [
+    {
+      "label": "cutaway_1pin",
+      "path": "art/renders/variants/cutaway_1pin.png",
+      "seconds": 72.09,
+      "size_bytes": 5826863,
+      "size_mb": 5.56,
+      "gray_path": "art/renders/variants/cutaway_1pin.gray.png",
+      "gray_mb": 3.94
+    },
+    {
+      "label": "cutaway_3pin",
+      "path": "art/renders/variants/cutaway_3pin.png",
+      "seconds": 81.99,
+      "size_bytes": 5871482,
+      "size_mb": 5.6,
+      "gray_path": "art/renders/variants/cutaway_3pin.gray.png",
+      "gray_mb": 3.97
+    },
+    {
+      "label": "cutaway_5pin",
+      "path": "art/renders/variants/cutaway_5pin.png",
+      "seconds": 78.86,
+      "size_bytes": 5905634,
+      "size_mb": 5.63,
+      "gray_path": "art/renders/variants/cutaway_5pin.gray.png",
+      "gray_mb": 3.99
+    },
+    {
+      "label": "cutaway_6pin",
+      "path": "art/renders/variants/cutaway_6pin.png",
+      "seconds": 64.29,
+      "size_bytes": 5775101,
+      "size_mb": 5.51,
+      "gray_path": "art/renders/variants/cutaway_6pin.gray.png",
+      "gray_mb": 3.91
+    },
+    {
+      "label": "cutaway_7pin",
+      "path": "art/renders/variants/cutaway_7pin.png",
+      "seconds": 67.85,
+      "size_bytes": 5642798,
+      "size_mb": 5.38,
+      "gray_path": "art/renders/variants/cutaway_7pin.gray.png",
+      "gray_mb": 3.84
+    },
+    {
+      "label": "cutaway_1pin_wrench",
+      "path": "art/renders/variants/cutaway_1pin_wrench.png",
+      "seconds": 62.09,
+      "size_bytes": 5105757,
+      "size_mb": 4.87,
+      "gray_path": "art/renders/variants/cutaway_1pin_wrench.gray.png",
+      "gray_mb": 3.49
+    },
+    {
+      "label": "cutaway_3pin_wrench",
+      "path": "art/renders/variants/cutaway_3pin_wrench.png",
+      "seconds": 63.78,
+      "size_bytes": 5157760,
+      "size_mb": 4.92,
+      "gray_path": "art/renders/variants/cutaway_3pin_wrench.gray.png",
+      "gray_mb": 3.52
+    },
+    {
+      "label": "cutaway_5pin_wrench",
+      "path": "art/renders/variants/cutaway_5pin_wrench.png",
+      "seconds": 66.43,
+      "size_bytes": 5207007,
+      "size_mb": 4.97,
+      "gray_path": "art/renders/variants/cutaway_5pin_wrench.gray.png",
+      "gray_mb": 3.55
+    },
+    {
+      "label": "cutaway_6pin_wrench",
+      "path": "art/renders/variants/cutaway_6pin_wrench.png",
+      "seconds": 94.02,
+      "size_bytes": 5153543,
+      "size_mb": 4.91,
+      "gray_path": "art/renders/variants/cutaway_6pin_wrench.gray.png",
+      "gray_mb": 3.52
+    },
+    {
+      "label": "cutaway_7pin_wrench",
+      "path": "art/renders/variants/cutaway_7pin_wrench.png",
+      "seconds": 115.29,
+      "size_bytes": 5092390,
+      "size_mb": 4.86,
+      "gray_path": "art/renders/variants/cutaway_7pin_wrench.gray.png",
+      "gray_mb": 3.49
+    },
+    {
+      "label": "plate_1pin",
+      "path": "art/renders/variants/plates/plate_1pin.png",
+      "seconds": 104.6,
+      "size_bytes": 5842199,
+      "size_mb": 5.57,
+      "gray_path": null,
+      "gray_mb": null
+    },
+    {
+      "label": "plate_3pin",
+      "path": "art/renders/variants/plates/plate_3pin.png",
+      "seconds": 84.46,
+      "size_bytes": 5923917,
+      "size_mb": 5.65,
+      "gray_path": null,
+      "gray_mb": null
+    },
+    {
+      "label": "plate_5pin",
+      "path": "art/renders/variants/plates/plate_5pin.png",
+      "seconds": 107.62,
+      "size_bytes": 5979117,
+      "size_mb": 5.7,
+      "gray_path": null,
+      "gray_mb": null
+    },
+    {
+      "label": "plate_6pin",
+      "path": "art/renders/variants/plates/plate_6pin.png",
+      "seconds": 83.35,
+      "size_bytes": 5874511,
+      "size_mb": 5.6,
+      "gray_path": null,
+      "gray_mb": null
+    },
+    {
+      "label": "plate_7pin",
+      "path": "art/renders/variants/plates/plate_7pin.png",
+      "seconds": 79.74,
+      "size_bytes": 5758723,
+      "size_mb": 5.49,
+      "gray_path": null,
+      "gray_mb": null
+    },
+    {
+      "label": "plate_1pin_wrench",
+      "path": "art/renders/variants/plates/plate_1pin_wrench.png",
+      "seconds": 92.44,
+      "size_bytes": 5118609,
+      "size_mb": 4.88,
+      "gray_path": null,
+      "gray_mb": null
+    },
+    {
+      "label": "plate_3pin_wrench",
+      "path": "art/renders/variants/plates/plate_3pin_wrench.png",
+      "seconds": 107.07,
+      "size_bytes": 5206580,
+      "size_mb": 4.97,
+      "gray_path": null,
+      "gray_mb": null
+    },
+    {
+      "label": "plate_5pin_wrench",
+      "path": "art/renders/variants/plates/plate_5pin_wrench.png",
+      "seconds": 96.43,
+      "size_bytes": 5292330,
+      "size_mb": 5.05,
+      "gray_path": null,
+      "gray_mb": null
+    },
+    {
+      "label": "plate_6pin_wrench",
+      "path": "art/renders/variants/plates/plate_6pin_wrench.png",
+      "seconds": 88.57,
+      "size_bytes": 5263835,
+      "size_mb": 5.02,
+      "gray_path": null,
+      "gray_mb": null
+    },
+    {
+      "label": "plate_7pin_wrench",
+      "path": "art/renders/variants/plates/plate_7pin_wrench.png",
+      "seconds": 81.24,
+      "size_bytes": 5234158,
+      "size_mb": 4.99,
+      "gray_path": null,
+      "gray_mb": null
+    }
+  ],
+  "comparison": {
+    "label": "compare_before_after",
+    "path": "art/renders/variants/compare_before_after.png",
+    "size_mb": 6.34
+  }
+}
