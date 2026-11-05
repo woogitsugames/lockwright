@@ -78,13 +78,22 @@ func _preload_lazy_threaded() -> void:
 		if ResourceLoader.exists(apath):
 			ResourceLoader.load_threaded_request(apath)
 	for dir in [UI_ROOT, REWARD_ROOT, MUSIC_ROOT, FOLEY_ROOT]:
-		for f in DirAccess.get_files_at(dir):
-			if f.ends_with(".wav") or f.ends_with(".ogg"):
-				ResourceLoader.load_threaded_request(dir + "/" + f)
+		for f in _audio_files(dir):
+			ResourceLoader.load_threaded_request(dir + "/" + f)
 	for spk in DirAccess.get_directories_at(VOICE_ROOT):
-		for f in DirAccess.get_files_at(VOICE_ROOT + "/" + spk):
-			if f.ends_with(".wav"):
+		for f in _audio_files(VOICE_ROOT + "/" + spk):
+			if f.ends_with(".wav"):  # 12 cast folders only; episodic .ogg load per speaker
 				ResourceLoader.load_threaded_request(VOICE_ROOT + "/" + spk + "/" + f)
+
+
+# .wav/.ogg resources in a folder. ResourceLoader.list_directory (not DirAccess) so an
+# exported pck, which lists only <file>.import/.remap, still yields the source names.
+func _audio_files(dir: String) -> PackedStringArray:
+	var out := PackedStringArray()
+	for f in ResourceLoader.list_directory(dir):
+		if f.ends_with(".wav") or f.ends_with(".ogg"):
+			out.append(f)
+	return out
 
 
 var _lazy_done := {}
@@ -113,10 +122,9 @@ func _ensure_dir(root: String) -> void:
 	if _lazy_done.has(root):
 		return
 	_lazy_done[root] = true
-	for f in DirAccess.get_files_at(root):
-		if f.ends_with(".wav") or f.ends_with(".ogg"):
-			var key := "mus/%s" % f.get_basename() if root == MUSIC_ROOT else "%s/%s" % [root, f]
-			_lazy_load(root + "/" + f, key)
+	for f in _audio_files(root):
+		var key := "mus/%s" % f.get_basename() if root == MUSIC_ROOT else "%s/%s" % [root, f]
+		_lazy_load(root + "/" + f, key)
 
 
 # per speaker folder, on first use: 12 cast (.wav, prefetched) + 39 episodic S03v2 (.ogg)
@@ -125,14 +133,8 @@ func _ensure_voices(folder: String) -> void:
 	if _lazy_done.has(tag):
 		return
 	_lazy_done[tag] = true
-	for f in DirAccess.get_files_at(tag):
-		if f.ends_with(".wav") or f.ends_with(".ogg"):
-			_lazy_load(tag + "/" + f, "%s/%s" % [tag, f])
-		elif f.ends_with(".import") or f.ends_with(".remap"):
-			# exported pck: only <file>.import/.remap are listed next to the stripped source
-			var src := f.get_basename()
-			if (src.ends_with(".wav") or src.ends_with(".ogg")) and not _cache.has(tag + "/" + src):
-				_lazy_load(tag + "/" + src, "%s/%s" % [tag, src])
+	for f in _audio_files(tag):
+		_lazy_load(tag + "/" + f, "%s/%s" % [tag, f])
 
 
 func _preload_native() -> void:
