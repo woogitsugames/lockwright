@@ -16,6 +16,7 @@ on:
 
 env:
   GODOT: Godot_v4.7.2-stable_linux.x86_64
+  NDK_VERSION: 29.0.14206865
 
 jobs:
   apk:
@@ -35,6 +36,27 @@ jobs:
           yes | $SDK/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null
           $SDK/cmdline-tools/latest/bin/sdkmanager "platforms;android-36" "build-tools;36.1.0" "platform-tools" > /dev/null
           echo "ANDROID_HOME=$SDK" >> $GITHUB_ENV
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: NDK (lockcore_gd arm64)
+        run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "ndk;$NDK_VERSION" > /dev/null
+      - name: Cache lockcore_gd (Android arm64)
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: game/addons/lockcore_gd/bin/liblockcore_gd.android.template_debug.so
+          key: lockcore-gd-android-${{ hashFiles('lockcore/include/**', 'lockcore/src/**', 'game/addons/lockcore_gd/src/**', 'game/addons/lockcore_gd/include/**', 'game/addons/lockcore_gd/SConstruct') }}
+      # GEM3 BUG-05: the .so is not in git, so the APK carried a 0-byte library and fell back to FakeLockSession
+      - name: Build lockcore_gd (Android arm64)
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          pip install scons
+          git init -q /tmp/godot-cpp && git -C /tmp/godot-cpp fetch -q --depth 1 https://github.com/godotengine/godot-cpp.git e103d348c4b2d8df7b819126d855e19381cb9a87 && git -C /tmp/godot-cpp checkout -q FETCH_HEAD  # pinned (N-28)
+          API=/tmp/godot-cpp/gdextension/extension_api-4-7.json
+          (cd /tmp/godot-cpp && scons platform=android target=template_debug arch=arm64 ndk_version=$NDK_VERSION custom_api_file=$API -j8)
+          cd game/addons/lockcore_gd
+          GODOT_CPP=/tmp/godot-cpp scons platform=android target=template_debug arch=arm64 ndk_version=$NDK_VERSION custom_api_file=$API -j8
       - name: Godot 4.7.2 + templates + editor settings
         run: |
           mkdir -p /tmp/godot && cd /tmp/godot
@@ -58,6 +80,9 @@ jobs:
           mkdir -p build
           /tmp/godot/$GODOT --headless --path . --export-debug "Android" build/lw-planb-perf.apk
           unzip -l build/lw-planb-perf.apk | grep -E "liblockcore_gd|libgodot_android"
+          # the native library must be real, not a 0-byte placeholder (GEM3 BUG-05)
+          sz=$(unzip -l build/lw-planb-perf.apk | awk '/liblockcore_gd.android.template_debug.so/ {print $1}' | head -1)
+          echo "liblockcore_gd in APK: ${sz:-missing} B"; [ "${sz:-0}" -gt 100000 ] || { echo "::error::liblockcore_gd missing or empty in the APK"; exit 1; }
       - name: Smoke screenshot (Xvfb + lavapipe)
         working-directory: /tmp/planb
         run: |

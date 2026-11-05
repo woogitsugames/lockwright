@@ -35,8 +35,8 @@ name="Android"
 platform="Android"
 runnable=true
 export_filter="all_resources"
-include_filter="i18n/*.csv, data/*.json, data/**/*.json"
-exclude_filter="addons/gut/*, tests/*, scenes/dev/*"
+include_filter="i18n/*.csv,i18n/*.translation,data/*.json,data/**/*.json,data/haptics/**/*.ahap,addons/lockcore_gd/bin/*.so"
+exclude_filter="addons/gut/*,tests/*,scenes/dev/*,scenes/photoreal_families/shots/*"
 export_path="build/lw-planb-perf.apk"
 
 [preset.0.options]

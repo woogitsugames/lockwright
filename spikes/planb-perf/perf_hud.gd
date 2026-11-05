@@ -26,6 +26,9 @@ func _ready() -> void:
 	_label.add_theme_color_override("font_outline_color", Color(0, 0, 0))
 	_label.add_theme_constant_override("outline_size", 5)
 	_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# GEM3 BUG-13: the verdict line was cut at the right edge; wrap inside the safe width
+	_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_label.size = Vector2(get_viewport().get_visible_rect().size.x - 24, 0)
 	add_child(_label)
 	RenderingServer.viewport_set_measure_render_time(get_viewport().get_viewport_rid(), true)
 	Engine.max_fps = 0
