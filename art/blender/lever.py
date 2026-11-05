@@ -85,7 +85,7 @@ for i in range(len(LEVERS)):
     y0 = LEVERS[i][0] + LT
     y1 = LEVERS[i + 1][0] if i + 1 < len(LEVERS) else 9.0
     w = lathe_x('spacer', [(0, 2.05), (0, 3.4), (y1 - y0, 3.4), (y1 - y0, 2.05)], seg=64)
-    w.data.transform(Matrix.Rotation(-math.pi / 2, 4, 'Z')); w.location = (PIV.x, y0, PIV.z); put(w, MAT['bolt'], 0.08, 2)
+    w.data.transform(Matrix.Rotation(math.pi / 2, 4, 'Z')); w.location = (PIV.x, y0, PIV.z); put(w, MAT['bolt'], 0.08, 2)
 post = cyl('post', 2.0, BACK_Y - 0.6, (PIV.x, (BACK_Y + 0.6) / 2, PIV.z), axis='Y', verts=48); put(post, MAT['steel'], 0.05)
 screw_head('post_head', (PIV.x, 0.62, PIV.z), 2.9, 0.75, axis='-Y', slot=False, kind='dome', mat=MAT['steel'])
 
