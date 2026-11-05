@@ -1,5 +1,6 @@
 #include "lockwright_haptics/register_types.h"
 
+#include <godot_cpp/classes/engine.hpp>
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/godot.hpp>
 
@@ -12,6 +13,7 @@ void initialize_lockwright_haptics_module(ModuleInitializationLevel p_level) {
 		return;
 	}
 	ClassDB::register_class<lockwright::LockwrightHaptics>();
+	godot::Engine::get_singleton()->register_singleton("LockwrightHaptics", godot::memnew(lockwright::LockwrightHaptics));
 }
 
 void uninitialize_lockwright_haptics_module(ModuleInitializationLevel p_level) {

@@ -17,10 +17,14 @@ var _free: Array[AudioStreamPlayer] = []
 var _cache: Dictionary = {}  # "event/material/n" -> AudioStream
 var _loops: Dictionary = {}  # loop id -> {player, generator, playback, active}
 var _rng := RandomNumberGenerator.new()
+var _native_click: Object = null
 
 
 func _ready() -> void:
 	_rng.randomize()
+	if Engine.has_singleton("LockwrightClickAudio"):
+		_native_click = Engine.get_singleton("LockwrightClickAudio")
+		print("Sfx: native click audio bridge detected")
 	for i in POOL_SIZE:
 		var p := AudioStreamPlayer.new()
 		p.bus = "Sfx"
@@ -55,6 +59,11 @@ func _stream_for(event: StringName, material: StringName) -> AudioStream:
 
 
 func play(event: StringName, material: StringName = &"brass", volume_db: float = 0.0, pitch: float = 1.0) -> void:
+	# R-20: L2 clicks prefer the native low-latency bridge (Oboe/AAudio, AVAudioEngine);
+	# AudioServer pool is the fallback (and the only path on desktop/editor).
+	if _native_click != null and _native_click.has_method("play"):
+		_native_click.play(event, volume_db, pitch, 0.0, 0)
+		return
 	if _free.is_empty():
 		return
 	var stream := _stream_for(event, material)
@@ -65,11 +74,10 @@ func play(event: StringName, material: StringName = &"brass", volume_db: float =
 	p.volume_db = volume_db + linear_to_db(Settings.get_value("volume_sfx") * Settings.get_value("volume_master"))
 	p.pitch_scale = pitch * _rng.randf_range(0.97, 1.03)
 	p.play()
-	p.finished.connect(_on_player_finished.bind(p))
+	p.finished.connect(_on_player_finished.bind(p), CONNECT_ONE_SHOT)  # R-26
 
 
 func _on_player_finished(p: AudioStreamPlayer) -> void:
-	p.finished.disconnect(_on_player_finished)
 	p.stream = null
 	if not _free.has(p):
 		_free.append(p)
@@ -79,21 +87,25 @@ func begin_loop(id: StringName, material: StringName = &"brass") -> void:
 	if _loops.has(id):
 		return
 	var player := AudioStreamPlayer.new()
-	var gen := AudioStreamGenerator.new()
-	gen.mix_rate = 48000.0
-	gen.buffer_length = 0.1
-	player.stream = gen
+	var stream := _stream_for(id, material)
+	if stream is AudioStreamWAV:
+		stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+	player.stream = stream
 	player.bus = "Sfx"
+	player.volume_db = -80.0
 	add_child(player)
-	_loops[id] = {"player": player, "playback": null, "material": material, "level": 0.0}
+	_loops[id] = {"player": player, "material": material, "level": 0.0}
 	player.play()
-	_loops[id]["playback"] = player.get_stream_playback()
 
 
 func update_loop(id: StringName, level: float) -> void:
 	if not _loops.has(id):
 		return
 	_loops[id]["level"] = clampf(level, 0.0, 1.0)
+	var p: AudioStreamPlayer = _loops[id]["player"]
+	# L1 continuous layer: audible only while there is resistance/drag (TECH §3.3)
+	p.volume_db = linear_to_db(Settings.get_value("volume_sfx") * Settings.get_value("volume_master")) + (linear_to_db(maxf(level, 0.001)) * 0.7 - 24.0)
+	p.pitch_scale = 0.9 + 0.3 * level
 
 
 func end_loop(id: StringName) -> void:

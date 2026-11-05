@@ -22,7 +22,7 @@ public:
 	bool create(const godot::String &family, std::uint64_t seed, int tier);
 	// One 1/120 s step. Returns events as Array of Dictionary
 	// {kind: StringName, sub: int, element: int, intensity: float, material: StringName, tick: int}.
-	godot::Array step(double tension, double pick_depth, double pick_lift);
+	godot::Array step(double tension, double pick_depth, double pick_lift, double rotate = 0.0, double push = 0.0, int tool = 0);
 	godot::Dictionary describe() const;
 	bool is_open() const;
 	bool finished() const;

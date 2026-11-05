@@ -100,7 +100,13 @@ func end_continuous(id: StringName) -> void:
 
 func capabilities() -> Dictionary:
 	if _native != null and _native.has_method("capabilities"):
-		return _native.capabilities()
+		var caps: Variant = _native.capabilities()
+		if typeof(caps) == TYPE_STRING:
+			var parsed: Variant = JSON.parse_string(caps)
+			if typeof(parsed) == TYPE_DICTIONARY:
+				return parsed
+		elif typeof(caps) == TYPE_DICTIONARY:
+			return caps
 	return {"tier": "fallback", "primitives": [], "amplitude_control": false, "envelope": false, "native": false}
 
 

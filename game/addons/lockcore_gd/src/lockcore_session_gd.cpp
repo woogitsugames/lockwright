@@ -10,7 +10,7 @@ using namespace godot;
 
 void LockcoreSession::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("create", "family", "seed", "tier"), &LockcoreSession::create);
-	ClassDB::bind_method(D_METHOD("step", "tension", "pick_depth", "pick_lift"), &LockcoreSession::step);
+	ClassDB::bind_method(D_METHOD("step", "tension", "pick_depth", "pick_lift", "rotate", "push", "tool"), &LockcoreSession::step, DEFVAL(0.0), DEFVAL(0.0), DEFVAL(0));
 	ClassDB::bind_method(D_METHOD("describe"), &LockcoreSession::describe);
 	ClassDB::bind_method(D_METHOD("is_open"), &LockcoreSession::is_open);
 	ClassDB::bind_method(D_METHOD("finished"), &LockcoreSession::finished);
@@ -34,20 +34,24 @@ bool LockcoreSession::create(const String &family, std::uint64_t seed, int tier)
 	return true;
 }
 
-Array LockcoreSession::step(double tension, double pick_depth, double pick_lift) {
+Array LockcoreSession::step(double tension, double pick_depth, double pick_lift, double rotate, double push, int tool) {
 	Array out;
 	if (session_ == nullptr) {
 		return out;
 	}
 	lockcore::InputFrame in;
-	in.tension = lockcore::q16(std::clamp(tension, 0.0, 1.0) * lockcore::Q16_ONE);
-	in.pick_depth = lockcore::q16(std::clamp(pick_depth, 0.0, 1.0) * lockcore::Q16_ONE);
-	in.pick_lift = lockcore::q16(std::clamp(pick_lift, -1.0, 1.0) * lockcore::Q16_ONE);
+	in.tension = lockcore::q16(std::lround(std::clamp(tension, 0.0, 1.0) * 256.0) / 256.0 * lockcore::Q16_ONE);
+	in.pick_depth = lockcore::q16(std::lround(std::clamp(pick_depth, 0.0, 1.0) * 256.0) / 256.0 * lockcore::Q16_ONE);
+	in.pick_lift = lockcore::q16(std::lround(std::clamp(pick_lift, -1.0, 1.0) * 256.0) / 256.0 * lockcore::Q16_ONE);
+	in.rotate = lockcore::q16(std::lround(std::clamp(rotate, -1.0, 1.0) * 256.0) / 256.0 * lockcore::Q16_ONE);
+	in.push = lockcore::q16(std::lround(std::clamp(push, 0.0, 1.0) * 64.0) / 64.0 * lockcore::Q16_ONE);
+	in.tool = static_cast<std::uint8_t>(tool);
 	const lockcore::StepOutput &so = session_->step(in);
 	for (const lockcore::LockEvent &e : so.events) {
 		Dictionary d;
 		d["kind"] = StringName(lockcore::event_kind_name(e.kind).data());
 		d["sub"] = e.sub;
+		d["name"] = StringName((std::string(lockcore::event_kind_name(e.kind)) + "." + std::to_string(e.sub)).c_str());
 		d["element"] = e.element;
 		d["intensity"] = static_cast<double>(e.intensity) / lockcore::Q16_ONE;
 		d["material"] = StringName(lockcore::material_name(e.material).data());
@@ -69,11 +73,14 @@ Dictionary LockcoreSession::describe() const {
 		ed["state"] = StringName(lockcore::element_state_name(e.state).data());
 		ed["position"] = static_cast<double>(e.position) / lockcore::Q16_ONE;
 		ed["variant"] = e.variant;
+		ed["window_lo"] = static_cast<double>(e.window_lo) / lockcore::Q16_ONE;
+		ed["window_hi"] = static_cast<double>(e.window_hi) / lockcore::Q16_ONE;
 		elements.push_back(ed);
 	}
 	vm["elements"] = elements;
 	vm["pick_element"] = v.pick_element;
 	vm["tension"] = static_cast<double>(v.tension) / lockcore::Q16_ONE;
+	vm["pick_lift"] = static_cast<double>(v.pick_lift) / lockcore::Q16_ONE;
 	vm["core_rotation"] = static_cast<double>(v.core_rotation) / lockcore::Q16_ONE;
 	vm["tension_resistance"] = static_cast<double>(v.tension_resistance) / lockcore::Q16_ONE;
 	vm["pick_drag"] = static_cast<double>(v.pick_drag) / lockcore::Q16_ONE;

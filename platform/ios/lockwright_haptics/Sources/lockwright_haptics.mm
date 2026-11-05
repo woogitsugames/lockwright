@@ -110,14 +110,17 @@
     else if ([event isEqualToString:@"false_set"]) sharp = 0.75f;
     else if ([event isEqualToString:@"overset"]) sharp = 0.10f;
     else if ([event isEqualToString:@"break"]) sharp = 1.0f;
-    // transient pattern with absolute intensity/sharpness baked into the event
+    // R-05a: per-event transient pattern with intensity/sharpness baked in, so
+    // set / false_set / overset stay distinguishable (DESIGN §1, TECH §3.4).
     CHHapticEventParameter *pI = [[CHHapticEventParameter alloc] initWithParameterID:CHHapticEventParameterIDHapticIntensity value:i];
     CHHapticEventParameter *pS = [[CHHapticEventParameter alloc] initWithParameterID:CHHapticEventParameterIDHapticSharpness value:sharp];
     CHHapticEvent *e = [[CHHapticEvent alloc] initWithEventType:CHHapticEventTypeHapticTransient parameters:@[pI, pS] relativeTime:0];
     NSError *err = nil;
     CHHapticPattern *pattern = [[CHHapticPattern alloc] initWithEvents:@[e] parameters:@[] error:&err];
-    [_transientPlayer startAtTime:CHHapticTimeImmediate error:&err];
-    (void)pattern;
+    id<CHHapticAdvancedPatternPlayer> player = [_engine createAdvancedPlayerWithPattern:pattern error:&err];
+    if (player != nil) {
+        [player startAtTime:CHHapticTimeImmediate error:&err];
+    }
 }
 
 - (void)beginContinuous:(NSString *)cid {

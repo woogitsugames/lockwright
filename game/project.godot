@@ -20,6 +20,7 @@ Save="*res://scripts/autoload/save.gd"
 I18n="*res://scripts/autoload/i18n.gd"
 Events="*res://scripts/autoload/events.gd"
 Haptics="*res://scripts/autoload/haptics.gd"
+FeedbackDirector="*res://scripts/autoload/feedback_director.gd"
 Sfx="*res://scripts/autoload/sfx.gd"
 
 [display]
@@ -46,3 +47,7 @@ common/physics_jitter_fix=0.0
 renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="mobile"
 textures/vram_compression/import_etc2_astc=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/lockwright_haptics/plugin.cfg")
