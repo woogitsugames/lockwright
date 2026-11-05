@@ -69,3 +69,55 @@ Metoda: czytanie scen i skryptów, zrzuty z Godota 4.7.2 (kopia `game/`, Xvfb + 
 ## Co sprawdzono / czego nie
 - Sprawdzono: sceny z `game/scenes/*.tscn` i `scenes/photoreal/lock_photoreal.tscn` na desktopie (lavapipe), PL, pion i poziom; skrypty widoku i zdarzeń.
 - Nie sprawdzono: prawdziwy telefon (safe-area, gesty systemowe, TalkBack/VoiceOver), kontrast w trybie „Wsparcie kontrastu” (przełącznik nie zmienia nic widocznego na zrzutach desktopowych), czas animacji na urządzeniu.
+
+---
+
+# Runda 2 (etap 3, 2026-11-05 ok. 11:00) — po zadaniu A11Y sesji B (24cca0b)
+
+Metoda: `qa/bot/a11y_shots.gd` (kopia `game/`, Xvfb, Godot 4.7.2) — każda scena menu w 412×915, 915×412 i z suwakiem
+„Rozmiar tekstu” 150%; skrypt wypisuje kontrolki, które kończą się poza ekranem, i najmniejszy użyty rozmiar fontu.
+Job `game-screens` sesji B nie dał jeszcze zrzutów (`res://tests/screens.tscn` nie istnieje w repo, run #2 z błędem),
+więc zrzuty są z własnego narzędzia. Ekran zamka planu B: zrzuty z `store/screenshots/capture_game.sh` (1320×2868).
+
+![Menu w pionie 412×915 po 24cca0b: menu główne i weryfikacja puste, listy rozciągnięte](img/a11y2_portrait.png)
+
+| Uwaga | Stan po 24cca0b | Dowód |
+|---|---|---|
+| A-01 safe-area w menu | **regres: gorzej niż przed poprawką (High)** — zob. A-10 | 9/9 scen ma wszystkie kontrolki poza ekranem |
+| A-02 poziom | nie do oceny (A-10 przesuwa treść poza ekran) | — |
+| A-03 klapka pauzy ~14 dp | bez zmian (kod sesji A) | `lock_photoreal_view.gd` |
+| A-04 font domyślny | **częściowo:** motyw `theme/main.tres` z Atkinson Hyperlegible Next przypięty w `gui/theme/custom` ✓; **Bona Nova nie jest nigdzie użyta** — wariant `Title` istnieje w motywie, ale żadna etykieta nie ma `theme_type_variation = "Title"` (tytuły to 16 px tekstu) | `grep theme_type_variation game/scenes` → 0 |
+| A-05 skalowanie tekstu | **nie działa** — zob. A-11 | min. font 16 px przy 100% i przy 150% |
+| A-06 tryb „w ciemności” a niesłyszący | **naprawione:** nota `settings.dark_mode_note` w ustawieniach (PL/EN) | `strings.csv:70` |
+| A-07 ogranicz ruch | **tylko przełącznik:** `reduce_motion` jest zapisywany, ale nic go nie czyta (drżenie wytrycha w `lock_photoreal_view.gd` bez zmian) | `grep reduce_motion game/scripts` → tylko ustawienia |
+| A-08 pusta karta weryfikacji | naprawione (karty dokumentów, 232e52e) | zrzut `job_verify` z wybranym zleceniem — ale poza ekranem (A-10) |
+| A-09 opisy dla czytników | bez zmian | — |
+
+**A-10 · High · `SafeArea.apply` wypycha całe menu poza ekran** · `game/scripts/ui/safe_area.gd:5-12`
+- `DisplayServer.get_display_safe_area()` zwraca prostokąt w **pikselach ekranu**, a offsety kontrolki są w jednostkach
+  płótna (412×915 przy `stretch=canvas_items`). Do tego `offset_right/offset_bottom` przy `PRESET_FULL_RECT` liczy się od
+  prawej/dolnej krawędzi (wartość ujemna = margines), a kod wpisuje wartości dodatnie (`vp.x - (vp.x - safe.x - safe.w)` =
+  `safe.x + safe.w`). Efekt na zrzutach: listy mają 1812 px szerokości, menu główne, przyjazd, weryfikacja, zapłata i
+  samouczek są całkiem puste (treść wycentrowana ok. 750 px w prawo i 1700 px w dół). Na telefonie z ekranem 1080×2400
+  będzie tak samo (2,6× za szeroko).
+- **Poprawka:** przeliczyć na płótno i podać marginesy, nie krawędzie:
+  `var k := vp / Vector2(DisplayServer.screen_get_size())` (albo `get_window().size`),
+  `offset_left = safe.position.x * k.x`, `offset_top = safe.position.y * k.y`,
+  `offset_right = -(screen.x - safe.end.x) * k.x`, `offset_bottom = -(screen.y - safe.end.y) * k.y`;
+  na desktopie (okno ≠ ekran) pominąć. Test: GUT, który dla safe-area = cały ekran oczekuje offsetów (0,0,0,0).
+
+**A-11 · Medium · Suwak „Rozmiar tekstu” nic nie zmienia** · `ui_a11y.gd:9-13`, `theme/main.tres`
+- Kod zmienia `theme.default_font_size`, ale motyw ma nadpisania `Label/font_sizes/font_size = 16` i
+  `Button/font_sizes/font_size = 18`, które mają pierwszeństwo. Przy 150% najmniejszy font to nadal 16 px.
+- **Poprawka:** skalować też typowe rozmiary (`theme.set_font_size("font_size", "Label", 16 * s)` itd. dla Label, Button,
+  CheckButton, Title) albo usunąć nadpisania i zostawić tylko `default_font_size`; listy muszą się przewijać przy 200%.
+
+**A-12 · Low · Język menu na zrzutach: angielski mimo PL w ustawieniach testu** — do sprawdzenia przez sesję B, czy
+`I18n` respektuje ustawienie „Język” przy pierwszym starcie (na kopii z czystym `user://` menu było po angielsku przy
+locale systemu `en`, co jest poprawne; uwaga tylko dla porządku testów).
+
+**Ekran zamka (plan B):** stany kołków nadal rozróżnialne kształtem (zrzuty sklepowe 1320×2868); kontrast metal/tło bez
+zmian (7,8:1). Wgniecenia kciuków (`--lw-touch`) słabo widoczne w wysokiej rozdzielczości — przy dotyku na telefonie
+sprawdzić, czy gracz widzi, gdzie trzyma kciuk (CLAUDE.md: elementy ≥ 28 dp).
+
+Podsumowanie rundy 2: naprawione 2 z 9 (A-06, A-08), częściowo 2 (A-04, A-07), regres 1 (A-01 → A-10), nowe 3.

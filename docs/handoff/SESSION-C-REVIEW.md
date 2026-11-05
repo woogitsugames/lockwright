@@ -551,3 +551,11 @@ Weryfikacja „naprawione” z 8853863:
 - Brak węzła `Button` dla pauzy (bot znalazł ją tylko przez ESC). Dla dostępności (A-09) i testów warto mieć niewidoczny `Button` 48 dp z `accessibility_name` na miejscu klapki.
 
 Automat QA: `qa/README.md`; nocny raport — artefakt `qa-career-report`. Kryterium „OK” = brak soft-locków, ekranów bez wyjścia, błędów skryptów i brakujących kluczy, więc workflow będzie czerwony, dopóki N-13 nie zostanie naprawione (to zamierzone).
+
+## Runda 3 — 2026-11-05 ok. 11:00 (po zadaniach 5–8)
+Zakres: commity sesji B od 09:10 (66a8196 „Task 17: perf GUT test”, ed5dfda C-05 i wcześniejsze) + audyt A11Y, runda 2.
+- **N-17 · High · `SafeArea.apply` wypycha menu poza ekran** — szczegóły i poprawka: `A11Y-AUDIT.md` A-10.
+- **N-18 · Medium · Skalowanie tekstu bez efektu** — `A11Y-AUDIT.md` A-11. Do tego „ogranicz ruch” nie jest nigdzie czytane (A-07).
+- **N-19 · Medium · `game-screens.yml` odwołuje się do nieistniejącej sceny** `res://tests/screens.tscn` (run #2 failure). Zrzuty do sklepu i audytu robię na razie własnym narzędziem (`store/screenshots/capture_game.sh`, `qa/bot/a11y_shots.gd`).
+- **N-20 · Low · Test e2e kariery w GUT (07c1621) przechodzi, a gra nie** — GUT woła `JobRun.complete()` bezpośrednio, więc nie łapie N-13 (scena planu B nie woła `complete()`). Automat `qa-career` gra przez sceny i to wykrywa; warto, żeby test GUT przechodził choć jedno zlecenie przez `lock_scene_path()`.
+- N-13…N-16: bez zmian w kodzie.
