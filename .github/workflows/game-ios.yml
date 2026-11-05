@@ -49,7 +49,7 @@ jobs:
           scons platform=ios target=template_release arch=arm64 custom_api_file=gdextension/extension_api-4-7.json -j8
           scons platform=ios target=template_debug arch=arm64 custom_api_file=gdextension/extension_api-4-7.json -j8
 
-      - name: Build LockwrightHaptics GDExtension (D-30/D-42: .gdextension only in iOS build)
+      - name: "Build LockwrightHaptics GDExtension (D-30/D-42, .gdextension only in iOS build)"
         run: |
           cd platform/ios/lockwright_haptics
           GODOT_CPP_SCONSTRUCT=$GITHUB_WORKSPACE/godot-cpp/SConstruct scons platform=ios target=template_release arch=arm64 custom_api_file=$GITHUB_WORKSPACE/godot-cpp/gdextension/extension_api-4-7.json -j8
@@ -61,15 +61,7 @@ jobs:
           xcodebuild -create-xcframework \
             -library bin/liblockwright_haptics.ios.template_debug.dylib \
             -output ../../../game/addons/lockwright_haptics/ios/liblockwright_haptics.ios.debug.xcframework
-          cat > ../../../game/addons/lockwright_haptics/lockwright_haptics.gdextension <<'GDEXT'
-[configuration]
-entry_symbol = "lockwright_haptics_init"
-compatibility_minimum = "4.7"
-
-[libraries]
-ios.debug = "res://addons/lockwright_haptics/ios/liblockwright_haptics.ios.debug.xcframework"
-ios.release = "res://addons/lockwright_haptics/ios/liblockwright_haptics.ios.release.xcframework"
-GDEXT
+          printf '[configuration]\nentry_symbol = "lockwright_haptics_init"\ncompatibility_minimum = "4.7"\n\n[libraries]\nios.debug = "res://addons/lockwright_haptics/ios/liblockwright_haptics.ios.debug.xcframework"\nios.release = "res://addons/lockwright_haptics/ios/liblockwright_haptics.ios.release.xcframework"\n' > ../../../game/addons/lockwright_haptics/lockwright_haptics.gdextension
 
       - name: Build lockcore_gd xcframeworks (iOS)
         run: |
