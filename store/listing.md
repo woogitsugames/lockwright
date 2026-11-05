@@ -12,25 +12,15 @@ Liczby znaków sprawdza `python3 store/tools/check_lengths.py` (liczy znaki Unic
 
 ---
 
-## 0. Nazwa: problem z limitem 30 znaków
+## 0. Nazwa w sklepach (D-32)
 
-Pełne nazwy z D-01:
+| Sklep | PL | EN |
+|---|---|---|
+| App Store, Google Play | `Lockwright: Pogotowie Zamkowe` (29 znaków) | `Lockwright: Locksmith on Call` (29 znaków) |
 
-| Nazwa | Znaki | Limit App Store / Google Play | Wynik |
-|---|---|---|---|
-| Lockwright: Pogotowie Zamkowe | 29 | 30 / 30 | mieści się |
-| Lockwright: Emergency Locksmith | **31** | 30 / 30 | **o 1 znak za długa** w obu sklepach |
-
-Propozycje dla EN (decyzja właściciela):
-
-| Wariant | Tekst | Znaki | Uwagi |
-|---|---|---|---|
-| **A (rekomendacja)** | `Lockwright Emergency Locksmith` | 30 | Te same słowa co w D-01, tylko bez dwukropka. Dalej odróżnia nas od escape roomu z lockwright.app (D-03). |
-| B | `Lockwright: Locksmith on Call` | 29 | Zachowuje dwukropek, ale zmienia dopisek. |
-| C | `Lockwright` + podtytuł `Emergency Locksmith` | 10 | Najkrótsze, ale traci dopisek w nazwie, który D-03 zaleca. Na Google Play nie ma podtytułu, więc odpada tam. |
-
-W tekście poniżej używam wariantu A. Na ekranie startowym gry i w materiałach poza sklepem nazwa może
-dalej brzmieć „Lockwright: Emergency Locksmith”.
+Decyzja właściciela **D-32** (2026-11-05): pełna nazwa EN z D-01 („Lockwright: Emergency Locksmith”, 31 znaków) przekracza limit 30 znaków
+obu sklepów, więc w sklepach EN używamy „Lockwright: Locksmith on Call”. Dopisek dalej odróżnia nas od escape roomu z lockwright.app (D-03).
+Tytuł gry w i18n EN zmienia sesja B (`game/i18n`, uwaga w `docs/handoff/SESSION-C-REVIEW.md`).
 
 ---
 
@@ -107,7 +97,7 @@ Pierwsze wydanie. Torba spakowana, wytrychy w zwijce. Jeśli coś zgrzyta, napis
 **Name**
 <!-- field: as.en.name max=30 -->
 ```
-Lockwright Emergency Locksmith
+Lockwright: Locksmith on Call
 ```
 
 **Subtitle**
@@ -122,10 +112,10 @@ Open locks by feel and sound
 A locksmith's evening shift: a pin that binds, a pin that sets, and a spool that lies to you. Open every lock by touch and ear. No ads, works offline.
 ```
 
-**Keywords** (no spaces after commas; not repeating: lockwright, emergency, locksmith, open, locks, feel, sound)
+**Keywords** (no spaces after commas; not repeating the name/subtitle words: lockwright, locksmith, on, call, open, locks, feel, sound)
 <!-- field: as.en.keywords max=100 bytes -->
 ```
-lockpicking,pick,picking,haptic,tactile,puzzle,mechanism,pin,tumbler,key,cylinder,padlock,offline
+lockpicking,pick,emergency,haptic,tactile,puzzle,mechanism,pin,tumbler,key,cylinder,padlock,offline
 ```
 
 **Description**
@@ -185,7 +175,7 @@ Lockwright: Pogotowie Zamkowe
 **Tytuł EN**
 <!-- field: gp.en.title max=30 -->
 ```
-Lockwright Emergency Locksmith
+Lockwright: Locksmith on Call
 ```
 
 **Krótki opis PL**
@@ -233,15 +223,15 @@ słów kluczowych w bajtach, więc polskie znaki (ś, ł, ó…) zajmują po 2.
 | as.pl.description | 4000 | 1814 | 1937 | tak |
 | as.pl.variant_a | 4000 | 101 | 105 | tak |
 | as.pl.whatsnew | 4000 | 118 | 120 | tak |
-| as.en.name | 30 | 30 | 30 | tak |
+| as.en.name | 30 | 29 | 29 | tak |
 | as.en.subtitle | 30 | 28 | 28 | tak |
 | as.en.promo | 170 | 150 | 150 | tak |
-| as.en.keywords | 100 bytes | 97 | 97 | tak |
+| as.en.keywords | 100 bytes | 99 | 99 | tak |
 | as.en.description | 4000 | 1861 | 1883 | tak |
 | as.en.variant_a | 4000 | 106 | 106 | tak |
 | as.en.whatsnew | 4000 | 118 | 118 | tak |
 | gp.pl.title | 30 | 29 | 29 | tak |
-| gp.en.title | 30 | 30 | 30 | tak |
+| gp.en.title | 30 | 29 | 29 | tak |
 | gp.pl.short | 80 | 73 | 76 | tak |
 | gp.en.short | 80 | 73 | 73 | tak |
 | gp.pl.haptics_line | 4000 | 186 | 199 | tak |
