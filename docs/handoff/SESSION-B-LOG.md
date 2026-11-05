@@ -40,3 +40,15 @@
 **Odchylenie od zadania:** menu na razie 2D Control (emaliowane przyciski), nie pełna scena 3D z drzwiami — makieta 3D czeka na modele z `art/` (mockup `04-menu.portrait.png` jako układ). Do doprecyzowania w kolejnej iteracji.
 
 **Zrzuty:** brak (brak GPU w sandboxie, j.w.).
+
+## 2026-11-05 — Zadania 3–5 dokończone: lokalny toolchain, AAR, APK, CI
+
+**Zrobione:**
+- Lokalny toolchain w sandboxie: JDK 17 (Temurin), Android SDK (platform 36, build-tools 36.1.0, NDK 29.0.14206865), Gradle 8.11.1 — pobrane przez proxy (gh release / python urllib).
+- **AAR zbudowany lokalnie** (`./gradlew :lockwright-haptics:assembleRelease`) i skopiowany do `game/addons/lockwright_haptics/android/lockwright_haptics.aar`. Poprawione błędy kompilacji Kotlin (getContext(), SignalInfo, arePrimitivesSupported → BooleanArray, init property).
+- **lockcore_gd zbudowany dla android arm64** (`liblockcore_gd.android.template_debug.so`) przez godot-cpp master + `custom_api_file=extension_api-4-7.json`.
+- **Debug APK zbudowany lokalnie**: `game/build/lockwright-debug.apk` (87 MB) przez `godot --headless --export-debug "Android"` — wymagało zainstalowania android build template do `game/android/build/` + `android/.build_version` + editor settings z `android_sdk_path`/`java_sdk_path`.
+- iOS: most przeszedł na klasyczny `.gdip` (D-21 — `.gdextension` tylko-iOS blokował eksport Androida). Kod ObjC++ skompilowany w CI po serii poprawek (nazwy API iOS 26: `createAdvancedPlayerWithPattern:`, `initWithEvents:parameters:error:`, `CHHapticEventTypeHapticTransient`, `CHHapticDynamicParameterID*HapticIntensityControl`, `initAndReturnError:`, deployment target 18.0, `.mm` przez osobny env ObjC++).
+- **CI zielone:** `game-android` (AAR + APK, artefakty) i `game-tests` (gdextension-build + lock_test przez prawdziwe lockcore, GUT, smoke, walidacja danych, check_sfx). `game-ios` w toku — buduje godot-cpp + obie liby i eksportuje projekt do Xcode na macos-latest.
+
+**Otwarte:** game-ios CI jeszcze w toku (długi build godot-cpp na macOS); zrzuty ekranu nadal niemożliwe lokalnie (brak GPU).
