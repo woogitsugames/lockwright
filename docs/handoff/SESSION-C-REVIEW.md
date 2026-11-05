@@ -573,7 +573,7 @@ Zakres: 0ec9cae (sesja B: `tests/screens.{gd,tscn}`, argumenty gradlew), b45bdd4
 
 # Etap 4
 
-## Runda CI 1 — 2026-11-05 10:30 (zadanie 1: pilnowanie zielonego CI)
+## Runda CI 1 — 2026-11-05 10:25 (zadanie 1: pilnowanie zielonego CI)
 
 Stan workflowów na `main` (ostatnie zakończone runy): **zielone** `lockcore` (#21), `spike-determinism` (#15), `spike-planb` (#13), `perf-budget` (#2); **czerwone** `game-tests` (#61), `game-android` (#65), `game-ios` (#78), `game-screens` (#4; #5 w toku), `qa-career` (#7, mój — rozdzielony niżej). W toku: `spike-determinism-apk` (#1).
 
