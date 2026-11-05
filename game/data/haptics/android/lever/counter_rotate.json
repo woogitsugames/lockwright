@@ -1,0 +1,139 @@
+{
+  "base": null,
+  "chain": [
+    {
+      "envelope": [
+        [
+          0,
+          0.22,
+          0.05
+        ],
+        [
+          600,
+          0.44,
+          0.05
+        ]
+      ],
+      "tick": [
+        "LOW_TICK",
+        0.385
+      ],
+      "tick_interval_ms": 120,
+      "tier": "a3"
+    },
+    {
+      "composition": [
+        [
+          "LOW_TICK",
+          0.385,
+          0
+        ]
+      ],
+      "onset_ms": [
+        0
+      ],
+      "repeat_interval_ms": 120,
+      "tier": "a2"
+    },
+    {
+      "composition": [
+        [
+          "TICK",
+          0.385,
+          0
+        ]
+      ],
+      "onset_ms": [
+        0
+      ],
+      "repeat_interval_ms": 120,
+      "tier": "a2"
+    },
+    {
+      "tier": "a1",
+      "waveform": {
+        "amps": [
+          110,
+          0
+        ],
+        "repeat": 0,
+        "timings": [
+          15,
+          135
+        ]
+      }
+    },
+    {
+      "interval_ms": 250,
+      "on_ms": 25,
+      "tier": "a0"
+    }
+  ],
+  "essential": true,
+  "event": "counter_rotate",
+  "family": "lever",
+  "material": "brass",
+  "modifiers": {
+    "ds": -0.1,
+    "family_modifier_applied": true,
+    "k": 1.1
+  },
+  "normalization": [],
+  "priority": 6,
+  "rule": "FEEL §1.3: first entry whose tier <= device tier and all primitives in supported_primitives_mask. composition delay_ms is relative to the previous primitive's start (FEEL semantics); onset_ms is cumulative. Android Composition.addPrimitive delay counts from the end of the previous primitive: subtract getPrimitiveDurations().",
+  "selection": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 4,
+      "summary": "on 25 ms, every 250 ms"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 3,
+      "summary": "waveform t[15, 135] a[110, 0]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 1,
+      "summary": "LOW_TICK@0 0.385, every 120 ms"
+    },
+    "a3": {
+      "entry_tier": "a3",
+      "index": 0,
+      "summary": "envelope 2 pts / 600 ms, tick LOW_TICK 0.385"
+    },
+    "a4": {
+      "entry_tier": "a3",
+      "index": 0,
+      "summary": "envelope 2 pts / 600 ms, tick LOW_TICK 0.385"
+    }
+  },
+  "selection_min_primitives": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 4,
+      "summary": "on 25 ms, every 250 ms"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 3,
+      "summary": "waveform t[15, 135] a[110, 0]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 2,
+      "summary": "TICK@0 0.385, every 120 ms"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 2,
+      "summary": "TICK@0 0.385, every 120 ms"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 2,
+      "summary": "TICK@0 0.385, every 120 ms"
+    }
+  },
+  "source": "docs/FEEL.md §9 events.counter_rotate.android_chain"
+}

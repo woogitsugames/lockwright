@@ -1,0 +1,25 @@
+{
+  "Metadata": {
+    "Description": "wafer / near_shear / brass (k 0.85, dS 0.05); FEEL §2 near_shear (+ §9 events.near_shear.ios.entry_tick_*)",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.102
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.85
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.0
+      }
+    }
+  ],
+  "Version": 1.0
+}

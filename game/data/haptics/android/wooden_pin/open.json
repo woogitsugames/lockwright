@@ -1,0 +1,140 @@
+{
+  "base": null,
+  "chain": [
+    {
+      "envelope": [
+        [
+          0,
+          0.0,
+          0.15
+        ],
+        [
+          300,
+          0.27,
+          0.15
+        ]
+      ],
+      "then": [
+        "CLICK",
+        0.9
+      ],
+      "tier": "a3"
+    },
+    {
+      "composition": [
+        [
+          "SLOW_RISE",
+          0.27,
+          0
+        ],
+        [
+          "CLICK",
+          0.9,
+          0
+        ]
+      ],
+      "onset_ms": [
+        0,
+        0
+      ],
+      "tier": "a2"
+    },
+    {
+      "composition": [
+        [
+          "CLICK",
+          0.9,
+          0
+        ]
+      ],
+      "onset_ms": [
+        0
+      ],
+      "tier": "a2"
+    },
+    {
+      "tier": "a1",
+      "waveform": {
+        "amps": [
+          54,
+          230
+        ],
+        "timings": [
+          300,
+          30
+        ]
+      }
+    },
+    {
+      "on_ms": 50,
+      "tier": "a0"
+    }
+  ],
+  "essential": true,
+  "event": "open",
+  "family": "wooden_pin",
+  "material": "wood",
+  "modifiers": {
+    "ds": -0.25,
+    "family_modifier_applied": true,
+    "k": 0.9
+  },
+  "normalization": [],
+  "priority": 1,
+  "rule": "FEEL §1.3: first entry whose tier <= device tier and all primitives in supported_primitives_mask. composition delay_ms is relative to the previous primitive's start (FEEL semantics); onset_ms is cumulative. Android Composition.addPrimitive delay counts from the end of the previous primitive: subtract getPrimitiveDurations().",
+  "selection": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 4,
+      "summary": "on 50 ms"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 3,
+      "summary": "waveform t[300, 30] a[54, 230]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 1,
+      "summary": "SLOW_RISE@0 0.27 + CLICK@0 0.9"
+    },
+    "a3": {
+      "entry_tier": "a3",
+      "index": 0,
+      "summary": "envelope 2 pts / 300 ms, then CLICK 0.9"
+    },
+    "a4": {
+      "entry_tier": "a3",
+      "index": 0,
+      "summary": "envelope 2 pts / 300 ms, then CLICK 0.9"
+    }
+  },
+  "selection_min_primitives": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 4,
+      "summary": "on 50 ms"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 3,
+      "summary": "waveform t[300, 30] a[54, 230]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 2,
+      "summary": "CLICK@0 0.9"
+    },
+    "a3": {
+      "entry_tier": "a3",
+      "index": 0,
+      "summary": "envelope 2 pts / 300 ms, then CLICK 0.9"
+    },
+    "a4": {
+      "entry_tier": "a3",
+      "index": 0,
+      "summary": "envelope 2 pts / 300 ms, then CLICK 0.9"
+    }
+  },
+  "source": "docs/FEEL.md §9 events.open.android_chain"
+}

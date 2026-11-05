@@ -1,0 +1,102 @@
+{
+  "Metadata": {
+    "Description": "lever_detector / detector.reset / brass (k 1.1, dS -0.1); FEEL §3.6",
+    "Project": "Lockwright"
+  },
+  "Pattern": [
+    {
+      "Event": {
+        "EventDuration": 0.35,
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.33
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.1
+          },
+          {
+            "ParameterID": "AttackTime",
+            "ParameterValue": 0.0
+          },
+          {
+            "ParameterID": "ReleaseTime",
+            "ParameterValue": 0.02
+          },
+          {
+            "ParameterID": "Sustained",
+            "ParameterValue": 1.0
+          }
+        ],
+        "EventType": "HapticContinuous",
+        "Time": 0.0
+      }
+    },
+    {
+      "ParameterCurve": {
+        "ParameterCurveControlPoints": [
+          {
+            "ParameterValue": 1.0,
+            "Time": 0.0
+          },
+          {
+            "ParameterValue": 0.0,
+            "Time": 0.35
+          }
+        ],
+        "ParameterID": "HapticIntensityControl",
+        "Time": 0.0
+      }
+    },
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.275
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.2
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.12
+      }
+    },
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.275
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.2
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.2
+      }
+    },
+    {
+      "Event": {
+        "EventParameters": [
+          {
+            "ParameterID": "HapticIntensity",
+            "ParameterValue": 0.275
+          },
+          {
+            "ParameterID": "HapticSharpness",
+            "ParameterValue": 0.2
+          }
+        ],
+        "EventType": "HapticTransient",
+        "Time": 0.26
+      }
+    }
+  ],
+  "Version": 1.0
+}

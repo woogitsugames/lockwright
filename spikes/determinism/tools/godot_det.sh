@@ -44,6 +44,10 @@ device)
   host_digest=$(grep -o "digest=[0-9a-f]*" "$HOST")
   dev_digest=$(grep -o "digest=[0-9a-f]*" device_result.txt || true)
   echo "host   $host_digest"; echo "device $dev_digest"
+  if [ -z "$dev_digest" ]; then
+    echo "--- no result: last relevant logcat lines ---"
+    grep -iE "godot|FATAL|AndroidRuntime|ndk_translation|libc  |DEBUG   |lockcore" device_logcat.txt | tail -60 || true
+  fi
   [ -n "$dev_digest" ] && [ "$host_digest" = "$dev_digest" ] && grep -q " bad=0 " device_result.txt
   ;;
 *) echo "usage: see header"; exit 2 ;;

@@ -20,6 +20,7 @@ func _ready() -> void:
 	load_patterns()
 	if Engine.has_singleton(NATIVE_SINGLETON):
 		_native = Engine.get_singleton(NATIVE_SINGLETON)
+		prepare_native()
 		print("Haptics: native plugin %s detected, caps=%s" % [NATIVE_SINGLETON, capabilities()])
 	else:
 		print("Haptics: no native plugin, using Input.vibrate_handheld fallback (editor/desktop)")
@@ -41,6 +42,31 @@ func load_patterns() -> void:
 
 func pattern_for(event: StringName) -> Dictionary:
 	return patterns.get("events", {}).get(String(event), {})
+
+
+func detail_index() -> Dictionary:
+	# Task 4: per-event files from haptics/out (AHAP on iOS, Android chains A4->A0).
+	# Routing: sub_events["<family>.<name>"] first, then the base event; the file key
+	# comes from index.json -> families[f].events[e].ios[] / android.file.
+	var idx_path: String = patterns.get("detail", {}).get("index", "")
+	if idx_path == "" or not ResourceLoader.exists(idx_path):
+		return {}
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(idx_path))
+	return parsed if typeof(parsed) == TYPE_DICTIONARY else {}
+
+
+func pattern_files_for(family: StringName, event: StringName) -> Dictionary:
+	var idx := detail_index()
+	var fam: Dictionary = idx.get("families", {}).get(String(family), {})
+	var ev: Dictionary = fam.get("events", {}).get(String(event), {})
+	return ev if ev is Dictionary else {}
+
+
+func prepare_native() -> void:
+	# Bridges with a prepare()/load_patterns() hook receive the runtime index plus the
+	# detail file map, so AHAP/chains are prebuilt off the game thread.
+	if _native != null and _native.has_method("load_patterns"):
+		_native.load_patterns(JSON.stringify({"patterns": patterns, "detail": detail_index()}))
 
 
 func continuous_pattern_for(id: StringName) -> Dictionary:

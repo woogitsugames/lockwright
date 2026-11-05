@@ -1,0 +1,20 @@
+{
+  "apply": "Do not put into the event AHAP: Core Haptics curves only affect their own player (TECH §2.1). Apply on the continuous player of `channel`: intensity_scale = multiply HapticIntensityControl by the curve [[t_ms, factor]]; intensity_add / sharpness_add = add to the control value; sharpness_set = absolute sharpness until the condition ends.",
+  "event": "bind",
+  "family": "wafer",
+  "modulation": {
+    "channel": "tension_resistance",
+    "hold": "while_bound",
+    "intensity_add": [
+      [
+        0,
+        0.0
+      ],
+      [
+        80,
+        0.2
+      ]
+    ]
+  },
+  "source": "FEEL §2 bind"
+}

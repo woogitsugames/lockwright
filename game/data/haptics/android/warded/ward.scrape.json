@@ -1,0 +1,95 @@
+{
+  "base": "contact",
+  "chain": [
+    {
+      "composition": [
+        [
+          "TICK",
+          0.198,
+          0
+        ]
+      ],
+      "onset_ms": [
+        0
+      ],
+      "repeat_interval_ms": 100,
+      "tier": "a2"
+    },
+    {
+      "effect": "EFFECT_TICK",
+      "limit_per_s": 5,
+      "tier": "a1"
+    },
+    {
+      "skip": true,
+      "tier": "a0"
+    }
+  ],
+  "essential": false,
+  "event": "ward.scrape",
+  "family": "warded",
+  "material": "iron",
+  "modifiers": {
+    "ds": -0.1,
+    "family_modifier_applied": true,
+    "k": 1.1
+  },
+  "normalization": [],
+  "priority": 12,
+  "rule": "FEEL §1.3: first entry whose tier <= device tier and all primitives in supported_primitives_mask. composition delay_ms is relative to the previous primitive's start (FEEL semantics); onset_ms is cumulative. Android Composition.addPrimitive delay counts from the end of the previous primitive: subtract getPrimitiveDurations().",
+  "selection": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 2,
+      "summary": "skip (sound + image only)"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 1,
+      "summary": "EFFECT_TICK, <= 5/s"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.198, every 100 ms"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.198, every 100 ms"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.198, every 100 ms"
+    }
+  },
+  "selection_min_primitives": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 2,
+      "summary": "skip (sound + image only)"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 1,
+      "summary": "EFFECT_TICK, <= 5/s"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.198, every 100 ms"
+    },
+    "a3": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.198, every 100 ms"
+    },
+    "a4": {
+      "entry_tier": "a2",
+      "index": 0,
+      "summary": "TICK@0 0.198, every 100 ms"
+    }
+  },
+  "source": "docs/FEEL.md §9 sub_events.ward.scrape.android_chain"
+}

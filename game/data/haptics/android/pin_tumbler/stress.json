@@ -1,0 +1,124 @@
+{
+  "base": null,
+  "chain": [
+    {
+      "envelope": [
+        [
+          0,
+          0.315,
+          0.95
+        ],
+        [
+          400,
+          0.578,
+          1.0
+        ]
+      ],
+      "tick": [
+        "TICK",
+        0.315
+      ],
+      "tick_interval_ms": 80,
+      "tier": "a3"
+    },
+    {
+      "composition": [
+        [
+          "TICK",
+          0.315,
+          0
+        ]
+      ],
+      "onset_ms": [
+        0
+      ],
+      "repeat_interval_ms": 80,
+      "tier": "a2"
+    },
+    {
+      "tier": "a1",
+      "waveform": {
+        "amps": [
+          94,
+          0
+        ],
+        "repeat": 0,
+        "timings": [
+          10,
+          110
+        ]
+      }
+    },
+    {
+      "skip": true,
+      "tier": "a0"
+    }
+  ],
+  "essential": false,
+  "event": "stress",
+  "family": "pin_tumbler",
+  "material": "steel",
+  "modifiers": {
+    "ds": 0.1,
+    "family_modifier_applied": false,
+    "k": 1.05
+  },
+  "normalization": [],
+  "priority": 8,
+  "rule": "FEEL §1.3: first entry whose tier <= device tier and all primitives in supported_primitives_mask. composition delay_ms is relative to the previous primitive's start (FEEL semantics); onset_ms is cumulative. Android Composition.addPrimitive delay counts from the end of the previous primitive: subtract getPrimitiveDurations().",
+  "selection": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 3,
+      "summary": "skip (sound + image only)"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 2,
+      "summary": "waveform t[10, 110] a[94, 0]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 1,
+      "summary": "TICK@0 0.315, every 80 ms"
+    },
+    "a3": {
+      "entry_tier": "a3",
+      "index": 0,
+      "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+    },
+    "a4": {
+      "entry_tier": "a3",
+      "index": 0,
+      "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+    }
+  },
+  "selection_min_primitives": {
+    "a0": {
+      "entry_tier": "a0",
+      "index": 3,
+      "summary": "skip (sound + image only)"
+    },
+    "a1": {
+      "entry_tier": "a1",
+      "index": 2,
+      "summary": "waveform t[10, 110] a[94, 0]"
+    },
+    "a2": {
+      "entry_tier": "a2",
+      "index": 1,
+      "summary": "TICK@0 0.315, every 80 ms"
+    },
+    "a3": {
+      "entry_tier": "a3",
+      "index": 0,
+      "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+    },
+    "a4": {
+      "entry_tier": "a3",
+      "index": 0,
+      "summary": "envelope 2 pts / 400 ms, tick TICK 0.315"
+    }
+  },
+  "source": "docs/FEEL.md §9 events.stress.android_chain"
+}

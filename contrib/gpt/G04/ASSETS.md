@@ -34,7 +34,7 @@ Każdy poniższy plik ma źródłowy pełny brief podany powyżej; kolumna „Do
 
 ## Ślad integralności
 
-SHA-256 poniżej umożliwia porównanie bajtów z wersją przygotowaną w tej sesji. Metadane wytworzenia plików są w tym dokumencie, nie w nagłówkach PNG.
+SHA-256 poniżej umożliwia porównanie bajtów z wersją przygotowaną w tej sesji. Metadane wytworzenia plików są w tym dokumencie, nie w nagłówkach plików graficznych.
 
 | Plik | SHA-256 |
 |---|---|

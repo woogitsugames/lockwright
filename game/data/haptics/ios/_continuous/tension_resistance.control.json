@@ -1,0 +1,134 @@
+{
+  "budget_note": "Clamp the final sharpness of this channel to budget_sharpness_max after material x family modifiers (only stress may exceed it, max 4 s; FEEL §5.1). Without the clamp pick_drag reaches 0.80 in wafer (0.75 + family dS +0.05).",
+  "budget_sharpness_max": 0.75,
+  "control_table": [
+    [
+      0.0,
+      0.1,
+      0.2,
+      -0.075
+    ],
+    [
+      0.1,
+      0.1142,
+      0.215,
+      -0.06
+    ],
+    [
+      0.2,
+      0.1402,
+      0.23,
+      -0.045
+    ],
+    [
+      0.3,
+      0.1739,
+      0.245,
+      -0.03
+    ],
+    [
+      0.4,
+      0.2138,
+      0.26,
+      -0.015
+    ],
+    [
+      0.5,
+      0.2591,
+      0.275,
+      0.0
+    ],
+    [
+      0.6,
+      0.3091,
+      0.29,
+      0.015
+    ],
+    [
+      0.7,
+      0.3635,
+      0.305,
+      0.03
+    ],
+    [
+      0.8,
+      0.422,
+      0.32,
+      0.045
+    ],
+    [
+      0.9,
+      0.4842,
+      0.335,
+      0.06
+    ],
+    [
+      1.0,
+      0.55,
+      0.35,
+      0.075
+    ]
+  ],
+  "control_table_columns": [
+    "input_0_1",
+    "intensity_control",
+    "sharpness_target",
+    "sharpness_control"
+  ],
+  "per_family": {
+    "lever": {
+      "ds": -0.1,
+      "k": 1.1,
+      "material": "brass"
+    },
+    "lever_detector": {
+      "ds": -0.1,
+      "k": 1.1,
+      "material": "brass"
+    },
+    "pin_tumbler": {
+      "ds": 0.0,
+      "k": 1.0,
+      "material": "brass"
+    },
+    "ring_combo": {
+      "ds": 0.0,
+      "k": 0.9,
+      "material": "brass"
+    },
+    "wafer": {
+      "ds": 0.05,
+      "k": 0.85,
+      "material": "brass"
+    },
+    "warded": {
+      "ds": -0.1,
+      "k": 1.1,
+      "material": "iron"
+    },
+    "wooden_pin": {
+      "ds": -0.25,
+      "k": 0.9,
+      "material": "wood"
+    }
+  },
+  "rules": {
+    "ducking": {
+      "factor": 0.3,
+      "hold_ms": 35,
+      "release_ms": 60
+    },
+    "idle": {
+      "after_ms": 1500,
+      "fade_ms": 300
+    },
+    "intensity_map": "I = 0.10 + 0.45 * r^1.5 (r = resistance 0..1)",
+    "sharpness_range": [
+      0.2,
+      0.35
+    ]
+  },
+  "signal": "tension_resistance",
+  "source": "FEEL §2 continuous, TECH §3.3",
+  "template": "tension_resistance.ahap"
+}

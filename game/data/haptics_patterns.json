@@ -1,1681 +1,1686 @@
 {
-  "schema": "lockwright.haptics/1",
-  "source": "docs/TECH.md §3.2-3.5, docs/FEEL.md (patch F-1)",
-  "events": {
-    "contact": {
-      "priority": 12,
-      "essential": false,
-      "audio_layer": "L2",
-      "ios": {
-        "type": "transient",
-        "intensity": 0.3,
-        "sharpness": 0.7,
-        "duration_ms": 12
-      },
-      "android": {
-        "primitive": "TICK",
-        "scale": 0.35
-      },
-      "fallback": {
-        "ms": 10,
-        "amp": 70
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "TICK",
-              0.35,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              10
-            ],
-            "amps": [
-              70
-            ]
-          }
-        },
-        {
-          "tier": "a0",
-          "skip": true
-        }
-      ],
-      "sfx": {
-        "id": "contact",
-        "variants": 6,
-        "pitch_jitter": 0.03,
-        "gain_jitter_db": 1.5
-      }
-    },
-    "bind": {
-      "priority": 10,
-      "essential": false,
-      "audio_layer": "L2",
-      "ios": {
-        "type": "transient",
-        "intensity": 0.45,
-        "sharpness": 0.35,
-        "duration_ms": 18,
-        "continuous_boost_ms": 80,
-        "continuous_boost": 0.2
-      },
-      "android": {
-        "primitive": "LOW_TICK",
-        "scale": 0.5,
-        "fallback_primitive": "TICK",
-        "fallback_scale": 0.4
-      },
-      "fallback": {
-        "ms": 15,
-        "amp": 110
-      },
-      "android_chain": [
-        {
-          "tier": "a3",
-          "composition": [
-            [
-              "LOW_TICK",
-              0.5,
-              0
-            ]
-          ],
-          "envelope": [
-            [
-              0,
-              0.3,
-              0.3
-            ],
-            [
-              80,
-              0.5,
-              0.3
-            ]
-          ]
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "LOW_TICK",
-              0.5,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "TICK",
-              0.4,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              15
-            ],
-            "amps": [
-              110
-            ]
-          }
-        },
-        {
-          "tier": "a0",
-          "skip": true
-        }
-      ],
-      "sfx": {
-        "id": "bind",
-        "variants": 6
-      }
-    },
-    "near_shear": {
-      "priority": 11,
-      "essential": false,
-      "audio_layer": "L1",
-      "ios": {
-        "type": "continuous_mod",
-        "sharpness_boost": 0.15,
-        "duration_ms": 150,
-        "entry_tick_intensity": 0.12,
-        "entry_tick_sharpness": 0.8,
-        "entry_tick_once_per_window": true
-      },
-      "android": {
-        "primitive": "QUICK_RISE",
-        "scale": 0.2
-      },
-      "fallback": {
-        "resistance_amp_boost_pct": 20
-      },
-      "android_chain": [
-        {
-          "tier": "a3",
-          "envelope": [
-            [
-              0,
-              0.3,
-              0.45
-            ],
-            [
-              150,
-              0.3,
-              0.45
-            ],
-            [
-              450,
-              0.3,
-              0.3
-            ]
-          ]
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "QUICK_RISE",
-              0.2,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "TICK",
-              0.12,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "resistance_amp_boost_pct": 20
-        },
-        {
-          "tier": "a0",
-          "skip": true
-        }
-      ],
-      "sfx": {
-        "id": "near_shear",
-        "variants": 6,
-        "layer": "L1_filter",
-        "hp_shift_hz": 600
-      }
-    },
-    "set": {
-      "priority": 5,
-      "essential": true,
-      "audio_layer": "L2",
-      "ios": {
-        "type": "transient",
-        "intensity": 0.9,
-        "sharpness": 0.85,
-        "duration_ms": 20,
-        "resistance_dip_factor": 0.5,
-        "resistance_dip_ms": 110
-      },
-      "android": {
-        "primitive": "CLICK",
-        "scale": 0.9
-      },
-      "fallback": {
-        "ms": 18,
-        "amp": 255,
-        "a0_ms": 30
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "CLICK",
-              0.9,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              18
-            ],
-            "amps": [
-              255
-            ]
-          }
-        },
-        {
-          "tier": "a1",
-          "effect": "EFFECT_CLICK"
-        },
-        {
-          "tier": "a0",
-          "on_ms": 30
-        }
-      ],
-      "sfx": {
-        "id": "set",
-        "variants": 6
-      }
-    },
-    "false_set": {
-      "priority": 5,
-      "essential": true,
-      "audio_layer": "L2",
-      "ios": {
-        "type": "transient_pair",
-        "intensity": 0.85,
-        "sharpness": 0.75,
-        "duration_ms": 20,
-        "second_delay_ms": 28,
-        "second_intensity": 0.25,
-        "second_sharpness": 0.3,
-        "resistance_dip_factor": 0.35,
-        "resistance_dip_ms": 260
-      },
-      "android": {
-        "primitive": "CLICK",
-        "scale": 0.85,
-        "second_primitive": "LOW_TICK",
-        "second_scale": 0.25,
-        "second_delay_ms": 28,
-        "fallback_primitive": "TICK",
-        "fallback_scale": 0.2
-      },
-      "fallback": {
-        "ms": 18,
-        "amp": 240,
-        "second_ms": 10,
-        "second_amp": 70,
-        "second_delay_ms": 40,
-        "a0_ms": 30
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "CLICK",
-              0.85,
-              0
-            ],
-            [
-              "LOW_TICK",
-              0.25,
-              28
-            ]
-          ]
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "CLICK",
-              0.85,
-              0
-            ],
-            [
-              "TICK",
-              0.2,
-              28
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              18,
-              40,
-              10
-            ],
-            "amps": [
-              240,
-              0,
-              70
-            ]
-          }
-        },
-        {
-          "tier": "a0",
-          "on_ms": 30,
-          "second_on_ms": 25,
-          "second_gap_ms": 150
-        }
-      ],
-      "sfx": {
-        "id": "false_set",
-        "variants": 6
-      }
-    },
-    "counter_rotate": {
-      "priority": 6,
-      "essential": true,
-      "audio_layer": "L1_L2",
-      "ios": {
-        "type": "continuous",
-        "intensity_from": 0.2,
-        "intensity_to": 0.4,
-        "sharpness": 0.15,
-        "tick_interval_ms": 110,
-        "tick_intensity": 0.3,
-        "tick_sharpness": 0.2,
-        "ramp_ms": 600,
-        "intensity_follows_event": true
-      },
-      "android": {
-        "primitive": "LOW_TICK",
-        "scale": 0.35,
-        "tick_interval_ms": 120,
-        "fallback_primitive": "TICK"
-      },
-      "fallback": {
-        "ms": 15,
-        "amp": 100,
-        "tick_interval_ms": 150,
-        "a0_ms": 25,
-        "a0_interval_ms": 250
-      },
-      "android_chain": [
-        {
-          "tier": "a3",
-          "envelope": [
-            [
-              0,
-              0.2,
-              0.15
-            ],
-            [
-              600,
-              0.4,
-              0.15
-            ]
-          ],
-          "tick": [
-            "LOW_TICK",
-            0.35
-          ],
-          "tick_interval_ms": 120
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "LOW_TICK",
-              0.35,
-              0
-            ]
-          ],
-          "repeat_interval_ms": 120
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "TICK",
-              0.35,
-              0
-            ]
-          ],
-          "repeat_interval_ms": 120
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              15,
-              135
-            ],
-            "amps": [
-              100,
-              0
-            ],
-            "repeat": 0
-          }
-        },
-        {
-          "tier": "a0",
-          "on_ms": 25,
-          "interval_ms": 250
-        }
-      ],
-      "sfx": {
-        "id": "counter_rotate",
-        "variants": 6,
-        "rhythm_from_haptic": true
-      }
-    },
-    "overset": {
-      "priority": 7,
-      "essential": false,
-      "audio_layer": "L2",
-      "ios": {
-        "type": "transient",
-        "intensity": 0.6,
-        "sharpness": 0.1,
-        "duration_ms": 25,
-        "resistance_sharpness_to": 0.05,
-        "dead_resistance": true
-      },
-      "android": {
-        "primitive": "THUD",
-        "scale": 0.6,
-        "fallback_primitive": "CLICK",
-        "fallback_scale": 0.4
-      },
-      "fallback": {
-        "ms": 25,
-        "amp": 160,
-        "a0_ms": 30
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "THUD",
-              0.6,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "CLICK",
-              0.4,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              25
-            ],
-            "amps": [
-              160
-            ]
-          }
-        },
-        {
-          "tier": "a0",
-          "on_ms": 30
-        }
-      ],
-      "sfx": {
-        "id": "overset",
-        "variants": 6,
-        "mute_element_l1": true
-      }
-    },
-    "drop": {
-      "priority": 3,
-      "essential": true,
-      "audio_layer": "L2",
-      "ios": {
-        "type": "transient_burst",
-        "count": [
-          3,
-          6
-        ],
-        "interval_ms": 40,
-        "intensity_from": 0.7,
-        "intensity_to": 0.4,
-        "sharpness": 0.6,
-        "resistance_fade_ms": 200,
-        "count_from_event": [
-          2,
-          6
-        ]
-      },
-      "android": {
-        "primitive": "TICK",
-        "scale_from": 0.7,
-        "scale_to": 0.4,
-        "interval_ms": 50
-      },
-      "fallback": {
-        "ms": 12,
-        "amp": 200,
-        "count": 3,
-        "interval_ms": 70,
-        "a0_ms": 60
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "TICK",
-              0.7,
-              0
-            ],
-            [
-              "TICK",
-              0.6,
-              50
-            ],
-            [
-              "TICK",
-              0.5,
-              50
-            ],
-            [
-              "TICK",
-              0.4,
-              50
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              12,
-              70,
-              12,
-              70,
-              12
-            ],
-            "amps": [
-              200,
-              0,
-              160,
-              0,
-              120
-            ]
-          }
-        },
-        {
-          "tier": "a0",
-          "on_ms": 60
-        }
-      ],
-      "sfx": {
-        "id": "drop",
-        "variants": 6
-      }
-    },
-    "stress": {
-      "priority": 8,
-      "essential": false,
-      "audio_layer": "L1",
-      "ios": {
-        "type": "continuous_mod",
-        "intensity_boost": [
-          0.1,
-          0.35
-        ],
-        "sharpness": 0.85,
-        "tick_interval_ms": 70,
-        "tick_intensity": 0.2,
-        "tick_sharpness": 0.9,
-        "tick_interval_ms_high": 45,
-        "high_threshold": 0.9,
-        "sustain_cap_ms": 4000,
-        "after_cap_tick_interval_ms": 140
-      },
-      "android": {
-        "primitive": "TICK",
-        "scale": 0.3,
-        "tick_interval_ms": 80
-      },
-      "fallback": {
-        "ms": 10,
-        "amp": 90,
-        "tick_interval_ms": 120
-      },
-      "android_chain": [
-        {
-          "tier": "a3",
-          "envelope": [
-            [
-              0,
-              0.3,
-              0.85
-            ],
-            [
-              400,
-              0.55,
-              0.9
-            ]
-          ],
-          "tick": [
-            "TICK",
-            0.3
-          ],
-          "tick_interval_ms": 80
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "TICK",
-              0.3,
-              0
-            ]
-          ],
-          "repeat_interval_ms": 80
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              10,
-              110
-            ],
-            "amps": [
-              90,
-              0
-            ],
-            "repeat": 0
-          }
-        },
-        {
-          "tier": "a0",
-          "skip": true
-        }
-      ],
-      "sfx": {
-        "id": "stress",
-        "variants": 6,
-        "pitch_from_event": [
-          1.0,
-          1.08
-        ]
-      }
-    },
-    "break": {
-      "priority": 1,
-      "essential": true,
-      "audio_layer": "L2",
-      "ios": {
-        "type": "transient",
-        "intensity": 1.0,
-        "sharpness": 1.0,
-        "duration_ms": 40,
-        "silence_ms": 150
-      },
-      "android": {
-        "primitive": "CLICK",
-        "scale": 1.0,
-        "second_primitive": "QUICK_FALL",
-        "second_scale": 0.6
-      },
-      "fallback": {
-        "ms": 40,
-        "amp": 255,
-        "a0_ms": 60
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "CLICK",
-              1.0,
-              0
-            ],
-            [
-              "QUICK_FALL",
-              0.6,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "CLICK",
-              1.0,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              40
-            ],
-            "amps": [
-              255
-            ]
-          }
-        },
-        {
-          "tier": "a0",
-          "on_ms": 60
-        }
-      ],
-      "sfx": {
-        "id": "break",
-        "variants": 6,
-        "duck_all_db": -12,
-        "duck_ms": 300
-      }
-    },
-    "wear": {
-      "priority": 15,
-      "essential": false,
-      "audio_layer": "L4",
-      "ios": {
-        "type": "none"
-      },
-      "android": {
-        "primitive": "none"
-      },
-      "fallback": {
-        "ms": 0,
-        "amp": 0
-      },
-      "sfx": {
-        "id": "wear",
-        "variants": 6,
-        "layer": "L4",
-        "in_lock": false
-      }
-    },
-    "gate_align": {
-      "priority": 9,
-      "essential": false,
-      "audio_layer": "L2",
-      "ios": {
-        "type": "transient",
-        "intensity": 0.5,
-        "sharpness": 0.4,
-        "duration_ms": 15,
-        "resistance_dip_factor": 0.7,
-        "resistance_dip_ms": 60
-      },
-      "android": {
-        "primitive": "CLICK",
-        "scale": 0.5,
-        "fallback_primitive": "TICK",
-        "fallback_scale": 0.6
-      },
-      "fallback": {
-        "ms": 15,
-        "amp": 140,
-        "a0_ms": 25
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "LOW_TICK",
-              0.6,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "CLICK",
-              0.5,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "TICK",
-              0.6,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              15
-            ],
-            "amps": [
-              140
-            ]
-          }
-        },
-        {
-          "tier": "a0",
-          "on_ms": 25
-        }
-      ],
-      "sfx": {
-        "id": "gate_align",
-        "variants": 6
-      }
-    },
-    "detector_trip": {
-      "priority": 2,
-      "essential": true,
-      "audio_layer": "L2",
-      "ios": {
-        "type": "rhythmic",
-        "bursts": [
-          {
-            "ms": 80,
-            "intensity": 0.7,
-            "sharpness": 0.3
-          },
-          {
-            "gap_ms": 60
-          },
-          {
-            "ms": 80,
-            "intensity": 0.7,
-            "sharpness": 0.3
-          }
-        ]
-      },
-      "android": {
-        "primitive": "THUD",
-        "scale": 0.7,
-        "duration_ms": 140,
-        "pattern": [
-          140,
-          80,
-          140
-        ]
-      },
-      "fallback": {
-        "ms": 60,
-        "amp": 220,
-        "pattern": [
-          60,
-          80,
-          60
-        ],
-        "a0": "same on/off"
-      },
-      "android_chain": [
-        {
-          "tier": "a3",
-          "envelope": [
-            [
-              0,
-              0.7,
-              0.3
-            ],
-            [
-              80,
-              0.7,
-              0.3
-            ],
-            [
-              81,
-              0.0,
-              0.3
-            ],
-            [
-              140,
-              0.0,
-              0.3
-            ],
-            [
-              141,
-              0.7,
-              0.3
-            ],
-            [
-              220,
-              0.7,
-              0.3
-            ],
-            [
-              221,
-              0.0,
-              0.3
-            ]
-          ]
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "THUD",
-              0.7,
-              0
-            ],
-            [
-              "THUD",
-              0.7,
-              140
-            ]
-          ]
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "CLICK",
-              0.8,
-              0
-            ],
-            [
-              "CLICK",
-              0.8,
-              140
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              60,
-              80,
-              60
-            ],
-            "amps": [
-              220,
-              0,
-              220
-            ]
-          }
-        },
-        {
-          "tier": "a0",
-          "pattern_ms": [
-            60,
-            80,
-            60
-          ]
-        }
-      ],
-      "sfx": {
-        "id": "detector_trip",
-        "variants": 6
-      }
-    },
-    "open": {
-      "priority": 1,
-      "essential": true,
-      "audio_layer": "L2",
-      "ios": {
-        "type": "continuous_ramp_then_transient",
-        "ramp_ms": 300,
-        "ramp_from": 0.0,
-        "ramp_to": 0.3,
-        "transient_intensity": 1.0,
-        "transient_sharpness": 0.6
-      },
-      "android": {
-        "primitive": "SLOW_RISE",
-        "scale": 0.3,
-        "second_primitive": "CLICK",
-        "second_scale": 1.0
-      },
-      "fallback": {
-        "ms": 30,
-        "amp": 255,
-        "a0_ms": 50
-      },
-      "android_chain": [
-        {
-          "tier": "a3",
-          "envelope": [
-            [
-              0,
-              0.0,
-              0.4
-            ],
-            [
-              300,
-              0.3,
-              0.4
-            ]
-          ],
-          "then": [
-            "CLICK",
-            1.0
-          ]
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "SLOW_RISE",
-              0.3,
-              0
-            ],
-            [
-              "CLICK",
-              1.0,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "CLICK",
-              1.0,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              300,
-              30
-            ],
-            "amps": [
-              60,
-              255
-            ]
-          }
-        },
-        {
-          "tier": "a0",
-          "on_ms": 50
-        }
-      ],
-      "sfx": {
-        "id": "open",
-        "variants": 6
-      }
-    }
+ "budget": {
+  "audio": {
+   "gameplay_integrated_lufs": -23,
+   "l1_short_term_max_dbfs": -20,
+   "l2_peak_max_dbfs": -1
   },
-  "continuous": {
-    "tension_resistance": {
-      "priority": 14,
-      "audio_layer": "L1",
-      "ios": {
-        "intensity_range": [
-          0.1,
-          0.55
-        ],
-        "sharpness_range": [
-          0.2,
-          0.35
-        ],
-        "update_hz_max": 60
-      },
-      "android": {
-        "envelope_segment_ms": 60,
-        "waveform_segment_ms": 40,
-        "waveform_amp_range": [
-          30,
-          140
-        ],
-        "update_ms": 100
-      },
-      "fallback": {
-        "a0": "none"
-      }
-    },
-    "pick_drag": {
-      "priority": 13,
-      "audio_layer": "L1",
-      "ios": {
-        "intensity_range": [
-          0.05,
-          0.25
-        ],
-        "sharpness_range": [
-          0.55,
-          0.75
-        ],
-        "micro_tick_intensity": 0.15,
-        "micro_tick_sharpness": 0.7,
-        "micro_tick_limit_per_s": 20
-      },
-      "android": {
-        "micro_primitive": "TICK",
-        "micro_scale": 0.15,
-        "micro_limit_per_s": 12
-      },
-      "fallback": {
-        "effect": "EFFECT_TICK",
-        "limit_per_s": 6,
-        "a0": "none"
-      }
-    }
+  "continuous_duty_max": 0.7,
+  "continuous_rms_max": 0.3,
+  "continuous_sharpness_max": 0.75,
+  "governor": {
+   "continuous_rms_trigger": 0.35,
+   "continuous_scale_min": 0.75,
+   "recover_s": 10,
+   "rolling_s": 30,
+   "shed_priority_from": 11
   },
-  "material_modifiers": {
-    "brass": {
-      "delta_sharpness": 0.0,
-      "intensity_scale": 1.0
-    },
-    "steel": {
-      "delta_sharpness": 0.1,
-      "intensity_scale": 1.05
-    },
-    "iron": {
-      "delta_sharpness": -0.1,
-      "intensity_scale": 1.1
-    },
-    "wood": {
-      "delta_sharpness": -0.25,
-      "intensity_scale": 0.9
-    }
+  "idle_fade_after_ms": 1500,
+  "idle_fade_ms": 300,
+  "strong_threshold": 0.7,
+  "strong_transients_per_10s_max": 8,
+  "transients_per_10s_max": {
+   "a0": 8,
+   "a1": 15,
+   "android_a2_a4": 25,
+   "ios": 40
   },
-  "mix_rules": {
-    "transient_limit_per_s": {
-      "ios": 25,
-      "android_a2_a4": 12,
-      "a1": 6,
-      "a0": 3
-    },
-    "min_transient_gap_ms": {
-      "default": 60,
-      "calibrated_two_clicks": 40,
-      "calibrated_blur": 150
-    },
-    "ducking": {
-      "transient_prio_max": 10,
-      "factor": 0.3,
-      "hold_ms": 35,
-      "release_ms": 60,
-      "audio_duck_db": -6,
-      "audio_duck_ms": 50
-    },
-    "interrupt_priority_max": 3,
-    "route_sub_events_before_coalesce": true,
-    "per_element_gap_ms": 30,
-    "sfx_voice_limit": 16,
-    "sfx_no_immediate_repeat": true,
-    "onset_max_ms": 2,
-    "av_sync_max_ms": 15
+  "window_s": 180
+ },
+ "continuous": {
+  "pick_drag": {
+   "android": {
+    "micro_limit_per_s": 12,
+    "micro_primitive": "TICK",
+    "micro_scale": 0.15
+   },
+   "audio_layer": "L1",
+   "fallback": {
+    "a0": "none",
+    "effect": "EFFECT_TICK",
+    "limit_per_s": 6
+   },
+   "ios": {
+    "intensity_range": [
+     0.05,
+     0.25
+    ],
+    "micro_tick_intensity": 0.15,
+    "micro_tick_limit_per_s": 20,
+    "micro_tick_sharpness": 0.7,
+    "sharpness_range": [
+     0.55,
+     0.75
+    ]
+   },
+   "priority": 13
   },
-  "feel_version": 2,
-  "sub_events": {
-    "pin.serration": {
-      "base": "false_set",
-      "priority": 11,
-      "essential": false,
-      "audio_layer": "L2",
-      "ducks_resistance": false,
-      "ios": {
-        "type": "transient",
-        "intensity": 0.18,
-        "sharpness": 0.9,
-        "duration_ms": 8
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "TICK",
-              0.2,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              8
-            ],
-            "amps": [
-              50
-            ]
-          }
-        },
-        {
-          "tier": "a0",
-          "skip": true
-        }
-      ],
-      "sfx": {
-        "id": "ratchet",
-        "variants": 6,
-        "gain_db": -6
-      }
-    },
-    "pin.spring_bounce": {
-      "base": "contact",
-      "priority": 12,
-      "essential": false,
-      "audio_layer": "L2",
-      "ducks_resistance": false,
-      "ios": {
-        "type": "transient",
-        "intensity": 0.12,
-        "sharpness": 0.55,
-        "duration_ms": 10
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "TICK",
-              0.12,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "skip": true
-        }
-      ],
-      "sfx": {
-        "id": "spring",
-        "variants": 6
-      }
-    },
-    "wafer.rattle": {
-      "base": "contact",
-      "priority": 12,
-      "essential": false,
-      "audio_layer": "L2",
-      "ducks_resistance": false,
-      "haptic_limit_per_s": 6,
-      "ios": {
-        "type": "transient",
-        "intensity": 0.1,
-        "sharpness": 0.8,
-        "duration_ms": 8
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "TICK",
-              0.1,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "skip": true
-        }
-      ],
-      "sfx": {
-        "id": "contact",
-        "variants": 6,
-        "pitch": 1.08,
-        "gain_db": -4
-      }
-    },
-    "wood.creak": {
-      "base": "stress",
-      "priority": 8,
-      "essential": false,
-      "audio_layer": "L1",
-      "ios": {
-        "type": "continuous_mod",
-        "intensity_boost": [
-          0.05,
-          0.2
-        ],
-        "sharpness": 0.25,
-        "tick_interval_ms": 140,
-        "tick_intensity": 0.15,
-        "tick_sharpness": 0.2
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "LOW_TICK",
-              0.25,
-              0
-            ]
-          ],
-          "repeat_interval_ms": 160
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "TICK",
-              0.2,
-              0
-            ]
-          ],
-          "repeat_interval_ms": 160
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              12,
-              148
-            ],
-            "amps": [
-              80,
-              0
-            ],
-            "repeat": 0
-          }
-        },
-        {
-          "tier": "a0",
-          "skip": true
-        }
-      ],
-      "sfx": {
-        "id": "stress",
-        "material": "wood",
-        "variants": 6,
-        "pitch": 0.8
-      }
-    },
-    "ward.scrape": {
-      "base": "contact",
-      "priority": 12,
-      "essential": false,
-      "audio_layer": "L1",
-      "ducks_resistance": false,
-      "haptic_limit_per_s": 10,
-      "ios": {
-        "type": "continuous_mod",
-        "channel": "pick_drag",
-        "sharpness_boost": 0.1,
-        "tick_interval_ms": 60,
-        "tick_intensity": 0.15,
-        "tick_sharpness": 0.6
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "TICK",
-              0.18,
-              0
-            ]
-          ],
-          "repeat_interval_ms": 100
-        },
-        {
-          "tier": "a1",
-          "effect": "EFFECT_TICK",
-          "limit_per_s": 5
-        },
-        {
-          "tier": "a0",
-          "skip": true
-        }
-      ],
-      "sfx": {
-        "id": "ward_scrape",
-        "variants": 6
-      }
-    },
-    "lever.false_gate": {
-      "base": "false_set",
-      "priority": 5,
-      "essential": true,
-      "audio_layer": "L2",
-      "fold_into": "false_set.second",
-      "ios": {
-        "type": "folded"
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "folded": true
-        }
-      ],
-      "sfx": {
-        "id": "lever_fall",
-        "variants": 6,
-        "delay_ms": 40
-      }
-    },
-    "detector.reset": {
-      "base": "drop",
-      "priority": 3,
-      "essential": true,
-      "audio_layer": "L2",
-      "ios": {
-        "type": "continuous_then_transients",
-        "continuous": {
-          "ms": 350,
-          "intensity_from": 0.3,
-          "intensity_to": 0.0,
-          "sharpness": 0.2
-        },
-        "transients": [
-          [
-            120,
-            0.25,
-            0.3
-          ],
-          [
-            200,
-            0.25,
-            0.3
-          ],
-          [
-            260,
-            0.25,
-            0.3
-          ]
-        ]
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "QUICK_FALL",
-              0.4,
-              0
-            ],
-            [
-              "LOW_TICK",
-              0.25,
-              120
-            ],
-            [
-              "LOW_TICK",
-              0.25,
-              80
-            ],
-            [
-              "LOW_TICK",
-              0.25,
-              60
-            ]
-          ]
-        },
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "TICK",
-              0.3,
-              120
-            ],
-            [
-              "TICK",
-              0.3,
-              80
-            ],
-            [
-              "TICK",
-              0.3,
-              60
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "waveform": {
-            "timings": [
-              12,
-              110,
-              12,
-              70,
-              12
-            ],
-            "amps": [
-              120,
-              0,
-              100,
-              0,
-              80
-            ]
-          }
-        },
-        {
-          "tier": "a0",
-          "on_ms": 40
-        }
-      ],
-      "sfx": {
-        "id": "lever_fall",
-        "variants": 6,
-        "count": 3,
-        "interval_ms": [
-          120,
-          80,
-          60
-        ]
-      }
-    },
-    "ring.detent": {
-      "base": "contact",
-      "priority": 12,
-      "essential": false,
-      "audio_layer": "L2",
-      "ducks_resistance": false,
-      "haptic_limit_per_s": {
-        "ios": 12,
-        "android_a2_a4": 8,
-        "a1": 4,
-        "a0": 0
-      },
-      "ios": {
-        "type": "transient",
-        "intensity": 0.22,
-        "sharpness": 0.65,
-        "duration_ms": 10
-      },
-      "android_chain": [
-        {
-          "tier": "a2",
-          "composition": [
-            [
-              "TICK",
-              0.22,
-              0
-            ]
-          ]
-        },
-        {
-          "tier": "a1",
-          "effect": "EFFECT_TICK"
-        },
-        {
-          "tier": "a0",
-          "skip": true
-        }
-      ],
-      "sfx": {
-        "id": "ring_detent",
-        "variants": 6,
-        "audio_limit_per_s": 25
-      }
-    }
-  },
-  "families": {
-    "pin_tumbler": {
-      "material": "brass",
-      "intensity_scale": 1.0,
-      "delta_sharpness": 0.0,
-      "false_set_second_delay_ms": 28
-    },
-    "wafer": {
-      "material": "brass",
-      "intensity_scale": 0.85,
-      "delta_sharpness": 0.05
-    },
-    "wooden_pin": {
-      "material": "wood",
-      "intensity_scale": 1.0,
-      "delta_sharpness": 0.0,
-      "no_break": true
-    },
-    "warded": {
-      "material": "iron",
-      "intensity_scale": 1.0,
-      "delta_sharpness": 0.0
-    },
-    "lever": {
-      "material": "brass",
-      "intensity_scale": 1.1,
-      "delta_sharpness": -0.1,
-      "false_set_second_delay_ms": 40
-    },
-    "lever_detector": {
-      "material": "brass",
-      "intensity_scale": 1.1,
-      "delta_sharpness": -0.1,
-      "false_set_second_delay_ms": 40
-    },
-    "ring_combo": {
-      "material": "brass",
-      "intensity_scale": 0.9,
-      "delta_sharpness": 0.0,
-      "false_set_second_delay_ms": 28,
-      "events_scaled_by_gate_feel": true
-    }
-  },
-  "budget": {
-    "window_s": 180,
-    "continuous_rms_max": 0.3,
-    "continuous_duty_max": 0.7,
-    "continuous_sharpness_max": 0.75,
-    "idle_fade_after_ms": 1500,
-    "idle_fade_ms": 300,
-    "transients_per_10s_max": {
-      "ios": 40,
-      "android_a2_a4": 25,
-      "a1": 15,
-      "a0": 8
-    },
-    "strong_transients_per_10s_max": 8,
-    "strong_threshold": 0.7,
-    "governor": {
-      "rolling_s": 30,
-      "continuous_rms_trigger": 0.35,
-      "continuous_scale_min": 0.75,
-      "shed_priority_from": 11,
-      "recover_s": 10
-    },
-    "audio": {
-      "l1_short_term_max_dbfs": -20,
-      "gameplay_integrated_lufs": -23,
-      "l2_peak_max_dbfs": -1
-    }
+  "tension_resistance": {
+   "android": {
+    "envelope_segment_ms": 60,
+    "update_ms": 100,
+    "waveform_amp_range": [
+     30,
+     140
+    ],
+    "waveform_segment_ms": 40
+   },
+   "audio_layer": "L1",
+   "fallback": {
+    "a0": "none"
+   },
+   "ios": {
+    "intensity_range": [
+     0.1,
+     0.55
+    ],
+    "sharpness_range": [
+     0.2,
+     0.35
+    ],
+    "update_hz_max": 60
+   },
+   "priority": 14
   }
+ },
+ "detail": {
+  "dir": "res://data/haptics",
+  "index": "res://data/haptics/index.json",
+  "note": "Per-event files from haptics/out (haptics/README.md): index.json -> families[f].events[e].ios[] / android.file; sub_events route via '<family>.<name>' first."
+ },
+ "events": {
+  "bind": {
+   "android": {
+    "fallback_primitive": "TICK",
+    "fallback_scale": 0.4,
+    "primitive": "LOW_TICK",
+    "scale": 0.5
+   },
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "LOW_TICK",
+       0.5,
+       0
+      ]
+     ],
+     "envelope": [
+      [
+       0,
+       0.3,
+       0.3
+      ],
+      [
+       80,
+       0.5,
+       0.3
+      ]
+     ],
+     "tier": "a3"
+    },
+    {
+     "composition": [
+      [
+       "LOW_TICK",
+       0.5,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "composition": [
+      [
+       "TICK",
+       0.4,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       110
+      ],
+      "timings": [
+       15
+      ]
+     }
+    },
+    {
+     "skip": true,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L2",
+   "essential": false,
+   "fallback": {
+    "amp": 110,
+    "ms": 15
+   },
+   "ios": {
+    "continuous_boost": 0.2,
+    "continuous_boost_ms": 80,
+    "duration_ms": 18,
+    "intensity": 0.45,
+    "sharpness": 0.35,
+    "type": "transient"
+   },
+   "priority": 10,
+   "sfx": {
+    "id": "bind",
+    "variants": 6
+   }
+  },
+  "break": {
+   "android": {
+    "primitive": "CLICK",
+    "scale": 1.0,
+    "second_primitive": "QUICK_FALL",
+    "second_scale": 0.6
+   },
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "CLICK",
+       1.0,
+       0
+      ],
+      [
+       "QUICK_FALL",
+       0.6,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "composition": [
+      [
+       "CLICK",
+       1.0,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       255
+      ],
+      "timings": [
+       40
+      ]
+     }
+    },
+    {
+     "on_ms": 60,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L2",
+   "essential": true,
+   "fallback": {
+    "a0_ms": 60,
+    "amp": 255,
+    "ms": 40
+   },
+   "ios": {
+    "duration_ms": 40,
+    "intensity": 1.0,
+    "sharpness": 1.0,
+    "silence_ms": 150,
+    "type": "transient"
+   },
+   "priority": 1,
+   "sfx": {
+    "duck_all_db": -12,
+    "duck_ms": 300,
+    "id": "break",
+    "variants": 6
+   }
+  },
+  "contact": {
+   "android": {
+    "primitive": "TICK",
+    "scale": 0.35
+   },
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "TICK",
+       0.35,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       70
+      ],
+      "timings": [
+       10
+      ]
+     }
+    },
+    {
+     "skip": true,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L2",
+   "essential": false,
+   "fallback": {
+    "amp": 70,
+    "ms": 10
+   },
+   "ios": {
+    "duration_ms": 12,
+    "intensity": 0.3,
+    "sharpness": 0.7,
+    "type": "transient"
+   },
+   "priority": 12,
+   "sfx": {
+    "gain_jitter_db": 1.5,
+    "id": "contact",
+    "pitch_jitter": 0.03,
+    "variants": 6
+   }
+  },
+  "counter_rotate": {
+   "android": {
+    "fallback_primitive": "TICK",
+    "primitive": "LOW_TICK",
+    "scale": 0.35,
+    "tick_interval_ms": 120
+   },
+   "android_chain": [
+    {
+     "envelope": [
+      [
+       0,
+       0.2,
+       0.15
+      ],
+      [
+       600,
+       0.4,
+       0.15
+      ]
+     ],
+     "tick": [
+      "LOW_TICK",
+      0.35
+     ],
+     "tick_interval_ms": 120,
+     "tier": "a3"
+    },
+    {
+     "composition": [
+      [
+       "LOW_TICK",
+       0.35,
+       0
+      ]
+     ],
+     "repeat_interval_ms": 120,
+     "tier": "a2"
+    },
+    {
+     "composition": [
+      [
+       "TICK",
+       0.35,
+       0
+      ]
+     ],
+     "repeat_interval_ms": 120,
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       100,
+       0
+      ],
+      "repeat": 0,
+      "timings": [
+       15,
+       135
+      ]
+     }
+    },
+    {
+     "interval_ms": 250,
+     "on_ms": 25,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L1_L2",
+   "essential": true,
+   "fallback": {
+    "a0_interval_ms": 250,
+    "a0_ms": 25,
+    "amp": 100,
+    "ms": 15,
+    "tick_interval_ms": 150
+   },
+   "ios": {
+    "intensity_follows_event": true,
+    "intensity_from": 0.2,
+    "intensity_to": 0.4,
+    "ramp_ms": 600,
+    "sharpness": 0.15,
+    "tick_intensity": 0.3,
+    "tick_interval_ms": 110,
+    "tick_sharpness": 0.2,
+    "type": "continuous"
+   },
+   "priority": 6,
+   "sfx": {
+    "id": "counter_rotate",
+    "rhythm_from_haptic": true,
+    "variants": 6
+   }
+  },
+  "detector_trip": {
+   "android": {
+    "duration_ms": 140,
+    "pattern": [
+     140,
+     80,
+     140
+    ],
+    "primitive": "THUD",
+    "scale": 0.7
+   },
+   "android_chain": [
+    {
+     "envelope": [
+      [
+       0,
+       0.7,
+       0.3
+      ],
+      [
+       80,
+       0.7,
+       0.3
+      ],
+      [
+       81,
+       0.0,
+       0.3
+      ],
+      [
+       140,
+       0.0,
+       0.3
+      ],
+      [
+       141,
+       0.7,
+       0.3
+      ],
+      [
+       220,
+       0.7,
+       0.3
+      ],
+      [
+       221,
+       0.0,
+       0.3
+      ]
+     ],
+     "tier": "a3"
+    },
+    {
+     "composition": [
+      [
+       "THUD",
+       0.7,
+       0
+      ],
+      [
+       "THUD",
+       0.7,
+       140
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "composition": [
+      [
+       "CLICK",
+       0.8,
+       0
+      ],
+      [
+       "CLICK",
+       0.8,
+       140
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       220,
+       0,
+       220
+      ],
+      "timings": [
+       60,
+       80,
+       60
+      ]
+     }
+    },
+    {
+     "pattern_ms": [
+      60,
+      80,
+      60
+     ],
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L2",
+   "essential": true,
+   "fallback": {
+    "a0": "same on/off",
+    "amp": 220,
+    "ms": 60,
+    "pattern": [
+     60,
+     80,
+     60
+    ]
+   },
+   "ios": {
+    "bursts": [
+     {
+      "intensity": 0.7,
+      "ms": 80,
+      "sharpness": 0.3
+     },
+     {
+      "gap_ms": 60
+     },
+     {
+      "intensity": 0.7,
+      "ms": 80,
+      "sharpness": 0.3
+     }
+    ],
+    "type": "rhythmic"
+   },
+   "priority": 2,
+   "sfx": {
+    "id": "detector_trip",
+    "variants": 6
+   }
+  },
+  "drop": {
+   "android": {
+    "interval_ms": 50,
+    "primitive": "TICK",
+    "scale_from": 0.7,
+    "scale_to": 0.4
+   },
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "TICK",
+       0.7,
+       0
+      ],
+      [
+       "TICK",
+       0.6,
+       50
+      ],
+      [
+       "TICK",
+       0.5,
+       50
+      ],
+      [
+       "TICK",
+       0.4,
+       50
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       200,
+       0,
+       160,
+       0,
+       120
+      ],
+      "timings": [
+       12,
+       70,
+       12,
+       70,
+       12
+      ]
+     }
+    },
+    {
+     "on_ms": 60,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L2",
+   "essential": true,
+   "fallback": {
+    "a0_ms": 60,
+    "amp": 200,
+    "count": 3,
+    "interval_ms": 70,
+    "ms": 12
+   },
+   "ios": {
+    "count": [
+     3,
+     6
+    ],
+    "count_from_event": [
+     2,
+     6
+    ],
+    "intensity_from": 0.7,
+    "intensity_to": 0.4,
+    "interval_ms": 40,
+    "resistance_fade_ms": 200,
+    "sharpness": 0.6,
+    "type": "transient_burst"
+   },
+   "priority": 3,
+   "sfx": {
+    "id": "drop",
+    "variants": 6
+   }
+  },
+  "false_set": {
+   "android": {
+    "fallback_primitive": "TICK",
+    "fallback_scale": 0.2,
+    "primitive": "CLICK",
+    "scale": 0.85,
+    "second_delay_ms": 28,
+    "second_primitive": "LOW_TICK",
+    "second_scale": 0.25
+   },
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "CLICK",
+       0.85,
+       0
+      ],
+      [
+       "LOW_TICK",
+       0.25,
+       28
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "composition": [
+      [
+       "CLICK",
+       0.85,
+       0
+      ],
+      [
+       "TICK",
+       0.2,
+       28
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       240,
+       0,
+       70
+      ],
+      "timings": [
+       18,
+       40,
+       10
+      ]
+     }
+    },
+    {
+     "on_ms": 30,
+     "second_gap_ms": 150,
+     "second_on_ms": 25,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L2",
+   "essential": true,
+   "fallback": {
+    "a0_ms": 30,
+    "amp": 240,
+    "ms": 18,
+    "second_amp": 70,
+    "second_delay_ms": 40,
+    "second_ms": 10
+   },
+   "ios": {
+    "duration_ms": 20,
+    "intensity": 0.85,
+    "resistance_dip_factor": 0.35,
+    "resistance_dip_ms": 260,
+    "second_delay_ms": 28,
+    "second_intensity": 0.25,
+    "second_sharpness": 0.3,
+    "sharpness": 0.75,
+    "type": "transient_pair"
+   },
+   "priority": 5,
+   "sfx": {
+    "id": "false_set",
+    "variants": 6
+   }
+  },
+  "gate_align": {
+   "android": {
+    "fallback_primitive": "TICK",
+    "fallback_scale": 0.6,
+    "primitive": "CLICK",
+    "scale": 0.5
+   },
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "LOW_TICK",
+       0.6,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "composition": [
+      [
+       "CLICK",
+       0.5,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "composition": [
+      [
+       "TICK",
+       0.6,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       140
+      ],
+      "timings": [
+       15
+      ]
+     }
+    },
+    {
+     "on_ms": 25,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L2",
+   "essential": false,
+   "fallback": {
+    "a0_ms": 25,
+    "amp": 140,
+    "ms": 15
+   },
+   "ios": {
+    "duration_ms": 15,
+    "intensity": 0.5,
+    "resistance_dip_factor": 0.7,
+    "resistance_dip_ms": 60,
+    "sharpness": 0.4,
+    "type": "transient"
+   },
+   "priority": 9,
+   "sfx": {
+    "id": "gate_align",
+    "variants": 6
+   }
+  },
+  "near_shear": {
+   "android": {
+    "primitive": "QUICK_RISE",
+    "scale": 0.2
+   },
+   "android_chain": [
+    {
+     "envelope": [
+      [
+       0,
+       0.3,
+       0.45
+      ],
+      [
+       150,
+       0.3,
+       0.45
+      ],
+      [
+       450,
+       0.3,
+       0.3
+      ]
+     ],
+     "tier": "a3"
+    },
+    {
+     "composition": [
+      [
+       "QUICK_RISE",
+       0.2,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "composition": [
+      [
+       "TICK",
+       0.12,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "resistance_amp_boost_pct": 20,
+     "tier": "a1"
+    },
+    {
+     "skip": true,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L1",
+   "essential": false,
+   "fallback": {
+    "resistance_amp_boost_pct": 20
+   },
+   "ios": {
+    "duration_ms": 150,
+    "entry_tick_intensity": 0.12,
+    "entry_tick_once_per_window": true,
+    "entry_tick_sharpness": 0.8,
+    "sharpness_boost": 0.15,
+    "type": "continuous_mod"
+   },
+   "priority": 11,
+   "sfx": {
+    "hp_shift_hz": 600,
+    "id": "near_shear",
+    "layer": "L1_filter",
+    "variants": 6
+   }
+  },
+  "open": {
+   "android": {
+    "primitive": "SLOW_RISE",
+    "scale": 0.3,
+    "second_primitive": "CLICK",
+    "second_scale": 1.0
+   },
+   "android_chain": [
+    {
+     "envelope": [
+      [
+       0,
+       0.0,
+       0.4
+      ],
+      [
+       300,
+       0.3,
+       0.4
+      ]
+     ],
+     "then": [
+      "CLICK",
+      1.0
+     ],
+     "tier": "a3"
+    },
+    {
+     "composition": [
+      [
+       "SLOW_RISE",
+       0.3,
+       0
+      ],
+      [
+       "CLICK",
+       1.0,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "composition": [
+      [
+       "CLICK",
+       1.0,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       60,
+       255
+      ],
+      "timings": [
+       300,
+       30
+      ]
+     }
+    },
+    {
+     "on_ms": 50,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L2",
+   "essential": true,
+   "fallback": {
+    "a0_ms": 50,
+    "amp": 255,
+    "ms": 30
+   },
+   "ios": {
+    "ramp_from": 0.0,
+    "ramp_ms": 300,
+    "ramp_to": 0.3,
+    "transient_intensity": 1.0,
+    "transient_sharpness": 0.6,
+    "type": "continuous_ramp_then_transient"
+   },
+   "priority": 1,
+   "sfx": {
+    "id": "open",
+    "variants": 6
+   }
+  },
+  "overset": {
+   "android": {
+    "fallback_primitive": "CLICK",
+    "fallback_scale": 0.4,
+    "primitive": "THUD",
+    "scale": 0.6
+   },
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "THUD",
+       0.6,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "composition": [
+      [
+       "CLICK",
+       0.4,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       160
+      ],
+      "timings": [
+       25
+      ]
+     }
+    },
+    {
+     "on_ms": 30,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L2",
+   "essential": false,
+   "fallback": {
+    "a0_ms": 30,
+    "amp": 160,
+    "ms": 25
+   },
+   "ios": {
+    "dead_resistance": true,
+    "duration_ms": 25,
+    "intensity": 0.6,
+    "resistance_sharpness_to": 0.05,
+    "sharpness": 0.1,
+    "type": "transient"
+   },
+   "priority": 7,
+   "sfx": {
+    "id": "overset",
+    "mute_element_l1": true,
+    "variants": 6
+   }
+  },
+  "set": {
+   "android": {
+    "primitive": "CLICK",
+    "scale": 0.9
+   },
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "CLICK",
+       0.9,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       255
+      ],
+      "timings": [
+       18
+      ]
+     }
+    },
+    {
+     "effect": "EFFECT_CLICK",
+     "tier": "a1"
+    },
+    {
+     "on_ms": 30,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L2",
+   "essential": true,
+   "fallback": {
+    "a0_ms": 30,
+    "amp": 255,
+    "ms": 18
+   },
+   "ios": {
+    "duration_ms": 20,
+    "intensity": 0.9,
+    "resistance_dip_factor": 0.5,
+    "resistance_dip_ms": 110,
+    "sharpness": 0.85,
+    "type": "transient"
+   },
+   "priority": 5,
+   "sfx": {
+    "id": "set",
+    "variants": 6
+   }
+  },
+  "stress": {
+   "android": {
+    "primitive": "TICK",
+    "scale": 0.3,
+    "tick_interval_ms": 80
+   },
+   "android_chain": [
+    {
+     "envelope": [
+      [
+       0,
+       0.3,
+       0.85
+      ],
+      [
+       400,
+       0.55,
+       0.9
+      ]
+     ],
+     "tick": [
+      "TICK",
+      0.3
+     ],
+     "tick_interval_ms": 80,
+     "tier": "a3"
+    },
+    {
+     "composition": [
+      [
+       "TICK",
+       0.3,
+       0
+      ]
+     ],
+     "repeat_interval_ms": 80,
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       90,
+       0
+      ],
+      "repeat": 0,
+      "timings": [
+       10,
+       110
+      ]
+     }
+    },
+    {
+     "skip": true,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L1",
+   "essential": false,
+   "fallback": {
+    "amp": 90,
+    "ms": 10,
+    "tick_interval_ms": 120
+   },
+   "ios": {
+    "after_cap_tick_interval_ms": 140,
+    "high_threshold": 0.9,
+    "intensity_boost": [
+     0.1,
+     0.35
+    ],
+    "sharpness": 0.85,
+    "sustain_cap_ms": 4000,
+    "tick_intensity": 0.2,
+    "tick_interval_ms": 70,
+    "tick_interval_ms_high": 45,
+    "tick_sharpness": 0.9,
+    "type": "continuous_mod"
+   },
+   "priority": 8,
+   "sfx": {
+    "id": "stress",
+    "pitch_from_event": [
+     1.0,
+     1.08
+    ],
+    "variants": 6
+   }
+  },
+  "wear": {
+   "android": {
+    "primitive": "none"
+   },
+   "audio_layer": "L4",
+   "essential": false,
+   "fallback": {
+    "amp": 0,
+    "ms": 0
+   },
+   "ios": {
+    "type": "none"
+   },
+   "priority": 15,
+   "sfx": {
+    "id": "wear",
+    "in_lock": false,
+    "layer": "L4",
+    "variants": 6
+   }
+  }
+ },
+ "families": {
+  "lever": {
+   "delta_sharpness": -0.1,
+   "false_set_second_delay_ms": 40,
+   "intensity_scale": 1.1,
+   "material": "brass"
+  },
+  "lever_detector": {
+   "delta_sharpness": -0.1,
+   "false_set_second_delay_ms": 40,
+   "intensity_scale": 1.1,
+   "material": "brass"
+  },
+  "pin_tumbler": {
+   "delta_sharpness": 0.0,
+   "false_set_second_delay_ms": 28,
+   "intensity_scale": 1.0,
+   "material": "brass"
+  },
+  "ring_combo": {
+   "delta_sharpness": 0.0,
+   "events_scaled_by_gate_feel": true,
+   "false_set_second_delay_ms": 28,
+   "intensity_scale": 0.9,
+   "material": "brass"
+  },
+  "wafer": {
+   "delta_sharpness": 0.05,
+   "intensity_scale": 0.85,
+   "material": "brass"
+  },
+  "warded": {
+   "delta_sharpness": 0.0,
+   "intensity_scale": 1.0,
+   "material": "iron"
+  },
+  "wooden_pin": {
+   "delta_sharpness": 0.0,
+   "intensity_scale": 1.0,
+   "material": "wood",
+   "no_break": true
+  }
+ },
+ "feel_version": 2,
+ "material_modifiers": {
+  "brass": {
+   "delta_sharpness": 0.0,
+   "intensity_scale": 1.0
+  },
+  "iron": {
+   "delta_sharpness": -0.1,
+   "intensity_scale": 1.1
+  },
+  "steel": {
+   "delta_sharpness": 0.1,
+   "intensity_scale": 1.05
+  },
+  "wood": {
+   "delta_sharpness": -0.25,
+   "intensity_scale": 0.9
+  }
+ },
+ "mix_rules": {
+  "av_sync_max_ms": 15,
+  "ducking": {
+   "audio_duck_db": -6,
+   "audio_duck_ms": 50,
+   "factor": 0.3,
+   "hold_ms": 35,
+   "release_ms": 60,
+   "transient_prio_max": 10
+  },
+  "interrupt_priority_max": 3,
+  "min_transient_gap_ms": {
+   "calibrated_blur": 150,
+   "calibrated_two_clicks": 40,
+   "default": 60
+  },
+  "onset_max_ms": 2,
+  "per_element_gap_ms": 30,
+  "route_sub_events_before_coalesce": true,
+  "sfx_no_immediate_repeat": true,
+  "sfx_voice_limit": 16,
+  "transient_limit_per_s": {
+   "a0": 3,
+   "a1": 6,
+   "android_a2_a4": 12,
+   "ios": 25
+  }
+ },
+ "schema": "lockwright.haptics/1",
+ "source": "docs/TECH.md §3.2-3.5, docs/FEEL.md (patch F-1)",
+ "sub_events": {
+  "detector.reset": {
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "QUICK_FALL",
+       0.4,
+       0
+      ],
+      [
+       "LOW_TICK",
+       0.25,
+       120
+      ],
+      [
+       "LOW_TICK",
+       0.25,
+       80
+      ],
+      [
+       "LOW_TICK",
+       0.25,
+       60
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "composition": [
+      [
+       "TICK",
+       0.3,
+       120
+      ],
+      [
+       "TICK",
+       0.3,
+       80
+      ],
+      [
+       "TICK",
+       0.3,
+       60
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       120,
+       0,
+       100,
+       0,
+       80
+      ],
+      "timings": [
+       12,
+       110,
+       12,
+       70,
+       12
+      ]
+     }
+    },
+    {
+     "on_ms": 40,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L2",
+   "base": "drop",
+   "essential": true,
+   "ios": {
+    "continuous": {
+     "intensity_from": 0.3,
+     "intensity_to": 0.0,
+     "ms": 350,
+     "sharpness": 0.2
+    },
+    "transients": [
+     [
+      120,
+      0.25,
+      0.3
+     ],
+     [
+      200,
+      0.25,
+      0.3
+     ],
+     [
+      260,
+      0.25,
+      0.3
+     ]
+    ],
+    "type": "continuous_then_transients"
+   },
+   "priority": 3,
+   "sfx": {
+    "count": 3,
+    "id": "lever_fall",
+    "interval_ms": [
+     120,
+     80,
+     60
+    ],
+    "variants": 6
+   }
+  },
+  "lever.false_gate": {
+   "android_chain": [
+    {
+     "folded": true,
+     "tier": "a2"
+    }
+   ],
+   "audio_layer": "L2",
+   "base": "false_set",
+   "essential": true,
+   "fold_into": "false_set.second",
+   "ios": {
+    "type": "folded"
+   },
+   "priority": 5,
+   "sfx": {
+    "delay_ms": 40,
+    "id": "lever_fall",
+    "variants": 6
+   }
+  },
+  "pin.serration": {
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "TICK",
+       0.2,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       50
+      ],
+      "timings": [
+       8
+      ]
+     }
+    },
+    {
+     "skip": true,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L2",
+   "base": "false_set",
+   "ducks_resistance": false,
+   "essential": false,
+   "ios": {
+    "duration_ms": 8,
+    "intensity": 0.18,
+    "sharpness": 0.9,
+    "type": "transient"
+   },
+   "priority": 11,
+   "sfx": {
+    "gain_db": -6,
+    "id": "ratchet",
+    "variants": 6
+   }
+  },
+  "pin.spring_bounce": {
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "TICK",
+       0.12,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "skip": true,
+     "tier": "a1"
+    }
+   ],
+   "audio_layer": "L2",
+   "base": "contact",
+   "ducks_resistance": false,
+   "essential": false,
+   "ios": {
+    "duration_ms": 10,
+    "intensity": 0.12,
+    "sharpness": 0.55,
+    "type": "transient"
+   },
+   "priority": 12,
+   "sfx": {
+    "id": "spring",
+    "variants": 6
+   }
+  },
+  "ring.detent": {
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "TICK",
+       0.22,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "effect": "EFFECT_TICK",
+     "tier": "a1"
+    },
+    {
+     "skip": true,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L2",
+   "base": "contact",
+   "ducks_resistance": false,
+   "essential": false,
+   "haptic_limit_per_s": {
+    "a0": 0,
+    "a1": 4,
+    "android_a2_a4": 8,
+    "ios": 12
+   },
+   "ios": {
+    "duration_ms": 10,
+    "intensity": 0.22,
+    "sharpness": 0.65,
+    "type": "transient"
+   },
+   "priority": 12,
+   "sfx": {
+    "audio_limit_per_s": 25,
+    "id": "ring_detent",
+    "variants": 6
+   }
+  },
+  "wafer.rattle": {
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "TICK",
+       0.1,
+       0
+      ]
+     ],
+     "tier": "a2"
+    },
+    {
+     "skip": true,
+     "tier": "a1"
+    }
+   ],
+   "audio_layer": "L2",
+   "base": "contact",
+   "ducks_resistance": false,
+   "essential": false,
+   "haptic_limit_per_s": 6,
+   "ios": {
+    "duration_ms": 8,
+    "intensity": 0.1,
+    "sharpness": 0.8,
+    "type": "transient"
+   },
+   "priority": 12,
+   "sfx": {
+    "gain_db": -4,
+    "id": "contact",
+    "pitch": 1.08,
+    "variants": 6
+   }
+  },
+  "ward.scrape": {
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "TICK",
+       0.18,
+       0
+      ]
+     ],
+     "repeat_interval_ms": 100,
+     "tier": "a2"
+    },
+    {
+     "effect": "EFFECT_TICK",
+     "limit_per_s": 5,
+     "tier": "a1"
+    },
+    {
+     "skip": true,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L1",
+   "base": "contact",
+   "ducks_resistance": false,
+   "essential": false,
+   "haptic_limit_per_s": 10,
+   "ios": {
+    "channel": "pick_drag",
+    "sharpness_boost": 0.1,
+    "tick_intensity": 0.15,
+    "tick_interval_ms": 60,
+    "tick_sharpness": 0.6,
+    "type": "continuous_mod"
+   },
+   "priority": 12,
+   "sfx": {
+    "id": "ward_scrape",
+    "variants": 6
+   }
+  },
+  "wood.creak": {
+   "android_chain": [
+    {
+     "composition": [
+      [
+       "LOW_TICK",
+       0.25,
+       0
+      ]
+     ],
+     "repeat_interval_ms": 160,
+     "tier": "a2"
+    },
+    {
+     "composition": [
+      [
+       "TICK",
+       0.2,
+       0
+      ]
+     ],
+     "repeat_interval_ms": 160,
+     "tier": "a2"
+    },
+    {
+     "tier": "a1",
+     "waveform": {
+      "amps": [
+       80,
+       0
+      ],
+      "repeat": 0,
+      "timings": [
+       12,
+       148
+      ]
+     }
+    },
+    {
+     "skip": true,
+     "tier": "a0"
+    }
+   ],
+   "audio_layer": "L1",
+   "base": "stress",
+   "essential": false,
+   "ios": {
+    "intensity_boost": [
+     0.05,
+     0.2
+    ],
+    "sharpness": 0.25,
+    "tick_intensity": 0.15,
+    "tick_interval_ms": 140,
+    "tick_sharpness": 0.2,
+    "type": "continuous_mod"
+   },
+   "priority": 8,
+   "sfx": {
+    "id": "stress",
+    "material": "wood",
+    "pitch": 0.8,
+    "variants": 6
+   }
+  }
+ }
 }
