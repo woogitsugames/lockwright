@@ -8,3 +8,4 @@
 | `G14-v2.md` | Rekwizyty: bez napisów „fikcyjny”, z fakturą papieru |
 | `G10-v2.md` | Zeszyt: fotorealistyczny wygląd stron |
 | `T10-v2.md` | Osiągnięcia: usuń nazwę marki |
+| `G05-v2.md` | Posadzki: fotorealistyczne, nie proceduralne |
