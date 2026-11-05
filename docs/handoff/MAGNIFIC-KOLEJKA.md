@@ -237,3 +237,4 @@ Marcel, 29, courier with a hand trolley of parcels, high-visibility vest without
 ```
 a fast-talking man in his forties in a neat suit, polite smile, holding out an envelope (no money visible), photorealistic portrait photograph, head and shoulders, natural soft window light in an old Central European tenement stairwell, warm tones, shallow depth of field, everyday clothes, no logos, no text, fictional person, not resembling any celebrity
 ```
+- (sesja A) Widoki optyczne `microscope_view` i `borescope_view` oraz packshoty: do ponownego renderu z materiałami ze zdjęć (metal za lustrzany, blat `bench_beech_top`) po zakończeniu przebiegu materiałów w `cutaway.py`.
