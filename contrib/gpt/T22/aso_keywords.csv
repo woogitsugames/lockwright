@@ -1,0 +1,56 @@
+﻿locale,record_type,id,cluster,text,unicode_chars,utf8_bytes,priority,usage_status,notes
+pl-PL,appstore_keywords,primary,mixed,"ślusarz,wytrych,wkładka,łamigłówka,mechanizm,haptyka,rzemiosło,relaks,warsztat,symulator",88,94,P1,proposed,"Copy-ready field, limit 100 UTF-8 bytes; Ślusarz i wytrych kotwiczą zawód oraz czynność; wkładka i mechanizm zawężają intencję do mechaniki, nie zamków-budowli; łamigłówka i symulator opisują gatunek, haptyka jest wyróżnikiem, a relaks i warsztat poszerzają zasięg bez sensacji."
+pl-PL,google_play_short,primary,mixed,"Spokojne łamigłówki ślusarskie. Dwa kciuki, dźwięk i mechanika.",63,69,P1,proposed,"Copy-ready short description, limit 80 Unicode characters; confirm product scope before publication."
+pl-PL,description_opening,A,mechanics,"To nie siła otwiera te wymyślone zamki, lecz cierpliwość. Obserwuj mechanizm, słuchaj kliknięć i wyczuwaj opór.",111,119,P1,test_variant,Suggested control
+pl-PL,description_opening,B,ethics_jobs,"Ktoś czeka przed drzwiami własnego mieszkania. Zanim pomożesz, sprawdzasz, czy rzeczywiście ma prawo wejść.",107,113,P2,conditional_post_mvp,Only after jobs and client authorization are implemented
+pl-PL,description_opening,C,cozy,"W cichym warsztacie nawet drobny klik ma znaczenie. Poznaj łamigłówki, w których liczą się słuch, dotyk i spokojne tempo.",121,128,P2,test_variant,Test against A at MVP
+pl-PL,search_phrase,q01,mechanika,gra o otwieraniu zamków,23,24,P1,qualitative_hypothesis,Propozycja zapytania szerokiego; sprawdzić udział intencji fantasy/escape room.
+pl-PL,search_phrase,q02,puzzle,łamigłówki mechaniczne,22,25,P1,qualitative_hypothesis,Blisko mechanicznego rdzenia gry; termin występuje w polskich opisach puzzli.
+pl-PL,search_phrase,q03,zawód,symulator ślusarza,18,19,P1,qualitative_hypothesis,Zgodny z rolą bohatera; narracyjne zlecenia są po MVP.
+pl-PL,search_phrase,q04,mechanika,gra z wytrychem,15,15,P2,qualitative_hypothesis,"Dobre dopasowanie mechaniki, lecz kontrolować skojarzenia z poradnikami."
+pl-PL,search_phrase,q05,cozy,spokojna gra logiczna,21,21,P2,qualitative_hypothesis,"Hipoteza segmentu spokojnej rozgrywki, bez dowodu wolumenu."
+pl-PL,search_phrase,q06,zmysły,gra na wyczucie,15,15,P2,qualitative_hypothesis,Podkreśla zmysłowy interfejs; w App Store pokrywa go podtytuł.
+en-US,appstore_keywords,primary,mixed,"lockpicking,craft,puzzle,simulator,haptic,tactile,mechanism,workshop,pin,tumbler,cozy,precision",95,95,P1,proposed,"Copy-ready field, limit 100 UTF-8 bytes; Lockpicking i puzzle to rdzeń odkrywalności gatunkowej; simulator i craft kierują do graczy lubiących fach oraz proces; haptic/tactile/pin/tumbler precyzują mechanikę; cozy pozostaje dodatkową hipotezą, nie jedyną obietnicą."
+en-US,google_play_short,primary,mixed,"A calm locksmith puzzle. Explore mechanisms by touch, sound and sight.",70,70,P1,proposed,"Copy-ready short description, limit 80 Unicode characters; confirm product scope before publication."
+en-US,description_opening,A,mechanics,"These fictional locks reward patience, not force. Read the mechanism, listen for the click and feel the resistance.",115,115,P1,test_variant,Suggested control
+en-US,description_opening,B,ethics_jobs,"Someone is locked out of their own home. You can help, but first you must make sure they have the right to enter.",113,113,P2,conditional_post_mvp,Only after jobs and client authorization are implemented
+en-US,description_opening,C,cozy,"In a quiet workshop, a tiny click can say a lot. Take your time with careful, tactile mechanical puzzles.",105,105,P2,test_variant,Test against A at MVP
+en-US,search_phrase,q01,mechanics,lockpicking puzzle,18,18,P1,qualitative_hypothesis,Wyrażenie kategorii widoczne w porównywalnych opisach; nie oznacza realnego instruktażu.
+en-US,search_phrase,q02,profession,locksmith simulator,19,19,P1,qualitative_hypothesis,Odróżnia legalną usługę od narracji heist; funkcje zleceń po MVP.
+en-US,search_phrase,q03,puzzle,mechanical puzzle game,22,22,P1,qualitative_hypothesis,"Szeroka, ale spójna intencja gatunkowa."
+en-US,search_phrase,q04,feel,haptic puzzle,13,13,P2,qualitative_hypothesis,Cecha różnicująca; sprzęt i wdrożenie trzeba potwierdzić.
+en-US,search_phrase,q05,cozy,calm puzzle game,16,16,P2,qualitative_hypothesis,Test segmentu spokojnego grania; nie twierdzenie o wolumenie.
+en-US,search_phrase,q06,feel,precision game,14,14,P3,qualitative_hypothesis,Hipoteza niskiej precyzji wyszukiwania; do sprawdzenia.
+de-DE,appstore_keywords,primary,mixed,"schlüsseldienst,schlossrätsel,dietrich,mechanik,haptik,handwerk,werkstatt,knobeln,simulation",92,94,P1,proposed,"Copy-ready field, limit 100 UTF-8 bytes; Schlüsseldienst to legalna usługa, a Schlossrätsel wskazuje na zagadkę zamiast na zamki jako budowle; Dietrich jest nazwą ogólną narzędzia; Mechanik/Haptik opisują pętlę, Handwerk/Werkstatt budują ton fachu. Unikamy obietnicy praktycznej nauki otwierania."
+de-DE,google_play_short,primary,mixed,Ruhige Schlossrätsel: Spüre den Widerstand und höre auf jedes Klicken.,70,73,P1,proposed,"Copy-ready short description, limit 80 Unicode characters; confirm product scope before publication."
+de-DE,description_opening,A,mechanics,"Diese erfundenen Schlösser öffnen sich nicht mit Gewalt. Beobachte die Mechanik, höre auf das Klicken und spüre den Widerstand.",127,131,P1,test_variant,Suggested control
+de-DE,description_opening,B,ethics_jobs,"Jemand steht vor der eigenen verschlossenen Tür. Du hilfst erst, wenn feststeht, dass die Person hinein darf.",109,110,P2,conditional_post_mvp,Only after jobs and client authorization are implemented
+de-DE,description_opening,C,cozy,In einer stillen Werkstatt sagt ein leises Klicken oft alles. Nimm dir Zeit für mechanische Rätsel und sorgfältiges Handwerk.,125,128,P2,test_variant,Test against A at MVP
+de-DE,search_phrase,q01,puzzle,Schlossrätsel,13,14,P1,qualitative_hypothesis,Złożenie określa zamek-mechanizm w kontekście łamigłówki.
+de-DE,search_phrase,q02,profession,Schlüsseldienst Spiel,21,22,P1,qualitative_hypothesis,Szukający symulatora zawodu; zlecenia po MVP.
+de-DE,search_phrase,q03,puzzle,mechanisches Rätsel,19,20,P1,qualitative_hypothesis,Gatunek odpowiadający przekrojom i precyzji.
+de-DE,search_phrase,q04,cozy,ruhiges Denkspiel,17,17,P2,qualitative_hypothesis,Spokojny nurt bez etykiety heist.
+de-DE,search_phrase,q05,profession,Handwerk Simulation,19,19,P2,qualitative_hypothesis,Szeroki segment gier o pracy ręcznej.
+de-DE,search_phrase,q06,mechanics,Dietrich Spiel,14,14,P2,qualitative_hypothesis,Termin związany z mechaniką; nie oferować instrukcji do prawdziwych zamków.
+fr-FR,appstore_keywords,primary,mixed,"serrurier,serrure,énigme,casse-tête,mécanique,tactile,atelier,artisanat,détente,simulation",90,94,P1,proposed,"Copy-ready field, limit 100 UTF-8 bytes; Serrurier i serrure określają legalny zawód i obiekt; énigme/casse-tête kierują do gatunku; mécanique/tactile do sensorycznej mechaniki; atelier/artisanat/détente wzmacniają spokojny, rzemieślniczy charakter."
+fr-FR,google_play_short,primary,mixed,"Des énigmes de serrurier à résoudre par le toucher, l'écoute et l'observation.",78,82,P1,proposed,"Copy-ready short description, limit 80 Unicode characters; confirm product scope before publication."
+fr-FR,description_opening,A,mechanics,"Ces serrures imaginaires ne cèdent pas à la force. Observez le mécanisme, écoutez les clics et sentez la résistance.",116,121,P1,test_variant,Suggested control
+fr-FR,description_opening,B,ethics_jobs,"Quelqu'un ne peut plus rentrer chez soi. Avant d'aider, vous vérifiez que la personne a le droit d'entrer.",106,107,P2,conditional_post_mvp,Only after jobs and client authorization are implemented
+fr-FR,description_opening,C,cozy,"Dans un atelier calme, un petit clic peut tout changer. Prenez votre temps avec des casse-têtes mécaniques.",107,109,P2,test_variant,Test against A at MVP
+fr-FR,search_phrase,q01,profession,jeu de serrurier,16,16,P1,qualitative_hypothesis,"Prosta nazwa gatunku, do potwierdzenia na danych wyszukiwarki."
+fr-FR,search_phrase,q02,puzzle,casse-tête mécanique,20,22,P1,qualitative_hypothesis,Podkreśla rozumowanie o mechanizmach.
+fr-FR,search_phrase,q03,puzzle,énigme de serrure,17,18,P1,qualitative_hypothesis,Wąska hipoteza niszowa.
+fr-FR,search_phrase,q04,feel,jeu tactile,11,11,P2,qualitative_hypothesis,Skojarzenie ze sterowaniem przez dotyk.
+fr-FR,search_phrase,q05,cozy,jeu relaxant,12,12,P2,qualitative_hypothesis,"Test spokojnego tonu, nie twierdzenie o dynamice pobrań."
+fr-FR,search_phrase,q06,profession,simulation d'artisan,20,20,P3,qualitative_hypothesis,Fraza szeroka; sprawdzić trafność przed inwestycją.
+es-ES,appstore_keywords,primary,mixed,"cerrajero,cerradura,rompecabezas,acertijo,mecánica,táctil,taller,oficio,relajante,simulador",91,93,P1,proposed,"Copy-ready field, limit 100 UTF-8 bytes; Cerrajero/cerradura i oficio/taller podkreślają uczciwą pracę; rompecabezas/acertijo obejmują dwa rejestry zagadek; mecánica/táctil zaznaczają mechanizm; relajante kieruje do graczy szukających spokojnego tempa. Rompecabezas jest szeroko rozumiane poza Hiszpanią, puzles naturalniejsze w es-ES."
+es-ES,google_play_short,primary,mixed,Puzles de cerrajería: siente cada mecanismo y escucha sus clics.,64,65,P1,proposed,"Copy-ready short description, limit 80 Unicode characters; confirm product scope before publication."
+es-ES,description_opening,A,mechanics,"Estas cerraduras imaginarias no se abren por la fuerza. Observa el mecanismo, escucha el clic y siente su resistencia.",118,118,P1,test_variant,Suggested control
+es-ES,description_opening,B,ethics_jobs,"Alguien se ha quedado fuera de su propia casa. Antes de ayudar, compruebas que tiene derecho a entrar.",102,102,P2,conditional_post_mvp,Only after jobs and client authorization are implemented
+es-ES,description_opening,C,cozy,"En un taller tranquilo, un pequeño clic lo dice todo. Disfruta de puzles mecánicos a tu ritmo.",94,96,P2,test_variant,Test against A at MVP
+es-ES,search_phrase,q01,profession,juego de cerrajero,18,18,P1,qualitative_hypothesis,"Intencja gry o fachu, a nie kursu otwierania rzeczywistych zamków."
+es-ES,search_phrase,q02,puzzle,rompecabezas de cerraduras,26,26,P1,qualitative_hypothesis,Opisowa dłuższa fraza logiczna.
+es-ES,search_phrase,q03,puzzle,puzles mecánicos,16,17,P1,qualitative_hypothesis,Formuła naturalna dla Hiszpanii; sprawdzić wariant LatAm.
+es-ES,search_phrase,q04,cozy,juego relajante,15,15,P2,qualitative_hypothesis,"Segment odpoczynku, bez obietnic medycznych."
+es-ES,search_phrase,q05,profession,simulador de cerrajería,23,24,P2,qualitative_hypothesis,Niszowy opis symulatora zawodu.
+es-ES,search_phrase,q06,feel,juego táctil,12,13,P2,qualitative_hypothesis,Test wyróżnika sterowania dotykowego.
