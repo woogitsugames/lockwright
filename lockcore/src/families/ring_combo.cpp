@@ -15,6 +15,11 @@
 // 1-4, ids / seeds / event names of their own, and the sleeve slip: a bound wheel
 // spun faster than slip_speed skips its notch (`combo.slip`, base overset) until
 // it is turned slowly again. ring_combo behaviour, specs and hashes are unchanged.
+//
+// disc_detainer (v0.6, D-59, LOCKS.md §2.21): third flavour. Discs under core
+// torque, turned both ways by pick_lift, 8 detent positions, tiers 1-3, and the
+// over-turn: a set disc turned harder than overturn_speed leaves its gate
+// (`disc.overturn`, base overset) and has to be brought back.
 #include "lockcore/ring_combo.hpp"
 
 #include <algorithm>
@@ -70,20 +75,24 @@ const Params& params_of(const LockSpec& spec) { return static_cast<const Params&
 
 class Module final : public FamilyModule {
  public:
-  explicit Module(bool combo) : combo_(combo) {}
+  enum class Kind : std::uint8_t { ring, combo, disc };
+  explicit Module(Kind kind) : kind_(kind), combo_(kind == Kind::combo), disc_(kind == Kind::disc) {}
 
-  std::string_view id() const override { return combo_ ? COMBO_FAMILY_ID : FAMILY_ID; }
-  std::int32_t rules_version() const override { return combo_ ? COMBO_RULES_VERSION : RULES_VERSION; }
-  std::uint32_t input_mask() const override {
-    return AXIS_TENSION | AXIS_DEPTH | (combo_ ? AXIS_LIFT : AXIS_ROTATE);
+  std::string_view id() const override { return combo_ ? COMBO_FAMILY_ID : (disc_ ? DISC_FAMILY_ID : FAMILY_ID); }
+  std::int32_t rules_version() const override {
+    return combo_ ? COMBO_RULES_VERSION : (disc_ ? DISC_RULES_VERSION : RULES_VERSION);
   }
-  ToolSet required_tools(const LockSpec&) const override { return ToolSet{TOOL_SHACKLE_PULLER}; }
+  std::uint32_t input_mask() const override {
+    return AXIS_TENSION | AXIS_DEPTH | (kind_ == Kind::ring ? AXIS_ROTATE : AXIS_LIFT);
+  }
+  ToolSet required_tools(const LockSpec&) const override { return ToolSet{disc_ ? TOOL_DISC_PICK : TOOL_SHACKLE_PULLER}; }
 
-  int min_tier() const override { return combo_ ? 1 : 2; }
+  int min_tier() const override { return kind_ == Kind::ring ? 2 : 1; }
   int max_tier() const override { return combo_ ? 4 : 3; }
 
   DifficultyVector difficulty_for_tier(int tier) const override {
     if (combo_) return combo_difficulty(tier);
+    if (disc_) return disc_difficulty(tier);
     // LOCKS.md §2.3: 3->5 rings, gate_feel 0.8->0.35 (noise = 1 - gate_feel),
     // false notches from t3 (sec = false gates per ring).
     const int t = std::clamp(tier, 2, 3);
@@ -115,7 +124,7 @@ class Module final : public FamilyModule {
 
   std::vector<SpecError> validate(const LockSpec& spec) const override {
     std::vector<SpecError> e;
-    if (spec.family != id()) e.push_back({"family", combo_ ? "not combo" : "not ring_combo"});
+    if (spec.family != id()) e.push_back({"family", "not " + std::string(id())});
     const auto* pp = dynamic_cast<const Params*>(spec.params.get());
     if (pp == nullptr) {
       e.push_back({"spec", "missing or foreign parameters"});
@@ -136,6 +145,7 @@ class Module final : public FamilyModule {
       e.push_back({"spec.rot_speed_q16", "speeds must be > 0 and below half a digit per step"});
     if (P.slip_speed < 0 || (P.slip_speed > 0 && P.slip_speed <= P.bound_rot_speed))
       e.push_back({"spec.slip_speed_q16", "need 0 (off) or above bound_rot_speed"});
+    if (P.overturn_speed < 0) e.push_back({"spec.overturn_speed_q16", "negative"});
     for (int i = 0; i < n; ++i) {
       const Ring& r = P.rings[static_cast<std::size_t>(i)];
       const std::string path = "spec.rings[" + std::to_string(i) + "]";
@@ -172,7 +182,7 @@ class Module final : public FamilyModule {
     if (pick >= 0 && pick != S.pick) out.emit(t, EventKind::contact, pick, q_mul(material_hardness(S.material), q16_milli(600)), S.material);
     S.pick = pick;
     S.tension = T;
-    const q16 spin = combo_ ? in.pick_lift : in.rotate;
+    const q16 spin = kind_ == Kind::ring ? in.rotate : in.pick_lift;
     S.rotate = spin;
 
     // Letting go of the shackle: set flags are lost, positions stay.
@@ -258,6 +268,16 @@ class Module final : public FamilyModule {
       bool blocked = false;
       switch (r.st) {
         case ElementState::set:
+          if (P.overturn_speed > 0 && q_mul(mag, P.rot_speed) > P.overturn_speed) {
+            // disc: turned hard past its gate, the disc leaves the sidebar.
+            r.st = ElementState::free;
+            r.near = false;
+            move = q_mul(mag, P.rot_speed);
+            out.emit(t, EventKind::overset, pick, q16_milli(700), S.material, SUB_OVERTURN);
+          } else {
+            blocked = mag > 0;
+          }
+          break;
         case ElementState::false_set: blocked = mag > 0; break;
         case ElementState::bound:
           if (T > P.t_stick(k)) {
@@ -441,6 +461,7 @@ class Module final : public FamilyModule {
     o.set("bound_rot_speed_q16", Value::integer(P.bound_rot_speed));
     o.set("snap_speed_q16", Value::integer(P.snap_speed));
     if (P.slip_speed > 0) o.set("slip_speed_q16", Value::integer(P.slip_speed));  // combo only
+    if (P.overturn_speed > 0) o.set("overturn_speed_q16", Value::integer(P.overturn_speed));  // disc only
     Value arr = Value::array();
     for (const Ring& r : P.rings) {
       Value ro = Value::object();
@@ -477,6 +498,7 @@ class Module final : public FamilyModule {
     q(v, "bound_rot_speed_q16", P->bound_rot_speed, path);
     q(v, "snap_speed_q16", P->snap_speed, path);
     if (v.find("slip_speed_q16") != nullptr) q(v, "slip_speed_q16", P->slip_speed, path);
+    if (v.find("overturn_speed_q16") != nullptr) q(v, "overturn_speed_q16", P->overturn_speed, path);
     const Value* arr = v.find("rings");
     if (arr == nullptr || !arr->is_array()) {
       errors.push_back({path + ".rings", "expected array"});
@@ -512,15 +534,43 @@ class Module final : public FamilyModule {
   }
 
   std::string_view event_name(std::uint16_t sub) const override {
-    if (sub == SUB_DETENT) return combo_ ? "combo.detent" : "ring.detent";
+    if (sub == SUB_DETENT) return combo_ ? "combo.detent" : (disc_ ? "disc.detent" : "ring.detent");
     if (sub == SUB_SLIP && combo_) return "combo.slip";
+    if (sub == SUB_OVERTURN && disc_) return "disc.overturn";
     return {};
   }
 
  private:
+  Kind kind_ = Kind::ring;
   bool combo_ = false;
+  bool disc_ = false;
 
-  void set_spin(InputFrame& in, q16 v) const { (combo_ ? in.pick_lift : in.rotate) = v; }
+  void set_spin(InputFrame& in, q16 v) const { (kind_ == Kind::ring ? in.rotate : in.pick_lift) = v; }
+
+  static DifficultyVector disc_difficulty(int tier) {
+    // new-families.md §4: 4 -> 6 discs, false notches from t2, narrower band;
+    // overset_margin = thumb deflection above which a set disc is over-turned.
+    const int t = std::clamp(tier, 1, 3);
+    DifficultyVector d;
+    d.tier = t;
+    static constexpr int n_lo[] = {4, 5, 5}, n_hi[] = {4, 5, 6}, sec_lo[] = {0, 0, 1}, sec_hi[] = {0, 1, 1};
+    static constexpr int band[] = {300, 260, 220}, noise[] = {200, 350, 500}, spread[] = {1000, 800, 600};
+    static constexpr int over[] = {600, 500, 450}, grace[] = {300, 250, 250}, limit[] = {90, 120, 150};
+    const std::size_t k = static_cast<std::size_t>(t - 1);
+    d.n_min = n_lo[k];
+    d.n_max = n_hi[k];
+    d.sec_min = sec_lo[k];
+    d.sec_max = sec_hi[k];
+    d.win_shear = GATE_WIN;
+    d.tension_band = q16_milli(band[k]);
+    d.overset_margin = q16_milli(over[k]);
+    d.noise = q16_milli(noise[k]);
+    d.bind_spread = q16_milli(spread[k]);
+    d.drop_grace_ms = grace[k];
+    d.s_max = Q16_ONE;  // unused
+    d.time_limit_s = limit[k];
+    return d;
+  }
 
   static DifficultyVector combo_difficulty(int tier) {
     // new-families.md §2: 3 -> 5 wheels, gate_feel 0.85 -> 0.4 (noise = 1 - gate_feel),
@@ -561,7 +611,7 @@ class Module final : public FamilyModule {
     Pcg32 rng(derive_seed(seed ^ splitmix64(attempt), id(), static_cast<std::uint32_t>(rules_version()), "gen"), derive_stream(id(), "gen"));
     auto P = std::make_shared<Params>();
     const int n = rng.range(d.n_min, d.n_max);
-    P->positions = 10;
+    P->positions = disc_ ? DISC_POSITIONS : 10;
     P->gate_win = d.win_shear;
     P->tension_band = d.tension_band;
     P->t_hold = T_HOLD;
@@ -571,6 +621,7 @@ class Module final : public FamilyModule {
     P->bound_rot_speed = BOUND_ROT_SPEED;
     P->snap_speed = SNAP_SPEED;
     if (combo_) P->slip_speed = q_mul(d.overset_margin, ROT_SPEED);  // slip above this thumb deflection
+    if (disc_) P->overturn_speed = q_mul(d.overset_margin, ROT_SPEED);
     P->rings.resize(static_cast<std::size_t>(n));
     std::vector<int> perm(static_cast<std::size_t>(n));
     for (int i = 0; i < n; ++i) perm[static_cast<std::size_t>(i)] = i;
@@ -604,7 +655,7 @@ class Module final : public FamilyModule {
     spec.source = "generated";
     spec.seed = seed;
     spec.difficulty = d;
-    spec.material = MaterialId::brass;
+    spec.material = disc_ ? MaterialId::steel : MaterialId::brass;
     spec.params = P;
     return spec;
   }
@@ -631,7 +682,7 @@ class Module final : public FamilyModule {
     q16 crept = 0;
     const q16 spin_in = clumsy ? q16_milli(900) : q16_milli(500);
     // combo: a clumsy hand still creeps below the slip threshold most of the time.
-    const q16 creep_in = clumsy ? (combo_ ? q16_milli(500) : q16_milli(700)) : q16_milli(300);
+    const q16 creep_in = clumsy ? (kind_ == Kind::ring ? q16_milli(700) : (disc_ ? q16_milli(400) : q16_milli(500))) : q16_milli(300);
     auto go = [&](Ph p, std::int64_t t) {
       ph = p;
       phase_t = t;
@@ -713,7 +764,7 @@ class Module final : public FamilyModule {
       in.pick_depth = hand_d;
       set_spin(in, rot);
       in = quantize(in);
-      const q16 spun = combo_ ? in.pick_lift : in.rotate;
+      const q16 spun = kind_ == Kind::ring ? in.rotate : in.pick_lift;
       if (ph == Ph::spin) est[ei] = wrap(static_cast<std::int64_t>(est[ei]) + q_mul(spun, P.rot_speed));
       if (ph == Ph::creep) crept += q_min(q_mul(spun, P.rot_speed), P.bound_rot_speed);
       const StepOutput& out = session.step(in);
@@ -884,7 +935,8 @@ class Module final : public FamilyModule {
 
 }  // namespace
 
-std::unique_ptr<FamilyModule> make_module() { return std::make_unique<Module>(false); }
-std::unique_ptr<FamilyModule> make_combo_module() { return std::make_unique<Module>(true); }
+std::unique_ptr<FamilyModule> make_module() { return std::make_unique<Module>(Module::Kind::ring); }
+std::unique_ptr<FamilyModule> make_combo_module() { return std::make_unique<Module>(Module::Kind::combo); }
+std::unique_ptr<FamilyModule> make_disc_module() { return std::make_unique<Module>(Module::Kind::disc); }
 
 }  // namespace lockcore::ring

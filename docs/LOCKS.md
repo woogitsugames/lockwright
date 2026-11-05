@@ -1194,6 +1194,44 @@ plus bit rzędu w `variant`.
 
 ---
 
+### 2.21 Zamek tarczowy — `disc_detainer`
+**PL:** Zamek tarczowy · **EN:** Disc Detainer Lock · **Tier:** t1–3 (lockcore v0.6) · **Faza:** D-59
+(zlecenie `job.finnish_sailor` t2). Research: `docs/research/new-families.md` §4.
+
+**Zasada.** Zamiast sprężyn obrotowe tarcze z wycięciami; klucz obraca je, aż wycięcia ustawią się pod listwą
+boczną, listwa wpada i rdzeń się obraca (konstrukcja fińska z 1907 r., poziom encyklopedyczny).
+
+**Logika zagadki.** Trzecia odmiana modułu `ring_combo` (`ring_combo.cpp`, `Kind::disc`):
+- `tension` = moment na rdzeń: listwa dociska tarcze, wiąże tarcza o najniższym przesunięciu (`bind`), obraca się
+  sztywno tylko do `t_stick` (za mocno = stoi, `pick_drag`).
+- `pick_depth` = która tarcza, `pick_lift` = **obrót tarczy w obie strony** (prędkość). 8 pozycji zapadki
+  (`disc.detent`), przyciąganie do najbliższej.
+- W bramce `gate_align` + `set` (listwa siada na tarczy), wiąże następna; fałszywe wycięcia od t2 (`false_set`,
+  trzymają do zwolnienia momentu poniżej `band_lo`).
+- **Przekręcenie (nowa lekcja):** delikatny obrót ustawionej tarczy jest blokowany (opór), ale obrót z wychyleniem
+  kciuka > 0,60 (t1) … > 0,45 (t3) wyrywa ją z bramki: `disc.overturn` (podstawa `overset`), tarcza wraca do gry
+  i trzeba ją doprowadzić z powrotem. Puszczenie momentu: tracą się tylko flagi `set` (pozycje zostają).
+- Brak łamania. Narzędzie: `TOOL_DISC_PICK` (napinacz-końcówka + obracak tarcz). Materiał: stal.
+
+| Tier | Tarcze | Pasmo | gate_feel | Fałszywe | Przekręcenie przy wychyleniu | Limit |
+|---|---|---|---|---|---|---|
+| t1 | 4 | 0,30 | 0,80 | 0 | > 0,60 | 90 s |
+| t2 | 5 | 0,26 | 0,65 | 0–1 | > 0,50 | 120 s |
+| t3 | 5–6 | 0,22 | 0,50 | 1 | > 0,45 | 150 s |
+
+(`overset_margin` w wektorze = próg wychylenia; w pliku zamka `overturn_speed_q16`, tylko dla tej rodziny.)
+
+**ViewModel.** `elements[i].position` = ułamek obrotu tarczy (pozycja = position × 8), okno bramki, `variant` =
+liczba fałszywych wycięć; stany jak `ring_combo`; `core_rotation` = obrót rdzenia (0,02 na tarczę, 1 przy otwarciu).
+
+**Widok.** Stos tarcz w przekroju podłużnym (plastry ≥ 28 dp), listwa boczna nad nimi; wycięcia widoczne na
+krawędzi; odróżnia się od pierścieni kłódki kierunkiem kamery (wzdłuż osi rdzenia) i listwą.
+
+**Weryfikator (1000 seedów/tier).** Skryptowy 0 porażek (t_p50 11/14/15 s), niezdarny 100 %, czujący 100 %
+(t_p50 28/39/45 s). Złote: `disc_detainer_t2_s6`, `disc_detainer_t2_s13_feel`.
+
+---
+
 ## 3. Tabela zbiorcza
 
 | # | ID | PL / EN | Tier | Faza | Widok | Wejścia | Kluczowa nowa logika | Narzędzie główne |
@@ -1217,6 +1255,7 @@ plus bit rzędu w `variant`.
 | 2.17 | `hybrid` | Hybrydy / Hybrid Locks | 8–10 | F3 | dzielony | suma | kompozycja modułów | suma |
 | 2.18 | `dial_safe` | Sejf z pokrętłem / Dial Safe | 1–3 | D-59 | czoło + przekrój kół | T, L | pakiet kół, nasłuch, zmiana kierunku | Słuchawka |
 | 2.20 | `dimple` (D-59) | Wkładka nawiercana / Dimple Cylinder | 1–3 | D-59 | bok, dwa rzędy | T, D, L | kołek teleskopowy | Chorągiewka |
+| 2.21 | `disc_detainer` | Zamek tarczowy / Disc Detainer | 1–3 | D-59 | przekrój wzdłuż osi | T, D, L | tarcze w obie strony, przekręcenie | Obracak tarcz |
 | 2.19 | `combo` | Zamek z kółkami / Thumbwheel Combination Lock | 1–4 | D-59 | przód + przekrój tulejek | T, D, L | wiązanie + poślizg tulejki | Ciągadło kabłąka |
 
 T = tension, D = pick_depth, L = pick_lift, R = rotate, P = push.

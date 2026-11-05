@@ -70,6 +70,7 @@ if(LOCKCORE_BUILD_TESTS)
     tests/test_dial_safe.cpp
     tests/test_combo.cpp
     tests/test_dimple.cpp
+    tests/test_disc_detainer.cpp
     tests/test_replay.cpp
     tests/test_fuzz.cpp
   )

@@ -50,6 +50,7 @@ enum ToolBits : std::uint32_t {
   // v0.6 (additive)
   TOOL_LISTENING_CUP = 1u << 7,   // dial_safe
   TOOL_DIMPLE_FLAG = 1u << 8,     // dimple (flat "flag" pick for side-drilled pins)
+  TOOL_DISC_PICK = 1u << 9,       // disc_detainer (tension tip + disc turner)
 };
 struct ToolSet {
   std::uint32_t bits = TOOL_TENSION_WRENCH | TOOL_HOOK;
