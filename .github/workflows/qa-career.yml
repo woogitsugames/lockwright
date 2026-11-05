@@ -46,6 +46,8 @@ jobs:
         run: |
           cmake -S lockcore -B lockcore/build -DCMAKE_BUILD_TYPE=Release > /dev/null
           cmake --build lockcore/build --target replay_tool -j4
+      - name: Assets check (G07 arrival backgrounds, G09 portraits, S03 voices, every sound file)
+        run: python3 qa/assets/check_assets.py --out qa/out/assets
       - name: Run career matrix (solver, feel, clumsy, EN, in the dark)
         env:
           QA_WORK: ${{ runner.temp }}/lw_qa_game
@@ -57,6 +59,7 @@ jobs:
         run: |
           if [ -f qa/out/matrix.md ]; then cat qa/out/matrix.md >> "$GITHUB_STEP_SUMMARY"; fi
           if [ -f qa/out/solver/report.md ]; then cat qa/out/solver/report.md >> "$GITHUB_STEP_SUMMARY"; else echo "no report" >> "$GITHUB_STEP_SUMMARY"; fi
+          if [ -f qa/out/assets/report.md ]; then cat qa/out/assets/report.md >> "$GITHUB_STEP_SUMMARY"; fi
       - name: Upload report
         if: always()
         uses: actions/upload-artifact@v4

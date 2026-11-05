@@ -53,3 +53,10 @@ qa/run_matrix.sh godot lockcore/build/replay_tool     # 5 przebiegów -> qa/out/
 Raport ma też: **ekonomię** (wypłata w grze vs model `tools/econ_sim.py` dla odpowiadającego profilu: solver→careful,
 feel→average, clumsy→clumsy; różnice > 10% oznaczone ⚠), **kanały** (pary zdarzenie/materiał bez dźwięku lub haptyki)
 i **zlecenia niewidoczne na liście**. Ucięte teksty EN na ekranach: `qa/bot/a11y_shots.gd -- --lang en` (wymaga X/Xvfb).
+
+## Część 3 (etap 5): zasoby — `qa/assets/check_assets.py`
+Statycznie, na danych i kodzie gry (mapowania czytane z `job_arrival.gd` i `sfx.gd`, bez kopii): każde zlecenie
+(`data/jobs`, `data/jobs_ch7`) ma tło przyjazdu G07; każda mówiąca postać ma portret G09 i głos S03 w miejscu, w którym
+gra go szuka; każdy dźwięk z `data/haptics_patterns.json` (komplet wariantów dla co najmniej jednego materiału),
+z `AMBIENCES` i z każdego wywołania `Sfx.play_*(&"…")` istnieje. Raport: `qa/out/assets/report.md`, w CI krok w
+`qa-career` (ostrzeżenia ⚠, bez czerwonego runu). Lokalnie: `python3 qa/assets/check_assets.py`.

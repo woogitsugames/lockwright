@@ -933,3 +933,20 @@ Pozostałe błędy silnika (nieblokujące): `add_child()` w trakcie `_ready` rod
 | `spike-planb` | 42023529474 | ✅ | (mój; od 184fa84 buduje też `liblockcore_gd` arm64) |
 
 **Zasada nr 1 (`SESSION-B-PROMPT-5.md`):** w `SESSION-B-LOG.md` wpisy „Etap 5, zadanie 3” i „zadanie 4” opisują zadania jako wykonane (✅ tylko przy lokalnych sprawdzaczach: `loc_qa.py` ✅, `check_sfx.py` ✅), ale **bez linku do zielonego runu**, choć w tym czasie `qa-career`, `game-android`, `game-ios` były czerwone. To nie jest formalne ✅ zadania, ale zasada wymaga linku do zielonego runu — zgłaszam jako naruszenie. Zadanie 1 etapu 5 B (CI na zielono) jest w toku i nie ma ✅ — zgodnie z zasadą.
+
+## Runda QA 3 — 2026-11-05 15:55 (zadanie 5 etapu 5: zasoby; `qa/assets/check_assets.py`, krok w `qa-career`)
+
+Wynik na 0a1c459: zlecenia 41, **tło G07 41/41** ✅, dźwięki z danych i kodu **34/34** istnieją ✅, portrety G09 **12/51** postaci, głosy S03 **0/51**.
+
+**N-48 · High (funkcja nie działa) · Żaden głos postaci (S03) nigdy nie zabrzmi** · `game/scripts/autoload/sfx.gd:258` (`play_voice`), `game/assets/audio/voices/`
+- `play_voice` szuka kluczy `<VOICE_ROOT>/<speaker>/<kind>_…`, a pliki leżą jako `voices/halina/greeting.wav` (bez `_NN`), więc `keys` jest zawsze puste i funkcja wraca bez dźwięku. Dodatkowo Ola i Krystyna mają wspólny katalog `ola_krystyna`, a dialogi wołają `ola` i `krystyna`.
+  ```diff
+  -		if k.begins_with(VOICE_ROOT + "/" + String(speaker) + "/" + String(kind) + "_"):
+  +		var base := VOICE_ROOT + "/" + String(VOICE_DIR.get(speaker, speaker)) + "/" + String(kind)
+  +		if k == base + ".wav" or k.begins_with(base + "_"):
+  +# speaker id -> voice folder (S03 delivered one folder for the Ola/Krystyna pair)
+  +const VOICE_DIR := {&"ola": &"ola_krystyna", &"krystyna": &"ola_krystyna"}
+  ```
+  Test GUT: `Sfx.play_voice(&"halina", &"greeting")` zajmuje jeden odtwarzacz z puli.
+
+**N-49 · Medium (treść) · 39 z 51 mówiących postaci nie ma portretu G09 ani głosu** — G09 i S03 objęły 12 postaci z CLIENTS.md, a zlecenia (`data/jobs`, `jobs_ch7`) mają 51 mówiących. Bez twarzy mówią m.in. gosia, iga, elzbieta (po 2 zlecenia), agnieszka, aino, bartek, basia, panna młoda… Lista w `qa/out/assets/report.md` (artefakt `qa-career-report`). Decyzja dla A/właściciela: zlecić G09-v2 i S03-v2 (27 postaci epizodycznych) albo pokazać im neutralny znak zamiast portretu (np. tabliczkę z inicjałem, bez fałszywej twarzy). Gra dziś pokazuje dla nich sam podpis — działa, ale niespójnie.
