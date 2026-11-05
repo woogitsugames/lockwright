@@ -105,7 +105,6 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | `art/renders/variants/compare_before_after.png` | grafika (zestawienie porównawcze przed/po względem `art/renders/section.jpg`) | własne, wygenerowane przez `art/blender/variants/render_all_variants.py` | własne projektu | — |
 
 
-<<<<<<< HEAD
 ## Gemini (GEM1 — materiały marketingowe 4K: ujęcia R01–R17, zwiastuny 30 s i 15 s PL/EN, klatki 4K)
 
 | Plik | Typ | Źródło | Licencja | Link |
@@ -117,7 +116,6 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | `trailer_30s_{pl,en}.mp4`, `trailer_30s_{pl,en}_sub.mp4`, `trailer_30s_{pl,en}_music.mp4`, `trailer_15s_{pl,en}.mp4`, `trailer_15s_{pl,en}_sub.mp4`, `trailer_15s_{pl,en}_music.mp4` (4K `2160x3840` oraz `_1080p`), `R01.mp4`–`R15.mp4`, `stills_4k_R16_R17.zip` (w GitHub Release `gemini-gem1`) | wideo MP4 (H.264 `libx264` CRF 18 / AAC 192 kbps 48 kHz) i dodatkowe klatki 4K | własne: obraz z `art/blender/marketing/*.py`, dźwięk diegetyczny z `audio/v2/out/` i `game/assets/audio/` + sub-bas haptyczny 40–90 Hz (`-18 dB`), wersje `_music` z utworami `contrib/gpt/S01/audio/` (wpisy wyżej), montaż `art/blender/marketing/build_trailers.py` | własne projektu | https://github.com/woogitsugames/lockwright/releases/tag/gemini-gem1 |
 
 
-=======
 
 ## Materiały fotograficzne (Magnific AI, D-42, D-48)
 
@@ -133,4 +131,3 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 | `art/textures/photo/objects/thumb_dent{,_1k,_normal}.png` | naklejka (decal) wgniecenia kciukiem w skórze, alfa promieniowa + normal | Gemini Nano Banana (generowane AI) + obróbka skryptem | generowane AI, warunki Gemini (D-42) | `contrib/incoming/leather_set_2026-11-05/` |
 | `art/textures/photo/contact_previews.jpg`, `contact_objects.jpg` | arkusze kontrolne (nie do gry) | własne, skrypt | własne projektu | — |
 | `tools/make_photo_materials.py` | skrypt obróbki (Python, numpy, Pillow, OpenCV) | własne | własne projektu | — |
->>>>>>> 5cb93d1 (WIP snapshot: agents' in-progress work)
