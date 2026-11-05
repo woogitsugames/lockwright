@@ -1,0 +1,304 @@
+key,en,pl
+a11y.common.back,Back,Wstecz
+a11y.common.close,Close,Zamknij
+a11y.common.continue,Continue,Kontynuuj
+a11y.common.cancel,Cancel,Anuluj
+a11y.common.confirm,Confirm,Potwierdź
+a11y.common.skip,Skip,Pomiń
+a11y.common.repeat,Repeat,Powtórz
+a11y.common.on,On,Włączone
+a11y.common.off,Off,Wyłączone
+a11y.common.selected,Selected,Wybrano
+a11y.common.unavailable,Unavailable,Niedostępne
+a11y.common.locked,Locked,Zablokowane
+a11y.common.unlocked,Unlocked,Odblokowane
+a11y.common.position_fmt,Item {n} of {total},Pozycja {n} z {total}
+a11y.common.percent_fmt,{value} percent,{value} procent
+a11y.common.loading,Loading,Ładowanie
+a11y.common.not_available_yet,Not available yet,Jeszcze niedostępne
+a11y.screen.boot,First launch and sound calibration,Pierwsze uruchomienie i kalibracja dźwięku
+a11y.screen.main,Lockwright main menu,Menu główne Lockwright
+a11y.screen.jobs,Jobs,Zlecenia
+a11y.screen.dispatch,Message from dispatch,Wiadomość z dyspozytorni
+a11y.screen.arrival,At the door,Pod drzwiami
+a11y.screen.verify,Check the right to enter,Sprawdzenie prawa do lokalu
+a11y.screen.quote,Estimate,Wycena
+a11y.screen.run,Shift notebook,Bloczek dyżuru
+a11y.screen.tutorial,Practice in the workshop,Ćwiczenie w warsztacie
+a11y.screen.lock,Lock mechanism,Mechanizm zamka
+a11y.screen.loupe,Magnifying glass,Lupa
+a11y.screen.microscope,Workshop microscope,Mikroskop warsztatowy
+a11y.screen.borescope,Inspection scope,Wziernik
+a11y.screen.pause,Paused,Pauza
+a11y.screen.audio,Sound and haptics,Dźwięk i haptyka
+a11y.screen.receipt,Receipt,Rachunek
+a11y.screen.result,Job outcome,Wynik zlecenia
+a11y.screen.shift_end,Shift summary,Podsumowanie dyżuru
+a11y.screen.workshop,Workshop,Warsztat
+a11y.screen.showcase,Showcase,Gablota
+a11y.screen.settings,Settings,Ustawienia
+a11y.screen.about,About the game,O grze
+a11y.screen.alert,Confirmation or warning,Potwierdzenie lub ostrzeżenie
+a11y.screen.help,Accessible controls help,Pomoc w sterowaniu dostępnym
+a11y.boot.intro,This is a game about a locksmith helping people. It is not a real-world guide.,To gra o ślusarzu pomagającym ludziom. Nie jest poradnikiem praktycznym.
+a11y.boot.question,How many of the two taps do you hear or feel?,Ile z dwóch stuknięć słyszysz lub czujesz?
+a11y.boot.two,Two,Dwa
+a11y.boot.one,One,Jedno
+a11y.boot.none,None,Żadnego
+a11y.boot.skip,Skip calibration,Pomiń kalibrację
+a11y.boot.silent_warning,You can play using sound without vibration.,Możesz grać z dźwiękiem bez wibracji.
+a11y.boot.setup_voice,Read the controls aloud,Odczytuj elementy sterowania
+a11y.menu.tip,Workshop note: {text},Notatka z warsztatu: {text}
+a11y.menu.start,Start shift,Rozpocznij dyżur
+a11y.menu.jobs,Jobs,Zlecenia
+a11y.menu.workshop,Workshop,Warsztat
+a11y.menu.showcase,Showcase,Gablota
+a11y.menu.settings,Settings,Ustawienia
+a11y.menu.about,About the game,O grze
+a11y.jobs.item_fmt,"Job {n} of {total}: {client}, {place}. {state}","Zlecenie {n} z {total}: {client}, {place}. {state}"
+a11y.jobs.locked_fmt,Job not yet available: {reason},Zlecenie jeszcze niedostępne: {reason}
+a11y.jobs.empty,No jobs available yet,Nie ma jeszcze dostępnych zleceń
+a11y.dispatch.sender,From: Dispatch,Od: Dyspozytornia
+a11y.dispatch.time_fmt,Received at {time},Odebrano o {time}
+a11y.dispatch.address_fmt,Address: {place},Adres: {place}
+a11y.dispatch.client_fmt,Customer: {client},Klient: {client}
+a11y.dispatch.situation_fmt,Message: {text},Wiadomość: {text}
+a11y.dispatch.photo,Photo of an unbranded lock mechanism sent by the customer,Zdjęcie mechanizmu bez marki przesłane przez klienta
+a11y.dispatch.photo_description_fmt,What the photo shows: {text},Na zdjęciu widać: {text}
+a11y.dispatch.continue,Go to the address,Jedź pod wskazany adres
+a11y.arrival.place_fmt,Location: {place},Miejsce: {place}
+a11y.arrival.speaker_fmt,{speaker}: {text},{speaker}: {text}
+a11y.arrival.verify,Check the right to enter,Sprawdź prawo do lokalu
+a11y.arrival.next_line,Next line,Następna wypowiedź
+a11y.arrival.back,Return to jobs,Wróć do zleceń
+a11y.verify.client_fmt,Customer: {client},Klient: {client}
+a11y.verify.situation_fmt,Situation: {text},Sytuacja: {text}
+a11y.verify.evidence_fmt,Evidence {n} of {total}: {item}. {text},Dowód {n} z {total}: {item}. {text}
+a11y.verify.evidence_status_fmt,Evidence status: {state},Stan dowodu: {state}
+a11y.verify.confidence_enough,I have enough information to decide.,"Mam wystarczająco dużo informacji, by zdecydować."
+a11y.verify.confidence_uncertain,Something does not add up. I should ask.,Coś mi nie pasuje. Warto dopytać.
+a11y.verify.confidence_not_enough,I do not know enough yet.,Jeszcze wiem za mało.
+a11y.verify.ask_more,Ask for another piece of evidence,Poproś o kolejny dowód
+a11y.verify.accept,Proceed with this job,Przyjmij zlecenie
+a11y.verify.refuse,Decline the job,Odmów wykonania zlecenia
+a11y.verify.police,Call the police,Zadzwoń na policję
+a11y.verify.empty,No evidence has been presented.,Nie przedstawiono żadnego dowodu.
+a11y.verify.mismatch_fmt,Something needs explaining: {text},Coś wymaga wyjaśnienia: {text}
+a11y.verify.no_permission,I cannot proceed without checking the right to enter.,Nie mogę działać bez sprawdzenia prawa do lokalu.
+a11y.verify.emergency,Safety first. Call emergency services before any work.,Najpierw bezpieczeństwo. Przed pracą trzeba wezwać służby ratunkowe.
+a11y.quote.line_fmt,{item}: {amount} coins,{item}: {amount} monet
+a11y.quote.rate,Proposed rate,Proponowana stawka
+a11y.quote.total_fmt,Total: {amount} coins,Razem: {amount} monet
+a11y.quote.client_response_fmt,Customer's response: {text},Odpowiedź klienta: {text}
+a11y.quote.confirm,Confirm the estimate,Potwierdź wycenę
+a11y.quote.adjust_up,Increase proposed rate,Zwiększ proponowaną stawkę
+a11y.quote.adjust_down,Decrease proposed rate,Zmniejsz proponowaną stawkę
+a11y.quote.no_agreement,The customer has not agreed to the estimate.,Klient nie zgodził się na wycenę.
+a11y.run.location_fmt,Next address: {place},Następny adres: {place}
+a11y.run.time_fmt,Shift time: {time},Godzina dyżuru: {time}
+a11y.run.streak_fmt,Lock {n} in this shift,Zamek numer {n} w tym dyżurze
+a11y.run.ready,Start this lock,Rozpocznij ten zamek
+a11y.run.workshop_break,Go to the workshop break,Idź na przerwę do warsztatu
+a11y.run.note_fmt,Dispatcher's note: {text},Dopisek dyspozytora: {text}
+a11y.tutorial.stage_fmt,Practice stage {n} of {total},Etap ćwiczenia {n} z {total}
+a11y.tutorial.goal_fmt,Goal: {text},Cel: {text}
+a11y.tutorial.repeat,Repeat the instruction,Powtórz instrukcję
+a11y.tutorial.start,Start the practice lock,Zacznij ćwiczenie
+a11y.tutorial.next,Next practice stage,Następny etap ćwiczenia
+a11y.tutorial.skip,Skip tutorial,Pomiń samouczek
+a11y.tutorial.completed,Practice complete. The workshop is still here tomorrow.,Ćwiczenie ukończone. Warsztat jutro też będzie stał.
+a11y.tutorial.help,"Use the selected element, tension and lift controls. Each can be adjusted separately.","Użyj kontrolek wyboru elementu, napięcia i uniesienia. Każdą zmienisz osobno."
+a11y.tutorial.contact,You hear a soft tick when the tool touches an element.,"Gdy narzędzie dotyka elementu, słychać delikatne tyknięcie."
+a11y.tutorial.hold,Hold tension with the separate toggle; both hands are not required.,Zatrzymaj napięcie osobnym przełącznikiem. Nie musisz używać obu rąk.
+a11y.lock.summary,Read current state,Odczytaj bieżący stan
+a11y.lock.summary_fmt,Selected element: {n} of {total}. Tension: {tension} percent. Lift: {lift} percent. Last event: {state}. Spare tools: {spares}.,Wybrany element: {n} z {total}. Napięcie: {tension} procent. Uniesienie: {lift} procent. Ostatnie zdarzenie: {state}. Zapasowe narzędzia: {spares}.
+a11y.lock.element,Selected element,Wybrany element
+a11y.lock.element_fmt,Element {n} of {total},Element {n} z {total}
+a11y.lock.element_prev,Previous element,Poprzedni element
+a11y.lock.element_next,Next element,Następny element
+a11y.lock.element_unknown,No element selected,Nie wybrano elementu
+a11y.lock.tension,Tension,Napięcie
+a11y.lock.tension_fmt,Tension: {value} percent,Napięcie: {value} procent
+a11y.lock.tension_up,Increase tension,Zwiększ napięcie
+a11y.lock.tension_down,Decrease tension,Zmniejsz napięcie
+a11y.lock.lift,Lift,Uniesienie
+a11y.lock.lift_fmt,Lift: {value} percent,Uniesienie: {value} procent
+a11y.lock.lift_up,Increase lift,Zwiększ uniesienie
+a11y.lock.lift_down,Decrease lift,Zmniejsz uniesienie
+a11y.lock.ring_position,Ring position,Pozycja pierścienia
+a11y.lock.lever_position,Lever position,Pozycja dźwigni
+a11y.lock.hold,Hold tension,Zatrzymaj napięcie
+a11y.lock.hold_on,Tension held,Napięcie zatrzymane
+a11y.lock.hold_off,Tension free,Napięcie zwolnione
+a11y.lock.precision,Fine adjustment,Precyzyjna regulacja
+a11y.lock.precision_coarse,Standard step,Zwykły krok
+a11y.lock.precision_fine,Fine step,Mały krok
+a11y.lock.release,Release tension,Zwolnij napięcie
+a11y.lock.spares_fmt,Spare picks: {n},Zapasowe wytrychy: {n}
+a11y.lock.no_spares,No spare tools left,Brak zapasowych narzędzi
+a11y.lock.tool_fmt,Tool: {item}. Condition: {state},Narzędzie: {item}. Stan: {state}
+a11y.lock.loupe,Use the magnifying glass,Użyj lupy
+a11y.lock.microscope,Use the workshop microscope,Użyj mikroskopu w warsztacie
+a11y.lock.borescope,Use the inspection scope,Użyj wziernika
+a11y.lock.pause,Pause,Pauza
+a11y.lock.timer_fmt,Time remaining: {time},Pozostały czas: {time}
+a11y.lock.dark_off,Light is on,Światło jest włączone
+a11y.lock.dark_on,Light is off,Światło jest wyłączone
+a11y.lock.status_unknown,No recent lock event,Brak niedawnego zdarzenia zamka
+a11y.lock.last_event_fmt,Last event: {state},Ostatnie zdarzenie: {state}
+a11y.lock.accessible_controls_hint,Use screen-reader actions to change one control at a time.,"Korzystaj z akcji czytnika, aby zmieniać każdą kontrolkę osobno."
+a11y.lock.swapped_hands,Thumb controls swapped,Zamieniono strefy kciuków
+a11y.lock.unavailable_optics,Observation tools are not available in the dark.,W ciemności nie można korzystać z narzędzi obserwacji.
+a11y.optics.readout_fmt,What is visible: {text},Widoczny stan: {text}
+a11y.optics.move_previous,Move to the previous element,Przejdź do poprzedniego elementu
+a11y.optics.move_next,Move to the next element,Przejdź do następnego elementu
+a11y.optics.close,Close observation,Zamknij obserwację
+a11y.optics.loupe_hint,Inspect the area currently under the tool.,Obejrzyj obszar pod aktualnym elementem.
+a11y.optics.microscope_hint,Move the microscope across the workshop sample.,Przesuń mikroskop po próbce w warsztacie.
+a11y.optics.borescope_hint,Move the inspection view to another element.,Przesuń wziernik do innego elementu.
+a11y.optics.locked,This observation tool has not been unlocked.,To narzędzie obserwacji nie zostało odblokowane.
+a11y.pause.resume,Resume,Wznów
+a11y.pause.light,Light,Światło
+a11y.pause.light_value,Light: {state},Światło: {state}
+a11y.pause.reading_aid,Reading assistance,Pomoc w czytaniu
+a11y.pause.audio,Sound and haptics,Dźwięk i haptyka
+a11y.pause.quit,Leave this lock,Wyjdź z tego zamka
+a11y.pause.skip_tutorial,Skip the practice stage,Pomiń etap ćwiczenia
+a11y.pause.paused_automatically,Paused because the app was interrupted.,Pauza z powodu przerwania pracy aplikacji.
+a11y.pause.resume_hint,The current tension and tool position will be preserved.,Bieżące napięcie i pozycja narzędzia zostaną zachowane.
+a11y.pause.confirm_quit,Leave this lock? Current progress will be lost.,Wyjść z tego zamka? Utracisz bieżący postęp.
+a11y.audio.master,Overall volume,Głośność główna
+a11y.audio.sfx,Mechanism sound effects,Dźwięki mechanizmu
+a11y.audio.ambience,Background sounds,Dźwięki otoczenia
+a11y.audio.voice_events,Spoken lock events,Mówione zdarzenia zamka
+a11y.audio.speech_rate,Spoken event speed,Szybkość mowy zdarzeń
+a11y.audio.haptics,Haptic strength,Siła haptyki
+a11y.audio.resistance,Continuous resistance,Opór ciągły
+a11y.audio.voice_off,Off,Wyłączone
+a11y.audio.voice_essential,Essential events,Kluczowe zdarzenia
+a11y.audio.voice_extended,Extended events,Rozszerzone zdarzenia
+a11y.audio.test_voice,Play a voice sample,Odtwórz próbkę głosu
+a11y.audio.no_haptics,No vibration available; sound remains available.,Brak dostępnej wibracji. Dźwięk pozostaje dostępny.
+a11y.receipt.client_fmt,Receipt for {client},Rachunek dla {client}
+a11y.receipt.line_fmt,{item}: {amount} coins,{item}: {amount} monet
+a11y.receipt.total_fmt,Total: {amount} coins,Razem: {amount} monet
+a11y.receipt.stamp_clean,No marks. Clean opening bonus.,Bez śladów. Premia za czyste otwarcie.
+a11y.receipt.stamp_dark,In the dark. Darkness bonus.,W ciemności. Premia za ciemność.
+a11y.receipt.stamp_master,Master lock completed.,Zamek mistrzowski ukończony.
+a11y.receipt.tip_fmt,Thank-you gift: {item}. Value: {amount} coins.,Upominek od klienta: {item}. Wartość: {amount} monet.
+a11y.receipt.damage_fmt,Broken picks during this job: {n},Złamane wytrychy w tym zleceniu: {n}
+a11y.receipt.save,Keep a copy in the showcase,Zachowaj egzemplarz w gablocie
+a11y.receipt.next,Next job,Następne zlecenie
+a11y.receipt.no_tip,No additional gift,Bez dodatkowego upominku
+a11y.receipt.clean_fmt,Opening completed: {state},Otwarcie ukończone: {state}
+a11y.receipt.saved,A copy was saved to the showcase.,Egzemplarz zachowano w gablocie.
+a11y.result.reason_fmt,Outcome: {text},Wynik: {text}
+a11y.result.reputation_fmt,Reputation change: {n},Zmiana reputacji: {n}
+a11y.result.refused,I cannot take this job without enough information.,Nie mogę przyjąć tego zlecenia bez wystarczających informacji.
+a11y.result.completed,Job settled,Zlecenie rozliczone
+a11y.shift_end.locks_fmt,Locks handled: {n},Obsłużone zamki: {n}
+a11y.shift_end.coins_fmt,Coins earned: {n},Zdobyte monety: {n}
+a11y.shift_end.best_fmt,Best time: {time},Najlepszy czas: {time}
+a11y.shift_end.line,Take a breath. There will be doors tomorrow too.,Weź oddech. Jutro też będą drzwi.
+a11y.shift_end.empty_tools,No spare tools left. Shift finished.,Brak zapasowych narzędzi. Dyżur zakończony.
+a11y.workshop.coins_fmt,Coins available: {n},Dostępne monety: {n}
+a11y.workshop.item_fmt,Tool {n} of {total}: {item},Narzędzie {n} z {total}: {item}
+a11y.workshop.condition_fmt,Tool condition: {state},Stan narzędzia: {state}
+a11y.workshop.price_fmt,Price: {amount} coins,Cena: {amount} monet
+a11y.workshop.buy,Buy this item,Kup ten przedmiot
+a11y.workshop.repair,Repair this item,Napraw ten przedmiot
+a11y.workshop.owned,Already owned,Już posiadasz
+a11y.workshop.broken,Broken,Złamane
+a11y.workshop.insufficient,Not enough coins.,Za mało monet.
+a11y.workshop.repaired,The tool was repaired.,Narzędzie naprawione.
+a11y.workshop.purchased,The item was added to your tools.,Przedmiot dodany do narzędzi.
+a11y.showcase.item_fmt,Exhibit {n} of {total}: {item},Eksponat {n} z {total}: {item}
+a11y.showcase.note_fmt,Notebook entry: {text},Wpis w zeszycie: {text}
+a11y.showcase.source_fmt,Source: {text},Źródło: {text}
+a11y.showcase.locked,Locked; unlock it by playing.,Zablokowane. Odblokujesz podczas gry.
+a11y.showcase.unknown_source,Source not yet verified,Źródło jeszcze niezweryfikowane
+a11y.showcase.next,Next exhibit,Następny eksponat
+a11y.showcase.previous,Previous exhibit,Poprzedni eksponat
+a11y.settings.blind_controls,Accessible lock controls,Dostępne sterowanie zamkiem
+a11y.settings.voice_events,Spoken lock events,Mówione zdarzenia zamka
+a11y.settings.speech_rate,Speech rate,Szybkość mowy
+a11y.settings.announce_detail,Amount of spoken detail,Szczegółowość opisów
+a11y.settings.captions,Sound captions,Napisy dźwięków
+a11y.settings.left_handed,Swap thumb zones,Zamień strefy kciuków
+a11y.settings.hold_tension,Hold tension,Blokada napięcia
+a11y.settings.haptics,Haptics,Haptyka
+a11y.settings.haptics_strength,Haptic strength,Siła haptyki
+a11y.settings.haptics_test,Test haptics,Testuj haptykę
+a11y.settings.calibration,Calibrate haptics,Kalibruj haptykę
+a11y.settings.continuous,Continuous resistance,Opór ciągły
+a11y.settings.volume_master,Overall volume,Głośność główna
+a11y.settings.volume_sfx,Sound effects,Efekty dźwiękowe
+a11y.settings.volume_ambience,Ambience,Dźwięki otoczenia
+a11y.settings.language,Language,Język
+a11y.settings.language_system,Follow system language,Język systemowy
+a11y.settings.language_en,English,Angielski
+a11y.settings.language_pl,Polish,Polski
+a11y.settings.reading_aid,Reading assistance,Pomoc w czytaniu
+a11y.settings.high_contrast,Higher contrast,Większy kontrast
+a11y.settings.wide_windows,Wider timing windows,Szersze okna czasu
+a11y.settings.text_scale,Text size,Rozmiar tekstu
+a11y.settings.reduce_motion,Reduce motion,Ogranicz ruch
+a11y.settings.quality,Graphics quality,Jakość grafiki
+a11y.settings.dark_note,"In the dark, sound cues are necessary. Phone vibration may help.",W ciemności potrzebne są sygnały dźwiękowe. Wibracje telefonu mogą pomóc.
+a11y.settings.reset,Reset settings,Resetuj ustawienia
+a11y.settings.report,Report a problem,Zgłoś problem
+a11y.settings.report_copied,Log copied. No message was sent.,Skopiowano log. Nie wysłano żadnej wiadomości.
+a11y.settings.reset_confirm,Restore all settings to defaults?,Przywrócić wszystkie ustawienia domyślne?
+a11y.settings.show_touch_stronger,Show touch marks more clearly,Pokaż ślady dotyku mocniej
+a11y.settings.timed_mode,Timed challenge,Wyzwanie na czas
+a11y.settings.no_time_limit,No time limit,Bez limitu czasu
+a11y.settings.more_time,Extended time,Wydłużony czas
+a11y.about.notice,"This is a game, not a locksmithing course. The mechanisms are invented. A real locksmith checks the right to enter.","To gra, nie kurs ślusarstwa. Mechanizmy są wymyślone. Prawdziwy ślusarz sprawdza prawo do lokalu."
+a11y.about.licenses,Assets and licences,Zasoby i licencje
+a11y.alert.message_fmt,Notice: {text},Uwaga: {text}
+a11y.alert.confirm_reset,Reset settings? This cannot be undone.,Zresetować ustawienia? Tej czynności nie można cofnąć.
+a11y.alert.confirm_leave,Leave the lock? Current progress will be lost.,Wyjść z zamka? Bieżący postęp zostanie utracony.
+a11y.alert.confirm_refuse,Decline this job?,Odmówić wykonania tego zlecenia?
+a11y.alert.no_audio,No sound is currently available. Lock sounds are needed to play without vision.,Dźwięk jest obecnie niedostępny. Bez wzroku potrzebne są sygnały zamka.
+a11y.alert.action_not_available,This action is not available right now.,Ta czynność jest teraz niedostępna.
+a11y.alert.action_done,Action completed,Czynność wykonana
+a11y.dark.entered,Light off. Sound will guide this lock.,Światło zgaszone. Przy tym zamku prowadzi dźwięk.
+a11y.dark.exited,Light on,Światło włączone
+a11y.dark.warning_no_audio,This challenge requires audible cues. You can leave darkness in Pause.,To wyzwanie wymaga słyszalnych sygnałów. Możesz wyjść z ciemności przez Pauzę.
+a11y.dark.optics_off,Observation tools cannot be used without light.,Narzędzi obserwacji nie można używać bez światła.
+a11y.dark.no_exclusive_content,Darkness is optional; normal play remains available.,Ciemność jest opcjonalna. Zwykła gra nadal jest dostępna.
+a11y.event.contact,Tool touches an element.,Narzędzie dotyka elementu.
+a11y.event.bind,The selected element resists.,Wybrany element stawia opór.
+a11y.event.near_shear,The sound becomes finer.,Dźwięk staje się drobniejszy.
+a11y.event.set,Element set.,Element ustawiony.
+a11y.event.false_set,False set.,Fałszywe ustawienie.
+a11y.event.counter_rotate,The core pushes back.,Rdzeń się cofa.
+a11y.event.overset,Element pushed too far.,Element przesunięty za daleko.
+a11y.event.drop,Elements dropped.,Elementy opadły.
+a11y.event.stress,The tool is under strain.,Narzędzie jest mocno obciążone.
+a11y.event.break,A pick broke.,Wytrych pękł.
+a11y.event.wear,Tool wear has increased.,Narzędzie jest bardziej zużyte.
+a11y.event.gate_align,A gate aligned.,Bramka się zrównała.
+a11y.event.detector_trip,The detector engaged.,Detektor się zablokował.
+a11y.event.open,The lock opened.,Zamek otwarty.
+a11y.event.tension_resistance,Resistance can be heard in the tension sound.,Opór słychać w dźwięku napinacza.
+a11y.event.pick_drag,The tool scrapes along the elements.,Narzędzie przesuwa się po elementach.
+a11y.event.family_state_fmt,{item}. Current state: {state},{item}. Obecny stan: {state}
+a11y.event.multiple_drop_fmt,{n} elements dropped.,Opadło {n} elementów.
+a11y.scene.door_open,The door moves open. The job is done.,Drzwi się uchylają. Praca wykonana.
+a11y.scene.client_waiting_fmt,{client} is waiting at the door.,{client} czeka pod drzwiami.
+a11y.scene.document_presented_fmt,The customer places another item on the mat: {item}.,Klient kładzie na wycieraczce kolejny przedmiot: {item}.
+a11y.scene.receipt_written,The locksmith writes out a receipt.,Ślusarz wypisuje rachunek.
+a11y.scene.tip_arrives_fmt,The customer leaves a thank-you gift: {item}.,Klient zostawia upominek: {item}.
+a11y.scene.workshop_return,Back at the workshop.,Powrót do warsztatu.
+a11y.scene.chalk_visible,"Chalk marks highlight the current state, not the solution.","Kreda podkreśla obecny stan, a nie rozwiązanie."
+a11y.help.intro,"Choose an element, set tension, then adjust the active control one step at a time.","Wybierz element, ustaw napięcie, a potem reguluj aktywną kontrolkę krok po kroku."
+a11y.help.focus,Swipe left or right to move between controls. Double tap to activate.,"Przesuń palcem w lewo lub w prawo, aby zmienić kontrolkę. Stuknij dwukrotnie, aby ją aktywować."
+a11y.help.adjust,"On an adjustable control, use the screen reader's increment or decrement action.",Na kontrolce regulowanej użyj akcji zwiększania lub zmniejszania czytnika.
+a11y.help.repeat,Choose Read current state whenever you want to hear the latest information.,"W dowolnej chwili wybierz Odczytaj bieżący stan, by usłyszeć ostatnie informacje."
+a11y.help.pause,You can always open Pause to change sound settings or leave the lock.,W każdej chwili możesz otworzyć Pauzę i zmienić dźwięk lub wyjść z zamka.
+a11y.error.missing_value,The value could not be read.,Nie udało się odczytać wartości.
+a11y.error.invalid_action,That action is not available in the current state.,Ta czynność jest niedostępna w obecnym stanie.
+a11y.error.no_spares,No spare tools left. The shift is over.,Brak zapasowych narzędzi. Dyżur zakończony.
+a11y.error.no_sound,"Sound is muted. Without vision, some lock cues may not be available.",Dźwięk jest wyciszony. Bez wzroku część sygnałów zamka może być niedostępna.
+a11y.error.speech_unavailable,Spoken announcements are unavailable on this device. System screen-reader controls may still work.,Komunikaty mówione są niedostępne na tym urządzeniu. Sterowanie systemowym czytnikiem może nadal działać.
