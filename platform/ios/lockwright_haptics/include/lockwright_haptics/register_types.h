@@ -1,6 +1,6 @@
 #pragma once
 
-#include <godot_cpp/core/defs.hpp>
+#include <godot_cpp/godot.hpp>
 
 using namespace godot;
 
