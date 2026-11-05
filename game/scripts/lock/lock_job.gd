@@ -17,6 +17,7 @@ func _ready() -> void:
 
 
 func _apply_quality() -> void:
-	msaa = Quality.msaa_index()
+	if view:
+		view.msaa = Quality.msaa_index()
 	if view and view.viewport:
 		view.viewport.size = Quality.planb_size(Vector2i(824, 1100))
