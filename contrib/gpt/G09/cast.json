@@ -1,0 +1,186 @@
+{
+  "project": "Lockwright",
+  "source_doc": "docs/CLIENTS.md",
+  "slots": [
+    {
+      "id": "01_halina",
+      "pl": "Pani Halina",
+      "en": "Mrs Halina",
+      "bio_pl": "81, emerytka, rosół i kapcie",
+      "bio_en": "81, retiree; slippers and broth",
+      "source_sheet": "B",
+      "source_row": 0,
+      "source_col": 0,
+      "files": {
+        "portrait": "characters/01_halina/portrait.jpg",
+        "avatar": "characters/01_halina/avatar.png",
+        "doorway": "characters/01_halina/doorway.jpg"
+      }
+    },
+    {
+      "id": "02_zosia",
+      "pl": "Pani Zosia",
+      "en": "Mrs Zosia",
+      "bio_pl": "ok. 75, sąsiadka Haliny",
+      "bio_en": "~75, Halina’s longtime neighbour",
+      "source_sheet": "A",
+      "source_row": 3,
+      "source_col": 2,
+      "files": {
+        "portrait": "characters/02_zosia/portrait.jpg",
+        "avatar": "characters/02_zosia/avatar.png",
+        "doorway": "characters/02_zosia/doorway.jpg"
+      }
+    },
+    {
+      "id": "03_stefan",
+      "pl": "Pan Stefan",
+      "en": "Mr Stefan",
+      "bio_pl": "67, prowadzi kiosk",
+      "bio_en": "67, kiosk owner",
+      "source_sheet": "B",
+      "source_row": 0,
+      "source_col": 2,
+      "files": {
+        "portrait": "characters/03_stefan/portrait.jpg",
+        "avatar": "characters/03_stefan/avatar.png",
+        "doorway": "characters/03_stefan/doorway.jpg"
+      }
+    },
+    {
+      "id": "04_roman",
+      "pl": "Pan Roman",
+      "en": "Mr Roman",
+      "bio_pl": "58, administrator osiedla",
+      "bio_en": "58, residential manager",
+      "source_sheet": "B",
+      "source_row": 1,
+      "source_col": 0,
+      "files": {
+        "portrait": "characters/04_roman/portrait.jpg",
+        "avatar": "characters/04_roman/avatar.png",
+        "doorway": "characters/04_roman/doorway.jpg"
+      }
+    },
+    {
+      "id": "05_lena",
+      "pl": "Aspirant Lena Sowa",
+      "en": "Officer Lena Sowa",
+      "bio_pl": "39, dzielnicowa (bez oznaczeń)",
+      "bio_en": "39, community police officer (unmarked uniform)",
+      "source_sheet": "B",
+      "source_row": 1,
+      "source_col": 1,
+      "files": {
+        "portrait": "characters/05_lena/portrait.jpg",
+        "avatar": "characters/05_lena/avatar.png",
+        "doorway": "characters/05_lena/doorway.jpg"
+      }
+    },
+    {
+      "id": "06_marta",
+      "pl": "Marta",
+      "en": "Marta",
+      "bio_pl": "34, graficzka i opiekunka kota",
+      "bio_en": "34, graphic designer and cat owner",
+      "source_sheet": "B",
+      "source_row": 1,
+      "source_col": 2,
+      "files": {
+        "portrait": "characters/06_marta/portrait.jpg",
+        "avatar": "characters/06_marta/avatar.png",
+        "doorway": "characters/06_marta/doorway.jpg"
+      }
+    },
+    {
+      "id": "07_zuzanna",
+      "pl": "Zuzanna Wilk",
+      "en": "Zuzanna Wilk",
+      "bio_pl": "20, studentka konserwacji zabytków",
+      "bio_en": "20, conservation student",
+      "source_sheet": "B",
+      "source_row": 0,
+      "source_col": 1,
+      "files": {
+        "portrait": "characters/07_zuzanna/portrait.jpg",
+        "avatar": "characters/07_zuzanna/avatar.png",
+        "doorway": "characters/07_zuzanna/doorway.jpg"
+      }
+    },
+    {
+      "id": "08_edek",
+      "pl": "Pan Edek",
+      "en": "Mr Edek",
+      "bio_pl": "63, portier akademika",
+      "bio_en": "63, dorm porter",
+      "source_sheet": "B",
+      "source_row": 2,
+      "source_col": 1,
+      "files": {
+        "portrait": "characters/08_edek/portrait.jpg",
+        "avatar": "characters/08_edek/avatar.png",
+        "doorway": "characters/08_edek/doorway.jpg"
+      }
+    },
+    {
+      "id": "09_ola_krystyna",
+      "pl": "Ola i pani Krystyna",
+      "en": "Ola and Mrs Krystyna",
+      "bio_pl": "38, nauczycielka, z matką Krystyną",
+      "bio_en": "38, biology teacher, with mother Krystyna",
+      "source_sheet": "B",
+      "source_row": 2,
+      "source_col": 2,
+      "files": {
+        "portrait": "characters/09_ola_krystyna/portrait.jpg",
+        "avatar": "characters/09_ola_krystyna/avatar.png",
+        "doorway": "characters/09_ola_krystyna/doorway.jpg"
+      }
+    },
+    {
+      "id": "10_wladyslaw",
+      "pl": "Pan Władysław",
+      "en": "Mr Władysław",
+      "bio_pl": "84, nauczyciel mistrza Henryka",
+      "bio_en": "84, taught master Henryk",
+      "source_sheet": "B",
+      "source_row": 3,
+      "source_col": 0,
+      "files": {
+        "portrait": "characters/10_wladyslaw/portrait.jpg",
+        "avatar": "characters/10_wladyslaw/avatar.png",
+        "doorway": "characters/10_wladyslaw/doorway.jpg"
+      }
+    },
+    {
+      "id": "11_rygiel",
+      "pl": "Dr Anna Rygiel",
+      "en": "Dr Anna Rygiel",
+      "bio_pl": "kuratorka Muzeum Techniki",
+      "bio_en": "Technology Museum curator",
+      "source_sheet": "A",
+      "source_row": 2,
+      "source_col": 0,
+      "files": {
+        "portrait": "characters/11_rygiel/portrait.jpg",
+        "avatar": "characters/11_rygiel/avatar.png",
+        "doorway": "characters/11_rygiel/doorway.jpg"
+      }
+    },
+    {
+      "id": "12_jadwiga",
+      "pl": "Pani Jadwiga",
+      "en": "Mrs Jadwiga",
+      "bio_pl": "emerytowana wychowawczyni klasy 3b",
+      "bio_en": "retired class 3b teacher",
+      "source_sheet": "B",
+      "source_row": 3,
+      "source_col": 2,
+      "files": {
+        "portrait": "characters/12_jadwiga/portrait.jpg",
+        "avatar": "characters/12_jadwiga/avatar.png",
+        "doorway": "characters/12_jadwiga/doorway.jpg"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+PASS: 12 slots, 36 images, 2 cat shots, contact sheet, correct pixels, circle alpha and <= 20MB each.
+Formal QA only. Artistic QA pending: native resolution, identity and age.
