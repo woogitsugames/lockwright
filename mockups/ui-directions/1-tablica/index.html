@@ -16,7 +16,7 @@ body{background:#2a2a28;font-family:"Archivo";color:var(--letter)}
   border:10px solid var(--frame);box-shadow:inset 0 0 0 2px var(--frame-dark)}
 /* felt ribs: a groove every --g px, letters are pushed into them */
 .board::before{content:"";position:absolute;inset:0;
-  background:repeating-linear-gradient(to bottom,transparent 0 calc(var(--g) - 3px),var(--felt-groove) calc(var(--g) - 3px) var(--g));opacity:.9}
+  background:repeating-linear-gradient(to bottom,transparent 0 calc(var(--g) - 2px),var(--felt-groove) calc(var(--g) - 2px) var(--g));opacity:.55}
 .board::after{content:"";position:absolute;inset:0;opacity:.55;mix-blend-mode:screen;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .2 0 0 0 0 .2 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 .layer{position:absolute;inset:0;z-index:2;padding:calc(var(--g)*4) 22px calc(var(--g)*3)}
@@ -29,18 +29,22 @@ body{background:#2a2a28;font-family:"Archivo";color:var(--letter)}
 .row{display:flex;align-items:center;height:calc(var(--g)*4);text-decoration:none}
 .s1{font-size:15px;letter-spacing:.14em}
 .s2{font-size:24px;letter-spacing:.06em}
-.s3{font-size:36px;letter-spacing:.05em}
+.s3{font-size:34px;letter-spacing:.05em}
+.s5{font-size:46px;letter-spacing:.04em}
 .s4{font-size:58px;letter-spacing:.03em}
 
 .title{margin-bottom:var(--g)}
 .title .row{height:calc(var(--g)*6)}
 .title .sub{height:calc(var(--g)*2)}
-.menu{margin-top:calc(var(--g)*3)}
+.menu{position:absolute;left:22px;right:22px;bottom:calc(var(--g)*4)}
 .menu .row{justify-content:space-between;border-bottom:0}
 .menu .row .no{opacity:.92}
-.menu .primary{height:calc(var(--g)*6);margin-bottom:var(--g)}
+.menu .primary{height:calc(var(--g)*7);margin-bottom:calc(var(--g)*1)}
+.menu .row{height:calc(var(--g)*5)}
 .spacer{height:calc(var(--g)*2)}
-.foot{position:absolute;left:22px;right:22px;bottom:calc(var(--g)*3)}
+.foot{margin-top:calc(var(--g)*3)}
+.lt i.old{color:#e2dccb}
+.lt i.small{font-size:.86em}
 .foot .row{height:calc(var(--g)*2)}
 
 /* aluminium name plate screwed to frame — plain, matte */
@@ -54,14 +58,18 @@ body{background:#2a2a28;font-family:"Archivo";color:var(--letter)}
 .slip{position:relative;background:var(--paper);color:var(--ink);font-family:"IBM Plex Mono";padding:16px 11px 10px;
   box-shadow:0 2px 0 rgba(0,0,0,.45),0 6px 10px rgba(0,0,0,.35);min-height:48px}
 .slip .hdr{display:flex;justify-content:space-between;font-size:10.5px;letter-spacing:.06em;color:var(--ink-2);border-bottom:1px dashed #8d897f;padding-bottom:4px}
-.slip h3{font:600 15.5px/1.15 "IBM Plex Mono";margin:7px 0 6px;letter-spacing:-.01em}
+.slip h3{font:600 16.5px/1.15 "IBM Plex Mono";margin:7px 0 6px;letter-spacing:-.01em}
 .slip p{font-size:11.5px;line-height:1.35;color:var(--ink-2)}
 .slip .pay{display:flex;justify-content:space-between;margin-top:7px;font-size:12px;color:var(--ink);font-weight:600}
 .slip.new .hdr{background:var(--ink);color:var(--paper);border:0;padding:3px 5px;margin:0 -3px}
 /* done: slip folded in half upwards — only the title strip remains, back of the sheet shows */
 .slip.done{padding:14px 11px 9px;background:#e4e0d5}
 .slip.done::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;background:#cfcabd;clip-path:polygon(0 0,100% 0,96% 100%,4% 100%)}
-.slip.done h3{margin:0 0 3px;font-size:14px;color:#3a3833;text-decoration:line-through;text-decoration-thickness:1.5px}
+.slip.done h3{margin:0 0 2px;font-size:14.5px;color:#2e2c28}
+.pile{position:relative;margin-top:calc(var(--g)*2)}
+.pile .slip.done{position:absolute;left:0;right:0;height:120px}
+.pile .tack{left:24px}
+.pilehead{height:calc(var(--g)*3);display:flex;align-items:center;margin-top:calc(var(--g)*1)}
 .slip.done .st{font-size:11px;color:var(--ink-2);letter-spacing:.04em}
 .tack{position:absolute;top:-5px;left:50%;width:15px;height:15px;margin-left:-7px;border-radius:50%;
   background:#d9d8d2;box-shadow:inset 0 -2px 0 #8f8e89,0 2px 2px rgba(0,0,0,.6)}
@@ -70,12 +78,14 @@ body{background:#2a2a28;font-family:"Archivo";color:var(--letter)}
 /* ---------- settings: typed index card ---------- */
 .card{position:relative;margin-top:calc(var(--g)*1);background:var(--paper);color:var(--ink);font-family:"IBM Plex Mono";
   padding:22px 16px 18px;box-shadow:0 2px 0 rgba(0,0,0,.45),0 8px 14px rgba(0,0,0,.35);
-  background-image:repeating-linear-gradient(to bottom,transparent 0 31px,rgba(110,140,165,.42) 31px 32px);background-position:0 54px;transform:rotate(-.4deg)}
+  transform:rotate(-.4deg)}
+.card .hole{position:absolute;left:50%;bottom:10px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--felt);box-shadow:inset 0 1px 2px #000}
+.opt{border-bottom:1px solid rgba(110,140,165,.55)}
 .card .tack{left:50%;top:-6px}
 .card .cardtop{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--red);padding-bottom:6px;height:32px}
 .card .cardtop b{font-weight:600;font-size:15px;letter-spacing:.08em}
 .card .cardtop span{font-size:11px;color:var(--ink-2)}
-.sec{font-size:11px;letter-spacing:.16em;color:var(--red);font-weight:600;height:32px;display:flex;align-items:flex-end;padding-bottom:5px}
+.sec{font-size:11.5px;letter-spacing:.16em;color:var(--red);font-weight:600;height:32px;display:flex;align-items:flex-end;padding-bottom:5px}
 .opt{display:flex;align-items:center;justify-content:space-between;min-height:48px;font-size:14.5px}
 .opt .lab{white-space:nowrap}
 .choice{display:flex;gap:4px}
@@ -95,8 +105,11 @@ body{background:#2a2a28;font-family:"Archivo";color:var(--letter)}
   .layer{padding:calc(var(--g)*2) 30px}
   .s4{font-size:52px}
   .mwrap{display:grid;grid-template-columns:1fr 1.15fr;column-gap:44px;height:100%}
-  .menu{margin-top:calc(var(--g)*1)}
-  .foot{position:static;margin-top:calc(var(--g)*3)}
+  .menu{position:static;align-self:end;margin-bottom:calc(var(--g)*1)}
+  .menu .row{height:calc(var(--g)*4)}
+  .menu .primary{height:calc(var(--g)*5);margin-bottom:0}
+  .foot{margin-top:calc(var(--g)*2)}
+  .foot .spacer{height:var(--g)}
 }
 </style></head><body>
 <div class="board"><div class="layer" id="app"></div></div>
@@ -123,13 +136,15 @@ const land = matchMedia('(orientation:landscape)').matches;
 
 if (LW.screen === 'menu') {
   const num = ['', '2', '3', '4', '5', '6'];
+  const lab = { 3: 'GAB^LOTA', 5: 'O GRZE' };
   const items = LW.menu.map((m, i) => m.primary
     ? `<a class="row primary">${L('→ ' + up(m.label), 's3')}</a>`
-    : `<a class="row">${L(i === 3 ? 'GAB^LOTA' : up(m.label), 's2')}${L('M. ' + (i + 1), 's1 no')}</a>`).join('');
+    : `<a class="row">${L(lab[i] || up(m.label), 's2')}${L('M. ' + (i + 1), 's1 no')}</a>`).join('');
   app.innerHTML = `<div class="mwrap"><div>
     <div class="title">
       <div class="row sub">${L('POGOTOWIE ZAMKOWE · CAŁĄ DOBĘ', 's1')}</div>
       <div class="row">${L('LOCKWRIGHT', 's4')}</div>
+      <div class="row sub">${L('DOZORCA NIE MA KLUCZY. MY MAMY.', 's1')}</div>
     </div>
     <div class="foot">
       <div class="row">${L('KRÓTKA PAUZA KOSZTUJE', 's1')}</div>
@@ -138,7 +153,9 @@ if (LW.screen === 'menu') {
       <div class="row">${L('DYŻURNY: PARTER, M. 1', 's1')}</div>
     </div></div>
     <div class="menu">${items}</div></div>`;
-  if (!land) { const f = app.querySelector('.foot'); app.appendChild(f); }
+  // a few letters are older (yellowed) than the rest: someone re-lettered the board
+  app.querySelectorAll('.s4 i').forEach((e, k) => { if (k === 2 || k === 7) e.classList.add('old'); });
+  app.querySelectorAll('.primary i').forEach((e, k) => { if (k === 9) e.classList.add('old'); });
 }
 
 if (LW.screen === 'jobs') {
@@ -153,13 +170,18 @@ if (LW.screen === 'jobs') {
   };
   // pinned order: open & new on top, done below (the board fills up from the top)
   const order = [...LW.jobs.filter(j => j.state !== 'done'), ...LW.jobs.filter(j => j.state === 'done')];
+  const done = LW.jobs.filter(j => j.state === 'done');
+  const pile = done.map((j, k) => `<div class="slip done" style="top:${k * 52}px;transform:rotate(${[-1.4, .8, -.5, 1.2][k]}deg)">
+      <h3>${j.title}</h3><div class="st">wykonane · ${j.time} · ${j.pay}</div></div>`).join('');
   app.innerHTML = `<div class="jhead"><a class="back">${L('‹ WSTECZ', 's2')}</a>${L('ZLECENIA', 's2')}</div>
-    <div class="slips">${order.map(slip).join('')}</div>`;
+    <div class="slips">${order.filter(j => j.state !== 'done').map(slip).join('')}</div>
+    <div class="pilehead">${L('WYKONANE', 's1')}</div>
+    <div class="pile">${pile}<div class="tack" style="top:-6px;z-index:5"></div></div>`;
 }
 
 if (LW.screen === 'settings') {
   const S = LW.settings;
-  const scale = v => { const n = Math.round(v / 10); return `<span class="bar">0 <b>${'='.repeat(n)}</b>${'·'.repeat(10 - n)} </span><span class="val">${v}%</span>`; };
+  const scale = v => { const n = Math.round(v / 10); return `<span class="bar">0 ${'='.repeat(n - 1)}<b>|</b>${'·'.repeat(10 - n)}</span><span class="val">${v}%</span>`; };
   app.innerHTML = `<div class="jhead"><a class="back">${L('‹ WSTECZ', 's2')}</a>${L('USTAWIENIA', 's2')}</div>
   <div class="card"><div class="tack"></div>
     <div class="cardtop"><b>KARTA USTAWIEŃ</b><span>dyżurny: ty</span></div>
@@ -175,6 +197,7 @@ if (LW.screen === 'settings') {
     <div class="opt"><span class="lab">Napięcie automatyczne</span><span class="choice"><span>wł.</span><span class="on">wył.</span></span></div>
     <div class="note">Napięcie trzyma się samo na bezpiecznym poziomie, a ty prowadzisz wytrych jednym kciukiem.</div>
     <div class="opt"><span class="lab">Język</span><span class="choice"><span class="on">polski</span><span>English</span></span></div>
+    <div style="height:30px"></div><div class="hole"></div>
   </div>`;
 }
 </script>
