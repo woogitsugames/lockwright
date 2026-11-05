@@ -41,7 +41,7 @@ jobs:
           if [ ! -f gradlew ]; then
             curl -sL -o gradle-8.11.1-bin.zip https://services.gradle.org/distributions/gradle-8.11.1-bin.zip
             unzip -q gradle-8.11.1-bin.zip
-            ln -s gradle-8.11.1/bin/gradle gradlew
+            ln -sf gradle-8.11.1/bin/gradle gradlew
             chmod +x gradlew
           fi
           ./gradlew :lockwright-haptics:assembleRelease

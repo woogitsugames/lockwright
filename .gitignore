@@ -9,3 +9,4 @@ game/i18n/*.translation
 .sconsign.dblite
 game/build/
 game/android/build/
+platform/android/gradlew
