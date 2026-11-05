@@ -1,63 +1,41 @@
 extends Control
 ## Endless run (Tryb Ciągły, PROGRESSION §2): generated locks with the tier curve
-## 1 + 1.2*ln(1+n)*skill, 3 lives, workshop stop every 5 locks, rubber band after 2 breaks.
-
-var _n := 0  # locks in this run
-var _breaks := 0
-var _last_breaks := 0
+## 1 + 1.2*ln(1+n)*skill, 3 lives, rubber band after 2 breaks in a row.
+## N-64: the run's state is RunState (static), so it survives this scene being reloaded
+## after every lock; Events records each lock's result before routing back here.
 
 
 func _ready() -> void:
 	$VBox/Title.text = I18n.t(&"run.title")
-	_refresh()
-	$VBox/StartButton.text = I18n.t(&"menu.play")
 	$VBox/StartButton.custom_minimum_size = Vector2(0, 48)
+	if RunState.finished:
+		_show_finished()
+		return
+	$VBox/StartButton.text = I18n.t(&"menu.play")
 	$VBox/StartButton.pressed.connect(_next_lock)
-	$VBox/Info.text = I18n.t(&"run.lock_n").format({"n": _n + 1})
-
-
-func _tier_for(n: int) -> int:
-	# progression.json tier_curve: 1 + 1.2*ln(1+n)*skill, rubber band -1 after 2 breaks
-	var skill := 1.0
-	var t := 1.0 + 1.2 * log(1.0 + n) * skill
-	if _breaks - _last_breaks >= 2:
-		t -= 1.0
-	return clampi(int(t), 1, 6)
-
-
-func _next_lock() -> void:
-	var tier := _tier_for(_n)
-	var families := JobRun.PHOTOREAL_READY  # N-63: never route the player to the placeholder view
-	var fam: StringName = families[_n % families.size()]
-	JobRun.mode = &"run"
-	JobRun.current_job = {"id": "run.%d" % _n, "family": String(fam), "tier": tier, "reward_coins": 10 * tier, "i18n": {}}
-	get_tree().change_scene_to_file(JobRun.lock_scene_path())
+	_refresh()
 
 
 func _refresh() -> void:
-	$VBox/Info.text = I18n.t(&"run.lock_n").format({"n": _n + 1}) + " · " + I18n.t(&"run.lives_left") + ": " + str(JobRun.lives)
+	var info := I18n.t(&"run.lock_n").format({"n": RunState.n + 1}) + " · " + I18n.t(&"run.lives_left") + ": " + str(RunState.lives)
+	if RunState.breaks_in_row >= 2:
+		info += "\n" + I18n.t(&"run.rubber_band")
+	$VBox/Info.text = info
 
 
-func on_lock_finished(opened: bool) -> void:
-	_n += 1
-	if not opened:
-		_breaks += 1
-		JobRun.lives -= 1
-		if JobRun.lives <= 0:
-			_finish_run()
-			return
-	Save.set_value("coins", Save.get_value("coins", 0) + 10 * _tier_for(_n))
-	_refresh()
+func _next_lock() -> void:
+	JobRun.mode = &"run"
+	JobRun.current_job = RunState.next_job()
+	JobRun.clean = true
+	get_tree().change_scene_to_file(JobRun.lock_scene_path())
 
 
-func _finish_run() -> void:
-	Save.set_value("stats/runs_finished", Save.get_value("stats/runs_finished", 0) + 1)
-	$VBox/Title.text = I18n.t(&"run.finished").format({"n": Save.get_value("coins", 0)})
+func _show_finished() -> void:
+	$VBox/Title.text = I18n.t(&"run.finished").format({"n": RunState.coins})
+	$VBox/Info.text = ""
 	$VBox/StartButton.text = I18n.t(&"common.continue")
-	$VBox/StartButton.pressed.disconnect(_next_lock)
 	$VBox/StartButton.pressed.connect(func() -> void:
-		_n = 0
-		_breaks = 0
-		JobRun.lives = 3
+		RunState.reset()
 		JobRun.current_job = {}
+		JobRun.mode = &"job"
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
