@@ -114,3 +114,10 @@ Sprawdź `git log` i zawartość tych katalogów.
 
 ## 7. Prompt startowy dla nowej sesji
 Patrz `docs/handoff/SESSION-A-START-PROMPT.md`.
+
+## 8. Nowa sesja A (2026-11-05, ok. 21:15 UTC)
+- Trigger „Lockwright: godzinna kontrola” utworzony na nowym koncie (`CRON_TZ=Europe/Warsaw 31 * * * *`).
+- APK **run 132** (42088d4, ze stopgapem N-63) zielony, VIBRATE w manifeście (UTF-16LE) ✓, AAB 55,6 MB ✓ — wysłany właścicielowi.
+- `game-tests` 131 czerwony tylko przez `test_e2e_career` (5 grywalnych zleceń < 10 po N-63) — test poprawiony (7cb0deb): każde zlecenie rodziny z `PHOTOREAL_READY` musi być grywalne.
+- Proof menu `art/renders/menu/menu_portrait.png` **nie pokazany** właścicielowi: płaskie światło, tablica za mała obok renderów zamków. Do poprawy po instalacji Blendera (pobranie z blender.org czeka na zgodę właściciela w nowym środowisku).
+- Agenci: plan B dla warded → wafer → lever (N-63, zakres `game/scripts/photoreal*`, `game/scripts/lock`, sceny photoreal, `export_presets.cfg`); odbiór Mistral V01 (`tools/`, `lint.yml`, `game/i18n/*.csv`, `docs/ASSETS.md`).
