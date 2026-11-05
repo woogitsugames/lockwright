@@ -2,7 +2,7 @@
   "id": "job.liege_bakery",
   "chapter": 5,
   "district": "Liège",
-  "family": "lever",
+  "family": "lever_detector",
   "tier": 2,
   "verification": "dokument przejęcia firmy (3) i umowa najmu (2). Haczyk: brak.",
   "reward_coins": 130,

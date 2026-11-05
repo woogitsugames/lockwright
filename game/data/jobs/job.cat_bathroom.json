@@ -2,7 +2,7 @@
   "id": "job.cat_bathroom",
   "chapter": 1,
   "district": "Osiedle Słoneczne",
-  "family": "lever",
+  "family": "warded",
   "tier": 1,
   "verification": "próg 0, bo klient jest w swoim mieszkaniu. Zlecenie uczy, że weryfikacja zależy od sytuacji.",
   "reward_coins": 60,

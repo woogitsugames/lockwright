@@ -11,30 +11,142 @@
     "rubber_band_tier_penalty": -1
   },
   "tier_curve": {
-    "formula": "tier(n) = min(tier_max(tools), 1 + 0.55 * ln(1 + n) * skill)",
-    "skill_range": [0.8, 1.25],
+    "formula": "tier(n) = min(tier_max(tools), 1 + 1.2 * ln(1 + n) * skill)",
+    "skill_range": [
+      0.8,
+      1.25
+    ],
     "table": [
-      {"locks": "1-3", "tier": "1-2", "families": ["egyptian", "lever", "wafer"], "target_time_s": [30, 60]},
-      {"locks": "4-8", "tier": "2-3", "families": ["pin_tumbler_3_4", "combo"], "target_time_s": [45, 90]},
-      {"locks": "9-15", "tier": "3-4", "families": ["pin_tumbler_4_5_spool", "lever"], "target_time_s": [60, 120]},
-      {"locks": "16-25", "tier": "4-5", "families": ["pin_tumbler_5_2_security", "lever_4_5"], "target_time_s": [60, 150]},
-      {"locks": "26+", "tier": "5-6", "families": ["mixed", "narrow_keyway", "lever_detector"], "target_time_s": [90, 180]}
+      {
+        "locks": "1-3",
+        "tier": "1-2",
+        "families": [
+          "egyptian",
+          "lever",
+          "wafer"
+        ],
+        "target_time_s": [
+          30,
+          60
+        ]
+      },
+      {
+        "locks": "4-8",
+        "tier": "2-3",
+        "families": [
+          "pin_tumbler_3_4",
+          "combo"
+        ],
+        "target_time_s": [
+          45,
+          90
+        ]
+      },
+      {
+        "locks": "9-15",
+        "tier": "3-4",
+        "families": [
+          "pin_tumbler_4_5_spool",
+          "lever"
+        ],
+        "target_time_s": [
+          60,
+          120
+        ]
+      },
+      {
+        "locks": "16-25",
+        "tier": "4-5",
+        "families": [
+          "pin_tumbler_5_2_security",
+          "lever_4_5"
+        ],
+        "target_time_s": [
+          60,
+          150
+        ]
+      },
+      {
+        "locks": "26+",
+        "tier": "5-6",
+        "families": [
+          "mixed",
+          "narrow_keyway",
+          "lever_detector"
+        ],
+        "target_time_s": [
+          90,
+          180
+        ]
+      }
     ],
     "max_family_repeat": 2
   },
   "economy": {
     "avg_income_mid_run": 40,
     "session_minutes": 8,
-    "session_income": 300,
+    "session_income": 385,
     "mvp_tools_total": 1080,
     "sessions_to_all_tools": 4,
     "no_real_money": true
   },
   "families": [
-    {"id": "egyptian"}, {"id": "lever"}, {"id": "wafer"}, {"id": "pin_tumbler"},
-    {"id": "combo"}, {"id": "lever_detector"}, {"id": "tubular"}, {"id": "magnetic"},
-    {"id": "dial_safe"}, {"id": "time_lock"}, {"id": "dimple"}, {"id": "disc_detainer"},
-    {"id": "bramah"}, {"id": "axial_slider"}, {"id": "sidebar"}, {"id": "wooden_pin"},
-    {"id": "warded"}, {"id": "ring_combo"}, {"id": "wafer_double"}
+    {
+      "id": "egyptian"
+    },
+    {
+      "id": "lever"
+    },
+    {
+      "id": "wafer"
+    },
+    {
+      "id": "pin_tumbler"
+    },
+    {
+      "id": "combo"
+    },
+    {
+      "id": "lever_detector"
+    },
+    {
+      "id": "tubular"
+    },
+    {
+      "id": "magnetic"
+    },
+    {
+      "id": "dial_safe"
+    },
+    {
+      "id": "time_lock"
+    },
+    {
+      "id": "dimple"
+    },
+    {
+      "id": "disc_detainer"
+    },
+    {
+      "id": "bramah"
+    },
+    {
+      "id": "axial_slider"
+    },
+    {
+      "id": "sidebar"
+    },
+    {
+      "id": "wooden_pin"
+    },
+    {
+      "id": "warded"
+    },
+    {
+      "id": "ring_combo"
+    },
+    {
+      "id": "wafer_double"
+    }
   ]
 }
