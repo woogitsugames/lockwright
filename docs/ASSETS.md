@@ -166,3 +166,4 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 ## G21: portrety rozdziału 8 i skórzany język pauzy (ChatGPT, 2026-11-05)
 - `game/assets/ui/gpt/cast/episodic/portrait_{janka,mila,oskar,pawel,karol,leon}.webp` — fikcyjne portrety, generator obrazów ChatGPT; źródła 1024² i prompty w `contrib/gpt/G21/` (`ASSETS.md` tam). Edycja: skalowanie do 256², WebP q82.
 - `contrib/gpt/G21/images/leather_tab_snap_topdown(_alt).png` — skórzany język z napą (przycisk pauzy, N-56), źródło do wycięcia alfą.
+- `game/assets/photo/objects/pause_tab_1k.png` — klapka pauzy (N-56) z `leather_tab_snap_topdown.png` (G21, generator obrazów ChatGPT, prompt w `contrib/gpt/G21/`). Edycja: alfa z kluczowania szarego tła i cienia (maska „ciepłej” skóry R−B > 13, domknięcie, erozja 2 px, pióro 1,5 px), obrót 90° w prawo (zaokrąglony koniec z napą w dół), 256×511 px (≈2× ekranowych 56 dp na telefonie ~2,5×); import lossy 0,8.
