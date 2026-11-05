@@ -677,3 +677,24 @@ Zrzuty: `docs/handoff/device-tests/run135/`.
 - **N-66:** rachunek po zleceniu pusty (Klient/Usługa/pozycje bez wartości), trzy przyciski i przycisk w lewym dole bez napisów. Przycisk „‹ Wstecz” w przyjeździe ucięty. Agent QA.
 - **Głosy:** „słychać tylko mmm” — to wokalizacje S03 bez słów. Decyzja właściciela **D-57**: pełne kwestie czytane przez lektora AI (PL+EN). Agent głosów generuje nagrania; integracja w `job_arrival.gd` po agencie QA.
 - **Scenka przyjazdu:** decyzja **D-58** (2.5D z Blendera), proof dla `job.wrong_floor` po zwolnieniu renderera.
+
+## Od sesji A: N-64 i N-66 — zamrożony zamek po samouczku, pusty rachunek (agent QA)
+**N-64. Odtworzenie:** sterownik headless (`--fixed-fps 120`), czysty zapis, przeszedł boot → wybór sterowania (auto i dwa kciuki) → S1–S3 → „Ukończono” → menu → „Zacznij dyżur” → zamek. Testowane na 2dfcd33 (APK właściciela) i na poprawce.
+- **Przyczyna (a): wejście działało, problem był po otwarciu.** Na 2dfcd33 „Zacznij dyżur” otwierał domyślny zamek bez zlecenia (5 pinów, tier 4, z pinami grzybkowymi). W tej samej sesji tryb zostawał „tutorial”, więc po otwarciu gra wracała do ekranu „Ukończono” i zapętlała się. Po restarcie aplikacji tryb był „job” z pustym zleceniem. `Events` nie miał wtedy dokąd przejść, a zakończona sesja lockcore ignoruje wejście. Efekt zgadza się z nagraniem: kropki dotyku są, wytrych i piny stoją, działa tylko pauza.
+- **Druga droga do tego samego objawu:** złamany wytrych też kończy sesję lockcore (`finished()`). Żaden ekran zamka nie przechodził wtedy dalej.
+- **Poprawka:**
+  - be5e183: menu i wybór sterowania po samouczku prowadzą do `run_loop`.
+  - `Events`: pusty job po otwarciu → menu, bez podbijania etapu samouczka.
+  - Nowe `Events._on_lock_failed`: po 1,5 s run → `run_loop` (minus życie), zlecenie → lista zleceń, samouczek → ten sam etap, brak zlecenia → menu.
+  - Tryb ciągły trzyma stan w `RunState` (static, `scripts/ui/run_state.gd`), więc przeładowanie `run_loop.tscn` go nie zeruje. Licznik, krzywa tieru, monety, 3 życia i koniec serii działają.
+- **Testy:** `tests/gut/test_flow_after_tutorial.gd`, 9 testów, w tym prawdziwy zamek run.0 otwierany kciukiem przez InputSampler. Sterownik end-to-end: S1–S3 i 3 zamki serii („Zamek 1 → 2 → 3 → 4”), także po restarcie.
+
+**N-66:** `job_payment.tscn` był kopią ekranu weryfikacji (puste etykiety i 4 przyciski bez tekstu).
+- Teraz to wypełniony odręcznie (Caveat) rachunek G14: nr, data, klient, usługa, pozycja zlecenia, napiwek i razem.
+- Napiwek liczony jak w `JobRun.complete()`. Wcześniej `last_tip` był nieaktualny, bo `complete()` działa dopiero po „Kontynuuj”.
+- „Kontynuuj” ma tekst od razu. Wstecz (Android) też rozlicza rachunek.
+- W `job_arrival.tscn` zdjęte ucinanie przycisku „‹ Wstecz”.
+- Nowe klucze: `receipt.service`, `receipt.tip`.
+- Zrzut: `docs/handoff/device-tests/run135/n66_receipt_arrival_fixed.png`.
+
+**GUT lokalnie:** 110/111. Jedyny błąd to `test_sfx.test_play_voice_finds_plain_file_and_shared_folder` (pliki głosów agenta głosów, niezwiązane).
