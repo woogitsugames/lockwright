@@ -1,0 +1,5 @@
+keys,en,pl,de
+menu.play,Play,Graj,Spielen
+menu.title,Lockwright,Lockwright,Lockwright
+common.back,Back,Wróć,Zurück
+job.reward_fmt,Reward: {n} coins,Nagroda: {n} monet,Belohnung: {n} Münzen

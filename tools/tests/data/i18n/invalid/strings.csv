@@ -1,0 +1,11 @@
+keys,en,pl,de
+menu.play,Play,Graj,Spielen
+menu.play,Play again,Graj ponownie,Nochmals spielen
+common.back,Back,,Zurück
+job.reward_fmt,Reward: {n} coins,Nagroda: {count} monet,Belohnung: {n} Münzen
+tutorial.too_long,This English tutorial text is definitely way too long to fit here.,Ten polski tekst samouczka jest zdecydowanie o wiele za długi.,Dieser deutsche Tutorialtext ist definitiv viel zu lang.
+lock.too_long_de,Short,Krótko,Dieser deutsche Text für den Schlossbereich ist viel zu lang
+warn.quotes,He said hi,"On powiedział ""cześć""",Er sagte Hallo
+warn.untranslated,reload,reload,Neu laden
+warn.banned,Open the door,Włamanie do środka,Tu włamać się
+ok.key,Fine,Dobrze,Fein
