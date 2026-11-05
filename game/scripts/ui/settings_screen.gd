@@ -15,6 +15,7 @@ const BG := "res://assets/ui/gpt/workshop/04-tool-board-portrait.webp"
 @onready var master_slider: HSlider = get_node(S + "Sound/Box/MasterSlider")
 @onready var sfx_slider: HSlider = get_node(S + "Sound/Box/SfxSlider")
 @onready var ambience_slider: HSlider = get_node(S + "Sound/Box/AmbienceSlider")
+@onready var voice_slider: HSlider = get_node(S + "Sound/Box/VoiceSlider")
 @onready var auto_tension_check: CheckButton = get_node(S + "Controls/Box/AutoTensionCheck")
 @onready var continuous_check: CheckButton = get_node(S + "Controls/Box/ContinuousCheck")
 @onready var language_option: OptionButton = get_node(S + "Access/Box/LanguageOption")
@@ -60,6 +61,7 @@ func _load_values() -> void:
 	master_slider.set_value_no_signal(Settings.get_value("volume_master"))
 	sfx_slider.set_value_no_signal(Settings.get_value("volume_sfx"))
 	ambience_slider.set_value_no_signal(Settings.get_value("volume_ambience"))
+	voice_slider.set_value_no_signal(Settings.get_value("volume_voice", 1.0))
 	auto_tension_check.set_pressed_no_signal(Settings.get_value("auto_tension", true))
 	dark_assist_check.set_pressed_no_signal(Settings.get_value("dark_mode_assist"))
 	reading_aid_check.set_pressed_no_signal(Settings.get_value("reading_aid"))
@@ -104,6 +106,7 @@ func _update_values() -> void:
 	get_node(S + "Sound/Box/MasterRow/Value").text = _pct(master_slider.value)
 	get_node(S + "Sound/Box/SfxRow/Value").text = _pct(sfx_slider.value)
 	get_node(S + "Sound/Box/AmbienceRow/Value").text = _pct(ambience_slider.value)
+	get_node(S + "Sound/Box/VoiceRow/Value").text = _pct(voice_slider.value)
 	get_node(S + "Access/Box/TextScaleRow/Value").text = "%d%%" % int(text_scale_slider.value)
 
 
@@ -121,6 +124,9 @@ func _wire() -> void:
 		_update_values())
 	ambience_slider.value_changed.connect(func(v: float) -> void:
 		Settings.set_value("volume_ambience", v)
+		_update_values())
+	voice_slider.value_changed.connect(func(v: float) -> void:
+		Settings.set_value("volume_voice", v)
 		_update_values())
 	auto_tension_check.toggled.connect(func(on: bool) -> void:
 		Settings.set_value("auto_tension", on)
@@ -185,6 +191,7 @@ func _refresh_texts() -> void:
 	get_node(S + "Sound/Box/MasterRow/Name").text = I18n.t(&"settings.volume_master")
 	get_node(S + "Sound/Box/SfxRow/Name").text = I18n.t(&"settings.volume_sfx")
 	get_node(S + "Sound/Box/AmbienceRow/Name").text = I18n.t(&"settings.volume_ambience")
+	get_node(S + "Sound/Box/VoiceRow/Name").text = I18n.t(&"settings.volume_voice")
 	auto_tension_check.text = I18n.t(&"ui.controls.auto_toggle")
 	get_node(S + "Controls/Box/AutoTensionNote").text = I18n.t(&"ui.controls.auto_desc")
 	continuous_check.text = I18n.t(&"settings.continuous_resistance")

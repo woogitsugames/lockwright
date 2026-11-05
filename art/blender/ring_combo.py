@@ -83,12 +83,14 @@ def digit_mesh(name, text, x, ang, size, z0, z1):
     return t
 
 ENGRAVE, INK_TOP, DIGIT_SIZE = 0.32, 0.07, 7.4   # mm deep, ink fill sits 0.07 mm below the flat, glyph size
+RIM_Z = 14.0   # the ring keeps its front half above this height (top flat intact)
 
 def ring(i, x, st, gate_deg):
-    # 10-sided dial with eased corners (one flat per digit), bore, gate notch, detent grooves.
-    # Flats at 18 + 36k deg: the section plane (y = 0) runs along two edges, so every flat that is left after the cut
-    # is whole and so is its digit; the flat at 18 deg faces the camera and shows the current digit.
+    # 10-sided dial with eased corners (one flat per digit, flat at the top shows the current digit), bore, gate notch,
+    # detent grooves. Broken-out section: the front half is cut away below RIM_Z only, so the top flat and its digit
+    # stay whole (a full cut would halve the digit) and still do not hide the gate and lug below.
     o = cyl('ring%d' % i, R_OUT / math.cos(math.pi / 10), THK, (x, 0, 0), axis='X', verts=10)
+    o.data.transform(Matrix.Rotation(math.pi / 10, 4, 'X'))
     boolean(o, lathe_x('round', [(x - THK, R_OUT - 0.05 + 0.9), (x + THK, R_OUT + 0.9)], seg=160), 'INTERSECT')
     boolean(o, lathe_x('bore', [(x - 10, R_IN), (x + 10, R_IN)], seg=128))
     # gate: a slot through the ring thickness at gate_deg from the top
@@ -101,10 +103,10 @@ def ring(i, x, st, gate_deg):
     for k in range(10):  # detent V-grooves on the right face
         v = box('dv', x + THK / 2 - 0.5, x + THK / 2 + 1, -0.45, 0.45, R_IN + 1.6, R_IN + 3.0)
         v.data.transform(Matrix.Rotation(math.radians(36 * k + 18), 4, 'X')); boolean(o, v)
-    cut_half(o)
-    # digits 0-9 engraved into the flats (only the five flats left after the cut), filled with black ink
+    boolean(o, box('cut', -300, 300, -200, 0, -300, RIM_Z))
+    # digits 0-9 engraved into the whole flats left after the cut (top one included), filled with black ink
     for k in range(5):
-        ang, txt = 18 + 36 * k, str((k + i * 3) % 10)
+        ang, txt = 36 * k, str((k + i * 3) % 10)
         boolean(o, digit_mesh('engrave', txt, x, ang, DIGIT_SIZE, R_OUT - ENGRAVE, R_OUT + 1.0))
         ink = digit_mesh('digit', txt, x, ang, DIGIT_SIZE * 0.995, R_OUT - ENGRAVE - 0.05, R_OUT - INK_TOP)
         ink.data.materials.append(MAT['ink'])

@@ -131,3 +131,4 @@ Kolejka, gdy ktoś skończy:
 4. Głosy DE, potem FR/ES (teksty z T31–T37 po korekcie).
 5. Plan B dla nowych rodzin lockcore, gdy będą gotowe.
 6. Rano: paczki Magnific (sekcje C, D), ChatGPT (`gpt5/`), Mistral (V03) + APK + zestawienia.
+- **Właściciel 2026-11-05 22:05:** na razie **tylko rozwój gry** — żadnych filmów, zwiastunów (GEM1-v2 wstrzymany), rolek ani materiałów marketingowych. **Gemini niedostępny** (brak limitu) — bez zleceń dla niego. Rendery GPU i testy przez adb może robić lokalna sesja Claude Code u właściciela (RTX 5070, 64 GB RAM).
