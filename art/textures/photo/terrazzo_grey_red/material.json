@@ -1,0 +1,18 @@
+{
+  "name": "terrazzo_grey_red",
+  "source": "contrib/incoming/magnific/selected/terrazzo_grey_red.jpg",
+  "mode": "tile",
+  "tiling": "u+v",
+  "metallic": 0.0,
+  "roughness_range": [
+    0.32,
+    0.62
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 2.0,
+  "height_highpass_sigma_px": 12,
+  "lighting_flatten": "full",
+  "overlap_x": 343,
+  "overlap_y": 283,
+  "rough_mean": 0.468
+}

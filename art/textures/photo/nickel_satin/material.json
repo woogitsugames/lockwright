@@ -1,0 +1,18 @@
+{
+  "name": "nickel_satin",
+  "source": "contrib/incoming/magnific/selected/nickel_satin.jpg",
+  "mode": "tile",
+  "tiling": "u+v",
+  "metallic": 1.0,
+  "roughness_range": [
+    0.22,
+    0.4
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 1.5,
+  "height_highpass_sigma_px": 8,
+  "lighting_flatten": "full",
+  "overlap_x": 339,
+  "overlap_y": 323,
+  "rough_mean": 0.324
+}

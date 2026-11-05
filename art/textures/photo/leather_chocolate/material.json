@@ -1,0 +1,18 @@
+{
+  "name": "leather_chocolate",
+  "source": "contrib/incoming/leather_set_2026-11-05/leather_chocolate.jpg",
+  "mode": "tile",
+  "tiling": "u+v",
+  "metallic": 0.0,
+  "roughness_range": [
+    0.4,
+    0.76
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 4.0,
+  "height_highpass_sigma_px": 18,
+  "lighting_flatten": "full",
+  "overlap_x": 144,
+  "overlap_y": 340,
+  "rough_mean": 0.598
+}

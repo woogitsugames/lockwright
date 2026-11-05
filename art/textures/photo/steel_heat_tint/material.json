@@ -1,0 +1,17 @@
+{
+  "name": "steel_heat_tint",
+  "source": "contrib/incoming/magnific/selected/steel_heat_tint.jpg",
+  "mode": "strip",
+  "tiling": "u only",
+  "metallic": 1.0,
+  "roughness_range": [
+    0.18,
+    0.34
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 1.2,
+  "height_highpass_sigma_px": 6,
+  "lighting_flatten": "x",
+  "overlap_x": 343,
+  "rough_mean": 0.272
+}

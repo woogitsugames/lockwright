@@ -1,0 +1,18 @@
+{
+  "name": "brass_patina_grease",
+  "source": "contrib/incoming/magnific/selected/brass_patina_grease.jpg",
+  "mode": "tile",
+  "tiling": "u+v",
+  "metallic": 1.0,
+  "roughness_range": [
+    0.3,
+    0.82
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 3.0,
+  "height_highpass_sigma_px": 16,
+  "lighting_flatten": "full",
+  "overlap_x": 143,
+  "overlap_y": 327,
+  "rough_mean": 0.575
+}

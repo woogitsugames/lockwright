@@ -1,0 +1,16 @@
+{
+  "name": "brass_turned",
+  "source": "contrib/incoming/magnific/selected/brass_turned.jpg",
+  "mode": "radial",
+  "tiling": "none (centred)",
+  "metallic": 1.0,
+  "roughness_range": [
+    0.18,
+    0.34
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 2.0,
+  "height_highpass_sigma_px": 6,
+  "lighting_flatten": "none",
+  "rough_mean": 0.262
+}

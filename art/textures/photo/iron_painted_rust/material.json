@@ -1,0 +1,19 @@
+{
+  "name": "iron_painted_rust",
+  "source": "contrib/incoming/magnific/selected/iron_painted_rust.jpg",
+  "mode": "tile",
+  "tiling": "u+v",
+  "metallic": 0.0,
+  "roughness_range": [
+    0.35,
+    0.92
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 4.0,
+  "height_highpass_sigma_px": 20,
+  "lighting_flatten": "full",
+  "overlap_x": 347,
+  "overlap_y": 347,
+  "rough_mean": 0.761,
+  "metallic_note": "painted iron: treat as dielectric; rust/bare spots could use a mask later"
+}

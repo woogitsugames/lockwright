@@ -1,0 +1,18 @@
+{
+  "name": "spring_steel_polished",
+  "source": "contrib/incoming/magnific/selected/spring_steel_polished.jpg",
+  "mode": "tile",
+  "tiling": "u+v",
+  "metallic": 1.0,
+  "roughness_range": [
+    0.16,
+    0.28
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 1.2,
+  "height_highpass_sigma_px": 6,
+  "lighting_flatten": "full",
+  "overlap_x": 171,
+  "overlap_y": 147,
+  "rough_mean": 0.247
+}

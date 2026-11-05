@@ -1,0 +1,18 @@
+{
+  "name": "steel_ground",
+  "source": "contrib/incoming/magnific/selected/steel_ground.jpg",
+  "mode": "tile",
+  "tiling": "u+v",
+  "metallic": 1.0,
+  "roughness_range": [
+    0.2,
+    0.38
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 1.5,
+  "height_highpass_sigma_px": 6,
+  "lighting_flatten": "full",
+  "overlap_x": 151,
+  "overlap_y": 223,
+  "rough_mean": 0.291
+}

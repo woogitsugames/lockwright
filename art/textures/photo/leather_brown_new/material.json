@@ -1,0 +1,19 @@
+{
+  "name": "leather_brown_new",
+  "source": "contrib/incoming/magnific/selected/leather_brown_new.jpg",
+  "mode": "tile",
+  "tiling": "u+v",
+  "metallic": 0.0,
+  "roughness_range": [
+    0.48,
+    0.78
+  ],
+  "normal": "OpenGL (+Y up)",
+  "normal_strength": 4.0,
+  "height_highpass_sigma_px": 18,
+  "lighting_flatten": "full",
+  "keystone_freq_ratio": 1.596,
+  "overlap_x": 201,
+  "overlap_y": 261,
+  "rough_mean": 0.635
+}
