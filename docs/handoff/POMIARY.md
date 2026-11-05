@@ -99,7 +99,7 @@ Plan B (ekran zamka z wypieczonym renderem, D-31) mierzymy osobną aplikacją: a
 
 Artefakt **`planb-perf-apk`** (workflow **spike-planb**) to ekran zamka z gry (`game/scenes/photoreal/lock_photoreal.tscn`) z małym licznikiem w lewym górnym rogu. Instalacja jak w punkcie 2 (plik `lw-planb-perf.apk`).
 
-1. Uruchom, połóż telefon, nie wychodź z aplikacji. Ekran sam się nie wygasi dopiero przy ustawieniu „Wygaszanie ekranu: 30 min” (Ustawienia → Wyświetlacz) — ustaw je na czas testu.
+1. Uruchom, połóż telefon i nie wychodź z aplikacji. Aplikacja sama nie pozwala ekranowi zgasnąć; telefon nie powinien być podłączony do ładowarki (inaczej nie widać spadków przy nagrzaniu).
 2. Przez pierwszą minutę licznik pokazuje „Rozgrzewka”, potem „Pomiar: zostało … s” (10 minut). Możesz w tym czasie ruszać kciukami jak w grze, ale nie musisz.
 3. Po 10 minutach pojawi się wiersz **„Wynik 10 min: Przechodzi / Na granicy / Nie przechodzi”** z liczbami (p95 czasu klatki i „1% low”). **Zrób zrzut ekranu** i wrzuć go do `spikes/lit-metal/results/` (jak JSON w punkcie 5).
 
