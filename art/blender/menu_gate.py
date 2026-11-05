@@ -54,8 +54,9 @@ def felt_mat():
     l.new(_bump(nt, _mix(nt, fib, _noise(nt, P, 8.0, detail=4), 0.5, dtype='FLOAT'), 0.35, 0.15, bv.outputs['Normal']), b.inputs['Normal'])
     return m
 
-green = photo_mat('ph_wall_green', 'wall_oil_paint_green', scale=900, metallic=0.0, rough_mul=0.8, bump=0.25, grime=0.3,
-                  base=(0.05, 0.11, 0.075), base_mix=0.35)
+# lamperia: the same procedural oil paint as the stairwell scene (stairwell.py), so the gate and the landing match
+green = oil_paint('lamperia', (0.055, 0.115, 0.082), rough=0.28, under=(0.42, 0.30, 0.16), base=(0.62, 0.58, 0.50), chips=0.3,
+                  scuffs=0.6, strokes='Z', seed=1, chip_scale=0.012)
 lime = photo_mat('ph_wall_lime', 'wall_lime_plaster', scale=900, metallic=0.0, bump=0.3, grime=0.2)
 stripe = oil_paint('stripe', (0.20, 0.045, 0.03), rough=0.3, chips=0.3, scuffs=0.2, strokes='X', seed=2)
 alu = add_top_dust(photo_mat('ph_alu', 'nickel_satin', scale=140, metallic=1.0, base=(0.66, 0.66, 0.64), base_mix=0.35, rough_add=0.08, wear=0.2, grime=0.6), 0.45)
@@ -74,12 +75,13 @@ FR = 22.0                         # frame width
 if ORIENT == 'portrait':
     IW = 420.0; TOP = 2050.0; BX = 0.0
     TITLE = [('POGOTOWIE ZAMKOWE', 15.0, 24.0, 0), ('LOCKWRIGHT', 36.0, 62.0, 0)]      # text, cap, top (mm from inner top), x
-    MENU_X, MENU_TOP, PRIM_BAND, BAND = 22.0, 132.0, 88.0, 66.0
+    MENU_X, MENU_TOP, PRIM_BAND, BAND = 22.0, 136.0, 96.0, 74.0
     IH = MENU_TOP + PRIM_BAND + 5 * BAND + 22.0
 else:
-    IW = 900.0; TOP = 2000.0; BX = -190.0
-    TITLE = [('POGOTOWIE ZAMKOWE', 15.0, 40.0, 0), ('LOCKWRIGHT', 40.0, 80.0, 0), ('CAŁĄ DOBĘ · BRAMA, PARTER', 13.0, 150.0, 0)]
-    MENU_X, MENU_TOP, PRIM_BAND, BAND = 486.0, 22.0, 88.0, 75.0
+    IW = 860.0; TOP = 2000.0; BX = -190.0
+    TITLE = [('POGOTOWIE ZAMKOWE', 15.0, 40.0, 0), ('LOCKWRIGHT', 44.0, 80.0, 0), ('CAŁĄ DOBĘ · BRAMA, PARTER', 13.0, 156.0, 0),
+             ('KRÓTKA PAUZA KOSZTUJE', 13.0, 372.0, 0), ('MNIEJ NIŻ ZŁAMANY WYTRYCH', 13.0, 398.0, 0)]
+    MENU_X, MENU_TOP, PRIM_BAND, BAND = 470.0, 22.0, 88.0, 75.0
     IH = MENU_TOP + PRIM_BAND + 5 * BAND + 22.0
 X0 = BX - IW / 2; ZT = TOP - FR; ZB = ZT - IH
 MENU = [('ZACZNIJ DYŻUR', 28.0), ('ZLECENIA', 25.0), ('WARSZTAT', 25.0), ('GABLOTA', 25.0), ('USTAWIENIA', 25.0), ('O GRZE', 25.0)]
@@ -153,7 +155,7 @@ if PRESSED >= 0:   # baked pressed state: the whole row sits 1 mm deeper in the 
     for o in rows[PRESSED]['objs']: o.location.y += 1.0
 
 # ---------------------------------------------------------------- hook rail, key tags, invented key
-if ORIENT == 'portrait': RX, RZ, RW = 40.0, ZB - FR - 92.0, 300.0
+if ORIENT == 'portrait': RX, RZ, RW = 40.0, ZB - FR - 66.0, 300.0
 else: RX, RZ, RW = BX + IW / 2 + FR + 210.0, 1640.0, 260.0
 bx('rail', RX - RW / 2, RX + RW / 2, -18, 0, RZ - 26, RZ + 26, beech, bev=2.5)
 for sx in (RX - RW / 2 + 16, RX + RW / 2 - 16):
@@ -170,12 +172,12 @@ def split_ring(c, r=11.0, wire=1.1, yaw=25.0):
                                      location=(c.x, c.y, c.z - r + 1.5), rotation=(math.radians(90), 0, math.radians(yaw)))
     o = bpy.context.object; setmat(o, ring_steel); smooth(o); return Vector((c.x, c.y, c.z - 2 * r + 3.0))
 
-def key_tag(name, top, text, mat, w=34.0, h=70.0, rot=0.0):
+def key_tag(name, top, text, mat, w=40.0, h=82.0, rot=0.0):
     """Stamped key tag hanging from its hole: rounded rect in XZ, 1.6 mm thick, number punched 0.4 mm deep."""
     pts = [(u, v - h / 2 - 6) for u, v in rounded_rect(w, h, 7)]
     t = prism(name, [(top.x + u, top.z + v) for u, v in pts], top.y - 0.8, top.y + 0.8); setmat(t, mat)
     hole = cyl('hole', 3.2, 6, (top.x, top.y, top.z - 6.5), axis='Y', verts=24); cut(t, hole)
-    cu = bpy.data.curves.new(name + '_n', 'FONT'); cu.body = text; cu.size = 15.0; cu.font = MONO; cu.extrude = 1.0
+    cu = bpy.data.curves.new(name + '_n', 'FONT'); cu.body = text; cu.size = 19.0; cu.font = MONO; cu.extrude = 1.0
     cu.align_x = 'CENTER'; cu.align_y = 'CENTER'
     s = bpy.data.objects.new(name + '_n', cu); bpy.context.collection.objects.link(s)
     s.rotation_euler = (math.radians(90), 0, 0); s.location = (top.x, top.y - 0.8 - 0.6, top.z - 6 - h * 0.55)
@@ -206,15 +208,15 @@ cup_hook(hx[2], RZ)
 # ---------------------------------------------------------------- light
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (BX, 0, (ZT + ZB) / 2)
 bpy.ops.object.light_add(type='POINT', location=(BX - 1100, -900, TOP + 650)); bulb = bpy.context.object
-bulb.data.shadow_soft_size = 30; bulb.data.energy = float(arg('--bulb', '5.5e7')); bulb.data.color = (1.0, 0.70, 0.43)
-area_light('window', (BX + 1800, -1600, 1900), AIM, 1400, float(arg('--window', '5e6')), (0.75, 0.84, 1.0), size_y=1800)
+bulb.data.shadow_soft_size = 40; bulb.data.energy = float(arg('--bulb', '8e7')); bulb.data.color = (1.0, 0.70, 0.43)
+area_light('window', (BX + 1700, -1500, 1500), AIM, 1400, float(arg('--window', '4e6')), (0.75, 0.84, 1.0), size_y=1800)
 area_light('bounce', (BX, -2600, 900), AIM, 2200, 3e5, (1.0, 0.85, 0.7))
 world_hdri(strength=0.06, sat=0.3)
 
 # ---------------------------------------------------------------- camera
 LENS = 85.0
 if ORIENT == 'portrait':
-    VW = 560.0; VH = VW * RES[1] / RES[0]; CZ = TOP + 110 - VH / 2; CX = 0.0
+    VW = 560.0; VH = VW * RES[1] / RES[0]; CZ = (TOP + 120 + RZ - 190) / 2; CX = 0.0
     D = VW * LENS / 36.0
     cam = photo_camera((CX, RIB_FACE - D, CZ), lens=LENS); cam.data.sensor_fit = 'HORIZONTAL'; cam.data.sensor_width = 36.0
 else:
@@ -223,6 +225,7 @@ else:
     cam = photo_camera((CX, RIB_FACE - D, CZ), lens=LENS); cam.data.sensor_fit = 'VERTICAL'; cam.data.sensor_height = 36.0
 
 # ---------------------------------------------------------------- hits
+scene.render.resolution_x, scene.render.resolution_y = RES; scene.render.resolution_percentage = 100
 bpy.context.view_layer.update()
 W, H = RES; DP = W / 412.0 if ORIENT == 'portrait' else H / 412.0
 def px_rect(pts):
@@ -250,7 +253,7 @@ crop = None
 if CROP_ROW >= 0:
     x, y, w, h = items[CROP_ROW]['hit_rect']; m = 20
     crop = (max(0, (x - m) / W), max(0, 1 - (y + h + m) / H), min(1, (x + w + m) / W), min(1, 1 - (y - m) / H))
-render_setup(OUT, RES, SAMPLES, crop=crop, look='AgX - Medium High Contrast', bounces=8)
+render_setup(OUT, RES, SAMPLES, crop=crop, exposure=float(arg('--exposure', '0.35')), look='AgX - Medium High Contrast', bounces=8)
 scene.cycles.adaptive_threshold = 0.01
 photo_finish(0.2, dispersion=0.004)
 if '--norender' not in sys.argv:
