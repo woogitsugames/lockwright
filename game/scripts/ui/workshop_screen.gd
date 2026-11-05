@@ -18,7 +18,7 @@ const WORKSHOP_BG := {
 
 
 func _day_part() -> String:
-	var hour := OS.get_time()["hour"]
+	var hour: int = OS.get_time()["hour"]
 	if hour >= 6 and hour < 12:
 		return "morning"
 	if hour >= 12 and hour < 18:

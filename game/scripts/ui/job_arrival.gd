@@ -66,7 +66,8 @@ func _add_background(job: Dictionary) -> void:
 			_add_plate("res://assets/ui/gpt/plates/" + signs[0 if _lang() == "pl" else 1])
 	else:
 		# apartment number plate (G01) from the job id
-		var n := (job.get("id", "").hash() % 24 + 24) % 24 + 1
+		var jid: String = job.get("id", "")
+		var n: int = (jid.hash() % 24 + 24) % 24 + 1
 		_add_plate("res://assets/ui/gpt/plates/plate_%02d.png" % n)
 
 
