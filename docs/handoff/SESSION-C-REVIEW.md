@@ -978,3 +978,25 @@ Wynik na 0a1c459: zlecenia 41, **tło G07 41/41** ✅, dźwięki z danych i kodu
 - **D-50 (sesja A):** ikona „L” zatwierdzona (zestaw sklepowy i strona już jej używają), N-49 → portrety z Magnific (`MAGNIFIC-PORTRETY.md`), do tego czasu tabliczka z inicjałem; numer seryjny telefonu usunięty z raportu (moja uwaga z odbioru GEM3 zamknięta).
 - **D-51 (właściciel):** strona → Cloudflare Pages: przygotowane w `site/` (`wrangler.toml`, `_headers`, `deploy/CLOUDFLARE.md`), workflow GitHub Pages usunięty; publikacja na sygnał. Sprawdzone: sklep, strona i scenariusz App Preview nie podają ceny.
 - Nowych dostaw v2 (G04/G05/G06/G13/G14, GEM2, GEM1-v2) w tej rundzie brak.
+
+## Runda 8 — 2026-11-05 17:45 (commit B 400363b „stage 6 bug bash”, weryfikacja lokalna na 152f95c)
+Lokalnie: kariera (solver) **OK, `career_complete`, 0 błędów skryptu, 0 soft-locków** → `qa-career` powinien być zielony. Paczka Android **183,2 MB** → `perf-budget` nadal czerwony.
+
+| N | Stan | Dowód |
+|---|---|---|
+| N-30 paczka | **częściowo**: `.gdignore` w `shots/` i wykluczenie `photoreal_families` są; **import stratny grafik GPT nie wszedł** — 183 pliki `.import` w `game/assets/ui/gpt` dalej mają `compress/mode=0` (np. `notebook/01-cover.jpg.import`), `assets/ui/gpt` = 142 MB w paczce. Commit podaje „pck 53.4 MB”, a w repo tego nie ma (zmienione `.import` najpewniej zostały poza commitem). Diff z rundy 1 (polecenie `find … sed`) nadal aktualny. | lokalny `--export-pack Android` |
+| N-31 pauza → menu | ✅ `paused = false` przed zmianą sceny + GUT `test_pause_quit.gd` | `lock_scene.gd:53` |
+| N-32 kreda | ✅ `mouse_filter = 2` | `lock.tscn:106` |
+| N-33 tempo klatek | ✅ w konfiguracji (`physics_jitter_fix=0.5`); efekt do potwierdzenia na telefonie (`planb-perf-apk`) | `project.godot:51` |
+| N-35 RAM / start | ✅ w kodzie (synchronicznie tylko L2, reszta leniwie w wątku); RAM i start do pomiaru na telefonie | `sfx.gd` |
+| N-36 puste przyciski | ✅ `visible = false` (6 + 2 węzły) | sceny |
+| N-37 odmowy | ✅ „Otwórz” ukryte w `job.refuse*` | `job_verify.gd:28` |
+| N-38 lupa / ciemność | ✅ `KeyLight` gaszony; lupa poza zwijką | `lock_scene.gd:271` |
+| N-43 klucz debug | ✅ stały `platform/android/debug.keystore` w repo (tylko debug — nie używać do wydania) | |
+| N-44 warsztat | ✅ `Time.get_time_dict_from_system()`; kariera: zakupy działają | `workshop_screen.gd:21` |
+| N-48 głosy | ✅ `kind.wav` + `VOICE_DIR`; QA zasobów: głos 12/12 postaci obsady | `sfx.gd:21,302` |
+| N-49 portrety | w toku: 10 epizodycznych (partia 1) + 12 G09 = **22/51** | `qa/assets/check_assets.py` |
+
+**N-50 · Low (nowe) · Przyjazd próbuje wczytać portret narratora** · `job_arrival.gd:132` — dla mówiącego `locksmith` (gracz) kod szuka `cast/episodic/portrait_locksmith.webp`: 26 błędów `Resource file not found` na karierę. Pominąć narratora przed `load()` (`if speaker == "locksmith": …`) albo sprawdzać `ResourceLoader.exists()` przed `load()`.
+
+**Własność katalogów:** 400363b zmienia moje pliki `qa/assets/check_assets.py` i `qa/bot/career.gd` (dostosowanie do N-48 i leniwego ładowania dźwięków). Zmiany merytorycznie poprawne, przyjmuję je; w sprawdzaczu zamieniłem wpisane na sztywno `VOICE_DIR` na odczyt z `sfx.gd` (zasada skryptu: mapowania tylko z kodu gry) i doliczyłem portrety epizodyczne (D-50). Na przyszłość: zmiany w `qa/` jako uwaga dla sesji C.

@@ -218,3 +218,8 @@ Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-d
 - **CI:** `game-ios` ✅ (afbd957). Czerwone: `qa-career` (N-44), `perf-budget` (N-30), `game-android` (N-44 + keystore) — wszystkie czekają na B, diffy w przeglądzie. N-45 zweryfikowane (6f20264).
 - **D-51:** strona przygotowana pod Cloudflare Pages (`site/wrangler.toml`, `site/_headers` z CSP bez skryptów, `site/deploy/CLOUDFLARE.md`: integracja z GitHubem albo `wrangler pages deploy`), GitHub Pages usunięte, publikacja na sygnał. **D-50:** ikona „L” wpisana jako zatwierdzona w zestawie sklepowym i na stronie.
 - Dostaw v2 brak. Następna runda za ok. 60 min.
+
+## 2026-11-05 17:45 — runda godzinna (etap 5)
+- **B 400363b** naprawia N-31…N-48 poza N-30. Zweryfikowane w kodzie i lokalnie: kariera `career_complete`, 0 błędów skryptu → `qa-career` powinien zazielenieć. **N-30 nadal otwarte:** paczka 183 MB, bo import stratny grafik GPT nie trafił do repo (commit twierdzi „53.4 MB”). Nowe: **N-50** (portret narratora, 26 błędów w logu).
+- QA zasobów: głosy 12/12 obsady (N-48 ✅), portrety 22/51 (N-49 w toku, partia 1). Sprawdzacz czyta teraz `VOICE_DIR` z `sfx.gd` i liczy portrety epizodyczne.
+- Dostaw v2 (G04/G05/G06/G13/G14, GEM2) brak; sesja A dołożyła 20 zleceń tekstowych T11–T30 (do odbioru, gdy wpłyną).

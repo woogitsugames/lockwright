@@ -17,7 +17,6 @@ import argparse, json, pathlib, re, sys
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 GAME = ROOT / 'game'
 NARRATOR = {'locksmith'}  # the player character: no portrait, no voice (CLIENTS.md)
-VOICE_DIR = {'ola': 'ola_krystyna', 'krystyna': 'ola_krystyna'}  # sfx.gd VOICE_DIR (N-48): shared S03 folder
 
 
 def gd_dict(src: str, name: str) -> dict:
@@ -33,6 +32,7 @@ def gd_dict(src: str, name: str) -> dict:
             body = src[i:j + 1]
             break
     body = re.sub(r'#.*', '', body)
+    body = re.sub(r'&"', '"', body)  # StringName literals
     body = re.sub(r',(\s*[}\]])', r'\1', body)  # trailing commas
     return json.loads(body)
 
@@ -66,6 +66,7 @@ def main():
     materials = gd_list(sfx_src, 'MATERIALS')
     ambiences = gd_list(sfx_src, 'AMBIENCES')
     variants = int(gd_const(sfx_src, 'VARIANTS') or 6)
+    voice_dirs = gd_dict(sfx_src, 'VOICE_DIR') if 'VOICE_DIR' in sfx_src else {}  # N-48: shared S03 folders
 
     jobs = []
     for d in ('jobs', 'jobs_ch7'):
@@ -105,9 +106,11 @@ def main():
     for s, js in sorted(speakers.items(), key=lambda kv: (-len(kv[1]), kv[0])):
         slot = cast.get(s)
         avatar = GAME / 'assets/ui/gpt/cast' / slot / 'avatar.png' if slot else None
-        has_portrait = bool(avatar and avatar.exists())
+        # D-50: episodic Magnific portraits (job_arrival.gd) when the speaker has no G09 cast slot
+        episodic = GAME / 'assets/ui/gpt/cast/episodic' / f'portrait_{s}.webp'
+        has_portrait = bool(avatar and avatar.exists()) or episodic.exists()
         # the game's rule (sfx.gd play_voice, N-48): <VOICE_ROOT>/<VOICE_DIR[speaker]>/<kind>.wav or <kind>_NN.wav
-        vdir = VOICE_DIR.get(s, s)
+        vdir = voice_dirs.get(s, s)
         vd = voice_root / vdir
         has_voice = vd.is_dir() and bool(list(vd.glob('greeting.wav')) + list(vd.glob('greeting_*.wav')))
         # files that exist but the rule does not find (a shared folder named after the cast slot)
@@ -165,11 +168,11 @@ def main():
     bad_snd = [r for r in sounds if not r['ok']]
     md = ['# QA zasobów: tła przyjazdu (G07), portrety (G09), dźwięki', '',
           f'Zlecenia: {len(jobs)} · tło G07 bez problemu: **{len(arrivals) - len(bad_arr)}/{len(arrivals)}** · '
-          f'postacie mówiące: {len(cast_rows)}, z portretem G09: **{len(cast_rows) - len(no_portrait)}/{len(cast_rows)}**, '
+          f'postacie mówiące: {len(cast_rows)}, z portretem (G09 / epizodyczny): **{len(cast_rows) - len(no_portrait)}/{len(cast_rows)}**, '
           f'z głosem S03: **{len(cast_rows) - len(no_voice)}/{len(cast_rows)}** · dźwięki: **{len(sounds) - len(bad_snd)}/{len(sounds)}** istnieją', '',
           '## Tła przyjazdu (G07)', '']
     md += ([f'- ⚠ `{r["job"]}` ({r["file"]}): ' + '; '.join(r['problems']) for r in bad_arr] or ['- wszystkie zlecenia mają tło G07'])
-    md += ['', '## Postacie bez portretu G09 (dialog bez twarzy)', '',
+    md += ['', '## Postacie bez portretu (G09 albo epizodyczny Magnific, D-50) lub bez głosu', '',
            '| Postać | Zlecenia | Portret | Głos S03 |', '|---|---|---|---|']
     md += [f'| {r["speaker"]} | {len(r["jobs"])}: {", ".join(r["jobs"][:3])}{"…" if len(r["jobs"]) > 3 else ""} | '
            f'{"✅" if r["portrait"] else "⚠ brak"} | '
