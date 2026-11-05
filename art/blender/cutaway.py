@@ -206,6 +206,8 @@ scene.cycles.adaptive_threshold = 0.006; scene.render.film_transparent = False
 scene.view_settings.exposure = 0.15
 scene.render.resolution_x, scene.render.resolution_y = RES; scene.render.film_transparent = False
 scene.view_settings.view_transform = 'AgX'; scene.view_settings.look = 'AgX - Medium High Contrast'
+if SHOT == 'borescope':  # closed metal channel: fewer glossy bounces carry no visible light, cut render time
+    scene.cycles.max_bounces = 6; scene.cycles.glossy_bounces = 4; scene.cycles.adaptive_threshold = 0.01
 scene.render.filepath = os.path.abspath(OUT)
 if GLB:
     bpy.ops.export_scene.gltf(filepath=os.path.abspath(GLB), export_apply=True)
