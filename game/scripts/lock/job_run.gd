@@ -13,6 +13,10 @@ static var last_tip := 0  # N-25: tip paid by JobRun.complete()
 # hidden on the list (N-05) instead of silently remapped.
 const IMPLEMENTED := [&"pin_tumbler", &"wafer", &"wooden_pin", &"warded", &"lever", &"lever_detector", &"ring_combo"]
 
+# Authored tutorial locks S1–S3 (docs/LEVELS.md §2.1–2.3, lockwright.lock/1, checked with
+# lockcore/build/check_locks). Loaded through LockcoreSession.create_from_json.
+const TUTORIAL_SPECS := ["res://data/tutorial/s1.json", "res://data/tutorial/s2.json", "res://data/tutorial/s3.json"]
+
 # job.family (docs/JOBS.md, generic names) -> lockcore family (aliases only, N-05)
 const FAMILY_MAP := {
 	"lever": &"lever",
@@ -82,7 +86,8 @@ static func start_tutorial(stage: int) -> void:
 	# N-09: tutorial is a separate mode — never lands on job_payment
 	mode = &"tutorial"
 	tutorial_stage = stage
-	current_job = {"id": "tutorial.s%d" % (stage + 1), "family": "pin_tumbler", "tier": 1, "reward_coins": 0, "i18n": {}}
+	current_job = {"id": "tutorial.s%d" % (stage + 1), "family": "pin_tumbler", "tier": 1, "reward_coins": 0, "i18n": {},
+			"lock_spec": TUTORIAL_SPECS[clampi(stage, 0, TUTORIAL_SPECS.size() - 1)]}
 	lives = 3
 	clean = true
 	last_tip = 0

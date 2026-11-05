@@ -4,6 +4,7 @@
 
 #include <algorithm>
 
+#include "lockcore/lockfile.hpp"
 #include "lockcore/registry.hpp"
 #include "lockcore/bot.hpp"
 
@@ -11,6 +12,9 @@ using namespace godot;
 
 void LockcoreSession::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("create", "family", "seed", "tier"), &LockcoreSession::create);
+	ClassDB::bind_method(D_METHOD("create_from_json", "json"), &LockcoreSession::create_from_json);
+	ClassDB::bind_method(D_METHOD("last_errors"), &LockcoreSession::last_errors);
+	ClassDB::bind_method(D_METHOD("spec_id"), &LockcoreSession::spec_id);
 	ClassDB::bind_method(D_METHOD("step", "tension", "pick_depth", "pick_lift", "rotate", "push", "tool"), &LockcoreSession::step, DEFVAL(0.0), DEFVAL(0.0), DEFVAL(0));
 	ClassDB::bind_method(D_METHOD("describe"), &LockcoreSession::describe);
 	ClassDB::bind_method(D_METHOD("is_open"), &LockcoreSession::is_open);
@@ -33,7 +37,37 @@ bool LockcoreSession::create(const String &family, std::uint64_t seed, int tier)
 	lockcore::LockSpec spec = module->generate(seed, d);
 	spec.family = std::string(family.utf8().get_data());
 	spec.seed = seed;
+	errors_.clear();
+	id_ = String();
 	session_ = std::make_unique<lockcore::LockSession>(*module, spec);
+	return true;
+}
+
+bool LockcoreSession::create_from_json(const String &json) {
+	errors_.clear();
+	id_ = String();
+	session_.reset();
+	const CharString utf8 = json.utf8();
+	const lockcore::FamilyRegistry &reg = lockcore::FamilyRegistry::builtin();
+	lockcore::LockParse lp = lockcore::lock_from_json(std::string_view(utf8.get_data(), utf8.length()), reg);
+	if (!lp.ok) {
+		for (const lockcore::SpecError &e : lp.errors) {
+			errors_.push_back(String((e.path + ": " + e.message).c_str()));
+		}
+		if (errors_.is_empty()) {
+			errors_.push_back(String("lock_from_json: parse failed"));
+		}
+		UtilityFunctions::printerr("LockcoreSession.create_from_json: ", errors_);
+		return false;
+	}
+	const lockcore::FamilyModule *module = reg.find(lp.spec.family);
+	if (module == nullptr) {
+		errors_.push_back(String(("unknown family " + lp.spec.family).c_str()));
+		UtilityFunctions::printerr("LockcoreSession.create_from_json: ", errors_);
+		return false;
+	}
+	id_ = String(lp.spec.id.c_str());
+	session_ = std::make_unique<lockcore::LockSession>(*module, std::move(lp.spec));
 	return true;
 }
 
@@ -147,3 +181,6 @@ StringName LockcoreSession::failure() const {
 
 std::uint64_t LockcoreSession::event_hash() const { return session_ == nullptr ? 0 : session_->event_hash(); }
 int64_t LockcoreSession::t_step() const { return session_ == nullptr ? 0 : session_->t_step(); }
+
+PackedStringArray LockcoreSession::last_errors() const { return errors_; }
+String LockcoreSession::spec_id() const { return id_; }

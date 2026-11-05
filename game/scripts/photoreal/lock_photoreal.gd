@@ -15,7 +15,8 @@ extends Node
 ##   --lw-bench S        print LW_PERF frame statistics after S seconds and quit
 ##   --lw-stage S        rest | tension | lift | set: drive the session with a scripted two-thumb
 ##                       input to that moment, then freeze (N-62 screenshots)
-##   --lw-tutorial N     run as tutorial stage N (0 = S1 with guided chalk steps)
+##   --lw-tutorial N     run as tutorial stage N (0 = S1 with guided chalk steps), on its authored lock
+##   --lw-spec PATH      play an authored lockwright.lock/1 file (res:// or absolute path)
 ##   --lw-chalk L        off | reduced | full
 ##   --lw-auto 1         D-52 auto tension
 ##   --lw-loupe 1        open the eyepiece (N-57)
@@ -72,7 +73,11 @@ func _ready() -> void:
 	family = StringName(args.get("lw-family", family))
 	seed = int(args.get("lw-seed", seed))
 	tier = int(args.get("lw-tier", tier))
-	session = make_session(family, seed, tier)
+	var spec_path := String(JobRun.current_job.get("lock_spec", ""))
+	if args.has("lw-tutorial"):
+		spec_path = JobRun.TUTORIAL_SPECS[clampi(int(args["lw-tutorial"]), 0, JobRun.TUTORIAL_SPECS.size() - 1)]
+	spec_path = String(args.get("lw-spec", spec_path))
+	session = make_spec_session(spec_path, family, seed, tier) if spec_path != "" else make_session(family, seed, tier)
 	view.pause_requested.connect(_on_pause)
 	view.set_lives(int(args.get("lw-lives", "3")))
 	view.set_dark(args.get("lw-dark", "0") == "1")
@@ -115,6 +120,17 @@ static func make_session(fam: StringName, sd: int, tr: int) -> RefCounted:
 		if s.create(fam, sd, tr):
 			return s
 	return FakeLockSession.create(fam, sd, tr)
+
+
+## Authored lock (lockwright.lock/1) through lockcore's strict parser. Without the GDExtension
+## (FakeLockSession) or on a parse error it falls back to the generated lock fam/sd/tr.
+static func make_spec_session(path: String, fam: StringName, sd: int, tr: int) -> RefCounted:
+	if ClassDB.class_exists("LockcoreSession") and FileAccess.file_exists(path):
+		var s: RefCounted = ClassDB.instantiate("LockcoreSession")
+		if s.has_method("create_from_json") and s.create_from_json(FileAccess.get_file_as_string(path)):
+			return s
+		push_warning("authored lock %s not loaded, playing generated %s t%d" % [path, fam, tr])
+	return make_session(fam, sd, tr)
 
 
 ## Tutorial chalk + guided steps (N-61), first-jobs chalk and the no-tension hint (N-58, D-53).

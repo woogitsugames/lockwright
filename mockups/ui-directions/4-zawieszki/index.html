@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zawieszki</title>
+<link rel="stylesheet" href="../fonts.css">
+<style>
+/* Direction 4 — "Zawieszki": the key board behind the counter of a key-cutting workshop.
+   Menu items and jobs are aluminium key tags hand-stamped with letter punches (Chivo Mono, every letter struck separately).
+   The header and settings are a riveted machine nameplate: black anodised aluminium, etched lettering (Chivo).
+   Job state is physical: new = a manila tie-on label, done = tag cancelled with a ticket punch. Matte metal only. */
+:root{--board:#4f5a53;--board-2:#465049;--alu:#c5c6c1;--alu-edge:#7b7d78;--stamp:#24251f;--plate:#1d1f1e;--etch:#d8d9d4;--etch-2:#a9aba6;--manila:#d8c79e;--red:#9e2a20}
+body{background:var(--board);font-family:"Chivo"}
+.board{position:absolute;inset:0;overflow:hidden;background-color:var(--board);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .9' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .12 0 0 0 0 .1 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+svg.wire{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
+/* aluminium tag */
+.tag{position:absolute;z-index:2;background:var(--alu);border-radius:9px;color:var(--stamp);
+  background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.07) 0 1px,rgba(0,0,0,.035) 1px 2px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(0,0,0,.25),0 0 0 1px var(--alu-edge),0 3px 0 rgba(0,0,0,.22),0 6px 10px rgba(0,0,0,.25);
+  padding:30px 12px 10px;transform-origin:50% 13px}
+.tag::before{content:"";position:absolute;left:50%;top:7px;width:13px;height:13px;margin-left:-6.5px;border-radius:50%;
+  background:var(--board-2);box-shadow:inset 0 1.5px 1px rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.4)}
+.st{display:block;font-family:"Chivo Mono";font-weight:640;text-transform:uppercase;letter-spacing:.02em;line-height:1.08;white-space:nowrap}
+.st i{font-style:normal;display:inline-block;text-shadow:0 1px 0 rgba(255,255,255,.6),0 -.5px 0 rgba(0,0,0,.35)}
+.tag .small{font-size:12px;font-weight:600}
+.tag .row{display:flex;justify-content:space-between}
+.num{position:absolute;z-index:2;font:600 10px "Chivo Mono";color:#c9cdc6;letter-spacing:.08em;background:#363d38;padding:2px 4px;border-radius:1px}
+/* nameplate */
+.plate{position:absolute;z-index:2;background:var(--plate);color:var(--etch);border-radius:3px;
+  box-shadow:0 0 0 1px #0b0c0b,inset 0 1px 0 rgba(255,255,255,.12),0 3px 0 rgba(0,0,0,.25),0 8px 14px rgba(0,0,0,.25);padding:16px 18px}
+.plate::after{content:"";position:absolute;inset:6px;border:1px solid #6d706b;border-radius:2px;pointer-events:none}
+.rivet{position:absolute;width:9px;height:9px;border-radius:50%;background:#8d908a;box-shadow:inset 0 -1.5px 0 #50534f,0 1px 0 rgba(0,0,0,.6);z-index:3}
+.etch{font-family:"Chivo";color:var(--etch)}
+.plate .t1{font-size:11px;letter-spacing:.2em;color:var(--etch-2);font-weight:600}
+.plate .big{font-family:"Chivo";font-weight:800;font-size:46px;letter-spacing:.02em;line-height:1;margin-top:6px}
+.plate .cells{display:grid;grid-template-columns:repeat(3,1fr);margin-top:12px;border-top:1px solid #6d706b}
+.plate .cells div{padding:6px 0 0;font-size:10px;letter-spacing:.1em;color:var(--etch-2)}
+.plate .cells b{display:block;font:600 14px "Chivo Mono";color:var(--etch);letter-spacing:.04em;margin-top:2px}
+/* manila tie-on label */
+.manila{position:absolute;z-index:4;background:var(--manila);color:var(--red);font:700 13px "Chivo Mono";letter-spacing:.08em;
+  padding:8px 8px 6px 16px;clip-path:polygon(9px 0,100% 0,100% 100%,9px 100%,0 50%);box-shadow:0 2px 0 rgba(0,0,0,.2)}
+.manila::before{content:"";position:absolute;left:8px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:var(--board-2)}
+.punch{position:absolute;width:9px;height:9px;background:var(--board-2);box-shadow:inset 0 1px 1px rgba(0,0,0,.6)}
+/* settings plate */
+.sp .sec{font-size:11px;letter-spacing:.22em;color:var(--etch-2);font-weight:700;margin-top:16px;padding-bottom:6px;border-bottom:1px solid #6d706b}
+.sp .r{display:flex;justify-content:space-between;align-items:center;min-height:54px;border-bottom:1px solid #3a3d3a}
+.sp .r .l{font-size:16px;font-weight:500;letter-spacing:.02em}
+.sw{display:flex;align-items:center;gap:0;height:48px;border:1px solid #6d706b;border-radius:2px}
+.sw span{min-width:56px;height:46px;display:flex;align-items:center;justify-content:center;font:600 13px "Chivo Mono";color:var(--etch-2);letter-spacing:.06em}
+.sw span.on{background:var(--etch);color:var(--plate)}
+.scale{position:relative;width:150px;height:48px}
+.scale .ticks{position:absolute;left:0;right:0;top:12px;height:10px;background:repeating-linear-gradient(to right,var(--etch-2) 0 1px,transparent 1px 15px);background-size:150px 10px}
+.scale .ticks::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--etch-2)}
+.scale .knob{position:absolute;top:6px;width:14px;height:30px;margin-left:-7px;background:var(--alu);border-radius:2px;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -2px 0 rgba(0,0,0,.3),0 2px 3px rgba(0,0,0,.6)}
+.scale .knob::after{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:var(--stamp)}
+.val{font:600 15px "Chivo Mono";width:50px;text-align:right}
+.sl{display:flex;align-items:center;gap:8px}
+.pbtn{height:48px;display:inline-flex;align-items:center;gap:10px;padding:0 14px;background:var(--alu);color:var(--stamp);border-radius:2px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -2px 0 rgba(0,0,0,.3),0 2px 0 #000;font:700 13px "Chivo Mono";letter-spacing:.06em}
+.pbtn::before{content:"";width:10px;height:10px;border-radius:50%;border:2px solid var(--stamp)}
+.hint{font-size:12.5px;line-height:1.45;color:var(--etch-2);padding:6px 0 10px}
+</style></head><body>
+<div class="board" id="b"></div>
+<svg class="wire" id="w" xmlns="http://www.w3.org/2000/svg"></svg>
+<script src="../data.js"></script>
+<script>
+window.__ready = false;
+const R = LW.rng(41), b = document.getElementById('b'), W = document.getElementById('w');
+const land = matchMedia('(orientation:landscape)').matches, VW = innerWidth;
+const up = s => s.toLocaleUpperCase('pl');
+// Letter punches: each letter struck by hand — baseline, angle and depth drift a little.
+function S(str, size, cls = '') { let o = ''; for (const ch of str) { if (ch === ' ') { o += '<i style="width:.55em"> </i>'; continue; }
+  o += `<i style="transform:translateY(${((R() - .5) * 1.6).toFixed(2)}px) rotate(${((R() - .5) * 4).toFixed(1)}deg);opacity:${(.78 + R() * .22).toFixed(2)}">${ch}</i>`; }
+  return `<span class="st ${cls}" style="font-size:${size}px">${o}</span>`; }
+const wires = [];
+function hook(x, y, n) { // screw + cup hook, with its stamped number plate above
+  wires.push(`<circle cx="${x}" cy="${y}" r="5" fill="#8d908a" stroke="#3b3f3b"/><path d="M${x} ${y} v10 a7 7 0 0 0 14 0" fill="none" stroke="#9a9d97" stroke-width="3" stroke-linecap="round"/>`);
+  if (n) b.insertAdjacentHTML('beforeend', `<span class="num" style="left:${x - 11}px;top:${y - 24}px">${n}</span>`); }
+function ring(cx, cy, r = 12) { wires.push(`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#3a3d39" stroke-width="4"/><circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#a7aaa4" stroke-width="2.2"/>`); }
+// One tag hanging from a hook: hook at (hx,hy), ring through the hook and the tag's hole.
+function tag(hx, hy, w, h, inner, { rot = (R() - .5) * 6, num, cls = '', id = '', rr = 11 + Math.round(R() * 5) } = {}) {
+  hook(hx, hy, num); const ry = hy + 12 + rr; ring(hx + 7, ry, rr);
+  const top = ry + rr - 14; // tag hole sits at the ring bottom
+  b.insertAdjacentHTML('beforeend', `<a class="tag ${cls}" id="${id}" style="left:${hx + 7 - w / 2}px;top:${top}px;width:${w}px;height:${h}px;transform:rotate(${rot}deg)">${inner}</a>`);
+  return { x: hx + 7 - w / 2, y: top, w, h, rot };
+}
+function plate(x, y, w, h, inner, cls = '') {
+  b.insertAdjacentHTML('beforeend', `<div class="plate ${cls}" style="left:${x}px;top:${y}px;width:${w}px;${h ? 'height:' + h + 'px' : ''}">${inner}</div>`);
+  const p = b.lastElementChild;
+  for (const pos of ['left:10px;top:10px', 'right:10px;top:10px', 'left:10px;bottom:10px', 'right:10px;bottom:10px']) p.insertAdjacentHTML('beforeend', `<span class="rivet" style="${pos}"></span>`);
+  return p;
+}
+// an invented key (no real profile), hung on the start tag's ring
+function key(cx, cy, s = 1) { const g = `<g transform="translate(${cx} ${cy}) rotate(18) scale(${s})">
+  <path d="M-14 0 a14 14 0 1 0 28 0 a14 14 0 1 0 -28 0 M-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0" fill="#9c8a62" fill-rule="evenodd" stroke="#4b4232" stroke-width="1.2"/>
+  <path d="M-4 13 h8 v58 l-2 4 h-6 z" fill="#9c8a62" stroke="#4b4232" stroke-width="1.2"/>
+  <path d="M4 34 h7 v5 h-4 v6 h6 v6 h-5 v7 h7 v6 h-11" fill="#9c8a62" stroke="#4b4232" stroke-width="1.2"/></g>`; wires.push(g); }
+function header(title) {
+  b.insertAdjacentHTML('beforeend', '');
+  const t = tag(76, 46, 132, 58, `<span style="display:flex;justify-content:center">${S('‹ WSTECZ', 16)}</span>`, { rot: -2, num: '00' });
+  plate(176, 40, VW - 176 - 16, 0, `<div class="t1">POGOTOWIE ZAMKOWE</div><div class="etch" style="font-weight:800;font-size:22px;letter-spacing:.06em;margin-top:6px">${title}</div>`);
+}
+
+if (LW.screen === 'menu') {
+  const px = land ? 30 : 16, pw = land ? 400 : VW - 32;
+  plate(px, land ? 28 : 46, pw, 0, `<div class="t1">POGOTOWIE ZAMKOWE · CAŁĄ DOBĘ</div>
+    <div class="big">LOCKWRIGHT</div>
+    <div class="cells"><div>DYŻUR<b>NR 14</b></div><div>GODZINY<b>22–6</b></div><div>W GABLOCIE<b>14 ZAMKÓW</b></div></div>`);
+  const m = LW.menu;
+  if (!land) {
+    tag(150, 312, 250, 96, `${S('ZACZNIJ', 30)}${S('DYŻUR', 30)}`, { rot: -1.5, num: '01', id: 'start' }); key(290, 352, 1);
+    const cols = [104, 300], rows = [492, 628];
+    tag(cols[0] - 7, rows[0], 172, 76, S(up(m[1].label), 21), { num: '02' });
+    tag(cols[1] - 7, rows[0], 172, 76, S(up(m[2].label), 21), { num: '03' });
+    tag(cols[0] - 7, rows[1], 172, 76, S(up(m[3].label), 21), { num: '04' });
+    tag(cols[1] - 7, rows[1], 172, 76, S(up(m[4].label), 21), { num: '05' });
+    tag(cols[1] - 7, 764, 140, 66, S(up(m[5].label), 19), { num: '06', rot: 2 });
+    b.insertAdjacentHTML('beforeend', `<div class="manila" style="left:150px;top:604px;transform:rotate(14deg)">2 NOWE</div>`);
+    wires.push(`<path d="M104 518 C176 524 190 566 160 612" fill="none" stroke="#e8e0c8" stroke-width="1.4"/>`);
+    plate(16, 770, 190, 0, `<div class="t1" style="letter-spacing:.12em;line-height:1.5">KRÓTKA PAUZA KOSZTUJE MNIEJ NIŻ ZŁAMANY WYTRYCH</div>`);
+  } else {
+    tag(560, 34, 210, 86, `${S('ZACZNIJ', 25)}${S('DYŻUR', 25)}`, { rot: -1.5, num: '01', rr: 12 }); key(688, 70, .85);
+    tag(780, 34, 150, 62, S(up(m[1].label), 18), { num: '02', rr: 12 });
+    tag(533, 172, 150, 62, S(up(m[2].label), 18), { num: '03', rr: 11 });
+    tag(713, 172, 150, 62, S(up(m[3].label), 18), { num: '04', rr: 13 });
+    tag(533, 296, 150, 62, S(up(m[4].label), 18), { num: '05', rr: 11 });
+    tag(713, 296, 150, 62, S(up(m[5].label), 18), { num: '06', rot: 2, rr: 12 });
+    b.insertAdjacentHTML('beforeend', `<div class="manila" style="left:812px;top:140px;transform:rotate(14deg)">2 NOWE</div>`);
+    wires.push(`<path d="M787 76 C850 82 850 116 822 148" fill="none" stroke="#e8e0c8" stroke-width="1.4"/>`);
+    plate(30, 214, 240, 0, `<div class="t1" style="letter-spacing:.12em;line-height:1.5">KRÓTKA PAUZA KOSZTUJE MNIEJ NIŻ ZŁAMANY WYTRYCH</div>`);
+  }
+}
+
+if (LW.screen === 'jobs') {
+  header('ZLECENIA');
+  const colx = [104, 300], y0 = 178, dy = 182;
+  LW.jobs.forEach((j, k) => {
+    const words = up(j.title.replace(/[„”]/g, '')), lines = [];
+    let cur = ''; for (const w of words.split(' ')) { if ((cur + ' ' + w).trim().length > 12) { lines.push(cur.trim()); cur = w; } else cur += ' ' + w; } lines.push(cur.trim());
+    const inner = `<div class="row">${S('NR ' + j.no.slice(2), 12, 'small')}${S(j.time, 12, 'small')}</div>
+      <div style="margin-top:8px">${lines.map(l => S(l, 16)).join('')}</div>
+      <div class="row" style="position:absolute;left:12px;right:12px;bottom:10px">${S(j.state === 'done' ? 'WYKONANE' : j.pay === '?' ? 'STAWKA ?' : j.pay, 12, 'small')}</div>`;
+    const t = tag(colx[k % 2] - 7, y0 + Math.floor(k / 2) * dy, 176, 124, inner, { num: j.no.slice(2), id: 'j' + k });
+    if (j.state === 'new') { b.insertAdjacentHTML('beforeend', `<div class="manila" style="left:${t.x + t.w - 58}px;top:${t.y + 70}px;transform:rotate(${-12 + k * 4}deg)">NOWE</div>`);
+      wires.push(`<path d="M${t.x + t.w / 2} ${t.y + 6} q34 30 ${t.w / 2 - 50} ${78}" fill="none" stroke="#e8e0c8" stroke-width="1.4"/>`); }
+    if (j.state === 'done') { const el = document.getElementById('j' + k); // ticket-punch cancel: three square holes
+      for (const [px, py] of [[132, 92], [146, 92], [139, 104]]) el.insertAdjacentHTML('beforeend', `<span class="punch" style="left:${px}px;top:${py}px"></span>`); }
+  });
+}
+
+if (LW.screen === 'settings') {
+  header('USTAWIENIA');
+  const S2 = LW.settings;
+  const sw = (a, c, on) => `<span class="sw"><span class="${on ? 'on' : ''}">${a}</span><span class="${on ? '' : 'on'}">${c}</span></span>`;
+  const sc = v => `<span class="sl"><span class="scale"><span class="ticks"></span><span class="knob" style="left:${v * 1.5}px"></span></span><span class="val">${v}%</span></span>`;
+  plate(16, 148, VW - 32, 740, `<div class="sp">
+    <div class="sec" style="margin-top:6px">HAPTYKA</div>
+    <div class="r"><span class="l">Haptyka</span>${sw('WŁ.', 'WYŁ.', S2.haptics)}</div>
+    <div class="r"><span class="l">Intensywność</span>${sc(S2.intensity)}</div>
+    <div class="r" style="border:0"><span class="pbtn">IMPULS PRÓBNY</span></div>
+    <div class="sec">DŹWIĘK</div>
+    <div class="r"><span class="l">Głośność główna</span>${sc(S2.master)}</div>
+    <div class="r"><span class="l">Efekty</span>${sc(S2.sfx)}</div>
+    <div class="r"><span class="l">Tło</span>${sc(S2.ambient)}</div>
+    <div class="sec">STEROWANIE</div>
+    <div class="r" style="border:0"><span class="l">Napięcie automatyczne</span>${sw('WŁ.', 'WYŁ.', S2.autoTension)}</div>
+    <div class="hint">Napięcie trzyma się samo na bezpiecznym poziomie, a ty prowadzisz wytrych jednym kciukiem.</div>
+    <div class="sec">JĘZYK</div>
+    <div class="r" style="border:0"><span class="l">Język</span>${sw('PL', 'EN', true)}</div>
+  </div>`, 'sp');
+}
+W.innerHTML = wires.join('');
+document.fonts.ready.then(() => { window.__ready = true; });
+</script>
+</body></html>

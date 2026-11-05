@@ -2,6 +2,7 @@ extends GutTest
 ## N-61 / N-62 / D-52: the tutorial lock S1 opens with plain thumb input fed through the real
 ## InputSampler (touch events in dp) into lockcore, in both control modes, and the guided chalk
 ## steps appear in order. Uses the GDExtension when present (CI builds it), else FakeLockSession.
+## S1–S3 are the authored locks of docs/LEVELS.md §2 (game/data/tutorial/*.json, create_from_json).
 
 const HZ := 120
 var LEFT_X := 80.0
@@ -24,16 +25,23 @@ func _drag(idx: int, pos: Vector2) -> InputEventScreenDrag:
 	return d
 
 
-func _session(sd: int = -1, tier: int = 1) -> RefCounted:
+func _session(sd: int = -1, tier: int = 1, spec: String = "") -> RefCounted:
 	if sd < 0:
 		sd = JobRun.seed_for({"id": "tutorial.s1"})
-	return load("res://scripts/photoreal/lock_photoreal.gd").make_session(&"pin_tumbler", sd, tier)
+	var scene := load("res://scripts/photoreal/lock_photoreal.gd")
+	if spec != "":
+		return scene.make_spec_session(spec, &"pin_tumbler", sd, tier)
+	return scene.make_session(&"pin_tumbler", sd, tier)
+
+
+func _native() -> bool:
+	return ClassDB.class_exists("LockcoreSession")
 
 
 ## A patient beginner: left thumb dragged ~70 dp up and held (unless auto), right thumb pressed
 ## under one pin at a time and dragged up slowly; on a click it lets go and tries the next pin,
 ## on "too high" it lets go of the tension for a moment. Returns [opened, seconds, coach].
-func _play(auto: bool, max_s: float = 90.0, sd: int = -1, tier: int = 1) -> Array:
+func _play(auto: bool, max_s: float = 90.0, sd: int = -1, tier: int = 1, spec: String = JobRun.TUTORIAL_SPECS[0]) -> Array:
 	var s := InputSampler.new()
 	add_child_autofree(s)
 	s.auto_tension = auto
@@ -41,7 +49,7 @@ func _play(auto: bool, max_s: float = 90.0, sd: int = -1, tier: int = 1) -> Arra
 	LEFT_X = sz.x * 0.2
 	RIGHT_X0 = sz.x * 0.5
 	RIGHT_W = sz.x * 0.5
-	var session := _session(sd, tier)
+	var session := _session(sd, tier, spec)
 	var coach := TutorialCoach.new(0, true, auto)
 	var n: int = session.describe().get("elements", session.describe().get("pins", [])).size()
 	var dt := 1.0 / HZ
@@ -123,13 +131,47 @@ func test_s1_opens_in_auto_tension_with_right_thumb_only() -> void:
 	assert_eq(c.history.back(), TutorialCoach.Step.OPEN)
 
 
+func test_authored_tutorial_locks_load() -> void:
+	# LEVELS.md §2: S1 one pin (window 0.20), S2 and S3 three pins (windows 0.16 / 0.12)
+	if not _native():
+		pending("LockcoreSession GDExtension not loaded (FakeLockSession plays generated t1)")
+		return
+	var want := [["pin.s1", 1, 0.20], ["pin.s2", 3, 0.16], ["pin.s3", 3, 0.12]]
+	for i in 3:
+		var s: RefCounted = ClassDB.instantiate("LockcoreSession")
+		assert_true(s.create_from_json(FileAccess.get_file_as_string(JobRun.TUTORIAL_SPECS[i])), "%s parses" % want[i][0])
+		assert_eq(s.spec_id(), want[i][0])
+		var els: Array = s.describe()["elements"]
+		assert_eq(els.size(), want[i][1], "%s pin count" % want[i][0])
+		assert_almost_eq(float(els[0]["window_hi"]) - float(els[0]["window_lo"]), want[i][2], 0.002, "%s shear window" % want[i][0])
+	JobRun.start_tutorial(1)
+	assert_eq(JobRun.current_job.get("lock_spec", ""), JobRun.TUTORIAL_SPECS[1], "tutorial stage carries its authored lock")
+	JobRun.current_job = {}
+	JobRun.mode = &"job"
+
+
+func test_create_from_json_rejects_a_bad_file() -> void:
+	if not _native():
+		pending("LockcoreSession GDExtension not loaded")
+		return
+	var s: RefCounted = ClassDB.instantiate("LockcoreSession")
+	var bad := FileAccess.get_file_as_string(JobRun.TUTORIAL_SPECS[0]).replace("\"win_shear_q16\": 13107", "\"win_shear_qq16\": 13107")
+	assert_false(s.create_from_json(bad), "strict parser: unknown / missing key fails")
+	assert_gt(s.last_errors().size(), 0)
+	assert_false(s.create_from_json("{"), "broken JSON fails")
+	assert_true(s.describe().is_empty(), "no session after a failed parse")
+
+
 func test_tutorial_stages_and_early_jobs_open_in_both_modes() -> void:
-	# S1–S3 and the first tier-1/2 jobs: the same patient input opens them (D-52 both modes)
-	var seeds := [JobRun.seed_for({"id": "tutorial.s2"}), JobRun.seed_for({"id": "tutorial.s3"}), 1, 7, 42]
+	# authored S1–S3 and the first tier-1/2 jobs: the same patient input opens them (D-52 both modes)
+	for spec in JobRun.TUTORIAL_SPECS:
+		for auto in [false, true]:
+			var r := _play(auto, 120.0, -1, 1, spec)
+			assert_true(r[0], "%s auto=%s should open (%.1f s)" % [spec.get_file(), auto, r[1]])
 	for tier in [1, 2]:
-		for sd in seeds:
+		for sd in [1, 7, 42]:
 			for auto in [false, true]:
-				var r := _play(auto, 120.0, sd, tier)
+				var r := _play(auto, 120.0, sd, tier, "")
 				assert_true(r[0], "tier %d seed %d auto=%s should open (%.1f s)" % [tier, sd, auto, r[1]])
 
 
@@ -139,7 +181,7 @@ func test_lift_without_tension_never_sets_and_shows_hint() -> void:
 	var s := InputSampler.new()
 	add_child_autofree(s)
 	s.auto_tension = false
-	var session := _session()
+	var session := _session(-1, 1, JobRun.TUTORIAL_SPECS[0])
 	var coach := TutorialCoach.new(0, false, false)
 	var rx := s._size().x * 0.75
 	s._unhandled_input(_touch(1, Vector2(rx, 760), true))
