@@ -31,6 +31,9 @@ jobs:
           echo "4.7.2.stable.official.ed1daf0bf" > ~/Library/Application\ Support/godot/export_templates/4.7.2.stable/version.txt
           /tmp/godot/Godot.app/Contents/MacOS/Godot --headless --version
 
+      - name: Install iOS platform for xcodebuild
+        run: sudo xcodebuild -downloadPlatform iOS
+
       - name: Install scons
         run: |
           pip3 install --user scons || pip3 install --break-system-packages scons
