@@ -662,11 +662,11 @@ def oak(name, light=(0.46, 0.30, 0.16), dark=(0.22, 0.12, 0.055), axis='Z', plan
     r0, r1, r2, r3 = rnd(0), rnd(1), rnd(2), rnd(3)
     W = max(plank, 60.0)
     u0 = mth('MULTIPLY', mth('SUBTRACT', r0, 0.5), W * 1.4)                 # log centre across the board
-    d0 = mth('MULTIPLY_ADD', r1, ring_mm * 18.0, ring_mm * 3.0)              # log centre depth behind the face
-    slope = mth('MULTIPLY', mth('SUBTRACT', r2, 0.5), 0.18)                 # taper: arches along the grain
-    zn = _noise(nt, Q, 0.008, detail=2, stretch=(0.0, 0.0, 1.0))
-    dd = mth('ADD', mth('MULTIPLY_ADD', slope, Z, d0), mth('MULTIPLY', mth('SUBTRACT', zn, 0.5), ring_mm * 14.0))
-    dd = mth('ABSOLUTE', dd)
+    d0 = mth('MULTIPLY_ADD', r1, ring_mm * 22.0, ring_mm * 14.0)             # log centre depth behind the face
+    slope = mth('MULTIPLY', mth('SUBTRACT', r2, 0.5), 0.07)                 # taper: long arches along the grain
+    zn = _noise(nt, Q, 0.006, detail=2, stretch=(0.0, 0.0, 1.0))
+    dd = mth('ADD', mth('MULTIPLY_ADD', slope, Z, d0), mth('MULTIPLY', mth('SUBTRACT', zn, 0.5), ring_mm * 10.0))
+    dd = mth('MAXIMUM', dd, ring_mm * 4.0)   # never cross the pith: no bull's-eyes, only cathedrals
     du = mth('SUBTRACT', ul, u0)
     rad = mth('SQRT', mth('ADD', mth('MULTIPLY', du, du), mth('MULTIPLY', dd, dd)))
     # irregular ring widths + fine wobble
@@ -676,14 +676,14 @@ def oak(name, light=(0.46, 0.30, 0.16), dark=(0.22, 0.12, 0.055), axis='Z', plan
     ph = mth('ADD', mth('DIVIDE', rad, ring_mm), mth('ADD', mth('MULTIPLY', rw.outputs['Fac'], 2.2), mth('MULTIPLY', fw, 0.5)))
     f = mth('FRACT', ph)
     # earlywood band (porous, darker) at the start of each ring, sharp leading edge, soft trailing edge
-    early = mth('MULTIPLY', _maprange(nt, f, 0.0, 0.05), _maprange(nt, f, 0.38, 0.12))
+    early = mth('MULTIPLY', _maprange(nt, f, 0.0, 0.04), _maprange(nt, f, 0.26, 0.08))
     # fibre streaks along the grain
     st = _noise(nt, Q, 0.6, detail=8, rough=0.65, stretch=(1.0, 1.0, 0.025))
     # colour per plank
     lt = _mix(nt, (*[c * (1 - var) for c in light], 1), (*[min(1, c * (1 + var)) for c in light], 1), r3)
     dk = _mix(nt, (*[c * (1 - var) for c in dark], 1), (*[min(1, c * (1 + var * 0.6)) for c in dark], 1), r3)
     hue = _mix(nt, lt, (light[0] * 1.05, light[1] * 0.93, light[2] * 0.8, 1), _maprange(nt, r0, 0.6, 1.0, 0.0, 0.6))
-    col = _mix(nt, hue, dk, mth('ADD', mth('MULTIPLY', early, 0.75), mth('MULTIPLY', _maprange(nt, st, 0.35, 0.7), 0.3)))
+    col = _mix(nt, hue, dk, mth('ADD', mth('MULTIPLY', early, 0.6), mth('MULTIPLY', _maprange(nt, st, 0.3, 0.75), 0.4)))
     # broad tone drift along a board
     td = _noise(nt, Q, 0.02, detail=2, stretch=(0.5, 0.5, 1.0))
     col = _mix(nt, col, (*[c * 0.78 for c in light], 1), _maprange(nt, td, 0.35, 0.7, 0.0, 0.35))
