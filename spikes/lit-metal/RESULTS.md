@@ -40,7 +40,9 @@ Ograniczenia: płyta pasuje tylko do jednej kamery i jednej rozdzielczości prop
 ## 3. Wydajność
 | Pomiar | Wariant A | Wariant B |
 |---|---|---|
-| Draw calle / prymitywy (Godot, ten kadr) | *(uzupełnione niżej)* | |
+| Draw calle / prymitywy (Godot, kadr 1236×1650, `LW_PERF`) | 37 / 118 250 (z przebiegiem cienia klucza) | 36 / 55 202 |
+| VRAM (monitor Godota) | 228 MB | 188 MB |
+| Czas GPU na lavapipe (CPU, **tylko względnie**) | 3 661 ms/klatkę | 215 ms/klatkę (**~17× taniej**) |
 | Tekstury w VRAM | 10 materiałów: 3 × 2K + 5 × 1K + 2 × 512 (albedo, ORM, normal) | płyta 1236×1650 (lub 2160×2880) + 4 matcapy 512 + mapy ruchomych części |
 | Telefon (p95 czasu klatki, 1% low, temperatura, bateria) | **do zmierzenia przez właściciela** (APK z CI) | |
 
