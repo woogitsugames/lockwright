@@ -524,3 +524,30 @@ Zakres: commity w `game/`, `platform/`, `data/`, `game-*.yml` od 08:05 (6e0c398,
 - **N-01 → zweryfikowane naprawione w 6e0c398** (adnotacji w tym pliku nie było): `game-android.yml`, `game-ios.yml`, `game-tests.yml` parsują się jako YAML (`yaml.safe_load` OK); runy 44–46 `game-tests` wystartowały normalnie (nie kończą się już w chwili utworzenia). Wynik runów — w następnej rundzie.
 - N-02…N-12: bez zmian w kodzie od drugiego przeglądu (sesja B zaczyna etap 3 od zadania 1 = te uwagi).
 - Regresji w nowych commitach nie znalazłem; 48b2d41 tylko dodaje `mkdir -p game/build` w teście eksportu.
+
+## Runda 2 — 2026-11-05 ok. 10:00 (z automatem QA, `qa/`)
+Zakres: commity sesji B 8853863 … efa20ed (09:00–09:10). Automat kariery (`qa/run_career.sh`, workflow `qa-career`) puszczony na HEAD przed i po tych commitach. Przed: 27/29 zleceń (26 + samouczek), 0 soft-locków, 0 brakujących kluczy, 197 s symulacji. Po: **16/29**, 10 soft-locków.
+
+Weryfikacja „naprawione” z 8853863:
+- **N-02** (segmenty Androida) i **N-07** (koperta): zmiany w `export_plugin.gd` / `feedback_director.gd` są; na urządzeniu niezweryfikowane — bez zastrzeżeń w kodzie.
+- **N-03 → zweryfikowane:** `platform/android/lockwright-click-audio` (Oboe), AAR pakowany przez `lockwright_haptics/export_plugin.gd` (`_get_android_libraries`), `Sfx` szuka singletonu. `lockwright_click_audio.gd` to pusty `EditorPlugin` — działa tylko dlatego, że eksporter haptyki dokłada oba AAR; warto opisać to w komentarzu.
+- **N-05 → zweryfikowane:** `JobRun.is_playable` ukrywa 7 zleceń z niezaimplementowanymi rodzinami (axial_slider, time_lock, magnetic, dial_safe…). Bot ich nie widzi — zgodnie z zamiarem.
+- **N-06, N-08, N-11:** zmiany są, bez uwag.
+- **N-09 → nie działa w praktyce:** tryb samouczka w `JobRun` jest poprawny, ale samouczek trafia teraz na ekran planu B, który nigdy nie woła `JobRun.complete()` (N-13). `tutorial_done` dalej nigdy nie jest ustawiane; bot przeszedł etap 1 cztery razy.
+
+**N-13 · High (regresja z a9892ea) · Ekran planu B nie kończy zlecenia** · `game/scripts/lock/job_run.gd:34-39` + `game/scripts/photoreal/lock_photoreal.gd:116-118`
+- `lock_scene_path()` kieruje pin_tumbler (samouczek i 3 zlecenia: newlyweds_4am, student_dorm, wrong_floor) do `lock_photoreal.tscn`. Ta scena po otwarciu tylko odświeża widok (`if session.finished(): view.present(...) return`) — brak `JobRun.complete()`, brak przejścia do `job_payment`. Jedyne wyjście: pauza → „Wyjdź” do menu, bez nagrody i postępu. Bot: 10 soft-locków.
+- **Poprawka (sesja B, bez ruszania kodu sesji A):** podłączyć się do `Events.lock_opened` (scena go emituje) w autoloadzie/`JobRun`: `complete()` + zmiana sceny na `job_payment` (zlecenie) albo następny etap samouczka. Ewentualnie uzgodnić z sesją A sygnał „wyjście z zamka”.
+
+**N-14 · High · Ekran planu B ignoruje zlecenie (rodzina/seed/tier)** · `lock_photoreal.gd:20-22, 55-58`
+- Scena bierze `family/seed/tier` z `@export` (pin_tumbler, 42, **4**) albo z argumentów `--lw-*`, a nie z `JobRun`. Każde zlecenie pin_tumbler i samouczek grają ten sam zamek tier 4 (seed 42) — samouczek nie jest tier 1, a powtórki/weryfikator nie odpowiadają zleceniu.
+- **Poprawka:** przy `JobRun.current_job` niepustym użyć `JobRun.family_for/seed_for/tier_for` (jak `lock_scene.gd:29-32`); wymaga zgody sesji A albo cienkiego wrappera sceny po stronie B.
+
+**N-15 · Medium · Odmowa: wielokrotne punkty reputacji** · `game/scripts/ui/job_verify.gd:49-57`
+- Po „Odmów” scena czeka 1,2 s, a przycisk zostaje aktywny: każde kolejne dotknięcie dodaje +5 reputacji (bot przy jednym wejściu nacisnął 20× → +100). Do tego odmowa nie jest zapisywana, więc `refuse_*` zostają na liście i można je odmawiać w nieskończoność.
+- **Poprawka:** `refuse_button.disabled = true` (i `accept_button`) od razu po naciśnięciu; zapisać `jobs_refused` i nagradzać tylko pierwszą odmowę (JOBS.md §5); na liście oznaczyć zlecenie jako zamknięte.
+
+**N-16 · Low · Ekran planu B: pauza tylko jako narysowana klapka** · `lock_photoreal_view.gd` (sesja A)
+- Brak węzła `Button` dla pauzy (bot znalazł ją tylko przez ESC). Dla dostępności (A-09) i testów warto mieć niewidoczny `Button` 48 dp z `accessibility_name` na miejscu klapki.
+
+Automat QA: `qa/README.md`; nocny raport — artefakt `qa-career-report`. Kryterium „OK” = brak soft-locków, ekranów bez wyjścia, błędów skryptów i brakujących kluczy, więc workflow będzie czerwony, dopóki N-13 nie zostanie naprawione (to zamierzone).

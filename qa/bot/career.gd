@@ -23,6 +23,7 @@ var _done_once := {}         # flags for one-time visits
 var _t0 := 0
 var _sim := 0.0
 var _last_scene := ""
+var _refused_visit := -1
 var _last_change_sim := 0.0
 
 
@@ -78,6 +79,13 @@ func _find_button(names: Array) -> BaseButton:
 		for n in names:
 			if String(b.name).findn(n) >= 0:
 				return b
+	return null
+
+
+func _find_button_text(text: String) -> BaseButton:
+	for b in _buttons():
+		if b is Button and (b as Button).text == text:
+			return b
 	return null
 
 
@@ -204,6 +212,17 @@ func _play_lock() -> bool:
 						_press(p, "open pause")
 						await _wait_frames(10)
 						b = _find_button(["Quit", "Menu", "Back"])
+				if b == null:
+					# plan B screen: the pause flap is drawn, not a Button; ESC opens the same cover
+					var ev := InputEventKey.new()
+					ev.keycode = KEY_ESCAPE
+					ev.pressed = true
+					Input.parse_input_event(ev)
+					await _wait_frames(10)
+					b = _find_button_text(_al("I18n").t(&"pause.quit"))
+					if b:
+						report["softlocks"].append({"scene": sc, "job": entry["job"], "t": _sim,
+							"reason": "lock opened but the screen does not advance; only exit is pause → quit (no progress)"})
 				if b:
 					_press(b, "leave finished lock")
 					await _wait_frames(10)
@@ -271,6 +290,10 @@ func _act_ui(base: String) -> Variant:
 		"job_verify":
 			var jid: String = _jr().current_job.get("id", "")
 			if jid.findn("refuse") >= 0:
+				# press once per visit: the scene waits 1.2 s before leaving (a second tap would count twice, N-15)
+				if _refused_visit == _visited.get("job_verify", 0):
+					return false
+				_refused_visit = _visited.get("job_verify", 0)
 				return _press_named(["RefuseButton", "Refuse"], "refuse job")
 			return _press_named(["AcceptButton", "Accept", "Open", "Continue"], "accept job")
 		"job_payment":
