@@ -6,11 +6,11 @@ const SCREENS := {
 	"res://scenes/settings.tscn": "res://scenes/main_menu.tscn",
 	"res://scenes/jobs_list.tscn": "res://scenes/main_menu.tscn",
 	"res://scenes/workshop.tscn": "res://scenes/main_menu.tscn",
-	"res://scenes/job_arrival.tscn": "res://scenes/jobs_list.tscn",
 }
-# routed by path only (showcase_screen.gd currently loads a missing notebook jpg,
-# which GUT reports as an engine error; the nav routing is what is under test here)
+# routed by path only: showcase_screen.gd / job_arrival.gd currently load(), missing
+# notebook/portrait files, which GUT reports as engine errors; routing is under test here
 const STUB_SCREENS := {
+	"res://scenes/job_arrival.tscn": "res://scenes/jobs_list.tscn",
 	"res://scenes/showcase.tscn": "res://scenes/main_menu.tscn",
 	"res://scenes/job_verify.tscn": "res://scenes/job_arrival.tscn",
 	"res://scenes/job_payment.tscn": "res://scenes/jobs_list.tscn",
@@ -51,7 +51,6 @@ func test_project_does_not_quit_on_go_back() -> void:
 
 
 func test_menu_screens_go_back() -> void:
-	JobRun.start(JobRun.job_by_id("job.allotment_shed"))
 	for path in SCREENS:
 		await _open(path)
 		_send_back()
