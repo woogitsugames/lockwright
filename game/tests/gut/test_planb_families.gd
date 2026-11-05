@@ -101,13 +101,10 @@ func _play(fam: StringName, job: Dictionary, auto: bool, max_s: float = 120.0) -
 			lift_dp += 70.0 * dt
 			s._unhandled_input(_drag(1, Vector2(x, right_y - lift_dp)))
 		s._physics_process(dt)
-		var before: int = scene.view.lives
 		scene._physics_process(dt)
 		var vm: Dictionary = session.describe()
 		var next := lift_dp > 0.9 * InputSampler.LIFT_FULL_DP
 		var oversets := 0
-		if step == 200:
-			gut.p("  T=%.3f left_down=%s auto=%s" % [s.sample()["tension"], s.left_down(), s.auto_tension])
 		if session.is_open():
 			return [true, step * dt]
 		if session.finished():

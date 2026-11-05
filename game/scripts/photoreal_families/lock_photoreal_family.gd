@@ -263,6 +263,8 @@ func _physics_process(delta: float) -> void:
 		return
 	if session.finished():
 		view.present(session.describe(), _last_input, delta)
+		if not session.is_open():
+			Events.lock_failed.emit(StringName(session.failure()))  # N-64: never a dead lock (Events ignores repeats)
 		return
 	var input := sampler.sample()
 	_last_input = input
