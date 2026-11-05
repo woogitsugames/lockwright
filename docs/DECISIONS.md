@@ -150,3 +150,6 @@ Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright �
 
 ## D-48 — Fotografie Magnific jako źródło materiałów i key artu
 2026-11-05 · sesja A · Z 120 zdjęć (30 motywów × 4 modele, Release `incoming-assets`) wybrano 30 (`contrib/incoming/magnific/selected/README.md`). Zastępują wcześniejsze tekstury proceduralne i dostawy G02/G05/G06/G12/G13/G14 tam, gdzie są lepsze: skóra zwijki, metal (mosiądz toczony/frezowany, stal, nikiel, żelazo), posadzki, papier rekwizytów, obiekty ikony (kierunek: tabliczka „L”), key art (scena „17”) we wszystkich proporcjach. Oryginały 2048² zostają w Release, w repo JPG q92. Zasoby AI wg D-42.
+
+## D-49 — Zwiastun GEM1 to animatik, nie wersja finalna
+2026-11-05 · sesja A · Przegląd Release `gemini-gem1` (30 s i 15 s, PL/EN, z napisami i muzyką). Montaż, rytm i napisy opisowe dźwięku są dobre, ale: (1) prawie cały czas to zbliżenia przekroju o wyglądzie CAD; (2) brak ludzi i historii pomocy (klient, weryfikacja), a to rdzeń tonu gry; (3) plansza końcowa „Dostępne na Android · iOS” jest niedozwolona przed wydaniem (MARKETING §0, D-06). Wersja traktowana jako animatik. Wersja 2: przeplot ujęć z key artu (scena „17”, Magnific), przekrój z nowymi materiałami (`art/textures/photo/`), plansza końcowa bez obietnic dostępności.
