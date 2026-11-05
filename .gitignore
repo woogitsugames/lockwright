@@ -7,3 +7,5 @@ game/.godot/
 game/i18n/*.translation
 *.os
 .sconsign.dblite
+game/build/
+game/android/build/

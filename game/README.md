@@ -53,3 +53,18 @@ a GPU runner/device; see `docs/handoff/SESSION-B-LOG.md`.
 - Player-facing text only via `I18n.tr()`, PL + EN from day one.
 - Lock screen has no UI panels (D-12): only a 48 dp pause affordance in the corner.
 - Haptics never the only channel (XAG 103/110); toggle + intensity in Settings.
+
+## Local Android debug build (Linux)
+
+```bash
+# JDK 17 (Temurin), Android SDK (platform 36, build-tools 36.1.0, NDK 29.0.14206865), Gradle 8.11.1
+# editor settings: ~/.config/godot/editor_settings-4.7.tres with android_sdk_path + java_sdk_path
+cd platform/android && ./gradlew :lockwright-haptics:assembleRelease
+cp lockwright-haptics/build/outputs/aar/lockwright-haptics-release.aar ../game/addons/lockwright_haptics/android/lockwright_haptics.aar
+# android build template into the project (once):
+cd game && mkdir -p android/build && unzip -oq ~/.local/share/godot/export_templates/4.7.2.stable/android_source.zip -d android/build && echo "4.7.2.stable" > android/.build_version
+# lockcore_gd android .so: build godot-cpp platform=android target=template_debug arch=arm64 (custom_api_file=extension_api-4-7.json),
+# then: cd addons/lockcore_gd && GODOT_CPP=/tmp/godot-cpp scons platform=android target=template_debug arch=arm64 custom_api_file=... -j8
+keytool -genkeypair -keystore /tmp/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+godot --headless --path . --export-debug "Android" build/lockwright-debug.apk --keystore /tmp/debug.keystore --keystore-user androiddebugkey --keystore-pass android
+```

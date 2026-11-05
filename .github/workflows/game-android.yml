@@ -94,6 +94,14 @@ jobs:
           rmdir ~/.local/share/godot/export_templates/4.7.2.stable/templates
           echo "4.7.2.stable.official.ed1daf0bf" > ~/.local/share/godot/export_templates/4.7.2.stable/version.txt
 
+      - name: Install Android build template into project
+        run: |
+          cd game
+          mkdir -p android/build
+          unzip -oq ~/.local/share/godot/export_templates/4.7.2.stable/android_source.zip -d android/build
+          echo "4.7.2.stable" > android/.build_version
+          find android -name "*.import" -delete
+
       - name: Generate debug keystore
         run: |
           keytool -genkeypair -v -keystore /tmp/debug.keystore -storepass android -alias androiddebugkey \
