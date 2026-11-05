@@ -163,11 +163,11 @@ for i, x in enumerate(POCKET_X):
         a = abs(px - x)
         side = 0.35 * math.exp(-((a - 11.8) / 1.0) ** 2)          # leather pulled in along the stitch lines
         if full:
-            across = 1.0 / (1.0 + math.exp((a - 4.6) / 0.55))
+            across = 1.0 / (1.0 + math.exp((a - 4.6) / 0.4))
             along = 1.0 / (1.0 + math.exp((pz + 12.0) / 1.4))
-            return 1.5 * across * along - side
-        sag = -0.7 * math.exp(-((pz + 6.0) / 7.0) ** 2) * max(0.0, 1 - (a / 12.0) ** 2)
-        fold = -0.45 * math.exp(-((pz + 34.0) / 2.2) ** 2) * max(0.0, 1 - (a / 13.0) ** 2)
+            return 2.8 * across * along - side
+        sag = -1.3 * math.exp(-((pz + 6.0) / 7.0) ** 2) * max(0.0, 1 - (a / 12.0) ** 2)
+        fold = -0.9 * math.exp(-((pz + 34.0) / 2.6) ** 2) * max(0.0, 1 - (a / 13.0) ** 2)
         return sag + fold - side
     leather_slab('flap%d' % i, x - 14, x + 14, -130, -4, -4.0, 2.0, LE2, puff=0.9 if full else 0.25, cuts=44, seed=10 + i, bev=1.4,
                  shape=pocket_shape)
