@@ -160,3 +160,83 @@ cast.hall_manager.name,Le responsable de la salle de répétition
 cast.hania.name,Hania
 cast.headteacher.name,La direction de l'école
 cast.iga.name,Iga
+cast.irena.name,Madame Irena
+cast.jacques.name,Monsieur Jacques
+cast.jadwiga.name,Madame Jadwiga
+cast.kazimierz.name,Monsieur Kazimierz
+cast.krysia.name,Madame Krysia
+cast.krystyna.name,Madame Krystyna
+cast.kuba.name,Kuba
+cast.lena.name,L'agente Lena Sowa
+cast.leopold.name,Monsieur Leopold
+cast.locksmith.name,Le serrurier
+cast.magda.name,Magda
+cast.marek.name,Marek
+cast.marta.name,Marta
+cast.martine.name,Madame Martine
+cast.mietek.name,Monsieur Mietek
+cast.nadia.name,Nadia
+cast.neighbour_lucyna.name,Le voisin de Mme Lucyna
+cast.neighbour_robe.name,Le voisin en peignoir
+cast.ola.name,Ola
+cast.pieter.name,Frère Pieter
+cast.piotr.name,Piotr
+cast.renata.name,Madame Renata
+cast.roman.name,"M. Roman, gestionnaire de l'immeuble"
+cast.rygiel.name,Dr Anna Rygiel
+cast.stefan.name,Monsieur Stefan
+cast.stranger.name,L'homme en costume
+cast.teresa.name,Madame Teresa
+cast.tomasz.name,Tomasz
+cast.waldek.name,Monsieur Waldek
+cast.wanda.name,Madame Wanda
+cast.wladyslaw.name,Monsieur Władysław
+cast.zbyszek.name,Monsieur Zbyszek
+cast.zosia.name,Madame Zosia
+cast.zuzanna.name,Zuzanna
+job.allotment_shed.line.1,"La parcelle est au nom de ma femme. Moi, je bêche. Elle se repose à la maison, elle a mal au genou."
+job.allotment_shed.line.2,Vous avez votre carte de jardinier ? Et un voisin qui puisse confirmer ?
+job.allotment_shed.line.3,Zbyszek est ici depuis plus longtemps que cet abri. Plus longtemps que moi.
+job.allotment_shed.line.4,"Ça vous dit, des cornichons ? Je n'apporte jamais d'argent au jardin."
+job.allotment_shed.note,L'abri de M. Zbyszek. La parcelle était au nom de sa femme. Mystère résolu. Paiement en cornichons.
+job.bike_interview.line.1,J'ai choisi un code plus sûr. Si sûr que même moi je ne le connais pas.
+job.bike_interview.line.2,Le vélo est dans la rue. Vous avez de quoi prouver qu'il est à vous ?
+job.bike_interview.line.3,Une photo de vacances et la facture dans mes mails. Le vélo est plus photogénique que moi.
+job.bike_interview.line.4,Ça me suffit. Rajustez votre cravate pendant que je m'en occupe.
+job.bike_interview.note,Le cadenas du vélo de Kuba. La photo et le reçu correspondaient. Cravate rajustée deux fois. Bus à 8 h 52.
+job.bramah_bureau.line.1,"La facture des enchères, l'annonce et les photos. On ne touche pas à la serrure."
+job.bramah_bureau.line.2,Une serrure semblable était exposée dans une vitrine à Londres. Il y avait une récompense.
+job.bramah_bureau.line.3,Quelqu'un a réussi à l'ouvrir ?
+job.bramah_bureau.line.4,"Oui, plus de soixante ans après. Je vous raconterai qui, une fois le travail terminé."
+job.bramah_bureau.note,Le secrétaire de Gosia. Facture et possession vérifiées. Serrure d'origine préservée. Je lui ai parlé de la vitrine de Piccadilly.
+job.brussels_townhouse.line.1,Je suis Juliette sur mon balcon. Sauf que Roméo a soixante ans et la clé du portail.
+job.brussels_townhouse.line.2,Madame Magda habite ici depuis toujours. Depuis toujours.
+job.brussels_townhouse.line.3,"Le bail, l'adresse délivrée par la commune et un voisin. Ça suffit. Ne vous penchez pas par-dessus la rambarde."
+job.brussels_townhouse.line.4,Géraniums arrosés. Mission accomplie.
+job.brussels_townhouse.note,"Saint-Gilles. Autre pays, même règle. Bail, commune, Monsieur Jacques. Les géraniums vont bien."
+job.cat_bathroom.line.1,Il l'a fait exprès. Il m'a regardée dans les yeux avant de sauter sur la poignée.
+job.cat_bathroom.line.2,C'est chez vous et il est dans la salle de bains. Pas de papiers nécessaires cette fois.
+job.cat_bathroom.line.3,Et s'il a peur ?
+job.cat_bathroom.line.4,Continuez à lui parler. Je ferai moins de bruit que lui.
+job.cat_bathroom.note,Patate le chat. Marta était chez elle ; aucune vérification nécessaire. Il ne s'est pas excusé. Elle a promis une nouvelle enseigne.
+job.charleroi_letters.line.1,"J'appelle pour un conseil, pas pour commander une intervention. Mme Martine a la boîte de grand-père."
+job.charleroi_letters.line.2,"C'est à votre famille. Moi, je l'ai seulement gardée."
+job.charleroi_letters.line.3,Vous l'avez gardée pendant soixante-dix ans ?
+job.charleroi_letters.line.4,Vous êtes toutes les deux d'accord pour l'ouvrir. La vérification la plus simple de ma carrière.
+job.charleroi_letters.note,"Charleroi. Le coffret de grand-père Józef, gardé par Mme Martine. Tout le monde voulait l'ouvrir. Première fois que je pleure au travail. Un peu."
+job.dollhouse_wooden_lock.line.1,Lala est enfermée là-dedans depuis mardi. Elle s'ennuie.
+job.dollhouse_wooden_lock.line.2,Grand-père appelait ça une serrure égyptienne. Je ne sais pas si c'est vraiment exact.
+job.dollhouse_wooden_lock.line.3,Le nom est resté. La véritable histoire est plus intéressante. Je vous raconterai après.
+job.dollhouse_wooden_lock.line.4,Vous ferez une nouvelle clé ? En bois ? Papa a une planche.
+job.dollhouse_wooden_lock.note,La maison de poupées de l'arrière-grand-père. Serrure en bois à goupilles. Lala libérée. Tomasz taillera une nouvelle clé sous la surveillance de Hania.
+job.drummer_locker.line.1,"Je pourrais jouer avec des cuillères, mais j'aimerais autant éviter. Le concert est dans une heure."
+job.drummer_locker.line.2,Iga loue le casier huit. Elle paie tous les mois. Tout est écrit dans mon carnet.
+job.drummer_locker.line.3,Votre carnet fera l'affaire. M. Edek dit que vous notez absolument tout.
+job.drummer_locker.line.4,"Si vous arrivez à temps, on jouera un morceau pour vous. Très fort."
+job.drummer_locker.note,"Casier 8, salle de répétition. Le responsable avait un carnet comme le mien. Ils m'ont joué un morceau. Très fort."
+job.finnish_sailor.line.1,"En Finlande, tout le monde a un cadenas comme celui-ci. Personne ne l'ouvre sans la clé."
+job.finnish_sailor.line.2,"Le coffre appartient à Aino, je me porte garant. Nous appareillons demain à six heures."
+job.finnish_sailor.line.3,Le capitaine se porte garant et son livret de marin correspond. Voyons ça.
+job.finnish_sailor.line.4,"Si vous l'ouvrez, je vous raconterai d'où vient cette invention."
+job.finnish_sailor.note,"Aino, navire finlandais. Capitaine et livret de marin vérifiés. Terminé avant six heures. Une louche en bouleau pend désormais au-dessus de mon établi."
+job.ghent_beguinage.line.1,"En polonais, je ne connais guère que « dzień dobry » et « pierogi »."
