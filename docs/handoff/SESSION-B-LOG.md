@@ -437,3 +437,26 @@ Problem jest systemowy, nie dotyczy jednego ekranu. Wiersze warsztatu (`HBox`: n
 - **Pozostałe:**
   - tekst na zdjęciu potrzebuje podkładu (ciemny papier z ~70% kryciem, bez glassmorphism), żeby spełniał kontrast 4,5:1;
   - „Wstecz” jest na pół szerokości i przy krawędzi (N-53).
+
+## Od sesji A: N-61, samouczek niczego nie uczy (NAJWYŻSZY PRIORYTET, zgłoszenie właściciela)
+Zrzuty: `device-tests/run92/tutorial_intro.jpg` i `lock_screen.jpg`.
+
+- **Co widzi gracz:**
+  - ekran „Samouczek — zamek ćwiczebny, Etap 1 z 3”, przycisk i szkic G-art bez podpisu z wciśniętą kartką „To gra, nie kurs”;
+  - potem goły ekran zamka bez żadnej instrukcji.
+
+  Właściciel nie wiedział, co robić. Storyboard z `docs/ONBOARDING.md` §3.4–§4 (kreda S1, kroki, `fb_gain`) **nie jest zaimplementowany w widoku planu B** (`lock_photoreal_view.gd`). Kreda istnieje tylko w starym `lock_scene.gd`.
+- **Sesja A zrobiła:**
+  - `menu.play` PL: „Rozpocznij bieg” → „Zacznij dyżur” („bieg” był złym tłumaczeniem „shift”);
+  - nowy klucz `tutorial.start` („Zacznij ćwiczenie”) na ekranie samouczka.
+- **Do zrobienia (według ONBOARDING §4), S1 jako prowadzone kroki z kredą na płycie, bez paneli:**
+  1. **Napięcie:** kredowy kciuk i strzałka w górę po lewej stronie, tekst „Lewy kciuk: delikatnie w górę — to napięcie”. Krok kończy się, gdy napięcie mieści się w oknie przez 0,5 s.
+  2. **Wytrych:** kredowy kciuk po prawej, „Prawy kciuk: w bok wybierasz pin, w górę podnosisz”. Kończy się, gdy gracz dotknie pierwszego pinu.
+  3. **Pin, który stawia opór:** kreski tarcia przy pinie binding, „Ten pin stawia opór — podnoś go powoli”.
+  4. **Klik:** pierwszy set (stopka kredą, dźwięk i haptyka ×1,5), „Klik! Zatrzaśnięty. Szukaj następnego”.
+  5. **Overset:** jeśli się zdarzy, klamra kredą i „Za wysoko — zwolnij napięcie i zacznij od nowa”.
+  6. **Otwarcie:** obrót rdzenia, krótka pochwała, przejście do S2.
+
+  Teksty idą przez i18n PL/EN/DE, odręczny font (Caveat OFL, już w `contrib/gpt/G10/v2/fonts`, wpisz do ASSETS.md). Każdy tekst max 2 linie, przy krawędzi płyty, nie na pinach.
+- **Ekran przed samouczkiem:** zamiast szkicu bez podpisu pokaż 2–3 kadry z podpisami (napięcie / podnoszenie / klik), a kartkę „To gra, nie kurs” jako osobną, czytelną notkę, nie wciśniętą w rysunek.
+- **Test GUT:** bot przechodzi S1 przez kroki 1–4 i każdy tekst kroku pojawia się i znika we właściwej kolejności.

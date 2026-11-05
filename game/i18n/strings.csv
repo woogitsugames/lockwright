@@ -23,7 +23,7 @@ common.on,On,Włączone,Ein
 common.off,Off,Wyłączone,Aus
 common.coins,coins,monet,Münzen
 menu.title,Lockwright,Lockwright,Lockwright
-menu.play,Start shift,Rozpocznij bieg,Einsatz starten
+menu.play,Start shift,Zacznij dyżur,Einsatz starten
 menu.workshop,Workshop,Warsztat,Werkstatt
 menu.showcase,Showcase,Gablota,Sammlung
 menu.settings,Settings,Ustawienia,Einstellungen
@@ -59,6 +59,7 @@ verify.refused,Not enough evidence. I can't open this.,Za mało. Tego nie otwier
 verify.refused_rep,Word gets around: +5 reputation,Słowo się niesie: +5 reputacji,Das spricht sich herum: +5 Ruf
 tutorial.title,Tutorial — practice lock,Samouczek — zamek ćwiczebny,Einführung – Übungsschloss
 tutorial.stage,Stage {n} of 3,Etap {n} z 3,Schritt {n} von 3
+tutorial.start,Start practice,Zacznij ćwiczenie,Übung starten
 tutorial.done,Practice complete. Your first real job is next.,Samouczek ukończony. Pierwsze prawdziwe zlecenie!,Einführung abgeschlossen. Der erste echte Auftrag!
 hud.magnifier,Magnifier,Lupa,Lupe
 settings.title,Settings,Ustawienia,Einstellungen

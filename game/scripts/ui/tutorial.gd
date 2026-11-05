@@ -54,7 +54,7 @@ func _refresh() -> void:
 		$VBox/StartButton.text = I18n.t(&"common.continue")
 	else:
 		$VBox/Stage.text = I18n.t(&"tutorial.stage").format({"n": stage + 1})
-		$VBox/StartButton.text = I18n.t(&"menu.play")
+		$VBox/StartButton.text = I18n.t(&"tutorial.start")
 		_add_card(stage)
 
 
