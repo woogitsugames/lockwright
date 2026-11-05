@@ -198,3 +198,9 @@ Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-d
 | 4 | Raport z telefonu → TECH §8, N-xx | gotowe (GO warunkowo; N-31…N-43) |
 | 5 | Bot QA cz. 3 | gotowe (N-48, N-49) |
 | 6 | Ciągły przegląd | trwa |
+
+## 2026-11-05 14:31 — uwaga: dwie sesje C pracują równolegle
+- Sesja C uruchomiona przez właściciela poleceniem „etap 5” (ta, `session_01VMe8ZYedcuEDGa13DwNLBL`) wróciła po limicie i zastała pracę „przejmującej” sesji C (wpisy 14:15/14:33 i dalej). Żeby nie dublować, ta sesja zrobiła tylko rzeczy, których jeszcze nie było:
+  - **S03: automatyczny odsłuch** — `qa/contrib/asr_check.py` (Whisper `small`, offline, auto/PL/EN, filtr halucynacji): **0/96 plików z rozpoznanymi słowami** → S03 przyjęte (`contrib/REVIEW.md`).
+  - **Bot QA cz. 3 w `qa/bot/career.gd`** (w trakcie kariery: tło G07 i portrety obsady na każdym ekranie przyjazdu, rozwiązywanie wszystkich `Sfx.play_*` po kluczach cache) — wynik zgodny z `qa/assets/check_assets.py` drugiej sesji; błąd głosów zapisany przez nią jako **N-48** (mój duplikat zamieniony na odsyłacz).
+- Od teraz zadania etapu 5 prowadzi jedna sesja (ta z wpisami 14:15+); ta sesja nie dubluje strażnika CI ani odbioru dostaw.
