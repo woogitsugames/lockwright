@@ -1,48 +1,54 @@
-# G03 — Drewno drzwi i ramiaków / Door wood PBR
+# G03 — bezszwowe drewno drzwi i ramiaków (Lockwright)
 
-Data: **2026-11-05**. Opracowano cztery bezszwowe materiały PBR i dwa osobne obrazy referencyjne.
-**Ważne:** W GitHub umieszczono źródła, opis i rejestr pochodzenia. Duże PNG/JPG są w archiwum ZIP dostarczonym właścicielowi poza repozytorium; należy rozpakować je do tego katalogu. Sam commit GitHub nie jest jeszcze pełnym zestawem binarnych grafik.
+**Data:** 2026-11-05. **Status:** zestaw gotowy lokalnie; przed użyciem produkcyjnym wymagany test look-dev w Blenderze na docelowej geometrii.
 
-## Materiały
+## Zawartość
 
-Wszystkie mapy: **2048 × 2048 px**; albedo sRGB, height **16-bit grayscale**, roughness **8-bit grayscale**, bezszwowe w U i V.
+Cztery materiały PBR (12 map, **każda 2048×2048 px, PNG, tekstura powtarzalna na obu osiach**):
 
-| Materiał (PL / EN) | Albedo | Height | Roughness |
-|---|---|---|---|
-| Dąb satynowy / Satin oak | materials/oak_satin_albedo_2048.png | materials/oak_satin_height_2048.png | materials/oak_satin_roughness_2048.png |
-| Dąb malowany w butelkowej zieleni / Bottle-green oak | materials/oak_bottle_green_albedo_2048.png | materials/oak_bottle_green_height_2048.png | materials/oak_bottle_green_roughness_2048.png |
-| Sosna kremowa / Cream painted pine | materials/pine_cream_albedo_2048.png | materials/pine_cream_height_2048.png | materials/pine_cream_roughness_2048.png |
-| Orzech ciemny / Dark walnut | materials/walnut_dark_albedo_2048.png | materials/walnut_dark_height_2048.png | materials/walnut_dark_roughness_2048.png |
+| Materiał | Albedo | Height | Roughness | Przeznaczenie |
+|---|---|---|---|---|
+| Stary dąb satynowo lakierowany / Satin old oak | `materials/oak_satin_albedo_2048.png` | `materials/oak_satin_height_2048.png` | `materials/oak_satin_roughness_2048.png` | Drzwi wejściowe klasyczne, nieregularne słoje, patyna, pory i rysy |
+| Dąb w butelkowej zieleni / Bottle-green painted oak | `materials/oak_bottle_green_albedo_2048.png` | `materials/oak_bottle_green_height_2048.png` | `materials/oak_bottle_green_roughness_2048.png` | Kryjąca farba olejna, smugi pędzla, odsłonięte drewno i odpryski |
+| Sosna kremowa / Cream painted pine | `materials/pine_cream_albedo_2048.png` | `materials/pine_cream_height_2048.png` | `materials/pine_cream_roughness_2048.png` | Starsza farba kremowa, większe łuski i rysy |
+| Orzech ciemny / Dark walnut | `materials/walnut_dark_albedo_2048.png` | `materials/walnut_dark_height_2048.png` | `materials/walnut_dark_roughness_2048.png` | Elegantsze drzwi, ciemne żyłkowanie i umiarkowany połysk |
 
-**Zdjęcia referencyjne (nie mapy PBR):**
-- references/reference_oak_escutcheon_closeup.jpg — dąb, szyld, fikcyjna wkładka, ciepła żarówka.
-- references/reference_oak_escutcheon_knob.jpg — dąb, gałka, szyld i płycina w świetle klatki schodowej.
+**Referencje fotograficzne (nie mapy PBR):**
 
-**Podglądy 2×2:** previews/preview_albedo_2x2.jpg oraz previews/preview_pbr_2x2.jpg. W podglądzie PBR skala height jest rozciągnięta kontrastowo wyłącznie na potrzeby czytelności.
+- `references/reference_oak_escutcheon_closeup.jpg` — fotograficzne zbliżenie starego dębu, podłużnego metalowego szyldu i fikcyjnej wkładki, ciepłe światło (996×734).
+- `references/reference_oak_escutcheon_knob.jpg` — zbliżenie szyldu i okrągłej gałki na dębowych drzwiach płycinowych, żarówka na klatce (1118×734).
 
-## Odtworzenie map
+**Podglądy 2×2:**
 
-Po instalacji zależności uruchom z katalogu G03:
+- `previews/preview_albedo_2x2.jpg` — cztery tekstury albedo w siatce 2×2, podpisy PL/EN.
+- `previews/preview_pbr_2x2.jpg` — cztery materiały, w każdym widok Albedo / Height / Roughness. Kanał Height jest **wzmocniony kontrastowo tylko w podglądzie**, nie w plikach źródłowych.
 
-    python3 -m pip install -r requirements.txt
-    python3 generate_textures.py
-    python3 quality_checks.py
+**Narzędzia i odtwarzalność:** `generate_textures.py` (deterministyczny generator), `requirements.txt` (zależności), `quality_checks.py` (walidacja), `QA.json` (wyniki), `ASSETS.md` (pochodzenie i warunki wszystkich grafik).
 
-Generator tworzy 12 map i 2 podglądy, ale **nie** odtwarza referencji zdjęciowych; są dołączone do przekazanego archiwum. Jeżeli referencje nie zostały rozpakowane, walidacja pełnej paczki zgłosi ich brak.
+## Jak importować w Blenderze / Godot
 
-## Look-dev Blender 4.2 LTS / Godot 4.7
+1. `albedo` — Image Texture **sRGB / Color** do Base Color; nie wzmacniać ekspozycji, nie traktować obrazu referencyjnego jako albedo (referencje zawierają oświetlenie).
+2. `roughness` — Image Texture **Non-Color** bez dodatkowej gamma → Principled BSDF / Roughness. Bez metaliczności, bez sztucznego bloom.
+3. `height` — **16-bit PNG, Non-Color**, podłączyć do Bump (Height) z dystansem początkowo ok. **0,1–0,3 mm** (dostroić do skali obiektu). To skala względna, nie pomiar rzeczywistej topografii drewna.
+4. Słoje mają domyślną orientację **wzdłuż osi V** obrazu. Dla ramiaków, płycin i listew używać osobnych UV z kierunkiem włókien zgodnym z częścią drzwi; nie skalować tekstury w poprzek tak, by włókna stały się paskami.
+5. Po skonfigurowaniu materiału przetestować w Cycles, następnie w Godot Mobile z docelowym światłem: ciepła żarówka z lewej/góry, chłodne okno jako fill. Materiały nie zawierają wypalonych cieni ani refleksów.
+6. Rzeczywiste szczeliny między deskami, obrzeża, listwy i ramiaki pozostają **geometrią 3D**, nie namalowanymi głębokimi pasami w albedo.
 
-- Albedo -> Principled BSDF / Base Color, Color Space **sRGB**.
-- Roughness -> Principled BSDF / Roughness, Color Space **Non-Color**.
-- Height -> Bump / Height, Color Space **Non-Color**, orientacyjnie od 0,1 do 0,3 mm odkształcenia; konieczne dostrojenie do skali skrzydła i kamery.
-- Włókna drewna biegną wzdłuż osi **V**. Dla ramiaków i płycin stosować odrębne UV zgodne z kierunkiem słojów.
-- Rzeczywiste listwy, ramiaki i szczeliny desek wykonać geometrią, a nie dorysowanym wzorem w albedo.
-- Sprawdzić w Cycles i Godot Mobile przy ciepłej żarówce z klatki i chłodnym świetle okna. Brak wypalonego cienia i bloom.
+## Tworzenie od nowa
 
-## Testy i ograniczenia
+```bash
+python3 -m pip install -r requirements.txt
+python3 generate_textures.py
+python3 quality_checks.py
+```
 
-Lokalny test: 12/12 map 2048², 16-bit height, 0 różnicy przeciwległych krawędzi, pliki poniżej 20 MB, 2 referencje, 2 podglądy. Pełny wynik w przekazanym ZIP: QA.json.
+Skrypt tworzy 12 map, podglądy albedo i PBR. **Dwie referencje są odrębnymi wygenerowanymi obrazami fotograficznymi**; nie odtwarza ich skrypt procedur. Zestaw dostarczony zawiera ich gotowe kopie.
 
-Materiał jest generacją proceduralną, nie skanem rzeczywistych drzwi. Zbliżenia ekstremalne wymagają dodatkowego look-dev i poprawienia detalu mikro-porów, odprysków oraz refleksów z lampy już w silniku. Zdjęcia referencyjne to kadry wygenerowanego kolażu poddane cropowi i przeskalowaniu ×2, nie oryginały z aparatu.
+## Weryfikacja i ograniczenia
 
-Przedmioty są pozbawione logotypów; mechanizmy fikcyjne. Nie zmieniano innych katalogów. Dla zespołu Blendera: dopasować UV w art/blender/env_common.py (uwaga, bez zmiany tamtego pliku).
+- `quality_checks.py` potwierdza rozmiar 2048×2048, typ kanałów, limit **20 MB na plik**, ciągłość przeciwległych krawędzi dla wszystkich 12 map oraz obecność 2 zdjęć i 2 zestawień 2×2. Wyniki: `QA.json`.
+- Mapy generowane są procedurami z poziomami szumu o różnych skalach, ugięciem słojów przy sękach, porami i rysami. Brak wzoru z idealnie równoległych pasów. Każdy wariant ma inny seed.
+- To opracowanie materiałowe, nie skan fotogrametryczny rzeczywistych drzwi. Przy bardzo bliskiej kamerze widać ograniczenia proceduralnych uszkodzeń lakieru i farby; wymagana kontrola plastyczna na modelu Blendera.
+- Zdjęcia referencyjne pochodzą z dwóch kadrów wygenerowanego kolażu, następnie zostały wykadrowane i dwukrotnie powiększone. Ich **rzeczywista ilość szczegółów jest niższa** niż sugeruje wynikowy rozmiar pikselowy.
+- Kod i zdjęcia nie opisują technik otwierania realnych zamków. Okucia są fikcyjne i bez marek.
+- Nie modyfikowano plików poza `contrib/gpt/G03/`. Zalecenie dla zespołu Blendera: w `art/blender/env_common.py` używać tej samej orientacji UV dla wzdłużnych ram i osobnych płycin; to **uwaga**, nie zmiana pliku.

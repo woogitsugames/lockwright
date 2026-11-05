@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate 12 PBR maps and two photo references in a complete G03 pack."""
+"""Validate G03 local asset deliverables; no network access."""
 import json
 from pathlib import Path
 import numpy as np

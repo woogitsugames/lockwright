@@ -1,0 +1,205 @@
+{
+  "materials": {
+    "oak_satin": {
+      "albedo": {
+        "path": "materials/oak_satin_albedo_2048.png",
+        "size": [
+          2048,
+          2048
+        ],
+        "dtype": "uint8",
+        "bytes": 3931501,
+        "seam_lr_max": 0.0,
+        "seam_tb_max": 0.0,
+        "stddev": 40.14,
+        "ok": true
+      },
+      "height": {
+        "path": "materials/oak_satin_height_2048.png",
+        "size": [
+          2048,
+          2048
+        ],
+        "dtype": "uint16",
+        "bytes": 6130304,
+        "seam_lr_max": 0.0,
+        "seam_tb_max": 0.0,
+        "stddev": 3671.28,
+        "ok": true
+      },
+      "roughness": {
+        "path": "materials/oak_satin_roughness_2048.png",
+        "size": [
+          2048,
+          2048
+        ],
+        "dtype": "uint8",
+        "bytes": 1123804,
+        "seam_lr_max": 0.0,
+        "seam_tb_max": 0.0,
+        "stddev": 13.18,
+        "ok": true
+      }
+    },
+    "oak_bottle_green": {
+      "albedo": {
+        "path": "materials/oak_bottle_green_albedo_2048.png",
+        "size": [
+          2048,
+          2048
+        ],
+        "dtype": "uint8",
+        "bytes": 2426041,
+        "seam_lr_max": 0.0,
+        "seam_tb_max": 0.0,
+        "stddev": 23.16,
+        "ok": true
+      },
+      "height": {
+        "path": "materials/oak_bottle_green_height_2048.png",
+        "size": [
+          2048,
+          2048
+        ],
+        "dtype": "uint16",
+        "bytes": 6092637,
+        "seam_lr_max": 0.0,
+        "seam_tb_max": 0.0,
+        "stddev": 2787.45,
+        "ok": true
+      },
+      "roughness": {
+        "path": "materials/oak_bottle_green_roughness_2048.png",
+        "size": [
+          2048,
+          2048
+        ],
+        "dtype": "uint8",
+        "bytes": 1197182,
+        "seam_lr_max": 0.0,
+        "seam_tb_max": 0.0,
+        "stddev": 13.65,
+        "ok": true
+      }
+    },
+    "pine_cream": {
+      "albedo": {
+        "path": "materials/pine_cream_albedo_2048.png",
+        "size": [
+          2048,
+          2048
+        ],
+        "dtype": "uint8",
+        "bytes": 2849214,
+        "seam_lr_max": 0.0,
+        "seam_tb_max": 0.0,
+        "stddev": 32.33,
+        "ok": true
+      },
+      "height": {
+        "path": "materials/pine_cream_height_2048.png",
+        "size": [
+          2048,
+          2048
+        ],
+        "dtype": "uint16",
+        "bytes": 6041481,
+        "seam_lr_max": 0.0,
+        "seam_tb_max": 0.0,
+        "stddev": 4106.41,
+        "ok": true
+      },
+      "roughness": {
+        "path": "materials/pine_cream_roughness_2048.png",
+        "size": [
+          2048,
+          2048
+        ],
+        "dtype": "uint8",
+        "bytes": 1271632,
+        "seam_lr_max": 0.0,
+        "seam_tb_max": 0.0,
+        "stddev": 21.21,
+        "ok": true
+      }
+    },
+    "walnut_dark": {
+      "albedo": {
+        "path": "materials/walnut_dark_albedo_2048.png",
+        "size": [
+          2048,
+          2048
+        ],
+        "dtype": "uint8",
+        "bytes": 4279867,
+        "seam_lr_max": 0.0,
+        "seam_tb_max": 0.0,
+        "stddev": 22.06,
+        "ok": true
+      },
+      "height": {
+        "path": "materials/walnut_dark_height_2048.png",
+        "size": [
+          2048,
+          2048
+        ],
+        "dtype": "uint16",
+        "bytes": 6292582,
+        "seam_lr_max": 0.0,
+        "seam_tb_max": 0.0,
+        "stddev": 3637.1,
+        "ok": true
+      },
+      "roughness": {
+        "path": "materials/walnut_dark_roughness_2048.png",
+        "size": [
+          2048,
+          2048
+        ],
+        "dtype": "uint8",
+        "bytes": 1290534,
+        "seam_lr_max": 0.0,
+        "seam_tb_max": 0.0,
+        "stddev": 12.96,
+        "ok": true
+      }
+    }
+  },
+  "references": [
+    {
+      "path": "references/reference_oak_escutcheon_closeup.jpg",
+      "size": [
+        996,
+        734
+      ],
+      "bytes": 302743
+    },
+    {
+      "path": "references/reference_oak_escutcheon_knob.jpg",
+      "size": [
+        1118,
+        734
+      ],
+      "bytes": 295471
+    }
+  ],
+  "previews": [
+    {
+      "path": "previews/preview_albedo_2x2.jpg",
+      "size": [
+        1466,
+        1610
+      ],
+      "bytes": 487357
+    },
+    {
+      "path": "previews/preview_pbr_2x2.jpg",
+      "size": [
+        1536,
+        1100
+      ],
+      "bytes": 374341
+    }
+  ],
+  "all_pass": true
+}

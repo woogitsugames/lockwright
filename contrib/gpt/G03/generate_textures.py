@@ -61,6 +61,7 @@ def grain(seed, species):
         dy = (Y - cy + 0.5) % 1.0 - 0.5
         r2 = (dx / wx) ** 2 + (dy / wy) ** 2
         g = np.exp(-r2 * 1.5)
+        # A shear field forces ring lines around the knot rather than overlaying oval icons.
         displacement += sign * 0.065 * dx * g * (1.0 + 0.4 * np.sin(9 * dy / wy))
         knot_pigment += g * (0.6 + 0.3 * np.sin(5 * r2))
     u = X + displacement
@@ -77,6 +78,7 @@ def grain(seed, species):
         rings *= 0.92
         lines *= 0.77
     fibrous = norm(rings + lines * 0.46)
+    # Long, intermittent open pores rather than perfectly continuous bands.
     micro = rng.random((N, N), dtype=np.float32)
     pores = gaussian_filter(micro, (5.3 if species == 'oak' else 3.6, 0.65), mode='wrap')
     pores = norm(pores)
@@ -89,9 +91,11 @@ def grain(seed, species):
     board_index = np.clip(board_index, 0, len(board_tones) - 1)
     plank = board_tones[board_index]
     for edge in board_edges[1:-1]:
+        # Soft color shift; separate board geometry is modeled by Blender.
         plank += 0.0 * np.exp(-((X-edge)/0.001)**2)
     return dict(fibrous=fibrous, porous=porous, subtle=subtle, broad=broad,
-                plank=plank, knot=knot_pigment, vertical=vertical, u=u)
+                plank=plank, knot=knot_pigment, vertical=vertical,
+                u=u)
 
 
 def scratches(seed, count=125, line_length=(20, 350), widths=(1, 3)):
@@ -118,11 +122,13 @@ def chip_mask(seed, style):
     b = octave(seed + 11, 36, 55)
     c = octave(seed + 12, 83, 120)
     d = octave(seed + 13, 4, 9)
+    # Ragged longitudinal paint lifting near scratches and vertical hairline splits.
     scratch = scratches(seed + 12, 178 if style == 'cream' else 110,
                         (35, 450), (2, 8))
     mix = 0.51*a + 0.28*b + 0.13*c + 0.23*d + 1.1*scratch
     threshold = 0.69 if style == 'cream' else 0.84
     raw = np.clip((mix-threshold)*3.3, 0, 1)
+    # Micro-teeth on damaged edges, no long horizontal seams.
     return np.clip(raw, 0, 1).astype(np.float32)
 
 
@@ -148,6 +154,7 @@ def make_maps(name, species, seed, rgb, style='varnish'):
                      + 0.15*scratches_a + 0.022*fine, .19, .89)
     if style == 'varnish':
         rgb_map = wood
+        # Satin worn finish with minor faint drying marks; not shadows.
         h_map = wood_h
         r_map = wood_r
     else:
@@ -161,6 +168,7 @@ def make_maps(name, species, seed, rgb, style='varnish'):
         painted = np.stack((paint_rgb[0]+paintval*0.90,
                             paint_rgb[1]+paintval*0.81,
                             paint_rgb[2]+paintval*0.73), axis=-1)
+        # A very narrow exposed undercoat at edges of paint flakes.
         edge = gaussian_filter(exposed, 1.2, mode='wrap') - gaussian_filter(exposed, 5.5, mode='wrap')
         rim = np.clip(edge*6.0,0,1)
         undercoat = np.array([146,111,69] if style == 'cream' else [55,77,48],dtype=np.float32)
@@ -170,8 +178,10 @@ def make_maps(name, species, seed, rgb, style='varnish'):
                          + brush*0.12 - np.maximum(edge,0)*0.015,0,1)
         r_map = np.clip(wood_r*exposed + coverage*(0.70 if style=='cream' else 0.56)
                         + 0.025*fine + 0.065*scratches_b,0.18,0.95)
+    # Seam conditioning: reflect face values across a thin periodic transition.
     def condition(a):
         a = a.copy()
+        # The underlying fields are periodic; align edge samples at the final texel.
         m = (a[:, 0] + a[:, -1]) / 2.0
         a[:, 0] = m
         a[:, -1] = m
@@ -180,6 +190,7 @@ def make_maps(name, species, seed, rgb, style='varnish'):
         a[-1] = m
         return a
     rgb_map = np.uint8(np.clip(condition(rgb_map),0,255))
+    # 16-bit height is useful in Blender's non-color data pipeline.
     height_map = np.uint16(np.clip(condition(h_map),0,1)*65535 + 0.5)
     rough_map = np.uint8(np.clip(condition(r_map),0,1)*255 + 0.5)
     for typ, data, mode in [('albedo',rgb_map,'RGB'),('height',height_map,'I;16'),('roughness',rough_map,'L')]:
