@@ -73,7 +73,7 @@ class HapticCore(context: Context) {
                 vibrate(VibrationEffect.startComposition().addPrimitive(prim, i).compose())
             }
             Tier.A1 -> vibrate(VibrationEffect.createOneShot(18, (i * 255).toInt().coerceIn(1, 255)))
-            Tier.A0 -> vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE))
+            Tier.A0 -> vibrate(VibrationEffect.createOneShot(40, VibrationEffect.DEFAULT_AMPLITUDE))  // TECH §2.2 upper bound; 30 ms did not move a coin ERM (GEM3)
             Tier.A_NONE -> {}
         }
         return longArrayOf(t0, SystemClock.elapsedRealtimeNanos())

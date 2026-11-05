@@ -117,10 +117,18 @@ class LockwrightMeasure(godot: Godot) : GodotPlugin(godot) {
     private fun guessClass(): String {
         val man = Build.MANUFACTURER.lowercase(); val model = Build.MODEL.uppercase()
         if (man == "google") return "pixel"
-        if (man == "samsung") return if (model.startsWith("SM-A") || model.startsWith("SM-M")) "samsung_a" else "pixel"
         val mi = ActivityManager.MemoryInfo()
         (ctx.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager).getMemoryInfo(mi)
-        return if (mi.totalMem >= 6L * 1024 * 1024 * 1024) "samsung_a" else "budget"
+        val bigRam = mi.totalMem >= 6L * 1024 * 1024 * 1024
+        // ERM without amplitude control (A0) is a budget phone whatever the badge says (TECH §6.2 #8/#9)
+        if (haptic.tier == HapticCore.Tier.A0 || haptic.tier == HapticCore.Tier.A_NONE) return "budget"
+        if (man == "samsung") {
+            // SM-A0xx/A1xx/A2xx and SM-M0xx/M1xx are the budget lines; A3x+/M3x+ = TECH "Samsung A" class (GEM3 BUG-12)
+            val m = Regex("^SM-([AM])(\\d)").find(model)
+            if (m != null) return if (m.groupValues[2].toInt() >= 3) "samsung_a" else "budget"
+            return "pixel"  // S/Z flagships: same thresholds as Pixel
+        }
+        return if (bigRam) "samsung_a" else "budget"
     }
 
     // ------------------------------------------------------------------ step 2: haptic API -> vibration (no touch)

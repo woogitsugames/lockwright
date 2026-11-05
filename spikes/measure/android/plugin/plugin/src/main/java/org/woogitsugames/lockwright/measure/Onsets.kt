@@ -32,7 +32,8 @@ object Onsets {
                    minFactorOverStart: Float = 0f): Long {
         val n0 = idxAt(tt, nFrom); val n1 = idxAt(tt, nTo)
         val noise = median((n0 until minOf(n1, hp.size)).map { hp[it] })
-        var thr = max(noise * 6f, 0.02f)
+        // floor 0.005 m/s^2: a coin ERM (A0) under a 30-40 ms pulse barely moves a phone lying flat (GEM3, SM-A165F: 30/30 missed at 0.02)
+        var thr = max(noise * 6f, 0.005f)
         val i0 = idxAt(tt, from); val i1 = idxAt(tt, to)
         if (i0 >= hp.size) return -1
         if (minFactorOverStart > 0f) {
@@ -79,7 +80,8 @@ object Onsets {
     /** First mic onset (frame offset within env) in [a, b); noise from [na, nb). -1 if none. */
     fun micOnset(env: FloatArray, a: Int, b: Int, na: Int, nb: Int, minFactorOverStart: Float = 0f): Int {
         val noise = median((max(0, na) until minOf(nb, env.size)).map { env[it] })
-        var thr = max(noise * 8f, 0.01f)
+        // floor 0.002: a fingertip knock on UNPROCESSED mic stays below 0.01 (GEM3: 20/20 missed); noise*8 still rules in a noisy room
+        var thr = max(noise * 8f, 0.002f)
         if (a !in env.indices) return -1
         if (minFactorOverStart > 0f) thr = max(thr, env[a] * minFactorOverStart)
         for (i in a until minOf(b, env.size)) if (env[i] > thr) return i

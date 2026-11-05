@@ -6,7 +6,7 @@ between <!-- MEASURE:BEGIN --> and <!-- MEASURE:END --> (the section is created 
   python3 spikes/measure/tools/ingest.py results/*.json            # update docs/TECH.md
   python3 spikes/measure/tools/ingest.py results/*.json --print    # only print the table
 Files can also be pasted text (the share sheet sends the JSON as text): save it as .json first."""
-import sys, json, pathlib, datetime
+import sys, json, pathlib, datetime, re
 
 HERE = pathlib.Path(__file__).resolve().parent
 ROOT = HERE.parent.parent.parent
@@ -39,15 +39,33 @@ def verdict_max(v, lim):
         return 'no_data'
     return 'pass' if v <= lim else ('border' if v <= lim * 1.25 else 'fail')
 
+def device_class(d):
+    """Class used for thresholds. Older app builds labelled every Samsung SM-A*/SM-M* as 'samsung_a'; budget lines
+    (A0x/A1x/A2x, M0x-M2x) and any phone with an A0/none haptic tier (ERM without amplitude control) are 'budget'
+    (TECH §6.2 #8/#9, GEM3 BUG-12). Returns (class, label shown in the table)."""
+    cls = d.get('class', 'budget')
+    tier = d.get('haptic_tier', '')
+    fixed = cls
+    if tier in ('A0', 'none'):
+        fixed = 'budget'
+    elif cls == 'samsung_a':
+        mm = re.match(r'SM-[AM](\d)', str(d.get('model', '')).upper())
+        if mm and int(mm.group(1)) < 3:
+            fixed = 'budget'
+    return fixed, (cls if fixed == cls else f'{fixed} (aplikacja: {cls})')
+
 def row(doc, name):
-    d = doc.get('device', {}); m = doc.get('metrics', {}); cls = d.get('class', 'budget')
+    d = doc.get('device', {}); m = doc.get('metrics', {})
+    cls, cls_label = device_class(d)
     cells = [f"{d.get('manufacturer', '')} {d.get('model', '')}".strip(), f"{d.get('platform', '')} {d.get('os', '')}",
-             cls, d.get('haptic_tier', '?'), f"{d.get('accel_hz', m.get('accel_hz', '?'))}"]
+             cls_label, d.get('haptic_tier', '?'), f"{d.get('accel_hz', m.get('accel_hz', '?'))}"]
     out = []
     for key, mk in (('haptic_tap_p95_ms', 'haptic_tap'), ('haptic_call_p95_ms', 'haptic_call'), ('audio_tap_p95_ms', 'audio_tap')):
         p50, p95, n = stat(m.get(mk))
         v = verdict_p95(p95, n, key, cls)
-        out.append(f"{p50:.0f} / {p95:.0f} ms ({WORD[v]})" if p95 is not None and n else WORD['no_data'])
+        rej = int((m.get(mk) or {}).get('rejected', 0) or 0) if isinstance(m.get(mk), dict) else 0
+        out.append(f"{p50:.0f} / {p95:.0f} ms ({WORD[v]})" if p95 is not None and n
+                   else WORD['no_data'] + (f' (odrzucone {rej}/{rej + n})' if rej else ''))
     f50, _, fn = stat(m.get('audio_call_fast')); e50, _, en = stat(m.get('audio_call_engine'))
     if fn >= 5 and en >= 5:
         g = e50 - f50; mn = TH['audio_oboe_gain_ms']['min']
@@ -56,7 +74,11 @@ def row(doc, name):
     else:
         out.append(f"{f50:.0f} ms (bez porównania)" if fn else WORD['no_data'])
     gap = m.get('continuous_max_gap_ms')
-    out.append(f"{gap:.0f} ms ({WORD[verdict_max(gap, TH['continuous_max_gap_ms']['pass'])]})" if isinstance(gap, (int, float)) and gap >= 0 else WORD['no_data'])
+    if m.get('continuous_tier', d.get('haptic_tier')) in ('A0', 'none') and isinstance(gap, (int, float)):
+        out.append(f"{gap:.0f} ms (nie dotyczy: {m.get('continuous_tier', d.get('haptic_tier'))} bez oporu ciągłego, TECH §2.2)")
+        gap = None
+    else:
+        out.append(f"{gap:.0f} ms ({WORD[verdict_max(gap, TH['continuous_max_gap_ms']['pass'])]})" if isinstance(gap, (int, float)) and gap >= 0 else WORD['no_data'])
     _, s95, sn = stat(m.get('audio_haptic_sync'))
     out.append(f"{s95:.0f} ms ({WORD[verdict_max(s95, TH['audio_haptic_sync_ms']['pass'])]})" if sn >= 5 else WORD['no_data'])
     return '| ' + ' | '.join(cells + out + [doc.get('created_utc', '')[:10], name]) + ' |'
