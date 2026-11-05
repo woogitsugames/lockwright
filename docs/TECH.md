@@ -460,3 +460,41 @@ Do regresji wydajności i opóźnień zalecamy dodać chmurową farmę urządze�
 **Urządzenia**
 - Galaxy A37/A57 (Notebookcheck): https://www.notebookcheck.net/Galaxy-A37-and-Galaxy-A57-Samsung-s-new-affordable-phones-coming-March-25.1256904.0.html
 - Najlepsze telefony do 150 € (Kimovil): https://www.kimovil.com/en/best-smartphones-under-150-euros
+
+## 8. Wyniki pomiarów na telefonach właściciela (D-33)
+
+<!-- MEASURE:BEGIN -->
+
+Aktualizacja: 2026-11-05 (`spikes/measure/tools/ingest.py`). Metoda D-33: akcelerometr i mikrofon telefonu + znaczniki wewnętrzne; dokładność 2–5 ms (akcelerometr ≥ 200 Hz) albo ±10 ms (100 Hz, iPhone). Progi: `spikes/measure/thresholds.json` (= §4). „Stuknięcie→…” liczone od drgania obudowy przy uderzeniu palca, więc obejmuje opóźnienie ekranu dotykowego.
+
+| Telefon | System | Klasa | Tier haptyki | Akcel. [Hz] | Stuknięcie→drganie p50/p95 | Polecenie→drganie p50/p95 | Stuknięcie→klik p50/p95 | Dźwięk: szybka vs silnik (p50) | Przerwa w oporze | Dźwięk↔drganie p95 | Data | Plik |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| samsung SM-A165F | android 16 | budget (aplikacja: samsung_a) | A0 | 250.0 | brak danych (odrzucone 20/20) | brak danych (odrzucone 30/30) | brak danych (odrzucone 20/20) | 52 vs 126 ms → 73 ms (przechodzi) | 716 ms (nie dotyczy: A0 bez oporu ciągłego, TECH §2.2) | brak danych | 2026-11-05 | lockwright-pomiar-android-SM-A165F-20261105-1221.json |
+
+<!-- MEASURE:END -->
+
+### 8.1 Spike 4 na telefonie właściciela (`planb-perf-apk`, 10 min, GEM3)
+
+Samsung SM-A165F (Helio G99, Mali-G57 MC2, 4 GB, ekran 60 Hz), scena planu B, 60 s rozgrzewki + 600 s pomiaru. Surowe dane: `docs/handoff/device-tests/planb_perf_*.log`, raport `docs/handoff/device-tests/REPORT.md` §3.
+
+| Kryterium spike'u 4 (§4) | Wynik | Werdykt |
+|---|---|---|
+| Czas GPU (nie kryterium, diagnostyka) | p50 5,69 ms / p95 6,43 ms, 47 draw calli | GPU zajęte w ok. 38% budżetu 16,7 ms |
+| Czas klatki p95 ≤ 16,7 ms | 18,18 ms (stałe 55 FPS) | **na granicy**: przyczyną jest tempo klatek (physics 120 Hz bez `physics_jitter_fix`, kolejka Samsunga), a nie renderer; N-33 |
+| 1% low ≥ 55 FPS | 30,3 FPS (pojedyncze podwójne klatki co ok. 11 klatek) | **nie przechodzi**, ta sama przyczyna co wyżej |
+| Brak spadku po 10 min (throttling) | 1. min = 10. min; `SKIN` 30,9 °C, status termiczny 0 | **przechodzi** |
+| RAM ≤ 450 MB | PSS 598 MB (Graphics 317 MB) w spike'u; 388 MB w grze na menu | **nie przechodzi** (tekstury planu B, wczytywanie wszystkich WAV przy starcie); N-35 |
+| Start do menu ≤ 4 s | ok. 4,4 s (1,3 s aktywność + ok. 3,1 s `Sfx._preload_all()`) | **nie przechodzi**, do naprawienia w kodzie; N-35 |
+| Bateria ≤ 15%/h, AAB ≤ 60 MB | nie mierzono; paczka zasobów dziś 289 MB (N-30) | brak danych / nie przechodzi |
+
+### 8.2 Werdykt go / no-go dla Godota (warunki zmiany z §1.9), 2026-11-05
+
+**GO, warunkowo: zostajemy przy Godocie 4.7.2.** Żaden z warunków zmiany z §1.9 nie jest spełniony:
+
+1. **Warunek 1 (haptyka Godot vs natywnie, > 8 ms):** nie rozstrzygnięty. Na A16 z silnikiem ERM `MOTOR_COIN_DC` (A0) akcelerometr nie wykrył żadnego impulsu 30 ms (30/30 i 20/20 odrzuconych), a natywnej aplikacji kontrolnej nie mierzono. Aplikacja pomiarowa ma poprawione progi detekcji i impuls A0 40 ms; pomiar trzeba powtórzyć, najlepiej także na telefonie z LRA (A2+). **Ryzyko projektowe:** jeśli impuls 40 ms na tym ERM nadal jest niewyczuwalny, impulsy A0 25–40 ms z §2.2 trzeba wydłużyć do 60–80 ms (decyzja po pomiarze).
+2. **Warunek 2 (Oboe):** nie zachodzi. Ścieżka Oboe/AAudio: p50 52,5 ms, p95 54,9 ms, rozrzut 2,4 ms. Ścieżka silnika: p50 125,7 ms, rozrzut 12 ms. Zysk 73 ms przy progu ≥ 30 ms, bez trzasków. **Natywny mostek audio jest obowiązkowy** (AudioStreamPlayer Godota na tym telefonie jest za wolny na klik zamka).
+3. **Warunek 3 (iOS GDExtension):** nie rozstrzygnięty. Brak pomiaru na iPhonie, a `game-ios` w CI jest czerwone (N-24, poprawka sesji B w toku).
+4. **Warunek 4 (60 FPS na tanim telefonie):** nie zachodzi. Renderer Mobile robi scenę w 6,4 ms (p95) na Mali-G57, a brakujące FPS wynikają z ustawień tempa klatek, nie z renderera.
+5. **Warunek 5:** nie dotyczy.
+
+Do zamknięcia GO: pomiar na iPhonie, powtórzony pomiar haptyki (A0 i A2+), naprawy N-33 (tempo klatek), N-35 (RAM i start) oraz N-30 (rozmiar paczki).
