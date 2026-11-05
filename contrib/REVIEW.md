@@ -63,3 +63,19 @@ Automat dowodów: `python3 qa/contrib/check_gpt.py [ID…]` → `qa/out/contrib/
 | GEM3 — testy na telefonie właściciela | `docs/handoff/device-tests/`, `docs/handoff/measurements/` | **przyjęte** | 2026-11-05 14:55 | Rzetelny raport (sprzęt, logi, nagrania, 14 błędów z krokami); dane w TECH §8, błędy jako N-31…N-43. Uwaga: numer seryjny telefonu w raporcie (`[usunięto]`) — dane urządzenia właściciela w publicznym repo; zalecam usunięcie przy najbliższej edycji raportu. |
 | GEM4 — warianty przekroju 1–7 pinów | `art/renders/variants/` | **przyjęte** | 2026-11-05 14:55 | 30 renderów + wersje `.gray`; stany per pin i napinacz 0–14° czytelne także w szarości (komory zaślepione odróżnione). Brak README (jest `REPORT.md`) ✅, ASSETS ✅. 149 MB PNG w `art/` — poza paczką gry, OK. |
 
+## Runda 4 — 2026-11-05 18:55 (ChatGPT runda 2–3: T11–T34, T38)
+
+Automat (`qa/contrib/check_gpt.py`): 25 dostaw, 0 problemów formalnych (CSV/JSON, ASSETS, README). Ocena treści: wyrywkowa (PL/EN), skan marek i tonu z kontekstem każdego trafienia.
+
+| ID | Zakres | Status | Uwagi |
+|---|---|---|---|
+| T11–T17 | lokalizacje i korekta PL (T11 PL, T12 FR, T13 ES, T14 IT, T15 pt-BR, T16 CS, T17 UK) | **przyjęte (automat + wyrywkowo)** | CSV poprawne, 0 problemów formalnych. Trafienia `yale`/`sargent` to nazwiska historyczne z notek gabloty (jak T02/T04); „włamywacz/złodziej” tylko w słowniczkach jako terminy zakazane. Jakości języków poza PL/EN nie oceniam — od tego są drugie korekty T31–T34. |
+| T18 | rozdział 8: 12 zimowych zleceń PL/EN | **przyjęte (automat)** | 15 plików, JSON-y i CSV poprawne, bez marek i słów tonu; walidacja `data/tools/validate.py` przy imporcie (B). |
+| T19, T28, T29 | gablota (20 eksponatów), zeszyt (80 wpisów), pomoc i FAQ | **przyjęte (automat)** | CSV/MD poprawne, bez marek; przy imporcie `loc_qa.py` (B). |
+| T20, T38 | tryb ćwiczeń: 30 zamków + strojenie | **przyjęte do weryfikacji botami (A)** | T38 sam określa się jako propozycja do sprawdzenia botami lockcore; sesja A już wpisała wyniki (3e02e1c). |
+| T21 | gra bez wzroku: specyfikacja + etykiety PL/EN | **do poprawki (drobne)** | `a11y_strings.csv:187` `a11y.receipt.stamp_master` = „Master lock completed.” — „Master Lock” to marka (ta sama uwaga co T10). Zmienić na np. „Master-tier lock completed.”. |
+| T22, T23, T24 | ASO (5 języków), informacja prasowa + 40 mediów, plan społeczności | **przyjęte** | „heist/burglar/thief/włamywacz” wyłącznie w zaprzeczeniach i na liście słów nieużytych (np. „you aren't a burglar”); słowa kluczowe bez marek. D-51: sprawdzić przed publikacją, że nota prasowa nie podaje ceny ani daty. |
+| T25, T26, T27 | przeglądy kodu lockcore (24 uwagi) i GDScript, 54 testy GUT | **przyjęte** | T25 rozliczone przez A (ea1b3a3, commity T25-01…24); T26/T27 do decyzji B (diffy i testy). |
+| T30 | niezależny audyt ekonomii | **przyjęte** | do zestawienia z `tools/econ_sim.py` i N-25/N-46 przy następnej rundzie. |
+| T31–T34 | druga korekta FR/ES/IT/pt-BR + sklepy | **przyjęte (automat)** | CSV poprawne; te same historyczne nazwiska co wyżej. |
+

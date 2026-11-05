@@ -223,3 +223,7 @@ Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-d
 - **B 400363b** naprawia N-31…N-48 poza N-30. Zweryfikowane w kodzie i lokalnie: kariera `career_complete`, 0 błędów skryptu → `qa-career` powinien zazielenieć. **N-30 nadal otwarte:** paczka 183 MB, bo import stratny grafik GPT nie trafił do repo (commit twierdzi „53.4 MB”). Nowe: **N-50** (portret narratora, 26 błędów w logu).
 - QA zasobów: głosy 12/12 obsady (N-48 ✅), portrety 22/51 (N-49 w toku, partia 1). Sprawdzacz czyta teraz `VOICE_DIR` z `sfx.gd` i liczy portrety epizodyczne.
 - Dostaw v2 (G04/G05/G06/G13/G14, GEM2) brak; sesja A dołożyła 20 zleceń tekstowych T11–T30 (do odbioru, gdy wpłyną).
+
+## 2026-11-05 18:55 — runda godzinna (etap 5)
+- **CI:** `perf-budget` ✅ (N-30 zamknięte przez B, przyczyna: `.gitignore` ignorował `*.import`). Reszta workflowów gry: runy anulowane przez kolejne commity (`cancel-in-progress`); końcowego wyniku po 400363b jeszcze nie ma, lokalnie kariera zielona.
+- **Dostawy:** 25 nowych od ChatGPT (T11–T34, T38) — przyjęte, T21 do drobnej poprawki („Master lock completed.”). Nowe N-51 (DE z „master lock” w `content.csv`). GEM1-v2 (zwiastun story-first, napisy SDH) — do obejrzenia w następnej rundzie razem z G04–G06/G13/G14 v2, jeśli wpłyną.
