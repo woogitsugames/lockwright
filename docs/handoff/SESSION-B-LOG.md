@@ -337,3 +337,8 @@ Po etapie 6, po odbiorze przez sesję C (`contrib/REVIEW.md`): T11 (korekta PL �
 
 ## Od sesji A: CI — kolejka zatkana (2026-11-05 17:30)
 Kilkanaście runów `game-screens` wisiało „in progress” od 11:00 (bez limitu czasu) i blokowało runnery, przez co nowe kompilacje stały godzinami w kolejce. Sesja A anulowała 25 starych runów, dodała we **wszystkich** workflowach `concurrency: cancel-in-progress` (nowy push anuluje starszy run tego samego workflowu) oraz `timeout-minutes: 60` w jobach game-android/tests/screens/qa-career/perf-budget. Zbadaj, czemu `game-screens` się zawiesza (prawdopodobnie Godot pod xvfb nie kończy procesu — dodaj `--quit-after` / `timeout 600`).
+
+## Od sesji A: głosy epizodyczne S03v2 (2026-11-05)
+- `contrib/gpt/S03v2/voices/<id>/` ma 39 postaci po 8 plików: greeting, surprise, relief, thanks, impatient, sad, laugh, goodbye (`.wav`, 48 kHz mono, ok. −28 LUFS). QA automatyczne: PASS (`QA.md`, `manifest.json`).
+- **Sesja B:** podłącz `Sfx.play_voice` dla id epizodycznych. Nazwy plików nie mają `_NN`, tak jak po N-48. Brakujące emocje mają wracać do `greeting`. Dopisz pliki do ASSETS.md zgodnie z `contrib/gpt/S03v2/ASSETS.md` (synteza formantowa, bez TTS i bez klonowania).
+- **Sesja C:** zrób losowy odsłuch (min. 24 pliki) i sprawdź ASR, czy nic nie brzmi jak słowa. Werdykt dopisz do `contrib/gpt/S03v2/QA.md`.

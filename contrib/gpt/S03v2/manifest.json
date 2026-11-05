@@ -1,0 +1,2913 @@
+{
+  "schema_version": 1,
+  "project": "Lockwright",
+  "asset_batch": "S03v2",
+  "format": {
+    "container": "RIFF/WAVE",
+    "codec": "PCM signed 16-bit",
+    "sample_rate_hz": 48000,
+    "channels": 1
+  },
+  "target_momentary_lufs": -28,
+  "meter": "K-weighted EBU R128, peak sliding 400 ms window / 10 ms hop",
+  "characters": {
+    "agnieszka": [
+      {
+        "file": "voices/agnieszka/greeting.wav",
+        "duration_seconds": 0.80896,
+        "lufs_momentary": -28,
+        "onset_ms": 4.38,
+        "trailing_silence_ms": 18.48,
+        "peak_linear": 0.10773,
+        "sha256": "b180fe7968c081ea8bcea0d57e72744555f72cb78b248b924ce8c38473dc6526"
+      },
+      {
+        "file": "voices/agnieszka/surprise.wav",
+        "duration_seconds": 0.65406,
+        "lufs_momentary": -28,
+        "onset_ms": 4.56,
+        "trailing_silence_ms": 20.81,
+        "peak_linear": 0.11829,
+        "sha256": "2bb937be642e5530c8ba480a9f92f2ef4fcf98a7e4d38a1237674ceb363a4cbc"
+      },
+      {
+        "file": "voices/agnieszka/relief.wav",
+        "duration_seconds": 1.19538,
+        "lufs_momentary": -28,
+        "onset_ms": 4.33,
+        "trailing_silence_ms": 30.46,
+        "peak_linear": 0.12452,
+        "sha256": "8af03039250f99e3e46749a39b658a83471d3e72043f606eef5ded4644816537"
+      },
+      {
+        "file": "voices/agnieszka/thanks.wav",
+        "duration_seconds": 0.88877,
+        "lufs_momentary": -28,
+        "onset_ms": 4.04,
+        "trailing_silence_ms": 16.1,
+        "peak_linear": 0.11084,
+        "sha256": "682b08e557e4bf526af7ab5064acfbfa6ae00321d541bcd70f8056c5d209ed27"
+      },
+      {
+        "file": "voices/agnieszka/impatient.wav",
+        "duration_seconds": 0.81533,
+        "lufs_momentary": -28,
+        "onset_ms": 4.02,
+        "trailing_silence_ms": 16.75,
+        "peak_linear": 0.12336,
+        "sha256": "7639ea4104755b8d5273bdce733cfc2f03e2e30175d8d3124c0d4f02edfeeb45"
+      },
+      {
+        "file": "voices/agnieszka/sad.wav",
+        "duration_seconds": 1.18969,
+        "lufs_momentary": -28,
+        "onset_ms": 4.44,
+        "trailing_silence_ms": 29.58,
+        "peak_linear": 0.10892,
+        "sha256": "d4578c606e4b7a4879fb8acc8df4f11c9e80423cb03f87de2b6449e593d7ad54"
+      },
+      {
+        "file": "voices/agnieszka/laugh.wav",
+        "duration_seconds": 1.187,
+        "lufs_momentary": -28,
+        "onset_ms": 3.44,
+        "trailing_silence_ms": 19.38,
+        "peak_linear": 0.15714,
+        "sha256": "8f755e8781a5f9da30b514d5425d66136ab75e3da11bef244d2886f5bc7c4635"
+      },
+      {
+        "file": "voices/agnieszka/goodbye.wav",
+        "duration_seconds": 0.88165,
+        "lufs_momentary": -28,
+        "onset_ms": 3.94,
+        "trailing_silence_ms": 21.5,
+        "peak_linear": 0.1106,
+        "sha256": "bb11db179c30bf8586d0c204b8c40a191b4f15cee48261c82ef76080ff5a0031"
+      }
+    ],
+    "aino": [
+      {
+        "file": "voices/aino/greeting.wav",
+        "duration_seconds": 0.79067,
+        "lufs_momentary": -28,
+        "onset_ms": 4.77,
+        "trailing_silence_ms": 21.08,
+        "peak_linear": 0.1059,
+        "sha256": "a9e53ab53d35b7016682627bbfb62a18d04fb9474e4540ab9b8148fba018555d"
+      },
+      {
+        "file": "voices/aino/surprise.wav",
+        "duration_seconds": 0.67283,
+        "lufs_momentary": -28,
+        "onset_ms": 5.04,
+        "trailing_silence_ms": 19.23,
+        "peak_linear": 0.1174,
+        "sha256": "65d341e2b46fbd21b06ed263d24b9c4ed750d9ea337c6b929a1608577cad56a9"
+      },
+      {
+        "file": "voices/aino/relief.wav",
+        "duration_seconds": 1.15598,
+        "lufs_momentary": -28,
+        "onset_ms": 4.73,
+        "trailing_silence_ms": 32.58,
+        "peak_linear": 0.12348,
+        "sha256": "7c74136c2d976c6f039a2eb4288e7eaabe5f0280a3eb7be27f5d8e90303186be"
+      },
+      {
+        "file": "voices/aino/thanks.wav",
+        "duration_seconds": 0.90744,
+        "lufs_momentary": -28,
+        "onset_ms": 4.4,
+        "trailing_silence_ms": 15.29,
+        "peak_linear": 0.10923,
+        "sha256": "1852d4503c09165d423631b1cfc99d44769c1c5e5575286105b5bacd7dc17d1e"
+      },
+      {
+        "file": "voices/aino/impatient.wav",
+        "duration_seconds": 0.78535,
+        "lufs_momentary": -28,
+        "onset_ms": 3.63,
+        "trailing_silence_ms": 19.77,
+        "peak_linear": 0.12162,
+        "sha256": "44bc83b1d263ef6cf03cfe58f25d3aa4351fd5e5d88e84e7790fe9b4a52a658a"
+      },
+      {
+        "file": "voices/aino/sad.wav",
+        "duration_seconds": 1.17256,
+        "lufs_momentary": -28,
+        "onset_ms": 4.92,
+        "trailing_silence_ms": 28.73,
+        "peak_linear": 0.10846,
+        "sha256": "9f45976868b6e26a8b8d5e81bce653fd97e24fd5ae79e2cff1f69a6df278bd67"
+      },
+      {
+        "file": "voices/aino/laugh.wav",
+        "duration_seconds": 1.17267,
+        "lufs_momentary": -28,
+        "onset_ms": 3.83,
+        "trailing_silence_ms": 20.48,
+        "peak_linear": 0.15903,
+        "sha256": "3d7e2a85c28589e8f95947fa5176b5e4d49f58f5a6932eacf41b170a09a81da5"
+      },
+      {
+        "file": "voices/aino/goodbye.wav",
+        "duration_seconds": 0.85792,
+        "lufs_momentary": -28,
+        "onset_ms": 4.29,
+        "trailing_silence_ms": 19.33,
+        "peak_linear": 0.10862,
+        "sha256": "3eedbe4a19736d2c38c43ca8a1d36d4a521cf2de6213afcd6c758d94dbb6670d"
+      }
+    ],
+    "bartek": [
+      {
+        "file": "voices/bartek/greeting.wav",
+        "duration_seconds": 0.73206,
+        "lufs_momentary": -28,
+        "onset_ms": 5.6,
+        "trailing_silence_ms": 18.5,
+        "peak_linear": 0.11582,
+        "sha256": "187d2f435fd47279dcdca66ecbad1a7177b7304032bae131c92724275772d9e6"
+      },
+      {
+        "file": "voices/bartek/surprise.wav",
+        "duration_seconds": 0.64696,
+        "lufs_momentary": -28,
+        "onset_ms": 5.96,
+        "trailing_silence_ms": 21.98,
+        "peak_linear": 0.12937,
+        "sha256": "64b3e5b479e7d6284c8716622744a93371ded5e843c8a786d4c1d78539a148e0"
+      },
+      {
+        "file": "voices/bartek/relief.wav",
+        "duration_seconds": 1.12644,
+        "lufs_momentary": -28,
+        "onset_ms": 5.46,
+        "trailing_silence_ms": 31.73,
+        "peak_linear": 0.13126,
+        "sha256": "202482b36154035e5d0b84ab237b0a0d3c5e446d5b8994b76b8be43e08270e07"
+      },
+      {
+        "file": "voices/bartek/thanks.wav",
+        "duration_seconds": 0.8771,
+        "lufs_momentary": -28,
+        "onset_ms": 4.46,
+        "trailing_silence_ms": 18.94,
+        "peak_linear": 0.11771,
+        "sha256": "0d9db6592ed1ef586f948ecf84f05db9de722ed5e876c56544ab4947974824cd"
+      },
+      {
+        "file": "voices/bartek/impatient.wav",
+        "duration_seconds": 0.79696,
+        "lufs_momentary": -28,
+        "onset_ms": 3.9,
+        "trailing_silence_ms": 17.81,
+        "peak_linear": 0.13047,
+        "sha256": "78a3ff036cdeed59216201e5eee76b171f26b9dabaafcf0388bc70aac2a6f6e1"
+      },
+      {
+        "file": "voices/bartek/sad.wav",
+        "duration_seconds": 1.14573,
+        "lufs_momentary": -28,
+        "onset_ms": 5.81,
+        "trailing_silence_ms": 32.13,
+        "peak_linear": 0.11695,
+        "sha256": "0c978f6f82cc5bc2872fb142bdb8b9d73ab6c5170ad4f130e40b2b419b99ea45"
+      },
+      {
+        "file": "voices/bartek/laugh.wav",
+        "duration_seconds": 1.07554,
+        "lufs_momentary": -28,
+        "onset_ms": 3.85,
+        "trailing_silence_ms": 18.54,
+        "peak_linear": 0.17206,
+        "sha256": "5056040f12cd55d971fff458d219ecdfc9ef8bd6544feef95972e615f3e91143"
+      },
+      {
+        "file": "voices/bartek/goodbye.wav",
+        "duration_seconds": 0.82623,
+        "lufs_momentary": -28,
+        "onset_ms": 5.06,
+        "trailing_silence_ms": 16.73,
+        "peak_linear": 0.1175,
+        "sha256": "bd920f440e0c8e0ace38fdc82cd7aa1f858b11412d7a9cf04b3734a0dec005d3"
+      }
+    ],
+    "basia": [
+      {
+        "file": "voices/basia/greeting.wav",
+        "duration_seconds": 0.70273,
+        "lufs_momentary": -28,
+        "onset_ms": 3.92,
+        "trailing_silence_ms": 15.67,
+        "peak_linear": 0.10471,
+        "sha256": "801fb9b58f261590a520ae054bcc8fef782e9b9a37e6b832501222811588e32b"
+      },
+      {
+        "file": "voices/basia/surprise.wav",
+        "duration_seconds": 0.61483,
+        "lufs_momentary": -28,
+        "onset_ms": 4.13,
+        "trailing_silence_ms": 17.83,
+        "peak_linear": 0.11548,
+        "sha256": "b6627edc26491d7b58195c4f315caa373d1d07102f135c004ea89ac2e014647e"
+      },
+      {
+        "file": "voices/basia/relief.wav",
+        "duration_seconds": 1.02742,
+        "lufs_momentary": -28,
+        "onset_ms": 4,
+        "trailing_silence_ms": 27.88,
+        "peak_linear": 0.12073,
+        "sha256": "b30fb63dd1f8a63403247a3462fa903182cccaa2dbcc6631c7361b7d03051100"
+      },
+      {
+        "file": "voices/basia/thanks.wav",
+        "duration_seconds": 0.80023,
+        "lufs_momentary": -28,
+        "onset_ms": 3.65,
+        "trailing_silence_ms": 13.65,
+        "peak_linear": 0.11228,
+        "sha256": "032168da952bff6460afc0c6c89dd57d21365c5449e131bcef8811523282d564"
+      },
+      {
+        "file": "voices/basia/impatient.wav",
+        "duration_seconds": 0.71325,
+        "lufs_momentary": -28,
+        "onset_ms": 3.31,
+        "trailing_silence_ms": 14.35,
+        "peak_linear": 0.12647,
+        "sha256": "669002780cf5e96a7ddec16f75cffb55fae2d1852ba7ed855b027b0b98b1d3a3"
+      },
+      {
+        "file": "voices/basia/sad.wav",
+        "duration_seconds": 1.04675,
+        "lufs_momentary": -28,
+        "onset_ms": 4.04,
+        "trailing_silence_ms": 28.98,
+        "peak_linear": 0.10587,
+        "sha256": "10b6d43b92cfa03c030864137f3e1b2ae2971c56a5289ec55cc677d067ec3dd1"
+      },
+      {
+        "file": "voices/basia/laugh.wav",
+        "duration_seconds": 1.04196,
+        "lufs_momentary": -28,
+        "onset_ms": 3.04,
+        "trailing_silence_ms": 16.52,
+        "peak_linear": 0.14914,
+        "sha256": "b4a7d4cae04d1a358731de16b7d62b5d38de1b0d620c48cfff9434ec8ee1087f"
+      },
+      {
+        "file": "voices/basia/goodbye.wav",
+        "duration_seconds": 0.72079,
+        "lufs_momentary": -28,
+        "onset_ms": 3.52,
+        "trailing_silence_ms": 15.08,
+        "peak_linear": 0.10697,
+        "sha256": "a4681effebef1189f460a92723b93b21f052ba02b79e8e2d6f6e77bfd5f1f45d"
+      }
+    ],
+    "bride": [
+      {
+        "file": "voices/bride/greeting.wav",
+        "duration_seconds": 0.6795,
+        "lufs_momentary": -28,
+        "onset_ms": 3.35,
+        "trailing_silence_ms": 15.71,
+        "peak_linear": 0.10166,
+        "sha256": "a5b182a52e7dde37ba3ebd5af299985a3256cdfeb0eb6714a5c4c2cce9d2daeb"
+      },
+      {
+        "file": "voices/bride/surprise.wav",
+        "duration_seconds": 0.61346,
+        "lufs_momentary": -28,
+        "onset_ms": 3.52,
+        "trailing_silence_ms": 18.27,
+        "peak_linear": 0.10761,
+        "sha256": "4d2783a3747f7268cbef9aedbeece50607f25618e87027facf1ffd86641f6d48"
+      },
+      {
+        "file": "voices/bride/relief.wav",
+        "duration_seconds": 1.04523,
+        "lufs_momentary": -28,
+        "onset_ms": 3.5,
+        "trailing_silence_ms": 26.25,
+        "peak_linear": 0.11225,
+        "sha256": "ea11cb9babce4203cc351c4f6aa60245c5f26d835a264c5ac428080a42b18c81"
+      },
+      {
+        "file": "voices/bride/thanks.wav",
+        "duration_seconds": 0.81604,
+        "lufs_momentary": -28,
+        "onset_ms": 2.83,
+        "trailing_silence_ms": 14.13,
+        "peak_linear": 0.10605,
+        "sha256": "895501c56d0b020709b27e02b4dd40b2eeae09b58dc1903b681e26039351430a"
+      },
+      {
+        "file": "voices/bride/impatient.wav",
+        "duration_seconds": 0.73133,
+        "lufs_momentary": -28,
+        "onset_ms": 2.69,
+        "trailing_silence_ms": 17.92,
+        "peak_linear": 0.12049,
+        "sha256": "d93522309ef2898b093ff5f8d5007151c456e62c0dad9821987e9e32d7304eed"
+      },
+      {
+        "file": "voices/bride/sad.wav",
+        "duration_seconds": 1.09881,
+        "lufs_momentary": -28,
+        "onset_ms": 3.54,
+        "trailing_silence_ms": 28.48,
+        "peak_linear": 0.10312,
+        "sha256": "617055a0affc86f8862d29227b7563f85e4ea8d389e0980973a503f8e717426c"
+      },
+      {
+        "file": "voices/bride/laugh.wav",
+        "duration_seconds": 1.01233,
+        "lufs_momentary": -28,
+        "onset_ms": 2.58,
+        "trailing_silence_ms": 16.54,
+        "peak_linear": 0.14322,
+        "sha256": "f1f5754be05aa25a2799f69c03fc183b2a425ff4a2a8b5ea72ab592c3c45b0e3"
+      },
+      {
+        "file": "voices/bride/goodbye.wav",
+        "duration_seconds": 0.73762,
+        "lufs_momentary": -28,
+        "onset_ms": 3.02,
+        "trailing_silence_ms": 14.44,
+        "peak_linear": 0.10288,
+        "sha256": "e5a55c544d0f6747d8d53eeb12c7d0d5ad0c05946cfc24e6d1525013fb95a0ee"
+      }
+    ],
+    "captain": [
+      {
+        "file": "voices/captain/greeting.wav",
+        "duration_seconds": 0.79379,
+        "lufs_momentary": -28,
+        "onset_ms": 6.94,
+        "trailing_silence_ms": 20.06,
+        "peak_linear": 0.12647,
+        "sha256": "34d9c026fe90787db954e0f71be9b730a413b068337a6c9c89a1e0963b9c98d3"
+      },
+      {
+        "file": "voices/captain/surprise.wav",
+        "duration_seconds": 0.69285,
+        "lufs_momentary": -28,
+        "onset_ms": 7.42,
+        "trailing_silence_ms": 24.23,
+        "peak_linear": 0.141,
+        "sha256": "4fb050eca6eb6cc997349b41dd2b0f3be7906f612498e35533ac7beb8efa6119"
+      },
+      {
+        "file": "voices/captain/relief.wav",
+        "duration_seconds": 1.17846,
+        "lufs_momentary": -28,
+        "onset_ms": 7.42,
+        "trailing_silence_ms": 36.1,
+        "peak_linear": 0.1442,
+        "sha256": "1c395b385e2e668a58c5e21ea680aa3de21c7d289086910a78f3452f729ea43e"
+      },
+      {
+        "file": "voices/captain/thanks.wav",
+        "duration_seconds": 0.91238,
+        "lufs_momentary": -28,
+        "onset_ms": 5.46,
+        "trailing_silence_ms": 16.69,
+        "peak_linear": 0.13019,
+        "sha256": "745d48a97a10a36c3f65fc936fea394a6de8491a2df7e3f2d05bcd140b0a38fc"
+      },
+      {
+        "file": "voices/captain/impatient.wav",
+        "duration_seconds": 0.85596,
+        "lufs_momentary": -28,
+        "onset_ms": 2.25,
+        "trailing_silence_ms": 19.79,
+        "peak_linear": 0.14133,
+        "sha256": "fa2f869f984ea3f1b01f688214e591e5661a2a468f52174013a4f175466376d7"
+      },
+      {
+        "file": "voices/captain/sad.wav",
+        "duration_seconds": 1.26431,
+        "lufs_momentary": -28,
+        "onset_ms": 7.35,
+        "trailing_silence_ms": 30.54,
+        "peak_linear": 0.12912,
+        "sha256": "6a65e005fff0a39fd559ddee1d51b68ab04065b58bc3fac300ca8610267a3016"
+      },
+      {
+        "file": "voices/captain/laugh.wav",
+        "duration_seconds": 1.17308,
+        "lufs_momentary": -28,
+        "onset_ms": 4.96,
+        "trailing_silence_ms": 19.08,
+        "peak_linear": 0.1839,
+        "sha256": "9f5a890650156368a168127e1a9c9662eb528e6d48a4bb9f0787f0cb31360a5e"
+      },
+      {
+        "file": "voices/captain/goodbye.wav",
+        "duration_seconds": 0.87529,
+        "lufs_momentary": -28,
+        "onset_ms": 6.79,
+        "trailing_silence_ms": 22.79,
+        "peak_linear": 0.12973,
+        "sha256": "594cb00d79716d1c332ebcb50944d3a37610f0a9bb40eda075af0da400eaec54"
+      }
+    ],
+    "claimant": [
+      {
+        "file": "voices/claimant/greeting.wav",
+        "duration_seconds": 0.65812,
+        "lufs_momentary": -28,
+        "onset_ms": 3.75,
+        "trailing_silence_ms": 16.48,
+        "peak_linear": 0.10657,
+        "sha256": "d137adfd1b617c15116b9d08c44e79a5ff58a5e440a200a0b35f236658df7003"
+      },
+      {
+        "file": "voices/claimant/surprise.wav",
+        "duration_seconds": 0.59579,
+        "lufs_momentary": -28,
+        "onset_ms": 3.65,
+        "trailing_silence_ms": 18.71,
+        "peak_linear": 0.11444,
+        "sha256": "c85dd3aca64fda946a2a617e7bed054eb1ea4285c26769333d605224154546db"
+      },
+      {
+        "file": "voices/claimant/relief.wav",
+        "duration_seconds": 0.99285,
+        "lufs_momentary": -28,
+        "onset_ms": 3.85,
+        "trailing_silence_ms": 24.69,
+        "peak_linear": 0.12037,
+        "sha256": "9192a70453a3a5d0fd73519a43d6bc7b0a6b46ce33f6092fdf1a2c5e5e54f9d2"
+      },
+      {
+        "file": "voices/claimant/thanks.wav",
+        "duration_seconds": 0.78029,
+        "lufs_momentary": -28,
+        "onset_ms": 3.19,
+        "trailing_silence_ms": 16.25,
+        "peak_linear": 0.11466,
+        "sha256": "b243dbe888f3417677d64c823f1efb4834109128d3f64881b53268475a502840"
+      },
+      {
+        "file": "voices/claimant/impatient.wav",
+        "duration_seconds": 0.6846,
+        "lufs_momentary": -28,
+        "onset_ms": 3.04,
+        "trailing_silence_ms": 16.92,
+        "peak_linear": 0.13062,
+        "sha256": "62d7f5240e687f79181e456da8282cfc8cb84717691282aad49fbfb9ddf20bfe"
+      },
+      {
+        "file": "voices/claimant/sad.wav",
+        "duration_seconds": 1.019,
+        "lufs_momentary": -28,
+        "onset_ms": 3.9,
+        "trailing_silence_ms": 26.46,
+        "peak_linear": 0.1073,
+        "sha256": "c39cba37b0dacd5dc6d3fc71d3296924de0f0816f708b2ebd701ff16e6bdc31a"
+      },
+      {
+        "file": "voices/claimant/laugh.wav",
+        "duration_seconds": 1.0155,
+        "lufs_momentary": -28,
+        "onset_ms": 2.56,
+        "trailing_silence_ms": 16.69,
+        "peak_linear": 0.14646,
+        "sha256": "9b1c4d2a08c3216fdec0a46b489d2aa8b374ca568c1334ebe689d2778acf3c91"
+      },
+      {
+        "file": "voices/claimant/goodbye.wav",
+        "duration_seconds": 0.73227,
+        "lufs_momentary": -28,
+        "onset_ms": 3.38,
+        "trailing_silence_ms": 16.85,
+        "peak_linear": 0.10712,
+        "sha256": "0a399ce271a83a5b69ab0ed4cb3f65bf530f5614e2c55411a663c0ad87cb4a3d"
+      }
+    ],
+    "darek": [
+      {
+        "file": "voices/darek/greeting.wav",
+        "duration_seconds": 0.6855,
+        "lufs_momentary": -28,
+        "onset_ms": 5.98,
+        "trailing_silence_ms": 18.17,
+        "peak_linear": 0.1174,
+        "sha256": "1760d79c70e9b5d73489d8d56485218c43c0030cfc03d21fa2b3518000c83244"
+      },
+      {
+        "file": "voices/darek/surprise.wav",
+        "duration_seconds": 0.5865,
+        "lufs_momentary": -28,
+        "onset_ms": 6.48,
+        "trailing_silence_ms": 18.96,
+        "peak_linear": 0.13038,
+        "sha256": "ea5ab5c7978f1bad14e3679ec207f20b792d5a43c5cba821fdaf350c145bb2f6"
+      },
+      {
+        "file": "voices/darek/relief.wav",
+        "duration_seconds": 0.94783,
+        "lufs_momentary": -28,
+        "onset_ms": 5.85,
+        "trailing_silence_ms": 28.4,
+        "peak_linear": 0.1333,
+        "sha256": "1e97c083e3c16f8c3c798177ed6df778a613784d9e17f9d54043ae4ecca64bcd"
+      },
+      {
+        "file": "voices/darek/thanks.wav",
+        "duration_seconds": 0.7619,
+        "lufs_momentary": -28,
+        "onset_ms": 4.54,
+        "trailing_silence_ms": 13.23,
+        "peak_linear": 0.12925,
+        "sha256": "4cd816476fe8b4ea2c84483f088c775e5946711f216ab78720d7489a528f0cf2"
+      },
+      {
+        "file": "voices/darek/impatient.wav",
+        "duration_seconds": 0.71662,
+        "lufs_momentary": -28,
+        "onset_ms": 2.13,
+        "trailing_silence_ms": 17.5,
+        "peak_linear": 0.13611,
+        "sha256": "53614cbf028ea6e0a792894d0afd041404a3b5a34e8d9a252a50ffca9823d972"
+      },
+      {
+        "file": "voices/darek/sad.wav",
+        "duration_seconds": 1.0261,
+        "lufs_momentary": -28,
+        "onset_ms": 6.1,
+        "trailing_silence_ms": 24.88,
+        "peak_linear": 0.11713,
+        "sha256": "6e333f2af17651887b72744fe16883c2243127c4f30f3e29c9284fa1f76dde40"
+      },
+      {
+        "file": "voices/darek/laugh.wav",
+        "duration_seconds": 0.96075,
+        "lufs_momentary": -28,
+        "onset_ms": 4.15,
+        "trailing_silence_ms": 18.5,
+        "peak_linear": 0.16718,
+        "sha256": "d95877e6d417a8a86a5d8a0e887455b8e788724272a89256132d10293638e57c"
+      },
+      {
+        "file": "voices/darek/goodbye.wav",
+        "duration_seconds": 0.71331,
+        "lufs_momentary": -28,
+        "onset_ms": 5.42,
+        "trailing_silence_ms": 13.85,
+        "peak_linear": 0.11768,
+        "sha256": "c9d58a183fb82df4d4c45c79ed0393f695d03fd528c29f79486aa6c6c2ce3447"
+      }
+    ],
+    "elzbieta": [
+      {
+        "file": "voices/elzbieta/greeting.wav",
+        "duration_seconds": 0.72998,
+        "lufs_momentary": -28,
+        "onset_ms": 4.44,
+        "trailing_silence_ms": 16.81,
+        "peak_linear": 0.10529,
+        "sha256": "08f41907d96f997fd57aa5d9c898565238df4f8729c5a6ec0bc8acd907cb0bcb"
+      },
+      {
+        "file": "voices/elzbieta/surprise.wav",
+        "duration_seconds": 0.61844,
+        "lufs_momentary": -28,
+        "onset_ms": 4.69,
+        "trailing_silence_ms": 17.1,
+        "peak_linear": 0.11567,
+        "sha256": "4dfc4a6ba10a7f333ac24ca868a1641ec8b7eeac4d39f71eff53e89a96831c16"
+      },
+      {
+        "file": "voices/elzbieta/relief.wav",
+        "duration_seconds": 1.09777,
+        "lufs_momentary": -28,
+        "onset_ms": 4.33,
+        "trailing_silence_ms": 31.17,
+        "peak_linear": 0.12143,
+        "sha256": "4d2ddb909323fbceea67b56624c5eb6b939f013c30016d1c5448ea616ff3ddfb"
+      },
+      {
+        "file": "voices/elzbieta/thanks.wav",
+        "duration_seconds": 0.86875,
+        "lufs_momentary": -28,
+        "onset_ms": 4.1,
+        "trailing_silence_ms": 14.79,
+        "peak_linear": 0.10764,
+        "sha256": "79e44b9032be574291ebebb461dc6b081cfbc0c3f98a22c62d38c80b5b2b1565"
+      },
+      {
+        "file": "voices/elzbieta/impatient.wav",
+        "duration_seconds": 0.7615,
+        "lufs_momentary": -28,
+        "onset_ms": 4,
+        "trailing_silence_ms": 15.23,
+        "peak_linear": 0.12235,
+        "sha256": "514d95ec2ef1f8f4d217eaaf327dc574fc921d6eeddfcbb21c21fcb43effae49"
+      },
+      {
+        "file": "voices/elzbieta/sad.wav",
+        "duration_seconds": 1.13735,
+        "lufs_momentary": -28,
+        "onset_ms": 4.6,
+        "trailing_silence_ms": 30.13,
+        "peak_linear": 0.10474,
+        "sha256": "9d800425fbb9b0bfe1de4cf6ddea17750beb4bf7dae92dd3e090763f2fd3e9b0"
+      },
+      {
+        "file": "voices/elzbieta/laugh.wav",
+        "duration_seconds": 1.09529,
+        "lufs_momentary": -28,
+        "onset_ms": 3.5,
+        "trailing_silence_ms": 19.08,
+        "peak_linear": 0.1543,
+        "sha256": "867e627660862e6260ad6203143d759ded0e6189b1346ab6f80ca070aed2099e"
+      },
+      {
+        "file": "voices/elzbieta/goodbye.wav",
+        "duration_seconds": 0.82281,
+        "lufs_momentary": -28,
+        "onset_ms": 3.98,
+        "trailing_silence_ms": 17.52,
+        "peak_linear": 0.10614,
+        "sha256": "fc63f1b8a6308eafa5480a8c6e9498372f1b5d983f13b13c06c505bff2b24e07"
+      }
+    ],
+    "ewa": [
+      {
+        "file": "voices/ewa/greeting.wav",
+        "duration_seconds": 0.64746,
+        "lufs_momentary": -28,
+        "onset_ms": 4.31,
+        "trailing_silence_ms": 16.81,
+        "peak_linear": 0.1063,
+        "sha256": "649184a42af0984b895c9a0a12e10108cf63ea73d17034a1ab4ca8cbddd2ae4e"
+      },
+      {
+        "file": "voices/ewa/surprise.wav",
+        "duration_seconds": 0.58621,
+        "lufs_momentary": -28,
+        "onset_ms": 4.56,
+        "trailing_silence_ms": 17.75,
+        "peak_linear": 0.11664,
+        "sha256": "88d5ef9cef55c9e5d7ead50ef01576c6b4abed66675a54317f4f28c8fab0b08e"
+      },
+      {
+        "file": "voices/ewa/relief.wav",
+        "duration_seconds": 0.95944,
+        "lufs_momentary": -28,
+        "onset_ms": 4.21,
+        "trailing_silence_ms": 24.98,
+        "peak_linear": 0.12058,
+        "sha256": "4f6d55de1e413812e268a81af8ced0d730b9916b1575db95f7ef5c5a3dfb04cd"
+      },
+      {
+        "file": "voices/ewa/thanks.wav",
+        "duration_seconds": 0.7311,
+        "lufs_momentary": -28,
+        "onset_ms": 4.02,
+        "trailing_silence_ms": 12.38,
+        "peak_linear": 0.11814,
+        "sha256": "674c28022fc575e89b588daf429a7450a26a9fcb4842ec50e1940ec7dd38e4e6"
+      },
+      {
+        "file": "voices/ewa/impatient.wav",
+        "duration_seconds": 0.70075,
+        "lufs_momentary": -28,
+        "onset_ms": 4.02,
+        "trailing_silence_ms": 17.9,
+        "peak_linear": 0.12638,
+        "sha256": "c4794125ba070d515a84d7ae2aa458b6d4e619371daeef47f58bd9332ecd6579"
+      },
+      {
+        "file": "voices/ewa/sad.wav",
+        "duration_seconds": 0.98077,
+        "lufs_momentary": -28,
+        "onset_ms": 4.46,
+        "trailing_silence_ms": 23.71,
+        "peak_linear": 0.10681,
+        "sha256": "6a3595c91952b91957e75cac7b2e5fcfcb942e000d5e930b48ce64da024d397d"
+      },
+      {
+        "file": "voices/ewa/laugh.wav",
+        "duration_seconds": 0.96715,
+        "lufs_momentary": -28,
+        "onset_ms": 3,
+        "trailing_silence_ms": 16.65,
+        "peak_linear": 0.15003,
+        "sha256": "145d6785cbcb3e23473f16b7ab9ca698c12c1ccbb845e998a7604490e46e3d93"
+      },
+      {
+        "file": "voices/ewa/goodbye.wav",
+        "duration_seconds": 0.72146,
+        "lufs_momentary": -28,
+        "onset_ms": 3.88,
+        "trailing_silence_ms": 14.54,
+        "peak_linear": 0.10822,
+        "sha256": "76b61cdf41d91ea5130dc7b3d66f169c06895270a852b58407b338759db4f550"
+      }
+    ],
+    "gosia": [
+      {
+        "file": "voices/gosia/greeting.wav",
+        "duration_seconds": 0.7539,
+        "lufs_momentary": -28,
+        "onset_ms": 4.17,
+        "trailing_silence_ms": 17.44,
+        "peak_linear": 0.10389,
+        "sha256": "959c368c0cc7022b200029677e35f9c8c84ed29d77f7b6c509e0b936924c9f0b"
+      },
+      {
+        "file": "voices/gosia/surprise.wav",
+        "duration_seconds": 0.63781,
+        "lufs_momentary": -28,
+        "onset_ms": 4.38,
+        "trailing_silence_ms": 19.17,
+        "peak_linear": 0.11353,
+        "sha256": "de8fcc263078891caa5e9cc566809677670745918acbdd95ee7ccd7725cfb92f"
+      },
+      {
+        "file": "voices/gosia/relief.wav",
+        "duration_seconds": 1.07973,
+        "lufs_momentary": -28,
+        "onset_ms": 4.08,
+        "trailing_silence_ms": 29.23,
+        "peak_linear": 0.11673,
+        "sha256": "844a1354987a66fc7bbf571b4a5f8def27706b52de6013d79df1467676d6170f"
+      },
+      {
+        "file": "voices/gosia/thanks.wav",
+        "duration_seconds": 0.86402,
+        "lufs_momentary": -28,
+        "onset_ms": 3.88,
+        "trailing_silence_ms": 17.85,
+        "peak_linear": 0.10602,
+        "sha256": "e8a4537d08a2e5df83d039d7ca69ec37e12d3bab6068655ad6f5fe4906ae6e46"
+      },
+      {
+        "file": "voices/gosia/impatient.wav",
+        "duration_seconds": 0.7649,
+        "lufs_momentary": -28,
+        "onset_ms": 3.85,
+        "trailing_silence_ms": 19.08,
+        "peak_linear": 0.11789,
+        "sha256": "3c008e8664b8087caa78456ebbb1919411f168b4acfd3ad26ac78f87164d74dd"
+      },
+      {
+        "file": "voices/gosia/sad.wav",
+        "duration_seconds": 1.20206,
+        "lufs_momentary": -28,
+        "onset_ms": 4.33,
+        "trailing_silence_ms": 29.08,
+        "peak_linear": 0.10349,
+        "sha256": "da4217220ed30382fc404cfdb3d2c6c046b8f9a1a2f476064dbd251d2f3c17ac"
+      },
+      {
+        "file": "voices/gosia/laugh.wav",
+        "duration_seconds": 1.12819,
+        "lufs_momentary": -28,
+        "onset_ms": 3.27,
+        "trailing_silence_ms": 17.69,
+        "peak_linear": 0.15119,
+        "sha256": "a643bbbfb22014ffac81b1b6f56fbae1c50e6f1149effbd796bd160287327811"
+      },
+      {
+        "file": "voices/gosia/goodbye.wav",
+        "duration_seconds": 0.79742,
+        "lufs_momentary": -28,
+        "onset_ms": 3.73,
+        "trailing_silence_ms": 15.54,
+        "peak_linear": 0.10514,
+        "sha256": "341ed09d1757362ab88cfa64c59893076b0855acdb638a36b9aadc09e4f5de5a"
+      }
+    ],
+    "hall_manager": [
+      {
+        "file": "voices/hall_manager/greeting.wav",
+        "duration_seconds": 0.75621,
+        "lufs_momentary": -28,
+        "onset_ms": 5.9,
+        "trailing_silence_ms": 18.69,
+        "peak_linear": 0.11844,
+        "sha256": "c9ea17a80ff8cc57006eb00b4c13d16f17fce2a8cc16ab16ff426918cf57d3ba"
+      },
+      {
+        "file": "voices/hall_manager/surprise.wav",
+        "duration_seconds": 0.6735,
+        "lufs_momentary": -28,
+        "onset_ms": 6.27,
+        "trailing_silence_ms": 21.81,
+        "peak_linear": 0.13144,
+        "sha256": "f3b68bb0d7260c0fe5debe886cb0197168c26ca882e1e32cfdb303cb0c9e96ff"
+      },
+      {
+        "file": "voices/hall_manager/relief.wav",
+        "duration_seconds": 1.13215,
+        "lufs_momentary": -28,
+        "onset_ms": 5.67,
+        "trailing_silence_ms": 28.23,
+        "peak_linear": 0.13044,
+        "sha256": "b45d81b01716ac4c5b82a48fc33c8d803068f7053b112a9cbb9f219553baf133"
+      },
+      {
+        "file": "voices/hall_manager/thanks.wav",
+        "duration_seconds": 0.89304,
+        "lufs_momentary": -28,
+        "onset_ms": 4.5,
+        "trailing_silence_ms": 18.94,
+        "peak_linear": 0.11997,
+        "sha256": "476f3d15f66c73f4fedac12468408fe43eb2b31c87e5b4ae56cd9d7737c98654"
+      },
+      {
+        "file": "voices/hall_manager/impatient.wav",
+        "duration_seconds": 0.84585,
+        "lufs_momentary": -28,
+        "onset_ms": 4.13,
+        "trailing_silence_ms": 17.17,
+        "peak_linear": 0.13199,
+        "sha256": "6b019d9e57ef7fe760f31052464b4870348910183eb8f6d8c131b08c0e4ba9a6"
+      },
+      {
+        "file": "voices/hall_manager/sad.wav",
+        "duration_seconds": 1.17381,
+        "lufs_momentary": -28,
+        "onset_ms": 6.06,
+        "trailing_silence_ms": 28.65,
+        "peak_linear": 0.11814,
+        "sha256": "0fb168cb80268ca97229d1ca115e7acb657802b21e99a743e73944bb319cb7c7"
+      },
+      {
+        "file": "voices/hall_manager/laugh.wav",
+        "duration_seconds": 1.19919,
+        "lufs_momentary": -28,
+        "onset_ms": 4.19,
+        "trailing_silence_ms": 18.4,
+        "peak_linear": 0.17096,
+        "sha256": "20cd56fa6915e038e9e652ee1a356411dafa03d2f9725e6ba37750caa65ae309"
+      },
+      {
+        "file": "voices/hall_manager/goodbye.wav",
+        "duration_seconds": 0.82817,
+        "lufs_momentary": -28,
+        "onset_ms": 5.31,
+        "trailing_silence_ms": 19.94,
+        "peak_linear": 0.11881,
+        "sha256": "c4e8c12ce51204fd39918c49f56822bf4d4a60cc5fa24a03404fef44c7f4d1bd"
+      }
+    ],
+    "hania": [
+      {
+        "file": "voices/hania/greeting.wav",
+        "duration_seconds": 0.62146,
+        "lufs_momentary": -28,
+        "onset_ms": 2.31,
+        "trailing_silence_ms": 14.98,
+        "peak_linear": 0.08878,
+        "sha256": "22011a2580fe547717d76ea56bf7945c7a5561af23d1df7716d5f49b59446e60"
+      },
+      {
+        "file": "voices/hania/surprise.wav",
+        "duration_seconds": 0.53667,
+        "lufs_momentary": -28,
+        "onset_ms": 2.42,
+        "trailing_silence_ms": 15.44,
+        "peak_linear": 0.09342,
+        "sha256": "387db8eab2f08d083982d43551ba7d9850de90211d74afa114ab42bf9802b3bd"
+      },
+      {
+        "file": "voices/hania/relief.wav",
+        "duration_seconds": 0.94573,
+        "lufs_momentary": -28,
+        "onset_ms": 2.79,
+        "trailing_silence_ms": 22.85,
+        "peak_linear": 0.10074,
+        "sha256": "aefffaacf89d7ba66b95ae4d5fd65bd9439a4f3136a6b51d65aac769e97692c6"
+      },
+      {
+        "file": "voices/hania/thanks.wav",
+        "duration_seconds": 0.75362,
+        "lufs_momentary": -28,
+        "onset_ms": 2.13,
+        "trailing_silence_ms": 13.08,
+        "peak_linear": 0.09671,
+        "sha256": "06be42a0c09f1e3f16b3052bbb1a79906f5518cd32879196acc078164a69f1a4"
+      },
+      {
+        "file": "voices/hania/impatient.wav",
+        "duration_seconds": 0.67706,
+        "lufs_momentary": -28,
+        "onset_ms": 1.63,
+        "trailing_silence_ms": 13.92,
+        "peak_linear": 0.10883,
+        "sha256": "406b05a278e120910ed0746d0647c5e6bda40470d6ef0b87c6b46db48eef3b22"
+      },
+      {
+        "file": "voices/hania/sad.wav",
+        "duration_seconds": 1.00565,
+        "lufs_momentary": -28,
+        "onset_ms": 2.9,
+        "trailing_silence_ms": 26.13,
+        "peak_linear": 0.09101,
+        "sha256": "9872507cffaee62c06e81463c3eef5888e135d227293bf87a80945b516bbc4f0"
+      },
+      {
+        "file": "voices/hania/laugh.wav",
+        "duration_seconds": 0.93183,
+        "lufs_momentary": -28,
+        "onset_ms": 1.71,
+        "trailing_silence_ms": 14.85,
+        "peak_linear": 0.11921,
+        "sha256": "c5dbab36f6c3fc579242e2c6509f47ef1fd97f91314ec80a04f8a67e59350138"
+      },
+      {
+        "file": "voices/hania/goodbye.wav",
+        "duration_seconds": 0.71729,
+        "lufs_momentary": -28,
+        "onset_ms": 2.38,
+        "trailing_silence_ms": 14.46,
+        "peak_linear": 0.09049,
+        "sha256": "014c2c0a00e2c57d4f8bf11c681b7466ec079a91322f739fc73cad00ca2882ac"
+      }
+    ],
+    "headteacher": [
+      {
+        "file": "voices/headteacher/greeting.wav",
+        "duration_seconds": 0.719,
+        "lufs_momentary": -28,
+        "onset_ms": 4.85,
+        "trailing_silence_ms": 18.46,
+        "peak_linear": 0.1073,
+        "sha256": "c54eef69734ca6817fa70f05fcde82412ab1201f3dc5f8943e38726b4ae3dfc6"
+      },
+      {
+        "file": "voices/headteacher/surprise.wav",
+        "duration_seconds": 0.63265,
+        "lufs_momentary": -28,
+        "onset_ms": 5.13,
+        "trailing_silence_ms": 19.65,
+        "peak_linear": 0.12064,
+        "sha256": "ba43784d04f880b74cd552dfaf0d07e3c5d9cdbba0ee92b722f5e2d8c1019730"
+      },
+      {
+        "file": "voices/headteacher/relief.wav",
+        "duration_seconds": 1.10167,
+        "lufs_momentary": -28,
+        "onset_ms": 4.71,
+        "trailing_silence_ms": 28.75,
+        "peak_linear": 0.12326,
+        "sha256": "764a47c009a9f24dcc73ef6f2d5e716f6625afb7b6bec0789e572d3b92bf6d17"
+      },
+      {
+        "file": "voices/headteacher/thanks.wav",
+        "duration_seconds": 0.85442,
+        "lufs_momentary": -28,
+        "onset_ms": 4.4,
+        "trailing_silence_ms": 14.54,
+        "peak_linear": 0.11145,
+        "sha256": "ea5943d7cc7547e4598e9f6c6ebc94b6abe8357f2d453ea2c637e4c8464f4c41"
+      },
+      {
+        "file": "voices/headteacher/impatient.wav",
+        "duration_seconds": 0.76221,
+        "lufs_momentary": -28,
+        "onset_ms": 3.52,
+        "trailing_silence_ms": 17.83,
+        "peak_linear": 0.12427,
+        "sha256": "4c27e4925073d5051c0e04a50b7c76cb936bda1a1fe847f15e7c2709afa3e3d1"
+      },
+      {
+        "file": "voices/headteacher/sad.wav",
+        "duration_seconds": 1.14615,
+        "lufs_momentary": -28,
+        "onset_ms": 5.06,
+        "trailing_silence_ms": 31.23,
+        "peak_linear": 0.1077,
+        "sha256": "c1d03398ade27149b27d55702bbb0540ae83fa9b36a7cccc1edb0002851cd31a"
+      },
+      {
+        "file": "voices/headteacher/laugh.wav",
+        "duration_seconds": 1.08258,
+        "lufs_momentary": -28,
+        "onset_ms": 3.94,
+        "trailing_silence_ms": 18,
+        "peak_linear": 0.15699,
+        "sha256": "838b551161c550ffb7a371742267ace15af39370c47d5cb248ebb8576baed011"
+      },
+      {
+        "file": "voices/headteacher/goodbye.wav",
+        "duration_seconds": 0.81633,
+        "lufs_momentary": -28,
+        "onset_ms": 4.35,
+        "trailing_silence_ms": 17.4,
+        "peak_linear": 0.10819,
+        "sha256": "11373e0d2b489db9f77b72cde6342ded241ffda61762fab55265cdf637096bb5"
+      }
+    ],
+    "iga": [
+      {
+        "file": "voices/iga/greeting.wav",
+        "duration_seconds": 0.66177,
+        "lufs_momentary": -28,
+        "onset_ms": 3.48,
+        "trailing_silence_ms": 16.04,
+        "peak_linear": 0.10129,
+        "sha256": "b18b86f535cd58f7100da8aa263e4804958efb54d3ce1480b960adfc87b50e47"
+      },
+      {
+        "file": "voices/iga/surprise.wav",
+        "duration_seconds": 0.56663,
+        "lufs_momentary": -28,
+        "onset_ms": 3.31,
+        "trailing_silence_ms": 15.88,
+        "peak_linear": 0.11035,
+        "sha256": "451d0ed3193010d9e6aabcb93f4bf88e8ec140f65efae623d21ff0b28976b76f"
+      },
+      {
+        "file": "voices/iga/relief.wav",
+        "duration_seconds": 1.00517,
+        "lufs_momentary": -28,
+        "onset_ms": 3.56,
+        "trailing_silence_ms": 25.21,
+        "peak_linear": 0.11551,
+        "sha256": "8ba61ab9d50d4e16690a8ae0200943be1f8d89174f771d4931049ca78dd4c448"
+      },
+      {
+        "file": "voices/iga/thanks.wav",
+        "duration_seconds": 0.74438,
+        "lufs_momentary": -28,
+        "onset_ms": 2.88,
+        "trailing_silence_ms": 12.96,
+        "peak_linear": 0.11374,
+        "sha256": "f7d9245627ad043b9ff92e2038ebb87f21466dc598af52e7060842ecab56f821"
+      },
+      {
+        "file": "voices/iga/impatient.wav",
+        "duration_seconds": 0.71833,
+        "lufs_momentary": -28,
+        "onset_ms": 2.79,
+        "trailing_silence_ms": 14.54,
+        "peak_linear": 0.12281,
+        "sha256": "5690c7e556104329bb862d1b64d02af13460a4510baa29ab9967b30f20fe3453"
+      },
+      {
+        "file": "voices/iga/sad.wav",
+        "duration_seconds": 0.999,
+        "lufs_momentary": -28,
+        "onset_ms": 3.6,
+        "trailing_silence_ms": 24.17,
+        "peak_linear": 0.10373,
+        "sha256": "e3dcb45a2ba675cd012cb1186e6f2c3da112f85be344afaf4da2f15473e532d3"
+      },
+      {
+        "file": "voices/iga/laugh.wav",
+        "duration_seconds": 0.97325,
+        "lufs_momentary": -28,
+        "onset_ms": 2.29,
+        "trailing_silence_ms": 17.17,
+        "peak_linear": 0.14057,
+        "sha256": "4ed14655170b845b90bcceb3c117c9facb45ba997ed9c8c438f20e000427bda4"
+      },
+      {
+        "file": "voices/iga/goodbye.wav",
+        "duration_seconds": 0.73183,
+        "lufs_momentary": -28,
+        "onset_ms": 3.13,
+        "trailing_silence_ms": 17,
+        "peak_linear": 0.10395,
+        "sha256": "fc92a58844d799a7af920009ce3ea71a5c25ca729a0cbc63c80ba39de313e252"
+      }
+    ],
+    "irena": [
+      {
+        "file": "voices/irena/greeting.wav",
+        "duration_seconds": 0.87356,
+        "lufs_momentary": -28,
+        "onset_ms": 5.17,
+        "trailing_silence_ms": 20.1,
+        "peak_linear": 0.11078,
+        "sha256": "8d78b705e4615df4a1f2c5d4bc6e110d632fb44785abe81bc7cad4a4fd9e985d"
+      },
+      {
+        "file": "voices/irena/surprise.wav",
+        "duration_seconds": 0.75565,
+        "lufs_momentary": -28,
+        "onset_ms": 5.44,
+        "trailing_silence_ms": 22.17,
+        "peak_linear": 0.12253,
+        "sha256": "ef2144ae4477d508c4d14368693d1bb68cccee557a5b414fdbd3bade7ebc7583"
+      },
+      {
+        "file": "voices/irena/relief.wav",
+        "duration_seconds": 1.26021,
+        "lufs_momentary": -28,
+        "onset_ms": 5.04,
+        "trailing_silence_ms": 30.13,
+        "peak_linear": 0.12595,
+        "sha256": "206bef1273829b70f97295890a733b4663a73e887213902b3539514bd614c9d2"
+      },
+      {
+        "file": "voices/irena/thanks.wav",
+        "duration_seconds": 0.97975,
+        "lufs_momentary": -28,
+        "onset_ms": 4.69,
+        "trailing_silence_ms": 18.77,
+        "peak_linear": 0.1113,
+        "sha256": "099d0e78fea60b758db620398d2cfe1930b5e897c80e5e1bd3df65888eb7f1e8"
+      },
+      {
+        "file": "voices/irena/impatient.wav",
+        "duration_seconds": 0.89933,
+        "lufs_momentary": -28,
+        "onset_ms": 3.96,
+        "trailing_silence_ms": 22.69,
+        "peak_linear": 0.12564,
+        "sha256": "31fb46794574c5b73348fc7c0369d413f0d95043560df5045af57ee7c456a4f2"
+      },
+      {
+        "file": "voices/irena/sad.wav",
+        "duration_seconds": 1.3546,
+        "lufs_momentary": -28,
+        "onset_ms": 5.33,
+        "trailing_silence_ms": 33.65,
+        "peak_linear": 0.11124,
+        "sha256": "742a50b376d521a8d0e77c87211c777f93901c78653aff95571a91db4b6262ef"
+      },
+      {
+        "file": "voices/irena/laugh.wav",
+        "duration_seconds": 1.306,
+        "lufs_momentary": -28,
+        "onset_ms": 4.25,
+        "trailing_silence_ms": 20.02,
+        "peak_linear": 0.15308,
+        "sha256": "36313b6d8234c2fa6fbaf7dfc697e922f6d692bdba7521403236117bc30a1c34"
+      },
+      {
+        "file": "voices/irena/goodbye.wav",
+        "duration_seconds": 0.93106,
+        "lufs_momentary": -28,
+        "onset_ms": 4.65,
+        "trailing_silence_ms": 22.75,
+        "peak_linear": 0.11338,
+        "sha256": "569db6979d8660d9b2d714213c583dc522784a9c8c97eda564430b0156cbf41e"
+      }
+    ],
+    "jacques": [
+      {
+        "file": "voices/jacques/greeting.wav",
+        "duration_seconds": 0.79931,
+        "lufs_momentary": -28,
+        "onset_ms": 6.65,
+        "trailing_silence_ms": 21.71,
+        "peak_linear": 0.12311,
+        "sha256": "143b9b19d362263c4a301dcf27616ba75ff70fd8698023511f66e3d4081ad8e1"
+      },
+      {
+        "file": "voices/jacques/surprise.wav",
+        "duration_seconds": 0.72521,
+        "lufs_momentary": -28,
+        "onset_ms": 7.15,
+        "trailing_silence_ms": 21.44,
+        "peak_linear": 0.13752,
+        "sha256": "7d534ecfc089636387a2086fe917fafa5c3584f398af059e6904d31ba266e8bb"
+      },
+      {
+        "file": "voices/jacques/relief.wav",
+        "duration_seconds": 1.15431,
+        "lufs_momentary": -28,
+        "onset_ms": 6.46,
+        "trailing_silence_ms": 29.38,
+        "peak_linear": 0.14222,
+        "sha256": "060ae21567512c2b6f8aa756bf60e0813e527b2ece0f0081596d4dbfe9f26394"
+      },
+      {
+        "file": "voices/jacques/thanks.wav",
+        "duration_seconds": 0.93267,
+        "lufs_momentary": -28,
+        "onset_ms": 5.06,
+        "trailing_silence_ms": 15.96,
+        "peak_linear": 0.12632,
+        "sha256": "9525ba6a86491878b60be6fbd6ab89d298130191a92db19f1781afc9ba0bbf9a"
+      },
+      {
+        "file": "voices/jacques/impatient.wav",
+        "duration_seconds": 0.87096,
+        "lufs_momentary": -28,
+        "onset_ms": 4.69,
+        "trailing_silence_ms": 19.83,
+        "peak_linear": 0.14158,
+        "sha256": "e56b0cae485ed6d84c45f47b4f4720e5173af2efbd0b4c950d8bcb59f4fc9897"
+      },
+      {
+        "file": "voices/jacques/sad.wav",
+        "duration_seconds": 1.23108,
+        "lufs_momentary": -28,
+        "onset_ms": 6.9,
+        "trailing_silence_ms": 32.88,
+        "peak_linear": 0.12644,
+        "sha256": "90bbd3b7dafe114ab0a8052777fff35217f1e2ed4651852972a54c3fa70ce9c0"
+      },
+      {
+        "file": "voices/jacques/laugh.wav",
+        "duration_seconds": 1.23065,
+        "lufs_momentary": -28,
+        "onset_ms": 4.69,
+        "trailing_silence_ms": 20.25,
+        "peak_linear": 0.17792,
+        "sha256": "0417b3e3df585597b0ccfdc07c7e8bc2f252c1b166ff1850cc7cd75811e5c274"
+      },
+      {
+        "file": "voices/jacques/goodbye.wav",
+        "duration_seconds": 0.85569,
+        "lufs_momentary": -28,
+        "onset_ms": 6.02,
+        "trailing_silence_ms": 16.9,
+        "peak_linear": 0.12653,
+        "sha256": "2564a6c462e90d8e2854e8555151fa2662a51de9e32a8c03c5060ff9751796d6"
+      }
+    ],
+    "kazimierz": [
+      {
+        "file": "voices/kazimierz/greeting.wav",
+        "duration_seconds": 0.71671,
+        "lufs_momentary": -28,
+        "onset_ms": 6.46,
+        "trailing_silence_ms": 20.4,
+        "peak_linear": 0.12201,
+        "sha256": "902994e3472c6232955c248b9641b795d91b19a975a82b8147eca8c5f8d75fc3"
+      },
+      {
+        "file": "voices/kazimierz/surprise.wav",
+        "duration_seconds": 0.64844,
+        "lufs_momentary": -28,
+        "onset_ms": 6.98,
+        "trailing_silence_ms": 17.9,
+        "peak_linear": 0.13694,
+        "sha256": "4825694ea3b1d9bca6991e09381c7bd41a6d8f3e28022b0745269ca84b9c69e9"
+      },
+      {
+        "file": "voices/kazimierz/relief.wav",
+        "duration_seconds": 1.05925,
+        "lufs_momentary": -28,
+        "onset_ms": 6.31,
+        "trailing_silence_ms": 29.1,
+        "peak_linear": 0.13935,
+        "sha256": "c1fbabafda2adf4f0e14c50dd6bc868e60165b2310ae818940a605059f592eac"
+      },
+      {
+        "file": "voices/kazimierz/thanks.wav",
+        "duration_seconds": 0.82594,
+        "lufs_momentary": -28,
+        "onset_ms": 4.83,
+        "trailing_silence_ms": 14.35,
+        "peak_linear": 0.12949,
+        "sha256": "32e9d934ab8981e9ae2f1556af7860e053daca4d41c83be38fd47940257c38ea"
+      },
+      {
+        "file": "voices/kazimierz/impatient.wav",
+        "duration_seconds": 0.77708,
+        "lufs_momentary": -28,
+        "onset_ms": 4.46,
+        "trailing_silence_ms": 19.83,
+        "peak_linear": 0.13669,
+        "sha256": "3b5c803359078e0861c6d7ffd602f8a7988805517abde1244a8a330bd3c52a18"
+      },
+      {
+        "file": "voices/kazimierz/sad.wav",
+        "duration_seconds": 1.10025,
+        "lufs_momentary": -28,
+        "onset_ms": 6.65,
+        "trailing_silence_ms": 33.42,
+        "peak_linear": 0.12296,
+        "sha256": "02486acdaf437d85db5d52f9750916ed6aac4e5adaa38781ae0923d7d9230724"
+      },
+      {
+        "file": "voices/kazimierz/laugh.wav",
+        "duration_seconds": 1.08902,
+        "lufs_momentary": -28,
+        "onset_ms": 4.44,
+        "trailing_silence_ms": 20.75,
+        "peak_linear": 0.18143,
+        "sha256": "48a61db99ec6d0cae141229762d98442f6e6b1f180673ad29f0be55201751aae"
+      },
+      {
+        "file": "voices/kazimierz/goodbye.wav",
+        "duration_seconds": 0.77992,
+        "lufs_momentary": -28,
+        "onset_ms": 5.85,
+        "trailing_silence_ms": 17.17,
+        "peak_linear": 0.12476,
+        "sha256": "d66e1695ca8aac58493d5271dd1062418629895bfc6da6404f9f58751926cc8d"
+      }
+    ],
+    "krysia": [
+      {
+        "file": "voices/krysia/greeting.wav",
+        "duration_seconds": 0.74127,
+        "lufs_momentary": -28,
+        "onset_ms": 4.48,
+        "trailing_silence_ms": 15.88,
+        "peak_linear": 0.10608,
+        "sha256": "81cf6e0dd3305175b472f6e1aa06dc72a4eee15761a2955590769c84504588ef"
+      },
+      {
+        "file": "voices/krysia/surprise.wav",
+        "duration_seconds": 0.66858,
+        "lufs_momentary": -28,
+        "onset_ms": 4.73,
+        "trailing_silence_ms": 20.42,
+        "peak_linear": 0.11887,
+        "sha256": "0fb8b36619dcd7fbb217799dfd969cebee9ee8da093cf2896f68f1f9643d09b5"
+      },
+      {
+        "file": "voices/krysia/relief.wav",
+        "duration_seconds": 1.12908,
+        "lufs_momentary": -28,
+        "onset_ms": 4.5,
+        "trailing_silence_ms": 26.69,
+        "peak_linear": 0.12076,
+        "sha256": "59e6d85f07a2cf268a453e7323adf0b2b241c16b0f8b099be96a00277281b924"
+      },
+      {
+        "file": "voices/krysia/thanks.wav",
+        "duration_seconds": 0.90219,
+        "lufs_momentary": -28,
+        "onset_ms": 4.15,
+        "trailing_silence_ms": 17.04,
+        "peak_linear": 0.10901,
+        "sha256": "d1d48c556ddfd10cec394e8d5bae30ff22ab419e138686d9fb9203d9a645d119"
+      },
+      {
+        "file": "voices/krysia/impatient.wav",
+        "duration_seconds": 0.82398,
+        "lufs_momentary": -28,
+        "onset_ms": 4.1,
+        "trailing_silence_ms": 16.69,
+        "peak_linear": 0.12296,
+        "sha256": "2aa7e3be129634982e59a19e3b245b06d31e891257db743336e9c6995e8c7e0f"
+      },
+      {
+        "file": "voices/krysia/sad.wav",
+        "duration_seconds": 1.22231,
+        "lufs_momentary": -28,
+        "onset_ms": 4.65,
+        "trailing_silence_ms": 30.08,
+        "peak_linear": 0.10828,
+        "sha256": "6999df41b2d3dcc656aa985122d19e6a6b009aa605b47d623baab4a572febe21"
+      },
+      {
+        "file": "voices/krysia/laugh.wav",
+        "duration_seconds": 1.14215,
+        "lufs_momentary": -28,
+        "onset_ms": 3.56,
+        "trailing_silence_ms": 19.1,
+        "peak_linear": 0.15824,
+        "sha256": "ba7df04979d0b9e62854ec8656b022ff80625ae4329299168b1d86602be872af"
+      },
+      {
+        "file": "voices/krysia/goodbye.wav",
+        "duration_seconds": 0.80348,
+        "lufs_momentary": -28,
+        "onset_ms": 4.04,
+        "trailing_silence_ms": 17.35,
+        "peak_linear": 0.10852,
+        "sha256": "2f545526887449d43bb5dbcf9357e478f31ec3a57b0d6b3629b4d8d02466ea95"
+      }
+    ],
+    "kuba": [
+      {
+        "file": "voices/kuba/greeting.wav",
+        "duration_seconds": 0.6459,
+        "lufs_momentary": -28,
+        "onset_ms": 5.15,
+        "trailing_silence_ms": 15.83,
+        "peak_linear": 0.11429,
+        "sha256": "729b92808ac91157afb3dac5aafe32be7a533cc1c1e91378ea0600ac53a481b9"
+      },
+      {
+        "file": "voices/kuba/surprise.wav",
+        "duration_seconds": 0.58852,
+        "lufs_momentary": -28,
+        "onset_ms": 5.46,
+        "trailing_silence_ms": 19.9,
+        "peak_linear": 0.12812,
+        "sha256": "f58c6157bc82da28a657636c558dc1aa3e985329ba3492e60a28b9ceb8e0bef2"
+      },
+      {
+        "file": "voices/kuba/relief.wav",
+        "duration_seconds": 0.97246,
+        "lufs_momentary": -28,
+        "onset_ms": 4.96,
+        "trailing_silence_ms": 29.04,
+        "peak_linear": 0.12903,
+        "sha256": "441463b9a54e81277b4107f0e04966c357c737dd17b9b3f0d494269806db50fe"
+      },
+      {
+        "file": "voices/kuba/thanks.wav",
+        "duration_seconds": 0.75613,
+        "lufs_momentary": -28,
+        "onset_ms": 4.79,
+        "trailing_silence_ms": 17.35,
+        "peak_linear": 0.12683,
+        "sha256": "3db34f33a43d7071ca5f8908eeea9fcbf8454d501396acef265dd0f07a4b7d64"
+      },
+      {
+        "file": "voices/kuba/impatient.wav",
+        "duration_seconds": 0.69804,
+        "lufs_momentary": -28,
+        "onset_ms": 3.65,
+        "trailing_silence_ms": 14.1,
+        "peak_linear": 0.14338,
+        "sha256": "ef8c9edf77e8de3a7b7afacb1eb6ebc27f6ea47b23d16d23cbd253dfb936f57a"
+      },
+      {
+        "file": "voices/kuba/sad.wav",
+        "duration_seconds": 1.04792,
+        "lufs_momentary": -28,
+        "onset_ms": 5.23,
+        "trailing_silence_ms": 25.56,
+        "peak_linear": 0.1138,
+        "sha256": "7240608c219556acb779665312858f91be5fe3ca66111bf3c9f1c1dfb385f0ac"
+      },
+      {
+        "file": "voices/kuba/laugh.wav",
+        "duration_seconds": 0.97185,
+        "lufs_momentary": -28,
+        "onset_ms": 3.58,
+        "trailing_silence_ms": 18.21,
+        "peak_linear": 0.16218,
+        "sha256": "1ff4d8f71e7741c16b0168c61a9f8723dc3df949eeee9d9891aa7ac27d655a92"
+      },
+      {
+        "file": "voices/kuba/goodbye.wav",
+        "duration_seconds": 0.71392,
+        "lufs_momentary": -28,
+        "onset_ms": 4.63,
+        "trailing_silence_ms": 16.1,
+        "peak_linear": 0.11707,
+        "sha256": "cd78fc8310ed89cd3ba27dc2d959d0ded6e15e169d6a51c84a89099e69b8c529"
+      }
+    ],
+    "leopold": [
+      {
+        "file": "voices/leopold/greeting.wav",
+        "duration_seconds": 0.84654,
+        "lufs_momentary": -28,
+        "onset_ms": 7.1,
+        "trailing_silence_ms": 23.25,
+        "peak_linear": 0.12589,
+        "sha256": "b9369659e429f8ed86f7851de7af11501016730fe756b041b67a887307ba29c3"
+      },
+      {
+        "file": "voices/leopold/surprise.wav",
+        "duration_seconds": 0.72867,
+        "lufs_momentary": -28,
+        "onset_ms": 7.67,
+        "trailing_silence_ms": 24.29,
+        "peak_linear": 0.13849,
+        "sha256": "56a8734cf2831bfd3db3d7021059a2d3ca56e1c099785d8f1ac4fca7799dec0f"
+      },
+      {
+        "file": "voices/leopold/relief.wav",
+        "duration_seconds": 1.24819,
+        "lufs_momentary": -28,
+        "onset_ms": 6.96,
+        "trailing_silence_ms": 35.4,
+        "peak_linear": 0.14295,
+        "sha256": "e72b17b7f8475642e81cd0e30722a09aff740b4bbd80705a2e5e40722b8619b3"
+      },
+      {
+        "file": "voices/leopold/thanks.wav",
+        "duration_seconds": 0.99798,
+        "lufs_momentary": -28,
+        "onset_ms": 5.35,
+        "trailing_silence_ms": 16.77,
+        "peak_linear": 0.1283,
+        "sha256": "b6e88321351e8bfa4b637cdba28061d67ef52423c645ad38b3e70954a8f4ed2c"
+      },
+      {
+        "file": "voices/leopold/impatient.wav",
+        "duration_seconds": 0.88008,
+        "lufs_momentary": -28,
+        "onset_ms": 4.85,
+        "trailing_silence_ms": 20.65,
+        "peak_linear": 0.14335,
+        "sha256": "596a0070f8bb803ff0abc7dd35917eb0852eea26e3bc9153951c553639bf8926"
+      },
+      {
+        "file": "voices/leopold/sad.wav",
+        "duration_seconds": 1.26425,
+        "lufs_momentary": -28,
+        "onset_ms": 7.08,
+        "trailing_silence_ms": 34,
+        "peak_linear": 0.12683,
+        "sha256": "c06084c9480cd75dd51fa4a73edeb3d7af87e62f1d6a6d86e39a400cc5b1f67d"
+      },
+      {
+        "file": "voices/leopold/laugh.wav",
+        "duration_seconds": 1.26558,
+        "lufs_momentary": -28,
+        "onset_ms": 4.88,
+        "trailing_silence_ms": 24.29,
+        "peak_linear": 0.17539,
+        "sha256": "db502f59b3efc825b7dfbfeb3cb9aeccc700f887547d1d921826d5035611da8c"
+      },
+      {
+        "file": "voices/leopold/goodbye.wav",
+        "duration_seconds": 0.8901,
+        "lufs_momentary": -28,
+        "onset_ms": 6.46,
+        "trailing_silence_ms": 19.15,
+        "peak_linear": 0.1283,
+        "sha256": "631ec4055652829becd8728478ec2e9c90956d0f640ee466f81acce558c843ce"
+      }
+    ],
+    "magda": [
+      {
+        "file": "voices/magda/greeting.wav",
+        "duration_seconds": 0.76931,
+        "lufs_momentary": -28,
+        "onset_ms": 4,
+        "trailing_silence_ms": 17.96,
+        "peak_linear": 0.10578,
+        "sha256": "2044b15cbf6c445edba9da4b7e9437f13c83d17c8c200f792aba342f0465c694"
+      },
+      {
+        "file": "voices/magda/surprise.wav",
+        "duration_seconds": 0.67627,
+        "lufs_momentary": -28,
+        "onset_ms": 4.21,
+        "trailing_silence_ms": 19.65,
+        "peak_linear": 0.11356,
+        "sha256": "e9a8a924a602bf988af43cf48711430d92873c15be5003f749f15a3b4bb297ec"
+      },
+      {
+        "file": "voices/magda/relief.wav",
+        "duration_seconds": 1.15504,
+        "lufs_momentary": -28,
+        "onset_ms": 4.13,
+        "trailing_silence_ms": 28.9,
+        "peak_linear": 0.11899,
+        "sha256": "3999b5f964eced97e57525ec0e93b604f4658d91d6a409cfcc8ba35f9596c03a"
+      },
+      {
+        "file": "voices/magda/thanks.wav",
+        "duration_seconds": 0.88023,
+        "lufs_momentary": -28,
+        "onset_ms": 3.73,
+        "trailing_silence_ms": 16.13,
+        "peak_linear": 0.1077,
+        "sha256": "ec619bd5f681131c1e446fd07677ebf2b6a0b7c3e3524d942364f06a945254cc"
+      },
+      {
+        "file": "voices/magda/impatient.wav",
+        "duration_seconds": 0.79308,
+        "lufs_momentary": -28,
+        "onset_ms": 3.5,
+        "trailing_silence_ms": 18.44,
+        "peak_linear": 0.11979,
+        "sha256": "493460557bf9bf74fc2627d067c9cd2717789904aecffb3dded9c88658d2db22"
+      },
+      {
+        "file": "voices/magda/sad.wav",
+        "duration_seconds": 1.14285,
+        "lufs_momentary": -28,
+        "onset_ms": 4.23,
+        "trailing_silence_ms": 28.21,
+        "peak_linear": 0.10648,
+        "sha256": "b6af77c854896c14f292e24e75d5b691af15eb729b31018f6ede5705c6e41b1a"
+      },
+      {
+        "file": "voices/magda/laugh.wav",
+        "duration_seconds": 1.17827,
+        "lufs_momentary": -28,
+        "onset_ms": 3.13,
+        "trailing_silence_ms": 21.08,
+        "peak_linear": 0.15229,
+        "sha256": "01d963e6dc78608b3d753072e9bfdd71671293c2cb969eb8f8f586508e176988"
+      },
+      {
+        "file": "voices/magda/goodbye.wav",
+        "duration_seconds": 0.8399,
+        "lufs_momentary": -28,
+        "onset_ms": 3.6,
+        "trailing_silence_ms": 18.4,
+        "peak_linear": 0.10761,
+        "sha256": "5e8d866b351599e39eabe7c00f690e63071336f7410461f46740a4035a2f2342"
+      }
+    ],
+    "marcel": [
+      {
+        "file": "voices/marcel/greeting.wav",
+        "duration_seconds": 0.66008,
+        "lufs_momentary": -28,
+        "onset_ms": 5.29,
+        "trailing_silence_ms": 16.04,
+        "peak_linear": 0.11469,
+        "sha256": "a15ea3f1b40bf2924ba121feef438997480ac53521c67d35153b378d21d50826"
+      },
+      {
+        "file": "voices/marcel/surprise.wav",
+        "duration_seconds": 0.58065,
+        "lufs_momentary": -28,
+        "onset_ms": 5.63,
+        "trailing_silence_ms": 19.33,
+        "peak_linear": 0.12732,
+        "sha256": "340e5aea03bb12a5a0be3f7630926b36e3cc84e62a284eb168ceaa79696fb007"
+      },
+      {
+        "file": "voices/marcel/relief.wav",
+        "duration_seconds": 0.99679,
+        "lufs_momentary": -28,
+        "onset_ms": 5.13,
+        "trailing_silence_ms": 29.08,
+        "peak_linear": 0.1298,
+        "sha256": "a423655c51c6d8629d0c095948b9f43181e6a83bc769148ed8ab5dbbe85e9652"
+      },
+      {
+        "file": "voices/marcel/thanks.wav",
+        "duration_seconds": 0.77135,
+        "lufs_momentary": -28,
+        "onset_ms": 4.1,
+        "trailing_silence_ms": 14.25,
+        "peak_linear": 0.12476,
+        "sha256": "b1bb15b8f51aff0b84ccb429cded3341ef76c2e4b0a9bed256cc42f3ebbcd669"
+      },
+      {
+        "file": "voices/marcel/impatient.wav",
+        "duration_seconds": 0.71144,
+        "lufs_momentary": -28,
+        "onset_ms": 3.67,
+        "trailing_silence_ms": 18.65,
+        "peak_linear": 0.13486,
+        "sha256": "8b570711e183b8ca7ce825b3b8d0f60a19e9304deafb337a8e33bdef00c67871"
+      },
+      {
+        "file": "voices/marcel/sad.wav",
+        "duration_seconds": 1.05925,
+        "lufs_momentary": -28,
+        "onset_ms": 5.42,
+        "trailing_silence_ms": 26.79,
+        "peak_linear": 0.11429,
+        "sha256": "a8b949d64f816d18e32425fa9dc45e675ac636bea8c8fb007d7eb9a5d90c53ea"
+      },
+      {
+        "file": "voices/marcel/laugh.wav",
+        "duration_seconds": 1.00469,
+        "lufs_momentary": -28,
+        "onset_ms": 3.65,
+        "trailing_silence_ms": 19.06,
+        "peak_linear": 0.16178,
+        "sha256": "6195b9bda0b1138a7d0707e7fe62887222ac1eb1a6005ed787061878b5bcdcc9"
+      },
+      {
+        "file": "voices/marcel/goodbye.wav",
+        "duration_seconds": 0.76996,
+        "lufs_momentary": -28,
+        "onset_ms": 4.75,
+        "trailing_silence_ms": 15.67,
+        "peak_linear": 0.11509,
+        "sha256": "a10098812cbb6fbb1a6058e55ffa6e639fd153cc56644b5ce8154db22bcf76e8"
+      }
+    ],
+    "marek": [
+      {
+        "file": "voices/marek/greeting.wav",
+        "duration_seconds": 0.62906,
+        "lufs_momentary": -28,
+        "onset_ms": 5.92,
+        "trailing_silence_ms": 16.54,
+        "peak_linear": 0.11759,
+        "sha256": "6a58bfa88ceeb243fef9a0260826f16e531e1fcbb5cb6d933f2320cc6a2247a1"
+      },
+      {
+        "file": "voices/marek/surprise.wav",
+        "duration_seconds": 0.57242,
+        "lufs_momentary": -28,
+        "onset_ms": 6.56,
+        "trailing_silence_ms": 18.19,
+        "peak_linear": 0.13334,
+        "sha256": "5aba227c074ff1129e42f89ea8c0331229bb1e1f942bb41730025ef56cd2e148"
+      },
+      {
+        "file": "voices/marek/relief.wav",
+        "duration_seconds": 0.94637,
+        "lufs_momentary": -28,
+        "onset_ms": 5.94,
+        "trailing_silence_ms": 27.94,
+        "peak_linear": 0.13504,
+        "sha256": "15b8372dfe32ad8b295dc856c2b67c663d76ed02442e0d236e05d841d44b2fee"
+      },
+      {
+        "file": "voices/marek/thanks.wav",
+        "duration_seconds": 0.70658,
+        "lufs_momentary": -28,
+        "onset_ms": 4.42,
+        "trailing_silence_ms": 15.04,
+        "peak_linear": 0.13294,
+        "sha256": "a847806d3ca84702069b216abb225715f0b2cd292d4a53f30382a123875bd2a3"
+      },
+      {
+        "file": "voices/marek/impatient.wav",
+        "duration_seconds": 0.67427,
+        "lufs_momentary": -28,
+        "onset_ms": 2.13,
+        "trailing_silence_ms": 14.77,
+        "peak_linear": 0.14582,
+        "sha256": "8bba28c5dfadd1eeba27ed3ad7590a3ec6ff4fff5c5539f0638a5fac01e393c5"
+      },
+      {
+        "file": "voices/marek/sad.wav",
+        "duration_seconds": 1.02733,
+        "lufs_momentary": -28,
+        "onset_ms": 6.31,
+        "trailing_silence_ms": 26.85,
+        "peak_linear": 0.11838,
+        "sha256": "91a44434adbf441b5aeb5fe541d6f05d2ca2d2aab272ac6dca6b5a85a6c27ba0"
+      },
+      {
+        "file": "voices/marek/laugh.wav",
+        "duration_seconds": 0.92196,
+        "lufs_momentary": -28,
+        "onset_ms": 4,
+        "trailing_silence_ms": 14.06,
+        "peak_linear": 0.16532,
+        "sha256": "05fa47637663682271bb1e8d8fc53a7358422d20b298b632e4e45235aa997ccf"
+      },
+      {
+        "file": "voices/marek/goodbye.wav",
+        "duration_seconds": 0.67229,
+        "lufs_momentary": -28,
+        "onset_ms": 5.46,
+        "trailing_silence_ms": 13.35,
+        "peak_linear": 0.11859,
+        "sha256": "b8a84d60bbf536355ae5212f34d903814c734147a681df7b380d2ff52626a28d"
+      }
+    ],
+    "martine": [
+      {
+        "file": "voices/martine/greeting.wav",
+        "duration_seconds": 0.82925,
+        "lufs_momentary": -28,
+        "onset_ms": 4.92,
+        "trailing_silence_ms": 17.96,
+        "peak_linear": 0.10962,
+        "sha256": "ff43cc40184af5e5080649a90409c2990e742ed0eddd528d5a9954eb3b321d9a"
+      },
+      {
+        "file": "voices/martine/surprise.wav",
+        "duration_seconds": 0.71535,
+        "lufs_momentary": -28,
+        "onset_ms": 5.17,
+        "trailing_silence_ms": 22.29,
+        "peak_linear": 0.12149,
+        "sha256": "337e8161355dfd27302f556830c52b40e1570498e69e4da68d8df8d35d7dfa81"
+      },
+      {
+        "file": "voices/martine/relief.wav",
+        "duration_seconds": 1.18294,
+        "lufs_momentary": -28,
+        "onset_ms": 4.81,
+        "trailing_silence_ms": 32.31,
+        "peak_linear": 0.12687,
+        "sha256": "4d8109289237ad989dc69c4e59c4ac1108fc875bbd74a5c2e0aed3a857b39ef2"
+      },
+      {
+        "file": "voices/martine/thanks.wav",
+        "duration_seconds": 0.95221,
+        "lufs_momentary": -28,
+        "onset_ms": 4.5,
+        "trailing_silence_ms": 16.06,
+        "peak_linear": 0.11051,
+        "sha256": "f769d32a2fa7aaad18ab52f1e5fea2ce4fb702c87c486df4c48efe4d4d5c5315"
+      },
+      {
+        "file": "voices/martine/impatient.wav",
+        "duration_seconds": 0.87238,
+        "lufs_momentary": -28,
+        "onset_ms": 4,
+        "trailing_silence_ms": 17.69,
+        "peak_linear": 0.12479,
+        "sha256": "882df24c45cd9fff09058306c9e53b8caed67f86293ad20407db584fc5a80918"
+      },
+      {
+        "file": "voices/martine/sad.wav",
+        "duration_seconds": 1.30002,
+        "lufs_momentary": -28,
+        "onset_ms": 5.02,
+        "trailing_silence_ms": 35.96,
+        "peak_linear": 0.11051,
+        "sha256": "ddeb93914f074496e9b0262c184dd51fcd09837e7addc7de4729d0fb664ffc1a"
+      },
+      {
+        "file": "voices/martine/laugh.wav",
+        "duration_seconds": 1.19585,
+        "lufs_momentary": -28,
+        "onset_ms": 3.94,
+        "trailing_silence_ms": 20.35,
+        "peak_linear": 0.16141,
+        "sha256": "03a821958527071b0f55bbbf553053d16d013eee8a20eab34ebec033b497579c"
+      },
+      {
+        "file": "voices/martine/goodbye.wav",
+        "duration_seconds": 0.89075,
+        "lufs_momentary": -28,
+        "onset_ms": 4.42,
+        "trailing_silence_ms": 20.19,
+        "peak_linear": 0.1099,
+        "sha256": "eec414dc252b5287dc0533286c453dd983d9202d9c0cf000dc61f9792c67f3ef"
+      }
+    ],
+    "mietek": [
+      {
+        "file": "voices/mietek/greeting.wav",
+        "duration_seconds": 0.72092,
+        "lufs_momentary": -28,
+        "onset_ms": 5.46,
+        "trailing_silence_ms": 15.79,
+        "peak_linear": 0.11405,
+        "sha256": "e7768a30f7f3e2964f0af892c1164accdbacddaabeaa7eabed057ab057c0aa1c"
+      },
+      {
+        "file": "voices/mietek/surprise.wav",
+        "duration_seconds": 0.60923,
+        "lufs_momentary": -28,
+        "onset_ms": 5.81,
+        "trailing_silence_ms": 18.48,
+        "peak_linear": 0.12726,
+        "sha256": "bc0c652a7e61486b5528f9b8b5d8522477f257faa7d0e041ef99fb423d14cac3"
+      },
+      {
+        "file": "voices/mietek/relief.wav",
+        "duration_seconds": 0.99187,
+        "lufs_momentary": -28,
+        "onset_ms": 5.29,
+        "trailing_silence_ms": 28.13,
+        "peak_linear": 0.13028,
+        "sha256": "2c3d3bd421d59450b68a34c59f0bbb553c176bf2a7cd1307101013c7991d809c"
+      },
+      {
+        "file": "voices/mietek/thanks.wav",
+        "duration_seconds": 0.79802,
+        "lufs_momentary": -28,
+        "onset_ms": 4.19,
+        "trailing_silence_ms": 15.65,
+        "peak_linear": 0.12369,
+        "sha256": "51c52067026a1fb5a8efbd6370d0f81f41662d3ea57b065fbf9634fff3fe487b"
+      },
+      {
+        "file": "voices/mietek/impatient.wav",
+        "duration_seconds": 0.73137,
+        "lufs_momentary": -28,
+        "onset_ms": 3.77,
+        "trailing_silence_ms": 16.17,
+        "peak_linear": 0.13364,
+        "sha256": "e7dc7bd88299ea95f86009bb832d01aaff49c25a312b5519aaed7f032b000699"
+      },
+      {
+        "file": "voices/mietek/sad.wav",
+        "duration_seconds": 1.11931,
+        "lufs_momentary": -28,
+        "onset_ms": 5.54,
+        "trailing_silence_ms": 27.85,
+        "peak_linear": 0.11554,
+        "sha256": "a041096cc86ae216ef0e7f878c46c20ffe0ae027decc44b64ca5e8379a7fe323"
+      },
+      {
+        "file": "voices/mietek/laugh.wav",
+        "duration_seconds": 1.06948,
+        "lufs_momentary": -28,
+        "onset_ms": 3.77,
+        "trailing_silence_ms": 20.44,
+        "peak_linear": 0.1681,
+        "sha256": "20c60a724b4fbf983d3ed49693e5075bbde84ac95c0a94a852bc72641336d7e9"
+      },
+      {
+        "file": "voices/mietek/goodbye.wav",
+        "duration_seconds": 0.78058,
+        "lufs_momentary": -28,
+        "onset_ms": 4.92,
+        "trailing_silence_ms": 15.35,
+        "peak_linear": 0.11597,
+        "sha256": "9d296295dca11460dd3d0e172472fec0fdf00beda76d7136441797ab837ff578"
+      }
+    ],
+    "nadia": [
+      {
+        "file": "voices/nadia/greeting.wav",
+        "duration_seconds": 0.70906,
+        "lufs_momentary": -28,
+        "onset_ms": 3.65,
+        "trailing_silence_ms": 17.08,
+        "peak_linear": 0.10294,
+        "sha256": "f838e094833334b234233e85f2e8cf034909567636eb7ae136239331d0bd2b3f"
+      },
+      {
+        "file": "voices/nadia/surprise.wav",
+        "duration_seconds": 0.63325,
+        "lufs_momentary": -28,
+        "onset_ms": 3.81,
+        "trailing_silence_ms": 17.75,
+        "peak_linear": 0.11173,
+        "sha256": "217ffb23cec29a62a9b89b2aec3a3aeeb48e3530cc93d6606baa73eeb7f580ba"
+      },
+      {
+        "file": "voices/nadia/relief.wav",
+        "duration_seconds": 1.11044,
+        "lufs_momentary": -28,
+        "onset_ms": 3.79,
+        "trailing_silence_ms": 28.25,
+        "peak_linear": 0.11826,
+        "sha256": "76d42a04c3172f7a7ff8254e65f885f27334c0a442a01c25be98064dfcb6d8b9"
+      },
+      {
+        "file": "voices/nadia/thanks.wav",
+        "duration_seconds": 0.80458,
+        "lufs_momentary": -28,
+        "onset_ms": 3.1,
+        "trailing_silence_ms": 13.92,
+        "peak_linear": 0.11063,
+        "sha256": "e92d9c4ee1d98dd499a5bdad3a0e2a505592d32660f72ca3fd0821de5db39ec6"
+      },
+      {
+        "file": "voices/nadia/impatient.wav",
+        "duration_seconds": 0.77102,
+        "lufs_momentary": -28,
+        "onset_ms": 3,
+        "trailing_silence_ms": 18.71,
+        "peak_linear": 0.12052,
+        "sha256": "ab8fbeb344fc13b6f3efdfb38a3149d6ad64cdd5d84e3a20fdb4499878ef1646"
+      },
+      {
+        "file": "voices/nadia/sad.wav",
+        "duration_seconds": 1.15669,
+        "lufs_momentary": -28,
+        "onset_ms": 3.83,
+        "trailing_silence_ms": 31.35,
+        "peak_linear": 0.10437,
+        "sha256": "9a24a79cd787bd4d8b394cf9619e89b5d56debe20e5b0913c0355758aad56598"
+      },
+      {
+        "file": "voices/nadia/laugh.wav",
+        "duration_seconds": 1.1126,
+        "lufs_momentary": -28,
+        "onset_ms": 2.83,
+        "trailing_silence_ms": 17.06,
+        "peak_linear": 0.14884,
+        "sha256": "51498ab0a9c7271706c3165e456f535b213d782d1344809d49e4a6ec766ba484"
+      },
+      {
+        "file": "voices/nadia/goodbye.wav",
+        "duration_seconds": 0.80856,
+        "lufs_momentary": -28,
+        "onset_ms": 3.27,
+        "trailing_silence_ms": 15.73,
+        "peak_linear": 0.10401,
+        "sha256": "0f1e119b295486301115e87926bc12f5a9dfa5869e67b04f6736d096d21afec3"
+      }
+    ],
+    "neighbour_lucyna": [
+      {
+        "file": "voices/neighbour_lucyna/greeting.wav",
+        "duration_seconds": 0.75244,
+        "lufs_momentary": -28,
+        "onset_ms": 5,
+        "trailing_silence_ms": 18.33,
+        "peak_linear": 0.10971,
+        "sha256": "e4dcbd300bbd7ae74fbf1c34f1adbb7ce74e5e9d9a344e57f013c0691c7af394"
+      },
+      {
+        "file": "voices/neighbour_lucyna/surprise.wav",
+        "duration_seconds": 0.66385,
+        "lufs_momentary": -28,
+        "onset_ms": 5.29,
+        "trailing_silence_ms": 21.77,
+        "peak_linear": 0.11972,
+        "sha256": "e50fe406e39ea3e86092ec5c8db1f2b025b60c8bd8e2d3974e68bbac38001b24"
+      },
+      {
+        "file": "voices/neighbour_lucyna/relief.wav",
+        "duration_seconds": 1.14883,
+        "lufs_momentary": -28,
+        "onset_ms": 4.94,
+        "trailing_silence_ms": 29.19,
+        "peak_linear": 0.1268,
+        "sha256": "44f5ff60eb996e861d5ccf4d6e2f647509e3f79f0ee3558577e325cca4cb06f3"
+      },
+      {
+        "file": "voices/neighbour_lucyna/thanks.wav",
+        "duration_seconds": 0.88052,
+        "lufs_momentary": -28,
+        "onset_ms": 4.6,
+        "trailing_silence_ms": 14.83,
+        "peak_linear": 0.11209,
+        "sha256": "414d6bd8fcc6e748abb9ac736e4c78ca1a768b7016457c63cf7e29a0ce898ca8"
+      },
+      {
+        "file": "voices/neighbour_lucyna/impatient.wav",
+        "duration_seconds": 0.77998,
+        "lufs_momentary": -28,
+        "onset_ms": 3.79,
+        "trailing_silence_ms": 20.38,
+        "peak_linear": 0.12775,
+        "sha256": "ccd5872777491a925f84bfaf2a84175edaa0e881cdb08971079fbefacf6fa5b6"
+      },
+      {
+        "file": "voices/neighbour_lucyna/sad.wav",
+        "duration_seconds": 1.13973,
+        "lufs_momentary": -28,
+        "onset_ms": 5.13,
+        "trailing_silence_ms": 27,
+        "peak_linear": 0.10929,
+        "sha256": "479780e9ae21c04a6594dab10204fde4b9a42b3d0f42578d11eded2ace7fb7f8"
+      },
+      {
+        "file": "voices/neighbour_lucyna/laugh.wav",
+        "duration_seconds": 1.11262,
+        "lufs_momentary": -28,
+        "onset_ms": 4.04,
+        "trailing_silence_ms": 19.6,
+        "peak_linear": 0.16334,
+        "sha256": "10922b13cc487a10d2d20b2db36afe6301d530891a8a8c750dfa33b66b028c70"
+      },
+      {
+        "file": "voices/neighbour_lucyna/goodbye.wav",
+        "duration_seconds": 0.81567,
+        "lufs_momentary": -28,
+        "onset_ms": 4.5,
+        "trailing_silence_ms": 17.54,
+        "peak_linear": 0.1106,
+        "sha256": "b8d6085fc7fcdd00ce3c22a853e6ca6673f8a53f10a04cd9a9124ec19878edbf"
+      }
+    ],
+    "neighbour_robe": [
+      {
+        "file": "voices/neighbour_robe/greeting.wav",
+        "duration_seconds": 0.87654,
+        "lufs_momentary": -28,
+        "onset_ms": 6.4,
+        "trailing_silence_ms": 22.63,
+        "peak_linear": 0.11737,
+        "sha256": "7641c2a4694215b97465095d7c5b33305f63d803cf8b43f63496b05324f9a112"
+      },
+      {
+        "file": "voices/neighbour_robe/surprise.wav",
+        "duration_seconds": 0.74879,
+        "lufs_momentary": -28,
+        "onset_ms": 6.81,
+        "trailing_silence_ms": 23.13,
+        "peak_linear": 0.13227,
+        "sha256": "525a5585cf0d09a9993a842b61bbd2f398d43b44ba770fefab680309a227bb89"
+      },
+      {
+        "file": "voices/neighbour_robe/relief.wav",
+        "duration_seconds": 1.29804,
+        "lufs_momentary": -28,
+        "onset_ms": 6.25,
+        "trailing_silence_ms": 30.83,
+        "peak_linear": 0.13431,
+        "sha256": "31eb92f25dd937931f5bc3aada3afb7372f82267347fb3e9bb24dd72a2bcde40"
+      },
+      {
+        "file": "voices/neighbour_robe/thanks.wav",
+        "duration_seconds": 0.96188,
+        "lufs_momentary": -28,
+        "onset_ms": 4.81,
+        "trailing_silence_ms": 19.79,
+        "peak_linear": 0.11942,
+        "sha256": "74d2872a93b1475b48980e78af56e9ddb1eae23d5d11aeb4db60e98956894905"
+      },
+      {
+        "file": "voices/neighbour_robe/impatient.wav",
+        "duration_seconds": 0.87485,
+        "lufs_momentary": -28,
+        "onset_ms": 4.35,
+        "trailing_silence_ms": 21.23,
+        "peak_linear": 0.13337,
+        "sha256": "069b5c49a736f5ef2e89903a7092ced6bea2b9f977a4322695e20156b1550984"
+      },
+      {
+        "file": "voices/neighbour_robe/sad.wav",
+        "duration_seconds": 1.3114,
+        "lufs_momentary": -28,
+        "onset_ms": 6.33,
+        "trailing_silence_ms": 30.98,
+        "peak_linear": 0.11789,
+        "sha256": "1cfac0d4659049bde79d49409dcb424c759983d6d415abd13f512a6ab7ead691"
+      },
+      {
+        "file": "voices/neighbour_robe/laugh.wav",
+        "duration_seconds": 1.27204,
+        "lufs_momentary": -28,
+        "onset_ms": 4.54,
+        "trailing_silence_ms": 21.73,
+        "peak_linear": 0.16691,
+        "sha256": "a5a806bdc2633512692d6e35ebd43c5724baa8866e2e48855ce5bb8441e96efb"
+      },
+      {
+        "file": "voices/neighbour_robe/goodbye.wav",
+        "duration_seconds": 0.94577,
+        "lufs_momentary": -28,
+        "onset_ms": 5.79,
+        "trailing_silence_ms": 21.5,
+        "peak_linear": 0.11985,
+        "sha256": "9d9596a377ef654df703350ec8110eadc561caab41d3a3d0985c0753ef864b4e"
+      }
+    ],
+    "norbert": [
+      {
+        "file": "voices/norbert/greeting.wav",
+        "duration_seconds": 0.76025,
+        "lufs_momentary": -28,
+        "onset_ms": 5.73,
+        "trailing_silence_ms": 17.94,
+        "peak_linear": 0.11536,
+        "sha256": "e38bf8a5fdf18fedcc392326b59ef9a35ecbfff15f0e0124aaa588002d5b0da2"
+      },
+      {
+        "file": "voices/norbert/surprise.wav",
+        "duration_seconds": 0.67229,
+        "lufs_momentary": -28,
+        "onset_ms": 6.1,
+        "trailing_silence_ms": 22.81,
+        "peak_linear": 0.12793,
+        "sha256": "ab845d72c2793e37867b23766b75d3b30bb4e7090c08332ad2db779b09a306a3"
+      },
+      {
+        "file": "voices/norbert/relief.wav",
+        "duration_seconds": 1.10729,
+        "lufs_momentary": -28,
+        "onset_ms": 5.5,
+        "trailing_silence_ms": 26.9,
+        "peak_linear": 0.13153,
+        "sha256": "214356e7b9d54a3728b69f3fc7179c741c9f090c4d33e1e09eaa18366eda0da3"
+      },
+      {
+        "file": "voices/norbert/thanks.wav",
+        "duration_seconds": 0.91677,
+        "lufs_momentary": -28,
+        "onset_ms": 4.56,
+        "trailing_silence_ms": 15.46,
+        "peak_linear": 0.11634,
+        "sha256": "e9743865b0722ee08da9fe89a6e7ad265bce863ba6d8e4e39ecf726d19083c82"
+      },
+      {
+        "file": "voices/norbert/impatient.wav",
+        "duration_seconds": 0.78927,
+        "lufs_momentary": -28,
+        "onset_ms": 3.94,
+        "trailing_silence_ms": 18.75,
+        "peak_linear": 0.13266,
+        "sha256": "ad250738dc31eaa1b2b94b44ef30089756132af1a22c1dc6ec64ddc4eead2b9b"
+      },
+      {
+        "file": "voices/norbert/sad.wav",
+        "duration_seconds": 1.23244,
+        "lufs_momentary": -28,
+        "onset_ms": 5.96,
+        "trailing_silence_ms": 29.08,
+        "peak_linear": 0.11737,
+        "sha256": "6d2de3f62fdfaba99c26e051fb5834cc2fa83646de862d8ef6b7800bc62b6f7f"
+      },
+      {
+        "file": "voices/norbert/laugh.wav",
+        "duration_seconds": 1.16102,
+        "lufs_momentary": -28,
+        "onset_ms": 4.04,
+        "trailing_silence_ms": 18.46,
+        "peak_linear": 0.17014,
+        "sha256": "d63fdcbbd373f6232fcf9f0783b85972c49a14f2e9a2a1f030a78d20e0f758ed"
+      },
+      {
+        "file": "voices/norbert/goodbye.wav",
+        "duration_seconds": 0.85565,
+        "lufs_momentary": -28,
+        "onset_ms": 5.19,
+        "trailing_silence_ms": 21.65,
+        "peak_linear": 0.11673,
+        "sha256": "470a94521299fa4cbe1fafb4c2bb299bc4f35018a17caa56bce6b0a1222ca700"
+      }
+    ],
+    "pieter": [
+      {
+        "file": "voices/pieter/greeting.wav",
+        "duration_seconds": 0.84085,
+        "lufs_momentary": -28,
+        "onset_ms": 6.25,
+        "trailing_silence_ms": 19.81,
+        "peak_linear": 0.11887,
+        "sha256": "0b6b3a6ea8f50f14a6a186e09b228cd177282410969aa0a3f81e331b0af7cd55"
+      },
+      {
+        "file": "voices/pieter/surprise.wav",
+        "duration_seconds": 0.75658,
+        "lufs_momentary": -28,
+        "onset_ms": 6.63,
+        "trailing_silence_ms": 22.02,
+        "peak_linear": 0.13135,
+        "sha256": "fa192b824e6f1dce931bc4a2fada6a727cec1b0c9719920cafb9c60b3e1cae3c"
+      },
+      {
+        "file": "voices/pieter/relief.wav",
+        "duration_seconds": 1.25708,
+        "lufs_momentary": -28,
+        "onset_ms": 6.04,
+        "trailing_silence_ms": 30.13,
+        "peak_linear": 0.13196,
+        "sha256": "674e3ac7bef04ec7fda9461cf7ac93fe009973506fe99fb94fa523822ca3c595"
+      },
+      {
+        "file": "voices/pieter/thanks.wav",
+        "duration_seconds": 0.98073,
+        "lufs_momentary": -28,
+        "onset_ms": 4.85,
+        "trailing_silence_ms": 17.23,
+        "peak_linear": 0.12076,
+        "sha256": "2e2d2bbaec4c8924f477b49a5bcf0849f8dbbc5a9432f50c11239db5b0c280a1"
+      },
+      {
+        "file": "voices/pieter/impatient.wav",
+        "duration_seconds": 0.89156,
+        "lufs_momentary": -28,
+        "onset_ms": 4.38,
+        "trailing_silence_ms": 18.58,
+        "peak_linear": 0.13431,
+        "sha256": "534698e3606669f75ba75d1fc6a5eb6b3ae2be1870f0c8842f469190d5916d57"
+      },
+      {
+        "file": "voices/pieter/sad.wav",
+        "duration_seconds": 1.31012,
+        "lufs_momentary": -28,
+        "onset_ms": 6.44,
+        "trailing_silence_ms": 33.27,
+        "peak_linear": 0.1182,
+        "sha256": "08e13d4bc17c207632f225ea4ff47e6392eb37219f1f708d66d6d968c6a7e0cc"
+      },
+      {
+        "file": "voices/pieter/laugh.wav",
+        "duration_seconds": 1.25233,
+        "lufs_momentary": -28,
+        "onset_ms": 4.44,
+        "trailing_silence_ms": 22.9,
+        "peak_linear": 0.16788,
+        "sha256": "90b54e5c800b85ffca2bee2cd196dc730a9c56c79c3f3c2299d96098203af4bb"
+      },
+      {
+        "file": "voices/pieter/goodbye.wav",
+        "duration_seconds": 0.93823,
+        "lufs_momentary": -28,
+        "onset_ms": 5.63,
+        "trailing_silence_ms": 18.54,
+        "peak_linear": 0.12116,
+        "sha256": "ed9f8701c6f8fcffa6513359509935f90dabdd2f71be6420dfa1c0c84b99a807"
+      }
+    ],
+    "piotr": [
+      {
+        "file": "voices/piotr/greeting.wav",
+        "duration_seconds": 0.85148,
+        "lufs_momentary": -28,
+        "onset_ms": 6,
+        "trailing_silence_ms": 18.58,
+        "peak_linear": 0.11487,
+        "sha256": "76a5a8fe11600fd007473d3f93d2587722a3a9613649f4ad1a2d0620059e425a"
+      },
+      {
+        "file": "voices/piotr/surprise.wav",
+        "duration_seconds": 0.75085,
+        "lufs_momentary": -28,
+        "onset_ms": 6.38,
+        "trailing_silence_ms": 20.92,
+        "peak_linear": 0.12748,
+        "sha256": "e0438925369064f02af61f30c26fc19a030b588e59e23a408351d9286803fc25"
+      },
+      {
+        "file": "voices/piotr/relief.wav",
+        "duration_seconds": 1.23881,
+        "lufs_momentary": -28,
+        "onset_ms": 5.81,
+        "trailing_silence_ms": 31.5,
+        "peak_linear": 0.13132,
+        "sha256": "7a22e5d55186d05b279fecf0eea12ee931f6479fb95b01cfacf3484c6c676f82"
+      },
+      {
+        "file": "voices/piotr/thanks.wav",
+        "duration_seconds": 0.96562,
+        "lufs_momentary": -28,
+        "onset_ms": 4.6,
+        "trailing_silence_ms": 16.83,
+        "peak_linear": 0.11682,
+        "sha256": "607035f8e8d01befba195281dc2f9c83e41d76f33040a59f12c939eb639ef9c4"
+      },
+      {
+        "file": "voices/piotr/impatient.wav",
+        "duration_seconds": 0.85431,
+        "lufs_momentary": -28,
+        "onset_ms": 4.13,
+        "trailing_silence_ms": 22.13,
+        "peak_linear": 0.13056,
+        "sha256": "f3c9cc32d10ca4d52ce96bdfe96bd8ddf6d26f3cefbcafb402062a1b8f8acfb6"
+      },
+      {
+        "file": "voices/piotr/sad.wav",
+        "duration_seconds": 1.34533,
+        "lufs_momentary": -28,
+        "onset_ms": 6.27,
+        "trailing_silence_ms": 36.6,
+        "peak_linear": 0.11502,
+        "sha256": "83afc9fcd4d7961e1b8131921e549319fce20c3f7eead2c6f25e18368aaf0978"
+      },
+      {
+        "file": "voices/piotr/laugh.wav",
+        "duration_seconds": 1.29685,
+        "lufs_momentary": -28,
+        "onset_ms": 4.23,
+        "trailing_silence_ms": 23.4,
+        "peak_linear": 0.16169,
+        "sha256": "164956c724904417bab8d0ab11e038761cb0fbd3397f7565486725fea99dff7d"
+      },
+      {
+        "file": "voices/piotr/goodbye.wav",
+        "duration_seconds": 0.90027,
+        "lufs_momentary": -28,
+        "onset_ms": 5.42,
+        "trailing_silence_ms": 22.21,
+        "peak_linear": 0.11792,
+        "sha256": "ac4f79ed29e30a7d2a169690e09ff2dac32083f448faf248079baf819db30b70"
+      }
+    ],
+    "renata": [
+      {
+        "file": "voices/renata/greeting.wav",
+        "duration_seconds": 0.64519,
+        "lufs_momentary": -28,
+        "onset_ms": 4.06,
+        "trailing_silence_ms": 16.15,
+        "peak_linear": 0.10904,
+        "sha256": "3330c6c7f78832baf9e9d5096c84817e7edef2e62fe7352b0559d479d2f086b2"
+      },
+      {
+        "file": "voices/renata/surprise.wav",
+        "duration_seconds": 0.5536,
+        "lufs_momentary": -28,
+        "onset_ms": 3.94,
+        "trailing_silence_ms": 15.21,
+        "peak_linear": 0.11878,
+        "sha256": "82c304c5340b981ca6d8be92afb10437555f88e5a477c528bf05d786721513fe"
+      },
+      {
+        "file": "voices/renata/relief.wav",
+        "duration_seconds": 0.91992,
+        "lufs_momentary": -28,
+        "onset_ms": 3.92,
+        "trailing_silence_ms": 25.48,
+        "peak_linear": 0.12119,
+        "sha256": "05c430ed623b06d1572e62bb9a450e4d91ef037f89db7b9985abaac4f9e39d0e"
+      },
+      {
+        "file": "voices/renata/thanks.wav",
+        "duration_seconds": 0.75846,
+        "lufs_momentary": -28,
+        "onset_ms": 3.52,
+        "trailing_silence_ms": 14.81,
+        "peak_linear": 0.11795,
+        "sha256": "1dbc9a120224c9b5864a6cffb14eca39fda57818dbe3f4504478cad1d7658e24"
+      },
+      {
+        "file": "voices/renata/impatient.wav",
+        "duration_seconds": 0.66275,
+        "lufs_momentary": -28,
+        "onset_ms": 3.38,
+        "trailing_silence_ms": 13.31,
+        "peak_linear": 0.13315,
+        "sha256": "575bb41ef0c5265c608be40eaee5cb5a5019714b0f5bd43b5f4965d3453c6bd6"
+      },
+      {
+        "file": "voices/renata/sad.wav",
+        "duration_seconds": 0.99938,
+        "lufs_momentary": -28,
+        "onset_ms": 4.17,
+        "trailing_silence_ms": 28.25,
+        "peak_linear": 0.10761,
+        "sha256": "dc4915878895834aa9f7d966bdd19fc0378ff4e12503cc59b8854d7fd95ecc29"
+      },
+      {
+        "file": "voices/renata/laugh.wav",
+        "duration_seconds": 0.9485,
+        "lufs_momentary": -28,
+        "onset_ms": 2.77,
+        "trailing_silence_ms": 15.65,
+        "peak_linear": 0.14826,
+        "sha256": "a1f62692fcc87c517f5949c6fb1090d7eb33294292fcafb98b176e0bfa83c6b9"
+      },
+      {
+        "file": "voices/renata/goodbye.wav",
+        "duration_seconds": 0.6885,
+        "lufs_momentary": -28,
+        "onset_ms": 3.63,
+        "trailing_silence_ms": 17.65,
+        "peak_linear": 0.11011,
+        "sha256": "7c5473302b4ad440e11d6101147879ed1ad0354d342a5d543bc2aa313bf0d8be"
+      }
+    ],
+    "stranger": [
+      {
+        "file": "voices/stranger/greeting.wav",
+        "duration_seconds": 0.59685,
+        "lufs_momentary": -28,
+        "onset_ms": 5.23,
+        "trailing_silence_ms": 13.25,
+        "peak_linear": 0.11652,
+        "sha256": "0dec2b9dab845f0764aab736fe0a58ba441312c167e473075b9897b360bc11a0"
+      },
+      {
+        "file": "voices/stranger/surprise.wav",
+        "duration_seconds": 0.52096,
+        "lufs_momentary": -28,
+        "onset_ms": 5.19,
+        "trailing_silence_ms": 15,
+        "peak_linear": 0.12778,
+        "sha256": "5c369af30c2089d4600a5eed60aedd32880cac565ef011dced943ba67ad2e7e0"
+      },
+      {
+        "file": "voices/stranger/relief.wav",
+        "duration_seconds": 0.88498,
+        "lufs_momentary": -28,
+        "onset_ms": 5,
+        "trailing_silence_ms": 23.83,
+        "peak_linear": 0.12934,
+        "sha256": "527b80af58657079fdc58dbe4ee8ae96d3d82410aedb9bb86a1bdb540bfac97e"
+      },
+      {
+        "file": "voices/stranger/thanks.wav",
+        "duration_seconds": 0.7026,
+        "lufs_momentary": -28,
+        "onset_ms": 3.94,
+        "trailing_silence_ms": 13.46,
+        "peak_linear": 0.13123,
+        "sha256": "1ef3480531b1c6ffae55888d73ff6b57ed1e51b39dbde97d4bf26fd6fe94040f"
+      },
+      {
+        "file": "voices/stranger/impatient.wav",
+        "duration_seconds": 0.61679,
+        "lufs_momentary": -28,
+        "onset_ms": 3.48,
+        "trailing_silence_ms": 17.15,
+        "peak_linear": 0.13999,
+        "sha256": "290b3ce7af629bf987e73a29e47ec7c8462e1239adb1e5af283ab447ffd51450"
+      },
+      {
+        "file": "voices/stranger/sad.wav",
+        "duration_seconds": 0.9496,
+        "lufs_momentary": -28,
+        "onset_ms": 5.29,
+        "trailing_silence_ms": 26.17,
+        "peak_linear": 0.11408,
+        "sha256": "f4ab5513b9b5efb03bfe96f889d2e8f10820b7e2c7c08ef470e9b53337ee8031"
+      },
+      {
+        "file": "voices/stranger/laugh.wav",
+        "duration_seconds": 0.90267,
+        "lufs_momentary": -28,
+        "onset_ms": 3.48,
+        "trailing_silence_ms": 17.25,
+        "peak_linear": 0.15732,
+        "sha256": "07efe9949d420ce233571755f1e795c6081afe7131b7a1f8555f50d5a3ff4b61"
+      },
+      {
+        "file": "voices/stranger/goodbye.wav",
+        "duration_seconds": 0.6631,
+        "lufs_momentary": -28,
+        "onset_ms": 4.67,
+        "trailing_silence_ms": 13.42,
+        "peak_linear": 0.11658,
+        "sha256": "94977e5cb28a9728ae1cdca63025a521906d52953bbeb11a9449e6c48d5042e3"
+      }
+    ],
+    "teresa": [
+      {
+        "file": "voices/teresa/greeting.wav",
+        "duration_seconds": 0.77277,
+        "lufs_momentary": -28,
+        "onset_ms": 4.77,
+        "trailing_silence_ms": 18.08,
+        "peak_linear": 0.11011,
+        "sha256": "0ad4fd1b9c5df1e78f8faec2936d944550fbbd0ec4be1c42415a42dd8d104543"
+      },
+      {
+        "file": "voices/teresa/surprise.wav",
+        "duration_seconds": 0.66033,
+        "lufs_momentary": -28,
+        "onset_ms": 5.02,
+        "trailing_silence_ms": 19.1,
+        "peak_linear": 0.1222,
+        "sha256": "964bfd6e95f2e9c56e3cdc044b535374d298aa53b66d7ad62c932e9b193f6901"
+      },
+      {
+        "file": "voices/teresa/relief.wav",
+        "duration_seconds": 1.20775,
+        "lufs_momentary": -28,
+        "onset_ms": 4.83,
+        "trailing_silence_ms": 28.54,
+        "peak_linear": 0.12561,
+        "sha256": "7d360f7c80fe6e3c416c794efc9957de83c930d4743cf85bc0221d89d54de180"
+      },
+      {
+        "file": "voices/teresa/thanks.wav",
+        "duration_seconds": 0.91498,
+        "lufs_momentary": -28,
+        "onset_ms": 4.44,
+        "trailing_silence_ms": 16.31,
+        "peak_linear": 0.11185,
+        "sha256": "4dbec0c214e47a257d80e7c3215b589039a1dff3dfe95e8f14b0db244a691594"
+      },
+      {
+        "file": "voices/teresa/impatient.wav",
+        "duration_seconds": 0.85642,
+        "lufs_momentary": -28,
+        "onset_ms": 4.4,
+        "trailing_silence_ms": 17.6,
+        "peak_linear": 0.12677,
+        "sha256": "dd5312ea9ff103bfefd2ce6d743c0cfe8c5837a6c5a781ec6b5b111474a8ed49"
+      },
+      {
+        "file": "voices/teresa/sad.wav",
+        "duration_seconds": 1.20938,
+        "lufs_momentary": -28,
+        "onset_ms": 4.92,
+        "trailing_silence_ms": 30.6,
+        "peak_linear": 0.11136,
+        "sha256": "490fe2fea8704e6424c87f94fba116e39e75c4fff2399bf3de9866da8672235c"
+      },
+      {
+        "file": "voices/teresa/laugh.wav",
+        "duration_seconds": 1.14323,
+        "lufs_momentary": -28,
+        "onset_ms": 3.79,
+        "trailing_silence_ms": 20.29,
+        "peak_linear": 0.16205,
+        "sha256": "a26644e342709e898d0e15b87c5d5af2c87cf71f072068f3c9d030b1e6d25aa9"
+      },
+      {
+        "file": "voices/teresa/goodbye.wav",
+        "duration_seconds": 0.8915,
+        "lufs_momentary": -28,
+        "onset_ms": 4.29,
+        "trailing_silence_ms": 21.81,
+        "peak_linear": 0.11264,
+        "sha256": "ca41f4fe816b61d8836e02ade401ad0f9acdda4ab75dcba04b1962c0194952be"
+      }
+    ],
+    "tomasz": [
+      {
+        "file": "voices/tomasz/greeting.wav",
+        "duration_seconds": 0.82448,
+        "lufs_momentary": -28,
+        "onset_ms": 6.02,
+        "trailing_silence_ms": 18.81,
+        "peak_linear": 0.11673,
+        "sha256": "a0b65f5c11b39f720025039edddac4c90755bbc3f5529d5cc93e1b4703f2513d"
+      },
+      {
+        "file": "voices/tomasz/surprise.wav",
+        "duration_seconds": 0.73706,
+        "lufs_momentary": -28,
+        "onset_ms": 6.35,
+        "trailing_silence_ms": 23.73,
+        "peak_linear": 0.13129,
+        "sha256": "5f7855d7d86225e6b7d3977a0758714e7ff2a39a6f26664fc30c6227ff588d66"
+      },
+      {
+        "file": "voices/tomasz/relief.wav",
+        "duration_seconds": 1.18683,
+        "lufs_momentary": -28,
+        "onset_ms": 5.81,
+        "trailing_silence_ms": 27.92,
+        "peak_linear": 0.13114,
+        "sha256": "7361b27908e8cb2b307f1413f1a0da51250027d324b61c1930e97bce201fa882"
+      },
+      {
+        "file": "voices/tomasz/thanks.wav",
+        "duration_seconds": 0.9116,
+        "lufs_momentary": -28,
+        "onset_ms": 4.67,
+        "trailing_silence_ms": 18.1,
+        "peak_linear": 0.11814,
+        "sha256": "bbfd2ad30ccaaeb0bced99b96b5f07dc18ee33cc94ec0d56098b2560ccacd472"
+      },
+      {
+        "file": "voices/tomasz/impatient.wav",
+        "duration_seconds": 0.84458,
+        "lufs_momentary": -28,
+        "onset_ms": 4.19,
+        "trailing_silence_ms": 19.96,
+        "peak_linear": 0.13074,
+        "sha256": "335caa0e57bb904fbbcdf43a77dc656e6d915ca4f3fb4313810dec1727d91b02"
+      },
+      {
+        "file": "voices/tomasz/sad.wav",
+        "duration_seconds": 1.23781,
+        "lufs_momentary": -28,
+        "onset_ms": 6.21,
+        "trailing_silence_ms": 32.94,
+        "peak_linear": 0.11655,
+        "sha256": "f6d79a185c78cd653a459d4500438ee7c44834ee1a1c20e088972d5b2657cbb5"
+      },
+      {
+        "file": "voices/tomasz/laugh.wav",
+        "duration_seconds": 1.25346,
+        "lufs_momentary": -28,
+        "onset_ms": 4.23,
+        "trailing_silence_ms": 22.04,
+        "peak_linear": 0.16489,
+        "sha256": "e3341e64e56d2a48c8707ff3fc7b3afac9767bc71bfd9c9366aa8a9f0a091c99"
+      },
+      {
+        "file": "voices/tomasz/goodbye.wav",
+        "duration_seconds": 0.9009,
+        "lufs_momentary": -28,
+        "onset_ms": 5.4,
+        "trailing_silence_ms": 22.1,
+        "peak_linear": 0.11805,
+        "sha256": "0fd8d72ad3fd30277c60f9fdaf51fac467971aa524cbadf3ec38d6d3062d8ebf"
+      }
+    ],
+    "waldek": [
+      {
+        "file": "voices/waldek/greeting.wav",
+        "duration_seconds": 0.81369,
+        "lufs_momentary": -28,
+        "onset_ms": 6.63,
+        "trailing_silence_ms": 19.04,
+        "peak_linear": 0.12021,
+        "sha256": "5fed741f28c6589e9b3df585c3589a6ef34d4c6de40e09f290bc28f6d62aa9d7"
+      },
+      {
+        "file": "voices/waldek/surprise.wav",
+        "duration_seconds": 0.69681,
+        "lufs_momentary": -28,
+        "onset_ms": 7.29,
+        "trailing_silence_ms": 21.98,
+        "peak_linear": 0.13218,
+        "sha256": "0d1a0ccfd9a7497f2683a8bbf229a1ad6e561e9571b9d6da676b32ab95155b6d"
+      },
+      {
+        "file": "voices/waldek/relief.wav",
+        "duration_seconds": 1.22298,
+        "lufs_momentary": -28,
+        "onset_ms": 6.71,
+        "trailing_silence_ms": 33.42,
+        "peak_linear": 0.13575,
+        "sha256": "8a3134eb5abfe3e769c67f09b238aa5c631f120defcfcf2930f7c88d33ceff91"
+      },
+      {
+        "file": "voices/waldek/thanks.wav",
+        "duration_seconds": 0.96113,
+        "lufs_momentary": -28,
+        "onset_ms": 5.04,
+        "trailing_silence_ms": 19.6,
+        "peak_linear": 0.12006,
+        "sha256": "871c649a30e10285cbb7ed61170520474529c443428190e0a003b7e4f5a19548"
+      },
+      {
+        "file": "voices/waldek/impatient.wav",
+        "duration_seconds": 0.83679,
+        "lufs_momentary": -28,
+        "onset_ms": 2.52,
+        "trailing_silence_ms": 17.04,
+        "peak_linear": 0.1348,
+        "sha256": "9bdb7832e68ca592fb899acd6c38dc7e2213f366632d5cb33f33fecca64e6642"
+      },
+      {
+        "file": "voices/waldek/sad.wav",
+        "duration_seconds": 1.23506,
+        "lufs_momentary": -28,
+        "onset_ms": 6.81,
+        "trailing_silence_ms": 36.08,
+        "peak_linear": 0.12305,
+        "sha256": "067b112dc913fb0ff1f4f0108ec83671005d3090112d08823f5fa97095d93b15"
+      },
+      {
+        "file": "voices/waldek/laugh.wav",
+        "duration_seconds": 1.2269,
+        "lufs_momentary": -28,
+        "onset_ms": 4.69,
+        "trailing_silence_ms": 22.69,
+        "peak_linear": 0.17588,
+        "sha256": "1024260a54e9526111ad02f1a525948befc0de72d3fac5f7b9ef45981687d030"
+      },
+      {
+        "file": "voices/waldek/goodbye.wav",
+        "duration_seconds": 0.87075,
+        "lufs_momentary": -28,
+        "onset_ms": 6.13,
+        "trailing_silence_ms": 20.04,
+        "peak_linear": 0.12348,
+        "sha256": "d803d45780038ff706efb9d3749f078bf63e1d5774abc49278b92fed399048a3"
+      }
+    ],
+    "wanda": [
+      {
+        "file": "voices/wanda/greeting.wav",
+        "duration_seconds": 0.74927,
+        "lufs_momentary": -28,
+        "onset_ms": 4.69,
+        "trailing_silence_ms": 16.52,
+        "peak_linear": 0.10675,
+        "sha256": "d4941f126eef6f145eb881ae35e7f09fd732359f4ce36b49b75a438ecfc4b4b3"
+      },
+      {
+        "file": "voices/wanda/surprise.wav",
+        "duration_seconds": 0.63275,
+        "lufs_momentary": -28,
+        "onset_ms": 4.94,
+        "trailing_silence_ms": 18.13,
+        "peak_linear": 0.11747,
+        "sha256": "bc6dee29c205de1cee85e52f5533194530f414cb857ebe53af13fbfcec35e96a"
+      },
+      {
+        "file": "voices/wanda/relief.wav",
+        "duration_seconds": 1.11202,
+        "lufs_momentary": -28,
+        "onset_ms": 4.56,
+        "trailing_silence_ms": 26.96,
+        "peak_linear": 0.12,
+        "sha256": "6228c4080b0d38d6d7b01f45d47066f46e9ede59e2c5c132cf7023c9b549fd0b"
+      },
+      {
+        "file": "voices/wanda/thanks.wav",
+        "duration_seconds": 0.89202,
+        "lufs_momentary": -28,
+        "onset_ms": 4.31,
+        "trailing_silence_ms": 15.35,
+        "peak_linear": 0.10816,
+        "sha256": "24fb6ec34c48648b35ded15eb839616887b9966aedd712565290ad22a25ed1bb"
+      },
+      {
+        "file": "voices/wanda/impatient.wav",
+        "duration_seconds": 0.82188,
+        "lufs_momentary": -28,
+        "onset_ms": 3.63,
+        "trailing_silence_ms": 21.42,
+        "peak_linear": 0.12061,
+        "sha256": "7c83d9a6cba3e3c4657f4a2a6e07ac393198b70e048a13a652b6f19bbb9ce690"
+      },
+      {
+        "file": "voices/wanda/sad.wav",
+        "duration_seconds": 1.19121,
+        "lufs_momentary": -28,
+        "onset_ms": 4.88,
+        "trailing_silence_ms": 33.02,
+        "peak_linear": 0.10562,
+        "sha256": "40cfb16449df59fa045a78c4aaff5b8ff97753ee8699927f6c0515ef78456ba2"
+      },
+      {
+        "file": "voices/wanda/laugh.wav",
+        "duration_seconds": 1.17015,
+        "lufs_momentary": -28,
+        "onset_ms": 3.77,
+        "trailing_silence_ms": 21.58,
+        "peak_linear": 0.15506,
+        "sha256": "e5c6aff995dbc41c09dddc0f99189ad41a056dc4ff2fa380146158b6ae4c00b5"
+      },
+      {
+        "file": "voices/wanda/goodbye.wav",
+        "duration_seconds": 0.81894,
+        "lufs_momentary": -28,
+        "onset_ms": 4.21,
+        "trailing_silence_ms": 18.46,
+        "peak_linear": 0.10736,
+        "sha256": "20f68a57cbb63d0ee5f5b3d1d1d3accdbd641c4741c607f8a76d928191bd1a18"
+      }
+    ],
+    "zbyszek": [
+      {
+        "file": "voices/zbyszek/greeting.wav",
+        "duration_seconds": 0.81246,
+        "lufs_momentary": -28,
+        "onset_ms": 6.9,
+        "trailing_silence_ms": 17.54,
+        "peak_linear": 0.12674,
+        "sha256": "8e6ccef2a39b0091c6cc3f7aaaa0d1ff1d95b112db48e694d73e2c14d6ace102"
+      },
+      {
+        "file": "voices/zbyszek/surprise.wav",
+        "duration_seconds": 0.7401,
+        "lufs_momentary": -28,
+        "onset_ms": 8.04,
+        "trailing_silence_ms": 25.92,
+        "peak_linear": 0.13929,
+        "sha256": "dc27e9cac8e6c24b1a6798d9c9088ba2dffc1c9d6b8777cbbf0d78100ce82d66"
+      },
+      {
+        "file": "voices/zbyszek/relief.wav",
+        "duration_seconds": 1.28706,
+        "lufs_momentary": -28,
+        "onset_ms": 7.33,
+        "trailing_silence_ms": 37.4,
+        "peak_linear": 0.14438,
+        "sha256": "657630f4523f9d68fbf8268d0a332dacdfaf3bb8efa6fbd897a8b34184fcc674"
+      },
+      {
+        "file": "voices/zbyszek/thanks.wav",
+        "duration_seconds": 0.96698,
+        "lufs_momentary": -28,
+        "onset_ms": 5.48,
+        "trailing_silence_ms": 18,
+        "peak_linear": 0.12845,
+        "sha256": "901d33a0c0f94f841f6d0d37a928e9cb08d709f1f8bad82de59c524cd7a37cdb"
+      },
+      {
+        "file": "voices/zbyszek/impatient.wav",
+        "duration_seconds": 0.90146,
+        "lufs_momentary": -28,
+        "onset_ms": 2.63,
+        "trailing_silence_ms": 18.06,
+        "peak_linear": 0.14216,
+        "sha256": "d10e77f1a7b1c1c247e8e2ee70b98d0aca8698496b090b12bd7fbbd257a59529"
+      },
+      {
+        "file": "voices/zbyszek/sad.wav",
+        "duration_seconds": 1.35829,
+        "lufs_momentary": -28,
+        "onset_ms": 7.06,
+        "trailing_silence_ms": 39.08,
+        "peak_linear": 0.12583,
+        "sha256": "728af9067362cb61982cc886400b58e2778179ee8a80fa2bd6a8987aba54e9ee"
+      },
+      {
+        "file": "voices/zbyszek/laugh.wav",
+        "duration_seconds": 1.2659,
+        "lufs_momentary": -28,
+        "onset_ms": 5.06,
+        "trailing_silence_ms": 23.38,
+        "peak_linear": 0.17548,
+        "sha256": "ce3e1039406831eb9326fecfff89671f6d69175ef46fbb512d20f1329ffb056f"
+      },
+      {
+        "file": "voices/zbyszek/goodbye.wav",
+        "duration_seconds": 0.95579,
+        "lufs_momentary": -28,
+        "onset_ms": 6.77,
+        "trailing_silence_ms": 18.81,
+        "peak_linear": 0.12925,
+        "sha256": "e93da947f5abe047189c040971f9933b4311081e5160186ee983f2a9ed208685"
+      }
+    ]
+  },
+  "summary": {
+    "characters": 39,
+    "emotions": 8,
+    "files": 312,
+    "min_duration_s": 0.521,
+    "max_duration_s": 1.358,
+    "min_momentary_lufs": -28,
+    "max_momentary_lufs": -28,
+    "max_onset_ms": 8.04,
+    "max_trailing_silence_ms": 39.08,
+    "max_peak_linear": 0.1839
+  }
+}
