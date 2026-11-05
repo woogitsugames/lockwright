@@ -1,0 +1,26 @@
+{
+  "id": "job.halina_recipe_box",
+  "chapter": 7,
+  "district": "Śródmieście",
+  "family": "warded",
+  "tier": 1,
+  "verification": "Własna skrzynka Haliny (rzecz ruchoma): zdjęcie (1) i świadek Zosia (2). Wycena zaakceptowana; brak zgrzytu.",
+  "reward_coins": 75,
+  "tone": "ciepły, lekko zabawny",
+  "i18n": {
+    "title": "job.halina_recipe_box.title",
+    "client": "job.halina_recipe_box.client",
+    "situation": "job.halina_recipe_box.situation"
+  },
+  "lines": [
+    "halina",
+    "zosia",
+    "locksmith",
+    "halina"
+  ],
+  "cards": [
+    "photo",
+    "witness"
+  ],
+  "threshold": 2
+}

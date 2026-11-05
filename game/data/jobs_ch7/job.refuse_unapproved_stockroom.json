@@ -1,0 +1,29 @@
+{
+  "id": "job.refuse_unapproved_stockroom",
+  "chapter": 7,
+  "district": "Nocny Rynek",
+  "family": "wafer",
+  "tier": 2,
+  "verification": "Marcel ma własny dowód (1) i list przewozowy, który nie daje prawa wejścia. `flag.absent_owner`; odmawia oczekiwania na zgodę. Bez monet, alternatywa: uzgodnienie dostawy z właścicielem.",
+  "reward_coins": 0,
+  "tone": "spokojny, pomocny, stanowcza odmowa",
+  "i18n": {
+    "title": "job.refuse_unapproved_stockroom.title",
+    "client": "job.refuse_unapproved_stockroom.client",
+    "situation": "job.refuse_unapproved_stockroom.situation"
+  },
+  "lines": [
+    "marcel",
+    "locksmith",
+    "marcel",
+    "locksmith"
+  ],
+  "after": [
+    "stefan"
+  ],
+  "cards": [
+    "id",
+    "letter"
+  ],
+  "threshold": 2
+}

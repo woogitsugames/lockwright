@@ -143,3 +143,10 @@ func t(key: StringName) -> String:
 func has_key(key: StringName) -> bool:
 	var text := TranslationServer.translate(key)
 	return text != key and text != ""
+
+
+func all_keys() -> PackedStringArray:
+	var tr := TranslationServer.get_translation_object(TranslationServer.get_locale())
+	if tr == null:
+		return PackedStringArray()
+	return tr.get_message_list()

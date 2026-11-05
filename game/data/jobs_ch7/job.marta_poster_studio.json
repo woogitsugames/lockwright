@@ -1,0 +1,26 @@
+{
+  "id": "job.marta_poster_studio",
+  "chapter": 7,
+  "district": "Osiedle Słoneczne",
+  "family": "pin_tumbler",
+  "tier": 2,
+  "verification": "Umowa najmu pracowni Marty (2) i świadek z sąsiedniej pracowni (2). Uprawnienie do lokalu potwierdzone.",
+  "reward_coins": 105,
+  "tone": "ciepły, ironiczny",
+  "i18n": {
+    "title": "job.marta_poster_studio.title",
+    "client": "job.marta_poster_studio.client",
+    "situation": "job.marta_poster_studio.situation"
+  },
+  "lines": [
+    "marta",
+    "locksmith",
+    "marta",
+    "locksmith"
+  ],
+  "cards": [
+    "lease",
+    "witness"
+  ],
+  "threshold": 2
+}

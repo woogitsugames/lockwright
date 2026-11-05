@@ -1,0 +1,30 @@
+{
+  "id": "job.shared_room_door",
+  "chapter": 7,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 3,
+  "verification": "Elżbieta jako zarządczyni (3), pisemna uchwała wspólnoty (2) i świadek Basia (2). To pomieszczenie wspólne, nie prywatny lokal. Cena uzgodniona przed pracą.",
+  "reward_coins": 145,
+  "tone": "finałowy, ciepły i spokojny",
+  "i18n": {
+    "title": "job.shared_room_door.title",
+    "client": "job.shared_room_door.client",
+    "situation": "job.shared_room_door.situation"
+  },
+  "lines": [
+    "elzbieta",
+    "locksmith",
+    "marta",
+    "halina"
+  ],
+  "after": [
+    "zosia"
+  ],
+  "cards": [
+    "manager",
+    "institution",
+    "witness"
+  ],
+  "threshold": 3
+}

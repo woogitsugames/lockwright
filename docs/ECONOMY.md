@@ -4,13 +4,13 @@ Wygenerowane przez `python3 tools/econ_sim.py` (200 karier na profil i scenarius
 
 ## 1. Wnioski w skrócie
 
-1. **Dane zleceń mają błędne rodziny.** W `game/data/jobs` 7 zamków „zapadkowych” (warded) z `JOBS.md` ma `family: lever`, `liege_bakery` (dźwigniowy z detektorem) też `lever`, a `drummer_locker` (rurkowy) `unknown`. Skutek: rozdział 1 zaczyna się od 2 zleceń wymagających korby dźwigniowej (500 monet, warunek `after_t3`), choć rozdział 1 płaci łącznie 350 monet; gracz average gra przed pierwszym zleceniem 3 sesji Trybu Ciągłego. W scenariuszu A gracz average ma zablokowane 6 z 29 zleceń. Do poprawy w danych (sesja B).
+1. **Dane zleceń mają błędne rodziny.** W `game/data/jobs` 7 zamków „zapadkowych” (warded) z `JOBS.md` ma `family: lever`, `liege_bakery` (dźwigniowy z detektorem) też `lever`, a `drummer_locker` (rurkowy) `unknown`. Skutek: rozdział 1 zaczyna się od 0 zleceń wymagających korby dźwigniowej (500 monet, warunek `after_t3`), choć rozdział 1 płaci łącznie 350 monet; gracz average gra przed pierwszym zleceniem 0 sesji Trybu Ciągłego. W scenariuszu A gracz average ma zablokowane 3 z 29 zleceń. Do poprawy w danych (sesja B).
 2. **Wzór krzywej Trybu Ciągłego nie zgadza się z tabelą.** `1 + 0,55·ln(1+n)·skill` daje tier 2.79 na 25. zamku (tabela: 4–5); t4 wymaga n ≈ 230, t5 n ≈ 1 440. Seria z 3 życiami nigdy tam nie dochodzi, więc warunki `after_t4`…`after_t7` są nieosiągalne w Trybie Ciągłym. Współczynnik 1,2 odtwarza tabelę (n = 25 → 4.9).
-3. **Martwa strefa: warunki bez źródła tieru.** Zlecenia otwierają co najwyżej lockcore t5 (dźwigniowy T3, detektor), a `tl_cup` wymaga `after_t8` (w lockcore nie ma t8). W scenariuszu B (poprawione rodziny, stary wzór) zablokowane zostają (average): night_nurse, drummer_locker, uncle_safe_heirs, krakow_antiquarian, brussels_townhouse, bramah_bureau, finnish_sailor. Kolejność narzędzi `TOOLS.md` (t5–t8) jest dłuższa niż kariera zleceń (T1–T3).
-4. **Grind: zlecenia nie finansują narzędzi.** Suma nagród 29 zleceń = 2340 monet (+ napiwki), a narzędzia potrzebne zleceniom kosztują 10530. Gracz average w B gra 71 sesji Trybu Ciągłego (9.9 h) tylko po to, by kupić narzędzia do zleceń; clumsy 71. To łamie zasadę „bez grind-to-win” (`TOOLS.md` §1.2). Sesja 8 min przynosi (start, B) careful/average/clumsy: 270/280/270 monet, a nie 300: niski tier = 10–20 monet na zamek, nie 40.
-5. **Start i za łatwe odblokowania.** Pierwsze zlecenie (`grandma_broth`, zapadkowy) wymaga sondy `pk_ward` za 80 przy 0 monet: gracz musi najpierw zagrać sesję Trybu Ciągłego (B: mediana 1), zanim przyjmie pierwsze zlecenie. Sondę trzeba dać w samouczku (cena 0). `tl_shackle` (150, `after_first_t2`) i potem korba (C: 300) kupuje się bez decyzji, bo monet z rozdziału 1–2 starcza z zapasem: to formalność, nie wybór. Można je dać jako nagrodę rzeczową zlecenia, a monety zostawić na narzędzia z alternatywą.
-6. **Naprawy rozwarstwiają profile.** Koszt napraw przez karierę, B (z grindem): careful 432, average 1334, clumsy 2096 monet (63 złamań); C: 5/150/857. Złamanie drogiego narzędzia (35 % ceny, np. obrotnik 1 800 → 630) zjada 4–6 zleceń, więc gracz niezdarny wpada w pętlę grind → naprawa → grind. Propozycja: naprawa złamanego = 15 % + 10 monet stałe, z limitem 150; uczy ostrożności bez spirali. Narzędzia startowe (cena 0) naprawia się za minimum 5, czyli w praktyce za darmo.
-7. **Po zmianach (C)** zablokowanych zleceń: careful/average/clumsy 0/0/0; grind 7/8/12 sesji; koszt narzędzi do zleceń 6400 zamiast 10530. Sesja 8 min (C, start) daje 375/402/385 monet.
+3. **Martwa strefa: warunki bez źródła tieru.** Zlecenia otwierają co najwyżej lockcore t5 (dźwigniowy T3, detektor), a `tl_cup` wymaga `after_t8` (w lockcore nie ma t8). W scenariuszu B (poprawione rodziny, stary wzór) zablokowane zostają (average): night_nurse, uncle_safe_heirs, brussels_townhouse. Kolejność narzędzi `TOOLS.md` (t5–t8) jest dłuższa niż kariera zleceń (T1–T3).
+4. **Grind: zlecenia nie finansują narzędzi.** Suma nagród 29 zleceń = 2340 monet (+ napiwki), a narzędzia potrzebne zleceniom kosztują 6400. Gracz average w B gra 31 sesji Trybu Ciągłego (4.3 h) tylko po to, by kupić narzędzia do zleceń; clumsy 31. To łamie zasadę „bez grind-to-win” (`TOOLS.md` §1.2). Sesja 8 min przynosi (start, B) careful/average/clumsy: 270/280/270 monet, a nie 385: niski tier = 10–20 monet na zamek, nie 40.
+5. **Start i za łatwe odblokowania.** Pierwsze zlecenie (`grandma_broth`, zapadkowy) wymaga sondy `pk_ward` za 80 przy 0 monet: gracz musi najpierw zagrać sesję Trybu Ciągłego (B: mediana 0), zanim przyjmie pierwsze zlecenie. Sondę trzeba dać w samouczku (cena 0). `tl_shackle` (150, `after_first_t2`) i potem korba (C: 300) kupuje się bez decyzji, bo monet z rozdziału 1–2 starcza z zapasem: to formalność, nie wybór. Można je dać jako nagrodę rzeczową zlecenia, a monety zostawić na narzędzia z alternatywą.
+6. **Naprawy rozwarstwiają profile.** Koszt napraw przez karierę, B (z grindem): careful 77, average 432, clumsy 796 monet (28 złamań); C: 5/150/857. Złamanie drogiego narzędzia (35 % ceny, np. obrotnik 1 800 → 630) zjada 4–6 zleceń, więc gracz niezdarny wpada w pętlę grind → naprawa → grind. Propozycja: naprawa złamanego = 15 % + 10 monet stałe, z limitem 150; uczy ostrożności bez spirali. Narzędzia startowe (cena 0) naprawia się za minimum 5, czyli w praktyce za darmo.
+7. **Po zmianach (C)** zablokowanych zleceń: careful/average/clumsy 0/0/0; grind 7/8/12 sesji; koszt narzędzi do zleceń 6400 zamiast 6400. Sesja 8 min (C, start) daje 375/402/385 monet.
 8. **Czas gry:** sama ścieżka zleceń (bez grindu) trwa (C) careful/average/clumsy 62/47/36 min. Na grę premium to krótko; Tryb Zleceń potrzebuje więcej zleceń (cel ≥ 60) albo powtórek, a nie grindu monet.
 
 ## 2. Scenariusze i profile
@@ -31,12 +31,12 @@ Wygenerowane przez `python3 tools/econ_sim.py` (200 karier na profil i scenarius
 
 | Scen. | Profil | zlecenia zablok. | dochód ze zleceń | dochód z grindu | sesje grindu | grind [h] | czas zleceń [min] | naprawy | narzędzia | złamania |
 |---|---|---|---|---|---|---|---|---|---|---|
-| A | careful | 6 / 29 | 1939 | 36190 | 71 | 10.0 | 44.4 | 517 | 1250 | 9 |
-| A | average | 6 / 29 | 1778 | 26910 | 63 | 8.8 | 33.5 | 1218 | 1250 | 29 |
-| A | clumsy | 6 / 29 | 1660 | 24175 | 68 | 9.3 | 26.0 | 1976 | 1250 | 62 |
-| B | careful | 6 / 29 | 1937 | 32152 | 62 | 8.7 | 45.1 | 432 | 2230 | 8 |
-| B | average | 7 / 29 | 1658 | 29888 | 71 | 9.9 | 32.2 | 1334 | 1330 | 34 |
-| B | clumsy | 7 / 29 | 1555 | 24582 | 71 | 9.8 | 25.2 | 2096 | 1330 | 63 |
+| A | careful | 2 / 29 | 2568 | 10718 | 22 | 3.1 | 55.1 | 77 | 4200 | 3 |
+| A | average | 3 / 29 | 2206 | 12895 | 31 | 4.3 | 39.7 | 434 | 4200 | 15 |
+| A | clumsy | 3 / 29 | 2079 | 10612 | 31 | 4.3 | 31.2 | 784 | 4200 | 28 |
+| B | careful | 2 / 29 | 2561 | 10708 | 22 | 3.1 | 55.8 | 77 | 4800 | 3 |
+| B | average | 3 / 29 | 2204 | 12888 | 31 | 4.3 | 40.2 | 432 | 4800 | 14 |
+| B | clumsy | 3 / 29 | 2075 | 10610 | 31 | 4.3 | 31.6 | 796 | 4800 | 28 |
 | C | careful | 0 / 29 | 2780 | 4275 | 7 | 1.0 | 61.5 | 5 | 6400 | 1 |
 | C | average | 0 / 29 | 2549 | 4480 | 8 | 1.1 | 46.7 | 150 | 6400 | 6 |
 | C | clumsy | 0 / 29 | 2377 | 6225 | 12 | 1.7 | 36.0 | 857 | 6400 | 19 |
@@ -49,35 +49,35 @@ Grind = sesje Trybu Ciągłego (8 min), które gracz musi rozegrać, zanim kupi 
 
 | # | zlecenie | rozdz. | rodzina T | czas [min] | zarobek | sesje grindu | monety po | stan |
 |---|---|---|---|---|---|---|---|---|
-| 1 | `grandma_broth` | 1 | warded T1 | 1.6 | 89 | 1 | 284 | ok |
-| 2 | `cat_bathroom` | 1 | warded T1 | 1.5 | 71 | 0 | 200 | ok |
-| 3 | `bike_interview` | 1 | combo T1 | 2.0 | 77 | 0 | 270 | ok |
-| 4 | `student_dorm` | 1 | pin_tumbler T1 | 1.3 | 70 | 0 | 346 | ok |
-| 5 | `kiosk_shutter` | 1 | wafer T1 | 1.3 | 95 | 0 | 432 | ok |
-| 6 | `refuse_ex_partner` | 1 | pin_tumbler T2 | 1.0 | 0 | 0 | 432 | odmowa/bez zamka |
-| 7 | `newlyweds_4am` | 2 | pin_tumbler T2 | 1.4 | 177 | 0 | 593 | ok |
-| 8 | `pizzeria_pays_pizza` | 2 | lever T1 | 1.5 | 0 | 0 | 92 | ok |
-| 9 | `night_nurse` | 2 | magnetic T1 | 0.0 | 0 | 10 | 4010 | zablokowane |
-| 10 | `wrong_floor` | 2 | pin_tumbler T1 | 1.0 | 20 | 0 | 4030 | odmowa/bez zamka |
-| 11 | `refuse_rush_bribe` | 2 | pin_tumbler T2 | 1.0 | 0 | 0 | 4030 | odmowa/bez zamka |
-| 12 | `drummer_locker` | 2 | tubular T1 | 0.0 | 0 | 10 | 8060 | zablokowane |
-| 13 | `grandpa_chest` | 3 | warded T3 | 1.5 | 165 | 0 | 8212 | ok |
-| 14 | `uncle_safe_heirs` | 3 | dial_safe T2 | 0.0 | 0 | 10 | 12341 | zablokowane |
-| 15 | `dollhouse_wooden_lock` | 3 | egyptian T1 | 1.4 | 59 | 0 | 12392 | ok |
-| 16 | `allotment_shed` | 3 | wafer T2 | 1.4 | 100 | 0 | 12478 | ok |
-| 17 | `widow_bureau` | 3 | lever T2 | 1.4 | 112 | 0 | 12559 | ok |
-| 18 | `refuse_aunt_alive` | 3 | lever T2 | 1.0 | 90 | 0 | 12649 | odmowa/bez zamka |
-| 19 | `krakow_tenement_gate` | 4 | warded T3 | 1.5 | 189 | 0 | 12814 | ok |
-| 20 | `swiatniki_journeyman_padlock` | 4 | warded T3 | 1.5 | 0 | 0 | 12210 | ok |
-| 21 | `krakow_antiquarian` | 4 | dial_safe T1 | 0.0 | 0 | 10 | 16338 | zablokowane |
-| 22 | `brussels_townhouse` | 5 | dimple T2 | 0.0 | 0 | 10 | 20326 | zablokowane |
-| 23 | `ghent_beguinage` | 5 | warded T2 | 1.5 | 118 | 0 | 20440 | ok |
-| 24 | `liege_bakery` | 5 | lever_detector T2 | 2.0 | 130 | 0 | 20549 | ok |
-| 25 | `charleroi_letters` | 5 | wafer T2 | 1.4 | 0 | 0 | 20549 | ok |
-| 26 | `museum_time_lock` | 6 | time_lock T2 | 2.1 | 177 | 0 | 20718 | ok |
-| 27 | `bramah_bureau` | 6 | axial_slider T2 | 0.0 | 0 | 10 | 24800 | zablokowane |
-| 28 | `finnish_sailor` | 6 | disc_detainer T2 | 0.0 | 0 | 10 | 28854 | zablokowane |
-| 29 | `time_capsule` | 6 | combo T3 | 1.8 | 0 | 0 | 28854 | ok |
+| 1 | `grandma_broth` | 1 | warded T1 | 1.6 | 89 | 0 | 89 | ok |
+| 2 | `cat_bathroom` | 1 | warded T1 | 1.5 | 71 | 0 | 149 | ok |
+| 3 | `bike_interview` | 1 | combo T1 | 2.0 | 77 | 1 | 336 | ok |
+| 4 | `student_dorm` | 1 | pin_tumbler T1 | 1.3 | 83 | 0 | 412 | ok |
+| 5 | `kiosk_shutter` | 1 | wafer T1 | 1.3 | 95 | 0 | 499 | ok |
+| 6 | `refuse_ex_partner` | 1 | pin_tumbler T2 | 1.0 | 0 | 0 | 199 | odmowa/bez zamka |
+| 7 | `newlyweds_4am` | 2 | pin_tumbler T2 | 1.5 | 150 | 0 | 360 | ok |
+| 8 | `pizzeria_pays_pizza` | 2 | lever T1 | 1.5 | 0 | 0 | 360 | ok |
+| 9 | `night_nurse` | 2 | magnetic T1 | 0.0 | 0 | 10 | 4314 | zablokowane |
+| 10 | `wrong_floor` | 2 | pin_tumbler T1 | 1.0 | 20 | 0 | 3734 | odmowa/bez zamka |
+| 11 | `refuse_rush_bribe` | 2 | pin_tumbler T2 | 1.0 | 0 | 0 | 3734 | odmowa/bez zamka |
+| 12 | `drummer_locker` | 2 | tubular T1 | 1.8 | 110 | 0 | 3852 | ok |
+| 13 | `grandpa_chest` | 3 | warded T3 | 1.5 | 165 | 0 | 4008 | ok |
+| 14 | `uncle_safe_heirs` | 3 | dial_safe T2 | 0.0 | 0 | 10 | 8112 | zablokowane |
+| 15 | `dollhouse_wooden_lock` | 3 | egyptian T1 | 1.4 | 59 | 0 | 8166 | ok |
+| 16 | `allotment_shed` | 3 | wafer T2 | 1.4 | 100 | 0 | 8260 | ok |
+| 17 | `widow_bureau` | 3 | lever T2 | 1.4 | 112 | 0 | 8350 | ok |
+| 18 | `refuse_aunt_alive` | 3 | lever T2 | 1.0 | 90 | 0 | 8440 | odmowa/bez zamka |
+| 19 | `krakow_tenement_gate` | 4 | warded T3 | 1.5 | 189 | 0 | 7418 | ok |
+| 20 | `swiatniki_journeyman_padlock` | 4 | warded T3 | 1.5 | 0 | 0 | 6968 | ok |
+| 21 | `krakow_antiquarian` | 4 | dial_safe T1 | 1.8 | 120 | 0 | 7088 | ok |
+| 22 | `brussels_townhouse` | 5 | dimple T2 | 0.0 | 0 | 10 | 11242 | zablokowane |
+| 23 | `ghent_beguinage` | 5 | warded T2 | 1.5 | 118 | 0 | 11354 | ok |
+| 24 | `liege_bakery` | 5 | lever_detector T2 | 2.0 | 130 | 0 | 11480 | ok |
+| 25 | `charleroi_letters` | 5 | wafer T2 | 1.4 | 0 | 0 | 10478 | ok |
+| 26 | `museum_time_lock` | 6 | time_lock T2 | 2.1 | 177 | 0 | 9546 | ok |
+| 27 | `bramah_bureau` | 6 | axial_slider T2 | 2.1 | 140 | 0 | 9644 | ok |
+| 28 | `finnish_sailor` | 6 | disc_detainer T2 | 2.1 | 160 | 0 | 9784 | ok |
+| 29 | `time_capsule` | 6 | combo T3 | 1.8 | 0 | 0 | 9776 | ok |
 
 ### Scenariusz C
 
@@ -117,25 +117,26 @@ Grind = sesje Trybu Ciągłego (8 min), które gracz musi rozegrać, zanim kupi 
 
 | narzędzie | cena dane / C | warunek dane / C | A:car | A:ave | A:clu | B:car | B:ave | B:clu | C:car | C:ave | C:clu |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `tw_bar` | 600 / 450 | after_tier4 / after_tier4 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 |
-| `tl_shackle` | 150 / 150 | after_first_t2 / after_first_t2 | 1 | 1 | 1 | 1 | 1 | 1 | 3 | 3 | 3 |
-| `pk_ward` | 80 / 0 | after_t1 / after_t1 | — | — | — | 1 | 1 | 1 | 1 | 1 | 1 |
+| `tw_bar` | 450 / 450 | after_tier4 / after_tier4 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 | 19 |
+| `tl_shackle` | 150 / 150 | after_first_t2 / after_first_t2 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 3 |
 | `pk_ripple` | 350 / 350 | after_5_locks_t2 / after_5_locks_t2 | — | — | — | — | — | — | — | — | — |
 | `pk_wedge` | 700 / 700 | after_t3 / after_t3 | — | — | — | — | — | — | — | — | — |
-| `pk_lever` | 500 / 300 | after_t3 / after_t2 | 1 | 1 | 1 | 7 | 7 | 7 | 5 | 5 | 5 |
-| `pk_crown` | 900 / 600 | after_t4 / after_t3 | — | — | — | 12 | — | — | 12 | 12 | 12 |
-| `tl_polar` | 1200 / 700 | after_t5 / after_t4 | — | — | — | — | — | — | 9 | 9 | 9 |
-| `pk_flag` | 1500 / 900 | after_t6 / after_t5 | — | — | — | — | — | — | 22 | 22 | 22 |
-| `pk_plunger` | 1600 / 1000 | after_t6 / after_t5 | — | — | — | — | — | — | 26 | 27 | 24 |
-| `pk_disc` | 1800 / 1100 | after_t7 / after_t5 | — | — | — | — | — | — | 28 | 28 | 25 |
+| `pk_lever` | 300 / 300 | after_t2 / after_t2 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
+| `pk_crown` | 600 / 600 | after_t3 / after_t3 | — | — | — | 9 | 9 | 9 | 12 | 12 | 12 |
+| `tl_polar` | 700 / 700 | after_t4 / after_t4 | — | — | — | — | — | — | 9 | 9 | 9 |
+| `pk_flag` | 900 / 900 | after_t5 / after_t5 | — | — | — | — | — | — | 22 | 22 | 22 |
+| `pk_plunger` | 1000 / 1000 | after_t5 / after_t5 | 24 | 24 | 24 | 24 | 24 | 24 | 26 | 27 | 24 |
+| `pk_disc` | 1100 / 1100 | after_t5 / after_t5 | 25 | 25 | 25 | 25 | 25 | 25 | 28 | 28 | 25 |
 | `pk_feather` | 2000 / 2000 | after_t7_F3 / after_t7_F3 | — | — | — | — | — | — | — | — | — |
-| `tl_cup` | 2200 / 1200 | after_t8 / after_t4 | — | — | — | — | — | — | 14 | 14 | 14 |
+| `tl_cup` | 1200 / 1200 | after_t4 / after_t4 | 14 | 18 | 18 | 14 | 18 | 18 | 14 | 14 | 14 |
+| `ob_microscope` | 250 / 250 | after_t2 / after_t2 | — | — | — | — | — | — | — | — | — |
+| `ob_borescope` | 400 / 400 | after_t3 / after_t3 | — | — | — | — | — | — | — | — | — |
 
 Krzywa (average): liczba posiadanych narzędzi płatnych po każdym zleceniu, mediana.
 
 ```
-A   2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  3  3  3  3  3  3  3  4  4  4  4
-B   2  2  2  2  2  2  3  3  3  3  3  3  3  3  3  3  3  3  4  4  4  4  4  4  4  5  5  5  5
+A   1  1  2  2  3  3  3  3  3  3  3  3  3  3  3  3  3  4  5  5  5  5  5  6  7  8  8  8  8
+B   1  1  2  2  3  3  3  3  4  4  4  4  4  4  4  4  4  5  6  6  6  6  6  7  8  9  9  9  9
 C   1  1  2  2  3  3  3  3  4  4  4  5  5  6  6  6  6  6  7  7  7  8  8  8  8  9 10 11 11
     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29   <- zlecenie nr
 ```
@@ -159,7 +160,7 @@ C   1  1  2  2  3  3  3  3  4  4  4  5  5  6  6  6  6  6  7  7  7  8  8  8  8  9
 | C | average | 402 | 4 |
 | C | clumsy | 385 | 3 |
 
-`progression.json` zakłada 300 monet na sesję i ok. 40 na zamek w środku serii.
+`progression.json` zakłada 385 monet na sesję i ok. 40 na zamek w środku serii.
 
 ## 6. Proponowane zmiany liczb (do decyzji; danych nie zmieniam)
 
@@ -169,22 +170,22 @@ C   1  1  2  2  3  3  3  3  4  4  4  5  5  6  6  6  6  6  7  7  7  8  8  8  8  9
 | `job.liege_bakery.json` | `family` | `lever` | `lever_detector` | `JOBS.md`: „dźwigniowy z detektorem, T2” |
 | `job.drummer_locker.json` | `family` | `unknown` | `tubular` | `JOBS.md`: „rurkowy, T1” |
 | `progression.json` | `tier_curve.formula` | `0.55 * ln(1+n)` | `1.2 * ln(1+n)` | wzór zgodny z tabelą §2.2 |
-| `tools.json` | `pk_ward.price` | 80 | 0 | dar w samouczku: pierwsze zlecenie bez grindu |
-| `tools.json` | `pk_lever.price` | 500 | 300 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
-| `tools.json` | `tl_polar.price` | 1200 | 700 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
-| `tools.json` | `pk_crown.price` | 900 | 600 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
-| `tools.json` | `tw_bar.price` | 600 | 450 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
-| `tools.json` | `pk_flag.price` | 1500 | 900 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
-| `tools.json` | `pk_plunger.price` | 1600 | 1000 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
-| `tools.json` | `pk_disc.price` | 1800 | 1100 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
-| `tools.json` | `tl_cup.price` | 2200 | 1200 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
-| `tools.json` | `tl_cup.unlock` | `after_t8` | `after_t4` | osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |
-| `tools.json` | `pk_disc.unlock` | `after_t7` | `after_t5` | osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |
-| `tools.json` | `tl_polar.unlock` | `after_t5` | `after_t4` | osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |
-| `tools.json` | `pk_crown.unlock` | `after_t4` | `after_t3` | osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |
-| `tools.json` | `pk_lever.unlock` | `after_t3` | `after_t2` | osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |
-| `tools.json` | `pk_flag.unlock` | `after_t6` | `after_t5` | osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |
-| `tools.json` | `pk_plunger.unlock` | `after_t6` | `after_t5` | osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |
+| `tools.json` | `pk_ward.price` | 0 | 0 | dar w samouczku: pierwsze zlecenie bez grindu |
+| `tools.json` | `pk_lever.price` | 300 | 300 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
+| `tools.json` | `tl_polar.price` | 700 | 700 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
+| `tools.json` | `pk_crown.price` | 600 | 600 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
+| `tools.json` | `tw_bar.price` | 450 | 450 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
+| `tools.json` | `pk_flag.price` | 900 | 900 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
+| `tools.json` | `pk_plunger.price` | 1000 | 1000 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
+| `tools.json` | `pk_disc.price` | 1100 | 1100 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
+| `tools.json` | `tl_cup.price` | 1200 | 1200 | narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego |
+| `tools.json` | `tl_cup.unlock` | `after_t4` | `after_t4` | osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |
+| `tools.json` | `pk_disc.unlock` | `after_t5` | `after_t5` | osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |
+| `tools.json` | `tl_polar.unlock` | `after_t4` | `after_t4` | osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |
+| `tools.json` | `pk_crown.unlock` | `after_t3` | `after_t3` | osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |
+| `tools.json` | `pk_lever.unlock` | `after_t2` | `after_t2` | osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |
+| `tools.json` | `pk_flag.unlock` | `after_t5` | `after_t5` | osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |
+| `tools.json` | `pk_plunger.unlock` | `after_t5` | `after_t5` | osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |
 | `tools.json` | `wear_model.repair_broken_pct` | 0.35 | 0.15 + 10 monet, max 150 | bez spirali naprawa → grind u gracza niezdarnego |
 | `JOBS.md` / dane | zapadkowy T3 (3 zlecenia) | lockcore t2 max | dodać `warded` t3 albo zmienić na T2 | dziś T3 = t2, „mistrzowskie” zlecenie jest łatwiejsze od rozdziału 1 wkładki |
 | `progression.json` | `economy.session_income` | 300 | wartość z symulacji C (tabela §5) | dokument ma mówić prawdę o tempie |

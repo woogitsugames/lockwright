@@ -1,0 +1,27 @@
+{
+  "id": "job.community_notice_case",
+  "chapter": 7,
+  "district": "Śródmieście",
+  "family": "warded",
+  "tier": 2,
+  "verification": "Elżbieta jako zarządczyni kamienicy (3) pokazuje podpisaną uchwałę wspólnoty (2). Basia jest świadkiem.",
+  "reward_coins": 105,
+  "tone": "ciepły, sąsiedzki",
+  "i18n": {
+    "title": "job.community_notice_case.title",
+    "client": "job.community_notice_case.client",
+    "situation": "job.community_notice_case.situation"
+  },
+  "lines": [
+    "basia",
+    "elzbieta",
+    "locksmith",
+    "basia"
+  ],
+  "cards": [
+    "manager",
+    "institution",
+    "witness"
+  ],
+  "threshold": 2
+}

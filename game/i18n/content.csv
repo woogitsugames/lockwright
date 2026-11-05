@@ -355,3 +355,276 @@ notebook.rule.5,What I saw inside stays inside.,"Co widziałem w środku, zostaj
 tool.ob_loupe.name,Watchmaker's loupe,Lupa zegarmistrzowska
 tool.ob_microscope.name,Bench microscope,Mikroskop warsztatowy
 tool.ob_borescope.name,Borescope,Wziernik
+ach.achievement.first_set.name,The First Click,Pierwszy klik
+ach.achievement.first_set.desc,Make your first clean set outside the tutorial.,Uzyskaj pierwsze prawdziwe ustawienie poza samouczkiem.
+ach.achievement.first_open.name,A Door Opens,Drzwi otwarte
+ach.achievement.first_open.desc,Finish your first lock in Continuous Mode.,Ukończ pierwszy zamek w Trybie Ciągłym.
+ach.achievement.pin_school.name,Three Lessons,Trzy lekcje
+ach.achievement.pin_school.desc,Complete all three pin-tumbler lessons.,Ukończ trzy lekcje wkładki bębenkowej.
+ach.achievement.wafer_school.name,The Next Lesson,Kolejna lekcja
+ach.achievement.wafer_school.desc,Complete all three wafer-lock lessons.,Ukończ trzy lekcje zamka płytkowego.
+ach.achievement.false_note.name,Two Notes,Dwa dźwięki
+ach.achievement.false_note.desc,Open a pin lock after hearing a false set.,Otwórz wkładkę po fałszywym ustawieniu.
+ach.achievement.after_drop.name,From the Start,Od początku
+ach.achievement.after_drop.desc,Recover from a drop and open without breaking a pick.,Otwórz po zrzucie bez złamania wytrycha.
+ach.achievement.after_overset.name,Room to Recover,Jest jeszcze czas
+ach.achievement.after_overset.desc,Open after an overset without breaking a pick.,Otwórz po przepchnięciu bez złamania wytrycha.
+ach.achievement.counter_sense.name,A Quiet Argument,Cicha rozmowa
+ach.achievement.counter_sense.desc,Finish a lock after feeling its counter-rotation.,Ukończ zamek po wystąpieniu kontrrotacji.
+ach.achievement.steel_warning.name,Heard the Warning,Usłyszany sygnał
+ach.achievement.steel_warning.desc,Open a lock after a stress warning with no broken pick.,Otwórz po ostrzeżeniu o naprężeniu bez złamania wytrycha.
+ach.achievement.clean_receipt.name,No Marks,Bez śladów
+ach.achievement.clean_receipt.desc,Earn the clean-work stamp: no drops and no broken picks.,Zdobądź pieczątkę czystej pracy: bez zrzutów i złamań.
+ach.achievement.hard_clean.name,A Hard Quiet Job,Trudny spokój
+ach.achievement.hard_clean.desc,Open a tier-five or harder lock without drops or broken picks.,Otwórz zamek poziomu 5 lub wyżej bez zrzutów i złamań.
+ach.achievement.pin_master.name,Brass Patience,Mosiężna cierpliwość
+ach.achievement.pin_master.desc,Finish the fifth pin master lock without breaking a pick.,Ukończ piąty mistrzowski zamek bębenkowy bez złamania wytrycha.
+ach.achievement.wafer_master.name,A Quiet Stack,Ciche płytki
+ach.achievement.wafer_master.desc,Finish the third wafer master lock without breaking a pick.,Ukończ trzeci mistrzowski zamek płytkowy bez złamania wytrycha.
+ach.achievement.wafer_clean.name,Nothing Rattled Loose,Nic nie opadło
+ach.achievement.wafer_clean.desc,Open a wafer lock without drops or broken picks.,Otwórz zamek płytkowy bez zrzutów i złamań.
+ach.achievement.pin_plain.name,An Honest Click,Uczciwy klik
+ach.achievement.pin_plain.desc,Open a tier-three pin lock with no false set or overset.,Otwórz wkładkę poziomu 3 bez fałszywego ustawienia i przepchnięcia.
+ach.achievement.first_gate.name,A Soft Note,Cichy znak
+ach.achievement.first_gate.desc,Open a lever lock after aligning a gate.,Otwórz zamek dźwigniowy po zgraniu bramki.
+ach.achievement.detector_return.name,Second Hearing,Drugie podejście
+ach.achievement.detector_return.desc,Open a detector lock after a trip and a successful reset.,Otwórz zamek z detektorem po jego uruchomieniu i skasowaniu.
+ach.achievement.ring_false.name,A Shallow Promise,Płytka obietnica
+ach.achievement.ring_false.desc,Open a ring lock after a false set.,Otwórz zamek pierścieniowy po fałszywym ustawieniu.
+ach.achievement.wooden_creak.name,Old Wood Speaks,Stare drewno mówi
+ach.achievement.wooden_creak.desc,Open a wooden-pin lock after hearing it creak.,Otwórz drewniany zamek kołkowy po usłyszeniu skrzypienia.
+ach.achievement.iron_no_drop.name,The Iron Door,Żelazne drzwi
+ach.achievement.iron_no_drop.desc,Open a warded lock with no dropped parts.,Otwórz zamek zapadkowy bez zrzutu elementów.
+ach.achievement.lever_true.name,No False Promises,Bez złudzeń
+ach.achievement.lever_true.desc,Open a lever lock with no false sets.,Otwórz zamek dźwigniowy bez fałszywych ustawień.
+ach.achievement.first_dark.name,When the Light Goes,Kiedy gaśnie światło
+ach.achievement.first_dark.desc,Complete your first lock in darkness.,Ukończ pierwszy zamek w trybie „w ciemności”.
+ach.achievement.dark_clean.name,By Ear Alone,Samym słuchem
+ach.achievement.dark_clean.desc,Open a lock in darkness without a drop or broken pick.,Otwórz zamek w ciemności bez zrzutu i złamania wytrycha.
+ach.achievement.one_pick.name,One in the Roll,Jeden w zwijce
+ach.achievement.one_pick.desc,Finish a One Pick challenge without losing the only pick.,Ukończ wyzwanie „Jeden wytrych” bez jego złamania.
+ach.achievement.daily_lock.name,Today's Door,Dzisiejsze drzwi
+ach.achievement.daily_lock.desc,Finish the daily lock once. No streak required.,Ukończ zamek dnia. Bez wymogu serii dni.
+ach.achievement.timed_care.name,"Quick, Not Hasty","Szybko, nie pochopnie"
+ach.achievement.timed_care.desc,Complete a timed challenge with no broken pick.,Ukończ wyzwanie na czas bez złamania wytrycha.
+ach.achievement.bench_stop.name,Five on the Sheet,Pięć kresek
+ach.achievement.bench_stop.desc,Reach the first workshop stop of a Continuous run.,Dotrzyj do pierwszego postoju w warsztacie w Trybie Ciągłym.
+ach.achievement.tool_care.name,A Careful Repair,Dobra naprawa
+ach.achievement.tool_care.desc,Repair a worn tool at the workshop for the first time.,Po raz pierwszy napraw zużyte narzędzie w warsztacie.
+ach.achievement.permission.name,Before the Lock,Przed zamkiem
+ach.achievement.permission.desc,Verify the right to enter before your first contract opening.,Potwierdź prawo do wejścia przed pierwszym otwarciem na zleceniu.
+ach.achievement.witness.name,Someone Can Confirm,Ktoś potwierdzi
+ach.achievement.witness.desc,Complete a contract after an independent witness verifies access.,Ukończ zlecenie po potwierdzeniu prawa do lokalu przez świadka.
+ach.achievement.first_no.name,The Right No,Właściwe nie
+ach.achievement.first_no.desc,Refuse a job when the right to enter is not confirmed.,"Odmów otwarcia, gdy nie potwierdzono prawa do lokalu."
+ach.achievement.ex_partner.name,Those Aren't Your Keys,To nie te klucze
+ach.achievement.ex_partner.desc,Resolve the former-partner case without opening the door.,Zakończ sprawę byłego partnera bez otwierania drzwi.
+ach.achievement.bribe.name,No Price for Silence,Nie sprzedaję ciszy
+ach.achievement.bribe.desc,Refuse an extra payment offered to skip verification.,Odmów przyjęcia dopłaty za pominięcie weryfikacji.
+ach.achievement.aunt_alive.name,The Aunt Is Well,Ciotka ma się dobrze
+ach.achievement.aunt_alive.desc,Close the aunt's case without opening her property.,Zakończ sprawę ciotki bez otwierania jej lokalu.
+ach.achievement.wrong_floor.name,The Right Floor,Właściwe piętro
+ach.achievement.wrong_floor.desc,Solve a wrong-floor call without opening any door.,Rozwiąż pomyłkę pięter bez otwierania drzwi.
+ach.achievement.heirs.name,Everyone Accounted For,Wszyscy obecni
+ach.achievement.heirs.desc,Wait for all entitled heirs before opening the safe.,Poczekaj na wszystkich uprawnionych spadkobierców przed otwarciem sejfu.
+ach.achievement.partial_refusal.name,Only What's Agreed,Tylko uzgodnione
+ach.achievement.partial_refusal.desc,Open the client's strongbox but decline the unrelated casket.,"Otwórz kasę klienta, ale odmów otwarcia cudzej kasetki."
+ach.achievement.museum_papers.name,In Triplicate,W trzech egzemplarzach
+ach.achievement.museum_papers.desc,Open the museum vault after institutional authorization.,Otwórz muzealny skarbiec po potwierdzeniu upoważnienia instytucji.
+ach.achievement.kazimierz.name,The Old Gate,Stara brama
+ach.achievement.kazimierz.desc,Finish the documented restoration call at the Kazimierz gate.,Ukończ zlecenie przy bramie na Kazimierzu po weryfikacji uprawnień.
+ach.achievement.capsule.name,One Last Page,Ostatnia strona
+ach.achievement.capsule.desc,Open the school time capsule with the school's permission.,Otwórz szkolną kapsułę czasu za zgodą szkoły.
+tip.ethics_01,Ask whose door it is first. The mechanism can wait.,"Najpierw zapytaj, czyje to drzwi. Mechanizm poczeka."
+tip.ethics_02,No papers do not make someone a villain. They do not grant access either.,Brak dokumentów nie czyni nikogo złym. Nie daje też prawa do wejścia.
+tip.ethics_03,"When someone is in a hurry, the questions matter even more.","Gdy ktoś się śpieszy, pytania są jeszcze ważniejsze."
+tip.ethics_04,A polite refusal is part of the trade. Some doors should stay shut.,Grzeczna odmowa to część zawodu. Niektóre drzwi muszą zostać zamknięte.
+tip.ethics_05,An extra fee is not a substitute for the resident's consent.,Dopłata nie zastępuje zgody lokatora.
+tip.ethics_06,A loud explanation is still not proof of the right to enter.,Głośne tłumaczenie nadal nie jest dowodem prawa do wejścia.
+tip.ethics_07,"If a story does not add up, offer to call the building manager.","Gdy historia się nie zgadza, zaproponuj telefon do zarządcy."
+tip.ethics_08,"An inheritance takes documents and people, not an impatient hand.","Spadek wymaga dokumentów i uprawnionych osób, nie niecierpliwej ręki."
+tip.ethics_09,"I came for the lock, not for the contents of someone else's home.","Przyszedłem do zamka, nie do zawartości cudzego mieszkania."
+tip.ethics_10,Agree the price first. Let the kettle provide the surprises.,Cenę uzgodnij wcześniej. Niespodzianki niech robi czajnik.
+tip.feel_01,A bright single click and a dull double click tell different stories.,Jasny pojedynczy klik i głuchy podwójny opowiadają inne historie.
+tip.feel_02,"The core has its own handwriting: a little turn, a deeper turn, a return.","Rdzeń ma własne pismo: mały obrót, większy obrót, powrót."
+tip.feel_03,Silence is a sound too. Especially after a dull thud.,Cisza też jest dźwiękiem. Zwłaszcza po tępym stuknięciu.
+tip.feel_04,A spring can complain without anything being broken. So can I.,"Sprężyna może narzekać, choć nic się nie zepsuło. Ja też."
+tip.feel_05,"A rising metal whine is a warning, not a victory fanfare.","Narastający jęk metalu to ostrzeżenie, nie fanfary zwycięstwa."
+tip.feel_06,The clean click is short. The doubtful one has an echo.,Pewny klik jest krótki. Ten wątpliwy ma echo.
+tip.feel_07,"When the core retreats, it is still taking part in the conversation.","Gdy rdzeń się cofa, nadal bierze udział w rozmowie."
+tip.feel_08,"Three scrape marks are a clue in this game, not a grade on your report.","Trzy kreski tarcia to w tej grze znak, nie ocena w dzienniku."
+tip.feel_09,An outline can be broken even when the tool is not.,"Obrys bywa przerywany, choć narzędzie pozostaje całe."
+tip.feel_10,The little wedge of light says more than a page of numbers.,Mały klin prześwitu mówi więcej niż cała strona liczb.
+tip.feel_11,This game's parts speak in movement as much as in sound.,Elementy tej gry mówią ruchem równie wyraźnie jak dźwiękiem.
+tip.feel_12,A row of falling parts sounds rather like rain on my workshop roof.,Kaskada opadających części przypomina deszcz na dachu warsztatu.
+tip.feel_13,A clean set is one note. A false one insists on a duet.,Prawdziwe ustawienie to jedna nuta. Fałszywe upiera się przy duecie.
+tip.feel_14,Some mechanisms speak softly. That does not make them simple.,"Niektóre mechanizmy mówią cicho. Nie znaczy to, że są proste."
+tip.feel_15,The door's final clunk is the only applause I need.,"Końcowy szczęk rygla to jedyne oklaski, jakich potrzebuję."
+tip.workshop_01,The leather roll never lies. An empty pocket is an empty pocket.,Skórzana zwijka nie kłamie. Pusta kieszeń jest pusta.
+tip.workshop_02,Tools remember every shift. Look at the edges when the job is done.,Narzędzia pamiętają każdy dyżur. Po pracy obejrzyj ich krawędzie.
+tip.workshop_03,A neat bench does not make me a genius. It lets me find the pencil.,Porządny blat nie robi ze mnie geniusza. Pozwala znaleźć ołówek.
+tip.workshop_04,Five marks on the dispatch sheet mean the workshop is near.,Pięć kresek na kartce dyżuru oznacza powrót do warsztatu.
+tip.workshop_05,The ledger remembers a job better than the coins do.,Zeszyt pamięta zlecenie lepiej niż monety.
+tip.workshop_06,There is no shame in repairing a tool. Only in forgetting to check it.,Naprawa narzędzia to nie wstyd. Zapomnienie o przeglądzie już tak.
+tip.workshop_07,"A receipt is a small promise, written in pencil and kept in ink.","Rachunek to mała obietnica. Zapisana ołówkiem, zachowana na dłużej."
+tip.workshop_08,I kept the old enamel sign. It still knows the way home.,Zostawiłem starą emaliowaną tabliczkę. Nadal zna drogę do domu.
+tip.workshop_09,Sometimes the best souvenir is a job without a scratch.,Czasem najlepszą pamiątką jest zlecenie bez jednej rysy.
+tip.dark_01,"When the stairwell light goes out, the sounds have more room.","Gdy gaśnie światło na klatce, dźwięki mają więcej miejsca."
+tip.dark_02,"Darkness is a different way to listen, not a different set of rules.","Ciemność zmienia sposób słuchania, nie zasady gry."
+tip.dark_03,The faintest sound is not always the least important.,Najcichszy dźwięk nie zawsze jest najmniej ważny.
+tip.dark_04,"No picture, but the mechanism still has a rhythm.","Obrazu nie ma, ale mechanizm nadal ma swój rytm."
+tip.dark_05,I have worked in dark hallways. The kettle always found me afterwards.,Pracowałem w ciemnych korytarzach. Czajnik i tak mnie potem znajdował.
+tip.dark_06,A double click is still a double click when no one can see it.,"Podwójny klik pozostaje podwójny, nawet gdy nikt go nie widzi."
+tip.dark_07,Quiet is not empty. Listen to how long it lasts.,"Cisza nie jest pusta. Posłuchaj, jak długo trwa."
+tip.dark_08,You may switch the light back on. There is no medal for sore eyes.,Możesz zapalić światło. Za zmęczone oczy nie dają medali.
+tip.people_01,"Mrs Halina is waiting. So is her soup, and it has less patience.","Pani Halina czeka. Rosół też, a ma mniej cierpliwości."
+tip.people_02,A cat's account of the incident is rarely useful. Ask the owner.,Zeznania kota rzadko pomagają. Zapytaj właściciela.
+tip.people_03,A neighbour is sometimes the best thing a building has.,Sąsiad bywa najlepszym wyposażeniem kamienicy.
+tip.people_04,The lift is out again. At least the stairs still work.,"Winda znowu nie działa. Dobrze, że schody jeszcze pracują."
+tip.people_05,A polite good morning opens more conversations than any tool.,Grzeczne „dzień dobry” otwiera więcej rozmów niż narzędzia.
+tip.people_06,My job ends at the threshold. Other people's stories carry on.,Moja praca kończy się na progu. Cudze historie idą dalej.
+tip.people_07,A tired nurse deserves a quiet hallway more than a speech.,"Zmęczona pielęgniarka potrzebuje spokojnej klatki, nie przemowy."
+tip.people_08,Every door has two sides. Remember the person on the other one.,Każde drzwi mają dwie strony. Pamiętaj o człowieku po drugiej.
+tip.calm_01,Speed is useful. Rushing is usually only louder.,Tempo pomaga. Pośpiech zazwyczaj tylko bardziej hałasuje.
+tip.calm_02,One mistake tells me something. Four tell me to make tea.,Jeden błąd czegoś mnie uczy. Cztery każą nastawić herbatę.
+tip.calm_03,There is nothing heroic about a sore thumb.,Obolały kciuk nie jest powodem do bohaterstwa.
+tip.calm_04,"It is a game of attention, not a test of who can grip harder.","To gra uważności, nie konkurs na najmocniejszy chwyt."
+tip.calm_05,A short pause costs less than a broken tool.,Krótka pauza kosztuje mniej niż złamane narzędzie.
+tip.calm_06,A quiet success counts. No audience required.,Cichy sukces też się liczy. Publiczność nie jest potrzebna.
+tip.calm_07,"My best shifts ended with a tidy bench, not a dramatic story.","Najlepsze dyżury kończyły się czystym blatem, nie dramatem."
+tip.calm_08,A stubborn door is not a personal insult. I checked.,Uparte drzwi nie obrażają cię osobiście. Sprawdzałem.
+tip.calm_09,Good hands are patient hands. They also know when to stop.,"Dobre ręce są cierpliwe. Wiedzą też, kiedy przestać."
+tip.calm_10,"When the job is done, let the people get on with their day.",Po pracy pozwól ludziom wrócić do swojego dnia.
+notebook.extra.false_set_streak,Three dull double clicks in a row. I wrote them down. They seemed pleased with themselves.,Trzy głuche podwójne kliknięcia z rzędu. Zapisałem je. Brzmiały na zadowolone z siebie.
+notebook.extra.counter_reply,The core pushed back. I heard its opinion and finished the job without an argument.,Rdzeń się cofnął. Wysłuchałem jego zdania i skończyłem pracę bez kłótni.
+notebook.extra.overset_twice,Two dead thuds. I managed to finish. The notebook got the polite version.,Dwa tępe stuknięcia. Udało się skończyć. Zeszyt dostał wersję uprzejmą.
+notebook.extra.three_drops,"Three little avalanches, one open door. I had enough noise for the day.","Trzy małe lawiny, jedne otwarte drzwi. Hałasu wystarczyło mi na dziś."
+notebook.extra.drop_then_set,"Everything fell, then one clean click returned. I was grateful for the second sentence.","Wszystko opadło, potem wrócił jeden czysty klik. Ucieszyło mnie drugie zdanie."
+notebook.extra.stress_no_break,The metal complained twice. I listened. The tool went home in one piece.,Metal narzekał dwa razy. Posłuchałem. Narzędzie wróciło w jednym kawałku.
+notebook.extra.one_break,One broken pick on the bench. The door opened. Not my favourite kind of balance.,Jeden złamany wytrych na blacie. Drzwi otwarte. Nie tak lubię bilansować dyżur.
+notebook.extra.two_breaks,Two broken picks and one open door. I had less to carry home than I brought.,"Dwa złamane wytrychy i otwarte drzwi. Do domu niosłem mniej, niż przyniosłem."
+notebook.extra.near_shear,Four narrow whispers before the final clunk. I almost asked the lock to speak up.,"Cztery ciche zwężenia przed szczękiem rygla. Już miałem prosić zamek, by mówił głośniej."
+notebook.extra.false_without_drop,"Two false promises, no falling pieces. The door opened without a speech.","Dwie fałszywe obietnice, nic nie opadło. Drzwi otworzyły się bez przemowy."
+notebook.extra.dark_double,"In the dark I heard a double click. I wrote down the sound, not a guess.","W ciemności usłyszałem podwójny klik. Zapisałem dźwięk, nie domysł."
+notebook.extra.dark_drop,Something fell in the dark. I knew the sound before I saw the empty space.,"W ciemności coś opadło. Rozpoznałem odgłos, zanim zobaczyłem pustkę."
+notebook.extra.dark_failed,The light came back before the door opened. I swept up the metal and closed my notebook.,Światło wróciło przed otwarciem drzwi. Zebrałem metal i zamknąłem zeszyt.
+notebook.extra.dark_clean,"No light, no dropped parts, no broken pick. The receipt looked almost suspiciously tidy.","Bez światła, bez zrzutów, bez złamania. Rachunek wyglądał podejrzanie schludnie."
+notebook.extra.serrations,Two tiny clicks without a turn. I had written louder things down for less.,Dwa małe tyknięcia bez obrotu. Zdarzało mi się zapisać głośniejsze rzeczy bez powodu.
+notebook.extra.spring_bounce,The springs rattled three times. An old mechanism still knows how to complain.,Sprężyny zadźwięczały trzy razy. Stary mechanizm wciąż umie narzekać.
+notebook.extra.wafer_rattle,The wafers rattled like cutlery in a drawer. The door eventually opened.,Płytki grzechotały jak sztućce w szufladzie. Drzwi w końcu się otworzyły.
+notebook.extra.wafer_overset,"One dead thud from the wafers, no cascade after it. I marked the distinction.","Tępy stuk płytek, a po nim żadnej kaskady. Odnotowałem tę różnicę."
+notebook.extra.wood_creak,The wooden pins creaked twice. I left the workshop's chair out of the comparison.,Drewniane kołki skrzypnęły dwa razy. Postanowiłem nie porównywać ich z krzesłem w warsztacie.
+notebook.extra.ward_scrapes,Three rough scrapes from the iron. I noted the sound and left the history to the museum.,"Trzy szorstkie zgrzyty żelaza. Zapisałem dźwięk, a historię zostawiłem muzeum."
+notebook.extra.lever_false,The levers offered two shallow answers. Neither was the end of the story.,Dźwignie dwa razy odpowiedziały zbyt płytko. Żadna odpowiedź nie była ostatnia.
+notebook.extra.lever_clear,Every gate gave a clean note. The receipt came out with no need for excuses.,Każda bramka zabrzmiała czysto. Rachunek nie wymagał wyjaśnień.
+notebook.extra.detector_reset,The detector shut us down and later let go. I counted both sounds.,"Detektor zatrzymał pracę, a potem odpuścił. Policzyłem oba dźwięki."
+notebook.extra.detector_failed,The detector had the final word. I left the mechanism alone and wrote down the refusal.,Detektor miał ostatnie słowo. Zostawiłem mechanizm w spokoju i zapisałem wynik.
+notebook.extra.ring_clicks,Six little ring clicks. One open lock. The corridor finally went quiet.,Sześć drobnych kliknięć pierścieni. Jedna otwarta kłódka. Na klatce znów zapadła cisza.
+notebook.extra.ring_false,The rings offered two shallow notches. I kept the note brief; they hadn't.,Pierścienie dwa razy dały płytkie nacięcie. Notatkę skróciłem. One się nie spieszyły.
+notebook.extra.gates_many,Three aligned gates in one job. A small concert with no encore requested.,Trzy zgrane bramki podczas jednego zlecenia. Mały koncert bez bisu.
+notebook.extra.mixed_recovery,"A thud, a cascade, then an open door. I kept the order in my notes.","Tępy stuk, kaskada, a potem otwarte drzwi. Zapisałem kolejność."
+notebook.extra.worn_but_whole,The tool grew rough but did not break. I put a repair mark beside the day's total.,"Narzędzie zrobiło się szorstkie, lecz nie pękło. Przy rachunku zaznaczyłem naprawę."
+notebook.extra.roll_empty,The third pick snapped. I rolled up the empty leather case and ended the shift.,Trzeci wytrych pękł. Zwinąłem pustą skórzaną zwijkę i skończyłem dyżur.
+cast.basia.name,Basia,Basia
+cast.elzbieta.name,"Elżbieta, building manager","Elżbieta, zarządczyni"
+cast.marcel.name,Marcel,Marcel
+cast.norbert.name,Norbert,Norbert
+job.community_notice_case.client,"Basia, residents' committee secretary, with building manager Elżbieta.","Basia, sekretarka komitetu mieszkańców, z zarządczynią Elżbietą."
+job.community_notice_case.line.1,The rota is ready. Only the cabinet refuses to display it.,Dyżury gotowe. Tylko gablota odmawia współpracy.
+job.community_notice_case.line.2,I manage this building. Here's the residents' signed decision.,Zarządzam tą kamienicą. Tu jest podpisana uchwała wspólnoty.
+job.community_notice_case.line.3,Permission and price are settled. I'll open the shared cabinet.,Zgoda i cena ustalone. Otworzę wspólną gablotę.
+job.community_notice_case.line.4,First notice: the cleaning rota. A bold opening.,Pierwsza kartka: dyżur odkurzania. Mocny początek.
+job.community_notice_case.note,"Old Town, shared notice cabinet. Manager and signed residents' decision; the cleaning rota is up.","Śródmieście, wspólna gablota. Zarządczyni i uchwała; dyżury już wiszą."
+job.community_notice_case.situation,The shared notice cabinet is locked. Residents need to post the rota for their newly approved common room.,Wspólna gablota na klatce nie otwiera się. Mieszkańcy chcą powiesić dyżury do nowej świetlicy.
+job.community_notice_case.title,The Notice Cabinet,Gablota ogłoszeń
+job.edek_rehearsal_store.client,"Mr Edek, campus porter, and Iga from the student music group.","Pan Edek, portier akademika, i Iga ze studenckiego zespołu."
+job.edek_rehearsal_store.line.1,The store is on my list. It belonged to the old theatre.,Magazynek mam na liście. Został po starym teatrze.
+job.edek_rehearsal_store.line.2,We're borrowing chairs. No one ordered drums this time.,Pożyczamy krzesła. Bębnów tym razem nikt nie zamawiał.
+job.edek_rehearsal_store.line.3,Your register and the university letter agree. So does the fee.,Pańska lista i pismo uczelni się zgadzają. Cena też.
+job.edek_rehearsal_store.line.4,Good. Let's hope the chairs keep better time than the band.,Dobrze. Oby krzesła lepiej trzymały rytm niż zespół.
+job.edek_rehearsal_store.note,Campus theatre store. Mr Edek and university approval; chairs on loan for the residents' meeting.,"Kampus, magazynek teatralny. Edek i zgoda uczelni; krzesła pożyczone na zebranie."
+job.edek_rehearsal_store.situation,The campus's old theatre store has folding chairs promised to the neighbourhood meeting. The university approved the loan.,W starym magazynku teatralnym na kampusie są krzesła obiecane na zebranie mieszkańców. Uczelnia zgodziła się je wypożyczyć.
+job.edek_rehearsal_store.title,Chairs for Rehearsal,Krzesła na próbę
+job.gosia_workbench_drawer.client,"Gosia, 36, furniture restorer with a workshop by the harbour.","Gosia, 36 lat, renowatorka mebli z pracownią przy porcie."
+job.gosia_workbench_drawer.line.1,I bought the whole bench. The drawer doesn't recognise the invoice.,Kupiłam cały stół. Szuflada nie uznaje faktury.
+job.gosia_workbench_drawer.line.2,"Invoice, collection photo, agreed price. All accounted for.","Faktura, zdjęcie odbioru, ustalona cena. Wszystko się zgadza."
+job.gosia_workbench_drawer.line.3,Please leave no marks. The bench is going to the common room.,Proszę bez śladów. Stół pojedzie do świetlicy.
+job.gosia_workbench_drawer.line.4,"Agreed. For once, the paperwork arrived before me.",Zgoda. Dla odmiany papiery dotarły przede mną.
+job.gosia_workbench_drawer.note,"Gosia's workbench drawer. Invoice and pickup photo. The bench is going to the common room, unmarked.","Gosia, szuflada stołu. Faktura i zdjęcie odbioru; stół pojedzie do świetlicy bez śladów."
+job.gosia_workbench_drawer.situation,Gosia bought an old workbench with a locked drawer. She plans to donate it to the shared room without damaging the wood.,Gosia kupiła stary stół warsztatowy z zamkniętą szufladą. Chce oddać go do świetlicy bez uszkodzenia drewna.
+job.gosia_workbench_drawer.title,The Workbench Drawer,Szuflada stołu
+job.halina_recipe_box.client,"Mrs Halina, 81, and her neighbour Mrs Zosia.","Pani Halina, 81 lat, z sąsiadką panią Zosią."
+job.halina_recipe_box.line.1,My dumpling recipe is inside. All I recall is the word 'handful'.,W środku jest przepis na kluski. Pamiętam tylko słowo „garść”.
+job.halina_recipe_box.line.2,It's Halina's box. See? It's beside her mug in this photo.,To skrzynka Haliny. Na zdjęciu stoi obok jej kubka.
+job.halina_recipe_box.line.3,"Photo, witness, agreed price. We can begin.","Zdjęcie, świadek, ustalona cena. Możemy zaczynać."
+job.halina_recipe_box.line.4,Afterwards we'll settle how much a handful weighs. It's an old dispute.,"Potem ustalimy, ile waży garść. To nasz stary spór."
+job.halina_recipe_box.note,"Mrs Halina, recipe box. Photo and Mrs Zosia's word. Price agreed; the handful debate continues.","Halina, skrzynka z przepisami. Zdjęcie i słowo Zosi. Cena przyjęta; spór o garść trwa."
+job.halina_recipe_box.situation,Halina wants her dumpling recipe for the new common room. She lost the key to her old recipe box; Zosia has a photo.,Halina chce przynieść do nowej świetlicy przepis na kluski. Klucz do skrzynki zaginął; Zosia ma jej zdjęcie.
+job.halina_recipe_box.title,A Box of Handfuls,Skrzynka pełna garści
+job.krystyna_wooden_album.client,"Mrs Krystyna and her daughter Ola, bringing family photographs.","Pani Krystyna i jej córka Ola, które wybierają rodzinne zdjęcia."
+job.krystyna_wooden_album.line.1,Józef made this photo box. I think the little key was wooden.,Józef zrobił tę skrzynkę. Kluczyk chyba też był drewniany.
+job.krystyna_wooden_album.line.2,We have a photo of him holding it. And the box is at Mum's.,"Mamy zdjęcie, jak ją trzyma. A skrzynka stoi u mamy."
+job.krystyna_wooden_album.line.3,The photo and your daughter's word are enough. I'll write down the fee.,Zdjęcie i słowo córki wystarczą. Zapiszę cenę.
+job.krystyna_wooden_album.line.4,Fine. Just don't ask what we used to wear.,"Dobrze. Tylko niech pan nie pyta, co wtedy nosiliśmy."
+job.krystyna_wooden_album.note,Mrs Krystyna's wooden box. Family photo and Ola's word. They chose the prints themselves.,Drewniana skrzynka Krystyny. Zdjęcie rodzinne i słowo Oli; odbitki wybrały same.
+job.krystyna_wooden_album.situation,Krystyna's late father Józef made a wooden-pin photo box. They want to lend a few prints for the common room display.,"Ojciec Krystyny, Józef, zrobił skrzynkę z drewnianą zasuwą. Rodzina chce wypożyczyć kilka odbitek do świetlicy."
+job.krystyna_wooden_album.title,Józef's Photo Box,Skrzynka na zdjęcia Józefa
+job.marta_poster_studio.client,"Marta, 34, a graphic designer; Potato the cat is supervising.","Marta, 34 lata, graficzka; nad pracą czuwa kot Ziemniak."
+job.marta_poster_studio.line.1,The posters are inside. Potato is guarding them from the wrong side.,Plakaty są w środku. Ziemniak pilnuje ich z niewłaściwej strony.
+job.marta_poster_studio.line.2,The lease matches. Your neighbour confirms this is your studio.,"Umowa się zgadza. Sąsiadka potwierdza, że to pani pracownia."
+job.marta_poster_studio.line.3,The cat won't sign. His privacy policy is rather strict.,Kot niczego nie podpisze. Ma surową politykę prywatności.
+job.marta_poster_studio.line.4,"No need. The price is agreed, and the papers are enough.","Nie musi. Cena uzgodniona, dokumenty wystarczą."
+job.marta_poster_studio.note,Marta's studio. Lease and neighbour. The posters were collected; Potato declined to comment.,Pracownia Marty. Umowa i sąsiadka; plakaty odebrane. Ziemniak odmówił komentarza.
+job.marta_poster_studio.situation,Posters for the shared room are locked in Marta's rented studio. The key is inside with the prints and her cat.,"Plakaty do świetlicy zostały w wynajętej pracowni Marty. Klucz jest w środku, razem z odbitkami i kotem."
+job.marta_poster_studio.title,Posters Behind the Door,Plakaty za drzwiami
+job.refuse_sisters_flat.after.1,I spoke with the tenant. She asked us to wait until she's back.,"Rozmawiałam z lokatorką. Poprosiła, żeby zaczekać na jej powrót."
+job.refuse_sisters_flat.client,"Norbert, 43, worried about his sister's houseplants.","Norbert, 43 lata, martwi się o kwiaty siostry."
+job.refuse_sisters_flat.line.1,"My sister's away. Her plants will dry out, and she won't answer.","Siostra wyjechała. Kwiaty uschną, a ona nie odbiera."
+job.refuse_sisters_flat.line.2,We can wait for her consent or ask the building manager.,Możemy poczekać na jej zgodę albo zadzwonić do zarządcy.
+job.refuse_sisters_flat.line.3,I'd rather not involve the neighbours. They're only flowers.,Wolałbym nie mieszać sąsiadów. To przecież tylko kwiaty.
+job.refuse_sisters_flat.line.4,I can't open without her consent. Here's the manager's number.,Bez jej zgody nie otworzę. Tu jest numer do zarządcy.
+job.refuse_sisters_flat.note,Didn't open Norbert's sister's flat. No tenant consent. Gave him the manager's number.,Nie otworzyłem mieszkania siostry Norberta. Brak zgody lokatorki; podałem numer zarządcy.
+job.refuse_sisters_flat.situation,"His sister is away and not answering. Norbert wants her flat opened to water the plants, but cannot show her consent.","Siostra Norberta wyjechała i nie odbiera. Brat chce podlać jej kwiaty, ale nie ma potwierdzenia zgody na wejście."
+job.refuse_sisters_flat.title,Flowers Behind a Locked Door,Kwiaty za zamkniętymi drzwiami
+job.refuse_unapproved_stockroom.after.1,They collected the parcels this morning. The shop now has better delivery hours.,Paczki odebrano rano. Sklep ma teraz lepsze godziny dostaw.
+job.refuse_unapproved_stockroom.client,"Marcel, 29, a courier with a trolley full of parcels.","Marcel, 29 lat, kurier z wózkiem paczek."
+job.refuse_unapproved_stockroom.line.1,The delivery's on my trolley. The shop owner won't answer.,Dostawa stoi na wózku. Właściciel sklepu nie odbiera.
+job.refuse_unapproved_stockroom.line.2,A delivery note isn't permission to enter the shop.,List przewozowy nie daje zgody na wejście do sklepu.
+job.refuse_unapproved_stockroom.line.3,Could you open it just enough to leave the parcels inside?,"Może pan tylko uchyli drzwi, żebym zostawił paczki?"
+job.refuse_unapproved_stockroom.line.4,Not without permission. Let's arrange a safe handover instead.,Bez zgody nie otworzę. Ustalmy bezpieczny odbiór paczek.
+job.refuse_unapproved_stockroom.note,"Night Market stockroom. Delivery note, no owner's consent. Parcels handed over in the morning.","Nocny Rynek, magazyn sklepu. List przewozowy bez zgody; paczki odebrane rano."
+job.refuse_unapproved_stockroom.situation,A shop at the Night Market is closed. Marcel asks for its stockroom to be opened so he can leave parcels; the owner has not agreed.,"Sklep na Nocnym Rynku jest zamknięty. Marcel prosi o otwarcie magazynu na paczki, ale właściciel nie udzielił zgody."
+job.refuse_unapproved_stockroom.title,Delivery After Closing,Dostawa po zamknięciu
+job.roman_service_cupboard.client,"Mr Roman, 58, the estate's building manager.","Pan Roman, 58 lat, administrator bloków na osiedlu."
+job.roman_service_cupboard.line.1,The residents voted to donate the numbers. The cupboard wasn't informed.,Wspólnota oddała stare numerki. Szafki nikt nie poinformował.
+job.roman_service_cupboard.line.2,I have your register and the signed decision. The price is agreed.,Jest pańska lista i uchwała wspólnoty. Cenę uzgodniliśmy.
+job.roman_service_cupboard.line.3,Please be gentle. These are the only numbers without spelling errors.,Tylko ostrożnie. To jedyne numerki bez literówek.
+job.roman_service_cupboard.line.4,I'll look after the enamel. I make no promises about the paperwork.,O emalię zadbam. Za ortografię w protokole nie ręczę.
+job.roman_service_cupboard.note,"Sunny Estate, maintenance cupboard. Mr Roman and a signed vote. The old numbers are going to the common room.","Osiedle, szafka konserwacyjna. Roman i uchwała wspólnoty; numerki jadą do świetlicy."
+job.roman_service_cupboard.situation,Residents voted to donate their old enamel door numbers to the new common room. The locked maintenance cupboard has other ideas.,Mieszkańcy przekazali do świetlicy stare emaliowane numerki. Szafka konserwacyjna pozostała zamknięta.
+job.roman_service_cupboard.title,The Stairwell Cupboard,Szafka na klatce
+job.shared_room_door.after.1,Nobody lost a key at the first meeting. That's a promising start.,Na pierwszym zebraniu nikt nie zgubił klucza. To dobry początek.
+job.shared_room_door.client,"Elżbieta, the building manager, joined by Marta and Mrs Halina.","Elżbieta, zarządczyni kamienicy, z Martą i panią Haliną."
+job.shared_room_door.line.1,Signed decision and the authorised residents' list. These are shared doors.,Uchwała i lista uprawnionych. To wspólne drzwi.
+job.shared_room_door.line.2,The documents match. So does the fee. We can open now.,Dokumenty się zgadzają. Cena też. Możemy otwierać.
+job.shared_room_door.line.3,I brought the sign. Potato approved it by sleeping on it.,"Przyniosłam tabliczkę. Ziemniak zatwierdził ją, śpiąc na niej."
+job.shared_room_door.line.4,And I brought dumplings. The door can wait. They can't.,A ja kluski. Drzwi mogą poczekać. Kluski nie.
+job.shared_room_door.note,"Old Town, shared room. Signed vote, manager and witness. Chairs, photos and dumplings arrived first.","Śródmieście, świetlica. Uchwała, zarządczyni i świadek; krzesła, zdjęcia i kluski były przed nami."
+job.shared_room_door.situation,"After the residents' vote, Elżbieta authorises the opening of the old shared room. The chairs, photos, sign and dumpling recipe are ready.","Po uchwale wspólnoty Elżbieta zleca otwarcie starej świetlicy. Czekają już krzesła, zdjęcia, tabliczka i przepis na kluski."
+job.shared_room_door.title,A Door for Everyone,Drzwi dla wszystkich
+job.stefan_book_tin.client,"Mr Stefan, 67, kiosk owner and local news source.","Pan Stefan, 67 lat, właściciel kiosku i kronikarz przystanku."
+job.stefan_book_tin.line.1,"I kept the library tokens safe. From myself, apparently.",Zabezpieczyłem numerki do wypożyczalni. Przed samym sobą.
+job.stefan_book_tin.line.2,Your receipt and the kiosk photo match. We agreed the price.,Paragon i zdjęcie z kiosku się zgadzają. Cenę już ustaliliśmy.
+job.stefan_book_tin.line.3,I know every bus timetable. These numbers? Not a chance.,Znam wszystkie rozkłady autobusów. Tych cyfr już nie.
+job.stefan_book_tin.line.4,At least the receipt survived. I'll put mine beside it.,Przynajmniej paragon się zachował. Mój położę obok.
+job.stefan_book_tin.note,"Stefan's kiosk, token tin. Receipt and photo. The owner still can't remember the combination.","Kiosk Stefana, puszka na numerki. Paragon i zdjęcie; właściciel wciąż nie pamięta kodu."
+job.stefan_book_tin.situation,"Stefan locked the library tokens for the new common room in his own ring-padlocked tin, then forgot the combination.",Stefan zamknął numerki do świetlicowej wypożyczalni w swojej puszce z kłódką pierścieniową i zapomniał kodu.
+job.stefan_book_tin.title,The Book Tokens Tin,Puszka na numerki
+job.zuzanna_catalogue_drawer.client,"Zuzanna Wilk, museum intern, with curator Dr Anna Rygiel.","Zuzanna Wilk, stażystka w muzeum, z kuratorką dr Anną Rygiel."
+job.zuzanna_catalogue_drawer.line.1,We have approval for the copies. The drawer thinks they're originals.,Mamy zgodę na kopie. Szuflada uważa je za oryginały.
+job.zuzanna_catalogue_drawer.line.2,The signature is mine. The originals stay in the museum.,Podpis jest mój. Oryginały zostają w muzeum.
+job.zuzanna_catalogue_drawer.line.3,"Curator, signed protocol, agreed price. Just the drawer, then.","Kuratorka, protokół, ustalona cena. Otwieramy tylko szufladę."
+job.zuzanna_catalogue_drawer.line.4,I'll label the display 'Handle with care'. Starting with this drawer.,Podpiszę wystawę „Obchodzić się ostrożnie”. Od tej szuflady zacznę.
+job.zuzanna_catalogue_drawer.note,"Museum, catalogue drawer. Dr Rygiel approved the copies. The originals stayed where they belong.","Muzeum, szuflada katalogowa. Zgoda dr Rygiel na kopie; oryginały zostały na miejscu."
+job.zuzanna_catalogue_drawer.situation,Approved copies of old stairwell photos are stuck in a locked museum drawer. The originals will stay in the archive.,Zatwierdzone kopie zdjęć starych klatek schodowych utknęły w szufladzie muzeum. Oryginały zostają w archiwum.
+job.zuzanna_catalogue_drawer.title,The Catalogue Drawer,Szuflada katalogowa

@@ -7,12 +7,26 @@ extends Control
 const SHOWCASE_DIR := "res://data/showcase"
 
 
+func _show_notebook_entry() -> void:
+	var keys: Array = []
+	for k in I18n.all_keys():
+		if String(k).begins_with("notebook.extra."):
+			keys.append(k)
+	if keys.is_empty():
+		return
+	var lbl := Label.new()
+	lbl.text = I18n.t(&"showcase.notebook_prefix") + " " + I18n.t(keys[randi() % keys.size()])
+	lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	notes_list.add_child(lbl)
+
+
 func _ready() -> void:
 	Sfx.play_ambience(&"workshop")
 	SafeArea.apply(self)
 	$VBox/Title.text = I18n.t(&"showcase.title")
 	back_button.text = I18n.t(&"common.back")
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+	_show_notebook_entry()  # task 10: master's notebook entries (contrib/gpt/T10 notebook_extra.csv)
 	for path in DirAccess.get_files_at(SHOWCASE_DIR):
 		if not path.ends_with(".json"):
 			continue

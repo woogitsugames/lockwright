@@ -1,0 +1,325 @@
+{
+ "schema": 1,
+ "achievements": [
+  {
+   "id": "achievement.first_set",
+   "trigger": "event=set;family=pin_tumbler;context=non_tutorial",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": false,
+   "points": 10
+  },
+  {
+   "id": "achievement.first_open",
+   "trigger": "result=open;mode=continuous",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": false,
+   "points": 10
+  },
+  {
+   "id": "achievement.pin_school",
+   "trigger": "tutorial.completed=pin.s3",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": false,
+   "points": 10
+  },
+  {
+   "id": "achievement.wafer_school",
+   "trigger": "tutorial.completed=wafer.s3",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": false,
+   "points": 10
+  },
+  {
+   "id": "achievement.false_note",
+   "trigger": "result=open;family=pin_tumbler;count(false_set)>=1",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.after_drop",
+   "trigger": "result=open;count(drop)>=1;count(break)=0",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.after_overset",
+   "trigger": "result=open;count(overset)>=1;count(break)=0",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.counter_sense",
+   "trigger": "result=open;count(counter_rotate)>=1",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.steel_warning",
+   "trigger": "result=open;count(stress)>=1;count(break)=0",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.clean_receipt",
+   "trigger": "result=open;count(drop)=0;count(break)=0;context=non_tutorial",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.hard_clean",
+   "trigger": "result=open;tier>=5;count(drop)=0;count(break)=0",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": true,
+   "points": 40
+  },
+  {
+   "id": "achievement.pin_master",
+   "trigger": "result=open;profile=pin.m5;count(break)=0",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": false,
+   "points": 40
+  },
+  {
+   "id": "achievement.wafer_master",
+   "trigger": "result=open;profile=wafer.m3;count(break)=0",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": false,
+   "points": 40
+  },
+  {
+   "id": "achievement.wafer_clean",
+   "trigger": "result=open;family=wafer;count(drop)=0;count(break)=0;context=non_tutorial",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.pin_plain",
+   "trigger": "result=open;family=pin_tumbler;tier>=3;count(false_set)=0;count(overset)=0",
+   "phase": "mvp",
+   "category": "craft",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.first_gate",
+   "trigger": "result=open;family=lever;count(gate_align)>=1",
+   "phase": "extended",
+   "category": "craft",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.detector_return",
+   "trigger": "result=open;family=lever_detector;count(detector_trip)>=1;count(detector.reset)>=1",
+   "phase": "extended",
+   "category": "craft",
+   "hidden": true,
+   "points": 40
+  },
+  {
+   "id": "achievement.ring_false",
+   "trigger": "result=open;family=ring_combo;count(false_set)>=1",
+   "phase": "extended",
+   "category": "craft",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.wooden_creak",
+   "trigger": "result=open;family=wooden_pin;count(wood.creak)>=1",
+   "phase": "extended",
+   "category": "craft",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.iron_no_drop",
+   "trigger": "result=open;family=warded;count(drop)=0",
+   "phase": "extended",
+   "category": "craft",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.lever_true",
+   "trigger": "result=open;family=lever;count(false_set)=0",
+   "phase": "extended",
+   "category": "craft",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.first_dark",
+   "trigger": "result=open;mode=dark",
+   "phase": "mvp",
+   "category": "mode",
+   "hidden": false,
+   "points": 10
+  },
+  {
+   "id": "achievement.dark_clean",
+   "trigger": "result=open;mode=dark;count(drop)=0;count(break)=0",
+   "phase": "mvp",
+   "category": "mode",
+   "hidden": true,
+   "points": 40
+  },
+  {
+   "id": "achievement.one_pick",
+   "trigger": "result=challenge_complete;challenge=one_pick;count(break)=0",
+   "phase": "mvp",
+   "category": "mode",
+   "hidden": false,
+   "points": 40
+  },
+  {
+   "id": "achievement.daily_lock",
+   "trigger": "result=challenge_complete;challenge=daily",
+   "phase": "mvp",
+   "category": "mode",
+   "hidden": false,
+   "points": 10
+  },
+  {
+   "id": "achievement.timed_care",
+   "trigger": "result=challenge_complete;challenge=timed;count(break)=0",
+   "phase": "mvp",
+   "category": "mode",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.bench_stop",
+   "trigger": "event=workshop_stop;mode=continuous;stop_index=1",
+   "phase": "mvp",
+   "category": "mode",
+   "hidden": false,
+   "points": 10
+  },
+  {
+   "id": "achievement.tool_care",
+   "trigger": "event=tool_repaired;first=true",
+   "phase": "mvp",
+   "category": "mode",
+   "hidden": false,
+   "points": 10
+  },
+  {
+   "id": "achievement.permission",
+   "trigger": "result=job_completed;verified=true;opened=true;first=true",
+   "phase": "phase1",
+   "category": "ethics",
+   "hidden": false,
+   "points": 10
+  },
+  {
+   "id": "achievement.witness",
+   "trigger": "result=job_completed;verified_by=witness;opened=true",
+   "phase": "phase1",
+   "category": "ethics",
+   "hidden": false,
+   "points": 25
+  },
+  {
+   "id": "achievement.first_no",
+   "trigger": "result=job_refused;reason=unverified_access",
+   "phase": "phase1",
+   "category": "ethics",
+   "hidden": false,
+   "points": 10
+  },
+  {
+   "id": "achievement.ex_partner",
+   "trigger": "result=job_refused;job=job.refuse_ex_partner",
+   "phase": "phase1",
+   "category": "ethics",
+   "hidden": true,
+   "points": 25
+  },
+  {
+   "id": "achievement.bribe",
+   "trigger": "result=job_refused;job=job.refuse_rush_bribe",
+   "phase": "phase1",
+   "category": "ethics",
+   "hidden": true,
+   "points": 40
+  },
+  {
+   "id": "achievement.aunt_alive",
+   "trigger": "result=job_refused;job=job.refuse_aunt_alive",
+   "phase": "phase1",
+   "category": "ethics",
+   "hidden": true,
+   "points": 40
+  },
+  {
+   "id": "achievement.wrong_floor",
+   "trigger": "result=job_resolved;job=job.wrong_floor;opened=false",
+   "phase": "phase1",
+   "category": "ethics",
+   "hidden": true,
+   "points": 25
+  },
+  {
+   "id": "achievement.heirs",
+   "trigger": "result=job_completed;job=job.uncle_safe_heirs;all_heirs_verified=true",
+   "phase": "phase1",
+   "category": "ethics",
+   "hidden": true,
+   "points": 25
+  },
+  {
+   "id": "achievement.partial_refusal",
+   "trigger": "result=job_completed;job=job.krakow_antiquarian;partial_refusal=true",
+   "phase": "phase1",
+   "category": "ethics",
+   "hidden": true,
+   "points": 25
+  },
+  {
+   "id": "achievement.museum_papers",
+   "trigger": "result=job_completed;job=job.museum_time_lock;verified_by=institution",
+   "phase": "phase1",
+   "category": "story",
+   "hidden": true,
+   "points": 25
+  },
+  {
+   "id": "achievement.kazimierz",
+   "trigger": "result=job_completed;job=job.krakow_tenement_gate;verified=true",
+   "phase": "phase1",
+   "category": "story",
+   "hidden": true,
+   "points": 40
+  },
+  {
+   "id": "achievement.capsule",
+   "trigger": "result=job_completed;job=job.time_capsule;verified_by=school",
+   "phase": "phase1",
+   "category": "story",
+   "hidden": true,
+   "points": 40
+  }
+ ]
+}

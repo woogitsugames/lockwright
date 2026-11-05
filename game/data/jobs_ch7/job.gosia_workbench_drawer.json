@@ -1,0 +1,26 @@
+{
+  "id": "job.gosia_workbench_drawer",
+  "chapter": 7,
+  "district": "Port",
+  "family": "lever",
+  "tier": 3,
+  "verification": "Faktura zakupu stołu (2), zdjęcie odbioru (1), obecność mebla w pracowni Gosi (1). Własność ruchomości potwierdzona.",
+  "reward_coins": 145,
+  "tone": "rzeczowy, z humorem",
+  "i18n": {
+    "title": "job.gosia_workbench_drawer.title",
+    "client": "job.gosia_workbench_drawer.client",
+    "situation": "job.gosia_workbench_drawer.situation"
+  },
+  "lines": [
+    "gosia",
+    "locksmith",
+    "gosia",
+    "locksmith"
+  ],
+  "cards": [
+    "receipt",
+    "photo"
+  ],
+  "threshold": 2
+}

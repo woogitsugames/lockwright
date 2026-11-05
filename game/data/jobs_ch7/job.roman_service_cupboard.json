@@ -1,0 +1,26 @@
+{
+  "id": "job.roman_service_cupboard",
+  "chapter": 7,
+  "district": "Osiedle Słoneczne",
+  "family": "wafer",
+  "tier": 2,
+  "verification": "Pan Roman jest zarządcą (3), a protokół wspólnoty potwierdza zgodę (2). Lokal wspólny; uprawnienie sprawdzone.",
+  "reward_coins": 105,
+  "tone": "rzeczowy, z suchym humorem",
+  "i18n": {
+    "title": "job.roman_service_cupboard.title",
+    "client": "job.roman_service_cupboard.client",
+    "situation": "job.roman_service_cupboard.situation"
+  },
+  "lines": [
+    "roman",
+    "locksmith",
+    "roman",
+    "locksmith"
+  ],
+  "cards": [
+    "manager",
+    "institution"
+  ],
+  "threshold": 2
+}

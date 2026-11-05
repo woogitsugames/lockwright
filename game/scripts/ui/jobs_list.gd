@@ -5,6 +5,7 @@ extends Control
 @onready var back_button: Button = $BackButton
 
 const JOBS_DIR := "res://data/jobs"
+const JOBS_CH7_DIR := "res://data/jobs_ch7"  # task 11: chapter 7, only behind "po premierze"
 
 
 func _ready() -> void:
@@ -20,6 +21,11 @@ func _ready() -> void:
 		if path.ends_with(".json"):
 			jobs.append(JSON.parse_string(FileAccess.get_file_as_string(JOBS_DIR + "/" + path)))
 	jobs.sort_custom(func(a, b): return str(int(a.get("chapter", 9))) + a.get("id", "") < str(int(b.get("chapter", 9))) + b.get("id", ""))
+	var post_release := Save.get_value("post_release", false)  # task 11: chapter 7 behind "po premierze"
+	if post_release:
+		for path in DirAccess.get_files_at(JOBS_CH7_DIR):
+			if path.ends_with(".json"):
+				jobs.append(JSON.parse_string(FileAccess.get_file_as_string(JOBS_CH7_DIR + "/" + path)))
 	for job in jobs:
 		if not JobRun.is_playable(job):
 			continue  # N-05: hide jobs whose family is not implemented in lockcore
