@@ -535,15 +535,18 @@ Weryfikacja „naprawione” z 8853863:
 - **N-06, N-08, N-11:** zmiany są, bez uwag.
 - **N-09 → nie działa w praktyce:** tryb samouczka w `JobRun` jest poprawny, ale samouczek trafia teraz na ekran planu B, który nigdy nie woła `JobRun.complete()` (N-13). `tutorial_done` dalej nigdy nie jest ustawiane; bot przeszedł etap 1 cztery razy.
 
-**N-13 · High (regresja z a9892ea) · Ekran planu B nie kończy zlecenia** · `game/scripts/lock/job_run.gd:34-39` + `game/scripts/photoreal/lock_photoreal.gd:116-118`
+**N-13 · High (regresja z a9892ea) · Ekran planu B nie kończy zlecenia**
+→ naprawione w 828e019 (Events._on_lock_opened dopełnia zlecenie/samouczek dla scen planu B; wrapper lock_job.tscn) · `game/scripts/lock/job_run.gd:34-39` + `game/scripts/photoreal/lock_photoreal.gd:116-118`
 - `lock_scene_path()` kieruje pin_tumbler (samouczek i 3 zlecenia: newlyweds_4am, student_dorm, wrong_floor) do `lock_photoreal.tscn`. Ta scena po otwarciu tylko odświeża widok (`if session.finished(): view.present(...) return`) — brak `JobRun.complete()`, brak przejścia do `job_payment`. Jedyne wyjście: pauza → „Wyjdź” do menu, bez nagrody i postępu. Bot: 10 soft-locków.
 - **Poprawka (sesja B, bez ruszania kodu sesji A):** podłączyć się do `Events.lock_opened` (scena go emituje) w autoloadzie/`JobRun`: `complete()` + zmiana sceny na `job_payment` (zlecenie) albo następny etap samouczka. Ewentualnie uzgodnić z sesją A sygnał „wyjście z zamka”.
 
-**N-14 · High · Ekran planu B ignoruje zlecenie (rodzina/seed/tier)** · `lock_photoreal.gd:20-22, 55-58`
+**N-14 · High · Ekran planu B ignoruje zlecenie (rodzina/seed/tier)**
+→ naprawione w 828e019 (game/scenes/lock_job.tscn — cienki wrapper po stronie B podaje family/seed/tier z JobRun) · `lock_photoreal.gd:20-22, 55-58`
 - Scena bierze `family/seed/tier` z `@export` (pin_tumbler, 42, **4**) albo z argumentów `--lw-*`, a nie z `JobRun`. Każde zlecenie pin_tumbler i samouczek grają ten sam zamek tier 4 (seed 42) — samouczek nie jest tier 1, a powtórki/weryfikator nie odpowiadają zleceniu.
 - **Poprawka:** przy `JobRun.current_job` niepustym użyć `JobRun.family_for/seed_for/tier_for` (jak `lock_scene.gd:29-32`); wymaga zgody sesji A albo cienkiego wrappera sceny po stronie B.
 
-**N-15 · Medium · Odmowa: wielokrotne punkty reputacji** · `game/scripts/ui/job_verify.gd:49-57`
+**N-15 · Medium · Odmowa: wielokrotne punkty reputacji**
+→ naprawione w 828e019 (przyciski blokowane od razu, jobs_refused zapisywane raz, zlecenie znika z listy) · `game/scripts/ui/job_verify.gd:49-57`
 - Po „Odmów” scena czeka 1,2 s, a przycisk zostaje aktywny: każde kolejne dotknięcie dodaje +5 reputacji (bot przy jednym wejściu nacisnął 20× → +100). Do tego odmowa nie jest zapisywana, więc `refuse_*` zostają na liście i można je odmawiać w nieskończoność.
 - **Poprawka:** `refuse_button.disabled = true` (i `accept_button`) od razu po naciśnięciu; zapisać `jobs_refused` i nagradzać tylko pierwszą odmowę (JOBS.md §5); na liście oznaczyć zlecenie jako zamknięte.
 
@@ -557,13 +560,15 @@ Zakres: commity sesji B od 09:10 (66a8196 „Task 17: perf GUT test”, ed5dfda 
 - **N-17 · High · `SafeArea.apply` wypycha menu poza ekran** — szczegóły i poprawka: `A11Y-AUDIT.md` A-10.
 - **N-18 · Medium · Skalowanie tekstu bez efektu** — `A11Y-AUDIT.md` A-11. Do tego „ogranicz ruch” nie jest nigdzie czytane (A-07).
 - **N-19 · Medium · `game-screens.yml` odwołuje się do nieistniejącej sceny** `res://tests/screens.tscn` (run #2 failure). Zrzuty do sklepu i audytu robię na razie własnym narzędziem (`store/screenshots/capture_game.sh`, `qa/bot/a11y_shots.gd`).
-- **N-20 · Low · Test e2e kariery w GUT (07c1621) przechodzi, a gra nie** — `test_e2e_career.gd` rozwiązuje zamki samą sesją lockcore (bez scen) i zapisuje `Save.set_value("jobs_completed/<id>", true)` (l. 39), czyli **inny klucz** niż gra (`JobRun.complete()` trzyma tablicę `jobs_completed`). Test nie łapie więc ani N-13 (scena planu B nie woła `complete()`), ani rozjazdu kluczy. Automat `qa-career` gra przez sceny i to wykrywa; warto, żeby GUT przechodził choć jedno zlecenie przez `JobRun.start/complete` i `lock_scene_path()`.
+- **N-20 · Low · Test e2e kariery w GUT (07c1621) przechodzi, a gra nie**
+→ naprawione w 828e019 (test_e2e_career.gd idzie przez JobRun.start/complete i klucz jobs_completed jak gra) — `test_e2e_career.gd` rozwiązuje zamki samą sesją lockcore (bez scen) i zapisuje `Save.set_value("jobs_completed/<id>", true)` (l. 39), czyli **inny klucz** niż gra (`JobRun.complete()` trzyma tablicę `jobs_completed`). Test nie łapie więc ani N-13 (scena planu B nie woła `complete()`), ani rozjazdu kluczy. Automat `qa-career` gra przez sceny i to wykrywa; warto, żeby GUT przechodził choć jedno zlecenie przez `JobRun.start/complete` i `lock_scene_path()`.
 - N-13…N-16: bez zmian w kodzie.
 
 ## Runda 4 — 2026-11-05 10:20
 Zakres: 0ec9cae (sesja B: `tests/screens.{gd,tscn}`, argumenty gradlew), b45bdd4 (inna sesja: przywrócone zadania AAR w `game-android.yml`).
 - **N-19 → częściowo:** `res://tests/screens.tscn` już jest, ale `screens.gd` czyta argumenty w formie `--out=DIR` / `--size=WxH`, a `game-screens.yml` podaje `--out DIR --size 412x915` (spacja). Skrypt zignoruje oba, zapisze do `/tmp/shots` w domyślnym rozmiarze, a krok upload (`docs/handoff/screens/*.png`) nic nie znajdzie. **Poprawka:** jedna forma w obu miejscach (np. `--out=$GITHUB_WORKSPACE/docs/handoff/screens --size=412x915`). Przy okazji: lista ekranów ma `lock.tscn`, a gra używa dla pin_tumbler `photoreal/lock_photoreal.tscn` (do sklepu i audytu potrzebny ten drugi).
-- **N-21 · Medium (przewidywane) · Eksport APK: godot-cpp nie znajdzie NDK** · `game-android.yml:111-118`
+- **N-21 · Medium (przewidywane) · Eksport APK: godot-cpp nie znajdzie NDK**
+→ naprawione w 828e019 (NDK 28.1 + ANDROID_NDK_ROOT + ndk_version=28.1.13356709 w game-android.yml; run 42014538689 zielony) · `game-android.yml:111-118`
   - Job `export-debug-apk` instaluje SDK bez NDK (l. 81) i woła `scons platform=android` bez `ndk_version`. godot-cpp (master) domyślnie szuka NDK 28.1.13356709 → „Could not find NDK toolchain” (odtworzone lokalnie). Dziś job jest pomijany, bo wcześniej pada `plugin-aar`, więc błąd wyjdzie dopiero po naprawie AAR.
   - **Poprawka:** doinstalować `ndk;29.0.14206865` i dodać `ndk_version=29.0.14206865` do obu wywołań scons (działa lokalnie i w `spike-determinism-apk`).
 - `game-android` run 65 (0ec9cae): `plugin-aar` → „Build haptics AAR” failure; inna sesja opisała to w b45bdd4 — nie duplikuję.
@@ -577,7 +582,8 @@ Zakres: 0ec9cae (sesja B: `tests/screens.{gd,tscn}`, argumenty gradlew), b45bdd4
 
 Stan workflowów na `main` (ostatnie zakończone runy): **zielone** `lockcore` (#21), `spike-determinism` (#15), `spike-planb` (#13), `perf-budget` (#2); **czerwone** `game-tests` (#61), `game-android` (#65), `game-ios` (#78), `game-screens` (#4; #5 w toku), `qa-career` (#7, mój — rozdzielony niżej). W toku: `spike-determinism-apk` (#1).
 
-**N-22 · High · `game-tests` / `export-pack-test`: smoke z pck nie może się uruchomić** · `.github/workflows/game-tests.yml:104-110`, `game/export_presets.cfg` (preset.2)
+**N-22 · High · `game-tests` / `export-pack-test`: smoke z pck nie może się uruchomić**
+→ naprawione w 828e019 (preset.2 w repo: include addons/lockcore_gd/bin/*.so, bez tests/* w exclude; duplikat printf usunięty) · `.github/workflows/game-tests.yml:104-110`, `game/export_presets.cfg` (preset.2)
 - Log (run 42004110822, job `export-pack-test`):
   ```
   ERROR: Can't open dynamic library, file not found: 'addons/lockcore_gd/bin/liblockcore_gd.linux.template_debug.so'.
@@ -598,7 +604,8 @@ Stan workflowów na `main` (ostatnie zakończone runy): **zielone** `lockcore` (
   ```
   (alternatywa bez zmiany filtra w presecie wydaniowym: osobny preset „LinuxTest”).
 
-**N-23 · High · `game-android` / `plugin-aar`: Kotlin nie kompiluje się (API obwiedni Androida 16)** · `platform/android/lockwright-haptics/src/main/java/org/woogitsugames/lockwright/haptics/HapticsEngine.kt:155-163, 195`
+**N-23 · High · `game-android` / `plugin-aar`: Kotlin nie kompiluje się (API obwiedni Androida 16)**
+→ naprawione w 1deaa00/6e0c398-linia (BasicEnvelopeBuilder z addControlPoint(intensity, sharpness, durationMs); getDuration przez refleksję/stałą 60 ms; run 42014538689 zielony) · `platform/android/lockwright-haptics/src/main/java/org/woogitsugames/lockwright/haptics/HapticsEngine.kt:155-163, 195`
 - Log (run 42004110652, job `plugin-aar`):
   ```
   HapticsEngine.kt:157:51 Unresolved reference 'startEnvelopeBuilder'.
@@ -627,7 +634,8 @@ Stan workflowów na `main` (ostatnie zakończone runy): **zielone** `lockcore` (
   (oznaczyć funkcję/blok `@RequiresApi(36)`; `estimateDurationMs` z tabeli czasów w `haptics/out/index.json`, np. set 28 ms, false_set 60 ms, drop n×18 ms).
 - Po tej poprawce wyjdzie N-21 (NDK w `export-debug-apk`).
 
-**N-24 · High · `game-ios` / `ios-build`: `godot::memnew` nie kompiluje się** · `platform/ios/lockwright_haptics/Sources/register_types.cpp:16`
+**N-24 · High · `game-ios` / `ios-build`: `godot::memnew` nie kompiluje się**
+→ naprawione w 1deaa00 (memnew bez prefiksu godot:: — to makro; SConstruct buduje teraz dylib dla xcframework) · `platform/ios/lockwright_haptics/Sources/register_types.cpp:16`
 - Log (run 42002634121): `Sources/register_types.cpp:16:81: error: expected unqualified-id … note: expanded from macro 'memnew'` → `scons: *** [Sources/register_types.ios.template_release.arm64.o] Error 1`.
 - Przyczyna: `memnew` to makro (rozwija się do wyrażenia z `::godot::…`), więc prefiks `godot::memnew(…)` daje `godot::(…)`.
 - Poprawka:
@@ -637,7 +645,8 @@ Stan workflowów na `main` (ostatnie zakończone runy): **zielone** `lockcore` (
   ```
   Przy okazji (ostrzeżenia, nie błąd): deployment target iOS 12 przy API Core Haptics z iOS 13 — ustawić `ios_min_version=13.0` w SConstruct/`scons`, żeby nie zasłaniać prawdziwych ostrzeżeń.
 
-**N-19 (aktualizacja) · `game-screens`:** run #4 — `ERROR: Cannot open file 'res://tests/screens.tscn'` (plik dodany dopiero w 0ec9cae). Run #5 w toku; zostaje niezgodność formatu argumentów (`--out=` w `screens.gd` vs `--out DIR` w workflowie), opis w rundzie 4. Poprawka:
+**N-19 (aktualizacja) · `game-screens`:**
+→ naprawione w 828e019 (workflow podaje --out= / --size= jak czyta screens.gd) run #4 — `ERROR: Cannot open file 'res://tests/screens.tscn'` (plik dodany dopiero w 0ec9cae). Run #5 w toku; zostaje niezgodność formatu argumentów (`--out=` w `screens.gd` vs `--out DIR` w workflowie), opis w rundzie 4. Poprawka:
   ```diff
   -            res://tests/screens.tscn -- --out $GITHUB_WORKSPACE/docs/handoff/screens --size 412x915
   +            res://tests/screens.tscn -- --out=$GITHUB_WORKSPACE/docs/handoff/screens --size=412x915
@@ -661,12 +670,14 @@ Macierz `qa/run_matrix.sh` (5 przebiegów kariery na HEAD): solver / „średni�
 - **„W ciemności”:** wszystkie 22 pary zdarzenie/materiał, które padły w karierze, mają dźwięk (`Sfx._stream_for`) i wzorzec haptyki (`Haptics.pattern_for`) → zamki są przechodnie bez obrazu. Menu i dialogi **nie** są (brak czytnika ekranu, A-09) — tryb dotyczy tylko zamka, co trzeba jasno napisać w ustawieniach.
 - Profile nie wpływają na zamki pin_tumbler, bo scena planu B gra zawsze seed 42 / tier 4 (N-14).
 
-**N-25 · Medium · Ekonomia: gra nie wypłaca napiwków, `econ_sim.py` je liczy** · `game/scripts/lock/job_run.gd` (`complete()`), `tools/econ_sim.py:349`, `docs/JOBS.md:164`
+**N-25 · Medium · Ekonomia: gra nie wypłaca napiwków, `econ_sim.py` je liczy**
+→ naprawione w 828e019 (JobRun.complete: napiwek 25% za czyste otwarcie, wyświetlany na job_payment; econ_sim C: 0 zablokowanych) · `game/scripts/lock/job_run.gd` (`complete()`), `tools/econ_sim.py:349`, `docs/JOBS.md:164`
 - W grze wypłata = `reward_coins` co do monety (16/16 zleceń z zapłatą). `econ_sim` dolicza napiwek przy czystym otwarciu (`reward × tip / clean`: careful +25%, average +18%, clumsy +12%), a `docs/JOBS.md:164` obiecuje „napiwek 0–30% za otwarcie bez śladów”. Różnica −19…−20% na 12 zleceniach (> 10%). Bilans ECONOMY.md (suma 2340 + napiwki) jest więc za optymistyczny względem gry.
 - **Poprawka (jedna z dwóch):** (a) sesja B: napiwek w `JobRun.complete()` według JOBS.md (brak drop/break/overset → do 30%, licznik fabularny), wyświetlany na `job_payment` przez i18n; albo (b) sesja A: `econ_sim` bez napiwków, dopóki gra ich nie ma. Rekomenduję (a) — to obietnica z biblii treści i bodziec do czystej gry.
 - 4 zlecenia mają `reward_coins = 0` (charleroi_letters, pizzeria_pays_pizza, swiatniki_journeyman_padlock, time_capsule) — w danych i w `econ_sim` tak samo, zgodnie z fabułą (zapłata w naturze); bez uwag.
 
-**N-26 · Low · EN: karty dokumentów w weryfikacji mogą się nie mieścić** · `game/scripts/ui/job_verify.gd:_render_cards`
+**N-26 · Low · EN: karty dokumentów w weryfikacji mogą się nie mieścić**
+→ naprawione w 828e019 (SIZE_EXPAND_FILL + clip_text=false na kartach) · `game/scripts/ui/job_verify.gd:_render_cards`
 - `qa/bot/a11y_shots.gd --lang en`: „ID document” potrzebuje ok. 104 px tekstu, przycisk ma 112 px (z marginesami 16 px brakuje ok. 8 px), „Witness” 63 > 55. Do potwierdzenia po naprawie A-10 (dziś safe-area rozpycha szerokości). **Poprawka:** `size_flags_horizontal = EXPAND_FILL` i `clip_text = false` dla kart albo układ w kolumnie.
 
 ## Runda licencje — 2026-11-05 10:39 (zadanie 8, `store/legal/DEPENDENCIES.md`)
@@ -684,7 +695,8 @@ Macierz `qa/run_matrix.sh` (5 przebiegów kariery na HEAD): solver / „średni�
   for name in lic: t += "\n--- %s ---\n%s\n" % [name, lic[name]]
   t += FileAccess.get_file_as_string("res://THIRD-PARTY-NOTICES.txt")  # godot-cpp MIT, Oboe Apache-2.0, AndroidX, OFL fonts
   ```
-**N-28 · Medium · godot-cpp z gałęzi `master` bez przypięcia** · `game-tests.yml`, `game-android.yml:113`, `game-ios.yml`
+**N-28 · Medium · godot-cpp z gałęzi `master` bez przypięcia**
+→ naprawione w 828e019 (game-*.yml pobierają godot-cpp z pinezowego commita e103d348) · `game-tests.yml`, `game-android.yml:113`, `game-ios.yml`
 - Każdy build bierze aktualny `master` → nieodtwarzalne binaria i niespodzianki (np. N-21: nowy domyślny NDK). Moje workflowy przypiąłem do `e103d348c4b2` (na nim działa Linux x86_64 + Android arm64 z NDK 29).
 - **Poprawka:**
   ```diff

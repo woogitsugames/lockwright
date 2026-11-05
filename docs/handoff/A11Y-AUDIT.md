@@ -93,7 +93,8 @@ więc zrzuty są z własnego narzędzia. Ekran zamka planu B: zrzuty z `store/sc
 | A-08 pusta karta weryfikacji | naprawione (karty dokumentów, 232e52e) | zrzut `job_verify` z wybranym zleceniem — ale poza ekranem (A-10) |
 | A-09 opisy dla czytników | bez zmian | — |
 
-**A-10 · High · `SafeArea.apply` wypycha całe menu poza ekran** · `game/scripts/ui/safe_area.gd:5-12`
+**A-10 · High · `SafeArea.apply` wypycha całe menu poza ekran**
+→ naprawione w 828e019 (safe-area w pikselach ekranu konwertowane na jednostki płótna przez rozmiar okna; offsety jako marginesy) · `game/scripts/ui/safe_area.gd:5-12`
 - `DisplayServer.get_display_safe_area()` zwraca prostokąt w **pikselach ekranu**, a offsety kontrolki są w jednostkach
   płótna (412×915 przy `stretch=canvas_items`). Do tego `offset_right/offset_bottom` przy `PRESET_FULL_RECT` liczy się od
   prawej/dolnej krawędzi (wartość ujemna = margines), a kod wpisuje wartości dodatnie (`vp.x - (vp.x - safe.x - safe.w)` =
@@ -106,7 +107,8 @@ więc zrzuty są z własnego narzędzia. Ekran zamka planu B: zrzuty z `store/sc
   `offset_right = -(screen.x - safe.end.x) * k.x`, `offset_bottom = -(screen.y - safe.end.y) * k.y`;
   na desktopie (okno ≠ ekran) pominąć. Test: GUT, który dla safe-area = cały ekran oczekuje offsetów (0,0,0,0).
 
-**A-11 · Medium · Suwak „Rozmiar tekstu” nic nie zmienia** · `ui_a11y.gd:9-13`, `theme/main.tres`
+**A-11 · Medium · Suwak „Rozmiar tekstu” nic nie zmienia**
+→ naprawione w 828e019 (ui_a11y.gd skaluje też nadpisania Label/Button/Title, nie tylko default_font_size) · `ui_a11y.gd:9-13`, `theme/main.tres`
 - Kod zmienia `theme.default_font_size`, ale motyw ma nadpisania `Label/font_sizes/font_size = 16` i
   `Button/font_sizes/font_size = 18`, które mają pierwszeństwo. Przy 150% najmniejszy font to nadal 16 px.
 - **Poprawka:** skalować też typowe rozmiary (`theme.set_font_size("font_size", "Label", 16 * s)` itd. dla Label, Button,

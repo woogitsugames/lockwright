@@ -184,3 +184,64 @@ Sesja A zbudowała fotorealistyczny ekran zamka na planie B (D-31, zaakceptowany
 - **G08** `contrib/gpt/G08/images/`: tło warsztatu (menu): 01 rano, 06 popołudnie, 08 wieczór — wg godziny gry.
 - Kopiuj do `game/assets/ui/gpt/` (JPG/WebP ≤ 1 MB po kompresji), bez zmiany treści.
 - **G11** `contrib/gpt/G11/png/g11-NN-<pl|en|clean>.png` (+ `cards.json`, `stamps/`): kartki mistrza w zwijce dla samouczka S1–S3 (D-40) — wersja wg języka gry, `clean` gdy włączone „bez tekstu”. Pieczątka „to gra, nie kurs” ze `stamps/`.
+
+## 2026-11-05 — Etap 4 (SESSION-B-PROMPT-4): 14 zadań
+
+### Zadanie 1 — Zielone CI ✅ (w trakcie potwierdzania na najnowszym main)
+- `plugin-aar`: `HapticsEngine.kt` używało nieistniejącego `VibrationEffect.startEnvelopeBuilder()` i `effect.duration` → `BasicEnvelopeBuilder().addControlPoint(intensity, sharpness, durationMs)` (API 36) + czas transientu przez refleksję/stałą (1deaa00, wcześniej ta sama linia w 6e0c398). Run `game-android` **42014538689 zielony** (artefakt `lockwright-android-debug` APK).
+- `export-pack-test`: preset „Linux” w repo (preset.2) dostał `include_filter` z `addons/lockcore_gd/bin/*.so` i bez `tests/*` w exclude; z workflowa usunięty duplikujący `printf [preset.2]` (828e019).
+- `game-ios`: `godot::memnew` → `memnew` (to makro; 1deaa00), SConstruct buduje dylib pod xcframework.
+- `game-screens`: format argumentów `--out=` / `--size=` (N-19, 828e019).
+- `qa-career`: zielony od rundy 1 (ustalenie: błędy gry = ostrzeżenia w raporcie); przyczyny po stronie gry (N-13…) naprawione w zadaniu 3.
+- i18n w pck (R-28): `i18n.gd` przy braku surowego CSV ładuje skompilowane `*.translation` z pck (a7a0b13).
+
+### Zadanie 2 — Grywalny APK dla właściciela
+Ścieżka z APK (artefakt `lockwright-android-debug` z `game-android`): **co przetestować w 10 minut**
+1. start → notka „to gra, nie kurs” (3 s) → przy pierwszym uruchomieniu krótka kalibracja (dwa stuknięcia: Dwa/Jedno/Nic/Pomiń);
+2. samouczek S1–S3 na wkładce (otwórz zamek, dalej);
+3. menu → Warsztat (kup wytrych, zamknij);
+4. Zlecenia → pierwsze zlecenie z fotorealistycznym zamkiem (przeciągnij wytrych, naciśnij, puść);
+5. ekran zapłaty (monety + ewentualny napiwek) → wróć do listy;
+6. kolejne zlecenie. Przycisk „Wstecz”/gest systemowy wraca wszędzie; pauza w zamku (klapka góra-prawy róg).
+
+### Zadanie 3 — Uwagi z przeglądów ✅
+N-13, N-14, N-15, N-19, N-20, N-21, N-22, N-23, N-24, N-25, N-26, N-28 + A-10, A-11 — adnotacje `→ naprawione w 828e019 / 1deaa00` dopisane w `SESSION-C-REVIEW.md` i `A11Y-AUDIT.md`. N-16/A-03/A-09 zostają po stronie sesji A (`game/*/photoreal/`).
+
+### Zadanie 4 — Haptyka z haptics/ ✅
+`game/data/haptics/` = kopia `haptics/out` (AHAP + łańcuchy Androida + index.json z SHA-256); `haptics_patterns.json` dostał sekcję `detail`; `haptics.gd` ma `detail_index()`/`pattern_files_for()`/`prepare_native()`; presepty pakują `data/haptics/**`; CI: `haptics/validate.py` (budżet OK) + check hash-y (f045ec8, D-44).
+
+### Zadanie 5 — Dźwięk cz. 2 ✅
+`game/assets/audio/{ambience,ui,reward}` z `audio/v2/out` (d3a886b): tła per scena (klatka/warsztat/noc/deszcz, pętle −35 LUFS I na nowej szynie Ambience), dźwięki UI (kartki, szuflada, telefon…), nagrody door_open→thanks→coins na ekranie zapłaty; ducking tła −6 dB/50 ms na każde L2 i −12 dB/300 ms po `break` (FEEL §5.1). Wpis w ASSETS.md.
+
+### Zadanie 6 — Kalibracja + Wyczucie + język ✅
+Pierwsze uruchomienie: test „dwa stuknięcia” (haptyka+dźwięk, TECH §2.3) z odpowiedziami Dwa/Jedno/Nic/Pomiń → wynik w ustawieniach (b145de7). Ustawienia: sekcja „Wyczucie” (włącznik, intensywność, test, kalibracja, reset), przełącznik języka PL/EN (system/PL/EN). DE: **pominięte — nie ma `contrib/gpt/T03/`**.
+
+### Zadanie 7 — Jakość grafiki na tanie telefony ✅
+Autoload `Quality` (f25d5ac, D-45): profile high/medium/low (render_scale 1.0/0.75/0.5, MSAA 4x/2x/off, płyta planu B skalowana), „auto” mierzy średni czas klatki przez 10 s i wybiera; zmiana w Ustawieniach → Jakość grafiki. Nakładka FPS + ms tylko w debug build.
+
+### Zadanie 8 — Build wydaniowy Androida ✅
+Job `release-aab` w `game-android.yml` (c78e991, D-47): gradle release + AAB, `version/name` z tagu, `version/code` z liczby commitów od tagu, raport rozmiaru w step summary + artefakt. Podpis gdy sekrety są: `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_PASSWORD`; bez nich krok się pomija bez błędu. **Instrukcja dla właściciela:**
+```bash
+keytool -genkeypair -v -keystore release.keystore -alias lockwright -keyalg RSA -keysize 2048 -validity 10000
+base64 -w0 release.keystore   # -> sekret ANDROID_KEYSTORE_BASE64
+# Settings → Secrets → Actions: ANDROID_KEYSTORE_BASE64, ANDROID_KEYSTORE_PASSWORD,
+# ANDROID_KEY_ALIAS=lockwright, ANDROID_KEY_PASSWORD
+```
+
+### Zadanie 9 — iOS ✅
+`game-ios.yml` buduje niepodpisany IPA (artefakt `lockwright-ios-debug`). Do TestFlight brakuje: konto Apple Developer ($99/rok), certyfikat „Apple Distribution”, profil prowizjonowania App Store + team id. `game-ios-release.yml` (c78e991) tylko `workflow_dispatch` — po dodaniu sekretów `APPLE_CERTIFICATE_BASE64`, `APPLE_CERTIFICATE_PASSWORD`, `APPLE_PROVISIONING_PROFILE_BASE64`, `APPLE_TEAM_ID` sam podpisze i zbuduje release IPA.
+
+### Zadanie 10 — Osiągnięcia i wskazówki ✅
+`contrib/gpt/T10` wczytane lokalnie (233e903, D-46): `game/data/achievements.json` + autoload `Achievements` (40 osiągnięć, postęp w Save, seam `report_to_platform()` pod Game Center/Play Games później); 60 wskazówek mistrza losowo w menu; 30 wpisów zeszytu w gablocie. Wszystko przez i18n PL/EN (klucze `ach.*`, `tip.*`, `notebook.extra.*`).
+
+### Zadanie 11 — Rozdział 7 ✅
+12 zleceń T09 w `game/data/jobs_ch7/` (walidacja: wszystkie OK, chapter=7), ładowane tylko gdy flaga „po premierze” (5-tap w „O grze”; `Save.post_release`). `python3 tools/econ_sim.py`: scenariusz C **0 zablokowanych zleceń** (careful/average/clumsy 0/0/0), wynik w `docs/ECONOMY.md`.
+
+### Zadanie 12 — Lokalny dziennik błędów ✅
+Autoload `ErrorLog` (59a56e2): log do `user://logs/` z rotacją (5 plików × 512 KB), bez telemetrii. Ustawienia → „Zgłoś problem”: kopiuje ostatni log do schowka (do wklejenia w wiadomość); nic nie wychodzi z urządzenia.
+
+### Zadanie 13 — Napisy końcowe i licencje ✅
+`data/tools/gen_notices.py` generuje `game/THIRD-PARTY-NOTICES.txt` (Godot MIT, godot-cpp MIT, GUT MIT, Oboe Apache-2.0, fonty OFL) — plik pakowany do eksportu; ekran „O grze” linkuje pełną listę (klucz `about.licenses`), autorzy i zasoby w `docs/ASSETS.md`.
+
+### Zadanie 14 — Test regresji wyglądu ✅
+`game-screens.yml` (8e6fe3e): po renderze pobiera artefakt `game-screens` z ostatniego zielonego runu na main i `data/tools/compare_screens.py` liczy frakcję zmienionych pikseli per ekran (próg 2%); raport `DIFF-REPORT.md` + miniatury różnic w artefakcie `game-screens-diff`.

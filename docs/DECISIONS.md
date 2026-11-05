@@ -135,3 +135,15 @@ Pod lockwright.app od X 2026 działa darmowa przeglądarkowa gra „Lockwright �
 
 ## D-43 — Grafiki ChatGPT G01, G07, G08 w grze
 2026-11-05 · sesja A (na podstawie przeglądu dostaw) · Przyjmujemy do gry: **G01** (36 emaliowanych tabliczek z alfą, 1024²) jako tabliczki mieszkań i pomieszczeń w ekranie przyjazdu, zleceniach i warsztacie; **G07** (10 kadrów 1080×2340) jako tła ekranu przyjazdu dla typów miejsc (mieszkanie dzień/wieczór/noc/deszcz, strych, piwnica, kiosk, szatnia, brama, warsztat) — tekst i tabliczki nakładane przez grę, bo numery na obrazach są przypadkowe; **G08** (11 kadrów) jako tła i wzorzec wyglądu warsztatu (menu). Ekran zamka zostaje na renderach z Blendera (plan B, D-31/D-37), a sceny Blendera klatki i warsztatu traktujemy jako źródło spójnych zbliżeń i animacji. Zasoby trafiają do `docs/ASSETS.md` z promptami z `contrib/gpt/<ID>/ASSETS.md` (D-42).
+
+## D-44 — Wzorce haptyczne z haptics/out w grze; walidator budżetu w CI
+2026-11-05 · sesja B (etap 4, zadanie 4) · `game/data/haptics_patterns.json` zostaje indeksem runtime; pliki per zdarzenie (AHAP iOS, łańcuchy Androida A4→A0) lądują w `game/data/haptics/` (kopia `haptics/out`, hasze spinane z `index.json`), presepty eksportu pakują `data/haptics/**`. `game-tests` odpala `haptics/validate.py` (budżet) oraz check hash-y plików przeciw `index.json`.
+
+## D-45 — Profile jakości: auto po 10 s, ręcznie w ustawieniach
+2026-11-05 · sesja B (etap 4, zadanie 7) · `Quality` autoload: high/medium/low = render_scale 1.0/0.75/0.5, MSAA 4x/2x/off, płyta planu B 824×1100 skalowana tym samym współczynnikiem. Profil „auto” mierzy średni czas klatki przez pierwsze 10 s i wybiera; nadpisanie w Ustawieniach. Nakładka FPS/ms tylko w buildach debug (`OS.is_debug_build()`).
+
+## D-46 — T10 lokalnie, rozdział 7 za flagą „po premierze”
+2026-11-05 · sesja B (etap 4, zadania 10/11) · Osiągnięcia z `contrib/gpt/T10` jako `game/data/achievements.json` + autoload `Achievements` (seam `report_to_platform()` pod Game Center/Play Games na później); wskazówki mistrza losowo w menu, wpisy zeszytu w gablocie — wszystko przez i18n. Rozdział 7 (T09) w `game/data/jobs_ch7/`, ładowany tylko gdy `Save.post_release` (5-tap w „O grze”); trzymany poza `data/jobs`, żeby `tools/econ_sim.py` dalej przechodził na bazowych 29 zleceniach (wynik C: 0 zablokowanych).
+
+## D-47 — Release: AAB z sekretem, iOS release tylko ręcznie
+2026-11-05 · sesja B (etap 4, zadania 8/9) · `game-android.yml` dostało job `release-aab` (gradle release, AAB, wersja z tagu, raport rozmiaru; podpis z `ANDROID_KEYSTORE_*` gdy sekrety są, inaczej krok się pomija). `game-ios-release.yml` tylko `workflow_dispatch` — czeka na sekrety Apple (certyfikat, profil, team id).
