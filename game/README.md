@@ -68,3 +68,5 @@ cd game && mkdir -p android/build && unzip -oq ~/.local/share/godot/export_templ
 keytool -genkeypair -keystore /tmp/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
 godot --headless --path . --export-debug "Android" build/lockwright-debug.apk --keystore /tmp/debug.keystore --keystore-user androiddebugkey --keystore-pass android
 ```
+
+CI `game-screens` renderuje zrzuty ekranów z `res://tests/screens.tscn` (412x915 i 915x412) i porównuje je z ostatnim zielonym runem (`data/tools/compare_screens.py`, raport w artefakcie `game-screens-diff`).
