@@ -215,7 +215,7 @@ godot::Dictionary LockwrightHaptics::capabilities() const {
 	NSDictionary *d = [(__bridge LockwrightHapticsImpl *)engine_impl capabilities];
 	godot::Dictionary out;
 	for (NSString *key in d) {
-		out[godot::String(key)] = godot::String([d[key] description]);
+		out[godot::String([key UTF8String])] = godot::String([[d[key] description] UTF8String]);
 	}
 	return out;
 }
