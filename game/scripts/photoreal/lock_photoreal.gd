@@ -13,6 +13,11 @@ extends Node
 ##   --lw-dark 1         "in the dark"
 ##   --lw-touch 1        draw two example thumb dents (screenshots)
 ##   --lw-bench S        print LW_PERF frame statistics after S seconds and quit
+##   --lw-stage S        rest | tension | lift | set: drive the session with a scripted two-thumb
+##                       input to that moment, then freeze (N-62 screenshots)
+##   --lw-tutorial N     run as tutorial stage N (0 = S1 with guided chalk steps)
+##   --lw-chalk L        off | reduced | full
+##   --lw-auto 1         D-52 auto tension
 ##   --lw-pose blender   show the five stack states of art/renders/section.png (set, false set,
 ##                       binding, overset, free) for a side-by-side check against Cycles;
 ##                       with --lw-tension T --lw-core R --lw-stress S to check the diegetic HUD
@@ -34,6 +39,14 @@ var _shot_frames := -1
 var _bench_left := -1.0
 var _frame_ms: PackedFloat32Array = []
 var _pose_vm := {}  # fixed ViewModel for --lw-pose
+var coach: TutorialCoach
+var fb_gain := 1.0  # ONBOARDING §4: S1 ×1.5, S2 ×1.3, S3 ×1.15
+var _open_pending := -1.0
+# N-58: quiet contact / spring cues while lifting with no tension
+var _cue_lift := 0.0
+var _cue_peak := 0.0
+const NO_TENSION := 0.1
+const AUTO_SPOOL_LEVEL := 0.17  # D-52: counter-rotation band (cr 0.12–0.21) while a spool is caught
 
 
 ## The states of the Cycles reference (art/blender/cutaway.py, stacks a..e).
@@ -77,6 +90,10 @@ func _ready() -> void:
 		_pose_vm["stress"] = float(args.get("lw-stress", "0.0"))
 		_last_input = {"tension": _pose_vm["tension"], "pick_depth": 0.5, "pick_lift": 0.3}
 		_frozen = true
+	_setup_guidance()
+	if args.has("lw-stage"):
+		_simulate_stage(String(args["lw-stage"]))
+		_frozen = true
 	view.present(_vm(), _last_input, 1.0)
 	if args.has("lw-shot"):
 		_shot_frames = int(args.get("lw-frames", "20"))
@@ -95,6 +112,34 @@ static func make_session(fam: StringName, sd: int, tr: int) -> RefCounted:
 		if s.create(fam, sd, tr):
 			return s
 	return FakeLockSession.create(fam, sd, tr)
+
+
+## Tutorial chalk + guided steps (N-61), first-jobs chalk and the no-tension hint (N-58, D-53).
+func _setup_guidance() -> void:
+	if args.has("lw-auto"):
+		sampler.auto_tension = args["lw-auto"] == "1"
+	var auto := sampler.auto_tension
+	var tutorial := JobRun.mode == &"tutorial" and not JobRun.current_job.is_empty()
+	var stage := JobRun.tutorial_stage
+	if args.has("lw-tutorial"):
+		tutorial = true
+		stage = int(args["lw-tutorial"])
+	var jobs_done: int = (Save.get_value("jobs_completed", []) as Array).size()
+	var level := ChalkLayer.Level.OFF
+	if tutorial:
+		level = ChalkLayer.Level.FULL if stage == 0 else ChalkLayer.Level.REDUCED
+		fb_gain = [1.5, 1.3, 1.15][clampi(stage, 0, 2)]
+		coach = TutorialCoach.new(stage, stage == 0, auto)
+	else:
+		if jobs_done < 3 or bool(Settings.get_value(&"chalk_layer", false)):
+			level = ChalkLayer.Level.REDUCED
+		coach = TutorialCoach.new(0, false, auto) if jobs_done < 3 else null
+	if args.has("lw-chalk"):
+		level = {"off": ChalkLayer.Level.OFF, "reduced": ChalkLayer.Level.REDUCED, "full": ChalkLayer.Level.FULL}.get(args["lw-chalk"], level)
+	view.chalk_level = level
+	view.chalk_gauge = auto or (tutorial and stage == 0)
+	view.coach = coach
+	view.loupe_toggled.connect(func(on: bool) -> void: sampler.frozen = on)
 
 
 func _vm() -> Dictionary:
@@ -118,20 +163,31 @@ func _physics_process(delta: float) -> void:
 		return
 	if session.finished():
 		view.present(session.describe(), _last_input, delta)
+		if coach != null:
+			coach.update(session.describe(), _last_input, [], false, false, delta)
+		if _open_pending > 0.0:
+			_open_pending -= delta
+			if _open_pending <= 0.0:
+				Events.lock_opened.emit()
 		return
 	var input := sampler.sample()
 	_last_input = input
 	var events: Array = session.step(input["tension"], input["pick_depth"], input["pick_lift"])
 	for e in events:
-		Haptics.play(e["kind"], e["intensity"], e["material"])
-		Sfx.play(e["kind"], e["material"], 0.0, 1.0)
+		Haptics.play(e["kind"], minf(e["intensity"] * fb_gain, 1.0), e["material"])
+		Sfx.play(e["kind"], e["material"], 0.0 if fb_gain <= 1.0 else 2.0, 1.0)
 		view.on_event(e)
 		Events.lock_event.emit(e)
 		if e["kind"] == &"open":
-			Events.lock_opened.emit()
+			_on_open()
 		if e["kind"] == &"break":
 			Events.lock_failed.emit(&"break")
 	var vm: Dictionary = session.describe()
+	_no_tension_cues(vm, input)
+	if sampler.auto_tension:
+		sampler.auto_level = AUTO_SPOOL_LEVEL if _has_state(vm, "false_set") else InputSampler.AUTO_LEVEL
+	if coach != null:
+		coach.update(vm, input, events, sampler.left_down(), sampler.right_down(), delta)
 	var resistance: float = vm.get("tension_resistance", vm.get("resistance", 0.0))
 	Haptics.update_continuous(&"tension_resistance", resistance, 0.3)
 	Sfx.update_loop(&"tension_resistance", resistance)
@@ -146,10 +202,94 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventScreenDrag:
 		view.touch(event.index, event.position, true)
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
-		if _paused:
+		if view.zoomed:
+			view.toggle_loupe()
+		elif _paused:
 			_on_resume()
 		else:
 			_on_pause()
+
+
+func _on_open() -> void:
+	# tutorial: let the plug turn and the praise show before the stage screen (N-61 step 6)
+	if coach != null and coach.guided:
+		_open_pending = 1.8
+	else:
+		Events.lock_opened.emit()
+
+
+static func _has_state(vm: Dictionary, st: String) -> bool:
+	for e in vm.get("elements", []):
+		if String(e.get("state", "")) == st:
+			return true
+	return false
+
+
+## N-58: with no tension the lock itself is silent while a free pin follows the pick. Give each
+## lift a quiet contact tick (every 0.08 of lift) and the drop back a spring sound + light haptic.
+func _no_tension_cues(vm: Dictionary, input: Dictionary) -> void:
+	var t := float(input.get("tension", 0.0))
+	var lift := maxf(float(input.get("pick_lift", 0.0)), 0.0)
+	var idx := int(vm.get("pick_element", -1))
+	var els: Array = vm.get("elements", [])
+	var free := idx >= 0 and idx < els.size() and String(els[idx].get("state", "")) == "free"
+	if t >= NO_TENSION or not free:
+		_cue_lift = lift
+		_cue_peak = 0.0
+		return
+	if lift > _cue_lift + 0.08:
+		_cue_lift = lift
+		_cue_peak = maxf(_cue_peak, lift)
+		Sfx.play(&"contact", &"brass", -12.0, 1.15)
+		Haptics.play(&"contact", 0.15, &"brass")
+	elif lift < _cue_lift - 0.04:
+		_cue_lift = lift
+	if _cue_peak >= 0.2 and lift < 0.04:
+		# the pin falls back on its spring: audible and visible (it follows the pick down)
+		Sfx.play(&"contact", &"steel", -9.0, 0.7)
+		Haptics.play(&"contact", 0.25, &"steel")
+		_cue_peak = 0.0
+
+
+## N-62 screenshots: drive a scripted two-thumb input to a moment of the opening, then freeze.
+##   rest: nothing; tension: T 0.35 held, a stack binds; lift: the binding stack lifted to just
+##   under its window; set: lifted until it sets, then the pick lowered (the set stays).
+func _simulate_stage(stage: String) -> void:
+	var t := 0.35
+	var feed := func(tt: float, depth: float, lift: float) -> Array:
+		_last_input = {"tension": tt, "pick_depth": depth, "pick_lift": lift}
+		var ev: Array = session.step(tt, depth, lift)
+		for e in ev:
+			view.on_event(e)
+		view.present(session.describe(), _last_input, 1.0 / 120.0)
+		if coach != null:
+			coach.update(session.describe(), _last_input, ev, true, lift > 0.0, 1.0 / 120.0)
+		return ev
+	if stage == "rest":
+		return
+	for i in 90:
+		feed.call(t, 0.5, 0.0)
+	if stage == "tension":
+		return
+	var els: Array = session.describe()["elements"]
+	var b := 0
+	for j in els.size():
+		if String(els[j]["state"]) in ["bound", "near"]:
+			b = j
+	var depth := (float(b) + 0.5) / float(els.size())
+	var lo := float(els[b].get("window_lo", 0.5))
+	var lift := 0.0
+	while lift < (lo - 0.08 if stage == "lift" else 1.0):
+		lift += 0.004
+		var ev: Array = feed.call(t, depth, lift)
+		if ev.any(func(e: Dictionary) -> bool: return e["kind"] == &"set"):
+			break
+	if stage == "lift":
+		for i in 30:
+			feed.call(t, depth, lift)
+		return
+	for i in 40:
+		feed.call(t, depth, maxf(lift - i * 0.02, 0.0))
 
 
 ## Scripted picker for screenshots/tests: holds tension, lifts the binding stack until it sets.

@@ -13,6 +13,7 @@ extends Control
 ## on_event(event) for each lockcore event. It never talks to the session itself.
 
 signal pause_requested
+signal loupe_toggled(on: bool)
 
 const DIR := "res://assets/photoreal/"
 const SCENE_JSON := DIR + "scene.json"
@@ -40,7 +41,9 @@ const SMOOTH_S := 0.06         # critically damped follow, no overshoot (DESIGN.
 # Tray (art/blender/tray.py, 1080×960): pocket column boundaries as fractions of the image width.
 const TRAY_COLUMNS := [0.0, 0.233, 0.503, 0.76]
 const TRAY_POCKETS := 3
-const FLAP_DP := 48.0
+const FLAP_DP := 56.0          # N-56: leather tongue width (touch target ≥ 48 dp)
+const FACE_R_DP := 40.0        # N-62: plug face radius (HUD.md §3 "czoło rdzenia")
+const LOUPE_MIN_DP := 56.0     # N-57: loupe touch target (≥ 48 dp)
 
 @export var lives := 3: set = set_lives
 @export var dark := false: set = set_dark
@@ -89,6 +92,20 @@ var _stress := 0.0
 var _broken := false
 var _opened := false
 var _touches := {}                    # index -> {pos, start}
+var _face: PlugFace
+var _chalk: ChalkLayer
+var _eyepiece: Eyepiece
+var _loupe_btn: Control
+var _loupe_rect := Rect2()
+var _blanks: Array[MeshInstance3D] = []  # N-56: plugged chambers when the lock has fewer pins
+var _last_vm := {}
+var _last_input := {}
+var _set_flash := 0.0                 # short plug-face nudge on each set (fb, ≤ 250 ms)
+## Tutorial / first-jobs chalk (D-53): set by the lock scene.
+var chalk_level := ChalkLayer.Level.OFF
+var chalk_gauge := false              # chalk tension scale on the wrench (S1, D-52 auto)
+var coach: TutorialCoach
+var zoomed := false                   # N-57: eyepiece open
 
 
 func _ready() -> void:
@@ -134,6 +151,11 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	for m in _plate_mats:
 		m.set_shader_parameter("stacks", _occ)
 	_pose_pick(vm, input, elements, default_target, k)
+	_last_vm = vm
+	_last_input = input
+	_update_face(vm, tension, delta)
+	_update_chalk(elements, default_target, delta)
+	_update_eyepiece(delta)
 
 
 ## One lockcore event ({kind, element, intensity, material}). Only events that change the picture
@@ -146,6 +168,8 @@ func on_event(e: Dictionary) -> void:
 				set_lives(lives - 1)
 		&"open":
 			_opened = true
+		&"set":
+			_set_flash = 1.0
 
 
 func set_lives(n: int) -> void:
@@ -164,6 +188,14 @@ func set_dark(on: bool) -> void:
 	if _tray:
 		_tray.visible = not on
 		_tray.queue_redraw()
+	if _face:
+		_face.visible = not on
+	if _chalk:
+		_chalk.visible = not on
+	if _loupe_btn:
+		_loupe_btn.visible = not on
+	if on and zoomed:
+		toggle_loupe()
 
 
 ## Thumb dent under a live touch (HUD.md §5.2). The InputSampler owns the input; this only draws.
@@ -322,6 +354,12 @@ func _build_stacks() -> void:
 			var bb := spr.get_aabb()
 			lo = bb.position.y
 			hi = bb.end.y
+		# N-56: a chamber the lock does not use is plugged with a blank rod (not an empty hole)
+		var blank := _clone(e_drv, "%s_blank" % s)
+		var bs := (PinPose.CAP_UNDERSIDE - PinPose.SHEAR - PinPose.SET_GAP) / _drv_len
+		blank.transform = Transform3D(Basis.from_scale(Vector3(1, bs, 1)), Vector3(float(PINS_X[i]) - dbb.get_center().x, PinPose.SHEAR + PinPose.SET_GAP - dbb.position.y * bs, 0.0))
+		blank.visible = false
+		_blanks.append(blank)
 		_stacks.append({
 			"x": float(PINS_X[i]), "key": key, "drv": drv, "spool": spool, "spr": spr,
 			"spr_lo": lo, "spr_hi": hi,
@@ -352,6 +390,7 @@ func _set_active_stacks(n: int) -> void:
 			(_stacks[i]["spool"] as Node3D).visible = false
 		if _stacks[i]["spr"]:
 			(_stacks[i]["spr"] as Node3D).visible = on
+		_blanks[i].visible = not on
 
 
 func _build_overlay() -> void:
@@ -377,12 +416,27 @@ func _build_overlay() -> void:
 	_tray.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_tray.draw.connect(_draw_tray)
 	add_child(_tray)
-	_flap = Control.new()
-	_flap.name = "PauseFlap"
-	_flap.mouse_filter = Control.MOUSE_FILTER_STOP
-	_flap.custom_minimum_size = Vector2(FLAP_DP, FLAP_DP)
-	_flap.draw.connect(_draw_flap)
-	_flap.gui_input.connect(_on_flap_input)
+	_face = PlugFace.new()
+	_face.name = "PlugFace"
+	_face.radius = FACE_R_DP
+	add_child(_face)
+	_chalk = ChalkLayer.new()
+	_chalk.name = "Chalk"
+	_chalk.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(_chalk)
+	_eyepiece = Eyepiece.new()
+	_eyepiece.name = "Eyepiece"
+	add_child(_eyepiece)
+	_loupe_btn = Control.new()
+	_loupe_btn.name = "LoupeButton"
+	_loupe_btn.mouse_filter = Control.MOUSE_FILTER_STOP
+	_loupe_btn.gui_input.connect(_on_loupe_input)
+	add_child(_loupe_btn)
+	var flap := PauseFlap.new()
+	flap.name = "PauseFlap"
+	flap.setup(_leather, _snap)
+	flap.pressed.connect(func() -> void: pause_requested.emit())
+	_flap = flap
 	add_child(_flap)
 
 
@@ -418,11 +472,27 @@ func _layout() -> void:
 	viewport.size = Vector2i(maxi(vp_w, 16), maxi(vp_h, 16))
 	_tray.position = tray_rect.position
 	_tray.size = tray_rect.size
-	var corner := Vector2(safe.end.x - FLAP_DP - 8.0, safe.position.y + 8.0)
+	_loupe_rect = _compute_loupe_rect()
+	# N-56: the tongue hangs from the very top edge (behind the status bar) into the safe area
+	var flap_x := safe.end.x - FLAP_DP - 12.0
 	if safe.size.x > safe.size.y:
-		corner = Vector2(safe.position.x + 8.0, safe.position.y + 8.0)
-	_flap.position = corner
-	_flap.size = Vector2(FLAP_DP, FLAP_DP)
+		flap_x = safe.position.x + 12.0
+	_flap.position = Vector2(flap_x, r.position.y)
+	_flap.size = Vector2(FLAP_DP, safe.position.y - r.position.y + PauseFlap.TONGUE)
+	(_flap as PauseFlap).safe_top = safe.position.y - r.position.y
+	# N-62: plug face beside the left thumb: under the section in portrait, left of it in landscape
+	_face.size = PlugFace.size_for(FACE_R_DP)
+	if safe.size.y >= safe.size.x:
+		_face.position = Vector2(safe.position.x + 4.0, tray_rect.position.y + 6.0)
+	else:
+		_face.position = Vector2(section_rect.position.x - _face.size.x - 16.0, section_rect.position.y + section_rect.size.y * 0.45)
+	_chalk.position = Vector2.ZERO
+	_chalk.size = r.size
+	# N-57: loupe touch target over the loupe in the roll (last pocket column, lower part)
+	_loupe_btn.position = _loupe_rect.position
+	_loupe_btn.size = _loupe_rect.size
+	var ed := minf(r.size.x, r.size.y) * 0.6
+	_eyepiece.size = Vector2(ed, ed)
 	_tray.queue_redraw()
 	_flap.queue_redraw()
 	_bg.queue_redraw()
@@ -620,30 +690,175 @@ func _dent(c: Vector2, r: float, alpha: float) -> void:
 		_tray.draw_circle(c, r * f, Color(0, 0, 0, alpha / 8.0 * 1.6))
 
 
-func _draw_flap() -> void:
-	# Leather flap of the roll with a brass snap from the photo set: no "II" icon (HUD.md §6).
-	# Touch target is FLAP_DP (48 dp) inside the safe area.
-	var s := _flap.size
-	if _leather != null:
-		_flap.draw_texture_rect_region(_leather, Rect2(Vector2(2, 2), s - Vector2(4, 4)), Rect2(Vector2.ZERO, Vector2(_leather.get_size()) * 0.35))
-	else:
-		_flap.draw_rect(Rect2(Vector2(2, 2), s - Vector2(4, 4)), Color(0.32, 0.2, 0.12))
-	# stitched edge of the flap (leather_stitching_strip along the bottom)
-	if _stitch != null:
-		var st := Vector2(_stitch.get_size())
-		_flap.draw_texture_rect_region(_stitch, Rect2(Vector2(2, s.y - 10), Vector2(s.x - 4, 8)), Rect2(Vector2(0, st.y * 0.45), Vector2(st.x, st.y * 0.1)))
-	# brass snap in the middle
-	if _snap != null:
-		var m := minf(s.x, s.y) * 0.62
-		_flap.draw_texture_rect(_snap, Rect2(s * 0.5 - Vector2(m, m) * 0.5, Vector2(m, m)), false)
-	else:
-		var c := s * 0.5
-		_flap.draw_circle(c, 9.0, Color(0.20, 0.15, 0.08))
-		_flap.draw_circle(c, 7.5, Color(0.62, 0.50, 0.28))
-		_flap.draw_circle(c + Vector2(-2, -2), 3.0, Color(0.80, 0.70, 0.45))
 
 
-func _on_flap_input(ev: InputEvent) -> void:
-	if (ev is InputEventScreenTouch and ev.pressed) or (ev is InputEventMouseButton and ev.pressed):
-		accept_event()
-		pause_requested.emit()
+# ------------------------------------------------------------------ N-57 loupe
+func _tray_map() -> Array:
+	# [scale, image origin] of the cover-fit roll render, same maths as _draw_tray()
+	var img := Vector2(_tray_full.get_size()) if _tray_full else Vector2(1080, 960)
+	var sz := tray_rect.size
+	var sc := maxf(sz.x / img.x, sz.y / img.y)
+	var shown := sz / sc
+	var origin := Vector2((img.x - shown.x) * 0.5, 0.0)
+	if sz.x / maxf(sz.y, 1.0) > 1.6:
+		sc = sz.x / img.x
+		shown = sz / sc
+		origin = Vector2(0.0, clampf(img.y * 0.22, 0.0, maxf(img.y - shown.y, 0.0)))
+	return [sc, origin, img]
+
+
+func _compute_loupe_rect() -> Rect2:
+	var m := _tray_map()
+	var sc: float = m[0]
+	var origin: Vector2 = m[1]
+	var img: Vector2 = m[2]
+	var a := tray_rect.position + (Vector2(img.x * 0.74, img.y * 0.46) - origin) * sc
+	var b := tray_rect.position + (Vector2(img.x * 1.0, img.y * 0.80) - origin) * sc
+	var rr := Rect2(a, b - a).intersection(tray_rect)
+	# never smaller than the touch target, kept inside the tray
+	var c := rr.get_center() if rr.size.x > 0.0 else tray_rect.end - Vector2(LOUPE_MIN_DP, LOUPE_MIN_DP)
+	var sz := Vector2(maxf(rr.size.x, LOUPE_MIN_DP), maxf(rr.size.y, LOUPE_MIN_DP))
+	var out := Rect2(c - sz * 0.5, sz)
+	out.position.x = clampf(out.position.x, tray_rect.position.x, tray_rect.end.x - sz.x)
+	out.position.y = clampf(out.position.y, tray_rect.position.y, tray_rect.end.y - sz.y)
+	return out
+
+
+func loupe_rect() -> Rect2:
+	return _loupe_rect
+
+
+func _on_loupe_input(ev: InputEvent) -> void:
+	var down := (ev is InputEventScreenTouch and ev.pressed) or (ev is InputEventMouseButton and ev.pressed)
+	if down:
+		_loupe_btn.accept_event()
+		toggle_loupe()
+
+
+## Opens/closes the eyepiece (second tap, Esc / back, or a tap on the field closes it).
+func toggle_loupe() -> void:
+	zoomed = not zoomed
+	_eyepiece.set_open(zoomed)
+	Sfx.play_ui(&"loupe_apply" if zoomed else &"loupe_set_down")
+	Sfx.play(&"gate_align", &"brass", -8.0)
+	Haptics.play(&"gate_align", 0.5, &"brass")
+	loupe_toggled.emit(zoomed)
+
+
+func _update_eyepiece(delta: float) -> void:
+	if _eyepiece == null:
+		return
+	_eyepiece.tick(delta)
+	if not _eyepiece.visible:
+		return
+	# centre over the shear line of the stack under the pick (or the middle chamber)
+	var idx := int(_last_vm.get("pick_element", -1))
+	if idx < 0 or idx >= _active_stacks:
+		idx = clampi(int(round((_pick_x - PINS_X[0]) / 4.0)), 0, maxi(_active_stacks - 1, 0))
+	var focus := mm_to_screen(Vector3(PINS_X[idx], PinPose.SHEAR, 0.0))
+	var ed := _eyepiece.size.x
+	var r := get_rect()
+	var pos := focus - Vector2(ed, ed) * 0.5
+	pos.x = clampf(pos.x, 8.0, r.size.x - ed - 8.0)
+	pos.y = clampf(pos.y, 8.0, r.size.y - ed - 8.0)
+	_eyepiece.position = pos
+	# texture uv of the focus point and the half extent of the field (ZOOM× magnification)
+	var disp := _section_display()
+	var uv := (focus - disp.position) / disp.size
+	var half := Vector2(ed * 0.5 / Eyepiece.ZOOM, ed * 0.5 / Eyepiece.ZOOM) / disp.size
+	_eyepiece.aim(viewport.get_texture(), uv, half)
+
+
+# ------------------------------------------------------------------ projection
+## Screen rectangle the 3D section texture is drawn into (cover fit, may extend past section_rect).
+func _section_display() -> Rect2:
+	var vp := Vector2(viewport.size)
+	if vp.x <= 0.0 or section_rect.size.x <= 0.0:
+		return section_rect
+	var sc := maxf(section_rect.size.x / vp.x, section_rect.size.y / vp.y)
+	var shown := vp * sc
+	return Rect2(section_rect.position + (section_rect.size - shown) * 0.5, shown)
+
+
+## Scene point in mm (Blender/Godot units) → view coordinates.
+func mm_to_screen(p: Vector3) -> Vector2:
+	if _camera == null or not _camera.is_inside_tree():
+		return Vector2.ZERO
+	var px := _camera.unproject_position(p)
+	var disp := _section_display()
+	return disp.position + px / Vector2(viewport.size) * disp.size
+
+
+# ------------------------------------------------------------------ N-62 plug face + chalk
+func _update_face(vm: Dictionary, tension: float, delta: float) -> void:
+	if _face == null:
+		return
+	var t := clampf(tension, 0.0, 1.0)
+	var rot := clampf(float(vm.get("core_rotation", 0.0)), 0.0, 1.0)
+	_set_flash = maxf(_set_flash - delta / 0.2, 0.0)
+	var face := rot * 90.0 + PlugFace.PLAY_DEG * t + _set_flash * 1.5
+	if _opened:
+		face = 90.0
+	var k := 1.0 - exp(-delta / SMOOTH_S)
+	_face.face_deg = lerpf(_face.face_deg, face, k)
+	_face.arm_deg = lerpf(_face.arm_deg, (_face.face_deg if _opened else face) + PlugFace.ARM_MAX_DEG * t, k)
+	_face.bow = clampf(float(vm.get("tension_resistance", 0.0)), 0.0, 1.0)
+	_face.tremor = clampf((_stress - 0.6) / 0.4, 0.0, 1.0)
+	_face.tension = t
+	_face.gauge = chalk_gauge and chalk_level != ChalkLayer.Level.OFF
+	_face.opened = _opened
+	_face.queue_redraw()
+
+
+func _update_chalk(elements: Array, default_target: float, delta: float) -> void:
+	if _chalk == null:
+		return
+	_chalk.level = chalk_level
+	if chalk_level == ChalkLayer.Level.OFF and (coach == null or not coach.hint_tension):
+		_chalk.marks = {}
+		_chalk.text = ""
+		_chalk.tick(delta)
+		return
+	if chalk_level == ChalkLayer.Level.OFF:
+		_chalk.level = ChalkLayer.Level.REDUCED  # N-58: the tension hint alone
+	var m := {}
+	var x0 := PINS_X[0] - 2.0
+	var x1 := PINS_X[maxi(_active_stacks, 1) - 1] + 2.0
+	m["shear"] = [mm_to_screen(Vector3(x0, PinPose.SHEAR, 0.0)), mm_to_screen(Vector3(x1, PinPose.SHEAR, 0.0))]
+	var stacks := []
+	var w := (mm_to_screen(Vector3(PINS_X[0] + 1.4, PinPose.SHEAR, 0.0)) - mm_to_screen(Vector3(PINS_X[0] - 1.4, PinPose.SHEAR, 0.0))).x
+	for i in mini(elements.size(), _active_stacks):
+		var sp := mm_to_screen(Vector3(PINS_X[i], PinPose.SHEAR, 0.0))
+		var top := mm_to_screen(Vector3(PINS_X[i], PinPose.CAP_UNDERSIDE, 0.0))
+		stacks.append({"x": sp.x, "shear_y": sp.y, "top_y": top.y, "w": w, "state": String(elements[i].get("state", "free"))})
+	m["stacks"] = stacks
+	var full := chalk_level == ChalkLayer.Level.FULL
+	var r := get_rect()
+	var safe := _safe_rect(r)
+	var portrait := safe.size.y >= safe.size.x
+	var thumbs_y := tray_rect.position.y + tray_rect.size.y * (0.66 if portrait else 0.5)
+	m["left_anchor"] = Vector2(r.size.x * (0.22 if portrait else 0.12), thumbs_y)
+	m["right_anchor"] = Vector2(r.size.x * (0.70 if portrait else 0.88), thumbs_y)
+	m["wrench_tip"] = _face.position + _face.arm_tip()
+	m["text_rect"] = Rect2(Vector2(safe.position.x + 16.0, safe.position.y + 10.0), Vector2(safe.size.x - FLAP_DP - 48.0, 72.0))
+	if not portrait:
+		m["text_rect"] = Rect2(Vector2(section_rect.end.x + 16.0, safe.position.y + 16.0), Vector2(safe.end.x - section_rect.end.x - 32.0, 120.0))
+	var text := ""
+	if coach != null:
+		var st := coach.step
+		m["friction"] = full or st == TutorialCoach.Step.BINDING
+		m["hint_left"] = st == TutorialCoach.Step.TENSION or coach.hint_tension
+		m["hint_right"] = st == TutorialCoach.Step.PICK
+		m["hint_down"] = st == TutorialCoach.Step.OVERSET and not coach.auto_tension
+		if coach.stage <= 1 and not coach.auto_tension:
+			m["zone_label"] = I18n.t(&"lock.zone_tension")
+			m["zone_label_pos"] = m["left_anchor"] + Vector2(-34, 56)
+		if full and st in [TutorialCoach.Step.TENSION, TutorialCoach.Step.PICK]:
+			m["pause_label"] = I18n.t(&"lock.flap_pause")
+			m["pause_label_pos"] = _flap.position + Vector2(-58, _flap.size.y + 18)
+		var key := coach.text_key()
+		if key != &"":
+			text = I18n.t(key)
+	_chalk.marks = m
+	_chalk.text = text
+	_chalk.tick(delta)
