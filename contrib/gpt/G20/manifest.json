@@ -1,0 +1,43 @@
+{
+  "status": "partial",
+  "completed_images": 2,
+  "requested_images": 16,
+  "files": {
+    "ASSETS.md": {
+      "bytes": 2761,
+      "sha256": "4fe774df96ed5350205c1c3cf3d6e05761f72b67bc44caa7762da56db19aa6ac"
+    },
+    "README.md": {
+      "bytes": 2235,
+      "sha256": "854b9e5b984b82bcff511d7ca3dff717b33866a21425e685bebd1cbb732d2796"
+    },
+    "REQUEST.md": {
+      "bytes": 6186,
+      "sha256": "ac42cff420d08adee133307f9761e158436de617f41a93221ce8e511cdb1342d"
+    },
+    "contact_sheet_A1.png": {
+      "bytes": 568480,
+      "sha256": "d708518144ae56bb694b554e14e6fb1b06f57519a185e62db569bd33060956e2"
+    },
+    "images/menu_workshop_wall_9x16.png": {
+      "bytes": 1811704,
+      "sha256": "c6fe3408bad14a4f380cf94f11a20e63b1906eefdb111f2b36ca729012d4a631"
+    },
+    "images/menu_workshop_wall_9x16_alt.png": {
+      "bytes": 1769413,
+      "sha256": "1aa92523aa786245b910e38e5d4f76944b5d41462d9d87580bd7e95955b69ba5"
+    },
+    "sources/a_detailed_completion_message_and_deliverable_summ.png": {
+      "bytes": 3223580,
+      "sha256": "2c56d3bda7c707f6f0316bb58638306a215dfb9b0b0625b51646ff23dace8b37"
+    },
+    "sources/a_detailed_realistic_game_dev_deliverable_pack.png": {
+      "bytes": 3253892,
+      "sha256": "22f116f515460d948af126ddaacfbe7fd548069415054751e912785fded2abc1"
+    },
+    "sources/a_photorealistic_highly_detailed_pair_of_vertical.png": {
+      "bytes": 3059442,
+      "sha256": "69f899332add253b58fcf9d4b861386bb5a952051226a22f121fb0d76a213186"
+    }
+  }
+}

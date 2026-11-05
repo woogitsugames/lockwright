@@ -4,6 +4,7 @@ Ta kolejka zbiera wszystkie zlecenia do Magnific. Wykonane pozycje sesja A usuwa
 
 Stan na 2026-11-05 wieczór: tekstury R1–R3 i 39 portretów odebrane. Do zrobienia są 2 nowe zdjęcia do interfejsu i 6 portretów z rozdziału 8.
 
+> **2026-11-05 20:40: A1 przyszło od ChatGPT jako wersja robocza** (`contrib/gpt/G20/images/menu_workshop_wall_9x16_alt.png`, w grze do czasu Magnific). Jutro Magnific robi: A1 (wersja docelowa), A2 i 6 portretów.
 > **2026-11-05 20:25: G20 w ChatGPT się nie udał** (zamiast pojedynczych zdjęć powstał kolaż, potem fałszywa blokada). **Wraca do Magnific na jutro**: A1, A2 i 6 portretów poniżej. Do tego czasu postacie bez portretu mają w grze tabliczkę z inicjałem, a menu korzysta z obecnego tła warsztatu.
 
 ---

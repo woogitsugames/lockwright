@@ -8,3 +8,7 @@
   - whoosh 176–212 ms.
 
   Parametry zgodne ze zleceniem. Do menu, przycisków i zmiany ekranu; w grze konwersja do Ogg.
+
+## G20 (częściowe), 2026-11-05
+- **A1, tło menu:** przyjęte `menu_workshop_wall_9x16_alt.png` jako tło menu głównego. Pegboard jest równy, środek pusty, lampa i półka u góry. Wersja główna odrzucona: pionowe pasy światła na pegboardzie. Obie są robocze (środek powielony lustrzanie), docelowo zastąpi je A1 z Magnific.
+- **A2 i 6 portretów:** nie powstały. Wracają do Magnific (`docs/handoff/MAGNIFIC-KOLEJKA.md`). Pliki w `sources/` to nieudane próby i nie są zasobami gry.
