@@ -4,6 +4,8 @@ Ta kolejka zbiera wszystkie zlecenia do Magnific. Wykonane pozycje sesja A usuwa
 
 Stan na 2026-11-05 wieczór: tekstury R1–R3 i 39 portretów odebrane. Do zrobienia są 2 nowe zdjęcia do interfejsu i 6 portretów z rozdziału 8.
 
+> **2026-11-05 19:20: przekazane do ChatGPT jako G20** (`docs/handoff/gpt4/G20-menu-pause-portraits.md`). Magnific robi to tylko wtedy, gdy G20 wyjdzie słabo.
+
 ---
 
 ## A. Interfejs (pilne, do poprawek po teście na telefonie)
