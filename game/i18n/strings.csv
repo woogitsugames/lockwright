@@ -185,7 +185,7 @@ tutorial.s1_open,It's open. Nicely done. Steady hands.,"Otwarte. Dobra robota, s
 tutorial.frame_tension,Left thumb: gently up — tension.,Lewy kciuk: lekko w górę — napięcie.,Linker Daumen: sanft hoch – Spannung.
 tutorial.frame_lift,"Right thumb: sideways to select, up to lift.","Prawy: w bok wybór, w górę podnoszenie.","Rechts: seitlich wählen, nach oben heben."
 tutorial.frame_click,Click — pin set. Find the next.,Klik — pin osiadł. Szukaj następnego.,Klick – Stift sitzt. Such den nächsten.
-tutorial.frame_lift_auto,"One thumb: slide to pick a pin, push up to lift.","Jeden kciuk: w bok wybierasz pin, w górę podnosisz.","Ein Daumen: seitlich wählen, nach oben heben."
+tutorial.frame_lift_auto,"Slide to pick a pin, push up. The game holds tension.","W bok wybór pinu, w górę unoszenie. Napięcie trzyma gra.","Seitlich wählen, hoch heben. Spannung hält das Spiel."
 tutorial.note_game,"A game, not a course. The parts are invented.","To gra, nie kurs. Mechanizmy są wymyślone.","Ein Spiel, kein Kurs. Die Mechanik ist erfunden."
 lock.zone_tension,tension,napięcie,Spannung
 lock.flap_pause,pause,pauza,Pause
