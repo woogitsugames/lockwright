@@ -8,6 +8,8 @@ extends Control
 
 const T := "Frame/VBox/Scroll/Body/"
 const PLAYER := "locksmith"
+const DialoguePlayer := preload("res://scripts/ui/dialogue_player.gd")
+const MAX_LINES := 4
 
 @onready var title_label: Label = $Frame/VBox/Header/Title
 @onready var client_label: Label = get_node(T + "Intro/Row/Texts/Client")
@@ -16,6 +18,10 @@ const PLAYER := "locksmith"
 @onready var lines_box: VBoxContainer = get_node(T + "Lines")
 @onready var verify_button: Button = $Frame/VBox/VerifyButton
 @onready var back_button: Button = $Frame/VBox/Header/BackButton
+@onready var skip_all_button: Button = $Frame/VBox/Header/SkipAllButton
+@onready var scroll: ScrollContainer = $Frame/VBox/Scroll
+
+var dialogue: Node  # DialoguePlayer (D-57)
 
 # G07 arrival backgrounds: place + time of day -> image
 const ARRIVAL_BG := {
@@ -181,18 +187,57 @@ func _ready() -> void:
 	title_label.text = I18n.t(i18n.get("title", &"jobs.title"))
 	client_label.text = I18n.t(i18n.get("client", &"jobs.title"))
 	situation_label.text = I18n.t(i18n.get("situation", &"jobs.title"))
-	# dialog lines from CLIENTS.md
-	var lines: Array = job.get("lines", [])
-	var voiced := false
-	for i in mini(lines.size(), 4):
-		var speaker: String = lines[i]
-		lines_box.add_child(_line_row(speaker, I18n.t(&"%s.line.%d" % [job.get("id", ""), i + 1])))
-		if speaker != PLAYER and not voiced:
-			Sfx.play_voice(speaker, &"greeting")  # S03 voice of the client
-			voiced = true
+	_setup_dialogue(job)
 	verify_button.text = I18n.t(&"job.verify")
 	back_button.text = "‹ " + I18n.t(&"common.back")
 	verify_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/job_verify.tscn"))
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/jobs_list.tscn"))
 	ScreenFrame.enter($Frame/VBox/Scroll)
 	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
+	dialogue.start()
+
+
+# D-57: dialogue lines from CLIENTS.md, spoken line by line with subtitles (DialoguePlayer).
+func _setup_dialogue(job: Dictionary) -> void:
+	var lines: Array = job.get("lines", [])
+	var rows: Array = []
+	var keys := PackedStringArray()
+	var texts := PackedStringArray()
+	for i in mini(lines.size(), MAX_LINES):
+		var speaker: String = lines[i]
+		var key := "%s.line.%d" % [job.get("id", ""), i + 1]
+		var text := I18n.t(StringName(key))
+		var row := _line_row(speaker, text)
+		_pass_mouse(row)
+		lines_box.add_child(row)
+		rows.append(row)
+		keys.append(key)
+		texts.append(text)
+	dialogue = DialoguePlayer.new()
+	dialogue.name = "Dialogue"
+	add_child(dialogue)
+	dialogue.setup(rows, keys, texts)
+	lines_box.mouse_filter = Control.MOUSE_FILTER_PASS
+	lines_box.gui_input.connect(dialogue.on_gui_input)
+	dialogue.line_started.connect(func(i: int, _voiced: bool) -> void:
+		scroll.ensure_control_visible.call_deferred(rows[i]))
+	if dialogue.has_any_clip():
+		skip_all_button.visible = true
+		skip_all_button.tooltip_text = I18n.t(&"dialogue.skip_all")
+		if "accessibility_name" in skip_all_button:
+			skip_all_button.set("accessibility_name", I18n.t(&"dialogue.skip_all"))
+		skip_all_button.pressed.connect(dialogue.skip_all)
+		dialogue.finished.connect(func() -> void: skip_all_button.visible = false)
+	else:
+		# no voiced line in this language: the S03 wordless greeting of the client stays
+		for speaker in lines.slice(0, MAX_LINES):
+			if speaker != PLAYER:
+				Sfx.play_voice(StringName(speaker), &"greeting")
+				break
+
+
+static func _pass_mouse(n: Node) -> void:
+	if n is Control:
+		n.mouse_filter = Control.MOUSE_FILTER_PASS
+	for c in n.get_children():
+		_pass_mouse(c)

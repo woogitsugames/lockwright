@@ -33,6 +33,13 @@ size_flags_horizontal = 3
 theme_type_variation = &"Title"
 autowrap_mode = 3
 
+[node name="SkipAllButton" type="Button" parent="Frame/VBox/Header"]
+visible = false
+custom_minimum_size = Vector2(56, 48)
+layout_mode = 2
+size_flags_vertical = 0
+text = "»"
+
 [node name="Scroll" type="ScrollContainer" parent="Frame/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
