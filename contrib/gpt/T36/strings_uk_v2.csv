@@ -125,3 +125,6 @@ dev.haptics_lab.force_fallback,Примусовий резервний режи�
 dev.haptics_lab.resistance,Опір,Опір,
 dev.haptics_lab.caps,Можливості,Можливості,
 tutorial.start,,Почати вправу,Uzupełniono nowy klucz interfejsu po korekcie.
+nav.quit_confirm,,Вийти з гри?,Nowy klucz źródłowy (pytanie przy wyjściu).
+nav.quit_yes,,Вийти,Nowy klucz źródłowy (potwierdzenie).
+nav.quit_no,,Продовжити гру,Nowy klucz źródłowy (pozostanie w grze).
