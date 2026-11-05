@@ -37,18 +37,18 @@ SIZE = 2048
 # flat: lighting flatten ("full", "x" = only horizontal fall-off, "none")
 # rough: (min, max); metal: clamp >= 0.16; hs: height high-pass sigma px; ns: normal strength
 SURFACES = {
-    "leather_brown_new":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.48, 0.78), metal=False, hs=18, ns=4.0, keystone=True),
-    "leather_brown_worn":    dict(src=SRC_M, mode="tile", flat="full", rough=(0.42, 0.82), metal=False, hs=22, ns=4.0),
-    "leather_chocolate":     dict(src=SRC_L, mode="tile", flat="full", rough=(0.40, 0.76), metal=False, hs=18, ns=4.0),
+    "leather_brown_new":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.48, 0.78), metal=False, hs=18, ns=4.0, keystone=True, chroma=0.5),
+    "leather_brown_worn":    dict(src=SRC_M, mode="tile", flat="full", rough=(0.42, 0.82), metal=False, hs=22, ns=4.0, chroma=0.5),
+    "leather_chocolate":     dict(src=SRC_L, mode="tile", flat="full", rough=(0.40, 0.76), metal=False, hs=18, ns=4.0, chroma=0.5),
     "leather_stitching_strip": dict(src=SRC_M, mode="strip", flat="x", rough=(0.45, 0.80), metal=False, hs=24, ns=5.0),
     "brass_turned":          dict(src=SRC_M, mode="radial", flat="polar", rough=(0.18, 0.34), metal=True, hs=6, ns=2.0),
     "brass_face_milled":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.22, 0.42), metal=True, hs=20, ns=3.0, deskew="h", straighten=True),
     "brass_patina_grease":   dict(src=SRC_M, mode="tile", flat="full", rough=(0.30, 0.82), metal=True, hs=16, ns=3.0),
     "steel_ground":          dict(src=SRC_M, mode="tile", flat="full", rough=(0.20, 0.38), metal=True, hs=6, ns=1.5),
     "steel_heat_tint":       dict(src=SRC_M, mode="strip", flat="x", rough=(0.18, 0.34), metal=True, hs=6, ns=1.2, linear=True),
-    "spring_steel_polished": dict(src=SRC_M, mode="tile", flat="full", rough=(0.16, 0.28), metal=True, hs=6, ns=1.2),
+    "spring_steel_polished": dict(src=SRC_M, mode="tile", flat="full", rough=(0.16, 0.28), metal=True, hs=6, ns=0.6),
     "nickel_satin":          dict(src=SRC_M, mode="tile", flat="full", rough=(0.22, 0.40), metal=True, hs=8, ns=1.5),
-    "iron_painted_rust":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.35, 0.92), metal=True, hs=20, ns=4.0, metallic=0.0,
+    "iron_painted_rust":     dict(src=SRC_M, mode="tile", rough=(0.35, 0.92), metal=True, hs=20, ns=4.0, metallic=0.0, flat="lum",
                                   note="painted iron: dielectric paint; rust/bare spots could get a metal mask later",
                                   crop=(0.0, 0.0, 0.66, 0.66)),  # lower part of the photo is out of focus
     "terrazzo_grey_red":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.32, 0.62), metal=False, hs=12, ns=2.0),
@@ -59,7 +59,7 @@ SURFACES = {
     "bench_beech_top":       dict(src=SRC_M, mode="tile", flat="full", rough=(0.45, 0.80), metal=False, hs=20, ns=3.0,
                                   deskew=("h", 3.0)),
     "wall_lime_plaster":     dict(src=SRC_M, mode="tile", flat="full", rough=(0.75, 0.96), metal=False, hs=20, ns=3.0),
-    "wall_oil_paint_green":  dict(src=SRC_M, mode="tile", flat="full", rough=(0.30, 0.60), metal=False, hs=16, ns=2.5),
+    "wall_oil_paint_green":  dict(src=SRC_M, mode="tile", flat="full", rough=(0.30, 0.60), metal=False, hs=16, ns=1.5),
     "wall_paint_divider_line": dict(src=SRC_M, mode="strip", flat="x", rough=(0.30, 0.90), metal=False, hs=16, ns=2.5,
                                     deskew=("h", 3.0)),
     "pegboard_brown":        dict(src=SRC_M, mode="tile", flat="full", rough=(0.55, 0.85), metal=False, hs=14, ns=3.0,
@@ -83,9 +83,9 @@ OBJECTS = {
     "icon_number_plate_7": dict(src=SRC_M, kind="grabcut", rect=(0.20, 0.16, 0.80, 0.87)),
     "leather_brass_snap": dict(src=SRC_M, kind="circle", rect=(0.18, 0.16, 0.82, 0.82)),
     "paper_card_stock":  dict(src=SRC_M, kind="grabcut", rect=(0.20, 0.06, 0.80, 0.96)),
-    "paper_note_torn":   dict(src=SRC_M, kind="grabcut", rect=(0.18, 0.06, 0.82, 0.94)),
+    "paper_note_torn":   dict(src=SRC_M, kind="grabcut", rect=(0.18, 0.06, 0.82, 0.94), fill_holes=False),
     "paper_office_folded": dict(src=SRC_M, kind="grabcut", rect=(0.04, 0.06, 0.96, 0.96)),
-    "paper_receipt_pad": dict(src=SRC_M, kind="grabcut", rect=(0.16, 0.06, 0.84, 0.96)),
+    "paper_receipt_pad": dict(src=SRC_M, kind="grabcut", rect=(0.16, 0.06, 0.84, 0.90), fill_holes=False),
     "tool_roll_open_empty": dict(src=SRC_M, kind="grabcut", rect=(0.04, 0.20, 0.96, 0.84)),
     "tool_roll_pocket_empty_closeup": dict(src=SRC_M, kind="grabcut", rect=(0.24, 0.03, 0.84, 0.99)),
     "ink_oval_blank":    dict(src=SRC_M, kind="ink", rect=(0.12, 0.25, 0.92, 0.85)),
@@ -118,7 +118,7 @@ def blur_reflect(a, sigma):
     return cv2.GaussianBlur(a, (0, 0), sigma, borderType=cv2.BORDER_REFLECT)
 
 
-def flatten(img, how):
+def flatten(img, how, chroma_max=0.15):
     """Remove the lighting gradient.
 
     a) per channel, fit a 2nd-order polynomial to log(colour) and divide it out: removes broad
@@ -159,11 +159,17 @@ def flatten(img, how):
             k2 = np.interp(rows, np.arange(n), coef[:, 2, c])[:, None]
             out[..., c] = img[..., c] * np.exp(-(k1 * Xf + k2 * Xf * Xf))
         return np.clip(out, 0, 1)
+    trends = []
     for c in range(3):
         lg = np.log(np.maximum(small[..., c], 1e-3)).ravel()
         coef, *_ = np.linalg.lstsq(A, lg, rcond=None)
-        trend = sum(k * b for k, b in zip(coef[1:], full[1:]))  # drop the constant: keep mean colour
-        out[..., c] = img[..., c] * np.exp(-trend)
+        trends.append(sum(k * b for k, b in zip(coef[1:], full[1:])))  # no constant: keep mean colour
+    tl = 0.2126 * trends[0] + 0.7152 * trends[1] + 0.0722 * trends[2]
+    for c in range(3):
+        # tint drift is corrected only a little (default +-15 %): large coloured features (rust, stains)
+        # would otherwise be "corrected" into a colour cast; "lum" corrects brightness only
+        chroma = 0.0 if how == "lum" else np.clip(trends[c] - tl, -chroma_max, chroma_max)
+        out[..., c] = img[..., c] * np.exp(-(tl + chroma))
     img = np.clip(out, 0, 1)
     L = lum(img)
     s = 256
@@ -301,7 +307,9 @@ def flatten_polar(img):
     rad = cv2.GaussianBlur(L.mean(axis=0)[None, :].astype(np.float32), (0, 0), 40)[0]
     g = np.clip(m / (ang[:, None] * rad[None, :] / m), 0.6, 1.6).astype(np.float32)
     gc = cv2.warpPolar(g, (W, H), c, R, cv2.WARP_POLAR_LINEAR | cv2.WARP_INVERSE_MAP)
-    gc[gc == 0] = 1.0
+    yy, xx = np.mgrid[0:H, 0:W]
+    inside = np.clip((R - 3 - np.sqrt((xx - c[0]) ** 2 + (yy - c[1]) ** 2)) / 8.0, 0, 1).astype(np.float32)
+    gc = gc * inside + 1.0 * (1 - inside)  # corners (outside the polar disc) keep the photo
     gc = cv2.GaussianBlur(gc, (0, 0), 2)
     return np.clip(img * gc[..., None], 0, 1)
 
@@ -557,7 +565,7 @@ def build_surface(name, cfg):
         x0, y0, x1, y1 = cfg["crop"]
         H, W = img.shape[:2]
         img = img[int(y0 * H):int(y1 * H), int(x0 * W):int(x1 * W)]
-    img = flatten_polar(img) if cfg["flat"] == "polar" else flatten(img, cfg["flat"])
+    img = flatten_polar(img) if cfg["flat"] == "polar" else flatten(img, cfg["flat"], cfg.get("chroma", 0.15))
     mode = cfg["mode"]
     info = {}
     dsk, dmax = (cfg["deskew"] if isinstance(cfg.get("deskew"), tuple) else (cfg.get("deskew"), None))
@@ -703,7 +711,7 @@ def rough_strip(albedo, rng, metal):
 
 
 # ---------------------------------------------------------------- objects
-def grabcut_mask(rgb8, rect_frac, work=768):
+def grabcut_mask(rgb8, rect_frac, work=768, fill_holes=True):
     H, W = rgb8.shape[:2]
     s = work / max(H, W)
     small = cv2.resize(rgb8, (int(W * s), int(H * s)), interpolation=cv2.INTER_AREA)
@@ -723,7 +731,8 @@ def grabcut_mask(rgb8, rect_frac, work=768):
     n, lab, stats, _ = cv2.connectedComponentsWithStats(inv)
     for i in range(1, n):
         x, y, ww, hh, a = stats[i]
-        if x > 0 and y > 0 and x + ww < w and y + hh < h:
+        # fill enclosed holes; with fill_holes=False keep real perforations (bigger than specks)
+        if x > 0 and y > 0 and x + ww < w and y + hh < h and (fill_holes or a < 12):
             fg[lab == i] = 1.0
     fg = cv2.morphologyEx(fg, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
     big = cv2.resize(fg, (W, H), interpolation=cv2.INTER_LINEAR)
@@ -784,7 +793,7 @@ def build_object(name, cfg):
     os.makedirs(d, exist_ok=True)
     extra = {}
     if cfg["kind"] == "grabcut":
-        a = grabcut_mask(rgb8, cfg["rect"])
+        a = grabcut_mask(rgb8, cfg["rect"], fill_holes=cfg.get("fill_holes", True))
         col = rgb
     elif cfg["kind"] == "circle":
         a = circle_mask(rgb8, cfg["rect"])
@@ -817,12 +826,13 @@ def build_object(name, cfg):
 
 
 # ---------------------------------------------------------------- contact sheets
-def contact(paths, out, tile_h=300, cols=4, checker=False):
+def contact(paths, out, tile_w=640, cols=3, checker=False):
+    """Contact sheet; every entry scaled to the same width (strips/previews keep their aspect)."""
     ims = []
     for p in paths:
         im = Image.open(p)
-        s = tile_h / im.height
-        im = im.resize((max(1, int(im.width * s)), tile_h), Image.LANCZOS)
+        s = tile_w / im.width
+        im = im.resize((tile_w, max(1, int(im.height * s))), Image.LANCZOS)
         if checker:
             bg = Image.new("RGB", im.size, (200, 200, 200))
             dr = ImageDraw.Draw(bg)
@@ -833,14 +843,17 @@ def contact(paths, out, tile_h=300, cols=4, checker=False):
             bg.paste(im, (0, 0), im)
             im = bg
         ims.append((os.path.basename(p), im.convert("RGB")))
-    cw = max(i.width for _, i in ims)
-    rows = (len(ims) + cols - 1) // cols
-    sheet = Image.new("RGB", (cols * (cw + 8), rows * (tile_h + 22)), (245, 243, 238))
+    rows = [ims[i:i + cols] for i in range(0, len(ims), cols)]
+    hs = [max(i.height for _, i in r) + 22 for r in rows]
+    sheet = Image.new("RGB", (cols * (tile_w + 8), sum(hs)), (245, 243, 238))
     dr = ImageDraw.Draw(sheet)
-    for k, (n, im) in enumerate(ims):
-        x, y = (k % cols) * (cw + 8), (k // cols) * (tile_h + 22)
-        sheet.paste(im, (x, y))
-        dr.text((x + 2, y + tile_h + 4), n, fill=(20, 20, 20))
+    y = 0
+    for r, h in zip(rows, hs):
+        for k, (n, im) in enumerate(r):
+            x = k * (tile_w + 8)
+            sheet.paste(im, (x, y))
+            dr.text((x + 2, y + im.height + 4), n, fill=(20, 20, 20))
+        y += h
     sheet.save(out, quality=85)
 
 
@@ -862,9 +875,9 @@ def main(argv):
         print("object", n, flush=True)
         obj.append(build_object(n, c))
     if pv:
-        contact(pv, os.path.join(OUT, "contact_previews.jpg"), tile_h=300, cols=3)
+        contact(pv, os.path.join(OUT, "contact_previews.jpg"), tile_w=720, cols=3)
     if obj:
-        contact(obj, os.path.join(OUT, "contact_objects.jpg"), tile_h=280, cols=5, checker=True)
+        contact(obj, os.path.join(OUT, "contact_objects.jpg"), tile_w=360, cols=5, checker=True)
 
 
 if __name__ == "__main__":
