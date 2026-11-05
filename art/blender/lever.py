@@ -40,7 +40,7 @@ MAT = {
 
 if photo_enabled():  # photo PBR maps (art/textures/photo, G03 oak); --photo 0 = procedural
     MAT.update({
-        'brass':  photo_mat('ph_lever_brass', 'brass_patina_grease', scale=90, rot=12, tint=(1.05, 1.0, 0.92), bump=0.15, wear=0.8, grime=0.6),
+        'brass':  photo_mat('ph_lever_brass', 'brass_patina_grease', scale=18, rot=12, base=(0.78, 0.56, 0.27), base_mix=0.45, bump=0.08, wear=0.8, grime=0.6),
         'bolt':   photo_mat('ph_bolt', 'brass_face_milled', scale=45, rot=42, tint=(0.95, 0.9, 0.82), bump=0.2, wear=0.6, grime=0.7),
         'forend': photo_mat('ph_forend', 'brass_face_milled', scale=60, rot=90, tint=(1.0, 0.95, 0.85), bump=0.2, wear=0.5, grime=0.6),
         'steel':  photo_mat('ph_stump', 'steel_ground', scale=16, rot=90, tint=(0.85, 0.86, 0.88), wear=0.3, grime=0.4),

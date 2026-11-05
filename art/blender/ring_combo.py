@@ -91,6 +91,8 @@ def ring(i, x, st, gate_deg):
         except Exception: pass
         t = bpy.data.objects.new('digit', cu); bpy.context.collection.objects.link(t)
         t.matrix_world = Matrix.Rotation(-ang, 4, 'X') @ Matrix.Translation((x, 0, R_OUT + 0.04))
+        if math.cos(ang) < 0:  # flats on the underside: turn the digit so it reads upright from the camera (no '3' seen as 'E')
+            t.matrix_world = t.matrix_world @ Matrix.Rotation(math.pi, 4, 'Z')
         t.data.materials.append(MAT['ink'])
         # only keep digits facing the camera side that still exists after the cut (y >= 0)
         if (Matrix.Rotation(-ang, 4, 'X') @ Vector((0, 0, 1))).y < -0.05: bpy.data.objects.remove(t, do_unlink=True)
