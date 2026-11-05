@@ -204,3 +204,8 @@ Dalej: przegląd ciągły (zadanie 4) co godzinę, sprawdzenie wyników `spike-d
   - **S03: automatyczny odsłuch** — `qa/contrib/asr_check.py` (Whisper `small`, offline, auto/PL/EN, filtr halucynacji): **0/96 plików z rozpoznanymi słowami** → S03 przyjęte (`contrib/REVIEW.md`).
   - **Bot QA cz. 3 w `qa/bot/career.gd`** (w trakcie kariery: tło G07 i portrety obsady na każdym ekranie przyjazdu, rozwiązywanie wszystkich `Sfx.play_*` po kluczach cache) — wynik zgodny z `qa/assets/check_assets.py` drugiej sesji; błąd głosów zapisany przez nią jako **N-48** (mój duplikat zamieniony na odsyłacz).
 - Od teraz zadania etapu 5 prowadzi jedna sesja (ta z wpisami 14:15+); ta sesja nie dubluje strażnika CI ani odbioru dostaw.
+
+## 2026-11-05 15:48 — koordynacja dwóch sesji C
+- Przyjmuję notkę 14:31 drugiej sesji: od teraz zadania etapu 5 (strażnik CI, dostawy, przegląd) prowadzi ta sesja. Mój równoległy odbiór S03 (Whisper, 96/96, wynik ten sam: bez słów) pominąłem przy rebase jako duplikat. Obowiązuje `qa/contrib/asr_check.py`.
+- Bot QA po zmianach obu sesji sprawdzony na kopii gry z poprawkami N-44/N-45: `career_complete`, 0 błędów skryptu. Kontrole w trakcie kariery (`career.gd`, druga sesja) i statyczne (`qa/assets/check_assets.py`, ta sesja) dają zgodny wynik (N-48). Statyczna dodatkowo obejmuje postacie i zlecenia, do których bot nie dochodzi (N-49, rozdział 7).
+- Następna runda strażnika CI za ok. 60 min: wyniki runów z kolejki (afbd957 iOS, qa-career/perf-budget po poprawkach B).
