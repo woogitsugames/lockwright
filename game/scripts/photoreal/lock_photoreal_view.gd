@@ -146,7 +146,9 @@ func set_lives(n: int) -> void:
 func set_dark(on: bool) -> void:
 	dark = on
 	for m in _all_mats:
-		m.set_shader_parameter("exposure", 0.06 if on else 1.0)
+		m.set_shader_parameter("exposure", 0.012 if on else 1.0)  # linear: ≈ 13% in sRGB, a faint outline
+	if _bg:
+		_bg.modulate = Color(0.12, 0.12, 0.12) if on else Color.WHITE
 	if _tray:
 		_tray.visible = not on
 		_tray.queue_redraw()
@@ -525,7 +527,12 @@ func _draw_tray() -> void:
 	var sc := maxf(sz.x / img.x, sz.y / img.y)
 	var shown := sz / sc               # image pixels visible
 	var origin := (img - shown) * 0.5  # top-left of the visible image region
-	origin.y = 0.0                     # keep the pockets' top edge (picks) right under the section
+	origin.y = 0.0                     # keep the roll's top seam right under the section
+	if sz.x / sz.y > 1.6:
+		# landscape strip: fit the width and show the band with the picks and the pocket mouths
+		sc = sz.x / img.x
+		shown = sz / sc
+		origin = Vector2(0.0, clampf(img.y * 0.22, 0.0, maxf(img.y - shown.y, 0.0)))
 	var cols: Array = TRAY_COLUMNS.duplicate()
 	cols.append(1.0)
 	for c in cols.size() - 1:
@@ -555,12 +562,21 @@ func _draw_bg() -> void:
 	if _tray_empty == null:
 		_bg.draw_rect(Rect2(Vector2.ZERO, sz), Color(0.12, 0.08, 0.055))
 		return
-	# bare leather band above the pockets of the "empty" roll render, cover-fitted
-	var src := Rect2(Vector2(0, 0), Vector2(_tray_empty.get_width(), _tray_empty.get_height() * 0.3))
-	var sc := maxf(sz.x / src.size.x, sz.y / src.size.y)
-	var shown := sz / sc
-	src = Rect2(src.position + (src.size - shown) * 0.5, shown)
-	_bg.draw_texture_rect_region(_tray_empty, Rect2(Vector2.ZERO, sz), src, Color(0.6, 0.6, 0.6))
+	# Bare leather between the roll's top seam and the pick imprints, tiled at render scale with
+	# every other row mirrored (no visible seams), out of the light.
+	var img := Vector2(_tray_empty.get_size())
+	var src := Rect2(Vector2(0, img.y * 0.11), Vector2(img.x, img.y * 0.12))
+	var tile := src.size / maxf(_physical_scale(), 1.0)
+	var rows := int(ceil(sz.y / tile.y)) + 1
+	var cols := int(ceil(sz.x / tile.x)) + 1
+	for r in rows:
+		for c in cols:
+			if r % 2 == 1:
+				_bg.draw_set_transform(Vector2(c * tile.x, (r + 1) * tile.y), 0.0, Vector2(1, -1))
+			else:
+				_bg.draw_set_transform(Vector2(c * tile.x, r * tile.y), 0.0, Vector2.ONE)
+			_bg.draw_texture_rect_region(_tray_empty, Rect2(Vector2.ZERO, tile), src, Color(0.55, 0.55, 0.55))
+	_bg.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
 
 func _dent(c: Vector2, r: float, alpha: float) -> void:
