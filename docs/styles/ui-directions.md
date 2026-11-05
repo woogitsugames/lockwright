@@ -80,3 +80,34 @@ Fonty (wszystkie OFL, pliki i licencje w `mockups/ui-directions/fonts/` lub `moc
 **Kierunek 4 (Zawieszki) jako system menu, z gramatyką stanów z kierunku 2.** Zawieszki i tabliczka znamionowa to ten sam świat co fotorealistyczny warsztat (D-05: metal, obróbka, kamienica) i dają się przenieść wprost do huba jako prawdziwe przedmioty na tablicy obok imadła. Stan jest fizyczny (przywieszka, kasownik), więc test w skali szarości przechodzi bez koloru. Koszt w Godot jest umiarkowany: 9-slice plus jeden `RichTextEffect` i brak logiki układu zależnej od pomiaru tekstu. Z kierunku 2 bierzemy rysowany ołówkiem szkic mechanizmu do lekcji i „Pomocy w czytaniu”, a zeszyt może zostać ekranem dziennika zleceń w warsztacie. Kierunek 1 jest najbardziej charakterystyczny i tani, ale ciemny filc z wersalikami słabo znosi dłuższe teksty i i18n. Kierunek 3 jest najtańszy i najczystszy, ale nie mówi niczego o tej grze, więc zostaje jako fallback dla ekranów systemowych (pauza, zgody, ustawienia dostępności), gdyby tabliczka okazała się za ciężka.
 
 Decyzja należy do właściciela. Po wyborze: wpis D-NN w `DECISIONS.md`, kroje w `ASSETS.md`, potem szkic `Theme` i ekran menu w Godot.
+
+---
+
+# Runda 2 → 3: menu jako fotografowany przedmiot (Blender, Cycles)
+
+Właściciel odrzucił makiety HTML/CSS: obok fotorealistycznej gry wyglądały tanio. Z rundy 1 zostały dobre kierunki 1 (Tablica lokatorów) i 4 (Zawieszki). Runda CSS 2 została przerwana. Zmieniamy metodę, nie tylko styl: menu renderujemy tym samym pipeline'em co zamki i sceny (Blender 4.2, Cycles, AgX, OIDN).
+
+**Scena (`art/blender/menu_gate.py`).** Kącik ślusarza w bramie kamienicy, czyli połączenie kierunków 1 i 4:
+- **Ściana:** olejna lamperia z tej samej procedury co `stairwell.py`, malowana linia podziału, nad nią wapno (fotomateriał `wall_lime_plaster`).
+- **Tablica:** prążkowany czarny filc w aluminiowej ramie (`nickel_satin`), wkręty w narożnikach. Litery są wciskane i każda jest osobną bryłą (Archivo, OFL, grubość 3 mm, faza 0,35 mm). Siedzą w rowkach co 6,5 mm, z lekkim rozrzutem położenia i kąta. „L” w GABLOTA jest przekrzywione o 7°, trzy litery są starsze (pożółkłe). Na górnych ściankach liter i ramy osiada kurz.
+- **Pod tablicą:** bukowa listwa z mosiężnymi haczykami, dwie bite zawieszki („13” aluminiowa i „14” mosiężna, numer wybity 0,4 mm) oraz wymyślony płaski klucz bez profilu marki.
+- **Światło:** ciepła żarówka klatki z lewej u góry, słabe chłodne okno z prawej, prawdziwe cienie.
+
+**Wyniki (`art/renders/menu/`).**
+- `menu_portrait.png` (1080×2400) i `menu_landscape.png` (2400×1080). Poziom to osobny układ tej samej tablicy: tytuł po lewej, menu po prawej.
+- `menu_hits.json` / `menu_hits_landscape.json`: dla każdej pozycji prostokąt liter (`text_rect`) i pas dotyku na całą szerokość tablicy (`hit_rect`) w px, wymiary w dp i wysokość wersalika w px.
+  - Pion: wersalik 48 px (≥ 40 px), pas 55 dp.
+  - Poziom: wersalik 42 px, pas 48 dp.
+- `menu_pressed_example.png`: rząd ZLECENIA wciśnięty 1 mm w filc (cień liter krótszy), obok stanu zwykłego.
+- `settings_card.png` + `settings_hits.json`: zbliżenie tej samej tablicy z maszynową kartą ustawień przypiętą pinezką. Róg karty jest podwinięty. Dla każdej kontrolki jest pas ≥ 48 dp i prostokąty tokenów (`[X] wł.`, `[ ] wył.`, skala).
+- `*_gray.png`: kontrola w skali szarości.
+
+## Wykonalność w grze (Godot 4.7)
+- **Wariant A, wypiekane tło (rekomendowany na start).** `TextureRect` z renderem dla danej orientacji (KTX2/ETC2 lub WebP, ok. 1–2 MB na orientację) i niewidoczne `Button` z `menu_hits.json`, przeskalowane do bieżącego okna (safe-area: kadr ma zapas u góry i u dołu).
+  - Stan wciśnięty to wypieczony wycinek rzędu (`*_pressed_crop`), podmieniany na 100–150 ms i połączony z klikiem plastiku i haptyką (`DESIGN.md`).
+  - Fokus/wybór: ta sama technika (wycinek) albo kreda z kierunku Klatka.
+  - **Ryzyko:** tekst jest w obrazie, więc każdy język to osobny render. Skrypt bierze napisy z parametrów, więc rendery można generować w CI z `game/i18n/content.csv` (PL, EN, DE × 2 orientacje × stany). Dynamicznych liczb („2 NOWE”) nie da się wtedy zmieniać bez wariantów, dlatego warto je trzymać na osobnym wycinku albo zawieszce.
+- **Wariant B, scena 3D na żywo.** Ten sam model w glTF. Litery generowane z fontu jako `TextMesh` (prawdziwa geometria, więc i18n i liczby są dynamiczne), światło wypiekane w LightmapGI dla ściany i tablicy, a litery z jednym światłem dynamicznym. Wciśnięcie to przesunięcie rzędu o 1 mm. Koszt jest jak przy przekroju zamka (Spike 4 z `TECH.md`). Na tanim Androidzie trzeba zmierzyć.
+- **Karta ustawień:** tło wypiekane bez wartości (sama karta, linie, etykiety), a wartości (`[X]`, skala, procenty) jako `Label` z Courier Prime przez homografię w perspektywie karty, tak jak `anchors.js` w `realizm`. Dzięki temu ustawienia zmieniają się bez renderu.
+
+Uwaga: kroje Archivo, Chivo Mono i Courier Prime trzeba wpisać do `docs/ASSETS.md` po akceptacji kierunku.
