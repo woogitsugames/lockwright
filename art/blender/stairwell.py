@@ -100,7 +100,7 @@ bx('jamb_h', DX0, DX1, 0, 150, DTOP - 24, DTOP, cream, bev=1.5)
 bx('stop_h', DX0 + 24, DX1 - 24, 112, 150, DTOP - 40, DTOP - 24, cream, bev=1)
 
 # ---------------------------------------------------------------- door leaf (separate stiles/rails/panels)
-LX0, LX1, LZ0, LZ1, LY = DX0 + 26, DX1 - 26, 24, DTOP - 26, 60      # leaf front at y = 60, back at 105
+LX0, LX1, LZ0, LZ1, LY = DX0 + 26, DX1 - 26, 29, DTOP - 26, 60      # leaf front at y = 60, back at 105
 SW, TR, LR0, LR1, BR, MW = 120, 125, 905, 1080, 215, 92
 pieces = [
     ('stile_l', LX0, LX0 + SW, LZ0, LZ1, 'Z'), ('stile_r', LX1 - SW, LX1, LZ0, LZ1, 'Z'),
@@ -192,7 +192,7 @@ SWX, SWZ = DX0 - AW - 165, 1360
 sbox = lathe_x('switch_box', [(0, 0.01), (0, 38), (18, 36), (26, 30), (28, 0.01)], seg=64)
 sbox.data.transform(Matrix.Rotation(math.radians(-90), 4, 'Z')); sbox.location = (SWX, 0, SWZ); setmat(sbox, bakelite)
 sbtn = cyl('switch_btn', 15, 14, (SWX, -28, SWZ), axis='Y', verts=64); setmat(sbtn, plastic('switch_btn', (0.03, 0.028, 0.026), 0.2)); _bev(sbtn, 2.5, 4)
-ind_m = emissive('indicator', (1.0, 0.38, 0.08), 3.0 if NIGHT else 0.4, (0.2, 0.08, 0.03))
+ind_m = emissive('indicator', (1.0, 0.38, 0.08), 9.0 if NIGHT else 0.4, (0.2, 0.08, 0.03))
 cyl('switch_ind', 3.2, 2, (SWX, -35.5, SWZ + 7), axis='Y', verts=32).data.materials.append(ind_m)
 LAMPX, LAMPZ = SWX - 10, 2420
 conduit_m = paint('conduit', (0.66, 0.62, 0.52), rough=0.5, chip=0.3, grime=0.7)
@@ -286,10 +286,10 @@ else:
     area_light('window', (2600, -2600, 3000), AIM, 1800, 1.6e7, (0.55, 0.66, 1.0), size_y=2200)
     # sodium street light through the window, from below: warm, small, grazing up the wall
     a2 = bpy.data.objects.new('aim2', None); scene.collection.objects.link(a2); a2.location = (-300, 0, 2400)
-    area_light('street', (2500, -1500, 900), a2, 400, 1.2e7, (1.0, 0.55, 0.22))
+    area_light('street', (2500, -1500, 900), a2, 400, 3.5e7, (1.0, 0.55, 0.22))
     # the flat: a lamp left on inside leaks under the door and through the peephole
     a3 = bpy.data.objects.new('aim3', None); scene.collection.objects.link(a3); a3.location = (0, 0, 0)
-    area_light('inside', (0, 400, 300), a3, 700, 3.0e6, (1.0, 0.62, 0.32))
+    area_light('inside', (0, 400, 300), a3, 700, 2.5e7, (1.0, 0.62, 0.32))
 bx('inside_floor', DX0, DX1, 105, 1200, -20, 0, floor)
 
 # ---------------------------------------------------------------- traces of use
@@ -327,7 +327,7 @@ CROP = arg('--crop', '')
 render_setup(OUT, RES, SAMPLES, crop=tuple(float(v) for v in CROP.split(',')) if CROP else None, exposure=(-0.6 if NIGHT else 0.0), look='AgX - Medium High Contrast', bounces=10)
 scene.cycles.adaptive_threshold = 0.01
 photo_finish(0.25 if not NIGHT else 0.35)
-scene.view_settings.look = 'AgX - Medium Contrast' if NIGHT else 'AgX - Medium High Contrast'
+scene.view_settings.look = 'AgX - Base Contrast' if NIGHT else 'AgX - Medium High Contrast'
 write_anchors(os.path.splitext(os.path.abspath(OUT))[0] + '.json', {
     'slip': [sheet_pt(0, 0), sheet_pt(A5[0], 0), sheet_pt(A5[0], A5[1]), sheet_pt(0, A5[1])],
     'namecard': [(NP[0] - NPW / 2 + 7, LY - 1, NP[2] + NPH / 2 - 6), (NP[0] + NPW / 2 - 7, LY - 1, NP[2] + NPH / 2 - 6),

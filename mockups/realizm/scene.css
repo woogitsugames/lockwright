@@ -17,7 +17,7 @@
 .slip .what{font-size:18.5px;line-height:32px}
 .slip .rate{font-size:18px;color:#4a3f30;display:flex;justify-content:space-between}
 .slip .acts{position:absolute;left:18px;right:16px;bottom:22px;display:flex;gap:14px}
-.slip .acts span{flex:1;height:58px;display:grid;place-items:center;font:700 19px/1.1 "Atkinson Hyperlegible Next",sans-serif;text-align:center;
+.slip .acts span{flex:1;height:72px;padding:0 6px;display:grid;place-items:center;font:700 18px/1.1 "Atkinson Hyperlegible Next",sans-serif;text-align:center;
   border:2.5px solid #3b3d42;border-radius:6px 9px 7px 5px;transform:rotate(-.6deg)}
 .slip .acts span + span{border-style:dashed;transform:rotate(.8deg);font-weight:600}
 
@@ -27,11 +27,11 @@
 /* workshop: manila tags (66 x 32 mm writing field), notebook label, drawer card, phone screen */
 .tagtext{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font:700 54px/1 "Atkinson Hyperlegible Next",sans-serif;color:#2a2219;letter-spacing:-.01em}
 .tagtext small{display:block;font:400 italic 38px/1.1 "Bona Nova",serif;color:#4a3d2c;margin-top:8px}
-.label{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font:700 92px/1 "Bona Nova",serif;color:#1f2430}
+.label{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font:700 96px/1 "Bona Nova",serif;color:#1f2430}
 .label small{display:block;font:600 30px/1.2 "Atkinson Hyperlegible Next",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#4e5560;margin-top:8px}
-.drawer{display:grid;place-items:center;font:700 60px/1 "Bona Nova",serif;color:#231d15}
+.drawer{display:grid;place-items:center;font:700 70px/1 "Bona Nova",serif;color:#231d15}
 .screen-lit{background:#0e1114;color:#e9ece8;padding:40px 22px;font:600 46px/1.1 "Atkinson Hyperlegible Next",sans-serif;
-  box-shadow:inset 0 0 0 3px #050607}
+  border-radius:34px;box-shadow:inset 0 0 0 3px #050607}
 .screen-lit .t{font-size:30px;color:#9aa3a7;letter-spacing:.04em}
 .screen-lit b{display:block;font-size:170px;line-height:1;margin:40px 0 0}
 .screen-lit .from{font-size:32px;color:#9aa3a7;margin-top:40px}

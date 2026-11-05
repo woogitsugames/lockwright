@@ -23,7 +23,9 @@ FONT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'moc
 
 MAT = {
     'brass':  metal('ring_brass', (0.80, 0.57, 0.27), 0.24, marks='turn', marks_axis=(1, 0, 0), marks_scale=1.2, wear=0.9, wear_col=(0.95, 0.77, 0.46), grime=0.7, patina=0.15, tint_var=0.05),
-    'cut':    metal('ring_cut', (0.82, 0.60, 0.30), 0.2, marks='mill', marks_amt=0.7, wear=0.4, grime=0.5),
+    'cut':    metal('ring_cut', (0.86, 0.64, 0.33), 0.17, aniso=0.3, marks='mill', marks_amt=0.8, wear=0.0, grime=0.2),
+    'cut_b':  metal('body_cut', (0.78, 0.58, 0.30), 0.22, marks='mill', marks_amt=0.8, wear=0.0, grime=0.3),
+    'cut_s':  metal('steel_cut', (0.64, 0.64, 0.65), 0.18, marks='mill', marks_amt=0.8, wear=0.0, grime=0.2),
     'body':   metal('body_brass', (0.72, 0.52, 0.25), 0.30, marks='stamp', marks_scale=0.5, wear=0.9, wear_col=(0.92, 0.74, 0.44), grime=0.8, patina=0.3, tint_var=0.08),
     'steel':  metal('spindle', (0.50, 0.50, 0.51), 0.22, aniso=0.5, marks='turn', marks_axis=(1, 0, 0), wear=0.5, grime=0.5),
     'shackle': metal('shackle', (0.58, 0.58, 0.59), 0.2, aniso=0.4, marks='grind', marks_axis=(1, 0, 0), wear=0.6, grime=0.4, smudge=1.0),
@@ -36,6 +38,14 @@ R_OUT, R_IN, SP_R, LUG_R, THK, PITCH = 15.0, 6.0, 4.6, 8.4, 10.0, 13.0   # tall 
 RX = [-19.5 + PITCH * i for i in range(4)]       # ring centres along X
 STATES = [('set', 0, 0.0), ('bind', 144, 0.0), ('false', 0, 0.0), ('free', 252, 0.3)]  # gate angle (deg from top), gap
 SHIFT = 0.0
+
+def mark_cut(o, mat):
+    """Give the faces lying on the section plane (y = 0) their own milled finish, so the cut reads as a cut."""
+    if mat.name not in o.data.materials: o.data.materials.append(mat)
+    mi = list(o.data.materials).index(mat)
+    for pg in o.data.polygons:
+        if pg.normal.y < -0.99 and abs(pg.center.y) < 0.02: pg.material_index = mi
+    return o
 
 def cut_half(o):
     boolean(o, box('cut', -300, 300, -200, 0, -300, 300))
@@ -56,7 +66,7 @@ def ring(i, x, st, gate_deg):
     for k in range(10):  # detent V-grooves on the right face
         v = box('dv', x + THK / 2 - 0.5, x + THK / 2 + 1, -0.45, 0.45, R_IN + 1.6, R_IN + 3.0)
         v.data.transform(Matrix.Rotation(math.radians(36 * k + 18), 4, 'X')); boolean(o, v)
-    cut_half(o); put(o, MAT['brass'], 0.25, 3)
+    cut_half(o); put(o, MAT['brass'], 0.25, 3); mark_cut(o, MAT['cut'])
     # digits (black-filled engraving) on the flats; the flat at the top shows the current digit
     for k in range(10):
         ang = math.radians(36 * k)
@@ -77,7 +87,7 @@ for i, ((st, gdeg, gap), x) in enumerate(zip(STATES, RX)):
     if i < 3:
         sx = x + THK / 2 + (PITCH - THK) / 2
         w = lathe_x('spacer', [(sx - 1.2, LUG_R + 0.3), (sx - 1.2, R_OUT - 2.2), (sx + 1.2, R_OUT - 2.2), (sx + 1.2, LUG_R + 0.3)], seg=128)
-        boolean(w, cyl('bp', 0.8, 4, (sx, 0, -(R_IN + 2.3)), axis='X', verts=24)); cut_half(w); put(w, MAT['body'], 0.12, 2)
+        boolean(w, cyl('bp', 0.8, 4, (sx, 0, -(R_IN + 2.3)), axis='X', verts=24)); cut_half(w); put(w, MAT['body'], 0.12, 2); mark_cut(w, MAT['cut_b'])
         b = bpy.ops.mesh.primitive_uv_sphere_add(radius=0.75, location=(sx - 1.25, 0.7, -(R_IN + 2.3))); put(bpy.context.object, MAT['steel'])
 
 # ---------------------------------------------------------------- spindle (shackle leg) with lugs
@@ -88,18 +98,18 @@ for (st, gdeg, gap), x in zip(STATES, RX):
     else: lx0 = face - 3.0 - gap                         # pressed on the face (gap 0) or just short of it
     lug = box('lug', lx0, lx0 + 3.0, -1.5, 1.5, SP_R - 0.4, LUG_R)
     boolean(sp, lug, 'UNION')
-cut_half(sp); put(sp, MAT['steel'], 0.08, 2)
+cut_half(sp); put(sp, MAT['steel'], 0.08, 2); mark_cut(sp, MAT['cut_s'])
 
 # ---------------------------------------------------------------- body (left), end cap (right), shackle
 body = prism('body', [(-56 + 3 * (1 - math.cos(math.radians(t))), -17 + 3 * (1 - math.sin(math.radians(t)))) for t in range(0, 91, 15)] +
              [(-27.2, -17.0), (-27.2, 24.0)] + [(-56 + 4 - 4 * math.sin(math.radians(t)), 24 - 4 + 4 * math.cos(math.radians(t))) for t in range(0, 91, 15)], -17, 17)
 boolean(body, lathe_x('bh', [(-60, SP_R + 0.15), (-26, SP_R + 0.15)], seg=96))
 boolean(body, cyl('latch', 4.4, 40, (-40, 0, 20), verts=64))
-cut_half(body); put(body, MAT['body'], 0.5, 3)
+cut_half(body); put(body, MAT['body'], 0.5, 3); mark_cut(body, MAT['cut_b'])
 for (rx, rz) in [(-51.0, -12.0), (-51.0, 19.0), (-31.5, -12.0)]:
     screw_head('brivet', (rx, 17.0, rz), 1.4, 0.5, axis='Y', slot=False, kind='dome', mat=MAT['body'])
 cap = lathe_x('cap', [(26.2, SP_R + 0.2), (26.2, 16.0), (27.6, 17.0), (31.0, 17.0), (32.5, 15.6), (32.5, SP_R + 0.2)], seg=160)
-cut_half(cap); put(cap, MAT['body'], 0.25, 3)
+cut_half(cap); put(cap, MAT['body'], 0.25, 3); mark_cut(cap, MAT['cut_b'])
 # shackle: round steel bar, U with straight legs and rounded corners
 def arc(cx, cz, r, a0, a1, n=10):
     return [Vector((cx + r * math.cos(math.radians(a0 + (a1 - a0) * k / n)), 0, cz + r * math.sin(math.radians(a0 + (a1 - a0) * k / n)))) for k in range(n + 1)]

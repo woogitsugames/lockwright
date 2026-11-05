@@ -23,7 +23,7 @@ bricks = brick_wall('bricks', brick=(0.34, 0.19, 0.13), seed=2, wash_amt=0.95)
 plaster = lime_wall('plaster', (0.66, 0.64, 0.58), seed=8, dirt=0.4, cracks=0.4)
 ceil_m = lime_wall('ceil', (0.62, 0.60, 0.55), seed=9, dirt=0.3, cracks=0.2)
 concrete = terrazzo('concrete', matrix=(0.34, 0.33, 0.31), seed=6)
-vice_paint = paint('vice_paint', (0.05, 0.10, 0.14), rough=0.38, metal_col=(0.42, 0.42, 0.41), chip=0.9, grime=0.8)
+vice_paint = paint('vice_paint', (0.035, 0.07, 0.10), rough=0.38, metal_col=(0.42, 0.42, 0.41), chip=0.6, grime=0.9)
 mach_paint = paint('mach_paint', (0.10, 0.13, 0.11), rough=0.35, metal_col=(0.45, 0.45, 0.44), chip=0.6, grime=0.8)
 lamp_paint = paint('lamp_paint', (0.07, 0.12, 0.09), rough=0.3, metal_col=(0.5, 0.5, 0.48), chip=0.5, grime=0.5)
 steel = metal('steel', (0.58, 0.58, 0.57), 0.28, marks='grind', marks_scale=0.6, wear=0.5, grime=0.7, smudge=0.6, bevel_r=0.4)
@@ -60,7 +60,7 @@ tb = tea.node_tree.nodes['Principled BSDF']; tb.inputs['Base Color'].default_val
 void = dark_mat('void')
 
 def beech(seed, center, width=40):
-    l = jitter((0.40, 0.26, 0.14), 0.14, rng); d = jitter((0.24, 0.13, 0.06), 0.14, rng)
+    l = jitter((0.33, 0.21, 0.11), 0.14, rng); d = jitter((0.19, 0.10, 0.045), 0.14, rng)
     c = list(center); c[2] += rng.uniform(-0.4, 0.4) * width
     return oak('beech%d' % seed, light=l, dark=d, axis='X', seed=seed, ring=rng.uniform(2.0, 3.5), incline=rng.uniform(-0.04, 0.04),
                depth=rng.uniform(80, 200), coat=0.0, rough=0.55, wear=0.9, grime=0.9, pores=0.35, flecks=0.6, center=tuple(c), contrast=0.6)
@@ -108,12 +108,12 @@ bx('drawer', -330, 330, BY0 + 4, BY0 + 12, BZ - 180, BZ - 70, dw, bev=1.5)
 for x in (-1080, 1080):
     bx('leg', x - 45, x + 45, BY0 + 20, BY0 + 110, 0, BZ - 60, beech(42 + x // 1000, (x, BY0 + 65, 400)), bev=3)
 pull = lathe_x('pull', [(0, 0.01), (0, 14), (3, 14), (5, 6), (14, 5), (18, 9), (22, 9), (24, 0.01)], seg=48)
-pull.data.transform(Matrix.Rotation(math.radians(-90), 4, 'Z')); pull.location = (0, BY0 + 4, BZ - 125); setmat(pull, brass)
+pull.data.transform(Matrix.Rotation(math.radians(-90), 4, 'Z')); pull.location = (0, BY0 + 4, BZ - 145); setmat(pull, brass)
 # card holder on the drawer (label slot)
-fr = slab('dr_frame', rounded_rect(84, 36, 3), 1.6, brass, bev=0.4)
-cut(fr, place(slab('dr_win', rounded_rect(72, 24, 2), 8), (0, 0, -3)))
-place(fr, (0, BY0 + 3, BZ - 95), rot=(90, 0, 0))
-bx('dr_card', -38, 38, BY0 + 3.2, BY0 + 3.8, BZ - 112, BZ - 78, label_m)
+fr = slab('dr_frame', rounded_rect(136, 50, 3), 1.6, brass, bev=0.4)
+cut(fr, place(slab('dr_win', rounded_rect(122, 36, 2), 8), (0, 0, -3)))
+place(fr, (0, BY0 + 3, BZ - 100), rot=(90, 0, 0))
+bx('dr_card', -64, 64, BY0 + 3.2, BY0 + 3.8, BZ - 123, BZ - 77, label_m)
 
 # ---------------------------------------------------------------- pegboard + tools
 PX0, PX1, PZ0, PZ1, PY = -30, 660, 990, 1720, -22
@@ -371,8 +371,8 @@ for z0, nm in ((0, 'nb_back'), (7.6, 'notebook')):
 bx('nb_pages', -72, 74, -104, 104, 1.45, 7.6, pad_m).data.transform(Matrix.Translation(Vector((NBX, NBY, BZ))) @ Matrix.Rotation(math.radians(NBR), 4, 'Z'))
 sp_ = bx('nb_spine', -80, -64, -107, 107, -0.3, 9.4, cloth, bev=1.5); sp_.data.transform(Matrix.Translation(Vector((NBX, NBY, BZ))) @ Matrix.Rotation(math.radians(NBR), 4, 'Z'))
 NB_M = Matrix.Translation(Vector((NBX, NBY, BZ + 9.05))) @ Matrix.Rotation(math.radians(NBR), 4, 'Z')
-lab = slab('nb_label', rounded_rect(96, 44, 4), 0.2, label_m); lab.matrix_world = NB_M @ Matrix.Translation(Vector((6, 40, 0)))
-nb_label = [NB_M @ Vector((6 + u, 40 + v, 0.25)) for u, v in ((-44, 18), (44, 18), (44, -18), (-44, -18))]
+lab = slab('nb_label', rounded_rect(124, 62, 4), 0.2, label_m); lab.matrix_world = NB_M @ Matrix.Translation(Vector((6, 36, 0)))
+nb_label = [NB_M @ Vector((6 + u, 36 + v, 0.25)) for u, v in ((-58, 27), (58, 27), (58, -27), (-58, -27))]
 pen = lathe_x('pencil', [(0, 0.01), (0, 1.0), (16, 3.6), (18, 3.7), (170, 3.7), (170, 0.01)], seg=6)
 pen.location = (NBX - 70, NBY - 50, BZ + 13); pen.rotation_euler = (0, 0, math.radians(32))
 pen_m = oil_paint('pencil_paint', (0.55, 0.36, 0.05), rough=0.3, chips=0.1, scuffs=0.1, strokes='X'); setmat(pen, pen_m)
@@ -425,7 +425,7 @@ AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM
 world_hdri(0.03, 'interior.exr', sat=0.3)
 bpy.ops.object.light_add(type='AREA', location=tuple(HEAD)); sp = bpy.context.object
 sp.data.shape = 'DISK'; sp.data.size = 60; sp.data.spread = math.radians(80)
-sp.data.energy = 2.6e7; sp.data.color = (1.0, 0.70, 0.42); sp.rotation_euler = SHADE_ROT
+sp.data.energy = 1.5e7; sp.data.color = (1.0, 0.70, 0.42); sp.rotation_euler = SHADE_ROT
 # window on the left wall: evening, cool; plus a dim warm practical bounce from the room
 area_light('window', (-1750, -900, 1900), AIM, 1200, 1.0e7, (0.70, 0.80, 1.0), size_y=1400)
 area_light('room', (600, -2900, 2600), AIM, 1800, 2.5e6, (1.0, 0.82, 0.62))
@@ -436,7 +436,7 @@ area_light('case_light', ((CX0 + CX1) / 2, CY1 - 40, CZ1 - 22), a_case, 420, 7e5
 # ---------------------------------------------------------------- camera + render
 cam = photo_camera((-20, -930, 1650), yaw=0.0, lens=18.0, pitch=-39.0, shift=(0.0, 0.045))
 cam.data.sensor_fit = 'VERTICAL'; cam.data.sensor_height = 36.0; cam.data.sensor_width = 36.0
-render_setup(OUT, RES, SAMPLES, crop=tuple(float(v) for v in CROP.split(',')) if CROP else None, exposure=-0.25, look='AgX - Medium High Contrast', bounces=10)
+render_setup(OUT, RES, SAMPLES, crop=tuple(float(v) for v in CROP.split(',')) if CROP else None, exposure=-0.35, look='AgX - Medium High Contrast', bounces=10)
 scene.cycles.adaptive_threshold = 0.01
 photo_finish(0.28)
 write_anchors(os.path.splitext(os.path.abspath(OUT))[0] + '.json', {
@@ -444,7 +444,7 @@ write_anchors(os.path.splitext(os.path.abspath(OUT))[0] + '.json', {
     'case': [(CX0, CY0, CZ1), (CX1, CY0, CZ1), (CX1, CY0, CZ0), (CX0, CY0, CZ0)],
     'vice': [(VX - 90, VY - 40, BZ + 180), (VX + 90, VY - 40, BZ + 180), (VX + 90, VY - 260, BZ), (VX - 90, VY - 260, BZ)],
     'machine': [(KMX - 165, KMY - 60, BZ + 200), (KMX + 165, KMY - 60, BZ + 200), (KMX + 165, KMY - 115, BZ), (KMX - 165, KMY - 115, BZ)],
-    'drawer_card': [(-34, BY0 + 3, BZ - 83), (34, BY0 + 3, BZ - 83), (34, BY0 + 3, BZ - 107), (-34, BY0 + 3, BZ - 107)],
+    'drawer_card': [(-60, BY0 + 3, BZ - 83), (60, BY0 + 3, BZ - 83), (60, BY0 + 3, BZ - 117), (-60, BY0 + 3, BZ - 117)],
 })
 bpy.ops.render.render(write_still=True)
 print('WROTE', scene.render.filepath)
