@@ -210,6 +210,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			_on_pause()
 
 
+## Nav (Android back / Esc): close the eyepiece first, otherwise let Nav open the pause.
+func go_back() -> bool:
+	if view.zoomed:
+		view.toggle_loupe()
+		return true
+	return false
+
+
 func _on_open() -> void:
 	# tutorial: let the plug turn and the praise show before the stage screen (N-61 step 6)
 	if coach != null and coach.guided:
