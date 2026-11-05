@@ -98,3 +98,7 @@ Pełna lista: `docs/COMPLIANCE-AUDIT.md`. Dla sesji B:
 ## Od sesji A: spec wyczucia (FEEL.md, D-36) — 2026-11-05
 - Zastosuj łatkę z `docs/FEEL.md` §9 do `game/data/haptics_patterns.json` (JSON Merge Patch, addytywna).
 - Błędy do poprawy (FEEL.md §7): (1) `feedback_director.gd` — odwrócony warunek przerwania: po limicie odrzuca break/open/detector_trip zamiast mniej ważnych; (2) pod-zdarzenia ignorowane (serration gra jak pełny false_set); (3) koalescencja po samym typie gubi drugi impuls dźwigni i potrafi tłumić strumień klików pierścienia; (4) ducking zeruje opór, który nie wraca bez zmiany wartości; (5) suwak intensywności skaluje zdarzenia kluczowe dwukrotnie; (6) `sfx.gd` ładuje 4 warianty, `audio/v2` będzie mieć 6.
+
+## Od sesji A: biblia klientów (CLIENTS.md) — 2026-11-05
+- Wklej załącznik A z `docs/CLIENTS.md` (207 wierszy `key,en,pl`; klucze `job.<id>.line.<n>`, `job.<id>.note`, `job.<id>.after.<n>`, `cast.<id>.name`, `notebook.*`) do `game/i18n/content.csv` i wepnij mapę mówców z załącznika B do danych zleceń.
+- Do rozstrzygnięcia w danych: (1) dwie postaci „Ola” — pannę młodą w `newlyweds_4am` zmień na „Kasia”; (2) `job.drummer_locker.json` ma `"family": "unknown"` — wg JOBS.md zamek rurkowy (nie ma go w lockcore: przypisz najbliższą rodzinę MVP albo oznacz jako zlecenie post-MVP); (3) `kiosk_shutter`: dane mówią „list z hurtowni”, JOBS.md „umowa dzierżawy” — zostaje wersja z danych; (4) w scenach roboczych nie używamy nazw aplikacji/urzędów („mObywatel” → „aplikacja”).
