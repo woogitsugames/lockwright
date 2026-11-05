@@ -10,6 +10,10 @@ namespace lockcore::pin {
 
 inline constexpr std::string_view FAMILY_ID = "pin_tumbler";
 inline constexpr std::int32_t RULES_VERSION = 1;
+// v0.6 (D-59): dimple cylinder, the same module with a flag (LOCKS.md §2.20).
+inline constexpr std::string_view DIMPLE_FAMILY_ID = "dimple";
+inline constexpr std::int32_t DIMPLE_RULES_VERSION = 1;
+inline constexpr std::uint8_t DIMPLE_SIDE_ROW = 16;  // ElementView::variant bit: pin in the side row
 
 enum class Variant : std::uint8_t { standard, spool, serrated, spool_serrated };
 std::string_view variant_name(Variant v);
@@ -66,5 +70,6 @@ inline constexpr q16 BOUND_SPEED = q16_per_step(2 * Q16_ONE);
 inline constexpr q16 SPOOL_SPEED = q16_per_step(q16_milli(600));
 
 std::unique_ptr<FamilyModule> make_module();
+std::unique_ptr<FamilyModule> make_dimple_module();  // dimple, t1-t3
 
 }  // namespace lockcore::pin

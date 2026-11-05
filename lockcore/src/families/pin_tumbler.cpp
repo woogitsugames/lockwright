@@ -11,6 +11,12 @@
 //  - false_set: a spool caught at its false gate; only lifts while T is inside the
 //               counter-rotation band [cr_lo, cr_hi] (emits counter_rotate);
 //  - overset:   jams the core until T < t_release.
+//
+// dimple (v0.6, D-59, LOCKS.md §2.20): the same module with dimple_ set. Pins
+// pressed from the flat side of the key in two rows (odd elements = side row,
+// ElementView::variant bit 4), telescoping pins = the spool rule (outer sleeve
+// catches at its false gate, inner pin lifts only in the counter-rotation band),
+// no serrations, tiers 1-3, own ids / seeds, flag pick tool. pin_tumbler unchanged.
 #include "lockcore/pin_tumbler.hpp"
 
 #include <algorithm>
@@ -61,15 +67,20 @@ void to_free(StackState& s) {
 
 class Module final : public FamilyModule {
  public:
-  std::string_view id() const override { return FAMILY_ID; }
-  std::int32_t rules_version() const override { return RULES_VERSION; }
-  std::uint32_t input_mask() const override { return AXIS_TENSION | AXIS_DEPTH | AXIS_LIFT; }
-  ToolSet required_tools(const LockSpec&) const override { return ToolSet{TOOL_TENSION_WRENCH | TOOL_HOOK}; }
+  explicit Module(bool dimple) : dimple_(dimple) {}
 
-  int min_tier() const override { return 2; }
-  int max_tier() const override { return 7; }
+  std::string_view id() const override { return dimple_ ? DIMPLE_FAMILY_ID : FAMILY_ID; }
+  std::int32_t rules_version() const override { return dimple_ ? DIMPLE_RULES_VERSION : RULES_VERSION; }
+  std::uint32_t input_mask() const override { return AXIS_TENSION | AXIS_DEPTH | AXIS_LIFT; }
+  ToolSet required_tools(const LockSpec&) const override {
+    return ToolSet{dimple_ ? TOOL_TENSION_WRENCH | TOOL_DIMPLE_FLAG : TOOL_TENSION_WRENCH | TOOL_HOOK};
+  }
+
+  int min_tier() const override { return dimple_ ? 1 : 2; }
+  int max_tier() const override { return dimple_ ? 3 : 7; }
 
   DifficultyVector difficulty_for_tier(int tier) const override {
+    if (dimple_) return dimple_difficulty(tier);
     // LOCKS.md §2.6 generator table, t2..t7.
     struct Row {
       int n_min, n_max, win, band, margin, spread, mbp, sec_min, sec_max, noise, grace, limit;
@@ -113,7 +124,7 @@ class Module final : public FamilyModule {
 
   std::vector<SpecError> validate(const LockSpec& spec) const override {
     std::vector<SpecError> e;
-    if (spec.family != FAMILY_ID) e.push_back({"family", "not pin_tumbler"});
+    if (spec.family != id()) e.push_back({"family", dimple_ ? "not dimple" : "not pin_tumbler"});
     if (!spec.params) {
       e.push_back({"spec", "missing parameters"});
       return e;
@@ -379,6 +390,7 @@ class Module final : public FamilyModule {
       e.window_lo = P.win_lo(P.stacks[i]);
       e.window_hi = P.win_hi(P.stacks[i]);
       e.variant = static_cast<std::uint8_t>(P.stacks[i].variant);
+      if (dimple_ && i % 2 == 1) e.variant = static_cast<std::uint8_t>(e.variant | DIMPLE_SIDE_ROW);
       v.elements.push_back(e);
       sets += s.st == ElementState::set ? 1 : 0;
       caught = caught || s.st == ElementState::false_set;
@@ -582,9 +594,41 @@ class Module final : public FamilyModule {
   }
 
  private:
+  bool dimple_ = false;
+
+  static DifficultyVector dimple_difficulty(int tier) {
+    // new-families.md §3: 4 -> 6 pins, telescoping (sec) from t2, window 0.14 -> 0.10.
+    struct Row {
+      int n_min, n_max, win, band, margin, spread, mbp, sec_min, sec_max, noise, grace, limit;
+    };
+    static constexpr Row rows[] = {
+        {4, 4, 140, 300, 120, 1000, 0, 0, 0, 0, 300, 90},     // t1
+        {4, 5, 120, 260, 100, 900, 0, 1, 1, 50, 250, 120},    // t2
+        {5, 6, 100, 220, 80, 700, 50, 1, 2, 80, 220, 120},    // t3
+    };
+    const int t = std::clamp(tier, 1, 3);
+    const Row& r = rows[t - 1];
+    DifficultyVector d;
+    d.tier = t;
+    d.n_min = r.n_min;
+    d.n_max = r.n_max;
+    d.win_shear = q16_milli(r.win);
+    d.tension_band = q16_milli(r.band);
+    d.overset_margin = q16_milli(r.margin);
+    d.bind_spread = q16_milli(r.spread);
+    d.multi_bind_p = q16_milli(r.mbp);
+    d.sec_min = r.sec_min;
+    d.sec_max = r.sec_max;
+    d.noise = q16_milli(r.noise);
+    d.drop_grace_ms = r.grace;
+    d.s_max = Q16_ONE;
+    d.time_limit_s = r.limit;
+    return d;
+  }
+
   LockSpec generate_once(std::uint64_t seed, std::uint32_t attempt, const DifficultyVector& d) const {
-    Pcg32 rng(derive_seed(seed ^ splitmix64(attempt), FAMILY_ID, RULES_VERSION, "gen"),
-              derive_stream(FAMILY_ID, "gen"));
+    Pcg32 rng(derive_seed(seed ^ splitmix64(attempt), id(), static_cast<std::uint32_t>(rules_version()), "gen"),
+              derive_stream(id(), "gen"));
     auto P = std::make_shared<Params>();
     const int n = rng.range(d.n_min, d.n_max);
     P->win_shear = d.win_shear;
@@ -633,7 +677,7 @@ class Module final : public FamilyModule {
     for (int i = n - 1; i > 0; --i) std::swap(pool[static_cast<std::size_t>(i)], pool[rng.below(static_cast<std::uint32_t>(i + 1))]);
     for (int j = 0; j < sec; ++j) {
       Stack& s = P->stacks[static_cast<std::size_t>(pool[static_cast<std::size_t>(j)])];
-      const int kinds = d.tier >= 7 ? 3 : 2;
+      const int kinds = dimple_ ? 1 : (d.tier >= 7 ? 3 : 2);  // dimple: telescoping (spool) only
       const int pickv = rng.range(0, kinds - 1);
       s.variant = pickv == 0 ? Variant::spool : (pickv == 1 ? Variant::serrated : Variant::spool_serrated);
       const q16 lo = P->win_lo(s);
@@ -649,13 +693,13 @@ class Module final : public FamilyModule {
     }
 
     LockSpec spec;
-    spec.family = std::string(FAMILY_ID);
-    spec.rules_version = RULES_VERSION;
-    spec.id = "gen.pin_tumbler.t" + std::to_string(d.tier) + "." + std::to_string(seed);
+    spec.family = std::string(id());
+    spec.rules_version = rules_version();
+    spec.id = "gen." + std::string(id()) + ".t" + std::to_string(d.tier) + "." + std::to_string(seed);
     spec.source = "generated";
     spec.seed = seed;
     spec.difficulty = d;
-    spec.material = MaterialId::brass;
+    spec.material = dimple_ ? MaterialId::steel : MaterialId::brass;
     spec.params = P;
     return spec;
   }
@@ -673,6 +717,7 @@ std::string_view variant_name(Variant v) {
   return "standard";
 }
 
-std::unique_ptr<FamilyModule> make_module() { return std::make_unique<Module>(); }
+std::unique_ptr<FamilyModule> make_module() { return std::make_unique<Module>(false); }
+std::unique_ptr<FamilyModule> make_dimple_module() { return std::make_unique<Module>(true); }
 
 }  // namespace lockcore::pin

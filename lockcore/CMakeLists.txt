@@ -69,6 +69,7 @@ if(LOCKCORE_BUILD_TESTS)
     tests/test_warded.cpp
     tests/test_dial_safe.cpp
     tests/test_combo.cpp
+    tests/test_dimple.cpp
     tests/test_replay.cpp
     tests/test_fuzz.cpp
   )

@@ -1161,6 +1161,39 @@ pierścieniowej.
 
 ---
 
+### 2.20 Wkładka nawiercana (wariant D-59) — `dimple`
+**PL:** Wkładka nawiercana · **EN:** Dimple Cylinder · **Tier:** t1–3 (lockcore v0.6) · **Faza:** D-59
+(zlecenie `job.brussels_townhouse` t2). Research: `docs/research/new-families.md` §3. Wczesna, prostsza wersja
+idei z §2.15 (t6–9 bez zmian).
+
+**Zasada.** Wkładka bębenkowa z nacięciami wierconymi w płaskiej stronie klucza; kołki wchodzą z boku, w rzędach;
+część kołków teleskopowa (kołek w tulei).
+
+**Logika zagadki.** Moduł `pin_tumbler` z flagą `dimple` (`pin_tumbler.cpp`, jak `lever_detector`):
+wspólny model napięcia §1.5, kolejność wiązania, overset, zrzut, łamanie narzędzia. Różnice:
+- **kołek teleskopowy** (od t2) = reguła szpulki: zewnętrzna tuleja siada wcześniej (`false_set`, rdzeń
+  drga mocniej), wewnętrzny kołek idzie dalej tylko w paśmie przeciwobrotu `[0,12; 0,21]` (`counter_rotate`);
+  w pliku zamka nazywa się `"variant": "spool"`. Brak kołków ząbkowanych (serrated).
+- **dwa rzędy:** kołki nieparzyste są w rzędzie bocznym (`ElementView::variant` bit 4 = `DIMPLE_SIDE_ROW`, tylko
+  widok; dolne 4 bity = wariant kołka).
+- narzędzie: napinacz + **chorągiewka** (`TOOL_DIMPLE_FLAG`), materiał stal, tiery 1–3, własne seedy.
+
+**Wejścia.** Jak piny: `tension`, `pick_depth` = który kołek, `pick_lift` = docisk chorągiewki.
+
+| Tier | Kołki | Okno | Pasmo | Overset | Teleskopowe | Limit |
+|---|---|---|---|---|---|---|
+| t1 | 4 | 0,14 | 0,30 | 0,12 | 0 | 90 s |
+| t2 | 4–5 | 0,12 | 0,26 | 0,10 | 1 | 120 s |
+| t3 | 5–6 | 0,10 | 0,22 | 0,08 | 1–2 | 120 s |
+
+**ViewModel.** Jak `pin_tumbler` (pozycja kołka, okno, stany free/bound/near/set/false_set/overset, `stress`),
+plus bit rzędu w `variant`.
+
+**Weryfikator (1000 seedów/tier).** Skryptowy 0 porażek (t_p50 7,5–8,8 s), niezdarny 100 %, czujący 100 %
+(t_p50 15/18/23 s). Złote: `dimple_t2_s9`, `dimple_t3_s21_feel`.
+
+---
+
 ## 3. Tabela zbiorcza
 
 | # | ID | PL / EN | Tier | Faza | Widok | Wejścia | Kluczowa nowa logika | Narzędzie główne |
@@ -1183,6 +1216,7 @@ pierścieniowej.
 | 2.16 | `sidebar` | Listwa boczna / Sidebar Lock | 6–9 | F3 | bok + warstwa | T, D, L, R | dwie warstwy warunków | Piórko boczne |
 | 2.17 | `hybrid` | Hybrydy / Hybrid Locks | 8–10 | F3 | dzielony | suma | kompozycja modułów | suma |
 | 2.18 | `dial_safe` | Sejf z pokrętłem / Dial Safe | 1–3 | D-59 | czoło + przekrój kół | T, L | pakiet kół, nasłuch, zmiana kierunku | Słuchawka |
+| 2.20 | `dimple` (D-59) | Wkładka nawiercana / Dimple Cylinder | 1–3 | D-59 | bok, dwa rzędy | T, D, L | kołek teleskopowy | Chorągiewka |
 | 2.19 | `combo` | Zamek z kółkami / Thumbwheel Combination Lock | 1–4 | D-59 | przód + przekrój tulejek | T, D, L | wiązanie + poślizg tulejki | Ciągadło kabłąka |
 
 T = tension, D = pick_depth, L = pick_lift, R = rotate, P = push.

@@ -49,6 +49,7 @@ enum ToolBits : std::uint32_t {
   TOOL_SHACKLE_PULLER = 1u << 6,  // ring_combo, combo
   // v0.6 (additive)
   TOOL_LISTENING_CUP = 1u << 7,   // dial_safe
+  TOOL_DIMPLE_FLAG = 1u << 8,     // dimple (flat "flag" pick for side-drilled pins)
 };
 struct ToolSet {
   std::uint32_t bits = TOOL_TENSION_WRENCH | TOOL_HOOK;
