@@ -920,3 +920,16 @@ Pozostałe błędy silnika (nieblokujące): `add_child()` w trakcie `_ready` rod
 **Zmiany w automacie (moje, `qa/`):** martwy przycisk (ten sam przycisk 40× bez zmiany ekranu) kończy przebieg jako `dead_button` z nazwą przycisku zamiast mało mówiącego „decision limit”; raport grupuje błędy skryptów (licznik + miejsce `at:`), błędy parsowania idą na górę, więc jeden powtarzany błąd nie zasłania skryptu, który się nie kompiluje.
 
 **N-47 · Low · Przyjazd: numer na tabliczce UI ≠ numer na drzwiach w tle** · `job_arrival.gd` (`_add_background`) — „Rosół na gazie” (`job.grandma_broth`): tabliczka G01 „7”, a tło G07 pokazuje drzwi z numerem 12 (zrzut `capture_game.sh`, `arrival_pl.png`). Dobrać tło do numeru mieszkania z danych zlecenia albo wybrać tło bez czytelnego numeru.
+
+## Runda CI 3 — 2026-11-05 15:40 (strażnik CI, zasada nr 1 sesji B)
+
+| Workflow | Ostatni zakończony run na `main` | Wynik | Przyczyna / stan |
+|---|---|---|---|
+| `game-ios` | 42035783023 (a11934f) | ❌ | Po 9eca512 kompiluje się, ale `xcodebuild -create-xcframework`: `error: the path does not point to a valid library: …/bin/liblockwright_haptics.ios.template_release.dylib` (scons zbudował plik bez rozszerzenia). B wypchnęła już afbd957 (jawne `.dylib` w nazwie celu) — run czeka w kolejce. |
+| `game-android` | 42023529526 (81aa034), job `release-aab` | ❌ | `workshop_screen.gd:21` Parse Error (**N-44**) + `job_arrival.gd:69`, `jobs_list.gd:25` (inferencja typu z Variant = błąd w eksporcie wydaniowym; naprawione w a11934f). N-44 nadal otwarte. Dodatkowo `ERROR: Code Signing: Could not find release keystore` — krok podpisu miał się pomijać bez sekretów (D-47), a eksport presetu `AndroidRelease` i tak go wymaga: przy braku sekretów eksportować niepodpisany AAB (`--export-release` z `package/signed=false`) albo pominąć cały job. |
+| `qa-career` | 42022913627 (34048e5) | ❌ | Błędy gry: **N-44** (warsztat) i **N-45** (`icon_max_width`); poprawki zweryfikowane lokalnie, po nich zielony. |
+| `perf-budget` | 42023529473 (81aa034) | ❌ | **N-30**: paczka 289 MB; poprawka zweryfikowana lokalnie (52,5 MB). |
+| `game-tests`, `game-screens` | runy z 13:16 w kolejce | — | kolejka runnerów zapchana od ok. 11:45 |
+| `spike-planb` | 42023529474 | ✅ | (mój; od 184fa84 buduje też `liblockcore_gd` arm64) |
+
+**Zasada nr 1 (`SESSION-B-PROMPT-5.md`):** w `SESSION-B-LOG.md` wpisy „Etap 5, zadanie 3” i „zadanie 4” opisują zadania jako wykonane (✅ tylko przy lokalnych sprawdzaczach: `loc_qa.py` ✅, `check_sfx.py` ✅), ale **bez linku do zielonego runu**, choć w tym czasie `qa-career`, `game-android`, `game-ios` były czerwone. To nie jest formalne ✅ zadania, ale zasada wymaga linku do zielonego runu — zgłaszam jako naruszenie. Zadanie 1 etapu 5 B (CI na zielono) jest w toku i nie ma ✅ — zgodnie z zasadą.
