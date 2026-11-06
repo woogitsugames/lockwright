@@ -36,9 +36,9 @@ MAT = {
 
 if photo_enabled():  # photo PBR maps (art/textures/photo); --photo 0 = procedural
     MAT.update({
-        # outer ring surface: handled brass, same recipe as the lever-lock levers (the milled photo stays on the cut faces,
-        # roughness variation kept low: the photo's round stains otherwise flash as rings on the flats;
-        # so section and outside read apart; milled scallops on the narrow flats looked like wood grain)
+        # outer ring surface: handled brass like the lever-lock levers (the milled photo stays on the cut faces,
+        # so section and outside read apart; milled scallops on the narrow flats looked like wood grain).
+        # Roughness variation kept low: the photo's round stains otherwise flash as rings on the flats.
         'brass':  photo_mat('ph_ring_brass', 'brass_patina_grease', scale=60, rot=12, base=(0.82, 0.60, 0.29), base_mix=0.85,
                             rough_mul=0.18, rough_add=0.28, bump=0.04, wear=0.9, grime=0.8),
         'cut':    photo_mat('ph_ring_cut', 'brass_face_milled', scale=30, rot=42, tint=(1.15, 1.05, 0.9), bump=0.15, grime=0.2),
