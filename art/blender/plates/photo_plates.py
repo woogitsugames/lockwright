@@ -21,6 +21,8 @@ FAMILY = _arg('--family', 'wafer')
 OUT_DIR = os.path.abspath(_arg('--out-dir', os.path.join(ROOT_DIR, 'game', 'assets', 'photoreal_families', FAMILY, 'photo')))
 RES = _arg('--res', '1236x1650')
 SAMPLES = _arg('--samples', '48')
+PASSES = _arg('--passes', 'parts,plate').split(',')
+DETECTOR = _arg('--detector', '0')  # lever: 1 = the detector lever in (parts_detector.png)
 os.makedirs(OUT_DIR, exist_ok=True)
 
 CONFIG = {
@@ -38,7 +40,7 @@ CONFIG = {
     },
 }[FAMILY]
 
-sys.argv = [sys.argv[0], '--', '--res', RES, '--samples', SAMPLES, '--out', os.path.join(OUT_DIR, 'parts.png')]
+sys.argv = [sys.argv[0], '--', '--res', RES, '--samples', SAMPLES, '--out', os.path.join(OUT_DIR, 'parts.png')] + (['--detector', DETECTOR] if FAMILY == 'lever' else [])
 src = open(os.path.join(BLENDER_DIR, FAMILY + '.py'), encoding='utf-8').read()
 for a, b in CONFIG['replace']:
     if a not in src:
@@ -54,6 +56,10 @@ print('MOVING', sorted(o.name for o in moving))
 
 
 def render(name):
+    if name.split('.')[0] not in PASSES:
+        return
+    if DETECTOR == '1':
+        name = name.replace('.png', '_detector.png')
     scene.render.filepath = os.path.join(OUT_DIR, name)
     bpy.ops.render.render(write_still=True)
     print('WROTE', scene.render.filepath)

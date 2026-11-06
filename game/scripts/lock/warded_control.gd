@@ -38,7 +38,7 @@ func _init(tier: int = 1, p_auto: bool = false) -> void:
 
 
 ## Sampler output → lockcore input frame {tension, pick_depth, pick_lift, rotate, push, tool}.
-func map(inp: Dictionary, sampler: InputSampler, vm: Dictionary) -> Dictionary:
+func map(inp: Dictionary, sampler: InputSampler, vm: Dictionary, _delta: float = 1.0 / 120.0) -> Dictionary:
 	var right := sampler.right_down()
 	var left := sampler.left_down()
 	var lift := float(inp.get("pick_lift", 0.0))

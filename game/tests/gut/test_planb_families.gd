@@ -8,6 +8,7 @@ const HZ := 120
 const SCENES := {
 	&"wafer": "res://scenes/photoreal/lock_job_wafer.tscn",
 	&"lever": "res://scenes/photoreal/lock_job_lever.tscn",
+	&"lever_detector": "res://scenes/photoreal/lock_job_lever_detector.tscn",
 }
 var _save_backup: Dictionary
 
@@ -87,6 +88,7 @@ func _play(fam: StringName, job: Dictionary, auto: bool, max_s: float = 120.0) -
 	var right_y := 760.0
 	var pressed := false
 	var cooldown := 0
+	var resets := 0
 	for step in int(max_s * HZ):
 		if cooldown > 0:
 			cooldown -= 1
@@ -103,6 +105,24 @@ func _play(fam: StringName, job: Dictionary, auto: bool, max_s: float = 120.0) -
 		s._physics_process(dt)
 		scene._physics_process(dt)
 		var vm: Dictionary = session.describe()
+		if String(vm["elements"][0]["state"]) == "jammed":
+			# detector tripped: let go, turn the key back (left thumb down / held in auto) until reset
+			s._unhandled_input(_touch(1, Vector2(x, right_y - lift_dp), false))
+			pressed = false
+			s._unhandled_input(_touch(0, Vector2(left_x, left_y), false))
+			s._unhandled_input(_touch(0, Vector2(left_x, left_y), true))
+			if not auto:
+				s._unhandled_input(_drag(0, Vector2(left_x, left_y + 60.0)))
+			var guard := 0
+			while String(session.describe()["elements"][0]["state"]) == "jammed" and guard < 6 * HZ and not session.finished():
+				guard += 1
+				s._physics_process(dt)
+				scene._physics_process(dt)
+			s._unhandled_input(_touch(0, Vector2(left_x, left_y + 60.0), false))
+			resets += 1
+			if not auto:
+				press_left.call()
+			continue
 		var next := lift_dp > 0.9 * InputSampler.LIFT_FULL_DP
 		var oversets := 0
 		if session.is_open():
@@ -151,6 +171,10 @@ func test_every_wafer_job_opens_in_both_modes() -> void:
 
 func test_every_lever_job_opens_in_both_modes() -> void:
 	await _check_family(&"lever")
+
+
+func test_every_lever_detector_job_opens_in_both_modes() -> void:
+	await _check_family(&"lever_detector")
 
 
 func test_layout_fits_portrait_and_landscape() -> void:

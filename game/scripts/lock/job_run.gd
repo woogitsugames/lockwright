@@ -11,15 +11,18 @@ static var last_tip := 0  # N-25: tip paid by JobRun.complete()
 
 # lockcore families implemented in lockcore (v0.4); jobs with other families are
 # hidden on the list (N-05) instead of silently remapped.
-const IMPLEMENTED := [&"pin_tumbler", &"wafer", &"wooden_pin", &"warded", &"lever", &"lever_detector", &"ring_combo"]
+const IMPLEMENTED := [&"pin_tumbler", &"wafer", &"wooden_pin", &"warded", &"lever", &"lever_detector", &"ring_combo",
+		&"dial_safe"]
 ## N-63: families that already have the photoreal (plan B) lock screen. Only these are offered
 ## to the player; the rest stay hidden until their plan-B view ships (no placeholder lock.tscn).
-const PHOTOREAL_READY := [&"pin_tumbler", &"warded", &"wafer"]
+const PHOTOREAL_READY := [&"pin_tumbler", &"warded", &"wafer", &"dial_safe"]
 ## Plan-B scene per family (pin_tumbler: res://scenes/lock_job.tscn).
 const PLANB_SCENES := {
 	&"warded": "res://scenes/photoreal/lock_job_warded.tscn",
 	&"wafer": "res://scenes/photoreal/lock_job_wafer.tscn",
 	&"lever": "res://scenes/photoreal/lock_job_lever.tscn",
+	&"lever_detector": "res://scenes/photoreal/lock_job_lever_detector.tscn",
+	&"dial_safe": "res://scenes/photoreal/lock_job_dial_safe.tscn",
 }
 
 # Authored tutorial locks S1–S3 (docs/LEVELS.md §2.1–2.3, lockwright.lock/1, checked with
@@ -35,6 +38,7 @@ const FAMILY_MAP := {
 	"egyptian": &"wooden_pin",
 	"warded": &"warded",
 	"lever_detector": &"lever_detector",
+	"dial_safe": &"dial_safe",
 }
 
 

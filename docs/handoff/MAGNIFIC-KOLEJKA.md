@@ -26,11 +26,11 @@ Overhead studio photograph shot straight down, real adult craftsman's hand about
 ---
 
 ## D. Klienci w pełnej postaci do scenki przyjazdu (D-58, pilot: `job.wrong_floor`)
-**Do czego:** scenka przyjazdu renderowana w Blenderze kończy się kadrem drzwi z klientem. Gra wycina postać z tła i wkomponowuje ją w oświetlenie sceny, dlatego **tło jest jednolite, jasnoszare, a światło miękkie z lewej góry** (jak lampa klatki). Postać musi wyglądać **jak na portrecie z gry**: dołącz portret jako obraz referencyjny (character reference), plik podany przy każdej pozycji. Format 9:16, 2K, cała postać od stóp do głów, z zapasem nad głową. ZIP: `magnific_D_wrong_floor.zip`.
+**Do czego:** scenka przyjazdu renderowana w Blenderze kończy się kadrem drzwi z klientem. Gra wycina postać z tła i wkomponowuje ją w oświetlenie sceny, dlatego **tło jest jednolite, jasnoszare, a światło ciepłe z góry i lekko z tyłu po lewej (jak żarówka na klatce), z miękkim wypełnieniem od przodu** (tak stoi lampa w scenie z Blendera, `art/renders/arrival/`). Postać musi wyglądać **jak na portrecie z gry**: dołącz portret jako obraz referencyjny (character reference), plik podany przy każdej pozycji. Format 9:16, 2K, cała postać od stóp do głów, z zapasem nad głową. ZIP: `magnific_D_wrong_floor.zip`.
 
 Wspólny koniec każdego promptu:
 ```
-full body from head to shoes, standing on a plain seamless light grey studio background, soft warm light from the upper left like a stairwell lamp, natural soft shadow at the feet only, photorealistic photograph, fictional person, not resembling any celebrity, no text, no logos
+full body from head to shoes, standing on a plain seamless light grey studio background, warm light from above and slightly behind-left like a single stairwell bulb, soft neutral fill from the front, natural soft shadow at the feet only, photorealistic photograph, fictional person, not resembling any celebrity, no text, no logos
 ```
 1. `D1_kazimierz_fullbody.png` (referencja: `game/assets/ui/gpt/cast/episodic/portrait_kazimierz.webp`): `Mr Kazimierz, about 68, the same man as in the reference portrait: short grey hair, rosy cheeks, warm grin, tweed jacket over a checked shirt, slightly loosened tie, coming home late from a name-day party, a little tipsy but cheerful and dignified, holding a house key in his right hand and looking at it puzzled, slight lean on one leg,`
 2. `D2_teresa_fullbody.png` (referencja: `game/assets/ui/gpt/cast/episodic/portrait_teresa.webp`): `Mrs Teresa, about 72, the same woman as in the reference portrait: grey hair in a loose bun, soft quilted dressing gown over a nightdress, house slippers, woken up at night, peeking curiously with one hand on her chest, surprised but friendly,`

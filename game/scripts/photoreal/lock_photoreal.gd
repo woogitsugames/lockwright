@@ -43,7 +43,7 @@ var _frame_ms: PackedFloat32Array = []
 var _pose_vm := {}  # fixed ViewModel for --lw-pose
 var coach: TutorialCoach
 ## N-63: families with their own thumb mapping (warded probe: turn, reach, bit). null = pins.
-var control: WardedControl
+var control = null  # WardedControl | DetectorControl
 var fb_gain := 1.0  # ONBOARDING §4: S1 ×1.5, S2 ×1.3, S3 ×1.15
 var _open_pending := -1.0
 # N-58: quiet contact / spring cues while lifting with no tension
@@ -82,6 +82,8 @@ func _ready() -> void:
 	session = make_spec_session(spec_path, family, seed, tier) if spec_path != "" else make_session(family, seed, tier)
 	if family == &"warded":
 		_setup_warded(spec_path)
+	elif family == &"lever_detector":
+		control = DetectorControl.new(sampler.auto_tension)
 	view.pause_requested.connect(_on_pause)
 	view.set_lives(int(args.get("lw-lives", "3")))
 	view.set_dark(args.get("lw-dark", "0") == "1")
@@ -102,7 +104,7 @@ func _ready() -> void:
 		_frozen = true
 	_setup_guidance()
 	if args.has("lw-stage"):
-		if control != null:
+		if control is WardedControl:
 			_simulate_warded(String(args["lw-stage"]))
 		else:
 			_simulate_stage(String(args["lw-stage"]))
@@ -213,8 +215,8 @@ func _physics_process(delta: float) -> void:
 		return
 	var input := sampler.sample()
 	var events: Array
-	if control != null:
-		input = control.map(input, sampler, session.describe())
+	if control != null and not session is FakeLockSession:
+		input = control.map(input, sampler, session.describe(), delta)
 		events = session.step(input["tension"], input["pick_depth"], input["pick_lift"], input["rotate"], input["push"], input["tool"])
 	else:
 		events = session.step(input["tension"], input["pick_depth"], input["pick_lift"])

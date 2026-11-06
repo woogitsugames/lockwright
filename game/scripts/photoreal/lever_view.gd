@@ -16,6 +16,9 @@ const L_SCENE := L_DIR + "scene.json"
 const L_GLB := L_DIR + "lever_baked.glb"
 const L_PLATE := L_DIR + "photo/plate.png"
 const L_PARTS := L_DIR + "photo/parts.png"
+const L_PARTS_DET := L_DIR + "photo/parts_detector.png"  # same pass with the detector lever in
+const DET_PIVOT := Vector3(10.2, 5.8, -8.55)
+const DET_TRIP_DEG := -18.5
 const PIVOT := Vector3(-22.0, 4.0, 0.0)
 const STUMP := Vector3(7.7, 0.0, 0.0)
 const ARM_LEN := 29.7
@@ -29,7 +32,11 @@ const KEYHOLE := Vector3(-3.0, -18.0, 0.0)
 const BOLT_NODES := ["bolt", "stud", "stud_post"]
 const PART_PREFIX := ["lever", "spring", "rivet", "detector", "stump", "lifter", "tension"]
 
+## lever_detector (LOCKS.md §2.8): the detector lever is in; a trip throws it into the bolt's
+## tail notch, it falls back as the key is turned back (reset_progress).
+@export var detector := false
 var _by := {}
+var _det_deg := 0.0
 var _bolt_dx := 0.0
 var _tool_deg := 0.0
 var _lift_deg := 0.0
@@ -80,10 +87,10 @@ func _ready() -> void:
 		_rest[n] = n.transform
 		_by[String(n.name)] = n
 	if _by.has("detector"):
-		(_by["detector"] as Node3D).visible = false  # plain lever lock: no detector lever
+		(_by["detector"] as Node3D).visible = detector  # plain lever lock: no detector lever
 	_build_camera()
 	var plate := _tex(L_PLATE)
-	var parts := _tex(L_PARTS)
+	var parts := _tex(L_PARTS_DET if detector and ResourceLoader.exists(L_PARTS_DET) else L_PARTS)
 	var static_mat := _mat("plate.gdshader")
 	static_mat.set_shader_parameter("plate", plate)
 	for mi: MeshInstance3D in _model.find_children("*", "MeshInstance3D", true, false):
@@ -140,8 +147,17 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 		_xf("spring%d" % i, srot)
 	var throw := clampf(float(vm.get("core_rotation", 0.0)), 0.0, 1.0)
 	var dx := min_dx - throw * 6.0 - 0.35 * clampf(tension, 0.0, 1.0)
+	var tripped := false
+	for e in els:
+		if String(e.get("state", "")) in ["jammed", "detector"]:
+			tripped = true
+	if tripped:
+		dx = 0.25  # the detector holds the bolt's tail
 	if _opened:
 		dx = -11.5
+	var det_target := DET_TRIP_DEG * (1.0 - clampf(float(vm.get("reset_progress", 0.0)), 0.0, 1.0)) if tripped else 0.0
+	_det_deg = lerpf(_det_deg, det_target, k)
+	_xf("detector", Transform3D(Basis(Vector3.BACK, deg_to_rad(_det_deg)), DET_PIVOT) * Transform3D(Basis.IDENTITY, -DET_PIVOT))
 	_bolt_dx = lerpf(_bolt_dx, dx, k)
 	var bolt := Transform3D(Basis.IDENTITY, Vector3(_bolt_dx, 0, 0))
 	for nm in BOLT_NODES + ["stump"]:

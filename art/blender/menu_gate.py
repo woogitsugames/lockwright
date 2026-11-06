@@ -50,7 +50,7 @@ def felt_mat():
     m, nt, l, b, P = _new('felt')
     fib = _noise(nt, P, 3.0, detail=10, rough=0.75)
     mot = _noise(nt, P, 0.04, detail=4)
-    col = _mix(nt, (0.013, 0.013, 0.013, 1), (0.036, 0.035, 0.033, 1), _maprange(nt, fib, 0.35, 0.75))
+    col = _mix(nt, (0.008, 0.008, 0.008, 1), (0.024, 0.023, 0.022, 1), _maprange(nt, fib, 0.35, 0.75))
     col = _mix(nt, col, (0.008, 0.008, 0.008, 1), _maprange(nt, mot, 0.4, 0.65, 0, 0.5))
     lint = _maprange(nt, _noise(nt, P, 0.9, detail=3, rough=0.4, dist=0.6), 0.745, 0.775)
     col = _mix(nt, col, (0.30, 0.29, 0.27, 1), _math(nt, 'MULTIPLY', lint, 0.6))
@@ -59,7 +59,7 @@ def felt_mat():
     gd = _math(nt, 'MULTIPLY', _maprange(nt, _cavity_mask(nt, 1.5, 0.3, 0.95), 0, 1, 0, 0.6), _maprange(nt, _noise(nt, P, 0.05, detail=6), 0.4, 0.75, 0.2, 1.0))
     col = _mix(nt, col, (0.26, 0.25, 0.23, 1), gd)
     l.new(col, b.inputs['Base Color']); b.inputs['Roughness'].default_value = 0.9
-    b.inputs['Sheen Weight'].default_value = 0.45; b.inputs['Sheen Roughness'].default_value = 0.6
+    b.inputs['Sheen Weight'].default_value = 0.35; b.inputs['Sheen Roughness'].default_value = 0.6
     b.inputs['Sheen Tint'].default_value = (0.5, 0.5, 0.5, 1); b.inputs['Specular IOR Level'].default_value = 0.08
     bv = nt.nodes.new('ShaderNodeBevel'); bv.samples = 6; bv.inputs['Radius'].default_value = 0.6
     streak = _noise(nt, P, 0.8, detail=6, rough=0.7, stretch=(0.04, 1, 1))     # fibres combed along the ribs
@@ -92,9 +92,9 @@ def flake_decal(name, bounds, centre, radii, under=(0.66, 0.62, 0.52), rim=(0.05
 green = photo_mat('ph_lamperia', 'wall_oil_paint_green', scale=760, metallic=0.0, bump=0.45, coat=0.35, grime=0.5,
                   base=(0.05, 0.10, 0.075), base_mix=0.25)
 lime = photo_mat('ph_wall_lime', 'wall_lime_plaster', scale=1000, metallic=0.0, bump=0.5, grime=0.5, tint=(0.80, 0.76, 0.68))
-patch_m = lime_wall('patch', color=(0.80, 0.78, 0.72), seed=3, dirt=0.25, cracks=0.0)
+patch_m = lime_wall('patch', color=(0.66, 0.63, 0.56), seed=3, dirt=0.6, cracks=0.0)
 stripe = oil_paint('stripe', (0.16, 0.04, 0.03), rough=0.3, chips=0.8, scuffs=0.9, strokes='X', seed=2, edge_chips=1.0)
-wood_fr = photo_mat('ph_frame', 'bench_beech_top', scale=420, rot=0, metallic=0.0, base=(0.075, 0.04, 0.022), base_mix=0.5,
+wood_fr = photo_mat('ph_frame', 'bench_beech_top', scale=420, rot=0, metallic=0.0, base=(0.045, 0.024, 0.013), base_mix=0.72,
                     coat=0.45, bump=0.25, wear=0.55, grime=0.7)
 wood_fr = add_top_dust(wood_fr, 0.45)
 alu = add_top_dust(photo_mat('ph_alu', 'nickel_satin', scale=140, metallic=1.0, base=(0.66, 0.66, 0.64), base_mix=0.35, rough_add=0.08, wear=0.2, grime=0.6), 0.45)
@@ -353,13 +353,13 @@ CTR = Vector((BX, 0, (ZT + ZB) / 2))
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = CTR
 bpy.ops.object.light_add(type='SPOT', location=(X0 - 170, -380, TOP + 220)); bulb = bpy.context.object
 bulb.data.shadow_soft_size = float(arg('--soft', '22')); bulb.data.energy = float(arg('--bulb', '5.5e7')); bulb.data.color = (1.0, 0.70, 0.44)
-bulb.data.spot_size = math.radians(100); bulb.data.spot_blend = 1.0
+bulb.data.spot_size = math.radians(92); bulb.data.spot_blend = 1.0
 a_b = bpy.data.objects.new('aim_bulb', None); scene.collection.objects.link(a_b)
 a_b.location = (BX - 10, 0, (ZT + ZB) / 2 + 20) if ORIENT == 'portrait' else (BX + 160, 0, (ZT + ZB) / 2 - 60)
 cb = bulb.constraints.new('TRACK_TO'); cb.target = a_b; cb.track_axis = 'TRACK_NEGATIVE_Z'; cb.up_axis = 'UP_Y'
 AIM_T = bpy.data.objects.new('aim_tags', None); scene.collection.objects.link(AIM_T); AIM_T.location = (RX, 0, RZ - 100)
 area_light('window', (RX + 1500, -900, RZ - 300), AIM_T, 900, float(arg('--window', '6e6')), (0.72, 0.80, 1.0), size_y=1200)
-area_light('bounce', (BX + 300, -2600, (ZT + ZB) / 2 - 300), AIM, 1600, float(arg('--bounce', '9e4')), (1.0, 0.84, 0.66))
+area_light('bounce', (BX + 300, -2600, (ZT + ZB) / 2 - 300), AIM, 1600, float(arg('--bounce', '3e4')), (1.0, 0.84, 0.66))
 world_hdri(strength=0.012, sat=0.3)
 
 # ---------------------------------------------------------------- camera: slightly from the right and above, 50 mm
@@ -430,7 +430,7 @@ crop = None
 if CROP_ROW >= 0:
     x, y, w, h = items[CROP_ROW]['hit_rect']; m = 20
     crop = (max(0, (x - m) / W), max(0, 1 - (y + h + m) / H), min(1, (x + w + m) / W), min(1, 1 - (y - m) / H))
-render_setup(OUT, RES, SAMPLES, crop=crop, exposure=float(arg('--exposure', '0.0')), look='AgX - Medium High Contrast', bounces=8)
+render_setup(OUT, RES, SAMPLES, crop=crop, exposure=float(arg('--exposure', '-0.15')), look='AgX - Medium High Contrast', bounces=8)
 scene.cycles.adaptive_threshold = 0.01
 scene.cycles.seed = 3
 photo_finish(0.30, dispersion=0.004)

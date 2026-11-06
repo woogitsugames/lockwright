@@ -220,6 +220,7 @@ func test_states_read_by_geometry() -> void:
 		var key: String = sig.call(cases[nm])
 		assert_false(seen.has(key), "state %s looks like %s (%s)" % [nm, seen.get(key, ""), key])
 		seen[key] = nm
+	view._opened = false
 	# slip: the tooth chatters (moves between frames) while it is on the bore
 	var slip := {"elements": [_wheel("overset", 0.3), o, o], "tension": 0.34, "pick_element": 0}
 	sig.call(slip)

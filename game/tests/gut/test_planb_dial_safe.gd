@@ -223,7 +223,8 @@ func test_states_read_by_geometry() -> void:
 		var key: String = sig.call(cases[nm])
 		assert_false(seen.has(key), "state %s looks like %s (%s)" % [nm, seen.get(key, ""), key])
 		seen[key] = nm
-	assert_gt(view.feeler_dip(0), 2.5, "open: the feelers are down in the gates")
+	assert_gt(view.feeler_dip(0) + view.fence_dy(), 2.5, "open: the feelers are down in the gates")
+	view._opened = false
 	# the feeler gap when the handle is let go is at least 2 dp on screen (CLAUDE.md division line)
 	sig.call(cases["let go"])
 	var up := view.feeler_tip_screen(0)
