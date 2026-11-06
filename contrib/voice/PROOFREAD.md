@@ -103,4 +103,4 @@ Sprawdzono 332 kwestie `*.line.N` w kolumnach `fr` i `es` (83 zlecenia): rejestr
 | `job.halina_christmas_tin.line.3` | fr | Propriété et prix confirmés. J'ouvre la boîte, le pain d'épices, c'est vous qui le sortez. | Propriété et prix confirmés. J'ouvre la boîte ; le pain d'épices, c'est vous qui le sortez. | interpunkcja pod prozodię TTS (dwie części zdania) |
 | `job.halina_christmas_tin.line.4` | es | Muy sensato, hijo. El primer trozo es para usted de todos modos. | Muy sensato, hijo. El primer trozo es para ti, de todos modos. | Halina mówi „hijo” i „para ti” jak w `grandma_broth.line.4` (wyjątek D-67) |
 
-Uwaga (poza zakresem FR/ES): kolumna `de` w `t43_10_04_design_cabinet.line.1` i `t43_12_04_school_box.line.4` ma „Ziemniak” (nagrane), a reszta DE „Kartoffel”.
+DE: „Ziemniak” w `t43_10_04_design_cabinet.line.1`, `.after.1` i `t43_12_04_school_box.line.4` poprawione na „Kartoffel” (jak reszta DE); obie kwestie nagrane ponownie tym samym głosem i seedem (2026-11-06).
