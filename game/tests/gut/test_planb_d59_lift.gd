@@ -96,7 +96,7 @@ func _play(fam: StringName, job: Dictionary, auto: bool, max_s: float = 120.0) -
 	var right_y := 760.0
 	var pressed := false
 	var cooldown := 0
-	var speed := 50.0 if fam == &"magnetic" else 70.0
+	var speed := (50.0 if JobRun.tier_for(job) <= 1 else 25.0) if fam == &"magnetic" else 70.0
 	for step in int(max_s * HZ):
 		if cooldown > 0:
 			cooldown -= 1
