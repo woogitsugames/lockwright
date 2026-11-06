@@ -40,7 +40,7 @@ SPP = int(arg('--spp', arg('--samples', '32')))
 DEVICE = arg('--device', 'CPU').upper()
 PASSES = arg('--passes', 'plate,front,wheels,feelers,fence,bolt,dials').split(',')
 os.makedirs(OUT_DIR, exist_ok=True)
-FONT = os.path.join(ROOT_DIR, 'game', 'assets', 'fonts', 'BonaNova-Bold.ttf')
+FONT = os.path.join(ROOT_DIR, 'game', 'assets', 'fonts', 'AtkinsonHyperlegibleNext-wght.ttf')  # OFL, lining figures
 
 # ---------------------------------------------------------------- geometry (mm; X right, Z up, Y into the door)
 R = [43.0, 37.0, 31.0, 25.0]            # wheel radii, wheel 0 farthest from the dial
@@ -111,7 +111,7 @@ M = {
     'door':   photo_mat('ph_door', 'wall_oil_paint_green', scale=220, metallic=0.0, base=(0.08, 0.14, 0.10), base_mix=0.35, rough_add=0.0, coat=0.25, bump=0.25, wear=0.3, grime=0.4),
     'cut':    photo_mat('ph_door_cut', 'steel_ground', scale=30, rot=60, base=(0.45, 0.45, 0.46), base_mix=0.45, rough_add=0.18, bump=0.3, grime=0.3),
     'dial':   photo_mat('ph_dial', 'steel_cast_grey_paint', scale=60, metallic=0.0, base=(0.025, 0.025, 0.028), base_mix=0.7, rough_add=-0.05, coat=0.4, bump=0.1, wear=0.2),
-    'bone':   dark_mat('dial_ivory', (0.78, 0.74, 0.64), 0.45),
+    'bone':   dark_mat('dial_ivory', (0.86, 0.82, 0.72), 0.45),
     'knurl':  photo_mat('ph_knurl', 'nickel_satin', scale=20, rot=90, base=(0.58, 0.58, 0.57), base_mix=0.3, rough_add=0.08, wear=0.5, grime=0.6),
 }
 
@@ -200,15 +200,15 @@ def make_dial(div):
         boolean(d, rot_y(box('kn', -0.45, 0.45, DIAL_Y - 1, DIAL_Y + 5, DIAL_R - 0.5, DIAL_R + 1), a))
     put(d, M['knurl'], 0.15, 2); parts.append(d)
     face = cyl('dface%d' % div, DIAL_R - 1.3, 0.6, (0, DIAL_Y - 0.25, 0), axis='Y', verts=180); put(face, M['dial'], 0.1, 2); parts.append(face)
-    cap = cyl('dcap%d' % div, 6.5, 2.4, (0, DIAL_Y - 1.6, 0), axis='Y', verts=96); put(cap, M['knurl'], 0.4, 3); parts.append(cap)
+    cap = cyl('dcap%d' % div, 4.6, 2.4, (0, DIAL_Y - 1.6, 0), axis='Y', verts=96); put(cap, M['knurl'], 0.4, 3); parts.append(cap)
     step = max(1, div // 10)
     for n in range(div):
         a = -2 * math.pi * n / div  # numbers increase counter-clockwise: turning right brings higher ones up
         major = n % step == 0
-        tick = box('tick', -0.22 if major else -0.14, 0.22 if major else 0.14, DIAL_Y - 0.62, DIAL_Y - 0.5, 13.9 if major else 14.4, 15.4)
+        tick = box('tick', -0.22 if major else -0.14, 0.22 if major else 0.14, DIAL_Y - 0.62, DIAL_Y - 0.5, 14.0 if major else 14.6, 15.4)
         put(rot_y(tick, a), M['bone']); parts.append(tick)
         if major:
-            parts.append(put(text_obj('num', str(n), 2.5, DIAL_Y - 0.62, 11.6, a), M['bone']))
+            parts.append(put(text_obj('num', str(n), 3.4, DIAL_Y - 0.62, 10.9, a), M['bone']))
     return parts
 
 for div in (20, 30, 40):

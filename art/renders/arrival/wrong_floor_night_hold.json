@@ -11,19 +11,19 @@
   "namecard": [
    [
     0.57749,
-    0.43777
+    0.4588
    ],
    [
     0.62081,
-    0.43781
+    0.45886
    ],
    [
     0.62081,
-    0.44436
+    0.46542
    ],
    [
     0.57749,
-    0.44431
+    0.46534
    ]
   ],
   "mailbox_card": [
@@ -333,5 +333,10 @@
    -0.0,
    1.5
   ]
+ },
+ "depth_png": {
+  "file": "wrong_floor_night_hold_depth.png",
+  "depth_max_mm": 20000.0,
+  "encoding": "planar camera depth = value/65535*depth_max_mm"
  }
 }

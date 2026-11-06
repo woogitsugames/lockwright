@@ -1,0 +1,302 @@
+{
+ "width": 270,
+ "height": 480,
+ "job": "wrong_floor",
+ "time": "day",
+ "door": "closed",
+ "fps": 12,
+ "frames": 36,
+ "note": "quads: [tl,tr,br,bl] normalised 0..1, origin top-left (D-41). figures: feet line and height in px of this image.",
+ "anchors": {
+  "namecard": [
+   [
+    0.57749,
+    0.4588
+   ],
+   [
+    0.62081,
+    0.45886
+   ],
+   [
+    0.62081,
+    0.46542
+   ],
+   [
+    0.57749,
+    0.46534
+   ]
+  ],
+  "mailbox_card": [
+   [
+    0.87467,
+    0.52272
+   ],
+   [
+    0.91758,
+    0.52285
+   ],
+   [
+    0.91758,
+    0.53132
+   ],
+   [
+    0.87467,
+    0.53118
+   ]
+  ],
+  "number_plate": [
+   [
+    0.57586,
+    0.27842
+   ],
+   [
+    0.62255,
+    0.27829
+   ],
+   [
+    0.62255,
+    0.29561
+   ],
+   [
+    0.57586,
+    0.29573
+   ]
+  ],
+  "wreath": [
+   [
+    0.52256,
+    0.33496
+   ],
+   [
+    0.67781,
+    0.33474
+   ],
+   [
+    0.67781,
+    0.42205
+   ],
+   [
+    0.52256,
+    0.42195
+   ]
+  ],
+  "door": [
+   [
+    0.41506,
+    0.27307
+   ],
+   [
+    0.7848,
+    0.27198
+   ],
+   [
+    0.7848,
+    0.75913
+   ],
+   [
+    0.41506,
+    0.7559
+   ]
+  ],
+  "cylinder": [
+   [
+    0.7352,
+    0.50606
+   ],
+   [
+    0.77747,
+    0.50617
+   ],
+   [
+    0.77747,
+    0.55159
+   ],
+   [
+    0.7352,
+    0.55143
+   ]
+  ]
+ },
+ "figures": {
+  "kazimierz": {
+   "speaker": "kazimierz",
+   "door_state": "closed",
+   "feet_world_mm": [
+    -690.0,
+    -470.0,
+    0.0
+   ],
+   "height_mm": 1730,
+   "feet_center": [
+    0.25971,
+    0.85416
+   ],
+   "feet_line": [
+    [
+     0.14605,
+     0.85416
+    ],
+    [
+     0.37337,
+     0.85416
+    ]
+   ],
+   "head_top": [
+    0.25971,
+    0.35141
+   ],
+   "chest": [
+    0.25971,
+    0.49218
+   ],
+   "height_px": 241.3,
+   "px_per_mm": 0.13949,
+   "depth_mm": 2102.9,
+   "occluded_by_leaf": false,
+   "lights": [
+    {
+     "name": "window_light",
+     "type": "AREA",
+     "color_linear": [
+      1.0,
+      0.96,
+      0.9
+     ],
+     "strength_rel": 1.0,
+     "dir3d_to_light": [
+      -0.341,
+      0.8172,
+      0.4646
+     ],
+     "dir2d_to_light": [
+      -0.01897,
+      -0.04648
+     ],
+     "elevation_deg": 27.7
+    },
+    {
+     "name": "skylight",
+     "type": "AREA",
+     "color_linear": [
+      0.92,
+      0.95,
+      1.0
+     ],
+     "strength_rel": 0.033,
+     "dir3d_to_light": [
+      0.558,
+      -0.5973,
+      0.5761
+     ],
+     "dir2d_to_light": [
+      0.06909,
+      -0.04574
+     ],
+     "elevation_deg": 35.2
+    }
+   ]
+  },
+  "teresa": {
+   "speaker": "teresa",
+   "door_state": "ajar",
+   "feet_world_mm": [
+    250.0,
+    420.0,
+    0.0
+   ],
+   "height_mm": 1590,
+   "feet_center": [
+    0.68224,
+    0.72032
+   ],
+   "feet_line": [
+    [
+     0.60171,
+     0.72032
+    ],
+    [
+     0.76277,
+     0.72032
+    ]
+   ],
+   "head_top": [
+    0.68224,
+    0.39294
+   ],
+   "chest": [
+    0.68224,
+    0.48461
+   ],
+   "height_px": 157.1,
+   "px_per_mm": 0.09883,
+   "depth_mm": 2968.0,
+   "occluded_by_leaf": true,
+   "lights": [
+    {
+     "name": "window_light",
+     "type": "AREA",
+     "color_linear": [
+      1.0,
+      0.96,
+      0.9
+     ],
+     "strength_rel": 1.0,
+     "dir3d_to_light": [
+      -0.8192,
+      0.2969,
+      0.4906
+     ],
+     "dir2d_to_light": [
+      -0.09198,
+      -0.03215
+     ],
+     "elevation_deg": 29.4
+    },
+    {
+     "name": "skylight",
+     "type": "AREA",
+     "color_linear": [
+      0.92,
+      0.95,
+      1.0
+     ],
+     "strength_rel": 0.0319,
+     "dir3d_to_light": [
+      0.2723,
+      -0.7832,
+      0.5589
+     ],
+     "dir2d_to_light": [
+      0.04586,
+      -0.02975
+     ],
+     "elevation_deg": 34.0
+    }
+   ]
+  }
+ },
+ "camera": {
+  "location_mm": [
+   -170.0,
+   -2560.0,
+   1580.0
+  ],
+  "lens_mm": 22.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   -0.10499999672174454
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   1.5
+  ]
+ },
+ "depth_png": {
+  "file": "wrong_floor_day_hold_depth.png",
+  "depth_max_mm": 20000.0,
+  "encoding": "planar camera depth = value/65535*depth_max_mm"
+ }
+}

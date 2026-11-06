@@ -333,5 +333,10 @@
    -0.0,
    1.5
   ]
+ },
+ "depth_png": {
+  "file": "wrong_floor_night_ajar_hold_depth.png",
+  "depth_max_mm": 20000.0,
+  "encoding": "planar camera depth = value/65535*depth_max_mm"
  }
 }

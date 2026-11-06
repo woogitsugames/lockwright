@@ -4,133 +4,149 @@
  "height": 1080,
  "orient": "landscape",
  "px_per_dp": 2.6214,
+ "dp_basis": "412 dp across the short side",
  "rect": "[x, y, w, h] px, origin top-left",
+ "board_rect": [
+  195,
+  118,
+  1483,
+  823
+ ],
+ "locale": "pl",
+ "note": "hit_rect = the whole felt band of the item (>= 48 dp tall); pressed_sprite = the baked pressed state, rendered over exactly hit_rect (+20 px margin, see pressed_margin_px), paste at hit_rect.xy - margin",
+ "pressed_margin_px": 20,
  "items": [
   {
    "id": "start",
    "label": "ZACZNIJ DY\u017bUR",
    "text_rect": [
-    921,
-    203,
-    415,
-    41
+    274,
+    634,
+    582,
+    66
    ],
    "hit_rect": [
-    901,
-    149,
-    680,
-    149
+    248,
+    561,
+    721,
+    202
    ],
-   "cap_px": 47,
+   "cap_px": 68,
    "hit_dp": [
-    259.4,
-    56.8
-   ]
+    275.0,
+    77.1
+   ],
+   "pressed_sprite": "menu_pressed_start_landscape.png"
   },
   {
    "id": "jobs",
    "label": "ZLECENIA",
    "text_rect": [
-    921,
-    357,
-    221,
-    31
+    1026,
+    254,
+    253,
+    38
    ],
    "hit_rect": [
-    901,
-    297,
-    680,
-    127
+    990,
+    204,
+    636,
+    133
    ],
-   "cap_px": 42,
+   "cap_px": 50,
    "hit_dp": [
-    259.4,
-    48.4
-   ]
+    242.6,
+    50.7
+   ],
+   "pressed_sprite": "menu_pressed_jobs_landscape.png"
   },
   {
    "id": "workshop",
    "label": "WARSZTAT",
    "text_rect": [
-    921,
-    477,
-    265,
-    30
+    1026,
+    385,
+    304,
+    40
    ],
    "hit_rect": [
-    901,
-    424,
-    680,
-    127
+    990,
+    337,
+    635,
+    132
    ],
-   "cap_px": 42,
+   "cap_px": 50,
    "hit_dp": [
-    259.4,
-    48.4
-   ]
+    242.2,
+    50.4
+   ],
+   "pressed_sprite": "menu_pressed_workshop_landscape.png"
   },
   {
    "id": "showcase",
    "label": "GABLOTA",
    "text_rect": [
-    921,
-    609,
-    223,
-    31
+    1026,
+    513,
+    255,
+    40
    ],
    "hit_rect": [
-    901,
-    551,
-    680,
-    127
+    990,
+    466,
+    634,
+    133
    ],
-   "cap_px": 42,
+   "cap_px": 50,
    "hit_dp": [
-    259.4,
-    48.4
-   ]
+    241.9,
+    50.7
+   ],
+   "pressed_sprite": "menu_pressed_showcase_landscape.png"
   },
   {
    "id": "settings",
    "label": "USTAWIENIA",
    "text_rect": [
-    921,
-    730,
-    287,
-    31
+    1027,
+    643,
+    340,
+    41
    ],
    "hit_rect": [
-    901,
-    678,
-    680,
-    127
+    991,
+    595,
+    632,
+    135
    ],
-   "cap_px": 42,
+   "cap_px": 49,
    "hit_dp": [
-    259.4,
-    48.4
-   ]
+    241.1,
+    51.5
+   ],
+   "pressed_sprite": "menu_pressed_settings_landscape.png"
   },
   {
    "id": "about",
    "label": "O GRZE",
    "text_rect": [
-    921,
-    862,
-    175,
-    31
+    1027,
+    770,
+    207,
+    41
    ],
    "hit_rect": [
-    901,
-    805,
-    680,
-    127
+    991,
+    723,
+    631,
+    137
    ],
-   "cap_px": 42,
+   "cap_px": 49,
    "hit_dp": [
-    259.4,
-    48.4
-   ]
+    240.7,
+    52.3
+   ],
+   "pressed_sprite": "menu_pressed_about_landscape.png"
   }
  ]
 }

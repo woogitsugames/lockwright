@@ -37,7 +37,7 @@ SPP = int(arg('--spp', arg('--samples', '16')))
 DEVICE = arg('--device', 'CPU').upper()
 PASSES = arg('--passes', 'plate,front,latch,tooth,plug,band').split(',')
 os.makedirs(OUT_DIR, exist_ok=True)
-FONT = os.path.join(ROOT_DIR, 'game', 'assets', 'fonts', 'BonaNova-Bold.ttf')
+FONT = os.path.join(ROOT_DIR, 'game', 'assets', 'fonts', 'AtkinsonHyperlegibleNext-wght.ttf')  # OFL, lining figures
 
 # ---------------------------------------------------------------- geometry (mm; X along the axis, Z up, Y away from camera)
 SLOTS = [-14.0, -7.0, 0.0, 7.0, 14.0]
