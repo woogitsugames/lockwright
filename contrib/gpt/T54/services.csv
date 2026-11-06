@@ -1,0 +1,22 @@
+keys,en,pl,de,fr,es
+receipt.service.dial_safe,Safe opening,Otwarcie sejfu,Tresoröffnung,Ouverture du coffre,Apertura de caja fuerte
+receipt.service.combo,Combination lock opening,Otwarcie zamka szyfrowego,Zahlenschlossöffnung,Ouverture à code,Apertura de combinación
+receipt.service.dimple,Dimple lock opening,Otwarcie zamka nawiercanego,Bohrmuldenschlossöffnung,Ouverture à alvéoles,Apertura de puntos
+receipt.service.disc_detainer,Disc lock opening,Otwarcie zamka tarczowego,Scheibenschlossöffnung,Ouverture à disques,Apertura de discos
+receipt.service.egyptian,Wooden lock opening,Otwarcie zamka drewnianego,Holzschlossöffnung,Ouverture du verrou en bois,Apertura de cerrojo de madera
+receipt.service.axial_slider,Slider lock opening,Otwarcie zamka suwakowego,Schieberschlossöffnung,Ouverture à coulisseaux,Apertura de correderas
+receipt.service.time_lock,Clock mechanism repair,Naprawa mechanizmu zegara,Uhrwerkreparatur,Réparation du mécanisme,Reparación del mecanismo
+receipt.service.magnetic,Magnetic lock opening,Otwarcie zamka magnetycznego,Magnetschlossöffnung,Ouverture magnétique,Apertura magnética
+receipt.service.pin_tumbler,Pin lock opening,Otwarcie zamka pinowego,Stiftschlossöffnung,Ouverture à goupilles,Apertura de pernos
+receipt.service.wafer,Wafer lock opening,Otwarcie zamka płytkowego,Plättchenschlossöffnung,Ouverture à plaquettes,Apertura de láminas
+receipt.service.lever,Lever lock opening,Otwarcie zamka zastawkowego,Zuhaltungsschlossöffnung,Ouverture à gorges,Apertura de guardas
+receipt.service.lever_detector,Lever lock opening,Otwarcie zamka zastawkowego,Zuhaltungsschlossöffnung,Ouverture à gorges,Apertura de guardas
+receipt.service.wooden_pin,Wooden lock opening,Otwarcie zamka drewnianego,Holzschlossöffnung,Ouverture du verrou en bois,Apertura de cerrojo de madera
+receipt.service.warded,Warded lock opening,Otwarcie zamka zaporowego,Buntbartschlossöffnung,Ouverture à obstacles,Apertura de guardas fijas
+receipt.service.ring_combo,Combination lock opening,Otwarcie zamka szyfrowego,Zahlenschlossöffnung,Ouverture à code,Apertura de combinación
+receipt.service.refusal,No service performed,Nie wykonano usługi,Keine Leistung erbracht,Aucune prestation,Sin servicio prestado
+receipt.service.wafer_double,Wafer lock opening,Otwarcie zamka płytkowego,Plättchenschlossöffnung,Ouverture à plaquettes,Apertura de láminas
+receipt.service.tubular,Pin lock opening,Otwarcie zamka pinowego,Stiftschlossöffnung,Ouverture à goupilles,Apertura de pernos
+receipt.service.pin_tumbler_wide,Pin lock opening,Otwarcie zamka pinowego,Stiftschlossöffnung,Ouverture à goupilles,Apertura de pernos
+receipt.service.pin_tumbler_unprotected,Pin lock opening,Otwarcie zamka pinowego,Stiftschlossöffnung,Ouverture à goupilles,Apertura de pernos
+receipt.service.sidebar,Pin lock opening,Otwarcie zamka pinowego,Stiftschlossöffnung,Ouverture à goupilles,Apertura de pernos
