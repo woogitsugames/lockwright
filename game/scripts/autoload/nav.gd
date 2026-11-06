@@ -38,6 +38,9 @@ var last_action := &""
 var _quit_dialog: ConfirmationDialog = null
 ## Requests closer than this to the previous handled one are the same press (tests set 0).
 var back_debounce_ms := 250
+## Debounce clock in ms. Device: Time.get_ticks_msec. Tests inject a fake clock so the
+## result does not depend on how loaded the machine is.
+var now_ms: Callable = Time.get_ticks_msec
 var _last_back_ms := -100000
 
 
@@ -63,7 +66,7 @@ func _input(event: InputEvent) -> void:
 
 ## Debounced entry for every Back source. Returns &"debounced" for a duplicate.
 func request_back() -> StringName:
-	var now := Time.get_ticks_msec()
+	var now := int(now_ms.call())
 	if back_debounce_ms > 0 and now - _last_back_ms < back_debounce_ms:
 		return &"debounced"
 	_last_back_ms = now

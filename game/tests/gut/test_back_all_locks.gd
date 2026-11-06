@@ -8,6 +8,7 @@ extends GutTest
 
 func before_each() -> void:
 	Nav.back_debounce_ms = 0  # several Back presses per frame in tests
+	Nav._last_back_ms = -100000
 	Nav.change_scenes = false
 	Nav.last_target = ""
 	JobRun.current_job = {}
@@ -15,6 +16,7 @@ func before_each() -> void:
 
 func after_each() -> void:
 	Nav.back_debounce_ms = 250
+	Nav.now_ms = Time.get_ticks_msec
 	Nav.scene_override = null
 	Nav.change_scenes = true
 	get_tree().paused = false
@@ -104,14 +106,19 @@ func _key(code: Key) -> InputEventKey:
 ## One press on the device = Key::BACK event + one or two window requests: still one pause.
 func test_one_physical_back_is_one_action() -> void:
 	Nav.back_debounce_ms = 250
+	var clock := {"ms": 1000000}  # fake clock: deterministic under any machine load
+	Nav.now_ms = func() -> int: return clock["ms"]
+	Nav._last_back_ms = -100000  # forget presses of earlier tests
 	var scene := await _open("res://scenes/photoreal/lock_job_wafer.tscn")
 	Nav._input(_key(KEY_BACK))
+	clock["ms"] += 5
 	get_tree().root.propagate_notification(NOTIFICATION_WM_GO_BACK_REQUEST)
+	clock["ms"] += 40
 	Nav.notification(NOTIFICATION_WM_GO_BACK_REQUEST)
 	await get_tree().process_frame
 	assert_true(bool(scene.get("_paused")), "duplicates of one press must not resume")
 	assert_true(_pause_visible(scene), "pause cover stays open")
-	await get_tree().create_timer(0.3, true).timeout
+	clock["ms"] += 300
 	Nav.notification(NOTIFICATION_WM_GO_BACK_REQUEST)
 	assert_eq(Nav.last_action, &"resume", "a later, separate press resumes")
 	assert_false(bool(scene.get("_paused")))

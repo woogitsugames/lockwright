@@ -38,6 +38,17 @@ var _cache: Dictionary = {}  # "event/material/n" -> AudioStream
 var _loops: Dictionary = {}  # loop id -> {player, generator, playback, active}
 var _rng := RandomNumberGenerator.new()
 var _native_click: Object = null
+## Native click bridge state (N-70 follow-up): sample ids the bridge accepted, consecutive
+## play() failures, and whether the bridge is still trusted. Any failure path falls back
+## to the AudioServer pool for that click; NATIVE_MAX_FAILS in a row disable the bridge.
+const NATIVE_MAX_FAILS := 3
+var _native_loaded: Dictionary = {}  # "event/material/n" -> true
+var _native_fails := 0
+var _native_enabled := false
+var _native_plays := 0
+var _native_skipped := 0
+## Tests: id -> AudioStreamWAV offered to the bridge instead of the shipped clicks.
+var native_test_samples: Dictionary = {}
 var _ambience: AudioStreamPlayer = null
 var _ambience_name: StringName = &""
 var _ambience_base_db := 0.0
@@ -52,11 +63,8 @@ func _ready() -> void:
 	_rng.randomize()
 	for name in ["LockwrightClickAudio", "LockwrightLowLatencyAudio"]:
 		if Engine.has_singleton(name):
-			_native_click = Engine.get_singleton(name)
-			print("Sfx: native click audio bridge detected: %s" % name)
+			use_native_click(Engine.get_singleton(name), name)
 			break
-	if _native_click != null and _native_click.has_method("load_sample"):
-		_preload_native()
 	for i in POOL_SIZE:
 		var p := AudioStreamPlayer.new()
 		p.bus = "Sfx"
@@ -143,22 +151,89 @@ func _ensure_voices(folder: String) -> void:
 		_lazy_load(tag + "/" + f, "%s/%s" % [tag, f])
 
 
-func _preload_native() -> void:
-	# N-03: preload decoded PCM of all L2 events into the native bridge (48 kHz 16-bit mono)
+## Attaches a native click bridge (Android JNISingleton, iOS object, test fake); null detaches.
+## Uses it only if it exposes play + load_sample and accepted at least one sample.
+func use_native_click(bridge: Object, name: String = "") -> void:
+	_native_click = bridge
+	_native_loaded.clear()
+	_native_fails = 0
+	_native_plays = 0
+	_native_skipped = 0
+	_native_enabled = false
+	if bridge == null:
+		return
+	var can_play := native_click_has(&"play")
+	var can_load := native_click_has(&"load_sample")
+	var total := 0
+	if can_play and can_load:
+		total = _preload_native()
+	_native_enabled = can_play and can_load and not _native_loaded.is_empty()
+	print("Sfx: native click bridge %s play=%s load_sample=%s samples=%d/%d (skipped non-PCM16/stereo %d) -> %s" % [
+		name, can_play, can_load, _native_loaded.size(), total, _native_skipped,
+		"native" if _native_enabled else "AudioServer fallback"])
+
+
+## Same JNISingleton rule as Haptics.native_has(): Android plugin methods are visible only
+## through has_java_method(); has_method() is false for them.
+func native_click_has(method: StringName) -> bool:
+	if _native_click == null:
+		return false
+	if _native_click.has_method(&"has_java_method"):
+		return bool(_native_click.call(&"has_java_method", method))
+	return _native_click.has_method(method)
+
+
+func native_click_active() -> bool:
+	return _native_enabled
+
+
+## Tries the native bridge; false = caller plays the click through AudioServer.
+func _play_native(id: String, gain: float, pitch: float) -> bool:
+	if not _native_enabled or not _native_loaded.has(id):
+		return false
+	var ok := bool(_native_click.call(&"play", id, gain, pitch))
+	if ok:
+		_native_fails = 0
+		_native_plays += 1
+		if _native_plays == 1:
+			print("Sfx: first native click played (%s)" % id)
+		return true
+	_native_fails += 1
+	if _native_fails >= NATIVE_MAX_FAILS:
+		_native_enabled = false
+		push_warning("Sfx: native click bridge failed %d times in a row, using AudioServer" % _native_fails)
+		print("Sfx: native click bridge disabled after %d failures (played %d)" % [_native_fails, _native_plays])
+	return false
+
+
+func _preload_native() -> int:
+	# N-03: preload decoded PCM of all L2 events into the native bridge (16-bit mono);
+	# returns how many samples were offered, _native_loaded holds the accepted ones.
+	# The bridge takes 16-bit mono PCM only: clicks imported as QOA (compress/mode=2, the
+	# current import) or stereo are skipped and stay on AudioServer.
+	var total := 0
+	_native_skipped = 0
+	var candidates := native_test_samples if not native_test_samples.is_empty() else _native_candidates()
+	for id in candidates:
+		var wav: AudioStreamWAV = candidates[id]
+		if wav == null or wav.format != AudioStreamWAV.FORMAT_16_BITS or wav.stereo:
+			_native_skipped += 1
+			continue
+		total += 1
+		if bool(_native_click.call(&"load_sample", id, wav.data, wav.mix_rate)):
+			_native_loaded[id] = true
+	return total
+
+
+func _native_candidates() -> Dictionary:
+	var out := {}
 	for event in EVENTS:
 		for material in MATERIALS:
 			for n in range(1, VARIANTS + 1):
 				var path := "%s/%s/%s_%d.wav" % [SFX_ROOT, event, material, n]
-				if not ResourceLoader.exists(path):
-					continue
-				var wav := load(path) as AudioStreamWAV
-				if wav == null or wav.format != AudioStreamWAV.FORMAT_16_BITS:
-					continue
-				var pcm := PackedByteArray()
-				pcm.resize(wav.data.size())
-				for i in wav.data.size():
-					pcm[i] = wav.data[i]
-				_native_click.load_sample("%s/%s/%d" % [event, material, n], pcm, 48000)
+				if ResourceLoader.exists(path):
+					out["%s/%s/%d" % [event, material, n]] = load(path) as AudioStreamWAV
+	return out
 
 
 func _stream_for(event: StringName, material: StringName) -> AudioStream:
@@ -179,11 +254,11 @@ func play(event: StringName, material: StringName = &"brass", volume_db: float =
 		duck_ambience(-6.0, 50.0)
 	# R-20: L2 clicks prefer the native low-latency bridge (Oboe/AAudio, AVAudioEngine);
 	# AudioServer pool is the fallback (and the only path on desktop/editor).
-	if _native_click != null and _native_click.has_method("play"):
+	if _native_enabled:
 		var n := _rng.randi_range(1, VARIANTS)
-		var gain := db_to_linear(volume_db)
-		_native_click.play("%s/%s/%d" % [event, material, n], gain, pitch)
-		return
+		var gain := db_to_linear(volume_db) * float(Settings.get_value("volume_sfx")) * float(Settings.get_value("volume_master"))
+		if _play_native("%s/%s/%d" % [event, material, n], gain, pitch):
+			return
 	var stream := _stream_for(event, material)
 	if stream == null:
 		return
