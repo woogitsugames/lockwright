@@ -1,0 +1,1449 @@
+{
+ "wer": {
+  "pl": 0.052,
+  "en": 0.0264,
+  "de": 0.0484
+ },
+ "files": [
+  {
+   "file": "pl/job.attic_drying_room.line.1.ogg",
+   "dur": 4.83,
+   "lufs": -18.4,
+   "lead_ms": 58,
+   "trail_ms": 48,
+   "ref": "Płaszcze chóru zostały na górze. Nikt nie będzie kolędował w soplach.",
+   "asr": "Płaszcze chóru zostały na górze. Nikt nie będzie kolendował w soplach.",
+   "wer": 0.091
+  },
+  {
+   "file": "pl/job.attic_drying_room.line.2.ogg",
+   "dur": 3.98,
+   "lufs": -18.0,
+   "lead_ms": 39,
+   "trail_ms": 23,
+   "ref": "Umowa najmu obejmuje suszarnię. Potwierdzam dostęp.",
+   "asr": "Umowa Najmu obejmuje suszarnię. Potwierdzam dostęp.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.attic_drying_room.line.3.ogg",
+   "dur": 3.83,
+   "lufs": -17.7,
+   "lead_ms": 20,
+   "trail_ms": 47,
+   "ref": "Zgoda i cena ustalone. Oddajmy płaszcze właścicielom.",
+   "asr": "Zgoda i cena ustalone. Oddajmy płaszcze właścicielom.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.attic_drying_room.line.4.ogg",
+   "dur": 4.64,
+   "lufs": -18.3,
+   "lead_ms": 29,
+   "trail_ms": 40,
+   "ref": "Dobrze. Mój ma wyjątkowo rozsądnie rozmieszczone kieszenie.",
+   "asr": "Dobrze, mój ma wyjątkowo rozsądnie rozmieszczone kieszenie.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.carol_singers_chest.line.1.ogg",
+   "dur": 3.92,
+   "lufs": -17.9,
+   "lead_ms": 55,
+   "trail_ms": 44,
+   "ref": "Gwiazdy z papieru są w środku. Chór jest gotowy od wtorku.",
+   "asr": "Gwiazdy z papieru są w środku. Chór jest gotowy od wtorku.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.carol_singers_chest.line.2.ogg",
+   "dur": 3.63,
+   "lufs": -17.6,
+   "lead_ms": 0,
+   "trail_ms": 47,
+   "ref": "Skrzynia należy do wspólnoty. Mam tutaj jej uchwałę.",
+   "asr": "Skrzynia należy do wspólnoty. Mam tutaj jej uchwałę.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.carol_singers_chest.line.3.ogg",
+   "dur": 4.29,
+   "lufs": -17.8,
+   "lead_ms": 1,
+   "trail_ms": 54,
+   "ref": "Zgoda i wycena ustalone. Gwiazdy mogą wejść na scenę.",
+   "asr": "Zgoda i wycena ustalony. Gwiazdy mogą wejść na scenę.",
+   "wer": 0.111
+  },
+  {
+   "file": "pl/job.carol_singers_chest.line.4.ogg",
+   "dur": 4.47,
+   "lufs": -18.0,
+   "lead_ms": 37,
+   "trail_ms": 45,
+   "ref": "Teraz wystarczy, żeby wszyscy śpiewali w tej samej tonacji.",
+   "asr": "Teraz wystarczy, żeby wszyscy śpiewali w tej samej tonacji.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.christmas_eve_heat.line.1.ogg",
+   "dur": 4.26,
+   "lufs": -17.8,
+   "lead_ms": 0,
+   "trail_ms": 20,
+   "ref": "Naprawa prawie gotowa. Tu jest upoważnienie do ostatniej szafki.",
+   "asr": "Naprawa prawie gotowa. Tu jest upoważnienie do ostatniej szafki.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.christmas_eve_heat.line.2.ogg",
+   "dur": 4.75,
+   "lufs": -17.9,
+   "lead_ms": 56,
+   "trail_ms": 23,
+   "ref": "Po otwarciu sprawdzę ogrzewanie. Instalacja to moja odpowiedzialność.",
+   "asr": "Po otwarciu sprawdzę ogrzewanie. Instalacja to moja odpowiedzialność.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.christmas_eve_heat.line.3.ogg",
+   "dur": 4.29,
+   "lufs": -17.5,
+   "lead_ms": 14,
+   "trail_ms": 53,
+   "ref": "Zgoda i cena potwierdzone. Zajmę się zamkiem, niczym więcej.",
+   "asr": "Zgoda i cena potwierdzone. Zajmę się zamkiem. Niczym więcej.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.christmas_eve_heat.line.4.ogg",
+   "dur": 4.8,
+   "lufs": -18.2,
+   "lead_ms": 54,
+   "trail_ms": 29,
+   "ref": "Grzejniki znowu są ciepłe. Przy stole nadal czeka na pana miejsce.",
+   "asr": "Grzejniki znowu są ciepłe. Przy stole nadal czeka na Pana miejsce.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.frozen_cellar_padlock.line.1.ogg",
+   "dur": 4.54,
+   "lufs": -17.5,
+   "lead_ms": 54,
+   "trail_ms": 55,
+   "ref": "Koce są w mojej piwnicy. Zima dotarła do nich przede mną.",
+   "asr": "Koce są w mojej piwnicy. Zima dotarła do nich przede mną.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.frozen_cellar_padlock.line.2.ogg",
+   "dur": 4.69,
+   "lufs": -17.9,
+   "lead_ms": 37,
+   "trail_ms": 7,
+   "ref": "Aneks do najmu i wykaz piwnic się zgadzają. To schowek pani Janki.",
+   "asr": "Aneks do najmu i wykaz piwnic się zgadzają. To schowek pani Janki.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.frozen_cellar_padlock.line.3.ogg",
+   "dur": 3.62,
+   "lufs": -17.9,
+   "lead_ms": 37,
+   "trail_ms": 54,
+   "ref": "Wszystko się zgadza. Cena ustalona, zajrzę do kłódki.",
+   "asr": "Wszystko się zgadza. Cena ustalona. Zajrzę do kłódki.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.frozen_cellar_padlock.line.4.ogg",
+   "dur": 4.53,
+   "lufs": -17.8,
+   "lead_ms": 31,
+   "trail_ms": 16,
+   "ref": "Dobrze. Koce mają leżeć na ramionach, nie na półkach.",
+   "asr": "Dobrze, koce mają leżeć na ramionach, nie na półkach.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.halina_christmas_tin.line.1.ogg",
+   "dur": 6.0,
+   "lufs": -18.1,
+   "lead_ms": 39,
+   "trail_ms": 45,
+   "ref": "Pierniki leżakują od listopada. Kluczyk, jak widać, też gdzieś leżakuje.",
+   "asr": "Pierniki leżakują od listopada. Kluczyk, jak widać, też gdzieś leżakuje.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.halina_christmas_tin.line.2.ogg",
+   "dur": 4.02,
+   "lufs": -18.1,
+   "lead_ms": 53,
+   "trail_ms": 44,
+   "ref": "To puszka Haliny. Sama robiłam zdjęcie, kiedy ją zamykała.",
+   "asr": "To puszka Haliny. Sama robiłam zdjęcie, kiedy ją zamykała.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.halina_christmas_tin.line.3.ogg",
+   "dur": 5.15,
+   "lufs": -17.9,
+   "lead_ms": 36,
+   "trail_ms": 48,
+   "ref": "Własność i cena potwierdzone. Otworzę puszkę, pierniki wyjmie pani sama.",
+   "asr": "Własność i cena potwierdzone. Otworzę puszkę. Pierniki wyjmie Pani sama.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.halina_christmas_tin.line.4.ogg",
+   "dur": 5.05,
+   "lufs": -18.2,
+   "lead_ms": 27,
+   "trail_ms": 32,
+   "ref": "Rozsądnie, synku. Pierwszy piernik i tak jest pański.",
+   "asr": "Rozsądnie, synku. Pierwszy piernik i tak jest pański.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.heating_service_cupboard.line.1.ogg",
+   "dur": 4.65,
+   "lufs": -18.0,
+   "lead_ms": 31,
+   "trail_ms": 49,
+   "ref": "Grzejniki są zimne. Przed przeglądem potrzebuję dziennika serwisowego.",
+   "asr": "Grzejniki są zimne. Przed przeglądem potrzebuje dziennika serwisowego.",
+   "wer": 0.125
+  },
+  {
+   "file": "pl/job.heating_service_cupboard.line.2.ogg",
+   "dur": 4.6,
+   "lufs": -18.0,
+   "lead_ms": 38,
+   "trail_ms": 42,
+   "ref": "Ma upoważnienie. Oto pisemne zlecenie i dokumentacja budynku.",
+   "asr": "Ma upoważnienie. Oto opisemne zlecenie i dokumentacja budynku.",
+   "wer": 0.125
+  },
+  {
+   "file": "pl/job.heating_service_cupboard.line.3.ogg",
+   "dur": 4.45,
+   "lufs": -17.7,
+   "lead_ms": 49,
+   "trail_ms": 53,
+   "ref": "Szafka za ustaloną cenę jest moja. Instalacja należy do pana.",
+   "asr": "Szafka za ustaloną cenę jest moja. Instalacja należy do pana.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.heating_service_cupboard.line.4.ogg",
+   "dur": 3.17,
+   "lufs": -17.8,
+   "lead_ms": 47,
+   "trail_ms": 52,
+   "ref": "Słusznie. Jedna zimna zagadka naraz.",
+   "asr": "Cóż nie, jedna zimna zagadka naraz.",
+   "wer": 0.4
+  },
+  {
+   "file": "pl/job.refuse_unapproved_repair.line.1.ogg",
+   "dur": 4.12,
+   "lufs": -17.6,
+   "lead_ms": 56,
+   "trail_ms": 56,
+   "ref": "Przyjechałem w sprawie ogrzewania. W wiadomości napisano: pilne.",
+   "asr": "Przyjechałem w sprawie ogrzewania. W wiadomości napisano pilne.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.refuse_unapproved_repair.line.2.ogg",
+   "dur": 3.9,
+   "lufs": -17.7,
+   "lead_ms": 28,
+   "trail_ms": 41,
+   "ref": "Zarządczyni nie potwierdziła wizyty. Zadzwońmy najpierw do niej.",
+   "asr": "Zarządczyni nie potwierdziła wizyty. Zadwońmy najpierw do niej.",
+   "wer": 0.125
+  },
+  {
+   "file": "pl/job.refuse_unapproved_repair.line.3.ogg",
+   "dur": 3.24,
+   "lufs": -18.2,
+   "lead_ms": 29,
+   "trail_ms": 44,
+   "ref": "Mogę dopłacić, jeśli pominiemy formalności.",
+   "asr": "Mogę dopłacić, jeśli pominiemy formalności.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.refuse_unapproved_repair.line.4.ogg",
+   "dur": 4.38,
+   "lufs": -18.2,
+   "lead_ms": 57,
+   "trail_ms": 44,
+   "ref": "Dziękuję, nie. Tu nie otworzę, dopóki zarządczyni nie potwierdzi.",
+   "asr": "Dziękuję, nie. Tu nie otworzę, dopóki zarząd czyni nie potwierdzi.",
+   "wer": 0.222
+  },
+  {
+   "file": "pl/job.refuse_wrong_letterbox.line.1.ogg",
+   "dur": 3.99,
+   "lufs": -17.7,
+   "lead_ms": 51,
+   "trail_ms": 43,
+   "ref": "Wrzuciłem kartkę do szesnastki zamiast do osiemnastki. To minuta roboty.",
+   "asr": "Wrzuciłem kartkę do 16 zamiast do 18. To minuta roboty.",
+   "wer": 0.2
+  },
+  {
+   "file": "pl/job.refuse_wrong_letterbox.line.2.ogg",
+   "dur": 4.63,
+   "lufs": -17.8,
+   "lead_ms": 57,
+   "trail_ms": 53,
+   "ref": "Ta skrzynka należy do szesnastki. Zapytajmy ich albo zarządczynię.",
+   "asr": "Ta skrzynka należy do 16. Zapytajmy ich albo zarządczynie.",
+   "wer": 0.222
+  },
+  {
+   "file": "pl/job.refuse_wrong_letterbox.line.3.ogg",
+   "dur": 3.13,
+   "lufs": -18.0,
+   "lead_ms": 58,
+   "trail_ms": 57,
+   "ref": "Wyjechali do Nowego Roku. Nikt nawet nie zauważy.",
+   "asr": "Wyjechali do nowego roku. Nikt nawet nie zauważy.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.refuse_wrong_letterbox.line.4.ogg",
+   "dur": 4.59,
+   "lufs": -18.0,
+   "lead_ms": 45,
+   "trail_ms": 48,
+   "ref": "Tu nie otworzę. Zostawmy im liścik, oddadzą kartkę po powrocie.",
+   "asr": "Tu nie otworzę. Zostawmy im liścik. Oddadzą kartkę po powrocie.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.warm_room_for_neighbours.line.1.ogg",
+   "dur": 5.99,
+   "lufs": -17.9,
+   "lead_ms": 48,
+   "trail_ms": 40,
+   "ref": "Świetlica jest ciepła. Sąsiedzi nie. Wolałabym zamienić te fakty.",
+   "asr": "Świetlica jest ciepła. Sąsiedzi nie. Wolałabym zamienić te fakty.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.warm_room_for_neighbours.line.2.ogg",
+   "dur": 4.11,
+   "lufs": -17.7,
+   "lead_ms": 23,
+   "trail_ms": 42,
+   "ref": "Zarządczyni zgodziła się przez telefon. Tu jest uchwała mieszkańców.",
+   "asr": "Zarząd czyni zgodziła się przez telefon. Tu jest uchwała mieszkańców.",
+   "wer": 0.222
+  },
+  {
+   "file": "pl/job.warm_room_for_neighbours.line.3.ogg",
+   "dur": 4.45,
+   "lufs": -18.0,
+   "lead_ms": 54,
+   "trail_ms": 56,
+   "ref": "Prawo wejścia potwierdzone. Cena zostaje taka, jak ustaliliśmy.",
+   "asr": "Prawowe iść potwierdzone. Cena zostaje taka jak ustaliliśmy.",
+   "wer": 0.25
+  },
+  {
+   "file": "pl/job.warm_room_for_neighbours.line.4.ogg",
+   "dur": 3.45,
+   "lufs": -17.9,
+   "lead_ms": 37,
+   "trail_ms": 38,
+   "ref": "Przyniosę koce. Ziemniak może zgłosić się na termofor.",
+   "asr": "Przyniosę koce. Ziemniak może zgłosić się na termofor.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.wigilia_table_drawer.line.1.ogg",
+   "dur": 3.84,
+   "lufs": -18.2,
+   "lead_ms": 20,
+   "trail_ms": 41,
+   "ref": "Każdy ma miejsce. Tylko winietki zostały zamknięte w szufladzie.",
+   "asr": "Każdy ma miejsce. Tylko winietki zostały zamknięte w szufladzie.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.wigilia_table_drawer.line.2.ogg",
+   "dur": 4.33,
+   "lufs": -18.2,
+   "lead_ms": 40,
+   "trail_ms": 53,
+   "ref": "Elżbieta wyraziła zgodę. Krzesła przeliczyłam już dwa razy.",
+   "asr": "Rżbieta wyraziła zgodę. Krzesła przeliczyłam już dwa razy.",
+   "wer": 0.125
+  },
+  {
+   "file": "pl/job.wigilia_table_drawer.line.3.ogg",
+   "dur": 4.52,
+   "lufs": -18.0,
+   "lead_ms": 32,
+   "trail_ms": 47,
+   "ref": "Widziałem uchwałę, cena ustalona. Niech te miejsca nie stoją puste.",
+   "asr": "Widziałem uchwałę, cena ustalona. Niech te miejsca nie stoją puste.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.wigilia_table_drawer.line.4.ogg",
+   "dur": 3.46,
+   "lufs": -18.0,
+   "lead_ms": 1,
+   "trail_ms": 52,
+   "ref": "Jeśli zostanie jedno krzesło, zatrzymamy je dla pana.",
+   "asr": "Jeśli zostanie jedno krzesło, zatrzymamy je dla Pana.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.winter_bicycle_cellar.line.1.ogg",
+   "dur": 5.09,
+   "lufs": -18.0,
+   "lead_ms": 52,
+   "trail_ms": 45,
+   "ref": "Rower stoi pod dachem. Kłódka też, a i tak zamarzła.",
+   "asr": "Ech, rower stoi pod dachem. Kłódka też. A i tak zamarzła.",
+   "wer": 0.1
+  },
+  {
+   "file": "pl/job.winter_bicycle_cellar.line.2.ogg",
+   "dur": 3.56,
+   "lufs": -17.8,
+   "lead_ms": 7,
+   "trail_ms": 36,
+   "ref": "Miejsce ma w wykazie, a aneks do najmu się zgadza.",
+   "asr": "Miejsce ma w wykarzie, a aneks do najmu się zgadza.",
+   "wer": 0.1
+  },
+  {
+   "file": "pl/job.winter_bicycle_cellar.line.3.ogg",
+   "dur": 4.2,
+   "lufs": -17.9,
+   "lead_ms": 51,
+   "trail_ms": 50,
+   "ref": "To wystarczy, by potwierdzić dostęp. Trzymamy się ustalonej ceny.",
+   "asr": "To wystarczy, by potwierdzić dostęp. Trzymamy się ustalonej ceny.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.winter_bicycle_cellar.line.4.ogg",
+   "dur": 3.6,
+   "lufs": -18.3,
+   "lead_ms": 46,
+   "trail_ms": 44,
+   "ref": "Dziękuję. Może przesyłki dotrą jeszcze przed Nowym Rokiem.",
+   "asr": "Dziękuję. Może przesyłki dotrą jeszcze przed nowym rokiem.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.wooden_winter_village.line.1.ogg",
+   "dur": 4.95,
+   "lufs": -16.9,
+   "lead_ms": 49,
+   "trail_ms": 54,
+   "ref": "Muzeum pożyczyło nam małą zimową ulicę. Ulica schowała się w kasecie.",
+   "asr": "Muzeum pożyczyło nam małą zimową ulicę. Ulica schowała się w kasecie.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.wooden_winter_village.line.2.ogg",
+   "dur": 5.37,
+   "lufs": -17.5,
+   "lead_ms": 58,
+   "trail_ms": 46,
+   "ref": "Upoważnienie dr Rygiel i protokół depozytu się zgadzają. Cena jak w wycenie.",
+   "asr": "Upoważnienie doktora Rygiel i protokół depozytu się zgadzają. Cena jak w wycenie.",
+   "wer": 0.083
+  },
+  {
+   "file": "pl/job.wooden_winter_village.line.3.ogg",
+   "dur": 3.24,
+   "lufs": -18.1,
+   "lead_ms": 56,
+   "trail_ms": 44,
+   "ref": "Proszę bez rys. Ten śnieg ma prawie sto lat.",
+   "asr": "Proszę bez rys. Ten śnieg ma prawie 100 lat.",
+   "wer": 0.111
+  },
+  {
+   "file": "pl/job.wooden_winter_village.line.4.ogg",
+   "dur": 3.0,
+   "lufs": -17.5,
+   "lead_ms": 49,
+   "trail_ms": 51,
+   "ref": "Rozumiem. Pogody nie zamierzam poprawiać.",
+   "asr": "Rozumiem. Pogody nie zamierzam poprawiać.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.attic_drying_room.line.1.ogg",
+   "dur": 4.5,
+   "lufs": -17.9,
+   "lead_ms": 53,
+   "trail_ms": 49,
+   "ref": "The choir's coats are upstairs. Nobody's caroling in icicles.",
+   "asr": "The choir's coats are upstairs. Nobody's caroling in icicles.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.attic_drying_room.line.2.ogg",
+   "dur": 3.53,
+   "lufs": -18.2,
+   "lead_ms": 12,
+   "trail_ms": 37,
+   "ref": "Her lease includes the drying room. Access confirmed.",
+   "asr": "Her lease includes the drying room. Access confirmed.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.attic_drying_room.line.3.ogg",
+   "dur": 3.83,
+   "lufs": -18.0,
+   "lead_ms": 59,
+   "trail_ms": 49,
+   "ref": "Permission and price agreed. Let's get the coats back to their owners.",
+   "asr": "Permission and price agreed. Let's get the codes back to their owners.",
+   "wer": 0.083
+  },
+  {
+   "file": "en/job.attic_drying_room.line.4.ogg",
+   "dur": 4.6,
+   "lufs": -18.3,
+   "lead_ms": 19,
+   "trail_ms": 34,
+   "ref": "Good. Mine is the one with the remarkably sensible pockets.",
+   "asr": "Good! Mine is the one with the remarkably sensible pockets.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.carol_singers_chest.line.1.ogg",
+   "dur": 3.76,
+   "lufs": -18.2,
+   "lead_ms": 47,
+   "trail_ms": 24,
+   "ref": "Our paper stars are in there. The choir has been ready since Tuesday.",
+   "asr": "Our paper stars are in there. The choir has been ready since Tuesday.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.carol_singers_chest.line.2.ogg",
+   "dur": 3.38,
+   "lufs": -17.8,
+   "lead_ms": 57,
+   "trail_ms": 12,
+   "ref": "The chest belongs to the residents. Here's their decision.",
+   "asr": "The chest belongs to the residents. Here's their decision.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.carol_singers_chest.line.3.ogg",
+   "dur": 3.96,
+   "lufs": -18.0,
+   "lead_ms": 55,
+   "trail_ms": 52,
+   "ref": "Permission and fee agreed. The stars can make their entrance.",
+   "asr": "Permission and fee agreed. The stars can make their entrance.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.carol_singers_chest.line.4.ogg",
+   "dur": 3.64,
+   "lufs": -18.1,
+   "lead_ms": 41,
+   "trail_ms": 35,
+   "ref": "Now we just need everyone to sing in the same key.",
+   "asr": "Now we just need everyone to sing in the same key.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.christmas_eve_heat.line.1.ogg",
+   "dur": 4.09,
+   "lufs": -17.4,
+   "lead_ms": 52,
+   "trail_ms": 39,
+   "ref": "The repair is nearly done. Here's the authorization for the last cabinet.",
+   "asr": "The repair is nearly done. Here's the authorization for the last cabinet.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.christmas_eve_heat.line.2.ogg",
+   "dur": 4.41,
+   "lufs": -18.0,
+   "lead_ms": 6,
+   "trail_ms": 43,
+   "ref": "I'll check the heating once it's open. The system is my responsibility.",
+   "asr": "I'll check the heating once it's open. The system is my responsibility.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.christmas_eve_heat.line.3.ogg",
+   "dur": 4.28,
+   "lufs": -17.9,
+   "lead_ms": 36,
+   "trail_ms": 50,
+   "ref": "Authorization and price checked. I'll handle the lock, nothing else.",
+   "asr": "Authorization and price checked. I'll handle the lock, nothing else.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.christmas_eve_heat.line.4.ogg",
+   "dur": 4.07,
+   "lufs": -18.0,
+   "lead_ms": 55,
+   "trail_ms": 5,
+   "ref": "The radiators are warm again. And there's still a place for you at the table.",
+   "asr": "The radiators are warm again, and there's still a place for you at the table.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.frozen_cellar_padlock.line.1.ogg",
+   "dur": 4.1,
+   "lufs": -18.1,
+   "lead_ms": 50,
+   "trail_ms": 19,
+   "ref": "The blankets are in my cellar. Winter got to them before I did.",
+   "asr": "The blankets are in my cellar. Winter got to them before I did.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.frozen_cellar_padlock.line.2.ogg",
+   "dur": 5.09,
+   "lufs": -18.1,
+   "lead_ms": 55,
+   "trail_ms": 41,
+   "ref": "The lease annex and the cellar register match. This is Mrs Janka's space.",
+   "asr": "The lease annex and the seller register match. This is Mrs. Yanke's space.",
+   "wer": 0.154
+  },
+  {
+   "file": "en/job.frozen_cellar_padlock.line.3.ogg",
+   "dur": 3.61,
+   "lufs": -18.1,
+   "lead_ms": 47,
+   "trail_ms": 50,
+   "ref": "All clear, and the price is agreed. I'll see to the padlock.",
+   "asr": "All clear and the price is agreed. I'll see to the padlock.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.frozen_cellar_padlock.line.4.ogg",
+   "dur": 4.26,
+   "lufs": -18.0,
+   "lead_ms": 0,
+   "trail_ms": 48,
+   "ref": "Good. Blankets belong on shoulders, not on shelves.",
+   "asr": "Good. Blankets belong on shoulders, not on shelves.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.halina_christmas_tin.line.1.ogg",
+   "dur": 6.18,
+   "lufs": -17.8,
+   "lead_ms": 0,
+   "trail_ms": 53,
+   "ref": "The gingerbread has been resting since November. So, it seems, has the key.",
+   "asr": "The gingerbread has been resting since November, so it seems has the key.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.halina_christmas_tin.line.2.ogg",
+   "dur": 3.97,
+   "lufs": -18.1,
+   "lead_ms": 39,
+   "trail_ms": 55,
+   "ref": "It's Halina's tin. I took the photo when she locked it.",
+   "asr": "It's Helena's tin. I took the photo when she locked it.",
+   "wer": 0.091
+  },
+  {
+   "file": "en/job.halina_christmas_tin.line.3.ogg",
+   "dur": 4.55,
+   "lufs": -18.1,
+   "lead_ms": 56,
+   "trail_ms": 47,
+   "ref": "Ownership and price confirmed. I'll open the tin; the gingerbread is yours.",
+   "asr": "Ownership and price confirmed. I'll open the tin. The gingerbread is yours.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.halina_christmas_tin.line.4.ogg",
+   "dur": 4.32,
+   "lufs": -18.0,
+   "lead_ms": 24,
+   "trail_ms": 50,
+   "ref": "Very sensible, son. The first piece is yours anyway.",
+   "asr": "Very sensible, son. The first piece is yours anyway.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.heating_service_cupboard.line.1.ogg",
+   "dur": 4.58,
+   "lufs": -18.0,
+   "lead_ms": 42,
+   "trail_ms": 41,
+   "ref": "The radiators are cold. I need the service log before I inspect anything.",
+   "asr": "The radiators are cold. I need the service log before I inspect anything.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.heating_service_cupboard.line.2.ogg",
+   "dur": 4.1,
+   "lufs": -18.0,
+   "lead_ms": 37,
+   "trail_ms": 45,
+   "ref": "He's authorized. Here's the written order and our building record.",
+   "asr": "He's authorised. Here's the written order and our building record.",
+   "wer": 0.1
+  },
+  {
+   "file": "en/job.heating_service_cupboard.line.3.ogg",
+   "dur": 4.24,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 43,
+   "ref": "The cupboard's mine, at the agreed price. The heating system is yours.",
+   "asr": "The cupboard's mine at the agreed price. The heating system is yours.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.heating_service_cupboard.line.4.ogg",
+   "dur": 3.13,
+   "lufs": -17.8,
+   "lead_ms": 1,
+   "trail_ms": 30,
+   "ref": "Fair enough. One cold mystery at a time.",
+   "asr": "Fair enough, one cold mystery at a time.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_unapproved_repair.line.1.ogg",
+   "dur": 3.36,
+   "lufs": -17.9,
+   "lead_ms": 41,
+   "trail_ms": 26,
+   "ref": "I'm here about the heating. The message says it's urgent.",
+   "asr": "I'm here about the heating. The message says it's urgent.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_unapproved_repair.line.2.ogg",
+   "dur": 3.62,
+   "lufs": -18.0,
+   "lead_ms": 54,
+   "trail_ms": 44,
+   "ref": "The manager hasn't confirmed this visit. Let's call her first.",
+   "asr": "The manager hasn't confirmed this visit. Let's call her first.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_unapproved_repair.line.3.ogg",
+   "dur": 2.57,
+   "lufs": -20.8,
+   "lead_ms": 40,
+   "trail_ms": 45,
+   "ref": "I can pay extra if we skip the paperwork.",
+   "asr": "I can pay extra if we skip the paperwork.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_unapproved_repair.line.4.ogg",
+   "dur": 4.02,
+   "lufs": -18.2,
+   "lead_ms": 55,
+   "trail_ms": 48,
+   "ref": "No, thank you. I won't open it until the manager confirms.",
+   "asr": "No, thank you. I won't open it until the manager confirms.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_wrong_letterbox.line.1.ogg",
+   "dur": 3.41,
+   "lufs": -17.9,
+   "lead_ms": 48,
+   "trail_ms": 30,
+   "ref": "I put my card in sixteen instead of eighteen. It's a minute's work.",
+   "asr": "I put my card in 16 instead of 18. It's a minute's work.",
+   "wer": 0.154
+  },
+  {
+   "file": "en/job.refuse_wrong_letterbox.line.2.ogg",
+   "dur": 4.29,
+   "lufs": -17.9,
+   "lead_ms": 41,
+   "trail_ms": 48,
+   "ref": "That box belongs to number sixteen. Let's ask them, or the manager.",
+   "asr": "That box belongs to number 16. Let's ask them or the manager.",
+   "wer": 0.083
+  },
+  {
+   "file": "en/job.refuse_wrong_letterbox.line.3.ogg",
+   "dur": 3.23,
+   "lufs": -17.6,
+   "lead_ms": 56,
+   "trail_ms": 44,
+   "ref": "They're away till New Year. Nobody would even notice.",
+   "asr": "They're away till new year. Nobody would even notice.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_wrong_letterbox.line.4.ogg",
+   "dur": 3.85,
+   "lufs": -17.8,
+   "lead_ms": 57,
+   "trail_ms": 24,
+   "ref": "I won't open this one. Let's leave them a note; they'll pass it on.",
+   "asr": "I won't open this one. Let's leave them a note. They'll pass it on.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.warm_room_for_neighbours.line.1.ogg",
+   "dur": 4.43,
+   "lufs": -17.5,
+   "lead_ms": 53,
+   "trail_ms": 29,
+   "ref": "The room's warm. The neighbors aren't. I'd like to swap those facts.",
+   "asr": "The rooms warm. The neighbours aren't. I'd like to swap those facts.",
+   "wer": 0.167
+  },
+  {
+   "file": "en/job.warm_room_for_neighbours.line.2.ogg",
+   "dur": 3.73,
+   "lufs": -17.8,
+   "lead_ms": 49,
+   "trail_ms": 33,
+   "ref": "The manager agreed by phone. Here's the residents' decision.",
+   "asr": "The manager agreed by phone. Here's the residents decision.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.warm_room_for_neighbours.line.3.ogg",
+   "dur": 3.61,
+   "lufs": -18.1,
+   "lead_ms": 39,
+   "trail_ms": 45,
+   "ref": "The right to enter is clear. The fee stays as agreed.",
+   "asr": "The right to enter is clear. The fee stays as agreed.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.warm_room_for_neighbours.line.4.ogg",
+   "dur": 4.25,
+   "lufs": -17.7,
+   "lead_ms": 10,
+   "trail_ms": 44,
+   "ref": "I'll bring blankets. Potato may volunteer as a hot-water bottle.",
+   "asr": "I'll bring blankets. Potato may volunteer as a hot water bottle.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.wigilia_table_drawer.line.1.ogg",
+   "dur": 3.93,
+   "lufs": -18.0,
+   "lead_ms": 0,
+   "trail_ms": 50,
+   "ref": "Everyone has a place. Only the name cards are locked in the drawer.",
+   "asr": "Everyone has a place. Only the name cards are locked in the drawer.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.wigilia_table_drawer.line.2.ogg",
+   "dur": 3.8,
+   "lufs": -18.0,
+   "lead_ms": 21,
+   "trail_ms": 43,
+   "ref": "Elżbieta approved it. I've counted the chairs twice.",
+   "asr": "I was better approved it. I've counted the chairs twice.",
+   "wer": 0.375
+  },
+  {
+   "file": "en/job.wigilia_table_drawer.line.3.ogg",
+   "dur": 4.75,
+   "lufs": -18.0,
+   "lead_ms": 40,
+   "trail_ms": 41,
+   "ref": "I've seen the decision, and the price is settled. Let's not leave those places empty.",
+   "asr": "I've seen the decision and the price is settled. Let's not leave those places empty.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.wigilia_table_drawer.line.4.ogg",
+   "dur": 2.95,
+   "lufs": -19.1,
+   "lead_ms": 53,
+   "trail_ms": 24,
+   "ref": "If one chair is spare, we're keeping it for you.",
+   "asr": "If one chair is spare, we're keeping it for you.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.winter_bicycle_cellar.line.1.ogg",
+   "dur": 5.48,
+   "lufs": -18.0,
+   "lead_ms": 39,
+   "trail_ms": 50,
+   "ref": "My bicycle's under a roof. So is the padlock, and it froze anyway.",
+   "asr": "My bicycle's under a roof. So is the padlock, and it froze anyway.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.winter_bicycle_cellar.line.2.ogg",
+   "dur": 3.79,
+   "lufs": -18.1,
+   "lead_ms": 45,
+   "trail_ms": 37,
+   "ref": "His space is on the register, and his lease annex matches.",
+   "asr": "His space is on the register and his lease annex matches.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.winter_bicycle_cellar.line.3.ogg",
+   "dur": 3.47,
+   "lufs": -17.8,
+   "lead_ms": 37,
+   "trail_ms": 40,
+   "ref": "That confirms access. We'll keep to the agreed price.",
+   "asr": "That confirms access. We'll keep to the agreed price.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.winter_bicycle_cellar.line.4.ogg",
+   "dur": 3.89,
+   "lufs": -18.2,
+   "lead_ms": 52,
+   "trail_ms": 35,
+   "ref": "Thank you. The parcels might arrive before New Year after all.",
+   "asr": "Thank you. The parcels might arrive before New Year after all.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.wooden_winter_village.line.1.ogg",
+   "dur": 4.08,
+   "lufs": -17.8,
+   "lead_ms": 54,
+   "trail_ms": 49,
+   "ref": "The museum lent us a little winter street. It's hiding in its box.",
+   "asr": "The museum lent us a little winter street. It's hiding in its box.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.wooden_winter_village.line.2.ogg",
+   "dur": 4.94,
+   "lufs": -18.0,
+   "lead_ms": 27,
+   "trail_ms": 48,
+   "ref": "Dr Rygiel's authorization and the deposit record match. Price as quoted.",
+   "asr": "Dr. Riegel's authorization and the deposit record match. Price as quoted.",
+   "wer": 0.091
+  },
+  {
+   "file": "en/job.wooden_winter_village.line.3.ogg",
+   "dur": 4.14,
+   "lufs": -18.1,
+   "lead_ms": 53,
+   "trail_ms": 35,
+   "ref": "No scratches, please. This snow is almost a hundred years old.",
+   "asr": "No scratches please. This snow is almost a hundred years old.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.wooden_winter_village.line.4.ogg",
+   "dur": 3.13,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 48,
+   "ref": "Understood. I'll leave the weather exactly as it is.",
+   "asr": "Understood. I'll leave the weather exactly as it is.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.attic_drying_room.line.1.ogg",
+   "dur": 4.52,
+   "lufs": -18.4,
+   "lead_ms": 43,
+   "trail_ms": 49,
+   "ref": "Die Mäntel des Chors sind oben. In Eiszapfen singt mir keiner.",
+   "asr": "Die Mäntel des Kors sind oben. In Eiszapfen sinkt mir keiner.",
+   "wer": 0.182
+  },
+  {
+   "file": "de/job.attic_drying_room.line.2.ogg",
+   "dur": 4.19,
+   "lufs": -18.1,
+   "lead_ms": 36,
+   "trail_ms": 28,
+   "ref": "Ihr Mietvertrag umfasst den Trockenraum. Zugang bestätigt.",
+   "asr": "Ihr Mietvertrag umfasst den Trockenraum. Zugang bestätigt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.attic_drying_room.line.3.ogg",
+   "dur": 4.16,
+   "lufs": -17.7,
+   "lead_ms": 2,
+   "trail_ms": 56,
+   "ref": "Zustimmung und Preis stehen. Bringen wir die Mäntel zu ihren Besitzern.",
+   "asr": "Zustimmung und Preis stehen. Bringen wir die Mäntel zu Ihren Besitzern.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.attic_drying_room.line.4.ogg",
+   "dur": 4.57,
+   "lufs": -18.0,
+   "lead_ms": 26,
+   "trail_ms": 62,
+   "ref": "Gut. Meiner ist der mit den bemerkenswert vernünftigen Taschen.",
+   "asr": "Gut, meiner ist der mit den bemerkenswert vernünftigen Taschen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.carol_singers_chest.line.1.ogg",
+   "dur": 3.96,
+   "lufs": -17.5,
+   "lead_ms": 66,
+   "trail_ms": 36,
+   "ref": "Unsere Papiersterne sind da drin. Der Chor ist seit Dienstag bereit.",
+   "asr": "Unsere Papiersterne sind da drin. Der Core ist seit Dienstag bereit.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.carol_singers_chest.line.2.ogg",
+   "dur": 3.44,
+   "lufs": -17.8,
+   "lead_ms": 0,
+   "trail_ms": 40,
+   "ref": "Die Truhe gehört der Gemeinschaft. Hier ist ihr Beschluss.",
+   "asr": "Die Truhe geruht der Gemeinschaft. Hier ist ihr Beschluss.",
+   "wer": 0.111
+  },
+  {
+   "file": "de/job.carol_singers_chest.line.3.ogg",
+   "dur": 4.08,
+   "lufs": -18.0,
+   "lead_ms": 47,
+   "trail_ms": 51,
+   "ref": "Zustimmung und Preis stehen. Die Sterne können ihren Auftritt haben.",
+   "asr": "Zustimmung und Preis stehen. Die Sterne können ihren Auftritt haben.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.carol_singers_chest.line.4.ogg",
+   "dur": 3.74,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 25,
+   "ref": "Jetzt müssen nur noch alle in derselben Tonart singen.",
+   "asr": "Jetzt müssen nur noch alle in derselben Tonart singen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.christmas_eve_heat.line.1.ogg",
+   "dur": 4.25,
+   "lufs": -18.1,
+   "lead_ms": 0,
+   "trail_ms": 31,
+   "ref": "Die Reparatur ist fast fertig. Hier ist die Vollmacht für den letzten Schrank.",
+   "asr": "Die Reparatur ist fast fertig. Hier ist die Vollmacht für den letzten Schrank.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.christmas_eve_heat.line.2.ogg",
+   "dur": 4.95,
+   "lufs": -18.1,
+   "lead_ms": 33,
+   "trail_ms": 24,
+   "ref": "Wenn er offen ist, prüfe ich die Heizung. Die Anlage ist meine Verantwortung.",
+   "asr": "Wenn er offen ist, prüfe ich die Heizung. Die Anlage ist meine Verantwortung.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.christmas_eve_heat.line.3.ogg",
+   "dur": 4.74,
+   "lufs": -17.9,
+   "lead_ms": 27,
+   "trail_ms": 43,
+   "ref": "Vollmacht und Preis geprüft. Ich kümmere mich um das Schloss, um nichts sonst.",
+   "asr": "Vollmacht und Preis getrüft. Ich kümmere mich um das Schloss, um nichts sonst.",
+   "wer": 0.077
+  },
+  {
+   "file": "de/job.christmas_eve_heat.line.4.ogg",
+   "dur": 4.12,
+   "lufs": -18.1,
+   "lead_ms": 54,
+   "trail_ms": 28,
+   "ref": "Die Heizkörper sind wieder warm. Und am Tisch wartet noch ein Platz auf Sie.",
+   "asr": "Die Heizkörper sind wieder warm und am Tisch wartet noch ein Platz auf sie.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.frozen_cellar_padlock.line.1.ogg",
+   "dur": 4.16,
+   "lufs": -17.6,
+   "lead_ms": 57,
+   "trail_ms": 24,
+   "ref": "Die Decken sind in meinem Keller. Der Winter war schneller als ich.",
+   "asr": "Die Decken sind in meinem Keller. Der Winter war schneller als ich.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.frozen_cellar_padlock.line.2.ogg",
+   "dur": 4.59,
+   "lufs": -18.1,
+   "lead_ms": 22,
+   "trail_ms": 30,
+   "ref": "Mietzusatz und Kellerliste stimmen überein. Das ist Frau Jankas Abteil.",
+   "asr": "Mezusatz und Kellerliste stimmen überein. Das ist Frau Jankers Abteil.",
+   "wer": 0.2
+  },
+  {
+   "file": "de/job.frozen_cellar_padlock.line.3.ogg",
+   "dur": 4.0,
+   "lufs": -18.1,
+   "lead_ms": 53,
+   "trail_ms": 44,
+   "ref": "Alles in Ordnung, der Preis steht. Ich kümmere mich um das Schloss.",
+   "asr": "Alles in Ordnung. Der Preis steht. Ich kümmere mich um das Schloss.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.frozen_cellar_padlock.line.4.ogg",
+   "dur": 4.1,
+   "lufs": -18.0,
+   "lead_ms": 2,
+   "trail_ms": 40,
+   "ref": "Gut. Decken gehören auf Schultern, nicht ins Regal.",
+   "asr": "Gut, Decken gehören auf Schultern, nicht ins Regal.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.halina_christmas_tin.line.1.ogg",
+   "dur": 4.93,
+   "lufs": -18.1,
+   "lead_ms": 26,
+   "trail_ms": 54,
+   "ref": "Die Lebkuchen ruhen seit November. Der Schlüssel offenbar auch.",
+   "asr": "Die Lebkuchen ruhen seit November. Der Schlüssel offenbar auch.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.halina_christmas_tin.line.2.ogg",
+   "dur": 4.89,
+   "lufs": -18.2,
+   "lead_ms": 1,
+   "trail_ms": 56,
+   "ref": "Das ist Halinas Dose. Ich habe das Foto gemacht, als sie sie abschloss.",
+   "asr": "Das ist Halinas Dose. Ich habe das Foto gemacht als CC-Abschluss.",
+   "wer": 0.231
+  },
+  {
+   "file": "de/job.halina_christmas_tin.line.3.ogg",
+   "dur": 5.79,
+   "lufs": -17.8,
+   "lead_ms": 40,
+   "trail_ms": 49,
+   "ref": "Eigentum und Preis bestätigt. Ich öffne die Dose, die Lebkuchen holen Sie selbst heraus.",
+   "asr": "Eigentum und Preis bestätigt. Ich öffne die Dose. Die Lebkuchen holen sie selbst heraus.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.halina_christmas_tin.line.4.ogg",
+   "dur": 5.28,
+   "lufs": -18.3,
+   "lead_ms": 57,
+   "trail_ms": 21,
+   "ref": "Sehr vernünftig, mein Junge. Das erste Stück gehört sowieso Ihnen.",
+   "asr": "Sehr vernünftig, mein Junge. Das erste Stück gehört sowieso ihnen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.heating_service_cupboard.line.1.ogg",
+   "dur": 4.82,
+   "lufs": -18.0,
+   "lead_ms": 0,
+   "trail_ms": 44,
+   "ref": "Die Heizkörper sind kalt. Vor der Prüfung brauche ich das Wartungsbuch.",
+   "asr": "Die Heizkörper sind kalt. Vor der Prüfung brauche ich das Wartungsbuch.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.heating_service_cupboard.line.2.ogg",
+   "dur": 4.62,
+   "lufs": -18.1,
+   "lead_ms": 37,
+   "trail_ms": 30,
+   "ref": "Er ist beauftragt. Hier sind der schriftliche Auftrag und die Hausunterlagen.",
+   "asr": "Er ist beauftragt. Hier sind der schriftliche Auftrag und die Hausunterlagen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.heating_service_cupboard.line.3.ogg",
+   "dur": 4.91,
+   "lufs": -18.0,
+   "lead_ms": 45,
+   "trail_ms": 53,
+   "ref": "Der Schrank ist meine Sache, zum vereinbarten Preis. Die Anlage ist Ihre.",
+   "asr": "Der Schrank ist meine Sache. Zum vereinbarten Preis. Die Anlage ist ihren.",
+   "wer": 0.083
+  },
+  {
+   "file": "de/job.heating_service_cupboard.line.4.ogg",
+   "dur": 3.66,
+   "lufs": -18.0,
+   "lead_ms": 8,
+   "trail_ms": 16,
+   "ref": "Einverstanden. Ein kaltes Rätsel nach dem anderen.",
+   "asr": "Einverstanden. Ein kaltes Rätsel nach dem anderen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_unapproved_repair.line.1.ogg",
+   "dur": 3.83,
+   "lufs": -18.0,
+   "lead_ms": 47,
+   "trail_ms": 31,
+   "ref": "Ich komme wegen der Heizung. In der Nachricht steht: dringend.",
+   "asr": "Ich komme wegen der Heizung. In der Nachricht steht dringend.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_unapproved_repair.line.2.ogg",
+   "dur": 4.26,
+   "lufs": -17.1,
+   "lead_ms": 49,
+   "trail_ms": 53,
+   "ref": "Die Verwalterin hat den Besuch nicht bestätigt. Rufen wir sie zuerst an.",
+   "asr": "Die Verwalterin hat den Besuch nicht bestätigt. Rufen wir sie zuerst an.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_unapproved_repair.line.3.ogg",
+   "dur": 3.55,
+   "lufs": -17.9,
+   "lead_ms": 41,
+   "trail_ms": 0,
+   "ref": "Ich kann etwas drauflegen, wenn wir die Formalitäten weglassen.",
+   "asr": "Ich kann etwas drauflegen, wenn wir die Formalitäten weglassen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_unapproved_repair.line.4.ogg",
+   "dur": 4.37,
+   "lufs": -18.0,
+   "lead_ms": 54,
+   "trail_ms": 47,
+   "ref": "Danke, nein. Ich öffne erst, wenn die Verwalterin es bestätigt.",
+   "asr": "Danke, nein. Ich öffne erst, wenn die Verwalterin es bestätigt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_wrong_letterbox.line.1.ogg",
+   "dur": 3.95,
+   "lufs": -18.0,
+   "lead_ms": 55,
+   "trail_ms": 56,
+   "ref": "Ich habe die Karte in die Sechzehn statt in die Achtzehn geworfen. Eine Minute Arbeit.",
+   "asr": "Ich habe die Karte in die 16 statt in die 18 geworfen. Eine Minute Arbeit.",
+   "wer": 0.133
+  },
+  {
+   "file": "de/job.refuse_wrong_letterbox.line.2.ogg",
+   "dur": 4.26,
+   "lufs": -18.0,
+   "lead_ms": 51,
+   "trail_ms": 54,
+   "ref": "Der Kasten gehört der Sechzehn. Fragen wir dort oder die Verwalterin.",
+   "asr": "Der Kasten gehört der 16. Fragen wir dort oder die Verwalterin?",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.refuse_wrong_letterbox.line.3.ogg",
+   "dur": 2.86,
+   "lufs": -18.2,
+   "lead_ms": 56,
+   "trail_ms": 23,
+   "ref": "Die sind bis Neujahr weg. Das merkt doch keiner.",
+   "asr": "Die sind bis Neu-Jahr weg. Das merkt doch keiner.",
+   "wer": 0.222
+  },
+  {
+   "file": "de/job.refuse_wrong_letterbox.line.4.ogg",
+   "dur": 4.36,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 42,
+   "ref": "Hier öffne ich nicht. Lassen wir eine Nachricht da, sie geben die Karte weiter.",
+   "asr": "Hier öffne ich nicht. Lassen wir eine Nachricht da. Sie geben die Karte weiter.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.warm_room_for_neighbours.line.1.ogg",
+   "dur": 5.23,
+   "lufs": -18.1,
+   "lead_ms": 47,
+   "trail_ms": 57,
+   "ref": "Der Raum ist warm. Die Nachbarn nicht. Das würde ich gern tauschen.",
+   "asr": "Der Raum ist warm. Die Nachbarn nicht. Das würde ich gern tauschen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.warm_room_for_neighbours.line.2.ogg",
+   "dur": 4.48,
+   "lufs": -18.1,
+   "lead_ms": 63,
+   "trail_ms": 40,
+   "ref": "Die Verwalterin hat am Telefon zugestimmt. Hier ist der Beschluss der Bewohner.",
+   "asr": "Die Verwalterin hat am Telefon zugestimmt. Hier ist der Beschluss der Bewohner.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.warm_room_for_neighbours.line.3.ogg",
+   "dur": 3.82,
+   "lufs": -18.1,
+   "lead_ms": 46,
+   "trail_ms": 41,
+   "ref": "Das Zutrittsrecht ist klar. Der Preis bleibt wie vereinbart.",
+   "asr": "Das Zutrittsrecht ist klar. Der Preis bleibt wie vereinbart.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.warm_room_for_neighbours.line.4.ogg",
+   "dur": 3.96,
+   "lufs": -18.1,
+   "lead_ms": 53,
+   "trail_ms": 25,
+   "ref": "Ich bringe Decken. Kartoffel meldet sich vielleicht als Wärmflasche.",
+   "asr": "Ich bringe Decken. Kartoffel meldet sich vielleicht als Wärmflasche.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.wigilia_table_drawer.line.1.ogg",
+   "dur": 4.24,
+   "lufs": -18.1,
+   "lead_ms": 24,
+   "trail_ms": 52,
+   "ref": "Jeder hat einen Platz. Nur die Tischkarten sind in der Schublade eingeschlossen.",
+   "asr": "Jeder hat einen Platz. Nur die Tischkarten sind in der Schublade eingeschlossen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.wigilia_table_drawer.line.2.ogg",
+   "dur": 4.65,
+   "lufs": -18.4,
+   "lead_ms": 21,
+   "trail_ms": 52,
+   "ref": "Elżbieta hat zugestimmt. Die Stühle habe ich schon zweimal gezählt.",
+   "asr": "Er später hat zugestimmt. Die Stühle habe ich schon zweimal gezählt.",
+   "wer": 0.2
+  },
+  {
+   "file": "de/job.wigilia_table_drawer.line.3.ogg",
+   "dur": 4.4,
+   "lufs": -17.9,
+   "lead_ms": 55,
+   "trail_ms": 55,
+   "ref": "Beschluss gesehen, Preis geklärt. Die Plätze sollen nicht leer bleiben.",
+   "asr": "Verschluss gesehen, Preis geklärt. Die Plätze sollen nicht leerbleiben.",
+   "wer": 0.3
+  },
+  {
+   "file": "de/job.wigilia_table_drawer.line.4.ogg",
+   "dur": 3.21,
+   "lufs": -18.0,
+   "lead_ms": 0,
+   "trail_ms": 26,
+   "ref": "Wenn ein Stuhl übrig bleibt, halten wir ihn für Sie frei.",
+   "asr": "Wenn ein Stuhl übrig bleibt, halten wir ihn für sie frei.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.winter_bicycle_cellar.line.1.ogg",
+   "dur": 5.7,
+   "lufs": -18.2,
+   "lead_ms": 45,
+   "trail_ms": 50,
+   "ref": "Mein Rad steht unter Dach. Das Schloss auch, und es ist trotzdem eingefroren.",
+   "asr": "Mein Rad steht unter Dach. Das Schloss auch. Und es ist trotzdem eingefroren.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.winter_bicycle_cellar.line.2.ogg",
+   "dur": 3.6,
+   "lufs": -17.9,
+   "lead_ms": 35,
+   "trail_ms": 41,
+   "ref": "Sein Platz steht in der Liste, und der Mietzusatz stimmt.",
+   "asr": "Sein Platz steht in der Liste und der Mietzusatz stimmt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.winter_bicycle_cellar.line.3.ogg",
+   "dur": 4.12,
+   "lufs": -18.0,
+   "lead_ms": 43,
+   "trail_ms": 50,
+   "ref": "Damit ist der Zugang bestätigt. Es bleibt beim vereinbarten Preis.",
+   "asr": "Damit ist der Zugang bestätigt. Es bleibt beim vereinbarten Preis.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.winter_bicycle_cellar.line.4.ogg",
+   "dur": 3.54,
+   "lufs": -18.2,
+   "lead_ms": 37,
+   "trail_ms": 34,
+   "ref": "Danke. Vielleicht kommen die Pakete doch noch vor Neujahr an.",
+   "asr": "Danke. Vielleicht kommen die Pakete doch noch vor Neujahr an.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.wooden_winter_village.line.1.ogg",
+   "dur": 4.9,
+   "lufs": -18.1,
+   "lead_ms": 44,
+   "trail_ms": 53,
+   "ref": "Das Museum hat uns eine kleine Winterstraße geliehen. Sie versteckt sich in ihrem Kasten.",
+   "asr": "Das Museum hat uns eine kleine Winterstraße geliehen. Sie versteckt sich in ihrem Kasten.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.wooden_winter_village.line.2.ogg",
+   "dur": 4.9,
+   "lufs": -18.1,
+   "lead_ms": 27,
+   "trail_ms": 52,
+   "ref": "Vollmacht von Dr. Rygiel und Leihprotokoll stimmen. Preis wie angeboten.",
+   "asr": "Vollmacht von Dr. Rügel und Leibprotokoll stimmen. Preis wie angeboten.",
+   "wer": 0.2
+  },
+  {
+   "file": "de/job.wooden_winter_village.line.3.ogg",
+   "dur": 3.88,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 46,
+   "ref": "Bitte ohne Kratzer. Dieser Schnee ist fast hundert Jahre alt.",
+   "asr": "Bitte ohne Kratzer. Dieser Schnee ist fast 100 Jahre alt.",
+   "wer": 0.1
+  },
+  {
+   "file": "de/job.wooden_winter_village.line.4.ogg",
+   "dur": 2.8,
+   "lufs": -18.0,
+   "lead_ms": 44,
+   "trail_ms": 50,
+   "ref": "Verstanden. Am Wetter ändere ich nichts.",
+   "asr": "Verstanden. Am Wetter endere ich nichts.",
+   "wer": 0.167
+  }
+ ]
+}

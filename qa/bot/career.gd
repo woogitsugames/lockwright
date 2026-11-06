@@ -278,8 +278,10 @@ func _run() -> void:
 			var base := sc.get_file().get_basename()
 			_visited[base] = _visited.get(base, 0) + 1
 			print("QA_SCENE t=%.1f %s" % [_sim, sc])
-			if _visited[base] > 60:
-				report["softlocks"].append({"scene": sc, "reason": "visited more than 60 times (loop)", "t": _sim})
+			# every job passes the list/arrival/payment once; the limit grows with the career (83 jobs since D-71)
+			var visit_cap := maxi(60, _jobs.size() + 30)
+			if _visited[base] > visit_cap:
+				report["softlocks"].append({"scene": sc, "reason": "visited more than %d times (loop)" % visit_cap, "t": _sim})
 				return _finish("loop")
 		if current_scene == null:
 			await _wait_frames(2)

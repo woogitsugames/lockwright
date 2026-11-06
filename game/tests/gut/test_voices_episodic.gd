@@ -6,7 +6,8 @@ const EMOTIONS := [&"greeting", &"surprise", &"relief", &"thanks", &"impatient",
 const NOT_VOICED := ["locksmith"]  # the player character has no client voice
 ## T43 speakers (chapters 9-12) whose S03v2 wordless reactions are not made yet: their spoken lines (D-57)
 ## exist; play_voice() is a silent no-op for them until the reactions arrive (then remove the id here).
-const S03_PENDING := ["celina", "dorota", "seweryn", "borys", "alicja", "janka", "leon", "mila", "oskar"]
+const S03_PENDING := ["celina", "dorota", "seweryn", "borys", "alicja", "janka", "leon", "mila", "oskar",
+		"pawel", "karol"]  # + chapter 8 (T18, D-71)
 
 
 func _speakers() -> Array:
