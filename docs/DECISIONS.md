@@ -220,3 +220,13 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 
 ## D-61: Głosy DE poza paczką mobilną do decyzji o dystrybucji języków
 2026-11-06 · sesja A · Po dodaniu 492 nagrań kwestii (D-57, 22,8 MB) i teł nowych rodzin pck Android ma 61,4 MB (limit 58, D-55). Tymczasowo `assets/audio/lines/de/*` jest w `exclude_filter` presetów Android i iOS (DE jest i tak za flagą `dev_mode`; odtwarzacz pokazuje wtedy same napisy). Docelowo właściciel wybiera: języki głosów pobierane na żądanie, mocniejsza kompresja mowy albo tylko PL+EN w paczce (pytanie poranne). Kto włącza DE, usuwa wpis z filtra w tym samym commicie.
+
+## D-62: Decyzje właściciela rano 2026-11-06
+2026-11-06 · właściciel ·
+- **Menu:** proof v2 z Blendera (tablica lokatorów z filcu, zawieszki) **zaakceptowany** do gry. Dalej: stany „wciśnięty” wszystkich pozycji, wersje językowe, potem ustawienia/zlecenia/warsztat w tym samym duchu i integracja w Godot; finalne rendery na GPU właściciela. Magnific A1 (tło menu) odpada.
+- **Głosy w kolejnych językach:** w paczce PL+EN, pozostałe języki głosów **pobierane na żądanie** przy wyborze języka (zastępuje tymczasowe D-61).
+- **Hania:** zostaje jasny dorosły głos (jak w dubbingu animacji).
+- **Ekonomia:** **tańsze narzędzia** (scenariusz C z `tools/econ_sim.py`); narzędzia dają wygodę/lepszy feedback, nie blokują zleceń.
+- **Scenka przyjazdu (D-58):** kierunek zaakceptowany; po dostawie Magnific D postać, finalny render na GPU, integracja, kolejne zlecenia.
+- **ElevenLabs:** konto ma płatny plan z licencją komercyjną.
+- **Dyrektorka:** nowy kobiecy portret (Magnific E).
