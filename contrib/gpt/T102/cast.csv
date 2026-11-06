@@ -1,0 +1,65 @@
+speaker_id,name_pl,age,character_description,voice_and_speech,source
+agnieszka,Agnieszka,45,pielęgniarka po 12 godzinach,"cichy, powolny, zmęczony",contrib/voice/CAST.md
+aino,Aino,50,"fińska oficer mechanik, lakoniczna","niski kobiecy, lekki nordycki akcent",contrib/voice/CAST.md
+alicja,Alicja,40,brak danych,"Polish pottery seller at a market, 40, energetic and looking for shortcuts, slows down when she has to give in. Bright, clear mid-high female voice.",game/data/voice_cast.json; game/i18n/content.csv
+bartek,Bartek,28,pan młody po weselu,"lekki, wesoły, zawstydzony",contrib/voice/CAST.md
+basia,Basia,ok. 45,sekretarka komitetu,"jasny, zorganizowany",contrib/voice/CAST.md
+borys,Borys,46,brak danych,"Polish bicycle restorer, 46, self-ironic, more careful with things than with his own diary. Warm mid-range male voice, lightly raspy, relaxed.",game/data/voice_cast.json; game/i18n/content.csv
+bride,Panna młoda,27,chichocze po weselu,"jasny, ciepły",contrib/voice/CAST.md
+captain,Kapitan,ok. 60,"brodaty, ręczy za Aino","głęboki, ciepły, fiński akcent",contrib/voice/CAST.md
+celina,Celina,44,brak danych,"Polish renovation site manager, 44, concise and decisive, likes short briefings. Low, steady, lightly textured female voice, measured pace, calm authority.",game/data/voice_cast.json; game/i18n/content.csv
+claimant,Kobieta przy drzwiach,ok. 33,"za gładka, nerwowa","uprzejmy, nieco spięty",contrib/voice/CAST.md
+darek,Darek,ok. 40,zdenerwowany,"spięty, urywany",contrib/voice/CAST.md
+dorota,Dorota,49,brak danych,"Polish flat owner, 49, impatient and a little tense but never aggressive. Clear mid-pitched female voice, quick pace, slightly taut.",game/data/voice_cast.json; game/i18n/content.csv
+edek,"Pan Edek, portier",63,"portier, pamięć do twarzy","ciepły, lekko chropowaty",contrib/voice/CAST.md
+elzbieta,"Elżbieta, zarządczyni",ok. 52,zarządczyni kamienicy,"opanowany, profesjonalny",contrib/voice/CAST.md
+ewa,Ewa,ok. 48,"nostalgiczna, z przekąsem","ciepły, niski-średni",contrib/voice/CAST.md
+gosia,Gosia,36,"renowatorka mebli, spokojna i dokładna","łagodny, ciepły",contrib/voice/CAST.md
+halina,Pani Halina,81,"ciepła, stanowcza w sprawach jedzenia, „synku”","starszy, lekko drżący, matczyny głos",contrib/voice/CAST.md
+hall_manager,Kierownik sali,ok. 45,"metodyczny, trochę znudzony","zwykły, niski-średni",contrib/voice/CAST.md
+hania,Hania,7 lat,poważna i przejęta,"jasny, lekki głos dorosłej lektorki „dziecięcej” (ElevenLabs blokuje projektowanie głosów dzieci)",contrib/voice/CAST.md
+headteacher,Dyrektorka szkoły,ok. 55,formalna,"spokojny, wyraźny (uwaga: portret epizodyczny pokazuje mężczyznę, a tekst i nazwa — kobietę)",contrib/voice/CAST.md
+iga,Iga,27,"perkusistka, energiczna","zadziorny, lekko chropawy kobiecy (druga wersja: pierwsza brzmiała męsko)",contrib/voice/CAST.md
+irena,Pani Irena,79,"wdowa, bibliotekarka","cichy, łagodny, powściągliwy",contrib/voice/CAST.md
+jacques,Monsieur Jacques,ok. 60,"Belg, szarmancki",miękki baryton z francuskim akcentem,contrib/voice/CAST.md
+jadwiga,Pani Jadwiga,ok. 72,emerytowana wychowawczyni,"nauczycielski, pewny siebie",contrib/voice/CAST.md
+janka,Janka,73,brak danych,"Elderly Polish neighbour, 73, hands out blankets before thinking of herself. Kind, busy, slightly creaky older female voice, quick and warm.",game/data/voice_cast.json; game/i18n/content.csv
+karol,Karol,41,brak danych,"Polish man, 41, impatient with procedures, slightly pushy but polite, wants to skip questions. Clear mid-pitched male voice, brisk and a little evasive.",game/data/voice_cast.json; game/i18n/content.csv
+kazimierz,Pan Kazimierz,60,po imieninach szwagra,wesoły baryton,contrib/voice/CAST.md
+krysia,Pani Krysia,ok. 70,pogodna bywalczyni przystanku,"jasny, szybki starszy głos",contrib/voice/CAST.md
+krystyna,Pani Krystyna,ok. 68,mówi mało i dokładnie,"miękki, niski głos starszej pani",contrib/voice/CAST.md
+kuba,Kuba,23,"zdenerwowany absolwent, autoironia","lekki, młody, szybki",contrib/voice/CAST.md
+lena,Aspirant Lena Sowa,39,"dzielnicowa, uprzejma, spokojna i konkretna","spokojny, konkretny",docs/CLIENTS.md section 3; game/i18n/content.csv
+leon,Leon,55,brak danych,"Polish parcel courier, 55, endless patience with people, none with winter. Tired but friendly mid-low male voice, plain and good-humoured.",game/data/voice_cast.json; game/i18n/content.csv
+leopold,Pan Leopold,70,antykwariusz z muszką,"powolny, kulturalny baryton",contrib/voice/CAST.md
+locksmith,Ślusarz,ok. 45,"spokojny, ciepły, suchy humor","spokojny, ciepły baryton bez pośpiechu; gracz słyszy go najczęściej (52 kwestie), więc ma nie męczyć",contrib/voice/CAST.md
+magda,Magda,41,"tłumaczka w Brukseli, teatralna","ekspresyjny, dowcipny",contrib/voice/CAST.md
+marcel,Marcel,29,kurier w pośpiechu,"lekki, uprzejmy",contrib/voice/CAST.md
+marek,Marek,ok. 46,naciska,pewny siebie,contrib/voice/CAST.md
+marta,Marta,34,"graficzka, ironiczna i ciepła",swobodny środkowy głos kobiecy (druga wersja: pierwsza wyszła za nisko),contrib/voice/CAST.md
+martine,Pani Martine,ok. 78,"Belgijka, wzruszona",miękki starszy głos z francuskim akcentem,contrib/voice/CAST.md
+mietek,Pan Mietek,ok. 38,kebab przez ścianę,"jowialny, serdeczny",contrib/voice/CAST.md
+mila,Mila,23,brak danych,"Young Polish woman, 23, organises a carol choir, cheerful and quick. Bright, clear young female voice with a smile, musical.",game/data/voice_cast.json; game/i18n/content.csv
+nadia,Nadia,29,piekarka o czwartej rano,"ciepły, praktyczny, trochę zmęczony",contrib/voice/CAST.md
+neighbour_lucyna,Sąsiadka pani Lucyny,ok. 66,czujna i życzliwa,wyraźny starszy głos,contrib/voice/CAST.md
+neighbour_robe,Sąsiad w szlafroku,ok. 62,obudzony o 4:00,"zaspany, szorstki, ale życzliwy",contrib/voice/CAST.md
+norbert,Norbert,43,"wykrętny, martwi się o kwiaty","lekko płaczliwy, środkowy",contrib/voice/CAST.md
+ola,Ola,38,"nauczycielka biologii, cierpliwa","spokojny, klarowny",contrib/voice/CAST.md
+oskar,Oskar,32,brak danych,"Polish man, 32, polite but in a hurry, a little impatient, accepts a calm refusal. Clear mid-pitched male voice, brisk.",game/data/voice_cast.json; game/i18n/content.csv
+pawel,Paweł,46,brak danych,"Polish heating technician, 46, calm and methodical, prefers a checked protocol to promises. Steady mid-low male voice, plain and reassuring, unhurried.",game/data/voice_cast.json; game/i18n/content.csv
+pieter,Brat Pieter,66,"flamandzki opiekun beginażu, z humorem","miękki, ciepły, flamandzki akcent",contrib/voice/CAST.md
+piotr,Piotr,ok. 42,praktyczny,spokojny baryton,contrib/voice/CAST.md
+renata,Pani Renata,52,"właścicielka pizzerii, mówi szybko","pełny, energiczny",contrib/voice/CAST.md
+roman,"Pan Roman, administrator",58,"administrator, sucho i sprawnie","płaski, rzeczowy baryton",contrib/voice/CAST.md
+rygiel,Dr Anna Rygiel,ok. 50,"kuratorka, pedantyczna","wyraźna, precyzyjna artykulacja",contrib/voice/CAST.md
+seweryn,Seweryn,61,brak danych,"Polish art workshop instructor, 61, patient and gentle, leaves people their own choices. Soft, warm mid-low male voice, short thoughtful pauses.",game/data/voice_cast.json; game/i18n/content.csv
+stefan,Pan Stefan,67,kioskarz-gawędziarz,"lekko zachrypnięty, rozbawiony",contrib/voice/CAST.md
+stranger,Mężczyzna w garniturze,ok. 45,"uprzejmy, mówi bardzo szybko","gładki, szybki",contrib/voice/CAST.md
+teresa,Pani Teresa,ok. 70,zaskoczona za drzwiami,wyraźny starszy głos,contrib/voice/CAST.md
+tomasz,Tomasz,ok. 40,"stolarz, spokojny","ciepły, niski, skromny",contrib/voice/CAST.md
+waldek,Pan Waldek,ok. 72,"działkowiec, docina",szorstki starszy,contrib/voice/CAST.md
+wanda,Pani Wanda,ok. 60,zarządczyni wspólnoty,"stanowczy, urzędowy, uczciwy",contrib/voice/CAST.md
+wladyslaw,Pan Władysław,84,"mistrz ze Świątnik, krótko, z błyskiem","stary, stanowczy, powolny",contrib/voice/CAST.md
+zbyszek,Pan Zbyszek,74,"działkowiec, dumny z pomidorów","pogodny, lekko zachrypnięty",contrib/voice/CAST.md
+zosia,Pani Zosia,ok. 75,"rzeczowa sąsiadka, czuła irytacja","żwawy, wyraźny głos starszej pani, inny niż Halina",contrib/voice/CAST.md
+zuzanna,Zuzanna,20,"ciekawska, trochę przemądrzała","jasny, szybki, młody",contrib/voice/CAST.md
