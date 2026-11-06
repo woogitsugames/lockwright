@@ -27,3 +27,5 @@ To propozycje nowych kluczy, nie stwierdzenie, że funkcja czytnika już istniej
 | `tutorial.result.a11y` | Wynik ćwiczenia | Etykieta wyniku, odczyt aktualnego rezultatu po zmianie. |
 
 Przed dodaniem kluczy należy sprawdzić wszystkie istniejące nazwy, uniknąć kolizji i przetłumaczyć je do pięciu języków. Nie uruchomiono `i18n_lint`: audyt nie zmienia CSV. Priorytet testu: menu z niewidocznymi przyciskami, suwaki i samouczek; potem pozostałe ekrany, komunikaty, modale i powrót z fokusem.
+
+Przegląd scen i dynamicznych kontrolek znajduje się w `uzupelnienie_sceny.md` i `analiza_dynamiczna.md`.
