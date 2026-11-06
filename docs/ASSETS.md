@@ -228,3 +228,12 @@ Own Blender 4.2.9 LTS / Cycles OptiX renders on RTX 5070, existing original phot
 
 | `art/renders/warded.png`, `warded_contrast_check/*` | `warded_contrast.py --res 1620x2160 --samples 128 --ward-key 100000`, `LW_DEVICE=GPU`; linked key on ward arcs/rivets; six adjacent grayscale contrast samples all >= 3.09:1; own render and Pillow QA. |
 - `game/assets/ui/gpt/cast/episodic/portrait_headteacher.webp` — **zastąpiony 2026-11-06** (D-62, Dyrektorka jest kobietą): wariant v3 z dostawy Magnific E (`contrib/magnific/E/portrait_headteacher_v3.png`; wg README wycięty z arkusza GPT Images, 256², fikcyjna osoba), WebP q88. Pozostałe warianty v1/v2/v4 w `contrib/magnific/E/` (v4 odrzucony: biało-czerwony emblemat w tle).
+
+## G23: postacie scenki przyjazdu i widmo dłoni (ChatGPT, 2026-11-06, D-66)
+Źródła: `contrib/gpt/G23/images/*.png` — natywny generator obrazów ChatGPT (`image_gen`), fikcyjne osoby (edycja portretów z gry), prompty i edycje w `contrib/gpt/G23/ASSETS.md`; generowane AI, warunki OpenAI (D-42). Przegląd: `contrib/gpt/REVIEW-G23.md`.
+
+| Plik | Co | Źródło i obróbka | Licencja |
+|---|---|---|---|
+| `art/renders/arrival/figures/kazimierz.png`, `teresa.png` | wycinki postaci (RGBA) do scenki D-58 | G23 `D1_kazimierz_fullbody.png`, `D2_teresa_fullbody.png`; `art/tools/figure_cutout.py`: maska rembg 2.0.87 BiRefNet-portrait, odkażenie koloru pymatting `estimate_foreground_ml`, Kazimierz `--keep-box 380,175,425,250` (klucz) | generowane AI, projekt |
+| `art/renders/arrival/wrong_floor_{night,evening,day}_kazimierz.png`, `wrong_floor_night_teresa.png`, `wrong_floor_with_figures_board.jpg` | kompozyty postaci na stop-klatkach GPU (cień 2D) i arkusz przeglądu | `arrival_composite.py` (polecenia: `art/renders/arrival/README.md`), `art/tools/arrival_board.py`; płyty: własne rendery GPU | własne + generowane AI |
+| `game/assets/ui/ghost/{thumb_left_press,thumb_right_press,thumb_right_slide,hand_left_tool,hand_right_tool,hand_right_open}.png`, `ghost_silhouettes.json` | sylwetki widma kciuka i ręki mistrza (ONBOARDING §2.2): biały + alfa, krawędź rozmyta 12 dp, 2 px/dp, hotspot w JSON | G23 `thumb_*.png`, `hand_*.png`; `art/tools/ghost_silhouettes.py` (maska z odległości od białego tła, wygaszenie nadgarstka przy krawędzi kadru, Gauss σ = 12 dp/2,56); import lossy 0,8 | generowane AI, projekt |

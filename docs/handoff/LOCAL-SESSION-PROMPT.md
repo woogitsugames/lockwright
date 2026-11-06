@@ -198,3 +198,30 @@ python art/blender/menu_compose.py --render-all --blender "$BL" --samples 256 --
 - Po renderze: `git add -f game/assets/ui/menu/*.webp game/assets/ui/menu/*.import art/renders/menu/*`, potem
   `godot --headless --path game --import` i GUT (`tests/gut/test_main_menu_v2.gd`). Obejrzyj `menu_pressed_all.jpg`
   (górny pasek = tło, dolny = wciśnięty: litery wychylone, bez widocznego prostokąta wycinka) i `menu_langs.jpg`.
+
+## Dodatek (sesja A, 2026-11-06): scenka przyjazdu — mapy cienia GPU dla prawdziwych postaci (G23)
+Postacie są już wycięte z dostawy ChatGPT G23 (zamiast Magnific D1/D2): `art/renders/arrival/figures/kazimierz.png`,
+`teresa.png` (RGBA). Kompozyty w repo (`wrong_floor_{night,evening,day}_kazimierz.png`, `wrong_floor_night_teresa.png`,
+arkusz `wrong_floor_with_figures_board.jpg`) mają **cień 2D** (stare mapy cienia są z CPU i zaślepek, nie pasują).
+**Nie renderuj ponownie stop-klatek ani sekwencji** — tylko mapy cienia (ok. 1 min każda) i złożenie.
+Pani Teresa ma nowe miejsce (`SLOTS['teresa']` = (560, 720, 0): za skrzydłem, zagląda przez szparę); `--mode shadow`
+bierze je z `arrival_scene.py`, a złożenie przelicza kotwicę starej stop-klatki przez `--feet-world`.
+```bash
+BL=blender   # 4.2 LTS
+A=art/renders/arrival
+$BL -b -P art/blender/arrival_scene.py -- --time night   --mode shadow --device GPU --still-res 1080x1920 --still-spp 256 --figure kazimierz=$A/figures/kazimierz.png
+$BL -b -P art/blender/arrival_scene.py -- --time evening --mode shadow --device GPU --still-res 1080x1920 --still-spp 256 --figure kazimierz=$A/figures/kazimierz.png
+$BL -b -P art/blender/arrival_scene.py -- --time day     --mode shadow --device GPU --still-res 1080x1920 --still-spp 256 --figure kazimierz=$A/figures/kazimierz.png
+$BL -b -P art/blender/arrival_scene.py -- --time night   --mode shadow --door ajar --device GPU --still-res 1080x1920 --still-spp 256 --figure teresa=$A/figures/teresa.png
+# złożenie z mapą cienia (te same ustawienia koloru co kompozyty 2D w repo)
+G="--tint-gain 2.0 --sat 1.2 --wrap 0.25 --exposure 1.15"
+for t in night evening day; do
+  python3 art/blender/arrival_composite.py --plate $A/wrong_floor_${t}_hold.png --figure kazimierz=$A/figures/kazimierz.png \
+      --shadow $A/wrong_floor_${t}_shadow_kazimierz.png $G --out $A/wrong_floor_${t}_kazimierz.png
+done
+python3 art/blender/arrival_composite.py --plate $A/wrong_floor_night_ajar_hold.png --figure teresa=$A/figures/teresa.png \
+    --feet-world teresa=560,720 --occlude-mm 0 --shadow $A/wrong_floor_night_ajar_shadow_teresa.png \
+    --tint-gain 2.0 --sat 1.2 --wrap 0.25 --exposure 1.5 --out $A/wrong_floor_night_teresa.png
+```
+Sprawdź nazwy plików cienia, które wypisze Blender (`WROTE …_shadow_<slot>.png`), i obejrzyj cień przy butach oraz na
+skrzydle drzwi (Teresa). Commit: mapy cienia + 4 kompozyty + nowy arkusz (polecenie arkusza: `art/renders/arrival/README.md`).

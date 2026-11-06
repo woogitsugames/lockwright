@@ -462,7 +462,10 @@ for fc in list(cam.animation_data.action.fcurves) + list(cam.data.animation_data
 # ---------------------------------------------------------------- 7. figure slots (D-41 style anchors)
 SLOTS = {   # name: feet centre on the floor, nominal height (mm), facing; speaker id from CLIENTS.md
     'kazimierz': {'feet': (-690, -470, 0), 'height': 1730, 'speaker': 'kazimierz', 'state': 'closed'},
-    'teresa':    {'feet': (250, 420, 0), 'height': 1590, 'speaker': 'teresa', 'state': 'ajar'},
+    # G23 (2026-11-06): behind the ajar leaf, peeking through the gap between the leaf's free edge (~262, 600)
+    # and the right jamb; (250, 420) stood in front of the leaf's swing. Holds rendered before this keep the old
+    # slot in their JSON: arrival_composite.py --feet-world teresa=560,720 re-projects it.
+    'teresa':    {'feet': (560, 720, 0), 'height': 1590, 'speaker': 'teresa', 'state': 'ajar'},
 }
 def light_info(at):
     """Key/fill lights as seen from a point: colour, relative strength at the point, 3D and image-space direction."""

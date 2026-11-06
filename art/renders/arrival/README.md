@@ -19,10 +19,36 @@ Scena powstaje z zestawu klatki schodowej: `art/blender/arrival_scene.py` urucha
 | `wrong_floor_preview_board.png` | zestawienie czterech proofów |
 | `wrong_floor_preview_vs_stairwell_locks.png` | porównanie: noc tutaj / `stairwell_night.png` / `stairwell.png` / `wafer.png` |
 | `placeholder_kazimierz.png`, `placeholder_teresa.png` | szare sylwetki-zaślepki z alfą (do czasu dostawy Magnific D1/D2) |
+| `figures/kazimierz.png`, `figures/teresa.png` | wycinki postaci z G23 (ChatGPT, D-66): RGBA, `art/tools/figure_cutout.py` (rembg BiRefNet-portrait + odkażenie koloru pymatting; Kazimierz `--keep-box 380,175,425,250` przywraca klucz) |
+| `wrong_floor_{night,evening,day}_kazimierz.png`, `wrong_floor_night_teresa.png` | kompozyty z prawdziwymi postaciami na finałach GPU, **cień 2D** (mapy cienia GPU czekają na lokalną sesję) |
+| `wrong_floor_with_figures_board.jpg` | arkusz przeglądu czterech kompozytów (`art/tools/arrival_board.py`) |
 
 Historyczne sekwencje i pliki `preview_*` pozostają podglądami CPU. Stop-klatki `*_hold.*` zastąpiono finałami GPU 2026-11-06. Nowe arkusze `*_final_contact.png` pokazują po 36 klatek 1080×1920 / 128 spp z włosiem; pełne 108 klatek pozostają lokalnie w `build/local-session/arrival-master/` (nie w repo). `wrong_floor_final_board.jpg` porównuje cztery finały.
 
-Magnific D1/D2 nadal brak. Mapy cienia i kompozyty z zaślepkami są historycznym proofem CPU; nie są finałem do nowych stop-klatek. Nie wykonano nowych map cienia ani kompozytów prawdziwych postaci. Integracja w grze należy do sesji A po akceptacji.
+Postacie przyszły z ChatGPT (G23, D-66) zamiast Magnific D1/D2; przegląd: `contrib/gpt/REVIEW-G23.md`.
+Kompozyty z prawdziwymi postaciami (2026-11-06, bez ponownego renderu stop-klatek GPU):
+```bash
+A=art/renders/arrival; G="--tint-gain 2.0 --sat 1.2 --wrap 0.25"
+for t in night evening day; do python3 art/blender/arrival_composite.py --plate $A/wrong_floor_${t}_hold.png \
+    --figure kazimierz=$A/figures/kazimierz.png $G --exposure 1.15 --out $A/wrong_floor_${t}_kazimierz.png; done
+python3 art/blender/arrival_composite.py --plate $A/wrong_floor_night_ajar_hold.png --figure teresa=$A/figures/teresa.png \
+    --feet-world teresa=560,720 --occlude-mm 0 --exposure 1.5 $G --out $A/wrong_floor_night_teresa.png
+python3 art/tools/arrival_board.py
+```
+- **Cień:** stare `*_shadow_*.png` (540×960, CPU, zaślepki) nie pasują do nowych sylwetek, więc kompozyty mają cień 2D
+  (okluzja pod podeszwami + miękka plama od żarówki, maskowana głębią: nie kładzie się na ościeżnicy). Polecenia mapy
+  cienia GPU: `docs/handoff/LOCAL-SESSION-PROMPT.md`, dodatek G23.
+- **Pani Teresa — nowe miejsce:** slot (250, 420) stał przed swobodną krawędzią uchylonego skrzydła (≈ 262, 600), więc
+  postać wisiała na skrzydle i nie dało się jej nim zasłonić. Teraz (560, 720): stoi w przedpokoju za skrzydłem i zagląda
+  przez szparę; skrzydło i ościeżnica zasłaniają ją przez mapę głębi (`--occlude-mm 0`). `arrival_scene.py` ma już nowy
+  slot; JSON stop-klatki `night_ajar` ma stary, stąd `--feet-world` (rzutowanie kamerą z JSON-a, sprawdzone na obu
+  starych slotach co do piksela). Przy następnym renderze `--door ajar` flagę można usunąć.
+- **Kolor:** zdjęcia studyjne były za chłodne i mleczne na tle ciepłej żarówki; `--tint-gain 2.0 --sat 1.2` przenosi je
+  w kolor światła sceny, `--wrap 0.25` (było 0,55) usuwa poświatę na krawędzi. Szum głębi (liście, gałązki wianka) nie
+  dziurawi już postaci (otwarcie morfologiczne maski zasłaniania).
+- **Znane braki:** dzień — plama słońca z okna nie oświetla nóg pana Kazimierza (nie jest liczona); światło na postaci
+  to wciąż „studio z przodu”, żarówka nad nim daje tylko gradient góra–dół, bez obrysu na włosach; nocą Teresa jest
+  ciemna (podświetlona od przedpokoju) — na telefonie do sprawdzenia. Integracja w grze należy do sesji A po akceptacji.
 
 ## Czego potrzebuje gra
 
