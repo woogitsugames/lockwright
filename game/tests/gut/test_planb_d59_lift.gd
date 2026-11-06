@@ -102,6 +102,21 @@ func _play(fam: StringName, job: Dictionary, auto: bool, max_s: float = 120.0) -
 			cooldown -= 1
 			if cooldown == 0 and not auto:
 				press_left.call()
+		if fam == &"magnetic" and not pressed:
+			# T43 magnetic t2: the probe's field also tugs the neighbours, so a patient player lifts only
+			# the pin that binds now (never a free one to the top) and waits while none binds
+			var b := -1
+			for i in n:
+				if String(session.describe()["elements"][i]["state"]) == "bound":
+					b = i
+					break
+			if b < 0:
+				s._physics_process(dt)
+				scene._physics_process(dt)
+				if session.is_open() or session.finished():
+					return [session.is_open(), step * dt, scene]
+				continue
+			el = b
 		var x := sz.x * 0.5 + sz.x * 0.5 * (el + 0.5) / n
 		if not pressed:
 			s._unhandled_input(_touch(1, Vector2(x, right_y), true))
@@ -155,12 +170,6 @@ func _play(fam: StringName, job: Dictionary, auto: bool, max_s: float = 120.0) -
 				el = (el + 1) % n
 				if String(vm["elements"][el]["state"]) != "set":
 					break
-			if fam == &"magnetic":
-				# T43 magnetic t2 (4 pins, slower field): a patient player goes to the pin that binds now
-				for i in n:
-					if String(vm["elements"][i]["state"]) == "bound":
-						el = i
-						break
 	gut.p("stuck %s: %s" % [fam, session.describe()["elements"]])
 	return [false, max_s, scene]
 

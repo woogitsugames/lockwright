@@ -5785,7 +5785,7 @@
   "model_id": "eleven_v4_turbo",
   "seed": 3432897,
   "speaker": "locksmith",
-  "subtitle": "Let's ask the organiser to call your neighbour.",
+  "subtitle": "Let's ask the organizer to call your neighbor.",
   "text": "Let's ask the organiser to call your neighbour.",
   "voice_id": "ykajA4eRsyhUXXnAEPjK",
   "voice_settings": {
@@ -6275,7 +6275,7 @@
   "model_id": "eleven_v4_turbo",
   "seed": 12389850,
   "speaker": "janka",
-  "subtitle": "We meant to keep one spare blanket. Now we have spare neighbours.",
+  "subtitle": "We meant to keep one spare blanket. Now we have spare neighbors.",
   "text": "[amused] We meant to keep one spare blanket. Now we have spare neighbours.",
   "voice_id": "TKooMqcS2YupsEvpNs7l",
   "voice_settings": {
@@ -6289,7 +6289,7 @@
   "model_id": "eleven_v4_turbo",
   "seed": 13915947,
   "speaker": "elzbieta",
-  "subtitle": "The residents' cupboard. Here's the order and my authorisation.",
+  "subtitle": "The residents' cupboard. Here's the order and my authorization.",
   "text": "The residents' cupboard. Here's the order and my authorisation.",
   "voice_id": "2piNECYafWT1gDGsSsFT",
   "voice_settings": {
@@ -6513,7 +6513,7 @@
   "model_id": "eleven_v4_turbo",
   "seed": 10919565,
   "speaker": "locksmith",
-  "subtitle": "The authorisation is here. Ninety coins.",
+  "subtitle": "The authorization is here. Ninety coins.",
   "text": "The authorisation is here. Ninety coins.",
   "voice_id": "ykajA4eRsyhUXXnAEPjK",
   "voice_settings": {
@@ -6569,7 +6569,7 @@
   "model_id": "eleven_v4_turbo",
   "seed": 14210527,
   "speaker": "teresa",
-  "subtitle": "You left your spare with me. In a labelled envelope.",
+  "subtitle": "You left your spare with me. In a labeled envelope.",
   "text": "You left your spare with me. In a labelled envelope.",
   "voice_id": "NlZzdor9EYJTsLVG9YyZ",
   "voice_settings": {
@@ -6905,7 +6905,7 @@
   "model_id": "eleven_v4_turbo",
   "seed": 1607444,
   "speaker": "elzbieta",
-  "subtitle": "The resolution is with me. So is the authorisation.",
+  "subtitle": "The resolution is with me. So is the authorization.",
   "text": "The resolution is with me. So is the authorisation.",
   "voice_id": "2piNECYafWT1gDGsSsFT",
   "voice_settings": {
@@ -6933,7 +6933,7 @@
   "model_id": "eleven_v4_turbo",
   "seed": 4452805,
   "speaker": "elzbieta",
-  "subtitle": "Agreed. Then we'll practise locking it with the key outside.",
+  "subtitle": "Agreed. Then we'll practice locking it with the key outside.",
   "text": "Agreed. Then we'll practise locking it with the key outside.",
   "voice_id": "2piNECYafWT1gDGsSsFT",
   "voice_settings": {
@@ -7185,7 +7185,7 @@
   "model_id": "eleven_v4_turbo",
   "seed": 13979705,
   "speaker": "hall_manager",
-  "subtitle": "The hall's chest. The organiser's order and my permission.",
+  "subtitle": "The hall's chest. The organizer's order and my permission.",
   "text": "The hall's chest. The organiser's order and my permission.",
   "voice_id": "RY3T4wJNr948hKf9RLlp",
   "voice_settings": {
@@ -7297,8 +7297,8 @@
   "model_id": "eleven_v4_turbo",
   "seed": 10944398,
   "speaker": "ola",
-  "subtitle": "Mum owns it. We brought the papers together.",
-  "text": "Mum owns it. We brought the papers together.",
+  "subtitle": "Mom owns it. We brought the papers together.",
+  "text": "Mom owns it. We brought the papers together.",
   "voice_id": "wu1DtvHldVyojBw205MB",
   "voice_settings": {
    "similarity_boost": 0.8,
@@ -7409,7 +7409,7 @@
   "model_id": "eleven_v4_turbo",
   "seed": 1641894,
   "speaker": "elzbieta",
-  "subtitle": "The residents' store. The resolution and my authorisation.",
+  "subtitle": "The residents' store. The resolution and my authorization.",
   "text": "The residents' store. The resolution and my authorisation.",
   "voice_id": "2piNECYafWT1gDGsSsFT",
   "voice_settings": {
@@ -7507,7 +7507,7 @@
   "model_id": "eleven_v4_turbo",
   "seed": 3937166,
   "speaker": "roman",
-  "subtitle": "We're both present. The authorisation covers this cashbox.",
+  "subtitle": "We're both present. The authorization covers this cashbox.",
   "text": "[matter-of-fact] We're both present. The authorisation covers this cashbox.",
   "voice_id": "uoWh0DSJDyHUtcd90cVQ",
   "voice_settings": {
@@ -7619,7 +7619,7 @@
   "model_id": "eleven_v4_turbo",
   "seed": 14171362,
   "speaker": "wladyslaw",
-  "subtitle": "Henryk practised on this chest. You have the transfer record.",
+  "subtitle": "Henryk practiced on this chest. You have the transfer record.",
   "text": "Henryk practised on this chest. You have the transfer record.",
   "voice_id": "t3zIfL8OXHlU967BrrDP",
   "voice_settings": {
@@ -7647,7 +7647,7 @@
   "model_id": "eleven_v4_turbo",
   "seed": 8157588,
   "speaker": "zuzanna",
-  "subtitle": "The organiser has approved it. May I sit at the bench?",
+  "subtitle": "The organizer has approved it. May I sit at the bench?",
   "text": "The organiser has approved it. May I sit at the bench?",
   "voice_id": "crgAGBFvKhsJa8stJ7Zv",
   "voice_settings": {
@@ -8711,8 +8711,8 @@
   "model_id": "eleven_v4_turbo",
   "seed": 13091665,
   "speaker": "locksmith",
-  "subtitle": "To mi wystarczy za papiery. List w skrzynce też jest na panią?",
-  "text": "To mi wystarczy za papiery. List w skrzynce też jest na panią?",
+  "subtitle": "To pomaga. List w skrzynce też jest na panią?",
+  "text": "To pomaga. List w skrzynce też jest na panią?",
   "voice_id": "ykajA4eRsyhUXXnAEPjK",
   "voice_settings": {
    "similarity_boost": 0.8,
@@ -9537,8 +9537,8 @@
   "model_id": "eleven_v4_turbo",
   "seed": 2873441,
   "speaker": "locksmith",
-  "subtitle": "Procedur nie da się dopłacić. Proszę zadzwonić do siostry, poczekam.",
-  "text": "[calm] Procedur nie da się dopłacić. Proszę zadzwonić do siostry, poczekam.",
+  "subtitle": "Weryfikacji nie da się kupić. Proszę zadzwonić do siostry, poczekam.",
+  "text": "[calm] Weryfikacji nie da się kupić. Proszę zadzwonić do siostry, poczekam.",
   "voice_id": "ykajA4eRsyhUXXnAEPjK",
   "voice_settings": {
    "similarity_boost": 0.8,
