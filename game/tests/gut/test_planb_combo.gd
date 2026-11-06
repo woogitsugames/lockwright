@@ -125,7 +125,11 @@ func _play(job: Dictionary, auto: bool, max_s: float = 90.0) -> Array:
 				right_down = true
 				target = unstick
 			if int(vm["pick_element"]) == unstick and ease_left < 56:
-				speed = 0.9 if auto else 0.5
+				# on past the false notch, the way the gate lies
+				var ue: Dictionary = els[unstick]
+				var ug := fposmod((float(ue["window_lo"]) + float(ue["window_hi"])) * 0.5, 1.0)
+				var uway := signf(LockComboView.wrap_half(ug - float(ue["position"])))
+				speed = uway * (0.9 if auto else 0.5)
 		if b >= 0:
 			var x := half + (float(b) + 0.5) / n * half
 			if b != target or not right_down:
@@ -140,8 +144,7 @@ func _play(job: Dictionary, auto: bool, max_s: float = 90.0) -> Array:
 			var g := fposmod((float(e["window_lo"]) + float(e["window_hi"])) * 0.5, 1.0)
 			var off: float = LockComboView.wrap_half(g - float(e["position"]))
 			if int(vm["pick_element"]) == b:
-				var spin := -1.0 if _scene_path == DISC_SCENE else 1.0  # disc position falls with thumb up
-				speed = spin * signf(off) * clampf(absf(off) * 3.0, 0.12, 0.35)
+				speed = signf(off) * clampf(absf(off) * 3.0, 0.12, 0.35)
 			settle += 1
 		if OS.has_environment("LW_DEBUG") and step % 240 == 0:
 			print("t=%.0f T=%.2f b=%d pick=%d spd=%.2f in=%s %s" % [step * dt, float(vm["tension"]), b, int(vm["pick_element"]), speed, str(scene._last_input),  els.map(func(e): return "%s@%.3f[%.2f]" % [e["state"], e["position"], (float(e["window_lo"]) + float(e["window_hi"])) * 0.5])])
