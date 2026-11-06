@@ -46,11 +46,13 @@ skill   = 0.8 … 1.25   (średnia krocząca z 5 ostatnich zamków: czas / czas 
 - Rodziny nie powtarzają się więcej niż 2 razy z rzędu.
 
 ### 2.3 Narzędzia a pula (szczegóły w `TOOLS.md` §4)
-Start: napinacz kątowy, podważka kołkowa i haczyk (egipski, wkładka t2, płytkowy). Kolejne zakupy MVP to sonda przelotowa (80), ciągadło (150), falownik (350) i korba dźwigniowa (500). Każde narzędzie dodaje nową logikę i nową rodzinę do puli. Żadne nie jest „+10% obrażeń”.
+Start: napinacz kątowy, podważka kołkowa i haczyk (egipski, wkładka t2, płytkowy). Kolejne zakupy MVP to sonda przelotowa (0, dar z samouczka), ciągadło (60), falownik (110) i korba dźwigniowa (120). Każde narzędzie dodaje nową logikę i nową rodzinę do puli. Żadne nie jest „+10% obrażeń”. **D-62:** narzędzie jest wygodą i lepszym feedbackiem, nigdy bramką: gra nie sprawdza narzędzi przy przyjęciu zlecenia, a zamek rodziny bez jej narzędzia da się otworzyć (wolniej, ze słabszym sygnałem).
 
 ### 2.4 Ekonomia MVP (orientacyjnie)
 - Średni dochód: ok. 40 monet na zamek w środkowej części serii, czyli ok. 300 monet na sesję 8 minut.
-- Wszystkie narzędzia MVP (ok. 1 080 monet) kupuje się w ok. 4 sesjach. Pełna wersja odblokowuje rodziny i tryby, a nie monety.
+- **Ceny narzędzi (D-62, `game/data/tools.json`):** ciągadło 60, korba 120, napinacz listwowy 150, koronka 180, sonda biegunowa 200, klin 200, falownik 110, chorągiewka 240, trzpień 260, obrotnik tarcz 280, słuchawka 300, piórko 500, mikroskop 90, wziernik 130 (przed D-62: 150, 300, 450, 600, 700, 700, 350, 900, 1000, 1100, 1200, 2000, 250, 400). Razem 2 820 monet (było 10 100); narzędzia do rodzin ze zleceń (9 szt.) 1 790 (było 6 400).
+- Główna kariera (29 zleceń, `econ_sim.py` C): dochód ze zleceń ok. 2 400–2 800 monet, czyli 85–99 % ceny wszystkich narzędzi; gracz average kupuje 13 z 13 osiągalnych płatnych, bez sesji Trybu Ciągłego i bez zablokowanego zlecenia. Tryb Ciągły (ok. 400 monet na sesję 8 min) jest dodatkiem, nie warunkiem postępu.
+- Pełna wersja odblokowuje rodziny i tryby, a nie monety.
 - Monet **nie można kupić za pieniądze** (bez pay-to-win).
 
 ## 3. Tryb Zleceń (po MVP, faza 1)

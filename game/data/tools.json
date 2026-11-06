@@ -19,7 +19,7 @@
     {
       "id": "tw_bar",
       "kind": "tensioner",
-      "price": 450,
+      "price": 150,
       "unlock": "after_tier4",
       "families": [
         "pin_tumbler_wide",
@@ -32,7 +32,7 @@
     {
       "id": "tl_shackle",
       "kind": "puller",
-      "price": 150,
+      "price": 60,
       "unlock": "after_first_t2",
       "families": [
         "ring_combo"
@@ -74,7 +74,7 @@
     {
       "id": "pk_ripple",
       "kind": "pick",
-      "price": 350,
+      "price": 110,
       "unlock": "after_5_locks_t2",
       "families": [
         "wafer",
@@ -85,7 +85,7 @@
     {
       "id": "pk_wedge",
       "kind": "pick",
-      "price": 700,
+      "price": 200,
       "unlock": "after_t3",
       "families": [
         "wafer_double"
@@ -95,7 +95,7 @@
     {
       "id": "pk_lever",
       "kind": "pick",
-      "price": 300,
+      "price": 120,
       "unlock": "after_t2",
       "families": [
         "lever",
@@ -106,7 +106,7 @@
     {
       "id": "pk_crown",
       "kind": "pick",
-      "price": 600,
+      "price": 180,
       "unlock": "after_t3",
       "families": [
         "tubular"
@@ -116,7 +116,7 @@
     {
       "id": "tl_polar",
       "kind": "probe",
-      "price": 700,
+      "price": 200,
       "unlock": "after_t4",
       "families": [
         "magnetic"
@@ -126,7 +126,7 @@
     {
       "id": "pk_flag",
       "kind": "pick",
-      "price": 900,
+      "price": 240,
       "unlock": "after_t5",
       "families": [
         "dimple"
@@ -136,7 +136,7 @@
     {
       "id": "pk_plunger",
       "kind": "pick",
-      "price": 1000,
+      "price": 260,
       "unlock": "after_t5",
       "families": [
         "axial_slider"
@@ -146,7 +146,7 @@
     {
       "id": "pk_disc",
       "kind": "turner",
-      "price": 1100,
+      "price": 280,
       "unlock": "after_t5",
       "families": [
         "disc_detainer"
@@ -156,7 +156,7 @@
     {
       "id": "pk_feather",
       "kind": "pick",
-      "price": 2000,
+      "price": 500,
       "unlock": "after_t7_F3",
       "families": [
         "sidebar"
@@ -166,7 +166,7 @@
     {
       "id": "tl_cup",
       "kind": "probe",
-      "price": 1200,
+      "price": 300,
       "unlock": "after_t4",
       "families": [
         "safe_wheels"
@@ -197,7 +197,7 @@
     {
       "id": "tl_drill",
       "kind": "destructive",
-      "price": 1000,
+      "price": 300,
       "unlock": "jobs_mode_only",
       "families": [],
       "i18n": "tool.tl_drill.name",
@@ -216,7 +216,7 @@
     {
       "id": "ob_microscope",
       "kind": "optics",
-      "price": 250,
+      "price": 90,
       "unlock": "after_t2",
       "families": [],
       "i18n": "tool.ob_microscope.name",
@@ -225,7 +225,7 @@
     {
       "id": "ob_borescope",
       "kind": "optics",
-      "price": 400,
+      "price": 130,
       "unlock": "after_t3",
       "families": [],
       "i18n": "tool.ob_borescope.name",

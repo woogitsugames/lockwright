@@ -11,8 +11,13 @@ Model (all assumptions are listed in the report, section "Model"):
 - job order = order in docs/JOBS.md; refusal jobs are played as refusals (no lock);
 - lock time = feeling-bot p50 (BALANCE.md) x human factor x learning factor;
 - tool wear per lock from TOOLS.md §2 event costs and per-profile event counts;
-- missing tool (price or unlock condition) -> the player grinds Continuous-mode
-  sessions (8 min, PROGRESSION.md §2) until it can be bought; capped, then "blocked".
+- gated scenarios (A, B, D = before D-62): a missing tool (price or unlock condition) -> the
+  player grinds Continuous-mode sessions (8 min, PROGRESSION.md §2) until it can be bought;
+  capped, then "blocked".
+- optional scenario (C = current data, D-62): tools never block a job. The player buys what
+  coins allow (look-ahead 3 jobs, then anything unlocked with a 50-coin reserve); a family played
+  without its tool is slower (MISSING_TOOL_X, the "convenience / feedback" effect) and never
+  triggers grinding.
 """
 import argparse
 import glob
@@ -87,20 +92,25 @@ PROFILES = {
 }
 
 SCENARIOS = {
-    "A": dict(label="data as is (JSON families, tier coef 0.55)", families="json", coef=0.55,
-              changes={}),
-    "B": dict(label="JOBS.md families, tier coef 0.55", families="md", coef=0.55, changes={}),
-    "C": dict(label="proposed numbers (JOBS.md families, coef 1.2, changes in §6)",
-              families="md", coef=1.2,
-              changes={
-                  "price": {"pk_ward": 0, "pk_lever": 300, "tl_polar": 700, "pk_crown": 600, "tw_bar": 450,
-                            "pk_flag": 900, "pk_plunger": 1000, "pk_disc": 1100, "tl_cup": 1200},
-                  "unlock": {"tl_cup": "after_t4", "pk_disc": "after_t5", "tl_polar": "after_t4",
-                             "pk_crown": "after_t3", "pk_lever": "after_t2",
-                             "pk_flag": "after_t5", "pk_plunger": "after_t5"},
-                  "reward_x": 1.0,
-              }),
+    "A": dict(label="data as is, old curve (JSON families, tier coef 0.55), tools gate jobs", families="json",
+              coef=0.55, optional=False, changes={}),
+    "B": dict(label="JOBS.md families, old curve (coef 0.55), tools gate jobs", families="md", coef=0.55,
+              optional=False, changes={}),
+    # C = what the game ships now: tools.json as is (D-62 cheaper prices), tools optional.
+    "C": dict(label="current data (D-62 prices), tools optional, coef 1.2", families="md", coef=1.2,
+              optional=True, changes={}),
+    # D = frozen snapshot of the prices before D-62 (the old scenario C), tools gate jobs.
+    "D": dict(label="before D-62 (frozen old prices), tools gate jobs, coef 1.2", families="md", coef=1.2,
+              optional=False,
+              changes={"price": {"tl_shackle": 150, "pk_lever": 300, "tw_bar": 450, "pk_crown": 600,
+                                 "tl_polar": 700, "pk_flag": 900, "pk_plunger": 1000, "pk_disc": 1100,
+                                 "tl_cup": 1200, "pk_ripple": 350, "pk_wedge": 700, "pk_feather": 2000,
+                                 "ob_microscope": 250, "ob_borescope": 400, "tl_drill": 1000},
+                       "unlock": {}}),
 }
+SCEN_ORDER = "ABCD"
+MISSING_TOOL_X = 1.15  # optional tools: family played without its tool takes 15 % longer (weaker feedback)
+BUY_RESERVE = 50       # optional tools: coins kept back for repairs when buying "just because"
 
 STALE_CAP = 10  # grinding sessions without tier progress before a job counts as blocked
 GRIND_CAP_SESSIONS = 60  # after this many grinding sessions for one job, the job is "blocked"
@@ -167,7 +177,7 @@ class Career:
         self.st = dict(coins=0, max_tier=1, t2_count=0, chapter=1)
         self.exposure = {}
         self.log = []  # per job rows
-        self.totals = dict(job_income=0, grind_income=0, repair=0, tools=0, breaks=0,
+        self.totals = dict(missing_locks=0, job_income=0, grind_income=0, repair=0, tools=0, breaks=0,
                            grind_sessions=0, job_time=0.0, grind_time=0.0)
         self.unlock_curve = []  # (job_index, tool_id)
 
@@ -186,6 +196,9 @@ class Career:
         n = self.exposure.get(lf, 0)
         learn = self.p["learn"] + (1 - self.p["learn"]) * math.exp(-n / 3.0)
         t = feel * self.p["human_x"] * learn * self.rng.uniform(0.8, 1.25)
+        if any(x not in self.owned for x in tool_ids):
+            t *= MISSING_TOOL_X  # tools are optional (D-62): slower without, never blocked
+            self.totals["missing_locks"] += 1
         self.exposure[lf] = n + 1
         blades = [x for x in tool_ids if x in self.owned and self.tools[x]["kind"] not in
                   ("tensioner", "notebook", "kit")]
@@ -217,7 +230,7 @@ class Career:
         cost = 0
         for tid, integ in self.owned.items():
             tool = self.tools[tid]
-            if tool["kind"] in ("tensioner", "notebook", "kit"):
+            if tool["kind"] in ("tensioner", "notebook", "kit", "optics"):
                 continue
             if integ <= 0:
                 cost += max(5, round(tool["price"] * 0.35))
@@ -326,7 +339,8 @@ class Career:
             need = self.need_tools(job) if lock_needed else []
             self.try_buy(idx, need)
             stale = 0  # sessions in a row without reaching a missing unlock condition
-            while lock_needed and self.need_tools(job) and sessions < GRIND_CAP_SESSIONS:
+            optional = self.s.get("optional", False)
+            while not optional and lock_needed and self.need_tools(job) and sessions < GRIND_CAP_SESSIONS:
                 locked = [t for t in self.need_tools(job)
                           if not unlock_ok(self.tools[t]["unlock"], self.st)]
                 before = self.st["max_tier"]
@@ -336,7 +350,7 @@ class Career:
                 stale = stale + 1 if locked and self.st["max_tier"] == before else 0
                 if stale >= STALE_CAP:
                     break  # the condition does not move: dead zone, not grind
-            blocked = lock_needed and bool(self.need_tools(job))
+            blocked = not optional and lock_needed and bool(self.need_tools(job))
             row = dict(idx=idx, id=job["id"], ch=job["chapter"], fam=fam, tier=tier,
                        grind=sessions, blocked=blocked, time=0.0, earned=0, coins_after=0)
             if not blocked:
@@ -361,6 +375,12 @@ class Career:
                 if j["id"] not in NO_LOCK_JOBS:
                     ahead += FAMILY_TOOLS.get(self.family_of(j), [])
             self.try_buy(idx, ahead)
+            if optional:  # buy anything unlocked that is left, cheapest first, keeping a repair reserve
+                for tid in sorted(self.tools, key=lambda k: self.tools[k]["price"]):
+                    t = self.tools[tid]
+                    if (tid not in self.owned and t["price"] > 0 and not t.get("jobs_only")
+                            and self.st["coins"] >= t["price"] + BUY_RESERVE):
+                        self.try_buy(idx, [tid])
         return self
 
 
@@ -383,7 +403,7 @@ def fmt_min(s):
 def continuous_check(balance, tools, prog, n=300):
     """Income per lock and per session in Continuous mode with start tools only."""
     rows = []
-    for scen in ("B", "C"):
+    for scen in ("B", "C", "D"):
         for prof in PROFILES:
             inc, maxt = [], []
             for i in range(n):
@@ -405,13 +425,11 @@ def report(results, jobs, tools, prog, cont, careers):
     w("")
     w(f"Wygenerowane przez `python3 tools/econ_sim.py` ({careers} karier na profil i scenariusz, "
       "seed deterministyczny). Dane wejściowe: `game/data/jobs/*.json`, `game/data/tools.json`, "
-      "`game/data/progression.json`, `lockcore/BALANCE.md`, `docs/JOBS.md`. Plik danych gry "
-      "nie jest zmieniany (właściciel `game/data`: sesja B); propozycje są w §6.")
+      "`game/data/progression.json`, `lockcore/BALANCE.md`, `docs/JOBS.md`. Scenariusz C = dane gry "
+      "bez zmian (ceny D-62); D = zamrożone ceny sprzed D-62 z narzędziem jako bramką zlecenia; A i B to diagnostyka starej krzywej.")
     w("")
     w("## 1. Wnioski w skrócie")
     w("")
-    a, b, c = (results[s] for s in "ABC")
-
     def tot(res, prof, key):
         return med([x.totals[key] for x in res[prof]])
 
@@ -442,7 +460,7 @@ def report(results, jobs, tools, prog, cont, careers):
     w("| Scen. | Profil | zlecenia zablok. | dochód ze zleceń | dochód z grindu | sesje grindu | "
       "grind [h] | czas zleceń [min] | naprawy | narzędzia | złamania |")
     w("|---|---|---|---|---|---|---|---|---|---|---|")
-    for s in "ABC":
+    for s in SCEN_ORDER:
         for prof in PROFILES:
             res = results[s]
             w(f"| {s} | {prof} | {blocked(res, prof):.0f} / 29 | {tot(res, prof, 'job_income'):.0f} | "
@@ -457,7 +475,7 @@ def report(results, jobs, tools, prog, cont, careers):
     w("")
     w("## 4. Przebieg zlecenie po zleceniu (profil average)")
     w("")
-    for s in "BC":
+    for s in "CD":
         w(f"### Scenariusz {s}")
         w("")
         w("| # | zlecenie | rozdz. | rodzina T | czas [min] | zarobek | sesje grindu | monety po | stan |")
@@ -474,12 +492,12 @@ def report(results, jobs, tools, prog, cont, careers):
     w("## 5. Krzywa odblokowań (narzędzie kupione po zleceniu nr, mediana; — = nigdy)")
     w("")
     tids = [t for t in tools if tools[t]["price"] > 0 and not tools[t].get("jobs_only")]
-    w("| narzędzie | cena dane / C | warunek dane / C | " +
-      " | ".join(f"{s}:{p[:3]}" for s in "ABC" for p in PROFILES) + " |")
+    w("| narzędzie | cena przed D-62 / dane (C) | warunek | " +
+      " | ".join(f"{s}:{p[:3]}" for s in "BCD" for p in PROFILES) + " |")
     w("|---|---|---|" + "---|" * 9)
     for tid in tids:
         cells = []
-        for s in "ABC":
+        for s in "BCD":
             for prof in PROFILES:
                 idxs = []
                 for x in results[s][prof]:
@@ -487,14 +505,13 @@ def report(results, jobs, tools, prog, cont, careers):
                     idxs.append(got[0] if got else 99)
                 m = med(idxs)
                 cells.append("—" if m >= 99 else f"{m:.0f}")
-        ch = SCENARIOS["C"]["changes"]
-        w(f"| `{tid}` | {tools[tid]['price']} / {ch['price'].get(tid, tools[tid]['price'])} | "
-          f"{tools[tid]['unlock']} / {ch['unlock'].get(tid, tools[tid]['unlock'])} | " + " | ".join(cells) + " |")
+        old = SCENARIOS["D"]["changes"]["price"].get(tid, tools[tid]["price"])
+        w(f"| `{tid}` | {old} / {tools[tid]['price']} | {tools[tid]['unlock']} | " + " | ".join(cells) + " |")
     w("")
     w("Krzywa (average): liczba posiadanych narzędzi płatnych po każdym zleceniu, mediana.")
     w("")
     w("```")
-    for s in "ABC":
+    for s in "BCD":
         res = results[s]["average"]
         counts = []
         for i in range(1, 30):
@@ -535,96 +552,77 @@ def report(results, jobs, tools, prog, cont, careers):
     w("- Warunki `after_tN` = gracz otworzył zamek lockcore tieru ≥ N w dowolnym trybie. `tw_bar` podnosi tier_max Trybu Ciągłego z 5 do 7. "
       "`kit_clock` (wydarzenie F2) przyjęty jako nagroda rozdziału 6.")
     w("- Napiwek tylko przy otwarciu czystym; oczekiwana wartość = udział profilu × nagroda.")
+    w(f"- Scenariusz C (D-62): narzędzia opcjonalne. Gracz kupuje, co pozwalają monety (zlecenia z wyprzedzeniem 3, potem "
+      f"wszystko odblokowane od najtańszego, z rezerwą {BUY_RESERVE} monet na naprawy); zamek rodziny bez jej narzędzia trwa "
+      f"×{MISSING_TOOL_X}; brak grindu i blokad.")
     w("- To model, nie pomiar: liczby profili trzeba zastąpić danymi z playtestów (telemetria czasu i zdarzeń `wear`).")
     return "\n".join(L) + "\n"
 
 
 def FINDINGS(results, jobs, tools, prog, cont):
     """Concrete findings; numbers are taken from the simulation results."""
-    a, b, c = (results[s] for s in "ABC")
+    c, d = results["C"], results["D"]
 
     def m(res, prof, f):
         return med([f(x) for x in res[prof]])
 
+    def trio(res, f, fmt="{:.0f}"):
+        return "/".join(fmt.format(m(res, p, f)) for p in PROFILES)
+
     blocked = lambda x: sum(r["blocked"] for r in x.log)
-    names = lambda res, prof: sorted({r["id"][4:] for x in res[prof] for r in x.log if r["blocked"]},
-                                     key=lambda s: [j["id"][4:] for j in jobs].index(s))
+    income = lambda x: x.totals["job_income"] + x.totals["grind_income"]
+    bought = lambda x: sum(1 for _, t in x.unlock_curve if x.tools[t]["price"] > 0)
+    paid = [t for t in tools.values() if t["price"] > 0 and not t.get("jobs_only")]
+    in_reach = [t for t in paid if t["id"] != "pk_feather"]  # feather: after_t7_F3, post-chapter-6
+    job_need = [t for t in in_reach if t["id"] in NEEDED_BY_JOBS]
+    cost_all = sum(t["price"] for t in paid)
+    cost_need = sum(t["price"] for t in job_need)
+    cost_need_old = sum(SCENARIOS["D"]["changes"]["price"].get(t["id"], t["price"]) for t in job_need)
+    cost_all_old = sum(SCENARIOS["D"]["changes"]["price"].get(t["id"], t["price"]) for t in paid)
     job_sum = sum(j["reward_coins"] for j in jobs)
-    tool_need = {"pk_ward", "pk_lever", "tl_shackle", "tl_polar", "pk_crown", "tl_cup", "tw_bar",
-                 "pk_flag", "pk_plunger", "pk_disc"}
-    need_cost = sum(tools[t]["price"] for t in tool_need)
-    need_cost_c = sum(SCENARIOS["C"]["changes"]["price"].get(t, tools[t]["price"]) for t in tool_need)
-    ch1 = [j for j in jobs if j["chapter"] == 1]
-    ch1_json_lever = [j["id"][4:] for j in ch1 if j["family"] == "lever"]
-    cont_b = {p: inc for s, p, inc, _ in cont if s == "B"}
     cont_c = {p: inc for s, p, inc, _ in cont if s == "C"}
     out = [
-        f"1. **Dane zleceń mają błędne rodziny.** W `game/data/jobs` 7 zamków „zapadkowych” (warded) z `JOBS.md` ma `family: lever`, "
-        f"`liege_bakery` (dźwigniowy z detektorem) też `lever`, a `drummer_locker` (rurkowy) `unknown`. Skutek: rozdział 1 "
-        f"zaczyna się od {len(ch1_json_lever)} zleceń wymagających korby dźwigniowej (500 monet, warunek `after_t3`), "
-        f"choć rozdział 1 płaci łącznie {sum(j['reward_coins'] for j in ch1)} monet; gracz average gra przed pierwszym zleceniem "
-        f"{med([x.log[0]['grind'] for x in a['average']]):.0f} sesji Trybu Ciągłego. W scenariuszu A gracz average ma "
-        f"zablokowane {m(a, 'average', blocked):.0f} z 29 zleceń. Do poprawy w danych (sesja B).",
-        f"2. **Wzór krzywej Trybu Ciągłego nie zgadza się z tabelą.** `1 + 0,55·ln(1+n)·skill` daje tier "
-        f"{tier_at(0.55, 1, 25):.2f} na 25. zamku (tabela: 4–5); t4 wymaga n ≈ 230, t5 n ≈ 1 440. Seria z 3 życiami "
-        f"nigdy tam nie dochodzi, więc warunki `after_t4`…`after_t7` są nieosiągalne w Trybie Ciągłym. Współczynnik 1,2 "
-        f"odtwarza tabelę (n = 25 → {tier_at(1.2, 1, 25):.1f}).",
-        f"3. **Martwa strefa: warunki bez źródła tieru.** Zlecenia otwierają co najwyżej lockcore t5 (dźwigniowy T3, detektor), "
-        f"a `tl_cup` wymaga `after_t8` (w lockcore nie ma t8). W scenariuszu B (poprawione rodziny, stary wzór) zablokowane "
-        f"zostają (average): {', '.join(names(b, 'average')) or 'brak'}. Kolejność narzędzi `TOOLS.md` (t5–t8) jest dłuższa niż "
-        f"kariera zleceń (T1–T3).",
-        f"4. **Grind: zlecenia nie finansują narzędzi.** Suma nagród 29 zleceń = {job_sum} monet (+ napiwki), a narzędzia "
-        f"potrzebne zleceniom kosztują {need_cost}. Gracz average w B gra {m(b, 'average', lambda x: x.totals['grind_sessions']):.0f} "
-        f"sesji Trybu Ciągłego ({m(b, 'average', lambda x: x.totals['grind_time']) / 3600:.1f} h) tylko po to, by kupić narzędzia "
-        f"do zleceń; clumsy {m(b, 'clumsy', lambda x: x.totals['grind_sessions']):.0f}. To łamie zasadę „bez grind-to-win” (`TOOLS.md` §1.2). "
-        f"Sesja 8 min przynosi (start, B) careful/average/clumsy: {cont_b['careful']:.0f}/{cont_b['average']:.0f}/{cont_b['clumsy']:.0f} "
-        f"monet, a nie {prog['economy']['session_income']}: niski tier = 10–20 monet na zamek, nie 40.",
-        f"5. **Start i za łatwe odblokowania.** Pierwsze zlecenie (`grandma_broth`, zapadkowy) wymaga sondy `pk_ward` za 80 przy "
-        f"0 monet: gracz musi najpierw zagrać sesję Trybu Ciągłego (B: mediana {med([x.log[0]['grind'] for x in b['average']]):.0f}), "
-        f"zanim przyjmie pierwsze zlecenie. Sondę trzeba dać w samouczku (cena 0). `tl_shackle` (150, `after_first_t2`) i potem "
-        f"korba (C: 300) kupuje się bez decyzji, bo monet z rozdziału 1–2 starcza z zapasem: to formalność, nie wybór. "
-        f"Można je dać jako nagrodę rzeczową zlecenia, a monety zostawić na narzędzia z alternatywą.",
-        f"6. **Naprawy rozwarstwiają profile.** Koszt napraw przez karierę, B (z grindem): careful "
-        f"{m(b, 'careful', lambda x: x.totals['repair']):.0f}, average {m(b, 'average', lambda x: x.totals['repair']):.0f}, clumsy "
-        f"{m(b, 'clumsy', lambda x: x.totals['repair']):.0f} monet ({m(b, 'clumsy', lambda x: x.totals['breaks']):.0f} złamań); "
-        f"C: {m(c, 'careful', lambda x: x.totals['repair']):.0f}/{m(c, 'average', lambda x: x.totals['repair']):.0f}/"
-        f"{m(c, 'clumsy', lambda x: x.totals['repair']):.0f}. "
-        f"Złamanie drogiego narzędzia (35 % ceny, np. obrotnik 1 800 → 630) zjada 4–6 zleceń, więc gracz niezdarny wpada w pętlę "
-        f"grind → naprawa → grind. Propozycja: naprawa złamanego = 15 % + 10 monet stałe, z limitem 150; uczy ostrożności bez spirali. "
-        f"Narzędzia startowe (cena 0) naprawia się za minimum 5, czyli w praktyce za darmo.",
-        f"7. **Po zmianach (C)** zablokowanych zleceń: careful/average/clumsy "
-        f"{m(c, 'careful', blocked):.0f}/{m(c, 'average', blocked):.0f}/{m(c, 'clumsy', blocked):.0f}; grind "
-        f"{m(c, 'careful', lambda x: x.totals['grind_sessions']):.0f}/{m(c, 'average', lambda x: x.totals['grind_sessions']):.0f}/"
-        f"{m(c, 'clumsy', lambda x: x.totals['grind_sessions']):.0f} sesji; koszt narzędzi do zleceń {need_cost_c} zamiast {need_cost}. "
-        f"Sesja 8 min (C, start) daje {cont_c['careful']:.0f}/{cont_c['average']:.0f}/{cont_c['clumsy']:.0f} monet.",
-        f"8. **Czas gry:** sama ścieżka zleceń (bez grindu) trwa (C) careful/average/clumsy "
-        f"{m(c, 'careful', lambda x: x.totals['job_time']) / 60:.0f}/{m(c, 'average', lambda x: x.totals['job_time']) / 60:.0f}/"
-        f"{m(c, 'clumsy', lambda x: x.totals['job_time']) / 60:.0f} min. Na grę premium to krótko; Tryb Zleceń potrzebuje "
-        f"więcej zleceń (cel ≥ 60) albo powtórek, a nie grindu monet.",
+        f"1. **D-62: tańsze narzędzia, nigdy blokada zlecenia.** Ceny w `tools.json` (C) spadły z {cost_all_old} do {cost_all} monet "
+        f"za wszystkie {len(paid)} płatne narzędzia, a z {cost_need_old} do {cost_need} za te, które mają użycie w zleceniach "
+        f"({len(job_need)} szt.). Suma nagród 29 zleceń to {job_sum} monet, plus napiwki. Gra nie sprawdza narzędzi przy "
+        f"przyjęciu zlecenia; model C też nie: brak narzędzia daje wolniejszy zamek (×{MISSING_TOOL_X}) i słabszy feedback, "
+        f"ale nie grind.",
+        f"2. **Przed (D, stare ceny, narzędzie bramką):** zablokowanych zleceń careful/average/clumsy "
+        f"{trio(d, blocked)}; sesji grindu {trio(d, lambda x: x.totals['grind_sessions'])}; "
+        f"dochód ze zleceń {trio(d, lambda x: x.totals['job_income'])} + grind {trio(d, lambda x: x.totals['grind_income'])} monet "
+        f"wobec {trio(d, lambda x: x.totals['tools'])} wydanych na narzędzia.",
+        f"3. **Po (C, nowe ceny, narzędzia opcjonalne):** zablokowanych {trio(c, blocked)}; sesji grindu "
+        f"{trio(c, lambda x: x.totals['grind_sessions'])}; dochód ze zleceń {trio(c, lambda x: x.totals['job_income'])} monet, "
+        f"wydane na narzędzia {trio(c, lambda x: x.totals['tools'])} (kupione: {trio(c, bought)} z {len(in_reach)} "
+        f"osiągalnych płatnych); monety niewydane na koniec kariery {trio(c, lambda x: x.st['coins'])}; "
+        f"zamków granych bez własnego narzędzia {trio(c, lambda x: x.totals['missing_locks'])}.",
+        f"4. **Dochód a koszt narzędzi (C):** dochód ze zleceń / łączny koszt wszystkich płatnych narzędzi ({cost_all}) = "
+        f"{'/'.join('{:.0%}'.format(m(c, p, lambda x: x.totals['job_income']) / cost_all) for p in PROFILES)} "
+        f"(careful/average/clumsy); wobec stanu sprzed D-62: "
+        f"{'/'.join('{:.0%}'.format(m(d, p, lambda x: x.totals['job_income']) / cost_all_old) for p in PROFILES)}.",
+        f"5. **Naprawy (C):** {trio(c, lambda x: x.totals['repair'])} monet (careful/average/clumsy), złamań "
+        f"{trio(c, lambda x: x.totals['breaks'])}; naprawa liczy się od ceny, więc tańsze narzędzia tańsze też w serwisie.",
+        f"6. **Czas gry:** ścieżka zleceń (C, bez grindu, bo go nie ma) trwa careful/average/clumsy "
+        f"{trio(c, lambda x: x.totals['job_time'] / 60)} min. Do 2 h potrzeba więcej zleceń (cel ≥ 60) lub powtórek, "
+        f"nie wyższych cen. Tryb Ciągły (sesja 8 min, start) daje {cont_c['careful']:.0f}/{cont_c['average']:.0f}/"
+        f"{cont_c['clumsy']:.0f} monet i pozostaje dodatkiem, nie warunkiem postępu.",
     ]
     return out
 
 
 def PROPOSALS(tools):
-    ch = SCENARIOS["C"]["changes"]
-    L = ["## 6. Proponowane zmiany liczb (do decyzji; danych nie zmieniam)", "",
-         "| gdzie | pole | jest | propozycja | po co |", "|---|---|---|---|---|",
-         "| `game/data/jobs/*.json` | `family` 7 zleceń „zapadkowych” | `lever` | `warded` | zgodność z `JOBS.md`; rozdział 1 bez korby za 500 |",
-         "| `job.liege_bakery.json` | `family` | `lever` | `lever_detector` | `JOBS.md`: „dźwigniowy z detektorem, T2” |",
-         "| `job.drummer_locker.json` | `family` | `unknown` | `tubular` | `JOBS.md`: „rurkowy, T1” |",
-         "| `progression.json` | `tier_curve.formula` | `0.55 * ln(1+n)` | `1.2 * ln(1+n)` | wzór zgodny z tabelą §2.2 |"]
-    for tid, price in ch["price"].items():
-        why = ("dar w samouczku: pierwsze zlecenie bez grindu" if price == 0 else
-               "narzędzie do zleceń za ok. 2–3 zlecenia rozdziału + 1–2 sesje Trybu Ciągłego")
-        L.append(f"| `tools.json` | `{tid}.price` | {tools[tid]['price']} | {price} | {why} |")
-    for tid, cond in ch["unlock"].items():
-        L.append(f"| `tools.json` | `{tid}.unlock` | `{tools[tid]['unlock']}` | `{cond}` | "
-                 f"osiągalne przed pierwszym zleceniem rodziny (tiery zleceń i Trybu Ciągłego) |")
-    L.append("| `tools.json` | `wear_model.repair_broken_pct` | 0.35 | 0.15 + 10 monet, max 150 | bez spirali naprawa → grind u gracza niezdarnego |")
-    L += ["| `JOBS.md` / dane | zapadkowy T3 (3 zlecenia) | lockcore t2 max | dodać `warded` t3 albo zmienić na T2 | dziś T3 = t2, „mistrzowskie” zlecenie jest łatwiejsze od rozdziału 1 wkładki |",
-          "| `progression.json` | `economy.session_income` | 300 | wartość z symulacji C (tabela §5) | dokument ma mówić prawdę o tempie |",
-          "", "Ceny w tabeli §5 (kolumna „dane / C”) pokazują stan dzisiejszy i propozycję obok siebie."]
+    old = SCENARIOS["D"]["changes"]["price"]
+    L = ["## 6. Ceny narzędzi: przed i po D-62 (zastosowane w `game/data/tools.json`)", "",
+         "| narzędzie | przed | po | warunek |", "|---|---|---|---|"]
+    for tid, price in old.items():
+        L.append(f"| `{tid}` | {price} | {tools[tid]['price']} | `{tools[tid]['unlock']}` |")
+    L += ["", "Warunki odblokowania bez zmian (tylko pacing sklepu; zlecenie nigdy nie wymaga narzędzia). "
+          "Naprawa: 15 % ceny (złamane: 15 % + 10, maks. 150), więc spada razem z cenami."]
     return L
+
+
+NEEDED_BY_JOBS = {"tl_shackle", "pk_lever", "tl_polar", "pk_crown", "tl_cup", "tw_bar", "pk_flag",
+                  "pk_plunger", "pk_disc"}  # tools whose family appears in a job (FAMILY_TOOLS)
 
 
 def main():

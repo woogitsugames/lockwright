@@ -227,6 +227,7 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 - **Głosy w kolejnych językach:** w paczce PL+EN, pozostałe języki głosów **pobierane na żądanie** przy wyborze języka (zastępuje tymczasowe D-61).
 - **Hania:** zostaje jasny dorosły głos (jak w dubbingu animacji).
 - **Ekonomia:** **tańsze narzędzia** (scenariusz C z `tools/econ_sim.py`); narzędzia dają wygodę/lepszy feedback, nie blokują zleceń.
+- **Ekonomia, wdrożenie (ceny):** `tools.json` -> ceny ok. 0,3× poprzednich (korba 120, ciągadło 60, napinacz listwowy 150, koronka 180, sonda biegunowa 200, chorągiewka 240, trzpień 260, obrotnik tarcz 280, słuchawka 300, piórko 500; razem 2 820 zamiast 10 100). `econ_sim.py` C = dane gry, narzędzia opcjonalne (gra nie blokuje zleceń; brak narzędzia = zamek ×1,15 dłużej): 0 zablokowanych, 0 sesji grindu, average kupuje 13/13 osiągalnych za ok. 2 320 przy dochodzie ze zleceń ok. 2 550 (przed: 8 sesji grindu, 6 400 na narzędzia). Szczegóły: `docs/ECONOMY.md`.
 - **Scenka przyjazdu (D-58):** kierunek zaakceptowany; po dostawie Magnific D postać, finalny render na GPU, integracja, kolejne zlecenia.
 - **ElevenLabs:** konto ma płatny plan z licencją komercyjną.
 - **Dyrektorka:** nowy kobiecy portret (Magnific E).
