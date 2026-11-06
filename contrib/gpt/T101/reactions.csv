@@ -1,0 +1,97 @@
+speaker,emotion,charakter_glosu,scenariusz
+alicja,greeting,"jasny, dość wysoki; energiczny","Krótki łagodny wdech i pojedyncza samogłoska powitania, bez słów."
+alicja,surprise,"jasny, dość wysoki; energiczny","Krótki wzrost tonu i urwany wydech, jak przy niespodziewanej wiadomości."
+alicja,relief,"jasny, dość wysoki; energiczny",Powolny wydech z miękkim opadnięciem tonu po ustąpieniu napięcia.
+alicja,thanks,"jasny, dość wysoki; energiczny","Ciepłe, krótkie mruknięcie uznania, bez słów."
+alicja,impatient,"jasny, dość wysoki; energiczny","Krótszy, nieco napięty wydech; nie krzyk i nie agresja."
+alicja,sad,"jasny, dość wysoki; energiczny","Cichy, łagodnie opadający wydech; bez płaczu wymuszonego na siłę."
+alicja,laugh,"jasny, dość wysoki; energiczny",Krótki naturalny śmiech dopasowany do temperamentu postaci.
+alicja,goodbye,"jasny, dość wysoki; energiczny","Miękkie, krótkie mruknięcie pożegnania z opadającym tonem."
+borys,greeting,"ciepły, lekko zachrypnięty; swobodny","Krótki łagodny wdech i pojedyncza samogłoska powitania, bez słów."
+borys,surprise,"ciepły, lekko zachrypnięty; swobodny","Krótki wzrost tonu i urwany wydech, jak przy niespodziewanej wiadomości."
+borys,relief,"ciepły, lekko zachrypnięty; swobodny",Powolny wydech z miękkim opadnięciem tonu po ustąpieniu napięcia.
+borys,thanks,"ciepły, lekko zachrypnięty; swobodny","Ciepłe, krótkie mruknięcie uznania, bez słów."
+borys,impatient,"ciepły, lekko zachrypnięty; swobodny","Krótszy, nieco napięty wydech; nie krzyk i nie agresja."
+borys,sad,"ciepły, lekko zachrypnięty; swobodny","Cichy, łagodnie opadający wydech; bez płaczu wymuszonego na siłę."
+borys,laugh,"ciepły, lekko zachrypnięty; swobodny",Krótki naturalny śmiech dopasowany do temperamentu postaci.
+borys,goodbye,"ciepły, lekko zachrypnięty; swobodny","Miękkie, krótkie mruknięcie pożegnania z opadającym tonem."
+celina,greeting,"niski, stabilny; rzeczowy i zdecydowany","Krótki łagodny wdech i pojedyncza samogłoska powitania, bez słów."
+celina,surprise,"niski, stabilny; rzeczowy i zdecydowany","Krótki wzrost tonu i urwany wydech, jak przy niespodziewanej wiadomości."
+celina,relief,"niski, stabilny; rzeczowy i zdecydowany",Powolny wydech z miękkim opadnięciem tonu po ustąpieniu napięcia.
+celina,thanks,"niski, stabilny; rzeczowy i zdecydowany","Ciepłe, krótkie mruknięcie uznania, bez słów."
+celina,impatient,"niski, stabilny; rzeczowy i zdecydowany","Krótszy, nieco napięty wydech; nie krzyk i nie agresja."
+celina,sad,"niski, stabilny; rzeczowy i zdecydowany","Cichy, łagodnie opadający wydech; bez płaczu wymuszonego na siłę."
+celina,laugh,"niski, stabilny; rzeczowy i zdecydowany",Krótki naturalny śmiech dopasowany do temperamentu postaci.
+celina,goodbye,"niski, stabilny; rzeczowy i zdecydowany","Miękkie, krótkie mruknięcie pożegnania z opadającym tonem."
+dorota,greeting,"średni, szybki; napięty, lecz bez agresji","Krótki łagodny wdech i pojedyncza samogłoska powitania, bez słów."
+dorota,surprise,"średni, szybki; napięty, lecz bez agresji","Krótki wzrost tonu i urwany wydech, jak przy niespodziewanej wiadomości."
+dorota,relief,"średni, szybki; napięty, lecz bez agresji",Powolny wydech z miękkim opadnięciem tonu po ustąpieniu napięcia.
+dorota,thanks,"średni, szybki; napięty, lecz bez agresji","Ciepłe, krótkie mruknięcie uznania, bez słów."
+dorota,impatient,"średni, szybki; napięty, lecz bez agresji","Krótszy, nieco napięty wydech; nie krzyk i nie agresja."
+dorota,sad,"średni, szybki; napięty, lecz bez agresji","Cichy, łagodnie opadający wydech; bez płaczu wymuszonego na siłę."
+dorota,laugh,"średni, szybki; napięty, lecz bez agresji",Krótki naturalny śmiech dopasowany do temperamentu postaci.
+dorota,goodbye,"średni, szybki; napięty, lecz bez agresji","Miękkie, krótkie mruknięcie pożegnania z opadającym tonem."
+janka,greeting,"starszy, lekko skrzypiący; życzliwy i szybki","Krótki łagodny wdech i pojedyncza samogłoska powitania, bez słów."
+janka,surprise,"starszy, lekko skrzypiący; życzliwy i szybki","Krótki wzrost tonu i urwany wydech, jak przy niespodziewanej wiadomości."
+janka,relief,"starszy, lekko skrzypiący; życzliwy i szybki",Powolny wydech z miękkim opadnięciem tonu po ustąpieniu napięcia.
+janka,thanks,"starszy, lekko skrzypiący; życzliwy i szybki","Ciepłe, krótkie mruknięcie uznania, bez słów."
+janka,impatient,"starszy, lekko skrzypiący; życzliwy i szybki","Krótszy, nieco napięty wydech; nie krzyk i nie agresja."
+janka,sad,"starszy, lekko skrzypiący; życzliwy i szybki","Cichy, łagodnie opadający wydech; bez płaczu wymuszonego na siłę."
+janka,laugh,"starszy, lekko skrzypiący; życzliwy i szybki",Krótki naturalny śmiech dopasowany do temperamentu postaci.
+janka,goodbye,"starszy, lekko skrzypiący; życzliwy i szybki","Miękkie, krótkie mruknięcie pożegnania z opadającym tonem."
+karol,greeting,"średni, szybki; lekko napięty, nadal uprzejmy","Krótki łagodny wdech i pojedyncza samogłoska powitania, bez słów."
+karol,surprise,"średni, szybki; lekko napięty, nadal uprzejmy","Krótki wzrost tonu i urwany wydech, jak przy niespodziewanej wiadomości."
+karol,relief,"średni, szybki; lekko napięty, nadal uprzejmy",Powolny wydech z miękkim opadnięciem tonu po ustąpieniu napięcia.
+karol,thanks,"średni, szybki; lekko napięty, nadal uprzejmy","Ciepłe, krótkie mruknięcie uznania, bez słów."
+karol,impatient,"średni, szybki; lekko napięty, nadal uprzejmy","Krótszy, nieco napięty wydech; nie krzyk i nie agresja."
+karol,sad,"średni, szybki; lekko napięty, nadal uprzejmy","Cichy, łagodnie opadający wydech; bez płaczu wymuszonego na siłę."
+karol,laugh,"średni, szybki; lekko napięty, nadal uprzejmy",Krótki naturalny śmiech dopasowany do temperamentu postaci.
+karol,goodbye,"średni, szybki; lekko napięty, nadal uprzejmy","Miękkie, krótkie mruknięcie pożegnania z opadającym tonem."
+leon,greeting,"średnio niski, zmęczony; cierpliwy i życzliwy","Krótki łagodny wdech i pojedyncza samogłoska powitania, bez słów."
+leon,surprise,"średnio niski, zmęczony; cierpliwy i życzliwy","Krótki wzrost tonu i urwany wydech, jak przy niespodziewanej wiadomości."
+leon,relief,"średnio niski, zmęczony; cierpliwy i życzliwy",Powolny wydech z miękkim opadnięciem tonu po ustąpieniu napięcia.
+leon,thanks,"średnio niski, zmęczony; cierpliwy i życzliwy","Ciepłe, krótkie mruknięcie uznania, bez słów."
+leon,impatient,"średnio niski, zmęczony; cierpliwy i życzliwy","Krótszy, nieco napięty wydech; nie krzyk i nie agresja."
+leon,sad,"średnio niski, zmęczony; cierpliwy i życzliwy","Cichy, łagodnie opadający wydech; bez płaczu wymuszonego na siłę."
+leon,laugh,"średnio niski, zmęczony; cierpliwy i życzliwy",Krótki naturalny śmiech dopasowany do temperamentu postaci.
+leon,goodbye,"średnio niski, zmęczony; cierpliwy i życzliwy","Miękkie, krótkie mruknięcie pożegnania z opadającym tonem."
+locksmith,greeting,"spokojny, ciepły, średnio niski; oszczędny","Krótki łagodny wdech i pojedyncza samogłoska powitania, bez słów."
+locksmith,surprise,"spokojny, ciepły, średnio niski; oszczędny","Krótki wzrost tonu i urwany wydech, jak przy niespodziewanej wiadomości."
+locksmith,relief,"spokojny, ciepły, średnio niski; oszczędny",Powolny wydech z miękkim opadnięciem tonu po ustąpieniu napięcia.
+locksmith,thanks,"spokojny, ciepły, średnio niski; oszczędny","Ciepłe, krótkie mruknięcie uznania, bez słów."
+locksmith,impatient,"spokojny, ciepły, średnio niski; oszczędny","Krótszy, nieco napięty wydech; nie krzyk i nie agresja."
+locksmith,sad,"spokojny, ciepły, średnio niski; oszczędny","Cichy, łagodnie opadający wydech; bez płaczu wymuszonego na siłę."
+locksmith,laugh,"spokojny, ciepły, średnio niski; oszczędny",Krótki naturalny śmiech dopasowany do temperamentu postaci.
+locksmith,goodbye,"spokojny, ciepły, średnio niski; oszczędny","Miękkie, krótkie mruknięcie pożegnania z opadającym tonem."
+mila,greeting,"młody, jasny; pogodny i muzykalny","Krótki łagodny wdech i pojedyncza samogłoska powitania, bez słów."
+mila,surprise,"młody, jasny; pogodny i muzykalny","Krótki wzrost tonu i urwany wydech, jak przy niespodziewanej wiadomości."
+mila,relief,"młody, jasny; pogodny i muzykalny",Powolny wydech z miękkim opadnięciem tonu po ustąpieniu napięcia.
+mila,thanks,"młody, jasny; pogodny i muzykalny","Ciepłe, krótkie mruknięcie uznania, bez słów."
+mila,impatient,"młody, jasny; pogodny i muzykalny","Krótszy, nieco napięty wydech; nie krzyk i nie agresja."
+mila,sad,"młody, jasny; pogodny i muzykalny","Cichy, łagodnie opadający wydech; bez płaczu wymuszonego na siłę."
+mila,laugh,"młody, jasny; pogodny i muzykalny",Krótki naturalny śmiech dopasowany do temperamentu postaci.
+mila,goodbye,"młody, jasny; pogodny i muzykalny","Miękkie, krótkie mruknięcie pożegnania z opadającym tonem."
+oskar,greeting,"średni, szybki; uprzejmy i niecierpliwy","Krótki łagodny wdech i pojedyncza samogłoska powitania, bez słów."
+oskar,surprise,"średni, szybki; uprzejmy i niecierpliwy","Krótki wzrost tonu i urwany wydech, jak przy niespodziewanej wiadomości."
+oskar,relief,"średni, szybki; uprzejmy i niecierpliwy",Powolny wydech z miękkim opadnięciem tonu po ustąpieniu napięcia.
+oskar,thanks,"średni, szybki; uprzejmy i niecierpliwy","Ciepłe, krótkie mruknięcie uznania, bez słów."
+oskar,impatient,"średni, szybki; uprzejmy i niecierpliwy","Krótszy, nieco napięty wydech; nie krzyk i nie agresja."
+oskar,sad,"średni, szybki; uprzejmy i niecierpliwy","Cichy, łagodnie opadający wydech; bez płaczu wymuszonego na siłę."
+oskar,laugh,"średni, szybki; uprzejmy i niecierpliwy",Krótki naturalny śmiech dopasowany do temperamentu postaci.
+oskar,goodbye,"średni, szybki; uprzejmy i niecierpliwy","Miękkie, krótkie mruknięcie pożegnania z opadającym tonem."
+pawel,greeting,"średnio niski, równy; spokojny i rzeczowy","Krótki łagodny wdech i pojedyncza samogłoska powitania, bez słów."
+pawel,surprise,"średnio niski, równy; spokojny i rzeczowy","Krótki wzrost tonu i urwany wydech, jak przy niespodziewanej wiadomości."
+pawel,relief,"średnio niski, równy; spokojny i rzeczowy",Powolny wydech z miękkim opadnięciem tonu po ustąpieniu napięcia.
+pawel,thanks,"średnio niski, równy; spokojny i rzeczowy","Ciepłe, krótkie mruknięcie uznania, bez słów."
+pawel,impatient,"średnio niski, równy; spokojny i rzeczowy","Krótszy, nieco napięty wydech; nie krzyk i nie agresja."
+pawel,sad,"średnio niski, równy; spokojny i rzeczowy","Cichy, łagodnie opadający wydech; bez płaczu wymuszonego na siłę."
+pawel,laugh,"średnio niski, równy; spokojny i rzeczowy",Krótki naturalny śmiech dopasowany do temperamentu postaci.
+pawel,goodbye,"średnio niski, równy; spokojny i rzeczowy","Miękkie, krótkie mruknięcie pożegnania z opadającym tonem."
+seweryn,greeting,"miękki, średnio niski; cierpliwy","Krótki łagodny wdech i pojedyncza samogłoska powitania, bez słów."
+seweryn,surprise,"miękki, średnio niski; cierpliwy","Krótki wzrost tonu i urwany wydech, jak przy niespodziewanej wiadomości."
+seweryn,relief,"miękki, średnio niski; cierpliwy",Powolny wydech z miękkim opadnięciem tonu po ustąpieniu napięcia.
+seweryn,thanks,"miękki, średnio niski; cierpliwy","Ciepłe, krótkie mruknięcie uznania, bez słów."
+seweryn,impatient,"miękki, średnio niski; cierpliwy","Krótszy, nieco napięty wydech; nie krzyk i nie agresja."
+seweryn,sad,"miękki, średnio niski; cierpliwy","Cichy, łagodnie opadający wydech; bez płaczu wymuszonego na siłę."
+seweryn,laugh,"miękki, średnio niski; cierpliwy",Krótki naturalny śmiech dopasowany do temperamentu postaci.
+seweryn,goodbye,"miękki, średnio niski; cierpliwy","Miękkie, krótkie mruknięcie pożegnania z opadającym tonem."
