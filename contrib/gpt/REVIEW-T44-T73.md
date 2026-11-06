@@ -52,3 +52,6 @@ Gest to przeciągnięcie prawego kciuka w górę = „wsuwanie” suwaka. Teksty
 
 ## Walidacja
 `python3 tools/i18n_lint.py`: 1091 kluczy, 0 błędów, 2 ostrzeżenia bazowe (`settings.voice_pack.line`). Pełny GUT i walidatory danych: wynik w commicie z tym plikiem. Nowy test `game/tests/gut/test_texts_t54_t73.gd` (rachunek per rodzina i naprawa zegara, dyspozytor bez powtórek, 2 warianty każdej karty, opisy narzędzi i pomoc ustawień).
+
+## Dopisek: DE bez angielskich wartości (zlecenie koordynatora, po odbiorze)
+Przetłumaczone przeze mnie 186 komórek `de` w `content.csv`: 82 osiągnięcia (`ach.achievement.*` name/desc), 62 porady `tip.*`, 26 `notebook.extra.*` (w tym 2, które po zamianie EN na pisownię US przestały być identyczne z EN, ale nadal były po angielsku) oraz 16 skróconych do jednego zdania `job.*.situation` (rozdz. 1–6) — teraz pełne, treściowo jak EN. UI/porady per „du”, zeszyt w 1. osobie ślusarza. Terminy jak w grze: Pick (nazwy narzędzi DE to „…pick”), falscher Halt, Überdrücken, Absturz, Stufe, Endloslauf, Stiftzylinder, Plättchenschloss, Zuhaltungsschloss, Buntbartschloss; kot = Kartoffel. Spójnie z tym `run.lives_left` DE „Ersatzhaken” → „Ersatzpicks”. FR/ES tych kluczy były już wypełnione. Klucze T43 (`*t43*`) nietknięte — czekają na koniec pracy agenta T43, potem przebieg pisowni US.

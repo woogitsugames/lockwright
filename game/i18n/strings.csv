@@ -96,7 +96,7 @@ settings.reduce_motion,Reduce motion,Ogranicz ruch,Weniger Bewegung,Réduire les
 settings.dark_mode_note,"In the dark, rely on sound. Phone haptics help too.",W ciemności polegaj na dźwięku. Haptyka też pomaga.,Verlass dich im Dunkeln auf den Ton. Haptik hilft auch.,"Dans le noir, fie-toi au son. Les vibrations du téléphone aident aussi.","A oscuras, guíate por el sonido. La háptica del móvil también ayuda."
 run.title,Endless shift,Tryb ciągły,Endloslauf,Service sans fin,Turno continuo
 run.lock_n,Lock {n},Zamek {n},Schloss {n},Serrure {n},Cerradura {n}
-run.lives_left,Spare picks,Zapasowe wytrychy,Ersatzhaken,Crochets de rechange,Ganzúas de repuesto
+run.lives_left,Spare picks,Zapasowe wytrychy,Ersatzpicks,Crochets de rechange,Ganzúas de repuesto
 run.workshop_stop,Workshop break,Warsztat,Werkstattpause,Pause à l'atelier,Pausa en el taller
 run.finished,Shift over — {n} coins,Seria zakończona — {n} monet,Lauf beendet – {n} Münzen,Fin du service — {n} pièces,Fin del turno: {n} monedas
 run.rubber_band,Take a breath. An easier lock next.,Weź oddech. Prostszy zamek.,Ganz ruhig. Ein einfacheres Schloss.,Respire. La suite sera plus facile.,Respira. La siguiente será más fácil.
