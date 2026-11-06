@@ -1,5 +1,10 @@
 {
  "family": "combo",
+ "tooth_dir": 1.0,
+ "body_px": [
+  -4.175675675675677,
+  622.1756756756756
+ ],
  "res": [
   618,
   824
@@ -30,21 +35,21 @@
   "latch": {
    "offset": [
     1,
-    329
+    331
    ],
    "size": [
     602,
-    49
+    47
    ]
   },
   "tooth": {
    "offset": [
-    108,
+    100,
     367
    ],
    "size": [
-    28,
-    24
+    44,
+    22
    ]
   },
   "plug": {
@@ -82,10 +87,10 @@
   "window_top_deg": 68.0
  },
  "sleeve": {
-  "bore_mm": 2.2,
-  "outer_mm": 4.0,
-  "notch_depth_mm": 1.2,
-  "tooth_w_mm": 1.6
+  "bore_mm": 2.0,
+  "outer_mm": 4.4,
+  "notch_depth_mm": 2.0,
+  "tooth_w_mm": 2.8
  },
  "slot_pitch_mm": 7.0,
  "band": {
@@ -94,6 +99,7 @@
    64,
    640
   ],
-  "width_mm": 5.6
+  "width_mm": 5.6,
+  "view_mm": 4.4
  }
 }

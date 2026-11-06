@@ -47,12 +47,12 @@ FONT = os.path.join(ROOT_DIR, 'game', 'assets', 'fonts', 'AtkinsonHyperlegibleNe
 # ---------------------------------------------------------------- geometry (mm; X along the axis, Z up, Y away from camera)
 SLOTS = [-14.0, -7.0, 0.0, 7.0, 14.0]
 WR, WW = 7.0, 5.6             # wheel radius, width
-SR, BR = 4.0, 2.2             # sleeve outer radius, bore radius
+SR, BR = 4.4, 2.0             # sleeve outer radius, bore radius
 BODY = (-21.0, 21.0, -11.0, 10.0)
 WIN = (-17.6, 17.6)           # wheel window in the body front (x)
 READ_DEG = 30.0               # reading line: degrees above the front
-TOOTH_W = 1.6
-NOTCH_D = 1.2
+TOOTH_W = 2.8                 # >= 28 dp on a 412 dp portrait screen (crop round the body)
+NOTCH_D = 2.0
 DIST, LENS = 192.0, 150.0
 CELLS = 10
 if DISC:
@@ -77,9 +77,9 @@ def qcut(o):
 M = {
     'bench':  photo_mat('ph_bench', 'bench_beech_top', scale=220, rot=0, metallic=0.0, rough_add=0.05, bump=0.3, grime=0.3),
     'body':   photo_mat('ph_body', 'steel_cast_grey_paint', scale=60, metallic=0.0, base=(0.10, 0.11, 0.12), base_mix=0.4, rough_add=0.02, coat=0.3, bump=0.25, wear=0.5, grime=0.5),
-    'cast':   photo_mat('ph_cast_cut', 'steel_ground', scale=16, rot=70, base=(0.50, 0.50, 0.50), base_mix=0.5, rough_add=0.22, bump=0.25, grime=0.2),
+    'cast':   photo_mat('ph_cast_cut', 'steel_ground', scale=16, rot=70, base=(0.66, 0.66, 0.65), base_mix=0.5, rough_add=0.22, bump=0.25, grime=0.15),
     'wheel':  photo_mat('ph_wheel', 'nickel_satin', scale=18, rot=90, base=(0.66, 0.66, 0.64), base_mix=0.35, rough_add=0.06, wear=0.4, grime=0.6),
-    'sleeve': photo_mat('ph_sleeve', 'brass_face_milled', scale=10, rot=90, base=(0.80, 0.60, 0.30), base_mix=0.5, rough_add=0.12, bump=0.15, grime=0.3),
+    'sleeve': photo_mat('ph_sleeve', 'brass_face_milled', scale=10, rot=90, base=(0.92, 0.72, 0.40), base_mix=0.5, rough_add=0.12, bump=0.15, grime=0.3),
     'bar':    photo_mat('ph_bar', 'steel_ground', scale=12, rot=0, base=(0.60, 0.61, 0.62), base_mix=0.4, rough_add=0.10, bump=0.15, grime=0.3),
     'plug':   photo_mat('ph_plug', 'nickel_satin', scale=12, rot=0, base=(0.55, 0.55, 0.54), base_mix=0.3, rough_add=0.06, wear=0.4, grime=0.4),
     'cable':  photo_mat('ph_cable', 'leather_chocolate', scale=14, rot=90, metallic=0.0, base=(0.05, 0.05, 0.055), base_mix=0.7, rough_add=-0.1, coat=0.6, bump=0.3),
@@ -190,7 +190,7 @@ cd = bpy.data.cameras.new('cam'); cam = bpy.data.objects.new('cam', cd); scene.c
 cd.lens = LENS; cd.sensor_fit = 'HORIZONTAL'; cd.sensor_width = 36.0; cd.clip_start = 1; cd.clip_end = 5000
 CAM_Z = -4.0
 cam.location = (0, -DIST, CAM_Z); cam.rotation_euler = (math.pi / 2, 0, 0)
-render_setup(os.path.join(OUT_DIR, 'ref.png'), RES, SPP, exposure=float(arg('--exp', '0.4')))
+render_setup(os.path.join(OUT_DIR, 'ref.png'), RES, SPP, exposure=float(arg('--exp', '0.65')))
 if DEVICE == 'GPU':
     try:
         __import__('plate_common').enable_gpu_cycles()

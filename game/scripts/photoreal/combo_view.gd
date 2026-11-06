@@ -52,7 +52,8 @@ var _reel_plate: Array[Rect2] = []
 ## The part of the plate shown (plate px). The lock is wide and flat: the section shows a crop round
 ## it, wide in landscape, so the wheels stay >= 28 dp (CLAUDE.md) on every screen.
 var _crop := Rect2(0, 0, 618, 824)
-const BODY_X := Vector2(34.0, 584.0)   # plate px: the body plus a little bench either side
+const BODY_X := Vector2(34.0, 584.0)
+const PORTRAIT_ASPECT := 0.82          # section height / width in portrait (below the status bar)
 
 
 func _ready() -> void:
@@ -205,6 +206,12 @@ func tooth_tip_screen(i: int) -> Vector2:
 	var s := slot_of(i)
 	var ppm := float(_wm()["px_per_mm_section"])
 	return plate_to_screen(Vector2(_slot_x(s), _axis_y() + (float(_sm()["bore_mm"]) + _tdir() * _tooth[s]) * ppm))
+
+
+## Tooth width on screen, dp (CLAUDE.md: elements >= 28 dp).
+func tooth_width_screen() -> float:
+	var w := float(_sm()["tooth_w_mm"]) * float(_wm()["px_per_mm_section"])
+	return (plate_to_screen(Vector2(w, 0)) - plate_to_screen(Vector2.ZERO)).x
 
 
 ## Screen rect of wheel i's visible digits (tests).
@@ -511,9 +518,18 @@ func _layout() -> void:
 	var cw := float(bx[1]) - float(bx[0])
 	var cy := _axis_y() + 12.0
 	if safe.size.y >= safe.size.x:
-		# portrait: same section rect as the other locks, the crop drops the bench at the sides
+		# portrait: the lock is wide and flat, so the section is a wide band round it (not 3:4 of bench);
+		# the leather roll takes the rest
+		section_rect = Rect2(r.position, Vector2(r.size.x, safe.position.y - r.position.y + r.size.x * PORTRAIT_ASPECT))
 		var ch := minf(cw * section_rect.size.y / section_rect.size.x, plate_size.y)
 		_crop = Rect2(cx - cw * 0.5, clampf(cy - ch * 0.5, 0.0, plate_size.y - ch), cw, ch)
+		tray_rect = Rect2(Vector2(r.position.x, section_rect.end.y), Vector2(r.size.x, r.end.y - section_rect.end.y))
+		_tray.position = tray_rect.position
+		_tray.size = tray_rect.size
+		_loupe_rect = _compute_loupe_rect()
+		_loupe_btn.position = _loupe_rect.position
+		_loupe_btn.size = _loupe_rect.size
+		_face.position = Vector2(safe.position.x + 4.0, tray_rect.position.y + 6.0)
 	else:
 		# landscape: the section takes the width between the plug face and the right edge
 		var th := r.size.y * 0.26

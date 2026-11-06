@@ -215,6 +215,8 @@ func test_layout_fits_portrait_and_landscape() -> void:
 		var flap: Control = view.get_node("PauseFlap")
 		assert_gte(flap.size.x, 48.0, tag + " pause flap")
 		assert_true(screen.encloses(flap.get_rect()), tag + " pause flap on screen")
+		if size.x <= size.y and size.x >= 412:
+			assert_gte(view.tooth_width_screen(), 28.0, tag + " tooth >= 28 dp")
 		for i in view.n_wheels:
 			var rr := view.reel_rect_screen(i)
 			assert_gte(rr.size.x, 28.0, tag + " wheel %d >= 28 dp wide" % i)
