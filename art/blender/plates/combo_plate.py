@@ -209,7 +209,7 @@ def to_px(x, z, depth):
     return [RES[0] / 2 + x * s, RES[1] / 2 - (z - CAM_Z) * s]
 
 
-meta = {'family': FAMILY, 'tooth_dir': -1.0 if DISC else 1.0, 'body_px': [to_px(BODY[0] - 1.5, 0, -WR)[0], to_px(BODY[1] + 1.5, 0, -WR)[0]], 'res': RES, 'spp': SPP, 'device': DEVICE, 'layers': {},
+meta = {'family': FAMILY, 'tooth_dir': -1.0 if DISC else 1.0, 'body_px': [to_px(WIN[0] - 1.6, 0, -WR)[0], to_px(WIN[1] + 1.6, 0, -WR)[0]], 'res': RES, 'spp': SPP, 'device': DEVICE, 'layers': {},
         'axis_px': to_px(0, 0, 0)[1], 'slots_px': [to_px(x, 0, -WR)[0] for x in SLOTS],
         'slots_section_px': [to_px(x, 0, 0)[0] for x in SLOTS],
         'wheel': {'radius_mm': WR, 'width_mm': WW, 'px_per_mm_front': px_per_mm(-WR), 'px_per_mm_section': px_per_mm(0.0),

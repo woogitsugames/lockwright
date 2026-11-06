@@ -176,3 +176,8 @@ i dopiero wtedy pokaż. Integracja w Godot to praca sesji A.
 - Log pracy: `docs/handoff/LOCAL-SESSION-LOG.md` (utwórz): co wyrenderowane, czasy na RTX 5070, pliki, otwarte sprawy.
 - Do sesji A: wpis „## Od sesji lokalnej: …” w `SESSION-B-LOG.md` (tam czyta godzinna kontrola sesji A).
 - Właścicielowi po polsku, krótko: co gotowe, zestawienie obrazów, co czeka na niego (np. akceptacja menu, Magnific D).
+
+## Dodatek (sesja A, 2026-11-06 05:00 UTC): po poprawkach renderów zamków
+- `warded.png`: kontrast zastawek do skrzynki ok. 1,7:1 (cel ≥ 3:1). Na GPU wyrenderuj ponownie z mocniejszym światłem kluczowym na zastawkach albo ekspozycją ok. +0,8 (`art/blender/warded.py`), sprawdź kontrast w skali szarości.
+- Płyty planu B `lever` i `warded` (`game/assets/photoreal_families/{lever,warded}/photo/*`) są jeszcze ze starymi materiałami — w zadaniu (a)/(c) renderuj je od nowa (skrypty płyt same biorą nowe materiały z `lever.py`/`warded.py`).
+- `ring_combo.png` jest już poprawiony (cyfry 0–9 wycięte w płaskach, bez „E”); ponowny render tylko przy 2×.

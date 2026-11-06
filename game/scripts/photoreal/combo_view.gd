@@ -53,7 +53,7 @@ var _reel_plate: Array[Rect2] = []
 ## it, wide in landscape, so the wheels stay >= 28 dp (CLAUDE.md) on every screen.
 var _crop := Rect2(0, 0, 618, 824)
 const BODY_X := Vector2(34.0, 584.0)
-const PORTRAIT_ASPECT := 0.82          # section height / width in portrait (below the status bar)
+const PORTRAIT_ASPECT := 1.05          # section height / width in portrait (below the status bar)
 
 
 func _ready() -> void:
