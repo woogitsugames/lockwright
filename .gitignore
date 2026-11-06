@@ -14,3 +14,4 @@ art/renders/test_*.json
 game/addons/lockcore_gd/bin/
 qa/out/
 platform/android/.gradle/
+art/renders/workshop_layers/raw/

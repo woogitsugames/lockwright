@@ -21,15 +21,28 @@ IDS = ['plant', 'rug', 'shelf_light', 'radio', 'certificate', 'case_velvet', 'cl
 REPLACES = {'vise': 'base_vise'}
 
 
+_open = []  # (collection, objects that existed before begin())
+
+
 def begin(name):
-    """Create a collection under the scene root and make it the target of new objects."""
+    """Create a collection under the scene root; every object created until end() is moved into it."""
     col = bpy.data.collections.new(name)
     bpy.context.scene.collection.children.link(col)
     bpy.context.view_layer.active_layer_collection = bpy.context.view_layer.layer_collection.children[name]
+    _open.append((col, set(bpy.data.objects)))
     return col
 
 
 def end():
+    # some helpers (bpy.ops, curve objects) can link to another collection than the active one: move them all
+    col, before = _open.pop()
+    for o in bpy.data.objects:
+        if o not in before:
+            for c in list(o.users_collection):
+                if c != col:
+                    c.objects.unlink(o)
+            if col not in o.users_collection:
+                col.objects.link(o)
     bpy.context.view_layer.active_layer_collection = bpy.context.view_layer.layer_collection
 
 
@@ -213,7 +226,7 @@ def build(g):
             for (u, v, col) in ((-12, -8, (0.6, 0.08, 0.05)), (10, -10, (0.08, 0.25, 0.55)), (0, 14, (0.85, 0.6, 0.05))):
                 d = bx('crayon', -9, 9, -0.6, -0.4, -7, 7, plastic('crayon%d' % u, col, rough=0.9, grime=0.0)); d.matrix_world = M @ Matrix.Translation(Vector((u, 0, v)))
         bx('card_clip', x + w / 2 - 10, x + w / 2 + 10, PY - 6, PY - 1, z - 6, z + 8, clip_m, bev=0.8)
-        end()
+    end()
 
     # ------------------------------------------------------------ swivel vise (replaces the painted vise)
     out['vise'] = begin('furn_vise')

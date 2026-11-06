@@ -6,7 +6,7 @@ import csv, re, sys, os
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 # diacritics in lowercase words only (capitalized = proper nouns: Józef, Wrocław, Toruń are fine)
-ALLOW = {"Toruń", "Świątniki", "Kraków", "Wrocław", "béguinage", "dzień dobry", "pierogi", "Charleroi", "Ghent", "Świątniki Górne", "Radziwiłł", "rosół"}
+ALLOW = {"Toruń", "Świątniki", "Kraków", "Wrocław", "béguinage", "dzień dobry", "pierogi", "Charleroi", "Ghent", "Świątniki Górne", "Radziwiłł", "rosół", "Paweł"}
 def polish_in_en(text: str) -> bool:
     for a in ALLOW:
         text = text.replace(a, "")

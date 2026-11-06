@@ -225,3 +225,17 @@ python3 art/blender/arrival_composite.py --plate $A/wrong_floor_night_ajar_hold.
 ```
 Sprawdź nazwy plików cienia, które wypisze Blender (`WROTE …_shadow_<slot>.png`), i obejrzyj cień przy butach oraz na
 skrzydle drzwi (Teresa). Commit: mapy cienia + 4 kompozyty + nowy arkusz (polecenie arkusza: `art/renders/arrival/README.md`).
+
+## Dodatek (2026-11-06): wyposażenie warsztatu (D-71) — finalne warstwy na GPU
+W repo są szkice CPU (810×1440, 32 spp) tła warsztatu i 10 nakładek wyposażenia (`game/data/furnishings.json`).
+Finał: ten sam skrypt na GPU, potem składanie nakładek (różnica wariant − baza, maska z miękką krawędzią).
+**Wszystkie warstwy muszą pochodzić z jednego przebiegu** (te same ustawienia i seed), inaczej krawędzie nakładek będą widoczne.
+```bash
+BL=blender   # 4.2 LTS
+$BL -b -P art/blender/workshop.py -- --layers art/renders/workshop_layers/raw --res 2160x3840 --samples 256 --device GPU
+python3 art/blender/workshop_layers.py          # -> art/renders/workshop_layers/*.png, compare.jpg, game/assets/ui/workshop/*.webp
+```
+Obejrzyj `art/renders/workshop_layers/compare.jpg` (baza | wszystko | maski): maska ma obejmować przedmiot, jego cień
+i plamę światła, bez szumu na całej klatce (jeśli szum przechodzi: `--thr 0.04`). Rozmiar: tło + 10 nakładek WebP
+powinno zmieścić się w ok. 3 MB przy 2160×3840 (jeśli więcej: `--quality 76`). Commit: `art/renders/workshop_layers/`
+(bez `raw/`, jest w `.gitignore`) + `game/assets/ui/workshop/*.webp` (pliki `.import` już są w repo, tryb lossy).

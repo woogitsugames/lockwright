@@ -9,7 +9,7 @@ Wygenerowane przez `python3 tools/econ_sim.py` (200 karier na profil i scenarius
 3. **Po (C, nowe ceny, narzędzia opcjonalne):** zablokowanych 0/0/0; sesji grindu 0/0/0; dochód ze zleceń 9728/8909/8353 monet, wydane na narzędzia 2320/2320/2320 (kupione: 13/13/13 z 13 osiągalnych płatnych); monety niewydane na koniec kariery 637/1347/615; zamków granych bez własnego narzędzia 4/4/5.
 4. **Dochód a koszt narzędzi (C):** dochód ze zleceń / łączny koszt wszystkich płatnych narzędzi (2820) = 345%/316%/296% (careful/average/clumsy); wobec stanu sprzed D-62: 96%/88%/82%.
 5. **Naprawy (C):** 0/86/267 monet (careful/average/clumsy), złamań 0/2/7; naprawa liczy się od ceny, więc tańsze narzędzia tańsze też w serwisie.
-6. **Czas gry:** ścieżka zleceń (C, bez grindu, bo go nie ma) trwa careful/average/clumsy 177/135/108 min. Do 2 h potrzeba więcej zleceń (cel ≥ 60) lub powtórek, nie wyższych cen. Tryb Ciągły (sesja 8 min, start) daje 375/402/385 monet i pozostaje dodatkiem, nie warunkiem postępu.
+6. **Czas gry:** ścieżka zleceń (C, bez grindu, bo go nie ma) trwa careful/average/clumsy 177/135/108 min (83 zleceń, rozdz. 1–12, D-71; cel ok. 2 h dla average). Długość regulujemy liczbą zleceń, nie cenami. Tryb Ciągły (sesja 8 min, start) daje 375/402/385 monet i pozostaje dodatkiem, nie warunkiem postępu.
 7. **Wyposażenie (D-71):** 10 przedmiotów kosmetycznych za 6750 monet; careful/average/clumsy kupują 10/9/9 z 10 do końca rozdz. 12, wydają 6750/5150/5150 i zostaje im 637/1347/615 monet (sekcja 6a).
 
 ## 2. Scenariusze i profile

@@ -655,8 +655,8 @@ def FINDINGS(results, jobs, tools, prog, cont):
         f"5. **Naprawy (C):** {trio(c, lambda x: x.totals['repair'])} monet (careful/average/clumsy), złamań "
         f"{trio(c, lambda x: x.totals['breaks'])}; naprawa liczy się od ceny, więc tańsze narzędzia tańsze też w serwisie.",
         f"6. **Czas gry:** ścieżka zleceń (C, bez grindu, bo go nie ma) trwa careful/average/clumsy "
-        f"{trio(c, lambda x: x.totals['job_time'] / 60)} min. Do 2 h potrzeba więcej zleceń (cel ≥ 60) lub powtórek, "
-        f"nie wyższych cen. Tryb Ciągły (sesja 8 min, start) daje {cont_c['careful']:.0f}/{cont_c['average']:.0f}/"
+        f"{trio(c, lambda x: x.totals['job_time'] / 60)} min ({len(jobs)} zleceń, rozdz. 1–12, D-71; cel ok. 2 h dla average). Długość "
+        f"regulujemy liczbą zleceń, nie cenami. Tryb Ciągły (sesja 8 min, start) daje {cont_c['careful']:.0f}/{cont_c['average']:.0f}/"
         f"{cont_c['clumsy']:.0f} monet i pozostaje dodatkiem, nie warunkiem postępu.",
     ]
     return out
