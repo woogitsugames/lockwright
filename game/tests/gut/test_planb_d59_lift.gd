@@ -10,6 +10,7 @@ const HZ := 120
 const SCENES := {
 	&"magnetic": "res://scenes/photoreal/lock_job_magnetic.tscn",
 	&"dimple": "res://scenes/photoreal/lock_job_dimple.tscn",
+	&"egyptian": "res://scenes/photoreal/lock_job_egyptian.tscn",
 }
 var _save_backup: Dictionary
 
@@ -219,3 +220,42 @@ func test_dimple_side_row_variant_is_masked() -> void:
 	var vm := {"elements": [{"state": &"free", "position": 0.0, "variant": 16 + 1}]}
 	assert_eq(int(LockPinFamilyView.pin_vm(vm)["elements"][0]["variant"]), 1, "side-row bit off, spool kept")
 	assert_true(PinPose.is_spool(LockPinFamilyView.pin_vm(vm)["elements"][0]), "telescoping pin = spool pose")
+
+
+func test_egyptian_jobs_open_in_both_modes() -> void:
+	await _check_family(&"egyptian")
+
+
+func _layer_states_differ(fam: StringName) -> void:
+	JobRun.start(jobs(fam)[0])
+	var scene: Node = await _open_scene(fam, Vector2i(412, 915))
+	scene.set_physics_process(false)
+	var view: LockLiftLayerView = scene.view
+	var el := func(st: String, pos: float) -> Dictionary:
+		return {"state": StringName(st), "position": pos, "window_lo": 0.5, "window_hi": 0.62, "variant": 0}
+	var sig := func(vm: Dictionary) -> String:
+		for i in 90:
+			view.present(vm, {"tension": vm.get("tension", 0.0)}, 1.0 / 60.0)
+		return "%.2f|%.1f|%.2f" % [view.element_offset(0), view.element_tilt(0), view.progress()]
+	var other: Dictionary = el.call("free", 0.0)
+	var cases := {
+		"free": {"elements": [el.call("free", 0.0), other, other], "tension": 0.0},
+		"bound": {"elements": [el.call("bound", 0.3), other, other], "tension": 0.35},
+		"near": {"elements": [el.call("near", 0.5), other, other], "tension": 0.35},
+		"set": {"elements": [el.call("set", 0.56), other, other], "tension": 0.35},
+		"overset": {"elements": [el.call("overset", 0.8), other, other], "tension": 0.35},
+		"open": {"elements": [el.call("set", 0.56), el.call("set", 0.56), el.call("set", 0.56)], "tension": 0.35, "hold_progress": 1.0, "open": true},
+	}
+	var seen := {}
+	for nm in cases:
+		var key: String = sig.call(cases[nm])
+		assert_false(seen.has(key), "%s: state %s looks like %s (%s)" % [fam, nm, seen.get(key, ""), key])
+		seen[key] = nm
+	# one position unit moves an element >= 28 dp on a 412 dp screen (readable travel)
+	var a := view.element_screen(0)
+	view._off[view.slot_of(0)] += 1.0
+	assert_gte(a.distance_to(view.element_screen(0)), 28.0, fam + ": travel is readable")
+
+
+func test_egyptian_states_read_by_geometry() -> void:
+	await _layer_states_differ(&"egyptian")
