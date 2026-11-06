@@ -71,3 +71,20 @@ func test_clock_repair_job_unlocks_clock_achievement() -> void:
 	Events.change_scenes = true
 	assert_true(ach.is_unlocked("achievement.clock_repaired"), "clock repair ends via lock_opened with family time_lock")
 	JobRun.current_job = {}
+
+
+func test_every_career_chapter_has_a_header_with_name_and_description() -> void:
+	# D-75 (T58): the job list shows "Chapter N · name" and a description above each chapter.
+	var chapters := {}
+	for f in DirAccess.get_files_at("res://data/jobs"):
+		if f.ends_with(".json"):
+			var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/" + f))
+			chapters[int(j.get("chapter", 0))] = true
+	var list_script: GDScript = load("res://scripts/ui/jobs_list.gd")
+	for ch: int in chapters:
+		assert_true(I18n.has_key(StringName("chapter.%d.name" % ch)), "chapter.%d.name" % ch)
+		assert_true(I18n.has_key(StringName("chapter.%d.desc" % ch)), "chapter.%d.desc" % ch)
+		var header: VBoxContainer = list_script.chapter_header(ch)
+		assert_eq(header.get_child_count(), 2, "name + description")
+		assert_string_contains((header.get_child(0) as Label).text, I18n.t(StringName("chapter.%d.name" % ch)))
+		header.free()
