@@ -1,0 +1,145 @@
+klucz,en,de,znaki_de,fr,znaki_fr,limit,status
+about.dev_mode_unlocked,Developer mode on: more languages in Settings.,Entwicklermodus an: weitere Sprachen in den Einstellungen.,58,Mode développeur activé : plus de langues dans les réglages.,60,,porównaj w UI
+receipt.service.dial_safe,Safe opening,Öffnung Tresor,14,Ouverture du coffre-fort,24,,do testu UI
+receipt.service.combo,Thumbwheel lock opening,Öffnung Zahlenschloss,21,Ouverture serrure à molettes,28,,do testu UI
+receipt.service.dimple,Dimple cylinder opening,Öffnung Bohrmuldenzylinder,26,Ouverture cylindre à alvéoles,29,,do testu UI
+receipt.service.disc_detainer,Disc lock opening,Öffnung Scheibenschloss,23,Ouverture serrure à disques,27,,do testu UI
+receipt.service.egyptian,Wooden bolt opening,Öffnung Holzriegel,18,Ouverture du verrou en bois,27,,do testu UI
+receipt.service.axial_slider,Axial slider lock opening,Öffnung Schiebeschloss,22,Ouverture serrure à coulisseaux,31,,do testu UI
+receipt.service.time_lock,Clock mechanism repair,Reparatur Uhrwerk,17,Réparation de l'horlogerie,26,,do testu UI
+receipt.service.magnetic,Magnetic lock opening,Öffnung Magnetschloss,21,Ouverture serrure magnétique,28,,do testu UI
+receipt.service.pin_tumbler,Pin tumbler lock opening,Öffnung Stiftzylinder,21,Ouverture cylindre à goupilles,30,,do testu UI
+receipt.service.wafer,Wafer lock opening,Öffnung Plättchenschloss,24,Ouverture serrure à paillettes,30,,porównaj w UI
+receipt.service.lever,Lever lock opening,Öffnung Zuhaltungsschloss,25,Ouverture serrure à gorges,26,,do testu UI
+receipt.service.lever_detector,Detector lever lock opening,Öffnung Detektorschloss,23,Ouverture serrure à détecteur,29,,do testu UI
+receipt.service.warded,Warded lock opening,Öffnung Buntbartschloss,23,Ouverture serrure à garniture,29,,porównaj w UI
+receipt.service.wooden_pin,Wooden pin lock opening,Öffnung Holzstiftschloss,24,Ouverture serrure à chevilles,29,,do testu UI
+receipt.service.ring_combo,Ring padlock opening,Öffnung Ringschloss,19,Ouverture cadenas à anneaux,27,,do testu UI
+job.repaired,Clock repaired. Bill settled.,Uhr repariert. Rechnung bezahlt.,32,Horloge réparée. Facture réglée.,32,,do testu UI
+tool.tw_angle.desc,Holds the tension; through it you feel which part binds first.,"Hält die Spannung; darüber spürst du, welches Teil zuerst klemmt.",65,Maintient la tension ; tu sens par lui quelle pièce coince d'abord.,67,,do testu UI
+tool.tw_bar.desc,Sits at the top of the keyway: steadier tension in wide cylinders.,Sitzt oben im Kanal: ruhigere Spannung in breiten Zylindern.,60,Se place en haut du canal : tension plus stable dans les cylindres larges.,74,,do testu UI
+tool.tl_shackle.desc,Keeps a light pull on the shackle so you can feel a ring's notch.,"Zieht sanft am Bügel, damit du die Kerbe eines Rings spürst.",60,Tire doucement l'anse pour que tu sentes l'encoche d'un anneau.,63,,do testu UI
+tool.pk_peg.desc,Lifts wooden pins gently; old wood creaks before it gives.,"Hebt Holzstifte sanft an; altes Holz knarrt, bevor es nachgibt.",63,Soulève doucement les chevilles ; le vieux bois grince avant de céder.,70,,do testu UI
+tool.pk_hook.desc,Lifts one part at a time: the clearest click and the most control.,"Hebt ein Teil nach dem anderen: klarster Klick, meiste Kontrolle.",65,"Lève une pièce à la fois : le clic le plus net, le meilleur contrôle.",69,,do testu UI
+tool.pk_ward.desc,Finds the gap between the wards; a rough scrape means a wrong way.,Sucht die Lücke zwischen den Besatzungen; Kratzen heißt: falscher Weg.,70,Cherche le passage entre les garnitures ; un raclement signale une erreur.,74,,do testu UI
+tool.pk_ripple.desc,"Rocks several parts at once: fast, but the clicks blur together.","Bewegt mehrere Teile zugleich: schnell, aber die Klicks verschwimmen.",69,"Bouge plusieurs pièces à la fois : rapide, mais les clics se mêlent.",68,,do testu UI
+tool.pk_wedge.desc,Works wafers on both sides; listen for the rattle to settle.,"Bewegt Plättchen auf beiden Seiten; hör, bis das Klappern verstummt.",68,Agit sur les paillettes des deux côtés ; écoute le cliquetis se calmer.,71,,do testu UI
+tool.pk_lever.desc,Raises levers one by one; each gate answers with its own note.,Hebt Zuhaltungen einzeln; jedes Tor antwortet mit eigenem Ton.,62,Lève les gorges une à une ; chaque encoche répond par sa propre note.,69,,do testu UI
+tool.pk_crown.desc,Reaches pins set in a circle; you feel each one seat in turn.,"Erreicht Stifte im Kreis; du spürst, wie einer nach dem anderen sitzt.",70,Atteint les goupilles en cercle ; tu les sens se placer tour à tour.,68,,do testu UI
+tool.tl_polar.desc,"Shows a magnetic pin's pull; it answers late, so move slowly.","Zeigt den Zug eines Magnetstifts; er reagiert spät, also langsam.",65,Montre l'attraction d'une goupille aimantée ; elle répond tard.,63,,do testu UI
+tool.pk_flag.desc,Presses pins in a dimple cylinder; sleeve and pin click apart.,Drückt Stifte im Bohrmuldenzylinder; Hülse und Stift klicken getrennt.,70,Presse les goupilles des alvéoles ; manchon et goupille cliquent à part.,72,,do testu UI
+tool.pk_plunger.desc,Pushes sliders in to their notches; a hollow click means a false one.,Schiebt Schieber bis zur Kerbe; ein dumpfer Klick heißt: falsche Kerbe.,71,Enfonce les coulisseaux au cran ; un clic sourd signale un faux cran.,69,,do testu UI
+tool.pk_disc.desc,Turns one disc at a time; a light give means it has found its place.,Dreht eine Scheibe nach der anderen; leichtes Nachgeben heißt: sitzt.,69,Tourne un disque à la fois ; un léger relâchement : il est en place.,68,,do testu UI
+tool.pk_feather.desc,"Thin enough to work beside the sidebar, in the finest cylinders.","Dünn genug für die Seitenleiste, in den feinsten Zylindern.",59,Assez fine pour travailler près de la barrette latérale.,56,,do testu UI
+tool.tl_cup.desc,Brings the dial's faint contacts closer; pairs with the contact notebook.,Macht die leisen Kontakte des Tresors hörbar; mit dem Kontakt-Notizbuch.,72,Rapproche les faibles contacts du cadran ; va avec le carnet de contacts.,73,,do testu UI
+tool.tl_notes.desc,Writes down each contact point so you can compare them later.,"Notiert jeden Kontaktpunkt, damit du sie später vergleichen kannst.",67,Note chaque point de contact pour que tu puisses les comparer ensuite.,70,,do testu UI
+tool.kit_clock.desc,For repairing time locks: wind gently and listen for an even tick.,"Für Zeitschlösser: sanft aufziehen, auf gleichmäßiges Ticken hören.",67,"Pour réparer les minuteries : remonte doucement, écoute le tic-tac.",67,,do testu UI
+tool.tl_drill.desc,"Last resort, jobs only: it destroys the lock and costs reputation.","Letzter Ausweg, nur bei Aufträgen: zerstört das Schloss, kostet Ruf.",68,"Dernier recours, en mission : détruit la serrure, coûte en réputation.",70,,do testu UI
+tool.ob_loupe.desc,Magnifies the shear line at the part you are working on.,"Vergrößert die Scherlinie an dem Teil, an dem du arbeitest.",59,Grossit la ligne de césure près de la pièce que tu travailles.,62,,do testu UI
+tool.ob_microscope.desc,Shows burrs and false gates you would miss by eye.,"Zeigt Grate und falsche Tore, die du mit bloßem Auge übersiehst.",64,Montre les bavures et fausses encoches invisibles à l'œil nu.,61,,do testu UI
+tool.ob_borescope.desc,Looks deep into the lock to show where hidden parts sit.,"Schaut tief ins Schloss und zeigt, wo verborgene Teile sitzen.",62,Regarde au fond de la serrure et montre où sont les pièces cachées.,67,,do testu UI
+run.dispatch.01,Good work. Another call is waiting.,Gut gemacht. Der nächste Auftrag wartet.,40,Beau travail. Une autre intervention t'attend.,46,,porównaj w UI
+run.dispatch.02,The next address is on the list.,Die nächste Adresse steht auf der Liste.,40,La prochaine adresse est sur la liste.,38,,do testu UI
+run.dispatch.03,"A quiet moment, then on we go.","Ein ruhiger Moment, dann geht es weiter.",40,"Un instant de calme, et on repart.",34,,porównaj w UI
+run.dispatch.04,Another call has just come in.,Gerade ist ein neuer Auftrag eingegangen.,41,Une nouvelle demande vient d'arriver.,37,,porównaj w UI
+run.dispatch.05,Thank you. I have another address for you.,Danke. Ich habe die nächste Adresse für dich.,45,Merci. J'ai une autre adresse pour toi.,39,,do testu UI
+run.dispatch.06,The next job needs your hands.,Der nächste Auftrag braucht deine Hände.,40,La prochaine intervention a besoin de toi.,42,,porównaj w UI
+run.dispatch.07,Take your time. There is no rush.,Nur ruhig. Es eilt nicht.,25,Prends ton temps. Rien ne presse.,33,,do testu UI
+run.dispatch.08,Ready? The next call is here.,Bereit? Der nächste Auftrag ist da.,35,Prêt ? La prochaine intervention est là.,40,,porównaj w UI
+run.dispatch.09,Nice work. Let's move on.,Sauber. Weiter geht's.,22,Joli travail. On continue.,26,,do testu UI
+run.dispatch.10,Someone is counting on your help today.,Heute zählt jemand auf deine Hilfe.,35,Quelqu'un compte sur ton aide aujourd'hui.,42,,do testu UI
+run.dispatch.11,The next lock is waiting.,Das nächste Schloss wartet.,27,La prochaine serrure t'attend.,30,,do testu UI
+run.dispatch.12,Call logged. You can head out.,Auftrag notiert. Du kannst losfahren.,37,Demande notée. Tu peux partir.,30,,do testu UI
+run.dispatch.13,The next address is confirmed.,Die nächste Adresse ist bestätigt.,34,La prochaine adresse est confirmée.,35,,do testu UI
+run.dispatch.14,Take a break if you need one.,"Mach eine Pause, wenn du sie brauchst.",38,Fais une pause si tu en as besoin.,34,,porównaj w UI
+run.dispatch.15,One more matter to take care of.,Eine Sache ist noch zu erledigen.,33,Encore une affaire à régler.,28,,do testu UI
+settings.help.haptics,Feel the lock through vibration. Sound and picture tell you the same.,Spür das Schloss über Vibration. Ton und Bild zeigen dasselbe.,62,Sens la serrure par les vibrations. Le son et l'image disent la même chose.,75,,do testu UI
+settings.help.chalk,Chalk marks on the lock help you read each part's state.,"Kreidezeichen am Schloss helfen dir, den Zustand jedes Teils zu lesen.",70,Les marques à la craie t'aident à lire l'état de chaque pièce.,62,,do testu UI
+settings.help.reduce_motion,Fewer fades and moving hints. All information stays on screen.,Weniger Überblendungen und bewegte Hinweise. Alles bleibt sichtbar.,67,Moins de fondus et d'indices animés. Toutes les infos restent affichées.,72,,do testu UI
+settings.help.quality,Lower it if the phone gets hot or the picture stutters.,"Stell sie niedriger, wenn das Handy warm wird oder das Bild ruckelt.",68,Baisse-la si le téléphone chauffe ou si l'image saccade.,56,,do testu UI
+about.story,"Lockwright: Emergency Locksmith is the story of a locksmith on call who helps people locked out of their homes, and always checks first that the door is theirs.","Lockwright: Schlüsselnotdienst erzählt von einem Schlüsseldienst, der Menschen hilft, die sich ausgesperrt haben, und immer zuerst prüft, ob es ihre Tür ist.",157,"Lockwright : Serrurier de garde raconte l'histoire d'un serrurier d'urgence qui aide les gens restés à la porte de chez eux, et vérifie toujours d'abord que la porte est bien la leur.",183,,do testu UI
+about.credits,"Tools: Godot Engine; 3D scenes rendered in Blender (Cycles). Some images were generated with ChatGPT and Magnific, the music and some sounds with ChatGPT, and the character voices with ElevenLabs (designed, fictional voices). The other sounds were synthesized for the game. The source of every asset is recorded in the project’s asset register.","Werkzeuge: Godot Engine; 3D-Szenen in Blender (Cycles) gerendert. Einige Bilder entstanden mit ChatGPT und Magnific, die Musik und einige Klänge mit ChatGPT, die Stimmen der Figuren mit ElevenLabs (entworfene, fiktive Stimmen). Die übrigen Klänge wurden für das Spiel synthetisiert. Die Herkunft jeder Datei steht im Asset-Register des Projekts.",345,"Outils : moteur Godot ; scènes 3D rendues dans Blender (Cycles). Certaines images ont été générées avec ChatGPT et Magnific, la musique et certains sons avec ChatGPT, et les voix des personnages avec ElevenLabs (voix conçues, fictives). Les autres sons ont été synthétisés pour le jeu. L'origine de chaque ressource figure dans le registre du projet.",350,,do testu UI
+verify.ask.id.1,May I see your ID?,Darf ich Ihren Ausweis sehen?,29,Puis-je voir votre pièce d'identité ?,37,,porównaj w UI
+verify.reply.id.1,"Here. The photo is old, but it's me.","Bitte. Das Foto ist alt, aber das bin ich.",42,"Voilà. La photo est ancienne, mais c'est moi.",45,,do testu UI
+verify.ask.id.2,Does the name match the one by the door?,Stimmt der Name mit dem an der Tür überein?,43,Le nom correspond-il à celui de la porte ?,42,,do testu UI
+verify.reply.id.2,"Yes, it's on the bell and the mailbox too.","Ja, er steht auch an der Klingel und am Briefkasten.",52,"Oui, il est aussi sur la sonnette et la boîte aux lettres.",58,,porównaj w UI
+verify.ask.witness.1,Who here can confirm this is your home?,"Wer hier kann bestätigen, dass Sie hier wohnen?",47,Qui ici peut confirmer que vous habitez là ?,44,,do testu UI
+verify.reply.witness.1,The neighbor across the landing. She's known me for years.,Die Nachbarin gegenüber. Sie kennt mich seit Jahren.,52,La voisine d'en face. Elle me connaît depuis des années.,56,,do testu UI
+verify.ask.witness.2,Could a neighbor come to the door for a moment?,Könnte kurz ein Nachbar an die Tür kommen?,42,Un voisin pourrait-il venir un instant ?,40,,do testu UI
+verify.reply.witness.2,I'll knock next door. They're always up early.,Ich klopfe nebenan. Die sind immer früh wach.,45,Je frappe à côté. Ils sont toujours levés tôt.,46,,do testu UI
+verify.ask.manager.1,Can we call the building manager?,Können wir die Hausverwaltung anrufen?,38,Peut-on appeler le gestionnaire ?,33,,do testu UI
+verify.reply.manager.1,"Yes, the number's on the notice board.","Ja, die Nummer hängt am Schwarzen Brett.",40,"Oui, le numéro est sur le tableau d'affichage.",46,,do testu UI
+verify.ask.manager.2,Will the manager confirm the address?,Bestätigt die Verwaltung die Adresse?,37,Le gestionnaire confirmera-t-il l'adresse ?,43,,do testu UI
+verify.reply.manager.2,Yes. The office keeps the list of residents.,Ja. Im Büro liegt die Bewohnerliste.,36,Oui. Le bureau a la liste des résidents.,40,,do testu UI
+verify.ask.lease.1,Is the lease in this name?,Läuft der Mietvertrag auf diesen Namen?,39,Le bail est-il à ce nom ?,25,,porównaj w UI
+verify.reply.lease.1,"Yes, and the address is on the first page.","Ja, und die Adresse steht auf der ersten Seite.",47,"Oui, et l'adresse est en première page.",39,,do testu UI
+verify.ask.lease.2,Is the lease still valid?,Ist der Mietvertrag noch gültig?,32,Le bail est-il toujours valable ?,33,,porównaj w UI
+verify.reply.lease.2,"Yes, until the end of next year.","Ja, bis Ende nächsten Jahres.",29,"Oui, jusqu'à la fin de l'année prochaine.",41,,do testu UI
+verify.ask.resolution.1,Who signed the resolution?,Wer hat den Beschluss unterschrieben?,37,Qui a signé la décision ?,25,,porównaj w UI
+verify.reply.resolution.1,"The board, and most of the residents.",Der Vorstand und die meisten Bewohner.,38,Le conseil et la plupart des résidents.,39,,do testu UI
+verify.ask.resolution.2,Does it cover opening this door?,Deckt er das Öffnen dieser Tür ab?,34,Couvre-t-elle l'ouverture de cette porte ?,42,,porównaj w UI
+verify.reply.resolution.2,"Yes, it's in point two.","Ja, unter Punkt zwei.",21,"Oui, c'est au point deux.",25,,do testu UI
+verify.ask.deed.1,Whose name is on the deed?,Auf wessen Namen läuft die Urkunde?,35,Au nom de qui est l'acte ?,26,,porównaj w UI
+verify.reply.deed.1,"Mine. Here, with the stamp.","Auf meinen. Bitte, mit Stempel.",31,"Au mien. Voilà, avec le tampon.",31,,do testu UI
+verify.ask.deed.2,Does the address match this building?,Passt die Adresse zu diesem Haus?,33,L'adresse correspond-elle à cet immeuble ?,42,,do testu UI
+verify.reply.deed.2,"Yes, the number and the staircase.","Ja, Hausnummer und Treppenhaus.",31,"Oui, le numéro et l'escalier.",29,,do testu UI
+verify.ask.inheritance.1,Are there other heirs?,Gibt es weitere Erben?,22,Y a-t-il d'autres héritiers ?,29,,porównaj w UI
+verify.reply.inheritance.1,Yes. Everyone is named in the document.,Ja. Alle stehen im Dokument.,28,Oui. Tous sont nommés dans le document.,39,,do testu UI
+verify.ask.inheritance.2,Was the inheritance confirmed by a notary?,Hat ein Notar das Erbe bestätigt?,33,Un notaire a-t-il confirmé l'héritage ?,39,,do testu UI
+verify.reply.inheritance.2,"Yes, the stamp is at the bottom.","Ja, der Stempel ist unten.",26,"Oui, le tampon est en bas.",26,,do testu UI
+verify.ask.institution.1,Can I call the office that wrote this?,"Darf ich bei der Stelle anrufen, die das geschrieben hat?",57,Puis-je appeler l'organisme qui a écrit ceci ?,46,,porównaj w UI
+verify.reply.institution.1,Of course. The number is in the letterhead.,Natürlich. Die Nummer steht im Briefkopf.,41,Bien sûr. Le numéro est dans l'en-tête.,39,,do testu UI
+verify.ask.institution.2,Who signed the letter?,Wer hat das Schreiben unterschrieben?,37,Qui a signé le courrier ?,25,,porównaj w UI
+verify.reply.institution.2,The director. Signature and stamp are there.,Die Leitung. Unterschrift und Stempel sind da.,46,La direction. Signature et tampon y sont.,41,,do testu UI
+verify.ask.letter.1,Who is the letter addressed to?,An wen ist der Brief adressiert?,32,À qui la lettre est-elle adressée ?,35,,do testu UI
+verify.reply.letter.1,"To me, at this address.","An mich, an diese Adresse.",26,"À moi, à cette adresse.",23,,do testu UI
+verify.ask.letter.2,When did it arrive?,Wann ist er gekommen?,21,Quand est-elle arrivée ?,24,,do testu UI
+verify.reply.letter.2,This week. The postmark shows the date.,Diese Woche. Das Datum steht auf dem Poststempel.,49,Cette semaine. Le cachet de la poste fait foi.,46,,do testu UI
+verify.ask.photo.1,Where was this photo taken?,Wo wurde das Foto aufgenommen?,30,Où cette photo a-t-elle été prise ?,35,,do testu UI
+verify.reply.photo.1,"Right here, in the hallway. See the tiles?",Genau hier im Flur. Sehen Sie die Fliesen?,42,"Ici même, dans l'entrée. Vous voyez le carrelage ?",50,,do testu UI
+verify.ask.photo.2,Is that the same thing that is behind this door?,Ist das dasselbe Stück wie hinter dieser Tür?,45,Est-ce le même objet que derrière cette porte ?,47,,do testu UI
+verify.reply.photo.2,Yes. Same scratch on the corner.,Ja. Derselbe Kratzer an der Ecke.,33,Oui. Même rayure dans le coin.,30,,do testu UI
+verify.ask.receipt.1,What does the receipt show?,Was steht auf dem Kassenbon?,28,Que montre le ticket ?,22,,do testu UI
+verify.reply.receipt.1,"The item, the date and the shop.","Der Artikel, das Datum und der Laden.",37,"L'article, la date et le magasin.",33,,do testu UI
+verify.ask.receipt.2,Does it match what we're opening?,"Passt er zu dem, was wir öffnen?",32,Correspond-il à ce qu'on ouvre ?,32,,do testu UI
+verify.reply.receipt.2,"Yes, the same description is on it.","Ja, dieselbe Beschreibung steht drauf.",38,"Oui, la même description y figure.",34,,do testu UI
+verify.ask.invoice.1,Who is the invoice made out to?,Auf wen ist die Rechnung ausgestellt?,37,À qui la facture est-elle adressée ?,36,,do testu UI
+verify.reply.invoice.1,"To me, with my address.","Auf mich, mit meiner Adresse.",29,"À moi, avec mon adresse.",24,,do testu UI
+verify.ask.invoice.2,Does it list this item?,Steht dieses Stück darauf?,26,Cet objet y figure-t-il ?,25,,do testu UI
+verify.reply.invoice.2,"Yes, on the first line.","Ja, in der ersten Zeile.",24,"Oui, à la première ligne.",25,,do testu UI
+verify.ask.address_app.1,Can you show me the address in the app?,Können Sie mir die Adresse in der App zeigen?,45,Pouvez-vous me montrer l'adresse dans l'application ?,53,,porównaj w UI
+verify.reply.address_app.1,Here. Same street and number.,"Bitte. Gleiche Straße, gleiche Nummer.",38,"Voilà. Même rue, même numéro.",29,,porównaj w UI
+verify.ask.address_app.2,Is the account in this name?,Läuft das Konto auf diesen Namen?,33,Le compte est-il à ce nom ?,27,,do testu UI
+verify.reply.address_app.2,"Yes, it's been the same for years.","Ja, seit Jahren derselbe.",25,"Oui, depuis des années.",23,,do testu UI
+job.accept_talk,Sort it out on the spot,Vor Ort klären,14,Régler sur place,16,,do testu UI
+job.resolved,Sorted without opening anything. Bill settled.,Ohne Öffnen geklärt. Rechnung beglichen.,40,Résolu sans rien ouvrir. Facture réglée.,40,,do testu UI
+receipt.service.talk,On-site consultation,Beratung vor Ort,16,Conseil sur place,17,,do testu UI
+workshop.tab_tools,Tools,Werkzeuge,9,Outils,6,,do testu UI
+workshop.tab_furnishings,Furnishings,Einrichtung,11,Aménagement,11,,do testu UI
+workshop.furn_note,"Furnishings only change how your workshop looks, not the game.","Die Einrichtung ändert nur, wie deine Werkstatt aussieht, nicht das Spiel.",74,"L'aménagement change seulement l'allure de ton atelier, pas le jeu.",67,,do testu UI
+workshop.furn_preview,Your workshop,Deine Werkstatt,15,Ton atelier,11,,do testu UI
+workshop.furn_in_place,In the workshop,In der Werkstatt,16,Dans l'atelier,14,,do testu UI
+workshop.furn_stored,Stored away,Weggeräumt,10,Rangé,5,,do testu UI
+workshop.furn_hide,Put away,Wegräumen,9,Ranger,6,,do testu UI
+workshop.furn_place,Put back,Aufstellen,10,Installer,9,,do testu UI
+workshop.furn_from_chapter,from chapter {0},ab Kapitel {0},14,dès le chapitre {0},19,,do testu UI
+furnishing.plant.name,Geranium in a clay pot,Geranie im Tontopf,18,Géranium en pot de terre,24,,do testu UI
+furnishing.plant.desc,A red geranium by the wall. Someone has to water it.,Eine rote Geranie an der Wand. Jemand muss sie gießen.,54,Un géranium rouge contre le mur. Il faut bien que quelqu'un l'arrose.,69,,porównaj w UI
+furnishing.rug.name,Woven runner,Gewebter Läufer,15,Tapis de laine tissé,20,,do testu UI
+furnishing.rug.desc,A striped wool runner under the bench. Warmer feet on winter nights.,Ein gestreifter Wollläufer unter der Werkbank. Wärmere Füße in Winternächten.,77,Un tapis rayé sous l'établi. Les pieds ont plus chaud les nuits d'hiver.,72,,do testu UI
+furnishing.shelf_light.name,Light strip under the shelf,Lichtleiste unter dem Regal,27,Réglette lumineuse sous l'étagère,33,,do testu UI
+furnishing.shelf_light.desc,Warm light on the board of key blanks.,Warmes Licht auf dem Brett mit den Schlüsselrohlingen.,54,Une lumière chaude sur le tableau des ébauches de clés.,55,,porównaj w UI
+furnishing.radio.name,Valve radio,Röhrenradio,11,Poste à lampes,14,,do testu UI
+furnishing.radio.desc,A small radio in a walnut case. It warms up for a minute before it plays.,Ein kleines Radio im Nussbaumgehäuse. Es braucht eine Minute zum Warmwerden.,76,Une petite radio en noyer. Elle chauffe une minute avant de jouer.,66,,do testu UI
+furnishing.certificate.name,Framed certificate,Gerahmter Gesellenbrief,23,Diplôme encadré,15,,do testu UI
+furnishing.certificate.desc,"Your journeyman's certificate, in an oak frame above the showcase.",Dein Gesellenbrief im Eichenrahmen über der Vitrine.,52,"Ton diplôme de compagnon, dans un cadre en chêne au-dessus de la vitrine.",73,,do testu UI
+furnishing.case_velvet.name,Velvet and plaques for the showcase,Samt und Schildchen für die Vitrine,35,Velours et plaques pour la vitrine,34,,do testu UI
+furnishing.case_velvet.desc,"Burgundy velvet, small brass plaques and a second light in the glass case.","Weinroter Samt, kleine Messingschilder und ein zweites Licht in der Vitrine.",76,"Velours bordeaux, petites plaques en laiton et une seconde lumière dans la vitrine.",83,,do testu UI
+furnishing.clock.name,Workshop clock,Werkstattuhr,12,Horloge d'atelier,17,,do testu UI
+furnishing.clock.desc,A round wall clock with a red second hand. You hear it tick when the street is quiet.,"Eine runde Wanduhr mit rotem Sekundenzeiger. Man hört sie ticken, wenn die Straße still ist.",92,Une horloge ronde à trotteuse rouge. On l'entend quand la rue se tait.,70,,do testu UI
+furnishing.thanks_cards.name,Thank-you cards,Dankeskarten,12,Cartes de remerciement,22,,do testu UI
+furnishing.thanks_cards.desc,"Cards from your clients, clipped to the pegboard. One is a child's drawing.","Karten von deinen Kunden, an die Lochwand geklemmt. Eine ist eine Kinderzeichnung.",82,"Des cartes de tes clients, pincées au panneau perforé. L'une est un dessin d'enfant.",84,,do testu UI
+furnishing.vise.name,Swivel vise,Drehbarer Schraubstock,22,Étau pivotant,13,,do testu UI
+furnishing.vise.desc,"A graphite vise on a turning base, with brass jaw covers.","Ein graphitgrauer Schraubstock auf Drehteller, mit Schutzbacken aus Messing.",76,"Un étau graphite sur base tournante, avec des mordaches en laiton.",66,,porównaj w UI
+furnishing.exhibit_shelf.name,Exhibit shelf,Regal mit Exponaten,19,Étagère d'exposition,20,,do testu UI
+furnishing.exhibit_shelf.desc,"An oak shelf on the pegboard: an old rim lock, a big iron key and a ring padlock.","Ein Eichenregal an der Lochwand: ein altes Kastenschloss, ein großer Eisenschlüssel und ein Ringschloss.",104,"Une étagère en chêne sur le panneau : une vieille serrure en applique, une grosse clé en fer et un cadenas à anneaux.",117,,porównaj w UI
