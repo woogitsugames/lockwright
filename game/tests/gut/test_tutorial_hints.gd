@@ -13,6 +13,7 @@ func before_all() -> void:
 
 
 func after_all() -> void:
+	Settings.set_value(&"auto_tension", false)
 	Save.data = _save_backup
 	Save.save()
 	JobRun.current_job = {}
@@ -20,6 +21,7 @@ func after_all() -> void:
 
 
 func _open(auto: bool) -> Array:
+	Settings.set_value(&"auto_tension", auto)  # the scene reads the D-52 mode when it starts
 	JobRun.start_tutorial(0)
 	var vp := SubViewport.new()
 	vp.size = Vector2i(412, 915)
@@ -29,12 +31,8 @@ func _open(auto: bool) -> Array:
 	await wait_physics_frames(2)
 	scene.set_physics_process(false)
 	scene.sampler.set_physics_process(false)
-	scene.sampler.auto_tension = auto
-	var hints: TutorialHints = scene.hints
-	if hints != null:
-		hints.auto = auto
-		scene.coach.auto_tension = auto
-	return [scene, vp, hints]
+	assert_eq(scene.sampler.auto_tension, auto)
+	return [scene, vp, scene.hints]
 
 
 func _idle(scene: Node, seconds: float) -> void:
