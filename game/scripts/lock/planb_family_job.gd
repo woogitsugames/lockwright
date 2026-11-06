@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 		if not session.is_open():
 			Events.lock_failed.emit(StringName(session.failure()))
 		return
-	var input: Dictionary = _fam().map(sampler.sample(), sampler)
+	var input: Dictionary = sampler.sample() if is_raw_source(sampler) else _fam().map(sampler.sample(), sampler)
 	var events: Array = session.step(input["tension"], input["pick_depth"], input["pick_lift"])
 	_last_input = input
 	for e in events:
@@ -64,6 +64,12 @@ func _physics_process(delta: float) -> void:
 	Sfx.update_loop(&"tension_resistance", resistance)
 	Sfx.update_loop(&"pick_drag", vm.get("pick_drag", 0.0))
 	view.present(vm, input, delta)
+
+
+## QA hook (qa/bot/qa_sampler.gd): a sampler that carries lockcore input rows (`rows`, e.g. the
+## replay of LockcoreSession.solve) already speaks lockcore's frame, so the thumb mapping is skipped.
+static func is_raw_source(s: Node) -> bool:
+	return s != null and s.get("rows") is Array
 
 
 ## One lockcore event through the existing sounds and haptics (nearest base event).

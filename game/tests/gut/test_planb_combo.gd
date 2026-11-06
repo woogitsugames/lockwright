@@ -322,3 +322,31 @@ func test_disc_layout_and_states() -> void:
 	for i in 90:
 		view.present(vm_set, {}, 1.0 / 60.0)
 	assert_lt(view.tooth_tip_screen(0).y, y_free - 2.0, "set: the finger rises into the disc gate (sidebar under the discs)")
+
+
+## QA hook: qa/bot/qa_sampler.gd swaps the InputSampler for one that replays lockcore's solver rows
+## (`rows`); the plan-B family screens then feed those frames to lockcore untouched.
+func test_qa_solver_rows_open_combo_and_dial_safe() -> void:
+	if not ClassDB.class_exists("LockcoreSession"):
+		pending("needs the lockcore GDExtension")
+		return
+	var src := GDScript.new()
+	src.source_code = "extends InputSampler\nvar rows: Array = []\nvar i := 0\nfunc _physics_process(_d: float) -> void:\n\tif i < rows.size():\n\t\ti += 1\nfunc sample() -> Dictionary:\n\tvar r: Array = rows[mini(i, rows.size() - 1)]\n\treturn {\"tension\": float(r[0]), \"pick_depth\": float(r[1]), \"pick_lift\": float(r[2]), \"rotate\": 0.0, \"push\": 0.0, \"tool\": 0}\n"
+	assert_eq(src.reload(), OK)
+	for pair in [[SCENE, &"combo"], [DISC_SCENE, &"disc_detainer"], ["res://scenes/photoreal/lock_job_dial_safe.tscn", &"dial_safe"]]:
+		_scene_path = pair[0]
+		var job: Dictionary = DialTest.jobs_of(pair[1])[0]
+		JobRun.start(job)
+		var scene: Node = await _open_scene(Vector2i(412, 915))
+		scene.set_physics_process(false)
+		var s: Node = scene.sampler
+		s.set_script(src)
+		s.set_physics_process(false)
+		var rows: Array = LockcoreSession.solve(pair[1], JobRun.seed_for(job), JobRun.tier_for(job))["inputs"]
+		s.rows = rows
+		for k in rows.size() + 240:
+			scene._physics_process(1.0 / HZ)
+			s._physics_process(1.0 / HZ)
+			if scene.session.is_open():
+				break
+		assert_true(scene.session.is_open(), "%s opens from the solver rows (QA bot path)" % job["id"])
