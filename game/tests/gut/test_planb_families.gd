@@ -178,7 +178,7 @@ func test_every_lever_job_opens_in_both_modes() -> void:
 func test_every_lever_detector_job_opens_in_both_modes() -> void:
 	# lockcore lever_detector (t5–t6) has 5 levers; the baked lever model has 3, so the family
 	# stays out of JobRun.PHOTOREAL_READY until a 5-lever model is rendered (N-63 report).
-	if not JobRun.PHOTOREAL_READY.has(&"lever_detector"):
+	if not JobRun.planb_ready(&"lever_detector"):
 		pending("lever_detector waits for a 5-lever plan-B model")
 		return
 	await _check_family(&"lever_detector")
@@ -260,3 +260,23 @@ func test_landscape_roll_shows_whole_picks_and_loupe() -> void:
 			assert_gte(loupe.size.x, 48.0, tag + ": loupe target")
 			assert_gte(loupe.size.y, 48.0, tag + ": loupe target")
 			assert_true(screen.encloses(loupe), tag + ": loupe on screen")
+
+
+
+func test_lever_view_takes_its_lever_count_from_the_model() -> void:
+	JobRun.start(_jobs(&"lever")[0])
+	var scene: Node = await _open_scene(&"lever", Vector2i(412, 915))
+	var view: LockLeverView = scene.view
+	assert_eq(view.lever_count(), 3, "the baked lever model has 3 levers")
+	assert_eq(view.LEVER_DEPTH.size(), 3, "depths from scene.json lever_specs")
+	var n: int = scene.session.describe()["elements"].size()
+	for i in view.lever_count():
+		assert_eq((view._by["lever%d" % i] as Node3D).visible, i < n, "lever %d shown only if the lock has it" % i)
+
+
+func test_one_pin_tutorial_text_has_no_sideways() -> void:
+	var c := TutorialCoach.new(0, true, true)
+	c.update({"elements": [{"state": &"free", "position": 0.0}]}, {}, [], false, false, 0.01)
+	assert_eq(c.text_key(), &"tutorial.s1_pick_one", "S1 has one pin: no \"sideways to choose\"")
+	c.update({"elements": [{"state": &"free"}, {"state": &"free"}, {"state": &"free"}]}, {}, [], false, false, 0.01)
+	assert_eq(c.text_key(), &"tutorial.s1_pick")

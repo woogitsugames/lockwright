@@ -49,7 +49,7 @@ func test_all_playable_jobs_open_and_save_roundtrip() -> void:
 	# every job of those families must be offered.
 	var expected := 0
 	for job in jobs:
-		if JobRun.IMPLEMENTED.has(JobRun.family_for(job)) and JobRun.PHOTOREAL_READY.has(JobRun.family_for(job)):
+		if JobRun.IMPLEMENTED.has(JobRun.family_for(job)) and JobRun.planb_ready(JobRun.family_for(job)):
 			expected += 1
 	assert_gt(expected, 0, "no job of a plan-B family")
 	assert_eq(playable, expected, "every job of a plan-B family is playable")

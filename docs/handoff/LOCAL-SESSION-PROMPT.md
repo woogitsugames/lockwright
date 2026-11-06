@@ -90,18 +90,14 @@ export LW_DEVICE=GPU
 - Zestawienie przed/po (wycinek 1:1) do `docs/handoff/device-tests/fixes/plates_2x/` i pokaż właścicielowi.
 
 ### (b) `lever_detector`: model 5-dźwigniowy i jego płyty
-Stan (SESSION-B-LOG, „agent planu B”): ekran `lock_job_lever_detector.tscn` i `DetectorControl` są gotowe, ale rodzina
-jest ukryta, bo lockcore t5–t6 ma **5 dźwigni**, a model i render mają **3** (`LEVERS` w `art/blender/lever.py`
-i `art/blender/plates/lever_plate.py`; `lever_view.gd` ma `clampi(..., 1, 3)` i `LEVER_DEPTH` na 3).
+Stan: ekran `lock_job_lever_detector.tscn`, `DetectorControl` i `lever_view.gd` są gotowe na **dowolną liczbę dźwigni (do 6)**. Liczbę dźwigni, ich głębokości i osie widok bierze z GLB i `scene.json`. Rodzina **odblokuje się sama**, gdy w projekcie pojawi się `game/assets/photoreal_families/lever_detector/lever_detector_baked.glb` (`JobRun.planb_ready`). Sesja A nie musi niczego zmieniać w kodzie.
 Do zrobienia po stronie Blendera:
-1. W `lever.py` i `lever_plate.py` opcja `--levers 5` (domyślnie 3, nic się nie zmienia dla `lever`): 5 dźwigni
-   w kasecie — cieńsza blacha albo głębsza kaseta; trzpień, sprężyny, nity i zapadka detektora (`--detector 1`,
-   na ostatniej dźwigni) dopasowane; każda dźwignia ≥ 28 dp na ekranie 412 dp, linia bramki czytelna w skali szarości.
-2. Zapieczony model i płyty do **osobnego katalogu** `game/assets/photoreal_families/lever_detector/`
-   (`lever_baked.glb`, `scene.json`, `photo/plate.png`, `photo/parts.png`, `photo/parts_detector.png`), żeby nie
-   ruszyć zwykłego `lever`. Rozdzielczość jak (a).
-3. W logu dla sesji A podaj, co musi zmienić w `lever_view.gd`: katalog, `LEVER_DEPTH` (5 wartości y z Blendera),
-   `PIVOT`, `DET_PIVOT`, `STUMP`, `REST_DELTA_LIFT`. Wpięcie i odblokowanie w `PHOTOREAL_READY` robi sesja A.
+1. W `art/blender/lever.py` i `art/blender/plates/lever_plate.py` dodaj opcję `--levers 5` (domyślnie 3, więc dla `lever` nic się nie zmienia). Pięć dźwigni w kasecie: cieńsza blacha albo głębsza kaseta. Trzpień, sprężyny, nity i zapadkę detektora (`--detector 1`, na ostatniej dźwigni) dopasuj do pięciu. Każda dźwignia ma mieć ≥ 28 dp na ekranie 412 dp, a linia bramki ma być czytelna w skali szarości.
+2. Wypiecz model i płyty do **osobnego katalogu** `game/assets/photoreal_families/lever_detector/`, żeby nie ruszyć zwykłego `lever`. Nazwy plików:
+   - `lever_detector_baked.glb`: węzły `lever0`…`lever4`, `spring0`…`spring4`, `rivet0`…`rivet4`, `detector`, `stump`, `lifter`, `tension`, `tension_shaft`, `bolt`, `stud`, `stud_post`. Dźwignie w pozycji spoczynku **z bramką na trzpieniu** (rest lift = needed lift);
+   - `scene.json` z kluczami jak w `lever/scene.json`: `camera`, `pivot` [x, y, z], `stump_x`, `lever_specs` (dla każdej dźwigni `y0` = głębokość w Blenderze), `detector_pivot`;
+   - `photo/plate.png` (bez ruchomych części) i `photo/parts.png` (wszystko z detektorem), oba 1236×1650. Wyrenderuj je przez `art/blender/plates/photo_plates.py --family lever --detector 1 --out-dir game/assets/photoreal_families/lever_detector/photo`. W `CONFIG['lever']` tego skryptu podmiana pozycji spoczynku zakłada listę 3 dźwigni, więc dopisz wariant dla 5 (lift = needed). Plik `parts_detector.png` powstanie z sufiksem: zmień nazwę na `parts.png` albo zostaw oba, bo widok woli `parts_detector.png`.
+3. W projekcie Godot: import, potem lossy `.import` dla obu PNG (`compress/mode=1`, `git add -f`), wpis w `docs/ASSETS.md` i `gut` (test `test_every_lever_detector_job_opens_in_both_modes` przestanie być „pending”). `REST_DELTA_LIFT` i `GATE_HALF_H` w `lever_view.gd` zmień tylko wtedy, gdy nowa geometria ma inne wymiary bramek.
 
 ### (c) `warded_photo_plate.py` w całości
 `parts.png` powstało przed commitem 508b3b3 (nowe materiały rygla/sondy), `plate`/`wards` po nim. Jeden przebieg
