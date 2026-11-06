@@ -37,6 +37,7 @@ var first_set := false          # wafer / lever: the family line shows until the
 var turned := false             # warded: the probe has turned at least once
 var blocked_s := 0.0            # warded: time pressed against the same ward
 var tripped := false            # lever_detector: the detector holds every lever
+var n_elements := 0             # pins / wafers / levers of the lock (1-pin S1: no "sideways")
 
 var _bound_s := 0.0
 var _lost_s := 0.0
@@ -56,7 +57,7 @@ func _init(p_stage: int = 0, p_guided: bool = true, p_auto: bool = false) -> voi
 func text_key() -> StringName:
 	match step:
 		Step.TENSION: return &"tutorial.s1_tension"
-		Step.PICK: return &"tutorial.s1_pick"
+		Step.PICK: return &"tutorial.s1_pick_one" if n_elements == 1 else &"tutorial.s1_pick"  # S1 has one pin (HANDOVER §5.3)
 		Step.BINDING: return &"tutorial.s1_binding"
 		Step.CLICK: return &"tutorial.s1_click"
 		Step.OVERSET: return &"tutorial.s1_overset_auto" if auto_tension else &"tutorial.s1_overset"
@@ -123,6 +124,7 @@ static func _any(els: Array, state: String) -> bool:
 
 func update(vm: Dictionary, input: Dictionary, events: Array, left_down: bool, right_down: bool, delta: float) -> void:
 	var els: Array = vm.get("elements", [])
+	n_elements = els.size()
 	var t := float(input.get("tension", 0.0))
 	var lift := float(input.get("pick_lift", 0.0))
 	var sets := 0
