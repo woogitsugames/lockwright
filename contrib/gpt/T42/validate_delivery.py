@@ -24,7 +24,7 @@ for i,(a,b) in enumerate(zip(source,t41),1):
   if a['kind']=='ui' and re.findall(r'\{[^}]+\}',a['en'])!=re.findall(r'\{[^}]+\}',val):errors.append(f'placeholder {i} {lang}')
 if len({r['keys'] for r in t41})!=181:errors.append('T41 duplicate keys')
 hs,supp=read(T41/'supplemental_ui_fr_es.csv')
-if hs!=h41 or len(supp)!=6 or len({r['keys'] for r in supp})!=6:errors.append('T41 supplemental UI')
+if hs!=h41 or len(supp)!=19 or len({r['keys'] for r in supp})!=19:errors.append('T41 supplemental UI')
 h42,t42=read(T42/'family_texts.csv')
 if h42!=['keys','en','pl','de'] or len(t42)!=78:errors.append('T42 family header/number')
 bykey={r['keys']:r for r in t42}
@@ -69,7 +69,7 @@ for fam in families:
  section=sec[1].split('## ',1)[0]
  for level in ('H1','H2','H3','H4'):
   if level not in section:errors.append('Missing '+level+' in '+fam)
-print('T41: 181 items, including 164 audio lines and 17 UI labels; supplemental 6 UI labels')
+print('T41: 181 items, including 164 audio lines and 17 UI labels; supplemental 19 UI labels')
 print('T42: 78 family lines in EN/PL/DE; 8 lessons; 3 showcase objects; 9 showcase strings')
 print('Validation errors:',len(errors),'warnings:',len(warnings))
 for error in errors:print('ERROR',error)
