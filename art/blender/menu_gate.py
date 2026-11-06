@@ -25,6 +25,16 @@ OUT = arg('--out', 'art/renders/menu/test_menu.png'); RES = [int(v) for v in arg
 SAMPLES = int(arg('--samples', '16')); ORIENT = arg('--orient', 'portrait')
 PRESSED = int(arg('--pressed', '-1')); CROP_ROW = int(arg('--crop-row', '-1')); SHOT = arg('--shot', 'menu')
 HITS = arg('--hits', os.path.splitext(OUT)[0] + '_hits.json')
+LANG = arg('--lang', 'pl'); DEVICE = arg('--device', 'CPU').upper()     # CPU | OPTIX | CUDA | HIP | METAL | ONEAPI
+# ---- labels: game/i18n/strings.csv (menu.*), upper-cased like push-in letters
+import csv
+with open(os.path.join(ROOT, 'game', 'i18n', 'strings.csv'), newline='', encoding='utf-8') as f_:
+    _rows = {r['keys']: r for r in csv.DictReader(f_)}
+def L(key): return _rows[key][LANG].strip().upper()
+SUBTITLE, TITLE_TXT = L('menu.subtitle'), L('menu.title')
+ITEMS = (('jobs', L('menu.jobs')), ('workshop', L('menu.workshop')), ('showcase', L('menu.showcase')),
+         ('settings', L('menu.settings')), ('about', L('menu.about')))
+SUFFIX = '' if LANG == 'pl' else '_' + LANG          # file suffix of the language variant (PL = accepted proof, no suffix)
 rng = random.Random(11)
 FD = os.path.join(ROOT, 'mockups', 'ui-directions', 'fonts')
 FONT = bpy.data.fonts.load(os.path.join(FD, 'Archivo-wdth-wght.ttf'))
@@ -130,17 +140,19 @@ BACK, RIB_FACE = -3.0, -15.0        # felt base face at y=-12, rib crowns at -15
 FRAME_Y = -32.0; FR = 30.0          # frame depth and width
 if ORIENT == 'portrait':
     IW = 382.0; TOP = 2060.0; BX = 0.0
-    TITLE = [('POGOTOWIE ZAMKOWE', 16.0, 22.0, 2.0), ('LOCKWRIGHT', 48.0, 52.0, 0.0)]     # text, cap, top (mm from inner top), x
+    TITLE = [(SUBTITLE, 16.0, 22.0, 2.0), (TITLE_TXT, 48.0, 52.0, 0.0)]     # text, cap, top (mm from inner top), x
+    TITLE_W = IW                                                               # title rows may use the full inner width
     # id, text, cap, band top, band height, text x, band x0, band x1 (mm from the inner top-left)
-    MENU = [('start', 'ZACZNIJ DYŻUR', 39.0, 140.0, 108.0, 18.0, 0, IW)]
-    for i, (iid, t) in enumerate((('jobs', 'ZLECENIA'), ('workshop', 'WARSZTAT'), ('showcase', 'GABLOTA'), ('settings', 'USTAWIENIA'), ('about', 'O GRZE'))):
+    MENU = [('start', L('menu.play'), 39.0, 140.0, 108.0, 18.0, 0, IW)]
+    for i, (iid, t) in enumerate(ITEMS):
         MENU.append((iid, t, 34.0, 248.0 + i * 88.0, 88.0, 20.0, 0, IW))
     IH = 248.0 + 5 * 88.0 + 16.0
 else:
     IW = 846.0; TOP = 1990.0; BX = -170.0
-    TITLE = [('POGOTOWIE ZAMKOWE', 17.0, 34.0, 2.0), ('LOCKWRIGHT', 62.0, 70.0, 0.0)]
-    MENU = [('start', 'ZACZNIJ DYŻUR', 42.0, 236.0, 120.0, 20.0, 0, 452)]
-    for i, (iid, t) in enumerate((('jobs', 'ZLECENIA'), ('workshop', 'WARSZTAT'), ('showcase', 'GABLOTA'), ('settings', 'USTAWIENIA'), ('about', 'O GRZE'))):
+    TITLE = [(SUBTITLE, 17.0, 34.0, 2.0), (TITLE_TXT, 62.0, 70.0, 0.0)]
+    TITLE_W = 466.0                                                            # left of the menu column
+    MENU = [('start', L('menu.play'), 42.0, 236.0, 120.0, 20.0, 0, 452)]
+    for i, (iid, t) in enumerate(ITEMS):
         MENU.append((iid, t, 30.0, 20.0 + i * 78.0, 78.0, 488.0, 466, IW))
     IH = 20.0 + 5 * 78.0 + 18.0
 if SHOT == 'settings': TITLE = [('‹ WSTECZ', 14.0, 22.0, 116.0)]; MENU = []
@@ -224,16 +236,17 @@ def chip(o, size):
     bpy.context.view_layer.update(); c.data.transform(c.matrix_world); c.matrix_world = Matrix.Identity(4)
     cut(o, c)
 
-LETTERS = []
-def row(text, cap, top_mm, x_mm, tag, seed, loose=0.0):
-    """One line of push-in letters. Each letter: own spacing / baseline / tilt / depth; some old, grimy, chipped, from another set."""
+LETTERS = []; ROW_SCALE = {}
+def row(text, cap, top_mm, x_mm, tag, seed, loose=0.0, max_w=1e9):
+    """One line of push-in letters. Each letter: own spacing / baseline / tilt / depth; some old, grimy, chipped, from another set.
+    A line longer than max_w mm (longer EN/DE labels) is scaled down about its start; PL lines all fit (unchanged)."""
     r = random.Random(seed); size = cap / 0.7; base = snap(ZT - top_mm - cap)
     objs = []
     crooked = r.choice([i for i, c in enumerate(text) if c != ' ']) if len(text) > 3 else -1
     for i, ch in enumerate(text):
         if ch == ' ': objs.append(None); continue
         u = r.random(); mat = letter_w if u < 0.72 else (letter_y if u < 0.9 else letter_g)
-        alt = (r.random() < 0.06 and ch not in 'ŻĄĘŁŚĆŃÓŹ')
+        alt = (r.random() < 0.06 and ch not in 'ŻĄĘŁŚĆŃÓŹÄÖÜ')
         o = glyph(ch, size, mat, '%s_%d' % (tag, i), FONT_ALT if alt else None)
         if r.random() < 0.07: chip(o, size)
         objs.append(o)
@@ -250,16 +263,25 @@ def row(text, cap, top_mm, x_mm, tag, seed, loose=0.0):
         o.location = (x - minx, RIB_FACE - 1.7 - depth, base + r.uniform(-0.8, 0.8) + (1.2 if i == crooked else 0))
         x += w + 0.085 * size + r.uniform(-1.4, 2.4)
         LETTERS.append(o)
+    x_start = X0 + x_mm; f = 1.0
+    if x - x_start > max_w:
+        f = max_w / (x - x_start)
+        print('FIT', tag, repr(text), 'scale %.3f' % f)
+        for o in objs:
+            if o is None: continue
+            o.scale = (f, f, f); o.location.x = x_start + (o.location.x - x_start) * f
+    ROW_SCALE[tag] = f
     return [o for o in objs if o], base
 
 title_rows = []
 for k, (text, cap, top, xm) in enumerate(TITLE):
-    title_rows.append(row(text, cap, top, 20.0 + xm, 'title%d' % k, 100 + k))
+    title_rows.append(row(text, cap, top, 20.0 + xm, 'title%d' % k, 100 + k, max_w=TITLE_W - 20.0 - xm - 14.0))
 
 rows = []
 for i, (iid, text, cap, btop, bh, tx, bx0, bx1) in enumerate(MENU):
-    objs, base = row(text, cap, btop + (bh - cap) / 2 - 2, tx, 'menu%d' % i, 200 + i)
-    rows.append({'id': iid, 'label': text, 'objs': objs, 'band': (ZT - btop - bh, ZT - btop), 'bx': (X0 + bx0, X0 + bx1), 'base': base, 'cap': cap})
+    objs, base = row(text, cap, btop + (bh - cap) / 2 - 2, tx, 'menu%d' % i, 200 + i, max_w=bx1 - tx - 14.0)
+    rows.append({'id': iid, 'label': text, 'objs': objs, 'band': (ZT - btop - bh, ZT - btop), 'bx': (X0 + bx0, X0 + bx1), 'base': base,
+                 'cap': cap * ROW_SCALE['menu%d' % i]})
 
 if PRESSED >= 0:   # baked pressed state: the row lifts out of the felt and tips forward, top edges catch the bulb, shadows lengthen
     for o in rows[PRESSED]['objs']:
@@ -405,7 +427,7 @@ for r in rows:
     capr = px_rect([(x0, RIB_FACE - 3, r['base']), (x0, RIB_FACE - 3, r['base'] + r['cap'])])
     items.append({'id': r['id'], 'label': r['label'], 'text_rect': tr, 'hit_rect': hr, 'cap_px': capr[3],
                   'hit_dp': [round(hr[2] / DP, 1), round(hr[3] / DP, 1)],
-                  'pressed_sprite': 'menu_pressed_%s%s.png' % (r['id'], '' if ORIENT == 'portrait' else '_landscape')})
+                  'pressed_sprite': 'menu_pressed_%s%s%s.png' % (r['id'], '' if ORIENT == 'portrait' else '_landscape', SUFFIX)})
 # perspective makes neighbouring bands' bounding rects overlap: split each overlap at its middle so no pixel belongs to two items
 for a_ in items:
     for b_ in items:
@@ -416,6 +438,18 @@ for a_ in items:
             cut_ = vov // 2; ra[3] -= cut_; rb[1] += vov - cut_; rb[3] -= vov - cut_
 for it in items: it['hit_dp'] = [round(it['hit_rect'][2] / DP, 1), round(it['hit_rect'][3] / DP, 1)]
 board = px_rect(quad(X0 - FR, X0 + IW + FR, ZB - FR, ZT + FR))
+def union(rs):
+    x0 = min(r[0] for r in rs); y0 = min(r[1] for r in rs); x1 = max(r[0] + r[2] for r in rs); y1 = max(r[1] + r[3] for r in rs)
+    return [x0, y0, x1 - x0, y1 - y0]
+title_rect = None
+if SHOT == 'menu' and title_rows:
+    tws = [o.matrix_world @ Vector(v) for objs_, _b in title_rows for o in objs_ for v in o.bound_box]
+    title_rect = px_rect(quad(min(v.x for v in tws), max(v.x for v in tws), min(v.z for v in tws), max(v.z for v in tws)))
+# focus = what must stay on screen (game: never cropped, kept inside the safe area): title + every hit band, clipped to the image
+focus_rect = union([title_rect] + [it['hit_rect'] for it in items]) if title_rect else None
+if focus_rect:
+    fx0, fy0 = max(0, focus_rect[0]), max(0, focus_rect[1])
+    focus_rect = [fx0, fy0, min(W, focus_rect[0] + focus_rect[2]) - fx0, min(H, focus_rect[1] + focus_rect[3]) - fy0]
 if SHOT == 'settings':
     objs, base = title_rows[0]
     ws = [o.matrix_world @ Vector(v) for o in objs for v in o.bound_box]
@@ -436,7 +470,7 @@ if CROP_ROW < 0:
     with open(HITS, 'w') as f:
         json.dump({'image': os.path.basename(OUT), 'width': W, 'height': H, 'orient': ORIENT, 'px_per_dp': round(DP, 4),
                    'dp_basis': '412 dp across the short side', 'rect': '[x, y, w, h] px, origin top-left',
-                   'board_rect': board, 'locale': 'pl',
+                   'board_rect': board, 'title_rect': title_rect, 'focus_rect': focus_rect, 'locale': LANG,
                    'note': 'hit_rect = the whole felt band of the item (>= 48 dp tall); pressed_sprite = the baked pressed state, '
                            'rendered over exactly hit_rect (+20 px margin, see pressed_margin_px), paste at hit_rect.xy - margin',
                    'pressed_margin_px': 20, 'items': items}, f, indent=1)
@@ -449,6 +483,13 @@ if CROP_ROW >= 0:
     x, y, w, h = items[CROP_ROW]['hit_rect']; m = 20
     crop = (max(0, (x - m) / W), max(0, 1 - (y + h + m) / H), min(1, (x + w + m) / W), min(1, 1 - (y - m) / H))
 render_setup(OUT, RES, SAMPLES, crop=crop, exposure=float(arg('--exposure', '-0.15')), look='AgX - Medium High Contrast', bounces=8)
+if DEVICE != 'CPU':   # owner's GPU: OPTIX / CUDA (NVIDIA), HIP (AMD), METAL (Apple), ONEAPI (Intel)
+    cp = bpy.context.preferences.addons['cycles'].preferences
+    cp.compute_device_type = DEVICE; cp.get_devices()
+    devs = [d for d in cp.devices if d.type == DEVICE]
+    if not devs: raise SystemExit('no %s device found (devices: %s)' % (DEVICE, [(d.name, d.type) for d in cp.devices]))
+    for d in cp.devices: d.use = d.type == DEVICE
+    scene.cycles.device = 'GPU'; print('DEVICE', DEVICE, [d.name for d in devs])
 scene.cycles.adaptive_threshold = 0.01
 scene.cycles.seed = 3
 photo_finish(0.30, dispersion=0.004)
