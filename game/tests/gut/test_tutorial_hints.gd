@@ -6,22 +6,27 @@ extends GutTest
 
 const HZ := 120
 var _save_backup: Dictionary
+var _rm_before: Variant
 
 
 func before_all() -> void:
 	_save_backup = Save.data.duplicate(true)
+	_rm_before = Settings.get_value("reduce_motion", false)
 
 
 func after_all() -> void:
 	Settings.set_value(&"auto_tension", false)
+	Settings.set_value("reduce_motion", _rm_before)
 	Save.data = _save_backup
 	Save.save()
 	JobRun.current_job = {}
 	JobRun.mode = &"job"
 
 
-func _open(auto: bool) -> Array:
+func _open(auto: bool, reduce_motion: bool = false) -> Array:
 	Settings.set_value(&"auto_tension", auto)  # the scene reads the D-52 mode when it starts
+	# a persisted user setting (settings.cfg) must not decide the test: Reduce Motion hides the ghost
+	Settings.set_value("reduce_motion", reduce_motion)
 	JobRun.start_tutorial(0)
 	var vp := SubViewport.new()
 	vp.size = Vector2i(412, 915)
@@ -171,3 +176,18 @@ func test_ladder_thresholds_sorted_and_history_capped() -> void:
 		l.update(20.0)
 		l.progress()
 	assert_lte(l.history.size(), HintLadder.HISTORY_MAX)
+
+
+
+func test_reduce_motion_skips_the_ghost_but_keeps_chalk_and_master_hand() -> void:
+	# ONBOARDING §11: with Reduce Motion the ghost is not played; H3 chalk and H4 still help
+	var o: Array = await _open(false, true)
+	var scene: Node = o[0]
+	var hints: TutorialHints = o[2]
+	_idle(scene, 30.5)
+	assert_eq(hints.ladder.level, 2)
+	assert_false(hints.ghost.is_playing(), "Reduce Motion: no ghost gesture")
+	_idle(scene, 15.0)
+	assert_eq(scene.view.hint_arrows, "left", "H3 chalk still shown")
+	_idle(scene, 15.0)
+	assert_eq(hints.h4_steps.size(), 1, "H4 still does the step")
