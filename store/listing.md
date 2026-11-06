@@ -41,7 +41,7 @@ Otwieraj zamki na wyczucie
 **Tekst promocyjny** (można zmieniać bez nowej wersji)
 <!-- field: as.pl.promo max=170 -->
 ```
-Wieczorny dyżur ślusarza: kołek, który wiąże, kołek, który siada, i szpulka, która kłamie. Każdy zamek otwierasz dotykiem i słuchem. Bez reklam, działa offline.
+Wieczorny dyżur ślusarza: pin, który wiąże, pin, który siada, i szpulka, która kłamie. Każdy zamek otwierasz dotykiem i słuchem. Bez reklam, gra działa offline.
 ```
 
 **Słowa kluczowe** (bez spacji po przecinkach, bez słów z nazwy i podtytułu: lockwright, pogotowie, zamkowe, otwieraj, zamki, wyczucie)
@@ -69,7 +69,7 @@ Co robisz
 Dla każdego
 • Haptyka nigdy nie jest jedynym sygnałem. To, co czujesz, także słyszysz i widzisz, więc da się grać z wyłączoną haptyką, również na iPadzie.
 • Opcjonalne znaki kredą na przekroju pomagają odczytać stan każdego kołka.
-• Bez reklam, bez energii, bez konta. Działa offline. Monet nie da się kupić za pieniądze.
+• Bez reklam, bez energii, bez konta. Gra działa offline (opcjonalnie pobierasz głosy w innych językach). Monet nie da się kupić za pieniądze.
 • Nikt cię nie pogania. Timer jest tylko w osobnym wyzwaniu, jeśli go chcesz.
 
 Uczciwie
@@ -137,7 +137,7 @@ What you do
 For everyone
 • Haptics are never the only signal. What you feel, you can also hear and see, so the game plays fine with haptics off, iPad included.
 • Optional chalk marks on the cutaway help you read each pin's state.
-• No ads, no energy, no account. Works offline. Coins can't be bought with money.
+• No ads, no energy, no account. Plays offline (optional voice downloads for other languages). Coins can't be bought with money.
 • Nobody's rushing you. There's a timer only in a separate challenge, if you want one.
 
 The honest part

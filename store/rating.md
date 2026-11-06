@@ -116,7 +116,7 @@ Jak odpowiadamy (i co pokazać recenzentowi):
 
 Notatka dla recenzenta Apple (App Review Information → Notes), gotowa do wklejenia:
 
-> Lockwright is a puzzle game about a professional emergency locksmith who helps people locked out of their own homes. All lock mechanisms are fictional and simplified for readability; no real products or brands are depicted, and nothing in the game is a technique for a real, named lock. The locksmith character always checks that the customer has the right to enter, and the in-game "About" screen states: "This is a game, not a course." The game is fully offline, has no ads, no accounts, and collects no data. Haptics are a core feature but never the only signal (all cues are also audible and visible).
+> Lockwright is a puzzle game about a professional emergency locksmith who helps people locked out of their own homes. All lock mechanisms are fictional and simplified for readability; no real products or brands are depicted, and nothing in the game is a technique for a real, named lock. The locksmith character always checks that the customer has the right to enter, and the in-game "About" screen states: "This is a game, not a course." The game plays offline (an optional download of voice packs for other languages is the only network use), has no ads, no accounts, and collects no data. Haptics are a core feature but never the only signal (all cues are also audible and visible).
 
 Uwaga: celowo „professional”, a nie „licensed”: w PL ślusarz nie jest zawodem licencjonowanym (`JOBS.md` §1.1).
 
