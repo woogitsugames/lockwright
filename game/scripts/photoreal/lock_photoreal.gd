@@ -236,7 +236,9 @@ func _physics_process(delta: float) -> void:
 		return
 	var input := sampler.sample()
 	var events: Array
-	if control != null and not session is FakeLockSession:
+	if sampler.raw and not session is FakeLockSession:
+		events = session.step(input["tension"], input["pick_depth"], input["pick_lift"], input.get("rotate", 0.0), input.get("push", 0.0), input.get("tool", 0))
+	elif control != null and not session is FakeLockSession:
 		input = control.map(input, sampler, session.describe(), delta)
 		if hints != null:
 			input = hints.drive(input, session.describe(), delta)
@@ -262,7 +264,7 @@ func _physics_process(delta: float) -> void:
 		sampler.auto_level = AUTO_SPOOL_LEVEL if _has_state(vm, "false_set") else InputSampler.AUTO_LEVEL
 	if coach != null:
 		coach.update(vm, input, events, sampler.left_down(), sampler.right_down(), delta)
-	if hints != null:
+	if hints != null and not sampler.raw:
 		hints.tick(vm, input, events, sampler.left_down(), sampler.right_down(), delta)
 		if hints.preview_tension >= 0.0:  # H2: the plug face answers the ghost tension
 			vm = vm.duplicate()

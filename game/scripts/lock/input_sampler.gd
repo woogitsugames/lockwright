@@ -29,6 +29,9 @@ var pick_lift := 0.0
 var rotate := 0.0   # ring_combo / warded: circular gesture on the right zone
 var push := 0.0     # axial sliders: press-and-hold on the right zone
 var tool := 0       # active tool slot (tool_swap button elsewhere)
+## QA / replays: sample() already returns lockcore's input frame (rotate, tool ...), so the lock
+## scene feeds it straight to the session (no family thumb mapping, no hint autopilot).
+var raw := false
 ## Left thumb, signed: drag up from the touch-down point = +, down = - (warded probe: turn
 ## forward / back, |value| = turning force). Same dp scale as tension, no auto level.
 var tension_signed := 0.0

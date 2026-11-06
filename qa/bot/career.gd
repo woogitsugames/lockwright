@@ -247,10 +247,13 @@ func _finish(reason: String) -> void:
 
 func _pending_jobs() -> Array:
 	var done: Array = _al("Save").get_value("jobs_completed", [])
+	# N-15: a refusal job refused at verification is done (it leaves the list on purpose)
+	var refused: Array = _al("Save").get_value("jobs_refused", [])
+	report["jobs_refused"] = refused.duplicate()
 	var out := []
 	for j in _jobs:
 		var jid: String = j.get("id", "")
-		if not done.has(jid) and _attempts.get(jid, 0) < 2:
+		if not done.has(jid) and not refused.has(jid) and _attempts.get(jid, 0) < 2:
 			out.append(j)
 	return out
 
@@ -410,6 +413,11 @@ func _play_lock() -> bool:
 	var sampler: Node = current_scene.find_child("InputSampler", true, false)
 	sampler.set_script(load("res://qa_bot/qa_sampler.gd"))
 	sampler.rows = rows
+	sampler.raw = true  # the frames are lockcore input already (warded rotate/tool, detector reset)
+	if String(_jr().current_job.get("lock_spec", "")) != "":
+		# authored lock (tutorial S1-S3): solve() replays the generated lock of the seed, not this one
+		sampler.patient = true
+		entry["profile"] = "patient"
 	entry["bot_steps"] = sampler.rows.size()
 	var t_start := _sim
 	while _scene_name() == sc and _sim - t_start < LOCK_SIM_LIMIT_S:
