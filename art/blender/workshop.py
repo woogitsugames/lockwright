@@ -1,7 +1,8 @@
 # Lockwright — the locksmith's workshop bench (hub / menu screen). 1 unit = 1 mm.
 #   blender -b -t 2 -P art/blender/workshop.py -- --out art/renders/workshop.png --res 2160x3840 --samples 160
 # Furnishings (D-71, art/blender/workshop_furnishings.py): --furnish all|id,id adds items to a still; --layers DIR renders
-# base.png + one <id>.png per item (same seed/settings) for art/blender/workshop_layers.py; --probe prints projected boxes.
+# base.png + one <id>.png per item (same seed/settings) for art/blender/workshop_layers.py (--only id,id: just those variants,
+# base unchanged); --probe prints projected boxes.
 #   blender -b -P art/blender/workshop.py -- --layers art/renders/workshop_layers --res 1080x1920 --samples 48            (CPU draft)
 #   blender -b -P art/blender/workshop.py -- --layers art/renders/workshop_layers --res 2160x3840 --samples 256 --device GPU (final)
 # Laminated beech bench against a limewashed brick wall: bench vice holding a practice cylinder, an invented
@@ -475,7 +476,8 @@ if PROBE:   # projected bounding boxes (0..1, top-left origin) of every furnishi
     sys.exit(0)
 if LAYERS:  # base + one variant per furnishing; identical settings and seed so unchanged pixels match
     os.makedirs(LAYERS, exist_ok=True)
-    for fid in [None] + furn.IDS:
+    only = [f for f in arg('--only', '').split(',') if f]   # re-render just these variants (same settings as base)
+    for fid in ([None] + furn.IDS) if not only else only:
         show_furnishings([fid] if fid else [])
         scene.render.filepath = os.path.join(os.path.abspath(LAYERS), (fid or 'base') + '.png')
         bpy.ops.render.render(write_still=True)

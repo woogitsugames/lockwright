@@ -8,9 +8,9 @@
 #   certificate    framed journeyman's certificate (ruled lines + wax seal, no text) above the showcase
 #   case_velvet    showcase: burgundy velvet bed, brass plaques, second warm light
 #   clock          round workshop wall clock between the key board and the pegboard
-#   thanks_cards   clients' thank-you cards clipped to the pegboard
+#   thanks_cards   clients' thank-you cards clipped to the pegboard (left)
 #   vise           graphite swivel bench vise with brass jaw covers (replaces the teal vise)
-#   exhibit_shelf  oak pegboard shelf with three old locks
+#   exhibit_shelf  oak pegboard shelf with three old locks (right, above the key machine)
 import bpy, bmesh, math, random
 from mathutils import Vector, Matrix
 from env_common import *
@@ -124,11 +124,11 @@ def build(g):
     out['shelf_light'] = begin('furn_shelf_light')
     alu_s = metal('strip_alu', (0.62, 0.62, 0.62), 0.35, marks='grind', marks_scale=2, wear=0.2, grime=0.3, bevel_r=0.3)
     sx0, sx1 = g['SX0_'] + 40, g['SX1_'] - 40
-    bx('strip_body', sx0, sx1, -210, -190, SH_Z - 40, SH_Z - 28, alu_s, bev=1)
-    bx('strip_diffuser', sx0 + 4, sx1 - 4, -208, -192, SH_Z - 41, SH_Z - 40, emissive('strip_glow', (1.0, 0.76, 0.5), 8.0, (0.9, 0.88, 0.84)))
-    tube('strip_cable', [(sx1, -200, SH_Z - 34), (sx1 + 20, -60, SH_Z - 34), (sx1 + 30, -8, SH_Z - 120), (sx1 + 34, -8, BZ + 4)], 2.2, black_pl)
+    bx('strip_body', sx0, sx1, -210, -190, SH_Z - 40, SH_Z - 28, alu_s, bev=1).visible_shadow = False
+    bx('strip_diffuser', sx0 + 4, sx1 - 4, -208, -192, SH_Z - 41, SH_Z - 40, emissive('strip_glow', (1.0, 0.76, 0.5), 25.0, (0.9, 0.88, 0.84))).visible_shadow = False
+    tube('strip_cable', [(sx0, -200, SH_Z - 34), (sx0 - 20, -60, SH_Z - 34), (sx0 - 30, -8, SH_Z - 120), (sx0 - 34, -8, BZ + 4)], 2.2, black_pl)  # left, out of view
     aim = bpy.data.objects.new('aim_strip', None); bpy.context.collection.objects.link(aim); aim.location = ((sx0 + sx1) / 2, -10, 1080)
-    area_light('strip_light', ((sx0 + sx1) / 2, -200, SH_Z - 44), aim, sx1 - sx0, 1.6e6, (1.0, 0.76, 0.5), size_y=16)
+    area_light('strip_light', ((sx0 + sx1) / 2, -200, SH_Z - 44), aim, sx1 - sx0, 5e6, (1.0, 0.76, 0.5), size_y=16)
     end()
 
     # ------------------------------------------------------------ radio: small valve radio, bench back left
@@ -170,7 +170,8 @@ def build(g):
     bx('cert_sheet', FX - 48, FX + 48, -13, -12, FZ - 32, FZ + 22, cert_p)
     bx('cert_head', FX - 34, FX + 34, -13.2, -12.6, FZ + 28, FZ + 35, paper('cert_head', (0.25, 0.10, 0.06), fibre=0.2))
     seal = cyl('cert_seal', 9, 2.5, (FX + 28, -13.5, FZ - 24), axis='Y', verts=32); setmat(seal, plastic('wax', (0.42, 0.03, 0.025), rough=0.35))
-    bx('cert_glass', FX - 69, FX + 69, -17, -16, FZ - 47, FZ + 47, glass_m)
+    gl_ = bx('cert_glass', FX - 69, FX + 69, -17, -16, FZ - 47, FZ + 47, glass_m)
+    gl_.visible_shadow = False  # no caustics: a shadow-casting pane would leave the certificate black
     tube('cert_wire', [(FX - 50, -6, FZ + 46), (FX, -4, FZ + 80), (FX + 50, -6, FZ + 46)], 0.8, bright, smooth_pts=False)
     end()
 
@@ -215,9 +216,9 @@ def build(g):
     out['thanks_cards'] = begin('furn_thanks_cards')
     card_cols = [(0.86, 0.83, 0.74), (0.72, 0.80, 0.86), (0.90, 0.80, 0.62), (0.84, 0.86, 0.80), (0.86, 0.74, 0.70)]
     clip_m = g['clip_m']
-    xs = [10, 72, 140, 205]
+    xs = [-22, 32, 86]
     for k, x in enumerate(xs):
-        w, h = rng.choice(((54, 78), (78, 54), (60, 84))); z = 1300 - rng.uniform(0, 14)
+        w, h = rng.choice(((50, 70), (66, 48), (52, 72))); z = 1262 - rng.uniform(0, 10)
         M = Matrix.Translation(Vector((x + w / 2, PY - 1.5 - k * 0.3, z - h / 2))) @ Matrix.Rotation(math.radians(rng.uniform(-5, 5)), 4, 'Y')
         cm = paper('card%d' % k, card_cols[k % len(card_cols)], fibre=0.6, seed=20 + k, grime=0.1,
                    lines=(5.0, 'Z', (0.18, 0.20, 0.30)) if k % 2 else None)
@@ -265,7 +266,7 @@ def build(g):
 
     # ------------------------------------------------------------ exhibit shelf on the pegboard (lower right)
     out['exhibit_shelf'] = begin('furn_exhibit_shelf')
-    SZ = 1032; ESX0, ESX1 = 140, 530
+    SZ = 1180; ESX0, ESX1 = 150, 440
     board = oak('exh_oak', light=(0.62, 0.44, 0.24), dark=(0.36, 0.22, 0.10), axis='X', seed=55, ring=2.6, coat=0.8, coat_rough=0.25,
                 center=((ESX0 + ESX1) / 2, -80, SZ))
     bx('exh_board', ESX0, ESX1, PY - 130, PY, SZ - 18, SZ, board, bev=2)
@@ -274,22 +275,22 @@ def build(g):
         tube('exh_bracket', [(x, PY, SZ - 120), (x, PY, SZ - 18), (x, PY - 110, SZ - 18), (x, PY, SZ - 120)], 4, g['vice_paint'], smooth_pts=False)
     E = SZ
     # (1) iron rim lock standing on its edge, with a keyhole
-    rl = bx('exh_rimlock', 160, 260, PY - 90, PY - 66, E, E + 120, brass, bev=2)
-    cut(rl, prism('exh_kh', [(205, E + 80), (215, E + 80), (213, E + 62), (217, E + 44), (203, E + 44), (207, E + 62)], PY - 120, PY - 60))
-    bx('exh_rim_back', 164, 256, PY - 66, PY - 62, E + 4, E + 116, g['void'])
-    for x, z in ((168, E + 10), (252, E + 10), (168, E + 110), (252, E + 110)):
+    rl = bx('exh_rimlock', 165, 240, PY - 90, PY - 66, E, E + 100, brass, bev=2)
+    cut(rl, prism('exh_kh', [(198, E + 68), (207, E + 68), (205, E + 52), (209, E + 36), (196, E + 36), (200, E + 52)], PY - 120, PY - 60))
+    bx('exh_rim_back', 169, 236, PY - 66, PY - 62, E + 4, E + 96, g['void'])
+    for x, z in ((173, E + 9), (232, E + 9), (173, E + 91), (232, E + 91)):
         screw_head('exh_screw', (x, PY - 90.5, z), 4, 2, axis='-Y', mat=iron_old, rot=rng.uniform(0, 3))
     # (2) large old key on a small oak stand
-    bx('exh_stand', 310, 380, PY - 85, PY - 45, E, E + 10, board, bev=1.5)
-    k_ = lathe_x('exh_key', [(0, 0.01), (0, 5), (110, 5), (112, 7), (118, 7), (120, 5), (124, 5), (124, 0.01)], seg=24)
-    k_.location = (300, PY - 65, E + 22); k_.rotation_euler = (0, math.radians(-12), 0); setmat(k_, iron_old)
-    tube('exh_key_bow', [(300 + 18 * math.cos(a) - 18, PY - 65, E + 22 + 18 * math.sin(a) - 3.8) for a in [i * math.pi / 8 for i in range(17)]], 4, iron_old)
-    bx('exh_key_bit', 408, 420, PY - 68, PY - 62, E + 22 + 25 - 30, E + 22 + 25 - 6, iron_old, bev=0.8)
+    bx('exh_stand', 270, 335, PY - 85, PY - 45, E, E + 10, board, bev=1.5)
+    k_ = lathe_x('exh_key', [(0, 0.01), (0, 5), (78, 5), (80, 7), (86, 7), (88, 5), (92, 5), (92, 0.01)], seg=24)
+    k_.location = (265, PY - 65, E + 22); k_.rotation_euler = (0, math.radians(-12), 0); setmat(k_, iron_old)
+    tube('exh_key_bow', [(265 + 18 * math.cos(a) - 18, PY - 65, E + 22 + 18 * math.sin(a) - 3.8) for a in [i * math.pi / 8 for i in range(17)]], 4, iron_old)
+    bx('exh_key_bit', 341, 352, PY - 68, PY - 62, E + 22 + 25 - 30, E + 22 + 25 - 6, iron_old, bev=0.8)
     # (3) brass ring-combination padlock (three rings, no markings)
     for k in range(3):
-        o = cyl('exh_ring', 22, 15, (475, PY - 70, E + 10 + k * 16), verts=48); setmat(o, brass); _bev(o, 1.2, 2)
-    tube('exh_shackle', [(463, PY - 70, E + 56), (463, PY - 70, E + 92), (475, PY - 70, E + 104), (487, PY - 70, E + 92), (487, PY - 70, E + 56)], 4, bright)
-    for x in (210, 345, 475):
+        o = cyl('exh_ring', 22, 15, (395, PY - 70, E + 10 + k * 16), verts=48); setmat(o, brass); _bev(o, 1.2, 2)
+    tube('exh_shackle', [(383, PY - 70, E + 56), (383, PY - 70, E + 92), (395, PY - 70, E + 104), (407, PY - 70, E + 92), (407, PY - 70, E + 56)], 4, bright)
+    for x in (203, 303, 395):
         bx('exh_plaque', x - 18, x + 18, PY - 132, PY - 130, SZ - 14, SZ - 4, brass, bev=0.3)
     end()
     return out
