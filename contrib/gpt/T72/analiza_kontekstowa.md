@@ -1,0 +1,16 @@
+# T72 — analiza kontekstowa powtórzeń
+
+Zakres: wszystkie 174 wiersze `job.*.line.N` i `job.*.after.N` w `game/i18n/content.csv` na podstawie aktualnego stanu; porównanie dokładnych całych kwestii we wszystkich pięciu językach jest już w `powtorzenia.csv` z HEAD (brak powtórzeń). Dodatkowo zestawiono polskie ciągi trzech słów występujące w różnych kwestiach; normalizacja ignoruje wielkość liter i interpunkcję. Nie wykonano ręcznej analizy wszystkich parafraz w DE/FR/ES i EN; poniżej nie należy traktować jako dowodu ich braku. Brak zmian w grze i nowych kluczy, więc lint nie dotyczy. Wersje poniżej to propozycje do sprawdzenia w scenie, przed ponownym tłumaczeniem i nagraniem.
+
+| Powtórzenie i miejsca | Ocena | Propozycja: klucz / było → jest |
+|---|---|---|
+| „się zgadzają, cena też”: `job.edek_rehearsal_store.line.3`, `job.shared_room_door.line.2` | Te same krótkie zdania w zleceniach o wspólnych przestrzeniach. | `job.shared_room_door.line.2`: „Dokumenty się zgadzają. Cena też. Możemy otwierać.” → „Dokumenty i cena są w porządku. Możemy otwierać.” |
+| „pańska lista i”: `job.edek_rehearsal_store.line.3`, `job.roman_service_cupboard.line.2` | W obu zdaniach lista oraz dokument tworzą warunek. | `job.roman_service_cupboard.line.2`: „Jest pańska lista i uchwała wspólnoty. Cenę uzgodniliśmy.” → „Mam uchwałę wspólnoty i pańską listę. Cenę uzgodniliśmy.” |
+| „zgody nie otworzę”: `job.refuse_sisters_flat.line.4`, `job.refuse_unapproved_stockroom.line.4` | Jedna z niewielu powtarzalnych formuł; jasność odmowy ma pierwszeństwo nad różnorodnością. | `job.refuse_unapproved_stockroom.line.4`: „Bez zgody nie otworzę. Ustalmy bezpieczny odbiór paczek.” → „Nie otworzę bez zgody. Ustalmy bezpieczny odbiór paczek.” |
+| „dobrze, że pan”: `job.refuse_aunt_alive.after.2`, `job.refuse_ex_partner.after.1` | Ta sama konstrukcja po dwóch odmowach. | `job.refuse_aunt_alive.after.2`: „Dobrze, że pan odmówił. Ja bym nie spała.” → „Ulżyło mi, że pan odmówił. Ja bym nie spała.” |
+| „na skrzynce jest”: `job.refuse_ex_partner.line.2`, `job.wrong_floor.line.2` | Podobny fakt, ale obie sytuacje wymagają zauważenia nazwiska; nie traktować go jako samodzielnego dowodu. | `job.wrong_floor.line.2`: „Panie Kazimierzu, na skrzynce jest inne nazwisko. I ten wieniec?” → „Panie Kazimierzu, widzę na skrzynce inne nazwisko. I ten wieniec?” |
+| „mam na liście”: `job.student_dorm.line.2`, `job.edek_rehearsal_store.line.1` | Powracająca charakterystyczna formuła portiera, nie usuwać automatycznie. | Bez zmiany; powtórzenie buduje głos postaci. |
+| „pan nie pyta”: `job.grandpa_chest.line.2`, `job.krystyna_wooden_album.line.4` | Przypadkowe zbieżności: w jednym zdaniu wyjaśnienie pytania, w drugim prośba. | Bez zmiany; sens i intencja są różne. |
+| „że pan nie”: `job.widow_bureau.line.1`, `job.wrong_floor.after.1` | Fragment gramatyczny, nie samodzielny zwrot o tym samym znaczeniu. | Bez zmiany. |
+
+Dwuwyrazowe grupy zawierają też sześć „się zgadza”, trzy „się zgadzają” i trzy „ustalona cena”. Wypowiedzi o dokumentach i cenie mają wspólne wymagania fabularne, dlatego automatyczne zastępowanie byłoby ryzykowne. Przejrzano te grupy oraz przytoczone przykłady, ale pełna stylistyczna ocena całych dialogów i innych wersji językowych pozostaje do wykonania.
