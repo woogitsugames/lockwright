@@ -45,6 +45,12 @@ TTS_OVERRIDES = {
     ('job.kiosk_shutter.line.3', 'en'): "From opening day in ninety-four. My moustache looked better than the kiosk.",
 }
 
+# Seed per (key, lang) where the default seed (hash of the key) gave a mispronunciation (retake after ASR check).
+SEED_OVERRIDES = {
+    ('job.dollhouse_wooden_lock.line.2', 'fr'): 101,   # default seed: "Papy appelait ça" came out garbled
+    ('job.newlyweds_4am.line.4', 'es'): 101,           # default seed: aspirated h in "Enhorabuena"
+}
+
 # Voice Design brief per speaker: gender, age, temperament (docs/CLIENTS.md, job .client texts, cast portraits).
 # `accent` is how the character speaks Polish/English (all are native Polish unless stated).
 CAST = {
@@ -123,6 +129,11 @@ REACTIONS = {
     'laugh': '[laughs] Ha-ha-ha!', 'goodbye': '[cheerfully] Mm-hm!',
 }
 REACTION_SEED = 7
+# (speaker, emotion) -> (text or None for REACTIONS[emotion], seed): retakes after the ASR check (2026-11-06)
+REACTION_OVERRIDES = {
+    ('pawel', 'impatient'): ('[impatient] Hmm... hm.', 11),   # seed 7 / 11 / 12 of the default read as words in ASR
+    ('janka', 'impatient'): (None, 12),
+}
 REACTION_LUFS = -28.0
 REACTION_MAX_S = 1.5
 VOICES = GAME / 'assets/audio/voices'
@@ -181,7 +192,7 @@ def tts_payload(jobs=None, langs=LANGS):
         for lang in langs:
             out.append({'key': l['key'], 'lang': lang, 'speaker': l['speaker'], 'voice_id': v['voice_id'],
                         'model_id': v.get('model', MODEL), 'voice_settings': v['settings'],
-                        'seed': int(hashlib.sha1(l['key'].encode()).hexdigest()[:6], 16),
+                        'seed': SEED_OVERRIDES.get((l['key'], lang), int(hashlib.sha1(l['key'].encode()).hexdigest()[:6], 16)),
                         'subtitle': l['text'][lang], 'text': tts_text(l['key'], lang, l['text'][lang], tags)})
     return out
 

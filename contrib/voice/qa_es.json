@@ -1,0 +1,3327 @@
+{
+ "wer": {
+  "es": 0.059
+ },
+ "files": [
+  {
+   "file": "es/job.allotment_shed.line.1.ogg",
+   "dur": 5.55,
+   "lufs": -17.8,
+   "lead_ms": 38,
+   "trail_ms": 50,
+   "ref": "La parcela está a nombre de mi mujer. Yo cavo. Ella descansa la rodilla en casa.",
+   "asr": "La parcela está a nombre de mi mujer. Yo cabo. Ella descansa la rodilla en casa.",
+   "wer": 0.062
+  },
+  {
+   "file": "es/job.allotment_shed.line.2.ogg",
+   "dur": 3.31,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 56,
+   "ref": "¿Tiene la tarjeta del huerto? ¿Y un vecino que lo confirme?",
+   "asr": "¿Tiene la tarjeta del huerto y un vecino que lo confirme?",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.allotment_shed.line.3.ogg",
+   "dur": 4.9,
+   "lufs": -18.2,
+   "lead_ms": 2,
+   "trail_ms": 51,
+   "ref": "Zbyszek lleva aquí más que el cobertizo. Y más que yo.",
+   "asr": "Suiza lleva aquí más que el cobertizo y más que yo.",
+   "wer": 0.091
+  },
+  {
+   "file": "es/job.allotment_shed.line.4.ogg",
+   "dur": 3.97,
+   "lufs": -18.0,
+   "lead_ms": 51,
+   "trail_ms": 21,
+   "ref": "¿Le gustan los pepinos? Nunca llevo dinero al huerto.",
+   "asr": "¿Le gustan los pepinos? Nunca llevo dinero al huerto.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.attic_drying_room.line.1.ogg",
+   "dur": 5.61,
+   "lufs": -18.5,
+   "lead_ms": 54,
+   "trail_ms": 71,
+   "ref": "Los abrigos del coro están arriba. Nadie va a cantar cubierto de carámbanos.",
+   "asr": "Los abrigos del coro están arriba. Nadie va a cantar cubierto de carámbanos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.attic_drying_room.line.2.ogg",
+   "dur": 3.98,
+   "lufs": -18.2,
+   "lead_ms": 5,
+   "trail_ms": 52,
+   "ref": "Su contrato incluye el tendedero. Acceso confirmado.",
+   "asr": "Su contrato incluye el tendedero. Acceso confirmado.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.attic_drying_room.line.3.ogg",
+   "dur": 4.38,
+   "lufs": -18.1,
+   "lead_ms": 52,
+   "trail_ms": 55,
+   "ref": "Permiso y precio acordados. Devolvamos los abrigos a sus dueños.",
+   "asr": "Permiso y precio acordados. Devolvamos los abrigos a sus dueños.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.attic_drying_room.line.4.ogg",
+   "dur": 5.28,
+   "lufs": -18.1,
+   "lead_ms": 35,
+   "trail_ms": 46,
+   "ref": "Bien. El mío es el de los bolsillos sorprendentemente bien pensados.",
+   "asr": "Bien, el mío es el de los bolsillos sorprendentemente bien pensados.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.bike_interview.line.1.ogg",
+   "dur": 5.21,
+   "lufs": -17.9,
+   "lead_ms": 48,
+   "trail_ms": 57,
+   "ref": "Puse un código más seguro. Tan seguro que ya no me lo sé ni yo.",
+   "asr": "Puse un código más seguro. Tan seguro que ya no me lo sé ni yo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.bike_interview.line.2.ogg",
+   "dur": 3.81,
+   "lufs": -18.0,
+   "lead_ms": 36,
+   "trail_ms": 51,
+   "ref": "La bici está en la calle. ¿Tiene algo que demuestre que es suya?",
+   "asr": "La bichi está en la calle. ¿Tiene algo que demuestre que es suya?",
+   "wer": 0.077
+  },
+  {
+   "file": "es/job.bike_interview.line.3.ogg",
+   "dur": 5.13,
+   "lufs": -18.1,
+   "lead_ms": 55,
+   "trail_ms": 29,
+   "ref": "Una foto de vacaciones y el recibo en mi correo. La bici sale mejor que yo.",
+   "asr": "Una foto de vacaciones y el recibo en mi correo. La bici sale mejor que yo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.bike_interview.line.4.ogg",
+   "dur": 3.8,
+   "lufs": -17.8,
+   "lead_ms": 2,
+   "trail_ms": 48,
+   "ref": "Con eso basta. Arréglese la corbata mientras me ocupo.",
+   "asr": "Con eso basta. Arreglíce la corbata mientras me ocupo.",
+   "wer": 0.111
+  },
+  {
+   "file": "es/job.bramah_bureau.line.1.ogg",
+   "dur": 4.86,
+   "lufs": -17.3,
+   "lead_ms": 47,
+   "trail_ms": 29,
+   "ref": "La factura, el anuncio y las fotos. La cerradura debe quedar intacta.",
+   "asr": "La factura, el anuncio y las fotos. La cerradura debe quedar intacta.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.bramah_bureau.line.2.ogg",
+   "dur": 4.89,
+   "lufs": -18.0,
+   "lead_ms": 58,
+   "trail_ms": 45,
+   "ref": "Una cerradura así estuvo en un escaparate de Londres. Ofrecían una recompensa.",
+   "asr": "Una terradura así estuvo en un escaparate de Londres. Ofrecían una recompensa.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.bramah_bureau.line.3.ogg",
+   "dur": 1.36,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 43,
+   "ref": "¿Alguien logró abrirla?",
+   "asr": "¿Alguien no grow up here, la?",
+   "wer": 1.667
+  },
+  {
+   "file": "es/job.bramah_bureau.line.4.ogg",
+   "dur": 4.75,
+   "lufs": -18.1,
+   "lead_ms": 43,
+   "trail_ms": 47,
+   "ref": "Sí, más de sesenta años después. Le contaré quién al terminar.",
+   "asr": "Sí, más de 60 años después. Le contaré quién al terminar.",
+   "wer": 0.091
+  },
+  {
+   "file": "es/job.brussels_townhouse.line.1.ogg",
+   "dur": 6.18,
+   "lufs": -18.1,
+   "lead_ms": 12,
+   "trail_ms": 45,
+   "ref": "Estoy en el balcón como Julieta. Pero Romeo tiene sesenta años y la llave de la verja.",
+   "asr": "Estoy en el balcón como Julieta. Pero Romeo tiene 60 años y la llave de la verja.",
+   "wer": 0.059
+  },
+  {
+   "file": "es/job.brussels_townhouse.line.2.ogg",
+   "dur": 4.15,
+   "lufs": -18.1,
+   "lead_ms": 43,
+   "trail_ms": 32,
+   "ref": "La señora Magda vive aquí desde siempre. Desde siempre.",
+   "asr": "La señora Magda vive aquí desde siempre, desde siempre.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.brussels_townhouse.line.3.ogg",
+   "dur": 5.43,
+   "lufs": -17.9,
+   "lead_ms": 47,
+   "trail_ms": 48,
+   "ref": "El contrato, el padrón del ayuntamiento y un vecino. Con eso basta. No se asome.",
+   "asr": "El contrato, el padrón del ayuntamiento y un vecino. Con eso basta, no se asome.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.brussels_townhouse.line.4.ogg",
+   "dur": 2.9,
+   "lufs": -18.1,
+   "lead_ms": 53,
+   "trail_ms": 42,
+   "ref": "Geranios regados. Misión cumplida.",
+   "asr": "Geranios regados, misión cumplida.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.carol_singers_chest.line.1.ogg",
+   "dur": 4.78,
+   "lufs": -17.8,
+   "lead_ms": 57,
+   "trail_ms": 42,
+   "ref": "Nuestras estrellas de papel están dentro. El coro está listo desde el martes.",
+   "asr": "Nuestras estrellas de papel están dentro. El coro está listo desde el martes.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.carol_singers_chest.line.2.ogg",
+   "dur": 3.45,
+   "lufs": -18.1,
+   "lead_ms": 36,
+   "trail_ms": 27,
+   "ref": "El arcón es de la comunidad. Aquí está su acuerdo.",
+   "asr": "El Arzón es de la comunidad. Aquí está su acuerdo.",
+   "wer": 0.1
+  },
+  {
+   "file": "es/job.carol_singers_chest.line.3.ogg",
+   "dur": 4.7,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 52,
+   "ref": "Permiso y precio acordados. Las estrellas ya pueden salir a escena.",
+   "asr": "Permiso y precio acordados. Las estrellas ya pueden salir a escena.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.carol_singers_chest.line.4.ogg",
+   "dur": 4.19,
+   "lufs": -18.0,
+   "lead_ms": 0,
+   "trail_ms": 46,
+   "ref": "Ahora solo falta que todos canten en el mismo tono.",
+   "asr": "Ahora solo falta que todos canten en el mismo tono.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.cat_bathroom.line.1.ogg",
+   "dur": 4.14,
+   "lufs": -17.9,
+   "lead_ms": 56,
+   "trail_ms": 46,
+   "ref": "Lo hizo adrede. Me miró a los ojos mientras saltaba a la manilla.",
+   "asr": "Lo hizo a Drede. Me miró a los ojos mientras saltaba la manilla.",
+   "wer": 0.231
+  },
+  {
+   "file": "es/job.cat_bathroom.line.2.ogg",
+   "dur": 4.14,
+   "lufs": -18.0,
+   "lead_ms": 55,
+   "trail_ms": 48,
+   "ref": "Es su casa y el gato está en el baño. Hoy no le pediré papeles.",
+   "asr": "Es su casa y el gato está en el baño. Hoy no le pediré papeles.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.cat_bathroom.line.3.ogg",
+   "dur": 1.43,
+   "lufs": -18.2,
+   "lead_ms": 5,
+   "trail_ms": 33,
+   "ref": "¿Y si se asusta?",
+   "asr": "¿Y si se asusta?",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.cat_bathroom.line.4.ogg",
+   "dur": 3.0,
+   "lufs": -18.0,
+   "lead_ms": 54,
+   "trail_ms": 22,
+   "ref": "Siga hablándole. Haré menos ruido que él.",
+   "asr": "Siga hablándole. Haré menos ruido que él.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.charleroi_letters.line.1.ogg",
+   "dur": 6.17,
+   "lufs": -17.6,
+   "lead_ms": 57,
+   "trail_ms": 44,
+   "ref": "Llamo para pedir consejo, no una visita. La señora Martine tiene la caja del abuelo.",
+   "asr": "Llamo para pedir consejo, no una visita. La señora Martín tiene la caja del abuelo.",
+   "wer": 0.067
+  },
+  {
+   "file": "es/job.charleroi_letters.line.2.ogg",
+   "dur": 4.02,
+   "lufs": -17.9,
+   "lead_ms": 57,
+   "trail_ms": 34,
+   "ref": "La caja es de su familia. Yo solo la he cuidado.",
+   "asr": "La caja es de su familia. Yo solo la he cuidado.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.charleroi_letters.line.3.ogg",
+   "dur": 2.67,
+   "lufs": -18.0,
+   "lead_ms": 51,
+   "trail_ms": 52,
+   "ref": "¿La ha guardado durante setenta años?",
+   "asr": "¿La ha guardado durante 70 años?",
+   "wer": 0.167
+  },
+  {
+   "file": "es/job.charleroi_letters.line.4.ogg",
+   "dur": 4.75,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 43,
+   "ref": "Las dos están de acuerdo. Nunca me fue tan fácil comprobar un permiso.",
+   "asr": "Las dos están de acuerdo. Nunca me fue tan fácil comprobar un permiso.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.christmas_eve_heat.line.1.ogg",
+   "dur": 5.01,
+   "lufs": -18.1,
+   "lead_ms": 7,
+   "trail_ms": 41,
+   "ref": "La reparación casi está lista. Aquí tiene la autorización para el último armario.",
+   "asr": "La reparación casi está lista. Aquí tiene la autorización para el último armario.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.christmas_eve_heat.line.2.ogg",
+   "dur": 5.52,
+   "lufs": -18.0,
+   "lead_ms": 39,
+   "trail_ms": 39,
+   "ref": "En cuanto esté abierto, reviso la calefacción. La instalación es responsabilidad mía.",
+   "asr": "En cuanto esté abierto, reviso la calefacción. La instalación es responsabilidad mía.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.christmas_eve_heat.line.3.ogg",
+   "dur": 4.98,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 48,
+   "ref": "Autorización y precio comprobados. Me ocupo de la cerradura y de nada más.",
+   "asr": "autorización y precio comprobados. Me ocupo de la cerradura y de nada más.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.christmas_eve_heat.line.4.ogg",
+   "dur": 5.04,
+   "lufs": -17.9,
+   "lead_ms": 15,
+   "trail_ms": 28,
+   "ref": "Los radiadores vuelven a estar calientes. Y en la mesa aún le espera un sitio.",
+   "asr": "Los radiadores vuelven a estar calientes y en la mesa aún le espera un sitio.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.community_notice_case.line.1.ogg",
+   "dur": 4.4,
+   "lufs": -18.2,
+   "lead_ms": 41,
+   "trail_ms": 31,
+   "ref": "El turno de limpieza está listo. El armario se niega a mostrarlo.",
+   "asr": "El turno de limpieza está listo. El armario se niega a mostrarlo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.community_notice_case.line.2.ogg",
+   "dur": 4.46,
+   "lufs": -17.6,
+   "lead_ms": 36,
+   "trail_ms": 23,
+   "ref": "Administro el edificio. Aquí está el acuerdo firmado por los vecinos.",
+   "asr": "Administro el edificio. Aquí está el acuerdo firmado por los vecinos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.community_notice_case.line.3.ogg",
+   "dur": 3.87,
+   "lufs": -17.7,
+   "lead_ms": 52,
+   "trail_ms": 56,
+   "ref": "Permiso y precio acordados. Abriré el armario comunitario.",
+   "asr": "Permiso y precio acordados. Abriré el armario comunitario.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.community_notice_case.line.4.ogg",
+   "dur": 4.81,
+   "lufs": -18.2,
+   "lead_ms": 5,
+   "trail_ms": 39,
+   "ref": "Primer aviso: el turno de limpieza. Menuda inauguración.",
+   "asr": "Primero aviso, el turno de limpieza, menuda inauguración.",
+   "wer": 0.125
+  },
+  {
+   "file": "es/job.dollhouse_wooden_lock.line.1.ogg",
+   "dur": 3.46,
+   "lufs": -18.1,
+   "lead_ms": 37,
+   "trail_ms": 32,
+   "ref": "Lala lleva encerrada desde el martes. Se aburre.",
+   "asr": "Lala lleva encerrada desde el martes. Se aburre.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.dollhouse_wooden_lock.line.2.ogg",
+   "dur": 4.57,
+   "lufs": -18.1,
+   "lead_ms": 54,
+   "trail_ms": 17,
+   "ref": "El abuelo la llamaba cerradura egipcia. No sé si tenía razón.",
+   "asr": "El abuelo la llamaba Cerradura egipcia. No sé si tenía razón.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.dollhouse_wooden_lock.line.3.ogg",
+   "dur": 4.46,
+   "lufs": -18.1,
+   "lead_ms": 27,
+   "trail_ms": 37,
+   "ref": "El nombre se quedó. Pero la historia es mejor. Te la cuento al acabar.",
+   "asr": "El nombre se quedó, pero la historia es mejor. Te la cuento al acabar.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.dollhouse_wooden_lock.line.4.ogg",
+   "dur": 3.62,
+   "lufs": -18.0,
+   "lead_ms": 54,
+   "trail_ms": 40,
+   "ref": "¿Harás otra llave? ¿De madera? Papá tiene una tabla.",
+   "asr": "¿Harás otra llave? ¿De madera? Papá tiene una tabla.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.drummer_locker.line.1.ogg",
+   "dur": 5.05,
+   "lufs": -18.1,
+   "lead_ms": 39,
+   "trail_ms": 34,
+   "ref": "Podría tocar con cucharas, pero prefiero que no. El concierto es en una hora.",
+   "asr": "Podría tocar con cucharas, pero prefiero que no. El concierto es en una hora.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.drummer_locker.line.2.ogg",
+   "dur": 4.15,
+   "lufs": -18.1,
+   "lead_ms": 36,
+   "trail_ms": 40,
+   "ref": "Iga alquila la taquilla ocho. Paga cada mes. Lo tengo anotado.",
+   "asr": "Higa alquila la taquilla 8. Paga cada mes. Lo tengo anotado.",
+   "wer": 0.182
+  },
+  {
+   "file": "es/job.drummer_locker.line.3.ogg",
+   "dur": 3.62,
+   "lufs": -17.4,
+   "lead_ms": 32,
+   "trail_ms": 46,
+   "ref": "Su cuaderno basta. El señor Edek dice que lo apunta todo.",
+   "asr": "Su cuaderno basta. El señor Eddek dice que lo apunta todo.",
+   "wer": 0.091
+  },
+  {
+   "file": "es/job.drummer_locker.line.4.ogg",
+   "dur": 4.31,
+   "lufs": -18.1,
+   "lead_ms": 53,
+   "trail_ms": 42,
+   "ref": "Si termina a tiempo, tocaremos una canción para usted. Bien alto.",
+   "asr": "Si termina tiempo, tocaremos una canción para usted. ¡Bien alto!",
+   "wer": 0.091
+  },
+  {
+   "file": "es/job.edek_rehearsal_store.line.1.ogg",
+   "dur": 3.62,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 4,
+   "ref": "El almacén figura en mi lista. Era del antiguo teatro.",
+   "asr": "El ablazén figura en mi lista era del antiguo teatro.",
+   "wer": 0.1
+  },
+  {
+   "file": "es/job.edek_rehearsal_store.line.2.ogg",
+   "dur": 4.05,
+   "lufs": -17.9,
+   "lead_ms": 48,
+   "trail_ms": 43,
+   "ref": "Vamos a por unas sillas. Esta vez nadie ha pedido una batería.",
+   "asr": "Vamos a por unas sillas. Esta vez nadie ha pedido una batería.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.edek_rehearsal_store.line.3.ogg",
+   "dur": 4.38,
+   "lufs": -18.0,
+   "lead_ms": 38,
+   "trail_ms": 55,
+   "ref": "Su registro y la carta de la universidad coinciden. El precio también.",
+   "asr": "Su registro y la carta de la universidad coinciden. El precio también.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.edek_rehearsal_store.line.4.ogg",
+   "dur": 4.24,
+   "lufs": -18.6,
+   "lead_ms": 10,
+   "trail_ms": 45,
+   "ref": "Bien. A ver si las sillas tienen más ritmo que la banda.",
+   "asr": "Bien, a ver si las sillas tienen más ritmo que la banda.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.finnish_sailor.line.1.ogg",
+   "dur": 4.78,
+   "lufs": -17.7,
+   "lead_ms": 58,
+   "trail_ms": 41,
+   "ref": "En Finlandia todos tienen un candado así. Nadie lo abre sin la llave.",
+   "asr": "En Finlandia todos tienen un candado así. Nadie lo abre sin la llave.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.finnish_sailor.line.2.ogg",
+   "dur": 4.45,
+   "lufs": -17.8,
+   "lead_ms": 50,
+   "trail_ms": 50,
+   "ref": "El arcón es de Aino. Respondo por ella. Zarpamos mañana a las seis.",
+   "asr": "El arcón es de Aino. Respondo por ella. Zarpamos mañana a las seis.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.finnish_sailor.line.3.ogg",
+   "dur": 5.01,
+   "lufs": -17.8,
+   "lead_ms": 56,
+   "trail_ms": 54,
+   "ref": "El capitán responde por usted. Su libreta de marino coincide. Veamos.",
+   "asr": "El capitán responde por usted. Su libreta de marino coincide. Veamos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.finnish_sailor.line.4.ogg",
+   "dur": 3.55,
+   "lufs": -17.8,
+   "lead_ms": 50,
+   "trail_ms": 43,
+   "ref": "Si lo abre, le contaré de dónde viene este invento.",
+   "asr": "Si lo abre, le contaré de dónde viene este invento.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.frozen_cellar_padlock.line.1.ogg",
+   "dur": 4.36,
+   "lufs": -18.0,
+   "lead_ms": 49,
+   "trail_ms": 13,
+   "ref": "Las mantas están en mi trastero. El invierno llegó antes que yo.",
+   "asr": "Las mantas están en mi trastero. El invierno llegó antes que yo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.frozen_cellar_padlock.line.2.ogg",
+   "dur": 5.88,
+   "lufs": -17.7,
+   "lead_ms": 22,
+   "trail_ms": 32,
+   "ref": "El anexo del alquiler y el registro de trasteros coinciden. Es el trastero de la señora Janka.",
+   "asr": "El anexo del alquiler y el registro de trasteros coinciden. Es el trastero de la señora Yanca.",
+   "wer": 0.059
+  },
+  {
+   "file": "es/job.frozen_cellar_padlock.line.3.ogg",
+   "dur": 4.17,
+   "lufs": -18.0,
+   "lead_ms": 52,
+   "trail_ms": 52,
+   "ref": "Todo en orden y el precio, acordado. Me ocupo del candado.",
+   "asr": "Todo en orden y el precio acordado. Me ocupo del candado.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.frozen_cellar_padlock.line.4.ogg",
+   "dur": 5.28,
+   "lufs": -17.6,
+   "lead_ms": 4,
+   "trail_ms": 50,
+   "ref": "Bien. Las mantas son para los hombros, no para las estanterías.",
+   "asr": "Bien, las mantas son para los hombros, no para las estanterías.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.ghent_beguinage.line.1.ogg",
+   "dur": 4.76,
+   "lufs": -18.0,
+   "lead_ms": 2,
+   "trail_ms": 44,
+   "ref": "Mi polaco se limita a «dzień dobry» y «pierogi».",
+   "asr": "Mi polacio se limita a Jeanne Dobry y Pierogi.",
+   "wer": 0.222
+  },
+  {
+   "file": "es/job.ghent_beguinage.line.2.ogg",
+   "dur": 2.05,
+   "lufs": -18.0,
+   "lead_ms": 0,
+   "trail_ms": 54,
+   "ref": "Eso ya es medio idioma.",
+   "asr": "Eso ya es medio idioma",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.ghent_beguinage.line.3.ogg",
+   "dur": 4.9,
+   "lufs": -18.2,
+   "lead_ms": 44,
+   "trail_ms": 6,
+   "ref": "Aquí tiene la carta parroquial. Mi antecesor se llevó la llave al cielo.",
+   "asr": "Aquí tiene la carta parroquial. Mi antecesor se llevó la llave al cielo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.ghent_beguinage.line.4.ogg",
+   "dur": 4.04,
+   "lufs": -17.9,
+   "lead_ms": 53,
+   "trail_ms": 49,
+   "ref": "No dejaré marcas. Esta cerradura es más vieja que mi edificio.",
+   "asr": "No dejaré marcas. Esta cerradura es más vieja que mi edificio.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.gosia_workbench_drawer.line.1.ogg",
+   "dur": 4.13,
+   "lufs": -17.8,
+   "lead_ms": 40,
+   "trail_ms": 37,
+   "ref": "Compré el banco entero. Pero el cajón no reconoce la factura.",
+   "asr": "Compré el banco entero, pero el cajón no reconoce la factura.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.gosia_workbench_drawer.line.2.ogg",
+   "dur": 4.38,
+   "lufs": -18.1,
+   "lead_ms": 44,
+   "trail_ms": 53,
+   "ref": "Factura, foto de recogida, precio acordado. Todo en orden.",
+   "asr": "Factura, foto de recogida, precio acordado, todo en orden.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.gosia_workbench_drawer.line.3.ogg",
+   "dur": 4.18,
+   "lufs": -17.9,
+   "lead_ms": 50,
+   "trail_ms": 21,
+   "ref": "No deje marcas, por favor. El banco irá a la sala común.",
+   "asr": "No, deje marcas, por favor. El banco irá a la sala común.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.gosia_workbench_drawer.line.4.ogg",
+   "dur": 4.13,
+   "lufs": -18.1,
+   "lead_ms": 22,
+   "trail_ms": 52,
+   "ref": "De acuerdo. Por una vez, los papeles llegaron antes que yo.",
+   "asr": "de acuerdo, por una vez los papeles llegaron antes que yo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.grandma_broth.line.1.ogg",
+   "dur": 3.86,
+   "lufs": -17.8,
+   "lead_ms": 52,
+   "trail_ms": 41,
+   "ref": "Solo salí a tirar la basura, hijo. Un momentito.",
+   "asr": "Solo salía a tirar la basura, hijo. Un momentito.",
+   "wer": 0.111
+  },
+  {
+   "file": "es/job.grandma_broth.line.2.ogg",
+   "dur": 4.51,
+   "lufs": -18.2,
+   "lead_ms": 58,
+   "trail_ms": 57,
+   "ref": "Corté el gas desde el rellano. Somos vecinas desde hace cuarenta años.",
+   "asr": "Corté el gas desde el rellano. Somos vecinas desde hace 40 años.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.grandma_broth.line.3.ogg",
+   "dur": 3.41,
+   "lufs": -18.0,
+   "lead_ms": 38,
+   "trail_ms": 56,
+   "ref": "Eso ayuda. ¿Y la carta del buzón está a su nombre?",
+   "asr": "Eso ayuda. ¿Y la carta del buzón está a su nombre?",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.grandma_broth.line.4.ogg",
+   "dur": 5.43,
+   "lufs": -17.9,
+   "lead_ms": 41,
+   "trail_ms": 52,
+   "ref": "Los fideos los hice yo. Hay un plato para ti, hijo. Y no se discute.",
+   "asr": "Los fideos los hice yo. Hay un plato para ti hijo. Y no se discute.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.grandpa_chest.line.1.ogg",
+   "dur": 4.25,
+   "lufs": -18.2,
+   "lead_ms": 52,
+   "trail_ms": 36,
+   "ref": "Papá nunca dijo qué guardaba ahí. Ni siquiera a nosotras.",
+   "asr": "Papa nunca dijo que guardaba ahí, ni siquiera a nosotras.",
+   "wer": 0.2
+  },
+  {
+   "file": "es/job.grandpa_chest.line.2.ogg",
+   "dur": 4.27,
+   "lufs": -18.0,
+   "lead_ms": 28,
+   "trail_ms": 1,
+   "ref": "Mamá, no pregunta por el arcón. Pregunta si la casa es tuya.",
+   "asr": "Mamá, no pregunta por el arcon. Preguntas si a casa es tuya.",
+   "wer": 0.25
+  },
+  {
+   "file": "es/job.grandpa_chest.line.3.ogg",
+   "dur": 4.97,
+   "lufs": -18.1,
+   "lead_ms": 0,
+   "trail_ms": 23,
+   "ref": "Es mía. La escritura está en la cómoda, debajo del mantel.",
+   "asr": "Es mía. La Escritura está en la cómoda debajo del mantel.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.grandpa_chest.line.4.ogg",
+   "dur": 4.47,
+   "lufs": -18.1,
+   "lead_ms": 57,
+   "trail_ms": 57,
+   "ref": "Cartas de Charleroi. Para la abuela, en polaco y con sellos belgas.",
+   "asr": "Cartas de Charleroi, para la abuela, en Polaco y Consellos Belgas.",
+   "wer": 0.167
+  },
+  {
+   "file": "es/job.halina_christmas_tin.line.1.ogg",
+   "dur": 5.85,
+   "lufs": -17.9,
+   "lead_ms": 0,
+   "trail_ms": 51,
+   "ref": "El pan de jengibre reposa desde noviembre. La llave también, por lo visto.",
+   "asr": "el pan de jengibles reposa desde noviembre. La llave también, por lo visto.",
+   "wer": 0.077
+  },
+  {
+   "file": "es/job.halina_christmas_tin.line.2.ogg",
+   "dur": 3.79,
+   "lufs": -17.8,
+   "lead_ms": 26,
+   "trail_ms": 46,
+   "ref": "Es la lata de Halina. Yo hice la foto cuando la cerró.",
+   "asr": "Es la lata de Jalina. Yo hice la foto cuando la cerró.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.halina_christmas_tin.line.3.ogg",
+   "dur": 5.56,
+   "lufs": -18.0,
+   "lead_ms": 39,
+   "trail_ms": 56,
+   "ref": "Propiedad y precio confirmados. Yo abro la lata; el pan de jengibre lo saca usted.",
+   "asr": "Propiedad y precio confirmados. Yo abro la lata. El pan de jengibre lo saca usted.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.halina_christmas_tin.line.4.ogg",
+   "dur": 5.23,
+   "lufs": -18.4,
+   "lead_ms": 54,
+   "trail_ms": 45,
+   "ref": "Muy sensato, hijo. El primer trozo es para ti, de todos modos.",
+   "asr": "Muy sensato hijo, el primer trozo es para ti de todos modos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.halina_recipe_box.line.1.ogg",
+   "dur": 5.93,
+   "lufs": -18.1,
+   "lead_ms": 54,
+   "trail_ms": 54,
+   "ref": "Dentro está mi receta de bolitas de masa. Solo recuerdo la palabra «puñado».",
+   "asr": "Dentro está mi receta de bolitas de masa. Solo recuerdo la palabra puñado.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.halina_recipe_box.line.2.ogg",
+   "dur": 4.25,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 42,
+   "ref": "Es la caja de Halina. Mire, está junto a su taza en esta foto.",
+   "asr": "Es la caja de Jalina. Mire, está junto a su taza en esta foto.",
+   "wer": 0.071
+  },
+  {
+   "file": "es/job.halina_recipe_box.line.3.ogg",
+   "dur": 3.59,
+   "lufs": -18.1,
+   "lead_ms": 37,
+   "trail_ms": 35,
+   "ref": "Foto, testigo y precio acordado. Podemos empezar.",
+   "asr": "Foto, testigo y precio acordado. Podemos empezar.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.halina_recipe_box.line.4.ogg",
+   "dur": 6.04,
+   "lufs": -18.0,
+   "lead_ms": 33,
+   "trail_ms": 57,
+   "ref": "Luego veremos cuánto pesa un puñado. Es una discusión antigua.",
+   "asr": "Luego veremos cuánto pesa un puñado. Es una discusión antigua.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.heating_service_cupboard.line.1.ogg",
+   "dur": 4.96,
+   "lufs": -17.9,
+   "lead_ms": 4,
+   "trail_ms": 48,
+   "ref": "Los radiadores están fríos. Necesito el registro antes de revisar nada.",
+   "asr": "Los radiadores están fríos. Necesito el registro antes de revisar nada.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.heating_service_cupboard.line.2.ogg",
+   "dur": 5.09,
+   "lufs": -17.8,
+   "lead_ms": 37,
+   "trail_ms": 38,
+   "ref": "Está autorizado. Aquí tiene el encargo por escrito y la documentación del edificio.",
+   "asr": "Está autorizado. Aquí tiene el encargo por escrito y la documentación del edificio.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.heating_service_cupboard.line.3.ogg",
+   "dur": 5.06,
+   "lufs": -17.7,
+   "lead_ms": 47,
+   "trail_ms": 50,
+   "ref": "El armario es cosa mía, al precio acordado. La instalación es cosa suya.",
+   "asr": "El armario es cosa mía, al precio acordado. La instalación es cosa suya.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.heating_service_cupboard.line.4.ogg",
+   "dur": 3.22,
+   "lufs": -18.0,
+   "lead_ms": 13,
+   "trail_ms": 39,
+   "ref": "Me parece bien. Un misterio helado cada vez.",
+   "asr": "Me parece bien. Un misterio helado cada vez.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.kiosk_shutter.line.1.ogg",
+   "dur": 4.59,
+   "lufs": -17.5,
+   "lead_ms": 53,
+   "trail_ms": 42,
+   "ref": "Ese candado lleva treinta y dos años aquí. Nunca lo he engrasado.",
+   "asr": "Ese candado lleva 32 años aquí, nunca lo he engrasado.",
+   "wer": 0.25
+  },
+  {
+   "file": "es/job.kiosk_shutter.line.2.ogg",
+   "dur": 5.28,
+   "lufs": -18.0,
+   "lead_ms": 41,
+   "trail_ms": 42,
+   "ref": "La señora Krysia lo confirma. Tengo la carta del proveedor. Falta una cosa.",
+   "asr": "La señora Crisia lo confirma. Tengo la carta del proveedor. Falta una cosa.",
+   "wer": 0.077
+  },
+  {
+   "file": "es/job.kiosk_shutter.line.3.ogg",
+   "dur": 6.53,
+   "lufs": -18.3,
+   "lead_ms": 46,
+   "trail_ms": 16,
+   "ref": "La foto de la apertura, en el noventa y cuatro. Mi bigote lucía más que el quiosco.",
+   "asr": "La foto de la apertura en el 94, mi bigote lucía más que el kiosco.",
+   "wer": 0.235
+  },
+  {
+   "file": "es/job.kiosk_shutter.line.4.ogg",
+   "dur": 4.49,
+   "lufs": -17.7,
+   "lead_ms": 22,
+   "trail_ms": 57,
+   "ref": "Stefan lleva aquí más que la parada. Hasta los autobuses lo conocen.",
+   "asr": "Stefan lleva aquí más que la parada. Hasta los autobuses lo conocen.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.krakow_antiquarian.line.1.ogg",
+   "dur": 5.77,
+   "lufs": -17.6,
+   "lead_ms": 58,
+   "trail_ms": 50,
+   "ref": "La caja fuerte es mía. Alquilo el local al ayuntamiento. El café de al lado lo confirma.",
+   "asr": "La caja fuerte es mía. Al kilo enlocala al ayuntamiento. El café de al lado lo confirma.",
+   "wer": 0.176
+  },
+  {
+   "file": "es/job.krakow_antiquarian.line.2.ogg",
+   "dur": 4.39,
+   "lufs": -17.7,
+   "lead_ms": 7,
+   "trail_ms": 21,
+   "ref": "Y ya que está, esta cajita. La dejó un cliente para tasarla.",
+   "asr": "Y ya que esta, esta cajita, la dejó un cliente para atasarla.",
+   "wer": 0.167
+  },
+  {
+   "file": "es/job.krakow_antiquarian.line.3.ogg",
+   "dur": 4.21,
+   "lufs": -17.9,
+   "lead_ms": 48,
+   "trail_ms": 40,
+   "ref": "La caja fuerte sí. La cajita no. Tiene que estar su dueño.",
+   "asr": "La caja fuerte sí, la cajita no, tiene que estar su dueño.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.krakow_antiquarian.line.4.ogg",
+   "dur": 5.26,
+   "lufs": -18.1,
+   "lead_ms": 47,
+   "trail_ms": 46,
+   "ref": "Tiene razón. Me hago mayor. Y más impaciente.",
+   "asr": "Tiene razón, me hago mayor y más impaciente.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.krakow_tenement_gate.line.1.ogg",
+   "dur": 4.17,
+   "lufs": -17.6,
+   "lead_ms": 37,
+   "trail_ms": 46,
+   "ref": "El técnico de patrimonio dijo: ni un agujero. Ni uno.",
+   "asr": "El técnico de patrimonio dijo, ni un agujero, ni uno.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.krakow_tenement_gate.line.2.ogg",
+   "dur": 4.57,
+   "lufs": -18.1,
+   "lead_ms": 46,
+   "trail_ms": 51,
+   "ref": "Y con razón. Alguien trabajó mucho aquí hace ciento treinta años.",
+   "asr": "Y con razón, alguien trabajó mucho aquí hace 130 años.",
+   "wer": 0.182
+  },
+  {
+   "file": "es/job.krakow_tenement_gate.line.3.ogg",
+   "dur": 5.74,
+   "lufs": -18.0,
+   "lead_ms": 46,
+   "trail_ms": 35,
+   "ref": "Hola otra vez. Ahora soy becaria. Aprobé. La habitación cuatrocientos doce ayudó.",
+   "asr": "Hola otra vez. Ahora soy Becariah. Aprové. La habitación 412 ayudo.",
+   "wer": 0.417
+  },
+  {
+   "file": "es/job.krakow_tenement_gate.line.4.ogg",
+   "dur": 4.12,
+   "lufs": -17.9,
+   "lead_ms": 42,
+   "trail_ms": 45,
+   "ref": "Lo aprobó la comunidad. Aquí tiene la orden de trabajo por escrito.",
+   "asr": "Lo aprobó la comunidad. Aquí tiene la orden de trabajo por escrito.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.krystyna_wooden_album.line.1.ogg",
+   "dur": 5.26,
+   "lufs": -18.1,
+   "lead_ms": 56,
+   "trail_ms": 17,
+   "ref": "Józef hizo esta caja de fotos. Creo que la llavecita era de madera.",
+   "asr": "Yusef hizo esta caja de fotos. Creo que la llavecita era de madera.",
+   "wer": 0.077
+  },
+  {
+   "file": "es/job.krystyna_wooden_album.line.2.ogg",
+   "dur": 3.9,
+   "lufs": -18.0,
+   "lead_ms": 1,
+   "trail_ms": 12,
+   "ref": "Tenemos una foto suya con la caja. Y está en casa de mamá.",
+   "asr": "Tenemos una foto suya con la caja y está en casa de mamá.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.krystyna_wooden_album.line.3.ogg",
+   "dur": 3.63,
+   "lufs": -17.7,
+   "lead_ms": 36,
+   "trail_ms": 54,
+   "ref": "La foto y la palabra de su hija bastan. Anoto el precio.",
+   "asr": "La foto y la palabra de su hija bastan. Anoto el precio.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.krystyna_wooden_album.line.4.ogg",
+   "dur": 5.39,
+   "lufs": -18.0,
+   "lead_ms": 34,
+   "trail_ms": 45,
+   "ref": "De acuerdo. Pero no me pregunte qué ropa llevábamos.",
+   "asr": "De acuerdo. Pero no me pregunte qué ropa llevábamos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.liege_bakery.line.1.ogg",
+   "dur": 5.12,
+   "lufs": -17.3,
+   "lead_ms": 53,
+   "trail_ms": 15,
+   "ref": "Mi tío tenía treinta llaves. Ni una estaba etiquetada.",
+   "asr": "Mi tío tenía 30 llaves, ni una estaba etiquetada.",
+   "wer": 0.111
+  },
+  {
+   "file": "es/job.liege_bakery.line.2.ogg",
+   "dur": 4.63,
+   "lufs": -17.2,
+   "lead_ms": 38,
+   "trail_ms": 34,
+   "ref": "La cerradura notó la llave equivocada y se ofendió. La entiendo.",
+   "asr": "La cerradura notó la llave equivocada y se ofendió. La entiendo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.liege_bakery.line.3.ogg",
+   "dur": 5.04,
+   "lufs": -17.9,
+   "lead_ms": 37,
+   "trail_ms": 5,
+   "ref": "Los papeles del traspaso y el alquiler. La masa sube sin pedir permiso.",
+   "asr": "Los papeles del traspaso y el alquiler. La masa sube sin pedir permiso.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.liege_bakery.line.4.ogg",
+   "dur": 4.08,
+   "lufs": -17.6,
+   "lead_ms": 32,
+   "trail_ms": 49,
+   "ref": "Los papeles están en regla. Cuento con sus gofres de las seis.",
+   "asr": "Los papeles están en regla. Cuento con sus gofres de las seis.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.marta_poster_studio.line.1.ogg",
+   "dur": 4.54,
+   "lufs": -18.0,
+   "lead_ms": 40,
+   "trail_ms": 28,
+   "ref": "Los carteles están dentro. Patata los vigila desde el lado equivocado.",
+   "asr": "Los carteles están dentro. Patata los vigila desde el lado equivocado.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.marta_poster_studio.line.2.ogg",
+   "dur": 4.0,
+   "lufs": -17.8,
+   "lead_ms": 55,
+   "trail_ms": 45,
+   "ref": "El contrato coincide. Su vecina confirma que este es su taller.",
+   "asr": "El contrato coincide. Su vecina confirma que este es su taller.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.marta_poster_studio.line.3.ogg",
+   "dur": 4.22,
+   "lufs": -17.4,
+   "lead_ms": 49,
+   "trail_ms": 37,
+   "ref": "El gato no firmará nada. Su política de privacidad es estricta.",
+   "asr": "El gato no firmará nada. Su política de privacidad es estricta.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.marta_poster_studio.line.4.ogg",
+   "dur": 4.1,
+   "lufs": -18.2,
+   "lead_ms": 7,
+   "trail_ms": 54,
+   "ref": "No hace falta. El precio está acordado y los papeles bastan.",
+   "asr": "No hace falta. El precio está acordado y los papeles bastan.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.museum_time_lock.line.1.ogg",
+   "dur": 3.28,
+   "lufs": -18.0,
+   "lead_ms": 46,
+   "trail_ms": 28,
+   "ref": "No es cuestión de combinación. Es cuestión de tiempo.",
+   "asr": "No es cuestión de combinación, es cuestión de tiempo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.museum_time_lock.line.2.ogg",
+   "dur": 4.76,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 39,
+   "ref": "Una cerradura de tiempo no pregunta quién viene. Pregunta qué hora es.",
+   "asr": "Una charradura de tiempo no pregunta quién viene. Pregunta qué hora es.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.museum_time_lock.line.3.ogg",
+   "dur": 4.3,
+   "lufs": -18.0,
+   "lead_ms": 55,
+   "trail_ms": 29,
+   "ref": "Carta de la dirección, acta de entrega. Por triplicado, claro.",
+   "asr": "Carta de la dirección, acta de entrega. Por triplicado, claro.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.museum_time_lock.line.4.ogg",
+   "dur": 3.74,
+   "lufs": -17.7,
+   "lead_ms": 59,
+   "trail_ms": 51,
+   "ref": "Doctora Rygiel, también hay guantes para el cerrajero. Talla grande.",
+   "asr": "Doctora Riegel, también hay guantes para el cerrajero. Talla grande.",
+   "wer": 0.1
+  },
+  {
+   "file": "es/job.newlyweds_4am.line.1.ogg",
+   "dur": 5.36,
+   "lufs": -18.3,
+   "lead_ms": 39,
+   "trail_ms": 24,
+   "ref": "Tengo el documento, pero no lleva dirección. Ya no la llevan, lo sé.",
+   "asr": "Tengo el documento, pero no lleva dirección. Ya no la llevan, lo sé.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.newlyweds_4am.line.2.ogg",
+   "dur": 5.72,
+   "lufs": -18.0,
+   "lead_ms": 38,
+   "trail_ms": 2,
+   "ref": "Mi domicilio sale en la aplicación. Mire. Con este velo no es fácil.",
+   "asr": "Mi domicilio sale en la aplicación. Mire, con este velo no es fácil.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.newlyweds_4am.line.3.ogg",
+   "dur": 5.16,
+   "lufs": -18.2,
+   "lead_ms": 46,
+   "trail_ms": 50,
+   "ref": "Los conozco. Se casaron hoy. Todo el barrio oyó la fiesta.",
+   "asr": "Los conozco, se casaron hoy. Todo el barrio o yo la fiesta.",
+   "wer": 0.182
+  },
+  {
+   "file": "es/job.newlyweds_4am.line.4.ogg",
+   "dur": 3.56,
+   "lufs": -17.5,
+   "lead_ms": 52,
+   "trail_ms": 43,
+   "ref": "Enhorabuena. Dentro de dos minutos estarán en casa.",
+   "asr": "Enhorabuena, dentro de dos minutos estarán en casa.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.night_nurse.line.1.ogg",
+   "dur": 4.45,
+   "lufs": -18.3,
+   "lead_ms": 56,
+   "trail_ms": 42,
+   "ref": "Doce horas de turno. Dejé la llave en mi taquilla del hospital.",
+   "asr": "Doce horas de turno. Dejé la llave en mi taquilla del hospital.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.night_nurse.line.2.ogg",
+   "dur": 4.49,
+   "lufs": -18.2,
+   "lead_ms": 45,
+   "trail_ms": 45,
+   "ref": "La señora Agnieszka, piso catorce. Su contrato figura en el sistema.",
+   "asr": "La señora Agnieszka, piso 14, su contrato figura en el sistema.",
+   "wer": 0.091
+  },
+  {
+   "file": "es/job.night_nurse.line.3.ogg",
+   "dur": 4.54,
+   "lufs": -18.0,
+   "lead_ms": 58,
+   "trail_ms": 41,
+   "ref": "Lo confirma el administrador. Su documento coincide. Ya podrá dormir.",
+   "asr": "Lo confirma el administrador. Su documento coincide. Ya podrá dormir.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.night_nurse.line.4.ogg",
+   "dur": 3.59,
+   "lufs": -18.3,
+   "lead_ms": 58,
+   "trail_ms": 17,
+   "ref": "Perdone que hable poco. Ya estoy hablando dormida.",
+   "asr": "Perdone que hable poco. Ya estoy hablando de dormida.",
+   "wer": 0.125
+  },
+  {
+   "file": "es/job.pizzeria_pays_pizza.line.1.ogg",
+   "dur": 4.27,
+   "lufs": -18.2,
+   "lead_ms": 56,
+   "trail_ms": 29,
+   "ref": "El dinero está en la caja, y la caja está dentro. Le pago en pizza. ¿Tiene hambre?",
+   "asr": "El dinero está en la caja y la caja está dentro. Le pago en pizza. ¿Tiene hambre?",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.pizzeria_pays_pizza.line.2.ogg",
+   "dur": 4.64,
+   "lufs": -17.8,
+   "lead_ms": 43,
+   "trail_ms": 28,
+   "ref": "Primero el presupuesto, luego la pizza. ¿Tiene el contrato de alquiler?",
+   "asr": "Primero el presupuesto, luego la pizza. ¿Tiene el contrato de alquiler?",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.pizzeria_pays_pizza.line.3.ogg",
+   "dur": 5.96,
+   "lufs": -17.9,
+   "lead_ms": 28,
+   "trail_ms": 48,
+   "ref": "La conozco desde hace veinte años. Mi kebab está al lado. Su pizza es arte.",
+   "asr": "La conozco desde hace 20 años. Mi kebab está al lado. Su pizza es arte.",
+   "wer": 0.067
+  },
+  {
+   "file": "es/job.pizzeria_pays_pizza.line.4.ogg",
+   "dur": 5.54,
+   "lufs": -18.1,
+   "lead_ms": 49,
+   "trail_ms": 40,
+   "ref": "La masa sube y yo me hundo. Con que termine antes del alba, me vale.",
+   "asr": "La masa sube y yo me hundo. Con que termine antes del alba, me vale.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_aunt_alive.line.1.ogg",
+   "dur": 4.26,
+   "lufs": -17.3,
+   "lead_ms": 49,
+   "trail_ms": 28,
+   "ref": "Mi tía murió la semana pasada. Apenas han empezado los trámites.",
+   "asr": "Mi tía murió la semana pasada. Apenas han empezado los trámites.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_aunt_alive.line.2.ogg",
+   "dur": 5.19,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 42,
+   "ref": "¿La señora Lucyna? Está en un balneario. Llamó ayer y se encuentra mejor.",
+   "asr": "La señora Lucina está en un balneario, llamo ayer y se encuentra mejor.",
+   "wer": 0.154
+  },
+  {
+   "file": "es/job.refuse_aunt_alive.line.3.ogg",
+   "dur": 2.19,
+   "lufs": -18.0,
+   "lead_ms": 52,
+   "trail_ms": 37,
+   "ref": "Debo de haberme confundido.",
+   "asr": "Debo de haberme confundido.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_aunt_alive.line.4.ogg",
+   "dur": 4.07,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 39,
+   "ref": "Llamemos juntos a la señora Lucyna. Luego, a la agente Sowa.",
+   "asr": "Llamemos juntos a la señora Lucina, luego a la agente Soba.",
+   "wer": 0.182
+  },
+  {
+   "file": "es/job.refuse_ex_partner.line.1.ogg",
+   "dur": 3.97,
+   "lufs": -18.2,
+   "lead_ms": 36,
+   "trail_ms": 54,
+   "ref": "Viví aquí tres años. Tengo derecho a entrar y recoger mis cosas.",
+   "asr": "Viví aquí tres años. Tengo derecho a entrar y recoger mis cosas.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_ex_partner.line.2.ogg",
+   "dur": 4.76,
+   "lufs": -17.8,
+   "lead_ms": 59,
+   "trail_ms": 49,
+   "ref": "Solo hay un nombre en el buzón, y no es el suyo. Llamaré al administrador.",
+   "asr": "Solo hay un nombre en el buzón y no es el suyo. Llamaré al administrador.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_ex_partner.line.3.ogg",
+   "dur": 3.13,
+   "lufs": -18.3,
+   "lead_ms": 56,
+   "trail_ms": 41,
+   "ref": "¿Para qué llamar al administrador? Es un asunto privado.",
+   "asr": "Para qué llamar al administrador es un asunto privado.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_ex_partner.line.4.ogg",
+   "dur": 4.89,
+   "lufs": -18.2,
+   "lead_ms": 50,
+   "trail_ms": 54,
+   "ref": "No puedo abrir. La policía puede ayudarle a recoger sus cosas. ¿La llamo?",
+   "asr": "No puedo abrir. La policía puede ayudarle a recoger sus cosas. ¿La llamo?",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_rush_bribe.line.1.ogg",
+   "dur": 3.29,
+   "lufs": -18.1,
+   "lead_ms": 50,
+   "trail_ms": 41,
+   "ref": "Le pago el doble. El triple. Pero sáltese los trámites.",
+   "asr": "Le pago el doble, el triple, pero saltes de los trámites.",
+   "wer": 0.2
+  },
+  {
+   "file": "es/job.refuse_rush_bribe.line.2.ogg",
+   "dur": 4.25,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 42,
+   "ref": "Las comprobaciones no se venden. Llame a su hermana. Espero aquí.",
+   "asr": "Las comprobaciones no se venden. Ya me a su hermana. Espero aquí.",
+   "wer": 0.182
+  },
+  {
+   "file": "es/job.refuse_rush_bribe.line.3.ogg",
+   "dur": 4.52,
+   "lufs": -18.1,
+   "lead_ms": 11,
+   "trail_ms": 45,
+   "ref": "No contesta. No despertemos a los vecinos. No hace falta un circo.",
+   "asr": "No contesta, no despertemos a los vecinos, no hace falta un circo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_rush_bribe.line.4.ogg",
+   "dur": 2.89,
+   "lufs": -18.0,
+   "lead_ms": 45,
+   "trail_ms": 30,
+   "ref": "Buenas noches. Avisaré a la agente de barrio.",
+   "asr": "Buenas noches, avisaré a la agente de barrio.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_sisters_flat.line.1.ogg",
+   "dur": 4.36,
+   "lufs": -18.2,
+   "lead_ms": 42,
+   "trail_ms": 36,
+   "ref": "Mi hermana está fuera. Sus plantas se secarán y no contesta.",
+   "asr": "Mi hermana está fuera, sus plantas se secarán y no contesta.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_sisters_flat.line.2.ogg",
+   "dur": 3.16,
+   "lufs": -18.1,
+   "lead_ms": 54,
+   "trail_ms": 38,
+   "ref": "Podemos esperar su permiso o llamar al administrador.",
+   "asr": "Podemos esperar su permiso o llamar al administrador.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_sisters_flat.line.3.ogg",
+   "dur": 3.48,
+   "lufs": -18.1,
+   "lead_ms": 58,
+   "trail_ms": 36,
+   "ref": "Prefiero no molestar a los vecinos. Son solo flores.",
+   "asr": "Prefiero no molestar a los vecinos. Son solo flores.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_sisters_flat.line.4.ogg",
+   "dur": 4.33,
+   "lufs": -18.0,
+   "lead_ms": 41,
+   "trail_ms": 46,
+   "ref": "Sin su permiso, no puedo abrir. Aquí tiene el teléfono del administrador.",
+   "asr": "Sin su permiso, no puedo abrir. Aquí tiene el teléfono del administrador.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_09_empty_flat.line.1.ogg",
+   "dur": 3.6,
+   "lufs": -17.8,
+   "lead_ms": 51,
+   "trail_ms": 47,
+   "ref": "No hay nadie. Dejo el paquete en el recibidor y me voy.",
+   "asr": "No hay nadie. Dejo el paquete en el recibidor y me voy.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_09_empty_flat.line.2.ogg",
+   "dur": 2.73,
+   "lufs": -18.0,
+   "lead_ms": 41,
+   "trail_ms": 55,
+   "ref": "Llamemos a la inquilina y pidámosle permiso.",
+   "asr": "Llamemos a la inquilina y pidamosle permiso.",
+   "wer": 0.143
+  },
+  {
+   "file": "es/job.refuse_t43_09_empty_flat.line.3.ogg",
+   "dur": 3.26,
+   "lufs": -17.8,
+   "lead_ms": 45,
+   "trail_ms": 13,
+   "ref": "Mejor no. A lo mejor dice que hoy no vaya.",
+   "asr": "Mejor no. A lo mejor dice que hoy no vaya.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_09_empty_flat.line.4.ogg",
+   "dur": 3.68,
+   "lufs": -17.4,
+   "lead_ms": 55,
+   "trail_ms": 26,
+   "ref": "Aquí no voy a abrir. Puedo ayudarle a buscar otro momento.",
+   "asr": "Aquí no voy a abrir. Puedo ayudarle a buscar otro momento.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_10_early_clearance.line.1.ogg",
+   "dur": 3.14,
+   "lufs": -18.0,
+   "lead_ms": 0,
+   "trail_ms": 41,
+   "ref": "Ya se ha ido. Podemos empezar la reforma antes.",
+   "asr": "Ya se ha ido. Podemos empezar la reforma antes.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_10_early_clearance.line.2.ogg",
+   "dur": 2.69,
+   "lufs": -18.0,
+   "lead_ms": 43,
+   "trail_ms": 54,
+   "ref": "Llamémosle y acordemos la entrega juntos.",
+   "asr": "Llamémosle y acordémos la entrega juntos.",
+   "wer": 0.167
+  },
+  {
+   "file": "es/job.refuse_t43_10_early_clearance.line.3.ogg",
+   "dur": 4.12,
+   "lufs": -17.9,
+   "lead_ms": 34,
+   "trail_ms": 16,
+   "ref": "Si devuelve la llamada, no conteste. A lo mejor cambia de idea.",
+   "asr": "Si devuelve la llamada, no conteste. A lo mejor cambia de idea.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_10_early_clearance.line.4.ogg",
+   "dur": 3.55,
+   "lufs": -17.3,
+   "lead_ms": 56,
+   "trail_ms": 38,
+   "ref": "Aquí no voy a abrir. Puedo volver para la entrega acordada.",
+   "asr": "Aquí no voy a abrir. Puedo volver para la entrega acordada.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_11_other_stall.line.1.ogg",
+   "dur": 3.74,
+   "lufs": -17.8,
+   "lead_ms": 38,
+   "trail_ms": 23,
+   "ref": "El alargador está al lado. Seguro que el vecino me lo dejaría.",
+   "asr": "El alargador está al lado. Seguro que el vecino me lo dejaría.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_11_other_stall.line.2.ogg",
+   "dur": 2.57,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 53,
+   "ref": "Pidamos al organizador que llame a su vecino.",
+   "asr": "Pidamos al organizador que llame a su vecino.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_11_other_stall.line.3.ogg",
+   "dur": 4.3,
+   "lufs": -18.2,
+   "lead_ms": 48,
+   "trail_ms": 11,
+   "ref": "Mejor no. Ayer pidió que no cogiéramos nada de allí.",
+   "asr": "Mejor no. Ayer pidió que no cogiéramos nada de allí.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_11_other_stall.line.4.ogg",
+   "dur": 3.93,
+   "lufs": -18.0,
+   "lead_ms": 59,
+   "trail_ms": 30,
+   "ref": "Aquí no voy a abrir. Preguntemos por un alargador de repuesto.",
+   "asr": "Aquí no voy a abrir. Preguntemos por un alargador de repuesto.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_12_surprise_key.line.1.ogg",
+   "dur": 3.8,
+   "lufs": -18.2,
+   "lead_ms": 36,
+   "trail_ms": 50,
+   "ref": "Solo quiero colgar la guirnalda antes de que lleguen los invitados.",
+   "asr": "Solo quiero colgar la guirnalda antes de que lleguen los invitados.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_12_surprise_key.line.2.ogg",
+   "dur": 3.65,
+   "lufs": -17.6,
+   "lead_ms": 47,
+   "trail_ms": 54,
+   "ref": "La sala es de la comunidad. Llamemos a la señora Elżbieta.",
+   "asr": "La sala es de la comunidad. Llamemos a la señora Elzbieta.",
+   "wer": 0.091
+  },
+  {
+   "file": "es/job.refuse_t43_12_surprise_key.line.3.ogg",
+   "dur": 2.61,
+   "lufs": -18.3,
+   "lead_ms": 2,
+   "trail_ms": 49,
+   "ref": "No, entonces ya no será una sorpresa.",
+   "asr": "No, entonces ya no será una sorpresa.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_12_surprise_key.line.4.ogg",
+   "dur": 5.06,
+   "lufs": -18.0,
+   "lead_ms": 58,
+   "trail_ms": 48,
+   "ref": "Aquí no voy a abrir. Preguntémosle en voz baja; la sorpresa sobrevivirá.",
+   "asr": "Aquí no voy a abrir. Preguntemosle en voz baja. La sorpresa sobrevivirá.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.refuse_unapproved_repair.line.1.ogg",
+   "dur": 3.65,
+   "lufs": -18.0,
+   "lead_ms": 6,
+   "trail_ms": 14,
+   "ref": "Vengo por la calefacción. El mensaje dice que es urgente.",
+   "asr": "Vengo por la calefacción. El mensaje dice que es urgente.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_unapproved_repair.line.2.ogg",
+   "dur": 4.14,
+   "lufs": -17.4,
+   "lead_ms": 39,
+   "trail_ms": 54,
+   "ref": "La administradora no ha confirmado esta visita. Llamémosla primero.",
+   "asr": "La administradora no ha confirmado esta visita. Llamemos la primero.",
+   "wer": 0.222
+  },
+  {
+   "file": "es/job.refuse_unapproved_repair.line.3.ogg",
+   "dur": 2.89,
+   "lufs": -20.5,
+   "lead_ms": 49,
+   "trail_ms": 32,
+   "ref": "Puedo pagar un extra si nos saltamos el papeleo.",
+   "asr": "Puedo pagar un extra si nos saltamos el papeleo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_unapproved_repair.line.4.ogg",
+   "dur": 4.07,
+   "lufs": -18.4,
+   "lead_ms": 51,
+   "trail_ms": 45,
+   "ref": "No, gracias. No abriré hasta que la administradora lo confirme.",
+   "asr": "No, gracias. No abriré hasta que el administrador a lo confirme.",
+   "wer": 0.3
+  },
+  {
+   "file": "es/job.refuse_unapproved_stockroom.line.1.ogg",
+   "dur": 3.73,
+   "lufs": -18.0,
+   "lead_ms": 47,
+   "trail_ms": 47,
+   "ref": "La entrega está en mi carrito. El dueño de la tienda no contesta.",
+   "asr": "Entrega este en mi carrito. El dueño de la tienda no contesta.",
+   "wer": 0.154
+  },
+  {
+   "file": "es/job.refuse_unapproved_stockroom.line.2.ogg",
+   "dur": 2.87,
+   "lufs": -18.2,
+   "lead_ms": 57,
+   "trail_ms": 14,
+   "ref": "Un albarán no le da permiso para entrar en la tienda.",
+   "asr": "Un albarán no le da permiso para entrar en la tienda.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_unapproved_stockroom.line.3.ogg",
+   "dur": 2.97,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 46,
+   "ref": "¿Podría abrir solo un poco para dejar los paquetes dentro?",
+   "asr": "¿Podría abrir solo un poco para dejar los paquetes dentro?",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_unapproved_stockroom.line.4.ogg",
+   "dur": 3.81,
+   "lufs": -18.1,
+   "lead_ms": 56,
+   "trail_ms": 41,
+   "ref": "Sin permiso, no. Mejor organicemos una entrega segura.",
+   "asr": "Sin permiso, no. Mejor organizemos una entrega segura.",
+   "wer": 0.125
+  },
+  {
+   "file": "es/job.refuse_wrong_letterbox.line.1.ogg",
+   "dur": 3.72,
+   "lufs": -17.8,
+   "lead_ms": 39,
+   "trail_ms": 52,
+   "ref": "Eché la tarjeta en el dieciséis en vez del dieciocho. Es un minuto de trabajo.",
+   "asr": "Ejela tarjeta en el 16 en vez del 18. Es un minuto de trabajo.",
+   "wer": 0.267
+  },
+  {
+   "file": "es/job.refuse_wrong_letterbox.line.2.ogg",
+   "dur": 4.49,
+   "lufs": -17.9,
+   "lead_ms": 39,
+   "trail_ms": 50,
+   "ref": "Ese buzón es del dieciséis. Preguntémosles a ellos o a la administradora.",
+   "asr": "Ese buzón es del 16. Preguntemosles a ellos o al administradora.",
+   "wer": 0.333
+  },
+  {
+   "file": "es/job.refuse_wrong_letterbox.line.3.ogg",
+   "dur": 2.93,
+   "lufs": -18.1,
+   "lead_ms": 54,
+   "trail_ms": 39,
+   "ref": "Se han ido hasta Año Nuevo. Nadie lo va a notar.",
+   "asr": "Se han ido hasta año nuevo. Nadie lo va a notar.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_wrong_letterbox.line.4.ogg",
+   "dur": 4.1,
+   "lufs": -17.7,
+   "lead_ms": 57,
+   "trail_ms": 51,
+   "ref": "Aquí no voy a abrir. Dejémosles una nota; ya se la devolverán.",
+   "asr": "Aquí no voy a abrir. Dejemosles una nota. Ya se la devolverán.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.roman_service_cupboard.line.1.ogg",
+   "dur": 4.49,
+   "lufs": -18.1,
+   "lead_ms": 40,
+   "trail_ms": 22,
+   "ref": "Los vecinos votaron donar los números. El armario no se ha enterado.",
+   "asr": "Los vecinos votaron donar los números. El armario no se ha enterado.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.roman_service_cupboard.line.2.ogg",
+   "dur": 4.28,
+   "lufs": -17.5,
+   "lead_ms": 53,
+   "trail_ms": 46,
+   "ref": "Tengo su registro y el acuerdo firmado. El precio está acordado.",
+   "asr": "Tengo su registro y el acuerdo firmado. El precio está acordado.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.roman_service_cupboard.line.3.ogg",
+   "dur": 4.73,
+   "lufs": -18.2,
+   "lead_ms": 41,
+   "trail_ms": 31,
+   "ref": "Con cuidado, por favor. Son los únicos números sin faltas de ortografía.",
+   "asr": "Con cuidado, por favor. Son los únicos números sin faltas de ortografía.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.roman_service_cupboard.line.4.ogg",
+   "dur": 4.04,
+   "lufs": -17.8,
+   "lead_ms": 37,
+   "trail_ms": 52,
+   "ref": "Cuidaré el esmalte. Sobre el papeleo no prometo nada.",
+   "asr": "Cuidaré el esmalte. Sobre el papeleo no prometo nada.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.shared_room_door.line.1.ogg",
+   "dur": 4.51,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 47,
+   "ref": "Acuerdo firmado y lista de vecinos autorizados. Son puertas comunes.",
+   "asr": "Acuerdo firmado y lista de vecinos autorizados. Son puertas comunes.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.shared_room_door.line.2.ogg",
+   "dur": 4.08,
+   "lufs": -18.0,
+   "lead_ms": 37,
+   "trail_ms": 43,
+   "ref": "Los documentos coinciden. El precio también. Podemos abrir.",
+   "asr": "Los documentos coinciden. El precio también. Podemos abrir.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.shared_room_door.line.3.ogg",
+   "dur": 3.65,
+   "lufs": -17.9,
+   "lead_ms": 54,
+   "trail_ms": 20,
+   "ref": "Traje el cartel. Patata lo aprobó durmiendo encima.",
+   "asr": "Traye el cartel. Patata lo aprobó durmiendo encima.",
+   "wer": 0.125
+  },
+  {
+   "file": "es/job.shared_room_door.line.4.ogg",
+   "dur": 4.95,
+   "lufs": -17.8,
+   "lead_ms": 33,
+   "trail_ms": 41,
+   "ref": "Y yo traje bolitas de masa. La puerta puede esperar. Ellas no.",
+   "asr": "Y yo traje bolitas de masa. La puerta puede esperar. Ellas no.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.stefan_book_tin.line.1.ogg",
+   "dur": 4.61,
+   "lufs": -17.6,
+   "lead_ms": 27,
+   "trail_ms": 19,
+   "ref": "Guardé tan bien las fichas de biblioteca que ni yo las encuentro.",
+   "asr": "Guardé también las fichas de biblioteca que ni yo las encuentro.",
+   "wer": 0.167
+  },
+  {
+   "file": "es/job.stefan_book_tin.line.2.ogg",
+   "dur": 4.42,
+   "lufs": -17.8,
+   "lead_ms": 27,
+   "trail_ms": 42,
+   "ref": "Su recibo y la foto del quiosco coinciden. El precio está acordado.",
+   "asr": "Su recibo y la foto del kiosk coinciden. El precio está acordado.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.stefan_book_tin.line.3.ogg",
+   "dur": 5.46,
+   "lufs": -17.9,
+   "lead_ms": 48,
+   "trail_ms": 28,
+   "ref": "Me sé todos los horarios de autobús. ¿Estos números? Ni idea.",
+   "asr": "Me sé todos los horarios de autobús. Estos números? Ni idea.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.stefan_book_tin.line.4.ogg",
+   "dur": 3.31,
+   "lufs": -17.9,
+   "lead_ms": 24,
+   "trail_ms": 54,
+   "ref": "Al menos el recibo sigue ahí. Pondré el mío al lado.",
+   "asr": "Al menos el recibo sigue ahí. Pondré el mío al lado.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.student_dorm.line.1.ogg",
+   "dur": 4.71,
+   "lufs": -17.5,
+   "lead_ms": 31,
+   "trail_ms": 1,
+   "ref": "Mi carné y la llave están dentro. Yo estoy fuera, en el pasillo.",
+   "asr": "Mi carne y la llave están dentro. Yo estoy fuera, en el pasillo.",
+   "wer": 0.077
+  },
+  {
+   "file": "es/job.student_dorm.line.2.ogg",
+   "dur": 6.28,
+   "lufs": -18.1,
+   "lead_ms": 56,
+   "trail_ms": 46,
+   "ref": "Zuzanna Wilk, habitación cuatrocientos doce. En mi lista y en mi cabeza.",
+   "asr": "Susanna Wilk, habitación 412, en mi lista y en mi cabeza.",
+   "wer": 0.25
+  },
+  {
+   "file": "es/job.student_dorm.line.3.ogg",
+   "dur": 4.7,
+   "lufs": -17.9,
+   "lead_ms": 38,
+   "trail_ms": 42,
+   "ref": "El señor Edek responde por usted. El nombre coincide. Vamos a entrar.",
+   "asr": "El señor Eddek responde por usted. El nombre coincide. Vamos a entrar.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.student_dorm.line.4.ogg",
+   "dur": 4.2,
+   "lufs": -18.0,
+   "lead_ms": 55,
+   "trail_ms": 31,
+   "ref": "Mañana me examino de cerraduras antiguas. ¿Esto cuenta como repaso?",
+   "asr": "Mañana me examino de cerraduras antiguas. ¿Esto cuenta como repaso?",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.swiatniki_journeyman_padlock.line.1.ogg",
+   "dur": 5.26,
+   "lufs": -18.2,
+   "lead_ms": 48,
+   "trail_ms": 43,
+   "ref": "Lo guardo desde hace setenta años. Mi nieto perdió la única llave.",
+   "asr": "Lo guardo desde hace 70 años. Mi nieto perdió la única llave.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.swiatniki_journeyman_padlock.line.2.ogg",
+   "dur": 1.38,
+   "lufs": -18.1,
+   "lead_ms": 56,
+   "trail_ms": 38,
+   "ref": "¿Y usted sabe abrirlo?",
+   "asr": "¿Y usted sabe abrirlo?",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.swiatniki_journeyman_padlock.line.3.ogg",
+   "dur": 5.06,
+   "lufs": -18.3,
+   "lead_ms": 47,
+   "trail_ms": 49,
+   "ref": "Sí. Pero quiero ver si los jóvenes todavía saben hacerlo.",
+   "asr": "Sí, pero quiero ver si los jóvenes todavía saben hacerlo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.swiatniki_journeyman_padlock.line.4.ogg",
+   "dur": 6.9,
+   "lufs": -18.3,
+   "lead_ms": 54,
+   "trail_ms": 52,
+   "ref": "Conozco esa letra. Es de Henryk. Yo le enseñé. El cuaderno está en buenas manos.",
+   "asr": "Conozco esa letra. Es de Henrik. Yo le enseñé. El cuaderno está en buenas manos.",
+   "wer": 0.067
+  },
+  {
+   "file": "es/job.t43_09_01_winter_keys.line.1.ogg",
+   "dur": 5.31,
+   "lufs": -18.1,
+   "lead_ms": 47,
+   "trail_ms": 23,
+   "ref": "Mi turno ha terminado. Mi llave, por lo visto, se ha quedado para el siguiente.",
+   "asr": "Mi turno ha terminado. Mi llave, por lo visto, se ha quedado para el siguiente.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_01_winter_keys.line.2.ogg",
+   "dur": 4.37,
+   "lufs": -18.2,
+   "lead_ms": 4,
+   "trail_ms": 44,
+   "ref": "La señora Agnieszka está en la lista. Los datos están al día.",
+   "asr": "La señora Agnieszka está en la lista. Los datos están al día.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_01_winter_keys.line.3.ogg",
+   "dur": 3.51,
+   "lufs": -17.8,
+   "lead_ms": 53,
+   "trail_ms": 54,
+   "ref": "El documento coincide. Cuarenta monedas, ¿de acuerdo?",
+   "asr": "El documento coincide. 40 monedas ¿de acuerdo?",
+   "wer": 0.143
+  },
+  {
+   "file": "es/job.t43_09_01_winter_keys.line.4.ogg",
+   "dur": 3.96,
+   "lufs": -18.2,
+   "lead_ms": 18,
+   "trail_ms": 16,
+   "ref": "De acuerdo. Despiérteme cuando termine, por favor.",
+   "asr": "De acuerdo. Despierdame cuando termine, por favor.",
+   "wer": 0.143
+  },
+  {
+   "file": "es/job.t43_09_02_blanket_cupboard.line.1.ogg",
+   "dur": 5.16,
+   "lufs": -17.6,
+   "lead_ms": 24,
+   "trail_ms": 42,
+   "ref": "Íbamos a guardar una manta de repuesto. Ahora tenemos vecinos de repuesto.",
+   "asr": "y vamos a guardar una manta de repuesto. Ahora tenemos vecinos de repuesto.",
+   "wer": 0.167
+  },
+  {
+   "file": "es/job.t43_09_02_blanket_cupboard.line.2.ogg",
+   "dur": 4.36,
+   "lufs": -17.8,
+   "lead_ms": 8,
+   "trail_ms": 35,
+   "ref": "El armario de la comunidad. Aquí está el encargo y mi autorización.",
+   "asr": "El armario de la comunidad. Aquí está el encargo y mi autorización.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_02_blanket_cupboard.line.3.ogg",
+   "dur": 2.72,
+   "lufs": -18.0,
+   "lead_ms": 40,
+   "trail_ms": 48,
+   "ref": "Cincuenta monedas. No hay que cambiar nada.",
+   "asr": "50 monedas. No hay que cambiar nada.",
+   "wer": 0.143
+  },
+  {
+   "file": "es/job.t43_09_02_blanket_cupboard.line.4.ogg",
+   "dur": 3.57,
+   "lufs": -18.0,
+   "lead_ms": 25,
+   "trail_ms": 31,
+   "ref": "De acuerdo. Janka ya sabe a quién le lleva la primera.",
+   "asr": "De acuerdo. Yanca ya sabe a quién le lleva la primera.",
+   "wer": 0.091
+  },
+  {
+   "file": "es/job.t43_09_03_wooden_postbox.line.1.ogg",
+   "dur": 3.62,
+   "lufs": -18.1,
+   "lead_ms": 49,
+   "trail_ms": 41,
+   "ref": "La ciudad tiene correo. El reparto ya es otra cosa.",
+   "asr": "La ciudad tiene correo. El reparto ya es otra cosa.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_03_wooden_postbox.line.2.ogg",
+   "dur": 3.51,
+   "lufs": -17.3,
+   "lead_ms": 39,
+   "trail_ms": 47,
+   "ref": "La factura coincide con la pieza. Sesenta monedas.",
+   "asr": "La factura coincide con la pieza. 60 monedas.",
+   "wer": 0.125
+  },
+  {
+   "file": "es/job.t43_09_03_wooden_postbox.line.3.ogg",
+   "dur": 4.12,
+   "lufs": -17.9,
+   "lead_ms": 25,
+   "trail_ms": 56,
+   "ref": "De acuerdo. Las cartas solo las leerá el equipo de la exposición.",
+   "asr": "De acuerdo. Las cartas solo las leerá el equipo de la exposición.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_03_wooden_postbox.line.4.ogg",
+   "dur": 3.97,
+   "lufs": -17.8,
+   "lead_ms": 58,
+   "trail_ms": 53,
+   "ref": "Yo me ocupo de la madera. El correo esperará a sus lectores.",
+   "asr": "Yo me ocupo de la madera. El correo esperará a sus lectores.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_04_choir_case.line.1.ogg",
+   "dur": 4.11,
+   "lufs": -17.9,
+   "lead_ms": 37,
+   "trail_ms": 41,
+   "ref": "El cuaderno con el código está a salvo. Junto con las partituras.",
+   "asr": "El cuaderno con el código está a salvo, junto con las partituras.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_04_choir_case.line.2.ogg",
+   "dur": 3.38,
+   "lufs": -18.2,
+   "lead_ms": 41,
+   "trail_ms": 59,
+   "ref": "Es nuestro estuche. La funda la cosí yo misma.",
+   "asr": "Es nuestro estuche, la funda de acosillo misma.",
+   "wer": 0.333
+  },
+  {
+   "file": "es/job.t43_09_04_choir_case.line.3.ogg",
+   "dur": 2.77,
+   "lufs": -18.6,
+   "lead_ms": 38,
+   "trail_ms": 51,
+   "ref": "El recibo coincide. Setenta monedas.",
+   "asr": "El recibo coincide. 70 monedas.",
+   "wer": 0.2
+  },
+  {
+   "file": "es/job.t43_09_04_choir_case.line.4.ogg",
+   "dur": 4.36,
+   "lufs": -17.8,
+   "lead_ms": 25,
+   "trail_ms": 48,
+   "ref": "De acuerdo. La funda se queda; el cuaderno lo guardo en otro sitio.",
+   "asr": "De acuerdo, la funda se queda. El cuaderno lo guardo en otro sitio.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_05_receipt_safe.line.1.ogg",
+   "dur": 4.2,
+   "lufs": -18.3,
+   "lead_ms": 53,
+   "trail_ms": 26,
+   "ref": "Tengo la factura de la caja. La combinación no venía facturada.",
+   "asr": "Tengo la factura de la caja. La combinación no venía facturada.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_05_receipt_safe.line.2.ogg",
+   "dur": 3.2,
+   "lufs": -17.8,
+   "lead_ms": 42,
+   "trail_ms": 49,
+   "ref": "El contrato y la factura bastan. Ochenta monedas.",
+   "asr": "El contrato y la factura bastan. 80 monedas.",
+   "wer": 0.125
+  },
+  {
+   "file": "es/job.t43_09_05_receipt_safe.line.3.ogg",
+   "dur": 4.28,
+   "lufs": -18.3,
+   "lead_ms": 4,
+   "trail_ms": 43,
+   "ref": "De acuerdo. Archivo mejor los papeles que los recuerdos.",
+   "asr": "de acuerdo. Archivo mejor los papeles que los recuerdos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_05_receipt_safe.line.4.ogg",
+   "dur": 3.47,
+   "lufs": -17.8,
+   "lead_ms": 25,
+   "trail_ms": 51,
+   "ref": "Los recibos son suyos. Yo solo añado el mío.",
+   "asr": "Los recibos son suyos. Yo solo añado el mío.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_06_draughty_hall.line.1.ogg",
+   "dur": 3.91,
+   "lufs": -18.1,
+   "lead_ms": 1,
+   "trail_ms": 44,
+   "ref": "La entrada principal funciona. Esto no corre prisa.",
+   "asr": "La entrada principal funciona. Esto no corre prisa.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_06_draughty_hall.line.2.ogg",
+   "dur": 2.84,
+   "lufs": -18.0,
+   "lead_ms": 51,
+   "trail_ms": 53,
+   "ref": "La autorización está aquí. Noventa monedas.",
+   "asr": "La autorización está aquí. 90 monedas.",
+   "wer": 0.167
+  },
+  {
+   "file": "es/job.t43_09_06_draughty_hall.line.3.ogg",
+   "dur": 3.97,
+   "lufs": -18.1,
+   "lead_ms": 0,
+   "trail_ms": 16,
+   "ref": "De acuerdo. Y compruebe que luego cierre bien, por favor.",
+   "asr": "de acuerdo y comprobe que luego cierre bien por favor.",
+   "wer": 0.1
+  },
+  {
+   "file": "es/job.t43_09_06_draughty_hall.line.4.ogg",
+   "dur": 4.05,
+   "lufs": -18.0,
+   "lead_ms": 39,
+   "trail_ms": 55,
+   "ref": "Abrir es la mitad del trabajo. La otra mitad también la hago.",
+   "asr": "Abrir es la mitad del trabajo. La otra mitad también la hago.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_08_spare_key_hook.line.1.ogg",
+   "dur": 4.28,
+   "lufs": -18.3,
+   "lead_ms": 36,
+   "trail_ms": 54,
+   "ref": "El piso lo he comprobado. Lo que he perdido es lo siguiente.",
+   "asr": "El piso lo he comprobado. Lo que he perdido es lo siguiente.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_08_spare_key_hook.line.2.ogg",
+   "dur": 3.53,
+   "lufs": -18.0,
+   "lead_ms": 21,
+   "trail_ms": 35,
+   "ref": "Me dejó usted la copia. En un sobre con su nombre.",
+   "asr": "Me dejó usted la copia, en un sobre con su nombre.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_08_spare_key_hook.line.3.ogg",
+   "dur": 3.91,
+   "lufs": -17.8,
+   "lead_ms": 51,
+   "trail_ms": 52,
+   "ref": "Comprobémosla juntos. Consulta: cuarenta monedas.",
+   "asr": "Comprobemos la juntos. Consulta 40 monedas.",
+   "wer": 0.6
+  },
+  {
+   "file": "es/job.t43_09_08_spare_key_hook.line.4.ogg",
+   "dur": 3.89,
+   "lufs": -18.4,
+   "lead_ms": 22,
+   "trail_ms": 55,
+   "ref": "De acuerdo. Esta vez me ha arreglado usted la memoria.",
+   "asr": "De acuerdo. Esta vez me ha reglado usted la memoria.",
+   "wer": 0.1
+  },
+  {
+   "file": "es/job.t43_10_01_renovator_bureau.line.1.ogg",
+   "dur": 3.78,
+   "lufs": -18.0,
+   "lead_ms": 34,
+   "trail_ms": 26,
+   "ref": "El mueble anterior era para mí. Este es para todos.",
+   "asr": "El mueble anterior era para mí. Este es para todos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_01_renovator_bureau.line.2.ogg",
+   "dur": 4.11,
+   "lufs": -17.8,
+   "lead_ms": 53,
+   "trail_ms": 46,
+   "ref": "La factura está aquí. Cien monedas, y la cerradura se queda.",
+   "asr": "La factura está aquí, 100 monedas y la cerradura se queda.",
+   "wer": 0.091
+  },
+  {
+   "file": "es/job.t43_10_01_renovator_bureau.line.3.ogg",
+   "dur": 4.03,
+   "lufs": -18.4,
+   "lead_ms": 3,
+   "trail_ms": 46,
+   "ref": "De acuerdo. La sala común se merece un escritorio de verdad.",
+   "asr": "De acuerdo, la sala común se merece un escritorio de verdad.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_01_renovator_bureau.line.4.ogg",
+   "dur": 3.42,
+   "lufs": -17.6,
+   "lead_ms": 38,
+   "trail_ms": 47,
+   "ref": "La cerradura vieja se queda. Le haré una llave nueva.",
+   "asr": "La cerradura vieja se queda. Le haré una llave nueva.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_02_scaffold_store.line.1.ogg",
+   "dur": 4.14,
+   "lufs": -18.1,
+   "lead_ms": 49,
+   "trail_ms": 43,
+   "ref": "Tengo gente y tengo plan. La llave se fue con el turno anterior.",
+   "asr": "Tengo gente y tengo plan. La llave se fue con el turno anterior.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_02_scaffold_store.line.2.ogg",
+   "dur": 3.97,
+   "lufs": -18.2,
+   "lead_ms": 0,
+   "trail_ms": 52,
+   "ref": "Confirmo el equipo y el almacén. El contrato está vigente.",
+   "asr": "Confirmo el equipo y el almacén. El contrato está vigente.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_02_scaffold_store.line.3.ogg",
+   "dur": 3.33,
+   "lufs": -18.0,
+   "lead_ms": 17,
+   "trail_ms": 54,
+   "ref": "Ciento diez monedas. El candado quedará entero.",
+   "asr": "110 monedas. El candado quedará entero.",
+   "wer": 0.286
+  },
+  {
+   "file": "es/job.t43_10_02_scaffold_store.line.4.ogg",
+   "dur": 3.56,
+   "lufs": -18.1,
+   "lead_ms": 42,
+   "trail_ms": 35,
+   "ref": "De acuerdo. La llave tendrá su propia línea en mi lista.",
+   "asr": "De acuerdo, la llave tendrá su propia línea en mi lista.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_03_exhibit_clock.line.1.ogg",
+   "dur": 4.91,
+   "lufs": -18.2,
+   "lead_ms": 7,
+   "trail_ms": 27,
+   "ref": "Hay que reparar el reloj. Las puertas están abiertas; no vigila nada.",
+   "asr": "Hay que reparar el reloj. Las puertas están abiertas. No vigila nada.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_03_exhibit_clock.line.2.ogg",
+   "dur": 4.1,
+   "lufs": -17.3,
+   "lead_ms": 47,
+   "trail_ms": 51,
+   "ref": "La carta y el acta de entrega están aquí. Ciento veinte monedas.",
+   "asr": "La carta y el acta de entrega están aquí. 120 monedas.",
+   "wer": 0.167
+  },
+  {
+   "file": "es/job.t43_10_03_exhibit_clock.line.3.ogg",
+   "dur": 4.29,
+   "lufs": -17.4,
+   "lead_ms": 40,
+   "trail_ms": 44,
+   "ref": "De acuerdo. Reparamos la marcha; no adelantamos la hora de apertura.",
+   "asr": "De acuerdo, reparamos la marcha, no adelantamos la hora de apertura.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_03_exhibit_clock.line.4.ogg",
+   "dur": 3.32,
+   "lufs": -18.0,
+   "lead_ms": 58,
+   "trail_ms": 7,
+   "ref": "Por fin una pieza que puede tomarse su tiempo.",
+   "asr": "Por fin una pieza que puede tomarse su tiempo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_04_design_cabinet.line.1.ogg",
+   "dur": 3.84,
+   "lufs": -18.0,
+   "lead_ms": 14,
+   "trail_ms": 46,
+   "ref": "Esta vez Patata es inocente. La llave la escondí yo.",
+   "asr": "Esta vez patata es inocente. La llave la escondí yo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_04_design_cabinet.line.2.ogg",
+   "dur": 3.94,
+   "lufs": -18.0,
+   "lead_ms": 42,
+   "trail_ms": 49,
+   "ref": "El contrato y la factura coinciden. Ciento treinta monedas.",
+   "asr": "El contrato y la factura coinciden 130 monedas.",
+   "wer": 0.222
+  },
+  {
+   "file": "es/job.t43_10_04_design_cabinet.line.3.ogg",
+   "dur": 3.0,
+   "lufs": -18.1,
+   "lead_ms": 7,
+   "trail_ms": 52,
+   "ref": "De acuerdo. ¿Sigue colgado el letrero que le hice?",
+   "asr": "De acuerdo. ¿Sigue colgado el letrero que le hice?",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_04_design_cabinet.line.4.ogg",
+   "dur": 3.8,
+   "lufs": -18.0,
+   "lead_ms": 29,
+   "trail_ms": 43,
+   "ref": "Sigue ahí. Hay más clientes y las letras no se han borrado.",
+   "asr": "Sigue ahí. Hay más clientes y las letras no se han borrado.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_05_porters_drawer.line.1.ogg",
+   "dur": 4.68,
+   "lufs": -18.1,
+   "lead_ms": 35,
+   "trail_ms": 57,
+   "ref": "Tablero nuevo, cajón viejo. La lista sigue siendo la misma.",
+   "asr": "Tablero nuevo, cajón viejo. La lista sigue siendo la misma.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_05_porters_drawer.line.2.ogg",
+   "dur": 3.69,
+   "lufs": -17.3,
+   "lead_ms": 41,
+   "trail_ms": 50,
+   "ref": "El encargo es para el cajón. Ciento cuarenta monedas.",
+   "asr": "El encargo es para el cajón. 140 monedas.",
+   "wer": 0.222
+  },
+  {
+   "file": "es/job.t43_10_05_porters_drawer.line.3.ogg",
+   "dur": 5.85,
+   "lufs": -18.0,
+   "lead_ms": 22,
+   "trail_ms": 34,
+   "ref": "De acuerdo. A los estudiantes los tengo en la lista; las llaves también las quiero.",
+   "asr": "De acuerdo. A los estudiantes los tengo en la lista. Las llaves también las quiero.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_05_porters_drawer.line.4.ogg",
+   "dur": 4.74,
+   "lufs": -18.0,
+   "lead_ms": 48,
+   "trail_ms": 51,
+   "ref": "Las taquillas privadas siguen siendo privadas. Me ocupo solo de este cajón.",
+   "asr": "Las taquillas privadas siguen siendo privadas. Me ocupo solo de este cajón.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_06_shared_room_entry.line.1.ogg",
+   "dur": 4.17,
+   "lufs": -17.6,
+   "lead_ms": 7,
+   "trail_ms": 17,
+   "ref": "La entrega está hecha. La carpeta decidió quedarse dentro.",
+   "asr": "La entrega está hecha. La carpeta decidió quedarse dentro.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_06_shared_room_entry.line.2.ogg",
+   "dur": 2.77,
+   "lufs": -18.0,
+   "lead_ms": 36,
+   "trail_ms": 50,
+   "ref": "Traigo el acuerdo. Y la autorización.",
+   "asr": "Traigo el acuerdo y la autorización.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_06_shared_room_entry.line.3.ogg",
+   "dur": 3.69,
+   "lufs": -17.8,
+   "lead_ms": 3,
+   "trail_ms": 54,
+   "ref": "Ciento cincuenta monedas. Solo abrimos la sala común.",
+   "asr": "150 monedas. Solo abrimos la sala común.",
+   "wer": 0.25
+  },
+  {
+   "file": "es/job.t43_10_06_shared_room_entry.line.4.ogg",
+   "dur": 3.78,
+   "lufs": -17.9,
+   "lead_ms": 0,
+   "trail_ms": 38,
+   "ref": "De acuerdo. Luego practicamos a cerrar con la llave fuera.",
+   "asr": "de acuerdo. Luego practicamos a cerrar con la llave fuera.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_01_wooden_market.line.1.ogg",
+   "dur": 4.98,
+   "lufs": -18.0,
+   "lead_ms": 9,
+   "trail_ms": 26,
+   "ref": "Las casitas están listas. Una calle entera espera en un solo cofre.",
+   "asr": "Las cacitas están listas. Una callentera espera en un solo cofre.",
+   "wer": 0.25
+  },
+  {
+   "file": "es/job.t43_11_01_wooden_market.line.2.ogg",
+   "dur": 4.34,
+   "lufs": -17.3,
+   "lead_ms": 51,
+   "trail_ms": 41,
+   "ref": "El encargo del museo y la factura. El número de inventario coincide.",
+   "asr": "El encargo del museo y la factura. El número de inventario coincide.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_01_wooden_market.line.3.ogg",
+   "dur": 3.7,
+   "lufs": -17.6,
+   "lead_ms": 0,
+   "trail_ms": 52,
+   "ref": "Ciento cincuenta monedas. La madera quedará sin marcas.",
+   "asr": "150 monedas. La madera quedará sin marcas.",
+   "wer": 0.25
+  },
+  {
+   "file": "es/job.t43_11_01_wooden_market.line.4.ogg",
+   "dur": 3.92,
+   "lufs": -18.0,
+   "lead_ms": 10,
+   "trail_ms": 48,
+   "ref": "De acuerdo. Los niños elegirán dónde van las casitas.",
+   "asr": "De acuerdo, los niños elegirán dónde van las casitas.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_02_bicycle_stand.line.1.ogg",
+   "dur": 4.57,
+   "lufs": -17.8,
+   "lead_ms": 48,
+   "trail_ms": 20,
+   "ref": "La bici está restaurada. Mi memoria sigue esperando turno.",
+   "asr": "La bici está restaurada. Mi memoria sigue esperando turno.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_02_bicycle_stand.line.2.ogg",
+   "dur": 3.91,
+   "lufs": -17.2,
+   "lead_ms": 39,
+   "trail_ms": 40,
+   "ref": "El recibo y la foto coinciden. Ciento sesenta monedas.",
+   "asr": "El recibo y la foto coinciden 160 monedas.",
+   "wer": 0.222
+  },
+  {
+   "file": "es/job.t43_11_02_bicycle_stand.line.3.ogg",
+   "dur": 3.54,
+   "lufs": -18.1,
+   "lead_ms": 9,
+   "trail_ms": 42,
+   "ref": "De acuerdo. En la foto sale también mi antiguo bigote.",
+   "asr": "De acuerdo, en la foto sale también mi antiguo bigote.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_02_bicycle_stand.line.4.ogg",
+   "dur": 4.01,
+   "lufs": -17.8,
+   "lead_ms": 1,
+   "trail_ms": 47,
+   "ref": "La bici está comprobada. El bigote no necesita revisión.",
+   "asr": "La bichi está comprobada. El bigote no necesita revisión.",
+   "wer": 0.111
+  },
+  {
+   "file": "es/job.t43_11_03_tool_exchange.line.1.ogg",
+   "dur": 5.44,
+   "lufs": -18.2,
+   "lead_ms": 7,
+   "trail_ms": 52,
+   "ref": "Las herramientas son para trabajar. En ese baúl se vuelven perezosas.",
+   "asr": "Las herramientas son para trabajar. En ese baúl se vuelven perezosas.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_03_tool_exchange.line.2.ogg",
+   "dur": 3.83,
+   "lufs": -17.3,
+   "lead_ms": 45,
+   "trail_ms": 50,
+   "ref": "La factura y la entrega están aquí. Ciento setenta monedas.",
+   "asr": "La factura y la entrega están aquí. 170 monedas.",
+   "wer": 0.2
+  },
+  {
+   "file": "es/job.t43_11_03_tool_exchange.line.3.ogg",
+   "dur": 4.52,
+   "lufs": -18.2,
+   "lead_ms": 0,
+   "trail_ms": 46,
+   "ref": "De acuerdo. A Henryk tampoco le gustaba un taller vacío.",
+   "asr": "De acuerdo. A Henryk tampoco le gustaba un taller vacío.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_03_tool_exchange.line.4.ogg",
+   "dur": 3.48,
+   "lufs": -17.4,
+   "lead_ms": 54,
+   "trail_ms": 46,
+   "ref": "El puesto ya está listo. Apuntaré cada donación.",
+   "asr": "El puesto ya está listo. Apuntaré cada donación.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_04_sailors_stall.line.1.ogg",
+   "dur": 4.67,
+   "lufs": -18.1,
+   "lead_ms": 52,
+   "trail_ms": 37,
+   "ref": "La última vez la llave cayó al agua. Esta vez simplemente zarpó.",
+   "asr": "La última vez la llave cayó al agua. Esta vez simplemente zarpó.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_04_sailors_stall.line.2.ogg",
+   "dur": 4.38,
+   "lufs": -18.1,
+   "lead_ms": 47,
+   "trail_ms": 47,
+   "ref": "Es su baúl personal. Nuestro barco no tiene nada que ver.",
+   "asr": "Es su baúl personal. Nuestro barco no tiene nada que ver.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_04_sailors_stall.line.3.ogg",
+   "dur": 3.11,
+   "lufs": -17.6,
+   "lead_ms": 38,
+   "trail_ms": 47,
+   "ref": "La factura coincide. Ciento ochenta monedas.",
+   "asr": "La factura coincide, 180 monedas.",
+   "wer": 0.333
+  },
+  {
+   "file": "es/job.t43_11_04_sailors_stall.line.4.ogg",
+   "dur": 3.96,
+   "lufs": -18.1,
+   "lead_ms": 49,
+   "trail_ms": 52,
+   "ref": "De acuerdo. También en tierra sé buscarme una aventura.",
+   "asr": "De acuerdo. También entierras e buscarme una aventura.",
+   "wer": 0.333
+  },
+  {
+   "file": "es/job.t43_11_05_rehearsal_chest.line.1.ogg",
+   "dur": 4.78,
+   "lufs": -18.3,
+   "lead_ms": 48,
+   "trail_ms": 27,
+   "ref": "Puedo tocar con las manos. Pero las partituras no me las saco del bolsillo.",
+   "asr": "Puedo tocar con las manos, pero las partituras no me las saco del bolsillo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_05_rehearsal_chest.line.2.ogg",
+   "dur": 4.36,
+   "lufs": -17.9,
+   "lead_ms": 24,
+   "trail_ms": 53,
+   "ref": "El baúl del local. El encargo del organizador y mi permiso.",
+   "asr": "El baúl del local, el encargo del organizador y mi permiso.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_05_rehearsal_chest.line.3.ogg",
+   "dur": 4.02,
+   "lufs": -17.6,
+   "lead_ms": 2,
+   "trail_ms": 42,
+   "ref": "Ciento ochenta y cinco monedas. El concierto no tiene prisa.",
+   "asr": "185 monedas. El concierto no tiene prisa.",
+   "wer": 0.4
+  },
+  {
+   "file": "es/job.t43_11_05_rehearsal_chest.line.4.ogg",
+   "dur": 3.61,
+   "lufs": -17.9,
+   "lead_ms": 28,
+   "trail_ms": 34,
+   "ref": "De acuerdo. El público todavía está eligiendo pastel.",
+   "asr": "De acuerdo. El público todavía está eligiendo pastel.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_07_wrong_delivery.line.1.ogg",
+   "dur": 4.85,
+   "lufs": -17.8,
+   "lead_ms": 24,
+   "trail_ms": 49,
+   "ref": "El número coincide, pero parece que el destinatario también ha salido a repartir.",
+   "asr": "El número coincide, pero parece que el destinatario también ha salido a repartir.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_07_wrong_delivery.line.2.ogg",
+   "dur": 4.81,
+   "lufs": -18.1,
+   "lead_ms": 24,
+   "trail_ms": 51,
+   "ref": "Este lleva una letra. El número solo está al otro lado de la plaza.",
+   "asr": "Este lleva una letra. El número solo está al otro lado de la plaza.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_07_wrong_delivery.line.3.ogg",
+   "dur": 3.82,
+   "lufs": -17.8,
+   "lead_ms": 52,
+   "trail_ms": 52,
+   "ref": "Comprobemos la entrega. Consulta: cuarenta monedas.",
+   "asr": "Comprobemos la entrega. Consulta. 40 monedas.",
+   "wer": 0.167
+  },
+  {
+   "file": "es/job.t43_11_07_wrong_delivery.line.4.ogg",
+   "dur": 3.93,
+   "lufs": -18.1,
+   "lead_ms": 51,
+   "trail_ms": 54,
+   "ref": "De acuerdo. Ya veo al destinatario. Saluda con las dos manos.",
+   "asr": "De acuerdo, ya veo al destinatario. Saluda con las dos manos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_01_letters_archive.line.1.ogg",
+   "dur": 4.1,
+   "lufs": -17.8,
+   "lead_ms": 37,
+   "trail_ms": 37,
+   "ref": "Enseñaré tres cartas. Las demás se quedan en la familia.",
+   "asr": "Enseñaré tres cartas. Las demás se quedan en la familia.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_01_letters_archive.line.2.ogg",
+   "dur": 4.35,
+   "lufs": -17.6,
+   "lead_ms": 46,
+   "trail_ms": 52,
+   "ref": "La propietaria es mi madre. Los papeles los hemos traído juntas.",
+   "asr": "La propietaria es mi madre. Los papeles los hemos traído juntas.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_01_letters_archive.line.3.ogg",
+   "dur": 3.46,
+   "lufs": -17.6,
+   "lead_ms": 33,
+   "trail_ms": 48,
+   "ref": "Los he comprobado. Ciento ochenta y cinco monedas.",
+   "asr": "Los he comprobado. 185 monedas.",
+   "wer": 0.5
+  },
+  {
+   "file": "es/job.t43_12_01_letters_archive.line.4.ogg",
+   "dur": 3.54,
+   "lufs": -18.1,
+   "lead_ms": 34,
+   "trail_ms": 48,
+   "ref": "De acuerdo. Se abre delante de mí y elijo yo.",
+   "asr": "De acuerdo. Se abre delante de mí y elijo yo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_02_detective_cabinet.line.1.ogg",
+   "dur": 4.57,
+   "lufs": -18.0,
+   "lead_ms": 49,
+   "trail_ms": 34,
+   "ref": "Un baúl vacío. El acta confirma incluso la ausencia de contenido.",
+   "asr": "Un baúl vacío. El acta confirma incluso la ausencia de contenido.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_02_detective_cabinet.line.2.ogg",
+   "dur": 3.19,
+   "lufs": -17.8,
+   "lead_ms": 53,
+   "trail_ms": 47,
+   "ref": "La carta está en regla. Ciento noventa monedas.",
+   "asr": "La carta está en regla. 190 monedas.",
+   "wer": 0.25
+  },
+  {
+   "file": "es/job.t43_12_02_detective_cabinet.line.3.ogg",
+   "dur": 4.6,
+   "lufs": -18.0,
+   "lead_ms": 8,
+   "trail_ms": 40,
+   "ref": "De acuerdo. Zuzanna anotará el resultado, sin describir el método.",
+   "asr": "De acuerdo, Susana anotará el resultado sin describir el método.",
+   "wer": 0.1
+  },
+  {
+   "file": "es/job.t43_12_02_detective_cabinet.line.4.ogg",
+   "dur": 3.65,
+   "lufs": -18.1,
+   "lead_ms": 54,
+   "trail_ms": 46,
+   "ref": "Esta vez mi nota será más corta que el acta. Lo intentaré.",
+   "asr": "Esta vez mi nota será más corta que el acta. Lo intentaré.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_03_community_store.line.1.ogg",
+   "dur": 5.55,
+   "lufs": -17.9,
+   "lead_ms": 35,
+   "trail_ms": 38,
+   "ref": "Las sillas ya las conté. Los invitados se multiplican más deprisa.",
+   "asr": "Las sillas ya las conté. Los invitados se multiplican más de prisa.",
+   "wer": 0.182
+  },
+  {
+   "file": "es/job.t43_12_03_community_store.line.2.ogg",
+   "dur": 3.99,
+   "lufs": -17.4,
+   "lead_ms": 36,
+   "trail_ms": 19,
+   "ref": "El almacén de la comunidad. El acuerdo y mi autorización.",
+   "asr": "El almacén de la comunidad, el acuerdo y mi autorización.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_03_community_store.line.3.ogg",
+   "dur": 2.78,
+   "lufs": -18.0,
+   "lead_ms": 32,
+   "trail_ms": 57,
+   "ref": "Ciento noventa y cinco monedas. ¿De acuerdo?",
+   "asr": "195 monedas ¿De acuerdo?",
+   "wer": 0.571
+  },
+  {
+   "file": "es/job.t43_12_03_community_store.line.4.ogg",
+   "dur": 4.4,
+   "lufs": -18.0,
+   "lead_ms": 38,
+   "trail_ms": 35,
+   "ref": "De acuerdo. Señora Halina, la olla también está contada.",
+   "asr": "De acuerdo. Señora Jalina, la olla también está contada.",
+   "wer": 0.111
+  },
+  {
+   "file": "es/job.t43_12_04_school_box.line.1.ogg",
+   "dur": 4.12,
+   "lufs": -18.1,
+   "lead_ms": 0,
+   "trail_ms": 48,
+   "ref": "Esta vez no enterramos nada. Bastó con guardarlo en un armario.",
+   "asr": "Esta vez no enterramos nada. Bastó con guardarlo en un armario.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_04_school_box.line.2.ogg",
+   "dur": 4.33,
+   "lufs": -17.5,
+   "lead_ms": 54,
+   "trail_ms": 50,
+   "ref": "El permiso del colegio está aquí. Ciento noventa y ocho monedas.",
+   "asr": "El permiso del colegio está aquí. 198 monedas.",
+   "wer": 0.364
+  },
+  {
+   "file": "es/job.t43_12_04_school_box.line.3.ogg",
+   "dur": 5.69,
+   "lufs": -18.0,
+   "lead_ms": 37,
+   "trail_ms": 48,
+   "ref": "De acuerdo. Los marcos son del colegio; los recuerdos, cada uno los suyos.",
+   "asr": "De acuerdo. Los marcos son del colegio. Los recuerdos, cada uno los suyos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_04_school_box.line.4.ogg",
+   "dur": 4.01,
+   "lufs": -18.1,
+   "lead_ms": 9,
+   "trail_ms": 46,
+   "ref": "Patata tendrá su propia foto. No iba a nuestra clase.",
+   "asr": "Atata tendrá su propia foto. No iba a nuestra clase.",
+   "wer": 0.1
+  },
+  {
+   "file": "es/job.t43_12_05_tea_fund_case.line.1.ogg",
+   "dur": 3.32,
+   "lufs": -18.0,
+   "lead_ms": 33,
+   "trail_ms": 43,
+   "ref": "Estamos los dos. La autorización cubre esta caja.",
+   "asr": "Estamos los dos, la autorización cubre esta caja.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_05_tea_fund_case.line.2.ogg",
+   "dur": 4.29,
+   "lufs": -17.8,
+   "lead_ms": 53,
+   "trail_ms": 54,
+   "ref": "El acuerdo está en regla. Doscientas monedas, delante de ustedes.",
+   "asr": "El acuerdo está en regla. 200 monedas. Delante de ustedes.",
+   "wer": 0.1
+  },
+  {
+   "file": "es/job.t43_12_05_tea_fund_case.line.3.ogg",
+   "dur": 4.05,
+   "lufs": -17.9,
+   "lead_ms": 23,
+   "trail_ms": 34,
+   "ref": "De acuerdo. Las cuentas las hacemos juntos cuando esté abierta.",
+   "asr": "De acuerdo, las cuentas las hacemos juntos cuando esté abierta.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_05_tea_fund_case.line.4.ogg",
+   "dur": 3.24,
+   "lufs": -17.5,
+   "lead_ms": 57,
+   "trail_ms": 50,
+   "ref": "Les dejo espacio. Yo me ocupo de mi propia factura.",
+   "asr": "Le dejo espacio. Yo me ocupo de mi propia factura.",
+   "wer": 0.1
+  },
+  {
+   "file": "es/job.t43_12_07_clock_back_home.line.1.ogg",
+   "dur": 5.33,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 45,
+   "ref": "El reloj ha vuelto. El viaje le ha descompasado el ritmo, no los papeles.",
+   "asr": "El reloj ha vuelto. El viaje le ha descompasado el ritmo, no los papeles.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_07_clock_back_home.line.2.ogg",
+   "dur": 3.4,
+   "lufs": -17.8,
+   "lead_ms": 36,
+   "trail_ms": 50,
+   "ref": "Carta y acta comprobadas. Doscientas monedas.",
+   "asr": "Carta y acta comprobadas. 200 monedas.",
+   "wer": 0.167
+  },
+  {
+   "file": "es/job.t43_12_07_clock_back_home.line.3.ogg",
+   "dur": 4.0,
+   "lufs": -18.0,
+   "lead_ms": 13,
+   "trail_ms": 43,
+   "ref": "De acuerdo. Se queda en la mesa hasta que termine la prueba de marcha.",
+   "asr": "De acuerdo, se queda en la mesa hasta que termine la prueba de marcha.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_07_clock_back_home.line.4.ogg",
+   "dur": 3.66,
+   "lufs": -18.1,
+   "lead_ms": 0,
+   "trail_ms": 19,
+   "ref": "Yo ya no cronometro nada. Me sentaré a su lado y ya está.",
+   "asr": "Yo ya no creo no metrónada. Me sentaré a su lado y ya está.",
+   "wer": 0.231
+  },
+  {
+   "file": "es/job.t43_12_08_henryks_bench.line.1.ogg",
+   "dur": 5.39,
+   "lufs": -18.3,
+   "lead_ms": 13,
+   "trail_ms": 45,
+   "ref": "Henryk practicaba con este baúl. El documento de entrega lo tiene usted.",
+   "asr": "Henry practicaba con este baúl. El documento de entrega lo tiene usted.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.t43_12_08_henryks_bench.line.2.ogg",
+   "dur": 4.41,
+   "lufs": -17.6,
+   "lead_ms": 38,
+   "trail_ms": 50,
+   "ref": "Comprobado. Doscientas monedas por la demostración, según lo acordado.",
+   "asr": "Son probado. 200 monedas por la demostración, según lo acordado.",
+   "wer": 0.333
+  },
+  {
+   "file": "es/job.t43_12_08_henryks_bench.line.3.ogg",
+   "dur": 4.71,
+   "lufs": -18.0,
+   "lead_ms": 49,
+   "trail_ms": 54,
+   "ref": "El organizador ha dado su permiso. ¿Puedo sentarme junto al banco de trabajo?",
+   "asr": "El organizador ha dado su permiso. ¿Puedo sentarme junto al banco de trabajo?",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_08_henryks_bench.line.4.ogg",
+   "dur": 5.18,
+   "lufs": -18.2,
+   "lead_ms": 54,
+   "trail_ms": 36,
+   "ref": "Siéntate. Primero pregunta de quién es. Lo demás puede esperar.",
+   "asr": "Siéntate. Primero pregunta de quién es. Lo demás puede esperar.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.time_capsule.line.1.ogg",
+   "dur": 3.89,
+   "lufs": -18.1,
+   "lead_ms": 1,
+   "trail_ms": 0,
+   "ref": "Sé que el código era una fecha. ¿Pero de quién?",
+   "asr": "Sé que el código era una fecha, pero ¿de quién?",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.time_capsule.line.2.ogg",
+   "dur": 3.91,
+   "lufs": -18.1,
+   "lead_ms": 41,
+   "trail_ms": 54,
+   "ref": "El colegio da permiso. Ábrala delante de todos, por favor.",
+   "asr": "El Colegio da Permiso. Abra la delante de todos, por favor.",
+   "wer": 0.2
+  },
+  {
+   "file": "es/job.time_capsule.line.3.ogg",
+   "dur": 5.38,
+   "lufs": -17.7,
+   "lead_ms": 40,
+   "trail_ms": 47,
+   "ref": "Seño, teníamos nueve años. Solo recuerdo recoger castañas.",
+   "asr": "Seño, teníamos nueve años. Solo recuerdo recoger castañas.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.time_capsule.line.4.ogg",
+   "dur": 4.94,
+   "lufs": -17.7,
+   "lead_ms": 37,
+   "trail_ms": 24,
+   "ref": "Mi carta decía: «Espero que tengas un perro». Tengo un gato. Vale igual.",
+   "asr": "Mi carta de fía. Espero que tengas un perro. Tengo un gato. Vale igual.",
+   "wer": 0.154
+  },
+  {
+   "file": "es/job.uncle_safe_heirs.line.1.ogg",
+   "dur": 4.41,
+   "lufs": -18.3,
+   "lead_ms": 46,
+   "trail_ms": 43,
+   "ref": "Usted la abre, yo miro y aviso a los demás. Después compartiremos.",
+   "asr": "Usted la abre, yo miro y aviso a los demás. Después compartiremos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.uncle_safe_heirs.line.2.ogg",
+   "dur": 4.24,
+   "lufs": -17.5,
+   "lead_ms": 38,
+   "trail_ms": 41,
+   "ref": "La abriré cuando estén todos los herederos o tenga su permiso por escrito.",
+   "asr": "La abriré cuando estén todos los herederos o tenga su permiso por escrito.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.uncle_safe_heirs.line.3.ogg",
+   "dur": 3.76,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 39,
+   "ref": "Ewa llega dentro de una hora. Marek, pon agua a hervir.",
+   "asr": "Eva llega dentro de una hora. Marek, pon agua a hervir.",
+   "wer": 0.091
+  },
+  {
+   "file": "es/job.uncle_safe_heirs.line.4.ogg",
+   "dur": 4.28,
+   "lufs": -18.1,
+   "lead_ms": 52,
+   "trail_ms": 39,
+   "ref": "El tío se reiría al vernos discutir por una caja fuerte con dial.",
+   "asr": "El tío se reiría al vernos discutir por una caja fuerte con D'Al.",
+   "wer": 0.077
+  },
+  {
+   "file": "es/job.warm_room_for_neighbours.line.1.ogg",
+   "dur": 5.36,
+   "lufs": -18.1,
+   "lead_ms": 47,
+   "trail_ms": 33,
+   "ref": "La sala está caliente. Los vecinos, no. Me gustaría cambiar eso.",
+   "asr": "La sala está caliente. Los vecinos? No. Me gustaría cambiar eso.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.warm_room_for_neighbours.line.2.ogg",
+   "dur": 4.64,
+   "lufs": -18.1,
+   "lead_ms": 7,
+   "trail_ms": 39,
+   "ref": "La administradora aceptó por teléfono. Aquí está el acuerdo de los vecinos.",
+   "asr": "La administradora aceptó por teléfono. Aquí está el acuerdo de los vecinos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.warm_room_for_neighbours.line.3.ogg",
+   "dur": 4.21,
+   "lufs": -17.4,
+   "lead_ms": 53,
+   "trail_ms": 50,
+   "ref": "El derecho a entrar está claro. El precio sigue siendo el acordado.",
+   "asr": "El derecho a entrar está claro. El precio sigue siendo el acordado.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.warm_room_for_neighbours.line.4.ogg",
+   "dur": 4.94,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 14,
+   "ref": "Traeré mantas. Patata quizá se ofrezca como bolsa de agua caliente.",
+   "asr": "Traer emantas. Patata quizá se ofrezca como bolsa de agua caliente.",
+   "wer": 0.182
+  },
+  {
+   "file": "es/job.widow_bureau.line.1.ogg",
+   "dur": 5.77,
+   "lufs": -17.8,
+   "lead_ms": 33,
+   "trail_ms": 27,
+   "ref": "La señora Zosia dice que usted no taladra. Mi marido odiaba los taladros.",
+   "asr": "La señora Zosia dice que usted no taladra. Mi marido odiaba a los taladros.",
+   "wer": 0.077
+  },
+  {
+   "file": "es/job.widow_bureau.line.2.ogg",
+   "dur": 3.78,
+   "lufs": -18.1,
+   "lead_ms": 44,
+   "trail_ms": 30,
+   "ref": "Lo abriré sin dejar marcas. Seguirá siendo su escritorio.",
+   "asr": "Lo abriré sin dejar marcas. Seguirá siendo su escritorio.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.widow_bureau.line.3.ogg",
+   "dur": 4.01,
+   "lufs": -17.7,
+   "lead_ms": 39,
+   "trail_ms": 53,
+   "ref": "Entradas de ópera. De mil novecientos ochenta y siete.",
+   "asr": "Entradas de ópera de 1987.",
+   "wer": 0.556
+  },
+  {
+   "file": "es/job.widow_bureau.line.4.ogg",
+   "dur": 4.38,
+   "lufs": -18.0,
+   "lead_ms": 18,
+   "trail_ms": 7,
+   "ref": "Me dijo que las había perdido. Pero las había guardado.",
+   "asr": "Me dijo que las había perdido, pero las había guardado.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.wigilia_table_drawer.line.1.ogg",
+   "dur": 4.49,
+   "lufs": -18.2,
+   "lead_ms": 36,
+   "trail_ms": 44,
+   "ref": "Todos tienen sitio. Solo las tarjetas se han quedado encerradas en el cajón.",
+   "asr": "Todos tienen sitio. Sólo las tarjetas se han quedado encerradas en el cajón.",
+   "wer": 0.077
+  },
+  {
+   "file": "es/job.wigilia_table_drawer.line.2.ogg",
+   "dur": 4.81,
+   "lufs": -18.1,
+   "lead_ms": 40,
+   "trail_ms": 56,
+   "ref": "Elżbieta dio su permiso. Las sillas ya las he contado dos veces.",
+   "asr": "El vieta dio su permiso. Las sillas ya las he contado dos veces.",
+   "wer": 0.167
+  },
+  {
+   "file": "es/job.wigilia_table_drawer.line.3.ogg",
+   "dur": 5.02,
+   "lufs": -17.8,
+   "lead_ms": 54,
+   "trail_ms": 52,
+   "ref": "He visto el acuerdo y el precio está fijado. Que esos sitios no se queden vacíos.",
+   "asr": "He visto el acuerdo y el precio está fijado, que esos sitios no se queden vacíos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.wigilia_table_drawer.line.4.ogg",
+   "dur": 2.82,
+   "lufs": -18.2,
+   "lead_ms": 35,
+   "trail_ms": 53,
+   "ref": "Si sobra una silla, se la guardamos a usted.",
+   "asr": "Si sobra una silla, se la guardamos a usted.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.winter_bicycle_cellar.line.1.ogg",
+   "dur": 5.43,
+   "lufs": -17.8,
+   "lead_ms": 43,
+   "trail_ms": 49,
+   "ref": "Mi bici está bajo techo. El candado también, y se ha helado igual.",
+   "asr": "Mi bici está bajo techo. El candado también y se ha helado igual.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.winter_bicycle_cellar.line.2.ogg",
+   "dur": 3.97,
+   "lufs": -17.7,
+   "lead_ms": 23,
+   "trail_ms": 26,
+   "ref": "Su plaza está en el registro y el anexo del alquiler coincide.",
+   "asr": "Su plafa está en el registro y el anexo del alquiler confide.",
+   "wer": 0.167
+  },
+  {
+   "file": "es/job.winter_bicycle_cellar.line.3.ogg",
+   "dur": 3.47,
+   "lufs": -17.8,
+   "lead_ms": 48,
+   "trail_ms": 51,
+   "ref": "Eso confirma el acceso. Mantenemos el precio acordado.",
+   "asr": "Eso confirma el acceso. Mantenemos el precio acordado.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.winter_bicycle_cellar.line.4.ogg",
+   "dur": 3.66,
+   "lufs": -18.3,
+   "lead_ms": 42,
+   "trail_ms": 40,
+   "ref": "Gracias. A lo mejor los paquetes llegan antes de Año Nuevo.",
+   "asr": "Gracias. A lo mejor los paquetes llegan antes de año nuevo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.wooden_winter_village.line.1.ogg",
+   "dur": 4.39,
+   "lufs": -18.0,
+   "lead_ms": 50,
+   "trail_ms": 41,
+   "ref": "El museo nos prestó una callecita de invierno. Se ha escondido en su caja.",
+   "asr": "El museo nos prestó una callecita de invierno. Se ha escondido en su caja.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.wooden_winter_village.line.2.ogg",
+   "dur": 5.89,
+   "lufs": -18.0,
+   "lead_ms": 32,
+   "trail_ms": 44,
+   "ref": "La autorización de la doctora Rygiel y el acta de depósito coinciden. Precio según presupuesto.",
+   "asr": "La autorización de la doctora Riegel y el acta de depósito coinciden. Precio según presupuesto.",
+   "wer": 0.067
+  },
+  {
+   "file": "es/job.wooden_winter_village.line.3.ogg",
+   "dur": 4.27,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 39,
+   "ref": "Sin arañazos, por favor. Esta nieve tiene casi cien años.",
+   "asr": "Sin arañazos, por favor. Esta nieve tiene casi 100 años.",
+   "wer": 0.1
+  },
+  {
+   "file": "es/job.wooden_winter_village.line.4.ogg",
+   "dur": 2.74,
+   "lufs": -18.0,
+   "lead_ms": 55,
+   "trail_ms": 40,
+   "ref": "Entendido. No pienso tocar el tiempo.",
+   "asr": "Entendido, no pienso tocar el tiempo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.wrong_floor.line.1.ogg",
+   "dur": 5.25,
+   "lufs": -18.4,
+   "lead_ms": 55,
+   "trail_ms": 36,
+   "ref": "La llave ya no entra. La cerradura se rompió cuando yo no estaba.",
+   "asr": "La llave ya no entra. La cerradura se rompió cuando yo no estaba.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.wrong_floor.line.2.ogg",
+   "dur": 4.52,
+   "lufs": -17.9,
+   "lead_ms": 57,
+   "trail_ms": 12,
+   "ref": "Señor Kazimierz, el buzón tiene otro nombre. ¿Y esa corona?",
+   "asr": "Señor Casimiers, el buzón tiene otro nombre. ¿Y esa corona?",
+   "wer": 0.1
+  },
+  {
+   "file": "es/job.wrong_floor.line.3.ogg",
+   "dur": 5.3,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 49,
+   "ref": "¿Quién anda ahí? Llevo doce años aquí. Yo misma hice esa corona.",
+   "asr": "¿Quién anda ahí? Llevo 12 años aquí. Yo misma hice esa corona.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.wrong_floor.line.4.ogg",
+   "dur": 4.38,
+   "lufs": -18.0,
+   "lead_ms": 33,
+   "trail_ms": 45,
+   "ref": "Ah, la llave entra un piso más arriba. Ya lo ha arreglado usted.",
+   "asr": "Ya me entra un piso más arriba. Ya lo ha arreglado usted.",
+   "wer": 0.231
+  },
+  {
+   "file": "es/job.zuzanna_catalogue_drawer.line.1.ogg",
+   "dur": 3.94,
+   "lufs": -18.0,
+   "lead_ms": 60,
+   "trail_ms": 51,
+   "ref": "Tenemos permiso para las copias. El cajón cree que son originales.",
+   "asr": "Tenemos permiso para las copias. El cajón cree que son originales.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.zuzanna_catalogue_drawer.line.2.ogg",
+   "dur": 3.74,
+   "lufs": -18.0,
+   "lead_ms": 24,
+   "trail_ms": 24,
+   "ref": "La firma es mía. Los originales se quedan en el museo.",
+   "asr": "La firma es mía. Los originales se quedan en el museo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.zuzanna_catalogue_drawer.line.3.ogg",
+   "dur": 5.2,
+   "lufs": -18.0,
+   "lead_ms": 54,
+   "trail_ms": 52,
+   "ref": "Conservadora, acta firmada y precio acordado. Solo el cajón, entonces.",
+   "asr": "Conservadora, acta firmada y precio acordado. Solo el cajón, entonces.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.zuzanna_catalogue_drawer.line.4.ogg",
+   "dur": 3.9,
+   "lufs": -17.7,
+   "lead_ms": 47,
+   "trail_ms": 59,
+   "ref": "Pondré «Tratar con cuidado» en la vitrina. Empezando por este cajón.",
+   "asr": "pondré tratar con cuidado en la vitrina, empezando por este cajón.",
+   "wer": 0.0
+  }
+ ]
+}

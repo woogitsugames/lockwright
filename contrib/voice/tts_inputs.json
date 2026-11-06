@@ -10963,7 +10963,7 @@
  },
  "es/job.newlyweds_4am.line.4.ogg": {
   "model_id": "eleven_v4_turbo",
-  "seed": 3118991,
+  "seed": 101,
   "speaker": "locksmith",
   "subtitle": "Enhorabuena. Dentro de dos minutos estarán en casa.",
   "text": "[warmly] Enhorabuena. Dentro de dos minutos estarán en casa.",
@@ -14519,7 +14519,7 @@
  },
  "fr/job.dollhouse_wooden_lock.line.2.ogg": {
   "model_id": "eleven_v4_turbo",
-  "seed": 9608531,
+  "seed": 101,
   "speaker": "tomasz",
   "subtitle": "Papy appelait ça une serrure égyptienne. Je ne sais pas si c'est vrai.",
   "text": "[thoughtful] Papy appelait ça une serrure égyptienne. Je ne sais pas si c'est vrai.",

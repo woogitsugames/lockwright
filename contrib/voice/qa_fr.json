@@ -1,6 +1,6 @@
 {
  "wer": {
-  "fr": 0.087
+  "fr": 0.0859
  },
  "files": [
   {
@@ -415,13 +415,13 @@
   },
   {
    "file": "fr/job.dollhouse_wooden_lock.line.2.ogg",
-   "dur": 4.07,
+   "dur": 4.14,
    "lufs": -18.1,
    "lead_ms": 44,
-   "trail_ms": 0,
+   "trail_ms": 2,
    "ref": "Papy appelait ça une serrure égyptienne. Je ne sais pas si c'est vrai.",
-   "asr": "T'attaque les sang à une serre egyptienne. Je ne sais pas si c'est vrai.",
-   "wer": 0.462
+   "asr": "Papa plaît ça une serrure égyptienne. Je ne sais pas si c'est vrai.",
+   "wer": 0.154
   },
   {
    "file": "fr/job.dollhouse_wooden_lock.line.3.ogg",
