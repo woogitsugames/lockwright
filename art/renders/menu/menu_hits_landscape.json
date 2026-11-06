@@ -12,6 +12,18 @@
   1647,
   917
  ],
+ "title_rect": [
+  173,
+  202,
+  759,
+  174
+ ],
+ "focus_rect": [
+  146,
+  166,
+  1528,
+  731
+ ],
  "locale": "pl",
  "note": "hit_rect = the whole felt band of the item (>= 48 dp tall); pressed_sprite = the baked pressed state, rendered over exactly hit_rect (+20 px margin, see pressed_margin_px), paste at hit_rect.xy - margin",
  "pressed_margin_px": 20,

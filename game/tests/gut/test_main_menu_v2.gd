@@ -92,7 +92,7 @@ func test_zones_map_onto_the_rendered_bands() -> void:
 		var prev := Rect2()
 		for it in od["items"]:
 			var b: Button = menu.zone(StringName(it["id"]))
-			var want := Rect2(menu.image_rect.position + script.rect_of(it["hit_rect"]).position * menu.image_scale,
+			var want: Rect2 = Rect2(menu.image_rect.position + script.rect_of(it["hit_rect"]).position * menu.image_scale,
 				script.rect_of(it["hit_rect"]).size * menu.image_scale).intersection(Rect2(Vector2.ZERO, size))
 			var got := b.get_global_rect()
 			assert_almost_eq(got.position, want.position, Vector2(0.6, 0.6), "%s %s: zone position" % [tag, it["id"]])
@@ -171,7 +171,7 @@ func test_language_picks_the_render() -> void:
 	for l in ["pl", "en", "de"]:
 		I18n.apply_language(l)
 		await get_tree().process_frame
-		var want := l if langs.has(l) else "pl"
+		var want: String = l if langs.has(l) else "pl"
 		assert_eq(menu.lang, want, l)
 		assert_eq(menu.backdrop.texture.resource_path, "res://assets/ui/menu/menu_portrait_%s.webp" % want, l + ": board image")
 		for id in IDS:
@@ -196,6 +196,6 @@ func test_focus_order_is_reading_order() -> void:
 		var next: Node = b.get_node(b.focus_next)
 		assert_eq(next, menu.zone(IDS[(i + 1) % IDS.size()]), "%s -> next" % IDS[i])
 	# tree order (what screen readers walk) = reading order
-	var kids := menu.get_node("Zones").get_children()
+	var kids: Array = menu.get_node("Zones").get_children()
 	for i in IDS.size():
 		assert_eq(kids[i], menu.zone(IDS[i]))

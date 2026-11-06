@@ -1,0 +1,164 @@
+{
+ "image": "menu_portrait_de.png",
+ "width": 1080,
+ "height": 2400,
+ "orient": "portrait",
+ "px_per_dp": 2.6214,
+ "dp_basis": "412 dp across the short side",
+ "rect": "[x, y, w, h] px, origin top-left",
+ "board_rect": [
+  -9,
+  -14,
+  1117,
+  1976
+ ],
+ "title_rect": [
+  123,
+  138,
+  807,
+  247
+ ],
+ "focus_rect": [
+  62,
+  138,
+  961,
+  1696
+ ],
+ "locale": "de",
+ "note": "hit_rect = the whole felt band of the item (>= 48 dp tall); pressed_sprite = the baked pressed state, rendered over exactly hit_rect (+20 px margin, see pressed_margin_px), paste at hit_rect.xy - margin",
+ "pressed_margin_px": 20,
+ "items": [
+  {
+   "id": "start",
+   "label": "EINSATZ STARTEN",
+   "text_rect": [
+    117,
+    530,
+    847,
+    112
+   ],
+   "hit_rect": [
+    75,
+    413,
+    933,
+    294
+   ],
+   "cap_px": 81,
+   "hit_dp": [
+    355.9,
+    112.2
+   ],
+   "pressed_sprite": "menu_pressed_start_de.png"
+  },
+  {
+   "id": "jobs",
+   "label": "AUFTR\u00c4GE",
+   "text_rect": [
+    119,
+    782,
+    464,
+    91
+   ],
+   "hit_rect": [
+    73,
+    707,
+    939,
+    217
+   ],
+   "cap_px": 81,
+   "hit_dp": [
+    358.2,
+    82.8
+   ],
+   "pressed_sprite": "menu_pressed_jobs_de.png"
+  },
+  {
+   "id": "workshop",
+   "label": "WERKSTATT",
+   "text_rect": [
+    117,
+    998,
+    551,
+    75
+   ],
+   "hit_rect": [
+    70,
+    924,
+    944,
+    218
+   ],
+   "cap_px": 82,
+   "hit_dp": [
+    360.1,
+    83.2
+   ],
+   "pressed_sprite": "menu_pressed_workshop_de.png"
+  },
+  {
+   "id": "showcase",
+   "label": "SAMMLUNG",
+   "text_rect": [
+    114,
+    1229,
+    483,
+    66
+   ],
+   "hit_rect": [
+    67,
+    1142,
+    950,
+    222
+   ],
+   "cap_px": 82,
+   "hit_dp": [
+    362.4,
+    84.7
+   ],
+   "pressed_sprite": "menu_pressed_showcase_de.png"
+  },
+  {
+   "id": "settings",
+   "label": "EINSTELLUNGEN",
+   "text_rect": [
+    110,
+    1453,
+    728,
+    78
+   ],
+   "hit_rect": [
+    64,
+    1364,
+    956,
+    223
+   ],
+   "cap_px": 83,
+   "hit_dp": [
+    364.7,
+    85.1
+   ],
+   "pressed_sprite": "menu_pressed_settings_de.png"
+  },
+  {
+   "id": "about",
+   "label": "\u00dcBER DAS SPIEL",
+   "text_rect": [
+    109,
+    1650,
+    758,
+    102
+   ],
+   "hit_rect": [
+    62,
+    1587,
+    961,
+    247
+   ],
+   "cap_px": 84,
+   "hit_dp": [
+    366.6,
+    94.2
+   ],
+   "pressed_sprite": "menu_pressed_about_de.png"
+  }
+ ]
+}
