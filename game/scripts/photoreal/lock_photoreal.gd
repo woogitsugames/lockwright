@@ -15,6 +15,7 @@ extends Node
 ##   --lw-bench S        print LW_PERF frame statistics after S seconds and quit
 ##   --lw-stage S        rest | tension | lift | set: drive the session with a scripted two-thumb
 ##                       input to that moment, then freeze (N-62 screenshots)
+##   --lw-hint N         jump the hint ladder (ONBOARDING §2) to H1..H4 at start (screenshots)
 ##   --lw-tutorial N     run as tutorial stage N (0 = S1 with guided chalk steps), on its authored lock
 ##   --lw-spec PATH      play an authored lockwright.lock/1 file (res:// or absolute path)
 ##   --lw-chalk L        off | reduced | full
@@ -199,6 +200,8 @@ func _setup_hints() -> void:
 	hints.name = "TutorialHints"
 	add_child(hints)
 	hints.setup(view, coach, family, sampler.auto_tension, control)
+	if args.has("lw-hint"):
+		hints.jump_to.call_deferred(int(args["lw-hint"]))  # dev: screenshot one hint level
 
 
 func _vm() -> Dictionary:

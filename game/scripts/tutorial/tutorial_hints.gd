@@ -208,6 +208,12 @@ func _on_level(level: int, _step_id: StringName) -> void:
 	_save_history()
 
 
+## Dev / screenshots (--lw-hint N): climb the ladder to level N right now.
+func jump_to(level: int) -> void:
+	var i := clampi(level, 1, ladder.thresholds.size()) - 1
+	ladder.update(ladder.thresholds[i] + 0.01)
+
+
 func _on_ghost_progress(t: float) -> void:
 	if _needs_tension() and not autopilot:
 		preview_tension = 0.3 * t  # the plug face answers the ghost, then returns (§2.1 H2)
