@@ -176,6 +176,11 @@ func test_every_lever_job_opens_in_both_modes() -> void:
 
 
 func test_every_lever_detector_job_opens_in_both_modes() -> void:
+	# lockcore lever_detector (t5–t6) has 5 levers; the baked lever model has 3, so the family
+	# stays out of JobRun.PHOTOREAL_READY until a 5-lever model is rendered (N-63 report).
+	if not JobRun.PHOTOREAL_READY.has(&"lever_detector"):
+		pending("lever_detector waits for a 5-lever plan-B model")
+		return
 	await _check_family(&"lever_detector")
 
 
