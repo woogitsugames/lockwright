@@ -14,6 +14,8 @@ Device: Samsung SM-A165F, 1080×2340. APK CI run 42163108394, commit 356acbed. S
 
 ## Limits and handoff
 
-Full S1–S3 and two-thumb input validation, H0–H4 timing/ghost quality, and PL/EN voice listening are not signed off. Audio playback and tactile quality require physical confirmation; the vibration comparison above was confirmed by the owner. GPU detector device testing was blocked by the new APK's missing menu assets; see `../run42185136957-local/`.
+Full S1–S3 and two-thumb input validation, H0–H4 timing/ghost quality are not signed off. PL and EN spoken dialogue were both confirmed audible in the correct language by the owner; screenshots `pl-voice-check.png` and `en-voice-check.png`. Audio playback and tactile quality require physical confirmation; the vibration comparison above was confirmed by the owner. GPU detector device testing was blocked by the new APK's missing menu assets; see `../run42185136957-local/`.
 
 Original application data was backed up before the owner-approved signature-changing reinstall and all 40 files restored with matching SHA-256. Private backups are not committed. Updating to the GPU APK and restoring the working APK both used install -r without clearing data.
+
+The phone was returned to system language (Polish) and free rotation. System media volume was read as 13/15 and left unchanged.

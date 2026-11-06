@@ -1,5 +1,11 @@
 # Local session log
 
+## Current handoff status
+
+All authorized GPU art is rendered: ready-family 2x game plates, five-lever model/photo plates, arrival sequences/stills, menu in three languages/orientations with all pressed states, and warded contrast (six adjacent samples >=3.09:1). Final portrait menu board is 73.89% wide; integration remains session A decision.
+
+Device evidence covers all twelve previously ready families and owner-confirmed PL/EN speech. Session A has implemented fixes for startup, Android Back, haptics, missing menu assets and detector opening; device retest of the new fixes awaits a successful Android artifact. Full S1–S3/two-thumb/H0–H4 signoff remains open. Magnific D1/D2 are still missing, so final character shadows/composites are blocked.
+
 ## 2026-11-06 — GPU plates and Android evidence
 
 - Host: RTX 5070, Blender 4.2.9 LTS; Python 3.14 with Pillow/NumPy already installed. Godot 4.7.2, standard export templates and Android platform-tools installed with owner approval.
@@ -35,3 +41,15 @@ Commit `4766aaca` pushed. Authoritative CI perf-budget run 42185136911 succeeded
 ### Device regression results
 
 Working APK tested across all twelve ready families. Owner confirmed game test pulse absent but system oneshot works (N-70). GPU APK 42185136957 installed successfully but missing menu_layout.json blocks all UI (N-71); restored working APK with install -r and preserved data. game-tests failed, including detector both-mode opening (N-72); session A must resolve logic/tests and missing menu assets. No local game-code/CI fix.
+
+
+## Final art delivery — 2026-11-06
+
+- Arrival: 108 master frames (3×36), 1080×1920 / 128 spp / hair enabled; four hold images at 1080×1920 / 512 spp, OIDN, camera metadata and depth. Verified dimensions/counts and compared with lock references. Master sequences local only (`build/local-session/arrival-master/`); final sheets/stills under `art/renders/arrival/`.
+- Measured wall seconds: night seq 903, evening seq 772, day seq 689; night/evening/day/ajar holds 195/78/68/80. First sequence/hold include kernel compilation.
+- Menu: all languages/orientations and pressed states at 160 spp; default close-camera batch 193 s, then portrait camera widened with --vw 600 to 73.89% board width. All portrait hits/sprites rerendered consistently. Current A close frame and requested 75% frame compared in `compare_portrait_framing.jpg`. Menu exported to art only (--no-game).
+- Warded: canonical `art/renders/warded.png` rerendered with a ward-only linked key. Minimum of six checked adjacent contrast regions 3.09:1; sampling, grayscale proof, baseline blob and exact parameters under `art/renders/warded_contrast_check/`. Render-only wrapper `art/blender/warded_contrast.py`; camera/materials/geometry inherited from original warded scene. A brighter whole-scene key failed to separate the plate patina reliably, hence the linked readability light.
+- Ring combo: not rerendered; session A's latest handoff says the digit correction is already complete, rerender only for a future 2× art requirement.
+- Owner confirmed normal spoken dialogue in PL and EN. System language and free device rotation restored; media volume unchanged (13/15).
+- Session A has landed fixes for N-67/N-69/N-70/N-71 and reports N-72 detector both-mode opening fixed (assets are correct; no rerender). Retest awaits a successful Android artifact containing those fixes. Physical full S1–S3/two-thumb and H0–H4 signoff remains open.
+- No new Magnific D1/D2 supplied: no final character shadow maps/composites. Existing placeholders and CPU shadow proofs remain explicitly marked previews. Arrival/menu integration belongs to session A after visual approval.

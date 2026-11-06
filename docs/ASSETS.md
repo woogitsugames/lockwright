@@ -203,10 +203,10 @@ Own renders, Blender 4.2.9 LTS / Cycles OptiX on RTX 5070; existing photo materi
 |---|---|
 | `game/assets/photoreal/plate/plate_1236x1650.png` | `game/assets/photoreal/tools/render_plate.py --res 2472x3300 --samples 128` |
 | `photoreal_families/warded/photo/{parts,plate,wards}.png` | `warded_photo_plate.py --res 2472x3300 --samples 128` (all passes together) |
-| `photoreal_families/{wafer,lever}/photo/{parts,plate}.png` | `photo_plates.py --family wafer|lever --res 2472x3300 --samples 128`; lever also `--detector 1 --passes parts` |
+| `photoreal_families/{wafer,lever}/photo/{parts,plate}.png` | `photo_plates.py --family wafer\|lever --res 2472x3300 --samples 128`; lever also `--detector 1 --passes parts` |
 | `game/assets/photoreal_families/lever/photo/parts_detector.png` | the lever detector pass (parts with the detector leaf in, used by the 3-lever folder fallback of `lever_view.gd`): `photo_plates.py --family lever --detector 1 --passes parts --res 2472x3300 --samples 128`; Blender 4.2.9 LTS Cycles GPU (OptiX, RTX 5070) on the owner's PC, commit `4766aac` |
 | `photoreal_families/dial_safe/photo/*.png`, `layers.json` | `dial_safe_plate.py --res 1236x1648 --spp 256 --device GPU` |
-| `photoreal_families/{combo,disc_detainer}/photo/*.png`, `layers.json` | `combo_plate.py --family combo|disc_detainer --res 1236x1648 --spp 256 --device GPU` |
+| `photoreal_families/{combo,disc_detainer}/photo/*.png`, `layers.json` | `combo_plate.py --family combo\|disc_detainer --res 1236x1648 --spp 256 --device GPU` |
 | `photoreal_families/{egyptian,time_lock,axial_slider}/photo/*.png`, `layers.json` | respective `art/blender/plates/*_plate.py --res 1236x1648 --spp 256 --device GPU` |
 | `photoreal_families/tools/{magnet_probe,dimple_flag}.png`, `layers.json` | `tool_layers.py --ppmm 48 --spp 128 --device GPU` |
 | `game/assets/photoreal_families/lever_detector/lever_detector_baked.glb`, `scene.json`, `photo/{parts,plate}.png` | `lever_plate.py --levers 5 --res 1236x1650 --samples 128`, then `photo_plates.py --family lever --levers 5 --detector 1 --res 1236x1650 --samples 128`; 57.80 MB pack after rebasing the session A menu |
@@ -214,3 +214,16 @@ Own renders, Blender 4.2.9 LTS / Cycles OptiX on RTX 5070; existing photo materi
 PNG imports in game use lossy quality 0.85. Evidence: `docs/handoff/device-tests/fixes/plates_2x/`.
 
 All rows of this table: Blender 4.2.9 LTS, Cycles GPU on the owner's PC, published in commit `4766aac` (GPU batch). N-72 (session B): the nine 2472×3300 masters over the 8 MB lint limit (`photoreal/plate/plate_1236x1650.png`, `lever/photo/{parts,parts_detector,plate}.png`, `wafer/photo/{parts,plate}.png`, `warded/photo/{parts,plate,wards}.png`) were fully opaque RGBA; they are re-saved as 8-bit RGB PNG (alpha dropped, every RGB pixel verified identical, zlib level 9): 5.0–6.6 MB each. The shaders read only `.rgb`; imports stay lossy 0.85.
+
+## Local GPU arrival and menu finals — 2026-11-06
+
+Own Blender 4.2.9 LTS / Cycles OptiX renders on RTX 5070, existing original photo materials, no AI generation.
+
+| Assets | Reproduction |
+|---|---|
+| `art/renders/arrival/wrong_floor_{night,evening,day}_final_contact.png` | `arrival_scene.py --mode seq --time <time> --device GPU --res 1080x1920 --spp 128 --hair 1`; 36 frames each, full masters local only; sheets via `arrival_composite.py --contact` |
+| `art/renders/arrival/wrong_floor_{night,evening,day,night_ajar}_hold.{png,json}`, associated depth PNGs | `arrival_scene.py --mode still --time <time> --device GPU --still-res 1080x1920 --still-spp 512 --hair 1`, night ajar adds `--door ajar`; OIDN |
+| `wrong_floor_final_board.jpg`, `wrong_floor_preview_vs_stairwell_locks.png` | Pillow contact sheets from the GPU stills and existing own reference renders; no character compositing pending Magnific D1/D2 |
+| `art/renders/menu/menu_*`, hits JSON, review sheets | `menu_compose.py --render-all --blender <Blender4.2.9> --samples 160 --device OPTIX --no-game`; PL/EN/DE, portrait 1080x2400 with `menu_gate.py --vw 600` (board 73.89% wide), landscape 2400x1080 with default `--vh 585`, all pressed sprites; see art/renders/menu/README.md for the reproducible batch. Art only, integration remains session A's decision. |
+
+| `art/renders/warded.png`, `warded_contrast_check/*` | `warded_contrast.py --res 1620x2160 --samples 128 --ward-key 100000`, `LW_DEVICE=GPU`; linked key on ward arcs/rivets; six adjacent grayscale contrast samples all >= 3.09:1; own render and Pillow QA. |
