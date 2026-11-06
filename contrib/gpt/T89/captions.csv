@@ -1,0 +1,23 @@
+keys,pl,en,de,fr,es
+tool.tw_angle.name,Napiniacz kątowy,Angled Tension Wrench,Winkelspanner,Tendeur coudé,Tensor acodado
+tool.tw_bar.name,Napinacz listwowy,Bar Tension Wrench,Oberer Leistenspanner,Tendeur plat,Tensor de barra
+tool.tl_shackle.name,Ciągadło kabłąka,Shackle Puller,Bügelzieher,Extracteur d'anse,Extractor de arco
+tool.pk_peg.name,Podważka kołkowa,Peg Lifter,Stiftheber,Lève-cheville,Elevador de espigas
+tool.pk_hook.name,Haczyk,Hook Pick,Hakenpick,Crochet à bec,Ganzúa de gancho
+tool.pk_ward.name,Sonda przelotowa,Ward Probe,Sperrsonde,Sonde à garnitures,Sonda de guardas
+tool.pk_ripple.name,Falownik,Ripple Pick,Wellenpick,Crochet ondulé,Ganzúa ondulada
+tool.pk_wedge.name,Klin dwustronny,Twin Wedge,Doppelkeil,Double coin,Cuña doble
+tool.pk_lever.name,Korba dźwigniowa,Lever Crank,Hebelkurbel,Manivelle à leviers,Manivela de palancas
+tool.pk_crown.name,Koronka,Crown Pick,Kronenpick,Crochet couronne,Ganzúa de corona
+tool.tl_polar.name,Sonda biegunowa,Polarity Probe,Polaritätssonde,Sonde de polarité,Sonda de polaridad
+tool.pk_flag.name,Chorągiewka,Flag Pick,Fahnenpick,Crochet drapeau,Ganzúa de bandera
+tool.pk_plunger.name,Trzpień szczelinowy,Slot Plunger,Schlitzstößel,Poussoir à fente,Émbolo de ranura
+tool.pk_disc.name,Obrotnik tarcz,Disc Turner,Scheibendreher,Tourne-disque,Girador de discos
+tool.pk_feather.name,Piórko boczne,Side Feather,Seitenfeder,Lamelle latérale,Pluma lateral
+tool.tl_cup.name,Słuchawka,Listening Cup,Hörbecher,Coupelle d'écoute,Copa de escucha
+tool.tl_notes.name,Notes kontaktów,Contact Notebook,Kontakt-Notizbuch,Carnet de contact,Cuaderno de contactos
+tool.kit_clock.name,Zestaw zegarmistrza,Clockmaker's Kit,Uhrmacher-Set,Kit d'horloger,Juego de relojero
+tool.tl_drill.name,Wiertarka,Drill,Bohrer,Perceuse,Taladro
+tool.ob_loupe.name,Lupa zegarmistrzowska,Watchmaker's loupe,Uhrmacherlupe,Loupe d'horloger,Lupa de relojero
+tool.ob_microscope.name,Mikroskop warsztatowy,Bench microscope,Werkstattmikroskop,Microscope d'établi,Microscopio de banco
+tool.ob_borescope.name,Wziernik,Borescope,Endoskop,Endoscope,Boroscopio
