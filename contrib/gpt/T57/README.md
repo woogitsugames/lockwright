@@ -1,5 +1,5 @@
 # T57 — opisy narzędzi
 
-Opisy 22 narzędzi z game/data/tools.json w pięciu językach, wszystkie ≤ 80 znaków. Funkcje i dostępność sygnałów są propozycjami opisów do sprawdzenia w grze, zwłaszcza przy narzędziach bez sprecyzowanego kanału informacji zwrotnej. Ceny nie są zmieniane. Klucze są propozycją. Nie uruchomiono i18n_lint.py z powodu braku lokalnego checkoutu; długość zweryfikowano skryptem Python.
+Opisy 22 narzędzi z game/data/tools.json w pięciu językach, wszystkie ≤ 80 znaków. Funkcje i dostępność sygnałów są propozycjami opisów do sprawdzenia w grze, zwłaszcza przy narzędziach bez sprecyzowanego kanału informacji zwrotnej. Ceny nie są zmieniane. Klucze są propozycją.
 
-Lint na kopii CSV z użyciem tools/i18n_lint.py: 0 błędów; ostrzeżenia bazowe i/lub puste opcjonalne FR/ES. Linter nie sprawdza poprawności fabuły ani działania gry.
+Kontrola: osobną kopię plików game/i18n uzupełniono o CSV tego zadania i uruchomiono tools/i18n_lint.py: 0 błędów. Dwa ostrzeżenia bazowe dotyczą identycznej treści pola settings.voice_pack.line. Kopia nie zawierała plików GDScript, więc nie sprawdzono odwołań z kodu; linter nie weryfikuje fabuły ani działania gry.
