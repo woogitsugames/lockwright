@@ -36,6 +36,8 @@ job.refuse,Refuser l'intervention,Refuser l'intervention,
 job.opened,Serrure ouverte. Facture réglée.,Serrure ouverte. Facture réglée.,
 job.reward_fmt,Récompense : {n} pièces,Récompense : {n} pièces,
 job.tip_fmt,Pourboire (ouverture soignée) : {n} pièces,Pourboire (ouverture soignée) : {n} pièces,
+receipt.service,,Ouverture d'urgence,T41: nowa etykieta UI i wersja językowa
+receipt.tip,,Pour ouverture soignée,T41: nowa etykieta UI i wersja językowa
 common.continue,Continuer,Continuer,
 verify.title,Vérifier le droit d'accès,Vérifier le droit d'accès,
 verify.hint,Le client présente ses justificatifs. À vous de décider.,Le client présente ses justificatifs. À vous de décider.,
@@ -59,6 +61,7 @@ verify.refused,Les justificatifs ne suffisent pas. Je ne peux pas ouvrir.,Les ju
 verify.refused_rep,La nouvelle circule : +5 de réputation,La nouvelle circule : +5 de réputation,
 tutorial.title,Tutoriel — serrure d'entraînement,Tutoriel : serrure d'essai,Skrócono etykietę.
 tutorial.stage,Étape {n} sur 3,Étape {n} sur 3,
+tutorial.start,,Commencer l'entraînement,Uzupełniono klucz dodany po pierwotnej korekcie.
 tutorial.done,Entraînement terminé. Place à la première intervention.,Entraînement terminé. Place à la première intervention.,
 hud.magnifier,Loupe,Loupe,
 settings.title,Paramètres,Paramètres,
@@ -75,6 +78,8 @@ settings.continuous_resistance,Résistance continue,Résistance continue,
 settings.volume_master,Volume général,Volume général,
 settings.volume_sfx,Effets sonores,Effets sonores,
 settings.volume_ambience,Ambiance sonore,Ambiance sonore,
+settings.volume_voice,,Voix,T41: nowa etykieta UI i wersja językowa
+dialogue.skip_all,,Afficher tout le dialogue,T41: nowa etykieta UI i wersja językowa
 settings.language,Langue,Langue,
 settings.language_system,Langue de l'appareil,Langue du système,Skrócono etykietę.
 settings.language_pl,Polski,Polski,
@@ -124,7 +129,6 @@ dev.haptics_lab.tier,Niveau,Niveau,
 dev.haptics_lab.force_fallback,Forcer le mode de secours,Mode de secours,Skrócono etykietę techniczną.
 dev.haptics_lab.resistance,Résistance,Résistance,
 dev.haptics_lab.caps,Capacités,Capacités,
-tutorial.start,,Commencer l'entraînement,Uzupełniono klucz dodany po pierwotnej korekcie.
 nav.quit_confirm,,Quitter le jeu ?,Nowy klucz źródłowy (kontrola zamknięcia gry).
 nav.quit_yes,,Quitter,Nowy klucz źródłowy (potwierdzenie zamknięcia gry).
 nav.quit_no,,Continuer à jouer,Nowy klucz źródłowy (anulowanie zamknięcia gry).
@@ -194,3 +198,22 @@ tutorial.s2_intro,,Trois goupilles. Une seule résiste à la fois.,Uzupełniono 
 tutorial.s3_intro,,Nouvel ordre. Trop haut ? Reprends doucement.,Uzupełniono brakujący klucz według EN i PL (T40).
 tutorial.s1_near_break,,Trop fort. L'outil plie. Relâche un peu.,Uzupełniono brakujący klucz według EN i PL (T40).
 ui.job_done,,fait,Uzupełniono brakujący klucz według EN i PL (T40).
+lock.dial_hint,,"Pouce droit : tournez le cadran, arrêtez à chaque cran.",T41: nowa etykieta UI i wersja językowa
+lock.combo_hint,,Tirez doucement. Tournez lentement la roue qui résiste.,T41: nowa etykieta UI i wersja językowa
+lock.warded_reach,,Montez ou baissez l'embout jusqu'à trouver l'espace.,T41: nowa etykieta UI i wersja językowa
+lock.warded_turn,,"Pouce gauche : montez pour tourner, baissez pour retour.",T41: nowa etykieta UI i wersja językowa
+lock.warded_turn_auto,,Pouce droit maintenu pour tourner. Le gauche revient.,T41: nowa etykieta UI i wersja językowa
+lock.warded_bit,,"Embout trop épais ? Sortez la sonde, touchez sa tête.",T41: nowa etykieta UI i wersja językowa
+lock.detector_reset,,"Détecteur déclenché. Relâchez, reculez et maintenez.",T41: nowa etykieta UI i wersja językowa
+lock.detector_reset_auto,,Détecteur actif. Pouce gauche : gardez et reculez.,T41: nowa etykieta UI i wersja językowa
+lock.wafer_coach,,Levez la paillette au ras du cylindre.,T41: nowa etykieta UI i wersja językowa
+lock.lever_coach,,Levez la gorge jusqu'à aligner son encoche.,T41: nowa etykieta UI i wersja językowa
+lock.hint_tension_wafer,,Paillettes trop libres ? Appuyez un peu à gauche.,T41: nowa etykieta UI i wersja językowa
+lock.hint_tension_lever,,Gorges trop libres ? Gardez un léger appui à gauche.,T41: nowa etykieta UI i wersja językowa
+lock.disc_hint,,Léger appui à gauche. Tournez le disque qui résiste.,T41: nowa etykieta UI i wersja językowa
+tutorial.say_tension,,Indice : montez le pouce gauche doucement et tenez.,T41: nowa etykieta UI i wersja językowa
+tutorial.say_lift,,Indice : pouce droit sous la pièce dure. Levez doucement.,T41: nowa etykieta UI i wersja językowa
+tutorial.say_warded,,"Indice : placez l'embout dans l'espace, puis tournez.",T41: nowa etykieta UI i wersja językowa
+tutorial.say_chalk,,Indice : la craie montre maintenant le geste.,T41: nowa etykieta UI i wersja językowa
+tutorial.say_master,,Le maître montre le geste une fois. À vous.,T41: nowa etykieta UI i wersja językowa
+tutorial.s1_pick_one,,Pouce droit sous la goupille puis montez doucement.,T41: nowa etykieta UI i wersja językowa

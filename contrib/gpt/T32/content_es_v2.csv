@@ -195,156 +195,156 @@ cast.zbyszek.name,Señor Zbyszek,Señor Zbyszek,
 cast.zosia.name,Señora Zosia,Señora Zosia,
 cast.zuzanna.name,Zuzanna,Zuzanna,
 job.allotment_shed.line.1,La parcela está a nombre de mi mujer. Yo cavo. Ella descansa la rodilla en casa.,La parcela está a nombre de mi mujer. Yo cavo. Ella descansa la rodilla en casa.,
-job.allotment_shed.line.2,¿Tienes la tarjeta del huerto? ¿Y algún vecino que pueda dar fe?,¿Tienes la tarjeta del huerto? ¿Y algún vecino que pueda dar fe?,
-job.allotment_shed.line.3,Zbyszek lleva aquí más tiempo que ese cobertizo. Más que yo.,Zbyszek lleva aquí más tiempo que ese cobertizo. Más que yo.,
-job.allotment_shed.line.4,¿Qué te parecen unos pepinillos? Nunca llevo efectivo al huerto.,¿Qué te parecen unos pepinillos? Nunca llevo efectivo al huerto.,
+job.allotment_shed.line.2,¿Tienes la tarjeta del huerto? ¿Y algún vecino que pueda dar fe?,¿Tiene la tarjeta del huerto? ¿Y un vecino que lo confirme?,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.allotment_shed.line.3,Zbyszek lleva aquí más tiempo que ese cobertizo. Más que yo.,Zbyszek lleva aquí más que el cobertizo. Y más que yo.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.allotment_shed.line.4,¿Qué te parecen unos pepinillos? Nunca llevo efectivo al huerto.,¿Le gustan los pepinos? Nunca llevo dinero al huerto.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.allotment_shed.note,El cobertizo del señor Zbyszek. La parcela estaba a nombre de su mujer. Misterio resuelto. Cobré en pepinillos.,El cobertizo del señor Zbyszek. La parcela estaba a nombre de su mujer. Misterio resuelto. Cobré en pepinillos.,
-job.bike_interview.line.1,Lo cambié por un código más seguro. Tan seguro que ni yo lo sé.,Lo cambié por un código más seguro. Tan seguro que ni yo lo sé.,
-job.bike_interview.line.2,La bici está en la calle. ¿Tienes algo que demuestre que es tuya?,La bici está en la calle. ¿Tienes algo que demuestre que es tuya?,
+job.bike_interview.line.1,Lo cambié por un código más seguro. Tan seguro que ni yo lo sé.,Puse un código más seguro. Tan seguro que ya no me lo sé ni yo.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.bike_interview.line.2,La bici está en la calle. ¿Tienes algo que demuestre que es tuya?,La bici está en la calle. ¿Tiene algo que demuestre que es suya?,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.bike_interview.line.3,Una foto de vacaciones y el recibo en mi correo. La bici sale mejor que yo.,Una foto de vacaciones y el recibo en mi correo. La bici sale mejor que yo.,
-job.bike_interview.line.4,Con eso basta. Arréglate la corbata mientras trabajo.,Con eso basta. Arréglate la corbata mientras trabajo.,
+job.bike_interview.line.4,Con eso basta. Arréglate la corbata mientras trabajo.,Con eso basta. Arréglese la corbata mientras me ocupo.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.bike_interview.note,El candado de la bici de Kuba. Foto y recibo coinciden. Corbata enderezada dos veces. Autobús a las 8:52.,El candado de la bici de Kuba. Foto y recibo coinciden. Corbata enderezada dos veces. Autobús a las 8:52.,
-job.bramah_bureau.line.1,"La factura de la subasta, el anuncio y las fotos. La cerradura debe quedar intacta.","La factura de la subasta, el anuncio y las fotos. La cerradura debe quedar intacta.",
-job.bramah_bureau.line.2,Una cerradura así estuvo expuesta en Londres. Ofrecían un premio.,Una cerradura así estuvo expuesta en Londres. Ofrecían un premio.,
+job.bramah_bureau.line.1,"La factura de la subasta, el anuncio y las fotos. La cerradura debe quedar intacta.","La factura, el anuncio y las fotos. La cerradura debe quedar intacta.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.bramah_bureau.line.2,Una cerradura así estuvo expuesta en Londres. Ofrecían un premio.,Una cerradura así se expuso en Londres. Había una recompensa.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.bramah_bureau.line.3,¿Alguien logró abrirla?,¿Alguien logró abrirla?,
-job.bramah_bureau.line.4,Alguien lo consiguió más de sesenta años después. Te diré quién cuando acabe.,Alguien lo consiguió más de sesenta años después. Te diré quién cuando acabe.,
+job.bramah_bureau.line.4,Alguien lo consiguió más de sesenta años después. Te diré quién cuando acabe.,"Sí, más de sesenta años después. Le contaré quién al terminar.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.bramah_bureau.note,El escritorio de Gosia. Factura y posesión acreditadas. Cerradura original intacta. Le conté lo de Piccadilly.,El escritorio de Gosia. Factura y posesión acreditadas. Cerradura original intacta. Le conté lo de Piccadilly.,
-job.brussels_townhouse.line.1,Estoy en el balcón como Julieta. Solo que Romeo tiene sesenta años y la llave de la verja.,Estoy en el balcón como Julieta. Solo que Romeo tiene sesenta años y la llave de la verja.,
-job.brussels_townhouse.line.2,Madame Magda lleva aquí toda la vida. Depuis toujours.,Madame Magda lleva aquí toda la vida. Depuis toujours.,
-job.brussels_townhouse.line.3,"Contrato, dirección municipal y un vecino. Basta. No se asome a la barandilla.","Contrato, dirección municipal y un vecino. Basta. No se asome a la barandilla.",
+job.brussels_townhouse.line.1,Estoy en el balcón como Julieta. Solo que Romeo tiene sesenta años y la llave de la verja.,Estoy en el balcón como Julieta. Pero Romeo tiene sesenta años y la llave de la verja.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.brussels_townhouse.line.2,Madame Magda lleva aquí toda la vida. Depuis toujours.,La señora Magda vive aquí desde siempre. Desde siempre.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.brussels_townhouse.line.3,"Contrato, dirección municipal y un vecino. Basta. No se asome a la barandilla.","Contrato, domicilio y un vecino. Todo cuadra. No se asome a la barandilla.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.brussels_townhouse.line.4,Geranios regados. Misión cumplida.,Geranios regados. Misión cumplida.,
 job.brussels_townhouse.note,"Saint-Gilles. Otro país, la misma norma. Contrato, municipio, Monsieur Jacques. Los geranios están bien.","Saint-Gilles. Otro país, la misma norma. Contrato, municipio, Monsieur Jacques. Los geranios están bien.",
-job.cat_bathroom.line.1,Lo hizo adrede. Me miró a los ojos al saltar sobre la manilla.,Lo hizo adrede. Me miró a los ojos al saltar sobre la manilla.,
-job.cat_bathroom.line.2,Es tu casa y él está en el baño. Esta vez no hacen falta papeles.,Es tu casa y él está en el baño. Esta vez no hacen falta papeles.,
+job.cat_bathroom.line.1,Lo hizo adrede. Me miró a los ojos al saltar sobre la manilla.,Lo hizo adrede. Me miró a los ojos antes de saltar a la manilla.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.cat_bathroom.line.2,Es tu casa y él está en el baño. Esta vez no hacen falta papeles.,Es su casa y el gato está en el baño. Hoy no le pediré papeles.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.cat_bathroom.line.3,¿Y si se asusta?,¿Y si se asusta?,
-job.cat_bathroom.line.4,Sigue hablándole. Haré menos ruido que él.,Sigue hablándole. Haré menos ruido que él.,
+job.cat_bathroom.line.4,Sigue hablándole. Haré menos ruido que él.,Siga hablándole. Haré menos ruido que él.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.cat_bathroom.note,"Patata, el gato. Marta estaba en casa; no hizo falta comprobar nada. Él no se disculpó. Ella pondrá un cartel nuevo.","Patata, el gato. Marta estaba en casa; no hizo falta comprobar nada. Él no se disculpó. Ella pondrá un cartel nuevo.",
-job.charleroi_letters.line.1,"Llamo para pedir consejo, no una apertura. La señora Martine tiene la caja del abuelo.","Llamo para pedir consejo, no una apertura. La señora Martine tiene la caja del abuelo.",
-job.charleroi_letters.line.2,C'est à votre famille. Solo la he cuidado.,C'est à votre famille. Solo la he cuidado.,
-job.charleroi_letters.line.3,¿La ha cuidado durante setenta años?,¿La ha cuidado durante setenta años?,
-job.charleroi_letters.line.4,Las dos estáis de acuerdo en abrirla. La comprobación de permiso más fácil de mi carrera.,Las dos estáis de acuerdo en abrirla. La comprobación de permiso más fácil de mi carrera.,
+job.charleroi_letters.line.1,"Llamo para pedir consejo, no una apertura. La señora Martine tiene la caja del abuelo.","Llamo para pedir consejo, no una visita. La señora Martine tiene la caja del abuelo.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.charleroi_letters.line.2,C'est à votre famille. Solo la he cuidado.,La caja es de su familia. Yo solo la he cuidado.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.charleroi_letters.line.3,¿La ha cuidado durante setenta años?,¿La ha guardado durante setenta años?,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.charleroi_letters.line.4,Las dos estáis de acuerdo en abrirla. La comprobación de permiso más fácil de mi carrera.,Las dos están de acuerdo. Nunca me fue tan fácil comprobar un permiso.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.charleroi_letters.note,Charleroi. Caja del abuelo Józef. La guardó Martine. Ambas querían abrirla. Lloré por primera vez trabajando. Un poco.,Charleroi. Caja del abuelo Józef. La guardó Martine. Ambas querían abrirla. Lloré por primera vez trabajando. Un poco.,
 job.dollhouse_wooden_lock.line.1,Lala lleva encerrada desde el martes. Se aburre.,Lala lleva encerrada desde el martes. Se aburre.,
-job.dollhouse_wooden_lock.line.2,El abuelo la llamaba cerradura egipcia. No sé cuánto hay de cierto.,El abuelo la llamaba cerradura egipcia. No sé cuánto hay de cierto.,
-job.dollhouse_wooden_lock.line.3,El nombre se quedó. La historia real es mejor. Te la cuento al terminar.,El nombre se quedó. La historia real es mejor. Te la cuento al terminar.,
-job.dollhouse_wooden_lock.line.4,¿Harás una llave nueva? ¿De madera? Papá tiene una tabla.,¿Harás una llave nueva? ¿De madera? Papá tiene una tabla.,
+job.dollhouse_wooden_lock.line.2,El abuelo la llamaba cerradura egipcia. No sé cuánto hay de cierto.,El abuelo la llamaba cerradura egipcia. No sé si tenía razón.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.dollhouse_wooden_lock.line.3,El nombre se quedó. La historia real es mejor. Te la cuento al terminar.,El nombre se quedó. Pero la historia es mejor. Te la cuento al acabar.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.dollhouse_wooden_lock.line.4,¿Harás una llave nueva? ¿De madera? Papá tiene una tabla.,¿Harás otra llave? ¿De madera? Papá tiene una tabla.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.dollhouse_wooden_lock.note,La casa de muñecas del bisabuelo. Cerradura de pasadores de madera. Lala liberada. Tomasz tallará otra llave; Hania supervisa.,La casa de muñecas del bisabuelo. Cerradura de pasadores de madera. Lala liberada. Tomasz tallará otra llave; Hania supervisa.,
-job.drummer_locker.line.1,"Podría tocar con cucharas, pero preferiría no hacerlo. Actuamos dentro de una hora.","Podría tocar con cucharas, pero preferiría no hacerlo. Actuamos dentro de una hora.",
+job.drummer_locker.line.1,"Podría tocar con cucharas, pero preferiría no hacerlo. Actuamos dentro de una hora.","Podría tocar con cucharas, pero prefiero que no. El concierto es en una hora.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.drummer_locker.line.2,Iga alquila la taquilla ocho. Paga cada mes. Lo tengo anotado.,Iga alquila la taquilla ocho. Paga cada mes. Lo tengo anotado.,
-job.drummer_locker.line.3,Tu cuaderno basta. El señor Edek dice que lo apuntas todo.,Tu cuaderno basta. El señor Edek dice que lo apuntas todo.,
-job.drummer_locker.line.4,"Si llegas a tiempo, tocaremos una para ti. Bien alto.","Si llegas a tiempo, tocaremos una para ti. Bien alto.",
+job.drummer_locker.line.3,Tu cuaderno basta. El señor Edek dice que lo apuntas todo.,Su cuaderno basta. El señor Edek dice que lo apunta todo.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.drummer_locker.line.4,"Si llegas a tiempo, tocaremos una para ti. Bien alto.","Si termina a tiempo, tocaremos una canción para usted. Bien alto.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.drummer_locker.note,"Taquilla 8, local de ensayo. El encargado tenía un cuaderno como el mío. Me dedicaron una canción. Bien alta.","Taquilla 8, local de ensayo. El encargado tenía un cuaderno como el mío. Me dedicaron una canción. Bien alta.",
-job.finnish_sailor.line.1,En Finlandia todo el mundo tiene un candado así. Nadie lo abre sin llave.,En Finlandia todo el mundo tiene un candado así. Nadie lo abre sin llave.,
-job.finnish_sailor.line.2,El arcón es de Aino. Yo respondo por ella. Zarpamos mañana a las seis.,El arcón es de Aino. Yo respondo por ella. Zarpamos mañana a las seis.,
-job.finnish_sailor.line.3,El capitán responde por ella y su libreta marítima coincide. Echemos un vistazo.,El capitán responde por ella y su libreta marítima coincide. Echemos un vistazo.,
-job.finnish_sailor.line.4,"Si lo abres, te contaré de dónde salió este invento.","Si lo abres, te contaré de dónde salió este invento.",
+job.finnish_sailor.line.1,En Finlandia todo el mundo tiene un candado así. Nadie lo abre sin llave.,En Finlandia todos tienen un candado así. Nadie lo abre sin la llave.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.finnish_sailor.line.2,El arcón es de Aino. Yo respondo por ella. Zarpamos mañana a las seis.,El arcón es de Aino. Respondo por ella. Zarpamos mañana a las seis.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.finnish_sailor.line.3,El capitán responde por ella y su libreta marítima coincide. Echemos un vistazo.,El capitán responde por usted. Su libreta de marino coincide. Veamos.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.finnish_sailor.line.4,"Si lo abres, te contaré de dónde salió este invento.","Si lo abre, le contaré de dónde viene este invento.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.finnish_sailor.note,"Aino, barco finlandés. Capitán y libreta marítima, comprobados. Antes de las seis. Ahora tengo un cucharón de abedul en el taller.","Aino, barco finlandés. Capitán y libreta marítima, comprobados. Antes de las seis. Ahora tengo un cucharón de abedul en el taller.",
 job.ghent_beguinage.line.1,Mi polaco se limita a «dzień dobry» y «pierogi».,Mi polaco se limita a «dzień dobry» y «pierogi».,
 job.ghent_beguinage.line.2,Eso ya es medio idioma.,Eso ya es medio idioma.,
-job.ghent_beguinage.line.3,Una carta del consejo parroquial. Mi predecesor se llevó la llave al cielo.,Una carta del consejo parroquial. Mi predecesor se llevó la llave al cielo.,
-job.ghent_beguinage.line.4,"Sin dejar marcas, lo prometo. Esta cerradura es más vieja que mi edificio.","Sin dejar marcas, lo prometo. Esta cerradura es más vieja que mi edificio.",
+job.ghent_beguinage.line.3,Una carta del consejo parroquial. Mi predecesor se llevó la llave al cielo.,Aquí tiene la carta parroquial. Mi antecesor se llevó la llave al cielo.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.ghent_beguinage.line.4,"Sin dejar marcas, lo prometo. Esta cerradura es más vieja que mi edificio.",No dejaré marcas. Esta cerradura es más vieja que mi edificio.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.ghent_beguinage.note,Beguinaje de Gante. Carta parroquial y palabra del hermano Pieter. Sin marcas. Ahora sabe decir «rosół».,Beguinaje de Gante. Carta parroquial y palabra del hermano Pieter. Sin marcas. Ahora sabe decir «rosół».,
-job.grandma_broth.line.1,"Solo salí un momento, cariño. A tirar la basura.","Solo salí un momento, cariño. A tirar la basura.",
-job.grandma_broth.line.2,He cortado el gas desde el rellano. Llevamos cuarenta años siendo vecinas.,He cortado el gas desde el rellano. Llevamos cuarenta años siendo vecinas.,
-job.grandma_broth.line.3,Eso ayuda. ¿Y la carta del buzón va dirigida a usted?,Eso ayuda. ¿Y la carta del buzón va dirigida a usted?,
-job.grandma_broth.line.4,Los fideos los hice yo. Hay un plato para ti y no admito discusiones.,Los fideos los hice yo. Hay un plato para ti y no admito discusiones.,
+job.grandma_broth.line.1,"Solo salí un momento, cariño. A tirar la basura.","Solo salí a tirar la basura, hijo. Un momentito.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.grandma_broth.line.2,He cortado el gas desde el rellano. Llevamos cuarenta años siendo vecinas.,Corté el gas desde el rellano. Somos vecinas desde hace cuarenta años.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.grandma_broth.line.3,Eso ayuda. ¿Y la carta del buzón va dirigida a usted?,Eso ayuda. ¿Y la carta del buzón está a su nombre?,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.grandma_broth.line.4,Los fideos los hice yo. Hay un plato para ti y no admito discusiones.,"Los fideos los hice yo. Hay un plato para ti, hijo. Y no se discute.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.grandma_broth.note,"Señora Halina, centro. La señora Zosia confirma cuarenta años de vecindad. El caldo se redujo. Me tomé un plato.","Señora Halina, centro. La señora Zosia confirma cuarenta años de vecindad. El caldo se redujo. Me tomé un plato.",
 job.grandpa_chest.line.1,Papá nunca dijo qué guardaba ahí. Ni siquiera a nosotras.,Papá nunca dijo qué guardaba ahí. Ni siquiera a nosotras.,
 job.grandpa_chest.line.2,"Mamá, no pregunta por el arcón. Pregunta si la casa es tuya.","Mamá, no pregunta por el arcón. Pregunta si la casa es tuya.",
 job.grandpa_chest.line.3,"Es mía. La escritura está en la cómoda, debajo del mantel.","Es mía. La escritura está en la cómoda, debajo del mantel.",
-job.grandpa_chest.line.4,"Cartas. De Charleroi. Para la abuela, en polaco y con sellos belgas.","Cartas. De Charleroi. Para la abuela, en polaco y con sellos belgas.",
+job.grandpa_chest.line.4,"Cartas. De Charleroi. Para la abuela, en polaco y con sellos belgas.","Cartas de Charleroi. Para la abuela, en polaco y con sellos belgas.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.grandpa_chest.note,"El arcón del abuelo Józef. La escritura bajo el mantel, como siempre. Dentro, cartas de Bélgica. Ola dice que irá.","El arcón del abuelo Józef. La escritura bajo el mantel, como siempre. Dentro, cartas de Bélgica. Ola dice que irá.",
-job.kiosk_shutter.line.1,Ese candado lleva aquí treinta y dos años. Nunca lo he engrasado.,Ese candado lleva aquí treinta y dos años. Nunca lo he engrasado.,
-job.kiosk_shutter.line.2,La señora Krysia responde por usted. Aquí está la carta del proveedor. Falta una cosa.,La señora Krysia responde por usted. Aquí está la carta del proveedor. Falta una cosa.,
-job.kiosk_shutter.line.3,"Del día de la inauguración, en el 94. Mi bigote estaba mejor que el quiosco.","Del día de la inauguración, en el 94. Mi bigote estaba mejor que el quiosco.",
+job.kiosk_shutter.line.1,Ese candado lleva aquí treinta y dos años. Nunca lo he engrasado.,Ese candado lleva treinta y dos años aquí. Nunca lo he engrasado.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.kiosk_shutter.line.2,La señora Krysia responde por usted. Aquí está la carta del proveedor. Falta una cosa.,La señora Krysia lo confirma. Tengo la carta del proveedor. Falta una cosa.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.kiosk_shutter.line.3,"Del día de la inauguración, en el 94. Mi bigote estaba mejor que el quiosco.","La foto de la apertura, en el noventa y cuatro. Mi bigote lucía mejor.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.kiosk_shutter.line.4,Stefan lleva aquí más que la parada. Hasta los autobuses lo conocen.,Stefan lleva aquí más que la parada. Hasta los autobuses lo conocen.,
 job.kiosk_shutter.note,"Quiosco del señor Stefan. Por ser un negocio, pedí más pruebas. Foto de 1994, bigote auténtico. Prensa gratis esta semana.","Quiosco del señor Stefan. Por ser un negocio, pedí más pruebas. Foto de 1994, bigote auténtico. Prensa gratis esta semana.",
-job.krakow_antiquarian.line.1,La caja fuerte es mía. Alquilo al ayuntamiento. El dueño del café puede confirmarlo.,La caja fuerte es mía. Alquilo al ayuntamiento. El dueño del café puede confirmarlo.,
-job.krakow_antiquarian.line.2,"Y ya que estás, esta cajita. Un cliente la dejó para tasarla.","Y ya que estás, esta cajita. Un cliente la dejó para tasarla.",
-job.krakow_antiquarian.line.3,La caja fuerte sí. La caja no. Necesito que esté presente su dueño.,La caja fuerte sí. La caja no. Necesito que esté presente su dueño.,
-job.krakow_antiquarian.line.4,Tienes razón. Me hago viejo. E impaciente.,Tienes razón. Me hago viejo. E impaciente.,
+job.krakow_antiquarian.line.1,La caja fuerte es mía. Alquilo al ayuntamiento. El dueño del café puede confirmarlo.,La caja fuerte es mía. Alquilo al ayuntamiento. El café de al lado lo confirma.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.krakow_antiquarian.line.2,"Y ya que estás, esta cajita. Un cliente la dejó para tasarla.","Y ya que está, esta cajita. La dejó un cliente para tasarla.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.krakow_antiquarian.line.3,La caja fuerte sí. La caja no. Necesito que esté presente su dueño.,La caja fuerte sí. La cajita no. Tiene que estar su dueño.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.krakow_antiquarian.line.4,Tienes razón. Me hago viejo. E impaciente.,Tiene razón. Me hago mayor. Y más impaciente.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.krakow_antiquarian.note,"Señor Leopold. La caja fuerte era suya, la otra no. Un encargo, dos decisiones. Y una historia sobre el gremio.","Señor Leopold. La caja fuerte era suya, la otra no. Un encargo, dos decisiones. Y una historia sobre el gremio.",
-job.krakow_tenement_gate.line.1,El técnico de patrimonio dijo que ni un agujero. Ni uno.,El técnico de patrimonio dijo que ni un agujero. Ni uno.,
-job.krakow_tenement_gate.line.2,Y con razón. Alguien trabajó duro en esto hace ciento treinta años.,Y con razón. Alguien trabajó duro en esto hace ciento treinta años.,
-job.krakow_tenement_gate.line.3,Hola de nuevo. Ahora soy becaria aquí. Aprobé el examen. La 412 ayudó.,Hola de nuevo. Ahora soy becaria aquí. Aprobé el examen. La 412 ayudó.,
-job.krakow_tenement_gate.line.4,La comunidad de propietarios lo aprobó. Aquí está la orden por escrito.,La comunidad de propietarios lo aprobó. Aquí está la orden por escrito.,
+job.krakow_tenement_gate.line.1,El técnico de patrimonio dijo que ni un agujero. Ni uno.,El técnico de patrimonio dijo: ni un agujero. Ni uno.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.krakow_tenement_gate.line.2,Y con razón. Alguien trabajó duro en esto hace ciento treinta años.,Y con razón. Alguien trabajó mucho aquí hace ciento treinta años.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.krakow_tenement_gate.line.3,Hola de nuevo. Ahora soy becaria aquí. Aprobé el examen. La 412 ayudó.,Hola otra vez. Soy becaria. Aprobé el examen. Gracias a la habitación cuatrocientos doce.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.krakow_tenement_gate.line.4,La comunidad de propietarios lo aprobó. Aquí está la orden por escrito.,Lo aprobó la comunidad. Aquí tiene la orden de trabajo por escrito.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.krakow_tenement_gate.note,Una verja en Kazimierz. Primera resolución de propietarios de mi carrera. Quizá la enmarque. Zuzanna escribe más deprisa que yo.,Una verja en Kazimierz. Primera resolución de propietarios de mi carrera. Quizá la enmarque. Zuzanna escribe más deprisa que yo.,
-job.liege_bakery.line.1,Mi tío tenía treinta llaves y no etiquetó ninguna.,Mi tío tenía treinta llaves y no etiquetó ninguna.,
-job.liege_bakery.line.2,La cerradura notó la llave equivocada y se ofendió. Tampoco se le puede reprochar.,La cerradura notó la llave equivocada y se ofendió. Tampoco se le puede reprochar.,
-job.liege_bakery.line.3,Documentos de traspaso y contrato de alquiler. La masa fermenta sin pedir permiso.,Documentos de traspaso y contrato de alquiler. La masa fermenta sin pedir permiso.,
-job.liege_bakery.line.4,Los papeles están en regla. Te tomo la palabra con esos gofres de las seis.,Los papeles están en regla. Te tomo la palabra con esos gofres de las seis.,
+job.liege_bakery.line.1,Mi tío tenía treinta llaves y no etiquetó ninguna.,Mi tío tenía treinta llaves. Ni una estaba etiquetada.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.liege_bakery.line.2,La cerradura notó la llave equivocada y se ofendió. Tampoco se le puede reprochar.,La cerradura notó la llave equivocada y se ofendió. La entiendo.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.liege_bakery.line.3,Documentos de traspaso y contrato de alquiler. La masa fermenta sin pedir permiso.,Los papeles del traspaso y el alquiler. La masa sube sin pedir permiso.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.liege_bakery.line.4,Los papeles están en regla. Te tomo la palabra con esos gofres de las seis.,Los papeles están en regla. Cuento con sus gofres de las seis.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.liege_bakery.note,"Lieja, 3:50. El detector hizo su trabajo. Traspaso en regla. Un gofre de azúcar perlado.","Lieja, 3:50. El detector hizo su trabajo. Traspaso en regla. Un gofre de azúcar perlado.",
 job.museum_time_lock.line.1,No es cuestión de combinación. Es cuestión de tiempo.,No es cuestión de combinación. Es cuestión de tiempo.,
-job.museum_time_lock.line.2,Una cerradura de tiempo no pregunta quién está ahí. Pregunta qué hora es.,Una cerradura de tiempo no pregunta quién está ahí. Pregunta qué hora es.,
-job.museum_time_lock.line.3,"Carta de la directora, acta de entrega. Todo por triplicado.","Carta de la directora, acta de entrega. Todo por triplicado.",
-job.museum_time_lock.line.4,"Doctora Rygiel, también tenemos guantes para el cerrajero. Talla L.","Doctora Rygiel, también tenemos guantes para el cerrajero. Talla L.",
+job.museum_time_lock.line.2,Una cerradura de tiempo no pregunta quién está ahí. Pregunta qué hora es.,Una cerradura de tiempo no pregunta quién viene. Pregunta qué hora es.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.museum_time_lock.line.3,"Carta de la directora, acta de entrega. Todo por triplicado.","Carta de dirección, acta de entrega. Por triplicado, claro.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.museum_time_lock.line.4,"Doctora Rygiel, también tenemos guantes para el cerrajero. Talla L.","Doctora Rygiel, también hay guantes para el cerrajero. Talla grande.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.museum_time_lock.note,"Museo de Tecnología. La doctora Rygiel archivó todo por triplicado. La cerradura cedió. Zuzanna está de prácticas, claro.","Museo de Tecnología. La doctora Rygiel archivó todo por triplicado. La cerradura cedió. Zuzanna está de prácticas, claro.",
-job.newlyweds_4am.line.1,"Tengo el documento de identidad, pero sin dirección. Ya lo sé. Hoy es lo normal.","Tengo el documento de identidad, pero sin dirección. Ya lo sé. Hoy es lo normal.",
-job.newlyweds_4am.line.2,Mi domicilio registrado sale en la aplicación. ¿Ves? Con este velo es complicado.,Mi domicilio registrado sale en la aplicación. ¿Ves? Con este velo es complicado.,
-job.newlyweds_4am.line.3,Los conozco. Se han casado hoy. Todo el barrio oyó la fiesta.,Los conozco. Se han casado hoy. Todo el barrio oyó la fiesta.,
-job.newlyweds_4am.line.4,Enhorabuena. En dos minutos estaréis en casa.,Enhorabuena. En dos minutos estaréis en casa.,
+job.newlyweds_4am.line.1,"Tengo el documento de identidad, pero sin dirección. Ya lo sé. Hoy es lo normal.","Tengo el documento, pero no lleva dirección. Ya no la llevan, lo sé.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.newlyweds_4am.line.2,Mi domicilio registrado sale en la aplicación. ¿Ves? Con este velo es complicado.,"Mi domicilio sale en la aplicación. Mire. Con este velo, cuesta apuntar.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.newlyweds_4am.line.3,Los conozco. Se han casado hoy. Todo el barrio oyó la fiesta.,Los conozco. Se casaron hoy. Todo el barrio oyó la fiesta.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.newlyweds_4am.line.4,Enhorabuena. En dos minutos estaréis en casa.,Enhorabuena. Dentro de dos minutos estarán en casa.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.newlyweds_4am.note,"Recién casados, 4:12. Dirección confirmada por la aplicación y un vecino en bata. Tarta de tres pisos. Probé un trozo.","Recién casados, 4:12. Dirección confirmada por la aplicación y un vecino en bata. Tarta de tres pisos. Probé un trozo.",
-job.night_nurse.line.1,Doce horas en planta. Me he dejado la llave en la taquilla del hospital.,Doce horas en planta. Me he dejado la llave en la taquilla del hospital.,
-job.night_nurse.line.2,"Señora Agnieszka, piso catorce. Tengo sus datos de alquiler en el sistema.","Señora Agnieszka, piso catorce. Tengo sus datos de alquiler en el sistema.",
-job.night_nurse.line.3,El administrador lo confirma. El documento coincide. Dentro de nada estarás durmiendo.,El administrador lo confirma. El documento coincide. Dentro de nada estarás durmiendo.,
-job.night_nurse.line.4,Perdona que no hable mucho. Ya estoy hablando dormida.,Perdona que no hable mucho. Ya estoy hablando dormida.,
+job.night_nurse.line.1,Doce horas en planta. Me he dejado la llave en la taquilla del hospital.,Doce horas de turno. Dejé la llave en mi taquilla del hospital.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.night_nurse.line.2,"Señora Agnieszka, piso catorce. Tengo sus datos de alquiler en el sistema.","La señora Agnieszka, piso catorce. Su contrato figura en el sistema.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.night_nurse.line.3,El administrador lo confirma. El documento coincide. Dentro de nada estarás durmiendo.,Lo confirma el administrador. Su documento coincide. Ya podrá dormir.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.night_nurse.line.4,Perdona que no hable mucho. Ya estoy hablando dormida.,Perdone que hable poco. Ya estoy hablando dormida.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.night_nurse.note,"Señora Agnieszka, tras el turno de noche. Señor Roman al telefonillo, eficaz como siempre. Descuento de vecino, sin discusión.","Señora Agnieszka, tras el turno de noche. Señor Roman al telefonillo, eficaz como siempre. Descuento de vecino, sin discusión.",
-job.pizzeria_pays_pizza.line.1,El dinero está en la caja. La caja está dentro. Te pago en pizzas. ¿Cuánta hambre tienes?,El dinero está en la caja. La caja está dentro. Te pago en pizzas. ¿Cuánta hambre tienes?,
-job.pizzeria_pays_pizza.line.2,"Primero el presupuesto; después, el menú. ¿Tienes el contrato de alquiler?","Primero el presupuesto; después, el menú. ¿Tienes el contrato de alquiler?",
-job.pizzeria_pays_pizza.line.3,La conozco desde hace veinte años. Mi kebab está al lado. Su margarita es arte.,La conozco desde hace veinte años. Mi kebab está al lado. Su margarita es arte.,
-job.pizzeria_pays_pizza.line.4,"La masa sube. Yo me hundo. Con que acabes antes del alba, vale.","La masa sube. Yo me hundo. Con que acabes antes del alba, vale.",
+job.pizzeria_pays_pizza.line.1,El dinero está en la caja. La caja está dentro. Te pago en pizzas. ¿Cuánta hambre tienes?,"El dinero está en la caja, y la caja está dentro. Le pago en pizza. ¿Tiene hambre?",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.pizzeria_pays_pizza.line.2,"Primero el presupuesto; después, el menú. ¿Tienes el contrato de alquiler?","Primero el presupuesto, luego la pizza. ¿Tiene el contrato de alquiler?",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.pizzeria_pays_pizza.line.3,La conozco desde hace veinte años. Mi kebab está al lado. Su margarita es arte.,La conozco desde hace veinte años. Mi kebab está al lado. Su pizza es arte.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.pizzeria_pays_pizza.line.4,"La masa sube. Yo me hundo. Con que acabes antes del alba, vale.","La masa sube y yo me hundo. Con que termine antes del alba, me vale.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.pizzeria_pays_pizza.note,La pizzería de Renata. Contrato y vecino comprobados. Cobré en pizza margarita. La caja está en mi estantería.,La pizzería de Renata. Contrato y vecino comprobados. Cobré en pizza margarita. La caja está en mi estantería.,
 job.refuse_aunt_alive.after.1,La señora Lucyna vuelve el viernes. Entonces querrá que le cambie la cerradura.,La señora Lucyna vuelve el viernes. Entonces querrá que le cambie la cerradura.,
 job.refuse_aunt_alive.after.2,Menos mal que dijiste que no. No habría pegado ojo.,Menos mal que dijiste que no. No habría pegado ojo.,
-job.refuse_aunt_alive.line.1,La tía murió la semana pasada. Aún arreglan los papeles. Ha sido todo muy reciente.,La tía murió la semana pasada. Aún arreglan los papeles. Ha sido todo muy reciente.,
-job.refuse_aunt_alive.line.2,¿La señora Lucyna? Está en un balneario. Llamó ayer. Ya se encuentra mejor.,¿La señora Lucyna? Está en un balneario. Llamó ayer. Ya se encuentra mejor.,
-job.refuse_aunt_alive.line.3,Debo de haberme confundido con algo.,Debo de haberme confundido con algo.,
-job.refuse_aunt_alive.line.4,Llamemos juntos a la señora Lucyna. Después llamaremos a la agente Sowa.,Llamemos juntos a la señora Lucyna. Después llamaremos a la agente Sowa.,
+job.refuse_aunt_alive.line.1,La tía murió la semana pasada. Aún arreglan los papeles. Ha sido todo muy reciente.,Mi tía murió la semana pasada. Apenas han empezado los trámites.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.refuse_aunt_alive.line.2,¿La señora Lucyna? Está en un balneario. Llamó ayer. Ya se encuentra mejor.,¿La señora Lucyna? Está en un balneario. Llamó ayer y se encuentra mejor.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.refuse_aunt_alive.line.3,Debo de haberme confundido con algo.,Debo de haberme confundido.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.refuse_aunt_alive.line.4,Llamemos juntos a la señora Lucyna. Después llamaremos a la agente Sowa.,"Llamemos juntos a la señora Lucyna. Luego, a la agente Sowa.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.refuse_aunt_alive.note,La tía estaba viva y bien. La vecina apareció justo a tiempo. La señora Lucyna manda recuerdos desde el balneario.,La tía estaba viva y bien. La vecina apareció justo a tiempo. La señora Lucyna manda recuerdos desde el balneario.,
 job.refuse_ex_partner.after.1,Gracias por llamar. Recogió sus cosas conmigo presente. La inquilina dio su consentimiento.,Gracias por llamar. Recogió sus cosas conmigo. La inquilina dio su consentimiento.,"Skrócono do limitu 90 znaków, zachowano zgodę lokatorki."
 job.refuse_ex_partner.after.2,Me enteré en la parada. Eres de fiar. ¿Un periódico?,Me enteré en la parada. Eres de fiar. ¿Un periódico?,
 job.refuse_ex_partner.line.1,Viví aquí tres años. Tengo derecho a entrar y recoger mis cosas.,Viví aquí tres años. Tengo derecho a entrar y recoger mis cosas.,
-job.refuse_ex_partner.line.2,Solo hay un nombre en el buzón y no es el tuyo. Llamaré al administrador.,Solo hay un nombre en el buzón y no es el tuyo. Llamaré al administrador.,
-job.refuse_ex_partner.line.3,¿Para qué llamar al administrador? Esto es privado.,¿Para qué llamar al administrador? Esto es privado.,
-job.refuse_ex_partner.line.4,No puedo abrir. Quizá la policía pueda ayudarte a recoger tus cosas. ¿Los llamo?,No puedo abrir. Quizá la policía pueda ayudarte a recoger tus cosas. ¿Los llamo?,
+job.refuse_ex_partner.line.2,Solo hay un nombre en el buzón y no es el tuyo. Llamaré al administrador.,"Solo hay un nombre en el buzón, y no es el suyo. Llamaré al administrador.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.refuse_ex_partner.line.3,¿Para qué llamar al administrador? Esto es privado.,¿Para qué llamar al administrador? Es un asunto privado.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.refuse_ex_partner.line.4,No puedo abrir. Quizá la policía pueda ayudarte a recoger tus cosas. ¿Los llamo?,No puedo abrir. La policía puede ayudarle a recoger sus cosas. ¿La llamo?,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.refuse_ex_partner.note,"No abrí. Un nombre en la puerta, no el suyo. Lo dejé en manos de la agente Sowa. Sin remordimientos.","No abrí. Un nombre en la puerta, no el suyo. Lo dejé en manos de la agente Sowa. Sin remordimientos.",
 job.refuse_rush_bribe.after.1,La hermana no sabía nada de esos documentos. Gracias por avisar.,La hermana no sabía nada de esos documentos. Gracias por avisar.,
 job.refuse_rush_bribe.after.2,Ayer un hombre trajeado preguntó por un cerrajero. Lo mandé a verte. Lo siento.,Ayer un hombre trajeado preguntó por un cerrajero. Lo mandé a verte. Lo siento.,
-job.refuse_rush_bribe.line.1,Te pago el doble. El triple. Pero sáltate los trámites.,Te pago el doble. El triple. Pero sáltate los trámites.,
-job.refuse_rush_bribe.line.2,Las comprobaciones no se venden. Llama a tu hermana; esperaré.,Las comprobaciones no se venden. Llama a tu hermana; esperaré.,
-job.refuse_rush_bribe.line.3,No contesta. No despertemos a los vecinos. No hace falta montar un circo.,No contesta. No despertemos a los vecinos. No hace falta montar un circo.,
-job.refuse_rush_bribe.line.4,"Buenas noches, entonces. Avisaré al agente de la zona.","Buenas noches, entonces. Avisaré al agente de la zona.",
+job.refuse_rush_bribe.line.1,Te pago el doble. El triple. Pero sáltate los trámites.,Le pago el doble. El triple. Pero sáltese los trámites.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.refuse_rush_bribe.line.2,Las comprobaciones no se venden. Llama a tu hermana; esperaré.,Las comprobaciones no se venden. Llame a su hermana. Espero aquí.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.refuse_rush_bribe.line.3,No contesta. No despertemos a los vecinos. No hace falta montar un circo.,No contesta. No despertemos a los vecinos. No hace falta un circo.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.refuse_rush_bribe.line.4,"Buenas noches, entonces. Avisaré al agente de la zona.",Buenas noches. Avisaré a la agente de barrio.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.refuse_rush_bribe.note,"La una, un traje, prisas y dinero en vez de un testigo. No abrí. Lo comuniqué. Dormí tranquilo.","La una, un traje, prisas y dinero en vez de un testigo. No abrí. Lo comuniqué. Dormí tranquilo.",
-job.student_dorm.line.1,Mi carné de estudiante está dentro. Y la llave también. Yo estoy en el pasillo.,Mi carné de estudiante está dentro. Y la llave también. Yo estoy en el pasillo.,
-job.student_dorm.line.2,"Zuzanna Wilk, habitación 412. En mi lista y en mi cabeza.","Zuzanna Wilk, habitación 412. En mi lista y en mi cabeza.",
-job.student_dorm.line.3,El señor Edek responde por ti. El nombre coincide. Vamos a entrar.,El señor Edek responde por ti. El nombre coincide. Vamos a entrar.,
-job.student_dorm.line.4,Mañana tengo un examen sobre cerraduras históricas. ¿Esto cuenta como prácticas?,Mañana tengo un examen sobre cerraduras históricas. ¿Esto cuenta como prácticas?,
+job.student_dorm.line.1,Mi carné de estudiante está dentro. Y la llave también. Yo estoy en el pasillo.,"Mi carné y la llave están dentro. Yo estoy fuera, en el pasillo.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.student_dorm.line.2,"Zuzanna Wilk, habitación 412. En mi lista y en mi cabeza.","Zuzanna Wilk, habitación cuatrocientos doce. En mi lista y en mi cabeza.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.student_dorm.line.3,El señor Edek responde por ti. El nombre coincide. Vamos a entrar.,El señor Edek responde por usted. El nombre coincide. Vamos a entrar.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.student_dorm.line.4,Mañana tengo un examen sobre cerraduras históricas. ¿Esto cuenta como prácticas?,Mañana me examino de cerraduras antiguas. ¿Esto cuenta como repaso?,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.student_dorm.note,"Habitación 412, residencia. El portero consultó la lista; el nombre coincidía. Zuzanna preguntó por todo.","Habitación 412, residencia. El portero consultó la lista; el nombre coincidía. Zuzanna preguntó por todo.",
-job.swiatniki_journeyman_padlock.line.1,Llevo setenta años guardándolo. Solo había una llave. Mi nieto la perdió.,Llevo setenta años guardándolo. Solo había una llave. Mi nieto la perdió.,
+job.swiatniki_journeyman_padlock.line.1,Llevo setenta años guardándolo. Solo había una llave. Mi nieto la perdió.,Lo guardo desde hace setenta años. Mi nieto perdió la única llave.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.swiatniki_journeyman_padlock.line.2,¿Y usted sabe abrirlo?,¿Y usted sabe abrirlo?,
-job.swiatniki_journeyman_padlock.line.3,Claro. Pero quiero ver si los jóvenes todavía saben.,Claro. Pero quiero ver si los jóvenes todavía saben.,
-job.swiatniki_journeyman_padlock.line.4,Reconozco esa letra. Es de Henryk. Yo le enseñé. El cuaderno acabó en buenas manos.,Reconozco esa letra. Es de Henryk. Yo le enseñé. El cuaderno acabó en buenas manos.,
+job.swiatniki_journeyman_padlock.line.3,Claro. Pero quiero ver si los jóvenes todavía saben.,Sí. Pero quiero ver si los jóvenes todavía saben hacerlo.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.swiatniki_journeyman_padlock.line.4,Reconozco esa letra. Es de Henryk. Yo le enseñé. El cuaderno acabó en buenas manos.,Conozco esa letra. Es de Henryk. Yo le enseñé. El cuaderno está en buenas manos.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.swiatniki_journeyman_padlock.note,"Señor Władysław, Świątniki. Reconoció la letra de Henryk en mi cuaderno. Le enseñó la primera regla.","Señor Władysław, Świątniki. Reconoció la letra de Henryk en mi cuaderno. Le enseñó la primera regla.",
-job.time_capsule.line.1,Sé que el código era una fecha. Pero ¿de quién?,Sé que el código era una fecha. Pero ¿de quién?,
-job.time_capsule.line.2,"El colegio da su permiso. Ábrela, por favor, delante de todos.","El colegio da su permiso. Ábrela, por favor, delante de todos.",
+job.time_capsule.line.1,Sé que el código era una fecha. Pero ¿de quién?,Sé que el código era una fecha. ¿Pero de quién?,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.time_capsule.line.2,"El colegio da su permiso. Ábrela, por favor, delante de todos.","El colegio da permiso. Ábrala delante de todos, por favor.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.time_capsule.line.3,"Seño, teníamos nueve años. Solo recuerdo recoger castañas.","Seño, teníamos nueve años. Solo recuerdo recoger castañas.",
-job.time_capsule.line.4,Mi carta decía: «Espero que tengas un perro». Tengo un gato. Cuenta.,Mi carta decía: «Espero que tengas un perro». Tengo un gato. Cuenta.,
+job.time_capsule.line.4,Mi carta decía: «Espero que tengas un perro». Tengo un gato. Cuenta.,Mi carta decía: «Espero que tengas un perro». Tengo un gato. Vale igual.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.time_capsule.note,"Clase de 3.º B, bajo el castaño. Permiso del colegio, veinte testigos. Marta estuvo allí. Nota en casa: «Te espera el caldo».","Clase de 3.º B, bajo el castaño. Permiso del colegio, veinte testigos. Marta estuvo allí. Nota en casa: «Te espera el caldo».",
-job.uncle_safe_heirs.line.1,"Ábrela, yo miro y se lo cuento a los demás. Al final compartiremos.","Ábrela, yo miro y se lo cuento a los demás. Al final compartiremos.",
-job.uncle_safe_heirs.line.2,La abriré cuando estén todos los herederos o tenga su consentimiento por escrito.,La abriré cuando estén todos los herederos o tenga su consentimiento por escrito.,
-job.uncle_safe_heirs.line.3,"Ewa llega dentro de una hora. Marek, pon el agua a hervir.","Ewa llega dentro de una hora. Marek, pon el agua a hervir.",
-job.uncle_safe_heirs.line.4,El tío se partiría de risa al vernos discutir por una caja con dial.,El tío se partiría de risa al vernos discutir por una caja con dial.,
+job.uncle_safe_heirs.line.1,"Ábrela, yo miro y se lo cuento a los demás. Al final compartiremos.","Usted la abre, yo miro y aviso a los demás. Después compartiremos.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.uncle_safe_heirs.line.2,La abriré cuando estén todos los herederos o tenga su consentimiento por escrito.,La abriré cuando estén todos los herederos o tenga su permiso por escrito.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.uncle_safe_heirs.line.3,"Ewa llega dentro de una hora. Marek, pon el agua a hervir.","Ewa llega dentro de una hora. Marek, pon agua a hervir.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.uncle_safe_heirs.line.4,El tío se partiría de risa al vernos discutir por una caja con dial.,El tío se reiría al vernos discutir por una caja con rueda.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.uncle_safe_heirs.note,La caja fuerte del tío Bogdan. Esperé una hora a Ewa y tomé tres tés. Abrí ante todos. Sin enfados.,La caja fuerte del tío Bogdan. Esperé una hora a Ewa y tomé tres tés. Abrí ante todos. Sin enfados.,
-job.widow_bureau.line.1,La señora Zosia dijo que usted no taladra. Mi marido no soportaba los taladros.,La señora Zosia dijo que usted no taladra. Mi marido no soportaba los taladros.,
-job.widow_bureau.line.2,La abriré sin dejar marcas. Seguirá siendo su escritorio.,La abriré sin dejar marcas. Seguirá siendo su escritorio.,
+job.widow_bureau.line.1,La señora Zosia dijo que usted no taladra. Mi marido no soportaba los taladros.,La señora Zosia dice que usted no taladra. Mi marido odiaba los taladros.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.widow_bureau.line.2,La abriré sin dejar marcas. Seguirá siendo su escritorio.,Lo abriré sin dejar marcas. Seguirá siendo su escritorio.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.widow_bureau.line.3,Entradas de ópera. De mil novecientos ochenta y siete.,Entradas de ópera. De mil novecientos ochenta y siete.,
-job.widow_bureau.line.4,Me dijo que las había perdido. Las había guardado.,Me dijo que las había perdido. Las había guardado.,
+job.widow_bureau.line.4,Me dijo que las había perdido. Las había guardado.,Me dijo que las había perdido. Pero las había guardado.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.widow_bureau.note,"Señora Irena, por recomendación de la señora Zosia. Escritorio en su casa, sin marcas. Había entradas dentro. No pregunté.","Señora Irena, por recomendación de la señora Zosia. Escritorio en su casa, sin marcas. Había entradas dentro. No pregunté.",
 job.wrong_floor.after.1,¿Eres el cerrajero que no abrió mi puerta? Te hice un pastel. Por no abrirla.,¿Eres el cerrajero que no abrió mi puerta? Te hice un pastel. Por no abrirla.,
-job.wrong_floor.line.1,La llave no entra. La cerradura se rompió mientras estaba fuera.,La llave no entra. La cerradura se rompió mientras estaba fuera.,
-job.wrong_floor.line.2,"Señor Kazimierz, el buzón tiene otro nombre. ¿Y esta corona?","Señor Kazimierz, el buzón tiene otro nombre. ¿Y esta corona?",
-job.wrong_floor.line.3,¿Quién anda ahí? Llevo doce años aquí. Yo mismo hice esa corona.,¿Quién anda ahí? Llevo doce años aquí. Yo mismo hice esa corona.,
-job.wrong_floor.line.4,"Ah, la llave entra un piso más arriba. Ya lo has arreglado.","Ah, la llave entra un piso más arriba. Ya lo has arreglado.",
+job.wrong_floor.line.1,La llave no entra. La cerradura se rompió mientras estaba fuera.,La llave ya no entra. La cerradura se rompió cuando yo no estaba.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.wrong_floor.line.2,"Señor Kazimierz, el buzón tiene otro nombre. ¿Y esta corona?","Señor Kazimierz, el buzón tiene otro nombre. ¿Y esa corona?",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.wrong_floor.line.3,¿Quién anda ahí? Llevo doce años aquí. Yo mismo hice esa corona.,¿Quién anda ahí? Llevo doce años aquí. Yo misma hice esa corona.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.wrong_floor.line.4,"Ah, la llave entra un piso más arriba. Ya lo has arreglado.","Ah, la llave entra un piso más arriba. Ya lo ha arreglado usted.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.wrong_floor.note,"El señor Kazimierz, después de una fiesta del santo. Piso equivocado. No abrí nada. Problema resuelto. Mejor trabajo de la semana.","El señor Kazimierz, después de una fiesta del santo. Piso equivocado. No abrí nada. Problema resuelto. Mejor trabajo de la semana.",
 notebook.refuse.line,No puedo abrir esta. Pero puedo ayudar de otra manera.,No puedo abrir esta. Pero puedo ayudar de otra manera.,
 notebook.rule.1,Primero pregunta de quién es. Después mira la cerradura.,Primero pregunta de quién es. Después mira la cerradura.,
@@ -530,49 +530,49 @@ cast.elzbieta.name,"Elżbieta, administradora","Elżbieta, administradora",
 cast.marcel.name,Marcel,Marcel,
 cast.norbert.name,Norbert,Norbert,
 job.community_notice_case.client,"Basia, secretaria de la comunidad de vecinos, junto a Elżbieta, administradora del edificio.","Basia, secretaria de la comunidad de vecinos, junto a Elżbieta, administradora del edificio.",
-job.community_notice_case.line.1,El turno de limpieza está listo. Solo el tablón se niega a mostrarlo.,El turno de limpieza está listo. Solo el tablón se niega a mostrarlo.,
-job.community_notice_case.line.2,Administro este edificio. Aquí está el acuerdo firmado por los vecinos.,Administro este edificio. Aquí está el acuerdo firmado por los vecinos.,
-job.community_notice_case.line.3,Permiso y precio acordados. Abriré el tablón comunitario.,Permiso y precio acordados. Abriré el tablón comunitario.,
-job.community_notice_case.line.4,Primer aviso: el turno de limpieza. Una inauguración por todo lo alto.,Primer aviso: el turno de limpieza. Una inauguración por todo lo alto.,
+job.community_notice_case.line.1,El turno de limpieza está listo. Solo el tablón se niega a mostrarlo.,El turno de limpieza está listo. El armario se niega a mostrarlo.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.community_notice_case.line.2,Administro este edificio. Aquí está el acuerdo firmado por los vecinos.,Administro el edificio. Aquí está el acuerdo firmado por los vecinos.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.community_notice_case.line.3,Permiso y precio acordados. Abriré el tablón comunitario.,Permiso y precio acordados. Abriré el armario comunitario.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.community_notice_case.line.4,Primer aviso: el turno de limpieza. Una inauguración por todo lo alto.,Primer aviso: el turno de limpieza. Menuda inauguración.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.community_notice_case.note,"Casco antiguo, tablón comunitario. Administradora y acuerdo firmado; el turno de limpieza ya está expuesto.","Casco antiguo, tablón comunitario. Administradora y acuerdo firmado; el turno de limpieza ya está expuesto.",
 job.community_notice_case.situation,El tablón comunitario está cerrado. Los vecinos necesitan colocar el turno de limpieza de la sala común recién aprobada.,El tablón comunitario está cerrado. Los vecinos necesitan colocar el turno de limpieza de la sala común recién aprobada.,
 job.community_notice_case.title,El tablón de anuncios,El tablón de anuncios,
 job.edek_rehearsal_store.client,"El señor Edek, portero del campus, e Iga, del grupo de música estudiantil.","El señor Edek, portero del campus, e Iga, del grupo de música estudiantil.",
 job.edek_rehearsal_store.line.1,El almacén figura en mi lista. Era del antiguo teatro.,El almacén figura en mi lista. Era del antiguo teatro.,
-job.edek_rehearsal_store.line.2,Vamos a tomar unas sillas prestadas. Esta vez nadie pidió tambores.,Vamos a tomar unas sillas prestadas. Esta vez nadie pidió tambores.,
-job.edek_rehearsal_store.line.3,Tu registro y la carta de la universidad coinciden. Y también el importe.,Tu registro y la carta de la universidad coinciden. Y también el importe.,
-job.edek_rehearsal_store.line.4,Bien. Esperemos que las sillas lleven mejor el ritmo que el grupo.,Bien. Esperemos que las sillas lleven mejor el ritmo que el grupo.,
+job.edek_rehearsal_store.line.2,Vamos a tomar unas sillas prestadas. Esta vez nadie pidió tambores.,Vamos a por unas sillas. Esta vez nadie ha pedido una batería.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.edek_rehearsal_store.line.3,Tu registro y la carta de la universidad coinciden. Y también el importe.,Su registro y la carta de la universidad coinciden. El precio también.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.edek_rehearsal_store.line.4,Bien. Esperemos que las sillas lleven mejor el ritmo que el grupo.,Bien. A ver si las sillas tienen más ritmo que la banda.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.edek_rehearsal_store.note,Almacén del teatro universitario. Señor Edek y autorización de la universidad; sillas prestadas para la reunión vecinal.,Almacén del teatro universitario. Señor Edek y autorización de la universidad; sillas prestadas para la reunión vecinal.,
 job.edek_rehearsal_store.situation,El viejo almacén teatral del campus guarda sillas plegables prometidas para una reunión del barrio. La universidad autorizó el préstamo.,El viejo almacén teatral del campus guarda sillas plegables prometidas para una reunión del barrio. La universidad autorizó el préstamo.,
 job.edek_rehearsal_store.title,Sillas para el ensayo,Sillas para el ensayo,
 job.gosia_workbench_drawer.client,"Gosia, de 36 años, restaura muebles y tiene un taller junto al puerto.","Gosia, de 36 años, restaura muebles y tiene un taller junto al puerto.",
-job.gosia_workbench_drawer.line.1,Compré todo el banco de trabajo. El cajón no reconoce la factura.,Compré todo el banco de trabajo. El cajón no reconoce la factura.,
-job.gosia_workbench_drawer.line.2,"Factura, foto de recogida y precio acordado. Todo en orden.","Factura, foto de recogida y precio acordado. Todo en orden.",
-job.gosia_workbench_drawer.line.3,"Por favor, no dejes marcas. El banco irá a la sala común.","Por favor, no dejes marcas. El banco irá a la sala común.",
+job.gosia_workbench_drawer.line.1,Compré todo el banco de trabajo. El cajón no reconoce la factura.,Compré el banco entero. Pero el cajón no reconoce la factura.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.gosia_workbench_drawer.line.2,"Factura, foto de recogida y precio acordado. Todo en orden.","Factura, foto de recogida, precio acordado. Todo en orden.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.gosia_workbench_drawer.line.3,"Por favor, no dejes marcas. El banco irá a la sala común.","No deje marcas, por favor. El banco irá a la sala común.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.gosia_workbench_drawer.line.4,"De acuerdo. Por una vez, los papeles llegaron antes que yo.","De acuerdo. Por una vez, los papeles llegaron antes que yo.",
 job.gosia_workbench_drawer.note,El cajón del banco de Gosia. Factura y foto de recogida. El banco irá a la sala común sin marcas.,El cajón del banco de Gosia. Factura y foto de recogida. El banco irá a la sala común sin marcas.,
 job.gosia_workbench_drawer.situation,Gosia compró un banco de trabajo antiguo con un cajón cerrado. Quiere donarlo a la sala común sin dañar la madera.,Gosia compró un banco de trabajo antiguo con un cajón cerrado. Quiere donarlo a la sala común sin dañar la madera.,
 job.gosia_workbench_drawer.title,El cajón del banco de trabajo,El cajón del banco de trabajo,
 job.halina_recipe_box.client,"La señora Halina, de 81 años, y su vecina, la señora Zosia.","La señora Halina, de 81 años, y su vecina, la señora Zosia.",
-job.halina_recipe_box.line.1,Mi receta de pierogi está dentro. Solo recuerdo la palabra «puñado».,Mi receta de pierogi está dentro. Solo recuerdo la palabra «puñado».,
-job.halina_recipe_box.line.2,Es la caja de Halina. ¿Ves? Sale junto a su taza en esta foto.,Es la caja de Halina. ¿Ves? Sale junto a su taza en esta foto.,
+job.halina_recipe_box.line.1,Mi receta de pierogi está dentro. Solo recuerdo la palabra «puñado».,Dentro está mi receta de pierogi. Solo recuerdo la palabra «puñado».,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.halina_recipe_box.line.2,Es la caja de Halina. ¿Ves? Sale junto a su taza en esta foto.,"Es la caja de Halina. Mire, está junto a su taza en esta foto.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.halina_recipe_box.line.3,"Foto, testigo y precio acordado. Podemos empezar.","Foto, testigo y precio acordado. Podemos empezar.",
-job.halina_recipe_box.line.4,Después resolveremos cuánto pesa un puñado. Es una disputa antigua.,Después resolveremos cuánto pesa un puñado. Es una disputa antigua.,
+job.halina_recipe_box.line.4,Después resolveremos cuánto pesa un puñado. Es una disputa antigua.,Luego veremos cuánto pesa un puñado. Es una discusión antigua.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.halina_recipe_box.note,"Señora Halina, caja de recetas. Foto y palabra de la señora Zosia. Precio acordado; sigue el debate sobre el puñado.","Señora Halina, caja de recetas. Foto y palabra de la señora Zosia. Precio acordado; sigue el debate sobre el puñado.",
 job.halina_recipe_box.situation,Halina quiere su receta de pierogi para la nueva sala común. Perdió la llave de su antigua caja de recetas; Zosia tiene una foto.,Halina quiere su receta de pierogi para la nueva sala común. Perdió la llave de su antigua caja de recetas; Zosia tiene una foto.,
 job.halina_recipe_box.title,Una caja de puñados,Una caja de puñados,
 job.krystyna_wooden_album.client,La señora Krystyna y su hija Ola traen fotografías de la familia.,La señora Krystyna y su hija Ola traen fotografías de la familia.,
 job.krystyna_wooden_album.line.1,Józef hizo esta caja de fotos. Creo que la llavecita era de madera.,Józef hizo esta caja de fotos. Creo que la llavecita era de madera.,
-job.krystyna_wooden_album.line.2,Tenemos una foto suya sosteniéndola. Y la caja está en casa de mamá.,Tenemos una foto suya sosteniéndola. Y la caja está en casa de mamá.,
-job.krystyna_wooden_album.line.3,La foto y la palabra de su hija bastan. Anotaré el precio.,La foto y la palabra de su hija bastan. Anotaré el precio.,
-job.krystyna_wooden_album.line.4,De acuerdo. Pero no preguntes qué ropa llevábamos.,De acuerdo. Pero no preguntes qué ropa llevábamos.,
+job.krystyna_wooden_album.line.2,Tenemos una foto suya sosteniéndola. Y la caja está en casa de mamá.,Tenemos una foto suya con la caja. Y está en casa de mamá.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.krystyna_wooden_album.line.3,La foto y la palabra de su hija bastan. Anotaré el precio.,La foto y la palabra de su hija bastan. Anoto el precio.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.krystyna_wooden_album.line.4,De acuerdo. Pero no preguntes qué ropa llevábamos.,De acuerdo. Pero no me pregunte qué ropa llevábamos.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.krystyna_wooden_album.note,La caja de madera de la señora Krystyna. Foto familiar y palabra de Ola. Eligieron las copias ellas mismas.,La caja de madera de la señora Krystyna. Foto familiar y palabra de Ola. Eligieron las copias ellas mismas.,
 job.krystyna_wooden_album.situation,"El difunto padre de Krystyna, Józef, fabricó una caja de fotos con cerradura de pasadores de madera. Quieren prestar algunas fotografías para la exposición de la sala común.","El difunto padre de Krystyna, Józef, fabricó una caja de fotos con cerradura de pasadores de madera. Quieren prestar algunas fotografías para la exposición de la sala común.",
 job.krystyna_wooden_album.title,La caja de fotos de Józef,La caja de fotos de Józef,
 job.marta_poster_studio.client,"Marta, de 34 años, diseñadora gráfica; Patata, el gato, supervisa.","Marta, de 34 años, diseñadora gráfica; Patata, el gato, supervisa.",
 job.marta_poster_studio.line.1,Los carteles están dentro. Patata los vigila desde el lado equivocado.,Los carteles están dentro. Patata los vigila desde el lado equivocado.,
-job.marta_poster_studio.line.2,El contrato coincide. Tu vecina confirma que este es tu estudio.,El contrato coincide. Tu vecina confirma que este es tu estudio.,
-job.marta_poster_studio.line.3,El gato no va a firmar. Tiene una política de privacidad bastante estricta.,El gato no va a firmar. Tiene una política de privacidad bastante estricta.,
+job.marta_poster_studio.line.2,El contrato coincide. Tu vecina confirma que este es tu estudio.,El contrato coincide. Su vecina confirma que este es su taller.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.marta_poster_studio.line.3,El gato no va a firmar. Tiene una política de privacidad bastante estricta.,El gato no firmará nada. Su política de privacidad es estricta.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.marta_poster_studio.line.4,No hace falta. El precio está acordado y los papeles bastan.,No hace falta. El precio está acordado y los papeles bastan.,
 job.marta_poster_studio.note,El estudio de Marta. Contrato y vecina. Carteles recuperados; Patata rechazó hacer declaraciones.,El estudio de Marta. Contrato y vecina. Carteles recuperados; Patata rechazó hacer declaraciones.,
 job.marta_poster_studio.situation,"Los carteles de la sala común están encerrados en el estudio alquilado de Marta. Dentro están la llave, las copias y su gato.","Los carteles de la sala común están encerrados en el estudio alquilado de Marta. Dentro están la llave, las copias y su gato.",
@@ -580,24 +580,24 @@ job.marta_poster_studio.title,Carteles detrás de la puerta,Carteles detrás de 
 job.refuse_sisters_flat.after.1,Hablé con la inquilina. Nos pidió que esperáramos a su regreso.,Hablé con la inquilina. Nos pidió que esperáramos a su regreso.,
 job.refuse_sisters_flat.client,"Norbert, de 43 años, está preocupado por las plantas de su hermana.","Norbert, de 43 años, está preocupado por las plantas de su hermana.",
 job.refuse_sisters_flat.line.1,Mi hermana está fuera. Sus plantas se secarán y no contesta.,Mi hermana está fuera. Sus plantas se secarán y no contesta.,
-job.refuse_sisters_flat.line.2,Podemos esperar su permiso o preguntar al administrador.,Podemos esperar su permiso o preguntar al administrador.,
-job.refuse_sisters_flat.line.3,Prefiero no involucrar a los vecinos. Solo son flores.,Prefiero no involucrar a los vecinos. Solo son flores.,
-job.refuse_sisters_flat.line.4,No puedo abrir sin su consentimiento. Aquí tienes el teléfono del administrador.,No puedo abrir sin su consentimiento. Aquí tienes el teléfono del administrador.,
+job.refuse_sisters_flat.line.2,Podemos esperar su permiso o preguntar al administrador.,Podemos esperar su permiso o llamar al administrador.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.refuse_sisters_flat.line.3,Prefiero no involucrar a los vecinos. Solo son flores.,Prefiero no molestar a los vecinos. Son solo flores.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.refuse_sisters_flat.line.4,No puedo abrir sin su consentimiento. Aquí tienes el teléfono del administrador.,"Sin su permiso, no puedo abrir. Aquí tiene el teléfono del administrador.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.refuse_sisters_flat.note,No abrí el piso de la hermana de Norbert. Sin consentimiento de la inquilina. Le di el teléfono del administrador.,No abrí el piso de la hermana de Norbert. Sin consentimiento de la inquilina. Le di el teléfono del administrador.,
 job.refuse_sisters_flat.situation,"Su hermana está fuera y no responde. Norbert quiere que abran el piso para regar las plantas, pero no puede demostrar que ella lo autorice.","Su hermana está fuera y no responde. Norbert quiere que abran el piso para regar las plantas, pero no puede demostrar que ella lo autorice.",
 job.refuse_sisters_flat.title,Flores tras una puerta cerrada,Flores tras una puerta cerrada,
 job.refuse_unapproved_stockroom.after.1,Recogieron los paquetes esta mañana. Ahora la tienda tiene mejores horarios de entrega.,Recogieron los paquetes esta mañana. Ahora la tienda tiene mejores horarios de entrega.,
 job.refuse_unapproved_stockroom.client,"Marcel, de 29 años, es repartidor y lleva una carretilla llena de paquetes.","Marcel, de 29 años, es repartidor y lleva una carretilla llena de paquetes.",
-job.refuse_unapproved_stockroom.line.1,"La entrega está aquí, en mi carretilla. El dueño de la tienda no contesta.","La entrega está aquí, en mi carretilla. El dueño de la tienda no contesta.",
-job.refuse_unapproved_stockroom.line.2,Un albarán no autoriza a entrar en la tienda.,Un albarán no autoriza a entrar en la tienda.,
-job.refuse_unapproved_stockroom.line.3,¿Podrías abrir solo un poco para dejar los paquetes dentro?,¿Podrías abrir solo un poco para dejar los paquetes dentro?,
+job.refuse_unapproved_stockroom.line.1,"La entrega está aquí, en mi carretilla. El dueño de la tienda no contesta.",La entrega está en mi carrito. El dueño de la tienda no contesta.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.refuse_unapproved_stockroom.line.2,Un albarán no autoriza a entrar en la tienda.,Un albarán no le da permiso para entrar en la tienda.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.refuse_unapproved_stockroom.line.3,¿Podrías abrir solo un poco para dejar los paquetes dentro?,¿Podría abrir solo un poco para dejar los paquetes dentro?,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.refuse_unapproved_stockroom.line.4,"Sin permiso, no. Mejor organicemos una entrega segura.","Sin permiso, no. Mejor organicemos una entrega segura.",
 job.refuse_unapproved_stockroom.note,Almacén del Mercado Nocturno. Albarán sin consentimiento del dueño. Paquetes entregados por la mañana.,Almacén del Mercado Nocturno. Albarán sin consentimiento del dueño. Paquetes entregados por la mañana.,
 job.refuse_unapproved_stockroom.situation,"Una tienda del Mercado Nocturno está cerrada. Marcel pide abrir el almacén para dejar paquetes, sin autorización del propietario.","Una tienda del Mercado Nocturno está cerrada. Marcel pide abrir el almacén para dejar paquetes, sin autorización del propietario.",
 job.refuse_unapproved_stockroom.title,Entrega después del cierre,Entrega después del cierre,
 job.roman_service_cupboard.client,"El señor Roman, de 58 años, administra el complejo de viviendas.","El señor Roman, de 58 años, administra el complejo de viviendas.",
 job.roman_service_cupboard.line.1,Los vecinos votaron donar los números. El armario no se ha enterado.,Los vecinos votaron donar los números. El armario no se ha enterado.,
-job.roman_service_cupboard.line.2,Tengo el registro y el acuerdo firmado. El precio está acordado.,Tengo el registro y el acuerdo firmado. El precio está acordado.,
+job.roman_service_cupboard.line.2,Tengo el registro y el acuerdo firmado. El precio está acordado.,Tengo su registro y el acuerdo firmado. El precio está acordado.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.roman_service_cupboard.line.3,"Con cuidado, por favor. Son los únicos números sin faltas de ortografía.","Con cuidado, por favor. Son los únicos números sin faltas de ortografía.",
 job.roman_service_cupboard.line.4,Cuidaré el esmalte. Sobre el papeleo no prometo nada.,Cuidaré el esmalte. Sobre el papeleo no prometo nada.,
 job.roman_service_cupboard.note,"Urbanización Soleada, armario de mantenimiento. Señor Roman y votación firmada. Los viejos números irán a la sala común.","Urbanización Soleada, armario de mantenimiento. Señor Roman y votación firmada. Los viejos números irán a la sala común.",
@@ -605,26 +605,26 @@ job.roman_service_cupboard.situation,Los vecinos votaron donar los antiguos núm
 job.roman_service_cupboard.title,El armario de la escalera,El armario de la escalera,
 job.shared_room_door.after.1,Nadie perdió una llave en la primera reunión. Buen comienzo.,Nadie perdió una llave en la primera reunión. Buen comienzo.,
 job.shared_room_door.client,"Elżbieta, administradora del edificio, acompañada por Marta y la señora Halina.","Elżbieta, administradora del edificio, acompañada por Marta y la señora Halina.",
-job.shared_room_door.line.1,Acuerdo firmado y lista de vecinos autorizados. Estas puertas son comunitarias.,Acuerdo firmado y lista de vecinos autorizados. Estas puertas son comunitarias.,
+job.shared_room_door.line.1,Acuerdo firmado y lista de vecinos autorizados. Estas puertas son comunitarias.,Acuerdo firmado y lista de vecinos autorizados. Son puertas comunes.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.shared_room_door.line.2,Los documentos coinciden. El precio también. Podemos abrir.,Los documentos coinciden. El precio también. Podemos abrir.,
-job.shared_room_door.line.3,He traído el cartel. Patata lo aprobó durmiendo encima.,He traído el cartel. Patata lo aprobó durmiendo encima.,
-job.shared_room_door.line.4,Y yo he traído pierogi. La puerta puede esperar. Ellos no.,Y yo he traído pierogi. La puerta puede esperar. Ellos no.,
+job.shared_room_door.line.3,He traído el cartel. Patata lo aprobó durmiendo encima.,Traje el cartel. Patata lo aprobó durmiendo encima.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.shared_room_door.line.4,Y yo he traído pierogi. La puerta puede esperar. Ellos no.,Y yo traje pierogi. La puerta puede esperar. Ellos no.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.shared_room_door.note,"Casco antiguo, sala común. Votación firmada, administradora y testigo. Llegaron primero las sillas, las fotos y los pierogi.","Casco antiguo, sala común. Votación firmada, administradora y testigo. Llegaron primero las sillas, las fotos y los pierogi.",
 job.shared_room_door.situation,"Tras la votación de los vecinos, Elżbieta autoriza abrir la antigua sala común. Ya están listos las sillas, las fotos, el cartel y la receta de pierogi.","Tras la votación de los vecinos, Elżbieta autoriza abrir la antigua sala común. Ya están listos las sillas, las fotos, el cartel y la receta de pierogi.",
 job.shared_room_door.title,Una puerta para todos,Una puerta para todos,
 job.stefan_book_tin.client,"El señor Stefan, de 67 años, dueño del quiosco y fuente de noticias del barrio.","Stefan, 67 años, quiosquero y fuente de noticias del barrio.",Skrócono profil postaci.
-job.stefan_book_tin.line.1,"Guardé bien los vales de biblioteca. Hasta de mí mismo, por lo visto.","Guardé bien los vales de biblioteca. Hasta de mí mismo, por lo visto.",
-job.stefan_book_tin.line.2,Tu recibo coincide con la foto del quiosco. El precio está acordado.,Tu recibo coincide con la foto del quiosco. El precio está acordado.,
-job.stefan_book_tin.line.3,Me sé todos los horarios de autobús. ¿Estos números? Ni hablar.,Me sé todos los horarios de autobús. ¿Estos números? Ni hablar.,
-job.stefan_book_tin.line.4,Al menos el recibo sobrevivió. Pondré el mío al lado.,Al menos el recibo sobrevivió. Pondré el mío al lado.,
+job.stefan_book_tin.line.1,"Guardé bien los vales de biblioteca. Hasta de mí mismo, por lo visto.",Guardé tan bien las fichas de biblioteca que ni yo las encuentro.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.stefan_book_tin.line.2,Tu recibo coincide con la foto del quiosco. El precio está acordado.,Su recibo y la foto del quiosco coinciden. El precio está acordado.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.stefan_book_tin.line.3,Me sé todos los horarios de autobús. ¿Estos números? Ni hablar.,Me sé todos los horarios de autobús. ¿Estos números? Ni idea.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.stefan_book_tin.line.4,Al menos el recibo sobrevivió. Pondré el mío al lado.,Al menos el recibo sigue ahí. Pondré el mío al lado.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.stefan_book_tin.note,"Quiosco de Stefan, lata de vales. Recibo y foto. El dueño sigue sin recordar la combinación.","Quiosco de Stefan, lata de vales. Recibo y foto. El dueño sigue sin recordar la combinación.",
 job.stefan_book_tin.situation,"Stefan guardó los vales de biblioteca para la nueva sala común en una lata propia, cerrada con un candado de anillos, y luego olvidó la combinación.","Stefan guardó los vales de biblioteca para la nueva sala común en una lata propia, cerrada con un candado de anillos, y luego olvidó la combinación.",
 job.stefan_book_tin.title,La lata de vales de libros,La lata de vales de libros,
 job.zuzanna_catalogue_drawer.client,"Zuzanna Wilk, becaria del museo, con la conservadora doctora Anna Rygiel.","Zuzanna Wilk, becaria del museo, con la conservadora doctora Anna Rygiel.",
-job.zuzanna_catalogue_drawer.line.1,Tenemos autorización para las copias. El cajón cree que son originales.,Tenemos autorización para las copias. El cajón cree que son originales.,
+job.zuzanna_catalogue_drawer.line.1,Tenemos autorización para las copias. El cajón cree que son originales.,Tenemos permiso para las copias. El cajón cree que son originales.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.zuzanna_catalogue_drawer.line.2,La firma es mía. Los originales se quedan en el museo.,La firma es mía. Los originales se quedan en el museo.,
-job.zuzanna_catalogue_drawer.line.3,"Conservadora, protocolo firmado, precio acordado. Solo el cajón, entonces.","Conservadora, protocolo firmado, precio acordado. Solo el cajón, entonces.",
-job.zuzanna_catalogue_drawer.line.4,Pondré «Tratar con cuidado» en la exposición. Empezando por este cajón.,Pondré «Tratar con cuidado» en la exposición. Empezando por este cajón.,
+job.zuzanna_catalogue_drawer.line.3,"Conservadora, protocolo firmado, precio acordado. Solo el cajón, entonces.","Conservadora, acta firmada y precio acordado. Solo el cajón, entonces.",T41: dialog dla lektora; forma grzecznościowa i liczby słownie
+job.zuzanna_catalogue_drawer.line.4,Pondré «Tratar con cuidado» en la exposición. Empezando por este cajón.,Pondré «Tratar con cuidado» en la vitrina. Empezando por este cajón.,T41: dialog dla lektora; forma grzecznościowa i liczby słownie
 job.zuzanna_catalogue_drawer.note,"Museo, cajón de fichas. La doctora Rygiel autorizó las copias. Los originales siguieron en su lugar.","Museo, cajón de fichas. La doctora Rygiel autorizó las copias. Los originales siguieron en su lugar.",
 job.zuzanna_catalogue_drawer.situation,Las copias autorizadas de unas viejas fotos de la escalera están atrapadas en un cajón cerrado del museo. Los originales permanecerán en el archivo.,Las copias autorizadas de unas viejas fotos de la escalera están atrapadas en un cajón cerrado del museo. Los originales permanecerán en el archivo.,
 job.zuzanna_catalogue_drawer.title,El cajón del catálogo,El cajón del catálogo,

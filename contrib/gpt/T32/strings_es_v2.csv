@@ -36,6 +36,8 @@ job.refuse,Rechazar el encargo,Rechazar el encargo,
 job.opened,Cerradura abierta. Cuenta saldada.,Cerradura abierta. Cuenta saldada.,
 job.reward_fmt,Recompensa: {n} monedas,Recompensa: {n} monedas,
 job.tip_fmt,Propina (apertura limpia): {n} monedas,Propina (apertura limpia): {n} monedas,
+receipt.service,,Apertura de urgencia,T41: nowa etykieta UI i wersja językowa
+receipt.tip,,Por apertura cuidadosa,T41: nowa etykieta UI i wersja językowa
 common.continue,Continuar,Continuar,
 verify.title,Comprobar derecho de entrada,Comprobar derecho de entrada,
 verify.hint,El cliente presenta sus pruebas. Tú decides.,El cliente presenta sus pruebas. Tú decides.,
@@ -59,6 +61,7 @@ verify.refused,No hay pruebas suficientes. No puedo abrir.,No hay pruebas sufici
 verify.refused_rep,La voz corre: +5 de reputación,La voz corre: +5 de reputación,
 tutorial.title,Tutorial: cerradura de práctica,Tutorial: cerradura de práctica,
 tutorial.stage,Fase {n} de 3,Fase {n} de 3,
+tutorial.start,,Empezar la práctica,Uzupełniono nowy klucz interfejsu po korekcie.
 tutorial.done,Práctica completada. Ahora llega tu primer encargo real.,Práctica completada. Ahora llega tu primer encargo real.,
 hud.magnifier,Lupa,Lupa,
 settings.title,Ajustes,Ajustes,
@@ -75,6 +78,8 @@ settings.continuous_resistance,Resistencia continua,Resistencia continua,
 settings.volume_master,Volumen general,Volumen general,
 settings.volume_sfx,Efectos de sonido,Efectos de sonido,
 settings.volume_ambience,Sonido ambiente,Sonido ambiente,
+settings.volume_voice,,Voces,T41: nowa etykieta UI i wersja językowa
+dialogue.skip_all,,Ver todo el diálogo,T41: nowa etykieta UI i wersja językowa
 settings.language,Idioma,Idioma,
 settings.language_system,Idioma del dispositivo,Idioma del sistema,Krótsza etykieta.
 settings.language_pl,Polski,Polski,
@@ -124,7 +129,6 @@ dev.haptics_lab.tier,Nivel,Nivel,
 dev.haptics_lab.force_fallback,Usar alternativa,Modo alternativo,Skrócono nazwę opcji.
 dev.haptics_lab.resistance,Resistencia,Resistencia,
 dev.haptics_lab.caps,Capacidades,Capacidades,
-tutorial.start,,Empezar la práctica,Uzupełniono nowy klucz interfejsu po korekcie.
 nav.quit_confirm,,¿Salir del juego?,Nowy klucz źródłowy (pytanie przy wyjściu).
 nav.quit_yes,,Salir,Nowy klucz źródłowy (potwierdzenie).
 nav.quit_no,,Seguir jugando,Nowy klucz źródłowy (pozostanie w grze).
@@ -194,3 +198,22 @@ tutorial.s2_intro,,Tres pernos. Solo uno ofrece resistencia.,Uzupełniono brakuj
 tutorial.s3_intro,,Nuevo orden. ¿Muy alto? Empieza más suave.,Uzupełniono brakujący klucz według EN i PL (T40).
 tutorial.s1_near_break,,Fuerza excesiva. La herramienta se dobla. Afloja.,Uzupełniono brakujący klucz według EN i PL (T40).
 ui.job_done,,listo,Uzupełniono brakujący klucz według EN i PL (T40).
+lock.dial_hint,,Pulgar derecho: gire el dial y pare en cada muesca.,T41: nowa etykieta UI i wersja językowa
+lock.combo_hint,,Tire suave. Gire despacio la rueda que se resiste.,T41: nowa etykieta UI i wersja językowa
+lock.warded_reach,,Suba o baje la punta hasta que encaje.,T41: nowa etykieta UI i wersja językowa
+lock.warded_turn,,"Pulgar izquierdo: arriba gira, abajo vuelve.",T41: nowa etykieta UI i wersja językowa
+lock.warded_turn_auto,,Pulgar derecho sostenido: gire. Izquierdo: vuelva.,T41: nowa etykieta UI i wersja językowa
+lock.warded_bit,,¿Punta muy gruesa? Saque la sonda y toque el cabezal.,T41: nowa etykieta UI i wersja językowa
+lock.detector_reset,,"Detector activado. Afloje, retroceda y mantenga.",T41: nowa etykieta UI i wersja językowa
+lock.detector_reset_auto,,Detector activado. Pulgar izquierdo: mantenga y vuelva.,T41: nowa etykieta UI i wersja językowa
+lock.wafer_coach,,Suba la lámina hasta dejarla al ras del cilindro.,T41: nowa etykieta UI i wersja językowa
+lock.lever_coach,,Suba la palanca hasta alinear su muesca.,T41: nowa etykieta UI i wersja językowa
+lock.hint_tension_wafer,,¿Láminas sueltas? Presione un poco a la izquierda.,T41: nowa etykieta UI i wersja językowa
+lock.hint_tension_lever,,¿Palancas sueltas? Mantenga leve presión a la izquierda.,T41: nowa etykieta UI i wersja językowa
+lock.disc_hint,,Presión leve a la izquierda. Gire el disco que resiste.,T41: nowa etykieta UI i wersja językowa
+tutorial.say_tension,,Pista: suba el pulgar izquierdo despacio y mantenga.,T41: nowa etykieta UI i wersja językowa
+tutorial.say_lift,,Pista: pulgar derecho bajo la pieza dura. Súbala despacio.,T41: nowa etykieta UI i wersja językowa
+tutorial.say_warded,,Pista: encaje la punta en la ranura y gire.,T41: nowa etykieta UI i wersja językowa
+tutorial.say_chalk,,Pista: la tiza muestra el gesto que toca.,T41: nowa etykieta UI i wersja językowa
+tutorial.say_master,,El maestro muestra el gesto una vez. Ahora usted.,T41: nowa etykieta UI i wersja językowa
+tutorial.s1_pick_one,,Pulgar derecho bajo el perno y luego súbalo despacio.,T41: nowa etykieta UI i wersja językowa
