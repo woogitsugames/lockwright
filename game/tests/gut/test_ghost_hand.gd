@@ -135,6 +135,21 @@ func test_set_silhouette_and_fallback_oval() -> void:
 	assert_false(ghost.is_playing(), "the oval still plays")
 
 
+func test_both_thumbs_cast_the_same_deeper_shadow() -> void:
+	# D-76: the right thumb was ~1.1:1 on the dark roll in portrait; every silhouette is 75% black,
+	# the fallback oval keeps 35% (ONBOARDING §2.2), and left and right never differ.
+	var ghost := _ghost()
+	assert_eq(ghost.shadow_opacity(), GhostHand.SHADOW_OPACITY, "the oval keeps 35%")
+	var seen := {}
+	for n in [&"thumb_left_press", &"thumb_right_press", &"thumb_right_slide"]:
+		assert_true(ghost.set_silhouette(n))
+		seen[n] = ghost.shadow_opacity()
+		assert_gte(ghost.shadow_opacity(), 0.7, "%s reads on dark leather" % n)
+		assert_lt(ghost.shadow_opacity(), 1.0, "%s stays a soft shadow" % n)
+	assert_eq(seen[&"thumb_left_press"], seen[&"thumb_right_press"], "both thumbs equally dark")
+	assert_eq(seen[&"thumb_right_press"], seen[&"thumb_right_slide"])
+
+
 func test_release_shape_shows_while_letting_go() -> void:
 	var ghost := _ghost()
 	watch_signals(ghost)

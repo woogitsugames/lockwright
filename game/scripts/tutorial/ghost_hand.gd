@@ -2,7 +2,7 @@ class_name GhostHand
 extends Control
 ## Shadow of a thumb or a whole hand cast on the scene by the workshop lamp
 ## (ONBOARDING §2.2). It is a shadow, not a glow: black, 35% opacity, soft ~12 dp
-## edge, no outline, no colour, no particles, no text. mouse_filter is IGNORE so it
+## edge, no outline, no colour, no particles, no text. A G23 silhouette is 75% black (D-76). mouse_filter is IGNORE so it
 ## never swallows the player's touches.
 ##
 ## dp == canvas units in this project: dp_scale.gd keeps the 412x915 base with stretch
@@ -28,6 +28,11 @@ signal gesture_finished
 const FADE_S := 0.150
 ## Fade in at the start pose / fade out at the end (§2.2: fade 150 ms).
 const SHADOW_OPACITY := 0.35
+## G23 silhouettes (D-76): their pre-blurred alpha averages ~0.6 inside the shape, and in portrait
+## the thumbs rest on the darkest band of the roll (pocket mouths, the H1 dent, the black loupe
+## under the right hand; relative luminance ~0.01), where 35% black gave ~1.1:1 and the right
+## thumb all but vanished. A deeper shadow (still black, no outline, no glow) reads on both sides.
+const SILHOUETTE_OPACITY := 0.75
 const SOFT_DP := 12.0
 ## Soft edge width (§2.2); the shader fades the silhouette over half of it in, half out.
 const THUMB_DP := Vector2(22.0, 56.0)
@@ -197,6 +202,11 @@ func set_release_silhouette(name: StringName, flip_h := false) -> bool:
 	return not d.is_empty()
 
 
+## Peak opacity of the shadow: the oval keeps §2.2's 35%, a G23 silhouette is deeper (D-76).
+func shadow_opacity() -> float:
+	return SILHOUETTE_OPACITY if texture != null else SHADOW_OPACITY
+
+
 func is_playing() -> bool:
 	return _phase != _Phase.IDLE
 
@@ -335,7 +345,7 @@ func _apply_layout() -> void:
 func _draw() -> void:
 	if _phase == _Phase.IDLE or _shadow_size == Vector2.ZERO:
 		return
-	var color := Color(0.0, 0.0, 0.0, SHADOW_OPACITY * _alpha)
+	var color := Color(0.0, 0.0, 0.0, shadow_opacity() * _alpha)
 	# Draw in ghost-centred coordinates so `mirror` can flip the silhouette.
 	# The texture's hotspot sits on the ghost centre; flipping keeps it there.
 	var flip := mirror != (texture_flip and texture != null)

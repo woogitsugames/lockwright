@@ -41,7 +41,7 @@ Licznik „utknięcia” liczy czas od ostatniego **postępu** w bieżącym krok
 |---|---|---|---|
 | **H0** | 0 s | Nic. Gracz próbuje. | — |
 | **H1 — trącenie** | 15 s | Element, którego dotyczy krok, robi jeden mały ruch fizyczny (np. wiążący kołek drga o 1 dp, napinacz kołysze się o 1°). W skórze zwijki pojawia się **odcisk kciuka** tam, gdzie trzeba położyć palec. | obraz + cichy dźwięk tego elementu (−12 dB względem gry). Bez haptyki, żeby nie mylić jej ze stanem zamka. |
-| **H2 — widmo kciuka** | 30 s | Cień kciuka (miękki, rozmyty, 35% krycia, rzucany przez lampę warsztatu) dwa razy pokazuje gest: skąd, dokąd i jak szybko. Scena **odpowiada** na widmo (napinacz się obraca, wytrych unosi), a potem wraca do stanu gracza. | obraz + dźwięk sceny ściszony o 6 dB |
+| **H2 — widmo kciuka** | 30 s | Cień kciuka (miękki, rozmyty, 35% krycia — sylwetka G23 75%, D-76 — rzucany przez lampę warsztatu) dwa razy pokazuje gest: skąd, dokąd i jak szybko. Scena **odpowiada** na widmo (napinacz się obraca, wytrych unosi), a potem wraca do stanu gracza. | obraz + dźwięk sceny ściszony o 6 dB |
 | **H3 — kreda** | 45 s | Kreda rysuje znak, którego brakuje w zrozumieniu: kreski tarcia przy wiążącym kołku, klin szczeliny, klamrę nad przepchniętym, strzałkę „w dół” przy napinaczu (za mocno) albo „w górę” (za słabo). Znak zostaje do końca kroku. | obraz + szelest kredy |
 | **H4 — ręka mistrza** | 60 s | Widmo dłoni wykonuje cały krok w zwolnionym tempie, a zamek naprawdę go wykonuje (np. kołek się ustawia). Potem ręka cofa się, a sterowanie wraca do gracza w stanie po kroku. | wszystkie kanały, z haptyką |
 
