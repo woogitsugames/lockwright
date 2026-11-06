@@ -10,13 +10,17 @@ Scena powstaje z zestawu klatki schodowej: `art/blender/arrival_scene.py` urucha
 | Plik | Co to |
 |---|---|
 | `wrong_floor_night_seq/f_0001..0036.png` | sekwencja 36 kl. @ 12 fps (3,0 s), 270×480, 10 spp |
-| `wrong_floor_night_hold.png` + `.json` | kadr końcowy (stop-klatka) 540×960, 32 spp + kotwice |
-| `wrong_floor_night_hold_depth.png` | głębia kamery 16 bit (maska zasłaniania postaci) |
-| `wrong_floor_night_ajar_hold.png` + `.json` | wariant: pani Teresa uchyla drzwi na łańcuchu |
-| `wrong_floor_{evening,day}_hold.png` | ta sama stop-klatka wieczorem i w dzień (porównanie światła) |
-| `wrong_floor_night_shadow_*.png` | mapa cienia postaci (Cycles Shadow Catcher, stosunek z/bez postaci) |
-| `wrong_floor_preview_*.png` | proof: stop-klatka z postaciami-zaślepkami, arkusz sekwencji |
+| `wrong_floor_preview_contact.png` | arkusz kontrolny sekwencji (6×6) |
+| `wrong_floor_night_hold.png` + `.json` + `_depth.png` | stop-klatka nocna 540×960, 32 spp, kotwice, głębia (maska zasłaniania) |
+| `wrong_floor_night_ajar_hold.*` | wariant: pani Teresa otwiera (drzwi uchylone do środka, łańcuch, światło z przedpokoju) |
+| `wrong_floor_{evening,day}_hold.*` | ta sama stop-klatka wieczorem i w dzień, 270×480 (porównanie światła) |
+| `wrong_floor_night_shadow_kazimierz.png`, `wrong_floor_night_ajar_shadow_teresa.png` | mapy cienia postaci (Cycles Shadow Catcher: stosunek światła z postacią / bez) |
+| `wrong_floor_preview_{night,evening,day}_kazimierz.png`, `wrong_floor_preview_night_teresa.png` | proof składania: stop-klatka + zaślepka postaci |
+| `wrong_floor_preview_board.png` | zestawienie czterech proofów |
 | `placeholder_kazimierz.png`, `placeholder_teresa.png` | szare sylwetki-zaślepki z alfą (do czasu dostawy Magnific D1/D2) |
+
+Uwaga: sekwencja jest sprzed dwóch poprawek stop-klatki (wizytówka zsunięta pod wianek, bez połysku na plamach
+brudu), więc jej ostatnia klatka różni się drobiazgami od `*_hold.png`. Finał na GPU renderuje oba z tego samego skryptu.
 
 ## Czego potrzebuje gra
 
@@ -81,4 +85,21 @@ z góry klatki). Opcje: `--frames 36 --fps 12`, `--step N` (co N-ta klatka na sz
 
 ## Ocena podglądu i znane braki
 
-Zob. raport w commicie / sekcja niżej (aktualizowana po przeglądzie podglądu).
+- **Działa:** czytelny przejazd (stopnie → podest → drzwi), ruch kamery z „krokami” (ugięcie 14 mm i przechył 0,5°
+  na stopień, wygaszane przy zatrzymaniu), rozmycie ruchu kamery; noc ma dwie temperatury (ciepła żarówka w mlecznym
+  kloszu, zimne okno) i prawdziwy spadek światła; drzwi, wianek, mosiężna „19”, wycieraczka, skrzynka z wizytówką
+  są w kadrze, wizytówki mają kotwice. Składanie: kolor z płyty + barwa świateł z JSON, cień kontaktowy, mapa cienia
+  z Cycles, maska głębi (ościeżnica i łańcuch zasłaniają panią Teresę), light wrap, ziarno.
+- **Słabsze niż rendery zamków:** scena dziedziczy proceduralne materiały zestawu klatki (ściany i lastryko są
+  gładkie, „czyste CG” przy 540 px; zdjęciowe tekstury z `art/textures/photo/` nie są tu jeszcze użyte), wnętrze
+  mieszkania za uchylonymi drzwiami jest puste, okno ma tylko jednolite niebo za szkłem ryflowanym, dzień jest płaski.
+  Przy 10–32 spp widać szum/odszumianie na lastryku i ścianach — finał GPU (128–512 spp) to usunie, ale nie
+  podniesie materiałów.
+- **Światło na postaci:** żarówka wisi na ścianie za panem Kazimierzem, więc fizycznie jest on podświetlony od tyłu,
+  a jego cień pada do przodu. Zdjęcie z Magnific będzie raczej oświetlone od przodu — narzędzie dopasowuje kolor
+  i jasność, ale nie przeoświetli zdjęcia. Prompt D1/D2 powinien prosić o górne, ciepłe światło z tyłu-lewej strony
+  (kontra), z miękkim wypełnieniem z przodu.
+- **Do decyzji:** pozycja postaci (lewa strona drzwi, przed oknem) i kąt otwarcia drzwi (38°) to propozycje;
+  zmienia się je w `SLOTS` i `hinge.rotation_euler` w `arrival_scene.py`.
+- **Zestaw klatki:** te same połyskujące plamy brudu (`stain_decal`) widać w `art/renders/stairwell.png` (jasny owal
+  na ramie zamkowej drzwi) — tu poprawione lokalnie (Specular IOR Level = 0), w `stairwell.py` nie ruszane.
