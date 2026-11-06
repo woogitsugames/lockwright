@@ -138,15 +138,32 @@ def place_figure(plate_lin, slot, fig_path, meta, shadow_ratio=None, phase=0.0, 
         mk = blur(mk, nw * 0.25)
         out = out * (1 - mk * (1 - shadow_ratio))[..., None]
     # contact occlusion under the soles (always: too small for the ratio map at preview resolution); without a
-    # ratio map also a soft cast blob pushed away from the key light
-    im = Image.new('F', (W, H), 0.0); d = ImageDraw.Draw(im)
+    # ratio map also a soft cast blob pushed away from the key light. Footprint from the cut-out's own soles (the
+    # lowest opaque pixel per column in the bottom band), so a foot set back or a raised heel gets its own contact
+    # shadow instead of one ellipse at the bbox bottom (G25: weight on one leg, the other foot behind).
     fl = meta['feet_line']; fw = (fl[1][0] - fl[0][0]) * W
-    d.ellipse([fx - fw * 0.42, fy - fw * 0.05, fx + fw * 0.42, fy + fw * 0.05], fill=0.8)
-    tight = np.asarray(im).copy(); im2 = Image.new('F', (W, H), 0.0); d2_ = ImageDraw.Draw(im2)
+    foot = np.zeros((H, W), np.float32)
+    band0 = int(nh * 0.88); solid = a > 0.5
+    for x in range(nw):
+        col = np.nonzero(solid[band0:, x])[0]
+        if col.size == 0: continue
+        yb = band0 + col.max(); X, Y = ox + x, oy + yb
+        if 0 <= X < W:
+            foot[max(0, min(H - 1, Y - 1)):max(0, min(H, Y + 4)), X] = 1.0
+    def ablur(arr, rx, ry):   # anisotropic: wide along the floor, flat across it
+        arr = arr.astype(np.float32)
+        for ax, r in ((1, rx), (0, ry)):
+            k = max(1, int(round(r)))
+            for _ in range(3): arr = _box(arr, k, ax)
+        return arr
+    def norm(arr): return arr / max(float(arr.max()), 1e-6)
+    tight = norm(ablur(foot, max(2, fw * 0.03), max(1.5, fw * 0.018))) * 0.9
+    soft = norm(ablur(foot, max(4, fw * 0.10), max(2, fw * 0.04))) * 0.55
+    cast = 0
     if shadow_ratio is None:
-        k2 = -d2; cx, cy = fx + k2[0] * fw * 0.9, fy + max(0.05, k2[1]) * fw * 0.25
-        d2_.ellipse([cx - fw * 0.7, cy - fw * 0.14, cx + fw * 0.7, cy + fw * 0.14], fill=0.45)
-    sh = blur(tight, max(1.2, fw * 0.04)) + blur(tight, max(3, fw * 0.15)) * 0.5 + blur(np.asarray(im2), max(3, fw * 0.18))
+        k2 = -d2; sx, sy = int(round(k2[0] * fw * 0.5)), int(round(max(0.02, k2[1]) * fw * 0.15))
+        cast = np.roll(np.roll(norm(ablur(foot, max(6, fw * 0.28), max(3, fw * 0.07))), sy, 0), sx, 1) * 0.4
+    sh = tight + soft + cast
     if depth is not None:   # the 2D shadow lies on the floor around the feet, never on nearer things (jamb, leaf)
         sh = sh * (depth >= meta['depth_mm'] - 350)
     out = out * (1 - np.clip(sh, 0, 0.85))[..., None]
