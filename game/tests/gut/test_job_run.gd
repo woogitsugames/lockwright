@@ -7,7 +7,25 @@ func test_unimplemented_families_hidden() -> void:
 	assert_false(JobRun.is_playable({"family": "unknown"}))
 	assert_true(JobRun.is_playable({"family": "pin_tumbler"}))
 	assert_true(JobRun.is_playable({"family": "lever"}))  # N-63: plan-B screen shipped
-	assert_false(JobRun.is_playable({"family": "lever_detector"}))  # N-63: waits for a 5-lever model
+	# N-72: the 5-lever model is in assets/photoreal_families/lever_detector/ (4766aac)
+	assert_true(JobRun.planb_ready(&"lever_detector"))
+	assert_true(JobRun.is_playable({"family": "lever_detector"}))
+	# still without a plan-B screen: wooden_pin and ring_combo jobs stay hidden
+	assert_false(JobRun.is_playable({"family": "wooden_pin"}))
+	assert_false(JobRun.is_playable({"family": "ring_combo"}))
+
+
+## N-72: every job family in the data is either playable or one of the known hidden ones.
+func test_job_families_playable_or_known_hidden() -> void:
+	const HIDDEN := ["wooden_pin", "ring_combo"]
+	var seen := {}
+	for dir in ["res://data/jobs", "res://data/jobs_ch7"]:
+		for f in DirAccess.get_files_at(dir):
+			if f.ends_with(".json"):
+				var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(dir + "/" + f))
+				seen[String(j.get("family", ""))] = JobRun.is_playable(j)
+	for fam in seen:
+		assert_eq(seen[fam], not HIDDEN.has(fam), "job family %s playable=%s" % [fam, seen[fam]])
 
 func test_fnv1a_seed_stable() -> void:
 	# N-06: FNV-1a 64 of "job.grandma_broth"

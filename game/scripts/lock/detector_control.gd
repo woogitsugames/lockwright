@@ -20,6 +20,7 @@ func _init(p_auto: bool = false) -> void:
 
 func map(inp: Dictionary, sampler: InputSampler, _vm: Dictionary, delta: float = 1.0 / 120.0) -> Dictionary:
 	var out := inp.duplicate()
+	auto = sampler.auto_tension  # N-72: follow the sampler (D-52 toggle in the pause settings, tests)
 	_left_held = _left_held + delta if sampler.left_down() else 0.0
 	turning_back = (sampler.tension_signed <= BACK_SIGNED) if not auto else (_left_held >= HOLD_S)
 	out["rotate"] = -1.0 if turning_back else 0.0

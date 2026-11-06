@@ -1,0 +1,164 @@
+{
+ "image": "menu_landscape_de.png",
+ "width": 2400,
+ "height": 1080,
+ "orient": "landscape",
+ "px_per_dp": 2.6214,
+ "dp_basis": "412 dp across the short side",
+ "rect": "[x, y, w, h] px, origin top-left",
+ "board_rect": [
+  86,
+  70,
+  1647,
+  917
+ ],
+ "title_rect": [
+  173,
+  198,
+  759,
+  178
+ ],
+ "focus_rect": [
+  146,
+  166,
+  1528,
+  731
+ ],
+ "locale": "de",
+ "note": "hit_rect = the whole felt band of the item (>= 48 dp tall); pressed_sprite = the baked pressed state, rendered over exactly hit_rect (+20 px margin, see pressed_margin_px), paste at hit_rect.xy - margin",
+ "pressed_margin_px": 20,
+ "items": [
+  {
+   "id": "start",
+   "label": "EINSATZ STARTEN",
+   "text_rect": [
+    181,
+    656,
+    731,
+    64
+   ],
+   "hit_rect": [
+    146,
+    563,
+    798,
+    224
+   ],
+   "cap_px": 73,
+   "hit_dp": [
+    304.4,
+    85.5
+   ],
+   "pressed_sprite": "menu_pressed_start_landscape_de.png"
+  },
+  {
+   "id": "jobs",
+   "label": "AUFTR\u00c4GE",
+   "text_rect": [
+    1006,
+    216,
+    319,
+    51
+   ],
+   "hit_rect": [
+    966,
+    166,
+    708,
+    148
+   ],
+   "cap_px": 56,
+   "hit_dp": [
+    270.1,
+    56.5
+   ],
+   "pressed_sprite": "menu_pressed_jobs_landscape_de.png"
+  },
+  {
+   "id": "workshop",
+   "label": "WERKSTATT",
+   "text_rect": [
+    1007,
+    367,
+    375,
+    43
+   ],
+   "hit_rect": [
+    967,
+    314,
+    707,
+    145
+   ],
+   "cap_px": 55,
+   "hit_dp": [
+    269.7,
+    55.3
+   ],
+   "pressed_sprite": "menu_pressed_workshop_landscape_de.png"
+  },
+  {
+   "id": "showcase",
+   "label": "SAMMLUNG",
+   "text_rect": [
+    1007,
+    512,
+    327,
+    44
+   ],
+   "hit_rect": [
+    967,
+    459,
+    705,
+    145
+   ],
+   "cap_px": 55,
+   "hit_dp": [
+    268.9,
+    55.3
+   ],
+   "pressed_sprite": "menu_pressed_showcase_landscape_de.png"
+  },
+  {
+   "id": "settings",
+   "label": "EINSTELLUNGEN",
+   "text_rect": [
+    1006,
+    654,
+    483,
+    48
+   ],
+   "hit_rect": [
+    968,
+    604,
+    703,
+    144
+   ],
+   "cap_px": 55,
+   "hit_dp": [
+    268.2,
+    54.9
+   ],
+   "pressed_sprite": "menu_pressed_settings_landscape_de.png"
+  },
+  {
+   "id": "about",
+   "label": "\u00dcBER DAS SPIEL",
+   "text_rect": [
+    1008,
+    789,
+    496,
+    56
+   ],
+   "hit_rect": [
+    968,
+    748,
+    702,
+    149
+   ],
+   "cap_px": 55,
+   "hit_dp": [
+    267.8,
+    56.8
+   ],
+   "pressed_sprite": "menu_pressed_about_landscape_de.png"
+  }
+ ]
+}

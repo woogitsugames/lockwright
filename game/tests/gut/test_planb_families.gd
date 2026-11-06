@@ -89,11 +89,26 @@ func _play(fam: StringName, job: Dictionary, auto: bool, max_s: float = 120.0) -
 	var pressed := false
 	var cooldown := 0
 	var resets := 0
+	# Detector lock (LOCKS.md §2.8): any lever lifted past its gate trips the detector, and the
+	# third trip blocks the lock. A patient player only lifts the lever that visibly bears on the
+	# stump ("bound"): never a free one blindly to the top, as on the plain lever lock.
+	var careful := fam == &"lever_detector"
+	var eased := false
 	for step in int(max_s * HZ):
 		if cooldown > 0:
 			cooldown -= 1
 			if cooldown == 0 and not auto:
 				press_left.call()
+				eased = false
+		if careful and not pressed:
+			var b := _bound_index(session.describe())
+			if b < 0:
+				s._physics_process(dt)
+				scene._physics_process(dt)
+				if session.is_open() or session.finished():
+					return [session.is_open(), step * dt]
+				continue
+			el = b
 		var x := right_x0 + right_w * (el + 0.5) / n
 		if not pressed:
 			s._unhandled_input(_touch(1, Vector2(x, right_y), true))
@@ -120,12 +135,24 @@ func _play(fam: StringName, job: Dictionary, auto: bool, max_s: float = 120.0) -
 				scene._physics_process(dt)
 			s._unhandled_input(_touch(0, Vector2(left_x, left_y + 60.0), false))
 			resets += 1
+			if session.finished():
+				return [session.is_open(), step * dt]
 			if not auto:
 				press_left.call()
+				eased = false
 			continue
 		if OS.has_environment("LW_DEBUG") and step % 120 == 0:
 			print("t=%.0f el=%d T=%.2f lift=%.2f resets=%d %s" % [step * dt, el, s.sample()["tension"], s.sample()["pick_lift"], resets, vm["elements"].map(func(e): return "%s@%.2f[%.2f-%.2f]" % [e["state"], e["position"], e["window_lo"], e["window_hi"]])])
 		var next := lift_dp > 0.9 * InputSampler.LIFT_FULL_DP
+		if careful and not auto and cooldown == 0:
+			# false gate (LOCKS.md §2.7): ease the left thumb into the counter-rotation band
+			# (0.12–0.21) while lifting, back to the working tension once the lever is out
+			var spool := String(vm["elements"][el]["state"]) == "false_set"
+			if spool != eased:
+				eased = spool
+				s._unhandled_input(_drag(0, Vector2(left_x, left_y - (34.0 if spool else 72.0))))
+		if careful and String(vm["elements"][el]["state"]) == "free":
+			next = true  # the lever let go of the stump (dropped or lost binding): look again
 		var oversets := 0
 		if session.is_open():
 			return [true, step * dt]
@@ -154,6 +181,15 @@ func _play(fam: StringName, job: Dictionary, auto: bool, max_s: float = 120.0) -
 	return [false, max_s]
 
 
+## Lever that bears on the stump now (lockcore "bound", or caught in a false gate), or -1.
+func _bound_index(vm: Dictionary) -> int:
+	var els: Array = vm["elements"]
+	for i in els.size():
+		if String(els[i]["state"]) in ["bound", "false_set"]:
+			return i
+	return -1
+
+
 func _check_family(fam: StringName) -> void:
 	if not ClassDB.class_exists("LockcoreSession"):
 		pending("needs the lockcore GDExtension")
@@ -176,12 +212,79 @@ func test_every_lever_job_opens_in_both_modes() -> void:
 
 
 func test_every_lever_detector_job_opens_in_both_modes() -> void:
-	# lockcore lever_detector (t5–t6) has 5 levers; the baked lever model has 3, so the family
-	# stays out of JobRun.PHOTOREAL_READY until a 5-lever model is rendered (N-63 report).
+	# lockcore lever_detector (t5–t6) has 5 levers; the family unlocks with its own 5-lever
+	# model in assets/photoreal_families/lever_detector/ (N-68, JobRun.planb_ready).
 	if not JobRun.planb_ready(&"lever_detector"):
 		pending("lever_detector waits for a 5-lever plan-B model")
 		return
 	await _check_family(&"lever_detector")
+
+
+## N-72: the reset path of the detector through the real scene: a free lever lifted blindly to
+## the top trips the detector (all levers jammed); letting go and turning back (left thumb down,
+## or held in D-52 auto) for reset_steps frees the levers again.
+func test_lever_detector_trip_resets_in_both_modes() -> void:
+	if not ClassDB.class_exists("LockcoreSession") or not JobRun.planb_ready(&"lever_detector"):
+		pending("needs the lockcore GDExtension and the 5-lever plan-B model")
+		return
+	var job: Dictionary = _jobs(&"lever_detector")[0]
+	for auto in [false, true]:
+		JobRun.start(job)
+		var scene: Node = await _open_scene(&"lever_detector", Vector2i(412, 915))
+		scene.set_physics_process(false)
+		var s: InputSampler = scene.sampler
+		s.set_physics_process(false)
+		s.auto_tension = auto
+		var session: RefCounted = scene.session
+		var sz := s._size()
+		var n: int = session.describe()["elements"].size()
+		var left := Vector2(sz.x * 0.2, 700.0)
+		var dt := 1.0 / HZ
+		s._unhandled_input(_touch(0, left, true))
+		if not auto:
+			for i in 6:
+				s._unhandled_input(_drag(0, left - Vector2(0, 12.0 * (i + 1))))
+		var step := func() -> void:
+			s._physics_process(dt)
+			scene._physics_process(dt)
+		for i in 60:
+			step.call()
+		var vm: Dictionary = session.describe()
+		var free_el := -1
+		for i in n:
+			if String(vm["elements"][i]["state"]) == "free":
+				free_el = i
+				break
+		assert_gt(free_el, -1, "a free lever to over-lift (auto=%s)" % auto)
+		var x := sz.x * 0.5 + sz.x * 0.5 * (free_el + 0.5) / n
+		s._unhandled_input(_touch(1, Vector2(x, 760.0), true))
+		var tripped := false
+		for i in 3 * HZ:
+			s._unhandled_input(_drag(1, Vector2(x, 760.0 - minf(70.0 * i * dt, InputSampler.LIFT_FULL_DP))))
+			step.call()
+			if String(session.describe()["elements"][0]["state"]) == "jammed":
+				tripped = true
+				break
+		assert_true(tripped, "over-lifting a free lever trips the detector (auto=%s)" % auto)
+		s._unhandled_input(_touch(1, Vector2(x, 600.0), false))
+		s._unhandled_input(_touch(0, left, false))
+		s._unhandled_input(_touch(0, left, true))
+		if not auto:
+			s._unhandled_input(_drag(0, left + Vector2(0, 60.0)))
+		var progress := 0.0
+		var reset := false
+		for i in 4 * HZ:
+			step.call()
+			vm = session.describe()
+			progress = maxf(progress, float(vm.get("reset_progress", 0.0)))
+			if String(vm["elements"][0]["state"]) != "jammed":
+				reset = true
+				break
+		s._unhandled_input(_touch(0, left + Vector2(0, 60.0), false))
+		gut.p("lever_detector trip/reset auto=%s: reset=%s progress=%.2f" % [auto, reset, progress])
+		assert_true(reset, "turning back resets the detector (auto=%s)" % auto)
+		assert_gt(progress, 0.5, "reset_progress grows while turning back (auto=%s)" % auto)
+		assert_false(session.finished(), "one trip does not block the lock (auto=%s)" % auto)
 
 
 func test_layout_fits_portrait_and_landscape() -> void:
