@@ -1,0 +1,84 @@
+job,chapter,cards,threshold,card_count,unmapped_props,label_missing,verification
+job.bike_interview,1,"photo, receipt",3,2,photo,,"zdjęcie (1) i paragon (1), czyli rzecz w posiadaniu, próg 2. Haczyk: brak."
+job.cat_bathroom,1,id,3,1,,,"próg 0, bo klient jest w swoim mieszkaniu. Zlecenie uczy, że weryfikacja zależy od sytuacji."
+job.grandma_broth,1,"witness, letter, photo",2,3,"letter, photo",,"sąsiadka-świadek (2) i list na nazwisko w skrzynce (1), do tego szczegół z wnętrza: „na kredensie zdjęcie z wnukiem w mundurku”. Haczyk: brak."
+job.kiosk_shutter,1,"witness, letter, photo",3,3,"letter, photo",,"świadek (2) i list z hurtowni prasy na nazwisko (1). Próg dla lokalu firmy to 4, więc zabraknie 1 pewności. Rozwiązanie: „Poproszę o coś jeszcze”, czyli Stefan pokazuje zdjęcie z otwarcia kiosku w 1994. Uczy dopytywania."
+job.refuse_ex_partner,1,"id, witness",2,2,,,"dowód (1). Zgrzyty: `flag.ex_partner` i `flag.no_witness` (odmawia, gdy proponujesz sąsiada)."
+job.student_dorm,1,"id, witness, letter",2,3,letter,,portier z listą (3) i dowód (1). Haczyk: brak.
+job.drummer_locker,2,id,2,1,,,kierownik sali (3). Haczyk: brak.
+job.newlyweds_4am,2,"id, address_app, witness",2,3,address_app,,"dowód (1), meldunek w aplikacji (2) i sąsiad (2). Haczyk: brak. Scena pokazuje, że dowód bez adresu to normalna rzecz."
+job.night_nurse,2,"id, manager",2,2,,,zarządca (3) i dowód (1). Haczyk: brak.
+job.pizzeria_pays_pizza,2,"witness, lease",2,2,,,umowa najmu (2) i świadek-sąsiad z lokalu obok (2). Haczyk: brak.
+job.refuse_rush_bribe,2,id,2,1,,,"dowód (1), w którym inne nazwisko niż na drzwiach „ma wyjaśnić” rozwód siostry. Zgrzyty: `flag.rush_bribe`, `flag.absent_owner`, `flag.no_witness`."
+job.wrong_floor,2,id,2,1,,,"zgrzyty `flag.contradiction` (inne nazwisko na skrzynce) i szczegół (wieniec). Najlepszy wynik daje „Poproszę o coś jeszcze”. Gdy gracz otworzy drzwi, ma −25 rep i scenę „to nie było jego mieszkanie”: mieszkająca tu pani Teresa jest w szoku."
+job.allotment_shed,3,"id, witness",3,2,,,"legitymacja działkowca (2) i świadek (2), próg 3. Zgrzyt „inne nazwisko w umowie” wyjaśnia się sam (żona)."
+job.dollhouse_wooden_lock,3,id,2,1,,,rzecz w posiadaniu (2). Haczyk: brak.
+job.grandpa_chest,3,deed,2,1,deed,,akt (3) i rzecz w posiadaniu (1). Haczyk: brak.
+job.refuse_aunt_alive,3,id,2,1,,,"dowód (1). Zgrzyty: `flag.neighbour_denies`, `flag.absent_owner`."
+job.uncle_safe_heirs,3,"deed, inheritance",2,2,"deed, inheritance",,"postanowienie o stwierdzeniu nabycia spadku albo akt poświadczenia dziedziczenia (3), w scenie jako karta „dokument od notariusza”. Haczyk: zgrzyt „niepełny skład”. Wybór „Poproszę o coś jeszcze” (czekamy na Ewę) daje najlepszy wynik. Otwarcie przy samym Marku to −8 rep i kłótnia w rodzinie, w której gracz zostaje świadkiem."
+job.widow_bureau,3,id,2,1,,,"rzecz w posiadaniu, w jej domu (2). Haczyk: brak."
+job.krakow_antiquarian,4,"witness, lease",2,2,,,"umowa najmu (2), świadek (2) i posiadanie (1). Haczyk: **częściowa odmowa**. Kasetka cudzego klienta to osobna decyzja: otwarcie jej daje −10 rep, odmowa +3 rep."
+job.krakow_tenement_gate,4,"manager, resolution",2,2,resolution,,zarządca (3) i uchwała (1). Haczyk: brak.
+job.swiatniki_journeyman_padlock,4,id,2,1,,,właściciel i twórca (3). Haczyk: brak.
+job.brussels_townhouse,5,"witness, lease",2,2,,,"umowa najmu (2), adres z gminy (eID, 2) i sąsiad (2). Haczyk: brak."
+job.charleroi_letters,5,letter,2,1,letter,,"właścicielka znaleziska (2), która z własnej woli przekazuje je rodzinie, i list z adresem (1). Haczyk: brak. To jedyne zlecenie, w którym obie strony chcą otwarcia."
+job.ghent_beguinage,5,"manager, institution",2,2,institution,,pismo instytucji (2) i opiekun-zarządca (3). Haczyk: brak.
+job.liege_bakery,5,lease,2,1,,,dokument przejęcia firmy (3) i umowa najmu (2). Haczyk: brak.
+job.bramah_bureau,6,"deed, invoice",2,2,"deed, invoice",,faktura (2) i posiadanie (1). Haczyk: brak.
+job.finnish_sailor,6,manager,2,1,,,kapitan (3) i książeczka żeglarska (1). Haczyk: brak.
+job.museum_time_lock,6,institution,2,1,institution,,pismo instytucji (2) i kuratorka (3). Haczyk: brak.
+job.time_capsule,6,manager,2,1,,,dyrekcja (3) i świadkowie (2). Haczyk: brak.
+job.halina_recipe_box,7,"photo, witness",2,2,photo,,Własna skrzynka Haliny (rzecz ruchoma): zdjęcie (1) i świadek Zosia (2). Wycena zaakceptowana; brak zgrzytu.
+job.roman_service_cupboard,7,"manager, institution",2,2,institution,,"Pan Roman jest zarządcą (3), a protokół wspólnoty potwierdza zgodę (2). Lokal wspólny; uprawnienie sprawdzone."
+job.marta_poster_studio,7,"lease, witness",2,2,,,Umowa najmu pracowni Marty (2) i świadek z sąsiedniej pracowni (2). Uprawnienie do lokalu potwierdzone.
+job.zuzanna_catalogue_drawer,7,"manager, institution",2,2,institution,,"Dr Rygiel potwierdza umocowanie i obecność (3), podpisany protokół użyczenia kopii (2). Bez dotykania oryginałów."
+job.refuse_sisters_flat,7,id,2,1,,,"Dowód Norberta (1) potwierdza tylko tożsamość. `flag.absent_owner` i `flag.no_witness`: brak zgody lokatorki. Prawidłowe wyjście: odmowa, kontakt do zarządcy lub oczekiwanie na zgodę; bez monet."
+job.stefan_book_tin,7,"receipt, photo",2,2,photo,,"Przenośna puszka Stefana: paragon zakupu (1) i zdjęcie z jego kiosku (1), w jego posiadaniu (1). Bez zgrzytu."
+job.edek_rehearsal_store,7,"manager, institution",2,2,institution,,Portier Edek potwierdza opiekę nad pomieszczeniem (2); pismo administracji uczelni ze zgodą na wydanie krzeseł (2).
+job.krystyna_wooden_album,7,"photo, witness",2,2,photo,,Skrzynka we własnym domu Krystyny; zdjęcie rodzinne (1) i potwierdzenie córki Oli jako świadka (2). Rzecz ruchoma.
+job.refuse_unapproved_stockroom,7,"id, letter",2,2,letter,,"Marcel ma własny dowód (1) i list przewozowy, który nie daje prawa wejścia. `flag.absent_owner`; odmawia oczekiwania na zgodę. Bez monet, alternatywa: uzgodnienie dostawy z właścicielem."
+job.gosia_workbench_drawer,7,"receipt, photo",2,2,photo,,"Faktura zakupu stołu (2), zdjęcie odbioru (1), obecność mebla w pracowni Gosi (1). Własność ruchomości potwierdzona."
+job.community_notice_case,7,"manager, institution, witness",2,3,institution,,Elżbieta jako zarządczyni kamienicy (3) pokazuje podpisaną uchwałę wspólnoty (2). Basia jest świadkiem.
+job.shared_room_door,7,"manager, institution, witness",3,3,institution,,"Elżbieta jako zarządczyni (3), pisemna uchwała wspólnoty (2) i świadek Basia (2). To pomieszczenie wspólne, nie prywatny lokal. Cena uzgodniona przed pracą."
+job.frozen_cellar_padlock,8,"lease, manager",2,2,,,Aneks do najmu piwnicy (2) i potwierdzenie zarządczyni Elżbiety z wykazu lokatorów (2–3). Wycena zaakceptowana; brak zgrzytu.
+job.halina_christmas_tin,8,"photo, witness",2,2,photo,,Puszka należy do Haliny: zdjęcie z jej kuchni (1) i słowo sąsiadki Zosi (2). Rzecz ruchoma; wycena przyjęta.
+job.carol_singers_chest,8,"manager, institution",2,2,institution,,"Skrzynia jest własnością świetlicy: zarządczyni Elżbieta (2–3) i uchwała wspólnoty (2). Mila prowadzi kolędników, nie decyduje o dostępie. Cena przyjęta."
+job.refuse_wrong_letterbox,8,id,2,1,,,"Oskar ma tylko dowód (1). Skrzynka i korespondencja należą do sąsiadów spod szesnastki, którzy wyjechali; Oskar nie chce czekać ani pytać zarządczyni (flag.absent_owner, flag.no_witness). Odmowa, +5 reputacji, bez monet. Cudzej skrzynki nie otwieramy nawet po własną kartkę (tajemnica korespondencji)."
+job.wigilia_table_drawer,8,"manager, institution, witness",3,3,institution,,"Kredens należy do świetlicy: zgoda zarządczyni Elżbiety (2–3), uchwała wspólnoty (2), Zosia jako świadek (2). Wycena zaakceptowana."
+job.heating_service_cupboard,8,"manager, institution",3,2,institution,,"Elżbieta potwierdza zarząd nad pomieszczeniem wspólnym (2–3) i pisemne zlecenie serwisowe dla Pawła (2). Ślusarz otwiera tylko szafkę z dokumentacją, nie dotyka instalacji grzewczej. Cena uzgodniona."
+job.refuse_unapproved_repair,8,"id, letter",2,2,letter,,"Karol okazuje dowód (1) i niepodpisaną wiadomość (poszlaka). Zarządczyni nie zna wizyty, Karol proponuje dopłatę za pominięcie pytań (flag.absent_owner, flag.rush_bribe). Odmowa, +5 reputacji, bez monet."
+job.warm_room_for_neighbours,8,"manager, institution, witness",3,3,institution,,"Świetlica wspólnoty: zarządczyni Elżbieta zgadza się przez telefon (2–3, utknęła w śniegu z kluczem), uchwała o udostępnieniu sali (2), Basia jako świadek (2). Wycena przyjęta."
+job.winter_bicycle_cellar,8,"lease, manager",2,2,,,"Leon ma aneks do najmu miejsca w piwnicznej rowerowni (2), Elżbieta potwierdza użytkownika w wykazie (2–3). Wycena uzgodniona; brak zgrzytu."
+job.wooden_winter_village,8,"manager, institution",2,2,institution,,Drewniana kaseta z makietą należy do muzeum. Dr Rygiel potwierdza depozyt w świetlicy protokołem (instytucja 2–3) i imiennym upoważnieniem dla Zuzanny (2). Wycena zaakceptowana.
+job.attic_drying_room,8,"lease, manager",2,2,,,Teresa ma umowę najmu z prawem do wspólnej suszarni (2). Administrator Roman potwierdza regulamin i dostęp (2–3); wycena zaakceptowana. Osiedle Słoneczne (jak `wrong_floor`).
+job.christmas_eve_heat,8,"manager, institution, witness",3,3,institution,,"Zarządczyni Elżbieta potwierdza uprawnienia do wspólnej kotłowni (2–3), pisemny protokół naprawy i zgodę na dostęp do szafki kontrolnej (2); Paweł jest obecny jako upoważniony technik (2). Ślusarz odpowiada tylko za zamek, instalację obsługuje Paweł. Cena przed pracą."
+job.t43_09_01_winter_keys,9,"manager, id",2,2,,,"Roman potwierdza aktualną lokatorkę (3), dowód potwierdza tożsamość (1). Próg 2 w skali danych gry. Wycena zaakceptowana przed pracą."
+job.t43_09_02_blanket_cupboard,9,"manager, institution",2,2,institution,,Elżbieta okazuje zlecenie wspólnoty (2) i potwierdza zarząd szafką (3). Próg 2. Wycena zaakceptowana.
+job.t43_09_03_wooden_postbox,9,"invoice, institution",2,2,"invoice, institution",,Faktura muzeum (2) i pismo/zlecenie kuratorki (2). Rekwizyt przyniesiony do warsztatu. Wycena zaakceptowana.
+job.t43_09_04_choir_case,9,"receipt, witness",2,2,,,"Mila okazuje paragon skrzyni (2), Teresa potwierdza używanie jej przez chór (2). Rzecz przenośna, próg 2. Wycena zaakceptowana."
+job.t43_09_05_receipt_safe,9,"lease, invoice",3,2,invoice,,Najem kiosku (2) i faktura sejfu na Stefana (2). Próg danych 3. Ustalono cenę przed pracą.
+job.t43_09_06_draughty_hall,9,"manager, resolution",3,2,resolution,,"Roman jako zarządca (3), uchwała o serwisie wspólnego wejścia (1). Próg danych 3. Zgoda na cenę przed pracą."
+job.refuse_t43_09_empty_flat,9,id,2,1,,,"Dowód (1), brak zgody aktualnej lokatorki. Flagi: flag.absent_owner, flag.no_witness. Odmowa, +5 reputacji, bez monet."
+job.t43_09_08_spare_key_hook,9,"id, witness",2,2,,,"Kazimierz potwierdza tożsamość (1), Teresa potwierdza właściwe mieszkanie (2). Próg 2. Konsultacja za 40 monet, bez otwierania."
+job.t43_10_01_renovator_bureau,10,"invoice, receipt",2,2,invoice,,Gosia okazuje fakturę mebla (2) i dowód przyjęcia do własnej pracowni (1). Próg 2 dla rzeczy w posiadaniu. Wycena zaakceptowana.
+job.t43_10_02_scaffold_store,10,"lease, manager",3,2,,,"Celina okazuje najem magazynu robót (2), Roman potwierdza zlecenie firmy remontowej (3). Próg danych 3. Wycena zaakceptowana."
+job.t43_10_03_exhibit_clock,10,"institution, invoice",2,2,"institution, invoice",,"Pismo muzeum (2), protokół przekazania modelu (2). Próg 2. Naprawa wymontowanego zegara; nie omijamy blokady i nie otwieramy skarbca. Wycena zaakceptowana."
+job.t43_10_04_design_cabinet,10,"lease, invoice",3,2,invoice,,"Najem pracowni Marty (2), faktura szafki (2). Lokal firmy, próg danych 3. Wycena zaakceptowana."
+job.t43_10_05_porters_drawer,10,"institution, manager",2,2,institution,,Edek pokazuje zlecenie administracji akademika (2) i potwierdza opiekę nad szufladą (3). Próg 2. Nie otwieramy prywatnych szafek studentów. Wycena zaakceptowana.
+job.t43_10_06_shared_room_entry,10,"resolution, manager",3,2,resolution,,"Uchwała wspólnoty (1), Elżbieta jako zarządczyni (3). Próg danych 3. Zakres: wspólna sala, bez lokali mieszkalnych. Wycena zaakceptowana."
+job.refuse_t43_10_early_clearance,10,deed,3,1,deed,,"Własność budynku nie potwierdza zgody lokatora na wejście. Flagi: flag.tenant_objects, flag.no_witness. Odmowa, bez monet, +5 reputacji."
+job.t43_11_01_wooden_market,11,"institution, invoice",2,2,"institution, invoice",,"Zlecenie muzeum (2), faktura drewnianej skrzynki (2). Próg 2. Otwarcie rekwizytu edukacyjnego za zgodą kuratorki, cena zaakceptowana."
+job.t43_11_02_bicycle_stand,11,"receipt, photo",2,2,photo,,"Borys pokazuje paragon roweru i kłódki (2), własne zdjęcie tego samego roweru (1). Próg 2. Zgoda na cenę przed pracą."
+job.t43_11_03_tool_exchange,11,"invoice, witness",2,2,invoice,,"Władysław jako właściciel ma fakturę skrzyni (2), Gosia potwierdza przekazanie do naprawy (2). Próg 2. Otwieramy skrzynię właściciela, nie przedmioty osób trzecich. Wycena zaakceptowana."
+job.t43_11_04_sailors_stall,11,"invoice, witness",2,2,invoice,,"Faktura Aino (2), kapitan potwierdza jej własną skrzynię (2). Próg 2. Prywatne narzędzia, nie wyposażenie statku. Wycena zaakceptowana."
+job.t43_11_05_rehearsal_chest,11,"institution, manager",2,2,institution,,"Pismo organizatora (2), opiekun sali potwierdza własność skrzyni i dostęp Igi (3). Próg 2. Wycena zaakceptowana."
+job.refuse_t43_11_other_stall,11,lease,3,1,,,"Umowa dotyczy stoiska Alicji, nie sąsiedniego (2, brak potwierdzenia celu). Flagi: flag.contradiction, flag.no_witness. Odmowa, +5 reputacji, bez monet."
+job.t43_11_07_wrong_delivery,11,"invoice, witness",2,2,invoice,,"Leon okazuje dokument dostawy (2), Stefan potwierdza numer właściwego odbiorcy (2). Próg 2. Konsultacja 40 monet, bez otwierania jakichkolwiek drzwi."
+job.t43_12_01_letters_archive,12,"deed, inheritance",3,2,"deed, inheritance",,Krystyna okazuje dokument własności (2) oraz dokument dziedziczenia (3). Jest uprawnioną właścicielką i wyraża zgodę. Próg danych 3. Wycena zaakceptowana.
+job.t43_12_02_detective_cabinet,12,"institution, manager",2,2,institution,,"Pismo dyrekcji muzeum (2), Rygiel jako opiekunka eksponatu (3). Próg 2. Skrzynia demonstracyjna bez cudzego depozytu. Wycena zaakceptowana."
+job.t43_12_03_community_store,12,"manager, resolution",3,2,resolution,,"Elżbieta jako zarządczyni (3), uchwała o korzystaniu ze wspólnego magazynku (1). Próg danych 3. Wycena zaakceptowana."
+job.t43_12_04_school_box,12,"institution, witness",2,2,institution,,"Pismo szkoły (2), Jadwiga potwierdza szkolne pochodzenie skrzyni (2). Próg 2. Otwarcie przy opiekunce, bez udostępniania prywatnych listów. Wycena zaakceptowana."
+job.t43_12_05_tea_fund_case,12,"resolution, manager",3,2,resolution,,"Uchwała wspólnoty (1), Roman potwierdza upoważnienie Elżbiety do kasetki (3). Próg danych 3. Otwarcie przy obojgu opiekunach. Cena zaakceptowana."
+job.refuse_t43_12_surprise_key,12,id,2,1,,,Darek chce wejść wieczorem do zamkniętej świetlicy wspólnoty (dekoracje). Nie ma zgody zarządczyni i odrzuca telefon do niej. Odmowa: proponujemy cichą rozmowę z Elżbietą. Brak oskarżeń.
+job.t43_12_07_clock_back_home,12,"institution, invoice",2,2,"institution, invoice",,"Pismo dyrekcji (2), protokół zwrotu wymontowanego zegara (2). Próg 2. Wyłącznie regulacja po transporcie i próba chodu; bez zwalniania blokady. Cena zaakceptowana."
+job.t43_12_08_henryks_bench,12,"deed, witness",2,2,deed,,"Dokument przekazania warsztatu wraz z wyposażeniem (2), Władysław potwierdza skrzynię ćwiczebną Henryka (2). Próg 2. Klientem finansującym przegląd jest organizator pokazu, bez podwójnej nagrody."
