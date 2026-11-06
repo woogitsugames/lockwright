@@ -1,0 +1,1647 @@
+{
+ "wer": {
+  "de": 0.0601
+ },
+ "files": [
+  {
+   "file": "de/job.allotment_shed.line.1.ogg",
+   "dur": 6.12,
+   "lufs": -17.5,
+   "lead_ms": 45,
+   "trail_ms": 39,
+   "ref": "Die Parzelle läuft auf meine Frau, aber ich grabe hier. Sie ist wegen ihres Knies zu Hause.",
+   "asr": "Die Parzelle läuft auf meine Frau, aber ich grabe hier. Sie ist wegen ihres Knie zu Hause.",
+   "wer": 0.059
+  },
+  {
+   "file": "de/job.allotment_shed.line.2.ogg",
+   "dur": 4.36,
+   "lufs": -18.0,
+   "lead_ms": 40,
+   "trail_ms": 54,
+   "ref": "Haben Sie Ihren Kleingärtnerausweis? Und jemanden von der Nachbarparzelle?",
+   "asr": "Haben Sie Ihren Kleingärtnerausweis und jemanden von der Nachbarparzelle?",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.allotment_shed.line.3.ogg",
+   "dur": 4.75,
+   "lufs": -18.3,
+   "lead_ms": 12,
+   "trail_ms": 50,
+   "ref": "Zbyszek ist länger hier als die Laube. Länger als ich.",
+   "asr": "Das Bischöck ist länger hier als die Laube. Länger als ich.",
+   "wer": 0.2
+  },
+  {
+   "file": "de/job.allotment_shed.line.4.ogg",
+   "dur": 3.98,
+   "lufs": -18.0,
+   "lead_ms": 51,
+   "trail_ms": 28,
+   "ref": "Nehmen Sie Gurken? Geld nehme ich nicht mit in den Garten.",
+   "asr": "Nächsten Sie Gorken, Geld nehme ich nicht mit in den Garten.",
+   "wer": 0.182
+  },
+  {
+   "file": "de/job.bike_interview.line.1.ogg",
+   "dur": 5.67,
+   "lufs": -18.1,
+   "lead_ms": 49,
+   "trail_ms": 53,
+   "ref": "Ich habe den Code sicherer gemacht. So sicher, dass ich ihn selbst nicht mehr kenne.",
+   "asr": "Ich habe den Code sicherer gemacht. So sicher, dass ich ihn selbst nicht mehr kenne.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.bike_interview.line.2.ogg",
+   "dur": 5.12,
+   "lufs": -18.1,
+   "lead_ms": 33,
+   "trail_ms": 37,
+   "ref": "Das Rad steht auf der Straße. Haben Sie etwas, das belegt, dass es Ihnen gehört?",
+   "asr": "Das Rad steht auf der Straße. Haben Sie etwas, das belegt, das es Ihnen gehört?",
+   "wer": 0.067
+  },
+  {
+   "file": "de/job.bike_interview.line.3.ogg",
+   "dur": 6.0,
+   "lufs": -18.1,
+   "lead_ms": 48,
+   "trail_ms": 43,
+   "ref": "Ein Urlaubsfoto und die Quittung in meinen E-Mails. Das Fahrrad sieht darauf besser aus als ich.",
+   "asr": "Ein Urlaubsfoto und die Quittung in meinen E-Mails. Das Fahrrad sieht darauf besser aus als ich.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.bike_interview.line.4.ogg",
+   "dur": 3.94,
+   "lufs": -18.1,
+   "lead_ms": 24,
+   "trail_ms": 45,
+   "ref": "Das genügt. Richten Sie Ihre Krawatte, während ich arbeite.",
+   "asr": "Das genügt. Richten Sie Ihre Krawatte, während ich arbeite.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.bramah_bureau.line.1.ogg",
+   "dur": 4.71,
+   "lufs": -17.4,
+   "lead_ms": 53,
+   "trail_ms": 34,
+   "ref": "Auktionsrechnung, Beschreibung und Fotos. Das Schloss bleibt unversehrt.",
+   "asr": "Auktionsrechnung, Beschreibung und Fotos. Das Schloss bleibt unversehrt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.bramah_bureau.line.2.ogg",
+   "dur": 4.74,
+   "lufs": -18.1,
+   "lead_ms": 55,
+   "trail_ms": 45,
+   "ref": "So ein Schloss hing einmal in einem Londoner Schaufenster. Mit einer Belohnung.",
+   "asr": "So ein Schloss hing einmal in einem Londoner Schaufenster. Mit einer Belohnung.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.bramah_bureau.line.3.ogg",
+   "dur": 1.49,
+   "lufs": -18.2,
+   "lead_ms": 52,
+   "trail_ms": 0,
+   "ref": "Hat es jemand geöffnet?",
+   "asr": "Hat es jemand geöffnet?",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.bramah_bureau.line.4.ogg",
+   "dur": 4.29,
+   "lufs": -17.8,
+   "lead_ms": 48,
+   "trail_ms": 50,
+   "ref": "Nach mehr als sechzig Jahren. Ich erzähle es, wenn ich fertig bin.",
+   "asr": "Nach mehr als 60 Jahren. Ich erzähle es, wenn ich fertig bin.",
+   "wer": 0.083
+  },
+  {
+   "file": "de/job.brussels_townhouse.line.1.ogg",
+   "dur": 5.5,
+   "lufs": -18.0,
+   "lead_ms": 22,
+   "trail_ms": 51,
+   "ref": "Ich stehe wie Julia auf dem Balkon. Nur ist Romeo sechzig und hat den Torschlüssel.",
+   "asr": "Ich stehe wie Julia auf dem Balkon. Nur ist Romeo 60 und hat den Torschlüssel.",
+   "wer": 0.067
+  },
+  {
+   "file": "de/job.brussels_townhouse.line.2.ogg",
+   "dur": 3.56,
+   "lufs": -18.0,
+   "lead_ms": 50,
+   "trail_ms": 48,
+   "ref": "Madame Magda wohnt hier schon immer. Depuis toujours.",
+   "asr": "Magam Magda wohnt hier schon immer, depuis toujours.",
+   "wer": 0.125
+  },
+  {
+   "file": "de/job.brussels_townhouse.line.3.ogg",
+   "dur": 6.36,
+   "lufs": -17.8,
+   "lead_ms": 49,
+   "trail_ms": 49,
+   "ref": "Mietvertrag, Meldeadresse von der Gemeinde und ein Nachbar. Alles da. Lehnen Sie sich nicht hinaus.",
+   "asr": "Mietvertrag, Meldee-Adresse von der Gemeinde und ein Nachbar. Alles da. Lehen Sie sich nicht hinaus.",
+   "wer": 0.2
+  },
+  {
+   "file": "de/job.brussels_townhouse.line.4.ogg",
+   "dur": 3.37,
+   "lufs": -17.8,
+   "lead_ms": 57,
+   "trail_ms": 46,
+   "ref": "Die Geranien sind gegossen. Das war der ganze Auftrag.",
+   "asr": "Die Geranien sind gegossen. Das war der ganze Auftrag.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.cat_bathroom.line.1.ogg",
+   "dur": 5.16,
+   "lufs": -18.1,
+   "lead_ms": 39,
+   "trail_ms": 36,
+   "ref": "Er hat das absichtlich gemacht. Er sah mir direkt in die Augen, als er auf die Klinke sprang.",
+   "asr": "Er hat das absichtlich gemacht. Er sah mir direkt in die Augen, als er auf die Klinke sprang.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.cat_bathroom.line.2.ogg",
+   "dur": 4.96,
+   "lufs": -17.8,
+   "lead_ms": 48,
+   "trail_ms": 53,
+   "ref": "Sie sind in Ihrer eigenen Wohnung, er ist im Bad. Diesmal brauchen wir keine Unterlagen.",
+   "asr": "Sie sind in ihrer eigenen Wohnung. Er ist im Bad. Diesmal brauchen wir keine Unterlagen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.cat_bathroom.line.3.ogg",
+   "dur": 2.04,
+   "lufs": -18.1,
+   "lead_ms": 51,
+   "trail_ms": 38,
+   "ref": "Und wenn er Angst bekommt?",
+   "asr": "Und wenn er Angst bekommt?",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.cat_bathroom.line.4.ogg",
+   "dur": 3.01,
+   "lufs": -17.9,
+   "lead_ms": 44,
+   "trail_ms": 2,
+   "ref": "Reden Sie weiter mit ihm. Ich bin leiser als er.",
+   "asr": "Reden Sie weiter mit ihm. Ich bin leiser als er.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.charleroi_letters.line.1.ogg",
+   "dur": 6.31,
+   "lufs": -17.7,
+   "lead_ms": 55,
+   "trail_ms": 23,
+   "ref": "Ich rufe nicht wegen einer Öffnung an, sondern um Rat zu fragen. Frau Martine hat Opas Kästchen.",
+   "asr": "Ich rufe nicht wegen einer Öffnung an, sondern um Rat zu fragen. Frau Martine hat Opas Kästchen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.charleroi_letters.line.2.ogg",
+   "dur": 3.82,
+   "lufs": -18.3,
+   "lead_ms": 57,
+   "trail_ms": 37,
+   "ref": "C'est à votre famille. Ich habe nur darauf aufgepasst.",
+   "asr": "Sitterwutrophanie. Ich habe nur darauf aufgepasst.",
+   "wer": 0.444
+  },
+  {
+   "file": "de/job.charleroi_letters.line.3.ogg",
+   "dur": 2.89,
+   "lufs": -18.1,
+   "lead_ms": 52,
+   "trail_ms": 44,
+   "ref": "Siebzig Jahre lang haben Sie darauf aufgepasst?",
+   "asr": "Schätzig Jahre lang haben sie darauf aufgepasst?",
+   "wer": 0.143
+  },
+  {
+   "file": "de/job.charleroi_letters.line.4.ogg",
+   "dur": 4.46,
+   "lufs": -17.9,
+   "lead_ms": 49,
+   "trail_ms": 49,
+   "ref": "Sie beide wollen es öffnen lassen. Die einfachste Prüfung meiner Laufbahn.",
+   "asr": "Je beide wollen es öffnen lassen. Die einfachste Prüfung meiner Laufbahn.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.community_notice_case.line.1.ogg",
+   "dur": 4.11,
+   "lufs": -17.9,
+   "lead_ms": 59,
+   "trail_ms": 30,
+   "ref": "Der Dienstplan ist fertig. Nur der Schaukasten verweigert die Mitarbeit.",
+   "asr": "Der Dienstplan ist fertig. Nur der Schaukasten verweigert die Mitarbeit.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.community_notice_case.line.2.ogg",
+   "dur": 4.37,
+   "lufs": -18.2,
+   "lead_ms": 56,
+   "trail_ms": 42,
+   "ref": "Ich verwalte dieses Haus. Hier ist der unterschriebene Beschluss der Gemeinschaft.",
+   "asr": "Ich verwalte dieses Haus. Hier ist der unterschriebene Beschluss der Gemeinschaft.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.community_notice_case.line.3.ogg",
+   "dur": 4.41,
+   "lufs": -17.8,
+   "lead_ms": 17,
+   "trail_ms": 52,
+   "ref": "Zustimmung und Preis sind geklärt. Ich öffne den gemeinsamen Schaukasten.",
+   "asr": "Zustimmung und Preis sind geklärt. Ich öffne den gemeinsamen Schaukasten.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.community_notice_case.line.4.ogg",
+   "dur": 4.78,
+   "lufs": -18.2,
+   "lead_ms": 14,
+   "trail_ms": 40,
+   "ref": "Erster Aushang: der Staubsaugdienst. Ein starker Anfang.",
+   "asr": "Erster Aushang, der Staubsaugdienst. Ein starker Anfang.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.dollhouse_wooden_lock.line.1.ogg",
+   "dur": 3.9,
+   "lufs": -18.1,
+   "lead_ms": 50,
+   "trail_ms": 28,
+   "ref": "Lala sitzt seit Dienstag darin fest. Ihr ist langweilig.",
+   "asr": "Lala sitzt seit Dienstag darin fest. Er ist langweilig.",
+   "wer": 0.111
+  },
+  {
+   "file": "de/job.dollhouse_wooden_lock.line.2.ogg",
+   "dur": 4.65,
+   "lufs": -18.2,
+   "lead_ms": 38,
+   "trail_ms": 36,
+   "ref": "Opa nannte es ein ägyptisches Schloss. Ich weiß nicht, ob das stimmt.",
+   "asr": "Opa nannte es ein ägyptisches Schloss. Ich weiß nicht, ob das stimmt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.dollhouse_wooden_lock.line.3.ogg",
+   "dur": 6.44,
+   "lufs": -18.1,
+   "lead_ms": 47,
+   "trail_ms": 49,
+   "ref": "So hat sich der Name eingebürgert. Die wahre Geschichte ist noch interessanter. Die erzähle ich danach.",
+   "asr": "So hat sich der Name eingebürgert. Die wahre Geschichte ist noch interessanter. Die erzähle ich danach.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.dollhouse_wooden_lock.line.4.ogg",
+   "dur": 4.11,
+   "lufs": -18.0,
+   "lead_ms": 52,
+   "trail_ms": 49,
+   "ref": "Machst du einen neuen Schlüssel? Aus Holz? Papa hat ein Brett.",
+   "asr": "Machst du einen neuen Schlüssel? Aus Holz? Papa hat ein Brett!",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.drummer_locker.line.1.ogg",
+   "dur": 5.11,
+   "lufs": -18.1,
+   "lead_ms": 21,
+   "trail_ms": 37,
+   "ref": "Ich könnte mit Löffeln spielen. Aber lieber nicht. In einer Stunde ist der Auftritt.",
+   "asr": "Ich könnte mit Löffeln spielen, aber lieber nicht. In einer Stunde ist der Auftritt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.drummer_locker.line.2.ogg",
+   "dur": 4.46,
+   "lufs": -18.0,
+   "lead_ms": 44,
+   "trail_ms": 43,
+   "ref": "Spind acht, Iga zahlt monatlich. Steht in meinem Notizbuch.",
+   "asr": "Spinnt 8, Eagerzeit monatlich, steht in meinem Notizbuch.",
+   "wer": 0.444
+  },
+  {
+   "file": "de/job.drummer_locker.line.3.ogg",
+   "dur": 4.41,
+   "lufs": -17.9,
+   "lead_ms": 56,
+   "trail_ms": 43,
+   "ref": "Ihr Notizbuch genügt. Herr Edek sagte, Sie schreiben alles auf.",
+   "asr": "Ihr Notizbuch genügt. Herr Edek sagte, sie schreiben alles auf.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.drummer_locker.line.4.ogg",
+   "dur": 3.78,
+   "lufs": -17.9,
+   "lead_ms": 56,
+   "trail_ms": 56,
+   "ref": "Wenn Sie es rechtzeitig schaffen, spielen wir etwas für Sie. Laut.",
+   "asr": "Wenn Sie es rechtzeitig schaffen, spielen wir etwas für Sie. Laut!",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.edek_rehearsal_store.line.1.ogg",
+   "dur": 4.33,
+   "lufs": -17.9,
+   "lead_ms": 47,
+   "trail_ms": 51,
+   "ref": "Der Lagerraum steht auf meiner Liste. Er ist vom alten Theater übrig.",
+   "asr": "Der Lagerraum steht auf meiner Liste. Er ist vom alten Theater übrig.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.edek_rehearsal_store.line.2.ogg",
+   "dur": 3.68,
+   "lufs": -17.8,
+   "lead_ms": 55,
+   "trail_ms": 18,
+   "ref": "Wir leihen uns Stühle. Schlagzeug hat diesmal keiner bestellt.",
+   "asr": "Wir leihen uns Stühle. Schlagzeug hat diesmal keiner bestellt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.edek_rehearsal_store.line.3.ogg",
+   "dur": 4.34,
+   "lufs": -17.5,
+   "lead_ms": 39,
+   "trail_ms": 49,
+   "ref": "Ihre Liste und das Schreiben der Uni stimmen überein. Der Preis auch.",
+   "asr": "Ihre Liste und das Schreiben der Uni stimmen überein. Der Preis auch.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.edek_rehearsal_store.line.4.ogg",
+   "dur": 4.86,
+   "lufs": -18.6,
+   "lead_ms": 1,
+   "trail_ms": 46,
+   "ref": "Gut. Hoffentlich halten die Stühle den Takt besser als die Band.",
+   "asr": "Gut, hoffentlich halten die Stühle den Tag besser als die Band.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.finnish_sailor.line.1.ogg",
+   "dur": 5.34,
+   "lufs": -17.7,
+   "lead_ms": 57,
+   "trail_ms": 54,
+   "ref": "In Finnland hat jeder so ein Vorhängeschloss. Ohne Schlüssel bekommt es niemand auf.",
+   "asr": "In Finnland hat jeder so ein Vorhänge-Schloss. Ohne Schlüssel bekommt es niemand auf.",
+   "wer": 0.154
+  },
+  {
+   "file": "de/job.finnish_sailor.line.2.ogg",
+   "dur": 4.97,
+   "lufs": -17.5,
+   "lead_ms": 60,
+   "trail_ms": 40,
+   "ref": "Die Truhe gehört Aino, dafür verbürge ich mich. Morgen um sechs legen wir ab.",
+   "asr": "Die Truhe gehört ein Ohr. Dafür verböge ich mich. Morgen um sechs legen wir ab.",
+   "wer": 0.214
+  },
+  {
+   "file": "de/job.finnish_sailor.line.3.ogg",
+   "dur": 4.22,
+   "lufs": -18.0,
+   "lead_ms": 47,
+   "trail_ms": 51,
+   "ref": "Der Kapitän bürgt, das Seemannsbuch passt. Dann sehen wir mal.",
+   "asr": "Der Kapitän birgt, dass Seemanns Buch passt. Dann sehen wir mal.",
+   "wer": 0.4
+  },
+  {
+   "file": "de/job.finnish_sailor.line.4.ogg",
+   "dur": 4.07,
+   "lufs": -17.9,
+   "lead_ms": 56,
+   "trail_ms": 22,
+   "ref": "Wenn Sie es öffnen, erzähle ich Ihnen, woher diese Erfindung stammt.",
+   "asr": "Wenn Sie es öffnen, erzähle ich Ihnen, woher diese Erfindung stammt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.ghent_beguinage.line.1.ogg",
+   "dur": 4.63,
+   "lufs": -18.2,
+   "lead_ms": 13,
+   "trail_ms": 42,
+   "ref": "Auf Polnisch kenne ich nur „dzień dobry“ und „pierogi“.",
+   "asr": "Auf Polnisch kenne ich nur Jendobre und Pierogi.",
+   "wer": 0.222
+  },
+  {
+   "file": "de/job.ghent_beguinage.line.2.ogg",
+   "dur": 2.26,
+   "lufs": -18.1,
+   "lead_ms": 22,
+   "trail_ms": 55,
+   "ref": "Das ist schon die halbe Sprache.",
+   "asr": "Das ist schon die halbe Sprache.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.ghent_beguinage.line.3.ogg",
+   "dur": 5.72,
+   "lufs": -18.1,
+   "lead_ms": 52,
+   "trail_ms": 11,
+   "ref": "Ein Schreiben des Pfarrgemeinderats. Mein Vorgänger hat den Schlüssel mit in den Himmel genommen.",
+   "asr": "Ein Schreiben des Pfarrgemeinderats. Mein Vorgänger hat den Schlüssel mit in den Himmel genommen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.ghent_beguinage.line.4.ogg",
+   "dur": 4.28,
+   "lufs": -18.0,
+   "lead_ms": 51,
+   "trail_ms": 51,
+   "ref": "Keine Spuren, versprochen. Dieses Schloss ist älter als mein Haus.",
+   "asr": "Keine Spuren. Versprochen. Dieses Schloss ist älter als mein Haus.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.gosia_workbench_drawer.line.1.ogg",
+   "dur": 4.69,
+   "lufs": -18.0,
+   "lead_ms": 58,
+   "trail_ms": 25,
+   "ref": "Ich habe den ganzen Tisch gekauft. Die Schublade erkennt die Rechnung nicht an.",
+   "asr": "Ich habe den ganzen Tisch gekauft. Die Schublade erkennt die Rechnung nicht an.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.gosia_workbench_drawer.line.2.ogg",
+   "dur": 4.93,
+   "lufs": -18.1,
+   "lead_ms": 50,
+   "trail_ms": 55,
+   "ref": "Rechnung, Foto von der Abholung, vereinbarter Preis. Alles stimmt.",
+   "asr": "Rechnung. Foto von der Abholung. Vereinbarter Preis. Alles stimmt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.gosia_workbench_drawer.line.3.ogg",
+   "dur": 4.12,
+   "lufs": -18.1,
+   "lead_ms": 56,
+   "trail_ms": 22,
+   "ref": "Bitte ohne Spuren. Der Tisch kommt in den Gemeinschaftsraum.",
+   "asr": "Bitte ohne Spuren. Der Tisch kommt in den Gemeinschaftsraum.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.gosia_workbench_drawer.line.4.ogg",
+   "dur": 3.97,
+   "lufs": -18.0,
+   "lead_ms": 54,
+   "trail_ms": 52,
+   "ref": "Einverstanden. Ausnahmsweise waren die Papiere vor mir da.",
+   "asr": "Einverstanden. Ausnahmsweise waren die Papiere vor mir da.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.grandma_broth.line.1.ogg",
+   "dur": 4.09,
+   "lufs": -18.1,
+   "lead_ms": 58,
+   "trail_ms": 54,
+   "ref": "Ich war doch nur kurz draußen, mein Junge. Mit dem Müll.",
+   "asr": "Ich war doch nur kurz draußen, mein Junge! Mit dem Müh!",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.grandma_broth.line.2.ogg",
+   "dur": 6.25,
+   "lufs": -18.2,
+   "lead_ms": 56,
+   "trail_ms": 57,
+   "ref": "Ich habe das Gas vom Treppenabsatz aus abgedreht. Seit vierzig Jahren wohnen wir Wand an Wand.",
+   "asr": "Ich habe das Gas vom Treppenabsetz aus abgedreht. Seit 40 Jahren wohnen wir Wand an Wand.",
+   "wer": 0.125
+  },
+  {
+   "file": "de/job.grandma_broth.line.3.ogg",
+   "dur": 4.82,
+   "lufs": -18.0,
+   "lead_ms": 48,
+   "trail_ms": 54,
+   "ref": "Das zählt fast wie ein Dokument. Und der Brief im Briefkasten ist für Sie?",
+   "asr": "Das zählt fast wie ein Dokument. Und der Brief im Briefkasten ist für Sie?",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.grandma_broth.line.4.ogg",
+   "dur": 5.34,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 46,
+   "ref": "Die Nudeln habe ich selbst gemacht. Eine Schüssel ist für Sie. Keine Widerrede.",
+   "asr": "Die Nudeln habe ich selbst gemacht. Eine Schüssel ist für sie. Keine Wiederrede.",
+   "wer": 0.077
+  },
+  {
+   "file": "de/job.grandpa_chest.line.1.ogg",
+   "dur": 4.41,
+   "lufs": -18.1,
+   "lead_ms": 54,
+   "trail_ms": 2,
+   "ref": "Papa hat nie gesagt, was er darin aufbewahrte. Nicht einmal uns.",
+   "asr": "Papa hat nicht gesagt, was er darin aufbewahrte. Nicht einmal uns.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.grandpa_chest.line.2.ogg",
+   "dur": 4.73,
+   "lufs": -17.9,
+   "lead_ms": 44,
+   "trail_ms": 24,
+   "ref": "Mama, er fragt nicht nach der Truhe. Er fragt, ob das Haus dir gehört.",
+   "asr": "Mama, er fragt nicht nach der Truhe. Er fragt, ob das Haus dir gehört.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.grandpa_chest.line.3.ogg",
+   "dur": 5.92,
+   "lufs": -17.8,
+   "lead_ms": 2,
+   "trail_ms": 50,
+   "ref": "Es gehört mir. Die Eigentumsurkunde liegt in der Kommode, unter der Tischdecke.",
+   "asr": "Es gehört mehr. Die Eigentumsurkunde liegt in der Kommode unter der Tischdecke.",
+   "wer": 0.083
+  },
+  {
+   "file": "de/job.grandpa_chest.line.4.ogg",
+   "dur": 5.38,
+   "lufs": -17.5,
+   "lead_ms": 59,
+   "trail_ms": 52,
+   "ref": "Briefe. Aus Charleroi. An Oma, auf Polnisch, mit belgischen Briefmarken.",
+   "asr": "Briefe aus Chale Roix an Oma auf Poonisch mit belgischen Briefmarken.",
+   "wer": 0.3
+  },
+  {
+   "file": "de/job.halina_recipe_box.line.1.ogg",
+   "dur": 5.42,
+   "lufs": -18.1,
+   "lead_ms": 58,
+   "trail_ms": 49,
+   "ref": "Drinnen ist das Rezept für die Klöße. Ich weiß nur noch das Wort „Handvoll“.",
+   "asr": "Drinnen ist das Rezept für die Klöße. Ich weiß nur noch das Wort Handvoll.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.halina_recipe_box.line.2.ogg",
+   "dur": 4.45,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 44,
+   "ref": "Das ist Halinas Kästchen. Auf dem Foto steht es neben ihrer Tasse.",
+   "asr": "Das ist Halinas Kästchen. Auf dem Foto steht es neben ihrer Tappe.",
+   "wer": 0.083
+  },
+  {
+   "file": "de/job.halina_recipe_box.line.3.ogg",
+   "dur": 4.23,
+   "lufs": -18.1,
+   "lead_ms": 35,
+   "trail_ms": 56,
+   "ref": "Foto, Zeugin, vereinbarter Preis. Wir können anfangen.",
+   "asr": "Foto. Zeug ihn. Vereinbarter Preis. Wir können anfangen.",
+   "wer": 0.286
+  },
+  {
+   "file": "de/job.halina_recipe_box.line.4.ogg",
+   "dur": 6.59,
+   "lufs": -18.2,
+   "lead_ms": 13,
+   "trail_ms": 38,
+   "ref": "Danach klären wir, wie viel eine Handvoll wiegt. Das ist unser alter Streit.",
+   "asr": "Danach klären wir, wie viel einer Hand voll wiegt. Das ist unser alter Streit.",
+   "wer": 0.231
+  },
+  {
+   "file": "de/job.kiosk_shutter.line.1.ogg",
+   "dur": 5.15,
+   "lufs": -17.6,
+   "lead_ms": 37,
+   "trail_ms": 48,
+   "ref": "Seit zweiunddreißig Jahren hängt dieses Vorhängeschloss hier. Noch nie geölt.",
+   "asr": "Seit 32 Jahren hängt dieses Vorhänge-Schluss hier noch nie geölt.",
+   "wer": 0.3
+  },
+  {
+   "file": "de/job.kiosk_shutter.line.2.ogg",
+   "dur": 4.73,
+   "lufs": -18.0,
+   "lead_ms": 37,
+   "trail_ms": 47,
+   "ref": "Frau Krysia bürgt, der Brief ist da. Ich brauche trotzdem noch einen Nachweis.",
+   "asr": "Frau Krischer Birgt. Der Brief ist da. Ich brauche trotzdem noch einen Nachweis.",
+   "wer": 0.154
+  },
+  {
+   "file": "de/job.kiosk_shutter.line.3.ogg",
+   "dur": 8.08,
+   "lufs": -18.2,
+   "lead_ms": 0,
+   "trail_ms": 31,
+   "ref": "Ein Foto vom Eröffnungstag, 1994. Mein Schnurrbart war besser in Form als der Kiosk.",
+   "asr": "Ein Foto vom Eröffnungstag 1994. Mein Schnobart war besser in Form als der Kiosk.",
+   "wer": 0.071
+  },
+  {
+   "file": "de/job.kiosk_shutter.line.4.ogg",
+   "dur": 4.6,
+   "lufs": -18.0,
+   "lead_ms": 49,
+   "trail_ms": 43,
+   "ref": "Stefan ist länger hier als die Bushaltestelle. Der Bus wird's bestätigen.",
+   "asr": "Stefan ist länger hier als die Bushaltestelle. Der Bus wird bestätigen.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.krakow_antiquarian.line.1.ogg",
+   "dur": 6.44,
+   "lufs": -18.1,
+   "lead_ms": 35,
+   "trail_ms": 46,
+   "ref": "Der Tresor gehört mir, ich miete von der Stadt. Die Dame aus dem Café nebenan bestätigt das.",
+   "asr": "Der Tresor gehört mir. Ich miete von der Stadt. Die Dame aus dem Café nebenan bestätigt das.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.krakow_antiquarian.line.2.ogg",
+   "dur": 6.32,
+   "lufs": -17.9,
+   "lead_ms": 54,
+   "trail_ms": 31,
+   "ref": "Und wenn Sie schon dabei sind: dieses kleine Kästchen. Ein Kunde hat es zur Schätzung dagelassen.",
+   "asr": "Und wenn Sie schon dabei sind, dieses kleine Kästchen. Ein Kunde hat es zur Schätzung dargelassen.",
+   "wer": 0.062
+  },
+  {
+   "file": "de/job.krakow_antiquarian.line.3.ogg",
+   "dur": 4.75,
+   "lufs": -17.6,
+   "lead_ms": 59,
+   "trail_ms": 53,
+   "ref": "Den Tresor ja. Das Kästchen nein. Sein Besitzer soll persönlich kommen.",
+   "asr": "Den Tresor ja, das Kästchen nein. Sein Besitzer soll persönlich kommen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.krakow_antiquarian.line.4.ogg",
+   "dur": 5.53,
+   "lufs": -18.1,
+   "lead_ms": 50,
+   "trail_ms": 41,
+   "ref": "Sie haben recht. Ich werde alt. Und damit nicht geduldiger.",
+   "asr": "Sie haben Recht. Ich werde alt und damit nicht geduldiger.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.krakow_tenement_gate.line.1.ogg",
+   "dur": 4.76,
+   "lufs": -18.1,
+   "lead_ms": 23,
+   "trail_ms": 20,
+   "ref": "Der Denkmalpfleger sagte: kein einziges Loch. Nicht eins.",
+   "asr": "Der Denkmalpfleger sagte, kein einziges Loch, nicht eins.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.krakow_tenement_gate.line.2.ogg",
+   "dur": 4.61,
+   "lufs": -18.2,
+   "lead_ms": 58,
+   "trail_ms": 49,
+   "ref": "Ganz richtig. Da hat sich vor hundertdreißig Jahren jemand viel Mühe gegeben.",
+   "asr": "Ganz richtig. Da hat sich vor 130 Jahren jemand viel Mühe gegeben.",
+   "wer": 0.083
+  },
+  {
+   "file": "de/job.krakow_tenement_gate.line.3.ogg",
+   "dur": 6.95,
+   "lufs": -18.0,
+   "lead_ms": 50,
+   "trail_ms": 54,
+   "ref": "Hallo, da bin ich wieder. Ich mache hier Praktikum. Die Prüfung habe ich bestanden. Zimmer 412 hat geholfen.",
+   "asr": "Hallo, da bin ich wieder. Ich mache hier Praktikum. Die Prüfung habe ich bestanden. Zimmer 412 hat geholfen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.krakow_tenement_gate.line.4.ogg",
+   "dur": 3.89,
+   "lufs": -17.8,
+   "lead_ms": 36,
+   "trail_ms": 35,
+   "ref": "Beschluss der Hausgemeinschaft und schriftlicher Auftrag. Bitte sehr.",
+   "asr": "Für Schluss der Hausgemeinschaft und schriftlicher Auftrag. Bitte sehr.",
+   "wer": 0.25
+  },
+  {
+   "file": "de/job.krystyna_wooden_album.line.1.ogg",
+   "dur": 5.23,
+   "lufs": -18.4,
+   "lead_ms": 43,
+   "trail_ms": 34,
+   "ref": "Józef hat dieses Kästchen gemacht. Der kleine Schlüssel war wohl auch aus Holz.",
+   "asr": "Jusäf hat dieses Kästchen gemacht. Der kleine Schlüssel war wohl auch aus Holz.",
+   "wer": 0.077
+  },
+  {
+   "file": "de/job.krystyna_wooden_album.line.2.ogg",
+   "dur": 4.36,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 33,
+   "ref": "Wir haben ein Foto, auf dem er es hält. Und das Kästchen steht bei Mama.",
+   "asr": "Wir haben ein Foto, auf dem er es hält. Und das Kästchen steht bei Mama.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.krystyna_wooden_album.line.3.ogg",
+   "dur": 4.15,
+   "lufs": -17.9,
+   "lead_ms": 59,
+   "trail_ms": 48,
+   "ref": "Das Foto und das Wort Ihrer Tochter genügen. Ich notiere den Preis.",
+   "asr": "Das Foto und das Wort ihrer Tochter genügen. Ich notiere den Preis.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.krystyna_wooden_album.line.4.ogg",
+   "dur": 4.95,
+   "lufs": -18.0,
+   "lead_ms": 2,
+   "trail_ms": 59,
+   "ref": "Gut. Aber fragen Sie nicht, was wir damals getragen haben.",
+   "asr": "Gut, aber fragen Sie nicht, was wir damals getragen haben.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.liege_bakery.line.1.ogg",
+   "dur": 5.07,
+   "lufs": -18.0,
+   "lead_ms": 48,
+   "trail_ms": 18,
+   "ref": "Mein Onkel hatte dreißig Schlüssel und keinen einzigen beschriftet.",
+   "asr": "Mein Onkel hatte 30 Schlüssel und keinen einzigen beschriftet.",
+   "wer": 0.111
+  },
+  {
+   "file": "de/job.liege_bakery.line.2.ogg",
+   "dur": 5.24,
+   "lufs": -18.1,
+   "lead_ms": 35,
+   "trail_ms": 51,
+   "ref": "Das Schloss hat einen fremden Schlüssel gespürt und war beleidigt. Das ist sein Job.",
+   "asr": "Das Schloss hat einen fremden Schlüssel gespürt und war beleidigt. Das ist sein Job.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.liege_bakery.line.3.ogg",
+   "dur": 5.17,
+   "lufs": -17.8,
+   "lead_ms": 36,
+   "trail_ms": 18,
+   "ref": "Übergabepapiere und Mietvertrag. Der Teig geht auch ohne Erlaubnis auf.",
+   "asr": "Übergabe Papiere und Mietvertrag. Der Teig geht auch ohne Erlaubnis auf.",
+   "wer": 0.2
+  },
+  {
+   "file": "de/job.liege_bakery.line.4.ogg",
+   "dur": 3.88,
+   "lufs": -18.0,
+   "lead_ms": 49,
+   "trail_ms": 49,
+   "ref": "Die Papiere reichen. Waffeln um sechs, wie versprochen.",
+   "asr": "Die Papiere reichen. Waffeln um sechs. Wie versprochen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.marta_poster_studio.line.1.ogg",
+   "dur": 4.0,
+   "lufs": -17.6,
+   "lead_ms": 52,
+   "trail_ms": 12,
+   "ref": "Die Plakate sind drinnen. Kartoffel bewacht sie von der falschen Seite.",
+   "asr": "Die Plakate sind drin. Kartoffel bewacht sie von der falschen Seite.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.marta_poster_studio.line.2.ogg",
+   "dur": 4.78,
+   "lufs": -18.1,
+   "lead_ms": 39,
+   "trail_ms": 50,
+   "ref": "Der Mietvertrag stimmt. Die Nachbarin bestätigt, dass das Ihr Atelier ist.",
+   "asr": "Der Mietvertrag stimmt. Die Nachbarin bestätigt, dass das ihr Atelier ist.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.marta_poster_studio.line.3.ogg",
+   "dur": 3.86,
+   "lufs": -18.2,
+   "lead_ms": 55,
+   "trail_ms": 44,
+   "ref": "Der Kater unterschreibt nichts. Er hat strenge Datenschutzregeln.",
+   "asr": "Der Kater unterschreibt nichts. Er hat strenge Datenschutzregeln.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.marta_poster_studio.line.4.ogg",
+   "dur": 4.02,
+   "lufs": -17.9,
+   "lead_ms": 1,
+   "trail_ms": 54,
+   "ref": "Muss er nicht. Der Preis ist vereinbart, die Unterlagen reichen.",
+   "asr": "Muss er nicht. Der Preis ist vereinbart. Die Unterlagen reichen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.museum_time_lock.line.1.ogg",
+   "dur": 3.43,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 30,
+   "ref": "Es geht nicht um die Kombination. Es geht um die Zeit.",
+   "asr": "Es geht nicht um die Kombination, es geht um die Zeit.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.museum_time_lock.line.2.ogg",
+   "dur": 4.18,
+   "lufs": -17.8,
+   "lead_ms": 57,
+   "trail_ms": 45,
+   "ref": "Ein Zeitschloss fragt nicht, wer da ist. Sondern wie spät es ist.",
+   "asr": "Ein Zeitschluss fragt nicht wer da ist, sondern wie spät es ist.",
+   "wer": 0.083
+  },
+  {
+   "file": "de/job.museum_time_lock.line.3.ogg",
+   "dur": 5.28,
+   "lufs": -17.9,
+   "lead_ms": 54,
+   "trail_ms": 43,
+   "ref": "Schreiben der Direktion, Übergabeprotokoll. Alles in dreifacher Ausfertigung.",
+   "asr": "Schreiben der Direktion, Übergabeprotokoll, alles in dreifacher Ausfertigung.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.museum_time_lock.line.4.ogg",
+   "dur": 3.81,
+   "lufs": -17.7,
+   "lead_ms": 37,
+   "trail_ms": 58,
+   "ref": "Frau Doktor, Handschuhe gibt es auch für den Schlosser. Größe L.",
+   "asr": "Frau Doktor, Handschuhe gibt es auch für den Schlosser. Grüße L.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.newlyweds_4am.line.1.ogg",
+   "dur": 6.35,
+   "lufs": -18.4,
+   "lead_ms": 52,
+   "trail_ms": 47,
+   "ref": "Ich habe einen Ausweis, aber da steht keine Adresse drauf. Ich weiß. Bei niemandem mehr.",
+   "asr": "Ich habe einen Ausweis, aber da steht keine Adresse drauf. Ich weiß, bei niemandem mehr.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.newlyweds_4am.line.2.ogg",
+   "dur": 5.8,
+   "lufs": -18.1,
+   "lead_ms": 57,
+   "trail_ms": 21,
+   "ref": "Meine Meldeadresse steht in der App. Sehen Sie? Mit Schleier zielt es sich schlecht.",
+   "asr": "Meine Meldetdresse steht in der App. Sehen Sie? Mit Schleier zielt es sich schlecht.",
+   "wer": 0.071
+  },
+  {
+   "file": "de/job.newlyweds_4am.line.3.ogg",
+   "dur": 6.35,
+   "lufs": -18.3,
+   "lead_ms": 50,
+   "trail_ms": 43,
+   "ref": "Ich kenne die beiden. Heute haben sie geheiratet. Die ganze Siedlung hat die Feier gehört.",
+   "asr": "Ich kenne die beiden. Heute haben sie geheilratet. Die ganze Siedlung hat die Feier gehört.",
+   "wer": 0.067
+  },
+  {
+   "file": "de/job.newlyweds_4am.line.4.ogg",
+   "dur": 3.89,
+   "lufs": -18.0,
+   "lead_ms": 39,
+   "trail_ms": 34,
+   "ref": "Herzlichen Glückwunsch. Noch zwei Minuten, dann sind Sie zu Hause.",
+   "asr": "Herzlichen Glückwunsch! Noch zwei Minuten, dann sind Sie zu Hause.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.night_nurse.line.1.ogg",
+   "dur": 4.87,
+   "lufs": -18.2,
+   "lead_ms": 54,
+   "trail_ms": 11,
+   "ref": "Zwölf Stunden auf Station. Mein Schlüssel liegt im Spind im Krankenhaus.",
+   "asr": "12 Stunden auf Station. Mein Schlüssel liegt im Spind im Krankenhaus.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.night_nurse.line.2.ogg",
+   "dur": 5.42,
+   "lufs": -18.2,
+   "lead_ms": 44,
+   "trail_ms": 17,
+   "ref": "Frau Agnieszka, Wohnung vierzehn, stimmt. Ihr Mietvertrag ist in unserem System.",
+   "asr": "Frau Agnieszka, Wohnung 14, stimmt. Ihr Mietvertrag ist in unserem System.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.night_nurse.line.3.ogg",
+   "dur": 5.03,
+   "lufs": -18.1,
+   "lead_ms": 56,
+   "trail_ms": 22,
+   "ref": "Die Hausverwaltung bestätigt es, der Ausweis stimmt überein. Gleich können Sie schlafen.",
+   "asr": "Die Hausverwaltung bestätigt es. Der Ausweis stimmt überein. Gleich können Sie schlafen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.night_nurse.line.4.ogg",
+   "dur": 4.61,
+   "lufs": -17.9,
+   "lead_ms": 45,
+   "trail_ms": 24,
+   "ref": "Entschuldigen Sie, dass ich so wortkarg bin. Ich rede schon im Schlaf.",
+   "asr": "Entschuldigen Sie, dass ich so wortkack bin. Ich rede schon im Schlaf.",
+   "wer": 0.083
+  },
+  {
+   "file": "de/job.pizzeria_pays_pizza.line.1.ogg",
+   "dur": 5.48,
+   "lufs": -17.9,
+   "lead_ms": 37,
+   "trail_ms": 48,
+   "ref": "Die Einnahmen sind in der Kasse, und die Kasse steht drinnen. Ich bezahle mit Pizza. Wie hungrig sind Sie?",
+   "asr": "Die Einnahmen sind in der Kasse und die Kasse steht drin. Ich bezahle mit Pizza. Wie hungrig sind sie?",
+   "wer": 0.053
+  },
+  {
+   "file": "de/job.pizzeria_pays_pizza.line.2.ogg",
+   "dur": 5.16,
+   "lufs": -18.1,
+   "lead_ms": 38,
+   "trail_ms": 51,
+   "ref": "Erst der Kostenvoranschlag, dann die Speisekarte. Haben Sie den Mietvertrag?",
+   "asr": "Erst der Kostenvoranschlag, dann die Speisekarte. Haben Sie den Mietvertrag?",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.pizzeria_pays_pizza.line.3.ogg",
+   "dur": 5.99,
+   "lufs": -17.8,
+   "lead_ms": 52,
+   "trail_ms": 53,
+   "ref": "Kenne sie seit zwanzig Jahren, mein Dönerladen ist nebenan. Ihre Margherita ist Kunst.",
+   "asr": "Kennet ihr seit 20 Jahren. Mein Dönerladen ist nebenan. Ihre Margarita ist Kunst.",
+   "wer": 0.308
+  },
+  {
+   "file": "de/job.pizzeria_pays_pizza.line.4.ogg",
+   "dur": 5.33,
+   "lufs": -18.2,
+   "lead_ms": 48,
+   "trail_ms": 43,
+   "ref": "Der Teig geht auf, ich gehe unter. Hauptsache vor Tagesanbruch.",
+   "asr": "Der Teig geht auf, ich gehe unter. Hauptsache vor Tagesanbruch.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_aunt_alive.line.1.ogg",
+   "dur": 5.28,
+   "lufs": -18.1,
+   "lead_ms": 52,
+   "trail_ms": 3,
+   "ref": "Tante ist letzte Woche gestorben. Der Papierkram läuft noch, es ist alles so frisch.",
+   "asr": "Tante ist letzte Woche gestorben. Der Papierkram läuft noch. Es ist alles so frisch.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_aunt_alive.line.2.ogg",
+   "dur": 5.38,
+   "lufs": -18.2,
+   "lead_ms": 51,
+   "trail_ms": 36,
+   "ref": "Frau Lucyna? Sie ist zur Kur. Gestern hat sie angerufen, es geht ihr besser.",
+   "asr": "Frau Lucine? Sie ist zur Kur. Gestern hat sie angerufen. Es geht ihr besser.",
+   "wer": 0.071
+  },
+  {
+   "file": "de/job.refuse_aunt_alive.line.3.ogg",
+   "dur": 2.97,
+   "lufs": -18.0,
+   "lead_ms": 58,
+   "trail_ms": 52,
+   "ref": "Da muss ich etwas durcheinandergebracht haben.",
+   "asr": "Da muss ich etwas durcheinander gebracht haben.",
+   "wer": 0.333
+  },
+  {
+   "file": "de/job.refuse_aunt_alive.line.4.ogg",
+   "dur": 4.83,
+   "lufs": -17.9,
+   "lead_ms": 49,
+   "trail_ms": 51,
+   "ref": "Dann rufen wir Frau Lucyna gemeinsam an. Und danach Polizeibeamtin Sowa.",
+   "asr": "Dann rufen wir Frau Lucina gemeinsam an. Und danach Polizeibeamtin Sova.",
+   "wer": 0.182
+  },
+  {
+   "file": "de/job.refuse_ex_partner.line.1.ogg",
+   "dur": 4.78,
+   "lufs": -18.2,
+   "lead_ms": 58,
+   "trail_ms": 57,
+   "ref": "Ich habe drei Jahre hier gewohnt. Ich habe das Recht, reinzugehen und meine Sachen zu holen.",
+   "asr": "Ich habe drei Jahre hier gewohnt. Ich habe das Recht, reinzugehen und meine Sachen zu holen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_ex_partner.line.2.ogg",
+   "dur": 5.24,
+   "lufs": -18.0,
+   "lead_ms": 54,
+   "trail_ms": 55,
+   "ref": "Am Briefkasten steht nur ein Name, und das ist nicht Ihrer. Ich rufe die Hausverwaltung an.",
+   "asr": "Am Briefkasten steht nur ein Name und das ist nicht Ira. Ich rufe die Hausverwaltung an.",
+   "wer": 0.062
+  },
+  {
+   "file": "de/job.refuse_ex_partner.line.3.ogg",
+   "dur": 2.87,
+   "lufs": -20.2,
+   "lead_ms": 57,
+   "trail_ms": 53,
+   "ref": "Warum die Hausverwaltung? Das ist privat.",
+   "asr": "Warum die Hausverwaltung? Das ist privat!",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_ex_partner.line.4.ogg",
+   "dur": 6.04,
+   "lufs": -18.0,
+   "lead_ms": 60,
+   "trail_ms": 55,
+   "ref": "Diese Tür kann ich nicht öffnen. Die Polizei kann Ihnen helfen, Ihre Sachen abzuholen. Soll ich anrufen?",
+   "asr": "Diese Tür kann ich nicht öffnen. Die Polizei kann ihnen helfen, ihre Sachen abzuholen. Soll ich anrufen?",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_rush_bribe.line.1.ogg",
+   "dur": 4.25,
+   "lufs": -18.3,
+   "lead_ms": 52,
+   "trail_ms": 25,
+   "ref": "Ich zahle das Doppelte. Das Dreifache. Lassen Sie die Vorschriften einfach weg.",
+   "asr": "Ich zahle das Doppelte, das Dreifache. Lassen Sie die Vorschriften einfach weg.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_rush_bribe.line.2.ogg",
+   "dur": 4.6,
+   "lufs": -17.9,
+   "lead_ms": 57,
+   "trail_ms": 47,
+   "ref": "Vorschriften stehen nicht zum Verkauf. Rufen Sie Ihre Schwester an, ich warte.",
+   "asr": "Vorschriften stehen nicht zum Verkauf. Rufen Sie Ihre Schwester an. Ich warte.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_rush_bribe.line.3.ogg",
+   "dur": 4.33,
+   "lufs": -18.1,
+   "lead_ms": 58,
+   "trail_ms": 50,
+   "ref": "Sie geht nicht ran. Wir müssen doch nicht die Nachbarn wecken und ein Theater machen.",
+   "asr": "Hier geht nicht ran! Wir müssen doch nicht die Nachbarn wecken und ein Theater machen!",
+   "wer": 0.067
+  },
+  {
+   "file": "de/job.refuse_rush_bribe.line.4.ogg",
+   "dur": 5.7,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 46,
+   "ref": "Dann gute Nacht. Und der Vollständigkeit halber informiere ich die zuständige Polizeibeamtin.",
+   "asr": "Dann gute Nacht. Und der Vollständigkeit halber informiere ich die zuständige Polizeibeamtin.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_sisters_flat.line.1.ogg",
+   "dur": 4.78,
+   "lufs": -18.2,
+   "lead_ms": 50,
+   "trail_ms": 7,
+   "ref": "Meine Schwester ist verreist. Die Blumen vertrocknen, und sie geht nicht ran.",
+   "asr": "Meine Schwester ist verreist. Die Blumen vertrocknen und sie geht nicht ran.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_sisters_flat.line.2.ogg",
+   "dur": 3.95,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 50,
+   "ref": "Wir können auf ihre Zustimmung warten oder die Hausverwaltung anrufen.",
+   "asr": "Wir können auf Ihre Zustimmung warten oder die Hausverwaltung anrufen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_sisters_flat.line.3.ogg",
+   "dur": 4.06,
+   "lufs": -18.2,
+   "lead_ms": 50,
+   "trail_ms": 2,
+   "ref": "Ich würde die Nachbarn lieber nicht hineinziehen. Es sind doch nur Blumen.",
+   "asr": "Ich würde die Nachbarn lieber nicht hineinziehen. Es sind doch nur Blumen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_sisters_flat.line.4.ogg",
+   "dur": 3.99,
+   "lufs": -17.9,
+   "lead_ms": 59,
+   "trail_ms": 54,
+   "ref": "Ohne ihre Zustimmung öffne ich nicht. Hier ist die Nummer der Hausverwaltung.",
+   "asr": "Ohne Ihre Zustimmung öffne ich nicht. Hier ist die Nummer der Hausverwaltung.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_unapproved_stockroom.line.1.ogg",
+   "dur": 3.7,
+   "lufs": -17.9,
+   "lead_ms": 60,
+   "trail_ms": 39,
+   "ref": "Die Lieferung steht auf meinem Wagen. Der Ladenbesitzer geht nicht ran.",
+   "asr": "Die Lieferung steht auf meinem Wagen. Der Ladenbesitzer geht nicht ran.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_unapproved_stockroom.line.2.ogg",
+   "dur": 3.29,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 49,
+   "ref": "Ein Frachtbrief ist keine Erlaubnis, den Laden zu betreten.",
+   "asr": "Ein Frachtbrief ist keine Erlaubnis, den Laden zu betreten.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_unapproved_stockroom.line.3.ogg",
+   "dur": 3.51,
+   "lufs": -17.8,
+   "lead_ms": 8,
+   "trail_ms": 10,
+   "ref": "Könnten Sie nur einen Spalt öffnen, damit ich die Pakete abstellen kann?",
+   "asr": "Könnten Sie nur einen Spalt öffnen, damit ich die Pakete abstellen kann?",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_unapproved_stockroom.line.4.ogg",
+   "dur": 4.52,
+   "lufs": -18.2,
+   "lead_ms": 59,
+   "trail_ms": 50,
+   "ref": "Ohne Zustimmung öffne ich nicht. Vereinbaren wir lieber eine sichere Übergabe.",
+   "asr": "Ohne Zustimmung öffne ich nicht. Vereinbaren wir lieber eine sichere Übergabe.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.roman_service_cupboard.line.1.ogg",
+   "dur": 5.36,
+   "lufs": -18.2,
+   "lead_ms": 36,
+   "trail_ms": 13,
+   "ref": "Die Gemeinschaft hat die alten Nummernschilder abgegeben. Der Schrank wurde nicht informiert.",
+   "asr": "Die Gemeinschaft hat die alten Nummernschilder abgegeben. Der Schrank wurde nicht informiert.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.roman_service_cupboard.line.2.ogg",
+   "dur": 4.2,
+   "lufs": -17.6,
+   "lead_ms": 41,
+   "trail_ms": 34,
+   "ref": "Ihre Liste und der Beschluss liegen vor. Den Preis haben wir vereinbart.",
+   "asr": "Ihre Liste und der Beschluss liegen vor. Den Preis haben wir vereinbart.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.roman_service_cupboard.line.3.ogg",
+   "dur": 4.36,
+   "lufs": -18.2,
+   "lead_ms": 54,
+   "trail_ms": 20,
+   "ref": "Bitte vorsichtig. Das sind die einzigen Nummern ohne Tippfehler.",
+   "asr": "Bitte vorsichtig. Das sind die einzigen Nummern ohne Tippfehler.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.roman_service_cupboard.line.4.ogg",
+   "dur": 5.13,
+   "lufs": -18.0,
+   "lead_ms": 26,
+   "trail_ms": 50,
+   "ref": "Auf die Emaille passe ich auf. Für die Rechtschreibung im Protokoll garantiere ich nicht.",
+   "asr": "Auf die E-Maihe passe ich auf. Für die Rechtschreibung im Protokoll garantiere ich nicht.",
+   "wer": 0.143
+  },
+  {
+   "file": "de/job.shared_room_door.line.1.ogg",
+   "dur": 4.31,
+   "lufs": -17.7,
+   "lead_ms": 16,
+   "trail_ms": 4,
+   "ref": "Beschluss und Liste der Berechtigten. Das ist eine gemeinsame Tür.",
+   "asr": "Verschluss und Liste der Berechtigten. Das ist eine gemeinsame Tür.",
+   "wer": 0.1
+  },
+  {
+   "file": "de/job.shared_room_door.line.2.ogg",
+   "dur": 3.82,
+   "lufs": -18.0,
+   "lead_ms": 55,
+   "trail_ms": 55,
+   "ref": "Die Unterlagen stimmen. Der Preis auch. Wir können öffnen.",
+   "asr": "Die Unterlagen stimmen. Der Preis auch. Wir können öffnen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.shared_room_door.line.3.ogg",
+   "dur": 5.28,
+   "lufs": -18.1,
+   "lead_ms": 58,
+   "trail_ms": 53,
+   "ref": "Ich habe das Schild mitgebracht. Kartoffel hat es abgesegnet, indem er darauf geschlafen hat.",
+   "asr": "Ich habe das Schild mitgebracht. Kartoffel hat es abgesignet, indem er darauf geschlafen hat.",
+   "wer": 0.071
+  },
+  {
+   "file": "de/job.shared_room_door.line.4.ogg",
+   "dur": 4.45,
+   "lufs": -18.2,
+   "lead_ms": 46,
+   "trail_ms": 49,
+   "ref": "Und ich die Klöße. Die Tür kann warten. Die Klöße nicht.",
+   "asr": "Und ich die Größe. Die Tür kann warten. Die Größe nicht.",
+   "wer": 0.182
+  },
+  {
+   "file": "de/job.stefan_book_tin.line.1.ogg",
+   "dur": 4.67,
+   "lufs": -17.6,
+   "lead_ms": 41,
+   "trail_ms": 31,
+   "ref": "Ich habe die Marken für die Leihbücherei weggeschlossen. Vor mir selbst.",
+   "asr": "Ich habe die Marken für die Leibücherei weggeschlossen. Vor mir selbst.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.stefan_book_tin.line.2.ogg",
+   "dur": 4.78,
+   "lufs": -17.6,
+   "lead_ms": 51,
+   "trail_ms": 41,
+   "ref": "Quittung und Foto vom Kiosk stimmen überein. Den Preis haben wir schon vereinbart.",
+   "asr": "Kittung und Foto vom Kiosk stimmen überein. Den Preis haben wir schon vereinbart.",
+   "wer": 0.077
+  },
+  {
+   "file": "de/job.stefan_book_tin.line.3.ogg",
+   "dur": 4.71,
+   "lufs": -18.1,
+   "lead_ms": 44,
+   "trail_ms": 8,
+   "ref": "Ich kenne alle Busfahrpläne. Diese Zahlen nicht mehr.",
+   "asr": "Ich kenne alle Busfahrpläne. Diese Zahlen nicht mehr.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.stefan_book_tin.line.4.ogg",
+   "dur": 3.96,
+   "lufs": -18.0,
+   "lead_ms": 44,
+   "trail_ms": 41,
+   "ref": "Wenigstens ist die Quittung noch da. Meine lege ich daneben.",
+   "asr": "Wenigstens ist die Quittung noch da. Meine lege ich daneben.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.student_dorm.line.1.ogg",
+   "dur": 5.57,
+   "lufs": -16.6,
+   "lead_ms": 17,
+   "trail_ms": 35,
+   "ref": "Mein Studierendenausweis liegt im Zimmer. Der Schlüssel auch. Ich stehe auf dem Flur.",
+   "asr": "Mein studierenden Ausweis liegt im Zimmer. Der Schlüssel auch. Ich stehe auf dem Flur.",
+   "wer": 0.154
+  },
+  {
+   "file": "de/job.student_dorm.line.2.ogg",
+   "dur": 6.08,
+   "lufs": -18.2,
+   "lead_ms": 25,
+   "trail_ms": 50,
+   "ref": "Wilk, Zuzanna, vierhundertzwölf. Steht auf meiner Liste und in meinem Kopf.",
+   "asr": "Wilk Susanna 412 steht auf meiner Liste und in meinem Kopf.",
+   "wer": 0.182
+  },
+  {
+   "file": "de/job.student_dorm.line.3.ogg",
+   "dur": 3.19,
+   "lufs": -17.8,
+   "lead_ms": 52,
+   "trail_ms": 53,
+   "ref": "Herr Edek bürgt, der Name stimmt. Wir öffnen.",
+   "asr": "Herr Edek Birkt. Der Name stimmt. Wir öffnen.",
+   "wer": 0.125
+  },
+  {
+   "file": "de/job.student_dorm.line.4.ogg",
+   "dur": 4.58,
+   "lufs": -18.2,
+   "lead_ms": 59,
+   "trail_ms": 53,
+   "ref": "Morgen schreibe ich eine Prüfung über historische Schlösser. Zählt das als Übung?",
+   "asr": "Morgen schreibe ich eine Prüfung über historische Schlösser. Zählt das als Übung?",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.swiatniki_journeyman_padlock.line.1.ogg",
+   "dur": 6.52,
+   "lufs": -18.0,
+   "lead_ms": 46,
+   "trail_ms": 51,
+   "ref": "Siebzig Jahre habe ich es aufgehoben. Es gab einen Schlüssel. Mein Enkel hat ihn verloren.",
+   "asr": "70 Jahre habe ich es aufgehoben. Es gab einen Schlüssel. Mein Enkel hat ihn verloren.",
+   "wer": 0.067
+  },
+  {
+   "file": "de/job.swiatniki_journeyman_padlock.line.2.ogg",
+   "dur": 1.95,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 44,
+   "ref": "Und wissen Sie, wie man es öffnet?",
+   "asr": "Und wissen Sie, wie man es öffnet?",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.swiatniki_journeyman_padlock.line.3.ogg",
+   "dur": 4.64,
+   "lufs": -18.3,
+   "lead_ms": 47,
+   "trail_ms": 56,
+   "ref": "Ja. Aber ich möchte sehen, ob die Jungen es noch können.",
+   "asr": "Ja, aber ich möchte sehen, ob die Jungen es noch können.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.swiatniki_journeyman_padlock.line.4.ogg",
+   "dur": 8.37,
+   "lufs": -18.3,
+   "lead_ms": 57,
+   "trail_ms": 48,
+   "ref": "Die Handschrift in diesem Notizbuch kenne ich. Henryk. Ich habe ihn unterrichtet. Es ist in den richtigen Händen gelandet.",
+   "asr": "Die Handschrift in diesem Notizbuch kenne ich. Henrik. Ich habe ihn unterrichtet. Es ist in den richtigen Händen gelandet.",
+   "wer": 0.053
+  },
+  {
+   "file": "de/job.time_capsule.line.1.ogg",
+   "dur": 4.43,
+   "lufs": -18.2,
+   "lead_ms": 46,
+   "trail_ms": 1,
+   "ref": "Ich weiß, dass der Code ein Datum war. Aber wessen?",
+   "asr": "Ich weiß, dass der Code ein Datum war, aber wessen?",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.time_capsule.line.2.ogg",
+   "dur": 3.76,
+   "lufs": -18.2,
+   "lead_ms": 28,
+   "trail_ms": 54,
+   "ref": "Die Schule ist einverstanden. Bitte öffnen Sie es vor allen.",
+   "asr": "Die Schule ist einverstanden. Bitte öffnen Sie es vor allen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.time_capsule.line.3.ogg",
+   "dur": 5.46,
+   "lufs": -18.1,
+   "lead_ms": 55,
+   "trail_ms": 55,
+   "ref": "Frau Lehrerin, wir waren neun. Ich erinnere mich nur an Kastanien.",
+   "asr": "Frau Lehrerin, wir waren neun. Ich erinnere mich nur an Kastanien.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.time_capsule.line.4.ogg",
+   "dur": 5.67,
+   "lufs": -17.4,
+   "lead_ms": 48,
+   "trail_ms": 33,
+   "ref": "Mein Brief: „Ich hoffe, du hast einen Hund.“ Ich habe eine Katze. Das zählt auch.",
+   "asr": "Mein Brief. Ich hoffe, du hast einen Hund. Ich habe eine Katze. Das zählt auch.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.uncle_safe_heirs.line.1.ogg",
+   "dur": 5.07,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 49,
+   "ref": "Sie öffnen, ich schaue nach und sage den anderen Bescheid. Wir teilen sowieso alles.",
+   "asr": "Hier öffnen. Ich schaue nach und sage den anderen Bescheid. Wir teilen sowieso alles.",
+   "wer": 0.071
+  },
+  {
+   "file": "de/job.uncle_safe_heirs.line.2.ogg",
+   "dur": 4.68,
+   "lufs": -17.5,
+   "lead_ms": 55,
+   "trail_ms": 46,
+   "ref": "Ich öffne erst, wenn alle Erben da sind oder ihre schriftliche Zustimmung vorliegt.",
+   "asr": "Ich öffne erst, wenn alle Erben da sind oder ihre schriftliche Zustimmung vorliegt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.uncle_safe_heirs.line.3.ogg",
+   "dur": 3.9,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 32,
+   "ref": "Ewa ist eine Stunde entfernt. Marek, setz Wasser auf.",
+   "asr": "Eva ist eine Stunde entfernt. Marek, setzt Wasser auf.",
+   "wer": 0.222
+  },
+  {
+   "file": "de/job.uncle_safe_heirs.line.4.ogg",
+   "dur": 4.72,
+   "lufs": -17.6,
+   "lead_ms": 57,
+   "trail_ms": 59,
+   "ref": "Onkel würde lachen, wenn er sähe, wie wir um einen Kasten mit Drehscheibe streiten.",
+   "asr": "Onkel würde lachen, wenn er sehe, wie wir um einen Kasten mit Drehschei bestreiten.",
+   "wer": 0.214
+  },
+  {
+   "file": "de/job.widow_bureau.line.1.ogg",
+   "dur": 6.12,
+   "lufs": -18.0,
+   "lead_ms": 7,
+   "trail_ms": 1,
+   "ref": "Frau Zosia sagte, Sie bohren nicht. Mein Mann konnte das Bohren nicht ertragen.",
+   "asr": "Frau Zoscher sagte, sie bohren nicht. Mein Mann konnte das Bohren nicht ertragen.",
+   "wer": 0.077
+  },
+  {
+   "file": "de/job.widow_bureau.line.2.ogg",
+   "dur": 4.53,
+   "lufs": -18.0,
+   "lead_ms": 49,
+   "trail_ms": 47,
+   "ref": "Ich öffne ihn so, dass niemand etwas bemerkt. Es bleibt sein Schreibtisch.",
+   "asr": "Ich öffne ihn so, dass niemand etwas bemerkt. Es bleibt sein Schreibtisch.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.widow_bureau.line.3.ogg",
+   "dur": 3.48,
+   "lufs": -17.3,
+   "lead_ms": 57,
+   "trail_ms": 55,
+   "ref": "Opernkarten. Neunzehnhundertsiebenundachtzig.",
+   "asr": "Opernkarten 1987",
+   "wer": 0.5
+  },
+  {
+   "file": "de/job.widow_bureau.line.4.ogg",
+   "dur": 4.94,
+   "lufs": -18.1,
+   "lead_ms": 56,
+   "trail_ms": 54,
+   "ref": "Er sagte mir, er hätte sie verloren. Dabei hat er sie aufgehoben.",
+   "asr": "Er sagte mir, er hätte sie verloren. Dabei hatte sie aufgehoben.",
+   "wer": 0.167
+  },
+  {
+   "file": "de/job.wrong_floor.line.1.ogg",
+   "dur": 5.8,
+   "lufs": -18.3,
+   "lead_ms": 47,
+   "trail_ms": 49,
+   "ref": "Der Schlüssel geht nicht hinein. Das Schloss muss kaputtgegangen sein, als ich weg war.",
+   "asr": "Der Schlüssel geht nicht hinein. Das Schloss muss kaputt gegangen sein, als ich weg war.",
+   "wer": 0.143
+  },
+  {
+   "file": "de/job.wrong_floor.line.2.ogg",
+   "dur": 4.99,
+   "lufs": -17.7,
+   "lead_ms": 56,
+   "trail_ms": 39,
+   "ref": "Herr Kazimierz, am Briefkasten steht ein anderer Name. Und dieser Kranz?",
+   "asr": "Herr Kazimierz, am Briefkasten steht ein anderer Name. Und dieser Kranz?",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.wrong_floor.line.3.ogg",
+   "dur": 5.56,
+   "lufs": -17.8,
+   "lead_ms": 49,
+   "trail_ms": 46,
+   "ref": "Wer ist da? Ich wohne seit zwölf Jahren hier. Den Kranz habe ich selbst gemacht.",
+   "asr": "Wer ist da? Ich wohne seit zwölf Jahren hier. Den Kranz habe ich selbst gemacht.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.wrong_floor.line.4.ogg",
+   "dur": 5.11,
+   "lufs": -18.1,
+   "lead_ms": 45,
+   "trail_ms": 43,
+   "ref": "Ach, eine Etage höher passt der Schlüssel. Sie haben es repariert.",
+   "asr": "Eine Etage höher passt der Schlüssel. Sie haben es repariert.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.zuzanna_catalogue_drawer.line.1.ogg",
+   "dur": 4.15,
+   "lufs": -18.0,
+   "lead_ms": 58,
+   "trail_ms": 55,
+   "ref": "Wir haben die Genehmigung für die Kopien. Die Schublade hält sie für Originale.",
+   "asr": "Wir haben die Genehmigung für die Kopien. Die Schublade hält sie für Originale.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.zuzanna_catalogue_drawer.line.2.ogg",
+   "dur": 3.72,
+   "lufs": -18.0,
+   "lead_ms": 40,
+   "trail_ms": 37,
+   "ref": "Die Unterschrift ist meine. Die Originale bleiben im Museum.",
+   "asr": "Die Unterschrift ist meine. Die Originale bleiben im Museum.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.zuzanna_catalogue_drawer.line.3.ogg",
+   "dur": 5.29,
+   "lufs": -17.9,
+   "lead_ms": 59,
+   "trail_ms": 42,
+   "ref": "Kuratorin, Protokoll, vereinbarter Preis. Wir öffnen nur die Schublade.",
+   "asr": "Kuratorin, Protokoll, vereinbarte Preis. Wir öffnen nur die Schublade.",
+   "wer": 0.111
+  },
+  {
+   "file": "de/job.zuzanna_catalogue_drawer.line.4.ogg",
+   "dur": 4.92,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 56,
+   "ref": "Die Vitrine bekommt das Schild „Mit Vorsicht behandeln“. Ich fange mit dieser Schublade an.",
+   "asr": "Die Vitrine bekommt das Schild mit Vorsicht behandeln. Ich fange mit dieser Schublade an.",
+   "wer": 0.0
+  }
+ ]
+}
