@@ -79,7 +79,7 @@ func language() -> String:
 	var lang: String = _cfg.get("language", "")
 	if lang == "":
 		return I18n.system_language()
-	# T03: DE tylko za flagą deweloperską (Save "dev_mode")
-	if lang == "de" and not Save.get_value("dev_mode", false):
+	# T03: DE tylko za flagą deweloperską (Save "dev_mode"); T41: FR/ES tak samo
+	if lang in ["de", "fr", "es"] and not Save.get_value("dev_mode", false):
 		return I18n.system_language()
 	return lang

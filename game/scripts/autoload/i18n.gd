@@ -6,7 +6,11 @@ extends Node
 
 signal language_changed
 
-const SUPPORTED := ["pl", "en", "de"]  # de tylko za flagą deweloperską (Settings.language)
+const SUPPORTED := ["pl", "en", "de", "fr", "es"]
+## T41 (D-59): FR/ES texts are in the CSV (columns fr/es) but incomplete (new T42 keys empty -> en)
+## and without voices yet, so they are only offered with the dev flag and never picked from the
+## device language without it. DE stays as before (dev flag in the picker, device language allowed).
+const DEV_ONLY := ["fr", "es"]
 const FALLBACK := "en"
 const CSV_FILES := ["res://i18n/strings.csv", "res://i18n/content.csv"]
 
@@ -49,7 +53,8 @@ func _load_csv_translations() -> void:
 			_keys[row[0]] = true
 			for i in range(1, min(row.size(), header.size())):
 				var locale: String = header[i]
-				if per_locale.has(locale):
+				# empty cell (fr/es not translated yet): no message, TranslationServer falls back to en
+				if per_locale.has(locale) and row[i] != "":
 					per_locale[locale].add_message(row[0], row[i])
 		for locale in per_locale:
 			if not _translations.has(locale):
@@ -123,8 +128,13 @@ func _on_settings_changed() -> void:
 
 
 func system_language() -> String:
-	var os_lang := OS.get_locale().split("_")[0].to_lower()
-	if SUPPORTED.has(os_lang):
+	return language_for_locale(OS.get_locale(), bool(Save.get_value("dev_mode", false)))
+
+
+## Game language for an OS locale ("fr_BE" -> "fr"); DEV_ONLY languages need the dev flag.
+static func language_for_locale(locale: String, dev_mode: bool) -> String:
+	var os_lang := locale.split("_")[0].to_lower()
+	if SUPPORTED.has(os_lang) and (dev_mode or not DEV_ONLY.has(os_lang)):
 		return os_lang
 	return FALLBACK
 

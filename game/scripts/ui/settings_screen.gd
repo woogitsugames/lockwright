@@ -5,6 +5,8 @@ extends Control
 
 const S := "Frame/VBox/Scroll/Sections/"
 const BG := "res://assets/ui/gpt/workshop/04-tool-board-portrait.webp"
+## Language picker item index -> Settings "language" ("" = device); items 3-5 only with the dev flag.
+const LANGUAGE_IDS := ["", "pl", "en", "de", "fr", "es"]
 
 @onready var haptics_check: CheckButton = get_node(S + "Haptics/Box/HapticsCheck")
 @onready var intensity_slider: HSlider = get_node(S + "Haptics/Box/IntensitySlider")
@@ -87,13 +89,13 @@ func _fill_options() -> void:
 	language_option.add_item(I18n.t(&"settings.language_system"), 0)
 	language_option.add_item(I18n.t(&"settings.language_pl"), 1)
 	language_option.add_item(I18n.t(&"settings.language_en"), 2)
-	if Save.get_value("dev_mode", false):  # T03: DE tylko za flagą deweloperską
+	var dev: bool = Save.get_value("dev_mode", false)
+	if dev:  # T03: DE tylko za flagą deweloperską; T41: FR/ES też (teksty niepełne, bez głosów)
 		language_option.add_item(I18n.t(&"settings.language_de"), 3)
-	match Settings.get_value("language"):
-		"pl": language_option.selected = 1
-		"en": language_option.selected = 2
-		"de": language_option.selected = 3 if Save.get_value("dev_mode", false) else 0
-		_: language_option.selected = 0
+		language_option.add_item(I18n.t(&"settings.language_fr"), 4)
+		language_option.add_item(I18n.t(&"settings.language_es"), 5)
+	var idx := LANGUAGE_IDS.find(str(Settings.get_value("language")))
+	language_option.selected = idx if idx >= 0 and (idx <= 2 or dev) else 0
 	quality_option.clear()
 	quality_option.add_item(I18n.t(&"settings.quality_auto"), 0)
 	quality_option.add_item(I18n.t(&"settings.quality_high"), 1)
@@ -149,7 +151,7 @@ func _wire() -> void:
 		_update_values())
 	reduce_motion_check.toggled.connect(func(on: bool) -> void: Settings.set_value("reduce_motion", on))
 	language_option.item_selected.connect(func(idx: int) -> void:
-		Settings.set_value("language", ["", "pl", "en", "de"][mini(idx, 3)])
+		Settings.set_value("language", LANGUAGE_IDS[clampi(idx, 0, LANGUAGE_IDS.size() - 1)])
 		_update_voice_pack())
 	_vp_download.pressed.connect(_on_voice_pack_pressed)
 	_vp_later.pressed.connect(func() -> void:

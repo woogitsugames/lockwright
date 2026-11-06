@@ -56,3 +56,52 @@ func test_compiled_translations_list_keys() -> void:
 		if ResourceLoader.exists(p):
 			TranslationServer.remove_translation(load(p))
 	fresh.free()
+
+
+## T41: fr/es columns load; an empty fr/es cell falls back to en (T42 keys not translated yet).
+func test_fr_es_columns_and_fallback() -> void:
+	var before := TranslationServer.get_locale()
+	TranslationServer.set_locale("fr")
+	assert_eq(TranslationServer.translate("settings.language_fr"), "Français (dev)")
+	assert_eq(TranslationServer.translate("tutorial.say_master"), "Le maître montre le geste une fois. À toi.")
+	assert_eq(TranslationServer.translate("family.dial_safe.name"), "Dial safe", "empty fr -> en")
+	TranslationServer.set_locale("es")
+	assert_eq(TranslationServer.translate("job.allotment_shed.line.2"), "¿Tiene la tarjeta del huerto? ¿Y un vecino que lo confirme?")
+	TranslationServer.set_locale(before)
+
+
+## T41: FR/ES only with the dev flag (picker and device language); DE keeps its device-language path.
+func test_fr_es_need_dev_flag() -> void:
+	assert_eq(I18n.language_for_locale("fr_BE", false), "en")
+	assert_eq(I18n.language_for_locale("es_ES", false), "en")
+	assert_eq(I18n.language_for_locale("fr_BE", true), "fr")
+	assert_eq(I18n.language_for_locale("es", true), "es")
+	assert_eq(I18n.language_for_locale("de_DE", false), "de")
+	assert_eq(I18n.language_for_locale("pl_PL", false), "pl")
+	var dev = Save.get_value("dev_mode", false)
+	var lang = Settings.get_value("language")
+	Save.set_value("dev_mode", false)
+	Settings.set_value("language", "fr")
+	assert_ne(Settings.language(), "fr", "fr hidden without the dev flag")
+	Save.set_value("dev_mode", true)
+	assert_eq(Settings.language(), "fr")
+	Save.set_value("dev_mode", dev)
+	Settings.set_value("language", lang)
+
+
+## T42: one hint key per v0.6 family, the _auto variant when the game holds the left thumb.
+func test_family_hint_keys() -> void:
+	var lj: GDScript = load("res://scripts/lock/lock_job.gd")
+	assert_eq(lj.family_hint_key(&"dial_safe", false), "lock.dial_hint")
+	assert_eq(lj.family_hint_key(&"dial_safe", true), "lock.dial_hint_auto")
+	assert_eq(lj.family_hint_key(&"disc_detainer", true), "lock.disc_hint_auto")
+	assert_eq(lj.family_hint_key(&"time_lock", true), "lock.time_lock_hint_auto")
+	assert_eq(lj.family_hint_key(&"pin_tumbler", false), "", "older families use the tutorial coach")
+	for fam in lj.HINT_FAMILIES:
+		for auto in [false, true]:
+			var key: String = lj.family_hint_key(fam, auto)
+			assert_ne(key, "", "%s auto=%s has a hint" % [fam, auto])
+			assert_true(I18n.t(StringName(key)).length() <= 56, "%s fits two lines" % key)
+		for n in range(1, 6):
+			assert_true(I18n.has_key(StringName("tutorial.%s.step%d" % [fam, n])), "%s step %d" % [fam, n])
+		assert_true(I18n.has_key(StringName("family.%s.name" % fam)))

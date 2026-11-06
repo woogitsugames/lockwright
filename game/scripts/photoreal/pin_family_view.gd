@@ -152,6 +152,25 @@ func _draw_side_rows(ppm: float) -> void:
 		_overlay.draw_polyline(PackedVector2Array([a - d, a, b, b - d]), col, 2.0, true)
 
 
+## T42 family hint (lock.dimple_hint / lock.magnetic_hint), set by lock_job.gd for the first jobs.
+## Shown on the chalk line only while no coach line is up, nothing is set yet and the lock is shut,
+## like the lift-layer and dial views.
+var hint := ""
+
+
+func set_hint(s: String) -> void:
+	hint = s
+
+
+func _chalk_line(elements: Array, coach_line: String) -> String:
+	if coach_line != "" or hint == "" or _opened:
+		return coach_line
+	for e in elements:
+		if String(e.get("state", "")) == "set":
+			return ""
+	return hint
+
+
 func set_dark(on: bool) -> void:
 	super.set_dark(on)
 	if _overlay:

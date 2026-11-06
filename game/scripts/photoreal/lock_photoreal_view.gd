@@ -949,5 +949,10 @@ func _update_chalk(elements: Array, default_target: float, delta: float) -> void
 			text = I18n.t(key)
 	_apply_hint_marks(m)
 	_chalk.marks = m
-	_chalk.text = text
+	_chalk.text = _chalk_line(elements, text)
 	_chalk.tick(delta)
+
+
+## The chalk line to show; family views may fill an empty coach line (T42 family hint).
+func _chalk_line(_elements: Array, coach_line: String) -> String:
+	return coach_line

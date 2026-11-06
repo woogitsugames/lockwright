@@ -6,10 +6,10 @@ uid="uid://v4tej10uxmvc"
 
 [deps]
 
-files=["res://i18n/content.en.translation", "res://i18n/content.pl.translation", "res://i18n/content.de.translation"]
+files=["res://i18n/content.en.translation", "res://i18n/content.pl.translation", "res://i18n/content.de.translation", "res://i18n/content.fr.translation", "res://i18n/content.es.translation"]
 
 source_file="res://i18n/content.csv"
-dest_files=["res://i18n/content.en.translation", "res://i18n/content.pl.translation", "res://i18n/content.de.translation"]
+dest_files=["res://i18n/content.en.translation", "res://i18n/content.pl.translation", "res://i18n/content.de.translation", "res://i18n/content.fr.translation", "res://i18n/content.es.translation"]
 
 [params]
 
