@@ -383,7 +383,7 @@ for ix, x in enumerate(range(-6200, 1200, 1500)):
 drop('w_sky')
 if TIME != 'day':   # the yard at night: a sodium lamp low on the far wall grazes the brick, the sky lifts the top
     ay = bpy.data.objects.new('aim_court', None); scene.collection.objects.link(ay); ay.location = (-2500, CY, 2500)
-    area_light('court_lamp', (-1200, CY - 2500, -2500), ay, 600, (3.0e7 if TIME == 'night' else 1.5e7), (1.0, 0.55, 0.25))
+    area_light('court_lamp', (-1200, CY - 2500, -2500), ay, 600, (1.2e8 if TIME == 'night' else 5e7), (1.0, 0.55, 0.25))
 SKY = {'night': ((0.06, 0.09, 0.20), 0.25), 'evening': ((0.18, 0.28, 0.70), 1.2), 'day': ((0.80, 0.86, 0.96), 4.0)}[TIME]
 sky = bx('w_sky', -9000, 3000, CY + 8000, CY + 8020, -6000, 30000, emissive('sky2', SKY[0], SKY[1], (0, 0, 0))); sky.visible_shadow = False
 
@@ -410,7 +410,7 @@ win_light = area_light('window_light', ((WIN[0] + WIN[1]) / 2, WT + 600, (WIN[2]
 win_light.visible_camera = False; win_light.visible_glossy = False; win_light.visible_transmission = False   # the glass shows the sky plane, not the lamp
 if TIME == 'day':   # low sun over the courtyard roofs: a hard patch through the window onto the landing
     bpy.ops.object.light_add(type='SUN'); sun = bpy.context.object; sun.name = 'sun'
-    d = Vector((0.30, -1.0, -1.6)).normalized()
+    d = Vector((0.75, -1.0, -1.5)).normalized()
     sun.rotation_euler = (-d).to_track_quat('Z', 'Y').to_euler()
     sun.data.energy = 6.0; sun.data.color = (1.0, 0.90, 0.74); sun.data.angle = math.radians(0.6)
 if TIME == 'day':   # skylight bouncing down the stairwell from above the right-hand flight
