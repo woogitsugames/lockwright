@@ -47,6 +47,7 @@ docs/ASSETS.md for provenance of every asset).
 5. Fonts (SIL Open Font License 1.1, full texts in game/assets/fonts/OFL-*.txt)
    - Bona Nova (font by Katarzyna Mroczkowska / TipoType) — SIL OFL 1.1
    - Atkinson Hyperlegible Next (Braille Institute) — SIL OFL 1.1
+   - Caveat (The Caveat Project Authors) — SIL OFL 1.1 (handwriting on the receipt)
 
 Engine components bundled by Godot (FreeType — FTL, mbedTLS — Apache-2.0,
 ICU — ICU license, etc.) are listed at runtime via Engine.get_copyright_info().

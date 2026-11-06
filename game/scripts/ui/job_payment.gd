@@ -39,7 +39,7 @@ func _ready() -> void:
 	var reward := int(job.get("reward_coins", 0))
 	var tip := expected_tip(reward)
 	_fill_receipt(job, reward, tip)
-	result_label.text = I18n.t(&"job.opened")
+	result_label.text = I18n.t(&"job.repaired" if String(job.get("family", "")) == "time_lock" else &"job.opened")  # D-60
 	reward_label.text = I18n.t(&"job.reward_fmt").format({"n": reward})
 	tip_label.text = I18n.t(&"job.tip_fmt").format({"n": tip}) if tip > 0 else ""
 	tip_label.visible = tip > 0
@@ -88,6 +88,13 @@ static func client_name(job: Dictionary) -> String:
 	return name.substr(0, 1).to_upper() + name.substr(1) if name != "" else "—"
 
 
+## T54: the service line names the lock family ("Wafer lock opening"; time_lock is a repair, D-60);
+## falls back to the generic "Emergency lock opening".
+static func service_text(job: Dictionary) -> String:
+	var key := StringName("receipt.service." + String(job.get("family", "")))
+	return I18n.t(key) if I18n.has_key(key) else I18n.t(&"receipt.service")
+
+
 static func job_title(job: Dictionary) -> String:
 	var key := String(job.get("i18n", {}).get("title", ""))
 	return I18n.t(StringName(key)) if key != "" else I18n.t(&"receipt.service")
@@ -104,7 +111,7 @@ func _fill_receipt(job: Dictionary, reward: int, tip: int) -> void:
 		"Number": "%04d" % (completed.size() + 1),
 		"Date": "%02d.%02d.%d" % [d["day"], d["month"], d["year"]],
 		"Client": client_name(job),
-		"Service": I18n.t(&"receipt.service"),
+		"Service": service_text(job),
 		"Line1": job_title(job),
 		"Amount1": _coins(reward),
 		"Line2": I18n.t(&"receipt.tip") if tip > 0 else "",

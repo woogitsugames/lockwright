@@ -2,7 +2,7 @@
   "schema": "lockwright.lesson/1",
   "family": "axial_slider",
   "spec": "contrib/gpt/T42/LESSONS.md",
-  "note": "Front view, sliders around the centre are pressed down; a false notch gives a hollow click.",
+  "note": "Front view, sliders around the centre are pushed in (on screen: right thumb drags up); a false notch gives a hollow click.",
   "right": "lift",
   "tension": 0.36,
   "material": "brass",

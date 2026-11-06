@@ -147,7 +147,9 @@ func _refresh() -> void:
 		b.set_meta(&"label", name_text)
 	$AboutPanel/VBox/AboutTitle.text = I18n.t(&"about.title")
 	notice_label.text = I18n.t(&"about.notice")
+	$AboutPanel/VBox/Scroll/Text/Story.text = I18n.t(&"about.story")  # T65
 	$AboutPanel/VBox/Scroll/Text/Licenses.text = I18n.t(&"about.licenses")
+	$AboutPanel/VBox/Scroll/Text/Credits.text = I18n.t(&"about.credits")  # T65: tools behind the assets
 	$AboutPanel/VBox/CloseButton.text = I18n.t(&"common.close")
 	_relayout()
 

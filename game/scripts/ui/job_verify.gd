@@ -11,6 +11,7 @@ extends Control
 @onready var back_button: Button = $BackButton
 
 var _shown := 0
+var _asked := {}  # card -> how many times the player tapped it (T73 exchange variant)
 
 
 func _ready() -> void:
@@ -27,6 +28,8 @@ func _ready() -> void:
 	# JOBS.md §2: in a refusal job the client has no right to the flat; opening is not an option
 	if String(job.get("id", "")).begins_with("job.refuse"):
 		accept_button.visible = false
+	elif JobRun.is_talk(job):
+		accept_button.text = I18n.t(&"job.accept_talk")  # T43: settled on the spot, nothing is opened
 	accept_button.pressed.connect(_accept)
 	refuse_button.pressed.connect(_refuse)
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/job_arrival.tscn"))
@@ -57,10 +60,41 @@ func _render_cards() -> void:
 		if tex != null:
 			b.icon = tex
 			b.expand_icon = true
+		b.pressed.connect(_ask_about.bind(String(cards[i])))
 		cards_box.add_child(b)
 
 
+## T73: tapping a card plays a short exchange — the locksmith's question and the client's
+## answer — in one of two variants, so the check does not repeat word for word.
+func _ask_about(card: String) -> void:
+	var label := get_node_or_null("VBox/Result") as Label
+	if label == null:
+		return
+	var text := exchange_text(String(JobRun.current_job.get("id", "")), card, int(_asked.get(card, 0)))
+	if text == "":
+		return
+	_asked[card] = int(_asked.get(card, 0)) + 1
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	label.text = text
+	Sfx.play_ui(&"paper_turn")
+
+
+## "— question\n— answer" for a card, variant 1 or 2 picked from the job id and the tap count;
+## "" when the card has no exchange texts.
+static func exchange_text(job_id: String, card: String, taps: int) -> String:
+	var v := (absi(hash(job_id + "/" + card)) + taps) % 2 + 1
+	var ask := StringName("verify.ask.%s.%d" % [card, v])
+	var reply := StringName("verify.reply.%s.%d" % [card, v])
+	if not (I18n.has_key(ask) and I18n.has_key(reply)):
+		return ""
+	return "— %s\n— %s" % [I18n.t(ask), I18n.t(reply)]
+
+
 func _accept() -> void:
+	if JobRun.is_talk(JobRun.current_job):
+		get_tree().change_scene_to_file("res://scenes/job_payment.tscn")  # T43: no lock scene
+		return
 	get_tree().change_scene_to_file(JobRun.lock_scene_path())
 
 

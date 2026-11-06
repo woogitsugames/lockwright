@@ -80,6 +80,11 @@ func _make_option(is_auto: bool, sketch_path: String, title_key: StringName, des
 	for st in ["normal", "hover", "pressed", "hover_pressed", "disabled"]:
 		hit.add_theme_stylebox_override(st, StyleBoxEmpty.new())
 	hit.pressed.connect(select.bind(is_auto))
+	# T70: the flat hit button covers the card; give the screen reader the card's own texts
+	if "accessibility_name" in hit:
+		hit.set("accessibility_name", title.text)
+	if "accessibility_description" in hit:
+		hit.set("accessibility_description", desc.text)
 	panel.add_child(hit)
 	$Frame/VBox/Scroll/Options.add_child(panel)
 	return panel

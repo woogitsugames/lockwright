@@ -139,6 +139,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
+[node name="Story" type="Label" parent="AboutPanel/VBox/Scroll/Text"]
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 3
+
 [node name="Notice" type="Label" parent="AboutPanel/VBox/Scroll/Text"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -146,6 +151,12 @@ mouse_filter = 0
 autowrap_mode = 3
 
 [node name="Licenses" type="Label" parent="AboutPanel/VBox/Scroll/Text"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"Caption"
+autowrap_mode = 3
+
+[node name="Credits" type="Label" parent="AboutPanel/VBox/Scroll/Text"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"Caption"

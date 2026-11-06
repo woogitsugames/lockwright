@@ -115,6 +115,14 @@ func _tool_card(tool: Dictionary, coins: int) -> Control:
 	name_label.text = I18n.t(tool.get("i18n", &"common.close"))
 	name_label.add_theme_font_size_override("font_size", 18)
 	box.add_child(name_label)
+	# T57: one short line on what the tool is for and what feedback it gives
+	var desc_key := StringName("tool.%s.desc" % id)
+	if I18n.has_key(desc_key):
+		var desc_label := ScreenFrame.wrap(Label.new())
+		desc_label.name = "Desc"
+		desc_label.theme_type_variation = &"Caption"
+		desc_label.text = I18n.t(desc_key)
+		box.add_child(desc_label)
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 12)
 	box.add_child(row)
@@ -153,6 +161,9 @@ func _tool_card(tool: Dictionary, coins: int) -> Control:
 		if action.disabled:
 			action.text = I18n.t(&"workshop.not_enough")
 		action.pressed.connect(_buy.bind(id, price))
+	# T70: several plates read "Buy"/"Repair"; the screen reader also hears which tool and its state
+	if "accessibility_name" in action:
+		action.set("accessibility_name", "%s: %s. %s" % [action.text, name_label.text, state_label.text])
 	return card
 
 

@@ -49,6 +49,7 @@ func _ready() -> void:
 	# N-42: a scroll gesture starting on a control must scroll the list, not press the control
 	$Frame/VBox/Scroll.scroll_deadzone = 12
 	_build_voice_pack_block()
+	_build_help_captions()
 	_pass_mouse($Frame/VBox/Scroll/Sections)
 	_load_values()
 	_refresh_texts()
@@ -229,12 +230,52 @@ func _refresh_texts() -> void:
 	_vp_later.text = I18n.t(&"settings.voice_pack.not_now")
 	_vp_auto.text = I18n.t(&"settings.voice_pack.auto")
 	_vp_note.text = I18n.t(&"settings.voice_pack.note")
+	for cap_name in HELP:
+		(_help[cap_name] as Label).text = I18n.t(HELP[cap_name][1])
+	# T70: a slider's name sits in a separate row label; give it to the screen reader too
+	for row in [S + "Haptics/Box/IntensityRow", S + "Sound/Box/MasterRow", S + "Sound/Box/SfxRow",
+			S + "Sound/Box/AmbienceRow", S + "Sound/Box/VoiceRow", S + "Access/Box/TextScaleRow"]:
+		var slider := _slider_for_row(row)
+		if slider != null and "accessibility_name" in slider:
+			slider.set("accessibility_name", (get_node(row + "/Name") as Label).text)
 	reset_button.text = I18n.t(&"settings.reset")
 	report_button.text = I18n.t(&"settings.report_problem")
 	report_result.text = ""
 	_fill_options()
 	_update_values()
 	_update_voice_pack()
+
+
+# --- T60: one help line (Caption) under a control ------------------------------------
+## caption node name -> [control it follows, i18n key]
+const HELP := {
+	"HapticsHelp": ["Haptics/Box/HapticsCheck", &"settings.help.haptics"],
+	"ChalkHelp": ["Access/Box/ReadingAidCheck", &"settings.help.chalk"],
+	"MotionHelp": ["Access/Box/ReduceMotionCheck", &"settings.help.reduce_motion"],
+	"QualityHelp": ["Other/Box/QualityOption", &"settings.help.quality"],
+}
+var _help := {}
+
+
+func _build_help_captions() -> void:
+	for cap_name in HELP:
+		var after: Control = get_node(S + String(HELP[cap_name][0]))
+		var cap := Label.new()
+		cap.name = cap_name
+		cap.theme_type_variation = &"Caption"
+		cap.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		after.get_parent().add_child(cap)
+		after.get_parent().move_child(cap, after.get_index() + 1)
+		_help[cap_name] = cap
+
+
+## The slider placed right after a "<X>Row" label row (IntensityRow -> IntensitySlider).
+func _slider_for_row(row_path: String) -> HSlider:
+	var row := get_node(row_path)
+	var i := row.get_index() + 1
+	if i >= row.get_parent().get_child_count():
+		return null
+	return row.get_parent().get_child(i) as HSlider
 
 
 # --- D-62: voice language pack ---------------------------------------------------------
