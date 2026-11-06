@@ -25,6 +25,12 @@ extends Node
 ##   back     right thumb eases back a little
 ## A step's kind comes from its "ghost" (else its thumb: left = tension, right = the family's "right");
 ## its master hand from "master" (else the same kind).
+##
+## G23 silhouettes (ghost_silhouette()): H2 left-thumb steps (tension, ease, tap, warded turn)
+## show the left thumb pressing, right-thumb lifts the right thumb pressing, roll / turn the right
+## thumb sliding sideways; H4 the master hand holds the tool (left: the L-shaped tension bar,
+## right: the probe) and lets go as an open hand (the right-hand photo, mirrored on the left).
+## The left-handed "swap thumbs" option (HUD §9, setting swap_thumbs) mirrors the whole ghost.
 
 const LIFT_SPEED := 0.2         # lift per second the ghost / master hand use (§2.2)
 const TENSION_DP := 60.0        # 0 → 0.3 tension = 60 dp of left-thumb drag
@@ -77,6 +83,7 @@ func setup(p_view: LockPhotorealView, p_coach: TutorialCoach, p_family: StringNa
 	_base_chalk = view.chalk_level
 	ghost = GhostHand.new()
 	ghost.name = "GhostHand"
+	ghost.mirror = bool(Settings.get_value(&"swap_thumbs", false))
 	view.add_child(ghost)
 	ghost.gesture_progress.connect(_on_ghost_progress)
 	ghost.gesture_finished.connect(func() -> void: preview_tension = -1.0)
@@ -180,6 +187,32 @@ func _master_kind() -> String:
 	if k == "" or (auto and k == "tension"):
 		k = ghost_kind()
 	return "ease" if k == "tap" else k
+
+
+## The current step is played by the left thumb (master: the master hand's gesture).
+func _left_thumb_step(master := false) -> bool:
+	if _lesson():
+		var k := _master_kind() if master else ghost_kind()
+		return k in ["tension", "ease", "tap"]
+	return _needs_tension() or (family == &"warded" and String(step).ends_with("turn") and not auto)
+
+
+## G23 silhouette for the ghost (H2) or the master hand (H4): [name, flip_h, release, release_flip].
+func ghost_silhouette(master := false) -> Array:
+	var left := _left_thumb_step(master)
+	if master:
+		return [&"hand_left_tool" if left else &"hand_right_tool", false, &"hand_right_open", left]
+	if left:
+		return [&"thumb_left_press", false, &"", false]
+	if ghost_kind() in ["roll", "turn"]:
+		return [&"thumb_right_slide", false, &"", false]
+	return [&"thumb_right_press", false, &"", false]
+
+
+func _apply_silhouette(master: bool) -> void:
+	var s := ghost_silhouette(master)
+	ghost.set_silhouette(s[0], s[1])  # missing file: the oval
+	ghost.set_release_silhouette(s[2], s[3])
 
 
 func _needs_tension() -> bool:
@@ -290,11 +323,12 @@ func _on_level(level: int, _step_id: StringName) -> void:
 				view._set_flash = 1.0  # the plug face nudges (≈ 1.5°)
 		2:
 			if ch["visual"] and not reduce_motion:
+				_apply_silhouette(false)
 				ghost.play_gesture(g[0], g[1], g[2], 2, g[3])
 		3:
 			if ch["visual"]:
 				view.chalk_level = ChalkLayer.Level.FULL
-				view.hint_arrows = "left" if (_needs_tension() or ghost_kind() in ["ease", "tap"] or (family == &"warded" and String(step).ends_with("turn") and not auto)) else "right"
+				view.hint_arrows = "left" if _left_thumb_step() else "right"
 		4:
 			h4_steps.append(step)
 			if ch["light"] and view.dark:
@@ -302,6 +336,7 @@ func _on_level(level: int, _step_id: StringName) -> void:
 				view.set_dark(false)
 				_light_s = LIGHT_S
 			if not reduce_motion:
+				_apply_silhouette(true)
 				ghost.play_gesture(g[0], g[1], g[2], 1, 1.5)
 			Haptics.play(&"bind", 0.4, mat)
 			_start_autopilot()

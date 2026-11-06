@@ -93,3 +93,93 @@ func test_no_texture_plays_the_fallback_oval() -> void:
 	assert_signal_emitted(ghost, "gesture_finished")
 	assert_false(ghost.is_playing())
 	assert_true(ghost.ghost_center.x > 0.0)
+
+
+# ---------------------------------------------------------------- G23 silhouettes
+const SILHOUETTES := [&"thumb_left_press", &"thumb_right_press", &"thumb_right_slide",
+	&"hand_left_tool", &"hand_right_tool", &"hand_right_open"]
+
+
+func test_g23_silhouettes_load() -> void:
+	for n in SILHOUETTES:
+		var d := GhostHand.load_silhouette(n)
+		assert_false(d.is_empty(), "%s loads" % n)
+		if d.is_empty():
+			continue
+		var tex: Texture2D = d["texture"]
+		assert_gt(tex.get_width(), 64, "%s has a usable size" % n)
+		var a: Vector2 = d["anchor"]
+		assert_true(a.x > 0.0 and a.x < 1.0 and a.y > 0.0 and a.y < 1.0, "%s hotspot inside the texture" % n)
+		var size_dp: Vector2 = tex.get_size() * float(d["scale"])
+		assert_between(size_dp.x, 120.0, 300.0, "%s fits a 412 dp phone width" % n)
+		# a soft shadow: transparent at the corners (no photo rectangle), opaque in the middle of the shape
+		var img := tex.get_image()
+		if img.is_compressed():
+			img.decompress()
+		assert_lt(img.get_pixel(1, 1).a, 0.05, "%s corner transparent" % n)
+		var hs := Vector2i(int(a.x * img.get_width()), int(a.y * img.get_height()))
+		assert_gt(img.get_pixel(hs.x, hs.y).a, 0.5, "%s opaque at the thumb" % n)
+
+
+func test_set_silhouette_and_fallback_oval() -> void:
+	var ghost := _ghost()
+	assert_true(ghost.set_silhouette(&"thumb_left_press"))
+	assert_not_null(ghost.texture)
+	assert_eq(ghost.silhouette, &"thumb_left_press")
+	assert_eq(ghost.mouse_filter, Control.MOUSE_FILTER_IGNORE, "a texture never makes the ghost take touches")
+	assert_false(ghost.set_silhouette(&"no_such_hand"), "a missing silhouette reports false")
+	assert_null(ghost.texture, "... and falls back to the oval")
+	assert_eq(ghost.silhouette, &"")
+	ghost.play_gesture(FROM_DP, TO_DP, 0.2, 1)
+	simulate(ghost, 20, DT)
+	assert_false(ghost.is_playing(), "the oval still plays")
+
+
+func test_release_shape_shows_while_letting_go() -> void:
+	var ghost := _ghost()
+	watch_signals(ghost)
+	ghost.set_silhouette(&"hand_left_tool")
+	assert_true(ghost.set_release_silhouette(&"hand_right_open", true))
+	var tool_tex := ghost.texture
+	# fade 0.15 + travel 0.3 + hold 0.1 -> release 0.25
+	ghost.play_gesture(FROM_DP, TO_DP, 0.3, 1, 0.1)
+	simulate(ghost, 18, DT)  # 0.6 s: in the release
+	assert_true(ghost.is_playing())
+	assert_ne(ghost.texture, tool_tex, "the open hand shows while letting go")
+	assert_true(ghost.texture_flip, "the right-hand photo is mirrored for the left side")
+	var d := ghost.ghost_center.distance_to(TO_DP)
+	assert_between(d, 0.1, GhostHand.RELEASE_DP + 0.01, "it withdraws a little")
+	simulate(ghost, 10, DT)
+	assert_false(ghost.is_playing())
+	assert_signal_emit_count(ghost, "gesture_finished", 1)
+	assert_eq(ghost.texture, tool_tex, "the gesture shape is back for the next play")
+
+
+func test_textured_ghost_never_intercepts_clicks() -> void:
+	var vp := SubViewport.new()
+	vp.size = Vector2i(412, 915)
+	vp.gui_disable_input = false
+	add_child_autofree(vp)
+	var under := Button.new()
+	under.position = Vector2.ZERO
+	under.size = Vector2(412, 915)
+	vp.add_child(under)
+	var parent := Control.new()
+	parent.size = PARENT_DP
+	parent.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	vp.add_child(parent)
+	var ghost := GhostHand.new()
+	parent.add_child(ghost)
+	ghost.set_silhouette(&"hand_right_open")
+	ghost.play_gesture(FROM_DP, FROM_DP, 0.1, 1, 2.0)
+	simulate(ghost, 6, DT)
+	assert_true(ghost.is_playing())
+	var hits := [0]
+	under.button_down.connect(func() -> void: hits[0] += 1)
+	var ev := InputEventMouseButton.new()
+	ev.button_index = MOUSE_BUTTON_LEFT
+	ev.position = FROM_DP
+	ev.global_position = FROM_DP
+	ev.pressed = true
+	vp.push_input(ev)
+	assert_eq(hits[0], 1, "the click under the hand shadow reaches the control below")

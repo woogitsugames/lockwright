@@ -1,0 +1,97 @@
+{
+ "schema": "lockwright.ghost/1",
+ "soft_dp": 12.0,
+ "source": "contrib/gpt/G23 (ChatGPT image_gen)",
+ "textures": {
+  "thumb_left_press": {
+   "size_px": [
+    327,
+    335
+   ],
+   "hotspot": [
+    0.7818,
+    0.2255
+   ],
+   "px_per_dp": 2.0,
+   "size_dp": [
+    163.5,
+    167.5
+   ]
+  },
+  "thumb_right_press": {
+   "size_px": [
+    344,
+    360
+   ],
+   "hotspot": [
+    0.2023,
+    0.2403
+   ],
+   "px_per_dp": 2.0,
+   "size_dp": [
+    172.0,
+    180.0
+   ]
+  },
+  "thumb_right_slide": {
+   "size_px": [
+    404,
+    462
+   ],
+   "hotspot": [
+    0.1987,
+    0.3861
+   ],
+   "px_per_dp": 2.0,
+   "size_dp": [
+    202.0,
+    231.0
+   ]
+  },
+  "hand_left_tool": {
+   "size_px": [
+    522,
+    452
+   ],
+   "hotspot": [
+    0.5229,
+    0.1977
+   ],
+   "px_per_dp": 2.0,
+   "size_dp": [
+    261.0,
+    226.0
+   ]
+  },
+  "hand_right_tool": {
+   "size_px": [
+    483,
+    478
+   ],
+   "hotspot": [
+    0.2593,
+    0.2833
+   ],
+   "px_per_dp": 2.0,
+   "size_dp": [
+    241.5,
+    239.0
+   ]
+  },
+  "hand_right_open": {
+   "size_px": [
+    529,
+    557
+   ],
+   "hotspot": [
+    0.103,
+    0.606
+   ],
+   "px_per_dp": 2.0,
+   "size_dp": [
+    264.5,
+    278.5
+   ]
+  }
+ }
+}

@@ -119,6 +119,30 @@ func test_ghost_does_not_take_touches() -> void:
 	vp.push_input(_touch(0, at, false))
 
 
+func test_g23_silhouettes_per_gesture_and_still_no_touches() -> void:
+	for auto in [false, true]:
+		var o: Array = await _open(auto)
+		var scene: Node = o[0]
+		var vp: SubViewport = o[1]
+		var hints: TutorialHints = o[2]
+		var tag := "auto=%s" % auto
+		_idle(scene, 31.0)
+		assert_true(hints.ghost.is_playing(), tag)
+		# H2: the first step is tension (left thumb) with two thumbs, a lift (right thumb) in auto
+		assert_eq(hints.ghost.silhouette, &"thumb_right_press" if auto else &"thumb_left_press", tag + ": H2 thumb photo")
+		assert_not_null(hints.ghost.texture, tag + ": the G23 texture replaces the oval")
+		assert_eq(hints.ghost.mouse_filter, Control.MOUSE_FILTER_IGNORE)
+		_idle(scene, 30.0)
+		assert_eq(hints.h4_steps.size(), 1, tag)
+		assert_eq(hints.ghost.silhouette, &"hand_right_tool" if auto else &"hand_left_tool", tag + ": H4 master hand holds the tool")
+		assert_eq(hints.ghost.release_silhouette, &"hand_right_open", tag + ": and lets go as an open hand")
+		var at := hints.ghost.ghost_center
+		vp.push_input(_touch(0, at, true))
+		var down: bool = scene.sampler.right_down() if at.x > 206.0 else scene.sampler.left_down()
+		assert_true(down, tag + ": a touch on the master hand reaches the thumb sampler")
+		vp.push_input(_touch(0, at, false))
+
+
 func test_h4_at_most_once_per_step() -> void:
 	for auto in [false, true]:
 		var o: Array = await _open(auto)

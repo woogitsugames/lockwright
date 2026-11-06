@@ -11,6 +11,13 @@ extends Control
 ##
 ## With the system "Reduce Motion" on the scene shows only the start and end pose
 ## (ONBOARDING §11): it simply never calls play_gesture.
+##
+## G23 silhouettes (res://assets/ui/ghost/, ghost_silhouettes.json): set_silhouette(name)
+## swaps the oval for the alpha shape of a thumb / hand cut from the G23 photos (white +
+## alpha, edge pre-blurred 12 dp, see art/tools/ghost_silhouettes.py). Its hotspot (the
+## thumb pad) sits on the gesture position. A missing file keeps the oval.
+## set_release_silhouette(name) shows that shape while the shadow withdraws and fades
+## (H4: the tool hand lets go as an open hand).
 
 ## Eased 0..1 travel of the current repeat (0 while fading in at the start pose,
 ## 1 during the hold); the scene can answer it, e.g. rotate the tension wrench.
@@ -25,6 +32,12 @@ const SOFT_DP := 12.0
 ## Soft edge width (§2.2); the shader fades the silhouette over half of it in, half out.
 const THUMB_DP := Vector2(22.0, 56.0)
 ## Fallback silhouette: a rounded oval ~22x56 dp (no texture set).
+const RELEASE_S := 0.250
+## Release (open hand) withdraw + fade (animations 100–250 ms).
+const RELEASE_DP := 24.0
+## How far the open hand withdraws towards the gesture's start.
+const SILHOUETTE_DIR := "res://assets/ui/ghost/"
+const SILHOUETTE_META := "res://assets/ui/ghost/ghost_silhouettes.json"
 
 ## Alpha silhouette of a thumb/hand (its own soft edge); null draws the fallback
 ## thumb oval.
@@ -35,6 +48,23 @@ var texture: Texture2D = null:
 		# (tinted black). Without one, the built-in oval shader draws the thumb.
 		material = null
 		_update_shadow_size()
+
+## Point of the texture (0..1) that sits on the gesture position (the thumb pad).
+var texture_anchor := Vector2(0.5, 0.5):
+	set(value):
+		texture_anchor = value
+		queue_redraw()
+
+## Mirror the silhouette itself (a right-hand photo used for the left side).
+var texture_flip := false:
+	set(value):
+		texture_flip = value
+		queue_redraw()
+
+## Name of the current G23 silhouette (&"" = none, the oval).
+var silhouette := &""
+## Name of the release silhouette (&"" = none: the gesture shape just fades).
+var release_silhouette := &""
 
 ## Canvas units per texture pixel (textures are authored in px, the scene is in dp).
 var texture_scale := 1.0:
@@ -52,7 +82,7 @@ var mirror := false:
 ## Current centre of the shadow, in parent coordinates (already mirrored).
 var ghost_center := Vector2.ZERO
 
-enum _Phase { IDLE, FADE_IN, MOVE, HOLD, FADE_OUT }
+enum _Phase { IDLE, FADE_IN, MOVE, HOLD, FADE_OUT, RELEASE }
 
 const _OVAL_SHADER := """
 shader_type canvas_item;
@@ -81,6 +111,10 @@ var _repeat := 0
 var _alpha := 0.0
 var _shadow_size := Vector2.ZERO
 var _oval_mat: ShaderMaterial
+var _release := {}  # {texture, anchor, scale, flip} while the release shape shows
+var _gesture_shape := {}  # the gesture shape, restored after a release
+
+static var _meta_cache := {}
 
 
 func _init() -> void:
@@ -101,6 +135,7 @@ func _init() -> void:
 ## Between repeats the shadow jumps back to the start pose.
 func play_gesture(from_dp: Vector2, to_dp: Vector2, duration_s: float,
 		repeats := 2, hold_s := 0.0) -> void:
+	_restore_gesture_shape()  # a new gesture during a release starts in its own shape
 	_from = from_dp
 	_to = to_dp
 	_duration = maxf(duration_s, 0.0)
@@ -113,6 +148,53 @@ func play_gesture(from_dp: Vector2, to_dp: Vector2, duration_s: float,
 	ghost_center = _screen_pos(_from)
 	set_process(true)
 	_apply_layout()
+
+
+## Silhouette data: {texture, anchor, scale} or {} when the file / entry is missing.
+static func load_silhouette(name: StringName) -> Dictionary:
+	if name == &"":
+		return {}
+	if _meta_cache.is_empty():
+		if not FileAccess.file_exists(SILHOUETTE_META):
+			return {}
+		var j: Variant = JSON.parse_string(FileAccess.get_file_as_string(SILHOUETTE_META))
+		if typeof(j) != TYPE_DICTIONARY:
+			return {}
+		_meta_cache = j
+	var e: Dictionary = _meta_cache.get("textures", {}).get(String(name), {})
+	var path := SILHOUETTE_DIR + String(name) + ".png"
+	if e.is_empty() or not ResourceLoader.exists(path):
+		return {}
+	var tex := load(path) as Texture2D
+	if tex == null:
+		return {}
+	var hs: Array = e.get("hotspot", [0.5, 0.5])
+	# the texture may be imported at another size than authored: keep its size in dp
+	var dp_w := float(e.get("size_px", [tex.get_width()])[0]) / float(e.get("px_per_dp", 1.0))
+	return {"texture": tex, "anchor": Vector2(float(hs[0]), float(hs[1])), "scale": dp_w / float(tex.get_width())}
+
+
+## Use the G23 silhouette `name` (flip_h mirrors the photo, e.g. a right hand on the
+## left side). Returns false and falls back to the oval when it cannot be loaded.
+func set_silhouette(name: StringName, flip_h := false) -> bool:
+	var d := load_silhouette(name)
+	silhouette = name if not d.is_empty() else &""
+	texture_flip = flip_h and not d.is_empty()
+	texture_anchor = d.get("anchor", Vector2(0.5, 0.5))
+	texture_scale = d.get("scale", 1.0)
+	texture = d.get("texture", null)
+	_gesture_shape = {}
+	return not d.is_empty()
+
+
+## Shape shown while the shadow lets go at the end (&"" = none). False if missing.
+func set_release_silhouette(name: StringName, flip_h := false) -> bool:
+	var d := load_silhouette(name)
+	release_silhouette = name if not d.is_empty() else &""
+	if not d.is_empty():
+		d["flip"] = flip_h
+	_release = d
+	return not d.is_empty()
 
 
 func is_playing() -> bool:
@@ -149,6 +231,19 @@ func _process(delta: float) -> void:
 			gesture_progress.emit(1.0)
 			if _t >= _hold_s:
 				_next_repeat()
+		_Phase.RELEASE:
+			# the hand opens and withdraws a little towards the start, fading out
+			_t += delta
+			var u := clampf(_t / RELEASE_S, 0.0, 1.0)
+			var back := (_from - _to).normalized() if _from != _to else Vector2(0.0, 1.0)
+			ghost_center = _screen_pos(_to + back * RELEASE_DP * u)
+			_alpha = 1.0 - u
+			if _t >= RELEASE_S:
+				_phase = _Phase.IDLE
+				_alpha = 0.0
+				set_process(false)
+				_restore_gesture_shape()
+				gesture_finished.emit()
 		_Phase.FADE_OUT:
 			_t += delta
 			_alpha = clampf(1.0 - _t / FADE_S, 0.0, 1.0)
@@ -163,13 +258,34 @@ func _process(delta: float) -> void:
 func _next_repeat() -> void:
 	_repeat += 1
 	if _repeat >= _repeats:
-		_phase = _Phase.FADE_OUT
+		_phase = _Phase.RELEASE if not _release.is_empty() else _Phase.FADE_OUT
 		_t = 0.0
+		if _phase == _Phase.RELEASE:
+			_swap_to_release()
 	else:
 		_phase = _Phase.MOVE
 		_t = 0.0
 		ghost_center = _screen_pos(_from)
 		gesture_progress.emit(0.0)
+
+
+func _swap_to_release() -> void:
+	_gesture_shape = {"texture": texture, "anchor": texture_anchor, "scale": texture_scale, "flip": texture_flip}
+	texture_anchor = _release["anchor"]
+	texture_scale = _release["scale"]
+	texture_flip = _release["flip"]
+	texture = _release["texture"]
+
+
+func _restore_gesture_shape() -> void:
+	if _gesture_shape.is_empty():
+		return
+	var g := _gesture_shape
+	texture_anchor = g["anchor"]
+	texture_scale = g["scale"]
+	texture_flip = g["flip"]
+	texture = g["texture"]
+	_gesture_shape = {}
 
 
 ## Cubic ease-in-out: the ghost accelerates, then slows down.
@@ -221,11 +337,13 @@ func _draw() -> void:
 		return
 	var color := Color(0.0, 0.0, 0.0, SHADOW_OPACITY * _alpha)
 	# Draw in ghost-centred coordinates so `mirror` can flip the silhouette.
+	# The texture's hotspot sits on the ghost centre; flipping keeps it there.
+	var flip := mirror != (texture_flip and texture != null)
 	draw_set_transform(_shadow_size * 0.5, 0.0,
-		Vector2(-1.0, 1.0) if mirror else Vector2.ONE)
+		Vector2(-1.0, 1.0) if flip else Vector2.ONE)
 	if texture != null:
 		var ts: Vector2 = texture.get_size() * texture_scale
-		draw_texture_rect(texture, Rect2(-ts * 0.5, ts), false, color)
+		draw_texture_rect(texture, Rect2(-ts * texture_anchor, ts), false, color)
 	else:
 		_draw_soft_oval(color)
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
