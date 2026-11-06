@@ -244,3 +244,9 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 
 ## D-65: Haptyka na silnikach on/off i jedna obsługa Back
 2026-11-06 · sesja A (N-69/N-70) · Impulsy haptyczne bez sterowania amplitudą (ERM, A0) trwają co najmniej 30 ms; na A0 grają tylko zdarzenia z `a0_ms`. Impuls próbny w ustawieniach trwa 220 ms. Wibracje gry mają usage MEDIA (API 33+), nie TOUCH: gra ma własny wyłącznik i suwak, a ustawienie dotyku systemu jej nie wycisza. Metody wtyczek Androida sprawdzamy przez `has_java_method()`. Back i Esc obsługuje wyłącznie autoload `Nav` z oknem 250 ms na duplikaty jednego wciśnięcia.
+
+## D-66: Menu 75 %, postacie przez ChatGPT, więcej zleceń
+2026-11-06 · właściciel ·
+- **Menu:** do gry wchodzą finalne rendery GPU z tablicą na ok. 75 % szerokości (ściana i zawieszki widoczne; `art/renders/menu/README.md`, `--vw 600` w pionie). Bliski kadr v2 zostaje jako wariant źródłowy.
+- **Postacie do scenek (D-58) i dłonie widma:** Magnific nie dowiózł (C 0/24, D 0/8); zlecenie przechodzi do ChatGPT z portretem jako referencją, jeden obraz na wiadomość (G23).
+- **Długość gry:** kariera ma ok. 40–60 min na 29 zleceniach; cel ok. 2 h. Dopisujemy ok. 30 nowych zleceń (rozdziały 9–12, nowe i istniejące rodziny zamków, w tym te z D-59); teksty od ChatGPT (T43), korekta, głosy (D-57) i integracja w sesji A.
