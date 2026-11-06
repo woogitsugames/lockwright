@@ -1,0 +1,121 @@
+key,język,angielski,tłumaczenie,długość EN,długość tłumaczenia,wzrost procentowy,propozycja
+boot.calib_title,fr,Two taps 120 ms apart — how many do you feel and hear?,Deux impulsions à 120 ms d'intervalle : combien en sens-tu et en entends-tu ?,54,77,42.6,do redakcji w kontekście ekranu
+boot.calib_two,de,Two,Zwei,3,4,33.3,do redakcji w kontekście ekranu
+boot.calib_two,fr,Two,Deux,3,4,33.3,do redakcji w kontekście ekranu
+boot.calib_one,de,One,Einen,3,5,66.7,do redakcji w kontekście ekranu
+boot.calib_none,de,None,Keinen,4,6,50.0,do redakcji w kontekście ekranu
+boot.calib_none,fr,None,Aucune,4,6,50.0,do redakcji w kontekście ekranu
+boot.calib_skip,de,Skip,Überspringen,4,12,200.0,do redakcji w kontekście ekranu
+boot.calib_skip,fr,Skip,Passer,4,6,50.0,do redakcji w kontekście ekranu
+settings.feel_section,de,Feel (haptics),Spielgefühl (Haptik),14,20,42.9,do redakcji w kontekście ekranu
+settings.feel_section,fr,Feel (haptics),Sensations (haptique),14,21,50.0,do redakcji w kontekście ekranu
+settings.quality_auto,de,Auto (measured),Automatisch (gemessen),15,22,46.7,do redakcji w kontekście ekranu
+settings.quality_high,fr,High,Élevée,4,6,50.0,do redakcji w kontekście ekranu
+settings.quality_low,de,Low (cheap phones),Niedrig (einfachere Handys),18,27,50.0,do redakcji w kontekście ekranu
+about.post_release_unlocked,de,Chapter 7 (A Shared Key) unlocked.,Kapitel 7 („Ein gemeinsamer Schlüssel“) freigeschaltet.,34,55,61.8,do redakcji w kontekście ekranu
+settings.report_copied,de,Log copied to clipboard. Paste it in your message — nothing is sent automatically.,Protokoll in die Zwischenablage kopiert. Füge es in deine Nachricht ein — es wird nichts automatisch gesendet.,82,110,34.1,do redakcji w kontekście ekranu
+common.back,de,Back,Zurück,4,6,50.0,do redakcji w kontekście ekranu
+common.back,fr,Back,Retour,4,6,50.0,do redakcji w kontekście ekranu
+common.close,de,Close,Schließen,5,9,80.0,do redakcji w kontekście ekranu
+common.on,de,On,Ein,2,3,50.0,do redakcji w kontekście ekranu
+common.on,fr,On,Activé,2,6,200.0,do redakcji w kontekście ekranu
+common.off,fr,Off,Désactivé,3,9,200.0,do redakcji w kontekście ekranu
+menu.play,de,Start shift,Einsatz starten,11,15,36.4,do redakcji w kontekście ekranu
+menu.play,fr,Start shift,Prendre son service,11,19,72.7,do redakcji w kontekście ekranu
+menu.settings,de,Settings,Einstellungen,8,13,62.5,do redakcji w kontekście ekranu
+menu.jobs,de,Jobs,Aufträge,4,8,100.0,do redakcji w kontekście ekranu
+menu.jobs,fr,Jobs,Interventions,4,13,225.0,do redakcji w kontekście ekranu
+jobs.title,de,Jobs,Aufträge,4,8,100.0,do redakcji w kontekście ekranu
+jobs.title,fr,Jobs,Interventions,4,13,225.0,do redakcji w kontekście ekranu
+job.verify,de,Check right of entry,Zutrittsberechtigung prüfen,20,27,35.0,do redakcji w kontekście ekranu
+job.refuse,fr,Decline the job,Refuser l'intervention,15,22,46.7,do redakcji w kontekście ekranu
+job.opened,de,Lock opened. Bill settled.,Schloss geöffnet. Rechnung beglichen.,26,37,42.3,do redakcji w kontekście ekranu
+job.reward_fmt,fr,Reward: {n} coins,Récompense : {n} pièces,17,23,35.3,do redakcji w kontekście ekranu
+job.tip_fmt,fr,Tip (clean opening): {n} coins,Pourboire (ouverture soignée) : {n} pièces,30,42,40.0,do redakcji w kontekście ekranu
+receipt.tip,de,Tip (clean opening),Trinkgeld (sauber geöffnet),19,27,42.1,do redakcji w kontekście ekranu
+verify.title,de,Check right of entry,Zutrittsberechtigung prüfen,20,27,35.0,do redakcji w kontekście ekranu
+verify.ask_more,de,Ask for more evidence,Um einen weiteren Nachweis bitten,21,33,57.1,do redakcji w kontekście ekranu
+verify.ask_more,fr,Ask for more evidence,Demander un autre justificatif,21,30,42.9,do redakcji w kontekście ekranu
+verify.card.deed,de,Deed,Eigentumsurkunde,4,16,300.0,do redakcji w kontekście ekranu
+verify.card.deed,fr,Deed,Acte de propriété,4,17,325.0,do redakcji w kontekście ekranu
+verify.card.receipt,fr,Receipt,Ticket de caisse,7,16,128.6,do redakcji w kontekście ekranu
+verify.card.bailiff,de,Bailiff,Gerichtsvollzieher,7,18,157.1,do redakcji w kontekście ekranu
+verify.card.bailiff,fr,Bailiff,Huissier de justice,7,19,171.4,do redakcji w kontekście ekranu
+verify.refused,fr,Not enough evidence. I can't open this.,Les justificatifs ne suffisent pas. Je ne peux pas ouvrir.,39,58,48.7,do redakcji w kontekście ekranu
+tutorial.start,fr,Start practice,Commencer l'entraînement,14,24,71.4,do redakcji w kontekście ekranu
+settings.title,de,Settings,Einstellungen,8,13,62.5,do redakcji w kontekście ekranu
+settings.haptics,fr,Haptics,Retour haptique,7,15,114.3,do redakcji w kontekście ekranu
+settings.haptics_enabled,fr,Haptics enabled,Retour haptique activé,15,22,46.7,do redakcji w kontekście ekranu
+settings.haptics_test,fr,Test pulse,Impulsion d'essai,10,17,70.0,do redakcji w kontekście ekranu
+settings.haptics_calibration_two_clicks_yes,de,Two,Zwei,3,4,33.3,do redakcji w kontekście ekranu
+settings.haptics_calibration_two_clicks_yes,fr,Two,Deux,3,4,33.3,do redakcji w kontekście ekranu
+settings.haptics_calibration_two_clicks_one,de,One,Einen,3,5,66.7,do redakcji w kontekście ekranu
+settings.volume_ambience,de,Ambience,Umgebungsgeräusche,8,18,125.0,do redakcji w kontekście ekranu
+settings.volume_ambience,fr,Ambience,Ambiance sonore,8,15,87.5,do redakcji w kontekście ekranu
+settings.language_de,fr,Deutsch (dev),Deutsch (développement),13,23,76.9,do redakcji w kontekście ekranu
+settings.wide_windows,de,Wider windows,Größere Sichtfenster,13,20,53.8,do redakcji w kontekście ekranu
+settings.wide_windows,fr,Wider windows,Fenêtres élargies,13,17,30.8,do redakcji w kontekście ekranu
+settings.reset,de,Reset settings,Einstellungen zurücksetzen,14,26,85.7,do redakcji w kontekście ekranu
+settings.reset,fr,Reset settings,Réinitialiser les paramètres,14,28,100.0,do redakcji w kontekście ekranu
+settings.text_scale,fr,Text size,Taille du texte,9,15,66.7,do redakcji w kontekście ekranu
+settings.reduce_motion,de,Reduce motion,Bewegungen reduzieren,13,21,61.5,do redakcji w kontekście ekranu
+settings.reduce_motion,fr,Reduce motion,Réduire les animations,13,22,69.2,do redakcji w kontekście ekranu
+settings.dark_mode_note,fr,"In the dark, rely on sound. Phone haptics help too.","Dans le noir, fie-toi au son. Les vibrations du téléphone aident aussi.",51,71,39.2,do redakcji w kontekście ekranu
+run.lock_n,de,Lock {n},Schloss {n},8,11,37.5,do redakcji w kontekście ekranu
+run.lock_n,fr,Lock {n},Serrure {n},8,11,37.5,do redakcji w kontekście ekranu
+run.lives_left,de,Spare picks,Verbleibende Versuche,11,21,90.9,do redakcji w kontekście ekranu
+run.lives_left,fr,Spare picks,Crochets de rechange,11,20,81.8,do redakcji w kontekście ekranu
+optics.loupe,de,Shear-line close-up,Nahaufnahme der Scherlinie,19,26,36.8,do redakcji w kontekście ekranu
+optics.loupe,fr,Shear-line close-up,Gros plan sur la ligne de césure,19,32,68.4,do redakcji w kontekście ekranu
+optics.borescope,de,Deep elements,Tiefe Sperrelemente,13,19,46.2,do redakcji w kontekście ekranu
+optics.borescope,fr,Deep elements,Pièces en profondeur,13,20,53.8,do redakcji w kontekście ekranu
+pause.title,de,Paused,Pausiert,6,8,33.3,do redakcji w kontekście ekranu
+pause.title,fr,Paused,En pause,6,8,33.3,do redakcji w kontekście ekranu
+pause.resume,de,Resume,Fortsetzen,6,10,66.7,do redakcji w kontekście ekranu
+pause.resume,fr,Resume,Reprendre,6,9,50.0,do redakcji w kontekście ekranu
+pause.settings,de,Settings,Einstellungen,8,13,62.5,do redakcji w kontekście ekranu
+pause.restart,fr,Restart this lock,Recommencer cette serrure,17,25,47.1,do redakcji w kontekście ekranu
+workshop.buy,de,Buy,Kaufen,3,6,100.0,do redakcji w kontekście ekranu
+workshop.buy,fr,Buy,Acheter,3,7,133.3,do redakcji w kontekście ekranu
+workshop.repair,de,Repair,Reparieren,6,10,66.7,do redakcji w kontekście ekranu
+workshop.owned,de,Owned,Im Besitz,5,9,80.0,do redakcji w kontekście ekranu
+workshop.owned,fr,Owned,Possédé,5,7,40.0,do redakcji w kontekście ekranu
+workshop.repair_cost,fr,Repair: {0} coins,Réparation : {0} pièces,17,23,35.3,do redakcji w kontekście ekranu
+workshop.reward,de,Reward for progress,Belohnung für Fortschritt,19,25,31.6,do redakcji w kontekście ekranu
+dev.haptics_lab.title,fr,Haptics lab,Laboratoire haptique,11,20,81.8,do redakcji w kontekście ekranu
+dev.haptics_lab.tier,fr,Tier,Niveau,4,6,50.0,do redakcji w kontekście ekranu
+dev.haptics_lab.force_fallback,de,Use fallback,Fallback erzwingen,12,18,50.0,do redakcji w kontekście ekranu
+nav.quit_yes,de,Quit,Beenden,4,7,75.0,do redakcji w kontekście ekranu
+nav.quit_yes,fr,Quit,Quitter,4,7,75.0,do redakcji w kontekście ekranu
+nav.quit_no,fr,Keep playing,Continuer à jouer,12,17,41.7,do redakcji w kontekście ekranu
+workshop.reward_hint,de,Unlocks as you progress,Schaltet sich mit dem Fortschritt frei,23,38,65.2,do redakcji w kontekście ekranu
+practice.t18.goal,de,Wait for the lever's proper gate click.,Warte auf den richtigen Klick am Tor der Zuhaltung.,39,51,30.8,do redakcji w kontekście ekranu
+practice.t24.goal,de,Count every lever gate; no skipping.,Zähl jedes Tor jeder Zuhaltung; nichts auslassen.,36,49,36.1,do redakcji w kontekście ekranu
+ui.job_done,de,done,erledigt,4,8,100.0,do redakcji w kontekście ekranu
+settings.voice_pack.download,de,Download,Herunterladen,8,13,62.5,do redakcji w kontekście ekranu
+settings.voice_pack.download,fr,Download,Télécharger,8,11,37.5,do redakcji w kontekście ekranu
+settings.voice_pack.not_now,de,Not now,Nicht jetzt,7,11,57.1,do redakcji w kontekście ekranu
+settings.voice_pack.not_now,fr,Not now,Pas maintenant,7,14,100.0,do redakcji w kontekście ekranu
+settings.voice_pack.stop,de,Stop,Abbrechen,4,9,125.0,do redakcji w kontekście ekranu
+settings.voice_pack.stop,fr,Stop,Arrêter,4,7,75.0,do redakcji w kontekście ekranu
+settings.voice_pack.retry,de,Try again,Erneut versuchen,9,16,77.8,do redakcji w kontekście ekranu
+settings.voice_pack.verifying,fr,checking the file,vérification du fichier,17,23,35.3,do redakcji w kontekście ekranu
+settings.voice_pack.failed,fr,Not downloaded. Subtitles stay on.,Échec du téléchargement. Les sous-titres restent affichés.,34,58,70.6,do redakcji w kontekście ekranu
+settings.voice_pack.offline,fr,No connection. Subtitles stay on.,Pas de connexion. Les sous-titres restent affichés.,33,51,54.5,do redakcji w kontekście ekranu
+settings.voice_pack.auto,fr,Auto-download voices,Télécharger les voix automatiquement,20,36,80.0,do redakcji w kontekście ekranu
+family.dial_safe.name,de,Dial safe,Tresor mit Drehscheibe,9,22,144.4,do redakcji w kontekście ekranu
+family.dial_safe.name,fr,Dial safe,Coffre-fort à cadran,9,20,122.2,do redakcji w kontekście ekranu
+tutorial.dial_safe.step2,de,Circle the dial with your right thumb.,Kreise rechts mit dem Daumen über die Drehscheibe.,38,50,31.6,do redakcji w kontekście ekranu
+family.dimple.short,fr,Two rows of pins; some hide a thinner pin in a sleeve.,Deux rangées de goupilles ; certaines en cachent une plus fine dans une douille.,54,80,48.1,do redakcji w kontekście ekranu
+tutorial.dimple.step2,fr,"Right: choose a row, then press a pin.","Droit : choisis une rangée, puis presse une goupille.",38,53,39.5,do redakcji w kontekście ekranu
+family.disc_detainer.name,de,Disc lock,Scheibenschloss,9,15,66.7,do redakcji w kontekście ekranu
+family.disc_detainer.name,fr,Disc lock,Serrure à disques,9,17,88.9,do redakcji w kontekście ekranu
+tutorial.egyptian.step3,fr,Hear the wood tap; watch the peg drop.,Écoute le bois taper ; regarde la cheville tomber.,38,50,31.6,do redakcji w kontekście ekranu
+family.axial_slider.name,fr,Axial slider,Serrure à coulisseaux,12,21,75.0,do redakcji w kontekście ekranu
+family.axial_slider.short,fr,Sliders sit in a circle when viewed from the front.,"Vus de face, les coulisseaux sont disposés en cercle autour du centre.",51,70,37.3,do redakcji w kontekście ekranu
+tutorial.axial_slider.step5,fr,The sliders settle. The desk is ready.,Les coulisseaux sont en place. Le bureau est prêt.,38,50,31.6,do redakcji w kontekście ekranu
+family.time_lock.name,de,Time lock repair,Zeitschloss-Reparatur,16,21,31.2,do redakcji w kontekście ekranu
+family.time_lock.name,fr,Time lock repair,Réparer une serrure à minuterie,16,31,93.8,do redakcji w kontekście ekranu
+family.magnetic.name,fr,Magnetic pin lock,Serrure à goupilles magnétiques,17,31,82.4,do redakcji w kontekście ekranu
+tutorial.magnetic.step4,de,"Pin lags? Move smoothly, don't jerk.","Stift hinkt nach? Führe ruhig, nicht ruckartig.",36,47,30.6,do redakcji w kontekście ekranu
+tutorial.magnetic.step4,fr,"Pin lags? Move smoothly, don't jerk.","Goupille en retard ? Va en douceur, sans à-coups.",36,49,36.1,do redakcji w kontekście ekranu
