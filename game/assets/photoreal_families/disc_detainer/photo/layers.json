@@ -44,11 +44,11 @@
   },
   "tooth": {
    "offset": [
-    121,
+    113,
     442
    ],
    "size": [
-    29,
+    45,
     32
    ]
   },
@@ -91,8 +91,8 @@
  "sleeve": {
   "bore_mm": 6.5,
   "outer_mm": 10.1,
-  "notch_depth_mm": 1.2,
-  "tooth_w_mm": 1.6
+  "notch_depth_mm": 2.0,
+  "tooth_w_mm": 2.8
  },
  "slot_pitch_mm": 7.0,
  "band": {
