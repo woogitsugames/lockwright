@@ -217,3 +217,6 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 
 ## D-60: Nowe rodziny lockcore v0.6 (D-59) — jedna rodzina na id, dłuższa tabela tierów
 2026-11-05 · sesja A · Agent zbudował 8 rodzin (`dial_safe`, `combo`, `dimple`, `disc_detainer`, `egyptian`, `axial_slider`, `time_lock`, `magnetic`), research w `docs/research/new-families.md`, karty `docs/LOCKS.md` §2.18–2.25, balans `lockcore/BALANCE.md`. Kolizja id ze starszymi kartami F1–F3 (§2.10, 2.11, 2.14, 2.15): **zostaje jedna rodzina na id**; nowe karty opisują tiery 1–3, a starsze karty stają się opisem przyszłych, wyższych tierów tej samej rodziny (do dopisania przy rozbudowie). Kalibracja trudności t2/t3 po testach z graczami (bot czujący ma dziś 100 % wszędzie). `time_lock` to naprawa zegara, nie otwieranie (ton CLAUDE.md).
+
+## D-61: Głosy DE poza paczką mobilną do decyzji o dystrybucji języków
+2026-11-06 · sesja A · Po dodaniu 492 nagrań kwestii (D-57, 22,8 MB) i teł nowych rodzin pck Android ma 61,4 MB (limit 58, D-55). Tymczasowo `assets/audio/lines/de/*` jest w `exclude_filter` presetów Android i iOS (DE jest i tak za flagą `dev_mode`; odtwarzacz pokazuje wtedy same napisy). Docelowo właściciel wybiera: języki głosów pobierane na żądanie, mocniejsza kompresja mowy albo tylko PL+EN w paczce (pytanie poranne). Kto włącza DE, usuwa wpis z filtra w tym samym commicie.
