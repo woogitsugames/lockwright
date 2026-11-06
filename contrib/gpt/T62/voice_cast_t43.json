@@ -1,0 +1,22 @@
+[
+  {
+    "id": "celina",
+    "design_prompt": "A fictional 44-year-old woman with a low, calm, assured voice. Measured, concise phrasing and a neutral Polish accent. Clear natural delivery, no imitation of any real person."
+  },
+  {
+    "id": "dorota",
+    "design_prompt": "A fictional 49-year-old woman with a slightly tense voice and quick pace, without aggression. Neutral Polish accent, natural delivery, no imitation of any real person."
+  },
+  {
+    "id": "seweryn",
+    "design_prompt": "A fictional 61-year-old man with a soft, patient voice and short thoughtful pauses. Moderate pace, neutral Polish accent, no imitation of any real person."
+  },
+  {
+    "id": "borys",
+    "design_prompt": "A fictional 46-year-old man with a warm mid-range voice and a lightly raspy texture. Relaxed pace, neutral Polish accent, no imitation of any real person."
+  },
+  {
+    "id": "alicja",
+    "design_prompt": "A fictional 40-year-old woman with a bright, energetic voice, slowing slightly in serious moments. Neutral Polish accent, no imitation of any real person."
+  }
+]

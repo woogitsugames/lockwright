@@ -1,0 +1,1 @@
+Pięć propozycji Voice Design dla nowych postaci z cast_t43.csv, identyfikatory i pole design_prompt. Nie wygenerowano ani nie przesłuchano głosów; wymagają prób syntezy i dopasowania do istniejącej obsady.
