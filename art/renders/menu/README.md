@@ -1,0 +1,7 @@
+# GPU menu finals — 2026-11-06
+
+Blender 4.2.9 / Cycles OptiX / RTX 5070, 160 spp. PL/EN/DE, portrait 1080×2400 and landscape 2400×1080; six pressed sprites per language and orientation. Final portrait board width: 798/1080 = **73.89%**, following the owner's ~75% request. Portrait renders and every portrait sprite use `--vw 600`; landscape uses the current scene default (`--vh 585`).
+
+`compare_portrait_framing.jpg` compares the current session A close camera with the requested wider frame, at the same output size. Full GPU close-camera masters remain locally under `build/local-session/menu-close-gpu/`. `compare_with_locks.jpg` and `compare_landscape_with_locks.jpg` compare final lighting/materials with lock references. No game assets were exported by this local session; session A owns integration and approval.
+
+Reproduction: invoke `menu_gate.py` for each language and orientation as `menu_compose.py --render-all --samples 160 --device OPTIX --no-game` does, adding `--vw 600` to **every portrait invocation**, including all six `--pressed N --crop-row N` renders and hits JSON. Landscape invocations use their default camera. The local batch driver `C:/tools/lockwright-downloads/menu-75.py` only forwards that extra CLI option to portrait Blender invocations. It does not modify the scene script. Afterwards compose existing renders with the same option for portrait `--norender` hits regeneration; otherwise the default close-camera hit rects would overwrite the 75% geometry. Keep the delivered hits JSON with these images.
