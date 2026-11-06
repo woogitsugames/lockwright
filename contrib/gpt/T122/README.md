@@ -1,6 +1,6 @@
 # T122 — teksty na zrzutach: ucięcia i nachodzenie
 
-Obejrzano 46 z 257 obrazów PNG/JPG w docs/handoff/device-tests/fixes/**. Lista próbek jest w T121/README.md. Nie uruchamiano gry; przewijanie, aktualne wersje ekranów i pozostałe 211 obrazów pozostają do sprawdzenia.
+Przejrzano wszystkie 257 obrazów PNG/JPG w docs/handoff/device-tests/fixes/**, w tym 19 przez drugiego recenzenta. Pełna lista jest w T121/README.md. Nie uruchamiano gry; przewijanie i aktualne wersje ekranów pozostają do sprawdzenia. Część dużych zrzutów i zestawień była automatycznie pomniejszona, co ogranicza ocenę drobnego tekstu.
 
 ## Konkretne obserwacje
 
@@ -11,5 +11,7 @@ Obejrzano 46 z 257 obrazów PNG/JPG w docs/handoff/device-tests/fixes/**. Lista 
 5. **lessons/arrival_family_caption_combo_412x915.jpg** — tytuł „Rozmowa o 9:30” łamie się na dwa wiersze pomiędzy przyciskami. Pozostaje widoczny, ale zwiększa wysokość nagłówka; warto sprawdzić dłuższe tłumaczenia.
 
 6. **landscape/tutorial_intro_915x412.png** — przycisk „Back” widoczny w pionowym landscape/tutorial_intro_412x915.png nie mieści się na zrzucie poziomym; po prawej widać pasek przewijania. Sprawdzić, czy użytkownik może łatwo przewinąć i wrócić bez uruchamiania ćwiczenia.
+7. **furnishings/before_workshop_412x915.png** oraz **furnishings/before_workshop_915x412.png** — zielony licznik FPS nakłada się na górną część przycisku Back. To może być wyłącznie nakładka diagnostyczna; przed wydaniem należy sprawdzić, że jest wyłączona.
+8. Drugi recenzent nie stwierdził ucięć ani nakładania widocznych napisów w 19 obejrzanych wariantach menu_v2_gpu; czerwone prostokąty oznaczają strefy diagnostyczne. U dołu wariantu 1916×2160 jest fragment jasnego elementu, którego nie można z tego podglądu pewnie określić jako tekst.
 
 Na pozostałych obejrzanych obrazach nie stwierdzono jednoznacznego ucięcia tekstu w widocznym fragmencie; nie stanowi to testu wszystkich treści, stanów ani języków. Szczegóły kontrastu opisano osobno w T121.
