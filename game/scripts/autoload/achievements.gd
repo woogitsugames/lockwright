@@ -96,6 +96,12 @@ func _check_result_triggers() -> void:
 				continue
 			if kv[0] == "mode" and kv[1] == "continuous" and JobRun.mode != &"run":
 				ok = false
+			elif kv[0] == "family":
+				# T56: the family of the lock just opened; no job (S1–S3, practice) means pin_tumbler,
+				# as in JobRun.lock_scene_path(). Before this, `family=` was silently ignored here.
+				var cur: StringName = &"pin_tumbler" if JobRun.current_job.is_empty() else JobRun.family_for(JobRun.current_job)
+				if String(cur) != kv[1]:
+					ok = false
 			elif kv[0].begins_with("count("):
 				var ev := kv[0].trim_prefix("count(").trim_suffix(")")
 				var want := int(kv[1])

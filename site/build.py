@@ -282,7 +282,7 @@ siebie.</p>
 <h2>Uczciwie wobec gracza</h2>
 <ul>
 <li>Bez reklam, bez energii, bez kupowania monet i bez losowania nagród. Narzędzia zarabiasz pracą w warsztacie.</li>
-<li>Gra działa bez internetu i nie zbiera danych (szczegóły: <a href="privacy.html">polityka prywatności</a>).</li>
+<li>Gra działa bez internetu i nie ma kont ani analityki; jedyne połączenie to opcjonalne pobranie głosów (szczegóły: <a href="privacy.html">polityka prywatności</a>).</li>
 <li>Haptyka nigdy nie jest jedynym sygnałem: wszystko, co czujesz w kciuku, słychać i widać.</li>
 </ul>
 """,
@@ -311,7 +311,7 @@ and the customer is home.</p>
 <h2>Fair to the player</h2>
 <ul>
 <li>No ads, no energy, no buying coins and no randomised rewards. You earn your tools by working.</li>
-<li>The game works offline and collects no data (details: <a href="privacy.html">privacy policy</a>).</li>
+<li>The game works offline with no accounts or analytics; its only connection is the optional voice download (details: <a href="privacy.html">privacy policy</a>).</li>
 <li>Haptics are never the only signal: everything you feel under your thumb can also be heard and seen.</li>
 </ul>
 """,
