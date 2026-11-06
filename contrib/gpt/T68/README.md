@@ -22,7 +22,7 @@
 | pin | pin | Stift | goupille | perno | Pin bębenkowy; nie kołek. |
 | kołek drewniany | wooden peg | Holzstift | cheville | pasador de madera | Tylko zamek drewniany/egipski. |
 | pokrętło sejfu | dial | Drehscheibe | cadran | dial | DE odróżnia je od wewnętrznego koła. |
-| kółko szyfrowe | thumbwheel |  | molette | ruedecilla | FR `roue` i ES `rueda` występują wariantowo. |
+| kółko szyfrowe | thumbwheel | Drehrad | molette | ruedecilla | DE `Drehrad` to propozycja ogólna, wymaga uzgodnienia; FR `roue` i ES `rueda` występują wariantowo. |
 | tarcza | disc | Scheibe | disque | disco | Element mechanizmu tarczowego. |
 | suwak | slider | Schieber | coulisseau | corredera |  |
 | sprężyna | spring | Feder | ressort | muelle |  |
@@ -33,12 +33,27 @@
 | ustawienia | settings | Einstellungen | paramètres | ajustes |  |
 | dostępność | accessibility | Barrierefreiheit | accessibilité | accesibilidad |  |
 
+## UI — wartości w bieżącym CSV
+
+| Klucz | PL | EN | DE | FR | ES |
+|---|---|---|---|---|---|
+| common.back | Wstecz | Back | Zurück | Retour | Atrás |
+| common.close | Zamknij | Close | Schließen | Fermer | Cerrar |
+| menu.workshop | Warsztat | Workshop | Werkstatt | Atelier | Taller |
+| settings.haptics | Haptyka | Haptics | Haptik | Retour haptique | Háptica |
+| settings.quality | Jakość grafiki | Graphics quality | Grafikqualität | Qualité graphique | Calidad gráfica |
+| settings.text_scale | Rozmiar tekstu | Text size | Textgröße | Taille du texte | Tamaño del texto |
+| settings.reduce_motion | Ogranicz ruch | Reduce motion | Bewegungen reduzieren | Réduire les animations | Reducir movimiento |
+| verify.ask_more | Poproś o jeszcze jeden | Ask for more evidence | Um einen weiteren Nachweis bitten | Demander un autre justificatif | Pedir más pruebas |
+| run.lives_left | Pozostałe życia | Spare picks | Verbleibende Versuche | Crochets de rechange | Ganzúas de repuesto |
+
 ## Rozbieżności do rozstrzygnięcia
 
 - `REVIEW-T42` wskazuje `molette` dla kółka szyfrowego, a wcześniejszy `lock.combo_hint` używa FR `roue`; analogicznie ES `ruedecilla` / `rueda`. Ujednolicać po sprawdzeniu długości i kontekstu: wewnętrzne koło nie musi być tym samym elementem co zewnętrzne kółko szyfrowe.
 - `family.magnetic.name`: PL „Zamek magnetyczny” pomija piny obecne w nazwach EN/DE/FR/ES. Można rozważyć „Zamek z pinami magnetycznymi”, o ile mechanizm i limit UI na to pozwalają.
 - `family.axial_slider.name`: EN „Axial slider” nie zawiera słowa lock, podczas gdy pozostałe wersje nazywają zamek; sprawdzić czy skrót jest zamierzony.
 - `family.combo.name`: DE „Zahlenschloss” jest szersze znaczeniowo niż zamek z kółkami. Rozważyć doprecyzowanie bez sugerowania innej mechaniki.
+- `run.lives_left`: EN/FR/ES mówią o zapasowych wytrychach, DE o próbach, a PL o życiach. Ustalić rzeczywiste znaczenie licznika przed ujednoliceniem.
 - `REVIEW-T42` po końcowym rozstrzygnięciu usuwa kierunek „w dół” z tekstów axial slider: nie powielać go w nowych tłumaczeniach.
 - `REVIEW-T41`: UI zwraca się do gracza per ty/du/tu/tú; postacie do ślusarza per pan/Sie/vous/usted, z udokumentowanymi wyjątkami dialogowymi. W tekstach czytanych liczby słownie.
 
