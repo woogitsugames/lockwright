@@ -18,6 +18,9 @@
     "roman",
     "locksmith"
   ],
+  "after": [
+    "roman"
+  ],
   "cards": [
     "manager",
     "institution"

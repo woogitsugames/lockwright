@@ -1,0 +1,34 @@
+{
+  "id": "job.t43_12_01_letters_archive",
+  "chapter": 12,
+  "order": 1,
+  "district": "Śródmieście",
+  "family": "dial_safe",
+  "tier": 3,
+  "verification": "Krystyna okazuje dokument własności (2) oraz dokument dziedziczenia (3). Jest uprawnioną właścicielką i wyraża zgodę. Próg danych 3. Wycena zaakceptowana.",
+  "reward_coins": 185,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_12_01_letters_archive.title",
+    "client": "job.t43_12_01_letters_archive.client",
+    "situation": "job.t43_12_01_letters_archive.situation"
+  },
+  "lines": [
+    "krystyna",
+    "ola",
+    "locksmith",
+    "krystyna"
+  ],
+  "after": [
+    "ola"
+  ],
+  "cards": [
+    "deed",
+    "inheritance"
+  ],
+  "threshold": 3,
+  "place": "workshop",
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

@@ -18,6 +18,9 @@
     "locksmith",
     "leopold"
   ],
+  "after": [
+    "leopold"
+  ],
   "cards": [
     "witness",
     "lease"

@@ -18,6 +18,9 @@
     "locksmith",
     "aino"
   ],
+  "after": [
+    "aino"
+  ],
   "cards": [
     "manager"
   ],

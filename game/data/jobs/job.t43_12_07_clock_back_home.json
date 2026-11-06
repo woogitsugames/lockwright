@@ -1,0 +1,34 @@
+{
+  "id": "job.t43_12_07_clock_back_home",
+  "chapter": 12,
+  "order": 7,
+  "district": "Port",
+  "family": "time_lock",
+  "tier": 2,
+  "verification": "Pismo dyrekcji (2), protokół zwrotu wymontowanego zegara (2). Próg 2. Wyłącznie regulacja po transporcie i próba chodu; bez zwalniania blokady. Cena zaakceptowana.",
+  "reward_coins": 200,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_12_07_clock_back_home.title",
+    "client": "job.t43_12_07_clock_back_home.client",
+    "situation": "job.t43_12_07_clock_back_home.situation"
+  },
+  "lines": [
+    "rygiel",
+    "locksmith",
+    "rygiel",
+    "zuzanna"
+  ],
+  "after": [
+    "rygiel"
+  ],
+  "cards": [
+    "institution",
+    "invoice"
+  ],
+  "threshold": 2,
+  "place": "workshop",
+  "time": "day",
+  "outcome": "repair",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

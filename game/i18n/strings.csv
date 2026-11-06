@@ -420,3 +420,6 @@ verify.ask.address_app.1,Can you show me the address in the app?,Można pokazać
 verify.reply.address_app.1,Here. Same street and number.,Proszę. Ta sama ulica i numer.,"Bitte. Gleiche Straße, gleiche Nummer.","Voilà. Même rue, même numéro.",Aquí tiene. La misma calle y número.
 verify.ask.address_app.2,Is the account in this name?,Czy konto jest na to nazwisko?,Läuft das Konto auf diesen Namen?,Le compte est-il à ce nom ?,¿La cuenta está a este nombre?
 verify.reply.address_app.2,"Yes, it's been the same for years.","Tak, od lat to samo.","Ja, seit Jahren derselbe.","Oui, depuis des années.","Sí, desde hace años."
+job.accept_talk,Sort it out on the spot,Załatw na miejscu,Vor Ort klären,Régler sur place,Resolver en el momento
+job.resolved,Sorted without opening anything. Bill settled.,Załatwione bez otwierania. Rachunek rozliczony.,Ohne Öffnen geklärt. Rechnung beglichen.,Résolu sans rien ouvrir. Facture réglée.,Resuelto sin abrir nada. Factura pagada.
+receipt.service.talk,On-site consultation,Konsultacja na miejscu,Beratung vor Ort,Conseil sur place,Consulta en el lugar

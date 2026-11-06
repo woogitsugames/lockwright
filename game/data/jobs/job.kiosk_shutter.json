@@ -18,6 +18,9 @@
     "stefan",
     "krysia"
   ],
+  "after": [
+    "stefan"
+  ],
   "cards": [
     "witness",
     "letter",

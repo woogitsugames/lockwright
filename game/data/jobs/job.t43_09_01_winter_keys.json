@@ -1,0 +1,34 @@
+{
+  "id": "job.t43_09_01_winter_keys",
+  "chapter": 9,
+  "order": 1,
+  "district": "Osiedle Słoneczne",
+  "family": "pin_tumbler",
+  "tier": 2,
+  "verification": "Roman potwierdza aktualną lokatorkę (3), dowód potwierdza tożsamość (1). Próg 2 w skali danych gry. Wycena zaakceptowana przed pracą.",
+  "reward_coins": 40,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_09_01_winter_keys.title",
+    "client": "job.t43_09_01_winter_keys.client",
+    "situation": "job.t43_09_01_winter_keys.situation"
+  },
+  "lines": [
+    "agnieszka",
+    "roman",
+    "locksmith",
+    "agnieszka"
+  ],
+  "after": [
+    "agnieszka"
+  ],
+  "cards": [
+    "manager",
+    "id"
+  ],
+  "threshold": 2,
+  "place": "apartment",
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

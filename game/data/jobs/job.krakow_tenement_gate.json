@@ -18,6 +18,9 @@
     "zuzanna",
     "wanda"
   ],
+  "after": [
+    "wanda"
+  ],
   "cards": [
     "manager",
     "resolution"

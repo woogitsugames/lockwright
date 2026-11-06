@@ -18,6 +18,9 @@
     "mietek",
     "renata"
   ],
+  "after": [
+    "renata"
+  ],
   "cards": [
     "witness",
     "lease"

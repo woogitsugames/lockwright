@@ -18,6 +18,9 @@
     "piotr",
     "ewa"
   ],
+  "after": [
+    "marek"
+  ],
   "cards": [
     "deed",
     "inheritance"

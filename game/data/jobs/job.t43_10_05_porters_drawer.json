@@ -1,0 +1,34 @@
+{
+  "id": "job.t43_10_05_porters_drawer",
+  "chapter": 10,
+  "order": 5,
+  "district": "Kampus",
+  "family": "lever",
+  "tier": 3,
+  "verification": "Edek pokazuje zlecenie administracji akademika (2) i potwierdza opiekę nad szufladą (3). Próg 2. Nie otwieramy prywatnych szafek studentów. Wycena zaakceptowana.",
+  "reward_coins": 140,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_10_05_porters_drawer.title",
+    "client": "job.t43_10_05_porters_drawer.client",
+    "situation": "job.t43_10_05_porters_drawer.situation"
+  },
+  "lines": [
+    "edek",
+    "locksmith",
+    "edek",
+    "locksmith"
+  ],
+  "after": [
+    "edek"
+  ],
+  "cards": [
+    "institution",
+    "manager"
+  ],
+  "threshold": 2,
+  "place": "locker",
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

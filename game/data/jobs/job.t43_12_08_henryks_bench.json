@@ -1,0 +1,35 @@
+{
+  "id": "job.t43_12_08_henryks_bench",
+  "chapter": 12,
+  "order": 8,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 6,
+  "verification": "Dokument przekazania warsztatu wraz z wyposażeniem (2), Władysław potwierdza skrzynię ćwiczebną Henryka (2). Próg 2. Klientem finansującym przegląd jest organizator pokazu, bez podwójnej nagrody.",
+  "reward_coins": 200,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_12_08_henryks_bench.title",
+    "client": "job.t43_12_08_henryks_bench.client",
+    "situation": "job.t43_12_08_henryks_bench.situation"
+  },
+  "lines": [
+    "wladyslaw",
+    "locksmith",
+    "zuzanna",
+    "wladyslaw"
+  ],
+  "after": [
+    "halina",
+    "locksmith"
+  ],
+  "cards": [
+    "deed",
+    "witness"
+  ],
+  "threshold": 2,
+  "place": "workshop",
+  "time": "evening",
+  "outcome": "open",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

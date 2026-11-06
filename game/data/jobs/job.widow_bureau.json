@@ -18,6 +18,9 @@
     "irena",
     "irena"
   ],
+  "after": [
+    "irena"
+  ],
   "cards": [
     "id"
   ],

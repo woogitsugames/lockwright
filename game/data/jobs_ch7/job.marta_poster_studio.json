@@ -18,6 +18,9 @@
     "marta",
     "locksmith"
   ],
+  "after": [
+    "marta"
+  ],
   "cards": [
     "lease",
     "witness"

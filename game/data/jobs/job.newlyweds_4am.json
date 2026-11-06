@@ -18,6 +18,9 @@
     "neighbour_robe",
     "locksmith"
   ],
+  "after": [
+    "bartek"
+  ],
   "cards": [
     "id",
     "address_app",

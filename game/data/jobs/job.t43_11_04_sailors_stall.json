@@ -1,0 +1,34 @@
+{
+  "id": "job.t43_11_04_sailors_stall",
+  "chapter": 11,
+  "order": 4,
+  "district": "Nocny Rynek",
+  "family": "disc_detainer",
+  "tier": 3,
+  "verification": "Faktura Aino (2), kapitan potwierdza jej własną skrzynię (2). Próg 2. Prywatne narzędzia, nie wyposażenie statku. Wycena zaakceptowana.",
+  "reward_coins": 180,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_11_04_sailors_stall.title",
+    "client": "job.t43_11_04_sailors_stall.client",
+    "situation": "job.t43_11_04_sailors_stall.situation"
+  },
+  "lines": [
+    "aino",
+    "captain",
+    "locksmith",
+    "aino"
+  ],
+  "after": [
+    "aino"
+  ],
+  "cards": [
+    "invoice",
+    "witness"
+  ],
+  "threshold": 2,
+  "place": "locker",
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

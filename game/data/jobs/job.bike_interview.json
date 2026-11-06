@@ -18,6 +18,9 @@
     "kuba",
     "locksmith"
   ],
+  "after": [
+    "kuba"
+  ],
   "cards": [
     "photo",
     "receipt"

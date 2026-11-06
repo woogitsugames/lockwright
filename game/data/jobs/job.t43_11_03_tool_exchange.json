@@ -1,0 +1,34 @@
+{
+  "id": "job.t43_11_03_tool_exchange",
+  "chapter": 11,
+  "order": 3,
+  "district": "Nocny Rynek",
+  "family": "axial_slider",
+  "tier": 3,
+  "verification": "Władysław jako właściciel ma fakturę skrzyni (2), Gosia potwierdza przekazanie do naprawy (2). Próg 2. Otwieramy skrzynię właściciela, nie przedmioty osób trzecich. Wycena zaakceptowana.",
+  "reward_coins": 170,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_11_03_tool_exchange.title",
+    "client": "job.t43_11_03_tool_exchange.client",
+    "situation": "job.t43_11_03_tool_exchange.situation"
+  },
+  "lines": [
+    "wladyslaw",
+    "locksmith",
+    "wladyslaw",
+    "gosia"
+  ],
+  "after": [
+    "wladyslaw"
+  ],
+  "cards": [
+    "invoice",
+    "witness"
+  ],
+  "threshold": 2,
+  "place": "workshop",
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

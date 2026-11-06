@@ -18,6 +18,9 @@
     "gosia",
     "locksmith"
   ],
+  "after": [
+    "gosia"
+  ],
   "cards": [
     "receipt",
     "photo"

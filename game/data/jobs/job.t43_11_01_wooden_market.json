@@ -1,0 +1,34 @@
+{
+  "id": "job.t43_11_01_wooden_market",
+  "chapter": 11,
+  "order": 1,
+  "district": "Nocny Rynek",
+  "family": "egyptian",
+  "tier": 2,
+  "verification": "Zlecenie muzeum (2), faktura drewnianej skrzynki (2). Próg 2. Otwarcie rekwizytu edukacyjnego za zgodą kuratorki, cena zaakceptowana.",
+  "reward_coins": 150,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_11_01_wooden_market.title",
+    "client": "job.t43_11_01_wooden_market.client",
+    "situation": "job.t43_11_01_wooden_market.situation"
+  },
+  "lines": [
+    "seweryn",
+    "zuzanna",
+    "locksmith",
+    "seweryn"
+  ],
+  "after": [
+    "seweryn"
+  ],
+  "cards": [
+    "institution",
+    "invoice"
+  ],
+  "threshold": 2,
+  "place": "workshop",
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "job.refuse_t43_12_surprise_key",
+  "chapter": 12,
+  "order": 6,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 6,
+  "verification": "Darek chce wejść wieczorem do zamkniętej świetlicy wspólnoty (dekoracje). Nie ma zgody zarządczyni i odrzuca telefon do niej. Odmowa: proponujemy cichą rozmowę z Elżbietą. Brak oskarżeń.",
+  "reward_coins": 0,
+  "tone": "ciepły, lekko zabawny; odmowa bez dramatu",
+  "i18n": {
+    "title": "job.refuse_t43_12_surprise_key.title",
+    "client": "job.refuse_t43_12_surprise_key.client",
+    "situation": "job.refuse_t43_12_surprise_key.situation"
+  },
+  "lines": [
+    "darek",
+    "locksmith",
+    "darek",
+    "locksmith"
+  ],
+  "after": [
+    "elzbieta",
+    "stefan"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2,
+  "place": "apartment",
+  "time": "evening",
+  "outcome": "open",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

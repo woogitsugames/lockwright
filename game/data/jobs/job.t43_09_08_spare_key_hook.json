@@ -1,0 +1,34 @@
+{
+  "id": "job.t43_09_08_spare_key_hook",
+  "chapter": 9,
+  "order": 8,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 2,
+  "verification": "Kazimierz potwierdza tożsamość (1), Teresa potwierdza właściwe mieszkanie (2). Próg 2. Konsultacja za 40 monet, bez otwierania.",
+  "reward_coins": 40,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_09_08_spare_key_hook.title",
+    "client": "job.t43_09_08_spare_key_hook.client",
+    "situation": "job.t43_09_08_spare_key_hook.situation"
+  },
+  "lines": [
+    "kazimierz",
+    "teresa",
+    "locksmith",
+    "kazimierz"
+  ],
+  "after": [
+    "teresa"
+  ],
+  "cards": [
+    "id",
+    "witness"
+  ],
+  "threshold": 2,
+  "place": "apartment",
+  "time": "day",
+  "outcome": "talk",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

@@ -18,6 +18,9 @@
     "locksmith",
     "agnieszka"
   ],
+  "after": [
+    "agnieszka"
+  ],
   "cards": [
     "id",
     "manager"

@@ -1,0 +1,34 @@
+{
+  "id": "job.t43_09_02_blanket_cupboard",
+  "chapter": 9,
+  "order": 2,
+  "district": "Osiedle Słoneczne",
+  "family": "magnetic",
+  "tier": 2,
+  "verification": "Elżbieta okazuje zlecenie wspólnoty (2) i potwierdza zarząd szafką (3). Próg 2. Wycena zaakceptowana.",
+  "reward_coins": 50,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_09_02_blanket_cupboard.title",
+    "client": "job.t43_09_02_blanket_cupboard.client",
+    "situation": "job.t43_09_02_blanket_cupboard.situation"
+  },
+  "lines": [
+    "janka",
+    "elzbieta",
+    "locksmith",
+    "elzbieta"
+  ],
+  "after": [
+    "janka"
+  ],
+  "cards": [
+    "manager",
+    "institution"
+  ],
+  "threshold": 2,
+  "place": "locker",
+  "time": "evening",
+  "outcome": "open",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

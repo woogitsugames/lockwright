@@ -54,6 +54,17 @@ const FAMILY_MAP := {
 }
 
 
+## T43: how a job ends. "open" (default) = lock scene + payment; "repair" = the time_lock clock-repair
+## scene (still a lock scene, lock_opened -> payment, D-60); "talk" = verification settles it on the spot,
+## no lock scene (T43 no_open: the spare key, the wrong delivery), a visit fee without a tip.
+static func outcome_for(job: Dictionary) -> StringName:
+	return StringName(job.get("outcome", "open"))
+
+
+static func is_talk(job: Dictionary) -> bool:
+	return outcome_for(job) == &"talk"
+
+
 static func family_for(job: Dictionary) -> StringName:
 	return FAMILY_MAP.get(job.get("family", ""), &"")
 
@@ -143,7 +154,9 @@ static func complete() -> void:
 		completed.append(jid)
 		Save.set_value("jobs_completed", completed)
 	var reward := int(current_job.get("reward_coins", 0))
-	last_tip = int(reward * 0.25) if clean and reward > 0 else 0  # N-25: tip for a clean opening (JOBS.md §3, 0–30%)
+	var talk := is_talk(current_job)
+	last_tip = int(reward * 0.25) if clean and reward > 0 and not talk else 0  # N-25: tip for a clean opening (JOBS.md §3, 0–30%)
 	Save.set_value("coins", Save.get_value("coins", 0) + reward + last_tip)
-	Save.set_value("stats/locks_opened", Save.get_value("stats/locks_opened", 0) + 1)
+	if not talk:  # T43: a visit settled by talking opens no lock
+		Save.set_value("stats/locks_opened", Save.get_value("stats/locks_opened", 0) + 1)
 	current_job = {}

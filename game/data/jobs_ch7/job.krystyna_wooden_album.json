@@ -18,6 +18,9 @@
     "locksmith",
     "krystyna"
   ],
+  "after": [
+    "krystyna"
+  ],
   "cards": [
     "photo",
     "witness"

@@ -18,6 +18,9 @@
     "locksmith",
     "magda"
   ],
+  "after": [
+    "magda"
+  ],
   "cards": [
     "witness",
     "lease"

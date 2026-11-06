@@ -18,6 +18,9 @@
     "waldek",
     "zbyszek"
   ],
+  "after": [
+    "zbyszek"
+  ],
   "cards": [
     "id",
     "witness"

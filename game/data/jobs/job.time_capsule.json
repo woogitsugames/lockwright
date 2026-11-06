@@ -18,6 +18,9 @@
     "marta",
     "marta"
   ],
+  "after": [
+    "jadwiga"
+  ],
   "cards": [
     "manager"
   ],

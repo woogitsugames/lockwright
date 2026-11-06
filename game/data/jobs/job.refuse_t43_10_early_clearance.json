@@ -1,0 +1,34 @@
+{
+  "id": "job.refuse_t43_10_early_clearance",
+  "chapter": 10,
+  "order": 7,
+  "district": "Śródmieście",
+  "family": "lever",
+  "tier": 3,
+  "verification": "Własność budynku nie potwierdza zgody lokatora na wejście. Flagi: flag.tenant_objects, flag.no_witness. Odmowa, bez monet, +5 reputacji.",
+  "reward_coins": 0,
+  "tone": "spokojna odmowa, bez oskarżeń",
+  "i18n": {
+    "title": "job.refuse_t43_10_early_clearance.title",
+    "client": "job.refuse_t43_10_early_clearance.client",
+    "situation": "job.refuse_t43_10_early_clearance.situation"
+  },
+  "lines": [
+    "dorota",
+    "locksmith",
+    "dorota",
+    "locksmith"
+  ],
+  "after": [
+    "roman",
+    "lena"
+  ],
+  "cards": [
+    "deed"
+  ],
+  "threshold": 3,
+  "place": "apartment",
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

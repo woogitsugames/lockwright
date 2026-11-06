@@ -2,7 +2,7 @@
 """Career economy simulator for Lockwright (Jobs mode + Continuous-mode grinding).
 
 Plain Python stdlib. Reads game/data (read only) and lockcore/BALANCE.md, simulates
-29 jobs for three player profiles under three scenarios and writes docs/ECONOMY.md.
+all jobs in game/data/jobs (JOBS.md order, then T43 chapters 9-12) for three player profiles under three scenarios and writes docs/ECONOMY.md.
 
     python3 tools/econ_sim.py                 # writes docs/ECONOMY.md
     python3 tools/econ_sim.py --careers 400 --out /tmp/eco.md
@@ -133,13 +133,25 @@ def load_balance():
     return out
 
 
+# Jobs added after JOBS.md (T43, chapters 9-12): family from the JSON, tier = lockcore tier as written in the
+# JSON (the game passes it through, N-05). Stored as ("lt", n) so lock_stats() skips the JOBS.md tier map.
+LOCKCORE_DIRECT = {"pin_tumbler", "wafer", "warded", "lever", "lever_detector"}
+
+
 def load_data():
     jobs = {}
     for f in glob.glob(os.path.join(ROOT, "game", "data", "jobs", "*.json")):
         d = json.load(open(f, encoding="utf-8"))
         jobs[d["id"]] = d
-    order = list(JOBS_MD_FAMILY)  # JOBS.md order
-    assert set(order) == set(jobs), set(order) ^ set(jobs)
+    order = list(JOBS_MD_FAMILY)  # JOBS.md order (chapters 1-6)
+    assert set(order) <= set(jobs), set(order) - set(jobs)
+    extra = sorted((j for i, j in jobs.items() if i not in JOBS_MD_FAMILY),
+                   key=lambda j: (int(j["chapter"]), int(j.get("order", 0)), j["id"]))
+    for j in extra:
+        JOBS_MD_FAMILY[j["id"]] = (j["family"], ("lt", int(j["tier"])))
+        if j["id"].startswith("job.refuse") or j.get("outcome") == "talk":
+            NO_LOCK_JOBS.add(j["id"])
+        order.append(j["id"])
     tools = {t["id"]: t for t in json.load(open(os.path.join(ROOT, "game", "data", "tools.json"),
                                                 encoding="utf-8"))["tools"]}
     prog = json.load(open(os.path.join(ROOT, "game", "data", "progression.json"), encoding="utf-8"))
@@ -184,6 +196,12 @@ class Career:
     # --- lock model ----------------------------------------------------------------
     def lock_stats(self, family, tier):
         """Returns (lockcore family, lockcore tier, feel_p50, clumsy_ok)."""
+        if isinstance(tier, tuple):  # T43: lockcore tier straight from the JSON
+            lt = tier[1]
+            if family in LOCKCORE_DIRECT and (family, lt) in self.bal:
+                feel, cok, _ = self.bal[(family, lt)]
+                return family, lt, feel, cok
+            return family, lt, EST_FEEL.get(min(lt, 3), 30.0) * (1 + 0.15 * max(0, lt - 3)), EST_CLUMSY_OK
         if family in LOCKCORE_MAP:
             lf, tmap = LOCKCORE_MAP[family]
             lt = tmap.get(tier, max(tmap.values()))
@@ -463,7 +481,7 @@ def report(results, jobs, tools, prog, cont, careers):
     for s in SCEN_ORDER:
         for prof in PROFILES:
             res = results[s]
-            w(f"| {s} | {prof} | {blocked(res, prof):.0f} / 29 | {tot(res, prof, 'job_income'):.0f} | "
+            w(f"| {s} | {prof} | {blocked(res, prof):.0f} / {len(jobs)} | {tot(res, prof, 'job_income'):.0f} | "
               f"{tot(res, prof, 'grind_income'):.0f} | {tot(res, prof, 'grind_sessions'):.0f} | "
               f"{grind_h(res, prof):.1f} | {fmt_min(tot(res, prof, 'job_time'))} | "
               f"{tot(res, prof, 'repair'):.0f} | {tot(res, prof, 'tools'):.0f} | "
@@ -484,7 +502,7 @@ def report(results, jobs, tools, prog, cont, careers):
         for i, job in enumerate(jobs):
             rows = [x.log[i] for x in res]
             blk = sum(r["blocked"] for r in rows) / len(rows)
-            w(f"| {i + 1} | `{job['id'][4:]}` | {job['chapter']} | {rows[0]['fam']} T{rows[0]['tier']} | "
+            w(f"| {i + 1} | `{job['id'][4:]}` | {job['chapter']} | {rows[0]['fam']} T{rows[0]['tier'][1] if isinstance(rows[0]['tier'], tuple) else rows[0]['tier']} | "
               f"{fmt_min(med([r['time'] for r in rows]))} | {med([r['earned'] for r in rows]):.0f} | "
               f"{med([r['grind'] for r in rows]):.0f} | {med([r['coins_after'] for r in rows]):.0f} | "
               f"{'zablokowane' if blk > 0.5 else ('odmowa/bez zamka' if job['id'] in NO_LOCK_JOBS else 'ok')} |")
@@ -584,7 +602,7 @@ def FINDINGS(results, jobs, tools, prog, cont):
     out = [
         f"1. **D-62: tańsze narzędzia, nigdy blokada zlecenia.** Ceny w `tools.json` (C) spadły z {cost_all_old} do {cost_all} monet "
         f"za wszystkie {len(paid)} płatne narzędzia, a z {cost_need_old} do {cost_need} za te, które mają użycie w zleceniach "
-        f"({len(job_need)} szt.). Suma nagród 29 zleceń to {job_sum} monet, plus napiwki. Gra nie sprawdza narzędzi przy "
+        f"({len(job_need)} szt.). Suma nagród {len(jobs)} zleceń to {job_sum} monet, plus napiwki. Gra nie sprawdza narzędzi przy "
         f"przyjęciu zlecenia; model C też nie: brak narzędzia daje wolniejszy zamek (×{MISSING_TOOL_X}) i słabszy feedback, "
         f"ale nie grind.",
         f"2. **Przed (D, stare ceny, narzędzie bramką):** zablokowanych zleceń careful/average/clumsy "

@@ -1,0 +1,34 @@
+{
+  "id": "job.t43_11_02_bicycle_stand",
+  "chapter": 11,
+  "order": 2,
+  "district": "Nocny Rynek",
+  "family": "combo",
+  "tier": 3,
+  "verification": "Borys pokazuje paragon roweru i kłódki (2), własne zdjęcie tego samego roweru (1). Próg 2. Zgoda na cenę przed pracą.",
+  "reward_coins": 160,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_11_02_bicycle_stand.title",
+    "client": "job.t43_11_02_bicycle_stand.client",
+    "situation": "job.t43_11_02_bicycle_stand.situation"
+  },
+  "lines": [
+    "borys",
+    "locksmith",
+    "borys",
+    "locksmith"
+  ],
+  "after": [
+    "kuba"
+  ],
+  "cards": [
+    "receipt",
+    "photo"
+  ],
+  "threshold": 2,
+  "place": "workshop",
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

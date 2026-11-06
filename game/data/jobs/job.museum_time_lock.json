@@ -18,6 +18,9 @@
     "rygiel",
     "zuzanna"
   ],
+  "after": [
+    "rygiel"
+  ],
   "cards": [
     "institution"
   ],

@@ -39,7 +39,7 @@ func _ready() -> void:
 	var reward := int(job.get("reward_coins", 0))
 	var tip := expected_tip(reward)
 	_fill_receipt(job, reward, tip)
-	result_label.text = I18n.t(&"job.repaired" if String(job.get("family", "")) == "time_lock" else &"job.opened")  # D-60
+	result_label.text = I18n.t(result_key(job))
 	reward_label.text = I18n.t(&"job.reward_fmt").format({"n": reward})
 	tip_label.text = I18n.t(&"job.tip_fmt").format({"n": tip}) if tip > 0 else ""
 	tip_label.visible = tip > 0
@@ -47,7 +47,7 @@ func _ready() -> void:
 	continue_button.pressed.connect(_settle)
 	paper.resized.connect(_layout_fields)
 	_layout_fields()
-	_play_reward_sequence()  # audio/v2 rewards: door_open -> thanks -> coins (mix README)
+	_play_reward_sequence(not JobRun.is_talk(job))  # audio/v2 rewards: door_open -> thanks -> coins (mix README)
 
 
 func _settle() -> void:
@@ -70,7 +70,14 @@ func go_back() -> bool:
 ## The tip JobRun.complete() will pay (N-25: 25% for a clean opening). JobRun.last_tip is only
 ## set by complete(), which runs on Continue, so it cannot be read here.
 static func expected_tip(reward: int) -> int:
-	return int(reward * 0.25) if JobRun.clean and reward > 0 else 0
+	return int(reward * 0.25) if JobRun.clean and reward > 0 and not JobRun.is_talk(JobRun.current_job) else 0
+
+
+## Result line: opened (default), clock repaired (time_lock, D-60) or settled by talking (T43 "talk").
+static func result_key(job: Dictionary) -> StringName:
+	if JobRun.is_talk(job):
+		return &"job.resolved"
+	return &"job.repaired" if String(job.get("family", "")) == "time_lock" else &"job.opened"
 
 
 ## Short client name for the receipt: the client line up to the first comma or full stop.
@@ -91,7 +98,7 @@ static func client_name(job: Dictionary) -> String:
 ## T54: the service line names the lock family ("Wafer lock opening"; time_lock is a repair, D-60);
 ## falls back to the generic "Emergency lock opening".
 static func service_text(job: Dictionary) -> String:
-	var key := StringName("receipt.service." + String(job.get("family", "")))
+	var key := StringName("receipt.service." + ("talk" if JobRun.is_talk(job) else String(job.get("family", ""))))
 	return I18n.t(key) if I18n.has_key(key) else I18n.t(&"receipt.service")
 
 
@@ -157,10 +164,12 @@ func receipt_texts() -> Dictionary:
 	return out
 
 
-func _play_reward_sequence() -> void:
-	Sfx.play_jingle(&"jingle_door_open")
+func _play_reward_sequence(opened := true) -> void:
+	if opened:  # T43 "talk": nothing was opened, so no door
+		Sfx.play_jingle(&"jingle_door_open")
 	Sfx.play_ui(&"coins_on_counter")  # S04 diegetic payment sound
-	Sfx.play_reward(&"door_open")
+	if opened:
+		Sfx.play_reward(&"door_open")
 	await get_tree().create_timer(1.4).timeout
 	if not is_inside_tree():
 		return

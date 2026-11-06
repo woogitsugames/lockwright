@@ -1,0 +1,34 @@
+{
+  "id": "job.t43_10_01_renovator_bureau",
+  "chapter": 10,
+  "order": 1,
+  "district": "Port",
+  "family": "axial_slider",
+  "tier": 2,
+  "verification": "Gosia okazuje fakturę mebla (2) i dowód przyjęcia do własnej pracowni (1). Próg 2 dla rzeczy w posiadaniu. Wycena zaakceptowana.",
+  "reward_coins": 100,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_10_01_renovator_bureau.title",
+    "client": "job.t43_10_01_renovator_bureau.client",
+    "situation": "job.t43_10_01_renovator_bureau.situation"
+  },
+  "lines": [
+    "gosia",
+    "locksmith",
+    "gosia",
+    "locksmith"
+  ],
+  "after": [
+    "gosia"
+  ],
+  "cards": [
+    "invoice",
+    "receipt"
+  ],
+  "threshold": 2,
+  "place": "workshop",
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

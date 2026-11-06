@@ -8,6 +8,20 @@ const JOBS_DIR := "res://data/jobs"
 const JOBS_CH7_DIR := "res://data/jobs_ch7"  # task 11: chapter 7, only behind "po premierze"
 
 
+## List order: chapter as a NUMBER (T43: "10" sorted before "9" as text), then the job's "order" within the
+## chapter (T43 chapters 9-12; refusals no longer jump to the top because "job.refuse_" sorts first), then id.
+static func job_before(a: Dictionary, b: Dictionary) -> bool:
+	var ca := int(a.get("chapter", 99))
+	var cb := int(b.get("chapter", 99))
+	if ca != cb:
+		return ca < cb
+	var oa := int(a.get("order", 0))
+	var ob := int(b.get("order", 0))
+	if oa != ob:
+		return oa < ob
+	return String(a.get("id", "")) < String(b.get("id", ""))
+
+
 func _ready() -> void:
 	Sfx.play_ambience(&"stairwell")
 	Sfx.play_music(&"main_theme")
@@ -23,12 +37,14 @@ func _ready() -> void:
 	for path in DirAccess.get_files_at(JOBS_DIR):
 		if path.ends_with(".json"):
 			jobs.append(JSON.parse_string(FileAccess.get_file_as_string(JOBS_DIR + "/" + path)))
-	jobs.sort_custom(func(a, b): return str(int(a.get("chapter", 9))) + a.get("id", "") < str(int(b.get("chapter", 9))) + b.get("id", ""))
+	jobs.sort_custom(job_before)
 	var post_release: bool = Save.get_value("post_release", false)  # task 11: chapter 7 behind "po premierze"
 	if post_release:
 		for path in DirAccess.get_files_at(JOBS_CH7_DIR):
 			if path.ends_with(".json"):
 				jobs.append(JSON.parse_string(FileAccess.get_file_as_string(JOBS_CH7_DIR + "/" + path)))
+	if post_release:
+		jobs.sort_custom(job_before)  # chapter 7 sits between 6 and 9
 	for job in jobs:
 		if not JobRun.is_playable(job):
 			continue  # N-05: hide jobs whose family is not implemented in lockcore

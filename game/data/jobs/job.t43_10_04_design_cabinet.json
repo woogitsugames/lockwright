@@ -1,0 +1,34 @@
+{
+  "id": "job.t43_10_04_design_cabinet",
+  "chapter": 10,
+  "order": 4,
+  "district": "Śródmieście",
+  "family": "magnetic",
+  "tier": 2,
+  "verification": "Najem pracowni Marty (2), faktura szafki (2). Lokal firmy, próg danych 3. Wycena zaakceptowana.",
+  "reward_coins": 130,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_10_04_design_cabinet.title",
+    "client": "job.t43_10_04_design_cabinet.client",
+    "situation": "job.t43_10_04_design_cabinet.situation"
+  },
+  "lines": [
+    "marta",
+    "locksmith",
+    "marta",
+    "locksmith"
+  ],
+  "after": [
+    "marta"
+  ],
+  "cards": [
+    "lease",
+    "invoice"
+  ],
+  "threshold": 3,
+  "place": "workshop",
+  "time": "evening",
+  "outcome": "open",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

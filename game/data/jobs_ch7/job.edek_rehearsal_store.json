@@ -18,6 +18,9 @@
     "locksmith",
     "edek"
   ],
+  "after": [
+    "edek"
+  ],
   "cards": [
     "manager",
     "institution"

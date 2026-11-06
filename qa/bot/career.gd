@@ -526,8 +526,9 @@ func _act_ui(base: String) -> Variant:
 				return _press_named(["RefuseButton", "Refuse"], "refuse job")
 			return _press_named(["AcceptButton", "Accept", "Open", "Continue"], "accept job")
 		"job_payment":
+			var talk: bool = _jr().is_talk(_jr().current_job)  # T43: settled without a lock, no lock entry to update
 			var pressed := _press_named(["ContinueButton", "Continue", "Ok"], "payment")
-			if pressed and not report["locks"].is_empty():
+			if pressed and not talk and not report["locks"].is_empty():
 				await _wait_frames(4)
 				var last: Dictionary = report["locks"][-1]
 				last["coins_after"] = int(_al("Save").get_value("coins", 0))

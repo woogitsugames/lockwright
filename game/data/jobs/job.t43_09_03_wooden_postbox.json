@@ -1,0 +1,34 @@
+{
+  "id": "job.t43_09_03_wooden_postbox",
+  "chapter": 9,
+  "order": 3,
+  "district": "Śródmieście",
+  "family": "egyptian",
+  "tier": 2,
+  "verification": "Faktura muzeum (2) i pismo/zlecenie kuratorki (2). Rekwizyt przyniesiony do warsztatu. Wycena zaakceptowana.",
+  "reward_coins": 60,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_09_03_wooden_postbox.title",
+    "client": "job.t43_09_03_wooden_postbox.client",
+    "situation": "job.t43_09_03_wooden_postbox.situation"
+  },
+  "lines": [
+    "zuzanna",
+    "locksmith",
+    "zuzanna",
+    "locksmith"
+  ],
+  "after": [
+    "zuzanna"
+  ],
+  "cards": [
+    "invoice",
+    "institution"
+  ],
+  "threshold": 2,
+  "place": "workshop",
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}

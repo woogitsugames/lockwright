@@ -1,0 +1,34 @@
+{
+  "id": "job.t43_11_07_wrong_delivery",
+  "chapter": 11,
+  "order": 7,
+  "district": "Nocny Rynek",
+  "family": "pin_tumbler",
+  "tier": 3,
+  "verification": "Leon okazuje dokument dostawy (2), Stefan potwierdza numer właściwego odbiorcy (2). Próg 2. Konsultacja 40 monet, bez otwierania jakichkolwiek drzwi.",
+  "reward_coins": 40,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_11_07_wrong_delivery.title",
+    "client": "job.t43_11_07_wrong_delivery.client",
+    "situation": "job.t43_11_07_wrong_delivery.situation"
+  },
+  "lines": [
+    "leon",
+    "stefan",
+    "locksmith",
+    "leon"
+  ],
+  "after": [
+    "leon"
+  ],
+  "cards": [
+    "invoice",
+    "witness"
+  ],
+  "threshold": 2,
+  "place": "kiosk",
+  "time": "day",
+  "outcome": "talk",
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+}
