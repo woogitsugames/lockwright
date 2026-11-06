@@ -1,0 +1,5 @@
+[WARN] game/i18n/strings.csv:223  settings.voice_pack.line: pl value identical to en (possible untranslated text): "{title}: {state}"
+[WARN] game/i18n/strings.csv:223  settings.voice_pack.line: de value identical to en (possible untranslated text): "{title}: {state}"
+------------------------------------------------------------
+i18n lint: 948 keys checked, 0 error(s), 2 warning(s)
+i18n lint: OK (warnings only)

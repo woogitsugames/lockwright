@@ -1,0 +1,14 @@
+keys,en,pl,de,fr,es
+receipt.tip,,,,Pourboire (ouverture soignée),Propina (apertura limpia)
+tutorial.combo.step2,,,,"Droit : choisis une molette, tourne-la en haut ou bas.",
+tutorial.time_lock.step5,,,,,El reloj marcha con regularidad. Buena reparación.
+tutorial.magnetic.step3,,,,La goupille réagit en retard. Observe son mouvement.,
+lock.zone_tension,,,,tension,
+lock.flap_pause,,,,pause,
+ui.controls.auto_desc,,,,La tension reste à un niveau sûr ; un pouce guide le crochet.,
+ui.controls.manual_desc,,,,Le pouce gauche maintient la tension ; le droit lève les goupilles.,
+practice.t01.goal,,,,Garde un effort régulier jusqu'à ce que le verrou cède.,
+practice.t02.goal,,,,Repère la première cheville qui résiste ; laisse les autres.,
+practice.t30.goal,,,,Déclenche et réarme une fois ; puis ouvre sans te presser.,Activa y reinicia una vez; luego abre sin prisas.
+lock.disc_hint,,,,Gauche : tourne peu. Droit : tourne un disque lentement.,
+practice.t26.goal,,,,,Pasa dos muescas falsas antes de llegar al paso real.
