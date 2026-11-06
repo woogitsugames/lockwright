@@ -1,4 +1,2300 @@
 {
+ "de/job.allotment_shed.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16481243,
+  "speaker": "zbyszek",
+  "subtitle": "Die Parzelle läuft auf meine Frau, aber ich grabe hier. Sie ist wegen ihres Knies zu Hause.",
+  "text": "[cheerful] Die Parzelle läuft auf meine Frau, aber ich grabe hier. Sie ist wegen ihres Knies zu Hause.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.allotment_shed.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8946075,
+  "speaker": "locksmith",
+  "subtitle": "Haben Sie Ihren Kleingärtnerausweis? Und jemanden von der Nachbarparzelle?",
+  "text": "Haben Sie Ihren Kleingärtnerausweis? Und jemanden von der Nachbarparzelle?",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.allotment_shed.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1317497,
+  "speaker": "waldek",
+  "subtitle": "Zbyszek ist länger hier als die Laube. Länger als ich.",
+  "text": "[chuckles] Zbyszek ist länger hier als die Laube. Länger als ich.",
+  "voice_id": "6ECEPYinwnizS5hjagZQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.allotment_shed.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5568790,
+  "speaker": "zbyszek",
+  "subtitle": "Nehmen Sie Gurken? Geld nehme ich nicht mit in den Garten.",
+  "text": "[warmly] Nehmen Sie Gurken? Geld nehme ich nicht mit in den Garten.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.bike_interview.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7717480,
+  "speaker": "kuba",
+  "subtitle": "Ich habe den Code sicherer gemacht. So sicher, dass ich ihn selbst nicht mehr kenne.",
+  "text": "[nervous laugh] Ich habe den Code sicherer gemacht. So sicher, dass ich ihn selbst nicht mehr kenne.",
+  "voice_id": "VkZzWHJdAdVjOsFVZT0o",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.bike_interview.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14875872,
+  "speaker": "locksmith",
+  "subtitle": "Das Rad steht auf der Straße. Haben Sie etwas, das belegt, dass es Ihnen gehört?",
+  "text": "Das Rad steht auf der Straße. Haben Sie etwas, das belegt, dass es Ihnen gehört?",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.bike_interview.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15105383,
+  "speaker": "kuba",
+  "subtitle": "Ein Urlaubsfoto und die Quittung in meinen E-Mails. Das Fahrrad sieht darauf besser aus als ich.",
+  "text": "[sheepish] Ein Urlaubsfoto und die Quittung in meinen E-Mails. Das Fahrrad sieht darauf besser aus als ich.",
+  "voice_id": "VkZzWHJdAdVjOsFVZT0o",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.bike_interview.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13488860,
+  "speaker": "locksmith",
+  "subtitle": "Das genügt. Richten Sie Ihre Krawatte, während ich arbeite.",
+  "text": "[amused] Das genügt. Richten Sie Ihre Krawatte, während ich arbeite.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.bramah_bureau.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7550732,
+  "speaker": "gosia",
+  "subtitle": "Auktionsrechnung, Beschreibung und Fotos. Das Schloss bleibt unversehrt.",
+  "text": "[matter-of-fact] Auktionsrechnung, Beschreibung und Fotos. Das Schloss bleibt unversehrt.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.bramah_bureau.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 983450,
+  "speaker": "locksmith",
+  "subtitle": "So ein Schloss hing einmal in einem Londoner Schaufenster. Mit einer Belohnung.",
+  "text": "[thoughtful] So ein Schloss hing einmal in einem Londoner Schaufenster. Mit einer Belohnung.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.bramah_bureau.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8489883,
+  "speaker": "gosia",
+  "subtitle": "Hat es jemand geöffnet?",
+  "text": "[curious] Hat es jemand geöffnet?",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.bramah_bureau.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8975482,
+  "speaker": "locksmith",
+  "subtitle": "Nach mehr als sechzig Jahren. Ich erzähle es, wenn ich fertig bin.",
+  "text": "[smiling] Nach mehr als sechzig Jahren. Ich erzähle es, wenn ich fertig bin.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.brussels_townhouse.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6020169,
+  "speaker": "magda",
+  "subtitle": "Ich stehe wie Julia auf dem Balkon. Nur ist Romeo sechzig und hat den Torschlüssel.",
+  "text": "[laughs] Ich stehe wie Julia auf dem Balkon. Nur ist Romeo sechzig und hat den Torschlüssel.",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.brussels_townhouse.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8266119,
+  "speaker": "jacques",
+  "subtitle": "Madame Magda wohnt hier schon immer. Depuis toujours.",
+  "text": "[warmly] Madame Magda wohnt hier schon immer. Depuis toujours.",
+  "voice_id": "taJqYirQraEm0jqJT4Nr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.brussels_townhouse.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12190472,
+  "speaker": "locksmith",
+  "subtitle": "Mietvertrag, Meldeadresse von der Gemeinde und ein Nachbar. Alles da. Lehnen Sie sich nicht hinaus.",
+  "text": "[calm] Mietvertrag, Meldeadresse von der Gemeinde und ein Nachbar. Alles da. Lehnen Sie sich nicht hinaus.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.brussels_townhouse.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 647470,
+  "speaker": "magda",
+  "subtitle": "Die Geranien sind gegossen. Das war der ganze Auftrag.",
+  "text": "[cheerful] Die Geranien sind gegossen. Das war der ganze Auftrag.",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.cat_bathroom.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15317531,
+  "speaker": "marta",
+  "subtitle": "Er hat das absichtlich gemacht. Er sah mir direkt in die Augen, als er auf die Klinke sprang.",
+  "text": "[exasperated] Er hat das absichtlich gemacht. Er sah mir direkt in die Augen, als er auf die Klinke sprang.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.cat_bathroom.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16149741,
+  "speaker": "locksmith",
+  "subtitle": "Sie sind in Ihrer eigenen Wohnung, er ist im Bad. Diesmal brauchen wir keine Unterlagen.",
+  "text": "[reassuring] Sie sind in Ihrer eigenen Wohnung, er ist im Bad. Diesmal brauchen wir keine Unterlagen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.cat_bathroom.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14746160,
+  "speaker": "marta",
+  "subtitle": "Und wenn er Angst bekommt?",
+  "text": "[worried] Und wenn er Angst bekommt?",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.cat_bathroom.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1023874,
+  "speaker": "locksmith",
+  "subtitle": "Reden Sie weiter mit ihm. Ich bin leiser als er.",
+  "text": "[softly] Reden Sie weiter mit ihm. Ich bin leiser als er.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.charleroi_letters.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13439518,
+  "speaker": "ola",
+  "subtitle": "Ich rufe nicht wegen einer Öffnung an, sondern um Rat zu fragen. Frau Martine hat Opas Kästchen.",
+  "text": "[hesitant] Ich rufe nicht wegen einer Öffnung an, sondern um Rat zu fragen. Frau Martine hat Opas Kästchen.",
+  "voice_id": "wu1DtvHldVyojBw205MB",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.charleroi_letters.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15795688,
+  "speaker": "martine",
+  "subtitle": "C'est à votre famille. Ich habe nur darauf aufgepasst.",
+  "text": "[gently] C'est à votre famille. Ich habe nur darauf aufgepasst.",
+  "voice_id": "PzzPLBpVABDDUlZN7ucR",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.charleroi_letters.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7896376,
+  "speaker": "ola",
+  "subtitle": "Siebzig Jahre lang haben Sie darauf aufgepasst?",
+  "text": "[surprised] Siebzig Jahre lang haben Sie darauf aufgepasst?",
+  "voice_id": "wu1DtvHldVyojBw205MB",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.charleroi_letters.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10393891,
+  "speaker": "locksmith",
+  "subtitle": "Sie beide wollen es öffnen lassen. Die einfachste Prüfung meiner Laufbahn.",
+  "text": "[warmly] Sie beide wollen es öffnen lassen. Die einfachste Prüfung meiner Laufbahn.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.community_notice_case.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13028421,
+  "speaker": "basia",
+  "subtitle": "Der Dienstplan ist fertig. Nur der Schaukasten verweigert die Mitarbeit.",
+  "text": "[cheerful] Der Dienstplan ist fertig. Nur der Schaukasten verweigert die Mitarbeit.",
+  "voice_id": "slj6yQp264oJ5nXTGiLJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.community_notice_case.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5756829,
+  "speaker": "elzbieta",
+  "subtitle": "Ich verwalte dieses Haus. Hier ist der unterschriebene Beschluss der Gemeinschaft.",
+  "text": "[formally] Ich verwalte dieses Haus. Hier ist der unterschriebene Beschluss der Gemeinschaft.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.community_notice_case.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5490240,
+  "speaker": "locksmith",
+  "subtitle": "Zustimmung und Preis sind geklärt. Ich öffne den gemeinsamen Schaukasten.",
+  "text": "Zustimmung und Preis sind geklärt. Ich öffne den gemeinsamen Schaukasten.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.community_notice_case.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3927968,
+  "speaker": "basia",
+  "subtitle": "Erster Aushang: der Staubsaugdienst. Ein starker Anfang.",
+  "text": "[amused] Erster Aushang: der Staubsaugdienst. Ein starker Anfang.",
+  "voice_id": "slj6yQp264oJ5nXTGiLJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.dollhouse_wooden_lock.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7981612,
+  "speaker": "hania",
+  "subtitle": "Lala sitzt seit Dienstag darin fest. Ihr ist langweilig.",
+  "text": "[serious] Lala sitzt seit Dienstag darin fest. Ihr ist langweilig.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.dollhouse_wooden_lock.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9608531,
+  "speaker": "tomasz",
+  "subtitle": "Opa nannte es ein ägyptisches Schloss. Ich weiß nicht, ob das stimmt.",
+  "text": "[thoughtful] Opa nannte es ein ägyptisches Schloss. Ich weiß nicht, ob das stimmt.",
+  "voice_id": "kmrKRziyBLKhbqe5EalT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.dollhouse_wooden_lock.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8108836,
+  "speaker": "locksmith",
+  "subtitle": "So hat sich der Name eingebürgert. Die wahre Geschichte ist noch interessanter. Die erzähle ich danach.",
+  "text": "[smiling] So hat sich der Name eingebürgert. Die wahre Geschichte ist noch interessanter. Die erzähle ich danach.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.dollhouse_wooden_lock.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3093597,
+  "speaker": "hania",
+  "subtitle": "Machst du einen neuen Schlüssel? Aus Holz? Papa hat ein Brett.",
+  "text": "[excited] Machst du einen neuen Schlüssel? Aus Holz? Papa hat ein Brett.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.drummer_locker.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16075291,
+  "speaker": "iga",
+  "subtitle": "Ich könnte mit Löffeln spielen. Aber lieber nicht. In einer Stunde ist der Auftritt.",
+  "text": "[dry] Ich könnte mit Löffeln spielen. Aber lieber nicht. In einer Stunde ist der Auftritt.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.drummer_locker.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2856038,
+  "speaker": "hall_manager",
+  "subtitle": "Spind acht, Iga zahlt monatlich. Steht in meinem Notizbuch.",
+  "text": "[matter-of-fact] Spind acht, Iga zahlt monatlich. Steht in meinem Notizbuch.",
+  "voice_id": "RY3T4wJNr948hKf9RLlp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.drummer_locker.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10965428,
+  "speaker": "locksmith",
+  "subtitle": "Ihr Notizbuch genügt. Herr Edek sagte, Sie schreiben alles auf.",
+  "text": "Ihr Notizbuch genügt. Herr Edek sagte, Sie schreiben alles auf.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.drummer_locker.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2125061,
+  "speaker": "iga",
+  "subtitle": "Wenn Sie es rechtzeitig schaffen, spielen wir etwas für Sie. Laut.",
+  "text": "[cheerful] Wenn Sie es rechtzeitig schaffen, spielen wir etwas für Sie. Laut.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.edek_rehearsal_store.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10846652,
+  "speaker": "edek",
+  "subtitle": "Der Lagerraum steht auf meiner Liste. Er ist vom alten Theater übrig.",
+  "text": "[matter-of-fact] Der Lagerraum steht auf meiner Liste. Er ist vom alten Theater übrig.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.edek_rehearsal_store.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2945078,
+  "speaker": "iga",
+  "subtitle": "Wir leihen uns Stühle. Schlagzeug hat diesmal keiner bestellt.",
+  "text": "[cheerful] Wir leihen uns Stühle. Schlagzeug hat diesmal keiner bestellt.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.edek_rehearsal_store.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4034351,
+  "speaker": "locksmith",
+  "subtitle": "Ihre Liste und das Schreiben der Uni stimmen überein. Der Preis auch.",
+  "text": "Ihre Liste und das Schreiben der Uni stimmen überein. Der Preis auch.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.edek_rehearsal_store.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5109870,
+  "speaker": "edek",
+  "subtitle": "Gut. Hoffentlich halten die Stühle den Takt besser als die Band.",
+  "text": "[chuckles] Gut. Hoffentlich halten die Stühle den Takt besser als die Band.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.finnish_sailor.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 137883,
+  "speaker": "aino",
+  "subtitle": "In Finnland hat jeder so ein Vorhängeschloss. Ohne Schlüssel bekommt es niemand auf.",
+  "text": "[proudly] In Finnland hat jeder so ein Vorhängeschloss. Ohne Schlüssel bekommt es niemand auf.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.finnish_sailor.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13975351,
+  "speaker": "captain",
+  "subtitle": "Die Truhe gehört Aino, dafür verbürge ich mich. Morgen um sechs legen wir ab.",
+  "text": "[firmly] Die Truhe gehört Aino, dafür verbürge ich mich. Morgen um sechs legen wir ab.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.finnish_sailor.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3166849,
+  "speaker": "locksmith",
+  "subtitle": "Der Kapitän bürgt, das Seemannsbuch passt. Dann sehen wir mal.",
+  "text": "Der Kapitän bürgt, das Seemannsbuch passt. Dann sehen wir mal.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.finnish_sailor.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5022720,
+  "speaker": "aino",
+  "subtitle": "Wenn Sie es öffnen, erzähle ich Ihnen, woher diese Erfindung stammt.",
+  "text": "[dry] Wenn Sie es öffnen, erzähle ich Ihnen, woher diese Erfindung stammt.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ghent_beguinage.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13408814,
+  "speaker": "pieter",
+  "subtitle": "Auf Polnisch kenne ich nur „dzień dobry“ und „pierogi“.",
+  "text": "[chuckles] Auf Polnisch kenne ich nur „dzień dobry“ und „pierogi“.",
+  "voice_id": "Mci0o6kGpWMOQ5wCCk74",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ghent_beguinage.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16058740,
+  "speaker": "locksmith",
+  "subtitle": "Das ist schon die halbe Sprache.",
+  "text": "[amused] Das ist schon die halbe Sprache.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ghent_beguinage.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2321820,
+  "speaker": "pieter",
+  "subtitle": "Ein Schreiben des Pfarrgemeinderats. Mein Vorgänger hat den Schlüssel mit in den Himmel genommen.",
+  "text": "[gently] Ein Schreiben des Pfarrgemeinderats. Mein Vorgänger hat den Schlüssel mit in den Himmel genommen.",
+  "voice_id": "Mci0o6kGpWMOQ5wCCk74",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ghent_beguinage.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11061053,
+  "speaker": "locksmith",
+  "subtitle": "Keine Spuren, versprochen. Dieses Schloss ist älter als mein Haus.",
+  "text": "[reassuring] Keine Spuren, versprochen. Dieses Schloss ist älter als mein Haus.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.gosia_workbench_drawer.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9870178,
+  "speaker": "gosia",
+  "subtitle": "Ich habe den ganzen Tisch gekauft. Die Schublade erkennt die Rechnung nicht an.",
+  "text": "[dry] Ich habe den ganzen Tisch gekauft. Die Schublade erkennt die Rechnung nicht an.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.gosia_workbench_drawer.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10755616,
+  "speaker": "locksmith",
+  "subtitle": "Rechnung, Foto von der Abholung, vereinbarter Preis. Alles stimmt.",
+  "text": "Rechnung, Foto von der Abholung, vereinbarter Preis. Alles stimmt.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.gosia_workbench_drawer.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2469591,
+  "speaker": "gosia",
+  "subtitle": "Bitte ohne Spuren. Der Tisch kommt in den Gemeinschaftsraum.",
+  "text": "[carefully] Bitte ohne Spuren. Der Tisch kommt in den Gemeinschaftsraum.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.gosia_workbench_drawer.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15354818,
+  "speaker": "locksmith",
+  "subtitle": "Einverstanden. Ausnahmsweise waren die Papiere vor mir da.",
+  "text": "[amused] Einverstanden. Ausnahmsweise waren die Papiere vor mir da.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.grandma_broth.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13708308,
+  "speaker": "halina",
+  "subtitle": "Ich war doch nur kurz draußen, mein Junge. Mit dem Müll.",
+  "text": "[flustered] Ich war doch nur kurz draußen, mein Junge. Mit dem Müll.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.grandma_broth.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6955156,
+  "speaker": "zosia",
+  "subtitle": "Ich habe das Gas vom Treppenabsatz aus abgedreht. Seit vierzig Jahren wohnen wir Wand an Wand.",
+  "text": "[matter-of-fact] Ich habe das Gas vom Treppenabsatz aus abgedreht. Seit vierzig Jahren wohnen wir Wand an Wand.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.grandma_broth.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13091665,
+  "speaker": "locksmith",
+  "subtitle": "Das zählt fast wie ein Dokument. Und der Brief im Briefkasten ist für Sie?",
+  "text": "Das zählt fast wie ein Dokument. Und der Brief im Briefkasten ist für Sie?",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.grandma_broth.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7521171,
+  "speaker": "halina",
+  "subtitle": "Die Nudeln habe ich selbst gemacht. Eine Schüssel ist für Sie. Keine Widerrede.",
+  "text": "[firmly] Die Nudeln habe ich selbst gemacht. Eine Schüssel ist für Sie. Keine Widerrede.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.grandpa_chest.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5765523,
+  "speaker": "krystyna",
+  "subtitle": "Papa hat nie gesagt, was er darin aufbewahrte. Nicht einmal uns.",
+  "text": "[quietly] Papa hat nie gesagt, was er darin aufbewahrte. Nicht einmal uns.",
+  "voice_id": "UCqMuSKXCNw4J0m4W1zN",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.grandpa_chest.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5579850,
+  "speaker": "ola",
+  "subtitle": "Mama, er fragt nicht nach der Truhe. Er fragt, ob das Haus dir gehört.",
+  "text": "[patiently] Mama, er fragt nicht nach der Truhe. Er fragt, ob das Haus dir gehört.",
+  "voice_id": "wu1DtvHldVyojBw205MB",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.grandpa_chest.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7806283,
+  "speaker": "krystyna",
+  "subtitle": "Es gehört mir. Die Eigentumsurkunde liegt in der Kommode, unter der Tischdecke.",
+  "text": "Es gehört mir. Die Eigentumsurkunde liegt in der Kommode, unter der Tischdecke.",
+  "voice_id": "UCqMuSKXCNw4J0m4W1zN",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.grandpa_chest.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11593514,
+  "speaker": "ola",
+  "subtitle": "Briefe. Aus Charleroi. An Oma, auf Polnisch, mit belgischen Briefmarken.",
+  "text": "[moved] Briefe. Aus Charleroi. An Oma, auf Polnisch, mit belgischen Briefmarken.",
+  "voice_id": "wu1DtvHldVyojBw205MB",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.halina_recipe_box.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4370501,
+  "speaker": "halina",
+  "subtitle": "Drinnen ist das Rezept für die Klöße. Ich weiß nur noch das Wort „Handvoll“.",
+  "text": "[cheerful] Drinnen ist das Rezept für die Klöße. Ich weiß nur noch das Wort „Handvoll“.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.halina_recipe_box.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1591419,
+  "speaker": "zosia",
+  "subtitle": "Das ist Halinas Kästchen. Auf dem Foto steht es neben ihrer Tasse.",
+  "text": "[matter-of-fact] Das ist Halinas Kästchen. Auf dem Foto steht es neben ihrer Tasse.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.halina_recipe_box.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6490588,
+  "speaker": "locksmith",
+  "subtitle": "Foto, Zeugin, vereinbarter Preis. Wir können anfangen.",
+  "text": "Foto, Zeugin, vereinbarter Preis. Wir können anfangen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.halina_recipe_box.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13774981,
+  "speaker": "halina",
+  "subtitle": "Danach klären wir, wie viel eine Handvoll wiegt. Das ist unser alter Streit.",
+  "text": "[laughs] Danach klären wir, wie viel eine Handvoll wiegt. Das ist unser alter Streit.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.kiosk_shutter.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1933440,
+  "speaker": "stefan",
+  "subtitle": "Seit zweiunddreißig Jahren hängt dieses Vorhängeschloss hier. Noch nie geölt.",
+  "text": "[proudly] Seit zweiunddreißig Jahren hängt dieses Vorhängeschloss hier. Noch nie geölt.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.kiosk_shutter.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3460071,
+  "speaker": "locksmith",
+  "subtitle": "Frau Krysia bürgt, der Brief ist da. Ich brauche trotzdem noch einen Nachweis.",
+  "text": "Frau Krysia bürgt, der Brief ist da. Ich brauche trotzdem noch einen Nachweis.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.kiosk_shutter.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9361498,
+  "speaker": "stefan",
+  "subtitle": "Ein Foto vom Eröffnungstag, 1994. Mein Schnurrbart war besser in Form als der Kiosk.",
+  "text": "[laughs] Ein Foto vom Eröffnungstag, neunzehnhundertvierundneunzig. Mein Schnurrbart war besser in Form als der Kiosk.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.kiosk_shutter.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5978372,
+  "speaker": "krysia",
+  "subtitle": "Stefan ist länger hier als die Bushaltestelle. Der Bus wird's bestätigen.",
+  "text": "[cheerful] Stefan ist länger hier als die Bushaltestelle. Der Bus wird's bestätigen.",
+  "voice_id": "MAdUcSYw2pgceDixE8xr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.krakow_antiquarian.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3753391,
+  "speaker": "leopold",
+  "subtitle": "Der Tresor gehört mir, ich miete von der Stadt. Die Dame aus dem Café nebenan bestätigt das.",
+  "text": "[courteous] Der Tresor gehört mir, ich miete von der Stadt. Die Dame aus dem Café nebenan bestätigt das.",
+  "voice_id": "oTU0zX3uccvQuEQHwLxQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.krakow_antiquarian.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1830012,
+  "speaker": "leopold",
+  "subtitle": "Und wenn Sie schon dabei sind: dieses kleine Kästchen. Ein Kunde hat es zur Schätzung dagelassen.",
+  "text": "[casually] Und wenn Sie schon dabei sind: dieses kleine Kästchen. Ein Kunde hat es zur Schätzung dagelassen.",
+  "voice_id": "oTU0zX3uccvQuEQHwLxQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.krakow_antiquarian.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5592438,
+  "speaker": "locksmith",
+  "subtitle": "Den Tresor ja. Das Kästchen nein. Sein Besitzer soll persönlich kommen.",
+  "text": "[firmly] Den Tresor ja. Das Kästchen nein. Sein Besitzer soll persönlich kommen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.krakow_antiquarian.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2357004,
+  "speaker": "leopold",
+  "subtitle": "Sie haben recht. Ich werde alt. Und damit nicht geduldiger.",
+  "text": "[sighs] Sie haben recht. Ich werde alt. Und damit nicht geduldiger.",
+  "voice_id": "oTU0zX3uccvQuEQHwLxQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.krakow_tenement_gate.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4177397,
+  "speaker": "wanda",
+  "subtitle": "Der Denkmalpfleger sagte: kein einziges Loch. Nicht eins.",
+  "text": "[stern] Der Denkmalpfleger sagte: kein einziges Loch. Nicht eins.",
+  "voice_id": "2giFtftrZRatK3g51ddT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.krakow_tenement_gate.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13393100,
+  "speaker": "locksmith",
+  "subtitle": "Ganz richtig. Da hat sich vor hundertdreißig Jahren jemand viel Mühe gegeben.",
+  "text": "[respectfully] Ganz richtig. Da hat sich vor hundertdreißig Jahren jemand viel Mühe gegeben.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.krakow_tenement_gate.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14248424,
+  "speaker": "zuzanna",
+  "subtitle": "Hallo, da bin ich wieder. Ich mache hier Praktikum. Die Prüfung habe ich bestanden. Zimmer 412 hat geholfen.",
+  "text": "[cheerful] Hallo, da bin ich wieder. Ich mache hier Praktikum. Die Prüfung habe ich bestanden. Zimmer vierhundertzwölf hat geholfen.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.krakow_tenement_gate.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6708675,
+  "speaker": "wanda",
+  "subtitle": "Beschluss der Hausgemeinschaft und schriftlicher Auftrag. Bitte sehr.",
+  "text": "[formally] Beschluss der Hausgemeinschaft und schriftlicher Auftrag. Bitte sehr.",
+  "voice_id": "2giFtftrZRatK3g51ddT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.krystyna_wooden_album.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5077375,
+  "speaker": "krystyna",
+  "subtitle": "Józef hat dieses Kästchen gemacht. Der kleine Schlüssel war wohl auch aus Holz.",
+  "text": "[wistful] Józef hat dieses Kästchen gemacht. Der kleine Schlüssel war wohl auch aus Holz.",
+  "voice_id": "UCqMuSKXCNw4J0m4W1zN",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.krystyna_wooden_album.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 32114,
+  "speaker": "ola",
+  "subtitle": "Wir haben ein Foto, auf dem er es hält. Und das Kästchen steht bei Mama.",
+  "text": "[gently] Wir haben ein Foto, auf dem er es hält. Und das Kästchen steht bei Mama.",
+  "voice_id": "wu1DtvHldVyojBw205MB",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.krystyna_wooden_album.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12142281,
+  "speaker": "locksmith",
+  "subtitle": "Das Foto und das Wort Ihrer Tochter genügen. Ich notiere den Preis.",
+  "text": "Das Foto und das Wort Ihrer Tochter genügen. Ich notiere den Preis.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.krystyna_wooden_album.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8770962,
+  "speaker": "krystyna",
+  "subtitle": "Gut. Aber fragen Sie nicht, was wir damals getragen haben.",
+  "text": "[laughs softly] Gut. Aber fragen Sie nicht, was wir damals getragen haben.",
+  "voice_id": "UCqMuSKXCNw4J0m4W1zN",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.liege_bakery.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2162282,
+  "speaker": "nadia",
+  "subtitle": "Mein Onkel hatte dreißig Schlüssel und keinen einzigen beschriftet.",
+  "text": "[sighs] Mein Onkel hatte dreißig Schlüssel und keinen einzigen beschriftet.",
+  "voice_id": "Aw18Rz5fTDHznXEpZ44m",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.liege_bakery.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1195698,
+  "speaker": "locksmith",
+  "subtitle": "Das Schloss hat einen fremden Schlüssel gespürt und war beleidigt. Das ist sein Job.",
+  "text": "[amused] Das Schloss hat einen fremden Schlüssel gespürt und war beleidigt. Das ist sein Job.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.liege_bakery.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9851808,
+  "speaker": "nadia",
+  "subtitle": "Übergabepapiere und Mietvertrag. Der Teig geht auch ohne Erlaubnis auf.",
+  "text": "[tired] Übergabepapiere und Mietvertrag. Der Teig geht auch ohne Erlaubnis auf.",
+  "voice_id": "Aw18Rz5fTDHznXEpZ44m",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.liege_bakery.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13713742,
+  "speaker": "locksmith",
+  "subtitle": "Die Papiere reichen. Waffeln um sechs, wie versprochen.",
+  "text": "[smiling] Die Papiere reichen. Waffeln um sechs, wie versprochen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.marta_poster_studio.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3633565,
+  "speaker": "marta",
+  "subtitle": "Die Plakate sind drinnen. Kartoffel bewacht sie von der falschen Seite.",
+  "text": "[dry] Die Plakate sind drinnen. Kartoffel bewacht sie von der falschen Seite.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.marta_poster_studio.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1689078,
+  "speaker": "locksmith",
+  "subtitle": "Der Mietvertrag stimmt. Die Nachbarin bestätigt, dass das Ihr Atelier ist.",
+  "text": "Der Mietvertrag stimmt. Die Nachbarin bestätigt, dass das Ihr Atelier ist.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.marta_poster_studio.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3811405,
+  "speaker": "marta",
+  "subtitle": "Der Kater unterschreibt nichts. Er hat strenge Datenschutzregeln.",
+  "text": "[deadpan] Der Kater unterschreibt nichts. Er hat strenge Datenschutzregeln.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.marta_poster_studio.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2641672,
+  "speaker": "locksmith",
+  "subtitle": "Muss er nicht. Der Preis ist vereinbart, die Unterlagen reichen.",
+  "text": "[amused] Muss er nicht. Der Preis ist vereinbart, die Unterlagen reichen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.museum_time_lock.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13497203,
+  "speaker": "rygiel",
+  "subtitle": "Es geht nicht um die Kombination. Es geht um die Zeit.",
+  "text": "[precise] Es geht nicht um die Kombination. Es geht um die Zeit.",
+  "voice_id": "BH6sElg13tTrLskAMLVY",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.museum_time_lock.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7096209,
+  "speaker": "locksmith",
+  "subtitle": "Ein Zeitschloss fragt nicht, wer da ist. Sondern wie spät es ist.",
+  "text": "[thoughtful] Ein Zeitschloss fragt nicht, wer da ist. Sondern wie spät es ist.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.museum_time_lock.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15358740,
+  "speaker": "rygiel",
+  "subtitle": "Schreiben der Direktion, Übergabeprotokoll. Alles in dreifacher Ausfertigung.",
+  "text": "[formally] Schreiben der Direktion, Übergabeprotokoll. Alles in dreifacher Ausfertigung.",
+  "voice_id": "BH6sElg13tTrLskAMLVY",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.museum_time_lock.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4961253,
+  "speaker": "zuzanna",
+  "subtitle": "Frau Doktor, Handschuhe gibt es auch für den Schlosser. Größe L.",
+  "text": "[cheerful] Frau Doktor, Handschuhe gibt es auch für den Schlosser. Größe L.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.newlyweds_4am.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10220978,
+  "speaker": "bartek",
+  "subtitle": "Ich habe einen Ausweis, aber da steht keine Adresse drauf. Ich weiß. Bei niemandem mehr.",
+  "text": "[tipsy] Ich habe einen Ausweis, aber da steht keine Adresse drauf. Ich weiß. Bei niemandem mehr.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.newlyweds_4am.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1916156,
+  "speaker": "bride",
+  "subtitle": "Meine Meldeadresse steht in der App. Sehen Sie? Mit Schleier zielt es sich schlecht.",
+  "text": "[giggles] Meine Meldeadresse steht in der App. Sehen Sie? Mit Schleier zielt es sich schlecht.",
+  "voice_id": "dnnzdh3AfOZlBnjeEYVD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.newlyweds_4am.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15903271,
+  "speaker": "neighbour_robe",
+  "subtitle": "Ich kenne die beiden. Heute haben sie geheiratet. Die ganze Siedlung hat die Feier gehört.",
+  "text": "[sleepy] Ich kenne die beiden. Heute haben sie geheiratet. Die ganze Siedlung hat die Feier gehört.",
+  "voice_id": "LAUe05BIFsJhkhztiDlc",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.newlyweds_4am.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3118991,
+  "speaker": "locksmith",
+  "subtitle": "Herzlichen Glückwunsch. Noch zwei Minuten, dann sind Sie zu Hause.",
+  "text": "[warmly] Herzlichen Glückwunsch. Noch zwei Minuten, dann sind Sie zu Hause.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.night_nurse.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1962190,
+  "speaker": "agnieszka",
+  "subtitle": "Zwölf Stunden auf Station. Mein Schlüssel liegt im Spind im Krankenhaus.",
+  "text": "[exhausted] Zwölf Stunden auf Station. Mein Schlüssel liegt im Spind im Krankenhaus.",
+  "voice_id": "rURmE8LZucGG4lBOjAEQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.night_nurse.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14801394,
+  "speaker": "roman",
+  "subtitle": "Frau Agnieszka, Wohnung vierzehn, stimmt. Ihr Mietvertrag ist in unserem System.",
+  "text": "[matter-of-fact] Frau Agnieszka, Wohnung vierzehn, stimmt. Ihr Mietvertrag ist in unserem System.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.night_nurse.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9224411,
+  "speaker": "locksmith",
+  "subtitle": "Die Hausverwaltung bestätigt es, der Ausweis stimmt überein. Gleich können Sie schlafen.",
+  "text": "[gently] Die Hausverwaltung bestätigt es, der Ausweis stimmt überein. Gleich können Sie schlafen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.night_nurse.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2462732,
+  "speaker": "agnieszka",
+  "subtitle": "Entschuldigen Sie, dass ich so wortkarg bin. Ich rede schon im Schlaf.",
+  "text": "[sleepy] Entschuldigen Sie, dass ich so wortkarg bin. Ich rede schon im Schlaf.",
+  "voice_id": "rURmE8LZucGG4lBOjAEQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.pizzeria_pays_pizza.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11977047,
+  "speaker": "renata",
+  "subtitle": "Die Einnahmen sind in der Kasse, und die Kasse steht drinnen. Ich bezahle mit Pizza. Wie hungrig sind Sie?",
+  "text": "[fast-talking] Die Einnahmen sind in der Kasse, und die Kasse steht drinnen. Ich bezahle mit Pizza. Wie hungrig sind Sie?",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.pizzeria_pays_pizza.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8469450,
+  "speaker": "locksmith",
+  "subtitle": "Erst der Kostenvoranschlag, dann die Speisekarte. Haben Sie den Mietvertrag?",
+  "text": "[amused] Erst der Kostenvoranschlag, dann die Speisekarte. Haben Sie den Mietvertrag?",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.pizzeria_pays_pizza.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1830989,
+  "speaker": "mietek",
+  "subtitle": "Kenne sie seit zwanzig Jahren, mein Dönerladen ist nebenan. Ihre Margherita ist Kunst.",
+  "text": "[hearty] Kenne sie seit zwanzig Jahren, mein Dönerladen ist nebenan. Ihre Margherita ist Kunst.",
+  "voice_id": "zMbLG1cGSAY2FkRf79h1",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.pizzeria_pays_pizza.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14956720,
+  "speaker": "renata",
+  "subtitle": "Der Teig geht auf, ich gehe unter. Hauptsache vor Tagesanbruch.",
+  "text": "[sighs] Der Teig geht auf, ich gehe unter. Hauptsache vor Tagesanbruch.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_aunt_alive.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15055892,
+  "speaker": "claimant",
+  "subtitle": "Tante ist letzte Woche gestorben. Der Papierkram läuft noch, es ist alles so frisch.",
+  "text": "[overly polite] Tante ist letzte Woche gestorben. Der Papierkram läuft noch, es ist alles so frisch.",
+  "voice_id": "5OB4zZIouwPm4cr4WIxt",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_aunt_alive.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11042040,
+  "speaker": "neighbour_lucyna",
+  "subtitle": "Frau Lucyna? Sie ist zur Kur. Gestern hat sie angerufen, es geht ihr besser.",
+  "text": "[surprised] Frau Lucyna? Sie ist zur Kur. Gestern hat sie angerufen, es geht ihr besser.",
+  "voice_id": "GIcWisXz2jsWKk39INmH",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_aunt_alive.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 71436,
+  "speaker": "claimant",
+  "subtitle": "Da muss ich etwas durcheinandergebracht haben.",
+  "text": "[nervous] Da muss ich etwas durcheinandergebracht haben.",
+  "voice_id": "5OB4zZIouwPm4cr4WIxt",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_aunt_alive.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5241897,
+  "speaker": "locksmith",
+  "subtitle": "Dann rufen wir Frau Lucyna gemeinsam an. Und danach Polizeibeamtin Sowa.",
+  "text": "[calm] Dann rufen wir Frau Lucyna gemeinsam an. Und danach Polizeibeamtin Sowa.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ex_partner.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15663317,
+  "speaker": "darek",
+  "subtitle": "Ich habe drei Jahre hier gewohnt. Ich habe das Recht, reinzugehen und meine Sachen zu holen.",
+  "text": "[agitated] Ich habe drei Jahre hier gewohnt. Ich habe das Recht, reinzugehen und meine Sachen zu holen.",
+  "voice_id": "OU43emeja5Y4oGoCp8Vn",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ex_partner.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2766388,
+  "speaker": "locksmith",
+  "subtitle": "Am Briefkasten steht nur ein Name, und das ist nicht Ihrer. Ich rufe die Hausverwaltung an.",
+  "text": "[calm] Am Briefkasten steht nur ein Name, und das ist nicht Ihrer. Ich rufe die Hausverwaltung an.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ex_partner.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 877899,
+  "speaker": "darek",
+  "subtitle": "Warum die Hausverwaltung? Das ist privat.",
+  "text": "[defensive] Warum die Hausverwaltung? Das ist privat.",
+  "voice_id": "OU43emeja5Y4oGoCp8Vn",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ex_partner.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10076509,
+  "speaker": "locksmith",
+  "subtitle": "Diese Tür kann ich nicht öffnen. Die Polizei kann Ihnen helfen, Ihre Sachen abzuholen. Soll ich anrufen?",
+  "text": "[calm] Diese Tür kann ich nicht öffnen. Die Polizei kann Ihnen helfen, Ihre Sachen abzuholen. Soll ich anrufen?",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_rush_bribe.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12358435,
+  "speaker": "stranger",
+  "subtitle": "Ich zahle das Doppelte. Das Dreifache. Lassen Sie die Vorschriften einfach weg.",
+  "text": "[fast] Ich zahle das Doppelte. Das Dreifache. Lassen Sie die Vorschriften einfach weg.",
+  "voice_id": "W0vU9Sek2r3cKjqRkrrp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_rush_bribe.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2873441,
+  "speaker": "locksmith",
+  "subtitle": "Vorschriften stehen nicht zum Verkauf. Rufen Sie Ihre Schwester an, ich warte.",
+  "text": "[calm] Vorschriften stehen nicht zum Verkauf. Rufen Sie Ihre Schwester an, ich warte.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_rush_bribe.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14299438,
+  "speaker": "stranger",
+  "subtitle": "Sie geht nicht ran. Wir müssen doch nicht die Nachbarn wecken und ein Theater machen.",
+  "text": "[impatient] Sie geht nicht ran. Wir müssen doch nicht die Nachbarn wecken und ein Theater machen.",
+  "voice_id": "W0vU9Sek2r3cKjqRkrrp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_rush_bribe.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3604552,
+  "speaker": "locksmith",
+  "subtitle": "Dann gute Nacht. Und der Vollständigkeit halber informiere ich die zuständige Polizeibeamtin.",
+  "text": "[calm] Dann gute Nacht. Und der Vollständigkeit halber informiere ich die zuständige Polizeibeamtin.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_sisters_flat.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15538380,
+  "speaker": "norbert",
+  "subtitle": "Meine Schwester ist verreist. Die Blumen vertrocknen, und sie geht nicht ran.",
+  "text": "[worried] Meine Schwester ist verreist. Die Blumen vertrocknen, und sie geht nicht ran.",
+  "voice_id": "BMzMqh5RnySZCYKBMXhh",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_sisters_flat.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15963315,
+  "speaker": "locksmith",
+  "subtitle": "Wir können auf ihre Zustimmung warten oder die Hausverwaltung anrufen.",
+  "text": "[calm] Wir können auf ihre Zustimmung warten oder die Hausverwaltung anrufen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_sisters_flat.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11505452,
+  "speaker": "norbert",
+  "subtitle": "Ich würde die Nachbarn lieber nicht hineinziehen. Es sind doch nur Blumen.",
+  "text": "[evasive] Ich würde die Nachbarn lieber nicht hineinziehen. Es sind doch nur Blumen.",
+  "voice_id": "BMzMqh5RnySZCYKBMXhh",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_sisters_flat.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3061492,
+  "speaker": "locksmith",
+  "subtitle": "Ohne ihre Zustimmung öffne ich nicht. Hier ist die Nummer der Hausverwaltung.",
+  "text": "[firmly] Ohne ihre Zustimmung öffne ich nicht. Hier ist die Nummer der Hausverwaltung.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_unapproved_stockroom.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15808392,
+  "speaker": "marcel",
+  "subtitle": "Die Lieferung steht auf meinem Wagen. Der Ladenbesitzer geht nicht ran.",
+  "text": "[harried] Die Lieferung steht auf meinem Wagen. Der Ladenbesitzer geht nicht ran.",
+  "voice_id": "ffYObf46C5FUlrpRN9k1",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_unapproved_stockroom.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12304251,
+  "speaker": "locksmith",
+  "subtitle": "Ein Frachtbrief ist keine Erlaubnis, den Laden zu betreten.",
+  "text": "[calm] Ein Frachtbrief ist keine Erlaubnis, den Laden zu betreten.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_unapproved_stockroom.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9788888,
+  "speaker": "marcel",
+  "subtitle": "Könnten Sie nur einen Spalt öffnen, damit ich die Pakete abstellen kann?",
+  "text": "[hopeful] Könnten Sie nur einen Spalt öffnen, damit ich die Pakete abstellen kann?",
+  "voice_id": "ffYObf46C5FUlrpRN9k1",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_unapproved_stockroom.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14641082,
+  "speaker": "locksmith",
+  "subtitle": "Ohne Zustimmung öffne ich nicht. Vereinbaren wir lieber eine sichere Übergabe.",
+  "text": "[friendly] Ohne Zustimmung öffne ich nicht. Vereinbaren wir lieber eine sichere Übergabe.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.roman_service_cupboard.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6926418,
+  "speaker": "roman",
+  "subtitle": "Die Gemeinschaft hat die alten Nummernschilder abgegeben. Der Schrank wurde nicht informiert.",
+  "text": "[dry] Die Gemeinschaft hat die alten Nummernschilder abgegeben. Der Schrank wurde nicht informiert.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.roman_service_cupboard.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1824840,
+  "speaker": "locksmith",
+  "subtitle": "Ihre Liste und der Beschluss liegen vor. Den Preis haben wir vereinbart.",
+  "text": "Ihre Liste und der Beschluss liegen vor. Den Preis haben wir vereinbart.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.roman_service_cupboard.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14540667,
+  "speaker": "roman",
+  "subtitle": "Bitte vorsichtig. Das sind die einzigen Nummern ohne Tippfehler.",
+  "text": "[cautious] Bitte vorsichtig. Das sind die einzigen Nummern ohne Tippfehler.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.roman_service_cupboard.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7832660,
+  "speaker": "locksmith",
+  "subtitle": "Auf die Emaille passe ich auf. Für die Rechtschreibung im Protokoll garantiere ich nicht.",
+  "text": "[amused] Auf die Emaille passe ich auf. Für die Rechtschreibung im Protokoll garantiere ich nicht.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.shared_room_door.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16078530,
+  "speaker": "elzbieta",
+  "subtitle": "Beschluss und Liste der Berechtigten. Das ist eine gemeinsame Tür.",
+  "text": "[formally] Beschluss und Liste der Berechtigten. Das ist eine gemeinsame Tür.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.shared_room_door.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12133558,
+  "speaker": "locksmith",
+  "subtitle": "Die Unterlagen stimmen. Der Preis auch. Wir können öffnen.",
+  "text": "Die Unterlagen stimmen. Der Preis auch. Wir können öffnen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.shared_room_door.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11884623,
+  "speaker": "marta",
+  "subtitle": "Ich habe das Schild mitgebracht. Kartoffel hat es abgesegnet, indem er darauf geschlafen hat.",
+  "text": "[proudly] Ich habe das Schild mitgebracht. Kartoffel hat es abgesegnet, indem er darauf geschlafen hat.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.shared_room_door.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5705953,
+  "speaker": "halina",
+  "subtitle": "Und ich die Klöße. Die Tür kann warten. Die Klöße nicht.",
+  "text": "[cheerful] Und ich die Klöße. Die Tür kann warten. Die Klöße nicht.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.stefan_book_tin.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15548429,
+  "speaker": "stefan",
+  "subtitle": "Ich habe die Marken für die Leihbücherei weggeschlossen. Vor mir selbst.",
+  "text": "[sheepish] Ich habe die Marken für die Leihbücherei weggeschlossen. Vor mir selbst.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.stefan_book_tin.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9575036,
+  "speaker": "locksmith",
+  "subtitle": "Quittung und Foto vom Kiosk stimmen überein. Den Preis haben wir schon vereinbart.",
+  "text": "Quittung und Foto vom Kiosk stimmen überein. Den Preis haben wir schon vereinbart.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.stefan_book_tin.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11920973,
+  "speaker": "stefan",
+  "subtitle": "Ich kenne alle Busfahrpläne. Diese Zahlen nicht mehr.",
+  "text": "[laughs] Ich kenne alle Busfahrpläne. Diese Zahlen nicht mehr.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.stefan_book_tin.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9579120,
+  "speaker": "locksmith",
+  "subtitle": "Wenigstens ist die Quittung noch da. Meine lege ich daneben.",
+  "text": "[amused] Wenigstens ist die Quittung noch da. Meine lege ich daneben.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.student_dorm.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8636499,
+  "speaker": "zuzanna",
+  "subtitle": "Mein Studierendenausweis liegt im Zimmer. Der Schlüssel auch. Ich stehe auf dem Flur.",
+  "text": "[sheepish] Mein Studierendenausweis liegt im Zimmer. Der Schlüssel auch. Ich stehe auf dem Flur.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.student_dorm.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2014385,
+  "speaker": "edek",
+  "subtitle": "Wilk, Zuzanna, vierhundertzwölf. Steht auf meiner Liste und in meinem Kopf.",
+  "text": "[proudly] Wilk, Zuzanna, vierhundertzwölf. Steht auf meiner Liste und in meinem Kopf.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.student_dorm.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14636955,
+  "speaker": "locksmith",
+  "subtitle": "Herr Edek bürgt, der Name stimmt. Wir öffnen.",
+  "text": "Herr Edek bürgt, der Name stimmt. Wir öffnen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.student_dorm.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14629556,
+  "speaker": "zuzanna",
+  "subtitle": "Morgen schreibe ich eine Prüfung über historische Schlösser. Zählt das als Übung?",
+  "text": "[curious] Morgen schreibe ich eine Prüfung über historische Schlösser. Zählt das als Übung?",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.swiatniki_journeyman_padlock.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1813294,
+  "speaker": "wladyslaw",
+  "subtitle": "Siebzig Jahre habe ich es aufgehoben. Es gab einen Schlüssel. Mein Enkel hat ihn verloren.",
+  "text": "[gruff] Siebzig Jahre habe ich es aufgehoben. Es gab einen Schlüssel. Mein Enkel hat ihn verloren.",
+  "voice_id": "t3zIfL8OXHlU967BrrDP",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.swiatniki_journeyman_padlock.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10633623,
+  "speaker": "locksmith",
+  "subtitle": "Und wissen Sie, wie man es öffnet?",
+  "text": "[curious] Und wissen Sie, wie man es öffnet?",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.swiatniki_journeyman_padlock.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12184859,
+  "speaker": "wladyslaw",
+  "subtitle": "Ja. Aber ich möchte sehen, ob die Jungen es noch können.",
+  "text": "[mischievous] Ja. Aber ich möchte sehen, ob die Jungen es noch können.",
+  "voice_id": "t3zIfL8OXHlU967BrrDP",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.swiatniki_journeyman_padlock.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15617312,
+  "speaker": "wladyslaw",
+  "subtitle": "Die Handschrift in diesem Notizbuch kenne ich. Henryk. Ich habe ihn unterrichtet. Es ist in den richtigen Händen gelandet.",
+  "text": "[moved] Die Handschrift in diesem Notizbuch kenne ich. Henryk. Ich habe ihn unterrichtet. Es ist in den richtigen Händen gelandet.",
+  "voice_id": "t3zIfL8OXHlU967BrrDP",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.time_capsule.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13384384,
+  "speaker": "jadwiga",
+  "subtitle": "Ich weiß, dass der Code ein Datum war. Aber wessen?",
+  "text": "[hesitant] Ich weiß, dass der Code ein Datum war. Aber wessen?",
+  "voice_id": "XDA0joI4xCH8unjaVH78",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.time_capsule.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8036833,
+  "speaker": "headteacher",
+  "subtitle": "Die Schule ist einverstanden. Bitte öffnen Sie es vor allen.",
+  "text": "[formally] Die Schule ist einverstanden. Bitte öffnen Sie es vor allen.",
+  "voice_id": "DvT0A47h9AXl1dwoWgyE",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.time_capsule.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 239495,
+  "speaker": "marta",
+  "subtitle": "Frau Lehrerin, wir waren neun. Ich erinnere mich nur an Kastanien.",
+  "text": "[laughs] Frau Lehrerin, wir waren neun. Ich erinnere mich nur an Kastanien.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.time_capsule.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7361076,
+  "speaker": "marta",
+  "subtitle": "Mein Brief: „Ich hoffe, du hast einen Hund.“ Ich habe eine Katze. Das zählt auch.",
+  "text": "[amused] Mein Brief: „Ich hoffe, du hast einen Hund.“ Ich habe eine Katze. Das zählt auch.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.uncle_safe_heirs.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15962418,
+  "speaker": "marek",
+  "subtitle": "Sie öffnen, ich schaue nach und sage den anderen Bescheid. Wir teilen sowieso alles.",
+  "text": "[pushy] Sie öffnen, ich schaue nach und sage den anderen Bescheid. Wir teilen sowieso alles.",
+  "voice_id": "Zg4IlQjJwRWlWADvYnPS",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.uncle_safe_heirs.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10410099,
+  "speaker": "locksmith",
+  "subtitle": "Ich öffne erst, wenn alle Erben da sind oder ihre schriftliche Zustimmung vorliegt.",
+  "text": "[firmly] Ich öffne erst, wenn alle Erben da sind oder ihre schriftliche Zustimmung vorliegt.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.uncle_safe_heirs.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15020474,
+  "speaker": "piotr",
+  "subtitle": "Ewa ist eine Stunde entfernt. Marek, setz Wasser auf.",
+  "text": "[calm] Ewa ist eine Stunde entfernt. Marek, setz Wasser auf.",
+  "voice_id": "IdPDPKJ2msGj1rtDPoDp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.uncle_safe_heirs.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14139887,
+  "speaker": "ewa",
+  "subtitle": "Onkel würde lachen, wenn er sähe, wie wir um einen Kasten mit Drehscheibe streiten.",
+  "text": "[wistful] Onkel würde lachen, wenn er sähe, wie wir um einen Kasten mit Drehscheibe streiten.",
+  "voice_id": "J0XDzvhpcN07xGEKHU0P",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.widow_bureau.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7370253,
+  "speaker": "irena",
+  "subtitle": "Frau Zosia sagte, Sie bohren nicht. Mein Mann konnte das Bohren nicht ertragen.",
+  "text": "[softly] Frau Zosia sagte, Sie bohren nicht. Mein Mann konnte das Bohren nicht ertragen.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.widow_bureau.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13003945,
+  "speaker": "locksmith",
+  "subtitle": "Ich öffne ihn so, dass niemand etwas bemerkt. Es bleibt sein Schreibtisch.",
+  "text": "[gently] Ich öffne ihn so, dass niemand etwas bemerkt. Es bleibt sein Schreibtisch.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.widow_bureau.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16445860,
+  "speaker": "irena",
+  "subtitle": "Opernkarten. Neunzehnhundertsiebenundachtzig.",
+  "text": "[surprised] Opernkarten. Neunzehnhundertsiebenundachtzig.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.widow_bureau.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6880784,
+  "speaker": "irena",
+  "subtitle": "Er sagte mir, er hätte sie verloren. Dabei hat er sie aufgehoben.",
+  "text": "[emotional] Er sagte mir, er hätte sie verloren. Dabei hat er sie aufgehoben.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.wrong_floor.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5477969,
+  "speaker": "kazimierz",
+  "subtitle": "Der Schlüssel geht nicht hinein. Das Schloss muss kaputtgegangen sein, als ich weg war.",
+  "text": "[tipsy] Der Schlüssel geht nicht hinein. Das Schloss muss kaputtgegangen sein, als ich weg war.",
+  "voice_id": "pX3C8X5pB5Ord4v3sYQy",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.wrong_floor.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6996979,
+  "speaker": "locksmith",
+  "subtitle": "Herr Kazimierz, am Briefkasten steht ein anderer Name. Und dieser Kranz?",
+  "text": "[gently] Herr Kazimierz, am Briefkasten steht ein anderer Name. Und dieser Kranz?",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.wrong_floor.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11700186,
+  "speaker": "teresa",
+  "subtitle": "Wer ist da? Ich wohne seit zwölf Jahren hier. Den Kranz habe ich selbst gemacht.",
+  "text": "[suspicious] Wer ist da? Ich wohne seit zwölf Jahren hier. Den Kranz habe ich selbst gemacht.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.wrong_floor.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11623380,
+  "speaker": "kazimierz",
+  "subtitle": "Ach, eine Etage höher passt der Schlüssel. Sie haben es repariert.",
+  "text": "[laughs] Ach, eine Etage höher passt der Schlüssel. Sie haben es repariert.",
+  "voice_id": "pX3C8X5pB5Ord4v3sYQy",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.zuzanna_catalogue_drawer.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6297134,
+  "speaker": "zuzanna",
+  "subtitle": "Wir haben die Genehmigung für die Kopien. Die Schublade hält sie für Originale.",
+  "text": "[cheerful] Wir haben die Genehmigung für die Kopien. Die Schublade hält sie für Originale.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.zuzanna_catalogue_drawer.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15440218,
+  "speaker": "rygiel",
+  "subtitle": "Die Unterschrift ist meine. Die Originale bleiben im Museum.",
+  "text": "[precise] Die Unterschrift ist meine. Die Originale bleiben im Museum.",
+  "voice_id": "BH6sElg13tTrLskAMLVY",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.zuzanna_catalogue_drawer.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6554977,
+  "speaker": "locksmith",
+  "subtitle": "Kuratorin, Protokoll, vereinbarter Preis. Wir öffnen nur die Schublade.",
+  "text": "Kuratorin, Protokoll, vereinbarter Preis. Wir öffnen nur die Schublade.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.zuzanna_catalogue_drawer.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16286715,
+  "speaker": "zuzanna",
+  "subtitle": "Die Vitrine bekommt das Schild „Mit Vorsicht behandeln“. Ich fange mit dieser Schublade an.",
+  "text": "[excited] Die Vitrine bekommt das Schild „Mit Vorsicht behandeln“. Ich fange mit dieser Schublade an.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
  "en/job.allotment_shed.line.1.ogg": {
   "model_id": "eleven_v4_turbo",
   "seed": 16481243,

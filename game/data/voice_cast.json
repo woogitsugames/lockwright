@@ -21,7 +21,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (122 Hz median F0) and Polish ASR clarity (avg logprob -0.22).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "halina": {
@@ -40,7 +41,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (225 Hz median F0) and Polish ASR clarity (avg logprob -0.32).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "zosia": {
@@ -59,7 +61,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (182 Hz median F0) and Polish ASR clarity (avg logprob -0.3).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "stefan": {
@@ -78,7 +81,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (144 Hz median F0) and Polish ASR clarity (avg logprob -0.35).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "roman": {
@@ -97,7 +101,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (134 Hz median F0) and Polish ASR clarity (avg logprob -0.17).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "marta": {
@@ -116,7 +121,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (187 Hz median F0) and Polish ASR clarity (avg logprob -0.23).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "zuzanna": {
@@ -135,7 +141,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (174 Hz median F0) and Polish ASR clarity (avg logprob -0.29).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "edek": {
@@ -154,7 +161,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (132 Hz median F0) and Polish ASR clarity (avg logprob -0.3).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "ola": {
@@ -173,7 +181,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (165 Hz median F0) and Polish ASR clarity (avg logprob -0.23).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "krystyna": {
@@ -192,7 +201,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (172 Hz median F0) and Polish ASR clarity (avg logprob -0.16).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "wladyslaw": {
@@ -211,7 +221,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (162 Hz median F0) and Polish ASR clarity (avg logprob -0.24).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "rygiel": {
@@ -230,7 +241,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (168 Hz median F0) and Polish ASR clarity (avg logprob -0.26).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "jadwiga": {
@@ -249,7 +261,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (182 Hz median F0) and Polish ASR clarity (avg logprob -0.18).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "kuba": {
@@ -268,7 +281,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (118 Hz median F0) and Polish ASR clarity (avg logprob -0.22).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "iga": {
@@ -287,7 +301,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (232 Hz median F0) and Polish ASR clarity (avg logprob -0.28).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "hall_manager": {
@@ -306,7 +321,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (134 Hz median F0) and Polish ASR clarity (avg logprob -0.26).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "gosia": {
@@ -325,7 +341,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (150 Hz median F0) and Polish ASR clarity (avg logprob -0.27).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "magda": {
@@ -344,7 +361,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (242 Hz median F0) and Polish ASR clarity (avg logprob -0.27).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "jacques": {
@@ -363,7 +381,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (104 Hz median F0) and Polish ASR clarity (avg logprob -0.42).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "martine": {
@@ -382,7 +401,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (163 Hz median F0) and Polish ASR clarity (avg logprob -0.3).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "hania": {
@@ -401,7 +421,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (302 Hz median F0) and Polish ASR clarity (avg logprob -0.18).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ],
    "note": "ElevenLabs blocks designing child voices; Hania (7) is voiced by a light adult voice (as in animation dubbing). Owner may prefer subtitles + S03 vocalisations only."
   },
@@ -421,7 +442,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (125 Hz median F0) and Polish ASR clarity (avg logprob -0.2).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "aino": {
@@ -440,7 +462,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (165 Hz median F0) and Polish ASR clarity (avg logprob -0.52).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "captain": {
@@ -459,7 +482,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (101 Hz median F0) and Polish ASR clarity (avg logprob -0.19).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "pieter": {
@@ -478,7 +502,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (147 Hz median F0) and Polish ASR clarity (avg logprob -0.36).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "krysia": {
@@ -497,7 +522,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (239 Hz median F0) and Polish ASR clarity (avg logprob -0.25).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "leopold": {
@@ -516,7 +542,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (154 Hz median F0) and Polish ASR clarity (avg logprob -0.36).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "wanda": {
@@ -535,7 +562,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (189 Hz median F0) and Polish ASR clarity (avg logprob -0.19).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "nadia": {
@@ -554,7 +582,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (198 Hz median F0) and Polish ASR clarity (avg logprob -0.3).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "bartek": {
@@ -573,7 +602,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (120 Hz median F0) and Polish ASR clarity (avg logprob -0.24).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "bride": {
@@ -592,7 +622,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (254 Hz median F0) and Polish ASR clarity (avg logprob -0.28).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "neighbour_robe": {
@@ -611,7 +642,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (140 Hz median F0) and Polish ASR clarity (avg logprob -0.22).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "agnieszka": {
@@ -630,7 +662,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (242 Hz median F0) and Polish ASR clarity (avg logprob -0.28).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "renata": {
@@ -649,7 +682,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (184 Hz median F0) and Polish ASR clarity (avg logprob -0.26).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "mietek": {
@@ -668,7 +702,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (187 Hz median F0) and Polish ASR clarity (avg logprob -0.2).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "claimant": {
@@ -687,7 +722,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (222 Hz median F0) and Polish ASR clarity (avg logprob -0.18).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "neighbour_lucyna": {
@@ -706,7 +742,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (201 Hz median F0) and Polish ASR clarity (avg logprob -0.21).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "darek": {
@@ -725,7 +762,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (186 Hz median F0) and Polish ASR clarity (avg logprob -0.29).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "stranger": {
@@ -744,7 +782,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (99 Hz median F0) and Polish ASR clarity (avg logprob -0.21).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "marek": {
@@ -763,7 +802,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (192 Hz median F0) and Polish ASR clarity (avg logprob -0.24).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "piotr": {
@@ -782,7 +822,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (100 Hz median F0) and Polish ASR clarity (avg logprob -0.21).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "ewa": {
@@ -801,7 +842,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (200 Hz median F0) and Polish ASR clarity (avg logprob -0.23).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "irena": {
@@ -820,7 +862,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (154 Hz median F0) and Polish ASR clarity (avg logprob -0.23).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "kazimierz": {
@@ -839,7 +882,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (143 Hz median F0) and Polish ASR clarity (avg logprob -0.33).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "teresa": {
@@ -858,7 +902,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (276 Hz median F0) and Polish ASR clarity (avg logprob -0.33).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "basia": {
@@ -877,7 +922,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (198 Hz median F0) and Polish ASR clarity (avg logprob -0.24).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "elzbieta": {
@@ -896,7 +942,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (162 Hz median F0) and Polish ASR clarity (avg logprob -0.16).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "norbert": {
@@ -915,7 +962,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (137 Hz median F0) and Polish ASR clarity (avg logprob -0.17).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "marcel": {
@@ -934,7 +982,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (178 Hz median F0) and Polish ASR clarity (avg logprob -0.16).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "waldek": {
@@ -953,7 +1002,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (198 Hz median F0) and Polish ASR clarity (avg logprob -0.42).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "zbyszek": {
@@ -972,7 +1022,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (195 Hz median F0) and Polish ASR clarity (avg logprob -0.27).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   },
   "headteacher": {
@@ -991,7 +1042,8 @@
    "why": "Designed (Voice Design, eleven_ttv_v3) from the character brief in docs/CLIENTS.md; best of 3 previews by pitch fit (205 Hz median F0) and Polish ASR clarity (avg logprob -0.14).",
    "languages": [
     "pl",
-    "en"
+    "en",
+    "de"
    ]
   }
  }

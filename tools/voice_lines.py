@@ -26,7 +26,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 GAME = ROOT / 'game'
 OUT = GAME / 'assets/audio/lines'
 CAST_JSON = GAME / 'data/voice_cast.json'
-LANGS = ('pl', 'en')            # D-57: PL + EN now; 'de' can be added later with the same voices
+LANGS = ('pl', 'en', 'de')      # D-57: PL + EN, then DE (same voices); FR/ES next
 MODEL = 'eleven_v4_turbo'       # owner's choice (cheaper); fallback 'eleven_v4'. Not v3 / multilingual v2.
 TAGS_JSON = ROOT / 'contrib/voice/tags.json'   # audio tags per line key, e.g. "[tired]" (TTS input only)
 MANIFEST = ROOT / 'contrib/voice/tts_inputs.json'
@@ -38,6 +38,8 @@ TTS_OVERRIDES = {
     ('job.krakow_tenement_gate.line.3', 'pl'): 'Dzień dobry. Mam tu praktykę. Egzamin zdałam, pokój czterysta dwanaście pomógł.',
     ('job.krakow_tenement_gate.line.3', 'en'): "Hello again. I'm an intern here now. I passed the exam. Room four-twelve helped.",
     ('job.student_dorm.line.2', 'en'): 'Zuzanna Wilk, room four-twelve. On my list and in my head.',
+    ('job.krakow_tenement_gate.line.3', 'de'): 'Hallo, da bin ich wieder. Ich mache hier Praktikum. Die Prüfung habe ich bestanden. Zimmer vierhundertzwölf hat geholfen.',
+    ('job.kiosk_shutter.line.3', 'de'): 'Ein Foto vom Eröffnungstag, neunzehnhundertvierundneunzig. Mein Schnurrbart war besser in Form als der Kiosk.',
     ('job.kiosk_shutter.line.3', 'en'): "From opening day in ninety-four. My moustache looked better than the kiosk.",
 }
 
@@ -261,27 +263,39 @@ def qa(langs, model='small', out_json=None):
     import numpy as np
     m = WhisperModel(model, device='cpu', compute_type='int8', cpu_threads=os.cpu_count() or 4)
     rows = read_csv()
+    part = pathlib.Path(str(out_json) + '.part.jsonl') if out_json else None
+    done = {}
+    if part and part.exists():   # resume an interrupted run
+        for line in part.read_text(encoding='utf-8').splitlines():
+            d = json.loads(line); done[d['file']] = d
     res, tot = [], {}
     for lang in langs:
         for ogg in sorted((OUT / lang).glob('*.ogg')):
             key = ogg.stem
-            pcm = subprocess.run(['ffmpeg', '-v', 'error', '-i', str(ogg), '-ac', '1', '-ar', '16000', '-f', 'f32le', '-'],
-                                 capture_output=True, check=True).stdout
-            x = np.frombuffer(pcm, np.float32)
-            lu = subprocess.run(['ffmpeg', '-hide_banner', '-nostats', '-i', str(ogg), '-af', 'ebur128', '-f', 'null', '-'],
-                                capture_output=True, text=True).stderr
-            li = float(re.findall(r'I:\s+(-?[\d.]+) LUFS', lu)[-1])
-            env = np.abs(x) > 10 ** (-45 / 20)
-            nz = np.nonzero(env)[0]
-            lead, trail = (nz[0] / 16000, (len(x) - nz[-1]) / 16000) if len(nz) else (0, 0)
-            segs, _ = m.transcribe(x, language=lang, beam_size=1, vad_filter=False, condition_on_previous_text=False)
-            hyp = ' '.join(s.text.strip() for s in segs)
-            e, n = wer(rows[key][lang], hyp)
+            f = f'{lang}/{ogg.name}'
+            if f in done:
+                d = done[f]
+            else:
+                pcm = subprocess.run(['ffmpeg', '-v', 'error', '-i', str(ogg), '-ac', '1', '-ar', '16000', '-f', 'f32le', '-'],
+                                     capture_output=True, check=True).stdout
+                x = np.frombuffer(pcm, np.float32)
+                lu = subprocess.run(['ffmpeg', '-hide_banner', '-nostats', '-i', str(ogg), '-af', 'ebur128', '-f', 'null', '-'],
+                                    capture_output=True, text=True).stderr
+                li = float(re.findall(r'I:\s+(-?[\d.]+) LUFS', lu)[-1])
+                nz = np.nonzero(np.abs(x) > 10 ** (-45 / 20))[0]
+                lead, trail = (nz[0] / 16000, (len(x) - nz[-1]) / 16000) if len(nz) else (0, 0)
+                segs, _ = m.transcribe(x, language=lang, beam_size=1, vad_filter=False, condition_on_previous_text=False)
+                hyp = ' '.join(s.text.strip() for s in segs)
+                d = {'file': f, 'dur': round(len(x) / 16000, 2), 'lufs': li, 'lead_ms': round(lead * 1000),
+                     'trail_ms': round(trail * 1000), 'ref': rows[key][lang], 'asr': hyp}
+                if part:
+                    with open(part, 'a', encoding='utf-8') as fh:
+                        fh.write(json.dumps(d, ensure_ascii=False) + '\n')
+            e, n = wer(rows[key][lang], d['asr'])
+            d['wer'] = round(e / n, 3)
             t = tot.setdefault(lang, [0, 0]); t[0] += e; t[1] += n
-            res.append({'file': f'{lang}/{ogg.name}', 'dur': round(len(x) / 16000, 2), 'lufs': li,
-                        'lead_ms': round(lead * 1000), 'trail_ms': round(trail * 1000),
-                        'wer': round(e / n, 3), 'ref': rows[key][lang], 'asr': hyp})
-            print(json.dumps(res[-1], ensure_ascii=False), flush=True)
+            res.append(d)
+            print(json.dumps(d, ensure_ascii=False), flush=True)
     summary = {l: round(e / n, 4) for l, (e, n) in tot.items()}
     print('WER', summary)
     if out_json:
@@ -307,8 +321,10 @@ def main():
         print(json.dumps(tts_payload(jobs, langs), ensure_ascii=False))
     elif a.cmd == 'manifest':
         reqs = tts_payload(None, langs)
-        MANIFEST.write_text(json.dumps({f"{r['lang']}/{r['key']}.ogg": {k: r[k] for k in (
-            'speaker', 'voice_id', 'model_id', 'voice_settings', 'seed', 'text', 'subtitle')} for r in reqs},
+        man = json.loads(MANIFEST.read_text(encoding='utf-8')) if MANIFEST.exists() else {}
+        man.update({f"{r['lang']}/{r['key']}.ogg": {k: r[k] for k in (
+            'speaker', 'voice_id', 'model_id', 'voice_settings', 'seed', 'text', 'subtitle')} for r in reqs})
+        MANIFEST.write_text(json.dumps(man,
             ensure_ascii=False, indent=1, sort_keys=True) + '\n', encoding='utf-8')
         print(MANIFEST, len(reqs))
     elif a.cmd == 'synth':
