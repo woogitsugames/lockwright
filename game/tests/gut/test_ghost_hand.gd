@@ -111,7 +111,7 @@ func test_g23_silhouettes_load() -> void:
 		var a: Vector2 = d["anchor"]
 		assert_true(a.x > 0.0 and a.x < 1.0 and a.y > 0.0 and a.y < 1.0, "%s hotspot inside the texture" % n)
 		var size_dp: Vector2 = tex.get_size() * float(d["scale"])
-		assert_between(size_dp.x, 120.0, 300.0, "%s fits a 412 dp phone width" % n)
+		assert_between(size_dp.x, 120.0, 320.0, "%s fits a 412 dp phone width (the wrist part runs off the edge)" % n)
 		# a soft shadow: transparent at the corners (no photo rectangle), opaque in the middle of the shape
 		var img := tex.get_image()
 		if img.is_compressed():
