@@ -1,0 +1,8 @@
+keys,en,pl,de,fr,es
+job.halina_recipe_box.line.1,,,,Ma recette de boulettes de pâte est dedans. Je me souviens juste du mot « poignée ».,Dentro está mi receta de bolitas de masa. Solo recuerdo la palabra «puñado».
+job.shared_room_door.line.4,,,,"Et moi, des boulettes de pâte. La porte peut attendre. Pas elles.",Y yo traje bolitas de masa. La puerta puede esperar. Ellas no.
+job.shared_room_door.note,,,,"Vieille Ville, salle commune. Vote signé, gestionnaire et témoin. Chaises, photos et boulettes de pâte sont arrivées en premier.","Casco antiguo, sala común. Votación firmada, administradora y testigo. Llegaron primero las sillas, las fotos y las bolitas de masa."
+job.refuse_aunt_alive.after.2,,,,,Menos mal que dijo que no. No habría pegado ojo.
+job.refuse_ex_partner.after.2,,,,,Me enteré en la parada. Es usted de fiar. ¿Un periódico?
+job.refuse_rush_bribe.after.2,,,,,Ayer un hombre trajeado preguntó por un cerrajero. Lo envié a verlo. Lo siento.
+job.wrong_floor.after.1,,,,,¿Es usted el cerrajero que no abrió mi puerta? Le hice un pastel. Por no abrirla.

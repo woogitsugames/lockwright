@@ -4,4 +4,8 @@ To nie jest pełna korekta. Poprawiono wybrane liczby i skróty z myślą o lekt
 
 Wynik lintera: lint.txt; uruchomiono go na kopii plików z tymi propozycjami.
 
-Aktualizacja: `UZUPELNIENIE.md` i `fixes_dialogues_de_fr_es.csv` zawieraj? dodatkowe propozycje; przegl?d nadal pozostaje cz??ciowy.
+Aktualizacja: `UZUPELNIENIE.md` i `fixes_dialogues_de_fr_es.csv` zawierają dodatkowe propozycje; przegląd nadal pozostaje częściowy.
+
+Dalsze propozycje: `KOREKTA2.csv` i `KOREKTA2.md`. Po zastosowaniu obu zestawów liczby w 215 kwestiach i notatkach są zapisane słownie; przegląd naturalności i wymowy nie jest kompletny. Lint wykonano na kopii sparse bez `.gd`, więc nie weryfikuje on wszystkich odwołań z kodu.
+
+Ponowna walidacja na kopii z kompletem 203 skryptów GDScript: 948 kluczy, 0 błędów, 2 ostrzeżeń. Uruchomiono `python tools/i18n_lint.py` po zastosowaniu propozycji tego zadania; wynik obejmuje sprawdzane przez linter odwołania z kodu, ale nie zastępuje testu w grze. Dwa ostrzeżenia są bazowe (`settings.voice_pack.line`).
