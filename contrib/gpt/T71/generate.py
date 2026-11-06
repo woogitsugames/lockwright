@@ -91,4 +91,21 @@ with source.open(encoding='utf-8-sig', newline='') as f, out.open('w', encoding=
             proposal = short.get((lang,row['keys']), '')
             if proposal and len(proposal) >= len(value):
                 proposal = ''
-            writer.writerow([row['keys'],lang,en,value,len(en),len(value),round(100*len(value)/len(en),1),proposal,len(proposal) if proposal else '', 'do przeglądu w UI' if proposal else 'bez bezpiecznej propozycji'])
+            key = row['keys']
+            if proposal:
+                note = 'propozycja wymaga przeglądu w kontekście UI'
+            elif key.startswith('verify.card.'):
+                note = 'nazwa dowodu lub osoby: skrót grozi pomyleniem kategorii'
+            elif key.startswith('family.'):
+                note = 'nazwa lub opis mechanizmu: skrót może pominąć cechę rodziny'
+            elif key.startswith(('lock.', 'tutorial.')):
+                note = 'instrukcja: skrót mógłby pominąć część gestu lub sygnału'
+            elif key == 'run.lives_left':
+                note = 'EN i DE różnią się znaczeniem; najpierw ustalić stan w grze'
+            elif key.startswith('settings.voice_pack.'):
+                note = 'zachować etap pobierania i jasne działanie; brak bezpiecznego skrótu'
+            elif len(value) <= 12:
+                note = 'krótkie słowo: skrót lub symbol mógłby utrudnić zrozumienie'
+            else:
+                note = 'bez bezpiecznego skrótu zachowującego sens i funkcję kontrolki'
+            writer.writerow([key,lang,en,value,len(en),len(value),round(100*len(value)/len(en),1),proposal,len(proposal) if proposal else '',note])
