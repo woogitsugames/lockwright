@@ -241,22 +241,47 @@ func _add_scene(cfg: Dictionary) -> void:
 	gap.name = "SceneGap"
 	gap.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	gap.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	gap.size_flags_stretch_ratio = 1.15
+	gap.size_flags_stretch_ratio = 1.5
 	vbox.add_child(gap)
 	vbox.move_child(gap, 1)
 	scroll.size_flags_stretch_ratio = 1.0
 	$Frame.visible = false
+	# flat dark band behind the header: the title stays >= 4.5:1 over a bright daytime wall
+	var band := ColorRect.new()
+	band.name = "HeaderBand"
+	band.color = Color(0.06, 0.045, 0.035, 0.62)
+	band.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	band.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
+	add_child(band)
+	move_child(band, 1)
+	band.visible = false
+	scene.climb_finished.connect(func() -> void: band.visible = true)
+	var header: Control = $Frame/VBox/Header
+	var fit_band := func() -> void:   # a title wrapped to two lines grows the band with it
+		band.offset_bottom = ScreenFrame.insets(self).y + 8.0 + maxf(48.0, header.get_combined_minimum_size().y) + 8.0
+	header.resized.connect(fit_band)
 	var landscape := func() -> void:
 		var vp := get_viewport_rect().size
+		fit_band.call()
 		gap.visible = vp.y >= vp.x
-		if vp.x > vp.y:   # dialogue column on the right; the figure (left third of the picture) stays clear
+		band.offset_left = 0.0
+		band.offset_right = 0.0
+		if vp.x > vp.y:   # dialogue column on the side away from the figure, so the client stays clear
 			var i := ScreenFrame.insets(self)
+			var left := i.x + ScreenFrame.SIDE
 			var right := i.z + ScreenFrame.SIDE
-			var col := minf(ScreenFrame.MAX_COLUMN, vp.x * 0.52)
-			$Frame.add_theme_constant_override("margin_left", int(vp.x - right - col))
-			$Frame.add_theme_constant_override("margin_right", int(right))
+			var col := minf(ScreenFrame.MAX_COLUMN, vp.x * 0.5)
+			if scene.figure_x() < 0.5:
+				$Frame.add_theme_constant_override("margin_left", int(vp.x - right - col))
+				$Frame.add_theme_constant_override("margin_right", int(right))
+				band.offset_left = vp.x - right - col - 8.0
+			else:
+				$Frame.add_theme_constant_override("margin_left", int(left))
+				$Frame.add_theme_constant_override("margin_right", int(vp.x - left - col))
+				band.offset_right = -(vp.x - left - col - 8.0)
 	landscape.call()
 	resized.connect(landscape)
+	scene.figure_changed.connect(landscape)
 
 
 func _on_climb_finished() -> void:

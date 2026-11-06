@@ -226,6 +226,35 @@ python3 art/blender/arrival_composite.py --plate $A/wrong_floor_night_ajar_hold.
 Sprawdź nazwy plików cienia, które wypisze Blender (`WROTE …_shadow_<slot>.png`), i obejrzyj cień przy butach oraz na
 skrzydle drzwi (Teresa). Commit: mapy cienia + 4 kompozyty + nowy arkusz (polecenie arkusza: `art/renders/arrival/README.md`).
 
+## Dodatek (sesja A, 2026-11-06, wieczór): G25 Kazimierz + scenka w grze — cienie GPU i pełne klatki przejazdu
+Pan Kazimierz ma nowy wycinek z G25 (patrzy na klucz): `art/renders/arrival/figures/kazimierz.png` (już w repo,
+nadpisuje G23). **Mapy cienia z dodatku G23 wyżej trzeba liczyć z tym nowym plikiem** (te same polecenia; jeśli już
+policzone ze starym wycinkiem — powtórz trzy mapy Kazimierza, Teresy nie). Stop-klatek i sekwencji nie renderuj ponownie.
+Gra (`game/assets/arrival/wrong_floor/`) ma dziś przejazd z kafli arkusza kontrolnego (178×318, miękki) i cień 2D.
+Po mapach cienia i z pełnymi klatkami GPU z `build/local-session/arrival-master/` (108 klatek 1080×1920 z sesji GPU;
+katalogi `wrong_floor_<pora>_seq/f_####.png`) jedno polecenie odświeża wszystkie zasoby gry i kotwice w `game/data/arrival_scenes.json`:
+```bash
+BL=blender; A=art/renders/arrival
+for t in night evening day; do
+  $BL -b -P art/blender/arrival_scene.py -- --time $t --mode shadow --device GPU --still-res 1080x1920 --still-spp 256 --figure kazimierz=$A/figures/kazimierz.png
+done
+$BL -b -P art/blender/arrival_scene.py -- --time night --mode shadow --door ajar --device GPU --still-res 1080x1920 --still-spp 256 --figure teresa=$A/figures/teresa.png
+# kompozyty do przeglądu (dzień: --exposure 1.0) + arkusz
+G="--tint-gain 2.0 --sat 1.2 --wrap 0.25"
+for t in night evening; do python3 art/blender/arrival_composite.py --plate $A/wrong_floor_${t}_hold.png --figure kazimierz=$A/figures/kazimierz.png \
+    --shadow $A/wrong_floor_${t}_shadow_kazimierz.png $G --exposure 1.15 --out $A/wrong_floor_${t}_kazimierz.png; done
+python3 art/blender/arrival_composite.py --plate $A/wrong_floor_day_hold.png --figure kazimierz=$A/figures/kazimierz.png \
+    --shadow $A/wrong_floor_day_shadow_kazimierz.png $G --exposure 1.0 --out $A/wrong_floor_day_kazimierz.png
+python3 art/tools/arrival_board.py --out $A/wrong_floor_with_figures_board_v3.jpg --note "G25 + GPU shadow maps"
+# zasoby gry: pełne klatki (540x960 WebP) + warstwy stop-klatki z cieniem GPU
+python3 art/tools/arrival_export.py --master build/local-session/arrival-master --shadows
+godot --headless --path game --import
+git add -f game/assets/arrival/wrong_floor game/data/arrival_scenes.json   # .import (lossy 0,8) już są w repo
+godot --headless --path game -s res://addons/gut/gut_cmdln.gd -gtest=res://tests/gut/test_arrival_scene.gd -gexit
+```
+Rozmiar: 3 × 36 klatek 540×960 @ q72 ≈ 4–5 MB (budżet pck 150 MB). Obejrzyj cień pod oboma butami (nowa poza: ciężar na
+jednej nodze, druga stopa z tyłu) i na skrzydle drzwi (Teresa). Commit: mapy cienia, kompozyty, arkusz v3, `game/assets/arrival/**`.
+
 ## Dodatek (2026-11-06): wyposażenie warsztatu (D-71) — finalne warstwy na GPU
 W repo są szkice CPU (810×1440, 32 spp) tła warsztatu i 10 nakładek wyposażenia (`game/data/furnishings.json`).
 Finał: ten sam skrypt na GPU, potem składanie nakładek (różnica wariant − baza, maska z miękką krawędzią).

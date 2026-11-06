@@ -129,6 +129,9 @@ func test_layout_keeps_the_client_in_view() -> void:
 		var scene := await _open(_job("day"), true, size)
 		var arr: ArrivalScene = scene.scene
 		var a: Dictionary = arr.cfg["anchors"]["kazimierz"]
+		var canvas: Control = arr.get_node("Canvas")
+		assert_eq(arr.size, Vector2(size), "%s scene fills the screen" % size)
+		assert_true(canvas.size.x >= size.x - 1 and canvas.size.y >= size.y - 1, "%s picture covers" % size)
 		var head := arr.image_to_stage(Vector2(a["head"][0], a["head"][1]))
 		assert_between(head.x, 0.0, float(size.x), "%s head x" % size)
 		assert_between(head.y, 0.0, float(size.y), "%s head y" % size)
@@ -144,3 +147,16 @@ func test_jobs_without_scene_keep_the_plain_screen() -> void:
 	assert_not_null(scene.get_node_or_null("Backdrop"))
 	assert_true(scene.get_node("Frame").visible)
 	assert_true(scene.dialogue.index >= 0 or scene.dialogue.is_finished(), "dialogue starts at once")
+
+
+func test_landscape_column_moves_away_from_teresa() -> void:
+	var scene := await _open(_job("night"), true, Vector2i(915, 412))
+	var arr: ArrivalScene = scene.scene
+	var frame: MarginContainer = scene.get_node("Frame")
+	assert_gt(frame.get_theme_constant("margin_left"), 400, "Kazimierz on the left: column right")
+	arr.show_speaker("teresa")
+	var a: Dictionary = arr.cfg["anchors"]["teresa"]
+	var head := arr.image_to_stage(Vector2(a["head"][0], a["head"][1]))
+	assert_lt(float(915 - frame.get_theme_constant("margin_right")), head.x, "column left of Teresa")
+	assert_between(head.y, 0.0, 412.0)
+

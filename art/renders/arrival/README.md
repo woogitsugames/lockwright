@@ -19,7 +19,7 @@ Scena powstaje z zestawu klatki schodowej: `art/blender/arrival_scene.py` urucha
 | `wrong_floor_preview_board.png` | zestawienie czterech proofów |
 | `wrong_floor_preview_vs_stairwell_locks.png` | porównanie: noc tutaj / `stairwell_night.png` / `stairwell.png` / `wafer.png` |
 | `placeholder_kazimierz.png`, `placeholder_teresa.png` | szare sylwetki-zaślepki z alfą (do czasu dostawy Magnific D1/D2) |
-| `figures/kazimierz.png`, `figures/teresa.png` | wycinki postaci z G23 (ChatGPT, D-66): RGBA, `art/tools/figure_cutout.py` (rembg BiRefNet-portrait + odkażenie koloru pymatting; Kazimierz `--keep-box 380,175,425,250` przywraca klucz) |
+| `figures/kazimierz.png`, `figures/teresa.png` | wycinki postaci (Kazimierz od 2026-11-06 z G25 v2, Teresa z G23) (ChatGPT, D-66): RGBA, `art/tools/figure_cutout.py` (rembg BiRefNet-portrait + odkażenie koloru pymatting; G23-Kazimierz miał `--keep-box 380,175,425,250`, G25 go nie potrzebuje) |
 | `wrong_floor_{night,evening,day}_kazimierz.png`, `wrong_floor_night_teresa.png` | kompozyty z prawdziwymi postaciami na finałach GPU, **cień 2D** (mapy cienia GPU czekają na lokalną sesję) |
 | `wrong_floor_with_figures_board.jpg` | arkusz przeglądu czterech kompozytów (`art/tools/arrival_board.py`) |
 
@@ -49,6 +49,23 @@ python3 art/tools/arrival_board.py
 - **Znane braki:** dzień — plama słońca z okna nie oświetla nóg pana Kazimierza (nie jest liczona); światło na postaci
   to wciąż „studio z przodu”, żarówka nad nim daje tylko gradient góra–dół, bez obrysu na włosach; nocą Teresa jest
   ciemna (podświetlona od przedpokoju) — na telefonie do sprawdzenia. Integracja w grze należy do sesji A po akceptacji.
+
+## G25 i scenka w grze (2026-11-06, D-74)
+
+- `figures/kazimierz.png` to teraz wycinek z G25 v2 (`contrib/gpt/G25/images/D1_kazimierz_fullbody_v2.png`, patrzy na
+  klucz w prawej ręce); `figure_cutout.py` bez `--keep-box` — klucz leży na tle marynarki i model go zachowuje.
+  Kompozyty nocy/wieczoru/dnia złożone ponownie (dzień `--exposure 1.0`, wcześniej 1,15 — postać była jaśniejsza
+  od otoczenia); pani Teresa bez zmian. Arkusz: `wrong_floor_with_figures_board_v2.jpg`.
+- **Cień kontaktowy z podeszew:** `arrival_composite.py` liczy ślad stóp z najniższego kryjącego piksela każdej kolumny
+  w dolnych 12 % wycinka (zamiast jednej elipsy pod środkiem ramki). Nowa poza ma ciężar na jednej nodze i drugą stopę
+  z tyłu — z elipsą tylna stopa wisiała w powietrzu.
+- **Ocena v2:** noc i wieczór dobre (klucz czytelny, twarz w świetle żarówki); dzień nadal najsłabszy — postać
+  oświetlona „studyjnie” i chłodniejsza niż plama słońca na posadzce, ciepły obrys z lewej (ze zdjęcia) nie ma
+  źródła w kadrze dziennym. Do poprawy mapą cienia GPU i ew. `--warm` dla dnia.
+- **Gra:** `python3 art/tools/arrival_export.py` → `game/assets/arrival/wrong_floor/<pora>/` (flipbook `seq/f_NN.webp`,
+  `plate_<postać>.webp` + `figure_<postać>.webp` z `arrival_composite.py --layers-out`) i kotwice w
+  `game/data/arrival_scenes.json`. Bez `--master` przejazd pochodzi z kafli `*_final_contact.png` (tymczasowe, 178×318);
+  z `--master build/local-session/arrival-master` z pełnych klatek GPU (540×960). `--shadows` składa z mapami cienia GPU.
 
 ## Czego potrzebuje gra
 

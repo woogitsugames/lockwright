@@ -3,6 +3,7 @@
 #
 #   python3 art/tools/arrival_export.py                       # job wrong_floor, all times it has
 #   python3 art/tools/arrival_export.py --master build/local-session/arrival-master   # full GPU sequences (local)
+#   python3 art/tools/arrival_export.py --shadows      # use the GPU shadow maps <plate>_shadow_<figure>.png
 #
 # Per time of day <t> it writes game/assets/arrival/<job>/<t>/:
 #   seq/f_01.webp .. f_36.webp  the stair climb (12 fps). Source: the full GPU frames in --master
@@ -63,6 +64,8 @@ def main():
     ap.add_argument('--master', help='dir with <job>_<time>_seq/f_####.png full GPU frames (local session)')
     ap.add_argument('--seq-width', type=int, default=540); ap.add_argument('--seq-q', type=int, default=72)
     ap.add_argument('--hold-q', type=int, default=80)
+    ap.add_argument('--shadows', action='store_true',
+                    help='composite with the Cycles shadow maps (wrong_floor_<t>[_ajar]_shadow_<figure>.png) instead of the 2D shadow')
     ap.add_argument('--data', default=os.path.join(ROOT, 'game', 'data', 'arrival_scenes.json'))
     o = ap.parse_args()
     cfg = JOBS[o.job]; dst = os.path.join(ROOT, 'game', 'assets', 'arrival', o.job)
@@ -90,6 +93,11 @@ def main():
             cmd = [sys.executable, os.path.join(ROOT, 'art', 'blender', 'arrival_composite.py'), '--plate', os.path.join(A, plate),
                    '--figure', '%s=%s' % (fig, os.path.join(A, 'figures', fig + '.png'))] + G + extra + \
                   ['--out', pre + '_composite.png', '--layers-out', pre]
+            shadow = os.path.join(A, plate.replace('_hold.png', '_shadow_%s.png' % fig))
+            if o.shadows:
+                if not os.path.exists(shadow):
+                    sys.exit('missing shadow map ' + shadow)
+                cmd += ['--shadow', shadow]
             subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL)
             Image.open(pre + '_plate.png').convert('RGB').save(os.path.join(td, 'plate_%s.webp' % fig), 'WEBP', quality=o.hold_q, method=6)
             fg = Image.open(pre + '_figure.png').convert('RGBA')

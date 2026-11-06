@@ -51,6 +51,9 @@ func _ready() -> void:
 			if a.has("speaker"):
 				scene.scene.show_speaker(a["speaker"])
 			scene.dialogue.skip_all()
+	if a.has("debug") and "scene" in scene and scene.scene != null:
+		var arr: Control = scene.scene
+		print("ARR size=", arr.size, " canvas=", arr.get_node("Canvas").position, arr.get_node("Canvas").size, " plate=", arr.get_node("Canvas/Plate").texture, arr.get_node("Canvas/Plate").size)
 	for i in int(a.get("frames", "30")):
 		await get_tree().process_frame
 	if a.has("debug") and scene is Control:

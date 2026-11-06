@@ -29,6 +29,12 @@
         0.3,
         0.42
       ],
+      "focus_by_figure": {
+        "teresa": [
+          0.62,
+          0.42
+        ]
+      },
       "steps": {
         "step_wood": [
           2,

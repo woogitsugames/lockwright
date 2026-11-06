@@ -12,6 +12,7 @@ extends Control
 ## large (landscape shows the head-and-shoulders band, portrait keeps the figure on the left in view).
 
 signal climb_finished
+signal figure_changed
 
 const DATA_PATH := "res://data/arrival_scenes.json"
 const CROSSFADE_S := 0.15     # last climb frame -> hold (DESIGN: 100-250 ms)
@@ -20,12 +21,16 @@ const BREATH_SHADER := """
 shader_type canvas_item;
 uniform float breath = 1.0;      // >= 1: vertical scale about the feet line
 uniform float feet_y = 0.85;
+varying vec4 tint;
+void vertex() {
+	tint = COLOR;   // modulate only; COLOR in fragment() already holds the unscaled texel
+}
 void fragment() {
 	vec2 uv = UV;
 	uv.y = feet_y + (uv.y - feet_y) / breath;
 	vec4 c = texture(TEXTURE, uv);
 	c.a *= step(0.0, uv.y) * step(uv.y, 1.0);
-	COLOR = c * COLOR;
+	COLOR = c * tint;
 }
 """
 
@@ -99,7 +104,7 @@ func setup(p_cfg: Dictionary, p_reduce_motion: bool) -> void:
 	cfg = p_cfg
 	reduce_motion = p_reduce_motion
 	name = "ArrivalScene"
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	clip_contents = true
 	_canvas = Control.new()
@@ -129,7 +134,7 @@ func _layer(n: String) -> TextureRect:
 	r.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	r.stretch_mode = TextureRect.STRETCH_SCALE
 	r.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	r.set_anchors_preset(Control.PRESET_FULL_RECT)
+	r.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_canvas.add_child(r)
 	return r
 
@@ -141,12 +146,18 @@ func _layout() -> void:
 		return
 	var sc := maxf(stage.x / _img_size.x, stage.y / _img_size.y)
 	var sz := _img_size * sc
-	var focus: Array = cfg.get("focus", [0.5, 0.5])
+	var focus: Array = cfg.get("focus_by_figure", {}).get(current_figure, cfg.get("focus", [0.5, 0.5]))
 	var pos := stage * 0.5 - Vector2(float(focus[0]) * sz.x, float(focus[1]) * sz.y)
 	pos.x = clampf(pos.x, stage.x - sz.x, 0.0)
 	pos.y = clampf(pos.y, stage.y - sz.y, 0.0)
 	_canvas.position = pos
 	_canvas.size = sz
+
+
+## The current figure's feet, 0..1 of the image (the landscape dialogue column goes on the other side).
+func figure_x() -> float:
+	var a: Dictionary = cfg.get("anchors", {}).get(current_figure, {})
+	return float(a.get("feet", [0.3, 0.85])[0])
 
 
 ## Image point (0..1) -> stage position (tests, screenshots).
@@ -230,6 +241,9 @@ func _set_figure(f: String) -> void:
 	current_figure = f
 	_plate.texture = load(l[0]) as Texture2D
 	_figure.texture = load(l[1]) as Texture2D
+	if _canvas.size != Vector2.ZERO:
+		_layout()
+	figure_changed.emit()
 	var a: Dictionary = cfg.get("anchors", {}).get(f, {})
 	var feet: Array = a.get("feet", [0.5, 0.85])
 	(_figure.material as ShaderMaterial).set_shader_parameter("feet_y", float(feet[1]))
