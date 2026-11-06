@@ -1,0 +1,31 @@
+keys,en,pl,de,fr,es
+job.community_notice_case.note,,,"Altstadt, gemeinsamer Schaukasten. Verwaltung und unterschriebener Beschluss; der Putzplan hängt.",,
+job.edek_rehearsal_store.note,,,Theaterlager auf dem Campus. Herr Edek und die Zustimmung der Universität; Stühle für die Bewohnerversammlung ausgeliehen.,Réserve du théâtre du campus. Monsieur Edek et accord universitaire ; chaises prêtées pour la réunion des résidents.,
+job.gosia_workbench_drawer.note,,,Gosias Werkbankschublade. Rechnung und Foto von der Abholung. Die Werkbank kommt unbeschädigt in den Gemeinschaftsraum.,,
+job.halina_recipe_box.note,,,"Frau Halina, Rezeptkästchen. Foto und Frau Zosias Bestätigung. Preis vereinbart; die Diskussion über eine Handvoll geht weiter.","Madame Halina, boîte à recettes. Photo et parole de Madame Zosia. Prix convenu ; le débat sur la poignée continue.",
+job.krystyna_wooden_album.note,,,Frau Krystynas Holzkästchen. Familienfoto und Olas Bestätigung. Die Abzüge haben sie selbst ausgesucht.,La boîte en bois de Madame Krystyna. Photo de famille et parole d'Ola. Elles ont choisi elles-mêmes les tirages.,
+job.marta_poster_studio.note,,,Martas Atelier. Mietvertrag und Nachbarin. Die Plakate wurden abgeholt; Potato wollte sich nicht äußern.,,
+job.refuse_sisters_flat.after.1,,,"Ich habe mit der Mieterin gesprochen. Sie bat uns zu warten, bis sie zurück ist.",,
+job.refuse_sisters_flat.note,,,Norberts Schwester: Wohnung nicht geöffnet. Keine Zustimmung der Mieterin. Ihm die Nummer der Hausverwaltung gegeben.,,
+job.refuse_unapproved_stockroom.after.1,,,Die Pakete wurden heute Morgen abgeholt. Der Laden hat jetzt bessere Lieferzeiten.,,
+job.refuse_unapproved_stockroom.note,,,"Lagerraum des Nachtmarkts. Lieferschein, keine Zustimmung der Eigentümerin oder des Eigentümers. Pakete am Morgen übergeben.",,
+job.roman_service_cupboard.note,,,"Sonnensiedlung, Wartungsschrank. Herr Roman und ein unterzeichneter Beschluss. Die alten Nummern kommen in den Gemeinschaftsraum.","Résidence du Soleil, placard d'entretien. Monsieur Roman et vote signé. Les vieux numéros iront dans la salle commune.",
+job.shared_room_door.after.1,,,Bei der ersten Versammlung hat niemand einen Schlüssel verloren. Ein vielversprechender Anfang.,,
+job.shared_room_door.note,,,"Altstadt, Gemeinschaftsraum. Unterzeichneter Beschluss, Verwaltung und Zeuge. Stühle, Fotos und Teigtaschen kamen zuerst an.",,
+job.stefan_book_tin.note,,,"Stefans Kiosk, Dose mit Wertmarken. Quittung und Foto. Der Besitzer erinnert sich noch immer nicht an die Kombination.",,
+job.zuzanna_catalogue_drawer.note,,,"Museum, Katalogschublade. Frau Doktor Rygiel genehmigte die Kopien. Die Originale blieben an ihrem Platz.",,
+job.museum_time_lock.note,,,,Musée de la Technologie. La docteure Rygiel avait trois exemplaires. Serrure à minuterie réparée. Zuzanna y est stagiaire.,
+job.refuse_aunt_alive.note,,,,La tante était bien vivante. La voisine est arrivée à temps. Madame Lucyna passe le bonjour depuis sa cure.,
+job.allotment_shed.note,,,,L'abri de Monsieur Zbyszek. La parcelle était au nom de sa femme. Mystère résolu. Paiement en cornichons.,
+job.charleroi_letters.note,,,,Charleroi. Coffret de Józef chez Madame Martine. Toutes deux voulaient l’ouvrir. Première larme au travail. Discrète.,
+job.krakow_antiquarian.note,,,,"Monsieur Leopold. Le coffre était à lui, pas la boîte. Un travail, deux décisions. Et l'histoire de la corporation.",
+job.night_nurse.note,,,,"Madame Agnieszka, après une garde de nuit. Monsieur Roman à l'interphone, toujours efficace. Remise de voisinage, bien sûr.",
+job.refuse_aunt_alive.after.1,,,,Madame Lucyna revient vendredi. Elle vous fera changer la serrure à ce moment-là.,
+job.swiatniki_journeyman_padlock.note,,,,"Monsieur Władysław, Świątniki. Il a reconnu l'écriture de Henryk dans mon carnet. C'est lui qui lui avait enseigné la première règle.",
+job.widow_bureau.note,,,,"Madame Irena, envoyée par Madame Zosia. Le secrétaire est chez elle ; aucune marque. Des billets dedans. Je n'ai pas posé de question.",
+job.wrong_floor.note,,,,"Monsieur Kazimierz, de retour d'une fête. Mauvais étage. Rien ouvert. Problème réglé. Meilleure intervention de la semaine.",
+job.bike_interview.note,,,"Kuba, Fahrradschloss. Foto und Quittung: Eigentum plausibel. Krawatte zweimal gerichtet. Bus um acht Uhr zweiundfünfzig.",Le cadenas du vélo de Kuba. La photo et le reçu correspondaient. Cravate rajustée deux fois. Bus à huit heures cinquante-deux.,El candado de la bici de Kuba. Foto y recibo coinciden. Corbata enderezada dos veces. Autobús a las ocho y cincuenta y dos.
+job.liege_bakery.note,,,"Lüttich, drei Uhr fünfzig. Das Detektorschloss hatte allen Grund zu sperren. Übergabeunterlagen in Ordnung. Eine Waffel mit Perlzucker.","Liège, trois heures cinquante. La serrure à détecteur a fait son travail. Documents en règle. Une gaufre au sucre perlé.","Lieja, las tres y cincuenta. El detector hizo su trabajo. Traspaso en regla. Un gofre de azúcar perlado."
+job.newlyweds_4am.note,,,"Frischvermählte, vier Uhr zwölf. Ausweis ohne Adresse ist normal, deshalb App und Nachbar im Bademantel. Dreistöckige Torte. Ich nahm ein Stück.","Jeunes mariés, quatre heures douze. Adresse confirmée par l'application et un voisin en peignoir. Gâteau à trois étages. J'ai eu une part.","Recién casados, las cuatro y doce. Dirección confirmada por la aplicación y un vecino en bata. Tarta de tres pisos. Probé un trozo."
+job.student_dorm.note,,,"Zimmer vierhundertzwölf, Wohnheim. Ein Pförtner mit Bewohnerliste: besser geht der Nachweis kaum. Zuzanna fragte nach allem.","Chambre quatre cent douze, campus. Le concierge a consulté sa liste ; le nom correspondait. Zuzanna a posé toutes les questions.","Habitación cuatrocientos doce, residencia. El portero consultó la lista; el nombre coincidía. Zuzanna preguntó por todo."
+job.time_capsule.note,,,"Klasse drei B, am Kastanienbaum. Die Schule und zwanzig Zeugen. Marta war in der Klasse. Eine Karte auf meiner Fußmatte: „Die Brühe wartet.“","Classe trois B, sous le marronnier. Accord de l'école, vingt témoins. Marta était là. Mot à la maison : « Le bouillon t'attend. »","Clase de tercero B, bajo el castaño. Permiso del colegio, veinte testigos. Marta estuvo allí. Nota en casa: «Te espera el caldo»."
