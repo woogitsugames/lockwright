@@ -102,9 +102,12 @@ function drawDialSafe(g, box, f) {
   g.fillStyle = '#efebe2';
   g.beginPath(); g.moveTo(x0 - 6, fy + 10); g.lineTo(x0 + 6, fy + 10); g.lineTo(x0, fy + 22); g.closePath(); g.fill(); g.strokeStyle = '#23211d'; g.stroke();
   text(g, allSet ? `fence dropped ${(hp * 100).toFixed(0)}%` : 'fence', x0 - r * 1.3, fy - 8, { size: 11, color: '#6b665c' });
-  readingLine(g, x0 - r * 1.3, x0 + (n - 1) * r * 2.6 + r * 1.3, cy - r - 2, 'fence line');
-  // crank (dial) at the right: angle = integrated crank speed, digit = dial reading
-  const dx = box.x + box.w - 56, dcy = box.y + 56, dr = 34;
+  // label at the right end: above the line it collided with the fence bar (review V03)
+  const fx1 = x0 + (n - 1) * r * 2.6 + r * 1.3;
+  readingLine(g, x0 - r * 1.3, fx1, cy - r - 2, '');
+  text(g, 'fence line', fx1 + 6, cy - r + 2, { size: 11, color: '#6b665c' });
+  // crank (dial) left of the core gauge (drawCore sits at the top-right corner; review V03: they overlapped)
+  const dx = box.x + box.w - 56 - 120, dcy = box.y + 56, dr = 34;
   const da = dialAngleAt(cur);
   g.fillStyle = '#f8f6f1'; g.strokeStyle = '#23211d'; g.lineWidth = 2;
   g.beginPath(); g.arc(dx, dcy, dr, 0, Math.PI * 2); g.fill(); g.stroke();
@@ -144,7 +147,7 @@ function drawCombo(g, box, f) {
   const rot = val(f, 'core_rotation');
   g.strokeStyle = '#4a4f55'; g.lineWidth = 3;
   g.beginPath(); g.moveTo(x0 + (n - 1) * r * 2.5 + r, cy); g.lineTo(box.x + box.w - 90, cy - 30 + rot * 30); g.lineTo(box.x + box.w - 60, cy - 30 + rot * 30); g.stroke();
-  text(g, `cable pull T=${val(f, 'tension').toFixed(2)}`, x0 + (n - 1) * r * 2.5 + r + 8, cy - 12, { size: 11, color: '#6b665c' });
+  text(g, `cable pull T=${val(f, 'tension').toFixed(2)}`, x0 + (n - 1) * r * 2.5 + r + 8, cy + 20, { size: 11, color: '#6b665c' });  // below the cable (review V03)
   drawCore(g, box, f, 'shackle');
 }
 

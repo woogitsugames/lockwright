@@ -1,5 +1,5 @@
 // Tests for the lockviz v0.6 family schematics (D-59).
-// Run: cd mockups && npm install && node --test tools/lockviz/test/
+// Run: cd mockups && npm install && node --test "tools/lockviz/test/*.test.mjs"  (Node 22: a bare directory is read as a module)
 // - consistency: traces/index.json <-> trace files <-> schema
 // - geometry unit tests for the pure helpers in families_v06.js
 // - viewer smoke test (Playwright): every indexed trace renders at frame 0 / mid / end
