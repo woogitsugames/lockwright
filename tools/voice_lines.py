@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Voiced dialogue lines for jobs (D-57): cast, TTS, normalisation, .import files.
 
-Source of truth for the TEXT is game/i18n/content.csv (`<job_id>.line.N`, columns en/pl/de); the SPEAKER of each line
+Source of truth for the TEXT is game/i18n/content.csv (`<job_id>.line.N`, columns en/pl/de/fr/es); the SPEAKER of each line
 is `lines[N-1]` in game/data/jobs/<job_id>.json. Every speaker has one fixed, fictional ElevenLabs voice (designed
 from a text description with Voice Design, never cloned) that reads both languages; see game/data/voice_cast.json.
 
@@ -26,7 +26,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 GAME = ROOT / 'game'
 OUT = GAME / 'assets/audio/lines'
 CAST_JSON = GAME / 'data/voice_cast.json'
-LANGS = ('pl', 'en', 'de')      # D-57: PL + EN, then DE (same voices); FR/ES next
+LANGS = ('pl', 'en', 'de', 'fr', 'es')   # D-57: PL + EN, then DE, FR, ES (same voices; D-59)
 MODEL = 'eleven_v4_turbo'       # owner's choice (cheaper); fallback 'eleven_v4'. Not v3 / multilingual v2.
 TAGS_JSON = ROOT / 'contrib/voice/tags.json'   # audio tags per line key, e.g. "[tired]" (TTS input only)
 MANIFEST = ROOT / 'contrib/voice/tts_inputs.json'
