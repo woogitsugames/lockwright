@@ -1,7 +1,7 @@
 extends SceneTree
 ## Menu v2 screenshots (D-62): normal + pressed, per window size and language, with the touch
 ## zones outlined in a separate "_zones" shot. Run under xvfb with opengl3:
-##   xvfb-run -s "-screen 0 2400x2400x24" godot --path game --display-driver x11 --rendering-driver opengl3 \
+##   xvfb-run -s "-screen 0 4000x4000x24" godot --path game --display-driver x11 --rendering-driver opengl3 \
 ##     -s res://tests/menu_shots.gd -- --out=/tmp/menu_v2
 const SIZES := [Vector2i(412, 915), Vector2i(915, 412), Vector2i(1080, 2400), Vector2i(2400, 1080), Vector2i(1916, 2160), Vector2i(2160, 1916)]
 const LANGS := ["pl", "en", "de"]
@@ -29,18 +29,19 @@ func _shot(name: String) -> void:
 
 
 func _run() -> void:
-	var rm: Variant = Settings.get_value(&"reduce_motion", false)
-	Settings.set_value(&"reduce_motion", true)  # no fade-in in the shots (restored below)
+	var rm: Variant = root.get_node("Settings").get_value(&"reduce_motion", false)
+	root.get_node("Settings").set_value(&"reduce_motion", true)  # no fade-in in the shots (restored below)
 	for size in SIZES:
 		root.size = size
 		await _frames(3)
 		for lang in LANGS:
-			I18n.apply_language(lang)
+			root.get_node("I18n").apply_language(lang)
 			var menu: Control = load("res://scenes/main_menu.tscn").instantiate()
 			menu.change_scenes = false
 			root.add_child(menu)
 			await _frames(4)
 			var tag := "menu_%dx%d_%s" % [size.x, size.y, lang]
+			print("FIT ", tag, " vp=", menu.get_viewport_rect().size, " image=", menu.image_rect, " insets=", SafeArea.insets(menu))
 			await _shot(tag)
 			menu.show_pressed(&"jobs")
 			await _frames(2)
@@ -59,5 +60,5 @@ func _run() -> void:
 				await _shot(tag + "_zones")
 			menu.queue_free()
 			await _frames(2)
-	Settings.set_value(&"reduce_motion", rm)
+	root.get_node("Settings").set_value(&"reduce_motion", rm)
 	quit()

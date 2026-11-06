@@ -149,7 +149,7 @@ func test_pressed_sprite_shows_then_hides() -> void:
 		menu.zone(id).pressed.emit()
 		assert_eq(menu.pressed_id, id, "pressed state on")
 		assert_not_null(menu.pressed_texture, "baked sprite loaded")
-		assert_eq(menu.pressed_texture.resource_path, "res://assets/ui/menu/menu_pressed_%s_portrait_pl.webp" % id)
+		assert_eq(menu.pressed_texture.resource_path, "res://assets/ui/menu/menu_pressed_%s_portrait_%s.webp" % [id, menu.lang])
 		var it: Dictionary = menu._item(id)
 		var want: Rect2 = menu.to_screen(menu.rect_of(it["sprite_rect"]))
 		assert_almost_eq(menu.pressed_rect.position, want.position, Vector2(0.5, 0.5), "sprite at the item's rect")
