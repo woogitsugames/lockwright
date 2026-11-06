@@ -217,3 +217,16 @@ tutorial.say_warded,,"Indice : placez l'embout dans l'espace, puis tournez.",T41
 tutorial.say_chalk,,Indice : la craie montre maintenant le geste.,T41: nowa etykieta UI i wersja językowa
 tutorial.say_master,,Le maître montre le geste une fois. À vous.,T41: nowa etykieta UI i wersja językowa
 tutorial.s1_pick_one,,Pouce droit sous la goupille puis montez doucement.,T41: nowa etykieta UI i wersja językowa
+settings.voice_pack.title_de,,Voix allemandes,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.line,,{title} : {state},T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.download,,Télécharger,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.not_now,,Pas maintenant,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.stop,,Arrêter,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.retry,,Réessayer,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.progress,,téléchargement {pct} %,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.verifying,,vérification du fichier,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.ready,,prêtes,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.failed,,Téléchargement échoué. Les sous-titres restent affichés.,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.offline,,Pas de connexion. Les sous-titres restent affichés.,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.auto,,Télécharger les voix automatiquement,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.note,,"Seul le fichier des voix est téléchargé : sans compte ni suivi. Sans lui, les dialogues restent sous-titrés.",T41: uzupelnienie nowych kluczy pakietu glosowego

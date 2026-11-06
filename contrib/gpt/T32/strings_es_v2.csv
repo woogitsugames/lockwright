@@ -217,3 +217,16 @@ tutorial.say_warded,,Pista: encaje la punta en la ranura y gire.,T41: nowa etyki
 tutorial.say_chalk,,Pista: la tiza muestra el gesto que toca.,T41: nowa etykieta UI i wersja językowa
 tutorial.say_master,,El maestro muestra el gesto una vez. Ahora usted.,T41: nowa etykieta UI i wersja językowa
 tutorial.s1_pick_one,,Pulgar derecho bajo el perno y luego súbalo despacio.,T41: nowa etykieta UI i wersja językowa
+settings.voice_pack.title_de,,Voces en alemán,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.line,,{title}: {state},T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.download,,Descargar,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.not_now,,Ahora no,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.stop,,Detener,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.retry,,Reintentar,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.progress,,descargando {pct} %,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.verifying,,verificando el archivo,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.ready,,listas,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.failed,,No se descargó. Los subtítulos siguen activos.,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.offline,,Sin conexión. Los subtítulos siguen activos.,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.auto,,Descargar voces automáticamente,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.note,,"Solo se descarga el archivo de voces: sin cuenta ni seguimiento. Sin él, los diálogos llevan subtítulos.",T41: uzupelnienie nowych kluczy pakietu glosowego
