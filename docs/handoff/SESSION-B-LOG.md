@@ -744,3 +744,13 @@ Zrzuty: `docs/handoff/device-tests/run135/`.
 - **Kółka (combo):** kadr na okno kółek, w pionie szerszy pas, ząbek 2,8 mm (≥ 28 dp na 412 dp, test), wcięcie 2 mm, jaśniejszy przekrój.
 - **QA:** ekrany dial_safe/combo/disc przyjmują wiersze solvera z `qa_sampler.gd` (`rows`) bez mapowania kciuków (test).
 - **Do GPU:** wszystkie nowe płyty to szkice CPU 618×824 / 16 spp (`--res 1236x1648 --spp 256 --device GPU`), warstwy narzędzi `--ppmm 48`. Brak zrzutu „zegar w biegu” (skrypt `--lw-sim` sceny pinów nie dochodzi do biegu).
+
+
+## Od sesji lokalnej: GPU 2x, lever_detector i test Androida — 2026-11-06
+
+- Finalne płyty 2x dla wszystkich obecnych rodzin PHOTOREAL_READY, wraz z narzędziami magnetic/dimple. Warded parts/plate/wards z jednego przebiegu. PNG import stratny 0.85, .import dodane wymuszeniem. Zestawienie i pomiary: device-tests/fixes/plates_2x/.
+- Płyty bez modelu pięciodźwigniowego: lokalny pck 56,177,220 B. Windows nie ma biblioteki lockcore; pack został zapisany, ale eksport zwraca błędy rozszerzenia i preset.2.options. To pomiar rozmiaru zasobów, nie zaliczony runtime; wymagane potwierdzenie Linux perf-budget sesji A.
+- **N-68 — budżet lever_detector:** po dodaniu kandydata 58,142,664 B, ponad 58 MB. Model i płyty zachowane poza game w art/renders/lever_detector/, rodzina pozostaje zablokowana. Pięć dźwigni, wszystkie wymagane węzły GLB, rest_lift=need; odstępy bramek 33.17–39.31 dp przy 412 dp. Wymiary bramek bez zmian, nie zmieniałem lever_view.gd. GUT/both-mode i ostateczna integracja do sesji A po rozwiązaniu budżetu.
+- Telefon SM-A165F 1080x2340, APK CI run 42163108394 (356acbed). Inny podpis poprzedniej instalacji: właściciel jawnie zatwierdził reinstalację po kopii. Przywrócono dane, zgodność SHA-256 wszystkich 40 plików. Kopie prywatne poza repo, w build.
+- **N-67 — quality.gd:35:** przy starcie APK ERROR Parent node is busy setting up children, add_child() failed; backtrace _ready res://scripts/autoload/quality.gd:35. Aplikacja działa dalej, po 10 s log Quality auto profile -> medium. Drugi komunikat startowy: OptimizedTranslation does not store message texts (i18n.gd:152 -> main_menu.gd:30/41). Dowody: device-tests/run42163108394-local/logcat.txt i menu.png. Kodu gry nie zmieniałem.
+- Przyjazd GPU i menu w toku. Magnific D1/D2 brak, więc brak nowych map cienia i kompozytów prawdziwych postaci. Szczegóły i czasy: LOCAL-SESSION-LOG.md.

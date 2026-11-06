@@ -18,6 +18,7 @@ def _arg(name, default):
     return argv[argv.index(name) + 1] if name in argv else default
 
 FAMILY = _arg('--family', 'wafer')
+LEVER_COUNT = int(_arg('--levers', '3'))
 OUT_DIR = os.path.abspath(_arg('--out-dir', os.path.join(ROOT_DIR, 'game', 'assets', 'photoreal_families', FAMILY, 'photo')))
 RES = _arg('--res', '1236x1650')
 SAMPLES = _arg('--samples', '48')
@@ -35,12 +36,12 @@ CONFIG = {
     # GLB rest: every lever at its needed lift (gate on the stump), as lever_plate.py
     'lever': {
         'replace': [('(0.9, 3.5, 1.5, -11.2)', '(0.9, 3.5, 3.5, -11.2)'), ('(7.3, 3.0, 5.0, -11.6)', '(7.3, 3.0, 3.0, -11.6)')],
-        'moving': ['lever%d' % i for i in range(3)] + ['spring%d' % i for i in range(3)] + ['rivet%d' % i for i in range(3)]
+        'moving': ['lever%d' % i for i in range(LEVER_COUNT)] + ['spring%d' % i for i in range(LEVER_COUNT)] + ['rivet%d' % i for i in range(LEVER_COUNT)]
                   + ['detector', 'stump', 'lifter', 'tension', 'tension_shaft'],
     },
 }[FAMILY]
 
-sys.argv = [sys.argv[0], '--', '--res', RES, '--samples', SAMPLES, '--out', os.path.join(OUT_DIR, 'parts.png')] + (['--detector', DETECTOR] if FAMILY == 'lever' else [])
+sys.argv = [sys.argv[0], '--', '--res', RES, '--samples', SAMPLES, '--out', os.path.join(OUT_DIR, 'parts.png')] + (['--detector', DETECTOR, '--levers', str(LEVER_COUNT)] if FAMILY == 'lever' else [])
 src = open(os.path.join(BLENDER_DIR, FAMILY + '.py'), encoding='utf-8').read()
 for a, b in CONFIG['replace']:
     if a not in src:

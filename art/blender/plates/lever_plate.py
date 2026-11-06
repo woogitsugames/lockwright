@@ -14,6 +14,9 @@ import plate_common as P
 from mathutils import Vector, Matrix
 
 arg = cli()
+LEVER_COUNT = int(arg('--levers', '3'))
+if LEVER_COUNT not in (3, 5):
+    raise ValueError('--levers must be 3 or 5')
 OUT_DIR = os.path.abspath(arg('--out-dir', os.path.join(ROOT_DIR, 'game', 'assets', 'photoreal_families', 'lever')))
 RES = [int(v) for v in arg('--res', '1236x1650').split('x')]
 SAMPLES = int(arg('--samples', '160'))
@@ -47,6 +50,14 @@ LEVERS = [  # (y0, needed lift, rest lift, belly z)
 ]
 LT = 1.25
 BACK_Y = 14.0
+BOLT_Y = 9.0
+CAM_Y = 6.0
+if LEVER_COUNT == 5:
+    from lever_layout import detector_levers
+    LEVERS = detector_levers()
+    BACK_Y, BOLT_Y, CAM_Y = 33.0, 28.0, 15.5
+CUT_Y = BACK_Y + 6.0
+
 
 def lever_outline(belly):
     pts = [(PIV.x, PIV.z - 5.0), (-14, -4.5), (-9.5, belly + 0.8), (-8.5, belly), (1.5, belly), (3.0, belly + 1.0),
@@ -57,16 +68,16 @@ def lever_outline(belly):
 def make_lever(i, y0, need, lift, belly):
     o = prism('lever%d' % i, lever_outline(belly), y0, y0 + LT)
     gz = -need  # gate centre in lever coords (stump at z = 0 when lifted by `need`)
-    boolean(o, box('pocketA', STUMP_X + 0.3 - 2.6, 20.0 if OPEN else STUMP_X + 0.3 + 2.6, -5, 20, -9.0, 2.7))
-    boolean(o, box('pocketB', -6.6, -1.4, -5, 20, -9.0, 2.7))
+    boolean(o, box('pocketA', STUMP_X + 0.3 - 2.6, 20.0 if OPEN else STUMP_X + 0.3 + 2.6, -5, CUT_Y, -9.0, 2.7))
+    boolean(o, box('pocketB', -6.6, -1.4, -5, CUT_Y, -9.0, 2.7))
     # True gate channel
-    boolean(o, box('gate', -2.0, STUMP_X, -5, 20, gz - 2.45, gz + 2.45))
+    boolean(o, box('gate', -2.0, STUMP_X, -5, CUT_Y, gz - 2.45, gz + 2.45))
     # Anti-pick false gate notch cut into the upper gating tooth (catches stump when delta_lift = -2.2 mm)
-    boolean(o, box('fgate_hi', STUMP_X - 1.35, STUMP_X + 0.6, -5, 20, gz + 3.05, gz + 5.15))
+    boolean(o, box('fgate_hi', STUMP_X - 1.35, STUMP_X + 0.6, -5, CUT_Y, gz + 3.05, gz + 5.15))
     # Secondary false notch on the lower tooth
-    boolean(o, box('fgate_lo', STUMP_X - 1.25, STUMP_X + 0.6, -5, 20, gz - 5.05, gz - 3.10))
-    boolean(o, cyl('pivh', 2.08, 30, (PIV.x, 0, PIV.z), axis='Y', verts=48))
-    boolean(o, cyl('lh', 2.2, 30, (-13.0, 0, 6.5), axis='Y', verts=48))
+    boolean(o, box('fgate_lo', STUMP_X - 1.25, STUMP_X + 0.6, -5, CUT_Y, gz - 5.05, gz - 3.10))
+    boolean(o, cyl('pivh', 2.08, 2 * CUT_Y, (PIV.x, 0, PIV.z), axis='Y', verts=48))
+    boolean(o, cyl('lh', 2.2, 2 * CUT_Y, (-13.0, 0, 6.5), axis='Y', verts=48))
     ang = lift / (STUMP_X - PIV.x)
     o.matrix_world = Matrix.Translation(PIV) @ Matrix.Rotation(-ang, 4, 'Y') @ Matrix.Translation(-PIV)
     put(o, MAT['brass'], 0.18, 3)
@@ -86,28 +97,28 @@ def make_lever(i, y0, need, lift, belly):
 levers = [make_lever(i, *L) for i, L in enumerate(LEVERS)]
 for i in range(len(LEVERS)):
     y0 = LEVERS[i][0] + LT
-    y1 = LEVERS[i + 1][0] if i + 1 < len(LEVERS) else 9.0
+    y1 = LEVERS[i + 1][0] if i + 1 < len(LEVERS) else BOLT_Y
     w = lathe_x(f'spacer{i}', [(0, 2.05), (0, 3.4), (y1 - y0, 3.4), (y1 - y0, 2.05)], seg=64)
     w.data.transform(Matrix.Rotation(math.pi / 2, 4, 'Z')); w.location = (PIV.x, y0, PIV.z); put(w, MAT['bolt'], 0.08, 2)
 post = cyl('post', 2.0, BACK_Y - 0.6, (PIV.x, (BACK_Y + 0.6) / 2, PIV.z), axis='Y', verts=48); put(post, MAT['steel'], 0.05)
 screw_head('post_head', (PIV.x, 0.62, PIV.z), 2.9, 0.75, axis='-Y', slot=False, kind='dome', mat=MAT['steel'])
 
 # ---------------------------------------------------------------- bolt (cast brass) with steel stump, talon, and detector notch
-bolt = box('bolt', -9.0, 38.0, 9.0, 13.6, -6.5, 6.5)
-boolean(bolt, box('talon', -1.0, 3.2, 0, 20, -7, -4.2))
-boolean(bolt, box('tail_slot', -9.5, -4.0, 0, 20, -2.0, 2.0))
-boolean(bolt, box('relief', 30, 40, 0, 20, 5.2, 7))
+bolt = box('bolt', -9.0, 38.0, BOLT_Y, BOLT_Y + 4.6, -6.5, 6.5)
+boolean(bolt, box('talon', -1.0, 3.2, 0, CUT_Y, -7, -4.2))
+boolean(bolt, box('tail_slot', -9.5, -4.0, 0, CUT_Y, -2.0, 2.0))
+boolean(bolt, box('relief', 30, 40, 0, CUT_Y, 5.2, 7))
 # Detector catch notch on top of bolt tail (engaged when detector pawl trips)
-boolean(bolt, box('det_notch', 9.6, 13.2, 8.0, 14.5, 4.2, 7.0))
+boolean(bolt, box('det_notch', 9.6, 13.2, BOLT_Y - 1.0, BOLT_Y + 5.5, 4.2, 7.0))
 put(bolt, MAT['bolt'], 0.35, 3)
 
-stump = cyl('stump', STUMP_R, 9.0 - 0.3, (STUMP_X, (9.0 + 0.3) / 2, 0.0), axis='Y', verts=64); put(stump, MAT['steel'], 0.12, 2)
-screw_head('stud', (-6.6, 9.0, 0), 1.7, 0.6, axis='-Y', slot=False, kind='dome', mat=MAT['steel'])
-put(cyl('stud_post', 1.8, 5.2, (-6.6, 11.4, 0), axis='Y', verts=32), MAT['steel'], 0.05)
+stump = cyl('stump', STUMP_R, BOLT_Y - 0.3, (STUMP_X, (BOLT_Y + 0.3) / 2, 0.0), axis='Y', verts=64); put(stump, MAT['steel'], 0.12, 2)
+screw_head('stud', (-6.6, BOLT_Y, 0), 1.7, 0.6, axis='-Y', slot=False, kind='dome', mat=MAT['steel'])
+put(cyl('stud_post', 1.8, 5.2, (-6.6, BOLT_Y + 2.4, 0), axis='Y', verts=32), MAT['steel'], 0.05)
 
 # Always build the Chubb-style detector pawl (`detector` node) for `lever_detector`
-det = prism('detector', [(9.8, 4.2), (16.5, 4.8), (16.5, 8.4), (13.8, 10.2), (9.8, 9.8)], 8.15, 8.95)
-det.matrix_world = levers[2].matrix_world.copy()
+det = prism('detector', [(9.8, 4.2), (16.5, 4.8), (16.5, 8.4), (13.8, 10.2), (9.8, 9.8)], BOLT_Y - 0.85, BOLT_Y - 0.05)
+det.matrix_world = levers[-1].matrix_world.copy()
 put(det, MAT['blued'], 0.1)
 
 # ---------------------------------------------------------------- case: back plate + flanges (black japanned steel)
@@ -122,56 +133,54 @@ rear = box('rearwall', CX0, CX0 + FL, 0.0, BACK_Y, CZ0, CZ1); put(rear, MAT['cas
 for idx, (px, pz) in enumerate([(-25.5, 24.5), (-25.5, -24.5), (20.5, -24.5), (21.0, 23.0)]):
     p = cyl(f'boss{idx}', 2.4, BACK_Y - 0.4, (px, (BACK_Y + 0.4) / 2, pz), axis='Y', verts=48)
     boolean(p, cyl('tap', 1.0, 30, (px, 0, pz), axis='Y', verts=24)); put(p, MAT['screw'], 0.15, 2)
-gb = box('guide', 18.0, 26.0, 0.0, 9.0, 6.6, 8.0); put(gb, MAT['case'], 0.2, 2)
-gb2 = box('guide2', 18.0, 26.0, 0.0, 9.0, -8.0, -6.6); put(gb2, MAT['case'], 0.2, 2)
+gb = box('guide', 18.0, 26.0, 0.0, BOLT_Y, 6.6, 8.0); put(gb, MAT['case'], 0.2, 2)
+gb2 = box('guide2', 18.0, 26.0, 0.0, BOLT_Y, -8.0, -6.6); put(gb2, MAT['case'], 0.2, 2)
 
 fe = box('forend', CX1, CX1 + 3.0, -3.5, BACK_Y + FL + 3.5, -46, 46)
-boolean(fe, box('fehole', CX1 - 1, CX1 + 4, 8.8, 13.8, -6.7, 6.7)); put(fe, MAT['forend'], 0.4, 3)
+boolean(fe, box('fehole', CX1 - 1, CX1 + 4, BOLT_Y - 0.2, BOLT_Y + 4.8, -6.7, 6.7)); put(fe, MAT['forend'], 0.4, 3)
 for idx, zz in enumerate((-40.0, 40.0)):
     s = screw_head(f'fscrew{idx}', (CX1 + 3.0, BACK_Y / 2, zz), 3.4, 1.0, axis='X', slot=True, kind='pan', mat=None, rot=math.radians(30 if zz > 0 else 75)); put(s, MAT['screw'], 0.05, 2)
 
 # ---------------------------------------------------------------- door stile & jamb
-stile = box('stile', -90, CX1, -6.0, 40.0, -120, 120)
+stile = box('stile', -90, CX1, -6.0, max(40.0, BACK_Y + 24.0), -120, 120)
 boolean(stile, box('mortise', CX0 - 0.4, CX1 + 1, -0.0, BACK_Y + FL + 0.3, CZ0 - 0.4, CZ1 + 0.4))
 boolean(stile, box('cutfront', -100, CX1 + 10, -20, 0.0, -130, 130))
 put(stile, MAT['wood'], 0.4, 3)
 jamb = box('jamb', CX1 + 4.2, 120, 0.0, 60, -120, 120)
-boolean(jamb, box('strike_pocket', CX1 + 3, CX1 + 18, 8.0, 14.4, -7.6, 7.6)); put(jamb, MAT['wood2'], 0.4, 3)
+boolean(jamb, box('strike_pocket', CX1 + 3, CX1 + 18, BOLT_Y - 1.0, BOLT_Y + 5.4, -7.6, 7.6)); put(jamb, MAT['wood2'], 0.4, 3)
 sk = box('strike', CX1 + 4.2, CX1 + 6.0, -3.0, BACK_Y + 5, -30, 30)
-boolean(sk, box('skh', CX1 + 3, CX1 + 7, 8.4, 14.2, -7.2, 7.2)); boolean(sk, box('cutfront2', CX1, CX1 + 8, -10, 0.0, -40, 40))
+boolean(sk, box('skh', CX1 + 3, CX1 + 7, BOLT_Y - 0.6, BOLT_Y + 5.2, -7.2, 7.2)); boolean(sk, box('cutfront2', CX1, CX1 + 8, -10, 0.0, -40, 40))
 put(sk, MAT['forend'], 0.3, 3)
-put(box('strike_dark', CX1 + 9, CX1 + 18.5, 7.0, 15.4, -8, 8), MAT['dark'])
+put(box('strike_dark', CX1 + 9, CX1 + 18.5, BOLT_Y - 2.0, BOLT_Y + 6.4, -8, 8), MAT['dark'])
 
 # ---------------------------------------------------------------- tools through the back keyhole
 belly1 = levers[0].matrix_world @ Vector((-3.5, 0, LEVERS[0][3]))
-lp = [Vector((-3.0, 40, -16.6)), Vector((-3.0, 2.9, -16.6)), Vector((-3.0, 1.7, -15.6)), Vector((-3.2, 1.7, belly1.z - 0.7))]
+lp = [Vector((-3.0, BACK_Y + 26.0, -16.6)), Vector((-3.0, 2.9, -16.6)), Vector((-3.0, 1.7, -15.6)), Vector((-3.2, 1.7, belly1.z - 0.7))]
 cu = bpy.data.curves.new('lifter', 'CURVE'); cu.dimensions = '3D'; cu.bevel_depth = 0.65; cu.bevel_resolution = 4
 sp = cu.splines.new('BEZIER'); sp.bezier_points.add(len(lp) - 1)
 for bp, p in zip(sp.bezier_points, lp):
     bp.co = p; bp.handle_left_type = bp.handle_right_type = 'AUTO'
 lo = bpy.data.objects.new('lifter', cu); bpy.context.collection.objects.link(lo); cu.materials.append(MAT['wire'])
 
-ta = flat_tool('tension', [(-3.0, -24.5), (-3.0, -12.0), (-1.6, -8.4), (0.4, -6.0), (0.6, -5.0)], 1.6, 0.9, 11.2, tip='flat')
+ta = flat_tool('tension', [(-3.0, -24.5), (-3.0, -12.0), (-1.6, -8.4), (0.4, -6.0), (0.6, -5.0)], 1.6, 0.9, BOLT_Y + 2.2, tip='flat')
 ta.data.materials[0] = MAT['pick']
-tb = box('tension_shaft', -3.8, -2.2, 11.2, 60, -25.4, -23.6); put(tb, MAT['pick'], 0.3)
+tb = box('tension_shaft', -3.8, -2.2, BOLT_Y + 2.2, BACK_Y + 46.0, -25.4, -23.6); put(tb, MAT['pick'], 0.3)
 
 # ---------------------------------------------------------------- light + camera
 world_hdri(float(arg('--world', '0.05')), sat=0.4)
-AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (-2, 6, 0)
+AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (-2, CAM_Y, 0)
 kx, ky, kz, ks, ke = [float(v) for v in arg('--key', '-90,-110,140,44,155000').split(',')]
 area_light('key', (kx, ky, kz), AIM, ks, ke, (1.0, 0.84, 0.66))
 area_light('fill', (140, -110, -20), AIM, 90, float(arg('--fill', '30000')), (0.94, 0.96, 1.0))
 area_light('rim', (40, -20, -130), AIM, 40, float(arg('--rim', '24000')), (1.0, 0.95, 0.9))
 area_light('kick', tuple(float(v) for v in arg('--kpos', '110,-90,-30').split(',')), AIM, 28, float(arg('--kick', '28000')), (1.0, 0.95, 0.88))
-target_pt = (float(arg('--tx', '1')), 6.0, float(arg('--tz', '-2')))
+target_pt = (float(arg('--tx', '1')), CAM_Y, float(arg('--tz', '-2')))
 cam = look_camera(target_pt, float(arg('--yaw', '40')), float(arg('--pitch', '-18')), float(arg('--dist', '160')), lens=float(arg('--lens', '120')))
 mirror_softbox('sheen', (0, 0, 0), cam, size=float(arg('--ss', '36')), size_y=float(arg('--ssy', '80')), energy=float(arg('--sheen', '9500')), shift=(float(arg('--sx', '-6')), 0, float(arg('--sz', '4'))))
 render_setup(os.path.join(OUT_DIR, 'plate', 'plate_1236x1650.png'), RES, SAMPLES, exposure=0.0)
 
 MOVING = [
-    'lever0', 'lever1', 'lever2',
-    'spring0', 'spring1', 'spring2',
-    'rivet0', 'rivet1', 'rivet2',
+    *[f'{prefix}{i}' for prefix in ('lever', 'spring', 'rivet') for i in range(LEVER_COUNT)],
     'detector',
     'stump',
     'lifter', 'tension', 'tension_shaft',
@@ -184,12 +193,12 @@ EXTRA = {
         {'y0': L[0], 'need': L[1], 'rest_lift': L[2], 'belly_z': L[3]}
         for L in LEVERS
     ],
-    'detector_pivot': [10.2, 5.8, -8.55],
-    'keyhole_pivot': [-3.0, -18.0, -11.2],
+    'detector_pivot': [10.2, 5.8, -(BOLT_Y - 0.45)],
+    'keyhole_pivot': [-3.0, -18.0, -(BOLT_Y + 2.2)],
 }
 
 P.run_family_pipeline(
-    family_name='lever',
+    family_name='lever_detector' if LEVER_COUNT == 5 else 'lever',
     out_dir=OUT_DIR,
     moving_names=MOVING,
     camera_target=target_pt,
