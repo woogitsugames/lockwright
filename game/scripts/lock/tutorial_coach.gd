@@ -55,6 +55,8 @@ func _init(p_stage: int = 0, p_guided: bool = true, p_auto: bool = false) -> voi
 
 
 func text_key() -> StringName:
+	if has_lesson():
+		return _lesson_text_key()
 	match step:
 		Step.TENSION: return &"tutorial.s1_tension"
 		Step.PICK: return &"tutorial.s1_pick_one" if n_elements == 1 else &"tutorial.s1_pick"  # S1 has one pin (HANDOVER §5.3)
@@ -123,6 +125,9 @@ static func _any(els: Array, state: String) -> bool:
 
 
 func update(vm: Dictionary, input: Dictionary, events: Array, left_down: bool, right_down: bool, delta: float) -> void:
+	if has_lesson():
+		_update_lesson(vm, input, events, left_down, right_down, delta)
+		return
 	var els: Array = vm.get("elements", [])
 	n_elements = els.size()
 	var t := float(input.get("tension", 0.0))
