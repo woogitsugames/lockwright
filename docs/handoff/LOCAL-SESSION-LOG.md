@@ -20,3 +20,8 @@
 2. Resolve the detector package budget before copying `art/renders/lever_detector/` into `game/assets/photoreal_families/lever_detector/`; copying the GLB unlocks the family automatically. Then run GUT both-mode opening test and visual projection QA.
 3. Review N-67 (quality initialization error) and N-68 (detector pack budget) in `SESSION-B-LOG.md`.
 4. Arrival/menu integration remains session A's decision after visual approval. Magnific D1/D2 still required for real-character shadow maps and compositing.
+
+
+### N-68 update: package budget fits after session A menu changes
+
+After rebasing main with session A's D-62 menu, measured the full resource pack again: 55,833,660 bytes without detector, **57,799,088 bytes including it**, below 58 MB. The same candidate is now integrated into `game/assets/photoreal_families/lever_detector/` with lossy photo imports; the view unlocks it via its existing resource check. No local game code, i18n or CI changes. The authoritative Linux perf-budget and GUT both-mode test remain session A's responsibility (no Windows lockcore GDExtension). Candidate binary duplicates under art are removed; geometry evidence stays there.

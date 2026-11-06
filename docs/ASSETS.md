@@ -193,3 +193,21 @@ Każdy plik graficzny, dźwiękowy i font w repo musi mieć tu wpis. Dozwolone: 
 |---|---|---|---|---|
 | `game/assets/audio/lines/<pl\|en\|de>/<job_id>.line.<N>.ogg` (164 kwestie × 3 języki = 492 pliki, Ogg Vorbis mono 48 kHz q4, ok. 21,1 MB; DE wygenerowane 2026-11-06 po korekcie i uzupełnieniu tłumaczeń DE; −18 LUFS integrated, true peak −1,5 dBTP, cisza na brzegach przycięta do ok. 60 ms) | kwestie rozmów w zleceniach (integracja: faza 2, magistrala `Voice`) | ElevenLabs przez Composio: TTS **`eleven_v4_turbo`** (decyzja właściciela), `pcm_48000`, stały `seed` na kwestię; normalizacja i kodowanie `tools/voice_lines.py finish` (ffmpeg: silenceremove, loudnorm dwuprzebiegowy, libvorbis) | generowane AI (D-42); użycie komercyjne wymaga płatnego planu ElevenLabs w chwili generowania (płatny plan z licencją komercyjną potwierdzony przez właściciela 2026-11-06, D-62) | **Tekst = kwestia z `game/i18n/content.csv` (`<job_id>.line.N`, kolumna `pl`/`en`/`de`) po korekcie (`contrib/voice/PROOFREAD.md`).** Dokładne wejście TTS dla każdego pliku (tagi audio typu `[tired]`, zapis słowny liczb) w `contrib/voice/tts_inputs.json`; tagi tylko w zapytaniu, nie w napisach. Kontrola: `contrib/voice/qa.json` (PL/EN) i `contrib/voice/qa_de.json` (czas, LUFS, ASR faster-whisper, WER) |
 | 52 głosy `LW <id>` na koncie ElevenLabs (ślusarz + 51 postaci) | jeden stały głos na postać, ten sam w PL, EN i DE (później FR/ES) | ElevenLabs Voice Design (`eleven_ttv_v3`) z opisu postaci (prompt w `game/data/voice_cast.json` → `design_prompt`); z 3 próbek wybrana jedna (F0 zgodne z wiekiem i płcią, zrozumiałość po polsku) | generowane AI, głosy fikcyjne: **bez klonowania prawdziwych osób** | Obsada z uzasadnieniem: `contrib/voice/CAST.md`. Hania (7 lat): ElevenLabs blokuje projektowanie głosów dzieci, więc czyta ją lekki głos dorosłej lektorki (jak w dubbingu animacji) |
+
+
+## Local GPU game assets — 2026-11-06
+
+Own renders, Blender 4.2.9 LTS / Cycles OptiX on RTX 5070; existing photo materials and original unbranded geometry, no AI generation. Commands use LW_DEVICE=GPU; paths remain unchanged.
+
+| Assets | Script and final parameters |
+|---|---|
+| `game/assets/photoreal/plate/plate_1236x1650.png` | `game/assets/photoreal/tools/render_plate.py --res 2472x3300 --samples 128` |
+| `photoreal_families/warded/photo/{parts,plate,wards}.png` | `warded_photo_plate.py --res 2472x3300 --samples 128` (all passes together) |
+| `photoreal_families/{wafer,lever}/photo/{parts,plate}.png` | `photo_plates.py --family wafer|lever --res 2472x3300 --samples 128`; lever also `--detector 1 --passes parts` |
+| `photoreal_families/dial_safe/photo/*.png`, `layers.json` | `dial_safe_plate.py --res 1236x1648 --spp 256 --device GPU` |
+| `photoreal_families/{combo,disc_detainer}/photo/*.png`, `layers.json` | `combo_plate.py --family combo|disc_detainer --res 1236x1648 --spp 256 --device GPU` |
+| `photoreal_families/{egyptian,time_lock,axial_slider}/photo/*.png`, `layers.json` | respective `art/blender/plates/*_plate.py --res 1236x1648 --spp 256 --device GPU` |
+| `photoreal_families/tools/{magnet_probe,dimple_flag}.png`, `layers.json` | `tool_layers.py --ppmm 48 --spp 128 --device GPU` |
+| `game/assets/photoreal_families/lever_detector/lever_detector_baked.glb`, `scene.json`, `photo/{parts,plate}.png` | `lever_plate.py --levers 5 --res 1236x1650 --samples 128`, then `photo_plates.py --family lever --levers 5 --detector 1 --res 1236x1650 --samples 128`; 57.80 MB pack after rebasing the session A menu |
+
+PNG imports in game use lossy quality 0.85. Evidence: `docs/handoff/device-tests/fixes/plates_2x/`.

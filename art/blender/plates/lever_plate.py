@@ -17,7 +17,7 @@ arg = cli()
 LEVER_COUNT = int(arg('--levers', '3'))
 if LEVER_COUNT not in (3, 5):
     raise ValueError('--levers must be 3 or 5')
-OUT_DIR = os.path.abspath(arg('--out-dir', os.path.join(ROOT_DIR, 'game', 'assets', 'photoreal_families', 'lever')))
+OUT_DIR = os.path.abspath(arg('--out-dir', os.path.join(ROOT_DIR, 'game', 'assets', 'photoreal_families', 'lever_detector' if LEVER_COUNT == 5 else 'lever')))
 RES = [int(v) for v in arg('--res', '1236x1650').split('x')]
 SAMPLES = int(arg('--samples', '160'))
 OPEN = 1

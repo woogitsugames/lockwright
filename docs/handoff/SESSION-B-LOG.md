@@ -754,3 +754,8 @@ Zrzuty: `docs/handoff/device-tests/run135/`.
 - Telefon SM-A165F 1080x2340, APK CI run 42163108394 (356acbed). Inny podpis poprzedniej instalacji: właściciel jawnie zatwierdził reinstalację po kopii. Przywrócono dane, zgodność SHA-256 wszystkich 40 plików. Kopie prywatne poza repo, w build.
 - **N-67 — quality.gd:35:** przy starcie APK ERROR Parent node is busy setting up children, add_child() failed; backtrace _ready res://scripts/autoload/quality.gd:35. Aplikacja działa dalej, po 10 s log Quality auto profile -> medium. Drugi komunikat startowy: OptimizedTranslation does not store message texts (i18n.gd:152 -> main_menu.gd:30/41). Dowody: device-tests/run42163108394-local/logcat.txt i menu.png. Kodu gry nie zmieniałem.
 - Przyjazd GPU i menu w toku. Magnific D1/D2 brak, więc brak nowych map cienia i kompozytów prawdziwych postaci. Szczegóły i czasy: LOCAL-SESSION-LOG.md.
+
+
+### N-68 update: package budget fits after session A menu changes
+
+After rebasing main with session A's D-62 menu, measured the full resource pack again: 55,833,660 bytes without detector, **57,799,088 bytes including it**, below 58 MB. The same candidate is now integrated into `game/assets/photoreal_families/lever_detector/` with lossy photo imports; the view unlocks it via its existing resource check. No local game code, i18n or CI changes. The authoritative Linux perf-budget and GUT both-mode test remain session A's responsibility (no Windows lockcore GDExtension). Candidate binary duplicates under art are removed; geometry evidence stays there.

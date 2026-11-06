@@ -1,0 +1,562 @@
+[
+  {
+    "path": "game/assets/photoreal/plate/plate_1236x1650.png",
+    "resolution": [
+      2472,
+      3300
+    ],
+    "ctex_bytes": 382102
+  },
+  {
+    "path": "game/assets/photoreal_families/warded/photo/parts.png",
+    "resolution": [
+      2472,
+      3300
+    ],
+    "ctex_bytes": 182824
+  },
+  {
+    "path": "game/assets/photoreal_families/warded/photo/plate.png",
+    "resolution": [
+      2472,
+      3300
+    ],
+    "ctex_bytes": 134316
+  },
+  {
+    "path": "game/assets/photoreal_families/warded/photo/wards.png",
+    "resolution": [
+      2472,
+      3300
+    ],
+    "ctex_bytes": 308692
+  },
+  {
+    "path": "game/assets/photoreal_families/wafer/photo/parts.png",
+    "resolution": [
+      2472,
+      3300
+    ],
+    "ctex_bytes": 330406
+  },
+  {
+    "path": "game/assets/photoreal_families/wafer/photo/plate.png",
+    "resolution": [
+      2472,
+      3300
+    ],
+    "ctex_bytes": 253940
+  },
+  {
+    "path": "game/assets/photoreal_families/lever/photo/parts.png",
+    "resolution": [
+      2472,
+      3300
+    ],
+    "ctex_bytes": 254076
+  },
+  {
+    "path": "game/assets/photoreal_families/lever/photo/parts_detector.png",
+    "resolution": [
+      2472,
+      3300
+    ],
+    "ctex_bytes": 256964
+  },
+  {
+    "path": "game/assets/photoreal_families/lever/photo/plate.png",
+    "resolution": [
+      2472,
+      3300
+    ],
+    "ctex_bytes": 246788
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/bolt.png",
+    "resolution": [
+      838,
+      115
+    ],
+    "ctex_bytes": 10156
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/dial20.png",
+    "resolution": [
+      424,
+      424
+    ],
+    "ctex_bytes": 27270
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/dial30.png",
+    "resolution": [
+      424,
+      424
+    ],
+    "ctex_bytes": 27696
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/dial40.png",
+    "resolution": [
+      424,
+      424
+    ],
+    "ctex_bytes": 28798
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/feeler0.png",
+    "resolution": [
+      44,
+      168
+    ],
+    "ctex_bytes": 2234
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/feeler1.png",
+    "resolution": [
+      45,
+      186
+    ],
+    "ctex_bytes": 2334
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/feeler2.png",
+    "resolution": [
+      45,
+      334
+    ],
+    "ctex_bytes": 3452
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/feeler3.png",
+    "resolution": [
+      45,
+      339
+    ],
+    "ctex_bytes": 3706
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/fence.png",
+    "resolution": [
+      638,
+      124
+    ],
+    "ctex_bytes": 6780
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/front.png",
+    "resolution": [
+      1236,
+      1194
+    ],
+    "ctex_bytes": 44798
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/plate.png",
+    "resolution": [
+      1236,
+      1648
+    ],
+    "ctex_bytes": 173458
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/wheel0.png",
+    "resolution": [
+      1018,
+      1018
+    ],
+    "ctex_bytes": 87034
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/wheel1.png",
+    "resolution": [
+      884,
+      884
+    ],
+    "ctex_bytes": 43222
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/wheel2.png",
+    "resolution": [
+      748,
+      749
+    ],
+    "ctex_bytes": 52368
+  },
+  {
+    "path": "game/assets/photoreal_families/dial_safe/photo/wheel3.png",
+    "resolution": [
+      610,
+      610
+    ],
+    "ctex_bytes": 27246
+  },
+  {
+    "path": "game/assets/photoreal_families/combo/photo/band.png",
+    "resolution": [
+      64,
+      640
+    ],
+    "ctex_bytes": 3958
+  },
+  {
+    "path": "game/assets/photoreal_families/combo/photo/front.png",
+    "resolution": [
+      1184,
+      288
+    ],
+    "ctex_bytes": 30572
+  },
+  {
+    "path": "game/assets/photoreal_families/combo/photo/latch.png",
+    "resolution": [
+      1197,
+      86
+    ],
+    "ctex_bytes": 11778
+  },
+  {
+    "path": "game/assets/photoreal_families/combo/photo/plate.png",
+    "resolution": [
+      1236,
+      1648
+    ],
+    "ctex_bytes": 93058
+  },
+  {
+    "path": "game/assets/photoreal_families/combo/photo/plug.png",
+    "resolution": [
+      53,
+      114
+    ],
+    "ctex_bytes": 1300
+  },
+  {
+    "path": "game/assets/photoreal_families/combo/photo/tooth.png",
+    "resolution": [
+      84,
+      36
+    ],
+    "ctex_bytes": 1134
+  },
+  {
+    "path": "game/assets/photoreal_families/disc_detainer/photo/band.png",
+    "resolution": [
+      64,
+      512
+    ],
+    "ctex_bytes": 1026
+  },
+  {
+    "path": "game/assets/photoreal_families/disc_detainer/photo/front.png",
+    "resolution": [
+      982,
+      274
+    ],
+    "ctex_bytes": 24454
+  },
+  {
+    "path": "game/assets/photoreal_families/disc_detainer/photo/latch.png",
+    "resolution": [
+      822,
+      45
+    ],
+    "ctex_bytes": 5456
+  },
+  {
+    "path": "game/assets/photoreal_families/disc_detainer/photo/plate.png",
+    "resolution": [
+      1236,
+      1648
+    ],
+    "ctex_bytes": 88768
+  },
+  {
+    "path": "game/assets/photoreal_families/disc_detainer/photo/plug.png",
+    "resolution": [
+      185,
+      94
+    ],
+    "ctex_bytes": 2882
+  },
+  {
+    "path": "game/assets/photoreal_families/disc_detainer/photo/tooth.png",
+    "resolution": [
+      84,
+      57
+    ],
+    "ctex_bytes": 1202
+  },
+  {
+    "path": "game/assets/photoreal_families/egyptian/photo/bolt.png",
+    "resolution": [
+      1220,
+      143
+    ],
+    "ctex_bytes": 14010
+  },
+  {
+    "path": "game/assets/photoreal_families/egyptian/photo/front.png",
+    "resolution": [
+      1112,
+      716
+    ],
+    "ctex_bytes": 31960
+  },
+  {
+    "path": "game/assets/photoreal_families/egyptian/photo/lifter.png",
+    "resolution": [
+      633,
+      96
+    ],
+    "ctex_bytes": 3458
+  },
+  {
+    "path": "game/assets/photoreal_families/egyptian/photo/peg0.png",
+    "resolution": [
+      80,
+      278
+    ],
+    "ctex_bytes": 4142
+  },
+  {
+    "path": "game/assets/photoreal_families/egyptian/photo/peg1.png",
+    "resolution": [
+      81,
+      278
+    ],
+    "ctex_bytes": 4666
+  },
+  {
+    "path": "game/assets/photoreal_families/egyptian/photo/peg2.png",
+    "resolution": [
+      80,
+      278
+    ],
+    "ctex_bytes": 4294
+  },
+  {
+    "path": "game/assets/photoreal_families/egyptian/photo/peg3.png",
+    "resolution": [
+      81,
+      278
+    ],
+    "ctex_bytes": 3904
+  },
+  {
+    "path": "game/assets/photoreal_families/egyptian/photo/peg4.png",
+    "resolution": [
+      80,
+      278
+    ],
+    "ctex_bytes": 3926
+  },
+  {
+    "path": "game/assets/photoreal_families/egyptian/photo/plate.png",
+    "resolution": [
+      1236,
+      1648
+    ],
+    "ctex_bytes": 131544
+  },
+  {
+    "path": "game/assets/photoreal_families/time_lock/photo/barrel.png",
+    "resolution": [
+      419,
+      421
+    ],
+    "ctex_bytes": 23452
+  },
+  {
+    "path": "game/assets/photoreal_families/time_lock/photo/front.png",
+    "resolution": [
+      416,
+      408
+    ],
+    "ctex_bytes": 20660
+  },
+  {
+    "path": "game/assets/photoreal_families/time_lock/photo/hand.png",
+    "resolution": [
+      38,
+      178
+    ],
+    "ctex_bytes": 2066
+  },
+  {
+    "path": "game/assets/photoreal_families/time_lock/photo/pallet.png",
+    "resolution": [
+      229,
+      59
+    ],
+    "ctex_bytes": 3256
+  },
+  {
+    "path": "game/assets/photoreal_families/time_lock/photo/plate.png",
+    "resolution": [
+      1236,
+      1648
+    ],
+    "ctex_bytes": 101972
+  },
+  {
+    "path": "game/assets/photoreal_families/time_lock/photo/tweezers.png",
+    "resolution": [
+      205,
+      354
+    ],
+    "ctex_bytes": 9494
+  },
+  {
+    "path": "game/assets/photoreal_families/time_lock/photo/wheel0.png",
+    "resolution": [
+      315,
+      315
+    ],
+    "ctex_bytes": 21494
+  },
+  {
+    "path": "game/assets/photoreal_families/time_lock/photo/wheel1.png",
+    "resolution": [
+      282,
+      280
+    ],
+    "ctex_bytes": 18054
+  },
+  {
+    "path": "game/assets/photoreal_families/time_lock/photo/wheel2.png",
+    "resolution": [
+      246,
+      246
+    ],
+    "ctex_bytes": 15200
+  },
+  {
+    "path": "game/assets/photoreal_families/time_lock/photo/wheel3.png",
+    "resolution": [
+      213,
+      212
+    ],
+    "ctex_bytes": 13118
+  },
+  {
+    "path": "game/assets/photoreal_families/time_lock/photo/wheel4.png",
+    "resolution": [
+      177,
+      178
+    ],
+    "ctex_bytes": 10922
+  },
+  {
+    "path": "game/assets/photoreal_families/axial_slider/photo/bolt.png",
+    "resolution": [
+      376,
+      90
+    ],
+    "ctex_bytes": 4284
+  },
+  {
+    "path": "game/assets/photoreal_families/axial_slider/photo/front.png",
+    "resolution": [
+      1002,
+      930
+    ],
+    "ctex_bytes": 34894
+  },
+  {
+    "path": "game/assets/photoreal_families/axial_slider/photo/plate.png",
+    "resolution": [
+      1236,
+      1648
+    ],
+    "ctex_bytes": 70260
+  },
+  {
+    "path": "game/assets/photoreal_families/axial_slider/photo/pusher.png",
+    "resolution": [
+      713,
+      52
+    ],
+    "ctex_bytes": 4928
+  },
+  {
+    "path": "game/assets/photoreal_families/axial_slider/photo/slider0.png",
+    "resolution": [
+      643,
+      73
+    ],
+    "ctex_bytes": 7008
+  },
+  {
+    "path": "game/assets/photoreal_families/axial_slider/photo/slider1.png",
+    "resolution": [
+      643,
+      71
+    ],
+    "ctex_bytes": 7478
+  },
+  {
+    "path": "game/assets/photoreal_families/axial_slider/photo/slider2.png",
+    "resolution": [
+      643,
+      70
+    ],
+    "ctex_bytes": 6698
+  },
+  {
+    "path": "game/assets/photoreal_families/axial_slider/photo/slider3.png",
+    "resolution": [
+      644,
+      70
+    ],
+    "ctex_bytes": 6750
+  },
+  {
+    "path": "game/assets/photoreal_families/axial_slider/photo/slider4.png",
+    "resolution": [
+      645,
+      72
+    ],
+    "ctex_bytes": 6372
+  },
+  {
+    "path": "game/assets/photoreal_families/axial_slider/photo/slider5.png",
+    "resolution": [
+      644,
+      73
+    ],
+    "ctex_bytes": 6812
+  },
+  {
+    "path": "game/assets/photoreal_families/lever_detector/photo/parts.png",
+    "resolution": [
+      1236,
+      1650
+    ],
+    "ctex_bytes": 86994
+  },
+  {
+    "path": "game/assets/photoreal_families/lever_detector/photo/plate.png",
+    "resolution": [
+      1236,
+      1650
+    ],
+    "ctex_bytes": 62258
+  },
+  {
+    "path": "game/assets/photoreal_families/tools/dimple_flag.png",
+    "resolution": [
+      1542,
+      122
+    ],
+    "ctex_bytes": 15168
+  },
+  {
+    "path": "game/assets/photoreal_families/tools/magnet_probe.png",
+    "resolution": [
+      1520,
+      103
+    ],
+    "ctex_bytes": 13056
+  }
+]

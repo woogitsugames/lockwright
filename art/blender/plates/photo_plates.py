@@ -19,7 +19,8 @@ def _arg(name, default):
 
 FAMILY = _arg('--family', 'wafer')
 LEVER_COUNT = int(_arg('--levers', '3'))
-OUT_DIR = os.path.abspath(_arg('--out-dir', os.path.join(ROOT_DIR, 'game', 'assets', 'photoreal_families', FAMILY, 'photo')))
+OUTPUT_FAMILY = 'lever_detector' if FAMILY == 'lever' and LEVER_COUNT == 5 else FAMILY
+OUT_DIR = os.path.abspath(_arg('--out-dir', os.path.join(ROOT_DIR, 'game', 'assets', 'photoreal_families', OUTPUT_FAMILY, 'photo')))
 RES = _arg('--res', '1236x1650')
 SAMPLES = _arg('--samples', '48')
 PASSES = _arg('--passes', 'parts,plate').split(',')
