@@ -107,3 +107,8 @@ bez „w dół” („wciśnij suwak”), albo odwrócone mapowanie kciuka dla t
 
 **Sprawdzenie:** `tools/i18n_lint.py` 0 błędów (2 znane ostrzeżenia `settings.voice_pack.line`),
 `data/tools/loc_qa.py` OK, `contrib/gpt/T42/validate_delivery.py` 0/0, GUT `test_i18n.gd` (FR/ES T42 w grze).
+
+**Rozstrzygnięcie (koordynator, 2026-11-06):** gest zostaje (prawy kciuk w górę = wsuwanie, jak kreda i widmo);
+`tutorial.axial_slider.step2`, `lock.axial_slider_hint` i `_auto` we wszystkich 5 językach bez kierunku „w dół”:
+„wsuwaj suwak do wcięcia” / „push the slider in to its notch” / „hineinschieben, bis er in die Kerbe fällt” /
+„enfonce … jusqu'à son encoche” / „húndela hasta la muesca”; ≤ 56 znaków, lint 0 błędów.
