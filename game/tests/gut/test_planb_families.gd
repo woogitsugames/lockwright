@@ -123,6 +123,8 @@ func _play(fam: StringName, job: Dictionary, auto: bool, max_s: float = 120.0) -
 			if not auto:
 				press_left.call()
 			continue
+		if OS.has_environment("LW_DEBUG") and step % 120 == 0:
+			print("t=%.0f el=%d T=%.2f lift=%.2f resets=%d %s" % [step * dt, el, s.sample()["tension"], s.sample()["pick_lift"], resets, vm["elements"].map(func(e): return "%s@%.2f[%.2f-%.2f]" % [e["state"], e["position"], e["window_lo"], e["window_hi"]])])
 		var next := lift_dp > 0.9 * InputSampler.LIFT_FULL_DP
 		var oversets := 0
 		if session.is_open():
