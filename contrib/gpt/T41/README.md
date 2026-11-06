@@ -9,7 +9,7 @@
 - Przejrzano i zredagowano wszystkie **164 kwestie** w obu językach, na podstawie oryginału polskiego i EN, z kontrolą wieku i charakteru postaci.
 - **146 francuskich i 133 hiszpańskie kwestie** różnią się od dostarczonego `fr_current` / `es_current`. Wszystkie pozostałe również skontrolowano; zachowano, gdy brzmiały naturalnie.
 - **17/17 nowych etykiet UI** przetłumaczono. Kontrola długości: **0 przekroczeń**. Kwestie nie zawierają cyfr, skrótów tytułów, wielokropków ani zakazanych określeń.
-- Dodatkowo `supplemental_ui_fr_es.csv` zawiera **6 pozycji tutorialowych**, których nie było w briefie T41, a które już znajdowały się w aktualnym `game/i18n/strings.csv`. Dzięki temu po integracji pełny pakiet FR/ES nie będzie miał brakujących kluczy.
+- Dodatkowo `supplemental_ui_fr_es.csv` zawiera **19 kluczy** poza briefem: 6 kluczy tutorialowych brakujących w pakietach w chwili rozpoczęcia T41 oraz 13 kluczy pakietów głosowych dodanych równolegle do `main` po pierwszym commicie. Uzupełniono je w obu językach w osobnym commicie `05e2a78fa5a3954de1e2e6d93b6805aab4ca17f4`.
 
 ## Konwencje
 
@@ -36,7 +36,7 @@ python contrib/gpt/T41/apply_to_repo.py
 python contrib/gpt/validate_v2_localizations.py --json
 ```
 
-**Ważne:** oryginalnego walidatora na pełnym checkoutcie nie można było uruchomić w środowisku przygotowywania ZIP-a, ponieważ repozytorium jest dostępne przez konektor GitHub, ale nie jako lokalny checkout. Nie podajemy fikcyjnego wyniku. Z aktualnego `main` odczytano jednak: **629/629** kluczy `content` już znajdowało się w T31/T32, a z **218** kluczy `strings` brakowało **23** — dokładnie 17 z T41 i 6 załączonych dodatkowo. Po integracji powinno być **218/218** i **629/629**, co weryfikuje powyższy skrypt.
+**Ważne:** oryginalnego walidatora na pełnym checkoutcie nie można było uruchomić w środowisku przygotowywania ZIP-a, ponieważ repozytorium jest dostępne przez konektor GitHub, ale nie jako lokalny checkout. Nie podajemy fikcyjnego wyniku. W początkowej migawce `main` źródła zawierały **629** kluczy `content` oraz **218** kluczy `strings`; po równoległym rozszerzeniu pakietu głosowego źródło ma **231** kluczy `strings`. Dostarczone pliki obejmują 164 kwestie, 17 etykiet T41 i 19 etykiet dodatkowych. Integracja z aktualnym repo uzupełnia **231/231** napisów i **629/629** kluczy `content` dla FR/ES (przy niezmienionej liczbie kluczy); walidacja językowa jest osobnym etapem. Nie należy mylić lokalnego testu paczki z uruchomieniem oryginalnego walidatora w checkoutcie.
 
 ## Kontrola QA (lokalnie)
 
@@ -52,4 +52,4 @@ python contrib/gpt/validate_v2_localizations.py --json
 | `tutorial.say_*` | Sześciu kluczy nie ujęto w dostarczonym T41-input.csv. Dodano osobno dla kompletności v2. |
 | `receipt.tip` | Wersja ES „Por apertura cuidadosa” sugeruje powód napiwku, nie sztywne wynagrodzenie. Warto zobaczyć w kontekście układu rachunku. |
 
-**Zalecany komunikat commita:** `contrib/gpt/T41: FR ES dialogi pod lektora i brakujące UI [skip ci]`.
+**Commity wykonane:** początkowy T41 `aec35aa6e029a12183d7adcac372327c922309f8`, rozszerzenie o pakiety głosowe `05e2a78fa5a3954de1e2e6d93b6805aab4ca17f4`. Wszystkie z `[skip ci]`.
