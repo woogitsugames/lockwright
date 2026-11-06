@@ -6,6 +6,7 @@ Stan na 2026-11-05 22:00:
 - **A1 (tło menu) wstrzymane:** menu idzie w render z Blendera (handover §5 pkt 2). Wróci tylko, jeśli proof z Blendera nie przejdzie.
 - **A2 i portrety rozdziału 8** zrobił ChatGPT (G21), są w grze.
 - **Nowe:** C (dłonie do widma, zamiast odrzuconego G22) i D (klienci w pełnej postaci do scenki przyjazdu, D-58, pilot).
+- **2026-11-06:** E (portret dyrektorki szkoły: tekst i głos to kobieta, obecny portret pokazuje mężczyznę).
 
 ---
 
@@ -26,7 +27,7 @@ Overhead studio photograph shot straight down, real adult craftsman's hand about
 ---
 
 ## D. Klienci w pełnej postaci do scenki przyjazdu (D-58, pilot: `job.wrong_floor`)
-**Do czego:** scenka przyjazdu renderowana w Blenderze kończy się kadrem drzwi z klientem. Gra wycina postać z tła i wkomponowuje ją w oświetlenie sceny, dlatego **tło jest jednolite, jasnoszare, a światło ciepłe z góry i lekko z tyłu po lewej (jak żarówka na klatce), z miękkim wypełnieniem od przodu** (tak stoi lampa w scenie z Blendera, `art/renders/arrival/`). Postać musi wyglądać **jak na portrecie z gry**: dołącz portret jako obraz referencyjny (character reference), plik podany przy każdej pozycji. Format 9:16, 2K, cała postać od stóp do głów, z zapasem nad głową. ZIP: `magnific_D_wrong_floor.zip`.
+**Do czego:** scenka przyjazdu renderowana w Blenderze kończy się kadrem drzwi z klientem. Gra wycina postać z tła i wkomponowuje ją w oświetlenie sceny, dlatego **tło jest jednolite, jasnoszare, a światło ciepłe z góry i lekko z tyłu po lewej (jak żarówka na klatce), z miękkim wypełnieniem od przodu** (tak stoi lampa w scenie z Blendera, `art/renders/arrival/`). Postać musi wyglądać **jak na portrecie z gry**: dołącz portret jako obraz referencyjny (character reference), plik podany przy każdej pozycji (w paczce także oryginały w pełnej rozdzielczości `portrait_kazimierz.jpg`, `portrait_teresa.jpg` — lepsze jako referencja). Format 9:16, 2K, cała postać od stóp do głów, z zapasem nad głową. ZIP: `magnific_D_wrong_floor.zip`.
 
 Wspólny koniec każdego promptu:
 ```
@@ -34,3 +35,17 @@ full body from head to shoes, standing on a plain seamless light grey studio bac
 ```
 1. `D1_kazimierz_fullbody.png` (referencja: `game/assets/ui/gpt/cast/episodic/portrait_kazimierz.webp`): `Mr Kazimierz, about 68, the same man as in the reference portrait: short grey hair, rosy cheeks, warm grin, tweed jacket over a checked shirt, slightly loosened tie, coming home late from a name-day party, a little tipsy but cheerful and dignified, holding a house key in his right hand and looking at it puzzled, slight lean on one leg,`
 2. `D2_teresa_fullbody.png` (referencja: `game/assets/ui/gpt/cast/episodic/portrait_teresa.webp`): `Mrs Teresa, about 72, the same woman as in the reference portrait: grey hair in a loose bun, soft quilted dressing gown over a nightdress, house slippers, woken up at night, peeking curiously with one hand on her chest, surprised but friendly,`
+
+---
+
+## E. Portret epizodyczny: dyrektorka szkoły (poprawka)
+**Do czego:** w zleceniu `job.time_capsule` mówi „Dyrektorka szkoły” (`cast.headteacher.name`, głos żeński), a portret
+`game/assets/ui/gpt/cast/episodic/portrait_headteacher.webp` pokazuje mężczyznę. Potrzebny nowy portret kobiety w **tym
+samym stylu** co pozostałe portrety epizodyczne (`MAGNIFIC-PORTRETY.md`): model **Nano Banana**, **1:1**, 2K, popiersie,
+miękkie światło z okna na klatce kamienicy. Gra skaluje go do 256×256, więc twarz ma być czytelna w małym kadrze.
+4 warianty. ZIP: `magnific_E_headteacher.zip`.
+
+1. `portrait_headteacher.png`:
+```
+school headmistress, a woman of about 55, short neat grey-streaked hair, reading glasses on a cord, smart navy blazer over a cream blouse, simple lanyard with a blank card, composed and kind, a small formal smile, photorealistic portrait photograph, head and shoulders, natural soft window light in an old Central European tenement stairwell, warm tones, shallow depth of field, everyday clothes, no logos, no text, fictional person, not resembling any celebrity
+```
