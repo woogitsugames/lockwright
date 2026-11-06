@@ -9,7 +9,7 @@
 #   case_velvet    showcase: burgundy velvet bed, brass plaques, second warm light
 #   clock          round workshop wall clock between the key board and the pegboard
 #   thanks_cards   clients' thank-you cards clipped to the pegboard
-#   vise           swivel bench vise with brass jaw covers (replaces the painted vise)
+#   vise           graphite swivel bench vise with brass jaw covers (replaces the teal vise)
 #   exhibit_shelf  oak pegboard shelf with three old locks
 import bpy, bmesh, math, random
 from mathutils import Vector, Matrix
@@ -149,8 +149,9 @@ def build(g):
     FX, FZ = -215, 1688
     frame_w = oak('cert_frame', light=(0.20, 0.10, 0.045), dark=(0.07, 0.035, 0.015), axis='X', seed=33, ring=3.0, coat=1.0, coat_rough=0.2,
                   center=(FX, -10, FZ))
-    fr = bx('cert_frame', FX - 80, FX + 80, -22, -2, FZ - 58, FZ + 58, frame_w, bev=2)
-    cut(fr, bx('cert_win', FX - 67, FX + 67, -40, 10, FZ - 45, FZ + 45))
+    for x0, x1, z0, z1 in ((FX - 80, FX + 80, FZ + 45, FZ + 58), (FX - 80, FX + 80, FZ - 58, FZ - 45),
+                           (FX - 80, FX - 67, FZ - 45, FZ + 45), (FX + 67, FX + 80, FZ - 45, FZ + 45)):
+        bx('cert_frame', x0, x1, -22, -2, z0, z1, frame_w, bev=1.5)
     bx('cert_mat', FX - 68, FX + 68, -12, -10, FZ - 46, FZ + 46, paper('cert_mat', (0.80, 0.77, 0.68), fibre=0.5, seed=11))
     cert_p = paper('cert_paper', (0.86, 0.82, 0.70), fibre=0.8, seed=12, grime=0.25, lines=(7.0, 'Z', (0.30, 0.26, 0.20)))
     bx('cert_sheet', FX - 48, FX + 48, -13, -12, FZ - 32, FZ + 22, cert_p)
@@ -217,7 +218,7 @@ def build(g):
     # ------------------------------------------------------------ swivel vise (replaces the painted vise)
     out['vise'] = begin('furn_vise')
     VX, VY = g['VX'], g['VY']
-    ox = paint('vise2_paint', (0.10, 0.028, 0.02), rough=0.32, metal_col=(0.42, 0.42, 0.41), chip=0.4, grime=0.6)
+    ox = paint('vise2_paint', (0.035, 0.04, 0.045), rough=0.3, metal_col=(0.42, 0.42, 0.41), chip=0.4, grime=0.6)
     base_ = cyl('vise2_base', 92, 16, (VX, VY - 10, BZ + 8), verts=96); setmat(base_, ox); _bev(base_, 3, 3)
     ring = cyl('vise2_ring', 96, 4, (VX, VY - 10, BZ + 14), verts=96); setmat(ring, g['steel'])
     for k in range(36):  # degree ticks on the swivel ring

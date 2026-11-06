@@ -18,6 +18,9 @@ Model (all assumptions are listed in the report, section "Model"):
   coins allow (look-ahead 3 jobs, then anything unlocked with a 50-coin reserve); a family played
   without its tool is slower (MISSING_TOOL_X, the "convenience / feedback" effect) and never
   triggers grinding.
+- furnishings (D-71, game/data/furnishings.json, scenario C only): cosmetic, no effect on play. After the tools,
+  the player buys every furnishing whose chapter is reached, oldest chapter / cheapest first, keeping the same
+  repair reserve; the report shows what each profile owns and the coins left at the end of chapter 12.
 """
 import argparse
 import glob
@@ -158,6 +161,13 @@ def load_data():
     return [jobs[i] for i in order], tools, prog
 
 
+def load_furnishings():
+    path = os.path.join(ROOT, "game", "data", "furnishings.json")
+    if not os.path.exists(path):
+        return []
+    return json.load(open(path, encoding="utf-8"))["furnishings"]
+
+
 def unlock_ok(cond, st):
     if cond in ("start", "after_tutorial_t1", "with_tl_cup"):
         return True
@@ -192,6 +202,8 @@ class Career:
         self.totals = dict(missing_locks=0, job_income=0, grind_income=0, repair=0, tools=0, breaks=0,
                            grind_sessions=0, job_time=0.0, grind_time=0.0)
         self.unlock_curve = []  # (job_index, tool_id)
+        self.furn = []           # (job_index, furnishing id), D-71
+        self.totals["furnishings"] = 0
 
     # --- lock model ----------------------------------------------------------------
     def lock_stats(self, family, tier):
@@ -348,7 +360,18 @@ class Career:
                 if tool.get("paired_with"):
                     self.owned[tool["paired_with"]] = 100.0
 
-    def run(self, jobs):
+    def buy_furnishings(self, idx, furnishings):
+        """D-71: cosmetic only. Oldest chapter first, then cheapest; keep the repair reserve."""
+        owned = {f for _, f in self.furn}
+        for f in sorted(furnishings, key=lambda x: (x["chapter"], x["price"])):
+            if f["id"] in owned or self.st["chapter"] < f["chapter"]:
+                continue
+            if self.st["coins"] >= f["price"] + BUY_RESERVE:
+                self.st["coins"] -= f["price"]
+                self.totals["furnishings"] += f["price"]
+                self.furn.append((idx, f["id"]))
+
+    def run(self, jobs, furnishings=()):
         for idx, job in enumerate(jobs, 1):
             self.st["chapter"] = job["chapter"]
             fam, tier = self.family_of(job), self.tier_of(job)
@@ -399,14 +422,15 @@ class Career:
                     if (tid not in self.owned and t["price"] > 0 and not t.get("jobs_only")
                             and self.st["coins"] >= t["price"] + BUY_RESERVE):
                         self.try_buy(idx, [tid])
+                self.buy_furnishings(idx, furnishings)
         return self
 
 
-def simulate(scen, prof, n, balance, jobs, tools, prog):
+def simulate(scen, prof, n, balance, jobs, tools, prog, furnishings=()):
     out = []
     for i in range(n):
         rng = random.Random(f"{scen}-{prof}-{i}")
-        out.append(Career(prof, scen, balance, tools, prog, rng).run(jobs))
+        out.append(Career(prof, scen, balance, tools, prog, rng).run(jobs, furnishings))
     return out
 
 
@@ -436,7 +460,7 @@ def tier_at(coef, skill, n):
     return 1 + coef * math.log(1 + n) * skill
 
 
-def report(results, jobs, tools, prog, cont, careers):
+def report(results, jobs, tools, prog, cont, careers, furnishings=()):
     L = []
     w = L.append
     w("# Ekonomia kariery — symulacja (tools/econ_sim.py)")
@@ -459,6 +483,13 @@ def report(results, jobs, tools, prog, cont, careers):
 
     for line in FINDINGS(results, jobs, tools, prog, cont):
         w(line)
+    if furnishings:
+        c = results["C"]
+        n = len(furnishings)
+        trio = lambda f: "/".join("{:.0f}".format(med([f(x) for x in c[p]])) for p in PROFILES)
+        w(f"7. **Wyposażenie (D-71):** {n} przedmiotów kosmetycznych za {sum(f['price'] for f in furnishings)} monet; "
+          f"careful/average/clumsy kupują {trio(lambda x: len(x.furn))} z {n} do końca rozdz. 12, wydają "
+          f"{trio(lambda x: x.totals['furnishings'])} i zostaje im {trio(lambda x: x.st['coins'])} monet (sekcja 6a).")
     w("")
     w("## 2. Scenariusze i profile")
     w("")
@@ -555,6 +586,9 @@ def report(results, jobs, tools, prog, cont, careers):
     for line in PROPOSALS(tools):
         w(line)
     w("")
+    for line in FURNISHINGS(results, jobs, furnishings):
+        w(line)
+    w("")
     w("## 7. Model i założenia")
     w("")
     w("- Kolejność zleceń jak w `docs/JOBS.md`. Odmowy (`refuse_*`) i `wrong_floor` grane najlepszą ścieżką, bez zamka.")
@@ -639,6 +673,45 @@ def PROPOSALS(tools):
     return L
 
 
+def FURNISHINGS(results, jobs, furnishings):
+    """D-71: cosmetic furnishings bought from career coins (scenario C = the game as shipped)."""
+    if not furnishings:
+        return []
+    c = results["C"]
+    total = sum(f["price"] for f in furnishings)
+    n = len(furnishings)
+    L = ["## 6a. Wyposażenie warsztatu (D-71, `game/data/furnishings.json`, scenariusz C)", "",
+         f"{n} przedmiotów kosmetycznych (bez wpływu na trudność), razem {total} monet. Gracz w modelu kupuje je po narzędziach: "
+         f"każdy przedmiot z osiągniętego rozdziału, najpierw starsze rozdziały i tańsze, z rezerwą {BUY_RESERVE} monet na naprawy.", "",
+         f"| Profil | monety przed wyposażeniem (koniec rozdz. 12) | wydane na wyposażenie | kupione (mediana) | wszystkie {n}/{n} [% karier] | monety zostają |",
+         "|---|---|---|---|---|---|"]
+    for prof in PROFILES:
+        res = c[prof]
+        spent = med([x.totals["furnishings"] for x in res])
+        cnt = med([len(x.furn) for x in res])
+        allp = sum(1 for x in res if len(x.furn) == n) / len(res)
+        left = med([x.st["coins"] for x in res])
+        before = med([x.st["coins"] + x.totals["furnishings"] for x in res])
+        L.append(f"| {prof} | {before:.0f} | {spent:.0f} | {cnt:.0f} / {n} | {allp:.0%} | {left:.0f} |")
+    L += ["", "| przedmiot | cena | od rozdz. | " + " | ".join(f"kupiony po zleceniu nr ({p})" for p in PROFILES) + " |",
+          "|---|---|---|" + "---|" * len(PROFILES)]
+    for f in furnishings:
+        cells = []
+        for prof in PROFILES:
+            idxs = []
+            for x in c[prof]:
+                got = [i for i, fid in x.furn if fid == f["id"]]
+                idxs.append(got[0] if got else 999)
+            m = med(idxs)
+            share = sum(1 for v in idxs if v < 999) / len(idxs)
+            cells.append("—" if m >= 999 else f"{m:.0f} ({jobs[int(m) - 1]['chapter']}; {share:.0%})")
+        L.append(f"| `{f['id']}` | {f['price']} | {f['chapter']} | " + " | ".join(cells) + " |")
+    L += ["", "Komórka: mediana numeru zlecenia, po którym przedmiot jest kupiony (rozdział; odsetek karier, w których "
+          "kupiono go do końca rozdz. 12; — = mediana: nie kupiony). Cel D-71: przeciętny gracz kupuje większość do końca "
+          "rozdz. 12, staranny wszystko, a najdroższa półka zostaje celem na końcówkę."]
+    return L
+
+
 NEEDED_BY_JOBS = {"tl_shackle", "pk_lever", "tl_polar", "pk_crown", "tl_cup", "tw_bar", "pk_flag",
                   "pk_plunger", "pk_disc"}  # tools whose family appears in a job (FAMILY_TOOLS)
 
@@ -650,10 +723,11 @@ def main():
     args = ap.parse_args()
     balance = load_balance()
     jobs, tools, prog = load_data()
-    results = {s: {p: simulate(s, p, args.careers, balance, jobs, tools, prog) for p in PROFILES}
+    furnishings = load_furnishings()
+    results = {s: {p: simulate(s, p, args.careers, balance, jobs, tools, prog, furnishings) for p in PROFILES}
                for s in SCENARIOS}
     cont = continuous_check(balance, tools, prog)
-    text = report(results, jobs, tools, prog, cont, args.careers)
+    text = report(results, jobs, tools, prog, cont, args.careers, furnishings)
     with open(args.out, "w", encoding="utf-8") as f:
         f.write(text)
     print(f"wrote {args.out}")

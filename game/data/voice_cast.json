@@ -1225,6 +1225,46 @@
     "en",
     "de"
    ]
+  },
+  "pawel": {
+   "voice_id": "nwq9tqiz6jsMVLHcwP4E",
+   "voice_name": "LW pawel",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 46,
+   "design_prompt": "Polish heating technician, 46, calm and methodical, prefers a checked protocol to promises. Steady mid-low male voice, plain and reassuring, unhurried.",
+   "why": "Designed 2026-11-06 (Voice Design, eleven_ttv_v3, T18 chapter 8, D-71; prompt from contrib/gpt/T18/CHARACTERS.md, reviewed); best of 3 previews by pitch fit (123 Hz median F0, distinct from oskar 156 Hz) and Polish ASR clarity (avg logprob -0.204).",
+   "languages": [
+    "pl",
+    "en",
+    "de"
+   ]
+  },
+  "karol": {
+   "voice_id": "Fjz3d5hRh14Q6WJc2Qv1",
+   "voice_name": "LW karol",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 41,
+   "design_prompt": "Polish man, 41, impatient with procedures, slightly pushy but polite, wants to skip questions. Clear mid-pitched male voice, brisk and a little evasive.",
+   "why": "Designed 2026-11-06 (Voice Design, eleven_ttv_v3, T18 chapter 8, D-71; prompt from contrib/gpt/T18/CHARACTERS.md, reviewed); best of 3 previews by pitch fit (137 Hz median F0, distinct from oskar 156 Hz) and Polish ASR clarity (avg logprob -0.217).",
+   "languages": [
+    "pl",
+    "en",
+    "de"
+   ]
   }
  }
 }

@@ -108,6 +108,9 @@ CAST = {
     'leon': ('m', 55, 'Polish parcel courier, 55, endless patience with people, none with winter. Tired but friendly mid-low male voice, plain and good-humoured.'),
     'mila': ('f', 23, 'Young Polish woman, 23, organises a carol choir, cheerful and quick. Bright, clear young female voice with a smile, musical.'),
     'oskar': ('m', 32, 'Polish man, 32, polite but in a hurry, a little impatient, accepts a calm refusal. Clear mid-pitched male voice, brisk.'),
+    # T18 (chapter 8, D-71): two new speakers (CHARACTERS.md, reviewed in REVIEW-T18.md)
+    'pawel': ('m', 46, 'Polish heating technician, 46, calm and methodical, prefers a checked protocol to promises. Steady mid-low male voice, plain and reassuring, unhurried.'),
+    'karol': ('m', 41, 'Polish man, 41, impatient with procedures, slightly pushy but polite, wants to skip questions. Clear mid-pitched male voice, brisk and a little evasive.'),
 }
 
 FILLER = {

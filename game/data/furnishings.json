@@ -1,0 +1,19 @@
+{
+  "schema": "lockwright.furnishings/1",
+  "source": "D-71 (cosmetic workshop furnishings, no gameplay effect); prices: tools/econ_sim.py, docs/ECONOMY.md",
+  "render": "art/blender/workshop.py --layers + art/blender/workshop_layers.py",
+  "layer_dir": "res://assets/ui/workshop",
+  "base": "workshop_base.webp",
+  "furnishings": [
+    {"id": "plant", "price": 150, "chapter": 1, "i18n": "furnishing.plant.name", "desc": "furnishing.plant.desc", "layer": "furn_plant.webp", "z": 20},
+    {"id": "rug", "price": 300, "chapter": 1, "i18n": "furnishing.rug.name", "desc": "furnishing.rug.desc", "layer": "furn_rug.webp", "z": 20},
+    {"id": "shelf_light", "price": 400, "chapter": 2, "i18n": "furnishing.shelf_light.name", "desc": "furnishing.shelf_light.desc", "layer": "furn_shelf_light.webp", "z": 10},
+    {"id": "radio", "price": 600, "chapter": 3, "i18n": "furnishing.radio.name", "desc": "furnishing.radio.desc", "layer": "furn_radio.webp", "z": 20},
+    {"id": "certificate", "price": 350, "chapter": 4, "i18n": "furnishing.certificate.name", "desc": "furnishing.certificate.desc", "layer": "furn_certificate.webp", "z": 20},
+    {"id": "case_velvet", "price": 900, "chapter": 5, "i18n": "furnishing.case_velvet.name", "desc": "furnishing.case_velvet.desc", "layer": "furn_case_velvet.webp", "z": 10},
+    {"id": "clock", "price": 800, "chapter": 6, "i18n": "furnishing.clock.name", "desc": "furnishing.clock.desc", "layer": "furn_clock.webp", "z": 20},
+    {"id": "thanks_cards", "price": 450, "chapter": 9, "i18n": "furnishing.thanks_cards.name", "desc": "furnishing.thanks_cards.desc", "layer": "furn_thanks_cards.webp", "z": 20},
+    {"id": "vise", "price": 1200, "chapter": 10, "i18n": "furnishing.vise.name", "desc": "furnishing.vise.desc", "layer": "furn_vise.webp", "z": 30},
+    {"id": "exhibit_shelf", "price": 1600, "chapter": 11, "i18n": "furnishing.exhibit_shelf.name", "desc": "furnishing.exhibit_shelf.desc", "layer": "furn_exhibit_shelf.webp", "z": 20}
+  ]
+}
