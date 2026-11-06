@@ -231,3 +231,10 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 - **Scenka przyjazdu (D-58):** kierunek zaakceptowany; po dostawie Magnific D postać, finalny render na GPU, integracja, kolejne zlecenia.
 - **ElevenLabs:** konto ma płatny plan z licencją komercyjną.
 - **Dyrektorka:** nowy kobiecy portret (Magnific E).
+
+## D-63: Paczki głosów na żądanie — pck danych na język, GitHub Releases (później Cloudflare)
+2026-11-06 · sesja A (wykonanie D-62) · Szczegóły: `docs/TECH.md` §9.
+- Play Asset Delivery odrzucone (brak wsparcia w Godot 4.7, osobna droga dla iOS). Zamiast tego **jeden pck tylko z danymi na język** (`voice_<lang>.pck`, DE 8,2 MB), pobierany przez `VoicePacks` do `user://`, weryfikowany SHA-256 z manifestu w aplikacji (`game/data/voice_packs.json`), montowany `load_resource_pack`. Bez sieci: same napisy.
+- Gracz jest pytany raz z podanym rozmiarem (Apple 4.2.3); jedno zwykłe GET, bez identyfikatorów i analityki — do wpisania w politykę prywatności (hosting widzi IP).
+- Android dostaje uprawnienie `INTERNET` (tylko do pobierania głosów; Data safety: brak zbieranych danych).
+- Wydania: workflow `voice-packs.yml` → GitHub Release `voice-packs-<version>`; przejście na Cloudflare przez `VOICE_PACKS_BASE_URL` dopiero na sygnał właściciela (D-51).
