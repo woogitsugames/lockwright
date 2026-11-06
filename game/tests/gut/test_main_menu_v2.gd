@@ -86,6 +86,8 @@ func test_zones_map_onto_the_rendered_bands() -> void:
 		var f: Rect2 = menu.to_screen(focus)
 		assert_true(f.position.x >= -0.5 and f.position.y >= -0.5 and f.end.x <= size.x + 0.5 and f.end.y <= size.y + 0.5,
 			"%s: title + menu fully on screen (%s)" % [tag, f])
+		var safe: Rect2 = SafeArea.shrink(menu, Rect2(Vector2.ZERO, size)).grow(-menu.FOCUS_PAD)
+		assert_true(safe.grow(0.5).encloses(f), "%s: title + menu inside the safe area - %.0f dp (%s in %s)" % [tag, menu.FOCUS_PAD, f, safe])
 		if focus.size.y * cover <= size.y - 16.0 and focus.size.x * cover <= size.x - 16.0:
 			assert_almost_eq(menu.image_scale, cover, 1e-4, tag + ": cover-fit when the focus fits")
 			assert_true(menu.image_rect.encloses(Rect2(Vector2.ZERO, size).grow(-0.5)), tag + ": image covers the screen")
@@ -106,6 +108,41 @@ func test_zones_map_onto_the_rendered_bands() -> void:
 			prev = got
 		menu.get_parent().queue_free()
 		await get_tree().process_frame
+
+
+## D-66: the portrait finals are the wide (~75%) frame, not the close v2 camera (board 96% of the width).
+func test_layout_is_the_75_percent_gpu_frame() -> void:
+	var l: Dictionary = (load("res://scripts/ui/main_menu.gd") as GDScript).load_layout()
+	var p: Dictionary = l["orients"]["portrait"]
+	var frac: float = float(p["board_rect"][2]) / float(p["size"][0])
+	assert_between(frac, 0.70, 0.80, "portrait board ~75%% of the image width (%.3f)" % frac)
+	assert_eq(float(p["view"]["vw"]), 600.0, "portrait hits from the --vw 600 camera of the renders")
+	assert_true(l["orients"]["landscape"].has("view"), "landscape camera recorded")
+
+
+## Real phones have notches / gesture bars (headless = no insets): with typical insets the focus
+## (title + all bands) still fits inside the safe area and every zone stays >= 48 dp.
+func test_fit_with_safe_area_insets() -> void:
+	var script: GDScript = load("res://scripts/ui/main_menu.gd")
+	var layout: Dictionary = script.load_layout()
+	for win in WINDOWS:
+		var size := dp_size(win)
+		var o := "landscape" if size.x > size.y else "portrait"
+		var od: Dictionary = layout["orients"][o]
+		var img := Vector2(od["size"][0], od["size"][1])
+		# left, top, right, bottom (dp): portrait = notch + gesture bar, landscape = notch on a side + bar
+		var ins := Vector4(0, 48, 0, 34) if o == "portrait" else Vector4(48, 0, 48, 21)
+		var full := Rect2(Vector2.ZERO, size)
+		var safe := Rect2(full.position + Vector2(ins.x, ins.y), full.size - Vector2(ins.x + ins.z, ins.y + ins.w)).grow(-8.0)
+		var r: Rect2 = script.fit_rect(img, script.rect_of(od["focus_rect"]), size, safe)
+		var k := r.size.x / img.x
+		var f := Rect2(r.position + script.rect_of(od["focus_rect"]).position * k, script.rect_of(od["focus_rect"]).size * k)
+		var tag := "%dx%d px, insets %s" % [win.x, win.y, ins]
+		assert_true(safe.grow(0.5).encloses(f), "%s: focus %s inside safe %s" % [tag, f, safe])
+		for it in od["items"]:
+			var h: Rect2 = script.rect_of(it["hit_rect"])
+			var z := Rect2(r.position + h.position * k, h.size * k).intersection(full)
+			assert_gte(minf(z.size.x, z.size.y), 48.0, "%s %s: zone >= 48 dp (%s)" % [tag, it["id"], z.size])
 
 
 func _click(vp: SubViewport, at: Vector2) -> void:

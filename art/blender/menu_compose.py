@@ -12,6 +12,13 @@
 #   --langs pl,en,de     label languages (game/i18n/strings.csv, menu.*); --orients portrait,landscape
 #   --blender PATH       Blender 4.2 binary (default /opt/tools/blender-4.2.9-linux-x64/blender)
 #   --no-game            skip the export to game/assets/ui/menu/
+#   --no-sheets          do not rewrite the review sheets (compare_*.jpg, menu_langs.jpg, menu_pressed_*.jpg/png)
+#   --vw MM / --vh MM    camera view of the portrait (width, mm) / landscape (height, mm) board, passed to EVERY Blender call
+#                        of that orientation (full render, pressed sprites, hits). Default: the value recorded in the hits
+#                        JSON ("view"), else portrait --vw 600 (D-66: board ~75% of the width, the owner's GPU finals) and
+#                        landscape --vh 585 (= the scene default). The value used is written back into the hits JSON and the layout.
+#   --accept-hits        accept regenerated hit rects that differ from the hits JSON already there (otherwise: abort and
+#                        restore the old JSON, so a hits-only run can never silently move the zones off the delivered renders)
 #
 # Renders (art/renders/menu/; PL has no language suffix, EN/DE end in _en/_de):
 #   menu_portrait[_xx].png 1080x2400, menu_landscape[_xx].png 2400x1080, menu_hits[_landscape][_xx].json,
@@ -32,6 +39,10 @@ BL = arg('--blender', '/opt/tools/blender-4.2.9-linux-x64/blender'); SPP = arg('
 SPP_SPRITE = arg('--sprite-samples', SPP); DEVICE = arg('--device', 'CPU').upper()
 LANGS = arg('--langs', 'pl,en,de').split(','); ORIENTS = arg('--orients', 'portrait,landscape').split(',')
 RENDER_ALL = '--render-all' in argv; RENDER_MISSING = '--render-missing' in argv
+# D-66: camera view per orientation. Portrait finals (GPU, 2026-11-06) use --vw 600 (board 798/1080 px = 74% of the width);
+# menu_gate.py's own portrait default (432, the close v2 camera) must never be used for this menu again.
+VIEW_DEFAULT = {'portrait': ('--vw', '600'), 'landscape': ('--vh', '585')}   # landscape: = menu_gate.py default
+VIEW_CLI = {'portrait': arg('--vw', None), 'landscape': arg('--vh', None)}
 IDS = ['start', 'jobs', 'workshop', 'showcase', 'settings', 'about']
 RES = {'portrait': '1080x2400', 'landscape': '2400x1080'}
 MARGIN = 20
@@ -50,14 +61,41 @@ def blender(*a):
 
 def need(path): return RENDER_ALL or (RENDER_MISSING and not os.path.exists(path))
 
+def view_of(o, lang):
+    """(flag, value) of the camera view for orientation o: CLI > recorded in the hits JSON > D-66 default."""
+    flag, val = VIEW_DEFAULT[o]
+    if VIEW_CLI[o] is not None: return flag, VIEW_CLI[o]
+    if os.path.exists(hits_json(o, lang)):
+        rec = (json.load(open(hits_json(o, lang))).get('view') or {}).get(flag.strip('-'))
+        if rec is not None: return flag, str(rec)
+    return flag, val
+
+def record_view(o, lang, flag, val):
+    p = hits_json(o, lang); h = json.load(open(p))
+    h['view'] = {flag.strip('-'): (float(val) if val is not None else None), 'by': 'art/blender/menu_compose.py'}
+    with open(p, 'w') as f: json.dump(h, f, indent=1)
+
+def hit_geometry(p):
+    if not os.path.exists(p): return None
+    h = json.load(open(p)); return [h.get('board_rect'), h.get('focus_rect'), [(i['id'], i['hit_rect']) for i in h['items']]]
+
 # ---------------------------------------------------------------- 1. renders (+ hits JSON for every language/orientation)
 for o in ORIENTS:
     for lang in LANGS:
-        common = ['--res', RES[o], '--orient', o, '--lang', lang]
+        flag, val = view_of(o, lang)
+        common = ['--res', RES[o], '--orient', o, '--lang', lang] + ([flag, val] if val is not None else [])
         if need(base_png(o, lang)):
             blender('--out', base_png(o, lang), '--samples', SPP, '--hits', hits_json(o, lang), *common)
-        else:   # hits only (cheap, deterministic: same scene as the render)
+        else:   # hits only (cheap, deterministic: same scene as the render) -- must reproduce the delivered geometry
+            old = open(hits_json(o, lang)).read() if os.path.exists(hits_json(o, lang)) else None
+            before = hit_geometry(hits_json(o, lang))
             blender('--out', base_png(o, lang), '--hits', hits_json(o, lang), '--norender', *common)
+            after = hit_geometry(hits_json(o, lang))
+            if before is not None and after != before and '--accept-hits' not in argv:
+                open(hits_json(o, lang), 'w').write(old)
+                sys.exit('hits %s/%s: regenerated rects differ from the delivered ones (camera %s %s?) -- old JSON restored; '
+                         'pass the camera the renders used (--vw/--vh) or --accept-hits' % (o, lang, flag, val))
+        record_view(o, lang, flag, val)
         for i, iid in enumerate(IDS):
             if need(sprite_png(o, lang, iid)):
                 blender('--out', sprite_png(o, lang, iid), '--samples', SPP_SPRITE, '--pressed', str(i), '--crop-row', str(i), *common)
@@ -78,7 +116,8 @@ def sprite_box(it, base, m):
 
 # ---------------------------------------------------------------- 2. review sheets
 have = lambda p: os.path.exists(p)
-if have(base_png('portrait', 'pl')) and have(sprite_png('portrait', 'pl', 'jobs')):
+SHEETS = '--no-sheets' not in argv
+if SHEETS and have(base_png('portrait', 'pl')) and have(sprite_png('portrait', 'pl', 'jobs')):
     hits = load_hits('portrait', 'pl'); base = Image.open(base_png('portrait', 'pl')).convert('RGB')
     it = next(i for i in hits['items'] if i['id'] == 'jobs'); m = hits.get('pressed_margin_px', MARGIN)
     spr = Image.open(sprite_png('portrait', 'pl', 'jobs')).convert('RGB'); x0, y0 = sprite_box(it, base, m)
@@ -104,7 +143,7 @@ if have(base_png('portrait', 'pl')) and have(sprite_png('portrait', 'pl', 'jobs'
 
 # all languages side by side (portrait row over landscape row) and every pressed sprite over its base
 G = 24; langs = [l for l in LANGS if have(base_png('portrait', l)) and have(base_png('landscape', l))]
-if langs:
+if SHEETS and langs:
     P = [Image.open(base_png('portrait', l)).convert('RGB').resize((540, 1200), Image.LANCZOS) for l in langs]
     Lw = [Image.open(base_png('landscape', l)).convert('RGB').resize((1200, 540), Image.LANCZOS) for l in langs]
     Wt = max(len(P) * (540 + G) + G, 1200 + 2 * G); sheet = Image.new('RGB', (Wt, 1200 + 3 * G + len(Lw) * (540 + G)), (14, 14, 14))
@@ -186,7 +225,8 @@ if '--no-game' not in argv:
             hits = load_hits(o, lang)
             rects = {it['id']: it['hit_rect'] for it in hits['items']}
             if ref is None:
-                ref = {'size': [hits['width'], hits['height']], 'px_per_dp': hits['px_per_dp'], 'focus_rect': hits['focus_rect'],
+                ref = {'size': [hits['width'], hits['height']], 'px_per_dp': hits['px_per_dp'], 'view': hits.get('view'),
+                       'board_rect': hits['board_rect'], 'focus_rect': hits['focus_rect'],
                        'items': [{'id': it['id'], 'hit_rect': it['hit_rect']} for it in hits['items']]}
             else:   # hit bands do not depend on the label text: one layout per orientation
                 assert all(rects[i['id']] == i['hit_rect'] for i in ref['items']), 'hit rects differ between languages (%s)' % lang

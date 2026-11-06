@@ -3,7 +3,7 @@ extends SceneTree
 ## zones outlined in a separate "_zones" shot. Run under xvfb with opengl3:
 ##   xvfb-run -s "-screen 0 4000x4000x24" godot --path game --display-driver x11 --rendering-driver opengl3 \
 ##     -s res://tests/menu_shots.gd -- --out=/tmp/menu_v2
-const SIZES := [Vector2i(412, 915), Vector2i(915, 412), Vector2i(1080, 2400), Vector2i(2400, 1080), Vector2i(1916, 2160), Vector2i(2160, 1916)]
+const SIZES := [Vector2i(412, 915), Vector2i(915, 412), Vector2i(1080, 2400), Vector2i(2400, 1080), Vector2i(360, 800), Vector2i(1916, 2160), Vector2i(2160, 1916)]
 const LANGS := ["pl", "en", "de"]
 
 var _out := "/tmp/menu_v2"

@@ -160,5 +160,9 @@
    ],
    "pressed_sprite": "menu_pressed_about_landscape.png"
   }
- ]
+ ],
+ "view": {
+  "vh": 585.0,
+  "by": "art/blender/menu_compose.py"
+ }
 }
