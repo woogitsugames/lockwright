@@ -136,11 +136,19 @@ func test_g23_silhouettes_per_gesture_and_still_no_touches() -> void:
 		assert_eq(hints.h4_steps.size(), 1, tag)
 		assert_eq(hints.ghost.silhouette, &"hand_right_tool" if auto else &"hand_left_tool", tag + ": H4 master hand holds the tool")
 		assert_eq(hints.ghost.release_silhouette, &"hand_right_open", tag + ": and lets go as an open hand")
+		# the ghost changes nothing about where a touch goes: same answer with it hidden
+		# (in auto mode the master hand can sit over the loupe, which takes that touch itself)
 		var at := hints.ghost.ghost_center
-		vp.push_input(_touch(0, at, true))
-		var down: bool = scene.sampler.right_down() if at.x > 206.0 else scene.sampler.left_down()
-		assert_true(down, tag + ": a touch on the master hand reaches the thumb sampler")
-		vp.push_input(_touch(0, at, false))
+		var reached := []
+		for hide in [false, true]:
+			hints.ghost.visible = not hide
+			vp.push_input(_touch(0, at, true))
+			reached.append(scene.sampler.right_down() or scene.sampler.left_down())
+			vp.push_input(_touch(0, at, false))
+		hints.ghost.visible = true
+		assert_eq(reached[0], reached[1], tag + ": a touch on the master hand goes where it would without it")
+		if not auto:
+			assert_true(reached[0], tag + ": it reaches the thumb sampler")
 
 
 func test_h4_at_most_once_per_step() -> void:

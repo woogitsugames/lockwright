@@ -22,9 +22,9 @@ SPEC = {
     'thumb_left_press':  ('thumb_left_press.png',  40.0, (515, 500), ('bottom', 'left'), 175),
     'thumb_right_press': ('thumb_right_press.png', 40.0, (468, 470), ('bottom', 'right'), 175),
     'thumb_right_slide': ('thumb_right_slide.png', 40.0, (452, 545), ('right',), 150),
-    'hand_left_tool':    ('hand_left_tool.png',    28.0, (520, 320), ('bottom', 'left'), 115),
-    'hand_right_tool':   ('hand_right_tool.png',   28.0, (360, 390), ('bottom', 'right'), 110),
-    'hand_right_open':   ('hand_right_open.png',   28.0, (130, 630), ('bottom', 'right'), 110),
+    'hand_left_tool':    ('hand_left_tool.png',    32.0, (520, 320), ('bottom', 'left'), 115),
+    'hand_right_tool':   ('hand_right_tool.png',   32.0, (360, 390), ('bottom', 'right'), 110),
+    'hand_right_open':   ('hand_right_open.png',   32.0, (130, 630), ('bottom', 'right'), 110),
 }
 
 
@@ -47,7 +47,7 @@ def mask_of(path):
     return a.astype(np.float32)
 
 
-def edge_fade(a, edges, frac=0.22):
+def edge_fade(a, edges, frac=0.12):
     h, w = a.shape; yy, xx = np.mgrid[0:h, 0:w].astype(np.float32); f = np.ones_like(a)
     for e in edges:
         dist = {'bottom': h - 1 - yy, 'top': yy, 'left': xx, 'right': w - 1 - xx}[e] / (frac * (h if e in ('top', 'bottom') else w))
