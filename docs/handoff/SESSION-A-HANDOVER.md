@@ -132,3 +132,9 @@ Kolejka, gdy ktoś skończy:
 5. Plan B dla nowych rodzin lockcore, gdy będą gotowe.
 6. Rano: paczki Magnific (sekcje C, D), ChatGPT (`gpt5/`), Mistral (V03) + APK + zestawienia.
 - **Właściciel 2026-11-05 22:05:** na razie **tylko rozwój gry** — żadnych filmów, zwiastunów (GEM1-v2 wstrzymany), rolek ani materiałów marketingowych. **Gemini niedostępny** (brak limitu) — bez zleceń dla niego. Rendery GPU i testy przez adb może robić lokalna sesja Claude Code u właściciela (RTX 5070, 64 GB RAM).
+
+### Pytania do właściciela na rano (klikalne)
+1. **Rozmiar paczki z głosami:** PL+EN+DE = 21,1 MB nagrań → pck ok. 54 MB (limit 58). FR/ES się nie zmieszczą. Opcje: języki głosów pobierane na żądanie (Play Asset Delivery / osobne paczki), mocniejsza kompresja mowy (mono 24–32 kHz, −20–30%), albo w paczce tylko PL+EN, reszta do pobrania.
+2. **Hania (7 lat):** ElevenLabs blokuje głosy dzieci; czyta ją jasny dorosły głos (jak dubbing animacji). Zostawić czy dać jej tylko napisy i wokalizacje?
+3. **Plan ElevenLabs:** potwierdzić, że konto ma licencję komercyjną (D-42, ASSETS.md).
+4. Drobne: „Dyrektorka” ma na portrecie mężczyznę — głos żeński według tekstu; podmienić portret?

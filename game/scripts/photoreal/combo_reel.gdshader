@@ -9,11 +9,12 @@ uniform float pos = 0.0;          // wheel position, fraction of a turn (digit =
 uniform float read_a = 0.5236;    // reading line, radians above the front
 uniform float u_scale = 1.27;     // wheel width / band width
 uniform float dim = 1.0;          // "in the dark"
+uniform float cells = 10.0;       // digits / positions round the wheel
 
 void fragment() {
 	float h = clamp(1.0 - UV.y, 0.0, 1.0);
 	float a = asin(h);
-	float v = pos + 0.05 - (a - read_a) / 6.2831853;
+	float v = pos + 0.5 / cells - (a - read_a) / 6.2831853;
 	float u = 0.5 + (UV.x - 0.5) * u_scale;
 	vec3 c = texture(band, vec2(clamp(u, 0.02, 0.98), v)).rgb;
 	// the engraving fades towards the silhouette (grazing view), never below the paint

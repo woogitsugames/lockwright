@@ -200,3 +200,13 @@ tutorial.s1_near_break,Too much force. The tool is bending. Ease off.,Za mocno. 
 ui.job_done,done,wykonane,erledigt
 lock.dial_hint,Turn the dial with your right thumb; stop on each gate.,Prawy kciuk kręci pokrętłem. Zatrzymaj koło w bramce.,Rechter Daumen dreht die Scheibe; im Tor anhalten.
 lock.combo_hint,"Pull gently, roll the stiff wheel slowly to its notch.","Ciągnij lekko, oporne kółko kręć powoli do wcięcia.","Sanft ziehen, das schwere Rad langsam zur Kerbe drehen."
+lock.warded_reach,Slide the bit up or down until it fits the gap.,"Przesuwaj grot w górę lub w dół, aż wejdzie w szczelinę.","Bart verschieben, bis er genau in die Lücke passt."
+lock.warded_turn,"Left thumb: up turns the probe, down turns it back.","Lewy kciuk: w górę obraca sondę, w dół ją cofa.","Linker Daumen: hoch dreht die Sonde, runter zurück."
+lock.warded_turn_auto,Hold the right thumb to turn; the left turns back.,"Trzymaj prawy kciuk, by obracać. Lewy cofa.",Rechten Daumen halten zum Drehen; links dreht zurück.
+lock.warded_bit,"Bit too thick? Pull the probe out, tap its head.",Grot za gruby? Wyjmij sondę i stuknij w jej główkę.,"Bart zu dick? Sonde herausziehen, auf den Kopf tippen."
+lock.detector_reset,"Detector tripped. Ease off, turn back and hold.",Detektor zadziałał. Zwolnij i przytrzymaj obrót wstecz.,"Detektor ausgelöst. Locker lassen, zurückdrehen, halten."
+lock.detector_reset_auto,Detector tripped. Hold the left thumb to turn back.,"Detektor zadziałał. Przytrzymaj lewy kciuk, by cofnąć.",Detektor ausgelöst. Links halten zum Zurückdrehen.
+lock.wafer_coach,Lift a wafer until it sits flush with the plug.,"Unoś płytkę, aż zrówna się z rdzeniem.","Plättchen anheben, bis es bündig im Kern sitzt."
+lock.lever_coach,Lift the lever until its gate meets the stump.,"Unoś zapadkę, aż jej bramka trafi na trzpień.","Zuhaltung anheben, bis ihr Tor am Riegelstift sitzt."
+lock.hint_tension_wafer,Wafers feel loose? Hold a little left tension.,Płytki luźne? Lewym kciukiem trzymaj napięcie.,Plättchen locker? Links etwas Spannung halten.
+lock.hint_tension_lever,Levers feel loose? Hold a little left tension.,Zapadki luźne? Lewym kciukiem trzymaj napięcie.,Zuhaltungen locker? Links etwas Spannung halten.

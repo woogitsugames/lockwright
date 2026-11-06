@@ -85,6 +85,7 @@ var _oval_mat: ShaderMaterial
 
 func _init() -> void:
 	mouse_filter = MOUSE_FILTER_IGNORE  # never intercept the player's touches
+	set_process(false)  # REVIEW-V02: idle ghost must not redraw every frame (play_gesture turns it on)
 	var shader := Shader.new()
 	shader.code = _OVAL_SHADER
 	_oval_mat = ShaderMaterial.new()

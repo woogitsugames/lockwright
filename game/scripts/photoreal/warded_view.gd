@@ -403,8 +403,10 @@ func _update_w_chalk(els: Array, delta: float) -> void:
 	var turned := float(_last_vm.get("core_rotation", 0.0)) > 0.02
 	m["hint_left"] = not turned and coach == null and not chalk_gauge
 	m["hint_vertical"] = not turned
+	var text := _coach_text(m)
+	_apply_hint_marks(m)
 	_chalk.marks = m
-	_chalk.text = ""
+	_chalk.text = text
 	_chalk.tick(delta)
 
 

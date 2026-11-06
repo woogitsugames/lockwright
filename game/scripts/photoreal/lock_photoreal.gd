@@ -44,6 +44,7 @@ var _pose_vm := {}  # fixed ViewModel for --lw-pose
 var coach: TutorialCoach
 ## N-63: families with their own thumb mapping (warded probe: turn, reach, bit). null = pins.
 var control = null  # WardedControl | DetectorControl
+var hints: TutorialHints
 var fb_gain := 1.0  # ONBOARDING §4: S1 ×1.5, S2 ×1.3, S3 ×1.15
 var _open_pending := -1.0
 # N-58: quiet contact / spring cues while lifting with no tension
@@ -155,8 +156,13 @@ func _setup_guidance() -> void:
 			lvl = {"off": ChalkLayer.Level.OFF, "reduced": ChalkLayer.Level.REDUCED, "full": ChalkLayer.Level.FULL}.get(args["lw-chalk"], lvl)
 		view.chalk_level = lvl
 		view.chalk_gauge = false
-		view.coach = null
+		coach = null
+		if done < 3:
+			coach = TutorialCoach.new(0, false, auto)  # N-63: family lines for the first jobs
+			coach.family = family
+		view.coach = coach
 		view.loupe_toggled.connect(func(on: bool) -> void: sampler.frozen = on)
+		_setup_hints()
 		return
 	var tutorial := JobRun.mode == &"tutorial" and not JobRun.current_job.is_empty()
 	var stage := JobRun.tutorial_stage
@@ -175,12 +181,24 @@ func _setup_guidance() -> void:
 		coach = TutorialCoach.new(0, false, auto) if jobs_done < 3 else null
 	if args.has("lw-chalk"):
 		level = {"off": ChalkLayer.Level.OFF, "reduced": ChalkLayer.Level.REDUCED, "full": ChalkLayer.Level.FULL}.get(args["lw-chalk"], level)
-	if family != &"pin_tumbler" and not tutorial:
-		coach = null  # the coach's lines talk about pins (N-63: other families get chalk marks only)
+	if coach != null:
+		coach.family = family  # N-63: wafer / lever get their own lines (no pin wording)
 	view.chalk_level = level
 	view.chalk_gauge = auto or (tutorial and stage == 0)
 	view.coach = coach
 	view.loupe_toggled.connect(func(on: bool) -> void: sampler.frozen = on)
+	_setup_hints()
+
+
+## ONBOARDING §2: hint ladder H0–H4 + ghost hand wherever a coach runs (S1–S3, first jobs).
+## Off for scripted dev / CI runs (frozen sessions, screenshots of a stage).
+func _setup_hints() -> void:
+	if coach == null or args.has("lw-stage") or args.has("lw-sim") or args.has("lw-pose") or args.get("lw-hints", "1") == "0":
+		return
+	hints = TutorialHints.new()
+	hints.name = "TutorialHints"
+	add_child(hints)
+	hints.setup(view, coach, family, sampler.auto_tension, control)
 
 
 func _vm() -> Dictionary:
@@ -217,8 +235,12 @@ func _physics_process(delta: float) -> void:
 	var events: Array
 	if control != null and not session is FakeLockSession:
 		input = control.map(input, sampler, session.describe(), delta)
+		if hints != null:
+			input = hints.drive(input, session.describe(), delta)
 		events = session.step(input["tension"], input["pick_depth"], input["pick_lift"], input["rotate"], input["push"], input["tool"])
 	else:
+		if hints != null:
+			input = hints.drive(input, session.describe(), delta)
 		events = session.step(input["tension"], input["pick_depth"], input["pick_lift"])
 	_last_input = input
 	for e in events:
@@ -237,6 +259,11 @@ func _physics_process(delta: float) -> void:
 		sampler.auto_level = AUTO_SPOOL_LEVEL if _has_state(vm, "false_set") else InputSampler.AUTO_LEVEL
 	if coach != null:
 		coach.update(vm, input, events, sampler.left_down(), sampler.right_down(), delta)
+	if hints != null:
+		hints.tick(vm, input, events, sampler.left_down(), sampler.right_down(), delta)
+		if hints.preview_tension >= 0.0:  # H2: the plug face answers the ghost tension
+			vm = vm.duplicate()
+			vm["tension"] = maxf(float(vm.get("tension", 0.0)), hints.preview_tension)
 	var resistance: float = vm.get("tension_resistance", vm.get("resistance", 0.0))
 	Haptics.update_continuous(&"tension_resistance", resistance, 0.3)
 	Sfx.update_loop(&"tension_resistance", resistance)

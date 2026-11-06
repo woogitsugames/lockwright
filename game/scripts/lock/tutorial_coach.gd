@@ -21,6 +21,8 @@ const BIND_HOLD_S := 0.5
 const CLICK_S := 4.0
 const LOST_S := 1.5
 const HINT_AFTER_S := 2.0   # N-58: lifting with no tension this long shows the left-thumb hint
+const REACH_HINT_S := 1.0  # warded: pressed against a ward this long → "slide the bit"
+const BIT_HINT_S := 8.0    # ... this long → "bit too thick? swap it"
 
 var stage := 0              # 0 = S1 (full chalk), 1–2 = S2–S3 (reduced)
 var guided := true          # S1 steps on/off (false: only the N-58 hint and overset)
@@ -29,6 +31,12 @@ var step := Step.NONE
 var history: Array[int] = []   # steps in the order they were shown (GUT)
 var hint_tension := false      # N-58 chalk thumb + arrow on the left
 var tension_learned := false   # the first bind ends the N-58 hint for good
+## N-63: the lock family; non-pin families get their own first-jobs lines (no pin wording).
+var family: StringName = &"pin_tumbler"
+var first_set := false          # wafer / lever: the family line shows until the first set
+var turned := false             # warded: the probe has turned at least once
+var blocked_s := 0.0            # warded: time pressed against the same ward
+var tripped := false            # lever_detector: the detector holds every lever
 
 var _bound_s := 0.0
 var _lost_s := 0.0
@@ -53,8 +61,27 @@ func text_key() -> StringName:
 		Step.CLICK: return &"tutorial.s1_click"
 		Step.OVERSET: return &"tutorial.s1_overset_auto" if auto_tension else &"tutorial.s1_overset"
 		Step.OPEN: return &"tutorial.s1_open"
+	if tripped:
+		return &"lock.detector_reset_auto" if auto_tension else &"lock.detector_reset"
 	if hint_tension:
+		match family:
+			&"wafer": return &"lock.hint_tension_wafer"
+			&"lever", &"lever_detector": return &"lock.hint_tension_lever"
 		return &"lock.hint_tension"
+	match family:
+		&"warded":
+			if not turned:
+				return &"lock.warded_turn_auto" if auto_tension else &"lock.warded_turn"
+			if blocked_s >= BIT_HINT_S:
+				return &"lock.warded_bit"
+			if blocked_s >= REACH_HINT_S:
+				return &"lock.warded_reach"
+		&"wafer":
+			if tension_learned and not first_set:
+				return &"lock.wafer_coach"
+		&"lever", &"lever_detector":
+			if tension_learned and not first_set:
+				return &"lock.lever_coach"
 	return &""
 
 
@@ -63,6 +90,20 @@ func _go(s: Step) -> void:
 		return
 	step = s
 	history.append(s)
+
+
+## warded: the probe turns (core_rotation), a ward pressed against reads "bound" in lockcore.
+func _update_warded(vm: Dictionary, els: Array, delta: float) -> void:
+	if float(vm.get("core_rotation", 0.0)) > 0.02:
+		turned = true
+	var blocked := false
+	for i in maxi(els.size() - 1, 0):  # the last element is the bolt
+		if String(els[i].get("state", "")) == "bound":
+			blocked = true
+	blocked_s = blocked_s + delta if blocked else 0.0
+	hint_tension = false
+	if bool(vm.get("open", false)) and guided:
+		_go(Step.OPEN)
 
 
 static func _binding(els: Array) -> int:
@@ -92,6 +133,12 @@ func update(vm: Dictionary, input: Dictionary, events: Array, left_down: bool, r
 			tension_learned = true
 	if _binding(els) >= 0:
 		tension_learned = true
+	if sets > 0 or _any(els, "set"):
+		first_set = true
+	tripped = _any(els, "jammed") and family == &"lever_detector"
+	if family == &"warded":
+		_update_warded(vm, els, delta)
+		return
 	# N-58: lifting pins without tension says nothing by itself; after 2 s show the hint
 	if not auto_tension and not tension_learned and right_down and lift > 0.08 and t < 0.05:
 		_lift_no_t += delta

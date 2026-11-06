@@ -213,6 +213,46 @@
       -0.05326
      ],
      "elevation_deg": 33.7
+    },
+    {
+     "name": "court_lamp",
+     "type": "AREA",
+     "color_linear": [
+      1.0,
+      0.55,
+      0.25
+     ],
+     "strength_rel": 0.0502,
+     "dir3d_to_light": [
+      -0.0983,
+      0.6846,
+      -0.7223
+     ],
+     "dir2d_to_light": [
+      0.0101,
+      0.04868
+     ],
+     "elevation_deg": -46.2
+    },
+    {
+     "name": "hall_bulb",
+     "type": "POINT",
+     "color_linear": [
+      1.0,
+      0.64,
+      0.36
+     ],
+     "strength_rel": 0.0238,
+     "dir3d_to_light": [
+      0.3318,
+      0.908,
+      0.2558
+     ],
+     "dir2d_to_light": [
+      0.07615,
+      -0.03081
+     ],
+     "elevation_deg": 14.8
     }
    ]
   },
@@ -311,6 +351,46 @@
       -0.05115
      ],
      "elevation_deg": 52.2
+    },
+    {
+     "name": "court_lamp",
+     "type": "AREA",
+     "color_linear": [
+      1.0,
+      0.55,
+      0.25
+     ],
+     "strength_rel": 0.1371,
+     "dir3d_to_light": [
+      -0.3059,
+      0.5612,
+      -0.769
+     ],
+     "dir2d_to_light": [
+      -0.04014,
+      0.04004
+     ],
+     "elevation_deg": -50.3
+    },
+    {
+     "name": "hall_bulb",
+     "type": "POINT",
+     "color_linear": [
+      1.0,
+      0.64,
+      0.36
+     ],
+     "strength_rel": 0.099,
+     "dir3d_to_light": [
+      0.1215,
+      0.9168,
+      0.3803
+     ],
+     "dir2d_to_light": [
+      -0.00077,
+      -0.02908
+     ],
+     "elevation_deg": 22.4
     }
    ]
   }
@@ -333,10 +413,5 @@
    -0.0,
    1.5
   ]
- },
- "depth_png": {
-  "file": "wrong_floor_night_ajar_hold_depth.png",
-  "depth_max_mm": 20000.0,
-  "encoding": "planar camera depth = value/65535*depth_max_mm"
  }
 }

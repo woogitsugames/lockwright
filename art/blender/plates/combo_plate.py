@@ -31,11 +31,16 @@ from lw_common import *  # noqa: F401,F403
 from mathutils import Vector, Matrix
 
 arg = cli()
-OUT_DIR = os.path.abspath(arg('--out-dir', os.path.join(ROOT_DIR, 'game', 'assets', 'photoreal_families', 'combo', 'photo')))
+OUT_DIR = os.path.abspath(arg('--out-dir', os.path.join(ROOT_DIR, 'game', 'assets', 'photoreal_families', arg('--family', 'combo'), 'photo')))
 RES = [int(v) for v in arg('--res', '618x824').split('x')]
 SPP = int(arg('--spp', arg('--samples', '16')))
 DEVICE = arg('--device', 'CPU').upper()
 PASSES = arg('--passes', 'plate,front,latch,tooth,plug,band').split(',')
+# --family disc_detainer: the same quarter cut-away for the disc detainer (LOCKS.md §2.21): six
+# thin discs on the core axis, an index line instead of digits, the sidebar under the discs with one
+# sprung finger per disc that rises into the disc's gate at 6 o'clock, the core tail bolt on the right.
+FAMILY = arg('--family', 'combo')
+DISC = FAMILY == 'disc_detainer'
 os.makedirs(OUT_DIR, exist_ok=True)
 FONT = os.path.join(ROOT_DIR, 'game', 'assets', 'fonts', 'AtkinsonHyperlegibleNext-wght.ttf')  # OFL, lining figures
 
@@ -49,6 +54,14 @@ READ_DEG = 30.0               # reading line: degrees above the front
 TOOTH_W = 1.6
 NOTCH_D = 1.2
 DIST, LENS = 192.0, 150.0
+CELLS = 10
+if DISC:
+    SLOTS = [-13.0, -7.8, -2.6, 2.6, 7.8, 13.0]
+    WR, WW = 6.5, 4.4             # disc radius, thickness
+    SR, BR = 2.6, 2.6             # key channel radius (no sleeve)
+    BODY = (-17.4, 17.4, -12.0, 9.5)
+    WIN = (-15.6, 15.6)
+    CELLS = 8
 
 
 def cutter():
@@ -91,23 +104,33 @@ boolean(skin, box('sw', WIN[0], WIN[1], -1, 1, -WR - 0.8, 0.5))
 boolean(skin, cyl('sb', BR + 0.02, 60, (0, 0, 0), axis='X'))
 put(skin, M['cast']); objs['back'].append(skin)
 # webs between wheels (part of the body, axis supports)
-for xs in [(-17.6 + 0.0), -10.5, -3.5, 3.5, 10.5, 17.6]:
-    web = cyl('web', WR - 1.2, 1.2, (xs, 0, 0), axis='X', verts=96)
+for xs in [WIN[0]] + [(a + b) / 2 for a, b in zip(SLOTS, SLOTS[1:])] + [WIN[1]]:
+    web = cyl('web', WR - 1.2, (SLOTS[1] - SLOTS[0]) - WW - 0.2, (xs, 0, 0), axis='X', verts=96)
     boolean(web, cyl('wb', BR + 0.02, 10, (xs, 0, 0), axis='X'))
     put(qcut(web), M['body'], 0.1, 2); objs['back'].append(web)
 # cable on the left, plug socket on the right
 cab = cyl('cable', 2.6, 60, (x0 - 30, 4.0, -2.0), axis='X', verts=48); put(cab, M['cable'], 0.2, 2); objs['back'].append(cab)
+if DISC:
+    for o in (cab,):
+        bpy.data.objects.remove(o, do_unlink=True)
+    objs['back'].remove(cab)
 fer = cyl('ferrule', 3.4, 5.0, (x0 - 2.5, 4.0, -2.0), axis='X', verts=48); put(fer, M['plug'], 0.3, 2); objs['back'].append(fer)
 
 # ---------------------------------------------------------------- wheels (blank) + sleeves, all in the plate
 for i, xs in enumerate(SLOTS):
     w = cyl('wheel%d' % i, WR, WW, (xs, 0, 0), axis='X', verts=160)
+    if DISC:  # the disc sits on the key channel: its section shows the whole disc down to the channel
+        boolean(w, cyl('wk', BR + 0.02, 10, (xs, 0, 0), axis='X'))
+        put(qcut(w), M['sleeve'] if i % 2 else M['wheel'], 0.12, 2); objs['back'].append(w)
+        continue
     boolean(w, cyl('wi', SR + 0.02, 10, (xs, 0, 0), axis='X'))
-    for j in range(40):  # fine ribs on the rim (grip), between the digits
+    for j in range(0 if DISC else 40):  # fine ribs on the rim (grip), between the digits
         a = 2 * math.pi * (j + 0.5) / 40
         rib = box('rib', xs - WW / 2 - 0.1, xs + WW / 2 + 0.1, -0.18, 0.18, WR - 0.25, WR + 0.5)
         rib.data.transform(Matrix.Rotation(a, 4, 'X')); boolean(w, rib)
     put(qcut(w), M['wheel'], 0.12, 2); objs['back'].append(w)
+    if DISC:
+        continue
     s = cyl('sleeve%d' % i, SR, WW - 0.4, (xs, 0, 0), axis='X', verts=96)
     boolean(s, cyl('sb', BR, 10, (xs, 0, 0), axis='X'))
     put(qcut(s), M['sleeve'], 0.08, 2); objs['back'].append(s)
@@ -131,18 +154,31 @@ for xs in (x0 + 1.8, x1 - 1.8):
     objs['front'].append(screw_head('fscrew', (xs, -8.6, z1 - 2.0), 0.9, 0.5, axis='-Y', slot=False, kind='dome', mat=M['plug']))
 
 # ---------------------------------------------------------------- moving: latch bar, tooth, plug
+if DISC:
+    # sidebar groove in the body under the discs (static), sidebar + fingers (moving), core tail bolt
+    gr = box('groove', WIN[0], WIN[1], -0.6, 6.0, -WR - 3.4, -WR - 0.2); put(gr, M['dark']); objs['back'].append(gr)
+    sb = box('sidebar', WIN[0] + 0.4, WIN[1] - 0.4, -0.5, 1.6, -WR - 3.2, -WR - 1.8); put(qcut(sb), M['bar'], 0.12, 2)
+    objs['moving']['latch'] = [sb]
+    fg = box('finger', SLOTS[0] - TOOTH_W / 2, SLOTS[0] + TOOTH_W / 2, -0.5, 1.6, -WR - 1.9, -WR); put(qcut(fg), M['bar'], 0.15, 2)
+    objs['moving']['tooth'] = [fg]
+    tail = box('tailbolt', x1 - 1.0, x1 + 9.0, -1.8, 1.8, -1.6, 1.6); put(tail, M['plug'], 0.3, 2)
+    objs['moving']['plug'] = [tail]
 bar = cyl('bar', BR - 0.25, 44.0, (-0.5, 0, 0), axis='X', verts=64)
 boolean(bar, box('flat', -40, 40, -10, 10, -10, -1.2))   # flat underside the teeth ride in
-put(qcut(bar), M['bar'], 0.08, 2)
-objs['moving']['latch'] = [bar]
-tooth = box('tooth', SLOTS[0] - TOOTH_W / 2, SLOTS[0] + TOOTH_W / 2, -1.6, 1.6, -BR - 0.0, -0.9)
-put(qcut(tooth), M['bar'], 0.15, 2)
-objs['moving']['tooth'] = [tooth]
-plug = cyl('plug', 2.0, 7.0, (x1 + 3.0, 0, 0), axis='X', verts=64)
-boolean(plug, cyl('pg', 2.4, 1.2, (x1 - 0.2, 0, 0), axis='X', verts=64))  # groove the bar holds
-put(plug, M['plug'], 0.2, 2)
-pc = cyl('pcable', 2.6, 40, (x1 + 26.0, 0, 0), axis='X', verts=48); put(pc, M['cable'], 0.2, 2)
-objs['moving']['plug'] = [plug, pc]
+if DISC:
+    # the pick in the key channel (static in the picture: a tool, not a lock part)
+    put(qcut(bar), M['bar'], 0.08, 2); objs['back'].append(bar)
+else:
+    put(qcut(bar), M['bar'], 0.08, 2)
+    objs['moving']['latch'] = [bar]
+    tooth = box('tooth', SLOTS[0] - TOOTH_W / 2, SLOTS[0] + TOOTH_W / 2, -1.6, 1.6, -BR - 0.0, -0.9)
+    put(qcut(tooth), M['bar'], 0.15, 2)
+    objs['moving']['tooth'] = [tooth]
+    plug = cyl('plug', 2.0, 7.0, (x1 + 3.0, 0, 0), axis='X', verts=64)
+    boolean(plug, cyl('pg', 2.4, 1.2, (x1 - 0.2, 0, 0), axis='X', verts=64))  # groove the bar holds
+    put(plug, M['plug'], 0.2, 2)
+    pc = cyl('pcable', 2.6, 40, (x1 + 26.0, 0, 0), axis='X', verts=48); put(pc, M['cable'], 0.2, 2)
+    objs['moving']['plug'] = [plug, pc]
 
 # ---------------------------------------------------------------- light + camera
 world_hdri(0.06, sat=0.4)
@@ -173,12 +209,12 @@ def to_px(x, z, depth):
     return [RES[0] / 2 + x * s, RES[1] / 2 - (z - CAM_Z) * s]
 
 
-meta = {'family': 'combo', 'res': RES, 'spp': SPP, 'device': DEVICE, 'layers': {},
+meta = {'family': FAMILY, 'tooth_dir': -1.0 if DISC else 1.0, 'body_px': [to_px(BODY[0] - 1.5, 0, -WR)[0], to_px(BODY[1] + 1.5, 0, -WR)[0]], 'res': RES, 'spp': SPP, 'device': DEVICE, 'layers': {},
         'axis_px': to_px(0, 0, 0)[1], 'slots_px': [to_px(x, 0, -WR)[0] for x in SLOTS],
         'slots_section_px': [to_px(x, 0, 0)[0] for x in SLOTS],
         'wheel': {'radius_mm': WR, 'width_mm': WW, 'px_per_mm_front': px_per_mm(-WR), 'px_per_mm_section': px_per_mm(0.0),
                   'read_deg': READ_DEG, 'window_top_deg': 68.0},
-        'sleeve': {'bore_mm': BR, 'outer_mm': SR, 'notch_depth_mm': NOTCH_D, 'tooth_w_mm': TOOTH_W},
+        'sleeve': {'bore_mm': WR if DISC else BR, 'outer_mm': (WR + 3.6) if DISC else SR, 'notch_depth_mm': NOTCH_D, 'tooth_w_mm': TOOTH_W},
         'slot_pitch_mm': 7.0}
 
 
@@ -253,14 +289,20 @@ if 'band' in PASSES:
     for o in list(scene.objects):
         o.hide_render = True
     BW, CELL = 64, 64
-    strip = box('strip', -WW / 2, WW / 2, 0.0, 0.5, -5.0 * 4.4, 5.0 * 4.4)
+    strip = box('strip', -6.0, 6.0, 0.0, 0.5, -22.0, 22.0)
+    CH = 44.0 / CELLS
     white = dark_mat('band_white', (1.0, 1.0, 1.0), 0.6)
     white.node_tree.nodes['Principled BSDF'].inputs['Emission Color'].default_value = (1, 1, 1, 1)
     white.node_tree.nodes['Principled BSDF'].inputs['Emission Strength'].default_value = 1.0
     put(strip, white)
     inkm = dark_mat('band_ink', (0.0, 0.0, 0.0), 0.6)
-    for d in range(10):
-        zc = 5.0 * 4.4 - (d + 0.5) * 4.4
+    for d in range(CELLS):
+        zc = 22.0 - (d + 0.5) * CH
+        if DISC:  # detent nick between positions, an index line across position 0
+            nick = box('nick', -6.0, 6.0, -0.06, 0.0, zc - CH / 2 - 0.15, zc - CH / 2 + 0.15); put(nick, inkm)
+            if d == 0:
+                il = box('index', -6.0, 6.0, -0.06, 0.0, zc - 0.45, zc + 0.45); put(il, inkm)
+            continue
         bpy.ops.object.text_add(location=(0, 0, 0)); t = bpy.context.object; t.data.body = str(d)
         if os.path.exists(FONT):
             t.data.font = bpy.data.fonts.load(FONT, check_existing=True)
@@ -268,12 +310,12 @@ if 'band' in PASSES:
         bpy.ops.object.convert(target='MESH'); t = bpy.context.object
         t.data.transform(Matrix.Rotation(math.pi / 2, 4, 'X')); t.data.transform(Matrix.Translation((0, -0.05, zc)))
         put(t, inkm)
-        rib = box('cellrib', -WW / 2, WW / 2, -0.06, 0.0, zc - 2.2 - 0.12, zc - 2.2 + 0.12); put(rib, inkm)
+        rib = box('cellrib', -6.0, 6.0, -0.06, 0.0, zc - 2.2 - 0.12, zc - 2.2 + 0.12); put(rib, inkm)
     oc = bpy.data.cameras.new('ocam'); ocam = bpy.data.objects.new('ocam', oc); scene.collection.objects.link(ocam)
     oc.type = 'ORTHO'; oc.ortho_scale = 44.0; oc.sensor_fit = 'VERTICAL'
     ocam.location = (0, -50, 0); ocam.rotation_euler = (math.pi / 2, 0, 0)
     scene.camera = ocam
-    scene.render.resolution_x, scene.render.resolution_y = BW, CELL * 10
+    scene.render.resolution_x, scene.render.resolution_y = BW, CELL * CELLS
     scene.render.film_transparent = False
     scene.world = None
     scene.view_settings.view_transform = 'Standard'; scene.view_settings.look = 'None'; scene.view_settings.exposure = 0.0
@@ -281,7 +323,7 @@ if 'band' in PASSES:
     scene.render.filepath = os.path.join(OUT_DIR, 'band.png')
     scene.render.image_settings.color_mode = 'RGB'
     bpy.ops.render.render(write_still=True)
-    meta['band'] = {'cells': 10, 'size': [BW, CELL * 10], 'width_mm': WW}
+    meta['band'] = {'cells': CELLS, 'size': [BW, CELL * CELLS], 'width_mm': WW, 'view_mm': 44.0 * BW / (CELL * CELLS)}
 
 mp = os.path.join(OUT_DIR, 'layers.json')
 if os.path.exists(mp):

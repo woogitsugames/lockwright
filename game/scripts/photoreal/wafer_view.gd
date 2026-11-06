@@ -208,8 +208,10 @@ func _update_f_chalk(els: Array, delta: float) -> void:
 	var t := float(_last_input.get("tension", 0.0))
 	m["hint_left"] = t < 0.1 and not chalk_gauge
 	m["hint_right"] = t >= 0.1 and float(_last_input.get("pick_lift", 0.0)) < 0.05
+	var text := _coach_text(m)
+	_apply_hint_marks(m)
 	_chalk.marks = m
-	_chalk.text = ""
+	_chalk.text = text
 	_chalk.tick(delta)
 
 

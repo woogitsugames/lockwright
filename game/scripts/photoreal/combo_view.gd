@@ -37,17 +37,18 @@ var _back: Node2D
 var _front: Node2D
 var _reels: Array[Sprite2D] = []
 var _reel_mats: Array[ShaderMaterial] = []
-var _pos: Array[float] = [0.0, 0.0, 0.0, 0.0, 0.0]
-var _gate: Array[float] = [0.0, 0.0, 0.0, 0.0, 0.0]
-var _tooth: Array[float] = [0.0, 0.0, 0.0, 0.0, 0.0]   # mm below the bore surface (+ = into the slot)
-var _slot_vis: Array[float] = [0.0, 0.0, 0.0, 0.0, 0.0] # visible slot depth in the cut, mm
-var _false_marks: Array = [[], [], [], [], []]
+var slots := SLOTS            # wheel slots in the plate (layers.json slots_px)
+var _pos: Array[float] = []
+var _gate: Array[float] = []
+var _tooth: Array[float] = []   # mm past the contact surface into the slot (+), or back (-)
+var _slot_vis: Array[float] = [] # visible slot depth in the cut, mm
+var _false_marks: Array = []
 var _bar_dx := 0.0
 var _plug_dx := 0.0
 var _picked := -1
 var _chatter := 0.0
 var _rolled := false
-var _reel_plate: Array[Rect2] = [Rect2(), Rect2(), Rect2(), Rect2(), Rect2()]
+var _reel_plate: Array[Rect2] = []
 ## The part of the plate shown (plate px). The lock is wide and flat: the section shows a crop round
 ## it, wide in landscape, so the wheels stay >= 28 dp (CLAUDE.md) on every screen.
 var _crop := Rect2(0, 0, 618, 824)
@@ -57,8 +58,16 @@ const BODY_X := Vector2(34.0, 584.0)   # plate px: the body plus a little bench 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	set_anchors_preset(Control.PRESET_FULL_RECT)
-	if FileAccess.file_exists(META):
-		meta = JSON.parse_string(FileAccess.get_file_as_string(META))
+	if FileAccess.file_exists(_dir() + "layers.json"):
+		meta = JSON.parse_string(FileAccess.get_file_as_string(_dir() + "layers.json"))
+	slots = maxi((meta.get("slots_px", []) as Array).size(), 1) if meta.has("slots_px") else SLOTS
+	for i in slots:
+		_pos.append(0.0)
+		_gate.append(0.0)
+		_tooth.append(0.0)
+		_slot_vis.append(0.0)
+		_false_marks.append([])
+		_reel_plate.append(Rect2())
 	var res: Array = meta.get("res", [618, 824])
 	plate_size = Vector2(res[0], res[1])
 	_build_viewport()
@@ -66,8 +75,9 @@ func _ready() -> void:
 	_back.name = "ComboBack"
 	_back.draw.connect(_draw_back)
 	viewport.add_child(_back)
-	var band := _tex(C_DIR + "band.png")
-	for i in SLOTS:
+	var band := _tex(_dir() + "band.png")
+	var bm: Dictionary = meta.get("band", {})
+	for i in slots:
 		var sp := Sprite2D.new()
 		sp.name = "Reel%d" % i
 		sp.centered = false
@@ -77,7 +87,8 @@ func _ready() -> void:
 		m.set_shader_parameter("band", band)
 		m.set_shader_parameter("read_a", deg_to_rad(float(meta.get("wheel", {}).get("read_deg", 30.0))))
 		var bw := float(meta.get("wheel", {}).get("width_mm", 5.6))
-		m.set_shader_parameter("u_scale", bw / 4.4)
+		m.set_shader_parameter("u_scale", bw / float(bm.get("view_mm", 4.4)))
+		m.set_shader_parameter("cells", float(bm.get("cells", 10)))
 		sp.material = m
 		sp.visible = false
 		viewport.add_child(sp)
@@ -88,7 +99,7 @@ func _ready() -> void:
 	_front.draw.connect(_draw_front)
 	viewport.add_child(_front)
 	for nm in ["plate", "front", "latch", "tooth", "plug"]:
-		_layers[nm] = _tex(C_DIR + nm + ".png")
+		_layers[nm] = _tex(_dir() + nm + ".png")
 	_build_overlay()
 	_active_stacks = 1
 	resized.connect(_layout)
@@ -96,6 +107,16 @@ func _ready() -> void:
 	_layout()
 	set_dark(dark)
 	present({}, {})
+
+
+## Asset folder (the disc detainer view reuses this view with its own plates).
+func _dir() -> String:
+	return C_DIR
+
+
+## +1: the teeth move down into the slots (combo sleeves); -1: up (disc detainer sidebar).
+func _tdir() -> float:
+	return float(meta.get("tooth_dir", 1.0))
 
 
 static func _white_tex() -> Texture2D:
@@ -114,7 +135,7 @@ func _sm() -> Dictionary:
 
 
 func slot_of(i: int) -> int:
-	return clampi(first_slot + i, 0, SLOTS - 1)
+	return clampi(first_slot + i, 0, slots - 1)
 
 
 func _slot_x(slot: int, section: bool = true) -> float:
@@ -177,7 +198,7 @@ func plate_to_screen(p: Vector2) -> Vector2:
 func tooth_tip_screen(i: int) -> Vector2:
 	var s := slot_of(i)
 	var ppm := float(_wm()["px_per_mm_section"])
-	return plate_to_screen(Vector2(_slot_x(s), _axis_y() + (float(_sm()["bore_mm"]) + _tooth[s]) * ppm))
+	return plate_to_screen(Vector2(_slot_x(s), _axis_y() + (float(_sm()["bore_mm"]) + _tdir() * _tooth[s]) * ppm))
 
 
 ## Screen rect of wheel i's visible digits (tests).
@@ -191,10 +212,10 @@ func reel_rect_screen(i: int) -> Rect2:
 # ------------------------------------------------------------------ public API
 func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> void:
 	var els: Array = vm.get("elements", [])
-	var n := mini(els.size(), SLOTS)
+	var n := mini(els.size(), slots)
 	if n != n_wheels:
 		n_wheels = n
-		first_slot = int((SLOTS - n) / 2.0) if n > 0 else 1
+		first_slot = int((slots - n) / 2.0) if n > 0 else 1
 	var k := 1.0 - exp(-delta / SMOOTH_S)
 	var snap := delta >= 0.5
 	var tension := float(vm.get("tension", input.get("tension", 0.0)))
@@ -205,7 +226,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 		_rolled = true
 	var depth := float(_sm()["notch_depth_mm"])
 	var slipping := false
-	for s in SLOTS:
+	for s in slots:
 		_tooth[s] = lerpf(_tooth[s], -RETRACT_MM, k)
 		_slot_vis[s] = 0.0
 	for i in n:
@@ -292,7 +313,7 @@ func _place_reels() -> void:
 	var ppm := float(wm["px_per_mm_front"])
 	var r := float(wm["radius_mm"]) * ppm
 	var w := float(wm["width_mm"]) * ppm
-	for slot in SLOTS:
+	for slot in slots:
 		var sp := _reels[slot]
 		var used := slot >= first_slot and slot < first_slot + n_wheels
 		sp.visible = used and not _last_vm.is_empty()
@@ -341,13 +362,14 @@ func _draw_back() -> void:
 			continue
 		var cx := _slot_x(slot)
 		var y0 := _axis_y() + bore
+		var dd := _tdir()
 		var pts := PackedVector2Array()
 		for j in 9:
 			var t := float(j) / 8.0
 			var x := cx - tw * 0.65 + tw * 1.3 * t
-			pts.append(Vector2(x, y0 + d * sqrt(maxf(0.0, 1.0 - pow(2.0 * t - 1.0, 2.0)))))
-		pts.append(Vector2(cx + tw * 0.65, y0 - 0.5))
-		pts.append(Vector2(cx - tw * 0.65, y0 - 0.5))
+			pts.append(Vector2(x, y0 + dd * d * sqrt(maxf(0.0, 1.0 - pow(2.0 * t - 1.0, 2.0)))))
+		pts.append(Vector2(cx + tw * 0.65, y0 - dd * 0.5))
+		pts.append(Vector2(cx - tw * 0.65, y0 - dd * 0.5))
 		_back.draw_colored_polygon(pts, Color(0.035, 0.03, 0.025, 0.95))
 	# latch bar and teeth (teeth ride in the bar; the bar slides along the slots on opening)
 	var bxf := Transform2D(0.0, Vector2(-_bar_dx * ppm, 0))
@@ -356,7 +378,7 @@ func _draw_back() -> void:
 	for i in n_wheels:
 		var slot := slot_of(i)
 		var dx := _slot_x(slot) - x0 - _bar_dx * ppm
-		_draw_layer(_back, "tooth", Transform2D(0.0, Vector2(dx, _tooth[slot] * ppm)), 0.4)
+		_draw_layer(_back, "tooth", Transform2D(0.0, Vector2(dx, _tdir() * _tooth[slot] * ppm)), 0.4)
 	_draw_layer(_back, "plug", Transform2D(0.0, Vector2(_plug_dx * ppm, 0)), 0.4)
 
 
@@ -478,8 +500,9 @@ func _layout() -> void:
 	if r.size.x <= 0.0 or r.size.y <= 0.0:
 		return
 	var safe := _safe_rect(r)
-	var cx := (BODY_X.x + BODY_X.y) * 0.5
-	var cw := BODY_X.y - BODY_X.x
+	var bx: Array = meta.get("body_px", [BODY_X.x, BODY_X.y])
+	var cx := (float(bx[0]) + float(bx[1])) * 0.5
+	var cw := float(bx[1]) - float(bx[0])
 	var cy := _axis_y() + 12.0
 	if safe.size.y >= safe.size.x:
 		# portrait: same section rect as the other locks, the crop drops the bench at the sides

@@ -672,6 +672,8 @@ func _draw_tray() -> void:
 		var s: Vector2 = t["start"] - _tray.position
 		_dent(s, 20.0, 0.10)
 		_dent(p, 28.0, 0.28)
+	if hint_dent_s > 0.0:  # H1: a thumb imprint where the finger goes (fades out)
+		_dent(hint_dent_pos - _tray.position, 28.0, 0.22 * clampf(hint_dent_s / 0.5, 0.0, 1.0))
 
 
 func _draw_bg() -> void:
@@ -805,6 +807,59 @@ func mm_to_screen(p: Vector3) -> Vector2:
 	return disp.position + px / Vector2(viewport.size) * disp.size
 
 
+# ------------------------------------------------------------------ coach text + hint marks (families)
+## Chalk hint arrows asked for by the hint ladder (H3, ONBOARDING §2.1): "left", "right", "".
+var hint_arrows := ""
+## Thumb imprint in the leather where the finger has to go (H1); seconds left.
+var hint_dent_pos := Vector2.ZERO
+var hint_dent_s := 0.0
+
+
+## The coach line (already translated) and its rect; shared by the family views.
+func _coach_text(m: Dictionary) -> String:
+	var r := get_rect()
+	var safe := _safe_rect(r)
+	m["text_rect"] = Rect2(Vector2(safe.position.x + 16.0, safe.position.y + 10.0), Vector2(safe.size.x - FLAP_DP - 48.0, 72.0))
+	if safe.size.x > safe.size.y:
+		m["text_rect"] = Rect2(Vector2(section_rect.end.x + 16.0, safe.position.y + 16.0), Vector2(safe.end.x - section_rect.end.x - 32.0, 120.0))
+	if coach == null:
+		return ""
+	var key := coach.text_key()
+	return I18n.t(key) if key != &"" else ""
+
+
+func _apply_hint_marks(m: Dictionary) -> void:
+	if hint_arrows == "left":
+		m["hint_left"] = true
+	elif hint_arrows == "right":
+		m["hint_right"] = true
+	if hint_arrows != "":
+		m["friction"] = true
+
+
+## Thumb anchors of the chalk hints and the ghost hand (dp, view coordinates).
+func thumb_anchors() -> Array:
+	var r := get_rect()
+	var safe := _safe_rect(r)
+	var portrait := safe.size.y >= safe.size.x
+	var thumbs_y := tray_rect.position.y + tray_rect.size.y * (0.66 if portrait else 0.5)
+	return [Vector2(r.size.x * (0.22 if portrait else 0.12), thumbs_y), Vector2(r.size.x * (0.70 if portrait else 0.88), thumbs_y)]
+
+
+func show_hint_dent(pos: Vector2, seconds: float = 2.0) -> void:
+	hint_dent_pos = pos
+	hint_dent_s = seconds
+	if _tray:
+		_tray.queue_redraw()
+
+
+func tick_hint_dent(delta: float) -> void:
+	if hint_dent_s > 0.0:
+		hint_dent_s = maxf(hint_dent_s - delta, 0.0)
+		if _tray:
+			_tray.queue_redraw()
+
+
 # ------------------------------------------------------------------ N-62 plug face + chalk
 func _update_face(vm: Dictionary, tension: float, delta: float) -> void:
 	if _face == null:
@@ -881,6 +936,7 @@ func _update_chalk(elements: Array, default_target: float, delta: float) -> void
 		var key := coach.text_key()
 		if key != &"":
 			text = I18n.t(key)
+	_apply_hint_marks(m)
 	_chalk.marks = m
 	_chalk.text = text
 	_chalk.tick(delta)
