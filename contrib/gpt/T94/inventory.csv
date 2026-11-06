@@ -1,0 +1,84 @@
+chapter,job_id,district,client_pl,speakers
+1,job.bike_interview,Osiedle Słoneczne,"Kuba, 23 lata, świeżo po studiach, ma pożyczoną marynarkę i jedzie na pierwszą rozmowę o pracę.",kuba; locksmith; kuba; locksmith
+1,job.cat_bathroom,Osiedle Słoneczne,"Marta, 34 lata, grafik, pracuje z domu, ma kota Ziemniaka.",marta; locksmith; marta; locksmith
+1,job.grandma_broth,Śródmieście,"pani Halina, 81 lat. Wyszła wyrzucić śmieci w kapciach, mówi „synku” i jest pewna, że wszystko pamięta.",halina; zosia; locksmith; halina
+1,job.kiosk_shutter,Osiedle Słoneczne,"pan Stefan, 67 lat. Kiosk prowadzi od 1994 r. i zna wszystkich na przystanku po imieniu.",stefan; locksmith; stefan; krysia
+1,job.refuse_ex_partner,Osiedle Słoneczne,"mężczyzna ok. 40 lat. Przedstawia się jako „Darek”, jest zdenerwowany i trzyma telefon ekranem do dołu.",darek; locksmith; darek; locksmith
+1,job.student_dorm,Kampus,"Zuzanna, 20 lat, studentka konserwacji zabytków, przyniosła torbę pełną pędzli.",zuzanna; edek; locksmith; zuzanna
+2,job.drummer_locker,Kampus,"Iga, 27 lat, perkusistka zespołu „Kwaśne Jabłka”, z kolczykiem w brwi i bardzo dobrą punktualnością.",iga; hall_manager; locksmith; iga
+2,job.newlyweds_4am,Osiedle Słoneczne,"Kasia i Bartek, ona w welonie przekrzywionym na bok, on z bukietem pod pachą.",bartek; bride; neighbour_robe; locksmith
+2,job.night_nurse,Osiedle Słoneczne,"Agnieszka, 45 lat, pielęgniarka z oddziału wewnętrznego, w kurtce narzuconej na uniform.",agnieszka; roman; locksmith; agnieszka
+2,job.pizzeria_pays_pizza,Nocny Rynek,"pani Renata, 52 lata, właścicielka pizzerii „U Renaty”. Mówi szybko i ma mąkę na łokciach.",renata; locksmith; mietek; renata
+2,job.refuse_rush_bribe,Śródmieście,"mężczyzna w garniturze, mówi uprzejmie i bardzo szybko.",stranger; locksmith; stranger; locksmith
+2,job.wrong_floor,Osiedle Słoneczne,"pan Kazimierz, 60 lat, wraca z imienin szwagra i jest w świetnym humorze.",kazimierz; locksmith; teresa; kazimierz
+3,job.allotment_shed,Ogródki działkowe,"pan Zbyszek, 74 lata, działkowiec. Pomidory „Malinowy Ożarowski” to jego duma.",zbyszek; locksmith; waldek; zbyszek
+3,job.dollhouse_wooden_lock,Willowa Górka,"Hania, 7 lat, i jej tata Tomasz, stolarz z trzeciego pokolenia.",hania; tomasz; locksmith; hania
+3,job.grandpa_chest,Willowa Górka,"Ola, 38 lat, nauczycielka biologii, i jej mama Krystyna.",krystyna; ola; krystyna; ola
+3,job.refuse_aunt_alive,Willowa Górka,"kobieta ok. 30 lat. Mówi, że jest „jedyną spadkobierczynią”.",claimant; neighbour_lucyna; claimant; locksmith
+3,job.uncle_safe_heirs,Willowa Górka,"rodzeństwo Ewa, Marek i Piotr, każde z własną teorią, co jest w sejfie.",marek; locksmith; piotr; ewa
+3,job.widow_bureau,Śródmieście,"pani Irena, 79 lat, emerytowana bibliotekarka, wdowa od roku.",irena; locksmith; irena; irena
+4,job.krakow_antiquarian,Kraków,"pan Leopold, 70 lat, antykwariusz z ulicy Józefa. Nosi muszkę i lupę na łańcuszku.",leopold; leopold; locksmith; leopold
+4,job.krakow_tenement_gate,Kraków,"pani Wanda, zarządczyni wspólnoty mieszkaniowej kamienicy z 1890 r. Ma segregator z uchwałami.",wanda; locksmith; zuzanna; wanda
+4,job.swiatniki_journeyman_padlock,Świątniki Górne,"pan Władysław, 84 lata. W latach 50. ukończył szkołę ślusarską w Świątnikach Górnych i ma dłonie jak imadło.",wladyslaw; locksmith; wladyslaw; wladyslaw
+5,job.brussels_townhouse,Bruksela,"Magda, 41 lat. Od 15 lat jest tłumaczką w Brukseli i mówi po polsku z francuskimi wtrąceniami.",magda; jacques; locksmith; magda
+5,job.charleroi_letters,okolice Charleroi,"Ola z `job.grandpa_chest` przyjeżdża do Belgii i dzwoni do gracza po radę, nie po otwarcie.",ola; martine; ola; locksmith
+5,job.ghent_beguinage,Gandawa,"brat Pieter, 66 lat, opiekun domu wspólnoty w gandawskim beginażu. Jeździ na rowerze z wiklinowym koszykiem.",pieter; locksmith; pieter; locksmith
+5,job.liege_bakery,Liège,"Nadia, 29 lat. Przejęła piekarnię po wujku i piecze gofry z perłowym cukrem.",nadia; locksmith; nadia; locksmith
+6,job.bramah_bureau,Port,"Gosia, 36 lat, renowatorka mebli z własną pracownią przy Porcie.",gosia; locksmith; gosia; locksmith
+6,job.finnish_sailor,Port,"Aino, 50 lat, oficer mechanik z fińskiego statku, który stoi w porcie dwa dni.",aino; captain; locksmith; aino
+6,job.museum_time_lock,Port,"dr Anna Rygiel, kuratorka Muzeum Techniki w porcie. Nosi rękawiczki bawełniane nawet do kawy.",rygiel; locksmith; rygiel; zuzanna
+6,job.time_capsule,Śródmieście,"pani Jadwiga, emerytowana wychowawczyni, i dwudziestu trzydziestoparolatków na zjeździe absolwentów.",jadwiga; headteacher; marta; marta
+7,job.halina_recipe_box,Śródmieście,"Pani Halina, 81 lat, z sąsiadką panią Zosią.",halina; zosia; locksmith; halina
+7,job.roman_service_cupboard,Osiedle Słoneczne,"Pan Roman, 58 lat, administrator bloków na osiedlu.",roman; locksmith; roman; locksmith
+7,job.marta_poster_studio,Osiedle Słoneczne,"Marta, 34 lata, graficzka; nad pracą czuwa kot Ziemniak.",marta; locksmith; marta; locksmith
+7,job.zuzanna_catalogue_drawer,Port,"Zuzanna Wilk, stażystka w muzeum, z kuratorką dr Anną Rygiel.",zuzanna; rygiel; locksmith; zuzanna
+7,job.refuse_sisters_flat,Śródmieście,"Norbert, 43 lata, martwi się o kwiaty siostry.",norbert; locksmith; norbert; locksmith
+7,job.stefan_book_tin,Osiedle Słoneczne,"Pan Stefan, 67 lat, właściciel kiosku i kronikarz przystanku.",stefan; locksmith; stefan; locksmith
+7,job.edek_rehearsal_store,Kampus,"Pan Edek, portier akademika, i Iga ze studenckiego zespołu.",edek; iga; locksmith; edek
+7,job.krystyna_wooden_album,Willowa Górka,"Pani Krystyna i jej córka Ola, które wybierają rodzinne zdjęcia.",krystyna; ola; locksmith; krystyna
+7,job.refuse_unapproved_stockroom,Nocny Rynek,"Marcel, 29 lat, kurier z wózkiem paczek.",marcel; locksmith; marcel; locksmith
+7,job.gosia_workbench_drawer,Port,"Gosia, 36 lat, renowatorka mebli z pracownią przy porcie.",gosia; locksmith; gosia; locksmith
+7,job.community_notice_case,Śródmieście,"Basia, sekretarka komitetu mieszkańców, z zarządczynią Elżbietą.",basia; elzbieta; locksmith; basia
+7,job.shared_room_door,Śródmieście,"Elżbieta, zarządczyni kamienicy, z Martą i panią Haliną.",elzbieta; locksmith; marta; halina
+8,job.frozen_cellar_padlock,Śródmieście,"Pani Janka, najemczyni piwnicy, i Elżbieta, zarządczyni kamienicy.",janka; elzbieta; locksmith; janka
+8,job.halina_christmas_tin,Śródmieście,"Pani Halina i pani Zosia, sąsiadki przygotowujące Wigilię.",halina; zosia; locksmith; halina
+8,job.carol_singers_chest,Śródmieście,"Mila, organizatorka kolędników, i Elżbieta, zarządczyni.",mila; elzbieta; locksmith; mila
+8,job.refuse_wrong_letterbox,Śródmieście,"Oskar, który wrzucił kartkę świąteczną do niewłaściwej skrzynki.",oskar; locksmith; oskar; locksmith
+8,job.wigilia_table_drawer,Śródmieście,"Basia, sekretarka komitetu mieszkańców, i pani Zosia.",basia; zosia; locksmith; basia
+8,job.heating_service_cupboard,Śródmieście,"Paweł, upoważniony technik ogrzewania, i Elżbieta, zarządczyni.",pawel; elzbieta; locksmith; pawel
+8,job.refuse_unapproved_repair,Śródmieście,"Karol, przyjezdny, który chce dostać się do zamkniętej szafki technicznej.",karol; locksmith; karol; locksmith
+8,job.warm_room_for_neighbours,Śródmieście,"Marta, organizatorka zbiórki koców, i Basia z komitetu mieszkańców.",marta; basia; locksmith; marta
+8,job.winter_bicycle_cellar,Śródmieście,"Leon, kurier, który trzyma rowery w piwnicznej rowerowni, i Elżbieta.",leon; elzbieta; locksmith; leon
+8,job.wooden_winter_village,Śródmieście,"Zuzanna, stażystka w muzeum, z pisemnym upoważnieniem dr Rygiel.",zuzanna; locksmith; zuzanna; locksmith
+8,job.attic_drying_room,Osiedle Słoneczne,"Pani Teresa, lokatorka bloku, i pan Roman, administrator.",teresa; roman; locksmith; teresa
+8,job.christmas_eve_heat,Śródmieście,"Elżbieta, zarządczyni, i Paweł, upoważniony technik ogrzewania.",elzbieta; pawel; locksmith; elzbieta
+9,job.t43_09_01_winter_keys,Osiedle Słoneczne,"Pani Agnieszka, pielęgniarka wracająca z dyżuru.",agnieszka; roman; locksmith; agnieszka
+9,job.t43_09_02_blanket_cupboard,Śródmieście,"Elżbieta, zarządczyni, i Janka z torbą koców.",janka; elzbieta; locksmith; elzbieta
+9,job.t43_09_03_wooden_postbox,Śródmieście,"Zuzanna Wilk, opiekunka zimowej makiety.",zuzanna; locksmith; zuzanna; locksmith
+9,job.t43_09_04_choir_case,Śródmieście,"Mila, organizatorka chóru, i pani Teresa.",mila; teresa; locksmith; mila
+9,job.t43_09_05_receipt_safe,Osiedle Słoneczne,"Pan Stefan, kioskarz, który odkłada każdy paragon.",stefan; locksmith; stefan; locksmith
+9,job.t43_09_06_draughty_hall,Osiedle Słoneczne,"Pan Roman, administrator, z pisemnym zleceniem mieszkańców.",roman; locksmith; roman; locksmith
+9,job.refuse_t43_09_empty_flat,Osiedle Słoneczne,"Oskar, który chce zostawić paczkę u krewnej.",oskar; locksmith; oskar; locksmith
+9,job.t43_09_08_spare_key_hook,Osiedle Słoneczne,"Pan Kazimierz i pani Teresa, tym razem za dnia.",kazimierz; teresa; locksmith; kazimierz
+10,job.t43_10_01_renovator_bureau,Port,"Gosia, renowatorka mebli, z kolejnym sekretarzykiem.",gosia; locksmith; gosia; locksmith
+10,job.t43_10_02_scaffold_store,Śródmieście,"Celina, kierowniczka remontu kamienicy.",celina; roman; locksmith; celina
+10,job.t43_10_03_exhibit_clock,Port,Dr Anna Rygiel i Zuzanna z wymontowanym zegarem wystawowym.,rygiel; locksmith; rygiel; zuzanna
+10,job.t43_10_04_design_cabinet,Śródmieście,"Marta, graficzka, projektująca nowe tabliczki.",marta; locksmith; marta; locksmith
+10,job.t43_10_05_porters_drawer,Kampus,"Pan Edek, portier porządkujący stanowisko po remoncie.",edek; locksmith; edek; locksmith
+10,job.t43_10_06_shared_room_entry,Śródmieście,Elżbieta i Celina przy wyremontowanej świetlicy.,celina; elzbieta; locksmith; elzbieta
+10,job.refuse_t43_10_early_clearance,Śródmieście,"Dorota, właścicielka mieszkania objętego remontem.",dorota; locksmith; dorota; locksmith
+11,job.t43_11_01_wooden_market,Nocny Rynek,"Zuzanna i Seweryn, prowadzący warsztaty na targu.",seweryn; zuzanna; locksmith; seweryn
+11,job.t43_11_02_bicycle_stand,Nocny Rynek,"Borys, renowator rowerów, przygotowujący stoisko.",borys; locksmith; borys; locksmith
+11,job.t43_11_03_tool_exchange,Nocny Rynek,"Pan Władysław, przywieziony na targ przez Gosię.",wladyslaw; locksmith; wladyslaw; gosia
+11,job.t43_11_04_sailors_stall,Nocny Rynek,"Aino i kapitan, którzy trafili na sąsiedzki targ.",aino; captain; locksmith; aino
+11,job.t43_11_05_rehearsal_chest,Nocny Rynek,"Iga, perkusistka, i kierownik sali.",iga; hall_manager; locksmith; iga
+11,job.refuse_t43_11_other_stall,Nocny Rynek,"Alicja, sprzedawczyni ceramiki, stojąca obok zamkniętego kiosku.",alicja; locksmith; alicja; locksmith
+11,job.t43_11_07_wrong_delivery,Nocny Rynek,"Leon, kurier z przesyłką dla targowego kiosku.",leon; stefan; locksmith; leon
+12,job.t43_12_01_letters_archive,Śródmieście,"Ola i pani Krystyna, przygotowujące rodzinny pokaz listów.",krystyna; ola; locksmith; krystyna
+12,job.t43_12_02_detective_cabinet,Port,Dr Anna Rygiel i Zuzanna przed pokazem muzealnym.,rygiel; locksmith; rygiel; zuzanna
+12,job.t43_12_03_community_store,Śródmieście,"Elżbieta, pani Zosia i pani Halina przy magazynku świetlicy.",halina; elzbieta; locksmith; elzbieta
+12,job.t43_12_04_school_box,Śródmieście,"Pani Jadwiga i Marta, przygotowujące kącik klasy.",jadwiga; locksmith; jadwiga; marta
+12,job.t43_12_05_tea_fund_case,Śródmieście,Elżbieta i pan Roman z kasetką wspólnoty.,roman; locksmith; elzbieta; locksmith
+12,job.refuse_t43_12_surprise_key,Śródmieście,"Darek, który chce udekorować świetlicę przed otwarciem.",darek; locksmith; darek; locksmith
+12,job.t43_12_07_clock_back_home,Port,"Dr Anna Rygiel, kończąca wypożyczenie wystawowego zegara.",rygiel; locksmith; rygiel; zuzanna
+12,job.t43_12_08_henryks_bench,Śródmieście,Pan Władysław i Zuzanna przy warsztacie ślusarza.,wladyslaw; locksmith; zuzanna; wladyslaw
