@@ -1,0 +1,93 @@
+{
+  "schema": "lockwright.arrival_scenes/1",
+  "note": "D-58 arrival scenes per job. Assets: game/assets/arrival/<job>/<time>/{seq/f_NN.webp, plate_<figure>.webp, figure_<figure>.webp}, made by art/tools/arrival_export.py (which also rewrites `anchors`). Jobs without an entry keep the plain arrival screen.",
+  "scenes": {
+    "job.wrong_floor": {
+      "dir": "res://assets/arrival/wrong_floor",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "night",
+        "evening",
+        "day"
+      ],
+      "time_alias": {
+        "rainy": "evening"
+      },
+      "default_time": "evening",
+      "hold": "kazimierz",
+      "speaker_holds": {
+        "teresa": "teresa"
+      },
+      "breath": {
+        "kazimierz": {
+          "amplitude": 0.006,
+          "period_s": 3.6
+        }
+      },
+      "focus": [
+        0.3,
+        0.42
+      ],
+      "steps": {
+        "step_wood": [
+          2,
+          8,
+          14
+        ],
+        "step_terrazzo": [
+          21,
+          27
+        ]
+      },
+      "anchors": {
+        "night": {
+          "kazimierz": {
+            "feet": [
+              0.2597,
+              0.8542
+            ],
+            "head": [
+              0.2597,
+              0.3516
+            ]
+          },
+          "teresa": {
+            "feet": [
+              0.7718,
+              0.6912
+            ],
+            "head": [
+              0.7718,
+              0.3932
+            ]
+          }
+        },
+        "evening": {
+          "kazimierz": {
+            "feet": [
+              0.2597,
+              0.8542
+            ],
+            "head": [
+              0.2597,
+              0.3516
+            ]
+          }
+        },
+        "day": {
+          "kazimierz": {
+            "feet": [
+              0.2597,
+              0.8542
+            ],
+            "head": [
+              0.2597,
+              0.3516
+            ]
+          }
+        }
+      }
+    }
+  }
+}

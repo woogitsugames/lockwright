@@ -22,6 +22,9 @@ const MAX_LINES := 4
 @onready var scroll: ScrollContainer = $Frame/VBox/Scroll
 
 var dialogue: Node  # DialoguePlayer (D-57)
+var scene: ArrivalScene  # D-58 arrival scene (jobs listed in data/arrival_scenes.json), else null
+## tests: force reduce motion / screen reader for the scene (-1 = settings / DisplayServer)
+static var reduce_motion_override := -1
 
 # G07 arrival backgrounds: place + time of day -> image
 const ARRIVAL_BG := {
@@ -177,12 +180,15 @@ func _line_row(speaker: String, text: String) -> Control:
 func _ready() -> void:
 	Sfx.play_ambience(&"stairwell")
 	Sfx.play_music(&"main_theme")
-	Sfx.play_foley(&"door_knock")
-	Sfx.play_foley(&"apartment_bell")
 	ScreenFrame.fit(self, $Frame)
 	$Frame/VBox/Scroll.scroll_deadzone = 12
 	var job: Dictionary = JobRun.current_job
-	_add_background(job)
+	var scene_cfg := ArrivalScene.resolve(job)
+	if scene_cfg.is_empty():
+		_knock()
+		_add_background(job)
+	else:
+		_add_scene(scene_cfg)
 	var i18n: Dictionary = job.get("i18n", {})
 	title_label.text = I18n.t(i18n.get("title", &"jobs.title"))
 	client_label.text = I18n.t(i18n.get("client", &"jobs.title"))
@@ -193,8 +199,70 @@ func _ready() -> void:
 	back_button.text = "‹ " + I18n.t(&"common.back")
 	verify_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/job_verify.tscn"))
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/jobs_list.tscn"))
-	ScreenFrame.enter($Frame/VBox/Scroll)
 	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
+	if scene == null:
+		ScreenFrame.enter($Frame/VBox/Scroll)
+		dialogue.start()
+	else:
+		dialogue.line_started.connect(func(i: int, _voiced: bool) -> void:
+			var ls: Array = job.get("lines", [])
+			if i < ls.size():
+				scene.show_speaker(String(ls[i])))
+		scene.climb_finished.connect(_on_climb_finished, CONNECT_ONE_SHOT)
+		scene.play()
+
+
+func _knock() -> void:
+	Sfx.play_foley(&"door_knock")
+	Sfx.play_foley(&"apartment_bell")
+
+
+func _scene_reduce_motion() -> bool:
+	if reduce_motion_override >= 0:
+		return reduce_motion_override == 1
+	if Settings.get_value("reduce_motion", false):
+		return true
+	# a screen reader user gets the still frame and the text at once
+	return DisplayServer.has_method("accessibility_screen_reader_active") \
+		and int(DisplayServer.accessibility_screen_reader_active()) == 1
+
+
+## D-58: the scene covers the screen (under the status bar too); the dialogue sits over its lower part
+## (portrait) or on the right half (landscape), so the client at the door stays in view. The UI waits
+## until the climb ends (or is tapped away).
+func _add_scene(cfg: Dictionary) -> void:
+	scene = ArrivalScene.new()
+	add_child(scene)
+	move_child(scene, 0)
+	scene.setup(cfg, _scene_reduce_motion())
+	place_plate.visible = false   # the door has its own number in the picture
+	var vbox: VBoxContainer = $Frame/VBox
+	var gap := Control.new()
+	gap.name = "SceneGap"
+	gap.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	gap.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	gap.size_flags_stretch_ratio = 1.15
+	vbox.add_child(gap)
+	vbox.move_child(gap, 1)
+	scroll.size_flags_stretch_ratio = 1.0
+	$Frame.visible = false
+	var landscape := func() -> void:
+		var vp := get_viewport_rect().size
+		gap.visible = vp.y >= vp.x
+		if vp.x > vp.y:   # dialogue column on the right; the figure (left third of the picture) stays clear
+			var i := ScreenFrame.insets(self)
+			var right := i.z + ScreenFrame.SIDE
+			var col := minf(ScreenFrame.MAX_COLUMN, vp.x * 0.52)
+			$Frame.add_theme_constant_override("margin_left", int(vp.x - right - col))
+			$Frame.add_theme_constant_override("margin_right", int(right))
+	landscape.call()
+	resized.connect(landscape)
+
+
+func _on_climb_finished() -> void:
+	_knock()
+	$Frame.visible = true
+	ScreenFrame.enter($Frame)
 	dialogue.start()
 
 

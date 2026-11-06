@@ -1,5 +1,5 @@
 {
- "_doc": "One fixed fictional voice per speaker (D-57). Generated with ElevenLabs Voice Design, never cloned. Same voice for every language; add \"de\" to languages when DE is voiced. Text = content.csv line; TTS input incl. audio tags in contrib/voice/tts_inputs.json.",
+ "_doc": "One fixed fictional voice per speaker (D-57). Generated with ElevenLabs Voice Design, never cloned. Same voice for every language; a language is listed when its lines are voiced. Text = content.csv line; TTS input incl. audio tags in contrib/voice/tts_inputs.json.",
  "provider": "ElevenLabs (via Composio)",
  "model": "eleven_v4_turbo",
  "design_model": "eleven_ttv_v3",
@@ -22,7 +22,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "halina": {
@@ -42,7 +44,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "zosia": {
@@ -62,7 +66,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "stefan": {
@@ -82,7 +88,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "roman": {
@@ -102,7 +110,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "marta": {
@@ -122,7 +132,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "zuzanna": {
@@ -142,7 +154,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "edek": {
@@ -162,7 +176,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "ola": {
@@ -182,7 +198,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "krystyna": {
@@ -202,7 +220,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "wladyslaw": {
@@ -222,7 +242,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "rygiel": {
@@ -242,7 +264,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "jadwiga": {
@@ -262,7 +286,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "kuba": {
@@ -282,7 +308,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "iga": {
@@ -302,7 +330,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "hall_manager": {
@@ -322,7 +352,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "gosia": {
@@ -342,7 +374,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "magda": {
@@ -362,7 +396,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "jacques": {
@@ -382,7 +418,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "martine": {
@@ -402,7 +440,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "hania": {
@@ -422,7 +462,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ],
    "note": "ElevenLabs blocks designing child voices; Hania (7) is voiced by a light adult voice (as in animation dubbing). Owner may prefer subtitles + S03 vocalisations only."
   },
@@ -443,7 +485,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "aino": {
@@ -463,7 +507,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "captain": {
@@ -483,7 +529,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "pieter": {
@@ -503,7 +551,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "krysia": {
@@ -523,7 +573,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "leopold": {
@@ -543,7 +595,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "wanda": {
@@ -563,7 +617,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "nadia": {
@@ -583,7 +639,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "bartek": {
@@ -603,7 +661,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "bride": {
@@ -623,7 +683,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "neighbour_robe": {
@@ -643,7 +705,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "agnieszka": {
@@ -663,7 +727,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "renata": {
@@ -683,7 +749,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "mietek": {
@@ -703,7 +771,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "claimant": {
@@ -723,7 +793,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "neighbour_lucyna": {
@@ -743,7 +815,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "darek": {
@@ -763,7 +837,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "stranger": {
@@ -783,7 +859,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "marek": {
@@ -803,7 +881,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "piotr": {
@@ -823,7 +903,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "ewa": {
@@ -843,7 +925,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "irena": {
@@ -863,7 +947,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "kazimierz": {
@@ -883,7 +969,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "teresa": {
@@ -903,7 +991,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "basia": {
@@ -923,7 +1013,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "elzbieta": {
@@ -943,7 +1035,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "norbert": {
@@ -963,7 +1057,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "marcel": {
@@ -983,7 +1079,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "waldek": {
@@ -1003,7 +1101,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "zbyszek": {
@@ -1023,7 +1123,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "headteacher": {
@@ -1043,7 +1145,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "celina": {
@@ -1063,7 +1167,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "dorota": {
@@ -1083,7 +1189,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "seweryn": {
@@ -1103,7 +1211,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "borys": {
@@ -1123,7 +1233,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "alicja": {
@@ -1143,7 +1255,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "janka": {
@@ -1163,7 +1277,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "leon": {
@@ -1183,7 +1299,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "mila": {
@@ -1203,7 +1321,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "oskar": {
@@ -1223,7 +1343,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "pawel": {
@@ -1243,7 +1365,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   },
   "karol": {
@@ -1263,7 +1387,9 @@
    "languages": [
     "pl",
     "en",
-    "de"
+    "de",
+    "fr",
+    "es"
    ]
   }
  }

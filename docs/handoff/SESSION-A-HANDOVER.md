@@ -141,3 +141,10 @@ Kolejka, gdy ktoś skończy:
 
 ## 10. Pauza 2026-11-06 ok. 10:50 UTC (limit 5 h)
 Wszystko na `main`. Trigger godzinny wyłączony; wznowienie przypomnieniem ok. 12:26 UTC (włącza trigger z powrotem). Do dokończenia: teksty zamka z suwakami (axial_slider) kierunkowo neutralne + pełny GUT; czekamy na GPT G23/T43 i wyniki testu APK run 175.
+
+## 11. Stan 2026-11-06 ok. 16:45 UTC (limit — przekazanie)
+- **Gra:** kariera 1–12 (83 zlecenia, ok. 2 h 15 min), 15 rodzin zamków z ekranami planu B (8 nowych z D-59), lekcje pierwsze dla nowych rodzin, podpowiedzi H0–H4 z sylwetkami dłoni (G23), menu 75 % z GPU, głosy PL/EN w paczce + DE jako pck na żądanie (D-63), portrety obsady (G21/G24), pełne postacie Kazimierz/Teresa (G23/G25). Ostatni zielony APK: run 189 (`9ee23f9`), wysłany właścicielowi.
+- **Decyzje:** D-57…D-72 (głosy, scenki 2.5D, nowe rodziny, menu 75 %, budżet 150 MB, rozdziały 7–8, wyposażenie warsztatu, remap rodzin).
+- **W toku (agenci mogli zostać przerwani):** głosy FR/ES + reakcje 11 postaci + 3 kwestie do odsłuchu; scenka przyjazdu `wrong_floor` w grze (Kazimierz v2); wyposażenie warsztatu (D-71, rendery w toku). Ich WIP jest w commitach `[skip ci]` — dokończyć, potem pełne CI.
+- **Zewnętrzni:** Mistral V04 (sceny „dzień po”) zlecony; GPT: nowa paczka 50 zleceń `docs/handoff/gpt8/PACZKA-50-ZLECEN.md` (ZIP `paczka-gpt-50-zlecen-2026-11-06.zip`). Sesja lokalna (Codex, GPU): `docs/handoff/LOCAL-SESSION-PROMPT.md` (cienie postaci, finał menu/wyposażenia).
+- **Trigger** „Lockwright: godzinna kontrola” (trig_01MTXV8ofhPWFvi8qwGrzixU) włączony.

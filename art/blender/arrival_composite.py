@@ -80,7 +80,7 @@ def load_rgba(p):
     im = Image.open(p).convert('RGBA'); a = np.asarray(im).astype(np.float32) / 255.0
     return srgb_to_lin(a[..., :3]), a[..., 3]
 
-def place_figure(plate_lin, slot, fig_path, meta, shadow_ratio=None, phase=0.0, breath=0.0, depth=None):
+def place_figure(plate_lin, slot, fig_path, meta, shadow_ratio=None, phase=0.0, breath=0.0, depth=None, layers=None):
     H, W = plate_lin.shape[:2]
     rgb, a = load_rgba(fig_path)
     ys, xs = np.nonzero(a > 0.5); y0, y1, x0, x1 = ys.min(), ys.max(), xs.min(), xs.max()
@@ -185,6 +185,11 @@ def place_figure(plate_lin, slot, fig_path, meta, shadow_ratio=None, phase=0.0, 
     wrap = WRAP * inner[..., None]
     frgb = frgb * (1 - wrap) + bgb * wrap * 1.1
     fa_soft = np.clip(blur(fa, 0.6), 0, 1)
+    if layers is not None:   # --layers-out: plate with this figure's shadow (no figure) + the figure alone, full frame
+        layers['plate'] = out.copy()
+        fig = np.zeros((H, W, 4), np.float32); fig[Y0:Y1, X0:X1, :3] = frgb; fig[Y0:Y1, X0:X1, 3] = fa_soft
+        layers['figure'] = fig
+        layers['feet'] = [fx / W, fy / H]; layers['head'] = [fx / W, oy / H]
     out[Y0:Y1, X0:X1] = bg * (1 - fa_soft[..., None]) + frgb * fa_soft[..., None]
     return out
 
@@ -232,6 +237,8 @@ def main():
     ap.add_argument('--feet-world', action='append', default=[],
                     help='SLOT=x,y[,height_mm]: move a slot on the floor (world mm) and re-project it with the plate camera')
     ap.add_argument('--contact', help='sequence dir: write a contact sheet to --out and exit')
+    ap.add_argument('--layers-out', help='PREFIX: also write PREFIX_plate.png (plate + shadow, no figure) and '
+                    'PREFIX_figure.png (the figure alone, full-frame RGBA) + PREFIX.json (feet/head, 0..1) for the game')
     o = ap.parse_args()
     if o.contact:
         contact(o.contact, o.out); return
@@ -266,8 +273,18 @@ def main():
     frames = max(1, o.breath)
     for i in range(frames):
         out = plate_lin
+        lay = {} if (o.layers_out and i == 0) else None
         for slot, path in figs:
-            out = place_figure(out, slot, path, meta['figures'][slot], shadow, phase=i / frames, breath=1.0 if o.breath else 0.0, depth=depth)
+            out = place_figure(out, slot, path, meta['figures'][slot], shadow, phase=i / frames, breath=1.0 if o.breath else 0.0, depth=depth, layers=lay)
+        if lay:
+            # same grain field as the composite, so plate + figure layer stack to the composite (up to edge blending)
+            rng = np.random.default_rng(7 + i); n = blur(rng.normal(0, 1, (H, W)).astype(np.float32), 0.5)[..., None]
+            pl = lay['plate'] * (1 + o.grain * n); fg = lay['figure'].copy(); fg[..., :3] = fg[..., :3] * (1 + o.grain * n)
+            Image.fromarray((np.clip(lin_to_srgb(pl), 0, 1) * 255 + 0.5).astype(np.uint8)).save(o.layers_out + '_plate.png')
+            rgba = np.dstack([np.clip(lin_to_srgb(fg[..., :3]), 0, 1), np.clip(fg[..., 3:], 0, 1)])
+            Image.fromarray((rgba * 255 + 0.5).astype(np.uint8), 'RGBA').save(o.layers_out + '_figure.png')
+            json.dump({'feet': lay['feet'], 'head': lay['head'], 'width': W, 'height': H}, open(o.layers_out + '.json', 'w'))
+            print('WROTE', o.layers_out + '_{plate,figure}.png')
         out = add_grain(out, o.grain, seed=7 + i)
         img = Image.fromarray((np.clip(lin_to_srgb(out), 0, 1) * 255 + 0.5).astype(np.uint8))
         p = o.out if frames == 1 else o.out.replace('.png', '_%02d.png' % i)

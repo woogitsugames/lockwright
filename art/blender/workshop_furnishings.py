@@ -127,8 +127,8 @@ def build(g):
     bx('strip_body', sx0, sx1, -210, -190, SH_Z - 40, SH_Z - 28, alu_s, bev=1).visible_shadow = False
     bx('strip_diffuser', sx0 + 4, sx1 - 4, -208, -192, SH_Z - 41, SH_Z - 40, emissive('strip_glow', (1.0, 0.76, 0.5), 25.0, (0.9, 0.88, 0.84))).visible_shadow = False
     tube('strip_cable', [(sx0, -200, SH_Z - 34), (sx0 - 20, -60, SH_Z - 34), (sx0 - 30, -8, SH_Z - 120), (sx0 - 34, -8, BZ + 4)], 2.2, black_pl)  # left, out of view
-    aim = bpy.data.objects.new('aim_strip', None); bpy.context.collection.objects.link(aim); aim.location = ((sx0 + sx1) / 2, -10, 1080)
-    area_light('strip_light', ((sx0 + sx1) / 2, -200, SH_Z - 44), aim, sx1 - sx0, 5e6, (1.0, 0.76, 0.5), size_y=16)
+    aim = bpy.data.objects.new('aim_strip', None); bpy.context.collection.objects.link(aim); aim.location = ((sx0 + sx1) / 2, -10, 1120)
+    area_light('strip_light', ((sx0 + sx1) / 2, -200, SH_Z - 44), aim, sx1 - sx0, 5e6, (1.0, 0.76, 0.5), size_y=16, spread=45)  # narrow: lights the key board, not the room
     end()
 
     # ------------------------------------------------------------ radio: small valve radio, bench back left
