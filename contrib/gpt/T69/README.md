@@ -11,3 +11,5 @@ Zakres: polskie kwestie `job.refuse_*` w `game/i18n/content.csv` zestawione z `d
 | `refuse_unapproved_stockroom` | `line.2` odróżnia list przewozowy od zgody; `line.4` odmawia i proponuje bezpieczny odbiór. Ton rzeczowy bez oskarżeń. | Pozostawić. |
 
 W scenach pokrewnych `wrong_floor`, `uncle_safe_heirs` i `krakow_antiquarian` §4.4 wskazuje inny rodzaj rozstrzygnięcia; pełnego audytu tych gałęzi tu nie wykonano. Nie zweryfikowano scen dnia następnego ani zasady braku zapłaty. Propozycje policji i zarządcy są rozwiązaniami fabularnymi, nie gwarancją ich uprawnień prawnych.
+
+Dodatkowe sceny pokrewne i komunikat odmowy omówiono w `sceny_pokrewne.md`.
