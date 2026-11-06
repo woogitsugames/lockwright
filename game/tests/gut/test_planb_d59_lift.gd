@@ -12,6 +12,7 @@ const SCENES := {
 	&"dimple": "res://scenes/photoreal/lock_job_dimple.tscn",
 	&"egyptian": "res://scenes/photoreal/lock_job_egyptian.tscn",
 	&"time_lock": "res://scenes/photoreal/lock_job_time_lock.tscn",
+	&"axial_slider": "res://scenes/photoreal/lock_job_axial_slider.tscn",
 }
 var _save_backup: Dictionary
 
@@ -286,3 +287,11 @@ func test_time_lock_train_turns_only_when_running() -> void:
 	for i in 30:
 		view.present(vm, {"tension": 0.35}, 1.0 / 60.0)
 	assert_gt(view.train_phase(), p0, "running: the whole train turns")
+
+
+func test_axial_slider_jobs_open_in_both_modes() -> void:
+	await _check_family(&"axial_slider")
+
+
+func test_axial_slider_states_read_by_geometry() -> void:
+	await _layer_states_differ(&"axial_slider")
