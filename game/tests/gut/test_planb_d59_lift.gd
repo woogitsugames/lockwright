@@ -96,7 +96,7 @@ func _play(fam: StringName, job: Dictionary, auto: bool, max_s: float = 120.0) -
 	var right_y := 760.0
 	var pressed := false
 	var cooldown := 0
-	var speed := (50.0 if JobRun.tier_for(job) <= 1 else 25.0) if fam == &"magnetic" else 70.0
+	var speed := 50.0 if fam == &"magnetic" else 70.0
 	for step in int(max_s * HZ):
 		if cooldown > 0:
 			cooldown -= 1
@@ -113,6 +113,8 @@ func _play(fam: StringName, job: Dictionary, auto: bool, max_s: float = 120.0) -
 		s._physics_process(dt)
 		scene._physics_process(dt)
 		var vm: Dictionary = session.describe()
+		if OS.has_environment("LW_DEBUG") and step % 60 == 0:
+			print("t=%.1f el=%d lift=%.0f %s" % [step * dt, el, lift_dp, vm["elements"].map(func(e): return "%s@%.2f[%.2f]" % [e["state"], e["position"], e["window_lo"]])])
 		if session.is_open():
 			return [true, step * dt, scene]
 		if session.finished():
@@ -153,6 +155,12 @@ func _play(fam: StringName, job: Dictionary, auto: bool, max_s: float = 120.0) -
 				el = (el + 1) % n
 				if String(vm["elements"][el]["state"]) != "set":
 					break
+			if fam == &"magnetic":
+				# T43 magnetic t2 (4 pins, slower field): a patient player goes to the pin that binds now
+				for i in n:
+					if String(vm["elements"][i]["state"]) == "bound":
+						el = i
+						break
 	gut.p("stuck %s: %s" % [fam, session.describe()["elements"]])
 	return [false, max_s, scene]
 

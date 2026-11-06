@@ -144,8 +144,8 @@ func _play(fam: StringName, job: Dictionary, auto: bool, max_s: float = 120.0) -
 		if OS.has_environment("LW_DEBUG") and step % 120 == 0:
 			print("t=%.0f el=%d T=%.2f lift=%.2f resets=%d %s" % [step * dt, el, s.sample()["tension"], s.sample()["pick_lift"], resets, vm["elements"].map(func(e): return "%s@%.2f[%.2f-%.2f]" % [e["state"], e["position"], e["window_lo"], e["window_hi"]])])
 		var next := lift_dp > 0.9 * InputSampler.LIFT_FULL_DP
-		if careful and not auto and cooldown == 0:
-			# false gate (LOCKS.md §2.7): ease the left thumb into the counter-rotation band
+		if (careful or fam == &"lever") and not auto and cooldown == 0:
+			# T43 lever t4-t5 have false gates too; false gate (LOCKS.md §2.7): ease the left thumb into the counter-rotation band
 			# (0.12–0.21) while lifting, back to the working tension once the lever is out
 			var spool := String(vm["elements"][el]["state"]) == "false_set"
 			if spool != eased:
@@ -198,7 +198,7 @@ func _check_family(fam: StringName) -> void:
 	assert_gt(jobs.size(), 0, "jobs of %s exist" % fam)
 	for job in jobs:
 		for auto in [false, true]:
-			var r: Array = await _play(fam, job, auto)
+			var r: Array = await _play(fam, job, auto, 120.0)
 			gut.p("%s %s auto=%s: open=%s %.1f s" % [fam, job["id"], auto, r[0], r[1]])
 			assert_true(r[0], "%s (%s, auto=%s) opens through the plan-B view (%.1f s)" % [job["id"], fam, auto, r[1]])
 

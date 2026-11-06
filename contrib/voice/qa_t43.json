@@ -1,0 +1,2569 @@
+{
+ "summary": {
+  "de": {
+   "wer": 0.055,
+   "files": 120,
+   "seconds": 485.5
+  },
+  "en": {
+   "wer": 0.095,
+   "files": 122,
+   "seconds": 452.7
+  },
+  "pl": {
+   "wer": 0.1018,
+   "files": 122,
+   "seconds": 446.6
+  }
+ },
+ "files": [
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_09_empty_flat.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.77,
+   "ref": "Niemand zu Hause. Ich stelle das Paket in den Flur und gehe.",
+   "asr": "Niemand zu Hause. Ich stelle das Paket in den Flur und gehe."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_09_empty_flat.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.03,
+   "ref": "Rufen wir die Mieterin an und fragen sie um Erlaubnis.",
+   "asr": "Rufen wir die Mieterin an und fragen sie um Erlaubnis."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_09_empty_flat.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.33,
+   "ref": "Lieber nicht. Sonst sagt sie noch, ich soll heute nicht kommen.",
+   "asr": "Lieber nicht. Sonst sagt sie noch, ich soll heute nicht kommen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_09_empty_flat.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.54,
+   "ref": "Hier öffne ich nicht. Ich helfe Ihnen gern, einen anderen Termin zu finden.",
+   "asr": "Hier öffne ich nicht. Ich helfe Ihnen gern einen anderen Termin zu finden."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_10_early_clearance.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.5,
+   "ref": "Er ist schon weg. Wir können früher mit der Renovierung anfangen.",
+   "asr": "Er ist schon weg. Wir können früher mit der Renovierung anfangen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_10_early_clearance.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.27,
+   "ref": "Rufen wir ihn an und vereinbaren die Übergabe gemeinsam.",
+   "asr": "Rufen wir ihn an und vereinbaren die Übergabe gemeinsam."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_10_early_clearance.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.69,
+   "ref": "Wenn er zurückruft, gehen Sie bitte nicht ran. Er überlegt es sich sonst noch anders.",
+   "asr": "Wenn er zurückruft, gehen Sie bitte nicht ran. Er überlegt es sich sonst noch anders."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_10_early_clearance.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.22,
+   "ref": "Hier öffne ich nicht. Zur vereinbarten Übergabe komme ich gern wieder.",
+   "asr": "Hier öffne ich nicht. Zur vereinbarten Übergabe komme ich gern wieder."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_11_other_stall.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.78,
+   "ref": "Das Verlängerungskabel ist nebenan. Der Nachbar hätte sicher nichts dagegen.",
+   "asr": "Das Verlängerungskabel ist nebenan. Der Nachbar hätte sicher nichts dagegen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_11_other_stall.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.07,
+   "ref": "Bitten wir den Veranstalter, Ihren Nachbarn anzurufen.",
+   "asr": "bitten wir den Veranstalter, Ihren Nachbarn anzurufen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_11_other_stall.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.13,
+   "ref": "Lieber nicht. Gestern hat er gebeten, nichts von dort zu nehmen.",
+   "asr": "Lieber nicht. Gestern hat er gebeten, nichts von dort zu nehmen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_11_other_stall.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.34,
+   "ref": "Hier öffne ich nicht. Fragen wir nach einem Ersatzkabel.",
+   "asr": "Hier öffne ich nicht. Fragen wir nach einem Ersatzkabel."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_12_surprise_key.line.1.ogg",
+   "wer": 0.1,
+   "dur": 2.89,
+   "ref": "Ich will nur die Girlande aufhängen, bevor die Gäste kommen.",
+   "asr": "Ich will nur die Gelande aufhängen, bevor die Gäste kommen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_12_surprise_key.line.2.ogg",
+   "wer": 0.1,
+   "dur": 3.83,
+   "ref": "Der Raum gehört der Gemeinschaft. Rufen wir Frau Elżbieta an.",
+   "asr": "Der Raum gehört der Gemeinschaft. Rufen wir Frau Elspieter an."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_12_surprise_key.line.3.ogg",
+   "wer": 0.125,
+   "dur": 2.92,
+   "ref": "Nein, dann ist es ja keine Überraschung mehr.",
+   "asr": "Nein, dann ist das ja keine Überraschung mehr."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.refuse_t43_12_surprise_key.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.66,
+   "ref": "Hier öffne ich nicht. Fragen wir sie leise, die Überraschung überlebt das.",
+   "asr": "Hier öffne ich nicht. Fragen wir sie leise. Die Überraschung überlebt das."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_01_winter_keys.line.1.ogg",
+   "wer": 0.167,
+   "dur": 4.82,
+   "ref": "Mein Dienst ist vorbei. Mein Schlüssel hat wohl noch eine Schicht drangehängt.",
+   "asr": "Mein Dienst ist vorbei. Mein Schlüssel hat wohl noch eine Schicht dran gehängt."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_01_winter_keys.line.2.ogg",
+   "wer": 0.0,
+   "dur": 4.46,
+   "ref": "Frau Agnieszka steht auf der Liste. Die Angaben sind aktuell.",
+   "asr": "Frau Agnieszka steht auf der Liste. Die Angaben sind aktuell."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_01_winter_keys.line.3.ogg",
+   "wer": 0.167,
+   "dur": 3.39,
+   "ref": "Der Ausweis stimmt. Vierzig Münzen, einverstanden?",
+   "asr": "Der Ausweis stimmt. 40 Münzen. Einverstanden?"
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_01_winter_keys.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.92,
+   "ref": "Einverstanden. Wecken Sie mich bitte, wenn Sie fertig sind.",
+   "asr": "Einverstanden. Wecken Sie mich bitte, wenn Sie fertig sind."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_02_blanket_cupboard.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.65,
+   "ref": "Es sollte eine Ersatzdecke sein. Jetzt haben wir Ersatznachbarn.",
+   "asr": "Es sollte eine Ersatzdecke sein. Jetzt haben wir Ersatznachbarn."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_02_blanket_cupboard.line.2.ogg",
+   "wer": 0.0,
+   "dur": 4.41,
+   "ref": "Der Schrank der Gemeinschaft. Hier der Auftrag und meine Vollmacht.",
+   "asr": "Der Schrank der Gemeinschaft. Hier der Auftrag und meine Vollmacht."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_02_blanket_cupboard.line.3.ogg",
+   "wer": 0.2,
+   "dur": 2.95,
+   "ref": "Fünfzig Münzen. Ausgetauscht wird nichts.",
+   "asr": "50 Münzen. Ausgetauscht wird nichts."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_02_blanket_cupboard.line.4.ogg",
+   "wer": 0.111,
+   "dur": 3.81,
+   "ref": "Einverstanden. Janka weiß schon, wer die erste Decke bekommt.",
+   "asr": "Einverstanden. Janker weiß schon, wer die erste Decke bekommt."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_03_wooden_postbox.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.98,
+   "ref": "Die Stadt hat eine Post. Nur mit dem Zustellen hapert es gerade.",
+   "asr": "Die Stadt hat eine Post. Nur mit dem Zustellen hapert es gerade."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_03_wooden_postbox.line.2.ogg",
+   "wer": 0.286,
+   "dur": 3.37,
+   "ref": "Die Rechnung passt zum Exponat. Sechzig Münzen.",
+   "asr": "Die Rechnung passt zum Exponert. 60 Münzen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_03_wooden_postbox.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.56,
+   "ref": "Einverstanden. Die Briefe liest nur das Ausstellungsteam.",
+   "asr": "Einverstanden. Die Briefe liest nur das Ausstellungsteam."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_03_wooden_postbox.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.66,
+   "ref": "Ich kümmere mich ums Holz. Die Post wartet auf ihre Leser.",
+   "asr": "Ich kümmere mich ums Holz. Die Post wartet auf ihre Leser."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_04_choir_case.line.1.ogg",
+   "wer": 0.083,
+   "dur": 3.66,
+   "ref": "Das Heft mit dem Code ist in Sicherheit. Zusammen mit den Noten.",
+   "asr": "Das Heft mit den Code ist in Sicherheit. Zusammen mit den Noten."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_04_choir_case.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.76,
+   "ref": "Das ist unser Koffer. Die Hülle habe ich selbst genäht.",
+   "asr": "Das ist unser Koffer. Die Hülle habe ich selbst genäht."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_04_choir_case.line.3.ogg",
+   "wer": 0.4,
+   "dur": 2.56,
+   "ref": "Der Kassenbon stimmt. Siebzig Münzen.",
+   "asr": "Der Kassenbohn stimmt. 70 Münzen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_04_choir_case.line.4.ogg",
+   "wer": 0.25,
+   "dur": 4.05,
+   "ref": "Einverstanden. Die Hülle bleibt, das Heft kommt woandershin.",
+   "asr": "Einverstanden. Die Hülle bleibt, das Heft kommt woanders hin."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_05_receipt_safe.line.1.ogg",
+   "wer": 0.083,
+   "dur": 4.46,
+   "ref": "Die Rechnung für den Tresor habe ich. Die Kombination stand nicht drauf.",
+   "asr": "Die Rechnung für den Trissur habe ich. Die Kombination stand nicht drauf."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_05_receipt_safe.line.2.ogg",
+   "wer": 0.167,
+   "dur": 3.09,
+   "ref": "Mietvertrag und Rechnung genügen. Achtzig Münzen.",
+   "asr": "Mietvertrag und Rechnung genügen. 80 Münzen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_05_receipt_safe.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.84,
+   "ref": "Einverstanden. Papiere hebe ich auf, mein Gedächtnis weniger.",
+   "asr": "Einverstanden. Papiere hebe ich auf. Mein Gedächtnis weniger."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_05_receipt_safe.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.4,
+   "ref": "Die Belege gehören Ihnen. Ich lege nur meinen dazu.",
+   "asr": "Die Belege gehören Ihnen. Ich lege nur meinen dazu."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_06_draughty_hall.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.39,
+   "ref": "Der Haupteingang funktioniert. Hier eilt es nicht.",
+   "asr": "Der Haupteingang funktioniert. Hier eilt es nicht."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_06_draughty_hall.line.2.ogg",
+   "wer": 0.167,
+   "dur": 2.56,
+   "ref": "Die Vollmacht liegt vor. Neunzig Münzen.",
+   "asr": "Die Vollmacht liegt vor. 90 Münzen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_06_draughty_hall.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.52,
+   "ref": "Einverstanden. Und prüfen Sie bitte, ob sie danach richtig schließt.",
+   "asr": "Einverstanden und prüfen Sie bitte, ob sie danach richtig schließt."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_06_draughty_hall.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.78,
+   "ref": "Öffnen ist die halbe Arbeit. Die andere Hälfte erledige ich auch.",
+   "asr": "Öffnen ist die halbe Arbeit. Die andere Hälfte erledige ich auch."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_08_spare_key_hook.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.26,
+   "ref": "Die Etage habe ich geprüft. Jetzt fehlt mir der nächste Schritt.",
+   "asr": "Die Etage habe ich geprüft. Jetzt fehlt mir der nächste Schritt."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_08_spare_key_hook.line.2.ogg",
+   "wer": 0.091,
+   "dur": 4.83,
+   "ref": "Ihren Ersatzschlüssel haben Sie bei mir gelassen. In einem beschrifteten Umschlag.",
+   "asr": "Ihren Ersatzschlüsse haben Sie bei mir gelassen. In einem beschrifteten Umschlag."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_08_spare_key_hook.line.3.ogg",
+   "wer": 0.111,
+   "dur": 3.53,
+   "ref": "Prüfen wir ihn gemeinsam. Vierzig Münzen für den Besuch.",
+   "asr": "Prüfen wir ihn gemeinsam. 40 Münzen für den Besuch."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_09_08_spare_key_hook.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.11,
+   "ref": "Einverstanden. Diesmal haben Sie mein Gedächtnis repariert.",
+   "asr": "Einverstanden. Diesmal haben Sie mein Gedächtnis repariert."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_01_renovator_bureau.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.55,
+   "ref": "Das letzte Möbel war für mich. Dieses ist für alle.",
+   "asr": "Das letzte Möbel war für mich. Dieses ist für alle."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_01_renovator_bureau.line.2.ogg",
+   "wer": 0.111,
+   "dur": 3.68,
+   "ref": "Die Rechnung liegt vor. Hundert Münzen, das Schloss bleibt.",
+   "asr": "Die Rechnung liegt vor. 100 Münzen. Das Schloss bleibt."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_01_renovator_bureau.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.32,
+   "ref": "Einverstanden. Der Gemeinschaftsraum hat einen richtigen Schreibtisch verdient.",
+   "asr": "Einverstanden. Der Gemeinschaftsraum hat einen richtigen Schreibtisch verdient."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_01_renovator_bureau.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.94,
+   "ref": "Das alte Schloss bleibt. Ich fertige einen neuen Schlüssel dafür.",
+   "asr": "Das alte Schloss bleibt. Ich fertige einen neuen Schlüssel dafür."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_02_scaffold_store.line.1.ogg",
+   "wer": 0.0,
+   "dur": 5.04,
+   "ref": "Leute habe ich, einen Plan auch. Der Schlüssel ist mit der letzten Schicht weggefahren.",
+   "asr": "Leute habe ich einen Plan auch. Der Schlüssel ist mit der letzten Schicht weggefahren."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_02_scaffold_store.line.2.ogg",
+   "wer": 0.0,
+   "dur": 4.26,
+   "ref": "Ich bestätige Mannschaft und Lager. Der Mietvertrag ist gültig.",
+   "asr": "Ich bestätige Mannschaft und Lager. Der Mietvertrag ist gültig."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_02_scaffold_store.line.3.ogg",
+   "wer": 0.167,
+   "dur": 3.35,
+   "ref": "Hundertzehn Münzen. Das Vorhängeschloss bleibt heil.",
+   "asr": "110 Münzen. Das Vorhängeschloss bleibt heil."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_02_scaffold_store.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.36,
+   "ref": "Einverstanden. Der Schlüssel bekommt auf meiner Liste einen eigenen Punkt.",
+   "asr": "Einverstanden. Der Schlüssel bekommt auf meiner Liste einen eigenen Punkt."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_03_exhibit_clock.line.1.ogg",
+   "wer": 0.083,
+   "dur": 4.83,
+   "ref": "Das Uhrwerk muss repariert werden. Die Türen sind offen, es bewacht nichts.",
+   "asr": "Das Urwerk muss repariert werden. Die Türen sind offen. Es bewacht nichts."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_03_exhibit_clock.line.2.ogg",
+   "wer": 0.143,
+   "dur": 4.41,
+   "ref": "Schreiben und Übergabeprotokoll liegen vor. Hundertzwanzig Münzen.",
+   "asr": "Schreiben und Übergabeprotokoll liegen vor. 120 Münzen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_03_exhibit_clock.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.99,
+   "ref": "Einverstanden. Wir reparieren den Gang, wir verlegen keine Öffnungszeit vor.",
+   "asr": "Einverstanden. Wir reparieren den Gang. Wir verlegen keine Öffnungszeit vor."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_03_exhibit_clock.line.4.ogg",
+   "wer": 0.0,
+   "dur": 2.84,
+   "ref": "Endlich ein Exponat, das sich Zeit lassen darf.",
+   "asr": "Endlich ein Exponat, das sich Zeit lassen darf."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_04_design_cabinet.line.1.ogg",
+   "wer": 0.3,
+   "dur": 4.49,
+   "ref": "Ziemniak ist diesmal unschuldig. Den Schlüssel habe ich selbst versteckt.",
+   "asr": "Hier im Jagd ist diesmal unschuldig. Den Schlüssel habe ich selbst versteckt."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_04_design_cabinet.line.2.ogg",
+   "wer": 0.167,
+   "dur": 3.67,
+   "ref": "Mietvertrag und Rechnung passen. Hundertdreißig Münzen.",
+   "asr": "Mietvertrag und Rechnung passen. 130 Münzen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_04_design_cabinet.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.72,
+   "ref": "Einverstanden. Hängt das Schild, das ich für Sie gemacht habe, noch?",
+   "asr": "Einverstanden. Hängt das Schild, das ich für Sie gemacht habe, noch?"
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_04_design_cabinet.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.35,
+   "ref": "Es hängt. Mehr Kundschaft, und die Buchstaben sind nicht abgegriffen.",
+   "asr": "Es hängt mehr Kundschaft und die Buchstaben sind nicht abgegriffen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_05_porters_drawer.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.92,
+   "ref": "Neue Platte, alte Schublade. Die Liste ist immer noch dieselbe.",
+   "asr": "Neue Platte, alte Schublade. Die Liste ist immer noch dieselbe."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_05_porters_drawer.line.2.ogg",
+   "wer": 0.125,
+   "dur": 3.52,
+   "ref": "Der Auftrag gilt für die Schublade. Hundertvierzig Münzen.",
+   "asr": "Der Auftrag gilt für die Schublade. 140 Münzen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_05_porters_drawer.line.3.ogg",
+   "wer": 0.0,
+   "dur": 5.32,
+   "ref": "Einverstanden. Die Studenten habe ich auf der Liste, die Schlüssel will ich auch haben.",
+   "asr": "Einverstanden. Die Studenten habe ich auf der Liste. Die Schlüssel will ich auch haben."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_05_porters_drawer.line.4.ogg",
+   "wer": 0.182,
+   "dur": 4.25,
+   "ref": "Private Spinde bleiben privat. Ich kümmere mich nur um diese Schublade.",
+   "asr": "Privatespinde bleiben privat. Ich kümmere mich nur um diese Schublade."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_06_shared_room_entry.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.83,
+   "ref": "Die Abnahme ist erledigt. Die Mappe wollte im Raum bleiben.",
+   "asr": "Die Abnahme ist erledigt. Die Mappe wollte im Raum bleiben."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_06_shared_room_entry.line.2.ogg",
+   "wer": 0.125,
+   "dur": 2.97,
+   "ref": "Den Beschluss habe ich dabei. Die Vollmacht auch.",
+   "asr": "Denn Beschluss habe ich dabei. Die Vollmacht auch."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_06_shared_room_entry.line.3.ogg",
+   "wer": 0.143,
+   "dur": 4.12,
+   "ref": "Hundertfünfzig Münzen. Geöffnet wird nur der Gemeinschaftsraum.",
+   "asr": "150 Münzen. Geöffnet wird nur der Gemeinschaftsraum."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_10_06_shared_room_entry.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.39,
+   "ref": "Einverstanden. Danach üben wir das Abschließen mit dem Schlüssel draußen.",
+   "asr": "Einverstanden. Danach üben wir das Abschließen mit dem Schlüssel draußen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_01_wooden_market.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.52,
+   "ref": "Die Häuschen sind fertig. Eine ganze Straße wartet in einer Kiste.",
+   "asr": "Die Häuschen sind fertig. Eine ganze Straße wartet in einer Kiste."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_01_wooden_market.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.88,
+   "ref": "Auftrag des Museums und Rechnung. Die Inventarnummer passt.",
+   "asr": "Auftrag des Museums und Rechnung. Die Inventarnummer passt."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_01_wooden_market.line.3.ogg",
+   "wer": 0.143,
+   "dur": 3.72,
+   "ref": "Hundertfünfzig Münzen. Das Holz bleibt ohne Spuren.",
+   "asr": "150 Münzen. Das Holz bleibt ohne Spuren."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_01_wooden_market.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.23,
+   "ref": "Einverstanden. Die Kinder entscheiden selbst, wo die Häuschen stehen.",
+   "asr": "Einverstanden. Die Kinder entscheiden selbst, wo die Häuschen stehen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_02_bicycle_stand.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.86,
+   "ref": "Das Rad ist restauriert. Mein Gedächtnis wartet noch auf die Werkstatt.",
+   "asr": "Das Rad ist restauriert. Mein Gedächtnis wartet noch auf die Werkstatt."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_02_bicycle_stand.line.2.ogg",
+   "wer": 0.667,
+   "dur": 3.28,
+   "ref": "Kassenbon und Foto passen. Hundertsechzig Münzen.",
+   "asr": "Kassenbohn und Fotopassen. 160 Münzen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_02_bicycle_stand.line.3.ogg",
+   "wer": 0.1,
+   "dur": 4.1,
+   "ref": "Einverstanden. Auf dem Foto sehen Sie auch meinen alten Schnurrbart.",
+   "asr": "Einverstanden. Auf dem Foto sehen Sie auch meinen alten Schnurrbad."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_02_bicycle_stand.line.4.ogg",
+   "wer": 0.111,
+   "dur": 3.95,
+   "ref": "Das Rad ist bestätigt. Der Schnurrbart braucht keinen Service.",
+   "asr": "Das Rad ist bestätigt. Der Schnurbad braucht keinen Service."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_03_tool_exchange.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.55,
+   "ref": "Werkzeug soll arbeiten. In der Kiste wird es nur faul.",
+   "asr": "Werkzeug soll arbeiten. In der Kiste wird es nur faul."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_03_tool_exchange.line.2.ogg",
+   "wer": 0.143,
+   "dur": 3.82,
+   "ref": "Rechnung und Übergabe liegen vor. Hundertsiebzig Münzen.",
+   "asr": "Rechnung und Übergabe liegen vor. 170 Münzen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_03_tool_exchange.line.3.ogg",
+   "wer": 0.143,
+   "dur": 4.31,
+   "ref": "Einverstanden. Henryk mochte auch keine leere Werkstatt.",
+   "asr": "Einverstanden. Henrik mochte auch keine leere Werkstatt."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_03_tool_exchange.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.37,
+   "ref": "Der Stand ist bereit. Jede Spende schreibe ich auf.",
+   "asr": "Der Stand ist bereit. Jede Spende schreibe ich auf."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_04_sailors_stall.line.1.ogg",
+   "wer": 0.167,
+   "dur": 5.21,
+   "ref": "Letztes Mal fiel der Schlüssel ins Wasser. Diesmal ist er einfach davongesegelt.",
+   "asr": "Letztes Mal fiel der Schlüssel ins Wasser. Diesmal ist er einfach davon gesegelt."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_04_sailors_stall.line.2.ogg",
+   "wer": 0.0,
+   "dur": 4.53,
+   "ref": "Das ist ihre private Kiste. Mit unserem Schiff hat sie nichts zu tun.",
+   "asr": "Das ist Ihre private Kiste. Mit unserem Schiff hat sie nichts zu tun."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_04_sailors_stall.line.3.ogg",
+   "wer": 0.2,
+   "dur": 2.69,
+   "ref": "Die Rechnung passt. Hundertachtzig Münzen.",
+   "asr": "Die Rechnung passt. 180 Münzen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_04_sailors_stall.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.71,
+   "ref": "Einverstanden. Auch an Land finde ich ein Abenteuer.",
+   "asr": "Einverstanden. Auch an Land finde ich ein Abenteuer."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_05_rehearsal_chest.line.1.ogg",
+   "wer": 0.062,
+   "dur": 4.71,
+   "ref": "Spielen kann ich auch mit den Händen. Nur die Noten zaubere ich nicht aus der Tasche.",
+   "asr": "Spielen kann ich auch mit den Händen. Nur die Noten zauber ich nicht aus der Tasche."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_05_rehearsal_chest.line.2.ogg",
+   "wer": 0.0,
+   "dur": 5.12,
+   "ref": "Die Kiste des Saals. Der Auftrag des Veranstalters und meine Zustimmung.",
+   "asr": "Die Kiste des Saals Der Auftrag des Veranstalters und meine Zustimmung"
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_05_rehearsal_chest.line.3.ogg",
+   "wer": 0.143,
+   "dur": 4.05,
+   "ref": "Hundertfünfundachtzig Münzen. Das Konzert hat keine Eile.",
+   "asr": "185 Münzen. Das Konzert hat keine Eile."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_05_rehearsal_chest.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.21,
+   "ref": "Einverstanden. Das Publikum sucht sich gerade erst den Kuchen aus.",
+   "asr": "Einverstanden. Das Publikum sucht sich gerade erst den Kuchen aus."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_07_wrong_delivery.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.32,
+   "ref": "Die Nummer stimmt, aber der Empfänger ist wohl selbst gerade beim Ausliefern.",
+   "asr": "Die Nummer stimmt, aber der Empfänger ist wohl selbst gerade beim Ausliefern."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_07_wrong_delivery.line.2.ogg",
+   "wer": 0.0,
+   "dur": 5.14,
+   "ref": "Hier steht noch ein Buchstabe dabei. Die Nummer allein ist drüben auf der anderen Seite.",
+   "asr": "Hier steht noch ein Buchstabe dabei. Die Nummer allein ist drüben auf der anderen Seite."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_07_wrong_delivery.line.3.ogg",
+   "wer": 0.111,
+   "dur": 3.41,
+   "ref": "Prüfen wir die Lieferung. Vierzig Münzen für den Besuch.",
+   "asr": "Prüfen wir die Lieferung. 40 Münzen für den Besuch."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_11_07_wrong_delivery.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.3,
+   "ref": "Einverstanden. Ich sehe den Empfänger. Er winkt schon mit beiden Händen.",
+   "asr": "Einverstanden. Ich sehe den Empfänger. Er winkt schon mit beiden Händen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_01_letters_archive.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.86,
+   "ref": "Ich zeige drei Briefe. Der Rest bleibt in der Familie.",
+   "asr": "Ich zeige drei Briefe. Der Rest bleibt in der Familie."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_01_letters_archive.line.2.ogg",
+   "wer": 0.0,
+   "dur": 4.31,
+   "ref": "Mama ist die Eigentümerin. Die Unterlagen haben wir zusammen mitgebracht.",
+   "asr": "Mama ist die Eigentümerin. Die Unterlagen haben wir zusammen mitgebracht."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_01_letters_archive.line.3.ogg",
+   "wer": 0.167,
+   "dur": 3.27,
+   "ref": "Ich habe sie geprüft. Hundertfünfundachtzig Münzen.",
+   "asr": "Ich habe sie geprüft. 185 Münzen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_01_letters_archive.line.4.ogg",
+   "wer": 0.0,
+   "dur": 5.32,
+   "ref": "Einverstanden. Geöffnet wird in meinem Beisein, aussuchen werde ich selbst.",
+   "asr": "Einverstanden. Geöffnet wird in meinem Beisein. Aussuchen werde ich selbst."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_02_detective_cabinet.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.72,
+   "ref": "Eine leere Kiste. Das Protokoll bestätigt sogar, dass nichts drin ist.",
+   "asr": "Eine leere Kiste. Das Protokoll bestätigt sogar, dass nichts drin ist."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_02_detective_cabinet.line.2.ogg",
+   "wer": 0.2,
+   "dur": 2.88,
+   "ref": "Das Schreiben stimmt. Hundertneunzig Münzen.",
+   "asr": "Das Schreiben stimmt. 190 Münzen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_02_detective_cabinet.line.3.ogg",
+   "wer": 0.1,
+   "dur": 5.06,
+   "ref": "Einverstanden. Zuzanna notiert das Ergebnis, ohne die Methode zu beschreiben.",
+   "asr": "Einverstanden. Susanna notiert das Ergebnis ohne die Methode zu beschreiben."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_02_detective_cabinet.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.84,
+   "ref": "Diesmal wird meine Notiz kürzer als das Protokoll. Ich versuche es.",
+   "asr": "Diesmal wird meine Notiz kürzer als das Protokoll. Ich versuche es."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_03_community_store.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.78,
+   "ref": "Die Stühle habe ich gezählt. Die Gäste vermehren sich schneller.",
+   "asr": "Die Stühle habe ich gezählt. Die Gäste vermehren sich schneller."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_03_community_store.line.2.ogg",
+   "wer": 0.0,
+   "dur": 4.08,
+   "ref": "Das Lager der Gemeinschaft. Der Beschluss und meine Vollmacht.",
+   "asr": "Das Lager der Gemeinschaft, der Beschluss und meine Vollmacht."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_03_community_store.line.3.ogg",
+   "wer": 0.333,
+   "dur": 2.79,
+   "ref": "Hundertfünfundneunzig Münzen. Einverstanden?",
+   "asr": "195 Münzen. Einverstanden?"
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_03_community_store.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.28,
+   "ref": "Einverstanden. Frau Halina, der Suppentopf ist auch schon mitgezählt.",
+   "asr": "Einverstanden. Frau Halina, der Suppentopf ist auch schon mitgezählt."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_04_school_box.line.1.ogg",
+   "wer": 0.0,
+   "dur": 5.41,
+   "ref": "Diesmal haben wir nichts vergraben. Es reichte, die Kiste in den Abstellraum zu stellen.",
+   "asr": "Diesmal haben wir nichts vergraben. Es reichte die Kiste in den Abstellraum zu stellen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_04_school_box.line.2.ogg",
+   "wer": 0.125,
+   "dur": 4.15,
+   "ref": "Die Zustimmung der Schule liegt vor. Hundertachtundneunzig Münzen.",
+   "asr": "Die Zustimmung der Schule liegt vor. 198 Münzen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_04_school_box.line.3.ogg",
+   "wer": 0.0,
+   "dur": 5.7,
+   "ref": "Einverstanden. Die Rahmen gehören der Schule, die Erinnerungen wählt jeder selbst.",
+   "asr": "Einverstanden. Die Rahmen gehören der Schule. Die Erinnerungen wählt jeder selbst."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_04_school_box.line.4.ogg",
+   "wer": 0.182,
+   "dur": 4.49,
+   "ref": "Ziemniak bekommt ein eigenes Foto. In unsere Klasse ging er nicht.",
+   "asr": "Jemniak bekommt ein eigenes Foto. In unserer Klasse ging er nicht."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_05_tea_fund_case.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.38,
+   "ref": "Wir sind beide da. Die Vollmacht gilt für diese Kassette.",
+   "asr": "Wir sind beide da. Die Vollmacht gilt für diese Kassette."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_05_tea_fund_case.line.2.ogg",
+   "wer": 0.125,
+   "dur": 3.98,
+   "ref": "Der Beschluss stimmt. Zweihundert Münzen, in Ihrem Beisein.",
+   "asr": "Der Beschluss stimmt. 200 Münzen in ihrem Beisein."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_05_tea_fund_case.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.1,
+   "ref": "Einverstanden. Die Abrechnung machen wir nach dem Öffnen gemeinsam.",
+   "asr": "Einverstanden. Die Abrechnung machen wir nach dem Öffnen gemeinsam."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_05_tea_fund_case.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.44,
+   "ref": "Ich lasse Ihnen Raum. Ich rechne nur meinen Auftrag ab.",
+   "asr": "Ich lasse Ihnen Raum. Ich rechne nur meinen Auftrag ab."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_07_clock_back_home.line.1.ogg",
+   "wer": 0.154,
+   "dur": 5.08,
+   "ref": "Die Uhr ist zurück. Die Reise hat ihren Takt durcheinandergebracht, nicht die Papiere.",
+   "asr": "Die Uhr ist zurück. Die Reise hat ihren Takt durcheinander gebracht, nicht die Papiere."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_07_clock_back_home.line.2.ogg",
+   "wer": 0.167,
+   "dur": 3.44,
+   "ref": "Schreiben und Protokoll geprüft. Zweihundert Münzen.",
+   "asr": "Schreiben und Protokoll geprüft. 200 Münzen."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_07_clock_back_home.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.47,
+   "ref": "Einverstanden. Sie bleibt auf dem Tisch, bis der Gangtest abgeschlossen ist.",
+   "asr": "Einverstanden. Sie bleibt auf dem Tisch bis der Gangtest abgeschlossen ist."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_07_clock_back_home.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.44,
+   "ref": "Ich messe jetzt keine Zeit mehr. Ich setze mich einfach daneben.",
+   "asr": "Ich messe jetzt keine Zeit mehr. Ich setze mich einfach daneben."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_08_henryks_bench.line.1.ogg",
+   "wer": 0.3,
+   "dur": 4.78,
+   "ref": "Henryk hat an dieser Kiste geübt. Das Übergabeprotokoll haben Sie.",
+   "asr": "Henrik hat an dieser Kiste geübt. Das Übergabe-Protokoll haben Sie."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_08_henryks_bench.line.2.ogg",
+   "wer": 0.125,
+   "dur": 4.17,
+   "ref": "Geprüft. Zweihundert Münzen für die Vorführung, wie vereinbart.",
+   "asr": "Geprüft. 200 Münzen für die Vorführung, wie vereinbart."
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_08_henryks_bench.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.99,
+   "ref": "Der Veranstalter hat zugestimmt. Darf ich mich an die Werkbank setzen?",
+   "asr": "Der Veranstalter hat zugestimmt. Darf ich mich an die Werkbank setzen?"
+  },
+  {
+   "file": "game/assets/audio/lines/de/job.t43_12_08_henryks_bench.line.4.ogg",
+   "wer": 0.0,
+   "dur": 5.41,
+   "ref": "Setz dich. Frag zuerst, wem es gehört. Der Rest kann warten.",
+   "asr": "Setz dich! Frag zuerst, wem es gehört. Der Rest kann warten."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.grandma_broth.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.76,
+   "ref": "That helps. And the letter in the mailbox is addressed to you?",
+   "asr": "That helps. And the letter in the mailbox is addressed to you?"
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_rush_bribe.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.46,
+   "ref": "Those checks aren't for sale. Call your sister; I'll wait.",
+   "asr": "Those checks aren't for sale. Call your sister. I'll wait."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_09_empty_flat.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.34,
+   "ref": "Nobody's home. I'll leave the parcel in the hall and go.",
+   "asr": "Nobody's home. I'll leave the parcel in the hall and go."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_09_empty_flat.line.2.ogg",
+   "wer": 0.375,
+   "dur": 2.49,
+   "ref": "Let's call the tenant and ask her permission.",
+   "asr": "Let's call the tenant an ASCO permission."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_09_empty_flat.line.3.ogg",
+   "wer": 0.091,
+   "dur": 3.49,
+   "ref": "Let's not. She might say she doesn't want a visit today.",
+   "asr": "Let's not. She might say she doesn't want to visit today."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_09_empty_flat.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.22,
+   "ref": "I can't open this one. I can help arrange another time.",
+   "asr": "I can't open this one. I can help arrange another time."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_10_early_clearance.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.2,
+   "ref": "He's already left. We can start the renovation early.",
+   "asr": "He's already left. We can start the renovation early."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_10_early_clearance.line.2.ogg",
+   "wer": 0.0,
+   "dur": 2.74,
+   "ref": "Let's call him and arrange the handover together.",
+   "asr": "Let's call him and arrange the handover together."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_10_early_clearance.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.54,
+   "ref": "If he calls back, don't answer. He might change his mind.",
+   "asr": "If he calls back, don't answer. He might change his mind."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_10_early_clearance.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.69,
+   "ref": "I can't open this one. I can return for an agreed handover.",
+   "asr": "I can't open this one. I can return for an agreed handover."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_11_other_stall.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.96,
+   "ref": "The extension lead is next door. I'm sure he'd let me borrow it.",
+   "asr": "The extension lead is next door. I'm sure he'd let me borrow it."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_11_other_stall.line.2.ogg",
+   "wer": 0.25,
+   "dur": 2.52,
+   "ref": "Let's ask the organizer to call your neighbor.",
+   "asr": "Let's ask the organiser to call your neighbour."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_11_other_stall.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.51,
+   "ref": "Better not. Yesterday he asked us not to take anything from there.",
+   "asr": "Better not. Yesterday he asked us not to take anything from there."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_11_other_stall.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.7,
+   "ref": "I can't open this one. Let's ask for a spare extension lead.",
+   "asr": "I can't open this one. Let's ask for a spare extension lead."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_12_surprise_key.line.1.ogg",
+   "wer": 0.0,
+   "dur": 2.96,
+   "ref": "I just want to hang the bunting before the guests arrive.",
+   "asr": "I just want to hang the bunting before the guests arrive."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_12_surprise_key.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.3,
+   "ref": "The room belongs to the residents. Let's call Elżbieta.",
+   "asr": "The room belongs to the residents. Let's call Elżbieta."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_12_surprise_key.line.3.ogg",
+   "wer": 0.222,
+   "dur": 2.52,
+   "ref": "No, then it won't be a surprise any more.",
+   "asr": "No, then it won't be a surprise anymore."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.refuse_t43_12_surprise_key.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.9,
+   "ref": "I can't open this one. Let's ask her quietly; the surprise will survive.",
+   "asr": "I can't open this one. Let's ask her quietly. The surprise will survive."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_01_winter_keys.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.26,
+   "ref": "My shift is over. My key seems to have taken another one.",
+   "asr": "My shift is over. My key seems to have taken another one."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_01_winter_keys.line.2.ogg",
+   "wer": 0.0,
+   "dur": 4.1,
+   "ref": "Mrs Agnieszka is on the list. The details are current.",
+   "asr": "Mrs. Agnieszka is on the list. The details are current."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_01_winter_keys.line.3.ogg",
+   "wer": 0.167,
+   "dur": 3.18,
+   "ref": "The identity matches. Forty coins, agreed?",
+   "asr": "The identity matches. 40 coins. Agreed?"
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_01_winter_keys.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.31,
+   "ref": "Agreed. Just wake me when you're finished.",
+   "asr": "Agreed. Just wake me when you're finished."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_02_blanket_cupboard.line.1.ogg",
+   "wer": 0.083,
+   "dur": 4.67,
+   "ref": "We meant to keep one spare blanket. Now we have spare neighbors.",
+   "asr": "We meant to keep one spare blanket. Now we have spare neighbours."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_02_blanket_cupboard.line.2.ogg",
+   "wer": 0.444,
+   "dur": 4.18,
+   "ref": "The residents' cupboard. Here's the order and my authorization.",
+   "asr": "The residence cub board. Here's the order and my authorisation."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_02_blanket_cupboard.line.3.ogg",
+   "wer": 0.2,
+   "dur": 2.67,
+   "ref": "Fifty coins. Nothing needs replacing.",
+   "asr": "50 coins. Nothing needs replacing."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_02_blanket_cupboard.line.4.ogg",
+   "wer": 0.111,
+   "dur": 4.09,
+   "ref": "Agreed. Janka already knows who gets the first blanket.",
+   "asr": "agreed. Yanker already knows who gets the first blanket."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_03_wooden_postbox.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.51,
+   "ref": "The town has a post office. Deliveries are another matter.",
+   "asr": "The town has a post office. Deliveries are another matter."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_03_wooden_postbox.line.2.ogg",
+   "wer": 0.143,
+   "dur": 3.36,
+   "ref": "The invoice matches the exhibit. Sixty coins.",
+   "asr": "The invoice matches the exhibit. 60 coins."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_03_wooden_postbox.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.31,
+   "ref": "Agreed. Only the exhibition team will read the letters.",
+   "asr": "agreed only the exhibition team will read the letters."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_03_wooden_postbox.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.0,
+   "ref": "I'll deal with the wood. The post can wait for its reader.",
+   "asr": "I'll deal with the wood. The post can wait for its reader."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_04_choir_case.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.38,
+   "ref": "The notebook with the code is safe. Along with the music.",
+   "asr": "The notebook with the code is safe, along with the music."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_04_choir_case.line.2.ogg",
+   "wer": 0.25,
+   "dur": 3.28,
+   "ref": "It's our case. I sewed the cover myself.",
+   "asr": "It's our case. I sowed to cover myself."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_04_choir_case.line.3.ogg",
+   "wer": 0.4,
+   "dur": 2.71,
+   "ref": "The receipt matches. Seventy coins.",
+   "asr": "The receipt matures 70 coins."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_04_choir_case.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.13,
+   "ref": "Agreed. We'll keep the cover and move the notebook.",
+   "asr": "Agreed. We'll keep the cover and move the notebook."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_05_receipt_safe.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.04,
+   "ref": "I've got the safe's invoice. They didn't invoice the combination.",
+   "asr": "I've got the safe's invoice. They didn't invoice the combination."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_05_receipt_safe.line.2.ogg",
+   "wer": 0.125,
+   "dur": 3.18,
+   "ref": "The lease and invoice are enough. Eighty coins.",
+   "asr": "The lease and invoice are enough. 80 coins."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_05_receipt_safe.line.3.ogg",
+   "wer": 0.111,
+   "dur": 4.05,
+   "ref": "Agreed. I file my paperwork better than my memories.",
+   "asr": "Agreed. I found my paperwork better than my memories."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_05_receipt_safe.line.4.ogg",
+   "wer": 0.0,
+   "dur": 2.6,
+   "ref": "The receipts are yours. I'll only add mine.",
+   "asr": "The receipts are yours. I'll only add mine."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_06_draughty_hall.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.33,
+   "ref": "The main entrance works. There's no rush with this one.",
+   "asr": "The main entrance works. There's no rush with this one."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_06_draughty_hall.line.2.ogg",
+   "wer": 0.167,
+   "dur": 2.95,
+   "ref": "The authorization is here. Ninety coins.",
+   "asr": "The authorization is here. 90 coins."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_06_draughty_hall.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.26,
+   "ref": "Agreed. And please check that it closes properly afterwards.",
+   "asr": "agreed and please check that it closes properly afterwards."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_06_draughty_hall.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.2,
+   "ref": "Opening is half the job. I'll do the other half too.",
+   "asr": "Opening is half the job. I'll do the other half too."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_08_spare_key_hook.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.57,
+   "ref": "I've checked the floor. It's the next part I've misplaced.",
+   "asr": "I've checked the floor. It's the next part I've misplaced."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_08_spare_key_hook.line.2.ogg",
+   "wer": 0.1,
+   "dur": 3.55,
+   "ref": "You left your spare with me. In a labeled envelope.",
+   "asr": "You left your spare with me in a labelled envelope."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_08_spare_key_hook.line.3.ogg",
+   "wer": 0.111,
+   "dur": 3.18,
+   "ref": "Let's check it together. Forty coins for the visit.",
+   "asr": "Let's check it together. 40 coins for the visit."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_09_08_spare_key_hook.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.44,
+   "ref": "Agreed. This time you've repaired my memory.",
+   "asr": "Agreed. This time you've repaired my memory."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_01_renovator_bureau.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.3,
+   "ref": "The last piece was for me. This one's for everyone.",
+   "asr": "The last piece was for me. This one's for everyone."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_01_renovator_bureau.line.2.ogg",
+   "wer": 0.2,
+   "dur": 4.17,
+   "ref": "The invoice is here. One hundred coins; the lock stays.",
+   "asr": "The invoice is here. 100 coins. The lock stays."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_01_renovator_bureau.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.55,
+   "ref": "Agreed. The common room deserves a proper desk.",
+   "asr": "agreed the common room deserves a proper desk"
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_01_renovator_bureau.line.4.ogg",
+   "wer": 0.0,
+   "dur": 2.93,
+   "ref": "The old lock stays. I'll make it a new key.",
+   "asr": "The old lock stays. I'll make it a new key."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_02_scaffold_store.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.68,
+   "ref": "I've got the crew and the plan. The key left with the last shift.",
+   "asr": "I've got the crew and the plan. The key left with the last shift."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_02_scaffold_store.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.79,
+   "ref": "I confirm the crew and the store. The lease is current.",
+   "asr": "I confirm the crew and the store. The lease is current."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_02_scaffold_store.line.3.ogg",
+   "wer": 0.5,
+   "dur": 3.52,
+   "ref": "One hundred and ten coins. We'll keep the padlock intact.",
+   "asr": "110 coins will keep the padlock intact."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_02_scaffold_store.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.57,
+   "ref": "Agreed. I'll give the key a line of its own on the checklist.",
+   "asr": "Agreed. I'll give the key a line of its own on the checklist."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_03_exhibit_clock.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.12,
+   "ref": "The clock needs repair. The doors are open; it guards nobody.",
+   "asr": "The clock needs repair. The doors are open. It guards nobody."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_03_exhibit_clock.line.2.ogg",
+   "wer": 0.333,
+   "dur": 4.47,
+   "ref": "The letter and handover record are here. One hundred and twenty coins.",
+   "asr": "The letter and handover record are here. 120 coins."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_03_exhibit_clock.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.42,
+   "ref": "Agreed. We repair its running, not bring opening time forward.",
+   "asr": "Agreed. We repair its running, not bring opening time forward."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_03_exhibit_clock.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.39,
+   "ref": "At last, an exhibit that's allowed to take its time.",
+   "asr": "At last, an exhibit that's allowed to take its time."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_04_design_cabinet.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.12,
+   "ref": "Potato is innocent this time. I hid the key myself.",
+   "asr": "Potato is innocent this time. I hid the key myself."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_04_design_cabinet.line.2.ogg",
+   "wer": 0.4,
+   "dur": 3.78,
+   "ref": "The lease and invoice match. One hundred and thirty coins.",
+   "asr": "The lease and invoice match, 130 coins."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_04_design_cabinet.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.04,
+   "ref": "Agreed. Is the sign I made for you still hanging?",
+   "asr": "Agreed. Is the sign I made for you still hanging?"
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_04_design_cabinet.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.24,
+   "ref": "Still hanging. More customers, and the lettering hasn't worn off.",
+   "asr": "Still hanging, more customers, and the lettering hasn't worn off."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_05_porters_drawer.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.32,
+   "ref": "New desktop, old drawer. The list is still the same.",
+   "asr": "New desktop, old drawer. The list is still the same."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_05_porters_drawer.line.2.ogg",
+   "wer": 0.4,
+   "dur": 3.79,
+   "ref": "The order covers the drawer. One hundred and forty coins.",
+   "asr": "The order covers the drawer, 140 coins."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_05_porters_drawer.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.74,
+   "ref": "Agreed. My students are on the list. I want their keys there too.",
+   "asr": "agreed. My students are on the list. I want their keys there too."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_05_porters_drawer.line.4.ogg",
+   "wer": 0.1,
+   "dur": 3.59,
+   "ref": "Private lockers stay private. I'll deal with this one drawer.",
+   "asr": "Private lockers stay private. I'll deal with this one draw."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_06_shared_room_entry.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.87,
+   "ref": "The handover is done. The folder decided to stay in the room.",
+   "asr": "The handover is done. The folder decided to stay in the room."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_06_shared_room_entry.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.31,
+   "ref": "The resolution is with me. So is the authorization.",
+   "asr": "The resolution is with me, so is the authorization."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_06_shared_room_entry.line.3.ogg",
+   "wer": 0.444,
+   "dur": 3.19,
+   "ref": "One hundred and fifty coins. Only the common room.",
+   "asr": "150 coins, only the common room."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_10_06_shared_room_entry.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.85,
+   "ref": "Agreed. Then we'll practice locking it with the key outside.",
+   "asr": "Agreed. Then we'll practice locking it with the key outside."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_01_wooden_market.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.16,
+   "ref": "The houses are ready. A whole street is waiting in one chest.",
+   "asr": "The houses are ready. A whole street is waiting in one chest."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_01_wooden_market.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.92,
+   "ref": "The museum order and invoice. The exhibit number matches.",
+   "asr": "The Museum Order and Invoice. The exhibit number matches."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_01_wooden_market.line.3.ogg",
+   "wer": 0.5,
+   "dur": 3.76,
+   "ref": "One hundred and fifty coins. We'll leave the wood unmarked.",
+   "asr": "150 coins will leave the wood unmarked."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_01_wooden_market.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.72,
+   "ref": "Agreed. The children can choose where the houses go.",
+   "asr": "agreed. The children can choose where the houses go."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_02_bicycle_stand.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.46,
+   "ref": "The bicycle's restored. My memory is still awaiting repairs.",
+   "asr": "The bicycle's restored. My memory is still awaiting repairs."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_02_bicycle_stand.line.2.ogg",
+   "wer": 0.4,
+   "dur": 3.78,
+   "ref": "The receipt and photo match. One hundred and sixty coins.",
+   "asr": "The receipt and photo match. 160 coins."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_02_bicycle_stand.line.3.ogg",
+   "wer": 0.111,
+   "dur": 3.5,
+   "ref": "Agreed. The photo includes my old moustache as well.",
+   "asr": "agreed. The photo includes my old mustache as well."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_02_bicycle_stand.line.4.ogg",
+   "wer": 0.111,
+   "dur": 3.87,
+   "ref": "The bicycle is verified. The moustache needs no service.",
+   "asr": "The bicycle is verified. The mustache needs no service."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_03_tool_exchange.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.41,
+   "ref": "Tools ought to work. They'll grow idle in that chest.",
+   "asr": "Tools ought to work. They'll grow idle in that chest."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_03_tool_exchange.line.2.ogg",
+   "wer": 0.364,
+   "dur": 4.1,
+   "ref": "The invoice and handover are here. One hundred and seventy coins.",
+   "asr": "The invoice and handover are here. 170 coins."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_03_tool_exchange.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.91,
+   "ref": "Agreed. Henryk didn't like an idle workshop either.",
+   "asr": "Agreed. Henryk didn't like an idle workshop either."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_03_tool_exchange.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.28,
+   "ref": "The stall is ready. I'll record every donation.",
+   "asr": "The stall is ready. I'll record every donation."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_04_sailors_stall.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.9,
+   "ref": "Last time the key fell in the water. This time it simply sailed away.",
+   "asr": "Last time the key fell in the water. This time it simply sailed away."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_04_sailors_stall.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.88,
+   "ref": "It's her private chest. It isn't part of the ship's equipment.",
+   "asr": "It's her private chest. It isn't part of the ship's equipment."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_04_sailors_stall.line.3.ogg",
+   "wer": 0.5,
+   "dur": 3.39,
+   "ref": "The invoice matches. One hundred and eighty coins.",
+   "asr": "The invoice matches 180 coins."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_04_sailors_stall.line.4.ogg",
+   "wer": 0.2,
+   "dur": 4.12,
+   "ref": "Agreed. I can make an adventure for myself ashore too.",
+   "asr": "Agreed. I can make an adventure for myself for sure, too."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_05_rehearsal_chest.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.99,
+   "ref": "I can play with my hands. I can't read music through a pocket.",
+   "asr": "I can play with my hands. I can't read music through a pocket."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_05_rehearsal_chest.line.2.ogg",
+   "wer": 0.111,
+   "dur": 4.44,
+   "ref": "The hall's chest. The organizer's order and my permission.",
+   "asr": "The Hall's Chest. The organiser's order and my permission."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_05_rehearsal_chest.line.3.ogg",
+   "wer": 0.417,
+   "dur": 3.73,
+   "ref": "One hundred and eighty-five coins. No need to rush the concert.",
+   "asr": "185 coins. No need to rush the concert."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_05_rehearsal_chest.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.41,
+   "ref": "Agreed. The audience is still choosing cake.",
+   "asr": "Agreed. The audience is still choosing cake."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_07_wrong_delivery.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.04,
+   "ref": "The number matches, but the recipient seems to be out delivering too.",
+   "asr": "The number matches, but the recipient seems to be out delivering too."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_07_wrong_delivery.line.2.ogg",
+   "wer": 0.083,
+   "dur": 4.09,
+   "ref": "This one has a letter. The plain number is across the square.",
+   "asr": "This one has a letter. The plane number is across the square."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_07_wrong_delivery.line.3.ogg",
+   "wer": 0.111,
+   "dur": 3.19,
+   "ref": "Let's check the delivery. Forty coins for the visit.",
+   "asr": "Let's check the delivery. 40 coins for the visit."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_11_07_wrong_delivery.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.2,
+   "ref": "Agreed. I can see the recipient. He's waving with both hands.",
+   "asr": "Agreed. I can see the recipient. He's waving with both hands."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_01_letters_archive.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.91,
+   "ref": "I'll display three letters. The rest stay in the family.",
+   "asr": "I'll display three letters. The rest stay in the family."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_01_letters_archive.line.2.ogg",
+   "wer": 0.125,
+   "dur": 3.1,
+   "ref": "Mom owns it. We brought the papers together.",
+   "asr": "Mum owns it. We brought the papers together."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_01_letters_archive.line.3.ogg",
+   "wer": 0.556,
+   "dur": 3.13,
+   "ref": "I've checked them. One hundred and eighty-five coins.",
+   "asr": "I've checked them. 185 coins."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_01_letters_archive.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.97,
+   "ref": "Agreed. Open it with me here. I'll choose them myself.",
+   "asr": "Agreed. Open it with me here. I'll choose them myself."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_02_detective_cabinet.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.82,
+   "ref": "An empty chest. The record confirms even the absence of contents.",
+   "asr": "An empty chest. The record confirms even the absence of contents."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_02_detective_cabinet.line.2.ogg",
+   "wer": 0.444,
+   "dur": 3.36,
+   "ref": "The order checks out. One hundred and ninety coins.",
+   "asr": "The order checks out 190 coins."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_02_detective_cabinet.line.3.ogg",
+   "wer": 0.1,
+   "dur": 4.85,
+   "ref": "Agreed. Zuzanna will record the result, without describing the method.",
+   "asr": "agreed. Zuzanda will record the result without describing the method."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_02_detective_cabinet.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.77,
+   "ref": "This time my note will be shorter than the record. I'll try.",
+   "asr": "This time my note will be shorter than the record. I'll try."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_03_community_store.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.22,
+   "ref": "I've counted the chairs. The guests are multiplying faster.",
+   "asr": "I've counted the chairs. The guests are multiplying faster."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_03_community_store.line.2.ogg",
+   "wer": 0.125,
+   "dur": 4.0,
+   "ref": "The residents' store. The resolution and my authorization.",
+   "asr": "The residence store, the resolution and my authorization."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_03_community_store.line.3.ogg",
+   "wer": 0.714,
+   "dur": 2.74,
+   "ref": "One hundred and ninety-five coins. Agreed?",
+   "asr": "195 coins. Agreed?"
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_03_community_store.line.4.ogg",
+   "wer": 0.111,
+   "dur": 3.97,
+   "ref": "Agreed. Mrs Halina, the soup pot's been counted too.",
+   "asr": "Agreed. Mrs. Halina, the soup pot's been counted to."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_04_school_box.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.67,
+   "ref": "We didn't bury this one. Putting it in a cupboard was enough.",
+   "asr": "We didn't bury this one. Putting it in a cupboard was enough."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_04_school_box.line.2.ogg",
+   "wer": 0.455,
+   "dur": 3.85,
+   "ref": "The school's consent is here. One hundred and ninety-eight coins.",
+   "asr": "The school's consent is here. 198 coins."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_04_school_box.line.3.ogg",
+   "wer": 0.182,
+   "dur": 5.03,
+   "ref": "Agreed. The frames are the school's; everyone chooses their own memories.",
+   "asr": "agreed the frames of the schools everyone chooses their own memories"
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_04_school_box.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.93,
+   "ref": "Potato gets his own photograph. He wasn't in our class.",
+   "asr": "Potato gets his own photograph. He wasn't in our class."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_05_tea_fund_case.line.1.ogg",
+   "wer": 0.25,
+   "dur": 3.9,
+   "ref": "We're both present. The authorization covers this cashbox.",
+   "asr": "We're both present. The authorization covers this cash box."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_05_tea_fund_case.line.2.ogg",
+   "wer": 0.182,
+   "dur": 3.98,
+   "ref": "The resolution checks out. Two hundred coins, with you both here.",
+   "asr": "The resolution checks out. 200 coins with you both here."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_05_tea_fund_case.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.52,
+   "ref": "Agreed. We'll check the accounts together once it's open.",
+   "asr": "agreed. We'll check the accounts together once it's open."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_05_tea_fund_case.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.15,
+   "ref": "I'll give you some space. I'll deal with my own invoice.",
+   "asr": "I'll give you some space. I'll deal with my own invoice."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_07_clock_back_home.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.5,
+   "ref": "The clock is back. Travel upset its rhythm, not its paperwork.",
+   "asr": "The clock is back. Travel upset its rhythm, not its paperwork."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_07_clock_back_home.line.2.ogg",
+   "wer": 0.222,
+   "dur": 3.43,
+   "ref": "The order and record are checked. Two hundred coins.",
+   "asr": "The order and record are checked. 200 coins."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_07_clock_back_home.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.14,
+   "ref": "Agreed. It stays on the table until the running test is complete.",
+   "asr": "Agreed. It stays on the table until the running test is complete."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_07_clock_back_home.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.3,
+   "ref": "I'm not timing anything now. I'll just sit beside it.",
+   "asr": "I'm not timing anything now. I'll just sit beside it."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_08_henryks_bench.line.1.ogg",
+   "wer": 0.1,
+   "dur": 4.53,
+   "ref": "Henryk practiced on this chest. You have the transfer record.",
+   "asr": "Henrich practiced on this chest. You have the transfer record."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_08_henryks_bench.line.2.ogg",
+   "wer": 0.2,
+   "dur": 3.97,
+   "ref": "I've checked. Two hundred coins for the demonstration, as agreed.",
+   "asr": "I've checked 200 coins for the demonstration as agreed."
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_08_henryks_bench.line.3.ogg",
+   "wer": 0.091,
+   "dur": 3.29,
+   "ref": "The organizer has approved it. May I sit at the bench?",
+   "asr": "The organiser has approved it. May I sit at the bench?"
+  },
+  {
+   "file": "game/assets/audio/lines/en/job.t43_12_08_henryks_bench.line.4.ogg",
+   "wer": 0.091,
+   "dur": 4.91,
+   "ref": "Sit down. First ask whose it is. The rest can wait.",
+   "asr": "Sit down. First ask who's it is. The rest can wait."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.grandma_broth.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.48,
+   "ref": "To pomaga. List w skrzynce też jest na panią?",
+   "asr": "To pomaga. List w skrzynce też jest na panią?"
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_rush_bribe.line.2.ogg",
+   "wer": 0.0,
+   "dur": 4.63,
+   "ref": "Weryfikacji nie da się kupić. Proszę zadzwonić do siostry, poczekam.",
+   "asr": "Weryfikacji nie da się kupić. Proszę zadzwonić do siostry. Poczekam."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_09_empty_flat.line.1.ogg",
+   "wer": 0.222,
+   "dur": 3.61,
+   "ref": "Nikogo nie ma. Zostawię paczkę w przedpokoju i wyjdę.",
+   "asr": "Niktogo nie ma. Zostawię paczkę w przedpokoiu i wyjdę."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_09_empty_flat.line.2.ogg",
+   "wer": 0.143,
+   "dur": 2.95,
+   "ref": "Zadzwońmy do lokatorki i zapytajmy o zgodę.",
+   "asr": "Zadzwonimy do lokatorki i zapytajmy o zgodę."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_09_empty_flat.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.01,
+   "ref": "Nie dzwońmy. Jeszcze powie, żeby dziś nie przychodzić.",
+   "asr": "Nie dzwońmy. Jeszcze powie, żeby dziś nie przychodzić."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_09_empty_flat.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.43,
+   "ref": "Tu nie otworzę. Mogę pomóc ustalić inny termin.",
+   "asr": "Tu nie otworzę. Mogę pomóc ustalić inny termin."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_10_early_clearance.line.1.ogg",
+   "wer": 0.0,
+   "dur": 2.94,
+   "ref": "Już wyjechał. Możemy zacząć remont wcześniej.",
+   "asr": "Już wyjechał! Możemy zacząć remont wcześniej."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_10_early_clearance.line.2.ogg",
+   "wer": 0.167,
+   "dur": 2.88,
+   "ref": "Zadzwońmy do niego. Ustalmy przekazanie razem.",
+   "asr": "Zadwońmy do niego. Ustalmy przekazanie razem."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_10_early_clearance.line.3.ogg",
+   "wer": 0.125,
+   "dur": 3.75,
+   "ref": "Jeśli oddzwoni, proszę nie odbierać. Jeszcze zmieni zdanie.",
+   "asr": "Jeśli odzwoni, proszę nie odbierać. Jeszcze zmieni zdanie."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_10_early_clearance.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.43,
+   "ref": "Tu nie otworzę. Mogę wrócić na uzgodnione przekazanie.",
+   "asr": "Tu nie otworzę. Mogę wrócić na uzgodnione przekazanie."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_11_other_stall.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.86,
+   "ref": "Przedłużacz jest za ścianą. Sąsiad na pewno by pozwolił.",
+   "asr": "Przedłużacz jest za ścianą. Sąsiad na pewno by pozwolił."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_11_other_stall.line.2.ogg",
+   "wer": 0.0,
+   "dur": 2.92,
+   "ref": "Poprośmy organizatora o telefon do sąsiada.",
+   "asr": "Poprośmy organizatora o telefon do sąsiada."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_11_other_stall.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.33,
+   "ref": "Lepiej nie. Wczoraj prosił, żeby niczego stamtąd nie brać.",
+   "asr": "Lepiej nie. Wczoraj prosił, żeby niczego stamtąd nie brać."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_11_other_stall.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.55,
+   "ref": "Tu nie otworzę. Zapytajmy o zapasowy przedłużacz.",
+   "asr": "Tu nie otworzę. Zapytajmy o zapasowy przedłużacz."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_12_surprise_key.line.1.ogg",
+   "wer": 0.143,
+   "dur": 3.24,
+   "ref": "Chcę tylko rozwiesić girlandę, zanim przyjdą goście.",
+   "asr": "Chcę tylko rozwiesić Givrlandy zanim przyjdą goście."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_12_surprise_key.line.2.ogg",
+   "wer": 0.143,
+   "dur": 3.43,
+   "ref": "Sala jest wspólnoty. Zadzwońmy do pani Elżbiety.",
+   "asr": "Sala jest wspólnoty. Zadwońmy do pani Elżbiety."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_12_surprise_key.line.3.ogg",
+   "wer": 0.0,
+   "dur": 2.77,
+   "ref": "Nie, wtedy to już nie będzie niespodzianka.",
+   "asr": "Nie, wtedy to już nie będzie niespodzianka."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.refuse_t43_12_surprise_key.line.4.ogg",
+   "wer": 0.222,
+   "dur": 4.33,
+   "ref": "Tu nie otworzę. Zapytajmy ją po cichu, niespodzianka przeżyje.",
+   "asr": "Tu nie otworzę. Zapytajmy ją po cichu. Niez podzianka przeżyje."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_01_winter_keys.line.1.ogg",
+   "wer": 0.5,
+   "dur": 3.93,
+   "ref": "Dyżur skończony. Klucz najwyraźniej wziął następny.",
+   "asr": "Myż już skończony. Chlucz najwyraźniej wziął następny."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_01_winter_keys.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.67,
+   "ref": "Pani Agnieszka jest na liście. Dane aktualne.",
+   "asr": "Pani Agnieszka jest na liście. Dane aktualne."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_01_winter_keys.line.3.ogg",
+   "wer": 0.167,
+   "dur": 3.16,
+   "ref": "Dowód się zgadza. Czterdzieści monet, zgoda?",
+   "asr": "Dowód się zgadza. 40 monet, zgoda?"
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_01_winter_keys.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.27,
+   "ref": "Zgoda. Tylko proszę mnie obudzić, jak pan skończy.",
+   "asr": "Zgoda. Tylko proszę mnie obudzić jak pan skończy."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_02_blanket_cupboard.line.1.ogg",
+   "wer": 0.111,
+   "dur": 4.92,
+   "ref": "Miał być jeden koc zapasowy. Teraz mamy zapas sąsiadów.",
+   "asr": "Miał być jeden kod zapasowy. Teraz mamy zapas sąsiadów."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_02_blanket_cupboard.line.2.ogg",
+   "wer": 0.143,
+   "dur": 4.01,
+   "ref": "Szafka wspólnoty. Tu zlecenie i moje upoważnienie.",
+   "asr": "Szawka wspólnoty. Tu zlecenie i moje upoważnienie."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_02_blanket_cupboard.line.3.ogg",
+   "wer": 0.2,
+   "dur": 2.76,
+   "ref": "Pięćdziesiąt monet. Niczego nie wymieniamy.",
+   "asr": "50 monet, niczego nie wymieniamy."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_02_blanket_cupboard.line.4.ogg",
+   "wer": 0.286,
+   "dur": 3.31,
+   "ref": "Zgoda. Janka już wybrała, komu zaniesie pierwszy.",
+   "asr": "Zgoda. Janka już wybrała komu za niesie pierwszy."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_03_wooden_postbox.line.1.ogg",
+   "wer": 0.143,
+   "dur": 2.99,
+   "ref": "Miasto ma pocztę, ale chwilowo bez doręczeń.",
+   "asr": "Miasto ma poczty, ale chwilowo bez doręczeń."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_03_wooden_postbox.line.2.ogg",
+   "wer": 0.167,
+   "dur": 3.37,
+   "ref": "Faktura pasuje do eksponatu. Sześćdziesiąt monet.",
+   "asr": "Faktura pasuje do eksponatu 60 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_03_wooden_postbox.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.09,
+   "ref": "Zgoda. Listy przeczyta dopiero zespół wystawy.",
+   "asr": "Zgoda. Listy przeczyta dopiero zespół wystawy."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_03_wooden_postbox.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.31,
+   "ref": "Ja zajmę się drewnem. Poczta poczeka na adresata.",
+   "asr": "Ja zajmę się drewnem. Poczta poczeka na adresata."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_04_choir_case.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.16,
+   "ref": "Zeszyt z kodem jest bezpieczny. Razem z nutami.",
+   "asr": "Zeszyt z kodem jest bezpieczny. Razem z nutami."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_04_choir_case.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.41,
+   "ref": "To nasza skrzynka. Sama szyłam do niej pokrowiec.",
+   "asr": "To nasza skrzynka. Sama szyłam do niej pokrowiec."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_04_choir_case.line.3.ogg",
+   "wer": 0.2,
+   "dur": 2.63,
+   "ref": "Paragon się zgadza. Siedemdziesiąt monet.",
+   "asr": "Paragon się zgadza. 70 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_04_choir_case.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.39,
+   "ref": "Zgoda. Pokrowiec zostawimy, zeszyt przeniosę.",
+   "asr": "Zgoda. Pokrowiec zostawimy, zeszyt przeniosę."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_05_receipt_safe.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.83,
+   "ref": "Fakturę sejfu mam. Szyfru nie zafakturowali.",
+   "asr": "Fakturę Sejfu mam. Szyfru nie zafakturowali."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_05_receipt_safe.line.2.ogg",
+   "wer": 0.167,
+   "dur": 3.19,
+   "ref": "Najem i faktura wystarczą. Osiemdziesiąt monet.",
+   "asr": "Najem i faktura wystarczą. 80 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_05_receipt_safe.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.41,
+   "ref": "Zgoda. Dokumenty odkładam, pamięć już mniej.",
+   "asr": "Zgoda. Dokumenty odkładam. Pamięć już mniej."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_05_receipt_safe.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.16,
+   "ref": "Rachunki zostawiam panu. Ja dopiszę tylko swój.",
+   "asr": "Rachunki zostawiam Panu. Ja dopiszę tylko swój."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_06_draughty_hall.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.7,
+   "ref": "Główne wejście działa. Tu mamy spokojne zlecenie.",
+   "asr": "Główne wejście działa. Tu mamy spokojne zlecenie."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_06_draughty_hall.line.2.ogg",
+   "wer": 0.25,
+   "dur": 2.64,
+   "ref": "Upoważnienie jest. Dziewięćdziesiąt monet.",
+   "asr": "Upoważnienie jest 90 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_06_draughty_hall.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.92,
+   "ref": "Zgoda. I proszę sprawdzić, czy potem się domyka.",
+   "asr": "Zgoda. I proszę sprawdzić, czy potem się domyka."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_06_draughty_hall.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.42,
+   "ref": "Otworzyć to połowa. Drugą połowę też zrobię.",
+   "asr": "Otworzyć to połowa. Drugą połowę też zrobię."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_08_spare_key_hook.line.1.ogg",
+   "wer": 0.5,
+   "dur": 3.67,
+   "ref": "Piętro sprawdziłem. Teraz zgubiłem dalszy ciąg.",
+   "asr": "Pięt rozprawiłem. Teraz zbubiłem dalszy ciąg."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_08_spare_key_hook.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.75,
+   "ref": "Zapasowy zostawił pan u mnie. W podpisanej kopercie.",
+   "asr": "Zapasowy zostawił pan u mnie w podpisanej kopercie."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_08_spare_key_hook.line.3.ogg",
+   "wer": 0.167,
+   "dur": 3.99,
+   "ref": "Sprawdźmy go razem. Konsultacja: czterdzieści monet.",
+   "asr": "Sprawdźmy go razem. Konsultacja 40 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_09_08_spare_key_hook.line.4.ogg",
+   "wer": 0.143,
+   "dur": 4.03,
+   "ref": "Zgoda. Tym razem naprawił pan moją pamięć.",
+   "asr": "Zgoda, tym razem naprawił pan noją pamięć."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_01_renovator_bureau.line.1.ogg",
+   "wer": 0.111,
+   "dur": 3.78,
+   "ref": "Poprzedni mebel był dla mnie. Ten będzie dla wszystkich.",
+   "asr": "Poprzedni medal był dla mnie. Ten będzie dla wszystkich."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_01_renovator_bureau.line.2.ogg",
+   "wer": 0.167,
+   "dur": 3.63,
+   "ref": "Faktura jest. Sto monet, zamek zachowujemy.",
+   "asr": "Faktura jest 100 monet. Zamek zachowujemy."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_01_renovator_bureau.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.75,
+   "ref": "Zgoda. Świetlica zasłużyła na prawdziwe biurko.",
+   "asr": "Zgoda. Świetlica zasłużyła na prawdziwe biurko."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_01_renovator_bureau.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.03,
+   "ref": "Stary zamek zostaje. Dorobię do niego klucz.",
+   "asr": "Stary zamek zostaje. Dorobię do niego klucz."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_02_scaffold_store.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.02,
+   "ref": "Ludzi mam, plan mam. Klucz wyjechał z poprzednią zmianą.",
+   "asr": "Ludzi mam, plan mam. Klucz wyjechał z poprzednią zmianą."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_02_scaffold_store.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.87,
+   "ref": "Potwierdzam ekipę i magazyn. Umowa jest aktualna.",
+   "asr": "Potwierdzam ekipę i magazyn. Umowa jest aktualna."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_02_scaffold_store.line.3.ogg",
+   "wer": 0.286,
+   "dur": 3.35,
+   "ref": "Sto dziesięć monet. Zostawimy kłódkę w całości.",
+   "asr": "110 monet. Zostawimy kłódkę w całości."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_02_scaffold_store.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.42,
+   "ref": "Zgoda. Na liście zrobię osobne miejsce na klucz.",
+   "asr": "Zgoda. Na liście zrobię osobne miejsce na klucz."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_03_exhibit_clock.line.1.ogg",
+   "wer": 0.222,
+   "dur": 4.13,
+   "ref": "Zegar do naprawy. Drzwi są otwarte, nikogo nie pilnujemy.",
+   "asr": "Zegard do naprawy. Drzwi są otwarte i nikogo nie pilnujemy."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_03_exhibit_clock.line.2.ogg",
+   "wer": 0.286,
+   "dur": 3.14,
+   "ref": "Pismo i protokół są. Sto dwadzieścia monet.",
+   "asr": "Pismo i protokół są 120 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_03_exhibit_clock.line.3.ogg",
+   "wer": 0.143,
+   "dur": 4.1,
+   "ref": "Zgoda. Naprawiamy chód, nie przyspieszamy godziny otwarcia.",
+   "asr": "Zgoda. Naprawiamy hud. Nie przyspieszamy godziny otwarcia."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_03_exhibit_clock.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.76,
+   "ref": "Wreszcie eksponat, któremu wolno się nie spieszyć.",
+   "asr": "Wreszcie eksponat, któremu wolno się nie spieszyć."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_04_design_cabinet.line.1.ogg",
+   "wer": 0.286,
+   "dur": 3.95,
+   "ref": "Ziemniak tym razem niewinny. Sama schowałam klucz.",
+   "asr": "Ziemia, jak tym razem niewinny. Sama schowałam klucz."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_04_design_cabinet.line.2.ogg",
+   "wer": 0.286,
+   "dur": 3.38,
+   "ref": "Najem i faktura pasują. Sto trzydzieści monet.",
+   "asr": "Najem i faktura pasują 130 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_04_design_cabinet.line.3.ogg",
+   "wer": 0.167,
+   "dur": 2.8,
+   "ref": "Zgoda. Tabliczka dla pana wciąż wisi?",
+   "asr": "Zgoda. Kabliczka dla pana wciąż wisi?"
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_04_design_cabinet.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.66,
+   "ref": "Wisi. Klientów przybyło, litery się nie starły.",
+   "asr": "Wisi. Klientów przybyło. Litery się nie starły."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_05_porters_drawer.line.1.ogg",
+   "wer": 0.125,
+   "dur": 4.65,
+   "ref": "Nowy blat, stara szuflada. Lista wciąż ta sama.",
+   "asr": "Nowy blad, Stara Szuflada. Lista wciąż ta sama."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_05_porters_drawer.line.2.ogg",
+   "wer": 0.5,
+   "dur": 3.28,
+   "ref": "Zlecenie dotyczy szuflady. Sto czterdzieści monet.",
+   "asr": "Zlecenie dotyczy szuflady. 140 moment."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_05_porters_drawer.line.3.ogg",
+   "wer": 0.111,
+   "dur": 4.73,
+   "ref": "Zgoda. Studentów mam na liście, klucze chcę mieć też.",
+   "asr": "Zgoda. Studentów mam na liście. Klucze chce mieć też."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_05_porters_drawer.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.76,
+   "ref": "Prywatne szafki zostają prywatne. Zajmę się tą jedną.",
+   "asr": "Prywatne szafki zostają prywatne. Zajmę się tą jedną."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_06_shared_room_entry.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.63,
+   "ref": "Odbiór skończony. Teczka postanowiła zostać w sali.",
+   "asr": "Odbiór skończony. Teczka postanowiła zostać w sali."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_06_shared_room_entry.line.2.ogg",
+   "wer": 0.0,
+   "dur": 2.87,
+   "ref": "Uchwała jest ze mną. Upoważnienie też.",
+   "asr": "Uchwała jest ze mną. Upoważnienie też."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_06_shared_room_entry.line.3.ogg",
+   "wer": 0.5,
+   "dur": 3.36,
+   "ref": "Sto pięćdziesiąt monet. Otwieramy tylko świetlicę.",
+   "asr": "150 mole. Otwieramy tylko świetlicę."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_10_06_shared_room_entry.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.06,
+   "ref": "Zgoda. Potem pierwsza próba zamykania z kluczem na zewnątrz.",
+   "asr": "Zgoda. Potem pierwsza próba zamykania z kluczem na zewnątrz."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_01_wooden_market.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.79,
+   "ref": "Domki gotowe. Cała ulica czeka w jednej skrzynce.",
+   "asr": "Domki gotowe. Cała ulica czeka w jednej skrzynce."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_01_wooden_market.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.74,
+   "ref": "Zlecenie muzeum i faktura. Numer eksponatu pasuje.",
+   "asr": "Zlecenie Muzeum i Faktura. Numer eksponatu pasuje."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_01_wooden_market.line.3.ogg",
+   "wer": 0.286,
+   "dur": 3.56,
+   "ref": "Sto pięćdziesiąt monet. Zostawimy drewno bez śladów.",
+   "asr": "150 monet. Zostawimy drewno bez śladów."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_01_wooden_market.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.56,
+   "ref": "Zgoda. Dzieci same wybiorą, gdzie staną domki.",
+   "asr": "Zgoda. Dzieci same wybiorą, gdzie staną domki."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_02_bicycle_stand.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.35,
+   "ref": "Rower odnowiony. Pamięć została przed remontem.",
+   "asr": "Rower odnowiony. Pamięć została przed remontem."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_02_bicycle_stand.line.2.ogg",
+   "wer": 0.286,
+   "dur": 3.49,
+   "ref": "Paragon i zdjęcie pasują. Sto sześćdziesiąt monet.",
+   "asr": "Paragon i zdjęcie pasują 160 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_02_bicycle_stand.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.3,
+   "ref": "Zgoda. Na zdjęciu ma pan też mój dawny wąs.",
+   "asr": "Zgoda. Na zdjęciu ma pan też mój dawny wąs."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_02_bicycle_stand.line.4.ogg",
+   "wer": 0.167,
+   "dur": 3.75,
+   "ref": "Rower potwierdzony. Wąs nie wymaga serwisu.",
+   "asr": "Rower potwierdzony. Wąz nie wymaga serwisu."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_03_tool_exchange.line.1.ogg",
+   "wer": 0.143,
+   "dur": 4.52,
+   "ref": "Narzędzia mają pracować. W skrzyni się rozleniwią.",
+   "asr": "Narzędzia mają pracować. W skrzyni się rozlenivią."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_03_tool_exchange.line.2.ogg",
+   "wer": 0.286,
+   "dur": 3.28,
+   "ref": "Faktura i odbiór są. Sto siedemdziesiąt monet.",
+   "asr": "Faktura i odbiór są 170 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_03_tool_exchange.line.3.ogg",
+   "wer": 0.0,
+   "dur": 4.31,
+   "ref": "Zgoda. Henryk też nie lubił pustego warsztatu.",
+   "asr": "Zgoda. Henryk też nie lubił pustego warsztatu."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_03_tool_exchange.line.4.ogg",
+   "wer": 0.125,
+   "dur": 3.32,
+   "ref": "Stoisko już czeka. Każdy dar wpiszę na listę.",
+   "asr": "Stoisko już czeka. Każdy dar wpisze na listę."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_04_sailors_stall.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.73,
+   "ref": "Ostatnio klucz wpadł do wody. Tym razem po prostu odpłynął.",
+   "asr": "Ostatnio klucz wpadł do wody. Tym razem po prostu odpłynął."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_04_sailors_stall.line.2.ogg",
+   "wer": 0.0,
+   "dur": 4.33,
+   "ref": "Skrzynia prywatna. Nasz statek nie ma z nią nic wspólnego.",
+   "asr": "Skrzynia prywatna. Nasz statek nie ma z nią nic wspólnego."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_04_sailors_stall.line.3.ogg",
+   "wer": 0.4,
+   "dur": 2.87,
+   "ref": "Faktura pasuje. Sto osiemdziesiąt monet.",
+   "asr": "Faktura pasuje 180 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_04_sailors_stall.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.09,
+   "ref": "Zgoda. Na lądzie też potrafię zrobić sobie przygodę.",
+   "asr": "Zgoda! Na lądzie też potrafię zrobić sobie przygodę."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_05_rehearsal_chest.line.1.ogg",
+   "wer": 0.333,
+   "dur": 3.78,
+   "ref": "Mogę zagrać rękami. Tylko nut nie odtworzę z kieszeni.",
+   "asr": "Mówię zagrać rękami, tylko nutnie odtworzę z kieszeni."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_05_rehearsal_chest.line.2.ogg",
+   "wer": 0.0,
+   "dur": 4.3,
+   "ref": "Skrzynia sali. Zlecenie organizatora i moja zgoda.",
+   "asr": "skrzynia sali, zlecenie organizatora i moja zgoda."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_05_rehearsal_chest.line.3.ogg",
+   "wer": 0.429,
+   "dur": 3.97,
+   "ref": "Sto osiemdziesiąt pięć monet. Koncert bez pośpiechu.",
+   "asr": "185 monet. Koncert bez pośpiechu."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_05_rehearsal_chest.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.59,
+   "ref": "Zgoda. Publiczność dopiero wybiera ciasto.",
+   "asr": "Zgoda! Publiczność dopiero wybiera ciasto!"
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_07_wrong_delivery.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.1,
+   "ref": "Numer pasuje, ale odbiorca chyba wyszedł na własną dostawę.",
+   "asr": "Numer pasuje, ale odbiorca chyba wyszedł na własną dostawę."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_07_wrong_delivery.line.2.ogg",
+   "wer": 0.0,
+   "dur": 4.19,
+   "ref": "Tu jest litera. Po drugiej stronie placu jest sam numer.",
+   "asr": "Tu jest litera. Po drugiej stronie placu jest sam numer."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_07_wrong_delivery.line.3.ogg",
+   "wer": 0.333,
+   "dur": 3.68,
+   "ref": "Sprawdźmy dostawę. Za konsultację czterdzieści monet.",
+   "asr": "Sprawdźmy dostawę. Za konsultacje 40 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_11_07_wrong_delivery.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.76,
+   "ref": "Zgoda. Widzę odbiorcę. Już macha obiema rękami.",
+   "asr": "Zgoda. Widzę odbiorcę. Już macha obiema rękami."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_01_letters_archive.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.64,
+   "ref": "Pokażę trzy listy. Reszta zostaje rodzinna.",
+   "asr": "Pokażę trzy listy. Reszta zostaje rodzinna."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_01_letters_archive.line.2.ogg",
+   "wer": 0.0,
+   "dur": 3.72,
+   "ref": "Mama jest właścicielką. Dokumenty przywiozłyśmy razem.",
+   "asr": "Mama jest właścicielką. Dokumenty przywiozłyśmy razem."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_01_letters_archive.line.3.ogg",
+   "wer": 0.5,
+   "dur": 3.09,
+   "ref": "Sprawdziłem je. Sto osiemdziesiąt pięć monet.",
+   "asr": "Sprawdziłem je. 185 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_01_letters_archive.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.33,
+   "ref": "Zgoda. Otwieramy przy mnie, wybiorę sama.",
+   "asr": "Zgoda. Otwieramy przy mnie. Wybiorę sama."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_02_detective_cabinet.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.08,
+   "ref": "Pusta skrzynia. Protokół potwierdza także brak zawartości.",
+   "asr": "Pusta skrzynia. Protokół potwierdza także brak zawartości."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_02_detective_cabinet.line.2.ogg",
+   "wer": 0.333,
+   "dur": 2.89,
+   "ref": "Pismo się zgadza. Sto dziewięćdziesiąt monet.",
+   "asr": "Pismo się zgadza. 190 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_02_detective_cabinet.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.81,
+   "ref": "Zgoda. Zuzanna dopisze wynik, bez opisu metody.",
+   "asr": "Zgoda. Zuzanna dopisze wynik bez opisu metody."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_02_detective_cabinet.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.75,
+   "ref": "Tym razem notatka krótsza od protokołu. Postaram się.",
+   "asr": "Tym razem notatka krótsza od protokołu. Postaram się."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_03_community_store.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.05,
+   "ref": "Krzesła policzyłam. Gości przybywa szybciej.",
+   "asr": "Krzesła policzyłam. Gości przybywa szybciej."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_03_community_store.line.2.ogg",
+   "wer": 0.0,
+   "dur": 4.03,
+   "ref": "Magazynek wspólnoty. Uchwała i moje upoważnienie.",
+   "asr": "Magazynek Wspólnoty. Uchwała i moje upoważnienie."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_03_community_store.line.3.ogg",
+   "wer": 0.6,
+   "dur": 2.53,
+   "ref": "Sto dziewięćdziesiąt pięć monet. Zgoda?",
+   "asr": "195 monet. Zgoda?"
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_03_community_store.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.68,
+   "ref": "Zgoda. Pani Halino, garnek też już policzony.",
+   "asr": "Zgoda. Pani Halino, garnek też już policzony."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_04_school_box.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.69,
+   "ref": "Tym razem nie zakopywaliśmy. Wystarczyło odstawić do schowka.",
+   "asr": "Tym razem nie zakopywaliśmy. Wystarczyło odstawić do schowka."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_04_school_box.line.2.ogg",
+   "wer": 0.429,
+   "dur": 3.46,
+   "ref": "Zgoda szkoły jest. Sto dziewięćdziesiąt osiem monet.",
+   "asr": "Zgoda szkoły jest 198 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_04_school_box.line.3.ogg",
+   "wer": 0.143,
+   "dur": 4.67,
+   "ref": "Zgoda. Ramki szkolne, wspomnienia każdy wybiera sam.",
+   "asr": "Zgoda. Ramki szkolne wspomnienia każde wybiera sam."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_04_school_box.line.4.ogg",
+   "wer": 0.0,
+   "dur": 4.21,
+   "ref": "Ziemniak dostanie osobne zdjęcie. Do naszej klasy nie chodził.",
+   "asr": "Ziemniak dostanie osobne zdjęcie. Do naszej klasy nie chodził."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_05_tea_fund_case.line.1.ogg",
+   "wer": 0.0,
+   "dur": 3.74,
+   "ref": "Oboje obecni. Upoważnienie obejmuje tę kasetkę.",
+   "asr": "Oboje obecni. Upoważnienie obejmuje tę kasetkę."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_05_tea_fund_case.line.2.ogg",
+   "wer": 0.143,
+   "dur": 3.36,
+   "ref": "Uchwała się zgadza. Dwieście monet, przy państwu.",
+   "asr": "Uchwała się zgadza. 200 monet. Przy Państwu."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_05_tea_fund_case.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.21,
+   "ref": "Zgoda. Rozliczenie zrobimy razem po otwarciu.",
+   "asr": "Zgoda. Rozliczenie zrobimy razem po otwarciu."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_05_tea_fund_case.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.41,
+   "ref": "Zostawię państwu miejsce. Ja rozliczę swoje zlecenie.",
+   "asr": "zostawię Państwu miejsce. Ja rozliczę swoje zlecenie."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_07_clock_back_home.line.1.ogg",
+   "wer": 0.0,
+   "dur": 4.2,
+   "ref": "Zegar wrócił. Po podróży gubi rytm, nie dokumenty.",
+   "asr": "Zegar wrócił. Po podróży gubi rytm, nie dokumenty."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_07_clock_back_home.line.2.ogg",
+   "wer": 0.5,
+   "dur": 3.17,
+   "ref": "Pismo i protokół sprawdzone. Dwieście monet.",
+   "asr": "Pismo i protoku usprawdzone. 200 monet."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_07_clock_back_home.line.3.ogg",
+   "wer": 0.125,
+   "dur": 3.32,
+   "ref": "Zgoda. Zostaje na stole do końca próby chodu.",
+   "asr": "Zgoda, zostaje na stole do końca próby hodu."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_07_clock_back_home.line.4.ogg",
+   "wer": 0.0,
+   "dur": 3.39,
+   "ref": "Ja już niczego nie odmierzam. Po prostu posiedzę obok.",
+   "asr": "Ja już niczego nie odmierzam. Po prostu posiedzę obok."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_08_henryks_bench.line.1.ogg",
+   "wer": 0.0,
+   "dur": 5.04,
+   "ref": "Henryk ćwiczył na tej skrzyni. Dokument przekazania pan ma.",
+   "asr": "Henryk ćwiczył na tej skrzyni. Dokument przekazania pan ma."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_08_henryks_bench.line.2.ogg",
+   "wer": 0.125,
+   "dur": 4.09,
+   "ref": "Sprawdziłem. Pokaz za dwieście monet, zgodnie ze zleceniem.",
+   "asr": "Sprawdziłem. Pokaz za 200 monet, zgodnie ze zleceniem."
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_08_henryks_bench.line.3.ogg",
+   "wer": 0.0,
+   "dur": 3.22,
+   "ref": "Zgoda organizatora jest. Mogę usiąść przy stole?",
+   "asr": "Zgoda organizatora jest. Mogę usiąść przy stole?"
+  },
+  {
+   "file": "game/assets/audio/lines/pl/job.t43_12_08_henryks_bench.line.4.ogg",
+   "wer": 0.286,
+   "dur": 4.71,
+   "ref": "Siadaj. Najpierw zapytaj, czyje to. Reszta poczeka.",
+   "asr": "Siadaj. Najpierw zapytaj, czy je to. Reszta poczeka."
+  }
+ ]
+}
