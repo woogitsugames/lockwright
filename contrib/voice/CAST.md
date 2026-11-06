@@ -1,6 +1,6 @@
 # Obsada głosów lektora AI (D-57)
 
-2026-11-05 · sesja lektora. Każda postać ma **jeden stały, fikcyjny głos** zaprojektowany w ElevenLabs Voice Design (model `eleven_ttv_v3`) z opisu postaci (`docs/CLIENTS.md`, opisy `.client`, portrety). Nikt nie jest klonowany. Z 3 próbek wybrano jedną: wysokość głosu (mediana F0) zgodna z wiekiem i płcią oraz najlepsza zrozumiałość po polsku (faster-whisper `small`, średni logprob). Ten sam głos czyta PL i EN (później DE). Kwestie czyta model **`eleven_v4_turbo`** (decyzja właściciela) z tagami audio (`contrib/voice/tags.json`, tylko w zapytaniu TTS). Dane maszynowe: `game/data/voice_cast.json`.
+2026-11-05 · sesja lektora. Każda postać ma **jeden stały, fikcyjny głos** zaprojektowany w ElevenLabs Voice Design (model `eleven_ttv_v3`) z opisu postaci (`docs/CLIENTS.md`, opisy `.client`, portrety). Nikt nie jest klonowany. Z 3 próbek wybrano jedną: wysokość głosu (mediana F0) zgodna z wiekiem i płcią oraz najlepsza zrozumiałość po polsku (faster-whisper `small`, średni logprob). Ten sam głos czyta PL, EN i DE (później FR/ES). Kwestie czyta model **`eleven_v4_turbo`** (decyzja właściciela) z tagami audio (`contrib/voice/tags.json`, tylko w zapytaniu TTS). Dane maszynowe: `game/data/voice_cast.json`.
 
 Ustawienia wspólne: stability 0.5, similarity_boost 0.8, style 0, speaker boost. Głosy na koncie ElevenLabs mają nazwy `LW <id>` i etykietę `project=lockwright`.
 
