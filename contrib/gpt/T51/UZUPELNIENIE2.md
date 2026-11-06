@@ -1,0 +1,11 @@
+﻿# T51 — druga kontrola obsady i chronologii
+
+Kontrola opiera się na 41 plikach `game/data/jobs*/*.json`, `content.csv`, `contrib/voice/CAST.md`, `game/data/voice_cast.json`, `contrib/voice/tts_inputs.json` oraz liście plików w drzewie Git HEAD. Obejmuje pola `lines` i `after`. To uzupełnienie wcześniejszych raportów, nie dowód, że rozstrzygnięto wszystkie tożsamości, adresy i odmiany imion.
+
+| Priorytet | Dowód | Ustalenie i zalecenie |
+|---|---|---|
+| Wysoki | Cztery JSON-y (`job.refuse_aunt_alive`, `job.refuse_ex_partner`, `job.refuse_rush_bribe`, `job.refuse_sisters_flat`) przypisują pierwszą kwestię `after` postaci `lena`. Klucz `cast.lena.name` istnieje, ale `lena` nie występuje w `voice_cast.json` ani `contrib/voice/CAST.md`. | W obsadzie brak wpisu dla aspirant Leny Sowy opisanej w `docs/CLIENTS.md`. Dodać lub wskazać właściwy głos w osobnym zadaniu integracyjnym i sprawdzić plan nagrań. Sama nieobecność wpisu nie dowodzi zachowania aplikacji w czasie działania. |
+| Średni | `contrib/voice/tts_inputs.json` nie zawiera kluczy `.after.`, a w śledzonym katalogu `game/assets/audio/lines` nie ma plików `.after.*.ogg`. Dotyczy to wszystkich mówców takich kwestii, nie tylko Leny. | Przed obietnicą nagranych kwestii „dzień po” ustalić, czy mają być udźwiękowione i czy są dostarczane inną drogą; nie potwierdzono zawartości zewnętrznych paczek głosów ani zachowania aplikacji. |
+| Niski | `job.charleroi_letters.line.3`: Martine opiekowała się kasetką przez siedemdziesiąt lat. `CAST.md` określa jej wiek jako około 78 lat, a `voice_cast.json` jako 78. | Dosłownie wynikałoby, że opiekuje się nią od około ósmego roku życia. To możliwe, ale wymaga potwierdzenia chronologii albo doprecyzowania, czy początkowo zajmowała się nią jej rodzina. Nie przesądzać sprzeczności. |
+
+Kontrola mechaniczna: 53 różne identyfikatory w obu polach `lines` i `after` w 41 zleceniach mają odpowiadający klucz `cast.<id>.name`; 52 z 53 mają wpis w `voice_cast.json` (wyjątek: `lena`). Każdą z 164 pozycji `lines` zestawiono z przypisanym identyfikatorem i polskim tekstem, ale samo dopasowanie identyfikatora nie sprawdza nagrania ani poprawności wszystkich pięciu wersji językowych. Dziesięć `after` zestawiono z mówcą; wyniki nie zastępują kontroli rzeczywistych paczek głosowych.

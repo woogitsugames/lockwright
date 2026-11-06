@@ -13,4 +13,8 @@
 
 Porównane przykłady zachowują te same osoby i wiek: Halina 81, Stefan 67, Marta 34, Zuzanna 20, Kuba 23, Gosia 36, Zbyszek 74, Iga 27, Nadia 29, Agnieszka 45; różnica form Krysia/Krystyna sama nie dowodzi, że chodzi o tę samą osobę. Sprawdzono tożsamość Kasi w `job.newlyweds_4am.client` i `CAST.md` (`bride`): zgodna. Wynik nie jest pełnym indeksem wszystkich wystąpień imion ani dowodem braku dalszych błędów.
 
-Aktualizacja: dalsze ustalenia i kontrola identyfikator?w s? w `UZUPELNIENIE.md`. `docs/ASSETS.md` odnotowuje zast?pienie portretu dyrektorki wariantem v3 6 listopada; wpis w CAST mo?e by? nieaktualny i wymaga por?wnania z rzeczywistym zasobem.
+Aktualizacja: dalsze ustalenia i kontrola identyfikatorów są w `UZUPELNIENIE.md`. `docs/ASSETS.md` odnotowuje zastąpienie portretu dyrektorki wariantem v3 6 listopada; wpis w CAST może być nieaktualny i wymaga porównania z rzeczywistym zasobem.
+
+Kontrola rozszerzona o kwestie „dzień po” i dodatkowe ustalenia: `UZUPELNIENIE2.md`. W szczególności ujawniono brak `lena` w rejestrze obsady głosowej oraz brak plików `after` w śledzonym katalogu audio; zawartości zewnętrznych paczek głosowych nie sprawdzono.
+
+`INDEX.csv` zawiera zestawienie 41 zleceń: dzielnicę, klucz opisu klienta, mówców `lines`/`after` i brakujące wpisy głosowe. Liczby z opisów wykrywa mechanicznie, więc wymagają interpretacji i nie zastępują kontroli redakcyjnej wieku.
