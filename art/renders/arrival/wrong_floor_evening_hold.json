@@ -195,6 +195,46 @@
      "elevation_deg": 27.7
     },
     {
+     "name": "hall_bulb",
+     "type": "POINT",
+     "color_linear": [
+      1.0,
+      0.64,
+      0.36
+     ],
+     "strength_rel": 0.0265,
+     "dir3d_to_light": [
+      0.3318,
+      0.908,
+      0.2558
+     ],
+     "dir2d_to_light": [
+      0.07615,
+      -0.03081
+     ],
+     "elevation_deg": 14.8
+    },
+    {
+     "name": "court_lamp",
+     "type": "AREA",
+     "color_linear": [
+      1.0,
+      0.55,
+      0.25
+     ],
+     "strength_rel": 0.0232,
+     "dir3d_to_light": [
+      -0.0983,
+      0.6846,
+      -0.7223
+     ],
+     "dir2d_to_light": [
+      0.0101,
+      0.04868
+     ],
+     "elevation_deg": -46.2
+    },
+    {
      "name": "flat_lamp",
      "type": "AREA",
      "color_linear": [
@@ -291,6 +331,46 @@
       -0.03215
      ],
      "elevation_deg": 29.4
+    },
+    {
+     "name": "hall_bulb",
+     "type": "POINT",
+     "color_linear": [
+      1.0,
+      0.64,
+      0.36
+     ],
+     "strength_rel": 0.11,
+     "dir3d_to_light": [
+      0.1215,
+      0.9168,
+      0.3803
+     ],
+     "dir2d_to_light": [
+      -0.00077,
+      -0.02908
+     ],
+     "elevation_deg": 22.4
+    },
+    {
+     "name": "court_lamp",
+     "type": "AREA",
+     "color_linear": [
+      1.0,
+      0.55,
+      0.25
+     ],
+     "strength_rel": 0.0635,
+     "dir3d_to_light": [
+      -0.3059,
+      0.5612,
+      -0.769
+     ],
+     "dir2d_to_light": [
+      -0.04014,
+      0.04004
+     ],
+     "elevation_deg": -50.3
     },
     {
      "name": "flat_lamp",

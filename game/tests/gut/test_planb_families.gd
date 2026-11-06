@@ -229,3 +229,34 @@ func test_lever_states_read_by_geometry() -> void:
 		var sig := "w%.2f|%.1f" % [p["dz"], p["tilt_deg"]]
 		assert_false(seen.has(sig), "wafer %s ambiguous" % el["state"])
 		seen[sig] = el["state"]
+
+
+func test_landscape_roll_shows_whole_picks_and_loupe() -> void:
+	# HANDOVER §5.3: in landscape the roll strip cropped the picks and the loupe; now a column
+	var scenes := {&"pin_tumbler": "res://scenes/lock_job.tscn"}
+	scenes.merge(SCENES)
+	for fam in scenes:
+		var jobs := _jobs(fam)
+		if jobs.is_empty():
+			continue
+		JobRun.start(jobs[0])
+		for size in [Vector2i(915, 412), Vector2i(800, 360), Vector2i(1916, 1080)]:
+			var vp := SubViewport.new()
+			vp.size = size
+			add_child_autofree(vp)
+			var scene: Node = load(scenes[fam]).instantiate()
+			vp.add_child(scene)
+			await wait_physics_frames(2)
+			var view: LockPhotorealView = scene.view
+			var tag := "%s %dx%d" % [fam, size.x, size.y]
+			var screen := Rect2(Vector2.ZERO, Vector2(size))
+			var m: Array = view._tray_map()
+			assert_eq(m[3], m[2], tag + ": the whole roll image is shown (no crop)")
+			var off: Vector2 = m[4]
+			var roll := Rect2(view.tray_rect.position + off, m[2] * float(m[0]))
+			assert_true(screen.grow(1.0).encloses(roll), tag + ": roll on screen %s" % roll)
+			assert_false(roll.intersects(view.section_rect.grow(-1.0)), tag + ": roll beside the section")
+			var loupe: Rect2 = view.loupe_rect()
+			assert_gte(loupe.size.x, 48.0, tag + ": loupe target")
+			assert_gte(loupe.size.y, 48.0, tag + ": loupe target")
+			assert_true(screen.encloses(loupe), tag + ": loupe on screen")

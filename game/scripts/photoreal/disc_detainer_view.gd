@@ -15,6 +15,11 @@ func _dir() -> String:
 	return D_DIR
 
 
+## lockcore's disc position falls while the thumb pushes up: the band turns with the thumb.
+func _reel_sign() -> float:
+	return -1.0
+
+
 func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> void:
 	super.present(vm, input, delta)
 	_bar_dx = 0.0  # the sidebar does not slide along the core; it rises with its fingers

@@ -158,9 +158,9 @@
      "name": "window_light",
      "type": "AREA",
      "color_linear": [
-      1.0,
-      0.96,
-      0.9
+      0.85,
+      0.92,
+      1.0
      ],
      "strength_rel": 1.0,
      "dir3d_to_light": [
@@ -182,7 +182,7 @@
       0.95,
       1.0
      ],
-     "strength_rel": 0.033,
+     "strength_rel": 0.0594,
      "dir3d_to_light": [
       0.558,
       -0.5973,
@@ -193,6 +193,26 @@
       -0.04574
      ],
      "elevation_deg": 35.2
+    },
+    {
+     "name": "sun",
+     "type": "SUN",
+     "color_linear": [
+      1.0,
+      0.9,
+      0.74
+     ],
+     "strength_rel": 0.0,
+     "dir3d_to_light": [
+      0.4602,
+      0.3134,
+      -0.8307
+     ],
+     "dir2d_to_light": [
+      0.07948,
+      0.06543
+     ],
+     "elevation_deg": -56.2
     }
    ]
   },
@@ -236,9 +256,9 @@
      "name": "window_light",
      "type": "AREA",
      "color_linear": [
-      1.0,
-      0.96,
-      0.9
+      0.85,
+      0.92,
+      1.0
      ],
      "strength_rel": 1.0,
      "dir3d_to_light": [
@@ -260,7 +280,7 @@
       0.95,
       1.0
      ],
-     "strength_rel": 0.0319,
+     "strength_rel": 0.0574,
      "dir3d_to_light": [
       0.2723,
       -0.7832,
@@ -271,6 +291,26 @@
       -0.02975
      ],
      "elevation_deg": 34.0
+    },
+    {
+     "name": "sun",
+     "type": "SUN",
+     "color_linear": [
+      1.0,
+      0.9,
+      0.74
+     ],
+     "strength_rel": 0.0,
+     "dir3d_to_light": [
+      -0.2008,
+      -0.3374,
+      -0.9197
+     ],
+     "dir2d_to_light": [
+      -0.01749,
+      0.06189
+     ],
+     "elevation_deg": -66.9
     }
    ]
   }
@@ -293,10 +333,5 @@
    -0.0,
    1.5
   ]
- },
- "depth_png": {
-  "file": "wrong_floor_day_hold_depth.png",
-  "depth_max_mm": 20000.0,
-  "encoding": "planar camera depth = value/65535*depth_max_mm"
  }
 }

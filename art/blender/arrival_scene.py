@@ -410,7 +410,7 @@ win_light = area_light('window_light', ((WIN[0] + WIN[1]) / 2, WT + 600, (WIN[2]
 win_light.visible_camera = False; win_light.visible_glossy = False; win_light.visible_transmission = False   # the glass shows the sky plane, not the lamp
 if TIME == 'day':   # low sun over the courtyard roofs: a hard patch through the window onto the landing
     bpy.ops.object.light_add(type='SUN'); sun = bpy.context.object; sun.name = 'sun'
-    d = Vector((0.75, -1.0, -1.5)).normalized()
+    d = Vector((0.55, -1.0, -2.2)).normalized()
     sun.rotation_euler = (-d).to_track_quat('Z', 'Y').to_euler()
     sun.data.energy = 6.0; sun.data.color = (1.0, 0.90, 0.74); sun.data.angle = math.radians(0.6)
 if TIME == 'day':   # skylight bouncing down the stairwell from above the right-hand flight

@@ -114,6 +114,12 @@ func _dir() -> String:
 	return C_DIR
 
 
+## +1: a rising lockcore position rolls the wheel's front up (thumb up); -1 for families whose
+## position runs the other way under the thumb (disc detainer).
+func _reel_sign() -> float:
+	return 1.0
+
+
 ## +1: the teeth move down into the slots (combo sleeves); -1: up (disc detainer sidebar).
 func _tdir() -> float:
 	return float(meta.get("tooth_dir", 1.0))
@@ -264,7 +270,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 		_tooth[s] = target if snap else lerpf(_tooth[s], target, k)
 		if st == "overset":
 			_tooth[s] -= 0.12 * absf(sin(Time.get_ticks_msec() * 0.06))
-		_reel_mats[s].set_shader_parameter("pos", _pos[s])
+		_reel_mats[s].set_shader_parameter("pos", _pos[s] * _reel_sign())
 	_chatter = 1.0 if slipping else 0.0
 	var core := clampf(float(vm.get("core_rotation", 0.0)), 0.0, 1.0)
 	var bar_t := BAR_SLIDE_MM * (1.0 if _opened else core)

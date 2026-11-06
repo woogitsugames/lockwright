@@ -84,7 +84,7 @@ func _play(job: Dictionary, auto: bool, max_s: float = 90.0) -> Array:
 	var target := -1
 	var ease_left := 0
 	var settle := 0
-	var flipped := {}
+	var unstick := -1
 	for step in int(max_s * HZ):
 		var vm: Dictionary = session.describe()
 		var els: Array = vm["elements"]
@@ -98,18 +98,34 @@ func _play(job: Dictionary, auto: bool, max_s: float = 90.0) -> Array:
 			if st == "false_set":
 				caught = i
 		if caught >= 0 and ease_left == 0:
-			ease_left = 30
-			flipped[caught] = not flipped.get(caught, false)  # go round the other way past that false notch
-			if auto:
-				s._unhandled_input(_touch(0, left, true))
-				s._unhandled_input(_touch(0, left, false))  # a quick tap: let go for 0.1 s
-			else:
+			# caught in a false notch: ease the pull and roll that wheel on past the notch while it is
+			# loose (auto: a tap on the left zone while rolling it)
+			ease_left = 60
+			unstick = caught
+			if not auto:
 				s._unhandled_input(_drag(0, left - Vector2(0, 0.15 * InputSampler.TENSION_FULL_DP)))
 		if ease_left > 0:
 			ease_left -= 1
-			if ease_left == 0 and not auto:
-				s._unhandled_input(_drag(0, left - Vector2(0, pull * InputSampler.TENSION_FULL_DP)))
+			if auto and ease_left == 48:
+				s._unhandled_input(_touch(0, left, true))
+				s._unhandled_input(_touch(0, left, false))  # a quick tap: let go for 0.1 s
+			if ease_left == 0:
+				unstick = -1
+				if not auto:
+					s._unhandled_input(_drag(0, left - Vector2(0, pull * InputSampler.TENSION_FULL_DP)))
 		var speed := 0.0
+		if unstick >= 0:
+			b = -1
+			var ux := half + (float(unstick) + 0.5) / n * half
+			if unstick != target or not right_down:
+				if right_down:
+					s._unhandled_input(_touch(1, right, false))
+				right = Vector2(ux, 700)
+				s._unhandled_input(_touch(1, right, true))
+				right_down = true
+				target = unstick
+			if int(vm["pick_element"]) == unstick and ease_left < 56:
+				speed = 0.9 if auto else 0.5
 		if b >= 0:
 			var x := half + (float(b) + 0.5) / n * half
 			if b != target or not right_down:
@@ -124,9 +140,11 @@ func _play(job: Dictionary, auto: bool, max_s: float = 90.0) -> Array:
 			var g := fposmod((float(e["window_lo"]) + float(e["window_hi"])) * 0.5, 1.0)
 			var off: float = LockComboView.wrap_half(g - float(e["position"]))
 			if int(vm["pick_element"]) == b:
-				var way := signf(off) * (-1.0 if flipped.get(b, false) else 1.0)
-				speed = way * clampf(absf(off) * 3.0 if not flipped.get(b, false) else 0.3, 0.12, 0.35)
+				var spin := -1.0 if _scene_path == DISC_SCENE else 1.0  # disc position falls with thumb up
+				speed = spin * signf(off) * clampf(absf(off) * 3.0, 0.12, 0.35)
 			settle += 1
+		if OS.has_environment("LW_DEBUG") and step % 240 == 0:
+			print("t=%.0f T=%.2f b=%d pick=%d spd=%.2f in=%s %s" % [step * dt, float(vm["tension"]), b, int(vm["pick_element"]), speed, str(scene._last_input),  els.map(func(e): return "%s@%.3f[%.2f]" % [e["state"], e["position"], (float(e["window_lo"]) + float(e["window_hi"])) * 0.5])])
 		var defl: float = ComboControl.deflection_for(speed)
 		if right_down:
 			s._unhandled_input(_drag(1, right - Vector2(0, defl * InputSampler.LIFT_FULL_DP)))

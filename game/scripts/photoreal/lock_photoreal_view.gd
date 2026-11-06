@@ -469,12 +469,13 @@ func _layout() -> void:
 		section_rect = Rect2(r.position, Vector2(r.size.x, safe.position.y - r.position.y + h))
 		tray_rect = Rect2(Vector2(r.position.x, section_rect.end.y), Vector2(r.size.x, r.end.y - section_rect.end.y))
 	else:
-		# Landscape (HUD.md §11.2): section in the middle, roll under it, thumb zones at the sides.
-		var th := r.size.y * 0.26
-		var sh := r.size.y - th
+		# Landscape (HUD.md §11.2, HANDOVER §5.3): the section full height in the middle, the roll as a
+		# column on the right (whole picks and loupe, contain-fit), the plug face on the left.
+		var sh := r.size.y
 		var sw := sh * SECTION_ASPECT
 		section_rect = Rect2(Vector2(r.position.x + (r.size.x - sw) * 0.5, r.position.y), Vector2(sw, sh))
-		tray_rect = Rect2(Vector2(section_rect.position.x - sw * 0.25, section_rect.end.y), Vector2(sw * 1.5, th))
+		var x0 := section_rect.end.x
+		tray_rect = Rect2(Vector2(x0, safe.position.y), Vector2(maxf(safe.end.x - x0, 8.0), safe.size.y))
 	# Keep the plate's aspect: crop (cover) rather than stretch.
 	_section.position = section_rect.position
 	_section.size = section_rect.size
@@ -631,19 +632,15 @@ func _draw_tray() -> void:
 		_tray.draw_rect(Rect2(Vector2.ZERO, _tray.size), Color(0.18, 0.12, 0.08))
 	if _tray_full == null:
 		return
-	# cover-fit the 1080×960 roll render into the tray rect, then draw each pocket column from the
-	# "full" or "empty" render (same light, same camera, so the seams do not show).
-	var img := Vector2(_tray_full.get_size())
-	var sz := _tray.size
-	var sc := maxf(sz.x / img.x, sz.y / img.y)
-	var shown := sz / sc               # image pixels visible
-	var origin := (img - shown) * 0.5  # top-left of the visible image region
-	origin.y = 0.0                     # keep the roll's top seam right under the section
-	if sz.x / sz.y > 1.6:
-		# landscape strip: fit the width and show the band with the picks and the pocket mouths
-		sc = sz.x / img.x
-		shown = sz / sc
-		origin = Vector2(0.0, clampf(img.y * 0.22, 0.0, maxf(img.y - shown.y, 0.0)))
+	# cover-fit the 1080×960 roll render into the tray rect (portrait), a band of it (wide strip)
+	# or contain-fit (landscape column), then draw each pocket column from the "full" or "empty"
+	# render (same light, same camera, so the seams do not show).
+	var mp := _tray_map()
+	var sc: float = mp[0]
+	var origin: Vector2 = mp[1]
+	var img: Vector2 = mp[2]
+	var shown: Vector2 = mp[3]
+	var off: Vector2 = mp[4]
 	var cols: Array = TRAY_COLUMNS.duplicate()
 	cols.append(1.0)
 	for c in cols.size() - 1:
@@ -656,16 +653,23 @@ func _draw_tray() -> void:
 		if x1 <= x0:
 			continue
 		var src := Rect2(Vector2(x0, origin.y), Vector2(x1 - x0, shown.y))
-		var dst := Rect2(Vector2((x0 - origin.x) * sc, 0.0), Vector2((x1 - x0) * sc, sz.y))
+		var dst := Rect2(off + Vector2((x0 - origin.x) * sc, 0.0), Vector2((x1 - x0) * sc, shown.y * sc))
 		_tray.draw_texture_rect_region(tex, dst, src)
 		# D-48: lost picks leave the empty-pocket close-up photo, not a flat rect
 		if pocket_lost and _pocket_empty != null:
 			var ps := Vector2(_pocket_empty.get_size())
 			var pdst := Rect2(dst.position + Vector2(4, 4), dst.size - Vector2(8, 8))
 			_tray.draw_texture_rect_region(_pocket_empty, pdst, Rect2(Vector2.ZERO, ps), Color(1, 1, 1, 0.9))
-	# soft contact shadow where the roll meets the section edge (no line, no glow)
+	# soft contact shadow where the roll meets the section edge (no line, no glow): its top edge in
+	# portrait, its left edge in the landscape column
+	var sz := _tray.size
+	var column := sz.y > sz.x * 0.9
 	for j in 6:
-		_tray.draw_rect(Rect2(0, j * 2.0, sz.x, 2.0), Color(0, 0, 0, 0.22 * (1.0 - j / 6.0)))
+		var shade := Color(0, 0, 0, 0.22 * (1.0 - j / 6.0))
+		if column:
+			_tray.draw_rect(Rect2(j * 2.0, 0, 2.0, sz.y), shade)
+		else:
+			_tray.draw_rect(Rect2(0, j * 2.0, sz.x, 2.0), shade)
 	# thumb dents (HUD.md §5.2): soft darker hollow under each live thumb + faint reference mark
 	for t in _touches.values():
 		var p: Vector2 = t["pos"] - _tray.position
@@ -711,10 +715,15 @@ func _dent(c: Vector2, r: float, alpha: float) -> void:
 
 
 # ------------------------------------------------------------------ N-57 loupe
+## [scale, image origin, image size, shown image size, offset in the tray] of the roll render,
+## shared by _draw_tray() and the loupe target.
 func _tray_map() -> Array:
-	# [scale, image origin] of the cover-fit roll render, same maths as _draw_tray()
 	var img := Vector2(_tray_full.get_size()) if _tray_full else Vector2(1080, 960)
 	var sz := tray_rect.size
+	if sz.y > sz.x * 0.9:
+		# landscape column: the whole roll (picks and loupe), at the bottom of the column
+		var scc := minf(sz.x / img.x, sz.y / img.y)
+		return [scc, Vector2.ZERO, img, img, Vector2((sz.x - img.x * scc) * 0.5, sz.y - img.y * scc)]
 	var sc := maxf(sz.x / img.x, sz.y / img.y)
 	var shown := sz / sc
 	var origin := Vector2((img.x - shown.x) * 0.5, 0.0)
@@ -722,7 +731,8 @@ func _tray_map() -> Array:
 		sc = sz.x / img.x
 		shown = sz / sc
 		origin = Vector2(0.0, clampf(img.y * 0.22, 0.0, maxf(img.y - shown.y, 0.0)))
-	return [sc, origin, img]
+	shown = Vector2(minf(shown.x, img.x - origin.x), minf(shown.y, img.y - origin.y))
+	return [sc, origin, img, shown, Vector2.ZERO]
 
 
 func _compute_loupe_rect() -> Rect2:
@@ -730,8 +740,9 @@ func _compute_loupe_rect() -> Rect2:
 	var sc: float = m[0]
 	var origin: Vector2 = m[1]
 	var img: Vector2 = m[2]
-	var a := tray_rect.position + (Vector2(img.x * 0.74, img.y * 0.46) - origin) * sc
-	var b := tray_rect.position + (Vector2(img.x * 1.0, img.y * 0.80) - origin) * sc
+	var off: Vector2 = m[4]
+	var a := tray_rect.position + off + (Vector2(img.x * 0.74, img.y * 0.46) - origin) * sc
+	var b := tray_rect.position + off + (Vector2(img.x * 1.0, img.y * 0.80) - origin) * sc
 	var rr := Rect2(a, b - a).intersection(tray_rect)
 	# never smaller than the touch target, kept inside the tray
 	var c := rr.get_center() if rr.size.x > 0.0 else tray_rect.end - Vector2(LOUPE_MIN_DP, LOUPE_MIN_DP)
