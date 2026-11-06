@@ -130,7 +130,7 @@ BACK, RIB_FACE = -3.0, -15.0        # felt base face at y=-12, rib crowns at -15
 FRAME_Y = -32.0; FR = 30.0          # frame depth and width
 if ORIENT == 'portrait':
     IW = 382.0; TOP = 2060.0; BX = 0.0
-    TITLE = [('POGOTOWIE ZAMKOWE', 16.0, 22.0, 2.0), ('LOCKWRIGHT', 52.0, 50.0, 0.0)]     # text, cap, top (mm from inner top), x
+    TITLE = [('POGOTOWIE ZAMKOWE', 16.0, 22.0, 2.0), ('LOCKWRIGHT', 48.0, 52.0, 0.0)]     # text, cap, top (mm from inner top), x
     # id, text, cap, band top, band height, text x, band x0, band x1 (mm from the inner top-left)
     MENU = [('start', 'ZACZNIJ DYŻUR', 39.0, 140.0, 108.0, 18.0, 0, IW)]
     for i, (iid, t) in enumerate((('jobs', 'ZLECENIA'), ('workshop', 'WARSZTAT'), ('showcase', 'GABLOTA'), ('settings', 'USTAWIENIA'), ('about', 'O GRZE'))):
@@ -272,7 +272,7 @@ if SHOT == 'menu':
         o.rotation_euler = (0, 0, math.radians(rz)); o.location = (X0 + IW * xo, RIB_FACE - 2.0 - 7.0 * (k % 2), ZB + 1.7)
 
 # ---------------------------------------------------------------- hook rail, key tags, invented keys
-if ORIENT == 'portrait': RX, RZ, RW = BX + 10.0, ZB - FR - 70.0, 380.0
+if ORIENT == 'portrait': RX, RZ, RW = BX + 10.0, ZB - FR - 44.0, 380.0
 else: RX, RZ, RW = X0 + IW + FR + 190.0, ZT - 30.0, 300.0
 if SHOT == 'settings': RZ = ZB - 4000.0   # rail out of shot
 bx('rail', RX - RW / 2, RX + RW / 2, -20, 0, RZ - 30, RZ + 30, beech, bev=3.0)
@@ -305,7 +305,7 @@ def key_tag(name, top, text, mat, w=80.0, h=150.0, rot=0.0, swing=0.0, num=54.0)
     cu = bpy.data.curves.new(name + '_n', 'FONT'); cu.body = text; cu.size = num; cu.font = MONO; cu.extrude = 1.0
     cu.align_x = 'CENTER'; cu.align_y = 'CENTER'
     s = bpy.data.objects.new(name + '_n', cu); bpy.context.collection.objects.link(s)
-    s.rotation_euler = (math.radians(90), math.radians(rng.uniform(-4, 4)), 0); s.location = (top.x + rng.uniform(-2, 2), top.y - 0.9 - 0.5, top.z - 7 - h * 0.56)
+    s.rotation_euler = (math.radians(90), math.radians(rng.uniform(-4, 4)), 0); s.location = (top.x + rng.uniform(-2, 2), top.y - 0.9 - 0.5, top.z - 7 - h * 0.40)
     bpy.context.view_layer.objects.active = s; s.select_set(True); bpy.ops.object.convert(target='MESH'); s.select_set(False)
     fill = s.copy(); fill.data = s.data.copy(); bpy.context.collection.objects.link(fill)
     cut(t, s); _bev(t, 0.4, 2, 30)
@@ -360,14 +360,14 @@ if SHOT == 'settings':
 # ---------------------------------------------------------------- light: one warm bulb raking from high left, deep fall-off
 CTR = Vector((BX, 0, (ZT + ZB) / 2))
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = CTR
-bpy.ops.object.light_add(type='SPOT', location=(X0 - 170, -380, TOP + 220)); bulb = bpy.context.object
+bpy.ops.object.light_add(type='SPOT', location=(X0 - 260, -380, TOP + 260)); bulb = bpy.context.object
 bulb.data.shadow_soft_size = float(arg('--soft', '22')); bulb.data.energy = float(arg('--bulb', '4.6e7')); bulb.data.color = (1.0, 0.70, 0.44)
 bulb.data.spot_size = math.radians(92); bulb.data.spot_blend = 1.0
 a_b = bpy.data.objects.new('aim_bulb', None); scene.collection.objects.link(a_b)
 a_b.location = (BX - 10, 0, (ZT + ZB) / 2 + 20) if ORIENT == 'portrait' else (BX + 160, 0, (ZT + ZB) / 2 - 60)
 cb = bulb.constraints.new('TRACK_TO'); cb.target = a_b; cb.track_axis = 'TRACK_NEGATIVE_Z'; cb.up_axis = 'UP_Y'
 AIM_T = bpy.data.objects.new('aim_tags', None); scene.collection.objects.link(AIM_T); AIM_T.location = (RX, 0, RZ - 100)
-area_light('window', (RX + 1500, -900, RZ - 300), AIM_T, 900, float(arg('--window', '6e6')), (0.72, 0.80, 1.0), size_y=1200)
+area_light('window', (RX + 1500, -900, RZ - 300), AIM_T, 900, float(arg('--window', '3.5e6')), (0.72, 0.80, 1.0), size_y=1200)
 area_light('bounce', (BX + 300, -2600, (ZT + ZB) / 2 - 300), AIM, 1600, float(arg('--bounce', '3e4')), (1.0, 0.84, 0.66))
 world_hdri(strength=0.012, sat=0.3)
 
