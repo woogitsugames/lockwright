@@ -23,7 +23,14 @@ signal level_changed(level: int, step_id: StringName)
 ## Seconds of no progress after which H1..H4 are reached. Ascending, 1-4 entries.
 const DEFAULT_THRESHOLDS := [15.0, 30.0, 45.0, 60.0]
 
-var thresholds: PackedFloat32Array = PackedFloat32Array(DEFAULT_THRESHOLDS)
+var thresholds: PackedFloat32Array = PackedFloat32Array(DEFAULT_THRESHOLDS):
+	set(value):
+		# REVIEW-V02: thresholds must rise (H1 < H2 < ...); sort, drop negatives, keep at most 4
+		var v := Array(value).filter(func(x: float) -> bool: return x >= 0.0)
+		v.sort()
+		thresholds = PackedFloat32Array(v.slice(0, 4))
+## REVIEW-V02: history is telemetry, keep the last entries only.
+const HISTORY_MAX := 256
 ## "In the dark" mode (ONBOARDING §7): same levels and timing, different channels.
 var dark_mode := false
 var step_id: StringName = &""
@@ -48,7 +55,7 @@ func start_step(p_step_id: StringName) -> void:
 ## goal, e.g. a bind or a set): the ladder restarts from H0.
 func progress() -> void:
 	if level > 0:
-		history.append({"step": step_id, "level": 0, "t": _stuck_s})
+		_log({"step": step_id, "level": 0, "t": _stuck_s})
 	_stuck_s = 0.0
 	level = 0
 
@@ -72,12 +79,18 @@ func update(delta: float) -> int:
 		if fired == 4:
 			_h4_done = true
 			fired_h4 = true
-		history.append({"step": step_id, "level": fired, "t": _stuck_s})
+		_log({"step": step_id, "level": fired, "t": _stuck_s})
 		level_changed.emit(fired, step_id)
 		if fired == 4:
 			level = 3  # H4 played once; the level then stays at 3 (§2.1)
 			break
 	return 4 if fired_h4 else level
+
+
+func _log(entry: Dictionary) -> void:
+	history.append(entry)
+	if history.size() > HISTORY_MAX:
+		history = history.slice(history.size() - HISTORY_MAX)
 
 
 ## True once H4 has played for the current step (start_step resets it).

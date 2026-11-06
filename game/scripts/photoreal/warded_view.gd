@@ -397,7 +397,7 @@ func _update_w_chalk(els: Array, delta: float) -> void:
 	var r := get_rect()
 	var safe := _safe_rect(r)
 	var portrait := safe.size.y >= safe.size.x
-	var thumbs_y := tray_rect.position.y + tray_rect.size.y * (0.66 if portrait else 0.5)
+	var thumbs_y := tray_rect.position.y + tray_rect.size.y * (0.66 if portrait else 0.75)
 	m["left_anchor"] = Vector2(r.size.x * (0.22 if portrait else 0.12), thumbs_y)
 	m["right_anchor"] = Vector2(r.size.x * (0.70 if portrait else 0.88), thumbs_y)
 	var turned := float(_last_vm.get("core_rotation", 0.0)) > 0.02

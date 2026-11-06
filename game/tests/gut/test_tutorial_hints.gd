@@ -140,3 +140,34 @@ func test_dark_mode_hints_have_no_picture_until_h4() -> void:
 	assert_false(scene.view.dark, "H4 lights the scene for a moment")
 	_idle(scene, 3.0)
 	assert_true(scene.view.dark, "and the light goes off again")
+
+
+func test_screen_reader_hears_h2_to_h4() -> void:
+	# ONBOARDING §11: H2 the gesture, H3 the chalk, H4 the master hand; nothing without a reader
+	var o: Array = await _open(false)
+	var scene: Node = o[0]
+	var hints: TutorialHints = o[2]
+	hints.screen_reader_override = 0
+	_idle(scene, 31.0)
+	assert_eq(hints.spoken.size(), 0, "no screen reader: silent")
+	hints.screen_reader_override = 1
+	_idle(scene, 30.0)
+	assert_eq(hints.spoken, [&"tutorial.say_chalk", &"tutorial.say_master"] as Array[StringName], "H3 + H4 spoken")
+	var o2: Array = await _open(false)
+	var h2: TutorialHints = o2[2]
+	h2.screen_reader_override = 1
+	_idle(o2[0], 31.0)
+	assert_eq(h2.spoken, [&"tutorial.say_tension"] as Array[StringName], "H2 says the tension gesture")
+	for k in [&"tutorial.say_tension", &"tutorial.say_lift", &"tutorial.say_warded", &"tutorial.say_chalk", &"tutorial.say_master"]:
+		assert_ne(I18n.t(k), String(k), "%s translated" % k)
+
+
+func test_ladder_thresholds_sorted_and_history_capped() -> void:
+	var l := HintLadder.new()
+	l.thresholds = PackedFloat32Array([45.0, 15.0, -3.0, 30.0, 60.0, 90.0])
+	assert_eq(Array(l.thresholds), [15.0, 30.0, 45.0, 60.0], "sorted, negatives dropped, 4 levels")
+	l.start_step(&"a")
+	for i in 400:
+		l.update(20.0)
+		l.progress()
+	assert_lte(l.history.size(), HintLadder.HISTORY_MAX)

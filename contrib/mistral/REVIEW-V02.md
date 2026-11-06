@@ -8,13 +8,17 @@ Kod jest czytelny, zgodny ze zleceniem i z ONBOARDING §2.1–2.2: czysta logika
 ## Błędy (poprawione)
 1. **`GhostHand` przerysowywał się w każdej klatce, gdy nic nie grał.** `_process` był włączony od startu (domyślnie dla węzła z `_process`), więc bezczynne widmo co klatkę wołało `_apply_layout()` i `queue_redraw()`. Na tanim telefonie to zbędna praca na ekranie zamka. Poprawka: `set_process(false)` w `_init`; `play_gesture()` włącza przetwarzanie, koniec gestu je wyłącza (tak jak było).
 
+2a. **Owal zastępczy `GhostHand` nie rysował się wcale na ekranie.** Shader `canvas_item` liczył maskę z `UV`, a `draw_rect()` bez tekstury nie wypełnia UV (same zera), więc maska wychodziła pusta i widmo było niewidoczne. Testy headless tego nie widzą (nie renderują). Poprawka: miękki owal rysowany 8 nałożonymi elipsami `draw_colored_polygon`, alfa warstwy dobrana tak, by rdzeń miał dokładnie 35 %. Sprawdzone zrzutem (`docs/handoff/device-tests/fixes/hints/`).
+
 ## Błędy wykryte przy wpięciu (po stronie integracji, nie w kodzie V02)
 2. Pseudokod z raportu robi `ladder.start_step(coach.text_key())`. Klucz tekstu nie jest krokiem: w S2–S3 i w pierwszych zleceniach `text_key()` jest zwykle pusty, więc drabinka nigdy by się nie zerowała między krokami. W integracji krok wyznacza `TutorialHints._step_id()` (krok trenera w S1 albo „napięcie / unoszenie” + liczba osadzonych elementów), a każde osadzenie zaczyna nowy krok.
 3. Pseudokod zeruje drabinkę warunkiem „gracz ma bind albo set” w **każdej** klatce, w której element jest związany. To trzymałoby H0 bez końca, gdy gracz trzyma napięcie i nic nie robi. Postęp to **zdarzenie** (`bind`, `set`, `gate_align` z lockcore), nie stan.
 
 ## Uwagi (bez zmian, do decyzji)
-4. `HintLadder.history` rośnie bez limitu. W samouczku to kilkadziesiąt wpisów, więc nie przeszkadza; zapis do `Save` (`tutorial/hint_history`) przycina do 400 wpisów po stronie integracji.
-5. `thresholds` nie są walidowane (zakłada się rosnącą kolejność). Przy malejących progach `update()` przeskoczy poziomy w dziwnej kolejności. Wystarczy komentarz albo `sort()` w setterze.
+4. **(poprawione)** `HintLadder.history` rosła bez limitu; teraz trzyma ostatnie 256 wpisów (`HISTORY_MAX`).
+   Wcześniej: `HintLadder.history` rośnie bez limitu. W samouczku to kilkadziesiąt wpisów, więc nie przeszkadza; zapis do `Save` (`tutorial/hint_history`) przycina do 400 wpisów po stronie integracji.
+5. **(poprawione)** setter `thresholds` sortuje, odrzuca ujemne i obcina do 4 progów.
+   Wcześniej: `thresholds` nie są walidowane (zakłada się rosnącą kolejność). Przy malejących progach `update()` przeskoczy poziomy w dziwnej kolejności. Wystarczy komentarz albo `sort()` w setterze.
 6. Owal zastępczy jest zawsze pionowy. Dla gestu „w bok” (wybór pinu) i dla dłoni mistrza będzie potrzebny obrót sylwetki; do zrobienia razem z teksturami dłoni od Magnific (`texture` + kąt).
 7. Opcja „zamień kciuki” (`mirror`) jest gotowa, ale w grze nie ma jeszcze ustawienia dla leworęcznych (`HUD.md` §9), więc integracja jej nie włącza.
 

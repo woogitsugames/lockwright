@@ -41,6 +41,10 @@ var preview_tension := -1.0
 ## Steps in which H4 played (telemetry / tests).
 var h4_steps: Array[StringName] = []
 var step := &""
+## ONBOARDING §11: H2–H4 also get a short spoken line when a screen reader is on.
+var screen_reader_override := -1  # tests: 0/1 force; -1 asks DisplayServer
+var spoken: Array[StringName] = []
+var _a11y: Control
 
 var _base_chalk := ChalkLayer.Level.OFF
 var _auto_s := 0.0
@@ -67,6 +71,14 @@ func setup(p_view: LockPhotorealView, p_coach: TutorialCoach, p_family: StringNa
 	ghost.gesture_progress.connect(_on_ghost_progress)
 	ghost.gesture_finished.connect(func() -> void: preview_tension = -1.0)
 	ladder.level_changed.connect(_on_level)
+	# live region for the spoken hints when the engine's TTS is off (no visible text)
+	_a11y = Control.new()
+	_a11y.name = "HintAnnouncer"
+	_a11y.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_a11y.size = Vector2(1, 1)
+	if "accessibility_live" in _a11y:
+		_a11y.set("accessibility_live", 2)  # assertive
+	view.add_child(_a11y)
 
 
 ## One physics step of the lock: vm after the step, the input that went in, its events.
@@ -205,7 +217,40 @@ func _on_level(level: int, _step_id: StringName) -> void:
 				ghost.play_gesture(g[0], g[1], g[2], 1, 1.5)
 			Haptics.play(&"bind", 0.4, mat)
 			_start_autopilot()
+	_speak(level)
 	_save_history()
+
+
+func _screen_reader_active() -> bool:
+	if screen_reader_override >= 0:
+		return screen_reader_override == 1
+	if DisplayServer.has_method("accessibility_screen_reader_active"):
+		return int(DisplayServer.accessibility_screen_reader_active()) == 1
+	return false
+
+
+## H2 says the gesture of the step, H3 the chalk, H4 the master hand (ONBOARDING §11).
+func _speak(level: int) -> void:
+	if level < 2 or not _screen_reader_active():
+		return
+	var key := &"tutorial.say_master"
+	if level == 3:
+		key = &"tutorial.say_chalk"
+	elif level == 2:
+		if family == &"warded":
+			key = &"tutorial.say_warded"
+		else:
+			key = &"tutorial.say_tension" if _needs_tension() else &"tutorial.say_lift"
+	spoken.append(key)
+	var text := I18n.t(key)
+	if bool(ProjectSettings.get_setting("audio/general/text_to_speech", false)):
+		var voices := DisplayServer.tts_get_voices_for_language(TranslationServer.get_locale().substr(0, 2))
+		if voices.size() > 0:
+			DisplayServer.tts_stop()
+			DisplayServer.tts_speak(text, voices[0])
+			return
+	if _a11y:
+		_a11y.set("accessibility_description", text)
 
 
 ## Dev / screenshots (--lw-hint N): climb the ladder to level N right now.

@@ -853,7 +853,7 @@ func thumb_anchors() -> Array:
 	var r := get_rect()
 	var safe := _safe_rect(r)
 	var portrait := safe.size.y >= safe.size.x
-	var thumbs_y := tray_rect.position.y + tray_rect.size.y * (0.66 if portrait else 0.5)
+	var thumbs_y := tray_rect.position.y + tray_rect.size.y * (0.66 if portrait else 0.75)
 	return [Vector2(r.size.x * (0.22 if portrait else 0.12), thumbs_y), Vector2(r.size.x * (0.70 if portrait else 0.88), thumbs_y)]
 
 
@@ -924,7 +924,7 @@ func _update_chalk(elements: Array, default_target: float, delta: float) -> void
 	var r := get_rect()
 	var safe := _safe_rect(r)
 	var portrait := safe.size.y >= safe.size.x
-	var thumbs_y := tray_rect.position.y + tray_rect.size.y * (0.66 if portrait else 0.5)
+	var thumbs_y := tray_rect.position.y + tray_rect.size.y * (0.66 if portrait else 0.75)
 	m["left_anchor"] = Vector2(r.size.x * (0.22 if portrait else 0.12), thumbs_y)
 	m["right_anchor"] = Vector2(r.size.x * (0.70 if portrait else 0.88), thumbs_y)
 	m["wrench_tip"] = _face.position + _face.arm_tip()
