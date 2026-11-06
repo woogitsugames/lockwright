@@ -50,7 +50,7 @@ def felt_mat():
     m, nt, l, b, P = _new('felt')
     fib = _noise(nt, P, 3.0, detail=10, rough=0.75)
     mot = _noise(nt, P, 0.04, detail=4)
-    col = _mix(nt, (0.008, 0.008, 0.008, 1), (0.024, 0.023, 0.022, 1), _maprange(nt, fib, 0.35, 0.75))
+    col = _mix(nt, (0.005, 0.005, 0.005, 1), (0.022, 0.021, 0.020, 1), _maprange(nt, fib, 0.3, 0.8))
     col = _mix(nt, col, (0.008, 0.008, 0.008, 1), _maprange(nt, mot, 0.4, 0.65, 0, 0.5))
     lint = _maprange(nt, _noise(nt, P, 0.9, detail=3, rough=0.4, dist=0.6), 0.745, 0.775)
     col = _mix(nt, col, (0.30, 0.29, 0.27, 1), _math(nt, 'MULTIPLY', lint, 0.6))
@@ -66,7 +66,7 @@ def felt_mat():
     wav = _noise(nt, P, 0.05, detail=3)                                          # ribs not perfectly even
     hgt = _mix(nt, _mix(nt, fib, _noise(nt, P, 8.0, detail=4), 0.5, dtype='FLOAT'), streak, 0.5, dtype='FLOAT')
     hgt = _mix(nt, hgt, wav, 0.35, dtype='FLOAT')
-    l.new(_bump(nt, hgt, 0.5, 0.3, bv.outputs['Normal']), b.inputs['Normal'])
+    l.new(_bump(nt, hgt, 0.8, 0.45, bv.outputs['Normal']), b.inputs['Normal'])
     return m
 
 def flake_decal(name, bounds, centre, radii, under=(0.66, 0.62, 0.52), rim=(0.05, 0.045, 0.035), amount=0.6, scale=0.02, y=-0.25):
@@ -94,13 +94,19 @@ green = photo_mat('ph_lamperia', 'wall_oil_paint_green', scale=760, metallic=0.0
 lime = photo_mat('ph_wall_lime', 'wall_lime_plaster', scale=1000, metallic=0.0, bump=0.5, grime=0.5, tint=(0.80, 0.76, 0.68))
 patch_m = lime_wall('patch', color=(0.66, 0.63, 0.56), seed=3, dirt=0.6, cracks=0.0)
 stripe = oil_paint('stripe', (0.16, 0.04, 0.03), rough=0.3, chips=0.8, scuffs=0.9, strokes='X', seed=2, edge_chips=1.0)
-wood_fr = photo_mat('ph_frame', 'bench_beech_top', scale=420, rot=0, metallic=0.0, base=(0.045, 0.024, 0.013), base_mix=0.72,
-                    coat=0.45, bump=0.25, wear=0.55, grime=0.7)
-wood_fr = add_top_dust(wood_fr, 0.45)
+def frame_wood(name, rot):
+    m = photo_mat(name, 'g03:oak_satin', scale=210, rot=rot, metallic=0.0, tint=(0.42, 0.34, 0.28), coat=0.2, rough_add=0.08, bump=0.35, wear=0.5, grime=0.8)
+    return add_top_dust(m, 0.45)
+wood_fr = frame_wood('ph_frame_h', 0); wood_fr_v = frame_wood('ph_frame_v', 90)
 alu = add_top_dust(photo_mat('ph_alu', 'nickel_satin', scale=140, metallic=1.0, base=(0.66, 0.66, 0.64), base_mix=0.35, rough_add=0.08, wear=0.2, grime=0.6), 0.45)
 felt = felt_mat()
 def letter_mat(name, col, rough, grime, dust):
-    m = add_top_dust(plastic(name, col, rough=rough, grime=grime, sheen_scuffs=0.35), dust)
+    m = plastic(name, col, rough=rough, grime=grime, sheen_scuffs=0.35)
+    nt = m.node_tree; b = nt.nodes['Principled BSDF']; P = nt.nodes.new('ShaderNodeTexCoord').outputs['Object']
+    src = next(lk.from_socket for lk in nt.links if lk.to_socket == b.inputs['Base Color'])
+    smudge = _maprange(nt, _noise(nt, P, 0.12, detail=8, rough=0.7, dist=0.5), 0.5, 0.78, 0.0, 0.45)   # thumb grime, yellowing
+    nt.links.new(_mix(nt, src, (0.30, 0.27, 0.21, 1), smudge), b.inputs['Base Color'])
+    m = add_top_dust(m, dust)
     m.node_tree.nodes['Principled BSDF'].inputs['Coat Weight'].default_value = 0.2; return m
 letter_w = letter_mat('letter_white', (0.80, 0.80, 0.77), 0.26, 0.45, 0.5)
 letter_y = letter_mat('letter_old', (0.74, 0.69, 0.55), 0.32, 0.7, 0.6)
@@ -124,12 +130,12 @@ BACK, RIB_FACE = -3.0, -15.0        # felt base face at y=-12, rib crowns at -15
 FRAME_Y = -32.0; FR = 30.0          # frame depth and width
 if ORIENT == 'portrait':
     IW = 382.0; TOP = 2060.0; BX = 0.0
-    TITLE = [('POGOTOWIE ZAMKOWE', 15.0, 24.0, 2.0), ('LOCKWRIGHT', 47.0, 52.0, 0.0)]     # text, cap, top (mm from inner top), x
+    TITLE = [('POGOTOWIE ZAMKOWE', 16.0, 22.0, 2.0), ('LOCKWRIGHT', 52.0, 50.0, 0.0)]     # text, cap, top (mm from inner top), x
     # id, text, cap, band top, band height, text x, band x0, band x1 (mm from the inner top-left)
-    MENU = [('start', 'ZACZNIJ DYŻUR', 35.0, 140.0, 102.0, 20.0, 0, IW)]
+    MENU = [('start', 'ZACZNIJ DYŻUR', 39.0, 140.0, 108.0, 18.0, 0, IW)]
     for i, (iid, t) in enumerate((('jobs', 'ZLECENIA'), ('workshop', 'WARSZTAT'), ('showcase', 'GABLOTA'), ('settings', 'USTAWIENIA'), ('about', 'O GRZE'))):
-        MENU.append((iid, t, 30.0, 242.0 + i * 84.0, 84.0, 22.0, 0, IW))
-    IH = 242.0 + 5 * 84.0 + 18.0
+        MENU.append((iid, t, 34.0, 248.0 + i * 88.0, 88.0, 20.0, 0, IW))
+    IH = 248.0 + 5 * 88.0 + 16.0
 else:
     IW = 846.0; TOP = 1990.0; BX = -170.0
     TITLE = [('POGOTOWIE ZAMKOWE', 17.0, 34.0, 2.0), ('LOCKWRIGHT', 62.0, 70.0, 0.0)]
@@ -162,7 +168,9 @@ if ORIENT == 'portrait':
              (X0 + IW + 60, TOP - 300), (X0 + IW - 10, TOP - 180), (X0 + IW - 50, TOP + 20)]
 else:
     PATCH = [(X0 - 180, TOP + 40), (X0 - 40, TOP + 80), (X0 + 120, TOP + 30), (X0 + 160, TOP - 30), (X0 - 60, TOP - 60), (X0 - 200, TOP - 20)]
-pt = prism('plaster_patch', PATCH, -1.2, 0.0); setmat(pt, patch_m); _bev(pt, 1.0, 3, 30)
+pcx = sum(p[0] for p in PATCH) / len(PATCH); pcz = sum(p[1] for p in PATCH) / len(PATCH)
+stain_decal('plaster_patch', 'Y', -0.2, (pcx - 400, pcx + 400, pcz - 400, pcz + 400), [(pcx, pcz, 150, 170, 0.75), (pcx + 60, pcz - 90, 90, 80, 0.4)],
+            color=(0.70, 0.67, 0.60), rough=0.9, noise_scale=0.02)
 flake_decal('flakes_lime', (X0 - 300, X0 + IW + 300, DIV + 12, TOP + 400), (X0 + IW + 70, TOP - 330), (260, 200), amount=1.0, scale=0.018)
 flake_decal('flakes_green', (-2400, 2400, DIV - 300, DIV + 12), (X0 + 60, DIV - 30), (420, 120), under=(0.55, 0.50, 0.38), amount=0.9, scale=0.03)
 flake_decal('flakes_green2', (-2400, 2400, ZB - 700, DIV - 100), (X0 + IW - 30, ZB - 380), (300, 220), under=(0.40, 0.42, 0.36), amount=0.4, scale=0.024, y=-0.3)
@@ -191,10 +199,11 @@ rib.modifiers.move(len(rib.modifiers) - 1, 0)
 # moulded frame: flat rail, a raised outer bead, a chamfered inner lip; butt joints like a cheap joiner's board
 for nm, a in (('fr_t', (X0 - FR, X0 + IW + FR, ZT, ZT + FR)), ('fr_b', (X0 - FR, X0 + IW + FR, ZB - FR, ZB)),
               ('fr_l', (X0 - FR, X0, ZB, ZT)), ('fr_r', (X0 + IW, X0 + IW + FR, ZB, ZT))):
-    bx(nm, a[0], a[1], FRAME_Y + 5, 0, a[2], a[3], wood_fr, bev=1.6, seg=3)
+    wm_ = wood_fr if nm in ('fr_t', 'fr_b') else wood_fr_v
+    bx(nm, a[0], a[1], FRAME_Y + 5, 0, a[2], a[3], wm_, bev=1.6, seg=3)
     o_in = {'fr_t': (0, 0, 0, 12), 'fr_b': (0, 0, 12, 0), 'fr_l': (0, 12, 0, 0), 'fr_r': (12, 0, 0, 0)}[nm]   # bead on the outer part
     bx(nm + '_bead', a[0] + o_in[0] + (0 if nm in ('fr_t', 'fr_b') else 0), a[1] - o_in[1], FRAME_Y, FRAME_Y + 5.5,
-       a[2] + o_in[2], a[3] - o_in[3], wood_fr, bev=2.4, seg=4)
+       a[2] + o_in[2], a[3] - o_in[3], wm_, bev=2.4, seg=4)
 for sx, sz in ((X0 - FR / 2 + 2, ZT + FR / 2), (X0 + IW + FR / 2 - 2, ZT + FR / 2), (X0 - FR / 2 + 2, ZB - FR / 2), (X0 + IW + FR / 2 - 2, ZB - FR / 2)):
     screw_head('screw', (sx, FRAME_Y + 4.6, sz), 4.6, 2.2, axis='-Y', slot=True, kind='pan', mat=brass, rot=rng.uniform(0, 180))
 
@@ -252,9 +261,9 @@ for i, (iid, text, cap, btop, bh, tx, bx0, bx1) in enumerate(MENU):
     objs, base = row(text, cap, btop + (bh - cap) / 2 - 2, tx, 'menu%d' % i, 200 + i)
     rows.append({'id': iid, 'label': text, 'objs': objs, 'band': (ZT - btop - bh, ZT - btop), 'bx': (X0 + bx0, X0 + bx1), 'base': base, 'cap': cap})
 
-if PRESSED >= 0:   # baked pressed state: the row is pushed into the felt (its shadows shrink) and settles straight
+if PRESSED >= 0:   # baked pressed state: the row lifts out of the felt and tips forward, top edges catch the bulb, shadows lengthen
     for o in rows[PRESSED]['objs']:
-        o.location.y += 2.6; e = o.rotation_euler; o.rotation_euler = (math.radians(90) + (e[0] - math.radians(90)) * 0.2, e[1] * 0.6, e[2] * 0.3)
+        o.location.y -= 5.0; e = o.rotation_euler; o.rotation_euler = (e[0] - math.radians(14), e[1] * 0.5, e[2])
 
 # loose letters lying on the bottom ledge of the frame (spares nobody put away)
 if SHOT == 'menu':
@@ -352,7 +361,7 @@ if SHOT == 'settings':
 CTR = Vector((BX, 0, (ZT + ZB) / 2))
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = CTR
 bpy.ops.object.light_add(type='SPOT', location=(X0 - 170, -380, TOP + 220)); bulb = bpy.context.object
-bulb.data.shadow_soft_size = float(arg('--soft', '22')); bulb.data.energy = float(arg('--bulb', '5.5e7')); bulb.data.color = (1.0, 0.70, 0.44)
+bulb.data.shadow_soft_size = float(arg('--soft', '22')); bulb.data.energy = float(arg('--bulb', '4.6e7')); bulb.data.color = (1.0, 0.70, 0.44)
 bulb.data.spot_size = math.radians(92); bulb.data.spot_blend = 1.0
 a_b = bpy.data.objects.new('aim_bulb', None); scene.collection.objects.link(a_b)
 a_b.location = (BX - 10, 0, (ZT + ZB) / 2 + 20) if ORIENT == 'portrait' else (BX + 160, 0, (ZT + ZB) / 2 - 60)
@@ -367,9 +376,9 @@ if SHOT == 'settings':
     LENS = 85.0; VW = 178.0; CZT_ = ZT - 52.0
     cam = look_camera((0, RIB_FACE, CZT_ + 46.0 - VW * RES[1] / RES[0] / 2), 0, 0, VW * LENS / 36.0, lens=LENS)
 elif ORIENT == 'portrait':
-    LENS = 50.0; VW = float(arg('--vw', '560'))
-    TZ = (TOP + 90 + RZ - 250) / 2
-    cam = look_camera((BX + 2, RIB_FACE, TZ), float(arg('--yaw', '7')), float(arg('--pitch', '4')), VW * LENS / 36.0, lens=LENS)
+    LENS = 65.0; VW = float(arg('--vw', '432'))      # close: the frame's outer edges just leave the shot, the tags are cut by the bottom edge
+    TZ = (ZT + ZB) / 2 - 95
+    cam = look_camera((BX + 6, RIB_FACE, TZ), float(arg('--yaw', '9')), float(arg('--pitch', '-3')), VW * LENS / 36.0, lens=LENS)
 else:
     LENS = 50.0; VH = float(arg('--vh', '650')); VW = VH * RES[0] / RES[1]
     CXL = (X0 - FR + RX + RW / 2) / 2
@@ -397,6 +406,15 @@ for r in rows:
     items.append({'id': r['id'], 'label': r['label'], 'text_rect': tr, 'hit_rect': hr, 'cap_px': capr[3],
                   'hit_dp': [round(hr[2] / DP, 1), round(hr[3] / DP, 1)],
                   'pressed_sprite': 'menu_pressed_%s%s.png' % (r['id'], '' if ORIENT == 'portrait' else '_landscape')})
+# perspective makes neighbouring bands' bounding rects overlap: split each overlap at its middle so no pixel belongs to two items
+for a_ in items:
+    for b_ in items:
+        ra, rb = a_['hit_rect'], b_['hit_rect']
+        if a_ is b_ or ra[1] >= rb[1]: continue
+        hov = min(ra[0] + ra[2], rb[0] + rb[2]) - max(ra[0], rb[0]); vov = ra[1] + ra[3] - rb[1]
+        if hov > 0 and vov > 0:
+            cut_ = vov // 2; ra[3] -= cut_; rb[1] += vov - cut_; rb[3] -= vov - cut_
+for it in items: it['hit_dp'] = [round(it['hit_rect'][2] / DP, 1), round(it['hit_rect'][3] / DP, 1)]
 board = px_rect(quad(X0 - FR, X0 + IW + FR, ZB - FR, ZT + FR))
 if SHOT == 'settings':
     objs, base = title_rows[0]
