@@ -1,10 +1,10 @@
 keys,fr,es
-tutorial.say_tension,Indice : montez le pouce gauche doucement et tenez.,Pista: suba el pulgar izquierdo despacio y mantenga.
-tutorial.say_lift,Indice : pouce droit sous la pièce qui résiste. Levez.,Pista: pulgar derecho bajo la pieza dura. Súbala despacio.
-tutorial.say_warded,"Indice : placez l'embout dans l'espace, puis tournez.",Pista: encaje la punta en la ranura y gire.
+tutorial.say_tension,Indice : monte le pouce gauche doucement et tiens.,Pista: sube el pulgar izquierdo despacio y mantén.
+tutorial.say_lift,Indice : pouce droit sous la pièce qui résiste. Lève.,Pista: pulgar derecho bajo la pieza dura. Sube despacio.
+tutorial.say_warded,"Indice : place l'embout dans l'espace, puis tourne.",Pista: encaja la punta en la ranura y gira.
 tutorial.say_chalk,Indice : la craie montre maintenant le geste.,Pista: la tiza muestra el gesto que toca.
-tutorial.say_master,Le maître montre le geste une fois. À vous.,El maestro muestra el gesto una vez. Ahora usted.
-tutorial.s1_pick_one,"Pouce droit sous la goupille, puis montez doucement.",Pulgar derecho bajo el perno y luego súbalo despacio.
+tutorial.say_master,Le maître montre le geste une fois. À toi.,El maestro muestra el gesto una vez. Ahora tú.
+tutorial.s1_pick_one,"Pouce droit sous la goupille, puis monte doucement.",Pulgar derecho bajo el perno y luego súbelo despacio.
 settings.voice_pack.title_de,Voix allemandes,Voces en alemán
 settings.voice_pack.line,{title} : {state},{title}: {state}
 settings.voice_pack.download,Télécharger,Descargar

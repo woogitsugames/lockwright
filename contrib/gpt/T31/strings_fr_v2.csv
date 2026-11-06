@@ -1,5 +1,5 @@
 key,fr_old,fr_new,note
-boot.calib_title,Deux impulsions à 120 ms d'intervalle : combien en sentez-vous et en entendez-vous ?,Deux impulsions à 120 ms d'intervalle : combien en sentez-vous et en entendez-vous ?,
+boot.calib_title,Deux impulsions à 120 ms d'intervalle : combien en sentez-vous et en entendez-vous ?,Deux impulsions à 120 ms d'intervalle : combien en sens-tu et en entends-tu ?,"review T41: gracz per tu (jak tutorial, PL ty, DE du); review T41: gracz per tu (jak tutorial, PL ty, DE du)"
 boot.calib_two,Deux,Deux,
 boot.calib_one,Une,Une,
 boot.calib_none,Aucune,Aucune,
@@ -14,7 +14,7 @@ showcase.notebook_prefix,Extrait du carnet du maître :,Extrait du carnet du ma�
 about.licenses,"Polices : Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Moteur : Godot 4 (MIT). Extensions : godot-cpp (MIT), GUT (MIT). Liste complète : THIRD-PARTY-NOTICES.txt dans l'application.","Polices : Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Moteur : Godot 4 (MIT). Extensions : godot-cpp (MIT), GUT (MIT). Liste complète : THIRD-PARTY-NOTICES.txt dans l'application.",
 about.post_release_unlocked,Chapitre 7 (« Une clé pour tous ») débloqué.,Chapitre 7 (« Une clé pour tous ») débloqué.,
 settings.report_problem,Signaler un problème,Signaler un problème,
-settings.report_copied,Journal copié dans le presse-papiers. Collez-le dans votre message : aucun envoi automatique.,Journal copié dans le presse-papiers. Collez-le dans votre message : aucun envoi automatique.,
+settings.report_copied,Journal copié dans le presse-papiers. Collez-le dans votre message : aucun envoi automatique.,Journal copié dans le presse-papiers. Colle-le dans ton message : aucun envoi automatique.,"review T41: gracz per tu (jak tutorial, PL ty, DE du); review T41: gracz per tu (jak tutorial, PL ty, DE du)"
 settings.report_empty,Le journal est vide.,Journal vide.,Zwięźlejszy komunikat.
 app.title,Lockwright: Serrurier de garde,Lockwright: Serrurier de garde,
 common.back,Retour,Retour,
@@ -40,7 +40,7 @@ receipt.service,,Ouverture d'urgence,T41: nowa etykieta UI i wersja językowa
 receipt.tip,,Pourboire (sans trace),T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 common.continue,Continuer,Continuer,
 verify.title,Vérifier le droit d'accès,Vérifier le droit d'accès,
-verify.hint,Le client présente ses justificatifs. À vous de décider.,Le client présente ses justificatifs. À vous de décider.,
+verify.hint,Le client présente ses justificatifs. À vous de décider.,Le client présente ses justificatifs. À toi de décider.,"review T41: gracz per tu (jak tutorial, PL ty, DE du); review T41: gracz per tu (jak tutorial, PL ty, DE du)"
 verify.ask_more,Demander un autre justificatif,Demander un autre justificatif,
 verify.card.id,Pièce d'identité,Pièce d'identité,
 verify.card.witness,Voisin témoin,Voisin témoin,
@@ -70,7 +70,7 @@ settings.haptics_enabled,Retour haptique activé,Retour haptique activé,
 settings.haptics_intensity,Intensité haptique,Intensité haptique,
 settings.haptics_test,Impulsion d'essai,Impulsion d'essai,
 settings.haptics_calibration,Étalonnage,Étalonnage,
-settings.haptics_calibration_two_clicks,Sentez-vous deux clics ?,Sentez-vous deux clics ?,
+settings.haptics_calibration_two_clicks,Sentez-vous deux clics ?,Tu sens deux clics ?,"review T41: gracz per tu (jak tutorial, PL ty, DE du); review T41: gracz per tu (jak tutorial, PL ty, DE du)"
 settings.haptics_calibration_two_clicks_yes,Deux,Deux,
 settings.haptics_calibration_two_clicks_one,Un,Un,
 settings.haptics_calibration_two_clicks_none,Aucun,Aucun,
@@ -91,13 +91,13 @@ settings.wide_windows,Fenêtres élargies,Fenêtres élargies,
 settings.reset,Réinitialiser les paramètres,Réinitialiser les paramètres,
 settings.text_scale,Taille du texte,Taille du texte,
 settings.reduce_motion,Réduire les animations,Réduire les animations,
-settings.dark_mode_note,"Dans le noir, fiez-vous au son. Les vibrations du téléphone aident aussi.","Dans le noir, fiez-vous au son. Les vibrations du téléphone aident aussi.",
+settings.dark_mode_note,"Dans le noir, fiez-vous au son. Les vibrations du téléphone aident aussi.","Dans le noir, fie-toi au son. Les vibrations du téléphone aident aussi.","review T41: gracz per tu (jak tutorial, PL ty, DE du); review T41: gracz per tu (jak tutorial, PL ty, DE du)"
 run.title,Service sans fin,Service sans fin,
 run.lock_n,Serrure {n},Serrure {n},
 run.lives_left,Crochets de rechange,Crochets de rechange,
 run.workshop_stop,Pause à l'atelier,Pause à l'atelier,
 run.finished,Fin du service — {n} pièces,Fin du service — {n} pièces,
-run.rubber_band,Un instant de répit. La prochaine serrure sera plus simple.,Respirez. La suite sera plus facile.,Zwięźlejszy komunikat bez utraty tonu.
+run.rubber_band,Un instant de répit. La prochaine serrure sera plus simple.,Respire. La suite sera plus facile.,"Zwięźlejszy komunikat bez utraty tonu.; review T41: gracz per tu (jak tutorial, PL ty, DE du); review T41: gracz per tu (jak tutorial, PL ty, DE du)"
 optics.loupe,Gros plan sur la ligne de césure,Gros plan sur la ligne de césure,
 optics.microscope,Bavures et fausses encoches,Bavures et fausses encoches,
 optics.borescope,Éléments au fond du canal,Pièces en profondeur,Krótsza nazwa.
@@ -198,25 +198,25 @@ tutorial.s2_intro,,Trois goupilles. Une seule résiste à la fois.,Uzupełniono 
 tutorial.s3_intro,,Nouvel ordre. Trop haut ? Reprends doucement.,Uzupełniono brakujący klucz według EN i PL (T40).
 tutorial.s1_near_break,,Trop fort. L'outil plie. Relâche un peu.,Uzupełniono brakujący klucz według EN i PL (T40).
 ui.job_done,,fait,Uzupełniono brakujący klucz według EN i PL (T40).
-lock.dial_hint,,Droit : tournez le cadran. Gauche : sentez la poignée.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.dial_hint,,Droit : tourne le cadran. Gauche : sens la poignée.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 lock.combo_hint,,"Gauche tire doucement, droit roule lentement une roue.",T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
-lock.warded_reach,,Montez ou baissez l'embout jusqu'à trouver l'espace.,T41: nowa etykieta UI i wersja językowa
+lock.warded_reach,,Monte ou baisse l'embout jusqu'à trouver l'espace.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 lock.warded_turn,,"Pouce gauche : en haut tourne, en bas revient.",T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 lock.warded_turn_auto,,Pouce droit maintenu : tourne. Le gauche revient.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
-lock.warded_bit,,"Embout trop épais ? Sortez la sonde, touchez sa tête.",T41: nowa etykieta UI i wersja językowa
-lock.detector_reset,,"Détecteur déclenché. Relâchez, reculez et maintenez.",T41: nowa etykieta UI i wersja językowa
+lock.warded_bit,,"Embout trop épais ? Sors la sonde, touche sa tête.",T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.detector_reset,,"Détecteur déclenché. Relâche, recule et maintiens.",T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 lock.detector_reset_auto,,Détecteur déclenché. Pouce gauche maintenu pour reculer.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
-lock.wafer_coach,,Levez la paillette au ras du cylindre.,T41: nowa etykieta UI i wersja językowa
-lock.lever_coach,,Levez la gorge jusqu'à aligner son encoche.,T41: nowa etykieta UI i wersja językowa
-lock.hint_tension_wafer,,Paillettes trop libres ? Appuyez un peu à gauche.,T41: nowa etykieta UI i wersja językowa
-lock.hint_tension_lever,,Gorges trop libres ? Gardez un léger appui à gauche.,T41: nowa etykieta UI i wersja językowa
-lock.disc_hint,,Gauche : léger couple. Droit : tournez un disque.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
-tutorial.say_tension,,Indice : montez le pouce gauche doucement et tenez.,T41: nowa etykieta UI i wersja językowa
-tutorial.say_lift,,Indice : pouce droit sous la pièce qui résiste. Levez.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
-tutorial.say_warded,,"Indice : placez l'embout dans l'espace, puis tournez.",T41: nowa etykieta UI i wersja językowa
+lock.wafer_coach,,Lève la paillette au ras du cylindre.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.lever_coach,,Lève la gorge jusqu'à aligner son encoche.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.hint_tension_wafer,,Paillettes trop libres ? Appuie un peu à gauche.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.hint_tension_lever,,Gorges trop libres ? Garde un léger appui à gauche.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.disc_hint,,Gauche : léger couple. Droit : tourne un disque.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+tutorial.say_tension,,Indice : monte le pouce gauche doucement et tiens.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+tutorial.say_lift,,Indice : pouce droit sous la pièce qui résiste. Lève.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+tutorial.say_warded,,"Indice : place l'embout dans l'espace, puis tourne.",T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 tutorial.say_chalk,,Indice : la craie montre maintenant le geste.,T41: nowa etykieta UI i wersja językowa
-tutorial.say_master,,Le maître montre le geste une fois. À vous.,T41: nowa etykieta UI i wersja językowa
-tutorial.s1_pick_one,,"Pouce droit sous la goupille, puis montez doucement.",T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+tutorial.say_master,,Le maître montre le geste une fois. À toi.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+tutorial.s1_pick_one,,"Pouce droit sous la goupille, puis monte doucement.",T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 settings.voice_pack.title_de,,Voix allemandes,T41: uzupelnienie nowych kluczy pakietu glosowego
 settings.voice_pack.line,,{title} : {state},T41: uzupelnienie nowych kluczy pakietu glosowego
 settings.voice_pack.download,,Télécharger,T41: uzupelnienie nowych kluczy pakietu glosowego

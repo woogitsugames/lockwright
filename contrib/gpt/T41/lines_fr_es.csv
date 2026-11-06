@@ -164,17 +164,17 @@ job.zuzanna_catalogue_drawer.line.2,La signature est bien la mienne. Les origina
 job.zuzanna_catalogue_drawer.line.3,"Conservatrice, protocole signé, tarif convenu. Donc juste le tiroir.","Conservadora, acta firmada y precio acordado. Solo el cajón, entonces."
 job.zuzanna_catalogue_drawer.line.4,Je mettrai « À manipuler avec soin » sur l'étiquette. À commencer par ce tiroir.,Pondré «Tratar con cuidado» en la vitrina. Empezando por este cajón.
 dialogue.skip_all,Afficher tout le dialogue,Ver todo el diálogo
-lock.combo_hint,"Gauche tire doucement, droit roule lentement une roue.",Izquierdo: tire suave. Derecho: gire una rueda despacio.
-lock.detector_reset,"Détecteur déclenché. Relâchez, reculez et maintenez.","Detector activado. Afloje, retroceda y mantenga."
-lock.detector_reset_auto,Détecteur déclenché. Pouce gauche maintenu pour reculer.,Detector activado. Mantenga el izquierdo para volver.
-lock.dial_hint,Droit : tournez le cadran. Gauche : sentez la poignée.,Derecho: gire el dial. Izquierdo: note la manija.
-lock.disc_hint,Gauche : léger couple. Droit : tournez un disque.,Izquierdo: giro leve. Derecho: gire un disco despacio.
-lock.hint_tension_lever,Gorges trop libres ? Gardez un léger appui à gauche.,¿Palancas sueltas? Mantenga leve presión a la izquierda.
-lock.hint_tension_wafer,Paillettes trop libres ? Appuyez un peu à gauche.,¿Láminas sueltas? Presione un poco a la izquierda.
-lock.lever_coach,Levez la gorge jusqu'à aligner son encoche.,Suba la palanca hasta alinear su muesca.
-lock.wafer_coach,Levez la paillette au ras du cylindre.,Suba la lámina hasta dejarla al ras del cilindro.
-lock.warded_bit,"Embout trop épais ? Sortez la sonde, touchez sa tête.",¿Punta muy gruesa? Saque la sonda y toque el cabezal.
-lock.warded_reach,Montez ou baissez l'embout jusqu'à trouver l'espace.,Suba o baje la punta hasta que encaje.
+lock.combo_hint,"Gauche tire doucement, droit roule lentement une roue.",Izquierdo: tira suave. Derecho: gira una rueda despacio.
+lock.detector_reset,"Détecteur déclenché. Relâche, recule et maintiens.","Detector activado. Afloja, retrocede y mantén."
+lock.detector_reset_auto,Détecteur déclenché. Pouce gauche maintenu pour reculer.,Detector activado. Mantén el izquierdo para volver.
+lock.dial_hint,Droit : tourne le cadran. Gauche : sens la poignée.,Derecho: gira el dial. Izquierdo: nota la manija.
+lock.disc_hint,Gauche : léger couple. Droit : tourne un disque.,Izquierdo: giro leve. Derecho: gira un disco despacio.
+lock.hint_tension_lever,Gorges trop libres ? Garde un léger appui à gauche.,¿Palancas sueltas? Mantén leve presión a la izquierda.
+lock.hint_tension_wafer,Paillettes trop libres ? Appuie un peu à gauche.,¿Láminas sueltas? Presiona un poco a la izquierda.
+lock.lever_coach,Lève la gorge jusqu'à aligner son encoche.,Sube la palanca hasta alinear su muesca.
+lock.wafer_coach,Lève la paillette au ras du cylindre.,Sube la lámina hasta dejarla al ras del cilindro.
+lock.warded_bit,"Embout trop épais ? Sors la sonde, touche sa tête.",¿Punta muy gruesa? Saca la sonda y toca el cabezal.
+lock.warded_reach,Monte ou baisse l'embout jusqu'à trouver l'espace.,Sube o baja la punta hasta que encaje.
 lock.warded_turn,"Pouce gauche : en haut tourne, en bas revient.","Pulgar izquierdo: arriba gira, abajo vuelve."
 lock.warded_turn_auto,Pouce droit maintenu : tourne. Le gauche revient.,Pulgar derecho para girar; el izquierdo vuelve.
 receipt.service,Ouverture d'urgence,Apertura de urgencia

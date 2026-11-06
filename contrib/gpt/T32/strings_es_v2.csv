@@ -198,25 +198,25 @@ tutorial.s2_intro,,Tres pernos. Solo uno ofrece resistencia.,Uzupełniono brakuj
 tutorial.s3_intro,,Nuevo orden. ¿Muy alto? Empieza más suave.,Uzupełniono brakujący klucz według EN i PL (T40).
 tutorial.s1_near_break,,Fuerza excesiva. La herramienta se dobla. Afloja.,Uzupełniono brakujący klucz według EN i PL (T40).
 ui.job_done,,listo,Uzupełniono brakujący klucz według EN i PL (T40).
-lock.dial_hint,,Derecho: gire el dial. Izquierdo: note la manija.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
-lock.combo_hint,,Izquierdo: tire suave. Derecho: gire una rueda despacio.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
-lock.warded_reach,,Suba o baje la punta hasta que encaje.,T41: nowa etykieta UI i wersja językowa
+lock.dial_hint,,Derecho: gira el dial. Izquierdo: nota la manija.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.combo_hint,,Izquierdo: tira suave. Derecho: gira una rueda despacio.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.warded_reach,,Sube o baja la punta hasta que encaje.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 lock.warded_turn,,"Pulgar izquierdo: arriba gira, abajo vuelve.",T41: nowa etykieta UI i wersja językowa
 lock.warded_turn_auto,,Pulgar derecho para girar; el izquierdo vuelve.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
-lock.warded_bit,,¿Punta muy gruesa? Saque la sonda y toque el cabezal.,T41: nowa etykieta UI i wersja językowa
-lock.detector_reset,,"Detector activado. Afloje, retroceda y mantenga.",T41: nowa etykieta UI i wersja językowa
-lock.detector_reset_auto,,Detector activado. Mantenga el izquierdo para volver.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
-lock.wafer_coach,,Suba la lámina hasta dejarla al ras del cilindro.,T41: nowa etykieta UI i wersja językowa
-lock.lever_coach,,Suba la palanca hasta alinear su muesca.,T41: nowa etykieta UI i wersja językowa
-lock.hint_tension_wafer,,¿Láminas sueltas? Presione un poco a la izquierda.,T41: nowa etykieta UI i wersja językowa
-lock.hint_tension_lever,,¿Palancas sueltas? Mantenga leve presión a la izquierda.,T41: nowa etykieta UI i wersja językowa
-lock.disc_hint,,Izquierdo: giro leve. Derecho: gire un disco despacio.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
-tutorial.say_tension,,Pista: suba el pulgar izquierdo despacio y mantenga.,T41: nowa etykieta UI i wersja językowa
-tutorial.say_lift,,Pista: pulgar derecho bajo la pieza dura. Súbala despacio.,T41: nowa etykieta UI i wersja językowa
-tutorial.say_warded,,Pista: encaje la punta en la ranura y gire.,T41: nowa etykieta UI i wersja językowa
+lock.warded_bit,,¿Punta muy gruesa? Saca la sonda y toca el cabezal.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.detector_reset,,"Detector activado. Afloja, retrocede y mantén.",T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.detector_reset_auto,,Detector activado. Mantén el izquierdo para volver.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.wafer_coach,,Sube la lámina hasta dejarla al ras del cilindro.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.lever_coach,,Sube la palanca hasta alinear su muesca.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.hint_tension_wafer,,¿Láminas sueltas? Presiona un poco a la izquierda.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.hint_tension_lever,,¿Palancas sueltas? Mantén leve presión a la izquierda.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.disc_hint,,Izquierdo: giro leve. Derecho: gira un disco despacio.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+tutorial.say_tension,,Pista: sube el pulgar izquierdo despacio y mantén.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+tutorial.say_lift,,Pista: pulgar derecho bajo la pieza dura. Sube despacio.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+tutorial.say_warded,,Pista: encaja la punta en la ranura y gira.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 tutorial.say_chalk,,Pista: la tiza muestra el gesto que toca.,T41: nowa etykieta UI i wersja językowa
-tutorial.say_master,,El maestro muestra el gesto una vez. Ahora usted.,T41: nowa etykieta UI i wersja językowa
-tutorial.s1_pick_one,,Pulgar derecho bajo el perno y luego súbalo despacio.,T41: nowa etykieta UI i wersja językowa
+tutorial.say_master,,El maestro muestra el gesto una vez. Ahora tú.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+tutorial.s1_pick_one,,Pulgar derecho bajo el perno y luego súbelo despacio.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 settings.voice_pack.title_de,,Voces en alemán,T41: uzupelnienie nowych kluczy pakietu glosowego
 settings.voice_pack.line,,{title}: {state},T41: uzupelnienie nowych kluczy pakietu glosowego
 settings.voice_pack.download,,Descargar,T41: uzupelnienie nowych kluczy pakietu glosowego

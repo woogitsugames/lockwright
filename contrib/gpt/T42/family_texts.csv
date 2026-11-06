@@ -1,26 +1,26 @@
 keys,en,pl,de
-family.dial_safe.name,Dial safe,Sejf z pokrętłem,Tresor mit Drehrad
-family.dial_safe.short,A safe with linked wheels that turn behind one dial.,"Sejf, w którym jedno pokrętło porusza kolejnymi kołami.",Ein Tresor mit Rädern hinter einem gemeinsamen Drehknopf.
-lock.dial_hint,Right thumb turns the dial; left feels the handle.,"Prawy kręci pokrętłem, lewy lekko dociska klamkę.","Rechts drehst du das Rad, links fühlst du den Griff."
-lock.dial_safe_hint_auto,Turn the dial right; the game holds the handle.,Kręć prawym. Gra sama dociska klamkę.,Dreh rechts am Rad. Das Spiel hält den Griff.
+family.dial_safe.name,Dial safe,Sejf z pokrętłem,Tresor mit Drehscheibe
+family.dial_safe.short,A safe with linked wheels that turn behind one dial.,"Sejf, w którym jedno pokrętło porusza kolejnymi kołami.",Ein Tresor mit Rädern hinter einer einzigen Drehscheibe.
+lock.dial_hint,Right thumb turns the dial; left feels the handle.,"Prawy kręci pokrętłem, lewy lekko dociska klamkę.","Rechts drehst du die Scheibe, links fühlst du den Griff."
+lock.dial_hint_auto,Turn the dial right; the game holds the handle.,Kręć prawym. Gra sama dociska klamkę.,Dreh rechts die Scheibe. Das Spiel hält den Griff.
 tutorial.dial_safe.step1,Rest your left thumb gently on the handle.,Lewym kciukiem lekko dociśnij klamkę.,Drück mit dem linken Daumen sanft den Griff.
-tutorial.dial_safe.step1_auto,The game holds the handle; watch the wheel.,Gra dociska klamkę. Patrz na koło.,Das Spiel hält den Griff. Achte aufs Rad.
-tutorial.dial_safe.step2,Circle the dial with your right thumb.,Prawym kciukiem zataczaj koło na pokrętle.,Kreise rechts mit dem Daumen über das Drehrad.
-tutorial.dial_safe.step3,Hear a soft tick as the next wheel joins.,"Usłysz cichy tik, gdy rusza następne koło.","Hör das leise Tick, wenn das nächste Rad folgt."
-tutorial.dial_safe.step4,"Missed a gate? Circle once more, then pause.",Minąłeś bramkę? Obróć jeszcze raz i stań.,Tor verpasst? Dreh noch einmal und halte an.
+tutorial.dial_safe.step1_auto,The game holds the handle; watch the wheel.,Gra dociska klamkę. Patrz na koło.,Das Spiel hält den Griff. Achte auf die Räder.
+tutorial.dial_safe.step2,Circle the dial with your right thumb.,Prawym kciukiem zataczaj koło na pokrętle.,Kreise rechts mit dem Daumen über die Drehscheibe.
+tutorial.dial_safe.step3,Listen for a soft tick: the next wheel joins.,Słuchaj cichego tyknięcia: rusza następne koło.,"Hör das leise Tick, wenn das nächste Rad folgt."
+tutorial.dial_safe.step4,"Missed a gate? Circle once more, then pause.",Bramka za tobą? Zrób jeszcze obrót i stań.,Tor verpasst? Dreh noch einmal und halte an.
 tutorial.dial_safe.step5,"The handle moves. Nicely done, one wheel at a time.","Klamka rusza. Dobrze, koło po kole.","Der Griff bewegt sich. Gut, Rad für Rad."
-family.combo.name,Wheel lock,Zamek z kółkami,Zahlenschloss
+family.combo.name,Thumbwheel lock,Zamek z kółkami,Zahlenschloss
 family.combo.short,Small numbered wheels turn a shared lock mechanism.,Małe kółka z cyframi poruszają wspólny mechanizm.,Kleine Zahlenräder bewegen gemeinsam den Riegel.
-lock.combo_hint,Pull lightly left; roll one wheel slowly right.,"Lewy lekko ciągnie, prawy wolno toczy kółko.","Links leicht ziehen, rechts langsam ein Rad rollen."
+lock.combo_hint,Left pulls lightly; right rolls one wheel slowly.,"Lewy lekko ciągnie, prawy wolno toczy kółko.","Links leicht ziehen, rechts langsam ein Rad rollen."
 lock.combo_hint_auto,Roll one wheel slowly with your right thumb.,Prawym kciukiem wolno tocz wybrane kółko.,Rolle ein Rad langsam mit dem rechten Daumen.
 tutorial.combo.step1,Left thumb: a light pull on the shackle.,Lewym kciukiem lekko pociągnij kabłąk.,Zieh mit dem linken Daumen leicht am Bügel.
 tutorial.combo.step1_auto,The game pulls the shackle gently for you.,Gra lekko ciągnie kabłąk za ciebie.,Das Spiel zieht den Bügel ganz leicht für dich.
 tutorial.combo.step2,"Right: choose a wheel, then roll up or down.","Prawy: wybierz kółko, przetocz w górę lub w dół.","Rechts: Rad wählen, dann hoch oder runter rollen."
-tutorial.combo.step3,A short click means the notch has passed.,"Krótki klik mówi, że minęło wcięcie.",Ein kurzes Klick zeigt die Kerbe an.
+tutorial.combo.step3,One wheel feels stiff; it clicks into its notch.,Jedno kółko stawia opór i klika we wcięciu.,Ein Rad geht schwer und rastet in der Kerbe ein.
 tutorial.combo.step4,Wheel skipped? Slow down and try the notch again.,Kółko przeskoczyło? Zwolnij i wróć do wcięcia.,Rad springt? Langsamer zur Kerbe zurück.
 tutorial.combo.step5,The shackle is free. Even wheels like patience.,Kabłąk puszcza. Kółka też lubią cierpliwość.,Der Bügel ist frei. Geduld hilft auch Rädern.
-family.dimple.name,Dimple cylinder,Wkładka nawiercana,Bohrmuldenschloss
-family.dimple.short,Two rows of pins hide a smaller pin inside a sleeve.,Dwa rzędy pinów; jeden skrywa pin wewnątrz tulei.,"Zwei Stiftreihen, einer mit Innenstift in einer Hülse."
+family.dimple.name,Dimple cylinder,Wkładka nawiercana,Bohrmuldenzylinder
+family.dimple.short,Two rows of pins; some hide a thinner pin in a sleeve.,Dwa rzędy pinów; niektóre kryją węższy pin w tulei.,Zwei Stiftreihen; manche Stifte haben einen Innenstift.
 lock.dimple_hint,Hold left lightly; press the selected pin on the right.,"Lewy lekko dociska, prawy naciska wybrany pin.","Links leicht halten, rechts den Stift drücken."
 lock.dimple_hint_auto,Press the selected pin with the right thumb.,Prawym kciukiem naciśnij wybrany pin.,Drück rechts mit dem Daumen den gewählten Stift.
 tutorial.dimple.step1,Left thumb: keep the cylinder gently steady.,Lewym kciukiem utrzymaj lekki docisk wkładki.,Halte links den Zylinder mit sanftem Druck.
@@ -30,18 +30,18 @@ tutorial.dimple.step3,"One click for the sleeve, another for the pin.","Jeden kl
 tutorial.dimple.step4,Only one click? Ease up and find the second.,Tylko jeden klik? Odpuść lekko i szukaj drugiego.,Nur ein Klick? Gib leicht nach und such den zweiten.
 tutorial.dimple.step5,Both rows align. Good ear and gentle hands.,"Oba rzędy gotowe. Dobre ucho, spokojne ręce.","Beide Reihen sitzen. Gut gehört, ruhig geführt."
 family.disc_detainer.name,Disc lock,Zamek tarczowy,Scheibenschloss
-family.disc_detainer.short,"Inside the game lock, several discs turn separately.",W grze kilka tarcz obraca się niezależnie.,Im Spiel drehen sich mehrere Scheiben einzeln.
-lock.disc_hint,Light left twist; turn one disc slowly with the right.,"Lewy lekko skręca, prawy wolno obraca tarczę.","Links sanft drehen, rechts eine Scheibe bewegen."
-lock.disc_detainer_hint_auto,Use the right thumb to turn a disc slowly.,Prawym kciukiem powoli obracaj tarczę.,Dreh rechts mit dem Daumen eine Scheibe langsam.
+family.disc_detainer.short,A stack of discs; each one turns on its own.,Stos tarcz; każdą obraca się osobno.,Ein Stapel Scheiben; jede dreht sich einzeln.
+lock.disc_hint,Left twists lightly; right turns one disc slowly.,"Lewy lekko skręca, prawy wolno obraca tarczę.","Links sanft drehen, rechts eine Scheibe bewegen."
+lock.disc_hint_auto,Use the right thumb to turn a disc slowly.,Prawym kciukiem powoli obracaj tarczę.,Dreh rechts mit dem Daumen eine Scheibe langsam.
 tutorial.disc_detainer.step1,Left thumb: hold a very gentle twist.,Lewym kciukiem utrzymaj lekki skręt.,Halte mit dem linken Daumen sanften Drehdruck.
 tutorial.disc_detainer.step1_auto,The game keeps the light twist steady.,Gra utrzymuje delikatny skręt.,Das Spiel hält den sanften Drehdruck.
 tutorial.disc_detainer.step2,"Right: select a disc, then turn it either way.","Prawy: wybierz tarczę, obróć w jedną ze stron.",Rechts: Scheibe wählen und in eine Richtung drehen.
-tutorial.disc_detainer.step3,Feel a small seat; hear a clear click.,Wyczuj lekkie osiadanie i usłysz klik.,Spür das Einrasten und hör ein klares Klick.
+tutorial.disc_detainer.step3,A slight give and a clear click: it's in place.,Lekkie osiadanie i wyraźny klik: tarcza na miejscu.,"Leichtes Nachgeben, klares Klick: Die Scheibe sitzt."
 tutorial.disc_detainer.step4,Disc went too far? Turn back a little.,Tarcza poszła za daleko? Cofnij odrobinę.,Scheibe zu weit? Dreh ein Stück zurück.
 tutorial.disc_detainer.step5,The bar settles. That's the last disc.,Listwa opada. To była ostatnia tarcza.,Die Leiste sinkt. Das war die letzte Scheibe.
 family.egyptian.name,Wooden bolt,Zasuwa drewniana,Holzriegel
 family.egyptian.short,"A wooden puzzle bolt with falling pegs, not springs.",Drewniana zasuwa z kołkami opadającymi bez sprężyn.,Ein Holzriegel mit fallenden Stiften ohne Federn.
-lock.egyptian_hint,Pull the bolt left; lift a wooden peg on the right.,"Lewy ciągnie rygiel, prawy unosi kołek.","Zieh links am Riegel, heb rechts den Holzstift."
+lock.egyptian_hint,Left pulls the bolt; right lifts a wooden peg.,"Lewy ciągnie rygiel, prawy unosi kołek.","Zieh links am Riegel, heb rechts den Holzstift."
 lock.egyptian_hint_auto,Lift wooden pegs one by one with your right thumb.,Prawym kciukiem unoś kołki po kolei.,Heb die Holzstifte rechts einen nach dem anderen.
 tutorial.egyptian.step1,Left thumb: pull the wooden bolt gently.,Lewym kciukiem lekko ciągnij drewniany rygiel.,Zieh mit dem linken Daumen sanft am Holzriegel.
 tutorial.egyptian.step1_auto,The game draws the wooden bolt gently.,Gra lekko ciągnie drewniany rygiel.,Das Spiel zieht sanft am Holzriegel.
@@ -60,9 +60,13 @@ tutorial.axial_slider.step3,A hollow click? The core nudges backwards.,Głuchy k
 tutorial.axial_slider.step4,"False notch? Ease off, then press more gently.",Fałszywe wcięcie? Odpuść i naciśnij lżej.,Falsche Kerbe? Lass nach und drück sanfter.
 tutorial.axial_slider.step5,The sliders settle. The desk is ready.,Suwaki siadły. Biurko gotowe.,Die Schieber sitzen. Der Schreibtisch ist frei.
 family.time_lock.name,Time lock repair,Naprawa zamka czasowego,Zeitschloss-Reparatur
-family.time_lock.short,"The museum clockwork needs repair, not an opening.","Muzealny mechanizm zegarowy trzeba naprawić, nie otwierać.","Das Uhrwerk im Museum braucht Pflege, kein Öffnen."
-lock.time_lock_hint,Wind gently left; seat each wheel with the right.,"Lewym nakręcaj lekko, prawym osadzaj koła.","Links sanft aufziehen, rechts die Räder einsetzen."
+family.time_lock.short,"The museum clockwork needs repair, not an opening.","Muzealny mechanizm zegarowy trzeba naprawić, nie otwierać.","Das Uhrwerk im Museum wird repariert, nicht geöffnet."
+lock.time_lock_hint,Left winds gently; right seats each wheel in turn.,"Lewym nakręcaj lekko, prawym osadzaj koła.","Links sanft aufziehen, rechts die Räder einsetzen."
+lock.time_lock_hint_auto,The game winds the spring; seat wheels on the right.,"Gra nakręca sprężynę, prawym osadzaj koła.","Das Spiel zieht auf, rechts setzt du die Räder ein."
+lock.time_lock_hint_auto,The game winds the spring; seat wheels on the right.,"Gra nakręca sprężynę, prawym osadzaj koła.","Das Spiel zieht auf, rechts setzt du die Räder ein."
 tutorial.time_lock.step1,Left thumb: wind the spring only a little.,Lewym kciukiem lekko nakręcaj sprężynę.,Zieh links mit dem Daumen die Feder sanft auf.
+tutorial.time_lock.step1_auto,The game keeps the spring wound for you.,Gra sama trzyma naciąg sprężyny.,Das Spiel hält die Feder für dich gespannt.
+tutorial.time_lock.step1_auto,The game keeps the spring wound for you.,Gra sama trzyma naciąg sprężyny.,Das Spiel hält die Feder für dich gespannt.
 tutorial.time_lock.step2,"Right: seat the wheels in order, one by one.",Prawym osadzaj koła po kolei.,Setz rechts die Räder nacheinander ein.
 tutorial.time_lock.step3,Listen for a steady tick; watch the rhythm.,Słuchaj równego tykania i patrz na rytm.,Hör auf das gleichmäßige Ticken und den Takt.
 tutorial.time_lock.step4,Tick gone uneven? Ease off the spring.,Tik się rozjechał? Lekko odpuść sprężynę.,Tickt es unruhig? Lass die Feder etwas nach.
@@ -75,5 +79,5 @@ tutorial.magnetic.step1,Left thumb: keep a gentle pressure.,Lewym kciukiem utrzy
 tutorial.magnetic.step1_auto,The game keeps the gentle pressure for you.,Gra utrzymuje lekki docisk.,Das Spiel hält den sanften Druck für dich.
 tutorial.magnetic.step2,Right: choose a pin and guide it with the field.,Prawy: wybierz pin i prowadź go polem.,Rechts: Stift wählen und mit dem Feld führen.
 tutorial.magnetic.step3,The pin moves late. Watch it catch up.,"Pin rusza z opóźnieniem. Patrz, jak nadąża.",Der Stift folgt später. Sieh ihm dabei zu.
-tutorial.magnetic.step4,"Pin lags? Move smoothly, do not jerk.","Pin się spóźnia? Prowadź płynnie, bez szarpnięć.","Stift hinkt nach? Führe ruhig, nicht ruckartig."
+tutorial.magnetic.step4,"Pin lags? Move smoothly, don't jerk.","Pin się spóźnia? Prowadź płynnie, bez szarpnięć.","Stift hinkt nach? Führe ruhig, nicht ruckartig."
 tutorial.magnetic.step5,The pins are set. Quiet work pays off.,Piny ustawione. Spokój się opłacił.,Die Stifte sitzen. Ruhe zahlt sich aus.
