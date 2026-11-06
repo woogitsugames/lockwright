@@ -1,0 +1,17 @@
+keys,en,pl,de,fr,es
+achievement.safe_first.name,First safe,Pierwszy sejf,Erster Tresor,Premier coffre,Primera caja fuerte
+achievement.safe_first.description,Open an authorized safe.,Otwórz sejf po weryfikacji uprawnień.,Öffne einen Tresor nach Prüfung der Berechtigung.,Ouvre un coffre après vérification des droits.,Abre una caja fuerte tras verificar la autorización.
+achievement.combo_first.name,All in line,W jednym rzędzie,Alles in Reihe,Tout en ligne,Todo en línea
+achievement.combo_first.description,Open a combination lock.,Otwórz zamek szyfrowy.,Öffne ein Zahlenschloss.,Ouvre une serrure à code.,Abre una cerradura de combinación.
+achievement.dimple_first.name,Small impressions,Małe wgłębienia,Kleine Vertiefungen,Petites alvéoles,Pequeños puntos
+achievement.dimple_first.description,Open a dimple lock.,Otwórz zamek nawiercany.,Öffne ein Bohrmuldenschloss.,Ouvre une serrure à alvéoles.,Abre una cerradura de puntos.
+achievement.disc_first.name,Turning point,Punkt obrotu,Wendepunkt,Point de rotation,Punto de giro
+achievement.disc_first.description,Open a disc lock.,Otwórz zamek tarczowy.,Öffne ein Scheibenschloss.,Ouvre une serrure à disques.,Abre una cerradura de discos.
+achievement.wood_first.name,Wooden story,Drewniana historia,Holzgeschichte,Histoire de bois,Historia de madera
+achievement.wood_first.description,Open a wooden lock.,Otwórz zamek drewniany.,Öffne ein Holzschloss.,Ouvre un verrou en bois.,Abre un cerrojo de madera.
+achievement.slider_first.name,In its place,Na swoim miejscu,Am richtigen Platz,À sa place,En su sitio
+achievement.slider_first.description,Open a slider lock.,Otwórz zamek suwakowy.,Öffne ein Schieberschloss.,Ouvre une serrure à coulisseaux.,Abre una cerradura de correderas.
+achievement.clock_repaired.name,Time returns,Zegar wrócił do życia,Die Uhr lebt wieder,L’horloge reprend vie,El reloj vuelve a la vida
+achievement.clock_repaired.description,Repair a clock mechanism.,Napraw mechanizm zegara.,Repariere ein Uhrwerk.,Répare un mécanisme d’horlogerie.,Repara un mecanismo de reloj.
+achievement.magnetic_first.name,An unseen pull,Niewidoczna siła,Unsichtbare Kraft,Force invisible,Fuerza invisible
+achievement.magnetic_first.description,Open a magnetic lock.,Otwórz zamek magnetyczny.,Öffne ein Magnetschloss.,Ouvre une serrure magnétique.,Abre una cerradura magnética.

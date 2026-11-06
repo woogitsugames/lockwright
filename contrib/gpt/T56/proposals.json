@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "achievements": [
+    {
+      "id": "achievement.safe_first",
+      "trigger": "result=open;family=dial_safe;verified=true",
+      "phase": "extended",
+      "category": "craft",
+      "hidden": false,
+      "points": 10
+    },
+    {
+      "id": "achievement.combo_first",
+      "trigger": "result=open;family=combo",
+      "phase": "extended",
+      "category": "craft",
+      "hidden": false,
+      "points": 10
+    },
+    {
+      "id": "achievement.dimple_first",
+      "trigger": "result=open;family=dimple",
+      "phase": "extended",
+      "category": "craft",
+      "hidden": false,
+      "points": 10
+    },
+    {
+      "id": "achievement.disc_first",
+      "trigger": "result=open;family=disc_detainer",
+      "phase": "extended",
+      "category": "craft",
+      "hidden": false,
+      "points": 10
+    },
+    {
+      "id": "achievement.wood_first",
+      "trigger": "result=open;family=egyptian",
+      "phase": "extended",
+      "category": "craft",
+      "hidden": false,
+      "points": 10
+    },
+    {
+      "id": "achievement.slider_first",
+      "trigger": "result=open;family=axial_slider",
+      "phase": "extended",
+      "category": "craft",
+      "hidden": false,
+      "points": 10
+    },
+    {
+      "id": "achievement.clock_repaired",
+      "trigger": "result=clock_repaired;family=time_lock",
+      "phase": "extended",
+      "category": "craft",
+      "hidden": false,
+      "points": 10
+    },
+    {
+      "id": "achievement.magnetic_first",
+      "trigger": "result=open;family=magnetic",
+      "phase": "extended",
+      "category": "craft",
+      "hidden": false,
+      "points": 10
+    }
+  ]
+}
