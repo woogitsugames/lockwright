@@ -98,6 +98,16 @@ CAST = {
     'waldek': ('m', 72, 'Polish allotment gardener about 72, gruff, friendly and teasing, rough older voice.'),
     'zbyszek': ('m', 74, 'Polish allotment gardener, 74, cheerful and folksy, slightly raspy older voice, proud.'),
     'headteacher': ('f', 55, 'Polish school headmistress, mid fifties, formal, clear and composed voice.'),
+    # T43 (chapters 9-12): five new characters (T62 prompts, reviewed) + four from T18 that first speak here
+    'celina': ('f', 44, 'Polish renovation site manager, 44, concise and decisive, likes short briefings. Low, steady, lightly textured female voice, measured pace, calm authority.'),
+    'dorota': ('f', 49, 'Polish flat owner, 49, impatient and a little tense but never aggressive. Clear mid-pitched female voice, quick pace, slightly taut.'),
+    'seweryn': ('m', 61, 'Polish art workshop instructor, 61, patient and gentle, leaves people their own choices. Soft, warm mid-low male voice, short thoughtful pauses.'),
+    'borys': ('m', 46, 'Polish bicycle restorer, 46, self-ironic, more careful with things than with his own diary. Warm mid-range male voice, lightly raspy, relaxed.'),
+    'alicja': ('f', 40, 'Polish pottery seller at a market, 40, energetic and looking for shortcuts, slows down when she has to give in. Bright, clear mid-high female voice.'),
+    'janka': ('f', 73, 'Elderly Polish neighbour, 73, hands out blankets before thinking of herself. Kind, busy, slightly creaky older female voice, quick and warm.'),
+    'leon': ('m', 55, 'Polish parcel courier, 55, endless patience with people, none with winter. Tired but friendly mid-low male voice, plain and good-humoured.'),
+    'mila': ('f', 23, 'Young Polish woman, 23, organises a carol choir, cheerful and quick. Bright, clear young female voice with a smile, musical.'),
+    'oskar': ('m', 32, 'Polish man, 32, polite but in a hurry, a little impatient, accepts a calm refusal. Clear mid-pitched male voice, brisk.'),
 }
 
 FILLER = {

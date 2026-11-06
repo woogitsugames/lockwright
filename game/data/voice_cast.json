@@ -1045,6 +1045,186 @@
     "en",
     "de"
    ]
+  },
+  "celina": {
+   "voice_id": "OAc8PMPIehsi8xXPSMAQ",
+   "voice_name": "LW celina",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 44,
+   "design_prompt": "Polish renovation site manager, 44, concise and decisive, likes short briefings. Low, steady, lightly textured female voice, measured pace, calm authority.",
+   "why": "Designed 2026-11-06 (Voice Design, eleven_ttv_v3, T43; prompt from contrib/gpt/T62 or T18 CHARACTERS.md, reviewed); best of 3 previews by pitch fit (194 Hz median F0) and Polish ASR clarity (avg logprob -0.214).",
+   "languages": [
+    "pl",
+    "en",
+    "de"
+   ]
+  },
+  "dorota": {
+   "voice_id": "ZRcpPT53LVw39m3Y2eLE",
+   "voice_name": "LW dorota",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 49,
+   "design_prompt": "Polish flat owner, 49, impatient and a little tense but never aggressive. Clear mid-pitched female voice, quick pace, slightly taut.",
+   "why": "Designed 2026-11-06 (Voice Design, eleven_ttv_v3, T43; prompt from contrib/gpt/T62 or T18 CHARACTERS.md, reviewed); best of 3 previews by pitch fit (242 Hz median F0) and Polish ASR clarity (avg logprob -0.224).",
+   "languages": [
+    "pl",
+    "en",
+    "de"
+   ]
+  },
+  "seweryn": {
+   "voice_id": "FC0ZaJmia7HMg7nOTarL",
+   "voice_name": "LW seweryn",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 61,
+   "design_prompt": "Polish art workshop instructor, 61, patient and gentle, leaves people their own choices. Soft, warm mid-low male voice, short thoughtful pauses.",
+   "why": "Designed 2026-11-06 (Voice Design, eleven_ttv_v3, T43; prompt from contrib/gpt/T62 or T18 CHARACTERS.md, reviewed); best of 3 previews by pitch fit (124 Hz median F0) and Polish ASR clarity (avg logprob -0.169).",
+   "languages": [
+    "pl",
+    "en",
+    "de"
+   ]
+  },
+  "borys": {
+   "voice_id": "az6GBWlKR4L8xiChUKyG",
+   "voice_name": "LW borys",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 46,
+   "design_prompt": "Polish bicycle restorer, 46, self-ironic, more careful with things than with his own diary. Warm mid-range male voice, lightly raspy, relaxed.",
+   "why": "Designed 2026-11-06 (Voice Design, eleven_ttv_v3, T43; prompt from contrib/gpt/T62 or T18 CHARACTERS.md, reviewed); best of 3 previews by pitch fit (124 Hz median F0) and Polish ASR clarity (avg logprob -0.24).",
+   "languages": [
+    "pl",
+    "en",
+    "de"
+   ]
+  },
+  "alicja": {
+   "voice_id": "xXX0ZxE3rFuv5b3TFwl3",
+   "voice_name": "LW alicja",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 40,
+   "design_prompt": "Polish pottery seller at a market, 40, energetic and looking for shortcuts, slows down when she has to give in. Bright, clear mid-high female voice.",
+   "why": "Designed 2026-11-06 (Voice Design, eleven_ttv_v3, T43; prompt from contrib/gpt/T62 or T18 CHARACTERS.md, reviewed); best of 3 previews by pitch fit (245 Hz median F0) and Polish ASR clarity (avg logprob -0.213).",
+   "languages": [
+    "pl",
+    "en",
+    "de"
+   ]
+  },
+  "janka": {
+   "voice_id": "TKooMqcS2YupsEvpNs7l",
+   "voice_name": "LW janka",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 73,
+   "design_prompt": "Elderly Polish neighbour, 73, hands out blankets before thinking of herself. Kind, busy, slightly creaky older female voice, quick and warm.",
+   "why": "Designed 2026-11-06 (Voice Design, eleven_ttv_v3, T43; prompt from contrib/gpt/T62 or T18 CHARACTERS.md, reviewed); best of 3 previews by pitch fit (247 Hz median F0) and Polish ASR clarity (avg logprob -0.365).",
+   "languages": [
+    "pl",
+    "en",
+    "de"
+   ]
+  },
+  "leon": {
+   "voice_id": "8eWXyjbVpcTbRDzlc0tF",
+   "voice_name": "LW leon",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 55,
+   "design_prompt": "Polish parcel courier, 55, endless patience with people, none with winter. Tired but friendly mid-low male voice, plain and good-humoured.",
+   "why": "Designed 2026-11-06 (Voice Design, eleven_ttv_v3, T43; prompt from contrib/gpt/T62 or T18 CHARACTERS.md, reviewed); best of 3 previews by pitch fit (166 Hz median F0) and Polish ASR clarity (avg logprob -0.23).",
+   "languages": [
+    "pl",
+    "en",
+    "de"
+   ]
+  },
+  "mila": {
+   "voice_id": "z6TLje9gcjNrUJSiAppi",
+   "voice_name": "LW mila",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "f",
+   "age": 23,
+   "design_prompt": "Young Polish woman, 23, organises a carol choir, cheerful and quick. Bright, clear young female voice with a smile, musical.",
+   "why": "Designed 2026-11-06 (Voice Design, eleven_ttv_v3, T43; prompt from contrib/gpt/T62 or T18 CHARACTERS.md, reviewed); best of 3 previews by pitch fit (286 Hz median F0) and Polish ASR clarity (avg logprob -0.188).",
+   "languages": [
+    "pl",
+    "en",
+    "de"
+   ]
+  },
+  "oskar": {
+   "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+   "voice_name": "LW oskar",
+   "model": "eleven_v4_turbo",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.0,
+    "use_speaker_boost": true
+   },
+   "gender": "m",
+   "age": 32,
+   "design_prompt": "Polish man, 32, polite but in a hurry, a little impatient, accepts a calm refusal. Clear mid-pitched male voice, brisk.",
+   "why": "Designed 2026-11-06 (Voice Design, eleven_ttv_v3, T43; prompt from contrib/gpt/T62 or T18 CHARACTERS.md, reviewed); best of 3 previews by pitch fit (156 Hz median F0) and Polish ASR clarity (avg logprob -0.209).",
+   "languages": [
+    "pl",
+    "en",
+    "de"
+   ]
   }
  }
 }
