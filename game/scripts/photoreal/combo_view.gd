@@ -47,6 +47,11 @@ var _plug_dx := 0.0
 var _picked := -1
 var _chatter := 0.0
 var _rolled := false
+var _reel_plate: Array[Rect2] = [Rect2(), Rect2(), Rect2(), Rect2(), Rect2()]
+## The part of the plate shown (plate px). The lock is wide and flat: the section shows a crop round
+## it, wide in landscape, so the wheels stay >= 28 dp (CLAUDE.md) on every screen.
+var _crop := Rect2(0, 0, 618, 824)
+const BODY_X := Vector2(34.0, 584.0)   # plate px: the body plus a little bench either side
 
 
 func _ready() -> void:
@@ -165,7 +170,7 @@ func set_hint(s: String) -> void:
 
 func plate_to_screen(p: Vector2) -> Vector2:
 	var disp := _section_display()
-	return disp.position + p / plate_size * disp.size
+	return disp.position + (p - _crop.position) / _crop.size * disp.size
 
 
 ## Screen point of wheel i's tooth tip (tests, chalk, loupe).
@@ -177,9 +182,9 @@ func tooth_tip_screen(i: int) -> Vector2:
 
 ## Screen rect of wheel i's visible digits (tests).
 func reel_rect_screen(i: int) -> Rect2:
-	var sp := _reels[slot_of(i)]
-	var a := plate_to_screen(sp.position)
-	var b := plate_to_screen(sp.position + sp.scale * Vector2(sp.texture.get_size()))
+	var r: Rect2 = _reel_plate[slot_of(i)]
+	var a := plate_to_screen(r.position)
+	var b := plate_to_screen(r.end)
 	return Rect2(a, b - a)
 
 
@@ -272,7 +277,13 @@ func _note_false(s: int, pos: float) -> void:
 
 # ------------------------------------------------------------------ drawing (inside the SubViewport)
 func _vs() -> float:
-	return float(viewport.size.x) / plate_size.x
+	return float(viewport.size.x) / _crop.size.x
+
+
+## Plate pixels → section viewport pixels (the crop is scaled to fill the viewport).
+func _view_xf() -> Transform2D:
+	var s := _vs()
+	return Transform2D().scaled(Vector2(s, s)) * Transform2D(0.0, -_crop.position)
 
 
 func _place_reels() -> void:
@@ -286,7 +297,8 @@ func _place_reels() -> void:
 		var used := slot >= first_slot and slot < first_slot + n_wheels
 		sp.visible = used and not _last_vm.is_empty()
 		var x := _slot_x(slot, false) - w * 0.5
-		sp.position = Vector2(x, _axis_y() - r) * s
+		_reel_plate[slot] = Rect2(x, _axis_y() - r, w, r)
+		sp.position = (Vector2(x, _axis_y() - r) - _crop.position) * s
 		sp.scale = Vector2(w, r) / Vector2(sp.texture.get_size()) * s
 		_reel_mats[slot].set_shader_parameter("dim", 0.0 if dark else 1.0)
 
@@ -301,15 +313,15 @@ func _draw_layer(c: CanvasItem, nm: String, xf: Transform2D, shadow: float = 0.4
 	if shadow > 0.0 and not dark:
 		for j in 2:
 			var o := SHADOW_MM * ppm * (1.0 + 0.8 * j)
-			c.draw_set_transform_matrix(Transform2D().scaled(Vector2(s, s)) * Transform2D(0.0, o) * xf)
+			c.draw_set_transform_matrix(_view_xf() * Transform2D(0.0, o) * xf)
 			c.draw_texture(tex, at, Color(0, 0, 0, shadow * (0.6 if j == 0 else 0.35)))
-	c.draw_set_transform_matrix(Transform2D().scaled(Vector2(s, s)) * xf)
+	c.draw_set_transform_matrix(_view_xf() * xf)
 	c.draw_texture(tex, at)
 
 
 func _draw_back() -> void:
 	var s := _vs()
-	_back.draw_set_transform_matrix(Transform2D().scaled(Vector2(s, s)))
+	_back.draw_set_transform_matrix(_view_xf())
 	var plate: Texture2D = _layers.get("plate")
 	if plate != null:
 		_back.draw_texture_rect(plate, Rect2(Vector2.ZERO, plate_size), false)
@@ -356,7 +368,7 @@ func _draw_front() -> void:
 		var wm := _wm()
 		var ppm := float(wm["px_per_mm_front"])
 		var c := Vector2(_slot_x(slot_of(_picked), false), _axis_y() - float(wm["radius_mm"]) * ppm * 0.92)
-		_front.draw_set_transform_matrix(Transform2D().scaled(Vector2(s, s)))
+		_front.draw_set_transform_matrix(_view_xf())
 		for j in 6:
 			var f := 1.0 - j / 6.0
 			_front.draw_circle(c + Vector2(0, -2.0 * ppm), 3.6 * ppm * f, Color(0, 0, 0, 0.07))
@@ -455,3 +467,48 @@ func _update_c_eyepiece(vm: Dictionary, delta: float) -> void:
 	var uv := (focus - disp.position) / disp.size
 	var half := Vector2(ed * 0.5 / Eyepiece.ZOOM, ed * 0.5 / Eyepiece.ZOOM) / disp.size
 	_eyepiece.aim(viewport.get_texture(), uv, half)
+
+
+# ------------------------------------------------------------------ layout: a crop round the lock
+func _layout() -> void:
+	super._layout()
+	if _back == null or viewport == null:
+		return
+	var r := get_rect()
+	if r.size.x <= 0.0 or r.size.y <= 0.0:
+		return
+	var safe := _safe_rect(r)
+	var cx := (BODY_X.x + BODY_X.y) * 0.5
+	var cw := BODY_X.y - BODY_X.x
+	var cy := _axis_y() + 12.0
+	if safe.size.y >= safe.size.x:
+		# portrait: same section rect as the other locks, the crop drops the bench at the sides
+		var ch := minf(cw * section_rect.size.y / section_rect.size.x, plate_size.y)
+		_crop = Rect2(cx - cw * 0.5, clampf(cy - ch * 0.5, 0.0, plate_size.y - ch), cw, ch)
+	else:
+		# landscape: the section takes the width between the plug face and the right edge
+		var th := r.size.y * 0.26
+		var left := safe.position.x + PlugFace.size_for(FACE_R_DP).x + 40.0
+		var right := safe.end.x - 16.0
+		section_rect = Rect2(Vector2(left, r.position.y), Vector2(right - left, r.size.y - th))
+		var ch := minf(cw * section_rect.size.y / section_rect.size.x, plate_size.y)
+		_crop = Rect2(cx - cw * 0.5, clampf(cy - ch * 0.5, 0.0, plate_size.y - ch), cw, ch)
+		tray_rect = Rect2(Vector2(section_rect.position.x, section_rect.end.y), Vector2(section_rect.size.x, th))
+		_tray.position = tray_rect.position
+		_tray.size = tray_rect.size
+		_loupe_rect = _compute_loupe_rect()
+		_loupe_btn.position = _loupe_rect.position
+		_loupe_btn.size = _loupe_rect.size
+		_face.position = Vector2(section_rect.position.x - _face.size.x - 16.0, section_rect.position.y + section_rect.size.y * 0.45)
+	_section.position = section_rect.position
+	_section.size = section_rect.size
+	var px := _physical_scale() * render_scale
+	var vp := Vector2(section_rect.size) * px
+	var n := vp.x * vp.y
+	if n > MAX_VP_PIXELS:
+		vp *= sqrt(MAX_VP_PIXELS / n)
+	viewport.size = Vector2i(maxi(int(vp.x), 16), maxi(int(vp.y), 16))
+	_place_reels()
+	_back.queue_redraw()
+	_front.queue_redraw()
+	_tray.queue_redraw()
