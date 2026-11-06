@@ -1,21 +1,21 @@
 keys,en,pl,de,fr,es
-dispatch.between.01,Good work. Another call is waiting.,Dobra robota. Czeka kolejne zgłoszenie.,Gut gemacht. Der nächste Auftrag wartet.,,
-dispatch.between.02,The next address is on the list.,Następny adres już na liście.,Die nächste Adresse steht auf der Liste.,,
-dispatch.between.03,"A quiet moment, then on we go.",Chwila spokoju i ruszamy dalej.,"Ein ruhiger Moment, dann geht es weiter.",,
-dispatch.between.04,Another call has just come in.,Kolejne zgłoszenie właśnie dotarło.,Ein neuer Auftrag ist eingegangen.,,
-dispatch.between.05,Thank you. I have another address for you.,Dziękuję. Mam dla ciebie następny adres.,Danke. Ich habe die nächste Adresse für dich.,,
-dispatch.between.06,The workshop is ready for the next lock.,W warsztacie wszystko gotowe na kolejny zamek.,Die Werkstatt ist für das nächste Schloss bereit.,,
-dispatch.between.07,The next job needs your attention.,Następna sprawa czeka na twoją uwagę.,Der nächste Auftrag braucht deine Aufmerksamkeit.,,
-dispatch.between.08,Take your time. There is no rush.,"Spokojnie, na wszystko znajdzie się czas.",Nur ruhig. Es ist Zeit genug.,,
-dispatch.between.09,I have a message from the next customer.,Mam wiadomość od kolejnego klienta.,Ich habe eine Nachricht vom nächsten Kunden.,,
-dispatch.between.10,Ready? The next call is here.,Czas na kolejne zgłoszenie.,Bereit? Der nächste Auftrag ist da.,,
-dispatch.between.11,Good work. Let us move on.,Dobra robota. Przejdźmy dalej.,Gut gemacht. Weiter geht es.,,
-dispatch.between.12,Someone is counting on your help today.,Ktoś liczy dziś na twoją pomoc.,Heute zählt jemand auf deine Hilfe.,,
-dispatch.between.13,The next lock is waiting.,Następny zamek już czeka.,Das nächste Schloss wartet.,,
-dispatch.between.14,Call logged. You can head out.,Zapisuję zgłoszenie. Możesz ruszać.,Auftrag notiert. Du kannst losfahren.,,
-dispatch.between.15,The next address is confirmed.,Kolejny adres potwierdzony.,Die nächste Adresse ist bestätigt.,,
-dispatch.between.16,Take a break if you need one.,"Zrób chwilę przerwy, jeśli jej potrzebujesz.","Mach eine Pause, wenn du sie brauchst.",,
-dispatch.between.17,Thank you for your patience. On we go.,Dziękuję za cierpliwość. Jedziemy dalej.,Danke für deine Geduld. Weiter geht es.,,
-dispatch.between.18,The next job is ready.,Następne zlecenie jest już przygotowane.,Der nächste Auftrag ist vorbereitet.,,
-dispatch.between.19,Check the details of the next call.,Sprawdź szczegóły kolejnego zgłoszenia.,Sieh dir die Details des nächsten Auftrags an.,,
-dispatch.between.20,One more matter to take care of.,Jeszcze jedna sprawa do załatwienia.,Eine Sache ist noch zu erledigen.,,
+dispatch.between.01,Good work. Another call is waiting.,Dobra robota. Czeka kolejne zgłoszenie.,Gut gemacht. Der nächste Auftrag wartet.,Beau travail. Une autre intervention t’attend.,Buen trabajo. Hay otro aviso esperando.
+dispatch.between.02,The next address is on the list.,Następny adres już na liście.,Die nächste Adresse steht auf der Liste.,La prochaine adresse est sur la liste.,La próxima dirección está en la lista.
+dispatch.between.03,"A quiet moment, then on we go.",Chwila spokoju i ruszamy dalej.,"Ein ruhiger Moment, dann geht es weiter.",Un instant de calme et on repart.,Un momento de calma y seguimos.
+dispatch.between.04,Another call has just come in.,Kolejne zgłoszenie właśnie dotarło.,Ein neuer Auftrag ist eingegangen.,Une nouvelle demande vient d’arriver.,Acaba de llegar un nuevo aviso.
+dispatch.between.05,Thank you. I have another address for you.,Dziękuję. Mam dla ciebie następny adres.,Danke. Ich habe die nächste Adresse für dich.,Merci. J’ai une autre adresse pour toi.,Gracias. Tengo otra dirección para ti.
+dispatch.between.06,The workshop is ready for the next lock.,W warsztacie wszystko gotowe na kolejny zamek.,Die Werkstatt ist für das nächste Schloss bereit.,L’atelier est prêt pour la prochaine serrure.,El taller está listo para otra cerradura.
+dispatch.between.07,The next job needs your attention.,Następna sprawa czeka na twoją uwagę.,Der nächste Auftrag braucht deine Aufmerksamkeit.,La prochaine intervention a besoin de toi.,El próximo encargo necesita tu atención.
+dispatch.between.08,Take your time. There is no rush.,"Spokojnie, na wszystko znajdzie się czas.",Nur ruhig. Es ist Zeit genug.,Prends ton temps. Rien ne presse.,Tómate tu tiempo. No hay prisa.
+dispatch.between.09,I have a message from the next customer.,Mam wiadomość od kolejnego klienta.,Ich habe eine Nachricht vom nächsten Kunden.,J’ai un message du prochain client.,Tengo un mensaje del próximo cliente.
+dispatch.between.10,Ready? The next call is here.,Czas na kolejne zgłoszenie.,Bereit? Der nächste Auftrag ist da.,La prochaine intervention est là.,Ya está aquí el próximo aviso.
+dispatch.between.11,Good work. Let us move on.,Dobra robota. Przejdźmy dalej.,Gut gemacht. Weiter geht es.,Beau travail. On continue.,Buen trabajo. Seguimos.
+dispatch.between.12,Someone is counting on your help today.,Ktoś liczy dziś na twoją pomoc.,Heute zählt jemand auf deine Hilfe.,Quelqu’un compte sur ton aide aujourd’hui.,Hoy alguien cuenta con tu ayuda.
+dispatch.between.13,The next lock is waiting.,Następny zamek już czeka.,Das nächste Schloss wartet.,La prochaine serrure t’attend.,La próxima cerradura te espera.
+dispatch.between.14,Call logged. You can head out.,Zapisuję zgłoszenie. Możesz ruszać.,Auftrag notiert. Du kannst losfahren.,Demande notée. Tu peux partir.,Aviso anotado. Puedes salir.
+dispatch.between.15,The next address is confirmed.,Kolejny adres potwierdzony.,Die nächste Adresse ist bestätigt.,La prochaine adresse est confirmée.,La próxima dirección está confirmada.
+dispatch.between.16,Take a break if you need one.,"Zrób chwilę przerwy, jeśli jej potrzebujesz.","Mach eine Pause, wenn du sie brauchst.",Fais une pause si tu en as besoin.,Descansa si lo necesitas.
+dispatch.between.17,Thank you for your patience. On we go.,Dziękuję za cierpliwość. Jedziemy dalej.,Danke für deine Geduld. Weiter geht es.,Merci pour ta patience. On continue.,Gracias por tu paciencia. Seguimos.
+dispatch.between.18,The next job is ready.,Następne zlecenie jest już przygotowane.,Der nächste Auftrag ist vorbereitet.,La prochaine intervention est prête.,El próximo encargo está listo.
+dispatch.between.19,Check the details of the next call.,Sprawdź szczegóły kolejnego zgłoszenia.,Sieh dir die Details des nächsten Auftrags an.,Vérifie les détails de la prochaine demande.,Comprueba los detalles del próximo aviso.
+dispatch.between.20,One more matter to take care of.,Jeszcze jedna sprawa do załatwienia.,Eine Sache ist noch zu erledigen.,Encore une affaire à régler.,Queda otro asunto por resolver.
