@@ -60,3 +60,6 @@ func _ready() -> void:
 		list.add_child(row)
 	ScreenFrame.enter($Frame/VBox/Scroll)
 	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
+	# V04: one "day after" scene per finished job with after-lines, shown once
+	if not DayAfter.pending_job().is_empty():
+		get_tree().change_scene_to_file("res://scenes/day_after.tscn")
