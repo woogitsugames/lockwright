@@ -653,11 +653,11 @@ Zrzuty: `docs/handoff/device-tests/fixes/landscape/` (412×915 i 915×412: menu,
 ### Tabela statusów (zielone runy na main)
 | Workflow | Ostatni zielony run na main |
 |---|---|
-| game-android | https://github.com/woogitsugames/lockwright/actions/runs/42100326036 |
-| game-ios | https://github.com/woogitsugames/lockwright/actions/runs/42077893497 |
-| game-tests | https://github.com/woogitsugames/lockwright/actions/runs/42100326407 |
-| game-screens | https://github.com/woogitsugames/lockwright/actions/runs/42100326243 |
-| qa-career | https://github.com/woogitsugames/lockwright/actions/runs/42079732741 |
+| game-android | https://github.com/woogitsugames/lockwright/actions/runs/42128582698 |
+| game-ios | https://github.com/woogitsugames/lockwright/actions/runs/42128582739 |
+| game-tests | https://github.com/woogitsugames/lockwright/actions/runs/42128582467 |
+| game-screens | https://github.com/woogitsugames/lockwright/actions/runs/42128582925 |
+| qa-career | https://github.com/woogitsugames/lockwright/actions/runs/42128582499 |
 
 ## Od sesji A: N-63, zlecenia z innymi rodzinami pokazują zastępczy widok (KRYTYCZNE, zgłoszenie właściciela, APK run 131)
 Zrzut: `docs/handoff/device-tests/run131_placeholder_lock.jpg`.
@@ -711,3 +711,5 @@ Zrzuty: `docs/handoff/device-tests/run135/`.
 - **Eksport:** `.ogg` są importowanymi zasobami (`all_resources`) i żaden `exclude_filter` nie obejmuje `assets/audio/lines`, więc filtrów nie trzeba było zmieniać.
 - **Testy:** `tests/gut/test_dialogue_player.gd`, 12 testów na fikstury `tests/fixtures/lines/{pl,en}` (tylko testy, wykluczone z eksportu). Cały GUT lokalnie: 128/128.
 - **Zrzuty** (fikstury, kwestia 2 bieżąca): `docs/handoff/device-tests/d57/arrival_dialogue_{pl,en}_412x915.png`.
+
+**Stan końcowy 2026-11-05:** ostatni run na `main` każdego z workflow `game-android`, `game-ios`, `game-tests`, `game-screens`, `qa-career` jest zielony (linki w tabeli powyżej — wszystkie 5 runy dla najnowszego commita main). ✅
