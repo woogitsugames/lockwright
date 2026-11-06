@@ -13,6 +13,8 @@ Subcommands
   python3 tools/voice_lines.py synth  [--jobs ...] [--lang ...]           # call the API directly (needs ELEVENLABS_API_KEY)
   python3 tools/voice_lines.py finish DIR                # raw PCM/WAV in DIR (<lang>/<key>.pcm) -> normalised .ogg + .import
   python3 tools/voice_lines.py qa [--lang pl,en]         # duration/loudness/ASR word error rate (faster-whisper)
+  python3 tools/voice_lines.py reactions-finish DIR      # wordless S03v2-style reactions: DIR/<speaker>/<emotion>.pcm
+                                                         #   -> game/assets/audio/voices/<speaker>/<emotion>.ogg (+ .import)
 
 How it was actually run (2026-11-05): the session had no API key, only the ElevenLabs connection in Composio.
 Voice Design (ELEVENLABS_DESIGN_VOICE, model eleven_ttv_v3, 3 previews per character), choice of the preview
@@ -112,6 +114,18 @@ CAST = {
     'pawel': ('m', 46, 'Polish heating technician, 46, calm and methodical, prefers a checked protocol to promises. Steady mid-low male voice, plain and reassuring, unhurried.'),
     'karol': ('m', 41, 'Polish man, 41, impatient with procedures, slightly pushy but polite, wants to skip questions. Clear mid-pitched male voice, brisk and a little evasive.'),
 }
+
+# Wordless reactions (S03v2 names, 0.3-1.5 s, ~-28 LUFS like contrib/gpt/S03v2) for speakers that arrived after S03v2
+# (T43, T18). TTS with the character's own voice and an interjection only (no words in any language), same model.
+REACTIONS = {
+    'greeting': '[friendly] Mm-hm!', 'surprise': '[surprised] Oh!', 'relief': '[sighs with relief] Haaah...',
+    'thanks': '[warmly] Mmm-hm!', 'impatient': '[impatient] Tsk... hmm-hmm.', 'sad': '[sadly] Ohh...',
+    'laugh': '[laughs] Ha-ha-ha!', 'goodbye': '[cheerfully] Mm-hm!',
+}
+REACTION_SEED = 7
+REACTION_LUFS = -28.0
+REACTION_MAX_S = 1.5
+VOICES = GAME / 'assets/audio/voices'
 
 FILLER = {
     'child': 'A potem pójdziemy na lody, bo tata obiecał. Ja pamiętam wszystko, co tata obiecuje.',
@@ -255,6 +269,36 @@ def finish(raw_dir):
     print('done')
 
 
+def reactions_finish(raw_dir):
+    """PCM s16le 48 kHz mono reactions -> trimmed, capped at REACTION_MAX_S (100 ms fade), -28 LUFS Ogg q4 + .import."""
+    n = 0
+    for src in sorted(pathlib.Path(raw_dir).glob('*/*.pcm')):
+        spk, emo = src.parent.name, src.stem
+        if emo not in REACTIONS:
+            continue
+        dst = VOICES / spk / f'{emo}.ogg'
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        inp = ['-f', 's16le', '-ar', '48000', '-ac', '1', '-i', str(src)]
+        trim = ('silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.01,areverse,'
+                'silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.04,areverse')
+        chain = trim
+        pcm = subprocess.run(['ffmpeg', '-v', 'error', *inp, '-af', trim, '-f', 'f32le', '-'], capture_output=True).stdout
+        dur = len(pcm) / 4 / 48000   # length after trimming
+        if dur > REACTION_MAX_S:
+            chain += f',atrim=0:{REACTION_MAX_S},afade=t=out:st={REACTION_MAX_S - 0.1}:d=0.1'
+        a = subprocess.run(['ffmpeg', '-hide_banner', '-nostats', *inp, '-af',
+                            f'{chain},loudnorm=I={REACTION_LUFS}:TP=-3:LRA=11:print_format=json', '-f', 'null', '-'],
+                           capture_output=True, text=True).stderr
+        m = json.loads(a[a.rindex('{'):a.rindex('}') + 1])
+        ln = (f"loudnorm=I={REACTION_LUFS}:TP=-3:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
+              f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true")
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', *inp, '-af', f'{chain},{ln},aresample=48000', '-ac', '1', '-ar', '48000',
+                        '-c:a', 'libvorbis', '-q:a', '4', '-map_metadata', '-1', str(dst)], check=True)
+        write_import(dst)
+        n += 1
+    print('reactions', n)
+
+
 def _norm_words(t):
     t = re.sub(r'\[[^\]]*\]', ' ', t.lower())
     return re.findall(r"[^\W_]+(?:'[^\W_]+)?", t)
@@ -347,6 +391,8 @@ def main():
         qa(langs, out_json=a.arg)
     elif a.cmd == 'finish':
         finish(a.arg)
+    elif a.cmd == 'reactions-finish':
+        reactions_finish(a.arg)
     else:
         sys.exit(__doc__)
 
