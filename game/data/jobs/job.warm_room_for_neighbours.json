@@ -1,0 +1,32 @@
+{
+  "id": "job.warm_room_for_neighbours",
+  "chapter": 8,
+  "order": 8,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 3,
+  "verification": "Świetlica wspólnoty: zarządczyni Elżbieta zgadza się przez telefon (2–3, utknęła w śniegu z kluczem), uchwała o udostępnieniu sali (2), Basia jako świadek (2). Wycena przyjęta.",
+  "reward_coins": 145,
+  "tone": "wspólnotowy, ciepły",
+  "i18n": {
+    "title": "job.warm_room_for_neighbours.title",
+    "client": "job.warm_room_for_neighbours.client",
+    "situation": "job.warm_room_for_neighbours.situation"
+  },
+  "lines": [
+    "marta",
+    "basia",
+    "locksmith",
+    "marta"
+  ],
+  "cards": [
+    "manager",
+    "institution",
+    "witness"
+  ],
+  "threshold": 3,
+  "place": "apartment",
+  "time": "evening",
+  "outcome": "open",
+  "source": "contrib/gpt/T18 (review: contrib/gpt/REVIEW-T18.md)"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "job.winter_bicycle_cellar",
+  "chapter": 8,
+  "order": 9,
+  "district": "Śródmieście",
+  "family": "combo",
+  "tier": 3,
+  "verification": "Leon ma aneks do najmu miejsca w piwnicznej rowerowni (2), Elżbieta potwierdza użytkownika w wykazie (2–3). Wycena uzgodniona; brak zgrzytu.",
+  "reward_coins": 145,
+  "tone": "zimowy, rzeczowy",
+  "i18n": {
+    "title": "job.winter_bicycle_cellar.title",
+    "client": "job.winter_bicycle_cellar.client",
+    "situation": "job.winter_bicycle_cellar.situation"
+  },
+  "lines": [
+    "leon",
+    "elzbieta",
+    "locksmith",
+    "leon"
+  ],
+  "cards": [
+    "lease",
+    "manager"
+  ],
+  "threshold": 2,
+  "place": "cellar",
+  "time": "evening",
+  "outcome": "open",
+  "source": "contrib/gpt/T18 (review: contrib/gpt/REVIEW-T18.md)"
+}

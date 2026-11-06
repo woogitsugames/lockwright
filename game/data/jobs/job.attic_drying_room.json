@@ -1,0 +1,31 @@
+{
+  "id": "job.attic_drying_room",
+  "chapter": 8,
+  "order": 11,
+  "district": "Osiedle Słoneczne",
+  "family": "lever",
+  "tier": 3,
+  "verification": "Teresa ma umowę najmu z prawem do wspólnej suszarni (2). Administrator Roman potwierdza regulamin i dostęp (2–3); wycena zaakceptowana. Osiedle Słoneczne (jak `wrong_floor`).",
+  "reward_coins": 145,
+  "tone": "domowy, spokojny",
+  "i18n": {
+    "title": "job.attic_drying_room.title",
+    "client": "job.attic_drying_room.client",
+    "situation": "job.attic_drying_room.situation"
+  },
+  "lines": [
+    "teresa",
+    "roman",
+    "locksmith",
+    "teresa"
+  ],
+  "cards": [
+    "lease",
+    "manager"
+  ],
+  "threshold": 2,
+  "place": "attic",
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T18 (review: contrib/gpt/REVIEW-T18.md)"
+}

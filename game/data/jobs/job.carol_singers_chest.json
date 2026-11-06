@@ -1,0 +1,31 @@
+{
+  "id": "job.carol_singers_chest",
+  "chapter": 8,
+  "order": 3,
+  "district": "Śródmieście",
+  "family": "egyptian",
+  "tier": 1,
+  "verification": "Skrzynia jest własnością świetlicy: zarządczyni Elżbieta (2–3) i uchwała wspólnoty (2). Mila prowadzi kolędników, nie decyduje o dostępie. Cena przyjęta.",
+  "reward_coins": 75,
+  "tone": "lekko zabawny, wspólnotowy",
+  "i18n": {
+    "title": "job.carol_singers_chest.title",
+    "client": "job.carol_singers_chest.client",
+    "situation": "job.carol_singers_chest.situation"
+  },
+  "lines": [
+    "mila",
+    "elzbieta",
+    "locksmith",
+    "mila"
+  ],
+  "cards": [
+    "manager",
+    "institution"
+  ],
+  "threshold": 2,
+  "place": "apartment",
+  "time": "evening",
+  "outcome": "open",
+  "source": "contrib/gpt/T18 (review: contrib/gpt/REVIEW-T18.md)"
+}

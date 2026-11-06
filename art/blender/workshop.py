@@ -1,5 +1,9 @@
 # Lockwright — the locksmith's workshop bench (hub / menu screen). 1 unit = 1 mm.
 #   blender -b -t 2 -P art/blender/workshop.py -- --out art/renders/workshop.png --res 2160x3840 --samples 160
+# Furnishings (D-71, art/blender/workshop_furnishings.py): --furnish all|id,id adds items to a still; --layers DIR renders
+# base.png + one <id>.png per item (same seed/settings) for art/blender/workshop_layers.py; --probe prints projected boxes.
+#   blender -b -P art/blender/workshop.py -- --layers art/renders/workshop_layers --res 1080x1920 --samples 48            (CPU draft)
+#   blender -b -P art/blender/workshop.py -- --layers art/renders/workshop_layers --res 2160x3840 --samples 256 --device GPU (final)
 # Laminated beech bench against a limewashed brick wall: bench vice holding a practice cylinder, an invented
 # key-cutting machine, pegboard with hand tools and a pick set, key-blank board, a glass showcase of opened
 # locks on a shelf, an articulated lamp (warm key light), notebook, phone, clipboard with dispatch slips.
@@ -14,6 +18,12 @@ from mathutils import Vector, Matrix
 arg = cli()
 OUT = arg('--out', 'art/renders/test_workshop.png'); RES = [int(v) for v in arg('--res', '540x960').split('x')]
 SAMPLES = int(arg('--samples', '32')); CROP = arg('--crop', '')
+FURNISH = arg('--furnish', ''); LAYERS = arg('--layers', ''); PROBE = '--probe' in sys.argv
+if arg('--device', 'CPU').upper() != 'CPU':
+    os.environ['LW_DEVICE'] = 'GPU'      # lw_common.configure_cycles_device: OptiX, then CUDA
+if LAYERS:
+    OUT = os.path.join(LAYERS, 'base.png')
+import workshop_furnishings as furn
 rng = random.Random(5)
 BZ = 900                                   # bench top height
 BY0, BY1 = -690, -30                       # bench front / back
@@ -257,6 +267,7 @@ bx('ex_woodbolt', -240, -85, -175, -150, FZ + 25, FZ + 45, oak('ex_bolt', light=
 
 # ---------------------------------------------------------------- bench vice with a practice cylinder
 VX, VY = -250, -380
+furn.begin('base_vise')                    # hidden when the `vise` furnishing replaces it
 bx('vice_base', VX - 80, VX + 80, VY - 60, VY + 60, BZ, BZ + 14, vice_paint, bev=3)
 for sx in (-1, 1):
     for sy in (-1, 1):
@@ -289,6 +300,7 @@ for k in range(5):
     setmat(cyl('pc_kpin', 1.5, 6.5, (PCX - 4, VY - 17, z), axis='X', verts=16), brass)
     setmat(cyl('pc_dpin', 1.5, 6.0 - (k % 3), (PCX + 3, VY - 17, z), axis='X', verts=16), bright)
 face = lathe('pc_face', [(0.1, PCZ + 50), (8.5, PCZ + 50), (9, PCZ + 52), (0.1, PCZ + 52)], PCX, VY - 14, seg=48); setmat(face, brass)
+furn.end()
 
 # ---------------------------------------------------------------- key-cutting machine (invented, generic)
 KMX, KMY = 270, -290
@@ -420,6 +432,15 @@ tag_vice = tag('tag_vice', Matrix.Translation(Vector((VX + 115, VY - 175, BZ + 0
 tag_case = tag('tag_case', Matrix.Translation(Vector(((CX0 + CX1) / 2 + 30, CY0 - 16, CZ0 - 34))) @ Matrix.Rotation(math.radians(-4), 4, 'Y') @
                Matrix.Rotation(math.radians(90), 4, 'X'), manila, brass, string_to=((CX0 + CX1) / 2, CY0 - 12, CZ0 + 22), string_mat=cotton)
 
+# ---------------------------------------------------------------- furnishings (D-71): hidden unless asked for
+FURN = furn.build(globals())
+def show_furnishings(ids):
+    for fid, col in FURN.items():
+        col.hide_render = fid not in ids
+    for fid, base_name in furn.REPLACES.items():
+        bpy.data.collections[base_name].hide_render = fid in ids
+show_furnishings(furn.IDS if FURNISH == 'all' else [f for f in FURNISH.split(',') if f])
+
 # ---------------------------------------------------------------- lights
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (0, -350, BZ)
 world_hdri(0.03, 'interior.exr', sat=0.3)
@@ -446,5 +467,19 @@ write_anchors(os.path.splitext(os.path.abspath(OUT))[0] + '.json', {
     'machine': [(KMX - 165, KMY - 60, BZ + 200), (KMX + 165, KMY - 60, BZ + 200), (KMX + 165, KMY - 115, BZ), (KMX - 165, KMY - 115, BZ)],
     'drawer_card': [(-60, BY0 + 3, BZ - 83), (60, BY0 + 3, BZ - 83), (60, BY0 + 3, BZ - 117), (-60, BY0 + 3, BZ - 117)],
 })
-bpy.ops.render.render(write_still=True)
-print('WROTE', scene.render.filepath)
+if PROBE:   # projected bounding boxes (0..1, top-left origin) of every furnishing, no render
+    for fid, col in FURN.items():
+        pts = [o.matrix_world @ Vector(c) for o in col.all_objects if o.type == 'MESH' for c in o.bound_box]
+        uv = project(pts); xs = [p[0] for p in uv]; ys = [p[1] for p in uv]
+        print('PROBE %-14s x %.3f..%.3f  y %.3f..%.3f' % (fid, min(xs), max(xs), min(ys), max(ys)))
+    sys.exit(0)
+if LAYERS:  # base + one variant per furnishing; identical settings and seed so unchanged pixels match
+    os.makedirs(LAYERS, exist_ok=True)
+    for fid in [None] + furn.IDS:
+        show_furnishings([fid] if fid else [])
+        scene.render.filepath = os.path.join(os.path.abspath(LAYERS), (fid or 'base') + '.png')
+        bpy.ops.render.render(write_still=True)
+        print('WROTE', scene.render.filepath, flush=True)
+else:
+    bpy.ops.render.render(write_still=True)
+    print('WROTE', scene.render.filepath)

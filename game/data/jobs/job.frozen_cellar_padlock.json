@@ -1,0 +1,31 @@
+{
+  "id": "job.frozen_cellar_padlock",
+  "chapter": 8,
+  "order": 1,
+  "district": "Śródmieście",
+  "family": "combo",
+  "tier": 2,
+  "verification": "Aneks do najmu piwnicy (2) i potwierdzenie zarządczyni Elżbiety z wykazu lokatorów (2–3). Wycena zaakceptowana; brak zgrzytu.",
+  "reward_coins": 100,
+  "tone": "ciepły, pierwszy mróz",
+  "i18n": {
+    "title": "job.frozen_cellar_padlock.title",
+    "client": "job.frozen_cellar_padlock.client",
+    "situation": "job.frozen_cellar_padlock.situation"
+  },
+  "lines": [
+    "janka",
+    "elzbieta",
+    "locksmith",
+    "janka"
+  ],
+  "cards": [
+    "lease",
+    "manager"
+  ],
+  "threshold": 2,
+  "place": "cellar",
+  "time": "evening",
+  "outcome": "open",
+  "source": "contrib/gpt/T18 (review: contrib/gpt/REVIEW-T18.md)"
+}

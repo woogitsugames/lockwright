@@ -1,0 +1,33 @@
+{
+  "id": "job.refuse_wrong_letterbox",
+  "chapter": 8,
+  "order": 4,
+  "district": "Śródmieście",
+  "family": "wafer",
+  "tier": 1,
+  "verification": "Oskar ma tylko dowód (1). Skrzynka i korespondencja należą do sąsiadów spod szesnastki, którzy wyjechali; Oskar nie chce czekać ani pytać zarządczyni (flag.absent_owner, flag.no_witness). Odmowa, +5 reputacji, bez monet. Cudzej skrzynki nie otwieramy nawet po własną kartkę (tajemnica korespondencji).",
+  "reward_coins": 0,
+  "tone": "spokojna, uprzejma odmowa",
+  "i18n": {
+    "title": "job.refuse_wrong_letterbox.title",
+    "client": "job.refuse_wrong_letterbox.client",
+    "situation": "job.refuse_wrong_letterbox.situation"
+  },
+  "lines": [
+    "oskar",
+    "locksmith",
+    "oskar",
+    "locksmith"
+  ],
+  "after": [
+    "elzbieta"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2,
+  "place": "apartment",
+  "time": "evening",
+  "outcome": "open",
+  "source": "contrib/gpt/T18 (review: contrib/gpt/REVIEW-T18.md)"
+}

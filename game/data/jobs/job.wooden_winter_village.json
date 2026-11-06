@@ -1,0 +1,31 @@
+{
+  "id": "job.wooden_winter_village",
+  "chapter": 8,
+  "order": 10,
+  "district": "Śródmieście",
+  "family": "egyptian",
+  "tier": 1,
+  "verification": "Drewniana kaseta z makietą należy do muzeum. Dr Rygiel potwierdza depozyt w świetlicy protokołem (instytucja 2–3) i imiennym upoważnieniem dla Zuzanny (2). Wycena zaakceptowana.",
+  "reward_coins": 75,
+  "tone": "nostalgiczny, lekki humor",
+  "i18n": {
+    "title": "job.wooden_winter_village.title",
+    "client": "job.wooden_winter_village.client",
+    "situation": "job.wooden_winter_village.situation"
+  },
+  "lines": [
+    "zuzanna",
+    "locksmith",
+    "zuzanna",
+    "locksmith"
+  ],
+  "cards": [
+    "manager",
+    "institution"
+  ],
+  "threshold": 2,
+  "place": "apartment",
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T18 (review: contrib/gpt/REVIEW-T18.md)"
+}

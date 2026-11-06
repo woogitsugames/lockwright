@@ -1,0 +1,31 @@
+{
+  "id": "job.halina_christmas_tin",
+  "chapter": 8,
+  "order": 2,
+  "district": "Śródmieście",
+  "family": "warded",
+  "tier": 1,
+  "verification": "Puszka należy do Haliny: zdjęcie z jej kuchni (1) i słowo sąsiadki Zosi (2). Rzecz ruchoma; wycena przyjęta.",
+  "reward_coins": 75,
+  "tone": "wigilijny, suchy humor",
+  "i18n": {
+    "title": "job.halina_christmas_tin.title",
+    "client": "job.halina_christmas_tin.client",
+    "situation": "job.halina_christmas_tin.situation"
+  },
+  "lines": [
+    "halina",
+    "zosia",
+    "locksmith",
+    "halina"
+  ],
+  "cards": [
+    "photo",
+    "witness"
+  ],
+  "threshold": 2,
+  "place": "apartment",
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T18 (review: contrib/gpt/REVIEW-T18.md)"
+}
