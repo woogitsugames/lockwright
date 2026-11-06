@@ -204,6 +204,7 @@ Own renders, Blender 4.2.9 LTS / Cycles OptiX on RTX 5070; existing photo materi
 | `game/assets/photoreal/plate/plate_1236x1650.png` | `game/assets/photoreal/tools/render_plate.py --res 2472x3300 --samples 128` |
 | `photoreal_families/warded/photo/{parts,plate,wards}.png` | `warded_photo_plate.py --res 2472x3300 --samples 128` (all passes together) |
 | `photoreal_families/{wafer,lever}/photo/{parts,plate}.png` | `photo_plates.py --family wafer|lever --res 2472x3300 --samples 128`; lever also `--detector 1 --passes parts` |
+| `game/assets/photoreal_families/lever/photo/parts_detector.png` | the lever detector pass (parts with the detector leaf in, used by the 3-lever folder fallback of `lever_view.gd`): `photo_plates.py --family lever --detector 1 --passes parts --res 2472x3300 --samples 128`; Blender 4.2.9 LTS Cycles GPU (OptiX, RTX 5070) on the owner's PC, commit `4766aac` |
 | `photoreal_families/dial_safe/photo/*.png`, `layers.json` | `dial_safe_plate.py --res 1236x1648 --spp 256 --device GPU` |
 | `photoreal_families/{combo,disc_detainer}/photo/*.png`, `layers.json` | `combo_plate.py --family combo|disc_detainer --res 1236x1648 --spp 256 --device GPU` |
 | `photoreal_families/{egyptian,time_lock,axial_slider}/photo/*.png`, `layers.json` | respective `art/blender/plates/*_plate.py --res 1236x1648 --spp 256 --device GPU` |
@@ -211,3 +212,5 @@ Own renders, Blender 4.2.9 LTS / Cycles OptiX on RTX 5070; existing photo materi
 | `game/assets/photoreal_families/lever_detector/lever_detector_baked.glb`, `scene.json`, `photo/{parts,plate}.png` | `lever_plate.py --levers 5 --res 1236x1650 --samples 128`, then `photo_plates.py --family lever --levers 5 --detector 1 --res 1236x1650 --samples 128`; 57.80 MB pack after rebasing the session A menu |
 
 PNG imports in game use lossy quality 0.85. Evidence: `docs/handoff/device-tests/fixes/plates_2x/`.
+
+All rows of this table: Blender 4.2.9 LTS, Cycles GPU on the owner's PC, published in commit `4766aac` (GPU batch). N-72 (session B): the nine 2472×3300 masters over the 8 MB lint limit (`photoreal/plate/plate_1236x1650.png`, `lever/photo/{parts,parts_detector,plate}.png`, `wafer/photo/{parts,plate}.png`, `warded/photo/{parts,plate,wards}.png`) were fully opaque RGBA; they are re-saved as 8-bit RGB PNG (alpha dropped, every RGB pixel verified identical, zlib level 9): 5.0–6.6 MB each. The shaders read only `.rgb`; imports stay lossy 0.85.
