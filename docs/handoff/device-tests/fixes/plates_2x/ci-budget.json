@@ -1,0 +1,35 @@
+{
+  "measured": {
+    "pck_android_mb": 57.5,
+    "startup_headless_s": 0.44,
+    "startup_rss_mb": 119.0,
+    "lock_scene_headless_s": 0.82
+  },
+  "budgets": {
+    "pck_android_mb": {
+      "warn": 45,
+      "fail": 58,
+      "note": "resources exported with the Android preset (bulk of the AAB). N-30 bis: AAB = pck + ~11 MB (engine, plugins), so pck fail 58 keeps the AAB under the 70 MB budget; measured 33.1 MB on 2026-11-05"
+    },
+    "apk_mb": {
+      "warn": 100,
+      "fail": 150,
+      "note": "debug/release APK when the game-android artifact exists"
+    },
+    "startup_headless_s": {
+      "warn": 1.0,
+      "fail": 2.0,
+      "note": "median of 5: engine init + autoloads + boot scene + 5 frames, CI runner"
+    },
+    "lock_scene_headless_s": {
+      "warn": 1.2,
+      "fail": 2.5,
+      "note": "median of 3: plan B lock scene + 5 frames"
+    },
+    "startup_rss_mb": {
+      "warn": 200,
+      "fail": 300,
+      "note": "peak RSS of the headless boot (no GPU); proxy for leaks/oversized resources"
+    }
+  }
+}

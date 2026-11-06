@@ -1,0 +1,22 @@
+--------- beginning of main
+11-06 09:24:26.299 19959 19959 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-06 09:24:26.308 19959 19959 I AndroidRuntime: Using default boot image
+11-06 09:24:26.308 19959 19959 I AndroidRuntime: Leaving lock profiling enabled
+11-06 09:24:26.314 19959 19959 D AndroidRuntime: addProductProperty not brand or 7
+11-06 09:24:26.682 19959 19959 D AndroidRuntime: Calling main entry com.android.commands.monkey.Monkey
+11-06 09:24:26.914 19959 19959 I AndroidRuntime: VM exiting with result code 0.
+11-06 09:24:27.897 19978 20020 I godot   : Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+11-06 09:24:27.999 19978 20020 I godot   : Vulkan 1.3.303 - Forward Mobile - Using Device #0: ARM - Mali-G57 MC2
+11-06 09:24:29.336 19978 20020 I godot   :
+11-06 09:24:30.293 19978 20020 I godot   : Haptics: native plugin LockwrightHaptics detected, caps={ "tier": "fallback", "primitives": [], "amplitude_control": false, "envelope": false, "native": false }
+11-06 09:24:30.295 19978 20020 I godot   : Sfx: native click audio bridge detected: LockwrightLowLatencyAudio
+11-06 09:24:30.439 19978 20020 E godot   : ERROR: Parent node is busy setting up children, `add_child()` failed. Consider using `add_child.call_deferred(child)` instead.
+11-06 09:24:30.439 19978 20020 E godot   :    at: add_child (scene/main/node.cpp:1721)
+11-06 09:24:30.440 19978 20020 E godot   :    GDScript backtrace (most recent call first):
+11-06 09:24:30.440 19978 20020 E godot   :        [0] _ready (res://scripts/autoload/quality.gd:35)
+11-06 09:24:30.561 19978 20020 E godot   : ERROR: main_menu: res://assets/ui/menu/menu_layout.json missing
+11-06 09:24:30.561 19978 20020 E godot   :    at: push_error (core/variant/variant_utility.cpp:1023)
+11-06 09:24:30.561 19978 20020 E godot   :    GDScript backtrace (most recent call first):
+11-06 09:24:30.561 19978 20020 E godot   :        [0] load_layout (res://scripts/ui/main_menu.gd:84)
+11-06 09:24:30.561 19978 20020 E godot   :        [1] _ready (res://scripts/ui/main_menu.gd:63)
+11-06 09:24:40.416 19978 20020 I godot   : Quality: auto profile after 10 s avg 16.9 ms -> medium

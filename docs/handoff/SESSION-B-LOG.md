@@ -759,3 +759,21 @@ Zrzuty: `docs/handoff/device-tests/run135/`.
 ### N-68 update: package budget fits after session A menu changes
 
 After rebasing main with session A's D-62 menu, measured the full resource pack again: 55,833,660 bytes without detector, **57,799,088 bytes including it**, below 58 MB. The same candidate is now integrated into `game/assets/photoreal_families/lever_detector/` with lossy photo imports; the view unlocks it via its existing resource check. No local game code, i18n or CI changes. The authoritative Linux perf-budget and GUT both-mode test remain session A's responsibility (no Windows lockcore GDExtension). Candidate binary duplicates under art are removed; geometry evidence stays there.
+
+
+## Od sesji lokalnej: N-69, Android Back na ekranach zamków; GPU budget zielony
+
+- **N-69 (APK 42163108394 / 356acbed, Samsung SM-A165F):** `adb shell input keyevent 4` nie pokazuje pauzy na ekranach wafer, warded i magnetic. Zrzuty przed/po: `device-tests/run42163108394-local/{warded-lock,warded-android-back,warded-flap,magnetic-lock,magnetic-android-back,android-back-wafer}.png`. Klapka w prawym górnym rogu otwiera pauzę; „Wyjdź” działa. Android Back z ustawień i z rachunku działa (rachunek → lista zleceń). W logcat brak nowego wyjątku po Back.
+- Do sprawdzenia przez sesję A: `lock_photoreal.gd` obsługuje KEY_ESCAPE w `_unhandled_input`, a `Nav` osobno WM_GO_BACK_REQUEST. Podwójna obsługa tej samej akcji jest hipotezą, nie potwierdzoną przyczyną. Kodu gry nie zmieniałem.
+- Rachunek N-66 ma klienta, usługę, nagrodę i napiwek; dowód `wafer-payment.png`. Na ekranach photoreal uruchomiły się dotychczas piny, warded, wafer, lever, combo, magnetic, dimple, egyptian, dial_safe i axial_slider; dalsza macierz w raporcie urządzenia. To przegląd ekranów, nie pełna walidacja otwierania obu trybów.
+- **CI perf-budget 42185136911 dla 4766aaca: success**, pck 57.5 MB (limit 58), startup 0.44 s / 119 MB, lock scene 0.82 s. Raport `device-tests/fixes/plates_2x/ci-budget.{json,md}`. N-68 zamknięty dla tej rewizji. `game-tests` i `game-android` jeszcze pracują; lokalnie nie poprawiam CI.
+
+
+## Od sesji lokalnej: N-70 haptyka i N-71 puste menu w nowym APK (KRYTYCZNE)
+
+- **N-70, potwierdzone przez właściciela:** „Impuls próbny” przy włączonej haptyce i intensywności 100% jest niewyczuwalny. Niezależny `adb shell cmd vibrator_manager synced -u 18 -d Lockwright_reference oneshot 250` dał wyczuwalną wibrację (właściciel potwierdził). Sprzęt/system potrafi wibrować. W logu gry singleton LockwrightHaptics wykryty, ale capabilities to fallback/native=false. W Kotlinie capabilitiesJson zwraca native=true, więc sesja A powinna sprawdzić dostępność metod singletonu i fallback; możliwe też zbyt krótkie impulsy dla ERM. To tropy, nie potwierdzona przyczyna. Dowody: run42163108394-local/haptic-test.png, vibrator-service.txt, logcat; kodu nie zmieniałem.
+- **N-71 KRYTYCZNE, APK GPU 42185136957 / 4766aaca:** instalacja -r sukces, ale po starcie pusty brązowy ekran. Log: `main_menu: res://assets/ui/menu/menu_layout.json missing`, main_menu.gd:84 → _ready:63. `git ls-files game/assets/ui/menu` nie zwraca żadnego pliku; brakuje śledzonych zasobów nowego menu. Dowody: run42185136957-local/blank-menu.png i logcat.txt. Nie naprawiam integracji menu (zakres sesji A). Przywróciłem na telefonie działające APK 42163108394 przez install -r, bez usuwania danych.
+- CI dla 4766aaca: game-android success (42185136957), perf-budget success (42185136911, 57.5 MB), game-tests failure (42185136776, 6 failing tests). Wycinek testów: run42185136957-local/game-tests-excerpt.txt. Sesja A koordynuje poprawkę i kolejny build. Test nowego lever_detector na telefonie zablokowany przez puste menu.
+
+
+- **N-72 — GUT lever_detector:** test_every_lever_detector_job_opens_in_both_modes po odblokowaniu modelu nie otwiera zlecenia job.liege_bakery w auto=false ani auto=true (limit symulacji 120 s); to samo job.edek_rehearsal_store. Wycinek pełnych wyników w run42185136957-local/game-tests-excerpt.txt. Model ma pięć dźwigni i poprawne węzły, ale otwieranie nie jest zaliczone. Test test_unimplemented_families_hidden też wymaga aktualizacji oczekiwań po odblokowaniu. Zgodnie z rolą nie zmieniam sterowania ani testów gry; sesja A decyduje o poprawce i dopuszczeniu rodziny.

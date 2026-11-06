@@ -1,0 +1,167 @@
+gdscript-tests	GUT tests	2026-11-06T08:21:24.9974758Z        [3] test_main_menu_play_after_tutorial_starts_the_run (res://tests/gut/test_flow_after_tutorial.gd:77)
+gdscript-tests	GUT tests	2026-11-06T08:21:24.9975699Z        [4] _changed_to (res://tests/gut/test_flow_after_tutorial.gd:52)
+gdscript-tests	GUT tests	2026-11-06T08:21:25.0108833Z     [Failed]:  Unexpected Errors:
+gdscript-tests	GUT tests	2026-11-06T08:21:25.0109674Z     [1] <push_error>main_menu: res://assets/ui/menu/menu_layout.json missing
+gdscript-tests	GUT tests	2026-11-06T08:21:25.0110617Z     [2] <push_error>main_menu: res://assets/ui/menu/menu_layout.json missing
+gdscript-tests	GUT tests	2026-11-06T08:21:25.0111339Z       at line 82
+gdscript-tests	GUT tests	2026-11-06T08:21:25.0223464Z * test_control_choice_after_tutorial_starts_the_run
+
+gdscript-tests	GUT tests	2026-11-06T08:21:32.8031790Z res://tests/gut/test_job_run.gd
+gdscript-tests	GUT tests	2026-11-06T08:21:32.8033973Z * test_unimplemented_families_hidden
+gdscript-tests	GUT tests	2026-11-06T08:21:32.8035850Z     [Failed]
+gdscript-tests	GUT tests	2026-11-06T08:21:32.8036520Z       at line 10
+gdscript-tests	GUT tests	2026-11-06T08:21:32.8037585Z * test_fnv1a_seed_stable
+gdscript-tests	GUT tests	2026-11-06T08:21:32.8039956Z * test_tier_passthrough
+gdscript-tests	GUT tests	2026-11-06T08:21:32.8041525Z * test_tutorial_mode_completes_without_payment
+
+gdscript-tests	GUT tests	2026-11-06T08:21:34.8273733Z        [5] _run_test (res://addons/gut/gut.gd:622)
+gdscript-tests	GUT tests	2026-11-06T08:21:34.8274138Z        [6] _test_the_scripts (res://addons/gut/gut.gd:835)
+gdscript-tests	GUT tests	2026-11-06T08:21:34.8402952Z     [Failed]:  Unexpected Errors:
+gdscript-tests	GUT tests	2026-11-06T08:21:34.8403727Z     [1] <push_error>main_menu: res://assets/ui/menu/menu_layout.json missing
+gdscript-tests	GUT tests	2026-11-06T08:21:34.8404224Z       at line 105
+gdscript-tests	GUT tests	2026-11-06T08:21:34.8410431Z 3/4 passed.
+gdscript-tests	GUT tests	2026-11-06T08:21:34.8410870Z
+
+gdscript-tests	GUT tests	2026-11-06T08:21:53.3868676Z         * [JobPayment:<Control#2139061489846>(job_payment.gd)] + 18
+gdscript-tests	GUT tests	2026-11-06T08:21:53.3869550Z         * [JobPayment:<Control#2173303787869>(job_payment.gd)] + 8
+gdscript-tests	GUT tests	2026-11-06T08:21:53.3880882Z * test_every_lever_detector_job_opens_in_both_modes
+gdscript-tests	GUT tests	2026-11-06T08:21:55.5548016Z     lever_detector job.liege_bakery auto=false: open=false 120.0 s
+gdscript-tests	GUT tests	2026-11-06T08:21:55.5549836Z     [Failed]:  job.liege_bakery (lever_detector, auto=false) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:21:55.5550964Z       at line -1
+gdscript-tests	GUT tests	2026-11-06T08:21:57.2517334Z     lever_detector job.liege_bakery auto=true: open=false 120.0 s
+
+gdscript-tests	GUT tests	2026-11-06T08:21:53.3880882Z * test_every_lever_detector_job_opens_in_both_modes
+gdscript-tests	GUT tests	2026-11-06T08:21:55.5548016Z     lever_detector job.liege_bakery auto=false: open=false 120.0 s
+gdscript-tests	GUT tests	2026-11-06T08:21:55.5549836Z     [Failed]:  job.liege_bakery (lever_detector, auto=false) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:21:55.5550964Z       at line -1
+gdscript-tests	GUT tests	2026-11-06T08:21:57.2517334Z     lever_detector job.liege_bakery auto=true: open=false 120.0 s
+gdscript-tests	GUT tests	2026-11-06T08:21:57.2519163Z     [Failed]:  job.liege_bakery (lever_detector, auto=true) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:21:57.2519987Z       at line -1
+
+gdscript-tests	GUT tests	2026-11-06T08:21:55.5550964Z       at line -1
+gdscript-tests	GUT tests	2026-11-06T08:21:57.2517334Z     lever_detector job.liege_bakery auto=true: open=false 120.0 s
+gdscript-tests	GUT tests	2026-11-06T08:21:57.2519163Z     [Failed]:  job.liege_bakery (lever_detector, auto=true) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:21:57.2519987Z       at line -1
+gdscript-tests	GUT tests	2026-11-06T08:21:59.3231050Z     lever_detector job.edek_rehearsal_store auto=false: open=false 120.0 s
+gdscript-tests	GUT tests	2026-11-06T08:21:59.3233122Z     [Failed]:  job.edek_rehearsal_store (lever_detector, auto=false) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:21:59.3234246Z       at line -1
+
+gdscript-tests	GUT tests	2026-11-06T08:21:57.2519987Z       at line -1
+gdscript-tests	GUT tests	2026-11-06T08:21:59.3231050Z     lever_detector job.edek_rehearsal_store auto=false: open=false 120.0 s
+gdscript-tests	GUT tests	2026-11-06T08:21:59.3233122Z     [Failed]:  job.edek_rehearsal_store (lever_detector, auto=false) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:21:59.3234246Z       at line -1
+gdscript-tests	GUT tests	2026-11-06T08:22:01.0155615Z     lever_detector job.edek_rehearsal_store auto=true: open=false 120.0 s
+gdscript-tests	GUT tests	2026-11-06T08:22:01.0157412Z     [Failed]:  job.edek_rehearsal_store (lever_detector, auto=true) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:22:01.0158500Z       at line -1
+
+gdscript-tests	GUT tests	2026-11-06T08:21:59.3234246Z       at line -1
+gdscript-tests	GUT tests	2026-11-06T08:22:01.0155615Z     lever_detector job.edek_rehearsal_store auto=true: open=false 120.0 s
+gdscript-tests	GUT tests	2026-11-06T08:22:01.0157412Z     [Failed]:  job.edek_rehearsal_store (lever_detector, auto=true) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:22:01.0158500Z       at line -1
+gdscript-tests	GUT tests	2026-11-06T08:22:01.0205637Z * test_layout_fits_portrait_and_landscape
+gdscript-tests	GUT tests	2026-11-06T08:22:01.8928407Z * test_unused_wafer_chambers_are_empty
+gdscript-tests	GUT tests	2026-11-06T08:22:02.1811506Z * test_lever_states_read_by_geometry
+
+gdscript-tests	GUT tests	2026-11-06T08:22:05.5433449Z     auto job.community_notice_case: open=true 3.0 s
+gdscript-tests	GUT tests	2026-11-06T08:22:05.5743366Z     auto job.halina_recipe_box: open=true 3.0 s
+gdscript-tests	GUT tests	2026-11-06T08:22:05.5744423Z     [Failed]:  Unexpected Errors:
+gdscript-tests	GUT tests	2026-11-06T08:22:05.5745034Z     [1] <engine-0>Lambda capture at index 0 was freed. Passed "null" instead.
+gdscript-tests	GUT tests	2026-11-06T08:22:05.5745604Z       at line 134
+gdscript-tests	GUT tests	2026-11-06T08:22:05.5865805Z     28 Orphans
+gdscript-tests	GUT tests	2026-11-06T08:22:05.5867062Z         * [JobPayment:<Control#10777398347942>(job_payment.gd)] + 8
+
+gdscript-tests	GUT tests	2026-11-06T08:22:56.0575242Z        [2] _open (res://tests/gut/test_ui_layout.gd:41)
+gdscript-tests	GUT tests	2026-11-06T08:22:56.0575951Z        [3] test_screens_fit_every_size (res://tests/gut/test_ui_layout.gd:57)
+gdscript-tests	GUT tests	2026-11-06T08:22:58.6354512Z     [Failed]:  Unexpected Errors:
+gdscript-tests	GUT tests	2026-11-06T08:22:58.6355268Z     [1] <push_error>main_menu: res://assets/ui/menu/menu_layout.json missing
+gdscript-tests	GUT tests	2026-11-06T08:22:58.6356213Z     [2] <push_error>main_menu: res://assets/ui/menu/menu_layout.json missing
+gdscript-tests	GUT tests	2026-11-06T08:22:58.6357179Z     [3] <push_error>main_menu: res://assets/ui/menu/menu_layout.json missing
+gdscript-tests	GUT tests	2026-11-06T08:22:58.6358005Z       at line 74
+
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2235143Z res://tests/gut/test_flow_after_tutorial.gd
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2235861Z - test_main_menu_play_after_tutorial_starts_the_run
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2236532Z     [Failed]:  Unexpected Errors:
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2237229Z     [1] <push_error>main_menu: res://assets/ui/menu/menu_layout.json missing
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2238083Z     [2] <push_error>main_menu: res://assets/ui/menu/menu_layout.json missing
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2238740Z           at line 82
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2239141Z
+
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2239489Z res://tests/gut/test_job_run.gd
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2240052Z - test_unimplemented_families_hidden
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2240615Z     [Failed]:
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2241009Z           at line 10
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2241410Z
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2241769Z res://tests/gut/test_nav_back.gd
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2242512Z - test_main_menu_asks_before_quitting
+
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2241769Z res://tests/gut/test_nav_back.gd
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2242512Z - test_main_menu_asks_before_quitting
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2243138Z     [Failed]:  Unexpected Errors:
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2243815Z     [1] <push_error>main_menu: res://assets/ui/menu/menu_layout.json missing
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2244794Z           at line 105
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2245209Z
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2245571Z res://tests/gut/test_planb_families.gd
+
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2245209Z
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2245571Z res://tests/gut/test_planb_families.gd
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2246258Z - test_every_lever_detector_job_opens_in_both_modes
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2247335Z     [Failed]:  job.liege_bakery (lever_detector, auto=false) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2248208Z           at line -1
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2249092Z     [Failed]:  job.liege_bakery (lever_detector, auto=true) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2249941Z           at line -1
+
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2245571Z res://tests/gut/test_planb_families.gd
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2246258Z - test_every_lever_detector_job_opens_in_both_modes
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2247335Z     [Failed]:  job.liege_bakery (lever_detector, auto=false) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2248208Z           at line -1
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2249092Z     [Failed]:  job.liege_bakery (lever_detector, auto=true) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2249941Z           at line -1
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2250879Z     [Failed]:  job.edek_rehearsal_store (lever_detector, auto=false) opens through the plan-B view (120.0 s)
+
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2247335Z     [Failed]:  job.liege_bakery (lever_detector, auto=false) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2248208Z           at line -1
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2249092Z     [Failed]:  job.liege_bakery (lever_detector, auto=true) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2249941Z           at line -1
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2250879Z     [Failed]:  job.edek_rehearsal_store (lever_detector, auto=false) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2251705Z           at line -1
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2252784Z     [Failed]:  job.edek_rehearsal_store (lever_detector, auto=true) opens through the plan-B view (120.0 s)
+
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2249092Z     [Failed]:  job.liege_bakery (lever_detector, auto=true) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2249941Z           at line -1
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2250879Z     [Failed]:  job.edek_rehearsal_store (lever_detector, auto=false) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2251705Z           at line -1
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2252784Z     [Failed]:  job.edek_rehearsal_store (lever_detector, auto=true) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2253614Z           at line -1
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2254013Z
+
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2250879Z     [Failed]:  job.edek_rehearsal_store (lever_detector, auto=false) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2251705Z           at line -1
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2252784Z     [Failed]:  job.edek_rehearsal_store (lever_detector, auto=true) opens through the plan-B view (120.0 s)
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2253614Z           at line -1
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2254013Z
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2254383Z res://tests/gut/test_planb_warded.gd
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2254992Z - test_every_warded_job_opens_in_auto_mode
+
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2254383Z res://tests/gut/test_planb_warded.gd
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2254992Z - test_every_warded_job_opens_in_auto_mode
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2255611Z     [Failed]:  Unexpected Errors:
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2256267Z     [1] <engine-0>Lambda capture at index 0 was freed. Passed "null" instead.
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2256883Z           at line 134
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2257279Z
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2257637Z res://tests/gut/test_ui_layout.gd
+
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2257637Z res://tests/gut/test_ui_layout.gd
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2258125Z - test_screens_fit_every_size
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2258626Z     [Failed]:  Unexpected Errors:
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2259271Z     [1] <push_error>main_menu: res://assets/ui/menu/menu_layout.json missing
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2260117Z     [2] <push_error>main_menu: res://assets/ui/menu/menu_layout.json missing
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2260938Z     [3] <push_error>main_menu: res://assets/ui/menu/menu_layout.json missing
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2261577Z           at line 74
+
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2266119Z
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2266130Z
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2266400Z ---- 6 failing tests ----
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2266845Z
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2852910Z WARNING: 1 RID of type "CanvasItem" was leaked.
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2853929Z    at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)
+gdscript-tests	GUT tests	2026-11-06T08:23:00.2914039Z WARNING: 76 ObjectDB instances were leaked at exit (run with `--verbose` for details).

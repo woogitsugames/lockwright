@@ -25,3 +25,13 @@
 ### N-68 update: package budget fits after session A menu changes
 
 After rebasing main with session A's D-62 menu, measured the full resource pack again: 55,833,660 bytes without detector, **57,799,088 bytes including it**, below 58 MB. The same candidate is now integrated into `game/assets/photoreal_families/lever_detector/` with lossy photo imports; the view unlocks it via its existing resource check. No local game code, i18n or CI changes. The authoritative Linux perf-budget and GUT both-mode test remain session A's responsibility (no Windows lockcore GDExtension). Candidate binary duplicates under art are removed; geometry evidence stays there.
+
+
+### Published GPU batch
+
+Commit `4766aaca` pushed. Authoritative CI perf-budget run 42185136911 succeeded: pck 57.5 MB. Device regression N-69 logged with screenshots; no game code changes.
+
+
+### Device regression results
+
+Working APK tested across all twelve ready families. Owner confirmed game test pulse absent but system oneshot works (N-70). GPU APK 42185136957 installed successfully but missing menu_layout.json blocks all UI (N-71); restored working APK with install -r and preserved data. game-tests failed, including detector both-mode opening (N-72); session A must resolve logic/tests and missing menu assets. No local game-code/CI fix.
