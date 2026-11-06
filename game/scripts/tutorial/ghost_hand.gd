@@ -33,7 +33,7 @@ var texture: Texture2D = null:
 		texture = value
 		# A texture is an alpha silhouette with its own soft edge: draw it directly
 		# (tinted black). Without one, the built-in oval shader draws the thumb.
-		material = null if value != null else _oval_mat
+		material = null
 		_update_shadow_size()
 
 ## Canvas units per texture pixel (textures are authored in px, the scene is in dp).
@@ -90,7 +90,6 @@ func _init() -> void:
 	shader.code = _OVAL_SHADER
 	_oval_mat = ShaderMaterial.new()
 	_oval_mat.shader = shader
-	material = _oval_mat
 	_update_shadow_size()
 
 
@@ -228,8 +227,24 @@ func _draw() -> void:
 		var ts: Vector2 = texture.get_size() * texture_scale
 		draw_texture_rect(texture, Rect2(-ts * 0.5, ts), false, color)
 	else:
-		_oval_mat.set_shader_parameter("radii_dp", THUMB_DP * 0.5)
-		_oval_mat.set_shader_parameter("rect_dp", _shadow_size)
-		_oval_mat.set_shader_parameter("soft_dp", SOFT_DP)
-		draw_rect(Rect2(-_shadow_size * 0.5, _shadow_size), color)
+		_draw_soft_oval(color)
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+
+
+## REVIEW-V02: the oval shader read UV, which draw_rect() without a texture leaves at 0, so the
+## mask was empty and nothing showed on screen (headless tests cannot see it). The soft edge is
+## now stacked ellipses: the core at full shadow, the edge fading out over SOFT_DP.
+func _draw_soft_oval(color: Color) -> void:
+	const LAYERS := 8
+	var r := THUMB_DP * 0.5
+	for i in LAYERS:
+		var f := float(i) / (LAYERS - 1)        # 0 = outermost, 1 = core
+		var grow := SOFT_DP * 0.5 * (1.0 - 2.0 * f)
+		var rr := Vector2(maxf(r.x + grow, 1.0), maxf(r.y + grow, 1.0))
+		var pts := PackedVector2Array()
+		for k in 32:
+			var a := TAU * k / 32.0
+			pts.append(Vector2(cos(a) * rr.x, sin(a) * rr.y))
+		# n stacked layers of alpha b compose to 1 - (1 - b)^n = the shadow opacity at the core
+		var b := 1.0 - pow(1.0 - clampf(color.a, 0.0, 0.99), 1.0 / LAYERS)
+		draw_colored_polygon(pts, Color(color.r, color.g, color.b, b))

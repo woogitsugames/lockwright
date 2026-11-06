@@ -673,7 +673,7 @@ func _draw_tray() -> void:
 		_dent(s, 20.0, 0.10)
 		_dent(p, 28.0, 0.28)
 	if hint_dent_s > 0.0:  # H1: a thumb imprint where the finger goes (fades out)
-		_dent(hint_dent_pos - _tray.position, 28.0, 0.22 * clampf(hint_dent_s / 0.5, 0.0, 1.0))
+		_dent(hint_dent_pos - _tray.position, 30.0, 0.5 * clampf(hint_dent_s / 0.5, 0.0, 1.0))
 
 
 func _draw_bg() -> void:
