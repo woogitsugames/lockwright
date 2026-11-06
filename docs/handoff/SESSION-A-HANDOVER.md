@@ -138,3 +138,6 @@ Kolejka, gdy ktoś skończy:
 2. **Hania (7 lat):** ElevenLabs blokuje głosy dzieci; czyta ją jasny dorosły głos (jak dubbing animacji). Zostawić czy dać jej tylko napisy i wokalizacje?
 3. **Plan ElevenLabs:** potwierdzić, że konto ma licencję komercyjną (D-42, ASSETS.md).
 4. Drobne: „Dyrektorka” ma na portrecie mężczyznę — głos żeński według tekstu; podmienić portret?
+
+## 10. Pauza 2026-11-06 ok. 10:50 UTC (limit 5 h)
+Wszystko na `main`. Trigger godzinny wyłączony; wznowienie przypomnieniem ok. 12:26 UTC (włącza trigger z powrotem). Do dokończenia: teksty zamka z suwakami (axial_slider) kierunkowo neutralne + pełny GUT; czekamy na GPT G23/T43 i wyniki testu APK run 175.
