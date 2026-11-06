@@ -1,0 +1,65 @@
+speaker,name_pl,episodic_portrait_tracked,slot_avatar_tracked,note
+agnieszka,Agnieszka,True,False,
+aino,Aino,True,False,
+alicja,Alicja,True,False,
+bartek,Bartek,True,False,
+basia,Basia,True,False,
+borys,Borys,True,False,
+bride,Panna młoda,True,False,
+captain,Kapitan,True,False,
+celina,Celina,True,False,
+claimant,Kobieta przy drzwiach,True,False,
+darek,Darek,True,False,
+dorota,Dorota,True,False,
+edek,"Pan Edek, portier",False,True,game/assets/ui/gpt/cast/08_edek/avatar.png
+elzbieta,"Elżbieta, zarządczyni",True,False,
+ewa,Ewa,True,False,
+gosia,Gosia,True,False,
+halina,Pani Halina,False,True,game/assets/ui/gpt/cast/01_halina/avatar.png
+hall_manager,Kierownik sali,True,False,
+hania,Hania,True,False,
+headteacher,Dyrektorka szkoły,True,False,
+iga,Iga,True,False,
+irena,Pani Irena,True,False,
+jacques,Monsieur Jacques,True,False,
+jadwiga,Pani Jadwiga,False,True,game/assets/ui/gpt/cast/12_jadwiga/avatar.png
+janka,Janka,True,False,
+karol,Karol,True,False,
+kazimierz,Pan Kazimierz,True,False,
+krysia,Pani Krysia,True,False,
+krystyna,Pani Krystyna,False,True,game/assets/ui/gpt/cast/09_ola_krystyna/avatar.png
+kuba,Kuba,True,False,
+lena,Aspirant Lena Sowa,False,True,game/assets/ui/gpt/cast/05_lena/avatar.png
+leon,Leon,True,False,
+leopold,Pan Leopold,True,False,
+locksmith,Ślusarz,False,False,player_no_avatar
+magda,Magda,True,False,
+marcel,Marcel,True,False,
+marek,Marek,True,False,
+marta,Marta,False,True,game/assets/ui/gpt/cast/06_marta/avatar.png
+martine,Pani Martine,True,False,
+mietek,Pan Mietek,True,False,
+mila,Mila,True,False,
+nadia,Nadia,True,False,
+neighbour_lucyna,Sąsiadka pani Lucyny,True,False,
+neighbour_robe,Sąsiad w szlafroku,True,False,
+norbert,Norbert,True,False,
+ola,Ola,False,True,game/assets/ui/gpt/cast/09_ola_krystyna/avatar.png
+oskar,Oskar,True,False,
+pawel,Paweł,True,False,
+pieter,Brat Pieter,True,False,
+piotr,Piotr,True,False,
+renata,Pani Renata,True,False,
+roman,"Pan Roman, administrator",False,True,game/assets/ui/gpt/cast/04_roman/avatar.png
+rygiel,Dr Anna Rygiel,False,True,game/assets/ui/gpt/cast/11_rygiel/avatar.png
+seweryn,Seweryn,True,False,
+stefan,Pan Stefan,False,True,game/assets/ui/gpt/cast/03_stefan/avatar.png
+stranger,Mężczyzna w garniturze,True,False,
+teresa,Pani Teresa,True,False,
+tomasz,Tomasz,True,False,
+waldek,Pan Waldek,True,False,
+wanda,Pani Wanda,True,False,
+wladyslaw,Pan Władysław,False,True,game/assets/ui/gpt/cast/10_wladyslaw/avatar.png
+zbyszek,Pan Zbyszek,True,False,
+zosia,Pani Zosia,False,True,game/assets/ui/gpt/cast/02_zosia/avatar.png
+zuzanna,Zuzanna,False,True,game/assets/ui/gpt/cast/07_zuzanna/avatar.png
