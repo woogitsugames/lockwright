@@ -411,10 +411,11 @@
   },
   {
    "file": "game/assets/audio/lines/de/job.t43_10_04_design_cabinet.line.1.ogg",
-   "wer": 0.3,
-   "dur": 4.49,
-   "ref": "Ziemniak ist diesmal unschuldig. Den Schlüssel habe ich selbst versteckt.",
-   "asr": "Hier im Jagd ist diesmal unschuldig. Den Schlüssel habe ich selbst versteckt."
+   "wer": 0.0,
+   "dur": 4.51,
+   "ref": "Kartoffel ist diesmal unschuldig. Den Schlüssel habe ich selbst versteckt.",
+   "asr": "Kartoffel ist diesmal unschuldig. Den Schlüssel habe ich selbst versteckt.",
+   "note": "re-recorded 2026-11-06 (Ziemniak -> Kartoffel), faster-whisper small"
   },
   {
    "file": "game/assets/audio/lines/de/job.t43_10_04_design_cabinet.line.2.ogg",
@@ -768,10 +769,11 @@
   },
   {
    "file": "game/assets/audio/lines/de/job.t43_12_04_school_box.line.4.ogg",
-   "wer": 0.182,
-   "dur": 4.49,
-   "ref": "Ziemniak bekommt ein eigenes Foto. In unsere Klasse ging er nicht.",
-   "asr": "Jemniak bekommt ein eigenes Foto. In unserer Klasse ging er nicht."
+   "wer": 0.091,
+   "dur": 4.6,
+   "ref": "Kartoffel bekommt ein eigenes Foto. In unsere Klasse ging er nicht.",
+   "asr": "Kartoffel bekommt ein eigenes Foto. In unserer Klasse ging er nicht.",
+   "note": "re-recorded 2026-11-06 (Ziemniak -> Kartoffel), faster-whisper small"
   },
   {
    "file": "game/assets/audio/lines/de/job.t43_12_05_tea_fund_case.line.1.ogg",
