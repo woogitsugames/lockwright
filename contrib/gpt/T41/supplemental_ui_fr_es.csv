@@ -1,10 +1,10 @@
 keys,fr,es
 tutorial.say_tension,Indice : montez le pouce gauche doucement et tenez.,Pista: suba el pulgar izquierdo despacio y mantenga.
-tutorial.say_lift,Indice : pouce droit sous la pièce dure. Levez doucement.,Pista: pulgar derecho bajo la pieza dura. Súbala despacio.
+tutorial.say_lift,Indice : pouce droit sous la pièce qui résiste. Levez.,Pista: pulgar derecho bajo la pieza dura. Súbala despacio.
 tutorial.say_warded,"Indice : placez l'embout dans l'espace, puis tournez.",Pista: encaje la punta en la ranura y gire.
 tutorial.say_chalk,Indice : la craie montre maintenant le geste.,Pista: la tiza muestra el gesto que toca.
 tutorial.say_master,Le maître montre le geste une fois. À vous.,El maestro muestra el gesto una vez. Ahora usted.
-tutorial.s1_pick_one,Pouce droit sous la goupille puis montez doucement.,Pulgar derecho bajo el perno y luego súbalo despacio.
+tutorial.s1_pick_one,"Pouce droit sous la goupille, puis montez doucement.",Pulgar derecho bajo el perno y luego súbalo despacio.
 settings.voice_pack.title_de,Voix allemandes,Voces en alemán
 settings.voice_pack.line,{title} : {state},{title}: {state}
 settings.voice_pack.download,Télécharger,Descargar
@@ -14,7 +14,7 @@ settings.voice_pack.retry,Réessayer,Reintentar
 settings.voice_pack.progress,téléchargement {pct} %,descargando {pct} %
 settings.voice_pack.verifying,vérification du fichier,verificando el archivo
 settings.voice_pack.ready,prêtes,listas
-settings.voice_pack.failed,Téléchargement échoué. Les sous-titres restent affichés.,No se descargó. Los subtítulos siguen activos.
+settings.voice_pack.failed,Échec du téléchargement. Les sous-titres restent affichés.,No se descargó. Los subtítulos siguen activos.
 settings.voice_pack.offline,Pas de connexion. Les sous-titres restent affichés.,Sin conexión. Los subtítulos siguen activos.
 settings.voice_pack.auto,Télécharger les voix automatiquement,Descargar voces automáticamente
 settings.voice_pack.note,"Seul le fichier des voix est téléchargé : sans compte ni suivi. Sans lui, les dialogues restent sous-titrés.","Solo se descarga el archivo de voces: sin cuenta ni seguimiento. Sin él, los diálogos llevan subtítulos."

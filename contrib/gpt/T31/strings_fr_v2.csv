@@ -37,7 +37,7 @@ job.opened,Serrure ouverte. Facture réglée.,Serrure ouverte. Facture réglée.
 job.reward_fmt,Récompense : {n} pièces,Récompense : {n} pièces,
 job.tip_fmt,Pourboire (ouverture soignée) : {n} pièces,Pourboire (ouverture soignée) : {n} pièces,
 receipt.service,,Ouverture d'urgence,T41: nowa etykieta UI i wersja językowa
-receipt.tip,,Pour ouverture soignée,T41: nowa etykieta UI i wersja językowa
+receipt.tip,,Pourboire (sans trace),T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 common.continue,Continuer,Continuer,
 verify.title,Vérifier le droit d'accès,Vérifier le droit d'accès,
 verify.hint,Le client présente ses justificatifs. À vous de décider.,Le client présente ses justificatifs. À vous de décider.,
@@ -198,25 +198,25 @@ tutorial.s2_intro,,Trois goupilles. Une seule résiste à la fois.,Uzupełniono 
 tutorial.s3_intro,,Nouvel ordre. Trop haut ? Reprends doucement.,Uzupełniono brakujący klucz według EN i PL (T40).
 tutorial.s1_near_break,,Trop fort. L'outil plie. Relâche un peu.,Uzupełniono brakujący klucz według EN i PL (T40).
 ui.job_done,,fait,Uzupełniono brakujący klucz według EN i PL (T40).
-lock.dial_hint,,"Pouce droit : tournez le cadran, arrêtez à chaque cran.",T41: nowa etykieta UI i wersja językowa
-lock.combo_hint,,Tirez doucement. Tournez lentement la roue qui résiste.,T41: nowa etykieta UI i wersja językowa
+lock.dial_hint,,Droit : tournez le cadran. Gauche : sentez la poignée.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.combo_hint,,"Gauche tire doucement, droit roule lentement une roue.",T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 lock.warded_reach,,Montez ou baissez l'embout jusqu'à trouver l'espace.,T41: nowa etykieta UI i wersja językowa
-lock.warded_turn,,"Pouce gauche : montez pour tourner, baissez pour retour.",T41: nowa etykieta UI i wersja językowa
-lock.warded_turn_auto,,Pouce droit maintenu pour tourner. Le gauche revient.,T41: nowa etykieta UI i wersja językowa
+lock.warded_turn,,"Pouce gauche : en haut tourne, en bas revient.",T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
+lock.warded_turn_auto,,Pouce droit maintenu : tourne. Le gauche revient.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 lock.warded_bit,,"Embout trop épais ? Sortez la sonde, touchez sa tête.",T41: nowa etykieta UI i wersja językowa
 lock.detector_reset,,"Détecteur déclenché. Relâchez, reculez et maintenez.",T41: nowa etykieta UI i wersja językowa
-lock.detector_reset_auto,,Détecteur actif. Pouce gauche : gardez et reculez.,T41: nowa etykieta UI i wersja językowa
+lock.detector_reset_auto,,Détecteur déclenché. Pouce gauche maintenu pour reculer.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 lock.wafer_coach,,Levez la paillette au ras du cylindre.,T41: nowa etykieta UI i wersja językowa
 lock.lever_coach,,Levez la gorge jusqu'à aligner son encoche.,T41: nowa etykieta UI i wersja językowa
 lock.hint_tension_wafer,,Paillettes trop libres ? Appuyez un peu à gauche.,T41: nowa etykieta UI i wersja językowa
 lock.hint_tension_lever,,Gorges trop libres ? Gardez un léger appui à gauche.,T41: nowa etykieta UI i wersja językowa
-lock.disc_hint,,Léger appui à gauche. Tournez le disque qui résiste.,T41: nowa etykieta UI i wersja językowa
+lock.disc_hint,,Gauche : léger couple. Droit : tournez un disque.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 tutorial.say_tension,,Indice : montez le pouce gauche doucement et tenez.,T41: nowa etykieta UI i wersja językowa
-tutorial.say_lift,,Indice : pouce droit sous la pièce dure. Levez doucement.,T41: nowa etykieta UI i wersja językowa
+tutorial.say_lift,,Indice : pouce droit sous la pièce qui résiste. Levez.,T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 tutorial.say_warded,,"Indice : placez l'embout dans l'espace, puis tournez.",T41: nowa etykieta UI i wersja językowa
 tutorial.say_chalk,,Indice : la craie montre maintenant le geste.,T41: nowa etykieta UI i wersja językowa
 tutorial.say_master,,Le maître montre le geste une fois. À vous.,T41: nowa etykieta UI i wersja językowa
-tutorial.s1_pick_one,,Pouce droit sous la goupille puis montez doucement.,T41: nowa etykieta UI i wersja językowa
+tutorial.s1_pick_one,,"Pouce droit sous la goupille, puis montez doucement.",T41: nowa etykieta UI i wersja językowa; T41: czytelna podpowiedź UI
 settings.voice_pack.title_de,,Voix allemandes,T41: uzupelnienie nowych kluczy pakietu glosowego
 settings.voice_pack.line,,{title} : {state},T41: uzupelnienie nowych kluczy pakietu glosowego
 settings.voice_pack.download,,Télécharger,T41: uzupelnienie nowych kluczy pakietu glosowego
@@ -226,7 +226,7 @@ settings.voice_pack.retry,,Réessayer,T41: uzupelnienie nowych kluczy pakietu gl
 settings.voice_pack.progress,,téléchargement {pct} %,T41: uzupelnienie nowych kluczy pakietu glosowego
 settings.voice_pack.verifying,,vérification du fichier,T41: uzupelnienie nowych kluczy pakietu glosowego
 settings.voice_pack.ready,,prêtes,T41: uzupelnienie nowych kluczy pakietu glosowego
-settings.voice_pack.failed,,Téléchargement échoué. Les sous-titres restent affichés.,T41: uzupelnienie nowych kluczy pakietu glosowego
+settings.voice_pack.failed,,Échec du téléchargement. Les sous-titres restent affichés.,T41: uzupelnienie nowych kluczy pakietu glosowego; T41: czytelna podpowiedź UI
 settings.voice_pack.offline,,Pas de connexion. Les sous-titres restent affichés.,T41: uzupelnienie nowych kluczy pakietu glosowego
 settings.voice_pack.auto,,Télécharger les voix automatiquement,T41: uzupelnienie nowych kluczy pakietu glosowego
 settings.voice_pack.note,,"Seul le fichier des voix est téléchargé : sans compte ni suivi. Sans lui, les dialogues restent sous-titrés.",T41: uzupelnienie nowych kluczy pakietu glosowego

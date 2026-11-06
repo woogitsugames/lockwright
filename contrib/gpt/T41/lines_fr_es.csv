@@ -1,6 +1,6 @@
 keys,fr,es
 job.allotment_shed.line.1,"La parcelle est au nom de ma femme. Moi, je bêche. Elle soigne son genou à la maison.",La parcela está a nombre de mi mujer. Yo cavo. Ella descansa la rodilla en casa.
-job.allotment_shed.line.2,Vous avez votre carte de jardinier ? Un voisin peut confirmer ?,¿Tiene la tarjeta del huerto? ¿Y un vecino que lo confirme?
+job.allotment_shed.line.2,Vous avez votre carte de jardinier ? Et un voisin qui peut en témoigner ?,¿Tiene la tarjeta del huerto? ¿Y un vecino que lo confirme?
 job.allotment_shed.line.3,Zbyszek est là depuis plus longtemps que l'abri. Plus longtemps que moi.,Zbyszek lleva aquí más que el cobertizo. Y más que yo.
 job.allotment_shed.line.4,"Des concombres, ça vous dit ? Je n'apporte jamais d'argent au jardin.",¿Le gustan los pepinos? Nunca llevo dinero al huerto.
 job.bike_interview.line.1,J'ai choisi un code plus sûr. Si sûr que je ne le connais même plus.,Puse un código más seguro. Tan seguro que ya no me lo sé ni yo.
@@ -8,12 +8,12 @@ job.bike_interview.line.2,Le vélo est dans la rue. Vous avez une preuve qu'il e
 job.bike_interview.line.3,Une photo de vacances et le reçu par mail. Le vélo y est mieux que moi.,Una foto de vacaciones y el recibo en mi correo. La bici sale mejor que yo.
 job.bike_interview.line.4,Ça suffit. Rajustez votre cravate pendant que je m'en occupe.,Con eso basta. Arréglese la corbata mientras me ocupo.
 job.bramah_bureau.line.1,"La facture, l'annonce et les photos. Je tiens à garder cette serrure intacte.","La factura, el anuncio y las fotos. La cerradura debe quedar intacta."
-job.bramah_bureau.line.2,On exposait une serrure pareille à Londres. Une récompense était promise.,Una cerradura así se expuso en Londres. Había una recompensa.
+job.bramah_bureau.line.2,Une serrure comme celle-ci était exposée dans une vitrine à Londres. Avec une récompense.,Una cerradura así estuvo en un escaparate de Londres. Ofrecían una recompensa.
 job.bramah_bureau.line.3,Quelqu'un a réussi à l'ouvrir ?,¿Alguien logró abrirla?
-job.bramah_bureau.line.4,"Oui, plus de soixante ans après. Je vous dirai qui, une fois fini.","Sí, más de sesenta años después. Le contaré quién al terminar."
+job.bramah_bureau.line.4,"Oui, plus de soixante ans après. Je vous dirai qui quand j'aurai fini.","Sí, más de sesenta años después. Le contaré quién al terminar."
 job.brussels_townhouse.line.1,Je suis Juliette au balcon. Sauf que Roméo a soixante ans et la clé du portail.,Estoy en el balcón como Julieta. Pero Romeo tiene sesenta años y la llave de la verja.
 job.brussels_townhouse.line.2,"Madame Magda vit ici depuis toujours. Je vous assure, depuis toujours.",La señora Magda vive aquí desde siempre. Desde siempre.
-job.brussels_townhouse.line.3,"Le bail, l'adresse à la commune et un voisin : tout concorde. Éloignez-vous du bord.","Contrato, domicilio y un vecino. Todo cuadra. No se asome a la barandilla."
+job.brussels_townhouse.line.3,"Le bail, l'inscription à la commune et un voisin. C'est complet. Ne vous penchez pas.","El contrato, el padrón del ayuntamiento y un vecino. Completo. No se asome."
 job.brussels_townhouse.line.4,Géraniums arrosés. Mission accomplie.,Geranios regados. Misión cumplida.
 job.cat_bathroom.line.1,Il l'a fait exprès. Il m'a regardée avant de sauter sur la poignée.,Lo hizo adrede. Me miró a los ojos antes de saltar a la manilla.
 job.cat_bathroom.line.2,"C'est chez vous, et il est dans la salle de bains. Pas de papiers cette fois.",Es su casa y el gato está en el baño. Hoy no le pediré papeles.
@@ -31,7 +31,7 @@ job.dollhouse_wooden_lock.line.1,Lala est coincée là depuis mardi. Elle s'ennu
 job.dollhouse_wooden_lock.line.2,Papy appelait ça une serrure égyptienne. Je ne sais pas si c'est vrai.,El abuelo la llamaba cerradura egipcia. No sé si tenía razón.
 job.dollhouse_wooden_lock.line.3,Le nom est resté. Mais l'histoire est encore mieux. Je te raconterai après.,El nombre se quedó. Pero la historia es mejor. Te la cuento al acabar.
 job.dollhouse_wooden_lock.line.4,Tu feras une autre clé ? En bois ? Papa a une planche.,¿Harás otra llave? ¿De madera? Papá tiene una tabla.
-job.drummer_locker.line.1,Je pourrais jouer avec des cuillères. Mais le concert est dans une heure.,"Podría tocar con cucharas, pero prefiero que no. El concierto es en una hora."
+job.drummer_locker.line.1,"Je pourrais jouer avec des cuillères, mais sans façon. Le concert est dans une heure.","Podría tocar con cucharas, pero prefiero que no. El concierto es en una hora."
 job.drummer_locker.line.2,Iga loue le casier huit. Elle paie chaque mois. Tout est dans mon carnet.,Iga alquila la taquilla ocho. Paga cada mes. Lo tengo anotado.
 job.drummer_locker.line.3,Votre carnet suffit. Monsieur Edek dit que vous notez tout.,Su cuaderno basta. El señor Edek dice que lo apunta todo.
 job.drummer_locker.line.4,"Si vous finissez à temps, on jouera un morceau pour vous. Très fort.","Si termina a tiempo, tocaremos una canción para usted. Bien alto."
@@ -65,15 +65,15 @@ job.halina_recipe_box.line.3,"Photo, témoin, prix convenu. On peut commencer.",
 job.halina_recipe_box.line.4,"Après, on règlera le poids d'une poignée. Vieux débat !",Luego veremos cuánto pesa un puñado. Es una discusión antigua.
 job.kiosk_shutter.line.1,Trente-deux ans que ce cadenas est là. Je ne l'ai jamais huilé.,Ese candado lleva treinta y dos años aquí. Nunca lo he engrasado.
 job.kiosk_shutter.line.2,"Madame Krysia confirme, et j'ai la lettre du grossiste. Encore une chose.",La señora Krysia lo confirma. Tengo la carta del proveedor. Falta una cosa.
-job.kiosk_shutter.line.3,"La photo de l'ouverture, en quatre-vingt-quatorze. Ma moustache était plus belle.","La foto de la apertura, en el noventa y cuatro. Mi bigote lucía mejor."
+job.kiosk_shutter.line.3,"L'ouverture, en quatre-vingt-quatorze. Ma moustache était plus belle que le kiosque.","La foto de la apertura, en el noventa y cuatro. Mi bigote lucía más que el quiosco."
 job.kiosk_shutter.line.4,Stefan est là depuis plus longtemps que l'arrêt. Les bus le connaissent.,Stefan lleva aquí más que la parada. Hasta los autobuses lo conocen.
-job.krakow_antiquarian.line.1,Le coffre est à moi. Je loue à la ville. Le café voisin peut confirmer.,La caja fuerte es mía. Alquilo al ayuntamiento. El café de al lado lo confirma.
+job.krakow_antiquarian.line.1,Le coffre est à moi. Je loue la boutique à la ville. Le café d'à côté peut confirmer.,La caja fuerte es mía. Alquilo el local al ayuntamiento. El café de al lado lo confirma.
 job.krakow_antiquarian.line.2,"Et cette petite boîte aussi, tant qu'on y est. Un client l'a laissée pour estimation.","Y ya que está, esta cajita. La dejó un cliente para tasarla."
 job.krakow_antiquarian.line.3,"Le coffre, oui. La boîte, non. Il faut que son propriétaire soit présent.",La caja fuerte sí. La cajita no. Tiene que estar su dueño.
 job.krakow_antiquarian.line.4,Vous avez raison. Je vieillis. Et je deviens impatient.,Tiene razón. Me hago mayor. Y más impaciente.
 job.krakow_tenement_gate.line.1,Le service du patrimoine a dit : pas un seul trou. Pas un.,El técnico de patrimonio dijo: ni un agujero. Ni uno.
-job.krakow_tenement_gate.line.2,Il a raison. Quelqu'un a beaucoup travaillé ici il y a cent trente ans.,Y con razón. Alguien trabajó mucho aquí hace ciento treinta años.
-job.krakow_tenement_gate.line.3,"Bonjour. Me voilà stagiaire. J'ai réussi mon examen. Merci, chambre quatre cent douze.",Hola otra vez. Soy becaria. Aprobé el examen. Gracias a la habitación cuatrocientos doce.
+job.krakow_tenement_gate.line.2,Ils ont raison. Quelqu'un a beaucoup travaillé ici il y a cent trente ans.,Y con razón. Alguien trabajó mucho aquí hace ciento treinta años.
+job.krakow_tenement_gate.line.3,Rebonjour. Je suis stagiaire ici. Examen réussi. La chambre quatre cent douze m'a aidée.,Hola otra vez. Ahora soy becaria. Aprobé. La habitación cuatrocientos doce ayudó.
 job.krakow_tenement_gate.line.4,Les propriétaires ont voté. Voici la décision et l'ordre de travaux.,Lo aprobó la comunidad. Aquí tiene la orden de trabajo por escrito.
 job.krystyna_wooden_album.line.1,"Józef a fabriqué cette boîte à photos. La petite clé était en bois, je crois.",Józef hizo esta caja de fotos. Creo que la llavecita era de madera.
 job.krystyna_wooden_album.line.2,On a une photo de lui avec la boîte. Et elle est chez maman.,Tenemos una foto suya con la caja. Y está en casa de mamá.
@@ -88,18 +88,18 @@ job.marta_poster_studio.line.2,Le bail concorde. Votre voisine confirme que c'es
 job.marta_poster_studio.line.3,Le chat ne signera rien. Il tient trop à sa vie privée.,El gato no firmará nada. Su política de privacidad es estricta.
 job.marta_poster_studio.line.4,"Pas besoin. Le tarif est convenu, et les papiers suffisent.",No hace falta. El precio está acordado y los papeles bastan.
 job.museum_time_lock.line.1,Ce n'est pas une question de combinaison. C'est une question de temps.,No es cuestión de combinación. Es cuestión de tiempo.
-job.museum_time_lock.line.2,Un verrou à minuterie ne demande pas qui est là. Il demande l'heure.,Una cerradura de tiempo no pregunta quién viene. Pregunta qué hora es.
+job.museum_time_lock.line.2,Une serrure à minuterie ne demande pas qui est là. Elle demande l'heure.,Una cerradura de tiempo no pregunta quién viene. Pregunta qué hora es.
 job.museum_time_lock.line.3,"Lettre de la direction, procès-verbal de remise. Trois exemplaires, bien sûr.","Carta de dirección, acta de entrega. Por triplicado, claro."
 job.museum_time_lock.line.4,"Docteure Rygiel, nous avons des gants pour le serrurier aussi. Grande taille.","Doctora Rygiel, también hay guantes para el cerrajero. Talla grande."
-job.newlyweds_4am.line.1,"J'ai ma carte d'identité, mais pas d'adresse dessus. C'est normal, aujourd'hui.","Tengo el documento, pero no lleva dirección. Ya no la llevan, lo sé."
-job.newlyweds_4am.line.2,"Mon adresse est dans l'application. Regardez. Avec ce voile, ce n'est pas facile.","Mi domicilio sale en la aplicación. Mire. Con este velo, cuesta apuntar."
+job.newlyweds_4am.line.1,"J'ai ma carte d'identité, mais sans adresse. Je sais, plus aucune n'en a.","Tengo el documento, pero no lleva dirección. Ya no la llevan, lo sé."
+job.newlyweds_4am.line.2,"Mon adresse est dans l'application. Regardez. Avec ce voile, ce n'est pas facile.",Mi domicilio sale en la aplicación. Mire. Con este velo no es fácil.
 job.newlyweds_4am.line.3,Je les connais. Ils se sont mariés aujourd'hui. Tout le quartier a entendu la fête.,Los conozco. Se casaron hoy. Todo el barrio oyó la fiesta.
 job.newlyweds_4am.line.4,"Félicitations. Dans deux minutes, vous serez chez vous.",Enhorabuena. Dentro de dos minutos estarán en casa.
 job.night_nurse.line.1,Douze heures de service. Ma clé est restée dans le casier de l'hôpital.,Doce horas de turno. Dejé la llave en mi taquilla del hospital.
 job.night_nurse.line.2,"Madame Agnieszka, appartement quatorze. Son bail est dans notre système.","La señora Agnieszka, piso catorce. Su contrato figura en el sistema."
 job.night_nurse.line.3,"Le gestionnaire confirme, et votre pièce aussi. Vous allez pouvoir dormir.",Lo confirma el administrador. Su documento coincide. Ya podrá dormir.
 job.night_nurse.line.4,"Pardon, je ne parle pas beaucoup. Je parle déjà en dormant.",Perdone que hable poco. Ya estoy hablando dormida.
-job.pizzeria_pays_pizza.line.1,L'argent est dans la caisse. La caisse est dedans. Je vous paie en pizza. Faim ?,"El dinero está en la caja, y la caja está dentro. Le pago en pizza. ¿Tiene hambre?"
+job.pizzeria_pays_pizza.line.1,L'argent est dans la caisse. La caisse est dedans. Je vous paie en pizza. Vous avez faim ?,"El dinero está en la caja, y la caja está dentro. Le pago en pizza. ¿Tiene hambre?"
 job.pizzeria_pays_pizza.line.2,"Le devis d'abord, la pizza ensuite. Vous avez le bail ?","Primero el presupuesto, luego la pizza. ¿Tiene el contrato de alquiler?"
 job.pizzeria_pays_pizza.line.3,"Je la connais depuis vingt ans. Mon kebab est à côté. Sa pizza, c'est de l'art.",La conozco desde hace veinte años. Mi kebab está al lado. Su pizza es arte.
 job.pizzeria_pays_pizza.line.4,"La pâte monte, moi je coule. Tant que c'est fait avant l'aube.","La masa sube y yo me hundo. Con que termine antes del alba, me vale."
@@ -135,7 +135,7 @@ job.stefan_book_tin.line.1,"J'ai bien caché les jetons de bibliothèque. Même 
 job.stefan_book_tin.line.2,Votre reçu et la photo du kiosque concordent. Le prix est fixé.,Su recibo y la foto del quiosco coinciden. El precio está acordado.
 job.stefan_book_tin.line.3,Je connais tous les horaires de bus. Ces chiffres-là ? Aucune idée.,Me sé todos los horarios de autobús. ¿Estos números? Ni idea.
 job.stefan_book_tin.line.4,"Au moins, le reçu est là. Je mettrai le mien à côté.",Al menos el recibo sigue ahí. Pondré el mío al lado.
-job.student_dorm.line.1,"Ma carte d'étudiante et ma clé sont dans la chambre. Moi, dans le couloir.","Mi carné y la llave están dentro. Yo estoy fuera, en el pasillo."
+job.student_dorm.line.1,"Ma carte d'étudiante et ma clé sont dans la chambre. Et moi, dans le couloir.","Mi carné y la llave están dentro. Yo estoy fuera, en el pasillo."
 job.student_dorm.line.2,"Zuzanna Wilk, chambre quatre cent douze. Sur ma liste et dans ma tête.","Zuzanna Wilk, habitación cuatrocientos doce. En mi lista y en mi cabeza."
 job.student_dorm.line.3,"Monsieur Edek confirme, et le nom correspond. On va vous faire entrer.",El señor Edek responde por usted. El nombre coincide. Vamos a entrar.
 job.student_dorm.line.4,J'ai un examen sur les vieilles serrures demain. Ça compte comme révision ?,Mañana me examino de cerraduras antiguas. ¿Esto cuenta como repaso?
@@ -150,7 +150,7 @@ job.time_capsule.line.4,Ma lettre disait : « J'espère que tu auras un chien. �
 job.uncle_safe_heirs.line.1,"Vous l'ouvrez, je regarde, puis je préviens les autres. On partagera.","Usted la abre, yo miro y aviso a los demás. Después compartiremos."
 job.uncle_safe_heirs.line.2,J'ouvrirai quand tous les héritiers seront là ou avec leur accord écrit.,La abriré cuando estén todos los herederos o tenga su permiso por escrito.
 job.uncle_safe_heirs.line.3,"Ewa arrive dans une heure. Marek, fais chauffer de l'eau.","Ewa llega dentro de una hora. Marek, pon agua a hervir."
-job.uncle_safe_heirs.line.4,Notre oncle rirait de nous voir nous disputer pour un coffre à cadran.,El tío se reiría al vernos discutir por una caja con rueda.
+job.uncle_safe_heirs.line.4,Notre oncle rirait de nous voir nous disputer pour un coffre à cadran.,El tío se reiría al vernos discutir por una caja fuerte con dial.
 job.widow_bureau.line.1,Madame Zosia dit que vous ne percez pas. Mon mari détestait les trous.,La señora Zosia dice que usted no taladra. Mi marido odiaba los taladros.
 job.widow_bureau.line.2,Je l'ouvrirai sans laisser de trace. Ce sera toujours son bureau.,Lo abriré sin dejar marcas. Seguirá siendo su escritorio.
 job.widow_bureau.line.3,Des billets d'opéra. De mille neuf cent quatre-vingt-sept.,Entradas de ópera. De mil novecientos ochenta y siete.
@@ -164,19 +164,19 @@ job.zuzanna_catalogue_drawer.line.2,La signature est bien la mienne. Les origina
 job.zuzanna_catalogue_drawer.line.3,"Conservatrice, protocole signé, tarif convenu. Donc juste le tiroir.","Conservadora, acta firmada y precio acordado. Solo el cajón, entonces."
 job.zuzanna_catalogue_drawer.line.4,Je mettrai « À manipuler avec soin » sur l'étiquette. À commencer par ce tiroir.,Pondré «Tratar con cuidado» en la vitrina. Empezando por este cajón.
 dialogue.skip_all,Afficher tout le dialogue,Ver todo el diálogo
-lock.combo_hint,Tirez doucement. Tournez lentement la roue qui résiste.,Tire suave. Gire despacio la rueda que se resiste.
+lock.combo_hint,"Gauche tire doucement, droit roule lentement une roue.",Izquierdo: tire suave. Derecho: gire una rueda despacio.
 lock.detector_reset,"Détecteur déclenché. Relâchez, reculez et maintenez.","Detector activado. Afloje, retroceda y mantenga."
-lock.detector_reset_auto,Détecteur actif. Pouce gauche : gardez et reculez.,Detector activado. Pulgar izquierdo: mantenga y vuelva.
-lock.dial_hint,"Pouce droit : tournez le cadran, arrêtez à chaque cran.",Pulgar derecho: gire el dial y pare en cada muesca.
-lock.disc_hint,Léger appui à gauche. Tournez le disque qui résiste.,Presión leve a la izquierda. Gire el disco que resiste.
+lock.detector_reset_auto,Détecteur déclenché. Pouce gauche maintenu pour reculer.,Detector activado. Mantenga el izquierdo para volver.
+lock.dial_hint,Droit : tournez le cadran. Gauche : sentez la poignée.,Derecho: gire el dial. Izquierdo: note la manija.
+lock.disc_hint,Gauche : léger couple. Droit : tournez un disque.,Izquierdo: giro leve. Derecho: gire un disco despacio.
 lock.hint_tension_lever,Gorges trop libres ? Gardez un léger appui à gauche.,¿Palancas sueltas? Mantenga leve presión a la izquierda.
 lock.hint_tension_wafer,Paillettes trop libres ? Appuyez un peu à gauche.,¿Láminas sueltas? Presione un poco a la izquierda.
 lock.lever_coach,Levez la gorge jusqu'à aligner son encoche.,Suba la palanca hasta alinear su muesca.
 lock.wafer_coach,Levez la paillette au ras du cylindre.,Suba la lámina hasta dejarla al ras del cilindro.
 lock.warded_bit,"Embout trop épais ? Sortez la sonde, touchez sa tête.",¿Punta muy gruesa? Saque la sonda y toque el cabezal.
 lock.warded_reach,Montez ou baissez l'embout jusqu'à trouver l'espace.,Suba o baje la punta hasta que encaje.
-lock.warded_turn,"Pouce gauche : montez pour tourner, baissez pour retour.","Pulgar izquierdo: arriba gira, abajo vuelve."
-lock.warded_turn_auto,Pouce droit maintenu pour tourner. Le gauche revient.,Pulgar derecho sostenido: gire. Izquierdo: vuelva.
+lock.warded_turn,"Pouce gauche : en haut tourne, en bas revient.","Pulgar izquierdo: arriba gira, abajo vuelve."
+lock.warded_turn_auto,Pouce droit maintenu : tourne. Le gauche revient.,Pulgar derecho para girar; el izquierdo vuelve.
 receipt.service,Ouverture d'urgence,Apertura de urgencia
-receipt.tip,Pour ouverture soignée,Por apertura cuidadosa
+receipt.tip,Pourboire (sans trace),Propina (sin marcas)
 settings.volume_voice,Voix,Voces
