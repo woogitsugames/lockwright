@@ -4,7 +4,7 @@
 
 ## Istniejące wpisy — unikanie powtórzeń
 
-Rodziny mają już wpisy: `showcase.yale_dial`, `showcase.combo`, `showcase.dimple`, `showcase.henriksson_disc`, `showcase.egyptian_name` i `showcase.khorsabad_gate`, `showcase.bramah_window`, `showcase.sargent_time_lock`, `showcase.magnetic` w `game/data/showcase/` i `game/i18n/content.csv`. Nowe notatki proponują inne źródło lub kontekst, a nie zamianę tych tekstów. `combo` nadal dotyczy podobnych muzealnych zamków z literami, ale uzupe?nia kontekst tego samego znaleziska; `axial_slider` wraca do tego samego historycznego warsztatu z perspektywy zachowanej tablicy ekspozycyjnej. Przed integracją redakcja powinna zdecydować, czy ten stopień pokrewieństwa uzasadnia dodatkowe wpisy.
+Rodziny mają już wpisy: `showcase.yale_dial`, `showcase.combo`, `showcase.dimple`, `showcase.henriksson_disc`, `showcase.egyptian_name` i `showcase.khorsabad_gate`, `showcase.bramah_window`, `showcase.sargent_time_lock`, `showcase.magnetic` w `game/data/showcase/` i `game/i18n/content.csv`. Nowe notatki proponują inne źródło lub kontekst, a nie zamianę tych tekstów. `combo` nadal dotyczy podobnych muzealnych zamków z literami, ale uzupełnia kontekst tego samego znaleziska; `axial_slider` wraca do tego samego historycznego warsztatu z perspektywy zachowanej tablicy ekspozycyjnej. Przed integracją redakcja powinna zdecydować, czy ten stopień pokrewieństwa uzasadnia dodatkowe wpisy.
 
 ## Źródła i zastrzeżenia
 
@@ -13,7 +13,7 @@ Rodziny mają już wpisy: `showcase.yale_dial`, `showcase.combo`, `showcase.dimp
 - `dimple`: [publikacja japońska z 2004 roku](https://patents.google.com/patent/JP2004003141A/en) — pojedynczy dokument, nie źródło historii początków typu.
 - `disc_detainer`: [amerykański dokument patentowy z 1924 roku](https://patents.google.com/patent/US1514318A/en) — data zgłoszenia 1919 i publikacji 1924, nie data wcześniejszego patentu fińskiego.
 - `egyptian`: [Science Museum Group: drewniany zamek z Wysp Owczych](https://collection.sciencemuseumgroup.org.uk/objects/co50290/wooden-door-lock-with-wooden-tumblers-from-the-faroe-islands-early-18th-century) — tytuł katalogu mówi o początku XVIII wieku, pole „Made” o latach 1801–1830. Rok 1821 dotyczy przywiezienia, nie jest pewną datą wykonania.
-- `axial_slider`: [Science Museum Group: obiekty w ekspozycji](https://collection.sciencemuseumgroup.org.uk/objects/co50475/bramah-lock-display-board-from-piccadilly-office) — katalog opisuje tablic? z Piccadilly; atrybucja związku z rodziną na podstawie `docs/SHOWCASE.md` i `showcase.bramah_window`.
+- `axial_slider`: [Science Museum Group: obiekty w ekspozycji](https://collection.sciencemuseumgroup.org.uk/objects/co50475/bramah-lock-display-board-from-piccadilly-office) — katalog opisuje tablicę z Piccadilly; atrybucja związku z rodziną na podstawie `docs/SHOWCASE.md` i `showcase.bramah_window`.
 - `time_lock`: [reedycja patentu zamka czasowego](https://patents.google.com/patent/USRE8035E/en) — opis odstępu dłuższego niż doba; oryginalny patent z 1874, reedycja z 1878.
 - `magnetic`: [patent amerykański opublikowany w 1970 roku](https://patents.google.com/patent/US3495425A/en) — opis pojedynczej konstrukcji.
 
