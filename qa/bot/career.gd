@@ -6,6 +6,7 @@ extends SceneTree
 ## (stdout line "QA_REPORT {...}" + user://qa_report.json). Log analysis (crashes, missing i18n keys) is
 ## done by qa/report.py. Run through qa/run_career.sh (a copy of game/ with this directory as res://qa_bot).
 
+const POST_FINISH_FRAMES := 300  # 2.5 s at the fixed 120 FPS step
 const MAX_DECISIONS := 4000
 const LOCK_SIM_LIMIT_S := 300.0
 const IDLE_LIMIT_S := 15.0
@@ -416,8 +417,13 @@ func _play_lock() -> bool:
 		var s: Variant = current_scene.get("session") if current_scene else null
 		if s != null and s.has_method("finished") and s.finished():
 			entry["opened"] = s.is_open()
+			# the screen may hold on purpose before it moves on (tutorial praise: 1.8 s, N-61 step 6);
+			# give it 2.5 s of game time before calling it stuck
+			var waited := 0
+			while _scene_name() == sc and waited < POST_FINISH_FRAMES:
+				await _wait_frames(30)
+				waited += 30
 			# opened locks without a job stay on the lock screen: press any forward/back button
-			await _wait_frames(60)
 			if _scene_name() == sc:
 				var b := _find_button(FORWARD_NAMES + ["Quit", "Back", "Menu"])
 				if b == null:

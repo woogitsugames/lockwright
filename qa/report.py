@@ -158,3 +158,9 @@ if blocker:
     print('::error title=QA gry: bloker::' + (' '.join(script_errors_unique[0][0])[:240] if script_errors else 'no lock was reached in the whole career'))
 if os.environ.get('QA_FAIL_ON_INFRA') == '1' and (infra_fail or blocker):
     sys.exit(2)
+# soft-locks and screens without an exit stop a real player: the run is red, not a warning
+# (QA_SOFTLOCK_WARN=1 keeps the old warning-only behaviour for exploratory runs)
+stuck = (bot.get('softlocks') or []) + (bot.get('dead_ends') or []) if bot else []
+if stuck and os.environ.get('QA_SOFTLOCK_WARN') != '1':
+    print(f"::error title=QA gry: soft-lock::{len(stuck)} stuck screen(s), first: {stuck[0].get('scene')} - {stuck[0].get('reason')}")
+    sys.exit(1)

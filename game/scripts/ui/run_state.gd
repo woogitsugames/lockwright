@@ -36,7 +36,9 @@ static func tier_for(k: int) -> int:
 ## The job dictionary of the next lock in the run (family rotates through the ready ones).
 static func next_job() -> Dictionary:
 	var tier := tier_for(n)
-	var families: Array = JobRun.PHOTOREAL_READY  # N-63: never the placeholder view
+	var families: Array = JobRun.PHOTOREAL_READY.duplicate()  # N-63: never the placeholder view
+	if JobRun.planb_ready(&"lever_detector") and not families.has(&"lever_detector"):
+		families.append(&"lever_detector")  # joins when its 5-lever assets land (JobRun.planb_ready)
 	var fam: StringName = families[n % families.size()]
 	return {"id": "run.%d" % n, "family": String(fam), "tier": tier, "reward_coins": COINS_PER_TIER * tier, "i18n": {}}
 
