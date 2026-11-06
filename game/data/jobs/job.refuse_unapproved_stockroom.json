@@ -1,6 +1,7 @@
 {
   "id": "job.refuse_unapproved_stockroom",
   "chapter": 7,
+  "order": 9,
   "district": "Nocny Rynek",
   "family": "wafer",
   "tier": 2,
@@ -27,5 +28,7 @@
   ],
   "threshold": 2,
   "place": "cellar",
-  "time": "evening"
+  "time": "evening",
+  "outcome": "open",
+  "source": "contrib/gpt/T09 (D-46; main career since D-71)"
 }

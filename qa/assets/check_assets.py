@@ -8,7 +8,7 @@ The mappings are read from the game itself (no copies here, so the check follows
     AMBIENCES and the *_ROOT dirs
   - lock event sounds              from game/data/haptics_patterns.json (events.<id>.sfx.{id,variants})
   - one-shot sounds                from every Sfx.play_<kind>(&"name") call in game/scripts
-  - jobs                           game/data/jobs/*.json and game/data/jobs_ch7/*.json (place, time, lines)
+  - jobs                           game/data/jobs/*.json (chapters 1-12, D-71) (place, time, lines)
 
     python3 qa/assets/check_assets.py [--out qa/out/assets]     -> report.md, report.json; exit 0 (findings are ⚠)
 """
@@ -69,7 +69,7 @@ def main():
     voice_dirs = gd_dict(sfx_src, 'VOICE_DIR') if 'VOICE_DIR' in sfx_src else {}  # N-48: shared S03 folders
 
     jobs = []
-    for d in ('jobs', 'jobs_ch7'):
+    for d in ('jobs',):
         for f in sorted((GAME / 'data' / d).glob('*.json')):
             j = json.loads(f.read_text())
             j['_file'] = f'{d}/{f.name}'

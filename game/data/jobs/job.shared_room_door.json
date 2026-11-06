@@ -1,6 +1,7 @@
 {
   "id": "job.shared_room_door",
   "chapter": 7,
+  "order": 12,
   "district": "Śródmieście",
   "family": "pin_tumbler",
   "tier": 3,
@@ -28,5 +29,7 @@
   ],
   "threshold": 3,
   "place": "apartment",
-  "time": "evening"
+  "time": "evening",
+  "outcome": "open",
+  "source": "contrib/gpt/T09 (D-46; main career since D-71)"
 }

@@ -188,7 +188,7 @@ func _check_audio() -> void:
 		if not ok:
 			missing.append({"call": "Sfx.play_%s(&\"%s\")" % [kind, name], "in": calls[c]})
 	var speakers := {}
-	for dir in ["res://data/jobs", "res://data/jobs_ch7"]:
+	for dir in ["res://data/jobs"]:
 		for f in _list_files(dir, ".json"):
 			var j: Variant = JSON.parse_string(FileAccess.get_file_as_string(f))
 			if typeof(j) == TYPE_DICTIONARY:

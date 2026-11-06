@@ -1,6 +1,7 @@
 {
   "id": "job.refuse_sisters_flat",
   "chapter": 7,
+  "order": 5,
   "district": "Śródmieście",
   "family": "pin_tumbler",
   "tier": 2,
@@ -26,5 +27,7 @@
   ],
   "threshold": 2,
   "place": "apartment",
-  "time": "night"
+  "time": "night",
+  "outcome": "open",
+  "source": "contrib/gpt/T09 (D-46; main career since D-71)"
 }

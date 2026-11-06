@@ -1,9 +1,10 @@
 {
   "id": "job.edek_rehearsal_store",
   "chapter": 7,
+  "order": 7,
   "district": "Kampus",
   "family": "lever_detector",
-  "tier": 2,
+  "tier": 5,
   "verification": "Portier Edek potwierdza opiekę nad pomieszczeniem (2); pismo administracji uczelni ze zgodą na wydanie krzeseł (2).",
   "reward_coins": 105,
   "tone": "ciepły, suchy humor",
@@ -27,5 +28,7 @@
   ],
   "threshold": 2,
   "place": "locker",
-  "time": "evening"
+  "time": "evening",
+  "outcome": "open",
+  "source": "contrib/gpt/T09 (D-46; main career since D-71)"
 }

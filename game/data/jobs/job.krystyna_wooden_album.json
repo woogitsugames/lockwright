@@ -1,8 +1,9 @@
 {
   "id": "job.krystyna_wooden_album",
   "chapter": 7,
+  "order": 8,
   "district": "Willowa Górka",
-  "family": "wooden_pin",
+  "family": "egyptian",
   "tier": 1,
   "verification": "Skrzynka we własnym domu Krystyny; zdjęcie rodzinne (1) i potwierdzenie córki Oli jako świadka (2). Rzecz ruchoma.",
   "reward_coins": 75,
@@ -27,5 +28,7 @@
   ],
   "threshold": 2,
   "place": "apartment",
-  "time": "evening"
+  "time": "evening",
+  "outcome": "open",
+  "source": "contrib/gpt/T09 (D-46; main career since D-71)"
 }

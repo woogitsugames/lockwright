@@ -353,8 +353,8 @@ func _layout_about(vp: Vector2) -> void:
 func _on_about_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		_about_taps += 1
-		if _about_taps >= 5 and not Save.get_value("post_release", false):
-			Save.set_value("post_release", true)  # task 11: chapter 7 unlocked
-			Save.set_value("dev_mode", true)  # T03: odblokowuje język DE w ustawieniach
-			notice_label.text = I18n.t(&"about.post_release_unlocked")
+		# D-71: chapter 7 is in the main career; the 5-tap now only enables dev_mode (T03: DE/FR/ES in settings)
+		if _about_taps >= 5 and not Save.get_value("dev_mode", false):
+			Save.set_value("dev_mode", true)
+			notice_label.text = I18n.t(&"about.dev_mode_unlocked")
 			_about_taps = 0

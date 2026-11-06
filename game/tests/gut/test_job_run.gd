@@ -17,9 +17,9 @@ func test_unimplemented_families_hidden() -> void:
 
 ## N-72: every job family in the data is either playable or one of the known hidden ones.
 func test_job_families_playable_or_known_hidden() -> void:
-	const HIDDEN := ["wooden_pin", "ring_combo"]
+	const HIDDEN := []  # D-71: chapters 7-8 wooden_pin/ring_combo jobs remapped to egyptian/combo; all playable
 	var seen := {}
-	for dir in ["res://data/jobs", "res://data/jobs_ch7"]:
+	for dir in ["res://data/jobs"]:
 		for f in DirAccess.get_files_at(dir):
 			if f.ends_with(".json"):
 				var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(dir + "/" + f))

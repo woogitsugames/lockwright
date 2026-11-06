@@ -26,7 +26,7 @@ func test_receipt_service_names_the_family_and_time_lock_is_a_repair() -> void:
 
 
 func test_every_job_family_has_a_receipt_line() -> void:
-	for dir in ["res://data/jobs", "res://data/jobs_ch7"]:
+	for dir in ["res://data/jobs"]:
 		for f in DirAccess.get_files_at(dir):
 			if not f.ends_with(".json"):
 				continue

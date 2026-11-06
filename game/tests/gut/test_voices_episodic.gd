@@ -11,7 +11,7 @@ const S03_PENDING := ["celina", "dorota", "seweryn", "borys", "alicja", "janka",
 
 func _speakers() -> Array:
 	var out: Array = []
-	for dir in ["res://data/jobs", "res://data/jobs_ch7"]:
+	for dir in ["res://data/jobs"]:
 		for f in DirAccess.get_files_at(dir):
 			if not f.ends_with(".json"):
 				continue

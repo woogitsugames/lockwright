@@ -1,6 +1,7 @@
 {
   "id": "job.halina_recipe_box",
   "chapter": 7,
+  "order": 1,
   "district": "Śródmieście",
   "family": "warded",
   "tier": 1,
@@ -27,5 +28,7 @@
   ],
   "threshold": 2,
   "place": "apartment",
-  "time": "day"
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T09 (D-46; main career since D-71)"
 }

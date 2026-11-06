@@ -83,7 +83,7 @@ func test_frame_keeps_16dp_sides() -> void:
 
 func test_every_episodic_speaker_has_portrait() -> void:
 	var speakers := {}
-	for dir in ["res://data/jobs", "res://data/jobs_ch7"]:
+	for dir in ["res://data/jobs"]:
 		for f in DirAccess.get_files_at(dir):
 			if f.ends_with(".json"):
 				var job: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(dir + "/" + f))

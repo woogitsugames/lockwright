@@ -56,7 +56,7 @@ i **zlecenia niewidoczne na liście**. Ucięte teksty EN na ekranach: `qa/bot/a1
 
 ## Część 3 (etap 5): zasoby — `qa/assets/check_assets.py`
 Statycznie, na danych i kodzie gry (mapowania czytane z `job_arrival.gd` i `sfx.gd`, bez kopii): każde zlecenie
-(`data/jobs`, `data/jobs_ch7`) ma tło przyjazdu G07; każda mówiąca postać ma portret G09 i głos S03 w miejscu, w którym
+(`data/jobs`, rozdz. 1–12) ma tło przyjazdu G07; każda mówiąca postać ma portret G09 i głos S03 w miejscu, w którym
 gra go szuka; każdy dźwięk z `data/haptics_patterns.json` (komplet wariantów dla co najmniej jednego materiału),
 z `AMBIENCES` i z każdego wywołania `Sfx.play_*(&"…")` istnieje. Raport: `qa/out/assets/report.md`, w CI krok w
 `qa-career` (ostrzeżenia ⚠, bez czerwonego runu). Lokalnie: `python3 qa/assets/check_assets.py`.

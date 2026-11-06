@@ -2,7 +2,7 @@
 """Voiced dialogue lines for jobs (D-57): cast, TTS, normalisation, .import files.
 
 Source of truth for the TEXT is game/i18n/content.csv (`<job_id>.line.N`, columns en/pl/de); the SPEAKER of each line
-is `lines[N-1]` in game/data/jobs*/<job_id>.json. Every speaker has one fixed, fictional ElevenLabs voice (designed
+is `lines[N-1]` in game/data/jobs/<job_id>.json. Every speaker has one fixed, fictional ElevenLabs voice (designed
 from a text description with Voice Design, never cloned) that reads both languages; see game/data/voice_cast.json.
 
 Subcommands
@@ -126,7 +126,7 @@ def read_csv():
 def inventory():
     rows = read_csv()
     out = []
-    for f in sorted(glob.glob(str(GAME / 'data/jobs/*.json')) + glob.glob(str(GAME / 'data/jobs_ch7/*.json'))):
+    for f in sorted(glob.glob(str(GAME / 'data/jobs/*.json'))):
         d = json.load(open(f, encoding='utf-8'))
         for i, sp in enumerate(d.get('lines', [])):
             key = f"{d['id']}.line.{i + 1}"

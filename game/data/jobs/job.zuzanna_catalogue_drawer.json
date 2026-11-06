@@ -1,9 +1,10 @@
 {
   "id": "job.zuzanna_catalogue_drawer",
   "chapter": 7,
+  "order": 4,
   "district": "Port",
   "family": "lever",
-  "tier": 2,
+  "tier": 3,
   "verification": "Dr Rygiel potwierdza umocowanie i obecność (3), podpisany protokół użyczenia kopii (2). Bez dotykania oryginałów.",
   "reward_coins": 105,
   "tone": "ciepły, muzealnie rzeczowy",
@@ -27,5 +28,7 @@
   ],
   "threshold": 2,
   "place": "apartment",
-  "time": "day"
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T09 (D-46; main career since D-71)"
 }

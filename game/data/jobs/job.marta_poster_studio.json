@@ -1,6 +1,7 @@
 {
   "id": "job.marta_poster_studio",
   "chapter": 7,
+  "order": 3,
   "district": "Osiedle Słoneczne",
   "family": "pin_tumbler",
   "tier": 2,
@@ -27,5 +28,7 @@
   ],
   "threshold": 2,
   "place": "apartment",
-  "time": "day"
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T09 (D-46; main career since D-71)"
 }

@@ -112,7 +112,7 @@ static func tier_for(job: Dictionary) -> int:
 
 
 static func job_by_id(jid: String) -> Dictionary:
-	for dir in ["res://data/jobs", "res://data/jobs_ch7"]:
+	for dir in ["res://data/jobs"]:
 		for f in DirAccess.get_files_at(dir):
 			if not f.ends_with(".json"):
 				continue

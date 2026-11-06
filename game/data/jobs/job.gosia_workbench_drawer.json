@@ -1,6 +1,7 @@
 {
   "id": "job.gosia_workbench_drawer",
   "chapter": 7,
+  "order": 10,
   "district": "Port",
   "family": "lever",
   "tier": 3,
@@ -27,5 +28,7 @@
   ],
   "threshold": 2,
   "place": "workshop",
-  "time": "day"
+  "time": "day",
+  "outcome": "open",
+  "source": "contrib/gpt/T09 (D-46; main career since D-71)"
 }
