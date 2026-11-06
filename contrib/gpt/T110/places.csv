@@ -1,0 +1,17 @@
+place,time,jobs,resolved_image,tracked,used_fallback
+apartment,day,19,01_apartment_day.jpg,True,False
+apartment,evening,16,02_apartment_evening.jpg,True,False
+apartment,night,6,03_apartment_night_timer.jpg,True,False
+attic,day,1,05_attic.jpg,True,False
+cellar,evening,6,06_cellar.jpg,True,False
+gate,day,2,09_courtyard_gate.jpg,True,False
+gate,evening,1,09_courtyard_gate.jpg,True,False
+gate,rainy,3,09_courtyard_gate.jpg,True,False
+kiosk,day,3,07_kiosk_shutter.jpg,True,False
+kiosk,evening,1,07_kiosk_shutter.jpg,True,False
+kiosk,rainy,1,07_kiosk_shutter.jpg,True,False
+locker,day,4,08_changing_room_locker.jpg,True,False
+locker,evening,7,08_changing_room_locker.jpg,True,False
+locker,night,1,08_changing_room_locker.jpg,True,False
+workshop,day,9,10_workshop_door.jpg,True,False
+workshop,evening,3,10_workshop_door.jpg,True,False
