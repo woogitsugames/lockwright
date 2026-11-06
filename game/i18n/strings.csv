@@ -211,3 +211,8 @@ lock.lever_coach,Lift the lever until its gate meets the stump.,"Unoś zapadkę,
 lock.hint_tension_wafer,Wafers feel loose? Hold a little left tension.,Płytki luźne? Lewym kciukiem trzymaj napięcie.,Plättchen locker? Links etwas Spannung halten.
 lock.hint_tension_lever,Levers feel loose? Hold a little left tension.,Zapadki luźne? Lewym kciukiem trzymaj napięcie.,Zuhaltungen locker? Links etwas Spannung halten.
 lock.disc_hint,"Light torque, turn the stiff disc until it settles.","Lekki moment, oporną tarczę kręć, aż siądzie.","Wenig Drehmoment, feste Scheibe drehen, bis sie sitzt."
+tutorial.say_tension,Hint: slide your left thumb slowly up and hold.,Wskazówka: lewy kciuk powoli w górę i trzymaj.,"Tipp: linken Daumen langsam hochziehen, halten."
+tutorial.say_lift,Hint: right thumb under the stiff part; lift slowly.,"Wskazówka: prawy kciuk pod oporny element, unoś wolno.","Tipp: rechter Daumen unters feste Teil, langsam heben."
+tutorial.say_warded,"Hint: slide the bit until it fits the gap, then turn.","Wskazówka: ustaw grot w szczelinie, potem obracaj.","Tipp: Bart in die Lücke schieben, dann drehen."
+tutorial.say_chalk,Hint: the chalk now marks what to do.,"Wskazówka: kreda pokazuje, co zrobić.","Tipp: Die Kreide zeigt jetzt, was zu tun ist."
+tutorial.say_master,The master's hand shows this step once. Then you.,Ręka mistrza raz pokaże ten krok. Potem ty.,Die Hand des Meisters zeigt es einmal. Dann du.
