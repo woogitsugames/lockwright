@@ -1,0 +1,1 @@
+Obejmuje 155 kwestii line i after z T43. Pusty ciąg oznacza brak tagów i neutralne wykonanie; format pozostaje mapą klucz → tekst jak w contrib/voice/tags.json. Nie przypisywano emocji bez odsłuchu i reżyserii. Notatek nie zaliczono do dialogów; przypisanie mówców należy sprawdzić podczas produkcji.
