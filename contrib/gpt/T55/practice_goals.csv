@@ -1,17 +1,17 @@
 keys,en,pl,de,fr,es
-practice.t31.goal,Notice the safe’s signals.,Rozpoznaj sygnały sejfu.,Erkenne die Signale des Tresors.,Repère les signaux du coffre.,Reconoce las señales de la caja fuerte.
-practice.t32.goal,Open the practice safe.,Otwórz sejf ćwiczeniowy.,Öffne den Übungstresor.,Ouvre le coffre d’entraînement.,Abre la caja fuerte de práctica.
-practice.t33.goal,Feel a ring respond.,Poczuj reakcję pierścienia.,Spüre die Reaktion eines Rings.,Sens la réaction d’un anneau.,Siente la respuesta de un anillo.
-practice.t34.goal,Open the practice combination lock.,Otwórz ćwiczebny zamek szyfrowy.,Öffne das Übungszahlenschloss.,Ouvre la serrure à code d’entraînement.,Abre la cerradura de combinación de práctica.
-practice.t35.goal,Feel a pin respond.,Poczuj reakcję pinu.,Spüre die Reaktion eines Stifts.,Sens la réaction d’une goupille.,Siente la respuesta de un perno.
-practice.t36.goal,Open the practice dimple lock.,Otwórz ćwiczebny zamek nawiercany.,Öffne das Übungsbohrmuldenschloss.,Ouvre la serrure à alvéoles d’entraînement.,Abre la cerradura de puntos de práctica.
-practice.t37.goal,Feel a disc respond.,Poczuj reakcję tarczy.,Spüre die Reaktion einer Scheibe.,Sens la réaction d’un disque.,Siente la respuesta de un disco.
-practice.t38.goal,Open the practice disc lock.,Otwórz ćwiczebny zamek tarczowy.,Öffne das Übungsscheibenschloss.,Ouvre la serrure à disques d’entraînement.,Abre la cerradura de discos de práctica.
-practice.t39.goal,Feel a wooden peg respond.,Poczuj reakcję drewnianego kołka.,Spüre die Reaktion eines Holzstifts.,Sens la réaction d’une cheville en bois.,Siente la respuesta de un pasador de madera.
-practice.t40.goal,Open the practice wooden lock.,Otwórz ćwiczebny zamek drewniany.,Öffne das Übungsholzschloss.,Ouvre le verrou en bois d’entraînement.,Abre el cerrojo de madera de práctica.
-practice.t41.goal,Feel a slider respond.,Poczuj reakcję suwaka.,Spüre die Reaktion eines Schiebers.,Sens la réaction d’un coulisseau.,Siente la respuesta de una corredera.
-practice.t42.goal,Open the practice slider lock.,Otwórz ćwiczebny zamek suwakowy.,Öffne das Übungsschieberschloss.,Ouvre la serrure à coulisseaux d’entraînement.,Abre la cerradura de correderas de práctica.
-practice.t43.goal,Observe the clock mechanism.,Obserwuj mechanizm zegara.,Beobachte das Uhrwerk.,Observe le mécanisme d’horlogerie.,Observa el mecanismo del reloj.
-practice.t44.goal,Repair the practice clock mechanism.,Napraw ćwiczebny mechanizm zegara.,Repariere das Übungsuhrwerk.,Répare le mécanisme d’entraînement.,Repara el mecanismo de reloj de práctica.
-practice.t45.goal,Feel a magnetic element respond.,Poczuj reakcję elementu magnetycznego.,Spüre die Reaktion eines Magnetelements.,Sens la réaction d’un élément magnétique.,Siente la respuesta de un elemento magnético.
-practice.t46.goal,Open the practice magnetic lock.,Otwórz ćwiczebny zamek magnetyczny.,Öffne das Übungsmagnetschloss.,Ouvre la serrure magnétique d’entraînement.,Abre la cerradura magnética de práctica.
+practice.t31.goal,Notice the next safe wheel join.,Rozpoznaj dołączenie kolejnego koła sejfu.,Erkenne das Mitlaufen des nächsten Tresorrads.,Repère quand la roue suivante du coffre se met en mouvement.,Reconoce cuándo se suma la siguiente rueda de la caja fuerte.
+practice.t32.goal,Recover after passing a safe gate.,Wróć do bramki sejfu po jej minięciu.,Kehre nach dem Überdrehen zum Tresortor zurück.,Reviens à l’encoche du coffre après l’avoir dépassée.,Vuelve a la muesca de la caja fuerte tras pasarla.
+practice.t33.goal,Find a wheel that resists.,Znajdź kółko stawiające opór.,Finde ein Rad mit Widerstand.,Trouve une molette qui résiste.,Encuentra una ruedecilla que ofrezca resistencia.
+practice.t34.goal,Recover after a wheel slips.,Wróć do wcięcia po przeskoku kółka.,Kehre nach dem Überspringen zur Kerbe zurück.,Reviens au cran après le saut d’une molette.,Vuelve a la muesca tras el salto de una ruedecilla.
+practice.t35.goal,Find a pin in a chosen row.,Znajdź pin w wybranym rzędzie.,Finde einen Stift in der gewählten Reihe.,Trouve une goupille dans la rangée choisie.,Encuentra un perno en la fila elegida.
+practice.t36.goal,Distinguish the sleeve and pin signals.,Rozróżnij sygnały tulei i pinu.,Unterscheide die Signale von Hülse und Stift.,Distingue les signaux de la douille et de la goupille.,Distingue las señales de la funda y del perno.
+practice.t37.goal,Set a selected disc.,Ustaw wybraną tarczę.,Setze eine ausgewählte Scheibe.,Place un disque choisi.,Coloca un disco elegido.
+practice.t38.goal,Correct a disc turned too far.,Popraw tarczę obróconą za daleko.,Korrigiere eine zu weit gedrehte Scheibe.,Corrige un disque tourné trop loin.,Corrige un disco girado demasiado.
+practice.t39.goal,Raise a selected wooden peg.,Podnieś wybrany drewniany kołek.,Hebe einen ausgewählten Holzstift an.,Lève une cheville en bois choisie.,Alza un pasador de madera elegido.
+practice.t40.goal,Free a jammed wooden peg.,Uwolnij zablokowany drewniany kołek.,Befreie einen klemmenden Holzstift.,Libère une cheville en bois coincée.,Libera un pasador de madera atascado.
+practice.t41.goal,Seat a selected slider.,Osadź wybrany suwak.,Setze einen ausgewählten Schieber.,Place un coulisseau choisi.,Coloca una corredera elegida.
+practice.t42.goal,Recover after a false notch.,Poradź sobie z fałszywym wcięciem.,Reagiere auf eine falsche Kerbe.,Réagis à une fausse encoche.,Recupérate tras una muesca falsa.
+practice.t43.goal,Seat the clock wheels in order.,Osadź koła zegara po kolei.,Setze die Uhrwerkräder nacheinander ein.,Place les roues de l’horloge dans l’ordre.,Coloca las ruedas del reloj en orden.
+practice.t44.goal,Restore the clock’s steady rhythm.,Przywróć równy rytm zegara.,Stelle den gleichmäßigen Takt der Uhr wieder her.,Rétablis le rythme régulier de l’horloge.,Restablece el ritmo regular del reloj.
+practice.t45.goal,Notice a magnetic pin lag.,Rozpoznaj opóźniony ruch pinu magnetycznego.,Erkenne die verzögerte Bewegung eines Magnetstifts.,Repère le retard d’une goupille magnétique.,Reconoce el retraso de un perno magnético.
+practice.t46.goal,Guide a magnetic pin smoothly.,Prowadź pin magnetyczny płynnym ruchem.,Führe einen Magnetstift mit ruhiger Bewegung.,Guide une goupille magnétique en douceur.,Guía un perno magnético con suavidad.
