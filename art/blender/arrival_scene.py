@@ -298,9 +298,9 @@ def layer_use(m, grime_h=320, grime=0.55, patches=0.0, patch_col=(0.80, 0.77, 0.
     nt, b, col = base_socket(m); l = nt.links
     P = nt.nodes.new('ShaderNodeTexCoord').outputs['Object']
     if patches:   # replastered patches (lighter, smoother) and old paint layers where the top coat flaked
-        pm = _maprange(nt, _noise(nt, P, 0.0011, detail=3, rough=0.5, dist=0.3), 0.58, 0.62, 0.0, patches)
+        pm = _maprange(nt, _noise(nt, P, 0.0024, detail=6, rough=0.65, dist=1.2), 0.60, 0.615, 0.0, patches * 0.45)
         col = _mix(nt, col, (*patch_col, 1), pm)
-        fl = _maprange(nt, _noise(nt, P, 0.004, detail=8, rough=0.75), 0.66, 0.69, 0.0, patches * 0.8)
+        fl = _maprange(nt, _noise(nt, P, 0.006, detail=10, rough=0.8, dist=0.6), 0.67, 0.685, 0.0, patches * 0.7)
         col = _mix(nt, col, (0.47, 0.52, 0.42, 1), fl)          # old green-grey coat under the lime
     if scuffs:    # shoe and bag scuffs: grey-black streaks low on the dado
         Z, F = floor_line(nt, P); h = _math(nt, 'SUBTRACT', Z, F)
@@ -317,7 +317,7 @@ if photo_enabled():
     ph_lime = layer_use(photo_mat('ph_lime', 'wall_lime_plaster', scale=1000, metallic=0.0, bump=0.5, grime=0.4, tint=(0.82, 0.78, 0.69)),
                         grime_h=200, grime=0.35, patches=1.0, patch_col=(0.86, 0.83, 0.76))
     ph_green = layer_use(photo_mat('ph_lamperia', 'wall_oil_paint_green', scale=760, metallic=0.0, bump=0.45, coat=0.35, grime=0.5,
-                                   base=(0.05, 0.10, 0.075), base_mix=0.25), grime_h=260, grime=0.6, scuffs=0.8)
+                                   base=(0.07, 0.14, 0.10), base_mix=0.3), grime_h=260, grime=0.6, scuffs=0.8)
     ph_ceiling = photo_mat('ph_ceiling', 'wall_lime_plaster', scale=1300, metallic=0.0, bump=0.3, grime=0.2, tint=(0.84, 0.81, 0.74))
     ph_terr = photo_mat('ph_terrazzo', 'terrazzo_grey_red', scale=900, metallic=0.0, bump=0.3, grime=0.6, wear=0.3, base=(0.40, 0.37, 0.34), base_mix=0.35)
     ph_brass = photo_mat('ph_brass', 'brass_patina_grease', scale=60, metallic=1.0, base=(0.70, 0.52, 0.28), base_mix=0.4, rough_add=0.08, wear=0.4, grime=0.8)
@@ -372,7 +372,7 @@ ribbed.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value = 0.
 CY = WT + 5200
 court = bx('court_wall', -9000, 1500, CY, CY + 300, -6000, 6600, brick_wall('court_brick', brick=(0.40, 0.22, 0.14), wash=(0.62, 0.60, 0.55), wash_amt=0.55, seed=4))
 win_dark = glass('court_glass', (0.25, 0.27, 0.28), rough=0.05)
-lit = emissive('court_lit', (1.0, 0.66, 0.35), 3.0 if TIME == 'night' else (1.2 if TIME == 'evening' else 0.0), (0.05, 0.05, 0.05))
+lit = emissive('court_lit', (1.0, 0.66, 0.35), 0.9 if TIME == 'night' else (1.2 if TIME == 'evening' else 0.0), (0.05, 0.05, 0.05))
 crng = random.Random(21)
 for ix, x in enumerate(range(-6200, 1200, 1500)):
     for iz, z in enumerate((-3800, -400, 3000)):
@@ -381,6 +381,9 @@ for ix, x in enumerate(range(-6200, 1200, 1500)):
         bx('cw_glass', x + 40, x + 860, CY - 70, CY - 40, z + 40, z + 1460, m_)
         bx('cw_sill', x - 60, x + 960, CY - 140, CY, z - 60, z, oil_paint('cw_sill', (0.30, 0.29, 0.27), rough=0.6, seed=ix))
 drop('w_sky')
+if TIME != 'day':   # the yard at night: a sodium lamp low on the far wall grazes the brick, the sky lifts the top
+    ay = bpy.data.objects.new('aim_court', None); scene.collection.objects.link(ay); ay.location = (-2500, CY, 2500)
+    area_light('court_lamp', (-1200, CY - 2500, -2500), ay, 600, (3.0e7 if TIME == 'night' else 1.5e7), (1.0, 0.55, 0.25))
 SKY = {'night': ((0.06, 0.09, 0.20), 0.25), 'evening': ((0.18, 0.28, 0.70), 1.2), 'day': ((0.80, 0.86, 0.96), 4.0)}[TIME]
 sky = bx('w_sky', -9000, 3000, CY + 8000, CY + 8020, -6000, 30000, emissive('sky2', SKY[0], SKY[1], (0, 0, 0))); sky.visible_shadow = False
 
