@@ -32,7 +32,11 @@ func _ready() -> void:
 	_fam()
 	if view.has_method("set_hint"):
 		var done: int = (Save.get_value("jobs_completed", []) as Array).size()
-		var line: String = I18n.t(&"lock.dial_hint") if family == &"dial_safe" else I18n.t(&"lock.combo_hint")
+		var line: String = I18n.t(&"lock.combo_hint")
+		if family == &"dial_safe":
+			line = I18n.t(&"lock.dial_hint")
+		elif family == &"disc_detainer":
+			line = I18n.t(&"lock.disc_hint")
 		view.call("set_hint", line if done < 6 else "")
 
 

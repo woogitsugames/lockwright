@@ -8,8 +8,14 @@ extends GutTest
 
 const HZ := 120
 const SCENE := "res://scenes/photoreal/lock_job_combo.tscn"
+const DISC_SCENE := "res://scenes/photoreal/lock_job_disc_detainer.tscn"
+var _scene_path := SCENE
 const DialTest := preload("res://tests/gut/test_planb_dial_safe.gd")
 var _save_backup: Dictionary
+
+
+func before_each() -> void:
+	_scene_path = SCENE
 
 
 func before_all() -> void:
@@ -45,7 +51,7 @@ func _open_scene(size: Vector2i) -> Node:
 	var vp := SubViewport.new()
 	vp.size = size
 	add_child_autofree(vp)
-	var scene: Node = load(SCENE).instantiate()
+	var scene: Node = load(_scene_path).instantiate()
 	vp.add_child(scene)
 	await wait_physics_frames(3)
 	return scene
@@ -78,6 +84,7 @@ func _play(job: Dictionary, auto: bool, max_s: float = 90.0) -> Array:
 	var target := -1
 	var ease_left := 0
 	var settle := 0
+	var flipped := {}
 	for step in int(max_s * HZ):
 		var vm: Dictionary = session.describe()
 		var els: Array = vm["elements"]
@@ -92,6 +99,7 @@ func _play(job: Dictionary, auto: bool, max_s: float = 90.0) -> Array:
 				caught = i
 		if caught >= 0 and ease_left == 0:
 			ease_left = 30
+			flipped[caught] = not flipped.get(caught, false)  # go round the other way past that false notch
 			if auto:
 				s._unhandled_input(_touch(0, left, true))
 				s._unhandled_input(_touch(0, left, false))  # a quick tap: let go for 0.1 s
@@ -116,7 +124,8 @@ func _play(job: Dictionary, auto: bool, max_s: float = 90.0) -> Array:
 			var g := fposmod((float(e["window_lo"]) + float(e["window_hi"])) * 0.5, 1.0)
 			var off: float = LockComboView.wrap_half(g - float(e["position"]))
 			if int(vm["pick_element"]) == b:
-				speed = signf(off) * clampf(absf(off) * 3.0, 0.12, 0.35)
+				var way := signf(off) * (-1.0 if flipped.get(b, false) else 1.0)
+				speed = way * clampf(absf(off) * 3.0 if not flipped.get(b, false) else 0.3, 0.12, 0.35)
 			settle += 1
 		var defl: float = ComboControl.deflection_for(speed)
 		if right_down:
@@ -247,3 +256,48 @@ func test_scripted_stages_through_lockcore() -> void:
 	scene._simulate_stage("slip")
 	var states: Array = scene.session.describe()["elements"].map(func(e: Dictionary) -> String: return String(e["state"]))
 	assert_true(states.has("overset"), "stage 'slip': a wheel slips (%s)" % [states])
+
+
+# ------------------------------------------------------------------ disc detainer (same view, own plates)
+## LOCKS.md §2.21 reuses the ring_combo module: the same bot opens it (right thumb across = disc,
+## up/down = turn the disc, left thumb = torque on the core).
+func test_every_disc_detainer_job_opens_in_both_modes() -> void:
+	if not (ClassDB.class_exists("LockcoreSession") and LockcoreSession.rules_version(&"disc_detainer") > 0):
+		pending("needs the lockcore GDExtension v0.6")
+		return
+	_scene_path = DISC_SCENE
+	var jobs := DialTest.jobs_of(&"disc_detainer")
+	assert_gt(jobs.size(), 0, "disc detainer jobs exist")
+	for job in jobs:
+		JobRun.start(job)
+		assert_true(JobRun.is_playable(job))
+		assert_eq(JobRun.lock_scene_path(), DISC_SCENE)
+		for auto in [false, true]:
+			var r: Array = await _play(job, auto)
+			gut.p("disc %s auto=%s: open=%s %.1f s" % [job["id"], auto, r[0], r[1]])
+			assert_true(r[0], "%s (auto=%s) opens (%.1f s)" % [job["id"], auto, r[1]])
+
+
+func test_disc_layout_and_states() -> void:
+	_scene_path = DISC_SCENE
+	JobRun.start(DialTest.jobs_of(&"disc_detainer")[0])
+	for size in [Vector2i(412, 915), Vector2i(360, 800), Vector2i(915, 412)]:
+		var scene: Node = await _open_scene(size)
+		var view: LockComboView = scene.view
+		var tag := "disc %dx%d" % [size.x, size.y]
+		assert_eq(view.slots, 6, tag + " six disc slots")
+		for i in view.n_wheels:
+			assert_gte(view.reel_rect_screen(i).size.x, 28.0, tag + " disc %d >= 28 dp" % i)
+			assert_true(view.section_rect.has_point(view.tooth_tip_screen(i)), tag + " finger %d inside" % i)
+	var scene: Node = await _open_scene(Vector2i(412, 915))
+	scene.set_physics_process(false)
+	var view: LockComboView = scene.view
+	var o := _wheel("free", 0.1, 0.7)
+	var vm_free := {"elements": [_wheel("bound", 0.2), o, o, o, o], "tension": 0.0, "pick_element": 0}
+	var vm_set := {"elements": [_wheel("set", 0.5), o, o, o, o], "tension": 0.34, "pick_element": 0}
+	for i in 90:
+		view.present(vm_free, {}, 1.0 / 60.0)
+	var y_free := view.tooth_tip_screen(0).y
+	for i in 90:
+		view.present(vm_set, {}, 1.0 / 60.0)
+	assert_lt(view.tooth_tip_screen(0).y, y_free - 2.0, "set: the finger rises into the disc gate (sidebar under the discs)")
