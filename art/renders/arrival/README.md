@@ -17,10 +17,10 @@ Scena powstaje z zestawu klatki schodowej: `art/blender/arrival_scene.py` urucha
 | `wrong_floor_night_shadow_kazimierz.png`, `wrong_floor_night_ajar_shadow_teresa.png` | mapy cienia postaci (Cycles Shadow Catcher: stosunek światła z postacią / bez) |
 | `wrong_floor_preview_{night,evening,day}_kazimierz.png`, `wrong_floor_preview_night_teresa.png` | proof składania: stop-klatka + zaślepka postaci |
 | `wrong_floor_preview_board.png` | zestawienie czterech proofów |
+| `wrong_floor_preview_vs_stairwell_locks.png` | porównanie: noc tutaj / `stairwell_night.png` / `stairwell.png` / `wafer.png` |
 | `placeholder_kazimierz.png`, `placeholder_teresa.png` | szare sylwetki-zaślepki z alfą (do czasu dostawy Magnific D1/D2) |
 
-Uwaga: sekwencja jest sprzed dwóch poprawek stop-klatki (wizytówka zsunięta pod wianek, bez połysku na plamach
-brudu), więc jej ostatnia klatka różni się drobiazgami od `*_hold.png`. Finał na GPU renderuje oba z tego samego skryptu.
+Sekwencja (216×384, 8 spp), stop-klatki i proofy są z tego samego stanu skryptu (przebieg materiałów zdjęciowych).
 
 ## Czego potrzebuje gra
 
@@ -85,21 +85,28 @@ z góry klatki). Opcje: `--frames 36 --fps 12`, `--step N` (co N-ta klatka na sz
 
 ## Ocena podglądu i znane braki
 
-- **Działa:** czytelny przejazd (stopnie → podest → drzwi), ruch kamery z „krokami” (ugięcie 14 mm i przechył 0,5°
-  na stopień, wygaszane przy zatrzymaniu), rozmycie ruchu kamery; noc ma dwie temperatury (ciepła żarówka w mlecznym
-  kloszu, zimne okno) i prawdziwy spadek światła; drzwi, wianek, mosiężna „19”, wycieraczka, skrzynka z wizytówką
-  są w kadrze, wizytówki mają kotwice. Składanie: kolor z płyty + barwa świateł z JSON, cień kontaktowy, mapa cienia
-  z Cycles, maska głębi (ościeżnica i łańcuch zasłaniają panią Teresę), light wrap, ziarno.
-- **Słabsze niż rendery zamków:** scena dziedziczy proceduralne materiały zestawu klatki (ściany i lastryko są
-  gładkie, „czyste CG” przy 540 px; zdjęciowe tekstury z `art/textures/photo/` nie są tu jeszcze użyte), wnętrze
-  mieszkania za uchylonymi drzwiami jest puste, okno ma tylko jednolite niebo za szkłem ryflowanym, dzień jest płaski.
-  Przy 10–32 spp widać szum/odszumianie na lastryku i ścianach — finał GPU (128–512 spp) to usunie, ale nie
-  podniesie materiałów.
-- **Światło na postaci:** żarówka wisi na ścianie za panem Kazimierzem, więc fizycznie jest on podświetlony od tyłu,
-  a jego cień pada do przodu. Zdjęcie z Magnific będzie raczej oświetlone od przodu — narzędzie dopasowuje kolor
-  i jasność, ale nie przeoświetli zdjęcia. Prompt D1/D2 powinien prosić o górne, ciepłe światło z tyłu-lewej strony
-  (kontra), z miękkim wypełnieniem z przodu.
-- **Do decyzji:** pozycja postaci (lewa strona drzwi, przed oknem) i kąt otwarcia drzwi (38°) to propozycje;
-  zmienia się je w `SLOTS` i `hinge.rotation_euler` w `arrival_scene.py`.
-- **Zestaw klatki:** te same połyskujące plamy brudu (`stain_decal`) widać w `art/renders/stairwell.png` (jasny owal
-  na ramie zamkowej drzwi) — tu poprawione lokalnie (Specular IOR Level = 0), w `stairwell.py` nie ruszane.
+**Przebieg materiałów zdjęciowych (`art/textures/photo/`, `--photo 0` wyłącza):** tynk wapienny (`wall_lime_plaster`)
+z łatami i prześwitującą starą farbą, lamperia olejna (`wall_oil_paint_green`) z otarciami butów/toreb nisko,
+pas brudu wzdłuż posadzki liczony od linii schodów (na biegu też), lastryko `terrazzo_grey_red` z przetarciami,
+mosiądz `brass_patina_grease` (tłuste ślady palców), brud wokół klamki i kopnięcia na dole skrzydła, ciemniejsze
+brzegi podestu przy balustradzie. Przedpokój za uchylonymi drzwiami: płytki cementowe (`cement_tiles`), chodnik
+w paski, płaszcze na wieszaku z półką, szafka na buty, zdjęcie w ramce, ciepła lampka w mlecznym kloszu. Za oknem:
+bielona cegła oficyny naprzeciwko z oknami (w nocy kilka zapalonych), lampa na podwórzu, niebo nad dachem; szkło
+już nie mleczne. Dzień: słońce wpada przez okno i kładzie jasną plamę z cieniem szprosów przy nogach postaci.
+
+- **Lepiej niż wcześniej i niż `stairwell.png`:** lastryko ma prawdziwe kamyki, ściana ma fakturę, rysy i zabrudzenia,
+  podwórze daje głębię za oknem, przedpokój wygląda na zamieszkany. Noc jest najbardziej udana.
+- **Nadal słabsze niż rendery zamków:** przy 540 px i 24 spp odszumianie wygładza tynk i drewno, więc kadr jest
+  miękki; rendery zamków są ostre, bo kamera jest blisko przedmiotu, a tekstury mają dużo pikseli. Finał 1080×1920
+  @ 512 spp wyostrzy obraz. Drzwi zostały proceduralne (dąb z zestawu) — można je podmienić na `g03:oak_satin`.
+  Poręcz nie ma jeszcze wytartego połysku od rąk.
+- **Światło:** podwórze oświetla ciepła lampa sodowa, więc w nocy okno nie daje już tak wyraźnie zimnego akcentu
+  jak w pierwszej wersji (zimne światło okna nadal pada na schody). Jeśli właściciel chce mocniejszego podziału
+  ciepłe/zimne, wystarczy zmienić kolor `court_lamp` na zimny LED. Dzień jest mniej płaski niż wcześniej, ale wciąż
+  najsłabszy z trzech; plama słońca jest mała.
+- **Jasny owal na skrzydle drzwi** to odbicie mlecznego klosza w lakierze (prawdziwe, nie błąd). Natomiast plamy
+  brudu (`stain_decal`) dawały połysk, którego nie ma pod nimi farba — poprawione w `arrival_scene.py` i w
+  `stairwell.py` (Specular IOR Level = 0); `stairwell.png` nie był renderowany ponownie.
+- **Światło na postaci:** żarówka wisi za panem Kazimierzem, więc jest on podświetlony od tyłu, a cień pada do przodu.
+  Prompt D1/D2 powinien prosić o ciepłe światło z góry i z tyłu po lewej oraz miękkie wypełnienie z przodu.
+- Pozycja postaci (po lewej od drzwi) i kąt uchylenia (38°) zatwierdzone przez koordynatora.
