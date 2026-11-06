@@ -4,10 +4,9 @@ extends GutTest
 
 const EMOTIONS := [&"greeting", &"surprise", &"relief", &"thanks", &"impatient", &"sad", &"laugh", &"goodbye"]
 const NOT_VOICED := ["locksmith"]  # the player character has no client voice
-## T43 speakers (chapters 9-12) whose S03v2 wordless reactions are not made yet: their spoken lines (D-57)
-## exist; play_voice() is a silent no-op for them until the reactions arrive (then remove the id here).
-const S03_PENDING := ["celina", "dorota", "seweryn", "borys", "alicja", "janka", "leon", "mila", "oskar",
-		"pawel", "karol"]  # + chapter 8 (T18, D-71)
+## Speakers whose S03v2 wordless reactions are not made yet: play_voice() is a silent no-op for them until the
+## reactions arrive (then remove the id here). T43 and T18 speakers got theirs on 2026-11-06 (tools/voice_lines.py).
+const S03_PENDING: Array[String] = []
 
 
 func _speakers() -> Array:
