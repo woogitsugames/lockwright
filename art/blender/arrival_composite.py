@@ -20,9 +20,15 @@
 #      weight shift) for the game's in-place loop.
 import argparse, json, math, os, sys
 import numpy as np
+from scipy import ndimage
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 EXPOSURE = 1.0   # figure brightness relative to the plate's light around it (--exposure)
+WRAP = 0.30      # light wrap strength at the silhouette edge (--wrap; 0.55 before G23 gave a glow on real photos)
+WARM = 0.5      # share of the anchors' light colour in the tint vs the plate's own colour around the figure (--warm)
+OCCLUDE_MM = 180.0  # scene depth this much nearer than the slot's feet hides the figure (--occlude-mm)
+TINT_GAIN = 1.0  # >1 pushes the figure further into the scene's light colour (--tint-gain)
+SAT = 1.0       # saturation of the figure after the tint (--sat)
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
 
 def srgb_to_lin(c): return np.where(c <= 0.04045, c / 12.92, ((c + 0.055) / 1.055) ** 2.4)
@@ -102,8 +108,10 @@ def place_figure(plate_lin, slot, fig_path, meta, shadow_ratio=None, phase=0.0, 
     reg = plate_lin[ry0:ry1, rx0:rx1].reshape(-1, 3); rl_ = lum(reg); reg = reg[rl_ > np.percentile(rl_, 40)]
     pc = reg.mean(0); pc = pc / max(lum(pc[None])[0], 1e-6)
     lc = light_col / max(lum(light_col[None])[0], 1e-6)
-    tint = np.clip(0.7 * pc + 0.3 * lc, 0, None); tint = tint / lum(tint[None])[0]
+    tint = np.clip((1 - WARM) * pc + WARM * lc, 0, None) ** TINT_GAIN; tint = tint / lum(tint[None])[0]
     rgb = rgb * tint
+    if SAT != 1.0:
+        L0 = lum(rgb)[..., None]; rgb = np.clip(L0 + (rgb - L0) * SAT, 0, None)
     # target exposure: the light level of the plate around the whole figure (wall behind + floor around the feet).
     # 65th percentile: a person facing the camera gets the bounce of the lit walls/floor, not the darkest corners.
     bx0, bx1 = max(0, ox - nw), min(W, ox + 2 * nw); by0, by1 = max(0, oy), min(H, oy + nh + nh // 8)
@@ -139,6 +147,8 @@ def place_figure(plate_lin, slot, fig_path, meta, shadow_ratio=None, phase=0.0, 
         k2 = -d2; cx, cy = fx + k2[0] * fw * 0.9, fy + max(0.05, k2[1]) * fw * 0.25
         d2_.ellipse([cx - fw * 0.7, cy - fw * 0.14, cx + fw * 0.7, cy + fw * 0.14], fill=0.45)
     sh = blur(tight, max(1.2, fw * 0.04)) + blur(tight, max(3, fw * 0.15)) * 0.5 + blur(np.asarray(im2), max(3, fw * 0.18))
+    if depth is not None:   # the 2D shadow lies on the floor around the feet, never on nearer things (jamb, leaf)
+        sh = sh * (depth >= meta['depth_mm'] - 350)
     out = out * (1 - np.clip(sh, 0, 0.85))[..., None]
 
     # --- light wrap + paste
@@ -146,13 +156,16 @@ def place_figure(plate_lin, slot, fig_path, meta, shadow_ratio=None, phase=0.0, 
     sx0, sy0 = X0 - ox, Y0 - oy; sx1, sy1 = sx0 + (X1 - X0), sy0 + (Y1 - Y0)
     fa = a[sy0:sy1, sx0:sx1]; frgb = rgb[sy0:sy1, sx0:sx1]
     if depth is not None:   # hide the figure behind anything nearer than its front (door leaf, jamb, newel)
-        near = (depth[Y0:Y1, X0:X1] < meta['depth_mm'] - 180).astype(np.float32)
+        near = depth[Y0:Y1, X0:X1] < meta['depth_mm'] - OCCLUDE_MM
+        # solid occluders only (door leaf, jamb, newel): thin specks in the depth pass (plant leaves, wreath
+        # twigs, sampling noise at edges) would punch sparkling holes into the figure
+        near = ndimage.binary_closing(ndimage.binary_opening(near, iterations=3), iterations=2).astype(np.float32)
         fa = fa * (1 - np.clip(blur(near, 0.6), 0, 1))
     bg = out[Y0:Y1, X0:X1]
     rad = max(2.0, nh * 0.012)
     bgb = blur(bg, rad * 2.5)
     inner = np.clip(fa - blur(fa, rad), 0, 1) * 0 + np.clip(1 - blur(fa, rad), 0, 1) * fa       # 1 at the edge, 0 inside
-    wrap = 0.55 * inner[..., None]
+    wrap = WRAP * inner[..., None]
     frgb = frgb * (1 - wrap) + bgb * wrap * 1.1
     fa_soft = np.clip(blur(fa, 0.6), 0, 1)
     out[Y0:Y1, X0:X1] = bg * (1 - fa_soft[..., None]) + frgb * fa_soft[..., None]
@@ -173,22 +186,48 @@ def contact(seq_dir, out, cols=6, width=1080):
         d.text((x + 6, y + 4), f.split('.')[0].replace('f_', '#'), fill=(235, 225, 200))
     sheet.save(out); print('WROTE', out, len(ims), 'frames')
 
+def reproject(meta, slot, x, y, height_mm=None):
+    """Move a figure slot to world floor point (x, y) mm with the plate's camera (arrival_scene.py: Blender camera,
+    vertical sensor fit, X 90 deg + yaw, shift); rewrites feet_center, feet_line, head_top, height_px, px_per_mm,
+    depth_mm in the slot (for a slot whose scene position is wrong, e.g. Teresa in front of the ajar leaf)."""
+    c = meta['camera']; W, H = meta['width'], meta['height']; s = meta['figures'][slot]
+    C = np.array(c['location_mm'], float); yaw = math.radians(c['rotation_euler_deg'][2]); f = c['lens_mm']; sh = c['shift'][1]
+    sw = c.get('sensor_height_mm', 36.0)
+    fwd = np.array([-math.sin(yaw), math.cos(yaw), 0.0]); right = np.array([math.cos(yaw), math.sin(yaw), 0.0])
+    def proj(P):
+        v = np.array(P, float) - C; z = v @ fwd
+        return 0.5 + (v @ right) / z * f / (sw * W / H), 0.5 - ((v[2]) / z * f / sw - sh), z
+    hm = height_mm or s['height_mm']
+    u, v, z = proj((x, y, 0)); _, vt, _ = proj((x, y, hm))
+    ul, _, _ = proj((x - 225, y, 0)); ur, _, _ = proj((x + 225, y, 0))
+    s.update(feet_world_mm=[x, y, 0.0], height_mm=hm, feet_center=[u, v], feet_line=[[ul, v], [ur, v]], head_top=[u, vt],
+             height_px=(v - vt) * H, px_per_mm=(v - vt) * H / hm, depth_mm=z)
+    print('SLOT', slot, 'feet', [round(u, 4), round(v, 4)], 'height_px', round((v - vt) * H, 1), 'depth', round(z))
+
+
 def main():
+    global EXPOSURE, WRAP, WARM, SAT, OCCLUDE_MM, TINT_GAIN
     ap = argparse.ArgumentParser()
     ap.add_argument('--plate'); ap.add_argument('--anchors'); ap.add_argument('--figure', action='append', default=[])
     ap.add_argument('--shadow'); ap.add_argument('--out', required=True); ap.add_argument('--placeholder')
     ap.add_argument('--grain', type=float, default=0.025); ap.add_argument('--exposure', type=float, default=1.0); ap.add_argument('--no-depth', action='store_true'); ap.add_argument('--breath', type=int, default=0)
+    ap.add_argument('--wrap', type=float, default=WRAP); ap.add_argument('--warm', type=float, default=WARM); ap.add_argument('--sat', type=float, default=SAT); ap.add_argument('--occlude-mm', type=float, default=OCCLUDE_MM); ap.add_argument('--tint-gain', type=float, default=TINT_GAIN)
+    ap.add_argument('--feet-world', action='append', default=[],
+                    help='SLOT=x,y[,height_mm]: move a slot on the floor (world mm) and re-project it with the plate camera')
     ap.add_argument('--contact', help='sequence dir: write a contact sheet to --out and exit')
     o = ap.parse_args()
     if o.contact:
         contact(o.contact, o.out); return
-    global EXPOSURE; EXPOSURE = o.exposure
+    EXPOSURE, WRAP, WARM, SAT, OCCLUDE_MM, TINT_GAIN = o.exposure, o.wrap, o.warm, o.sat, o.occlude_mm, o.tint_gain
     if o.placeholder:
         print('WROTE', placeholder(o.placeholder, o.out)); return
     meta = json.load(open(o.anchors or os.path.splitext(o.plate)[0] + '.json'))
     plate = np.asarray(Image.open(o.plate).convert('RGB')).astype(np.float32) / 255.0
     plate_lin = srgb_to_lin(plate)
     H, W = plate.shape[:2]
+    for fw in o.feet_world:
+        slot, v = fw.split('=', 1); xyz = [float(t) for t in v.split(',')]
+        reproject(meta, slot, xyz[0], xyz[1], xyz[2] if len(xyz) > 2 else None)
     for f in meta['figures'].values():   # anchors are normalised; the JSON's height_px is for its own width/height
         f['height_px'] = f['height_px'] * H / meta['height']
     shadow = None
