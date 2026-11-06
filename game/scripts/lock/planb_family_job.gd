@@ -124,7 +124,10 @@ func _simulate_stage(stage: String) -> void:
 		if stage in ["listen", "pull"] and float(r[0]) > 0.2 and states.has("bound") and (family == &"combo" or int(vm.get("pick_element", -1)) >= 0):
 			break
 		if stage == "gate" and states.size() > 0 and states[0] == "near":
-			break
+			var e0: Dictionary = els[0]
+			var g0 := (float(e0["window_lo"]) + float(e0["window_hi"])) * 0.5
+			if absf(fposmod(float(e0["position"]) - g0 + 0.5, 1.0) - 0.5) <= (float(e0["window_hi"]) - float(e0["window_lo"])) * 0.5:
+				break
 		if stage == "set" and seen_set >= 1 and states.has("bound"):
 			break
 		if session.finished():
