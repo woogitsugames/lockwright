@@ -2,11 +2,12 @@ extends GutTest
 ## N-05/N-06/N-09: job filtering, FNV-1a seed, tutorial mode never pays out.
 
 func test_unimplemented_families_hidden() -> void:
-	assert_false(JobRun.is_playable({"family": "dimple"}))  # D-59 family without a plan-B screen yet
+	assert_false(JobRun.is_playable({"family": "safe_wheels"}))  # a family without a lockcore module
 	assert_true(JobRun.is_playable({"family": "dial_safe"}))  # D-59 plan-B screen shipped
 	assert_false(JobRun.is_playable({"family": "unknown"}))
 	assert_true(JobRun.is_playable({"family": "pin_tumbler"}))
-	assert_false(JobRun.is_playable({"family": "lever"}))  # N-63: hidden until its plan-B view ships
+	assert_true(JobRun.is_playable({"family": "lever"}))  # N-63: plan-B screen shipped
+	assert_false(JobRun.is_playable({"family": "lever_detector"}))  # N-63: waits for a 5-lever model
 
 func test_fnv1a_seed_stable() -> void:
 	# N-06: FNV-1a 64 of "job.grandma_broth"
