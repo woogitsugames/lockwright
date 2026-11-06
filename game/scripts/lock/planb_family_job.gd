@@ -41,8 +41,17 @@ func _physics_process(delta: float) -> void:
 		view.present(session.describe(), _last_input, delta)
 		if not session.is_open():
 			Events.lock_failed.emit(StringName(session.failure()))
+		if coach != null:
+			coach.update(session.describe(), _last_input, [], false, false, delta)
+		if _open_pending > 0.0:  # a lesson: the closing line shows before the payment (as the tutorial)
+			_open_pending -= delta
+			if _open_pending <= 0.0:
+				Events.lock_opened.emit()
 		return
-	var input: Dictionary = sampler.sample() if is_raw_source(sampler) else _fam().map(sampler.sample(), sampler)
+	var raw := is_raw_source(sampler)
+	var input: Dictionary = sampler.sample() if raw else _fam().map(sampler.sample(), sampler)
+	if hints != null and not raw:
+		input = hints.drive(input, session.describe(), delta)  # H4: the master hand (T42 lessons)
 	var events: Array = session.step(input["tension"], input["pick_depth"], input["pick_lift"])
 	_last_input = input
 	for e in events:
@@ -52,6 +61,8 @@ func _physics_process(delta: float) -> void:
 		if e["kind"] == &"open":
 			_on_open()
 	var vm: Dictionary = session.describe()
+	if not raw:
+		_update_guidance(vm, input, events, delta)
 	var resistance: float = vm.get("tension_resistance", 0.0)
 	Haptics.update_continuous(&"tension_resistance", resistance, 0.3)
 	Sfx.update_loop(&"tension_resistance", resistance)

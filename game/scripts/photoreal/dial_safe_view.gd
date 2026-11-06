@@ -375,8 +375,8 @@ func _update_d_chalk(vm: Dictionary, delta: float) -> void:
 	var any_set := false
 	for e in vm.get("elements", []):
 		any_set = any_set or String(e.get("state", "")) == "set"
+	_chalk.text = _lesson_chalk(m, hint if not any_set and not _opened else "", "hint_vertical")
 	_chalk.marks = m
-	_chalk.text = hint if not any_set and not _opened else ""
 	_chalk.tick(delta)
 
 

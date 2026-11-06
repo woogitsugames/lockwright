@@ -20,6 +20,8 @@ extends Node
 ##   --lw-spec PATH      play an authored lockwright.lock/1 file (res:// or absolute path)
 ##   --lw-chalk L        off | reduced | full
 ##   --lw-auto 1         D-52 auto tension
+##   --lw-lesson 1|0     force the family's first lesson on (or off) whatever the save says (T42)
+##   --lw-lesson-step N  start the lesson at step N (screenshots; steps + 1 = the closing line)
 ##   --lw-loupe 1        open the eyepiece (N-57)
 ##   --lw-pose blender   show the five stack states of art/renders/section.png (set, false set,
 ##                       binding, overset, free) for a side-by-side check against Cycles;
@@ -172,7 +174,26 @@ func _setup_guidance() -> void:
 		stage = int(args["lw-tutorial"])
 	var jobs_done: int = (Save.get_value("jobs_completed", []) as Array).size()
 	var level := ChalkLayer.Level.OFF
-	if tutorial:
+	var lesson := {} if tutorial else lesson_for_job(family, args)
+	if not lesson.is_empty():
+		# T42 / ONBOARDING §8: the family's first job is a guided lesson (full chalk, H0–H4, both modes)
+		level = ChalkLayer.Level.FULL
+		fb_gain = 1.3
+		coach = TutorialCoach.new(0, false, auto)
+		coach.set_lesson(lesson)
+		if args.has("lw-lesson-step"):
+			coach.jump_lesson(int(args["lw-lesson-step"]))
+	elif TutorialCoach.has_lesson_for(family) and TutorialCoach.lesson_done(family) \
+			and TutorialCoach.jobs_after_lesson(family) < TutorialCoach.FADE_JOBS and not args.has("lw-lesson"):
+		# the coach fades: the next jobs of the family keep reduced chalk and the hint ladder, no lines
+		level = ChalkLayer.Level.REDUCED
+		coach = TutorialCoach.new(0, false, auto)
+		coach.set_lesson(TutorialCoach.load_lesson(family), true)
+	elif TutorialCoach.has_lesson_for(family) and not tutorial:
+		# lesson families after the fade: no pin coach (its gestures are not theirs)
+		if bool(Settings.get_value(&"chalk_layer", false)):
+			level = ChalkLayer.Level.REDUCED
+	elif tutorial:
 		level = ChalkLayer.Level.FULL if stage == 0 else ChalkLayer.Level.REDUCED
 		fb_gain = [1.5, 1.3, 1.15][clampi(stage, 0, 2)]
 		coach = TutorialCoach.new(stage, stage == 0, auto)
@@ -185,10 +206,21 @@ func _setup_guidance() -> void:
 	if coach != null:
 		coach.family = family  # N-63: wafer / lever get their own lines (no pin wording)
 	view.chalk_level = level
-	view.chalk_gauge = auto or (tutorial and stage == 0)
+	view.chalk_gauge = (auto or (tutorial and stage == 0)) and lesson.is_empty()
 	view.coach = coach
 	view.loupe_toggled.connect(func(on: bool) -> void: sampler.frozen = on)
 	_setup_hints()
+
+
+## T42: the lesson of this job's family, or {} — only the family's first job (lesson not done in
+## the save), in the job mode; --lw-lesson 1/0 forces it on/off (dev, screenshots).
+static func lesson_for_job(fam: StringName, a: Dictionary) -> Dictionary:
+	if a.get("lw-lesson", "") == "0":
+		return {}
+	var forced: bool = a.get("lw-lesson", "") == "1"
+	if not forced and (JobRun.mode != &"job" or JobRun.current_job.is_empty() or TutorialCoach.lesson_done(fam)):
+		return {}
+	return TutorialCoach.load_lesson(fam)
 
 
 ## ONBOARDING §2: hint ladder H0–H4 + ghost hand wherever a coach runs (S1–S3, first jobs).
@@ -262,18 +294,26 @@ func _physics_process(delta: float) -> void:
 		_no_tension_cues(vm, input)
 	if sampler.auto_tension and (control == null or control is DetectorControl):  # N-72: detector levers have false gates too
 		sampler.auto_level = AUTO_SPOOL_LEVEL if _has_state(vm, "false_set") else InputSampler.AUTO_LEVEL
-	if coach != null:
-		coach.update(vm, input, events, sampler.left_down(), sampler.right_down(), delta)
-	if hints != null and not sampler.raw:
-		hints.tick(vm, input, events, sampler.left_down(), sampler.right_down(), delta)
-		if hints.preview_tension >= 0.0:  # H2: the plug face answers the ghost tension
-			vm = vm.duplicate()
-			vm["tension"] = maxf(float(vm.get("tension", 0.0)), hints.preview_tension)
+	_update_guidance(vm, input, events, delta)
+	if hints != null and not sampler.raw and hints.preview_tension >= 0.0:  # H2: the plug face answers the ghost tension
+		vm = vm.duplicate()
+		vm["tension"] = maxf(float(vm.get("tension", 0.0)), hints.preview_tension)
 	var resistance: float = vm.get("tension_resistance", vm.get("resistance", 0.0))
 	Haptics.update_continuous(&"tension_resistance", resistance, 0.3)
 	Sfx.update_loop(&"tension_resistance", resistance)
 	Sfx.update_loop(&"pick_drag", vm.get("pick_drag", 0.0))
 	view.present(vm, input, delta)
+
+
+## Coach + hint ladder of one physics step (shared with the plan-B family screens). The D-52 mode is
+## read every step, so switching auto tension in the pause applies at once.
+func _update_guidance(vm: Dictionary, input: Dictionary, events: Array, delta: float) -> void:
+	if coach != null:
+		coach.auto_tension = sampler.auto_tension
+		coach.update(vm, input, events, sampler.left_down(), sampler.right_down(), delta)
+	if hints != null and not sampler.raw:
+		hints.auto = sampler.auto_tension
+		hints.tick(vm, input, events, sampler.left_down(), sampler.right_down(), delta)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -295,11 +335,22 @@ func go_back() -> bool:
 
 
 func _on_open() -> void:
+	_note_lesson_open()
 	# tutorial: let the plug turn and the praise show before the stage screen (N-61 step 6)
 	if coach != null and coach.guided:
 		_open_pending = 1.8
 	else:
 		Events.lock_opened.emit()
+
+
+## T42: the lesson is done once its lock opens; later jobs of the family count towards the fade.
+func _note_lesson_open() -> void:
+	if args.has("lw-lesson") or JobRun.mode != &"job" or JobRun.current_job.is_empty():
+		return
+	if coach != null and coach.has_lesson() and not coach.lesson_quiet:
+		TutorialCoach.mark_lesson_done(family)
+	elif TutorialCoach.has_lesson_for(family) and TutorialCoach.lesson_done(family):
+		TutorialCoach.count_job_after_lesson(family)
 
 
 static func _has_state(vm: Dictionary, st: String) -> bool:

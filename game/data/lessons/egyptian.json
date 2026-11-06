@@ -1,0 +1,55 @@
+{
+  "schema": "lockwright.lesson/1",
+  "family": "egyptian",
+  "spec": "contrib/gpt/T42/LESSONS.md",
+  "note": "Wooden pegs fall by gravity; left pulls the bolt, right lifts one peg; a peg lifted too high wedges.",
+  "right": "lift",
+  "tension": 0.34,
+  "material": "wood",
+  "lift_speed": 0.2,
+  "steps": [
+    {
+      "id": "hold",
+      "text": "tutorial.egyptian.step1",
+      "text_auto": "tutorial.egyptian.step1_auto",
+      "thumb": "left",
+      "until": {
+        "tension_s": 0.5
+      },
+      "until_auto": {
+        "right_down": true
+      }
+    },
+    {
+      "id": "move",
+      "text": "tutorial.egyptian.step2",
+      "thumb": "right",
+      "until": {
+        "moved_s": 0.4
+      }
+    },
+    {
+      "id": "feel",
+      "text": "tutorial.egyptian.step3",
+      "thumb": "right",
+      "until": {
+        "events": [
+          "set"
+        ]
+      }
+    }
+  ],
+  "trap": {
+    "id": "wedged",
+    "text": "tutorial.egyptian.step4",
+    "states": [
+      "overset",
+      "jammed"
+    ],
+    "hold_s": 0.2,
+    "after": 1,
+    "ghost": "ease",
+    "ease_level": 0.12
+  },
+  "done": "tutorial.egyptian.step5"
+}

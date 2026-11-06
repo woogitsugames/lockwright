@@ -1,0 +1,58 @@
+{
+  "schema": "lockwright.lesson/1",
+  "family": "dial_safe",
+  "spec": "contrib/gpt/T42/LESSONS.md",
+  "note": "Big dial, wheels joined one by one; the left thumb presses the handle. H4 turns the dial once.",
+  "right": "turn",
+  "tension": 0.4,
+  "material": "steel",
+  "roll_dp": 70,
+  "steps": [
+    {
+      "id": "hold",
+      "text": "tutorial.dial_safe.step1",
+      "text_auto": "tutorial.dial_safe.step1_auto",
+      "thumb": "left",
+      "until": {
+        "tension_s": 0.5
+      },
+      "until_auto": {
+        "right_down": true
+      }
+    },
+    {
+      "id": "move",
+      "text": "tutorial.dial_safe.step2",
+      "thumb": "right",
+      "until": {
+        "moved_s": 0.4
+      }
+    },
+    {
+      "id": "feel",
+      "text": "tutorial.dial_safe.step3",
+      "thumb": "right",
+      "until": {
+        "events": [
+          "bind"
+        ]
+      },
+      "skip": false,
+      "note": "The first pickups come as soon as the dial turns: this step waits for the next one."
+    }
+  ],
+  "trap": {
+    "id": "disturbed",
+    "text": "tutorial.dial_safe.step4",
+    "states": [
+      "jammed"
+    ],
+    "events": [
+      "drop"
+    ],
+    "after": 2,
+    "ghost": "turn",
+    "note": "A set wheel picked up again (drop) or the handle pressed so hard the pack clamps (jammed): circle once more and stop on the gate."
+  },
+  "done": "tutorial.dial_safe.step5"
+}

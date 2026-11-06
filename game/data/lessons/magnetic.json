@@ -1,0 +1,56 @@
+{
+  "schema": "lockwright.lesson/1",
+  "family": "magnetic",
+  "spec": "contrib/gpt/T42/LESSONS.md",
+  "note": "The pin follows the field late; a smooth, slow guide sets it, a jerk leaves it behind.",
+  "right": "lift",
+  "tension": 0.36,
+  "material": "brass",
+  "lift_speed": 0.12,
+  "steps": [
+    {
+      "id": "hold",
+      "text": "tutorial.magnetic.step1",
+      "text_auto": "tutorial.magnetic.step1_auto",
+      "thumb": "left",
+      "until": {
+        "tension_s": 0.5
+      },
+      "until_auto": {
+        "right_down": true
+      }
+    },
+    {
+      "id": "move",
+      "text": "tutorial.magnetic.step2",
+      "thumb": "right",
+      "until": {
+        "moved_s": 0.4
+      }
+    },
+    {
+      "id": "feel",
+      "text": "tutorial.magnetic.step3",
+      "thumb": "right",
+      "until": {
+        "events": [
+          "set"
+        ]
+      }
+    }
+  ],
+  "trap": {
+    "id": "lag",
+    "text": "tutorial.magnetic.step4",
+    "states": [
+      "overset"
+    ],
+    "events": [
+      "drop"
+    ],
+    "hold_s": 0.2,
+    "after": 1,
+    "ghost": "lift"
+  },
+  "done": "tutorial.magnetic.step5"
+}

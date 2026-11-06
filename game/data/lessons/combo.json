@@ -1,0 +1,55 @@
+{
+  "schema": "lockwright.lesson/1",
+  "family": "combo",
+  "spec": "contrib/gpt/T42/LESSONS.md",
+  "note": "Light pull on the shackle, choose a wheel, roll slowly; a wheel rolled too fast under pull slips.",
+  "right": "roll",
+  "tension": 0.34,
+  "material": "brass",
+  "roll_dp": 40,
+  "steps": [
+    {
+      "id": "hold",
+      "text": "tutorial.combo.step1",
+      "text_auto": "tutorial.combo.step1_auto",
+      "thumb": "left",
+      "until": {
+        "tension_s": 0.5
+      },
+      "until_auto": {
+        "right_down": true
+      }
+    },
+    {
+      "id": "move",
+      "text": "tutorial.combo.step2",
+      "thumb": "right",
+      "until": {
+        "moved_s": 0.4
+      }
+    },
+    {
+      "id": "feel",
+      "text": "tutorial.combo.step3",
+      "thumb": "right",
+      "until": {
+        "events": [
+          "set"
+        ]
+      }
+    }
+  ],
+  "trap": {
+    "id": "slip",
+    "text": "tutorial.combo.step4",
+    "states": [
+      "overset"
+    ],
+    "events": [
+      "overset"
+    ],
+    "after": 1,
+    "ghost": "roll"
+  },
+  "done": "tutorial.combo.step5"
+}

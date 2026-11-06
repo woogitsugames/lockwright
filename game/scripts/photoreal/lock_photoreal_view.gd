@@ -839,13 +839,29 @@ func _coach_text(m: Dictionary) -> String:
 	return I18n.t(key) if key != &"" else ""
 
 
-func _apply_hint_marks(m: Dictionary) -> void:
+func _apply_hint_marks(m: Dictionary, right_mark: String = "hint_right") -> void:
 	if hint_arrows == "left":
 		m["hint_left"] = true
 	elif hint_arrows == "right":
-		m["hint_right"] = true
+		m[right_mark] = true
 	if hint_arrows != "":
 		m["friction"] = true
+
+
+## T42 lessons (TutorialCoach.set_lesson): chalk thumb + arrows on the zone of the thumb that works in
+## this step, and the lesson line to write; without a lesson `fallback` (the family hint). Plus the H3
+## arrows of the hint ladder. right_mark: the dial's right thumb is a vertical scroll (hint_vertical).
+func _lesson_chalk(m: Dictionary, fallback: String, right_mark: String = "hint_right") -> String:
+	var line := fallback
+	if coach != null and coach.has_lesson():
+		var th := coach.lesson_thumb()
+		m["hint_left"] = th == "left"
+		m[right_mark] = th == "right"
+		if not coach.lesson_quiet:
+			var key := coach.text_key()
+			line = I18n.t(key) if key != &"" else ""
+	_apply_hint_marks(m, right_mark)
+	return line
 
 
 ## Thumb anchors of the chalk hints and the ghost hand (dp, view coordinates).
@@ -947,6 +963,9 @@ func _update_chalk(elements: Array, default_target: float, delta: float) -> void
 		var key := coach.text_key()
 		if key != &"":
 			text = I18n.t(key)
+		if coach.has_lesson():  # T42: the lesson's thumb, not the pin steps
+			m["hint_left"] = coach.lesson_thumb() == "left"
+			m["hint_right"] = coach.lesson_thumb() == "right"
 	_apply_hint_marks(m)
 	_chalk.marks = m
 	_chalk.text = _chalk_line(elements, text)

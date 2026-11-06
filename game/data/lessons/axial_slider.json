@@ -1,0 +1,57 @@
+{
+  "schema": "lockwright.lesson/1",
+  "family": "axial_slider",
+  "spec": "contrib/gpt/T42/LESSONS.md",
+  "note": "Front view, sliders around the centre are pressed down; a false notch gives a hollow click.",
+  "right": "lift",
+  "tension": 0.36,
+  "material": "brass",
+  "lift_speed": 0.2,
+  "steps": [
+    {
+      "id": "hold",
+      "text": "tutorial.axial_slider.step1",
+      "text_auto": "tutorial.axial_slider.step1_auto",
+      "thumb": "left",
+      "until": {
+        "tension_s": 0.5
+      },
+      "until_auto": {
+        "right_down": true
+      }
+    },
+    {
+      "id": "move",
+      "text": "tutorial.axial_slider.step2",
+      "thumb": "right",
+      "until": {
+        "moved_s": 0.4
+      }
+    },
+    {
+      "id": "feel",
+      "text": "tutorial.axial_slider.step3",
+      "thumb": "right",
+      "until": {
+        "events": [
+          "set"
+        ]
+      }
+    }
+  ],
+  "trap": {
+    "id": "false_notch",
+    "text": "tutorial.axial_slider.step4",
+    "states": [
+      "false_set",
+      "overset"
+    ],
+    "hold_s": 0.5,
+    "after": 1,
+    "ghost": "back",
+    "master": "ease",
+    "ease_level": 0.17,
+    "keep_lift": true
+  },
+  "done": "tutorial.axial_slider.step5"
+}

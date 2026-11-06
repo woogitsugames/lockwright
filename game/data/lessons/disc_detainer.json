@@ -1,0 +1,55 @@
+{
+  "schema": "lockwright.lesson/1",
+  "family": "disc_detainer",
+  "spec": "contrib/gpt/T42/LESSONS.md",
+  "note": "Light twist on the core, each disc turned on its own; a disc turned past its gate lifts the bar.",
+  "right": "roll",
+  "tension": 0.34,
+  "material": "steel",
+  "roll_dp": 40,
+  "steps": [
+    {
+      "id": "hold",
+      "text": "tutorial.disc_detainer.step1",
+      "text_auto": "tutorial.disc_detainer.step1_auto",
+      "thumb": "left",
+      "until": {
+        "tension_s": 0.5
+      },
+      "until_auto": {
+        "right_down": true
+      }
+    },
+    {
+      "id": "move",
+      "text": "tutorial.disc_detainer.step2",
+      "thumb": "right",
+      "until": {
+        "moved_s": 0.4
+      }
+    },
+    {
+      "id": "feel",
+      "text": "tutorial.disc_detainer.step3",
+      "thumb": "right",
+      "until": {
+        "events": [
+          "set"
+        ]
+      }
+    }
+  ],
+  "trap": {
+    "id": "too_far",
+    "text": "tutorial.disc_detainer.step4",
+    "states": [
+      "overset"
+    ],
+    "events": [
+      "overset"
+    ],
+    "after": 1,
+    "ghost": "back"
+  },
+  "done": "tutorial.disc_detainer.step5"
+}

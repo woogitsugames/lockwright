@@ -1,0 +1,57 @@
+{
+  "schema": "lockwright.lesson/1",
+  "family": "dimple",
+  "spec": "contrib/gpt/T42/LESSONS.md",
+  "note": "Two rows, a telescoping pin answers twice (sleeve, then the inner pin); pressing harder loses the second stage.",
+  "right": "lift",
+  "tension": 0.36,
+  "material": "brass",
+  "lift_speed": 0.2,
+  "steps": [
+    {
+      "id": "hold",
+      "text": "tutorial.dimple.step1",
+      "text_auto": "tutorial.dimple.step1_auto",
+      "thumb": "left",
+      "until": {
+        "tension_s": 0.5
+      },
+      "until_auto": {
+        "right_down": true
+      }
+    },
+    {
+      "id": "move",
+      "text": "tutorial.dimple.step2",
+      "thumb": "right",
+      "until": {
+        "moved_s": 0.4
+      }
+    },
+    {
+      "id": "feel",
+      "text": "tutorial.dimple.step3",
+      "thumb": "right",
+      "until": {
+        "events": [
+          "set"
+        ]
+      }
+    }
+  ],
+  "trap": {
+    "id": "one_click",
+    "text": "tutorial.dimple.step4",
+    "states": [
+      "false_set",
+      "overset"
+    ],
+    "hold_s": 0.6,
+    "after": 1,
+    "ghost": "back",
+    "master": "ease",
+    "ease_level": 0.17,
+    "keep_lift": true
+  },
+  "done": "tutorial.dimple.step5"
+}

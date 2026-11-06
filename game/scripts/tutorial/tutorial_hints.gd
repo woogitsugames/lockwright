@@ -16,6 +16,15 @@ extends Node
 ##              autopilot keeps the tension until the player's left thumb takes over).
 ## In the dark (view.dark): H1–H3 sound + haptics only, H4 also lights the scene for a moment.
 ## Reduce Motion: the ghost is not played (H3/H4 still work).
+##
+## T42 first lessons (TutorialCoach.set_lesson, res://data/lessons/<family>.json): the step id is the
+## lesson's step, and the ghost / master hand play the step's gesture kind at lesson speed:
+##   tension  left thumb up to the lesson's tension     lift  right thumb lifts the target element
+##   roll     right thumb on the wheel/disc, held up      turn  right thumb held up: the dial turns once
+##   ease     left thumb eases down to ease_level         tap   (auto) a short tap on the left zone
+##   back     right thumb eases back a little
+## A step's kind comes from its "ghost" (else its thumb: left = tension, right = the family's "right");
+## its master hand from "master" (else the same kind).
 
 const LIFT_SPEED := 0.2         # lift per second the ghost / master hand use (§2.2)
 const TENSION_DP := 60.0        # 0 → 0.3 tension = 60 dp of left-thumb drag
@@ -55,6 +64,7 @@ var _light_s := 0.0
 var _was_dark := false
 var _last_vm := {}
 var _last_input := {}
+var _auto_kind := ""  # lesson master hand: tension | lift | roll | turn | ease | back
 
 
 func setup(p_view: LockPhotorealView, p_coach: TutorialCoach, p_family: StringName, p_auto: bool, p_control = null) -> void:
@@ -117,6 +127,11 @@ func tick(vm: Dictionary, input: Dictionary, events: Array, left_down: bool, rig
 ## the lock needs next; each set starts a new step.
 func _step_id(vm: Dictionary, input: Dictionary) -> StringName:
 	var els: Array = vm.get("elements", [])
+	if _lesson():
+		var n_set := 0
+		for e in els:
+			n_set += 1 if String(e.get("state", "")) == "set" else 0
+		return StringName("L_%s_%d" % [coach.lesson_step_id(), n_set])
 	if family == &"warded":
 		var theta := float(vm.get("core_rotation", 0.0))
 		var k := int(vm.get("pick_element", 0))
@@ -135,7 +150,41 @@ func _step_id(vm: Dictionary, input: Dictionary) -> StringName:
 	return StringName("%s_%d" % [base, sets])
 
 
+func _lesson() -> bool:
+	return coach != null and coach.has_lesson()
+
+
+func _lesson_f(key: String, default: float) -> float:
+	return float(coach.lesson.get(key, default))
+
+
+## Gesture kind of the current lesson step (see the header); "" outside a lesson.
+func ghost_kind() -> String:
+	if not _lesson():
+		return ""
+	var st := coach.lesson_step()
+	var k := String(st.get("ghost", ""))
+	if k == "":
+		var th := String(st.get("thumb", ""))
+		k = "tension" if th == "left" else String(coach.lesson.get("right", "lift"))
+	if auto:
+		if k == "tension":
+			k = String(coach.lesson.get("right", "lift"))  # the game holds the left thumb
+		elif k == "ease":
+			k = "tap"  # D-52: a tap on the left zone lets go for a moment
+	return k
+
+
+func _master_kind() -> String:
+	var k := String(coach.lesson_step().get("master", ""))
+	if k == "" or (auto and k == "tension"):
+		k = ghost_kind()
+	return "ease" if k == "tap" else k
+
+
 func _needs_tension() -> bool:
+	if _lesson():
+		return ghost_kind() == "tension"
 	return String(step).begins_with("tension") or (family == &"warded" and String(step).ends_with("turn") and not auto)
 
 
@@ -155,6 +204,8 @@ func gesture() -> Array:
 	var anchors := view.thumb_anchors()
 	var left: Vector2 = anchors[0]
 	var right: Vector2 = anchors[1]
+	if _lesson():
+		return _lesson_gesture(left, right)
 	if family == &"warded":
 		if String(step).ends_with("turn"):
 			if auto:
@@ -179,6 +230,43 @@ func gesture() -> Array:
 	return [from, from + Vector2(0, -lift * DP_PER_UNIT), lift / LIFT_SPEED, 0.0]
 
 
+## Screen x of element i's thumb column (InputSampler: pick_depth = x across the right half).
+func _element_x(i: int, n: int) -> float:
+	var size := view.get_rect().size
+	return size.x * 0.5 + size.x * 0.5 * (i + 0.5) / maxi(n, 1)
+
+
+func _lesson_gesture(left: Vector2, right: Vector2) -> Array:
+	var t := _lesson_f("tension", 0.35)
+	var els: Array = _last_vm.get("elements", [])
+	var n := maxi(els.size(), 1)
+	var i := _target(els)
+	match ghost_kind():
+		"tension":
+			return [left, left + Vector2(0, -t * DP_PER_UNIT), TENSION_S * t / 0.3, 0.0]
+		"ease":
+			var lo := _lesson_f("ease_level", 0.15)
+			var tr_ease := float(coach.lesson.get("trap", {}).get("ease_level", lo))
+			return [left + Vector2(0, -t * DP_PER_UNIT), left + Vector2(0, -tr_ease * DP_PER_UNIT), 0.5, 0.4]
+		"tap":
+			return [left, left, 0.1, 0.15]
+		"roll":
+			var from := Vector2(_element_x(i, n), right.y)
+			return [from, from + Vector2(0, -_lesson_f("roll_dp", 45.0)), 0.4, 1.2]
+		"turn":
+			return [right, right + Vector2(0, -_lesson_f("roll_dp", 70.0)), 0.4, 2.0]
+		"back":
+			var bx := Vector2(_element_x(i, n), right.y)
+			return [bx + Vector2(0, -60.0), bx + Vector2(0, -30.0), 0.5, 0.3]
+	# lift: the target element up to the middle of its window at the lesson's speed
+	var lift := 0.55
+	if i < els.size() and els[i].has("window_hi"):
+		lift = (float(els[i]["window_lo"]) + float(els[i]["window_hi"])) * 0.5
+	var speed := _lesson_f("lift_speed", LIFT_SPEED)
+	var f := Vector2(_element_x(i, n), right.y)
+	return [f, f + Vector2(0, -lift * DP_PER_UNIT), lift / speed, 0.0]
+
+
 func _warded_target_h() -> float:
 	var els: Array = _last_vm.get("elements", [])
 	if els.is_empty():
@@ -190,7 +278,7 @@ func _warded_target_h() -> float:
 func _on_level(level: int, _step_id: StringName) -> void:
 	var ch := ladder.channels(level)
 	var g := gesture()
-	var mat := &"iron" if family == &"warded" else &"brass"
+	var mat := &"iron" if family == &"warded" else (StringName(coach.lesson.get("material", "brass")) if _lesson() else &"brass")
 	if ch["sound"] and level < 4:
 		Sfx.play(&"contact", mat, -12.0 if level == 1 else -6.0, 1.0)
 	if ch["haptic"] and level < 4:
@@ -206,7 +294,7 @@ func _on_level(level: int, _step_id: StringName) -> void:
 		3:
 			if ch["visual"]:
 				view.chalk_level = ChalkLayer.Level.FULL
-				view.hint_arrows = "left" if (_needs_tension() or (family == &"warded" and String(step).ends_with("turn") and not auto)) else "right"
+				view.hint_arrows = "left" if (_needs_tension() or ghost_kind() in ["ease", "tap"] or (family == &"warded" and String(step).ends_with("turn") and not auto)) else "right"
 		4:
 			h4_steps.append(step)
 			if ch["light"] and view.dark:
@@ -236,6 +324,8 @@ func _speak(level: int) -> void:
 	var key := &"tutorial.say_master"
 	if level == 3:
 		key = &"tutorial.say_chalk"
+	elif level == 2 and _lesson() and coach.text_key() != &"":
+		key = coach.text_key()  # the lesson line says the gesture of the step
 	elif level == 2:
 		if family == &"warded":
 			key = &"tutorial.say_warded"
@@ -261,7 +351,7 @@ func jump_to(level: int) -> void:
 
 func _on_ghost_progress(t: float) -> void:
 	if _needs_tension() and not autopilot:
-		preview_tension = 0.3 * t  # the plug face answers the ghost, then returns (§2.1 H2)
+		preview_tension = (_lesson_f("tension", 0.3) if _lesson() else 0.3) * t  # the plug face answers the ghost, then returns (§2.1 H2)
 
 
 # ------------------------------------------------------------------ H4 autopilot
@@ -272,6 +362,8 @@ func _start_autopilot() -> void:
 	var els: Array = _last_vm.get("elements", [])
 	_auto_target = _target(els)
 	_auto_k = int(_last_vm.get("pick_element", 0))
+	_auto_kind = _master_kind() if _lesson() else ""
+	_auto_lift = float(_last_input.get("pick_lift", 0.0)) if _auto_kind == "back" else 0.0
 
 
 func _stop_autopilot() -> void:
@@ -279,7 +371,9 @@ func _stop_autopilot() -> void:
 		return
 	autopilot = false
 	preview_tension = -1.0
-	if not auto and family != &"warded":
+	if _lesson():
+		held_tension = _lesson_f("tension", 0.35) if not auto else -1.0
+	elif not auto and family != &"warded":
 		held_tension = 0.35  # control returns in the post-step state: the tension stays on
 
 
@@ -293,6 +387,8 @@ func drive(input: Dictionary, vm: Dictionary, delta: float) -> Dictionary:
 		return input
 	var out := input.duplicate()
 	var els: Array = vm.get("elements", [])
+	if _auto_kind != "":
+		return _drive_lesson(out, vm, delta)
 	if family == &"warded":
 		if control != null:
 			control.h = _warded_target_h()
@@ -337,3 +433,61 @@ func _save_history() -> void:
 	if h.size() > 400:
 		h = h.slice(h.size() - 400)
 	Save.set_value("tutorial/hint_history", h)
+
+
+## H4 of a lesson: the master hand does the step's gesture once, in lockcore's input frame (after the
+## family's thumb mapping), at lesson speed; then control returns in the post-step state.
+func _drive_lesson(out: Dictionary, vm: Dictionary, delta: float) -> Dictionary:
+	var els: Array = vm.get("elements", [])
+	var n := maxi(els.size(), 1)
+	var t := _lesson_f("tension", 0.35)
+	var t_in := t if not auto else float(out.get("tension", t))
+	var i := clampi(_auto_target, 0, n - 1)
+	var st := String(els[i].get("state", "")) if i < els.size() else ""
+	match _auto_kind:
+		"tension":
+			out["tension"] = minf(t, t * _auto_s / (TENSION_S * t / 0.3))
+			if _auto_s >= TENSION_S * t / 0.3 + 0.6:
+				_stop_autopilot()
+		"ease":
+			var tr: Dictionary = coach.lesson.get("trap", {})
+			out["tension"] = float(tr.get("ease_level", _lesson_f("ease_level", 0.15)))
+			if bool(tr.get("keep_lift", false)):
+				_auto_lift = minf(_auto_lift + _lesson_f("lift_speed", LIFT_SPEED) * delta, 1.2)
+				out["pick_depth"] = (i + 0.5) / n
+				out["pick_lift"] = maxf(float(out.get("pick_lift", 0.0)), _auto_lift)
+			if _auto_s >= 1.2:
+				_stop_autopilot()
+		"back":
+			out["tension"] = t_in
+			out["pick_depth"] = (i + 0.5) / n
+			if String(coach.lesson.get("right", "lift")) == "lift":
+				_auto_lift = maxf(_auto_lift - 0.2 * delta, 0.0)
+				out["pick_lift"] = _auto_lift
+			else:
+				out["pick_lift"] = -0.15  # a small turn back
+			if _auto_s >= 0.6:
+				_stop_autopilot()
+		"turn":
+			out["tension"] = t_in
+			out["pick_lift"] = 0.25  # about one turn of the dial in 5 s
+			if _auto_s >= 1.0 / (0.25 * 0.8):
+				_stop_autopilot()
+		"roll":
+			out["tension"] = t_in
+			out["pick_depth"] = (i + 0.5) / n
+			if i < els.size():
+				var e: Dictionary = els[i]
+				var g := fposmod((float(e.get("window_lo", 0.0)) + float(e.get("window_hi", 0.0))) * 0.5, 1.0)
+				var off := fposmod(g - float(e.get("position", 0.0)) + 0.5, 1.0) - 0.5
+				out["pick_lift"] = signf(off) * clampf(absf(off) * 3.0, 0.12, 0.3)
+			if st == "set":
+				_stop_autopilot()
+		_:  # lift
+			_auto_lift += _lesson_f("lift_speed", LIFT_SPEED) * 2.0 * delta
+			out["tension"] = t_in
+			out["pick_depth"] = (i + 0.5) / n
+			out["pick_lift"] = _auto_lift
+			if st in ["set", "overset", "false_set"] or _auto_lift > 1.2:
+				_stop_autopilot()
+	return out

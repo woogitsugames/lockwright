@@ -1,0 +1,55 @@
+{
+  "schema": "lockwright.lesson/1",
+  "family": "time_lock",
+  "spec": "contrib/gpt/T42/LESSONS.md",
+  "note": "A repair, not an opening: left winds the spring inside the band, right seats the wheels in train order; overwinding breaks the beat.",
+  "right": "lift",
+  "tension": 0.33,
+  "material": "brass",
+  "lift_speed": 0.2,
+  "steps": [
+    {
+      "id": "hold",
+      "text": "tutorial.time_lock.step1",
+      "text_auto": "tutorial.time_lock.step1_auto",
+      "thumb": "left",
+      "until": {
+        "tension_s": 0.5
+      },
+      "until_auto": {
+        "right_down": true
+      }
+    },
+    {
+      "id": "move",
+      "text": "tutorial.time_lock.step2",
+      "thumb": "right",
+      "until": {
+        "moved_s": 0.4
+      }
+    },
+    {
+      "id": "feel",
+      "text": "tutorial.time_lock.step3",
+      "thumb": "right",
+      "until": {
+        "events": [
+          "set"
+        ]
+      }
+    }
+  ],
+  "trap": {
+    "id": "overwound",
+    "text": "tutorial.time_lock.step4",
+    "states": [
+      "overset"
+    ],
+    "stress_over": 0.05,
+    "hold_s": 0.3,
+    "after": 1,
+    "ghost": "ease",
+    "ease_level": 0.28
+  },
+  "done": "tutorial.time_lock.step5"
+}

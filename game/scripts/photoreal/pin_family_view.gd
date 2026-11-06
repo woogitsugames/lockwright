@@ -163,6 +163,8 @@ func set_hint(s: String) -> void:
 
 
 func _chalk_line(elements: Array, coach_line: String) -> String:
+	if coach != null and coach.has_lesson() and not coach.lesson_quiet:
+		return coach_line  # T42 lesson: its own line (none in the free step)
 	if coach_line != "" or hint == "" or _opened:
 		return coach_line
 	for e in elements:

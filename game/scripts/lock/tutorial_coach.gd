@@ -193,3 +193,253 @@ func update(vm: Dictionary, input: Dictionary, events: Array, left_down: bool, r
 			_lost_s = 0.0
 			_bound_s = 0.0
 			_go(Step.TENSION)
+
+
+# ------------------------------------------------------------------ T42 first lessons (data-driven)
+## ONBOARDING §8/§10, contrib/gpt/T42/LESSONS.md: the first job of each v0.6 family runs a guided
+## lesson. The steps are data (res://data/lessons/<family>.json, schema "lockwright.lesson/1"), so one
+## coach serves every family; nothing here is family code. A lesson is:
+##   steps   guided steps in order, each {id, text, text_auto?, thumb (left|right|""), until, until_auto?};
+##           a step ends on its `until` condition (a logic event or a held input, never a timer):
+##             tension_s: s   tension >= TENSION_MIN held this long (two thumbs)
+##             right_down     the right thumb works (touch, or a moving pick_lift: the master hand)
+##             moved_s: s     the right thumb moves the element (|pick_lift| > MOVE_MIN) this long
+##             events: [..]   one of these lockcore events (kind) happened
+##           an event that ends a later step skips ahead to it (players do not always go in order),
+##           unless that step says "skip": false
+##   (free)  after the last guided step: no line, chalk marks only, until the lock opens
+##   done    the closing line, shown from `open` on
+##   trap    the family's first trap {id, text, states, events, stress_over, hold_s,
+##           min_s, after}: interrupts any step from `after` on while its condition holds (and min_s
+##           longer, so the line can be read), then the coach returns to the step it left
+## Two thumbs: letting go of the left thumb (T < LOST_T for LOST_S) brings the first step back.
+## The ghost / master hand of each step is described in the same file (TutorialHints reads it).
+
+const LESSON_DIR := "res://data/lessons/"
+const LESSON_SCHEMA := "lockwright.lesson/1"
+const TENSION_MIN := 0.12
+const MOVE_MIN := 0.04
+const LOST_T := 0.05
+const TRAP_HOLD_S := 0.25
+const TRAP_MIN_S := 2.0
+## Jobs of a family after its lesson that still get reduced chalk and the hint ladder ("fades").
+const FADE_JOBS := 2
+
+var lesson := {}
+## The coach fades (later jobs of the family): the steps still run for the hint ladder and the
+## ghost, but no line is written and the open is not held for the closing line.
+var lesson_quiet := false
+var lesson_idx := 0               # 0..n-1 guided steps, n = free, n + 1 = done
+var lesson_trap := false          # the trap line is up
+var lesson_history: Array[StringName] = []   # step ids in the order they were shown (GUT)
+var _l_hold := 0.0
+var _l_move := 0.0
+var _l_trap_s := 0.0
+var _l_trap_left := 0.0
+
+
+static func lesson_path(fam: StringName) -> String:
+	return LESSON_DIR + String(fam) + ".json"
+
+
+static func has_lesson_for(fam: StringName) -> bool:
+	return FileAccess.file_exists(lesson_path(fam))
+
+
+## The lesson of a family ({} when it has none or the file is not a lesson).
+static func load_lesson(fam: StringName) -> Dictionary:
+	if not has_lesson_for(fam):
+		return {}
+	var d: Variant = JSON.parse_string(FileAccess.get_file_as_string(lesson_path(fam)))
+	if typeof(d) != TYPE_DICTIONARY or d.get("schema", "") != LESSON_SCHEMA or (d.get("steps", []) as Array).is_empty():
+		push_warning("lesson %s: not a %s file" % [fam, LESSON_SCHEMA])
+		return {}
+	return d
+
+
+## Save: lessons/<family>/done (the lesson ran to the open lock) and lessons/<family>/after (jobs
+## of the family opened since, for the fading chalk).
+static func lesson_done(fam: StringName) -> bool:
+	return bool(Save.get_value("lessons/%s/done" % fam, false))
+
+
+static func mark_lesson_done(fam: StringName) -> void:
+	Save.set_value("lessons/%s/done" % fam, true)
+
+
+static func jobs_after_lesson(fam: StringName) -> int:
+	return int(Save.get_value("lessons/%s/after" % fam, 0))
+
+
+static func count_job_after_lesson(fam: StringName) -> void:
+	Save.set_value("lessons/%s/after" % fam, jobs_after_lesson(fam) + 1)
+
+
+## Make this coach run a lesson (guided; quiet = the faded coach of the later jobs).
+func set_lesson(p_lesson: Dictionary, quiet: bool = false) -> void:
+	lesson = p_lesson
+	lesson_quiet = quiet
+	guided = not quiet
+	step = Step.NONE
+	history.clear()
+	lesson_idx = 0
+	lesson_trap = false
+	lesson_history.clear()
+	_l_hold = 0.0
+	_l_move = 0.0
+	lesson_history.append(lesson_step_id())
+
+
+func has_lesson() -> bool:
+	return not lesson.is_empty()
+
+
+func _lesson_steps() -> Array:
+	return lesson.get("steps", [])
+
+
+func lesson_step_count() -> int:
+	return _lesson_steps().size()
+
+
+## Current step: "trap" while the trap line is up, "free" after the guided steps, "done" once open.
+func lesson_step_id() -> StringName:
+	if lesson_trap:
+		return StringName(lesson.get("trap", {}).get("id", "trap"))
+	var n := lesson_step_count()
+	if lesson_idx < n:
+		return StringName(_lesson_steps()[lesson_idx].get("id", "step%d" % lesson_idx))
+	return &"free" if lesson_idx == n else &"done"
+
+
+## The current step's dictionary ({} for free / done; the trap's own dictionary while it is up).
+func lesson_step() -> Dictionary:
+	if lesson_trap:
+		return lesson.get("trap", {})
+	if lesson_idx < lesson_step_count():
+		return _lesson_steps()[lesson_idx]
+	return {}
+
+
+## Which thumb the chalk cue and the ghost point at: "left", "right" or "" (free / done).
+## Auto tension (D-52): a left step is the game's, so the cue moves to the right thumb.
+func lesson_thumb() -> String:
+	if lesson_idx > lesson_step_count():
+		return ""
+	var th := String(lesson_step().get("thumb", ""))
+	if th == "left" and auto_tension and not lesson_trap:
+		return "right"
+	return th
+
+
+func _lesson_text_key() -> StringName:
+	if lesson_quiet:
+		return &""
+	if lesson_idx > lesson_step_count():
+		return StringName(lesson.get("done", ""))
+	var st := lesson_step()
+	var key := String(st.get("text", ""))
+	if auto_tension and st.has("text_auto"):
+		key = String(st["text_auto"])
+	return StringName(key)
+
+
+func _lesson_go(i: int) -> void:
+	if i == lesson_idx:
+		return
+	lesson_idx = i
+	_l_hold = 0.0
+	_l_move = 0.0
+	if not lesson_trap:
+		lesson_history.append(lesson_step_id())
+
+
+func jump_lesson(i: int) -> void:
+	lesson_trap = false
+	_lesson_go(clampi(i, 0, lesson_step_count() + 1))
+
+
+static func _ev_kinds(events: Array) -> Array:
+	return events.map(func(e: Dictionary) -> String: return String(e.get("kind", "")))
+
+
+func _until_met(cond: Dictionary, input: Dictionary, kinds: Array, right_down: bool, delta: float) -> bool:
+	var lift := absf(float(input.get("pick_lift", 0.0)))
+	if cond.has("tension_s"):
+		_l_hold = _l_hold + delta if float(input.get("tension", 0.0)) >= TENSION_MIN else 0.0
+		if _l_hold >= float(cond["tension_s"]):
+			return true
+	if cond.get("right_down", false) and (right_down or lift > MOVE_MIN):
+		return true
+	if cond.has("moved_s"):
+		_l_move = _l_move + delta if lift > MOVE_MIN else maxf(_l_move - delta, 0.0)
+		if _l_move >= float(cond["moved_s"]):
+			return true
+	for k in cond.get("events", []):
+		if kinds.has(String(k)):
+			return true
+	return false
+
+
+func _trap_condition(vm: Dictionary, kinds: Array) -> bool:
+	var tr: Dictionary = lesson.get("trap", {})
+	if tr.is_empty():
+		return false
+	var els: Array = vm.get("elements", [])
+	var hit := false
+	for e in els:
+		if (tr.get("states", []) as Array).has(String(e.get("state", ""))):
+			hit = true
+	for k in tr.get("events", []):
+		hit = hit or kinds.has(String(k))
+	if tr.has("stress_over") and float(vm.get("stress", 0.0)) > float(tr["stress_over"]):
+		hit = true
+	return hit
+
+
+func _update_lesson(vm: Dictionary, input: Dictionary, events: Array, left_down: bool, right_down: bool, delta: float) -> void:
+	var n := lesson_step_count()
+	var kinds := _ev_kinds(events)
+	if bool(vm.get("open", false)):
+		lesson_trap = false
+		_lesson_go(n + 1)
+		return
+	if lesson_idx > n:
+		return
+	# the family's trap interrupts from its `after` step on, and stays up min_s after it clears
+	var tr: Dictionary = lesson.get("trap", {})
+	if not tr.is_empty() and lesson_idx >= int(tr.get("after", 1)):
+		var cond := _trap_condition(vm, kinds)
+		_l_trap_s = _l_trap_s + delta if cond else 0.0
+		var instant := false
+		for k in tr.get("events", []):
+			instant = instant or kinds.has(String(k))
+		if cond and (instant or _l_trap_s >= float(tr.get("hold_s", TRAP_HOLD_S))):
+			_l_trap_left = float(tr.get("min_s", TRAP_MIN_S))
+			if not lesson_trap:
+				lesson_trap = true
+				lesson_history.append(lesson_step_id())
+		elif lesson_trap:
+			_l_trap_left -= delta
+			if _l_trap_left <= 0.0:
+				lesson_trap = false
+				lesson_history.append(lesson_step_id())
+	# an event that ends a later step skips ahead (e.g. a set before the "move" step ended)
+	for j in range(lesson_idx + 1, n):
+		if not _lesson_steps()[j].get("skip", true):
+			continue  # this step waits for its own event (dial: the next pickup)
+		for k in _lesson_steps()[j].get("until", {}).get("events", []):
+			if kinds.has(String(k)):
+				_lesson_go(j + 1)
+	if lesson_idx < n:
+		var st: Dictionary = _lesson_steps()[lesson_idx]
+		var cond: Dictionary = st.get("until_auto", st.get("until", {})) if auto_tension else st.get("until", {})
+		if _until_met(cond, input, kinds, right_down, delta):
+			_lesson_go(lesson_idx + 1)
+	# two thumbs: letting go of the left thumb brings the first (left) step back
+	if not auto_tension and lesson_idx > 0 and String(_lesson_steps()[0].get("thumb", "")) == "left":
+		_lost_s = _lost_s + delta if (float(input.get("tension", 0.0)) < LOST_T and not left_down) else 0.0
+		if _lost_s >= LOST_S:
+			_lost_s = 0.0
+			lesson_trap = false
+			_lesson_go(0)
