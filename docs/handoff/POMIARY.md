@@ -121,7 +121,7 @@ Mali-G52/G57 lub PowerVR, ekran 720p–1080p, haptyka A0/A1); „średni” = Sa
 | VRAM / tekstury | ≤ 150 MB | ≤ 250 MB | plan B: 110 MB przy 1320×2868 (LW_PERF) | licznik `vram_mb` w `planb-perf-apk` |
 | Rozmiar APK (pobranie z Google Play, arm64) | **≤ 80 MB** (ostrzeżenie), twardo ≤ 150 MB | — | tanie telefony mają mało miejsca; Play: limit modułu bazowego AAB 200 MB (sprawdzić aktualny) | artefakt `game-android`, `check_budget.py --apk` |
 | Rozmiar IPA (pobranie z App Store) | — | **≤ 100 MB** pobrania | powyżej 200 MB iOS pyta o pobranie przez sieć komórkową | App Store Connect → „App Store File Sizes” |
-| Zasoby gry (pck z presetem Android) | ≤ 45 MB (ostrzeżenie), ≤ 70 MB (błąd CI) | — | dziś 26,5 MB; większość APK to zasoby + silnik (ok. 15–20 MB skompresowany) | CI: `qa/budget/check_budget.py` |
+| Zasoby gry (pck z presetem Android) | ≤ 120 MB (ostrzeżenie), ≤ 150 MB (błąd CI, D-64) | — | dziś 26,5 MB; większość APK to zasoby + silnik (ok. 15–20 MB skompresowany) | CI: `qa/budget/check_budget.py` |
 | Czas startu do menu (zimny start) | ≤ 4 s (bez 3-sekundowej noty przy pierwszym starcie) | ≤ 2 s | wytyczne Androida: zimny start > 5 s to „wolny” (Android vitals) | `adb shell am start -W` (TotalTime) / Xcode Instruments „App Launch” |
 | Czas startu headless (CI, proxy) | ≤ 1,0 s ostrzeżenie, ≤ 2,0 s błąd | — | dziś 0,36 s (mediana z 5, kontener CI) | CI: `check_budget.py` |
 | Wejście do ekranu zamka headless (CI, proxy) | ≤ 1,2 s ostrzeżenie, ≤ 2,5 s błąd | — | dziś 0,55 s | CI: `check_budget.py` |

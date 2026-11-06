@@ -81,7 +81,7 @@ func _ready() -> void:
 static func load_layout() -> Dictionary:
 	var f := FileAccess.open(LAYOUT_PATH, FileAccess.READ)
 	if f == null:
-		push_error("main_menu: %s missing" % LAYOUT_PATH)
+		push_warning("main_menu: %s missing (fallback buttons)" % LAYOUT_PATH)
 		return {}
 	var d: Variant = JSON.parse_string(f.get_as_text())
 	return d if d is Dictionary else {}
@@ -158,13 +158,17 @@ func _relayout() -> void:
 		return
 	orient = pick_orient(vp)
 	var od := _orient_data()
-	if od.is_empty():
-		return
-	var tex := _tex(texture_path())
-	if tex == null:  # language render missing: PL
-		lang = FALLBACK_LANG
+	var tex: Texture2D = null
+	if not od.is_empty():
 		tex = _tex(texture_path())
+		if tex == null:  # language render missing: PL
+			lang = FALLBACK_LANG
+			tex = _tex(texture_path())
+	if tex == null:  # layout or renders missing (broken export): plain labelled buttons, still usable
+		_fallback_layout(vp)
+		return
 	backdrop.texture = tex
+	fallback = false
 	var img := Vector2(od["size"][0], od["size"][1])
 	var safe := SafeArea.shrink(self, Rect2(Vector2.ZERO, vp)).grow(-FOCUS_PAD)
 	image_rect = fit_rect(img, rect_of(od["focus_rect"]), vp, safe)
@@ -182,6 +186,34 @@ func _relayout() -> void:
 	# preload this orientation's pressed sprites (small) so a tap never waits on a load
 	for z in ZONES:
 		_tex(texture_path(z[1]))
+	board.queue_redraw()
+	_layout_about(vp)
+
+
+## Safety net: a column of plain text buttons on a dark background when the render is missing.
+var fallback := false
+
+
+func _fallback_layout(vp: Vector2) -> void:
+	fallback = true
+	push_warning("main_menu: menu render missing, plain buttons")
+	backdrop.texture = null
+	image_rect = Rect2()
+	var safe := SafeArea.shrink(self, Rect2(Vector2.ZERO, vp))
+	var w := minf(360.0, safe.size.x - 32.0)
+	var h := 56.0
+	var gap := 12.0
+	var y := safe.position.y + (safe.size.y - ZONES.size() * (h + gap)) * 0.5
+	for z in ZONES:
+		var b := zones.get_node(String(z[0])) as Button
+		b.text = I18n.t(z[2])
+		b.flat = false
+		for st in ["normal", "hover", "pressed", "disabled", "hover_pressed"]:
+			b.remove_theme_stylebox_override(st)
+		b.position = Vector2(safe.position.x + (safe.size.x - w) * 0.5, y)
+		b.size = Vector2(w, h)
+		b.visible = true
+		y += h + gap
 	board.queue_redraw()
 	_layout_about(vp)
 
@@ -218,6 +250,7 @@ func _wire_focus_order() -> void:
 func _draw_board() -> void:
 	var tex := backdrop.texture
 	if tex == null:
+		board.draw_rect(Rect2(Vector2.ZERO, board.size), Color(0.07, 0.06, 0.05))
 		return
 	board.draw_texture_rect(tex, image_rect, false)
 	if pressed_texture != null:

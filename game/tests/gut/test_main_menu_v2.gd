@@ -72,8 +72,8 @@ func test_zones_map_onto_the_rendered_bands() -> void:
 	var script: GDScript = load("res://scripts/ui/main_menu.gd")
 	var layout: Dictionary = script.load_layout()
 	for win in WINDOWS:
-		var size := dp_size(win)
-		var menu := await _open(size)
+		var menu := await _open(dp_size(win))
+		var size: Vector2 = menu.get_viewport_rect().size  # SubViewport sizes are whole dp
 		var tag := "%dx%d px (%.0fx%.0f dp)" % [win.x, win.y, size.x, size.y]
 		var o := "landscape" if size.x > size.y else "portrait"
 		assert_eq(menu.orient, o, tag + ": orientation asset")

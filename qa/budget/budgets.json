@@ -3,14 +3,14 @@
   "source": "docs/handoff/POMIARY.md §8 (session C, stage 3, task 9)",
   "ci": {
     "pck_android_mb": {
-      "warn": 45,
-      "fail": 58,
-      "note": "resources exported with the Android preset (bulk of the AAB). N-30 bis: AAB = pck + ~11 MB (engine, plugins), so pck fail 58 keeps the AAB under the 70 MB budget; measured 33.1 MB on 2026-11-05"
+      "warn": 120,
+      "fail": 150,
+      "note": "D-64 (owner): own budget raised to 150 MB (store limits: Google Play base module 200 MB). AAB ~= pck + ~11 MB. Warn at 120 MB."
     },
     "apk_mb": {
-      "warn": 100,
-      "fail": 150,
-      "note": "debug/release APK when the game-android artifact exists"
+      "warn": 170,
+      "fail": 200,
+      "note": "debug/release APK; D-64"
     },
     "startup_headless_s": {
       "warn": 1.0,

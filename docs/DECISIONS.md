@@ -238,3 +238,6 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 - Gracz jest pytany raz z podanym rozmiarem (Apple 4.2.3); jedno zwykłe GET, bez identyfikatorów i analityki — do wpisania w politykę prywatności (hosting widzi IP).
 - Android dostaje uprawnienie `INTERNET` (tylko do pobierania głosów; Data safety: brak zbieranych danych).
 - Wydania: workflow `voice-packs.yml` → GitHub Release `voice-packs-<version>`; przejście na Cloudflare przez `VOICE_PACKS_BASE_URL` dopiero na sygnał właściciela (D-51).
+
+## D-64: Budżet rozmiaru zasobów gry 150 MB
+2026-11-06 · właściciel · Próg zasobów (pck z presetem Android) w CI podniesiony z 58 MB (D-55, własny budżet) do **150 MB** (ostrzeżenie 120 MB); APK ostrzeżenie 170 MB, błąd 200 MB (limit modułu bazowego Google Play). Powód: menu, scenki przyjazdu i kolejne zamki z Blendera. Głosy w językach spoza PL/EN dalej pobierane na żądanie (D-63). `docs/handoff/POMIARY.md` §8 do aktualizacji przy najbliższej zmianie tabeli.
