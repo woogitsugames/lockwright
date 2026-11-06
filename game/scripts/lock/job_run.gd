@@ -54,8 +54,17 @@ static func family_for(job: Dictionary) -> StringName:
 	return FAMILY_MAP.get(job.get("family", ""), &"")
 
 
+## lever_detector joins as soon as its 5-lever plan-B assets are in the project
+## (docs/handoff/LOCAL-SESSION-PROMPT.md (b)); no code change needed then.
+const DETECTOR_GLB := "res://assets/photoreal_families/lever_detector/lever_detector_baked.glb"
+
+
+static func planb_ready(fam: StringName) -> bool:
+	return PHOTOREAL_READY.has(fam) or (fam == &"lever_detector" and ResourceLoader.exists(DETECTOR_GLB))
+
+
 static func is_playable(job: Dictionary) -> bool:
-	return IMPLEMENTED.has(family_for(job)) and PHOTOREAL_READY.has(family_for(job))
+	return IMPLEMENTED.has(family_for(job)) and planb_ready(family_for(job))
 
 
 static func lock_scene_path() -> String:
