@@ -22,6 +22,7 @@ extends Node
 ##   --lw-auto 1         D-52 auto tension
 ##   --lw-lesson 1|0     force the family's first lesson on (or off) whatever the save says (T42)
 ##   --lw-lesson-step N  start the lesson at step N (screenshots; steps + 1 = the closing line)
+##   --lw-lang pl        UI language for this run (screenshots)
 ##   --lw-loupe 1        open the eyepiece (N-57)
 ##   --lw-pose blender   show the five stack states of art/renders/section.png (set, false set,
 ##                       binding, overset, free) for a side-by-side check against Cycles;
@@ -76,6 +77,8 @@ func _ready() -> void:
 	Sfx.set_music_lowpass(true)  # 2-6 kHz slowed in the lock (audio/v2 README mix)
 	Sfx.duck_ambience(-6.0, 400.0)
 	_parse_args()
+	if args.has("lw-lang"):
+		I18n.apply_language(String(args["lw-lang"]))  # screenshots in a given language
 	family = StringName(args.get("lw-family", family))
 	seed = int(args.get("lw-seed", seed))
 	tier = int(args.get("lw-tier", tier))

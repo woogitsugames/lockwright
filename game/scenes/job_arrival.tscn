@@ -78,6 +78,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 autowrap_mode = 3
 
+[node name="Family" type="Label" parent="Frame/VBox/Scroll/Body/Intro/Row/Texts"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"Caption"
+autowrap_mode = 3
+
 [node name="Lines" type="VBoxContainer" parent="Frame/VBox/Scroll/Body"]
 layout_mode = 2
 theme_override_constants/separation = 10

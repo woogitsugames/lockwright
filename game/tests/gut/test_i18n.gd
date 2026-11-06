@@ -58,14 +58,16 @@ func test_compiled_translations_list_keys() -> void:
 	fresh.free()
 
 
-## T41: fr/es columns load; an empty fr/es cell falls back to en (T42 keys not translated yet).
+## T41: fr/es columns load (an empty fr/es cell would fall back to en; since the T42 keys got
+## FR/ES from session A every cell is filled, so the T42 texts are checked in FR/ES here).
 func test_fr_es_columns_and_fallback() -> void:
 	var before := TranslationServer.get_locale()
 	TranslationServer.set_locale("fr")
 	assert_eq(TranslationServer.translate("settings.language_fr"), "Français (dev)")
 	assert_eq(TranslationServer.translate("tutorial.say_master"), "Le maître montre le geste une fois. À toi.")
-	assert_eq(TranslationServer.translate("family.dial_safe.name"), "Dial safe", "empty fr -> en")
+	assert_eq(TranslationServer.translate("family.dial_safe.name"), "Coffre-fort à cadran", "T42 in FR")
 	TranslationServer.set_locale("es")
+	assert_eq(TranslationServer.translate("tutorial.combo.step1"), "Pulgar izquierdo: tira un poco del arco.", "T42 in ES")
 	assert_eq(TranslationServer.translate("job.allotment_shed.line.2"), "¿Tiene la tarjeta del huerto? ¿Y un vecino que lo confirme?")
 	TranslationServer.set_locale(before)
 

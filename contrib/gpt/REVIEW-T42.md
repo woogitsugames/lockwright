@@ -65,3 +65,45 @@ Walidator dostawy `validate_delivery.py` zaktualizowany do tych reguł (80 wiers
 ## Testy
 GUT 205/205 (nowe: klucze podpowiedzi 8 rodzin × auto, długość ≤ 56, obecność kroków i nazw),
 `tools/i18n_lint.py` 0 błędów, `data/tools/validate.py` i `loc_qa.py` OK, smoke OK.
+
+## FR/ES uzupełnione przez sesję A
+**Data:** 2026-11-06 · tłumaczy sesja A (Claude), bez zlecenia dla GPT · 86 kluczy: 77 w `strings.csv`
+(`family.*`, `lock.<rodzina>_hint[_auto]`, `tutorial.<rodzina>.step1–5` + `step1_auto`), 9 w `content.csv`
+(`showcase.{combo,dimple,magnetic}.{title,body,source}`). Po tej zmianie w obu CSV **nie ma pustej komórki FR/ES**.
+
+**Rejestr (D-67):** gracz per tu/tú („Pouce gauche : appuie…”, „Pulgar izquierdo: presiona…”, „Le jeu tient la poignée
+pour toi” / „por ti”), w stylu istniejących `tutorial.s1_*` (dwukropek po kciuku, krótkie zdania).
+
+**Słownik (zgodny z T31/T41 i z sytuacjami zleceń):**
+| Pojęcie | FR | ES | Skąd |
+|---|---|---|---|
+| pin (dimple, magnetic) | goupille | perno | `tutorial.s1_*` |
+| kołek drewniany (tylko egyptian) | cheville | pasador (de madera) | FR: `tool.pk_peg` „lève-cheville”; ES: `job.dollhouse_wooden_lock.situation` „pasadores de madera” |
+| rygiel zasuwy | pêne (en bois) | cerrojo | `showcase.egyptian_name` |
+| pokrętło / klamka sejfu | cadran / poignée | dial / manija | `lock.dial_hint` |
+| kółko szyfrowe | molette (ale `lock.combo_hint` T41: „roue”) | ruedecilla / rueda | nowe; „molette” to naturalne FR dla kółka z cyframi |
+| kabłąk | anse | arco | `tool.tl_shackle` |
+| tarcza / listwa | disque / barrette | disco / barra | `lock.disc_hint` |
+| tuleja pinu teleskopowego | douille | funda | nowe |
+| suwak | coulisseau | corredera | nowe |
+| zamek czasowy | serrure à minuterie | cerradura de tiempo | T41 (`job.museum_time_lock.*`, gablota) |
+| sprężyna / nakręcać | ressort / remonter | muelle / dar cuerda | nowe (ES „muelle” jak gablota) |
+| bramka / wcięcie | encoche / cran | muesca | nowe |
+
+Nazwy rodzin: FR „Coffre-fort à cadran”, „Serrure à molettes”, „Cylindre à alvéoles”, „Serrure à disques”,
+„Verrou en bois”, „Serrure à coulisseaux”, „Réparer une serrure à minuterie”, „Serrure à goupilles magnétiques”;
+ES „Caja fuerte con dial”, „Cerradura de ruedecillas”, „Cilindro de puntos”, „Cerradura de discos”, „Cerrojo de madera”,
+„Cerradura de correderas”, „Reparar una cerradura de tiempo”, „Cerradura de pernos magnéticos”. `time_lock` także
+w FR/ES jako naprawa, nie otwarcie.
+
+**Limity:** wszystkie `tutorial.*` i `lock.*` ≤ 56 znaków w FR i ES (dwa pierwsze szkice FR miały 57/58 →
+skrócone: `lock.dial_hint_auto`, `tutorial.dimple.step5`; ES `tutorial.combo.step4` 57 → 54).
+
+**Uwaga do treści (nie zmieniałem EN/PL/DE):** `tutorial.axial_slider.step2` i `lock.axial_slider_hint[_auto]` mówią
+„wciśnij w dół” / „press down”, a gest w grze to przeciągnięcie prawego kciuka **w górę** (kreda H3 i widmo też
+pokazują strzałkę w górę, zrzut `docs/handoff/device-tests/fixes/lessons/axial_slider_step2_press_412x915.jpg`).
+FR/ES przetłumaczyłem wiernie („enfonce”, „húndela” — wciśnij, bez kierunku). Do decyzji sesji A: albo tekst
+bez „w dół” („wciśnij suwak”), albo odwrócone mapowanie kciuka dla tej rodziny.
+
+**Sprawdzenie:** `tools/i18n_lint.py` 0 błędów (2 znane ostrzeżenia `settings.voice_pack.line`),
+`data/tools/loc_qa.py` OK, `contrib/gpt/T42/validate_delivery.py` 0/0, GUT `test_i18n.gd` (FR/ES T42 w grze).

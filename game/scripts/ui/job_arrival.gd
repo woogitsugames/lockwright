@@ -187,6 +187,7 @@ func _ready() -> void:
 	title_label.text = I18n.t(i18n.get("title", &"jobs.title"))
 	client_label.text = I18n.t(i18n.get("client", &"jobs.title"))
 	situation_label.text = I18n.t(i18n.get("situation", &"jobs.title"))
+	_show_family(job)
 	_setup_dialogue(job)
 	verify_button.text = I18n.t(&"job.verify")
 	back_button.text = "‹ " + I18n.t(&"common.back")
@@ -195,6 +196,20 @@ func _ready() -> void:
 	ScreenFrame.enter($Frame/VBox/Scroll)
 	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
 	dialogue.start()
+
+
+## T42: which lock waits behind the door, one small line under the situation (family.<id>.name and
+## .short). Families without these texts (the older ones) show nothing.
+func _show_family(job: Dictionary) -> void:
+	var lbl: Label = get_node_or_null(T + "Intro/Row/Texts/Family")
+	if lbl == null:
+		return
+	var fam := String(JobRun.family_for(job))
+	var name_key := StringName("family.%s.name" % fam)
+	var short_key := StringName("family.%s.short" % fam)
+	lbl.visible = fam != "" and I18n.has_key(name_key) and I18n.has_key(short_key)
+	if lbl.visible:
+		lbl.text = "%s — %s" % [I18n.t(name_key), I18n.t(short_key)]
 
 
 # D-57: dialogue lines from CLIENTS.md, spoken line by line with subtitles (DialoguePlayer).

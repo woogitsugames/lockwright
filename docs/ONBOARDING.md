@@ -300,5 +300,6 @@ Analiza: mediana i odsetek < 90 s (A1), odsetek < 180 s (A2) z przedziałem ufno
 
 ## 13. Dane i i18n
 
+- Pierwsze lekcje 8 rodzin v0.6 (T42, D-68) są już danymi: `game/data/lessons/<family>.json` (schemat `lockwright.lesson/1`, opis w nagłówku sekcji lekcji `game/scripts/lock/tutorial_coach.gd`).
 - Skrypty samouczka jako dane: `game/data/tutorial/<family>.s1.json` itd. (propozycja): lista kroków z warunkiem przejścia (`event`, `element`, czas trzymania), diagnozami błędów (warunek na wejściu i stanie, np. `T > t_stick && press > 0`) i przypisanymi wskazówkami H1–H4 (id animacji widma, id znaku kredy, id dźwięku). Logika zamka jest w lockcore, a skrypt samouczka tylko czyta zdarzenia i `ViewModel`.
 - Klucze i18n (PL + EN od pierwszego dnia, D-19): `onboarding.lang.pl`, `onboarding.lang.en`, `onboarding.haptics.question`, `onboarding.haptics.two`, `onboarding.haptics.one`, `onboarding.haptics.none`, `onboarding.haptics.off_note`, `onboarding.notice.line1`, `onboarding.notice.line2`, `onboarding.receipt.self_note`, `tutorial.voice.<step>` (opisy dla czytników ekranu). Treści w §3.
