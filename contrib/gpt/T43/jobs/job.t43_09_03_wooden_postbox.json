@@ -1,0 +1,31 @@
+{
+  "id": "job.t43_09_03_wooden_postbox",
+  "chapter": 9,
+  "district": "Śródmieście",
+  "family": "egyptian",
+  "tier": 2,
+  "verification": "Faktura muzeum (2), Zuzanna potwierdza numer eksponatu i zlecenie kuratorki (2). Próg 2. Wycena zaakceptowana.",
+  "reward_coins": 60,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_09_03_wooden_postbox.title",
+    "client": "job.t43_09_03_wooden_postbox.client",
+    "situation": "job.t43_09_03_wooden_postbox.situation"
+  },
+  "lines": [
+    "zuzanna",
+    "locksmith",
+    "zuzanna",
+    "locksmith"
+  ],
+  "after": [
+    "zuzanna"
+  ],
+  "cards": [
+    "invoice",
+    "witness"
+  ],
+  "threshold": 2,
+  "place": "workshop",
+  "time": "day"
+}

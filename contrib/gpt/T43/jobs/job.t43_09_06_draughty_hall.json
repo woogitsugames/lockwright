@@ -1,0 +1,31 @@
+{
+  "id": "job.t43_09_06_draughty_hall",
+  "chapter": 9,
+  "district": "Osiedle Słoneczne",
+  "family": "dimple",
+  "tier": 2,
+  "verification": "Roman jako zarządca (3), uchwała o serwisie wspólnego wejścia (1). Próg danych 3. Zgoda na cenę przed pracą.",
+  "reward_coins": 90,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_09_06_draughty_hall.title",
+    "client": "job.t43_09_06_draughty_hall.client",
+    "situation": "job.t43_09_06_draughty_hall.situation"
+  },
+  "lines": [
+    "roman",
+    "locksmith",
+    "roman",
+    "locksmith"
+  ],
+  "after": [
+    "roman"
+  ],
+  "cards": [
+    "manager",
+    "resolution"
+  ],
+  "threshold": 3,
+  "place": "gate",
+  "time": "rainy"
+}

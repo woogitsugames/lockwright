@@ -1,0 +1,31 @@
+{
+  "id": "job.t43_11_05_rehearsal_chest",
+  "chapter": 11,
+  "district": "Nocny Rynek",
+  "family": "lever",
+  "tier": 4,
+  "verification": "Pismo organizatora (2), opiekun sali potwierdza własność skrzyni i dostęp Igi (3). Próg 2. Wycena zaakceptowana.",
+  "reward_coins": 185,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_11_05_rehearsal_chest.title",
+    "client": "job.t43_11_05_rehearsal_chest.client",
+    "situation": "job.t43_11_05_rehearsal_chest.situation"
+  },
+  "lines": [
+    "iga",
+    "hall_manager",
+    "locksmith",
+    "iga"
+  ],
+  "after": [
+    "edek"
+  ],
+  "cards": [
+    "institution",
+    "manager"
+  ],
+  "threshold": 2,
+  "place": "locker",
+  "time": "evening"
+}

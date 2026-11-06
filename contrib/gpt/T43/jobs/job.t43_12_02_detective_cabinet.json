@@ -1,0 +1,31 @@
+{
+  "id": "job.t43_12_02_detective_cabinet",
+  "chapter": 12,
+  "district": "Port",
+  "family": "lever_detector",
+  "tier": 5,
+  "verification": "Pismo dyrekcji muzeum (2), Rygiel jako opiekunka eksponatu (3). Próg 2. Skrzynia demonstracyjna bez cudzego depozytu. Wycena zaakceptowana.",
+  "reward_coins": 190,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_12_02_detective_cabinet.title",
+    "client": "job.t43_12_02_detective_cabinet.client",
+    "situation": "job.t43_12_02_detective_cabinet.situation"
+  },
+  "lines": [
+    "rygiel",
+    "locksmith",
+    "rygiel",
+    "zuzanna"
+  ],
+  "after": [
+    "zuzanna"
+  ],
+  "cards": [
+    "institution",
+    "manager"
+  ],
+  "threshold": 2,
+  "place": "locker",
+  "time": "day"
+}

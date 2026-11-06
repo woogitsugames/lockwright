@@ -1,0 +1,242 @@
+[
+  {
+    "id": "job.t43_09_01_winter_keys",
+    "kind": "open",
+    "chapter_order": 1,
+    "completion": "solve_lock",
+    "grant_coins": 40,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_09_02_blanket_cupboard",
+    "kind": "open",
+    "chapter_order": 2,
+    "completion": "solve_lock",
+    "grant_coins": 50,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_09_03_wooden_postbox",
+    "kind": "open",
+    "chapter_order": 3,
+    "completion": "solve_lock",
+    "grant_coins": 60,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_09_04_choir_case",
+    "kind": "open",
+    "chapter_order": 4,
+    "completion": "solve_lock",
+    "grant_coins": 70,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_09_05_receipt_safe",
+    "kind": "open",
+    "chapter_order": 5,
+    "completion": "solve_lock",
+    "grant_coins": 80,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_09_06_draughty_hall",
+    "kind": "open",
+    "chapter_order": 6,
+    "completion": "solve_lock",
+    "grant_coins": 90,
+    "reputation": 0
+  },
+  {
+    "id": "job.refuse_t43_09_empty_flat",
+    "kind": "refusal",
+    "chapter_order": 7,
+    "completion": "refuse",
+    "grant_coins": 0,
+    "reputation": 5
+  },
+  {
+    "id": "job.t43_09_08_spare_key_hook",
+    "kind": "no_open",
+    "chapter_order": 8,
+    "completion": "resolve_without_lock",
+    "grant_coins": 40,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_10_01_renovator_bureau",
+    "kind": "open",
+    "chapter_order": 1,
+    "completion": "solve_lock",
+    "grant_coins": 100,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_10_02_scaffold_store",
+    "kind": "open",
+    "chapter_order": 2,
+    "completion": "solve_lock",
+    "grant_coins": 110,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_10_03_exhibit_clock",
+    "kind": "clock_repair",
+    "chapter_order": 3,
+    "completion": "repair_clock",
+    "grant_coins": 120,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_10_04_design_cabinet",
+    "kind": "open",
+    "chapter_order": 4,
+    "completion": "solve_lock",
+    "grant_coins": 130,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_10_05_porters_drawer",
+    "kind": "open",
+    "chapter_order": 5,
+    "completion": "solve_lock",
+    "grant_coins": 140,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_10_06_shared_room_entry",
+    "kind": "open",
+    "chapter_order": 6,
+    "completion": "solve_lock",
+    "grant_coins": 150,
+    "reputation": 0
+  },
+  {
+    "id": "job.refuse_t43_10_early_clearance",
+    "kind": "refusal",
+    "chapter_order": 7,
+    "completion": "refuse",
+    "grant_coins": 0,
+    "reputation": 5
+  },
+  {
+    "id": "job.t43_11_01_wooden_market",
+    "kind": "open",
+    "chapter_order": 1,
+    "completion": "solve_lock",
+    "grant_coins": 150,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_11_02_bicycle_stand",
+    "kind": "open",
+    "chapter_order": 2,
+    "completion": "solve_lock",
+    "grant_coins": 160,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_11_03_tool_exchange",
+    "kind": "open",
+    "chapter_order": 3,
+    "completion": "solve_lock",
+    "grant_coins": 170,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_11_04_sailors_stall",
+    "kind": "open",
+    "chapter_order": 4,
+    "completion": "solve_lock",
+    "grant_coins": 180,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_11_05_rehearsal_chest",
+    "kind": "open",
+    "chapter_order": 5,
+    "completion": "solve_lock",
+    "grant_coins": 185,
+    "reputation": 0
+  },
+  {
+    "id": "job.refuse_t43_11_other_stall",
+    "kind": "refusal",
+    "chapter_order": 6,
+    "completion": "refuse",
+    "grant_coins": 0,
+    "reputation": 5
+  },
+  {
+    "id": "job.t43_11_07_wrong_delivery",
+    "kind": "no_open",
+    "chapter_order": 7,
+    "completion": "resolve_without_lock",
+    "grant_coins": 40,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_12_01_letters_archive",
+    "kind": "open",
+    "chapter_order": 1,
+    "completion": "solve_lock",
+    "grant_coins": 185,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_12_02_detective_cabinet",
+    "kind": "open",
+    "chapter_order": 2,
+    "completion": "solve_lock",
+    "grant_coins": 190,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_12_03_community_store",
+    "kind": "open",
+    "chapter_order": 3,
+    "completion": "solve_lock",
+    "grant_coins": 195,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_12_04_school_box",
+    "kind": "open",
+    "chapter_order": 4,
+    "completion": "solve_lock",
+    "grant_coins": 198,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_12_05_tea_fund_case",
+    "kind": "open",
+    "chapter_order": 5,
+    "completion": "solve_lock",
+    "grant_coins": 200,
+    "reputation": 0
+  },
+  {
+    "id": "job.refuse_t43_12_surprise_key",
+    "kind": "refusal",
+    "chapter_order": 6,
+    "completion": "refuse",
+    "grant_coins": 0,
+    "reputation": 5
+  },
+  {
+    "id": "job.t43_12_07_clock_back_home",
+    "kind": "clock_repair",
+    "chapter_order": 7,
+    "completion": "repair_clock",
+    "grant_coins": 200,
+    "reputation": 0
+  },
+  {
+    "id": "job.t43_12_08_henryks_bench",
+    "kind": "open",
+    "chapter_order": 8,
+    "completion": "solve_lock",
+    "grant_coins": 200,
+    "reputation": 0
+  }
+]

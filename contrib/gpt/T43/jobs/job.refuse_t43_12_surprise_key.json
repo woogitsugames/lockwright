@@ -1,0 +1,31 @@
+{
+  "id": "job.refuse_t43_12_surprise_key",
+  "chapter": 12,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 6,
+  "verification": "Darek potwierdza tylko tożsamość (1), obecna lokatorka nie udzieliła zgody. Flagi: flag.ex_partner, flag.no_witness. Odmowa, +5 reputacji, bez monet.",
+  "reward_coins": 0,
+  "tone": "spokojna odmowa, bez oskarżeń",
+  "i18n": {
+    "title": "job.refuse_t43_12_surprise_key.title",
+    "client": "job.refuse_t43_12_surprise_key.client",
+    "situation": "job.refuse_t43_12_surprise_key.situation"
+  },
+  "lines": [
+    "darek",
+    "locksmith",
+    "darek",
+    "locksmith"
+  ],
+  "after": [
+    "lena",
+    "stefan"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2,
+  "place": "apartment",
+  "time": "evening"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "job.t43_09_05_receipt_safe",
+  "chapter": 9,
+  "district": "Osiedle Słoneczne",
+  "family": "dial_safe",
+  "tier": 2,
+  "verification": "Najem kiosku (2) i faktura sejfu na Stefana (2). Próg danych 3. Ustalono cenę przed pracą.",
+  "reward_coins": 80,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_09_05_receipt_safe.title",
+    "client": "job.t43_09_05_receipt_safe.client",
+    "situation": "job.t43_09_05_receipt_safe.situation"
+  },
+  "lines": [
+    "stefan",
+    "locksmith",
+    "stefan",
+    "locksmith"
+  ],
+  "after": [
+    "stefan"
+  ],
+  "cards": [
+    "lease",
+    "invoice"
+  ],
+  "threshold": 3,
+  "place": "kiosk",
+  "time": "day"
+}

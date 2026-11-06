@@ -1,0 +1,31 @@
+{
+  "id": "job.refuse_t43_09_empty_flat",
+  "chapter": 9,
+  "district": "Osiedle Słoneczne",
+  "family": "pin_tumbler",
+  "tier": 3,
+  "verification": "Dowód (1), brak zgody aktualnej lokatorki. Flagi: flag.absent_owner, flag.no_witness. Odmowa, +5 reputacji, bez monet.",
+  "reward_coins": 0,
+  "tone": "spokojna odmowa, bez oskarżeń",
+  "i18n": {
+    "title": "job.refuse_t43_09_empty_flat.title",
+    "client": "job.refuse_t43_09_empty_flat.client",
+    "situation": "job.refuse_t43_09_empty_flat.situation"
+  },
+  "lines": [
+    "oskar",
+    "locksmith",
+    "oskar",
+    "locksmith"
+  ],
+  "after": [
+    "lena",
+    "stefan"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2,
+  "place": "apartment",
+  "time": "evening"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "job.t43_10_02_scaffold_store",
+  "chapter": 10,
+  "district": "Śródmieście",
+  "family": "disc_detainer",
+  "tier": 2,
+  "verification": "Celina okazuje najem magazynu robót (2), Roman potwierdza zlecenie firmy remontowej (3). Próg danych 3. Wycena zaakceptowana.",
+  "reward_coins": 110,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_10_02_scaffold_store.title",
+    "client": "job.t43_10_02_scaffold_store.client",
+    "situation": "job.t43_10_02_scaffold_store.situation"
+  },
+  "lines": [
+    "celina",
+    "roman",
+    "locksmith",
+    "celina"
+  ],
+  "after": [
+    "celina"
+  ],
+  "cards": [
+    "lease",
+    "manager"
+  ],
+  "threshold": 3,
+  "place": "gate",
+  "time": "day"
+}

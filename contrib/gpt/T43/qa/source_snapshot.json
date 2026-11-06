@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-06",
+  "repo": "woogitsugames/lockwright",
+  "tree_sha": "37ce903b7f479e812db0bb930c757dc5ba9ab872",
+  "files": [
+    {
+      "path": "CLAUDE.md",
+      "sha": "5bf7682d54ec07e29c5da915026d1bd650e031b9"
+    },
+    {
+      "path": "docs/CLIENTS.md",
+      "sha": "638e3924c5b5801253055d1de2dce5b495319769"
+    },
+    {
+      "path": "docs/JOBS.md",
+      "sha": "a5b90f29b1cefcf3b33479284fd0bec2c8c687b3"
+    },
+    {
+      "path": "docs/PROGRESSION.md",
+      "sha": "5c0c42f81787de1ac43529b9b096731c1b4b2b3a"
+    },
+    {
+      "path": "docs/LOCKS.md",
+      "sha": "e89a3c5f3f4a9072ca58af50bf99c1706d3169f5"
+    },
+    {
+      "path": "lockcore/BALANCE.md",
+      "sha": "28178f3735bb4f2158e7914cb1adbf2da2406f1c"
+    },
+    {
+      "path": "tools/i18n_lint.py",
+      "sha": "a9dd5855f9708f097c595192439041d34f42062b"
+    },
+    {
+      "path": "game/i18n/content.csv",
+      "sha": "c601996f4fd9c9f8e96f1aa0fcc716c9b5e51709"
+    },
+    {
+      "path": "game/i18n/strings.csv",
+      "sha": "ca4e4495b7a940e7ec312a8ca2a2e15c4c9feda4"
+    }
+  ],
+  "portraits": [
+    {
+      "path": "game/assets/ui/gpt/cast/episodic/portrait_kazimierz.webp",
+      "sha": "266450ba35006bb6c6df70563b1034554875a7f6"
+    },
+    {
+      "path": "game/assets/ui/gpt/cast/episodic/portrait_teresa.webp",
+      "sha": "0b320ba6c56100d630973a4638ba2001a5623c12"
+    }
+  ]
+}

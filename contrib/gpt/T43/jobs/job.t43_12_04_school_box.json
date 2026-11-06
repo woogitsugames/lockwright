@@ -1,0 +1,31 @@
+{
+  "id": "job.t43_12_04_school_box",
+  "chapter": 12,
+  "district": "Śródmieście",
+  "family": "lever",
+  "tier": 5,
+  "verification": "Pismo szkoły (2), Jadwiga potwierdza szkolne pochodzenie skrzyni (2). Próg 2. Otwarcie przy opiekunce, bez udostępniania prywatnych listów. Wycena zaakceptowana.",
+  "reward_coins": 198,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_12_04_school_box.title",
+    "client": "job.t43_12_04_school_box.client",
+    "situation": "job.t43_12_04_school_box.situation"
+  },
+  "lines": [
+    "jadwiga",
+    "locksmith",
+    "jadwiga",
+    "marta"
+  ],
+  "after": [
+    "jadwiga"
+  ],
+  "cards": [
+    "institution",
+    "witness"
+  ],
+  "threshold": 2,
+  "place": "locker",
+  "time": "day"
+}

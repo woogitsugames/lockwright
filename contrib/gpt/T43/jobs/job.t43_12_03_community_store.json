@@ -1,0 +1,31 @@
+{
+  "id": "job.t43_12_03_community_store",
+  "chapter": 12,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 5,
+  "verification": "Elżbieta jako zarządczyni (3), uchwała o korzystaniu ze wspólnego magazynku (1). Próg danych 3. Wycena zaakceptowana.",
+  "reward_coins": 195,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_12_03_community_store.title",
+    "client": "job.t43_12_03_community_store.client",
+    "situation": "job.t43_12_03_community_store.situation"
+  },
+  "lines": [
+    "halina",
+    "elzbieta",
+    "locksmith",
+    "zosia"
+  ],
+  "after": [
+    "halina"
+  ],
+  "cards": [
+    "manager",
+    "resolution"
+  ],
+  "threshold": 3,
+  "place": "locker",
+  "time": "evening"
+}

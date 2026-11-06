@@ -1,0 +1,31 @@
+{
+  "id": "job.t43_10_03_exhibit_clock",
+  "chapter": 10,
+  "district": "Port",
+  "family": "time_lock",
+  "tier": 2,
+  "verification": "Pismo muzeum (2), protokół przekazania modelu (2). Próg 2. Naprawa wymontowanego zegara; nie omijamy blokady i nie otwieramy skarbca. Wycena zaakceptowana.",
+  "reward_coins": 120,
+  "tone": "spokojny, ciepły, rzeczowy",
+  "i18n": {
+    "title": "job.t43_10_03_exhibit_clock.title",
+    "client": "job.t43_10_03_exhibit_clock.client",
+    "situation": "job.t43_10_03_exhibit_clock.situation"
+  },
+  "lines": [
+    "rygiel",
+    "locksmith",
+    "rygiel",
+    "zuzanna"
+  ],
+  "after": [
+    "rygiel"
+  ],
+  "cards": [
+    "institution",
+    "invoice"
+  ],
+  "threshold": 2,
+  "place": "workshop",
+  "time": "day"
+}
