@@ -12,10 +12,10 @@ static var last_tip := 0  # N-25: tip paid by JobRun.complete()
 # lockcore families implemented in lockcore (v0.4); jobs with other families are
 # hidden on the list (N-05) instead of silently remapped.
 const IMPLEMENTED := [&"pin_tumbler", &"wafer", &"wooden_pin", &"warded", &"lever", &"lever_detector", &"ring_combo",
-		&"dial_safe"]
+		&"dial_safe", &"combo"]
 ## N-63: families that already have the photoreal (plan B) lock screen. Only these are offered
 ## to the player; the rest stay hidden until their plan-B view ships (no placeholder lock.tscn).
-const PHOTOREAL_READY := [&"pin_tumbler", &"warded", &"wafer", &"dial_safe"]
+const PHOTOREAL_READY := [&"pin_tumbler", &"warded", &"wafer", &"dial_safe", &"combo"]
 ## Plan-B scene per family (pin_tumbler: res://scenes/lock_job.tscn).
 const PLANB_SCENES := {
 	&"warded": "res://scenes/photoreal/lock_job_warded.tscn",
@@ -23,6 +23,7 @@ const PLANB_SCENES := {
 	&"lever": "res://scenes/photoreal/lock_job_lever.tscn",
 	&"lever_detector": "res://scenes/photoreal/lock_job_lever_detector.tscn",
 	&"dial_safe": "res://scenes/photoreal/lock_job_dial_safe.tscn",
+	&"combo": "res://scenes/photoreal/lock_job_combo.tscn",
 }
 
 # Authored tutorial locks S1–S3 (docs/LEVELS.md §2.1–2.3, lockwright.lock/1, checked with
@@ -32,7 +33,7 @@ const TUTORIAL_SPECS := ["res://data/tutorial/s1.json", "res://data/tutorial/s2.
 # job.family (docs/JOBS.md, generic names) -> lockcore family (aliases only, N-05)
 const FAMILY_MAP := {
 	"lever": &"lever",
-	"combo": &"ring_combo",
+	"combo": &"combo",  # D-60: the thumbwheel lock is its own lockcore family
 	"pin_tumbler": &"pin_tumbler",
 	"wafer": &"wafer",
 	"egyptian": &"wooden_pin",
