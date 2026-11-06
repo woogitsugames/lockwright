@@ -260,7 +260,7 @@ func _physics_process(delta: float) -> void:
 	var vm: Dictionary = session.describe()
 	if control == null:
 		_no_tension_cues(vm, input)
-	if sampler.auto_tension and control == null:
+	if sampler.auto_tension and (control == null or control is DetectorControl):  # N-72: detector levers have false gates too
 		sampler.auto_level = AUTO_SPOOL_LEVEL if _has_state(vm, "false_set") else InputSampler.AUTO_LEVEL
 	if coach != null:
 		coach.update(vm, input, events, sampler.left_down(), sampler.right_down(), delta)
@@ -282,13 +282,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		view.touch(event.index, event.position, event.pressed)
 	elif event is InputEventScreenDrag:
 		view.touch(event.index, event.position, true)
-	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
-		if view.zoomed:
-			view.toggle_loupe()
-		elif _paused:
-			_on_resume()
-		else:
-			_on_pause()
+	# Esc / Android Back: handled only by the Nav autoload (N-69: a second handler here
+	# turned one press into pause+resume) -> go_back() below, then _on_pause/_on_resume.
 
 
 ## Nav (Android back / Esc): close the eyepiece first, otherwise let Nav open the pause.

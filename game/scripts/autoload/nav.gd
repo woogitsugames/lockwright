@@ -7,6 +7,13 @@ extends Node
 ##   main menu: About panel open -> close it; else confirm "Quit the game?" -> quit
 ## A screen can take over by defining go_back() -> bool (true = handled), e.g. a
 ## magnifier eyepiece that should close first (N-57).
+## N-69: in Godot 4.7 one physical Back has several routes into the game: the input handler
+## parses an InputEventKey (Key::BACK) and sends a deferred WM_GO_BACK_REQUEST for
+## KEYCODE_BACK, and the activity's OnBackPressedCallback calls GodotLib.back() (another
+## request) when the key reaches it. Two requests are harmless where Back is idempotent
+## (settings, receipt) but on a lock pause+resume cancel out ("Back does nothing").
+## Nav is the single Back handler (window request, Key::BACK, Esc) and collapses requests
+## closer than back_debounce_ms into one.
 
 const MAIN_MENU := "res://scenes/main_menu.tscn"
 const JOBS_LIST := "res://scenes/jobs_list.tscn"
@@ -29,6 +36,9 @@ var change_scenes := true
 var last_target := ""
 var last_action := &""
 var _quit_dialog: ConfirmationDialog = null
+## Requests closer than this to the previous handled one are the same press (tests set 0).
+var back_debounce_ms := 250
+var _last_back_ms := -100000
 
 
 func _ready() -> void:
@@ -37,7 +47,27 @@ func _ready() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		handle_back()
+		request_back()
+
+
+func _input(event: InputEvent) -> void:
+	# Key::BACK (Android) and Esc (desktop, keyboards) take the same single path as the
+	# window request; lock screens no longer handle Esc themselves (N-69).
+	var key := event as InputEventKey
+	if key == null or not key.pressed or key.echo:
+		return
+	if key.keycode == KEY_BACK or key.keycode == KEY_ESCAPE or key.physical_keycode == KEY_BACK:
+		get_viewport().set_input_as_handled()
+		request_back()
+
+
+## Debounced entry for every Back source. Returns &"debounced" for a duplicate.
+func request_back() -> StringName:
+	var now := Time.get_ticks_msec()
+	if back_debounce_ms > 0 and now - _last_back_ms < back_debounce_ms:
+		return &"debounced"
+	_last_back_ms = now
+	return handle_back()
 
 
 func _current() -> Node:

@@ -166,7 +166,7 @@ func _wire() -> void:
 		Settings.set_value("quality_profile", ["auto", "high", "medium", "low"][idx])
 		Quality.apply_profile(["auto", "high", "medium", "low"][idx]))
 	test_button.pressed.connect(func() -> void:
-		Haptics.play(&"set", 1.0, &"brass")
+		Haptics.test_pulse()  # N-70: one long, clearly felt pulse (a 19 ms `set` was not)
 		Sfx.play(&"set", &"brass"))
 	calibration_button.pressed.connect(_run_two_click_calibration)
 	reset_button.pressed.connect(func() -> void:

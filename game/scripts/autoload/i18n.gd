@@ -11,6 +11,11 @@ const FALLBACK := "en"
 const CSV_FILES := ["res://i18n/strings.csv", "res://i18n/content.csv"]
 
 var _translations: Dictionary = {}  # locale -> Translation
+## N-67: every message key from all CSV files (set). all_keys() reads this instead of
+## Translation.get_message_list(): an exported OptimizedTranslation does not store its
+## message list (warning "OptimizedTranslation does not store the message texts") and
+## TranslationServer.get_translation_object() returns only one of the CSV files anyway.
+var _keys: Dictionary = {}
 
 
 func _ready() -> void:
@@ -41,6 +46,7 @@ func _load_csv_translations() -> void:
 		for row in rows.slice(1):
 			if row.is_empty() or row[0] == "":
 				continue
+			_keys[row[0]] = true
 			for i in range(1, min(row.size(), header.size())):
 				var locale: String = header[i]
 				if per_locale.has(locale):
@@ -64,6 +70,10 @@ func _load_compiled_translations(path: String) -> bool:
 			if tr is Translation:
 				TranslationServer.add_translation(tr)
 				found = true
+				# compiled with compress=false (i18n/*.csv.import) -> plain Translation with keys
+				if not tr is OptimizedTranslation:
+					for key in (tr as Translation).get_message_list():
+						_keys[key] = true
 	return found
 
 
@@ -145,8 +155,9 @@ func has_key(key: StringName) -> bool:
 	return text != key and text != ""
 
 
+## All message keys (both CSV files), sorted. Never calls get_message_list() on an
+## OptimizedTranslation (N-67).
 func all_keys() -> PackedStringArray:
-	var tr := TranslationServer.get_translation_object(TranslationServer.get_locale())
-	if tr == null:
-		return PackedStringArray()
-	return tr.get_message_list()
+	var out := PackedStringArray(_keys.keys())
+	out.sort()
+	return out

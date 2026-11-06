@@ -273,9 +273,5 @@ func _on_dark_mode_toggled(on: bool) -> void:
 		$KeyLight.visible = true
 
 
-func _unhandled_key_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
-		if _paused:
-			_on_resume_pressed()
-		else:
-			_on_pause_pressed()
+# Esc / Android Back: handled only by the Nav autoload (N-69), which calls
+# _on_pause_pressed / _on_resume_pressed.

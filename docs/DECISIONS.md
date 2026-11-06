@@ -241,3 +241,6 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 
 ## D-64: Budżet rozmiaru zasobów gry 150 MB
 2026-11-06 · właściciel · Próg zasobów (pck z presetem Android) w CI podniesiony z 58 MB (D-55, własny budżet) do **150 MB** (ostrzeżenie 120 MB); APK ostrzeżenie 170 MB, błąd 200 MB (limit modułu bazowego Google Play). Powód: menu, scenki przyjazdu i kolejne zamki z Blendera. Głosy w językach spoza PL/EN dalej pobierane na żądanie (D-63). `docs/handoff/POMIARY.md` §8 do aktualizacji przy najbliższej zmianie tabeli.
+
+## D-65: Haptyka na silnikach on/off i jedna obsługa Back
+2026-11-06 · sesja A (N-69/N-70) · Impulsy haptyczne bez sterowania amplitudą (ERM, A0) trwają co najmniej 30 ms; na A0 grają tylko zdarzenia z `a0_ms`. Impuls próbny w ustawieniach trwa 220 ms. Wibracje gry mają usage MEDIA (API 33+), nie TOUCH: gra ma własny wyłącznik i suwak, a ustawienie dotyku systemu jej nie wycisza. Metody wtyczek Androida sprawdzamy przez `has_java_method()`. Back i Esc obsługuje wyłącznie autoload `Nav` z oknem 250 ms na duplikaty jednego wciśnięcia.

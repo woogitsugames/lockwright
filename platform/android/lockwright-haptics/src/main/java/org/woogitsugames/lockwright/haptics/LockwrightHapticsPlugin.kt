@@ -41,6 +41,12 @@ class LockwrightHapticsPlugin(godot: Godot) : GodotPlugin(godot) {
     @UsedByGodot
     fun capabilities(): String = engine.capabilitiesJson()
 
+    /** Settings "Test pulse" (N-70): one long oneshot, perceptible on every motor. */
+    @UsedByGodot
+    fun test_pulse(durationMs: Int, level: Double) {
+        engine.testPulse(durationMs.toLong(), level.toFloat())
+    }
+
     @UsedByGodot
     fun stop_all() {
         engine.stopAll()

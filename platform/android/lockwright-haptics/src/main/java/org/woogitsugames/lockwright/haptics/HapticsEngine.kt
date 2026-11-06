@@ -1,7 +1,9 @@
 package org.woogitsugames.lockwright.haptics
 
 import android.content.Context
+import android.media.AudioAttributes
 import android.os.Build
+import android.os.VibrationAttributes
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
@@ -132,6 +134,19 @@ class HapticsEngine(context: Context) {
         }
     }
 
+    /** N-70: Settings test pulse — a plain oneshot (default amplitude at 100 %). */
+    fun testPulse(durationMs: Long, level: Float) {
+        val ms = durationMs.coerceIn(ERM_MIN_MS, 400L)
+        handler.post {
+            val v = vibrator ?: return@post
+            if (tier == Tier.NONE) return@post
+            val amp = if (!amplitudeControl || level >= 0.99f) VibrationEffect.DEFAULT_AMPLITUDE
+                else (255 * level).toInt().coerceIn(60, 255)
+            vibrateGame(v, VibrationEffect.createOneShot(ms, amp))
+            transientUntilMs = SystemClock.uptimeMillis() + ms + 20L
+        }
+    }
+
     fun stopAll() {
         handler.post {
             continuous.clear()
@@ -162,7 +177,7 @@ class HapticsEngine(context: Context) {
                             .addControlPoint(ci, cs, 20L)
                             .addControlPoint(0f, cs, 20L)
                             .build()
-                        v.vibrate(seg)
+                        vibrateGame(v, seg)
                     }.onFailure { vibrateWaveform(v, segmentMs, amp) }
                 } else vibrateWaveform(v, segmentMs, amp)
             }
@@ -173,10 +188,9 @@ class HapticsEngine(context: Context) {
 
     private fun vibrateWaveform(v: Vibrator, ms: Long, amp: Int) {
         if (amplitudeControl) {
-            v.vibrate(VibrationEffect.createWaveform(longArrayOf(0, ms), intArrayOf(0, amp), -1))
+            vibrateGame(v, VibrationEffect.createWaveform(longArrayOf(0, ms), intArrayOf(0, amp), -1))
         } else if (tier != Tier.NONE) {
-            @Suppress("DEPRECATION")
-            v.vibrate(VibrationEffect.createOneShot(ms, VibrationEffect.DEFAULT_AMPLITUDE))
+            vibrateGame(v, VibrationEffect.createOneShot(ms.coerceAtLeast(ERM_MIN_MS), VibrationEffect.DEFAULT_AMPLITUDE))
         }
     }
 
@@ -192,11 +206,28 @@ class HapticsEngine(context: Context) {
         val i = (intensity * scale).coerceIn(0f, 1f)
         val effect = buildEventEffect(event, i, v)
         if (effect != null) {
-            @Suppress("DEPRECATION")
-            v.vibrate(effect)
+            vibrateGame(v, effect)
             // N-02: remember how long the transient occupies the actuator (each vibrate() cancels the previous)
             // VibrationEffect.getDuration() is not public API; use the pattern's nominal length
             transientUntilMs = SystemClock.uptimeMillis() + 60L + 20L
+        }
+    }
+
+    /**
+     * N-70: game haptics use the MEDIA usage (as the latency probe did: scale NONE) instead of
+     * the implicit TOUCH usage, which Samsung scales by the system touch-feedback setting
+     * (LOW 0.71 on the test phone) and mutes when touch vibration is off. The game has its own
+     * on/off switch and intensity slider.
+     */
+    private fun vibrateGame(v: Vibrator, effect: VibrationEffect) {
+        if (Build.VERSION.SDK_INT >= 33) {
+            v.vibrate(effect, VibrationAttributes.createForUsage(VibrationAttributes.USAGE_MEDIA))
+        } else {
+            @Suppress("DEPRECATION")
+            v.vibrate(effect, AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_GAME)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build())
         }
     }
 
@@ -204,7 +235,7 @@ class HapticsEngine(context: Context) {
         return when (tier) {
             Tier.PRIMITIVES, Tier.ENVELOPE, Tier.BUILDER -> compositionFor(event, i, v)
             Tier.AMPLITUDE -> waveformFor(event, i)
-            Tier.ON_OFF -> oneShotFor(event)
+            Tier.ON_OFF -> oneShotFor(event)  // null: no pulse for this event on an on/off motor
             Tier.NONE -> null
         }
     }
@@ -268,16 +299,28 @@ class HapticsEngine(context: Context) {
             else -> 15L
         }
         val amp = (255 * i).toInt().coerceIn(1, 255)
-        return VibrationEffect.createWaveform(longArrayOf(0, ms), intArrayOf(0, amp), -1)
+        // N-70: an LRA/ERM with amplitude control still needs ~20 ms to be felt
+        return VibrationEffect.createWaveform(longArrayOf(0, ms.coerceAtLeast(AMP_MIN_MS)), intArrayOf(0, amp), -1)
     }
 
-    private fun oneShotFor(event: String): VibrationEffect {
-        val key = event in setOf("set", "false_set", "drop", "break", "open", "detector_trip")
-        val ms = if (key) 30L else 1L
-        return VibrationEffect.createOneShot(ms, VibrationEffect.DEFAULT_AMPLITUDE)
+    /**
+     * A0 on/off motor (cheap ERM, e.g. MOTOR_COIN_DC): only events with an a0_ms in
+     * data/haptics_patterns.json pulse, never shorter than ERM_MIN_MS (N-70: 1-19 ms pulses
+     * were registered by the vibrator service but not felt).
+     */
+    private fun oneShotFor(event: String): VibrationEffect? {
+        val ms = when (event) {
+            "set", "false_set", "overset", "counter_rotate", "gate_align" -> ERM_MIN_MS
+            "open" -> 50L
+            "drop", "break", "detector_trip" -> 60L
+            else -> return null
+        }
+        return VibrationEffect.createOneShot(ms.coerceAtLeast(ERM_MIN_MS), VibrationEffect.DEFAULT_AMPLITUDE)
     }
 
     companion object {
         private const val TAG = "LockwrightHaptics"
+        private const val ERM_MIN_MS = 30L
+        private const val AMP_MIN_MS = 20L
     }
 }

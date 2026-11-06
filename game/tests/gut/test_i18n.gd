@@ -26,3 +26,33 @@ func test_fallback_is_en() -> void:
 
 func test_system_language_supported() -> void:
 	assert_true(I18n.SUPPORTED.has(I18n.system_language()))
+
+
+## N-67: all_keys() covers both CSV files and never touches an OptimizedTranslation.
+func test_all_keys_both_csv_files() -> void:
+	var keys := I18n.all_keys()
+	assert_true(keys.has("menu.title"), "strings.csv key listed")
+	var content_key := ""
+	for k in keys:
+		if String(k).begins_with("notebook.extra."):
+			content_key = k
+			break
+	assert_ne(content_key, "", "content.csv keys listed (notebook.extra.* used by the menu tip)")
+
+
+## N-67: the exported build loads the compiled .translation files; they must be plain
+## Translations (import compress=0) so their keys can be listed.
+func test_compiled_translations_list_keys() -> void:
+	for base in ["res://i18n/strings", "res://i18n/content"]:
+		for locale in ["pl", "en"]:
+			var tr: Resource = load("%s.%s.translation" % [base, locale])
+			assert_not_null(tr, "%s.%s compiled" % [base, locale])
+			assert_false(tr is OptimizedTranslation, "%s.%s must not be OptimizedTranslation" % [base, locale])
+	var fresh: Node = load("res://scripts/autoload/i18n.gd").new()
+	assert_true(fresh._load_compiled_translations("res://i18n/strings.csv"))
+	assert_true(fresh.all_keys().has("menu.title"), "keys from the compiled path")
+	for locale in I18n.SUPPORTED:
+		var p := "res://i18n/strings.%s.translation" % locale
+		if ResourceLoader.exists(p):
+			TranslationServer.remove_translation(load(p))
+	fresh.free()

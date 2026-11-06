@@ -32,7 +32,9 @@ func _ready() -> void:
 		_fps_label.add_theme_font_size_override("font_size", 14)
 		_fps_label.position = Vector2(8, 8)
 		_fps_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		get_tree().root.add_child(_fps_label)
+		# N-67: autoload _ready runs while root is still adding its children ("Parent node is
+		# busy setting up children"), so the overlay joins root on the next idle frame.
+		get_tree().root.add_child.call_deferred(_fps_label)
 
 
 func _process(delta: float) -> void:

@@ -20,11 +20,13 @@ const STUB_SCREENS := {
 
 
 func before_each() -> void:
+	Nav.back_debounce_ms = 0  # several Back presses per frame in tests
 	Nav.change_scenes = false
 	Nav.last_target = ""
 
 
 func after_each() -> void:
+	Nav.back_debounce_ms = 250
 	Nav.scene_override = null
 	Nav.change_scenes = true
 	if Nav.quit_dialog_open():
