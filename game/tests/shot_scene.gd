@@ -2,6 +2,7 @@ extends Node
 ## One-scene screenshot (dev/CI): loads --scene=res://..., waits --frames=N, saves --out=FILE.
 ##   xvfb-run godot --path game --display-driver x11 --rendering-driver opengl3 \
 ##     --resolution 412x915 res://tests/shot_scene.tscn -- --scene=res://scenes/tutorial.tscn --out=/tmp/t.png
+## D-58 arrival scene: --job=job.wrong_floor [--time=night] [--reduce=0|1] [--climb-at=SECONDS | --hold=1] [--speaker=teresa].
 ## --size=WxH sets the window (as tests/screens.gd); --tab=furnishings opens the workshop's Wyposażenie tab; --tutorial-stage=N sets JobRun.tutorial_stage first; --auto=1 sets Settings auto_tension (not saved).
 
 func _ready() -> void:
@@ -27,12 +28,29 @@ func _ready() -> void:
 		for f in Furnishings.all():
 			if a["furnish"] == "all" or String(f["id"]) in a["furnish"].split(","):
 				Save.data["furnishings"][f["id"]] = {"owned": true, "shown": true}
+	if a.has("job"):
+		var job := JobRun.job_by_id(a["job"]).duplicate(true)
+		if a.has("time"):
+			job["time"] = a["time"]
+		JobRun.start(job)
+	if a.has("reduce"):
+		load("res://scripts/ui/job_arrival.gd").reduce_motion_override = int(a["reduce"])
 	# instance as a child (change_scene would free this runner before it saves)
 	var scene: Node = load(a.get("scene", "res://scenes/tutorial.tscn")).instantiate()
 	add_child(scene)
 	if a.has("tab") and scene.has_method("show_tab"):
 		await get_tree().process_frame
 		scene.show_tab(a["tab"])
+	if "scene" in scene and scene.scene != null:
+		await get_tree().process_frame
+		if a.has("climb-at"):
+			scene.scene.set_process(false)
+			scene.scene._process(float(a["climb-at"]))
+		elif a.has("hold"):
+			scene.scene.skip()
+			if a.has("speaker"):
+				scene.scene.show_speaker(a["speaker"])
+			scene.dialogue.skip_all()
 	for i in int(a.get("frames", "30")):
 		await get_tree().process_frame
 	if a.has("debug") and scene is Control:
