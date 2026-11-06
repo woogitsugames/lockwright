@@ -1,22 +1,29 @@
-[
-  {
-    "id": "celina",
-    "design_prompt": "A fictional 44-year-old woman with a low, calm, assured voice. Measured, concise phrasing and a neutral Polish accent. Clear natural delivery, no imitation of any real person."
-  },
-  {
-    "id": "dorota",
-    "design_prompt": "A fictional 49-year-old woman with a slightly tense voice and quick pace, without aggression. Neutral Polish accent, natural delivery, no imitation of any real person."
-  },
-  {
-    "id": "seweryn",
-    "design_prompt": "A fictional 61-year-old man with a soft, patient voice and short thoughtful pauses. Moderate pace, neutral Polish accent, no imitation of any real person."
-  },
-  {
-    "id": "borys",
-    "design_prompt": "A fictional 46-year-old man with a warm mid-range voice and a lightly raspy texture. Relaxed pace, neutral Polish accent, no imitation of any real person."
-  },
-  {
-    "id": "alicja",
-    "design_prompt": "A fictional 40-year-old woman with a bright, energetic voice, slowing slightly in serious moments. Neutral Polish accent, no imitation of any real person."
+{
+  "voices": {
+    "celina": {
+      "gender": "f",
+      "age": 44,
+      "design_prompt": "Fictional woman aged 44. Low, steady and lightly textured voice; measured, concise pace and neutral Polish accent. Calm and assured, without imitating any real person."
+    },
+    "dorota": {
+      "gender": "f",
+      "age": 49,
+      "design_prompt": "Fictional woman aged 49. Mid-pitched, clear, slightly taut voice; quick pace with room for breath and a neutral Polish accent. Impatient but not aggressive; no imitation of any real person."
+    },
+    "seweryn": {
+      "gender": "m",
+      "age": 61,
+      "design_prompt": "Fictional man aged 61. Soft, warm mid-low voice; moderate pace with short thoughtful pauses and a neutral Polish accent. Patient and clear, without imitating any real person."
+    },
+    "borys": {
+      "gender": "m",
+      "age": 46,
+      "design_prompt": "Fictional man aged 46. Warm mid-range voice with a lightly raspy texture; relaxed pace and neutral Polish accent. Understated self-irony, without imitating any real person."
+    },
+    "alicja": {
+      "gender": "f",
+      "age": 40,
+      "design_prompt": "Fictional woman aged 40. Bright, clear mid-high voice; energetic pace that slows in serious moments, with a neutral Polish accent. No imitation of any real person."
+    }
   }
-]
+}
