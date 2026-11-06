@@ -1,0 +1,11 @@
+{
+  "id": "showcase.combo",
+  "unlocks": "zamek z kółkami, T1, oraz zlecenie `job.bike_interview` (kapsuła czasu, T3, to ta sama rodzina).",
+  "source": "https://museum.wales/collections/online/object/f33a582e-7d7d-35f0-8011-f0cac35e8aba/Post-Medieval-copper-alloy-combination-lock/",
+  "confidence": "wysoka dla opisu egzemplarza i datowania typologicznego; brak twierdzenia o pierwszym wynalazcy.",
+  "i18n": {
+    "title": "showcase.combo.title",
+    "body": "showcase.combo.body",
+    "source": "showcase.combo.source"
+  }
+}

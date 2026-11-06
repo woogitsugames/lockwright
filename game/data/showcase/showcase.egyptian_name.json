@@ -1,6 +1,6 @@
 {
   "id": "showcase.egyptian_name",
-  "unlocks": "egipski drewniany, T2, oraz zlecenie `job.dollhouse_wooden_lock`.",
+  "unlocks": "zasuwa drewniana (egyptian), T1, oraz zlecenie `job.dollhouse_wooden_lock`.",
   "source": "https://www.gutenberg.org/ebooks/44022",
   "confidence": "wysoka (co mówią źródła); otwarte pozostaje samo pochodzenie mechanizmu.",
   "i18n": {

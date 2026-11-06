@@ -1,0 +1,11 @@
+{
+  "id": "showcase.dimple",
+  "unlocks": "wkładka nawiercana, T2, zlecenie `job.brussels_townhouse`.",
+  "source": "https://www.lockwiki.com/index.php/Dimple",
+  "confidence": "średnia-wysoka dla opisu typu i pinów teleskopowych; źródło branżowe, nie podaje daty wynalezienia.",
+  "i18n": {
+    "title": "showcase.dimple.title",
+    "body": "showcase.dimple.body",
+    "source": "showcase.dimple.source"
+  }
+}

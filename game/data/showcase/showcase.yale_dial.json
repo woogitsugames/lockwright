@@ -1,6 +1,6 @@
 {
   "id": "showcase.yale_dial",
-  "unlocks": "sejf z tarczami, T1, oraz zlecenie `job.krakow_antiquarian`.",
+  "unlocks": "sejf z pokrętłem (dial_safe), T1, oraz zlecenie `job.krakow_antiquarian` (sejf wujka, T2, to ta sama rodzina).",
   "source": "https://lemelson.mit.edu/resources/linus-yale",
   "confidence": "średnia (źródła biograficzne, nie patenty; nazwę „Infallible Bank Lock” celowo pomijamy w tekście).",
   "i18n": {

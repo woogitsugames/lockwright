@@ -26,7 +26,8 @@ if len({r['keys'] for r in t41})!=181:errors.append('T41 duplicate keys')
 hs,supp=read(T41/'supplemental_ui_fr_es.csv')
 if hs!=h41 or len(supp)!=19 or len({r['keys'] for r in supp})!=19:errors.append('T41 supplemental UI')
 h42,t42=read(T42/'family_texts.csv')
-if h42!=['keys','en','pl','de'] or len(t42)!=78:errors.append('T42 family header/number')
+# review (session A): 78 + time_lock _auto pair
+if h42!=['keys','en','pl','de'] or len(t42)!=80:errors.append('T42 family header/number')
 bykey={r['keys']:r for r in t42}
 if len(bykey)!=len(t42):errors.append('T42 duplicate keys')
 families=['dial_safe','combo','dimple','disc_detainer','egyptian','axial_slider','time_lock','magnetic']
@@ -37,9 +38,9 @@ for fam in families:
  if hint not in bykey:errors.append(f'T42 missing {hint}')
  for n in range(1,6):
   if f'tutorial.{fam}.step{n}' not in bykey:errors.append(f'T42 missing step{n} {fam}')
- if fam!='time_lock':
-  for k in (f'tutorial.{fam}.step1_auto',f'lock.{fam}_hint_auto'):
-   if k not in bykey:errors.append(f'T42 missing {k}')
+ # review (session A): the _auto hint is always <hint key>_auto; time_lock has one too (auto mode winds the spring)
+ for k in (f'tutorial.{fam}.step1_auto',hint+'_auto'):
+  if k not in bykey:errors.append(f'T42 missing {k}')
 for key,row in bykey.items():
  cap=24 if key.endswith('.name') else 70 if key.endswith('.short') else 56
  for lang in ('en','pl','de'):
@@ -70,7 +71,7 @@ for fam in families:
  for level in ('H1','H2','H3','H4'):
   if level not in section:errors.append('Missing '+level+' in '+fam)
 print('T41: 181 items, including 164 audio lines and 17 UI labels; supplemental 19 UI labels')
-print('T42: 78 family lines in EN/PL/DE; 8 lessons; 3 showcase objects; 9 showcase strings')
+print('T42: 80 family lines in EN/PL/DE; 8 lessons; 3 showcase objects; 9 showcase strings')
 print('Validation errors:',len(errors),'warnings:',len(warnings))
 for error in errors:print('ERROR',error)
 for warn in warnings:print('WARN ',warn)

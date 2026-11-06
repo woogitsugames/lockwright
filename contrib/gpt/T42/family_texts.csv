@@ -63,9 +63,7 @@ family.time_lock.name,Time lock repair,Naprawa zamka czasowego,Zeitschloss-Repar
 family.time_lock.short,"The museum clockwork needs repair, not an opening.","Muzealny mechanizm zegarowy trzeba naprawić, nie otwierać.","Das Uhrwerk im Museum wird repariert, nicht geöffnet."
 lock.time_lock_hint,Left winds gently; right seats each wheel in turn.,"Lewym nakręcaj lekko, prawym osadzaj koła.","Links sanft aufziehen, rechts die Räder einsetzen."
 lock.time_lock_hint_auto,The game winds the spring; seat wheels on the right.,"Gra nakręca sprężynę, prawym osadzaj koła.","Das Spiel zieht auf, rechts setzt du die Räder ein."
-lock.time_lock_hint_auto,The game winds the spring; seat wheels on the right.,"Gra nakręca sprężynę, prawym osadzaj koła.","Das Spiel zieht auf, rechts setzt du die Räder ein."
 tutorial.time_lock.step1,Left thumb: wind the spring only a little.,Lewym kciukiem lekko nakręcaj sprężynę.,Zieh links mit dem Daumen die Feder sanft auf.
-tutorial.time_lock.step1_auto,The game keeps the spring wound for you.,Gra sama trzyma naciąg sprężyny.,Das Spiel hält die Feder für dich gespannt.
 tutorial.time_lock.step1_auto,The game keeps the spring wound for you.,Gra sama trzyma naciąg sprężyny.,Das Spiel hält die Feder für dich gespannt.
 tutorial.time_lock.step2,"Right: seat the wheels in order, one by one.",Prawym osadzaj koła po kolei.,Setz rechts die Räder nacheinander ein.
 tutorial.time_lock.step3,Listen for a steady tick; watch the rhythm.,Słuchaj równego tykania i patrz na rytm.,Hör auf das gleichmäßige Ticken und den Takt.

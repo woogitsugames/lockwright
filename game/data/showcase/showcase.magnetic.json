@@ -1,0 +1,11 @@
+{
+  "id": "showcase.magnetic",
+  "unlocks": "zamek z pinami magnetycznymi, T1, zlecenie `job.night_nurse`.",
+  "source": "https://patents.google.com/patent/US20100050715A1/en",
+  "confidence": "wysoka dla opisu przykładowej zasady w publikacji patentowej z 2010 r.; średnia dla uogólnienia historii całej rodziny.",
+  "i18n": {
+    "title": "showcase.magnetic.title",
+    "body": "showcase.magnetic.body",
+    "source": "showcase.magnetic.source"
+  }
+}

@@ -112,3 +112,40 @@ def test_report_exit_code_only_on_errors(tmp_path, capsys):
     assert i18n_lint.print_report(findings, count) == 0
     findings, count = i18n_lint.run_lint(make_root(tmp_path, fixture="invalid"))
     assert i18n_lint.print_report(findings, count) == 1
+
+
+def _write_fr_es(root, strings_rows):
+    path = os.path.join(root, "game/i18n/strings.csv")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write("keys,en,pl,de,fr,es\n" + "".join(r + "\n" for r in strings_rows))
+    path = os.path.join(root, "game/i18n/content.csv")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write("keys,en,pl,de,fr,es\njob.x.title,Title,Tytuł,Titel,Titre,Título\n")
+
+
+def test_optional_fr_es_columns_may_be_empty(tmp_path):
+    root = make_root(tmp_path)
+    _write_fr_es(root, ["menu.play,Play,Graj,Spielen,Jouer,Jugar",
+                        "common.back,Back,Wróć,Zurück,,"])
+    findings, count = i18n_lint.run_lint(root)
+    assert count == 3
+    assert errors(findings) == []
+    assert any(f.key == "[fr]" and "1/2 empty fr" in f.message for f in warns(findings))
+
+
+def test_filled_fr_es_values_are_checked(tmp_path):
+    root = make_root(tmp_path)
+    _write_fr_es(root, ["job.reward_fmt,Reward: {n},Nagroda: {n},Belohnung: {n},Prix : {x},Premio: {n}",
+                        "lock.long,Short,Krótko,Kurz,Short,Esta frase en español es demasiado larga para la pantalla",
+                        "menu.bad,Play,Graj,Spielen,Jouer"])
+    errs = errors(i18n_lint.run_lint(root)[0])
+    assert any(f.key == "job.reward_fmt" and "fr=" in f.message for f in errs)
+    assert any(f.key == "lock.long" and "es value" in f.message for f in errs)
+    assert any(f.key == "menu.bad" and "malformed" in f.message for f in errs)
+
+
+def test_header_optional_columns_must_be_in_order(tmp_path):
+    root = make_root(tmp_path)
+    with open(os.path.join(root, "game/i18n/strings.csv"), "w", encoding="utf-8") as fh:
+        fh.write("keys,en,pl,de,es\nmenu.play,Play,Graj,Spielen,Jugar\n")
+    assert any("bad header" in f.message for f in errors(i18n_lint.run_lint(root)[0]))

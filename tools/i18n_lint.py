@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """i18n lint for Lockwright: validates game/i18n CSV files against the GDScript code.
 
-Checks game/i18n/strings.csv and game/i18n/content.csv (header `keys,en,pl,de`, UTF-8,
-comma-separated with quoted fields):
+Checks game/i18n/strings.csv and game/i18n/content.csv (header `keys,en,pl,de[,fr,es]`, UTF-8,
+comma-separated with quoted fields). en/pl/de are required; fr/es (T41, behind the dev flag)
+are optional: an empty value falls back to en at runtime, but a filled one is checked like the rest.
 
   errors:
     1. malformed CSV rows, wrong header, duplicate keys, empty en/pl/de values
-    2. {placeholder} sets differ between languages for the same key
+    2. {placeholder} sets differ between languages for the same key (empty optional values skipped)
     3. a key used in code (I18n.t("key") / I18n.t(&"key") in game/**/*.gd) missing from CSV
     4. length limits: tutorial.* and lock.* <= 56 chars per language, menu.* <= 28
     5. a dynamically built key (e.g. "cast.%s.name") with no CSV key matching its
@@ -16,6 +17,7 @@ comma-separated with quoted fields):
     - straight " quotes in the PL value instead of „…”
     - PL/DE value identical to EN, longer than 3 chars and not a proper noun
     - the word "włam" in any form (banned by the game tone)
+    - one summary line per file and optional language with the number of empty values
 
 Usage: python tools/i18n_lint.py   (from the repo root; exit code 1 only on errors)
 """
@@ -25,8 +27,10 @@ import re
 import sys
 from dataclasses import dataclass, field
 
-LANGUAGES = ("en", "pl", "de")
-EXPECTED_HEADER = ["keys"] + list(LANGUAGES)
+LANGUAGES = ("en", "pl", "de")          # required, never empty
+OPTIONAL_LANGUAGES = ("fr", "es")        # T41: may be empty (runtime falls back to en)
+ALL_LANGUAGES = LANGUAGES + OPTIONAL_LANGUAGES
+EXPECTED_HEADER = ["keys"] + list(LANGUAGES)  # minimal header; optional columns may follow in order
 CSV_FILES = ("game/i18n/strings.csv", "game/i18n/content.csv")
 
 LENGTH_LIMITS = (("tutorial.", 56), ("lock.", 56), ("menu.", 28))
@@ -60,27 +64,31 @@ def repo_root():
 def read_csv(path, display, findings):
     """Parse one CSV file into CsvRow objects, appending ERROR findings on problems."""
     rows = []
+    header = EXPECTED_HEADER
     try:
         with open(path, newline="", encoding="utf-8") as fh:
             reader = csv.reader(fh)
             for lineno, record in enumerate(reader, start=1):
                 if lineno == 1:
-                    if record != EXPECTED_HEADER:
+                    full = ["keys"] + list(ALL_LANGUAGES)
+                    if len(record) < len(EXPECTED_HEADER) or record != full[:len(record)]:
                         findings.append(Finding(
                             "ERROR", f"{display}:{lineno}", "",
-                            f"bad header: expected {','.join(EXPECTED_HEADER)}, "
-                            f"got {','.join(record)}"))
+                            f"bad header: expected {','.join(EXPECTED_HEADER)}"
+                            f"[,{','.join(OPTIONAL_LANGUAGES)}], got {','.join(record)}"))
+                    else:
+                        header = record
                     continue
                 if not record or all(not cell.strip() for cell in record):
                     continue
-                if len(record) != len(EXPECTED_HEADER):
+                if len(record) != len(header):
                     findings.append(Finding(
                         "ERROR", f"{display}:{lineno}", record[0] if record else "",
-                        f"malformed row: expected {len(EXPECTED_HEADER)} columns, "
+                        f"malformed row: expected {len(header)} columns, "
                         f"got {len(record)}"))
                     continue
                 rows.append(CsvRow(lineno, record[0],
-                                   dict(zip(LANGUAGES, record[1:]))))
+                                   dict(zip(header[1:], record[1:]))))
     except (csv.Error, UnicodeDecodeError) as exc:
         findings.append(Finding("ERROR", display, "", f"cannot parse CSV: {exc}"))
     return rows
@@ -106,9 +114,11 @@ def check_placeholders(display, rows, findings):
     for row in rows:
         loc = f"{display}:{row.lineno}"
         sets = {lang: set(PLACEHOLDER_RE.findall(row.values.get(lang, "")))
-                for lang in LANGUAGES}
+                for lang in ALL_LANGUAGES}
         reference = sets["en"]
-        for lang in ("pl", "de"):
+        for lang in ("pl", "de") + OPTIONAL_LANGUAGES:
+            if lang not in row.values or (lang in OPTIONAL_LANGUAGES and not row.values[lang]):
+                continue
             if sets[lang] != reference:
                 findings.append(Finding(
                     "ERROR", loc, row.key,
@@ -121,7 +131,7 @@ def check_length_limits(display, rows, findings):
         for prefix, limit in LENGTH_LIMITS:
             if not row.key.startswith(prefix):
                 continue
-            for lang in LANGUAGES:
+            for lang in ALL_LANGUAGES:
                 length = len(row.values.get(lang, ""))
                 if length > limit:
                     findings.append(Finding(
@@ -201,11 +211,25 @@ def check_warnings(display, rows, findings):
                     "WARN", loc, row.key,
                     f"{lang} value identical to en (possible untranslated text): "
                     f"\"{value}\""))
-        for lang in LANGUAGES:
+        for lang in ALL_LANGUAGES:
             if WLAM_RE.search(row.values.get(lang, "")):
                 findings.append(Finding(
                     "WARN", loc, row.key,
                     f"banned word 'włam' (any form) in {lang}"))
+
+
+def check_optional_coverage(display, rows, findings):
+    """One WARN per optional language with empty values (they fall back to en)."""
+    for lang in OPTIONAL_LANGUAGES:
+        present = [row for row in rows if lang in row.values]
+        if not present:
+            continue
+        empty = [row.key for row in present if not row.values[lang].strip()]
+        if empty:
+            findings.append(Finding(
+                "WARN", display, f"[{lang}]",
+                f"{len(empty)}/{len(present)} empty {lang} values (fall back to en), "
+                f"first: {', '.join(empty[:3])}"))
 
 
 def run_lint(root):
@@ -222,6 +246,7 @@ def run_lint(root):
         check_placeholders(rel, rows, findings)
         check_length_limits(rel, rows, findings)
         check_warnings(rel, rows, findings)
+        check_optional_coverage(rel, rows, findings)
         all_rows.extend(rows)
     csv_keys = {row.key for row in all_rows}
     check_code_keys(root, csv_keys, findings)

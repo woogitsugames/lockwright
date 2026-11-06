@@ -1,232 +1,311 @@
-keys,en,pl,de
-boot.calib_title,Two taps 120 ms apart — how many do you feel and hear?,Dwa stuknięcia 120 ms od siebie — ile czujesz i słyszysz?,Zwei Impulse im Abstand von 120 ms — wie viele spürst und hörst du?
-boot.calib_two,Two,Dwa,Zwei
-boot.calib_one,One,Jedno,Einen
-boot.calib_none,None,Nic,Keinen
-boot.calib_skip,Skip,Pomiń,Überspringen
-settings.feel_section,Feel (haptics),Wyczucie (haptyka),Spielgefühl (Haptik)
-settings.quality,Graphics quality,Jakość grafiki,Grafikqualität
-settings.quality_auto,Auto (measured),Auto (mierzona),Automatisch (gemessen)
-settings.quality_high,High,Wysoka,Hoch
-settings.quality_medium,Medium,Średnia,Mittel
-settings.quality_low,Low (cheap phones),Niska (tanie telefony),Niedrig (einfachere Handys)
-showcase.notebook_prefix,From the master's notebook:,Z zeszytu mistrza:,Aus dem Heft des Meisters:
-about.licenses,"Fonts: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Engine: Godot 4 (MIT). Extensions: godot-cpp (MIT), GUT (MIT). Full list: THIRD-PARTY-NOTICES.txt in the app.","Fonty: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Silnik: Godot 4 (MIT). Rozszerzenia: godot-cpp (MIT), GUT (MIT). Pełna lista: THIRD-PARTY-NOTICES.txt w aplikacji.","Schriften: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Engine: Godot 4 (MIT). Erweiterungen: godot-cpp (MIT), GUT (MIT). Vollständige Liste: THIRD-PARTY-NOTICES.txt in der App."
-about.post_release_unlocked,Chapter 7 (A Shared Key) unlocked.,Rozdział 7 (Wspólny klucz) odblokowany.,Kapitel 7 („Ein gemeinsamer Schlüssel“) freigeschaltet.
-settings.report_problem,Report a problem,Zgłoś problem,Problem melden
-settings.report_copied,Log copied to clipboard. Paste it in your message — nothing is sent automatically.,Log skopiowany do schowka. Wklej go w wiadomość — nic nie jest wysyłane automatycznie.,Protokoll in die Zwischenablage kopiert. Füge es in deine Nachricht ein — es wird nichts automatisch gesendet.
-settings.report_empty,Log is empty.,Log jest pusty.,Protokoll leer.
-app.title,Lockwright: Locksmith on Call,Lockwright: Pogotowie Zamkowe,Lockwright: Schlüsseldienst
-common.back,Back,Wstecz,Zurück
-common.close,Close,Zamknij,Schließen
-common.on,On,Włączone,Ein
-common.off,Off,Wyłączone,Aus
-common.coins,coins,monet,Münzen
-menu.title,Lockwright,Lockwright,Lockwright
-menu.play,Start shift,Zacznij dyżur,Einsatz starten
-menu.workshop,Workshop,Warsztat,Werkstatt
-menu.showcase,Showcase,Gablota,Sammlung
-menu.settings,Settings,Ustawienia,Einstellungen
-menu.about,About the game,O grze,Über das Spiel
-menu.jobs,Jobs,Zlecenia,Aufträge
-jobs.title,Jobs,Zlecenia,Aufträge
-job.verify,Check right of entry,Sprawdź prawo do lokalu,Zutrittsberechtigung prüfen
-job.accept,Proceed with the job,Otwórz dla tego klienta,Für diesen Kunden öffnen
-job.refuse,Decline the job,Odmów,Auftrag ablehnen
-job.opened,Lock opened. Bill settled.,Zamek otwarty. Rachunek rozliczony.,Schloss geöffnet. Rechnung beglichen.
-job.reward_fmt,Reward: {n} coins,Nagroda: {n} monet,Belohnung: {n} Münzen
-job.tip_fmt,Tip (clean opening): {n} coins,Napiwek (czyste otwarcie): {n} monet,Trinkgeld (sauber geöffnet): {n} Münzen
-receipt.service,Emergency lock opening,Awaryjne otwarcie zamka,Notöffnung eines Schlosses
-receipt.tip,Tip (clean opening),Napiwek (czyste otwarcie),Trinkgeld (sauber geöffnet)
-common.continue,Continue,Kontynuuj,Weiter
-verify.title,Check right of entry,Sprawdź prawo do lokalu,Zutrittsberechtigung prüfen
-verify.hint,The client shows their evidence. You decide.,Klient kładzie karty na stole. Ty decydujesz.,Der Kunde legt die Nachweise vor. Du entscheidest.
-verify.ask_more,Ask for more evidence,Poproś o jeszcze jeden,Um einen weiteren Nachweis bitten
-verify.card.id,Identity document,Dokument tożsamości,Ausweis
-verify.card.witness,Neighbour as witness,Sąsiad-świadek,Zeuge
-verify.card.manager,Building manager / porter,Zarządca / portier,Hausverwaltung / Pförtner
-verify.card.lease,Lease agreement,Umowa najmu,Mietvertrag
-verify.card.resolution,Residents' resolution,Uchwała,Beschluss
-verify.card.deed,Deed,Akt własności,Eigentumsurkunde
-verify.card.inheritance,Inheritance document,Pismo spadkowe,Erbnachweis
-verify.card.institution,Letter from an institution,Pismo instytucji,Behördliches Schreiben
-verify.card.letter,Letter,List,Brief
-verify.card.photo,Photo,Zdjęcie,Foto
-verify.card.receipt,Receipt,Paragon,Kassenbon
-verify.card.invoice,Invoice,Faktura,Rechnung
-verify.card.address_app,Address shown in app,Adres w aplikacji,Adresse in der App
-verify.card.police,Police call-out,Wezwanie policji,Polizeianruf
-verify.card.bailiff,Bailiff,Bailiff,Gerichtsvollzieher
-verify.refused,Not enough evidence. I can't open this.,Za mało. Tego nie otwieram.,Das reicht nicht. Dieses Schloss öffne ich nicht.
-verify.refused_rep,Word gets around: +5 reputation,Słowo się niesie: +5 reputacji,Das spricht sich herum: +5 Ruf
-tutorial.title,Tutorial — practice lock,Samouczek — zamek ćwiczebny,Einführung – Übungsschloss
-tutorial.stage,Stage {n} of 3,Etap {n} z 3,Schritt {n} von 3
-tutorial.start,Start practice,Zacznij ćwiczenie,Übung starten
-tutorial.done,Practice complete. Your first real job is next.,Samouczek ukończony. Pierwsze prawdziwe zlecenie!,Einführung abgeschlossen. Der erste echte Auftrag!
-hud.magnifier,Magnifier,Lupa,Lupe
-settings.title,Settings,Ustawienia,Einstellungen
-settings.haptics,Haptics,Haptyka,Haptik
-settings.haptics_enabled,Haptics enabled,Haptyka włączona,Haptik aktiviert
-settings.haptics_intensity,Haptic strength,Intensywność haptyki,Haptikstärke
-settings.haptics_test,Test pulse,Impuls próbny,Testimpuls
-settings.haptics_calibration,Calibration,Kalibracja,Kalibrierung
-settings.haptics_calibration_two_clicks,Do you feel two clicks?,Czujesz dwa kliknięcia?,Spürst du zwei Klicks?
-settings.haptics_calibration_two_clicks_yes,Two,Dwa,Zwei
-settings.haptics_calibration_two_clicks_one,One,Jedno,Einen
-settings.haptics_calibration_two_clicks_none,No clicks,Nic,Nichts
-settings.continuous_resistance,Continuous resistance,Opór ciągły,Ständiger Widerstand
-settings.volume_master,Overall volume,Głośność główna,Gesamtlautstärke
-settings.volume_sfx,Sound effects,Dźwięki efektów,Soundeffekte
-settings.volume_ambience,Ambience,Tło,Umgebungsgeräusche
-settings.volume_voice,Voices,Głosy,Stimmen
-dialogue.skip_all,Show whole conversation,Pokaż całą rozmowę,Ganzes Gespräch zeigen
-settings.language,Language,Język,Sprache
-settings.language_system,Device language,Systemowy,System
-settings.language_pl,Polski,Polski,Polski
-settings.language_en,English,English,English
-settings.language_de,Deutsch (dev),Niemiecki (dev),Deutsch (dev)
-settings.dark_mode_assist,High contrast,Wsparcie kontrastu,Kontrasthilfe
-settings.reading_aid,Chalk markings,Warstwa kredy,Kreidemarkierungen
-settings.wide_windows,Wider windows,Szersze okna,Größere Sichtfenster
-settings.reset,Reset settings,Resetuj ustawienia,Einstellungen zurücksetzen
-settings.text_scale,Text size,Rozmiar tekstu,Textgröße
-settings.reduce_motion,Reduce motion,Ogranicz ruch,Bewegungen reduzieren
-settings.dark_mode_note,"In the dark, rely on sound. Phone haptics help too.",Tryb ciemny wymaga dźwięku (i haptyki na telefonie).,Dunkelmodus braucht Ton (und Haptik auf dem Handy).
-run.title,Endless shift,Tryb ciągły,Endloslauf
-run.lock_n,Lock {n},Zamek {n},Schloss {n}
-run.lives_left,Spare picks,Pozostałe życia,Verbleibende Versuche
-run.workshop_stop,Workshop break,Warsztat,Werkstattpause
-run.finished,Shift over — {n} coins,Seria zakończona — {n} monet,Lauf beendet – {n} Münzen
-run.rubber_band,Take a breath. An easier lock next.,Weź oddech. Prostszy zamek.,Ganz ruhig. Ein einfacheres Schloss.
-optics.loupe,Shear-line close-up,Lupa: makro linii podziału,Nahaufnahme der Scherlinie
-optics.microscope,Burrs and false gates,Zadziory i fałszywe bramki,Grate und falsche Kerben
-optics.borescope,Deep elements,Elementy głęboko w kanale,Tiefe Sperrelemente
-pause.title,Paused,Pauza,Pausiert
-pause.resume,Resume,Wznów,Fortsetzen
-pause.settings,Settings,Ustawienia,Einstellungen
-pause.dark_mode,In the dark,Tryb ciemny,Dunkelmodus
-pause.restart,Restart this lock,Od nowa zamek,Schloss neu starten
-pause.quit,Leave the lock,Wyjdź,Verlassen
-lock.pause,Pause,Pauza,Pause
-workshop.title,Workshop,Warsztat,Werkstatt
-workshop.coins,Coins,Monety,Münzen
-workshop.buy,Buy,Kup,Kaufen
-workshop.repair,Repair,Napraw,Reparieren
-workshop.owned,Owned,Masz,Im Besitz
-workshop.integrity,Tool condition,Integralność,Zustand
-workshop.repair_cost,Repair: {0} coins,Naprawa: {0} monet,Reparatur: {0} Münzen
-workshop.broken,Broken,Złamane,Defekt
-workshop.reward,Reward for progress,Nagroda za postęp,Belohnung für Fortschritt
-showcase.title,Showcase,Gablota,Sammlung
-showcase.locked,Locked — unlock it in the game,Zablokowane — odblokujesz w grze,Gesperrt — schalte es im Spiel frei
-showcase.source,Source,Źródło,Quelle
-showcase.unknown_source,Source not yet verified,Źródło niezweryfikowane,Quelle nicht verifiziert
-about.title,About the game,O grze,Über das Spiel
-about.notice,"This is a game, not a course. The mechanisms are invented and simplified. A real locksmith always checks that the customer has the right to enter the premises.","To gra, nie kurs. Mechanizmy są wymyślone i uproszczone. Prawdziwy ślusarz zawsze sprawdza, czy klient ma prawo wejść do lokalu.","Dies ist ein Spiel, kein Lehrgang. Die Mechanismen sind erfunden und vereinfacht. Ein echter Schlüsseldienst prüft immer, ob der Kunde zum Betreten berechtigt ist."
-about.licensed_assets,Assets and licenses,Zasoby i licencje,Assets und Lizenzen
-dev.haptics_lab.title,Haptics lab,Laboratorium haptyki,Haptik-Labor
-dev.haptics_lab.tier,Tier,Tier,Stufe
-dev.haptics_lab.force_fallback,Use fallback,Wymuś fallback,Fallback erzwingen
-dev.haptics_lab.resistance,Resistance,Opór,Widerstand
-dev.haptics_lab.caps,Capabilities,Możliwości,Möglichkeiten
-nav.quit_confirm,Quit the game?,Zakończyć grę?,Spiel beenden?
-nav.quit_yes,Quit,Zakończ,Beenden
-nav.quit_no,Keep playing,Zostań w grze,Weiterspielen
-menu.subtitle,Emergency Locksmith,Pogotowie Zamkowe,Schlüsselnotdienst
-settings.section_sound,Sound,Dźwięk,Ton
-settings.section_controls,Controls,Sterowanie,Steuerung
-settings.section_access,Language and accessibility,Język i dostępność,Sprache und Barrierefreiheit
-settings.section_other,Graphics and help,Grafika i pomoc,Grafik und Hilfe
-workshop.not_enough,Not enough coins,Za mało monet,Zu wenig Münzen
-workshop.price,Price: {0} coins,Cena: {0} monet,Preis: {0} Münzen
-workshop.reward_hint,Unlocks as you progress,Odblokujesz w trakcie gry,Schaltet sich mit dem Fortschritt frei
-arrival.situation,What happened,Co się stało,Was passiert ist
-ui.controls.title,How do you want to hold the tension?,Jak chcesz trzymać napięcie?,Wie willst du die Spannung halten?
-ui.controls.auto,Automatic tension — for beginners,Napięcie automatyczne — dla zaczynających,Automatische Spannung — für Einsteiger
-ui.controls.auto_desc,The tension holds itself at a safe level; one thumb guides the pick.,"Napięcie trzyma się samo na bezpiecznym poziomie, a ty prowadzisz wytrych jednym kciukiem.",Die Spannung hält sich selbst auf sicherem Niveau; ein Daumen führt den Haken.
-ui.controls.manual,Two thumbs — full feel,Dwa kciuki — pełne wyczucie,Zwei Daumen — volles Gefühl
-ui.controls.manual_desc,"Left thumb holds the tension, right thumb lifts the pins.","Lewy kciuk trzyma napięcie, prawy podnosi piny.","Linker Daumen hält die Spannung, rechter hebt die Stifte."
-ui.controls.note,You can change this anytime in Settings → Controls.,Zmienisz to w każdej chwili w Ustawieniach → Sterowanie.,Jederzeit änderbar unter Einstellungen → Steuerung.
-ui.controls.selected,Selected,Wybrane,Ausgewählt
-ui.controls.auto_toggle,Automatic tension,Napięcie automatyczne,Automatische Spannung
-practice.t01.goal,Hold steady until the wooden bolt yields.,"Trzymaj równo, aż drewniany rygiel ustąpi.","Halte ruhig, bis der Holzriegel nachgibt."
-practice.t02.goal,Feel which peg binds first; let the rest wait.,Wyśledź pierwszy kołek pod oporem. Reszta poczeka.,"Spür, welcher Holzstift zuerst klemmt; der Rest wartet."
-practice.t03.goal,Find the plate that resists; ignore the chatter.,"Szukaj płytki z oporem, nie tej najgłośniejszej.","Such das Plättchen mit Widerstand, nicht das lauteste."
-practice.t04.goal,Hear the true click before you move on.,"Usłysz prawdziwy klik, zanim ruszysz dalej.","Hör den echten Klick, bevor du weitermachst."
-practice.t05.goal,Find the clear gap; do not force the ward.,"Znajdź prześwit, nie forsuj przeszkody.",Finde die Lücke; zwing nichts an der Besatzung vorbei.
-practice.t06.goal,Compare the bits; the right fit speaks softly.,Porównaj końcówki. Dobre dopasowanie mówi cicho.,Vergleiche die Bärte; der passende spricht leise.
-practice.t07.goal,Push past the first click once; recognise the jam.,Raz dociśnij za klik i rozpoznaj zacięcie.,Drück einmal über den Klick hinaus; erkenne das Klemmen.
-practice.t08.goal,Overset a plate once; ease off without dropping the rest.,Raz przepchnij płytkę; cofnij nacisk bez utraty reszty.,"Drück ein Plättchen einmal zu weit; lass nach, ohne den Rest zu verlieren."
-practice.t09.goal,Listen for the first binding stack.,Wyłap pierwszy stos stawiający opór.,"Hör auf den ersten Stift, der klemmt."
-practice.t10.goal,Keep the settled stacks in place as you move.,"Trzymaj osadzone stosy, gdy zmieniasz pozycję.","Halte die gesetzten Stifte, während du weiterarbeitest."
-practice.t11.goal,Hear the detents; the gate sounds different.,Usłysz zapadki cyfr. Bramka brzmi inaczej.,Hör die Rasten; das Tor klingt anders.
-practice.t12.goal,Find the ring that binds; leave the others alone.,Znajdź wiążący pierścień. Pozostałe zostaw.,Finde den klemmenden Ring; lass die anderen in Ruhe.
-practice.t13.goal,Meet the spring bolt with measured force.,Podejdź do rygla sprężynowego z wyczuciem.,Begegne dem Federriegel mit maßvoller Kraft.
-practice.t14.goal,Work the narrower window with a quieter hand.,W wąskim oknie pracuj spokojniejszą ręką.,Im engeren Fenster arbeitet eine ruhigere Hand.
-practice.t15.goal,Cause one overset; release and recover calmly.,"Raz przepchnij stos, potem spokojnie go uwolnij.",Drück einmal zu weit; dann löse es in Ruhe.
-practice.t16.goal,Hear two binding wafers before lifting either.,"Usłysz opór dwóch płytek, zanim ruszysz którąkolwiek.","Hör zwei klemmende Plättchen, bevor du eines hebst."
-practice.t17.goal,"Feel the false notch, then seek the real gate.",Poczuj fałszywy rowek. Prawdziwa bramka jest dalej.,Spür die falsche Kerbe; das echte Tor liegt weiter.
-practice.t18.goal,Wait for the lever's proper gate click.,Poczekaj na właściwe kliknięcie bramki zapadki.,Warte auf den richtigen Klick am Tor der Zuhaltung.
-practice.t19.goal,Let the lever fall once; learn its spring.,Pozwól raz opaść zapadce. Zapamiętaj sprężynę.,Lass die Zuhaltung einmal fallen; lerne ihre Feder.
-practice.t20.goal,Separate a false set from the honest click.,Odróżnij fałszywe osadzenie od szczerego kliku.,Unterscheide den falschen Halt vom ehrlichen Klick.
-practice.t21.goal,"When the core turns back, keep your hand light.","Gdy rdzeń się cofa, prowadź narzędzie lekko.","Dreht der Kern zurück, führe die Hand leicht."
-practice.t22.goal,Catch the false gate; trust the second knock.,Złap fałszywą bramkę. Posłuchaj drugiego stuku.,Erkenne das falsche Tor; vertrau dem zweiten Klopfen.
-practice.t23.goal,Do not mistake a serration for a settled stack.,Nie pomyl ząbkowania z osadzonym stosem.,Verwechsle die Riffelung nicht mit einem gesetzten Stift.
-practice.t24.goal,Count every lever gate; no skipping.,Policz bramki każdej zapadki. Bez skrótów.,Zähl jedes Tor jeder Zuhaltung; nichts auslassen.
-practice.t25.goal,Hear spool and serration; do not confuse them.,Słuchaj szpulki i ząbkowania. Nie mieszaj ich sygnałów.,Hör Spule und Riffelung; verwechsle sie nicht.
-practice.t26.goal,Pass both false notches before the true gate.,"Miń dwa fałszywe rowki, zanim trafisz na bramkę.","Lass zwei falsche Kerben hinter dir, dann kommt das Tor."
-practice.t27.goal,Trip the detector once; recognise its warning.,Raz uruchom detektor i zapamiętaj ostrzeżenie.,Löse den Melder einmal aus; merk dir seine Warnung.
-practice.t28.goal,Trip it once; turn back and wait for the reset.,"Raz uruchom detektor, cofnij i zaczekaj na reset.",Löse ihn einmal aus; dreh zurück und warte auf den Reset.
-practice.t29.goal,Find the right resistance among faint signals.,Wśród cichych sygnałów znajdź właściwy opór.,Finde zwischen leisen Signalen den richtigen Widerstand.
-practice.t30.goal,Trip and reset once; then open without haste.,Raz uruchom i zresetuj detektor. Potem otwórz bez pośpiechu.,Einmal auslösen und zurücksetzen; dann ohne Eile öffnen.
-tutorial.s1_tension,Left thumb gently up. Easy does it.,"Lewy kciuk lekko w górę. Spokojnie, trzymaj.",Linker Daumen sanft hoch. Schön ruhig.
-tutorial.s1_pick,"Right thumb: sideways to choose, up to lift.","Prawy kciuk: w bok wybierz, w górę unieś.","Rechter Daumen: seitlich wählen, hochheben."
-tutorial.s1_binding,That pin is resisting. Just right.,Ten pin stawia opór. Dobrze.,Der Stift hält dagegen. Genau richtig.
-tutorial.s1_click,Click! One set. Find the next.,Klik! Jeden osiadł. Szukaj następnego.,Klick! Einer sitzt. Such den nächsten.
-tutorial.s1_overset,Too high. Release tension; try more gently.,Za wysoko. Puść napięcie i spróbuj lżej.,"Zu hoch. Spannung lösen, sanfter versuchen."
-tutorial.s1_overset_auto,Too high — tap the left side to let go of the tension,"Za wysoko — stuknij lewą stronę, żeby puścić napięcie","Zu hoch – tipp links, um die Spannung zu lösen"
-tutorial.s1_open,It's open. Nicely done. Steady hands.,"Otwarte. Dobra robota, spokojna ręka.",Offen. Gut gemacht. Ruhige Hand.
-tutorial.frame_tension,Left thumb: gently up — tension.,Lewy kciuk: lekko w górę — napięcie.,Linker Daumen: sanft hoch – Spannung.
-tutorial.frame_lift,"Right thumb: sideways to select, up to lift.","Prawy: w bok wybór, w górę podnoszenie.","Rechts: seitlich wählen, nach oben heben."
-tutorial.frame_click,Click — pin set. Find the next.,Klik — pin osiadł. Szukaj następnego.,Klick – Stift sitzt. Such den nächsten.
-tutorial.frame_lift_auto,"Slide to pick a pin, push up. The game holds tension.","W bok wybór pinu, w górę unoszenie. Napięcie trzyma gra.","Seitlich wählen, hoch heben. Spannung hält das Spiel."
-tutorial.note_game,"A game, not a course. The parts are invented.","To gra, nie kurs. Mechanizmy są wymyślone.","Ein Spiel, kein Kurs. Die Mechanik ist erfunden."
-lock.zone_tension,tension,napięcie,Spannung
-lock.flap_pause,pause,pauza,Pause
-lock.hint_tension,Pins feel loose? Hold a little left tension.,Piny luźne? Lewym kciukiem trzymaj napięcie.,Stifte locker? Links etwas Spannung halten.
-tutorial.s2_intro,Three pins. Only one resists at a time.,Trzy piny. Opór stawia tylko jeden naraz.,Drei Stifte. Nur einer sperrt zugleich.
-tutorial.s3_intro,A new order. Too far? Start lighter.,Inna kolejność. Za wysoko? Zacznij lżej.,Andere Reihenfolge. Zu hoch? Sanfter neu.
-tutorial.s1_near_break,Too much force. The tool is bending. Ease off.,Za mocno. Napinacz się ugina. Poluzuj.,Zu viel Druck. Der Spanner biegt sich. Lass locker.
-ui.job_done,done,wykonane,erledigt
-lock.dial_hint,Turn the dial with your right thumb; stop on each gate.,Prawy kciuk kręci pokrętłem. Zatrzymaj koło w bramce.,Rechter Daumen dreht die Scheibe; im Tor anhalten.
-lock.combo_hint,"Pull gently, roll the stiff wheel slowly to its notch.","Ciągnij lekko, oporne kółko kręć powoli do wcięcia.","Sanft ziehen, das schwere Rad langsam zur Kerbe drehen."
-lock.warded_reach,Slide the bit up or down until it fits the gap.,"Przesuwaj grot w górę lub w dół, aż wejdzie w szczelinę.","Bart verschieben, bis er genau in die Lücke passt."
-lock.warded_turn,"Left thumb: up turns the probe, down turns it back.","Lewy kciuk: w górę obraca sondę, w dół ją cofa.","Linker Daumen: hoch dreht die Sonde, runter zurück."
-lock.warded_turn_auto,Hold the right thumb to turn; the left turns back.,"Trzymaj prawy kciuk, by obracać. Lewy cofa.",Rechten Daumen halten zum Drehen; links dreht zurück.
-lock.warded_bit,"Bit too thick? Pull the probe out, tap its head.",Grot za gruby? Wyjmij sondę i stuknij w jej główkę.,"Bart zu dick? Sonde herausziehen, auf den Kopf tippen."
-lock.detector_reset,"Detector tripped. Ease off, turn back and hold.",Detektor zadziałał. Zwolnij i przytrzymaj obrót wstecz.,"Detektor ausgelöst. Locker lassen, zurückdrehen, halten."
-lock.detector_reset_auto,Detector tripped. Hold the left thumb to turn back.,"Detektor zadziałał. Przytrzymaj lewy kciuk, by cofnąć.",Detektor ausgelöst. Links halten zum Zurückdrehen.
-lock.wafer_coach,Lift a wafer until it sits flush with the plug.,"Unoś płytkę, aż zrówna się z rdzeniem.","Plättchen anheben, bis es bündig im Kern sitzt."
-lock.lever_coach,Lift the lever until its gate meets the stump.,"Unoś zapadkę, aż jej bramka trafi na trzpień.","Zuhaltung anheben, bis ihr Tor am Riegelstift sitzt."
-lock.hint_tension_wafer,Wafers feel loose? Hold a little left tension.,Płytki luźne? Lewym kciukiem trzymaj napięcie.,Plättchen locker? Links etwas Spannung halten.
-lock.hint_tension_lever,Levers feel loose? Hold a little left tension.,Zapadki luźne? Lewym kciukiem trzymaj napięcie.,Zuhaltungen locker? Links etwas Spannung halten.
-lock.disc_hint,"Light torque, turn the stiff disc until it settles.","Lekki moment, oporną tarczę kręć, aż siądzie.","Wenig Drehmoment, feste Scheibe drehen, bis sie sitzt."
-tutorial.say_tension,Hint: slide your left thumb slowly up and hold.,Wskazówka: lewy kciuk powoli w górę i trzymaj.,"Tipp: linken Daumen langsam hochziehen, halten."
-tutorial.say_lift,Hint: right thumb under the stiff part; lift slowly.,"Wskazówka: prawy kciuk pod oporny element, unoś wolno.","Tipp: rechter Daumen unters feste Teil, langsam heben."
-tutorial.say_warded,"Hint: slide the bit until it fits the gap, then turn.","Wskazówka: ustaw grot w szczelinie, potem obracaj.","Tipp: Bart in die Lücke schieben, dann drehen."
-tutorial.say_chalk,Hint: the chalk now marks what to do.,"Wskazówka: kreda pokazuje, co zrobić.","Tipp: Die Kreide zeigt jetzt, was zu tun ist."
-tutorial.say_master,The master's hand shows this step once. Then you.,Ręka mistrza raz pokaże ten krok. Potem ty.,Die Hand des Meisters zeigt es einmal. Dann du.
-tutorial.s1_pick_one,"Right thumb under the pin, then slowly up.","Prawy kciuk pod pin, potem powoli w górę.","Rechter Daumen unter den Stift, dann langsam hoch."
-settings.voice_pack.title_de,German voices,Głosy po niemiecku,Deutsche Stimmen
-settings.voice_pack.line,{title}: {state},{title}: {state},{title}: {state}
-settings.voice_pack.download,Download,Pobierz,Herunterladen
-settings.voice_pack.not_now,Not now,Nie teraz,Nicht jetzt
-settings.voice_pack.stop,Stop,Przerwij,Abbrechen
-settings.voice_pack.retry,Try again,Spróbuj ponownie,Erneut versuchen
-settings.voice_pack.progress,downloading {pct}%,pobieranie {pct}%,lädt {pct} %
-settings.voice_pack.verifying,checking the file,sprawdzanie pliku,Datei wird geprüft
-settings.voice_pack.ready,ready,gotowe,bereit
-settings.voice_pack.failed,Not downloaded. Subtitles stay on.,Nie pobrano. Napisy zostają.,Nicht geladen. Untertitel bleiben an.
-settings.voice_pack.offline,No connection. Subtitles stay on.,Brak sieci. Napisy zostają.,Kein Netz. Untertitel bleiben an.
-settings.voice_pack.auto,Auto-download voices,Pobieraj głosy automatycznie,Stimmen automatisch laden
-settings.voice_pack.note,"Only the voice file is fetched: no account, no tracking. Without it, dialogue has subtitles.",Pobieramy tylko plik z głosami: bez konta i bez śledzenia. Bez niego rozmowy mają napisy.,"Geladen wird nur die Sprachdatei: kein Konto, kein Tracking. Ohne sie laufen Gespräche mit Untertiteln."
+keys,en,pl,de,fr,es
+boot.calib_title,Two taps 120 ms apart — how many do you feel and hear?,Dwa stuknięcia 120 ms od siebie — ile czujesz i słyszysz?,Zwei Impulse im Abstand von 120 ms — wie viele spürst und hörst du?,Deux impulsions à 120 ms d'intervalle : combien en sens-tu et en entends-tu ?,Dos pulsos separados por 120 ms: ¿cuántos notas y oyes?
+boot.calib_two,Two,Dwa,Zwei,Deux,Dos
+boot.calib_one,One,Jedno,Einen,Une,Uno
+boot.calib_none,None,Nic,Keinen,Aucune,Ninguno
+boot.calib_skip,Skip,Pomiń,Überspringen,Passer,Omitir
+settings.feel_section,Feel (haptics),Wyczucie (haptyka),Spielgefühl (Haptik),Sensations (haptique),Sensación háptica
+settings.quality,Graphics quality,Jakość grafiki,Grafikqualität,Qualité graphique,Calidad gráfica
+settings.quality_auto,Auto (measured),Auto (mierzona),Automatisch (gemessen),Auto (mesurée),Automática (medida)
+settings.quality_high,High,Wysoka,Hoch,Élevée,Alta
+settings.quality_medium,Medium,Średnia,Mittel,Moyenne,Media
+settings.quality_low,Low (cheap phones),Niska (tanie telefony),Niedrig (einfachere Handys),Faible (tél. modestes),Baja (móviles sencillos)
+showcase.notebook_prefix,From the master's notebook:,Z zeszytu mistrza:,Aus dem Heft des Meisters:,Extrait du carnet du maître :,Del cuaderno del maestro:
+about.licenses,"Fonts: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Engine: Godot 4 (MIT). Extensions: godot-cpp (MIT), GUT (MIT). Full list: THIRD-PARTY-NOTICES.txt in the app.","Fonty: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Silnik: Godot 4 (MIT). Rozszerzenia: godot-cpp (MIT), GUT (MIT). Pełna lista: THIRD-PARTY-NOTICES.txt w aplikacji.","Schriften: Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Engine: Godot 4 (MIT). Erweiterungen: godot-cpp (MIT), GUT (MIT). Vollständige Liste: THIRD-PARTY-NOTICES.txt in der App.","Polices : Bona Nova, Atkinson Hyperlegible Next (SIL OFL 1.1). Moteur : Godot 4 (MIT). Extensions : godot-cpp (MIT), GUT (MIT). Liste complète : THIRD-PARTY-NOTICES.txt dans l'application.","Fuentes: Bona Nova y Atkinson Hyperlegible Next (SIL OFL 1.1). Motor: Godot 4 (MIT). Extensiones: godot-cpp (MIT), GUT (MIT). Lista completa: THIRD-PARTY-NOTICES.txt en la aplicación."
+about.post_release_unlocked,Chapter 7 (A Shared Key) unlocked.,Rozdział 7 (Wspólny klucz) odblokowany.,Kapitel 7 („Ein gemeinsamer Schlüssel“) freigeschaltet.,Chapitre 7 (« Une clé pour tous ») débloqué.,Capítulo 7 («Una llave compartida») desbloqueado.
+settings.report_problem,Report a problem,Zgłoś problem,Problem melden,Signaler un problème,Informar de un problema
+settings.report_copied,Log copied to clipboard. Paste it in your message — nothing is sent automatically.,Log skopiowany do schowka. Wklej go w wiadomość — nic nie jest wysyłane automatycznie.,Protokoll in die Zwischenablage kopiert. Füge es in deine Nachricht ein — es wird nichts automatisch gesendet.,Journal copié dans le presse-papiers. Colle-le dans ton message : aucun envoi automatique.,Registro copiado al portapapeles. Pégalo en tu mensaje; no se envía nada automáticamente.
+settings.report_empty,Log is empty.,Log jest pusty.,Protokoll leer.,Journal vide.,Registro vacío.
+app.title,Lockwright: Locksmith on Call,Lockwright: Pogotowie Zamkowe,Lockwright: Schlüsseldienst,Lockwright: Serrurier de garde,Lockwright: Cerrajero de turno
+common.back,Back,Wstecz,Zurück,Retour,Atrás
+common.close,Close,Zamknij,Schließen,Fermer,Cerrar
+common.on,On,Włączone,Ein,Activé,Activado
+common.off,Off,Wyłączone,Aus,Désactivé,Desactivado
+common.coins,coins,monet,Münzen,pièces,monedas
+menu.title,Lockwright,Lockwright,Lockwright,Lockwright,Lockwright
+menu.play,Start shift,Zacznij dyżur,Einsatz starten,Prendre son service,Empezar turno
+menu.workshop,Workshop,Warsztat,Werkstatt,Atelier,Taller
+menu.showcase,Showcase,Gablota,Sammlung,Vitrine,Vitrina
+menu.settings,Settings,Ustawienia,Einstellungen,Paramètres,Ajustes
+menu.about,About the game,O grze,Über das Spiel,À propos du jeu,Acerca del juego
+menu.jobs,Jobs,Zlecenia,Aufträge,Interventions,Encargos
+jobs.title,Jobs,Zlecenia,Aufträge,Interventions,Encargos
+job.verify,Check right of entry,Sprawdź prawo do lokalu,Zutrittsberechtigung prüfen,Vérifier le droit d'accès,Comprobar derecho de entrada
+job.accept,Proceed with the job,Otwórz dla tego klienta,Für diesen Kunden öffnen,Accepter l'intervention,Aceptar el encargo
+job.refuse,Decline the job,Odmów,Auftrag ablehnen,Refuser l'intervention,Rechazar el encargo
+job.opened,Lock opened. Bill settled.,Zamek otwarty. Rachunek rozliczony.,Schloss geöffnet. Rechnung beglichen.,Serrure ouverte. Facture réglée.,Cerradura abierta. Cuenta saldada.
+job.reward_fmt,Reward: {n} coins,Nagroda: {n} monet,Belohnung: {n} Münzen,Récompense : {n} pièces,Recompensa: {n} monedas
+job.tip_fmt,Tip (clean opening): {n} coins,Napiwek (czyste otwarcie): {n} monet,Trinkgeld (sauber geöffnet): {n} Münzen,Pourboire (ouverture soignée) : {n} pièces,Propina (apertura limpia): {n} monedas
+receipt.service,Emergency lock opening,Awaryjne otwarcie zamka,Notöffnung eines Schlosses,Ouverture d'urgence,Apertura de urgencia
+receipt.tip,Tip (clean opening),Napiwek (czyste otwarcie),Trinkgeld (sauber geöffnet),Pourboire (sans trace),Propina (sin marcas)
+common.continue,Continue,Kontynuuj,Weiter,Continuer,Continuar
+verify.title,Check right of entry,Sprawdź prawo do lokalu,Zutrittsberechtigung prüfen,Vérifier le droit d'accès,Comprobar derecho de entrada
+verify.hint,The client shows their evidence. You decide.,Klient kładzie karty na stole. Ty decydujesz.,Der Kunde legt die Nachweise vor. Du entscheidest.,Le client présente ses justificatifs. À toi de décider.,El cliente presenta sus pruebas. Tú decides.
+verify.ask_more,Ask for more evidence,Poproś o jeszcze jeden,Um einen weiteren Nachweis bitten,Demander un autre justificatif,Pedir más pruebas
+verify.card.id,Identity document,Dokument tożsamości,Ausweis,Pièce d'identité,Documento de identidad
+verify.card.witness,Neighbour as witness,Sąsiad-świadek,Zeuge,Voisin témoin,Vecino como testigo
+verify.card.manager,Building manager / porter,Zarządca / portier,Hausverwaltung / Pförtner,Gestionnaire / concierge,Administrador / portero
+verify.card.lease,Lease agreement,Umowa najmu,Mietvertrag,Contrat de bail,Contrato de alquiler
+verify.card.resolution,Residents' resolution,Uchwała,Beschluss,Décision des résidents,Acuerdo de los vecinos
+verify.card.deed,Deed,Akt własności,Eigentumsurkunde,Acte de propriété,Escritura de propiedad
+verify.card.inheritance,Inheritance document,Pismo spadkowe,Erbnachweis,Document de succession,Documento sucesorio
+verify.card.institution,Letter from an institution,Pismo instytucji,Behördliches Schreiben,Courrier d'un organisme,Carta de una institución
+verify.card.letter,Letter,List,Brief,Lettre,Carta
+verify.card.photo,Photo,Zdjęcie,Foto,Photo,Foto
+verify.card.receipt,Receipt,Paragon,Kassenbon,Ticket de caisse,Recibo
+verify.card.invoice,Invoice,Faktura,Rechnung,Facture,Factura
+verify.card.address_app,Address shown in app,Adres w aplikacji,Adresse in der App,Adresse dans l'application,Dirección en la aplicación
+verify.card.police,Police call-out,Wezwanie policji,Polizeianruf,Appel à la police,Intervención policial
+verify.card.bailiff,Bailiff,Bailiff,Gerichtsvollzieher,Huissier de justice,Agente judicial
+verify.refused,Not enough evidence. I can't open this.,Za mało. Tego nie otwieram.,Das reicht nicht. Dieses Schloss öffne ich nicht.,Les justificatifs ne suffisent pas. Je ne peux pas ouvrir.,No hay pruebas suficientes. No puedo abrir.
+verify.refused_rep,Word gets around: +5 reputation,Słowo się niesie: +5 reputacji,Das spricht sich herum: +5 Ruf,La nouvelle circule : +5 de réputation,La voz corre: +5 de reputación
+tutorial.title,Tutorial — practice lock,Samouczek — zamek ćwiczebny,Einführung – Übungsschloss,Tutoriel : serrure d'essai,Tutorial: cerradura de práctica
+tutorial.stage,Stage {n} of 3,Etap {n} z 3,Schritt {n} von 3,Étape {n} sur 3,Fase {n} de 3
+tutorial.start,Start practice,Zacznij ćwiczenie,Übung starten,Commencer l'entraînement,Empezar la práctica
+tutorial.done,Practice complete. Your first real job is next.,Samouczek ukończony. Pierwsze prawdziwe zlecenie!,Einführung abgeschlossen. Der erste echte Auftrag!,Entraînement terminé. Place à la première intervention.,Práctica completada. Ahora llega tu primer encargo real.
+hud.magnifier,Magnifier,Lupa,Lupe,Loupe,Lupa
+settings.title,Settings,Ustawienia,Einstellungen,Paramètres,Ajustes
+settings.haptics,Haptics,Haptyka,Haptik,Retour haptique,Háptica
+settings.haptics_enabled,Haptics enabled,Haptyka włączona,Haptik aktiviert,Retour haptique activé,Háptica activada
+settings.haptics_intensity,Haptic strength,Intensywność haptyki,Haptikstärke,Intensité haptique,Intensidad háptica
+settings.haptics_test,Test pulse,Impuls próbny,Testimpuls,Impulsion d'essai,Pulso de prueba
+settings.haptics_calibration,Calibration,Kalibracja,Kalibrierung,Étalonnage,Calibración
+settings.haptics_calibration_two_clicks,Do you feel two clicks?,Czujesz dwa kliknięcia?,Spürst du zwei Klicks?,Tu sens deux clics ?,¿Notas dos clics?
+settings.haptics_calibration_two_clicks_yes,Two,Dwa,Zwei,Deux,Dos
+settings.haptics_calibration_two_clicks_one,One,Jedno,Einen,Un,Uno
+settings.haptics_calibration_two_clicks_none,No clicks,Nic,Nichts,Aucun,Ningún clic
+settings.continuous_resistance,Continuous resistance,Opór ciągły,Ständiger Widerstand,Résistance continue,Resistencia continua
+settings.volume_master,Overall volume,Głośność główna,Gesamtlautstärke,Volume général,Volumen general
+settings.volume_sfx,Sound effects,Dźwięki efektów,Soundeffekte,Effets sonores,Efectos de sonido
+settings.volume_ambience,Ambience,Tło,Umgebungsgeräusche,Ambiance sonore,Sonido ambiente
+settings.volume_voice,Voices,Głosy,Stimmen,Voix,Voces
+dialogue.skip_all,Show whole conversation,Pokaż całą rozmowę,Ganzes Gespräch zeigen,Afficher tout le dialogue,Ver todo el diálogo
+settings.language,Language,Język,Sprache,Langue,Idioma
+settings.language_system,Device language,Systemowy,System,Langue du système,Idioma del sistema
+settings.language_pl,Polski,Polski,Polski,Polski,Polski
+settings.language_en,English,English,English,English,English
+settings.language_de,Deutsch (dev),Niemiecki (dev),Deutsch (dev),Deutsch (développement),Deutsch (dev)
+settings.language_fr,Français (dev),Francuski (dev),Französisch (dev),Français (dev),Francés (dev)
+settings.language_es,Español (dev),Hiszpański (dev),Spanisch (dev),Espagnol (dev),Español (dev)
+settings.dark_mode_assist,High contrast,Wsparcie kontrastu,Kontrasthilfe,Contraste élevé,Contraste alto
+settings.reading_aid,Chalk markings,Warstwa kredy,Kreidemarkierungen,Repères à la craie,Marcas de tiza
+settings.wide_windows,Wider windows,Szersze okna,Größere Sichtfenster,Fenêtres élargies,Ventanas amplias
+settings.reset,Reset settings,Resetuj ustawienia,Einstellungen zurücksetzen,Réinitialiser les paramètres,Restablecer ajustes
+settings.text_scale,Text size,Rozmiar tekstu,Textgröße,Taille du texte,Tamaño del texto
+settings.reduce_motion,Reduce motion,Ogranicz ruch,Bewegungen reduzieren,Réduire les animations,Reducir movimiento
+settings.dark_mode_note,"In the dark, rely on sound. Phone haptics help too.",Tryb ciemny wymaga dźwięku (i haptyki na telefonie).,Dunkelmodus braucht Ton (und Haptik auf dem Handy).,"Dans le noir, fie-toi au son. Les vibrations du téléphone aident aussi.","A oscuras, guíate por el sonido. La háptica del móvil también ayuda."
+run.title,Endless shift,Tryb ciągły,Endloslauf,Service sans fin,Turno continuo
+run.lock_n,Lock {n},Zamek {n},Schloss {n},Serrure {n},Cerradura {n}
+run.lives_left,Spare picks,Pozostałe życia,Verbleibende Versuche,Crochets de rechange,Ganzúas de repuesto
+run.workshop_stop,Workshop break,Warsztat,Werkstattpause,Pause à l'atelier,Pausa en el taller
+run.finished,Shift over — {n} coins,Seria zakończona — {n} monet,Lauf beendet – {n} Münzen,Fin du service — {n} pièces,Fin del turno: {n} monedas
+run.rubber_band,Take a breath. An easier lock next.,Weź oddech. Prostszy zamek.,Ganz ruhig. Ein einfacheres Schloss.,Respire. La suite sera plus facile.,Respira. La siguiente será más fácil.
+optics.loupe,Shear-line close-up,Lupa: makro linii podziału,Nahaufnahme der Scherlinie,Gros plan sur la ligne de césure,Detalle: línea de corte
+optics.microscope,Burrs and false gates,Zadziory i fałszywe bramki,Grate und falsche Kerben,Bavures et fausses encoches,Rebabas y muescas falsas
+optics.borescope,Deep elements,Elementy głęboko w kanale,Tiefe Sperrelemente,Pièces en profondeur,Elementos internos
+pause.title,Paused,Pauza,Pausiert,En pause,En pausa
+pause.resume,Resume,Wznów,Fortsetzen,Reprendre,Reanudar
+pause.settings,Settings,Ustawienia,Einstellungen,Paramètres,Ajustes
+pause.dark_mode,In the dark,Tryb ciemny,Dunkelmodus,Dans le noir,A oscuras
+pause.restart,Restart this lock,Od nowa zamek,Schloss neu starten,Recommencer cette serrure,Reiniciar esta cerradura
+pause.quit,Leave the lock,Wyjdź,Verlassen,Quitter la serrure,Salir de la cerradura
+lock.pause,Pause,Pauza,Pause,Pause,Pausa
+workshop.title,Workshop,Warsztat,Werkstatt,Atelier,Taller
+workshop.coins,Coins,Monety,Münzen,Pièces,Monedas
+workshop.buy,Buy,Kup,Kaufen,Acheter,Comprar
+workshop.repair,Repair,Napraw,Reparieren,Réparer,Reparar
+workshop.owned,Owned,Masz,Im Besitz,Possédé,En propiedad
+workshop.integrity,Tool condition,Integralność,Zustand,État de l'outil,Estado de la herramienta
+workshop.repair_cost,Repair: {0} coins,Naprawa: {0} monet,Reparatur: {0} Münzen,Réparation : {0} pièces,Reparación: {0} monedas
+workshop.broken,Broken,Złamane,Defekt,Cassé,Rota
+workshop.reward,Reward for progress,Nagroda za postęp,Belohnung für Fortschritt,Prime de progression,Recompensa por avanzar
+showcase.title,Showcase,Gablota,Sammlung,Vitrine,Vitrina
+showcase.locked,Locked — unlock it in the game,Zablokowane — odblokujesz w grze,Gesperrt — schalte es im Spiel frei,Verrouillé — à débloquer dans le jeu,Bloqueada: desbloquéala jugando
+showcase.source,Source,Źródło,Quelle,Source,Fuente
+showcase.unknown_source,Source not yet verified,Źródło niezweryfikowane,Quelle nicht verifiziert,Source non encore vérifiée,Fuente aún sin verificar
+about.title,About the game,O grze,Über das Spiel,À propos du jeu,Acerca del juego
+about.notice,"This is a game, not a course. The mechanisms are invented and simplified. A real locksmith always checks that the customer has the right to enter the premises.","To gra, nie kurs. Mechanizmy są wymyślone i uproszczone. Prawdziwy ślusarz zawsze sprawdza, czy klient ma prawo wejść do lokalu.","Dies ist ein Spiel, kein Lehrgang. Die Mechanismen sind erfunden und vereinfacht. Ein echter Schlüsseldienst prüft immer, ob der Kunde zum Betreten berechtigt ist.","Ceci est un jeu, pas une formation. Les mécanismes sont inventés et simplifiés. Un serrurier responsable vérifie que le client est autorisé à entrer.","Esto es un juego, no un curso. Los mecanismos son inventados y simplificados. Un cerrajero responsable comprueba que el cliente esté autorizado a entrar."
+about.licensed_assets,Assets and licenses,Zasoby i licencje,Assets und Lizenzen,Ressources et licences,Recursos y licencias
+dev.haptics_lab.title,Haptics lab,Laboratorium haptyki,Haptik-Labor,Laboratoire haptique,Laboratorio de háptica
+dev.haptics_lab.tier,Tier,Tier,Stufe,Niveau,Nivel
+dev.haptics_lab.force_fallback,Use fallback,Wymuś fallback,Fallback erzwingen,Mode de secours,Modo alternativo
+dev.haptics_lab.resistance,Resistance,Opór,Widerstand,Résistance,Resistencia
+dev.haptics_lab.caps,Capabilities,Możliwości,Möglichkeiten,Capacités,Capacidades
+nav.quit_confirm,Quit the game?,Zakończyć grę?,Spiel beenden?,Quitter le jeu ?,¿Salir del juego?
+nav.quit_yes,Quit,Zakończ,Beenden,Quitter,Salir
+nav.quit_no,Keep playing,Zostań w grze,Weiterspielen,Continuer à jouer,Seguir jugando
+menu.subtitle,Emergency Locksmith,Pogotowie Zamkowe,Schlüsselnotdienst,Serrurier de garde,Cerrajero de guardia
+settings.section_sound,Sound,Dźwięk,Ton,Son,Sonido
+settings.section_controls,Controls,Sterowanie,Steuerung,Commandes,Controles
+settings.section_access,Language and accessibility,Język i dostępność,Sprache und Barrierefreiheit,Langue et accessibilité,Idioma y accesibilidad
+settings.section_other,Graphics and help,Grafika i pomoc,Grafik und Hilfe,Graphismes et aide,Gráficos y ayuda
+workshop.not_enough,Not enough coins,Za mało monet,Zu wenig Münzen,Pas assez de pièces,Faltan monedas
+workshop.price,Price: {0} coins,Cena: {0} monet,Preis: {0} Münzen,Prix : {0} pièces,Precio: {0} monedas
+workshop.reward_hint,Unlocks as you progress,Odblokujesz w trakcie gry,Schaltet sich mit dem Fortschritt frei,Se débloque en avançant,Se desbloquea al avanzar
+arrival.situation,What happened,Co się stało,Was passiert ist,Situation,Qué pasó
+ui.controls.title,How do you want to hold the tension?,Jak chcesz trzymać napięcie?,Wie willst du die Spannung halten?,Comment tenir la tension ?,¿Cómo quieres mantener la tensión?
+ui.controls.auto,Automatic tension — for beginners,Napięcie automatyczne — dla zaczynających,Automatische Spannung — für Einsteiger,Tension auto — pour débuter,Tensión automática — para empezar
+ui.controls.auto_desc,The tension holds itself at a safe level; one thumb guides the pick.,"Napięcie trzyma się samo na bezpiecznym poziomie, a ty prowadzisz wytrych jednym kciukiem.",Die Spannung hält sich selbst auf sicherem Niveau; ein Daumen führt den Haken.,La tension reste douce; un pouce guide le crochet.,La tensión se regula sola; un pulgar guía la ganzúa.
+ui.controls.manual,Two thumbs — full feel,Dwa kciuki — pełne wyczucie,Zwei Daumen — volles Gefühl,Deux pouces — tout sentir,Dos pulgares — control total
+ui.controls.manual_desc,"Left thumb holds the tension, right thumb lifts the pins.","Lewy kciuk trzyma napięcie, prawy podnosi piny.","Linker Daumen hält die Spannung, rechter hebt die Stifte.",Pouce gauche : tension; pouce droit : goupilles.,Pulgar izquierdo: tensión; derecho: eleva los pernos.
+ui.controls.note,You can change this anytime in Settings → Controls.,Zmienisz to w każdej chwili w Ustawieniach → Sterowanie.,Jederzeit änderbar unter Einstellungen → Steuerung.,"Modifiable dans Réglages → Commandes, à tout moment.",Puedes cambiarlo en Ajustes → Controles cuando quieras.
+ui.controls.selected,Selected,Wybrane,Ausgewählt,Choisi,Elegido
+ui.controls.auto_toggle,Automatic tension,Napięcie automatyczne,Automatische Spannung,Tension automatique,Tensión automática
+practice.t01.goal,Hold steady until the wooden bolt yields.,"Trzymaj równo, aż drewniany rygiel ustąpi.","Halte ruhig, bis der Holzriegel nachgibt.",Garde l'effort régulier; le verrou cède.,Mantén firme hasta que ceda el cerrojo de madera.
+practice.t02.goal,Feel which peg binds first; let the rest wait.,Wyśledź pierwszy kołek pod oporem. Reszta poczeka.,"Spür, welcher Holzstift zuerst klemmt; der Rest wartet.",Repère la cheville qui coince; les autres attendent.,Siente qué clavija se atasca primero; las demás esperan.
+practice.t03.goal,Find the plate that resists; ignore the chatter.,"Szukaj płytki z oporem, nie tej najgłośniejszej.","Such das Plättchen mit Widerstand, nicht das lauteste.","Trouve la plaque qui résiste, oublie le bruit.","Busca la placa que ofrece resistencia, no el ruido."
+practice.t04.goal,Hear the true click before you move on.,"Usłysz prawdziwy klik, zanim ruszysz dalej.","Hör den echten Klick, bevor du weitermachst.",Écoute le vrai clic avant de poursuivre.,Oye el clic verdadero antes de seguir.
+practice.t05.goal,Find the clear gap; do not force the ward.,"Znajdź prześwit, nie forsuj przeszkody.",Finde die Lücke; zwing nichts an der Besatzung vorbei.,"Trouve le passage, sans forcer l'obstacle.",Halla el hueco; no fuerces el obstáculo.
+practice.t06.goal,Compare the bits; the right fit speaks softly.,Porównaj końcówki. Dobre dopasowanie mówi cicho.,Vergleiche die Bärte; der passende spricht leise.,Compare les embouts; le bon se fait discret.,Compara las puntas; la correcta habla bajito.
+practice.t07.goal,Push past the first click once; recognise the jam.,Raz dociśnij za klik i rozpoznaj zacięcie.,Drück einmal über den Klick hinaus; erkenne das Klemmen.,Va trop loin après un clic; reconnais le blocage.,Ve más allá del primer clic; nota el atasco.
+practice.t08.goal,Overset a plate once; ease off without dropping the rest.,Raz przepchnij płytkę; cofnij nacisk bez utraty reszty.,"Drück ein Plättchen einmal zu weit; lass nach, ohne den Rest zu verlieren.",Pousse une plaque trop loin; relâche sans perdre les autres.,Pasa una placa de más; afloja sin perder las otras.
+practice.t09.goal,Listen for the first binding stack.,Wyłap pierwszy stos stawiający opór.,"Hör auf den ersten Stift, der klemmt.",Écoute quelle pile résiste en premier.,Escucha qué conjunto se atasca primero.
+practice.t10.goal,Keep the settled stacks in place as you move.,"Trzymaj osadzone stosy, gdy zmieniasz pozycję.","Halte die gesetzten Stifte, während du weiterarbeitest.",Garde les piles placées en changeant de position.,Mantén los pernos colocados mientras te mueves.
+practice.t11.goal,Hear the detents; the gate sounds different.,Usłysz zapadki cyfr. Bramka brzmi inaczej.,Hör die Rasten; das Tor klingt anders.,Écoute les crans; le passage sonne autrement.,Escucha las muescas; el paso suena distinto.
+practice.t12.goal,Find the ring that binds; leave the others alone.,Znajdź wiążący pierścień. Pozostałe zostaw.,Finde den klemmenden Ring; lass die anderen in Ruhe.,Trouve l'anneau bloqué; laisse les autres.,Halla el aro atascado; deja los demás.
+practice.t13.goal,Meet the spring bolt with measured force.,Podejdź do rygla sprężynowego z wyczuciem.,Begegne dem Federriegel mit maßvoller Kraft.,Aborde le pêne à ressort avec mesure.,Trata el pestillo de resorte con tacto.
+practice.t14.goal,Work the narrower window with a quieter hand.,W wąskim oknie pracuj spokojniejszą ręką.,Im engeren Fenster arbeitet eine ruhigere Hand.,"Dans l'ouverture étroite, gestes plus doux.","En el hueco estrecho, manos más suaves."
+practice.t15.goal,Cause one overset; release and recover calmly.,"Raz przepchnij stos, potem spokojnie go uwolnij.",Drück einmal zu weit; dann löse es in Ruhe.,Va trop loin une fois; relâche et reprends calmement.,Aprieta de más una vez; suelta y recupera.
+practice.t16.goal,Hear two binding wafers before lifting either.,"Usłysz opór dwóch płytek, zanim ruszysz którąkolwiek.","Hör zwei klemmende Plättchen, bevor du eines hebst.",Écoute deux lamelles qui résistent avant d'agir.,Escucha dos placas trabadas antes de moverlas.
+practice.t17.goal,"Feel the false notch, then seek the real gate.",Poczuj fałszywy rowek. Prawdziwa bramka jest dalej.,Spür die falsche Kerbe; das echte Tor liegt weiter.,"Sens le faux cran, puis cherche le vrai passage.",Siente la muesca falsa; busca el paso real.
+practice.t18.goal,Wait for the lever's proper gate click.,Poczekaj na właściwe kliknięcie bramki zapadki.,Warte auf den richtigen Klick am Tor der Zuhaltung.,Attends le clic juste du levier.,Espera el clic correcto de la palanca.
+practice.t19.goal,Let the lever fall once; learn its spring.,Pozwól raz opaść zapadce. Zapamiętaj sprężynę.,Lass die Zuhaltung einmal fallen; lerne ihre Feder.,Laisse tomber le levier; retiens l'effet du ressort.,Deja caer la palanca una vez; nota el resorte.
+practice.t20.goal,Separate a false set from the honest click.,Odróżnij fałszywe osadzenie od szczerego kliku.,Unterscheide den falschen Halt vom ehrlichen Klick.,Distingue le faux calage du clic net.,Distingue el falso ajuste del clic auténtico.
+practice.t21.goal,"When the core turns back, keep your hand light.","Gdy rdzeń się cofa, prowadź narzędzie lekko.","Dreht der Kern zurück, führe die Hand leicht.","Quand le noyau revient, garde la main légère.","Si el núcleo retrocede, mantén la mano ligera."
+practice.t22.goal,Catch the false gate; trust the second knock.,Złap fałszywą bramkę. Posłuchaj drugiego stuku.,Erkenne das falsche Tor; vertrau dem zweiten Klopfen.,Repère la fausse encoche; écoute le second toc.,Detecta la puerta falsa; escucha el segundo toque.
+practice.t23.goal,Do not mistake a serration for a settled stack.,Nie pomyl ząbkowania z osadzonym stosem.,Verwechsle die Riffelung nicht mit einem gesetzten Stift.,Ne confonds pas rainures et pile bien posée.,No confundas las muescas con un perno colocado.
+practice.t24.goal,Count every lever gate; no skipping.,Policz bramki każdej zapadki. Bez skrótów.,Zähl jedes Tor jeder Zuhaltung; nichts auslassen.,"Compte les encoches des leviers, sans sauter.","Cuenta cada puerta de palanca, sin saltos."
+practice.t25.goal,Hear spool and serration; do not confuse them.,Słuchaj szpulki i ząbkowania. Nie mieszaj ich sygnałów.,Hör Spule und Riffelung; verwechsle sie nicht.,Écoute bobine et stries; distingue-les.,Escucha bobina y estrías; no las confundas.
+practice.t26.goal,Pass both false notches before the true gate.,"Miń dwa fałszywe rowki, zanim trafisz na bramkę.","Lass zwei falsche Kerben hinter dir, dann kommt das Tor.",Passe deux faux crans avant le vrai passage.,Pasa dos muescas falsas antes de la real.
+practice.t27.goal,Trip the detector once; recognise its warning.,Raz uruchom detektor i zapamiętaj ostrzeżenie.,Löse den Melder einmal aus; merk dir seine Warnung.,Active le détecteur une fois; reconnais l'alerte.,Activa el detector una vez; recuerda su aviso.
+practice.t28.goal,Trip it once; turn back and wait for the reset.,"Raz uruchom detektor, cofnij i zaczekaj na reset.",Löse ihn einmal aus; dreh zurück und warte auf den Reset.,"Active-le, reviens et attends la remise à zéro.","Actívalo, vuelve y espera el reinicio."
+practice.t29.goal,Find the right resistance among faint signals.,Wśród cichych sygnałów znajdź właściwy opór.,Finde zwischen leisen Signalen den richtigen Widerstand.,Trouve la bonne résistance parmi les signes faibles.,Halla la resistencia entre señales leves.
+practice.t30.goal,Trip and reset once; then open without haste.,Raz uruchom i zresetuj detektor. Potem otwórz bez pośpiechu.,Einmal auslösen und zurücksetzen; dann ohne Eile öffnen.,Déclenche et réarme; puis ouvre sans te presser.,Activa y reinicia; luego abre sin prisas.
+tutorial.s1_tension,Left thumb gently up. Easy does it.,"Lewy kciuk lekko w górę. Spokojnie, trzymaj.",Linker Daumen sanft hoch. Schön ruhig.,"Pouce gauche, doucement vers le haut. Voilà.","Pulgar izquierdo arriba, suave. Sin prisa."
+tutorial.s1_pick,"Right thumb: sideways to choose, up to lift.","Prawy kciuk: w bok wybierz, w górę unieś.","Rechter Daumen: seitlich wählen, hochheben.","Pouce droit : côté pour choisir, haut pour lever.","Pulgar derecho: al lado eliges, arriba elevas."
+tutorial.s1_binding,That pin is resisting. Just right.,Ten pin stawia opór. Dobrze.,Der Stift hält dagegen. Genau richtig.,Cette goupille résiste. Bien vu.,Ese perno se resiste. Así está bien.
+tutorial.s1_click,Click! One set. Find the next.,Klik! Jeden osiadł. Szukaj następnego.,Klick! Einer sitzt. Such den nächsten.,Clic ! Une en place. La suivante.,¡Clic! Uno listo. Busca el siguiente.
+tutorial.s1_overset,Too high. Release tension; try more gently.,Za wysoko. Puść napięcie i spróbuj lżej.,"Zu hoch. Spannung lösen, sanfter versuchen.","Trop haut. Relâche la tension, plus doucement.",Muy alto. Suelta tensión y prueba más suave.
+tutorial.s1_overset_auto,Too high — tap the left side to let go of the tension,"Za wysoko — stuknij lewą stronę, żeby puścić napięcie","Zu hoch – tipp links, um die Spannung zu lösen",Trop haut : touche à gauche pour relâcher.,Muy alto: toca a la izquierda para soltar tensión.
+tutorial.s1_open,It's open. Nicely done. Steady hands.,"Otwarte. Dobra robota, spokojna ręka.",Offen. Gut gemacht. Ruhige Hand.,"Ouvert. Bravo, la main tranquille.",Abierto. Bien hecho. Mano tranquila.
+tutorial.frame_tension,Left thumb: gently up — tension.,Lewy kciuk: lekko w górę — napięcie.,Linker Daumen: sanft hoch – Spannung.,"Pouce gauche : monte doucement, tension.","Pulgar izquierdo: arriba con suavidad, tensión."
+tutorial.frame_lift,"Right thumb: sideways to select, up to lift.","Prawy: w bok wybór, w górę podnoszenie.","Rechts: seitlich wählen, nach oben heben.","Pouce droit : côté pour choisir, haut pour lever.","Pulgar derecho: al lado eliges, arriba elevas."
+tutorial.frame_click,Click — pin set. Find the next.,Klik — pin osiadł. Szukaj następnego.,Klick – Stift sitzt. Such den nächsten.,"Clic, goupille posée. À la suivante.",Clic: perno colocado. Sigue con otro.
+tutorial.frame_lift_auto,"Slide to pick a pin, push up. The game holds tension.","W bok wybór pinu, w górę unoszenie. Napięcie trzyma gra.","Seitlich wählen, hoch heben. Spannung hält das Spiel.",Un pouce choisit et lève; le jeu garde la tension.,Un pulgar elige y eleva; el juego da tensión.
+tutorial.note_game,"A game, not a course. The parts are invented.","To gra, nie kurs. Mechanizmy są wymyślone.","Ein Spiel, kein Kurs. Die Mechanik ist erfunden.","Un jeu, pas un cours. Les pièces sont imaginaires.","Un juego, no un curso. Piezas inventadas."
+lock.zone_tension,tension,napięcie,Spannung,force,tensión
+lock.flap_pause,pause,pauza,Pause,arrêt,pausa
+lock.hint_tension,Pins feel loose? Hold a little left tension.,Piny luźne? Lewym kciukiem trzymaj napięcie.,Stifte locker? Links etwas Spannung halten.,Goupilles libres ? Tends doucement à gauche.,¿Pernos sueltos? Pon algo de tensión a la izquierda.
+tutorial.s2_intro,Three pins. Only one resists at a time.,Trzy piny. Opór stawia tylko jeden naraz.,Drei Stifte. Nur einer sperrt zugleich.,Trois goupilles. Une seule résiste à la fois.,Tres pernos. Solo uno ofrece resistencia.
+tutorial.s3_intro,A new order. Too far? Start lighter.,Inna kolejność. Za wysoko? Zacznij lżej.,Andere Reihenfolge. Zu hoch? Sanfter neu.,Nouvel ordre. Trop haut ? Reprends doucement.,Nuevo orden. ¿Muy alto? Empieza más suave.
+tutorial.s1_near_break,Too much force. The tool is bending. Ease off.,Za mocno. Napinacz się ugina. Poluzuj.,Zu viel Druck. Der Spanner biegt sich. Lass locker.,Trop fort. L'outil plie. Relâche un peu.,Fuerza excesiva. La herramienta se dobla. Afloja.
+ui.job_done,done,wykonane,erledigt,fait,listo
+lock.dial_hint,Right thumb turns the dial; left feels the handle.,"Prawy kręci pokrętłem, lewy lekko dociska klamkę.","Rechts drehst du die Scheibe, links fühlst du den Griff.",Droit : tourne le cadran. Gauche : sens la poignée.,Derecho: gira el dial. Izquierdo: nota la manija.
+lock.combo_hint,Left pulls lightly; right rolls one wheel slowly.,"Lewy lekko ciągnie, prawy wolno toczy kółko.","Links leicht ziehen, rechts langsam ein Rad rollen.","Gauche tire doucement, droit roule lentement une roue.",Izquierdo: tira suave. Derecho: gira una rueda despacio.
+lock.warded_reach,Slide the bit up or down until it fits the gap.,"Przesuwaj grot w górę lub w dół, aż wejdzie w szczelinę.","Bart verschieben, bis er genau in die Lücke passt.",Monte ou baisse l'embout jusqu'à trouver l'espace.,Sube o baja la punta hasta que encaje.
+lock.warded_turn,"Left thumb: up turns the probe, down turns it back.","Lewy kciuk: w górę obraca sondę, w dół ją cofa.","Linker Daumen: hoch dreht die Sonde, runter zurück.","Pouce gauche : en haut tourne, en bas revient.","Pulgar izquierdo: arriba gira, abajo vuelve."
+lock.warded_turn_auto,Hold the right thumb to turn; the left turns back.,"Trzymaj prawy kciuk, by obracać. Lewy cofa.",Rechten Daumen halten zum Drehen; links dreht zurück.,Pouce droit maintenu : tourne. Le gauche revient.,Pulgar derecho para girar; el izquierdo vuelve.
+lock.warded_bit,"Bit too thick? Pull the probe out, tap its head.",Grot za gruby? Wyjmij sondę i stuknij w jej główkę.,"Bart zu dick? Sonde herausziehen, auf den Kopf tippen.","Embout trop épais ? Sors la sonde, touche sa tête.",¿Punta muy gruesa? Saca la sonda y toca el cabezal.
+lock.detector_reset,"Detector tripped. Ease off, turn back and hold.",Detektor zadziałał. Zwolnij i przytrzymaj obrót wstecz.,"Detektor ausgelöst. Locker lassen, zurückdrehen, halten.","Détecteur déclenché. Relâche, recule et maintiens.","Detector activado. Afloja, retrocede y mantén."
+lock.detector_reset_auto,Detector tripped. Hold the left thumb to turn back.,"Detektor zadziałał. Przytrzymaj lewy kciuk, by cofnąć.",Detektor ausgelöst. Links halten zum Zurückdrehen.,Détecteur déclenché. Pouce gauche maintenu pour reculer.,Detector activado. Mantén el izquierdo para volver.
+lock.wafer_coach,Lift a wafer until it sits flush with the plug.,"Unoś płytkę, aż zrówna się z rdzeniem.","Plättchen anheben, bis es bündig im Kern sitzt.",Lève la paillette au ras du cylindre.,Sube la lámina hasta dejarla al ras del cilindro.
+lock.lever_coach,Lift the lever until its gate meets the stump.,"Unoś zapadkę, aż jej bramka trafi na trzpień.","Zuhaltung anheben, bis ihr Tor am Riegelstift sitzt.",Lève la gorge jusqu'à aligner son encoche.,Sube la palanca hasta alinear su muesca.
+lock.hint_tension_wafer,Wafers feel loose? Hold a little left tension.,Płytki luźne? Lewym kciukiem trzymaj napięcie.,Plättchen locker? Links etwas Spannung halten.,Paillettes trop libres ? Appuie un peu à gauche.,¿Láminas sueltas? Presiona un poco a la izquierda.
+lock.hint_tension_lever,Levers feel loose? Hold a little left tension.,Zapadki luźne? Lewym kciukiem trzymaj napięcie.,Zuhaltungen locker? Links etwas Spannung halten.,Gorges trop libres ? Garde un léger appui à gauche.,¿Palancas sueltas? Mantén leve presión a la izquierda.
+lock.disc_hint,Left twists lightly; right turns one disc slowly.,"Lewy lekko skręca, prawy wolno obraca tarczę.","Links sanft drehen, rechts eine Scheibe bewegen.",Gauche : léger couple. Droit : tourne un disque.,Izquierdo: giro leve. Derecho: gira un disco despacio.
+tutorial.say_tension,Hint: slide your left thumb slowly up and hold.,Wskazówka: lewy kciuk powoli w górę i trzymaj.,"Tipp: linken Daumen langsam hochziehen, halten.",Indice : monte le pouce gauche doucement et tiens.,Pista: sube el pulgar izquierdo despacio y mantén.
+tutorial.say_lift,Hint: right thumb under the stiff part; lift slowly.,"Wskazówka: prawy kciuk pod oporny element, unoś wolno.","Tipp: rechter Daumen unters feste Teil, langsam heben.",Indice : pouce droit sous la pièce qui résiste. Lève.,Pista: pulgar derecho bajo la pieza dura. Sube despacio.
+tutorial.say_warded,"Hint: slide the bit until it fits the gap, then turn.","Wskazówka: ustaw grot w szczelinie, potem obracaj.","Tipp: Bart in die Lücke schieben, dann drehen.","Indice : place l'embout dans l'espace, puis tourne.",Pista: encaja la punta en la ranura y gira.
+tutorial.say_chalk,Hint: the chalk now marks what to do.,"Wskazówka: kreda pokazuje, co zrobić.","Tipp: Die Kreide zeigt jetzt, was zu tun ist.",Indice : la craie montre maintenant le geste.,Pista: la tiza muestra el gesto que toca.
+tutorial.say_master,The master's hand shows this step once. Then you.,Ręka mistrza raz pokaże ten krok. Potem ty.,Die Hand des Meisters zeigt es einmal. Dann du.,Le maître montre le geste une fois. À toi.,El maestro muestra el gesto una vez. Ahora tú.
+tutorial.s1_pick_one,"Right thumb under the pin, then slowly up.","Prawy kciuk pod pin, potem powoli w górę.","Rechter Daumen unter den Stift, dann langsam hoch.","Pouce droit sous la goupille, puis monte doucement.",Pulgar derecho bajo el perno y luego súbelo despacio.
+settings.voice_pack.title_de,German voices,Głosy po niemiecku,Deutsche Stimmen,Voix allemandes,Voces en alemán
+settings.voice_pack.line,{title}: {state},{title}: {state},{title}: {state},{title} : {state},{title}: {state}
+settings.voice_pack.download,Download,Pobierz,Herunterladen,Télécharger,Descargar
+settings.voice_pack.not_now,Not now,Nie teraz,Nicht jetzt,Pas maintenant,Ahora no
+settings.voice_pack.stop,Stop,Przerwij,Abbrechen,Arrêter,Detener
+settings.voice_pack.retry,Try again,Spróbuj ponownie,Erneut versuchen,Réessayer,Reintentar
+settings.voice_pack.progress,downloading {pct}%,pobieranie {pct}%,lädt {pct} %,téléchargement {pct} %,descargando {pct} %
+settings.voice_pack.verifying,checking the file,sprawdzanie pliku,Datei wird geprüft,vérification du fichier,verificando el archivo
+settings.voice_pack.ready,ready,gotowe,bereit,prêtes,listas
+settings.voice_pack.failed,Not downloaded. Subtitles stay on.,Nie pobrano. Napisy zostają.,Nicht geladen. Untertitel bleiben an.,Échec du téléchargement. Les sous-titres restent affichés.,No se descargó. Los subtítulos siguen activos.
+settings.voice_pack.offline,No connection. Subtitles stay on.,Brak sieci. Napisy zostają.,Kein Netz. Untertitel bleiben an.,Pas de connexion. Les sous-titres restent affichés.,Sin conexión. Los subtítulos siguen activos.
+settings.voice_pack.auto,Auto-download voices,Pobieraj głosy automatycznie,Stimmen automatisch laden,Télécharger les voix automatiquement,Descargar voces automáticamente
+settings.voice_pack.note,"Only the voice file is fetched: no account, no tracking. Without it, dialogue has subtitles.",Pobieramy tylko plik z głosami: bez konta i bez śledzenia. Bez niego rozmowy mają napisy.,"Geladen wird nur die Sprachdatei: kein Konto, kein Tracking. Ohne sie laufen Gespräche mit Untertiteln.","Seul le fichier des voix est téléchargé : sans compte ni suivi. Sans lui, les dialogues restent sous-titrés.","Solo se descarga el archivo de voces: sin cuenta ni seguimiento. Sin él, los diálogos llevan subtítulos."
+family.dial_safe.name,Dial safe,Sejf z pokrętłem,Tresor mit Drehscheibe,,
+family.dial_safe.short,A safe with linked wheels that turn behind one dial.,"Sejf, w którym jedno pokrętło porusza kolejnymi kołami.",Ein Tresor mit Rädern hinter einer einzigen Drehscheibe.,,
+lock.dial_hint_auto,Turn the dial right; the game holds the handle.,Kręć prawym. Gra sama dociska klamkę.,Dreh rechts die Scheibe. Das Spiel hält den Griff.,,
+tutorial.dial_safe.step1,Rest your left thumb gently on the handle.,Lewym kciukiem lekko dociśnij klamkę.,Drück mit dem linken Daumen sanft den Griff.,,
+tutorial.dial_safe.step1_auto,The game holds the handle; watch the wheel.,Gra dociska klamkę. Patrz na koło.,Das Spiel hält den Griff. Achte auf die Räder.,,
+tutorial.dial_safe.step2,Circle the dial with your right thumb.,Prawym kciukiem zataczaj koło na pokrętle.,Kreise rechts mit dem Daumen über die Drehscheibe.,,
+tutorial.dial_safe.step3,Listen for a soft tick: the next wheel joins.,Słuchaj cichego tyknięcia: rusza następne koło.,"Hör das leise Tick, wenn das nächste Rad folgt.",,
+tutorial.dial_safe.step4,"Missed a gate? Circle once more, then pause.",Bramka za tobą? Zrób jeszcze obrót i stań.,Tor verpasst? Dreh noch einmal und halte an.,,
+tutorial.dial_safe.step5,"The handle moves. Nicely done, one wheel at a time.","Klamka rusza. Dobrze, koło po kole.","Der Griff bewegt sich. Gut, Rad für Rad.",,
+family.combo.name,Thumbwheel lock,Zamek z kółkami,Zahlenschloss,,
+family.combo.short,Small numbered wheels turn a shared lock mechanism.,Małe kółka z cyframi poruszają wspólny mechanizm.,Kleine Zahlenräder bewegen gemeinsam den Riegel.,,
+lock.combo_hint_auto,Roll one wheel slowly with your right thumb.,Prawym kciukiem wolno tocz wybrane kółko.,Rolle ein Rad langsam mit dem rechten Daumen.,,
+tutorial.combo.step1,Left thumb: a light pull on the shackle.,Lewym kciukiem lekko pociągnij kabłąk.,Zieh mit dem linken Daumen leicht am Bügel.,,
+tutorial.combo.step1_auto,The game pulls the shackle gently for you.,Gra lekko ciągnie kabłąk za ciebie.,Das Spiel zieht den Bügel ganz leicht für dich.,,
+tutorial.combo.step2,"Right: choose a wheel, then roll up or down.","Prawy: wybierz kółko, przetocz w górę lub w dół.","Rechts: Rad wählen, dann hoch oder runter rollen.",,
+tutorial.combo.step3,One wheel feels stiff; it clicks into its notch.,Jedno kółko stawia opór i klika we wcięciu.,Ein Rad geht schwer und rastet in der Kerbe ein.,,
+tutorial.combo.step4,Wheel skipped? Slow down and try the notch again.,Kółko przeskoczyło? Zwolnij i wróć do wcięcia.,Rad springt? Langsamer zur Kerbe zurück.,,
+tutorial.combo.step5,The shackle is free. Even wheels like patience.,Kabłąk puszcza. Kółka też lubią cierpliwość.,Der Bügel ist frei. Geduld hilft auch Rädern.,,
+family.dimple.name,Dimple cylinder,Wkładka nawiercana,Bohrmuldenzylinder,,
+family.dimple.short,Two rows of pins; some hide a thinner pin in a sleeve.,Dwa rzędy pinów; niektóre kryją węższy pin w tulei.,Zwei Stiftreihen; manche Stifte haben einen Innenstift.,,
+lock.dimple_hint,Hold left lightly; press the selected pin on the right.,"Lewy lekko dociska, prawy naciska wybrany pin.","Links leicht halten, rechts den Stift drücken.",,
+lock.dimple_hint_auto,Press the selected pin with the right thumb.,Prawym kciukiem naciśnij wybrany pin.,Drück rechts mit dem Daumen den gewählten Stift.,,
+tutorial.dimple.step1,Left thumb: keep the cylinder gently steady.,Lewym kciukiem utrzymaj lekki docisk wkładki.,Halte links den Zylinder mit sanftem Druck.,,
+tutorial.dimple.step1_auto,The game steadies the cylinder for you.,Gra utrzymuje lekki docisk wkładki.,Das Spiel hält den Zylinder für dich ruhig.,,
+tutorial.dimple.step2,"Right: choose a row, then press a pin.",Prawy: wybierz rząd i naciśnij pin.,Rechts: Reihe wählen und einen Stift drücken.,,
+tutorial.dimple.step3,"One click for the sleeve, another for the pin.","Jeden klik tulei, drugi pinu w środku.","Ein Klick für die Hülse, noch eins für den Stift.",,
+tutorial.dimple.step4,Only one click? Ease up and find the second.,Tylko jeden klik? Odpuść lekko i szukaj drugiego.,Nur ein Klick? Gib leicht nach und such den zweiten.,,
+tutorial.dimple.step5,Both rows align. Good ear and gentle hands.,"Oba rzędy gotowe. Dobre ucho, spokojne ręce.","Beide Reihen sitzen. Gut gehört, ruhig geführt.",,
+family.disc_detainer.name,Disc lock,Zamek tarczowy,Scheibenschloss,,
+family.disc_detainer.short,A stack of discs; each one turns on its own.,Stos tarcz; każdą obraca się osobno.,Ein Stapel Scheiben; jede dreht sich einzeln.,,
+lock.disc_hint_auto,Use the right thumb to turn a disc slowly.,Prawym kciukiem powoli obracaj tarczę.,Dreh rechts mit dem Daumen eine Scheibe langsam.,,
+tutorial.disc_detainer.step1,Left thumb: hold a very gentle twist.,Lewym kciukiem utrzymaj lekki skręt.,Halte mit dem linken Daumen sanften Drehdruck.,,
+tutorial.disc_detainer.step1_auto,The game keeps the light twist steady.,Gra utrzymuje delikatny skręt.,Das Spiel hält den sanften Drehdruck.,,
+tutorial.disc_detainer.step2,"Right: select a disc, then turn it either way.","Prawy: wybierz tarczę, obróć w jedną ze stron.",Rechts: Scheibe wählen und in eine Richtung drehen.,,
+tutorial.disc_detainer.step3,A slight give and a clear click: it's in place.,Lekkie osiadanie i wyraźny klik: tarcza na miejscu.,"Leichtes Nachgeben, klares Klick: Die Scheibe sitzt.",,
+tutorial.disc_detainer.step4,Disc went too far? Turn back a little.,Tarcza poszła za daleko? Cofnij odrobinę.,Scheibe zu weit? Dreh ein Stück zurück.,,
+tutorial.disc_detainer.step5,The bar settles. That's the last disc.,Listwa opada. To była ostatnia tarcza.,Die Leiste sinkt. Das war die letzte Scheibe.,,
+family.egyptian.name,Wooden bolt,Zasuwa drewniana,Holzriegel,,
+family.egyptian.short,"A wooden puzzle bolt with falling pegs, not springs.",Drewniana zasuwa z kołkami opadającymi bez sprężyn.,Ein Holzriegel mit fallenden Stiften ohne Federn.,,
+lock.egyptian_hint,Left pulls the bolt; right lifts a wooden peg.,"Lewy ciągnie rygiel, prawy unosi kołek.","Zieh links am Riegel, heb rechts den Holzstift.",,
+lock.egyptian_hint_auto,Lift wooden pegs one by one with your right thumb.,Prawym kciukiem unoś kołki po kolei.,Heb die Holzstifte rechts einen nach dem anderen.,,
+tutorial.egyptian.step1,Left thumb: pull the wooden bolt gently.,Lewym kciukiem lekko ciągnij drewniany rygiel.,Zieh mit dem linken Daumen sanft am Holzriegel.,,
+tutorial.egyptian.step1_auto,The game draws the wooden bolt gently.,Gra lekko ciągnie drewniany rygiel.,Das Spiel zieht sanft am Holzriegel.,,
+tutorial.egyptian.step2,Right thumb: choose a peg and raise it.,Prawym wybierz kołek i podnieś go.,Wähl rechts einen Holzstift und heb ihn an.,,
+tutorial.egyptian.step3,Hear the wood tap; watch the peg drop.,Słuchaj stuknięcia drewna i patrz na kołek.,Hör das Holz klopfen und sieh den Stift fallen.,,
+tutorial.egyptian.step4,"Peg jammed? Nudge the bolt back, then lift less.",Kołek utknął? Cofnij rygiel i podnieś mniej.,"Stift klemmt? Riegel zurück, dann weniger heben.",,
+tutorial.egyptian.step5,The bolt slides out. The doll can go home.,Rygiel się wysuwa. Lala wraca do domu.,Der Riegel gleitet auf. Die Puppe darf heim.,,
+family.axial_slider.name,Axial slider,Zamek suwakowy,Schiebeschloss,,
+family.axial_slider.short,Sliders sit in a circle when viewed from the front.,"Suwaki widać od czoła, ułożone wokół środka.",Von vorn liegen Schieber ringförmig um die Mitte.,,
+lock.axial_slider_hint,Hold left steady; press a slider down with the right.,"Lewy trzyma, prawy wciska suwak w dół.","Links ruhig halten, rechts einen Schieber drücken.",,
+lock.axial_slider_hint_auto,Press a chosen slider down with the right thumb.,Prawym kciukiem wciśnij wybrany suwak.,Drück rechts den gewählten Schieber nach unten.,,
+tutorial.axial_slider.step1,Left thumb: hold the centre lightly.,Lewym kciukiem lekko przytrzymaj środek.,Halte mit dem linken Daumen leicht die Mitte.,,
+tutorial.axial_slider.step1_auto,The game steadies the centre for you.,Gra utrzymuje lekko środek.,Das Spiel hält die Mitte für dich ruhig.,,
+tutorial.axial_slider.step2,"Right: pick a slider, then press it down.",Prawy: wybierz suwak i wciśnij go w dół.,"Rechts: Schieber wählen, dann nach unten drücken.",,
+tutorial.axial_slider.step3,A hollow click? The core nudges backwards.,Głuchy klik? Rdzeń lekko cofa się pod kciukiem.,Dumpfes Klick? Der Kern rückt etwas zurück.,,
+tutorial.axial_slider.step4,"False notch? Ease off, then press more gently.",Fałszywe wcięcie? Odpuść i naciśnij lżej.,Falsche Kerbe? Lass nach und drück sanfter.,,
+tutorial.axial_slider.step5,The sliders settle. The desk is ready.,Suwaki siadły. Biurko gotowe.,Die Schieber sitzen. Der Schreibtisch ist frei.,,
+family.time_lock.name,Time lock repair,Naprawa zamka czasowego,Zeitschloss-Reparatur,,
+family.time_lock.short,"The museum clockwork needs repair, not an opening.","Muzealny mechanizm zegarowy trzeba naprawić, nie otwierać.","Das Uhrwerk im Museum wird repariert, nicht geöffnet.",,
+lock.time_lock_hint,Left winds gently; right seats each wheel in turn.,"Lewym nakręcaj lekko, prawym osadzaj koła.","Links sanft aufziehen, rechts die Räder einsetzen.",,
+lock.time_lock_hint_auto,The game winds the spring; seat wheels on the right.,"Gra nakręca sprężynę, prawym osadzaj koła.","Das Spiel zieht auf, rechts setzt du die Räder ein.",,
+tutorial.time_lock.step1,Left thumb: wind the spring only a little.,Lewym kciukiem lekko nakręcaj sprężynę.,Zieh links mit dem Daumen die Feder sanft auf.,,
+tutorial.time_lock.step1_auto,The game keeps the spring wound for you.,Gra sama trzyma naciąg sprężyny.,Das Spiel hält die Feder für dich gespannt.,,
+tutorial.time_lock.step2,"Right: seat the wheels in order, one by one.",Prawym osadzaj koła po kolei.,Setz rechts die Räder nacheinander ein.,,
+tutorial.time_lock.step3,Listen for a steady tick; watch the rhythm.,Słuchaj równego tykania i patrz na rytm.,Hör auf das gleichmäßige Ticken und den Takt.,,
+tutorial.time_lock.step4,Tick gone uneven? Ease off the spring.,Tik się rozjechał? Lekko odpuść sprężynę.,Tickt es unruhig? Lass die Feder etwas nach.,,
+tutorial.time_lock.step5,The clock runs evenly. A proper repair.,Zegar chodzi równo. Dobra naprawa.,Die Uhr läuft ruhig. Sauber repariert.,,
+family.magnetic.name,Magnetic pin lock,Zamek magnetyczny,Magnetstiftschloss,,
+family.magnetic.short,Magnetic pins follow an invisible field with a delay.,Magnetyczne piny reagują na pole z opóźnieniem.,Magnetstifte folgen einem Feld mit Verzögerung.,,
+lock.magnetic_hint,Left holds gently; guide a pin smoothly on the right.,"Lewy trzyma lekko, prawy płynnie prowadzi pin.","Links sanft halten, rechts den Stift ruhig führen.",,
+lock.magnetic_hint_auto,Guide the selected pin smoothly with your right thumb.,Prawym kciukiem płynnie prowadź wybrany pin.,Führ den gewählten Stift rechts ganz ruhig.,,
+tutorial.magnetic.step1,Left thumb: keep a gentle pressure.,Lewym kciukiem utrzymaj lekki docisk.,Halte mit dem linken Daumen sanften Druck.,,
+tutorial.magnetic.step1_auto,The game keeps the gentle pressure for you.,Gra utrzymuje lekki docisk.,Das Spiel hält den sanften Druck für dich.,,
+tutorial.magnetic.step2,Right: choose a pin and guide it with the field.,Prawy: wybierz pin i prowadź go polem.,Rechts: Stift wählen und mit dem Feld führen.,,
+tutorial.magnetic.step3,The pin moves late. Watch it catch up.,"Pin rusza z opóźnieniem. Patrz, jak nadąża.",Der Stift folgt später. Sieh ihm dabei zu.,,
+tutorial.magnetic.step4,"Pin lags? Move smoothly, don't jerk.","Pin się spóźnia? Prowadź płynnie, bez szarpnięć.","Stift hinkt nach? Führe ruhig, nicht ruckartig.",,
+tutorial.magnetic.step5,The pins are set. Quiet work pays off.,Piny ustawione. Spokój się opłacił.,Die Stifte sitzen. Ruhe zahlt sich aus.,,

@@ -1,6 +1,6 @@
 {
   "id": "showcase.henriksson_disc",
-  "unlocks": "tarczowy, T1, oraz zlecenie `job.finnish_sailor`.",
+  "unlocks": "zamek tarczowy (disc_detainer), T2, oraz zlecenie `job.finnish_sailor`.",
   "source": "https://en.wikipedia.org/wiki/Disc_tumbler_lock · https://www.securityworldmarket.com/uk/newsarchive/abloy-celebrates-110-years-of-locking-systems1",
   "confidence": "średnia. Historia z kasą pochodzi z narracji producenta. Patent z 1919 jest pewniejszy. W tekście dla gracza nie podajemy nazwy firmy.",
   "i18n": {
