@@ -209,8 +209,8 @@ func _play_native(id: String, gain: float, pitch: float) -> bool:
 func _preload_native() -> int:
 	# N-03: preload decoded PCM of all L2 events into the native bridge (16-bit mono);
 	# returns how many samples were offered, _native_loaded holds the accepted ones.
-	# The bridge takes 16-bit mono PCM only: clicks imported as QOA (compress/mode=2, the
-	# current import) or stereo are skipped and stay on AudioServer.
+	# The bridge takes 16-bit mono PCM only; the lock clicks are imported that way
+	# (compress/mode=0, force/mono). QOA or stereo samples are skipped and stay on AudioServer.
 	var total := 0
 	_native_skipped = 0
 	var candidates := native_test_samples if not native_test_samples.is_empty() else _native_candidates()

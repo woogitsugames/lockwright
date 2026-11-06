@@ -130,3 +130,21 @@ func test_native_click_without_samples_or_methods_is_not_used() -> void:
 	assert_false(Sfx.native_click_active(), "no java methods -> AudioServer")
 	assert_eq(g.loaded.size(), 0)
 	Sfx.use_native_click(null)
+
+
+## Coordinator decision (N-70 follow-up): the lock clicks preloaded into the native bridge
+## are imported as 16-bit mono PCM (compress/mode=0, force/mono), otherwise the bridge
+## gets no samples and the low-latency path never runs.
+func test_bridge_clicks_are_pcm16_mono() -> void:
+	var candidates: Dictionary = Sfx._native_candidates()
+	assert_gt(candidates.size(), 300, "lock clicks found")
+	var bad: Array = []
+	for id in candidates:
+		var w: AudioStreamWAV = candidates[id]
+		if w == null or w.format != AudioStreamWAV.FORMAT_16_BITS or w.stereo:
+			bad.append(id)
+	assert_eq(bad, [], "every bridge click is PCM16 mono")
+	var f := FakeClickBridge.new()
+	Sfx.use_native_click(f, "fake")
+	assert_eq(f.loaded.size(), candidates.size(), "all clicks accepted by the bridge")
+	assert_true(Sfx.native_click_active())
