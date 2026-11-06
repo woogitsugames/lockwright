@@ -34,7 +34,7 @@ Test na każdy element: *czy ślusarz w prawdziwym warsztacie miałby to przed o
 | **Scena** | przekrój wkładki w drzwiach (albo w imadle warsztatu w samouczku), szyld, skrzydło drzwi, napinacz i wytrych w kanale | zawsze w zamku |
 | **Zwijka** | skórzana zwijka narzędzi pod przekrojem: kieszenie z zapasowymi wytrychami (życia), lupa, napinacz zapasowy; w skórze wytłoczone strefy kciuków | zawsze w zamku (w ciemności niewidoczna, §10) |
 | **Kreda** | znaki kodu stanów z `DESIGN.md` §1, rysowane kredą na metalu i skórze | samouczek S1–S2, wskazówka H3, opcja „Pomoc w czytaniu” |
-| **Widmo** | cień kciuka lub dłoni (wskazówki H2/H4, `ONBOARDING.md` §2) | tylko samouczek i eskalacja |
+| **Widmo** | sylwetka kciuka lub dłoni — wycinanka z papieru, kość + 2 dp tuszu (wskazówki H2/H4, `ONBOARDING.md` §2.2, D-77) | tylko samouczek i eskalacja |
 | **Pauza** | klapka zwijki w rogu (§6) | zawsze |
 | **Napisy dźwięków** | papierowy pasek nad zwijką (§9.3) | tylko z opcją |
 

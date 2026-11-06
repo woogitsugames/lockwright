@@ -1,9 +1,12 @@
 class_name GhostHand
 extends Control
-## Shadow of a thumb or a whole hand cast on the scene by the workshop lamp
-## (ONBOARDING §2.2). It is a shadow, not a glow: black, 35% opacity, soft ~12 dp
-## edge, no outline, no colour, no particles, no text. A G23 silhouette is 75% black (D-76). mouse_filter is IGNORE so it
-## never swallows the player's touches.
+## The ghost of a thumb or a whole hand that shows a gesture (ONBOARDING §2.2, D-77). It is a
+## matte paper cut-out: a flat bone fill (90%) with a 2 dp ink edge, drawn in the real thumb zone
+## so the pad sits where the finger goes. No blur halo, no glow, no colour accent, no particles,
+## no text. The light fill reads on the dark leather of the roll (the D-76 shadow could not pass
+## 1.3:1 there); the ink edge separates it from the light lock body and the cream dial. Both
+## channels are pure lightness, so it holds in grayscale. mouse_filter is IGNORE so it never
+## swallows the player's touches.
 ##
 ## dp == canvas units in this project: dp_scale.gd keeps the 412x915 base with stretch
 ## canvas_items, so 1 unit is 1 dp in both orientations, and from_dp/to_dp are plain
@@ -14,27 +17,30 @@ extends Control
 ##
 ## G23 silhouettes (res://assets/ui/ghost/, ghost_silhouettes.json): set_silhouette(name)
 ## swaps the oval for the alpha shape of a thumb / hand cut from the G23 photos (white +
-## alpha, edge pre-blurred 12 dp, see art/tools/ghost_silhouettes.py). Its hotspot (the
-## thumb pad) sits on the gesture position. A missing file keeps the oval.
-## set_release_silhouette(name) shows that shape while the shadow withdraws and fades
+## alpha, edge pre-blurred 12 dp, see art/tools/ghost_silhouettes.py). The shader cuts that
+## alpha at 0.5 (the photo's contour) and dilates it by EDGE_DP for the ink edge. Its hotspot
+## (the thumb pad) sits on the gesture position. A missing file keeps the oval.
+## set_release_silhouette(name) shows that shape while the ghost withdraws and fades
 ## (H4: the tool hand lets go as an open hand).
 
 ## Eased 0..1 travel of the current repeat (0 while fading in at the start pose,
 ## 1 during the hold); the scene can answer it, e.g. rotate the tension wrench.
 signal gesture_progress(t: float)
-## All repeats are done and the shadow has faded out.
+## All repeats are done and the ghost has faded out.
 signal gesture_finished
 
 const FADE_S := 0.150
 ## Fade in at the start pose / fade out at the end (§2.2: fade 150 ms).
-const SHADOW_OPACITY := 0.35
-## G23 silhouettes (D-76): their pre-blurred alpha averages ~0.6 inside the shape, and in portrait
-## the thumbs rest on the darkest band of the roll (pocket mouths, the H1 dent, the black loupe
-## under the right hand; relative luminance ~0.01), where 35% black gave ~1.1:1 and the right
-## thumb all but vanished. A deeper shadow (still black, no outline, no glow) reads on both sides.
-const SILHOUETTE_OPACITY := 0.75
+## D-77: paper cut-out instead of a cast shadow. Bone (darker than the H3 chalk 0.96/0.95/0.90, so
+## the hand never reads as a chalk mark) and near-black ink; lightness L* ~84 vs ~7.
+const FILL_COLOR := Color(0.85, 0.81, 0.73)
+const FILL_OPACITY := 0.90
+const EDGE_COLOR := Color(0.09, 0.075, 0.065)
+const EDGE_OPACITY := 1.0
+const EDGE_DP := 2.0
+## Ink edge width, outside the contour (DESIGN: dividing lines >= 2 dp).
 const SOFT_DP := 12.0
-## Soft edge width (§2.2); the shader fades the silhouette over half of it in, half out.
+## Margin around the fallback oval (the G23 photos carry their own 12 dp pre-blurred alpha).
 const THUMB_DP := Vector2(22.0, 56.0)
 ## Fallback silhouette: a rounded oval ~22x56 dp (no texture set).
 const RELEASE_S := 0.250
@@ -49,9 +55,10 @@ const SILHOUETTE_META := "res://assets/ui/ghost/ghost_silhouettes.json"
 var texture: Texture2D = null:
 	set(value):
 		texture = value
-		# A texture is an alpha silhouette with its own soft edge: draw it directly
-		# (tinted black). Without one, the built-in oval shader draws the thumb.
-		material = null
+		# A texture is an alpha silhouette: the cut-out shader turns it into fill + ink edge.
+		# Without one, _draw_oval draws the fallback thumb with the same two colours.
+		material = _cutout_mat if value != null else null
+		_update_edge_px()
 		_update_shadow_size()
 
 ## Point of the texture (0..1) that sits on the gesture position (the thumb pad).
@@ -75,6 +82,7 @@ var release_silhouette := &""
 var texture_scale := 1.0:
 	set(value):
 		texture_scale = maxf(value, 0.01)
+		_update_edge_px()
 		_update_shadow_size()
 
 ## Left-handed "swap thumbs" option (HUD §9): the ghost is mirrored across the
@@ -84,24 +92,36 @@ var mirror := false:
 		mirror = value
 		_apply_layout()
 
-## Current centre of the shadow, in parent coordinates (already mirrored).
+## Current centre of the ghost, in parent coordinates (already mirrored).
 var ghost_center := Vector2.ZERO
 
 enum _Phase { IDLE, FADE_IN, MOVE, HOLD, FADE_OUT, RELEASE }
 
-const _OVAL_SHADER := """
+## Paper cut-out of a G23 alpha silhouette: fill inside the 0.5 contour, ink in a ring EDGE_DP
+## outside it (12 taps on the ring + 12 at half radius, so thin parts never lose their edge).
+const _CUTOUT_SHADER := """
 shader_type canvas_item;
 render_mode unshaded;
-// Soft-edged shadow oval. UV spans the drawn rect, rect_dp is its size in dp,
-// so the mask is resolution independent (1 unit = 1 dp).
-uniform vec2 radii_dp = vec2(11.0, 28.0);
-uniform vec2 rect_dp = vec2(34.0, 68.0);
-uniform float soft_dp = 12.0;
+uniform vec4 fill_color : source_color = vec4(0.85, 0.81, 0.73, 0.9);
+uniform vec4 edge_color : source_color = vec4(0.09, 0.075, 0.065, 1.0);
+uniform float edge_px = 4.0;  // EDGE_DP in texture pixels
+varying vec4 tint;
+void vertex() {
+	tint = COLOR;  // draw modulate: carries the fade
+}
 void fragment() {
-	vec2 p = (UV - vec2(0.5)) * rect_dp;
-	float d = (length(p / radii_dp) - 1.0) * min(radii_dp.x, radii_dp.y);
-	float mask = 1.0 - smoothstep(-soft_dp * 0.5, soft_dp * 0.5, d);
-	COLOR = vec4(0.0, 0.0, 0.0, mask * COLOR.a);
+	float a0 = texture(TEXTURE, UV).a;
+	float w = clamp(fwidth(a0), 0.002, 0.25);
+	float fill = smoothstep(0.5 - w, 0.5 + w, a0);
+	float outer = fill;
+	for (int i = 0; i < 12; i++) {
+		float ang = 6.2831853 * float(i) / 12.0;
+		vec2 d = vec2(cos(ang), sin(ang)) * TEXTURE_PIXEL_SIZE * edge_px;
+		outer = max(outer, smoothstep(0.5 - w, 0.5 + w, texture(TEXTURE, UV + d).a));
+		outer = max(outer, smoothstep(0.5 - w, 0.5 + w, texture(TEXTURE, UV + d * 0.5).a));
+	}
+	vec4 c = mix(edge_color, fill_color, fill);
+	COLOR = vec4(c.rgb, c.a * outer * tint.a);
 }
 """
 
@@ -115,7 +135,7 @@ var _hold_s := 0.0
 var _repeat := 0
 var _alpha := 0.0
 var _shadow_size := Vector2.ZERO
-var _oval_mat: ShaderMaterial
+var _cutout_mat: ShaderMaterial
 var _release := {}  # {texture, anchor, scale, flip} while the release shape shows
 var _gesture_shape := {}  # the gesture shape, restored after a release
 
@@ -126,18 +146,20 @@ func _init() -> void:
 	mouse_filter = MOUSE_FILTER_IGNORE  # never intercept the player's touches
 	set_process(false)  # REVIEW-V02: idle ghost must not redraw every frame (play_gesture turns it on)
 	var shader := Shader.new()
-	shader.code = _OVAL_SHADER
-	_oval_mat = ShaderMaterial.new()
-	_oval_mat.shader = shader
+	shader.code = _CUTOUT_SHADER
+	_cutout_mat = ShaderMaterial.new()
+	_cutout_mat.shader = shader
+	_cutout_mat.set_shader_parameter(&"fill_color", Color(FILL_COLOR, FILL_OPACITY))
+	_cutout_mat.set_shader_parameter(&"edge_color", Color(EDGE_COLOR, EDGE_OPACITY))
 	_update_shadow_size()
 
 
-## Show the shadow at from_dp, fade in (150 ms), travel from_dp -> to_dp over
+## Show the ghost at from_dp, fade in (150 ms), travel from_dp -> to_dp over
 ## duration_s with ease-in-out (speeds up, then slows down: the tempo is part of the
 ## lesson, §2.2), hold at to_dp for hold_s ("place and hold" uses 1.5 s), repeat
 ## `repeats` times, then fade out and emit gesture_finished. During the travel
 ## gesture_progress(t) reports the eased 0..1 position so the scene can answer.
-## Between repeats the shadow jumps back to the start pose.
+## Between repeats the ghost jumps back to the start pose.
 func play_gesture(from_dp: Vector2, to_dp: Vector2, duration_s: float,
 		repeats := 2, hold_s := 0.0) -> void:
 	_restore_gesture_shape()  # a new gesture during a release starts in its own shape
@@ -192,7 +214,7 @@ func set_silhouette(name: StringName, flip_h := false) -> bool:
 	return not d.is_empty()
 
 
-## Shape shown while the shadow lets go at the end (&"" = none). False if missing.
+## Shape shown while the ghost lets go at the end (&"" = none). False if missing.
 func set_release_silhouette(name: StringName, flip_h := false) -> bool:
 	var d := load_silhouette(name)
 	release_silhouette = name if not d.is_empty() else &""
@@ -202,9 +224,9 @@ func set_release_silhouette(name: StringName, flip_h := false) -> bool:
 	return not d.is_empty()
 
 
-## Peak opacity of the shadow: the oval keeps §2.2's 35%, a G23 silhouette is deeper (D-76).
-func shadow_opacity() -> float:
-	return SILHOUETTE_OPACITY if texture != null else SHADOW_OPACITY
+## Peak opacity of the fill (D-77: the same paper cut-out for the oval and every silhouette).
+func fill_opacity() -> float:
+	return FILL_OPACITY
 
 
 func is_playing() -> bool:
@@ -326,7 +348,7 @@ func _mirror_width() -> float:
 	return 0.0
 
 
-## The control rect is the shadow rect: silhouette + half the soft edge on each side.
+## The control rect: silhouette + half the soft margin on each side (the ink edge fits in it).
 func _update_shadow_size() -> void:
 	var margin := Vector2(SOFT_DP, SOFT_DP) * 0.5
 	if texture != null:
@@ -337,6 +359,12 @@ func _update_shadow_size() -> void:
 	_apply_layout()
 
 
+## EDGE_DP in texture pixels (textures are authored at px_per_dp, the scene is in dp).
+func _update_edge_px() -> void:
+	if _cutout_mat != null:
+		_cutout_mat.set_shader_parameter(&"edge_px", EDGE_DP / texture_scale)
+
+
 func _apply_layout() -> void:
 	position = ghost_center - _shadow_size * 0.5
 	queue_redraw()
@@ -345,7 +373,8 @@ func _apply_layout() -> void:
 func _draw() -> void:
 	if _phase == _Phase.IDLE or _shadow_size == Vector2.ZERO:
 		return
-	var color := Color(0.0, 0.0, 0.0, shadow_opacity() * _alpha)
+	# the modulate only carries the fade; colours come from FILL_* / EDGE_*
+	var fade := Color(1.0, 1.0, 1.0, _alpha)
 	# Draw in ghost-centred coordinates so `mirror` can flip the silhouette.
 	# The texture's hotspot sits on the ghost centre; flipping keeps it there.
 	var flip := mirror != (texture_flip and texture != null)
@@ -353,26 +382,22 @@ func _draw() -> void:
 		Vector2(-1.0, 1.0) if flip else Vector2.ONE)
 	if texture != null:
 		var ts: Vector2 = texture.get_size() * texture_scale
-		draw_texture_rect(texture, Rect2(-ts * texture_anchor, ts), false, color)
+		draw_texture_rect(texture, Rect2(-ts * texture_anchor, ts), false, fade)
 	else:
-		_draw_soft_oval(color)
+		_draw_oval()
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
 
-## REVIEW-V02: the oval shader read UV, which draw_rect() without a texture leaves at 0, so the
-## mask was empty and nothing showed on screen (headless tests cannot see it). The soft edge is
-## now stacked ellipses: the core at full shadow, the edge fading out over SOFT_DP.
-func _draw_soft_oval(color: Color) -> void:
-	const LAYERS := 8
+## Fallback thumb (no texture): a bone oval THUMB_DP with the EDGE_DP ink ring outside it.
+func _draw_oval() -> void:
 	var r := THUMB_DP * 0.5
-	for i in LAYERS:
-		var f := float(i) / (LAYERS - 1)        # 0 = outermost, 1 = core
-		var grow := SOFT_DP * 0.5 * (1.0 - 2.0 * f)
-		var rr := Vector2(maxf(r.x + grow, 1.0), maxf(r.y + grow, 1.0))
-		var pts := PackedVector2Array()
-		for k in 32:
-			var a := TAU * k / 32.0
-			pts.append(Vector2(cos(a) * rr.x, sin(a) * rr.y))
-		# n stacked layers of alpha b compose to 1 - (1 - b)^n = the shadow opacity at the core
-		var b := 1.0 - pow(1.0 - clampf(color.a, 0.0, 0.99), 1.0 / LAYERS)
-		draw_colored_polygon(pts, Color(color.r, color.g, color.b, b))
+	var fill := PackedVector2Array()
+	var ring := PackedVector2Array()
+	for k in 33:
+		var a := TAU * k / 32.0
+		var u := Vector2(cos(a), sin(a))
+		if k < 32:
+			fill.append(u * r)
+		ring.append(u * (r + Vector2.ONE * EDGE_DP * 0.5))
+	draw_colored_polygon(fill, Color(FILL_COLOR, FILL_OPACITY * _alpha))
+	draw_polyline(ring, Color(EDGE_COLOR, EDGE_OPACITY * _alpha), EDGE_DP, true)

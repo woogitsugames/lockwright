@@ -41,7 +41,7 @@ Licznik „utknięcia” liczy czas od ostatniego **postępu** w bieżącym krok
 |---|---|---|---|
 | **H0** | 0 s | Nic. Gracz próbuje. | — |
 | **H1 — trącenie** | 15 s | Element, którego dotyczy krok, robi jeden mały ruch fizyczny (np. wiążący kołek drga o 1 dp, napinacz kołysze się o 1°). W skórze zwijki pojawia się **odcisk kciuka** tam, gdzie trzeba położyć palec. | obraz + cichy dźwięk tego elementu (−12 dB względem gry). Bez haptyki, żeby nie mylić jej ze stanem zamka. |
-| **H2 — widmo kciuka** | 30 s | Cień kciuka (miękki, rozmyty, 35% krycia — sylwetka G23 75%, D-76 — rzucany przez lampę warsztatu) dwa razy pokazuje gest: skąd, dokąd i jak szybko. Scena **odpowiada** na widmo (napinacz się obraca, wytrych unosi), a potem wraca do stanu gracza. | obraz + dźwięk sceny ściszony o 6 dB |
+| **H2 — widmo kciuka** | 30 s | Widmo kciuka (matowa „wycinanka z papieru”: kość + 2 dp tuszu, D-77) dwa razy pokazuje gest: skąd, dokąd i jak szybko. Scena **odpowiada** na widmo (napinacz się obraca, wytrych unosi), a potem wraca do stanu gracza. | obraz + dźwięk sceny ściszony o 6 dB |
 | **H3 — kreda** | 45 s | Kreda rysuje znak, którego brakuje w zrozumieniu: kreski tarcia przy wiążącym kołku, klin szczeliny, klamrę nad przepchniętym, strzałkę „w dół” przy napinaczu (za mocno) albo „w górę” (za słabo). Znak zostaje do końca kroku. | obraz + szelest kredy |
 | **H4 — ręka mistrza** | 60 s | Widmo dłoni wykonuje cały krok w zwolnionym tempie, a zamek naprawdę go wykonuje (np. kołek się ustawia). Potem ręka cofa się, a sterowanie wraca do gracza w stanie po kroku. | wszystkie kanały, z haptyką |
 
@@ -53,8 +53,10 @@ Zasady:
 
 ### 2.2 Wygląd widma
 
-- To **cień**, nie poświata: ciemniejsza plama z miękką krawędzią (rozmycie 12 dp), tylko w kształcie kciuka lub dłoni od nadgarstka. Bez obrysu, bez koloru, bez cząsteczek.
-- Ruch widma ma prędkość, jakiej oczekujemy od gracza (napięcie: 0→0,3 w 0,6 s; uniesienie: 0,2/s przy linii podziału), bo tempo jest częścią lekcji.
+- To **wycinanka z papieru**, nie cień i nie poświata (D-77, zastępuje cień z D-76): płaskie, matowe wypełnienie w kolorze kości (`#D9CFBA`, 90% krycia) i **ciemna krawędź tuszu 2 dp** na zewnątrz konturu, tylko w kształcie kciuka lub dłoni od nadgarstka (sylwetki G23). Bez rozmycia krawędzi, bez poświaty, bez koloru akcentu, bez cząsteczek, bez tekstu. Kość jest ciemniejsza od kredy H3, więc dłoń nie myli się ze znakiem kredy.
+- **Dlaczego tak:** kciuki leżą na najciemniejszym pasie zwijki (luminancja ~0,01–0,03), gdzie żaden cień nie da 3:1 (D-76: 1,2:1). Jasne wypełnienie daje tam ≥ 3:1, a tusz oddziela dłoń od jasnych powierzchni (korpus zamka w przekroju, kremowa tarcza napinacza), na które dłoń wchodzi w poziomie. Oba kanały to sama jasność, więc widmo działa w skali szarości.
+- **Gdzie:** widmo gra tam, gdzie gracz naprawdę kładzie palec — opuszka (hotspot sylwetki) na kotwicy kciuka (`thumb_anchors()`, w strefie bezpiecznej), lewy kciuk w lewej strefie (napięcie, gest w górę), prawy w prawej, nad kolumną elementu, który trzeba unieść (wytrych). Nie przenosimy go na przekrój zamka: zasłaniałby kołki, o które chodzi w lekcji, i uczyłby złego miejsca dotyku.
+- Ruch widma ma prędkość, jakiej oczekujemy od gracza (napięcie: 0→0,3 w 0,6 s; uniesienie: 0,2/s przy linii podziału), bo tempo jest częścią lekcji. Pojawienie i zniknięcie 150 ms, puszczenie narzędzia (H4) 250 ms.
 - Leworęczni (opcja „zamień kciuki”, `HUD.md` §9) widzą widmo w lustrzanym odbiciu.
 
 ## 3. Pierwsze uruchomienie

@@ -8,10 +8,10 @@ extends Node
 ## the ladder, a new step starts it from H0. What each level does:
 ##   H1 nudge:  the coach's element makes a small move (plug face nudge) and a thumb imprint
 ##              appears in the leather where the finger goes; the element's quiet sound.
-##   H2 ghost:  the thumb shadow shows the needed gesture twice, at the speed we want
+##   H2 ghost:  the ghost thumb (paper cut-out, D-77) shows the needed gesture twice, at the speed we want
 ##              (tension 0→0.3 in 0.6 s, lift 0.2/s); the plug face answers the ghost tension.
 ##   H3 chalk:  full chalk for the rest of the step plus an arrow at the thumb that should move.
-##   H4 master: the shadow hand does the step once and the lock really does it (autopilot drives
+##   H4 master: the ghost hand does the step once and the lock really does it (autopilot drives
 ##              the session's input); afterwards control returns in the post-step state (the
 ##              autopilot keeps the tension until the player's left thumb takes over).
 ## In the dark (view.dark): H1–H3 sound + haptics only, H4 also lights the scene for a moment.

@@ -1,5 +1,5 @@
 extends GutTest
-## GhostHand (ONBOARDING §2.2): a shadow that never swallows touches (mouse_filter
+## GhostHand (ONBOARDING §2.2, D-77): a paper cut-out hand that never swallows touches (mouse_filter
 ## IGNORE), play_gesture finishes with a signal after the expected time, the eased
 ## gesture_progress runs 0..1, mirror flips the position for the left-handed option,
 ## and the fallback thumb oval (no texture) plays without crashing.
@@ -112,7 +112,7 @@ func test_g23_silhouettes_load() -> void:
 		assert_true(a.x > 0.0 and a.x < 1.0 and a.y > 0.0 and a.y < 1.0, "%s hotspot inside the texture" % n)
 		var size_dp: Vector2 = tex.get_size() * float(d["scale"])
 		assert_between(size_dp.x, 120.0, 320.0, "%s fits a 412 dp phone width (the wrist part runs off the edge)" % n)
-		# a soft shadow: transparent at the corners (no photo rectangle), opaque in the middle of the shape
+		# a cut-out alpha: transparent at the corners (no photo rectangle), opaque in the middle of the shape
 		var img := tex.get_image()
 		if img.is_compressed():
 			img.decompress()
@@ -135,19 +135,39 @@ func test_set_silhouette_and_fallback_oval() -> void:
 	assert_false(ghost.is_playing(), "the oval still plays")
 
 
-func test_both_thumbs_cast_the_same_deeper_shadow() -> void:
-	# D-76: the right thumb was ~1.1:1 on the dark roll in portrait; every silhouette is 75% black,
-	# the fallback oval keeps 35% (ONBOARDING §2.2), and left and right never differ.
+static func _rel_lum(c: Color) -> float:
+	var l := func(v: float) -> float: return v / 12.92 if v <= 0.04045 else pow((v + 0.055) / 1.055, 2.4)
+	return 0.2126 * l.call(c.r) + 0.7152 * l.call(c.g) + 0.0722 * l.call(c.b)
+
+
+static func _ratio(a: float, b: float) -> float:
+	return (maxf(a, b) + 0.05) / (minf(a, b) + 0.05)
+
+
+func test_paper_cutout_reads_on_dark_leather_and_light_metal() -> void:
+	# D-77: a dark shadow on the dark roll could not pass ~1.3:1 (D-76). The ghost is a bone fill with
+	# a 2 dp ink edge: the fill must clear 3:1 on the darkest leather (rel. luminance ~0.01 under the
+	# thumbs in portrait) and the ink on the light lock body (~0.35), and the two must differ in
+	# lightness alone (grayscale). Every silhouette and the oval use the same look.
+	var fill := GhostHand.FILL_COLOR.lerp(Color(0.02, 0.015, 0.01), 1.0 - GhostHand.FILL_OPACITY)
+	assert_gte(_ratio(_rel_lum(fill), 0.01), 3.0, "fill over the darkest leather")
+	assert_gte(_ratio(_rel_lum(fill), 0.05), 3.0, "fill over mid leather")
+	assert_gte(_ratio(_rel_lum(GhostHand.EDGE_COLOR), 0.35), 3.0, "ink edge over the light lock body")
+	assert_gte(_ratio(_rel_lum(GhostHand.EDGE_COLOR), _rel_lum(fill)), 3.0, "ink vs fill")
+	assert_gte(GhostHand.EDGE_DP, 2.0, "dividing lines >= 2 dp")
 	var ghost := _ghost()
-	assert_eq(ghost.shadow_opacity(), GhostHand.SHADOW_OPACITY, "the oval keeps 35%")
+	assert_null(ghost.material, "the oval draws its own fill + ring")
 	var seen := {}
-	for n in [&"thumb_left_press", &"thumb_right_press", &"thumb_right_slide"]:
+	for n in [&"thumb_left_press", &"thumb_right_press", &"thumb_right_slide", &"hand_left_tool"]:
 		assert_true(ghost.set_silhouette(n))
-		seen[n] = ghost.shadow_opacity()
-		assert_gte(ghost.shadow_opacity(), 0.7, "%s reads on dark leather" % n)
-		assert_lt(ghost.shadow_opacity(), 1.0, "%s stays a soft shadow" % n)
-	assert_eq(seen[&"thumb_left_press"], seen[&"thumb_right_press"], "both thumbs equally dark")
-	assert_eq(seen[&"thumb_right_press"], seen[&"thumb_right_slide"])
+		assert_not_null(ghost.material, "%s is cut out by the shader" % n)
+		var mat := ghost.material as ShaderMaterial
+		assert_almost_eq(float(mat.get_shader_parameter(&"edge_px")), GhostHand.EDGE_DP / ghost.texture_scale, 0.001,
+			"%s ink edge is 2 dp at any import size" % n)
+		seen[n] = ghost.fill_opacity()
+	assert_eq(seen[&"thumb_left_press"], seen[&"thumb_right_press"], "both thumbs look the same")
+	ghost.set_silhouette(&"no_such_hand")
+	assert_null(ghost.material, "back to the oval")
 
 
 func test_release_shape_shows_while_letting_go() -> void:
@@ -197,4 +217,4 @@ func test_textured_ghost_never_intercepts_clicks() -> void:
 	ev.global_position = FROM_DP
 	ev.pressed = true
 	vp.push_input(ev)
-	assert_eq(hits[0], 1, "the click under the hand shadow reaches the control below")
+	assert_eq(hits[0], 1, "the click under the ghost hand reaches the control below")
