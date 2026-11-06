@@ -15,6 +15,10 @@ boot_splash/show_image=false
 ; N-52: Android back is handled by the Nav autoload, never quits directly
 config/quit_on_go_back=false
 
+[audio]
+
+general/text_to_speech=true
+
 [autoload]
 
 DpScale="*res://scripts/autoload/dp_scale.gd"
