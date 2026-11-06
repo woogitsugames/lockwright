@@ -64,6 +64,14 @@ node mockups/tools/lockviz/shot.mjs [trace-name] [frame|end] [out.png]   # Playw
 A new trace name must also be added to `mockups/tools/lockviz/traces/index.json`; any other
 trace/replay can be opened with the file pickers.
 
+The v0.6 families have their own schematics (`families_v06.js`, V03): `dial_safe` (wheel pack +
+fence + dial), `combo` (thumbwheels with the digit at the reading line), `dimple` (two pin rows,
+a telescoping pin as two windows), `disc_detainer` (disc stack + sidebar), `egyptian` (bolt with
+gravity pegs), `axial_slider` (radial sliders, front view), `time_lock` (gear train + `time.tick`
+rhythm), `magnetic` (probe: thumb vs lagging field). Their 16 golden-replay traces are in `traces/`.
+Tests (consistency, geometry, every trace rendered at 0 / mid / end):
+`cd mockups && node --test "tools/lockviz/test/*.test.mjs"`.
+
 Run a single test group: `lockcore/build/lockcore_tests pin:` (substring filter);
 `lockcore/build/lockcore_tests fuzz` runs only the fuzz test (ctest `lockcore_fuzz`; under
 `-DLOCKCORE_SANITIZE=ON` UB is fatal).

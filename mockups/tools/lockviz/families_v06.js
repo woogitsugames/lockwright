@@ -155,14 +155,19 @@ function drawCombo(g, box, f) {
 function drawDimple(g, box, f) {
   const rows = [[], []];
   for (let i = 0; i < T.n; i++) rows[(T.elements[i][2] & 16) ? 1 : 0].push(i);
-  const rowH = (box.h - 90) / 2;
+  // review V03: each row gets its own band (chambers, then the three label lines under them); before,
+  // the side-row labels were drawn inside the main-row chambers
+  const band = (box.h - 20) / 2;
+  let mainBase = box.y + box.h - 60;
   rows.forEach((idxs, row) => {
     if (!idxs.length) return;
     const n = idxs.length;
     const cw = Math.min(90, box.w / (n + 1.5));
     const x0 = box.x + (box.w - cw * n) / 2 + cw * 0.25;
-    const base = box.y + (row === 0 ? box.h - 64 : rowH + 40);
-    const H = rowH * 0.62;
+    const bandTop = box.y + 10 + (row === 1 ? 0 : band);   // side row on top, main row below
+    const base = bandTop + band - 52;
+    const H = (band - 52 - 20) / 1.75;
+    if (row === 0) mainBase = base;
     g.fillStyle = '#ddd6c8'; g.fillRect(x0 - 20, base - H * 1.75 - 20, cw * n + 10, H * 1.75 + 30);
     idxs.forEach((i, k) => {
       const cx = x0 + k * cw, ew = cw * 0.42;
@@ -185,11 +190,11 @@ function drawDimple(g, box, f) {
       const top = base - len - p * H;
       body(g, st, cx + 4, top, ew, len, 'pin');
       if (spool) { g.fillStyle = '#efebe2'; g.fillRect(cx + 4 + ew * 0.3, top + 4, ew * 0.4, len - 8); g.strokeStyle = '#23211d'; g.lineWidth = 1; g.strokeRect(cx + 4 + ew * 0.3, top + 4, ew * 0.4, len - 8); }
-      elementLabel(g, i, st, cx + ew / 2 + 4, base + 44, `${p.toFixed(3)}${spool ? ' tel' : ''}${(variant & 16) ? ' side' : ''}`);
+      elementLabel(g, i, st, cx + ew / 2 + 4, base + 16, `${p.toFixed(3)}${spool ? ' tel' : ''}${(variant & 16) ? ' side' : ''}`);
     });
-    text(g, row === 1 ? 'side row' : 'main row', x0 - 24, base - H * 1.75 - 24, { size: 11, color: '#6b665c', align: 'right' });
+    text(g, row === 1 ? 'side row' : 'main row', x0 - 26, base - H * 1.75 + 2, { size: 11, color: '#6b665c', align: 'right' });
   });
-  drawPick(g, box.x + 40, 90, box.y + box.h - 64, 100, f);
+  drawPick(g, box.x + 40, 90, mainBase, 100, f);
   drawCore(g, box, f, 'plug');
 }
 
@@ -274,7 +279,7 @@ function drawEgyptian(g, box, f) {
 // ---------- axial_slider: front view, radial sliders pressed inward, false notches ----------
 function drawSliders(g, box, f) {
   const n = T.n;
-  const R = Math.min(box.h / 2 - 46, box.w / 6, 170);
+  const R = Math.min(box.h / 2 - 82, box.w / 6, 170);   // review V03: room for the 3 label lines + pusher ring at 12 and 6 o'clock
   const cx = box.x + box.w / 2, cy = box.y + box.h / 2 + 8;
   const maxL = R * 0.62;
   const pe = f[T.col.pick_element];
@@ -318,10 +323,12 @@ function drawSliders(g, box, f) {
     if (i === pe) {
       g.strokeStyle = '#4a4f55'; g.lineWidth = 3;
       g.beginPath(); g.arc(cx + ux * (R + 12), cy + uy * (R + 12), 8, 0, Math.PI * 2); g.stroke();
-      text(g, 'pusher', cx + ux * (R + 26), cy + uy * (R + 26) + 4, { size: 11, color: '#6b665c', align: 'center' });
     }
-    const lx = cx + ux * (R + (i === pe ? 40 : 26)), ly = cy + uy * (R + (i === pe ? 40 : 26));
-    elementLabel(g, i, st, lx, ly, `${p.toFixed(2)}${falseGates ? ' fg' + falseGates : ''}`);
+    // review V03: the 3-line label block (baseline y-11 .. y+31) is centred on a point outside the ring,
+    // so at 12 o'clock it no longer sits on the pusher ring; 'pusher' goes into the label
+    const d = R + (i === pe ? 26 : 12) + 24;
+    const lx = cx + ux * (d + 12 * Math.abs(ux)), ly = cy + uy * d - 10;
+    elementLabel(g, i, st, lx, ly, `${p.toFixed(2)}${falseGates ? ' fg' + falseGates : ''}${i === pe ? ' · pusher' : ''}`);
   }
   // core hub rotates with core_rotation
   const rot = val(f, 'core_rotation');
@@ -329,7 +336,7 @@ function drawSliders(g, box, f) {
   g.beginPath(); g.arc(cx, cy, 20, 0, Math.PI * 2); g.fill(); g.stroke();
   const a = rot * Math.PI * 2;
   g.lineWidth = 3; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + Math.cos(a) * 16, cy + Math.sin(a) * 16); g.stroke();
-  text(g, `press ${val(f, 'pick_lift').toFixed(2)} (inward)`, cx, cy + R + 34, { size: 11, color: '#6b665c', align: 'center' });
+  text(g, `press ${val(f, 'pick_lift').toFixed(2)} (inward)`, box.x + 16, box.y + box.h - 12, { size: 11, color: '#6b665c' });
   drawCore(g, box, f, 'core');
 }
 
