@@ -50,6 +50,13 @@ G = 24; Wt = sum(im.width for im in imgs) + G * (len(imgs) + 1)
 c = Image.new('RGB', (Wt, H + 2 * G), (14, 14, 14)); xx = G
 for im in imgs: c.paste(im, (xx, G)); xx += im.width + G
 c.save(os.path.join(D, 'compare_with_locks.jpg'), quality=90)
+V1 = arg('--v1', '')     # previous portrait (v1) for the before/after comparison
+if V1 and os.path.exists(V1):
+    ims = [Image.open(V1).convert('RGB'), base] + [Image.open(os.path.join(ROOT, 'art', 'renders', n + '.png')).convert('RGB') for n in ('wafer', 'lever', 'ring_combo')]
+    ims = [im.resize((round(im.width * H / im.height), H), Image.LANCZOS) for im in ims]
+    c = Image.new('RGB', (sum(im.width for im in ims) + G * (len(ims) + 1), H + 2 * G), (14, 14, 14)); xx = G
+    for im in ims: c.paste(im, (xx, G)); xx += im.width + G
+    c.save(os.path.join(D, 'compare_with_locks_v2.jpg'), quality=90)
 land = os.path.join(D, 'menu_landscape.png')
 if os.path.exists(land):   # landscape next to two locks, same height
     L = Image.open(land).convert('RGB'); H2 = 900

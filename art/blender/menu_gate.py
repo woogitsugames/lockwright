@@ -380,7 +380,7 @@ elif ORIENT == 'portrait':
     TZ = (ZT + ZB) / 2 - 95
     cam = look_camera((BX + 6, RIB_FACE, TZ), float(arg('--yaw', '9')), float(arg('--pitch', '-3')), VW * LENS / 36.0, lens=LENS)
 else:
-    LENS = 50.0; VH = float(arg('--vh', '650')); VW = VH * RES[0] / RES[1]
+    LENS = 50.0; VH = float(arg('--vh', '585')); VW = VH * RES[0] / RES[1]
     CXL = (X0 - FR + RX + RW / 2) / 2
     cam = look_camera((CXL, RIB_FACE, (ZT + ZB) / 2 - 6), float(arg('--yaw', '6')), float(arg('--pitch', '3')), VW * LENS / 36.0, lens=LENS)
 cam.data.dof.use_dof = True; cam.data.dof.focus_object = None
