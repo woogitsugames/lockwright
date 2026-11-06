@@ -1,0 +1,7 @@
+# T71 — uzupełnienie wstępnego raportu
+
+`lengths.csv` zawiera pełne 120 przekroczeń: 56 niemieckich i 64 francuskie. Próg to ściśle więcej niż 130% długości angielskiej wersji, w kodowych punktach Unicode; spacje i symbole zastępcze liczą się jako znaki. To nie pomiar szerokości renderowania i nie potwierdza ucięcia. `generate.py` odtwarza wynik z katalogu głównego repozytorium. Plik nie zmienia produkcyjnych tłumaczeń.
+
+Wypełniona kolumna `proposal` podaje 66 redakcyjnych propozycji; 54 wiersze bez propozycji mają jawny status „bez bezpiecznej propozycji”. Dotyczy to zwłaszcza krótkich terminów, nazw kart i nazw rodzin, których skrócenie może usunąć znaczenie. Nie są to gotowe zmiany: redaktor musi sprawdzić pełny kontekst, gramatykę, używane nazewnictwo i przyciski; dla reszty pracę należy kontynuować lub zaakceptować większą szerokość. Porównania placeholderów i limitów `menu.*` 28 oraz `tutorial.*`/`lock.*` 56 wykonano na proponowanych wartościach, bez błędów. Nie uruchomiono `i18n_lint`, ponieważ raport nie dopisuje ani nie zmienia kluczy gry; przed integracją obowiązkowy lint na kopii oraz test w układach i z powiększonym tekstem.
+
+Ryzyko szczególne: różnica DE `run.lives_left` („pozostałe próby”) i EN („zapasowe wytrychy”) wymaga wyjaśnienia znaczenia ze stanem gry przed skróceniem. `verify.card.deed` i `verify.card.bailiff` nie powinny tracić rozróżnienia dokumentu i osoby. Dla bardzo krótkich EN, jak „On” lub „Two”, wysoki procent często nie oznacza problemu z miejscem.
