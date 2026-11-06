@@ -262,3 +262,8 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 
 ## D-70: Rozdziały 9–12 (T43) w głównej karierze; zakończenia zlecenia jako dane
 2026-11-06 · sesja A (odbiór T43) · 30 zleceń T43 trafia do `game/data/jobs/` (główna kariera, bot kariery, e2e), nie do osobnego katalogu; rozdział 7 zostaje za flagą „po premierze”, rozdział 8 (T18) nadal poza grą (do decyzji). Lista sortuje rozdział **liczbowo**, potem pole `order`. Nowe pole `outcome`: `open` (domyślne), `repair` (time_lock = naprawa zegara, D-60, kończy się `Events.lock_opened`), `talk` (sprawa wyjaśniona przy weryfikacji: bez sceny zamka, opłata za przyjazd bez napiwku, nie liczy się do `locks_opened`). Odmowa Darka w rozdz. 12 przepisana na świetlicę (powrót do byłej partnerki czytał się jak nękanie). Szczegóły i ekonomia: `contrib/gpt/REVIEW-T43.md`.
+
+## D-71: Rozdziały 7 i 8 w karierze; monety na wyposażenie warsztatu
+2026-11-06 · właściciel ·
+- **Rozdziały 7 i 8** wchodzą do głównej kariery (ciągłość fabuły 1–12, cel ok. 2 h). Rozdział 7 przestaje być „po premierze” (D-46 zmieniona); rozdział 8 (zima, T18 / `MAGNIFIC-PORTRETY-ROZDZIAL8`) trzeba zintegrować: zlecenia, głosy, sprawdzenie zamków i portretów.
+- **Monety pod koniec gry** (ok. 3900 niewydanych): **kosmetyczne wyposażenie warsztatu i gabloty** (oświetlenie, imadło, półki na eksponaty), widoczne w scenie warsztatu, bez wpływu na trudność.
