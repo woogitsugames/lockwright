@@ -143,10 +143,14 @@ function drawSchematic() {
   text(g, `${T.family}  ·  t = ${cur}  (${(cur / T.step_hz).toFixed(3)} s)`, 16, 26, { size: 16, weight: 700 });
   const box = { x: 16, y: 44, w: w - 32, h: h - 44 - 120 };
   const fam = T.family;
-  if (fam === 'ring_combo') drawRings(g, box, f);
-  else if (fam === 'warded') drawWarded(g, box, f);
-  else if (fam === 'lever' || fam === 'lever_detector') drawLevers(g, box, f);
-  else drawLift(g, box, f, fam === 'wafer' ? 'wafer' : 'pin');
+  let drawFn = null, drawName = '';
+  if (fam === 'ring_combo') { drawFn = drawRings; drawName = 'drawRings'; }
+  else if (fam === 'warded') { drawFn = drawWarded; drawName = 'drawWarded'; }
+  else if (fam === 'lever' || fam === 'lever_detector') { drawFn = drawLevers; drawName = 'drawLevers'; }
+  else if (typeof FAMILY_DRAW_V06 !== 'undefined' && FAMILY_DRAW_V06[fam]) { drawFn = FAMILY_DRAW_V06[fam]; drawName = drawFn.name; }
+  else { drawFn = (g2, b, f2) => drawLift(g2, b, f2, fam === 'wafer' ? 'wafer' : 'pin'); drawName = 'drawLift'; }
+  drawFn(g, box, f);
+  document.body.dataset.schematic = drawName;
   drawGauges(g, { x: 16, y: h - 112, w: w - 32, h: 100 }, f);
 }
 
