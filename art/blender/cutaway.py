@@ -203,6 +203,7 @@ if SHOT == 'borescope':  # flexible probe with a side-looking tip, under pin c, 
 # ---------------------------------------------------------------- render
 scene.render.engine = 'CYCLES'; scene.cycles.device = 'CPU'; scene.cycles.samples = SAMPLES
 scene.cycles.use_denoising = True; scene.cycles.max_bounces = 8
+configure_cycles_device()
 scene.cycles.denoising_input_passes = 'RGB_ALBEDO_NORMAL'; scene.cycles.denoising_prefilter = 'ACCURATE'
 scene.cycles.adaptive_threshold = 0.006; scene.render.film_transparent = False
 scene.view_settings.exposure = 0.15

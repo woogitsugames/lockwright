@@ -567,9 +567,35 @@ def look_camera(target, yaw_deg, pitch_deg, dist, lens=180, sensor=36, roll_deg=
     if roll_deg: q = q @ Matrix.Rotation(math.radians(roll_deg), 4, 'Z').to_quaternion()
     cam.rotation_euler = q.to_euler(); return cam
 
+def configure_cycles_device():
+    """Keep CPU by default; opt in to local OptiX/CUDA with LW_DEVICE=GPU."""
+    s = bpy.context.scene
+    s.cycles.device = 'CPU'
+    s.cycles.denoiser = 'OPENIMAGEDENOISE'
+    if os.environ.get('LW_DEVICE', '').upper() != 'GPU':
+        return 'CPU'
+    prefs = bpy.context.preferences.addons['cycles'].preferences
+    for backend in ('OPTIX', 'CUDA'):
+        try:
+            prefs.compute_device_type = backend
+            prefs.refresh_devices()
+            if not any(d.type == backend for d in prefs.devices):
+                continue
+            for d in prefs.devices:
+                d.use = d.type == backend
+            s.cycles.device = 'GPU'
+            s.cycles.denoiser = 'OPTIX' if backend == 'OPTIX' else 'OPENIMAGEDENOISE'
+            print('LW_DEVICE:', backend, [d.name for d in prefs.devices if d.use])
+            return backend
+        except Exception as exc:
+            print('LW_DEVICE: backend unavailable:', backend, str(exc))
+    raise RuntimeError('LW_DEVICE=GPU requested, but no OptiX/CUDA device is available')
+
+
 def render_setup(out, res, samples, exposure=0.0, look='AgX - Medium High Contrast', bounces=8, crop=None):
     s = scene; s.render.engine = 'CYCLES'; s.cycles.device = 'CPU'; s.cycles.samples = samples
     s.cycles.use_denoising = True; s.cycles.denoiser = 'OPENIMAGEDENOISE'
+    configure_cycles_device()
     s.cycles.denoising_input_passes = 'RGB_ALBEDO_NORMAL'; s.cycles.denoising_prefilter = 'ACCURATE'
     s.cycles.adaptive_threshold = 0.006; s.cycles.max_bounces = bounces; s.cycles.glossy_bounces = 6
     s.cycles.caustics_reflective = False; s.cycles.caustics_refractive = False; s.cycles.blur_glossy = 0.5
