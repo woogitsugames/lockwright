@@ -41,3 +41,5 @@ Komórki wspólne z istniejącym `fixes.csv`: 1. Rzeczywisty wynik każdej propo
 ## Jedyna pozostała kolizja z wcześniejszą dostawą
 
 W `job.refuse_rush_bribe.note` (EN) wcześniejsze `fixes.csv` proponuje „One a.m.”, a uzupełnienie „One in the morning”. Obie wersje oznaczają pierwszą w nocy; druga usuwa skrót z tekstu dla lektora. Integrator powinien wybrać tę wersję, jeśli ten klucz jest czytany przez lektora, i nie stosować obu naraz. Pozostałe wspólne komórki, w tym nieistotne warianty stylistyczne, usunięto z uzupełnienia.
+
+Doprecyzowanie walidacji: kopia pochodziła ze sparse checkoutu bez skryptów `.gd`; linter nie mógł więc wykonać pełnego sprawdzenia odwołań z kodu.
