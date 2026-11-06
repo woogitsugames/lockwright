@@ -5,22 +5,24 @@ Scenka 2.5D: 3 s przejazdu kamery po ostatnich stopniach kamienicy na podest, po
 Scena powstaje z zestawu klatki schodowej: `art/blender/arrival_scene.py` uruchamia bez zmian
 `art/blender/stairwell.py` i dobudowuje bieg schodów, okno, wianek, tabliczkę, skrzynkę, kamerę i światło pory dnia.
 
-## Pliki w tym katalogu (podgląd CPU, niska rozdzielczość — NIE finał)
+## Pliki w tym katalogu (finały GPU i historyczne podglądy CPU)
 
 | Plik | Co to |
 |---|---|
 | `wrong_floor_night_seq/f_0001..0036.png` | sekwencja 36 kl. @ 12 fps (3,0 s), 270×480, 10 spp |
 | `wrong_floor_preview_contact.png` | arkusz kontrolny sekwencji (6×6) |
-| `wrong_floor_night_hold.png` + `.json` + `_depth.png` | stop-klatka nocna 540×960, 32 spp, kotwice, głębia (maska zasłaniania) |
-| `wrong_floor_night_ajar_hold.*` | wariant: pani Teresa otwiera (drzwi uchylone do środka, łańcuch, światło z przedpokoju) |
-| `wrong_floor_{evening,day}_hold.*` | ta sama stop-klatka wieczorem i w dzień, 270×480 (porównanie światła) |
+| `wrong_floor_night_hold.png` + `.json` + `_depth.png` | finał GPU: stop-klatka nocna 1080×1920, 512 spp, OIDN, kotwice, głębia (maska zasłaniania) |
+| `wrong_floor_night_ajar_hold.*` | finał GPU 1080×1920 / 512 spp: pani Teresa otwiera (drzwi uchylone do środka, łańcuch, światło z przedpokoju) |
+| `wrong_floor_{evening,day}_hold.*` | finały GPU: wieczór i dzień, 1080×1920, 512 spp, OIDN |
 | `wrong_floor_night_shadow_kazimierz.png`, `wrong_floor_night_ajar_shadow_teresa.png` | mapy cienia postaci (Cycles Shadow Catcher: stosunek światła z postacią / bez) |
 | `wrong_floor_preview_{night,evening,day}_kazimierz.png`, `wrong_floor_preview_night_teresa.png` | proof składania: stop-klatka + zaślepka postaci |
 | `wrong_floor_preview_board.png` | zestawienie czterech proofów |
 | `wrong_floor_preview_vs_stairwell_locks.png` | porównanie: noc tutaj / `stairwell_night.png` / `stairwell.png` / `wafer.png` |
 | `placeholder_kazimierz.png`, `placeholder_teresa.png` | szare sylwetki-zaślepki z alfą (do czasu dostawy Magnific D1/D2) |
 
-Sekwencja (216×384, 8 spp), stop-klatki i proofy są z tego samego stanu skryptu (przebieg materiałów zdjęciowych).
+Historyczne sekwencje i pliki `preview_*` pozostają podglądami CPU. Stop-klatki `*_hold.*` zastąpiono finałami GPU 2026-11-06. Nowe arkusze `*_final_contact.png` pokazują po 36 klatek 1080×1920 / 128 spp z włosiem; pełne 108 klatek pozostają lokalnie w `build/local-session/arrival-master/` (nie w repo). `wrong_floor_final_board.jpg` porównuje cztery finały.
+
+Magnific D1/D2 nadal brak. Mapy cienia i kompozyty z zaślepkami są historycznym proofem CPU; nie są finałem do nowych stop-klatek. Nie wykonano nowych map cienia ani kompozytów prawdziwych postaci. Integracja w grze należy do sesji A po akceptacji.
 
 ## Czego potrzebuje gra
 

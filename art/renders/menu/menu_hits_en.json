@@ -7,22 +7,22 @@
  "dp_basis": "412 dp across the short side",
  "rect": "[x, y, w, h] px, origin top-left",
  "board_rect": [
-  -9,
-  -14,
-  1117,
-  1976
+  142,
+  330,
+  798,
+  1408
  ],
  "title_rect": [
-  123,
-  144,
-  807,
-  241
+  235,
+  441,
+  585,
+  163
  ],
  "focus_rect": [
-  62,
-  144,
-  961,
-  1690
+  194,
+  441,
+  688,
+  1208
  ],
  "locale": "en",
  "note": "hit_rect = the whole felt band of the item (>= 48 dp tall); pressed_sprite = the baked pressed state, rendered over exactly hit_rect (+20 px margin, see pressed_margin_px), paste at hit_rect.xy - margin",
@@ -32,21 +32,21 @@
    "id": "start",
    "label": "START SHIFT",
    "text_rect": [
-    117,
-    534,
-    641,
-    110
+    231,
+    721,
+    465,
+    73
    ],
    "hit_rect": [
-    75,
-    413,
-    933,
-    294
+    201,
+    637,
+    674,
+    208
    ],
-   "cap_px": 91,
+   "cap_px": 67,
    "hit_dp": [
-    355.9,
-    112.2
+    257.1,
+    79.3
    ],
    "pressed_sprite": "menu_pressed_start_en.png"
   },
@@ -54,21 +54,21 @@
    "id": "jobs",
    "label": "JOBS",
    "text_rect": [
-    112,
-    798,
-    224,
-    73
+    229,
+    909,
+    164,
+    52
    ],
    "hit_rect": [
-    73,
-    707,
-    939,
-    217
+    199,
+    845,
+    677,
+    156
    ],
-   "cap_px": 81,
+   "cap_px": 59,
    "hit_dp": [
-    358.2,
-    82.8
+    258.3,
+    59.5
    ],
    "pressed_sprite": "menu_pressed_jobs_en.png"
   },
@@ -76,21 +76,21 @@
    "id": "workshop",
    "label": "WORKSHOP",
    "text_rect": [
-    116,
-    1000,
-    498,
-    77
+    232,
+    1056,
+    361,
+    54
    ],
    "hit_rect": [
-    70,
-    924,
-    944,
-    218
+    198,
+    1001,
+    680,
+    157
    ],
-   "cap_px": 82,
+   "cap_px": 59,
    "hit_dp": [
-    360.1,
-    83.2
+    259.4,
+    59.9
    ],
    "pressed_sprite": "menu_pressed_workshop_en.png"
   },
@@ -98,21 +98,21 @@
    "id": "showcase",
    "label": "SHOWCASE",
    "text_rect": [
-    114,
-    1230,
-    506,
-    64
+    231,
+    1221,
+    366,
+    47
    ],
    "hit_rect": [
-    67,
-    1142,
-    950,
-    222
+    197,
+    1158,
+    682,
+    159
    ],
-   "cap_px": 82,
+   "cap_px": 60,
    "hit_dp": [
-    362.4,
-    84.7
+    260.2,
+    60.7
    ],
    "pressed_sprite": "menu_pressed_showcase_en.png"
   },
@@ -120,21 +120,21 @@
    "id": "settings",
    "label": "SETTINGS",
    "text_rect": [
-    111,
-    1453,
-    424,
-    73
+    229,
+    1383,
+    307,
+    51
    ],
    "hit_rect": [
-    64,
-    1364,
-    956,
-    223
+    195,
+    1317,
+    685,
+    161
    ],
-   "cap_px": 83,
+   "cap_px": 60,
    "hit_dp": [
-    364.7,
-    85.1
+    261.3,
+    61.4
    ],
    "pressed_sprite": "menu_pressed_settings_en.png"
   },
@@ -142,21 +142,21 @@
    "id": "about",
    "label": "ABOUT THE GAME",
    "text_rect": [
-    109,
-    1656,
-    843,
-    99
+    228,
+    1530,
+    604,
+    64
    ],
    "hit_rect": [
-    62,
-    1587,
-    961,
-    247
+    194,
+    1478,
+    688,
+    171
    ],
-   "cap_px": 84,
+   "cap_px": 61,
    "hit_dp": [
-    366.6,
-    94.2
+    262.5,
+    65.2
    ],
    "pressed_sprite": "menu_pressed_about_en.png"
   }

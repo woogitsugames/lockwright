@@ -1,6 +1,6 @@
 {
- "width": 540,
- "height": 960,
+ "width": 1080,
+ "height": 1920,
  "job": "wrong_floor",
  "time": "night",
  "door": "closed",
@@ -149,8 +149,8 @@
     0.25971,
     0.49218
    ],
-   "height_px": 482.6,
-   "px_per_mm": 0.27898,
+   "height_px": 965.3,
+   "px_per_mm": 0.55797,
    "depth_mm": 2102.9,
    "occluded_by_leaf": false,
    "lights": [
@@ -287,8 +287,8 @@
     0.68224,
     0.48461
    ],
-   "height_px": 314.3,
-   "px_per_mm": 0.19766,
+   "height_px": 628.6,
+   "px_per_mm": 0.39533,
    "depth_mm": 2968.0,
    "occluded_by_leaf": true,
    "lights": [
