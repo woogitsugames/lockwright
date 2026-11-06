@@ -59,6 +59,11 @@ func _ready() -> void:
 	present({}, {})
 
 
+## Slots used by n elements: centred in the plate's row (the time lock overrides: from the barrel).
+func _first_slot_for(n: int) -> int:
+	return int((slot_count() - n) / 2.0) if n > 0 else 0
+
+
 func slot_count() -> int:
 	return maxi((meta.get("slots_px", []) as Array).size(), 1)
 
@@ -120,7 +125,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	var n := mini(els.size(), slot_count())
 	if n != n_el:
 		n_el = n
-		first_slot = int((slot_count() - n) / 2.0) if n > 0 else 0
+		first_slot = _first_slot_for(n)
 	var k := 1.0 - exp(-delta / SMOOTH_S)
 	var snap := delta >= 0.5
 	_opened = bool(vm.get("open", false)) or _opened

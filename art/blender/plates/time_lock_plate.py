@@ -31,16 +31,26 @@ DEVICE = arg('--device', 'CPU').upper()
 PASSES = arg('--passes', 'plate,front,moving').split(',')
 
 TRAVEL = 6.0                       # mm a wheel is lowered for lockcore position 1.0
-BARREL = (-16.0, -26.0, 12.0)      # x, z, radius
+BARREL = (-14.0, -24.0, 12.0)      # x, z, radius
 # train wheels: centre x, z, wheel radius, pinion radius; each meshes with the previous wheel/barrel
-TRAIN = [(-1.0, -9.0, 9.0, 2.6), (13.0, 2.0, 8.0, 2.4), (1.0, 13.0, 7.0, 2.2), (14.0, 22.0, 6.0, 2.0), (4.0, 30.0, 5.0, 1.8)]
-PALLET = (-5.0, 37.0)
-DIAL = (-17.0, 22.0, 9.0)          # small run dial: centre, radius
+def _chain():
+    # each wheel's pinion meshes with the rim before it: centre distance = rim radius + pinion radius
+    out, (x, z, r) = [], BARREL
+    for (rr, pr, ang) in [(9.0, 2.6, 60), (8.0, 2.4, 30), (7.0, 2.2, -20), (6.0, 2.0, 30), (5.0, 1.8, -30)]:
+        d = r + pr
+        x, z = x + d * math.sin(math.radians(ang)), z + d * math.cos(math.radians(ang))
+        out.append((round(x, 3), round(z, 3), rr, pr)); r = rr
+    return out
+
+
+TRAIN = _chain()
+PALLET = (TRAIN[-1][0], TRAIN[-1][1] + 6.6)
+DIAL = (-19.0, 18.0, 9.0)          # small run dial: centre, radius
 Y_PLATE, Y_WHEEL = 6.0, 0.0
 
 M = {
-    'plate': photo_mat('ph_plate', 'brass_face_milled', scale=70, rot=20, base=(0.78, 0.60, 0.32), base_mix=0.5, rough_add=0.18, bump=0.15, grime=0.6, wear=0.3),
-    'wheel': photo_mat('ph_wheel', 'brass_turned', scale=24, flat=True, base=(0.86, 0.66, 0.34), base_mix=0.35, rough_add=0.06, bump=0.1, grime=0.4),
+    'plate': photo_mat('ph_plate', 'brass_patina_grease', scale=90, rot=20, base=(0.36, 0.30, 0.20), base_mix=0.55, rough_add=0.22, bump=0.2, grime=0.8, wear=0.2),
+    'wheel': photo_mat('ph_wheel', 'brass_turned', scale=24, flat=True, base=(0.98, 0.78, 0.42), base_mix=0.35, rough_add=0.06, bump=0.1, grime=0.4),
     'steel': photo_mat('ph_steel', 'steel_ground', scale=12, rot=0, base=(0.58, 0.59, 0.60), base_mix=0.4, rough_add=0.08, bump=0.1),
     'blued': photo_mat('ph_blued', 'steel_heat_tint', scale=10, rot=0, base=(0.12, 0.14, 0.25), base_mix=0.6, rough_add=0.05),
     'enamel': dark_mat('dial_enamel', (0.86, 0.84, 0.78), 0.35),
@@ -49,7 +59,7 @@ M = {
     'wood': photo_mat('ph_case', 'g03:oak_satin', scale=200, rot=90, metallic=0.0, tint=(0.75, 0.6, 0.45), rough_add=0.1, coat=0.2, bump=0.3, grime=0.6),
 }
 
-rig = LayerRig(scene, RES, SPP, DEVICE, OUT_DIR, center=(0.0, 6.0), width_mm=78.0)
+rig = LayerRig(scene, RES, SPP, DEVICE, OUT_DIR, center=(-4.0, -2.0), width_mm=72.0)
 
 
 def gear(name, r, teeth, thick, y, spokes=True, pinion=None, arbor=True):
@@ -84,8 +94,8 @@ def place(objs, x, z):
 
 # ---------------------------------------------------------------- case, back plate, pillars, pivot holes
 case = box('case', -60, 60, Y_PLATE + 3.0, Y_PLATE + 12.0, -60, 70); put(case, M['wood'], 0.5, 2); rig.objs['back'].append(case)
-bp = box('backplate', -36, 36, Y_PLATE, Y_PLATE + 3.0, -42, 46); put(bp, M['plate'], 0.4, 3); rig.objs['back'].append(bp)
-for (px, pz) in [(-32, -38), (32, -38), (-32, 42), (32, 42)]:
+bp = box('backplate', -38, 30, Y_PLATE, Y_PLATE + 3.0, -44, 40); put(bp, M['plate'], 0.4, 3); rig.objs['back'].append(bp)
+for (px, pz) in [(-34, -40), (26, -40), (-34, 36), (26, 36)]:
     pil = cyl('pillar', 2.4, 8.0, (px, Y_PLATE - 4.0, pz), axis='Y', verts=32); put(pil, M['plate'], 0.2, 2); rig.objs['back'].append(pil)
     rig.objs['back'].append(screw_head('pscrew', (px, Y_PLATE - 8.0, pz), 2.0, 1.0, axis='-Y', slot=True, kind='pan', mat=M['blued'], rot=0.4 + px))
 for (x, z, r, pr) in TRAIN + [(BARREL[0], BARREL[1], 0, 0), (PALLET[0], PALLET[1], 0, 0)]:
@@ -117,12 +127,12 @@ hub = cyl('hand_hub', 0.9, 0.6, (0, Y_WHEEL - 6.3, 0), axis='Y', verts=24); put(
 rig.objs['moving']['hand'] = place([hand, hub], dx, dz)
 tw = []
 for side in (-1, 1):
-    arm = prism('tw_arm', [(side * 0.15, 0.0), (side * 0.75, 0.0), (side * 2.6 + 16.0, 34.0), (side * 1.2 + 16.0, 34.0)], Y_WHEEL - 3.2, Y_WHEEL - 2.6)
+    arm = prism('tw_arm', [(side * 0.15, 0.0), (side * 0.75, 0.0), (side * 1.8 + 9.0, 20.0), (side * 0.9 + 9.0, 20.0)], Y_WHEEL - 3.2, Y_WHEEL - 2.6)
     put(arm, M['steel'], 0.06, 2); tw.append(arm)
 rig.objs['moving']['tweezers'] = tw
 
 # ---------------------------------------------------------------- front: the dial bridge
-bridge = prism('bridge', [(-30, 12), (-6, 12), (-4, 16), (-4, 34), (-30, 34)], Y_WHEEL - 5.0, Y_WHEEL - 3.4)
+bridge = prism('bridge', [(-31, 7), (-9, 7), (-7.5, 11), (-7.5, 30), (-31, 30)], Y_WHEEL - 5.0, Y_WHEEL - 3.4)
 boolean(bridge, cyl('dhole', dr + 0.3, 10, (dx, Y_WHEEL - 4.0, dz), axis='Y', verts=96))
 put(bridge, M['plate'], 0.3, 3); rig.objs['front'].append(bridge)
 dial = cyl('dial', dr, 0.6, (dx, Y_WHEEL - 5.3, dz), axis='Y', verts=96); put(dial, M['enamel'], 0.1, 2); rig.objs['front'].append(dial)
@@ -130,7 +140,7 @@ for k in range(12):
     a = 2 * math.pi * k / 12
     tk = box('dtick', -0.18, 0.18, Y_WHEEL - 5.66, Y_WHEEL - 5.6, dr - (1.8 if k % 3 == 0 else 1.1), dr - 0.4)
     tk.data.transform(Matrix.Rotation(a, 4, 'Y')); tk.location = (dx, 0, dz); put(tk, M['ink']); rig.objs['front'].append(tk)
-for (sx, sz) in [(-26, 15), (-26, 31)]:
+for (sx, sz) in [(-28, 10), (-28, 27)]:
     rig.objs['front'].append(screw_head('bscrew', (sx, Y_WHEEL - 5.0, sz), 1.5, 0.8, axis='-Y', slot=True, kind='pan', mat=M['blued'], rot=0.7 + sz))
 
 # ---------------------------------------------------------------- light + camera, render

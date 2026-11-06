@@ -11,6 +11,7 @@ const SCENES := {
 	&"magnetic": "res://scenes/photoreal/lock_job_magnetic.tscn",
 	&"dimple": "res://scenes/photoreal/lock_job_dimple.tscn",
 	&"egyptian": "res://scenes/photoreal/lock_job_egyptian.tscn",
+	&"time_lock": "res://scenes/photoreal/lock_job_time_lock.tscn",
 }
 var _save_backup: Dictionary
 
@@ -259,3 +260,29 @@ func _layer_states_differ(fam: StringName) -> void:
 
 func test_egyptian_states_read_by_geometry() -> void:
 	await _layer_states_differ(&"egyptian")
+
+
+func test_time_lock_jobs_run_in_both_modes() -> void:
+	# a repair: "open" here means the movement runs again (LOCKS.md §2.24)
+	await _check_family(&"time_lock")
+
+
+func test_time_lock_states_read_by_geometry() -> void:
+	await _layer_states_differ(&"time_lock")
+
+
+func test_time_lock_train_turns_only_when_running() -> void:
+	JobRun.start(jobs(&"time_lock")[0])
+	var scene: Node = await _open_scene(&"time_lock", Vector2i(412, 915))
+	scene.set_physics_process(false)
+	var view: LockTimeLockView = scene.view
+	var el := {"state": &"set", "position": 0.5, "window_lo": 0.45, "window_hi": 0.57, "variant": 0}
+	var vm := {"elements": [el, el, el], "tension": 0.35, "hold_progress": 0.0}
+	for i in 30:
+		view.present(vm, {"tension": 0.35}, 1.0 / 60.0)
+	var p0 := view.train_phase()
+	assert_false(view.is_running(), "meshed but not running: the pallet is still")
+	vm["hold_progress"] = 0.4
+	for i in 30:
+		view.present(vm, {"tension": 0.35}, 1.0 / 60.0)
+	assert_gt(view.train_phase(), p0, "running: the whole train turns")
