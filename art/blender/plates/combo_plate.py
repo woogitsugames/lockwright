@@ -48,7 +48,7 @@ WIN = (-17.6, 17.6)           # wheel window in the body front (x)
 READ_DEG = 30.0               # reading line: degrees above the front
 TOOTH_W = 1.6
 NOTCH_D = 1.2
-DIST, LENS = 215.0, 150.0
+DIST, LENS = 192.0, 150.0
 
 
 def cutter():

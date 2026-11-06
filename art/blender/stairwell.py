@@ -305,6 +305,11 @@ stain_decal('floor_grime', 'Z', 0.2, (W0, 2400, -4200, 0), [(0, -30, 900, 70, 0.
 fly = slab('flyer', rounded_rect(96, 150, 0.5, 2), 0.25, paper('flyer', (0.78, 0.74, 0.62), grime=0.3, seed=9))
 place(fly, (LX1 + 1, 18, 1250), rot=(90, 3, 78))
 
+# stain decals: no specular on the dirt layer (a sheen the matte paint under it lacks showed as a pale oval)
+for m_ in bpy.data.materials:
+    if m_.use_nodes and any(n.type == 'BSDF_TRANSPARENT' for n in m_.node_tree.nodes) and 'Principled BSDF' in m_.node_tree.nodes:
+        m_.node_tree.nodes['Principled BSDF'].inputs['Specular IOR Level'].default_value = 0.0
+
 # ---------------------------------------------------------------- camera + clipboard held in the foreground
 cam = photo_camera((150, -2420, 1500), yaw=3.5, lens=24.5, shift=(0.0, -0.14))
 cam.data.sensor_fit = 'VERTICAL'; cam.data.sensor_height = 36.0; cam.data.sensor_width = 36.0

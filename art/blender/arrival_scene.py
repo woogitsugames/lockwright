@@ -279,6 +279,111 @@ bx('hall_l', -800, -700, 150, 3200, 0, 2900, hall_wall); bx('hall_r', 1100, 1200
 bx('hall_back', -800, 1200, 3200, 3300, 0, 2900, hall_wall); bx('hall_ceil', -800, 1200, 150, 3300, 2900, 3000, hall_wall)
 bx('hall_coats', 700, 1080, 900, 1900, 900, 1900, plastic('coats', (0.18, 0.12, 0.10), rough=0.8))   # coats on hooks (dark mass)
 
+# ---------------------------------------------------------------- 4b. photo-material pass (art/textures/photo, D-48)
+# The kit is procedural; here the big surfaces get the Magnific photo maps, then layers of use on top:
+# plaster patches and old paint showing through, a grime band along the floor that follows the stair line,
+# scuffs low on the dado, fingerprints/grease on brass. `--photo 0` keeps the procedural kit.
+from lw_common import _noise, _mix, _maprange
+from env_common import _math, _sep
+def base_socket(m):
+    nt = m.node_tree; b = nt.nodes['Principled BSDF']
+    src = next((lk.from_socket for lk in nt.links if lk.to_socket == b.inputs['Base Color']), None)
+    return nt, b, (src if src is not None else b.inputs['Base Color'].default_value)
+def floor_line(nt, P):
+    """Height of the walking surface under a wall point: 0 on the landing, the stair line along the flight."""
+    X, Y, Z = _sep(nt, P)
+    t = _maprange(nt, Y, Y_BOT, TOPY, 0.0, 1.0)
+    return Z, _math(nt, 'ADD', _math(nt, 'MULTIPLY', t, -HALFZ), HALFZ)
+def layer_use(m, grime_h=320, grime=0.55, patches=0.0, patch_col=(0.80, 0.77, 0.70), scuffs=0.0, seed=0.0):
+    nt, b, col = base_socket(m); l = nt.links
+    P = nt.nodes.new('ShaderNodeTexCoord').outputs['Object']
+    if patches:   # replastered patches (lighter, smoother) and old paint layers where the top coat flaked
+        pm = _maprange(nt, _noise(nt, P, 0.0011, detail=3, rough=0.5, dist=0.3), 0.58, 0.62, 0.0, patches)
+        col = _mix(nt, col, (*patch_col, 1), pm)
+        fl = _maprange(nt, _noise(nt, P, 0.004, detail=8, rough=0.75), 0.66, 0.69, 0.0, patches * 0.8)
+        col = _mix(nt, col, (0.47, 0.52, 0.42, 1), fl)          # old green-grey coat under the lime
+    if scuffs:    # shoe and bag scuffs: grey-black streaks low on the dado
+        Z, F = floor_line(nt, P); h = _math(nt, 'SUBTRACT', Z, F)
+        band = _maprange(nt, h, 450, 120, 0.0, 1.0)
+        sc = _maprange(nt, _noise(nt, P, 0.02, detail=6, rough=0.6, stretch=(4.0, 4.0, 0.6)), 0.62, 0.7, 0.0, scuffs)
+        col = _mix(nt, col, (0.08, 0.08, 0.075, 1), _math(nt, 'MULTIPLY', band, sc))
+    if grime:     # dirt band along the floor (mop line), broken by noise
+        Z, F = floor_line(nt, P); h = _math(nt, 'SUBTRACT', Z, F)
+        g = _maprange(nt, h, grime_h, 0.0, 0.0, grime)
+        g = _math(nt, 'MULTIPLY', g, _maprange(nt, _noise(nt, P, 0.01, detail=5), 0.3, 0.7, 0.5, 1.0))
+        col = _mix(nt, col, (0.10, 0.085, 0.06, 1), g)
+    l.new(col, b.inputs['Base Color']); return m
+if photo_enabled():
+    ph_lime = layer_use(photo_mat('ph_lime', 'wall_lime_plaster', scale=1000, metallic=0.0, bump=0.5, grime=0.4, tint=(0.82, 0.78, 0.69)),
+                        grime_h=200, grime=0.35, patches=1.0, patch_col=(0.86, 0.83, 0.76))
+    ph_green = layer_use(photo_mat('ph_lamperia', 'wall_oil_paint_green', scale=760, metallic=0.0, bump=0.45, coat=0.35, grime=0.5,
+                                   base=(0.05, 0.10, 0.075), base_mix=0.25), grime_h=260, grime=0.6, scuffs=0.8)
+    ph_ceiling = photo_mat('ph_ceiling', 'wall_lime_plaster', scale=1300, metallic=0.0, bump=0.3, grime=0.2, tint=(0.84, 0.81, 0.74))
+    ph_terr = photo_mat('ph_terrazzo', 'terrazzo_grey_red', scale=900, metallic=0.0, bump=0.3, grime=0.6, wear=0.3, base=(0.40, 0.37, 0.34), base_mix=0.35)
+    ph_brass = photo_mat('ph_brass', 'brass_patina_grease', scale=60, metallic=1.0, base=(0.70, 0.52, 0.28), base_mix=0.4, rough_add=0.08, wear=0.4, grime=0.8)
+    SWAP = {upper: ph_lime, lamperia: ph_green, ceiling_m: ph_ceiling, floor_m: ph_terr, brass: ph_brass, brass_plate: ph_brass,
+            bpy.data.materials['half_terrazzo']: ph_terr, bpy.data.materials['skirting']: ph_terr}
+    for o in bpy.data.objects:
+        if o.type in ('MESH', 'CURVE', 'FONT'):
+            for sl in o.material_slots:
+                if sl.material in SWAP: sl.material = SWAP[sl.material]
+    # worn path on the landing: polished lighter centre from the stairs to the door, darker edges (decal-free: a
+    # second terrazzo copy would double the textures, so the floor_grime decal + its stronger spots do it)
+    stain_decal('floor_edge', 'Z', 0.25, (FX1, 2400, -4300, -10), [(FX1 + 60, -2000, 90, 2600, 0.55), (900, -900, 260, 900, 0.3),
+                (-200, -2650, 700, 60, 0.35)], color=(0.07, 0.06, 0.045), rough=0.75, noise_scale=0.03)
+    # door: hand grime round the lever and cylinder, kick marks at the bottom rail
+    stain_decal('handle_grime', 'Y', LY - 0.35, (HX - 260, LX1, HZ - 330, HZ + 260),
+                [(HX - 60, HZ - 10, 110, 150, 0.45), (HX + 10, HZ - 80, 50, 60, 0.35)], color=(0.035, 0.022, 0.012), rough=0.55, noise_scale=0.05)
+    stain_decal('kick_marks', 'Y', LY - 0.35, (LX0, LX1, LZ0, LZ0 + 260), [(0, LZ0 + 60, 420, 120, 0.5)],
+                color=(0.04, 0.03, 0.02), rough=0.7, noise_scale=0.06)
+for m_ in bpy.data.materials:   # decals: no specular sheen (see above)
+    if m_.use_nodes and any(n.type == 'BSDF_TRANSPARENT' for n in m_.node_tree.nodes) and 'Principled BSDF' in m_.node_tree.nodes:
+        m_.node_tree.nodes['Principled BSDF'].inputs['Specular IOR Level'].default_value = 0.0
+
+# ---------------------------------------------------------------- 4c. the flat's hall (seen through the open door)
+# cement-tile floor, a runner, coats on a hook rail, a shoe cabinet, a framed photo and a warm wall lamp
+if photo_enabled():
+    setmat(bpy.data.objects['hall_floor'], photo_mat('ph_cement_tiles', 'cement_tiles', scale=600, metallic=0.0, bump=0.3, grime=0.5, wear=0.3,
+                                                   base=(0.50, 0.42, 0.34), base_mix=0.3))
+drop('hall_coats')
+runner = plastic('runner', (0.30, 0.07, 0.05), rough=0.9, seed=4, grime=0.5, sheen_scuffs=0.0)
+nt_, b_, c_ = base_socket(runner); Pp = nt_.nodes.new('ShaderNodeTexCoord').outputs['Object']; Xr, Yr, Zr = _sep(nt_, Pp)
+stripes = _maprange(nt_, _math(nt_, 'ABSOLUTE', _math(nt_, 'SINE', _math(nt_, 'MULTIPLY', Xr, 0.06))), 0.85, 0.95)
+nt_.links.new(_mix(nt_, c_, (0.62, 0.48, 0.22, 1), stripes), b_.inputs['Base Color'])
+bx('runner', -330, 330, 300, 2900, 0, 6, runner, bev=2)
+coat_cols = [(0.10, 0.12, 0.16), (0.30, 0.20, 0.12), (0.14, 0.13, 0.11), (0.42, 0.33, 0.22)]
+bx('hook_rail', 1060, 1100, 700, 2000, 1700, 1790, door_wood('Y', 400, (1080, 1350, 1745), 90), bev=3)
+for i, c in enumerate(coat_cols):   # coats: soft slabs hanging from the rail, slightly turned
+    y = 830 + i * 330; w = 280 + 40 * (i % 2)
+    co = bx('coat%d' % i, 960 - 40 * (i % 2), 1060, y - w / 2, y + w / 2, 650 + 120 * (i % 3), 1740, plastic('coat%d' % i, c, rough=0.85, seed=i, grime=0.2), bev=40, seg=4)
+    co.rotation_euler.z = math.radians(rng.uniform(-8, 8))
+bx('shelf_hat', 900, 1100, 700, 2000, 1950, 1975, door_wood('Y', 401, (1000, 1350, 1960), 90), bev=2)
+bx('shoe_cabinet', 760, 1100, 2150, 2950, 0, 900, oil_paint('cabinet', (0.62, 0.58, 0.48), rough=0.35, chips=0.3, scuffs=0.3, seed=12), bev=4)
+bx('photo_frame', -150, 150, 3190, 3200, 1450, 1830, door_wood('X', 402, (0, 3195, 1640), 40), bev=2)
+bx('photo', -125, 125, 3188, 3191, 1475, 1805, paper('photo', (0.55, 0.50, 0.42), grime=0.3, seed=5))
+hl = lathe('hall_lamp', [(0.1, 2150), (70, 2160), (95, 2230), (80, 2300), (40, 2330), (0.1, 2335)], 600, 3150, seg=48)
+setmat(hl, opal_glass('hall_opal', glow=3.0 if TIME != 'day' else 0.0))
+bpy.ops.object.light_add(type='POINT', location=(600, 3060, 2240)); hlamp = bpy.context.object; hlamp.name = 'hall_bulb'
+hlamp.data.energy = (1.6e7 if TIME != 'day' else 0.0); hlamp.data.color = (1.0, 0.64, 0.36); hlamp.data.shadow_soft_size = 40
+
+# ---------------------------------------------------------------- 4d. the courtyard behind the stair window
+# limewashed brick of the next wing across the yard, its windows (a few lit at night), a strip of sky above
+ribbed.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value = 0.07   # old clear glass, slight waviness
+CY = WT + 5200
+court = bx('court_wall', -9000, 1500, CY, CY + 300, -6000, 6600, brick_wall('court_brick', brick=(0.40, 0.22, 0.14), wash=(0.62, 0.60, 0.55), wash_amt=0.55, seed=4))
+win_dark = glass('court_glass', (0.25, 0.27, 0.28), rough=0.05)
+lit = emissive('court_lit', (1.0, 0.66, 0.35), 3.0 if TIME == 'night' else (1.2 if TIME == 'evening' else 0.0), (0.05, 0.05, 0.05))
+crng = random.Random(21)
+for ix, x in enumerate(range(-6200, 1200, 1500)):
+    for iz, z in enumerate((-3800, -400, 3000)):
+        m_ = lit if (TIME != 'day' and crng.random() < 0.3) else win_dark
+        bx('cw_frame', x - 20, x + 920, CY - 60, CY, z - 20, z + 1520, oil_paint('cw_paint', (0.55, 0.52, 0.45), rough=0.4, seed=ix), bev=4)
+        bx('cw_glass', x + 40, x + 860, CY - 70, CY - 40, z + 40, z + 1460, m_)
+        bx('cw_sill', x - 60, x + 960, CY - 140, CY, z - 60, z, oil_paint('cw_sill', (0.30, 0.29, 0.27), rough=0.6, seed=ix))
+drop('w_sky')
+SKY = {'night': ((0.06, 0.09, 0.20), 0.25), 'evening': ((0.18, 0.28, 0.70), 1.2), 'day': ((0.80, 0.86, 0.96), 4.0)}[TIME]
+sky = bx('w_sky', -9000, 3000, CY + 8000, CY + 8020, -6000, 30000, emissive('sky2', SKY[0], SKY[1], (0, 0, 0))); sky.visible_shadow = False
+
 # ---------------------------------------------------------------- 5. lighting by time of day
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (-1100, -3600, 0)
 AIM2 = bpy.data.objects.new('aim2', None); scene.collection.objects.link(AIM2); AIM2.location = (0, 1200, 0)
@@ -286,7 +391,7 @@ WARM = (1.0, 0.66, 0.38)                       # ~2700 K incandescent behind opa
 L = {   # time: bulb W, window W, window colour, world, interior W, exposure, glow
     'night':   (5.0e7, 6.0e7, (0.50, 0.62, 1.00), 0.004, 1.2e7, -0.2, 2.2),
     'evening': (4.5e7, 1.1e8, (0.45, 0.58, 1.00), 0.010, 6.0e6, -0.2, 2.0),
-    'day':     (0.0,   4.5e8, (1.00, 0.96, 0.90), 0.050, 0.0,    0.5, 0.0),
+    'day':     (0.0,   2.5e8, (0.85, 0.92, 1.00), 0.050, 0.0,    0.1, 0.0),
 }[TIME]
 BULB_W, WIN_W, WIN_C, WORLD, IN_W, EXPO, GLOW = L
 world_hdri(WORLD, 'interior.exr', sat=0.3)
@@ -300,6 +405,11 @@ AIMW = bpy.data.objects.new('aimw', None); scene.collection.objects.link(AIMW); 
 win_light = area_light('window_light', ((WIN[0] + WIN[1]) / 2, WT + 600, (WIN[2] + WIN[3]) / 2 + 300), AIMW,
                        WIN[1] - WIN[0], WIN_W, WIN_C, size_y=WIN[3] - WIN[2])
 win_light.visible_camera = False; win_light.visible_glossy = False; win_light.visible_transmission = False   # the glass shows the sky plane, not the lamp
+if TIME == 'day':   # low sun over the courtyard roofs: a hard patch through the window onto the landing
+    bpy.ops.object.light_add(type='SUN'); sun = bpy.context.object; sun.name = 'sun'
+    d = Vector((0.30, -1.0, -1.6)).normalized()
+    sun.rotation_euler = (-d).to_track_quat('Z', 'Y').to_euler()
+    sun.data.energy = 6.0; sun.data.color = (1.0, 0.90, 0.74); sun.data.angle = math.radians(0.6)
 if TIME == 'day':   # skylight bouncing down the stairwell from above the right-hand flight
     area_light('skylight', (1300, -2600, CEIL - 50), AIM2, 1600, 6e7, (0.92, 0.95, 1.0), size_y=2400)
 if IN_W:   # a lamp left on in the flat: leaks under the door / through the gap and the peephole
