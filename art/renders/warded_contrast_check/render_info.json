@@ -1,0 +1,10 @@
+{
+  "baseline_git_blob": "9e4eb4ab4c23bce099f0a33780b9d1a09139d111",
+  "script": "art/blender/warded_contrast.py",
+  "arguments": "--res 1620x2160 --samples 128 --ward-key 100000",
+  "environment": "LW_DEVICE=GPU",
+  "blender": "4.2.9 LTS",
+  "gpu": "RTX 5070",
+  "min_adjacent_contrast_in_six_samples": 3.0927206764876414,
+  "method": "13x13-pixel median linear-sRGB luminance; (Lighter+0.05)/(Darker+0.05); adjacent backplate patches checked by camera ray casts at centre and four corners."
+}

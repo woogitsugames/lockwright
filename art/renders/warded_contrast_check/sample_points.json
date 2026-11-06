@@ -1,0 +1,98 @@
+[
+  {
+    "angle": 45,
+    "ward_xy": [
+      1074,
+      917
+    ],
+    "case_xy": [
+      1108,
+      838
+    ],
+    "adjacent_case_xy": [
+      1093,
+      898
+    ],
+    "ward_object": "ward.002"
+  },
+  {
+    "angle": 135,
+    "ward_xy": [
+      548,
+      930
+    ],
+    "case_xy": [
+      474,
+      853
+    ],
+    "adjacent_case_xy": [
+      512,
+      896
+    ],
+    "ward_object": "ward.001"
+  },
+  {
+    "angle": 180,
+    "ward_xy": [
+      441,
+      1196
+    ],
+    "case_xy": [
+      345,
+      1174
+    ],
+    "adjacent_case_xy": [
+      407,
+      1197
+    ],
+    "ward_object": "ward.001"
+  },
+  {
+    "angle": 225,
+    "ward_xy": [
+      553,
+      1450
+    ],
+    "case_xy": [
+      482,
+      1479
+    ],
+    "adjacent_case_xy": [
+      534,
+      1469
+    ],
+    "ward_object": "ward.002"
+  },
+  {
+    "angle": 270,
+    "ward_xy": [
+      813,
+      1544
+    ],
+    "case_xy": [
+      795,
+      1591
+    ],
+    "adjacent_case_xy": [
+      813,
+      1656
+    ],
+    "ward_object": "ward.002"
+  },
+  {
+    "angle": 315,
+    "ward_xy": [
+      1069,
+      1429
+    ],
+    "case_xy": [
+      1102,
+      1453
+    ],
+    "adjacent_case_xy": [
+      1087,
+      1446
+    ],
+    "ward_object": "ward.002"
+  }
+]

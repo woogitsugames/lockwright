@@ -1,0 +1,170 @@
+[
+  {
+    "angle": 45,
+    "ward_xy": [
+      1074,
+      917
+    ],
+    "case_xy": [
+      1108,
+      838
+    ],
+    "adjacent_case_xy": [
+      1093,
+      898
+    ],
+    "ward_object": "ward.002",
+    "before": {
+      "ward_luminance": 0.04682050529515659,
+      "case_luminance": 0.002253748558246828,
+      "contrast": 1.8528910933008291,
+      "adjacent_contrast": 1.809648562169549
+    },
+    "after": {
+      "ward_luminance": 0.2216511516855018,
+      "case_luminance": 0.0024708310568809567,
+      "contrast": 5.177184089023073,
+      "adjacent_contrast": 5.077365735292874
+    }
+  },
+  {
+    "angle": 135,
+    "ward_xy": [
+      548,
+      930
+    ],
+    "case_xy": [
+      474,
+      853
+    ],
+    "adjacent_case_xy": [
+      512,
+      896
+    ],
+    "ward_object": "ward.001",
+    "before": {
+      "ward_luminance": 0.054825847493624735,
+      "case_luminance": 0.000607053967097675,
+      "contrast": 2.0713683029598515,
+      "adjacent_contrast": 2.042542639724254
+    },
+    "after": {
+      "ward_luminance": 0.48051997846365013,
+      "case_luminance": 0.0006715838038001578,
+      "contrast": 10.469772970148673,
+      "adjacent_contrast": 10.220706066788424
+    }
+  },
+  {
+    "angle": 180,
+    "ward_xy": [
+      441,
+      1196
+    ],
+    "case_xy": [
+      345,
+      1174
+    ],
+    "adjacent_case_xy": [
+      407,
+      1197
+    ],
+    "ward_object": "ward.001",
+    "before": {
+      "ward_luminance": 0.0451646932841221,
+      "case_luminance": 0.0188593366662387,
+      "contrast": 1.382015829536458,
+      "adjacent_contrast": 1.7350897526763338
+    },
+    "after": {
+      "ward_luminance": 0.324624455013023,
+      "case_luminance": 0.018909627141974264,
+      "contrast": 5.436460340166774,
+      "adjacent_contrast": 6.7961738162458545
+    }
+  },
+  {
+    "angle": 225,
+    "ward_xy": [
+      553,
+      1450
+    ],
+    "case_xy": [
+      482,
+      1479
+    ],
+    "adjacent_case_xy": [
+      534,
+      1469
+    ],
+    "ward_object": "ward.002",
+    "before": {
+      "ward_luminance": 0.02837255717693965,
+      "case_luminance": 0.0046921850746114765,
+      "contrast": 1.4329754254656901,
+      "adjacent_contrast": 1.5092453772446435
+    },
+    "after": {
+      "ward_luminance": 0.13181970167227386,
+      "case_luminance": 0.0046921850746114765,
+      "contrast": 3.3244183135896668,
+      "adjacent_contrast": 3.5013600949800585
+    }
+  },
+  {
+    "angle": 270,
+    "ward_xy": [
+      813,
+      1544
+    ],
+    "case_xy": [
+      795,
+      1591
+    ],
+    "adjacent_case_xy": [
+      813,
+      1656
+    ],
+    "ward_object": "ward.002",
+    "before": {
+      "ward_luminance": 0.03058269962727729,
+      "case_luminance": 0.0003035269835488375,
+      "contrast": 1.6019294164727433,
+      "adjacent_contrast": 1.6019294164727433
+    },
+    "after": {
+      "ward_luminance": 0.1055747580022755,
+      "case_luminance": 0.0003035269835488375,
+      "contrast": 3.0927206764876414,
+      "adjacent_contrast": 3.0927206764876414
+    }
+  },
+  {
+    "angle": 315,
+    "ward_xy": [
+      1069,
+      1429
+    ],
+    "case_xy": [
+      1102,
+      1453
+    ],
+    "adjacent_case_xy": [
+      1087,
+      1446
+    ],
+    "ward_object": "ward.002",
+    "before": {
+      "ward_luminance": 0.03515301691277464,
+      "case_luminance": 0.0015176349177441874,
+      "contrast": 1.6528906470325064,
+      "adjacent_contrast": 1.6626867155860092
+    },
+    "after": {
+      "ward_luminance": 0.11262678318446892,
+      "case_luminance": 0.0015176349177441874,
+      "contrast": 3.1567206733020168,
+      "adjacent_contrast": 3.175429383509461
+    }
+  }
+]
