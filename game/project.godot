@@ -34,6 +34,7 @@ Quality="*res://scripts/autoload/quality.gd"
 Achievements="*res://scripts/autoload/achievements.gd"
 ErrorLog="*res://scripts/autoload/error_log.gd"
 Nav="*res://scripts/autoload/nav.gd"
+VoicePacks="*res://scripts/autoload/voice_packs.gd"
 
 [gui]
 

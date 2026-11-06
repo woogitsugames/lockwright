@@ -31,6 +31,13 @@ const BG := "res://assets/ui/gpt/workshop/04-tool-board-portrait.webp"
 @onready var back_button: Button = $Frame/VBox/Header/BackButton
 
 var _wired := false
+# D-62: on-demand voice language block under the language picker (built in code)
+var _vp_box: VBoxContainer
+var _vp_label: Label
+var _vp_download: Button
+var _vp_later: Button
+var _vp_auto: CheckButton
+var _vp_note: Label
 
 
 func _ready() -> void:
@@ -39,6 +46,7 @@ func _ready() -> void:
 	ScreenFrame.fit(self, $Frame)
 	# N-42: a scroll gesture starting on a control must scroll the list, not press the control
 	$Frame/VBox/Scroll.scroll_deadzone = 12
+	_build_voice_pack_block()
 	_pass_mouse($Frame/VBox/Scroll/Sections)
 	_load_values()
 	_refresh_texts()
@@ -71,6 +79,7 @@ func _load_values() -> void:
 	reduce_motion_check.set_pressed_no_signal(Settings.get_value("reduce_motion"))
 	_fill_options()
 	_update_values()
+	_update_voice_pack()
 
 
 func _fill_options() -> void:
@@ -140,7 +149,19 @@ func _wire() -> void:
 		_update_values())
 	reduce_motion_check.toggled.connect(func(on: bool) -> void: Settings.set_value("reduce_motion", on))
 	language_option.item_selected.connect(func(idx: int) -> void:
-		Settings.set_value("language", ["", "pl", "en", "de"][mini(idx, 3)]))
+		Settings.set_value("language", ["", "pl", "en", "de"][mini(idx, 3)])
+		_update_voice_pack())
+	_vp_download.pressed.connect(_on_voice_pack_pressed)
+	_vp_later.pressed.connect(func() -> void:
+		Settings.set_value("voice_download", "manual")  # asked once: no more nagging
+		_update_voice_pack())
+	_vp_auto.toggled.connect(func(on: bool) -> void:
+		Settings.set_value("voice_download", "auto" if on else "manual")
+		if on:
+			VoicePacks.ensure(Settings.language())
+		_update_voice_pack())
+	VoicePacks.state_changed.connect(_on_voice_pack_event)
+	VoicePacks.progress.connect(_on_voice_pack_progress)
 	quality_option.item_selected.connect(func(idx: int) -> void:
 		Settings.set_value("quality_profile", ["auto", "high", "medium", "low"][idx])
 		Quality.apply_profile(["auto", "high", "medium", "low"][idx]))
@@ -203,8 +224,115 @@ func _refresh_texts() -> void:
 	get_node(S + "Access/Box/TextScaleRow/Name").text = I18n.t(&"settings.text_scale")
 	get_node(S + "Access/Box/DarkNote").text = I18n.t(&"settings.dark_mode_note")
 	get_node(S + "Other/Box/QualityLabel").text = I18n.t(&"settings.quality")
+	_vp_later.text = I18n.t(&"settings.voice_pack.not_now")
+	_vp_auto.text = I18n.t(&"settings.voice_pack.auto")
+	_vp_note.text = I18n.t(&"settings.voice_pack.note")
 	reset_button.text = I18n.t(&"settings.reset")
 	report_button.text = I18n.t(&"settings.report_problem")
 	report_result.text = ""
 	_fill_options()
 	_update_values()
+	_update_voice_pack()
+
+
+# --- D-62: voice language pack ---------------------------------------------------------
+# A plain block in the Language section (no card): one line "German voices: 8.2 MB",
+# a Download / Not now pair (>= 48 dp plates), the auto-download toggle and a privacy
+# note. Never blocks anything: without the pack the dialogue is subtitle-only.
+
+func _build_voice_pack_block() -> void:
+	var box: VBoxContainer = get_node(S + "Access/Box")
+	_vp_box = VBoxContainer.new()
+	_vp_box.name = "VoicePack"
+	_vp_box.add_theme_constant_override("separation", 8)
+	_vp_label = Label.new()
+	_vp_label.name = "VoicePackLabel"
+	_vp_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_vp_box.add_child(_vp_label)
+	var row := HBoxContainer.new()
+	row.name = "VoicePackButtons"
+	row.add_theme_constant_override("separation", 12)
+	_vp_download = Button.new()
+	_vp_download.name = "VoicePackDownload"
+	_vp_download.custom_minimum_size = Vector2(0, 52)
+	_vp_download.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_vp_later = Button.new()
+	_vp_later.name = "VoicePackLater"
+	_vp_later.custom_minimum_size = Vector2(0, 52)
+	_vp_later.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(_vp_download)
+	row.add_child(_vp_later)
+	_vp_box.add_child(row)
+	_vp_auto = CheckButton.new()
+	_vp_auto.name = "VoicePackAuto"
+	_vp_auto.custom_minimum_size = Vector2(0, 48)
+	_vp_auto.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_vp_box.add_child(_vp_auto)
+	_vp_note = Label.new()
+	_vp_note.name = "VoicePackNote"
+	_vp_note.theme_type_variation = &"Caption"
+	_vp_note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_vp_box.add_child(_vp_note)
+	box.add_child(_vp_box)
+	box.move_child(_vp_box, language_option.get_index() + 1)
+
+
+func _voice_pack_lang() -> String:
+	return Settings.language()
+
+
+func _update_voice_pack() -> void:
+	if _vp_box == null:
+		return
+	var lang := _voice_pack_lang()
+	var st := VoicePacks.state(lang)
+	_vp_box.visible = st not in ["bundled", "none"]
+	if not _vp_box.visible:
+		return
+	var mode := str(Settings.get_value("voice_download", "ask"))
+	var title_key := StringName("settings.voice_pack.title_" + lang)
+	var title := I18n.t(title_key) if I18n.has_key(title_key) else lang.to_upper()
+	var info := VoicePacks.size_text(VoicePacks.pack_size(lang), I18n.current_language())
+	_vp_download.visible = true
+	_vp_later.visible = false
+	match st:
+		"installed":
+			info = I18n.t(&"settings.voice_pack.ready")
+			_vp_download.visible = false
+		"downloading":
+			info = I18n.t(&"settings.voice_pack.progress").format(
+				{"pct": roundi(VoicePacks.progress_ratio(lang) * 100.0)})
+			_vp_download.text = I18n.t(&"settings.voice_pack.stop")
+		"verifying":
+			info = I18n.t(&"settings.voice_pack.verifying")
+			_vp_download.visible = false
+		"failed":
+			_vp_download.text = I18n.t(&"settings.voice_pack.retry")
+		_:
+			_vp_download.text = I18n.t(&"settings.voice_pack.download")
+			_vp_later.visible = mode == "ask"
+	var line := I18n.t(&"settings.voice_pack.line").format({"title": title, "state": info})
+	if st == "failed":
+		var why := "offline" if VoicePacks.last_error(lang) in ["offline", "timeout"] else "failed"
+		line += "\n" + I18n.t(StringName("settings.voice_pack." + why))
+	_vp_label.text = line
+	_vp_auto.set_pressed_no_signal(mode == "auto")
+
+
+func _on_voice_pack_pressed() -> void:
+	var lang := _voice_pack_lang()
+	if VoicePacks.state(lang) == "downloading":
+		VoicePacks.cancel(lang)
+	else:
+		if str(Settings.get_value("voice_download", "ask")) == "ask":
+			Settings.set_value("voice_download", "auto")  # the one-time question is answered
+		VoicePacks.ensure(lang)
+	_update_voice_pack()
+
+
+func _on_voice_pack_event(_lang: String) -> void:
+	_update_voice_pack()
+
+
+func _on_voice_pack_progress(_lang: String, _received: int, _total: int) -> void:
+	_update_voice_pack()

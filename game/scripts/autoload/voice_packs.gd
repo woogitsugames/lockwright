@@ -331,8 +331,10 @@ func _step_http(j: Job) -> void:
 			return
 		HTTPClient.STATUS_CANT_RESOLVE, HTTPClient.STATUS_CANT_CONNECT, \
 		HTTPClient.STATUS_CONNECTION_ERROR, HTTPClient.STATUS_TLS_HANDSHAKE_ERROR:
-			_fail(j, "offline" if j.phase == "connect" else "interrupted")
-			return
+			# a server closing right after the last byte reads as an error: the size decides
+			if j.phase != "body":
+				_fail(j, "offline" if j.phase == "connect" else "interrupted")
+				return
 	if j.phase == "connect":
 		if st != HTTPClient.STATUS_CONNECTED:
 			return

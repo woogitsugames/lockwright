@@ -1,10 +1,13 @@
 # Lockwright — MAIN MENU as a photographed object: the tenants' felt letter board in a tenement stairwell. 1 unit = 1 mm.
-# Reproduce every menu deliverable (art/renders/menu/) with ONE command (~2-3 h on 4 CPU cores):
-#   sh -c 'B=/opt/tools/blender-4.2.9-linux-x64/blender; python3 art/blender/menu_compose.py --render-all --blender $B'
+# Every menu deliverable (renders, pressed sprites, EN/DE variants, game assets) comes from ONE command, see menu_compose.py:
+#   python3 art/blender/menu_compose.py --render-all --samples 256 --device OPTIX      (owner's GPU)
 # Single renders:
 #   blender -b -P art/blender/menu_gate.py -- --out art/renders/menu/menu_portrait.png --res 1080x2400 --samples 160 --hits art/renders/menu/menu_hits.json
 #   ... --orient landscape --res 2400x1080 --hits art/renders/menu/menu_hits_landscape.json   (re-composed board: title + primary left, menu right)
 #   ... --pressed 1 --crop-row 1 --out .../menu_pressed_jobs.png   (row 1 pushed into the felt, only that row's hit rect rendered)
+#   ... --lang en|de          labels from game/i18n/strings.csv (menu.*); long labels are scaled down to fit their band
+#   ... --device OPTIX|CUDA|HIP|METAL|ONEAPI   render on the GPU (default CPU)
+#   ... --norender            only write the hits JSON (title_rect, focus_rect, per-item hit_rect / text_rect)
 #   ... --shot settings                                           (close-up: typed index card pinned to the same board)
 # Scene: black ribbed felt board in a dark-stained, worn wooden frame, screwed to a stairwell wall (photo oil-paint lamperia,
 # painted divider line, photo lime plaster with a repaired patch, flaked paint, soot and hand grime, a painted-over cable).
@@ -275,7 +278,7 @@ def row(text, cap, top_mm, x_mm, tag, seed, loose=0.0, max_w=1e9):
 
 title_rows = []
 for k, (text, cap, top, xm) in enumerate(TITLE):
-    title_rows.append(row(text, cap, top, 20.0 + xm, 'title%d' % k, 100 + k, max_w=TITLE_W - 20.0 - xm - 14.0))
+    title_rows.append(row(text, cap, top, 20.0 + xm, 'title%d' % k, 100 + k, max_w=TITLE_W - 20.0 - xm - 8.0))
 
 rows = []
 for i, (iid, text, cap, btop, bh, tx, bx0, bx1) in enumerate(MENU):

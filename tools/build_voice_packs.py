@@ -16,8 +16,11 @@ Usage (from the repo root):
   python3 tools/build_voice_packs.py --godot /path/to/godot [--import] [--langs de]
       [--out game/build/voice] [--base-url URL] [--version V] [--write-game-manifest]
 
-The version is content-addressed (hash of the source .ogg files of all built languages),
-so a release `voice-packs-<version>` only changes when the voice lines change.
+The version is content-addressed (hash of the source .ogg files of all built languages and
+the engine major.minor), so a release `voice-packs-<version>` only changes when the voice
+lines or the engine minor change. The pck bytes are not reproducible across game commits
+(Godot stores project.binary and caches in every pck), hence: one release per version,
+built once, and the game manifest is taken from that release.
 `--base-url` may contain `{version}`; default: GitHub Releases of this repository
 (env VOICE_PACKS_BASE_URL overrides).
 """
@@ -111,8 +114,8 @@ def source_lines(lang):
     return sorted(n for n in os.listdir(d) if n.endswith(".ogg"))
 
 
-def content_version(langs):
-    h = hashlib.sha256()
+def content_version(langs, engine=""):
+    h = hashlib.sha256(("engine:%s\n" % engine).encode())
     for lang in sorted(langs):
         for name in source_lines(lang):
             h.update(("%s/%s:%s\n" % (lang, name, sha256_file(os.path.join(LINES, lang, name)))).encode())
@@ -148,7 +151,14 @@ def main(argv=None):
     for lang in langs:
         if "Voice %s" % lang not in presets:
             sys.exit('missing export preset "Voice %s" in game/export_presets.cfg (copy "Voice de")' % lang)
-    version = args.version or content_version(langs)
+    engine = ""
+    if not args.version:
+        try:  # "4.7.2.stable.official.ed1daf0bf" -> "4.7": a new engine minor = new packs
+            engine = ".".join(subprocess.run([args.godot, "--version"], capture_output=True, text=True,
+                                             check=True).stdout.strip().split(".")[:2])
+        except (OSError, subprocess.CalledProcessError):
+            sys.exit("cannot run Godot: %s (pass --godot or set GODOT)" % args.godot)
+    version = args.version or content_version(langs, engine)
     base_url = args.base_url.replace("{version}", version).rstrip("/")
     os.makedirs(args.out, exist_ok=True)
     out = os.path.abspath(args.out)

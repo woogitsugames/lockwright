@@ -1,0 +1,85 @@
+name: voice-packs
+
+# D-62: voice lines beyond PL/EN are downloaded on demand. This builds one data-only
+# pck per non-bundled language (tools/build_voice_packs.py), publishes them as assets of
+# the GitHub Release `voice-packs-<version>` (version = hash of the source lines + engine
+# minor) and commits the matching game/data/voice_packs.json, so the next app build pins
+# the size and SHA-256 of exactly the uploaded files.
+# Nothing is published to Cloudflare here (owner signal needed, D-51); the URL base is
+# configurable (input base_url or repo variable VOICE_PACKS_BASE_URL, `{version}` allowed).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'game/assets/audio/lines/**'
+      - '!game/assets/audio/lines/pl/**'
+      - '!game/assets/audio/lines/en/**'
+      - 'tools/build_voice_packs.py'
+      - '.github/workflows/voice-packs.yml'
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: 'URL base for the packs (default: this repo''s GitHub Release; may contain {version})'
+        required: false
+        default: ''
+
+concurrency:
+  group: voice-packs
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GODOT: /tmp/godot/Godot_v4.7.2-stable_linux.x86_64
+      GH_TOKEN: ${{ github.token }}
+      VOICE_PACKS_BASE_URL: ${{ inputs.base_url || vars.VOICE_PACKS_BASE_URL || format('https://github.com/{0}/releases/download/voice-packs-{{version}}', github.repository) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Godot 4.7.2 (editor only; a pck export needs no templates)
+        run: |
+          mkdir -p /tmp/godot
+          curl -sL -o /tmp/godot/godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/godot/godot.zip -d /tmp/godot && chmod +x "$GODOT"
+
+      - name: Build voice packs (data-only check inside the tool)
+        run: |
+          python3 tools/build_voice_packs.py --godot "$GODOT" --import --out "$RUNNER_TEMP/voice"
+          ls -l "$RUNNER_TEMP/voice"
+          echo "VERSION=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['version'])" "$RUNNER_TEMP/voice/voice_packs.json")" >> "$GITHUB_ENV"
+
+      - name: Create release voice-packs-${{ env.VERSION }} (once per version)
+        run: |
+          TAG="voice-packs-$VERSION"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "$TAG exists: keep its files (pck bytes are not reproducible across commits)"
+            mkdir -p "$RUNNER_TEMP/released"
+            gh release download "$TAG" -p voice_packs.json -D "$RUNNER_TEMP/released" --clobber
+            cp "$RUNNER_TEMP/released/voice_packs.json" "$RUNNER_TEMP/voice/voice_packs.json"
+          else
+            gh release create "$TAG" "$RUNNER_TEMP"/voice/*.pck "$RUNNER_TEMP/voice/voice_packs.json" \
+              --title "Voice packs $VERSION" --target "$GITHUB_SHA" --latest=false \
+              --notes "On-demand voice lines (D-62), data-only Godot packs. Built from ${GITHUB_SHA}. The game checks size and SHA-256 from game/data/voice_packs.json."
+          fi
+
+      - name: Commit the game manifest if it changed
+        run: |
+          cp "$RUNNER_TEMP/voice/voice_packs.json" game/data/voice_packs.json
+          if git diff --quiet -- game/data/voice_packs.json; then
+            echo "game/data/voice_packs.json already matches the release"; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add game/data/voice_packs.json
+          git commit -m "voice packs: manifest for voice-packs-$VERSION (D-62)"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          exit 1

@@ -217,3 +217,16 @@ tutorial.say_warded,"Hint: slide the bit until it fits the gap, then turn.","Wsk
 tutorial.say_chalk,Hint: the chalk now marks what to do.,"Wskazówka: kreda pokazuje, co zrobić.","Tipp: Die Kreide zeigt jetzt, was zu tun ist."
 tutorial.say_master,The master's hand shows this step once. Then you.,Ręka mistrza raz pokaże ten krok. Potem ty.,Die Hand des Meisters zeigt es einmal. Dann du.
 tutorial.s1_pick_one,"Right thumb under the pin, then slowly up.","Prawy kciuk pod pin, potem powoli w górę.","Rechter Daumen unter den Stift, dann langsam hoch."
+settings.voice_pack.title_de,German voices,Głosy po niemiecku,Deutsche Stimmen
+settings.voice_pack.line,{title}: {state},{title}: {state},{title}: {state}
+settings.voice_pack.download,Download,Pobierz,Herunterladen
+settings.voice_pack.not_now,Not now,Nie teraz,Nicht jetzt
+settings.voice_pack.stop,Stop,Przerwij,Abbrechen
+settings.voice_pack.retry,Try again,Spróbuj ponownie,Erneut versuchen
+settings.voice_pack.progress,downloading {pct}%,pobieranie {pct}%,lädt {pct} %
+settings.voice_pack.verifying,checking the file,sprawdzanie pliku,Datei wird geprüft
+settings.voice_pack.ready,ready,gotowe,bereit
+settings.voice_pack.failed,Not downloaded. Subtitles stay on.,Nie pobrano. Napisy zostają.,Nicht geladen. Untertitel bleiben an.
+settings.voice_pack.offline,No connection. Subtitles stay on.,Brak sieci. Napisy zostają.,Kein Netz. Untertitel bleiben an.
+settings.voice_pack.auto,Auto-download voices,Pobieraj głosy automatycznie,Stimmen automatisch laden
+settings.voice_pack.note,"Only the voice file is fetched: no account, no tracking. Without it, dialogue has subtitles.",Pobieramy tylko plik z głosami: bez konta i bez śledzenia. Bez niego rozmowy mają napisy.,"Geladen wird nur die Sprachdatei: kein Konto, kein Tracking. Ohne sie laufen Gespräche mit Untertiteln."

@@ -27,6 +27,7 @@ const DEFAULTS := {
 	"quality_auto": "high",     # last auto-picked profile (task 7)
 	"auto_tension": true,       # D-52: tension held by the game; one thumb picks
 	"control_chosen": false,    # D-52: first-launch control choice done
+	"voice_download": "ask",    # D-62: on-demand voice languages: "ask" | "auto" | "manual"
 }
 
 var _cfg := {}

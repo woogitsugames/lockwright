@@ -182,3 +182,19 @@ i dopiero wtedy pokaż. Integracja w Godot to praca sesji A.
 - Płyty planu B `lever` i `warded` (`game/assets/photoreal_families/{lever,warded}/photo/*`) są jeszcze ze starymi materiałami — w zadaniu (a)/(c) renderuj je od nowa (skrypty płyt same biorą nowe materiały z `lever.py`/`warded.py`).
 - `ring_combo.png` jest już poprawiony (cyfry 0–9 wycięte w płaskach, bez „E”); ponowny render tylko przy 2×.
 - **Nowe rodziny D-59 (szkice CPU 618×824, 16 spp):** finalnie `--res 1236x1648 --spp 256 --device GPU`: `art/blender/plates/egyptian_plate.py`, `time_lock_plate.py`, `axial_slider_plate.py` (wspólny `layer_plate_common.py`), `combo_plate.py` (też `--family disc_detainer`), `dial_safe_plate.py`, `tool_layers.py --ppmm 48` (sonda magnetyczna, flaga). Wyniki do `game/assets/photoreal_families/<rodzina>/photo/` (stratny `.import`, `git add -f`).
+
+## Dodatek (sesja A, 2026-11-06): menu v2 — finalny render wszystkich stanów i języków (D-62, zastępuje polecenie z (e))
+Proof v2 jest zaakceptowany; w repo są szkice CPU (48 spp) stanów „wciśnięty” i wersji EN/DE, a menu w Godot już ich używa.
+Jedno polecenie renderuje wszystko na GPU i od razu eksportuje pliki gry:
+```bash
+python art/blender/menu_compose.py --render-all --blender "$BL" --samples 256 --device OPTIX
+```
+- Robi: 3 języki (PL, EN, DE; napisy z `game/i18n/strings.csv`, `menu.*`) × pion 1080×2400 i poziom 2400×1080 = 6 pełnych
+  renderów + 36 wycinków „wciśnięty” (`--pressed i --crop-row i`), `menu_hits*.json`, arkusze `menu_langs.jpg`,
+  `menu_pressed_all.jpg`, a na końcu eksport do `game/assets/ui/menu/` (WebP + `menu_layout.json`; wycinki wtapiane w tło
+  na marginesie 20 px). Opcje: `--sprite-samples N`, `--langs pl,en`, `--orients portrait`, `--render-missing`, `--no-game`.
+- `--device`: `OPTIX` (RTX 5070); awaryjnie `CUDA`. Nie zmieniaj sceny ani ziaren: strefy dotyku (`hit_rect`) muszą
+  zostać identyczne; skrypt przerywa eksport, jeśli w którymś języku się różnią.
+- Po renderze: `git add -f game/assets/ui/menu/*.webp game/assets/ui/menu/*.import art/renders/menu/*`, potem
+  `godot --headless --path game --import` i GUT (`tests/gut/test_main_menu_v2.gd`). Obejrzyj `menu_pressed_all.jpg`
+  (górny pasek = tło, dolny = wciśnięty: litery wychylone, bez widocznego prostokąta wycinka) i `menu_langs.jpg`.
