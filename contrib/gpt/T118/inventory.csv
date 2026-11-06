@@ -1,0 +1,84 @@
+job,chapter,order,family,tier,tier_min,tier_max,poza_zakresem,reward_coins,refuse,outcome
+job.bike_interview,1,,combo,1,1,4,,65,,domyślnie open
+job.cat_bathroom,1,,warded,1,1,2,,60,,domyślnie open
+job.grandma_broth,1,,warded,1,1,2,,75,,domyślnie open
+job.kiosk_shutter,1,,wafer,1,2,2,tak,80,,domyślnie open
+job.refuse_ex_partner,1,,pin_tumbler,2,2,7,,0,tak,domyślnie open
+job.student_dorm,1,,pin_tumbler,1,2,7,tak,70,,domyślnie open
+job.drummer_locker,2,,wafer,1,2,2,tak,110,,domyślnie open
+job.newlyweds_4am,2,,pin_tumbler,2,2,7,,150,,domyślnie open
+job.night_nurse,2,,magnetic,1,1,2,,90,,domyślnie open
+job.pizzeria_pays_pizza,2,,lever,1,3,5,tak,0,,domyślnie open
+job.refuse_rush_bribe,2,,pin_tumbler,2,2,7,,0,tak,domyślnie open
+job.wrong_floor,2,,pin_tumbler,1,2,7,tak,20,,domyślnie open
+job.allotment_shed,3,,wafer,2,2,2,,85,,domyślnie open
+job.dollhouse_wooden_lock,3,,egyptian,1,1,2,,50,,domyślnie open
+job.grandpa_chest,3,,warded,3,1,2,tak,140,,domyślnie open
+job.refuse_aunt_alive,3,,lever,2,3,5,tak,90,tak,domyślnie open
+job.uncle_safe_heirs,3,,dial_safe,2,1,3,,120,,domyślnie open
+job.widow_bureau,3,,lever,2,3,5,tak,95,,domyślnie open
+job.krakow_antiquarian,4,,dial_safe,1,1,3,,120,,domyślnie open
+job.krakow_tenement_gate,4,,warded,3,1,2,tak,160,,domyślnie open
+job.swiatniki_journeyman_padlock,4,,warded,3,1,2,tak,0,,domyślnie open
+job.brussels_townhouse,5,,dimple,2,1,3,,105,,domyślnie open
+job.charleroi_letters,5,,wafer,2,2,2,,0,,domyślnie open
+job.ghent_beguinage,5,,warded,2,1,2,,100,,domyślnie open
+job.liege_bakery,5,,lever_detector,2,5,6,tak,130,,domyślnie open
+job.bramah_bureau,6,,axial_slider,2,1,3,,140,,domyślnie open
+job.finnish_sailor,6,,disc_detainer,2,1,3,,135,,domyślnie open
+job.museum_time_lock,6,,time_lock,2,1,2,,150,,domyślnie open
+job.time_capsule,6,,combo,3,1,4,,0,,domyślnie open
+job.halina_recipe_box,7,1,warded,1,1,2,,75,,open
+job.roman_service_cupboard,7,2,wafer,2,2,2,,105,,open
+job.marta_poster_studio,7,3,pin_tumbler,2,2,7,,105,,open
+job.zuzanna_catalogue_drawer,7,4,lever,3,3,5,,105,,open
+job.refuse_sisters_flat,7,5,pin_tumbler,2,2,7,,0,tak,open
+job.stefan_book_tin,7,6,combo,3,1,4,,145,,open
+job.edek_rehearsal_store,7,7,lever_detector,5,5,6,,105,,open
+job.krystyna_wooden_album,7,8,egyptian,1,1,2,,75,,open
+job.refuse_unapproved_stockroom,7,9,wafer,2,2,2,,0,tak,open
+job.gosia_workbench_drawer,7,10,lever,3,3,5,,145,,open
+job.community_notice_case,7,11,warded,2,1,2,,105,,open
+job.shared_room_door,7,12,pin_tumbler,3,2,7,,145,,open
+job.frozen_cellar_padlock,8,1,combo,2,1,4,,100,,open
+job.halina_christmas_tin,8,2,warded,1,1,2,,75,,open
+job.carol_singers_chest,8,3,egyptian,1,1,2,,75,,open
+job.refuse_wrong_letterbox,8,4,wafer,1,2,2,tak,0,tak,open
+job.wigilia_table_drawer,8,5,lever,3,3,5,,145,,open
+job.heating_service_cupboard,8,6,pin_tumbler,3,2,7,,145,,open
+job.refuse_unapproved_repair,8,7,wafer,2,2,2,,0,tak,open
+job.warm_room_for_neighbours,8,8,pin_tumbler,3,2,7,,145,,open
+job.winter_bicycle_cellar,8,9,combo,3,1,4,,145,,open
+job.wooden_winter_village,8,10,egyptian,1,1,2,,75,,open
+job.attic_drying_room,8,11,lever,3,3,5,,145,,open
+job.christmas_eve_heat,8,12,lever_detector,5,5,6,,210,,open
+job.t43_09_01_winter_keys,9,1,pin_tumbler,2,2,7,,40,,open
+job.t43_09_02_blanket_cupboard,9,2,magnetic,2,1,2,,50,,open
+job.t43_09_03_wooden_postbox,9,3,egyptian,2,1,2,,60,,open
+job.t43_09_04_choir_case,9,4,combo,2,1,4,,70,,open
+job.t43_09_05_receipt_safe,9,5,dial_safe,2,1,3,,80,,open
+job.t43_09_06_draughty_hall,9,6,dimple,2,1,3,,90,,open
+job.refuse_t43_09_empty_flat,9,7,pin_tumbler,3,2,7,,0,tak,open
+job.t43_09_08_spare_key_hook,9,8,pin_tumbler,2,2,7,,40,,talk
+job.t43_10_01_renovator_bureau,10,1,axial_slider,2,1,3,,100,,open
+job.t43_10_02_scaffold_store,10,2,disc_detainer,2,1,3,,110,,open
+job.t43_10_03_exhibit_clock,10,3,time_lock,2,1,2,,120,,repair
+job.t43_10_04_design_cabinet,10,4,magnetic,2,1,2,,130,,open
+job.t43_10_05_porters_drawer,10,5,lever,3,3,5,,140,,open
+job.t43_10_06_shared_room_entry,10,6,dimple,3,1,3,,150,,open
+job.refuse_t43_10_early_clearance,10,7,lever,3,3,5,,0,tak,open
+job.t43_11_01_wooden_market,11,1,egyptian,2,1,2,,150,,open
+job.t43_11_02_bicycle_stand,11,2,combo,3,1,4,,160,,open
+job.t43_11_03_tool_exchange,11,3,axial_slider,3,1,3,,170,,open
+job.t43_11_04_sailors_stall,11,4,disc_detainer,3,1,3,,180,,open
+job.t43_11_05_rehearsal_chest,11,5,lever,4,3,5,,185,,open
+job.refuse_t43_11_other_stall,11,6,wafer,3,2,2,tak,0,tak,open
+job.t43_11_07_wrong_delivery,11,7,pin_tumbler,3,2,7,,40,,talk
+job.t43_12_01_letters_archive,12,1,dial_safe,3,1,3,,185,,open
+job.t43_12_02_detective_cabinet,12,2,lever_detector,5,5,6,,190,,open
+job.t43_12_03_community_store,12,3,pin_tumbler,5,2,7,,195,,open
+job.t43_12_04_school_box,12,4,lever,5,3,5,,198,,open
+job.t43_12_05_tea_fund_case,12,5,combo,4,1,4,,200,,open
+job.refuse_t43_12_surprise_key,12,6,pin_tumbler,6,2,7,,0,tak,open
+job.t43_12_07_clock_back_home,12,7,time_lock,2,1,2,,200,,repair
+job.t43_12_08_henryks_bench,12,8,pin_tumbler,6,2,7,,200,,open
