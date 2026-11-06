@@ -1,0 +1,7 @@
+# T99 — cyfry i skróty w kwestiach dla TTS
+
+Zakres zgodny z implementacją `tools/voice_lines.py:inventory`: lista `lines` w 83 plikach `game/data/jobs/*.json` i odpowiadające im `job.*.line.N` w `game/i18n/content.csv`, pięć języków. Stan `b50ea45`. Maszynowo wykryto cyfry oraz wybrane skróty grzecznościowe i pospolite (wzorzec `Mr.`, `Mrs.`, `Ms.`, `Dr.`, `Prof.`, `M.`, `Mme.`, `Mlle.`, `Sr.`, `Sra.`, `Srta.`, `p.`, `ul.`, `nr.`, `itd.`, `etc.`, `z.B.`, `bzw.`, `ca.`); wynik: 7 wierszy językowych w `tts_candidates.csv`. Przeszukano napisy źródłowe, a istniejącą zamianę TTS pokazano osobno.
+
+Brakujące klucze tekstowe w inwentarzu: 0. Oznaczenie „override obecny” nie przesądza poprawności odczytu. Wyrażenie regularne może pominąć inne skróty, inicjały lub symbole; wymagana jest redakcyjna kontrola i odsłuch, w szczególności numerów pokoi i lat. Nie uwzględniono tekstów UI, opisów, ewentualnych `after` ani niepodłączonych kwestii jako pewnych pozycji TTS — obecny skrypt syntezy ich nie inwentaryzuje. Nie zmieniono napisów ani konfiguracji syntezy.
+
+Wykryta pozycja wymagająca przygotowania: `job.wooden_winter_village.line.2` DE — proponowane wejście TTS: „Vollmacht von Doktor Rygiel und Leihprotokoll stimmen. Preis wie angeboten.” Napisy pozostają bez zmian. W istniejącym override EN `job.kiosk_shutter.line.3` zachowano pisownię brytyjską „moustache”, podczas gdy bieżący napis ma amerykańskie „mustache”; wymowa jest taka sama, ale warto ujednolicić wejście tekstowe przy kolejnej redakcji.

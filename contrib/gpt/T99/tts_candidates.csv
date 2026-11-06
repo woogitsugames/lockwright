@@ -1,0 +1,8 @@
+klucz,język,tekst napisów,wykryte,istniejący_override,status
+job.kiosk_shutter.line.3,en,From opening day in '94. My mustache looked better than the kiosk.,"4, 9",From opening day in ninety-four. My moustache looked better than the kiosk.,override obecny
+job.kiosk_shutter.line.3,de,"Ein Foto vom Eröffnungstag, 1994. Mein Schnurrbart war besser in Form als der Kiosk.","1, 4, 9","Ein Foto vom Eröffnungstag, neunzehnhundertvierundneunzig. Mein Schnurrbart war besser in Form als der Kiosk.",override obecny
+job.krakow_tenement_gate.line.3,pl,"Dzień dobry. Mam tu praktykę. Egzamin zdałam, pokój 412 pomógł.","1, 2, 4","Dzień dobry. Mam tu praktykę. Egzamin zdałam, pokój czterysta dwanaście pomógł.",override obecny
+job.krakow_tenement_gate.line.3,en,Hello again. I'm an intern here now. I passed the exam. Room 412 helped.,"1, 2, 4",Hello again. I'm an intern here now. I passed the exam. Room four-twelve helped.,override obecny
+job.krakow_tenement_gate.line.3,de,"Hallo, da bin ich wieder. Ich mache hier Praktikum. Die Prüfung habe ich bestanden. Zimmer 412 hat geholfen.","1, 2, 4","Hallo, da bin ich wieder. Ich mache hier Praktikum. Die Prüfung habe ich bestanden. Zimmer vierhundertzwölf hat geholfen.",override obecny
+job.student_dorm.line.2,en,"Zuzanna Wilk, room 412. On my list and in my head.","1, 2, 4","Zuzanna Wilk, room four-twelve. On my list and in my head.",override obecny
+job.wooden_winter_village.line.2,de,Vollmacht von Dr. Rygiel und Leihprotokoll stimmen. Preis wie angeboten.,Dr.,,sprawdź / przygotuj formę mówioną
