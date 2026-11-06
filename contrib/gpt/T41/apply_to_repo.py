@@ -61,8 +61,8 @@ def main():
                 if part=='content' and len(row[lang])>90:raise ValueError(f'Dialog too long {lang}:{key}')
             combined[key]=(part,row)
     expected_lines=sum('.line.' in key for key in combined)
-    if len(combined)!=187 or expected_lines!=164:
-        raise ValueError(f'Expected 181 T41 + 6 supplemental: got {len(combined)} / {expected_lines} dialogues')
+    if len(combined)!=200 or expected_lines!=164:
+        raise ValueError(f'Expected 181 T41 + 19 supplemental: got {len(combined)} / {expected_lines} dialogues')
     for lang,task in FILES.items():
         for part in ('strings','content'):
             target=root/'contrib'/'gpt'/task/(f'{part}_{lang}_v2.csv')
