@@ -16,6 +16,7 @@ const TUTORIAL := "res://scenes/tutorial.tscn"
 const JOBS_LIST := "res://scenes/jobs_list.tscn"
 const PAYMENT := "res://scenes/job_payment.tscn"
 const PLACEHOLDER_LOCK := "res://scenes/lock.tscn"
+const WORKSHOP := "res://scenes/workshop.tscn"  # D-79: practice runs come back to its Ćwiczenia tab
 ## N-64: after a break the broken pick stays on screen this long, then the game moves on
 ## (a finished lockcore session ignores input: staying on the lock looks like a frozen game).
 const FAIL_DELAY_S := 1.5
@@ -66,6 +67,9 @@ func _on_lock_opened() -> void:
 		return
 	if JobRun.mode == &"run":
 		_go(RUN_LOOP)  # endless run
+	elif Practice.active():
+		Practice.finish(true)  # D-79: no payment, no coins
+		_go(WORKSHOP)
 	elif JobRun.mode == &"tutorial" and not JobRun.current_job.is_empty():
 		JobRun.complete()
 		_go(TUTORIAL)  # N-09
@@ -98,6 +102,9 @@ func _route_failed(_scene: Node) -> void:
 		RunState.lock_finished(false, 0)
 		JobRun.current_job = {}
 		_go(RUN_LOOP)
+	elif Practice.active():
+		Practice.finish(false)  # D-79: a break in practice costs nothing (no stats, no pick)
+		_go(WORKSHOP)
 	elif JobRun.mode == &"tutorial" and not JobRun.current_job.is_empty():
 		_go(TUTORIAL)  # the same stage again (tutorial_stage unchanged)
 	elif not JobRun.current_job.is_empty():

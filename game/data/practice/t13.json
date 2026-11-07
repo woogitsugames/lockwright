@@ -1,0 +1,63 @@
+{
+  "schema": "lockwright.lock/1",
+  "family": "warded",
+  "rules_version": 1,
+  "id": "practice.t13",
+  "source": "authored",
+  "seed": "0",
+  "difficulty": {
+    "tier": 2,
+    "n_min": 2,
+    "n_max": 2,
+    "sec_min": 3,
+    "sec_max": 3,
+    "win_shear_q16": 15401,
+    "tension_band_q16": 19661,
+    "overset_margin_q16": 0,
+    "noise_q16": 0,
+    "bind_spread_q16": 65536,
+    "multi_bind_p_q16": 0,
+    "drop_grace_ms": 300,
+    "s_max_q16": 65536,
+    "time_limit_s": 120
+  },
+  "spec": {
+    "bit_options": 3,
+    "a_bolt_q16": 53740,
+    "a_set_q16": 60293,
+    "bolt_lo_q16": 26542,
+    "bolt_hi_q16": 41943,
+    "bolt_spring_q16": 21627,
+    "t_turn_q16": 3277,
+    "rot_speed_q16": 393,
+    "insert_depth_q16": 55706,
+    "s_max_q16": 65536,
+    "stress_gain_q16": 5243,
+    "bend_limit": 3,
+    "wards": [
+      {
+        "a_lo_q16": 13107,
+        "a_hi_q16": 17039,
+        "gap_lo_q16": 18350,
+        "gap_hi_q16": 33423
+      },
+      {
+        "a_lo_q16": 28836,
+        "a_hi_q16": 32768,
+        "gap_lo_q16": 25559,
+        "gap_hi_q16": 41288
+      }
+    ]
+  },
+  "presentation": {
+    "material": "iron",
+    "practice": {
+      "order": 8,
+      "focus": "spring_bolt",
+      "title_key": "practice.t13.title",
+      "goal_key": "practice.t13.goal",
+      "hint_key": "practice.t13.hint",
+      "lesson_target": "set"
+    }
+  }
+}

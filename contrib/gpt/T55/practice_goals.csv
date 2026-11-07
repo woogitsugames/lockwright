@@ -1,6 +1,6 @@
 keys,en,pl,de,fr,es
 practice.t31.goal,Notice the next safe wheel join.,Rozpoznaj dołączenie kolejnego koła sejfu.,Erkenne das Mitlaufen des nächsten Tresorrads.,Repère quand la roue suivante du coffre se met en mouvement.,Reconoce cuándo se suma la siguiente rueda de la caja fuerte.
-practice.t32.goal,Recover after passing a safe gate.,Wróć do bramki sejfu po jej minięciu.,Kehre nach dem Überdrehen zum Tresortor zurück.,Reviens à l’encoche du coffre après l’avoir dépassée.,Vuelve a la muesca de la caja fuerte tras pasarla.
+practice.t32.goal,Return to the safe gate after passing it.,Wróć do bramki sejfu po jej minięciu.,Kehre nach dem Überdrehen zum Tresortor zurück.,Reviens à l’encoche du coffre après l’avoir dépassée.,Vuelve a la muesca de la caja fuerte tras pasarla.
 practice.t33.goal,Find a wheel that resists.,Znajdź kółko stawiające opór.,Finde ein Rad mit Widerstand.,Trouve une molette qui résiste.,Encuentra una ruedecilla que ofrezca resistencia.
 practice.t34.goal,Recover after a wheel slips.,Wróć do wcięcia po przeskoku kółka.,Kehre nach dem Überspringen zur Kerbe zurück.,Reviens au cran après le saut d’une molette.,Vuelve a la muesca tras el salto de una ruedecilla.
 practice.t35.goal,Find a pin in a chosen row.,Znajdź pin w wybranym rzędzie.,Finde einen Stift in der gewählten Reihe.,Trouve une goupille dans la rangée choisie.,Encuentra un perno en la fila elegida.
@@ -10,7 +10,7 @@ practice.t38.goal,Correct a disc turned too far.,Popraw tarczę obróconą za da
 practice.t39.goal,Raise a selected wooden peg.,Podnieś wybrany drewniany kołek.,Hebe einen ausgewählten Holzstift an.,Lève une cheville en bois choisie.,Alza un pasador de madera elegido.
 practice.t40.goal,Free a jammed wooden peg.,Uwolnij zablokowany drewniany kołek.,Befreie einen klemmenden Holzstift.,Libère une cheville en bois coincée.,Libera un pasador de madera atascado.
 practice.t41.goal,Seat a selected slider.,Osadź wybrany suwak.,Setze einen ausgewählten Schieber.,Place un coulisseau choisi.,Coloca una corredera elegida.
-practice.t42.goal,Recover after a false notch.,Poradź sobie z fałszywym wcięciem.,Reagiere auf eine falsche Kerbe.,Réagis à une fausse encoche.,Recupérate tras una muesca falsa.
+practice.t42.goal,Recognize a false notch and return to the real one.,Rozpoznaj fałszywe wcięcie i wróć do prawdziwego.,Erkenne eine falsche Kerbe und kehre zur echten zurück.,Reconnais une fausse encoche et reviens à la vraie.,Reconoce una muesca falsa y vuelve a la verdadera.
 practice.t43.goal,Seat the clock wheels in order.,Osadź koła zegara po kolei.,Setze die Uhrwerkräder nacheinander ein.,Place les roues de l’horloge dans l’ordre.,Coloca las ruedas del reloj en orden.
 practice.t44.goal,Restore the clock’s steady rhythm.,Przywróć równy rytm zegara.,Stelle den gleichmäßigen Takt der Uhr wieder her.,Rétablis le rythme régulier de l’horloge.,Restablece el ritmo regular del reloj.
 practice.t45.goal,Notice a magnetic pin lag.,Rozpoznaj opóźniony ruch pinu magnetycznego.,Erkenne die verzögerte Bewegung eines Magnetstifts.,Repère le retard d’une goupille magnétique.,Reconoce el retraso de un perno magnético.

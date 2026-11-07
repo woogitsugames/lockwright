@@ -3,7 +3,7 @@ extends RefCounted
 ## Static context for the active job / tutorial (Tryb Zleceń loop, stage 2/3).
 
 static var current_job: Dictionary = {}
-static var mode: StringName = &"job"  # &"job" | &"tutorial"
+static var mode: StringName = &"job"  # &"job" | &"tutorial" | &"run" | &"practice" (D-79, Practice)
 static var tutorial_stage := 0
 static var lives := 3
 static var clean := true  # N-25: no drop/break/overset during the current run

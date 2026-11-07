@@ -1,0 +1,78 @@
+{
+  "schema": "lockwright.lock/1",
+  "family": "pin_tumbler",
+  "rules_version": 1,
+  "id": "practice.t15",
+  "source": "authored",
+  "seed": "0",
+  "difficulty": {
+    "tier": 3,
+    "n_min": 4,
+    "n_max": 4,
+    "sec_min": 0,
+    "sec_max": 0,
+    "win_shear_q16": 4588,
+    "tension_band_q16": 15729,
+    "overset_margin_q16": 3604,
+    "noise_q16": 0,
+    "bind_spread_q16": 52429,
+    "multi_bind_p_q16": 0,
+    "drop_grace_ms": 300,
+    "s_max_q16": 65536,
+    "time_limit_s": 150
+  },
+  "spec": {
+    "win_shear_q16": 4588,
+    "overset_margin_q16": 3604,
+    "tension_band_q16": 15729,
+    "t_hold_q16": 6554,
+    "t_release_q16": 3277,
+    "tau_safe_q16": 42598,
+    "cr_lo_q16": 7864,
+    "cr_hi_q16": 13763,
+    "drop_grace_steps": 36,
+    "drop_all": true,
+    "s_max_q16": 65536,
+    "stress_gain_q16": 6226,
+    "noise_q16": 0,
+    "bound_speed_q16": 1092,
+    "spool_speed_q16": 327,
+    "stacks": [
+      {
+        "target_q16": 36045,
+        "order_q16": 13107,
+        "band_lo_q16": 14418,
+        "variant": "standard"
+      },
+      {
+        "target_q16": 40960,
+        "order_q16": 19661,
+        "band_lo_q16": 15401,
+        "variant": "standard"
+      },
+      {
+        "target_q16": 33096,
+        "order_q16": 0,
+        "band_lo_q16": 16384,
+        "variant": "standard"
+      },
+      {
+        "target_q16": 43254,
+        "order_q16": 6554,
+        "band_lo_q16": 14418,
+        "variant": "standard"
+      }
+    ]
+  },
+  "presentation": {
+    "material": "brass",
+    "practice": {
+      "order": 18,
+      "focus": "overset_recovery",
+      "title_key": "practice.t15.title",
+      "goal_key": "practice.t15.goal",
+      "hint_key": "practice.t15.hint",
+      "lesson_target": "overset"
+    }
+  }
+}

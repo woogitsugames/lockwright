@@ -460,3 +460,18 @@ tutorial.frame_lift_one,"Right thumb under the pin, up to lift.","Prawy kciuk po
 tutorial.frame_lift_auto_one,"Thumb under the pin, push up. Game holds tension.","Kciuk pod pin, w górę unoszenie. Napięcie trzyma gra.","Daumen unter den Stift, hoch. Spannung hält das Spiel.","Pouce sous la goupille, monte ; le jeu tient la tension.","Pulgar bajo el perno, arriba; el juego da tensión."
 dayafter.title,The next day,Następnego dnia,Am nächsten Tag,Le lendemain,Al día siguiente
 dayafter.close,Back to work,Wracam do pracy,Zurück an die Arbeit,Retour au travail,De vuelta al trabajo
+workshop.tab_practice,Practice,Ćwiczenia,Übungen,Exercices,Ejercicios
+practice.note,Practice pays no coins and keeps no time. The goal is chalked above the lock.,Ćwiczenia nie dają monet i nie liczą czasu. Cel jest zapisany kredą nad zamkiem.,Übungen bringen keine Münzen und laufen ohne Uhr. Das Ziel steht mit Kreide über dem Schloss.,Les exercices ne rapportent rien et ne sont pas chronométrés. L'objectif est écrit à la craie au-dessus de la serrure.,Los ejercicios no dan monedas ni llevan reloj. El objetivo está escrito con tiza sobre la cerradura.
+practice.start,Practice,Ćwicz,Üben,S'exercer,Practicar
+practice.locked,Unlocks after your first job with this lock,Odblokujesz po pierwszym zleceniu z tym zamkiem,Frei nach deinem ersten Auftrag mit diesem Schloss,Se débloque après ta première intervention sur cette serrure,Se desbloquea tras tu primer encargo con esta cerradura
+practice.goal_met,Goal reached,Cel osiągnięty,Ziel erreicht,Objectif atteint,Objetivo cumplido
+practice.goal_open,Goal still ahead,Cel jeszcze przed tobą,Ziel steht noch aus,Objectif à atteindre,Objetivo pendiente
+practice.goal_done,Goal reached. Finish the lock if you like.,"Cel osiągnięty. Dokończ zamek, jeśli chcesz.","Ziel erreicht. Öffne das Schloss, wenn du magst.",Objectif atteint. Finis la serrure si tu veux.,Objetivo cumplido. Termina la cerradura si quieres.
+practice.result_met,Last practice: goal reached.,Ostatnie ćwiczenie: cel osiągnięty.,Letzte Übung: Ziel erreicht.,Dernier exercice : objectif atteint.,Último ejercicio: objetivo cumplido.
+practice.result_open,"Last practice: the lock opened, the goal is still ahead.","Ostatnie ćwiczenie: zamek otwarty, cel jeszcze przed tobą.","Letzte Übung: Schloss offen, das Ziel steht noch aus.","Dernier exercice : serrure ouverte, l'objectif reste à atteindre.","Último ejercicio: cerradura abierta, el objetivo sigue pendiente."
+practice.result_failed,Last practice: the lock won this time. Practice costs nothing.,Ostatnie ćwiczenie: tym razem wygrał zamek. Ćwiczenia nic nie kosztują.,Letzte Übung: Diesmal hat das Schloss gewonnen. Üben kostet nichts.,Dernier exercice : la serrure a gagné cette fois. S'exercer ne coûte rien.,Último ejercicio: esta vez ganó la cerradura. Practicar no cuesta nada.
+family.warded.name,Warded lock,Zamek zapadkowy,Buntbartschloss,Serrure à garniture,Cerradura de guardas
+family.wafer.name,Wafer lock,Wkładka płytkowa,Plättchenschloss,Serrure à paillettes,Cerradura de láminas
+family.pin_tumbler.name,Pin tumbler cylinder,Wkładka bębenkowa,Stiftzylinder,Cylindre à goupilles,Cilindro de pernos
+family.lever.name,Lever lock,Zamek dźwigniowy,Zuhaltungsschloss,Serrure à gorges,Cerradura de palancas
+family.lever_detector.name,Detector lever lock,Zamek dźwigniowy z detektorem,Zuhaltungsschloss mit Detektor,Serrure à gorges avec détecteur,Cerradura de palancas con detector

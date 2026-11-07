@@ -154,6 +154,9 @@ func _setup_guidance() -> void:
 	if args.has("lw-auto"):
 		sampler.auto_tension = args["lw-auto"] == "1"
 	var auto := sampler.auto_tension
+	if Practice.active():
+		_setup_practice(auto)
+		return
 	if control != null:
 		control.auto = auto
 		var done: int = (Save.get_value("jobs_completed", []) as Array).size()
@@ -213,6 +216,28 @@ func _setup_guidance() -> void:
 	view.coach = coach
 	view.loupe_toggled.connect(func(on: bool) -> void: sampler.frozen = on)
 	_setup_hints()
+
+
+## D-79 practice: the goal in chalk at the top of the plate (the lessons' handwriting), even with the
+## chalk layer off; marks only with "Warstwa kredy" on. No coach, no hint ladder: the family is known.
+func _setup_practice(auto: bool) -> void:
+	if control != null:
+		control.auto = auto
+	var level := ChalkLayer.Level.REDUCED if bool(Settings.get_value(&"chalk_layer", false)) else ChalkLayer.Level.OFF
+	if args.has("lw-chalk"):
+		level = {"off": ChalkLayer.Level.OFF, "reduced": ChalkLayer.Level.REDUCED, "full": ChalkLayer.Level.FULL}.get(args["lw-chalk"], level)
+	coach = null
+	view.coach = null
+	view.chalk_level = level
+	view.chalk_gauge = auto
+	view.goal_line = I18n.t(Practice.current["goal_key"])
+	view.loupe_toggled.connect(func(on: bool) -> void: sampler.frozen = on)
+
+
+## D-79: the goal is met by the lock's lesson_target event; the chalk line says so at once.
+func _note_practice(events: Array) -> void:
+	if Practice.note_events(events):
+		view.goal_line = I18n.t(&"practice.goal_done")
 
 
 ## T42: the lesson of this job's family, or {} — only the family's first job (lesson not done in
@@ -283,6 +308,8 @@ func _physics_process(delta: float) -> void:
 			input = hints.drive(input, session.describe(), delta)
 		events = session.step(input["tension"], input["pick_depth"], input["pick_lift"])
 	_last_input = input
+	if Practice.active():
+		_note_practice(events)  # before the loop: an "open" event leaves the practice run at once
 	for e in events:
 		Haptics.play(e["kind"], minf(e["intensity"] * fb_gain, 1.0), e["material"])
 		Sfx.play(e["kind"], e["material"], 0.0 if fb_gain <= 1.0 else 2.0, 1.0)
@@ -548,6 +575,10 @@ func _on_dark() -> void:
 
 func _on_quit() -> void:
 	get_tree().paused = false
+	if Practice.active():  # D-79: leaving a practice lock goes back to the Workshop's Ćwiczenia tab
+		Practice.finish(false, true)
+		get_tree().change_scene_to_file(Events.WORKSHOP)
+		return
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 

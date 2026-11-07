@@ -375,6 +375,8 @@ func _update_w_chalk(els: Array, delta: float) -> void:
 		return
 	_chalk.level = chalk_level
 	if chalk_level == ChalkLayer.Level.OFF:
+		if _goal_only(delta):  # D-79 practice goal
+			return
 		_chalk.marks = {}
 		_chalk.text = ""
 		_chalk.tick(delta)

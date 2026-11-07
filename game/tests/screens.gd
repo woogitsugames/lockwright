@@ -2,7 +2,10 @@ extends Node
 ## Screenshot runner (task 13): walks all main screens at a given resolution and
 ## saves PNGs. Run under xvfb with opengl3:
 ##   xvfb-run godot --path game --display-driver x11 --rendering-driver opengl3 res://tests/screens.tscn -- --out /tmp/shots --size 412x915
-const SCREENS := ["res://scenes/main_menu.tscn", "res://scenes/jobs_list.tscn", "res://scenes/workshop.tscn", "res://scenes/showcase.tscn", "res://scenes/settings.tscn", "res://scenes/control_choice.tscn", "res://scenes/job_arrival.tscn", "res://scenes/day_after.tscn", "res://scenes/lock.tscn"]
+const SCREENS := ["res://scenes/main_menu.tscn", "res://scenes/jobs_list.tscn", "res://scenes/workshop.tscn", "res://scenes/showcase.tscn", "res://scenes/settings.tscn", "res://scenes/control_choice.tscn", "res://scenes/job_arrival.tscn", "res://scenes/day_after.tscn", "res://scenes/lock.tscn",
+	"res://scenes/workshop.tscn#practice", "res://scenes/lock_job.tscn#practice"]
+## D-79: the Ćwiczenia tab and one practice lock (goal in chalk), with the tutorial done in memory only
+const PRACTICE_LOCK := "t20"
 ## job shown on the arrival screen (N-60: portrait + locksmith line)
 const ARRIVAL_JOB := "job.bike_interview"
 ## V04/D-78: "day after" scene, shown over the job list (one line, main-cast portrait)
@@ -39,12 +42,18 @@ func _ready() -> void:
 		Save.set_value("tools/tl_shackle/owned", false)
 	get_window().size = _size
 	await get_tree().process_frame
-	for scene_path: String in SCREENS:
-		var base: String = scene_path.get_file().get_basename()
+	for entry: String in SCREENS:
+		var scene_path := entry.get_slice("#", 0)
+		var tag := entry.get_slice("#", 1) if entry.contains("#") else ""
+		var base: String = scene_path.get_file().get_basename() + ("_" + tag if tag != "" else "")
 		if _only != "" and not (base in _only.split(",")):
 			continue
 		if base == "job_arrival":
 			JobRun.start(JobRun.job_by_id(ARRIVAL_JOB))
+		if tag == "practice":
+			Save.data["tutorial_done"] = true  # not saved to disk
+			if base == "lock_job_practice":
+				Practice.start(Practice.entry(PRACTICE_LOCK))
 		# instantiate next to the runner (change_scene_to_file would free the runner
 		# itself, since it is the current scene, and stop this loop)
 		if _shown != null:
@@ -59,6 +68,8 @@ func _ready() -> void:
 		_shown = load(path).instantiate()
 		get_tree().root.add_child(_shown)
 		get_tree().current_scene = _shown
+		if base == "workshop_practice":
+			_shown.call("show_tab", "practice")
 		for i in 30:
 			await get_tree().process_frame
 		var img := get_viewport().get_texture().get_image()
@@ -67,6 +78,8 @@ func _ready() -> void:
 			Save.set_value("day_after", day_after_backup)
 		img.save_png(_out + "/" + name)
 		print("SHOT ", name)
+		if Practice.active():
+			Practice.finish(false, true)
 	if _demo:
 		Save.data = backup
 		Save.save()

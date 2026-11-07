@@ -6,6 +6,9 @@ lesson targets and four parameter sets revised from T38 (`contrib/gpt/T38/`, D-5
 hints (`title_key`, `hint_key`) are in `contrib/gpt/T20/practice.csv` (PL + EN) until they move
 into the game's i18n tables; the goals (`goal_key` = `practice.<tNN>.goal`) are in
 `game/i18n/strings.csv` (T38 texts, PL / EN / DE; they replace the T20 goal lines).
+The game's practice mode (D-79, Workshop tab "Ćwiczenia") plays unchanged copies of the files whose
+family has a plan-B screen that draws every element (`game/data/practice/`, 19 of 30; GUT
+`test_practice.gd` compares them with these files and checks the exclusions). Edit here, then copy.
 `presentation.practice` (order, focus, lesson_target, i18n keys) is game metadata: lockcore ignores it
 and `lock_to_json()` does not write it back, so the game reads it from these files.
 

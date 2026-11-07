@@ -8,6 +8,9 @@ extends Control
 ## D-71: two plates switch Tools / Furnishings ("Wyposażenie"). Furnishings are cosmetic (Furnishings.gd):
 ## the background is the Blender workshop render with an overlay per owned item, and the Furnishings tab
 ## shows the same picture undimmed above the item rows (same two-line rows as the tools).
+## D-79: a third plate "Ćwiczenia" lists the practice locks (Practice.gd) grouped by family, with the
+## goal as the row's line and its state in words (no ticks, no colour code). A practice run comes back
+## here, on this tab, with one line about the attempt.
 
 @onready var coins_label: Label = $Frame/VBox/CoinsLabel
 @onready var tools_list: VBoxContainer = $Frame/VBox/Scroll/ToolsList
@@ -25,11 +28,12 @@ const WORKSHOP_BG := {
 
 var _map: TextureRect
 var _map_frame: Control
-var _tab := "tools"  # "tools" | "furnishings"
+var _tab := "tools"  # "tools" | "furnishings" | "practice"
 var _backdrop_scene: Control
 var _preview: Control
 var _tab_tools: Button
 var _tab_furn: Button
+var _tab_practice: Button
 
 
 func _day_part() -> String:
@@ -89,6 +93,8 @@ func _ready() -> void:
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 	$Frame/VBox/Scroll.scroll_deadzone = 12
 	_refresh()
+	if Practice.last_result != &"":
+		show_tab("practice")  # D-79: back from a practice lock
 	Save.changed.connect(_refresh)
 	ScreenFrame.enter($Frame/VBox/Scroll)
 	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
@@ -117,8 +123,10 @@ func _add_tabs() -> void:
 	var group := ButtonGroup.new()
 	_tab_tools = _tab_button("TabTools", I18n.t(&"workshop.tab_tools"), group, "tools")
 	_tab_furn = _tab_button("TabFurnishings", I18n.t(&"workshop.tab_furnishings"), group, "furnishings")
+	_tab_practice = _tab_button("TabPractice", I18n.t(&"workshop.tab_practice"), group, "practice")
 	row.add_child(_tab_tools)
 	row.add_child(_tab_furn)
+	row.add_child(_tab_practice)
 	$Frame/VBox.add_child(row)
 	$Frame/VBox.move_child(row, 2)
 	_tab_tools.button_pressed = true
@@ -140,7 +148,7 @@ func _tab_button(node_name: String, text: String, group: ButtonGroup, tab: Strin
 	return b
 
 
-## Switches the list between the tools and the furnishings. Public for tests.
+## Switches the list between the tools, the furnishings and the practice locks. Public for tests.
 func show_tab(tab: String) -> void:
 	if _tab == tab and tools_list.get_child_count() > 0:
 		return
@@ -148,6 +156,7 @@ func show_tab(tab: String) -> void:
 	if _tab_furn != null:
 		_tab_furn.set_pressed_no_signal(tab == "furnishings")
 		_tab_tools.set_pressed_no_signal(tab == "tools")
+		_tab_practice.set_pressed_no_signal(tab == "practice")
 	if _map_frame != null:
 		_map_frame.visible = tab == "tools"
 	$Frame/VBox/Scroll.scroll_vertical = 0
@@ -162,6 +171,9 @@ func _refresh() -> void:
 		Furnishings.refresh(_backdrop_scene)
 	if _tab == "furnishings":
 		_refresh_furnishings(coins)
+		return
+	if _tab == "practice":
+		_refresh_practice()
 		return
 	for c in tools_list.get_children():
 		tools_list.remove_child(c)  # out of the tree now, so the new rows keep their names
@@ -189,6 +201,81 @@ func _refresh_furnishings(coins: int) -> void:
 	tools_list.add_child(note)
 	for f in Furnishings.all():
 		tools_list.add_child(_furnishing_card(f, coins))
+
+
+func _refresh_practice() -> void:
+	for c in tools_list.get_children():
+		tools_list.remove_child(c)
+		c.queue_free()
+	var note := ScreenFrame.wrap(Label.new())
+	note.name = "PracticeNote"
+	note.theme_type_variation = &"Caption"
+	note.text = I18n.t(&"practice.note")
+	tools_list.add_child(note)
+	if Practice.last_result != &"":
+		# one line about the attempt just finished, then it is gone
+		var res := ScreenFrame.wrap(Label.new())
+		res.name = "PracticeResult"
+		res.theme_type_variation = &"Heading"
+		res.text = I18n.t(StringName("practice.result_%s" % Practice.last_result))
+		tools_list.add_child(res)
+		Practice.last_result = &""
+	for fam in Practice.families():
+		var head := ScreenFrame.wrap(Label.new())
+		head.name = "Family_" + String(fam)
+		head.theme_type_variation = &"Heading"
+		head.text = I18n.t(StringName("family.%s.name" % fam))
+		tools_list.add_child(head)
+		for e in Practice.entries():
+			if e["family"] == fam:
+				tools_list.add_child(_practice_card(e))
+
+
+## One practice lock as the same two-line row as a tool: the goal, then its state + "Practice".
+## Public for tests.
+func _practice_card(e: Dictionary) -> Control:
+	var id: String = e["id"]
+	var card := PanelContainer.new()
+	card.name = "Practice_" + id
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	card.mouse_filter = Control.MOUSE_FILTER_PASS
+	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 6)
+	card.add_child(box)
+	var goal := ScreenFrame.wrap(Label.new())
+	goal.name = "Name"
+	goal.text = I18n.t(e["goal_key"])
+	goal.add_theme_font_size_override("font_size", 18)
+	box.add_child(goal)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+	box.add_child(row)
+	var state := ScreenFrame.wrap(Label.new())
+	state.name = "State"
+	state.theme_type_variation = &"Caption"
+	state.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	row.add_child(state)
+	var action := Button.new()
+	action.name = "Action"
+	action.custom_minimum_size = Vector2(112, 48)
+	action.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	action.mouse_filter = Control.MOUSE_FILTER_PASS
+	row.add_child(action)
+	if not Practice.unlocked(e):
+		state.text = I18n.t(&"practice.locked")  # label only, like a progress reward (N-59)
+		action.visible = false
+	else:
+		state.text = I18n.t(&"practice.goal_met" if Practice.goal_met(id) else &"practice.goal_open")
+		action.text = I18n.t(&"practice.start")
+		action.pressed.connect(_start_practice.bind(e))
+	if "accessibility_name" in action:
+		action.set("accessibility_name", "%s: %s. %s" % [action.text, goal.text, state.text])
+	return card
+
+
+func _start_practice(e: Dictionary) -> void:
+	Practice.start(e)
+	get_tree().change_scene_to_file(JobRun.lock_scene_path())
 
 
 func _preview_frame() -> Control:

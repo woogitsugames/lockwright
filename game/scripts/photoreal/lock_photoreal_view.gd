@@ -826,7 +826,26 @@ var hint_dent_pos := Vector2.ZERO
 var hint_dent_s := 0.0
 
 
-## The coach line (already translated) and its rect; shared by the family views.
+## D-79 practice: the goal, one handwritten chalk line at the top edge of the plate (where lessons
+## write). Shown whenever no coach line is, and kept with the chalk layer off (then the line alone).
+var goal_line := ""
+
+
+## Chalk layer off in a practice run: draw only the goal line, no marks. True when it did.
+func _goal_only(delta: float) -> bool:
+	if goal_line == "" or _chalk == null:
+		return false
+	var m := {}
+	_coach_text(m)  # the text rect
+	_chalk.level = ChalkLayer.Level.REDUCED
+	_chalk.marks = {"text_rect": m["text_rect"]}
+	_chalk.text = goal_line
+	_chalk.tick(delta)
+	return true
+
+
+## The coach line (already translated) and its rect; shared by the family views. Without a coach
+## line: the practice goal (D-79), else "".
 func _coach_text(m: Dictionary) -> String:
 	var r := get_rect()
 	var safe := _safe_rect(r)
@@ -834,9 +853,9 @@ func _coach_text(m: Dictionary) -> String:
 	if safe.size.x > safe.size.y:
 		m["text_rect"] = Rect2(Vector2(section_rect.end.x + 16.0, safe.position.y + 16.0), Vector2(safe.end.x - section_rect.end.x - 32.0, 120.0))
 	if coach == null:
-		return ""
+		return goal_line
 	var key := coach.text_key()
-	return I18n.t(key) if key != &"" else ""
+	return I18n.t(key) if key != &"" else goal_line
 
 
 func _apply_hint_marks(m: Dictionary, right_mark: String = "hint_right") -> void:
@@ -919,6 +938,8 @@ func _update_chalk(elements: Array, default_target: float, delta: float) -> void
 		return
 	_chalk.level = chalk_level
 	if chalk_level == ChalkLayer.Level.OFF and (coach == null or not coach.hint_tension):
+		if _goal_only(delta):
+			return
 		_chalk.marks = {}
 		_chalk.text = ""
 		_chalk.tick(delta)
@@ -968,7 +989,7 @@ func _update_chalk(elements: Array, default_target: float, delta: float) -> void
 			m["hint_right"] = coach.lesson_thumb() == "right"
 	_apply_hint_marks(m)
 	_chalk.marks = m
-	_chalk.text = _chalk_line(elements, text)
+	_chalk.text = _chalk_line(elements, text if text != "" else goal_line)
 	_chalk.tick(delta)
 
 
