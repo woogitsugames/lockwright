@@ -260,36 +260,36 @@
    "speaker": "teresa",
    "door_state": "ajar",
    "feet_world_mm": [
-    250.0,
-    420.0,
+    560.0,
+    720.0,
     0.0
    ],
    "height_mm": 1590,
    "feet_center": [
-    0.68224,
-    0.72032
+    0.77183,
+    0.6912
    ],
    "feet_line": [
     [
-     0.60171,
-     0.72032
+     0.69851,
+     0.6912
     ],
     [
-     0.76277,
-     0.72032
+     0.84515,
+     0.6912
     ]
    ],
    "head_top": [
-    0.68224,
-    0.39294
+    0.77183,
+    0.39313
    ],
    "chest": [
-    0.68224,
-    0.48461
+    0.77183,
+    0.47659
    ],
-   "height_px": 628.6,
-   "px_per_mm": 0.39533,
-   "depth_mm": 2968.0,
+   "height_px": 572.3,
+   "px_per_mm": 0.35993,
+   "depth_mm": 3259.8,
    "occluded_by_leaf": true,
    "lights": [
     {
@@ -302,15 +302,15 @@
      ],
      "strength_rel": 1.0,
      "dir3d_to_light": [
-      -0.618,
-      -0.3652,
-      0.6962
+      -0.6743,
+      -0.459,
+      0.5784
      ],
      "dir2d_to_light": [
-      -0.06475,
-      -0.0413
+      -0.06,
+      -0.03046
      ],
-     "elevation_deg": 44.1
+     "elevation_deg": 35.3
     },
     {
      "name": "window_light",
@@ -320,17 +320,17 @@
       0.62,
       1.0
      ],
-     "strength_rel": 0.4329,
+     "strength_rel": 0.511,
      "dir3d_to_light": [
-      -0.8192,
-      0.2969,
-      0.4906
+      -0.8879,
+      0.1245,
+      0.4429
      ],
      "dir2d_to_light": [
-      -0.09198,
-      -0.03215
+      -0.09088,
+      -0.02567
      ],
-     "elevation_deg": 29.4
+     "elevation_deg": 26.3
     },
     {
      "name": "court_lamp",
@@ -340,17 +340,17 @@
       0.55,
       0.25
      ],
-     "strength_rel": 0.1371,
+     "strength_rel": 0.2032,
      "dir3d_to_light": [
-      -0.3059,
-      0.5612,
-      -0.769
+      -0.3756,
+      0.5037,
+      -0.7779
      ],
      "dir2d_to_light": [
-      -0.04014,
-      0.04004
+      -0.04686,
+      0.03809
      ],
-     "elevation_deg": -50.3
+     "elevation_deg": -51.1
     },
     {
      "name": "hall_bulb",
@@ -360,17 +360,17 @@
       0.64,
       0.36
      ],
-     "strength_rel": 0.099,
+     "strength_rel": 0.1781,
      "dir3d_to_light": [
-      0.1215,
-      0.9168,
-      0.3803
+      0.0155,
+      0.9056,
+      0.4239
      ],
      "dir2d_to_light": [
-      -0.00077,
-      -0.02908
+      -0.01728,
+      -0.02828
      ],
-     "elevation_deg": 22.4
+     "elevation_deg": 25.1
     },
     {
      "name": "flat_lamp",
@@ -380,17 +380,17 @@
       0.7,
       0.42
      ],
-     "strength_rel": 0.0795,
+     "strength_rel": 0.1272,
      "dir3d_to_light": [
-      -0.127,
-      0.5996,
-      0.7902
+      -0.299,
+      0.4699,
+      0.8305
      ],
      "dir2d_to_light": [
-      -0.02198,
-      -0.05115
+      -0.0389,
+      -0.04818
      ],
-     "elevation_deg": 52.2
+     "elevation_deg": 56.2
     }
    ]
   }
@@ -413,10 +413,5 @@
    -0.0,
    1.5
   ]
- },
- "depth_png": {
-  "file": "wrong_floor_night_hold_depth.png",
-  "depth_max_mm": 20000.0,
-  "encoding": "planar camera depth = value/65535*depth_max_mm"
  }
 }

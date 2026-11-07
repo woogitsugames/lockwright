@@ -26,10 +26,10 @@ G = ['--tint-gain', '2.0', '--sat', '1.2', '--wrap', '0.25']
 # job -> time -> [(figure, plate, extra composite args)]; mirrors the commands in art/renders/arrival/README.md
 JOBS = {
     'wrong_floor': {
-        'night': [('kazimierz', 'wrong_floor_night_hold.png', ['--exposure', '1.15']),
-                  ('teresa', 'wrong_floor_night_ajar_hold.png', ['--feet-world', 'teresa=560,720', '--occlude-mm', '0', '--exposure', '1.5'])],
+        'night': [('kazimierz', 'wrong_floor_night_hold.png', ['--exposure', '1.5']),
+                  ('teresa', 'wrong_floor_night_ajar_hold.png', ['--feet-world', 'teresa=560,720', '--occlude-mm', '0', '--exposure', '2.6'])],
         'evening': [('kazimierz', 'wrong_floor_evening_hold.png', ['--exposure', '1.15'])],
-        'day': [('kazimierz', 'wrong_floor_day_hold.png', ['--exposure', '1.0'])],
+        'day': [('kazimierz', 'wrong_floor_day_hold.png', ['--exposure', '1.1'])],
     },
 }
 CONTACT_COLS, CONTACT_W = 6, 1080   # arrival_composite.contact() defaults
