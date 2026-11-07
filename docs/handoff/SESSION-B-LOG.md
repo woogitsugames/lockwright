@@ -888,6 +888,7 @@ Telefon Samsung SM-A165F (1080×2340, Mali-G57, silnik wibracji `MOTOR_COIN_DC` 
 
   Moja ocena: właściciel odrzuci to jako tanie i generyczne. Propozycja do decyzji sesji A: kontur wewnętrzny (linia paznokcia i stawu, jak w grafice instruktażowej), cień 1–2 dp pod papierem (papier leży nad zwijką), faktura papieru, cała dłoń w kadrze (kotwica dalej od krawędzi).
   Powtórzenie: lekcja combo („Rozmowa o 9:30”) albo zlecenie pin przy < 3 wykonanych, potem bezczynność: 30 s (H2), 60 s (H4).
+  **Rozwiązane decyzją właściciela D-83 (2026-11-07):** widmo usunięte, wskazówki tylko kredą (pierścień dotyku + ślad ruchu), wszystko w safe area; zrzuty `docs/handoff/device-tests/fixes/chalk_hints/`.
 - **N-74 (średnia) — obrazy kart samouczka nie trafiają do APK.** Ekrany „Samouczek — zamek ćwiczebny” (etapy 1–3) mają pustą lewą kolumnę, a podpisy są przesunięte w prawo (`75_shift_start.jpg`, `79_s2_intro.jpg`, `82_s2_after2.jpg`).
   Przyczyna: `tutorial.gd:52-53` ładuje `res://assets/ui/gpt/tutorial/g11-%02d-clean.png`, a `export_presets.cfg` (presety Android i iOS) wyklucza `assets/ui/gpt/tutorial/*-clean.png`. Logcat:
   ```

@@ -21,7 +21,7 @@ Spis treści
 
 ## 1. Zasady samouczka
 
-1. **Zero tekstu w zamku.** Gracz uczy się z obrazu, ruchu, dźwięku i haptyki. Jedyne dodatkowe środki to **odcisk kciuka** (miękkie wgłębienie w skórze zwijki, `HUD.md` §5), **widmo kciuka i dłoni** (cień dłoni rzucany na scenę przez lampę warsztatu, nie świecący duch) oraz **kreda** (znaki kodu stanów z `DESIGN.md` §1, rysowane jak kredą ślusarza na metalu).
+1. **Zero tekstu w zamku.** Gracz uczy się z obrazu, ruchu, dźwięku i haptyki. Jedyne dodatkowe środki to **odcisk kciuka** (miękkie wgłębienie w skórze zwijki, `HUD.md` §5) oraz **kreda**: znaki kodu stanów z `DESIGN.md` §1, rysowane jak kredą ślusarza na metalu, a przy wskazówkach gestu **kredowy pierścień dotyku i ślad ruchu** (D-83: bez widma dłoni).
 2. **Jedno nowe pojęcie na krok.** Krok kończy się zdarzeniem logiki (`bind`, `set`, `open` …), a nie upływem czasu ani dotknięciem „dalej”.
 3. **Sukces zawsze ma oddech.** Po każdym przejściu kroku scena trzyma stan 600 ms (bez nowych bodźców), żeby gracz połączył przyczynę i skutek.
 4. **Nie da się utknąć.** Każdy krok ma eskalację wskazówek (§2), a ostatni stopień to demonstracja „ręką mistrza”. W samouczku nic nie ginie: złamany wytrych wraca do zwijki, a seria się nie zaczyna.
@@ -35,15 +35,17 @@ Spis treści
 
 ### 2.1 Stopnie (D-23)
 
+> **D-83 (2026-11-07):** widmo dłoni (G23, D-76/D-77) usunięte. Gdzie storyboardy niżej (§3–§9) mówią „widmo kciuka / dłoni”, chodzi o kredę gestu z §2.2 (pierścień dotyku + ślad ruchu); „ręka mistrza” to gra poruszająca samym narzędziem, z kredą idącą za wirtualnym punktem dotyku.
+
 Licznik „utknięcia” liczy czas od ostatniego **postępu** w bieżącym kroku. Postęp to zdarzenie, które przybliża do celu kroku (np. `bind` w kroku napięcia, `near_shear` lub `set` w kroku unoszenia). Licznik zeruje się po postępie, a nie po samym dotyku ekranu, więc machanie kciukiem nie wstrzymuje pomocy.
 
 | Stopień | Od | Co się dzieje | Kanały |
 |---|---|---|---|
 | **H0** | 0 s | Nic. Gracz próbuje. | — |
 | **H1 — trącenie** | 15 s | Element, którego dotyczy krok, robi jeden mały ruch fizyczny (np. wiążący kołek drga o 1 dp, napinacz kołysze się o 1°). W skórze zwijki pojawia się **odcisk kciuka** tam, gdzie trzeba położyć palec. | obraz + cichy dźwięk tego elementu (−12 dB względem gry). Bez haptyki, żeby nie mylić jej ze stanem zamka. |
-| **H2 — widmo kciuka** | 30 s | Widmo kciuka (matowa „wycinanka z papieru”: kość + 2 dp tuszu, D-77) dwa razy pokazuje gest: skąd, dokąd i jak szybko. Scena **odpowiada** na widmo (napinacz się obraca, wytrych unosi), a potem wraca do stanu gracza. | obraz + dźwięk sceny ściszony o 6 dB |
+| **H2 — kreda gestu** | 30 s | Kredowy pierścień dotyku dwa razy przechodzi drogę gestu, a za nim rysuje się kredą ślad ruchu: skąd, dokąd i jak szybko (D-83; bez dłoni). Po każdym przejściu ślad gaśnie. Scena **odpowiada** na gest (napinacz się obraca), a potem wraca do stanu gracza. | obraz + dźwięk sceny ściszony o 6 dB |
 | **H3 — kreda** | 45 s | Kreda rysuje znak, którego brakuje w zrozumieniu: kreski tarcia przy wiążącym kołku, klin szczeliny, klamrę nad przepchniętym, strzałkę „w dół” przy napinaczu (za mocno) albo „w górę” (za słabo). Znak zostaje do końca kroku. | obraz + szelest kredy |
-| **H4 — ręka mistrza** | 60 s | Widmo dłoni wykonuje cały krok w zwolnionym tempie, a zamek naprawdę go wykonuje (np. kołek się ustawia). Potem ręka cofa się, a sterowanie wraca do gracza w stanie po kroku. | wszystkie kanały, z haptyką |
+| **H4 — ręka mistrza** | 60 s | Gra sama wykonuje cały krok w zwolnionym tempie: rusza się samo narzędzie (wytrych, napinacz, tarcza, kółko), a zamek naprawdę wykonuje krok (np. kołek się ustawia). Dłoni nie rysujemy: kredowy pierścień i ślad idą za wirtualnym punktem dotyku (D-83). Potem kreda gaśnie, a sterowanie wraca do gracza w stanie po kroku. | wszystkie kanały, z haptyką |
 
 Zasady:
 - H4 jest wykonywane najwyżej raz na krok. Telemetria samouczka zapisuje każdy stopień (§12), bo test A1 liczy „otwarcie bez H4” osobno.
@@ -51,13 +53,16 @@ Zasady:
 - W trybie „w ciemności” H1–H3 grają tylko dźwiękiem i haptyką (np. H2: cichy „wzorzec widmowy” napięcia odtwarzany w lewej części ekranu), a H4 zapala na chwilę światło (minutnik, §7).
 - Przy włączonym VoiceOver/TalkBack wskazówki H2–H4 mają też krótki opis głosowy (§11).
 
-### 2.2 Wygląd widma
+### 2.2 Wygląd kredy gestu (D-83, zastępuje widmo dłoni z D-76/D-77)
 
-- To **wycinanka z papieru**, nie cień i nie poświata (D-77, zastępuje cień z D-76): płaskie, matowe wypełnienie w kolorze kości (`#D9CFBA`, 90% krycia) i **ciemna krawędź tuszu 2 dp** na zewnątrz konturu, tylko w kształcie kciuka lub dłoni od nadgarstka (sylwetki G23). Bez rozmycia krawędzi, bez poświaty, bez koloru akcentu, bez cząsteczek, bez tekstu. Kość jest ciemniejsza od kredy H3, więc dłoń nie myli się ze znakiem kredy.
-- **Dlaczego tak:** kciuki leżą na najciemniejszym pasie zwijki (luminancja ~0,01–0,03), gdzie żaden cień nie da 3:1 (D-76: 1,2:1). Jasne wypełnienie daje tam ≥ 3:1, a tusz oddziela dłoń od jasnych powierzchni (korpus zamka w przekroju, kremowa tarcza napinacza), na które dłoń wchodzi w poziomie. Oba kanały to sama jasność, więc widmo działa w skali szarości.
-- **Gdzie:** widmo gra tam, gdzie gracz naprawdę kładzie palec — opuszka (hotspot sylwetki) na kotwicy kciuka (`thumb_anchors()`, w strefie bezpiecznej), lewy kciuk w lewej strefie (napięcie, gest w górę), prawy w prawej, nad kolumną elementu, który trzeba unieść (wytrych). Nie przenosimy go na przekrój zamka: zasłaniałby kołki, o które chodzi w lekcji, i uczyłby złego miejsca dotyku.
-- Ruch widma ma prędkość, jakiej oczekujemy od gracza (napięcie: 0→0,3 w 0,6 s; uniesienie: 0,2/s przy linii podziału), bo tempo jest częścią lekcji. Pojawienie i zniknięcie 150 ms, puszczenie narzędzia (H4) 250 ms.
-- Leworęczni (opcja „zamień kciuki”, `HUD.md` §9) widzą widmo w lustrzanym odbiciu.
+- **Tylko kreda**, ta sama co w liniach lekcji i znakach stanu (`ChalkLayer`: kreska z kilku przejść, krój Caveat w napisach, wspólny materiał „ziarna” — alfa łamana stałą fakturą powierzchni, więc kreska ma suchą, poszarpaną krawędź prawdziwej kredy). Bez czystych linii wektorowych, bez poświaty, bez koloru, bez dłoni i sylwetek. Pod kreską gestu cienki ciemny podcień (jak pod pismem), żeby trzymała się na jasnym mosiądzu (kontrast, nie poświata).
+- **Pierścień dotyku**: odręczne kółko kredą, 48 dp średnicy (rozmiar celu dotyku), w miejscu, gdzie gracz kładzie palec. Przy przytrzymaniu (gest „połóż i trzymaj”) w środku pojawia się drugie, mniejsze kółko.
+- **Ślad ruchu**: kredowa linia rysuje się za pierścieniem w tempie gestu (to tempo jest częścią lekcji: napięcie 0→0,3 w 0,6 s, uniesienie 0,2/s), starsza część śladu jest jaśniejsza, ślad kończy się na krawędzi pierścienia. Po przejściu ślad gaśnie (200 ms, out-cubic, bez odbicia). Pojawienie 200 ms.
+- **H4**: gra porusza narzędzie (autopilot steruje wejściem zamka), a pierścień i ślad idą za wirtualnym punktem dotyku: napięcie i uniesienie z prawdziwej wartości wejścia (200 dp drogi kciuka na jednostkę), gesty „tempem” (obrót tarczy, kółko, cofnięcie) po zaplanowanej drodze w czasie gestu.
+- **Gdzie**: tam, gdzie gracz naprawdę kładzie palec — kotwice kciuków (`thumb_anchors()`), lewy kciuk w lewej strefie, prawy nad kolumną elementu. Wszystko mieści się w strefie bezpiecznej (N-73: prawy kciuk wystawał za krawędź): kotwice i każdy punkt kredy są przycinane do safe area, a cała droga gestu przesuwa się, jeśli wchodziłaby na napinacz, przekrój zamka albo (H4) lupę. Strefy kciuków to całe połówki ekranu, więc przesunięty gest dalej działa.
+- **Ograniczenie ruchu**: kreda statyczna — cała droga od razu, grot na końcu, pierścień na starcie; nic się nie przesuwa (także w H4, gdzie narzędzie i tak rusza się, bo to stan zamka).
+- Leworęczni (opcja „zamień kciuki”, `HUD.md` §9) widzą kredę gestu w lustrzanym odbiciu.
+- W trybie „w ciemności” kredy nie ma (H1–H3 tylko dźwięk i haptyka); w H4 pojawia się na czas zapalonego światła.
 
 ## 3. Pierwsze uruchomienie
 
@@ -233,8 +238,8 @@ Przewidywane pułapki S3 przyszłych rodzin (do potwierdzenia w ich kartach): `w
 - **Bez dźwięku** (wyciszony telefon): obraz + haptyka wystarczą w S1–S3 dzięki kredzie. Jeśli system jest wyciszony, gra w pierwszym uruchomieniu nie prosi o dźwięk, tylko sama włącza napisy dźwięków na czas samouczka (`HUD.md` §9) i wyłącza je po S3, chyba że gracz je zostawi.
 - **„Pomoc w czytaniu”** (kreda wszędzie, większe kontrasty, napisy dźwięków): przełącznik w pauzie, działa od razu, także w samouczku.
 - **Czytniki ekranu**: H2–H4 mają krótki opis głosowy (np. „Przytrzymaj lewy kciuk i przesuń w górę.”), a kalibracja i notka mają etykiety. Zamek sam w sobie jest i tak „dźwiękowy”.
-- **Motoryka**: opcja „blokada napięcia” (`HUD.md` §9) działa w samouczku. Widmo H2 pokazuje wtedy gest blokady zamiast przytrzymania.
-- **Ograniczenie ruchu** (systemowe „Reduce Motion”): widmo nie wykonuje gestu w pętli, tylko pokazuje pozycję startową i końcową.
+- **Motoryka**: opcja „blokada napięcia” (`HUD.md` §9) działa w samouczku. Kreda H2 pokazuje wtedy gest blokady zamiast przytrzymania.
+- **Ograniczenie ruchu** (systemowe „Reduce Motion”): kreda gestu jest statyczna (cała droga, grot, pierścień na starcie), nic nie jedzie (§2.2).
 
 ## 12. Plan testu A1 i A2
 

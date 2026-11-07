@@ -213,7 +213,7 @@ func update(vm: Dictionary, input: Dictionary, events: Array, left_down: bool, r
 ##           min_s, after}: interrupts any step from `after` on while its condition holds (and min_s
 ##           longer, so the line can be read), then the coach returns to the step it left
 ## Two thumbs: letting go of the left thumb (T < LOST_T for LOST_S) brings the first step back.
-## The ghost / master hand of each step is described in the same file (TutorialHints reads it).
+## The H2 chalk gesture / H4 master step of each step is described in the same file (TutorialHints reads it).
 
 const LESSON_DIR := "res://data/lessons/"
 const LESSON_SCHEMA := "lockwright.lesson/1"
@@ -227,7 +227,7 @@ const FADE_JOBS := 2
 
 var lesson := {}
 ## The coach fades (later jobs of the family): the steps still run for the hint ladder and the
-## ghost, but no line is written and the open is not held for the closing line.
+## chalk gesture, but no line is written and the open is not held for the closing line.
 var lesson_quiet := false
 var lesson_idx := 0               # 0..n-1 guided steps, n = free, n + 1 = done
 var lesson_trap := false          # the trap line is up
@@ -321,7 +321,7 @@ func lesson_step() -> Dictionary:
 	return {}
 
 
-## Which thumb the chalk cue and the ghost point at: "left", "right" or "" (free / done).
+## Which thumb the chalk cue and the chalk gesture point at: "left", "right" or "" (free / done).
 ## Auto tension (D-52): a left step is the game's, so the cue moves to the right thumb.
 func lesson_thumb() -> String:
 	if lesson_idx > lesson_step_count():

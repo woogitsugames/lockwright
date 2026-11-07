@@ -918,13 +918,16 @@ func _lesson_chalk(m: Dictionary, fallback: String, right_mark: String = "hint_r
 	return line
 
 
-## Thumb anchors of the chalk hints and the ghost hand (dp, view coordinates).
+## Thumb anchors of the chalk hints (thumb marks, H1 imprint, H2/H4 chalk ring; dp, view
+## coordinates), clamped like the chalk thumbs so the whole hint stays inside the safe area (N-73).
 func thumb_anchors() -> Array:
 	var r := get_rect()
 	var safe := _safe_rect(r)
 	var portrait := safe.size.y >= safe.size.x
 	var thumbs_y := tray_rect.position.y + tray_rect.size.y * (0.66 if portrait else 0.75)
-	return [Vector2(r.size.x * (0.22 if portrait else 0.12), thumbs_y), Vector2(r.size.x * (0.70 if portrait else 0.88), thumbs_y)]
+	var cs := Rect2(safe.position - r.position, safe.size)  # chalk layer coordinates (= view)
+	return [ChalkLayer.clamp_hint_anchor(Vector2(r.size.x * (0.22 if portrait else 0.12), thumbs_y), cs, "left"),
+		ChalkLayer.clamp_hint_anchor(Vector2(r.size.x * (0.70 if portrait else 0.88), thumbs_y), cs, "right")]
 
 
 func show_hint_dent(pos: Vector2, seconds: float = 2.0) -> void:

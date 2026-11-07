@@ -6,6 +6,13 @@ extends Control
 ## top edge of the plate (Caveat, OFL). Drawn strokes only: no panels, no icons, no colour codes;
 ## every mark is a shape, so it reads in greyscale.
 ##
+## D-80 real chalk: everything on this layer (and the hint trail, ChalkHint) goes through one grain
+## material (grain_material()): the alpha is broken by a fixed tooth of the surface (value noise in
+## dp, fixed to the screen like the plate and the leather), so strokes and handwriting get the dry,
+## broken edge of chalk instead of a clean vector line. No glow, no blur, no colour.
+## The thumb hints (chalk thumb + arrows) are clamped inside the safe area (N-73: the right thumb
+## hint ran off the right edge): clamp_hint_anchor(), hint_marks().
+##
 ## The view fills `marks` every frame (screen positions already projected from the 3D section).
 
 enum Level { OFF, REDUCED, FULL }
@@ -14,6 +21,48 @@ const FONT_PATH := "res://assets/fonts/Caveat-wght.ttf"
 const C := Color(0.96, 0.95, 0.90)
 const TEXT_SIZE := 26
 const FADE_S := 0.18
+## Chalk tooth: size of the surface grain in dp and how much of a stroke it eats (0..1).
+const GRAIN_DP := 1.7
+const GRAIN_STRENGTH := 0.6
+## Margin kept between a hint mark and the safe-area edge (dp).
+const SAFE_MARGIN := 6.0
+## Reach of each thumb hint around its anchor (dp: left, top, right, bottom): chalk thumb + arrows.
+const REACH := {
+	"left": Vector4(24, 104, 24, 24),       # thumb + one arrow up
+	"right": Vector4(92, 104, 92, 24),      # thumb + arrows left, right and up
+	"vertical": Vector4(24, 104, 24, 92),   # thumb + arrows up and down (dial scroll)
+}
+
+const _GRAIN_SHADER := """
+shader_type canvas_item;
+render_mode unshaded;
+// D-80 chalk grain. The tooth is fixed to the layer (local dp), so a moving stroke passes over the
+// same grain, like chalk dragged over leather or brass. Only the alpha changes: no glow, no colour.
+uniform float grain_dp = 1.7;
+uniform float strength = 0.6;
+varying vec2 p;
+void vertex() {
+	p = VERTEX;
+}
+float hash(vec2 q) {
+	q = mod(q, 289.0);
+	return fract(sin(dot(q, vec2(12.9898, 78.233))) * 43758.5453);
+}
+float vnoise(vec2 q) {
+	vec2 i = floor(q);
+	vec2 f = fract(q);
+	f = f * f * (3.0 - 2.0 * f);
+	return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x), mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y);
+}
+void fragment() {
+	vec2 q = p / grain_dp;
+	float n = vnoise(q) * 0.55 + vnoise(q * 2.3 + vec2(17.0, 5.0)) * 0.3 + vnoise(q * 0.31 + vec2(3.0, 41.0)) * 0.15;
+	float keep = smoothstep(0.22, 0.6, n);
+	COLOR.a *= mix(1.0, keep, strength);
+}
+"""
+
+static var _grain: ShaderMaterial
 
 var level := Level.OFF
 var marks := {}            # see LockPhotorealView._update_chalk()
@@ -25,6 +74,7 @@ var _font: Font
 
 func _init() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	material = grain_material()
 
 
 func _ready() -> void:
@@ -35,6 +85,59 @@ func _ready() -> void:
 		_font = f
 	else:
 		_font = get_theme_default_font()
+
+
+## The shared chalk material (D-80): one shader for the chalk layer and the hint trail.
+static func grain_material() -> ShaderMaterial:
+	if _grain == null:
+		var sh := Shader.new()
+		sh.code = _GRAIN_SHADER
+		_grain = ShaderMaterial.new()
+		_grain.shader = sh
+		_grain.set_shader_parameter(&"grain_dp", GRAIN_DP)
+		_grain.set_shader_parameter(&"strength", GRAIN_STRENGTH)
+	return _grain
+
+
+## Anchor of a thumb hint moved so its chalk thumb and arrows (REACH[kind]) stay inside `safe`.
+static func clamp_hint_anchor(p: Vector2, safe: Rect2, kind: String) -> Vector2:
+	if safe.size.x <= 0.0 or safe.size.y <= 0.0:
+		return p
+	var r: Vector4 = REACH.get(kind, REACH["right"])
+	var lo := safe.position + Vector2(r.x, r.y) + Vector2.ONE * SAFE_MARGIN
+	var hi := safe.end - Vector2(r.z, r.w) - Vector2.ONE * SAFE_MARGIN
+	return Vector2(clampf(p.x, lo.x, maxf(lo.x, hi.x)), clampf(p.y, lo.y, maxf(lo.y, hi.y)))
+
+
+## Rect a thumb hint of `kind` covers around its (clamped) anchor.
+static func hint_rect(anchor: Vector2, kind: String) -> Rect2:
+	var r: Vector4 = REACH.get(kind, REACH["right"])
+	return Rect2(anchor - Vector2(r.x, r.y), Vector2(r.x + r.z, r.y + r.w))
+
+
+## The safe area of this layer (dp, layer coordinates = view coordinates).
+func safe_rect() -> Rect2:
+	return SafeArea.shrink(self, Rect2(Vector2.ZERO, size))
+
+
+## Thumb hints drawn now: [{kind, anchor, rect}], anchors already clamped (tests, N-73).
+func hint_marks() -> Array:
+	var out := []
+	if level == Level.OFF or marks.is_empty():
+		return out
+	var safe := safe_rect()
+	if marks.get("hint_vertical", false) and marks.has("right_anchor"):
+		out.append(_hint("vertical", marks["right_anchor"], safe))
+	if marks.get("hint_left", false) and marks.has("left_anchor"):
+		out.append(_hint("left", marks["left_anchor"], safe))
+	if marks.get("hint_right", false) and marks.has("right_anchor"):
+		out.append(_hint("right", marks["right_anchor"], safe))
+	return out
+
+
+static func _hint(kind: String, p: Vector2, safe: Rect2) -> Dictionary:
+	var a := clamp_hint_anchor(p, safe, kind)
+	return {"kind": kind, "anchor": a, "rect": hint_rect(a, kind)}
 
 
 ## Fades the text in and out (150–250 ms, DESIGN.md) when the line changes.
@@ -53,22 +156,55 @@ func shown_text() -> String:
 
 
 # ------------------------------------------------------------------ strokes
-## A chalk stroke: a few thin, slightly offset passes (deterministic, no texture).
+## A chalk stroke: a few thin, slightly offset passes (deterministic); the grain material breaks them.
 func stroke(a: Vector2, b: Vector2, w: float = 2.5, alpha: float = 0.9) -> void:
+	draw_stroke(self, a, b, w, alpha)
+
+
+## The chalk stroke on any canvas item (ChalkHint draws its trail with it). shade: a thin dark
+## under-pass, as under the handwriting, so the mark holds on bright brass (contrast, not glow).
+static func draw_stroke(ci: CanvasItem, a: Vector2, b: Vector2, w: float = 2.5, alpha: float = 0.9, shade := false) -> void:
+	if a.distance_squared_to(b) < 0.01:
+		return
 	var n := (b - a).normalized().orthogonal()
 	var seed := int(a.x * 13.0 + a.y * 7.0 + b.x * 3.0) & 0xff
-	draw_line(a, b, Color(C, alpha), w, true)
+	if shade:
+		ci.draw_line(a + Vector2(0.8, 1.2), b + Vector2(0.8, 1.2), Color(0, 0, 0, 0.35 * alpha), w + 0.5, true)
+	ci.draw_line(a, b, Color(C, alpha), w, true)
 	for k in 2:
 		var off := n * (((seed >> k) & 3) - 1.5) * 0.45
-		draw_line(a + off, b + off, Color(C, alpha * 0.35), maxf(w - 1.0, 1.0), true)
+		ci.draw_line(a + off, b + off, Color(C, alpha * 0.35), maxf(w - 1.0, 1.0), true)
+
+
+## A hand-drawn chalk ring (the touch point): a slightly uneven circle whose stroke overshoots its
+## start by ~25°, thinner where the chalk lands and lifts off.
+static func draw_ring(ci: CanvasItem, c: Vector2, r: float, w: float = 2.5, alpha: float = 0.9, shade := false) -> void:
+	var seg := 28
+	var a0 := -PI * 0.62
+	var sweep := TAU + 0.44
+	var prev := Vector2.ZERO
+	for i in seg + 1:
+		var t := float(i) / seg
+		var ang := a0 + sweep * t
+		var rr := r * (1.0 + 0.045 * sin(ang * 3.0 + 0.7) + 0.02 * sin(ang * 7.0))
+		var pt := c + Vector2(cos(ang), sin(ang)) * rr
+		if i > 0:
+			var taper := clampf(minf(t, 1.0 - t) * 8.0, 0.35, 1.0)
+			draw_stroke(ci, prev, pt, w * (0.6 + 0.4 * taper), alpha * taper, shade)
+		prev = pt
+
+
+## Chalk arrowhead at `tip`, pointing along `dir`.
+static func draw_head(ci: CanvasItem, tip: Vector2, dir: Vector2, w: float = 3.0, alpha: float = 0.9, shade := false) -> void:
+	var d := dir.normalized()
+	var n := d.orthogonal()
+	draw_stroke(ci, tip, tip - d * 12.0 + n * 8.0, w, alpha, shade)
+	draw_stroke(ci, tip, tip - d * 12.0 - n * 8.0, w, alpha, shade)
 
 
 func arrow(from: Vector2, to: Vector2, w: float = 3.0) -> void:
 	stroke(from, to, w)
-	var d := (to - from).normalized()
-	var n := d.orthogonal()
-	stroke(to, to - d * 12.0 + n * 8.0, w)
-	stroke(to, to - d * 12.0 - n * 8.0, w)
+	draw_head(self, to, to - from, w)
 
 
 func thumb(c: Vector2, r: float = 22.0) -> void:
@@ -128,21 +264,17 @@ func _draw() -> void:
 		var pts: PackedVector2Array = path
 		for i in pts.size() - 1:
 			stroke(pts[i], pts[i + 1], 2.5, 0.8)
-	if marks.get("hint_vertical", false) and marks.has("right_anchor"):
-		var rv: Vector2 = marks["right_anchor"]
-		thumb(rv)
-		arrow(rv + Vector2(0, -30), rv + Vector2(0, -92))
-		arrow(rv + Vector2(0, 30), rv + Vector2(0, 80))
-	if marks.get("hint_left", false):
-		var l: Vector2 = marks["left_anchor"]
-		thumb(l)
-		arrow(l + Vector2(0, -30), l + Vector2(0, -92))
-	if marks.get("hint_right", false):
-		var r: Vector2 = marks["right_anchor"]
-		thumb(r)
-		arrow(r + Vector2(-30, 0), r + Vector2(-78, 0))
-		arrow(r + Vector2(30, 0), r + Vector2(78, 0))
-		arrow(r + Vector2(0, -30), r + Vector2(0, -92))
+	# thumb hints, clamped inside the safe area (N-73)
+	for h: Dictionary in hint_marks():
+		var p: Vector2 = h["anchor"]
+		thumb(p)
+		arrow(p + Vector2(0, -30), p + Vector2(0, -92))
+		match String(h["kind"]):
+			"vertical":
+				arrow(p + Vector2(0, 30), p + Vector2(0, 80))
+			"right":
+				arrow(p + Vector2(-30, 0), p + Vector2(-78, 0))
+				arrow(p + Vector2(30, 0), p + Vector2(78, 0))
 	if marks.get("hint_down", false) and marks.has("wrench_tip"):
 		var wt: Vector2 = marks["wrench_tip"]
 		arrow(wt + Vector2(18, -40), wt + Vector2(18, 10))

@@ -2,11 +2,11 @@ class_name HintLadder
 extends RefCounted
 ## Escalation of wordless tutorial hints, ONBOARDING §2.1 (D-23). Pure logic, no nodes:
 ## the tutorial scene feeds update(delta) with its own delta and presents the channels
-## reported by channels(); the ghost hand, chalk and sounds are drawn/played elsewhere.
+## reported by channels(); the chalk gesture (ChalkHint, D-80), chalk marks and sounds are drawn/played elsewhere.
 ##
 ## The stuck counter measures time since the last *progress* in the current step, not
 ## since the last touch: aimless swiping never pauses the ladder (ONBOARDING §2.1).
-##   H0 nothing    H1 nudge 15 s    H2 ghost thumb 30 s    H3 chalk 45 s    H4 master hand 60 s
+##   H0 nothing    H1 nudge 15 s    H2 chalk gesture 30 s    H3 chalk 45 s    H4 master hand 60 s
 ## H4 happens at most once per step; afterwards the counter keeps growing but the level
 ## stays at 3. Thresholds are configurable because S2–S3 shorten the H2 -> H4 gap
 ## (ONBOARDING §4, steps 2.1/3.1: "H2 -> H4 after 30 s").

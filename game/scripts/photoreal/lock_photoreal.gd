@@ -251,7 +251,7 @@ static func lesson_for_job(fam: StringName, a: Dictionary) -> Dictionary:
 	return TutorialCoach.load_lesson(fam)
 
 
-## ONBOARDING §2: hint ladder H0–H4 + ghost hand wherever a coach runs (S1–S3, first jobs).
+## ONBOARDING §2: hint ladder H0–H4 + chalk gesture hints (D-80) wherever a coach runs (S1–S3, first jobs).
 ## Off for scripted dev / CI runs (frozen sessions, screenshots of a stage).
 func _setup_hints() -> void:
 	if coach == null or args.has("lw-stage") or args.has("lw-sim") or args.has("lw-pose") or args.get("lw-hints", "1") == "0":
@@ -325,7 +325,7 @@ func _physics_process(delta: float) -> void:
 	if sampler.auto_tension and (control == null or control is DetectorControl):  # N-72: detector levers have false gates too
 		sampler.auto_level = AUTO_SPOOL_LEVEL if _has_state(vm, "false_set") else InputSampler.AUTO_LEVEL
 	_update_guidance(vm, input, events, delta)
-	if hints != null and not sampler.raw and hints.preview_tension >= 0.0:  # H2: the plug face answers the ghost tension
+	if hints != null and not sampler.raw and hints.preview_tension >= 0.0:  # H2: the plug face answers the chalk gesture tension
 		vm = vm.duplicate()
 		vm["tension"] = maxf(float(vm.get("tension", 0.0)), hints.preview_tension)
 	var resistance: float = vm.get("tension_resistance", vm.get("resistance", 0.0))

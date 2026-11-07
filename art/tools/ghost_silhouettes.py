@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# RETIRED (D-83, 2026-11-07): hints are chalk-only, the ghost hand and game/assets/ui/ghost/ are gone.
+# Kept for history with its sources in contrib/gpt/G23/images/; do not regenerate into the game.
 # Lockwright — ghost hand silhouettes (ONBOARDING §2.2) from the G23 hand photos (white background).
 #
 #   python3 art/tools/ghost_silhouettes.py [--src contrib/gpt/G23/images] [--out game/assets/ui/ghost] [--debug DIR]

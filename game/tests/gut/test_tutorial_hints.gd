@@ -1,8 +1,8 @@
 extends GutTest
-## ONBOARDING §2 on the real lock screen: TutorialHints (HintLadder + GhostHand) in the
-## tutorial scene. An idle player climbs H1 15 s → H2 30 s (ghost) → H3 45 s (chalk) →
-## H4 60 s (the lock really does the step); progress resets the ladder; the ghost never
-## takes a touch; H4 plays at most once per step. Both D-52 control modes.
+## ONBOARDING §2 on the real lock screen: TutorialHints (HintLadder + ChalkHint, D-80) in the
+## tutorial scene. An idle player climbs H1 15 s → H2 30 s (chalk gesture) → H3 45 s (chalk) →
+## H4 60 s (the lock really does the step, the chalk follows it); progress resets the ladder; the
+## chalk never takes a touch; H4 plays at most once per step. Both D-52 control modes.
 
 const HZ := 120
 var _save_backup: Dictionary
@@ -25,7 +25,7 @@ func after_all() -> void:
 
 func _open(auto: bool, reduce_motion: bool = false) -> Array:
 	Settings.set_value(&"auto_tension", auto)  # the scene reads the D-52 mode when it starts
-	# a persisted user setting (settings.cfg) must not decide the test: Reduce Motion hides the ghost
+	# a persisted user setting (settings.cfg) must not decide the test: Reduce Motion makes the chalk static
 	Settings.set_value("reduce_motion", reduce_motion)
 	JobRun.start_tutorial(0)
 	var vp := SubViewport.new()
@@ -68,7 +68,8 @@ func test_idle_player_escalates_h1_to_h4_and_the_lock_does_the_step() -> void:
 		assert_gt(scene.view.hint_dent_s, 0.0, tag + ": H1 thumb imprint in the leather")
 		_idle(scene, 15.0)
 		assert_eq(hints.ladder.level, 2, tag + ": H2 at 30 s")
-		assert_true(hints.ghost.is_playing(), tag + ": H2 plays the ghost thumb")
+		assert_true(hints.chalk_hint.is_playing(), tag + ": H2 plays the chalk gesture")
+		assert_false(hints.chalk_hint.is_static(), tag + ": drawn on (no Reduce Motion)")
 		_idle(scene, 15.0)
 		assert_eq(hints.ladder.level, 3, tag + ": H3 at 45 s")
 		assert_eq(scene.view.chalk_level, ChalkLayer.Level.FULL, tag + ": H3 chalk")
@@ -105,50 +106,62 @@ func test_progress_resets_the_ladder() -> void:
 	assert_eq(hints.ladder.level, 0, "progress resets to H0 (step %s)" % hints.step)
 
 
-func test_ghost_does_not_take_touches() -> void:
+func test_chalk_does_not_take_touches() -> void:
 	var o: Array = await _open(false)
 	var scene: Node = o[0]
 	var vp: SubViewport = o[1]
 	var hints: TutorialHints = o[2]
 	_idle(scene, 31.0)
-	assert_true(hints.ghost.is_playing())
-	assert_eq(hints.ghost.mouse_filter, Control.MOUSE_FILTER_IGNORE)
-	var at := hints.ghost.ghost_center
+	assert_true(hints.chalk_hint.is_playing())
+	assert_eq(hints.chalk_hint.mouse_filter, Control.MOUSE_FILTER_IGNORE)
+	var at := hints.chalk_hint.touch_point
 	vp.push_input(_touch(0, at, true))
-	assert_true(scene.sampler.left_down(), "a touch on the ghost reaches the thumb sampler")
+	assert_true(scene.sampler.left_down(), "a touch on the chalk ring reaches the thumb sampler")
 	vp.push_input(_touch(0, at, false))
 
 
-func test_g23_silhouettes_per_gesture_and_still_no_touches() -> void:
+func test_h4_moves_the_tool_and_the_chalk_follows_without_a_hand() -> void:
+	# D-80: no hand at H4; the game moves the tool and the chalk ring + trail follow the virtual touch
 	for auto in [false, true]:
 		var o: Array = await _open(auto)
 		var scene: Node = o[0]
 		var vp: SubViewport = o[1]
 		var hints: TutorialHints = o[2]
 		var tag := "auto=%s" % auto
-		_idle(scene, 31.0)
-		assert_true(hints.ghost.is_playing(), tag)
-		# H2: the first step is tension (left thumb) with two thumbs, a lift (right thumb) in auto
-		assert_eq(hints.ghost.silhouette, &"thumb_right_press" if auto else &"thumb_left_press", tag + ": H2 thumb photo")
-		assert_not_null(hints.ghost.texture, tag + ": the G23 texture replaces the oval")
-		assert_eq(hints.ghost.mouse_filter, Control.MOUSE_FILTER_IGNORE)
-		_idle(scene, 30.0)
+		_idle(scene, 59.9)
+		var h: ChalkHint = hints.chalk_hint
+		var before: Dictionary = scene.session.describe()
+		var pts := []
+		var trail_max := 0
+		for i in 3 * HZ:
+			scene.sampler._physics_process(1.0 / HZ)
+			scene._physics_process(1.0 / HZ)
+			h.advance(1.0 / HZ)
+			if hints.autopilot:
+				assert_eq(h.mode, ChalkHint.Mode.FOLLOW, tag + ": the chalk follows the master hand")
+				pts.append(h.touch_point)
+				trail_max = maxi(trail_max, h.trail.size())
 		assert_eq(hints.h4_steps.size(), 1, tag)
-		assert_eq(hints.ghost.silhouette, &"hand_right_tool" if auto else &"hand_left_tool", tag + ": H4 master hand holds the tool")
-		assert_eq(hints.ghost.release_silhouette, &"hand_right_open", tag + ": and lets go as an open hand")
-		# the ghost changes nothing about where a touch goes: same answer with it hidden
-		# (in auto mode the master hand can sit over the loupe, which takes that touch itself)
-		var at := hints.ghost.ghost_center
+		assert_gt(pts.size(), 2, tag + ": the master hand worked")
+		var moved := 0.0
+		for p: Vector2 in pts:
+			moved = maxf(moved, p.distance_to(pts[0]))
+		assert_gt(moved, 10.0, tag + ": the ring travels with the tool (%.1f dp)" % moved)
+		assert_gte(trail_max, 2, tag + ": a chalk trail behind it")
+		for c in scene.view.get_children():
+			assert_false(String(c.name).contains("Ghost"), tag + ": no ghost hand")
+		var after: Dictionary = scene.session.describe()
+		assert_ne(str(after["elements"]), str(before["elements"]), tag + ": the tool really moved the lock")
+		# the chalk changes nothing about where a touch goes
+		var at := h.touch_point
 		var reached := []
 		for hide in [false, true]:
-			hints.ghost.visible = not hide
+			h.visible = not hide
 			vp.push_input(_touch(0, at, true))
 			reached.append(scene.sampler.right_down() or scene.sampler.left_down())
 			vp.push_input(_touch(0, at, false))
-		hints.ghost.visible = true
-		assert_eq(reached[0], reached[1], tag + ": a touch on the master hand goes where it would without it")
-		if not auto:
-			assert_true(reached[0], tag + ": it reaches the thumb sampler")
+		h.visible = true
+		assert_eq(reached[0], reached[1], tag + ": a touch on the chalk goes where it would without it")
 
 
 func test_h4_at_most_once_per_step() -> void:
@@ -170,7 +183,7 @@ func test_dark_mode_hints_have_no_picture_until_h4() -> void:
 	var hints: TutorialHints = o[2]
 	scene.view.set_dark(true)
 	_idle(scene, 31.0)
-	assert_false(hints.ghost.is_playing(), "in the dark H2 is sound + haptics only")
+	assert_false(hints.chalk_hint.is_playing(), "in the dark H2 is sound + haptics only")
 	_idle(scene, 15.0)
 	assert_eq(scene.view.hint_arrows, "", "in the dark H3 draws no chalk arrow")
 	_idle(scene, 15.0)
@@ -211,14 +224,19 @@ func test_ladder_thresholds_sorted_and_history_capped() -> void:
 
 
 
-func test_reduce_motion_skips_the_ghost_but_keeps_chalk_and_master_hand() -> void:
-	# ONBOARDING §11: with Reduce Motion the ghost is not played; H3 chalk and H4 still help
+func test_reduce_motion_static_chalk_and_master_hand() -> void:
+	# ONBOARDING §11 / D-80: with Reduce Motion the gesture is static chalk; H3 chalk and H4 still help
 	var o: Array = await _open(false, true)
 	var scene: Node = o[0]
 	var hints: TutorialHints = o[2]
 	_idle(scene, 30.5)
 	assert_eq(hints.ladder.level, 2)
-	assert_false(hints.ghost.is_playing(), "Reduce Motion: no ghost gesture")
+	assert_true(hints.chalk_hint.is_static(), "Reduce Motion: static chalk, nothing travels")
+	var at := hints.chalk_hint.touch_point
+	_idle(scene, 0.5)
+	hints.chalk_hint.advance(0.5)
+	assert_eq(hints.chalk_hint.touch_point, at, "the ring does not move")
+	assert_lt(hints.preview_tension, 0.0, "and the plug face does not animate")
 	_idle(scene, 15.0)
 	assert_eq(scene.view.hint_arrows, "left", "H3 chalk still shown")
 	_idle(scene, 15.0)

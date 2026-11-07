@@ -1,38 +1,36 @@
 class_name TutorialHints
 extends Node
 ## Wordless hint escalation on the lock screen (ONBOARDING §2.1–2.2, D-23): HintLadder (H0–H4)
-## driven by the lock's progress, GhostHand for the gestures. Lives under the lock scene for the
+## driven by the lock's progress, ChalkHint (chalk trail + touch ring, D-80) for the gestures. Lives under the lock scene for the
 ## tutorial S1–S3 and the first jobs (wherever a TutorialCoach runs); both D-52 control modes.
 ##
 ## Each physics step the lock scene calls tick(); progress events (bind, set, gate_align) reset
 ## the ladder, a new step starts it from H0. What each level does:
 ##   H1 nudge:  the coach's element makes a small move (plug face nudge) and a thumb imprint
 ##              appears in the leather where the finger goes; the element's quiet sound.
-##   H2 ghost:  the ghost thumb (paper cut-out, D-77) shows the needed gesture twice, at the speed we want
-##              (tension 0→0.3 in 0.6 s, lift 0.2/s); the plug face answers the ghost tension.
+##   H2 chalk gesture: a chalk touch ring travels the needed gesture twice with a chalk trail drawn on
+##              behind it, at the speed we want (tension 0→0.3 in 0.6 s, lift 0.2/s); the plug face
+##              answers the gesture's tension. No hand (D-80 removed the G23 ghost hand).
 ##   H3 chalk:  full chalk for the rest of the step plus an arrow at the thumb that should move.
-##   H4 master: the ghost hand does the step once and the lock really does it (autopilot drives
-##              the session's input); afterwards control returns in the post-step state (the
-##              autopilot keeps the tension until the player's left thumb takes over).
+##   H4 master: the game does the step once and the lock really does it (autopilot drives the
+##              session's input, so the tool itself moves: pick, wrench, dial, wheel); no hand is
+##              drawn: the chalk ring and trail follow the virtual touch point (virtual_touch()).
+##              Afterwards control returns in the post-step state (the autopilot keeps the tension
+##              until the player's left thumb takes over).
 ## In the dark (view.dark): H1–H3 sound + haptics only, H4 also lights the scene for a moment.
-## Reduce Motion: the ghost is not played (H3/H4 still work).
+## Reduce Motion: static chalk (the whole path, the ring at its start; nothing travels).
 ##
 ## T42 first lessons (TutorialCoach.set_lesson, res://data/lessons/<family>.json): the step id is the
-## lesson's step, and the ghost / master hand play the step's gesture kind at lesson speed:
+## lesson's step, and the H2 chalk / H4 master play the step's gesture kind at lesson speed:
 ##   tension  left thumb up to the lesson's tension     lift  right thumb lifts the target element
 ##   roll     right thumb on the wheel/disc, held up      turn  right thumb held up: the dial turns once
 ##   ease     left thumb eases down to ease_level         tap   (auto) a short tap on the left zone
 ##   back     right thumb eases back a little
-## A step's kind comes from its "ghost" (else its thumb: left = tension, right = the family's "right");
-## its master hand from "master" (else the same kind).
-##
-## G23 silhouettes (ghost_silhouette()): H2 left-thumb steps (tension, ease, tap, warded turn)
-## show the left thumb pressing, right-thumb lifts the right thumb pressing, roll / turn the right
-## thumb sliding sideways; H4 the master hand holds the tool (left: the L-shaped tension bar,
-## right: the probe) and lets go as an open hand (the right-hand photo, mirrored on the left).
-## The left-handed "swap thumbs" option (HUD §9, setting swap_thumbs) mirrors the whole ghost.
+## A step's kind comes from its "ghost" key (lesson data: the H2 gesture; else its thumb: left =
+## tension, right = the family's "right"); its H4 from "master" (else the same kind).
+## The left-handed "swap thumbs" option (HUD §9, setting swap_thumbs) mirrors the chalk hint.
 
-const LIFT_SPEED := 0.2         # lift per second the ghost / master hand use (§2.2)
+const LIFT_SPEED := 0.2         # lift per second the H2 chalk / H4 master use (§2.2)
 const TENSION_DP := 60.0        # 0 → 0.3 tension = 60 dp of left-thumb drag
 const TENSION_S := 0.6
 const AUTOPILOT_MAX_S := 8.0
@@ -40,7 +38,7 @@ const LIGHT_S := 2.0
 const DP_PER_UNIT := 200.0      # InputSampler: 200 dp = 1.0 of tension / lift
 
 var ladder := HintLadder.new()
-var ghost: GhostHand
+var chalk_hint: ChalkHint
 var view: LockPhotorealView
 var coach: TutorialCoach
 var control = null              # WardedControl for warded, else null
@@ -51,7 +49,7 @@ var reduce_motion := false
 var autopilot := false
 ## Two thumbs after H4: the autopilot holds this tension until the left thumb comes down.
 var held_tension := -1.0
-## H2: tension the plug face shows in answer to the ghost (< 0 = none).
+## H2: tension the plug face shows in answer to the chalk gesture (< 0 = none).
 var preview_tension := -1.0
 ## Steps in which H4 played (telemetry / tests).
 var h4_steps: Array[StringName] = []
@@ -71,6 +69,8 @@ var _was_dark := false
 var _last_vm := {}
 var _last_input := {}
 var _auto_kind := ""  # lesson master hand: tension | lift | roll | turn | ease | back
+var _h4_gesture: Array = []  # [from, to, seconds, hold] of the H4 step (the chalk follows along it)
+var _h4_kind := ""  # what the virtual touch follows: tension | lift | time
 
 
 func setup(p_view: LockPhotorealView, p_coach: TutorialCoach, p_family: StringName, p_auto: bool, p_control = null) -> void:
@@ -81,12 +81,13 @@ func setup(p_view: LockPhotorealView, p_coach: TutorialCoach, p_family: StringNa
 	control = p_control
 	reduce_motion = bool(Settings.get_value("reduce_motion", false))
 	_base_chalk = view.chalk_level
-	ghost = GhostHand.new()
-	ghost.name = "GhostHand"
-	ghost.mirror = bool(Settings.get_value(&"swap_thumbs", false))
-	view.add_child(ghost)
-	ghost.gesture_progress.connect(_on_ghost_progress)
-	ghost.gesture_finished.connect(func() -> void: preview_tension = -1.0)
+	chalk_hint = ChalkHint.new()
+	chalk_hint.name = "ChalkHint"
+	chalk_hint.mirror = bool(Settings.get_value(&"swap_thumbs", false))
+	chalk_hint.reduce_motion = reduce_motion
+	view.add_child(chalk_hint)
+	chalk_hint.gesture_progress.connect(_on_gesture_progress)
+	chalk_hint.gesture_finished.connect(func() -> void: preview_tension = -1.0)
 	ladder.level_changed.connect(_on_level)
 	# live region for the spoken hints when the engine's TTS is off (no visible text)
 	_a11y = Control.new()
@@ -103,6 +104,7 @@ func tick(vm: Dictionary, input: Dictionary, events: Array, left_down: bool, rig
 	_last_vm = vm
 	_last_input = input
 	ladder.dark_mode = view.dark
+	chalk_hint.visible = not view.dark  # chalk is a picture: none in the dark (H4 lights the scene)
 	view.tick_hint_dent(delta)
 	if _light_s > 0.0:
 		_light_s -= delta
@@ -166,7 +168,7 @@ func _lesson_f(key: String, default: float) -> float:
 
 
 ## Gesture kind of the current lesson step (see the header); "" outside a lesson.
-func ghost_kind() -> String:
+func gesture_kind() -> String:
 	if not _lesson():
 		return ""
 	var st := coach.lesson_step()
@@ -185,39 +187,21 @@ func ghost_kind() -> String:
 func _master_kind() -> String:
 	var k := String(coach.lesson_step().get("master", ""))
 	if k == "" or (auto and k == "tension"):
-		k = ghost_kind()
+		k = gesture_kind()
 	return "ease" if k == "tap" else k
 
 
 ## The current step is played by the left thumb (master: the master hand's gesture).
 func _left_thumb_step(master := false) -> bool:
 	if _lesson():
-		var k := _master_kind() if master else ghost_kind()
+		var k := _master_kind() if master else gesture_kind()
 		return k in ["tension", "ease", "tap"]
 	return _needs_tension() or (family == &"warded" and String(step).ends_with("turn") and not auto)
 
 
-## G23 silhouette for the ghost (H2) or the master hand (H4): [name, flip_h, release, release_flip].
-func ghost_silhouette(master := false) -> Array:
-	var left := _left_thumb_step(master)
-	if master:
-		return [&"hand_left_tool" if left else &"hand_right_tool", false, &"hand_right_open", left]
-	if left:
-		return [&"thumb_left_press", false, &"", false]
-	if ghost_kind() in ["roll", "turn"]:
-		return [&"thumb_right_slide", false, &"", false]
-	return [&"thumb_right_press", false, &"", false]
-
-
-func _apply_silhouette(master: bool) -> void:
-	var s := ghost_silhouette(master)
-	ghost.set_silhouette(s[0], s[1])  # missing file: the oval
-	ghost.set_release_silhouette(s[2], s[3])
-
-
 func _needs_tension() -> bool:
 	if _lesson():
-		return ghost_kind() == "tension"
+		return gesture_kind() == "tension"
 	return String(step).begins_with("tension") or (family == &"warded" and String(step).ends_with("turn") and not auto)
 
 
@@ -232,13 +216,14 @@ func _target(els: Array) -> int:
 	return 0
 
 
-## Ghost gesture of the current step: [from, to, seconds, hold].
-func gesture() -> Array:
+## Gesture of the current step: [from, to, seconds, hold]. master: the H4 step (the lesson's
+## "master" kind, which may use the other thumb than the H2 gesture).
+func gesture(master := false) -> Array:
 	var anchors := view.thumb_anchors()
 	var left: Vector2 = anchors[0]
 	var right: Vector2 = anchors[1]
 	if _lesson():
-		return _lesson_gesture(left, right)
+		return _lesson_gesture(left, right, _master_kind() if master else gesture_kind())
 	if family == &"warded":
 		if String(step).ends_with("turn"):
 			if auto:
@@ -269,12 +254,12 @@ func _element_x(i: int, n: int) -> float:
 	return size.x * 0.5 + size.x * 0.5 * (i + 0.5) / maxi(n, 1)
 
 
-func _lesson_gesture(left: Vector2, right: Vector2) -> Array:
+func _lesson_gesture(left: Vector2, right: Vector2, kind: String) -> Array:
 	var t := _lesson_f("tension", 0.35)
 	var els: Array = _last_vm.get("elements", [])
 	var n := maxi(els.size(), 1)
 	var i := _target(els)
-	match ghost_kind():
+	match kind:
 		"tension":
 			return [left, left + Vector2(0, -t * DP_PER_UNIT), TENSION_S * t / 0.3, 0.0]
 		"ease":
@@ -322,9 +307,9 @@ func _on_level(level: int, _step_id: StringName) -> void:
 				view.show_hint_dent(g[0], 2.0)
 				view._set_flash = 1.0  # the plug face nudges (≈ 1.5°)
 		2:
-			if ch["visual"] and not reduce_motion:
-				_apply_silhouette(false)
-				ghost.play_gesture(g[0], g[1], g[2], 2, g[3])
+			if ch["visual"]:
+				chalk_hint.avoid = _avoid_rects()
+				chalk_hint.play_gesture(g[0], g[1], g[2], 2, g[3])  # Reduce Motion: static chalk
 		3:
 			if ch["visual"]:
 				view.chalk_level = ChalkLayer.Level.FULL
@@ -335,11 +320,12 @@ func _on_level(level: int, _step_id: StringName) -> void:
 				_was_dark = true
 				view.set_dark(false)
 				_light_s = LIGHT_S
-			if not reduce_motion:
-				_apply_silhouette(true)
-				ghost.play_gesture(g[0], g[1], g[2], 1, 1.5)
 			Haptics.play(&"bind", 0.4, mat)
 			_start_autopilot()
+			_h4_gesture = gesture(true)
+			_h4_kind = _follow_kind()
+			chalk_hint.avoid = _avoid_rects(true)
+			chalk_hint.begin_follow(_h4_gesture[0], _h4_gesture[1])
 	_speak(level)
 	_save_history()
 
@@ -384,9 +370,69 @@ func jump_to(level: int) -> void:
 	ladder.update(ladder.thresholds[i] + 0.01)
 
 
-func _on_ghost_progress(t: float) -> void:
+func _on_gesture_progress(t: float) -> void:
 	if _needs_tension() and not autopilot:
-		preview_tension = (_lesson_f("tension", 0.3) if _lesson() else 0.3) * t  # the plug face answers the ghost, then returns (§2.1 H2)
+		preview_tension = (_lesson_f("tension", 0.3) if _lesson() else 0.3) * t  # the plug face answers the gesture, then returns (§2.1 H2)
+
+
+## Rects the chalk ring must not cover: the tension wrench / plug face, the lock section, and in H4
+## also the loupe on the roll (N-73: the H4 hand covered the wrench and the pockets). View coordinates.
+func _avoid_rects(master := false) -> Array[Rect2]:
+	var out: Array[Rect2] = []
+	var face = view.get("_face")
+	if face is Control and face.visible and face.size.x > 0.0:
+		out.append(Rect2(face.position, face.size))
+	var sec = view.get("section_rect")
+	if sec is Rect2 and sec.size.x > 0.0:
+		out.append(sec)  # the mechanism the lesson is about stays uncovered
+	if master and view.has_method("loupe_rect"):
+		var lr: Rect2 = view.loupe_rect()
+		if lr.size.x > 0.0:
+			out.append(lr)
+	return out
+
+
+# ------------------------------------------------------------------ H4 virtual touch
+## What the H4 chalk follows: the real tension (left thumb), the real lift (right thumb) or, for
+## gestures whose input is a rate (roll, turn, back, warded), the planned path over time.
+func _follow_kind() -> String:
+	if _auto_kind == "":
+		if family == &"warded":
+			return "time"
+		return "tension" if String(step).begins_with("tension") else "lift"
+	match _auto_kind:
+		"tension", "ease":
+			return "tension"
+		"lift":
+			return "lift"
+	return "time"
+
+
+## Virtual touch point of the master hand for this step's input `out` (view coordinates): the point
+## of the planned path whose thumb travel gives that input (200 dp of travel per unit of tension or
+## lift); rate gestures move along the path over the gesture's time.
+func virtual_touch(out: Dictionary) -> Vector2:
+	if _h4_gesture.is_empty():
+		return Vector2.ZERO
+	var from: Vector2 = _h4_gesture[0]
+	var to: Vector2 = _h4_gesture[1]
+	var u := 1.0
+	match _h4_kind:
+		"tension":
+			# the path's height above the left anchor is the tension
+			var base_y: float = view.thumb_anchors()[0].y
+			var t_from := (base_y - from.y) / DP_PER_UNIT
+			var t_to := (base_y - to.y) / DP_PER_UNIT
+			if absf(t_to - t_from) > 0.001:
+				u = (float(out.get("tension", 0.0)) - t_from) / (t_to - t_from)
+		"lift":
+			var span := (from.y - to.y) / DP_PER_UNIT
+			if span > 0.001:
+				u = float(out.get("pick_lift", 0.0)) / span
+		_:
+			var dur := maxf(float(_h4_gesture[2]), 0.1)
+			u = ChalkHint.ease_in_out(clampf(_auto_s / dur, 0.0, 1.0))
+	return from.lerp(to, clampf(u, 0.0, 1.0))
 
 
 # ------------------------------------------------------------------ H4 autopilot
@@ -406,13 +452,16 @@ func _stop_autopilot() -> void:
 		return
 	autopilot = false
 	preview_tension = -1.0
+	if chalk_hint != null:
+		chalk_hint.end_follow()
 	if _lesson():
 		held_tension = _lesson_f("tension", 0.35) if not auto else -1.0
 	elif not auto and family != &"warded":
 		held_tension = 0.35  # control returns in the post-step state: the tension stays on
 
 
-## Input the lock gets while the master hand works (or after it, the held tension).
+## Input the lock gets while the master hand works (or after it, the held tension). While it works
+## the chalk ring and trail follow its virtual touch point.
 func drive(input: Dictionary, vm: Dictionary, delta: float) -> Dictionary:
 	if not autopilot:
 		if held_tension >= 0.0:
@@ -420,6 +469,13 @@ func drive(input: Dictionary, vm: Dictionary, delta: float) -> Dictionary:
 			held["tension"] = maxf(float(held.get("tension", 0.0)), held_tension)
 			return held
 		return input
+	var out := _drive_auto(input, vm, delta)
+	if autopilot and chalk_hint != null:
+		chalk_hint.follow(virtual_touch(out))
+	return out
+
+
+func _drive_auto(input: Dictionary, vm: Dictionary, delta: float) -> Dictionary:
 	var out := input.duplicate()
 	var els: Array = vm.get("elements", [])
 	if _auto_kind != "":

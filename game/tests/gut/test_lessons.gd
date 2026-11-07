@@ -7,7 +7,7 @@ extends GutTest
 ##   - through the real scene, in both control modes: a scripted player (the family bots of
 ##     test_planb_*.gd) opens the first job, the steps advance in order, the save records the lesson,
 ##     and the next job of the family has only the faded (quiet) coach, later none;
-##   - an idle player gets H1 → H4 in the lesson (ghost at H2, the master hand at H4 does the step).
+##   - an idle player gets H1 → H4 in the lesson (chalk gesture at H2, the master hand at H4 does the step).
 
 const HZ := 120
 const FAMILIES := [&"dial_safe", &"combo", &"dimple", &"disc_detainer", &"egyptian", &"axial_slider", &"time_lock", &"magnetic"]
@@ -500,7 +500,7 @@ func test_magnetic_lesson() -> void:
 	await _check_lesson_flow(&"magnetic")
 
 
-## An idle player in the lesson: H1 15 s, H2 30 s (the ghost plays the family's gesture), H3 45 s
+## An idle player in the lesson: H1 15 s, H2 30 s (the chalk plays the family's gesture), H3 45 s
 ## (chalk), H4 60 s (the master hand does the step: the lesson moves on), in both modes.
 func test_hints_fire_in_every_lesson() -> void:
 	for fam in FAMILIES:
@@ -516,11 +516,11 @@ func test_hints_fire_in_every_lesson() -> void:
 			for i in int(30.2 * HZ):
 				_step(scene)
 			assert_eq(coach.lesson_step_id(), &"hold", tag + ": idle stays on step 1")
-			assert_true(hints.ghost.is_playing(), tag + ": H2 ghost plays the gesture")
+			assert_true(hints.chalk_hint.is_playing(), tag + ": H2 chalk plays the gesture")
 			var g: Array = hints.gesture()
 			assert_true(Vector2(g[0]).distance_to(g[1]) > 10.0 or float(g[3]) > 0.0, tag + ": the gesture moves or holds")
-			var kind := hints.ghost_kind()
-			assert_eq(kind, "tension" if not auto else String(coach.lesson["right"]), tag + ": ghost kind of step 1")
+			var kind := hints.gesture_kind()
+			assert_eq(kind, "tension" if not auto else String(coach.lesson["right"]), tag + ": gesture kind of step 1")
 			for i in int(30.0 * HZ):
 				_step(scene)
 			var levels: Array = hints.ladder.history.map(func(e: Dictionary) -> int: return int(e["level"]))
