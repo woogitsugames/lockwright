@@ -64,7 +64,7 @@ Ekran pauzy nie był zrzucany (należy do innego agenta, zob. VA-13).
 - **VA-06** `scripts/ui/run_loop.gd`: zdjęcie klatki wieczorem, „‹ Wstecz” jak na innych ekranach,
   notka dyspozytora na ciemnym papierze w dolnej strefie kciuka (safe-area, w poziomie maks. 640 dp).
   Ścieżki `VBox/Info` i `VBox/StartButton` bez zmian (testy). Przed/po: `before_after/va06_run_loop_*.jpg`.
-- **VA-07** `scripts/ui/tutorial.gd`: tło warsztatu (przyciemnione 0,72), karty 136×168 dp.
+- **VA-07** `scripts/ui/tutorial.gd`: tło warsztatu wieczorem (G08, przyciemnione 0,72), karty 136×168 dp.
   Przed/po: `before_after/va07_tutorial_pl.jpg`.
 - **VA-17** `scripts/ui/main_menu.gd` (`FALLBACK_LANG = "en"`, `LAST_RESORT_LANG = "pl"`) i test w
   `tests/gut/test_main_menu_v2.gd` (FR/ES → EN, brak EN → PL, pętla po 5 językach).

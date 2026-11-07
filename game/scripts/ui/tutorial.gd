@@ -22,7 +22,7 @@ const ONE_PIN_CAPTIONS := {
 const CARD_W := 136.0  # VA-07: was 112x140 - the master's sketches were stamp-sized
 const CARD_H := 168.0
 ## VA-07: the practice bench behind the cards instead of a flat brown fill (dimmed for the captions)
-const BG := "res://assets/ui/menu_workshop_wall_9x16.jpg"
+const BG := "res://assets/ui/gpt/workshop/03-workshop-evening-portrait.webp"
 const CARD_CROP := Rect2(0.08, 0.14, 0.84, 0.66)  # drawing area of a 1200×1500 card (skip margins)
 
 
