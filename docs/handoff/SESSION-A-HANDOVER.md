@@ -148,3 +148,10 @@ Wszystko na `main`. Trigger godzinny wyłączony; wznowienie przypomnieniem ok. 
 - **W toku (agenci mogli zostać przerwani):** głosy FR/ES + reakcje 11 postaci + 3 kwestie do odsłuchu; scenka przyjazdu `wrong_floor` w grze (Kazimierz v2); wyposażenie warsztatu (D-71, rendery w toku). Ich WIP jest w commitach `[skip ci]` — dokończyć, potem pełne CI.
 - **Zewnętrzni:** Mistral V04 (sceny „dzień po”) zlecony; GPT: nowa paczka 50 zleceń `docs/handoff/gpt8/PACZKA-50-ZLECEN.md` (ZIP `paczka-gpt-50-zlecen-2026-11-06.zip`). Sesja lokalna (Codex, GPU): `docs/handoff/LOCAL-SESSION-PROMPT.md` (cienie postaci, finał menu/wyposażenia).
 - **Trigger** „Lockwright: godzinna kontrola” (trig_01MTXV8ofhPWFvi8qwGrzixU) włączony.
+
+## 12. Stan 2026-11-07 ok. 18:40 UTC (limit tygodniowy — przekazanie)
+- `main` = wszystko zapisane, CI zielone (game-android, game-tests, game-screens, qa-career, perf-budget, lint, game-ios). Żaden agent nie pracuje.
+- Od §11 dodane: DE „Kartoffel” + paczka głosów DE `voice-packs-277229f8310f`; `.import` 48 kwestii rozdz. 8; nagłówki rozdziałów 1–12 na liście zleceń (T58, D-75; T55 odłożone); widmo dłoni: cień 75% (D-76) → papierowa wycinanka, kość + tusz 2 dp (D-77); zlecenie G26 (nowe zdjęcia dłoni, `docs/handoff/gpt9/`, `paczka-gpt-G26.zip`).
+- Ostatni APK wysłany właścicielowi: `d63567a` (bez D-77). Następny APK = po pierwszej zmianie w grze.
+- Czeka na zewnątrz: GPT T75–T124 (`gpt8/PACZKA-50-ZLECEN.md`), GPT G26, Mistral V04, lokalna sesja GPU (klatki przyjazdu, mapy cieni, render wyposażenia, finały menu). Brak testów APK od właściciela.
+- Prompt startowy: `docs/handoff/lockwright.md`.
