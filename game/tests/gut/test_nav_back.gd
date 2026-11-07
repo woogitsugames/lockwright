@@ -18,14 +18,22 @@ const STUB_SCREENS := {
 	"res://scenes/run_loop.tscn": "res://scenes/main_menu.tscn",
 }
 
+var _day_after_backup: Variant = null
+
 
 func before_each() -> void:
+	# V04/D-78: a "day after" scene queued by an earlier test (e.g. e2e JobRun.complete) would take the
+	# first Back on the job list; Back closing it is covered in test_day_after.gd
+	_day_after_backup = Save.get_value("day_after", null)
+	Save.data.erase("day_after")
 	Nav.back_debounce_ms = 0  # several Back presses per frame in tests
 	Nav.change_scenes = false
 	Nav.last_target = ""
 
 
 func after_each() -> void:
+	if _day_after_backup != null:
+		Save.data["day_after"] = _day_after_backup
 	Nav.back_debounce_ms = 250
 	Nav.scene_override = null
 	Nav.change_scenes = true
