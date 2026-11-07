@@ -155,3 +155,8 @@ Wszystko na `main`. Trigger godzinny wyłączony; wznowienie przypomnieniem ok. 
 - Ostatni APK wysłany właścicielowi: `d63567a` (bez D-77). Następny APK = po pierwszej zmianie w grze.
 - Czeka na zewnątrz: GPT T75–T124 (`gpt8/PACZKA-50-ZLECEN.md`), GPT G26, Mistral V04, lokalna sesja GPU (klatki przyjazdu, mapy cieni, render wyposażenia, finały menu). Brak testów APK od właściciela.
 - Prompt startowy: `docs/handoff/lockwright.md`.
+
+## 13. Stan 2026-11-08 ok. 00:45 (sesja lokalna jako A, RTX 5070 — limit użycia)
+- W grze od §12: przyjazd z cieniami GPU (G25) i pełnymi klatkami; warsztat 2160×3840 GPU; sceny „dzień po” (D-78) z głosami 455 kwestii (paczka `voice-packs-83cc772e867f`); tryb ćwiczeń (D-79); lupa/poziom (D-80, TapGate, N-77/N-78); haptyka ERM ≥30 ms (D-81); weryfikacja/pauza (D-82, N-74–N-76); podpowiedzi samą kredą, widmo dłoni usunięte (D-83, decyzja właściciela — G26 nieaktualne); poprawki audytu VA-01…VA-07.
+- Lokalnie: `tools/local/win_build_lockcore.sh`, `run_gut.sh` (osobny user:// na worktree), `build_apk.sh` (ten sam klucz co CI). Telefon SM-A165F, `adb install -r` zachowuje zapis.
+- Otwarte: (1) zielone CI na najnowszym main + APK na telefon; (2) poziom: przekrój 1,15:1 może przycinać płyty pin/lever/dial_safe/time_lock — obejrzeć `game-screens` 915×412; (3) rendery GPU z FINDINGS VA: egyptian/wooden/axial/time_lock/lever (kontrast ≥3:1, bez steampunku), własne przekroje dimple/magnetic, kadr combo/disc w pionie, kadry samouczka G11, miniatury narzędzi; (4) D-82: „Przyjmij” w wrong_floor → kara i scena Teresy; (5) agent scenek przyjazdu dla ~6 zleceń rozdz. 1–2 mógł zostać przerwany — worktree `C:\Users\matma\lw-wt-arrival`; (6) N-79 do odczucia przez właściciela; model biznesowy D-06 otwarty.
