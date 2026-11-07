@@ -220,12 +220,22 @@ func _show(i: int) -> void:
 	_play_clip(String(line["key"]))
 
 
+## Square photo for the big frame: the G09 cast portrait (the arrival avatar is a round cut-out, which
+## sits oddly in a square frame), else whatever the arrival screen uses (episodic portrait), else null.
+static func portrait_for(speaker: String) -> Texture2D:
+	var slot := String(Arrival.CAST_SLOT.get(speaker, ""))
+	var path := "res://assets/ui/gpt/cast/%s/portrait.jpg" % slot
+	if slot != "" and ResourceLoader.exists(path):
+		return load(path) as Texture2D
+	return Arrival.portrait_for(speaker)
+
+
 func _set_portrait(speaker: String) -> void:
 	portrait_speaker = speaker
 	for c in portrait_frame.get_children():
 		portrait_frame.remove_child(c)
 		c.queue_free()
-	var tex := Arrival.portrait_for(speaker)
+	var tex := portrait_for(speaker)
 	var node: Control
 	if tex != null:
 		var rect := TextureRect.new()
