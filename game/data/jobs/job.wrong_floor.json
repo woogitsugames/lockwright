@@ -25,6 +25,10 @@
     "id"
   ],
   "threshold": 2,
+  "ask_more": {
+    "resolves": true,
+    "reputation": 4
+  },
   "place": "apartment",
   "time": "day"
 }

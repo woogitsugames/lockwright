@@ -474,3 +474,8 @@ family.wafer.name,Wafer lock,Wkładka płytkowa,Plättchenschloss,Serrure à pai
 family.pin_tumbler.name,Pin tumbler cylinder,Wkładka bębenkowa,Stiftzylinder,Cylindre à goupilles,Cilindro de pernos
 family.lever.name,Lever lock,Zamek dźwigniowy,Zuhaltungsschloss,Serrure à gorges,Cerradura de palancas
 family.lever_detector.name,Detector lever lock,Zamek dźwigniowy z detektorem,Zuhaltungsschloss mit Detektor,Serrure à gorges avec détecteur,Cerradura de palancas con detector
+pause.dark_mode_off,Back to the light,Wróć do światła,Zurück ins Licht,Retour à la lumière,Volver a la luz
+verify.more_card,The client lays one more card on the table.,Klient kładzie na stole jeszcze jedną kartę.,Der Kunde legt noch eine Karte auf den Tisch.,Le client pose une carte de plus sur la table.,El cliente pone una tarjeta más sobre la mesa.
+verify.no_more,That's everything I have on me.,"To wszystko, co mam przy sobie.",Mehr habe ich nicht dabei.,C'est tout ce que j'ai sur moi.,Es todo lo que llevo encima.
+verify.asked_rep,Word gets around: +%d reputation,Słowo się niesie: +%d reputacji,Das spricht sich herum: +%d Ruf,La nouvelle circule : +%d de réputation,La voz corre: +%d de reputación
+verify.declined,I'll pass on this one. The call stays on my list.,Tym razem odpuszczam. Zgłoszenie zostaje na liście.,Diesmal passe ich. Der Auftrag bleibt auf meiner Liste.,Je passe mon tour. L'appel reste sur ma liste.,Esta vez paso. El aviso sigue en mi lista.

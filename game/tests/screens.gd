@@ -3,11 +3,14 @@ extends Node
 ## saves PNGs. Run under xvfb with opengl3:
 ##   xvfb-run godot --path game --display-driver x11 --rendering-driver opengl3 res://tests/screens.tscn -- --out /tmp/shots --size 412x915
 const SCREENS := ["res://scenes/main_menu.tscn", "res://scenes/jobs_list.tscn", "res://scenes/workshop.tscn", "res://scenes/showcase.tscn", "res://scenes/settings.tscn", "res://scenes/control_choice.tscn", "res://scenes/job_arrival.tscn", "res://scenes/day_after.tscn", "res://scenes/lock.tscn",
-	"res://scenes/workshop.tscn#practice", "res://scenes/lock_job.tscn#practice"]
+	"res://scenes/workshop.tscn#practice", "res://scenes/lock_job.tscn#practice",
+	"res://scenes/job_verify.tscn#wrong_floor", "res://scenes/job_verify.tscn#kiosk", "res://scenes/lock_job.tscn#pause"]
 ## D-79: the Ćwiczenia tab and one practice lock (goal in chalk), with the tutorial done in memory only
 const PRACTICE_LOCK := "t20"
 ## job shown on the arrival screen (N-60: portrait + locksmith line)
 const ARRIVAL_JOB := "job.bike_interview"
+## N-76: verification (one card + "I need one more thing"; three cards, two shown first)
+const VERIFY_JOBS := {"wrong_floor": "job.wrong_floor", "kiosk": "job.kiosk_shutter"}
 ## V04/D-78: "day after" scene, shown over the job list (one line, main-cast portrait)
 const DAY_AFTER_JOB := "job.cat_bathroom"
 
@@ -50,6 +53,10 @@ func _ready() -> void:
 			continue
 		if base == "job_arrival":
 			JobRun.start(JobRun.job_by_id(ARRIVAL_JOB))
+		if VERIFY_JOBS.has(tag):
+			JobRun.start(JobRun.job_by_id(VERIFY_JOBS[tag]))
+		if tag == "pause":
+			JobRun.current_job = {}
 		if tag == "practice":
 			Save.data["tutorial_done"] = true  # not saved to disk
 			if base == "lock_job_practice":
@@ -70,6 +77,10 @@ func _ready() -> void:
 		get_tree().current_scene = _shown
 		if base == "workshop_practice":
 			_shown.call("show_tab", "practice")
+		if tag == "pause":
+			for i in 10:
+				await get_tree().process_frame
+			_shown.call("_on_pause")  # N-75: the pause panel over the lock
 		for i in 30:
 			await get_tree().process_frame
 		var img := get_viewport().get_texture().get_image()
@@ -80,6 +91,8 @@ func _ready() -> void:
 		print("SHOT ", name)
 		if Practice.active():
 			Practice.finish(false, true)
+		if tag == "pause":
+			get_tree().paused = false
 	if _demo:
 		Save.data = backup
 		Save.save()
