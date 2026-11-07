@@ -2,9 +2,11 @@ extends Node
 ## Screenshot runner (task 13): walks all main screens at a given resolution and
 ## saves PNGs. Run under xvfb with opengl3:
 ##   xvfb-run godot --path game --display-driver x11 --rendering-driver opengl3 res://tests/screens.tscn -- --out /tmp/shots --size 412x915
-const SCREENS := ["res://scenes/main_menu.tscn", "res://scenes/jobs_list.tscn", "res://scenes/workshop.tscn", "res://scenes/showcase.tscn", "res://scenes/settings.tscn", "res://scenes/control_choice.tscn", "res://scenes/job_arrival.tscn", "res://scenes/lock.tscn"]
+const SCREENS := ["res://scenes/main_menu.tscn", "res://scenes/jobs_list.tscn", "res://scenes/workshop.tscn", "res://scenes/showcase.tscn", "res://scenes/settings.tscn", "res://scenes/control_choice.tscn", "res://scenes/job_arrival.tscn", "res://scenes/day_after.tscn", "res://scenes/lock.tscn"]
 ## job shown on the arrival screen (N-60: portrait + locksmith line)
 const ARRIVAL_JOB := "job.bike_interview"
+## V04/D-78: "day after" scene, shown over the job list (one line, main-cast portrait)
+const DAY_AFTER_JOB := "job.cat_bathroom"
 
 var _out := "/tmp/shots"
 var _size := Vector2i(412, 915)
@@ -47,13 +49,22 @@ func _ready() -> void:
 		# itself, since it is the current scene, and stop this loop)
 		if _shown != null:
 			_shown.queue_free()
-		_shown = load(scene_path).instantiate()
+		var path := scene_path
+		var day_after_backup: Variant = null
+		if base == "day_after":
+			day_after_backup = Save.get_value("day_after", {})
+			Save.set_value("day_after", {})
+			DayAfter.note_finished(JobRun.job_by_id(DAY_AFTER_JOB))
+			path = "res://scenes/jobs_list.tscn"
+		_shown = load(path).instantiate()
 		get_tree().root.add_child(_shown)
 		get_tree().current_scene = _shown
 		for i in 30:
 			await get_tree().process_frame
 		var img := get_viewport().get_texture().get_image()
-		var name := scene_path.get_file().get_basename() + "_%dx%d.png" % [_size.x, _size.y]
+		var name := base + "_%dx%d.png" % [_size.x, _size.y]
+		if day_after_backup != null:
+			Save.set_value("day_after", day_after_backup)
 		img.save_png(_out + "/" + name)
 		print("SHOT ", name)
 	if _demo:

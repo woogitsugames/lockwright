@@ -19,6 +19,9 @@
     "locksmith",
     "halina"
   ],
+  "after": [
+    "halina"
+  ],
   "cards": [
     "photo",
     "witness"

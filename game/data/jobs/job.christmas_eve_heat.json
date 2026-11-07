@@ -19,6 +19,9 @@
     "locksmith",
     "elzbieta"
   ],
+  "after": [
+    "elzbieta"
+  ],
   "cards": [
     "manager",
     "institution",

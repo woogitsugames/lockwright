@@ -6,6 +6,8 @@ extends Control
 
 const JOBS_DIR := "res://data/jobs"
 
+var day_after: DayAfter  # V04/D-78: the "day after" scene over the list, or null
+
 
 ## List order: chapter as a NUMBER (T43: "10" sorted before "9" as text), then the job's "order" within the
 ## chapter (T43 chapters 9-12; refusals no longer jump to the top because "job.refuse_" sorts first), then id.
@@ -91,3 +93,12 @@ func _ready() -> void:
 		list.add_child(row)
 	ScreenFrame.enter($Frame/VBox/Scroll)
 	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
+	day_after = DayAfter.maybe_show(self)  # V04/D-78: one follow-up of a recently finished job
+
+
+## Nav (Back): the "day after" scene closes first.
+func go_back() -> bool:
+	if is_instance_valid(day_after) and not day_after.is_finished():
+		day_after.close()
+		return true
+	return false

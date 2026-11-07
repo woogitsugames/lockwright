@@ -458,3 +458,5 @@ jobs.chapter,Chapter {0},Rozdział {0},Kapitel {0},Chapitre {0},Capítulo {0}
 jobs.chapter_named,Chapter {0} · {1},Rozdział {0} · {1},Kapitel {0} · {1},Chapitre {0} · {1},Capítulo {0} · {1}
 tutorial.frame_lift_one,"Right thumb under the pin, up to lift.","Prawy kciuk pod pin, w górę podnoszenie.","Rechter Daumen unter den Stift, nach oben heben.","Pouce droit sous la goupille, haut pour lever.","Pulgar derecho bajo el perno, arriba elevas."
 tutorial.frame_lift_auto_one,"Thumb under the pin, push up. Game holds tension.","Kciuk pod pin, w górę unoszenie. Napięcie trzyma gra.","Daumen unter den Stift, hoch. Spannung hält das Spiel.","Pouce sous la goupille, monte ; le jeu tient la tension.","Pulgar bajo el perno, arriba; el juego da tensión."
+dayafter.title,The next day,Następnego dnia,Am nächsten Tag,Le lendemain,Al día siguiente
+dayafter.close,Back to work,Wracam do pracy,Zurück an die Arbeit,Retour au travail,De vuelta al trabajo

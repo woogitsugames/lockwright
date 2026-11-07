@@ -19,6 +19,9 @@
     "locksmith",
     "janka"
   ],
+  "after": [
+    "janka"
+  ],
   "cards": [
     "lease",
     "manager"

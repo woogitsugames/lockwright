@@ -19,6 +19,9 @@
     "locksmith",
     "teresa"
   ],
+  "after": [
+    "teresa"
+  ],
   "cards": [
     "lease",
     "manager"

@@ -19,6 +19,9 @@
     "zuzanna",
     "locksmith"
   ],
+  "after": [
+    "zuzanna"
+  ],
   "cards": [
     "manager",
     "institution"

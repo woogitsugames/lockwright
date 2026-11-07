@@ -159,4 +159,5 @@ static func complete() -> void:
 	Save.set_value("coins", Save.get_value("coins", 0) + reward + last_tip)
 	if not talk:  # T43: a visit settled by talking opens no lock
 		Save.set_value("stats/locks_opened", Save.get_value("stats/locks_opened", 0) + 1)
+	DayAfter.note_finished(current_job)  # V04/D-78: its "day after" scene waits for the job list
 	current_job = {}
