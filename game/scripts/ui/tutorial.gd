@@ -14,6 +14,11 @@ const FRAMES := [
 	[[9, &"tutorial.s3_intro"]],
 ]
 const FRAMES_AUTO_S1 := [[3, &"tutorial.frame_lift_auto"], [5, &"tutorial.frame_click"]]
+## HANDOVER §5.3: a one-pin lock (S1) has nothing to choose "sideways"; these captions say so.
+const ONE_PIN_CAPTIONS := {
+	&"tutorial.frame_lift": &"tutorial.frame_lift_one",
+	&"tutorial.frame_lift_auto": &"tutorial.frame_lift_auto_one",
+}
 const CARD_W := 112.0
 const CARD_H := 140.0
 const CARD_CROP := Rect2(0.08, 0.14, 0.84, 0.66)  # drawing area of a 1200×1500 card (skip margins)
@@ -114,13 +119,30 @@ func _refresh() -> void:
 		return
 	v.get_node("Stage").text = I18n.t(&"tutorial.stage").format({"n": stage + 1})
 	v.get_node("StartButton").text = I18n.t(&"tutorial.start")
-	var frames: Array = FRAMES[clampi(stage, 0, 2)]
-	if stage == 0 and bool(Settings.get_value(&"auto_tension", false)):
-		frames = FRAMES_AUTO_S1
-	for f in frames:
+	for f in frames_for(stage, bool(Settings.get_value(&"auto_tension", false))):
 		_add_frame(f[0], f[1])
 	if stage == 0:
 		_add_note()
+
+
+## Pins of the authored tutorial lock of `stage` (difficulty.n_max of data/tutorial/sN.json), 0 if unknown.
+static func stage_pins(stage: int) -> int:
+	if stage < 0 or stage >= JobRun.TUTORIAL_SPECS.size():
+		return 0
+	var d: Variant = JSON.parse_string(FileAccess.get_file_as_string(JobRun.TUTORIAL_SPECS[stage]))
+	if typeof(d) != TYPE_DICTIONARY:
+		return 0
+	return int((d as Dictionary).get("difficulty", {}).get("n_max", 0))
+
+
+## [card, caption key] frames shown before `stage` (auto = automatic tension, D-52).
+static func frames_for(stage: int, auto: bool) -> Array:
+	var frames: Array = FRAMES[clampi(stage, 0, 2)]
+	if stage == 0 and auto:
+		frames = FRAMES_AUTO_S1
+	if stage_pins(stage) != 1:
+		return frames
+	return frames.map(func(f: Array) -> Array: return [f[0], ONE_PIN_CAPTIONS.get(f[1], f[1])])
 
 
 func _start_stage() -> void:

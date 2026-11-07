@@ -218,3 +218,36 @@ func test_step_texts_exist_in_pl_en_de() -> void:
 			TranslationServer.set_locale(loc)
 			assert_ne(TranslationServer.translate(key), key, "missing %s: %s" % [loc, key])
 	TranslationServer.set_locale("en")
+
+
+## HANDOVER §5.3: S1 is a one-pin lock, so its intro frames must not say "sideways to select".
+func test_one_pin_intro_frames_have_no_sideways() -> void:
+	var tut: GDScript = load("res://scripts/ui/tutorial.gd")
+	assert_eq(tut.stage_pins(0), 1, "S1 is the one-pin lock")
+	assert_gt(tut.stage_pins(1), 1, "S2 has several pins")
+	for auto in [false, true]:
+		var keys: Array = tut.frames_for(0, auto).map(func(f: Array) -> StringName: return f[1])
+		assert_false(keys.has(&"tutorial.frame_lift") or keys.has(&"tutorial.frame_lift_auto"), "S1 auto=%s: %s" % [auto, keys])
+		assert_true(keys.has(&"tutorial.frame_lift_auto_one" if auto else &"tutorial.frame_lift_one"), "S1 auto=%s: %s" % [auto, keys])
+	for key in [&"tutorial.frame_lift_one", &"tutorial.frame_lift_auto_one"]:
+		for loc in ["pl", "en", "de", "fr", "es"]:
+			TranslationServer.set_locale(loc)
+			var t := TranslationServer.translate(key)
+			assert_ne(t, String(key), "missing %s: %s" % [loc, key])
+			for word in ["sideways", "w bok", "seitlich", "côté", "al lado"]:
+				assert_false(t.to_lower().contains(word), "%s %s says '%s'" % [loc, key, word])
+	TranslationServer.set_locale("en")
+
+
+## The axial slider lesson: the gesture is the right thumb dragging UP (chalk and ghost show an up
+## arrow), so the texts say "up" in every language instead of "push in / press".
+func test_axial_slider_texts_match_the_upward_drag() -> void:
+	var up := {"en": "up", "pl": "w górę", "de": "oben", "fr": "haut", "es": "arriba"}
+	for key in ["tutorial.axial_slider.step2", "lock.axial_slider_hint", "lock.axial_slider_hint_auto"]:
+		for loc in up:
+			TranslationServer.set_locale(loc)
+			var t := TranslationServer.translate(key)
+			assert_true(t.to_lower().contains(up[loc]), "%s %s: '%s' does not say %s" % [loc, key, t, up[loc]])
+	TranslationServer.set_locale("en")
+	var lesson: Dictionary = TutorialCoach.load_lesson(&"axial_slider")
+	assert_eq(String(lesson.get("right", "")), "lift", "the slider moves with the right thumb's lift (up)")

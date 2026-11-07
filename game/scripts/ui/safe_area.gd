@@ -8,6 +8,12 @@ extends RefCounted
 ## so this is the notch / gesture bar; on a desktop window it is normally zero.
 
 
+## Tests: insets in dp (left, top, right, bottom) used instead of the platform's while x >= 0, so a
+## headless run can lay screens out round a notch and a gesture bar. Reset to OVERRIDE_OFF after.
+const OVERRIDE_OFF := Vector4(-1, -1, -1, -1)
+static var override_dp := OVERRIDE_OFF
+
+
 ## Insets (left, top, right, bottom) in window pixels; zero when headless or unknown.
 static func window_insets_px(win: Window = null) -> Vector4:
 	if DisplayServer.get_name() == "headless":
@@ -32,6 +38,8 @@ static func window_insets_px(win: Window = null) -> Vector4:
 
 ## Insets in canvas units (dp) of `node`'s viewport.
 static func insets(node: Node) -> Vector4:
+	if override_dp.x >= 0.0:
+		return override_dp
 	var vp := node.get_viewport()
 	if vp == null:
 		return Vector4.ZERO

@@ -54,6 +54,8 @@ var _reel_plate: Array[Rect2] = []
 var _crop := Rect2(0, 0, 618, 824)
 const BODY_X := Vector2(34.0, 584.0)
 const PORTRAIT_ASPECT := 1.05          # section height / width in portrait (below the status bar)
+const LANDSCAPE_ROLL_W := 0.32         # landscape: share of the safe width the roll column may take
+const ROLL_GAP := 12.0                 # landscape: dp between the section and the roll column
 
 
 func _ready() -> void:
@@ -475,7 +477,10 @@ func _update_c_chalk(vm: Dictionary, delta: float) -> void:
 	m["hint_right"] = not _rolled
 	m["text_rect"] = Rect2(Vector2(safe.position.x + 16.0, safe.position.y + 10.0), Vector2(safe.size.x - FLAP_DP - 48.0, 72.0))
 	if not portrait:
-		m["text_rect"] = Rect2(Vector2(section_rect.end.x + 16.0, safe.position.y + 16.0), Vector2(safe.end.x - section_rect.end.x - 32.0, 160.0))
+		# above the roll in the landscape column (the roll sits at the column's bottom)
+		var roll_top := tray_rect.position.y + float((_tray_map()[4] as Vector2).y)
+		var th := clampf(roll_top - safe.position.y - 24.0, 72.0, 160.0)
+		m["text_rect"] = Rect2(Vector2(section_rect.end.x + 16.0, safe.position.y + 16.0), Vector2(safe.end.x - section_rect.end.x - 32.0, th))
 	var any_set := false
 	for e in vm.get("elements", []):
 		any_set = any_set or String(e.get("state", "")) == "set"
@@ -502,6 +507,16 @@ func _update_c_eyepiece(vm: Dictionary, delta: float) -> void:
 	var uv := (focus - disp.position) / disp.size
 	var half := Vector2(ed * 0.5 / Eyepiece.ZOOM, ed * 0.5 / Eyepiece.ZOOM) / disp.size
 	_eyepiece.aim(viewport.get_texture(), uv, half)
+
+
+## Landscape roll column width (dp) for a safe area of `safe` and a roll render of `roll` px: a
+## share of the width, never wider than the whole roll at full safe height (nothing to gain).
+static func landscape_roll_width(safe: Vector2, roll: Vector2) -> float:
+	return minf(safe.x * LANDSCAPE_ROLL_W, safe.y * roll.x / maxf(roll.y, 1.0))
+
+
+func _roll_size() -> Vector2:
+	return Vector2(_tray_full.get_size()) if _tray_full else Vector2(1080, 960)
 
 
 # ------------------------------------------------------------------ layout: a crop round the lock
@@ -531,14 +546,16 @@ func _layout() -> void:
 		_loupe_btn.size = _loupe_rect.size
 		_face.position = Vector2(safe.position.x + 4.0, tray_rect.position.y + 6.0)
 	else:
-		# landscape: the section takes the width between the plug face and the right edge
-		var th := r.size.y * 0.26
+		# landscape (HANDOVER §5.3, as in the base view): the roll is a column on the right inside the
+		# safe area (whole picks and loupe, contain-fit), the section takes the width between the plug
+		# face and that column. A bottom strip here cropped the picks and hid the loupe.
+		var col_w := landscape_roll_width(safe.size, _roll_size())
+		var x0 := safe.end.x - col_w
 		var left := safe.position.x + PlugFace.size_for(FACE_R_DP).x + 40.0
-		var right := safe.end.x - 16.0
-		section_rect = Rect2(Vector2(left, r.position.y), Vector2(right - left, r.size.y - th))
+		section_rect = Rect2(Vector2(left, r.position.y), Vector2(maxf(x0 - ROLL_GAP - left, 100.0), r.size.y))
 		var ch := minf(cw * section_rect.size.y / section_rect.size.x, plate_size.y)
 		_crop = Rect2(cx - cw * 0.5, clampf(cy - ch * 0.5, 0.0, plate_size.y - ch), cw, ch)
-		tray_rect = Rect2(Vector2(section_rect.position.x, section_rect.end.y), Vector2(section_rect.size.x, th))
+		tray_rect = Rect2(Vector2(x0, safe.position.y), Vector2(col_w, safe.size.y))
 		_tray.position = tray_rect.position
 		_tray.size = tray_rect.size
 		_loupe_rect = _compute_loupe_rect()
