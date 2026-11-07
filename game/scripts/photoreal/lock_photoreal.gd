@@ -40,6 +40,7 @@ var session: RefCounted
 var args := {}
 var _frozen := false
 var _paused := false
+var _pause_dark_button: Button = null
 var _last_input := {"tension": 0.0, "pick_depth": 0.5, "pick_lift": 0.0}
 var _shot_frames := -1
 var _bench_left := -1.0
@@ -541,23 +542,21 @@ func _simulate_warded(stage: String) -> void:
 
 # ------------------------------------------------------------------ pause (HUD.md §6, simplified)
 func _build_pause_cover() -> void:
+	# N-75: centred dark-paper panel with enamel plates inside the safe area (PausePanel)
 	pause_cover.visible = false
 	pause_cover.process_mode = Node.PROCESS_MODE_ALWAYS
-	var box: VBoxContainer = $UILayer/PauseCover/Box
-	for spec in [[&"pause.resume", _on_resume], [&"pause.dark_mode", _on_dark], [&"pause.quit", _on_quit]]:
-		var b := Button.new()
-		b.text = I18n.t(spec[0])
-		b.flat = true
-		b.custom_minimum_size = Vector2(0, 48)
-		b.add_theme_font_size_override("font_size", 20)
-		b.add_theme_color_override("font_color", Color(0.93, 0.88, 0.78))
-		b.pressed.connect(spec[1])
-		box.add_child(b)
+	var buttons := PausePanel.build(pause_cover as ColorRect, [
+		[&"pause.resume", _on_resume, &"primary_navy"],
+		[&"pause.dark_mode", _on_dark, &"navy"],
+		[&"pause.quit", _on_quit, &"burgundy"]])
+	_pause_dark_button = buttons[&"pause.dark_mode"]
 
 
 func _on_pause() -> void:
 	_paused = true
-	pause_cover.visible = true
+	if _pause_dark_button != null:
+		_pause_dark_button.text = I18n.t(&"pause.dark_mode_off" if view.dark else &"pause.dark_mode")
+	PausePanel.open(pause_cover)
 	get_tree().paused = true
 
 
