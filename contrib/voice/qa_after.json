@@ -1,0 +1,4561 @@
+{
+ "wer": {
+  "pl": 0.1513,
+  "en": 0.0272,
+  "de": 0.0376,
+  "fr": 0.0939,
+  "es": 0.0477
+ },
+ "files": [
+  {
+   "file": "pl/job.allotment_shed.after.1.ogg",
+   "dur": 3.85,
+   "lufs": -17.9,
+   "lead_ms": 57,
+   "trail_ms": 45,
+   "ref": "Pomidory zdążyły do ziemi. Dziękują panu.",
+   "asr": "Pomidory zdeoczyłej do ziemi. Dziękuję panu.",
+   "wer": 0.333
+  },
+  {
+   "file": "pl/job.attic_drying_room.after.1.ogg",
+   "dur": 6.18,
+   "lufs": -18.0,
+   "lead_ms": 24,
+   "trail_ms": 55,
+   "ref": "Płaszcze wyschły, chór zaśpiewał. Klucz do suszarni wisi teraz u pana Romana.",
+   "asr": "Poaszcze wyschły, chór zapiewa. Klucz do suszarni wisi teraz u Pana Romana.",
+   "wer": 0.167
+  },
+  {
+   "file": "pl/job.bike_interview.after.1.ogg",
+   "dur": 3.44,
+   "lufs": -17.6,
+   "lead_ms": 20,
+   "trail_ms": 52,
+   "ref": "Dostałem tę pracę. Rower zostaje, kod zapiszę.",
+   "asr": "Dostałem tę pracę. Rower zostaje, kod zapisze.",
+   "wer": 0.143
+  },
+  {
+   "file": "pl/job.bramah_bureau.after.1.ogg",
+   "dur": 4.46,
+   "lufs": -18.0,
+   "lead_ms": 24,
+   "trail_ms": 40,
+   "ref": "Sekretarzyk jest gotowy do odnowienia. Zamek zostaje oryginalny.",
+   "asr": "Sekretarzyk jest gotowy do odmowienia. Zamek zostaje oryginalny.",
+   "wer": 0.125
+  },
+  {
+   "file": "pl/job.brussels_townhouse.after.1.ogg",
+   "dur": 4.17,
+   "lufs": -18.1,
+   "lead_ms": 44,
+   "trail_ms": 44,
+   "ref": "W domu znów spokój. Sąsiedzi nawet powiedzieli bonjour.",
+   "asr": "W domu znów spokój. Sasiedzi nawet powiedzieli bonjour.",
+   "wer": 0.125
+  },
+  {
+   "file": "pl/job.carol_singers_chest.after.1.ogg",
+   "dur": 5.43,
+   "lufs": -18.0,
+   "lead_ms": 48,
+   "trail_ms": 50,
+   "ref": "Kolędowaliśmy w jednej tonacji. Prawie. Gwiazdy wróciły do skrzyni całe.",
+   "asr": "Koledowaliomy w jednej tonacji. Prawie. Gwiazdy wróciły do skrzyni całe.",
+   "wer": 0.1
+  },
+  {
+   "file": "pl/job.cat_bathroom.after.1.ogg",
+   "dur": 4.56,
+   "lufs": -17.9,
+   "lead_ms": 42,
+   "trail_ms": 32,
+   "ref": "Ziemniak ma się świetnie. Drzwi do łazienki zostają uchylone.",
+   "asr": "Ziemniak ma się świetnie. Drzwi do łazienki zostają uchylone.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.charleroi_letters.after.1.ogg",
+   "dur": 3.46,
+   "lufs": -18.1,
+   "lead_ms": 14,
+   "trail_ms": 2,
+   "ref": "Listy są już bezpieczne. Mama czyta jeden co wieczór.",
+   "asr": "Listy są już bezpieczne. Mama czyta jeden co wieczór.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.christmas_eve_heat.after.1.ogg",
+   "dur": 5.87,
+   "lufs": -18.1,
+   "lead_ms": 35,
+   "trail_ms": 34,
+   "ref": "Kaloryfery grzały całą noc. Pana miejsce przy stole czekało do końca, razem z kompotem.",
+   "asr": "Kaloryfery grzały całą noc. Pana miejsce przy stole czekało do końca. Razem z kompotem.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.community_notice_case.after.1.ogg",
+   "dur": 3.46,
+   "lufs": -18.2,
+   "lead_ms": 43,
+   "trail_ms": 41,
+   "ref": "Ogłoszenia już wiszą. Ktoś dopiął plakat o kocie.",
+   "asr": "Ogłoszenia już wiszą. Ktoś dopił plaka to kocie.",
+   "wer": 0.375
+  },
+  {
+   "file": "pl/job.dollhouse_wooden_lock.after.1.ogg",
+   "dur": 4.01,
+   "lufs": -18.0,
+   "lead_ms": 54,
+   "trail_ms": 40,
+   "ref": "Domek znów jest otwarty. Lalki piją herbatę o czwartej.",
+   "asr": "Domek znów jest otwarty. Lalki piją herbatę o czwartej.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.drummer_locker.after.1.ogg",
+   "dur": 3.01,
+   "lufs": -18.0,
+   "lead_ms": 55,
+   "trail_ms": 29,
+   "ref": "Próba wreszcie się odbyła. Głośno.",
+   "asr": "Próba wreszcie się odbyła. Głośno.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.edek_rehearsal_store.after.1.ogg",
+   "dur": 4.07,
+   "lufs": -17.8,
+   "lead_ms": 40,
+   "trail_ms": 46,
+   "ref": "Krzesła są gotowe na zebranie. Policzyłem dwa razy.",
+   "asr": "Krzesa se gotowe na zebranie. Policzyłem dwa razy.",
+   "wer": 0.25
+  },
+  {
+   "file": "pl/job.finnish_sailor.after.1.ogg",
+   "dur": 4.28,
+   "lufs": -17.9,
+   "lead_ms": 0,
+   "trail_ms": 45,
+   "ref": "Wypłynęliśmy na czas. Skrzynia jest już przywiązana.",
+   "asr": "Wypełnaliśmy na czas. Skrzynia jest już przywiezana.",
+   "wer": 0.286
+  },
+  {
+   "file": "pl/job.frozen_cellar_padlock.after.1.ogg",
+   "dur": 5.35,
+   "lufs": -18.0,
+   "lead_ms": 32,
+   "trail_ms": 33,
+   "ref": "Koce rozeszły się przed wieczorem. Kłódka dostała ode mnie wełnianą skarpetę.",
+   "asr": "Kocę rozeszły się przed wieczorem. Kółka dostała ode mnie wełnianą skarpety.",
+   "wer": 0.273
+  },
+  {
+   "file": "pl/job.ghent_beguinage.after.1.ogg",
+   "dur": 4.71,
+   "lufs": -18.3,
+   "lead_ms": 2,
+   "trail_ms": 32,
+   "ref": "Dziękuję. Wszystko wróciło na miejsce. I jest cicho.",
+   "asr": "Dziękuję. Wszystko wróciło na miejsce. I jest cicho.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.gosia_workbench_drawer.after.1.ogg",
+   "dur": 4.13,
+   "lufs": -17.3,
+   "lead_ms": 44,
+   "trail_ms": 9,
+   "ref": "Stół może już trafić do świetlicy. Szuflada chodzi gładko.",
+   "asr": "100 może już trafić do świetlicy. Szuflada chodzi gładko.",
+   "wer": 0.111
+  },
+  {
+   "file": "pl/job.grandma_broth.after.1.ogg",
+   "dur": 3.82,
+   "lufs": -17.9,
+   "lead_ms": 42,
+   "trail_ms": 53,
+   "ref": "Rosół czeka, synku. I pan też ma przyjść.",
+   "asr": "Rosół czeka synku i Pan też ma przyjść.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.grandpa_chest.after.1.ogg",
+   "dur": 3.35,
+   "lufs": -17.6,
+   "lead_ms": 1,
+   "trail_ms": 48,
+   "ref": "Pamiątki znów są razem. Listy też.",
+   "asr": "Pamiętki znowu se razem. Listy też.",
+   "wer": 0.5
+  },
+  {
+   "file": "pl/job.halina_christmas_tin.after.1.ogg",
+   "dur": 6.76,
+   "lufs": -18.2,
+   "lead_ms": 59,
+   "trail_ms": 42,
+   "ref": "Pierniki zniknęły pierwsze, jeszcze przed barszczem. A kluczyk był w cukiernicy, synku.",
+   "asr": "Pierwniki zniknęły pierwsze, jeszcze przed barstem, a kluczyk był w cukiernicy synku.",
+   "wer": 0.167
+  },
+  {
+   "file": "pl/job.halina_recipe_box.after.1.ogg",
+   "dur": 3.4,
+   "lufs": -18.1,
+   "lead_ms": 52,
+   "trail_ms": 9,
+   "ref": "Przepisy są całe. Obiad też będzie.",
+   "asr": "Przepisy są całe, obiad też będzie.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.heating_service_cupboard.after.1.ogg",
+   "dur": 6.1,
+   "lufs": -17.8,
+   "lead_ms": 0,
+   "trail_ms": 44,
+   "ref": "Pan Paweł skończył przegląd przed nocą. Dziennik leży w szafce, a klucz w biurze, podpisany.",
+   "asr": "Pan Paweł skończył przegląd przed nocą. Dzieńnik leży w szafce, a klucz w biurze, podpisany.",
+   "wer": 0.067
+  },
+  {
+   "file": "pl/job.kiosk_shutter.after.1.ogg",
+   "dur": 4.75,
+   "lufs": -17.6,
+   "lead_ms": 8,
+   "trail_ms": 40,
+   "ref": "Pierwsi klienci przyjechali pierwszym autobusem. Gazety czekały.",
+   "asr": "Pierwsi klienci przyjechali pierwszym autobusem. Gazety czekały.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.krakow_antiquarian.after.1.ogg",
+   "dur": 3.77,
+   "lufs": -17.5,
+   "lead_ms": 53,
+   "trail_ms": 55,
+   "ref": "Dziękuję za uszanowanie własności drugiego klienta.",
+   "asr": "Dziękuję za uszanowanie własności drugiego klienta.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.krakow_tenement_gate.after.1.ogg",
+   "dur": 4.33,
+   "lufs": -18.2,
+   "lead_ms": 0,
+   "trail_ms": 46,
+   "ref": "Brama znów służy mieszkańcom. Następny będzie dzwonek.",
+   "asr": "Bra ma znów słuchaczy mieszkacom. Następny będzie dzwonek.",
+   "wer": 0.571
+  },
+  {
+   "file": "pl/job.krystyna_wooden_album.after.1.ogg",
+   "dur": 4.67,
+   "lufs": -18.1,
+   "lead_ms": 1,
+   "trail_ms": 35,
+   "ref": "Album znów jest z rodziną. Ola podpisała każde zdjęcie.",
+   "asr": "Album znów jest z rodzinę. Ola podpisała każde zdjęcie.",
+   "wer": 0.111
+  },
+  {
+   "file": "pl/job.liege_bakery.after.1.ogg",
+   "dur": 3.75,
+   "lufs": -17.8,
+   "lead_ms": 22,
+   "trail_ms": 10,
+   "ref": "Pierwsze pieczywo wyszło o wpół do piątej. W samą porę.",
+   "asr": "Pierwsze pieczywo wyszło o w pół do piątej. Samą porę.",
+   "wer": 0.3
+  },
+  {
+   "file": "pl/job.marta_poster_studio.after.1.ogg",
+   "dur": 3.2,
+   "lufs": -18.1,
+   "lead_ms": 57,
+   "trail_ms": 26,
+   "ref": "Plakaty już schną. Ziemniak nadzoruje.",
+   "asr": "Plakaty już schną. Ziemniak nadzoruje.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.museum_time_lock.after.1.ogg",
+   "dur": 3.53,
+   "lufs": -18.0,
+   "lead_ms": 26,
+   "trail_ms": 37,
+   "ref": "Zegar znów tyka na wystawie. W trzech egzemplarzach.",
+   "asr": "Zegar znów tyka na wystawie w trzech egzemplarzach.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.newlyweds_4am.after.1.ogg",
+   "dur": 3.7,
+   "lufs": -18.1,
+   "lead_ms": 31,
+   "trail_ms": 38,
+   "ref": "W końcu się wyspaliśmy. Klucze śpią teraz na haczyku.",
+   "asr": "W końcu się wyspaliśmy. Klucze śpię teraz na haczyku.",
+   "wer": 0.111
+  },
+  {
+   "file": "pl/job.night_nurse.after.1.ogg",
+   "dur": 4.94,
+   "lufs": -17.7,
+   "lead_ms": 45,
+   "trail_ms": 48,
+   "ref": "Spałam jedenaście godzin. Klucz od razu trafił do miseczki.",
+   "asr": "Spałam 11 godzin. Klucz od razu trafi do miseczki.",
+   "wer": 0.222
+  },
+  {
+   "file": "pl/job.pizzeria_pays_pizza.after.1.ogg",
+   "dur": 4.04,
+   "lufs": -18.1,
+   "lead_ms": 1,
+   "trail_ms": 49,
+   "ref": "Dziś wszystko gotowe przed otwarciem. Pizza nadal aktualna.",
+   "asr": "Dzio wszystko gotowe przed otwarciem. Pizza nadal aktualna.",
+   "wer": 0.125
+  },
+  {
+   "file": "pl/job.refuse_aunt_alive.after.1.ogg",
+   "dur": 4.63,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 56,
+   "ref": "Pani Lucyna wraca w piątek. Wtedy wymieni zamek, z pana pomocą.",
+   "asr": "Pani Lucyna wraca w piątek. Wtedy wymieni zamek z Pana pomocą.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.refuse_aunt_alive.after.2.ogg",
+   "dur": 3.37,
+   "lufs": -18.1,
+   "lead_ms": 34,
+   "trail_ms": 0,
+   "ref": "Ulżyło mi, że pan odmówił. Ja bym nie spała.",
+   "asr": "Użyło mi, że Pan odmówi. Ja bym nie spała.",
+   "wer": 0.222
+  },
+  {
+   "file": "pl/job.refuse_ex_partner.after.1.ogg",
+   "dur": 4.72,
+   "lufs": -18.2,
+   "lead_ms": 52,
+   "trail_ms": 49,
+   "ref": "Dobrze, że pan zadzwonił. Rzeczy odebrał przy mnie, lokatorka się zgodziła.",
+   "asr": "Dobrze, że pan zadzwonił. Rzeczy odebrał przy mnie. Lokatorka się zgodziła.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.refuse_ex_partner.after.2.ogg",
+   "dur": 5.0,
+   "lufs": -18.1,
+   "lead_ms": 45,
+   "trail_ms": 44,
+   "ref": "Słyszałem na przystanku. Porządny z pana człowiek. Gazeta?",
+   "asr": "Sojszalałem na przystanku. Pożedny z pana człowiek. Gazeta?",
+   "wer": 0.25
+  },
+  {
+   "file": "pl/job.refuse_rush_bribe.after.1.ogg",
+   "dur": 4.36,
+   "lufs": -16.9,
+   "lead_ms": 44,
+   "trail_ms": 46,
+   "ref": "Siostra nic nie wiedziała o żadnych dokumentach. Dziękuję za telefon.",
+   "asr": "Siostra nic nie wiedziała o żadnych dokumentach. Dziękuję za telefon.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.refuse_rush_bribe.after.2.ogg",
+   "dur": 5.92,
+   "lufs": -18.6,
+   "lead_ms": 57,
+   "trail_ms": 44,
+   "ref": "Ktoś w garniturze pytał wczoraj o ślusarza. Odesłałem go do pana. Przepraszam.",
+   "asr": "Kto w garniturze pyta wczoraj o ślusarza? Odesłałem go do pana. Przepraszam.",
+   "wer": 0.167
+  },
+  {
+   "file": "pl/job.refuse_sisters_flat.after.1.ogg",
+   "dur": 4.43,
+   "lufs": -17.5,
+   "lead_ms": 57,
+   "trail_ms": 29,
+   "ref": "Rozmawiałam z lokatorką. Poprosiła, żeby zaczekać na jej powrót.",
+   "asr": "Rozmawiałam z lokatorką, poprosiła, żeby zaczekała na jej powrót.",
+   "wer": 0.111
+  },
+  {
+   "file": "pl/job.refuse_t43_09_empty_flat.after.1.ogg",
+   "dur": 3.36,
+   "lufs": -17.6,
+   "lead_ms": 54,
+   "trail_ms": 46,
+   "ref": "Lokatorce odpowiada sobota. Paczka poczeka.",
+   "asr": "Lokatorce odpowiada sobota. Paczka poczeka.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.refuse_t43_09_empty_flat.after.2.ogg",
+   "dur": 4.67,
+   "lufs": -18.0,
+   "lead_ms": 33,
+   "trail_ms": 41,
+   "ref": "Widziałem paczkę drugi raz. Tym razem miała umówioną wizytę.",
+   "asr": "Widziałem paczkę drugi raz. Tym razem miała umówioną wizytę.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.refuse_t43_10_early_clearance.after.1.ogg",
+   "dur": 3.61,
+   "lufs": -17.9,
+   "lead_ms": 55,
+   "trail_ms": 36,
+   "ref": "Przekazanie umówione z lokatorem. Bez pośpiechu.",
+   "asr": "Przekazanie umówione z lokatorem, bez pośpiechu.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.refuse_t43_10_early_clearance.after.2.ogg",
+   "dur": 3.9,
+   "lufs": -18.0,
+   "lead_ms": 51,
+   "trail_ms": 52,
+   "ref": "Dobrze, że poczekali na rozmowę. Termin ustalili sami.",
+   "asr": "Dobrze, że poczekali na rozmowę. Termin ustalili sami.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.refuse_t43_11_other_stall.after.1.ogg",
+   "dur": 4.59,
+   "lufs": -17.9,
+   "lead_ms": 38,
+   "trail_ms": 42,
+   "ref": "Oddałam przedłużacz organizatorowi. Sąsiadowi pożyczyłam czajnik.",
+   "asr": "Oddałam przed uczacz organizatorowi. Sesiadowi poszłyczyłam czajnik.",
+   "wer": 0.667
+  },
+  {
+   "file": "pl/job.refuse_t43_11_other_stall.after.2.ogg",
+   "dur": 4.08,
+   "lufs": -17.6,
+   "lead_ms": 52,
+   "trail_ms": 21,
+   "ref": "Targ się skończył, sąsiedztwo zostało. To dobrze.",
+   "asr": "Tark się skończył, sąsiedztwo zostało. To dobrze.",
+   "wer": 0.143
+  },
+  {
+   "file": "pl/job.refuse_t43_12_surprise_key.after.1.ogg",
+   "dur": 4.51,
+   "lufs": -18.2,
+   "lead_ms": 21,
+   "trail_ms": 29,
+   "ref": "Darek zapytał. Girlanda wisi, a ja udawałam zaskoczenie.",
+   "asr": "Darek zapytał. Giranda wisi, a ja udawałam zaskoczenie.",
+   "wer": 0.125
+  },
+  {
+   "file": "pl/job.refuse_t43_12_surprise_key.after.2.ogg",
+   "dur": 4.3,
+   "lufs": -17.5,
+   "lead_ms": 25,
+   "trail_ms": 36,
+   "ref": "Na otwarciu wystarczyło miejsc. Nikt nie musiał się wpraszać.",
+   "asr": "Na otwarciu wystarczyło miejsc. Nikt nie musiał się wpraszać.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.refuse_unapproved_repair.after.1.ogg",
+   "dur": 4.57,
+   "lufs": -18.1,
+   "lead_ms": 41,
+   "trail_ms": 24,
+   "ref": "Tej wizyty nie było na liście. Upoważniony technik był już na miejscu.",
+   "asr": "Tej wizyty nie było na liście. Upoważniony technik był już na miejscu.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.refuse_unapproved_stockroom.after.1.ogg",
+   "dur": 4.49,
+   "lufs": -17.8,
+   "lead_ms": 52,
+   "trail_ms": 31,
+   "ref": "Paczki odebrano rano. Sklep ma teraz lepsze godziny dostaw.",
+   "asr": "Paczki odebrano rano. Sklep ma teraz lepsze godziny dostaw.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.refuse_wrong_letterbox.after.1.ogg",
+   "dur": 4.97,
+   "lufs": -18.0,
+   "lead_ms": 21,
+   "trail_ms": 43,
+   "ref": "Szesnastka oddała kartkę. Babcia Oskara dostała ją w drugi dzień świąt.",
+   "asr": "16. oddawa kartkę. Babcia Oscara dostała je w drugi dzień wiet.",
+   "wer": 0.455
+  },
+  {
+   "file": "pl/job.roman_service_cupboard.after.1.ogg",
+   "dur": 4.76,
+   "lufs": -18.1,
+   "lead_ms": 57,
+   "trail_ms": 22,
+   "ref": "Schowek uporządkowany. Klucze wydane, klucze zwrócone.",
+   "asr": "Schowek uporzedkowany. Klucze wydane, klucze zwrócone.",
+   "wer": 0.167
+  },
+  {
+   "file": "pl/job.shared_room_door.after.1.ogg",
+   "dur": 4.69,
+   "lufs": -18.2,
+   "lead_ms": 39,
+   "trail_ms": 51,
+   "ref": "Na pierwszym zebraniu nikt nie zgubił klucza. To dobry początek.",
+   "asr": "Na pierwszym zebraniu nikt nie zgubio klucza. To dobry początek.",
+   "wer": 0.1
+  },
+  {
+   "file": "pl/job.stefan_book_tin.after.1.ogg",
+   "dur": 5.14,
+   "lufs": -17.7,
+   "lead_ms": 49,
+   "trail_ms": 41,
+   "ref": "Numerki do wypożyczalni wróciły do obiegu. Pierwszy dostała Krysia.",
+   "asr": "Numerki do wypoczyczajni wrócił do obiegu. Pierwszy dostała Krysia.",
+   "wer": 0.222
+  },
+  {
+   "file": "pl/job.student_dorm.after.1.ogg",
+   "dur": 4.1,
+   "lufs": -17.7,
+   "lead_ms": 23,
+   "trail_ms": 41,
+   "ref": "Zdążyłam na egzamin. Zamki historyczne na piątkę.",
+   "asr": "Zdeoszujam na egzamin! Zamki historyczne na pietkę!",
+   "wer": 0.286
+  },
+  {
+   "file": "pl/job.swiatniki_journeyman_padlock.after.1.ogg",
+   "dur": 4.22,
+   "lufs": -17.5,
+   "lead_ms": 35,
+   "trail_ms": 45,
+   "ref": "Kłódka ma jeszcze swoją historię. Teraz ma dwie.",
+   "asr": "Kończka ma jeszcze swoje historia. Teraz ma dwie.",
+   "wer": 0.375
+  },
+  {
+   "file": "pl/job.t43_09_01_winter_keys.after.1.ogg",
+   "dur": 3.36,
+   "lufs": -18.1,
+   "lead_ms": 47,
+   "trail_ms": 46,
+   "ref": "Klucz już przełożyłam. Do obu płaszczy się nie da.",
+   "asr": "Klucz już przełożyłam. Do obu płaszczy się nie da.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.t43_09_02_blanket_cupboard.after.1.ogg",
+   "dur": 4.18,
+   "lufs": -18.0,
+   "lead_ms": 58,
+   "trail_ms": 47,
+   "ref": "Koce wróciły. Jeden sąsiad został na herbatę.",
+   "asr": "Kocę wróciły. Jeden sesiat został na herbatę.",
+   "wer": 0.286
+  },
+  {
+   "file": "pl/job.t43_09_03_wooden_postbox.after.1.ogg",
+   "dur": 4.24,
+   "lufs": -18.0,
+   "lead_ms": 49,
+   "trail_ms": 54,
+   "ref": "Ktoś napisał, że chciałby tam zamieszkać. Przekazuję tylko tyle.",
+   "asr": "Kto napisał, że chciałby tam zamieszkał. Przekazuje tylko tyle.",
+   "wer": 0.333
+  },
+  {
+   "file": "pl/job.t43_09_04_choir_case.after.1.ogg",
+   "dur": 3.25,
+   "lufs": -18.0,
+   "lead_ms": 54,
+   "trail_ms": 55,
+   "ref": "Próba była bez przygód. Poza śpiewaniem.",
+   "asr": "Próga była bez przygód. Poza śpiewaniem.",
+   "wer": 0.167
+  },
+  {
+   "file": "pl/job.t43_09_05_receipt_safe.after.1.ogg",
+   "dur": 3.17,
+   "lufs": -17.9,
+   "lead_ms": 43,
+   "trail_ms": 50,
+   "ref": "Rachunek od pana dostał osobną przegródkę.",
+   "asr": "Rachunek od Pana dostało osobne przygródkę.",
+   "wer": 0.5
+  },
+  {
+   "file": "pl/job.t43_09_06_draughty_hall.after.1.ogg",
+   "dur": 4.47,
+   "lufs": -18.2,
+   "lead_ms": 17,
+   "trail_ms": 35,
+   "ref": "Domyka się. Mieszkańcy zgłosili to jako dobrą wiadomość.",
+   "asr": "Domyka się. Mieszkańcy zgłosili to jako dobrą wiadomość.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.t43_09_08_spare_key_hook.after.1.ogg",
+   "dur": 5.47,
+   "lufs": -17.9,
+   "lead_ms": 52,
+   "trail_ms": 59,
+   "ref": "Koperta wróciła do mojej szuflady. Pan Kazimierz podpisał ją tym razem dwa razy.",
+   "asr": "Koperta wróciła do mojej szuflady. Pan Kazimierz podpisał ja tym razem dwa razy.",
+   "wer": 0.077
+  },
+  {
+   "file": "pl/job.t43_10_01_renovator_bureau.after.1.ogg",
+   "dur": 3.64,
+   "lufs": -17.8,
+   "lead_ms": 50,
+   "trail_ms": 45,
+   "ref": "Biurko już stoi. Ktoś od razu położył na nim kubek.",
+   "asr": "Biurko już stoi. Ktoś od razu położył na nim kubek.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.t43_10_02_scaffold_store.after.1.ogg",
+   "dur": 3.2,
+   "lufs": -17.9,
+   "lead_ms": 42,
+   "trail_ms": 18,
+   "ref": "Na odprawie był komplet. Łącznie z kluczem.",
+   "asr": "Na odprawie było komplet. Ocznie z kluczem.",
+   "wer": 0.286
+  },
+  {
+   "file": "pl/job.t43_10_03_exhibit_clock.after.1.ogg",
+   "dur": 4.25,
+   "lufs": -18.0,
+   "lead_ms": 44,
+   "trail_ms": 30,
+   "ref": "Próba dobowa zakończona. Zegar chodzi, protokół też się zgadza.",
+   "asr": "Próba do bowa zakończona. Zegar chodzi. Protokół też się zgadza.",
+   "wer": 0.222
+  },
+  {
+   "file": "pl/job.t43_10_04_design_cabinet.after.1.ogg",
+   "dur": 3.86,
+   "lufs": -17.7,
+   "lead_ms": 9,
+   "trail_ms": 28,
+   "ref": "Świetlica ma tabliczkę. Ziemniak chciał podpisać się łapą.",
+   "asr": "Owieplica ma tabliczkę. Ziemniak chciał podpisać się, apa.",
+   "wer": 0.25
+  },
+  {
+   "file": "pl/job.t43_10_05_porters_drawer.after.1.ogg",
+   "dur": 3.85,
+   "lufs": -17.9,
+   "lead_ms": 42,
+   "trail_ms": 56,
+   "ref": "Klucze się zgadzają. Studentów przeliczę po śniadaniu.",
+   "asr": "Klucze się zgadzają. Studentów przeliczą po śniadaniu.",
+   "wer": 0.143
+  },
+  {
+   "file": "pl/job.t43_10_06_shared_room_entry.after.1.ogg",
+   "dur": 4.37,
+   "lufs": -17.9,
+   "lead_ms": 2,
+   "trail_ms": 44,
+   "ref": "Sala pachnie farbą. Herbata już próbuje wygrać.",
+   "asr": "Sala pachnie farbę. Herbata już próbuje wygra.",
+   "wer": 0.286
+  },
+  {
+   "file": "pl/job.t43_11_01_wooden_market.after.1.ogg",
+   "dur": 3.9,
+   "lufs": -17.5,
+   "lead_ms": 16,
+   "trail_ms": 10,
+   "ref": "Powstała ulica z samymi piekarniami. Tak wybrali.",
+   "asr": "Powstała ulica z samymi piekarniami. Tak wybrali.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.t43_11_02_bicycle_stand.after.1.ogg",
+   "dur": 4.05,
+   "lufs": -18.0,
+   "lead_ms": 44,
+   "trail_ms": 52,
+   "ref": "Borys naprawił mi dzwonek. Rower teraz pierwszy zaczyna rozmowę.",
+   "asr": "Boris naprawia mi dzwonek. Rower teraz pierwszy zaczyna rozmowę.",
+   "wer": 0.222
+  },
+  {
+   "file": "pl/job.t43_11_03_tool_exchange.after.1.ogg",
+   "dur": 5.58,
+   "lufs": -18.2,
+   "lead_ms": 44,
+   "trail_ms": 45,
+   "ref": "Dwie osoby przyszły zapytać, od czego zacząć. Dobry targ.",
+   "asr": "Dwie osoby przyszły zapytać, od czego zaczę. Dobry tark.",
+   "wer": 0.222
+  },
+  {
+   "file": "pl/job.t43_11_04_sailors_stall.after.1.ogg",
+   "dur": 4.52,
+   "lufs": -18.2,
+   "lead_ms": 57,
+   "trail_ms": 29,
+   "ref": "Pokaz się udał. Narzędzia wróciły ze mną, klucz jeszcze płynie.",
+   "asr": "Pokaz się udał. Narżegia wróciła ze mną. Klucz jeszcze pojnie.",
+   "wer": 0.3
+  },
+  {
+   "file": "pl/job.t43_11_05_rehearsal_chest.after.1.ogg",
+   "dur": 5.29,
+   "lufs": -18.3,
+   "lead_ms": 44,
+   "trail_ms": 56,
+   "ref": "Słyszałem koncert. Znam tę perkusistkę, kiedyś zgubiła klucz.",
+   "asr": "Sojsziałem koncert. Znam tę perkusistkę, kiedy zgubioła klucz.",
+   "wer": 0.375
+  },
+  {
+   "file": "pl/job.t43_11_07_wrong_delivery.after.1.ogg",
+   "dur": 4.39,
+   "lufs": -17.8,
+   "lead_ms": 42,
+   "trail_ms": 48,
+   "ref": "Odbiorca się ucieszył. Paczka też, sądząc po lekkości wózka.",
+   "asr": "Odgiorca się ucieszył. Paczka też, sądząc po lekkości wózka.",
+   "wer": 0.111
+  },
+  {
+   "file": "pl/job.t43_12_01_letters_archive.after.1.ogg",
+   "dur": 3.98,
+   "lufs": -17.4,
+   "lead_ms": 45,
+   "trail_ms": 43,
+   "ref": "Martine dostała zdjęcie wystawy. Mama sama wybrała kadr.",
+   "asr": "Martina dostała zdjęcie wystawy. Mama sama wybrała kadr.",
+   "wer": 0.125
+  },
+  {
+   "file": "pl/job.t43_12_02_detective_cabinet.after.1.ogg",
+   "dur": 3.58,
+   "lufs": -17.9,
+   "lead_ms": 51,
+   "trail_ms": 51,
+   "ref": "Notatka ma dwa zdania. Pani doktor zatwierdziła oba.",
+   "asr": "Notatka ma dwa zdania. Pani doktor zatwierdziła oba.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.t43_12_03_community_store.after.1.ogg",
+   "dur": 4.98,
+   "lufs": -18.2,
+   "lead_ms": 35,
+   "trail_ms": 34,
+   "ref": "Siedzieli wszyscy. Kto chciał dokładkę, musiał na chwilę wstać.",
+   "asr": "Siedzieli wszyscy. Kto chciał dokładkę musiał na chwilę wstać.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.t43_12_04_school_box.after.1.ogg",
+   "dur": 5.08,
+   "lufs": -18.2,
+   "lead_ms": 7,
+   "trail_ms": 48,
+   "ref": "Każdy przyniósł jedno zdjęcie. Marta przyniosła też kota na zdjęciu.",
+   "asr": "Każdy przyniósł o jedno zdjecie. Marta przyniosa też kota na zdjeciu.",
+   "wer": 0.4
+  },
+  {
+   "file": "pl/job.t43_12_05_tea_fund_case.after.1.ogg",
+   "dur": 4.7,
+   "lufs": -18.2,
+   "lead_ms": 0,
+   "trail_ms": 45,
+   "ref": "Rozliczenie zamknięte. Herbaty zostało więcej niż planowano.",
+   "asr": "Rozliczenie zamknięte. Herbaty zostało więcej niż planowano.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.t43_12_07_clock_back_home.after.1.ogg",
+   "dur": 4.24,
+   "lufs": -17.9,
+   "lead_ms": 0,
+   "trail_ms": 40,
+   "ref": "Chód równy przez całą dobę. Możemy oddać zegar na wystawę.",
+   "asr": "Hut równy przez całą dobę. Możemy oddać zegar na wystawę.",
+   "wer": 0.1
+  },
+  {
+   "file": "pl/job.t43_12_08_henryks_bench.after.1.ogg",
+   "dur": 4.58,
+   "lufs": -18.3,
+   "lead_ms": 57,
+   "trail_ms": 55,
+   "ref": "Rosół czeka. Tym razem proszę zabrać też uczennicę.",
+   "asr": "Rosu czeka. Tym razem proszę zabrać też u czynnice.",
+   "wer": 0.375
+  },
+  {
+   "file": "pl/job.t43_12_08_henryks_bench.after.2.ogg",
+   "dur": 3.41,
+   "lufs": -18.0,
+   "lead_ms": 42,
+   "trail_ms": 57,
+   "ref": "Zamknąłem warsztat. Klucz sprawdziłem przed wyjściem.",
+   "asr": "Zamknę M-Warsztat. Klucz sprawdziłem przed wyjściem.",
+   "wer": 0.333
+  },
+  {
+   "file": "pl/job.time_capsule.after.1.ogg",
+   "dur": 3.98,
+   "lufs": -18.1,
+   "lead_ms": 53,
+   "trail_ms": 40,
+   "ref": "Klasa znów się spotkała. Pamiętałam wszystkie imiona.",
+   "asr": "Klasa znów się spotkała. Pamiętałam wszystkie imiona.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.uncle_safe_heirs.after.1.ogg",
+   "dur": 3.12,
+   "lufs": -18.2,
+   "lead_ms": 56,
+   "trail_ms": 57,
+   "ref": "Dziękuję, że poczekał pan, aż wszyscy się porozumiemy.",
+   "asr": "Dziękuję, że poczeka pan, aż wszyscy się porozumiemy.",
+   "wer": 0.125
+  },
+  {
+   "file": "pl/job.warm_room_for_neighbours.after.1.ogg",
+   "dur": 6.49,
+   "lufs": -18.2,
+   "lead_ms": 36,
+   "trail_ms": 53,
+   "ref": "Sąsiedzi przespali noc w cieple. Ziemniak obszedł wszystkie koce i żadnego nie zatwierdził.",
+   "asr": "Zesiedzi przespali noc w cieple. Ziemniak obszadał wszystkie koce i szładnego nie zatwierdzi.",
+   "wer": 0.308
+  },
+  {
+   "file": "pl/job.widow_bureau.after.1.ogg",
+   "dur": 5.09,
+   "lufs": -18.1,
+   "lead_ms": 32,
+   "trail_ms": 5,
+   "ref": "W biurku znów porządek. Co on zachował, ja też zachowam.",
+   "asr": "W biurku snów porządek. Co on zachowa, ja też zachowam.",
+   "wer": 0.2
+  },
+  {
+   "file": "pl/job.wigilia_table_drawer.after.1.ogg",
+   "dur": 5.23,
+   "lufs": -18.1,
+   "lead_ms": 48,
+   "trail_ms": 48,
+   "ref": "Każda winietka trafiła na swoje miejsce. To jedno krzesło nadal na pana czeka.",
+   "asr": "Każda winietka trafiła na swoje miejsce. To jednokszesło nadal na pana czeka.",
+   "wer": 0.154
+  },
+  {
+   "file": "pl/job.winter_bicycle_cellar.after.1.ogg",
+   "dur": 5.13,
+   "lufs": -17.6,
+   "lead_ms": 21,
+   "trail_ms": 26,
+   "ref": "Ostatnia paczka dojechała trzydziestego pierwszego. Kłódka zimuje teraz pod pokrowcem.",
+   "asr": "Ostatnia paczka dojechała 31. Kółka zimuje teraz pod pokrowcem.",
+   "wer": 0.3
+  },
+  {
+   "file": "pl/job.wooden_winter_village.after.1.ogg",
+   "dur": 6.36,
+   "lufs": -18.1,
+   "lead_ms": 23,
+   "trail_ms": 58,
+   "ref": "Wystawa otwarta. Doktor Rygiel policzyła płatki śniegu na makiecie i wszystkie są na miejscu.",
+   "asr": "Wystawa otwarta. Doktor Rygiel policzyła płatki śniegu na makiecie i wszystkie są na miejscu.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.wrong_floor.after.1.ogg",
+   "dur": 5.31,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 52,
+   "ref": "To pan wczoraj nie otworzył? Upiekłam drożdżowe. Za to, że pan nie otworzył.",
+   "asr": "To Pan wczoraj nie otworzył? Upiekłam drożdżowe, za to, że Pan nie otworzył.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.zuzanna_catalogue_drawer.after.1.ogg",
+   "dur": 3.71,
+   "lufs": -18.0,
+   "lead_ms": 42,
+   "trail_ms": 45,
+   "ref": "Kopie gotowe dla świetlicy. Oryginały zostają w szufladzie.",
+   "asr": "Kopie gotowe dla owietlicy. Orginały zostaje w szufladzie.",
+   "wer": 0.375
+  },
+  {
+   "file": "en/job.allotment_shed.after.1.ogg",
+   "dur": 4.01,
+   "lufs": -17.6,
+   "lead_ms": 0,
+   "trail_ms": 55,
+   "ref": "The tomatoes made it into the ground on time. They thank you.",
+   "asr": "The tomatoes made it into the ground on time. They thank you.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.attic_drying_room.after.1.ogg",
+   "dur": 6.33,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 46,
+   "ref": "The coats dried and the choir sang. The drying-room key hangs in Mr Roman's office now.",
+   "asr": "The coats dried and the choir sang. The drying room key hangs in Mr. Roman's office now.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.bike_interview.after.1.ogg",
+   "dur": 3.71,
+   "lufs": -18.1,
+   "lead_ms": 57,
+   "trail_ms": 56,
+   "ref": "I got the job. The bike is staying, but I'll write the code down.",
+   "asr": "I got the job. The bike is staying, but I'll write the code down.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.bramah_bureau.after.1.ogg",
+   "dur": 3.93,
+   "lufs": -18.0,
+   "lead_ms": 48,
+   "trail_ms": 35,
+   "ref": "The bureau is ready for restoration. The lock stays original.",
+   "asr": "The Bureau is ready for restoration. The lock stays original.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.brussels_townhouse.after.1.ogg",
+   "dur": 3.2,
+   "lufs": -18.1,
+   "lead_ms": 52,
+   "trail_ms": 51,
+   "ref": "Peace at home again. The neighbors even said bonjour.",
+   "asr": "Peace at home again. The neighbours even said bonjour.",
+   "wer": 0.111
+  },
+  {
+   "file": "en/job.carol_singers_chest.after.1.ogg",
+   "dur": 5.79,
+   "lufs": -18.2,
+   "lead_ms": 58,
+   "trail_ms": 42,
+   "ref": "We sang in one key. Almost. The stars went back into the chest in one piece.",
+   "asr": "We sang in one key, almost. The stars went back into the chest in one piece.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.cat_bathroom.after.1.ogg",
+   "dur": 4.23,
+   "lufs": -17.9,
+   "lead_ms": 49,
+   "trail_ms": 46,
+   "ref": "Potato is doing just fine. The bathroom door now stays ajar.",
+   "asr": "Potato is doing just fine. The bathroom door now stays ajar.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.charleroi_letters.after.1.ogg",
+   "dur": 3.49,
+   "lufs": -18.0,
+   "lead_ms": 24,
+   "trail_ms": 19,
+   "ref": "The letters are safe now. Mom reads one every evening.",
+   "asr": "The letters are safe now. Mom reads one every evening.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.christmas_eve_heat.after.1.ogg",
+   "dur": 6.55,
+   "lufs": -17.7,
+   "lead_ms": 57,
+   "trail_ms": 37,
+   "ref": "The radiators stayed warm all night. Your seat at the table waited till the end, with a glass of compote.",
+   "asr": "The radiators stayed warm all night. Your seat at the table waited till the end, with a glass of compote.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.community_notice_case.after.1.ogg",
+   "dur": 3.71,
+   "lufs": -17.8,
+   "lead_ms": 33,
+   "trail_ms": 32,
+   "ref": "The notices are up now. Someone already added a cat poster.",
+   "asr": "The notices are up now. Someone already added a cat poster.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.dollhouse_wooden_lock.after.1.ogg",
+   "dur": 3.62,
+   "lufs": -17.4,
+   "lead_ms": 56,
+   "trail_ms": 36,
+   "ref": "The dollhouse is open again. The dolls have tea at four.",
+   "asr": "The dollhouse is open again. The dolls have T at 4.",
+   "wer": 0.182
+  },
+  {
+   "file": "en/job.drummer_locker.after.1.ogg",
+   "dur": 3.39,
+   "lufs": -18.0,
+   "lead_ms": 44,
+   "trail_ms": 40,
+   "ref": "The rehearsal finally went ahead. Loudly.",
+   "asr": "The rehearsal finally went ahead. Loudly.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.edek_rehearsal_store.after.1.ogg",
+   "dur": 3.78,
+   "lufs": -17.7,
+   "lead_ms": 51,
+   "trail_ms": 52,
+   "ref": "The chairs are ready for the meeting. I counted them twice.",
+   "asr": "The chairs are ready for the meeting. I counted them twice.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.finnish_sailor.after.1.ogg",
+   "dur": 3.64,
+   "lufs": -17.8,
+   "lead_ms": 58,
+   "trail_ms": 48,
+   "ref": "We set sail on time. The chest is tied down now.",
+   "asr": "We set sail on time. The chest is tied down now.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.frozen_cellar_padlock.after.1.ogg",
+   "dur": 5.59,
+   "lufs": -18.0,
+   "lead_ms": 6,
+   "trail_ms": 31,
+   "ref": "The blankets were all handed out by evening. I gave the padlock a woollen sock.",
+   "asr": "The blankets were all handed out by evening. I gave the padlock a woolen sock.",
+   "wer": 0.067
+  },
+  {
+   "file": "en/job.ghent_beguinage.after.1.ogg",
+   "dur": 4.1,
+   "lufs": -18.2,
+   "lead_ms": 37,
+   "trail_ms": 26,
+   "ref": "Thank you. Everything is back in place, and quiet.",
+   "asr": "Thank you. Everything is back in place and quiet.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.gosia_workbench_drawer.after.1.ogg",
+   "dur": 3.92,
+   "lufs": -17.5,
+   "lead_ms": 55,
+   "trail_ms": 29,
+   "ref": "The bench can go to the common room. The drawer runs smoothly.",
+   "asr": "The bench can go to the common room. The drawer runs smoothly.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.grandma_broth.after.1.ogg",
+   "dur": 3.42,
+   "lufs": -18.0,
+   "lead_ms": 52,
+   "trail_ms": 18,
+   "ref": "The broth is waiting, son. You must come too.",
+   "asr": "The broth is waiting, son. You must come too.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.grandpa_chest.after.1.ogg",
+   "dur": 3.44,
+   "lufs": -18.0,
+   "lead_ms": 46,
+   "trail_ms": 53,
+   "ref": "The keepsakes are together again. The letters too.",
+   "asr": "The keepsakes are together again. The letters too.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.halina_christmas_tin.after.1.ogg",
+   "dur": 6.81,
+   "lufs": -18.2,
+   "lead_ms": 54,
+   "trail_ms": 47,
+   "ref": "The gingerbread went first, even before the borscht. And the little key was in the sugar bowl, son.",
+   "asr": "The gingerbread went first, even before the borscht, and the little pea was in the sugar bowl, son.",
+   "wer": 0.056
+  },
+  {
+   "file": "en/job.halina_recipe_box.after.1.ogg",
+   "dur": 3.23,
+   "lufs": -17.8,
+   "lead_ms": 53,
+   "trail_ms": 47,
+   "ref": "The recipes are safe. And there'll be dinner too.",
+   "asr": "The recipes are safe and they'll be dinner too.",
+   "wer": 0.111
+  },
+  {
+   "file": "en/job.heating_service_cupboard.after.1.ogg",
+   "dur": 6.64,
+   "lufs": -18.1,
+   "lead_ms": 7,
+   "trail_ms": 36,
+   "ref": "Paweł finished the inspection before nightfall. The logbook is in the cupboard, the key in the office, labelled.",
+   "asr": "Pava finished the inspection before nightfall. The logbook is in the cupboard, the key in the office, labelled.",
+   "wer": 0.056
+  },
+  {
+   "file": "en/job.kiosk_shutter.after.1.ogg",
+   "dur": 4.38,
+   "lufs": -17.9,
+   "lead_ms": 51,
+   "trail_ms": 22,
+   "ref": "The first customers came off the first bus. The papers were ready.",
+   "asr": "The first customers came off the first bus. The papers were ready.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.krakow_antiquarian.after.1.ogg",
+   "dur": 3.09,
+   "lufs": -17.9,
+   "lead_ms": 48,
+   "trail_ms": 44,
+   "ref": "Thank you for respecting the other customer's property.",
+   "asr": "Thank you for respecting the other customer's property.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.krakow_tenement_gate.after.1.ogg",
+   "dur": 3.81,
+   "lufs": -18.1,
+   "lead_ms": 2,
+   "trail_ms": 53,
+   "ref": "The residents can use the gate again. The bell is next.",
+   "asr": "The residents can use the gate again. The bell is next.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.krystyna_wooden_album.after.1.ogg",
+   "dur": 4.79,
+   "lufs": -18.1,
+   "lead_ms": 12,
+   "trail_ms": 39,
+   "ref": "The album is back with the family. Ola labeled every photo.",
+   "asr": "The album is back with the family. Ola labelled every photo.",
+   "wer": 0.091
+  },
+  {
+   "file": "en/job.liege_bakery.after.1.ogg",
+   "dur": 3.9,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 25,
+   "ref": "The first bread came out at half past four. Just in time.",
+   "asr": "The first bread came out at half past four, just in time.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.marta_poster_studio.after.1.ogg",
+   "dur": 3.48,
+   "lufs": -18.1,
+   "lead_ms": 54,
+   "trail_ms": 36,
+   "ref": "The posters are drying. Potato is supervising.",
+   "asr": "The posters are drying. Potato is supervising.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.museum_time_lock.after.1.ogg",
+   "dur": 3.75,
+   "lufs": -17.9,
+   "lead_ms": 0,
+   "trail_ms": 37,
+   "ref": "The clock is ticking at the exhibition again. In triplicate.",
+   "asr": "The clock is ticking at the exhibition again in triplicate.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.newlyweds_4am.after.1.ogg",
+   "dur": 3.93,
+   "lufs": -18.2,
+   "lead_ms": 43,
+   "trail_ms": 24,
+   "ref": "We finally caught up on sleep. The keys sleep on a hook now.",
+   "asr": "We finally caught up on sleep. The keys sleep on a hook now.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.night_nurse.after.1.ogg",
+   "dur": 4.7,
+   "lufs": -18.1,
+   "lead_ms": 50,
+   "trail_ms": 30,
+   "ref": "I slept eleven hours. The key went straight into its bowl.",
+   "asr": "I slept 11 hours. The key went straight into its bowl.",
+   "wer": 0.091
+  },
+  {
+   "file": "en/job.pizzeria_pays_pizza.after.1.ogg",
+   "dur": 4.18,
+   "lufs": -17.7,
+   "lead_ms": 50,
+   "trail_ms": 46,
+   "ref": "Everything was ready before opening today. The pizza offer stands.",
+   "asr": "Everything was ready before opening today. The pizza offer stands.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_aunt_alive.after.1.ogg",
+   "dur": 3.89,
+   "lufs": -18.0,
+   "lead_ms": 55,
+   "trail_ms": 52,
+   "ref": "Mrs Lucyna is back Friday. She'll have you change the lock then.",
+   "asr": "Mrs. Lutziner is back Friday. She'll have you change the lock then.",
+   "wer": 0.083
+  },
+  {
+   "file": "en/job.refuse_aunt_alive.after.2.ogg",
+   "dur": 3.39,
+   "lufs": -18.1,
+   "lead_ms": 11,
+   "trail_ms": 15,
+   "ref": "Good thing you said no. I wouldn't have slept a wink.",
+   "asr": "Good thing you said no. I wouldn't have slipped a wink.",
+   "wer": 0.091
+  },
+  {
+   "file": "en/job.refuse_ex_partner.after.1.ogg",
+   "dur": 4.49,
+   "lufs": -18.0,
+   "lead_ms": 49,
+   "trail_ms": 28,
+   "ref": "Thanks for calling. He collected his things with me there. The tenant agreed.",
+   "asr": "Thanks for calling. He collected his things with me there. The tenant agreed.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_ex_partner.after.2.ogg",
+   "dur": 3.91,
+   "lufs": -17.9,
+   "lead_ms": 45,
+   "trail_ms": 29,
+   "ref": "Heard it at the bus stop. You're a decent sort. Paper?",
+   "asr": "Heard it at the bus stop. You're a decent sort. Paper?",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_rush_bribe.after.1.ogg",
+   "dur": 4.0,
+   "lufs": -16.6,
+   "lead_ms": 54,
+   "trail_ms": 51,
+   "ref": "The sister knew nothing about any documents. Thank you for the call.",
+   "asr": "The sister knew nothing about any documents. Thank you for the call.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_rush_bribe.after.2.ogg",
+   "dur": 5.53,
+   "lufs": -18.0,
+   "lead_ms": 50,
+   "trail_ms": 35,
+   "ref": "Someone in a suit asked about a locksmith yesterday. I sent him to you. Sorry.",
+   "asr": "Someone in a suit asked about a locksmith yesterday. I sent him to you. Sorry.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_sisters_flat.after.1.ogg",
+   "dur": 3.93,
+   "lufs": -18.3,
+   "lead_ms": 58,
+   "trail_ms": 0,
+   "ref": "I spoke with the tenant. She asked us to wait until she's back.",
+   "asr": "I spoke with the tenant. She asked us to wait until she's back.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_t43_09_empty_flat.after.1.ogg",
+   "dur": 3.21,
+   "lufs": -18.3,
+   "lead_ms": 39,
+   "trail_ms": 35,
+   "ref": "Saturday suits the tenant. The parcel can wait.",
+   "asr": "Saturday suits the tenant. The parcel can wait.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_t43_09_empty_flat.after.2.ogg",
+   "dur": 3.99,
+   "lufs": -18.0,
+   "lead_ms": 38,
+   "trail_ms": 32,
+   "ref": "I saw that parcel again. This time it had an appointment.",
+   "asr": "I saw that parcel again. This time it had an appointment.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_t43_10_early_clearance.after.1.ogg",
+   "dur": 3.43,
+   "lufs": -18.0,
+   "lead_ms": 52,
+   "trail_ms": 57,
+   "ref": "The handover is arranged with the tenant. No rush.",
+   "asr": "The handover is arranged with the tenant. No rush.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_t43_10_early_clearance.after.2.ogg",
+   "dur": 3.6,
+   "lufs": -18.0,
+   "lead_ms": 58,
+   "trail_ms": 38,
+   "ref": "Good that they waited to talk. They agreed the date themselves.",
+   "asr": "Good that they waited to talk. They agreed the date themselves.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_t43_11_other_stall.after.1.ogg",
+   "dur": 4.07,
+   "lufs": -17.8,
+   "lead_ms": 53,
+   "trail_ms": 30,
+   "ref": "I returned the organizer's lead. I lent my neighbor a kettle.",
+   "asr": "I returned to the organiser's lead. I lent my neighbour a kettle.",
+   "wer": 0.273
+  },
+  {
+   "file": "en/job.refuse_t43_11_other_stall.after.2.ogg",
+   "dur": 3.55,
+   "lufs": -17.1,
+   "lead_ms": 56,
+   "trail_ms": 15,
+   "ref": "The fair is over; they're still neighbors. That's good.",
+   "asr": "The fair is over. They're still neighbours. That's good.",
+   "wer": 0.111
+  },
+  {
+   "file": "en/job.refuse_t43_12_surprise_key.after.1.ogg",
+   "dur": 4.66,
+   "lufs": -17.9,
+   "lead_ms": 0,
+   "trail_ms": 24,
+   "ref": "Darek asked me. The bunting is up, and I pretended to be surprised.",
+   "asr": "Derek asked me, the bunting is up and I pretended to be surprised.",
+   "wer": 0.077
+  },
+  {
+   "file": "en/job.refuse_t43_12_surprise_key.after.2.ogg",
+   "dur": 4.81,
+   "lufs": -18.0,
+   "lead_ms": 59,
+   "trail_ms": 43,
+   "ref": "There was room for everyone at the opening. Nobody had to invite themselves.",
+   "asr": "There was room for everyone at the opening. Nobody had to invite themselves.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_unapproved_repair.after.1.ogg",
+   "dur": 4.44,
+   "lufs": -17.8,
+   "lead_ms": 21,
+   "trail_ms": 40,
+   "ref": "That visit wasn't on our list. The authorized technician was already here.",
+   "asr": "That visit wasn't on our list. The authorized technician was already here.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_unapproved_stockroom.after.1.ogg",
+   "dur": 4.87,
+   "lufs": -18.2,
+   "lead_ms": 59,
+   "trail_ms": 44,
+   "ref": "They collected the parcels this morning. The shop now has better delivery hours.",
+   "asr": "They collected the parcels this morning. The shop now has better delivery hours.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.refuse_wrong_letterbox.after.1.ogg",
+   "dur": 5.41,
+   "lufs": -18.0,
+   "lead_ms": 4,
+   "trail_ms": 29,
+   "ref": "Number sixteen gave the card back. Oskar's grandma got it the day after Christmas.",
+   "asr": "Number 16 gave the card back. Oscar's grandma got it the day after Christmas.",
+   "wer": 0.143
+  },
+  {
+   "file": "en/job.roman_service_cupboard.after.1.ogg",
+   "dur": 4.08,
+   "lufs": -18.2,
+   "lead_ms": 58,
+   "trail_ms": 47,
+   "ref": "The cupboard is in order. Keys signed out, keys signed in.",
+   "asr": "The cupboard is in order. Keys signed out, keys signed in.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.shared_room_door.after.1.ogg",
+   "dur": 4.25,
+   "lufs": -17.9,
+   "lead_ms": 38,
+   "trail_ms": 58,
+   "ref": "Nobody lost a key at the first meeting. That's a promising start.",
+   "asr": "Nobody lost a key at the first meeting. That's a promising start.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.stefan_book_tin.after.1.ogg",
+   "dur": 4.49,
+   "lufs": -17.5,
+   "lead_ms": 34,
+   "trail_ms": 36,
+   "ref": "The library tokens are back in use. The first one went to Krysia.",
+   "asr": "The library tokens are back in use. The first one went to Krish.",
+   "wer": 0.077
+  },
+  {
+   "file": "en/job.student_dorm.after.1.ogg",
+   "dur": 3.86,
+   "lufs": -18.0,
+   "lead_ms": 43,
+   "trail_ms": 51,
+   "ref": "I made it to the exam. Historic locks, top marks.",
+   "asr": "I made it to the exam! Historic locks, top marks.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.swiatniki_journeyman_padlock.after.1.ogg",
+   "dur": 4.77,
+   "lufs": -18.4,
+   "lead_ms": 41,
+   "trail_ms": 56,
+   "ref": "The padlock still has a story to tell. Now it has two.",
+   "asr": "The padlock still has a story to tell. Now it has two.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_09_01_winter_keys.after.1.ogg",
+   "dur": 3.7,
+   "lufs": -18.1,
+   "lead_ms": 36,
+   "trail_ms": 37,
+   "ref": "I've moved the key now. It can't live in both coats.",
+   "asr": "I've moved the key now. It can't live in both coats.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_09_02_blanket_cupboard.after.1.ogg",
+   "dur": 3.81,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 33,
+   "ref": "The blankets came back. One neighbor stayed for tea.",
+   "asr": "The blankets came back. One neighbor stayed for tea.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_09_03_wooden_postbox.after.1.ogg",
+   "dur": 3.55,
+   "lufs": -18.0,
+   "lead_ms": 42,
+   "trail_ms": 54,
+   "ref": "Someone wrote that they'd like to live there. That's all I'm sharing.",
+   "asr": "Someone wrote that they'd like to live there. That's all I'm sharing.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_09_04_choir_case.after.1.ogg",
+   "dur": 3.76,
+   "lufs": -18.1,
+   "lead_ms": 48,
+   "trail_ms": 47,
+   "ref": "Rehearsal went without incident. Apart from the singing.",
+   "asr": "rehearsal went without incident, apart from the singing.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_09_05_receipt_safe.after.1.ogg",
+   "dur": 2.67,
+   "lufs": -18.0,
+   "lead_ms": 49,
+   "trail_ms": 35,
+   "ref": "Your receipt has a compartment of its own.",
+   "asr": "Your receipt has a compartment of its own.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_09_06_draughty_hall.after.1.ogg",
+   "dur": 4.57,
+   "lufs": -18.2,
+   "lead_ms": 36,
+   "trail_ms": 53,
+   "ref": "It closes properly. The residents reported that as good news.",
+   "asr": "It closes properly. The residents reported that as good news.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_09_08_spare_key_hook.after.1.ogg",
+   "dur": 5.37,
+   "lufs": -18.4,
+   "lead_ms": 43,
+   "trail_ms": 53,
+   "ref": "The envelope is back in my drawer. Mr Kazimierz labeled it twice this time.",
+   "asr": "The envelope is back in my drawer. Mr. Kazimierz labelled it twice this time.",
+   "wer": 0.071
+  },
+  {
+   "file": "en/job.t43_10_01_renovator_bureau.after.1.ogg",
+   "dur": 3.62,
+   "lufs": -18.0,
+   "lead_ms": 42,
+   "trail_ms": 36,
+   "ref": "The desk is in place. Someone put a mug on it straight away.",
+   "asr": "The desk is in place. Someone put a mug on it straight away.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_10_02_scaffold_store.after.1.ogg",
+   "dur": 3.09,
+   "lufs": -18.1,
+   "lead_ms": 0,
+   "trail_ms": 41,
+   "ref": "Everyone was at the briefing. Including the key.",
+   "asr": "Everyone was at the briefing, including the key.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_10_03_exhibit_clock.after.1.ogg",
+   "dur": 4.95,
+   "lufs": -18.2,
+   "lead_ms": 55,
+   "trail_ms": 38,
+   "ref": "The day-long test is complete. The clock runs; the paperwork checks out too.",
+   "asr": "The day-long test is complete. The clock runs. The paperwork checks out too.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_10_04_design_cabinet.after.1.ogg",
+   "dur": 4.33,
+   "lufs": -17.7,
+   "lead_ms": 57,
+   "trail_ms": 41,
+   "ref": "The common room has its sign. Potato wanted to sign it with a paw.",
+   "asr": "The common room has its sign. Potato wanted to sign it with a paw.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_10_05_porters_drawer.after.1.ogg",
+   "dur": 3.74,
+   "lufs": -18.0,
+   "lead_ms": 28,
+   "trail_ms": 50,
+   "ref": "The keys add up. I'll count the students after breakfast.",
+   "asr": "The keys add up. I'll count the students after breakfast.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_10_06_shared_room_entry.after.1.ogg",
+   "dur": 5.02,
+   "lufs": -18.0,
+   "lead_ms": 3,
+   "trail_ms": 36,
+   "ref": "The room smells of paint. The tea is doing its best to compete.",
+   "asr": "The room smells of paint. The tea is doing its best to compete.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_11_01_wooden_market.after.1.ogg",
+   "dur": 3.79,
+   "lufs": -17.6,
+   "lead_ms": 4,
+   "trail_ms": 35,
+   "ref": "They built a street with nothing but bakeries. Their choice.",
+   "asr": "They built a street with nothing but bakeries. Their choice.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_11_02_bicycle_stand.after.1.ogg",
+   "dur": 3.99,
+   "lufs": -18.1,
+   "lead_ms": 59,
+   "trail_ms": 54,
+   "ref": "Borys fixed my bell. My bicycle starts the conversation now.",
+   "asr": "Boris fixed my bell. My bicycle starts the conversation now.",
+   "wer": 0.1
+  },
+  {
+   "file": "en/job.t43_11_03_tool_exchange.after.1.ogg",
+   "dur": 4.27,
+   "lufs": -18.1,
+   "lead_ms": 51,
+   "trail_ms": 28,
+   "ref": "Two people came to ask where to begin. A good fair.",
+   "asr": "Two people came to ask where to begin. A good fair.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_11_04_sailors_stall.after.1.ogg",
+   "dur": 5.44,
+   "lufs": -18.1,
+   "lead_ms": 53,
+   "trail_ms": 44,
+   "ref": "The demonstration went well. The tools came home with me; the key is still sailing.",
+   "asr": "The demonstration went well. The tools came home with me. The key is still sailing.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_11_05_rehearsal_chest.after.1.ogg",
+   "dur": 4.74,
+   "lufs": -18.3,
+   "lead_ms": 51,
+   "trail_ms": 53,
+   "ref": "I heard the concert. I know that drummer; she once lost a key.",
+   "asr": "I heard the concert. I know that drummer. She once lost a key.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_11_07_wrong_delivery.after.1.ogg",
+   "dur": 5.17,
+   "lufs": -18.1,
+   "lead_ms": 46,
+   "trail_ms": 50,
+   "ref": "The recipient was pleased. So was the parcel, judging by how light the trolley felt.",
+   "asr": "The recipient was pleased. So was the parcel, judging by how light the trolley felt.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_12_01_letters_archive.after.1.ogg",
+   "dur": 4.59,
+   "lufs": -18.0,
+   "lead_ms": 50,
+   "trail_ms": 50,
+   "ref": "Martine received a photo of the display. Mom chose the picture herself.",
+   "asr": "Martine received a photo of the display. Mom chose the picture herself.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_12_02_detective_cabinet.after.1.ogg",
+   "dur": 4.08,
+   "lufs": -18.3,
+   "lead_ms": 56,
+   "trail_ms": 45,
+   "ref": "The note has two sentences. Dr Rygiel approved both.",
+   "asr": "The note has two sentences. Dr Rigel approved both.",
+   "wer": 0.111
+  },
+  {
+   "file": "en/job.t43_12_03_community_store.after.1.ogg",
+   "dur": 5.39,
+   "lufs": -17.8,
+   "lead_ms": 20,
+   "trail_ms": 48,
+   "ref": "Everyone had a seat. Anyone wanting seconds had to get up for a moment.",
+   "asr": "Everyone had a seat. Anyone wanting seconds had to get up for a moment.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_12_04_school_box.after.1.ogg",
+   "dur": 4.59,
+   "lufs": -18.1,
+   "lead_ms": 0,
+   "trail_ms": 34,
+   "ref": "Everyone brought one photo. Marta brought a cat in hers too.",
+   "asr": "Everyone brought one photo. Marta brought a cat in hers too.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_12_05_tea_fund_case.after.1.ogg",
+   "dur": 3.89,
+   "lufs": -18.2,
+   "lead_ms": 36,
+   "trail_ms": 43,
+   "ref": "Accounts settled. More tea left than we expected.",
+   "asr": "Accounts settled. More tea left than we expected.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_12_07_clock_back_home.after.1.ogg",
+   "dur": 4.34,
+   "lufs": -18.2,
+   "lead_ms": 55,
+   "trail_ms": 16,
+   "ref": "It ran evenly all day. The clock can return to the display.",
+   "asr": "It ran evenly all day. The clock can return to the display.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_12_08_henryks_bench.after.1.ogg",
+   "dur": 3.95,
+   "lufs": -18.2,
+   "lead_ms": 47,
+   "trail_ms": 39,
+   "ref": "The broth is waiting. Bring the apprentice this time too.",
+   "asr": "The broth is waiting. Bring the apprentice this time too.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.t43_12_08_henryks_bench.after.2.ogg",
+   "dur": 3.4,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 52,
+   "ref": "I closed the workshop. I checked the key before leaving.",
+   "asr": "I closed the workshop. I checked the key before leaving.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.time_capsule.after.1.ogg",
+   "dur": 3.77,
+   "lufs": -18.1,
+   "lead_ms": 45,
+   "trail_ms": 35,
+   "ref": "The class met again. I remembered everyone's name.",
+   "asr": "The class met again. I remembered everyone's name.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.uncle_safe_heirs.after.1.ogg",
+   "dur": 2.45,
+   "lufs": -18.3,
+   "lead_ms": 50,
+   "trail_ms": 56,
+   "ref": "Thank you for waiting until we could all agree.",
+   "asr": "Thank you for waiting until we could all agree.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.warm_room_for_neighbours.after.1.ogg",
+   "dur": 5.78,
+   "lufs": -18.1,
+   "lead_ms": 0,
+   "trail_ms": 41,
+   "ref": "The neighbours slept warm. Potato inspected every blanket and approved none of them.",
+   "asr": "The neighbours slept warm. Potato inspected every blanket and approved none of them.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.widow_bureau.after.1.ogg",
+   "dur": 4.7,
+   "lufs": -18.1,
+   "lead_ms": 26,
+   "trail_ms": 3,
+   "ref": "The bureau is tidy again. What he kept, I am keeping too.",
+   "asr": "The bureau is tidy again. What he kept, I'm keeping too.",
+   "wer": 0.167
+  },
+  {
+   "file": "en/job.wigilia_table_drawer.after.1.ogg",
+   "dur": 4.62,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 39,
+   "ref": "Every place card found its seat. That one chair is still waiting for you.",
+   "asr": "Every place card found its seat. That one chair is still waiting for you.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.winter_bicycle_cellar.after.1.ogg",
+   "dur": 5.48,
+   "lufs": -17.9,
+   "lead_ms": 58,
+   "trail_ms": 45,
+   "ref": "The last parcel arrived on the thirty-first. The padlock spends the winter under a cover now.",
+   "asr": "The last parcel arrived on the 31st. The padlock spends the winter under a cover now.",
+   "wer": 0.118
+  },
+  {
+   "file": "en/job.wooden_winter_village.after.1.ogg",
+   "dur": 5.94,
+   "lufs": -18.2,
+   "lead_ms": 53,
+   "trail_ms": 44,
+   "ref": "The exhibition is open. Dr Rygiel counted the snowflakes on the model, and every one is there.",
+   "asr": "The exhibition is open. Dr. Rigel counted the snowflakes on the model, and everyone is there.",
+   "wer": 0.176
+  },
+  {
+   "file": "en/job.wrong_floor.after.1.ogg",
+   "dur": 5.49,
+   "lufs": -18.1,
+   "lead_ms": 52,
+   "trail_ms": 35,
+   "ref": "You're the locksmith who didn't open my door? I baked you a cake. For not opening it.",
+   "asr": "You're the locksmith who didn't open my door. I baked you a cake for not opening it.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.zuzanna_catalogue_drawer.after.1.ogg",
+   "dur": 3.79,
+   "lufs": -18.1,
+   "lead_ms": 50,
+   "trail_ms": 51,
+   "ref": "The copies are ready for the common room. The originals stay in the drawer.",
+   "asr": "The copies are ready for the common room. The originals stay in the drawer.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.allotment_shed.after.1.ogg",
+   "dur": 4.42,
+   "lufs": -18.2,
+   "lead_ms": 57,
+   "trail_ms": 40,
+   "ref": "Die Tomaten sind rechtzeitig in die Erde gekommen. Sie danken Ihnen.",
+   "asr": "Die Tomaten sind rechtzeitig in die Erde gekommen. Sie danken ihnen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.attic_drying_room.after.1.ogg",
+   "dur": 6.63,
+   "lufs": -18.0,
+   "lead_ms": 41,
+   "trail_ms": 46,
+   "ref": "Die Mäntel sind trocken, der Chor hat gesungen. Der Schlüssel zum Trockenraum hängt jetzt bei Herrn Roman.",
+   "asr": "Die Mäntel sind trocken, der Chor hat gesungen. Der Schlüssel zum Trockenraum hängt jetzt bei Herrn Roman.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.bike_interview.after.1.ogg",
+   "dur": 4.54,
+   "lufs": -18.0,
+   "lead_ms": 52,
+   "trail_ms": 48,
+   "ref": "Ich habe den Job bekommen. Das Fahrrad bleibt, den Code schreibe ich mir auf.",
+   "asr": "Ich habe den Job bekommen. Das Fahrrad bleibt. Den Code schreibe ich mir auf.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.bramah_bureau.after.1.ogg",
+   "dur": 4.37,
+   "lufs": -18.0,
+   "lead_ms": 39,
+   "trail_ms": 26,
+   "ref": "Der Sekretär ist bereit für die Restaurierung. Das Schloss bleibt original.",
+   "asr": "Der Sekretär ist bereit für die Restaurierung. Das Schloss bleibt original.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.brussels_townhouse.after.1.ogg",
+   "dur": 3.77,
+   "lufs": -18.1,
+   "lead_ms": 37,
+   "trail_ms": 44,
+   "ref": "Zu Hause ist wieder Ruhe. Die Nachbarn haben sogar bonjour gesagt.",
+   "asr": "Zu Hause ist wieder Ruhe. Die Nachbarn haben sogar Bonjour gesagt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.carol_singers_chest.after.1.ogg",
+   "dur": 5.78,
+   "lufs": -17.9,
+   "lead_ms": 25,
+   "trail_ms": 44,
+   "ref": "Wir haben in einer Tonart gesungen. Fast. Die Sterne liegen heil wieder in der Truhe.",
+   "asr": "Wir haben in einer Tonart gesungen. Fast. Die Sterne liegen heil wieder in der Truhe.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.cat_bathroom.after.1.ogg",
+   "dur": 4.48,
+   "lufs": -17.9,
+   "lead_ms": 0,
+   "trail_ms": 42,
+   "ref": "Kartoffel geht es bestens. Die Badezimmertür bleibt jetzt angelehnt.",
+   "asr": "Kartoffel geht es bestens. Die Badezimmertür bleibt jetzt angelehnt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.charleroi_letters.after.1.ogg",
+   "dur": 3.9,
+   "lufs": -18.0,
+   "lead_ms": 50,
+   "trail_ms": 36,
+   "ref": "Die Briefe sind jetzt in Sicherheit. Mama liest jeden Abend einen.",
+   "asr": "Die Briefe sind jetzt in Sicherheit. Mama liest jeden Abend einen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.christmas_eve_heat.after.1.ogg",
+   "dur": 6.51,
+   "lufs": -18.1,
+   "lead_ms": 12,
+   "trail_ms": 14,
+   "ref": "Die Heizkörper blieben die ganze Nacht warm. Ihr Platz am Tisch hat bis zum Schluss gewartet, samt Kompott.",
+   "asr": "Die Heizkörper blieben die ganze Nacht warm. Ihr Platz am Tisch hat bis zum Schluss gewartet. Samt kompot!",
+   "wer": 0.056
+  },
+  {
+   "file": "de/job.community_notice_case.after.1.ogg",
+   "dur": 4.34,
+   "lufs": -17.9,
+   "lead_ms": 0,
+   "trail_ms": 45,
+   "ref": "Die Aushänge hängen jetzt. Jemand hat schon ein Katzenplakat dazugehängt.",
+   "asr": "Die Aushänge hängen jetzt. Jemand hat schon einen Katzenplakat dazu gehängt.",
+   "wer": 0.3
+  },
+  {
+   "file": "de/job.dollhouse_wooden_lock.after.1.ogg",
+   "dur": 4.06,
+   "lufs": -17.6,
+   "lead_ms": 56,
+   "trail_ms": 36,
+   "ref": "Das Puppenhaus ist wieder offen. Die Puppen trinken um vier Tee.",
+   "asr": "Das Puppenhaus ist wieder offen. Die Puppen trinken um 4 Tee.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.drummer_locker.after.1.ogg",
+   "dur": 3.36,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 21,
+   "ref": "Die Probe hat endlich stattgefunden. Laut.",
+   "asr": "Die Probe hat endlich stattgefunden. Laut.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.edek_rehearsal_store.after.1.ogg",
+   "dur": 4.97,
+   "lufs": -17.8,
+   "lead_ms": 17,
+   "trail_ms": 56,
+   "ref": "Die Stühle stehen für die Versammlung bereit. Ich habe zweimal gezählt.",
+   "asr": "Die Stühle stehen für die Versammlung bereit. Ich habe zweimal gezählt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.finnish_sailor.after.1.ogg",
+   "dur": 4.25,
+   "lufs": -18.1,
+   "lead_ms": 49,
+   "trail_ms": 44,
+   "ref": "Wir sind pünktlich ausgelaufen. Die Kiste ist jetzt festgezurrt.",
+   "asr": "Wir sind pünktlich ausgelaufen. Die Kiste ist jetzt festgezelt.",
+   "wer": 0.111
+  },
+  {
+   "file": "de/job.frozen_cellar_padlock.after.1.ogg",
+   "dur": 6.54,
+   "lufs": -17.6,
+   "lead_ms": 10,
+   "trail_ms": 50,
+   "ref": "Bis zum Abend waren alle Decken verteilt. Das Vorhängeschloss hat von mir eine Wollsocke bekommen.",
+   "asr": "Bis zum Abend waren alle Decken verteilt. Das Vorhängeschloss hat von mir eine Wollsocke bekommen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.ghent_beguinage.after.1.ogg",
+   "dur": 5.0,
+   "lufs": -18.2,
+   "lead_ms": 2,
+   "trail_ms": 32,
+   "ref": "Danke. Alles ist wieder an seinem Platz. Und es ist still.",
+   "asr": "Danke, alles ist wieder an seinem Platz und es ist still.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.gosia_workbench_drawer.after.1.ogg",
+   "dur": 4.28,
+   "lufs": -18.0,
+   "lead_ms": 45,
+   "trail_ms": 44,
+   "ref": "Die Werkbank kann in den Gemeinschaftsraum. Die Schublade läuft leicht.",
+   "asr": "Die Werkbank kann in den Gemeinschaftsraum. Die Schublade läuft leicht.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.grandma_broth.after.1.ogg",
+   "dur": 3.39,
+   "lufs": -17.9,
+   "lead_ms": 55,
+   "trail_ms": 43,
+   "ref": "Die Suppe wartet, mein Junge. Sie müssen auch kommen.",
+   "asr": "Die Suppe wartet mein Junge. Sie müssen auch kommen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.grandpa_chest.after.1.ogg",
+   "dur": 4.16,
+   "lufs": -17.6,
+   "lead_ms": 14,
+   "trail_ms": 44,
+   "ref": "Die Erinnerungsstücke sind wieder beisammen. Die Briefe auch.",
+   "asr": "Die Erinnerungsstücke sind wieder beisammen. Die Briefe auch.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.halina_christmas_tin.after.1.ogg",
+   "dur": 7.45,
+   "lufs": -18.3,
+   "lead_ms": 52,
+   "trail_ms": 29,
+   "ref": "Die Lebkuchen waren als Erstes weg, noch vor dem Borschtsch. Und das Schlüsselchen lag in der Zuckerdose, mein Junge.",
+   "asr": "Die Lebkuchen waren als erstes weg, noch vor dem Bost. Und das Schlüsselchen lag in der Zuckerdose, mein Junge.",
+   "wer": 0.053
+  },
+  {
+   "file": "de/job.halina_recipe_box.after.1.ogg",
+   "dur": 3.62,
+   "lufs": -18.1,
+   "lead_ms": 48,
+   "trail_ms": 20,
+   "ref": "Die Rezepte sind heil. Und Essen gibt es auch.",
+   "asr": "Die Rezepte sind heil und Essen gibt es auch.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.heating_service_cupboard.after.1.ogg",
+   "dur": 7.2,
+   "lufs": -18.1,
+   "lead_ms": 2,
+   "trail_ms": 45,
+   "ref": "Paweł hat die Prüfung vor Einbruch der Nacht abgeschlossen. Das Wartungsbuch liegt im Schrank, der Schlüssel beschriftet im Büro.",
+   "asr": "Pawe hat die Prüfung vor Einbruch der Nacht abgeschlossen. Das Wartungsbuch liegt im Schrank. Der Schlüssel beschriftet im Büro.",
+   "wer": 0.053
+  },
+  {
+   "file": "de/job.kiosk_shutter.after.1.ogg",
+   "dur": 4.98,
+   "lufs": -17.7,
+   "lead_ms": 43,
+   "trail_ms": 34,
+   "ref": "Die ersten Kunden kamen mit dem ersten Bus. Die Zeitungen lagen bereit.",
+   "asr": "Die ersten Kunden kamen mit dem ersten Bus. Die Zeitungen lagen bereit.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.krakow_antiquarian.after.1.ogg",
+   "dur": 4.32,
+   "lufs": -18.0,
+   "lead_ms": 52,
+   "trail_ms": 42,
+   "ref": "Danke, dass Sie das Eigentum des anderen Kunden respektiert haben.",
+   "asr": "Danke, dass Sie das Eigentum des anderen Kunden respektiert haben.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.krakow_tenement_gate.after.1.ogg",
+   "dur": 4.34,
+   "lufs": -18.1,
+   "lead_ms": 5,
+   "trail_ms": 31,
+   "ref": "Die Bewohner können das Tor wieder nutzen. Als Nächstes die Klingel.",
+   "asr": "Die Bewohner können das Tor wieder nutzen. Als nächstes die Klingel.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.krystyna_wooden_album.after.1.ogg",
+   "dur": 5.14,
+   "lufs": -17.9,
+   "lead_ms": 8,
+   "trail_ms": 50,
+   "ref": "Das Album ist wieder bei der Familie. Ola hat jedes Foto beschriftet.",
+   "asr": "Das Album ist wieder bei der Familie. Ola hat jedes Foto beschriftet.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.liege_bakery.after.1.ogg",
+   "dur": 4.62,
+   "lufs": -18.0,
+   "lead_ms": 7,
+   "trail_ms": 17,
+   "ref": "Das erste Brot kam um halb fünf aus dem Ofen. Gerade rechtzeitig.",
+   "asr": "Das erste Brot kam um halb fünf aus dem Ofen, gerade rechtzeitig.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.marta_poster_studio.after.1.ogg",
+   "dur": 3.31,
+   "lufs": -18.1,
+   "lead_ms": 57,
+   "trail_ms": 39,
+   "ref": "Die Plakate trocknen. Kartoffel führt die Aufsicht.",
+   "asr": "Die Plakate trocknen. Kartoffel führt die Aufsicht.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.museum_time_lock.after.1.ogg",
+   "dur": 4.26,
+   "lufs": -18.1,
+   "lead_ms": 41,
+   "trail_ms": 28,
+   "ref": "Die Uhr tickt wieder in der Ausstellung. In dreifacher Ausfertigung.",
+   "asr": "Die Uhr tickt wieder in der Ausstellung, in dreifacher Ausfertigung.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.newlyweds_4am.after.1.ogg",
+   "dur": 4.28,
+   "lufs": -17.9,
+   "lead_ms": 36,
+   "trail_ms": 39,
+   "ref": "Wir haben endlich ausgeschlafen. Die Schlüssel schlafen jetzt am Haken.",
+   "asr": "Wir haben endlich ausgeschlafen. Die Schlüssel schlafen jetzt am Haken.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.night_nurse.after.1.ogg",
+   "dur": 4.95,
+   "lufs": -18.6,
+   "lead_ms": 50,
+   "trail_ms": 41,
+   "ref": "Ich habe elf Stunden geschlafen. Der Schlüssel liegt jetzt in seiner Schale.",
+   "asr": "Ich habe elf Stunden geschlafen. Der Schwisse liegt jetzt in seiner Schale.",
+   "wer": 0.083
+  },
+  {
+   "file": "de/job.pizzeria_pays_pizza.after.1.ogg",
+   "dur": 4.19,
+   "lufs": -18.1,
+   "lead_ms": 41,
+   "trail_ms": 50,
+   "ref": "Heute war vor der Öffnung alles fertig. Das Pizza-Angebot gilt noch.",
+   "asr": "Heute war vor der Öffnung alles fertig. Das Pizzaangebot gilt noch.",
+   "wer": 0.167
+  },
+  {
+   "file": "de/job.refuse_aunt_alive.after.1.ogg",
+   "dur": 5.34,
+   "lufs": -18.0,
+   "lead_ms": 20,
+   "trail_ms": 54,
+   "ref": "Frau Lucyna kommt am Freitag zurück. Dann lässt sie das Schloss mit Ihrer Hilfe austauschen.",
+   "asr": "Frau Lucina kommt am Freitag zurück. Dann lässt sie das Schloss mit ihrer Hilfe austauschen.",
+   "wer": 0.067
+  },
+  {
+   "file": "de/job.refuse_aunt_alive.after.2.ogg",
+   "dur": 3.86,
+   "lufs": -18.3,
+   "lead_ms": 19,
+   "trail_ms": 0,
+   "ref": "Gut, dass Sie Nein gesagt haben. Ich hätte kein Auge zugetan.",
+   "asr": "Gut, dass Sie nein gesagt haben. Ich hätte kein Auge zu betern.",
+   "wer": 0.182
+  },
+  {
+   "file": "de/job.refuse_ex_partner.after.1.ogg",
+   "dur": 6.53,
+   "lufs": -17.5,
+   "lead_ms": 60,
+   "trail_ms": 56,
+   "ref": "Gut, dass Sie angerufen haben. Er hat seine Sachen in meiner Anwesenheit geholt; die Mieterin war einverstanden.",
+   "asr": "Gut, dass Sie angerufen haben. Er hat seine Sachen in meiner Anwesenheit geholt. Die Mieterin war einverstanden.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_ex_partner.after.2.ogg",
+   "dur": 5.02,
+   "lufs": -18.1,
+   "lead_ms": 38,
+   "trail_ms": 0,
+   "ref": "An der Bushaltestelle gehört. Sie sind ein anständiger Mensch. Eine Zeitung?",
+   "asr": "An der Bushaltestelle gehört. Sie sind ein anständiger Mensch. Eine Zeitung?",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_rush_bribe.after.1.ogg",
+   "dur": 4.65,
+   "lufs": -18.0,
+   "lead_ms": 54,
+   "trail_ms": 49,
+   "ref": "Die Schwester wusste nichts von irgendwelchen Unterlagen. Danke für Ihren Anruf.",
+   "asr": "Die Schwester wusste nichts von irgendwelchen Unterlagen. Danke für ihren Anruf.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_rush_bribe.after.2.ogg",
+   "dur": 6.44,
+   "lufs": -18.3,
+   "lead_ms": 1,
+   "trail_ms": 27,
+   "ref": "Gestern fragte ein Mann im Anzug nach einem Schlüsseldienst. Ich habe ihn zu Ihnen geschickt. Tut mir leid.",
+   "asr": "Gestern fragte ein Mann im Anzug nach einem Schlüsseldienst. Ich habe ihn zu ihnen geschickt. Tut mir leid.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_sisters_flat.after.1.ogg",
+   "dur": 4.69,
+   "lufs": -18.0,
+   "lead_ms": 42,
+   "trail_ms": 56,
+   "ref": "Ich habe mit der Mieterin gesprochen. Sie bittet, bis zu ihrer Rückkehr zu warten.",
+   "asr": "Ich habe mit der Mieterin gesprochen. Sie bittet, bis zu ihrer Rückkehr zu warten.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_t43_09_empty_flat.after.1.ogg",
+   "dur": 3.41,
+   "lufs": -17.8,
+   "lead_ms": 59,
+   "trail_ms": 47,
+   "ref": "Der Mieterin passt Samstag. Das Paket kann warten.",
+   "asr": "Der Mieterin passt Samstag. Das Paket kann wapen.",
+   "wer": 0.125
+  },
+  {
+   "file": "de/job.refuse_t43_09_empty_flat.after.2.ogg",
+   "dur": 4.22,
+   "lufs": -18.0,
+   "lead_ms": 33,
+   "trail_ms": 28,
+   "ref": "Ich habe das Paket wiedergesehen. Diesmal hatte es einen Termin.",
+   "asr": "Ich habe das Paket wieder gesehen. Diesmal hatte es einen Termin.",
+   "wer": 0.2
+  },
+  {
+   "file": "de/job.refuse_t43_10_early_clearance.after.1.ogg",
+   "dur": 3.73,
+   "lufs": -17.6,
+   "lead_ms": 0,
+   "trail_ms": 18,
+   "ref": "Die Übergabe ist mit dem Mieter vereinbart. Ohne Eile.",
+   "asr": "Die Abergabe ist mit dem Mieter vereinbart. Ohne Eile.",
+   "wer": 0.111
+  },
+  {
+   "file": "de/job.refuse_t43_10_early_clearance.after.2.ogg",
+   "dur": 4.38,
+   "lufs": -17.7,
+   "lead_ms": 59,
+   "trail_ms": 29,
+   "ref": "Gut, dass sie erst geredet haben. Den Termin haben sie selbst vereinbart.",
+   "asr": "Gut, dass Sie erst geredet haben. Den Termin haben Sie selbst vereinbart.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_t43_11_other_stall.after.1.ogg",
+   "dur": 5.08,
+   "lufs": -18.1,
+   "lead_ms": 44,
+   "trail_ms": 45,
+   "ref": "Das Kabel ist zurück beim Veranstalter. Dem Nachbarn habe ich einen Wasserkocher geliehen.",
+   "asr": "Das Kabel ist zurück beim Veranstalter. Dem Nachbarn habe ich einen Wasserkocher geliehen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_t43_11_other_stall.after.2.ogg",
+   "dur": 4.4,
+   "lufs": -18.1,
+   "lead_ms": 42,
+   "trail_ms": 27,
+   "ref": "Der Markt ist vorbei, die Nachbarschaft ist geblieben. Das ist gut.",
+   "asr": "Der Markt ist vorbei. Die Nachbarschaft ist geblieben. Das ist gut.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_t43_12_surprise_key.after.1.ogg",
+   "dur": 4.66,
+   "lufs": -18.3,
+   "lead_ms": 0,
+   "trail_ms": 23,
+   "ref": "Darek hat gefragt. Die Girlande hängt, und ich habe überrascht getan.",
+   "asr": "Darik hat gefragt. Die Gelande hängt und ich habe überrascht getan.",
+   "wer": 0.182
+  },
+  {
+   "file": "de/job.refuse_t43_12_surprise_key.after.2.ogg",
+   "dur": 4.69,
+   "lufs": -17.5,
+   "lead_ms": 37,
+   "trail_ms": 19,
+   "ref": "Bei der Eröffnung war Platz für alle. Niemand musste sich selbst einladen.",
+   "asr": "Bei der Eröffnung war Platz für alle. Niemand musste sich selbst einladen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_unapproved_repair.after.1.ogg",
+   "dur": 4.73,
+   "lufs": -18.0,
+   "lead_ms": 0,
+   "trail_ms": 33,
+   "ref": "Der Besuch stand nicht auf unserer Liste. Der beauftragte Techniker war schon da.",
+   "asr": "Der Besuch stand nicht auf unserer Liste. Der beauftragte Techniker war schon da.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_unapproved_stockroom.after.1.ogg",
+   "dur": 5.21,
+   "lufs": -17.7,
+   "lead_ms": 53,
+   "trail_ms": 28,
+   "ref": "Die Pakete wurden heute Morgen abgeholt. Der Laden hat jetzt bessere Lieferzeiten.",
+   "asr": "Die Pakete wurden heute Morgen abgeholt. Der Laden hat jetzt bessere Lieferzeiten.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.refuse_wrong_letterbox.after.1.ogg",
+   "dur": 5.38,
+   "lufs": -18.0,
+   "lead_ms": 0,
+   "trail_ms": 32,
+   "ref": "Die Sechzehn hat die Karte zurückgegeben. Oskars Oma bekam sie am zweiten Weihnachtstag.",
+   "asr": "Die 16 hat die Karte zurückgegeben. Oskars Oma bekam sie am zweiten Weihnachtstag.",
+   "wer": 0.077
+  },
+  {
+   "file": "de/job.roman_service_cupboard.after.1.ogg",
+   "dur": 4.6,
+   "lufs": -18.2,
+   "lead_ms": 2,
+   "trail_ms": 55,
+   "ref": "Der Schrank ist in Ordnung. Schlüssel ausgegeben, Schlüssel zurück.",
+   "asr": "Der Schrank ist in Ordnung. Schlüssel ausgegeben, Schlüssel zurück.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.shared_room_door.after.1.ogg",
+   "dur": 5.05,
+   "lufs": -17.9,
+   "lead_ms": 26,
+   "trail_ms": 52,
+   "ref": "Bei der ersten Versammlung hat niemand einen Schlüssel verloren. Ein guter Anfang.",
+   "asr": "Bei der ersten Versammlung hat niemand einen Schlüssel verloren. Ein guter Anfang.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.stefan_book_tin.after.1.ogg",
+   "dur": 4.63,
+   "lufs": -17.6,
+   "lead_ms": 59,
+   "trail_ms": 35,
+   "ref": "Die Bücherei-Marken sind wieder im Umlauf. Die erste hat Krysia bekommen.",
+   "asr": "Die Büchereimarken sind wieder im Umlauf. Die Erste hat Krischer bekommen.",
+   "wer": 0.25
+  },
+  {
+   "file": "de/job.student_dorm.after.1.ogg",
+   "dur": 4.13,
+   "lufs": -18.1,
+   "lead_ms": 48,
+   "trail_ms": 51,
+   "ref": "Ich war pünktlich zur Prüfung. Historische Schlösser, Bestnote.",
+   "asr": "Ich war pünktlich zur Prüfung. Historische Schlösser. Bestnote.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.swiatniki_journeyman_padlock.after.1.ogg",
+   "dur": 4.89,
+   "lufs": -18.3,
+   "lead_ms": 43,
+   "trail_ms": 30,
+   "ref": "Das Vorhängeschloss hat noch eine Geschichte. Jetzt hat es zwei.",
+   "asr": "Das Vorhänge-Schloss hat noch eine Geschichte. Jetzt hat es zwei.",
+   "wer": 0.2
+  },
+  {
+   "file": "de/job.t43_09_01_winter_keys.after.1.ogg",
+   "dur": 4.78,
+   "lufs": -18.4,
+   "lead_ms": 36,
+   "trail_ms": 39,
+   "ref": "Den Schlüssel habe ich umgesteckt. In beiden Mänteln kann er nicht wohnen.",
+   "asr": "Den Schlüssel habe ich umgesteckt. In beiden Mänteln kann er nicht wohnen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_09_02_blanket_cupboard.after.1.ogg",
+   "dur": 3.85,
+   "lufs": -18.0,
+   "lead_ms": 13,
+   "trail_ms": 43,
+   "ref": "Die Decken sind zurück. Ein Nachbar ist zum Tee geblieben.",
+   "asr": "Die Decken sind zurück. Ein Nachbar ist zum Tee geblieben.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_09_03_wooden_postbox.after.1.ogg",
+   "dur": 4.38,
+   "lufs": -17.9,
+   "lead_ms": 37,
+   "trail_ms": 43,
+   "ref": "Jemand hat geschrieben, dass er gern dort wohnen würde. Mehr verrate ich nicht.",
+   "asr": "Jemand hat geschrieben, dass er gern dort wohnen würde. Mehr verrate ich nicht.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_09_04_choir_case.after.1.ogg",
+   "dur": 4.08,
+   "lufs": -18.0,
+   "lead_ms": 7,
+   "trail_ms": 31,
+   "ref": "Die Probe lief ohne Zwischenfälle. Abgesehen vom Gesang.",
+   "asr": "Die Probe lief ohne Zwischenfälle, abgesehen vom Gesang.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_09_05_receipt_safe.after.1.ogg",
+   "dur": 2.85,
+   "lufs": -18.0,
+   "lead_ms": 52,
+   "trail_ms": 37,
+   "ref": "Ihre Rechnung hat ein eigenes Fach bekommen.",
+   "asr": "Ihre Rechnung hat ein eigenes Fach bekommen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_09_06_draughty_hall.after.1.ogg",
+   "dur": 4.77,
+   "lufs": -18.2,
+   "lead_ms": 0,
+   "trail_ms": 30,
+   "ref": "Sie schließt richtig. Die Bewohner haben das als gute Nachricht gemeldet.",
+   "asr": "Sie schlieht richtig. Die Bewohner haben das als gute Nachricht gemeldet.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.t43_09_08_spare_key_hook.after.1.ogg",
+   "dur": 4.51,
+   "lufs": -17.8,
+   "lead_ms": 48,
+   "trail_ms": 43,
+   "ref": "Der Umschlag ist wieder in meiner Schublade. Diesmal doppelt beschriftet.",
+   "asr": "Der Umschlag ist wieder in meiner Schublade. Diesmal doppelt beschriftet.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_10_01_renovator_bureau.after.1.ogg",
+   "dur": 4.13,
+   "lufs": -18.1,
+   "lead_ms": 49,
+   "trail_ms": 20,
+   "ref": "Der Schreibtisch steht. Jemand hat sofort eine Tasse draufgestellt.",
+   "asr": "Der Schreibtisch steht. Jemand hat sofort eine Tasse draufgestellt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_10_02_scaffold_store.after.1.ogg",
+   "dur": 3.38,
+   "lufs": -18.1,
+   "lead_ms": 50,
+   "trail_ms": 22,
+   "ref": "Bei der Besprechung waren alle da. Auch der Schlüssel.",
+   "asr": "Bei der Besprechung waren alle da. Auch der Schlüssel.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_10_03_exhibit_clock.after.1.ogg",
+   "dur": 4.97,
+   "lufs": -18.2,
+   "lead_ms": 40,
+   "trail_ms": 32,
+   "ref": "Der Tagestest ist abgeschlossen. Das Uhrwerk läuft, das Protokoll stimmt auch.",
+   "asr": "Der Tagestest ist abgeschlossen. Das Uhrwerk läuft. Das Protokoll stimmt auch.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_10_04_design_cabinet.after.1.ogg",
+   "dur": 4.74,
+   "lufs": -17.8,
+   "lead_ms": 41,
+   "trail_ms": 52,
+   "ref": "Der Gemeinschaftsraum hat sein Schild. Kartoffel wollte mit der Pfote unterschreiben.",
+   "asr": "Der Gemeinschaftsraum hat sein Schild. Kartoffel wollte mit der Pfote unterschreiben.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_10_05_porters_drawer.after.1.ogg",
+   "dur": 4.18,
+   "lufs": -18.2,
+   "lead_ms": 36,
+   "trail_ms": 59,
+   "ref": "Die Schlüssel stimmen. Die Studenten zähle ich nach dem Frühstück.",
+   "asr": "Die Schlüssel stimmen. Die Studenten zähle ich nach dem Frühstück.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_10_06_shared_room_entry.after.1.ogg",
+   "dur": 4.69,
+   "lufs": -18.0,
+   "lead_ms": 1,
+   "trail_ms": 46,
+   "ref": "Der Raum riecht nach Farbe. Der Tee gibt sein Bestes dagegen.",
+   "asr": "Der Raum riecht nach Farbe. Der Tee gibt sein Bestes dagegen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_11_01_wooden_market.after.1.ogg",
+   "dur": 4.04,
+   "lufs": -17.8,
+   "lead_ms": 27,
+   "trail_ms": 49,
+   "ref": "Es ist eine Straße nur mit Bäckereien geworden. Ihre Wahl.",
+   "asr": "Es ist eine Straße nur mit Bäckereien geworden. Ihre Wahl.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_11_02_bicycle_stand.after.1.ogg",
+   "dur": 4.13,
+   "lufs": -18.0,
+   "lead_ms": 23,
+   "trail_ms": 56,
+   "ref": "Borys hat meine Klingel repariert. Jetzt fängt mein Rad das Gespräch an.",
+   "asr": "Boris hat meine Klingel repariert. Jetzt fängt mein Rad das Gespräch an.",
+   "wer": 0.083
+  },
+  {
+   "file": "de/job.t43_11_03_tool_exchange.after.1.ogg",
+   "dur": 5.86,
+   "lufs": -18.2,
+   "lead_ms": 8,
+   "trail_ms": 26,
+   "ref": "Zwei Leute kamen und fragten, womit man anfängt. Ein guter Markt.",
+   "asr": "Zwei Leute kamen und fragten, womit man anfängt. Ein guter Markt.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_11_04_sailors_stall.after.1.ogg",
+   "dur": 5.41,
+   "lufs": -18.1,
+   "lead_ms": 49,
+   "trail_ms": 56,
+   "ref": "Die Vorführung lief gut. Das Werkzeug ist wieder bei mir, der Schlüssel segelt noch.",
+   "asr": "Die Vorführung lief gut. Das Werkzeug ist wieder bei mir. Der Schlüssel segelt noch.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_11_05_rehearsal_chest.after.1.ogg",
+   "dur": 5.48,
+   "lufs": -18.0,
+   "lead_ms": 55,
+   "trail_ms": 49,
+   "ref": "Ich war beim Konzert. Die Schlagzeugerin kenne ich, sie hat mal einen Schlüssel verloren.",
+   "asr": "Ich war beim Konzert. Die Schlagzeugerin kenne ich. Sie hat mal einen Schlüssel verloren.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_11_07_wrong_delivery.after.1.ogg",
+   "dur": 5.03,
+   "lufs": -18.2,
+   "lead_ms": 34,
+   "trail_ms": 42,
+   "ref": "Der Empfänger hat sich gefreut. Das Paket auch, nach der leichten Sackkarre zu urteilen.",
+   "asr": "Der Empfänger hat sich gefreut, das Paket auch nach der leichten Sackkare zu urteilen.",
+   "wer": 0.071
+  },
+  {
+   "file": "de/job.t43_12_01_letters_archive.after.1.ogg",
+   "dur": 4.87,
+   "lufs": -18.1,
+   "lead_ms": 51,
+   "trail_ms": 54,
+   "ref": "Martine hat ein Foto der Ausstellung bekommen. Mama hat das Bild selbst ausgesucht.",
+   "asr": "Martine hat ein Foto der Ausstellung bekommen. Mama hat das Bild selbst ausgesucht.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_12_02_detective_cabinet.after.1.ogg",
+   "dur": 4.27,
+   "lufs": -17.9,
+   "lead_ms": 55,
+   "trail_ms": 51,
+   "ref": "Die Notiz hat zwei Sätze. Frau Doktor hat beide abgezeichnet.",
+   "asr": "Die Notiz hat zwei Sätze. Frau Doktor hat beide abgezeichnet.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_12_03_community_store.after.1.ogg",
+   "dur": 4.97,
+   "lufs": -18.3,
+   "lead_ms": 4,
+   "trail_ms": 57,
+   "ref": "Alle hatten einen Platz. Wer Nachschlag wollte, musste kurz aufstehen.",
+   "asr": "Alle hatten einen Platz. Wer Nachschlag wollte, musste kurz aufstehen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_12_04_school_box.after.1.ogg",
+   "dur": 4.27,
+   "lufs": -18.1,
+   "lead_ms": 10,
+   "trail_ms": 16,
+   "ref": "Jeder hat ein Foto mitgebracht. Auf Martas war auch eine Katze.",
+   "asr": "Jeder hat ein Foto mitgebracht. Auf Matas war auch eine Katze.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.t43_12_05_tea_fund_case.after.1.ogg",
+   "dur": 4.29,
+   "lufs": -18.2,
+   "lead_ms": 9,
+   "trail_ms": 21,
+   "ref": "Abrechnung erledigt. Es ist mehr Tee übrig als geplant.",
+   "asr": "Abrechnung erledigt. Es ist mehr Tee übrig als geplant.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_12_07_clock_back_home.after.1.ogg",
+   "dur": 4.75,
+   "lufs": -17.7,
+   "lead_ms": 54,
+   "trail_ms": 29,
+   "ref": "Ein ganzer Tag gleichmäßiger Gang. Die Uhr kann zurück in die Ausstellung.",
+   "asr": "Ein ganzer Tag gleichmäßiger Gang. Die Uhr kann zurück in die Ausstellung.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.t43_12_08_henryks_bench.after.1.ogg",
+   "dur": 4.36,
+   "lufs": -18.0,
+   "lead_ms": 32,
+   "trail_ms": 47,
+   "ref": "Die Brühe wartet. Bringen Sie diesmal auch Ihre Schülerin mit.",
+   "asr": "Die Brühe wartet. Bringen Sie die Schmal auch Ihre Schülerin mit.",
+   "wer": 0.2
+  },
+  {
+   "file": "de/job.t43_12_08_henryks_bench.after.2.ogg",
+   "dur": 4.59,
+   "lufs": -18.3,
+   "lead_ms": 53,
+   "trail_ms": 49,
+   "ref": "Ich habe die Werkstatt abgeschlossen. Den Schlüssel habe ich vor dem Gehen geprüft.",
+   "asr": "Ich habe die Werkstatt abgeschlossen. Den Schlüssel habe ich vor dem Gen geprüft.",
+   "wer": 0.077
+  },
+  {
+   "file": "de/job.time_capsule.after.1.ogg",
+   "dur": 3.76,
+   "lufs": -18.1,
+   "lead_ms": 1,
+   "trail_ms": 42,
+   "ref": "Die Klasse hat sich wiedergetroffen. Ich wusste alle Namen.",
+   "asr": "Die Klasse hat sich wieder getroffen. Ich wusste alle Namen.",
+   "wer": 0.222
+  },
+  {
+   "file": "de/job.uncle_safe_heirs.after.1.ogg",
+   "dur": 3.44,
+   "lufs": -18.3,
+   "lead_ms": 57,
+   "trail_ms": 47,
+   "ref": "Danke, dass Sie gewartet haben, bis wir uns alle einig waren.",
+   "asr": "Danke, dass Sie gewartet haben, bis wir uns alle heinig waren.",
+   "wer": 0.091
+  },
+  {
+   "file": "de/job.warm_room_for_neighbours.after.1.ogg",
+   "dur": 5.96,
+   "lufs": -17.8,
+   "lead_ms": 25,
+   "trail_ms": 51,
+   "ref": "Die Nachbarn haben im Warmen geschlafen. Kartoffel hat jede Decke geprüft und keine abgenommen.",
+   "asr": "Die Nachbarn haben im Warmen geschlafen. Kartoffel hat jede Decke geprüft und keine abgenommen.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.widow_bureau.after.1.ogg",
+   "dur": 5.51,
+   "lufs": -18.3,
+   "lead_ms": 7,
+   "trail_ms": 22,
+   "ref": "Im Schreibtisch ist wieder Ordnung. Was er aufbewahrt hat, bewahre ich auch auf.",
+   "asr": "Im Schreibtisch ist Wiederordnung. Was er aufbewahrt hat, bewahre ich auch auf.",
+   "wer": 0.154
+  },
+  {
+   "file": "de/job.wigilia_table_drawer.after.1.ogg",
+   "dur": 5.13,
+   "lufs": -18.1,
+   "lead_ms": 44,
+   "trail_ms": 36,
+   "ref": "Jedes Tischkärtchen hat seinen Platz gefunden. Der eine Stuhl wartet immer noch auf Sie.",
+   "asr": "Jedes Tischkärtchen hat seinen Platz gefunden. Der eine Stuhl wartet immer noch auf sie.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.winter_bicycle_cellar.after.1.ogg",
+   "dur": 5.95,
+   "lufs": -18.2,
+   "lead_ms": 53,
+   "trail_ms": 54,
+   "ref": "Das letzte Paket kam am Einunddreißigsten an. Das Schloss überwintert jetzt unter einer Abdeckung.",
+   "asr": "Das letzte Paket kam am 31. an. Das Schloss überwintert jetzt unter einer Abdeckung.",
+   "wer": 0.071
+  },
+  {
+   "file": "de/job.wooden_winter_village.after.1.ogg",
+   "dur": 5.53,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 53,
+   "ref": "Die Ausstellung ist eröffnet. Dr. Rygiel hat die Schneeflocken am Modell gezählt, alle sind noch da.",
+   "asr": "Die Ausstellung ist eröffnet. Dr. Rügen hat die Schneeflocken am Modell gezählt. Alle sind noch da.",
+   "wer": 0.062
+  },
+  {
+   "file": "de/job.wrong_floor.after.1.ogg",
+   "dur": 6.87,
+   "lufs": -18.1,
+   "lead_ms": 53,
+   "trail_ms": 54,
+   "ref": "Sie sind der, der meine Tür nicht geöffnet hat? Ich habe einen Kuchen gebacken. Weil Sie sie nicht geöffnet haben.",
+   "asr": "Sie sind der, der meine Tür nicht geöffnet hat? Ich habe einen Kuchen gebacken, weil sie sie nicht geöffnet haben.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.zuzanna_catalogue_drawer.after.1.ogg",
+   "dur": 4.63,
+   "lufs": -18.0,
+   "lead_ms": 59,
+   "trail_ms": 56,
+   "ref": "Die Kopien sind für den Gemeinschaftsraum bereit. Die Originale bleiben in der Schublade.",
+   "asr": "Die Kopien sind für den Gemeinschaftsraum bereit. Die Originale bleiben in der Schublade.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.allotment_shed.after.1.ogg",
+   "dur": 3.38,
+   "lufs": -17.9,
+   "lead_ms": 7,
+   "trail_ms": 36,
+   "ref": "Les tomates ont été plantées à temps. Elles vous remercient.",
+   "asr": "Les tomates ont été plantées à temps. Elle vous remercie.",
+   "wer": 0.2
+  },
+  {
+   "file": "fr/job.attic_drying_room.after.1.ogg",
+   "dur": 6.34,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 50,
+   "ref": "Les manteaux ont séché, la chorale a chanté. La clé du séchoir est maintenant chez Monsieur Roman.",
+   "asr": "Les manteaux ont séché, la corale a chanté. La clé du séchoir est maintenant chez M. Romand.",
+   "wer": 0.176
+  },
+  {
+   "file": "fr/job.bike_interview.after.1.ogg",
+   "dur": 3.65,
+   "lufs": -18.0,
+   "lead_ms": 47,
+   "trail_ms": 53,
+   "ref": "J'ai eu le poste. Le vélo reste, et je note le code.",
+   "asr": "J'ai eu le poste. Levez le reste et je note le code.",
+   "wer": 0.167
+  },
+  {
+   "file": "fr/job.bramah_bureau.after.1.ogg",
+   "dur": 4.19,
+   "lufs": -17.5,
+   "lead_ms": 22,
+   "trail_ms": 28,
+   "ref": "Le secrétaire est prêt à être restauré. La serrure reste d'origine.",
+   "asr": "Le secrétaire est prêt à être restauré. La serrure reste d'origine.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.brussels_townhouse.after.1.ogg",
+   "dur": 3.05,
+   "lufs": -17.7,
+   "lead_ms": 38,
+   "trail_ms": 47,
+   "ref": "La paix est revenue. Les voisins m'ont même dit bonjour.",
+   "asr": "La paix est revenue. Les voisins m'ont même dit bonjour.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.carol_singers_chest.after.1.ogg",
+   "dur": 5.89,
+   "lufs": -17.9,
+   "lead_ms": 55,
+   "trail_ms": 14,
+   "ref": "Nous avons chanté dans la même tonalité. Presque. Les étoiles sont rentrées intactes dans le coffre.",
+   "asr": "Nous avons chanté dans la même tonalité. Presque. Les étoiles sont rentrées intactes dans le coffre.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.cat_bathroom.after.1.ogg",
+   "dur": 4.03,
+   "lufs": -18.1,
+   "lead_ms": 49,
+   "trail_ms": 19,
+   "ref": "Patate va très bien. La porte de la salle de bains reste entrouverte.",
+   "asr": "Patas va très bien. La porte de la salle de bain reste entre ouvertes.",
+   "wer": 0.308
+  },
+  {
+   "file": "fr/job.charleroi_letters.after.1.ogg",
+   "dur": 3.48,
+   "lufs": -18.0,
+   "lead_ms": 46,
+   "trail_ms": 17,
+   "ref": "Les lettres sont à l'abri. Maman en lit une chaque soir.",
+   "asr": "Les lettres sont à l'abri. Maintenant on lit une chaque soir.",
+   "wer": 0.182
+  },
+  {
+   "file": "fr/job.christmas_eve_heat.after.1.ogg",
+   "dur": 6.19,
+   "lufs": -17.9,
+   "lead_ms": 20,
+   "trail_ms": 39,
+   "ref": "Les radiateurs ont chauffé toute la nuit. Votre place à table vous a attendu jusqu'au bout, avec la compote.",
+   "asr": "Les radiateurs ont chauffé toute la nuit. Votre place à table vous a attendu jusqu'au bout, avec la compote.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.community_notice_case.after.1.ogg",
+   "dur": 4.06,
+   "lufs": -18.1,
+   "lead_ms": 36,
+   "trail_ms": 45,
+   "ref": "Les annonces sont affichées. Quelqu'un a déjà ajouté une affiche de chat.",
+   "asr": "Les annonces sont affichées. Quelqu'un a déjà ajouté une affiche de chat.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.dollhouse_wooden_lock.after.1.ogg",
+   "dur": 4.02,
+   "lufs": -18.1,
+   "lead_ms": 42,
+   "trail_ms": 33,
+   "ref": "La maison de poupée est rouverte. Les poupées prennent le thé à quatre heures.",
+   "asr": "La maison de poupée est rouverte. Les poupées prennent le thé à 4h.",
+   "wer": 0.143
+  },
+  {
+   "file": "fr/job.drummer_locker.after.1.ogg",
+   "dur": 3.12,
+   "lufs": -18.1,
+   "lead_ms": 53,
+   "trail_ms": 48,
+   "ref": "La répétition a enfin eu lieu. Fort.",
+   "asr": "La répétition a enfin eu lieu. Fort !",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.edek_rehearsal_store.after.1.ogg",
+   "dur": 3.94,
+   "lufs": -17.8,
+   "lead_ms": 9,
+   "trail_ms": 23,
+   "ref": "Les chaises sont prêtes pour la réunion. Je les ai comptées deux fois.",
+   "asr": "Les chèches sont prêtes pour la réunion. Je les ai comptées deux fois.",
+   "wer": 0.077
+  },
+  {
+   "file": "fr/job.finnish_sailor.after.1.ogg",
+   "dur": 3.59,
+   "lufs": -17.7,
+   "lead_ms": 58,
+   "trail_ms": 50,
+   "ref": "Nous avons appareillé à l'heure. Le coffre est bien arrimé.",
+   "asr": "Nous avons apparaillé à l'heure. Le coffre est bien arrimé.",
+   "wer": 0.1
+  },
+  {
+   "file": "fr/job.frozen_cellar_padlock.after.1.ogg",
+   "dur": 5.53,
+   "lufs": -18.0,
+   "lead_ms": 0,
+   "trail_ms": 15,
+   "ref": "Le soir, toutes les couvertures étaient distribuées. J'ai offert une chaussette en laine au cadenas.",
+   "asr": "Le soir, toutes les couvertures étaient distribuées. J'ai offert une chaussette en laine au cadenas.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.ghent_beguinage.after.1.ogg",
+   "dur": 4.06,
+   "lufs": -18.2,
+   "lead_ms": 36,
+   "trail_ms": 51,
+   "ref": "Merci. Tout a retrouvé sa place. Et le calme.",
+   "asr": "Merci, tout a retrouvé sa place et le calme.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.gosia_workbench_drawer.after.1.ogg",
+   "dur": 3.73,
+   "lufs": -18.0,
+   "lead_ms": 31,
+   "trail_ms": 25,
+   "ref": "L'établi peut aller à la salle commune. Le tiroir coulisse bien.",
+   "asr": "Les tablis peuvent aller à la salle commune. Le tiroir coulisse bien.",
+   "wer": 0.273
+  },
+  {
+   "file": "fr/job.grandma_broth.after.1.ogg",
+   "dur": 3.69,
+   "lufs": -17.8,
+   "lead_ms": 53,
+   "trail_ms": 47,
+   "ref": "Le bouillon vous attend, mon petit. Vous devez venir aussi.",
+   "asr": "Le bouillon vous attend mon petit. Vous devez venir aussi.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.grandpa_chest.after.1.ogg",
+   "dur": 3.7,
+   "lufs": -17.6,
+   "lead_ms": 0,
+   "trail_ms": 38,
+   "ref": "Les souvenirs sont de nouveau réunis. Les lettres aussi.",
+   "asr": "Les souvenirs sont de nouveau réunis. Les lettres aussi.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.halina_christmas_tin.after.1.ogg",
+   "dur": 7.19,
+   "lufs": -18.1,
+   "lead_ms": 56,
+   "trail_ms": 49,
+   "ref": "Le pain d'épices est parti en premier, avant même le bortsch. Et la petite clé était dans le sucrier, mon petit.",
+   "asr": "Le pain des pices est parti en premier avant même le borde et la petite clé était dans le sucrier mon petit.",
+   "wer": 0.143
+  },
+  {
+   "file": "fr/job.halina_recipe_box.after.1.ogg",
+   "dur": 3.67,
+   "lufs": -17.8,
+   "lead_ms": 46,
+   "trail_ms": 55,
+   "ref": "Les recettes sont sauves. Et il y aura le dîner, aussi.",
+   "asr": "Les recettes sont sauvées. Et il y aura le dîner aussi.",
+   "wer": 0.091
+  },
+  {
+   "file": "fr/job.heating_service_cupboard.after.1.ogg",
+   "dur": 6.17,
+   "lufs": -18.0,
+   "lead_ms": 0,
+   "trail_ms": 17,
+   "ref": "Paweł a terminé l'inspection avant la nuit. Le registre est dans l'armoire, la clé étiquetée au bureau.",
+   "asr": "Pafa a terminé l'inspection avant la nuit. Le registre est dans l'armoire. La clé est équité au bureau.",
+   "wer": 0.176
+  },
+  {
+   "file": "fr/job.kiosk_shutter.after.1.ogg",
+   "dur": 4.43,
+   "lufs": -17.5,
+   "lead_ms": 44,
+   "trail_ms": 38,
+   "ref": "Les premiers clients sont arrivés par le premier bus. Les journaux attendaient.",
+   "asr": "Les premiers clients sont arrivés par le premier bus. Les journaux attendaient.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.krakow_antiquarian.after.1.ogg",
+   "dur": 2.92,
+   "lufs": -18.1,
+   "lead_ms": 20,
+   "trail_ms": 8,
+   "ref": "Merci d'avoir respecté le bien de l'autre client.",
+   "asr": "Merci d'avoir respecté le bien de l'autre client.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.krakow_tenement_gate.after.1.ogg",
+   "dur": 5.23,
+   "lufs": -17.9,
+   "lead_ms": 1,
+   "trail_ms": 36,
+   "ref": "Les habitants peuvent de nouveau passer par le portail. Prochaine étape : la sonnette.",
+   "asr": "Les habitants peuvent de nouveau passer par le cortail. Prochaine étape, la sonnette.",
+   "wer": 0.077
+  },
+  {
+   "file": "fr/job.krystyna_wooden_album.after.1.ogg",
+   "dur": 4.54,
+   "lufs": -17.9,
+   "lead_ms": 0,
+   "trail_ms": 24,
+   "ref": "L'album est revenu dans la famille. Ola a légendé chaque photo.",
+   "asr": "L'album est revenu dans la famille. Ola a légendé chaque photo.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.liege_bakery.after.1.ogg",
+   "dur": 3.34,
+   "lufs": -17.7,
+   "lead_ms": 30,
+   "trail_ms": 3,
+   "ref": "Le premier pain est sorti à quatre heures et demie. Juste à temps.",
+   "asr": "Le premier pain est sorti à 4h30, juste à temps.",
+   "wer": 0.308
+  },
+  {
+   "file": "fr/job.marta_poster_studio.after.1.ogg",
+   "dur": 2.73,
+   "lufs": -20.3,
+   "lead_ms": 6,
+   "trail_ms": 35,
+   "ref": "Les affiches sèchent. Patate surveille.",
+   "asr": "Les affiches sèches. Patates sur veille.",
+   "wer": 0.8
+  },
+  {
+   "file": "fr/job.museum_time_lock.after.1.ogg",
+   "dur": 3.93,
+   "lufs": -17.9,
+   "lead_ms": 56,
+   "trail_ms": 10,
+   "ref": "L'horloge tourne de nouveau à l'exposition. En trois exemplaires.",
+   "asr": "L'horloge tourne de nouveau à l'exposition, en trois exemplaires.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.newlyweds_4am.after.1.ogg",
+   "dur": 3.98,
+   "lufs": -17.9,
+   "lead_ms": 42,
+   "trail_ms": 35,
+   "ref": "On a enfin rattrapé notre sommeil. Les clés dorment sur un crochet.",
+   "asr": "On a enfin rattrapé notre sommeil. Les clés dorment sur un crochet.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.night_nurse.after.1.ogg",
+   "dur": 4.07,
+   "lufs": -18.0,
+   "lead_ms": 38,
+   "trail_ms": 41,
+   "ref": "J'ai dormi onze heures. La clé est allée droit dans sa coupelle.",
+   "asr": "J'ai dormi 11h. La clé est allée droit dans sa compêle.",
+   "wer": 0.25
+  },
+  {
+   "file": "fr/job.pizzeria_pays_pizza.after.1.ogg",
+   "dur": 4.69,
+   "lufs": -17.7,
+   "lead_ms": 52,
+   "trail_ms": 45,
+   "ref": "Aujourd'hui, tout était prêt avant l'ouverture. L'offre de pizza tient toujours.",
+   "asr": "Aujourd'hui, tout était prêt avant l'ouverture. L'offre de pizza tient toujours.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.refuse_aunt_alive.after.1.ogg",
+   "dur": 4.56,
+   "lufs": -18.0,
+   "lead_ms": 58,
+   "trail_ms": 41,
+   "ref": "Mme Lucyna revient vendredi. Elle vous fera changer la serrure à ce moment-là.",
+   "asr": "Madame Lutina revient vendredi. Elle vous fera changer la serrure à ce moment-là.",
+   "wer": 0.143
+  },
+  {
+   "file": "fr/job.refuse_aunt_alive.after.2.ogg",
+   "dur": 4.09,
+   "lufs": -18.2,
+   "lead_ms": 23,
+   "trail_ms": 0,
+   "ref": "Heureusement que vous avez refusé. Sinon, je n'aurais pas fermé l'œil.",
+   "asr": "Heureusement que vous avez refusé. Sinon, je n'aurais pas fermé l'oeil.",
+   "wer": 0.091
+  },
+  {
+   "file": "fr/job.refuse_ex_partner.after.1.ogg",
+   "dur": 5.36,
+   "lufs": -17.3,
+   "lead_ms": 58,
+   "trail_ms": 13,
+   "ref": "Merci pour l'appel. Il a repris ses affaires en ma présence. La locataire a donné son accord.",
+   "asr": "Merci pour l'appel. Il a repris ses affaires en ma présence. La locataire a donné son accord.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.refuse_ex_partner.after.2.ogg",
+   "dur": 4.5,
+   "lufs": -17.2,
+   "lead_ms": 45,
+   "trail_ms": 47,
+   "ref": "J'ai entendu ça à l'arrêt de bus. Vous êtes quelqu'un de bien. Un journal ?",
+   "asr": "J'ai entendu ça à l'arrêt de bus. Vous êtes quelqu'un de bien. Un jour mal ?",
+   "wer": 0.143
+  },
+  {
+   "file": "fr/job.refuse_rush_bribe.after.1.ogg",
+   "dur": 3.59,
+   "lufs": -17.9,
+   "lead_ms": 45,
+   "trail_ms": 8,
+   "ref": "Sa sœur ignorait tout de ces documents. Merci d'avoir appelé.",
+   "asr": "Sa sœur ignorait tout de ces documents. Merci d'avoir appelé.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.refuse_rush_bribe.after.2.ogg",
+   "dur": 5.38,
+   "lufs": -17.6,
+   "lead_ms": 57,
+   "trail_ms": 8,
+   "ref": "Un homme en costume cherchait un serrurier hier. Je l'ai envoyé chez vous. Désolé.",
+   "asr": "Un homme en costume cherchait un serrurier hier. Je l'ai envoyé chez vous désolé.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.refuse_sisters_flat.after.1.ogg",
+   "dur": 3.73,
+   "lufs": -17.4,
+   "lead_ms": 59,
+   "trail_ms": 18,
+   "ref": "J'ai parlé avec la locataire. Elle demande d'attendre son retour.",
+   "asr": "J'ai parlé avec la locataire. Elle demande d'attendre son retour.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.refuse_t43_09_empty_flat.after.1.ogg",
+   "dur": 3.38,
+   "lufs": -17.8,
+   "lead_ms": 56,
+   "trail_ms": 29,
+   "ref": "Samedi convient à la locataire. Le colis peut attendre.",
+   "asr": "samedi qu'on vient à l'allocataire, le colis peut attendre",
+   "wer": 0.444
+  },
+  {
+   "file": "fr/job.refuse_t43_09_empty_flat.after.2.ogg",
+   "dur": 3.56,
+   "lufs": -17.5,
+   "lead_ms": 30,
+   "trail_ms": 39,
+   "ref": "J'ai revu ce colis. Cette fois, il avait rendez-vous.",
+   "asr": "J'ai reçu ce colis, cette fois il avait rendez-vous.",
+   "wer": 0.1
+  },
+  {
+   "file": "fr/job.refuse_t43_10_early_clearance.after.1.ogg",
+   "dur": 3.8,
+   "lufs": -18.2,
+   "lead_ms": 1,
+   "trail_ms": 42,
+   "ref": "La remise est convenue avec le locataire. Sans précipitation.",
+   "asr": "La remise est convenue avec le locataire, sans précipitation.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.refuse_t43_10_early_clearance.after.2.ogg",
+   "dur": 4.03,
+   "lufs": -17.8,
+   "lead_ms": 54,
+   "trail_ms": 10,
+   "ref": "Heureusement qu'ils ont pris le temps de parler. Ils ont fixé la date eux-mêmes.",
+   "asr": "Heureusement qu'ils ont pris le temps de parler. Ils ont fixé la date eux-mêmes.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.refuse_t43_11_other_stall.after.1.ogg",
+   "dur": 4.58,
+   "lufs": -17.8,
+   "lead_ms": 58,
+   "trail_ms": 33,
+   "ref": "J'ai rendu la rallonge à l'organisateur. J'ai prêté une bouilloire à mon voisin.",
+   "asr": "J'ai rendu la rallonge à l'organisateur. J'ai prêté une bouilloir à mon voisin.",
+   "wer": 0.077
+  },
+  {
+   "file": "fr/job.refuse_t43_11_other_stall.after.2.ogg",
+   "dur": 3.94,
+   "lufs": -17.6,
+   "lead_ms": 36,
+   "trail_ms": 24,
+   "ref": "Le marché est fini, mais le voisinage est resté. C'est bien.",
+   "asr": "Le marché est fini, mais le voisinage est resté. C'est bien.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.refuse_t43_12_surprise_key.after.1.ogg",
+   "dur": 5.38,
+   "lufs": -18.0,
+   "lead_ms": 0,
+   "trail_ms": 37,
+   "ref": "Darek a demandé. La guirlande est accrochée, et j'ai fait semblant d'être surprise.",
+   "asr": "Darek a demandé. La guirlande est accrochée et j'ai fait semblant d'être surprise.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.refuse_t43_12_surprise_key.after.2.ogg",
+   "dur": 4.79,
+   "lufs": -18.0,
+   "lead_ms": 39,
+   "trail_ms": 14,
+   "ref": "À l'inauguration, il y avait de la place pour tous. Personne n'a eu à s'inviter.",
+   "asr": "A l'inauguration, il y avait de la place pour tous, personne n'a eu à s'inviter",
+   "wer": 0.067
+  },
+  {
+   "file": "fr/job.refuse_unapproved_repair.after.1.ogg",
+   "dur": 4.22,
+   "lufs": -17.9,
+   "lead_ms": 24,
+   "trail_ms": 17,
+   "ref": "Cette visite n'était pas sur notre liste. Le technicien mandaté était déjà là.",
+   "asr": "Cette visite n'était pas sur notre liste. Le technicien mandaté était déjà là.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.refuse_unapproved_stockroom.after.1.ogg",
+   "dur": 4.56,
+   "lufs": -17.9,
+   "lead_ms": 46,
+   "trail_ms": 5,
+   "ref": "Colis récupérés ce matin. Le magasin a revu ses horaires de livraison.",
+   "asr": "Collie récupérait ce matin. Le magasin a revu ses horaires de livraison.",
+   "wer": 0.167
+  },
+  {
+   "file": "fr/job.refuse_wrong_letterbox.after.1.ogg",
+   "dur": 4.62,
+   "lufs": -18.0,
+   "lead_ms": 16,
+   "trail_ms": 22,
+   "ref": "Le seize a rendu la carte. La grand-mère d'Oskar l'a reçue le lendemain de Noël.",
+   "asr": "Le XVI a rendu la carte. La grand-mère d'Oscar la reçut le lendemain de Noël.",
+   "wer": 0.25
+  },
+  {
+   "file": "fr/job.roman_service_cupboard.after.1.ogg",
+   "dur": 3.71,
+   "lufs": -18.2,
+   "lead_ms": 2,
+   "trail_ms": 26,
+   "ref": "Le placard est en ordre. Clés sorties, clés rendues.",
+   "asr": "Le placard est en ordre. Clé sorti, clé rendu.",
+   "wer": 0.444
+  },
+  {
+   "file": "fr/job.shared_room_door.after.1.ogg",
+   "dur": 4.33,
+   "lufs": -17.8,
+   "lead_ms": 34,
+   "trail_ms": 55,
+   "ref": "Personne n'a perdu de clé à la première réunion. Un début prometteur.",
+   "asr": "Personne n'a perdu de clé à la première réunion. Un début prometteur.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.stefan_book_tin.after.1.ogg",
+   "dur": 4.83,
+   "lufs": -17.8,
+   "lead_ms": 37,
+   "trail_ms": 52,
+   "ref": "Les jetons de la bibliothèque circulent de nouveau. Le premier est allé à Krysia.",
+   "asr": "Les jetons de la bibliothèque circulent de nouveau. Le premier est allé à Criccia.",
+   "wer": 0.071
+  },
+  {
+   "file": "fr/job.student_dorm.after.1.ogg",
+   "dur": 4.3,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 48,
+   "ref": "Je suis arrivée à l'heure à l'examen. Serrures anciennes, excellente note.",
+   "asr": "Je suis arrivé à l'heure à l'examen. Ces rures anciennes, excellente note.",
+   "wer": 0.273
+  },
+  {
+   "file": "fr/job.swiatniki_journeyman_padlock.after.1.ogg",
+   "dur": 5.13,
+   "lufs": -18.2,
+   "lead_ms": 0,
+   "trail_ms": 44,
+   "ref": "Le cadenas a encore une histoire à raconter. Maintenant, il en a deux.",
+   "asr": "Le cadenas a encore une histoire à raconter. Maintenant, il en a deux.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.t43_09_01_winter_keys.after.1.ogg",
+   "dur": 3.85,
+   "lufs": -17.9,
+   "lead_ms": 2,
+   "trail_ms": 31,
+   "ref": "J'ai changé la clé de poche. Elle ne peut pas habiter les deux manteaux.",
+   "asr": "J'ai changé la clé de poche. Elle ne peut pas habiter les deux mentaux.",
+   "wer": 0.071
+  },
+  {
+   "file": "fr/job.t43_09_02_blanket_cupboard.after.1.ogg",
+   "dur": 3.88,
+   "lufs": -18.0,
+   "lead_ms": 54,
+   "trail_ms": 34,
+   "ref": "Les couvertures sont revenues. Un voisin est resté pour le thé.",
+   "asr": "Les couvertures sont revenus. Un voisin est resté pour le thé.",
+   "wer": 0.091
+  },
+  {
+   "file": "fr/job.t43_09_03_wooden_postbox.after.1.ogg",
+   "dur": 3.63,
+   "lufs": -17.8,
+   "lead_ms": 38,
+   "trail_ms": 45,
+   "ref": "Quelqu'un a écrit qu'il aimerait y habiter. Je n'en dirai pas plus.",
+   "asr": "Quelqu'un a écrit qu'il aimerait y habiter. Je n'en dirai pas plus.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.t43_09_04_choir_case.after.1.ogg",
+   "dur": 3.59,
+   "lufs": -18.1,
+   "lead_ms": 32,
+   "trail_ms": 15,
+   "ref": "La répétition s'est passée sans incident. À part le chant.",
+   "asr": "La répétition s'est passé sans incident. À part le champ.",
+   "wer": 0.2
+  },
+  {
+   "file": "fr/job.t43_09_05_receipt_safe.after.1.ogg",
+   "dur": 3.17,
+   "lufs": -18.0,
+   "lead_ms": 21,
+   "trail_ms": 44,
+   "ref": "Votre facture a eu droit à son propre compartiment.",
+   "asr": "Votre facture a eu droit à son propre compartiment",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.t43_09_06_draughty_hall.after.1.ogg",
+   "dur": 4.29,
+   "lufs": -18.2,
+   "lead_ms": 0,
+   "trail_ms": 44,
+   "ref": "Elle se referme bien. Les habitants l'ont signalé comme une bonne nouvelle.",
+   "asr": "Elle se referme bien. Les habitants l'ont signalé comme une bonne nouvelle.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.t43_09_08_spare_key_hook.after.1.ogg",
+   "dur": 4.45,
+   "lufs": -18.4,
+   "lead_ms": 46,
+   "trail_ms": 26,
+   "ref": "L'enveloppe est revenue dans mon tiroir. Étiquetée deux fois, cette fois.",
+   "asr": "L'enveloppe est revenue dans mon tiroir. Attiquetez deux fois cette fois.",
+   "wer": 0.091
+  },
+  {
+   "file": "fr/job.t43_10_01_renovator_bureau.after.1.ogg",
+   "dur": 3.73,
+   "lufs": -17.3,
+   "lead_ms": 32,
+   "trail_ms": 42,
+   "ref": "Le bureau est en place. Quelqu'un y a aussitôt posé une tasse.",
+   "asr": "Le gyro est en place. Quelqu'un y a aussi été posé une tasse.",
+   "wer": 0.25
+  },
+  {
+   "file": "fr/job.t43_10_02_scaffold_store.after.1.ogg",
+   "dur": 2.91,
+   "lufs": -17.9,
+   "lead_ms": 52,
+   "trail_ms": 47,
+   "ref": "Tout le monde était à la réunion. Clé comprise.",
+   "asr": "Tout le monde était à la réunion. Clé comprise.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.t43_10_03_exhibit_clock.after.1.ogg",
+   "dur": 5.14,
+   "lufs": -17.9,
+   "lead_ms": 34,
+   "trail_ms": 30,
+   "ref": "L'essai sur vingt-quatre heures est terminé. L'horloge marche, et le procès-verbal est en règle.",
+   "asr": "Laissez sur 24 heures et terminez. Leur loge marche et le procès verbal est en règle.",
+   "wer": 0.438
+  },
+  {
+   "file": "fr/job.t43_10_04_design_cabinet.after.1.ogg",
+   "dur": 3.85,
+   "lufs": -17.4,
+   "lead_ms": 47,
+   "trail_ms": 34,
+   "ref": "La salle commune a sa plaque. Patate voulait la signer d'une patte.",
+   "asr": "La salle commune à sa plaque. Patate voulait la signer d'une pâte.",
+   "wer": 0.167
+  },
+  {
+   "file": "fr/job.t43_10_05_porters_drawer.after.1.ogg",
+   "dur": 5.14,
+   "lufs": -18.2,
+   "lead_ms": 38,
+   "trail_ms": 43,
+   "ref": "Le compte des clés est bon. Les étudiants, je les compterai après le petit-déjeuner.",
+   "asr": "Le compte des clés est bon. Les étudiants, je les contrai après le petit déjeuner.",
+   "wer": 0.067
+  },
+  {
+   "file": "fr/job.t43_10_06_shared_room_entry.after.1.ogg",
+   "dur": 4.59,
+   "lufs": -17.6,
+   "lead_ms": 44,
+   "trail_ms": 25,
+   "ref": "La salle sent la peinture. Le thé fait de son mieux pour l'emporter.",
+   "asr": "La salle sans la peinture. Le thé fait de son mieux pour l'emporter.",
+   "wer": 0.077
+  },
+  {
+   "file": "fr/job.t43_11_01_wooden_market.after.1.ogg",
+   "dur": 3.46,
+   "lufs": -17.7,
+   "lead_ms": 42,
+   "trail_ms": 42,
+   "ref": "Ils ont fait une rue rien qu'avec des boulangeries. Leur choix.",
+   "asr": "Ils ont fait une rue rien qu'avec des boulangeries. Leur choix.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.t43_11_02_bicycle_stand.after.1.ogg",
+   "dur": 4.56,
+   "lufs": -18.1,
+   "lead_ms": 48,
+   "trail_ms": 53,
+   "ref": "Borys a réparé ma sonnette. Maintenant, c'est mon vélo qui lance la conversation.",
+   "asr": "Boris a réparé ma sonnette. Maintenant, c'est mon vélo qui lance la conversation.",
+   "wer": 0.077
+  },
+  {
+   "file": "fr/job.t43_11_03_tool_exchange.after.1.ogg",
+   "dur": 5.06,
+   "lufs": -17.9,
+   "lead_ms": 9,
+   "trail_ms": 40,
+   "ref": "Deux personnes sont venues demander par où commencer. Un bon marché.",
+   "asr": "deux personnes sont venues demander par où un commencer. Un bon marché.",
+   "wer": 0.091
+  },
+  {
+   "file": "fr/job.t43_11_04_sailors_stall.after.1.ogg",
+   "dur": 5.04,
+   "lufs": -17.8,
+   "lead_ms": 21,
+   "trail_ms": 50,
+   "ref": "Démonstration réussie. Les outils sont rentrés avec moi ; la clé navigue encore.",
+   "asr": "Démonstration réussie. Les outils sont rentrés avec moi. La clé navigue encore.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.t43_11_05_rehearsal_chest.after.1.ogg",
+   "dur": 4.88,
+   "lufs": -18.1,
+   "lead_ms": 0,
+   "trail_ms": 40,
+   "ref": "J'ai entendu le concert. Je connais cette batteuse, elle a perdu une clé une fois.",
+   "asr": "J'ai entendu le concert. Je connais cette batteuse. Elle a perdu une clé une fois.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.t43_11_07_wrong_delivery.after.1.ogg",
+   "dur": 4.64,
+   "lufs": -18.2,
+   "lead_ms": 52,
+   "trail_ms": 45,
+   "ref": "Le destinataire était content. Le colis aussi, vu la légèreté du diable.",
+   "asr": "Le destinataire était content. Le colis aussi, vu la légèreté du diable.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.t43_12_01_letters_archive.after.1.ogg",
+   "dur": 4.45,
+   "lufs": -17.7,
+   "lead_ms": 50,
+   "trail_ms": 55,
+   "ref": "Martine a reçu une photo de l'exposition. Maman a choisi le cadrage elle-même.",
+   "asr": "Martine a reçu une photo de l'exposition. Maman a choisi le cadrage elle-même.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.t43_12_02_detective_cabinet.after.1.ogg",
+   "dur": 3.45,
+   "lufs": -17.8,
+   "lead_ms": 48,
+   "trail_ms": 47,
+   "ref": "La note fait deux phrases. Madame Rygiel a validé les deux.",
+   "asr": "La note fait deux phrases. Madame Rigiel a validé les deux.",
+   "wer": 0.091
+  },
+  {
+   "file": "fr/job.t43_12_03_community_store.after.1.ogg",
+   "dur": 5.31,
+   "lufs": -18.1,
+   "lead_ms": 52,
+   "trail_ms": 53,
+   "ref": "Tout le monde était assis. Pour se resservir, il fallait juste se lever un instant.",
+   "asr": "Tout le monde était assis. Pour se resserrir, il fallait juste se lever un instant.",
+   "wer": 0.067
+  },
+  {
+   "file": "fr/job.t43_12_04_school_box.after.1.ogg",
+   "dur": 4.78,
+   "lufs": -17.8,
+   "lead_ms": 40,
+   "trail_ms": 40,
+   "ref": "Chacun a apporté une photo. Sur celle de Marta, il y avait aussi un chat.",
+   "asr": "Chacun a apporté une photo. Sur celle de Martha, il y avait aussi un chat.",
+   "wer": 0.067
+  },
+  {
+   "file": "fr/job.t43_12_05_tea_fund_case.after.1.ogg",
+   "dur": 3.58,
+   "lufs": -18.2,
+   "lead_ms": 0,
+   "trail_ms": 21,
+   "ref": "Les comptes sont faits. Il reste plus de thé que prévu.",
+   "asr": "Le compte sont fait, il reste plus de thé que prévu.",
+   "wer": 0.273
+  },
+  {
+   "file": "fr/job.t43_12_07_clock_back_home.after.1.ogg",
+   "dur": 4.66,
+   "lufs": -17.9,
+   "lead_ms": 4,
+   "trail_ms": 39,
+   "ref": "Marche régulière pendant vingt-quatre heures. L'horloge peut retourner en vitrine.",
+   "asr": "Marche rédurière pendant 24 heures. L'horloge peut retourner en vitrine.",
+   "wer": 0.273
+  },
+  {
+   "file": "fr/job.t43_12_08_henryks_bench.after.1.ogg",
+   "dur": 3.83,
+   "lufs": -17.8,
+   "lead_ms": 31,
+   "trail_ms": 44,
+   "ref": "Le bouillon attend. Cette fois, amenez aussi l'apprentie.",
+   "asr": "Le bouillon attend. Cette fois, amenez aussi l'apprenti.",
+   "wer": 0.125
+  },
+  {
+   "file": "fr/job.t43_12_08_henryks_bench.after.2.ogg",
+   "dur": 3.4,
+   "lufs": -17.5,
+   "lead_ms": 45,
+   "trail_ms": 44,
+   "ref": "J'ai fermé l'atelier. J'ai vérifié la clé avant de partir.",
+   "asr": "J'ai fermé l'atelier. J'ai vérifié la clé avant de partir.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.time_capsule.after.1.ogg",
+   "dur": 3.69,
+   "lufs": -17.9,
+   "lead_ms": 39,
+   "trail_ms": 18,
+   "ref": "La classe s'est retrouvée. Je me souvenais de tous les prénoms.",
+   "asr": "La classe s'est retrouvée. Je me souvenais de tous les prénoms.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.uncle_safe_heirs.after.1.ogg",
+   "dur": 2.56,
+   "lufs": -18.4,
+   "lead_ms": 58,
+   "trail_ms": 52,
+   "ref": "Merci d'avoir attendu que nous soyons tous d'accord.",
+   "asr": "Merci d'avoir attendu que nous soyons tous d'accord.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.warm_room_for_neighbours.after.1.ogg",
+   "dur": 5.76,
+   "lufs": -18.1,
+   "lead_ms": 9,
+   "trail_ms": 8,
+   "ref": "Les voisins ont dormi au chaud. Patate a inspecté chaque couverture et n'en a approuvé aucune.",
+   "asr": "Les voisins ont dormi au chaud. Patates à inspecter chaque couverture et n'en a approuvées aucune.",
+   "wer": 0.25
+  },
+  {
+   "file": "fr/job.widow_bureau.after.1.ogg",
+   "dur": 4.96,
+   "lufs": -18.1,
+   "lead_ms": 4,
+   "trail_ms": 0,
+   "ref": "Le bureau est de nouveau en ordre. Ce qu'il a gardé, je le garde aussi.",
+   "asr": "Le bureau est de nouveau en ordre. Ce qu'il a gardé, je le garde aussi.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.wigilia_table_drawer.after.1.ogg",
+   "dur": 4.21,
+   "lufs": -18.2,
+   "lead_ms": 43,
+   "trail_ms": 31,
+   "ref": "Chaque marque-place a trouvé sa chaise. Celle qui reste vous attend toujours.",
+   "asr": "Chaque marque place a trouvé sa chaise. Celle qui reste vous attend toujours.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.winter_bicycle_cellar.after.1.ogg",
+   "dur": 4.77,
+   "lufs": -18.1,
+   "lead_ms": 34,
+   "trail_ms": 49,
+   "ref": "Le dernier colis est arrivé le trente et un. Le cadenas passe l'hiver sous une housse.",
+   "asr": "Le dernier colis est arrivé le 31. Le cadenas passe l'hiver sous une housse.",
+   "wer": 0.188
+  },
+  {
+   "file": "fr/job.wooden_winter_village.after.1.ogg",
+   "dur": 5.33,
+   "lufs": -18.0,
+   "lead_ms": 58,
+   "trail_ms": 37,
+   "ref": "L'exposition est ouverte. Madame Rygiel a compté les flocons de la maquette : il n'en manque aucun.",
+   "asr": "L'exposition est ouverte. Mme Rigelle a compté les flocons de la maquette. Il n'en manque aucun.",
+   "wer": 0.125
+  },
+  {
+   "file": "fr/job.wrong_floor.after.1.ogg",
+   "dur": 4.52,
+   "lufs": -18.2,
+   "lead_ms": 58,
+   "trail_ms": 49,
+   "ref": "Vous n'avez pas ouvert ma porte ? Je vous ai fait un gâteau. Justement pour ça.",
+   "asr": "Vous n'avez pas ouvert ma porte ? Je vous ai fait un gâteau. Justement pour ça.",
+   "wer": 0.0
+  },
+  {
+   "file": "fr/job.zuzanna_catalogue_drawer.after.1.ogg",
+   "dur": 4.01,
+   "lufs": -18.0,
+   "lead_ms": 57,
+   "trail_ms": 30,
+   "ref": "Les copies sont prêtes pour la salle commune. Les originaux restent dans le tiroir.",
+   "asr": "Les copies sont prêtes pour la salle commune. Les originaux restent dans le tiroir.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.allotment_shed.after.1.ogg",
+   "dur": 4.0,
+   "lufs": -17.9,
+   "lead_ms": 32,
+   "trail_ms": 56,
+   "ref": "Los tomates se plantaron a tiempo. Le dan las gracias.",
+   "asr": "Los tomates se plantaron a tiempo. Le dan las gracias.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.attic_drying_room.after.1.ogg",
+   "dur": 6.68,
+   "lufs": -17.8,
+   "lead_ms": 56,
+   "trail_ms": 57,
+   "ref": "Los abrigos se secaron y el coro cantó. La llave del tendedero la guarda ahora el señor Roman.",
+   "asr": "Los abrigos se secaron y el coro cantó. La llave del tendedero la guarda ahora el señor Roman.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.bike_interview.after.1.ogg",
+   "dur": 4.17,
+   "lufs": -17.8,
+   "lead_ms": 21,
+   "trail_ms": 55,
+   "ref": "Me dieron el trabajo. La bici se queda; el código lo apunto.",
+   "asr": "Me dieron el trabajo. La bici se queda. El código lo apunto.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.bramah_bureau.after.1.ogg",
+   "dur": 4.95,
+   "lufs": -17.9,
+   "lead_ms": 40,
+   "trail_ms": 32,
+   "ref": "El escritorio está listo para restaurar. La cerradura sigue siendo la original.",
+   "asr": "El escritorio está listo para restaurar. La cerradura sigue siendo la original.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.brussels_townhouse.after.1.ogg",
+   "dur": 3.9,
+   "lufs": -17.7,
+   "lead_ms": 39,
+   "trail_ms": 30,
+   "ref": "En casa vuelve a haber calma. Los vecinos hasta dijeron bonjour.",
+   "asr": "En casa vuelve a ver calma. Los vecinos hasta dijeron bonjour.",
+   "wer": 0.091
+  },
+  {
+   "file": "es/job.carol_singers_chest.after.1.ogg",
+   "dur": 5.49,
+   "lufs": -18.3,
+   "lead_ms": 56,
+   "trail_ms": 53,
+   "ref": "Cantamos en el mismo tono. Casi. Las estrellas volvieron enteras al arcón.",
+   "asr": "Cantamos en el mismo tono. Casi. Las estrellas volvieron enteras al arcon.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.cat_bathroom.after.1.ogg",
+   "dur": 4.7,
+   "lufs": -17.9,
+   "lead_ms": 36,
+   "trail_ms": 25,
+   "ref": "Patata está estupendamente. La puerta del baño se queda entornada.",
+   "asr": "La tata está estupendamente. La puerta del baño se queda entornada.",
+   "wer": 0.2
+  },
+  {
+   "file": "es/job.charleroi_letters.after.1.ogg",
+   "dur": 4.14,
+   "lufs": -18.2,
+   "lead_ms": 24,
+   "trail_ms": 11,
+   "ref": "Las cartas ya están a salvo. Mi madre lee una cada noche.",
+   "asr": "Las cartas ya están a salvo. Mi madre lee una cada noche.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.christmas_eve_heat.after.1.ogg",
+   "dur": 6.52,
+   "lufs": -17.4,
+   "lead_ms": 23,
+   "trail_ms": 35,
+   "ref": "Los radiadores calentaron toda la noche. Su sitio en la mesa le esperó hasta el final, con la compota.",
+   "asr": "Los radiadores calentaron toda la noche. Su sitio en la mesa le esperó hasta el final, con la compota.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.community_notice_case.after.1.ogg",
+   "dur": 4.58,
+   "lufs": -18.1,
+   "lead_ms": 9,
+   "trail_ms": 43,
+   "ref": "Los avisos ya están colgados. Alguien ya añadió un cartel de un gato.",
+   "asr": "Los avizos ya están colgados. Alguien ya ha añadido un cartel de un gato.",
+   "wer": 0.231
+  },
+  {
+   "file": "es/job.dollhouse_wooden_lock.after.1.ogg",
+   "dur": 5.0,
+   "lufs": -17.8,
+   "lead_ms": 30,
+   "trail_ms": 35,
+   "ref": "La casa de muñecas vuelve a estar abierta. Las muñecas toman el té a las cuatro.",
+   "asr": "La casa de muñecas vuelve a estar abierta. Las muñecas toman el té a las cuatro.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.drummer_locker.after.1.ogg",
+   "dur": 3.28,
+   "lufs": -18.1,
+   "lead_ms": 48,
+   "trail_ms": 42,
+   "ref": "Por fin hubo ensayo. Y sonó fuerte.",
+   "asr": "Por fin hubo ensayo y sonó fuerte.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.edek_rehearsal_store.after.1.ogg",
+   "dur": 4.66,
+   "lufs": -17.9,
+   "lead_ms": 7,
+   "trail_ms": 48,
+   "ref": "Las sillas están listas para la reunión. Las conté dos veces.",
+   "asr": "Las sillas están listas para la reunión. Las conté dos veces.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.finnish_sailor.after.1.ogg",
+   "dur": 3.43,
+   "lufs": -17.8,
+   "lead_ms": 44,
+   "trail_ms": 42,
+   "ref": "Zarpamos a tiempo. El baúl ya va bien amarrado.",
+   "asr": "Sarpamos a tiempo. El baúl ya va bien amarrado.",
+   "wer": 0.111
+  },
+  {
+   "file": "es/job.frozen_cellar_padlock.after.1.ogg",
+   "dur": 6.72,
+   "lufs": -18.0,
+   "lead_ms": 42,
+   "trail_ms": 40,
+   "ref": "Por la tarde ya se habían repartido todas las mantas. Al candado le he puesto un calcetín de lana.",
+   "asr": "Por la tarde ya se habían repartido todas sus mantas. Al candado le he puesto un calcetén de lana.",
+   "wer": 0.105
+  },
+  {
+   "file": "es/job.ghent_beguinage.after.1.ogg",
+   "dur": 4.49,
+   "lufs": -18.2,
+   "lead_ms": 4,
+   "trail_ms": 16,
+   "ref": "Gracias. Todo ha vuelto a su sitio. Y hay silencio.",
+   "asr": "Gracias. Todo ha vuelto a su sitio y hay silencio.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.gosia_workbench_drawer.after.1.ogg",
+   "dur": 4.37,
+   "lufs": -18.1,
+   "lead_ms": 38,
+   "trail_ms": 30,
+   "ref": "El banco ya puede ir a la sala común. El cajón corre suave.",
+   "asr": "El banco ya puede ir a la sala común. El cajón corre suave.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.grandma_broth.after.1.ogg",
+   "dur": 3.93,
+   "lufs": -17.8,
+   "lead_ms": 52,
+   "trail_ms": 56,
+   "ref": "El caldo espera, hijo. Usted también tiene que venir.",
+   "asr": "El caldo espera, hijo. Usted también tiene que venir.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.grandpa_chest.after.1.ogg",
+   "dur": 4.27,
+   "lufs": -18.1,
+   "lead_ms": 32,
+   "trail_ms": 20,
+   "ref": "Los recuerdos vuelven a estar juntos. Las cartas también.",
+   "asr": "Los recuerdos vuelven a estar juntos. Las cartas también.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.halina_christmas_tin.after.1.ogg",
+   "dur": 7.79,
+   "lufs": -18.3,
+   "lead_ms": 36,
+   "trail_ms": 18,
+   "ref": "El pan de jengibre voló primero, antes incluso que el borsch. Y la llavecita estaba en el azucarero, hijo.",
+   "asr": "El pan de jengibre voló primero, antes incluso que el borsh, y la llavecita estaba en el azucadero, hijo.",
+   "wer": 0.105
+  },
+  {
+   "file": "es/job.halina_recipe_box.after.1.ogg",
+   "dur": 4.15,
+   "lufs": -18.0,
+   "lead_ms": 8,
+   "trail_ms": 54,
+   "ref": "Las recetas están a salvo. Y comida también habrá.",
+   "asr": "Las recetas están a salvo y comida también habrá.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.heating_service_cupboard.after.1.ogg",
+   "dur": 7.59,
+   "lufs": -18.1,
+   "lead_ms": 52,
+   "trail_ms": 31,
+   "ref": "Paweł terminó la revisión antes de anochecer. El registro está en el armario y la llave, etiquetada, en la oficina.",
+   "asr": "Pabio terminó la revisión antes de anochecer. El registro está en el armario y la llave etiquetada en la oficina.",
+   "wer": 0.05
+  },
+  {
+   "file": "es/job.kiosk_shutter.after.1.ogg",
+   "dur": 6.1,
+   "lufs": -17.8,
+   "lead_ms": 40,
+   "trail_ms": 40,
+   "ref": "Los primeros clientes llegaron en el primer autobús. Los periódicos estaban listos.",
+   "asr": "Los primeros clientes llegaron en el primer autobús. Los periódicos estaban listos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.krakow_antiquarian.after.1.ogg",
+   "dur": 3.33,
+   "lufs": -17.9,
+   "lead_ms": 40,
+   "trail_ms": 48,
+   "ref": "Gracias por respetar la propiedad del otro cliente.",
+   "asr": "Gracias por respetar la propiedad del otro cliente.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.krakow_tenement_gate.after.1.ogg",
+   "dur": 4.52,
+   "lufs": -17.8,
+   "lead_ms": 1,
+   "trail_ms": 47,
+   "ref": "Los vecinos ya pueden usar el portón. Lo siguiente será el timbre.",
+   "asr": "Los vecinos ya pueden usar el portón. Lo siguiente será el timbre.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.krystyna_wooden_album.after.1.ogg",
+   "dur": 5.25,
+   "lufs": -17.9,
+   "lead_ms": 21,
+   "trail_ms": 27,
+   "ref": "El álbum ha vuelto a la familia. Ola le puso nombre a cada foto.",
+   "asr": "El álbum ha vuelto a la familia. Hola le puso nombre a cada foto.",
+   "wer": 0.071
+  },
+  {
+   "file": "es/job.liege_bakery.after.1.ogg",
+   "dur": 3.56,
+   "lufs": -17.2,
+   "lead_ms": 37,
+   "trail_ms": 4,
+   "ref": "El primer pan salió a las cuatro y media. Justo a tiempo.",
+   "asr": "El primer pan salió a las 4 y media, justo a tiempo.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.marta_poster_studio.after.1.ogg",
+   "dur": 3.74,
+   "lufs": -18.1,
+   "lead_ms": 36,
+   "trail_ms": 11,
+   "ref": "Los carteles se están secando. Patata supervisa.",
+   "asr": "Los carteles se están secando. Patata Supervisa.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.museum_time_lock.after.1.ogg",
+   "dur": 4.37,
+   "lufs": -18.2,
+   "lead_ms": 53,
+   "trail_ms": 17,
+   "ref": "El reloj vuelve a hacer tictac en la exposición. Por triplicado.",
+   "asr": "El reloj vuelve a hacer tic-tac en la exposición, por triplicado.",
+   "wer": 0.182
+  },
+  {
+   "file": "es/job.newlyweds_4am.after.1.ogg",
+   "dur": 4.18,
+   "lufs": -17.9,
+   "lead_ms": 45,
+   "trail_ms": 14,
+   "ref": "Por fin pudimos dormir. Las llaves duermen ahora en un gancho.",
+   "asr": "Por fin pudimos dormir. Las llaves duermen ahora en un gancho.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.night_nurse.after.1.ogg",
+   "dur": 4.34,
+   "lufs": -18.3,
+   "lead_ms": 56,
+   "trail_ms": 26,
+   "ref": "Dormí once horas. La llave fue directa a su cuenco.",
+   "asr": "Dorme 11 horas. La llave fue directa a su cuenco.",
+   "wer": 0.2
+  },
+  {
+   "file": "es/job.pizzeria_pays_pizza.after.1.ogg",
+   "dur": 4.42,
+   "lufs": -17.9,
+   "lead_ms": 38,
+   "trail_ms": 36,
+   "ref": "Hoy todo estaba listo antes de abrir. La oferta de la pizza sigue en pie.",
+   "asr": "Hoy todo estaba listo antes de abrir. La oferta de la pizza sigue en pie.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_aunt_alive.after.1.ogg",
+   "dur": 4.71,
+   "lufs": -18.0,
+   "lead_ms": 53,
+   "trail_ms": 33,
+   "ref": "La señora Lucyna vuelve el viernes. Entonces querrá que le cambie la cerradura.",
+   "asr": "La señora Lucina vuelve el viernes. Entonces querrá que le cambie la cerradura.",
+   "wer": 0.077
+  },
+  {
+   "file": "es/job.refuse_aunt_alive.after.2.ogg",
+   "dur": 3.19,
+   "lufs": -18.1,
+   "lead_ms": 29,
+   "trail_ms": 26,
+   "ref": "Menos mal que dijo que no. No habría pegado ojo.",
+   "asr": "Menos mal que dijo que no. No habría pegado ojo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_ex_partner.after.1.ogg",
+   "dur": 6.06,
+   "lufs": -18.7,
+   "lead_ms": 55,
+   "trail_ms": 37,
+   "ref": "Gracias por llamar. Recogió sus cosas en mi presencia. La inquilina dio su consentimiento.",
+   "asr": "Gracias por llamar. Recogió sus cosas en mi presencia. La Inquilina dio su consentimiento.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_ex_partner.after.2.ogg",
+   "dur": 4.02,
+   "lufs": -17.5,
+   "lead_ms": 36,
+   "trail_ms": 6,
+   "ref": "Me enteré en la parada. Es usted de fiar. ¿Un periódico?",
+   "asr": "Me enteré en la parada, es usted de fiar. ¿Un periódico?",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_rush_bribe.after.1.ogg",
+   "dur": 4.13,
+   "lufs": -17.9,
+   "lead_ms": 60,
+   "trail_ms": 48,
+   "ref": "La hermana no sabía nada de esos documentos. Gracias por avisar.",
+   "asr": "La hermana no sabía nada de esos documentos. Gracias por avisar.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_rush_bribe.after.2.ogg",
+   "dur": 6.1,
+   "lufs": -18.0,
+   "lead_ms": 49,
+   "trail_ms": 21,
+   "ref": "Ayer un hombre trajeado preguntó por un cerrajero. Lo mandé a verlo a usted. Lo siento.",
+   "asr": "Ayer un hombre trajeado preguntó por un cerrajero. Lo mandé a verlo a usted. Lo siento.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_sisters_flat.after.1.ogg",
+   "dur": 3.65,
+   "lufs": -18.0,
+   "lead_ms": 40,
+   "trail_ms": 36,
+   "ref": "Hablé con la inquilina. Nos pidió que esperáramos a su regreso.",
+   "asr": "Hablé con la Inquilina. Nos pidió que esperáramos a su regreso.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_09_empty_flat.after.1.ogg",
+   "dur": 3.85,
+   "lufs": -17.2,
+   "lead_ms": 59,
+   "trail_ms": 15,
+   "ref": "A la inquilina le viene bien el sábado. El paquete puede esperar.",
+   "asr": "A la inquilina le viene bien el sábado. El paquete puede esperar.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_09_empty_flat.after.2.ogg",
+   "dur": 3.59,
+   "lufs": -17.0,
+   "lead_ms": 9,
+   "trail_ms": 19,
+   "ref": "Volví a ver ese paquete. Esta vez tenía cita.",
+   "asr": "volvo a ver ese paquete, esta vez tenia cita",
+   "wer": 0.222
+  },
+  {
+   "file": "es/job.refuse_t43_10_early_clearance.after.1.ogg",
+   "dur": 3.88,
+   "lufs": -18.2,
+   "lead_ms": 0,
+   "trail_ms": 44,
+   "ref": "La entrega está acordada con el inquilino. Sin prisas.",
+   "asr": "La entrega está acordada con el inquilino, sin trisas.",
+   "wer": 0.111
+  },
+  {
+   "file": "es/job.refuse_t43_10_early_clearance.after.2.ogg",
+   "dur": 3.93,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 56,
+   "ref": "Menos mal que esperaron a hablar. La fecha la acordaron ellos.",
+   "asr": "Menos mal que esperaron a hablar. La fecha la acordaron ellos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_11_other_stall.after.1.ogg",
+   "dur": 4.84,
+   "lufs": -17.8,
+   "lead_ms": 49,
+   "trail_ms": 44,
+   "ref": "Devolví el alargador al organizador. A mi vecino le presté un hervidor.",
+   "asr": "Devolvó el alargador al organizador. A mi vecino le presté un hervidor.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.refuse_t43_11_other_stall.after.2.ogg",
+   "dur": 4.6,
+   "lufs": -17.3,
+   "lead_ms": 9,
+   "trail_ms": 28,
+   "ref": "El mercadillo ha terminado y siguen siendo vecinos. Eso está bien.",
+   "asr": "El mercadillo ha terminado y siguen siendo vecinos. Eso está bien.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_12_surprise_key.after.1.ogg",
+   "dur": 5.14,
+   "lufs": -17.7,
+   "lead_ms": 0,
+   "trail_ms": 43,
+   "ref": "Darek me lo preguntó. La guirnalda está colgada y yo fingí sorpresa.",
+   "asr": "Darek me lo preguntó. La guirnalda está colgada y yo fingí sorpresa.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_t43_12_surprise_key.after.2.ogg",
+   "dur": 5.24,
+   "lufs": -17.7,
+   "lead_ms": 36,
+   "trail_ms": 47,
+   "ref": "En la inauguración hubo sitio para todos. Nadie tuvo que autoinvitarse.",
+   "asr": "En la inauguración hubo sitio para todos, nadie tuvo que autoinvitarse.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_unapproved_repair.after.1.ogg",
+   "dur": 5.09,
+   "lufs": -18.1,
+   "lead_ms": 0,
+   "trail_ms": 42,
+   "ref": "Esa visita no estaba en nuestra lista. El técnico autorizado ya estaba aquí.",
+   "asr": "esa visita no estaba en nuestra lista. El técnico autorizado ya estaba aquí.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_unapproved_stockroom.after.1.ogg",
+   "dur": 5.55,
+   "lufs": -18.2,
+   "lead_ms": 6,
+   "trail_ms": 42,
+   "ref": "Recogieron los paquetes esta mañana. Ahora la tienda tiene mejores horarios de entrega.",
+   "asr": "Recogieron los paquetes esta mañana. Ahora la tienda tiene mejores horarios de entrega.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.refuse_wrong_letterbox.after.1.ogg",
+   "dur": 6.04,
+   "lufs": -17.9,
+   "lead_ms": 21,
+   "trail_ms": 46,
+   "ref": "Los del dieciséis devolvieron la tarjeta. La abuela de Oskar la recibió el día después de Navidad.",
+   "asr": "Los del 16 devolvieron la tarjeta. La abuela de Óscar la recibió el día después de Navidad.",
+   "wer": 0.118
+  },
+  {
+   "file": "es/job.roman_service_cupboard.after.1.ogg",
+   "dur": 4.68,
+   "lufs": -18.2,
+   "lead_ms": 13,
+   "trail_ms": 46,
+   "ref": "El armario está en orden. Llaves entregadas, llaves devueltas.",
+   "asr": "El armario está en orden. Llaves entregadas, llaves de vueltas.",
+   "wer": 0.222
+  },
+  {
+   "file": "es/job.shared_room_door.after.1.ogg",
+   "dur": 3.94,
+   "lufs": -17.9,
+   "lead_ms": 34,
+   "trail_ms": 36,
+   "ref": "Nadie perdió una llave en la primera reunión. Buen comienzo.",
+   "asr": "Nadie perdió una llave en la primera reunión. Buen comienzo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.stefan_book_tin.after.1.ogg",
+   "dur": 4.97,
+   "lufs": -17.6,
+   "lead_ms": 7,
+   "trail_ms": 42,
+   "ref": "Las fichas de préstamo vuelven a circular. La primera fue para Krysia.",
+   "asr": "Las fichas de préstamo vuelven a circular. La primera fue para Crisia.",
+   "wer": 0.083
+  },
+  {
+   "file": "es/job.student_dorm.after.1.ogg",
+   "dur": 4.4,
+   "lufs": -18.0,
+   "lead_ms": 50,
+   "trail_ms": 44,
+   "ref": "Llegué a tiempo al examen. Cerraduras históricas, sobresaliente.",
+   "asr": "Llegué a tiempo al examen. Cerraduras históricas sobre saliente.",
+   "wer": 0.25
+  },
+  {
+   "file": "es/job.swiatniki_journeyman_padlock.after.1.ogg",
+   "dur": 4.4,
+   "lufs": -18.2,
+   "lead_ms": 39,
+   "trail_ms": 53,
+   "ref": "El candado aún tiene su historia. Ahora tiene dos.",
+   "asr": "El candado aún tiene su historia. Ahora tiene dos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_01_winter_keys.after.1.ogg",
+   "dur": 4.32,
+   "lufs": -18.1,
+   "lead_ms": 20,
+   "trail_ms": 39,
+   "ref": "Ya cambié la llave de bolsillo. No puede vivir en los dos abrigos.",
+   "asr": "Ya cambió la llave de bolsillo. No puede vivir en los dos abrigos.",
+   "wer": 0.077
+  },
+  {
+   "file": "es/job.t43_09_02_blanket_cupboard.after.1.ogg",
+   "dur": 4.35,
+   "lufs": -17.8,
+   "lead_ms": 10,
+   "trail_ms": 31,
+   "ref": "Las mantas volvieron. Un vecino se quedó a tomar el té.",
+   "asr": "Las mantas volvieron. Un vecino se quedó a tomar el té.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_03_wooden_postbox.after.1.ogg",
+   "dur": 4.21,
+   "lufs": -18.0,
+   "lead_ms": 39,
+   "trail_ms": 47,
+   "ref": "Alguien escribió que le gustaría vivir allí. No cuento nada más.",
+   "asr": "Alguien escribió que le gustaría vivir allí. No cuento nada más.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_04_choir_case.after.1.ogg",
+   "dur": 3.79,
+   "lufs": -17.9,
+   "lead_ms": 22,
+   "trail_ms": 21,
+   "ref": "El ensayo fue sin incidentes. Salvo por el canto.",
+   "asr": "El ensayo fue sin incidentes. Salvo por el canto.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_05_receipt_safe.after.1.ogg",
+   "dur": 2.99,
+   "lufs": -18.0,
+   "lead_ms": 2,
+   "trail_ms": 33,
+   "ref": "Su factura tiene ya su propio compartimento.",
+   "asr": "Su factura tiene ya su propio compartimento.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_06_draughty_hall.after.1.ogg",
+   "dur": 4.71,
+   "lufs": -18.0,
+   "lead_ms": 2,
+   "trail_ms": 19,
+   "ref": "Cierra bien. Los vecinos lo han comunicado como una buena noticia.",
+   "asr": "Cierra bien. Los vecinos lo han comunicado como una buena noticia.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_09_08_spare_key_hook.after.1.ogg",
+   "dur": 6.17,
+   "lufs": -18.4,
+   "lead_ms": 40,
+   "trail_ms": 33,
+   "ref": "El sobre ha vuelto a mi cajón. Esta vez el señor Kazimierz le puso el nombre dos veces.",
+   "asr": "Él sobre ha vuelto a mi cajón. Esta vez el señor Casimiers le puso el nombre dos veces.",
+   "wer": 0.111
+  },
+  {
+   "file": "es/job.t43_10_01_renovator_bureau.after.1.ogg",
+   "dur": 4.52,
+   "lufs": -17.6,
+   "lead_ms": 40,
+   "trail_ms": 39,
+   "ref": "El escritorio ya está en su sitio. Alguien le puso una taza enseguida.",
+   "asr": "El escritorio ya está en su sitio. Alguien le puso una taza enseguida.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_02_scaffold_store.after.1.ogg",
+   "dur": 3.46,
+   "lufs": -18.1,
+   "lead_ms": 9,
+   "trail_ms": 36,
+   "ref": "En la reunión estaban todos. Llave incluida.",
+   "asr": "En la reunión estaban todos, llave incluida.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_03_exhibit_clock.after.1.ogg",
+   "dur": 5.25,
+   "lufs": -18.1,
+   "lead_ms": 47,
+   "trail_ms": 46,
+   "ref": "La prueba de un día ha terminado. El reloj funciona y el acta también cuadra.",
+   "asr": "La prueba de un día ha terminado. El reloj funciona y el acta también cuadra.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_04_design_cabinet.after.1.ogg",
+   "dur": 4.43,
+   "lufs": -17.6,
+   "lead_ms": 50,
+   "trail_ms": 50,
+   "ref": "La sala común ya tiene letrero. Patata quería firmarlo con la pata.",
+   "asr": "La sala común ya tiene letrero. Patata quería firmarlo con la pata.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_05_porters_drawer.after.1.ogg",
+   "dur": 4.94,
+   "lufs": -18.3,
+   "lead_ms": 7,
+   "trail_ms": 44,
+   "ref": "Las llaves cuadran. A los estudiantes los cuento después de desayunar.",
+   "asr": "Las llaves cuadran. A los estudiantes los cuento después de desayunar.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_10_06_shared_room_entry.after.1.ogg",
+   "dur": 4.77,
+   "lufs": -17.9,
+   "lead_ms": 31,
+   "trail_ms": 10,
+   "ref": "La sala huele a pintura. El té hace lo que puede por ganarle.",
+   "asr": "La sala juele a pintura. Él te hace lo que puede por ganarle.",
+   "wer": 0.231
+  },
+  {
+   "file": "es/job.t43_11_01_wooden_market.after.1.ogg",
+   "dur": 3.89,
+   "lufs": -17.7,
+   "lead_ms": 2,
+   "trail_ms": 38,
+   "ref": "Ha salido una calle solo de panaderías. Lo eligieron ellos.",
+   "asr": "Ha salido una calle solo de panaderías. Lo eligieron ellos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_02_bicycle_stand.after.1.ogg",
+   "dur": 4.67,
+   "lufs": -17.8,
+   "lead_ms": 52,
+   "trail_ms": 50,
+   "ref": "Borys me arregló el timbre. Ahora la bici es la que empieza la conversación.",
+   "asr": "Boris me arregló el timbre. Ahora, la bici es la que empieza la conversación.",
+   "wer": 0.071
+  },
+  {
+   "file": "es/job.t43_11_03_tool_exchange.after.1.ogg",
+   "dur": 5.33,
+   "lufs": -17.7,
+   "lead_ms": 22,
+   "trail_ms": 27,
+   "ref": "Vinieron dos personas a preguntar por dónde empezar. Buen mercadillo.",
+   "asr": "Vinieron dos personas a preguntar por dónde empezar. Buen mercadillo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_04_sailors_stall.after.1.ogg",
+   "dur": 6.06,
+   "lufs": -17.7,
+   "lead_ms": 47,
+   "trail_ms": 42,
+   "ref": "La demostración salió bien. Las herramientas volvieron conmigo; la llave sigue navegando.",
+   "asr": "La demostración salió bien. Las herramientas volvieron conmigo. La llave sigue navegando.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_11_05_rehearsal_chest.after.1.ogg",
+   "dur": 5.12,
+   "lufs": -18.1,
+   "lead_ms": 23,
+   "trail_ms": 41,
+   "ref": "Oí el concierto. Conozco a esa batería; una vez perdió una llave.",
+   "asr": "O a el concierto. Conozco a esa batería. Una vez perdió una llave.",
+   "wer": 0.167
+  },
+  {
+   "file": "es/job.t43_11_07_wrong_delivery.after.1.ogg",
+   "dur": 5.09,
+   "lufs": -18.0,
+   "lead_ms": 38,
+   "trail_ms": 54,
+   "ref": "El destinatario se alegró. El paquete también, a juzgar por la carretilla tan ligera.",
+   "asr": "El destinatario se alegró. El paquete también, a juzgar por la carretilla tan ligera.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_01_letters_archive.after.1.ogg",
+   "dur": 4.98,
+   "lufs": -17.9,
+   "lead_ms": 55,
+   "trail_ms": 49,
+   "ref": "Martine recibió una foto de la muestra. Mi madre eligió la imagen ella misma.",
+   "asr": "Martínez recibió una foto de la muestra. Mi madre eligió la imagen ella misma.",
+   "wer": 0.071
+  },
+  {
+   "file": "es/job.t43_12_02_detective_cabinet.after.1.ogg",
+   "dur": 3.92,
+   "lufs": -18.0,
+   "lead_ms": 28,
+   "trail_ms": 43,
+   "ref": "La nota tiene dos frases. La doctora aprobó las dos.",
+   "asr": "La nota tiene dos frases. La doctora aprobó las dos.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_03_community_store.after.1.ogg",
+   "dur": 6.07,
+   "lufs": -18.1,
+   "lead_ms": 35,
+   "trail_ms": 53,
+   "ref": "Todos tuvieron asiento. Quien quería repetir tenía que levantarse un momento.",
+   "asr": "Todos tuvieron asiento. Quien quede repetir, tenía que levantarse un momento.",
+   "wer": 0.091
+  },
+  {
+   "file": "es/job.t43_12_04_school_box.after.1.ogg",
+   "dur": 4.63,
+   "lufs": -18.0,
+   "lead_ms": 36,
+   "trail_ms": 41,
+   "ref": "Cada uno trajo una foto. En la de Marta salía también un gato.",
+   "asr": "Cada uno trajo una foto. En la de Marta salía también un gato.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_05_tea_fund_case.after.1.ogg",
+   "dur": 3.85,
+   "lufs": -18.2,
+   "lead_ms": 51,
+   "trail_ms": 48,
+   "ref": "Cuentas cerradas. Ha sobrado más té del previsto.",
+   "asr": "Cuentas cerradas, ha sobrado más té del previsto.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.t43_12_07_clock_back_home.after.1.ogg",
+   "dur": 5.18,
+   "lufs": -18.1,
+   "lead_ms": 3,
+   "trail_ms": 54,
+   "ref": "Marcha regular durante veinticuatro horas. El reloj puede volver a la exposición.",
+   "asr": "Marja regular durante 24 horas. El reloj puede volver a la exposición.",
+   "wer": 0.167
+  },
+  {
+   "file": "es/job.t43_12_08_henryks_bench.after.1.ogg",
+   "dur": 4.21,
+   "lufs": -18.1,
+   "lead_ms": 39,
+   "trail_ms": 55,
+   "ref": "El caldo espera. Esta vez traiga también a la aprendiz.",
+   "asr": "El caldo espera. Esta vez traiga también al aprendiz.",
+   "wer": 0.2
+  },
+  {
+   "file": "es/job.t43_12_08_henryks_bench.after.2.ogg",
+   "dur": 3.29,
+   "lufs": -17.7,
+   "lead_ms": 0,
+   "trail_ms": 52,
+   "ref": "Cerré el taller. Comprobé la llave antes de salir.",
+   "asr": "Cerré el taller. Comprobe la llave antes de salir.",
+   "wer": 0.111
+  },
+  {
+   "file": "es/job.time_capsule.after.1.ogg",
+   "dur": 4.57,
+   "lufs": -17.5,
+   "lead_ms": 32,
+   "trail_ms": 50,
+   "ref": "La clase volvió a reunirse. Me acordé de todos los nombres.",
+   "asr": "La clase volvió a reunirse. Me acordé de todos los nombres.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.uncle_safe_heirs.after.1.ogg",
+   "dur": 3.11,
+   "lufs": -18.4,
+   "lead_ms": 58,
+   "trail_ms": 48,
+   "ref": "Gracias por esperar a que todos nos pusiéramos de acuerdo.",
+   "asr": "Gracias por esperar a que todos nos pusiéramos de acuerdo.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.warm_room_for_neighbours.after.1.ogg",
+   "dur": 6.29,
+   "lufs": -17.8,
+   "lead_ms": 38,
+   "trail_ms": 8,
+   "ref": "Los vecinos durmieron calentitos. Patata revisó todas las mantas y no aprobó ninguna.",
+   "asr": "Los vecinos durmieron calentitos. Patata revisó todas las mantas y no aprobó ninguna.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.widow_bureau.after.1.ogg",
+   "dur": 5.36,
+   "lufs": -18.2,
+   "lead_ms": 45,
+   "trail_ms": 5,
+   "ref": "El escritorio vuelve a estar ordenado. Lo que él guardó, lo guardo yo también.",
+   "asr": "El escritorio vuelve a estar ordenado. Lo que él guardó lo guardo yo también.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.wigilia_table_drawer.after.1.ogg",
+   "dur": 4.65,
+   "lufs": -18.2,
+   "lead_ms": 48,
+   "trail_ms": 48,
+   "ref": "Cada tarjeta encontró su sitio. Esa silla libre todavía le espera.",
+   "asr": "Cada tarjeta encontró su sitio. Esa silla libre todavía le espera.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.winter_bicycle_cellar.after.1.ogg",
+   "dur": 5.49,
+   "lufs": -18.2,
+   "lead_ms": 48,
+   "trail_ms": 54,
+   "ref": "El último paquete llegó el día treinta y uno. El candado pasa el invierno bajo una funda.",
+   "asr": "El último paquete llegó el día 31. El candado pasa el invierno bajo una funda.",
+   "wer": 0.176
+  },
+  {
+   "file": "es/job.wooden_winter_village.after.1.ogg",
+   "dur": 6.42,
+   "lufs": -18.0,
+   "lead_ms": 49,
+   "trail_ms": 53,
+   "ref": "La exposición está abierta. La doctora Rygiel contó los copos de la maqueta y no falta ninguno.",
+   "asr": "La exposición está abierta. La doctora Rihiel contó los copos de la maqueta y no falta ninguno.",
+   "wer": 0.059
+  },
+  {
+   "file": "es/job.wrong_floor.after.1.ogg",
+   "dur": 5.08,
+   "lufs": -18.0,
+   "lead_ms": 55,
+   "trail_ms": 54,
+   "ref": "¿Es usted el cerrajero que no abrió mi puerta? Le hice un pastel. Por no abrirla.",
+   "asr": "¿Es usted del cerrajero que no abrió mi puerta? Le hice un pastel por no abrirla.",
+   "wer": 0.062
+  },
+  {
+   "file": "es/job.zuzanna_catalogue_drawer.after.1.ogg",
+   "dur": 4.84,
+   "lufs": -17.9,
+   "lead_ms": 57,
+   "trail_ms": 49,
+   "ref": "Las copias están listas para la sala común. Los originales se quedan en el cajón.",
+   "asr": "Las copias están listas para la sala común. Los originales se quedan en el cajón.",
+   "wer": 0.0
+  }
+ ]
+}

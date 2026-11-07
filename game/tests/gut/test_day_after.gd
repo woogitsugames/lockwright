@@ -59,6 +59,44 @@ func test_every_after_line_has_text_and_a_face() -> void:
 	assert_gt(jobs, 80)
 
 
+
+## D-78 voices: every day-after line ships with a recorded clip in the bundled languages (PL, EN), at the path the
+## scene plays (`lines/<lang>/<job_id>.after.N.ogg`), loadable as a non-looping Ogg stream. DE/FR/ES come in voice packs.
+func test_every_after_line_has_audio_in_pl_and_en() -> void:
+	var lines := 0
+	for f in DirAccess.get_files_at("res://data/jobs"):
+		if not f.ends_with(".json"):
+			continue
+		var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/" + f))
+		for line in DayAfter.lines_for(j):
+			for lang in ["pl", "en"]:
+				var path := Sfx.line_clip_path(String(line["key"]), lang)
+				assert_ne(path, "", "%s: %s clip" % [line["key"], lang])
+				if path != "":
+					var stream := load(path) as AudioStreamOggVorbis
+					assert_not_null(stream, "%s: %s is Ogg Vorbis" % [line["key"], lang])
+					if stream != null:
+						assert_false(stream.loop, "%s: %s does not loop" % [line["key"], lang])
+						assert_between(stream.get_length(), 0.5, 15.0, "%s: %s length" % [line["key"], lang])
+			lines += 1
+	assert_gt(lines, 90)
+
+
+func test_scene_plays_the_line_clip() -> void:
+	var lang := Settings.language()
+	if not lang in ["pl", "en"]:
+		pass_test("bundled clips are PL/EN only; %s comes from a voice pack" % lang)
+		return
+	DayAfter.note_finished(JobRun.job_by_id(ONE_LINE))
+	var scene := DayAfter.maybe_show(_host())
+	await wait_process_frames(2)
+	assert_not_null(scene)
+	if scene != null:
+		assert_not_null(scene.player.stream, "the first line has a voice clip")
+		if scene.player.stream != null:
+			assert_eq(scene.player.stream.resource_path, "res://assets/audio/lines/%s/%s.after.1.ogg" % [lang, ONE_LINE])
+
+
 func test_finished_job_is_queued_once_and_capped() -> void:
 	DayAfter.note_finished(JobRun.job_by_id(ONE_LINE))
 	DayAfter.note_finished(JobRun.job_by_id(ONE_LINE))

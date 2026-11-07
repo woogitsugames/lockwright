@@ -14,7 +14,7 @@ Subcommands
                                                          #   "day after" lines (`<job_id>.after.N`), NOT generated yet
   python3 tools/voice_lines.py synth  [--jobs ...] [--lang ...]           # call the API directly (needs ELEVENLABS_API_KEY)
   python3 tools/voice_lines.py finish DIR                # raw PCM/WAV in DIR (<lang>/<key>.pcm) -> normalised .ogg + .import
-  python3 tools/voice_lines.py qa [--lang pl,en]         # duration/loudness/ASR word error rate (faster-whisper)
+  python3 tools/voice_lines.py qa [--lang pl,en] [--only .after.] [OUT.json]   # duration/loudness/ASR WER (faster-whisper)
   python3 tools/voice_lines.py reactions-finish DIR      # wordless S03v2-style reactions: DIR/<speaker>/<emotion>.pcm
                                                          #   -> game/assets/audio/voices/<speaker>/<emotion>.ogg (+ .import)
 
@@ -51,6 +51,20 @@ TTS_OVERRIDES = {
 SEED_OVERRIDES = {
     ('job.dollhouse_wooden_lock.line.2', 'fr'): 101,   # default seed: "Papy appelait ça" came out garbled
     ('job.newlyweds_4am.line.4', 'es'): 101,           # default seed: aspirated h in "Enhorabuena"
+    # D-78 day-after lines (2026-11-07): retakes kept where faster-whisper medium read them better than the default seed
+    ('job.community_notice_case.after.1', 'pl'): 101,
+    ('job.frozen_cellar_padlock.after.1', 'pl'): 101,
+    ('job.t43_09_05_receipt_safe.after.1', 'pl'): 101,
+    ('job.t43_11_03_tool_exchange.after.1', 'pl'): 101,
+    ('job.t43_12_01_letters_archive.after.1', 'pl'): 101,
+    ('job.t43_10_06_shared_room_entry.after.1', 'es'): 101,
+}
+
+# Model per (key, lang) where eleven_v4_turbo kept failing the ASR check and the fallback eleven_v4 read better
+# (default seed). Same voice; owner rule: v4 only as a fallback for turbo.
+MODEL_OVERRIDES = {
+    ('job.attic_drying_room.after.1', 'pl'): 'eleven_v4',
+    ('job.t43_12_05_tea_fund_case.after.1', 'fr'): 'eleven_v4',
 }
 
 # Voice Design brief per speaker: gender, age, temperament (docs/CLIENTS.md, job .client texts, cast portraits).
@@ -204,7 +218,7 @@ def tts_payload(jobs=None, langs=LANGS, kind='line'):
         v = cast[l['speaker']]
         for lang in langs:
             out.append({'key': l['key'], 'lang': lang, 'speaker': l['speaker'], 'voice_id': v['voice_id'],
-                        'model_id': v.get('model', MODEL), 'voice_settings': v['settings'],
+                        'model_id': MODEL_OVERRIDES.get((l['key'], lang), v.get('model', MODEL)), 'voice_settings': v['settings'],
                         'seed': SEED_OVERRIDES.get((l['key'], lang), int(hashlib.sha1(l['key'].encode()).hexdigest()[:6], 16)),
                         'subtitle': l['text'][lang], 'text': tts_text(l['key'], lang, l['text'][lang], tags)})
     return out
@@ -339,7 +353,7 @@ def wer(ref, hyp):
     return d[len(h)], max(len(r), 1)
 
 
-def qa(langs, model='small', out_json=None):
+def qa(langs, model='small', out_json=None, only=None):
     """Duration, integrated loudness, leading/trailing silence and ASR word error rate against the subtitle."""
     from faster_whisper import WhisperModel
     import numpy as np
@@ -354,6 +368,8 @@ def qa(langs, model='small', out_json=None):
     for lang in langs:
         for ogg in sorted((OUT / lang).glob('*.ogg')):
             key = ogg.stem
+            if only and only not in key:
+                continue
             f = f'{lang}/{ogg.name}'
             if f in done:
                 d = done[f]
@@ -390,6 +406,7 @@ def main():
     ap.add_argument('arg', nargs='?')
     ap.add_argument('--jobs')
     ap.add_argument('--lang', default=','.join(LANGS))
+    ap.add_argument('--only', help='qa: only files whose key contains this, e.g. .after.')
     a = ap.parse_args()
     jobs = set(a.jobs.split(',')) if a.jobs else None
     langs = a.lang.split(',')
@@ -419,7 +436,7 @@ def main():
     elif a.cmd == 'synth':
         synth(tts_payload(jobs, langs), a.arg or 'contrib/voice/raw')
     elif a.cmd == 'qa':
-        qa(langs, out_json=a.arg)
+        qa(langs, out_json=a.arg, only=a.only)
     elif a.cmd == 'finish':
         finish(a.arg)
     elif a.cmd == 'reactions-finish':

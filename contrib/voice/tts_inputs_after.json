@@ -3487,7 +3487,7 @@
  },
  "es/job.t43_10_06_shared_room_entry.after.1.ogg": {
   "model_id": "eleven_v4_turbo",
-  "seed": 1936271,
+  "seed": 101,
   "speaker": "janka",
   "subtitle": "La sala huele a pintura. El té hace lo que puede por ganarle.",
   "text": "La sala huele a pintura. El té hace lo que puede por ganarle.",
@@ -4914,7 +4914,7 @@
   }
  },
  "fr/job.t43_12_05_tea_fund_case.after.1.ogg": {
-  "model_id": "eleven_v4_turbo",
+  "model_id": "eleven_v4",
   "seed": 15275858,
   "speaker": "roman",
   "subtitle": "Les comptes sont faits. Il reste plus de thé que prévu.",
@@ -5110,7 +5110,7 @@
   }
  },
  "pl/job.attic_drying_room.after.1.ogg": {
-  "model_id": "eleven_v4_turbo",
+  "model_id": "eleven_v4",
   "seed": 8612326,
   "speaker": "teresa",
   "subtitle": "Płaszcze wyschły, chór zaśpiewał. Klucz do suszarni wisi teraz u pana Romana.",
@@ -5223,7 +5223,7 @@
  },
  "pl/job.community_notice_case.after.1.ogg": {
   "model_id": "eleven_v4_turbo",
-  "seed": 4889156,
+  "seed": 101,
   "speaker": "basia",
   "subtitle": "Ogłoszenia już wiszą. Ktoś dopiął plakat o kocie.",
   "text": "Ogłoszenia już wiszą. Ktoś dopiął plakat o kocie.",
@@ -5293,7 +5293,7 @@
  },
  "pl/job.frozen_cellar_padlock.after.1.ogg": {
   "model_id": "eleven_v4_turbo",
-  "seed": 1397281,
+  "seed": 101,
   "speaker": "janka",
   "subtitle": "Koce rozeszły się przed wieczorem. Kłódka dostała ode mnie wełnianą skarpetę.",
   "text": "Koce rozeszły się przed wieczorem. Kłódka dostała ode mnie wełnianą skarpetę.",
@@ -5923,7 +5923,7 @@
  },
  "pl/job.t43_09_05_receipt_safe.after.1.ogg": {
   "model_id": "eleven_v4_turbo",
-  "seed": 13944358,
+  "seed": 101,
   "speaker": "stefan",
   "subtitle": "Rachunek od pana dostał osobną przegródkę.",
   "text": "Rachunek od pana dostał osobną przegródkę.",
@@ -6077,7 +6077,7 @@
  },
  "pl/job.t43_11_03_tool_exchange.after.1.ogg": {
   "model_id": "eleven_v4_turbo",
-  "seed": 13635650,
+  "seed": 101,
   "speaker": "wladyslaw",
   "subtitle": "Dwie osoby przyszły zapytać, od czego zacząć. Dobry targ.",
   "text": "Dwie osoby przyszły zapytać, od czego zacząć. Dobry targ.",
@@ -6133,7 +6133,7 @@
  },
  "pl/job.t43_12_01_letters_archive.after.1.ogg": {
   "model_id": "eleven_v4_turbo",
-  "seed": 16541810,
+  "seed": 101,
   "speaker": "ola",
   "subtitle": "Martine dostała zdjęcie wystawy. Mama sama wybrała kadr.",
   "text": "Martine dostała zdjęcie wystawy. Mama sama wybrała kadr.",

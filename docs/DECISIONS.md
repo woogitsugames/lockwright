@@ -312,6 +312,7 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 - **Sterowanie:** stuknięcie w dowolnym miejscu (≤ 12 px ruchu) albo tabliczka „Kontynuuj” → następna kwestia; przy ostatniej tabliczka „Wracam do pracy” zamyka. Back (Nav, `jobs_list.go_back()`) zamyka scenkę przed wyjściem z listy. Przejścia 150 ms, bez nich przy „ograniczeniu ruchu”.
 - **Głos:** kwestia z plikiem `lines/<lang>/<job_id>.after.N.ogg` gra na magistrali Voice (ducking jak D-57), bez pliku sam napis. Nagrań jeszcze nie ma; wejścia TTS: `contrib/voice/tts_inputs_after.json` (`tools/voice_lines.py after-manifest`), 455 plików; **Lena** mówi tylko w scenach „dzień po” i nie ma jeszcze głosu (Voice Design przed generowaniem).
 - **Treść:** 10 zleceń rozdz. 8 (T18) nie miało `after` — dopisane po jednej kwestii (PL/EN/DE/FR/ES); teraz wszystkie 83 zlecenia mają scenkę (91 kwestii).
+- **Głosy (2026-11-07, sesja lektora):** 455 nagrań `lines/<lang>/<job_id>.after.N.ogg` (91 kwestii × PL/EN/DE/FR/ES), te same głosy postaci co w rozmowach; Lena ma głos `LW lena` (Voice Design). PL/EN w paczce gry (GUT: każda kwestia „dzień po” ma plik PL i EN), DE/FR/ES w paczkach głosów D-63. Kod sceny bez zmian (już grał plik, jeśli istnieje). 26 kwestii PL brzmi w ASR niewyraźnie (ł/ś/ą) — zmiana modelu u dostawcy, lista w `contrib/voice/REVOICE.md`; decyzja o modelu do ponownego nagrania należy do właściciela.
 
 ## D-79: Tryb ćwiczeń („Ćwiczenia”) w Warsztacie — zamki praktyki D-54 na ekranach planu B
 2026-11-07 · sesja ćwiczeń (odbiorca kluczy `practice.<tNN>.goal`, D-75) ·

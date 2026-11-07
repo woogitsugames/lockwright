@@ -104,3 +104,30 @@ Sprawdzono 332 kwestie `*.line.N` w kolumnach `fr` i `es` (83 zlecenia): rejestr
 | `job.halina_christmas_tin.line.4` | es | Muy sensato, hijo. El primer trozo es para usted de todos modos. | Muy sensato, hijo. El primer trozo es para ti, de todos modos. | Halina mówi „hijo” i „para ti” jak w `grandma_broth.line.4` (wyjątek D-67) |
 
 DE: „Ziemniak” w `t43_10_04_design_cabinet.line.1`, `.after.1` i `t43_12_04_school_box.line.4` poprawione na „Kartoffel” (jak reszta DE); obie kwestie nagrane ponownie tym samym głosem i seedem (2026-11-06).
+
+## Kwestie „dzień po” (D-78, 2026-11-07, przed nagraniem)
+
+Sprawdzono 91 kwestii `*.after.N` w pięciu językach (455 wejść TTS): gramatyka, rejestr mówiony, rodzaj i formy grzecznościowe (Zuzanna, Lena, Elżbieta — formy żeńskie), imię kota (PL/DE Ziemniak → DE „Kartoffel”, FR „Patate”, ES „Patata”), sens zgodny z PL. Poprawiono 20 wartości w 14 kluczach. Pisownia EN (*neighbours/labelled/woollen* obok amerykańskiej) nie zmienia wymowy, więc została. Tagi audio dla 31 kwestii dopisane w `contrib/voice/tags.json` (tylko wejście TTS).
+
+| klucz | kol. | było | jest | powód |
+|---|---|---|---|---|
+| `job.allotment_shed.after.1` | es | Los tomates llegaron a tiempo a la tierra. Le dan las gracias. | Los tomates se plantaron a tiempo. Le dan las gracias. | „llegaron a la tierra” to kalka; naturalnie „se plantaron a tiempo” |
+| `job.gosia_workbench_drawer.after.1` | es | El banco ya puede ir al sala común. El cajón corre suave. | El banco ya puede ir a la sala común. El cajón corre suave. | rodzaj: „la sala” (było „al sala”) |
+| `job.zuzanna_catalogue_drawer.after.1` | es | Las copias están listas para el sala común. Los originales se quedan en el cajón. | Las copias están listas para la sala común. Los originales se quedan en el cajón. | rodzaj: „la sala” (było „el sala”) |
+| `job.cat_bathroom.after.1` | de | Ziemniak geht es bestens. Die Badezimmertür bleibt jetzt angelehnt. | Kartoffel geht es bestens. Die Badezimmertür bleibt jetzt angelehnt. | kot = „Kartoffel” jak w pozostałych kwestiach DE |
+| `job.marta_poster_studio.after.1` | de | Die Plakate trocknen. Ziemniak führt die Aufsicht. | Die Plakate trocknen. Kartoffel führt die Aufsicht. | kot = „Kartoffel” jak w pozostałych kwestiach DE |
+| `job.refuse_aunt_alive.after.1` | pl | Pani Lucyna wraca w piątek. Zamek wymieni sama, z pana pomocą. | Pani Lucyna wraca w piątek. Wtedy wymieni zamek, z pana pomocą. | „sama, z pana pomocą” wewnętrznie sprzeczne; zgodnie z EN/DE |
+| `job.refuse_ex_partner.after.1` | fr | Merci pour l'appel. Il a repris ses affaires avec moi. La locataire a donné son accord. | Merci pour l'appel. Il a repris ses affaires en ma présence. La locataire a donné son accord. | „avec moi” sugeruje wspólne zabieranie; „en ma présence” jak PL „przy mnie” |
+| `job.refuse_ex_partner.after.1` | es | Gracias por llamar. Recogió sus cosas conmigo. La inquilina dio su consentimiento. | Gracias por llamar. Recogió sus cosas en mi presencia. La inquilina dio su consentimiento. | „conmigo” dwuznaczne; „en mi presencia” jak PL „przy mnie” |
+| `job.halina_recipe_box.after.1` | en | The recipes are safe. Dinner will be too. | The recipes are safe. And there'll be dinner too. | „Dinner will be (safe)” nie ma sensu; PL „Obiad też będzie” = będzie obiad |
+| `job.halina_recipe_box.after.1` | de | Die Rezepte sind heil. Das Essen wird es auch. | Die Rezepte sind heil. Und Essen gibt es auch. | jak wyżej (obiad będzie, nie „będzie cały”) |
+| `job.halina_recipe_box.after.1` | fr | Les recettes sont sauves. Le dîner le sera aussi. | Les recettes sont sauves. Et il y aura le dîner, aussi. | jak wyżej |
+| `job.halina_recipe_box.after.1` | es | Las recetas están a salvo. La comida también lo estará. | Las recetas están a salvo. Y comida también habrá. | jak wyżej |
+| `job.student_dorm.after.1` | fr | J'ai été à l'heure à l'examen. Serrures anciennes, excellente note. | Je suis arrivée à l'heure à l'examen. Serrures anciennes, excellente note. | „J'ai été à l'heure” nienaturalne; Zuzanna — forma żeńska „arrivée” |
+| `job.student_dorm.after.1` | es | Llegué al examen. Cerraduras históricas, sobresaliente. | Llegué a tiempo al examen. Cerraduras históricas, sobresaliente. | bez „a tiempo” zdanie traci sens PL „zdążyłam” |
+| `job.night_nurse.after.1` | en | I slept eleven hours. The key went straight in its bowl. | I slept eleven hours. The key went straight into its bowl. | przyimek ruchu „into” |
+| `job.newlyweds_4am.after.1` | es | Por fin dormimos. Las llaves duermen ahora en un gancho. | Por fin pudimos dormir. Las llaves duermen ahora en un gancho. | „Por fin dormimos” urywane; naturalnie „pudimos dormir” |
+| `job.pizzeria_pays_pizza.after.1` | fr | Aujourd'hui, tout était prêt avant l'ouverture. La pizza tient toujours. | Aujourd'hui, tout était prêt avant l'ouverture. L'offre de pizza tient toujours. | „La pizza tient toujours” dosłownie o pizzy; chodzi o ofertę (EN „offer stands”) |
+| `job.pizzeria_pays_pizza.after.1` | es | Hoy todo estaba listo antes de abrir. La pizza sigue en pie. | Hoy todo estaba listo antes de abrir. La oferta de la pizza sigue en pie. | jak wyżej |
+| `job.t43_10_03_exhibit_clock.after.1` | fr | L'essai sur vingt-quatre heures est terminé. L'horloge marche, et le procès-verbal aussi. | L'essai sur vingt-quatre heures est terminé. L'horloge marche, et le procès-verbal est en règle. | „le procès-verbal marche” nienaturalne; EN „paperwork checks out” |
+| `job.t43_11_07_wrong_delivery.after.1` | de | Der Empfänger hat sich gefreut. Das Paket auch, so leicht wie die Sackkarre war. | Der Empfänger hat sich gefreut. Das Paket auch, nach der leichten Sackkarre zu urteilen. | składnia „so leicht wie … war” niejasna; „nach … zu urteilen” jak PL „sądząc po” |

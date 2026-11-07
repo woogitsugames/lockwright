@@ -6,8 +6,8 @@ extends Control
 ## player enters the job list, ONE scene plays for the newest unseen job: the place photo (by day), the
 ## speaker's portrait (G09 cast / episodic, else the G17 initial plate as on the arrival screen), the line,
 ## a tap (or the Continue plate, or Back) moves on; after the last line the scene closes and is never shown
-## again for that job. A line with a recorded clip (`lines/<lang>/<key>.ogg`) is voiced; there are none yet,
-## so today every line is subtitle-only (TTS inputs: contrib/voice/tts_inputs_after.json).
+## again for that job. A line with a recorded clip (`lines/<lang>/<key>.ogg`) is voiced: PL/EN ship in the game,
+## DE/FR/ES come with the voice packs (D-63); no clip = subtitle only (TTS inputs: contrib/voice/tts_inputs_after.json).
 
 signal closed
 
