@@ -6,11 +6,15 @@ extends GutTest
 ## section, and the loupe target is >= 48 dp inside the safe area. N-78: the section takes the room
 ## between the plug face and the roll (the wafer plate was tiny). N-77: one tap on the loupe opens it
 ## on every screen (a phone tap = touch + emulated click, which used to toggle it twice).
+## Also 892x412 (SM-A165F) with and without insets, lever_detector, and the mechanism's elements
+## inside the cover-cropped section (the wider section must not crop what the player works on).
 
 ## [window dp, safe-area insets dp (left, top, right, bottom)]
 const CASES := [
 	[Vector2i(915, 412), Vector4(48, 0, 48, 21)],   # notch on a side + gesture bar
 	[Vector2i(915, 412), Vector4.ZERO],
+	[Vector2i(892, 412), Vector4.ZERO],             # SM-A165F 2340x1080 px (N-78), no insets reported
+	[Vector2i(892, 412), Vector4(32, 0, 0, 16)],    # same phone, cutout on the left + gesture bar
 	[Vector2i(800, 360), Vector4.ZERO],
 	[Vector2i(1916, 1080), Vector4(32, 0, 0, 24)],
 ]
@@ -44,9 +48,7 @@ func test_landscape_roll_column_math() -> void:
 
 func test_every_lock_screen_shows_whole_roll_and_loupe_in_landscape_safe_area() -> void:
 	var scenes := _scenes()
-	for fam in scenes:
-		if not JobRun.PHOTOREAL_READY.has(fam):
-			continue
+	for fam in scenes:  # every plan-B screen, lever_detector too (not in PHOTOREAL_READY)
 		var job := _first_job(fam)
 		if job.is_empty():
 			continue
@@ -75,6 +77,14 @@ func test_every_lock_screen_shows_whole_roll_and_loupe_in_landscape_safe_area() 
 			assert_true(safe.grow(1.0).encloses(loupe), tag + ": loupe %s inside safe" % loupe)
 			assert_true(view.section_rect.size.x > 100.0 and view.section_rect.size.y > 100.0, tag + ": section shown")
 			assert_lt(roll.end.x, safe.end.x - 4.0, tag + ": bare leather right of the roll (loupe ring not cut)")
+			# the wider, cover-cropped section must not crop the mechanism itself: every element is
+			# inside the shown section, off the plug face and the roll
+			var face := Rect2(view._face.position, view._face.size)
+			assert_true(safe.grow(1.0).encloses(face), tag + ": plug face %s inside safe" % face)
+			assert_false(face.intersects(view.section_rect.grow(-1.0)), tag + ": face beside the section")
+			for p in _mechanism_points(view):
+				assert_true(view.section_rect.grow(-4.0).has_point(p), tag + ": element %s inside section %s" % [p, view.section_rect])
+				assert_false(roll.has_point(p) or face.has_point(p), tag + ": element %s not under the roll / face" % p)
 			if ins == Vector4.ZERO and size == Vector2i(915, 412):
 				assert_gte(view.section_rect.size.x, size.y * LockPhotorealView.SECTION_ASPECT * 1.3, tag + ": N-78 section not tiny")
 			vp.queue_free()
@@ -85,14 +95,19 @@ func test_tap_gate_one_press_per_tap() -> void:
 	var g := TapGate.new()
 	var touch := InputEventScreenTouch.new()
 	touch.pressed = true
-	var click := InputEventMouseButton.new()
+	var echo := InputEventMouseButton.new()  # what emulate_mouse_from_touch sends for the same tap
+	echo.device = InputEvent.DEVICE_ID_EMULATION
+	echo.button_index = MOUSE_BUTTON_LEFT
+	echo.pressed = true
+	assert_true(g.accept(touch), "the touch is the press")
+	assert_false(g.accept(echo), "the click emulated from the same tap is swallowed")
+	var up := InputEventScreenTouch.new()
+	assert_false(g.accept(up), "a release is not a press")
+	assert_true(g.accept(touch), "a quick next tap counts (no time window)")
+	var click := InputEventMouseButton.new()  # a real mouse (desktop / editor)
 	click.button_index = MOUSE_BUTTON_LEFT
 	click.pressed = true
-	assert_true(g.accept(touch, 1000), "the touch is the press")
-	assert_false(g.accept(click, 1000), "the click emulated from the same tap is swallowed")
-	var up := InputEventScreenTouch.new()
-	assert_false(g.accept(up, 1100), "a release is not a press")
-	assert_true(g.accept(click, 1000 + TapGate.WINDOW_MS), "the next tap counts")
+	assert_true(g.accept(click), "a real mouse click counts")
 
 
 func _tap(vp: SubViewport, at: Vector2) -> void:
@@ -102,6 +117,7 @@ func _tap(vp: SubViewport, at: Vector2) -> void:
 	t.pressed = true
 	vp.push_input(t, true)
 	var m := InputEventMouseButton.new()
+	m.device = InputEvent.DEVICE_ID_EMULATION  # Godot marks the emulated click
 	m.button_index = MOUSE_BUTTON_LEFT
 	m.position = at
 	m.global_position = at
@@ -137,3 +153,29 @@ func test_one_tap_opens_the_loupe_on_every_lock_screen() -> void:
 			assert_true(view.zoomed, tag + ": one tap on the loupe opens the eyepiece")
 			vp.queue_free()
 			await wait_frames(1)
+
+
+## Screen points of the mechanism's elements (pins, wafers, levers, wheels, pegs ...).
+func _mechanism_points(view: LockPhotorealView) -> Array:
+	var out := []
+	if view.has_method("wafer_screen"):
+		for i in 5:
+			out.append(view.wafer_screen(i))
+	elif view.has_method("element_screen"):
+		for i in view.get("n_el"):
+			out.append(view.element_screen(i))
+	elif view.has_method("gate_screen"):
+		for i in view.lever_count():
+			out.append(view.gate_screen(i))
+	elif view.has_method("tooth_tip_screen"):
+		for i in view.get("n_wheels"):
+			out.append(view.tooth_tip_screen(i))
+	elif view.has_method("feeler_tip_screen"):
+		for i in view.get("n_wheels"):
+			out.append(view.feeler_tip_screen(i))
+	elif view.has_method("bit_head_screen"):
+		out.append(view.bit_head_screen())
+	else:
+		for i in view._active_stacks:
+			out.append(view.mm_to_screen(Vector3(LockPhotorealView.PINS_X[i], PinPose.SHEAR, 0.0)))
+	return out

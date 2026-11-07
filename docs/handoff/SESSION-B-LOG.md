@@ -909,3 +909,9 @@ Telefon Samsung SM-A165F (1080×2340, Mali-G57, silnik wibracji `MOTOR_COIN_DC` 
   11-07 21:11:22.704 | effect | finished | duration: 30ms | usage: MEDIA | com.woogitsugames.lockwright | played: [Step=0ms(amplitude=0,00),Step=20ms(amplitude=0,18)]
   ```
   Źródła: podpowiedzi H1–H3 (`Haptics.play(&"contact", 0.2 + 0.05 * level, …)` w `tutorial_hints.gd:318`) i tyknięcia UI.
+
+**N-77 / N-78 — uzupełnienie do D-80 (druga sesja nad tym samym zadaniem):**
+- `75a0cb9` (D-80) psuł 4 testy GUT: `test_planb_warded` ×2 (bramka 250 ms połykała szybkie tapy w grot), `test_planb_dial_safe` (stare oczekiwanie wysokości viewportu przy szerszym przekroju) oraz błąd lambdy w `test_practice`. `TapGate` rozpoznaje teraz echo po `device == InputEvent.DEVICE_ID_EMULATION`, które Godot nadaje klikowi emulowanemu z dotyku. Nie ma już okna czasowego, więc szybki drugi tap działa, a prawdziwa mysz też.
+- Nowy `test_loupe_tap_all_locks.gd`: tap w środek lupy na wszystkich 13 ekranach (także lever_detector), w pionie i poziomie, z drabiną podpowiedzi na H3 (widmo H2 i strzałki kredy nad zwijką). Lupa się otwiera, dotyk nie trafia do strefy prawego kciuka, wytrych jest zamrożony, szybki drugi tap zamyka. Dodatkowo: jeden tap = jeden krok grotu warded.
+- `test_lock_landscape_safe_area.gd` sprawdza też lever_detector i 892×412 (SM-A165F, z wcięciami i bez). Sprawdza, że elementy mechanizmu są w przyciętym przekroju, a nie pod zwijką ani czołem rdzenia.
+- Ryzyko do oka: przekrój do 1,15:1 przycina górę i dół kadru 3:4 we wszystkich rodzinach, także tych, których płyta wypełnia kadr (pin, lever, dial_safe, time_lock). Punkty elementów mieszczą się w kadrze, ale wierzchołki sprężyn i dół płyty mogą być ucięte. Trzeba to sprawdzić na zrzutach `game-screens` 915×412.

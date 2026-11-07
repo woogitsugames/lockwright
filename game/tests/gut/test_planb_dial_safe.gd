@@ -189,7 +189,9 @@ func test_layout_fits_portrait_and_landscape() -> void:
 		for k in view.n_wheels:
 			assert_true(view.section_rect.has_point(view.feeler_tip_screen(k)), tag + " feeler %d inside the section" % k)
 		# N-65: the section is rendered at the on-screen pixel size, not a fixed texture
-		var disp_h: float = view.section_rect.size.y
+		# (N-78: a landscape section wider than the 3:4 plate covers it, so the render is as tall as the
+		# plate is at the section's width)
+		var disp_h: float = maxf(view.section_rect.size.y, view.section_rect.size.x / LockPhotorealView.SECTION_ASPECT)
 		assert_almost_eq(float(view.viewport.size.y), disp_h * view._physical_scale() * view.render_scale, disp_h * 0.08 + 4.0, tag + " viewport follows the screen")
 
 
