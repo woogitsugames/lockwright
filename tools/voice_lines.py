@@ -121,6 +121,8 @@ CAST = {
     # T18 (chapter 8, D-71): two new speakers (CHARACTERS.md, reviewed in REVIEW-T18.md)
     'pawel': ('m', 46, 'Polish heating technician, 46, calm and methodical, prefers a checked protocol to promises. Steady mid-low male voice, plain and reassuring, unhurried.'),
     'karol': ('m', 41, 'Polish man, 41, impatient with procedures, slightly pushy but polite, wants to skip questions. Clear mid-pitched male voice, brisk and a little evasive.'),
+    # D-78 day-after scenes: the community officer speaks only there (docs/CLIENTS.md)
+    'lena': ('f', 39, 'Polish woman, 39, a community police officer: polite, ordinary and calm, concrete and kind, thanks people for calling. Clearly female warm mid-pitch voice, steady unhurried pace, reassuring and grounded, no drama.'),
 }
 
 # Wordless reactions (S03v2 names, 0.3-1.5 s, ~-28 LUFS like contrib/gpt/S03v2) for speakers that arrived after S03v2
