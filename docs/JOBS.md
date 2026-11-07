@@ -132,6 +132,7 @@ Zasady:
 - **Brak ekranu „Game Over”.** Złe otwarcie kosztuje reputację i daje cichą, smutną scenkę, bez kar w stylu zręcznościówek.
 - Podejrzanych zleceń nie da się „wygrać” otwarciem: nie przynoszą monet, nagrody ani wpisu do gabloty.
 - Policja w grze jest uprzejma i zwyczajna. Żadnych pościgów.
+- **Scena „dzień po” (V04, D-78):** każde zlecenie ma pole `after` (mówcy) i kwestie `<job_id>.after.N`. Po zakończeniu (otwarcie, naprawa, rozmowa, odmowa) przy następnym wejściu w listę zleceń gra pokazuje jedną krótką scenkę: zdjęcie miejsca za dnia, portret mówcy, kwestia; stuknięcie zamyka. Każda scenka tylko raz.
 
 ### 2.6 Bezpieczeństwo w scenach
 - Gdy w historii pojawia się **zapach gazu, dym, osoba nieprzytomna albo dziecko samo w środku**, gra najpierw pokazuje kartę „Najpierw 112 / *Call emergency services first*”. Dopiero potem jest zamek. Takie sytuacje nie są zagadką na czas.

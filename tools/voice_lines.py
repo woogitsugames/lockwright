@@ -10,6 +10,8 @@ Subcommands
   python3 tools/voice_lines.py design-payload            # JSON of CAST descriptions + sample texts (for Voice Design)
   python3 tools/voice_lines.py tts-payload [--jobs a,b] [--lang pl,en]   # JSON list of TTS requests
   python3 tools/voice_lines.py manifest                  # contrib/voice/tts_inputs.json: exact tagged TTS input per file
+  python3 tools/voice_lines.py after-manifest            # contrib/voice/tts_inputs_after.json: TTS input for the V04
+                                                         #   "day after" lines (`<job_id>.after.N`), NOT generated yet
   python3 tools/voice_lines.py synth  [--jobs ...] [--lang ...]           # call the API directly (needs ELEVENLABS_API_KEY)
   python3 tools/voice_lines.py finish DIR                # raw PCM/WAV in DIR (<lang>/<key>.pcm) -> normalised .ogg + .import
   python3 tools/voice_lines.py qa [--lang pl,en]         # duration/loudness/ASR word error rate (faster-whisper)
@@ -151,13 +153,15 @@ def read_csv():
     return {r[0]: dict(zip(hdr[1:], r[1:])) for r in rows[1:] if r}
 
 
-def inventory():
+def inventory(kind='line'):
+    """kind 'line': arrival dialogue (`lines`, `<id>.line.N`); 'after': V04 day-after scene (`after`, `<id>.after.N`)."""
     rows = read_csv()
     out = []
+    field = 'lines' if kind == 'line' else 'after'
     for f in sorted(glob.glob(str(GAME / 'data/jobs/*.json'))):
         d = json.load(open(f, encoding='utf-8'))
-        for i, sp in enumerate(d.get('lines', [])):
-            key = f"{d['id']}.line.{i + 1}"
+        for i, sp in enumerate(d.get(field, [])):
+            key = f"{d['id']}.{kind}.{i + 1}"
             out.append({'job': d['id'], 'key': key, 'speaker': sp, 'text': rows[key]})
     return out
 
@@ -181,12 +185,19 @@ def design_payload():
     return res
 
 
-def tts_payload(jobs=None, langs=LANGS):
+def tts_payload(jobs=None, langs=LANGS, kind='line'):
     cast = json.load(open(CAST_JSON, encoding='utf-8'))['voices']
     tags = json.load(open(TAGS_JSON, encoding='utf-8')) if TAGS_JSON.exists() else {}
     out = []
-    for l in inventory():
+    for l in inventory(kind):
         if jobs and l['job'] not in jobs:
+            continue
+        if l['speaker'] not in cast:   # e.g. lena: speaks only in day-after scenes, no voice designed yet
+            for lang in langs:
+                out.append({'key': l['key'], 'lang': lang, 'speaker': l['speaker'], 'voice_id': None,
+                            'model_id': MODEL, 'voice_settings': None, 'seed': None, 'subtitle': l['text'][lang],
+                            'text': tts_text(l['key'], lang, l['text'][lang], tags),
+                            'todo': 'no voice for this speaker yet: Voice Design first (CAST, voice_cast.json)'})
             continue
         v = cast[l['speaker']]
         for lang in langs:
@@ -396,6 +407,13 @@ def main():
         MANIFEST.write_text(json.dumps(man,
             ensure_ascii=False, indent=1, sort_keys=True) + '\n', encoding='utf-8')
         print(MANIFEST, len(reqs))
+    elif a.cmd == 'after-manifest':
+        reqs = tts_payload(None, langs, kind='after')
+        out = ROOT / 'contrib/voice/tts_inputs_after.json'
+        out.write_text(json.dumps({f"{r['lang']}/{r['key']}.ogg": {k: r[k] for k in (
+            'speaker', 'voice_id', 'model_id', 'voice_settings', 'seed', 'text', 'subtitle', 'todo') if k in r}
+            for r in reqs}, ensure_ascii=False, indent=1, sort_keys=True) + '\n', encoding='utf-8')
+        print(out, len(reqs), 'requests,', sum(1 for r in reqs if r['voice_id'] is None), 'without a voice')
     elif a.cmd == 'synth':
         synth(tts_payload(jobs, langs), a.arg or 'contrib/voice/raw')
     elif a.cmd == 'qa':
