@@ -849,3 +849,63 @@ After rebasing main with session A's D-62 menu, measured the full resource pack 
 - **Ciągłość 9–12:** `t43_09_02_blanket_cupboard` dzielnica → Śródmieście (Wigilia była w kamienicy Elżbiety), `t43_09_08_spare_key_hook` → Osiedle Słoneczne (Kazimierz i Teresa z `wrong_floor`); `t43_12_01` i `t43_12_03` (sytuacje, bez nagrań): „otwarcie świetlicy” → „ponowne otwarcie po remoncie”, bo rozdz. 7 już ją otworzył (5 języków). Reszta odwołań (koce Janki, kolędy Mili i pokrowiec Teresy, zimowe miasteczko Zuzanny, Leon-kurier, stół Gosi) zgadza się z rozdz. 7–8 po integracji.
 - **Ekonomia:** `econ_sim` C, 83 zlecenia: average 135 min (careful 177, clumsy 108), 0 blokad, 0 grindu; nagrody bez cięć (wyposażenie warsztatu D-71 to osobne zadanie). Tekst wniosku 6 w `econ_sim.py` zaktualizowany.
 - **QA:** bot kariery miał stały limit 60 wizyt ekranu („loop”) — przy 83 zleceniach lista zleceń przekraczała go i CI qa-career na 28624fc padło; limit = max(60, liczba zleceń + 30). Lokalnie: macierz qa-career (solver/feel/clumsy/EN/ciemność) `career_complete`, 72 otwarte + 11 odmów = 83/83; GUT pełny; `validate.py` 83 zlecenia OK; i18n lint 0 błędów; `loc_qa` OK („Paweł” dopisany do wyjątków); assets lint OK; budżet: pck Android 73,0 MB (próg 120/150), start 0,58 s, scena zamka 1,03 s. Paczka głosów DE zbudowana lokalnie: 332 kwestie, 15,6 MB, kontrola „tylko dane” OK; wydanie i manifest zrobi `voice-packs.yml`.
+
+## Od sesji lokalnej: test a558ff1 — 2026-11-07
+Telefon Samsung SM-A165F (1080×2340, Mali-G57, silnik wibracji `MOTOR_COIN_DC` bez sterowania amplitudą), APK z CI dla `a558ff1` (D-77), zainstalowane z zachowanym zapisem właściciela (bez odinstalowania i czyszczenia danych). Telefon sterowany przez `adb shell input` (tap/swipe/motionevent). Dowody: `docs/handoff/device-tests/a558ff1-local/` (zrzuty 540 px JPG, klatki widma w pełnej rozdzielczości PNG, `logcat.txt`, `vibrator-service.txt`, `contact.png`). Uwaga: po `a558ff1` na main weszły m.in. `d363c33` (kolumna zwijki combo/disc w poziomie), D-78 i D-79. Raport dotyczy tylko `a558ff1`.
+
+**Działa:**
+- **Start:** nie ma błędu `quality.gd:35`, więc N-67 jest naprawione na telefonie. W logu `Haptics: native plugin LockwrightHaptics detected … "native": true`, Quality auto → medium.
+- **Android Back:**
+  - ustawienia → menu;
+  - przyjazd → lista;
+  - weryfikacja → przyjazd;
+  - zamek → pauza → wznowienie, na wszystkich 13 rodzinach (zrzuty `*_d_backpause.jpg`);
+  - warsztat, gablota, „O grze”;
+  - menu → okno „Zakończyć grę?” → drugie Back je zamyka (`73/74_menu_back*.jpg`).
+
+  N-69 potwierdzone na telefonie, z wyjątkiem lupy (N-77).
+- **Haptyka (N-70):** „Impuls próbny” jest w logu wibratora jako `220ms usage: MEDIA`. Zdarzenia zamka grają `Step=50ms` (58 z 92 zdarzeń gry w `vibrator-service.txt`). Fizyczne odczucie musi jeszcze potwierdzić właściciel.
+- **Nagłówki rozdziałów (D-75):** od „Rozdział 1 · Pierwsza zmiana” do „Rozdział 7 · Wspólny klucz”, z opisami (`08_jobs.jpg`, `29_jobs_scroll1.jpg`, `88_jobs_after_refusal.jpg`).
+- **Wszystkie 13 rodzin z listy zleceń** (pin_tumbler, warded, wafer, lever, lever_detector, dial_safe, combo, magnetic, dimple, disc_detainer, egyptian, time_lock, axial_slider) otwierają prawdziwą scenę: przyjazd → weryfikacja → zamek (`30…42_*_c_lock.jpg`, `37_pin`, `09/14_combo`). Nie ma zastępczego widoku ani wyjątków w logcat.
+- **Lekcja combo (T42), drabina H0–H4:** po bezczynności pojawiły się H1, H2, H3 i H4 („ręka mistrza”). Autopilot H4 naprawdę obraca kółko (`22/24/26_*`).
+- **Zamek pin z napięciem automatycznym:** otwarty. Rachunek ma klienta, usługę, kwoty i napiwek (`51_pin_try4.jpg`), więc N-66 OK. Na liście potem „Pokój 412 — wykonane”.
+- **Samouczek S1–S3 w trybie auto:** przechodzi do „Samouczek ukończony”, a „Kontynuuj” prowadzi do menu (`75…85`).
+- **Warsztat:** zakładki Narzędzia i Wyposażenie działają: render warsztatu, ceny, „Za mało monet” (`66/67`).
+- **Przyjazd „Piętro niżej”:** scenka z Kazimierzem, kwestie pojawiają się po kolei w tempie klipów, Teresa na końcu (`54_wrong_floor_arrival_contact.jpg`). Pliki `lines/pl/job.wrong_floor.line.1–4.ogg` są w paczce. Dźwięku nie odsłuchałem.
+- **Przywrócone ustawienia:** obrót automatyczny (`accelerometer_rotation=1`, `user_rotation=0`), język systemowy (pl-PL, nie był zmieniany), „Napięcie automatyczne” wyłączone jak na początku (`87_settings_restored.jpg`).
+
+**Nie sprawdzone:**
+- samouczek i zamki w trybie dwóch kciuków (adb nie robi dwóch równoczesnych dotyków);
+- ekran awansu na poziom (nie pojawił się po zleceniu za 87 monet);
+- wybór sterowania przy pierwszym starcie (zapis właściciela go pomija; przełącznik w ustawieniach działa);
+- głos PL na ucho.
+
+- **N-73 (wysoka, wygląd, D-77) — widmo z papieru czyta się, ale wygląda tanio.** Kontrast jest bardzo dobry: kremową sylwetkę na brązowej zwijce widać od razu. Problemy na telefonie:
+  (1) Płaskie wypełnienie `#D9CFBA` bez żadnego szczegółu (paznokieć, zgięcie, faktura papieru). Tusz 2 dp w skali telefonu prawie znika. Kształt czyta się jak plama korektora albo naklejka clip-art, nie jak wycinanka.
+  (2) Prawy kciuk H2 wystaje zza prawej krawędzi ekranu. Widać tylko kawałek „kciuka bez dłoni” nad lupą (`27_ghost_h2_right_thumb_clipped.png`, `48_pin_try3.jpg`, `49_pin_h4_master_contact.jpg`).
+  (3) Ręka mistrza H4 na combo to duża kremowa plama w lewym dolnym rogu. Zakrywa napinacz i kieszenie (`23_ghost_h4_master_combo.png`, `26_ghost_h4_strip.jpg`).
+  (4) Z samej sylwetki nie widać, który to palec ani jaki ruch. Ruch to tylko przesunięcie płaskiego kształtu.
+
+  Moja ocena: właściciel odrzuci to jako tanie i generyczne. Propozycja do decyzji sesji A: kontur wewnętrzny (linia paznokcia i stawu, jak w grafice instruktażowej), cień 1–2 dp pod papierem (papier leży nad zwijką), faktura papieru, cała dłoń w kadrze (kotwica dalej od krawędzi).
+  Powtórzenie: lekcja combo („Rozmowa o 9:30”) albo zlecenie pin przy < 3 wykonanych, potem bezczynność: 30 s (H2), 60 s (H4).
+- **N-74 (średnia) — obrazy kart samouczka nie trafiają do APK.** Ekrany „Samouczek — zamek ćwiczebny” (etapy 1–3) mają pustą lewą kolumnę, a podpisy są przesunięte w prawo (`75_shift_start.jpg`, `79_s2_intro.jpg`, `82_s2_after2.jpg`).
+  Przyczyna: `tutorial.gd:52-53` ładuje `res://assets/ui/gpt/tutorial/g11-%02d-clean.png`, a `export_presets.cfg` (presety Android i iOS) wyklucza `assets/ui/gpt/tutorial/*-clean.png`. Logcat:
+  ```
+  E godot   : ERROR: No loader found for resource: res://assets/ui/gpt/tutorial/g11-03-clean.png (expected type: unknown)
+  E godot   : ERROR: No loader found for resource: res://assets/ui/gpt/tutorial/g11-05-clean.png (expected type: unknown)
+  ```
+  (tak samo g11-07 i g11-09). Powtórzenie: menu → Zacznij dyżur.
+- **N-75 (średnia, wygląd) — pauza to goły tekst.** Po klapce albo Back widać trzy etykiety „Wznów / Tryb ciemny / Wyjdź” w lewym górnym rogu, na płaskim brązowym tle. Nie ma panelu ani wyśrodkowania. „Wznów” jest ok. 60 px od górnej krawędzi, przy pasku statusu (`19_combo_flap_pause.jpg`, `61_loupe_back.jpg`, każdy `*_d_backpause.jpg`). Nie pasuje do skórzanej klapki ani do reszty UI. Powtórzenie: dowolny zamek → klapka.
+- **N-76 (niska) — ekran weryfikacji jest surowy.** Tytuł wisi na środku pustego ekranu, a „Wstecz” dotyka lewej krawędzi bez marginesu 16 dp (`11_combo_verify.jpg`, `55_wrong_floor_verify.jpg`).
+  W „Piętro niżej” jest tylko jedna karta („Dokument tożsamości”) i brak opcji „Poproszę o coś jeszcze”, którą opisuje `job.wrong_floor.json`.
+  „Odmów” w zwykłym zleceniu wraca na listę bez komunikatu, a zlecenie zostaje na liście. Tak działa kod (`_refuse` zamyka tylko `job.refuse_*`), ale gracz nie dostaje żadnej informacji (`57_wrong_floor_refused.jpg`, `88_jobs_after_refusal.jpg`).
+- **N-77 (średnia) — lupa nie reaguje na zamku wafer.** Tap w lupę na zwijce (1080×2340: 940,2120) nic nie zmienia. Cztery kolejne tapy dają identyczne klatki (`58_wafer_auto_c_lock.jpg` vs `60_loupe_open.jpg`, `63/64/65_loupe_*.jpg`). Back od razu pokazuje pauzę (`61_loupe_back.jpg`), co potwierdza, że lupa się nie otworzyła.
+  Na lupie leży strzałka podpowiedzi gestu („← ◎ →”). Podejrzewam, że strefa prawego kciuka (InputSampler) albo ta nakładka przechwytuje dotyk. Innych rodzin pod tym kątem nie sprawdzałem.
+  Powtórzenie: „Kiosk przed szóstą” → zamek → tap w lupę.
+- **N-78 (średnia, znany problem potwierdzony) — poziom na zamku wafer.** Zwijka jest rozdzielona: tarcza napięcia jest w lewej kolumnie, wytrychy i lupa w prawej i są ucięte (kieszenie przez dolną krawędź, pierścień lupy przez prawą). Napis trenera zajmuje prawy górny róg, a płyta w środku jest mała (`59_landscape_wafer.png`). `d363c33` poprawia kolumnę dla combo/disc; wafer trzeba sprawdzić po tej zmianie.
+  Powtórzenie: zamek wafer → obrót 90° (test przez `user_rotation=1`, ustawienie przywrócone).
+- **N-79 (niska, haptyka) — impulsy 20 ms ze skalowaną amplitudą na silniku bez amplitudy.** 31 z 92 zdarzeń gry ma postać `[Step=0ms(amplitude=0,00),Step=20ms(amplitude=0,02…0,20)]`, a telefon ma `capabilities = []` i `MOTOR_COIN_DC`. Na takim silniku 20 ms przy niskiej amplitudzie najpewniej nie da się poczuć. To niezgodne z DECISIONS (A0: ≥ 30 ms, tylko zdarzenia z `a0_ms`). Przykład z `vibrator-service.txt`:
+  ```
+  11-07 21:11:22.704 | effect | finished | duration: 30ms | usage: MEDIA | com.woogitsugames.lockwright | played: [Step=0ms(amplitude=0,00),Step=20ms(amplitude=0,18)]
+  ```
+  Źródła: podpowiedzi H1–H3 (`Haptics.play(&"contact", 0.2 + 0.05 * level, …)` w `tutorial_hints.gd:318`) i tyknięcia UI.

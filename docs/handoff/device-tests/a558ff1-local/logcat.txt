@@ -1,0 +1,39 @@
+--------- beginning of main
+11-07 20:39:06.813 30083 30083 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-07 20:39:06.835 30083 30083 I AndroidRuntime: Using default boot image
+11-07 20:39:06.835 30083 30083 I AndroidRuntime: Leaving lock profiling enabled
+11-07 20:39:06.839 30083 30083 D AndroidRuntime: addProductProperty not brand or 7
+11-07 20:39:07.167 30083 30083 D AndroidRuntime: Calling main entry com.android.commands.monkey.Monkey
+11-07 20:39:07.409 30083 30083 I AndroidRuntime: VM exiting with result code 0.
+11-07 20:39:08.878 30103 30143 I godot   : Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+11-07 20:39:08.985 30103 30143 I godot   : Vulkan 1.3.303 - Forward Mobile - Using Device #0: ARM - Mali-G57 MC2
+11-07 20:39:11.037 30103 30143 I godot   : 
+11-07 20:39:12.131 30103 30143 I godot   : Haptics: native plugin LockwrightHaptics detected, play=true test_pulse=true caps={ "tier": "BUILDER", "primitives": [], "amplitude_control": false, "envelope": false, "native": true }
+11-07 20:39:12.343 30103 30143 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native
+11-07 20:39:22.825 30103 30143 I godot   : Quality: auto profile after 10 s avg 17.4 ms -> medium
+=== run 2 (from wrong_floor, logcat -c at 20:5x) ===
+--------- beginning of main
+11-07 21:07:03.315 30103 30143 E godot   : ERROR: No loader found for resource: res://assets/ui/gpt/tutorial/g11-03-clean.png (expected type: unknown)
+11-07 21:07:03.315 30103 30143 E godot   :    at: _load (core/io/resource_loader.cpp:332)
+11-07 21:07:03.315 30103 30143 E godot   :    GDScript backtrace (most recent call first):
+11-07 21:07:03.315 30103 30143 E godot   :        [0] _add_frame (res://scripts/ui/tutorial.gd:53)
+11-07 21:07:03.315 30103 30143 E godot   :        [1] _refresh (res://scripts/ui/tutorial.gd:121)
+11-07 21:07:03.315 30103 30143 E godot   :        [2] _ready (res://scripts/ui/tutorial.gd:32)
+11-07 21:07:03.317 30103 30143 E godot   : ERROR: No loader found for resource: res://assets/ui/gpt/tutorial/g11-05-clean.png (expected type: unknown)
+11-07 21:07:03.317 30103 30143 E godot   :    at: _load (core/io/resource_loader.cpp:332)
+11-07 21:07:03.317 30103 30143 E godot   :    GDScript backtrace (most recent call first):
+11-07 21:07:03.317 30103 30143 E godot   :        [0] _add_frame (res://scripts/ui/tutorial.gd:53)
+11-07 21:07:03.317 30103 30143 E godot   :        [1] _refresh (res://scripts/ui/tutorial.gd:121)
+11-07 21:07:03.317 30103 30143 E godot   :        [2] _ready (res://scripts/ui/tutorial.gd:32)
+11-07 21:08:10.398 30103 30143 E godot   : ERROR: No loader found for resource: res://assets/ui/gpt/tutorial/g11-07-clean.png (expected type: unknown)
+11-07 21:08:10.398 30103 30143 E godot   :    at: _load (core/io/resource_loader.cpp:332)
+11-07 21:08:10.398 30103 30143 E godot   :    GDScript backtrace (most recent call first):
+11-07 21:08:10.398 30103 30143 E godot   :        [0] _add_frame (res://scripts/ui/tutorial.gd:53)
+11-07 21:08:10.398 30103 30143 E godot   :        [1] _refresh (res://scripts/ui/tutorial.gd:121)
+11-07 21:08:10.398 30103 30143 E godot   :        [2] _ready (res://scripts/ui/tutorial.gd:32)
+11-07 21:09:26.399 30103 30143 E godot   : ERROR: No loader found for resource: res://assets/ui/gpt/tutorial/g11-09-clean.png (expected type: unknown)
+11-07 21:09:26.399 30103 30143 E godot   :    at: _load (core/io/resource_loader.cpp:332)
+11-07 21:09:26.399 30103 30143 E godot   :    GDScript backtrace (most recent call first):
+11-07 21:09:26.399 30103 30143 E godot   :        [0] _add_frame (res://scripts/ui/tutorial.gd:53)
+11-07 21:09:26.399 30103 30143 E godot   :        [1] _refresh (res://scripts/ui/tutorial.gd:121)
+11-07 21:09:26.399 30103 30143 E godot   :        [2] _ready (res://scripts/ui/tutorial.gd:32)
