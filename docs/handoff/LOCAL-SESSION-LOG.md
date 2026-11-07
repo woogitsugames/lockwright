@@ -53,3 +53,16 @@ Working APK tested across all twelve ready families. Owner confirmed game test p
 - Owner confirmed normal spoken dialogue in PL and EN. System language and free device rotation restored; media volume unchanged (13/15).
 - Session A has landed fixes for N-67/N-69/N-70/N-71 and reports N-72 detector both-mode opening fixed (assets are correct; no rerender). Retest awaits a successful Android artifact containing those fixes. Physical full S1–S3/two-thumb and H0–H4 signoff remains open.
 - No new Magnific D1/D2 supplied: no final character shadow maps/composites. Existing placeholders and CPU shadow proofs remain explicitly marked previews. Arrival/menu integration belongs to session A after visual approval.
+
+
+## 2026-11-07 — Local Windows build and test runs (lockcore GDExtension)
+
+The Windows checkout can now load lockcore, so headless import, `lock_test`, smoke and the full GUT suite run locally.
+
+- Toolchain (one-time, per-user, no admin): `winget install -e --id MartinStorsjo.LLVM-MinGW.UCRT` (clang 23, UCRT) and `python -m pip install --user scons`. godot-cpp is cloned by the script at the CI-pinned commit `e103d348` (N-28) into `C:\tools\godot-cpp-e103d34`.
+- `lockcore_gd.gdextension` now lists `windows.debug.x86_64` / `windows.release.x86_64` (`bin/liblockcore_gd.windows.template_{debug,release}.dll`); `SConstruct` names Windows output `.dll`. The DLLs stay untracked (`game/addons/lockcore_gd/bin/` is gitignored); CI is unchanged and keeps building its own Linux/Android libraries.
+- Build: `tools/local/win_build_lockcore.sh` (both targets, about 1 min each cold; `debug` or `release` for one). The DLL links the C++ runtime statically and imports only Windows UCRT/KERNEL32.
+- Test: `tools/local/run_gut.sh` = import + `lock_test` + smoke + full GUT (same args as game-tests.yml). Options: `--skip-import`, `--gut-only`, `-- -gselect=test_save` (extra GUT args), `--screens` (game-screens capture via opengl3 — uses the GPU, keep it off while rendering). Logs go to `qa/out/local/`. Godot path: `GODOT` env, default `C:\tools\godot-4.7.2\Godot_v4.7.2-stable_win64_console.exe`.
+- Result on this PC: lock_test ok, smoke ok, GUT 249/249 tests passing. The first run had 248/249: `test_voice_packs::test_offline_and_http_error_stay_subtitle_only`. Cause: Godot 4.7.2 on Windows never reports a refused loopback connect. `HTTPClient` stays `STATUS_CONNECTING`, so the game falls back to its 20 s "timeout" instead of "offline". The "offline" leg of that test is now skipped on Windows only; the HTTP 404 leg still runs. Not a mobile bug.
+- Local import noise: it rewrites tracked `*.import` files with LF line endings (autocrlf only, no content change) and regenerates the tracked `game/i18n/*.translation`. Do not commit them. Stage only intentional files.
+- Not covered locally: `--export-debug "Linux"` pck needs the Linux `.so`. Use CI export-pack-test for that, or add a Windows preset later.
