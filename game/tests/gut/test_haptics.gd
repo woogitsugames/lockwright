@@ -144,3 +144,61 @@ func test_test_pulse_native_and_fallback() -> void:
 	Settings.set_value("haptics_enabled", false)
 	Haptics.test_pulse()
 	assert_eq(f.calls.size(), 1, "disabled haptics: no test pulse")
+
+
+## N-79 / D-80: the Android engine (platform/android/.../HapticsEngine.kt, built into the AAR by CI)
+## builds every raw pulse in exactly two helpers that enforce the 30 ms floor (D-65) and, without
+## amplitude control, use the on/off policy instead of an amplitude the motor ignores.
+const ENGINE_KT := "../platform/android/lockwright-haptics/src/main/java/org/woogitsugames/lockwright/haptics/HapticsEngine.kt"
+
+
+func _engine_source() -> String:
+	var path := ProjectSettings.globalize_path("res://").path_join(ENGINE_KT).simplify_path()
+	return FileAccess.get_file_as_string(path) if FileAccess.file_exists(path) else ""
+
+
+func test_android_engine_pulse_floor_is_central() -> void:
+	var src := _engine_source()
+	if src == "":
+		pending("platform/android not checked out next to game/")
+		return
+	var floor_re := RegEx.create_from_string(r"MIN_PULSE_MS\s*=\s*(\d+)L")
+	var m := floor_re.search(src)
+	assert_not_null(m, "MIN_PULSE_MS constant")
+	if m != null:
+		assert_eq(int(m.get_string(1)), Haptics.ERM_MIN_MS, "Kotlin floor == Haptics.ERM_MIN_MS")
+	var raw := RegEx.create_from_string(r"VibrationEffect\.create(Waveform|OneShot)\(")
+	var lines := PackedStringArray()
+	for line in src.split("\n"):
+		if raw.search(line) != null and not line.strip_edges().begins_with("*"):
+			lines.append(line)
+	assert_eq(lines.size(), 2, "raw pulses are built only in amplitudePulse()/onOffPulse():\n" + "\n".join(lines))
+	for line in lines:
+		assert_true(line.contains("MIN_PULSE_MS"), "pulse helper clamps to MIN_PULSE_MS: " + line.strip_edges())
+	assert_true(src.contains("coerceIn(MIN_AMP, 255)"), "amplitude-scaled pulses keep the MIN_AMP floor")
+	assert_true(src.contains("if (!amplitudeControl) return oneShotFor(event, i)"),
+		"waveforms on a motor without amplitude control fall back to the on/off policy")
+	assert_true(src.contains("SDK_INT_FULL >= 370200 && envelopeSupported"),
+		"BUILDER tier needs envelope support (API 36 MOTOR_COIN_DC reported BUILDER, N-79)")
+
+
+func test_android_on_off_events_match_patterns() -> void:
+	var src := _engine_source()
+	if src == "":
+		pending("platform/android not checked out next to game/")
+		return
+	var start := src.find("private fun oneShotFor(")
+	assert_gt(start, 0, "oneShotFor() present")
+	var block := src.substr(start, src.find("else -> return null", start) - start)
+	var row := RegEx.create_from_string(r'((?:"[a-z_]+",?\s*)+)->\s*(\d+)f')
+	var name_re := RegEx.create_from_string(r'"([a-z_]+)"')
+	var kt := {}
+	for m in row.search_all(block):
+		for n in name_re.search_all(m.get_string(1)):
+			kt[n.get_string(1)] = int(m.get_string(2))
+	var gd := {}
+	for e in Haptics.patterns.get("events", {}):
+		if Haptics.fallback_pulse_ms(Haptics.pattern_for(e), 1.0) > 0:
+			var fb: Dictionary = Haptics.pattern_for(e).get("fallback", {})
+			gd[e] = int(fb.get("a0_ms", fb.get("ms", 0)))
+	assert_eq_deep(kt, gd)

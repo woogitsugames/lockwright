@@ -59,7 +59,11 @@ class HapticsEngine(context: Context) {
                 (runCatching { v.areEnvelopeEffectsSupported() }.getOrDefault(false) as Boolean)
             primitives = detectPrimitives(v)
             tier = when {
-                Build.VERSION.SDK_INT_FULL >= 370200 -> Tier.BUILDER
+                // N-79: SDK_INT_FULL (major * 100000 + minor) is >= 370200 on every API 36 phone, so a
+                // MOTOR_COIN_DC without primitives, envelopes or amplitude control was reported as
+                // BUILDER and every composition fell back to 20 ms amplitude-scaled waveforms it
+                // cannot play (and to continuous resistance an on/off motor should not get).
+                Build.VERSION.SDK_INT_FULL >= 370200 && envelopeSupported -> Tier.BUILDER
                 envelopeSupported -> Tier.ENVELOPE
                 Build.VERSION.SDK_INT >= 30 && v.areAllPrimitivesSupported(
                     VibrationEffect.Composition.PRIMITIVE_CLICK,
@@ -136,13 +140,12 @@ class HapticsEngine(context: Context) {
 
     /** N-70: Settings test pulse — a plain oneshot (default amplitude at 100 %). */
     fun testPulse(durationMs: Long, level: Float) {
-        val ms = durationMs.coerceIn(ERM_MIN_MS, 400L)
+        val ms = durationMs.coerceIn(MIN_PULSE_MS, 400L)
         handler.post {
             val v = vibrator ?: return@post
             if (tier == Tier.NONE) return@post
-            val amp = if (!amplitudeControl || level >= 0.99f) VibrationEffect.DEFAULT_AMPLITUDE
-                else (255 * level).toInt().coerceIn(60, 255)
-            vibrateGame(v, VibrationEffect.createOneShot(ms, amp))
+            vibrateGame(v, if (!amplitudeControl || level >= 0.99f) onOffPulse(ms, ms)
+                else amplitudePulse(ms, (255 * level).toInt().coerceIn(60, 255)))
             transientUntilMs = SystemClock.uptimeMillis() + ms + 20L
         }
     }
@@ -187,12 +190,20 @@ class HapticsEngine(context: Context) {
     }
 
     private fun vibrateWaveform(v: Vibrator, ms: Long, amp: Int) {
-        if (amplitudeControl) {
-            vibrateGame(v, VibrationEffect.createWaveform(longArrayOf(0, ms), intArrayOf(0, amp), -1))
-        } else if (tier != Tier.NONE) {
-            vibrateGame(v, VibrationEffect.createOneShot(ms.coerceAtLeast(ERM_MIN_MS), VibrationEffect.DEFAULT_AMPLITUDE))
-        }
+        if (tier == Tier.NONE) return
+        vibrateGame(v, if (amplitudeControl) amplitudePulse(ms, amp) else onOffPulse(ms))
     }
+
+    /**
+     * N-79 / D-80: the ONLY two places that build raw pulses. Every pulse lasts at least
+     * MIN_PULSE_MS (D-65); amplitude-scaled pulses keep a perceptibility floor of MIN_AMP.
+     * Never call createWaveform/createOneShot elsewhere (GUT test_haptics checks this file).
+     */
+    private fun amplitudePulse(ms: Long, amp: Int): VibrationEffect =
+        VibrationEffect.createWaveform(longArrayOf(0, ms.coerceAtLeast(MIN_PULSE_MS)), intArrayOf(0, amp.coerceIn(MIN_AMP, 255)), -1)
+
+    private fun onOffPulse(ms: Long, maxMs: Long = MAX_ON_OFF_MS): VibrationEffect =
+        VibrationEffect.createOneShot(ms.coerceIn(MIN_PULSE_MS, maxMs), VibrationEffect.DEFAULT_AMPLITUDE)
 
     private fun playOnThread(event: String, intensity: Float, material: String) {
         val v = vibrator ?: return
@@ -235,7 +246,7 @@ class HapticsEngine(context: Context) {
         return when (tier) {
             Tier.PRIMITIVES, Tier.ENVELOPE, Tier.BUILDER -> compositionFor(event, i, v)
             Tier.AMPLITUDE -> waveformFor(event, i)
-            Tier.ON_OFF -> oneShotFor(event)  // null: no pulse for this event on an on/off motor
+            Tier.ON_OFF -> oneShotFor(event, i)  // null: no pulse for this event on an on/off motor
             Tier.NONE -> null
         }
     }
@@ -289,7 +300,13 @@ class HapticsEngine(context: Context) {
         return effect ?: waveformFor(event, i)
     }
 
-    private fun waveformFor(event: String, i: Float): VibrationEffect {
+    /**
+     * Amplitude-scaled single pulse. N-79: without amplitude control the amplitude is ignored
+     * (a 20 ms pulse "at 0.18" played as a 20 ms full-on blip nobody felt), so such a motor gets
+     * the on/off policy instead: length is the only lever, only events with an a0_ms pulse.
+     */
+    private fun waveformFor(event: String, i: Float): VibrationEffect? {
+        if (!amplitudeControl) return oneShotFor(event, i)
         val ms = when (event) {
             "set", "false_set" -> 18L
             "break" -> 40L
@@ -298,29 +315,35 @@ class HapticsEngine(context: Context) {
             "open" -> 30L
             else -> 15L
         }
-        val amp = (255 * i).toInt().coerceIn(1, 255)
-        // N-70: an LRA/ERM with amplitude control still needs ~20 ms to be felt
-        return VibrationEffect.createWaveform(longArrayOf(0, ms.coerceAtLeast(AMP_MIN_MS)), intArrayOf(0, amp), -1)
+        if (i <= 0f) return null
+        return amplitudePulse(ms, (255 * i).toInt())
     }
 
     /**
      * A0 on/off motor (cheap ERM, e.g. MOTOR_COIN_DC): only events with an a0_ms in
-     * data/haptics_patterns.json pulse, never shorter than ERM_MIN_MS (N-70: 1-19 ms pulses
-     * were registered by the vibrator service but not felt).
+     * data/haptics_patterns.json pulse, never shorter than MIN_PULSE_MS (N-70: 1-19 ms pulses
+     * were registered by the vibrator service but not felt). Intensity shortens the pulse a
+     * little, like Haptics.fallback_pulse_ms() in GDScript; 0 = no pulse.
      */
-    private fun oneShotFor(event: String): VibrationEffect? {
-        val ms = when (event) {
-            "set", "false_set", "overset", "counter_rotate", "gate_align" -> ERM_MIN_MS
-            "open" -> 50L
-            "drop", "break", "detector_trip" -> 60L
+    private fun oneShotFor(event: String, i: Float): VibrationEffect? {
+        val a0 = when (event) {
+            "set", "false_set", "overset" -> 30f
+            "counter_rotate", "gate_align" -> 25f
+            "open" -> 50f
+            "drop", "break", "detector_trip" -> 60f
             else -> return null
         }
-        return VibrationEffect.createOneShot(ms.coerceAtLeast(ERM_MIN_MS), VibrationEffect.DEFAULT_AMPLITUDE)
+        if (i <= 0f) return null
+        return onOffPulse((a0 * (0.75f + 0.25f * i.coerceIn(0f, 1f))).toLong())
     }
 
     companion object {
         private const val TAG = "LockwrightHaptics"
-        private const val ERM_MIN_MS = 30L
-        private const val AMP_MIN_MS = 20L
+        /** D-65/D-80: no pulse shorter than this on any motor (== Haptics.ERM_MIN_MS in GDScript). */
+        private const val MIN_PULSE_MS = 30L
+        /** == Haptics.ERM_MAX_MS. */
+        private const val MAX_ON_OFF_MS = 120L
+        /** D-80: amplitude floor (~25 %) for amplitude-scaled pulses; quieter ones are not felt. */
+        private const val MIN_AMP = 64
     }
 }
