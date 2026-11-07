@@ -54,8 +54,8 @@ func frame_captions() -> PackedStringArray:
 
 
 func _add_frame(card: int, caption_key: StringName) -> void:
-	var lang := "clean"
-	var tex: Texture2D = load("res://assets/ui/gpt/tutorial/g11-%02d-%s.png" % [card, lang])
+	# text-free card art (the -pl/-en variants are excluded from the package, D-55/N-74)
+	var tex: Texture2D = load("res://assets/ui/gpt/tutorial/g11-%02d-clean.png" % card)
 	var row := HBoxContainer.new()
 	row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_theme_constant_override("separation", 12)
