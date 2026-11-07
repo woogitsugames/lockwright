@@ -18,23 +18,27 @@ const FIELDS := {
 	"Amount1": [0.70, 0.607, 0.92],
 	"Line2": [0.093, 0.653, 0.68],
 	"Amount2": [0.70, 0.653, 0.92],
-	"Total": [0.24, 0.749, 0.90],
-	"Cash": [0.219, 0.815, 0.27],
+	"Total": [0.24, 0.733, 0.90],  # VA-04: was 0.749 - the printed dashes ran through the sum like a strike-out
+	"Cash": [0.219, 0.809, 0.27],
 }
 
 @onready var paper: TextureRect = $Frame/VBox/Receipt/Paper
-@onready var result_label: Label = $Frame/VBox/Result
-@onready var reward_label: Label = $Frame/VBox/Reward
-@onready var tip_label: Label = $Frame/VBox/Tip
-@onready var continue_button: Button = $Frame/VBox/ContinueButton
+@onready var result_label: Label = $Frame/VBox/Side/Result
+@onready var reward_label: Label = $Frame/VBox/Side/Reward
+@onready var tip_label: Label = $Frame/VBox/Side/Tip
+@onready var continue_button: Button = $Frame/VBox/Side/ContinueButton
 
 var _fields := {}
 
 
 func _ready() -> void:
+	# VA-04: the receipt is handed over at the door - stairwell photo behind it instead of flat brown
+	ScreenFrame.backdrop(self, "res://assets/ui/stairwell.jpg", 0.62)
 	ScreenFrame.fit(self, $Frame)
+	resized.connect(_orient)
+	_orient()
 	var job: Dictionary = JobRun.current_job
-	var lang := "pl" if Settings.language() == "pl" else "en"
+	var lang := "pl" if I18n.current_language() == "pl" else "en"  # the UI language (DE/FR/ES -> EN paper)
 	paper.texture = load("res://assets/ui/gpt/verify/receipt_%s.webp" % lang)
 	var reward := int(job.get("reward_coins", 0))
 	var tip := expected_tip(reward)
@@ -48,6 +52,17 @@ func _ready() -> void:
 	paper.resized.connect(_layout_fields)
 	_layout_fields()
 	_play_reward_sequence(not JobRun.is_talk(job))  # audio/v2 rewards: door_open -> thanks -> coins (mix README)
+
+
+## VA-04: landscape = receipt on the left at full height, result and Continue beside it
+## (stacked, the receipt was ~60 dp wide and unreadable at 915x412).
+func _orient() -> void:
+	var vp := get_viewport_rect().size
+	var box := $Frame/VBox as BoxContainer
+	var side := $Frame/VBox/Side as VBoxContainer
+	box.vertical = vp.y >= vp.x
+	side.size_flags_horizontal = Control.SIZE_FILL if box.vertical else Control.SIZE_EXPAND_FILL
+	side.size_flags_vertical = Control.SIZE_SHRINK_END if box.vertical else Control.SIZE_SHRINK_CENTER
 
 
 func _settle() -> void:

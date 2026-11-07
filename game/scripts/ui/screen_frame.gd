@@ -117,3 +117,59 @@ static func _wire_button(b: BaseButton) -> void:
 	b.gui_input.connect(func(e: InputEvent) -> void:
 		if b.disabled and e is InputEventMouseButton and e.pressed:
 			Sfx.play_ui(&"plate_disabled"))
+
+
+## Visual audit 2026-11-07 (VA-03): a header title that never breaks inside a word. Picks the
+## largest size in [min_fs, max_fs] that puts the text on one line, down to `one_line_min`; below
+## that it allows two lines (word breaks only) before shrinking further. Re-fits on resize and
+## when the text changes (call again after setting a new text).
+static func fit_title(label: Label, max_fs := 28, min_fs := 17, one_line_min := 22) -> void:
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	label.custom_minimum_size.x = 0
+	var apply := func() -> void:
+		var fs := title_size(label.get_theme_font(&"font"), label.text, label.size.x, max_fs, min_fs, one_line_min)
+		if fs > 0 and fs != label.get_theme_font_size(&"font_size"):
+			label.add_theme_font_size_override(&"font_size", fs)
+	if not label.has_meta(&"fit_title"):
+		label.set_meta(&"fit_title", true)
+		label.resized.connect(apply)
+	apply.call_deferred()
+
+
+## Font size for fit_title (static, for tests). 0 = width unknown yet.
+static func title_size(font: Font, text: String, width: float, max_fs: int, min_fs: int, one_line_min: int) -> int:
+	if font == null or width <= 1.0 or text == "":
+		return 0
+	var words := text.split(" ", false)
+	for fs in range(max_fs, one_line_min - 1, -1):
+		if font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x <= width:
+			return fs
+	for fs in range(max_fs, min_fs - 1, -1):
+		var longest := 0.0
+		for w in words:
+			longest = maxf(longest, font.get_string_size(w, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x)
+		if longest > width:
+			continue
+		var h := font.get_multiline_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, width, fs).y
+		if h <= font.get_height(fs) * 2.2:
+			return fs
+	return min_fs
+
+
+## VA-01: a one-line plate label (tab) that shrinks down to `min_fs` before the ellipsis trims it.
+static func fit_button_text(b: Button, max_fs := 16, min_fs := 13) -> void:
+	var apply := func() -> void:
+		var sb := b.get_theme_stylebox(&"normal")
+		var avail := b.size.x - (sb.get_margin(SIDE_LEFT) + sb.get_margin(SIDE_RIGHT) if sb else 0.0) - 2.0
+		if avail <= 1.0:
+			return
+		var font := b.get_theme_font(&"font")
+		var fs := max_fs
+		while fs > min_fs and font.get_string_size(b.text, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x > avail:
+			fs -= 1
+		if fs != b.get_theme_font_size(&"font_size"):
+			b.add_theme_font_size_override(&"font_size", fs)
+	if not b.has_meta(&"fit_text"):
+		b.set_meta(&"fit_text", true)
+		b.resized.connect(apply)
+	apply.call_deferred()

@@ -33,6 +33,9 @@ static func chapter_header(ch: int) -> VBoxContainer:
 	var name_key := StringName("chapter.%d.name" % ch)
 	var title := Label.new()
 	title.theme_type_variation = &"Heading"
+	var air := StyleBoxEmpty.new()  # VA-05: a chapter starts with air above it, not glued to the last plate
+	air.content_margin_top = 12
+	title.add_theme_stylebox_override(&"normal", air)
 	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	if I18n.has_key(name_key):
 		title.text = I18n.t(&"jobs.chapter_named").format([ch, I18n.t(name_key)])
@@ -52,7 +55,7 @@ static func chapter_header(ch: int) -> VBoxContainer:
 func _ready() -> void:
 	Sfx.play_ambience(&"stairwell")
 	Sfx.play_music(&"main_theme")
-	ScreenFrame.backdrop(self, "res://assets/ui/stairwell.jpg", 0.55)
+	ScreenFrame.backdrop(self, "res://assets/ui/stairwell.jpg", 0.64)  # VA-05: chapter captions >= 4.5:1 over the photo
 	ScreenFrame.fit(self, $Frame)  # N-53/N-59: 16 dp + safe-area, no sideways scroll
 	$Frame/VBox/Scroll.scroll_deadzone = 12
 	$Frame/VBox/Header/Title.text = I18n.t(&"jobs.title")
@@ -86,6 +89,7 @@ func _ready() -> void:
 		b.mouse_filter = Control.MOUSE_FILTER_PASS
 		if completed.has(jid):
 			b.text += " — " + I18n.t(&"ui.job_done")
+			b.theme_type_variation = &"DonePlate"  # VA-05: done = laid-down plate (shape + value), open = raised enamel
 		b.pressed.connect(func() -> void:
 			JobRun.start(job)
 			get_tree().change_scene_to_file("res://scenes/job_arrival.tscn"))

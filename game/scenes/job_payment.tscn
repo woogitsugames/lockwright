@@ -15,12 +15,14 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="VBox" type="VBoxContainer" parent="Frame"]
+[node name="VBox" type="BoxContainer" parent="Frame"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 16
+vertical = true
 
 [node name="Receipt" type="AspectRatioContainer" parent="Frame/VBox"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 ratio = 0.72
 
@@ -29,21 +31,33 @@ layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Result" type="Label" parent="Frame/VBox"]
+[node name="Side" type="VBoxContainer" parent="Frame/VBox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+
+[node name="Result" type="Label" parent="Frame/VBox/Side"]
+layout_mode = 2
+theme_type_variation = &"Heading"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Reward" type="Label" parent="Frame/VBox/Side"]
 layout_mode = 2
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Reward" type="Label" parent="Frame/VBox"]
+[node name="Tip" type="Label" parent="Frame/VBox/Side"]
 layout_mode = 2
+theme_type_variation = &"Caption"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Tip" type="Label" parent="Frame/VBox"]
+[node name="Gap" type="Control" parent="Frame/VBox/Side"]
+custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
-horizontal_alignment = 1
-autowrap_mode = 3
+mouse_filter = 2
 
-[node name="ContinueButton" type="Button" parent="Frame/VBox"]
-custom_minimum_size = Vector2(0, 48)
+[node name="ContinueButton" type="Button" parent="Frame/VBox/Side"]
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 2

@@ -201,14 +201,16 @@ func test_pressed_sprite_shows_then_hides() -> void:
 
 func test_language_picks_the_render() -> void:
 	var script: GDScript = load("res://scripts/ui/main_menu.gd")
-	assert_eq(script.pick_lang("fr_FR", ["pl", "en", "de"]), "pl", "unrendered language -> PL")
+	assert_eq(script.pick_lang("fr_FR", ["pl", "en", "de"]), "en", "unrendered language (FR) -> EN board")
+	assert_eq(script.pick_lang("es", ["pl", "en", "de"]), "en", "unrendered language (ES) -> EN board")
+	assert_eq(script.pick_lang("fr", ["pl"]), "pl", "no EN render -> PL")
 	assert_eq(script.pick_lang("de_DE", ["pl", "en", "de"]), "de")
 	var menu := await _open(Vector2(412, 915))
 	var langs: Array = script.load_layout()["langs"]
-	for l in ["pl", "en", "de"]:
+	for l in ["pl", "en", "de", "fr", "es"]:
 		I18n.apply_language(l)
 		await get_tree().process_frame
-		var want: String = l if langs.has(l) else "pl"
+		var want: String = l if langs.has(l) else "en"
 		assert_eq(menu.lang, want, l)
 		assert_eq(menu.backdrop.texture.resource_path, "res://assets/ui/menu/menu_portrait_%s.webp" % want, l + ": board image")
 		for id in IDS:

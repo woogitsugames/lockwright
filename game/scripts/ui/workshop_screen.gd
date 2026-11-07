@@ -139,10 +139,12 @@ func _tab_button(node_name: String, text: String, group: ButtonGroup, tab: Strin
 	b.toggle_mode = true
 	b.button_group = group
 	b.custom_minimum_size = Vector2(0, 48)
+	b.theme_type_variation = &"TabPlate"  # VA-01: 6 dp sides instead of 16, so "Wyposażenie" is not trimmed
 	b.add_theme_font_size_override("font_size", 16)
 	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	b.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	b.clip_text = true
+	ScreenFrame.fit_button_text(b, 16, 13)  # FR/ES at 360 dp: shrink before the ellipsis
 	b.toggled.connect(func(on: bool) -> void:
 		if on:
 			show_tab(tab))

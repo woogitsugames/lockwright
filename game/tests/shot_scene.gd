@@ -3,6 +3,10 @@ extends Node
 ##   xvfb-run godot --path game --display-driver x11 --rendering-driver opengl3 \
 ##     --resolution 412x915 res://tests/shot_scene.tscn -- --scene=res://scenes/tutorial.tscn --out=/tmp/t.png
 ## D-58 arrival scene: --job=job.wrong_floor [--time=night] [--reduce=0|1] [--climb-at=SECONDS | --hold=1] [--speaker=teresa].
+## --lang=pl|en|de|fr|es sets the game language in memory (Settings + I18n, not saved; visual audit 2026-11-07).
+## --no-day-after=1 drops a queued "day after" scene (in memory) so the job list itself is visible;
+## the debug FPS overlay (Quality) is always hidden in these shots. --targets=1 prints every visible
+## button smaller than 48x48 dp ("SMALL <path> <size>").
 ## --size=WxH sets the window (as tests/screens.gd); --tab=furnishings opens the workshop's Wyposażenie tab; --tutorial-stage=N sets JobRun.tutorial_stage first; --auto=1 sets Settings auto_tension (not saved).
 
 func _ready() -> void:
@@ -14,6 +18,13 @@ func _ready() -> void:
 		var p: PackedStringArray = a["size"].split("x")
 		get_window().size = Vector2i(int(p[0]), int(p[1]))
 		await get_tree().process_frame
+	if Quality._fps_label != null:
+		Quality._fps_label.visible = false
+	if a.get("no-day-after", "") == "1":
+		Save.data["day_after"] = {}
+	if a.has("lang"):
+		Settings._cfg["language"] = a["lang"]
+		I18n.apply_language(a["lang"])
 	if a.has("tutorial-stage"):
 		JobRun.tutorial_stage = int(a["tutorial-stage"])
 	if a.has("auto"):
@@ -61,6 +72,11 @@ func _ready() -> void:
 			var c := n as Control
 			if c.size.x > get_viewport().get_visible_rect().size.x:
 				print("WIDE ", c.get_path(), " size=", c.size, " min=", c.get_combined_minimum_size())
+	if a.get("targets", "") == "1":  # visual audit: visible buttons under 48x48 dp
+		for n in find_children("*", "BaseButton", true, false):
+			var b := n as Control
+			if b.is_visible_in_tree() and (b.size.x < 47.5 or b.size.y < 47.5):
+				print("SMALL ", b.get_path(), " ", b.size)
 	var img := get_viewport().get_texture().get_image()
 	img.save_png(a.get("out", "/tmp/shot.png"))
 	print("SHOT ", a.get("out", ""), " ", img.get_size())

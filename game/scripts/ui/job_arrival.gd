@@ -92,7 +92,7 @@ static func initial_plate(speaker: String, full_name: String) -> Control:
 	initial.set_anchors_preset(Control.PRESET_FULL_RECT)
 	initial.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	initial.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	initial.add_theme_font_override("font", load("res://assets/fonts/BonaNova-Bold.ttf"))
+	initial.add_theme_font_override("font", load("res://theme/title_font.tres"))
 	initial.add_theme_font_size_override("font_size", 24)
 	var light := colour != "ivory"
 	initial.add_theme_color_override("font_color", Color(0.96, 0.92, 0.84) if light else Color(0.11, 0.09, 0.07))
@@ -191,6 +191,11 @@ func _ready() -> void:
 		_add_scene(scene_cfg)
 	var i18n: Dictionary = job.get("i18n", {})
 	title_label.text = I18n.t(i18n.get("title", &"jobs.title"))
+	# VA-03: never "Vorstellungsg|espräch"; one line when it fits at >= 22, else two lines by words,
+	# and the plates beside it keep their 48 dp height instead of stretching with a wrapped title
+	ScreenFrame.fit_title(title_label)
+	back_button.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	skip_all_button.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
 	client_label.text = I18n.t(i18n.get("client", &"jobs.title"))
 	situation_label.text = I18n.t(i18n.get("situation", &"jobs.title"))
 	_show_family(job)

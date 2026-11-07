@@ -65,7 +65,7 @@ func _make_option(is_auto: bool, sketch_path: String, title_key: StringName, des
 	var title := ScreenFrame.wrap(Label.new())
 	title.name = "Name"
 	title.text = I18n.t(title_key)
-	title.add_theme_font_override("font", load("res://assets/fonts/BonaNova-Bold.ttf"))
+	title.add_theme_font_override("font", load("res://theme/title_font.tres"))
 	title.add_theme_font_size_override("font_size", 20)
 	col.add_child(title)
 	var desc := ScreenFrame.wrap(Label.new())

@@ -6,6 +6,9 @@ extends SceneTree
 ## toggles and slider knobs stay crisp on 2.6x phones.
 
 const OUT := "res://theme/main.tres"
+## Bona Nova with lining figures (visual audit VA: its default old-style digits read "4o", "9:3o",
+## "Rozdział ı"); every title/heading and the scripts that set Bona Nova directly use this file.
+const TITLE_FONT_OUT := "res://theme/title_font.tres"
 
 const INK := Color(0.11, 0.09, 0.07)          # text on enamel
 const CREAM := Color(0.94, 0.90, 0.82)        # text on dark paper
@@ -109,7 +112,12 @@ func _init() -> void:
 	var t := Theme.new()
 	t.default_font = load("res://assets/fonts/AtkinsonHyperlegibleNext-wght.ttf")
 	t.default_font_size = 16
-	var title_font: Font = load("res://assets/fonts/BonaNova-Bold.ttf")
+	var fv := FontVariation.new()
+	fv.base_font = load("res://assets/fonts/BonaNova-Bold.ttf")
+	var ts := TextServerManager.get_primary_interface()
+	fv.opentype_features = {ts.name_to_tag("lnum"): 1}
+	ResourceSaver.save(fv, TITLE_FONT_OUT)
+	var title_font: Font = load(TITLE_FONT_OUT)
 
 	# --- Label + variations
 	t.set_color("font_color", "Label", CREAM)
@@ -160,6 +168,25 @@ func _init() -> void:
 		t.set_stylebox(st, "LinkButtonDark", _pad(e, 8, 8))
 	for c in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color", "font_hover_pressed_color"]:
 		t.set_color(c, "LinkButtonDark", CREAM)
+
+	# VA-xx: workshop tab plate - same enamel, tighter sides so three tabs fit 360 dp in every language
+	t.set_type_variation("TabPlate", "Button")
+	for st in ["normal", "hover", "pressed", "hover_pressed", "disabled"]:
+		var tb := (t.get_stylebox(st, "Button") as StyleBoxFlat).duplicate() as StyleBoxFlat
+		tb.content_margin_left = 6
+		tb.content_margin_right = 6
+		t.set_stylebox(st, "TabPlate", tb)
+	# VA-xx: a finished job - the plate is laid down on the paper (dark fill, brass hairline, no
+	# shadow, cream text), so open and done jobs differ in shape and value, not only in the label
+	t.set_type_variation("DonePlate", "Button")
+	for st in ["normal", "hover", "pressed", "hover_pressed", "disabled"]:
+		var fill := Color(0.10, 0.075, 0.055, 0.86) if st != "pressed" and st != "hover_pressed" else Color(0.16, 0.12, 0.09, 0.92)
+		var dp := _flat(fill, Color(0.55, 0.44, 0.27, 0.9), 1, 9)
+		dp.corner_detail = 1
+		_pad(dp, 16, 10)
+		t.set_stylebox(st, "DonePlate", dp)
+	for c in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color", "font_hover_pressed_color"]:
+		t.set_color(c, "DonePlate", CREAM)
 
 	# --- OptionButton (enamel plate with an ink chevron)
 	t.set_font_size("font_size", "OptionButton", 18)

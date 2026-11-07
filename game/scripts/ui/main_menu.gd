@@ -1,7 +1,7 @@
 extends Control
 ## Main menu v2 (D-62): the Blender render of the tenants' felt letter board IS the menu.
 ## - background: the rendered board for the window's orientation and the current language
-##   (game/assets/ui/menu/menu_<orient>_<lang>.webp, fallback PL), cover-fitted; the "focus"
+##   (game/assets/ui/menu/menu_<orient>_<lang>.webp, fallback EN, then PL), cover-fitted; the "focus"
 ##   (title + every menu band) is never cropped and stays inside the safe area — on near-square
 ##   screens (Fold) the board shrinks and a dimmed copy of the photo fills the rest;
 ## - invisible touch zones (Buttons, >= 48 dp) over the rendered bands (menu_layout.json, from
@@ -11,7 +11,8 @@ extends Control
 
 const LAYOUT_PATH := "res://assets/ui/menu/menu_layout.json"
 const MENU_DIR := "res://assets/ui/menu/"
-const FALLBACK_LANG := "pl"
+const FALLBACK_LANG := "en"  # unrendered UI language (FR/ES) -> the English board, not Polish
+const LAST_RESORT_LANG := "pl"  # the board every build ships
 const PRESS_MS := 120
 const FOCUS_PAD := 8.0  # dp kept free between the focus rect and the safe area
 const CONTROL_CHOICE := "res://scenes/control_choice.tscn"
@@ -91,10 +92,13 @@ static func pick_orient(vp: Vector2) -> String:
 	return "landscape" if vp.x > vp.y else "portrait"
 
 
-## The rendered language for the UI language `cur` ("en", "de_DE", ...), PL when not rendered.
+## The rendered language for the UI language `cur` ("en", "de_DE", ...); EN when not rendered
+## (an FR/ES player reads English sooner than Polish), PL only if even EN is missing.
 static func pick_lang(cur: String, available: Array) -> String:
 	var l := cur.split("_")[0].to_lower()
-	return l if available.has(l) else FALLBACK_LANG
+	if available.has(l):
+		return l
+	return FALLBACK_LANG if available.has(FALLBACK_LANG) else LAST_RESORT_LANG
 
 
 static func rect_of(a: Array) -> Rect2:
@@ -163,9 +167,12 @@ func _relayout() -> void:
 	var tex: Texture2D = null
 	if not od.is_empty():
 		tex = _tex(texture_path())
-		if tex == null:  # language render missing: PL
-			lang = FALLBACK_LANG
-			tex = _tex(texture_path())
+		if tex == null:  # language render missing: EN, then PL
+			for fb in [FALLBACK_LANG, LAST_RESORT_LANG]:
+				lang = fb
+				tex = _tex(texture_path())
+				if tex != null:
+					break
 	if tex == null:  # layout or renders missing (broken export): plain labelled buttons, still usable
 		_fallback_layout(vp)
 		return
