@@ -37,6 +37,10 @@ if [ ! -f "$REPO/game/addons/lockcore_gd/bin/liblockcore_gd.windows.template_deb
 fi
 
 LOGS="$REPO/qa/out/local"; mkdir -p "$LOGS"
+# Per-checkout user:// so parallel runs in several worktrees don't share one save dir
+# (Godot on Windows puts user:// under %APPDATA%\Godot\app_userdata\<project>).
+export APPDATA="$(cygpath -w "$REPO/qa/out/appdata" 2>/dev/null || echo "$REPO/qa/out/appdata")"
+mkdir -p "$REPO/qa/out/appdata"
 cd "$REPO"
 FAIL=0
 step() {  # step <name> <godot args...>
