@@ -8,8 +8,10 @@ extends RefCounted
 ## plan-B screen that draws every element (test_practice.gd checks the copies and the exclusions).
 ## A lock unlocks once its family was met in the career (a completed job of the family; pin_tumbler
 ## also by the tutorial S1–S3; a family lesson D-68 counts too). The goal is met when the lock's
-## `lesson_target` event happens during an attempt — the same rule check_locks gates (D-54) — and is
-## saved at once (`practice/<id>/goal`), so a break afterwards does not take it back.
+## `lesson_target` event happened during an attempt that ends with the lock open (check_locks gates
+## both: clumsy bot meets the target, feeling bot opens, D-54). Opening is required because some
+## targets come for free (`bind` happens as soon as tension is held, also in auto tension).
+## Saved as `practice/<id>/goal`.
 
 const DIR := "res://data/practice"
 const JOB_DIR := "res://data/jobs"
@@ -137,21 +139,22 @@ static func matches(target: String, ev: Dictionary) -> bool:
 	return sub.size() == 2 and kind == String(sub[0]) and int(ev.get("sub", 0)) == int(sub[1])
 
 
-## Events of one physics step. Returns true when they meet the goal for the first time in this attempt.
+## Events of one physics step. Returns true when the target happens for the first time in this attempt.
 static func note_events(events: Array) -> bool:
 	if not active() or met_now:
 		return false
 	for ev in events:
 		if matches(current["target"], ev):
 			met_now = true
-			Save.set_value("practice/%s/goal" % current["id"], true)
 			return true
 	return false
 
 
 ## End of the attempt (opened, failed, or left through the pause): the Workshop shows the result once.
 static func finish(opened: bool, quit := false) -> void:
-	last_result = &"met" if met_now else (&"" if quit else (&"open" if opened else &"failed"))
+	if opened and met_now and not current.is_empty():
+		Save.set_value("practice/%s/goal" % current["id"], true)
+	last_result = &"" if quit else (&"failed" if not opened else (&"met" if met_now else &"open"))
 	current = {}
 	met_now = false
 	JobRun.mode = &"job"

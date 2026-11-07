@@ -234,10 +234,9 @@ func _setup_practice(auto: bool) -> void:
 	view.loupe_toggled.connect(func(on: bool) -> void: sampler.frozen = on)
 
 
-## D-79: the goal is met by the lock's lesson_target event; the chalk line says so at once.
+## D-79: the lock's lesson_target event; the goal counts once the lock opens (Practice.finish).
 func _note_practice(events: Array) -> void:
-	if Practice.note_events(events):
-		view.goal_line = I18n.t(&"practice.goal_done")
+	Practice.note_events(events)
 
 
 ## T42: the lesson of this job's family, or {} — only the family's first job (lesson not done in

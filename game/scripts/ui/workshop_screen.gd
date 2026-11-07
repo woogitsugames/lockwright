@@ -119,7 +119,7 @@ func _add_tabs() -> void:
 	# D-71: two enamel plates, >= 48 dp, the pressed one reads as pressed (toggle) and is named for TalkBack
 	var row := HBoxContainer.new()
 	row.name = "Tabs"
-	row.add_theme_constant_override("separation", 10)
+	row.add_theme_constant_override("separation", 8)  # D-79: three plates must fit 412 dp without trimming
 	var group := ButtonGroup.new()
 	_tab_tools = _tab_button("TabTools", I18n.t(&"workshop.tab_tools"), group, "tools")
 	_tab_furn = _tab_button("TabFurnishings", I18n.t(&"workshop.tab_furnishings"), group, "furnishings")
@@ -139,6 +139,7 @@ func _tab_button(node_name: String, text: String, group: ButtonGroup, tab: Strin
 	b.toggle_mode = true
 	b.button_group = group
 	b.custom_minimum_size = Vector2(0, 48)
+	b.add_theme_font_size_override("font_size", 16)
 	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	b.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	b.clip_text = true

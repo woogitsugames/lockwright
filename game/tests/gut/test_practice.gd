@@ -8,7 +8,7 @@ const LANGS := ["en", "pl", "de", "fr", "es"]
 ## warded GLB: ward0..2). A practice lock with more elements would hide some of them.
 const CAPACITY := {&"pin_tumbler": 5, &"wafer": 5, &"warded": 3, &"lever": 3, &"lever_detector": 5}
 const UI_KEYS := ["workshop.tab_practice", "practice.note", "practice.start", "practice.locked", "practice.goal_met",
-	"practice.goal_open", "practice.goal_done", "practice.result_met", "practice.result_open", "practice.result_failed"]
+	"practice.goal_open", "practice.result_met", "practice.result_open", "practice.result_failed"]
 
 var _save_backup: Dictionary
 
@@ -152,14 +152,19 @@ func test_goal_saved_on_target_event() -> void:
 	assert_eq(JobRun.current_job["lock_spec"], e["path"])
 	assert_eq(int(JobRun.current_job["reward_coins"]), 0, "no coins")
 	assert_false(Practice.note_events([{"kind": &"set", "sub": 0}]))
-	assert_false(Practice.goal_met("t07"))
-	assert_true(Practice.note_events([{"kind": &"overset", "sub": 0}]), "the target meets the goal")
+	assert_true(Practice.note_events([{"kind": &"overset", "sub": 0}]), "the target happened")
 	assert_false(Practice.note_events([{"kind": &"overset", "sub": 0}]), "once per attempt")
-	assert_true(Practice.goal_met("t07"))
+	assert_false(Practice.goal_met("t07"), "not before the lock opens")
+	Practice.finish(false)
+	assert_eq(Practice.last_result, &"failed", "target seen, lock not opened: no goal")
+	assert_false(Practice.goal_met("t07"))
+	Practice.start(e)
+	Practice.note_events([{"kind": &"overset", "sub": 0}])
+	Practice.finish(true)
+	assert_eq(Practice.last_result, &"met")
+	assert_true(Practice.goal_met("t07"), "target + open meets the goal")
 	Save.load_save()
 	assert_true(Practice.goal_met("t07"), "goal survives a reload")
-	Practice.finish(false)
-	assert_eq(Practice.last_result, &"met", "met wins over a later break")
 	assert_eq(JobRun.mode, &"job")
 	assert_false(Practice.active())
 	await get_tree().process_frame
@@ -213,7 +218,10 @@ func test_every_entry_opens_in_its_lock_screen() -> void:
 			var session: RefCounted = scene.get("session")
 			assert_false(session is FakeLockSession, "%s: authored lock loaded by lockcore" % e["id"])
 			var els: Array = session.describe().get("elements", [])
-			assert_eq(els.size(), int(e["elements"]), "%s: lockcore sees every element" % e["id"])
+			if e["family"] == &"warded":  # the bolt is an element of its own in the view model
+				assert_eq(els.size(), int(e["elements"]) + 1, "%s: wards + bolt" % e["id"])
+			else:
+				assert_eq(els.size(), int(e["elements"]), "%s: lockcore sees every element" % e["id"])
 			var drawn: Variant = view.get("_active_stacks") if e["family"] == &"pin_tumbler" else view.get("_n")
 			if drawn != null:
 				assert_eq(int(drawn), int(e["elements"]), "%s: the screen draws every element" % e["id"])
