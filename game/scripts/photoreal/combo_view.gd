@@ -54,8 +54,6 @@ var _reel_plate: Array[Rect2] = []
 var _crop := Rect2(0, 0, 618, 824)
 const BODY_X := Vector2(34.0, 584.0)
 const PORTRAIT_ASPECT := 1.05          # section height / width in portrait (below the status bar)
-const LANDSCAPE_ROLL_W := 0.32         # landscape: share of the safe width the roll column may take
-const ROLL_GAP := 12.0                 # landscape: dp between the section and the roll column
 
 
 func _ready() -> void:
@@ -507,16 +505,6 @@ func _update_c_eyepiece(vm: Dictionary, delta: float) -> void:
 	var uv := (focus - disp.position) / disp.size
 	var half := Vector2(ed * 0.5 / Eyepiece.ZOOM, ed * 0.5 / Eyepiece.ZOOM) / disp.size
 	_eyepiece.aim(viewport.get_texture(), uv, half)
-
-
-## Landscape roll column width (dp) for a safe area of `safe` and a roll render of `roll` px: a
-## share of the width, never wider than the whole roll at full safe height (nothing to gain).
-static func landscape_roll_width(safe: Vector2, roll: Vector2) -> float:
-	return minf(safe.x * LANDSCAPE_ROLL_W, safe.y * roll.x / maxf(roll.y, 1.0))
-
-
-func _roll_size() -> Vector2:
-	return Vector2(_tray_full.get_size()) if _tray_full else Vector2(1080, 960)
 
 
 # ------------------------------------------------------------------ layout: a crop round the lock

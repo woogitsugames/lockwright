@@ -141,10 +141,11 @@ func _build_bit_button() -> void:
 	bit_button = Control.new()
 	bit_button.name = "BitButton"
 	bit_button.mouse_filter = Control.MOUSE_FILTER_STOP
+	var gate := TapGate.new()  # N-77: touch + emulated click = one press
 	bit_button.gui_input.connect(func(ev: InputEvent) -> void:
-		var down: bool = (ev is InputEventScreenTouch and ev.pressed) or (ev is InputEventMouseButton and ev.pressed)
-		if down:
+		if TapGate.is_press(ev):
 			bit_button.accept_event()
+		if gate.accept(ev):
 			bit_pressed.emit())
 	add_child(bit_button)
 

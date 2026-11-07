@@ -44,6 +44,12 @@ const TRAY_POCKETS := 3
 const FLAP_DP := 56.0          # N-56: leather tongue width (touch target ≥ 48 dp)
 const FACE_R_DP := 40.0        # N-62: plug face radius (HUD.md §3 "czoło rdzenia")
 const LOUPE_MIN_DP := 56.0     # N-57: loupe touch target (≥ 48 dp)
+# N-78 landscape: plug face column | section (3:4 up to LANDSCAPE_SECTION_MAX wide, cover-cropped
+# round the mechanism) | roll column (whole picks and loupe, a margin from the screen edge).
+const LANDSCAPE_ROLL_W := 0.28        # share of the safe width the roll column may take
+const LANDSCAPE_SECTION_MAX := 1.15   # widest section (width / height); the plate is 0.75
+const ROLL_GAP := 12.0                # dp between the section and the roll column
+const ROLL_MARGIN := 14.0             # dp of bare leather right of the roll (no clipped loupe ring)
 
 @export var lives := 3: set = set_lives
 @export var dark := false: set = set_dark
@@ -100,6 +106,7 @@ var _chalk: ChalkLayer
 var _eyepiece: Eyepiece
 var _loupe_btn: Control
 var _loupe_rect := Rect2()
+var _loupe_tap := TapGate.new()
 var _blanks: Array[MeshInstance3D] = []  # N-56: plugged chambers when the lock has fewer pins
 var _last_vm := {}
 var _last_input := {}
@@ -469,13 +476,25 @@ func _layout() -> void:
 		section_rect = Rect2(r.position, Vector2(r.size.x, safe.position.y - r.position.y + h))
 		tray_rect = Rect2(Vector2(r.position.x, section_rect.end.y), Vector2(r.size.x, r.end.y - section_rect.end.y))
 	else:
-		# Landscape (HUD.md §11.2, HANDOVER §5.3): the section full height in the middle, the roll as a
-		# column on the right (whole picks and loupe, contain-fit), the plug face on the left.
+		# Landscape (HUD.md §11.2, HANDOVER §5.3, N-78): the plug face column on the left, the roll as
+		# a column on the right inside the safe area (whole picks and loupe), the section in between,
+		# full height and as wide as fits (3:4 .. LANDSCAPE_SECTION_MAX, the wider frame cover-crops
+		# the bench above and below the mechanism, so the mechanism grows with the width).
 		var sh := r.size.y
-		var sw := sh * SECTION_ASPECT
-		section_rect = Rect2(Vector2(r.position.x + (r.size.x - sw) * 0.5, r.position.y), Vector2(sw, sh))
-		var x0 := section_rect.end.x
-		tray_rect = Rect2(Vector2(x0, safe.position.y), Vector2(maxf(safe.end.x - x0, 8.0), safe.size.y))
+		var col_w := landscape_roll_width(safe.size, _roll_size())
+		var x0 := safe.end.x - col_w
+		var left := safe.position.x + PlugFace.size_for(FACE_R_DP).x + 24.0
+		var avail := x0 - ROLL_GAP - left
+		if avail >= sh * SECTION_ASPECT:
+			var sw := minf(avail, sh * LANDSCAPE_SECTION_MAX)
+			section_rect = Rect2(Vector2(left + (avail - sw) * 0.5, r.position.y), Vector2(sw, sh))
+			tray_rect = Rect2(Vector2(x0, safe.position.y), Vector2(col_w, safe.size.y))
+		else:
+			# narrow landscape (near-square screens): the 3:4 plate in the middle, the roll gets the rest
+			var sw := sh * SECTION_ASPECT
+			section_rect = Rect2(Vector2(r.position.x + (r.size.x - sw) * 0.5, r.position.y), Vector2(sw, sh))
+			x0 = section_rect.end.x
+			tray_rect = Rect2(Vector2(x0, safe.position.y), Vector2(maxf(safe.end.x - x0, 8.0), safe.size.y))
 	# Keep the plate's aspect: crop (cover) rather than stretch.
 	_section.position = section_rect.position
 	_section.size = section_rect.size
@@ -518,6 +537,16 @@ func _layout() -> void:
 	_tray.queue_redraw()
 	_flap.queue_redraw()
 	_bg.queue_redraw()
+
+
+## Landscape roll column width (dp) for a safe area of `safe` and a roll render of `roll` px: a
+## share of the width, never wider than the whole roll (plus its margin) at full safe height.
+static func landscape_roll_width(safe: Vector2, roll: Vector2) -> float:
+	return minf(safe.x * LANDSCAPE_ROLL_W, safe.y * roll.x / maxf(roll.y, 1.0) + ROLL_MARGIN)
+
+
+func _roll_size() -> Vector2:
+	return Vector2(_tray_full.get_size()) if _tray_full else Vector2(1080, 960)
 
 
 func _physical_scale() -> float:
@@ -664,10 +693,13 @@ func _draw_tray() -> void:
 	# portrait, its left edge in the landscape column
 	var sz := _tray.size
 	var column := sz.y > sz.x * 0.9
+	var roll_right := off.x + shown.x * sc
 	for j in 6:
 		var shade := Color(0, 0, 0, 0.22 * (1.0 - j / 6.0))
 		if column:
 			_tray.draw_rect(Rect2(j * 2.0, 0, 2.0, sz.y), shade)
+			if roll_right < sz.x - 1.0:  # the roll's own edge on the bare leather beside it
+				_tray.draw_rect(Rect2(roll_right + j * 2.0, off.y, 2.0, shown.y * sc), shade)
 		else:
 			_tray.draw_rect(Rect2(0, j * 2.0, sz.x, 2.0), shade)
 	# thumb dents (HUD.md §5.2): soft darker hollow under each live thumb + faint reference mark
@@ -721,9 +753,10 @@ func _tray_map() -> Array:
 	var img := Vector2(_tray_full.get_size()) if _tray_full else Vector2(1080, 960)
 	var sz := tray_rect.size
 	if sz.y > sz.x * 0.9:
-		# landscape column: the whole roll (picks and loupe), at the bottom of the column
-		var scc := minf(sz.x / img.x, sz.y / img.y)
-		return [scc, Vector2.ZERO, img, img, Vector2((sz.x - img.x * scc) * 0.5, sz.y - img.y * scc)]
+		# landscape column: the whole roll (picks and loupe) at the bottom, against the section side,
+		# with ROLL_MARGIN of bare leather on the screen side so the loupe ring is never cut (N-78)
+		var scc := minf(maxf(sz.x - ROLL_MARGIN, 1.0) / img.x, sz.y / img.y)
+		return [scc, Vector2.ZERO, img, img, Vector2(0.0, sz.y - img.y * scc)]
 	var sc := maxf(sz.x / img.x, sz.y / img.y)
 	var shown := sz / sc
 	var origin := Vector2((img.x - shown.x) * 0.5, 0.0)
@@ -758,9 +791,11 @@ func loupe_rect() -> Rect2:
 
 
 func _on_loupe_input(ev: InputEvent) -> void:
-	var down: bool = (ev is InputEventScreenTouch and ev.pressed) or (ev is InputEventMouseButton and ev.pressed)
-	if down:
+	# N-77: a phone tap arrives as a touch AND as the mouse click Godot emulates from it; reacting to
+	# both opened and closed the eyepiece in the same frame. One tap = one toggle.
+	if TapGate.is_press(ev):
 		_loupe_btn.accept_event()
+	if _loupe_tap.accept(ev):
 		toggle_loupe()
 
 
