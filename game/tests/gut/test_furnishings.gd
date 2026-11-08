@@ -94,7 +94,7 @@ func test_overlay_shown_in_picture() -> void:
 	var pic := Furnishings.build_scene(TextureRect.STRETCH_KEEP_ASPECT_COVERED)
 	add_child_autofree(pic)
 	var layer: TextureRect = pic.get_node("Layer_" + String(f["id"]))
-	assert_not_null(layer.texture)
+	assert_null(layer.texture, "perf 2026-11-08: a hidden overlay holds no texture")
 	assert_false(layer.visible, "hidden before buying")
 	Save.set_value("coins", int(f["price"]))
 	Furnishings.buy(f["id"])
@@ -106,6 +106,18 @@ func test_overlay_shown_in_picture() -> void:
 	Furnishings.set_shown(f["id"], false)
 	Furnishings.refresh(pic, false)
 	assert_false(layer.visible, "put away hides it")
+	assert_null(layer.texture, "put away releases the full-frame texture")
+
+
+func test_only_shown_overlays_are_loaded() -> void:
+	# perf 2026-11-08: a new save loads just the base picture, not the 10 hidden full-frame overlays
+	var pic := Furnishings.build_scene(TextureRect.STRETCH_KEEP_ASPECT_COVERED)
+	add_child_autofree(pic)
+	var loaded := 0
+	for c in pic.get_children():
+		if (c as TextureRect).texture != null:
+			loaded += 1
+	assert_eq(loaded, 1, "only the base render")
 
 
 func test_workshop_tab_and_backdrop() -> void:

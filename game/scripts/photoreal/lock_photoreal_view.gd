@@ -318,8 +318,37 @@ func _build_camera() -> void:
 	_camera.current = true
 
 
+## Perf pass 2026-11-08: the 2x plates (2472x3300: 33 MB of video memory each, about 4x the decode
+## time of 1x) only add detail when the section viewport is wider than PLATE_2X_MIN_PX (Fold inner
+## screen, tablets): the eyepiece magnifies the rendered section, not the plate. Every 2x plate has
+## a 1x sibling "<name>_1x.<ext>" (Lanczos); phones and the medium/low profiles load that one.
+const PLATE_2X_MIN_PX := 1400.0
+
+
+## The plate file to load for a section viewport whose short side is `section_px` pixels.
+static func plate_variant(path: String, section_px: float) -> String:
+	if section_px >= PLATE_2X_MIN_PX:
+		return path
+	var alt := "%s_1x.%s" % [path.get_basename(), path.get_extension()]
+	return alt if ResourceLoader.exists(alt) else path
+
+
+## Short side of the section viewport a lock screen will render under `node`'s window: window short
+## side x the profile's plate scale (Quality D-45). Known before _layout, so the plate is picked once.
+static func section_px_of(node: Node) -> float:
+	var win := Vector2(node.get_window().size) if node.is_inside_tree() and node.get_window() else Vector2(1080, 2340)
+	var q := node.get_node_or_null("/root/Quality")
+	var k: float = float(q.current.get("planb_scale", 1.0)) if q != null and not q.current.is_empty() else 1.0
+	return minf(win.x, win.y) * k
+
+
+func _section_px() -> float:
+	return section_px_of(self)
+
+
 func _tex(path: String) -> Texture2D:
-	return load(path) if ResourceLoader.exists(path) else null
+	var p := plate_variant(path, _section_px())
+	return load(p) if ResourceLoader.exists(p) else null
 
 
 func _mat(shader: String) -> ShaderMaterial:

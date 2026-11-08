@@ -102,19 +102,24 @@ static func build_scene(stretch: TextureRect.StretchMode) -> Control:
 	items.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
 		return int(a.get("z", 20)) < int(b.get("z", 20)) or (int(a.get("z", 20)) == int(b.get("z", 20)) and String(a["id"]) < String(b["id"])))
 	for f in items:
-		var t := _layer("Layer_" + String(f["id"]), f.get("layer", ""), stretch)
+		var t := _layer("Layer_" + String(f["id"]), f.get("layer", ""), stretch, false)
 		t.visible = false
 		root.add_child(t)
 	refresh(root, false)
 	return root
 
 
-static func _layer(node_name: String, file: String, stretch: TextureRect.StretchMode) -> TextureRect:
+## Perf pass 2026-11-08: an overlay is a full-frame RGBA picture (14 MB of video memory each at
+## 1440x2560), so only shown overlays hold a texture; refresh() loads it when the item is shown and
+## drops it when it is put away. Loading all 10 hidden overlays cost ~370 MB and >1 s on a budget phone.
+static func _layer(node_name: String, file: String, stretch: TextureRect.StretchMode, load_now := true) -> TextureRect:
 	var t := TextureRect.new()
 	t.name = node_name
 	var path := layer_path(file)
 	if file != "" and ResourceLoader.exists(path):
-		t.texture = load(path)
+		t.set_meta(&"layer_path", path)
+		if load_now:
+			t.texture = load(path)
 	t.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	t.stretch_mode = stretch
 	t.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -129,6 +134,10 @@ static func refresh(root: Control, animate := true) -> void:
 		if t == null:
 			continue
 		var on := shown(String(f["id"]))
+		if on and t.texture == null and t.has_meta(&"layer_path"):
+			t.texture = load(String(t.get_meta(&"layer_path")))
+		elif not on and t.texture != null:
+			t.texture = null
 		if on and not t.visible and animate and not Settings.get_value("reduce_motion", false) and t.is_inside_tree():
 			t.modulate.a = 0.0
 			t.create_tween().tween_property(t, "modulate:a", 1.0, 0.2).set_trans(Tween.TRANS_SINE)

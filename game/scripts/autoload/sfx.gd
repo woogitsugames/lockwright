@@ -38,6 +38,10 @@ var _cache: Dictionary = {}  # "event/material/n" -> AudioStream
 var _loops: Dictionary = {}  # loop id -> {player, generator, playback, active}
 var _rng := RandomNumberGenerator.new()
 var _native_click: Object = null
+var _pending_bridge: Object = null  # attached once the lock clicks are loaded (_process)
+var _pending_bridge_name := ""
+var _warm: Dictionary = {}  # "event/material/n" -> path still loading on a worker thread
+const WARM_BUDGET_US := 4000  # main-thread time per frame for collecting finished loads
 ## Native click bridge state (N-70 follow-up): sample ids the bridge accepted, consecutive
 ## play() failures, and whether the bridge is still trusted. Any failure path falls back
 ## to the AudioServer pool for that click; NATIVE_MAX_FAILS in a row disable the bridge.
@@ -63,7 +67,8 @@ func _ready() -> void:
 	_rng.randomize()
 	for name in ["LockwrightClickAudio", "LockwrightLowLatencyAudio"]:
 		if Engine.has_singleton(name):
-			use_native_click(Engine.get_singleton(name), name)
+			_pending_bridge = Engine.get_singleton(name)
+			_pending_bridge_name = name
 			break
 	for i in POOL_SIZE:
 		var p := AudioStreamPlayer.new()
@@ -75,13 +80,58 @@ func _ready() -> void:
 	_preload_lazy_threaded()
 
 
+## Perf pass 2026-11-08: the ~380 lock clicks and the native bridge upload took ~340 ms of the cold
+## start on a budget phone (SM-A165F), before the menu could show. They now load on worker threads;
+## _process() collects them a few per frame and attaches the native bridge (N-03) once all are in.
+## A click asked for before that loads on the spot (_cached), so no sound is ever dropped.
 func _preload_lock() -> void:
 	for event in EVENTS + LOOPS:
 		for material in MATERIALS:
 			for n in range(1, VARIANTS + 1):
 				var path := "%s/%s/%s_%d.wav" % [SFX_ROOT, event, material, n]
 				if ResourceLoader.exists(path):
-					_cache["%s/%s/%d" % [event, material, n]] = load(path)
+					var key := "%s/%s/%d" % [event, material, n]
+					_warm[key] = path
+					ResourceLoader.load_threaded_request(path)
+	set_process(true)
+
+
+func _process(_delta: float) -> void:
+	var t0 := Time.get_ticks_usec()
+	for key in _warm.keys():
+		var path: String = _warm[key]
+		var st := ResourceLoader.load_threaded_get_status(path)
+		if st == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+			continue
+		_warm.erase(key)
+		if not _cache.has(key):
+			_cache[key] = ResourceLoader.load_threaded_get(path) if st == ResourceLoader.THREAD_LOAD_LOADED else load(path)
+		if Time.get_ticks_usec() - t0 > WARM_BUDGET_US:
+			return
+	if _warm.is_empty():
+		set_process(false)
+		if _pending_bridge != null:
+			var bridge := _pending_bridge
+			_pending_bridge = null
+			use_native_click(bridge, _pending_bridge_name)
+
+
+## True while lock clicks are still loading in the background (tests wait on it).
+func warming_up() -> bool:
+	return not _warm.is_empty() or _pending_bridge != null
+
+
+## A lock sample by "event/material/n": from the cache, or loaded now if its background load has
+## not been collected yet (load() waits for a load already in flight).
+func _cached(key: String) -> AudioStream:
+	if _cache.has(key):
+		return _cache[key]
+	if _warm.has(key):
+		var path: String = _warm[key]
+		_warm.erase(key)
+		_cache[key] = load(path)
+		return _cache[key]
+	return null
 
 
 # ambience/music/ui/reward/foley/voices warm up off the critical path; the getters
@@ -165,12 +215,13 @@ func use_native_click(bridge: Object, name: String = "") -> void:
 	var can_play := native_click_has(&"play")
 	var can_load := native_click_has(&"load_sample")
 	var total := 0
+	var t0 := Time.get_ticks_msec()
 	if can_play and can_load:
 		total = _preload_native()
 	_native_enabled = can_play and can_load and not _native_loaded.is_empty()
-	print("Sfx: native click bridge %s play=%s load_sample=%s samples=%d/%d (skipped non-PCM16/stereo %d) -> %s" % [
+	print("Sfx: native click bridge %s play=%s load_sample=%s samples=%d/%d (skipped non-PCM16/stereo %d) -> %s in %d ms" % [
 		name, can_play, can_load, _native_loaded.size(), total, _native_skipped,
-		"native" if _native_enabled else "AudioServer fallback"])
+		"native" if _native_enabled else "AudioServer fallback", Time.get_ticks_msec() - t0])
 
 
 ## Same JNISingleton rule as Haptics.native_has(): Android plugin methods are visible only
@@ -239,10 +290,10 @@ func _native_candidates() -> Dictionary:
 func _stream_for(event: StringName, material: StringName) -> AudioStream:
 	var n := _rng.randi_range(1, VARIANTS)
 	var key := "%s/%s/%d" % [event, material, n]
-	if _cache.has(key):
-		return _cache[key]
-	key = "%s/%s/1" % [event, material]
-	return _cache.get(key)
+	var s := _cached(key)
+	if s != null:
+		return s
+	return _cached("%s/%s/1" % [event, material])
 
 
 func play(event: StringName, material: StringName = &"brass", volume_db: float = 0.0, pitch: float = 1.0) -> void:

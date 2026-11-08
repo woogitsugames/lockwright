@@ -99,6 +99,7 @@ func _ready() -> void:
 	ScreenFrame.enter($Frame/VBox/Scroll)
 	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
 	day_after = DayAfter.maybe_show(self)  # V04/D-78: one follow-up of a recently finished job
+	LockPreload.release()  # perf 2026-11-08: a job left at the verify screen drops its warmed-up lock
 
 
 ## Nav (Back): the "day after" scene closes first.

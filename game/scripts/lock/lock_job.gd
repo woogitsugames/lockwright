@@ -15,6 +15,7 @@ func _ready() -> void:
 	_apply_quality()
 	Quality.profile_changed.connect(func(_p: Dictionary) -> void: _apply_quality())
 	_show_family_hint()
+	LockPreload.release()  # perf 2026-11-08: the warmed-up resources now belong to this screen
 
 
 # T42: the D-59 families show one chalk hint (what each thumb does) during the first jobs.

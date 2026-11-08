@@ -57,6 +57,7 @@ func _ready() -> void:
 	refuse_button.text = I18n.t(&"job.refuse")
 	back_button.text = "‹ " + I18n.t(&"common.back")
 	_shown = mini(2, _cards().size())  # client shows 1-2 cards first
+	_start_preload.call_deferred()
 	_render_cards()
 	Sfx.play_ui(&"paper_turn")  # audio/v2 UI: client lays out the cards
 	# JOBS.md §2: in a refusal job the client has no right to the flat; opening is not an option
@@ -272,6 +273,14 @@ func _ask_more() -> void:
 	settled["outcome"] = "talk"
 	JobRun.current_job = settled
 	_go("res://scenes/job_payment.tscn")
+
+
+## Perf 2026-11-08: the lock screen's scripts, plates and model load on worker threads while the
+## player reads the cards (LockPreload). Not under tests that capture navigation (go_override).
+func _start_preload() -> void:
+	if go_override.is_valid() or not is_inside_tree() or JobRun.is_talk(JobRun.current_job):
+		return
+	LockPreload.start(JobRun.family_for(JobRun.current_job), JobRun.lock_scene_path(), LockPhotorealView.section_px_of(self))
 
 
 func _go(path: String) -> void:

@@ -3,6 +3,8 @@ extends Control
 ## on first launch (ONBOARDING §3.3), then the short first-run haptics+audio
 ## calibration (TECH.md §2.3), then the main menu.
 
+var _preloaded: Array[String] = []
+
 @onready var notice: PanelContainer = $NoticePanel
 @onready var notice_label: Label = $NoticePanel/VBox/Label
 @onready var calib: PanelContainer = $CalibPanel
@@ -13,8 +15,13 @@ extends Control
 @onready var calib_skip: Button = $CalibPanel/VBox/SkipButton
 
 
+const MAIN_MENU := "res://scenes/main_menu.tscn"
+const MenuScript := preload("res://scripts/ui/main_menu.gd")
+
+
 func _ready() -> void:
 	I18n.apply_language(Settings.language())
+	_preload_menu()
 	notice_label.text = I18n.t(&"about.notice")
 	var first_run: bool = not Save.get_value("seen_notice", false)
 	notice.visible = first_run
@@ -26,7 +33,35 @@ func _ready() -> void:
 		notice.visible = false
 	if first_run and not Settings.get_value("calibrated", false):
 		await _run_calibration()
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file(MAIN_MENU)
+
+
+## Perf pass 2026-11-08: the menu board (1080x2400 lossy WebP, ~200 ms to decode on a budget phone)
+## and the menu scene load on worker threads during the boot's own wait; change_scene_to_file() and
+## the menu's load() pick them up (or wait for them) instead of decoding in the first menu frame.
+func _preload_menu() -> void:
+	var paths := [MAIN_MENU]
+	var layout := MenuScript.load_layout()
+	var vp := get_viewport_rect().size
+	if not layout.is_empty() and vp.x > 0.0:
+		var orient := MenuScript.pick_orient(vp)
+		var lang := MenuScript.pick_lang(I18n.current_language(), layout.get("langs", [MenuScript.FALLBACK_LANG]))
+		paths.append(MenuScript.MENU_DIR + "menu_%s_%s.webp" % [orient, lang])
+	for p in paths:
+		if ResourceLoader.exists(p) and not ResourceLoader.has_cached(p):
+			ResourceLoader.load_threaded_request(p)
+			_preloaded.append(p)
+
+
+## Takes the finished background loads off the loader and keeps them alive one more second, until the
+## menu (built right after this node leaves) has load()ed them from the cache and holds them itself.
+func _exit_tree() -> void:
+	var held: Array[Resource] = []
+	for p in _preloaded:
+		if ResourceLoader.load_threaded_get_status(p) == ResourceLoader.THREAD_LOAD_LOADED:
+			held.append(ResourceLoader.load_threaded_get(p))
+	if not held.is_empty() and is_inside_tree():
+		get_tree().create_timer(1.0).timeout.connect(func() -> void: held.clear())
 
 
 func _run_calibration() -> void:

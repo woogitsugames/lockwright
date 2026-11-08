@@ -21,6 +21,7 @@ general/text_to_speech=true
 
 [autoload]
 
+PerfProbe="*res://scripts/autoload/perf_probe.gd"
 DpScale="*res://scripts/autoload/dp_scale.gd"
 Settings="*res://scripts/autoload/settings.gd"
 Save="*res://scripts/autoload/save.gd"
@@ -61,6 +62,12 @@ common/physics_jitter_fix=0.5
 
 [rendering]
 
+; perf 2026-11-08: Godot's 128 MB staging pool grows on texture/glyph uploads and is never
+; returned (job list on SM-A165F: 330 -> 170 MB of GPU memory with 16 MB); a small pool only stalls uploads
+rendering_device/staging_buffer/max_size_mb=16
+; perf 2026-11-08: the default 3 MB chunk is never reached in a session, and Android kills the
+; app instead of quitting, so user://vulkan stayed empty and every session recompiled its pipelines
+rendering_device/pipeline_cache/save_chunk_size_mb=0.25
 renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="mobile"
 textures/vram_compression/import_etc2_astc=true
