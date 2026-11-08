@@ -7,13 +7,16 @@ extends Control
 ## what a click means) instead of an uncaptioned sketch, and "a game, not a course" as its own
 ## readable note under them, not printed into a drawing.
 
-# G11 master's cards (clean variant, no baked-in text): stage -> [card number, caption key]
+# VA-07 (D-98): photoreal close-ups of the pin cut-away (art/blender/tutorial_cards.py, same scene and
+# materials as the lock screen), one per idea; no text or arrows baked in (chalk is the game's, D-83).
+# stage -> [card, caption key]; card = res://assets/ui/tutorial/card_<card>.webp
+const CARD_DIR := "res://assets/ui/tutorial/card_%s.webp"
 const FRAMES := [
-	[[1, &"tutorial.frame_tension"], [3, &"tutorial.frame_lift"], [5, &"tutorial.frame_click"]],
-	[[7, &"tutorial.s2_intro"]],
-	[[9, &"tutorial.s3_intro"]],
+	[[&"tension", &"tutorial.frame_tension"], [&"lift", &"tutorial.frame_lift"], [&"set", &"tutorial.frame_click"]],
+	[[&"binding", &"tutorial.s2_intro"]],
+	[[&"overset", &"tutorial.s3_intro"]],
 ]
-const FRAMES_AUTO_S1 := [[3, &"tutorial.frame_lift_auto"], [5, &"tutorial.frame_click"]]
+const FRAMES_AUTO_S1 := [[&"lift", &"tutorial.frame_lift_auto"], [&"set", &"tutorial.frame_click"]]
 ## HANDOVER §5.3: a one-pin lock (S1) has nothing to choose "sideways"; these captions say so.
 const ONE_PIN_CAPTIONS := {
 	&"tutorial.frame_lift": &"tutorial.frame_lift_one",
@@ -23,7 +26,6 @@ const CARD_W := 136.0  # VA-07: was 112x140 - the master's sketches were stamp-s
 const CARD_H := 168.0
 ## VA-07: the practice bench behind the cards instead of a flat brown fill (dimmed for the captions)
 const BG := "res://assets/ui/gpt/workshop/03-workshop-evening-portrait.webp"
-const CARD_CROP := Rect2(0.08, 0.14, 0.84, 0.66)  # drawing area of a 1200×1500 card (skip margins)
 
 var _back: Button
 var _back_space: Control
@@ -80,19 +82,14 @@ func frame_captions() -> PackedStringArray:
 	return out
 
 
-func _add_frame(card: int, caption_key: StringName) -> void:
-	# text-free card art (the -pl/-en variants are excluded from the package, D-55/N-74)
-	var tex: Texture2D = load("res://assets/ui/gpt/tutorial/g11-%02d-clean.png" % card)
+func _add_frame(card: StringName, caption_key: StringName) -> void:
+	var tex: Texture2D = load(CARD_DIR % card)
 	var row := HBoxContainer.new()
 	row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_theme_constant_override("separation", 12)
 	var pic := TextureRect.new()
-	if tex != null:
-		var at := AtlasTexture.new()
-		at.atlas = tex
-		var s := Vector2(tex.get_size())
-		at.region = Rect2(CARD_CROP.position * s, CARD_CROP.size * s)
-		pic.texture = at
+	pic.name = "Card"
+	pic.texture = tex
 	pic.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	pic.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	pic.custom_minimum_size = Vector2(CARD_W, CARD_H)

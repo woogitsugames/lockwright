@@ -322,3 +322,9 @@ Own Blender 4.2.9 LTS / Cycles OptiX renders (RTX 5070), procedural and photo ma
 | `game/assets/arrival/night_nurse/night/plate.webp`, `game/assets/arrival/night_nurse/night/seq/*.webp`, `game/assets/arrival/pizzeria_pays_pizza/evening/plate.webp`, `game/assets/arrival/pizzeria_pays_pizza/evening/seq/*.webp`, `game/assets/arrival/bike_interview/day/plate.webp`, `game/assets/arrival/bike_interview/day/seq/*.webp` | `art/blender/arrival_place.py --job <id> --mode still --still-res 1080x1920 --still-spp 512 --device GPU` (hold) and `--mode seq --res 1080x1920 --spp 128` (36-frame walk, masters in `build/local-session/arrival-master/`), exported with `art/tools/arrival_export.py --job <id> --master <dir>` (WebP, lossy import 0.8) |
 | `art/renders/arrival/{night_nurse_night,pizzeria_pays_pizza_evening,bike_interview_day}_{hold.png,hold.json,final_contact.png}`, `arrival_places_board.jpg` | same renders; contact sheets via `arrival_composite.py --contact`, board with Pillow |
 
+## Tutorial cards (VA-07, D-98) — 2026-11-08
+
+| Assets | Script and parameters |
+|---|---|
+| `game/assets/ui/tutorial/card_{tension,lift,set,binding,overset}.webp`, masters `art/renders/tutorial_cards/card_*.png` | own Blender 4.2.9 LTS / Cycles OptiX render (RTX 5070) of `art/blender/cutaway.py` (photo materials, no AI): `LW_DEVICE=GPU blender -b -P art/blender/tutorial_cards.py -- --out-dir art/renders/tutorial_cards --res 480x592 --samples 256`, WebP q82 (Pillow), lossy import 0.85 |
+

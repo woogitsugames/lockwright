@@ -1,4 +1,6 @@
 extends GutTest
+
+const TutorialScreen := preload("res://scripts/ui/tutorial.gd")
 ## N-74: every resource a game script (or scene) points at with a res:// literal must survive the
 ## export filters of the mobile presets. D-55 excludes unused files from the APK/IPA; when code starts
 ## loading one of them again, the file silently vanishes from the package (the tutorial cards
@@ -176,9 +178,14 @@ func test_every_referenced_resource_survives_mobile_export_filters() -> void:
 
 
 func test_tutorial_cards_ship() -> void:
+	# VA-07 (D-98): the photoreal cards ship; the G11 sketches they replaced stay out of the package
 	var presets := _presets()
 	for preset in presets:
+		for frames in TutorialScreen.FRAMES + [TutorialScreen.FRAMES_AUTO_S1]:
+			for f in frames:
+				var p: String = TutorialScreen.CARD_DIR % f[0]
+				assert_true(ResourceLoader.exists(p), p)
+				assert_eq(excluded_by(p, presets[preset]), "", "%s ships %s" % [preset, p])
 		for i in range(1, 13):
-			var p := "res://assets/ui/gpt/tutorial/g11-%02d-clean.png" % i
-			assert_true(FileAccess.file_exists(p), p)
-			assert_eq(excluded_by(p, presets[preset]), "", "%s ships %s" % [preset, p])
+			var g := "res://assets/ui/gpt/tutorial/g11-%02d-clean.png" % i
+			assert_ne(excluded_by(g, presets[preset]), "", "%s leaves out the replaced sketch %s" % [preset, g])

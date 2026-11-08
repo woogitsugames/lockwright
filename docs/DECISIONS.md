@@ -485,3 +485,11 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 - **Zamek:** jeden nazwany obszar z dopiskiem o geście TalkBack „stuknij dwa razy i przytrzymaj, potem przesuwaj”. Przepuszczania dotyku dla wybranego obszaru Android nie daje aplikacjom (sprawdzone w SDK 36), więc go nie udajemy.
 - **Telefon:** instalacja `install -r` (zapis właściciela zachowany: `firstInstallTime` bez zmian), TalkBack włączony ustawieniami i przywrócony (stan sprzed testu w `a11y_settings_baseline.txt` = `a11y_settings_after.txt`). Okno uprawnień TalkBack („połączenia telefoniczne”) zostawione bez decyzji (`READ_PHONE_STATE: granted=false`, bez flagi wyboru użytkownika); wraca przy każdym starcie TalkBack, także po `uiautomator dump`.
 - Zostaje: podwójne stuknięcie i stany zamka sprawdzić palcem (adb nie przechodzi przez TouchExplorer), VoiceOver na iOS.
+
+## D-98: Karty samouczka jako rendery przekroju (VA-07)
+2026-11-08 · sesja grafiki (worktree `wt-tut`) · uzupełnia N-61, D-83.
+- Szkice mistrza G11 (cienkie linie na kremowym papierze) wyglądały tanio obok fotorealistycznej gry. Zastąpiło je pięć zbliżeń z tej samej sceny co ekran zamka (`art/blender/cutaway.py`, materiały ze zdjęć, to samo światło): `tension` (napinacz w kanale, czoło bębenka), `lift` (hak pod pinem), `set` (przeciwpin na wierzchu bębenka nad linią podziału), `binding` (trzy piny, wiąże tylko środkowy pod hakiem, etap 2), `overset` (pin przepchnięty za linię podziału, sprężyna ściśnięta, etap 3). Skrypt `art/blender/tutorial_cards.py`, 480×592, 256 spp, GPU.
+- Bez napisów i strzałek w obrazie: ruch i znaczenie niosą podpisy (i18n), a kreda zostaje w grze (D-83).
+- Gra: `game/assets/ui/tutorial/card_<nazwa>.webp` (13–29 KB, razem ok. 118 KB, import stratny 0,85); `tutorial.gd` bierze karty po nazwie, bez kadrowania marginesów kartki. Szkice G11 zostają w repo (źródło), ale wypadają z paczki (`exclude_filter` `assets/ui/gpt/tutorial/g11-*`), co zdejmuje z pck ok. 1,5 MB. Test `test_tutorial_cards_ship` pilnuje obu stron.
+- Przed/po: `docs/handoff/device-tests/visual_audit_2026-11-07/before_after/va07_tutorial_cards_render.jpg`.
+
