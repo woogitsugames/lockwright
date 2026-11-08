@@ -8,6 +8,15 @@ Godot as `Engine.get_singleton("LockwrightHaptics")` with methods
 `has_java_method()` — `has_method()` is false for every plugin method of a JNISingleton (N-70).
 All vibrations use `USAGE_MEDIA` (API 33+) / `USAGE_GAME` audio attributes, not the implicit TOUCH usage.
 
+## TalkBack bridge (D-97)
+
+Godot 4.7.2 has no AccessKit on Android, so the plugin also adds `A11yBridge` (a transparent view over the render
+view, `onMainCreate`) with a virtual `AccessibilityNodeProvider`. Methods: `a11y_active()` (any accessibility client),
+`a11y_screen_reader()` (TalkBack / spoken feedback), `a11y_set_nodes(json)` (UiA11y's visible controls: id, name, role
+`button|check|slider|option|text|area`, x/y/w/h in surface pixels, checked, value, desc, disabled),
+`a11y_announce(text)`. Signals: `a11y_activate(id)`, `a11y_adjust(id, dir)`. The view never consumes touches.
+Debug: `adb logcat -s LockwrightA11y` (node counts, hover, actions, announcements).
+
 ## Haptics tiers (docs/TECH.md §2.2)
 
 | Tier | Condition | Behaviour |

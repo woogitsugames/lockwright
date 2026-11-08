@@ -17,10 +17,46 @@ Cała warstwa siedzi w autoloadzie `UiA11y` (`game/scripts/autoload/ui_a11y.gd`)
 | Stany zamka | `Events.lock_event` → krótka kwestia, np. „3: wiąże”, „3: siada na miejscu”, „1: fałszywie siada — za głęboko”, „5: za wysoko — popuść napięcie”, „Narzędzie się wygina — odpuść”, „Wytrych pękł”, „Otwarte” (też detektor, kontrrotacja, bramka, zrzut). Tylko gdy działa czytnik ekranu i włączone „Ogłaszaj stany zamka” (domyślnie tak). `near_shear`, `contact`, `wear` milczą (za częste; zostaje ich obraz i dźwięk). Ten sam element/rodzaj nie powtarza się szybciej niż co 0,25–3 s (bind 2,5 s, stress 3 s); po zrzucie/otwarciu licznik się zeruje. Pilne (overset, stress, break, false set, detektor, open) idą jako „assertive”. |
 | Wskazówki | H2–H4 drabiny wskazówek mówią swój tekst (bez zmian z D-83, teraz przez wspólny `UiA11y.announce`). Linie kredą na zamku (lekcje, cele, podpowiedzi rodzin) są rysowane, więc `ChalkLayer` niesie je jako nazwę i ogłasza każdą nową linię (grzecznie). |
 | Dialogi | Z czytnikiem ekranu dialog nie odtwarza klipów (tekst czyta czytnik), scenka przyjazdu pokazuje od razu stop-klatkę. |
-| Kanał mowy | `UiA11y.announce()`: TTS silnika, gdy jest włączony i ma głos języka gry, inaczej żywy region AccessKit (czyta go czytnik gracza). |
+| Kanał mowy | `UiA11y.announce()`: na Androidzie z TalkBack — TalkBack (most D-97); gdzie indziej TTS silnika, gdy jest włączony i ma głos języka gry, inaczej żywy region AccessKit (czyta go czytnik gracza). |
 
-Ograniczenie: AccessKit na Androidzie/iOS w 4.7 nie był sprawdzony na urządzeniu (TalkBack/VoiceOver) — to pierwszy punkt
-testu ręcznego (§7). Paragon zapłaty i napisy na przedmiotach (D-25/D-41) są częścią zdjęcia, nie kontrolkami.
+### 1.1 Android: AccessKit nie działa, gra ma własny most do TalkBack (D-97, N-93)
+
+**Godot 4.7.2 nie ma AccessKit na Androidzie.** Szablon eksportu `android_release.apk` (`libgodot_android.so`) nie zawiera
+serwera `AccessibilityServerAccessKit` ani adaptera `accesskit_android` — jest w nim tylko wspólny kod drzewa i tekst
+pomocy linii poleceń. Szablon Windows ma `AccessibilityServerAccessKit` i `accesskit_windows-0.34.0`. Ustawienie projektu
+`accessibility/general/accessibility_support` niczego tu nie włącza, a eksport Androida nie ma odpowiedniej opcji. Bez
+mostu TalkBack widział tylko `SurfaceView` (test a088601, N-93): wszystko z §1 działało tylko na desktopie.
+
+**Most** (wtyczka `LockwrightHaptics`, `platform/android/lockwright-haptics/.../A11yBridge.kt`): przezroczysty widok nad
+widokiem gry (`GodotPlugin.onMainCreate`) z wirtualnym `AccessibilityNodeProvider`. Nigdy nie zabiera dotyku
+(`dispatchTouchEvent` = false), więc bez TalkBack gra dostaje każdy dotyk jak dotąd.
+- `UiA11y` co 0,3 s, gdy słucha jakakolwiek usługa dostępności (`a11y_active`), wysyła widoczne kontrolki jako JSON:
+  nazwa (jak w §1), rola (przycisk / przełącznik ze stanem / suwak z wartością w % / lista z wybraną pozycją / tekst
+  etykiety / obszar zamka), prostokąt w pikselach okna, przycięty do przewijanych list. Wysyła tylko po zmianie. Etykiety
+  wewnątrz przycisku są częścią jego nazwy. Przy pauzie publikowany jest tylko panel pauzy.
+- TalkBack: dotyk-eksploracja trafia w węzeł pod palcem, podwójne stuknięcie = `ACTION_CLICK` → sygnał `a11y_activate`
+  → `UiA11y.activate()`: przycisk naciśnięty, przełącznik przełączony, lista przechodzi do następnej pozycji (okno listy
+  nie jest wystawione), rysowane cele (pauza, lupa, sonda) — ich akcja z D-90. Suwaki: przewijanie w górę / w dół = krok.
+- Ogłoszenia (stany zamka, linie kredy, wskazówki H2–H4) idą przez `TYPE_ANNOUNCEMENT` do TalkBack, gdy działa czytnik
+  (`a11y_screen_reader`: dotyk-eksploracja albo usługa z mową).
+- Zamek to jeden nazwany obszar z opisem kciuków i dopiskiem „Z TalkBack: stuknij dwa razy i przytrzymaj, potem przesuwaj”.
+  Android nie daje aplikacjom przepuszczania dotyku dla wybranego obszaru (to robi tylko usługa), więc kciuki działają
+  standardowym gestem TalkBack (podwójne stuknięcie z przytrzymaniem przekazuje dotyk do gry). Na ekranie zamka jest
+  jeden kciuk naraz — przy dwóch kciukach z TalkBack trzeba napięcia automatycznego (§6).
+
+**Sprawdzone na SM-A165F (2026-11-08, zrzuty w `docs/handoff/device-tests/n93_talkback_2026-11-08/`):**
+- `uiautomator dump` z TalkBack: menu = 6 przycisków z nazwami („Zacznij dyżur” … „O grze”) w miejscach liter na tablicy.
+  Ustawienia = 23 węzły: „‹ Wstecz”, nagłówki jako tekst, „Haptyka włączona” jako `Switch` (checked), suwaki jako
+  `SeekBar` z wartością („Głośność główna, 85%”), przyciski.
+- Linia kredy ćwiczenia ogłoszona przez TalkBack (`announce: Szukaj płytki z oporem…` w logcat). Na zamku 3 węzły
+  (obszar, pauza, lupa), na pauzie 4 (tytuł + 3 przyciski).
+- **Nie sprawdzone na telefonie:** podwójne stuknięcie TalkBack (adb wstrzykuje dotyk poza TouchExplorerem, a skróty
+  klawiaturowe TalkBack z `input keycombination` nie przesuwały fokusu; ścieżka aktywacji jest w testach GUT), ogłaszanie
+  stanów zamka (właściciel gra dwoma kciukami, a adb ma jeden wskaźnik; ta sama ścieżka co ogłoszona linia kredy) i gest
+  przekazania dotyku na zamku. To pierwszy punkt testu ręcznego palcem.
+- iOS: VoiceOver nie sprawdzony; czy szablon iOS 4.7.2 ma AccessKit — nie badane w tym zadaniu.
+
+Paragon zapłaty i napisy na przedmiotach (D-25/D-41) są częścią zdjęcia, nie kontrolkami.
 
 ## 2. Ograniczenie ruchu
 
@@ -110,4 +146,5 @@ tekst nie jest ucięty (poza zakładkami Warsztatu) i żadna etykieta nie zapada
 | Istniejące: kreda statyczna (Reduce Motion), mówione H2–H4, stop-klatka przyjazdu, „dzień po” bez ruchu, cele ≥ 48 dp | `test_chalk_hint.gd`, `test_tutorial_hints.gd`, `test_arrival_scene.gd`, `test_day_after.gd`, `test_ui_layout.gd` |
 | Zrzuty stanów + raport szarość/daltonizm | `game/tests/a11y_state_shots.tscn` → `qa/a11y/state_report.py` (GPU ok. 1 min) |
 | Zrzuty ekranów z dużym tekstem / opcjami | `game/tests/shot_scene.tscn -- --text-scale=1.5 --setting=sound_captions:1` |
-| Ręcznie na telefonie (do zrobienia) | TalkBack (Pixel) i VoiceOver: przejście menu → zlecenie → zamek tylko czytnikiem; systemowe „usuń animacje”; Dynamic Type / rozmiar czcionki systemu (gra ma własny suwak, nie czyta systemowego) |
+| Most TalkBack (D-97) | `game/tests/gut/test_android_a11y_bridge.gd` (atrapa wtyczki: węzły, role, stany, aktywacja, suwaki, pauza, ogłoszenia); na telefonie `uiautomator dump` z włączonym TalkBack + `logcat -s LockwrightA11y` |
+| Ręcznie na telefonie (do zrobienia) | TalkBack palcem: podwójne stuknięcie na przyciskach, stany zamka, gest przekazania dotyku; VoiceOver: przejście menu → zlecenie → zamek tylko czytnikiem; systemowe „usuń animacje”; Dynamic Type / rozmiar czcionki systemu (gra ma własny suwak, nie czyta systemowego) |

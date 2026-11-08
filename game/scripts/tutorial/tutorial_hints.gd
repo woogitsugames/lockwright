@@ -337,9 +337,7 @@ func _on_level(level: int, _step_id: StringName) -> void:
 func _screen_reader_active() -> bool:
 	if screen_reader_override >= 0:
 		return screen_reader_override == 1
-	if DisplayServer.has_method("accessibility_screen_reader_active"):
-		return int(DisplayServer.accessibility_screen_reader_active()) == 1
-	return false
+	return UiA11y.screen_reader_active()  # AccessKit or the Android TalkBack bridge (D-97)
 
 
 ## H2 says the gesture of the step, H3 the chalk, H4 the master hand (ONBOARDING §11).

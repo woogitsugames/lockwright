@@ -1,0 +1,14 @@
+11-08 18:19:50.960 14710 14783 I godot   : UiA11y: TalkBack bridge ready (LockwrightHaptics)
+11-08 18:19:51.073 14710 14783 I godot   : UiA11y: accessibility on (screen reader true), 0 nodes
+11-08 18:19:51.298 14710 14783 I godot   : LW_BOOT engine_to_menu_ms=3325 tree_ms=2911 menu_first_frame_ms=8 ready=PerfProbe:2,DpScale:0,Settings:1,Save:3,I18n:59,Events:0,Haptics:11,FeedbackDirector:0,UiA11y:7,Sfx:71,Quality:7,FrameHint:0,Achievements:0,ErrorLog:23,Nav:0,VoicePacks:1,Boot:1,@Label@14:3,MainMenu:217
+11-08 18:19:51.298 14710 14783 I godot   : LW_SCENE main_menu.tscn tap_ms=-1 first_frame_ms=8 static_mb=63 tex_mb=10
+11-08 18:19:51.499 14710 14710 I LockwrightA11y: nodes: 6
+11-08 18:20:09.368 14710 14783 I godot   : LW_SCENE workshop.tscn tap_ms=957 first_frame_ms=386 static_mb=78 tex_mb=17
+11-08 18:20:09.524 14710 14710 I LockwrightA11y: nodes: 17
+11-08 18:20:12.706 14710 14710 I LockwrightA11y: nodes: 23
+11-08 18:20:16.520 14710 14710 I LockwrightA11y: announce: Szukaj płytki z oporem, nie tej najgłośniejszej.
+11-08 18:20:17.118 14710 14783 I godot   : LW_SCENE lock_job_wafer.tscn tap_ms=1112 first_frame_ms=597 static_mb=83 tex_mb=41
+11-08 18:20:17.150 14710 14710 I LockwrightA11y: nodes: 3
+11-08 18:20:23.948 14710 14710 I LockwrightA11y: nodes: 4
+11-08 18:20:28.290 14710 14783 I godot   : LW_SCENE workshop.tscn tap_ms=388 first_frame_ms=58 static_mb=83 tex_mb=53
+11-08 18:20:28.293 14710 14710 I LockwrightA11y: nodes: 22

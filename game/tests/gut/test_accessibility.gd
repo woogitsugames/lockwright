@@ -64,6 +64,8 @@ func _open(path: String, size: Vector2i) -> Control:
 	vp.disable_3d = true
 	add_child_autofree(vp)
 	var scene: Control = load(path).instantiate()
+	if "go_override" in scene:
+		scene.go_override = func(_p: String) -> void: pass  # no lock preload threads (D-87) in layout loops
 	vp.add_child(scene)
 	for i in 4:
 		await get_tree().process_frame

@@ -1,5 +1,7 @@
 package org.woogitsugames.lockwright.haptics
 
+import android.app.Activity
+import android.view.View
 import org.godotengine.godot.Godot
 import org.godotengine.godot.plugin.GodotPlugin
 import org.godotengine.godot.plugin.SignalInfo
@@ -17,7 +19,44 @@ class LockwrightHapticsPlugin(godot: Godot) : GodotPlugin(godot) {
 
     override fun getPluginName(): String = "LockwrightHaptics"
 
-    override fun getPluginSignals(): Set<SignalInfo> = emptySet()
+    /** D-97: TalkBack bridge over the render view (see A11yBridge). */
+    private var bridge: A11yBridge? = null
+
+    override fun getPluginSignals(): Set<SignalInfo> = setOf(
+        SignalInfo("a11y_activate", Int::class.javaObjectType),
+        SignalInfo("a11y_adjust", Int::class.javaObjectType, Int::class.javaObjectType),
+    )
+
+    override fun onMainCreate(activity: Activity?): View? {
+        val act = activity ?: return null
+        val b = A11yBridge(act)
+        b.onActivate = { id -> runOnRenderThread { emitSignal("a11y_activate", id) } }
+        b.onAdjust = { id, dir -> runOnRenderThread { emitSignal("a11y_adjust", id, dir) } }
+        bridge = b
+        return b
+    }
+
+    /** D-97: an accessibility client listens (publish the nodes). */
+    @UsedByGodot
+    fun a11y_active(): Boolean = bridge?.active() ?: false
+
+    /** D-97: a spoken screen reader (TalkBack) runs. */
+    @UsedByGodot
+    fun a11y_screen_reader(): Boolean = bridge?.screenReader() ?: false
+
+    /** D-97: the game's accessible controls as a JSON array (see A11yBridge.setNodes). */
+    @UsedByGodot
+    fun a11y_set_nodes(json: String) {
+        val b = bridge ?: return
+        runOnUiThread { b.setNodes(json) }
+    }
+
+    /** D-97: spoken by TalkBack (lock states, hints). */
+    @UsedByGodot
+    fun a11y_announce(text: String) {
+        val b = bridge ?: return
+        runOnUiThread { b.announce(text) }
+    }
 
     @UsedByGodot
     fun play(event: String, intensity: Double, material: String) {

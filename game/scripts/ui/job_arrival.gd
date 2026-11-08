@@ -264,8 +264,7 @@ func _scene_reduce_motion() -> bool:
 	if UiA11y.reduce_motion():
 		return true
 	# a screen reader user gets the still frame and the text at once
-	return DisplayServer.has_method("accessibility_screen_reader_active") \
-		and int(DisplayServer.accessibility_screen_reader_active()) == 1
+	return UiA11y.screen_reader_active()  # AccessKit or the Android TalkBack bridge (D-97)
 
 
 ## D-58: the scene covers the screen (under the status bar too); the dialogue sits over its lower part
