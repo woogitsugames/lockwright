@@ -15,7 +15,9 @@
 #   Gradle 8.11.1 in C:\tools\gradle-8.11.1, Godot 4.7.2 + export templates in %APPDATA%\Godot\export_templates\4.7.2.stable,
 #   SCons (pip --user); godot-cpp is cloned at the CI-pinned commit if missing.
 #
-# Usage (Git Bash): tools/local/build_apk.sh [--aab] [--skip-aar] [--skip-lockcore] [--skip-import]
+# Usage (Git Bash): tools/local/build_apk.sh [--aab] [--release] [--skip-aar] [--skip-lockcore] [--skip-import]
+#   --release: also build/local/lockwright-release.apk = release template (not debuggable), signed with the
+#   same debug key, so `adb install -r` over a CI APK keeps the save (perf checks on a release-like build, D-88)
 # Env overrides: JAVA_HOME_W, ANDROID_SDK_W, GRADLE, GODOT, GODOT_CPP, SCONS, JOBS.
 # Note: sets the Android SDK/Java paths in %APPDATA%\Godot\editor_settings-4.7.tres (original kept once as .bak-local).
 set -euo pipefail
@@ -35,10 +37,11 @@ EXPECTED_CERT_SHA256=2fda65a371d45bc3ba960290e32f8cb119d6adff66be6f2980a68cad935
 JOBS="${JOBS:-$(nproc 2>/dev/null || echo 8)}"
 OUT="$REPO/build/local"
 
-DO_AAB=0; DO_AAR=1; DO_LOCKCORE=1; DO_IMPORT=1
+DO_AAB=0; DO_REL=0; DO_AAR=1; DO_LOCKCORE=1; DO_IMPORT=1
 for a in "$@"; do
   case "$a" in
     --aab) DO_AAB=1 ;;
+    --release) DO_REL=1 ;;
     --skip-aar) DO_AAR=0 ;;
     --skip-lockcore) DO_LOCKCORE=0 ;;
     --skip-import) DO_IMPORT=0 ;;
@@ -100,7 +103,7 @@ if [ $DO_LOCKCORE -eq 1 ]; then
   fi
   GCPP="$(cygpath -m "$GODOT_CPP")"
   targets="template_debug"
-  if [ $DO_AAB -eq 1 ]; then targets="template_debug template_release"; fi
+  if [ $DO_AAB -eq 1 ] || [ $DO_REL -eq 1 ]; then targets="template_debug template_release"; fi
   for t in $targets; do
     echo "== lockcore_gd android arm64 $t"
     (cd "$REPO/game/addons/lockcore_gd" && GODOT_CPP="$GCPP" "$SCONS" -Q platform=android target="$t" arch=arm64 \
@@ -177,6 +180,56 @@ if [ $DO_AAB -eq 1 ]; then
     echo "AAB export failed, see build/local/export-aab.log" >&2; tail -30 "$OUT/export-aab.log" >&2; exit 1
   fi
   cp -f game/build/lockwright-release.aab "$OUT/lockwright-release.aab"
+fi
+
+if [ $DO_REL -eq 1 ]; then
+  echo "== export release APK (release template, debug key)"
+  cp -f "$PRESETS" "$OUT/export_presets.cfg.orig"
+  INC=$(awk -F'"' '/^\[preset.0\]/{f=1} f&&/^include_filter=/{print $2; exit}' "$PRESETS")
+  EXCL=$(awk -F'"' '/^\[preset.0\]/{f=1} f&&/^exclude_filter=/{print $2; exit}' "$PRESETS")
+  KS="$(cygpath -m "$REPO/platform/android/debug.keystore")"
+  N=$(grep -c '^\[preset\.[0-9]*\]' "$PRESETS")  # presets must be numbered without gaps
+  cat >> "$PRESETS" <<PRESET
+
+[preset.$N]
+name="AndroidReleaseApk"
+platform="Android"
+runnable=false
+export_filter="all_resources"
+include_filter="$INC"
+exclude_filter="$EXCL"
+export_path="build/lockwright-release.apk"
+encrypt_pck=false
+encrypt_directory=false
+
+[preset.$N.options]
+gradle_build/use_gradle_build=true
+gradle_build/export_format=0
+gradle_build/min_sdk="30"
+gradle_build/target_sdk="36"
+architectures/arm64-v8a=true
+architectures/armeabi-v7a=false
+architectures/x86=false
+architectures/x86_64=false
+keystore/release="$KS"
+keystore/release_user="androiddebugkey"
+keystore/release_password="android"
+package/signed=true
+version/code=1
+version/name="0.1.0"
+package/unique_name="com.woogitsugames.lockwright"
+package/name="Lockwright: Locksmith on Call"
+graphics/opengl_debug=false
+xr_features/xr_mode=0
+permissions/vibrate=true
+PRESET
+  rm -f game/build/lockwright-release.apk
+  "$GODOT" --headless --path game --export-release "AndroidReleaseApk" build/lockwright-release.apk > "$OUT/export-rel.log" 2>&1 || true
+  mv -f "$OUT/export_presets.cfg.orig" "$PRESETS"
+  if [ ! -f game/build/lockwright-release.apk ]; then
+    echo "release APK export failed, see build/local/export-rel.log" >&2; tail -30 "$OUT/export-rel.log" >&2; exit 1
+  fi
+  cp -f game/build/lockwright-release.apk "$OUT/lockwright-release.apk"
 fi
 
 echo "== checks"

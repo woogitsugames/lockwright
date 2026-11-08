@@ -35,10 +35,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if _frozen or _paused:
-		view.present(_vm(), _last_input, delta)
+		_present(_vm(), _last_input, delta)
 		return
 	if session.finished():
-		view.present(session.describe(), _last_input, delta)
+		_present(session.describe(), _last_input, delta)
 		if not session.is_open():
 			Events.lock_failed.emit(StringName(session.failure()))
 		if coach != null:
@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 	Haptics.update_continuous(&"tension_resistance", resistance, 0.3)
 	Sfx.update_loop(&"tension_resistance", resistance)
 	Sfx.update_loop(&"pick_drag", vm.get("pick_drag", 0.0))
-	view.present(vm, input, delta)
+	_present(vm, input, delta)
 
 
 ## QA hook (qa/bot/qa_sampler.gd): a sampler that carries lockcore input rows (`rows`, e.g. the

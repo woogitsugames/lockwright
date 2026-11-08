@@ -280,12 +280,42 @@ func _parse_args() -> void:
 			i += 1
 
 
+## D-88: in exported builds the view is refreshed once per rendered frame (from _process) with the
+## latest ViewModel and the summed delta, not on every 120 Hz physics step (two per frame at 60 FPS):
+## the picture cannot change between two frames anyway, and present() was the biggest script cost of
+## the step (~1 ms on SM-A165F). Lockcore, haptics, sound and view.on_event() stay per step.
+## The editor binary (GUT, desktop runs) keeps the immediate per-step refresh tests rely on.
+var view_per_frame := OS.has_feature("template")
+var _pv_vm: Dictionary = {}
+var _pv_input: Dictionary = {}
+var _pv_delta := 0.0
+var _pv_pending := false
+
+
+func _present(vm: Dictionary, input: Dictionary, delta: float) -> void:
+	if not view_per_frame:
+		view.present(vm, input, delta)
+		return
+	_pv_vm = vm
+	_pv_input = input
+	_pv_delta += delta
+	_pv_pending = true
+
+
+func _flush_present() -> void:
+	if not _pv_pending:
+		return
+	_pv_pending = false
+	view.present(_pv_vm, _pv_input, _pv_delta)
+	_pv_delta = 0.0
+
+
 func _physics_process(delta: float) -> void:
 	if _frozen or _paused:
-		view.present(_vm(), _last_input, delta)
+		_present(_vm(), _last_input, delta)
 		return
 	if session.finished():
-		view.present(session.describe(), _last_input, delta)
+		_present(session.describe(), _last_input, delta)
 		if not session.is_open():
 			Events.lock_failed.emit(StringName(session.failure()))  # N-64: never a dead lock (Events ignores repeats)
 		if coach != null:
@@ -333,7 +363,7 @@ func _physics_process(delta: float) -> void:
 	Haptics.update_continuous(&"tension_resistance", resistance, 0.3)
 	Sfx.update_loop(&"tension_resistance", resistance)
 	Sfx.update_loop(&"pick_drag", vm.get("pick_drag", 0.0))
-	view.present(vm, input, delta)
+	_present(vm, input, delta)
 
 
 ## Coach + hint ladder of one physics step (shared with the plan-B family screens). The D-52 mode is
@@ -583,6 +613,7 @@ func _on_quit() -> void:
 
 # ------------------------------------------------------------------ shots and perf
 func _process(delta: float) -> void:
+	_flush_present()
 	if _shot_frames > 0:
 		_shot_frames -= 1
 		if _shot_frames == 0:

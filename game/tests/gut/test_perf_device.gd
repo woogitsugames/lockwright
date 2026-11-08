@@ -36,7 +36,7 @@ func test_every_2x_plate_has_a_half_size_1x_sibling() -> void:
 		assert_not_null(small, alt)
 		if big != null and small != null:
 			assert_eq(small.get_size(), big.get_size() / 2.0, "%s is exactly half of %s" % [alt, p])
-		assert_eq(_import_param(alt, "compress/mode"), _import_param(p, "compress/mode"), "same import mode")
+		assert_eq(_import_param(alt, "compress/mode"), "4", "%s: Basis Universal on phones (D-88)" % alt)
 
 
 func test_plate_variant_picks_by_section_size() -> void:
@@ -122,3 +122,37 @@ func test_sfx_lock_clicks_warm_up_off_the_main_thread() -> void:
 func test_boot_preloads_the_menu_board() -> void:
 	var src := FileAccess.get_file_as_string("res://scripts/ui/boot.gd")
 	assert_string_contains(src, "load_threaded_request", "boot warms the menu up on a worker thread")
+
+
+func test_frame_hint_is_inert_without_the_plugin() -> void:
+	# D-88: desktop/tests have no LockwrightHaptics plugin -> no ADPF session, no per-frame calls
+	assert_false(FrameHint.active)
+	assert_eq(FrameHint.reports, 0)
+	var FH := load("res://scripts/autoload/frame_hint.gd")
+	assert_eq(FH.work_us(1000, 14000), 13000)
+	assert_eq(FH.work_us(5000, 5000), 1, "never zero")
+	assert_eq(FH.work_us(0, 5000000), 1000000, "clamped to 1 s")
+
+
+func test_lock_view_refresh_once_per_frame_in_exports() -> void:
+	# D-88: exported builds refresh the view from _process with the summed delta of the frame's steps
+	var scene: Node = load("res://scenes/lock_job.tscn").instantiate()
+	add_child_autofree(scene)
+	await get_tree().process_frame
+	scene.set_process(false)
+	scene.view_per_frame = true
+	scene._physics_process(1.0 / 120.0)
+	scene._physics_process(1.0 / 120.0)
+	assert_true(scene._pv_pending, "no view refresh inside the physics steps")
+	assert_almost_eq(scene._pv_delta, 2.0 / 120.0, 0.0001, "delta of both steps kept")
+	scene._flush_present()
+	assert_false(scene._pv_pending)
+	assert_eq(scene._pv_delta, 0.0)
+
+
+func test_large_lock_and_menu_textures_are_gpu_compressed() -> void:
+	# D-88: Basis Universal (-> ASTC on Android/iOS) for the textures that dominate a screen's memory
+	for p in ["res://assets/photoreal_families/wafer/photo/plate_1x.png", "res://assets/photoreal/plate/plate_1236x1650_1x.png",
+			"res://assets/photoreal/tray/tray_full.png", "res://assets/ui/menu/menu_portrait_pl.webp",
+			"res://assets/ui/workshop/workshop_base.webp"]:
+		assert_eq(_import_param(p, "compress/mode"), "4", "%s: Basis Universal" % p)

@@ -13,6 +13,7 @@ import org.godotengine.godot.plugin.UsedByGodot
 class LockwrightHapticsPlugin(godot: Godot) : GodotPlugin(godot) {
 
     private val engine by lazy { HapticsEngine(getContext()) }
+    private val frameHint by lazy { FrameHint(getContext()) }
 
     override fun getPluginName(): String = "LockwrightHaptics"
 
@@ -50,5 +51,20 @@ class LockwrightHapticsPlugin(godot: Godot) : GodotPlugin(godot) {
     @UsedByGodot
     fun stop_all() {
         engine.stopAll()
+    }
+
+    /** D-88: ADPF hint session bound to the calling (game) thread; false when unsupported. */
+    @UsedByGodot
+    fun perf_hint_start(targetUs: Int): Boolean = frameHint.start(targetUs.toLong() * 1000L)
+
+    /** D-88: CPU work of the last frame in microseconds. */
+    @UsedByGodot
+    fun perf_hint_report(actualUs: Int) {
+        frameHint.report(actualUs.toLong() * 1000L)
+    }
+
+    @UsedByGodot
+    fun perf_hint_stop() {
+        frameHint.stop()
     }
 }
