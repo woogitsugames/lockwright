@@ -1,0 +1,331 @@
+11-08 08:21:07.025 10817 10817 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-08 08:21:07.037 10817 10817 I AndroidRuntime: Leaving lock profiling enabled
+11-08 08:21:07.037 10817 10817 I AndroidRuntime: Using default boot image
+11-08 08:21:07.045 10817 10817 D AndroidRuntime: addProductProperty not brand or 7
+11-08 08:21:07.383 10817 10817 D AndroidRuntime: Calling main entry com.android.commands.monkey.Monkey
+11-08 08:21:07.636 10817 10817 I AndroidRuntime: VM exiting with result code 0.
+11-08 08:21:08.573 10834 10834 I LWAudio : stream open: api 2, sharing 1, perf 12, rate 48000, burst 256, buffer 512/2048
+11-08 08:21:08.714 10834 10875 I godot   : Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+11-08 08:21:08.822 10834 10875 I godot   : Vulkan 1.3.303 - Forward Mobile - Using Device #0: ARM - Mali-G57 MC2
+11-08 08:21:09.572 10834 10875 I godot   : 
+11-08 08:21:10.369 10834 10875 I godot   : Haptics: native plugin LockwrightHaptics detected, play=true test_pulse=true caps={ "tier": "ON_OFF", "primitives": [], "amplitude_control": false, "envelope": false, "native": true }
+11-08 08:21:10.515 10834 10875 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native in 17 ms
+11-08 08:21:10.687 10834 10875 I godot   : LW_BOOT engine_to_menu_ms=2369 tree_ms=1983 menu_first_frame_ms=8 ready=PerfProbe:1,DpScale:0,Settings:3,Save:2,I18n:54,Events:0,Haptics:8,FeedbackDirector:0,UiA11y:2,Sfx:69,Quality:0,Achievements:1,ErrorLog:30,Nav:0,VoicePacks:3,Boot:1,@Label@14:3,MainMenu:201
+11-08 08:21:10.687 10834 10875 I godot   : LW_SCENE main_menu.tscn tap_ms=-1 first_frame_ms=8 static_mb=62 tex_mb=10
+11-08 08:21:10.688 10834 10875 I godot   : LW_SLOW main_menu.tscn frame_ms=153 process_ms=17 physics_ms=3
+11-08 08:21:12.691 10834 10875 I godot   : LW_HITCH main_menu.tscn max_frame_ms=153 (first 2000 ms)
+11-08 08:21:20.537 10834 10875 I godot   : Quality: auto profile after 10 s avg 16.9 ms -> medium
+11-08 08:21:24.000 10834 10875 I godot   : LW_SCENE run_loop.tscn tap_ms=347 first_frame_ms=162 static_mb=67 tex_mb=26
+11-08 08:21:24.001 10834 10875 I godot   : LW_SLOW run_loop.tscn frame_ms=206 process_ms=20 physics_ms=1
+11-08 08:21:25.845 10834 10875 I godot   : LW_HITCH run_loop.tscn max_frame_ms=206 (first 2000 ms)
+11-08 08:21:34.884 10834 10875 I godot   : LW_SCENE main_menu.tscn tap_ms=11231 first_frame_ms=3 static_mb=68 tex_mb=37
+11-08 08:21:36.896 10834 10875 I godot   : LW_HITCH main_menu.tscn max_frame_ms=32 (first 2000 ms)
+11-08 08:21:39.033 10834 10875 I godot   : LW_SCENE settings.tscn tap_ms=678 first_frame_ms=447 static_mb=73 tex_mb=31
+11-08 08:21:39.034 10834 10875 I godot   : LW_SLOW settings.tscn frame_ms=497 process_ms=19 physics_ms=1
+11-08 08:21:40.597 10834 10875 I godot   : LW_HITCH settings.tscn max_frame_ms=497 (first 2000 ms)
+11-08 08:24:10.906 10834 10875 I godot   : LW_SCENE main_menu.tscn tap_ms=5880 first_frame_ms=3 static_mb=72 tex_mb=35
+11-08 08:24:12.914 10834 10875 I godot   : LW_HITCH main_menu.tscn max_frame_ms=36 (first 2000 ms)
+11-08 08:24:13.586 10834 10875 I godot   : LW_SCENE jobs_list.tscn tap_ms=569 first_frame_ms=231 static_mb=76 tex_mb=35
+11-08 08:24:13.587 10834 10875 I godot   : LW_SLOW jobs_list.tscn frame_ms=320 process_ms=17 physics_ms=0
+11-08 08:24:15.361 10834 10875 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=320 (first 2000 ms)
+11-08 08:24:28.626 10834 10875 I godot   : LW_SCENE job_arrival.tscn tap_ms=453 first_frame_ms=6 static_mb=73 tex_mb=32
+11-08 08:24:28.626 10834 10875 I godot   : LW_SLOW job_arrival.tscn frame_ms=453 process_ms=20 physics_ms=2
+11-08 08:24:30.629 10834 10875 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=453 (first 2000 ms)
+11-08 08:24:31.725 10834 10875 I godot   : LW_SLOW job_arrival.tscn frame_ms=159 process_ms=19 physics_ms=2
+11-08 08:25:01.192 10834 10875 I godot   : LW_SCENE job_verify.tscn tap_ms=105 first_frame_ms=34 static_mb=78 tex_mb=138
+11-08 08:25:03.167 10834 10875 I godot   : LW_HITCH job_verify.tscn max_frame_ms=106 (first 2000 ms)
+11-08 08:25:31.522 10834 10875 I godot   : LW_SCENE jobs_list.tscn tap_ms=1527 first_frame_ms=31 static_mb=79 tex_mb=94
+11-08 08:25:33.503 10834 10875 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=137 (first 2000 ms)
+11-08 08:26:14.716 10834 10875 I godot   : LW_SCENE job_arrival.tscn tap_ms=378 first_frame_ms=5 static_mb=76 tex_mb=33
+11-08 08:26:14.717 10834 10875 I godot   : LW_SLOW job_arrival.tscn frame_ms=379 process_ms=379 physics_ms=0
+11-08 08:26:16.724 10834 10875 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=379 (first 2000 ms)
+11-08 08:26:35.284 10834 10875 I godot   : LW_SCENE job_verify.tscn tap_ms=83 first_frame_ms=8 static_mb=81 tex_mb=139
+11-08 08:26:37.279 10834 10875 I godot   : LW_HITCH job_verify.tscn max_frame_ms=84 (first 2000 ms)
+11-08 08:26:38.773 10834 10875 I godot   : LW_SCENE lock_job_warded.tscn tap_ms=610 first_frame_ms=383 static_mb=83 tex_mb=94
+11-08 08:26:38.793 10834 10875 I godot   : LW_SLOW lock_job_warded.tscn frame_ms=630 process_ms=21 physics_ms=0
+11-08 08:26:40.402 10834 10875 I godot   : LW_HITCH lock_job_warded.tscn max_frame_ms=630 (first 2000 ms)
+11-08 08:26:53.715 10834 10875 I godot   : Sfx: first native click played (contact/iron/2)
+11-08 08:27:24.048 10834 10875 I godot   : LW_SCENE main_menu.tscn tap_ms=40 first_frame_ms=4 static_mb=80 tex_mb=116
+11-08 08:27:26.048 10834 10875 I godot   : LW_HITCH main_menu.tscn max_frame_ms=40 (first 2000 ms)
+11-08 08:27:37.697 10834 10875 I godot   : LW_SCENE jobs_list.tscn tap_ms=262 first_frame_ms=29 static_mb=84 tex_mb=37
+11-08 08:27:39.682 10834 10875 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=133 (first 2000 ms)
+11-08 08:27:40.549 10834 10875 I godot   : LW_SCENE job_arrival.tscn tap_ms=102 first_frame_ms=16 static_mb=80 tex_mb=34
+11-08 08:27:42.535 10834 10875 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=102 (first 2000 ms)
+11-08 08:27:48.627 10834 10875 I godot   : LW_SCENE job_verify.tscn tap_ms=87 first_frame_ms=13 static_mb=83 tex_mb=48
+11-08 08:27:50.617 10834 10875 I godot   : LW_HITCH job_verify.tscn max_frame_ms=87 (first 2000 ms)
+11-08 08:27:59.782 10834 10875 I godot   : LW_SCENE lock_job_wafer.tscn tap_ms=158 first_frame_ms=11 static_mb=82 tex_mb=87
+11-08 08:27:59.799 10834 10875 I godot   : LW_SLOW lock_job_wafer.tscn frame_ms=176 process_ms=20 physics_ms=0
+11-08 08:28:01.776 10834 10875 I godot   : LW_HITCH lock_job_wafer.tscn max_frame_ms=176 (first 2000 ms)
+11-08 08:28:38.804 10834 10875 I godot   : LW_SCENE main_menu.tscn tap_ms=36 first_frame_ms=3 static_mb=81 tex_mb=106
+11-08 08:28:40.806 10834 10875 I godot   : LW_HITCH main_menu.tscn max_frame_ms=36 (first 2000 ms)
+11-08 08:28:42.470 10834 10875 I godot   : LW_SCENE jobs_list.tscn tap_ms=258 first_frame_ms=29 static_mb=84 tex_mb=37
+11-08 08:28:44.458 10834 10875 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=133 (first 2000 ms)
+11-08 08:28:45.369 10834 10875 I godot   : LW_SCENE job_arrival.tscn tap_ms=102 first_frame_ms=19 static_mb=81 tex_mb=34
+11-08 08:28:47.355 10834 10875 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=102 (first 2000 ms)
+11-08 08:28:50.955 10834 10875 I godot   : LW_SCENE job_verify.tscn tap_ms=123 first_frame_ms=10 static_mb=84 tex_mb=49
+11-08 08:28:52.956 10834 10875 I godot   : LW_HITCH job_verify.tscn max_frame_ms=123 (first 2000 ms)
+11-08 08:29:20.614 10834 10875 I godot   : LW_SCENE lock_job_combo.tscn tap_ms=317 first_frame_ms=168 static_mb=84 tex_mb=89
+11-08 08:29:20.641 10834 10875 I godot   : LW_SLOW lock_job_combo.tscn frame_ms=344 process_ms=19 physics_ms=0
+11-08 08:29:22.473 10834 10875 I godot   : LW_HITCH lock_job_combo.tscn max_frame_ms=344 (first 2000 ms)
+11-08 08:31:55.434 10834 10875 I godot   : LW_SCENE main_menu.tscn tap_ms=35 first_frame_ms=3 static_mb=82 tex_mb=85
+11-08 08:31:57.441 10834 10875 I godot   : LW_HITCH main_menu.tscn max_frame_ms=35 (first 2000 ms)
+11-08 08:31:58.805 10834 10875 I godot   : LW_SCENE jobs_list.tscn tap_ms=263 first_frame_ms=30 static_mb=85 tex_mb=38
+11-08 08:32:00.777 10834 10875 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=134 (first 2000 ms)
+11-08 08:32:01.316 10834 10875 I godot   : LW_SCENE job_arrival.tscn tap_ms=92 first_frame_ms=11 static_mb=82 tex_mb=35
+11-08 08:32:03.310 10834 10875 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=93 (first 2000 ms)
+11-08 08:32:05.952 10834 10875 I godot   : LW_SCENE job_verify.tscn tap_ms=121 first_frame_ms=10 static_mb=87 tex_mb=49
+11-08 08:32:07.960 10834 10875 I godot   : LW_HITCH job_verify.tscn max_frame_ms=122 (first 2000 ms)
+11-08 08:32:08.788 10834 10875 I godot   : LW_SCENE lock_job_combo.tscn tap_ms=290 first_frame_ms=151 static_mb=84 tex_mb=89
+11-08 08:32:08.816 10834 10875 I godot   : LW_SLOW lock_job_combo.tscn frame_ms=318 process_ms=18 physics_ms=1
+11-08 08:32:10.647 10834 10875 I godot   : LW_HITCH lock_job_combo.tscn max_frame_ms=318 (first 2000 ms)
+11-08 08:34:11.385 10834 10875 I godot   : LW_SCENE main_menu.tscn tap_ms=34 first_frame_ms=3 static_mb=82 tex_mb=85
+11-08 08:34:13.387 10834 10875 I godot   : LW_HITCH main_menu.tscn max_frame_ms=34 (first 2000 ms)
+11-08 08:34:14.769 10834 10875 I godot   : LW_SCENE jobs_list.tscn tap_ms=262 first_frame_ms=30 static_mb=85 tex_mb=38
+11-08 08:34:16.755 10834 10875 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=133 (first 2000 ms)
+11-08 08:34:17.325 10834 10875 I godot   : LW_SCENE job_arrival.tscn tap_ms=142 first_frame_ms=16 static_mb=82 tex_mb=35
+11-08 08:34:19.326 10834 10875 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=142 (first 2000 ms)
+11-08 08:34:23.070 10834 10875 I godot   : LW_SCENE job_verify.tscn tap_ms=121 first_frame_ms=12 static_mb=86 tex_mb=54
+11-08 08:34:25.073 10834 10875 I godot   : LW_HITCH job_verify.tscn max_frame_ms=121 (first 2000 ms)
+11-08 08:34:32.479 10834 10875 I godot   : LW_SCENE lock_job_magnetic.tscn tap_ms=637 first_frame_ms=268 static_mb=87 tex_mb=80
+11-08 08:34:32.501 10834 10875 I godot   : LW_SLOW lock_job_magnetic.tscn frame_ms=657 process_ms=20 physics_ms=0
+11-08 08:34:34.216 10834 10875 I godot   : LW_HITCH lock_job_magnetic.tscn max_frame_ms=657 (first 2000 ms)
+11-08 08:35:04.424 10834 10875 I godot   : LW_SCENE main_menu.tscn tap_ms=37 first_frame_ms=2 static_mb=83 tex_mb=109
+11-08 08:35:06.427 10834 10875 I godot   : LW_HITCH main_menu.tscn max_frame_ms=38 (first 2000 ms)
+11-08 09:36:01.071  7285  7285 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+11-08 09:36:01.081  7285  7285 I AndroidRuntime: Leaving lock profiling enabled
+11-08 09:36:01.081  7285  7285 I AndroidRuntime: Using default boot image
+11-08 09:36:01.086  7285  7285 D AndroidRuntime: addProductProperty not brand or 7
+11-08 09:36:01.409  7285  7285 D AndroidRuntime: Calling main entry com.android.commands.monkey.Monkey
+11-08 09:36:01.716  7285  7285 I AndroidRuntime: VM exiting with result code 0.
+11-08 09:36:02.607  7305  7305 I LWAudio : stream open: api 2, sharing 1, perf 12, rate 48000, burst 256, buffer 512/2048
+11-08 09:36:02.701  7305  7345 I godot   : Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+11-08 09:36:02.794  7305  7345 I godot   : Vulkan 1.3.303 - Forward Mobile - Using Device #0: ARM - Mali-G57 MC2
+11-08 09:36:03.278  7305  7345 I godot   : 
+11-08 09:36:04.136  7305  7345 I godot   : Haptics: native plugin LockwrightHaptics detected, play=true test_pulse=true caps={ "tier": "ON_OFF", "primitives": [], "amplitude_control": false, "envelope": false, "native": true }
+11-08 09:36:04.306  7305  7345 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native in 18 ms
+11-08 09:36:04.460  7305  7345 I godot   : LW_BOOT engine_to_menu_ms=2060 tree_ms=1661 menu_first_frame_ms=6 ready=PerfProbe:1,DpScale:0,Settings:3,Save:1,I18n:61,Events:0,Haptics:10,FeedbackDirector:0,UiA11y:2,Sfx:97,Quality:0,Achievements:1,ErrorLog:29,Nav:0,VoicePacks:2,Boot:5,@Label@14:3,MainMenu:177
+11-08 09:36:04.460  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=-1 first_frame_ms=6 static_mb=62 tex_mb=10
+11-08 09:36:06.457  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=143 (first 2000 ms)
+11-08 09:36:11.705  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=797 first_frame_ms=447 static_mb=74 tex_mb=26
+11-08 09:36:11.705  7305  7345 I godot   : LW_SLOW jobs_list.tscn frame_ms=540 process_ms=21 physics_ms=2
+11-08 09:36:13.276  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=540 (first 2000 ms)
+11-08 09:36:14.850  7305  7345 I godot   : Quality: auto profile after 10 s avg 17.1 ms -> medium
+11-08 09:36:24.692  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=653 first_frame_ms=61 static_mb=70 tex_mb=29
+11-08 09:36:24.692  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=653 process_ms=20 physics_ms=2
+11-08 09:36:26.369  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=224 process_ms=18 physics_ms=0
+11-08 09:36:26.643  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=653 (first 2000 ms)
+11-08 09:36:30.103  7305  7345 I godot   : LW_SCENE job_verify.tscn tap_ms=105 first_frame_ms=34 static_mb=76 tex_mb=138
+11-08 09:36:32.075  7305  7345 I godot   : LW_HITCH job_verify.tscn max_frame_ms=106 (first 2000 ms)
+11-08 09:36:35.004  7305  7345 I godot   : LW_SLOW job_verify.tscn frame_ms=330 process_ms=22 physics_ms=3
+11-08 09:36:40.257  7305  7345 I godot   : LW_SLOW job_verify.tscn frame_ms=366 process_ms=21 physics_ms=3
+11-08 09:36:51.944  7305  7345 I godot   : LW_SCENE job_payment.tscn tap_ms=1652 first_frame_ms=197 static_mb=76 tex_mb=76
+11-08 09:36:51.945  7305  7345 I godot   : LW_SLOW job_payment.tscn frame_ms=243 process_ms=17 physics_ms=1
+11-08 09:36:53.759  7305  7345 I godot   : LW_HITCH job_payment.tscn max_frame_ms=243 (first 2000 ms)
+11-08 09:37:05.302  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=555 first_frame_ms=408 static_mb=78 tex_mb=69
+11-08 09:37:05.302  7305  7345 I godot   : LW_SLOW jobs_list.tscn frame_ms=555 process_ms=22 physics_ms=1
+11-08 09:37:06.909  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=555 (first 2000 ms)
+11-08 09:37:45.429  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=367 first_frame_ms=5 static_mb=74 tex_mb=32
+11-08 09:37:45.429  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=367 process_ms=20 physics_ms=0
+11-08 09:37:47.432  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=367 (first 2000 ms)
+11-08 09:37:49.795  7305  7345 I godot   : LW_SCENE job_verify.tscn tap_ms=84 first_frame_ms=9 static_mb=80 tex_mb=139
+11-08 09:37:50.046  7305  7345 I godot   : LW_SLOW job_verify.tscn frame_ms=251 process_ms=31 physics_ms=11
+11-08 09:37:51.800  7305  7345 I godot   : LW_HITCH job_verify.tscn max_frame_ms=251 (first 2000 ms)
+11-08 09:38:16.680  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=1539 first_frame_ms=32 static_mb=78 tex_mb=77
+11-08 09:38:18.652  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=130 (first 2000 ms)
+11-08 09:38:40.028  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=375 first_frame_ms=4 static_mb=74 tex_mb=32
+11-08 09:38:40.028  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=376 process_ms=20 physics_ms=0
+11-08 09:38:42.038  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=376 (first 2000 ms)
+11-08 09:38:50.971  7305  7345 I godot   : LW_SCENE job_verify.tscn tap_ms=172 first_frame_ms=13 static_mb=81 tex_mb=132
+11-08 09:38:50.972  7305  7345 I godot   : LW_SLOW job_verify.tscn frame_ms=172 process_ms=18 physics_ms=0
+11-08 09:38:52.976  7305  7345 I godot   : LW_HITCH job_verify.tscn max_frame_ms=172 (first 2000 ms)
+11-08 09:39:00.845  7305  7345 I godot   : LW_SCENE lock_job.tscn tap_ms=514 first_frame_ms=247 static_mb=80 tex_mb=84
+11-08 09:39:00.846  7305  7345 I godot   : Sfx: first native click played (contact/brass/5)
+11-08 09:39:00.862  7305  7345 I godot   : LW_SLOW lock_job.tscn frame_ms=532 process_ms=18 physics_ms=1
+11-08 09:39:02.598  7305  7345 I godot   : LW_HITCH lock_job.tscn max_frame_ms=532 (first 2000 ms)
+11-08 09:39:37.901  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=36 first_frame_ms=3 static_mb=75 tex_mb=97
+11-08 09:39:39.910  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=36 (first 2000 ms)
+11-08 09:39:46.709  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=675 first_frame_ms=450 static_mb=81 tex_mb=31
+11-08 09:39:46.709  7305  7345 I godot   : LW_SLOW jobs_list.tscn frame_ms=548 process_ms=22 physics_ms=0
+11-08 09:39:48.261  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=548 (first 2000 ms)
+11-08 09:40:02.350  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=459 first_frame_ms=334 static_mb=82 tex_mb=31
+11-08 09:40:02.351  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=459 process_ms=20 physics_ms=1
+11-08 09:40:04.030  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=459 (first 2000 ms)
+11-08 09:40:04.754  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=192 process_ms=18 physics_ms=0
+11-08 09:40:08.768  7305  7345 I godot   : LW_SCENE job_verify.tscn tap_ms=110 first_frame_ms=36 static_mb=86 tex_mb=57
+11-08 09:40:10.750  7305  7345 I godot   : LW_HITCH job_verify.tscn max_frame_ms=110 (first 2000 ms)
+11-08 09:40:13.225  7305  7345 I godot   : LW_SCENE lock_job_time_lock.tscn tap_ms=293 first_frame_ms=172 static_mb=85 tex_mb=86
+11-08 09:40:13.252  7305  7345 I godot   : LW_SLOW lock_job_time_lock.tscn frame_ms=319 process_ms=21 physics_ms=1
+11-08 09:40:15.060  7305  7345 I godot   : LW_HITCH lock_job_time_lock.tscn max_frame_ms=319 (first 2000 ms)
+11-08 09:40:25.697  7305  7345 I godot   : LW_SLOW lock_job_time_lock.tscn frame_ms=184 process_ms=29 physics_ms=6
+11-08 09:40:31.038  7305  7345 I godot   : LW_SLOW lock_job_time_lock.tscn frame_ms=226 process_ms=28 physics_ms=7
+11-08 09:40:37.011  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=38 first_frame_ms=4 static_mb=75 tex_mb=80
+11-08 09:40:39.017  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=38 (first 2000 ms)
+11-08 09:40:51.543  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=668 first_frame_ms=442 static_mb=81 tex_mb=31
+11-08 09:40:51.543  7305  7345 I godot   : LW_SLOW jobs_list.tscn frame_ms=544 process_ms=22 physics_ms=2
+11-08 09:40:53.119  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=544 (first 2000 ms)
+11-08 09:41:00.037  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=301 first_frame_ms=221 static_mb=82 tex_mb=31
+11-08 09:41:00.037  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=301 process_ms=20 physics_ms=2
+11-08 09:41:01.820  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=301 (first 2000 ms)
+11-08 09:41:06.307  7305  7345 I godot   : LW_SCENE job_verify.tscn tap_ms=127 first_frame_ms=16 static_mb=86 tex_mb=50
+11-08 09:41:08.303  7305  7345 I godot   : LW_HITCH job_verify.tscn max_frame_ms=127 (first 2000 ms)
+11-08 09:41:10.513  7305  7345 I godot   : LW_SCENE lock_job_lever.tscn tap_ms=221 first_frame_ms=67 static_mb=85 tex_mb=105
+11-08 09:41:10.528  7305  7345 I godot   : LW_SLOW lock_job_lever.tscn frame_ms=236 process_ms=22 physics_ms=1
+11-08 09:41:12.459  7305  7345 I godot   : LW_HITCH lock_job_lever.tscn max_frame_ms=236 (first 2000 ms)
+11-08 09:41:33.856  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=38 first_frame_ms=3 static_mb=75 tex_mb=100
+11-08 09:41:35.856  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=38 (first 2000 ms)
+11-08 09:41:45.881  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=668 first_frame_ms=439 static_mb=81 tex_mb=31
+11-08 09:41:45.882  7305  7345 I godot   : LW_SLOW jobs_list.tscn frame_ms=543 process_ms=20 physics_ms=0
+11-08 09:41:47.456  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=543 (first 2000 ms)
+11-08 09:41:48.234  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=383 first_frame_ms=4 static_mb=77 tex_mb=31
+11-08 09:41:48.235  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=383 process_ms=18 physics_ms=1
+11-08 09:41:50.238  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=383 (first 2000 ms)
+11-08 09:41:51.354  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=197 process_ms=22 physics_ms=1
+11-08 09:41:56.646  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=8794 first_frame_ms=31 static_mb=82 tex_mb=134
+11-08 09:41:58.624  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=134 (first 2000 ms)
+11-08 09:46:23.169  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=-1 first_frame_ms=3 static_mb=78 tex_mb=32
+11-08 09:46:25.168  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=42 (first 2000 ms)
+11-08 09:46:33.567  7305  7345 I godot   : LW_SCENE workshop.tscn tap_ms=794 first_frame_ms=223 static_mb=86 tex_mb=35
+11-08 09:46:33.567  7305  7345 I godot   : LW_SLOW workshop.tscn frame_ms=611 process_ms=20 physics_ms=2
+11-08 09:46:35.352  7305  7345 I godot   : LW_HITCH workshop.tscn max_frame_ms=611 (first 2000 ms)
+11-08 09:47:14.431  7305  7345 I godot   : LW_SCENE lock_job_wafer.tscn tap_ms=607 first_frame_ms=167 static_mb=86 tex_mb=62
+11-08 09:47:14.445  7305  7345 I godot   : LW_SLOW lock_job_wafer.tscn frame_ms=621 process_ms=19 physics_ms=0
+11-08 09:47:16.283  7305  7345 I godot   : LW_HITCH lock_job_wafer.tscn max_frame_ms=621 (first 2000 ms)
+11-08 09:47:31.816  7305  7345 I godot   : LW_SCENE workshop.tscn tap_ms=332 first_frame_ms=56 static_mb=86 tex_mb=106
+11-08 09:47:31.816  7305  7345 I godot   : LW_SLOW workshop.tscn frame_ms=332 process_ms=34 physics_ms=2
+11-08 09:47:33.773  7305  7345 I godot   : LW_HITCH workshop.tscn max_frame_ms=332 (first 2000 ms)
+11-08 09:47:53.576  7305  7345 I godot   : LW_SCENE lock_job.tscn tap_ms=672 first_frame_ms=182 static_mb=86 tex_mb=62
+11-08 09:47:53.589  7305  7345 I godot   : LW_SLOW lock_job.tscn frame_ms=685 process_ms=24 physics_ms=2
+11-08 09:47:55.420  7305  7345 I godot   : LW_HITCH lock_job.tscn max_frame_ms=685 (first 2000 ms)
+11-08 09:48:06.001  7305  7345 I godot   : LW_SLOW lock_job.tscn frame_ms=219 process_ms=30 physics_ms=5
+11-08 09:48:11.491  7305  7345 I godot   : LW_SLOW lock_job.tscn frame_ms=182 process_ms=29 physics_ms=4
+11-08 09:48:23.486  7305  7345 I godot   : LW_SCENE workshop.tscn tap_ms=652 first_frame_ms=378 static_mb=85 tex_mb=99
+11-08 09:48:23.487  7305  7345 I godot   : LW_SLOW workshop.tscn frame_ms=652 process_ms=33 physics_ms=3
+11-08 09:48:25.112  7305  7345 I godot   : LW_HITCH workshop.tscn max_frame_ms=652 (first 2000 ms)
+11-08 09:48:34.004  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=11169 first_frame_ms=3 static_mb=82 tex_mb=67
+11-08 09:48:36.013  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=46 (first 2000 ms)
+11-08 09:48:38.016  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=460 first_frame_ms=234 static_mb=86 tex_mb=35
+11-08 09:48:38.016  7305  7345 I godot   : LW_SLOW jobs_list.tscn frame_ms=339 process_ms=19 physics_ms=1
+11-08 09:48:39.797  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=339 (first 2000 ms)
+11-08 09:48:49.068  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=220 first_frame_ms=137 static_mb=82 tex_mb=32
+11-08 09:48:49.069  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=221 process_ms=30 physics_ms=0
+11-08 09:48:50.948  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=221 (first 2000 ms)
+11-08 09:48:55.501  7305  7345 I godot   : LW_SCENE job_verify.tscn tap_ms=128 first_frame_ms=16 static_mb=86 tex_mb=47
+11-08 09:48:57.498  7305  7345 I godot   : LW_HITCH job_verify.tscn max_frame_ms=128 (first 2000 ms)
+11-08 09:49:00.063  7305  7345 I godot   : LW_SCENE lock_job_dimple.tscn tap_ms=503 first_frame_ms=153 static_mb=88 tex_mb=77
+11-08 09:49:00.087  7305  7345 I godot   : LW_SLOW lock_job_dimple.tscn frame_ms=527 process_ms=20 physics_ms=1
+11-08 09:49:01.939  7305  7345 I godot   : LW_HITCH lock_job_dimple.tscn max_frame_ms=527 (first 2000 ms)
+11-08 09:49:13.621  7305  7345 I godot   : LW_SLOW lock_job_dimple.tscn frame_ms=235 process_ms=25 physics_ms=6
+11-08 09:49:19.206  7305  7345 I godot   : LW_SLOW lock_job_dimple.tscn frame_ms=222 process_ms=28 physics_ms=7
+11-08 09:49:25.519  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=40 first_frame_ms=3 static_mb=79 tex_mb=101
+11-08 09:49:27.519  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=39 (first 2000 ms)
+11-08 09:49:38.665  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=675 first_frame_ms=443 static_mb=85 tex_mb=31
+11-08 09:49:38.665  7305  7345 I godot   : LW_SLOW jobs_list.tscn frame_ms=546 process_ms=19 physics_ms=2
+11-08 09:49:40.235  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=546 (first 2000 ms)
+11-08 09:49:49.096  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=249 first_frame_ms=166 static_mb=83 tex_mb=31
+11-08 09:49:49.097  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=249 process_ms=20 physics_ms=2
+11-08 09:49:50.936  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=249 (first 2000 ms)
+11-08 09:49:55.587  7305  7345 I godot   : LW_SCENE job_verify.tscn tap_ms=91 first_frame_ms=15 static_mb=89 tex_mb=47
+11-08 09:49:57.589  7305  7345 I godot   : LW_HITCH job_verify.tscn max_frame_ms=91 (first 2000 ms)
+11-08 09:50:00.084  7305  7345 I godot   : LW_SCENE lock_job_egyptian.tscn tap_ms=290 first_frame_ms=169 static_mb=85 tex_mb=83
+11-08 09:50:00.106  7305  7345 I godot   : LW_SLOW lock_job_egyptian.tscn frame_ms=313 process_ms=22 physics_ms=2
+11-08 09:50:01.935  7305  7345 I godot   : LW_HITCH lock_job_egyptian.tscn max_frame_ms=313 (first 2000 ms)
+11-08 09:50:13.512  7305  7345 I godot   : LW_SLOW lock_job_egyptian.tscn frame_ms=217 process_ms=28 physics_ms=5
+11-08 09:50:19.001  7305  7345 I godot   : LW_SLOW lock_job_egyptian.tscn frame_ms=168 process_ms=29 physics_ms=5
+11-08 09:50:25.019  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=34 first_frame_ms=3 static_mb=79 tex_mb=81
+11-08 09:50:27.030  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=34 (first 2000 ms)
+11-08 09:50:37.090  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=673 first_frame_ms=446 static_mb=85 tex_mb=31
+11-08 09:50:37.090  7305  7345 I godot   : LW_SLOW jobs_list.tscn frame_ms=549 process_ms=21 physics_ms=2
+11-08 09:50:38.659  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=549 (first 2000 ms)
+11-08 09:50:47.423  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=282 first_frame_ms=202 static_mb=82 tex_mb=31
+11-08 09:50:47.423  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=282 process_ms=19 physics_ms=1
+11-08 09:50:49.228  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=282 (first 2000 ms)
+11-08 09:50:49.931  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=187 process_ms=21 physics_ms=0
+11-08 09:50:53.896  7305  7345 I godot   : LW_SCENE job_verify.tscn tap_ms=107 first_frame_ms=32 static_mb=93 tex_mb=49
+11-08 09:50:55.877  7305  7345 I godot   : LW_HITCH job_verify.tscn max_frame_ms=107 (first 2000 ms)
+11-08 09:50:58.331  7305  7345 I godot   : LW_SCENE lock_job_axial_slider.tscn tap_ms=298 first_frame_ms=178 static_mb=89 tex_mb=87
+11-08 09:50:58.352  7305  7345 I godot   : LW_SLOW lock_job_axial_slider.tscn frame_ms=318 process_ms=20 physics_ms=1
+11-08 09:51:00.175  7305  7345 I godot   : LW_HITCH lock_job_axial_slider.tscn max_frame_ms=318 (first 2000 ms)
+11-08 09:51:11.283  7305  7345 I godot   : LW_SLOW lock_job_axial_slider.tscn frame_ms=192 process_ms=32 physics_ms=6
+11-08 09:51:16.746  7305  7345 I godot   : LW_SLOW lock_job_axial_slider.tscn frame_ms=185 process_ms=28 physics_ms=6
+11-08 09:51:22.656  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=37 first_frame_ms=4 static_mb=79 tex_mb=81
+11-08 09:51:24.664  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=37 (first 2000 ms)
+11-08 09:51:32.945  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=676 first_frame_ms=445 static_mb=85 tex_mb=31
+11-08 09:51:32.946  7305  7345 I godot   : LW_SLOW jobs_list.tscn frame_ms=548 process_ms=19 physics_ms=1
+11-08 09:51:34.515  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=548 (first 2000 ms)
+11-08 09:51:43.529  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=301 first_frame_ms=217 static_mb=82 tex_mb=31
+11-08 09:51:43.530  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=301 process_ms=19 physics_ms=1
+11-08 09:51:45.319  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=301 (first 2000 ms)
+11-08 09:51:49.834  7305  7345 I godot   : LW_SCENE job_verify.tscn tap_ms=107 first_frame_ms=35 static_mb=86 tex_mb=46
+11-08 09:51:51.800  7305  7345 I godot   : LW_HITCH job_verify.tscn max_frame_ms=106 (first 2000 ms)
+11-08 09:51:54.050  7305  7345 I godot   : LW_SCENE lock_job_dial_safe.tscn tap_ms=262 first_frame_ms=147 static_mb=85 tex_mb=99
+11-08 09:51:54.071  7305  7345 I godot   : LW_SLOW lock_job_dial_safe.tscn frame_ms=284 process_ms=20 physics_ms=2
+11-08 09:51:55.909  7305  7345 I godot   : LW_HITCH lock_job_dial_safe.tscn max_frame_ms=284 (first 2000 ms)
+11-08 09:52:07.447  7305  7345 I godot   : LW_SLOW lock_job_dial_safe.tscn frame_ms=244 process_ms=29 physics_ms=4
+11-08 09:52:12.860  7305  7345 I godot   : LW_SLOW lock_job_dial_safe.tscn frame_ms=197 process_ms=28 physics_ms=6
+11-08 09:52:18.934  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=37 first_frame_ms=3 static_mb=79 tex_mb=97
+11-08 09:52:20.935  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=38 (first 2000 ms)
+11-08 09:52:36.886  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=676 first_frame_ms=445 static_mb=85 tex_mb=31
+11-08 09:52:36.887  7305  7345 I godot   : LW_SLOW jobs_list.tscn frame_ms=550 process_ms=19 physics_ms=0
+11-08 09:52:38.454  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=550 (first 2000 ms)
+11-08 09:52:48.632  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=247 first_frame_ms=163 static_mb=83 tex_mb=31
+11-08 09:52:48.632  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=248 process_ms=19 physics_ms=2
+11-08 09:52:50.472  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=248 (first 2000 ms)
+11-08 09:52:55.107  7305  7345 I godot   : LW_SCENE job_verify.tscn tap_ms=127 first_frame_ms=17 static_mb=89 tex_mb=46
+11-08 09:52:57.105  7305  7345 I godot   : LW_HITCH job_verify.tscn max_frame_ms=127 (first 2000 ms)
+11-08 09:52:59.577  7305  7345 I godot   : LW_SCENE lock_job_combo.tscn tap_ms=283 first_frame_ms=148 static_mb=87 tex_mb=88
+11-08 09:52:59.599  7305  7345 I godot   : LW_SLOW lock_job_combo.tscn frame_ms=304 process_ms=23 physics_ms=0
+11-08 09:53:01.453  7305  7345 I godot   : LW_HITCH lock_job_combo.tscn max_frame_ms=304 (first 2000 ms)
+11-08 09:53:13.329  7305  7345 I godot   : LW_SLOW lock_job_combo.tscn frame_ms=212 process_ms=14 physics_ms=4
+11-08 09:53:18.683  7305  7345 I godot   : LW_SLOW lock_job_combo.tscn frame_ms=286 process_ms=20 physics_ms=7
+11-08 09:53:24.529  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=34 first_frame_ms=4 static_mb=79 tex_mb=78
+11-08 09:53:26.527  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=34 (first 2000 ms)
+11-08 09:53:35.527  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=676 first_frame_ms=446 static_mb=85 tex_mb=31
+11-08 09:53:35.527  7305  7345 I godot   : LW_SLOW jobs_list.tscn frame_ms=552 process_ms=19 physics_ms=2
+11-08 09:53:37.093  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=552 (first 2000 ms)
+11-08 09:53:47.089  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=262 first_frame_ms=156 static_mb=83 tex_mb=31
+11-08 09:53:47.090  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=262 process_ms=21 physics_ms=2
+11-08 09:53:48.947  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=262 (first 2000 ms)
+11-08 09:53:53.320  7305  7345 I godot   : LW_SCENE job_verify.tscn tap_ms=130 first_frame_ms=18 static_mb=90 tex_mb=50
+11-08 09:53:55.312  7305  7345 I godot   : LW_HITCH job_verify.tscn max_frame_ms=130 (first 2000 ms)
+11-08 09:53:57.365  7305  7345 I godot   : LW_SCENE lock_job_lever_detector.tscn tap_ms=173 first_frame_ms=10 static_mb=86 tex_mb=94
+11-08 09:53:57.376  7305  7345 I godot   : LW_SLOW lock_job_lever_detector.tscn frame_ms=183 process_ms=20 physics_ms=1
+11-08 09:53:59.388  7305  7345 I godot   : LW_HITCH lock_job_lever_detector.tscn max_frame_ms=183 (first 2000 ms)
+11-08 09:54:20.802  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=39 first_frame_ms=3 static_mb=79 tex_mb=100
+11-08 09:54:22.814  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=39 (first 2000 ms)
+11-08 09:54:32.422  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=579 first_frame_ms=385 static_mb=85 tex_mb=31
+11-08 09:54:32.423  7305  7345 I godot   : LW_SLOW jobs_list.tscn frame_ms=491 process_ms=19 physics_ms=0
+11-08 09:54:34.049  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=491 (first 2000 ms)
+11-08 09:54:53.397  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=242 first_frame_ms=163 static_mb=82 tex_mb=31
+11-08 09:54:53.397  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=241 process_ms=20 physics_ms=2
+11-08 09:54:55.251  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=241 (first 2000 ms)
+11-08 09:54:59.479  7305  7345 I godot   : LW_SCENE job_verify.tscn tap_ms=104 first_frame_ms=32 static_mb=87 tex_mb=46
+11-08 09:55:01.451  7305  7345 I godot   : LW_HITCH job_verify.tscn max_frame_ms=104 (first 2000 ms)
+11-08 09:55:03.361  7305  7345 I godot   : LW_SCENE lock_job_disc_detainer.tscn tap_ms=247 first_frame_ms=106 static_mb=86 tex_mb=80
+11-08 09:55:03.384  7305  7345 I godot   : LW_SLOW lock_job_disc_detainer.tscn frame_ms=270 process_ms=19 physics_ms=1
+11-08 09:55:05.257  7305  7345 I godot   : LW_HITCH lock_job_disc_detainer.tscn max_frame_ms=270 (first 2000 ms)
+11-08 09:55:16.750  7305  7345 I godot   : LW_SLOW lock_job_disc_detainer.tscn frame_ms=173 process_ms=13 physics_ms=6
+11-08 09:55:28.020  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=36 first_frame_ms=3 static_mb=79 tex_mb=77
+11-08 09:55:30.025  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=36 (first 2000 ms)
+11-08 09:55:42.781  7305  7345 I godot   : LW_SCENE showcase.tscn tap_ms=1119 first_frame_ms=213 static_mb=91 tex_mb=31
+11-08 09:55:42.781  7305  7345 I godot   : LW_SLOW showcase.tscn frame_ms=963 process_ms=20 physics_ms=1
+11-08 09:55:44.571  7305  7345 I godot   : LW_HITCH showcase.tscn max_frame_ms=963 (first 2000 ms)
+11-08 09:55:46.557  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=4895 first_frame_ms=3 static_mb=81 tex_mb=62
+11-08 09:55:48.558  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=60 (first 2000 ms)
+11-08 09:55:50.379  7305  7345 I godot   : LW_SLOW main_menu.tscn frame_ms=290 process_ms=21 physics_ms=1
+11-08 09:55:58.311  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=465 first_frame_ms=237 static_mb=87 tex_mb=34
+11-08 09:55:58.311  7305  7345 I godot   : LW_SLOW jobs_list.tscn frame_ms=339 process_ms=21 physics_ms=0
+11-08 09:56:00.092  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=339 (first 2000 ms)
+11-08 09:56:00.643  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=157 first_frame_ms=74 static_mb=84 tex_mb=32
+11-08 09:56:00.643  7305  7345 I godot   : LW_SLOW job_arrival.tscn frame_ms=157 process_ms=20 physics_ms=2
+11-08 09:56:02.576  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=157 (first 2000 ms)
+11-08 09:56:03.270  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=2784 first_frame_ms=30 static_mb=88 tex_mb=46
+11-08 09:56:05.243  7305  7345 I godot   : LW_HITCH jobs_list.tscn max_frame_ms=126 (first 2000 ms)
+11-08 09:56:06.317  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=93 first_frame_ms=11 static_mb=84 tex_mb=33
+11-08 09:56:08.327  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=93 (first 2000 ms)
+11-08 09:56:10.983  7305  7345 I godot   : LW_SCENE job_verify.tscn tap_ms=128 first_frame_ms=16 static_mb=90 tex_mb=46
+11-08 09:56:12.978  7305  7345 I godot   : LW_HITCH job_verify.tscn max_frame_ms=129 (first 2000 ms)
+11-08 09:56:13.596  7305  7345 I godot   : LW_SCENE job_arrival.tscn tap_ms=2741 first_frame_ms=10 static_mb=85 tex_mb=88
+11-08 09:56:15.592  7305  7345 I godot   : LW_HITCH job_arrival.tscn max_frame_ms=99 (first 2000 ms)
+11-08 09:56:24.925  7305  7345 I godot   : LW_SCENE jobs_list.tscn tap_ms=14071 first_frame_ms=30 static_mb=89 tex_mb=80
+11-08 09:56:26.479  7305  7345 I godot   : LW_SCENE main_menu.tscn tap_ms=-1 first_frame_ms=3 static_mb=85 tex_mb=34
+11-08 09:56:28.477  7305  7345 I godot   : LW_HITCH main_menu.tscn max_frame_ms=42 (first 2000 ms)

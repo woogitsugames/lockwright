@@ -916,3 +916,78 @@ Telefon Samsung SM-A165F (1080×2340, Mali-G57, silnik wibracji `MOTOR_COIN_DC` 
 - Nowy `test_loupe_tap_all_locks.gd`: tap w środek lupy na wszystkich 13 ekranach (także lever_detector), w pionie i poziomie, z drabiną podpowiedzi na H3 (widmo H2 i strzałki kredy nad zwijką). Lupa się otwiera, dotyk nie trafia do strefy prawego kciuka, wytrych jest zamrożony, szybki drugi tap zamyka. Dodatkowo: jeden tap = jeden krok grotu warded.
 - `test_lock_landscape_safe_area.gd` sprawdza też lever_detector i 892×412 (SM-A165F, z wcięciami i bez). Sprawdza, że elementy mechanizmu są w przyciętym przekroju, a nie pod zwijką ani czołem rdzenia.
 - Ryzyko do oka: przekrój do 1,15:1 przycina górę i dół kadru 3:4 we wszystkich rodzinach, także tych, których płyta wypełnia kadr (pin, lever, dial_safe, time_lock). Punkty elementów mieszczą się w kadrze, ale wierzchołki sprężyn i dół płyty mogą być ucięte. Trzeba to sprawdzić na zrzutach `game-screens` 915×412.
+
+## Od sesji lokalnej: test 2b7059d — 2026-11-08
+Telefon Samsung SM-A165F (1080×2340), APK z CI dla `2b7059dd` (D-87) z zapisem właściciela (bez odinstalowania i czyszczenia danych), sterowanie przez `adb shell input`. Telefon dzielony z agentem wydajności (`build/phone.lock`), bloki 08:21–08:35, 09:33–09:42, 09:46–09:56. Dowody: `docs/handoff/device-tests/2b7059d-local/` (zrzuty 540 px JPG, klatki PNG w pełnej rozdzielczości, `contact.png`, `logcat.txt`, `vibrator-service.txt`). Po `2b7059d` na main weszły m.in. `864c3918` (własne płyty dimple/magnetic, płyty combo/disc z zamkiem niżej), D-88 i D-89. Raport dotyczy tylko `2b7059d`.
+
+**Uwaga o APK:** o 09:28 inny agent zainstalował na telefonie lokalny build (base.apk 171 865 151 B, md5 `b44bb5df…`, nie CI). O 09:35 przywróciłem `2b7059dd` przez `adb install -r build/apk-main/lockwright-debug.apk` (md5 `8b2dfbd3…`). Zapis został zachowany. Wszystko poniżej sprawdzałem na `2b7059dd`.
+
+**Działa:**
+- **Lupa (N-77):** otwiera się jednym tapem i zamyka drugim na 13 rodzinach: warded, wafer, combo, magnetic, pin, time_lock, lever, dimple, egyptian, axial, dial_safe, lever_detector, disc (`*_e_loupe.jpg`). Działa też w obu zamkach ćwiczeń.
+- **Poziom (D-80/D-85):** na 13 rodzinach mechanizm mieści się w przekroju, zwijka i lupa są całe, trener stoi po prawej, napinacz po lewej (`*_f_land.jpg`). Wyjątki: N-82, N-83, N-87.
+- **Pauza (N-75):** wyśrodkowany panel „Pauza” z trzema emaliowanymi tabliczkami: Wznów, Tryb ciemny, Wyjdź (`*_d_pause.jpg`). Back otwiera pauzę, drugi Back ją zamyka (`57_practice2_resumed.jpg`).
+- **Weryfikacja (D-82/D-85/VA-08):** układ w pionie i w poziomie jest czysty (`30_wrong_floor_b_verify_land.jpg`).
+  - „Poproś o dodatkowy dowód” dokłada trzecią kartę z wymianą zdań, potem przycisk gaśnie (`13_broth_askmore.jpg`).
+  - W `wrong_floor` samo pytanie rozstrzyga zlecenie: „Załatwione bez otwierania”, 20 monet (`32_wrong_floor_payment.jpg`).
+  - „Odmów” pokazuje linię „Tym razem odpuszczam. Zgłoszenie zostaje na liście.” i wraca do listy (`14_refuse_msg.jpg`, `15_refuse_list.jpg`).
+- **„Przyjmij” w wrong_floor (D-85):** scena „Minutę później” z panią Teresą, trzy kwestie na tle otwartych drzwi z wieńcem. Potem „Słowo się niesie: −25 reputacji”, a zlecenie znika z listy (`35_wrongopen_1..3`, `36_wrongopen_rep.jpg`, `37_list_after_wrongopen.jpg`).
+- **„Dzień po” (D-78):** po rozliczeniu, przy wejściu w listę, scena „Następnego dnia / Piętro niżej”: portret pani Teresy, kwestia o drożdżowym, „Wracam do pracy” (`33_dayafter_1.jpg`). Plik `lines/pl/job.wrong_floor.after.1.ogg` jest w APK (91 plików PL `.after.`). Głosu nie odsłuchałem.
+- **Kreda (D-83):** na combo (lekcja, zapis po lekcji) około 30 s widać H2: kredowy pierścień jedzie po strzałce, przy przytrzymaniu rysuje się drugi pierścień, potem znika (`23_combo_h2_chalk_strip.jpg`). Około 60 s widać H4: autopilot naciąga kabłąk, a kreda idzie za punktem dotyku (`22_combo_h4_3.png`). Dłoni nie ma.
+  - Ocena: kreska jest sucha i poszarpana, bez poświaty. Czyta się dobrze i wygląda dużo lepiej niż widmo z papieru. Jest prawie na poziomie premium. Psuje to tylko nakładanie się znaków (N-90).
+  - Statyczne znaki kciuków są widoczne na wafer, magnetic, warded, time_lock, egyptian, axial, dial_safe i disc.
+- **Scenki przyjazdu (D-84):** obejrzane `grandma_broth` (zawór z czerwoną rączką na pionie, skrzynka z listem), `cat_bathroom` (uchylone drzwi, myszka na podłodze) i `newlyweds_4am` (pudło z tortem, płatki róż). Ruch kamery i przycisk » działają (`11_broth_arr_*`, `42_cat_arr_*`, `38_newlyweds_arr_*`).
+- **Płyty VA-09 w grze:** lever i egyptian są czytelne i spójne z resztą (`41_lever_*`, `44_egyptian_*`). axial jest czytelny, ale płaski (`45_axial_*`). time_lock: zob. N-86.
+- **Warsztat (VA-14):**
+  - każde narzędzie ma zdjęcie, a te, których gracz nie ma, są przyciemnione (`50_workshop.jpg`, `52_workshop_tools3.jpg`);
+  - zakładka „Ćwiczenia” ma nagłówki rodzin, cele i stany słowami (`53_practice_tab.jpg`, `56_practice_list2.jpg`);
+  - otworzyłem 2 zamki ćwiczeń: wafer „Szukaj płytki z oporem…” i pin „Trzymaj osadzone stosy…”. Cel jest napisany kredą u góry (`54_practice1_*`, `57_practice2_*`).
+- **Paragon PL (VA-18):** papier i pismo odręczne, „Pokwitowanie 0003” (`32_wrong_floor_payment.jpg`).
+- **Back:** ustawienia, warsztat, gablota, „O grze”, przyjazd → lista, weryfikacja → przyjazd, zamek → pauza, menu → „Zakończyć grę?” (`59–65`, `66_final_state.jpg`).
+- **Haptyka (N-79/D-81):** na `2b7059d` wszystkie zdarzenia gry to `Step=30ms(amplitude=-1)`, plus impuls próbny 220 ms. Nie ma żadnego impulsu krótszego niż 30 ms ani ze skalowaną amplitudą (`vibrator-service.txt`, wpisy 08:21–08:35 i od 09:35).
+- **Logcat:** brak `SCRIPT ERROR` i `No loader found`. Quality auto → medium.
+
+**Nie sprawdzone:**
+- **N-74 (obrazy samouczka) na ekranie:** zapis właściciela ma ukończony samouczek, a „Zacznij dyżur” prowadzi do trybu ciągłego (`02_tutorial_intro.jpg`). Pliki `g11-01…12-clean` są w APK (`.ctex`), a filtr eksportu już ich nie wyklucza.
+- **Menu FR/ES:** DE/FR/ES są w `I18n.DEV_ONLY`. Ustawienia pokazują tylko Systemowy/Polski/English, a język systemowy FR też spada na EN tylko w trybie deweloperskim (`dev_mode` w zapisie). To nie jest szybkie przełączenie, więc pominąłem (`09_lang_dropdown.jpg`).
+- głos PL na ucho;
+- dwa kciuki.
+
+**Zmiany w zapisie właściciela (moje):**
+- `job.wrong_floor`: „Poproś o dodatkowy dowód” dało +4 reputacji, +20 monet i rachunek 0003. Scena „dzień po” z ciastem została obejrzana (zapisana jako widziana).
+- Potem ponownie otworzyłem to wykonane zlecenie i wybrałem „Przyjmij zlecenie”: −25 reputacji, a zlecenie trafiło do `jobs_wrong_open` i zniknęło z listy.
+- Bilans: −21 reputacji, +20 monet, „Piętro niżej” nie ma już na liście.
+- 2 próby ćwiczeń przerwane przez „Wyjdź”, bez celu i bez monet.
+- Innych zleceń nie kończyłem. „Altana pana Zbyszka — wykonane” było na liście, zanim do niej zajrzałem (nie ja).
+- Ustawienia bez zmian: obrót automatyczny przywrócony (`accelerometer_rotation=1`, `user_rotation=0`), język systemowy, napięcie automatyczne wyłączone.
+
+- **N-80 (wysoka) — karty weryfikacji: 87 ze 155 kart pokazuje kartkę „Rosół czeka. — Halina”.** `job_verify.gd` `CARD_PROP` ma zdjęcia tylko dla id/tenant, lease, manager, job, envelope, note, receipt. Wszystkie inne typy kart (`witness` 25, `institution` 22, `invoice` 11, `photo` 9, `deed` 6, `letter` 6, `resolution` 5, `inheritance` 2, `address_app` 1) spadają na `note`, a to jest kartka od Haliny z zupą.
+  Przykłady: „Sąsiad-świadek”, „List” i „Zdjęcie” w rosole (`12_broth_verify.jpg`, `13_broth_askmore.jpg`); „Pismo instytucji” w muzeum (`40_time_lock_b_verify.jpg`); „Akt własności” i „Pismo spadkowe” w sejfie (`46_dial_safe_b_verify.jpg`); „Adres w aplikacji” u nowożeńców (`38_newlyweds_b_verify.jpg`).
+  Do tego `receipt` („Paragon” w „Rozmowa o 9:30”) pokazuje pusty firmowy druk pokwitowania Lockwright, czyli dokument ślusarza, a nie dowód klienta (`22_combo_b_verify.jpg`).
+  Powtórzenie: dowolne zlecenie → „Sprawdź prawo do lokalu”.
+- **N-81 (średnia) — tło weryfikacji i „dnia po” nie pasuje do przyjazdu.** `_arrival_image()` bierze ogólne zdjęcie G07 według `place`/`time`, a nie zdjęcie miejsca z przyjazdu. Przykłady:
+  - Rosół: w scence D-84 są drzwi nr 7 z gazem, w weryfikacji drzwi nr 12 (`11_broth_arr_b.jpg` vs `12_broth_verify.jpg`);
+  - nowożeńcy: drzwi 12 → drzwi 5;
+  - `wrong_floor`: drzwi 19 z wieńcem → weryfikacja i „Następnego dnia” na drzwiach 12 (`33_dayafter_1.jpg`);
+  - „Rozmowa o 9:30” (rower przy stojaku pod blokiem) i „Zegar, który pilnuje skarbca” (muzeum) dzieją się na klatce schodowej, bo w danych jest `place: apartment` (`fb0da21e` zaczyna miejsca dla bike_interview/night_nurse);
+  - „Po dwunastu godzinach”: tabliczka 13, drzwi 5 na tle, administrator mówi „spod czternastki” (`24_magnetic_a_arrival.jpg`, `24_magnetic_b_verify.jpg`).
+- **N-82 (średnia) — poziom: narzędzie magnetic i dimple wychodzi poza przekrój.** Sonda (magnetic) i listwa (dimple) są rysowane w lewej kolumnie na skórze, przez kredowy pierścień i obok napinacza (`24_magnetic_f_land.png`, `43_dimple_f_land.png`). Na pin i wafer tego nie ma.
+  Powtórzenie: „Po dwunastu godzinach” / „Kamienica w Saint-Gilles” → zamek → obrót.
+- **N-83 (niska) — poziom: ciemna plama w lewej kolumnie.** Miękki, ciemny owal ok. 100 px leży pod napinaczem albo pod kredowym kciukiem, bez związku z żadnym przedmiotem. Widać go na time_lock, egyptian, axial, dial_safe, disc i combo (`40_time_lock_f_land.png`, `44_egyptian_f_land.jpg`, `46_dial_safe_f_land.jpg`, `49_disc_f_land.jpg`). Wygląda na cień albo podcień kredy zostawiony w pozycji z pionu.
+- **N-84 (średnia) — Ćwiczenia: „Wyjdź” wraca do zakładki „Narzędzia”.** Nie ma też linii o próbie. D-79 mówi: powrót do „Ćwiczeń” z `practice.result_*` (`55_practice_after_exit.jpg`, `58_practice2_after_exit.jpg`).
+  Powtórzenie: Warsztat → Ćwiczenia → Ćwicz → Back → Wyjdź.
+- **N-85 (niska) — „Wyjdź” z pauzy zlecenia prowadzi do menu głównego, nie do listy zleceń.** Lista wraca raz na górę, raz w ostatnie miejsce, więc kolejne zlecenie trzeba szukać od nowa.
+- **N-86 (średnia, wygląd) — time_lock po VA-09.** Koła zębate są płaskie, jednolicie jasnoszare, z identycznymi wycięciami. Wchodzą na siebie zębami, zamiast się zazębiać. Całość czyta się jak clip-art albo „martwe zębatki” z listy zakazów, nie jak fotorealistyczny mechanizm (`40_time_lock_c_lock.jpg`, `40_time_lock_f_land.png`).
+  Dla porównania: lever jest najbliżej poziomu premium, egyptian i axial są czytelne, ale zabawkowe i płaskie.
+- **N-87 (niska) — lever_detector: kadr ucina lewą część pakietu dźwigni** (oś, lewe krawędzie płytek), w pionie i w poziomie (`48_lever_detector_c_lock.jpg`, `48_lever_detector_f_land.png`).
+- **N-88 (niska, na main prawdopodobnie poprawione) — combo/disc i magnetic/dimple.**
+  - Combo i disc w pionie: nad zamkiem jest odbity blat z widoczną szczeliną i ledwo widocznym „duchem” szewronu (`22_combo_c_lock.jpg`, `49_disc_c_lock.jpg`).
+  - magnetic ma ten sam przekrój co pin_tumbler (`24_magnetic_c_lock.jpg` vs `39_pin_c_lock.jpg`).
+  - Disc w pionie: szósta tarcza dotyka prawej krawędzi ekranu.
+  - `864c3918` (płyty z zamkiem niżej, własne płyty dimple/magnetic) powinien to załatwić. Do sprawdzenia w następnym APK.
+- **N-89 (niska) — przyjazd D-84: rozmazane lastryko na pierwszych klatkach.** Przy ruchu kamery lastryko na pierwszym planie jest rozmyte i w blokach, jak przy niskim bitrate (`11_broth_arr_a.jpg`). Po zatrzymaniu kamery jest ostre.
+- **N-90 (niska) — kreda się nakłada.**
+  (1) Statyczny pierścień kciuka i jadący pierścień H2 są widoczne jednocześnie (dwa kółka i dwie strzałki, `23_combo_h2_chalk_strip.jpg`).
+  (2) Na combo w kroku kółka strzałka „→” prawego kciuka leży na pierścieniu lupy (`22_combo_h4_3.png`). Przesunięcie z D-83 obejmuje tylko gest, nie statyczne znaki.
+  (3) Przy H2 kabłąk na combo stoi, a według D-83 napinacz miał odpowiadać (`preview_tension`).
+- **N-91 (niska) — ponowne otwarcie wykonanego `wrong_floor` pozwala wybrać „Przyjmij”.** Gracz dostaje −25 reputacji, a zlecenie wykonane uczciwie znika z listy (`jobs_wrong_open`). Po rozstrzygnięciu pytaniem „Przyjmij” powinno być niedostępne albo bez kary.
+- **N-92 (info, dla agenta wydajności) — lokalny build z 09:28 łamie D-81.** Ten build (nie `2b7059d`) grał na SM-A165F `[Step=0ms,Step=15ms(amplitude=0,06)]` i `Step=50ms` z `usage: TOUCH`, czyli impulsy < 30 ms ze skalowaną amplitudą (`vibrator-service.txt`, wpisy 09:32). Wygląda na AAR sprzed D-81 w lokalnym eksporcie. Przed pomiarami na telefonie trzeba sprawdzić, że lokalny build ma AAR z CI. Po pracy przywracać APK z CI.
