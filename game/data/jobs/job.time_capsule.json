@@ -26,5 +26,11 @@
   ],
   "threshold": 2,
   "place": "apartment",
-  "time": "day"
+  "time": "day",
+  "card_detail": {
+    "manager": {
+      "issuer": "school",
+      "purpose": "custody"
+    }
+  }
 }

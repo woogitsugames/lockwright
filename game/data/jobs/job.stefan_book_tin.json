@@ -30,5 +30,17 @@
   "place": "kiosk",
   "time": "evening",
   "outcome": "open",
-  "source": "contrib/gpt/T09 (D-46; main career since D-71)"
+  "source": "contrib/gpt/T09 (D-46; main career since D-71)",
+  "card_detail": {
+    "photo": {
+      "image": "res://assets/ui/gpt/arrival/07_kiosk_shutter.jpg",
+      "focus": [
+        0.5,
+        0.42
+      ],
+      "zoom": 1.0,
+      "ask": "job.stefan_book_tin.photo.ask",
+      "reply": "job.stefan_book_tin.photo.reply"
+    }
+  }
 }

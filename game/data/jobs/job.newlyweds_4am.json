@@ -28,5 +28,11 @@
   ],
   "threshold": 2,
   "place": "apartment",
-  "time": "night"
+  "time": "night",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "holder": "Bartłomiej"
+    }
+  }
 }

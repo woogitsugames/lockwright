@@ -27,5 +27,17 @@
   ],
   "threshold": 3,
   "place": "yard",
-  "time": "day"
+  "time": "day",
+  "card_detail": {
+    "photo": {
+      "image": "res://assets/arrival/bike_interview/day/plate.webp",
+      "focus": [
+        0.5,
+        0.6
+      ],
+      "zoom": 1.0,
+      "ask": "job.bike_interview.photo.ask",
+      "reply": "job.bike_interview.photo.reply"
+    }
+  }
 }

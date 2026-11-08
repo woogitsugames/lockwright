@@ -30,5 +30,11 @@
   "place": "apartment",
   "time": "day",
   "outcome": "talk",
-  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "holder": "Kazimierz"
+    }
+  }
 }

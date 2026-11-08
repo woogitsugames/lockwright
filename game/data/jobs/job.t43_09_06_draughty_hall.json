@@ -30,5 +30,11 @@
   "place": "gate",
   "time": "rainy",
   "outcome": "open",
-  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)",
+  "card_detail": {
+    "manager": {
+      "issuer": "estate",
+      "purpose": "access"
+    }
+  }
 }

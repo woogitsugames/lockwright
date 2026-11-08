@@ -69,6 +69,42 @@ verify.paper.inheritance.head,CERTIFICATE OF INHERITANCE,POŚWIADCZENIE DZIEDZIC
 verify.paper.resolution.head,RESOLUTION,UCHWAŁA,BESCHLUSS,DÉCISION,ACUERDO
 verify.paper.letter.head,REGISTERED,POLECONY,EINSCHREIBEN,RECOMMANDÉ,CERTIFICADA
 verify.paper.address_app.head,Delivery address,Adres dostawy,Lieferadresse,Adresse de livraison,Dirección de entrega
+verify.paper.issuer.tenement,BUILDING MANAGEMENT,ADMINISTRACJA KAMIENICY,HAUSVERWALTUNG,GÉRANCE DE L'IMMEUBLE,ADMINISTRACIÓN DEL EDIFICIO
+verify.paper.issuer.estate,ESTATE MANAGEMENT,ADMINISTRACJA OSIEDLA,SIEDLUNGSVERWALTUNG,GESTION DE LA RÉSIDENCE,ADMINISTRACIÓN DE LA URBANIZACIÓN
+verify.paper.issuer.community,RESIDENTS' ASSOCIATION,WSPÓLNOTA MIESZKANIOWA,EIGENTÜMERGEMEINSCHAFT,COPROPRIÉTÉ,COMUNIDAD DE VECINOS
+verify.paper.issuer.university,UNIVERSITY ADMINISTRATION,ADMINISTRACJA UCZELNI,UNIVERSITÄTSVERWALTUNG,ADMINISTRATION DE L'UNIVERSITÉ,ADMINISTRACIÓN DE LA UNIVERSIDAD
+verify.paper.issuer.dorm,HALL OF RESIDENCE,ADMINISTRACJA AKADEMIKA,WOHNHEIMVERWALTUNG,RÉSIDENCE UNIVERSITAIRE,RESIDENCIA DE ESTUDIANTES
+verify.paper.issuer.ship,SHIP'S MASTER,KAPITAN STATKU,KAPITÄN,CAPITAINE DU NAVIRE,CAPITÁN DEL BUQUE
+verify.paper.issuer.heritage,HISTORIC SITE MANAGEMENT,ZARZĄD ZABYTKU,DENKMALVERWALTUNG,GESTION DU SITE HISTORIQUE,GESTIÓN DEL CONJUNTO HISTÓRICO
+verify.paper.issuer.venue,HALL MANAGEMENT,KIEROWNIK SALI,SAALLEITUNG,DIRECTION DE LA SALLE,DIRECCIÓN DE LA SALA
+verify.paper.issuer.museum,MUSEUM DIRECTORATE,DYREKCJA MUZEUM,MUSEUMSDIREKTION,DIRECTION DU MUSÉE,DIRECCIÓN DEL MUSEO
+verify.paper.issuer.school,SCHOOL OFFICE,SEKRETARIAT SZKOŁY,SCHULSEKRETARIAT,SECRÉTARIAT DE L'ÉCOLE,SECRETARÍA DEL COLEGIO
+verify.paper.purpose.resident.head,CONFIRMATION OF RESIDENCE,POTWIERDZENIE ZAMIESZKANIA,WOHNBESTÄTIGUNG,ATTESTATION DE RÉSIDENCE,CERTIFICADO DE RESIDENCIA
+verify.paper.purpose.resident.body,The person named lives here and is on our list of residents.,Wymieniona osoba mieszka w lokalu i jest w wykazie lokatorów.,Die genannte Person wohnt hier und steht auf unserer Bewohnerliste.,La personne nommée habite ici et figure sur notre liste des résidents.,La persona indicada vive aquí y figura en nuestra lista de residentes.
+verify.paper.purpose.access.head,PERMISSION OF ACCESS,ZGODA NA DOSTĘP,ZUTRITTSERLAUBNIS,AUTORISATION D'ACCÈS,PERMISO DE ACCESO
+verify.paper.purpose.access.body,We agree to this door being opened in the presence of our representative.,Zgadzamy się na otwarcie tych drzwi w obecności naszego przedstawiciela.,Wir stimmen der Öffnung dieser Tür in Anwesenheit unserer Vertretung zu.,Nous acceptons l'ouverture de cette porte en présence de notre représentant.,Aceptamos la apertura de esta puerta en presencia de nuestro representante.
+verify.paper.purpose.storage.head,LIST OF USERS,WYKAZ UŻYTKOWNIKÓW,NUTZERVERZEICHNIS,LISTE DES USAGERS,LISTA DE USUARIOS
+verify.paper.purpose.storage.body,The person named has the use of this storage space.,Wymieniona osoba ma prawo korzystać z tego schowka.,Die genannte Person darf diesen Abstellraum nutzen.,La personne nommée a l'usage de ce local de rangement.,La persona indicada tiene derecho a usar este trastero.
+verify.paper.purpose.custody.head,CONFIRMATION OF CUSTODY,POTWIERDZENIE OPIEKI,BESTÄTIGUNG DER OBHUT,ATTESTATION DE GARDE,CERTIFICADO DE CUSTODIA
+verify.paper.purpose.custody.body,The item is in our care; the person named may use it.,Przedmiot jest pod naszą opieką; wymieniona osoba może z niego korzystać.,Der Gegenstand ist in unserer Obhut; die genannte Person darf ihn benutzen.,L'objet est sous notre garde ; la personne nommée peut l'utiliser.,El objeto está bajo nuestra custodia; la persona indicada puede usarlo.
+verify.paper.doc.id,IDENTITY CARD,DOKUMENT TOŻSAMOŚCI,AUSWEIS,CARTE D'IDENTITÉ,DOCUMENTO DE IDENTIDAD
+verify.paper.doc.allotment,ALLOTMENT MEMBER CARD,LEGITYMACJA DZIAŁKOWCA,KLEINGÄRTNERAUSWEIS,CARTE DE JARDINIER,CARNÉ DE HORTELANO
+verify.paper.doc.student,STUDENT CARD,LEGITYMACJA STUDENCKA,STUDIERENDENAUSWEIS,CARTE D'ÉTUDIANT,CARNÉ DE ESTUDIANTE
+verify.paper.field.name,Name,Imię i nazwisko,Name,Nom,Nombre
+verify.paper.field.born,Date of birth,Data urodzenia,Geburtsdatum,Date de naissance,Fecha de nacimiento
+verify.paper.field.unit,Flat,Lokal,Wohnung,Logement,Vivienda
+verify.ask.manager_access.1,Who agreed to the opening?,Kto zgodził się na otwarcie?,Wer hat dem Öffnen zugestimmt?,Qui a autorisé l'ouverture ?,¿Quién autorizó la apertura?
+verify.reply.manager_access.1,The management. Signature and stamp are here.,Zarząd. Jest podpis i pieczątka.,Die Verwaltung. Unterschrift und Stempel sind hier.,La gestion. Signature et tampon sont là.,La administración. Aquí están la firma y el sello.
+verify.ask.manager_access.2,Can I call and confirm it?,Mogę zadzwonić i to potwierdzić?,Darf ich anrufen und es bestätigen lassen?,Puis-je appeler pour confirmer ?,¿Puedo llamar para confirmarlo?
+verify.reply.manager_access.2,Of course. The number is in the letterhead.,Oczywiście. Numer jest w nagłówku.,Natürlich. Die Nummer steht im Briefkopf.,Bien sûr. Le numéro est dans l'en-tête.,Claro. El número está en el membrete.
+verify.ask.manager_storage.1,Is this space on the list under this name?,Czy to miejsce jest w wykazie na to nazwisko?,Steht dieser Platz unter diesem Namen auf der Liste?,Cet emplacement est-il inscrit à ce nom ?,¿Este espacio figura en la lista a este nombre?
+verify.reply.manager_storage.1,Yes. The management keeps the list of users.,Tak. Zarząd prowadzi wykaz użytkowników.,Ja. Die Verwaltung führt die Nutzerliste.,Oui. La gestion tient la liste des usagers.,Sí. La administración lleva la lista de usuarios.
+verify.ask.manager_storage.2,Will the management confirm it?,Czy zarząd to potwierdzi?,Bestätigt das die Verwaltung?,La gestion le confirmera-t-elle ?,¿Lo confirmará la administración?
+verify.reply.manager_storage.2,"Yes, the list is in the office.","Tak, wykaz jest w biurze.","Ja, die Liste liegt im Büro.","Oui, la liste est au bureau.","Sí, la lista está en la oficina."
+verify.ask.manager_custody.1,Who does this belong to?,Do kogo należy ta rzecz?,Wem gehört das?,À qui cela appartient-il ?,¿De quién es esto?
+verify.reply.manager_custody.1,It's in our care. Here's the confirmation with the stamp.,Jest pod naszą opieką. Tu jest potwierdzenie z pieczątką.,Es ist in unserer Obhut. Hier ist die Bestätigung mit Stempel.,C'est sous notre garde. Voici l'attestation avec le tampon.,Está bajo nuestra custodia. Aquí está el certificado con el sello.
+verify.ask.manager_custody.2,Who confirmed it may be opened?,"Kto potwierdził, że można otworzyć?","Wer hat bestätigt, dass geöffnet werden darf?",Qui a confirmé qu'on peut l'ouvrir ?,¿Quién confirmó que se puede abrir?
+verify.reply.manager_custody.2,The person in charge signed it this morning.,Opiekun podpisał to dziś rano.,Die verantwortliche Person hat heute Morgen unterschrieben.,Le responsable a signé ce matin.,El responsable lo firmó esta mañana.
 verify.refused,Not enough evidence. I can't open this.,Za mało dowodów. Tego nie otworzę.,Das reicht nicht. Dieses Schloss öffne ich nicht.,Justificatifs insuffisants. Je ne peux pas ouvrir.,No hay pruebas suficientes. No puedo abrir.
 verify.refused_rep,Word gets around: +5 reputation,Słowo się niesie: +5 reputacji,Das spricht sich herum: +5 Ruf,La nouvelle circule : +5 de réputation,La voz corre: +5 de reputación
 tutorial.title,Tutorial — practice lock,Samouczek — zamek ćwiczebny,Einführung – Übungsschloss,Tutoriel : serrure d'essai,Tutorial: cerradura de práctica

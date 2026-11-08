@@ -30,5 +30,17 @@
   "place": "apartment",
   "time": "day",
   "outcome": "open",
-  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)",
+  "card_detail": {
+    "manager": {
+      "issuer": "estate",
+      "purpose": "resident",
+      "unit": "5"
+    },
+    "id": {
+      "doc": "id",
+      "holder": "Agnieszka"
+    }
+  },
+  "arrival_from": "job.night_nurse"
 }

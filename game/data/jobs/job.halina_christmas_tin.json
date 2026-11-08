@@ -31,5 +31,17 @@
   "time": "day",
   "outcome": "open",
   "source": "contrib/gpt/T18 (review: contrib/gpt/REVIEW-T18.md)",
-  "arrival_from": "job.grandma_broth"
+  "arrival_from": "job.grandma_broth",
+  "card_detail": {
+    "photo": {
+      "image": "res://assets/arrival/grandma_broth/day/plate.webp",
+      "focus": [
+        0.62,
+        0.36
+      ],
+      "zoom": 0.75,
+      "ask": "job.halina_christmas_tin.photo.ask",
+      "reply": "job.halina_christmas_tin.photo.reply"
+    }
+  }
 }

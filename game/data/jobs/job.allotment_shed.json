@@ -27,5 +27,14 @@
   ],
   "threshold": 3,
   "place": "gate",
-  "time": "evening"
+  "time": "evening",
+  "card_detail": {
+    "id": {
+      "doc": "allotment",
+      "exchange": [
+        1
+      ],
+      "holder": "Zbigniew"
+    }
+  }
 }

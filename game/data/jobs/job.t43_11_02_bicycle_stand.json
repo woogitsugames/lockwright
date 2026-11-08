@@ -30,5 +30,17 @@
   "place": "workshop",
   "time": "day",
   "outcome": "open",
-  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)",
+  "card_detail": {
+    "photo": {
+      "image": "res://assets/arrival/bike_interview/day/plate.webp",
+      "focus": [
+        0.5,
+        0.6
+      ],
+      "zoom": 1.0,
+      "ask": "job.t43_11_02_bicycle_stand.photo.ask",
+      "reply": "job.t43_11_02_bicycle_stand.photo.reply"
+    }
+  }
 }

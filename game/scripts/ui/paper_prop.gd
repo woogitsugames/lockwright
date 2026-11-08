@@ -16,6 +16,8 @@ extends Control
 ##   envelope    letter: envelope with flap fold, stamp and postmark, the address in handwriting strokes
 ##   photo       photo: a bordered print of the client (G09 portrait) or of the place
 ##   phone       address_app: the client's phone, a street map with a pin and the address block
+##   idcard      id (N-95): a plain identity card of the client — portrait, first name, illegible rows,
+##               no address and no emblem (a game prop, not a real document)
 
 const PAPER := Color(0.925, 0.886, 0.812)         # G14 paper (236, 226, 207)
 const PAPER_NOTE := Color(0.949, 0.922, 0.851)    # G14 note stock (242, 235, 217)
@@ -35,7 +37,7 @@ const GRAIN_PX := 96
 ## Sheet proportions (width / height) per style.
 const ASPECT := {
 	"note": 0.8, "letterhead": 0.72, "invoice": 0.72, "till": 0.44, "deed": 0.72, "resolution": 0.72,
-	"envelope": 1.5, "photo": 1.22, "phone": 0.5,
+	"envelope": 1.5, "photo": 1.22, "phone": 0.5, "idcard": 1.58,
 }
 
 static var _grain: ImageTexture
@@ -46,6 +48,13 @@ var card := ""
 ## Readable words of the sheet (already translated): heading and one line of body text.
 var heading := ""
 var body := ""
+## N-95: per-job words of the sheet: the issuer line in the letterhead and "label: value" rows.
+var issuer := ""
+var fields: Array = []   # [[label, value], ...]
+## N-94: the part of `picture` the print shows: focus point (0..1 of the image) and zoom (the share of
+## the picture's width that fills the print; 1 = the whole width).
+var focus := Vector2(0.5, 0.3)
+var zoom := 1.0
 ## photo: the picture inside the print.
 var picture: Texture2D
 var _seed := 0
@@ -127,7 +136,7 @@ func _draw() -> void:
 	elif style == "photo":
 		_draw_photo(s, outline)
 	else:
-		var col := PAPER_NOTE if style == "note" else (ENVELOPE if style == "envelope" else PAPER)
+		var col := PAPER_NOTE if style == "note" else (ENVELOPE if style in ["envelope", "idcard"] else PAPER)
 		_paper(outline, col)
 		match style:
 			"note": _draw_note(s)
@@ -136,6 +145,7 @@ func _draw() -> void:
 			"till": _draw_till(s)
 			"resolution": _draw_resolution(s)
 			"envelope": _draw_envelope(s)
+			"idcard": _draw_idcard(s)
 			_: _draw_deed(s)
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
@@ -162,8 +172,8 @@ func _outline(s: Vector2) -> PackedVector2Array:
 			for i in teeth * 2 + 1:  # zig-zag foot, right to left
 				var x := h.x - s.x * i / (teeth * 2.0)
 				pts.append(Vector2(x, h.y - (0.0 if i % 2 == 0 else s.x * 0.05)))
-		"phone":
-			var r := s.x * 0.14
+		"phone", "idcard":
+			var r := s.x * (0.14 if style == "phone" else 0.05)
 			var corners := [[Vector2(-h.x + r, -h.y + r), PI], [Vector2(h.x - r, -h.y + r), PI * 1.5],
 					[Vector2(h.x - r, h.y - r), 0.0], [Vector2(-h.x + r, h.y - r), PI * 0.5]]
 			for cr: Array in corners:
@@ -281,14 +291,20 @@ func _draw_letterhead(s: Vector2) -> void:
 	var m := s.x * 0.1
 	var w := s.x - 2.0 * m
 	var y := -h.y + s.y * 0.07
-	_bar(-h.x + m, y, w * 0.55, s.y * 0.022)  # institution name in the letterhead (illegible)
+	if issuer != "":  # N-95: who wrote it, readable (the estate office, the residents' association…)
+		_text(Vector2(-h.x + m, y + s.y * 0.01), issuer, _font(FONT_HEAD), s.y * 0.04, INK, w)
+	else:
+		_bar(-h.x + m, y, w * 0.55, s.y * 0.022)  # institution name in the letterhead (illegible)
 	_bar(-h.x + m, y + s.y * 0.045, w * 0.38, s.y * 0.012)
 	y += s.y * 0.085
 	draw_line(Vector2(-h.x + m, y), Vector2(h.x - m, y), RULE, maxf(1.0, s.y * 0.006))
 	y += s.y * 0.1
-	y += _text(Vector2(-h.x + m, y), heading, _font(FONT_HEAD), s.y * 0.06, INK, w)
+	y += _text(Vector2(-h.x + m, y), heading, _font(FONT_HEAD), s.y * 0.055, INK, w)
 	y += _text(Vector2(-h.x + m, y + s.y * 0.01), body, _font(FONT_BODY, 500), s.y * 0.038, INK, w, HORIZONTAL_ALIGNMENT_LEFT, 3)
-	_bars(-h.x + m, y + s.y * 0.04, w, 5, s.y * 0.052, s.y * 0.012)
+	for f: Array in fields:  # "Flat: 5" — only the rows the job's story backs
+		y += s.y * 0.02
+		y += _text(Vector2(-h.x + m, y + s.y * 0.04), "%s: %s" % [f[0], f[1]], _font(FONT_BODY, 600), s.y * 0.04, INK, w)
+	_bars(-h.x + m, y + s.y * 0.05, w, 3 if fields.is_empty() else 2, s.y * 0.052, s.y * 0.012)
 	_stamp_round(Vector2(h.x - m - s.x * 0.16, h.y - s.y * 0.14), s.x * 0.14)
 	_signature(Vector2(-h.x + m, h.y - s.y * 0.12), s.x * 0.34)
 
@@ -420,10 +436,7 @@ func _draw_photo(s: Vector2, outline: PackedVector2Array) -> void:
 	var inner := Rect2(-h + Vector2(b, b), s - Vector2(b, b) * Vector2(2.0, 3.2))
 	if picture != null:
 		# cover-crop the picture into the print (upper part of a portrait: the face)
-		var ts := Vector2(picture.get_size())
-		var k := maxf(inner.size.x / ts.x, inner.size.y / ts.y)
-		var src := Rect2((ts - inner.size / k) * Vector2(0.5, 0.25), inner.size / k)
-		draw_texture_rect_region(picture, inner, src, Color(0.97, 0.9, 0.8))  # an old print's warm cast
+		_draw_picture(inner)
 	else:
 		draw_rect(inner, Color(0.3, 0.27, 0.23))
 	draw_rect(inner, Color(0, 0, 0, 0.18), false, 1.0)
@@ -462,3 +475,44 @@ func _draw_phone(s: Vector2) -> void:
 	_bar(scr.position.x + b * 0.6, y + scr.size.y * 0.08, scr.size.x * 0.7, s.y * 0.014)
 	_bar(scr.position.x + b * 0.6, y + scr.size.y * 0.14, scr.size.x * 0.5, s.y * 0.014)
 	draw_circle(Vector2(0, h.y - b * 1.1), b * 0.45, Color(0.22, 0.21, 0.2))  # the home button of an old phone
+
+
+## `picture` into `dst`, cut around `focus` with `zoom` (a print or the ID photo: a rectangle, never a
+## round cut-out), in an old print's warm cast.
+func _draw_picture(dst: Rect2, tint := Color(0.97, 0.92, 0.84)) -> void:
+	var ts := Vector2(picture.get_size())
+	var w := ts.x * clampf(zoom, 0.1, 1.0)
+	var src_size := Vector2(w, w * dst.size.y / dst.size.x)
+	if src_size.y > ts.y:
+		src_size = Vector2(ts.y * dst.size.x / dst.size.y, ts.y)
+	var c := focus * ts
+	var pos := Vector2(clampf(c.x - src_size.x * 0.5, 0.0, ts.x - src_size.x), clampf(c.y - src_size.y * 0.5, 0.0, ts.y - src_size.y))
+	draw_texture_rect_region(picture, dst, Rect2(pos, src_size), tint)
+
+
+func _draw_idcard(s: Vector2) -> void:
+	var h := s * 0.5
+	var m := s.x * 0.06
+	var y := -h.y + s.y * 0.13
+	_text(Vector2(-h.x + m, y + s.y * 0.04), heading, _font(FONT_HEAD), s.y * 0.1, INK, s.x - 2.0 * m)
+	y += s.y * 0.12
+	draw_line(Vector2(-h.x + m, y), Vector2(h.x - m, y), RULE, maxf(1.0, s.y * 0.01))
+	var ph := Rect2(Vector2(-h.x + m, y + s.y * 0.07), Vector2(s.x * 0.27, s.y * 0.58))
+	if picture != null:
+		_draw_picture(ph, Color(0.95, 0.93, 0.88))
+	else:
+		draw_rect(ph, Color(0.62, 0.58, 0.52))
+	draw_rect(ph, Color(0, 0, 0, 0.25), false, 1.0)
+	var x := ph.end.x + m
+	var w := h.x - m - x
+	var ry := ph.position.y + s.y * 0.1
+	for f: Array in fields:
+		_text(Vector2(x, ry), String(f[0]), _font(FONT_BODY, 500), s.y * 0.06, Color(INK, 0.75), w)
+		ry += s.y * 0.09
+		if String(f[1]) != "":
+			_text(Vector2(x, ry), String(f[1]), _font(FONT_BODY, 700), s.y * 0.085, INK, w * 0.55)
+			_bar(x + w * 0.6, ry - s.y * 0.03, w * 0.4, s.y * 0.04)  # the surname: not made up, not legible
+		else:
+			_bar(x, ry - s.y * 0.03, w * 0.5, s.y * 0.04)
+		ry += s.y * 0.12
+	_signature(Vector2(x, ph.end.y - s.y * 0.04), w * 0.6)

@@ -39,5 +39,14 @@
     "backdrop": "res://assets/arrival/wrong_floor/night/plate_teresa.webp"
   },
   "place": "apartment",
-  "time": "day"
+  "time": "day",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": "Kazimierz"
+    }
+  }
 }

@@ -29,5 +29,14 @@
   "place": "apartment",
   "time": "night",
   "outcome": "open",
-  "source": "contrib/gpt/T09 (D-46; main career since D-71)"
+  "source": "contrib/gpt/T09 (D-46; main career since D-71)",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": "Norbert"
+    }
+  }
 }

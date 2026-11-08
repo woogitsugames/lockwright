@@ -26,5 +26,11 @@
   ],
   "threshold": 2,
   "place": "apartment",
-  "time": "night"
+  "time": "night",
+  "card_detail": {
+    "manager": {
+      "issuer": "ship",
+      "purpose": "custody"
+    }
+  }
 }

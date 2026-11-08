@@ -26,5 +26,11 @@
   ],
   "threshold": 3,
   "place": "apartment",
-  "time": "evening"
+  "time": "evening",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "holder": "Marta"
+    }
+  }
 }

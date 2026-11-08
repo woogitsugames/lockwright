@@ -30,5 +30,17 @@
   "place": "apartment",
   "time": "evening",
   "outcome": "open",
-  "source": "contrib/gpt/T09 (D-46; main career since D-71)"
+  "source": "contrib/gpt/T09 (D-46; main career since D-71)",
+  "card_detail": {
+    "photo": {
+      "image": "res://assets/ui/gpt/cast/09_ola_krystyna/portrait.jpg",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "zoom": 1.0,
+      "ask": "job.krystyna_wooden_album.photo.ask",
+      "reply": "job.krystyna_wooden_album.photo.reply"
+    }
+  }
 }

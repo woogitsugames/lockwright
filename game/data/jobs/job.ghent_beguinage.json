@@ -27,5 +27,11 @@
   ],
   "threshold": 2,
   "place": "gate",
-  "time": "rainy"
+  "time": "rainy",
+  "card_detail": {
+    "manager": {
+      "issuer": "heritage",
+      "purpose": "access"
+    }
+  }
 }

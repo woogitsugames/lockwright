@@ -28,5 +28,17 @@
   ],
   "threshold": 2,
   "place": "apartment",
-  "time": "day"
+  "time": "day",
+  "card_detail": {
+    "photo": {
+      "image": "res://assets/ui/gpt/cast/01_halina/portrait.jpg",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "zoom": 1.0,
+      "ask": "job.grandma_broth.photo.ask",
+      "reply": "job.grandma_broth.photo.reply"
+    }
+  }
 }

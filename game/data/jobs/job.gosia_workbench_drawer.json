@@ -30,5 +30,17 @@
   "place": "workshop",
   "time": "day",
   "outcome": "open",
-  "source": "contrib/gpt/T09 (D-46; main career since D-71)"
+  "source": "contrib/gpt/T09 (D-46; main career since D-71)",
+  "card_detail": {
+    "photo": {
+      "image": "res://assets/ui/gpt/cast/episodic/portrait_gosia.webp",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "zoom": 1.0,
+      "ask": "job.gosia_workbench_drawer.photo.ask",
+      "reply": "job.gosia_workbench_drawer.photo.reply"
+    }
+  }
 }

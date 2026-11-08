@@ -27,5 +27,16 @@
   ],
   "threshold": 2,
   "place": "apartment",
-  "time": "night"
+  "time": "night",
+  "card_detail": {
+    "manager": {
+      "issuer": "estate",
+      "purpose": "resident",
+      "unit": "5"
+    },
+    "id": {
+      "doc": "id",
+      "holder": "Agnieszka"
+    }
+  }
 }

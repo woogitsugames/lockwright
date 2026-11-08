@@ -5,7 +5,8 @@ extends Node
 const SCREENS := ["res://scenes/main_menu.tscn", "res://scenes/jobs_list.tscn", "res://scenes/workshop.tscn", "res://scenes/showcase.tscn", "res://scenes/settings.tscn", "res://scenes/control_choice.tscn", "res://scenes/job_arrival.tscn", "res://scenes/day_after.tscn", "res://scenes/lock.tscn",
 	"res://scenes/workshop.tscn#practice", "res://scenes/lock_job.tscn#practice",
 	"res://scenes/job_verify.tscn#wrong_floor", "res://scenes/job_verify.tscn#kiosk", "res://scenes/lock_job.tscn#pause",
-	"res://scenes/job_verify.tscn#broth", "res://scenes/job_verify.tscn#bike", "res://scenes/job_verify.tscn#heirs"]
+	"res://scenes/job_verify.tscn#broth", "res://scenes/job_verify.tscn#bike", "res://scenes/job_verify.tscn#heirs",
+	"res://scenes/job_verify.tscn#nurse", "res://scenes/job_verify.tscn#newlyweds"]
 ## D-79: the Ćwiczenia tab and one practice lock (goal in chalk), with the tutorial done in memory only
 const PRACTICE_LOCK := "t20"
 ## job shown on the arrival screen (N-60: portrait + locksmith line)
@@ -13,7 +14,8 @@ const ARRIVAL_JOB := "job.bike_interview"
 ## N-76: verification (one card + "I need one more thing"; three cards, two shown first)
 ## N-80/N-81: paper props drawn in the game (witness, photo, receipt, deed, inheritance) over the arrival landing
 const VERIFY_JOBS := {"wrong_floor": "job.wrong_floor", "kiosk": "job.kiosk_shutter", "broth": "job.grandma_broth",
-	"bike": "job.bike_interview", "heirs": "job.uncle_safe_heirs"}
+	"bike": "job.bike_interview", "heirs": "job.uncle_safe_heirs", "nurse": "job.night_nurse",
+	"newlyweds": "job.newlyweds_4am"}
 ## V04/D-78: "day after" scene, shown over the job list (one line, main-cast portrait)
 const DAY_AFTER_JOB := "job.cat_bathroom"
 

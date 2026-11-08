@@ -30,5 +30,11 @@
   "place": "locker",
   "time": "day",
   "outcome": "open",
-  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)",
+  "card_detail": {
+    "manager": {
+      "issuer": "museum",
+      "purpose": "custody"
+    }
+  }
 }

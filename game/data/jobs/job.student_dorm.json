@@ -28,5 +28,14 @@
   ],
   "threshold": 2,
   "place": "locker",
-  "time": "night"
+  "time": "night",
+  "card_detail": {
+    "id": {
+      "doc": "student",
+      "exchange": [
+        1
+      ],
+      "holder": "Zuzanna"
+    }
+  }
 }

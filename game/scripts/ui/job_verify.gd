@@ -128,8 +128,7 @@ static func card_image_height(screen: Vector2, n: int, land: bool) -> float:
 # any job; the rest are drawn in the game as paper in the G14 style (PaperProp). The G14 receipt is the
 # locksmith's own Lockwright receipt and the G14 note is Halina's soup note: neither is a client's card.
 const CARD_PROP := {
-	"id": "tenant", "tenant": "tenant", "lease": "lease", "manager": "manager",
-	"job": "job", "envelope": "envelope", "note": "note",
+	"tenant": "tenant", "lease": "lease", "job": "job", "envelope": "envelope", "note": "note",
 }
 ## A G14 photo drawn for one particular client: the envelope is addressed to Mrs Halina (Lipowa 14, flat 7).
 const JOB_CARD_PROP := {"job.grandma_broth": {"letter": "envelope"}}
@@ -137,7 +136,24 @@ const CARD_PAPER := {
 	"witness": "note", "institution": "letterhead", "invoice": "invoice", "receipt": "till",
 	"deed": "deed", "inheritance": "deed", "police": "deed", "bailiff": "deed",
 	"resolution": "resolution", "letter": "envelope", "photo": "photo", "address_app": "phone",
+	# N-95: the identity card and the manager's letter carry the job's own facts (data `card_detail`):
+	# the G14 cooperative card ("Lokal" field) and the Lipowa building letter fitted only some stories
+	"id": "idcard", "manager": "letterhead",
 }
+## N-95 card_detail.manager: issuer -> letterhead line, purpose -> heading + body (+ exchange variant).
+const MANAGER_ISSUERS := ["tenement", "estate", "community", "university", "dorm", "ship", "heritage", "venue", "museum", "school"]
+const MANAGER_PURPOSES := ["resident", "access", "storage", "custody"]
+const ID_DOCS := ["id", "allotment", "student"]
+
+static var _detail_cache := {}
+
+
+## N-94/N-95: a job's facts for one card (`card_detail.<card>` in game/data/jobs), {} when none.
+static func card_detail(job_id: String, card: String) -> Dictionary:
+	if not _detail_cache.has(job_id):
+		_detail_cache[job_id] = JobRun.job_by_id(job_id).get("card_detail", {})
+	var d: Variant = (_detail_cache[job_id] as Dictionary).get(card, {})
+	return d if d is Dictionary else {}
 ## Paper words per card: [heading key, body key] ("" = none; a missing heading falls back to the card name).
 const PAPER_TEXT := {
 	"witness": ["", "verify.paper.witness.body"],
@@ -175,10 +191,7 @@ func _card_prop(card: String) -> Control:
 	var jid := String(job.get("id", ""))
 	var spec := card_prop_spec(jid, card)
 	if spec["kind"] == "paper":
-		var words: Array = PAPER_TEXT.get(card, ["", ""])
-		var head := I18n.t(StringName(words[0])) if String(words[0]) != "" else I18n.t(StringName("verify.card." + card)).to_upper()
-		var body_text := I18n.t(StringName(words[1])) if String(words[1]) != "" else ""
-		return PaperProp.create(String(spec["style"]), card, head, body_text, _photo_picture(job) if card == "photo" else null, jid.hash())
+		return paper_for(job, card, String(spec["style"]))
 	var pic := TextureRect.new()
 	pic.texture = load(prop_texture_path(String(spec["prop"])))
 	pic.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -186,13 +199,70 @@ func _card_prop(card: String) -> Control:
 	return pic
 
 
-## The "Photo" card: a print of the client (their G09 / episodic portrait), else of the place.
-static func _photo_picture(job: Dictionary) -> Texture2D:
+## The drawn sheet of a card with the job's facts (card_detail) in its words.
+static func paper_for(job: Dictionary, card: String, style: String) -> PaperProp:
+	var jid := String(job.get("id", ""))
+	var d := card_detail(jid, card)
+	var words: Array = PAPER_TEXT.get(card, ["", ""])
+	var head := I18n.t(StringName(words[0])) if String(words[0]) != "" else I18n.t(StringName("verify.card." + card)).to_upper()
+	var body_text := I18n.t(StringName(words[1])) if String(words[1]) != "" else ""
+	var pic: Texture2D = null
+	var p: PaperProp
+	match card:
+		"photo":
+			pic = _photo_picture(job, d)
+		"id":
+			head = I18n.t(StringName("verify.paper.doc." + String(d.get("doc", "id"))))
+			pic = _client_portrait(job)
+		"manager":
+			var purpose := String(d.get("purpose", "resident"))
+			head = I18n.t(StringName("verify.paper.purpose.%s.head" % purpose))
+			body_text = I18n.t(StringName("verify.paper.purpose.%s.body" % purpose))
+	p = PaperProp.create(style, card, head, body_text, pic, jid.hash())
+	match card:
+		"photo":
+			var f: Array = d.get("focus", [0.5, 0.3])
+			p.focus = Vector2(float(f[0]), float(f[1]))
+			p.zoom = float(d.get("zoom", 1.0))
+		"id":
+			var holder := String(d.get("holder", _client_speaker(job).capitalize()))
+			p.fields = [[I18n.t(&"verify.paper.field.name"), holder], [I18n.t(&"verify.paper.field.born"), ""]]
+			p.focus = Vector2(0.5, 0.35)
+			p.zoom = 0.62
+		"manager":
+			p.issuer = I18n.t(StringName("verify.paper.issuer." + String(d.get("issuer", "tenement"))))
+			if String(d.get("unit", "")) != "":
+				p.fields = [[I18n.t(&"verify.paper.field.unit"), String(d["unit"])]]
+	return p
+
+
+## The client of a job: the first speaker who is not the locksmith.
+static func _client_speaker(job: Dictionary) -> String:
 	for sp in job.get("lines", []):
 		if String(sp) != Arrival.PLAYER:
-			var t := Arrival.portrait_for(String(sp))
-			if t != null:
-				return t
+			return String(sp)
+	return ""
+
+
+## A rectangular portrait (G09 portrait.jpg, the episodic portrait): never the round avatar cut-out.
+static func _client_portrait(job: Dictionary) -> Texture2D:
+	var sp := _client_speaker(job)
+	var slot: String = Arrival.CAST_SLOT.get(sp, "")
+	for path in ["res://assets/ui/gpt/cast/%s/portrait.jpg" % slot, "res://assets/ui/gpt/cast/episodic/portrait_%s.webp" % sp]:
+		if (slot != "" or path.contains("episodic")) and ResourceLoader.exists(path):
+			return load(path)
+	return null
+
+
+## N-94: the "Photo" card shows what the job's exchange talks about: card_detail.photo.image (a place,
+## the bike, the client), else the client's portrait, else the place of the arrival.
+static func _photo_picture(job: Dictionary, d: Dictionary) -> Texture2D:
+	var img := String(d.get("image", ""))
+	if img != "" and ResourceLoader.exists(img):
+		return load(img)
+	var t := _client_portrait(job)
+	if t != null:
+		return t
 	var still := ArrivalScene.place_still(job, "", false)
 	var path := String(still[0]) if not still.is_empty() else "res://assets/ui/gpt/arrival/" + Arrival.g07_image(job)
 	return load(path) as Texture2D if ResourceLoader.exists(path) else null
@@ -280,10 +350,21 @@ func _ask_about(card: String) -> void:
 
 ## "— question\n— answer" for a card, variant 1 or 2 picked from the job id and the tap count;
 ## "" when the card has no exchange texts.
+## N-94/N-95: a job's own exchange (card_detail.<card>.ask / .reply) wins; a manager letter that is not
+## about residence asks about its purpose (manager_access …); card_detail.<card>.exchange limits the
+## generic variants to those true for the job (e.g. [1]: no "does the name match the door?").
 static func exchange_text(job_id: String, card: String, taps: int) -> String:
-	var v := (absi(hash(job_id + "/" + card)) + taps) % 2 + 1
-	var ask := StringName("verify.ask.%s.%d" % [card, v])
-	var reply := StringName("verify.reply.%s.%d" % [card, v])
+	var d := card_detail(job_id, card)
+	if d.has("ask") and d.has("reply"):
+		return "— %s
+— %s" % [I18n.t(StringName(d["ask"])), I18n.t(StringName(d["reply"]))]
+	var base := card
+	if card == "manager" and String(d.get("purpose", "resident")) != "resident":
+		base = "manager_" + String(d["purpose"])
+	var variants: Array = d.get("exchange", [1, 2])
+	var v := int(variants[(absi(hash(job_id + "/" + card)) + taps) % maxi(variants.size(), 1)]) if not variants.is_empty() else 1
+	var ask := StringName("verify.ask.%s.%d" % [base, v])
+	var reply := StringName("verify.reply.%s.%d" % [base, v])
 	if not (I18n.has_key(ask) and I18n.has_key(reply)):
 		return ""
 	return "— %s\n— %s" % [I18n.t(ask), I18n.t(reply)]

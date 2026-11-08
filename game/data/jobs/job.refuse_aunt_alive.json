@@ -27,5 +27,14 @@
   ],
   "threshold": 2,
   "place": "apartment",
-  "time": "day"
+  "time": "day",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": ""
+    }
+  }
 }

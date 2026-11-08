@@ -28,5 +28,17 @@
   ],
   "threshold": 3,
   "place": "kiosk",
-  "time": "rainy"
+  "time": "rainy",
+  "card_detail": {
+    "photo": {
+      "image": "res://assets/ui/gpt/arrival/07_kiosk_shutter.jpg",
+      "focus": [
+        0.5,
+        0.42
+      ],
+      "zoom": 1.0,
+      "ask": "job.kiosk_shutter.photo.ask",
+      "reply": "job.kiosk_shutter.photo.reply"
+    }
+  }
 }

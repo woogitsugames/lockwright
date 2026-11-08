@@ -26,5 +26,14 @@
   ],
   "threshold": 2,
   "place": "workshop",
-  "time": "evening"
+  "time": "evening",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": "Władysław"
+    }
+  }
 }

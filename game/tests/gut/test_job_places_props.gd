@@ -233,3 +233,105 @@ func test_pin_family_tool_stays_in_the_section() -> void:
 			assert_true(pv.get_node("ToolLayer").clip_contents, "%s: the tool is clipped, never over the leather" % jid)
 			scene.queue_free()
 			await get_tree().process_frame
+
+
+# ------------------------------------------------------------------ N-94 / N-95 (D-95)
+func test_photo_card_shows_what_the_exchange_talks_about() -> void:
+	for j: Dictionary in _jobs():
+		if not (j.get("cards", []) as Array).has("photo"):
+			continue
+		var jid := String(j["id"])
+		var d := Verify.card_detail(jid, "photo")
+		assert_true(ResourceLoader.exists(String(d.get("image", ""))), "%s: the photo's picture is set in data" % jid)
+		assert_false(String(d.get("image", "")).contains("avatar"), "%s: never the round avatar cut-out" % jid)
+		var text := Verify.exchange_text(jid, "photo", 0)
+		assert_eq(text, Verify.exchange_text(jid, "photo", 1), "%s: one exchange, about this picture" % jid)
+		for k in ["ask", "reply"]:
+			assert_true(I18n.has_key(StringName(d[k])), "%s %s" % [jid, k])
+	var v := await _open("job.grandma_broth")
+	v._ask_more()
+	await get_tree().process_frame
+	var pic: Node = v.cards_box.get_node("Card_photo/Box/Pic")
+	assert_true(pic is PaperProp and String((pic as PaperProp).picture.resource_path).ends_with("portrait.jpg"), "Mrs Halina's photo is a rectangular print of her portrait")
+	assert_string_contains(v.result_label.text, I18n.t(&"job.grandma_broth.photo.reply"), "the client says what the photo shows")
+
+
+func test_id_and_manager_cards_follow_the_job() -> void:
+	var langs_keys := []
+	for j: Dictionary in _jobs():
+		var jid := String(j["id"])
+		var cards: Array = j.get("cards", [])
+		if cards.has("id"):
+			var d := Verify.card_detail(jid, "id")
+			assert_true(Verify.ID_DOCS.has(String(d.get("doc", ""))), "%s: id doc" % jid)
+			assert_true(d.has("holder"), "%s: the holder's name is data" % jid)
+			langs_keys.append("verify.paper.doc." + String(d["doc"]))
+			assert_eq(Verify.card_prop_spec(jid, "id"), {"kind": "paper", "style": "idcard"}, "%s: no cooperative card with a flat field" % jid)
+		if cards.has("manager"):
+			var m := Verify.card_detail(jid, "manager")
+			assert_true(Verify.MANAGER_ISSUERS.has(String(m.get("issuer", ""))), "%s: issuer" % jid)
+			assert_true(Verify.MANAGER_PURPOSES.has(String(m.get("purpose", ""))), "%s: purpose" % jid)
+			langs_keys.append("verify.paper.issuer." + String(m["issuer"]))
+			langs_keys.append("verify.paper.purpose.%s.head" % m["purpose"])
+			langs_keys.append("verify.paper.purpose.%s.body" % m["purpose"])
+			var ex := Verify.exchange_text(jid, "manager", 0)
+			assert_ne(ex, "", "%s: the manager exchange exists" % jid)
+			if String(m["purpose"]) != "resident":
+				assert_false(ex.contains(I18n.t(&"verify.reply.manager.2")), "%s: no 'list of residents' for a %s letter" % [jid, m["purpose"]])
+	# the newlyweds: Bartek's ID has no address (dialog), and the card has no flat field
+	var v := await _open("job.newlyweds_4am")
+	var idp: PaperProp = v.cards_box.get_node("Card_id/Box/Pic")
+	for f: Array in idp.fields:
+		assert_ne(String(f[0]), I18n.t(&"verify.paper.field.unit"), "no flat on Bartek's ID")
+	assert_eq(String(idp.fields[0][1]), "Bartłomiej")
+	# night_nurse: the estate office (new block, Mr Roman), flat 5 like the door
+	var n := await _open("job.night_nurse")
+	var mp: PaperProp = n.cards_box.get_node("Card_manager/Box/Pic")
+	assert_eq(mp.issuer, I18n.t(&"verify.paper.issuer.estate"))
+	assert_eq(mp.fields, [[I18n.t(&"verify.paper.field.unit"), "5"]])
+	# a wrong door: no "does the name match the door?" exchange
+	assert_false(Verify.exchange_text("job.wrong_floor", "id", 0).contains(I18n.t(&"verify.ask.id.2")))
+	assert_false(Verify.exchange_text("job.wrong_floor", "id", 1).contains(I18n.t(&"verify.ask.id.2")))
+	var seen := {}
+	for r in I18n._parse_csv("res://i18n/strings.csv").slice(1):
+		seen[String(r[0])] = r
+	for key: String in langs_keys + ["verify.paper.field.name", "verify.paper.field.born", "verify.paper.field.unit",
+			"verify.ask.manager_access.1", "verify.reply.manager_custody.2", "verify.ask.manager_storage.2"]:
+		var row: PackedStringArray = seen.get(key, PackedStringArray())
+		assert_eq(row.size(), 1 + LANGS.size(), key)
+		for i in range(1, row.size()):
+			assert_ne(String(row[i]).strip_edges(), "", "%s/%s" % [key, LANGS[i - 1]])
+
+
+# ------------------------------------------------------------------ N-97 (D-95)
+func test_time_lock_barrel_lets_down_click_by_click() -> void:
+	JobRun.start(JobRun.job_by_id("job.museum_time_lock"))
+	var vp := SubViewport.new()
+	vp.size = Vector2i(412, 915)
+	add_child_autofree(vp)
+	var scene: Node = load(JobRun.lock_scene_path()).instantiate()
+	vp.add_child(scene)
+	await wait_physics_frames(3)
+	scene.set_physics_process(false)
+	var view = scene.get("view")
+	assert_true(view is LockTimeLockView, "time lock view")
+	if not view is LockTimeLockView:
+		return
+	var tv: LockTimeLockView = view
+	var vm: Dictionary = scene.session.describe().duplicate()
+	vm["tension"] = 1.0
+	vm["hold_progress"] = 0.0
+	for i in 120:
+		tv.present(vm, {"tension": 1.0}, 1.0 / 120.0)
+	var wound := tv.barrel_turn_deg()
+	assert_gt(wound, 12.0, "the key winds the barrel two clicks or more")
+	vm["tension"] = 0.0
+	for i in 6:  # 50 ms after letting go
+		tv.present(vm, {"tension": 0.0}, 1.0 / 120.0)
+	assert_almost_eq(tv.barrel_turn_deg(), wound, 0.01, "no spring-back in one jump")
+	var seen := {}
+	for i in 240:
+		tv.present(vm, {"tension": 0.0}, 1.0 / 120.0)
+		seen[snappedf(tv.barrel_turn_deg(), 0.01)] = true
+	assert_almost_eq(tv.barrel_turn_deg(), 0.0, 0.01, "let down to rest")
+	assert_gt(seen.size(), 2, "back one ratchet tooth at a time (%s)" % [seen.keys()])
