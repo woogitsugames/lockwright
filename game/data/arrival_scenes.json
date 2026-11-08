@@ -1,6 +1,6 @@
 {
   "schema": "lockwright.arrival_scenes/1",
-  "note": "D-58 arrival scenes per job. Assets: game/assets/arrival/<job>/<time>/{seq/f_NN.webp, plate_<figure>.webp, figure_<figure>.webp}, made by art/tools/arrival_export.py (which also rewrites `anchors`). Jobs without an entry keep the plain arrival screen.",
+  "note": "D-58 arrival scenes per job. Assets: game/assets/arrival/<job>/<time>/{seq/f_NN.webp, plate_<figure>.webp, figure_<figure>.webp} or, for a plate-only hold (`hold: \"\"`, no full-body cut-out of the client), plate.webp; made by art/tools/arrival_export.py (which also rewrites `anchors`). Scene dressing per job: art/blender/arrival_jobs.json. Jobs without an entry (or without its files) keep the plain arrival screen (G07 still).",
   "scenes": {
     "job.wrong_floor": {
       "dir": "res://assets/arrival/wrong_floor",
@@ -93,6 +93,140 @@
             ]
           }
         }
+      }
+    },
+    "job.grandma_broth": {
+      "dir": "res://assets/arrival/grandma_broth",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "day"
+      ],
+      "default_time": "day",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "steps": {
+        "step_wood": [
+          2,
+          8,
+          14
+        ],
+        "step_terrazzo": [
+          21,
+          27
+        ]
+      },
+      "anchors": {
+        "day": {}
+      }
+    },
+    "job.cat_bathroom": {
+      "dir": "res://assets/arrival/cat_bathroom",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "evening"
+      ],
+      "default_time": "evening",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          21,
+          27
+        ]
+      },
+      "anchors": {
+        "evening": {}
+      }
+    },
+    "job.refuse_ex_partner": {
+      "dir": "res://assets/arrival/refuse_ex_partner",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "night"
+      ],
+      "default_time": "night",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          21,
+          27
+        ]
+      },
+      "anchors": {
+        "night": {}
+      }
+    },
+    "job.newlyweds_4am": {
+      "dir": "res://assets/arrival/newlyweds_4am",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "night"
+      ],
+      "default_time": "night",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          21,
+          27
+        ]
+      },
+      "anchors": {
+        "night": {}
+      }
+    },
+    "job.refuse_rush_bribe": {
+      "dir": "res://assets/arrival/refuse_rush_bribe",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "night"
+      ],
+      "default_time": "night",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "steps": {
+        "step_wood": [
+          2,
+          8,
+          14
+        ],
+        "step_terrazzo": [
+          21,
+          27
+        ]
+      },
+      "anchors": {
+        "night": {}
       }
     }
   }

@@ -8,6 +8,8 @@ extends Control
 ##    reached with a short cross-fade; the figure "breathes" (a slow vertical scale about the feet, shader),
 ##    off under reduce motion;
 ## 3. show_speaker(): a speaker with their own hold (Teresa at the ajar door, night) swaps the layers.
+## A job whose client has no full-body cut-out has `hold: ""`: its hold is the landing alone (plate.webp,
+## the story told by the door and the props), no figure layer and no breathing.
 ## Layout: the picture covers the screen; `focus` (0..1 of the image) stays in view when the crop is
 ## large (landscape shows the head-and-shoulders band, portrait keeps the figure on the left in view).
 
@@ -61,7 +63,8 @@ static func data() -> Dictionary:
 
 
 ## The scene for a job, resolved for its time of day, or {} (no entry, or its hold is missing).
-## Keys: dir, time, fps, frames, hold, frame_paths, layers {figure: [plate, figure]}, anchors, breath, focus, steps.
+## Keys: dir, time, fps, frames, hold, frame_paths, layers {figure: [plate, figure]} (plate-only hold: {"": [plate, ""]}),
+## anchors, breath, focus, steps.
 static func resolve(job: Dictionary) -> Dictionary:
 	var s: Dictionary = data().get("scenes", {}).get(String(job.get("id", "")), {})
 	if s.is_empty():
@@ -73,7 +76,11 @@ static func resolve(job: Dictionary) -> Dictionary:
 		t = String(s.get("default_time", times[0] if not times.is_empty() else ""))
 	var dir := "%s/%s/" % [s.get("dir", ""), t]
 	var layers := {}
-	var figs: Array = [String(s.get("hold", ""))]
+	var hold := String(s.get("hold", ""))
+	if hold == "":
+		if ResourceLoader.exists(dir + "plate.webp"):
+			layers[""] = [dir + "plate.webp", ""]
+	var figs: Array = [hold] if hold != "" else []
 	for sp: String in s.get("speaker_holds", {}):
 		figs.append(String(s["speaker_holds"][sp]))
 	for f: String in figs:
@@ -81,7 +88,7 @@ static func resolve(job: Dictionary) -> Dictionary:
 		var fig := dir + "figure_%s.webp" % f
 		if ResourceLoader.exists(plate) and ResourceLoader.exists(fig):
 			layers[f] = [plate, fig]
-	if not layers.has(String(s.get("hold", ""))):
+	if not layers.has(hold):
 		return {}
 	var frame_paths: Array[String] = []
 	for i in int(s.get("frames", 0)):
@@ -154,9 +161,12 @@ func _layout() -> void:
 	_canvas.size = sz
 
 
-## The current figure's feet, 0..1 of the image (the landscape dialogue column goes on the other side).
+## The current figure's feet, 0..1 of the image (the landscape dialogue column goes on the other side);
+## a plate-only hold has no figure: the frame's focus (the door) stands in for it.
 func figure_x() -> float:
 	var a: Dictionary = cfg.get("anchors", {}).get(current_figure, {})
+	if a.is_empty() and current_figure == "":
+		return float(cfg.get("focus", [0.5, 0.5])[0])
 	return float(a.get("feet", [0.3, 0.85])[0])
 
 
@@ -240,7 +250,8 @@ func _set_figure(f: String) -> void:
 		return
 	current_figure = f
 	_plate.texture = load(l[0]) as Texture2D
-	_figure.texture = load(l[1]) as Texture2D
+	_figure.texture = load(l[1]) as Texture2D if String(l[1]) != "" else null
+	_figure.visible = _figure.texture != null
 	if _canvas.size != Vector2.ZERO:
 		_layout()
 	figure_changed.emit()

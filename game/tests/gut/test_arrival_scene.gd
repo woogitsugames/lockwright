@@ -4,6 +4,8 @@ extends GutTest
 
 const JOB := "job.wrong_floor"
 const PLAIN_JOB := "job.bike_interview"
+## early jobs with a plate-only scene (no full-body cut-out of their clients): the door and props tell the story
+const PLATE_JOBS := ["job.grandma_broth", "job.cat_bathroom", "job.refuse_ex_partner", "job.newlyweds_4am", "job.refuse_rush_bribe"]
 const JobArrival := preload("res://scripts/ui/job_arrival.gd")
 
 
@@ -54,7 +56,10 @@ func test_every_scene_asset_exists() -> void:
 			var r := ArrivalScene.resolve({"id": jid, "time": t})
 			assert_eq(r.get("time"), t, "%s %s" % [jid, t])
 			assert_eq((r["frame_paths"] as Array).size(), int(s["frames"]), "%s %s frames" % [jid, t])
-			assert_true(r["anchors"].has(s["hold"]), "%s %s anchors" % [jid, t])
+			if String(s["hold"]) == "":
+				assert_true(r["layers"].has(""), "%s %s plate-only hold" % [jid, t])
+			else:
+				assert_true(r["anchors"].has(s["hold"]), "%s %s anchors" % [jid, t])
 
 
 func test_scene_plays_then_dialogue_starts() -> void:
@@ -160,3 +165,55 @@ func test_landscape_column_moves_away_from_teresa() -> void:
 	assert_lt(float(915 - frame.get_theme_constant("margin_right")), head.x, "column left of Teresa")
 	assert_between(head.y, 0.0, 412.0)
 
+
+func test_plate_only_jobs_resolve_with_their_own_time() -> void:
+	for jid: String in PLATE_JOBS:
+		var job := JobRun.job_by_id(jid)
+		assert_false(job.is_empty(), jid)
+		var r := ArrivalScene.resolve(job)
+		assert_false(r.is_empty(), "%s has a scene" % jid)
+		assert_eq(String(r["hold"]), "", "%s plate only" % jid)
+		assert_eq((r["layers"] as Dictionary).keys(), [""], "%s: one plate layer, no figure" % jid)
+		assert_true(String(r["layers"][""][0]).ends_with("/plate.webp"))
+		assert_eq((r["frame_paths"] as Array).size(), 36, "%s 36 frames" % jid)
+		assert_true(ArrivalScene.has_scene(job))
+	# the job says evening, the story says 1 a.m.: the scene's only time wins
+	assert_eq(String(JobRun.job_by_id("job.refuse_rush_bribe").get("time")), "evening")
+	assert_eq(ArrivalScene.resolve(JobRun.job_by_id("job.refuse_rush_bribe")).get("time"), "night")
+	assert_eq(ArrivalScene.resolve(JobRun.job_by_id("job.grandma_broth")).get("time"), "day")
+
+
+func test_plate_only_scene_plays_then_dialogue_starts() -> void:
+	var scene := await _open(JobRun.job_by_id("job.newlyweds_4am"), false)
+	var arr: ArrivalScene = scene.scene
+	assert_not_null(arr)
+	assert_eq(arr.phase, &"climb")
+	assert_false(scene.get_node("Frame").visible, "the UI waits for the climb")
+	assert_eq(arr.current_figure, "")
+	assert_false(arr.get_node("Canvas/Figure").visible, "no figure layer")
+	assert_true(String(arr.get_node("Canvas/Plate").texture.resource_path).ends_with("newlyweds_4am/night/plate.webp"))
+	arr._process(3.2)
+	assert_eq(arr.phase, &"hold")
+	assert_true(scene.get_node("Frame").visible)
+	assert_true(scene.dialogue.index >= 0 or scene.dialogue.is_finished(), "dialogue started after the climb")
+	arr._process(1.8)
+	assert_eq(arr.breath_scale(), 1.0, "nothing breathes on an empty landing")
+	arr.show_speaker("bartek")
+	assert_eq(arr.current_figure, "", "speakers without a hold leave the frame alone")
+
+
+func test_plate_only_scene_layout_and_reduce_motion() -> void:
+	for size in [Vector2i(412, 915), Vector2i(915, 412)]:
+		var scene := await _open(JobRun.job_by_id("job.grandma_broth"), true, size)
+		var arr: ArrivalScene = scene.scene
+		assert_eq(arr.phase, &"hold", "%s reduce motion: straight to the hold" % size)
+		var canvas: Control = arr.get_node("Canvas")
+		assert_true(canvas.size.x >= size.x - 1 and canvas.size.y >= size.y - 1, "%s picture covers" % size)
+		var door := arr.image_to_stage(Vector2(0.5, 0.45))
+		assert_between(door.x, 0.0, float(size.x), "%s door in view" % size)
+		assert_between(door.y, 0.0, float(size.y), "%s door in view" % size)
+		assert_true(scene.get_node("Frame").visible)
+		if size.x > size.y:
+			var frame: MarginContainer = scene.get_node("Frame")
+			assert_gt(frame.get_theme_constant("margin_left") + frame.get_theme_constant("margin_right"), 300,
+				"landscape: the dialogue is a column, not full width")
