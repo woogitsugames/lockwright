@@ -493,3 +493,9 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 - Gra: `game/assets/ui/tutorial/card_<nazwa>.webp` (13–29 KB, razem ok. 118 KB, import stratny 0,85); `tutorial.gd` bierze karty po nazwie, bez kadrowania marginesów kartki. Szkice G11 zostają w repo (źródło), ale wypadają z paczki (`exclude_filter` `assets/ui/gpt/tutorial/g11-*`), co zdejmuje z pck ok. 1,5 MB. Test `test_tutorial_cards_ship` pilnuje obu stron.
 - Przed/po: `docs/handoff/device-tests/visual_audit_2026-11-07/before_after/va07_tutorial_cards_render.jpg`.
 
+
+## D-99: Jakość przed rozmiarem; baza AAB do limitu Google Play, reszta w paczkach do pobrania
+2026-11-08 · właściciel · Gra wychodzi na Google Play; rozmiar nie jest problemem („może i 500 MB ważyć”), a zleceń i renderów będzie coraz więcej, więc kolejne zlecenia mogą być dopobierane.
+- **Budżety:** pck ostrzeżenie 170 / błąd 185 MB, AAB release 185 / 198 MB (limit modułu bazowego Play: 200 MB do pobrania). `qa/budget/budgets.json`.
+- **Przejazdy (D-58/D-84/D-94) w pełnej rozdzielczości:** eksport 1080×1920, WebP q80 (`arrival_export.py` domyślnie), 11 sekwencji ≈ 18 MB. `ArrivalScene` strumieniuje klatki (3 od razu, 6 w tle do przodu, za głowicą zwalniane), więc w pamięci grafiki jest ~9 klatek zamiast 36 (test `test_climb_streams_frames_instead_of_holding_all`). Właściciel: przejazd przy rowerze był „marnej jakości” — powodem był eksport 540 px na ekranie 1080×2340, nie telefon.
+- **Kierunek:** treści ponad bazę (głosy — D-62, w toku: PL do pobrania, EN w bazie; kolejne rozdziały/zlecenia ze scenkami) idą do paczek pobieranych z poziomu gry — w przyszłości Play Asset Delivery albo ten sam mechanizm co paczki głosów. Do zrobienia, gdy baza zbliży się do 185 MB.

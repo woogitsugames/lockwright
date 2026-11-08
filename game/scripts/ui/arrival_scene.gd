@@ -48,7 +48,10 @@ var _canvas: Control               # image-sized, positioned to cover the stage
 var _seq: TextureRect
 var _plate: TextureRect
 var _figure: TextureRect
-var _frames: Array[Texture2D] = []
+var _frames: Array[Texture2D] = []   # sparse: only a small window around the playhead is kept (streaming)
+var _paths: PackedStringArray = []
+const AHEAD := 6   # frames requested in the background ahead of the playhead
+const SYNC_FIRST := 3   # loaded up front so the climb starts without a hitch
 var _t := 0.0
 var _breath_t := 0.0
 var _img_size := Vector2(1080, 1920)
@@ -159,8 +162,14 @@ func setup(p_cfg: Dictionary, p_reduce_motion: bool) -> void:
 	mat.shader = sh
 	_figure.material = mat
 	_seq = _layer("Climb")
+	# Full-resolution frames (1080 px) would take ~300 MB of video memory if all 36 were loaded;
+	# stream them instead: a few up front, the rest requested in the background just ahead of playback.
 	for p: String in cfg.get("frame_paths", []):
-		_frames.append(load(p) as Texture2D)
+		_paths.append(p)
+	_frames.resize(_paths.size())
+	for i in mini(SYNC_FIRST, _paths.size()):
+		_frames[i] = load(_paths[i]) as Texture2D
+	_request_ahead(0)
 	_set_figure(String(cfg.get("hold", "")))
 	if _plate.texture != null:
 		_img_size = _plate.texture.get_size()
@@ -208,6 +217,25 @@ func image_to_stage(p: Vector2) -> Vector2:
 	return _canvas.position + p * _canvas.size
 
 
+func _request_ahead(from: int) -> void:
+	for i in range(from, mini(from + AHEAD, _paths.size())):
+		if _frames[i] == null and ResourceLoader.load_threaded_get_status(_paths[i]) == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
+			ResourceLoader.load_threaded_request(_paths[i], "Texture2D")
+
+
+## The frame's texture if it is ready (synchronous fallback only when it was never requested).
+func _frame_tex(i: int) -> Texture2D:
+	if _frames[i] != null:
+		return _frames[i]
+	var st := ResourceLoader.load_threaded_get_status(_paths[i])
+	if st == ResourceLoader.THREAD_LOAD_LOADED or st == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+		# in progress: the decode is already under way, finishing it now (a few ms) keeps the climb on time
+		_frames[i] = ResourceLoader.load_threaded_get(_paths[i]) as Texture2D
+	elif st == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE or st == ResourceLoader.THREAD_LOAD_FAILED:
+		_frames[i] = load(_paths[i]) as Texture2D
+	return _frames[i]
+
+
 func play() -> void:
 	if reduce_motion or _frames.is_empty():
 		_show_hold(false)
@@ -215,7 +243,8 @@ func play() -> void:
 	phase = &"climb"
 	frame = 0
 	_t = 0.0
-	_seq.texture = _frames[0]
+	_seq.texture = _frame_tex(0)
+	_request_ahead(1)
 	_seq.visible = true
 	_seq.modulate.a = 1.0
 	mouse_filter = Control.MOUSE_FILTER_STOP
@@ -233,8 +262,14 @@ func _process(delta: float) -> void:
 		_t += delta
 		var f := mini(int(_t * float(cfg.get("fps", 12))), _frames.size())
 		while frame < f and frame < _frames.size() - 1:
+			var tex := _frame_tex(frame + 1)
+			if tex == null:
+				break
 			frame += 1
-			_seq.texture = _frames[frame]
+			_seq.texture = tex
+			if frame >= 2:
+				_frames[frame - 2] = null   # drop what is behind the playhead
+			_request_ahead(frame + 1)
 			_step_sounds(frame)
 		if f >= _frames.size():
 			_show_hold(true)

@@ -3,14 +3,14 @@
   "source": "docs/handoff/POMIARY.md §8 (session C, stage 3, task 9)",
   "ci": {
     "pck_android_mb": {
-      "warn": 120,
-      "fail": 150,
-      "note": "D-64 (owner): own budget raised to 150 MB (store limits: Google Play base module 200 MB). AAB ~= pck + ~11 MB. Warn at 120 MB."
+      "warn": 170,
+      "fail": 185,
+      "note": "D-99 (owner 2026-11-08: quality first, the game ships on Google Play): pck up to the Play base-module headroom. AAB ~= pck + ~11-20 MB. Content beyond that goes into downloadable packs (voice packs D-62, later job/arrival packs)."
     },
     "aab_release_mb": {
-      "warn": 170,
-      "fail": 200,
-      "note": "D-96: the release AAB (what the store ships), measured in game-android/release-aab; Play base module limit 200 MB. The debug APK (~193 MB, 76 MB debug engine library) is not budgeted."
+      "warn": 185,
+      "fail": 198,
+      "note": "D-99: Play base module limit is 200 MB (compressed download); keep 2 MB margin. Larger content -> downloadable packs, not the base module."
     },
     "startup_headless_s": {
       "warn": 1.0,

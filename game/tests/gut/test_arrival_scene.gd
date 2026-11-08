@@ -238,3 +238,19 @@ func test_place_scenes_replace_the_borrowed_photos() -> void:
 		var dawn := ArrivalScene.place_still(job, "day", false)
 		assert_eq(dawn.size(), 2, "%s: the day after shows the same place" % jid)
 	assert_eq(String(JobRun.job_by_id("job.bike_interview")["place"]), "yard")
+
+
+func test_climb_streams_frames_instead_of_holding_all() -> void:
+	# 1080 px frames: all 36 resident would be ~300 MB of video memory on a 4 GB phone.
+	var scene := await _open(_job("night"), false)
+	var arr: ArrivalScene = scene.scene
+	var peak := 0
+	for i in 30:
+		arr._process(1.0 / 12.0)
+		var resident := 0
+		for t in arr._frames:
+			if t != null:
+				resident += 1
+		peak = maxi(peak, resident)
+	assert_gt(arr.frame, 20, "the climb advanced")
+	assert_lte(peak, ArrivalScene.AHEAD + ArrivalScene.SYNC_FIRST, "only a small window of frames is resident")

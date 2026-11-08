@@ -179,7 +179,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--job', default='wrong_floor', help='a job in JOBS, or "all"'); ap.add_argument('--times', nargs='*')
     ap.add_argument('--master', help='dir with <job>_<time>_seq/f_####.png full GPU frames (local session)')
-    ap.add_argument('--seq-width', type=int, default=540); ap.add_argument('--seq-q', type=int, default=72)
+    ap.add_argument("--seq-width", type=int, default=1080); ap.add_argument("--seq-q", type=int, default=80)
     ap.add_argument('--hold-q', type=int, default=80)
     ap.add_argument('--shadows', action='store_true',
                     help='composite with the Cycles shadow maps (wrong_floor_<t>[_ajar]_shadow_<figure>.png) instead of the 2D shadow')
