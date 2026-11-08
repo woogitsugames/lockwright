@@ -6,6 +6,7 @@
   "family": "lever",
   "tier": 3,
   "verification": "Faktura zakupu stołu (2), zdjęcie odbioru (1), obecność mebla w pracowni Gosi (1). Własność ruchomości potwierdzona.",
+  "verify_kind": "object",
   "reward_coins": 145,
   "tone": "rzeczowy, z humorem",
   "i18n": {

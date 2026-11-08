@@ -6,6 +6,7 @@
   "family": "time_lock",
   "tier": 2,
   "verification": "Pismo muzeum (2), protokół przekazania modelu (2). Próg 2. Naprawa wymontowanego zegara; nie omijamy blokady i nie otwieramy skarbca. Wycena zaakceptowana.",
+  "verify_kind": "shared",
   "reward_coins": 120,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

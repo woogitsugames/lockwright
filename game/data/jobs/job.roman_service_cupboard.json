@@ -6,6 +6,7 @@
   "family": "wafer",
   "tier": 2,
   "verification": "Pan Roman jest zarządcą (3), a protokół wspólnoty potwierdza zgodę (2). Lokal wspólny; uprawnienie sprawdzone.",
+  "verify_kind": "shared",
   "reward_coins": 105,
   "tone": "rzeczowy, z suchym humorem",
   "i18n": {

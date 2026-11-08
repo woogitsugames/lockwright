@@ -6,6 +6,7 @@
   "family": "lever_detector",
   "tier": 5,
   "verification": "Pismo dyrekcji muzeum (2), Rygiel jako opiekunka eksponatu (3). Próg 2. Skrzynia demonstracyjna bez cudzego depozytu. Wycena zaakceptowana.",
+  "verify_kind": "shared",
   "reward_coins": 190,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

@@ -5,6 +5,7 @@
   "family": "pin_tumbler",
   "tier": 1,
   "verification": "portier z listą (3) i dowód (1). Haczyk: brak.",
+  "verify_kind": "premises",
   "reward_coins": 70,
   "tone": "ciepły",
   "i18n": {

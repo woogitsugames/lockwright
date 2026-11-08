@@ -6,6 +6,7 @@
   "family": "axial_slider",
   "tier": 2,
   "verification": "Gosia okazuje fakturę mebla (2) i dowód przyjęcia do własnej pracowni (1). Próg 2 dla rzeczy w posiadaniu. Wycena zaakceptowana.",
+  "verify_kind": "object",
   "reward_coins": 100,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

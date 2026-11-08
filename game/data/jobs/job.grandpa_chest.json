@@ -5,6 +5,7 @@
   "family": "warded",
   "tier": 3,
   "verification": "akt (3) i rzecz w posiadaniu (1). Haczyk: brak.",
+  "verify_kind": "object",
   "reward_coins": 140,
   "tone": "wzruszający",
   "i18n": {

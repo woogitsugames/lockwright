@@ -6,6 +6,7 @@
   "family": "pin_tumbler",
   "tier": 3,
   "verification": "Świetlica wspólnoty: zarządczyni Elżbieta zgadza się przez telefon (2–3, utknęła w śniegu z kluczem), uchwała o udostępnieniu sali (2), Basia jako świadek (2). Wycena przyjęta.",
+  "verify_kind": "shared",
   "reward_coins": 145,
   "tone": "wspólnotowy, ciepły",
   "i18n": {

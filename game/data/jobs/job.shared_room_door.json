@@ -6,6 +6,7 @@
   "family": "pin_tumbler",
   "tier": 3,
   "verification": "Elżbieta jako zarządczyni (3), pisemna uchwała wspólnoty (2) i świadek Basia (2). To pomieszczenie wspólne, nie prywatny lokal. Cena uzgodniona przed pracą.",
+  "verify_kind": "shared",
   "reward_coins": 145,
   "tone": "finałowy, ciepły i spokojny",
   "i18n": {

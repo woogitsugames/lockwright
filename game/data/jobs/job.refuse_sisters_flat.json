@@ -6,6 +6,7 @@
   "family": "pin_tumbler",
   "tier": 2,
   "verification": "Dowód Norberta (1) potwierdza tylko tożsamość. `flag.absent_owner` i `flag.no_witness`: brak zgody lokatorki. Prawidłowe wyjście: odmowa, kontakt do zarządcy lub oczekiwanie na zgodę; bez monet.",
+  "verify_kind": "premises",
   "reward_coins": 0,
   "tone": "spokojny, odmowa bez oskarżeń",
   "i18n": {

@@ -5,6 +5,7 @@
   "family": "lever",
   "tier": 2,
   "verification": "rzecz w posiadaniu, w jej domu (2). Haczyk: brak.",
+  "verify_kind": "object",
   "reward_coins": 95,
   "tone": "wzruszający",
   "i18n": {

@@ -48,7 +48,7 @@ func _ready() -> void:
 	ScreenFrame.fit(self, $Frame, LANDSCAPE_COLUMN)
 	var job: Dictionary = JobRun.current_job
 	Arrival.place_backdrop(self, job, SHADE)  # N-81: the landing of the arrival (client at the door), else the G07 still
-	title_label.text = I18n.t(&"verify.title")
+	title_label.text = I18n.t(JobRun.verify_key(&"verify.title", job))  # D-103: flat / thing / consent
 	ScreenFrame.fit_title(title_label)  # VA-08: one line when it fits, never clipped in landscape
 	job_label.text = I18n.t(job.get("i18n", {}).get("title", &"jobs.title"))
 	hint_label.text = I18n.t(&"verify.hint")
@@ -146,6 +146,7 @@ const MANAGER_PURPOSES := ["resident", "access", "storage", "custody"]
 const ID_DOCS := ["id", "allotment", "student"]
 
 static var _detail_cache := {}
+static var _kind_cache := {}  # job id -> {verify_kind} (D-103 wording of the exchanges)
 
 
 ## N-94/N-95: a job's facts for one card (`card_detail.<card>` in game/data/jobs), {} when none.
@@ -205,7 +206,7 @@ static func paper_for(job: Dictionary, card: String, style: String) -> PaperProp
 	var d := card_detail(jid, card)
 	var words: Array = PAPER_TEXT.get(card, ["", ""])
 	var head := I18n.t(StringName(words[0])) if String(words[0]) != "" else I18n.t(StringName("verify.card." + card)).to_upper()
-	var body_text := I18n.t(StringName(words[1])) if String(words[1]) != "" else ""
+	var body_text := I18n.t(JobRun.verify_key(StringName(words[1]), job)) if String(words[1]) != "" else ""
 	var pic: Texture2D = null
 	var p: PaperProp
 	match card:
@@ -367,7 +368,11 @@ static func exchange_text(job_id: String, card: String, taps: int) -> String:
 	var reply := StringName("verify.reply.%s.%d" % [base, v])
 	if not (I18n.has_key(ask) and I18n.has_key(reply)):
 		return ""
-	return "— %s\n— %s" % [I18n.t(ask), I18n.t(reply)]
+	# D-103: a witness of a thing or of a consent does not vouch for a home (ask / reply each may differ)
+	if not _kind_cache.has(job_id):
+		_kind_cache[job_id] = {"verify_kind": JobRun.verify_kind(JobRun.job_by_id(job_id))}
+	var job: Dictionary = _kind_cache[job_id]
+	return "— %s\n— %s" % [I18n.t(JobRun.verify_key(ask, job)), I18n.t(JobRun.verify_key(reply, job))]
 
 
 static func ask_more_spec(job: Dictionary) -> Dictionary:

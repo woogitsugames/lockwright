@@ -6,6 +6,7 @@
   "family": "disc_detainer",
   "tier": 2,
   "verification": "Celina okazuje najem magazynu robót (2), Roman potwierdza zlecenie firmy remontowej (3). Próg danych 3. Wycena zaakceptowana.",
+  "verify_kind": "premises",
   "reward_coins": 110,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

@@ -6,6 +6,7 @@
   "family": "egyptian",
   "tier": 1,
   "verification": "Drewniana kaseta z makietą należy do muzeum. Dr Rygiel potwierdza depozyt w świetlicy protokołem (instytucja 2–3) i imiennym upoważnieniem dla Zuzanny (2). Wycena zaakceptowana.",
+  "verify_kind": "shared",
   "reward_coins": 75,
   "tone": "nostalgiczny, lekki humor",
   "i18n": {

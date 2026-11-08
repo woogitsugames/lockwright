@@ -6,6 +6,7 @@
   "family": "magnetic",
   "tier": 2,
   "verification": "Elżbieta okazuje zlecenie wspólnoty (2) i potwierdza zarząd szafką (3). Próg 2. Wycena zaakceptowana.",
+  "verify_kind": "shared",
   "reward_coins": 50,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

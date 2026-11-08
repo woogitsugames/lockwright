@@ -5,6 +5,7 @@
   "family": "time_lock",
   "tier": 2,
   "verification": "pismo instytucji (2) i kuratorka (3). Haczyk: brak.",
+  "verify_kind": "shared",
   "reward_coins": 150,
   "tone": "ciepły, z nutą muzealnej pedanterii",
   "i18n": {

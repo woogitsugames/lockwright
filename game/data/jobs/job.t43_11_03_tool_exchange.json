@@ -6,6 +6,7 @@
   "family": "axial_slider",
   "tier": 3,
   "verification": "Władysław jako właściciel ma fakturę skrzyni (2), Gosia potwierdza przekazanie do naprawy (2). Próg 2. Otwieramy skrzynię właściciela, nie przedmioty osób trzecich. Wycena zaakceptowana.",
+  "verify_kind": "object",
   "reward_coins": 170,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

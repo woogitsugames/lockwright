@@ -6,6 +6,7 @@
   "family": "wafer",
   "tier": 2,
   "verification": "Marcel ma własny dowód (1) i list przewozowy, który nie daje prawa wejścia. `flag.absent_owner`; odmawia oczekiwania na zgodę. Bez monet, alternatywa: uzgodnienie dostawy z właścicielem.",
+  "verify_kind": "premises",
   "reward_coins": 0,
   "tone": "spokojny, pomocny, stanowcza odmowa",
   "i18n": {

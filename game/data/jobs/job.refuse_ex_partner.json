@@ -5,6 +5,7 @@
   "family": "pin_tumbler",
   "tier": 2,
   "verification": "dowód (1). Zgrzyty: `flag.ex_partner` i `flag.no_witness` (odmawia, gdy proponujesz sąsiada).",
+  "verify_kind": "premises",
   "reward_coins": 0,
   "tone": "poważny, spokojny. Bez przemocy, bez wyjaśniania, co Darek chciał zrobić",
   "i18n": {

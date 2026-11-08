@@ -6,6 +6,7 @@
   "family": "pin_tumbler",
   "tier": 2,
   "verification": "Kazimierz potwierdza tożsamość (1), Teresa potwierdza właściwe mieszkanie (2). Próg 2. Konsultacja za 40 monet, bez otwierania.",
+  "verify_kind": "premises",
   "reward_coins": 40,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

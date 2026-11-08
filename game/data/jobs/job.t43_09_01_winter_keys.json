@@ -6,6 +6,7 @@
   "family": "pin_tumbler",
   "tier": 2,
   "verification": "Roman potwierdza aktualną lokatorkę (3), dowód potwierdza tożsamość (1). Próg 2 w skali danych gry. Wycena zaakceptowana przed pracą.",
+  "verify_kind": "premises",
   "reward_coins": 40,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

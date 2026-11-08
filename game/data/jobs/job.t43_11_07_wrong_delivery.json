@@ -6,6 +6,7 @@
   "family": "pin_tumbler",
   "tier": 3,
   "verification": "Leon okazuje dokument dostawy (2), Stefan potwierdza numer właściwego odbiorcy (2). Próg 2. Konsultacja 40 monet, bez otwierania jakichkolwiek drzwi.",
+  "verify_kind": "premises",
   "reward_coins": 40,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

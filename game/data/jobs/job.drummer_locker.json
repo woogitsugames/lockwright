@@ -5,6 +5,7 @@
   "family": "wafer",
   "tier": 1,
   "verification": "kierownik sali (3). Haczyk: brak.",
+  "verify_kind": "shared",
   "reward_coins": 110,
   "tone": "zabawny",
   "i18n": {

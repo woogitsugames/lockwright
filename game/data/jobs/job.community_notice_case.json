@@ -6,6 +6,7 @@
   "family": "warded",
   "tier": 2,
   "verification": "Elżbieta jako zarządczyni kamienicy (3) pokazuje podpisaną uchwałę wspólnoty (2). Basia jest świadkiem.",
+  "verify_kind": "shared",
   "reward_coins": 105,
   "tone": "ciepły, sąsiedzki",
   "i18n": {

@@ -6,6 +6,7 @@
   "family": "disc_detainer",
   "tier": 3,
   "verification": "Faktura Aino (2), kapitan potwierdza jej własną skrzynię (2). Próg 2. Prywatne narzędzia, nie wyposażenie statku. Wycena zaakceptowana.",
+  "verify_kind": "object",
   "reward_coins": 180,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

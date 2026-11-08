@@ -6,6 +6,7 @@
   "family": "lever",
   "tier": 3,
   "verification": "Dr Rygiel potwierdza umocowanie i obecność (3), podpisany protokół użyczenia kopii (2). Bez dotykania oryginałów.",
+  "verify_kind": "shared",
   "reward_coins": 105,
   "tone": "ciepły, muzealnie rzeczowy",
   "i18n": {

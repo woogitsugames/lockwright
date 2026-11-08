@@ -5,6 +5,7 @@
   "family": "pin_tumbler",
   "tier": 2,
   "verification": "dowód (1), meldunek w aplikacji (2) i sąsiad (2). Haczyk: brak. Scena pokazuje, że dowód bez adresu to normalna rzecz.",
+  "verify_kind": "premises",
   "reward_coins": 150,
   "tone": "zabawny, ciepły",
   "i18n": {

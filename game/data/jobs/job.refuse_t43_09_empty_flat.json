@@ -6,6 +6,7 @@
   "family": "pin_tumbler",
   "tier": 3,
   "verification": "Dowód (1), brak zgody aktualnej lokatorki. Flagi: flag.absent_owner, flag.no_witness. Odmowa, +5 reputacji, bez monet.",
+  "verify_kind": "premises",
   "reward_coins": 0,
   "tone": "spokojna odmowa, bez oskarżeń",
   "i18n": {

@@ -5,6 +5,7 @@
   "family": "warded",
   "tier": 2,
   "verification": "pismo instytucji (2) i opiekun-zarządca (3). Haczyk: brak.",
+  "verify_kind": "shared",
   "reward_coins": 100,
   "tone": "ciepły, spokojny",
   "i18n": {

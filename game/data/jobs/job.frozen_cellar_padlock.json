@@ -6,6 +6,7 @@
   "family": "combo",
   "tier": 2,
   "verification": "Aneks do najmu piwnicy (2) i potwierdzenie zarządczyni Elżbiety z wykazu lokatorów (2–3). Wycena zaakceptowana; brak zgrzytu.",
+  "verify_kind": "premises",
   "reward_coins": 100,
   "tone": "ciepły, pierwszy mróz",
   "i18n": {

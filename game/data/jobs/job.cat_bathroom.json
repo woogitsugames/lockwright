@@ -5,6 +5,7 @@
   "family": "warded",
   "tier": 1,
   "verification": "próg 0, bo klient jest w swoim mieszkaniu. Zlecenie uczy, że weryfikacja zależy od sytuacji.",
+  "verify_kind": "premises",
   "reward_coins": 60,
   "tone": "zabawny",
   "i18n": {

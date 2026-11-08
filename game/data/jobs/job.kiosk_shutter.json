@@ -5,6 +5,7 @@
   "family": "wafer",
   "tier": 1,
   "verification": "świadek (2) i list z hurtowni prasy na nazwisko (1). Próg dla lokalu firmy to 4, więc zabraknie 1 pewności. Rozwiązanie: „Poproszę o coś jeszcze”, czyli Stefan pokazuje zdjęcie z otwarcia kiosku w 1994. Uczy dopytywania.",
+  "verify_kind": "premises",
   "reward_coins": 80,
   "tone": "ciepły",
   "i18n": {

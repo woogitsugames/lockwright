@@ -5,6 +5,7 @@
   "family": "magnetic",
   "tier": 1,
   "verification": "zarządca (3) i dowód (1). Haczyk: brak.",
+  "verify_kind": "premises",
   "reward_coins": 90,
   "tone": "ciepły, cichy",
   "i18n": {

@@ -6,6 +6,7 @@
   "family": "egyptian",
   "tier": 1,
   "verification": "Skrzynia jest własnością świetlicy: zarządczyni Elżbieta (2–3) i uchwała wspólnoty (2). Mila prowadzi kolędników, nie decyduje o dostępie. Cena przyjęta.",
+  "verify_kind": "shared",
   "reward_coins": 75,
   "tone": "lekko zabawny, wspólnotowy",
   "i18n": {

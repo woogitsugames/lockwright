@@ -6,6 +6,7 @@
   "family": "lever_detector",
   "tier": 5,
   "verification": "Zarządczyni Elżbieta potwierdza uprawnienia do wspólnej kotłowni (2–3), pisemny protokół naprawy i zgodę na dostęp do szafki kontrolnej (2); Paweł jest obecny jako upoważniony technik (2). Ślusarz odpowiada tylko za zamek, instalację obsługuje Paweł. Cena przed pracą.",
+  "verify_kind": "shared",
   "reward_coins": 210,
   "tone": "finałowy, ciepły i legalny",
   "i18n": {

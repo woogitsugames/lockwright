@@ -6,6 +6,7 @@
   "family": "egyptian",
   "tier": 2,
   "verification": "Faktura muzeum (2) i pismo/zlecenie kuratorki (2). Rekwizyt przyniesiony do warsztatu. Wycena zaakceptowana.",
+  "verify_kind": "shared",
   "reward_coins": 60,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

@@ -138,6 +138,106 @@ Zasady:
 - Gdy w historii pojawia się **zapach gazu, dym, osoba nieprzytomna albo dziecko samo w środku**, gra najpierw pokazuje kartę „Najpierw 112 / *Call emergency services first*”. Dopiero potem jest zamek. Takie sytuacje nie są zagadką na czas.
 - Rosół, piekarnik czy wanna to **liczniki fabularne**: zmieniają dialog i najwyżej napiwek, nigdy nie przegrywasz przez nie poziomu. Domyślnie są włączone, a ustawienie „Spokojne zlecenia” je wyłącza.
 
+### 2.7 Co sprawdzamy: lokal, rzecz czy zgoda (`verify_kind`, D-103)
+Przycisk na przyjeździe (`job.verify`) i tytuł weryfikacji (`verify.title`) mówią, **co** ślusarz sprawdza — zależnie od tego, co otwiera. Pole danych `verify_kind` w każdym `game/data/jobs/*.json`:
+
+| `verify_kind` | Kiedy | PL | EN | DE | FR | ES |
+|---|---|---|---|---|---|---|
+| `premises` | czyjeś mieszkanie, pokój, piwnica, altana, kiosk, wynajęty lokal — prawo do miejsca | Sprawdź prawo do lokalu | Check right of entry | Zutrittsrecht prüfen | Vérifier le droit d'accès | Comprobar derecho de entrada |
+| `object` | rzecz: rower, skrzynia, szuflada, sekretarzyk, puszka, sejf, kłódka na przedmiocie — czy należy do klienta | Sprawdź, czyja to rzecz | Check who owns it | Prüfen, wem es gehört | Vérifier le propriétaire | Comprobar de quién es |
+| `shared` | wspólne lub instytucjonalne miejsce albo rzecz otwierana w czyimś imieniu — zgoda, upoważnienie | Sprawdź zgodę na otwarcie | Check permission to open | Erlaubnis zum Öffnen prüfen | Vérifier l'autorisation | Comprobar la autorización |
+
+Klucze: `premises` → `job.verify`, `verify.title` (bez zmian); pozostałe → `job.verify.<kind>`, `verify.title.<kind>`. Ten sam przyrostek (`JobRun.verify_key`) wybiera wariant notatki świadka (`verify.paper.witness.body.<kind>`) i ogólnych wymian przy kartach (`verify.ask/reply.<karta>.<n>.<kind>`: świadek, akt, faktura i list instytucji), gdy taki klucz istnieje. Odmowy mają rodzaj tego, o co klient prosi. Brak pola = `premises`.
+
+Klasyfikacja 83 zleceń (26 × premises, 24 × object, 33 × shared):
+
+| Zlecenie | `verify_kind` | Dlaczego |
+|---|---|---|
+| `job.allotment_shed` | premises | własna altana na działce (legitymacja działkowca, działka na żonę) |
+| `job.attic_drying_room` | shared | wspólna suszarnia bloku; dostęp potwierdza administrator |
+| `job.bike_interview` | object | kłódka szyfrowa jego roweru; zdjęcie i paragon |
+| `job.bramah_bureau` | object | sekretarzyk kupiony na aukcji; faktura |
+| `job.brussels_townhouse` | premises | jej mieszkanie w Saint-Gilles; najem i sąsiad |
+| `job.carol_singers_chest` | shared | skrzynia świetlicy; zgoda zarządczyni i uchwała, Mila nie decyduje |
+| `job.cat_bathroom` | premises | łazienka we własnym mieszkaniu Marty |
+| `job.charleroi_letters` | object | żelazna kasetka; znalazczyni przekazuje ją rodzinie |
+| `job.christmas_eve_heat` | shared | szafka kontrolna we wspólnej kotłowni; zgoda zarządczyni |
+| `job.community_notice_case` | shared | wspólna gablota ogłoszeń; zarządczyni i uchwała |
+| `job.dollhouse_wooden_lock` | object | domek dla lalek pradziadka; rzecz w posiadaniu |
+| `job.drummer_locker` | shared | szafka w sali prób; otwiera za zgodą kierownika sali |
+| `job.edek_rehearsal_store` | shared | magazyn teatru uczelni; pismo administracji i portier |
+| `job.finnish_sailor` | object | skrzynia marynarska Aino; kapitan potwierdza, że jej |
+| `job.frozen_cellar_padlock` | premises | jej piwnica; aneks do najmu i wykaz lokatorów |
+| `job.ghent_beguinage` | shared | magazyn zabytkowego beginażu; pismo instytucji i opiekun |
+| `job.gosia_workbench_drawer` | object | szuflada kupionego stołu; paragon i zdjęcie odbioru |
+| `job.grandma_broth` | premises | mieszkanie pani Haliny; sąsiadka i list |
+| `job.grandpa_chest` | object | kufer dziadka Józefa; rzecz w domu matki (akt) |
+| `job.halina_christmas_tin` | object | puszka z piernikami Haliny; zdjęcie i sąsiadka |
+| `job.halina_recipe_box` | object | własna skrzynka z przepisami Haliny |
+| `job.heating_service_cupboard` | shared | szafka z dziennikiem we wspólnym korytarzu kotłowni |
+| `job.kiosk_shutter` | premises | kiosk Stefana (lokal firmy) |
+| `job.krakow_antiquarian` | object | sejf szyfrowy antykwariusza i cudza kasetka |
+| `job.krakow_tenement_gate` | shared | brama kamienicy; zarządca i uchwała |
+| `job.krystyna_wooden_album` | object | skrzynka na zdjęcia zrobiona przez ojca Krystyny |
+| `job.liege_bakery` | premises | tylne drzwi piekarni; najem i przejęcie firmy |
+| `job.marta_poster_studio` | premises | wynajęta pracownia Marty |
+| `job.museum_time_lock` | shared | skarbiec muzeum; pismo dyrekcji |
+| `job.newlyweds_4am` | premises | mieszkanie nowożeńców; dowód, meldunek, sąsiad |
+| `job.night_nurse` | premises | mieszkanie Agnieszki; zarządca i dowód |
+| `job.pizzeria_pays_pizza` | premises | zaplecze pizzerii Renaty; najem i sąsiad |
+| `job.refuse_aunt_alive` | premises | odmowa: mieszkanie ciotki, która żyje |
+| `job.refuse_ex_partner` | premises | odmowa: mieszkanie byłej partnerki |
+| `job.refuse_rush_bribe` | premises | odmowa: mieszkanie siostry, dopłata za brak pytań |
+| `job.refuse_sisters_flat` | premises | odmowa: mieszkanie siostry bez jej zgody |
+| `job.refuse_t43_09_empty_flat` | premises | odmowa: cudze mieszkanie z ciemnymi oknami |
+| `job.refuse_t43_10_early_clearance` | premises | odmowa: wynajęte mieszkanie przed terminem wydania |
+| `job.refuse_t43_11_other_stall` | premises | odmowa: sąsiednie stoisko, cudzy lokal na targu |
+| `job.refuse_t43_12_surprise_key` | shared | odmowa: świetlica wspólnoty bez zgody zarządczyni |
+| `job.refuse_unapproved_repair` | shared | odmowa: wspólna szafka serwisowa, zarządczyni nie zna wizyty |
+| `job.refuse_unapproved_stockroom` | premises | odmowa: magazyn cudzego sklepu |
+| `job.refuse_wrong_letterbox` | object | odmowa: skrzynka na listy sąsiadów spod szesnastki |
+| `job.roman_service_cupboard` | shared | szafka gospodarcza na klatce; zarządca i protokół wspólnoty |
+| `job.shared_room_door` | shared | pomieszczenie wspólne po głosowaniu mieszkańców |
+| `job.stefan_book_tin` | object | przenośna puszka Stefana na kłódkę szyfrową |
+| `job.student_dorm` | premises | pokój 412 w akademiku; portier z listą |
+| `job.swiatniki_journeyman_padlock` | object | kłódka czeladnicza, właściciel i twórca |
+| `job.t43_09_01_winter_keys` | premises | mieszkanie Agnieszki; Roman potwierdza lokatorkę |
+| `job.t43_09_02_blanket_cupboard` | shared | wspólna szafa na koce; zlecenie wspólnoty |
+| `job.t43_09_03_wooden_postbox` | shared | rekwizyt muzeum; zlecenie kuratorki |
+| `job.t43_09_04_choir_case` | object | skrzynka z nutami Mili; paragon, Teresa potwierdza czyja |
+| `job.t43_09_05_receipt_safe` | object | mały sejf Stefana; faktura na niego |
+| `job.t43_09_06_draughty_hall` | shared | boczne wejście bloku; zarządca i uchwała |
+| `job.t43_09_08_spare_key_hook` | premises | mieszkanie Kazimierza (właściwe piętro) |
+| `job.t43_10_01_renovator_bureau` | object | sekretarzyk kupiony przez Gosię; faktura |
+| `job.t43_10_02_scaffold_store` | premises | wynajęty magazyn ekipy; najem i zarządca |
+| `job.t43_10_03_exhibit_clock` | shared | wymontowany zegar muzeum; pismo i protokół przekazania |
+| `job.t43_10_04_design_cabinet` | object | szafka Marty z próbkami; faktura szafki |
+| `job.t43_10_05_porters_drawer` | shared | szuflada dyżurki; zlecenie administracji akademika |
+| `job.t43_10_06_shared_room_entry` | shared | drzwi wspólnej sali; uchwała i zarządczyni |
+| `job.t43_11_01_wooden_market` | shared | skrzynia muzeum na targu; zlecenie kuratorki |
+| `job.t43_11_02_bicycle_stand` | object | rower wystawowy Borysa; paragon i zdjęcie |
+| `job.t43_11_03_tool_exchange` | object | skrzynia z narzędziami Władysława; faktura |
+| `job.t43_11_04_sailors_stall` | object | prywatna skrzynia Aino; faktura i kapitan |
+| `job.t43_11_05_rehearsal_chest` | shared | skrzynia sceniczna sali; pismo organizatora i opiekun |
+| `job.t43_11_07_wrong_delivery` | premises | kiosk pod złym numerem; konsultacja bez otwierania |
+| `job.t43_12_01_letters_archive` | object | sejf Krystyny z listami; dokument własności i spadku |
+| `job.t43_12_02_detective_cabinet` | shared | skrzynia pokazowa muzeum; pismo dyrekcji |
+| `job.t43_12_03_community_store` | shared | wspólny magazynek z krzesłami; uchwała |
+| `job.t43_12_04_school_box` | shared | skrzynia szkoły; pisemna zgoda szkoły |
+| `job.t43_12_05_tea_fund_case` | shared | kasetka funduszu wspólnoty; uchwała, dwoje opiekunów |
+| `job.t43_12_07_clock_back_home` | shared | zegar muzeum po transporcie; pismo dyrekcji |
+| `job.t43_12_08_henryks_bench` | object | skrzynia ćwiczebna Henryka przekazana z warsztatem |
+| `job.time_capsule` | shared | kapsuła czasu klasy 3b; zgoda szkoły przy wszystkich |
+| `job.uncle_safe_heirs` | shared | sejf trojga spadkobierców; potrzebna zgoda wszystkich |
+| `job.warm_room_for_neighbours` | shared | świetlica wspólnoty; zgoda zarządczyni przez telefon |
+| `job.widow_bureau` | object | sekretarzyk zmarłego męża w domu pani Ireny |
+| `job.wigilia_table_drawer` | shared | kredens świetlicy; zgoda zarządczyni i uchwała |
+| `job.winter_bicycle_cellar` | premises | miejsce w piwnicznej rowerowni; aneks do najmu |
+| `job.wooden_winter_village` | shared | kaseta muzeum w depozycie świetlicy; upoważnienie |
+| `job.wrong_floor` | premises | mieszkanie piętro niżej (cudze drzwi) |
+| `job.zuzanna_catalogue_drawer` | shared | szuflada muzeum; protokół użyczenia kopii |
+
+
 ---
 
 ## 3. Wycena (mechanika)

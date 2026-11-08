@@ -6,6 +6,7 @@
   "family": "lever",
   "tier": 3,
   "verification": "Teresa ma umowę najmu z prawem do wspólnej suszarni (2). Administrator Roman potwierdza regulamin i dostęp (2–3); wycena zaakceptowana. Osiedle Słoneczne (jak `wrong_floor`).",
+  "verify_kind": "shared",
   "reward_coins": 145,
   "tone": "domowy, spokojny",
   "i18n": {

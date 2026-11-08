@@ -5,6 +5,7 @@
   "family": "lever_detector",
   "tier": 2,
   "verification": "dokument przejęcia firmy (3) i umowa najmu (2). Haczyk: brak.",
+  "verify_kind": "premises",
   "reward_coins": 130,
   "tone": "zabawny",
   "i18n": {

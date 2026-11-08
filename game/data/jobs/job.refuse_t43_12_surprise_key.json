@@ -6,6 +6,7 @@
   "family": "pin_tumbler",
   "tier": 6,
   "verification": "Darek chce wejść wieczorem do zamkniętej świetlicy wspólnoty (dekoracje). Nie ma zgody zarządczyni i odrzuca telefon do niej. Odmowa: proponujemy cichą rozmowę z Elżbietą. Brak oskarżeń.",
+  "verify_kind": "shared",
   "reward_coins": 0,
   "tone": "ciepły, lekko zabawny; odmowa bez dramatu",
   "i18n": {

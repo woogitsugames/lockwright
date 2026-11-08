@@ -6,6 +6,7 @@
   "family": "lever",
   "tier": 3,
   "verification": "Własność budynku nie potwierdza zgody lokatora na wejście. Flagi: flag.tenant_objects, flag.no_witness. Odmowa, bez monet, +5 reputacji.",
+  "verify_kind": "premises",
   "reward_coins": 0,
   "tone": "spokojna odmowa, bez oskarżeń",
   "i18n": {

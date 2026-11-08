@@ -6,6 +6,7 @@
   "family": "time_lock",
   "tier": 2,
   "verification": "Pismo dyrekcji (2), protokół zwrotu wymontowanego zegara (2). Próg 2. Wyłącznie regulacja po transporcie i próba chodu; bez zwalniania blokady. Cena zaakceptowana.",
+  "verify_kind": "shared",
   "reward_coins": 200,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

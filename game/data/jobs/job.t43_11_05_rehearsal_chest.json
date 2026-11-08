@@ -6,6 +6,7 @@
   "family": "lever",
   "tier": 4,
   "verification": "Pismo organizatora (2), opiekun sali potwierdza własność skrzyni i dostęp Igi (3). Próg 2. Wycena zaakceptowana.",
+  "verify_kind": "shared",
   "reward_coins": 185,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

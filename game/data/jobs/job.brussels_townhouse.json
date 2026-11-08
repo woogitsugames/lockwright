@@ -5,6 +5,7 @@
   "family": "dimple",
   "tier": 2,
   "verification": "umowa najmu (2), adres z gminy (eID, 2) i sąsiad (2). Haczyk: brak.",
+  "verify_kind": "premises",
   "reward_coins": 105,
   "tone": "zabawny, ciepły",
   "i18n": {

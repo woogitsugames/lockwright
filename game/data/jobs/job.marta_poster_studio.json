@@ -6,6 +6,7 @@
   "family": "pin_tumbler",
   "tier": 2,
   "verification": "Umowa najmu pracowni Marty (2) i świadek z sąsiedniej pracowni (2). Uprawnienie do lokalu potwierdzone.",
+  "verify_kind": "premises",
   "reward_coins": 105,
   "tone": "ciepły, ironiczny",
   "i18n": {

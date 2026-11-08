@@ -33,6 +33,8 @@ menu.about,About the game,O grze,Über das Spiel,À propos du jeu,Acerca del jue
 menu.jobs,Jobs,Zlecenia,Aufträge,Interventions,Encargos
 jobs.title,Jobs,Zlecenia,Aufträge,Interventions,Encargos
 job.verify,Check right of entry,Sprawdź prawo do lokalu,Zutrittsrecht prüfen,Vérifier le droit d'accès,Comprobar derecho de entrada
+job.verify.object,Check who owns it,"Sprawdź, czyja to rzecz","Prüfen, wem es gehört",Vérifier le propriétaire,Comprobar de quién es
+job.verify.shared,Check permission to open,Sprawdź zgodę na otwarcie,Erlaubnis zum Öffnen prüfen,Vérifier l'autorisation,Comprobar la autorización
 job.accept,Proceed with the job,Przyjmij zlecenie,Auftrag annehmen,Accepter l'intervention,Aceptar el encargo
 job.refuse,Decline the job,Odmów,Auftrag ablehnen,Refuser l'intervention,Rechazar el encargo
 job.opened,Lock opened. Bill settled.,Zamek otwarty. Rachunek rozliczony.,Schloss offen. Rechnung bezahlt.,Serrure ouverte. Facture réglée.,Cerradura abierta. Cuenta saldada.
@@ -42,6 +44,8 @@ receipt.service,Emergency lock opening,Awaryjne otwarcie zamka,Notöffnung eines
 receipt.tip,Tip (clean opening),Napiwek (czyste otwarcie),Trinkgeld (sauber geöffnet),Pourboire (ouverture soignée),Propina (apertura limpia)
 common.continue,Continue,Kontynuuj,Weiter,Continuer,Continuar
 verify.title,Check right of entry,Sprawdź prawo do lokalu,Zutrittsrecht prüfen,Vérifier le droit d'accès,Comprobar derecho de entrada
+verify.title.object,Check who owns it,"Sprawdź, czyja to rzecz","Prüfen, wem es gehört",Vérifier le propriétaire,Comprobar de quién es
+verify.title.shared,Check permission to open,Sprawdź zgodę na otwarcie,Erlaubnis zum Öffnen prüfen,Vérifier l'autorisation,Comprobar la autorización
 verify.hint,The client shows their evidence. You decide.,Klient kładzie karty na stole. Ty decydujesz.,Der Kunde legt die Nachweise vor. Du entscheidest.,Le client présente ses justificatifs. À toi de décider.,El cliente presenta sus pruebas. Tú decides.
 verify.ask_more,Ask for more evidence,Poproś o dodatkowy dowód,Weiteren Nachweis erbitten,Demander un autre justificatif,Pedir más pruebas
 verify.card.id,Identity document,Dokument tożsamości,Ausweis,Pièce d'identité,Documento de identidad
@@ -60,6 +64,8 @@ verify.card.address_app,Address shown in app,Adres w aplikacji,Adresse in der Ap
 verify.card.police,Police call-out,Wezwanie policji,Polizeianruf,Appel à la police,Intervención policial
 verify.card.bailiff,Bailiff,Komornik,Gerichtsvollzieher,Huissier,Agente judicial
 verify.paper.witness.body,I've known this person for years. They live at this address.,Znam tę osobę od lat. Mieszka pod tym adresem.,Ich kenne diese Person seit Jahren. Sie wohnt unter dieser Adresse.,Je connais cette personne depuis des années. Elle habite à cette adresse.,Conozco a esta persona desde hace años. Vive en esta dirección.
+verify.paper.witness.body.object,I've known this person for years. This item is theirs.,Znam tę osobę od lat. Ta rzecz należy do niej.,Ich kenne diese Person seit Jahren. Der Gegenstand gehört ihr.,Je connais cette personne depuis des années. Cet objet lui appartient.,Conozco a esta persona desde hace años. Este objeto es suyo.
+verify.paper.witness.body.shared,I confirm that the opening has been agreed.,"Potwierdzam, że na otwarcie jest zgoda.","Ich bestätige, dass dem Öffnen zugestimmt wurde.",Je confirme que l'ouverture a été convenue.,Confirmo que la apertura está acordada.
 verify.paper.institution.head,AUTHORISATION,UPOWAŻNIENIE,VOLLMACHT,AUTORISATION,AUTORIZACIÓN
 verify.paper.institution.body,We agree to the opening in the presence of our staff.,Zgadzamy się na otwarcie w obecności naszego pracownika.,Wir stimmen der Öffnung in Anwesenheit unserer Mitarbeiter zu.,Nous autorisons l'ouverture en présence de notre personnel.,Autorizamos la apertura en presencia de nuestro personal.
 verify.paper.invoice.head,INVOICE,FAKTURA,RECHNUNG,FACTURE,FACTURA
@@ -84,7 +90,7 @@ verify.paper.issuer.school,SCHOOL OFFICE,SEKRETARIAT SZKOŁY,SCHULSEKRETARIAT,SE
 verify.paper.purpose.resident.head,CONFIRMATION OF RESIDENCE,POTWIERDZENIE ZAMIESZKANIA,WOHNBESTÄTIGUNG,ATTESTATION DE RÉSIDENCE,CERTIFICADO DE RESIDENCIA
 verify.paper.purpose.resident.body,The person named lives here and is on our list of residents.,Wymieniona osoba mieszka w lokalu i jest w wykazie lokatorów.,Die genannte Person wohnt hier und steht auf unserer Bewohnerliste.,La personne nommée habite ici et figure sur notre liste des résidents.,La persona indicada vive aquí y figura en nuestra lista de residentes.
 verify.paper.purpose.access.head,PERMISSION OF ACCESS,ZGODA NA DOSTĘP,ZUTRITTSERLAUBNIS,AUTORISATION D'ACCÈS,PERMISO DE ACCESO
-verify.paper.purpose.access.body,We agree to this door being opened in the presence of our representative.,Zgadzamy się na otwarcie tych drzwi w obecności naszego przedstawiciela.,Wir stimmen der Öffnung dieser Tür in Anwesenheit unserer Vertretung zu.,Nous acceptons l'ouverture de cette porte en présence de notre représentant.,Aceptamos la apertura de esta puerta en presencia de nuestro representante.
+verify.paper.purpose.access.body,We agree to this being opened in the presence of our representative.,Zgadzamy się na to otwarcie w obecności naszego przedstawiciela.,Wir stimmen dieser Öffnung in Anwesenheit unserer Vertretung zu.,Nous acceptons cette ouverture en présence de notre représentant.,Aceptamos esta apertura en presencia de nuestro representante.
 verify.paper.purpose.storage.head,LIST OF USERS,WYKAZ UŻYTKOWNIKÓW,NUTZERVERZEICHNIS,LISTE DES USAGERS,LISTA DE USUARIOS
 verify.paper.purpose.storage.body,The person named has the use of this storage space.,Wymieniona osoba ma prawo korzystać z tego schowka.,Die genannte Person darf diesen Abstellraum nutzen.,La personne nommée a l'usage de ce local de rangement.,La persona indicada tiene derecho a usar este trastero.
 verify.paper.purpose.custody.head,CONFIRMATION OF CUSTODY,POTWIERDZENIE OPIEKI,BESTÄTIGUNG DER OBHUT,ATTESTATION DE GARDE,CERTIFICADO DE CUSTODIA
@@ -436,6 +442,14 @@ verify.ask.witness.1,Who here can confirm this is your home?,Kto z sąsiadów mo
 verify.reply.witness.1,The neighbor across the landing. She's known me for years.,Sąsiadka z naprzeciwka. Zna mnie od lat.,Die Nachbarin gegenüber. Sie kennt mich seit Jahren.,La voisine d'en face. Elle me connaît depuis des années.,La vecina de enfrente. Me conoce desde hace años.
 verify.ask.witness.2,Could a neighbor come to the door for a moment?,Czy ktoś z sąsiadów może na chwilę podejść?,Könnte kurz ein Nachbar an die Tür kommen?,Un voisin pourrait-il venir un instant ?,¿Podría acercarse un momento algún vecino?
 verify.reply.witness.2,I'll knock next door. They're always up early.,Zapukam obok. Tam zawsze wcześnie wstają.,Ich klopfe nebenan. Die sind immer früh wach.,Je frappe à côté. Ils sont toujours levés tôt.,Llamo a la puerta de al lado. Siempre madrugan.
+verify.ask.witness.1.object,Who can confirm this is yours?,"Kto może potwierdzić, czyja to rzecz?","Wer kann bestätigen, dass es Ihnen gehört?",Qui peut confirmer que c'est à vous ?,¿Quién puede confirmar que es suyo?
+verify.reply.witness.1.object,Someone who knows it's mine. Ask them.,"Ktoś, kto wie, że to moje. Proszę zapytać.","Jemand, der weiß, dass es mir gehört. Fragen Sie ruhig.",Quelqu'un qui sait que c'est à moi. Demandez-lui.,Alguien que sabe que es mío. Pregúntele.
+verify.ask.witness.2.object,Can they confirm it for a moment?,Czy ta osoba może to na chwilę potwierdzić?,Kann diese Person das kurz bestätigen?,Cette personne peut-elle le confirmer un instant ?,¿Puede confirmarlo esa persona un momento?
+verify.reply.witness.2.object,"Yes, they know where it came from.","Tak, wie, skąd ta rzecz się wzięła.","Ja, sie weiß, woher es stammt.","Oui, elle sait d'où il vient.","Sí, sabe de dónde viene."
+verify.ask.witness.1.shared,Who else can confirm the consent?,Kto jeszcze potwierdzi tę zgodę?,Wer kann die Zustimmung noch bestätigen?,Qui d'autre peut confirmer l'accord ?,¿Quién más puede confirmar el permiso?
+verify.reply.witness.1.shared,Someone who was there when it was agreed.,"Osoba, która była przy uzgodnieniu.","Jemand, der dabei war, als es vereinbart wurde.",Quelqu'un qui était là quand on l'a convenu.,Alguien que estaba presente cuando se acordó.
+verify.ask.witness.2.shared,Can that person stay while I open it?,Czy ta osoba może zostać przy otwieraniu?,Kann diese Person beim Öffnen dabei sein?,Cette personne peut-elle rester pendant l'ouverture ?,¿Puede esa persona quedarse mientras abro?
+verify.reply.witness.2.shared,"Yes, that's why they came.","Tak, właśnie po to jest.","Ja, genau dafür ist sie da.","Oui, elle est là pour ça.","Sí, para eso está aquí."
 verify.ask.manager.1,Can we call the building manager?,Możemy zadzwonić do zarządcy?,Können wir die Hausverwaltung anrufen?,Peut-on appeler le gestionnaire ?,¿Podemos llamar al administrador?
 verify.reply.manager.1,"Yes, the number's on the notice board.","Tak, numer jest na tablicy ogłoszeń.","Ja, die Nummer hängt am Schwarzen Brett.","Oui, le numéro est sur le tableau d'affichage.","Sí, el número está en el tablón de anuncios."
 verify.ask.manager.2,Will the manager confirm the address?,Czy zarządca potwierdzi adres?,Bestätigt die Verwaltung die Adresse?,Le gestionnaire confirmera-t-il l'adresse ?,¿El administrador confirmará la dirección?
@@ -446,12 +460,17 @@ verify.ask.lease.2,Is the lease still valid?,Czy umowa jest wciąż ważna?,Ist 
 verify.reply.lease.2,"Yes, until the end of next year.","Tak, do końca przyszłego roku.","Ja, bis Ende nächsten Jahres.","Oui, jusqu'à la fin de l'année prochaine.","Sí, hasta finales del año que viene."
 verify.ask.resolution.1,Who signed the resolution?,Kto podpisał uchwałę?,Wer hat den Beschluss unterschrieben?,Qui a signé la décision ?,¿Quién firmó el acuerdo?
 verify.reply.resolution.1,"The board, and most of the residents.",Zarząd i większość mieszkańców.,Der Vorstand und die meisten Bewohner.,Le conseil et la plupart des résidents.,La junta y la mayoría de los vecinos.
-verify.ask.resolution.2,Does it cover opening this door?,Czy uchwała obejmuje otwarcie tych drzwi?,Deckt er das Öffnen dieser Tür ab?,Couvre-t-elle l'ouverture de cette porte ?,¿Incluye abrir esta puerta?
+verify.ask.resolution.2,Does it cover this opening?,Czy uchwała obejmuje to otwarcie?,Deckt er diese Öffnung ab?,Couvre-t-elle cette ouverture ?,¿Incluye esta apertura?
 verify.reply.resolution.2,"Yes, it's in point two.","Tak, w punkcie drugim.","Ja, unter Punkt zwei.","Oui, c'est au point deux.","Sí, en el punto dos."
 verify.ask.deed.1,Whose name is on the deed?,Na kogo jest akt własności?,Auf wessen Namen läuft die Urkunde?,Au nom de qui est l'acte ?,¿A nombre de quién está la escritura?
 verify.reply.deed.1,"Mine. Here, with the stamp.","Na mnie. Proszę, z pieczątką.","Auf meinen. Bitte, mit Stempel.","Au mien. Voilà, avec le tampon.","A mi nombre. Aquí tiene, con el sello."
 verify.ask.deed.2,Does the address match this building?,Czy adres zgadza się z tym budynkiem?,Passt die Adresse zu diesem Haus?,L'adresse correspond-elle à cet immeuble ?,¿La dirección coincide con este edificio?
 verify.reply.deed.2,"Yes, the number and the staircase.","Tak, numer i klatka też.","Ja, Hausnummer und Treppenhaus.","Oui, le numéro et l'escalier.","Sí, el número y la escalera."
+verify.reply.deed.1.shared,"All of ours. Here, with the stamp.","Na nas wszystkich. Proszę, z pieczątką.","Auf uns alle. Bitte, mit Stempel.","À nous tous. Voilà, avec le tampon.","A nombre de todos. Aquí tiene, con el sello."
+verify.ask.deed.2.object,Does the document cover this item?,Czy dokument obejmuje tę rzecz?,Umfasst die Urkunde diesen Gegenstand?,Le document couvre-t-il cet objet ?,¿El documento incluye este objeto?
+verify.reply.deed.2.object,"Yes, it's listed there.","Tak, jest w nim wymieniona.","Ja, er ist dort aufgeführt.","Oui, il y figure.","Sí, figura en él."
+verify.ask.deed.2.shared,Does it name everyone who must agree?,"Czy są w nim wszyscy, którzy muszą się zgodzić?","Stehen darin alle, die zustimmen müssen?",Nomme-t-il tous ceux qui doivent être d'accord ?,¿Figuran todos los que deben estar de acuerdo?
+verify.reply.deed.2.shared,"Yes, every name is there.","Tak, są wszystkie nazwiska.","Ja, alle Namen stehen drin.","Oui, tous les noms y sont.","Sí, están todos los nombres."
 verify.ask.inheritance.1,Are there other heirs?,Czy są inni spadkobiercy?,Gibt es weitere Erben?,Y a-t-il d'autres héritiers ?,¿Hay otros herederos?
 verify.reply.inheritance.1,Yes. Everyone is named in the document.,Tak. Wszyscy są wymienieni w dokumencie.,Ja. Alle stehen im Dokument.,Oui. Tous sont nommés dans le document.,Sí. Todos figuran en el documento.
 verify.ask.inheritance.2,Was the inheritance confirmed by a notary?,Czy spadek potwierdził notariusz?,Hat ein Notar das Erbe bestätigt?,Un notaire a-t-il confirmé l'héritage ?,¿Un notario confirmó la herencia?
@@ -464,6 +483,7 @@ verify.ask.letter.1,Who is the letter addressed to?,Do kogo jest zaadresowany li
 verify.reply.letter.1,"To me, at this address.","Do mnie, na ten adres.","An mich, an diese Adresse.","À moi, à cette adresse.","A mí, a esta dirección."
 verify.ask.letter.2,When did it arrive?,Kiedy przyszedł?,Wann ist er gekommen?,Quand est-elle arrivée ?,¿Cuándo llegó?
 verify.reply.letter.2,This week. The postmark shows the date.,W tym tygodniu. Data jest na stemplu.,Diese Woche. Das Datum steht auf dem Poststempel.,Cette semaine. Le cachet de la poste fait foi.,Esta semana. La fecha está en el matasellos.
+verify.reply.letter.1.shared,To me. It says to come today.,"Do mnie. Napisali, żeby przyjść dziś.","An mich. Da steht, ich soll heute kommen.",À moi. On me dit de venir aujourd'hui.,A mí. Dice que venga hoy.
 verify.ask.photo.1,Where was this photo taken?,Gdzie zrobiono to zdjęcie?,Wo wurde das Foto aufgenommen?,Où cette photo a-t-elle été prise ?,¿Dónde se hizo esta foto?
 verify.reply.photo.1,"Right here, in the hallway. See the tiles?","Tutaj, w przedpokoju. Widać płytki.",Genau hier im Flur. Sehen Sie die Fliesen?,"Ici même, dans l'entrée. Vous voyez le carrelage ?","Aquí mismo, en el pasillo. ¿Ve las baldosas?"
 verify.ask.photo.2,Is that the same thing that is behind this door?,"Czy to ta sama rzecz, co za tymi drzwiami?",Ist das dasselbe Stück wie hinter dieser Tür?,Est-ce le même objet que derrière cette porte ?,¿Es lo mismo que hay detrás de esta puerta?
@@ -476,6 +496,7 @@ verify.ask.invoice.1,Who is the invoice made out to?,Na kogo jest wystawiona fak
 verify.reply.invoice.1,"To me, with my address.","Na mnie, z moim adresem.","Auf mich, mit meiner Adresse.","À moi, avec mon adresse.","A mi nombre, con mi dirección."
 verify.ask.invoice.2,Does it list this item?,Czy jest na niej ta rzecz?,Steht dieses Stück darauf?,Cet objet y figure-t-il ?,¿Aparece este artículo?
 verify.reply.invoice.2,"Yes, on the first line.","Tak, w pierwszej pozycji.","Ja, in der ersten Zeile.","Oui, à la première ligne.","Sí, en la primera línea."
+verify.reply.invoice.1.shared,To the institution. I'm here on its behalf.,Na instytucję. Jestem tu w jej imieniu.,Auf die Einrichtung. Ich bin in ihrem Auftrag hier.,À l'établissement. Je viens en son nom.,A la institución. Vengo en su nombre.
 verify.ask.address_app.1,Can you show me the address in the app?,Można pokazać adres w aplikacji?,Können Sie mir die Adresse in der App zeigen?,Pouvez-vous me montrer l'adresse dans l'application ?,¿Me enseña la dirección en la aplicación?
 verify.reply.address_app.1,Here. Same street and number.,Proszę. Ta sama ulica i numer.,"Bitte. Gleiche Straße, gleiche Nummer.","Voilà. Même rue, même numéro.",Aquí tiene. La misma calle y número.
 verify.ask.address_app.2,Is the account in this name?,Czy konto jest na to nazwisko?,Läuft das Konto auf diesen Namen?,Le compte est-il à ce nom ?,¿La cuenta está a este nombre?

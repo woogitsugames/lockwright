@@ -5,6 +5,7 @@
   "family": "axial_slider",
   "tier": 2,
   "verification": "faktura (2) i posiadanie (1). Haczyk: brak.",
+  "verify_kind": "object",
   "reward_coins": 140,
   "tone": "ciepły",
   "i18n": {

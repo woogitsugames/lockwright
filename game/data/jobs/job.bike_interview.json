@@ -5,6 +5,7 @@
   "family": "combo",
   "tier": 1,
   "verification": "zdjęcie (1) i paragon (1), czyli rzecz w posiadaniu, próg 2. Haczyk: brak.",
+  "verify_kind": "object",
   "reward_coins": 65,
   "tone": "ciepły, zabawny",
   "i18n": {

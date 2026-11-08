@@ -6,6 +6,7 @@
   "family": "lever_detector",
   "tier": 5,
   "verification": "Portier Edek potwierdza opiekę nad pomieszczeniem (2); pismo administracji uczelni ze zgodą na wydanie krzeseł (2).",
+  "verify_kind": "shared",
   "reward_coins": 105,
   "tone": "ciepły, suchy humor",
   "i18n": {

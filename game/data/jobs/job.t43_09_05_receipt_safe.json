@@ -6,6 +6,7 @@
   "family": "dial_safe",
   "tier": 2,
   "verification": "Najem kiosku (2) i faktura sejfu na Stefana (2). Próg danych 3. Ustalono cenę przed pracą.",
+  "verify_kind": "object",
   "reward_coins": 80,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

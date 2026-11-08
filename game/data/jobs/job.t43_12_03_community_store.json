@@ -6,6 +6,7 @@
   "family": "pin_tumbler",
   "tier": 5,
   "verification": "Elżbieta jako zarządczyni (3), uchwała o korzystaniu ze wspólnego magazynku (1). Próg danych 3. Wycena zaakceptowana.",
+  "verify_kind": "shared",
   "reward_coins": 195,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

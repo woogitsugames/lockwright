@@ -6,6 +6,7 @@
   "family": "lever",
   "tier": 5,
   "verification": "Pismo szkoły (2), Jadwiga potwierdza szkolne pochodzenie skrzyni (2). Próg 2. Otwarcie przy opiekunce, bez udostępniania prywatnych listów. Wycena zaakceptowana.",
+  "verify_kind": "shared",
   "reward_coins": 198,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

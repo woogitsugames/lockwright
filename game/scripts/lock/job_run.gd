@@ -69,6 +69,29 @@ static func family_for(job: Dictionary) -> StringName:
 	return FAMILY_MAP.get(job.get("family", ""), &"")
 
 
+## D-103: what the locksmith checks before opening (data `verify_kind`): "premises" = the right to a
+## flat/room/cellar/kiosk, "object" = whose the thing is (bike, chest, tin, safe), "shared" = consent
+## for a common or institutional space or item opened on someone's behalf. Refusals keep the kind of
+## what is asked for. Missing or unknown -> "premises" (the old wording).
+const VERIFY_KINDS := ["premises", "object", "shared"]
+
+
+static func verify_kind(job: Dictionary) -> String:
+	var k := String(job.get("verify_kind", "premises"))
+	return k if VERIFY_KINDS.has(k) else "premises"
+
+
+## The text key for a verification wording of this job's kind: `<base>.<kind>` when that key exists
+## (job.verify.object, verify.title.shared, verify.ask.witness.1.object …), else `base` (premises).
+static func verify_key(base: StringName, job: Dictionary) -> StringName:
+	var kind := verify_kind(job)
+	if kind != "premises":
+		var k := StringName("%s.%s" % [base, kind])
+		if I18n.has_key(k):
+			return k
+	return base
+
+
 ## lever_detector joins as soon as its 5-lever plan-B assets are in the project
 ## (docs/handoff/LOCAL-SESSION-PROMPT.md (b)); no code change needed then.
 const DETECTOR_GLB := "res://assets/photoreal_families/lever_detector/lever_detector_baked.glb"

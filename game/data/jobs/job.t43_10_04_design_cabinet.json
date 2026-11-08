@@ -6,6 +6,7 @@
   "family": "magnetic",
   "tier": 2,
   "verification": "Najem pracowni Marty (2), faktura szafki (2). Lokal firmy, próg danych 3. Wycena zaakceptowana.",
+  "verify_kind": "object",
   "reward_coins": 130,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

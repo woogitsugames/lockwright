@@ -5,6 +5,7 @@
   "family": "wafer",
   "tier": 2,
   "verification": "właścicielka znaleziska (2), która z własnej woli przekazuje je rodzinie, i list z adresem (1). Haczyk: brak. To jedyne zlecenie, w którym obie strony chcą otwarcia.",
+  "verify_kind": "object",
   "reward_coins": 0,
   "tone": "wzruszający",
   "i18n": {

@@ -6,6 +6,7 @@
   "family": "egyptian",
   "tier": 2,
   "verification": "Zlecenie muzeum (2), faktura drewnianej skrzynki (2). Próg 2. Otwarcie rekwizytu edukacyjnego za zgodą kuratorki, cena zaakceptowana.",
+  "verify_kind": "shared",
   "reward_coins": 150,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

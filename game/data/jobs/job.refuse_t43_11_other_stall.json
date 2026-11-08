@@ -6,6 +6,7 @@
   "family": "wafer",
   "tier": 3,
   "verification": "Umowa dotyczy stoiska Alicji, nie sąsiedniego (2, brak potwierdzenia celu). Flagi: flag.contradiction, flag.no_witness. Odmowa, +5 reputacji, bez monet.",
+  "verify_kind": "premises",
   "reward_coins": 0,
   "tone": "spokojna odmowa, bez oskarżeń",
   "i18n": {

@@ -5,6 +5,7 @@
   "family": "disc_detainer",
   "tier": 2,
   "verification": "kapitan (3) i książeczka żeglarska (1). Haczyk: brak.",
+  "verify_kind": "object",
   "reward_coins": 135,
   "tone": "ciepły",
   "i18n": {

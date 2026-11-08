@@ -5,6 +5,7 @@
   "family": "pin_tumbler",
   "tier": 2,
   "verification": "dowód (1), w którym inne nazwisko niż na drzwiach „ma wyjaśnić” rozwód siostry. Zgrzyty: `flag.rush_bribe`, `flag.absent_owner`, `flag.no_witness`.",
+  "verify_kind": "premises",
   "reward_coins": 0,
   "tone": "napięty, spokojny",
   "i18n": {

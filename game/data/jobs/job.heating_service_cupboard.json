@@ -6,6 +6,7 @@
   "family": "pin_tumbler",
   "tier": 3,
   "verification": "Elżbieta potwierdza zarząd nad pomieszczeniem wspólnym (2–3) i pisemne zlecenie serwisowe dla Pawła (2). Ślusarz otwiera tylko szafkę z dokumentacją, nie dotyka instalacji grzewczej. Cena uzgodniona.",
+  "verify_kind": "shared",
   "reward_coins": 145,
   "tone": "rzeczowy, troska o sąsiadów",
   "i18n": {

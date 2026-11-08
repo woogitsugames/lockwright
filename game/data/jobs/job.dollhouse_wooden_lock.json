@@ -5,6 +5,7 @@
   "family": "egyptian",
   "tier": 1,
   "verification": "rzecz w posiadaniu (2). Haczyk: brak.",
+  "verify_kind": "object",
   "reward_coins": 50,
   "tone": "ciepły",
   "i18n": {

@@ -236,7 +236,7 @@ func _ready() -> void:
 	situation_label.text = I18n.t(i18n.get("situation", &"jobs.title"))
 	_show_family(job)
 	_setup_dialogue(job)
-	verify_button.text = I18n.t(&"job.verify")
+	verify_button.text = I18n.t(JobRun.verify_key(&"job.verify", job))  # D-103: flat / thing / consent
 	back_button.text = "‹ " + I18n.t(&"common.back")
 	verify_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/job_verify.tscn"))
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/jobs_list.tscn"))

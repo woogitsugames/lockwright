@@ -5,6 +5,7 @@
   "family": "wafer",
   "tier": 2,
   "verification": "legitymacja działkowca (2) i świadek (2), próg 3. Zgrzyt „inne nazwisko w umowie” wyjaśnia się sam (żona).",
+  "verify_kind": "premises",
   "reward_coins": 85,
   "tone": "zabawny, ciepły",
   "i18n": {

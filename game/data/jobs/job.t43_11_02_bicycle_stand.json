@@ -6,6 +6,7 @@
   "family": "combo",
   "tier": 3,
   "verification": "Borys pokazuje paragon roweru i kłódki (2), własne zdjęcie tego samego roweru (1). Próg 2. Zgoda na cenę przed pracą.",
+  "verify_kind": "object",
   "reward_coins": 160,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

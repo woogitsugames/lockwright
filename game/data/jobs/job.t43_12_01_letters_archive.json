@@ -6,6 +6,7 @@
   "family": "dial_safe",
   "tier": 3,
   "verification": "Krystyna okazuje dokument własności (2) oraz dokument dziedziczenia (3). Jest uprawnioną właścicielką i wyraża zgodę. Próg danych 3. Wycena zaakceptowana.",
+  "verify_kind": "object",
   "reward_coins": 185,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

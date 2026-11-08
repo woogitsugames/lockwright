@@ -6,6 +6,7 @@
   "family": "wafer",
   "tier": 2,
   "verification": "Karol okazuje dowód (1) i niepodpisaną wiadomość (poszlaka). Zarządczyni nie zna wizyty, Karol proponuje dopłatę za pominięcie pytań (flag.absent_owner, flag.rush_bribe). Odmowa, +5 reputacji, bez monet.",
+  "verify_kind": "shared",
   "reward_coins": 0,
   "tone": "ostrożna odmowa, bez oskarżeń",
   "i18n": {

@@ -6,6 +6,7 @@
   "family": "pin_tumbler",
   "tier": 6,
   "verification": "Dokument przekazania warsztatu wraz z wyposażeniem (2), Władysław potwierdza skrzynię ćwiczebną Henryka (2). Próg 2. Klientem finansującym przegląd jest organizator pokazu, bez podwójnej nagrody.",
+  "verify_kind": "object",
   "reward_coins": 200,
   "tone": "spokojny, ciepły, rzeczowy",
   "i18n": {

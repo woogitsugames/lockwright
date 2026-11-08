@@ -5,6 +5,7 @@
   "family": "warded",
   "tier": 3,
   "verification": "zarządca (3) i uchwała (1). Haczyk: brak.",
+  "verify_kind": "shared",
   "reward_coins": 160,
   "tone": "ciepły, z szacunkiem dla rzemiosła",
   "i18n": {
