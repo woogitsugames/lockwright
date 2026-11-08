@@ -1,11 +1,20 @@
 {
   "schema": "lockwright.arrival_jobs/1",
-  "note": "Per-job dressing of the D-58 arrival scene (art/blender/arrival_scene.py --job <id>). Missing keys take the wrong_floor defaults in arrival_scene.py (JOB_DEFAULTS). Colours are linear RGB. camera: end = [x, y, z] mm of the hold camera, end_yaw/end_pitch deg, end_shift = lens shift at the hold, start = [x, y, yaw, pitch] of the first frame (the climb keys in between follow the stair). props: see PROPS in arrival_scene.py. No brands, no lock brand names, no readable text.",
+  "note": "Per-job dressing of the D-58 arrival scene (art/blender/arrival_scene.py --job <id>). Missing keys take the wrong_floor defaults in arrival_scene.py (JOB_DEFAULTS). Colours are linear RGB. camera: end = [x, y, z] mm of the hold camera, end_yaw/end_pitch deg, end_shift = lens shift at the hold, start = [x, y, yaw, pitch] of the first frame (the climb keys in between follow the stair). props: see PROPS in arrival_scene.py. No brands, no lock brand names, no readable text. kit: \"street\" | \"shop\" | \"corridor\" builds the job in art/blender/arrival_place.py instead of the stairwell (D-88); camera.keys = [t, x, y, z, yaw, pitch] of the walk.",
   "jobs": {
     "wrong_floor": {
-      "times": ["night", "evening", "day"],
+      "times": [
+        "night",
+        "evening",
+        "day"
+      ],
       "number": "19",
-      "door": {"style": "oak", "state": "closed", "chain": true, "ajar_deg": 38},
+      "door": {
+        "style": "oak",
+        "state": "closed",
+        "chain": true,
+        "ajar_deg": 38
+      },
       "plate": "brass",
       "wreath": true,
       "stair": "wood",
@@ -13,78 +22,495 @@
       "mailbox": {},
       "props": [],
       "slots": {
-        "kazimierz": {"feet": [-690, -470, 0], "height": 1730, "speaker": "kazimierz", "state": "closed"},
-        "teresa": {"feet": [560, 720, 0], "height": 1590, "speaker": "teresa", "state": "ajar"}
+        "kazimierz": {
+          "feet": [
+            -690,
+            -470,
+            0
+          ],
+          "height": 1730,
+          "speaker": "kazimierz",
+          "state": "closed"
+        },
+        "teresa": {
+          "feet": [
+            560,
+            720,
+            0
+          ],
+          "height": 1590,
+          "speaker": "teresa",
+          "state": "ajar"
+        }
       }
     },
     "grandma_broth": {
-      "times": ["day"],
+      "times": [
+        "day"
+      ],
       "story": "Mrs Halina locked out in slippers, broth on the stove; neighbour Zosia shut the gas at the riser valve on the landing (lever across the pipe), the letter in her mailbox is part of the check.",
       "number": "7",
-      "door": {"style": "painted", "paint": [0.20, 0.085, 0.040], "state": "closed"},
+      "door": {
+        "style": "painted",
+        "paint": [
+          0.2,
+          0.085,
+          0.04
+        ],
+        "state": "closed"
+      },
       "plate": "enamel",
       "stair": "wood",
-      "lamperia": [0.16, 0.055, 0.035],
+      "lamperia": [
+        0.16,
+        0.055,
+        0.035
+      ],
       "court_seed": 31,
       "flyer": false,
-      "mailbox": {"letter_out": true},
-      "props": [{"type": "gas_riser", "x": -880, "valve_z": 1180, "closed": true}],
-      "camera": {"end": [-60, -2540, 1580], "end_yaw": 0.5, "end_shift": [0.0, -0.13]}
+      "mailbox": {
+        "letter_out": true
+      },
+      "props": [
+        {
+          "type": "gas_riser",
+          "x": -880,
+          "valve_z": 1180,
+          "closed": true
+        }
+      ],
+      "camera": {
+        "end": [
+          -60,
+          -2540,
+          1580
+        ],
+        "end_yaw": 0.5,
+        "end_shift": [
+          0.0,
+          -0.13
+        ]
+      }
     },
     "cat_bathroom": {
-      "times": ["evening"],
+      "times": [
+        "evening"
+      ],
       "story": "Marta is at home and has opened the door for us; her cat is shut in the bathroom. Through the open door: his bowl and a toy mouse on the runner, claw marks low on the door.",
       "number": "23",
-      "door": {"style": "painted", "paint": [0.55, 0.53, 0.47], "state": "ajar", "chain": false, "ajar_deg": 62},
+      "door": {
+        "style": "painted",
+        "paint": [
+          0.55,
+          0.53,
+          0.47
+        ],
+        "state": "ajar",
+        "chain": false,
+        "ajar_deg": 62
+      },
       "plate": "enamel",
       "stair": "terrazzo",
-      "lamperia": [0.10, 0.14, 0.17],
+      "lamperia": [
+        0.1,
+        0.14,
+        0.17
+      ],
       "court_seed": 44,
       "flyer": false,
       "mailbox": {},
-      "props": [{"type": "cat_bowl", "at": [250, 640]}, {"type": "toy_mouse", "at": [40, 470, 28]}],
-      "camera": {"end": [-40, -2500, 1560], "end_yaw": 1.0, "end_shift": [0.0, -0.13]}
+      "props": [
+        {
+          "type": "cat_bowl",
+          "at": [
+            250,
+            640
+          ]
+        },
+        {
+          "type": "toy_mouse",
+          "at": [
+            40,
+            470,
+            28
+          ]
+        }
+      ],
+      "camera": {
+        "end": [
+          -40,
+          -2500,
+          1560
+        ],
+        "end_yaw": 1.0,
+        "end_shift": [
+          0.0,
+          -0.13
+        ]
+      }
     },
     "refuse_ex_partner": {
-      "times": ["night"],
+      "times": [
+        "night"
+      ],
       "story": "A man wants into his ex-partner's flat. Only her name on the mailbox; a second, brand-new deadbolt above the old lock and fresh drill dust on the floor under it say she changed things recently.",
       "number": "4",
-      "door": {"style": "padded", "leather": "leather_chocolate", "state": "closed", "new_deadbolt": true},
+      "door": {
+        "style": "padded",
+        "leather": "leather_chocolate",
+        "state": "closed",
+        "new_deadbolt": true
+      },
       "plate": "brass",
       "stair": "terrazzo",
-      "lamperia": [0.07, 0.085, 0.13],
+      "lamperia": [
+        0.07,
+        0.085,
+        0.13
+      ],
       "court_seed": 52,
       "flyer": false,
       "mailbox": {},
-      "props": [{"type": "drill_dust"}],
-      "camera": {"end": [-100, -2560, 1590], "end_yaw": 1.0, "end_shift": [0.0, -0.11]}
+      "props": [
+        {
+          "type": "drill_dust"
+        }
+      ],
+      "camera": {
+        "end": [
+          -100,
+          -2560,
+          1590
+        ],
+        "end_yaw": 1.0,
+        "end_shift": [
+          0.0,
+          -0.11
+        ]
+      }
     },
     "newlyweds_4am": {
-      "times": ["night"],
+      "times": [
+        "night"
+      ],
       "story": "4 a.m. after the wedding, keys gone to Kalisz in the maid of honour's bag. The cake box waits on the doormat, rice and rose petals trail up the stairs to the door.",
       "number": "12",
-      "door": {"style": "oak", "state": "closed"},
+      "door": {
+        "style": "oak",
+        "state": "closed"
+      },
       "plate": "enamel",
       "stair": "terrazzo",
-      "lamperia": [0.17, 0.12, 0.05],
+      "lamperia": [
+        0.17,
+        0.12,
+        0.05
+      ],
       "court_seed": 63,
       "flyer": false,
       "mailbox": {},
-      "props": [{"type": "cake_box", "at": [-60, -300]}, {"type": "petals", "n": 70}, {"type": "rice", "n": 900}],
-      "camera": {"end": [-80, -2540, 1570], "end_yaw": 0.8, "end_shift": [0.0, -0.14]}
+      "props": [
+        {
+          "type": "cake_box",
+          "at": [
+            -60,
+            -300
+          ]
+        },
+        {
+          "type": "petals",
+          "n": 70
+        },
+        {
+          "type": "rice",
+          "n": 900
+        }
+      ],
+      "camera": {
+        "end": [
+          -80,
+          -2540,
+          1570
+        ],
+        "end_yaw": 0.8,
+        "end_shift": [
+          0.0,
+          -0.14
+        ]
+      }
     },
     "refuse_rush_bribe": {
-      "times": ["night"],
+      "times": [
+        "night"
+      ],
       "story": "1 a.m., a man in a suit wants into his 'sister's' flat while she is abroad. Her mailbox is stuffed, letters and flyers lie on the mat and in the door gap: nobody has been here for weeks.",
       "number": "8",
-      "door": {"style": "oak", "state": "closed"},
+      "door": {
+        "style": "oak",
+        "state": "closed"
+      },
       "plate": "brass",
       "stair": "wood",
       "court_seed": 77,
       "flyer": true,
-      "mailbox": {"overflow": true},
-      "props": [{"type": "post_pile"}],
-      "camera": {"end": [-20, -2520, 1580], "end_yaw": 0.4, "end_shift": [0.0, -0.14]}
+      "mailbox": {
+        "overflow": true
+      },
+      "props": [
+        {
+          "type": "post_pile"
+        }
+      ],
+      "camera": {
+        "end": [
+          -20,
+          -2520,
+          1580
+        ],
+        "end_yaw": 0.4,
+        "end_shift": [
+          0.0,
+          -0.14
+        ]
+      }
+    },
+    "bike_interview": {
+      "kit": "street",
+      "times": [
+        "day"
+      ],
+      "story": "Kuba changed his bike padlock's code and forgot it; the bike stands at the hoop rack in front of his block, interview at 9:30 across town. Morning, late autumn: birch leaves on the slabs, low sun raking across the panel facade.",
+      "street": {
+        "entrance_x": 1100,
+        "rack_y": 800,
+        "hoops": [
+          -1900,
+          -1000,
+          -100
+        ],
+        "bike": {
+          "at": [
+            -640,
+            640,
+            0
+          ],
+          "yaw": 0.0,
+          "lean": 4.0,
+          "color": [
+            0.035,
+            0.11,
+            0.075
+          ]
+        },
+        "lock": {
+          "hoop_x": 320
+        },
+        "canopy_open": 0.5,
+        "sky": 0.32,
+        "sun": 5.0
+      },
+      "camera": {
+        "lens": 24.0,
+        "end_shift": [
+          0.0,
+          -0.03
+        ],
+        "keys": [
+          [
+            0.0,
+            -1800,
+            -8200,
+            1600,
+            -10.0,
+            -2.0
+          ],
+          [
+            0.4,
+            -1300,
+            -6200,
+            1600,
+            -6.0,
+            -1.0
+          ],
+          [
+            0.75,
+            -650,
+            -4100,
+            1560,
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            -380,
+            -3350,
+            1520,
+            3.0,
+            0.0
+          ]
+        ]
+      },
+      "look": {
+        "day": {
+          "exposure": -0.8,
+          "vignette": 0.2,
+          "agx": "AgX - Base Contrast"
+        }
+      }
+    },
+    "pizzeria_pays_pizza": {
+      "kit": "shop",
+      "times": [
+        "evening"
+      ],
+      "story": "23:30, after closing: the back room of Renata's pizzeria has locked itself with tomorrow's dough and the till inside. Chairs up on the tables, the last embers in the oven, flour on the door by the handle and on the floor at the threshold; one pendant still lit over the counter.",
+      "shop": {
+        "door": [
+          0.1,
+          0.2,
+          0.13
+        ],
+        "upper": [
+          0.62,
+          0.46,
+          0.28
+        ],
+        "tables": [
+          [
+            2100,
+            -2600
+          ],
+          [
+            2200,
+            -4600
+          ]
+        ],
+        "pendant": [
+          -1250,
+          200,
+          2200
+        ],
+        "embers": 12.0
+      },
+      "camera": {
+        "lens": 24.0,
+        "end_shift": [
+          0.0,
+          0.05
+        ],
+        "keys": [
+          [
+            0.0,
+            1300,
+            -5200,
+            1620,
+            10.0,
+            -1.0
+          ],
+          [
+            0.4,
+            1000,
+            -3800,
+            1610,
+            9.0,
+            -0.5
+          ],
+          [
+            0.75,
+            700,
+            -2200,
+            1560,
+            9.0,
+            0.0
+          ],
+          [
+            1.0,
+            650,
+            -1300,
+            1520,
+            10.0,
+            0.0
+          ]
+        ]
+      },
+      "look": {
+        "evening": {
+          "exposure": 0.2,
+          "vignette": 0.3,
+          "agx": "AgX - Medium High Contrast"
+        }
+      }
+    },
+    "night_nurse": {
+      "kit": "corridor",
+      "times": [
+        "night"
+      ],
+      "story": "7:20, end of a twelve-hour night shift: Agnieszka's key is in her hospital locker. Corridor of a new developer block: porcelain floor, white walls, flat 14 at the end with its magnetic-key cylinder; the motion-sensor LEDs are on, dawn in the side window.",
+      "corridor": {
+        "door": [
+          0.075,
+          0.08,
+          0.085
+        ],
+        "neighbours": [
+          -1500,
+          -5300
+        ],
+        "window": [
+          1900,
+          500
+        ],
+        "dawn_w": 150000000.0
+      },
+      "camera": {
+        "lens": 24.0,
+        "end_shift": [
+          0.0,
+          0.0
+        ],
+        "keys": [
+          [
+            0.0,
+            -200,
+            -7800,
+            1610,
+            6.0,
+            -1.0
+          ],
+          [
+            0.4,
+            -150,
+            -5600,
+            1600,
+            3.0,
+            -0.5
+          ],
+          [
+            0.75,
+            0,
+            -2600,
+            1570,
+            0.5,
+            0.0
+          ],
+          [
+            1.0,
+            250,
+            -900,
+            1540,
+            -4.0,
+            0.0
+          ]
+        ]
+      },
+      "look": {
+        "night": {
+          "exposure": 0.0,
+          "vignette": 0.25,
+          "agx": "AgX - Base Contrast"
+        }
+      }
     }
   }
 }
