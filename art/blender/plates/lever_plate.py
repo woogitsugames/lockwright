@@ -53,9 +53,10 @@ BACK_Y = 14.0
 BOLT_Y = 9.0
 CAM_Y = 6.0
 if LEVER_COUNT == 5:
-    from lever_layout import detector_levers
+    from lever_layout import detector_levers, DETECTOR_CAMERA
     LEVERS = detector_levers()
     BACK_Y, BOLT_Y, CAM_Y = 33.0, 28.0, 15.5
+CAM = DETECTOR_CAMERA if LEVER_COUNT == 5 else {'tx': 1.0, 'tz': -2.0, 'dist': 160.0}
 CUT_Y = BACK_Y + 6.0
 
 
@@ -174,8 +175,8 @@ area_light('key', (kx, ky, kz), AIM, ks, ke, (1.0, 0.84, 0.66))
 area_light('fill', (140, -110, -20), AIM, 90, float(arg('--fill', '30000')), (0.94, 0.96, 1.0))
 area_light('rim', (40, -20, -130), AIM, 40, float(arg('--rim', '24000')), (1.0, 0.95, 0.9))
 area_light('kick', tuple(float(v) for v in arg('--kpos', '110,-90,-30').split(',')), AIM, 28, float(arg('--kick', '28000')), (1.0, 0.95, 0.88))
-target_pt = (float(arg('--tx', '1')), CAM_Y, float(arg('--tz', '-2')))
-cam = look_camera(target_pt, float(arg('--yaw', '40')), float(arg('--pitch', '-18')), float(arg('--dist', '160')), lens=float(arg('--lens', '120')))
+target_pt = (float(arg('--tx', str(CAM['tx']))), CAM_Y, float(arg('--tz', str(CAM['tz']))))
+cam = look_camera(target_pt, float(arg('--yaw', '40')), float(arg('--pitch', '-18')), float(arg('--dist', str(CAM['dist']))), lens=float(arg('--lens', '120')))
 mirror_softbox('sheen', (0, 0, 0), cam, size=float(arg('--ss', '36')), size_y=float(arg('--ssy', '80')), energy=float(arg('--sheen', '9500')), shift=(float(arg('--sx', '-6')), 0, float(arg('--sz', '4'))))
 render_setup(os.path.join(OUT_DIR, 'plate', 'plate_1236x1650.png'), RES, SAMPLES, exposure=0.0)
 

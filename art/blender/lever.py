@@ -71,9 +71,10 @@ BACK_Y = 14.0
 BOLT_Y = 9.0
 CAM_Y = 6.0
 if LEVER_COUNT == 5:
-    from lever_layout import detector_levers
+    from lever_layout import detector_levers, DETECTOR_CAMERA
     LEVERS = detector_levers()
     BACK_Y, BOLT_Y, CAM_Y = 33.0, 28.0, 15.5
+CAM = DETECTOR_CAMERA if LEVER_COUNT == 5 else {'tx': 1.0, 'tz': -2.0, 'dist': 160.0}
 CUT_Y = BACK_Y + 6.0
 
 
@@ -194,8 +195,8 @@ area_light('fill', (140, -110, -20), AIM, 90, float(arg('--fill', '30000')), (0.
 area_light('rim', (40, -20, -130), AIM, 40, float(arg('--rim', '25000')), (1.0, 0.95, 0.9))
 # kicker from the forend side, low: lights the open stump pockets so all three gate faces read
 area_light('kick', tuple(float(v) for v in arg('--kpos', '110,-90,-30').split(',')), AIM, 25, float(arg('--kick', '30000')), (1.0, 0.95, 0.88))
-cam = look_camera((float(arg('--tx', '1')), CAM_Y, float(arg('--tz', '-2'))), float(arg('--yaw', '40')), float(arg('--pitch', '-18')),
-                  float(arg('--dist', '160')), lens=float(arg('--lens', '120')))
+cam = look_camera((float(arg('--tx', str(CAM['tx']))), CAM_Y, float(arg('--tz', str(CAM['tz'])))), float(arg('--yaw', '40')), float(arg('--pitch', '-18')),
+                  float(arg('--dist', str(CAM['dist']))), lens=float(arg('--lens', '120')))
 mirror_softbox('sheen', (0, 0, 0), cam, size=float(arg('--ss', '25')), size_y=float(arg('--ssy', '60')), energy=float(arg('--sheen', '15000')),
                shift=(float(arg('--sx', '-6')), 0, float(arg('--sz', '4'))))
 render_setup(OUT, RES, SAMPLES, exposure=float(arg('--exp', '0.0')), crop=CROP)
