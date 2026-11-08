@@ -63,6 +63,18 @@ class LockwrightHapticsPlugin(godot: Godot) : GodotPlugin(godot) {
         frameHint.report(actualUs.toLong() * 1000L)
     }
 
+    /** D-93: total device RAM in bytes as a decimal string (ActivityManager; Godot's
+     *  OS.get_memory_info() reports -1 on Android). "0" when unknown. */
+    @UsedByGodot
+    fun device_ram_bytes(): String = try {
+        val am = getContext().getSystemService(android.app.ActivityManager::class.java)
+        val info = android.app.ActivityManager.MemoryInfo()
+        am?.getMemoryInfo(info)
+        info.totalMem.toString()
+    } catch (e: Exception) {
+        "0"
+    }
+
     @UsedByGodot
     fun perf_hint_stop() {
         frameHint.stop()
