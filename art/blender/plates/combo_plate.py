@@ -190,6 +190,12 @@ cd = bpy.data.cameras.new('cam'); cam = bpy.data.objects.new('cam', cd); scene.c
 cd.lens = LENS; cd.sensor_fit = 'HORIZONTAL'; cd.sensor_width = 36.0; cd.clip_start = 1; cd.clip_end = 5000
 CAM_Z = -4.0
 cam.location = (0, -DIST, CAM_Z); cam.rotation_euler = (math.pi / 2, 0, 0)
+# D-85 / VA-11: the lock sits low in the frame (axis ~1197 px of 1648 instead of 717), so the portrait
+# crop above it is real bench, not a mirrored copy. A pure lens shift: same camera position, lens and
+# perspective, the picture only moves down by LOWER_PX (every layer keeps its pixels, offsets + LOWER_PX).
+# body_bottom_px in layers.json: the lowest px of the body front (bevel included), for the view's crop.
+LOWER_PX = float(arg('--lower', '480')) * RES[1] / 1648.0
+cd.shift_y = LOWER_PX / RES[0]          # sensor_fit HORIZONTAL: shift is in units of the frame width
 render_setup(os.path.join(OUT_DIR, 'ref.png'), RES, SPP, exposure=float(arg('--exp', '0.65')))
 if DEVICE == 'GPU':
     try:
@@ -206,11 +212,12 @@ def px_per_mm(depth):
 
 def to_px(x, z, depth):
     s = px_per_mm(depth)
-    return [RES[0] / 2 + x * s, RES[1] / 2 - (z - CAM_Z) * s]
+    return [RES[0] / 2 + x * s, RES[1] / 2 - (z - CAM_Z) * s + LOWER_PX]
 
 
 meta = {'family': FAMILY, 'tooth_dir': -1.0 if DISC else 1.0, 'body_px': [to_px(WIN[0] - 1.6, 0, -WR)[0], to_px(WIN[1] + 1.6, 0, -WR)[0]], 'res': RES, 'spp': SPP, 'device': DEVICE, 'layers': {},
-        'axis_px': to_px(0, 0, 0)[1], 'slots_px': [to_px(x, 0, -WR)[0] for x in SLOTS],
+        'axis_px': to_px(0, 0, 0)[1], 'lower_px': LOWER_PX,
+        'body_bottom_px': to_px(0, BODY[2] + 0.3, -7.5)[1], 'slots_px': [to_px(x, 0, -WR)[0] for x in SLOTS],
         'slots_section_px': [to_px(x, 0, 0)[0] for x in SLOTS],
         'wheel': {'radius_mm': WR, 'width_mm': WW, 'px_per_mm_front': px_per_mm(-WR), 'px_per_mm_section': px_per_mm(0.0),
                   'read_deg': READ_DEG, 'window_top_deg': 68.0},

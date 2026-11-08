@@ -105,7 +105,7 @@ min z „pierścień wokół” i „tło pod spodem”): egipski 1,02 → 3,45:
 dźwignia 4,04 → 3,42:1 (mosiądz bez „plastiku”), dźwignia z detektorem 4,89 → 4,41:1. Geometria, kamery i położenia
 części bez zmian (maski warstw IoU ≥ 0,99, przesunięcie ≤ 0,25 px). Arkusze: `docs/handoff/device-tests/fixes/family_rerenders/`.
 
-**VA-10 wymaga zmiany kodu (nie zrobiona).** Dimple i magnetyczny ładują `lock_photoreal_view.gd` przez
+**VA-10: podpięte 2026-11-08** (`plate_path` w `lock_photoreal_view.gd`, ustawione w scenach dimple/magnetic, `LockPreload` grzeje ich płyty `_1x`). Opis pierwotny: Dimple i magnetyczny ładują `lock_photoreal_view.gd` przez
 `pin_family_view.gd`, a płyta to stała `PLATE` (`res://assets/photoreal/plate/plate_1236x1650.png`). Nowe płyty
 (`plate_dimple_1236x1650.png`, `plate_magnetic_1236x1650.png`, ta sama kamera i te same ruchome piny) leżą obok.
 Potrzebne: w `lock_photoreal_view.gd` `@export var plate_path := PLATE` i w `_build_materials()` `_tex(plate_path)`
