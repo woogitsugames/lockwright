@@ -224,6 +224,30 @@ func test_layout_fits_portrait_and_landscape() -> void:
 			assert_true(view.section_rect.has_point(view.tooth_tip_screen(i)), tag + " tooth %d inside the section" % i)
 
 
+## VA-11: in portrait the section ended mid-screen over a strip of bare bench, and the roll was blown
+## up (loupe cut). Now the roll is as on the other lock screens and the lock rests just above it.
+func test_va11_portrait_section_reaches_the_roll() -> void:
+	for pair in [[SCENE, &"combo"], [DISC_SCENE, &"disc_detainer"]]:
+		_scene_path = pair[0]
+		JobRun.start(DialTest.jobs_of(pair[1])[0])
+		for size in [Vector2i(412, 915), Vector2i(360, 800)]:
+			var scene: Node = await _open_scene(size)
+			var view: LockComboView = scene.view
+			var tag := "%s %dx%d" % [pair[1], size.x, size.y]
+			var want_h := minf(size.x / LockPhotorealView.SECTION_ASPECT, size.y * 0.72)
+			assert_almost_eq(view.section_rect.size.y, want_h, 1.0, tag + ": section as tall as on the other lock screens")
+			assert_almost_eq(view.tray_rect.position.y, view.section_rect.end.y, 0.5, tag + ": the roll starts where the section ends")
+			var m: Array = view._tray_map()
+			assert_almost_eq((m[3] as Vector2).x, (m[2] as Vector2).x, 1.0, tag + ": the whole roll width is shown")
+			var lock_bottom := view.plate_to_screen(Vector2(0.0, view.lock_bottom_px())).y
+			assert_lte(lock_bottom, view.section_rect.end.y, tag + ": the lock is whole in the section")
+			assert_gte(lock_bottom, view.section_rect.end.y - 40.0, tag + ": no strip of bare bench under the lock")
+			for i in view.n_wheels:
+				assert_true(view.section_rect.encloses(view.reel_rect_screen(i).grow(-1.0)), tag + ": wheel %d inside" % i)
+	_scene_path = SCENE
+	JobRun.current_job = {}
+
+
 func _wheel(st: String, pos: float, gate: float = 0.5) -> Dictionary:
 	return {"state": StringName(st), "position": pos, "window_lo": gate - 0.03, "window_hi": gate + 0.03, "variant": 0}
 
