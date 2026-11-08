@@ -39,14 +39,19 @@ BLOCK = (-28.0, 28.0, -11.0, 25.0)
 WIN = (-23.0, 23.0, -9.5, 21.0)   # cut-away in the block's front
 OPEN_SLIDE = 14.0
 
+# VA-09 look (2026-11-08): wood on wood is kept, but in three clear values. The back half of the block
+# (behind the pegs and the bolt) is old oak blackened by smoke and oil, the channels are dark; the bolt
+# is pale worn ash-like oak and the pegs are pale boxwood-like beech, so each moving part reads >= 3:1
+# in grayscale. The front frame keeps the mid oak tone.
 M = {
-    'door':  photo_mat('ph_door', 'pine_floor_painted', scale=160, rot=90, metallic=0.0, rough_add=0.05, bump=0.3, grime=0.4),
+    'door':  photo_mat('ph_door', 'pine_floor_painted', scale=160, rot=90, metallic=0.0, tint=(0.82, 0.78, 0.76), rough_add=0.05, bump=0.3, grime=0.4),
     'block': photo_mat('ph_block', 'g03:oak_satin', scale=120, rot=0, metallic=0.0, tint=(0.95, 0.85, 0.72), rough_add=0.12, coat=0.1, bump=0.35, grime=0.8, wear=0.5),
+    'inner': photo_mat('ph_inner', 'g03:oak_satin', scale=120, rot=0, offset=(37, 0, 11), metallic=0.0, tint=(0.16, 0.12, 0.09), rough_add=0.18, coat=0.05, bump=0.4, grime=0.9, wear=0.2),
     'endgrain': photo_mat('ph_endgrain', 'g03:oak_satin', scale=40, rot=90, metallic=0.0, tint=(0.80, 0.66, 0.50), rough_add=0.25, bump=0.5, grime=0.6),
-    'bolt':  photo_mat('ph_bolt', 'g03:oak_satin', scale=90, rot=0, offset=(11, 0, 3), metallic=0.0, tint=(0.72, 0.56, 0.40), rough_add=0.1, coat=0.15, bump=0.3, grime=0.6, wear=0.6),
-    'peg':   photo_mat('ph_peg', 'bench_beech_top', scale=30, rot=90, metallic=0.0, tint=(1.05, 1.0, 0.92), rough_add=0.1, bump=0.25, wear=0.6, grime=0.5),
-    'lifter': photo_mat('ph_lifter', 'steel_ground', scale=20, rot=0, base=(0.55, 0.55, 0.56), base_mix=0.4, rough_add=0.08, bump=0.15),
-    'dark':  dark_mat('channel', (0.03, 0.022, 0.015), 0.9),
+    'bolt':  photo_mat('ph_bolt', 'g03:oak_satin', scale=90, rot=0, offset=(11, 0, 3), metallic=0.0, base=(0.72, 0.58, 0.40), base_mix=0.56, rough_add=0.1, coat=0.15, bump=0.3, grime=0.5, wear=0.6),
+    'peg':   photo_mat('ph_peg', 'bench_beech_top', scale=30, rot=90, metallic=0.0, base=(0.90, 0.76, 0.52), base_mix=0.38, rough_add=0.1, bump=0.25, wear=0.6, grime=0.4),
+    'lifter': photo_mat('ph_lifter', 'steel_ground', scale=20, rot=0, base=(0.80, 0.81, 0.82), base_mix=0.5, rough_add=0.22, bump=0.15, wear=0.3),
+    'dark':  dark_mat('channel', (0.012, 0.009, 0.007), 0.9),
     'nail':  photo_mat('ph_nail', 'iron_painted_rust', scale=12, metallic=0.4, rough_add=0.1),
 }
 
@@ -59,7 +64,7 @@ back = box('block_back', x0, x1, 0.0, 8.0, z0, z1)
 boolean(back, box('pass', -60, 60, -1, 4.5, BOLT_Z[0] - 0.4, BOLT_Z[1] + 0.4))
 for x in SLOTS:
     boolean(back, cyl('ch', PEG_R + 0.25, 30, (x, 0.0, 12.0), axis='Z', verts=48))
-put(back, M['block'], 0.4, 3); rig.objs['back'].append(back)
+put(back, M['inner'], 0.4, 3); rig.objs['back'].append(back)
 for x in SLOTS:  # dark bottom of each channel's back half
     c = cyl('chd', PEG_R + 0.2, z1 - 3.0, (x, 0.35, (z1 - 3.0) / 2.0 + 0.4), axis='Z', verts=48)
     boolean(c, box('chf', -60, 60, -10, 0.3, -60, 60)); put(c, M['dark']); rig.objs['back'].append(c)
@@ -95,7 +100,7 @@ rig.objs['moving']['lifter'] = [post]
 # ---------------------------------------------------------------- light + camera, render
 world_hdri(0.08, sat=0.4)
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (0, 0, 4)
-area_light('key', (-110, -200, 160), AIM, 60, 220000, (1.0, 0.84, 0.66))
+area_light('key', (-110, -200, 160), AIM, 60, float(arg('--key', '260000')), (1.0, 0.86, 0.70))
 area_light('fill', (160, -200, -30), AIM, 100, 8000, (0.9, 0.94, 1.0))
 area_light('rim', (40, -30, 180), AIM, 50, 3000, (1.0, 0.92, 0.82))
 rig.camera()

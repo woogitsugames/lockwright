@@ -96,3 +96,20 @@ Ekran pauzy nie był zrzucany (należy do innego agenta, zob. VA-13).
 - **VA-16** `ui/tutorial.gd`. Przed/po: `before_after/va16_tutorial_back.jpg`.
 - **VA-18** `art/tools/receipt_i18n.py`, `ui/job_payment.gd` (`receipt_path()`). Przed/po: `before_after/va18_invoice_de_fr.jpg`.
 - Testy GUT: `test_ui_layout.gd` (miniatury, płytka, Wstecz), `test_fps_overlay.gd`, `test_flow_after_tutorial.gd` (papier w 5 językach).
+
+
+## Stan 2026-11-08: VA-09 i VA-10 (rendery GPU, sesja płyt)
+
+Kontrast w skali szarości każdego ruchomego elementu do jego tła (`tools/art/plate_contrast.py`, najsłabszy element,
+min z „pierścień wokół” i „tło pod spodem”): egipski 1,02 → 3,45:1, osiowy 1,52 → 3,02:1, czasowy 1,00 → 3,62:1,
+dźwignia 4,04 → 3,42:1 (mosiądz bez „plastiku”), dźwignia z detektorem 4,89 → 4,41:1. Geometria, kamery i położenia
+części bez zmian (maski warstw IoU ≥ 0,99, przesunięcie ≤ 0,25 px). Arkusze: `docs/handoff/device-tests/fixes/family_rerenders/`.
+
+**VA-10 wymaga zmiany kodu (nie zrobiona).** Dimple i magnetyczny ładują `lock_photoreal_view.gd` przez
+`pin_family_view.gd`, a płyta to stała `PLATE` (`res://assets/photoreal/plate/plate_1236x1650.png`). Nowe płyty
+(`plate_dimple_1236x1650.png`, `plate_magnetic_1236x1650.png`, ta sama kamera i te same ruchome piny) leżą obok.
+Potrzebne: w `lock_photoreal_view.gd` `@export var plate_path := PLATE` i w `_build_materials()` `_tex(plate_path)`
+zamiast `_tex(PLATE)`; w `scenes/photoreal/lock_job_dimple.tscn` i `lock_job_magnetic.tscn` w węźle `View`
+`plate_path = "res://assets/photoreal/plate/plate_<rodzina>_1236x1650.png"`. Znana drobna wada: wypełniona dolna część
+kanału klucza należy na obrazie do bębenka, a w GLB jej nie ma, więc przy obrocie bębenka (`plate_rest.gdshader`) ten
+pas nie obróci się razem z nim (kilka px przy pełnym obrocie).

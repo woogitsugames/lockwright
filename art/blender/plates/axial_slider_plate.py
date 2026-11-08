@@ -34,14 +34,19 @@ NOTCH_W, NOTCH_D = 3.2, 1.8
 TRAVEL = 8.0                                  # mm pushed in (to the right) for lockcore position 1.0
 CASE = (-34.0, 22.0, -26.0, 26.0)
 
+# VA-09 look (2026-11-08): the cut-away interior is a dark cavity with blackened steel guides, so the
+# bright ground-steel sliders, the brass bolt and the pusher read >= 3:1 in grayscale (they used to sit
+# on milled brass guides at ~1.7:1).
 M = {
     'wood':   photo_mat('ph_bureau', 'g03:oak_satin', scale=220, rot=0, metallic=0.0, tint=(0.62, 0.38, 0.24), rough_add=0.05, coat=0.4, bump=0.3, grime=0.5),
     'case':   photo_mat('ph_case', 'brass_patina_grease', scale=70, rot=10, base=(0.62, 0.48, 0.26), base_mix=0.45, rough_add=0.15, bump=0.2, grime=0.7),
     'cut':    photo_mat('ph_cut', 'brass_face_milled', scale=20, rot=40, base=(0.85, 0.66, 0.36), base_mix=0.45, rough_add=0.2, bump=0.2),
-    'slider': photo_mat('ph_slider', 'steel_ground', scale=18, rot=0, base=(0.80, 0.81, 0.82), base_mix=0.45, rough_add=0.04, bump=0.12, grime=0.25),
+    'slider': photo_mat('ph_slider', 'steel_ground', scale=18, rot=0, base=(0.80, 0.81, 0.82), base_mix=0.3, rough_add=0.07, bump=0.2, grime=0.35, wear=0.4),
+    'pusher': photo_mat('ph_pusher', 'steel_ground', scale=12, rot=90, base=(0.86, 0.87, 0.88), base_mix=0.5, rough_add=0.22, bump=0.08, wear=0.3),
+    'guide':  photo_mat('ph_guide', 'steel_heat_tint', scale=14, rot=0, base=(0.035, 0.036, 0.042), base_mix=0.8, rough_add=0.25, bump=0.1),
     'plate':  photo_mat('ph_lplate', 'steel_heat_tint', scale=14, rot=90, base=(0.16, 0.17, 0.24), base_mix=0.55, rough_add=0.1),
-    'bolt':   photo_mat('ph_bolt', 'brass_face_milled', scale=30, rot=0, base=(0.80, 0.62, 0.32), base_mix=0.4, rough_add=0.12, wear=0.5, grime=0.5),
-    'dark':   dark_mat('cavity', (0.02, 0.016, 0.012), 0.9),
+    'bolt':   photo_mat('ph_bolt', 'brass_face_milled', scale=30, rot=0, base=(0.88, 0.70, 0.38), base_mix=0.45, rough_add=0.12, wear=0.5, grime=0.5),
+    'dark':   dark_mat('cavity', (0.010, 0.009, 0.008), 0.9),
 }
 
 rig = LayerRig(scene, RES, SPP, DEVICE, OUT_DIR, center=(-6.0, 0.0), width_mm=70.0)
@@ -53,7 +58,7 @@ back = box('case_back', x0, x1, 4.0, 10.0, z0, z1); put(back, M['case'], 0.4, 3)
 cav = box('cavity', x0 + 3, x1 - 3, 3.9, 4.0, z0 + 3, z1 - 3); put(cav, M['dark']); rig.objs['back'].append(cav)
 for z in ROWS:  # guide grooves between the rows
     for dz in (-SL_H / 2 - 0.5, SL_H / 2 + 0.5):
-        g = box('guide', x0 + 3, x1 - 3, 2.6, 4.0, z + dz - 0.35, z + dz + 0.35); put(g, M['cut'], 0.05, 2); rig.objs['back'].append(g)
+        g = box('guide', x0 + 3, x1 - 3, 2.6, 4.0, z + dz - 0.35, z + dz + 0.35); put(g, M['guide'], 0.05, 2); rig.objs['back'].append(g)
 lp = box('locking_plate', -1.25, 1.25, 1.4, 3.8, z0 + 3, z1 - 3); put(lp, M['plate'], 0.15, 2); rig.objs['back'].append(lp)
 for z in (z1 - 5, z0 + 5):
     rig.objs['back'].append(screw_head('lpscrew', (0.0, 1.4, z), 1.3, 0.7, axis='-Y', slot=True, kind='pan', mat=M['plate'], rot=0.5 + z))
@@ -76,16 +81,20 @@ bolt = box('bolt', 8.0, 40.0, -1.2, 2.2, -24.0, -19.5); put(bolt, M['bolt'], 0.3
 rig.objs['moving']['bolt'] = [bolt]
 pusher = cyl('pusher', 0.9, 40.0, (-20.0, 0.6, 0.0), axis='X', verts=32)
 tipc = cyl('pusher_tip', 1.3, 2.0, (-1.0, 0.6, 0.0), axis='X', verts=32)
-boolean(pusher, tipc, 'UNION'); put(pusher, M['slider'], 0.1, 2)
+boolean(pusher, tipc, 'UNION'); put(pusher, M['pusher'], 0.1, 2)
 rig.objs['moving']['pusher'] = [pusher]
 
 # ---------------------------------------------------------------- light + camera, render
 world_hdri(0.08, sat=0.4)
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (-6, 0, 0)
-area_light('key', (-110, -200, 160), AIM, 60, 230000, (1.0, 0.85, 0.68))
-area_light('fill', (160, -200, -30), AIM, 100, 8000, (0.9, 0.94, 1.0))
-area_light('rim', (40, -30, 180), AIM, 50, 3000, (1.0, 0.92, 0.82))
-rig.camera()
+area_light('key', (-110, -200, 160), AIM, 60, float(arg('--key', '260000')), (1.0, 0.86, 0.70))
+area_light('fill', (160, -200, -30), AIM, 100, 12000, (0.9, 0.94, 1.0))
+area_light('rim', (40, -30, 180), AIM, 50, 6000, (1.0, 0.92, 0.82))
+cam = rig.camera()
+# product-photo sheen: strip softbox where the cut plane mirrors the camera, slid up (soft edge only),
+# so the flat ground faces of the sliders read bright against the dark cavity
+mirror_softbox('sheen', (rig.center[0], 0, rig.center[1]), cam, dist=600, size=float(arg('--ss', '220')), size_y=float(arg('--ssy', '420')),
+               energy=float(arg('--sheen', '220000')), shift=(0, 0, float(arg('--sz', '14'))))
 render_setup(os.path.join(OUT_DIR, 'ref.png'), RES, SPP, exposure=float(arg('--exp', '0.45')))
 rig.gpu()
 rig.meta.update({

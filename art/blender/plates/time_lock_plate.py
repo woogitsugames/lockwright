@@ -48,15 +48,22 @@ PALLET = (TRAIN[-1][0], TRAIN[-1][1] + 6.6)
 DIAL = (-19.0, 18.0, 9.0)          # small run dial: centre, radius
 Y_PLATE, Y_WHEEL = 6.0, 0.0
 
+# VA-09 look (2026-11-08): no brass-on-brass. A black japanned back plate (like the warded case and the
+# lever case), nickel-bright steel train wheels with radial turning marks, the brass barrel as the one
+# warm part, a polished steel pallet; every moving part >= 3:1 against the plate in grayscale.
 M = {
-    'plate': photo_mat('ph_plate', 'brass_patina_grease', scale=90, rot=20, base=(0.36, 0.30, 0.20), base_mix=0.55, rough_add=0.22, bump=0.2, grime=0.8, wear=0.2),
-    'wheel': photo_mat('ph_wheel', 'brass_turned', scale=24, flat=True, base=(0.98, 0.78, 0.42), base_mix=0.35, rough_add=0.06, bump=0.1, grime=0.4),
-    'steel': photo_mat('ph_steel', 'steel_ground', scale=12, rot=0, base=(0.58, 0.59, 0.60), base_mix=0.4, rough_add=0.08, bump=0.1),
+    'plate': photo_mat('ph_japan', 'iron_painted_rust', scale=28, rot=0, metallic=0.0, base=(0.022, 0.021, 0.020), base_mix=0.82, rough_add=0.05, bump=0.25, grime=0.5, wear=0.25),
+    'pillar': photo_mat('ph_pillar', 'nickel_satin', scale=10, rot=90, base=(0.58, 0.58, 0.57), base_mix=0.35, rough_add=0.10, bump=0.1, grime=0.6),
+    'bridge': photo_mat('ph_bridge', 'brass_face_milled', scale=40, rot=90, base=(0.60, 0.46, 0.24), base_mix=0.55, rough_add=0.16, bump=0.12, grime=0.8, wear=0.5),
+    'wheel': photo_mat('ph_wheel', 'brass_turned', scale=24, flat=True, base=(0.62, 0.64, 0.66), base_mix=0.6, rough_add=0.04, bump=0.12, grime=0.35, wear=0.3),
+    'barrel': photo_mat('ph_barrel', 'brass_turned', scale=30, flat=True, base=(0.86, 0.68, 0.38), base_mix=0.4, rough_add=0.06, bump=0.12, grime=0.5, wear=0.4),
+    'steel': photo_mat('ph_steel', 'steel_ground', scale=12, rot=0, base=(0.70, 0.71, 0.72), base_mix=0.4, rough_add=0.08, bump=0.1),
+    'pallet': photo_mat('ph_pallet', 'spring_steel_polished', scale=10, rot=0, base=(0.74, 0.75, 0.76), base_mix=0.3, rough_add=0.12, bump=0.08, wear=0.2),
     'blued': photo_mat('ph_blued', 'steel_heat_tint', scale=10, rot=0, base=(0.12, 0.14, 0.25), base_mix=0.6, rough_add=0.05),
     'enamel': dark_mat('dial_enamel', (0.86, 0.84, 0.78), 0.35),
     'ink': dark_mat('dial_ink', (0.04, 0.04, 0.045), 0.5),
-    'dark': dark_mat('hole', (0.02, 0.016, 0.012), 0.9),
-    'wood': photo_mat('ph_case', 'g03:oak_satin', scale=200, rot=90, metallic=0.0, tint=(0.75, 0.6, 0.45), rough_add=0.1, coat=0.2, bump=0.3, grime=0.6),
+    'dark': dark_mat('hole', (0.012, 0.011, 0.010), 0.9),
+    'wood': photo_mat('ph_case', 'g03:oak_satin', scale=200, rot=90, metallic=0.0, tint=(0.62, 0.48, 0.36), rough_add=0.1, coat=0.2, bump=0.3, grime=0.6),
 }
 
 rig = LayerRig(scene, RES, SPP, DEVICE, OUT_DIR, center=(-4.0, -2.0), width_mm=72.0)
@@ -96,7 +103,7 @@ def place(objs, x, z):
 case = box('case', -60, 60, Y_PLATE + 3.0, Y_PLATE + 12.0, -60, 70); put(case, M['wood'], 0.5, 2); rig.objs['back'].append(case)
 bp = box('backplate', -38, 30, Y_PLATE, Y_PLATE + 3.0, -44, 40); put(bp, M['plate'], 0.4, 3); rig.objs['back'].append(bp)
 for (px, pz) in [(-34, -40), (26, -40), (-34, 36), (26, 36)]:
-    pil = cyl('pillar', 2.4, 8.0, (px, Y_PLATE - 4.0, pz), axis='Y', verts=32); put(pil, M['plate'], 0.2, 2); rig.objs['back'].append(pil)
+    pil = cyl('pillar', 2.4, 8.0, (px, Y_PLATE - 4.0, pz), axis='Y', verts=32); put(pil, M['pillar'], 0.2, 2); rig.objs['back'].append(pil)
     rig.objs['back'].append(screw_head('pscrew', (px, Y_PLATE - 8.0, pz), 2.0, 1.0, axis='-Y', slot=True, kind='pan', mat=M['blued'], rot=0.4 + px))
 for (x, z, r, pr) in TRAIN + [(BARREL[0], BARREL[1], 0, 0), (PALLET[0], PALLET[1], 0, 0)]:
     h = cyl('pivot', 1.1, 0.4, (x, Y_PLATE - 0.15, z), axis='Y', verts=32); put(h, M['dark']); rig.objs['back'].append(h)
@@ -109,7 +116,7 @@ barrel = gear('barrel', br, 48, 4.0, Y_WHEEL - 1.0, spokes=False)
 ratchet = gear('ratchet', br * 0.55, 20, 1.0, Y_WHEEL - 2.2, spokes=False, arbor=False)[0]
 sq = box('winding_square', -1.4, 1.4, Y_WHEEL - 4.0, Y_WHEEL - 2.0, -1.4, 1.4)
 for o in barrel + [ratchet, sq]:
-    put(o, M['wheel'] if o is not sq else M['steel'], 0.1, 2)
+    put(o, M['barrel'] if o is not sq else M['steel'], 0.1, 2)
 rig.objs['moving']['barrel'] = place(barrel + [ratchet, sq], bx, bz)
 for i, (x, z, r, pr) in enumerate(TRAIN):
     parts = gear('wheel%d' % i, r, max(24, int(r * 7)), 1.2, Y_WHEEL, pinion=pr)
@@ -117,7 +124,7 @@ for i, (x, z, r, pr) in enumerate(TRAIN):
         put(o, M['wheel'] if 'arbor' not in o.name else M['steel'], 0.08, 2)
     rig.objs['moving']['wheel%d' % i] = place(parts, x, z)
 pal = prism('pallet', [(-6.5, 0.6), (6.5, 0.6), (5.5, -2.2), (4.6, -2.2), (3.6, -0.6), (-3.6, -0.6), (-4.6, -2.2), (-5.5, -2.2)], Y_WHEEL - 0.2, Y_WHEEL + 1.0)
-put(pal, M['blued'], 0.08, 2)
+put(pal, M['pallet'], 0.08, 2)
 palarb = cyl('pallet_arbor', 0.7, 6.0, (0, Y_WHEEL + 2.0, 0), axis='Y', verts=24); put(palarb, M['steel'], 0.05, 2)
 rig.objs['moving']['pallet'] = place([pal, palarb], PALLET[0], PALLET[1])
 dx, dz, dr = DIAL
@@ -134,7 +141,7 @@ rig.objs['moving']['tweezers'] = tw
 # ---------------------------------------------------------------- front: the dial bridge
 bridge = prism('bridge', [(-31, 7), (-9, 7), (-7.5, 11), (-7.5, 30), (-31, 30)], Y_WHEEL - 5.0, Y_WHEEL - 3.4)
 boolean(bridge, cyl('dhole', dr + 0.3, 10, (dx, Y_WHEEL - 4.0, dz), axis='Y', verts=96))
-put(bridge, M['plate'], 0.3, 3); rig.objs['front'].append(bridge)
+put(bridge, M['bridge'], 0.3, 3); rig.objs['front'].append(bridge)
 dial = cyl('dial', dr, 0.6, (dx, Y_WHEEL - 5.3, dz), axis='Y', verts=96); put(dial, M['enamel'], 0.1, 2); rig.objs['front'].append(dial)
 for k in range(12):
     a = 2 * math.pi * k / 12
@@ -146,10 +153,14 @@ for (sx, sz) in [(-28, 10), (-28, 27)]:
 # ---------------------------------------------------------------- light + camera, render
 world_hdri(0.08, sat=0.4)
 AIM = bpy.data.objects.new('aim', None); scene.collection.objects.link(AIM); AIM.location = (0, 0, 6)
-area_light('key', (-110, -220, 170), AIM, 60, 240000, (1.0, 0.86, 0.70))
-area_light('fill', (170, -210, -30), AIM, 100, 8000, (0.9, 0.94, 1.0))
-area_light('rim', (40, -30, 190), AIM, 50, 3000, (1.0, 0.92, 0.82))
-rig.camera()
+area_light('key', (-110, -220, 170), AIM, 60, float(arg('--key', '300000')), (1.0, 0.88, 0.74))
+area_light('fill', (170, -210, -30), AIM, 100, 12000, (0.9, 0.94, 1.0))
+area_light('rim', (40, -30, 190), AIM, 50, 6000, (1.0, 0.92, 0.82))
+cam = rig.camera()
+# product-photo sheen: a large strip softbox where the plate mirrors the camera (slid up so only its soft
+# edge shows), so the flat faces of the steel wheels read bright against the black plate
+mirror_softbox('sheen', (rig.center[0], 0, rig.center[1]), cam, dist=600, size=float(arg('--ss', '220')), size_y=float(arg('--ssy', '420')),
+               energy=float(arg('--sheen', '220000')), shift=(0, 0, float(arg('--sz', '14'))))
 render_setup(os.path.join(OUT_DIR, 'ref.png'), RES, SPP, exposure=float(arg('--exp', '0.4')))
 rig.gpu()
 rig.meta.update({
