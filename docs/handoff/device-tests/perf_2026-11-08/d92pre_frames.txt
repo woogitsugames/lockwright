@@ -1,0 +1,16 @@
+menu                         frames=  244 fps= 59.6 p50=16 p95= 16 p99= 16 max=  86 >25=  1 >33=  1 >50=  1 1%low= 62.5
+jobs                         frames=  357 fps= 54.0 p50=16 p95= 16 p99= 33 max= 550 >25=  6 >33=  2 >50=  2 1%low= 30.3
+x                            frames=  552 fps= 57.6 p50=16 p95= 16 p99= 16 max= 250 >25=  5 >33=  2 >50=  2 1%low= 62.5
+open_lock_combo              frames=  405 fps= 54.3 p50=16 p95= 33 p99= 33 max= 400 >25= 24 >33=  1 >50=  1 1%low= 30.3
+x                            frames=  199 fps= 60.0 p50=16 p95= 16 p99= 33 max=  33 >25=  2 >33=  0 >50=  0 1%low= 30.3
+idle_lock_combo              frames=  525 fps= 55.9 p50=16 p95= 33 p99= 33 max=  33 >25= 43 >33=  0 >50=  0 1%low= 30.3
+touch_lock_combo             frames=  668 fps= 60.2 p50=16 p95= 16 p99= 16 max=  33 >25=  4 >33=  0 >50=  0 1%low= 62.5
+x                            frames= 1169 fps= 57.4 p50=16 p95= 16 p99= 33 max= 400 >25= 17 >33=  6 >50=  5 1%low= 30.3
+open_lock_wafer              frames=  425 fps= 56.4 p50=16 p95= 16 p99= 33 max= 450 >25=  6 >33=  1 >50=  1 1%low= 30.3
+x                            frames=  141 fps= 59.3 p50=16 p95= 16 p99= 33 max=  33 >25=  3 >33=  0 >50=  0 1%low= 30.3
+idle_lock_wafer              frames=  559 fps= 59.7 p50=16 p95= 16 p99= 33 max=  33 >25=  8 >33=  0 >50=  0 1%low= 30.3
+touch_lock_wafer             frames=  664 fps= 60.1 p50=16 p95= 16 p99= 16 max=  33 >25=  5 >33=  0 >50=  0 1%low= 62.5
+x                            frames=  355 fps= 58.4 p50=16 p95= 16 p99= 33 max= 118 >25=  8 >33=  1 >50=  1 1%low= 30.3
+workshop                     frames=  441 fps= 59.1 p50=16 p95= 16 p99= 33 max= 134 >25=  5 >33=  1 >50=  1 1%low= 30.3
+x                            frames=  505 fps= 55.7 p50=16 p95= 16 p99= 16 max= 550 >25=  3 >33=  2 >50=  2 1%low= 62.5
+workshop_fresh               frames=  396 fps= 52.5 p50=16 p95= 16 p99= 33 max= 800 >25=  7 >33=  3 >50=  2 1%low= 30.3

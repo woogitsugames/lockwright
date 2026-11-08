@@ -214,3 +214,30 @@ i warsztat z czystego startu). Dane: `perf_2026-11-08/d88_*` i `basis/` (porówn
 4. Build release lokalny pokazał surowy klucz `jobs.chapter_named` na liście zleceń: skompilowane `i18n/*.translation` w repo są
    starsze niż `strings.csv` (ostatni commit 2026-11-06 14:21, klucz z 18:44). CI importuje od nowa, więc jego APK są poprawne;
    lokalnie trzeba wymusić reimport CSV.
+
+## 11. Profil niski dla telefonów ≤ 4 GB — 2026-11-08 (D-93)
+
+**Telefon:** SM-A165F (3,57 GiB według Androida) · build **release** (`build_apk.sh --release`) z `main` (d74aa12) bez i z D-93,
+ten sam scenariusz z czystego startu (`pss_run.sh`). Zapis właściciela: profil „auto”, ostatni wybór z czasu klatki „medium”.
+Dane: `perf_2026-11-08/d92pre_*` (medium), `d92low_*` (low z limitu RAM), porównanie obrazu `d92/wafer_medium_vs_low.jpg`.
+
+| Miara (release) | Medium (przed) | Low z limitu RAM (po) |
+|---|---|---|
+| PSS menu / lista zleceń | 361 / 381 MB | 361 / 376 MB |
+| PSS zamek combo / wafer | 525–529 / 572–580 MB | 525 / 567–573 MB |
+| PSS warsztat (czysty start / po zamkach) | 378 / 549 MB | 390 / 556 MB |
+| Zamek bez dotyku FPS, combo / wafer | 55,9 / 59,7 | 57,9 / 54,7 |
+| Zamek pod palcem FPS | 60,2 / 60,1 | 60,0 / 58,9 |
+
+**Wniosek:** wybór działa (log `Quality: RAM 3.57 GiB -> auto cap low`), ale na tym telefonie **nie zmniejsza PSS w sposób mierzalny**
+(różnice 0–10 MB, w granicach rozrzutu) i nie zmienia FPS. Przekrój 0,5× bez MSAA oszczędza kilkanaście MB buforów, które mieszczą się
+w tym samym bloku pamięci sterownika Vulkan (Graphics stoi na 296 MB), a obraz przekroju jest wyraźnie bardziej miękki (zrzut).
+Tacka i skóra są od D-88 w ASTC (ok. 1 MB każda), więc ich zmniejszanie dałoby < 4 MB — nie robione.
+Budżet §8 (300/350 MB) dla tej klasy telefonu jest nieosiągalny bez zmian w silniku/rendererze; realny poziom w release:
+menu ~360 MB, zamek 525–575 MB. **Rekomendacja:** podnieść próg w §8 dla „tani Android” do 400 / 600 MB (z zapasem do ubicia
+w tle przy 4 GB) albo zostawić profil niski tylko jako ustawienie ręczne.
+
+**Rozmiar APK po D-88:** APK debug z CI (d74aa12) 193,1 MB (ostrzeżenie > 170, błąd > 200 w `budgets.json`), AAB release 132,7 MB.
+CI nie sprawdza rozmiaru APK (`perf-budget` mierzy tylko pck: 114,7 MB, OK), ostrzega tylko lokalny `build_apk.sh`. Ok. 76 MB APK
+debug to biblioteka silnika w wersji debug; graczom idzie AAB. Propozycja: mierzyć w budżecie AAB release (sklep), a dla APK debug
+przesunąć progi na 200/230 MB; alternatywnie wyłączyć z Androida płyty 2× (Fold, ok. −4 MB) — decyzja właściciela.
