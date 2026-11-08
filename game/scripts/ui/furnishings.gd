@@ -138,7 +138,7 @@ static func refresh(root: Control, animate := true) -> void:
 			t.texture = load(String(t.get_meta(&"layer_path")))
 		elif not on and t.texture != null:
 			t.texture = null
-		if on and not t.visible and animate and not Settings.get_value("reduce_motion", false) and t.is_inside_tree():
+		if on and not t.visible and animate and not UiA11y.reduce_motion() and t.is_inside_tree():
 			t.modulate.a = 0.0
 			t.create_tween().tween_property(t, "modulate:a", 1.0, 0.2).set_trans(Tween.TRANS_SINE)
 		t.visible = on

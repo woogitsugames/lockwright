@@ -157,7 +157,69 @@ func t(key: StringName) -> String:
 	if text == key or text == "":
 		push_warning("I18n: missing translation for key %s" % key)
 		return key
+	if handed_key(key) and bool(Settings.get_value(&"swap_thumbs", false)):
+		return swap_hands(text, current_language())
 	return text
+
+
+# --- D-90 "swap thumbs" (left-handed): control texts name the other thumb ---------------------
+## Keys whose text names a thumb or screen side (tutorial, lock hints, control choice).
+const HANDED_PREFIXES := ["tutorial.", "lock.", "ui.controls.", "a11y.lock_screen_"]
+## "Just right" / "Genau richtig" are not sides.
+const HANDED_EXCLUDE := ["tutorial.s1_binding"]
+## Per language: word (lower case) -> the other side's word. FR has no "droite" target for
+## "gauche" except after "à" / "la" / "moitié" ("à gauche" <-> "à droite"); thumbs are masculine.
+const HAND_WORDS := {
+	"en": {"left": "right", "right": "left"},
+	"pl": {"lewy": "prawy", "lewa": "prawa", "lewą": "prawą", "lewej": "prawej", "lewego": "prawego",
+		"lewym": "prawym", "lewo": "prawo", "lewe": "prawe", "lewemu": "prawemu",
+		"prawy": "lewy", "prawa": "lewa", "prawą": "lewą", "prawej": "lewej", "prawego": "lewego",
+		"prawym": "lewym", "prawo": "lewo", "prawe": "lewe", "prawemu": "lewemu"},
+	"de": {"links": "rechts", "linke": "rechte", "linker": "rechter", "linken": "rechten",
+		"linkes": "rechtes", "linkem": "rechtem", "rechts": "links", "rechte": "linke",
+		"rechter": "linker", "rechten": "linken", "rechtes": "linkes", "rechtem": "linkem"},
+	"fr": {"gauche": "droit", "droit": "gauche", "droite": "gauche"},
+	"es": {"izquierda": "derecha", "izquierdo": "derecho", "izquierdas": "derechas",
+		"izquierdos": "derechos", "derecha": "izquierda", "derecho": "izquierdo",
+		"derechas": "izquierdas", "derechos": "izquierdos"},
+}
+static var _word_re: RegEx
+
+
+static func handed_key(key: StringName) -> bool:
+	var k := String(key)
+	if k in HANDED_EXCLUDE:
+		return false
+	for p in HANDED_PREFIXES:
+		if k.begins_with(p):
+			return true
+	return false
+
+
+## The same sentence for the other hand (pure; tests check every handed key in 5 languages).
+static func swap_hands(text: String, lang: String) -> String:
+	var words: Dictionary = HAND_WORDS.get(lang, {})
+	if words.is_empty():
+		return text
+	if _word_re == null:
+		_word_re = RegEx.create_from_string("\\p{L}+")
+	var out := ""
+	var at := 0
+	var prev := ""
+	for m in _word_re.search_all(text):
+		var w := m.get_string()
+		out += text.substr(at, m.get_start() - at)
+		var lw := w.to_lower()
+		var rep: String = words.get(lw, "")
+		if lang == "fr" and lw == "gauche" and prev in ["à", "la", "moitié"]:  # feminine: droite
+			rep = "droite"
+		if rep == "":
+			out += w
+		else:
+			out += (rep.substr(0, 1).to_upper() + rep.substr(1)) if w.substr(0, 1) != lw.substr(0, 1) else rep
+		at = m.get_end()
+		prev = lw
+	return out + text.substr(at)
 
 
 func has_key(key: StringName) -> bool:

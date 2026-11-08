@@ -79,7 +79,7 @@ func setup(p_view: LockPhotorealView, p_coach: TutorialCoach, p_family: StringNa
 	family = p_family
 	auto = p_auto
 	control = p_control
-	reduce_motion = bool(Settings.get_value("reduce_motion", false))
+	reduce_motion = UiA11y.reduce_motion()
 	_base_chalk = view.chalk_level
 	chalk_hint = ChalkHint.new()
 	chalk_hint.name = "ChalkHint"
@@ -354,14 +354,9 @@ func _speak(level: int) -> void:
 			key = &"tutorial.say_tension" if _needs_tension() else &"tutorial.say_lift"
 	spoken.append(key)
 	var text := I18n.t(key)
-	if bool(ProjectSettings.get_setting("audio/general/text_to_speech", false)):
-		var voices := DisplayServer.tts_get_voices_for_language(TranslationServer.get_locale().substr(0, 2))
-		if voices.size() > 0:
-			DisplayServer.tts_stop()
-			DisplayServer.tts_speak(text, voices[0])
-			return
 	if _a11y:
 		_a11y.set("accessibility_description", text)
+	UiA11y.announce(text)  # D-90: one announcer for the whole game (TTS or the AccessKit live region)
 
 
 ## Dev / screenshots (--lw-hint N): climb the ladder to level N right now.

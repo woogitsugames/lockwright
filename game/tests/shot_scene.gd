@@ -9,6 +9,7 @@ extends Node
 ## debug build shows by itself, i.e. nothing unless the game was started with --fps=1). --targets=1 prints every visible
 ## button smaller than 48x48 dp ("SMALL <path> <size>").
 ## --press=<button property> presses that button of the scene before the wait (e.g. accept_button on job_verify).
+## D-90: --text-scale=1.5 sets the UI text scale, --setting=sound_captions:1,swap_thumbs:1 sets Settings keys (memory only).
 ## --size=WxH sets the window (as tests/screens.gd); --tab=furnishings opens the workshop's Wyposażenie tab; --tutorial-stage=N sets JobRun.tutorial_stage first; --auto=1 sets Settings auto_tension (not saved).
 
 func _ready() -> void:
@@ -31,6 +32,14 @@ func _ready() -> void:
 		JobRun.tutorial_stage = int(a["tutorial-stage"])
 	if a.has("auto"):
 		Settings._cfg["auto_tension"] = a["auto"] == "1"
+	# D-90: --text-scale=1.5 (UI text 150 %), --setting=key:value,key:value (bool/float, in memory only)
+	if a.has("setting"):
+		for kv in String(a["setting"]).split(",", false):
+			var p2 := kv.split(":")
+			Settings._cfg[p2[0]] = (p2[1] == "1" or p2[1] == "true") if p2[1] in ["0", "1", "true", "false"] else float(p2[1])
+	if a.has("text-scale"):
+		Settings._cfg["text_scale"] = float(a["text-scale"])
+		UiA11y._apply_text_scale()
 	# D-71 furnishings: --coins=N, --furnish=all|id,id (owned + shown), --chapter=N; in memory only (not saved)
 	if a.has("coins"):
 		Save.data["coins"] = int(a["coins"])

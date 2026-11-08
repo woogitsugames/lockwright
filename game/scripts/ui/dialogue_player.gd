@@ -131,7 +131,7 @@ func _show(i: int) -> void:
 	var row := _rows[i]
 	row.visible = true
 	row.set_meta("current", true)
-	if Settings.get_value("reduce_motion", false) or not is_inside_tree():
+	if UiA11y.reduce_motion() or not is_inside_tree():
 		row.modulate.a = 1.0
 	else:
 		row.modulate.a = 0.0

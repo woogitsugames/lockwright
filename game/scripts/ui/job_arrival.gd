@@ -225,7 +225,7 @@ func _knock() -> void:
 func _scene_reduce_motion() -> bool:
 	if reduce_motion_override >= 0:
 		return reduce_motion_override == 1
-	if Settings.get_value("reduce_motion", false):
+	if UiA11y.reduce_motion():
 		return true
 	# a screen reader user gets the still frame and the text at once
 	return DisplayServer.has_method("accessibility_screen_reader_active") \

@@ -32,7 +32,7 @@ func _dress() -> void:
 	var title := $VBox/Title as Label
 	title.theme_type_variation = &"Title"
 	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	($VBox/Info as Label).add_theme_font_size_override("font_size", 18)
+	($VBox/Info as Label).add_theme_font_size_override("font_size", UiA11y.fs(18))
 	$VBox.add_theme_constant_override("separation", 14)
 	resized.connect(_place)
 	$VBox.resized.connect(_fit_paper)

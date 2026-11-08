@@ -102,6 +102,11 @@ func _draw() -> void:
 		draw_circle(sc, m * 0.4, Color(0.62, 0.50, 0.28))
 
 
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_ACCESSIBILITY_UPDATE:
+		UiA11y.update_button_role(self)  # D-90: a named button for the screen reader
+
+
 func _gui_input(ev: InputEvent) -> void:
 	var down: bool = (ev is InputEventScreenTouch and ev.pressed) or (ev is InputEventMouseButton and ev.pressed)
 	if not down or _busy:
@@ -115,6 +120,10 @@ func press() -> void:
 	_busy = true
 	Sfx.play_ui(&"brass_snap_pause")
 	Haptics.play(&"contact", 0.4, &"brass")
+	if UiA11y.reduce_motion() or not is_inside_tree():  # D-90: no lift, the snap sound and haptic stay
+		_busy = false
+		pressed.emit()
+		return
 	var tw := create_tween()
 	tw.tween_method(_set_lift, 0.0, LIFT, ANIM_S).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tw.tween_callback(func() -> void:

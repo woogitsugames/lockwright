@@ -48,8 +48,13 @@ func _ready() -> void:
 	ScreenFrame.fit(self, $Frame)
 	# N-42: a scroll gesture starting on a control must scroll the list, not press the control
 	$Frame/VBox/Scroll.scroll_deadzone = 12
+	# D-90: at 125-200 % text the longest item ("Auto (measured)") must wrap, not widen the screen
+	for ob: OptionButton in [language_option, quality_option]:
+		ob.fit_to_longest_item = false
+		ob.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_build_voice_pack_block()
 	_build_help_captions()
+	_build_a11y_toggles()
 	_pass_mouse($Frame/VBox/Scroll/Sections)
 	_load_values()
 	_refresh_texts()
@@ -80,6 +85,8 @@ func _load_values() -> void:
 	continuous_check.set_pressed_no_signal(Settings.get_value("continuous_resistance"))
 	text_scale_slider.set_value_no_signal(float(Settings.get_value("text_scale", 1.0)) * 100.0)
 	reduce_motion_check.set_pressed_no_signal(Settings.get_value("reduce_motion"))
+	for key in A11Y_TOGGLES:
+		(_toggles[key] as CheckButton).set_pressed_no_signal(bool(Settings.get_value(key)))
 	_fill_options()
 	_update_values()
 	_update_voice_pack()
@@ -151,6 +158,8 @@ func _wire() -> void:
 		Settings.set_value("text_scale", v / 100.0)
 		_update_values())
 	reduce_motion_check.toggled.connect(func(on: bool) -> void: Settings.set_value("reduce_motion", on))
+	for key in A11Y_TOGGLES:
+		(_toggles[key] as CheckButton).toggled.connect(func(on: bool) -> void: Settings.set_value(key, on))
 	language_option.item_selected.connect(func(idx: int) -> void:
 		Settings.set_value("language", LANGUAGE_IDS[clampi(idx, 0, LANGUAGE_IDS.size() - 1)])
 		_update_voice_pack())
@@ -232,6 +241,9 @@ func _refresh_texts() -> void:
 	_vp_note.text = I18n.t(&"settings.voice_pack.note")
 	for cap_name in HELP:
 		(_help[cap_name] as Label).text = I18n.t(HELP[cap_name][1])
+	for key in A11Y_TOGGLES:
+		(_toggles[key] as CheckButton).text = I18n.t(A11Y_TOGGLES[key][2])
+		(_toggles[key].get_meta(&"help") as Label).text = I18n.t(A11Y_TOGGLES[key][3])
 	# T70: a slider's name sits in a separate row label; give it to the screen reader too
 	for row in [S + "Haptics/Box/IntensityRow", S + "Sound/Box/MasterRow", S + "Sound/Box/SfxRow",
 			S + "Sound/Box/AmbienceRow", S + "Sound/Box/VoiceRow", S + "Access/Box/TextScaleRow"]:
@@ -267,6 +279,39 @@ func _build_help_captions() -> void:
 		after.get_parent().add_child(cap)
 		after.get_parent().move_child(cap, after.get_index() + 1)
 		_help[cap_name] = cap
+
+
+# --- D-90: accessibility toggles built in code (same look as the scene's CheckButtons) ----------
+## Settings key -> [section box, insert after (node path in Sections), i18n label, i18n help]
+const A11Y_TOGGLES := {
+	"swap_thumbs": ["Controls/Box", "Controls/Box/ContinuousCheck", &"settings.swap_thumbs", &"settings.help.swap_thumbs"],
+	"announce_lock_events": ["Access/Box", "Access/Box/MotionHelp", &"settings.announce_lock", &"settings.help.announce_lock"],
+	"sound_captions": ["Access/Box", "Access/Box/MotionHelp", &"settings.sound_captions", &"settings.help.sound_captions"],
+}
+var _toggles := {}
+
+
+func _build_a11y_toggles() -> void:
+	var keys := A11Y_TOGGLES.keys()
+	keys.reverse()  # both Access toggles go right after MotionHelp: insert in reverse to keep the order
+	for key in keys:
+		var after: Control = get_node(S + String(A11Y_TOGGLES[key][1]))
+		var box := after.get_parent()
+		var cb := CheckButton.new()
+		cb.name = String(key).to_pascal_case() + "Check"
+		cb.custom_minimum_size = Vector2(0, 48)
+		cb.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		cb.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var cap := Label.new()
+		cap.name = String(key).to_pascal_case() + "Help"
+		cap.theme_type_variation = &"Caption"
+		cap.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		box.add_child(cb)
+		box.move_child(cb, after.get_index() + 1)
+		box.add_child(cap)
+		box.move_child(cap, cb.get_index() + 1)
+		cb.set_meta(&"help", cap)
+		_toggles[key] = cb
 
 
 ## The slider placed right after a "<X>Row" label row (IntensityRow -> IntensitySlider).

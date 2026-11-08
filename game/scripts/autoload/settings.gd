@@ -20,6 +20,9 @@ const DEFAULTS := {
 	"wide_windows": false,
 	"text_scale": 1.0,
 	"reduce_motion": false,
+	"swap_thumbs": false,           # HUD.md §9.2 left-handed: tension right, pick left (D-90)
+	"announce_lock_events": true,   # HUD.md §9.2: screen reader announces lock states (D-90)
+	"sound_captions": false,        # HUD.md §9.1 (3): caption strip for gameplay sounds (D-90)
 	"continuous_resistance": true,
 	"calibrated": false,
 	"calibration": "",  # "" | "two" | "one" | "none" (TECH.md §2.3 first-run test)

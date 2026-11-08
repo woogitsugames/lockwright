@@ -16,6 +16,7 @@ extends LockPhotorealView
 ## bolt out. Same diegetic HUD as pins: probe handle + force arm on the plug face, picks in the
 ## roll, leather flap.
 
+const STRAIN_DEG := 3.0  # D-90: probe held back near the limit (still picture of "stress")
 const W_DIR := "res://assets/photoreal_families/warded/"
 const W_SCENE := W_DIR + "scene.json"
 const W_GLB := W_DIR + "warded_baked.glb"
@@ -138,7 +139,7 @@ func _build_w_materials() -> void:
 
 
 func _build_bit_button() -> void:
-	bit_button = Control.new()
+	bit_button = A11yHit.new()  # D-90: a named button for the screen reader
 	bit_button.name = "BitButton"
 	bit_button.mouse_filter = Control.MOUSE_FILTER_STOP
 	var gate := TapGate.new()  # N-77: touch + emulated click = one press
@@ -148,6 +149,7 @@ func _build_bit_button() -> void:
 		if gate.accept(ev):
 			bit_pressed.emit())
 	add_child(bit_button)
+	UiA11y.name_button(bit_button, I18n.t(&"a11y.warded_bit"), func() -> void: bit_pressed.emit())
 
 
 ## Transform of a radial piece: centre at radius r on the ray at angle deg from the pin, its local
@@ -253,7 +255,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	var bolt_pos := float(bolt.get("position", 0.0))
 	# probe: turn and reach
 	var shake := 0.0
-	if _stress >= 0.6:
+	if _stress >= 0.6 and not UiA11y.reduce_motion():  # D-90: bend stays, tremor goes
 		shake = (_stress - 0.6) * 2.5 * sin(Time.get_ticks_msec() * 0.09)  # ≤ 1° tremor near the limit
 	_angle = lerpf(_angle, turn_deg(1.0 if _opened else theta), k)
 	var h := float(vm.get("pick_lift", input.get("pick_lift", 0.5)))
@@ -269,7 +271,9 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 		dx_target = -BOLT_THROW
 	_tumb_lift = lerpf(_tumb_lift, lift_target, k)
 	_bolt_dx = lerpf(_bolt_dx, dx_target, k)
-	_pose_parts(shake)
+	# D-90 / DESIGN.md §1 stress: a still cue in the section too - the probe shaft is held back by up to
+	# STRAIN_DEG against the ward as the stress nears the limit (reads in grayscale and with reduce motion)
+	_pose_parts(shake - clampf((_stress - 0.6) / 0.4, 0.0, 1.0) * STRAIN_DEG)
 	_last_vm = vm
 	_last_input = input
 	_update_w_face(theta, tension, delta)

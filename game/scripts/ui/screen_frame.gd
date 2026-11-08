@@ -35,6 +35,24 @@ static func fit(root: Control, frame: MarginContainer, max_column := MAX_COLUMN)
 	apply.call()
 	if not root.resized.is_connected(apply):
 		root.resized.connect(apply)
+	_fit_header(frame)
+
+
+## D-90: the header row (‹ Back + title) never cuts words at large text: the back plate grows to its
+## text, the title shrinks to fit and may take two lines (fit_title) instead of an ellipsis.
+static func _fit_header(frame: Control) -> void:
+	var header := frame.get_node_or_null("VBox/Header")
+	if header == null:
+		return
+	var back := header.get_node_or_null("BackButton") as Button
+	if back:
+		back.text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING
+		back.clip_text = false
+	var title := header.get_node_or_null("Title") as Label
+	if title and not title.has_meta(&"fit_title"):
+		title.text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING
+		title.clip_text = false
+		fit_title(title)
 
 
 ## Full-bleed photo behind the screen (under the status bar too) plus a flat dark shade.
@@ -77,7 +95,7 @@ static func ellipsis(label: Label) -> Label:
 
 ## Short fade-in (200 ms, DESIGN.md 100–250 ms); skipped with "reduce motion".
 static func enter(node: Control, delay := 0.0) -> void:
-	if Settings.get_value("reduce_motion", false):
+	if UiA11y.reduce_motion():
 		return
 	node.modulate.a = 0.0
 	var tw := node.create_tween()
@@ -127,9 +145,15 @@ static func fit_title(label: Label, max_fs := 28, min_fs := 17, one_line_min := 
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	label.custom_minimum_size.x = 0
 	var apply := func() -> void:
-		var fs := title_size(label.get_theme_font(&"font"), label.text, label.size.x, max_fs, min_fs, one_line_min)
+		# D-90: the sizes follow the player's text scale (UiA11y), the fitting rule stays
+		var fs := title_size(label.get_theme_font(&"font"), label.text, label.size.x,
+			UiA11y.fs(max_fs), UiA11y.fs(min_fs), UiA11y.fs(one_line_min))
 		if fs > 0 and fs != label.get_theme_font_size(&"font_size"):
 			label.add_theme_font_size_override(&"font_size", fs)
+		if fs > 0:
+			# D-90: an autowrapped label in an HBox (header) does not grow its row by itself
+			var f := label.get_theme_font(&"font")
+			label.custom_minimum_size.y = ceilf(f.get_multiline_string_size(label.text, HORIZONTAL_ALIGNMENT_LEFT, label.size.x, fs).y)
 	if not label.has_meta(&"fit_title"):
 		label.set_meta(&"fit_title", true)
 		label.resized.connect(apply)
@@ -164,8 +188,8 @@ static func fit_button_text(b: Button, max_fs := 16, min_fs := 13) -> void:
 		if avail <= 1.0:
 			return
 		var font := b.get_theme_font(&"font")
-		var fs := max_fs
-		while fs > min_fs and font.get_string_size(b.text, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x > avail:
+		var fs := UiA11y.fs(max_fs)  # D-90: text scale
+		while fs > UiA11y.fs(min_fs) and font.get_string_size(b.text, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x > avail:
 			fs -= 1
 		if fs != b.get_theme_font_size(&"font_size"):
 			b.add_theme_font_size_override(&"font_size", fs)

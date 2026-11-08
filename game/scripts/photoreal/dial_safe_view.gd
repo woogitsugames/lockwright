@@ -179,7 +179,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	if absf(float(input.get("pick_lift", 0.0))) > 0.0:
 		_moved = true
 	_jam = lerpf(_jam, 1.0 if jammed else 0.0, k)
-	var shake := 0.012 * _jam * sin(Time.get_ticks_msec() * 0.08)
+	var shake := 0.0 if UiA11y.reduce_motion() else 0.012 * _jam * sin(Time.get_ticks_msec() * 0.08)  # D-90
 	_dial_rot = lerp_angle(_dial_rot, dial * TAU + shake, k) if delta < 0.5 else dial * TAU
 	for i in n_wheels:
 		var e: Dictionary = els[i]

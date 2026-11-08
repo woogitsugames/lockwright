@@ -151,7 +151,7 @@ static func backdrop_path(p_job: Dictionary) -> String:
 func _reduce_motion() -> bool:
 	if reduce_motion_override >= 0:
 		return reduce_motion_override == 1
-	return bool(Settings.get_value("reduce_motion", false))
+	return UiA11y.reduce_motion()
 
 
 func _ready() -> void:

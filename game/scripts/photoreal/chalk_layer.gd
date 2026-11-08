@@ -66,7 +66,8 @@ static var _grain: ShaderMaterial
 
 var level := Level.OFF
 var marks := {}            # see LockPhotorealView._update_chalk()
-var text := ""             # current handwritten line (already translated)
+var text := "": set = set_text  # current handwritten line (already translated)
+var _spoken := ""          # D-90: last line given to the screen reader
 var _shown_text := ""
 var _alpha := 0.0
 var _font: Font
@@ -285,3 +286,15 @@ func _draw() -> void:
 	if _shown_text != "":
 		var tr: Rect2 = marks.get("text_rect", Rect2(16, 16, size.x - 96, 70))
 		label(tr.position + Vector2(0, TEXT_SIZE), _shown_text, TEXT_SIZE, _alpha, tr.size.x)
+
+
+## D-90: the chalk line is drawn, so a screen reader cannot see it: the layer carries it as its
+## accessible name and a new line is announced (politely) while a screen reader runs.
+func set_text(v: String) -> void:
+	text = v
+	if v == "" or v == _spoken:
+		return
+	_spoken = v
+	set("accessibility_name", v)
+	if UiA11y.screen_reader_active():
+		UiA11y.announce(v, false)

@@ -47,7 +47,7 @@ func aim(tex: Texture2D, centre_uv: Vector2, half_uv: Vector2) -> void:
 
 
 func tick(delta: float) -> void:
-	_open = move_toward(_open, _target, delta / OPEN_S)
+	_open = _target if UiA11y.reduce_motion() else move_toward(_open, _target, delta / OPEN_S)  # D-90
 	visible = _open > 0.0
 	if not visible:
 		return

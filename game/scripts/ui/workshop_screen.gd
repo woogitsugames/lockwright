@@ -176,7 +176,7 @@ func _tab_button(node_name: String, text: String, group: ButtonGroup, tab: Strin
 	b.button_group = group
 	b.custom_minimum_size = Vector2(0, 48)
 	b.theme_type_variation = &"TabPlate"  # VA-01: 6 dp sides instead of 16, so "Wyposażenie" is not trimmed
-	b.add_theme_font_size_override("font_size", 16)
+	b.add_theme_font_size_override("font_size", UiA11y.fs(16))
 	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	b.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	b.clip_text = true
@@ -284,7 +284,7 @@ func _practice_card(e: Dictionary) -> Control:
 	var goal := ScreenFrame.wrap(Label.new())
 	goal.name = "Name"
 	goal.text = I18n.t(e["goal_key"])
-	goal.add_theme_font_size_override("font_size", 18)
+	goal.add_theme_font_size_override("font_size", UiA11y.fs(18))
 	box.add_child(goal)
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 12)
@@ -297,6 +297,8 @@ func _practice_card(e: Dictionary) -> Control:
 	var action := Button.new()
 	action.name = "Action"
 	action.custom_minimum_size = Vector2(112, 48)
+	if UiA11y.text_scale() > 1.0:  # D-90: large text wraps on the plate instead of widening the row
+		action.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	action.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	action.mouse_filter = Control.MOUSE_FILTER_PASS
 	row.add_child(action)
@@ -352,7 +354,7 @@ func _furnishing_card(f: Dictionary, coins: int) -> Control:
 	var name_label := ScreenFrame.wrap(Label.new())
 	name_label.name = "Name"
 	name_label.text = I18n.t(StringName(f.get("i18n", "workshop.title")))
-	name_label.add_theme_font_size_override("font_size", 18)
+	name_label.add_theme_font_size_override("font_size", UiA11y.fs(18))
 	box.add_child(name_label)
 	var desc_key := StringName(f.get("desc", ""))
 	if I18n.has_key(desc_key):
@@ -372,6 +374,8 @@ func _furnishing_card(f: Dictionary, coins: int) -> Control:
 	var action := Button.new()
 	action.name = "Action"
 	action.custom_minimum_size = Vector2(112, 48)
+	if UiA11y.text_scale() > 1.0:  # D-90: large text wraps on the plate instead of widening the row
+		action.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	action.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	action.mouse_filter = Control.MOUSE_FILTER_PASS
 	row.add_child(action)
@@ -425,7 +429,7 @@ func _tool_card(tool: Dictionary, coins: int) -> Control:
 	var name_label := ScreenFrame.wrap(Label.new())
 	name_label.name = "Name"
 	name_label.text = I18n.t(tool.get("i18n", &"common.close"))
-	name_label.add_theme_font_size_override("font_size", 18)
+	name_label.add_theme_font_size_override("font_size", UiA11y.fs(18))
 	text_col.add_child(name_label)
 	# T57: one short line on what the tool is for and what feedback it gives
 	var desc_key := StringName("tool.%s.desc" % id)
@@ -446,6 +450,8 @@ func _tool_card(tool: Dictionary, coins: int) -> Control:
 	var action := Button.new()
 	action.name = "Action"
 	action.custom_minimum_size = Vector2(112, 48)
+	if UiA11y.text_scale() > 1.0:  # D-90: large text wraps on the plate instead of widening the row
+		action.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	action.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	action.mouse_filter = Control.MOUSE_FILTER_PASS
 	row.add_child(action)

@@ -278,7 +278,8 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 			target = depth
 		_tooth[s] = target if snap else lerpf(_tooth[s], target, k)
 		if st == "overset":
-			_tooth[s] -= 0.12 * absf(sin(Time.get_ticks_msec() * 0.06))
+			# D-90 reduce motion: the slipping tooth rests at its deepest point instead of chattering
+			_tooth[s] -= 0.12 if UiA11y.reduce_motion() else 0.12 * absf(sin(Time.get_ticks_msec() * 0.06))
 		_reel_mats[s].set_shader_parameter("pos", _pos[s] * _reel_sign())
 	_chatter = 1.0 if slipping else 0.0
 	var core := clampf(float(vm.get("core_rotation", 0.0)), 0.0, 1.0)

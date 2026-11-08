@@ -100,19 +100,41 @@ func _draw() -> void:
 	var dir := Vector2.LEFT.rotated(deg_to_rad(arm_deg))
 	var nrm := Vector2(-dir.y, dir.x)  # points down for an arm to the left
 	var length := r * ARM_LEN
-	var shake := tremor * 1.2 * sin(Time.get_ticks_msec() * 0.09)
+	var shake := 0.0 if UiA11y.reduce_motion() else tremor * 1.2 * sin(Time.get_ticks_msec() * 0.09)  # D-90
 	var line := PackedVector2Array()
 	for i in 9:
 		var t := i / 8.0
-		var sag := bow * r * 0.16 * sin(t * PI) * t  # bows toward the plug's resistance
+		# bows toward the plug's resistance; near the tool's limit it bends further (DESIGN.md §1 stress)
+		var sag := (bow * 0.16 + tremor * 0.14) * r * sin(t * PI) * t
 		line.append(foot + dir * length * t + nrm * (sag + shake * t))
 	draw_polyline(line, C_STEEL_EDGE, r * 0.16 + 2.0, true)
 	draw_polyline(line, C_STEEL, r * 0.16, true)
+	_draw_cracks(line, r)
 	# foot bent into the keyway (the short leg of the L)
 	draw_line(foot + dir * 2.0, foot + Vector2(0, -r * 0.20).rotated(rot), C_STEEL_EDGE, r * 0.16 + 2.0)
 	draw_line(foot + dir * 2.0, foot + Vector2(0, -r * 0.20).rotated(rot), C_STEEL, r * 0.16)
 	if gauge:
 		_draw_gauge()
+
+
+## D-90 / DESIGN.md §1 "stress": 1 → 3 dark cross cracks on the bend of the arm as the tool nears
+## its limit. A still picture (no motion), so near-break reads in grayscale and with reduce motion.
+func _draw_cracks(line: PackedVector2Array, r: float) -> void:
+	var n := crack_count(tremor)
+	for k in n:
+		var i := 4 + (k - 1 if n > 1 else 0)  # around the middle of the bow
+		var a := line[i]
+		var d := (line[i + 1] - line[i - 1]).normalized()
+		var nn := Vector2(-d.y, d.x)
+		var p := a + d * (k - (n - 1) * 0.5) * r * 0.14
+		draw_line(p - nn * r * 0.11, p + nn * r * 0.11, C_KEYWAY, 2.0)
+
+
+## Cracks shown for a tremor (stress above 0.6, 0..1): none, then 1, 2, 3.
+static func crack_count(t: float) -> int:
+	if t <= 0.0:
+		return 0
+	return clampi(ceili(t * 3.0), 1, 3)
 
 
 func _draw_gauge() -> void:

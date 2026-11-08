@@ -14,6 +14,11 @@ extends Node
 ## tension (auto_level, the lock scene may tune it per lock state) and the right thumb
 ## alone drives the pick. A short tap on the left zone releases tension for RELEASE_S,
 ## which clears an overset without dropping set pins (drop grace ≥ 350 ms in every tier).
+##
+## D-90 "swap thumbs" (HUD.md §9.2, left-handed): Settings `swap_thumbs` puts tension on the right
+## half and the pick on the left half. The picture does not mirror (the lock has its side): depth
+## still grows to the right inside the pick half, lift is still up. "left"/"right" in the API below
+## mean the tension / pick thumb, whichever side of the screen they are on.
 
 const DEAD_ZONE_DP := 10.0
 const SMOOTHING := 0.45
@@ -43,6 +48,8 @@ var auto_level := AUTO_LEVEL
 var release_left := 0.0
 ## Frozen pick (loupe open, ONBOARDING §6.2): input is still read but depth/lift hold.
 var frozen := false
+## D-90: tension zone on the right, pick zone on the left.
+var swap_thumbs := false
 
 var _touch_tension := -1
 var _touch_pick := -1
@@ -61,6 +68,7 @@ var _tension_down_ms := 0
 
 func _ready() -> void:
 	auto_tension = bool(Settings.get_value(&"auto_tension", false))
+	swap_thumbs = bool(Settings.get_value(&"swap_thumbs", false))
 
 
 func left_down() -> bool:
@@ -87,7 +95,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			var half := maxf(_size().x, 412.0) * 0.5
-			if event.position.x < half:
+			if (event.position.x < half) != swap_thumbs:
 				_touch_tension = event.index
 				_tension_start = event.position
 				_tension_down_ms = Time.get_ticks_msec()
@@ -118,7 +126,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_update_pick(event.position)
 			# rotate: angular delta around the zone center (ring_combo)
 			var size := _size()
-			var center := Vector2(size.x * 0.75, size.y * 0.5)
+			var center := Vector2(size.x * (0.25 if swap_thumbs else 0.75), size.y * 0.5)
 			var a0: float = (_pick_last_pos - center).angle()
 			var a1: float = (event.position - center).angle()
 			_rotate_raw = clampf(_rotate_raw + (a1 - a0), -1.0, 1.0)
@@ -145,7 +153,7 @@ func _update_tension(pos: Vector2) -> void:
 func _update_pick(pos: Vector2) -> void:
 	var size := _size()
 	var half := size.x * 0.5
-	var local_x := (pos.x - half) / half
+	var local_x := (pos.x - (0.0 if swap_thumbs else half)) / half
 	if absf(local_x - _depth_raw) * half > _dead_zone():
 		_depth_raw = clampf(local_x, 0.0, 1.0)
 	# D-24: lift is the vertical drag from the touch-down point (up = positive)

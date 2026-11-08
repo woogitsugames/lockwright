@@ -37,7 +37,7 @@ func _ready() -> void:
 	var v := $Margin/Scroll/VBox
 	v.get_node("Title").text = I18n.t(&"tutorial.title")
 	v.get_node("Title").theme_type_variation = &"MenuTitle"
-	v.get_node("Title").add_theme_font_size_override("font_size", 30)
+	v.get_node("Title").add_theme_font_size_override("font_size", UiA11y.fs(30))
 	v.get_node("StartButton").pressed.connect(_start_stage)
 	# VA-16: "‹ Back" top-left like every other screen (run_loop.gd), outside the scroll so it is always
 	# on screen; it sat under the three VA-07 cards, below the fold in portrait and in landscape
@@ -104,7 +104,7 @@ func _add_frame(card: int, caption_key: StringName) -> void:
 	cap.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	cap.custom_minimum_size = Vector2(0, 0)
 	cap.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	cap.add_theme_font_size_override("font_size", 19)
+	cap.add_theme_font_size_override("font_size", UiA11y.fs(19))
 	cap.add_theme_color_override("font_color", Color(0.95, 0.91, 0.82))
 	row.add_child(cap)
 	$Margin/Scroll/VBox/Frames.add_child(row)
@@ -129,7 +129,7 @@ func _add_note() -> void:
 	l.text = I18n.t(&"tutorial.note_game")
 	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	l.add_theme_color_override("font_color", Color(0.16, 0.12, 0.08))
-	l.add_theme_font_size_override("font_size", 17)
+	l.add_theme_font_size_override("font_size", UiA11y.fs(17))
 	paper.add_child(l)
 	var v := $Margin/Scroll/VBox
 	v.add_child(paper)

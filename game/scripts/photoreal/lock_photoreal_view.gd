@@ -127,6 +127,7 @@ var _face: PlugFace
 var _chalk: ChalkLayer
 var _eyepiece: Eyepiece
 var _loupe_btn: Control
+var _captions: SoundCaptions          # D-90: HUD.md §9.1 sound captions strip
 var _loupe_rect := Rect2()
 var _loupe_tap := TapGate.new()
 var _blanks: Array[MeshInstance3D] = []  # N-56: plugged chambers when the lock has fewer pins
@@ -251,6 +252,10 @@ func set_dark(on: bool) -> void:
 		_chalk.visible = not on
 	if _loupe_btn:
 		_loupe_btn.visible = not on
+	if _captions:
+		_captions.dark = on
+		if on:
+			_captions.visible = false
 	if on and zoomed:
 		toggle_loupe()
 
@@ -512,7 +517,7 @@ func _build_overlay() -> void:
 	_eyepiece = Eyepiece.new()
 	_eyepiece.name = "Eyepiece"
 	add_child(_eyepiece)
-	_loupe_btn = Control.new()
+	_loupe_btn = A11yHit.new()
 	_loupe_btn.name = "LoupeButton"
 	_loupe_btn.mouse_filter = Control.MOUSE_FILTER_STOP
 	_loupe_btn.gui_input.connect(_on_loupe_input)
@@ -523,6 +528,23 @@ func _build_overlay() -> void:
 	flap.pressed.connect(func() -> void: pause_requested.emit())
 	_flap = flap
 	add_child(_flap)
+	_captions = SoundCaptions.new()
+	add_child(_captions)
+	_name_controls()
+	if not I18n.language_changed.is_connected(_name_controls):
+		I18n.language_changed.connect(_name_controls)
+
+
+## D-90: screen reader names of the lock screen's text-less controls (pause flap, loupe) and a
+## description of the screen itself (what the thumbs do, in the player's control mode).
+func _name_controls() -> void:
+	if not is_inside_tree() and _flap == null:
+		return
+	UiA11y.name_button(_flap, I18n.t(&"a11y.pause"), (_flap as PauseFlap).press)
+	UiA11y.name_button(_loupe_btn, I18n.t(&"a11y.loupe"), toggle_loupe)
+	set("accessibility_name", I18n.t(&"a11y.lock_screen"))
+	var auto := bool(Settings.get_value(&"auto_tension", true))
+	set("accessibility_description", I18n.t(&"a11y.lock_screen_auto" if auto else &"a11y.lock_screen_manual"))
 
 
 # ------------------------------------------------------------------ layout
@@ -594,6 +616,13 @@ func _layout() -> void:
 	# N-57: loupe touch target over the loupe in the roll (last pocket column, lower part)
 	_loupe_btn.position = _loupe_rect.position
 	_loupe_btn.size = _loupe_rect.size
+	# D-90: sound captions strip right above the roll (portrait) / at the foot of the section (landscape)
+	var cap_w := minf(section_rect.size.x - 32.0, 360.0)
+	_captions.size = Vector2(cap_w, 0.0)
+	_captions.reset_size()
+	_captions.size.x = cap_w
+	_captions.position = Vector2(section_rect.get_center().x - cap_w * 0.5,
+		section_rect.end.y - _captions.size.y - 10.0)
 	var ed := minf(r.size.x, r.size.y) * 0.6
 	_eyepiece.size = Vector2(ed, ed)
 	_tray.queue_redraw()
@@ -704,7 +733,7 @@ func _pose_pick(vm: Dictionary, input: Dictionary, elements: Array, default_targ
 	if _pick_handle:
 		_pick_handle.transform = plug * Transform3D(Basis.IDENTITY, off) * _rest[_pick_handle]
 	var shake := 0.0
-	if _stress >= 0.9:
+	if _stress >= 0.9 and not UiA11y.reduce_motion():  # D-90: reduce motion keeps the bend and cracks, drops the tremor
 		shake = 0.04 * sin(Time.get_ticks_msec() * 0.09)  # ≈ 1 dp tremor near breaking (HUD.md §3)
 	if _pick_mat:
 		_pick_mat.set_shader_parameter("bend", PICK_BEND_MM * _stress + shake)
@@ -988,8 +1017,13 @@ func thumb_anchors() -> Array:
 	var portrait := safe.size.y >= safe.size.x
 	var thumbs_y := tray_rect.position.y + tray_rect.size.y * (0.66 if portrait else 0.75)
 	var cs := Rect2(safe.position - r.position, safe.size)  # chalk layer coordinates (= view)
-	return [ChalkLayer.clamp_hint_anchor(Vector2(r.size.x * (0.22 if portrait else 0.12), thumbs_y), cs, "left"),
-		ChalkLayer.clamp_hint_anchor(Vector2(r.size.x * (0.70 if portrait else 0.88), thumbs_y), cs, "right")]
+	var lx := r.size.x * (0.22 if portrait else 0.12)
+	var rx := r.size.x * (0.70 if portrait else 0.88)
+	if bool(Settings.get_value(&"swap_thumbs", false)):  # D-90 left-handed: tension thumb on the right
+		return [ChalkLayer.clamp_hint_anchor(Vector2(r.size.x - lx, thumbs_y), cs, "left"),
+			ChalkLayer.clamp_hint_anchor(Vector2(r.size.x - rx, thumbs_y), cs, "right")]
+	return [ChalkLayer.clamp_hint_anchor(Vector2(lx, thumbs_y), cs, "left"),
+		ChalkLayer.clamp_hint_anchor(Vector2(rx, thumbs_y), cs, "right")]
 
 
 func show_hint_dent(pos: Vector2, seconds: float = 2.0) -> void:

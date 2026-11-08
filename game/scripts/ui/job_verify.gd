@@ -191,6 +191,9 @@ func _card_tile(card: String) -> Button:
 	name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	box.add_child(name_label)
 	b.pressed.connect(_ask_about.bind(card))
+	# D-90: the plate has no text of its own (photo + label child): give the screen reader both
+	b.set("accessibility_name", name_label.text)
+	b.set("accessibility_description", I18n.t(&"a11y.card_ask"))
 	return b
 
 

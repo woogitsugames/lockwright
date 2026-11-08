@@ -51,7 +51,7 @@ static func build(cover: ColorRect, entries: Array) -> Dictionary:
 		b.text = I18n.t(spec[0])
 		b.custom_minimum_size = Vector2(0, BUTTON_H)
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		b.add_theme_font_size_override("font_size", 20)
+		b.add_theme_font_size_override("font_size", UiA11y.fs(20))
 		b.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 		b.pressed.connect(spec[1])
 		box.add_child(b)
@@ -63,7 +63,7 @@ static func build(cover: ColorRect, entries: Array) -> Dictionary:
 ## Shows the cover with a short fade (none with "reduce motion").
 static func open(cover: CanvasItem) -> void:
 	cover.visible = true
-	if Settings.get_value("reduce_motion", false) or not cover.is_inside_tree():
+	if UiA11y.reduce_motion() or not cover.is_inside_tree():
 		cover.modulate.a = 1.0
 		return
 	cover.modulate.a = 0.0
