@@ -487,6 +487,10 @@ Samsung SM-A165F (Helio G99, Mali-G57 MC2, 4 GB, ekran 60 Hz), scena planu B, 60
 | Start do menu ≤ 4 s | ok. 4,4 s (1,3 s aktywność + ok. 3,1 s `Sfx._preload_all()`) | **nie przechodzi**, do naprawienia w kodzie; N-35 |
 | Bateria ≤ 15%/h, AAB ≤ 60 MB | nie mierzono; paczka zasobów dziś 289 MB (N-30) | brak danych / nie przechodzi |
 
+### 8.1a Gra na tym samym telefonie, 2026-11-08 (D-87)
+
+Pełna gra (nie spike) na SM-A165F przed i po poprawkach wydajności: `docs/handoff/POMIARY.md` §9, dane `docs/handoff/device-tests/perf_2026-11-08/`. W skrócie: zimny start 4,0 → 3,0 s (przechodzi), zamek w grze 58–60 FPS i 10 min bez dławienia (przechodzi), wejście do zamka 0,65 → 0,35 s, PSS zamka 850–890 → 555–615 MB (nadal ponad 350 MB), zamek bez dotyku nadal 41–44 FPS (taktowanie CPU bez dotyku).
+
 ### 8.2 Werdykt go / no-go dla Godota (warunki zmiany z §1.9), 2026-11-05
 
 **GO, warunkowo: zostajemy przy Godocie 4.7.2.** Żaden z warunków zmiany z §1.9 nie jest spełniony:

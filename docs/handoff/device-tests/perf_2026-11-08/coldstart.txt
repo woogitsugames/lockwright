@@ -1,0 +1,76 @@
+# Cold start: am start -W + screenrecord (splash -> menu fully drawn) + LW_BOOT (engine start -> first menu frame)
+## CI 283887e run b1
+app_window=1.263s menu_stable=5.285s  launch->menu=4.02s
+11-08 01:57:09.799  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s322ms
+11-08 01:57:12.012 20979 21023 I godot   : Haptics: native plugin LockwrightHaptics detected, play=true test_pulse=true caps={ "tier": "ON_OFF", "primitives": [], "amplitude_control": false, "envelope
+11-08 01:57:12.171 20979 21023 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native
+## CI 283887e run b2
+app_window=1.309s menu_stable=5.633s  launch->menu=4.32s
+11-08 02:06:59.625  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s420ms
+11-08 02:07:01.950 22635 22683 I godot   : Haptics: native plugin LockwrightHaptics detected, play=true test_pulse=true caps={ "tier": "ON_OFF", "primitives": [], "amplitude_control": false, "envelope
+11-08 02:07:02.212 22635 22683 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native
+## CI 283887e run b3
+app_window=1.442s menu_stable=5.001s  launch->menu=3.56s
+11-08 02:07:22.750  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s19ms
+11-08 02:07:24.792 22892 22934 I godot   : Haptics: native plugin LockwrightHaptics detected, play=true test_pulse=true caps={ "tier": "ON_OFF", "primitives": [], "amplitude_control": false, "envelope
+11-08 02:07:24.947 22892 22934 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native
+## local p1
+app_window=1.297s menu_stable=5.254s  launch->menu=3.96s
+11-08 02:08:23.664  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s157ms
+11-08 02:08:26.143 23494 23534 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native
+11-08 02:08:26.617 23494 23534 I godot   : LW_BOOT engine_to_menu_ms=3291 menu_first_frame_ms=9 marks=PerfProbe:0,PerfProbe:0,DpScale:0,Settings:0,Save:0,I18n:0,Events:0,Haptics:0,FeedbackDirector:0,UiA11y:0,Sfx:0,Quality:0,Achievements:0,ErrorLog:0,Nav:0,VoicePacks:0,Boot:441,@Label@14:160,MainMenu:93
+## local v2a
+app_window=0.603s menu_stable=5.093s  launch->menu=4.49s
+11-08 02:55:31.274  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s483ms
+11-08 02:55:34.050  7737  7778 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native
+11-08 02:55:34.508  7737  7778 I godot   : LW_BOOT engine_to_menu_ms=3748 tree_ms=3031 menu_first_frame_ms=20 ready=PerfProbe:2,DpScale:0,Settings:1,Save:1,I18n:56,Events:0,Haptics:10,FeedbackDirector:0,UiA11y:2,Sfx:386,Quality:0,Achievements:1,ErrorLog:17,Nav:0,VoicePacks:2,Boot:4,@Label@14:7,MainMenu:208
+## local v2b
+app_window=1.224s menu_stable=4.464s  launch->menu=3.24s
+11-08 02:55:54.727  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s94ms
+11-08 02:55:56.525  7965  8020 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native
+11-08 02:55:56.966  7965  8020 I godot   : LW_BOOT engine_to_menu_ms=2588 tree_ms=1922 menu_first_frame_ms=19 ready=PerfProbe:1,DpScale:1,Settings:0,Save:1,I18n:56,Events:0,Haptics:7,FeedbackDirector:0,UiA11y:2,Sfx:340,Quality:1,Achievements:0,ErrorLog:5,Nav:0,VoicePacks:0,Boot:1,@Label@14:3,MainMenu:229
+## local v2c
+app_window=1.445s menu_stable=4.538s  launch->menu=3.09s
+11-08 02:56:17.639  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s2ms
+11-08 02:56:19.407  8181  8222 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native
+11-08 02:56:19.825  8181  8222 I godot   : LW_BOOT engine_to_menu_ms=2489 tree_ms=1849 menu_first_frame_ms=19 ready=PerfProbe:2,DpScale:0,Settings:0,Save:1,I18n:55,Events:0,Haptics:8,FeedbackDirector:0,UiA11y:2,Sfx:338,Quality:1,Achievements:0,ErrorLog:5,Nav:0,VoicePacks:1,Boot:1,@Label@14:3,MainMenu:204
+## local v3a
+app_window=1.132s menu_stable=4.668s  launch->menu=3.54s
+11-08 03:10:00.846  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s374ms
+11-08 03:10:02.912 10835 10878 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native in 31 ms
+11-08 03:10:03.098 10835 10878 I godot   : LW_BOOT engine_to_menu_ms=2668 tree_ms=2239 menu_first_frame_ms=7 ready=PerfProbe:2,DpScale:0,Settings:1,Save:1,I18n:56,Events:0,Haptics:7,FeedbackDirector:0,UiA11y:2,Sfx:88,Quality:1,Achievements:1,ErrorLog:26,Nav:0,VoicePacks:3,Boot:4,@Label@14:3,MainMenu:227
+## local v3b
+app_window=1.226s menu_stable=4.035s  launch->menu=2.81s
+11-08 03:10:23.874  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s31ms
+11-08 03:10:25.733 11057 11098 I godot   : LW_BOOT engine_to_menu_ms=2169 tree_ms=1794 menu_first_frame_ms=14 ready=PerfProbe:1,DpScale:0,Settings:1,Save:0,I18n:55,Events:0,Haptics:6,FeedbackDirector:0,UiA11y:1,Sfx:67,Quality:0,Achievements:1,ErrorLog:4,Nav:1,VoicePacks:0,Boot:2,@Label@14:3,MainMenu:219
+11-08 03:10:25.753 11057 11098 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native in 19 ms
+## local v3c
+app_window=1.384s menu_stable=4.241s  launch->menu=2.86s
+11-08 03:10:47.052  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s67ms
+11-08 03:10:48.769 11280 11321 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native in 29 ms
+11-08 03:10:48.900 11280 11321 I godot   : LW_BOOT engine_to_menu_ms=2213 tree_ms=1838 menu_first_frame_ms=13 ready=PerfProbe:1,DpScale:0,Settings:1,Save:1,I18n:53,Events:0,Haptics:6,FeedbackDirector:0,UiA11y:2,Sfx:125,Quality:0,Achievements:1,ErrorLog:5,Nav:0,VoicePacks:0,Boot:2,@Label@14:3,MainMenu:162
+## local v3d
+app_window=1.404s menu_stable=4.164s  launch->menu=2.76s
+11-08 03:11:10.039  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s66ms
+11-08 03:11:11.649 11456 11499 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native in 24 ms
+11-08 03:11:11.827 11456 11499 I godot   : LW_BOOT engine_to_menu_ms=2161 tree_ms=1768 menu_first_frame_ms=15 ready=PerfProbe:1,DpScale:0,Settings:0,Save:1,I18n:54,Events:0,Haptics:6,FeedbackDirector:0,UiA11y:2,Sfx:67,Quality:1,Achievements:2,ErrorLog:11,Nav:0,VoicePacks:1,Boot:6,@Label@14:3,MainMenu:223
+## local v4a
+app_window=0.208s menu_stable=3.370s  launch->menu=3.16s
+11-08 03:26:30.464  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s128ms
+11-08 03:26:32.390 13984 14031 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native in 23 ms
+11-08 03:26:32.613 13984 14031 I godot   : LW_BOOT engine_to_menu_ms=2505 tree_ms=2062 menu_first_frame_ms=10 ready=PerfProbe:1,DpScale:1,Settings:0,Save:2,I18n:55,Events:0,Haptics:7,FeedbackDirector:0,UiA11y:3,Sfx:83,Quality:0,Achievements:3,ErrorLog:17,Nav:0,VoicePacks:2,Boot:3,@Label@14:3,MainMenu:253
+## local v4b
+app_window=0.885s menu_stable=3.873s  launch->menu=2.99s
+11-08 03:26:54.717  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s232ms
+11-08 03:26:56.314 14188 14232 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native in 24 ms
+11-08 03:26:56.579 14188 14232 I godot   : LW_BOOT engine_to_menu_ms=2221 tree_ms=1727 menu_first_frame_ms=7 ready=PerfProbe:1,DpScale:0,Settings:0,Save:2,I18n:55,Events:0,Haptics:7,FeedbackDirector:0,UiA11y:2,Sfx:85,Quality:0,Achievements:1,ErrorLog:4,Nav:0,VoicePacks:4,Boot:5,@Label@14:3,MainMenu:318
+## local v4c
+app_window=1.416s menu_stable=4.442s  launch->menu=3.03s
+11-08 03:27:17.752  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s34ms
+11-08 03:27:19.811 14374 14417 I godot   : LW_BOOT engine_to_menu_ms=2387 tree_ms=2011 menu_first_frame_ms=11 ready=PerfProbe:2,DpScale:0,Settings:0,Save:1,I18n:55,Events:0,Haptics:7,FeedbackDirector:0,UiA11y:2,Sfx:73,Quality:0,Achievements:1,ErrorLog:5,Nav:0,VoicePacks:0,Boot:2,@Label@14:3,MainMenu:214
+11-08 03:27:19.834 14374 14417 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native in 22 ms
+## local v4d
+app_window=1.433s menu_stable=4.240s  launch->menu=2.81s
+11-08 03:27:40.595  2084  2135 I ActivityTaskManager: Displayed com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher for user 0: +1s26ms
+11-08 03:27:42.421 14600 14643 I godot   : LW_BOOT engine_to_menu_ms=2157 tree_ms=1782 menu_first_frame_ms=14 ready=PerfProbe:2,DpScale:0,Settings:0,Save:1,I18n:54,Events:0,Haptics:6,FeedbackDirector:0,UiA11y:2,Sfx:69,Quality:0,Achievements:1,ErrorLog:4,Nav:0,VoicePacks:1,Boot:2,@Label@14:3,MainMenu:216
+11-08 03:27:42.440 14600 14643 I godot   : Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native in 17 ms

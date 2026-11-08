@@ -1,0 +1,13 @@
+menu_idle                    PSS= 396 MB  Graphics= 164 (GL 136, EGL 28)  Native= 113  Code=  80
+menu_to_jobs                 PSS= 417 MB  Graphics= 170 (GL 141, EGL 28)  Native= 128  Code=  80
+x                            PSS= 415 MB  Graphics= 168 (GL 139, EGL 28)  Native= 128  Code=  80
+x                            PSS= 415 MB  Graphics= 168 (GL 139, EGL 28)  Native= 128  Code=  80
+list_to_arrival_combo        PSS= 414 MB  Graphics= 168 (GL 140, EGL 28)  Native= 127  Code=  80
+arrival_to_verify_combo      PSS= 544 MB  Graphics= 296 (GL 268, EGL 28)  Native= 131  Code=  78
+verify_to_lock_combo         PSS= 555 MB  Graphics= 296 (GL 268, EGL 28)  Native= 142  Code=  78
+x                            PSS= 561 MB  Graphics= 302 (GL 274, EGL 28)  Native= 142  Code=  78
+lock_combo_idle              PSS= 555 MB  Graphics= 296 (GL 268, EGL 28)  Native= 142  Code=  78
+lock_combo_interact          PSS= 555 MB  Graphics= 296 (GL 268, EGL 28)  Native= 142  Code=  78
+x                            PSS= 564 MB  Graphics= 304 (GL 276, EGL 28)  Native= 143  Code=  78
+lock_exit_combo              PSS= 550 MB  Graphics= 296 (GL 268, EGL 28)  Native= 137  Code=  78
+menu_to_jobs_after_combo     PSS= 554 MB  Graphics= 296 (GL 268, EGL 28)  Native= 140  Code=  78

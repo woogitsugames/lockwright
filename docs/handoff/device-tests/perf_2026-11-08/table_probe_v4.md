@@ -1,0 +1,114 @@
+| Ekran / akcja | probe: FPS · p95 · max [ms] · >33 ms · PSS/Graphics [MB] | v4: FPS · p95 · max [ms] · >33 ms · PSS/Graphics [MB] |
+|---|---|---|
+| menu_idle | 61 · 16 · 16 · 0 · 419/169 | 61 · 16 · 16 · 0 · 402/169 |
+| menu_to_jobs | 52 · 16 · 700 · 1 · 589/330 | — |
+| list_to_arrival_combo | 58 · 16 · 200 · 1 · 589/330 | 58 · 16 · 250 · 1 · 422/175 |
+| arrival_to_verify_combo | 58 · 16 · 250 · 1 · 588/330 | 57 · 16 · 350 · 1 · 568/303 |
+| verify_to_lock_combo | 39 · 33 · 1000 · 1 · 852/582 | 43 · 33 · 350 · 1 · 578/303 |
+| lock_combo_idle | 42 · 33 · 50 · 1 · 860/590 | 41 · 33 · 50 · 1 · 565/303 |
+| lock_combo_interact | 59 · 16 · 33 · 0 · 856/586 | 60 · 16 · 33 · 0 · 567/305 |
+| lock_exit_combo | 59 · 16 · 102 · 1 · 851/586 | 60 · 16 · 50 · 1 · 556/299 |
+| menu_to_jobs_after_combo | 59 · 16 · 134 · 1 · 854/586 | 59 · 16 · 134 · 1 · 564/303 |
+| list_to_arrival_warded | 58 · 16 · 200 · 1 · 822/564 | 53 · 16 · 600 · 2 · 561/301 |
+| arrival_to_verify_warded | 59 · 16 · 102 · 1 · 821/564 | 59 · 16 · 102 · 1 · 575/301 |
+| verify_to_lock_warded | 36 · 33 · 1000 · 4 · 885/578 | 41 · 33 · 650 · 2 · 614/304 |
+| lock_warded_idle | 42 · 33 · 50 · 1 · 881/574 | 44 · 33 · 33 · 0 · 613/308 |
+| lock_warded_interact | 58 · 16 · 33 · 0 · 887/580 | 60 · 16 · 33 · 0 · 602/298 |
+| lock_exit_warded | 59 · 16 · 118 · 1 · 857/570 | 60 · 16 · 50 · 1 · 586/302 |
+| menu_to_jobs_after_warded | 59 · 16 · 134 · 1 · 859/570 | 59 · 16 · 134 · 1 · 588/302 |
+| list_to_arrival_wafer | 58 · 16 · 200 · 1 · 858/570 | 58 · 16 · 200 · 1 · 586/302 |
+| arrival_to_verify_wafer | 59 · 16 · 102 · 1 · 857/570 | 59 · 16 · 102 · 1 · 601/302 |
+| verify_to_lock_wafer | 40 · 33 · 700 · 1 · 873/570 | 44 · 33 · 200 · 1 · 606/306 |
+| lock_wafer_idle | 43 · 33 · 33 · 0 · 873/570 | 42 · 33 · 50 · 1 · 604/304 |
+| lock_wafer_interact | 58 · 16 · 102 · 2 · 875/570 | 59 · 16 · 150 · 1 · 602/300 |
+| lock_exit_wafer | 59 · 16 · 86 · 1 · 859/570 | 60 · 16 · 33 · 0 · 584/298 |
+| menu_to_jobs_after_wafer | 59 · 16 · 134 · 1 · 861/570 | 59 · 16 · 134 · 1 · 590/302 |
+| list_to_arrival_pin | 59 · 16 · 150 · 1 · 856/567 | 54 · 16 · 500 · 2 · 588/300 |
+| arrival_to_verify_pin | 59 · 16 · 118 · 1 · 856/567 | 56 · 16 · 200 · 2 · 848/556 |
+| verify_to_lock_pin | 39 · 33 · 800 · 1 · 885/575 | 42 · 33 · 450 · 1 · 869/564 |
+| lock_pin_idle | 42 · 33 · 33 · 0 · 882/575 | 42 · 33 · 33 · 0 · 863/558 |
+| lock_pin_interact | 58 · 33 · 33 · 0 · 882/575 | 59 · 16 · 33 · 0 · 867/562 |
+| lock_exit_pin | 59 · 16 · 86 · 1 · 857/567 | 60 · 16 · 50 · 1 · 846/558 |
+| menu_to_jobs_after_pin | 59 · 16 · 134 · 1 · 855/564 | 59 · 16 · 134 · 1 · 848/558 |
+| list_to_arrival_magnetic | 58 · 16 · 200 · 1 · 853/564 | 59 · 16 · 150 · 1 · 845/558 |
+| arrival_to_verify_magnetic | 59 · 16 · 118 · 1 · 853/564 | 59 · 16 · 134 · 1 · 857/557 |
+| verify_to_lock_magnetic | 39 · 33 · 800 · 2 · 886/577 | 41 · 33 · 550 · 2 · 865/558 |
+| lock_magnetic_idle | 41 · 33 · 50 · 3 · 873/564 | 43 · 33 · 50 · 2 · 869/562 |
+| lock_magnetic_interact | 57 · 33 · 33 · 0 · 891/583 | 59 · 16 · 33 · 0 · 865/558 |
+| lock_exit_magnetic | 59 · 16 · 86 · 1 · 858/568 | 60 · 16 · 50 · 1 · 845/558 |
+| menu_to_jobs_after_magnetic | 59 · 16 · 134 · 1 · 861/570 | 59 · 16 · 134 · 1 · 847/558 |
+| list_to_arrival_lever | 58 · 16 · 200 · 1 · 862/568 | 58 · 16 · 250 · 1 · 849/558 |
+| arrival_to_verify_lever | 58 · 16 · 134 · 1 · 862/568 | 59 · 16 · 134 · 1 · 874/554 |
+| verify_to_lock_lever | 40 · 33 · 750 · 1 · 878/570 | 43 · 33 · 200 · 1 · 861/556 |
+| lock_lever_idle | 43 · 33 · 50 · 1 · 878/570 | 43 · 33 · 50 · 1 · 860/556 |
+| lock_lever_interact | 58 · 16 · 134 · 1 · 882/572 | 58 · 16 · 200 · 1 · 864/558 |
+| lock_exit_lever | 59 · 16 · 66 · 1 · 860/566 | 60 · 16 · 50 · 1 · 848/558 |
+| menu_to_jobs_after_lever | 59 · 16 · 134 · 1 · 866/570 | 59 · 16 · 134 · 1 · 850/558 |
+| list_to_arrival_warded_kazimierz | 58 · 16 · 200 · 1 · 850/557 | — |
+| arrival_to_verify_warded_kazimierz | 59 · 16 · 134 · 1 · 847/555 | — |
+| verify_to_lock_warded_kazimierz | 38 · 33 · 900 · 1 · 882/570 | — |
+| lock_warded_kazimierz_idle | 42 · 33 · 33 · 0 · 890/578 | — |
+| lock_warded_kazimierz_interact | 58 · 16 · 33 · 0 · 882/570 | — |
+| lock_exit_warded_kazimierz | 59 · 16 · 86 · 1 · 862/570 | — |
+| menu_to_jobs_after_warded_kazimierz | 59 · 16 · 134 · 1 · 864/570 | — |
+| list_to_arrival_egyptian | 59 · 16 · 134 · 1 · 862/570 | 59 · 16 · 134 · 1 · 848/558 |
+| arrival_to_verify_egyptian | 59 · 16 · 102 · 1 · 857/566 | 59 · 16 · 102 · 1 · 875/558 |
+| verify_to_lock_egyptian | 40 · 33 · 550 · 2 · 872/576 | 42 · 33 · 250 · 1 · 880/558 |
+| lock_egyptian_idle | 42 · 33 · 33 · 0 · 858/566 | 42 · 33 · 33 · 0 · 857/558 |
+| lock_egyptian_interact | 58 · 16 · 33 · 0 · 866/574 | 60 · 16 · 33 · 0 · 852/558 |
+| lock_exit_egyptian | 59 · 16 · 86 · 1 · 854/567 | 60 · 16 · 33 · 0 · 847/558 |
+| menu_to_jobs_after_egyptian | 59 · 16 · 134 · 1 · 858/569 | 59 · 16 · 134 · 1 · 850/558 |
+| list_to_arrival_dial_safe | 58 · 16 · 134 · 1 · 856/569 | 58 · 16 · 150 · 1 · 844/553 |
+| arrival_to_verify_dial_safe | 59 · 16 · 102 · 1 · 856/569 | 59 · 16 · 102 · 1 · 860/553 |
+| verify_to_lock_dial_safe | 40 · 33 · 600 · 2 · 861/569 | 43 · 33 · 300 · 1 · 854/559 |
+| lock_dial_safe_idle | 41 · 33 · 33 · 0 · 862/570 | 43 · 33 · 50 · 1 · 854/559 |
+| lock_dial_safe_interact | 56 · 33 · 33 · 0 · 860/568 | 59 · 16 · 33 · 0 · 850/555 |
+| lock_exit_dial_safe | 58 · 16 · 86 · 1 · 856/568 | 60 · 16 · 33 · 0 · 839/549 |
+| menu_to_jobs_after_dial_safe | 59 · 16 · 134 · 1 · 856/566 | 59 · 16 · 134 · 1 · 844/551 |
+| list_to_arrival_lever_detector | 59 · 16 · 102 · 1 · 856/568 | 58 · 16 · 118 · 1 · 843/553 |
+| arrival_to_verify_lever_detector | 59 · 16 · 86 · 1 · 850/562 | 59 · 16 · 102 · 1 · 847/548 |
+| verify_to_lock_lever_detector | 42 · 33 · 450 · 1 · 868/567 | 43 · 33 · 200 · 1 · 857/552 |
+| lock_lever_detector_idle | 42 · 33 · 33 · 0 · 862/561 | 43 · 33 · 33 · 0 · 857/552 |
+| lock_lever_detector_interact | 56 · 33 · 134 · 1 · 873/570 | 58 · 16 · 200 · 1 · 860/553 |
+| lock_exit_lever_detector | 59 · 16 · 86 · 1 · 857/570 | 60 · 16 · 50 · 1 · 847/549 |
+| menu_to_jobs_after_lever_detector | 59 · 16 · 134 · 1 · 859/570 | 59 · 16 · 134 · 1 · 852/551 |
+| list_to_arrival_dimple | 59 · 16 · 134 · 1 · 853/566 | 58 · 16 · 200 · 1 · 842/551 |
+| arrival_to_verify_dimple | 59 · 16 · 134 · 1 · 856/570 | 59 · 16 · 134 · 2 · 854/549 |
+| verify_to_lock_dimple | 39 · 33 · 750 · 2 · 878/571 | 39 · 33 · 550 · 3 · 873/561 |
+| lock_dimple_idle | 41 · 33 · 50 · 1 · 886/579 | 41 · 33 · 50 · 4 · 871/559 |
+| lock_dimple_interact | 56 · 33 · 33 · 0 · 886/579 | 59 · 16 · 33 · 0 · 877/565 |
+| lock_exit_dimple | 59 · 16 · 86 · 1 · 858/571 | 60 · 16 · 33 · 0 · 844/553 |
+| menu_to_jobs_after_dimple | 59 · 16 · 134 · 1 · 860/571 | 59 · 16 · 134 · 1 · 846/553 |
+| list_to_arrival_axial_slider | 58 · 16 · 134 · 1 · 857/570 | 58 · 16 · 134 · 1 · 844/553 |
+| arrival_to_verify_axial_slider | 59 · 16 · 86 · 1 · 857/570 | 59 · 16 · 102 · 1 · 858/553 |
+| verify_to_lock_axial_slider | 41 · 33 · 450 · 2 · 861/570 | 42 · 33 · 300 · 1 · 863/553 |
+| lock_axial_slider_idle | 44 · 33 · 33 · 0 · 865/574 | 43 · 33 · 50 · 1 · 863/553 |
+| lock_axial_slider_interact | 58 · 16 · 33 · 0 · 865/574 | 60 · 16 · 33 · 0 · 863/553 |
+| lock_exit_axial_slider | 59 · 16 · 86 · 1 · 857/570 | 60 · 16 · 50 · 1 · 841/551 |
+| menu_to_jobs_after_axial_slider | 59 · 16 · 134 · 1 · 857/569 | 59 · 16 · 134 · 1 · 846/553 |
+| list_to_arrival_disc_detainer | 59 · 16 · 118 · 1 · 855/569 | 59 · 16 · 102 · 1 · 843/553 |
+| arrival_to_verify_disc_detainer | 59 · 16 · 86 · 1 · 854/569 | 59 · 16 · 102 · 1 · 861/553 |
+| verify_to_lock_disc_detainer | 41 · 33 · 500 · 3 · 861/569 | 43 · 33 · 300 · 1 · 871/555 |
+| lock_disc_detainer_idle | 42 · 33 · 33 · 0 · 857/565 | 43 · 33 · 33 · 0 · 871/555 |
+| lock_disc_detainer_interact | 58 · 16 · 33 · 0 · 859/567 | 59 · 16 · 33 · 0 · 850/553 |
+| lock_exit_disc_detainer | 59 · 16 · 86 · 2 · 849/564 | 60 · 16 · 50 · 1 · 844/553 |
+| menu_to_jobs_after_disc_detainer | 59 · 16 · 134 · 1 · 853/566 | 59 · 16 · 134 · 1 · 847/553 |
+| list_to_arrival_time_lock | 57 · 16 · 300 · 1 · 853/568 | 56 · 16 · 350 · 1 · 841/553 |
+| arrival_to_verify_time_lock | 59 · 16 · 102 · 1 · 852/568 | 59 · 16 · 102 · 1 · 840/553 |
+| verify_to_lock_time_lock | 41 · 33 · 550 · 1 · 857/568 | 43 · 33 · 300 · 1 · 840/549 |
+| lock_time_lock_idle | 42 · 33 · 33 · 0 · 857/568 | 43 · 33 · 50 · 1 · 844/553 |
+| lock_time_lock_interact | 58 · 33 · 33 · 0 · 863/574 | 60 · 16 · 33 · 0 · 846/555 |
+| lock_exit_time_lock | 60 · 16 · 66 · 1 · 853/568 | 60 · 16 · 33 · 0 · 838/551 |
+| menu_to_jobs_after_time_lock | 59 · 16 · 134 · 1 · 855/568 | 59 · 16 · 134 · 1 · 840/551 |
+| arrival_wrong_floor_seq | 57 · 16 · 450 · 2 · 856/568 | 57 · 16 · 500 · 2 · 841/552 |
+| arrival_wrong_floor_hold | 60 · 16 · 33 · 0 · 855/568 | 60 · 16 · 33 · 0 · 837/548 |
+| thermal_min1 | 58 · 16 · 50 · 1 · 866/576 | 60 · 16 · 66 · 1 · 854/557 |
+| thermal_min2 | 58 · 16 · 50 · 1 · 860/570 | 60 · 16 · 66 · 1 · 854/557 |
+| thermal_min3 | 59 · 16 · 33 · 0 · 859/570 | 60 · 16 · 33 · 0 · 851/555 |
+| thermal_min4 | 58 · 16 · 33 · 0 · 853/564 | 60 · 16 · 33 · 0 · 846/550 |
+| thermal_min5 | 59 · 16 · 33 · 0 · 854/564 | 60 · 16 · 33 · 0 · 849/553 |
+| thermal_min6 | 58 · 16 · 33 · 0 · 851/561 | 60 · 16 · 33 · 0 · 848/552 |
+| thermal_min7 | 59 · 16 · 33 · 0 · 846/556 | 60 · 16 · 33 · 0 · 847/552 |
+| thermal_min8 | 59 · 16 · 33 · 0 · 853/564 | 60 · 16 · 33 · 0 · 847/552 |
+| thermal_min9 | 59 · 16 · 33 · 0 · 846/557 | 60 · 16 · 33 · 0 · 844/549 |
+| thermal_min10 | 58 · 16 · 50 · 1 · 852/563 | 60 · 16 · 33 · 0 · 844/549 |

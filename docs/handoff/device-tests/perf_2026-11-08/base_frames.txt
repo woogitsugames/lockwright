@@ -1,0 +1,21 @@
+menu_idle                    frames=  488 fps= 60.6 p50=16 p95= 16 p99= 16 max=  17 >25=  0 >33=  0 >50=  0 1%low= 62.5
+menu_to_jobs_transition      frames=  358 fps= 54.0 p50=16 p95= 16 p99= 33 max= 650 >25=  5 >33=  2 >50=  1 1%low= 30.3
+jobs_idle                    frames= 1927 fps= 60.5 p50=16 p95= 16 p99= 16 max=  33 >25=  3 >33=  0 >50=  0 1%low= 62.5
+jobs_idle                    frames=  328 fps= 60.0 p50=16 p95= 16 p99= 16 max=  33 >25=  3 >33=  0 >50=  0 1%low= 62.5
+jobs_scroll                  frames=  775 fps= 60.4 p50=16 p95= 16 p99= 16 max=  33 >25=  2 >33=  0 >50=  0 1%low= 62.5
+x                            frames= 8277 fps= 60.6 p50=16 p95= 16 p99= 16 max=  33 >25=  4 >33=  0 >50=  0 1%low= 62.5
+jobs_to_arrival_combo        frames=  325 fps= 57.7 p50=16 p95= 16 p99= 16 max= 250 >25=  3 >33=  1 >50=  1 1%low= 62.5
+x                            frames=  665 fps= 59.9 p50=16 p95= 16 p99= 33 max=  33 >25=  8 >33=  0 >50=  0 1%low= 30.3
+arrival_to_verify_combo      frames=  263 fps= 56.9 p50=16 p95= 16 p99= 33 max= 250 >25=  4 >33=  1 >50=  1 1%low= 30.3
+x                            frames=  535 fps= 60.4 p50=16 p95= 16 p99= 16 max=  33 >25=  2 >33=  0 >50=  0 1%low= 62.5
+verify_to_lock_combo         frames=  248 fps= 39.0 p50=16 p95= 33 p99= 50 max=1000 >25= 74 >33=  3 >50=  1 1%low= 20.0
+x                            frames=  657 fps= 45.0 p50=16 p95= 33 p99= 33 max=  50 >25=220 >33=  2 >50=  0 1%low= 30.3
+lock_combo_idle              frames=  365 fps= 42.1 p50=16 p95= 33 p99= 33 max=  50 >25=154 >33=  2 >50=  0 1%low= 30.3
+lock_combo_interact          frames=  596 fps= 57.3 p50=16 p95= 33 p99= 33 max=  33 >25= 33 >33=  0 >50=  0 1%low= 30.3
+lock_exit_to_list            frames=  334 fps= 58.9 p50=16 p95= 16 p99= 33 max= 118 >25=  4 >33=  1 >50=  1 1%low= 30.3
+menu_after_lock              frames=  855 fps= 60.5 p50=16 p95= 16 p99= 16 max=  33 >25=  1 >33=  0 >50=  0 1%low= 62.5
+menu_to_workshop             frames=  253 fps= 48.1 p50=16 p95= 16 p99= 33 max=1000 >25=  5 >33=  2 >50=  2 1%low= 30.3
+x                            frames= 1915 fps= 60.5 p50=16 p95= 16 p99= 16 max=  33 >25=  2 >33=  0 >50=  0 1%low= 62.5
+workshop_idle                frames=  330 fps= 60.0 p50=16 p95= 16 p99= 16 max=  33 >25=  3 >33=  0 >50=  0 1%low= 62.5
+workshop_scroll              frames=  547 fps= 60.4 p50=16 p95= 16 p99= 16 max=  33 >25=  2 >33=  0 >50=  0 1%low= 62.5
+workshop_tab_furn            frames=  284 fps= 58.9 p50=16 p95= 16 p99= 33 max= 102 >25=  4 >33=  1 >50=  1 1%low= 30.3

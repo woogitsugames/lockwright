@@ -1,0 +1,565 @@
+--------- beginning of main
+11-08 02:09:11.684 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=60.0 p50=16.7 p95=19.0 p99=20.4 max=20.7 over33=0 draws=3 static_mb=63 tex_mb=27 buf_mb=6 vmem_mb=69
+11-08 02:09:16.703 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=60.0 p50=16.7 p95=19.0 p99=20.2 max=21.8 over33=0 draws=3 static_mb=63 tex_mb=27 buf_mb=6 vmem_mb=69
+11-08 02:09:21.703 I/godot   (23494): LW_FRAMES main_menu.tscn n=300 fps=60.0 p50=16.7 p95=18.8 p99=20.1 max=22.1 over33=0 draws=3 static_mb=63 tex_mb=27 buf_mb=6 vmem_mb=69
+11-08 02:09:26.718 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=60.0 p50=16.7 p95=19.7 p99=20.7 max=22.1 over33=0 draws=3 static_mb=63 tex_mb=27 buf_mb=6 vmem_mb=69
+11-08 02:09:31.722 I/godot   (23494): LW_FRAMES main_menu.tscn n=300 fps=60.0 p50=16.7 p95=19.3 p99=21.4 max=22.3 over33=0 draws=3 static_mb=63 tex_mb=27 buf_mb=6 vmem_mb=69
+11-08 02:09:36.735 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=60.0 p50=16.7 p95=19.4 p99=19.9 max=20.6 over33=0 draws=3 static_mb=63 tex_mb=27 buf_mb=6 vmem_mb=69
+11-08 02:09:41.546 I/godot   (23494): LW_SCENE jobs_list.tscn tap_ms=844 first_frame_ms=588 static_mb=73 tex_mb=27
+11-08 02:09:42.969 I/godot   (23494): LW_HITCH jobs_list.tscn max_frame_ms=684 (first 2000 ms)
+11-08 02:09:46.553 I/godot   (23494): LW_FRAMES jobs_list.tscn n=297 fps=52.2 p50=16.7 p95=19.1 p99=32.6 max=684.4 over33=2 draws=44 static_mb=73 tex_mb=19 buf_mb=6 vmem_mb=173
+11-08 02:09:47.209 I/godot   (23494): LW_SCENE job_arrival.tscn tap_ms=127 first_frame_ms=43 static_mb=72 tex_mb=19
+11-08 02:09:49.170 I/godot   (23494): LW_HITCH job_arrival.tscn max_frame_ms=127 (first 2000 ms)
+11-08 02:09:52.218 I/godot   (23494): LW_FRAMES job_arrival.tscn n=297 fps=57.8 p50=16.7 p95=18.6 p99=22.2 max=126.8 over33=2 draws=42 static_mb=72 tex_mb=34 buf_mb=6 vmem_mb=188
+11-08 02:09:54.642 I/godot   (23494): LW_SCENE job_verify.tscn tap_ms=137 first_frame_ms=30 static_mb=72 tex_mb=34
+11-08 02:09:56.620 I/godot   (23494): LW_HITCH job_verify.tscn max_frame_ms=138 (first 2000 ms)
+11-08 02:10:00.468 I/godot   (23494): LW_SCENE lock_job_combo.tscn tap_ms=917 first_frame_ms=156 static_mb=76 tex_mb=43
+11-08 02:10:00.473 I/godot   (23494): Sfx: first native click played (contact/brass/2)
+11-08 02:10:02.330 I/godot   (23494): LW_HITCH lock_job_combo.tscn max_frame_ms=946 (first 2000 ms)
+11-08 02:10:05.469 I/godot   (23494): LW_FRAMES lock_job_combo.tscn n=218 fps=36.8 p50=18.8 p95=40.4 p99=46.7 max=945.9 over33=37 draws=59 static_mb=76 tex_mb=70 buf_mb=6 vmem_mb=224
+11-08 02:10:10.480 I/godot   (23494): LW_FRAMES lock_job_combo.tscn n=258 fps=51.5 p50=16.9 p95=37.0 p99=41.2 max=47.1 over33=18 draws=59 static_mb=76 tex_mb=70 buf_mb=6 vmem_mb=224
+11-08 02:10:15.500 I/godot   (23494): LW_FRAMES lock_job_combo.tscn n=210 fps=41.8 p50=20.4 p95=41.8 p99=45.7 max=60.8 over33=42 draws=60 static_mb=76 tex_mb=70 buf_mb=6 vmem_mb=224
+11-08 02:10:20.512 I/godot   (23494): LW_FRAMES lock_job_combo.tscn n=227 fps=45.3 p50=18.4 p95=39.1 p99=42.9 max=44.9 over33=35 draws=60 static_mb=76 tex_mb=70 buf_mb=6 vmem_mb=224
+11-08 02:10:25.512 I/godot   (23494): LW_FRAMES lock_job_combo.tscn n=297 fps=59.4 p50=16.7 p95=17.9 p99=34.3 max=41.6 over33=3 draws=54 static_mb=76 tex_mb=70 buf_mb=6 vmem_mb=224
+11-08 02:10:30.512 I/godot   (23494): LW_FRAMES lock_job_combo.tscn n=295 fps=59.0 p50=16.7 p95=18.3 p99=38.3 max=39.3 over33=4 draws=53 static_mb=76 tex_mb=70 buf_mb=6 vmem_mb=224
+11-08 02:10:34.753 I/godot   (23494): LW_SCENE main_menu.tscn tap_ms=98 first_frame_ms=2 static_mb=75 tex_mb=71
+11-08 02:10:36.758 I/godot   (23494): LW_HITCH main_menu.tscn max_frame_ms=99 (first 2000 ms)
+11-08 02:10:39.762 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=59.0 p50=16.7 p95=19.4 p99=20.6 max=99.0 over33=1 draws=3 static_mb=75 tex_mb=36 buf_mb=6 vmem_mb=190
+11-08 02:10:40.620 I/godot   (23494): LW_SCENE jobs_list.tscn tap_ms=239 first_frame_ms=28 static_mb=79 tex_mb=36
+11-08 02:10:42.609 I/godot   (23494): LW_HITCH jobs_list.tscn max_frame_ms=130 (first 2000 ms)
+11-08 02:10:45.625 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=58.4 p50=16.7 p95=18.4 p99=20.4 max=130.2 over33=2 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:10:50.626 I/godot   (23494): LW_FRAMES jobs_list.tscn n=298 fps=59.6 p50=16.7 p95=19.1 p99=23.6 max=28.0 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:10:55.625 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.6 p95=18.7 p99=20.3 max=21.8 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:11:00.627 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.6 p99=19.9 max=21.9 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:11:05.644 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.8 p99=19.9 max=21.7 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:11:10.645 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.7 p99=19.7 max=20.7 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:11:15.646 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.6 p95=18.7 p99=20.1 max=20.8 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:11:20.664 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.7 p99=19.8 max=21.3 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:11:25.676 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.1 p50=16.7 p95=19.2 p99=20.4 max=21.6 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:11:30.677 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=21.1 max=22.3 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:11:35.681 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.8 p95=18.9 p99=20.0 max=33.2 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:11:40.682 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=19.4 p99=22.1 max=31.9 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:11:45.682 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=18.6 p99=19.9 max=34.6 over33=1 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:11:50.682 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.5 max=21.0 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:11:55.697 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.9 p99=20.2 max=21.8 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:12:00.700 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.5 p99=20.2 max=21.2 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:12:05.701 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=19.9 max=21.2 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:12:10.700 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.8 p99=20.4 max=20.8 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:12:15.702 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.0 p99=20.2 max=21.4 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:12:20.703 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.4 p99=20.2 max=21.3 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:12:25.719 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=59.8 p50=16.6 p95=19.2 p99=20.5 max=31.4 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:12:30.737 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.2 p99=20.5 max=21.2 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:12:35.751 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.9 p99=20.3 max=21.6 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:12:40.753 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.8 p99=20.2 max=21.3 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:12:45.755 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.7 p99=19.7 max=20.5 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:12:50.756 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=19.3 p99=21.3 max=31.7 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:12:55.755 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.8 p95=18.8 p99=19.6 max=21.2 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:13:00.755 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.3 p99=20.3 max=22.2 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:13:05.755 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.8 p99=20.4 max=22.1 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:13:10.757 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.8 p95=19.5 p99=20.6 max=21.3 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:13:15.774 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.8 p95=19.3 p99=20.4 max=21.6 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:13:20.775 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.8 p99=19.8 max=20.1 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:13:25.775 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.7 p99=19.4 max=20.7 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:13:30.779 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.2 p99=21.3 max=21.8 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:13:35.792 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.9 p99=20.4 max=22.1 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:13:40.797 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.7 p50=16.7 p95=19.5 p99=22.2 max=32.1 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:13:45.810 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.9 p99=20.1 max=21.3 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:13:50.811 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.8 p99=21.1 max=23.0 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:13:55.812 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=20.4 max=21.4 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:14:00.811 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.6 p95=19.3 p99=20.8 max=31.2 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:14:05.812 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.3 max=21.7 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:14:10.812 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.6 p99=20.6 max=22.8 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:14:15.814 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.6 p99=19.2 max=20.1 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:14:20.813 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=19.2 p99=22.6 max=34.4 over33=1 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:14:25.815 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.8 p99=20.1 max=20.5 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:14:30.833 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=59.8 p50=16.7 p95=19.0 p99=21.7 max=32.4 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+11-08 02:14:35.851 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.4 p99=20.5 max=21.7 over33=0 draws=44 static_mb=79 tex_mb=22 buf_mb=6 vmem_mb=176
+--------- beginning of main
+11-08 02:17:28.526 I/godot   (23494): LW_SCENE job_arrival.tscn tap_ms=114 first_frame_ms=18 static_mb=80 tex_mb=23
+11-08 02:17:30.514 I/godot   (23494): LW_HITCH job_arrival.tscn max_frame_ms=115 (first 2000 ms)
+11-08 02:17:33.532 I/godot   (23494): LW_FRAMES job_arrival.tscn n=299 fps=58.4 p50=16.6 p95=19.1 p99=22.6 max=115.0 over33=2 draws=40 static_mb=80 tex_mb=37 buf_mb=7 vmem_mb=209
+11-08 02:17:35.308 I/godot   (23494): LW_SCENE job_verify.tscn tap_ms=98 first_frame_ms=7 static_mb=80 tex_mb=37
+11-08 02:17:37.302 I/godot   (23494): LW_HITCH job_verify.tscn max_frame_ms=98 (first 2000 ms)
+11-08 02:17:40.706 I/godot   (23494): LW_SCENE lock_job.tscn tap_ms=761 first_frame_ms=122 static_mb=82 tex_mb=44
+11-08 02:17:42.609 I/godot   (23494): LW_HITCH lock_job.tscn max_frame_ms=789 (first 2000 ms)
+11-08 02:17:45.714 I/godot   (23494): LW_FRAMES lock_job.tscn n=210 fps=36.4 p50=19.8 p95=38.2 p99=42.1 max=789.4 over33=36 draws=59 static_mb=82 tex_mb=117 buf_mb=10 vmem_mb=293
+11-08 02:17:50.741 I/godot   (23494): LW_FRAMES lock_job.tscn n=231 fps=45.9 p50=17.8 p95=35.9 p99=41.6 max=49.8 over33=28 draws=59 static_mb=82 tex_mb=117 buf_mb=10 vmem_mb=293
+11-08 02:17:55.761 I/godot   (23494): LW_FRAMES lock_job.tscn n=212 fps=42.2 p50=20.0 p95=38.0 p99=40.6 max=66.5 over33=42 draws=60 static_mb=82 tex_mb=117 buf_mb=10 vmem_mb=293
+11-08 02:18:00.774 I/godot   (23494): LW_FRAMES lock_job.tscn n=215 fps=42.9 p50=19.8 p95=38.1 p99=41.1 max=42.7 over33=41 draws=60 static_mb=82 tex_mb=117 buf_mb=10 vmem_mb=293
+11-08 02:18:05.773 I/godot   (23494): LW_FRAMES lock_job.tscn n=288 fps=57.6 p50=16.7 p95=19.9 p99=36.8 max=44.0 over33=10 draws=59 static_mb=82 tex_mb=117 buf_mb=10 vmem_mb=293
+11-08 02:18:10.775 I/godot   (23494): LW_FRAMES lock_job.tscn n=292 fps=58.4 p50=16.8 p95=18.7 p99=32.8 max=40.8 over33=2 draws=60 static_mb=82 tex_mb=117 buf_mb=10 vmem_mb=293
+11-08 02:18:15.471 I/godot   (23494): LW_SCENE main_menu.tscn tap_ms=73 first_frame_ms=3 static_mb=80 tex_mb=117
+11-08 02:18:17.471 I/godot   (23494): LW_HITCH main_menu.tscn max_frame_ms=73 (first 2000 ms)
+11-08 02:18:20.489 I/godot   (23494): LW_FRAMES main_menu.tscn n=302 fps=59.3 p50=16.7 p95=19.5 p99=21.1 max=73.5 over33=1 draws=3 static_mb=80 tex_mb=37 buf_mb=6 vmem_mb=209
+11-08 02:18:21.350 I/godot   (23494): LW_SCENE jobs_list.tscn tap_ms=239 first_frame_ms=30 static_mb=84 tex_mb=37
+11-08 02:18:23.336 I/godot   (23494): LW_HITCH jobs_list.tscn max_frame_ms=131 (first 2000 ms)
+11-08 02:18:26.353 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=58.4 p50=16.7 p95=18.7 p99=21.7 max=131.2 over33=1 draws=44 static_mb=84 tex_mb=23 buf_mb=7 vmem_mb=195
+11-08 02:18:27.554 I/godot   (23494): LW_SCENE job_arrival.tscn tap_ms=120 first_frame_ms=23 static_mb=80 tex_mb=23
+11-08 02:18:29.537 I/godot   (23494): LW_HITCH job_arrival.tscn max_frame_ms=120 (first 2000 ms)
+11-08 02:18:32.570 I/godot   (23494): LW_FRAMES job_arrival.tscn n=297 fps=57.8 p50=16.7 p95=19.5 p99=36.4 max=119.8 over33=3 draws=52 static_mb=80 tex_mb=41 buf_mb=7 vmem_mb=212
+11-08 02:18:33.352 I/godot   (23494): LW_SCENE job_verify.tscn tap_ms=105 first_frame_ms=7 static_mb=80 tex_mb=41
+11-08 02:18:35.354 I/godot   (23494): LW_HITCH job_verify.tscn max_frame_ms=106 (first 2000 ms)
+11-08 02:18:38.639 I/godot   (23494): LW_SCENE lock_job_magnetic.tscn tap_ms=617 first_frame_ms=46 static_mb=85 tex_mb=45
+11-08 02:18:40.595 I/godot   (23494): LW_HITCH lock_job_magnetic.tscn max_frame_ms=636 (first 2000 ms)
+11-08 02:18:43.650 I/godot   (23494): LW_FRAMES lock_job_magnetic.tscn n=208 fps=37.0 p50=20.5 p95=42.2 p99=47.2 max=635.7 over33=35 draws=80 static_mb=85 tex_mb=120 buf_mb=10 vmem_mb=296
+11-08 02:18:48.667 I/godot   (23494): LW_FRAMES lock_job_magnetic.tscn n=207 fps=41.3 p50=21.3 p95=41.6 p99=48.4 max=49.9 over33=38 draws=80 static_mb=85 tex_mb=120 buf_mb=10 vmem_mb=296
+11-08 02:18:53.670 I/godot   (23494): LW_FRAMES lock_job_magnetic.tscn n=208 fps=41.6 p50=20.1 p95=43.1 p99=50.3 max=59.9 over33=37 draws=81 static_mb=85 tex_mb=120 buf_mb=10 vmem_mb=296
+11-08 02:18:58.683 I/godot   (23494): LW_FRAMES lock_job_magnetic.tscn n=245 fps=48.9 p50=17.2 p95=38.4 p99=46.6 max=51.3 over33=31 draws=81 static_mb=85 tex_mb=120 buf_mb=10 vmem_mb=296
+11-08 02:19:03.696 I/godot   (23494): LW_FRAMES lock_job_magnetic.tscn n=290 fps=57.8 p50=16.7 p95=20.3 p99=38.3 max=47.3 over33=8 draws=80 static_mb=85 tex_mb=120 buf_mb=10 vmem_mb=296
+11-08 02:19:08.708 I/godot   (23494): LW_FRAMES lock_job_magnetic.tscn n=285 fps=56.9 p50=16.7 p95=31.0 p99=36.3 max=49.8 over33=9 draws=93 static_mb=85 tex_mb=120 buf_mb=10 vmem_mb=296
+11-08 02:19:09.642 I/godot   (23494): LW_SCENE main_menu.tscn tap_ms=74 first_frame_ms=3 static_mb=81 tex_mb=120
+11-08 02:19:11.641 I/godot   (23494): LW_HITCH main_menu.tscn max_frame_ms=74 (first 2000 ms)
+11-08 02:19:14.644 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=59.3 p50=16.7 p95=19.0 p99=21.9 max=74.0 over33=1 draws=3 static_mb=80 tex_mb=37 buf_mb=6 vmem_mb=209
+11-08 02:19:15.522 I/godot   (23494): LW_SCENE jobs_list.tscn tap_ms=255 first_frame_ms=29 static_mb=84 tex_mb=37
+11-08 02:19:17.511 I/godot   (23494): LW_HITCH jobs_list.tscn max_frame_ms=131 (first 2000 ms)
+11-08 02:19:20.525 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=58.3 p50=16.7 p95=18.9 p99=33.0 max=131.3 over33=2 draws=44 static_mb=84 tex_mb=23 buf_mb=7 vmem_mb=195
+11-08 02:19:21.635 I/godot   (23494): LW_SCENE job_arrival.tscn tap_ms=116 first_frame_ms=31 static_mb=84 tex_mb=23
+11-08 02:19:23.609 I/godot   (23494): LW_HITCH job_arrival.tscn max_frame_ms=116 (first 2000 ms)
+11-08 02:19:26.643 I/godot   (23494): LW_FRAMES job_arrival.tscn n=298 fps=58.2 p50=16.6 p95=19.4 p99=21.2 max=116.2 over33=2 draws=41 static_mb=84 tex_mb=41 buf_mb=7 vmem_mb=213
+11-08 02:19:27.463 I/godot   (23494): LW_SCENE job_verify.tscn tap_ms=108 first_frame_ms=7 static_mb=84 tex_mb=41
+11-08 02:19:29.459 I/godot   (23494): LW_HITCH job_verify.tscn max_frame_ms=108 (first 2000 ms)
+11-08 02:19:32.771 I/godot   (23494): LW_SCENE lock_job_lever.tscn tap_ms=599 first_frame_ms=16 static_mb=86 tex_mb=49
+11-08 02:19:34.764 I/godot   (23494): LW_HITCH lock_job_lever.tscn max_frame_ms=639 (first 2000 ms)
+11-08 02:19:37.793 I/godot   (23494): LW_FRAMES lock_job_lever.tscn n=218 fps=38.8 p50=20.0 p95=41.4 p99=44.5 max=639.0 over33=35 draws=79 static_mb=86 tex_mb=148 buf_mb=8 vmem_mb=322
+11-08 02:19:42.807 I/godot   (23494): LW_FRAMES lock_job_lever.tscn n=213 fps=42.5 p50=20.5 p95=38.2 p99=41.6 max=42.8 over33=31 draws=79 static_mb=86 tex_mb=148 buf_mb=8 vmem_mb=322
+11-08 02:19:47.824 I/godot   (23494): LW_FRAMES lock_job_lever.tscn n=213 fps=42.5 p50=21.5 p95=37.9 p99=40.4 max=42.2 over33=37 draws=80 static_mb=86 tex_mb=148 buf_mb=8 vmem_mb=322
+11-08 02:19:52.836 I/godot   (23494): LW_FRAMES lock_job_lever.tscn n=249 fps=49.7 p50=17.0 p95=37.0 p99=42.7 max=106.1 over33=21 draws=81 static_mb=88 tex_mb=150 buf_mb=8 vmem_mb=324
+11-08 02:19:57.851 I/godot   (23494): LW_FRAMES lock_job_lever.tscn n=295 fps=58.8 p50=16.7 p95=18.7 p99=35.1 max=38.5 over33=5 draws=80 static_mb=88 tex_mb=150 buf_mb=8 vmem_mb=324
+11-08 02:20:02.862 I/godot   (23494): LW_FRAMES lock_job_lever.tscn n=289 fps=57.7 p50=16.7 p95=20.5 p99=36.9 max=42.7 over33=9 draws=93 static_mb=88 tex_mb=150 buf_mb=8 vmem_mb=324
+11-08 02:20:03.825 I/godot   (23494): LW_SCENE main_menu.tscn tap_ms=72 first_frame_ms=3 static_mb=85 tex_mb=150
+11-08 02:20:05.832 I/godot   (23494): LW_HITCH main_menu.tscn max_frame_ms=72 (first 2000 ms)
+11-08 02:20:08.832 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=59.3 p50=16.7 p95=19.0 p99=20.4 max=72.4 over33=1 draws=3 static_mb=84 tex_mb=41 buf_mb=6 vmem_mb=213
+11-08 02:20:09.726 I/godot   (23494): LW_SCENE jobs_list.tscn tap_ms=258 first_frame_ms=29 static_mb=88 tex_mb=41
+11-08 02:20:11.699 I/godot   (23494): LW_HITCH jobs_list.tscn max_frame_ms=130 (first 2000 ms)
+11-08 02:20:14.729 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=58.5 p50=16.7 p95=19.2 p99=21.0 max=129.5 over33=2 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:20:19.733 I/godot   (23494): LW_FRAMES jobs_list.tscn n=298 fps=59.6 p50=16.7 p95=19.4 p99=20.9 max=36.5 over33=2 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:20:24.733 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.0 p99=20.8 max=21.3 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:20:29.733 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=20.5 max=21.7 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:20:34.734 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.5 p99=20.3 max=21.5 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:20:39.733 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.7 max=22.0 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:20:44.736 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=20.4 max=21.1 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:20:49.735 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.6 p95=18.8 p99=20.7 max=23.5 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:20:54.736 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.6 p95=19.0 p99=20.4 max=22.6 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:20:59.737 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.9 max=21.7 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:21:04.736 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.8 p99=19.7 max=20.8 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:21:09.737 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.6 p99=19.7 max=20.6 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:21:14.737 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.5 p99=19.5 max=20.6 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:21:19.737 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.0 p99=20.2 max=21.3 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:21:24.740 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=19.1 p99=20.2 max=30.8 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:21:29.739 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.6 p99=19.5 max=20.0 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:21:34.756 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.2 p99=20.2 max=21.5 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:21:39.757 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.4 max=21.8 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:21:44.774 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=59.8 p50=16.6 p95=19.1 p99=20.2 max=33.0 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:21:49.774 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=20.4 max=21.2 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:21:54.777 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=19.2 p99=20.5 max=32.3 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:21:59.781 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=18.5 p99=20.7 max=33.4 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:22:04.795 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=59.8 p50=16.7 p95=19.1 p99=20.8 max=33.6 over33=1 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:22:09.811 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.4 p99=19.4 max=21.2 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:22:14.824 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.6 p99=19.5 max=20.1 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:22:19.829 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.8 p99=19.9 max=22.5 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:22:24.832 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=19.5 p99=22.1 max=32.5 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:22:29.829 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.4 max=21.2 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:22:34.845 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.6 p99=19.8 max=20.4 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:22:39.848 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.0 p99=21.1 max=21.9 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:22:44.864 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.2 p99=20.5 max=21.1 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:22:49.882 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.9 p99=20.3 max=21.6 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:22:54.898 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.2 p99=20.2 max=21.1 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:22:59.898 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.0 p99=20.2 max=20.7 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:23:04.916 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.0 p99=20.4 max=22.4 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:23:09.916 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.0 p99=20.6 max=21.3 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:23:14.916 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=19.9 max=21.5 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:23:19.916 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.8 p99=19.8 max=20.6 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:23:24.932 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=59.8 p50=16.7 p95=18.7 p99=20.3 max=33.8 over33=1 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:23:29.933 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.0 p99=20.8 max=22.1 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:23:34.936 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.7 p99=20.2 max=21.2 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:23:39.952 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.1 p99=20.4 max=22.6 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:23:44.952 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=19.5 p99=20.7 max=33.4 over33=1 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:23:49.952 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=18.9 p99=20.8 max=33.0 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:23:54.953 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.3 max=20.9 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:23:59.955 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.6 p99=20.5 max=21.1 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:24:04.955 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=19.0 p99=20.8 max=33.6 over33=1 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:24:09.971 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=59.8 p50=16.7 p95=19.0 p99=20.3 max=33.7 over33=1 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:24:14.973 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.4 p99=20.3 max=21.3 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:24:19.989 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.0 p99=20.5 max=21.8 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:24:24.992 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=20.3 max=20.7 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:24:29.992 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.6 p99=19.7 max=20.0 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:24:35.008 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=59.8 p50=16.7 p95=18.8 p99=21.0 max=32.4 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:24:40.008 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.5 max=21.2 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:24:45.009 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.0 p99=20.3 max=21.6 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:24:50.026 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.9 p99=19.9 max=21.1 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:24:55.026 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.6 p99=20.1 max=21.4 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:25:00.041 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=59.8 p50=16.7 p95=19.2 p99=20.5 max=35.9 over33=1 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:25:05.045 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=19.1 p99=21.6 max=32.8 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:25:10.045 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.6 p95=19.1 p99=20.3 max=23.2 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:25:15.044 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.2 p99=20.2 max=21.6 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:25:20.045 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.6 p95=19.1 p99=20.4 max=32.8 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:25:25.046 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.2 max=22.6 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:25:30.045 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.7 p99=19.8 max=20.7 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:25:35.046 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=19.4 p99=21.4 max=30.7 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:25:40.047 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=19.8 max=22.0 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:25:45.048 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.4 p99=20.6 max=21.8 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:25:50.050 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=19.9 max=21.2 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:25:55.064 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.8 p99=20.3 max=23.5 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:26:00.067 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=18.9 p99=20.2 max=32.8 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:26:05.069 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.1 max=22.1 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:26:10.083 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.1 p99=20.2 max=22.8 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:26:15.084 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.2 p99=20.3 max=21.0 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:26:20.087 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=19.0 p99=21.1 max=33.6 over33=1 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:26:25.101 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.9 p99=20.3 max=21.4 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:26:30.102 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=20.5 max=21.4 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:26:35.101 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.8 p99=20.0 max=21.9 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:26:40.105 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.7 p99=19.6 max=22.1 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:26:45.103 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.6 p99=20.1 max=21.2 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:26:50.118 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.1 p99=20.2 max=22.0 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:26:55.121 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=20.0 max=21.1 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:27:00.123 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.8 p99=20.0 max=22.0 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+--------- beginning of main
+11-08 02:29:10.267 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.5 p99=21.0 max=21.8 over33=0 draws=48 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:29:15.287 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.6 p99=19.8 max=21.3 over33=0 draws=48 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:29:20.285 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.8 p99=19.6 max=20.7 over33=0 draws=48 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:29:25.286 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.0 p99=20.0 max=21.5 over33=0 draws=48 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:29:30.286 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.6 p95=18.5 p99=19.5 max=21.7 over33=0 draws=48 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:29:35.285 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=19.9 max=20.7 over33=0 draws=48 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:29:40.288 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=18.9 p99=20.7 max=32.5 over33=0 draws=48 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:29:45.305 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.6 p50=16.7 p95=19.4 p99=26.2 max=30.4 over33=0 draws=48 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:29:48.193 I/godot   (23494): LW_SCENE job_arrival.tscn tap_ms=139 first_frame_ms=18 static_mb=85 tex_mb=27
+11-08 02:29:50.188 I/godot   (23494): LW_HITCH job_arrival.tscn max_frame_ms=139 (first 2000 ms)
+11-08 02:29:53.205 I/godot   (23494): LW_FRAMES job_arrival.tscn n=299 fps=58.0 p50=16.7 p95=19.2 p99=25.0 max=138.9 over33=2 draws=47 static_mb=84 tex_mb=45 buf_mb=7 vmem_mb=217
+11-08 02:29:55.731 I/godot   (23494): LW_SCENE job_verify.tscn tap_ms=115 first_frame_ms=6 static_mb=84 tex_mb=45
+11-08 02:29:57.738 I/godot   (23494): LW_HITCH job_verify.tscn max_frame_ms=115 (first 2000 ms)
+11-08 02:30:01.107 I/godot   (23494): LW_SCENE lock_job_warded.tscn tap_ms=793 first_frame_ms=82 static_mb=89 tex_mb=49
+11-08 02:30:03.050 I/godot   (23494): LW_HITCH lock_job_warded.tscn max_frame_ms=814 (first 2000 ms)
+11-08 02:30:06.116 I/godot   (23494): LW_FRAMES lock_job_warded.tscn n=211 fps=36.4 p50=20.2 p95=41.5 p99=45.2 max=814.4 over33=34 draws=81 static_mb=89 tex_mb=183 buf_mb=8 vmem_mb=357
+11-08 02:30:11.118 I/godot   (23494): LW_FRAMES lock_job_warded.tscn n=225 fps=45.0 p50=18.5 p95=38.0 p99=43.0 max=48.9 over33=29 draws=81 static_mb=89 tex_mb=183 buf_mb=8 vmem_mb=357
+11-08 02:30:16.123 I/godot   (23494): LW_FRAMES lock_job_warded.tscn n=207 fps=41.4 p50=20.3 p95=39.9 p99=43.4 max=45.1 over33=38 draws=82 static_mb=89 tex_mb=183 buf_mb=8 vmem_mb=357
+11-08 02:30:21.132 I/godot   (23494): LW_FRAMES lock_job_warded.tscn n=226 fps=45.1 p50=18.2 p95=39.1 p99=43.4 max=46.6 over33=30 draws=70 static_mb=89 tex_mb=183 buf_mb=8 vmem_mb=357
+11-08 02:30:26.145 I/godot   (23494): LW_FRAMES lock_job_warded.tscn n=297 fps=59.2 p50=16.7 p95=18.2 p99=34.6 max=35.9 over33=4 draws=71 static_mb=89 tex_mb=183 buf_mb=8 vmem_mb=357
+11-08 02:30:31.147 I/godot   (23494): LW_FRAMES lock_job_warded.tscn n=290 fps=58.0 p50=16.7 p95=19.4 p99=36.8 max=45.2 over33=7 draws=70 static_mb=89 tex_mb=183 buf_mb=8 vmem_mb=357
+11-08 02:30:34.596 I/godot   (23494): LW_SCENE main_menu.tscn tap_ms=75 first_frame_ms=2 static_mb=85 tex_mb=183
+11-08 02:30:36.609 I/godot   (23494): LW_HITCH main_menu.tscn max_frame_ms=76 (first 2000 ms)
+11-08 02:30:39.610 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=59.2 p50=16.7 p95=18.7 p99=21.4 max=75.7 over33=1 draws=3 static_mb=84 tex_mb=41 buf_mb=6 vmem_mb=213
+11-08 02:30:40.491 I/godot   (23494): LW_SCENE jobs_list.tscn tap_ms=264 first_frame_ms=30 static_mb=88 tex_mb=41
+11-08 02:30:42.476 I/godot   (23494): LW_HITCH jobs_list.tscn max_frame_ms=132 (first 2000 ms)
+11-08 02:30:45.496 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=58.4 p50=16.7 p95=18.9 p99=20.4 max=132.1 over33=2 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:30:50.513 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=59.8 p50=16.7 p95=18.9 p99=20.9 max=25.3 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:30:55.511 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.9 max=23.1 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:31:00.512 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.6 p99=21.2 max=21.6 over33=0 draws=48 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:31:05.518 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.7 p50=16.7 p95=19.3 p99=22.3 max=33.2 over33=0 draws=48 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:31:10.350 I/godot   (23494): LW_SCENE job_arrival.tscn tap_ms=103 first_frame_ms=13 static_mb=85 tex_mb=27
+11-08 02:31:12.347 I/godot   (23494): LW_HITCH job_arrival.tscn max_frame_ms=103 (first 2000 ms)
+11-08 02:31:15.362 I/godot   (23494): LW_FRAMES job_arrival.tscn n=299 fps=58.5 p50=16.7 p95=19.6 p99=24.6 max=103.3 over33=2 draws=46 static_mb=84 tex_mb=41 buf_mb=7 vmem_mb=213
+11-08 02:31:17.737 I/godot   (23494): LW_SCENE job_verify.tscn tap_ms=81 first_frame_ms=7 static_mb=84 tex_mb=41
+11-08 02:31:19.746 I/godot   (23494): LW_HITCH job_verify.tscn max_frame_ms=81 (first 2000 ms)
+11-08 02:31:22.862 I/godot   (23494): LW_SCENE lock_job_egyptian.tscn tap_ms=356 first_frame_ms=40 static_mb=87 tex_mb=42
+11-08 02:31:24.838 I/godot   (23494): LW_HITCH lock_job_egyptian.tscn max_frame_ms=372 (first 2000 ms)
+11-08 02:31:27.879 I/godot   (23494): LW_FRAMES lock_job_egyptian.tscn n=210 fps=39.1 p50=20.5 p95=41.2 p99=48.5 max=371.8 over33=38 draws=52 static_mb=87 tex_mb=80 buf_mb=7 vmem_mb=252
+11-08 02:31:32.880 I/godot   (23494): LW_FRAMES lock_job_egyptian.tscn n=240 fps=48.0 p50=17.1 p95=35.2 p99=40.9 max=45.4 over33=29 draws=52 static_mb=87 tex_mb=80 buf_mb=7 vmem_mb=252
+11-08 02:31:37.892 I/godot   (23494): LW_FRAMES lock_job_egyptian.tscn n=208 fps=41.5 p50=21.2 p95=37.6 p99=42.4 max=44.0 over33=40 draws=53 static_mb=87 tex_mb=80 buf_mb=7 vmem_mb=252
+11-08 02:31:42.904 I/godot   (23494): LW_FRAMES lock_job_egyptian.tscn n=214 fps=42.7 p50=19.9 p95=40.7 p99=43.4 max=45.2 over33=40 draws=53 static_mb=87 tex_mb=80 buf_mb=7 vmem_mb=252
+11-08 02:31:47.904 I/godot   (23494): LW_FRAMES lock_job_egyptian.tscn n=291 fps=58.2 p50=16.7 p95=18.3 p99=38.3 max=38.6 over33=9 draws=53 static_mb=87 tex_mb=80 buf_mb=7 vmem_mb=252
+11-08 02:31:52.905 I/godot   (23494): LW_FRAMES lock_job_egyptian.tscn n=294 fps=58.8 p50=16.7 p95=18.7 p99=36.2 max=40.0 over33=4 draws=53 static_mb=87 tex_mb=80 buf_mb=7 vmem_mb=252
+11-08 02:31:57.414 I/godot   (23494): LW_SCENE main_menu.tscn tap_ms=71 first_frame_ms=4 static_mb=85 tex_mb=80
+11-08 02:31:59.418 I/godot   (23494): LW_HITCH main_menu.tscn max_frame_ms=71 (first 2000 ms)
+11-08 02:32:02.418 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=59.3 p50=16.7 p95=19.4 p99=20.9 max=70.6 over33=1 draws=3 static_mb=85 tex_mb=41 buf_mb=6 vmem_mb=213
+11-08 02:32:03.330 I/godot   (23494): LW_SCENE jobs_list.tscn tap_ms=261 first_frame_ms=29 static_mb=88 tex_mb=41
+11-08 02:32:05.317 I/godot   (23494): LW_HITCH jobs_list.tscn max_frame_ms=130 (first 2000 ms)
+11-08 02:32:08.334 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=58.4 p50=16.7 p95=18.9 p99=20.0 max=130.3 over33=2 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:32:13.335 I/godot   (23494): LW_FRAMES jobs_list.tscn n=298 fps=59.6 p50=16.7 p95=19.5 p99=30.3 max=31.0 over33=0 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:32:18.337 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.8 max=21.7 over33=0 draws=50 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:32:23.354 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.8 p99=20.6 max=21.7 over33=0 draws=50 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:32:28.354 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.0 p99=20.3 max=20.7 over33=0 draws=50 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:32:30.442 I/godot   (23494): LW_SCENE job_arrival.tscn tap_ms=106 first_frame_ms=17 static_mb=85 tex_mb=27
+11-08 02:32:32.439 I/godot   (23494): LW_HITCH job_arrival.tscn max_frame_ms=107 (first 2000 ms)
+11-08 02:32:35.455 I/godot   (23494): LW_FRAMES job_arrival.tscn n=299 fps=58.4 p50=16.7 p95=18.7 p99=24.3 max=106.6 over33=2 draws=45 static_mb=85 tex_mb=41 buf_mb=7 vmem_mb=213
+11-08 02:32:37.593 I/godot   (23494): LW_SCENE job_verify.tscn tap_ms=77 first_frame_ms=7 static_mb=84 tex_mb=41
+11-08 02:32:39.587 I/godot   (23494): LW_HITCH job_verify.tscn max_frame_ms=77 (first 2000 ms)
+11-08 02:32:42.762 I/godot   (23494): LW_SCENE lock_job_dial_safe.tscn tap_ms=420 first_frame_ms=38 static_mb=87 tex_mb=42
+11-08 02:32:44.745 I/godot   (23494): LW_HITCH lock_job_dial_safe.tscn max_frame_ms=442 (first 2000 ms)
+11-08 02:32:47.768 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=209 fps=38.5 p50=20.0 p95=40.7 p99=45.0 max=442.2 over33=39 draws=56 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:32:52.785 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=223 fps=44.5 p50=19.1 p95=38.1 p99=42.6 max=51.0 over33=34 draws=56 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:32:57.784 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=207 fps=41.4 p50=22.1 p95=39.8 p99=47.0 max=49.4 over33=39 draws=57 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:33:02.795 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=218 fps=43.5 p50=19.0 p95=41.3 p99=47.4 max=51.3 over33=36 draws=57 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:33:07.797 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=286 fps=57.2 p50=16.7 p95=21.0 p99=39.3 max=45.0 over33=11 draws=57 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:33:12.797 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=284 fps=56.8 p50=16.7 p95=31.6 p99=40.0 max=44.4 over33=13 draws=56 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:33:16.929 I/godot   (23494): LW_SCENE main_menu.tscn tap_ms=76 first_frame_ms=2 static_mb=85 tex_mb=96
+11-08 02:33:18.941 I/godot   (23494): LW_HITCH main_menu.tscn max_frame_ms=76 (first 2000 ms)
+11-08 02:33:21.940 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=59.2 p50=16.7 p95=19.2 p99=21.6 max=76.0 over33=1 draws=3 static_mb=85 tex_mb=41 buf_mb=6 vmem_mb=213
+11-08 02:33:22.770 I/godot   (23494): LW_SCENE jobs_list.tscn tap_ms=254 first_frame_ms=29 static_mb=89 tex_mb=41
+11-08 02:33:24.743 I/godot   (23494): LW_HITCH jobs_list.tscn max_frame_ms=130 (first 2000 ms)
+11-08 02:33:27.776 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=58.4 p50=16.7 p95=18.9 p99=20.9 max=130.0 over33=2 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:33:32.778 I/godot   (23494): LW_FRAMES jobs_list.tscn n=296 fps=59.2 p50=16.7 p95=19.0 p99=34.4 max=45.6 over33=3 draws=44 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:33:37.792 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.6 p99=21.0 max=21.2 over33=0 draws=48 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:33:42.795 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.4 p99=20.7 max=23.7 over33=0 draws=46 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:33:47.795 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=19.1 p99=20.6 max=34.4 over33=1 draws=46 static_mb=88 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:33:49.964 I/godot   (23494): LW_SCENE job_arrival.tscn tap_ms=89 first_frame_ms=10 static_mb=85 tex_mb=27
+11-08 02:33:51.963 I/godot   (23494): LW_HITCH job_arrival.tscn max_frame_ms=89 (first 2000 ms)
+11-08 02:33:54.977 I/godot   (23494): LW_FRAMES job_arrival.tscn n=300 fps=58.8 p50=16.8 p95=19.3 p99=22.4 max=89.1 over33=1 draws=45 static_mb=85 tex_mb=41 buf_mb=7 vmem_mb=213
+11-08 02:33:56.731 I/godot   (23494): LW_SCENE job_verify.tscn tap_ms=76 first_frame_ms=6 static_mb=84 tex_mb=41
+11-08 02:33:58.728 I/godot   (23494): LW_HITCH job_verify.tscn max_frame_ms=76 (first 2000 ms)
+11-08 02:34:01.786 I/godot   (23494): LW_SCENE lock_job_lever_detector.tscn tap_ms=430 first_frame_ms=12 static_mb=87 tex_mb=43
+11-08 02:34:03.778 I/godot   (23494): LW_HITCH lock_job_lever_detector.tscn max_frame_ms=462 (first 2000 ms)
+11-08 02:34:06.810 I/godot   (23494): LW_FRAMES lock_job_lever_detector.tscn n=218 fps=40.0 p50=19.6 p95=41.0 p99=44.6 max=462.1 over33=40 draws=87 static_mb=87 tex_mb=99 buf_mb=9 vmem_mb=273
+11-08 02:34:11.822 I/godot   (23494): LW_FRAMES lock_job_lever_detector.tscn n=224 fps=44.7 p50=17.9 p95=39.7 p99=44.2 max=45.8 over33=34 draws=87 static_mb=87 tex_mb=99 buf_mb=9 vmem_mb=273
+11-08 02:34:16.841 I/godot   (23494): LW_FRAMES lock_job_lever_detector.tscn n=213 fps=42.4 p50=20.1 p95=40.7 p99=43.9 max=49.1 over33=35 draws=88 static_mb=87 tex_mb=99 buf_mb=9 vmem_mb=273
+11-08 02:34:21.855 I/godot   (23494): LW_FRAMES lock_job_lever_detector.tscn n=208 fps=41.5 p50=20.4 p95=40.0 p99=44.0 max=45.4 over33=35 draws=87 static_mb=87 tex_mb=99 buf_mb=9 vmem_mb=273
+11-08 02:34:26.855 I/godot   (23494): LW_FRAMES lock_job_lever_detector.tscn n=254 fps=50.8 p50=16.8 p95=38.1 p99=45.5 max=116.3 over33=27 draws=89 static_mb=89 tex_mb=101 buf_mb=9 vmem_mb=276
+11-08 02:34:31.872 I/godot   (23494): LW_FRAMES lock_job_lever_detector.tscn n=292 fps=58.2 p50=16.7 p95=18.8 p99=37.4 max=44.4 over33=7 draws=89 static_mb=89 tex_mb=101 buf_mb=9 vmem_mb=276
+11-08 02:34:36.883 I/godot   (23494): LW_FRAMES lock_job_lever_detector.tscn n=282 fps=56.3 p50=16.8 p95=33.3 p99=39.0 max=57.3 over33=14 draws=101 static_mb=89 tex_mb=101 buf_mb=9 vmem_mb=275
+11-08 02:34:40.956 I/godot   (23494): LW_SCENE main_menu.tscn tap_ms=77 first_frame_ms=3 static_mb=85 tex_mb=101
+11-08 02:34:42.967 I/godot   (23494): LW_HITCH main_menu.tscn max_frame_ms=77 (first 2000 ms)
+11-08 02:34:45.967 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=59.2 p50=16.6 p95=19.0 p99=21.5 max=76.8 over33=1 draws=3 static_mb=85 tex_mb=41 buf_mb=6 vmem_mb=213
+11-08 02:34:47.347 I/godot   (23494): LW_SCENE jobs_list.tscn tap_ms=239 first_frame_ms=29 static_mb=89 tex_mb=41
+11-08 02:34:49.336 I/godot   (23494): LW_HITCH jobs_list.tscn max_frame_ms=131 (first 2000 ms)
+11-08 02:34:52.353 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=58.4 p50=16.7 p95=19.5 p99=21.8 max=131.5 over33=2 draws=44 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:34:57.354 I/godot   (23494): LW_FRAMES jobs_list.tscn n=298 fps=59.6 p50=16.8 p95=20.5 p99=25.1 max=36.3 over33=2 draws=48 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:35:02.369 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.8 p95=19.1 p99=20.4 max=24.9 over33=0 draws=50 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:35:07.371 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=19.8 max=21.9 over33=0 draws=50 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:35:12.383 I/godot   (23494): LW_FRAMES jobs_list.tscn n=298 fps=59.4 p50=16.7 p95=19.7 p99=29.3 max=32.1 over33=0 draws=50 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:35:12.823 I/godot   (23494): LW_SCENE job_arrival.tscn tap_ms=105 first_frame_ms=18 static_mb=85 tex_mb=27
+11-08 02:35:14.818 I/godot   (23494): LW_HITCH job_arrival.tscn max_frame_ms=105 (first 2000 ms)
+11-08 02:35:17.836 I/godot   (23494): LW_FRAMES job_arrival.tscn n=300 fps=58.6 p50=16.7 p95=19.5 p99=20.9 max=105.2 over33=2 draws=46 static_mb=85 tex_mb=41 buf_mb=7 vmem_mb=213
+11-08 02:35:21.168 I/godot   (23494): LW_SCENE job_verify.tscn tap_ms=103 first_frame_ms=7 static_mb=84 tex_mb=41
+11-08 02:35:23.170 I/godot   (23494): LW_HITCH job_verify.tscn max_frame_ms=103 (first 2000 ms)
+11-08 02:35:26.411 I/godot   (23494): LW_SCENE lock_job_dimple.tscn tap_ms=631 first_frame_ms=56 static_mb=89 tex_mb=49
+11-08 02:35:28.391 I/godot   (23494): LW_HITCH lock_job_dimple.tscn max_frame_ms=651 (first 2000 ms)
+11-08 02:35:31.416 I/godot   (23494): LW_FRAMES lock_job_dimple.tscn n=208 fps=36.9 p50=19.9 p95=43.4 p99=48.1 max=651.3 over33=35 draws=86 static_mb=89 tex_mb=124 buf_mb=10 vmem_mb=300
+11-08 02:35:36.418 I/godot   (23494): LW_FRAMES lock_job_dimple.tscn n=219 fps=43.8 p50=19.1 p95=38.1 p99=43.7 max=45.7 over33=34 draws=86 static_mb=89 tex_mb=124 buf_mb=10 vmem_mb=300
+11-08 02:35:41.453 I/godot   (23494): LW_FRAMES lock_job_dimple.tscn n=207 fps=41.1 p50=21.0 p95=42.7 p99=46.8 max=52.1 over33=40 draws=87 static_mb=89 tex_mb=124 buf_mb=10 vmem_mb=300
+11-08 02:35:46.462 I/godot   (23494): LW_FRAMES lock_job_dimple.tscn n=218 fps=43.5 p50=19.5 p95=41.2 p99=44.7 max=47.7 over33=26 draws=87 static_mb=89 tex_mb=124 buf_mb=10 vmem_mb=300
+11-08 02:35:51.463 I/godot   (23494): LW_FRAMES lock_job_dimple.tscn n=287 fps=57.4 p50=16.8 p95=20.1 p99=40.8 max=42.0 over33=11 draws=87 static_mb=89 tex_mb=124 buf_mb=10 vmem_mb=300
+11-08 02:35:56.471 I/godot   (23494): LW_FRAMES lock_job_dimple.tscn n=280 fps=55.9 p50=16.8 p95=34.1 p99=38.9 max=44.6 over33=15 draws=86 static_mb=89 tex_mb=124 buf_mb=10 vmem_mb=300
+11-08 02:36:01.033 I/godot   (23494): LW_SCENE main_menu.tscn tap_ms=75 first_frame_ms=3 static_mb=85 tex_mb=124
+11-08 02:36:03.044 I/godot   (23494): LW_HITCH main_menu.tscn max_frame_ms=76 (first 2000 ms)
+11-08 02:36:06.044 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=59.2 p50=16.7 p95=19.0 p99=22.1 max=76.0 over33=1 draws=3 static_mb=85 tex_mb=41 buf_mb=6 vmem_mb=213
+11-08 02:36:07.305 I/godot   (23494): LW_SCENE jobs_list.tscn tap_ms=240 first_frame_ms=29 static_mb=89 tex_mb=41
+11-08 02:36:09.293 I/godot   (23494): LW_HITCH jobs_list.tscn max_frame_ms=131 (first 2000 ms)
+11-08 02:36:12.309 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=58.4 p50=16.7 p95=19.1 p99=21.9 max=130.7 over33=2 draws=44 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:36:17.325 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.6 p50=16.7 p95=20.1 p99=29.6 max=38.1 over33=1 draws=46 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:36:22.327 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=21.4 max=24.7 over33=0 draws=50 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:36:27.326 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.6 p99=20.1 max=22.1 over33=0 draws=50 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:36:28.981 I/godot   (23494): LW_SCENE job_arrival.tscn tap_ms=103 first_frame_ms=16 static_mb=85 tex_mb=27
+11-08 02:36:30.978 I/godot   (23494): LW_HITCH job_arrival.tscn max_frame_ms=104 (first 2000 ms)
+11-08 02:36:33.993 I/godot   (23494): LW_FRAMES job_arrival.tscn n=298 fps=58.3 p50=16.7 p95=19.2 p99=32.9 max=104.0 over33=2 draws=45 static_mb=85 tex_mb=41 buf_mb=7 vmem_mb=213
+11-08 02:36:36.228 I/godot   (23494): LW_SCENE job_verify.tscn tap_ms=79 first_frame_ms=7 static_mb=84 tex_mb=41
+11-08 02:36:38.226 I/godot   (23494): LW_HITCH job_verify.tscn max_frame_ms=79 (first 2000 ms)
+11-08 02:36:41.229 I/godot   (23494): LW_SCENE lock_job_axial_slider.tscn tap_ms=377 first_frame_ms=39 static_mb=87 tex_mb=42
+11-08 02:36:43.192 I/godot   (23494): LW_HITCH lock_job_axial_slider.tscn max_frame_ms=395 (first 2000 ms)
+11-08 02:36:46.240 I/godot   (23494): LW_FRAMES lock_job_axial_slider.tscn n=213 fps=39.5 p50=19.2 p95=41.3 p99=48.0 max=394.9 over33=38 draws=54 static_mb=87 tex_mb=80 buf_mb=7 vmem_mb=252
+11-08 02:36:51.244 I/godot   (23494): LW_FRAMES lock_job_axial_slider.tscn n=226 fps=45.2 p50=17.9 p95=37.4 p99=46.5 max=73.3 over33=37 draws=54 static_mb=87 tex_mb=80 buf_mb=7 vmem_mb=252
+11-08 02:36:56.273 I/godot   (23494): LW_FRAMES lock_job_axial_slider.tscn n=209 fps=41.6 p50=21.8 p95=38.8 p99=45.2 max=51.3 over33=42 draws=55 static_mb=87 tex_mb=80 buf_mb=7 vmem_mb=252
+11-08 02:37:01.286 I/godot   (23494): LW_FRAMES lock_job_axial_slider.tscn n=239 fps=47.7 p50=17.4 p95=36.9 p99=43.3 max=45.5 over33=25 draws=55 static_mb=87 tex_mb=80 buf_mb=7 vmem_mb=252
+11-08 02:37:06.287 I/godot   (23494): LW_FRAMES lock_job_axial_slider.tscn n=295 fps=59.0 p50=16.8 p95=18.3 p99=34.6 max=44.1 over33=3 draws=54 static_mb=87 tex_mb=80 buf_mb=7 vmem_mb=252
+11-08 02:37:11.300 I/godot   (23494): LW_FRAMES lock_job_axial_slider.tscn n=294 fps=58.6 p50=16.7 p95=18.9 p99=36.3 max=38.9 over33=6 draws=54 static_mb=87 tex_mb=80 buf_mb=7 vmem_mb=252
+11-08 02:37:15.097 I/godot   (23494): LW_SCENE main_menu.tscn tap_ms=73 first_frame_ms=3 static_mb=85 tex_mb=80
+11-08 02:37:17.096 I/godot   (23494): LW_HITCH main_menu.tscn max_frame_ms=73 (first 2000 ms)
+11-08 02:37:20.102 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=59.3 p50=16.7 p95=19.1 p99=20.4 max=72.9 over33=1 draws=3 static_mb=85 tex_mb=41 buf_mb=6 vmem_mb=213
+11-08 02:37:20.929 I/godot   (23494): LW_SCENE jobs_list.tscn tap_ms=256 first_frame_ms=29 static_mb=89 tex_mb=41
+11-08 02:37:22.914 I/godot   (23494): LW_HITCH jobs_list.tscn max_frame_ms=131 (first 2000 ms)
+11-08 02:37:25.936 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=58.4 p50=16.6 p95=18.9 p99=20.3 max=131.5 over33=2 draws=44 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:37:30.948 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.6 p50=16.7 p95=20.5 p99=25.8 max=28.1 over33=0 draws=48 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:37:35.951 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.4 p99=20.8 max=24.2 over33=0 draws=50 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:37:40.967 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.9 p99=19.7 max=20.0 over33=0 draws=50 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:37:42.195 I/godot   (23494): LW_SCENE job_arrival.tscn tap_ms=95 first_frame_ms=10 static_mb=85 tex_mb=27
+11-08 02:37:44.202 I/godot   (23494): LW_HITCH job_arrival.tscn max_frame_ms=95 (first 2000 ms)
+11-08 02:37:47.206 I/godot   (23494): LW_FRAMES job_arrival.tscn n=300 fps=58.8 p50=16.7 p95=18.6 p99=21.2 max=95.1 over33=2 draws=54 static_mb=85 tex_mb=41 buf_mb=7 vmem_mb=213
+11-08 02:37:48.904 I/godot   (23494): LW_SCENE job_verify.tscn tap_ms=78 first_frame_ms=6 static_mb=84 tex_mb=41
+11-08 02:37:50.905 I/godot   (23494): LW_HITCH job_verify.tscn max_frame_ms=77 (first 2000 ms)
+11-08 02:37:53.964 I/godot   (23494): LW_SCENE lock_job_disc_detainer.tscn tap_ms=356 first_frame_ms=36 static_mb=87 tex_mb=43
+11-08 02:37:55.931 I/godot   (23494): LW_HITCH lock_job_disc_detainer.tscn max_frame_ms=375 (first 2000 ms)
+11-08 02:37:59.000 I/godot   (23494): LW_FRAMES lock_job_disc_detainer.tscn n=213 fps=39.5 p50=19.1 p95=41.9 p99=47.4 max=375.1 over33=36 draws=61 static_mb=87 tex_mb=76 buf_mb=7 vmem_mb=248
+11-08 02:38:04.014 I/godot   (23494): LW_FRAMES lock_job_disc_detainer.tscn n=227 fps=45.3 p50=17.9 p95=39.7 p99=46.2 max=47.9 over33=39 draws=61 static_mb=87 tex_mb=76 buf_mb=7 vmem_mb=248
+11-08 02:38:09.038 I/godot   (23494): LW_FRAMES lock_job_disc_detainer.tscn n=209 fps=41.6 p50=20.2 p95=40.6 p99=46.6 max=47.2 over33=46 draws=62 static_mb=87 tex_mb=76 buf_mb=7 vmem_mb=248
+11-08 02:38:14.043 I/godot   (23494): LW_FRAMES lock_job_disc_detainer.tscn n=216 fps=43.2 p50=19.4 p95=40.2 p99=44.1 max=46.1 over33=41 draws=62 static_mb=87 tex_mb=76 buf_mb=7 vmem_mb=248
+11-08 02:38:19.044 I/godot   (23494): LW_FRAMES lock_job_disc_detainer.tscn n=293 fps=58.6 p50=16.7 p95=19.8 p99=35.3 max=35.6 over33=4 draws=63 static_mb=87 tex_mb=76 buf_mb=7 vmem_mb=248
+11-08 02:38:24.061 I/godot   (23494): LW_FRAMES lock_job_disc_detainer.tscn n=295 fps=58.8 p50=16.8 p95=18.4 p99=39.0 max=43.3 over33=4 draws=57 static_mb=87 tex_mb=76 buf_mb=7 vmem_mb=248
+11-08 02:38:28.325 I/godot   (23494): LW_SCENE main_menu.tscn tap_ms=74 first_frame_ms=3 static_mb=85 tex_mb=76
+11-08 02:38:30.322 I/godot   (23494): LW_HITCH main_menu.tscn max_frame_ms=75 (first 2000 ms)
+11-08 02:38:33.338 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=59.2 p50=16.6 p95=19.0 p99=20.1 max=74.7 over33=1 draws=3 static_mb=85 tex_mb=41 buf_mb=6 vmem_mb=213
+11-08 02:38:34.121 I/godot   (23494): LW_SCENE jobs_list.tscn tap_ms=226 first_frame_ms=30 static_mb=89 tex_mb=41
+11-08 02:38:36.105 I/godot   (23494): LW_HITCH jobs_list.tscn max_frame_ms=133 (first 2000 ms)
+11-08 02:38:39.138 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=58.5 p50=16.7 p95=18.1 p99=20.3 max=133.1 over33=1 draws=44 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:38:44.139 I/godot   (23494): LW_FRAMES jobs_list.tscn n=298 fps=59.6 p50=16.7 p95=20.8 p99=28.5 max=31.7 over33=0 draws=46 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:38:49.141 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=18.9 p99=22.4 max=31.1 over33=0 draws=48 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:38:54.141 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.6 p99=20.1 max=21.2 over33=0 draws=48 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:38:55.546 I/godot   (23494): LW_SCENE job_arrival.tscn tap_ms=177 first_frame_ms=49 static_mb=85 tex_mb=27
+11-08 02:38:57.508 I/godot   (23494): LW_HITCH job_arrival.tscn max_frame_ms=177 (first 2000 ms)
+11-08 02:39:00.560 I/godot   (23494): LW_FRAMES job_arrival.tscn n=296 fps=57.0 p50=16.6 p95=19.2 p99=24.2 max=177.1 over33=2 draws=49 static_mb=85 tex_mb=49 buf_mb=7 vmem_mb=220
+11-08 02:39:02.651 I/godot   (23494): LW_SCENE job_verify.tscn tap_ms=79 first_frame_ms=5 static_mb=85 tex_mb=49
+11-08 02:39:04.657 I/godot   (23494): LW_HITCH job_verify.tscn max_frame_ms=80 (first 2000 ms)
+11-08 02:39:07.703 I/godot   (23494): LW_SCENE lock_job_time_lock.tscn tap_ms=362 first_frame_ms=39 static_mb=87 tex_mb=42
+11-08 02:39:09.679 I/godot   (23494): LW_HITCH lock_job_time_lock.tscn max_frame_ms=379 (first 2000 ms)
+11-08 02:39:12.723 I/godot   (23494): LW_FRAMES lock_job_time_lock.tscn n=217 fps=40.3 p50=18.9 p95=37.5 p99=43.9 max=378.5 over33=31 draws=55 static_mb=87 tex_mb=79 buf_mb=7 vmem_mb=251
+11-08 02:39:17.752 I/godot   (23494): LW_FRAMES lock_job_time_lock.tscn n=235 fps=46.7 p50=17.5 p95=36.1 p99=43.2 max=44.8 over33=35 draws=55 static_mb=87 tex_mb=79 buf_mb=7 vmem_mb=251
+11-08 02:39:22.773 I/godot   (23494): LW_FRAMES lock_job_time_lock.tscn n=208 fps=41.4 p50=21.4 p95=39.5 p99=44.1 max=65.2 over33=40 draws=56 static_mb=87 tex_mb=79 buf_mb=7 vmem_mb=251
+11-08 02:39:27.783 I/godot   (23494): LW_FRAMES lock_job_time_lock.tscn n=219 fps=43.7 p50=19.6 p95=41.0 p99=42.6 max=46.8 over33=36 draws=56 static_mb=87 tex_mb=79 buf_mb=7 vmem_mb=251
+11-08 02:39:32.784 I/godot   (23494): LW_FRAMES lock_job_time_lock.tscn n=288 fps=57.6 p50=16.7 p95=20.0 p99=38.8 max=46.9 over33=9 draws=56 static_mb=87 tex_mb=79 buf_mb=7 vmem_mb=251
+11-08 02:39:37.786 I/godot   (23494): LW_FRAMES lock_job_time_lock.tscn n=290 fps=58.0 p50=16.7 p95=18.8 p99=41.1 max=47.1 over33=7 draws=56 static_mb=87 tex_mb=79 buf_mb=7 vmem_mb=251
+11-08 02:39:42.009 I/godot   (23494): LW_SCENE main_menu.tscn tap_ms=71 first_frame_ms=3 static_mb=85 tex_mb=79
+11-08 02:39:44.012 I/godot   (23494): LW_HITCH main_menu.tscn max_frame_ms=71 (first 2000 ms)
+11-08 02:39:47.017 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=59.3 p50=16.7 p95=18.9 p99=21.1 max=71.3 over33=1 draws=3 static_mb=85 tex_mb=41 buf_mb=6 vmem_mb=213
+11-08 02:39:47.892 I/godot   (23494): LW_SCENE jobs_list.tscn tap_ms=261 first_frame_ms=30 static_mb=89 tex_mb=41
+11-08 02:39:49.863 I/godot   (23494): LW_HITCH jobs_list.tscn max_frame_ms=130 (first 2000 ms)
+11-08 02:39:52.895 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=58.3 p50=16.7 p95=18.9 p99=33.6 max=129.8 over33=3 draws=44 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:39:57.898 I/godot   (23494): LW_FRAMES jobs_list.tscn n=298 fps=59.6 p50=16.7 p95=19.5 p99=27.0 max=30.1 over33=0 draws=48 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:40:02.899 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.6 p95=18.7 p99=19.5 max=21.7 over33=0 draws=48 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:40:05.638 I/godot   (23494): LW_SCENE job_arrival.tscn tap_ms=429 first_frame_ms=25 static_mb=85 tex_mb=27
+11-08 02:40:07.615 I/godot   (23494): LW_HITCH job_arrival.tscn max_frame_ms=430 (first 2000 ms)
+11-08 02:40:10.651 I/godot   (23494): LW_FRAMES job_arrival.tscn n=296 fps=54.4 p50=16.7 p95=19.6 p99=47.6 max=429.9 over33=4 draws=34 static_mb=85 tex_mb=135 buf_mb=7 vmem_mb=306
+11-08 02:40:15.653 I/godot   (23494): LW_FRAMES job_arrival.tscn n=297 fps=59.4 p50=16.8 p95=20.4 p99=27.1 max=36.9 over33=1 draws=39 static_mb=85 tex_mb=135 buf_mb=7 vmem_mb=306
+11-08 02:40:20.668 I/godot   (23494): LW_FRAMES job_arrival.tscn n=300 fps=59.8 p50=16.7 p95=19.5 p99=20.8 max=25.7 over33=0 draws=47 static_mb=85 tex_mb=135 buf_mb=7 vmem_mb=306
+11-08 02:40:25.667 I/godot   (23494): LW_FRAMES job_arrival.tscn n=297 fps=59.4 p50=16.8 p95=19.6 p99=27.5 max=33.2 over33=0 draws=55 static_mb=85 tex_mb=135 buf_mb=7 vmem_mb=306
+11-08 02:40:30.670 I/godot   (23494): LW_FRAMES job_arrival.tscn n=300 fps=60.0 p50=16.7 p95=19.5 p99=20.7 max=22.1 over33=0 draws=53 static_mb=85 tex_mb=135 buf_mb=7 vmem_mb=306
+11-08 02:40:35.687 I/godot   (23494): LW_FRAMES job_arrival.tscn n=301 fps=60.0 p50=16.7 p95=19.0 p99=20.6 max=20.9 over33=0 draws=53 static_mb=85 tex_mb=135 buf_mb=7 vmem_mb=306
+11-08 02:40:40.703 I/godot   (23494): LW_FRAMES job_arrival.tscn n=301 fps=60.0 p50=16.7 p95=18.8 p99=20.2 max=23.4 over33=0 draws=53 static_mb=85 tex_mb=135 buf_mb=7 vmem_mb=306
+11-08 02:40:45.704 I/godot   (23494): LW_FRAMES job_arrival.tscn n=300 fps=60.0 p50=16.7 p95=19.0 p99=19.8 max=21.2 over33=0 draws=53 static_mb=85 tex_mb=135 buf_mb=7 vmem_mb=306
+11-08 02:40:50.704 I/godot   (23494): LW_FRAMES job_arrival.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.3 max=22.1 over33=0 draws=53 static_mb=85 tex_mb=135 buf_mb=7 vmem_mb=306
+11-08 02:40:55.704 I/godot   (23494): LW_FRAMES job_arrival.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=19.9 max=22.5 over33=0 draws=53 static_mb=85 tex_mb=135 buf_mb=7 vmem_mb=306
+11-08 02:41:00.705 I/godot   (23494): LW_FRAMES job_arrival.tscn n=300 fps=60.0 p50=16.7 p95=19.4 p99=20.9 max=23.9 over33=0 draws=53 static_mb=85 tex_mb=135 buf_mb=7 vmem_mb=306
+11-08 02:41:05.706 I/godot   (23494): LW_FRAMES job_arrival.tscn n=300 fps=60.0 p50=16.7 p95=18.6 p99=20.6 max=21.9 over33=0 draws=53 static_mb=85 tex_mb=135 buf_mb=7 vmem_mb=306
+11-08 02:41:10.725 I/godot   (23494): LW_FRAMES job_arrival.tscn n=301 fps=60.0 p50=16.7 p95=19.3 p99=21.3 max=23.0 over33=0 draws=53 static_mb=85 tex_mb=135 buf_mb=7 vmem_mb=306
+11-08 02:41:12.063 I/godot   (23494): LW_SCENE jobs_list.tscn tap_ms=-1 first_frame_ms=30 static_mb=89 tex_mb=135
+11-08 02:41:14.038 I/godot   (23494): LW_HITCH jobs_list.tscn max_frame_ms=120 (first 2000 ms)
+11-08 02:41:17.072 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=58.7 p50=16.7 p95=18.7 p99=20.0 max=119.7 over33=1 draws=44 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:41:22.072 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.0 max=20.4 over33=0 draws=44 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:41:27.075 I/godot   (23494): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=18.9 p99=21.2 max=32.0 over33=0 draws=44 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:41:32.078 I/godot   (23494): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.4 p99=20.2 max=20.8 over33=0 draws=48 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:41:37.092 I/godot   (23494): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.3 p99=20.6 max=27.3 over33=0 draws=48 static_mb=89 tex_mb=27 buf_mb=7 vmem_mb=199
+11-08 02:41:41.710 I/godot   (23494): LW_SCENE job_arrival.tscn tap_ms=104 first_frame_ms=10 static_mb=85 tex_mb=27
+11-08 02:41:43.708 I/godot   (23494): LW_HITCH job_arrival.tscn max_frame_ms=104 (first 2000 ms)
+11-08 02:41:46.713 I/godot   (23494): LW_FRAMES job_arrival.tscn n=299 fps=58.5 p50=16.7 p95=19.3 p99=24.4 max=104.4 over33=1 draws=45 static_mb=85 tex_mb=41 buf_mb=7 vmem_mb=213
+11-08 02:41:46.813 I/godot   (23494): LW_SCENE job_verify.tscn tap_ms=79 first_frame_ms=6 static_mb=85 tex_mb=41
+11-08 02:41:48.809 I/godot   (23494): LW_HITCH job_verify.tscn max_frame_ms=80 (first 2000 ms)
+11-08 02:41:51.245 I/godot   (23494): LW_SCENE lock_job_dial_safe.tscn tap_ms=431 first_frame_ms=40 static_mb=87 tex_mb=42
+11-08 02:41:53.222 I/godot   (23494): LW_HITCH lock_job_dial_safe.tscn max_frame_ms=451 (first 2000 ms)
+11-08 02:41:56.259 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=205 fps=37.7 p50=20.9 p95=40.1 p99=46.4 max=451.1 over33=47 draws=56 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:42:01.270 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=227 fps=45.3 p50=17.7 p95=35.7 p99=41.5 max=49.5 over33=32 draws=56 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:42:06.288 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=212 fps=42.2 p50=20.9 p95=39.1 p99=43.6 max=49.7 over33=37 draws=57 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:42:11.300 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=288 fps=57.5 p50=16.8 p95=20.2 p99=39.9 max=45.4 over33=7 draws=57 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:42:16.300 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=289 fps=57.8 p50=16.7 p95=18.8 p99=36.7 max=38.9 over33=10 draws=57 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:42:21.301 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.2 p50=16.8 p95=19.2 p99=37.0 max=41.5 over33=8 draws=57 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:42:26.303 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=58.0 p50=16.7 p95=18.8 p99=36.3 max=37.5 over33=9 draws=57 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:42:31.317 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=294 fps=58.6 p50=16.7 p95=18.5 p99=36.1 max=37.5 over33=7 draws=57 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:42:36.318 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=58.0 p50=16.7 p95=19.2 p99=40.0 max=40.3 over33=9 draws=57 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:42:41.321 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=295 fps=59.0 p50=16.7 p95=18.7 p99=36.2 max=42.4 over33=5 draws=57 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:42:46.322 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=58.0 p50=16.6 p95=19.9 p99=36.9 max=38.0 over33=10 draws=57 static_mb=87 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:42:51.338 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.2 p50=16.7 p95=19.3 p99=37.0 max=40.3 over33=9 draws=58 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:42:56.338 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=284 fps=56.8 p50=16.7 p95=29.6 p99=41.6 max=63.6 over33=12 draws=57 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:43:01.338 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.2 p50=16.8 p95=19.3 p99=36.9 max=37.9 over33=9 draws=57 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:43:06.357 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=286 fps=57.0 p50=16.7 p95=33.0 p99=38.5 max=41.2 over33=11 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:43:11.374 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=288 fps=57.4 p50=16.7 p95=20.8 p99=37.2 max=39.8 over33=10 draws=57 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:43:16.374 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.2 p50=16.7 p95=18.7 p99=36.5 max=44.4 over33=6 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:43:21.389 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.2 p50=16.7 p95=18.8 p99=36.7 max=47.7 over33=7 draws=57 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:43:26.389 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=288 fps=57.6 p50=16.7 p95=19.2 p99=38.0 max=40.5 over33=8 draws=58 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:43:31.392 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.2 p50=16.7 p95=18.8 p99=38.4 max=49.0 over33=3 draws=57 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:43:36.394 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=286 fps=57.2 p50=16.7 p95=24.3 p99=38.2 max=41.8 over33=8 draws=57 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:43:41.410 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=293 fps=58.4 p50=16.7 p95=19.0 p99=38.1 max=40.6 over33=6 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:43:46.426 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=295 fps=58.8 p50=16.7 p95=18.7 p99=36.2 max=42.2 over33=4 draws=57 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:43:51.444 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=289 fps=57.6 p50=16.7 p95=19.5 p99=38.0 max=49.8 over33=7 draws=57 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:43:56.444 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=287 fps=57.4 p50=16.8 p95=20.0 p99=39.7 max=64.7 over33=7 draws=47 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:44:01.459 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.2 p50=16.7 p95=19.0 p99=37.2 max=38.4 over33=9 draws=45 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:44:06.460 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=293 fps=58.6 p50=16.7 p95=18.4 p99=35.7 max=40.2 over33=5 draws=45 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:44:11.461 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=285 fps=57.0 p50=16.7 p95=31.1 p99=37.6 max=38.6 over33=14 draws=45 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:44:16.461 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.7 p95=19.0 p99=35.0 max=38.6 over33=5 draws=46 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:44:21.462 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=296 fps=59.2 p50=16.7 p95=18.2 p99=33.5 max=40.5 over33=3 draws=46 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:44:26.464 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.7 p95=18.7 p99=36.6 max=39.0 over33=4 draws=46 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:44:31.480 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=294 fps=58.6 p50=16.8 p95=18.9 p99=35.5 max=37.8 over33=7 draws=46 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:44:36.479 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=289 fps=57.8 p50=16.7 p95=19.7 p99=37.8 max=40.4 over33=10 draws=45 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:44:41.480 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.6 p95=18.3 p99=36.0 max=37.6 over33=8 draws=46 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:44:46.482 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=293 fps=58.6 p50=16.8 p95=18.6 p99=35.4 max=36.3 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:44:51.484 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=58.0 p50=16.8 p95=18.2 p99=36.1 max=36.8 over33=10 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:44:56.484 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=293 fps=58.6 p50=16.8 p95=18.7 p99=35.3 max=41.0 over33=6 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:45:01.500 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=289 fps=57.6 p50=16.7 p95=20.3 p99=37.8 max=39.9 over33=10 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:45:06.500 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=285 fps=57.0 p50=16.8 p95=30.3 p99=39.5 max=42.6 over33=13 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:45:11.516 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=282 fps=56.2 p50=16.7 p95=34.1 p99=41.3 max=42.2 over33=15 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:45:16.534 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.0 p50=16.7 p95=19.8 p99=36.6 max=40.9 over33=9 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:45:21.535 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.2 p50=16.8 p95=20.8 p99=36.9 max=37.2 over33=4 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:45:26.537 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=58.0 p50=16.7 p95=20.9 p99=33.9 max=36.5 over33=5 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:45:31.553 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=289 fps=57.6 p50=16.7 p95=21.2 p99=37.3 max=42.0 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:45:36.569 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=285 fps=56.8 p50=16.7 p95=29.1 p99=40.1 max=40.9 over33=12 draws=57 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:45:41.571 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=289 fps=57.8 p50=16.7 p95=19.6 p99=39.3 max=44.5 over33=8 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:45:46.571 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.7 p95=20.1 p99=36.2 max=40.5 over33=5 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:45:51.572 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=288 fps=57.6 p50=16.8 p95=20.7 p99=39.0 max=42.3 over33=10 draws=55 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:45:56.588 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=296 fps=59.0 p50=16.7 p95=18.5 p99=33.0 max=36.5 over33=2 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:46:01.590 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=289 fps=57.8 p50=16.6 p95=19.2 p99=37.5 max=42.3 over33=10 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:46:06.591 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.7 p95=18.7 p99=37.9 max=41.5 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:46:11.592 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=288 fps=57.6 p50=16.7 p95=21.7 p99=37.2 max=46.3 over33=10 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:46:16.608 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=57.8 p50=16.8 p95=20.3 p99=38.3 max=39.3 over33=10 draws=55 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:46:21.608 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=296 fps=59.2 p50=16.7 p95=18.1 p99=35.2 max=35.9 over33=4 draws=55 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:46:26.608 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=58.0 p50=16.7 p95=19.4 p99=37.5 max=39.4 over33=8 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:46:31.608 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.7 p95=18.8 p99=37.8 max=41.9 over33=8 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:46:36.609 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=296 fps=59.2 p50=16.7 p95=18.2 p99=35.1 max=38.6 over33=4 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:46:41.609 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.7 p95=18.8 p99=35.5 max=36.6 over33=8 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:46:46.610 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=295 fps=59.0 p50=16.7 p95=18.8 p99=36.1 max=36.6 over33=5 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:46:51.611 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=289 fps=57.8 p50=16.7 p95=19.7 p99=39.0 max=42.0 over33=11 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:46:56.633 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=293 fps=58.3 p50=16.7 p95=18.7 p99=36.2 max=41.8 over33=6 draws=55 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:47:01.645 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.1 p50=16.6 p95=19.5 p99=37.2 max=41.3 over33=9 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:47:06.646 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=287 fps=57.4 p50=16.8 p95=20.0 p99=40.4 max=41.5 over33=12 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:47:11.645 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=282 fps=56.4 p50=16.7 p95=34.1 p99=38.9 max=41.8 over33=16 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:47:16.646 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.2 p50=16.7 p95=19.6 p99=36.6 max=37.1 over33=9 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:47:21.648 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.7 p95=18.9 p99=38.2 max=41.9 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:47:26.673 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=289 fps=57.5 p50=16.7 p95=19.9 p99=39.5 max=41.7 over33=11 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:47:31.682 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.3 p50=16.7 p95=19.4 p99=37.5 max=46.7 over33=8 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:47:36.682 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.7 p95=19.2 p99=35.6 max=35.9 over33=8 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:47:41.683 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.7 p95=19.4 p99=36.3 max=38.5 over33=8 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:47:46.682 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.7 p95=19.4 p99=36.2 max=41.3 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:47:51.684 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.8 p95=19.1 p99=38.1 max=43.2 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:47:56.685 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=289 fps=57.8 p50=16.7 p95=20.0 p99=36.3 max=40.4 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:48:01.686 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=286 fps=57.2 p50=16.8 p95=23.6 p99=37.3 max=43.4 over33=11 draws=55 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:48:06.689 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=289 fps=57.8 p50=16.7 p95=20.9 p99=36.4 max=41.5 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:48:11.721 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=284 fps=56.4 p50=16.7 p95=28.8 p99=40.0 max=46.8 over33=10 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:48:16.736 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=57.8 p50=16.7 p95=20.2 p99=35.0 max=39.8 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:48:21.737 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.6 p95=19.2 p99=36.9 max=42.1 over33=6 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:48:26.738 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=58.0 p50=16.7 p95=20.0 p99=37.4 max=41.0 over33=10 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:48:31.741 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.7 p95=18.7 p99=37.6 max=39.8 over33=8 draws=55 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:48:36.754 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=294 fps=58.6 p50=16.7 p95=18.4 p99=38.1 max=41.6 over33=6 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:48:41.755 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=294 fps=58.8 p50=16.7 p95=18.4 p99=36.6 max=42.5 over33=5 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:48:46.756 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.7 p95=19.5 p99=36.0 max=40.7 over33=6 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:48:51.757 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.2 p50=16.7 p95=18.9 p99=36.5 max=40.4 over33=8 draws=55 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:48:56.757 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.7 p95=19.1 p99=36.6 max=37.1 over33=8 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:49:01.757 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.2 p50=16.7 p95=19.5 p99=38.6 max=39.8 over33=9 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:49:06.757 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.2 p50=16.7 p95=19.5 p99=36.9 max=41.8 over33=8 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:49:11.760 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=287 fps=57.4 p50=16.7 p95=22.0 p99=39.4 max=41.6 over33=12 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:49:16.760 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=289 fps=57.8 p50=16.7 p95=19.1 p99=36.9 max=39.4 over33=11 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:49:21.776 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.0 p50=16.7 p95=19.9 p99=36.5 max=41.9 over33=9 draws=55 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:49:26.776 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.2 p50=16.7 p95=19.0 p99=38.3 max=40.7 over33=9 draws=55 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:49:31.793 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.2 p50=16.7 p95=18.7 p99=37.6 max=45.1 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:49:36.794 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=293 fps=58.6 p50=16.7 p95=18.3 p99=35.8 max=36.5 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:49:41.796 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=293 fps=58.6 p50=16.7 p95=18.5 p99=37.0 max=37.9 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:49:46.812 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=294 fps=58.6 p50=16.7 p95=18.8 p99=36.4 max=42.2 over33=6 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:49:51.827 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=57.8 p50=16.7 p95=19.9 p99=37.7 max=42.1 over33=10 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:49:56.830 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=58.0 p50=16.8 p95=19.3 p99=35.9 max=41.1 over33=10 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:50:01.846 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.2 p50=16.6 p95=19.5 p99=36.4 max=36.9 over33=8 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:50:06.847 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.2 p50=16.8 p95=19.1 p99=35.4 max=39.6 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:50:11.848 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=58.0 p50=16.7 p95=19.3 p99=38.6 max=39.0 over33=10 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:50:16.847 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=285 fps=57.0 p50=16.8 p95=22.9 p99=38.8 max=43.7 over33=11 draws=55 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:50:21.868 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=57.8 p50=16.7 p95=19.1 p99=38.7 max=41.5 over33=10 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:50:26.882 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=288 fps=57.4 p50=16.8 p95=20.8 p99=40.6 max=46.0 over33=11 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:50:31.882 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.4 p50=16.7 p95=19.4 p99=36.5 max=37.4 over33=8 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:50:36.883 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=295 fps=59.0 p50=16.7 p95=19.2 p99=36.0 max=37.3 over33=4 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:50:41.884 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=291 fps=58.2 p50=16.7 p95=18.8 p99=36.1 max=42.4 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:50:46.900 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=293 fps=58.4 p50=16.7 p95=19.8 p99=37.2 max=42.7 over33=6 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:50:51.901 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=295 fps=59.0 p50=16.7 p95=18.9 p99=32.5 max=45.4 over33=1 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:50:56.902 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=293 fps=58.6 p50=16.7 p95=20.8 p99=35.5 max=41.3 over33=4 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:51:01.904 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=293 fps=58.6 p50=16.7 p95=19.5 p99=33.9 max=38.5 over33=3 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:51:06.918 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=294 fps=58.6 p50=16.7 p95=18.8 p99=36.3 max=37.2 over33=5 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:51:11.921 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=296 fps=59.2 p50=16.7 p95=18.9 p99=35.7 max=37.3 over33=4 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:51:16.923 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=285 fps=57.0 p50=16.8 p95=29.8 p99=38.6 max=40.2 over33=11 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:51:21.937 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=293 fps=58.4 p50=16.7 p95=19.3 p99=37.3 max=39.0 over33=8 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:51:26.938 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=288 fps=57.6 p50=16.7 p95=19.2 p99=40.0 max=44.9 over33=9 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:51:31.960 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.1 p50=16.7 p95=18.6 p99=37.1 max=39.2 over33=8 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:51:36.979 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=292 fps=58.2 p50=16.7 p95=19.1 p99=39.2 max=43.5 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:51:41.989 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=289 fps=57.7 p50=16.8 p95=19.0 p99=37.7 max=39.8 over33=8 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:51:46.990 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=296 fps=59.2 p50=16.7 p95=18.1 p99=35.1 max=41.4 over33=3 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:51:51.992 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=286 fps=57.2 p50=16.7 p95=20.3 p99=38.9 max=40.7 over33=12 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:51:57.008 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=57.8 p50=16.7 p95=18.7 p99=39.6 max=41.4 over33=8 draws=55 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:52:02.008 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=290 fps=58.0 p50=16.7 p95=19.6 p99=38.5 max=40.5 over33=7 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:52:07.009 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=288 fps=57.6 p50=16.7 p95=19.4 p99=37.0 max=39.2 over33=11 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:52:12.010 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=295 fps=59.0 p50=16.7 p95=18.1 p99=35.9 max=38.9 over33=4 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:52:17.033 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=239 fps=47.6 p50=17.4 p95=38.6 p99=43.4 max=47.1 over33=30 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:52:22.069 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=207 fps=41.1 p50=21.5 p95=40.4 p99=42.8 max=43.3 over33=35 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:52:27.082 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=222 fps=44.3 p50=19.0 p95=39.4 p99=43.0 max=44.9 over33=38 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:52:32.086 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=204 fps=40.8 p50=21.9 p95=37.2 p99=41.8 max=44.8 over33=38 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:52:37.093 I/godot   (23494): LW_FRAMES lock_job_dial_safe.tscn n=204 fps=40.7 p50=22.5 p95=37.5 p99=41.7 max=42.8 over33=31 draws=56 static_mb=88 tex_mb=96 buf_mb=7 vmem_mb=268
+11-08 02:52:40.439 I/godot   (23494): LW_SCENE main_menu.tscn tap_ms=71 first_frame_ms=3 static_mb=85 tex_mb=96
+11-08 02:52:42.441 I/godot   (23494): LW_HITCH main_menu.tscn max_frame_ms=71 (first 2000 ms)
+11-08 02:52:45.442 I/godot   (23494): LW_FRAMES main_menu.tscn n=301 fps=59.3 p50=16.7 p95=18.8 p99=20.2 max=71.1 over33=1 draws=3 static_mb=85 tex_mb=41 buf_mb=6 vmem_mb=213

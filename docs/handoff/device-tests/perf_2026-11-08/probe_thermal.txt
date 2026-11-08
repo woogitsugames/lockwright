@@ -1,0 +1,42 @@
+# probe thermal run start 02:42:06
+Thermal Status: 0
+ Temperature{mValue=38.6, mType=0, mName=AP, mStatus=0}
+ Temperature{mValue=34.7, mType=5, mName=PA, mStatus=0}
+ Temperature{mValue=28.4, mType=2, mName=BAT, mStatus=0}
+ Temperature{mValue=33.1, mType=3, mName=SKIN, mStatus=0}
+ Temperature{mValue=36.8, mType=0, mName=AP, mStatus=0}
+ level: 79
+ temperature: 295
+thermal_min1                 frames= 3477 fps= 58.4 p50=16 p95= 16 p99= 33 max=  50 >25=125 >33=  1 >50=  0 1%low= 30.3
+thermal_min1                 PSS= 866 MB  Graphics= 576 (GL 543, EGL 33)  Native=  88  Code=  66
+min 1 02:43:07 Thermal Status: 0 38.6:AP 28.4:BAT 33.1:SKIN 
+thermal_min2                 frames= 3494 fps= 58.5 p50=16 p95= 16 p99= 33 max=  50 >25=121 >33=  1 >50=  0 1%low= 30.3
+thermal_min2                 PSS= 860 MB  Graphics= 570 (GL 537, EGL 33)  Native=  88  Code=  66
+min 2 02:44:07 Thermal Status: 0 38.6:AP 28.4:BAT 33.1:SKIN 
+thermal_min3                 frames= 3516 fps= 58.7 p50=16 p95= 16 p99= 33 max=  33 >25=113 >33=  0 >50=  0 1%low= 30.3
+thermal_min3                 PSS= 859 MB  Graphics= 570 (GL 537, EGL 33)  Native=  88  Code=  66
+min 3 02:45:08 Thermal Status: 0 38.6:AP 28.4:BAT 33.1:SKIN 
+thermal_min4                 frames= 3513 fps= 58.3 p50=16 p95= 16 p99= 33 max=  33 >25=132 >33=  0 >50=  0 1%low= 30.3
+thermal_min4                 PSS= 853 MB  Graphics= 564 (GL 531, EGL 33)  Native=  88  Code=  66
+min 4 02:46:09 Thermal Status: 0 38.6:AP 28.4:BAT 33.1:SKIN 
+thermal_min5                 frames= 3542 fps= 58.8 p50=16 p95= 16 p99= 33 max=  33 >25=104 >33=  0 >50=  0 1%low= 30.3
+thermal_min5                 PSS= 854 MB  Graphics= 564 (GL 531, EGL 33)  Native=  88  Code=  66
+min 5 02:47:09 Thermal Status: 0 38.6:AP 28.4:BAT 33.1:SKIN 
+thermal_min6                 frames= 3567 fps= 58.4 p50=16 p95= 16 p99= 33 max=  33 >25=131 >33=  0 >50=  0 1%low= 30.3
+thermal_min6                 PSS= 851 MB  Graphics= 561 (GL 528, EGL 33)  Native=  88  Code=  66
+min 6 02:48:11 Thermal Status: 0 38.6:AP 28.4:BAT 33.1:SKIN 
+thermal_min7                 frames= 3510 fps= 58.7 p50=16 p95= 16 p99= 33 max=  33 >25=110 >33=  0 >50=  0 1%low= 30.3
+thermal_min7                 PSS= 846 MB  Graphics= 556 (GL 523, EGL 33)  Native=  88  Code=  66
+min 7 02:49:12 Thermal Status: 0 38.6:AP 28.4:BAT 33.1:SKIN 
+thermal_min8                 frames= 3571 fps= 58.7 p50=16 p95= 16 p99= 33 max=  33 >25=115 >33=  0 >50=  0 1%low= 30.3
+thermal_min8                 PSS= 853 MB  Graphics= 564 (GL 530, EGL 33)  Native=  88  Code=  66
+min 8 02:50:13 Thermal Status: 0 38.6:AP 28.4:BAT 33.1:SKIN 
+thermal_min9                 frames= 3527 fps= 58.9 p50=16 p95= 16 p99= 33 max=  33 >25=100 >33=  0 >50=  0 1%low= 30.3
+thermal_min9                 PSS= 846 MB  Graphics= 557 (GL 524, EGL 33)  Native=  88  Code=  66
+min 9 02:51:14 Thermal Status: 0 38.6:AP 28.4:BAT 33.1:SKIN 
+thermal_min10                frames= 3499 fps= 58.5 p50=16 p95= 16 p99= 33 max=  50 >25=121 >33=  1 >50=  0 1%low= 30.3
+thermal_min10                PSS= 852 MB  Graphics= 563 (GL 530, EGL 33)  Native=  83  Code=  66
+min 10 02:52:14 Thermal Status: 0 38.6:AP 28.4:BAT 33.1:SKIN 
+ level: 79
+ temperature: 298
+# end 02:52:14

@@ -1,0 +1,395 @@
+[
+ {
+  "label": "menu_idle",
+  "frames": 488,
+  "avg_fps": 60.6,
+  "sf_average_fps": 62.492,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 16,
+  "max_ms": 17,
+  "over25": 0,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 62.5,
+  "hist_nonzero": {
+   "16": 487,
+   "17": 1
+  }
+ },
+ {
+  "label": "menu_to_jobs_transition",
+  "frames": 358,
+  "avg_fps": 54.0,
+  "sf_average_fps": 55.53,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 650,
+  "over25": 5,
+  "over33": 2,
+  "over50": 1,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 353,
+   "33": 3,
+   "50": 1,
+   "650": 1
+  }
+ },
+ {
+  "label": "jobs_idle",
+  "frames": 1927,
+  "avg_fps": 60.5,
+  "sf_average_fps": 62.397,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 16,
+  "max_ms": 33,
+  "over25": 3,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 62.5,
+  "hist_nonzero": {
+   "16": 1924,
+   "33": 3
+  }
+ },
+ {
+  "label": "jobs_idle",
+  "frames": 328,
+  "avg_fps": 60.0,
+  "sf_average_fps": 61.898,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 16,
+  "max_ms": 33,
+  "over25": 3,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 62.5,
+  "hist_nonzero": {
+   "16": 325,
+   "33": 3
+  }
+ },
+ {
+  "label": "jobs_scroll",
+  "frames": 775,
+  "avg_fps": 60.4,
+  "sf_average_fps": 62.329,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 16,
+  "max_ms": 33,
+  "over25": 2,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 62.5,
+  "hist_nonzero": {
+   "16": 773,
+   "33": 2
+  }
+ },
+ {
+  "label": "x",
+  "frames": 8277,
+  "avg_fps": 60.6,
+  "sf_average_fps": 62.467,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 16,
+  "max_ms": 33,
+  "over25": 4,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 62.5,
+  "hist_nonzero": {
+   "16": 8272,
+   "17": 1,
+   "33": 4
+  }
+ },
+ {
+  "label": "jobs_to_arrival_combo",
+  "frames": 325,
+  "avg_fps": 57.7,
+  "sf_average_fps": 59.437,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 16,
+  "max_ms": 250,
+  "over25": 3,
+  "over33": 1,
+  "over50": 1,
+  "low1_fps": 62.5,
+  "hist_nonzero": {
+   "16": 322,
+   "33": 2,
+   "250": 1
+  }
+ },
+ {
+  "label": "x",
+  "frames": 665,
+  "avg_fps": 59.9,
+  "sf_average_fps": 61.711,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 33,
+  "over25": 8,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 657,
+   "33": 8
+  }
+ },
+ {
+  "label": "arrival_to_verify_combo",
+  "frames": 263,
+  "avg_fps": 56.9,
+  "sf_average_fps": 58.535,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 250,
+  "over25": 4,
+  "over33": 1,
+  "over50": 1,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 259,
+   "33": 3,
+   "250": 1
+  }
+ },
+ {
+  "label": "x",
+  "frames": 535,
+  "avg_fps": 60.4,
+  "sf_average_fps": 62.253,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 16,
+  "max_ms": 33,
+  "over25": 2,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 62.5,
+  "hist_nonzero": {
+   "16": 533,
+   "33": 2
+  }
+ },
+ {
+  "label": "verify_to_lock_combo",
+  "frames": 248,
+  "avg_fps": 39.0,
+  "sf_average_fps": 39.827,
+  "p50_ms": 16,
+  "p95_ms": 33,
+  "p99_ms": 50,
+  "max_ms": 1000,
+  "over25": 74,
+  "over33": 3,
+  "over50": 1,
+  "low1_fps": 20.0,
+  "hist_nonzero": {
+   "16": 174,
+   "33": 71,
+   "50": 2,
+   "1000": 1
+  }
+ },
+ {
+  "label": "x",
+  "frames": 657,
+  "avg_fps": 45.0,
+  "sf_average_fps": 45.989,
+  "p50_ms": 16,
+  "p95_ms": 33,
+  "p99_ms": 33,
+  "max_ms": 50,
+  "over25": 220,
+  "over33": 2,
+  "over50": 0,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 437,
+   "33": 218,
+   "50": 2
+  }
+ },
+ {
+  "label": "lock_combo_idle",
+  "frames": 365,
+  "avg_fps": 42.1,
+  "sf_average_fps": 42.982,
+  "p50_ms": 16,
+  "p95_ms": 33,
+  "p99_ms": 33,
+  "max_ms": 50,
+  "over25": 154,
+  "over33": 2,
+  "over50": 0,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 211,
+   "33": 152,
+   "50": 2
+  }
+ },
+ {
+  "label": "lock_combo_interact",
+  "frames": 596,
+  "avg_fps": 57.3,
+  "sf_average_fps": 59.027,
+  "p50_ms": 16,
+  "p95_ms": 33,
+  "p99_ms": 33,
+  "max_ms": 33,
+  "over25": 33,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 563,
+   "33": 33
+  }
+ },
+ {
+  "label": "lock_exit_to_list",
+  "frames": 334,
+  "avg_fps": 58.9,
+  "sf_average_fps": 60.727,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 118,
+  "over25": 4,
+  "over33": 1,
+  "over50": 1,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 327,
+   "17": 3,
+   "33": 3,
+   "118": 1
+  }
+ },
+ {
+  "label": "menu_after_lock",
+  "frames": 855,
+  "avg_fps": 60.5,
+  "sf_average_fps": 62.413,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 16,
+  "max_ms": 33,
+  "over25": 1,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 62.5,
+  "hist_nonzero": {
+   "16": 852,
+   "17": 2,
+   "33": 1
+  }
+ },
+ {
+  "label": "menu_to_workshop",
+  "frames": 253,
+  "avg_fps": 48.1,
+  "sf_average_fps": 49.289,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 1000,
+  "over25": 5,
+  "over33": 2,
+  "over50": 2,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 248,
+   "33": 3,
+   "66": 1,
+   "1000": 1
+  }
+ },
+ {
+  "label": "x",
+  "frames": 1915,
+  "avg_fps": 60.5,
+  "sf_average_fps": 62.431,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 16,
+  "max_ms": 33,
+  "over25": 2,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 62.5,
+  "hist_nonzero": {
+   "16": 1913,
+   "33": 2
+  }
+ },
+ {
+  "label": "workshop_idle",
+  "frames": 330,
+  "avg_fps": 60.0,
+  "sf_average_fps": 61.902,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 16,
+  "max_ms": 33,
+  "over25": 3,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 62.5,
+  "hist_nonzero": {
+   "16": 327,
+   "33": 3
+  }
+ },
+ {
+  "label": "workshop_scroll",
+  "frames": 547,
+  "avg_fps": 60.4,
+  "sf_average_fps": 62.258,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 16,
+  "max_ms": 33,
+  "over25": 2,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 62.5,
+  "hist_nonzero": {
+   "16": 545,
+   "33": 2
+  }
+ },
+ {
+  "label": "workshop_tab_furn",
+  "frames": 284,
+  "avg_fps": 58.9,
+  "sf_average_fps": 60.671,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 102,
+  "over25": 4,
+  "over33": 1,
+  "over50": 1,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 280,
+   "33": 3,
+   "102": 1
+  }
+ }
+]

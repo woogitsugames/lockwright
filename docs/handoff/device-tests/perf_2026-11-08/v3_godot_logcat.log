@@ -1,0 +1,58 @@
+--------- beginning of main
+11-08 03:11:36.855 I/godot   (11456): LW_FRAMES main_menu.tscn n=301 fps=60.0 p50=16.7 p95=19.1 p99=19.7 max=21.8 over33=0 proc=19.5 phys=1.7 gpu=10.0 gpu_root=10.0 rs_cpu=0.1 draws=1 static_mb=62 tex_mb=26 buf_mb=6 vmem_mb=52
+11-08 03:11:41.854 I/godot   (11456): LW_FRAMES main_menu.tscn n=300 fps=60.0 p50=16.6 p95=19.1 p99=20.1 max=21.0 over33=0 proc=20.0 phys=1.4 gpu=10.0 gpu_root=10.0 rs_cpu=0.1 draws=1 static_mb=62 tex_mb=26 buf_mb=6 vmem_mb=52
+11-08 03:11:44.092 I/godot   (11456): LW_SCENE jobs_list.tscn tap_ms=783 first_frame_ms=444 static_mb=74 tex_mb=26
+11-08 03:11:44.093 I/godot   (11456): LW_SLOW jobs_list.tscn frame_ms=536 process_ms=18 physics_ms=0
+11-08 03:11:45.655 I/godot   (11456): LW_HITCH jobs_list.tscn max_frame_ms=536 (first 2000 ms)
+11-08 03:11:49.104 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=54.1 p50=16.7 p95=19.4 p99=29.7 max=535.7 over33=1 proc=77.7 phys=0.5 gpu=13.1 gpu_root=13.1 rs_cpu=0.1 draws=42 static_mb=74 tex_mb=29 buf_mb=6 vmem_mb=72
+11-08 03:11:50.450 I/godot   (11456): LW_SCENE job_arrival.tscn tap_ms=248 first_frame_ms=164 static_mb=73 tex_mb=29
+11-08 03:11:50.450 I/godot   (11456): LW_SLOW job_arrival.tscn frame_ms=248 process_ms=33 physics_ms=2
+11-08 03:11:52.287 I/godot   (11456): LW_HITCH job_arrival.tscn max_frame_ms=248 (first 2000 ms)
+11-08 03:11:55.454 I/godot   (11456): LW_FRAMES job_arrival.tscn n=300 fps=57.1 p50=16.7 p95=19.4 p99=22.8 max=248.0 over33=2 proc=66.9 phys=1.0 gpu=12.7 gpu_root=12.7 rs_cpu=0.1 draws=40 static_mb=72 tex_mb=45 buf_mb=6 vmem_mb=87
+11-08 03:11:58.050 I/godot   (11456): LW_SCENE job_verify.tscn tap_ms=273 first_frame_ms=18 static_mb=77 tex_mb=45
+11-08 03:11:58.051 I/godot   (11456): LW_SLOW job_verify.tscn frame_ms=274 process_ms=20 physics_ms=1
+11-08 03:12:00.038 I/godot   (11456): LW_HITCH job_verify.tscn max_frame_ms=274 (first 2000 ms)
+11-08 03:12:02.733 I/godot   (11456): LW_SCENE lock_job_combo.tscn tap_ms=342 first_frame_ms=156 static_mb=77 tex_mb=87
+11-08 03:12:02.735 I/godot   (11456): Sfx: first native click played (contact/brass/2)
+11-08 03:12:02.763 I/godot   (11456): LW_SLOW lock_job_combo.tscn frame_ms=372 process_ms=19 physics_ms=2
+11-08 03:12:04.605 I/godot   (11456): LW_HITCH lock_job_combo.tscn max_frame_ms=372 (first 2000 ms)
+11-08 03:12:07.755 I/godot   (11456): LW_FRAMES lock_job_combo.tscn n=230 fps=42.9 p50=17.7 p95=40.2 p99=45.4 max=371.7 over33=38 proc=93.8 phys=7.2 gpu=13.6 gpu_root=10.5 rs_cpu=0.1 draws=58 static_mb=77 tex_mb=83 buf_mb=8 vmem_mb=129
+11-08 03:12:12.789 I/godot   (11456): LW_FRAMES lock_job_combo.tscn n=235 fps=46.7 p50=17.2 p95=40.8 p99=45.3 max=53.3 over33=33 proc=27.2 phys=9.2 gpu=13.8 gpu_root=10.7 rs_cpu=0.1 draws=58 static_mb=77 tex_mb=83 buf_mb=8 vmem_mb=129
+11-08 03:12:17.790 I/godot   (11456): LW_FRAMES lock_job_combo.tscn n=216 fps=43.2 p50=18.4 p95=41.2 p99=46.7 max=47.2 over33=40 proc=28.5 phys=9.7 gpu=13.8 gpu_root=10.7 rs_cpu=0.1 draws=59 static_mb=77 tex_mb=83 buf_mb=8 vmem_mb=129
+11-08 03:12:22.794 I/godot   (11456): LW_FRAMES lock_job_combo.tscn n=219 fps=43.8 p50=18.6 p95=40.6 p99=43.4 max=46.6 over33=40 proc=27.3 phys=8.6 gpu=13.8 gpu_root=10.7 rs_cpu=0.1 draws=59 static_mb=77 tex_mb=83 buf_mb=8 vmem_mb=129
+11-08 03:12:27.798 I/godot   (11456): LW_FRAMES lock_job_combo.tscn n=300 fps=60.0 p50=16.7 p95=18.3 p99=18.7 max=19.6 over33=0 proc=14.5 phys=8.0 gpu=13.8 gpu_root=10.8 rs_cpu=0.1 draws=53 static_mb=77 tex_mb=83 buf_mb=8 vmem_mb=129
+11-08 03:12:32.799 I/godot   (11456): LW_FRAMES lock_job_combo.tscn n=300 fps=60.0 p50=16.7 p95=18.4 p99=18.9 max=19.1 over33=0 proc=11.7 phys=5.3 gpu=13.7 gpu_root=10.8 rs_cpu=0.1 draws=52 static_mb=77 tex_mb=83 buf_mb=8 vmem_mb=129
+11-08 03:12:36.805 I/godot   (11456): LW_SCENE main_menu.tscn tap_ms=38 first_frame_ms=4 static_mb=76 tex_mb=84
+11-08 03:12:38.814 I/godot   (11456): LW_HITCH main_menu.tscn max_frame_ms=38 (first 2000 ms)
+11-08 03:12:41.811 I/godot   (11456): LW_FRAMES main_menu.tscn n=301 fps=59.7 p50=16.6 p95=19.3 p99=20.2 max=38.1 over33=1 proc=25.5 phys=1.2 gpu=10.0 gpu_root=10.0 rs_cpu=0.1 draws=1 static_mb=76 tex_mb=37 buf_mb=8 vmem_mb=83
+11-08 03:12:42.724 I/godot   (11456): LW_SCENE jobs_list.tscn tap_ms=262 first_frame_ms=30 static_mb=80 tex_mb=37
+11-08 03:12:44.709 I/godot   (11456): LW_HITCH jobs_list.tscn max_frame_ms=131 (first 2000 ms)
+11-08 03:12:47.724 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=58.5 p50=16.7 p95=18.9 p99=21.0 max=131.4 over33=2 proc=40.5 phys=1.0 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:12:52.728 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.4 p99=20.7 max=23.1 over33=0 proc=19.6 phys=0.3 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:12:57.728 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=19.6 max=20.5 over33=0 proc=19.1 phys=1.4 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:13:02.732 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=19.9 max=20.9 over33=0 proc=19.1 phys=0.6 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:13:07.745 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=59.8 p50=16.7 p95=19.2 p99=20.8 max=30.8 over33=0 proc=21.8 phys=1.0 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:13:12.747 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.4 p99=19.3 max=20.6 over33=0 proc=19.2 phys=1.3 gpu=13.3 gpu_root=13.3 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:13:17.764 I/godot   (11456): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.6 p95=19.2 p99=20.6 max=21.9 over33=0 proc=20.0 phys=1.7 gpu=13.3 gpu_root=13.3 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:13:22.781 I/godot   (11456): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.2 p99=20.4 max=21.3 over33=0 proc=20.3 phys=1.8 gpu=13.3 gpu_root=13.3 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:13:27.784 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=20.0 max=21.5 over33=0 proc=19.3 phys=0.8 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:13:32.783 I/godot   (11456): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=18.7 p99=20.0 max=32.4 over33=0 proc=21.6 phys=1.3 gpu=13.3 gpu_root=13.3 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:13:37.800 I/godot   (11456): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.0 p99=20.5 max=21.6 over33=0 proc=19.6 phys=1.7 gpu=13.3 gpu_root=13.3 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:13:42.816 I/godot   (11456): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.7 p99=19.8 max=20.7 over33=0 proc=19.4 phys=1.7 gpu=13.3 gpu_root=13.3 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:13:47.816 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.2 p99=20.4 max=21.6 over33=0 proc=20.1 phys=1.3 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:13:52.836 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=59.8 p50=16.8 p95=19.2 p99=20.4 max=30.9 over33=0 proc=20.2 phys=1.6 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:13:57.835 I/godot   (11456): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=19.0 p99=21.0 max=34.0 over33=1 proc=21.4 phys=1.9 gpu=13.3 gpu_root=13.3 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:14:02.835 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=18.9 p99=19.8 max=21.8 over33=0 proc=22.8 phys=0.7 gpu=13.1 gpu_root=13.1 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:14:07.838 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.0 p99=20.0 max=21.5 over33=0 proc=20.1 phys=1.0 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:14:12.851 I/godot   (11456): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=19.3 p99=20.7 max=22.1 over33=0 proc=20.0 phys=1.4 gpu=13.3 gpu_root=13.3 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:14:17.854 I/godot   (11456): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=19.0 p99=20.9 max=33.1 over33=0 proc=19.6 phys=1.1 gpu=13.3 gpu_root=13.3 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:14:22.856 I/godot   (11456): LW_FRAMES jobs_list.tscn n=299 fps=59.8 p50=16.7 p95=18.8 p99=20.1 max=33.2 over33=0 proc=21.7 phys=1.2 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:14:27.871 I/godot   (11456): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.7 p95=18.9 p99=20.1 max=21.0 over33=0 proc=22.0 phys=1.1 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:14:32.874 I/godot   (11456): LW_FRAMES jobs_list.tscn n=297 fps=59.4 p50=16.7 p95=18.9 p99=32.6 max=33.6 over33=1 proc=24.5 phys=0.9 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:14:37.875 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.1 p99=20.2 max=20.8 over33=0 proc=19.3 phys=1.2 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:14:42.889 I/godot   (11456): LW_FRAMES jobs_list.tscn n=301 fps=60.0 p50=16.6 p95=19.1 p99=20.1 max=21.5 over33=0 proc=19.5 phys=1.2 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:14:47.890 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.2 p99=20.0 max=21.2 over33=0 proc=19.7 phys=0.3 gpu=13.3 gpu_root=13.3 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:14:52.890 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.0 p99=20.2 max=21.3 over33=0 proc=19.3 phys=1.2 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:14:57.892 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.6 p95=18.8 p99=20.1 max=23.6 over33=0 proc=20.0 phys=1.5 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:15:02.891 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.6 p95=18.8 p99=20.6 max=21.4 over33=0 proc=19.3 phys=1.2 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80
+11-08 03:15:07.894 I/godot   (11456): LW_FRAMES jobs_list.tscn n=300 fps=60.0 p50=16.7 p95=19.0 p99=20.5 max=21.3 over33=0 proc=19.9 phys=1.6 gpu=13.2 gpu_root=13.2 rs_cpu=0.1 draws=42 static_mb=80 tex_mb=34 buf_mb=8 vmem_mb=80

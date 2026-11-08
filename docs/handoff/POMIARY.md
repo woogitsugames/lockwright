@@ -136,3 +136,43 @@ będzie dawał artefakt (na 2026-11-05 runy 62–65 kończą się błędem).
 
 Uwaga: czasy headless z CI nie są czasem startu na telefonie (brak GPU, szybki dysk) — służą do wykrywania regresji
 (np. ktoś ładuje wszystkie tekstury w autoloadzie), nie do oceny wrażeń.
+
+## 9. Pomiar wydajności gry na telefonie — 2026-11-08 (D-87)
+
+**Data:** 2026-11-08 · **Telefon:** Samsung SM-A165F (Galaxy A16 4G, Helio G99, Mali-G57 MC2, 4 GB, 1080×2340, 60 Hz, Android 16), USB ·
+**Przed:** CI APK **283887e** (+ ten sam kod z sondą `PerfProbe`) · **Po:** build lokalny `tools/local/build_apk.sh` z kodem D-87
+(ten sam klucz, `adb install -r`, zapis właściciela zachowany). Metoda, surowe dane i skrypty: `docs/handoff/device-tests/perf_2026-11-08/`
+(`README.md`, `table_probe_v4.md`; klatki z SurfaceFlinger TimeStats przez `tools/local/sf_timestats.py`, pamięć z `dumpsys meminfo`).
+
+| Miara | Przed | Po | Próg (§8) | Werdykt po |
+|---|---|---|---|---|
+| Zimny start → w pełni narysowane menu (mediana z 3–4) | 4,0 s | 3,0 s (pierwszy po instalacji 3,5 s) | ≤ 4 s | **przechodzi** |
+| Wejście do ekranu zamka („Przyjmij zlecenie” → zamek, najdłuższa klatka) | 450–1000 ms, śr. 650 | 200–650 ms, śr. 350 | — | lepiej |
+| Zamek w grze (kciuki w ruchu): FPS / klatki > 25 ms w 18 s | 56–59 / 18–46 | 58–60 / 7–22 | p95 ≤ 16,7 ms | **przechodzi** (p95 16 ms) |
+| Zamek bez dotyku: FPS | 41–44 | 41–44 | 1 % low ≥ 55 | **nie przechodzi** (patrz niżej) |
+| 10 min gry w zamku: FPS 1. / 10. min, 1 % low, klatki > 25 ms / min | 58,4 / 58,5, 30 FPS, 104–125 | 60,4 / 60,4, 62 FPS, 8–10 | ≥ 55 FPS, spadek ≤ 10 % | **przechodzi** |
+| Temperatura po 10 min (SKIN / AP), status termiczny | 36,0 / 40,9 °C, 0 | 35,4 / 40,0 °C, 0 | bez dławienia | **przechodzi** |
+| Menu, lista zleceń (przewijanie) | 60 FPS, max 33 ms | menu 60 FPS; przewijania nie powtarzano (kod listy bez zmian) | ≥ 55 FPS, przycięcia ≤ 50 ms | **przechodzi** (poza 1. wejściem: 0,55 s) |
+| PSS: menu / lista / zamek (świeży start) / warsztat | 418 / 589 / 852–891 / 1096 MB | 402 / 425 / 555–615 / 610 MB | 300 (menu) / 350 (zamek) | **nie przechodzi** (o 100–260 MB mniej niż przed) |
+| PSS w długiej sesji (13 zamków po kolei) | do 890 MB, warsztat 1,1 GB | do ~870 MB | ≤ 450 MB (średni) | **nie przechodzi** |
+| APK / zasoby w APK | 168,1 / 90,3 MB | 171,9 / 93,8 MB | APK ≤ 200, pck ≤ 150 MB | **przechodzi** (APK ostrzeżenie > 170) |
+
+**Co poprawiono (D-87):** limit puli staging Vulkan 128 → 16 MB (pula rosła przy wgrywaniu tekstur i glifów i nie wracała: lista
+zleceń 330 → 170 MB pamięci GPU); zapis cache'u potoków co 0,25 MB (wcześniej `user://vulkan` było puste, więc każda sesja kompilowała
+potoki od nowa); warsztat wczytuje tylko pokazane nakładki wyposażenia i ma `size_limit` 2560 (11 warstw 2160×3840 RGBA = 365 MB było
+w pamięci nawet bez kupionego wyposażenia); płyty 2× (2472×3300, 33 MB każda) tylko na ekranach o krótszym boku ≥ 1400 px i w profilu
+wysokim — telefony ładują rodzeństwo `_1x` (lupa powiększa wyrenderowany przekrój, nie płytę); ekran weryfikacji wczytuje skrypty,
+płyty i model zamka w tle (`LockPreload`); kliki zamka (~380 WAV) i mostek natywny wczytują się w tle po starcie (Sfx 340 → 70 ms);
+plansza menu wczytuje się w trakcie bootu.
+
+**Zostaje (do decyzji / dalszej pracy):**
+1. **Zamek bez dotyku 41–44 FPS.** Pod palcem 60 FPS (Samsung podnosi taktowanie przy dotyku). Bez dotyku wątek gry potrzebuje ok.
+   13 ms CPU na klatkę na niskim taktowaniu (simpleperf: `VkThread` 56 % rdzenia; skrypty kroku 120 Hz to tylko ~3,3 ms/klatkę), a GPU
+   ok. 14 ms, więc część klatek przekracza 16,7 ms. Kandydaci: ADPF (Android Performance Hint) we wtyczce Androida, `present()` raz na
+   klatkę zamiast 2× na krok fizyki, sprawdzenie na buildzie release (biblioteka release Godota, Java wtyczek kompilowana JIT/AOT).
+2. **Pamięć ponad budżet §8.** Najwięcej to pamięć GPU (bloki alokatora Vulkan rosną skokami 128/256 MB i nie maleją) i duże tekstury
+   2D bez kompresji GPU (WebP stratny dekodowany do RGBA: tła 1080×2340 = 10 MB, tacka/skóra 4 MB każda). Następny krok: ASTC dla dużych
+   zdjęć UI (4× mniej pamięci, kosztem rozmiaru paczki) — decyzja właściciela o rozmiarze paczki (D-64).
+3. **Pierwsze wejście w listę zleceń: 0,55 s** (raz na sesję: pierwsze rysowanie ~90 napisów, wczytanie 83 plików JSON); kolejne 0,13 s.
+4. **Scenka przyjazdu `wrong_floor`: 0,45 s** przy wejściu (bez zmian; flipbook potem 57–60 FPS). Scenka „dnia po”: wejście razem z listą
+   0,74 s, potem 60 FPS, PSS 424 MB (zmierzona tylko po poprawkach — zapis właściciela nie ma kolejki „dnia po”).

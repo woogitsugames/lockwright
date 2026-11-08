@@ -1,0 +1,21 @@
+menu_idle                    PSS= 417 MB  Graphics= 168 (GL 135, EGL 33)  Native= 128  Code=  79
+menu_to_jobs_transition      PSS= 591 MB  Graphics= 328 (GL 295, EGL 33)  Native= 142  Code=  80
+jobs_idle                    PSS= 593 MB  Graphics= 330 (GL 297, EGL 33)  Native= 142  Code=  80
+jobs_idle                    PSS= 593 MB  Graphics= 330 (GL 297, EGL 33)  Native= 142  Code=  80
+jobs_scroll                  PSS= 582 MB  Graphics= 330 (GL 297, EGL 33)  Native=  82  Code=  71
+x                            PSS= 564 MB  Graphics= 315 (GL 282, EGL 33)  Native=  65  Code=  69
+jobs_to_arrival_combo        PSS= 562 MB  Graphics= 313 (GL 280, EGL 33)  Native=  66  Code=  69
+x                            PSS= 564 MB  Graphics= 315 (GL 282, EGL 33)  Native=  67  Code=  69
+arrival_to_verify_combo      PSS= 558 MB  Graphics= 311 (GL 278, EGL 33)  Native=  57  Code=  68
+x                            PSS= 560 MB  Graphics= 313 (GL 280, EGL 33)  Native=  57  Code=  68
+verify_to_lock_combo         PSS= 857 MB  Graphics= 580 (GL 547, EGL 33)  Native=  89  Code=  64
+x                            PSS= 841 MB  Graphics= 564 (GL 531, EGL 33)  Native=  89  Code=  64
+lock_combo_idle              PSS= 842 MB  Graphics= 568 (GL 535, EGL 33)  Native=  87  Code=  64
+lock_combo_interact          PSS= 842 MB  Graphics= 568 (GL 535, EGL 33)  Native=  86  Code=  64
+lock_exit_to_list            PSS= 835 MB  Graphics= 564 (GL 531, EGL 33)  Native=  82  Code=  66
+menu_after_lock              PSS= 831 MB  Graphics= 560 (GL 527, EGL 33)  Native=  83  Code=  66
+menu_to_workshop             PSS=1096 MB  Graphics= 821 (GL 788, EGL 33)  Native=  91  Code=  62
+x                            PSS=1095 MB  Graphics= 820 (GL 787, EGL 33)  Native=  91  Code=  63
+workshop_idle                PSS=1093 MB  Graphics= 818 (GL 785, EGL 33)  Native=  91  Code=  63
+workshop_scroll              PSS=1095 MB  Graphics= 820 (GL 787, EGL 33)  Native=  91  Code=  62
+workshop_tab_furn            PSS=1092 MB  Graphics= 820 (GL 787, EGL 33)  Native=  88  Code=  62

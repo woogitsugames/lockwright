@@ -1,0 +1,11 @@
+03:52:58 Thermal Status: 0 | 36.3:AP 29.5:BAT 34.1:PA 33.2:SKIN | battery level: 79 temperature: 294 
+03:53:59 Thermal Status: 0 | 38.7:AP 29.6:BAT 35.7:PA 34.2:SKIN | battery level: 79 temperature: 296 
+03:54:59 Thermal Status: 0 | 38.9:AP 29.7:BAT 36.1:PA 34.5:SKIN | battery level: 79 temperature: 297 
+03:55:59 Thermal Status: 0 | 39.2:AP 29.8:BAT 36.4:PA 34.7:SKIN | battery level: 79 temperature: 298 
+03:56:59 Thermal Status: 0 | 39.3:AP 29.6:BAT 36.4:PA 34.8:SKIN | battery level: 78 temperature: 296 
+03:58:00 Thermal Status: 0 | 39.4:AP 29.7:BAT 36.6:PA 34.9:SKIN | battery level: 78 temperature: 297 
+03:59:00 Thermal Status: 0 | 39.5:AP 29.7:BAT 36.7:PA 35.0:SKIN | battery level: 78 temperature: 297 
+04:00:00 Thermal Status: 0 | 39.7:AP 29.8:BAT 36.9:PA 35.2:SKIN | battery level: 78 temperature: 298 
+04:01:00 Thermal Status: 0 | 39.7:AP 29.8:BAT 36.9:PA 35.2:SKIN | battery level: 78 temperature: 298 
+04:02:01 Thermal Status: 0 | 39.9:AP 29.8:BAT 37.1:PA 35.4:SKIN | battery level: 78 temperature: 298 
+04:03:01 Thermal Status: 0 | 40.0:AP 29.9:BAT 37.2:PA 35.4:SKIN | battery level: 78 temperature: 299 

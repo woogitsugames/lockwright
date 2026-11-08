@@ -1,0 +1,13 @@
+menu_idle                    frames=  308 fps= 60.6 p50=16 p95= 16 p99= 16 max=  17 >25=  0 >33=  0 >50=  0 1%low= 62.5
+menu_to_jobs                 frames=  298 fps= 53.0 p50=16 p95= 16 p99= 33 max= 550 >25=  5 >33=  2 >50=  2 1%low= 30.3
+x                            frames=   31 fps= 58.7 p50=16 p95= 16 p99= 33 max=  33 >25=  1 >33=  0 >50=  0 1%low= 30.3
+x                            frames=   25 fps= 56.0 p50=16 p95= 33 p99= 33 max=  33 >25=  2 >33=  0 >50=  0 1%low= 30.3
+list_to_arrival_combo        frames=  316 fps= 56.9 p50=16 p95= 16 p99= 33 max= 300 >25=  4 >33=  1 >50=  1 1%low= 30.3
+arrival_to_verify_combo      frames=  360 fps= 56.3 p50=16 p95= 16 p99= 33 max= 400 >25=  5 >33=  1 >50=  1 1%low= 30.3
+verify_to_lock_combo         frames=  329 fps= 43.5 p50=16 p95= 33 p99= 33 max= 350 >25=107 >33=  1 >50=  1 1%low= 30.3
+x                            frames=  254 fps= 46.9 p50=16 p95= 33 p99= 33 max=  50 >25= 71 >33=  1 >50=  0 1%low= 30.3
+lock_combo_idle              frames=  271 fps= 42.1 p50=16 p95= 33 p99= 33 max=  50 >25=114 >33=  2 >50=  0 1%low= 30.3
+lock_combo_interact          frames=  655 fps= 59.7 p50=16 p95= 16 p99= 33 max=  50 >25=  9 >33=  1 >50=  0 1%low= 30.3
+x                            frames=  181 fps= 54.9 p50=16 p95= 33 p99= 33 max=  86 >25= 15 >33=  1 >50=  1 1%low= 30.3
+lock_exit_combo              frames=  330 fps= 59.7 p50=16 p95= 16 p99= 33 max=  33 >25=  5 >33=  0 >50=  0 1%low= 30.3
+menu_to_jobs_after_combo     frames=  327 fps= 58.9 p50=16 p95= 16 p99= 16 max= 134 >25=  3 >33=  1 >50=  1 1%low= 62.5
