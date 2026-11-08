@@ -1,0 +1,315 @@
+[
+ {
+  "label": "menu",
+  "frames": 244,
+  "avg_fps": 59.6,
+  "sf_average_fps": 61.43,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 50,
+  "over25": 3,
+  "over33": 1,
+  "over50": 0,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 241,
+   "33": 2,
+   "50": 1
+  }
+ },
+ {
+  "label": "jobs",
+  "frames": 364,
+  "avg_fps": 54.5,
+  "sf_average_fps": 56.052,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 500,
+  "over25": 6,
+  "over33": 2,
+  "over50": 2,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 358,
+   "33": 4,
+   "134": 1,
+   "500": 1
+  }
+ },
+ {
+  "label": "x",
+  "frames": 549,
+  "avg_fps": 56.5,
+  "sf_average_fps": 58.181,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 16,
+  "max_ms": 350,
+  "over25": 4,
+  "over33": 2,
+  "over50": 2,
+  "low1_fps": 62.5,
+  "hist_nonzero": {
+   "16": 545,
+   "33": 2,
+   "300": 1,
+   "350": 1
+  }
+ },
+ {
+  "label": "open_lock_combo",
+  "frames": 368,
+  "avg_fps": 48.2,
+  "sf_average_fps": 49.423,
+  "p50_ms": 16,
+  "p95_ms": 33,
+  "p99_ms": 33,
+  "max_ms": 350,
+  "over25": 73,
+  "over33": 1,
+  "over50": 1,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 295,
+   "33": 72,
+   "350": 1
+  }
+ },
+ {
+  "label": "x",
+  "frames": 187,
+  "avg_fps": 59.6,
+  "sf_average_fps": 61.453,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 33,
+  "over25": 3,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 184,
+   "33": 3
+  }
+ },
+ {
+  "label": "idle_lock_combo",
+  "frames": 468,
+  "avg_fps": 49.7,
+  "sf_average_fps": 50.925,
+  "p50_ms": 16,
+  "p95_ms": 33,
+  "p99_ms": 33,
+  "max_ms": 33,
+  "over25": 100,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 366,
+   "17": 2,
+   "33": 100
+  }
+ },
+ {
+  "label": "touch_lock_combo",
+  "frames": 658,
+  "avg_fps": 59.7,
+  "sf_average_fps": 61.507,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 33,
+  "over25": 10,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 648,
+   "33": 10
+  }
+ },
+ {
+  "label": "x",
+  "frames": 1186,
+  "avg_fps": 58.4,
+  "sf_average_fps": 60.13,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 200,
+  "over25": 18,
+  "over33": 5,
+  "over50": 5,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 1165,
+   "17": 3,
+   "33": 13,
+   "66": 1,
+   "86": 1,
+   "118": 1,
+   "134": 1,
+   "200": 1
+  }
+ },
+ {
+  "label": "open_lock_wafer",
+  "frames": 370,
+  "avg_fps": 48.6,
+  "sf_average_fps": 49.825,
+  "p50_ms": 16,
+  "p95_ms": 33,
+  "p99_ms": 33,
+  "max_ms": 400,
+  "over25": 67,
+  "over33": 1,
+  "over50": 1,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 303,
+   "33": 66,
+   "400": 1
+  }
+ },
+ {
+  "label": "x",
+  "frames": 134,
+  "avg_fps": 56.3,
+  "sf_average_fps": 57.883,
+  "p50_ms": 16,
+  "p95_ms": 33,
+  "p99_ms": 33,
+  "max_ms": 33,
+  "over25": 10,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 123,
+   "17": 1,
+   "33": 10
+  }
+ },
+ {
+  "label": "idle_lock_wafer",
+  "frames": 456,
+  "avg_fps": 48.3,
+  "sf_average_fps": 49.474,
+  "p50_ms": 16,
+  "p95_ms": 33,
+  "p99_ms": 33,
+  "max_ms": 33,
+  "over25": 113,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 343,
+   "33": 113
+  }
+ },
+ {
+  "label": "touch_lock_wafer",
+  "frames": 650,
+  "avg_fps": 58.4,
+  "sf_average_fps": 60.152,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 150,
+  "over25": 17,
+  "over33": 1,
+  "over50": 1,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 633,
+   "33": 16,
+   "150": 1
+  }
+ },
+ {
+  "label": "x",
+  "frames": 360,
+  "avg_fps": 58.9,
+  "sf_average_fps": 60.698,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 33,
+  "over25": 10,
+  "over33": 0,
+  "over50": 0,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 349,
+   "17": 1,
+   "33": 10
+  }
+ },
+ {
+  "label": "workshop",
+  "frames": 414,
+  "avg_fps": 55.0,
+  "sf_average_fps": 56.511,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 600,
+  "over25": 6,
+  "over33": 2,
+  "over50": 2,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 408,
+   "33": 4,
+   "66": 1,
+   "600": 1
+  }
+ },
+ {
+  "label": "x",
+  "frames": 446,
+  "avg_fps": 53.9,
+  "sf_average_fps": 55.349,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 17,
+  "max_ms": 800,
+  "over25": 3,
+  "over33": 2,
+  "over50": 2,
+  "low1_fps": 58.8,
+  "hist_nonzero": {
+   "16": 440,
+   "17": 3,
+   "33": 1,
+   "134": 1,
+   "800": 1
+  }
+ },
+ {
+  "label": "workshop_fresh",
+  "frames": 399,
+  "avg_fps": 52.5,
+  "sf_average_fps": 53.89,
+  "p50_ms": 16,
+  "p95_ms": 16,
+  "p99_ms": 33,
+  "max_ms": 850,
+  "over25": 8,
+  "over33": 3,
+  "over50": 3,
+  "low1_fps": 30.3,
+  "hist_nonzero": {
+   "16": 390,
+   "17": 1,
+   "33": 5,
+   "66": 2,
+   "850": 1
+  }
+ }
+]

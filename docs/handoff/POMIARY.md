@@ -176,3 +176,41 @@ plansza menu wczytuje się w trakcie bootu.
 3. **Pierwsze wejście w listę zleceń: 0,55 s** (raz na sesję: pierwsze rysowanie ~90 napisów, wczytanie 83 plików JSON); kolejne 0,13 s.
 4. **Scenka przyjazdu `wrong_floor`: 0,45 s** przy wejściu (bez zmian; flipbook potem 57–60 FPS). Scenka „dnia po”: wejście razem z listą
    0,74 s, potem 60 FPS, PSS 424 MB (zmierzona tylko po poprawkach — zapis właściciela nie ma kolejki „dnia po”).
+
+## 10. Kompresja GPU, refresh widoku raz na klatkę i ADPF — 2026-11-08 (D-88)
+
+**Telefon:** SM-A165F jak w §9 · **Przed:** CI APK 2b7059d (debug) · **Po:** build lokalny z D-88: debug i release
+(`tools/local/build_apk.sh --release`: szablon release, ten sam klucz, nie-debuggable). Ten sam scenariusz z czystego startu
+(`perf_2026-11-08/pss_run.sh`: menu → lista → zamek combo i wafer: wejście, 9 s bez dotyku, 18 przeciągnięć → warsztat po zamkach
+i warsztat z czystego startu). Dane: `perf_2026-11-08/d88_*` i `basis/` (porównanie płyt WebP ↔ Basis).
+
+| Miara | Przed (debug) | Po (debug) | Po (release) | Próg §8 |
+|---|---|---|---|---|
+| PSS menu | 399 MB | 395 MB | **362 MB** | ≤ 300 ✘ |
+| PSS lista zleceń | 420 MB | 412 MB | 382 MB | — |
+| PSS zamek combo / wafer | 563–578 / 600–605 MB | 569 / 594 MB | **518–524 / 566–571 MB** | ≤ 350 ✘ |
+| Tekstury Godota w zamku combo (`tex_mb` / `vmem_mb`) | 83 / 129 MB | 50 / 96 MB | — | — |
+| PSS warsztat z czystego startu / po zamkach | 552 / 596 MB | 424 / 599 MB | **389** / 564 MB | ≤ 300 ✘ |
+| Zamek bez dotyku: FPS combo / wafer | 42,4 / 43,0 | 49,7 / 48,3 | **55,9 / 53,9** (bez ADPF: 54,8 / 52,5) | 1 % low ≥ 55 — prawie |
+| Zamek pod palcem: FPS | 59,5 / 58,6 | 59,7 / 58,4 | 60,1 / 58,8 | ✔ |
+| Paczka zasobów Android (pck) | 94,7 MB (CI) | 114,6 MB | 114,6 MB | ≤ 120 ostrz. ✔ |
+| APK | 171,9 MB | 192,7 MB | 185,8 MB | ostrz. 170 / błąd 200 — **ostrzeżenie** |
+| 10 min gry (release z ADPF): FPS 1. / 10. min, SKIN | — | — | 59,4 / 59,5, 34,1 → 35,9 °C, status 0 | bez dławienia ✔ |
+| Ciągły dotyk, klatki > 25 ms / min (3 min) | 34–55 (kontrola 2b7059d) | 53–77 (z ADPF) | 38–51 bez ADPF, 62–67 z ADPF | — |
+
+**Wnioski.**
+1. Kompresja GPU (Basis Universal → ASTC 4×4 na Androidzie i iOS) zmniejszyła tekstury zamka o 40 % (83 → 50 MB) i warsztat z czystego
+   startu o 128 MB PSS. W zamku „Graphics” w `meminfo` się nie zmienił (268 MB GL): sterownik/alokator Vulkan przydziela pamięć blokami
+   (ok. 128 MB na ekran zamka), więc mniejsze tekstury mieszczą się w tym samym bloku. Pełne ASTC 4×4 bez nadkompresji dałoby
+   +257 MB paczki (limit 150 MB), dlatego UASTC z RDO 2,0 (ok. 2,8 bpp na dysku, PSNR 43,5 dB vs 42,0 dB dla obecnego WebP 0,85).
+2. Budżet §8 (300/350 MB) jest **nieosiągalny samą kompresją**: w release zamek to Graphics 296 MB (ok. 130 MB stałe: swapchain,
+   sterownik, ekran główny), Native 131 MB, kod 69 MB. Kolejne kroki wymagają decyzji: niższy profil jakości dla telefonów 4 GB
+   (przekrój 0,5×, bez MSAA), mniejsze tekstury tacki/skóry, albo podniesienie progu w §8 do realnych ~520/550 MB dla tej klasy.
+3. Zamek bez dotyku: 42 → 53–56 FPS w buildzie release (gracze dostają release). Najwięcej daje szablon release i odświeżanie widoku
+   raz na klatkę. ADPF działa (`dumpsys performance_hint` pokazuje sesję), ale daje tylko ok. +1 FPS bez dotyku (resztę ogranicza GPU,
+   ~14 ms/klatkę, a ADPF steruje tylko CPU), a przy ciągłym dotyku zwiększał liczbę klatek 25–33 ms. **Dlatego ADPF jest w kodzie,
+   ale domyślnie wyłączony** (klucz ustawień `adpf_hint`). Liczba klatek > 25 ms przy ciągłym dotyku mocno się waha między przebiegami
+   (ten sam build 2b7059d: 8–10/min rano, 34–55/min teraz), więc porównania liczyć tylko w jednej serii.
+4. Build release lokalny pokazał surowy klucz `jobs.chapter_named` na liście zleceń: skompilowane `i18n/*.translation` w repo są
+   starsze niż `strings.csv` (ostatni commit 2026-11-06 14:21, klucz z 18:44). CI importuje od nowa, więc jego APK są poprawne;
+   lokalnie trzeba wymusić reimport CSV.

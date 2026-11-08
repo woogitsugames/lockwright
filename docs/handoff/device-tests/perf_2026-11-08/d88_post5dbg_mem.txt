@@ -1,0 +1,3 @@
+thermal_min1                 PSS= 562 MB  Graphics= 303 (GL 270, EGL 33)  Native= 138  Code=  80
+thermal_min2                 PSS= 559 MB  Graphics= 301 (GL 268, EGL 33)  Native= 138  Code=  79
+thermal_min3                 PSS= 559 MB  Graphics= 303 (GL 270, EGL 33)  Native= 115  Code=  78

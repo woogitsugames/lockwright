@@ -1,0 +1,3 @@
+thermal_min1                 frames= 3552 fps= 60.0 p50=16 p95= 16 p99= 16 max=  66 >25= 34 >33=  1 >50=  1 1%low= 62.5
+thermal_min2                 frames= 3601 fps= 59.6 p50=16 p95= 16 p99= 33 max=  66 >25= 55 >33=  1 >50=  1 1%low= 30.3
+thermal_min3                 frames= 3571 fps= 59.8 p50=16 p95= 16 p99= 33 max=  33 >25= 47 >33=  0 >50=  0 1%low= 30.3

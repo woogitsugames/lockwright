@@ -1,0 +1,16 @@
+menu                         PSS= 397 MB  Graphics= 165 (GL 131, EGL 33)  Native= 113  Code=  78
+jobs                         PSS= 419 MB  Graphics= 172 (GL 139, EGL 33)  Native= 127  Code=  78
+x                            PSS= 559 MB  Graphics= 301 (GL 268, EGL 33)  Native= 146  Code=  72
+open_lock_combo              PSS= 555 MB  Graphics= 301 (GL 268, EGL 33)  Native= 142  Code=  72
+x                            PSS= 559 MB  Graphics= 305 (GL 272, EGL 33)  Native= 142  Code=  72
+idle_lock_combo              PSS= 555 MB  Graphics= 301 (GL 268, EGL 33)  Native= 142  Code=  72
+touch_lock_combo             PSS= 555 MB  Graphics= 301 (GL 268, EGL 33)  Native= 142  Code=  72
+x                            PSS= 567 MB  Graphics= 301 (GL 268, EGL 33)  Native= 153  Code=  73
+open_lock_wafer              PSS= 598 MB  Graphics= 302 (GL 269, EGL 33)  Native= 179  Code=  77
+x                            PSS= 600 MB  Graphics= 304 (GL 271, EGL 33)  Native= 179  Code=  77
+idle_lock_wafer              PSS= 608 MB  Graphics= 312 (GL 279, EGL 33)  Native= 179  Code=  77
+touch_lock_wafer             PSS= 606 MB  Graphics= 308 (GL 275, EGL 33)  Native= 181  Code=  76
+x                            PSS= 581 MB  Graphics= 300 (GL 267, EGL 33)  Native= 164  Code=  76
+workshop                     PSS= 595 MB  Graphics= 302 (GL 269, EGL 33)  Native= 176  Code=  76
+x                            PSS= 399 MB  Graphics= 163 (GL 135, EGL 28)  Native= 115  Code=  78
+workshop_fresh               PSS= 425 MB  Graphics= 167 (GL 139, EGL 28)  Native= 138  Code=  78

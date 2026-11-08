@@ -1,0 +1,32 @@
+# rel5 thermal run start 09:08:34
+thermal_min1                 frames= 3583 fps= 59.4 p50=16 p95= 16 p99= 33 max=  66 >25= 67 >33=  1 >50=  1 1%low= 30.3
+thermal_min1                 PSS= 523 MB  Graphics= 298 (GL 270, EGL 28)  Native= 128  Code=  74
+min 1 09:09:36
+thermal_min2                 frames= 3563 fps= 59.4 p50=16 p95= 16 p99= 33 max=  66 >25= 70 >33=  1 >50=  1 1%low= 30.3
+thermal_min2                 PSS= 524 MB  Graphics= 298 (GL 270, EGL 28)  Native= 128  Code=  73
+min 2 09:10:37
+thermal_min3                 frames= 3571 fps= 59.6 p50=16 p95= 16 p99= 33 max=  33 >25= 61 >33=  0 >50=  0 1%low= 30.3
+thermal_min3                 PSS= 517 MB  Graphics= 293 (GL 265, EGL 28)  Native= 128  Code=  72
+min 3 09:11:37
+thermal_min4                 frames= 3534 fps= 59.4 p50=16 p95= 16 p99= 33 max=  33 >25= 70 >33=  0 >50=  0 1%low= 30.3
+thermal_min4                 PSS= 521 MB  Graphics= 296 (GL 268, EGL 28)  Native= 128  Code=  72
+min 4 09:12:37
+thermal_min5                 frames= 3511 fps= 59.5 p50=16 p95= 16 p99= 33 max=  33 >25= 63 >33=  0 >50=  0 1%low= 30.3
+thermal_min5                 PSS= 520 MB  Graphics= 295 (GL 267, EGL 28)  Native= 128  Code=  72
+min 5 09:13:37
+thermal_min6                 frames= 3544 fps= 59.5 p50=16 p95= 16 p99= 33 max=  33 >25= 66 >33=  0 >50=  0 1%low= 30.3
+thermal_min6                 PSS= 520 MB  Graphics= 295 (GL 267, EGL 28)  Native= 128  Code=  72
+min 6 09:14:37
+thermal_min7                 frames= 3567 fps= 59.5 p50=16 p95= 16 p99= 33 max=  33 >25= 66 >33=  0 >50=  0 1%low= 30.3
+thermal_min7                 PSS= 519 MB  Graphics= 295 (GL 266, EGL 28)  Native= 128  Code=  72
+min 7 09:15:38
+thermal_min8                 frames= 3509 fps= 59.1 p50=16 p95= 16 p99= 33 max=  33 >25= 88 >33=  0 >50=  0 1%low= 30.3
+thermal_min8                 PSS= 516 MB  Graphics= 292 (GL 264, EGL 28)  Native= 128  Code=  71
+min 8 09:16:38
+thermal_min9                 frames= 3560 fps= 59.6 p50=16 p95= 16 p99= 33 max=  33 >25= 58 >33=  0 >50=  0 1%low= 30.3
+thermal_min9                 PSS= 519 MB  Graphics= 296 (GL 268, EGL 28)  Native= 128  Code=  71
+min 9 09:17:39
+thermal_min10                frames= 3581 fps= 59.5 p50=16 p95= 16 p99= 33 max=  33 >25= 62 >33=  0 >50=  0 1%low= 30.3
+thermal_min10                PSS= 513 MB  Graphics= 292 (GL 264, EGL 28)  Native= 128  Code=  70
+min 10 09:18:39
+# end 09:18:39

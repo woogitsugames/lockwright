@@ -1,0 +1,11 @@
+# relnoadpf thermal run start 09:20:25
+thermal_min1                 frames= 3556 fps= 59.7 p50=16 p95= 16 p99= 33 max=  66 >25= 51 >33=  1 >50=  1 1%low= 30.3
+thermal_min1                 PSS= 507 MB  Graphics= 301 (GL 268, EGL 33)  Native=  49  Code=  51
+min 1 09:21:25
+thermal_min2                 frames= 3584 fps= 59.8 p50=16 p95= 16 p99= 33 max=  66 >25= 43 >33=  1 >50=  1 1%low= 30.3
+thermal_min2                 PSS= 513 MB  Graphics= 307 (GL 274, EGL 33)  Native=  50  Code=  51
+min 2 09:22:26
+thermal_min3                 frames= 3594 fps= 60.0 p50=16 p95= 16 p99= 33 max=  33 >25= 38 >33=  0 >50=  0 1%low= 30.3
+thermal_min3                 PSS= 508 MB  Graphics= 303 (GL 270, EGL 33)  Native=  50  Code=  50
+min 3 09:23:27
+# end 09:23:27

@@ -389,3 +389,18 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 - **Wczytywanie w tle:** ekran weryfikacji startuje wczytywanie sceny zamka, płyt i modelu (`LockPreload`, oddaje je w `lock_job._ready` albo na liście zleceń); boot wczytuje scenę menu i planszę; kliki zamka i mostek natywny ładują się w tle po starcie (`Sfx._process`, a klik zażądany wcześniej ładuje się od razu — nic nie ginie).
 - **Sonda:** autoload `PerfProbe` (tylko debug) — `LW_BOOT`, `LW_SCENE`, `LW_HITCH`, z plikiem `user://perf_probe` także `LW_FRAMES`; pomiar klatek z zewnątrz: `tools/local/sf_timestats.py`.
 - Nie ruszono: lockcore, CI, art/blender, wskazówek, układu ekranów zamków. Zostaje: zamek bez dotyku 41–44 FPS (taktowanie CPU) i PSS ponad budżet §8 — opis i kandydaci w POMIARY §9.
+
+## D-88: Kompresja GPU dużych tekstur (Basis Universal), widok zamka raz na klatkę, ADPF
+2026-11-08 · agent wydajności (zgoda właściciela na ASTC; pomiar `docs/handoff/POMIARY.md` §10) ·
+- **Basis Universal (UASTC, `compress/rdo_quality_loss=2.0`)** zamiast stratnego WebP dla dużych (≥ 512×512) tekstur, które ładuje
+  zamek (płyty `_1x`, warstwy `photo/` rodzin, tacka, skóra, klapka pauzy, narzędzia), planszy menu i podstawy warsztatu (39 plików).
+  Na Androidzie i iOS transkodowane przy wczytaniu do ASTC 4×4 (4× mniej pamięci niż RGBA), na desktopie do BC7. Czyste ASTC 4×4
+  (8 bpp na dysku) przekroczyłoby limit paczki (D-64), UASTC+RDO to ~2,8 bpp przy jakości lepszej niż WebP 0,85.
+  Płyty 2× (Fold/tablety), nakładki wyposażenia, scenki przyjazdu, tła weryfikacji i portrety zostają WebP — każda z tych grup
+  przekroczyłaby 120 MB paczki (pck 94,7 → 114,6 MB). Nowe duże tekstury tych ekranów: tryb 4 (test `test_perf_device.gd`).
+- **Widok zamka raz na klatkę:** w buildach eksportowanych `present()` idzie z `_process` z ostatnim ViewModelem i sumą `delta`
+  kroków; lockcore, haptyka, dźwięk i `on_event` dalej w każdym kroku 120 Hz. Edytor (GUT, desktop) zostaje przy odświeżaniu co krok.
+- **ADPF:** wtyczka `LockwrightHaptics` ma `perf_hint_start/report/stop` (`FrameHint.kt`, Android 12+); autoload `FrameHint` zgłasza
+  pracę każdej klatki wątku gry wobec celu 1/odświeżanie. **Domyślnie wyłączony** (klucz ustawień `adpf_hint`, bez UI): na SM-A165F
+  +1 FPS bez dotyku, a więcej klatek 25–33 ms przy ciągłym dotyku. Bez wtyczki (desktop, iOS, testy) nic nie robi.
+- **Narzędzie:** `tools/local/build_apk.sh --release` — APK z szablonem release, podpisany kluczem debug (instaluje się na zapis właściciela).
