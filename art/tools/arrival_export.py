@@ -44,6 +44,10 @@ JOBS = {
     'refuse_ex_partner': {'night': [(None, 'refuse_ex_partner_night_hold.png', [])]},
     'newlyweds_4am': {'night': [(None, 'newlyweds_4am_night_hold.png', [])]},
     'refuse_rush_bribe': {'night': [(None, 'refuse_rush_bribe_night_hold.png', [])]},
+    # D-94: places that are not a tenement landing (art/blender/arrival_place.py kits)
+    'night_nurse': {'night': [(None, 'night_nurse_night_hold.png', [])]},
+    'pizzeria_pays_pizza': {'evening': [(None, 'pizzeria_pays_pizza_evening_hold.png', [])]},
+    'bike_interview': {'day': [(None, 'bike_interview_day_hold.png', [])]},
 }
 CONTACT_COLS, CONTACT_W = 6, 1080   # arrival_composite.contact() defaults
 IMPORT_TEMPLATE = """[remap]

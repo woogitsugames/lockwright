@@ -1,0 +1,68 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "night_nurse",
+ "time": "night",
+ "kit": "corridor",
+ "fps": 12,
+ "frames": 36,
+ "note": "plate-only hold (no client cut-out): anchors are quads [tl,tr,br,bl] normalised 0..1, origin top-left (D-41).",
+ "anchors": {
+  "door": [
+   [
+    0.41315,
+    0.42723
+   ],
+   [
+    0.69618,
+    0.42528
+   ],
+   [
+    0.69618,
+    0.797
+   ],
+   [
+    0.41315,
+    0.7913
+   ]
+  ],
+  "cylinder": [
+   [
+    0.6579,
+    0.63793
+   ],
+   [
+    0.67714,
+    0.6381
+   ],
+   [
+    0.67714,
+    0.64884
+   ],
+   [
+    0.6579,
+    0.64866
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   160.0,
+   -1150.0,
+   1550.0
+  ],
+  "lens_mm": 24.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   0.019999999552965164
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   5.0
+  ]
+ }
+}

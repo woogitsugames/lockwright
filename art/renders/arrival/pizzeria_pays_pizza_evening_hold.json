@@ -1,0 +1,68 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "pizzeria_pays_pizza",
+ "time": "evening",
+ "kit": "shop",
+ "fps": 12,
+ "frames": 36,
+ "note": "plate-only hold (no client cut-out): anchors are quads [tl,tr,br,bl] normalised 0..1, origin top-left (D-41).",
+ "anchors": {
+  "door": [
+   [
+    0.4544,
+    0.41349
+   ],
+   [
+    0.71332,
+    0.41216
+   ],
+   [
+    0.71332,
+    0.74724
+   ],
+   [
+    0.4544,
+    0.74351
+   ]
+  ],
+  "lock": [
+   [
+    0.67994,
+    0.56991
+   ],
+   [
+    0.69744,
+    0.56998
+   ],
+   [
+    0.69744,
+    0.60416
+   ],
+   [
+    0.67994,
+    0.60405
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   -0.0,
+   -1100.0,
+   1520.0
+  ],
+  "lens_mm": 24.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   0.0
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   4.0
+  ]
+ }
+}

@@ -1,4 +1,4 @@
-# Lockwright — D-58 arrival scenes for jobs that do not happen on a tenement landing (D-88): small environment kits
+# Lockwright — D-58 arrival scenes for jobs that do not happen on a tenement landing (D-94): small environment kits
 # in the same material library and lighting approach as the stairwell kit (art/blender/stairwell.py,
 # arrival_scene.py), dressed by the job's entry in art/blender/arrival_jobs.json (`"kit": "street" | "shop" |
 # "corridor"`). Outputs use the arrival_scene.py names, so art/tools/arrival_export.py --job works unchanged:
@@ -113,7 +113,7 @@ def kit_street():
     S = J.get('street', {})
     FY = 2000                                    # facade plane (wall face)
     conc = [ph('slab%d' % i, 'workshop_concrete', scale=1400 + 90 * i, rot=17 * i, metallic=0.0, base=(0.40 - 0.025 * i, 0.385 - 0.025 * i, 0.36 - 0.025 * i),
-               base_mix=0.42, tint=(1.0, 0.97, 0.92), rough_add=0.12, bump=0.9, grime=1.0, wear=0.35) for i in range(4)]
+               base_mix=0.58, tint=(1.0, 0.97, 0.92), rough_add=0.12, bump=0.9, grime=1.0, wear=0.35) for i in range(4)]
     bed = dark_mat('joint_bed', (0.035, 0.038, 0.022), 0.95)   # soil and moss in the joints
     bx('bed', -6000, 6000, -12000, FY, -80, -62, bed)
     # pavement: 500 mm slabs, a few settled and cracked
@@ -185,11 +185,18 @@ def kit_street():
     bc = round(ENT / BAY) * BAY   # the ground-floor bay the entrance sits in: wall either side of the recess
     for (a, b_) in ((bc - BAY / 2 + 15, ex0), (ex1, bc + BAY / 2 - 15)):
         if b_ - a > 20: bx('ent_wall', a, b_, FY - 20, FY + 300, 750, 750 + STOREY - 15, panel, bev=6)
+    # the stair's glass-block strip left of the entrance (pressed glass blocks in mortar, 1970s)
+    gb = tiles('glass_blocks', (0.42, 0.47, 0.45), grout=(0.50, 0.49, 0.46), w=190, h=190, offset=0.0, rough=0.05, mortar=12, var=0.12, bump=0.8)
+    gb.node_tree.nodes['Principled BSDF'].inputs['Transmission Weight'].default_value = 0.0
+    gb.node_tree.nodes['Principled BSDF'].inputs['Coat Weight'].default_value = 0.6
+    gx0 = bc - BAY / 2 + S.get('glass_block_x', 900)
+    bx('glass_block_strip', gx0, gx0 + 3 * 190 + 12, FY - 26, FY - 18, 1100, 1100 + 11 * 190 + 12, gb, bev=3)
+    bx('gb_frame', gx0 - 40, gx0 + 3 * 190 + 52, FY - 22, FY - 19, 1060, 1100 + 11 * 190 + 52, plinth, bev=4)
     bx('joint_v', bc - BAY / 2 - 15, bc - BAY / 2 + 15, FY - 8, FY + 300, 750, 750 + STOREY, seal)
     bx('joint_v', bc + BAY / 2 - 15, bc + BAY / 2 + 15, FY - 8, FY + 300, 750, 750 + STOREY, seal)
     bx('ent_over', ex0, ex1, FY - 20, FY + 300, 3150, 750 + STOREY - 15, panel, bev=6)
-    tiles = ph('vest_tiles', 'terrazzo_grey_red', scale=700, metallic=0.0, rough_add=0.05, grime=0.8)
-    bx('vest_floor', ex0, ex1, FY - 20, FY + 1400, 0, 170, tiles, bev=5)
+    vtiles = ph('vest_tiles', 'terrazzo_grey_red', scale=700, metallic=0.0, rough_add=0.05, grime=0.8)
+    bx('vest_floor', ex0, ex1, FY - 20, FY + 1400, 0, 170, vtiles, bev=5)
     bx('step', ex0 - 200, ex1 + 200, FY - 420, FY - 20, -40, 170, kerb, bev=8)
     vest = lime_wall('vest_wall', (0.62, 0.60, 0.55), seed=8, dirt=0.7, cracks=0.4)
     bx('vest_l', ex0, ex0 + 120, FY - 20, FY + 1400, 0, 3150, vest)
@@ -416,44 +423,56 @@ def kit_shop():
     cyl_y('keyhole_top', 8, LY - 7, LY - 5.9, HX, HZ - 82, dark, verts=20)
     tube('handle', [(HX, LY - 6, HZ), (HX, LY - 60, HZ), (HX - 120, LY - 62, HZ - 4)], 10, brass_m, res=4)
     # flour: a dusty hand print by the handle, a drift on the floor in front of the threshold
-    stain_decal('flour_hand', 'Y', LY - 7.5, (HX - 260, HX - 20, HZ - 200, HZ + 200), [(HX - 150, HZ + 40, 50, 70, 0.8), (HX - 120, HZ - 60, 90, 60, 0.4)],
+    stain_decal('flour_hand', 'Y', LY - 7.5, (HX - 260, HX - 20, HZ - 200, HZ + 200), [(HX - 150, HZ + 40, 50, 70, 0.45), (HX - 120, HZ - 60, 90, 60, 0.25)],
                 color=(0.82, 0.80, 0.74), rough=0.95, noise_scale=0.05)
     stain_decal('flour_floor', 'Z', 0.4, (DX0 - 300, DX1 + 400, FY - 900, FY - 10), [(80, FY - 300, 420, 260, 0.55), (360, FY - 120, 200, 120, 0.5)],
                 color=(0.80, 0.78, 0.72), rough=0.95, noise_scale=0.03)
     # counter on the left: tiled front, terrazzo top, the brick oven in the corner behind it
-    CX1 = -1250
+    CX1 = S.get('counter_end', -1250)
     ctl = tiles('counter_tiles', (0.12, 0.26, 0.20), grout=(0.5, 0.48, 0.44), w=100, h=100, offset=0.0, rough=0.08, axis='X')
     bx('counter_front', -3200, CX1, -2600, -1950, 0, 1000, ctl)
-    bx('counter_end', CX1 - 30, CX1, -2600, 800, 0, 1000, ctl)
+    bx('counter_end', CX1 - 30, CX1, -2600, S.get('counter_y1', 850), 0, 1000, ctl)
     marble = ph('counter_top', 'terrazzo_grey_red', scale=900, metallic=0.0, rough_add=-0.05, coat=0.4, bump=0.1, grime=0.3)
-    bx('counter_top', -3200, CX1 + 40, -2650, 850, 1000, 1040, marble, bev=6)
+    bx('counter_top', -3200, CX1 + 40, -2650, S.get('counter_y1', 850) + 50, 1000, 1040, marble, bev=6)
     brick = brick_wall('oven_brick', brick=(0.40, 0.17, 0.09), wash=(0.62, 0.58, 0.52), wash_amt=0.15, seed=9, axis='Y')
-    oc = Vector((-2550, 2050, 1040))
-    bx('oven_base', -3200, -1700, 1300, FY, 0, 1040, brick, bev=6)
+    oc = Vector(S.get('oven', (-2550, 2050, 1040)))
+    bx('oven_base', oc.x - S.get('oven_r', 720) - 30, oc.x + S.get('oven_r', 720) + 30, oc.y - S.get('oven_r', 720) - 30, FY, 0, 1040, brick, bev=6)
     bpy.ops.mesh.primitive_uv_sphere_add(radius=1, segments=64, ring_count=32, location=oc)
-    dome = bpy.context.object; dome.name = 'oven_dome'; dome.scale = (720, 720, 620); setmat(dome, brick)
+    OR = S.get('oven_r', 720)
+    dome = bpy.context.object; dome.name = 'oven_dome'; dome.scale = (OR, OR, OR * 0.86)
+    setmat(dome, lime_wall('oven_plaster', (0.34, 0.29, 0.24), seed=13, dirt=1.0, cracks=0.9))
     bpy.ops.object.transform_apply(scale=True)
     cut(dome, bx('below', -5000, 5000, -5000, 5000, -5000, oc.z))
-    cut(dome, bx('mouth_cut', oc.x - 260, oc.x + 260, oc.y - 900, oc.y - 300, oc.z, oc.z + 330))
+    cut(dome, bx('mouth_cut', oc.x - 240, oc.x + 240, oc.y - OR - 200, oc.y - OR + 300, oc.z, oc.z + 250))
+    cut(dome, bx('mouth_cut_top', oc.x - 160, oc.x + 160, oc.y - OR - 200, oc.y - OR + 300, oc.z, oc.z + 320))
+    arch_pts = [(oc.x - 300, 0, oc.z)] + [(oc.x + 300 * math.cos(math.radians(180 - 180 * k / 12)), 0, oc.z + 120 + 230 * math.sin(math.radians(180 * k / 12))) for k in range(13)] + [(oc.x + 300, 0, oc.z)]
+    for k in range(len(arch_pts) - 1):
+        a_, b2 = Vector(arch_pts[k]), Vector(arch_pts[k + 1])
+        br_ = bx('arch_brick', -60, 60, -110, 0, -35, 35, brick, bev=4)
+        mid = (a_ + b2) / 2; ang = math.atan2(b2.z - a_.z, b2.x - a_.x)
+        br_.matrix_world = Matrix.Translation((mid.x, oc.y - OR + 70, mid.z)) @ Matrix.Rotation(-ang, 4, 'Y')
     bpy.ops.mesh.primitive_uv_sphere_add(radius=1, segments=48, ring_count=24, location=oc)
-    inner = bpy.context.object; inner.name = 'oven_inner'; inner.scale = (640, 640, 540); setmat(inner, dark_mat('soot', (0.015, 0.012, 0.01), 0.9))
+    inner = bpy.context.object; inner.name = 'oven_inner'; inner.scale = (OR - 80, OR - 80, OR * 0.86 - 80); setmat(inner, dark_mat('soot', (0.015, 0.012, 0.01), 0.9))
     bpy.ops.object.transform_apply(scale=True)
     cut(inner, bx('below2', -5000, 5000, -5000, 5000, -5000, oc.z))
+    cut(inner, bx('mouth_cut2', oc.x - 240, oc.x + 240, oc.y - OR - 200, oc.y - OR + 400, oc.z, oc.z + 250))
+    cut(inner, bx('mouth_cut2t', oc.x - 160, oc.x + 160, oc.y - OR - 200, oc.y - OR + 400, oc.z, oc.z + 320))
+    bx('oven_floor', oc.x - OR + 90, oc.x + OR - 90, oc.y - OR + 90, oc.y + OR - 90, oc.z - 10, oc.z, dark_mat('hearth', (0.05, 0.035, 0.025), 0.9))
     ember = emissive('embers', (1.0, 0.32, 0.06), S.get('embers', 6.0) if TIME != 'day' else 0.0, (0.03, 0.02, 0.015))
     items = []
     for i in range(160):
-        a = R.uniform(0, 6.3); rr = R.uniform(0, 380); s = R.uniform(12, 35)
-        M = Matrix.Translation((oc.x + 120 + rr * math.cos(a) * 0.6, oc.y + 120 + rr * math.sin(a) * 0.6, oc.z + 6)) @ Matrix.Diagonal((s, s * 0.8, s * 0.6, 1))
+        a = R.uniform(0, 6.3); rr = R.uniform(0, OR * 0.5); s = R.uniform(12, 35)
+        M = Matrix.Translation((oc.x + rr * math.cos(a) * 0.7, oc.y - OR * 0.25 + rr * math.sin(a) * 0.6, oc.z + 6)) @ Matrix.Diagonal((s, s * 0.8, s * 0.6, 1))
         items.append((lambda bm: bmesh.ops.create_icosphere(bm, subdivisions=1, radius=1.0), M, 0 if R.random() < 0.35 else 1))
     scatter('ember_bed', items, [ember, dark_mat('ash', (0.06, 0.055, 0.05), 0.9)])
     if TIME != 'day':
-        point_lamp('ember_light', (oc.x + 100, oc.y + 100, oc.z + 80), S.get('ember_w', 1.2e7), (1.0, 0.36, 0.08), size=150)
+        point_lamp('ember_light', (oc.x, oc.y - OR * 0.2, oc.z + 90), S.get('ember_w', 3.5e7), (1.0, 0.36, 0.08), size=180)
     plate_m = plastic('plates', (0.80, 0.79, 0.75), rough=0.12, grime=0.2, sheen_scuffs=0.1)
     for i in range(9):
-        cyl('plate', 130, 14, (-1550 + R.uniform(-3, 3), 520 + R.uniform(-3, 3), 1047 + i * 15), verts=48).data.materials.append(plate_m)
+        cyl('plate', 130, 14, (CX1 - 250 + R.uniform(-3, 3), 420 + R.uniform(-3, 3), 1047 + i * 15), verts=48).data.materials.append(plate_m)
     tray = oak('dough_tray', light=(0.55, 0.42, 0.26), dark=(0.36, 0.25, 0.13), axis='X', seed=51, ring=1.5, coat=0.0, rough=0.7, wear=0.4)
     for i in range(3):
-        bx('dough_tray', -2300, -1650, -400 - i * 4, 300 - i * 4, 1040 + i * 95, 1130 + i * 95, tray, bev=6)
+        bx('dough_tray', CX1 - 1100, CX1 - 450, -700 - i * 4, 0 - i * 4, 1040 + i * 95, 1130 + i * 95, tray, bev=6)
     # stacked plain pizza boxes and flour sacks on a steel shelf to the right of the door
     shelf_m = metal('shelf_steel', (0.64, 0.64, 0.62), 0.3, marks='grind', marks_axis=(1, 0, 0), wear=0.3, grime=0.6, smudge=0.7)
     SX0, SX1 = 800, 1900
@@ -544,15 +563,16 @@ def kit_corridor():
     pvc = plastic('pvc_grey', (0.18, 0.19, 0.20), rough=0.3, grime=0.3)
     for (y0_, y1_, z0_, z1_) in ((WIN[1], WIN[0], 900, 960), (WIN[1], WIN[0], 2290, 2350), (WIN[1], WIN[1] + 60, 900, 2350), (WIN[0] - 60, WIN[0], 900, 2350)):
         bx('wframe', X0 - 120, X0 - 60, y0_, y1_, z0_, z1_, pvc, bev=3)
-    bx('wglass', X0 - 95, X0 - 90, WIN[1] + 60, WIN[0] - 60, 960, 2290, glass('dawn_glass', (0.7, 0.72, 0.74), rough=0.02))
+    wg = bx('wglass', X0 - 95, X0 - 90, WIN[1] + 60, WIN[0] - 60, 960, 2290, glass('dawn_glass', (0.7, 0.72, 0.74), rough=0.02))
+    wg.visible_shadow = False   # no caustics: let the dawn through the pane
     bx('wsill', X0 - 10, X0 + 160, WIN[1] - 40, WIN[0] + 40, 860, 900, ph('sill_stone', 'terrazzo_grey_red', scale=500, metallic=0.0, grime=0.3), bev=4)
     dawn = {'night': ((0.35, 0.48, 0.80), 2.5), 'evening': ((0.30, 0.40, 0.75), 2.0), 'day': ((0.80, 0.86, 0.96), 8.0)}[TIME]
-    bx('dawn_sky', X0 - 9000, X0 - 8990, -20000, 10000, -5000, 15000, emissive('dawn', dawn[0], dawn[1], (0, 0, 0)))
-    bx('far_block', X0 - 6000, X0 - 5700, -8000, 9000, -3000, 14000, ph('far_panel', 'wall_lime_plaster', scale=2000, metallic=0.0, base=(0.35, 0.36, 0.38), base_mix=0.7))
+    bx('dawn_sky', X0 - 30000, X0 - 29990, -40000, 60000, -5000, 40000, emissive('dawn', dawn[0], dawn[1], (0, 0, 0)))
+    bx('far_block', X0 - 14000, X0 - 13700, -6000, 30000, -3000, 4200, ph('far_panel', 'wall_lime_plaster', scale=2000, metallic=0.0, base=(0.35, 0.36, 0.38), base_mix=0.7))
     lit = emissive('far_lit', (1.0, 0.72, 0.42), 1.2, (0.05, 0.05, 0.05))
-    for y in range(-7000, 9000, 1800):
-        for z in range(-2000, 13000, 2800):
-            bx('far_win', X0 - 5710, X0 - 5699, y, y + 1200, z, z + 1300, lit if R.random() < 0.3 else dark)
+    for y in range(-6000, 30000, 2200):
+        for z in range(-2000, 4200, 2800):
+            if z + 1300 < 4200: bx('far_win', X0 - 13710, X0 - 13699, y, y + 1200, z, z + 1300, lit if R.random() < 0.35 else dark)
     # flat 14: steel frame, flat anthracite leaf, lever on a rose, magnetic-key cylinder, viewer, brushed steel numbers
     frame_m = paint('door_frame', (0.06, 0.065, 0.07), rough=0.38, metal_col=(0.5, 0.5, 0.5), chip=0.15, grime=0.3)
     leaf_m = ph('door_leaf', 'steel_cast_grey_paint', scale=600, metallic=0.0, base=tuple(S.get('door', (0.075, 0.08, 0.085))), base_mix=0.72,
@@ -580,15 +600,16 @@ def kit_corridor():
     cyl_y('magring', 21, LY - 9.2, LY - 8.6, HX, HZ - 180, black_plastic, verts=40)
     cyl_y('viewer', 11, LY - 8, LY, 0, 1520, brushed, verts=32)
     font = 'Lato-Regular.ttf'
-    for ch, x in (('1', -40), ('4', 40)):
+    num = str(J.get('number', '5'))
+    for k, ch in enumerate(num):
         t = text_obj('num' + ch, ch, 120, font=font, extrude=2.0, mat=brushed)
-        t.rotation_euler = (math.radians(90), 0, 0); t.location = (x, LY - 4, 1760)
+        t.rotation_euler = (math.radians(90), 0, 0); t.location = ((k - (len(num) - 1) / 2) * 80, LY - 4, 1760)
     bell = plastic('bell_white', (0.78, 0.78, 0.76), rough=0.3, grime=0.3)
     bx('bell', DX1 + 110, DX1 + 180, FY - 24, FY, 1180, 1250, bell, bev=4)
     cyl_y('bell_btn', 18, FY - 30, FY - 24, DX1 + 145, 1215, plastic('bell_btn', (0.12, 0.12, 0.13), rough=0.3), verts=24)
     bx('doormat', -380, 380, FY - 560, FY - 60, 0, 9, rubber('mat_grey', (0.07, 0.07, 0.072), 0.8), bev=3)
     # a lived-in new block: scuffs low on the walls, shoe marks on the porcelain, a flush service cabinet, a smoke detector
-    stain_decal('shoe_marks', 'Z', 0.3, (-700, 700, FY - 1400, FY - 560), [(0, FY - 700, 380, 260, 0.35), (-150, FY - 1100, 200, 200, 0.2)],
+    stain_decal('shoe_marks', 'Z', 0.3, (-700, 700, FY - 1400, FY - 560), [(0, FY - 700, 380, 260, 0.14), (-150, FY - 1100, 200, 200, 0.08)],
                 color=(0.12, 0.11, 0.10), rough=0.6, noise_scale=0.02)
     stain_decal('end_scuff', 'Y', LY - 0.5, (DX0, DX1, 0, 400), [(0, 120, 300, 120, 0.4)], color=(0.03, 0.03, 0.03), rough=0.5, noise_scale=0.05)
     cab = paint('cabinet', (0.78, 0.78, 0.76), rough=0.4, chip=0.1, grime=0.4)
@@ -597,6 +618,20 @@ def kit_corridor():
         bx('cab_gap', X1 - 5, X1 - 4, -3700, -3100, z - 1, z + 1, dark)
     cyl('cab_lock', 12, 6, (X1 - 6, -3150, 1100), axis='X', verts=24).data.materials.append(brushed)
     bpy.ops.mesh.primitive_cylinder_add(radius=55, depth=40, location=(250, 900, CEIL - 20)); sd = bpy.context.object; sd.name = 'smoke'; setmat(sd, bell); _bev(sd, 10, 3)
+    if NDOORS:
+        yc = NDOORS[0]
+        bx('n_mat', X1 - 560, X1 - 40, yc - 330, yc + 330, 0, 9, rubber('n_mat', (0.09, 0.07, 0.05), 0.85), bev=3)
+        shoe = plastic('shoe', (0.05, 0.045, 0.04), rough=0.45, grime=0.4)
+        sole = rubber('sole', (0.10, 0.09, 0.085), 0.7)
+        for k, (sx, sy, a) in enumerate(((X1 - 330, yc - 150, 4), (X1 - 330, yc - 40, -3))):
+            M = Matrix.Translation((sx, sy, 9)) @ Matrix.Rotation(math.radians(a), 4, 'Z')
+            parts = [bx('sole', -130, 130, -44, 44, 0, 16, sole, bev=6), bx('upper', -122, 60, -40, 40, 14, 95, shoe, bev=30), bx('toe', 40, 124, -38, 38, 14, 55, shoe, bev=22)]
+            for o in parts: o.matrix_world = M @ o.matrix_world
+        umb = plastic('umbrella', (0.08, 0.10, 0.16), rough=0.6, grime=0.2)
+        u = lathe_open('umbrella', [(4, 0), (30, 120), (42, 420), (34, 700), (12, 820)], x=0, y=0, seg=12, thick=0, mat=umb)
+        tube('umb_shaft', [(0, 0, -40), (0, 0, 900)], 6, metal('umb_steel', (0.5, 0.5, 0.5), 0.3, marks=None), smooth_pts=False).parent = u
+        tube('umb_handle', [(0, 0, 900), (0, 0, 1000), (0, 30, 1040), (0, 60, 1000)], 11, black_plastic).parent = u
+        u.matrix_world = Matrix.Translation((X1 - 60, yc + 540, 40)) @ Matrix.Rotation(math.radians(-8), 4, 'Y')
     # LED downlights (motion sensor: on at this hour) and the dawn through the window
     led = emissive('led_disc', (1.0, 0.94, 0.86), 60.0)
     trim = plastic('led_trim', (0.85, 0.85, 0.84), rough=0.3, grime=0.1)
@@ -604,8 +639,8 @@ def kit_corridor():
         cyl('led_trim', 85, 8, (0, y, CEIL - 4), verts=48).data.materials.append(trim)
         cyl('led', 70, 4, (0, y, CEIL - 8), verts=48).data.materials.append(led)
         bpy.ops.object.light_add(type='SPOT', location=(0, y, CEIL - 60)); L = bpy.context.object; L.name = 'led%d' % y
-        L.data.energy = S.get('led_w', 1.6e7); L.data.color = (1.0, 0.92, 0.82); L.data.shadow_soft_size = 60
-        L.data.spot_size = math.radians(150); L.data.spot_blend = 0.8
+        L.data.energy = S.get('led_w', 1.6e7) * (S.get('led_near', 1.6) if y > 1500 else S.get('led_far', 0.45)); L.data.color = (1.0, 0.92, 0.82); L.data.shadow_soft_size = 60
+        L.data.spot_size = math.radians(S.get('spot_deg', 110)); L.data.spot_blend = 0.35
     world_hdri(0.004, 'interior.exr', sat=0.3)
     a = aim('aim_win', (700, (WIN[0] + WIN[1]) / 2 - 300, 0))
     wl = area_light('window_dawn', (X0 - 1200, (WIN[0] + WIN[1]) / 2, 2000), a, 1300, S.get('dawn_w', 6.0e7), dawn[0], size_y=1300)
@@ -666,10 +701,7 @@ def base_render(res, spp, out, expo, vig, look):
     setup_device()
     scene.cycles.adaptive_threshold = 0.02 if spp < 64 else 0.01
     photo_finish(vig)
-    FIXED = 'mask_width' in open(os.path.join(HERE, 'env_common.py'), encoding='utf-8').read()
-    for n_ in scene.node_tree.nodes:   # as arrival_scene.py (D-84) until env_common.photo_finish sets the real mask size
-        if n_.type == 'ELLIPSEMASK' and not FIXED:
-            n_.mask_width, n_.mask_height = 0.0, 0.0
+    # env_common.photo_finish is fixed on main (D-89): no bright centre ellipse any more
 
 
 KITS = {'street': kit_street, 'shop': kit_shop, 'corridor': kit_corridor}
