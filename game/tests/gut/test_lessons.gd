@@ -501,7 +501,7 @@ func test_magnetic_lesson() -> void:
 
 
 ## An idle player in the lesson: H1 15 s, H2 30 s (the chalk plays the family's gesture), H3 45 s
-## (chalk), H4 60 s (the master hand does the step: the lesson moves on), in both modes.
+## (chalk), H4 60 s (the master hand shows the step; N-98: the lesson waits for the player), in both modes.
 func test_hints_fire_in_every_lesson() -> void:
 	for fam in FAMILIES:
 		if not _native(fam):
@@ -529,4 +529,7 @@ func test_hints_fire_in_every_lesson() -> void:
 			assert_false(hints.h4_steps.is_empty(), tag + ": the master hand played")
 			for i in int(6.0 * HZ):
 				_step(scene)
-			assert_gte(coach.lesson_idx, 1, tag + ": the master hand did step 1 (%s)" % [coach.lesson_history])
+			# N-98: the hint ladder escalates hints, not steps: after the master hand's demonstration the
+			# lesson still waits for the player's own step 1
+			assert_eq(coach.lesson_step_id(), &"hold", tag + ": the lesson waits for the player after H4 (%s)" % [coach.lesson_history])
+			assert_lt(hints.held_tension, 0.0, tag + ": the lock is the player's again after the demonstration")

@@ -219,11 +219,12 @@ func _check_hint_inside(scene: Node, tag: String) -> void:
 	var chalk: ChalkLayer = scene.view._chalk
 	if h.is_playing() and h.visible:
 		assert_eq(chalk.hint_marks(), [], "%s: N-90 the static chalk thumb steps aside while the gesture ring plays" % tag)
-	var lr: Rect2 = scene.view.loupe_rect()
 	for m: Dictionary in chalk.hint_marks():
 		assert_true(safe.encloses(m["rect"]), "%s: chalk thumb %s %s inside the safe area %s" % [tag, m["kind"], m["rect"], safe])
-		if lr.size.x > 0.0:
-			assert_false((m["rect"] as Rect2).intersects(lr), "%s: N-90 chalk thumb %s %s off the loupe %s" % [tag, m["kind"], m["rect"], lr])
+		# N-90 / N-96: no drawn part (thumb, arrows) on the tension dial / wrench arm, a pick in the roll, the section
+		for part: Rect2 in ChalkLayer.hint_parts(m["anchor"], String(m["kind"]), float(m.get("scale", 1.0))):
+			for av: Rect2 in scene.view.hint_avoid_rects():
+				assert_false(part.intersects(av), "%s: N-96 chalk thumb %s part %s clear of %s" % [tag, m["kind"], part, av])
 
 
 func _check_ladder(scene: Node, tag: String) -> void:

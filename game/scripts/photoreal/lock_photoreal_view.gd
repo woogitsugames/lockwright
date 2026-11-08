@@ -881,6 +881,43 @@ func loupe_rect() -> Rect2:
 	return _loupe_rect
 
 
+## Picks standing in the roll (art/blender/tray.py, 1080x960 image px: shaft and head of each pick above
+## the pocket lip), one rect per pick still in the roll, view coordinates.
+const TRAY_PICKS_PX := [Rect2(78, 262, 74, 296), Rect2(372, 240, 62, 318), Rect2(656, 240, 62, 318)]
+
+
+func pick_rects() -> Array[Rect2]:
+	var out: Array[Rect2] = []
+	if tray_rect.size.x <= 0.0:
+		return out
+	var m := _tray_map()
+	var sc: float = m[0]
+	var origin: Vector2 = m[1]
+	var off: Vector2 = m[4]
+	for i in mini(lives, TRAY_PICKS_PX.size()):
+		var r: Rect2 = TRAY_PICKS_PX[i]
+		var a := tray_rect.position + off + (r.position - origin) * sc
+		var rr := Rect2(a, r.size * sc).intersection(tray_rect)
+		if rr.size.x > 0.0:
+			out.append(rr)
+	return out
+
+
+## N-96: interactive parts the static chalk thumb hints keep clear of: the tension dial with its wrench
+## arm (the plug face control), the picks in the roll, the loupe and the lock section. View coordinates.
+func hint_avoid_rects() -> Array[Rect2]:
+	var out: Array[Rect2] = []
+	if _face != null and _face.visible and _face.size.x > 0.0:
+		out.append(Rect2(_face.position, _face.size).grow(4.0))
+	for r in pick_rects():
+		out.append(r.grow(4.0))
+	if _loupe_rect.size.x > 0.0:
+		out.append(_loupe_rect.grow(4.0))
+	if section_rect.size.x > 0.0:
+		out.append(section_rect)
+	return out
+
+
 func _on_loupe_input(ev: InputEvent) -> void:
 	# N-77: a phone tap arrives as a touch AND as the mouse click Godot emulates from it; reacting to
 	# both opened and closed the eyepiece in the same frame. One tap = one toggle.

@@ -371,7 +371,13 @@ func _physics_process(delta: float) -> void:
 func _update_guidance(vm: Dictionary, input: Dictionary, events: Array, delta: float) -> void:
 	if coach != null:
 		coach.auto_tension = sampler.auto_tension
-		coach.update(vm, input, events, sampler.left_down(), sampler.right_down(), delta)
+		var c_input := input
+		var c_events := events
+		if hints != null and coach.has_lesson() and not hints.own_input.is_empty():
+			# N-98: the lesson waits for the player: the master hand's input and events do not pass a step
+			c_input = hints.own_input
+			c_events = [] if hints.drove else events
+		coach.update(vm, c_input, c_events, sampler.left_down(), sampler.right_down(), delta)
 	if hints != null and not sampler.raw:
 		hints.auto = sampler.auto_tension
 		hints.tick(vm, input, events, sampler.left_down(), sampler.right_down(), delta)

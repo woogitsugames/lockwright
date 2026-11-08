@@ -19,6 +19,8 @@ var _rock := 0.0
 var _wind := 0.0
 var _ratios: Array[float] = []
 var _wind_step := 0.0  # degrees per ratchet click (0: smooth, plates without the key)
+var _letdown_s := 0.0
+const LETDOWN_S := 0.15  # one ratchet tooth back per step while the key lets the spring down
 
 
 func _ready() -> void:
@@ -47,7 +49,21 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	else:
 		_rock = lerpf(_rock, 0.0, 0.2)
 	var t := clampf(float(vm.get("tension", input.get("tension", 0.0))), 0.0, 1.0)
-	_wind = lerpf(_wind, 25.0 * t, 0.2) if delta < 0.5 else 25.0 * t
+	var target := 25.0 * t
+	if delta >= 0.5 or _wind_step <= 0.0 or UiA11y.reduce_motion():
+		_wind = target if delta >= 0.5 or _wind_step > 0.0 else lerpf(_wind, target, 0.2)
+		_letdown_s = 0.0
+	elif target >= _wind - 0.01:
+		_wind = lerpf(_wind, target, 0.2)  # winding: the key turns the barrel, the click drops into each tooth
+		_letdown_s = 0.0
+	else:
+		# N-97: letting go is a let-down, not a spring-back: the thumb is the key held against the spring
+		# (the click lifted, as a watchmaker powers a train under the key), so the barrel goes back one
+		# ratchet tooth at a time, LETDOWN_S each (DESIGN: 100-250 ms steps), never in one jump
+		_letdown_s += delta
+		if _letdown_s >= LETDOWN_S:
+			_letdown_s = 0.0
+			_wind = maxf(target, snappedf(_wind, _wind_step) - _wind_step)
 	super.present(vm, input, delta)
 
 

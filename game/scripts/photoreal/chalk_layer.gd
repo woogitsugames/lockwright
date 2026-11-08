@@ -114,8 +114,8 @@ static func clamp_hint_anchor(p: Vector2, safe: Rect2, kind: String) -> Vector2:
 
 
 ## Rect a thumb hint of `kind` covers around its (clamped) anchor.
-static func hint_rect(anchor: Vector2, kind: String) -> Rect2:
-	var r: Vector4 = REACH.get(kind, REACH["right"])
+static func hint_rect(anchor: Vector2, kind: String, scale := 1.0) -> Rect2:
+	var r: Vector4 = REACH.get(kind, REACH["right"]) * scale
 	return Rect2(anchor - Vector2(r.x, r.y), Vector2(r.x + r.z, r.y + r.w))
 
 
@@ -131,46 +131,97 @@ func hint_marks() -> Array:
 		return out
 	var safe := safe_rect()
 	var avoid := _avoid_rects()
-	if not avoid.is_empty():
-		for m in _hint_marks_raw(safe):
-			out.append(_off_avoid(m, safe, avoid))
-		return out
-	return _hint_marks_raw(safe)
+	if avoid.is_empty():
+		return _hint_marks_raw(safe)
+	for m in _hint_marks_raw(safe):
+		out.append(_placed(m, safe, avoid))
+	return out
 
 
-## N-90: rects the static thumb hints keep clear of: the loupe on the roll (the right thumb's arrow lay
-## on its brass ring on the combo screen). Layer coordinates = the view's.
+## N-90 / N-96: what the static thumb hints keep clear of — every interactive part of the screen the view
+## reports (LockPhotorealView.hint_avoid_rects: the tension dial with its wrench arm, the picks in the
+## roll, the loupe, the lock section); the loupe alone for a view without that method. Layer = view coordinates.
 func _avoid_rects() -> Array[Rect2]:
 	var out: Array[Rect2] = []
 	var p := get_parent()
-	if p != null and p.has_method("loupe_rect"):
+	if p != null and p.has_method("hint_avoid_rects"):
+		for r: Rect2 in p.call("hint_avoid_rects"):
+			if r.size.x > 0.0 and r.size.y > 0.0:
+				out.append(r)
+	elif p != null and p.has_method("loupe_rect"):
 		var lr: Rect2 = p.call("loupe_rect")
 		if lr.size.x > 0.0:
 			out.append(lr.grow(4.0))
 	return out
 
 
-## A thumb hint moved the shortest way off the avoid rects, staying inside the safe area.
-static func _off_avoid(m: Dictionary, safe: Rect2, avoid: Array[Rect2]) -> Dictionary:
-	var a: Vector2 = m["anchor"]
+## The drawn parts of a thumb hint (thumb print, arrow shafts with heads) as thin rects, at `scale`.
+static func hint_parts(anchor: Vector2, kind: String, scale := 1.0) -> Array[Rect2]:
+	var out: Array[Rect2] = [Rect2(anchor - Vector2(19, 24) * scale, Vector2(38, 48) * scale)]
+	var w := 9.0 * scale
+	out.append(Rect2(anchor + Vector2(-w, -96.0 * scale), Vector2(2.0 * w, 68.0 * scale)))  # up
+	match kind:
+		"vertical":
+			out.append(Rect2(anchor + Vector2(-w, 28.0 * scale), Vector2(2.0 * w, 56.0 * scale)))
+		"right":
+			out.append(Rect2(anchor + Vector2(-82.0 * scale, -w), Vector2(54.0 * scale, 2.0 * w)))
+			out.append(Rect2(anchor + Vector2(28.0 * scale, -w), Vector2(54.0 * scale, 2.0 * w)))
+	return out
+
+
+static func _parts_clear(parts: Array[Rect2], avoid: Array[Rect2]) -> bool:
+	for pr in parts:
+		for r in avoid:
+			if pr.intersects(r):
+				return false
+	return true
+
+
+var _place_cache := {}
+
+
+## The thumb hint moved to the nearest spot (same screen half: the thumb zones are halves) where none of
+## its drawn parts touches an avoid rect and its whole reach stays in the safe area; smaller arrows
+## (0.8, 0.65) when the full-size hint has no room. Cached: the avoid rects only change with the layout.
+func _placed(m: Dictionary, safe: Rect2, avoid: Array[Rect2]) -> Dictionary:
 	var kind := String(m["kind"])
+	var a: Vector2 = m["anchor"]
+	var key := "%s|%s|%s|%s|%s" % [kind, a, safe, avoid, size]
+	if _place_cache.has(key):
+		return _place_cache[key]
+	var res := place_hint(a, kind, safe, avoid, size.x)
+	if _place_cache.size() > 32:
+		_place_cache.clear()
+	_place_cache[key] = res
+	return res
+
+
+static func place_hint(a: Vector2, kind: String, safe: Rect2, avoid: Array[Rect2], width: float) -> Dictionary:
 	var inner := safe.grow(-SAFE_MARGIN + 0.5)
-	for r in avoid:
-		var hr := hint_rect(a, kind)
-		if not hr.intersects(r):
-			continue
-		var best := a
+	var left_zone := a.x < width * 0.5  # the side the hint was put on (mirrored with swapped thumbs)
+	for sc in [1.0, 0.8, 0.65]:
+		if inner.encloses(hint_rect(a, kind, sc)) and _parts_clear(hint_parts(a, kind, sc), avoid):
+			return {"kind": kind, "anchor": a, "rect": hint_rect(a, kind, sc), "scale": sc}
+		var best := Vector2.INF
 		var bd := INF
-		for off: Vector2 in [Vector2(0, r.position.y - hr.end.y), Vector2(0, r.end.y - hr.position.y),
-				Vector2(r.position.x - hr.end.x, 0), Vector2(r.end.x - hr.position.x, 0)]:
-			var moved := Rect2(hr.position + off, hr.size)
-			if not inner.encloses(moved):
-				continue
-			if off.length() < bd:
-				bd = off.length()
-				best = a + off
-		a = best
-	return {"kind": kind, "anchor": a, "rect": hint_rect(a, kind)}
+		var step := 8.0
+		for iy in range(-30, 31):
+			for ix in range(-30, 31):
+				var off := Vector2(ix, iy) * step
+				var d := off.length_squared()
+				if d >= bd:
+					continue
+				var c := a + off
+				if (c.x < width * 0.5) != left_zone:
+					continue  # stays in its thumb's half of the screen
+				var hr := hint_rect(c, kind, sc)
+				if not inner.encloses(hr) or not _parts_clear(hint_parts(c, kind, sc), avoid):
+					continue
+				bd = d
+				best = c
+		if best != Vector2.INF:
+			return {"kind": kind, "anchor": best, "rect": hint_rect(best, kind, sc), "scale": sc}
+	return {"kind": kind, "anchor": a, "rect": hint_rect(a, kind), "scale": 1.0}
 
 
 func _hint_marks_raw(safe: Rect2) -> Array:
@@ -316,14 +367,15 @@ func _draw() -> void:
 	# thumb hints, clamped inside the safe area (N-73)
 	for h: Dictionary in hint_marks():
 		var p: Vector2 = h["anchor"]
-		thumb(p)
-		arrow(p + Vector2(0, -30), p + Vector2(0, -92))
+		var k: float = h.get("scale", 1.0)
+		thumb(p, 22.0 * k)
+		arrow(p + Vector2(0, -30) * k, p + Vector2(0, -92) * k)
 		match String(h["kind"]):
 			"vertical":
-				arrow(p + Vector2(0, 30), p + Vector2(0, 80))
+				arrow(p + Vector2(0, 30) * k, p + Vector2(0, 80) * k)
 			"right":
-				arrow(p + Vector2(-30, 0), p + Vector2(-78, 0))
-				arrow(p + Vector2(30, 0), p + Vector2(78, 0))
+				arrow(p + Vector2(-30, 0) * k, p + Vector2(-78, 0) * k)
+				arrow(p + Vector2(30, 0) * k, p + Vector2(78, 0) * k)
 	if marks.get("hint_down", false) and marks.has("wrench_tip"):
 		var wt: Vector2 = marks["wrench_tip"]
 		arrow(wt + Vector2(18, -40), wt + Vector2(18, 10))

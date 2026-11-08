@@ -446,6 +446,13 @@ func _start_autopilot() -> void:
 	_auto_lift = float(_last_input.get("pick_lift", 0.0)) if _auto_kind == "back" else 0.0
 
 
+## N-98: the player's own input of the last step (before the master hand / the held tension) and
+## whether the master hand moved the lock in it. A lesson step is passed only by the player's own
+## action: the hint ladder escalates hints (H1-H4), it never does a step for the player.
+var own_input := {}
+var drove := false
+
+
 func _stop_autopilot() -> void:
 	if not autopilot:
 		return
@@ -454,7 +461,7 @@ func _stop_autopilot() -> void:
 	if chalk_hint != null:
 		chalk_hint.end_follow()
 	if _lesson():
-		held_tension = _lesson_f("tension", 0.35) if not auto else -1.0
+		held_tension = -1.0  # N-98: after the demonstration the lock is the player's again (step unchanged)
 	elif not auto and family != &"warded":
 		held_tension = 0.35  # control returns in the post-step state: the tension stays on
 
@@ -462,6 +469,8 @@ func _stop_autopilot() -> void:
 ## Input the lock gets while the master hand works (or after it, the held tension). While it works
 ## the chalk ring and trail follow its virtual touch point.
 func drive(input: Dictionary, vm: Dictionary, delta: float) -> Dictionary:
+	own_input = input
+	drove = autopilot
 	if not autopilot:
 		if held_tension >= 0.0:
 			var held := input.duplicate()
@@ -469,6 +478,7 @@ func drive(input: Dictionary, vm: Dictionary, delta: float) -> Dictionary:
 			return held
 		return input
 	var out := _drive_auto(input, vm, delta)
+	drove = true
 	if autopilot and chalk_hint != null:
 		chalk_hint.follow(virtual_touch(out))
 	return out
