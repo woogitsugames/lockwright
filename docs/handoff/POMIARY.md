@@ -269,3 +269,21 @@ Większy zapas wymaga decyzji (rozmiar w paczce, bez zmiany grafiki):
 
 Uwaga z przeglądu: natywny mostek kliknięć (Oboe) przyjmuje tylko 32 z 336 próbek (`kMaxSamples = 32` w `click_engine.cpp`);
 pozostałe kliki zamka grają ścieżką silnika (~126 ms opóźnienia zamiast ~52 ms, POMIARY §2). Poza zakresem tej pracy — do zgłoszenia.
+
+## 13. Wszystkie kliki zamka szybką ścieżką dźwięku — 2026-11-08 (D-101)
+
+Mostek Oboe (`lockwright-click-audio`) miał 32 miejsca na próbki, a gra wysyła 336 klików L2 (14 zdarzeń × 4 materiały × 6 wariantów).
+Natywnie grały tylko `contact` (4 materiały) i `bind` mosiężny; `set`, `false_set`, `overset`, `drop`, `open`, `break`… szły przez
+AudioServer Godota (~126 ms od wywołania do dźwięku zamiast ~52 ms, pomiar §2). Teraz bank ma 512 miejsc, próbki trzymane są jako
+16-bit PCM w swojej częstotliwości (przeliczenie w miksie, bez kopii float), więc wszystkie 336 mieszczą się w 4,8 MB.
+
+| SM-A165F (debug, zamek pin) | Przed | Po |
+|---|---|---|
+| Próbek w mostku | 32 / 336 | **336 / 336** |
+| Skan 56 klików (zdarzenie × materiał) | natywnie 5, silnik 51 | **natywnie 56, silnik 0** |
+| Opóźnienie kliku | ~52 ms tylko dla `contact`/`bind`, ~126 ms dla reszty | ~52 ms dla wszystkich (§2) |
+| Oboe: opóźnienie wyjścia / wywołanie→miks p95 | 21–25 ms / 5,0 ms | 21–25 ms / 5,0 ms |
+| Xruny / ukradzione głosy (25 rund kciukami) | 0 / 0 | 0 / 0 |
+| Native heap / PSS w zamku | 182 / 607 MB | 188 / 619 MB (+4,8 MB banku) |
+
+Dane: `perf_2026-11-08/d101_native_clicks.txt`. Haptyka (D-81) bez zmian — mostek audio jest osobną wtyczką.

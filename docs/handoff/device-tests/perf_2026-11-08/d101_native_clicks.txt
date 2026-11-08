@@ -1,0 +1,16 @@
+# D-101: native click bank on SM-A165F (debug builds on main + PerfProbe; pin lock "Czwarta nad ranem po weselu")
+# flag file user://perf_probe = "click_scan=1": 2 s after a lock opens, every L2 event x material (14 x 4 = 56)
+# goes once through Sfx.play at -60 dB; then 25 rounds of thumb swipes. LW_CLICKS = cumulative paths.
+
+## before: old bridge (kMaxSamples = 32)
+Sfx: native click bridge ... samples=32/336 -> native
+click scan (56 plays): native=5 engine=51   (only contact x4 + bind/brass had a slot)
+LW_CLICKS native=204 engine=51 bridge_samples=- oboe_latency_ms=23.5 call_to_mix_p95_ms=5.0 xruns=0 stolen=0
+meminfo: TOTAL PSS 606986 kB, Native Heap 181956 kB
+
+## after: D-101 bridge (kMaxSamples = 512, int16 bank, resampled while mixing)
+Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=336/336 (skipped non-PCM16/stereo 0) -> native in 23 ms
+Sfx: bridge holds 336 samples, 4.8 MB PCM16
+LW_CLICK_SCAN 56 plays: native=56 engine=0
+LW_CLICKS native=253 engine=0 bridge_samples=336 oboe_latency_ms=23.9 call_to_mix_p95_ms=5.0 xruns=0 stolen=0
+meminfo: TOTAL PSS 619479 kB, Native Heap 188016 kB

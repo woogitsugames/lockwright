@@ -505,3 +505,12 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 - **Paczka:** tylko kwestie EN; PL dołącza do DE/FR/ES jako pack `voice_pl.pck` (ten sam workflow `voice-packs.yml`, GitHub Release + manifest z SHA-256 w `game/data/voice_packs.json`). Cel: miejsce w pck na scenki przyjazdu w wyższej rozdzielczości (pomiar w perf-budget).
 - **Pierwsze uruchomienie:** gdy język gry/telefonu ≠ EN i jest pack — pobranie w tle bez pytania, krótka notka bez blokowania z rozmiarem i postępem, napisy cały czas; bez sieci notka „spróbujemy później” i ponowne próby (1/5/15/30 min oraz przy każdym starcie). Tylko build wyeksportowany.
 - **Ustawienia → Głosy postaci:** lista wszystkich packów z rozmiarem, Pobierz/Usuń dla każdego; EN „w grze”, nie do usunięcia. Usunięty pack milknie od razu i nie wraca sam. Szczegóły: `docs/TECH.md` §9.3.
+## D-101: Bank natywnych klików na wszystkie próbki zamka (512 miejsc, PCM16)
+2026-11-08 · agent wydajności (własne znalezisko z POMIARY §12) · `click_engine.h/.cpp`: `kMaxSamples` 32 → 512; próbka trzymana jako
+16-bit PCM mono w swojej częstotliwości, krok głosu = wysokość × częstotliwość próbki / częstotliwość strumienia (bez konwersji
+do float przy wczytaniu i bez przebudowy przy zmianie strumienia). 336 klików = 4,8 MB. `stats()` mostka podaje `samplesLoaded`
+i `sampleBytes`; `Sfx.click_path_counts()` liczy kliki natywne / przez silnik. Na SM-A165F: 336/336 próbek, 56/56 klików skanu
+natywnie (było 5/56), bez xrunów (POMIARY §13). Haptyka D-81 nietknięta.
+- Przy okazji: `LockPreload` nie wczytuje w tle w trybie headless (CI, GUT). Wątkowe wczytywanie tekstur do atrapy renderera
+  raz na jakiś czas kończyło się błędem silnika „Parameter "t" is null” — to była przyczyna losowo czerwonych testów lokalnie
+  (`test_accessibility` / `test_perf_device`). Lokalny `run_gut.sh`: 374/374.
