@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """Performance budget check for CI (session C, stage 3, task 9). Budgets: qa/budget/budgets.json, rationale in
 docs/handoff/POMIARY.md §8. Measures on a COPY of game/ (game/ is not modified):
-  - size of the Android resource pack (godot --export-pack "Android"), optional APK size (--apk FILE),
+  - size of the Android resource pack (godot --export-pack "Android"),
+  - release AAB size with --aab FILE (--size-only: just that, no Godot; used by game-android/release-aab, D-96),
   - headless startup time (boot scene + 5 frames) and the plan B lock scene, peak RSS of the boot.
-   python3 qa/budget/check_budget.py [--godot godot] [--apk path.apk] [--out qa/out/budget]
+   python3 qa/budget/check_budget.py [--godot godot] [--out qa/out/budget]
+   python3 qa/budget/check_budget.py --aab game/build/lockwright-release.aab --size-only
 Exit 1 when any value exceeds its "fail" limit; "warn" is reported (GitHub ::warning) but passes."""
 import argparse, json, os, pathlib, shutil, statistics, subprocess, sys, tempfile, time
 
 HERE = pathlib.Path(__file__).resolve().parent
+NEWLINE = chr(10)
 ROOT = HERE.parent.parent
 
 
@@ -45,13 +48,46 @@ def pack_breakdown(work, depth=3, top=15):
     return sorted(sizes.items(), key=lambda kv: -kv[1])[:top]
 
 
+def verdict(k, v, b):
+    if v > b['fail']:
+        st = 'PRZEKROCZONY'
+    elif v > b['warn']:
+        st = 'ostrzeżenie'
+    else:
+        st = 'OK'
+    if st != 'OK' and os.environ.get('GITHUB_ACTIONS'):
+        print(f"::{'error' if st == 'PRZEKROCZONY' else 'warning'}::budget {k} = {v} (warn {b['warn']}, fail {b['fail']})")
+    return st
+
+
+def check_sizes(a, budgets):
+    """--size-only: the release AAB size against aab_release_mb (no Godot needed)."""
+    if not a.aab or not pathlib.Path(a.aab).exists():
+        print('no AAB given (--aab)')
+        return 1
+    v = round(pathlib.Path(a.aab).stat().st_size / 1e6, 1)
+    b = budgets['aab_release_mb']
+    st = verdict('aab_release_mb', v, b)
+    md = ['| Miara | Wartość | Próg ostrz. / błąd | Stan |', '|---|---|---|---|',
+          f"| `aab_release_mb` | {v} | {b['warn']} / {b['fail']} | {st} |"]
+    print(NEWLINE.join(md))
+    summ = os.environ.get('GITHUB_STEP_SUMMARY')
+    if summ:
+        with open(summ, 'a') as f:
+            f.write(NEWLINE.join(['', '## Budżet AAB (D-96)', ''] + md + ['']))
+    return 1 if st == 'PRZEKROCZONY' else 0
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--godot', default=os.environ.get('GODOT', 'godot'))
-    ap.add_argument('--apk')
+    ap.add_argument('--aab')
+    ap.add_argument('--size-only', action='store_true')
     ap.add_argument('--out', default=str(ROOT / 'qa/out/budget'))
     a = ap.parse_args()
     budgets = json.loads((HERE / 'budgets.json').read_text())['ci']
+    if a.size_only:
+        sys.exit(check_sizes(a, budgets))
     out = pathlib.Path(a.out); out.mkdir(parents=True, exist_ok=True)
     work = pathlib.Path(tempfile.mkdtemp(prefix='lw_budget_')) / 'game'
     shutil.copytree(ROOT / 'game', work, ignore=shutil.ignore_patterns('.godot', 'build', 'android'))
@@ -62,8 +98,8 @@ def main():
     subprocess.run([g, '--headless', '--path', str(work), '--export-pack', 'Android', str(pck)],
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=600)
     m['pck_android_mb'] = round(pck.stat().st_size / 1e6, 1) if pck.exists() else None
-    if a.apk and pathlib.Path(a.apk).exists():
-        m['apk_mb'] = round(pathlib.Path(a.apk).stat().st_size / 1e6, 1)
+    if a.aab and pathlib.Path(a.aab).exists():
+        m['aab_release_mb'] = round(pathlib.Path(a.aab).stat().st_size / 1e6, 1)
     run_timed([g, '--headless', '--path', str(work), '--quit-after', '5'])  # warm the file cache
     boots = [run_timed([g, '--headless', '--path', str(work), '--quit-after', '5']) for _ in range(5)]
     m['startup_headless_s'] = round(statistics.median(b[0] for b in boots), 2)

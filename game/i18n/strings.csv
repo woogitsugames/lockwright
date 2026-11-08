@@ -7,6 +7,8 @@ boot.calib_skip,Skip,Pomiń,Überspringen,Passer,Omitir
 settings.feel_section,Feel (haptics),Wyczucie (haptyka),Spielgefühl (Haptik),Sensations (haptique),Sensación háptica
 settings.quality,Graphics quality,Jakość grafiki,Grafikqualität,Qualité graphique,Calidad gráfica
 settings.quality_auto,Auto (measured),Auto (mierzona),Auto (gemessen),Auto (mesurée),Automática (medida)
+settings.quality_auto_high,Auto (high),Auto (wysoka),Auto (hoch),Auto (élevée),Automática (alta)
+settings.quality_auto_medium,Auto (medium),Auto (średnia),Auto (mittel),Auto (moyenne),Automática (media)
 settings.quality_high,High,Wysoka,Hoch,Élevée,Alta
 settings.quality_medium,Medium,Średnia,Mittel,Moyenne,Media
 settings.quality_low,Low (cheap phones),Niska (tanie telefony),Niedrig (einfache Handys),Faible (téléphones modestes),Baja (móviles sencillos)

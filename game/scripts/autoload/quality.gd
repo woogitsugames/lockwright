@@ -2,8 +2,7 @@ extends Node
 
 ## Quality profiles for cheap phones (task 7): render_scale, MSAA and the plan-B
 ## plate (SubViewport) size. Profile "auto" picks after the first 10 s of play from the
-## average frame time, capped at "low" on phones with <= 4 GB RAM (D-93); the player can override it
-## in Settings. Debug builds get an
+## average frame time; the player can override it in Settings ("low" is a manual choice only, D-96). Debug builds get an
 ## FPS / frame-time overlay, hidden by default (VA-15: in tester APKs it covered "‹ Wstecz" and landed
 ## in every screenshot). Dev switch: launch with `-- --fps=1`, press F3, or tap with four fingers.
 
@@ -16,15 +15,12 @@ const PROFILES := {
 }
 const AUTO_WINDOW_S := 10.0
 const AUTO_MEDIUM_MS := 16.7  # ~60 fps
-const AUTO_LOW_MS := 22.0     # ~45 fps
-## D-93 (owner): phones with <= 4 GB RAM run "low" (section 0.5x, no MSAA) in "auto"; a 4 GB phone
-## reports ~3.6-3.8 GiB physical, so the cap is at 4.5 GiB. A profile picked by hand in Settings wins.
-const LOW_RAM_BYTES := 4831838208  # 4.5 GiB
+## D-93 capped "auto" at "low" on <= 4 GB phones; measured on SM-A165F it saved no memory and softened
+## the lock section, so the owner made "low" manual only (D-96). RAM is still read for the log line.
 const ORDER := ["low", "medium", "high"]
 
-## Profile cap from device RAM ("" = no cap). Tests set physical_override.
+## Tests set physical_override (bytes).
 var physical_override := -1
-var ram_cap := ""
 
 var current := {}
 var _auto_time := 0.0
@@ -34,10 +30,9 @@ var _fps_label: Label = null
 
 
 func _ready() -> void:
-	ram_cap = cap_for_ram(physical_ram())
 	current = PROFILES.get(Settings.get_value("quality_auto", "high"), PROFILES["high"])
 	apply_profile(Settings.get_value("quality_profile", "auto"))
-	print("Quality: RAM %.2f GiB -> auto cap %s" % [physical_ram() / 1073741824.0, ram_cap if ram_cap != "" else "none"])
+	print("Quality: RAM %.2f GiB, profile %s" % [physical_ram() / 1073741824.0, resolved_name()])
 	if OS.is_debug_build():
 		_fps_label = Label.new()
 		_fps_label.add_theme_color_override("font_color", Color(0.4, 1.0, 0.4))
@@ -77,20 +72,15 @@ func _process(delta: float) -> void:
 		if _auto_time >= AUTO_WINDOW_S:
 			_auto_done = true
 			var avg_ms := _auto_time * 1000.0 / maxf(_auto_frames, 1)
-			var picked := "high"
-			if avg_ms >= AUTO_LOW_MS:
-				picked = "low"
-			elif avg_ms >= AUTO_MEDIUM_MS:
-				picked = "medium"
+			var picked := "medium" if avg_ms >= AUTO_MEDIUM_MS else "high"  # D-96: "low" is manual only
 			Settings.set_value("quality_auto", picked)
-			picked = capped(picked, ram_cap)
 			current = PROFILES[picked]
 			profile_changed.emit(current)
 			print("Quality: auto profile after %.0f s avg %.1f ms -> %s" % [_auto_time, avg_ms, picked])
 
 
 func apply_profile(name: String) -> void:
-	var key := auto_key(name, Settings.get_value("quality_auto", "high"), ram_cap)
+	var key := auto_key(name, Settings.get_value("quality_auto", "high"))
 	current = PROFILES[key]
 	var root := get_tree().root
 	root.scaling_3d_scale = current["render_scale"]
@@ -139,27 +129,26 @@ static func _read_lines(path: String) -> PackedStringArray:
 	return out
 
 
-## "low" for a device with <= LOW_RAM_BYTES of RAM, "" otherwise (or unknown).
-static func cap_for_ram(physical_bytes: int) -> String:
-	return "low" if physical_bytes > 0 and physical_bytes <= LOW_RAM_BYTES else ""
-
-
-## The lower of `profile` and `cap` ("" = no cap).
-static func capped(profile: String, cap: String) -> String:
-	if cap == "" or not ORDER.has(cap) or not ORDER.has(profile):
-		return profile
-	return ORDER[mini(ORDER.find(profile), ORDER.find(cap))]
-
-
 ## Profile actually used for the Settings value `setting`: a hand-picked profile as is, "auto" =
-## the last frame-time pick (`auto_pick`) capped by RAM.
-static func auto_key(setting: String, auto_pick: String, cap: String) -> String:
+## the last frame-time pick (`auto_pick`, never "low": D-96 keeps "low" a manual choice).
+static func auto_key(setting: String, auto_pick: String) -> String:
 	var key := setting
 	if key == "auto":
-		key = capped(auto_pick if PROFILES.has(auto_pick) else "high", cap)
+		key = auto_pick if auto_pick == "high" or auto_pick == "medium" else ("medium" if auto_pick == "low" else "high")
 	if not PROFILES.has(key):
 		key = "high"
 	return key
+
+
+## N-99: the Settings entry for "auto", naming the profile it resolved to ("Auto (średnia)").
+func auto_label() -> String:
+	var key := auto_key("auto", Settings.get_value("quality_auto", "high"))
+	return I18n.t(StringName("settings.quality_auto_" + key))
+
+
+## Name of the profile in use ("high" | "medium" | "low"), also when the setting is "auto" (N-99).
+func resolved_name() -> String:
+	return auto_key(Settings.get_value("quality_profile", "auto"), Settings.get_value("quality_auto", "high"))
 
 
 func planb_size(base: Vector2i) -> Vector2i:

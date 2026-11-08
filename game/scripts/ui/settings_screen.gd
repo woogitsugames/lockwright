@@ -105,7 +105,7 @@ func _fill_options() -> void:
 	var idx := LANGUAGE_IDS.find(str(Settings.get_value("language")))
 	language_option.selected = idx if idx >= 0 and (idx <= 2 or dev) else 0
 	quality_option.clear()
-	quality_option.add_item(I18n.t(&"settings.quality_auto"), 0)
+	quality_option.add_item(Quality.auto_label(), 0)  # N-99: "Auto (średnia)"
 	quality_option.add_item(I18n.t(&"settings.quality_high"), 1)
 	quality_option.add_item(I18n.t(&"settings.quality_medium"), 2)
 	quality_option.add_item(I18n.t(&"settings.quality_low"), 3)

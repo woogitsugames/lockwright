@@ -7,10 +7,10 @@
       "fail": 150,
       "note": "D-64 (owner): own budget raised to 150 MB (store limits: Google Play base module 200 MB). AAB ~= pck + ~11 MB. Warn at 120 MB."
     },
-    "apk_mb": {
+    "aab_release_mb": {
       "warn": 170,
       "fail": 200,
-      "note": "debug/release APK; D-64"
+      "note": "D-96: the release AAB (what the store ships), measured in game-android/release-aab; Play base module limit 200 MB. The debug APK (~193 MB, 76 MB debug engine library) is not budgeted."
     },
     "startup_headless_s": {
       "warn": 1.0,
@@ -27,5 +27,10 @@
       "fail": 300,
       "note": "peak RSS of the headless boot (no GPU); proxy for leaks/oversized resources"
     }
+  },
+  "device": {
+    "note": "D-96 (owner): realistic memory budget for the budget Android class (SM-A165F, 4 GB), measured on device in release builds, docs/handoff/POMIARY.md §10-11. Not checked in CI.",
+    "pss_menu_mb": 400,
+    "pss_lock_mb": 600
   }
 }

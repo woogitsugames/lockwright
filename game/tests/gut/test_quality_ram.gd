@@ -1,47 +1,49 @@
 extends GutTest
-## D-93: "auto" quality is capped at "low" on phones with <= 4 GB RAM; a profile picked in Settings wins.
+## D-96 (owner, replaces the D-93 RAM cap): "low" is a manual choice only. "auto" resolves to the
+## frame-time pick, medium or high, on every phone; Settings shows what "auto" resolved to (N-99).
 
 const GIB := 1073741824
 var _backup: Dictionary
-var _cap := ""
 
 
 func before_each() -> void:
 	_backup = {"quality_profile": Settings.get_value("quality_profile"), "quality_auto": Settings.get_value("quality_auto")}
-	_cap = Quality.ram_cap
 
 
 func after_each() -> void:
 	for k in _backup:
 		Settings.set_value(k, _backup[k])
 	Quality.physical_override = -1
-	Quality.ram_cap = _cap
 	Quality.apply_profile(Settings.get_value("quality_profile", "auto"))
 
 
-func test_cap_by_ram() -> void:
+func test_auto_never_resolves_to_low() -> void:
 	var Q := load("res://scripts/autoload/quality.gd")
-	assert_eq(Q.cap_for_ram(int(3.6 * GIB)), "low", "SM-A165F class (4 GB, ~3.6 GiB reported)")
-	assert_eq(Q.cap_for_ram(4 * GIB), "low")
-	assert_eq(Q.cap_for_ram(int(5.6 * GIB)), "", "6 GB phone: no cap")
-	assert_eq(Q.cap_for_ram(8 * GIB), "")
-	assert_eq(Q.cap_for_ram(0), "", "unknown RAM: no cap")
+	assert_eq(Q.auto_key("auto", "high"), "high")
+	assert_eq(Q.auto_key("auto", "medium"), "medium")
+	assert_eq(Q.auto_key("auto", "low"), "medium", "an old save's auto pick 'low' reads as medium")
+	assert_eq(Q.auto_key("auto", "bogus"), "high")
 
 
-func test_capped_picks_the_lower_profile() -> void:
+func test_manual_choice_wins() -> void:
 	var Q := load("res://scripts/autoload/quality.gd")
-	assert_eq(Q.capped("high", "low"), "low")
-	assert_eq(Q.capped("medium", "low"), "low")
-	assert_eq(Q.capped("high", ""), "high")
-	assert_eq(Q.capped("low", "medium"), "low")
+	assert_eq(Q.auto_key("low", "high"), "low", "low only when picked by hand")
+	assert_eq(Q.auto_key("high", "medium"), "high")
+	assert_eq(Q.auto_key("bogus", "high"), "high")
 
 
-func test_auto_key_respects_manual_choice() -> void:
-	var Q := load("res://scripts/autoload/quality.gd")
-	assert_eq(Q.auto_key("auto", "high", "low"), "low", "auto on a 4 GB phone")
-	assert_eq(Q.auto_key("auto", "medium", ""), "medium", "auto elsewhere: frame-time pick")
-	assert_eq(Q.auto_key("high", "low", "low"), "high", "hand-picked high stays high on 4 GB")
-	assert_eq(Q.auto_key("bogus", "high", ""), "high")
+func test_small_ram_phone_keeps_auto() -> void:
+	# the SM-A165F class (4 GB) no longer gets "low" automatically
+	Quality.physical_override = int(3.57 * GIB)
+	Settings.set_value("quality_profile", "auto")
+	Settings.set_value("quality_auto", "medium")
+	Quality.apply_profile("auto")
+	assert_eq(Quality.current, Quality.PROFILES["medium"])
+	assert_eq(Quality.resolved_name(), "medium")
+	Settings.set_value("quality_profile", "low")
+	Quality.apply_profile("low")
+	assert_eq(Quality.current, Quality.PROFILES["low"])
+	assert_eq(Quality.msaa_index(), 0, "manual low: no MSAA")
 
 
 func test_low_profile_values() -> void:
@@ -50,26 +52,22 @@ func test_low_profile_values() -> void:
 	assert_eq(low["msaa"], 0, "no MSAA")
 
 
-func test_quality_applies_ram_cap_in_auto() -> void:
-	Settings.set_value("quality_profile", "auto")
-	Settings.set_value("quality_auto", "high")
-	Quality.physical_override = int(3.6 * GIB)
-	Quality.ram_cap = Quality.cap_for_ram(Quality.physical_ram())
-	Quality.apply_profile("auto")
-	assert_eq(Quality.current, Quality.PROFILES["low"])
-	assert_eq(Quality.msaa_index(), 0)
-	Settings.set_value("quality_profile", "high")
-	Quality.apply_profile("high")
-	assert_eq(Quality.current, Quality.PROFILES["high"], "manual override")
-	Quality.physical_override = 8 * GIB
-	Quality.ram_cap = Quality.cap_for_ram(Quality.physical_ram())
-	Quality.apply_profile("auto")
-	assert_eq(Quality.current, Quality.PROFILES["high"], "8 GB phone keeps the frame-time pick")
-
-
 func test_meminfo_total_parses_proc_meminfo() -> void:
 	var Q := load("res://scripts/autoload/quality.gd")
 	var lines := PackedStringArray(["MemTotal:        3740844 kB", "MemFree:          123456 kB"])
 	assert_eq(Q.meminfo_total(lines), 3740844 * 1024, "SM-A165F /proc/meminfo")
-	assert_eq(Q.cap_for_ram(Q.meminfo_total(lines)), "low")
 	assert_eq(Q.meminfo_total(PackedStringArray(["garbage"])), 0)
+	assert_gt(Quality.physical_ram(), 0, "RAM known on the test machine")
+
+
+func test_settings_shows_what_auto_resolved_to() -> void:
+	# N-99: "Auto (medium)" in every UI language
+	Settings.set_value("quality_profile", "auto")
+	Settings.set_value("quality_auto", "medium")
+	for lang in ["pl", "en", "de", "fr", "es"]:
+		I18n.apply_language(lang)
+		var label: String = Quality.auto_label()
+		assert_true(I18n.has_key(&"settings.quality_auto_medium"), lang)
+		assert_eq(label, I18n.t(&"settings.quality_auto_medium"), lang)
+		assert_ne(label, I18n.t(&"settings.quality_auto_high"), "%s: says which profile" % lang)
+	I18n.apply_language(Settings.language())

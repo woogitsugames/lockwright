@@ -296,6 +296,9 @@ jobs:
           grep -aq "android.permission.VIBRATE" /tmp/aab-manifest.pb || { echo "::error::android.permission.VIBRATE missing from AAB manifest (N-55)"; exit 1; }
           echo "AAB manifest: android.permission.VIBRATE present"
 
+      - name: AAB size budget (D-96, qa/budget/budgets.json aab_release_mb)
+        run: python3 qa/budget/check_budget.py --aab game/build/lockwright-release.aab --size-only
+
       - name: Package size report
         run: |
           echo "## Package sizes" >> $GITHUB_STEP_SUMMARY

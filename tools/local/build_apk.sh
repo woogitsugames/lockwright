@@ -247,20 +247,14 @@ else
 fi
 size_mb() { python -c "import os,sys; print(round(os.path.getsize(sys.argv[1])/1e6,1))" "$(cygpath -m "$1")"; }
 APK_MB=$(size_mb "$OUT/lockwright-debug.apk")
-python -c "
-import json, sys
-v = float(sys.argv[1]); b = json.load(open(sys.argv[2]))['ci']['apk_mb']
-st = 'OK' if v <= b['warn'] else ('WARN' if v <= b['fail'] else 'FAIL')
-print('APK %s MB (budget warn %s / fail %s): %s' % (v, b['warn'], b['fail'], st))
-sys.exit(1 if st == 'FAIL' else 0)
-" "$APK_MB" "$(cygpath -m "$REPO/qa/budget/budgets.json")" || FAIL=1
+echo "debug APK $APK_MB MB (not budgeted since D-96: the release AAB is)"
 if [ $DO_AAB -eq 1 ]; then
   if unzip -p "$OUT/lockwright-release.aab" base/manifest/AndroidManifest.xml | grep -aq "android.permission.VIBRATE"; then
     echo "AAB manifest: android.permission.VIBRATE present"
   else
     echo "ERROR: VIBRATE missing from AAB manifest"; FAIL=1
   fi
-  echo "AAB $(size_mb "$OUT/lockwright-release.aab") MB (Play base module limit 200 MB, D-64)"
+  python "$(cygpath -m "$REPO/qa/budget/check_budget.py")" --aab "$(cygpath -m "$OUT/lockwright-release.aab")" --size-only || FAIL=1
 fi
 echo "output: $OUT"
 exit $FAIL
