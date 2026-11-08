@@ -228,6 +228,84 @@
       "anchors": {
         "night": {}
       }
+    },
+    "job.night_nurse": {
+      "dir": "res://assets/arrival/night_nurse",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "night"
+      ],
+      "default_time": "night",
+      "hold": "",
+      "focus": [
+        0.55,
+        0.55
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          20,
+          26
+        ]
+      },
+      "anchors": {
+        "night": {}
+      }
+    },
+    "job.pizzeria_pays_pizza": {
+      "dir": "res://assets/arrival/pizzeria_pays_pizza",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "evening"
+      ],
+      "default_time": "evening",
+      "hold": "",
+      "focus": [
+        0.55,
+        0.5
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          20,
+          26
+        ]
+      },
+      "anchors": {
+        "evening": {}
+      }
+    },
+    "job.bike_interview": {
+      "dir": "res://assets/arrival/bike_interview",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "day"
+      ],
+      "default_time": "day",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.6
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          20,
+          26
+        ]
+      },
+      "anchors": {
+        "day": {}
+      }
     }
   }
 }

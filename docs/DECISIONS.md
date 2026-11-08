@@ -448,3 +448,13 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 - Pomiar na SM-A165F (POMIARY §11): bez mierzalnej zmiany PSS i FPS, przekrój bardziej miękki; mniejszych tekstur tacki/skóry nie
   robiono (po D-88 to ok. 1 MB każda). Do decyzji właściciela: zostawić automat, cofnąć do ręcznego wyboru albo urealnić progi §8.
 - Testy: `test_quality_ram.gd`.
+
+## D-94: Scenki przyjazdu poza klatką schodową — korytarz nowego bloku, pizzeria po zamknięciu, stojak pod blokiem
+2026-11-08 · sesja scenek przyjazdu (worktree `wt-arrival3`) · uzupełnia D-58, D-84, D-91.
+- **Zestawy w danych:** `art/blender/arrival_place.py` buduje miejsca, których zestaw klatki schodowej nie oddaje, z wpisu w `art/blender/arrival_jobs.json` (`"kit": "corridor" | "shop" | "street"`, kamera `keys` = [t, x, y, z, yaw, pitch], światło i rekwizyty). Nazwy plików jak w `arrival_scene.py`, więc eksport (`arrival_export.py --job`) i gra (`arrival_scenes.json`, `hold: ""`) działają bez zmian kodu.
+- **`job.night_nurse`** (7:20, `night`): korytarz dewelopera — gres z odbiciami, biała ściana, fornir przy drzwiach nr 5 (zgodnie z D-91 „spod piątki”), wkładka na klucz magnetyczny, ciepła plama z oprawy LED nad drzwiami i zimny świt z okna obok; buty i parasol pod drzwiami sąsiadów.
+- **`job.pizzeria_pays_pizza`** (23:30, `evening`): zaplecze za ladą — drzwi z zamkiem dźwigniowym i mąką przy klamce, piec z żarem w otworze, regał z kartonami i workami mąki, krzesła na stołach, jedna lampa nad ladą (widoczne źródło światła jak klosz na klatce).
+- **`job.bike_interview`** (rano, `day`): blok z wielkiej płyty, pas luksferów przy wejściu, daszek, chodnik z płyt z liśćmi brzozy, rower przy stojaku z kłódką szyfrową na linkę; niskie słońce i cień korony drzewa. Zastępuje pożyczone zdjęcie bramy (D-91 `yard`) na weryfikacji i w „dniu po”.
+- **Ocena:** arkusz `art/renders/arrival/arrival_places_board.jpg` (obok pilota i `grandma_broth`). Korytarz i pizzeria trzymają poziom klatki; stojak jest najsłabszy (ściana płyty wciąż gładka). Sala skarbca muzeum (`museum`) — następna, na razie zdjęcie G07.
+- Kroki: `step_terrazzo` (twarde posadzki; innych odgłosów kroków nie ma). Test: `test_arrival_scene.gd` (`test_place_scenes_replace_the_borrowed_photos`); `PLAIN_JOB` to teraz `job.kiosk_shutter`.
+

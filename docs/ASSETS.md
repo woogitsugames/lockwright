@@ -311,3 +311,13 @@ Own Blender 4.2.9 LTS / Cycles OptiX renders on RTX 5070 (owner's PC), existing 
 | `game/assets/photoreal_families/lever_detector/lever_detector_baked.glb`, `scene.json` | `art/blender/plates/lever_plate.py --levers 5 --res 1236x1650 --samples 128` (N-87 camera `lever_layout.DETECTOR_CAMERA`), 75 s |
 | `game/assets/photoreal_families/lever_detector/photo/{parts,plate}.png` | `LW_DEVICE=GPU photo_plates.py --family lever --levers 5 --detector 1 --res 1236x1650 --samples 128` (outputs renamed from `*_detector.png`), 15 s; Basis import unchanged |
 | `docs/handoff/device-tests/fixes/family_rerenders/n86_time_lock.jpg`, `n87_lever_detector.jpg` | before/after sheets (colour + WCAG grayscale, contrast from `tools/art/plate_contrast.py`), Pillow |
+
+## Arrival places beyond the stairwell — 2026-11-08 (D-94)
+
+Own Blender 4.2.9 LTS / Cycles OptiX renders (RTX 5070), procedural and photo materials from `art/textures/photo` (G03 oak, workshop_concrete, cement_tiles, terrazzo_grey_red, steel_cast_grey_paint, iron_painted_rust, wall_lime_plaster), no AI generation, no brands, no readable text except the flat number.
+
+| Assets | Script and final parameters |
+|---|---|
+| `game/assets/arrival/night_nurse/night/plate.webp`, `game/assets/arrival/night_nurse/night/seq/*.webp`, `game/assets/arrival/pizzeria_pays_pizza/evening/plate.webp`, `game/assets/arrival/pizzeria_pays_pizza/evening/seq/*.webp`, `game/assets/arrival/bike_interview/day/plate.webp`, `game/assets/arrival/bike_interview/day/seq/*.webp` | `art/blender/arrival_place.py --job <id> --mode still --still-res 1080x1920 --still-spp 512 --device GPU` (hold) and `--mode seq --res 1080x1920 --spp 128` (36-frame walk, masters in `build/local-session/arrival-master/`), exported with `art/tools/arrival_export.py --job <id> --master <dir>` (WebP, lossy import 0.8) |
+| `art/renders/arrival/{night_nurse_night,pizzeria_pays_pizza_evening,bike_interview_day}_{hold.png,hold.json,final_contact.png}`, `arrival_places_board.jpg` | same renders; contact sheets via `arrival_composite.py --contact`, board with Pillow |
+

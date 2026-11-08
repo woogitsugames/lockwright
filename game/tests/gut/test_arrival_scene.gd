@@ -3,9 +3,12 @@ extends GutTest
 ## from res://data/arrival_scenes.json; jobs without an entry keep the plain arrival screen.
 
 const JOB := "job.wrong_floor"
-const PLAIN_JOB := "job.bike_interview"
+const PLAIN_JOB := "job.kiosk_shutter"
 ## early jobs with a plate-only scene (no full-body cut-out of their clients): the door and props tell the story
-const PLATE_JOBS := ["job.grandma_broth", "job.cat_bathroom", "job.refuse_ex_partner", "job.newlyweds_4am", "job.refuse_rush_bribe"]
+const PLATE_JOBS := ["job.grandma_broth", "job.cat_bathroom", "job.refuse_ex_partner", "job.newlyweds_4am", "job.refuse_rush_bribe",
+	"job.night_nurse", "job.pizzeria_pays_pizza", "job.bike_interview"]
+## D-94: places that are not a tenement landing (art/blender/arrival_place.py)
+const PLACE_JOBS := {"job.night_nurse": "night", "job.pizzeria_pays_pizza": "evening", "job.bike_interview": "day"}
 const JobArrival := preload("res://scripts/ui/job_arrival.gd")
 
 
@@ -217,3 +220,21 @@ func test_plate_only_scene_layout_and_reduce_motion() -> void:
 			var frame: MarginContainer = scene.get_node("Frame")
 			assert_gt(frame.get_theme_constant("margin_left") + frame.get_theme_constant("margin_right"), 300,
 				"landscape: the dialogue is a column, not full width")
+
+
+## D-94: the bike yard, the pizzeria back room and the new block's corridor have their own scene, so the
+## verification and the day after show that place instead of a borrowed G07 photo (D-91 `yard`).
+func test_place_scenes_replace_the_borrowed_photos() -> void:
+	for jid: String in PLACE_JOBS:
+		var job := JobRun.job_by_id(jid)
+		var r := ArrivalScene.resolve(job)
+		assert_false(r.is_empty(), "%s has a scene" % jid)
+		assert_eq(String(r["time"]), String(PLACE_JOBS[jid]), "%s: the job's own time" % jid)
+		var still := ArrivalScene.place_still(job)
+		assert_eq(still.size(), 2, jid)
+		if still.size() == 2:
+			assert_true(String(still[0]).ends_with("%s/%s/plate.webp" % [jid.trim_prefix("job."), PLACE_JOBS[jid]]), "%s: verification shows the scene" % jid)
+		assert_true(ResourceLoader.exists(String(r["layers"][""][0])))
+		var dawn := ArrivalScene.place_still(job, "day", false)
+		assert_eq(dawn.size(), 2, "%s: the day after shows the same place" % jid)
+	assert_eq(String(JobRun.job_by_id("job.bike_interview")["place"]), "yard")

@@ -16,7 +16,7 @@ const SCREENS := [
 	"res://scenes/control_choice.tscn",
 ]
 const SIZES := [Vector2i(360, 800), Vector2i(412, 915), Vector2i(915, 412)]
-const ARRIVAL_JOB := "job.bike_interview"
+const ARRIVAL_JOB := "job.kiosk_shutter"   # the plain arrival screen (no D-58 scene: D-94 gave bike_interview one)
 
 var _save_backup: Dictionary
 
