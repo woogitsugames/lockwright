@@ -284,6 +284,14 @@ settings.voice_pack.failed,Not downloaded. Subtitles stay on.,Nie pobrano. Napis
 settings.voice_pack.offline,No connection. Subtitles stay on.,Brak sieci. Napisy zostają.,Kein Netz. Untertitel bleiben an.,Hors ligne. Les sous-titres restent affichés.,Sin conexión. Los subtítulos siguen activos.
 settings.voice_pack.auto,Auto-download voices,Pobieraj głosy automatycznie,Stimmen automatisch laden,Télécharger les voix automatiquement,Descargar voces automáticamente
 settings.voice_pack.note,"Only the voice file is fetched: no account, no tracking. Without it, dialogue has subtitles.",Pobieramy tylko plik z głosami: bez konta i bez śledzenia. Bez niego rozmowy mają napisy.,"Geladen wird nur die Sprachdatei: kein Konto, kein Tracking. Ohne sie laufen Gespräche mit Untertiteln.","Seul le fichier des voix est téléchargé : sans compte ni suivi. Sans lui, les dialogues restent sous-titrés.","Solo se descarga el archivo de voces: sin cuenta ni seguimiento. Sin él, los diálogos llevan subtítulos."
+settings.voice_pack.title_pl,Polish voices,Głosy po polsku,Polnische Stimmen,Voix polonaises,Voces en polaco
+settings.voice_pack.title_en,English voices,Głosy po angielsku,Englische Stimmen,Voix anglaises,Voces en inglés
+settings.voice_pack.header,Character voices,Głosy postaci,Stimmen der Figuren,Voix des personnages,Voces de los personajes
+settings.voice_pack.builtin,in the game,w grze,im Spiel,dans le jeu,en el juego
+settings.voice_pack.remove,Remove,Usuń,Entfernen,Supprimer,Eliminar
+voicepack.note.downloading,"{title}: downloading {size}, {pct}%. Subtitles work meanwhile.","{title}: pobieranie {size}, {pct}%. Napisy działają.","{title}: Download {size}, {pct} %. Untertitel laufen weiter.","{title} : téléchargement {size}, {pct} %. Les sous-titres restent affichés.","{title}: descargando {size}, {pct} %. Los subtítulos siguen activos."
+voicepack.note.ready,{title}: ready.,{title}: gotowe.,{title}: bereit.,{title} : prêtes.,{title}: listas.
+voicepack.note.later,{title}: no connection. We will try again later.,{title}: brak sieci. Spróbujemy później.,{title}: kein Netz. Wir versuchen es später erneut.,{title} : pas de connexion. Nouvel essai plus tard.,{title}: sin conexión. Lo intentaremos más tarde.
 family.dial_safe.name,Dial safe,Sejf z pokrętłem,Tresor mit Drehscheibe,Coffre-fort à cadran,Caja fuerte con dial
 family.dial_safe.short,A safe with linked wheels that turn behind one dial.,"Sejf, w którym jedno pokrętło porusza kolejnymi kołami.",Ein Tresor mit Rädern hinter einer einzigen Drehscheibe.,Un coffre où un seul cadran entraîne des roues liées.,Una caja fuerte donde un solo dial mueve ruedas unidas.
 lock.dial_hint_auto,Turn the dial right; the game holds the handle.,Kręć prawym. Gra sama dociska klamkę.,Dreh rechts die Scheibe. Das Spiel hält den Griff.,Pouce droit : tourne le cadran. Le jeu tient la poignée.,Gira el dial con el derecho; el juego sujeta la manija.

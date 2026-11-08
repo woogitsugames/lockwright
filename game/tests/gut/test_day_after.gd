@@ -60,8 +60,8 @@ func test_every_after_line_has_text_and_a_face() -> void:
 
 
 
-## D-78 voices: every day-after line ships with a recorded clip in the bundled languages (PL, EN), at the path the
-## scene plays (`lines/<lang>/<job_id>.after.N.ogg`), loadable as a non-looping Ogg stream. DE/FR/ES come in voice packs.
+## D-78 voices: every day-after line has a recorded clip in PL and EN (EN ships, PL is a voice pack, D-100), at the path the
+## scene plays (`lines/<lang>/<job_id>.after.N.ogg`), loadable as a non-looping Ogg stream.
 func test_every_after_line_has_audio_in_pl_and_en() -> void:
 	var lines := 0
 	for f in DirAccess.get_files_at("res://data/jobs"):

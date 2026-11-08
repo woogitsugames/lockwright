@@ -505,7 +505,7 @@ Pełna gra (nie spike) na SM-A165F przed i po poprawkach wydajności: `docs/hand
 
 Do zamknięcia GO: pomiar na iPhonie, powtórzony pomiar haptyki (A0 i A2+), naprawy N-33 (tempo klatek), N-35 (RAM i start) oraz N-30 (rozmiar paczki).
 
-## 9. Języki głosów na żądanie (D-62)
+## 9. Języki głosów na żądanie (D-62, D-100)
 
 2026-11-06 · sesja A (agent głosów). Decyzja właściciela D-62: kwestie PL+EN w paczce, pozostałe języki głosów pobierane przy wyborze języka. Zastępuje tymczasowe D-61 (DE dalej w `exclude_filter` presetów Android/iOS; to teraz implementacja, nie obejście).
 
@@ -531,3 +531,12 @@ Do zamknięcia GO: pomiar na iPhonie, powtórzony pomiar haptyki (A0 i A2+), nap
 - **Rozmiary (2026-11-06):** `voice_de.pck` 8,2 MB (8 164 916 B, 164 kwestie). Dla porównania źródła w paczce: PL 7,6 MB, EN 7,5 MB. Paczka mobilna bez DE jak w D-61.
 - **Testy:** `game/tests/gut/test_voice_packs.gd` — fixture pck pakowany w teście (`PCKPacker`), pobieranie przez `file://` i przez lokalny serwer HTTP (zerwanie w połowie + wznowienie `Range`), zły sha (nie montuje, kasuje `.part`), offline i 404 (same napisy), ponowne uruchomienie (montuje / usuwa nieaktualny), blok w Ustawieniach (rozmiar, 48 dp, „Nie teraz” zapamiętane, etykiety ≤ 28 znaków).
 - **Ograniczenia:** Godot nie umie odmontować packa — usunięcie języka działa po restarcie. Pack zbudowany starszym Godotem ładuje się w nowszym, odwrotnie nie; wersja zawiera `major.minor`, więc zmiana silnika daje nowe wydanie.
+
+### 9.3 Tylko EN w paczce, język telefonu w tle (D-100, 2026-11-08)
+
+- **Paczka gry:** tylko `assets/audio/lines/en/`. PL jest packiem jak DE/FR/ES (`exclude_filter` Android/iOS + preset „Voice pl”, `tools/build_voice_packs.py` `BUNDLED = ("en",)`, `voice-packs.yml` reaguje też na `lines/pl/`). Pilnuje `test_export_filters.gd::test_only_en_voice_lines_ship`.
+- **Pierwsze uruchomienie:** `VoicePacks.auto(Settings.language())` — gdy język gry (domyślnie język telefonu) nie jest EN i manifest ma pack, pobieranie rusza w tle bez pytania; nad grą krótka notka bez blokowania dotyku („Głosy po polsku: pobieranie 18,4 MB, 34%. Napisy działają.” → „gotowe”), napisy działają cały czas. Offline / zerwane: notka „brak sieci, spróbujemy później”, ponowna próba po 1, 5, 15, potem co 30 min, oraz przy każdym starcie do skutku. Tylko w buildzie wyeksportowanym (`OS.has_feature("template")`); edytor, GUT i zrzuty CI nigdy same nie pobierają.
+- **Ustawienia → Głosy postaci:** lista EN („w grze”, bez przycisku) + każdy pack z manifestu: rozmiar i Pobierz / Przerwij / Usuń / Spróbuj ponownie (52 dp). Przełącznik „Pobieraj głosy automatycznie” = `voice_download` `auto`/`manual` (stare `ask` liczy się jak `auto`).
+- **Usuwanie:** `remove(lang)` — głos milknie od razu (`VoicePacks.blocks()` w `Sfx.line_clip_path`, bo packa nie da się odmontować), plik znika od razu albo przy następnym starcie, jeśli był zamontowany (`user://voice_packs/removed.json`); usuniętego packa gra sama już nie pobiera. Pobierz po usunięciu w tej samej sesji tylko cofa usunięcie (plik jeszcze jest).
+- **Zasady sklepów:** Apple 4.2.3 — gra działa w pełni bez packa (EN + napisy), dodatkowe pobranie podaje rozmiar w notce i jest do usunięcia w Ustawieniach. Prywatność bez zmian (jedno GET pliku statycznego).
+- **Testy:** `test_voice_packs.gd` — wybór packa po języku (EN pierwszy, nieusuwalny), automatyczne pobranie przy pierwszym starcie przez lokalny serwer HTTP (notka z rozmiarem, potem „gotowe”), offline → same napisy + zaplanowana ponowna próba, usuń/pobierz ponownie (także po restarcie), lista w Ustawieniach (EN bez przycisku, pobierz i usuń z poziomu ekranu).

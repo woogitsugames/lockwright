@@ -224,7 +224,7 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 ## D-62: Decyzje właściciela rano 2026-11-06
 2026-11-06 · właściciel ·
 - **Menu:** proof v2 z Blendera (tablica lokatorów z filcu, zawieszki) **zaakceptowany** do gry. Dalej: stany „wciśnięty” wszystkich pozycji, wersje językowe, potem ustawienia/zlecenia/warsztat w tym samym duchu i integracja w Godot; finalne rendery na GPU właściciela. Magnific A1 (tło menu) odpada.
-- **Głosy w kolejnych językach:** w paczce PL+EN, pozostałe języki głosów **pobierane na żądanie** przy wyborze języka (zastępuje tymczasowe D-61).
+- **Głosy w kolejnych językach:** w paczce PL+EN, pozostałe języki głosów **pobierane na żądanie** przy wyborze języka (zastępuje tymczasowe D-61). *Zmienione przez D-100: w paczce tylko EN, PL też jako pack.*
 - **Hania:** zostaje jasny dorosły głos (jak w dubbingu animacji).
 - **Ekonomia:** **tańsze narzędzia** (scenariusz C z `tools/econ_sim.py`); narzędzia dają wygodę/lepszy feedback, nie blokują zleceń.
 - **Ekonomia, wdrożenie (ceny):** `tools.json` -> ceny ok. 0,3× poprzednich (korba 120, ciągadło 60, napinacz listwowy 150, koronka 180, sonda biegunowa 200, chorągiewka 240, trzpień 260, obrotnik tarcz 280, słuchawka 300, piórko 500; razem 2 820 zamiast 10 100). `econ_sim.py` C = dane gry, narzędzia opcjonalne (gra nie blokuje zleceń; brak narzędzia = zamek ×1,15 dłużej): 0 zablokowanych, 0 sesji grindu, average kupuje 13/13 osiągalnych za ok. 2 320 przy dochodzie ze zleceń ok. 2 550 (przed: 8 sesji grindu, 6 400 na narzędzia). Szczegóły: `docs/ECONOMY.md`.
@@ -499,3 +499,9 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 - **Budżety:** pck ostrzeżenie 170 / błąd 185 MB, AAB release 185 / 198 MB (limit modułu bazowego Play: 200 MB do pobrania). `qa/budget/budgets.json`.
 - **Przejazdy (D-58/D-84/D-94) w pełnej rozdzielczości:** eksport 1080×1920, WebP q80 (`arrival_export.py` domyślnie), 11 sekwencji ≈ 18 MB. `ArrivalScene` strumieniuje klatki (3 od razu, 6 w tle do przodu, za głowicą zwalniane), więc w pamięci grafiki jest ~9 klatek zamiast 36 (test `test_climb_streams_frames_instead_of_holding_all`). Właściciel: przejazd przy rowerze był „marnej jakości” — powodem był eksport 540 px na ekranie 1080×2340, nie telefon.
 - **Kierunek:** treści ponad bazę (głosy — D-62, w toku: PL do pobrania, EN w bazie; kolejne rozdziały/zlecenia ze scenkami) idą do paczek pobieranych z poziomu gry — w przyszłości Play Asset Delivery albo ten sam mechanizm co paczki głosów. Do zrobienia, gdy baza zbliży się do 185 MB.
+
+## D-100: Głosy — w paczce tylko EN, język telefonu pobierany w tle, reszta w Ustawieniach
+2026-11-08 · właściciel („pobrać wersję EN + wersję języka telefonu, a potem user może pobrać co chce”), wykonanie: sesja lektora · zmienia D-62/D-63.
+- **Paczka:** tylko kwestie EN; PL dołącza do DE/FR/ES jako pack `voice_pl.pck` (ten sam workflow `voice-packs.yml`, GitHub Release + manifest z SHA-256 w `game/data/voice_packs.json`). Cel: miejsce w pck na scenki przyjazdu w wyższej rozdzielczości (pomiar w perf-budget).
+- **Pierwsze uruchomienie:** gdy język gry/telefonu ≠ EN i jest pack — pobranie w tle bez pytania, krótka notka bez blokowania z rozmiarem i postępem, napisy cały czas; bez sieci notka „spróbujemy później” i ponowne próby (1/5/15/30 min oraz przy każdym starcie). Tylko build wyeksportowany.
+- **Ustawienia → Głosy postaci:** lista wszystkich packów z rozmiarem, Pobierz/Usuń dla każdego; EN „w grze”, nie do usunięcia. Usunięty pack milknie od razu i nie wraca sam. Szczegóły: `docs/TECH.md` §9.3.

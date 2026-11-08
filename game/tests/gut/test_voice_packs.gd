@@ -1,5 +1,5 @@
 extends GutTest
-## D-62: on-demand voice packs (VoicePacks autoload script, fresh instance per test).
+## D-62/D-100: on-demand voice packs (only EN ships; PL, DE, FR, ES are packs) (VoicePacks autoload script, fresh instance per test).
 ## A tiny fixture pck is packed at test time with PCKPacker: it maps
 ## res://tests/vp_fixture/<tag>/lines/de/job.test_dialogue.line.1.ogg onto the already
 ## imported PL fixture clip, so "the DialoguePlayer finds the DE clip" is real: the path
@@ -121,10 +121,13 @@ func _make_pack() -> Array:
 	return [pck, bytes.size(), h.finish().hex_encode()]
 
 
-func _make_vp(size: int, sha: String, base: String) -> Node:
+func _make_vp(size: int, sha: String, base: String, langs: Array = ["de"]) -> Node:
+	var packs := {}
+	for lang in langs:
+		# every language points at the same fixture file (its clip lives under .../de/)
+		packs[lang] = {"file": "voice_de.pck", "url": base + "/voice_de.pck", "size": size, "sha256": sha}
 	var m := FileAccess.open(_work + "/voice_packs.json", FileAccess.WRITE)
-	m.store_string(JSON.stringify({"schema": 1, "version": "test", "base_url": base, "packs": {
-		"de": {"file": "voice_de.pck", "url": base + "/voice_de.pck", "size": size, "sha256": sha}}}))
+	m.store_string(JSON.stringify({"schema": 1, "version": "test", "base_url": base, "packs": packs}))
 	m.close()
 	var vp: Node = VoicePacksScript.new()
 	vp.manifest_path = _work + "/voice_packs.json"
@@ -134,9 +137,9 @@ func _make_vp(size: int, sha: String, base: String) -> Node:
 	return vp
 
 
-func _wait_done(vp: Node) -> void:
+func _wait_done(vp: Node, lang: String = "de") -> void:
 	var t0 := Time.get_ticks_msec()
-	while vp.state("de") in ["downloading", "verifying"] and Time.get_ticks_msec() - t0 < WAIT_S * 1000.0:
+	while vp.state(lang) in ["downloading", "verifying"] and Time.get_ticks_msec() - t0 < WAIT_S * 1000.0:
 		await get_tree().process_frame
 
 
@@ -155,26 +158,28 @@ func _dialogue(lang: String) -> Node:
 func test_bundled_policy_and_size_text() -> void:
 	var p := _make_pack()
 	var vp := _make_vp(p[1], p[2], "user://nowhere")
-	assert_true(vp.is_ready("pl"))
-	assert_true(vp.is_ready("en"))
-	assert_eq(vp.state("pl"), "bundled")
+	assert_true(vp.is_ready("en"), "EN ships in the package (D-100)")
+	assert_false(vp.is_ready("pl"), "PL is a pack now (D-100)")
+	assert_eq(vp.state("en"), "bundled")
+	assert_eq(vp.state("pl"), "none", "no PL pack in this manifest")
 	assert_eq(vp.state("de"), "missing")
 	assert_eq(vp.state("fr"), "none", "no pack in the manifest")
-	assert_eq(vp.policy("de", "ask"), "ask")
+	assert_eq(vp.policy("de", "ask"), "download", "the old default 'ask' means auto (D-100)")
 	assert_eq(vp.policy("de", "auto"), "download")
 	assert_eq(vp.policy("de", "manual"), "offer")
-	assert_eq(vp.policy("pl", "auto"), "none")
+	assert_eq(vp.policy("en", "auto"), "none")
 	assert_eq(VoicePacksScript.size_text(8164916, "pl"), "8,2 MB")
 	assert_eq(VoicePacksScript.size_text(8164916, "de"), "8,2 MB")
 	assert_eq(VoicePacksScript.size_text(8164916, "en"), "8.2 MB")
 
 
-func test_shipped_manifest_offers_de_only() -> void:
+func test_shipped_manifest_offers_packs_but_never_en() -> void:
 	var m: Variant = JSON.parse_string(FileAccess.get_file_as_string(VoicePacksScript.MANIFEST_PATH))
 	assert_true(m is Dictionary, "res://data/voice_packs.json parses")
 	var packs: Dictionary = m.get("packs", {})
 	assert_true(packs.has("de"), "DE is an on-demand pack (D-62)")
-	assert_false(packs.has("pl") or packs.has("en"), "PL+EN ship in the package")
+	assert_false(packs.has("en"), "EN ships in the package (D-100)")
+	assert_eq(VoicePacksScript.BUNDLED, ["en"])
 	var de: Dictionary = packs["de"]
 	assert_gt(int(de.size), 1000000)
 	assert_eq(str(de.sha256).length(), 64)
@@ -281,38 +286,148 @@ func test_restart_mounts_installed_and_drops_stale() -> void:
 	assert_false(FileAccess.file_exists(stale.pack_path("de")), "pack of another build removed")
 
 
-func test_settings_offers_de_voices_with_size() -> void:
-	var dev: Variant = Save.get_value("dev_mode", false)
-	var lang_before: Variant = Settings.get_value("language")
+## D-100: the voice list orders EN first, offers every pack, never removes EN.
+func test_pack_selection_by_language() -> void:
+	var p := _make_pack()
+	var vp := _make_vp(p[1], p[2], _work + "/src", ["pl", "de", "es"])
+	assert_eq(vp.languages(), ["en", "pl", "de", "es"])
+	assert_eq(vp.state("en"), "bundled")
+	assert_false(vp.remove("en"), "EN cannot be removed")
+	assert_true(vp.is_ready("en"))
+	assert_false(vp.blocks("en"))
+	assert_eq(vp.policy("pl", "auto"), "download", "the phone language is fetched")
+	assert_eq(vp.policy("pl", "manual"), "offer")
+	vp.enforce = true
+	assert_true(vp.blocks("pl"), "exported build: no PL clips before the pack")
+	assert_true(vp.remove("pl"))
+	assert_eq(vp.policy("pl", "auto"), "offer", "removed: never fetched on its own")
+
+
+## D-100: first run in a non-EN language downloads that pack in the background (mock HTTP),
+## with a short note (size + progress, then "ready"); EN needs nothing.
+func test_first_run_auto_downloads_the_game_language() -> void:
+	var p := _make_pack()
+	var srv := FakeServer.new()
+	add_child_autofree(srv)
+	var port := srv.start()
+	srv.body = FileAccess.get_file_as_bytes(p[0])
 	var mode_before: Variant = Settings.get_value("voice_download")
-	Save.set_value("dev_mode", true)
-	Settings.set_value("voice_download", "ask")  # never "auto" here: no real network in tests
-	Settings.set_value("language", "de")
+	Settings.set_value("voice_download", "auto")
+	var vp := _make_vp(p[1], p[2], "http://127.0.0.1:%d/packs" % port, ["pl"])
+	assert_false(vp.auto("en"), "EN ships: nothing to fetch")
+	assert_true(vp.auto("pl"), "PL pack starts in the background")
+	assert_string_contains(vp.note_text(), VoicePacksScript.size_text(p[1], I18n.current_language()))
+	await _wait_done(vp, "pl")
+	assert_eq(vp.state("pl"), "installed", vp.last_error("pl"))
+	assert_eq(srv.requests, 1)
+	assert_eq(vp.note_text(), I18n.t(&"voicepack.note.ready").format({"title": I18n.t(&"settings.voice_pack.title_pl")}))
+	assert_false(vp.auto("pl"), "installed: no second download")
+	Settings.set_value("voice_download", "manual")
+	var vp2 := _make_vp(p[1], p[2], "http://127.0.0.1:%d/packs" % port, ["de"])
+	assert_false(vp2.auto("de"), "manual: offer only")
+	Settings.set_value("voice_download", mode_before)
+
+
+## D-100: no connection -> subtitles only, a polite note, and the download is tried again later.
+func test_auto_download_offline_keeps_subtitles_and_retries_later() -> void:
+	var p := _make_pack()
+	var srv := FakeServer.new()
+	add_child_autofree(srv)
+	var port := srv.start()
+	srv.body = FileAccess.get_file_as_bytes(p[0])
+	srv.drop_after = 0   # the connection dies before the first byte
+	var mode_before: Variant = Settings.get_value("voice_download")
+	Settings.set_value("voice_download", "auto")
+	var vp := _make_vp(p[1], p[2], "http://127.0.0.1:%d/packs" % port, ["de"])
+	vp.enforce = true
+	vp.auto("de")
+	await _wait_done(vp)
+	assert_eq(vp.state("de"), "failed")
+	assert_eq(vp.last_error("de"), "interrupted")
+	assert_true(vp.blocks("de"), "no clip plays: subtitles only")
+	assert_eq(vp.note_text(), I18n.t(&"voicepack.note.later").format({"title": I18n.t(&"settings.voice_pack.title_de")}))
+	assert_eq(int(vp._retry_n.get("de", 0)), 1, "a retry is scheduled")
+	assert_eq(VoicePacksScript.retry_delay(0), 60.0)
+	assert_eq(VoicePacksScript.retry_delay(9), 1800.0)
+	var dp := _dialogue("de")
+	watch_signals(dp)
+	dp.start()
+	assert_signal_emitted(dp, "finished", "no clip: all subtitles at once, nothing waits")
+	Settings.set_value("voice_download", mode_before)
+
+
+## D-100: Remove stops the clips at once, survives a restart, and Download brings them back.
+func test_remove_and_download_again() -> void:
+	var p := _make_pack()
+	var vp := _make_vp(p[1], p[2], _work + "/src")
+	vp.enforce = true
+	vp.ensure("de")
+	await _wait_done(vp)
+	assert_eq(vp.state("de"), "installed")
+	assert_false(vp.blocks("de"))
+	assert_true(vp.remove("de"))
+	assert_eq(vp.state("de"), "missing")
+	assert_true(vp.is_removed("de"))
+	assert_true(vp.blocks("de"), "removed: clips stop now")
+	assert_false(vp.auto("de"), "removed: no automatic download")
+	assert_true(vp.ensure("de"), "Download again: the file is still here, undone at once")
+	assert_false(vp.is_removed("de"))
+	assert_eq(vp.state("de"), "installed")
+	vp.remove("de")
+	var again := _make_vp(p[1], p[2], _work + "/src")
+	assert_false(again.is_ready("de"), "removed stays removed after a restart")
+	assert_false(FileAccess.file_exists(again.pack_path("de")), "the file is deleted at the next start")
+	assert_true(again.is_removed("de"))
+	again.ensure("de")
+	await _wait_done(again)
+	assert_eq(again.state("de"), "installed", again.last_error("de"))
+	assert_false(again.is_removed("de"))
+
+
+## D-100: Settings -> Voices lists EN (in the game, no button) and every pack with its size;
+## Download and Remove work from there (the autoload pointed at a fixture manifest).
+func test_settings_lists_packs_download_and_remove() -> void:
+	var p := _make_pack()
+	var _m := _make_vp(p[1], p[2], _work + "/src", ["pl", "de"])   # writes the fixture manifest
+	var mode_before: Variant = Settings.get_value("voice_download")
+	Settings.set_value("voice_download", "manual")   # no automatic downloads here
+	VoicePacks.manifest_path = _work + "/voice_packs.json"
+	VoicePacks.dir = _work + "/autoload_store"
+	VoicePacks.reload()
 	var scene: Control = load("res://scenes/settings.tscn").instantiate()
 	add_child_autofree(scene)
 	await get_tree().process_frame
-	var box: Control = scene.get_node("Frame/VBox/Scroll/Sections/Access/Box/VoicePack")
-	var label: Label = box.get_node("VoicePackLabel")
-	var download: Button = box.get_node("VoicePackButtons/VoicePackDownload")
-	var later: Button = box.get_node("VoicePackButtons/VoicePackLater")
-	if VoicePacks.is_ready("de"):
-		assert_true(box.visible and not download.visible, "installed: no download plate")
-	else:
-		assert_true(box.visible, "DE is not bundled: the offer is shown")
-		assert_string_contains(label.text, I18n.t(&"settings.voice_pack.title_de"))
-		assert_string_contains(label.text, VoicePacks.size_text(VoicePacks.pack_size("de"), "de"))
-		assert_true(download.visible and later.visible, "asked once: Download + Not now")
-		assert_gte(download.custom_minimum_size.y, 48.0)
-		assert_gte(later.custom_minimum_size.y, 48.0)
-		later.pressed.emit()
-		assert_eq(Settings.get_value("voice_download"), "manual")
-		assert_false(later.visible, "Not now remembered")
-		assert_true(download.visible, "manual download stays available")
-	for k in ["title_de", "download", "not_now", "stop", "retry", "ready", "auto"]:
-		for l in ["pl", "en", "de"]:
+	var rows: Control = scene.get_node("Frame/VBox/Scroll/Sections/Access/Box/VoicePack/VoicePackRows")
+	assert_eq(rows.get_child_count(), 3, "EN, PL, DE")
+	assert_eq(String(rows.get_child(0).name), "Row_en")
+	var en_label: Label = rows.get_node("Row_en/Label")
+	assert_string_contains(en_label.text, I18n.t(&"settings.voice_pack.builtin"))
+	assert_false((rows.get_node("Row_en/Action") as Button).visible, "EN cannot be removed")
+	var de_label: Label = rows.get_node("Row_de/Label")
+	var de_action: Button = rows.get_node("Row_de/Action")
+	if not VoicePacks.is_ready("de"):
+		assert_string_contains(de_label.text, I18n.t(&"settings.voice_pack.title_de"))
+		assert_string_contains(de_label.text, VoicePacks.size_text(p[1], I18n.current_language()))
+		assert_eq(de_action.text, I18n.t(&"settings.voice_pack.download"))
+		assert_gte(de_action.custom_minimum_size.y, 48.0)
+		de_action.pressed.emit()
+		await _wait_done(VoicePacks)
+	assert_eq(VoicePacks.state("de"), "installed", VoicePacks.last_error("de"))
+	await get_tree().process_frame
+	assert_eq(de_action.text, I18n.t(&"settings.voice_pack.remove"))
+	de_action.pressed.emit()
+	assert_true(VoicePacks.is_removed("de"))
+	assert_eq(de_action.text, I18n.t(&"settings.voice_pack.download"))
+	de_action.pressed.emit()   # download again (undo: the file is still here)
+	assert_eq(VoicePacks.state("de"), "installed")
+	for k in ["title_pl", "title_en", "title_de", "download", "remove", "stop", "retry", "ready", "builtin"]:
+		for l in ["pl", "en", "de", "fr", "es"]:
 			var tr := TranslationServer.get_translation_object(l)
 			assert_lte(String(tr.get_message("settings.voice_pack." + k)).length(), 28, "%s/%s" % [k, l])
-	Settings.set_value("language", lang_before)
+	for l in ["pl", "en", "de"]:   # the wrapping toggle; FR/ES are longer and wrap (as before D-100)
+		assert_lte(String(TranslationServer.get_translation_object(l).get_message("settings.voice_pack.auto")).length(), 28, l)
+	VoicePacks.manifest_path = VoicePacksScript.MANIFEST_PATH
+	VoicePacks.dir = VoicePacksScript.DIR
+	VoicePacks._mounted.erase("de")   # the fixture pack is not the real DE pack
+	VoicePacks.reload()
 	Settings.set_value("voice_download", mode_before)
-	Save.set_value("dev_mode", dev)
-	assert_eq(Settings.get_value("language"), lang_before)

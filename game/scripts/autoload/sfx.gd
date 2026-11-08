@@ -576,6 +576,9 @@ func voice_volume_db() -> float:
 func line_clip_path(key: String, lang: String, root: String = LINES_ROOT) -> String:
 	if key == "" or lang == "":
 		return ""
+	# D-100: a removed / not installed voice pack stays silent even while its files resolve
+	if root == LINES_ROOT and get_node_or_null("/root/VoicePacks") != null and VoicePacks.blocks(lang):
+		return ""
 	var path := "%s/%s/%s.ogg" % [root, lang, key]
 	return path if ResourceLoader.exists(path) else ""
 

@@ -1,6 +1,6 @@
 extends Node
-## D-62: voice lines for languages beyond PL/EN are downloaded on demand.
-## PL and EN lines ship in the package. Every other language is one data-only pck
+## D-62/D-100: voice lines for languages beyond EN are downloaded on demand.
+## Only EN lines ship in the package (D-100). Every other language (PL, DE, FR, ES) is one data-only pck
 ## (`voice_<lang>.pck`, built by tools/build_voice_packs.py) listed in
 ## res://data/voice_packs.json with its size and SHA-256. The hash is part of the app,
 ## so a pack is trusted only when it matches the build the player has.
@@ -11,18 +11,27 @@ extends Node
 ## DialoguePlayer plays the clips. Offline or failed: nothing waits for it, the dialogue
 ## stays subtitle-only (as it always is without a clip).
 ## Privacy: one plain GET for a static file; no ids, no cookies, no analytics.
-## Settings "voice_download": "ask" (default; Wi-Fi state is not readable from Godot,
-## so we ask once), "auto" (download when the language is picked), "manual" (offer only).
+## D-100 (owner): EN ships; the phone/game language is fetched in the background on the first
+## run (a short non-blocking note with the size and progress, subtitles meanwhile; offline ->
+## retried later); the rest is up to the player in Settings -> Voices (download / remove; EN
+## cannot be removed). Settings "voice_download": "auto" (default: fetch the game language;
+## the old "ask" means the same) or "manual" (offer only). A pack the player removed is never
+## fetched again on its own. Packs cannot be unmounted: a removed pack stops playing at once
+## (blocks() -> Sfx.line_clip_path) and its file is deleted (at the next start if it was busy).
 
 signal state_changed(lang: String)
 signal progress(lang: String, received: int, total: int)
 signal installed(lang: String)
 signal failed(lang: String, reason: String)
 
-const BUNDLED := ["pl", "en"]
+const BUNDLED := ["en"]           # D-100: only EN ships in the game package
+const ORDER := ["en", "pl", "de", "fr", "es"]   # Settings -> Voices list order
 const MANIFEST_PATH := "res://data/voice_packs.json"
 const DIR := "user://voice_packs"
 const STATE_FILE := "installed.json"
+const REMOVED_FILE := "removed.json"  # languages the player removed: no automatic download again
+const RETRY_S := [60.0, 300.0, 900.0, 1800.0]   # automatic download failed offline: try later
+const NOTE_HIDE_S := 4.0
 const CHUNK := 65536
 const HASH_STEP := 1 << 20        # bytes hashed per frame while verifying
 const COPY_STEP := 1 << 19        # bytes copied per frame for file:// / res:// sources
@@ -34,12 +43,25 @@ var manifest_path := MANIFEST_PATH
 var dir := DIR
 var base_url_override := ""       # replaces the manifest's base_url (file name kept)
 var auto_follow_language := true  # react to Settings language changes
+## Automatic background download of the game language (D-100). Exported builds only by
+## default: editor/CI runs (GUT, screenshots) never touch the network on their own.
+var auto_download := OS.has_feature("template")
+## A removed / not installed pack stops its clips (Sfx.line_clip_path). Exported builds only:
+## in the editor every language's lines exist on disk and keep playing for development.
+var enforce := OS.has_feature("template")
+var show_note := true             # the small download note over the game (automatic downloads)
 
 var _manifest := {}
 var _mounted := {}                # lang -> true
 var _jobs := {}                   # lang -> Job
 var _errors := {}                 # lang -> last failure reason
 var _last_lang := ""
+var _removed := {}                # lang -> true (persisted in REMOVED_FILE)
+var _auto_jobs := {}              # lang -> true: started by auto(): shows the note, retried
+var _retry_n := {}                # lang -> automatic retries so far
+var _note: Control
+var _note_label: Label
+var _note_pct := -1
 
 
 class Job:
@@ -65,11 +87,14 @@ class Job:
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	set_process(false)
+	state_changed.connect(_on_job_event)
+	progress.connect(func(lang: String, _r: int, _t: int) -> void: _update_note(lang))
 	reload()
 	if auto_follow_language and get_node_or_null("/root/Settings") != null:
 		_last_lang = Settings.language()
 		Settings.changed.connect(_on_settings_changed)
-		_auto.call_deferred(_last_lang)
+		if auto_download:
+			auto.call_deferred(_last_lang)
 
 
 ## Reads the manifest and mounts every pack already downloaded for this build.
@@ -80,6 +105,10 @@ func reload() -> void:
 		if parsed is Dictionary:
 			_manifest = parsed
 	DirAccess.make_dir_recursive_absolute(dir)
+	_removed = {}
+	for lang in _read_json(REMOVED_FILE, []):
+		_removed[str(lang)] = true
+		DirAccess.remove_absolute(pack_path(str(lang)))  # deleted now if it was busy last time
 	var state := _read_state()
 	for lang in state:
 		var entry := _entry(lang)
@@ -88,7 +117,7 @@ func reload() -> void:
 			# stale pack from an older build: lines may not match the new texts
 			DirAccess.remove_absolute(path)
 			continue
-		if FileAccess.file_exists(path):
+		if FileAccess.file_exists(path) and not _removed.has(lang):
 			_mount(lang)
 
 
@@ -105,14 +134,39 @@ func has_pack(lang: String) -> bool:
 
 ## Voice clips for this language can play now.
 func is_ready(lang: String) -> bool:
-	return is_bundled(lang) or _mounted.has(lang)
+	return is_bundled(lang) or (_mounted.has(lang) and not _removed.has(lang))
+
+
+## True when clips of `lang` must not play even if their files resolve (a removed pack, or
+## a pack not installed, in an exported build). Sfx.line_clip_path() asks this.
+func blocks(lang: String) -> bool:
+	return enforce and not is_ready(lang)
+
+
+## The player removed this pack (no automatic download until they fetch it again).
+func is_removed(lang: String) -> bool:
+	return _removed.has(lang)
+
+
+## Settings -> Voices: EN first, then every language the manifest offers.
+func languages() -> Array:
+	var out := []
+	for lang in ORDER:
+		if is_bundled(lang) or has_pack(lang):
+			out.append(lang)
+	var packs: Variant = _manifest.get("packs", {})
+	if packs is Dictionary:
+		for lang in packs:
+			if not out.has(lang):
+				out.append(lang)
+	return out
 
 
 ## "bundled" | "installed" | "downloading" | "verifying" | "failed" | "missing" | "none"
 func state(lang: String) -> String:
 	if is_bundled(lang):
 		return "bundled"
-	if _mounted.has(lang):
+	if _mounted.has(lang) and not _removed.has(lang):
 		return "installed"
 	if _jobs.has(lang):
 		return "verifying" if _jobs[lang].phase == "verify" else "downloading"
@@ -131,7 +185,7 @@ func last_error(lang: String) -> String:
 
 func progress_ratio(lang: String) -> float:
 	if not _jobs.has(lang):
-		return 1.0 if _mounted.has(lang) else 0.0
+		return 1.0 if is_ready(lang) else 0.0
 	var j: Job = _jobs[lang]
 	return clampf(float(j.received) / maxf(1.0, float(j.size)), 0.0, 1.0)
 
@@ -149,18 +203,17 @@ func pack_url(lang: String) -> String:
 	return str(e.get("url", ""))
 
 
-## What the UI should do when the player picks `lang` with download mode `mode`:
-## "none" (nothing to fetch), "download" (start now), "ask" (offer with Not now),
-## "offer" (show the size + Download button only).
+## What to do when the game language becomes `lang` with download mode `mode` (D-100):
+## "none" (nothing to fetch), "download" (start in the background; "auto" and the old
+## default "ask"), "offer" ("manual", or a pack the player removed: size + Download only).
 func policy(lang: String, mode: String) -> String:
 	if is_ready(lang) or not has_pack(lang):
 		return "none"
 	if _jobs.has(lang):
 		return "download"
-	match mode:
-		"auto": return "download"
-		"manual": return "offer"
-		_: return "ask"
+	if mode == "manual" or _removed.has(lang):
+		return "offer"
+	return "download"
 
 
 ## "8.2 MB" / "8,2 MB" (decimal comma for PL, DE, FR, ES).
@@ -179,6 +232,11 @@ func ensure(lang: String) -> bool:
 		return true
 	if _jobs.has(lang) or not has_pack(lang):
 		return false
+	if _removed.erase(lang):
+		_write_removed()
+		if _mounted.has(lang) and FileAccess.file_exists(pack_path(lang)):
+			state_changed.emit(lang)  # removed earlier this session, file still here: undo
+			return true
 	var e := _entry(lang)
 	var j := Job.new()
 	j.lang = lang
@@ -196,11 +254,52 @@ func ensure(lang: String) -> bool:
 
 
 func cancel(lang: String) -> void:
+	_auto_jobs.erase(lang)
 	if not _jobs.has(lang):
 		return
 	_close(_jobs[lang])  # the .part stays: the next ensure() resumes it
 	_jobs.erase(lang)
 	state_changed.emit(lang)
+	_hide_note()
+
+
+## Settings -> Voices "Remove": the clips stop now, the files go, and the choice is kept so
+## the pack is not fetched again on its own. EN (bundled) cannot be removed.
+func remove(lang: String) -> bool:
+	if is_bundled(lang):
+		return false
+	cancel(lang)
+	_removed[lang] = true
+	_write_removed()
+	DirAccess.remove_absolute(pack_path(lang) + ".part")
+	DirAccess.remove_absolute(pack_path(lang) + ".part.json")
+	if not _mounted.has(lang):
+		DirAccess.remove_absolute(pack_path(lang))
+		var st := _read_state()
+		st.erase(lang)
+		_write_json(STATE_FILE, st)
+	# a mounted pack's file is deleted at the next start (reload reads REMOVED_FILE)
+	_errors.erase(lang)
+	state_changed.emit(lang)
+	return true
+
+
+## D-100: background download of the game language — first run and every start until it is
+## installed (offline -> retried later); never for EN, a removed pack or mode "manual".
+func auto(lang: String) -> bool:
+	if lang == "" or is_ready(lang) or not has_pack(lang):
+		return false
+	if policy(lang, str(Settings.get_value("voice_download", "auto"))) != "download":
+		return false
+	_auto_jobs[lang] = true
+	ensure(lang)
+	_update_note(lang)
+	return true
+
+
+## The download note's text while it is shown, else "" (tests, accessibility).
+func note_text() -> String:
+	return _note_label.text if _note != null and _note.visible else ""
 
 
 # --- internals -----------------------------------------------------------------------
@@ -212,20 +311,32 @@ func _entry(lang: String) -> Dictionary:
 	return {}
 
 
-func _read_state() -> Dictionary:
-	var p := dir.path_join(STATE_FILE)
+func _read_json(file: String, fallback: Variant) -> Variant:
+	var p := dir.path_join(file)
 	if not FileAccess.file_exists(p):
-		return {}
+		return fallback
 	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(p))
-	return parsed if parsed is Dictionary else {}
+	return parsed if typeof(parsed) == typeof(fallback) else fallback
+
+
+func _write_json(file: String, value: Variant) -> void:
+	var f := FileAccess.open(dir.path_join(file), FileAccess.WRITE)
+	if f != null:
+		f.store_string(JSON.stringify(value))
+
+
+func _read_state() -> Dictionary:
+	return _read_json(STATE_FILE, {})
 
 
 func _write_state(lang: String, sha: String) -> void:
 	var s := _read_state()
 	s[lang] = sha
-	var f := FileAccess.open(dir.path_join(STATE_FILE), FileAccess.WRITE)
-	if f != null:
-		f.store_string(JSON.stringify(s))
+	_write_json(STATE_FILE, s)
+
+
+func _write_removed() -> void:
+	_write_json(REMOVED_FILE, _removed.keys())
 
 
 func _mount(lang: String) -> bool:
@@ -244,12 +355,115 @@ func _on_settings_changed() -> void:
 	if lang == _last_lang:
 		return
 	_last_lang = lang
-	_auto(lang)
+	if auto_download:
+		auto(lang)
 
 
-func _auto(lang: String) -> void:
-	if policy(lang, str(Settings.get_value("voice_download", "ask"))) == "download":
-		ensure(lang)
+# --- D-100: the small download note (non-blocking, ignores input, above the bottom safe area) --
+
+func _update_note(lang: String) -> void:
+	if not show_note or not _auto_jobs.has(lang) or not is_inside_tree():
+		return
+	var st := state(lang)
+	var text := ""
+	match st:
+		"downloading", "verifying":
+			var pct := 100 if st == "verifying" else roundi(progress_ratio(lang) * 100.0)
+			if pct == _note_pct and _note != null and _note.visible:
+				return
+			_note_pct = pct
+			text = _tr(&"voicepack.note.downloading").format({"title": _title(lang),
+					"size": size_text(pack_size(lang), _locale()), "pct": pct})
+		"installed":
+			text = _tr(&"voicepack.note.ready").format({"title": _title(lang)})
+		"failed":
+			text = _tr(&"voicepack.note.later").format({"title": _title(lang)})
+		_:
+			return
+	_show_note(text, st in ["installed", "failed"])
+
+
+func _show_note(text: String, then_hide: bool) -> void:
+	if _note == null:
+		var layer := CanvasLayer.new()
+		layer.name = "VoicePackNoteLayer"
+		layer.layer = 90
+		add_child(layer)
+		_note = PanelContainer.new()
+		_note.name = "VoicePackNote"
+		_note.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_note_label = Label.new()
+		_note_label.name = "Text"
+		_note_label.theme_type_variation = &"Caption"
+		_note_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_note_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		_note_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_note.add_child(_note_label)
+		layer.add_child(_note)
+	_note_label.text = text
+	_note.visible = true
+	_place_note()
+	if then_hide:
+		var shown := text
+		get_tree().create_timer(NOTE_HIDE_S).timeout.connect(func() -> void:
+			if _note != null and _note_label.text == shown:
+				_hide_note())
+
+
+func _place_note() -> void:
+	var vp := get_viewport()
+	if _note == null or vp == null:
+		return
+	var r := vp.get_visible_rect()
+	var ins: Vector4 = SafeArea.insets(_note)
+	var w := minf(r.size.x - 32.0 - ins.x - ins.z, 520.0)
+	_note.custom_minimum_size = Vector2(w, 0)
+	_note.reset_size()
+	_note.position = Vector2(r.position.x + (r.size.x - w) * 0.5, r.end.y - ins.w - 16.0 - _note.size.y)
+
+
+func _hide_note() -> void:
+	if _note != null:
+		_note.visible = false
+	_note_pct = -1
+
+
+func _title(lang: String) -> String:
+	var k := StringName("settings.voice_pack.title_" + lang)
+	var t := _tr(k)
+	return lang.to_upper() if t == String(k) or t == "" else t
+
+
+func _tr(key: StringName) -> String:
+	return I18n.t(key) if get_node_or_null("/root/I18n") != null else String(key)
+
+
+func _locale() -> String:
+	return I18n.current_language() if get_node_or_null("/root/I18n") != null else "en"
+
+
+## Automatic downloads: keep the note in step, and after an offline failure try again later.
+func _on_job_event(lang: String) -> void:
+	if not _auto_jobs.has(lang):
+		return
+	_update_note(lang)
+	match state(lang):
+		"installed":
+			_auto_jobs.erase(lang)
+			_retry_n.erase(lang)
+		"failed":
+			_auto_jobs.erase(lang)
+			if last_error(lang) in ["offline", "timeout", "interrupted"] and is_inside_tree():
+				var n := int(_retry_n.get(lang, 0))
+				_retry_n[lang] = n + 1
+				get_tree().create_timer(retry_delay(n)).timeout.connect(func() -> void:
+					if auto_download and state(lang) in ["failed", "missing"]:
+						auto(lang))
+
+
+## Seconds before the n-th automatic retry (0-based): 1 min, 5 min, 15 min, then every 30 min.
+static func retry_delay(n: int) -> float:
+	return RETRY_S[clampi(n, 0, RETRY_S.size() - 1)]
 
 
 func _start(j: Job) -> void:

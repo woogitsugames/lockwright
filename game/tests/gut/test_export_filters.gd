@@ -189,3 +189,24 @@ func test_tutorial_cards_ship() -> void:
 		for i in range(1, 13):
 			var g := "res://assets/ui/gpt/tutorial/g11-%02d-clean.png" % i
 			assert_ne(excluded_by(g, presets[preset]), "", "%s leaves out the replaced sketch %s" % [preset, g])
+
+
+## D-100: only EN voice lines ship in the mobile package; PL, DE, FR and ES are voice packs
+## (each with its own data-only "Voice <lang>" preset for tools/build_voice_packs.py).
+func test_only_en_voice_lines_ship() -> void:
+	var presets := _presets()
+	for name in presets:
+		var f: PackedStringArray = presets[name]
+		assert_eq(excluded_by("res://assets/audio/lines/en/job.cat_bathroom.line.1.ogg", f), "", "%s keeps EN" % name)
+		for lang in ["pl", "de", "fr", "es"]:
+			assert_ne(excluded_by("res://assets/audio/lines/%s/job.cat_bathroom.line.1.ogg" % lang, f), "",
+				"%s leaves %s out (voice pack)" % [name, lang.to_upper()])
+	var cfg := ConfigFile.new()
+	cfg.load("res://export_presets.cfg")
+	var packs := {}
+	for section in cfg.get_sections():
+		if cfg.has_section_key(section, "name") and String(cfg.get_value(section, "name")).begins_with("Voice "):
+			packs[String(cfg.get_value(section, "name")).trim_prefix("Voice ")] = String(cfg.get_value(section, "include_filter", ""))
+	for lang in ["pl", "de", "fr", "es"]:
+		assert_eq(packs.get(lang, ""), "assets/audio/lines/%s/*.ogg" % lang, "preset Voice %s" % lang)
+	assert_false(packs.has("en"), "EN is never a pack")

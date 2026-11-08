@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build on-demand voice packs (D-62): one data-only Godot pck per non-bundled language.
 
-PL and EN voice lines ship inside the game package; every other language
-(game/assets/audio/lines/<lang>/, today DE) becomes `voice_<lang>.pck`, exported by
+EN voice lines ship inside the game package (D-100); every other language
+(game/assets/audio/lines/<lang>/: PL, DE, FR, ES) becomes `voice_<lang>.pck`, exported by
 Godot with `--export-pack "Voice <lang>"` (a dedicated preset in game/export_presets.cfg
 whose include_filter holds only that language's lines). The game downloads the pck on
 demand, checks its SHA-256 against game/data/voice_packs.json and mounts it with
@@ -38,7 +38,7 @@ GAME = os.path.join(ROOT, "game")
 LINES = os.path.join(GAME, "assets", "audio", "lines")
 PRESETS = os.path.join(GAME, "export_presets.cfg")
 GAME_MANIFEST = os.path.join(GAME, "data", "voice_packs.json")
-BUNDLED = ("pl", "en")
+BUNDLED = ("en",)   # D-100: only EN ships in the game package; PL is a pack like DE/FR/ES
 DEFAULT_BASE_URL = "https://github.com/woogitsugames/lockwright/releases/download/voice-packs-{version}"
 HOUSEKEEPING = {
     "res://project.binary",
