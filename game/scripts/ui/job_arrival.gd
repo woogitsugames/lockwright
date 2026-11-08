@@ -367,8 +367,7 @@ func _setup_dialogue(job: Dictionary) -> void:
 	dialogue.setup(rows, keys, texts)
 	lines_box.mouse_filter = Control.MOUSE_FILTER_PASS
 	lines_box.gui_input.connect(dialogue.on_gui_input)
-	dialogue.line_started.connect(func(i: int, _voiced: bool) -> void:
-		scroll.ensure_control_visible.call_deferred(rows[i]))
+	dialogue.line_started.connect(func(i: int, _voiced: bool) -> void: _follow_line(rows[i]))
 	if dialogue.has_any_clip():
 		skip_all_button.visible = true
 		skip_all_button.tooltip_text = I18n.t(&"dialogue.skip_all")
@@ -382,6 +381,27 @@ func _setup_dialogue(job: Dictionary) -> void:
 			if speaker != PLAYER:
 				Sfx.play_voice(StringName(speaker), &"greeting")
 				break
+
+
+# Keep the line being spoken in view. The row was hidden until now, so its position is only
+# valid after the VBox re-sorts (deferred) - scrolling straight away used stale coordinates.
+func _follow_line(row: Control) -> void:
+	if not is_inside_tree():
+		return
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if not is_instance_valid(row) or not is_inside_tree():
+		return
+	var bar := scroll.get_v_scroll_bar()
+	var row_bottom := row.get_global_rect().end.y - scroll.get_global_rect().position.y + scroll.scroll_vertical
+	var target := clampf(row_bottom - scroll.size.y + 8.0, 0.0, maxf(bar.max_value - bar.page, 0.0))
+	if target <= scroll.scroll_vertical:
+		return
+	if UiA11y.reduce_motion():
+		scroll.scroll_vertical = int(target)
+	else:
+		create_tween().tween_property(scroll, "scroll_vertical", int(target), 0.2) \
+			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 
 static func _pass_mouse(n: Node) -> void:

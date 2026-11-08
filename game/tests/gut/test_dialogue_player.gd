@@ -215,3 +215,29 @@ func test_arrival_screen_uses_dialogue_player() -> void:
 		assert_false(skip.visible)
 	for row in lines.get_children():
 		assert_true(row.visible)
+
+
+func test_arrival_scrolls_to_each_new_line() -> void:
+	# Owner 2026-11-08: during a voiced conversation the newest line went below the fold and had to be
+	# scrolled by hand. Each started line must end up fully inside the scroll viewport.
+	JobRun.start(JobRun.job_by_id("job.kiosk_shutter"))
+	var scene: Control = load("res://scenes/job_arrival.tscn").instantiate()
+	var holder := Control.new()
+	holder.size = Vector2(360, 560)  # small phone-like frame so the lines overflow
+	add_child_autofree(holder)
+	holder.add_child(scene)
+	await get_tree().process_frame
+	var dp: Node = scene.dialogue
+	var scroll: ScrollContainer = scene.get_node("Frame/VBox/Scroll")
+	var lines: VBoxContainer = scene.get_node("Frame/VBox/Scroll/Body/Lines")
+	if not dp.has_any_clip():
+		pass_test("no voiced lines in this language: all lines are shown at once")
+		return
+	for i in lines.get_child_count():
+		if i > 0:
+			dp.advance()
+		await wait_seconds(0.35)
+		var row: Control = lines.get_child(i)
+		assert_true(row.visible)
+		var view := scroll.get_global_rect()
+		assert_lte(row.get_global_rect().end.y, view.end.y + 1.0, "line %d is visible without manual scrolling" % i)
