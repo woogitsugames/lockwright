@@ -1,0 +1,1103 @@
+11-08 15:20:42.882 I/Zygote  (31577): Process 31577 created for com.woogitsugames.lockwright
+11-08 15:20:42.882 I/ames.lockwright(31577): Late-enabling -Xcheck:jni
+11-08 15:20:42.913 I/ames.lockwright(31577): Using non-generational CollectorTypeCMC GC.
+11-08 15:20:42.927 D/nativeloader(31577): Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+11-08 15:20:42.937 D/ActivityThread(31577): setConscryptValidator
+11-08 15:20:42.937 D/ActivityThread(31577): setConscryptValidator - put
+11-08 15:20:43.041 D/nativeloader(31577): Configuring clns-9 for other apk /data/app/~~jnfkI9ItzBeevnJommD6Wg==/com.woogitsugames.lockwright-8NjxpRYiVKFEAjiJ1ocl3g==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~jnfkI9ItzBeevnJommD6Wg==/com.woogitsugames.lockwright-8NjxpRYiVKFEAjiJ1ocl3g==/lib/arm64:/data/app/~~jnfkI9ItzBeevnJommD6Wg==/com.woogitsugames.lockwright-8NjxpRYiVKFEAjiJ1ocl3g==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.woogitsugames.lockwright
+11-08 15:20:43.065 V/GraphicsEnvironment(31577): Currently set values for:
+11-08 15:20:43.065 V/GraphicsEnvironment(31577):   angle_gl_driver_selection_pkgs=[]
+11-08 15:20:43.065 V/GraphicsEnvironment(31577):   angle_gl_driver_selection_values=[]
+11-08 15:20:43.065 V/GraphicsEnvironment(31577): com.woogitsugames.lockwright is not listed in per-application setting
+11-08 15:20:43.066 V/GraphicsEnvironment(31577): ANGLE allowlist from config: com.dreamgames.royalmatch com.dts.freefiremax com.dxx.firenow com.gramgames.mergedragons com.ludo.king com.mojang.minecraftpe com.my.defense com.nintendo.zaka com.os.airforce com.playrix.fishdomdd.gplay io.teslatech.callbreak jp.konami.prospia net.peakgames.toonblast
+11-08 15:20:43.066 V/GraphicsEnvironment(31577): No special selections for ANGLE, returning default driver choice
+11-08 15:20:43.066 V/GraphicsEnvironment(31577): Neither updatable production driver nor prerelease driver is supported.
+11-08 15:20:43.138 D/DesktopExperienceFlags(31577): Toggle override initialized to: false
+11-08 15:20:43.185 D/ActivityThread(31577): com.woogitsugames.lockwright will use render engine as VK
+11-08 15:20:43.187 I/DisplayManager(31577): Choreographer implicitly registered for the refresh rate.
+11-08 15:20:43.189 D/libMEOW (31577): meow new tls: 0xb40000764e89ec80
+11-08 15:20:43.190 D/libMEOW (31577): meow reload base cfg path: na
+11-08 15:20:43.190 D/libMEOW (31577): meow reload overlay cfg path: na
+11-08 15:20:43.191 D/libMEOW (31577): applied 0 plugin for [com.woogitsugames.lockwright].
+11-08 15:20:43.192 I/mali    (31577): Successfully parsed 2 environment variable(s) from /vendor/etc/mali_platform.config.
+11-08 15:20:43.194 I/mali    (31577): Successfully parsed 2 environment variable(s) from /vendor/etc/mali_platform.config.
+11-08 15:20:43.226 E/ashmem  (31577): Pinning is deprecated since Android Q. Please use trim or other methods.
+11-08 15:20:43.247 D/CompatChangeReporter(31577): Compat change id reported: 377864165; UID 10230; state: ENABLED
+11-08 15:20:43.249 D/DesktopModeFlags(31577): Toggle override initialized to: OVERRIDE_UNSET
+11-08 15:20:43.254 I/DecorView(31577): setWindowBackground: isPopOver=false color=ff000000 d=android.graphics.drawable.ColorDrawable@21b5111
+11-08 15:20:43.258 D/PhoneWindow(31577): forceLight changed to false [] from com.android.internal.policy.PhoneWindow.updateForceLightNavigationBar:663 com.android.internal.policy.PhoneWindow.setNavigationBarColor:4435 androidx.activity.EdgeToEdgeApi29.setUp:290 androidx.activity.EdgeToEdge.enable:89 androidx.activity.EdgeToEdge.enable$default:71 
+11-08 15:20:43.260 D/GodotActivity(31577): Project command line parameters: [--xr_mode_regular, --xr-mode, off, --fullscreen, --background_color, #000000]
+11-08 15:20:43.261 D/GodotActivity(31577): Launch intent Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher } with parameters []
+11-08 15:20:43.273 V/GodotActivity(31577): Creating new Godot fragment instance.
+11-08 15:20:43.293 V/Godot   (31577): Initializing Godot plugin registry
+11-08 15:20:43.301 I/GodotPluginRegistry(31577): Registering runtime plugin AndroidRuntime
+11-08 15:20:43.301 I/GodotPluginRegistry(31577): Initializing Godot plugin LockwrightLowLatencyAudio
+11-08 15:20:43.302 I/GodotPluginRegistry(31577): Completed initialization for Godot plugin LockwrightLowLatencyAudio
+11-08 15:20:43.302 I/GodotPluginRegistry(31577): Initializing Godot plugin LockwrightHaptics
+11-08 15:20:43.302 I/GodotPluginRegistry(31577): Completed initialization for Godot plugin LockwrightHaptics
+11-08 15:20:43.303 V/Godot   (31577): InitEngine with params: [--xr_mode_regular, --xr-mode, off, --fullscreen, --background_color, #000000]
+11-08 15:20:43.582 D/nativeloader(31577): Load /data/app/~~jnfkI9ItzBeevnJommD6Wg==/com.woogitsugames.lockwright-8NjxpRYiVKFEAjiJ1ocl3g==/base.apk!/lib/arm64-v8a/libgodot_android.so using class loader ns clns-9 (caller=/data/app/~~jnfkI9ItzBeevnJommD6Wg==/com.woogitsugames.lockwright-8NjxpRYiVKFEAjiJ1ocl3g==/base.apk): ok
+11-08 15:20:43.589 V/Godot   (31577): Godot native layer initialization completed: true
+11-08 15:20:43.589 V/Godot   (31577): Setting up native layer with params: [--xr-mode, off, --fullscreen]
+11-08 15:20:43.661 V/Godot   (31577): Godot native layer setup completed
+11-08 15:20:43.661 V/Godot   (31577): OnInitRenderView: GodotFragment{a665f14} (69c9a466-6143-4cba-b377-aef11bda88c4 id=0x7f07002c)
+11-08 15:20:43.661 I/TextToSpeech(31577): Create TextToSpeech : caller process id[31577] / name[com.woogitsugames.lockwright] / target[null]
+11-08 15:20:43.699 D/Godot   (31577): Render view should be transparent: false
+11-08 15:20:43.711 D/vulkan  (31577): searching for layers in '/data/app/~~jnfkI9ItzBeevnJommD6Wg==/com.woogitsugames.lockwright-8NjxpRYiVKFEAjiJ1ocl3g==/lib/arm64'
+11-08 15:20:43.714 D/vulkan  (31577): searching for layers in '/data/app/~~jnfkI9ItzBeevnJommD6Wg==/com.woogitsugames.lockwright-8NjxpRYiVKFEAjiJ1ocl3g==/base.apk!/lib/arm64-v8a'
+11-08 15:20:43.715 D/vulkan  (31577): searching for layers in '/data/app/~~jnfkI9ItzBeevnJommD6Wg==/com.woogitsugames.lockwright-8NjxpRYiVKFEAjiJ1ocl3g==/lib/arm64'
+11-08 15:20:43.716 D/vulkan  (31577): searching for layers in '/data/app/~~jnfkI9ItzBeevnJommD6Wg==/com.woogitsugames.lockwright-8NjxpRYiVKFEAjiJ1ocl3g==/base.apk!/lib/arm64-v8a'
+11-08 15:20:43.721 D/Godot   (31577): renderingDevice: vulkan (ProjectSettings)
+11-08 15:20:43.721 D/Godot   (31577): 			renderer: mobile (ProjectSettings)
+11-08 15:20:43.744 V/Godot   (31577): OnStart: GodotFragment{a665f14} (69c9a466-6143-4cba-b377-aef11bda88c4 id=0x7f07002c)
+11-08 15:20:43.750 V/Godot   (31577): OnResume: GodotFragment{a665f14} (69c9a466-6143-4cba-b377-aef11bda88c4 id=0x7f07002c)
+11-08 15:20:43.750 V/VkRenderer(31577): Renderer resumed
+11-08 15:20:43.753 D/nativeloader(31577): Load /data/app/~~jnfkI9ItzBeevnJommD6Wg==/com.woogitsugames.lockwright-8NjxpRYiVKFEAjiJ1ocl3g==/base.apk!/lib/arm64-v8a/liblwaudio.so using class loader ns clns-9 (caller=/data/app/~~jnfkI9ItzBeevnJommD6Wg==/com.woogitsugames.lockwright-8NjxpRYiVKFEAjiJ1ocl3g==/base.apk): ok
+11-08 15:20:43.754 I/OboeAudio(31577): openStreamInternal() OUTPUT -------- OboeVersion1.9.3 --------
+11-08 15:20:43.757 I/AAudio  (31577): AAudioStreamBuilder_openStream() called ----------------------------------------
+11-08 15:20:43.757 I/AudioStreamBuilder(31577): rate   =      0, channels  = 1, channelMask = 0x80000001, format   = 0x5, sharing = EX, dir = OUTPUT
+11-08 15:20:43.758 I/AudioStreamBuilder(31577): devices = AUDIO_PORT_HANDLE_NONE, sessionId = -1, perfMode = 12, callback: ON with frames = 0
+11-08 15:20:43.758 I/AudioStreamBuilder(31577): usage  =     14, contentType = 4, inputPreset = 6, allowedCapturePolicy = 0
+11-08 15:20:43.758 I/AudioStreamBuilder(31577): privacy sensitive = false, opPackageName = (null), attributionTag = (null)
+11-08 15:20:43.758 D/AudioStreamBuilder(31577): build, global mmap policy is 0
+11-08 15:20:43.758 D/AudioSystem(31577): onNewService: media.audio_policy service obtained 0xb4000075d1269e80
+11-08 15:20:43.759 D/AudioSystem(31577): getService: IAudioPolicyService retrieved: 0xb4000075d1269e80  cached: 0xb4000075d1269e80
+11-08 15:20:43.759 D/AudioStreamBuilder(31577): build, system mmap policy is 1
+11-08 15:20:43.759 D/AudioStreamBuilder(31577): build, final mmap policy is 1
+11-08 15:20:43.759 D/AudioStreamBuilder(31577): build, system mmap exclusive policy is 1
+11-08 15:20:43.759 D/AudioStreamBuilder(31577): build, final mmap exclusive policy is 1
+11-08 15:20:43.759 D/AudioStreamBuilder(31577): build() EXCLUSIVE sharing mode not supported. Use SHARED.
+11-08 15:20:43.759 D/ames.lockwright(31577): PlayerBase::PlayerBase()
+11-08 15:20:43.760 D/AudioStreamTrack(31577): open(), request notificationFrames = -8, frameCount = 0
+11-08 15:20:43.765 D/AudioSystem(31577): onNewServiceWithAdapter: media.audio_flinger service obtained 0xb4000075d136c320
+11-08 15:20:43.767 D/AudioSystem(31577): getService: IAudioFlingerService retrieved: 0xb4000075d126ee80  IAudioFlinger cached: 0xb4000075d136c320
+11-08 15:20:43.774 I/AudioTrack(31577): createTrack_l(0): AUDIO_OUTPUT_FLAG_FAST successful; frameCount 0 -> 2048
+11-08 15:20:43.775 D/AudioTrack(31577): setVolume(1.000000, 1.000000) pid : 31577
+11-08 15:20:43.777 D/AAudioStream(31577): setState(s#1) from 0 to 2
+11-08 15:20:43.779 I/AAudio  (31577): AAudioStreamBuilder_openStream() got Legacy, devIds = [3], perf = LL, burst = 256
+11-08 15:20:43.779 I/AAudio  (31577): AAudioStreamBuilder_openStream() returns 0 = AAUDIO_OK for s#1 ----------------
+11-08 15:20:43.779 D/AAudio  (31577): AAudioStream_requestStart(s#1) called --------------
+11-08 15:20:43.779 D/AAudioStream(31577): setState(s#1) from 2 to 3
+11-08 15:20:43.822 D/AAudio  (31577): AAudioStream_requestStart(s#1) returned 0 ---------
+11-08 15:20:43.822 I/LWAudio (31577): stream open: api 2, sharing 1, perf 12, rate 48000, burst 256, buffer 512/2048
+11-08 15:20:43.822 D/AudioStreamLegacy(31577): onAudioDeviceUpdate() devices 3 => 3
+11-08 15:20:43.837 D/HardwareRenderer(31577): onDisplayChanged. displayId=0 current wxh=1080x2340 mLargest wxh=0x0
+11-08 15:20:43.838 D/HardwareRenderer(31577): Set largestWidth and largestHeight as logical resolution. (1080x2340)
+11-08 15:20:43.839 D/NativeCustomFrequencyManager(31577): [NativeCFMS] BpCustomFrequencyManager::BpCustomFrequencyManager()
+11-08 15:20:43.864 I/TextToSpeech(31577): com.woogitsugames.lockwright is not allowed to bind to private engine.
+11-08 15:20:43.864 D/AAudioStream(31577): setState(s#1) from 3 to 4
+11-08 15:20:43.866 I/TextToSpeech(31577): getHighestRankedPublicEngineName = com.google.android.tts
+11-08 15:20:43.870 I/TextToSpeech(31577): Sucessfully bound to com.google.android.tts
+11-08 15:20:43.871 I/IDS_TAG (31577): Clearing training data of android.app.Application@8c73cee
+11-08 15:20:43.874 I/IDS_TAG (31577): Starting IDS observe window
+11-08 15:20:43.874 I/IDS_TAG (31577): Getting Shared Preference for android.app.Application@8c73cee uid = 10230
+11-08 15:20:43.879 I/IDS_TAG (31577): App android.app.Application@8c73cee has not finished training
+11-08 15:20:43.883 I/IDS_TAG (31577): Closing IDS observe window
+11-08 15:20:43.883 I/IDS_TAG (31577): Getting Shared Preference for android.app.Application@8c73cee uid = 10230
+11-08 15:20:43.884 I/IDS_TAG (31577): IDS count updated to 1 for android.app.Application@8c73cee
+11-08 15:20:43.887 D/WindowOnBackDispatcher(31577): setTopOnBackInvokedCallback (unwrapped): android.app.Activity$$ExternalSyntheticLambda0@7ada3a0
+11-08 15:20:43.887 D/WindowOnBackDispatcher(31577): setTopOnBackInvokedCallback (unwrapped): androidx.activity.OnBackPressedDispatcher$Api34Impl$createOnBackAnimationCallback$1@a899b59
+11-08 15:20:43.917 D/BufferQueueConsumer(31577): [](id:7b5900000000,api:0,p:-1,c:31577) connect: controlledByApp=false
+11-08 15:20:43.944 D/BufferQueueConsumer(31577): [](id:7b5900000001,api:0,p:-1,c:31577) connect: controlledByApp=false
+11-08 15:20:43.946 I/SV[46593908 GodotAppLauncher](31577): pST: sr = Rect(0, 0 - 1080, 2340) sw = 1080 sh = 2340
+11-08 15:20:43.946 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mVisible = true mSurface.isValid() = true
+11-08 15:20:43.946 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mSurfaceCreated = false surfaceChanged = true visibleChanged = true
+11-08 15:20:43.947 I/SV[46593908 GodotAppLauncher](31577): surfaceCreated 1 #8 org.godotengine.godot.GodotVulkanRenderView{2c6f774 VFE...... .F....ID 0,0-1080,2340}
+11-08 15:20:43.947 I/SV[46593908 GodotAppLauncher](31577): surfaceChanged (1080,2340) 1 #8 org.godotengine.godot.GodotVulkanRenderView{2c6f774 VFE...... .F....ID 0,0-1080,2340}
+11-08 15:20:43.947 V/VkRenderer(31577): Initializing renderer...
+11-08 15:20:43.947 I/godot   (31577): Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+11-08 15:20:43.953 I/SV[46593908 GodotAppLauncher](31577): uSP: rtp = Rect(0, 0 - 1080, 2340) rtsw = 1080 rtsh = 2340
+11-08 15:20:43.953 I/SV[46593908 GodotAppLauncher](31577): onSSPAndSRT: pl = 0 pt = 0 sx = 1.0 sy = 1.0
+11-08 15:20:43.956 D/ames.lockwright(31577): Can't load libmbrainSDK
+11-08 15:20:43.956 D/ames.lockwright(31577): initMbrain failed
+11-08 15:20:43.963 I/GrallocExtra(31577): gralloc_extra_query:is_SW3D 0
+11-08 15:20:43.966 I/GrallocExtra(31577): gralloc_extra_query:is_SW3D 0
+11-08 15:20:43.967 D/ames.lockwright(31577): Can't load libmbrainSDK
+11-08 15:20:43.967 D/ames.lockwright(31577): initMbrain failed
+11-08 15:20:44.015 I/mali    (31577): Successfully parsed 2 environment variable(s) from /vendor/etc/mali_platform.config.
+11-08 15:20:44.091 I/godot   (31577): Vulkan 1.3.303 - Forward Mobile - Using Device #0: ARM - Mali-G57 MC2
+11-08 15:20:44.355 W/InteractionJankMonitor(31577): Initializing without READ_DEVICE_CONFIG permission. enabled=false, interval=1, missedFrameThreshold=3, frameTimeThreshold=64, package=com.woogitsugames.lockwright
+11-08 15:20:44.393 I/TextToSpeech(31577): Connected to TTS engine
+11-08 15:20:44.839 D/ames.lockwright(31577): PlayerBase::PlayerBase()
+11-08 15:20:44.839 D/ames.lockwright(31577): TrackPlayerBase::TrackPlayerBase()
+11-08 15:20:44.839 I/libOpenSLES(31577): Emulating old channel mask behavior (ignoring positional mask 0x3, using default mask 0x3 based on channel count of 2)
+11-08 15:20:44.847 I/AudioTrack(31577): Need throttle time for OpenSLES player
+11-08 15:20:44.854 I/godot   (31577): 
+11-08 15:20:44.900 I/TextToSpeech(31577): Setting up the connection to TTS engine...
+11-08 15:20:45.036 I/SwappyDisplayManager(31577): Using internal com/google/androidgamesdk/SwappyDisplayManager class from dex bytes.
+11-08 15:20:45.039 I/SwappyDisplayManager(31577): Starting looper thread
+11-08 15:20:45.686 V/Godot   (31577): OnGodotSetupCompleted
+11-08 15:20:45.756 E/VibratorInfo(31577): Invalid frequency profile received from HAL. resonantFrequencyHz=NaN, frequenciesHz=null, outputAccelerationsGs=null
+11-08 15:20:45.757 I/LockwrightHaptics(31577): tier=ON_OFF primitives=[] amplitude=false envelope=false
+11-08 15:20:45.757 I/godot   (31577): Haptics: native plugin LockwrightHaptics detected, play=true test_pulse=true caps={ "tier": "ON_OFF", "primitives": [], "amplitude_control": false, "envelope": false, "native": true }
+11-08 15:20:45.839 I/godot   (31577): Quality: RAM 3.57 GiB -> auto cap low
+11-08 15:20:45.871 V/Godot   (31577): OnGodotMainLoopStarted
+11-08 15:20:45.907 I/godot   (31577): Sfx: native click bridge LockwrightLowLatencyAudio play=true load_sample=true samples=32/336 (skipped non-PCM16/stereo 0) -> native in 18 ms
+11-08 15:20:46.066 I/godot   (31577): LW_BOOT engine_to_menu_ms=2476 tree_ms=2097 menu_first_frame_ms=9 ready=PerfProbe:2,DpScale:0,Settings:2,Save:3,I18n:56,Events:0,Haptics:8,FeedbackDirector:0,UiA11y:6,Sfx:70,Quality:6,FrameHint:0,Achievements:1,ErrorLog:25,Nav:0,VoicePacks:2,Boot:3,@Label@14:4,MainMenu:182
+11-08 15:20:46.066 I/godot   (31577): LW_SCENE main_menu.tscn tap_ms=-1 first_frame_ms=9 static_mb=62 tex_mb=10
+11-08 15:20:47.660 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 19132 gle.android.tts:high(31644) 10524 .app.soundalive:high(31639) 4872
+11-08 15:20:48.059 I/godot   (31577): LW_HITCH main_menu.tscn max_frame_ms=143 (first 2000 ms)
+11-08 15:20:49.040 D/ProfileInstaller(31577): Installing profile for com.woogitsugames.lockwright
+11-08 15:20:55.937 I/godot   (31577): Quality: auto profile after 10 s avg 16.9 ms -> low
+11-08 15:21:07.880 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:21:07.893 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -590273527 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:21:07.894 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -590273527 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:21:07.896 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:21:07.897 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -930381420
+11-08 15:21:07.897 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -930381420
+11-08 15:21:08.192 I/GestureDetector(31577): handleMessage TAP
+11-08 15:21:08.193 I/GestureDetector(31577): handleMessage TAP
+11-08 15:21:08.655 I/godot   (31577): LW_SCENE settings.tscn tap_ms=745 first_frame_ms=512 static_mb=73 tex_mb=17
+11-08 15:21:08.656 I/godot   (31577): LW_SLOW settings.tscn frame_ms=557 process_ms=20 physics_ms=2
+11-08 15:21:10.144 I/godot   (31577): LW_HITCH settings.tscn max_frame_ms=557 (first 2000 ms)
+11-08 15:21:11.695 D/io_stats(  625): !@ Read_top(KB): system_server:high(2084) 176 ames.lockwright:top(31577) 92 ndroid.systemui:high(2993) 68
+11-08 15:21:19.335 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:21:19.337 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -126033673 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:21:19.338 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -126033673 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:21:19.344 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -795724833
+11-08 15:21:19.344 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -795724833
+11-08 15:21:19.941 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:21:21.044 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:21:21.045 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -411531299 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:21:21.045 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -411531299 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:21:21.052 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -971962704
+11-08 15:21:21.052 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -971962704
+11-08 15:21:21.659 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:21:29.692 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:21:29.694 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -1018836138 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:21:29.695 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -1018836138 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:21:29.698 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:21:29.698 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -997415384
+11-08 15:21:29.699 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -997415384
+11-08 15:21:29.994 I/GestureDetector(31577): handleMessage TAP
+11-08 15:21:29.994 I/GestureDetector(31577): handleMessage TAP
+11-08 15:21:38.145 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:21:38.150 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -509839207 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:21:38.153 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -509839207 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:21:38.156 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:21:38.157 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -549786263
+11-08 15:21:38.157 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -549786263
+11-08 15:21:38.449 I/GestureDetector(31577): handleMessage TAP
+11-08 15:21:38.452 I/GestureDetector(31577): handleMessage TAP
+11-08 15:21:39.489 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:21:39.504 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:21:39.504 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:21:39.504 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:21:39.504 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:21:39.548 I/godot   (31577): LW_SCENE main_menu.tscn tap_ms=1374 first_frame_ms=3 static_mb=72 tex_mb=26
+11-08 15:21:39.726 D/io_stats(  625): !@ Read_top(KB): ogle.android.as:high(11139) 456 chtype.swiftkey:top(27295) 416 ames.lockwright:top(31577) 228
+11-08 15:21:41.558 I/godot   (31577): LW_HITCH main_menu.tscn max_frame_ms=35 (first 2000 ms)
+11-08 15:21:47.186 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:21:47.187 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -937547635 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:21:47.187 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -937547635 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:21:47.189 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:21:47.193 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -755539851
+11-08 15:21:47.193 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -755539851
+11-08 15:21:47.466 I/godot   (31577): LW_SLOW main_menu.tscn frame_ms=158 process_ms=20 physics_ms=1
+11-08 15:21:47.486 I/GestureDetector(31577): handleMessage TAP
+11-08 15:21:47.486 I/GestureDetector(31577): handleMessage TAP
+11-08 15:21:47.792 I/godot   (31577): LW_SCENE jobs_list.tscn tap_ms=590 first_frame_ms=235 static_mb=76 tex_mb=26
+11-08 15:21:47.792 I/godot   (31577): LW_SLOW jobs_list.tscn frame_ms=326 process_ms=20 physics_ms=1
+11-08 15:21:49.559 I/godot   (31577): LW_HITCH jobs_list.tscn max_frame_ms=326 (first 2000 ms)
+11-08 15:21:56.349 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:21:56.350 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -663890116 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:21:56.350 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -663890116 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:21:56.352 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:21:56.353 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -103796160
+11-08 15:21:56.354 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -103796160
+11-08 15:21:56.525 I/godot   (31577): LW_SCENE job_arrival.tscn tap_ms=150 first_frame_ms=76 static_mb=74 tex_mb=23
+11-08 15:21:56.525 I/godot   (31577): LW_SLOW job_arrival.tscn frame_ms=150 process_ms=19 physics_ms=0
+11-08 15:21:56.650 I/GestureDetector(31577): handleMessage TAP
+11-08 15:21:56.650 I/GestureDetector(31577): handleMessage TAP
+11-08 15:21:58.460 I/godot   (31577): LW_HITCH job_arrival.tscn max_frame_ms=150 (first 2000 ms)
+11-08 15:22:07.293 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:22:07.297 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -704985916 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:22:07.299 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -704985916 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:22:07.303 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:22:07.303 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -208094692
+11-08 15:22:07.304 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -208094692
+11-08 15:22:07.595 I/GestureDetector(31577): handleMessage TAP
+11-08 15:22:07.599 I/GestureDetector(31577): handleMessage TAP
+11-08 15:22:07.604 I/godot   (31577): LW_SCENE job_verify.tscn tap_ms=183 first_frame_ms=36 static_mb=78 tex_mb=34
+11-08 15:22:07.604 I/godot   (31577): LW_SLOW job_verify.tscn frame_ms=184 process_ms=31 physics_ms=2
+11-08 15:22:09.579 I/godot   (31577): LW_HITCH job_verify.tscn max_frame_ms=184 (first 2000 ms)
+11-08 15:22:27.288 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:22:27.295 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:22:27.296 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:22:27.296 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:22:27.296 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:22:27.395 I/godot   (31577): LW_SCENE job_arrival.tscn tap_ms=-1 first_frame_ms=11 static_mb=77 tex_mb=43
+11-08 15:22:29.398 I/godot   (31577): LW_HITCH job_arrival.tscn max_frame_ms=93 (first 2000 ms)
+11-08 15:22:30.878 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:22:30.889 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:22:30.889 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:22:30.889 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:22:30.890 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:22:31.029 I/godot   (31577): LW_SCENE jobs_list.tscn tap_ms=-1 first_frame_ms=30 static_mb=81 tex_mb=43
+11-08 15:22:33.014 I/godot   (31577): LW_HITCH jobs_list.tscn max_frame_ms=130 (first 2000 ms)
+11-08 15:22:51.233 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:22:51.236 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -158156615 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:22:51.237 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -158156615 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:22:51.240 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:22:51.242 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -349342480
+11-08 15:22:51.242 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -349342480
+11-08 15:22:51.535 I/GestureDetector(31577): handleMessage TAP
+11-08 15:22:51.537 I/GestureDetector(31577): handleMessage TAP
+11-08 15:22:51.653 I/godot   (31577): LW_SCENE job_arrival.tscn tap_ms=390 first_frame_ms=5 static_mb=77 tex_mb=25
+11-08 15:22:51.653 I/godot   (31577): LW_SLOW job_arrival.tscn frame_ms=389 process_ms=21 physics_ms=2
+11-08 15:22:51.807 D/io_stats(  625): !@ Read_top(KB): system_server:high(2084) 72 ames.lockwright:top(31577) 52 rkstack.process:high(3009) 20
+11-08 15:22:53.653 I/godot   (31577): LW_HITCH job_arrival.tscn max_frame_ms=389 (first 2000 ms)
+11-08 15:23:05.000 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:23:05.002 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -369624097 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:23:05.003 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -369624097 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:23:05.004 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:23:05.006 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -75439216
+11-08 15:23:05.010 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -75439216
+11-08 15:23:05.196 I/godot   (31577): LW_SCENE job_verify.tscn tap_ms=170 first_frame_ms=103 static_mb=79 tex_mb=132
+11-08 15:23:05.197 I/godot   (31577): LW_SLOW job_verify.tscn frame_ms=170 process_ms=24 physics_ms=2
+11-08 15:23:05.302 I/GestureDetector(31577): handleMessage TAP
+11-08 15:23:05.302 I/GestureDetector(31577): handleMessage TAP
+11-08 15:23:07.102 I/godot   (31577): LW_HITCH job_verify.tscn max_frame_ms=170 (first 2000 ms)
+11-08 15:23:07.822 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 2236 kworker/6:4H:/(31160) 56 kworker/7:2H:/(31392) 24
+11-08 15:23:14.570 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:23:14.575 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -912540435 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:23:14.576 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -912540435 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:23:14.578 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:23:14.580 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -1066899363
+11-08 15:23:14.580 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -1066899363
+11-08 15:23:14.876 I/GestureDetector(31577): handleMessage TAP
+11-08 15:23:14.876 I/GestureDetector(31577): handleMessage TAP
+11-08 15:23:29.404 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:23:29.410 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:23:29.410 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:23:29.410 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:23:29.410 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:23:29.799 I/godot   (31577): LW_SCENE job_arrival.tscn tap_ms=-1 first_frame_ms=5 static_mb=80 tex_mb=55
+11-08 15:23:29.800 I/godot   (31577): LW_SLOW job_arrival.tscn frame_ms=374 process_ms=20 physics_ms=0
+11-08 15:23:31.007 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:23:31.014 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:23:31.015 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:23:31.015 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:23:31.015 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:23:31.155 I/godot   (31577): LW_SCENE jobs_list.tscn tap_ms=-1 first_frame_ms=31 static_mb=83 tex_mb=144
+11-08 15:23:33.139 I/godot   (31577): LW_HITCH jobs_list.tscn max_frame_ms=133 (first 2000 ms)
+11-08 15:23:33.143 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:23:33.145 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -414846640 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:23:33.146 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -414846640 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:23:33.149 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:23:33.151 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -802239588
+11-08 15:23:33.154 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -802239588
+11-08 15:23:33.444 I/GestureDetector(31577): handleMessage TAP
+11-08 15:23:33.445 I/GestureDetector(31577): handleMessage TAP
+11-08 15:23:33.542 I/godot   (31577): LW_SCENE job_arrival.tscn tap_ms=359 first_frame_ms=5 static_mb=79 tex_mb=26
+11-08 15:23:33.542 I/godot   (31577): LW_SLOW job_arrival.tscn frame_ms=359 process_ms=20 physics_ms=0
+11-08 15:23:35.538 I/godot   (31577): LW_HITCH job_arrival.tscn max_frame_ms=359 (first 2000 ms)
+11-08 15:23:38.449 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:23:38.451 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -296488040 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:23:38.451 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -296488040 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:23:38.453 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:23:38.455 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -219802951
+11-08 15:23:38.455 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -219802951
+11-08 15:23:38.563 I/godot   (31577): LW_SCENE job_verify.tscn tap_ms=83 first_frame_ms=14 static_mb=82 tex_mb=126
+11-08 15:23:38.751 I/GestureDetector(31577): handleMessage TAP
+11-08 15:23:38.751 I/GestureDetector(31577): handleMessage TAP
+11-08 15:23:40.556 I/godot   (31577): LW_HITCH job_verify.tscn max_frame_ms=84 (first 2000 ms)
+11-08 15:23:48.123 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:23:48.127 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:23:48.128 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:23:48.128 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:23:48.128 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:23:48.504 I/godot   (31577): LW_SCENE job_arrival.tscn tap_ms=10025 first_frame_ms=5 static_mb=81 tex_mb=47
+11-08 15:23:48.505 I/godot   (31577): LW_SLOW job_arrival.tscn frame_ms=362 process_ms=19 physics_ms=2
+11-08 15:23:49.747 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:23:49.753 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:23:49.755 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:23:49.756 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:23:49.756 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:23:49.899 I/godot   (31577): LW_SCENE jobs_list.tscn tap_ms=11420 first_frame_ms=30 static_mb=83 tex_mb=133
+11-08 15:23:51.883 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:23:51.885 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -489269263 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:23:51.885 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -489269263 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:23:51.889 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:23:51.890 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -898176781
+11-08 15:23:51.890 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -898176781
+11-08 15:23:51.909 I/godot   (31577): LW_HITCH jobs_list.tscn max_frame_ms=134 (first 2000 ms)
+11-08 15:23:52.085 I/godot   (31577): LW_SCENE job_arrival.tscn tap_ms=177 first_frame_ms=72 static_mb=80 tex_mb=27
+11-08 15:23:52.086 I/godot   (31577): LW_SLOW job_arrival.tscn frame_ms=177 process_ms=19 physics_ms=0
+11-08 15:23:52.187 I/GestureDetector(31577): handleMessage TAP
+11-08 15:23:52.187 I/GestureDetector(31577): handleMessage TAP
+11-08 15:23:54.022 I/godot   (31577): LW_HITCH job_arrival.tscn max_frame_ms=177 (first 2000 ms)
+11-08 15:23:57.057 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:23:57.059 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -134807949 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:23:57.060 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -134807949 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:23:57.063 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:23:57.064 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -611079213
+11-08 15:23:57.065 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -611079213
+11-08 15:23:57.203 I/godot   (31577): LW_SCENE job_verify.tscn tap_ms=119 first_frame_ms=12 static_mb=81 tex_mb=44
+11-08 15:23:57.358 I/GestureDetector(31577): handleMessage TAP
+11-08 15:23:57.359 I/GestureDetector(31577): handleMessage TAP
+11-08 15:23:59.208 I/godot   (31577): LW_HITCH job_verify.tscn max_frame_ms=119 (first 2000 ms)
+11-08 15:24:06.935 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:24:06.938 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -169025699 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:24:06.940 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -169025699 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:24:06.947 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:24:06.949 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -23115983
+11-08 15:24:06.949 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -23115983
+11-08 15:24:07.237 I/GestureDetector(31577): handleMessage TAP
+11-08 15:24:07.240 I/GestureDetector(31577): handleMessage TAP
+11-08 15:24:07.712 I/godot   (31577): LW_SCENE lock_job_magnetic.tscn tap_ms=748 first_frame_ms=499 static_mb=88 tex_mb=56
+11-08 15:24:07.714 I/godot   (31577): Sfx: first native click played (contact/steel/2)
+11-08 15:24:07.722 I/godot   (31577): LW_SLOW lock_job_magnetic.tscn frame_ms=758 process_ms=22 physics_ms=2
+11-08 15:24:07.889 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 6812 gle.android.gms:high(15073) 3012 system_server:high(2084) 1480
+11-08 15:24:09.227 I/godot   (31577): LW_HITCH lock_job_magnetic.tscn max_frame_ms=758 (first 2000 ms)
+11-08 15:24:23.912 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 4
+11-08 15:24:24.731 I/SV[46593908 GodotAppLauncher](31577): pST: sr = Rect(0, 0 - 2340, 1080) sw = 2340 sh = 1080
+11-08 15:24:24.732 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mVisible = true mSurface.isValid() = true
+11-08 15:24:24.732 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mSurfaceCreated = true surfaceChanged = false visibleChanged = false
+11-08 15:24:24.732 I/SV[46593908 GodotAppLauncher](31577): surfaceChanged (2340,1080) 1 #5 org.godotengine.godot.GodotVulkanRenderView{2c6f774 VFE...... .F....ID 0,0-2340,1080 aid=1}
+11-08 15:24:24.739 I/SV[46593908 GodotAppLauncher](31577): uSP: rtp = Rect(0, 0 - 2340, 1080) rtsw = 2340 rtsh = 1080
+11-08 15:24:24.740 I/SV[46593908 GodotAppLauncher](31577): onSSPAndSRT: pl = 0 pt = 0 sx = 1.0 sy = 1.0
+11-08 15:24:24.763 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=statusBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:24:24.766 I/SwappyDisplayManager(31577): Terminating looper thread
+11-08 15:24:24.842 I/SwappyDisplayManager(31577): Using internal com/google/androidgamesdk/SwappyDisplayManager class from dex bytes.
+11-08 15:24:24.843 I/SwappyDisplayManager(31577): Starting looper thread
+11-08 15:24:25.578 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=navigationBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:24:35.070 I/SV[46593908 GodotAppLauncher](31577): pST: sr = Rect(0, 0 - 1080, 2340) sw = 1080 sh = 2340
+11-08 15:24:35.070 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mVisible = true mSurface.isValid() = true
+11-08 15:24:35.071 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mSurfaceCreated = true surfaceChanged = false visibleChanged = false
+11-08 15:24:35.071 I/SV[46593908 GodotAppLauncher](31577): surfaceChanged (1080,2340) 1 #5 org.godotengine.godot.GodotVulkanRenderView{2c6f774 VFE...... .F....ID 0,0-1080,2340 aid=1}
+11-08 15:24:35.084 I/SV[46593908 GodotAppLauncher](31577): uSP: rtp = Rect(0, 0 - 1080, 2340) rtsw = 1080 rtsh = 2340
+11-08 15:24:35.084 I/SV[46593908 GodotAppLauncher](31577): onSSPAndSRT: pl = 0 pt = 0 sx = 1.0 sy = 1.0
+11-08 15:24:35.101 E/System  (31577): Uncaught exception thrown by finalizer
+11-08 15:24:35.109 E/System  (31577): java.lang.AssertionError: Failed to close dex file in finalizer.
+11-08 15:24:35.109 E/System  (31577): 	at dalvik.system.DexFile.finalize(DexFile.java:388)
+11-08 15:24:35.109 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.doFinalize(Daemons.java:389)
+11-08 15:24:35.109 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.processReference(Daemons.java:369)
+11-08 15:24:35.109 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:341)
+11-08 15:24:35.109 E/System  (31577): 	at java.lang.Daemons$Daemon.run(Daemons.java:135)
+11-08 15:24:35.109 E/System  (31577): 	at java.lang.Thread.run(Thread.java:1572)
+11-08 15:24:35.110 I/SwappyDisplayManager(31577): Terminating looper thread
+11-08 15:24:35.110 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=statusBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:24:35.182 I/SwappyDisplayManager(31577): Using internal com/google/androidgamesdk/SwappyDisplayManager class from dex bytes.
+11-08 15:24:35.186 I/SwappyDisplayManager(31577): Starting looper thread
+11-08 15:24:35.379 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=navigationBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:24:38.089 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:24:38.099 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:24:38.100 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:24:38.100 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:24:38.100 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:24:45.233 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:24:45.235 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -931138091 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:24:45.236 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -931138091 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:24:45.238 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:24:45.241 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -734774994
+11-08 15:24:45.241 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -734774994
+11-08 15:24:45.385 I/godot   (31577): LW_SCENE jobs_list.tscn tap_ms=129 first_frame_ms=30 static_mb=91 tex_mb=62
+11-08 15:24:45.535 I/GestureDetector(31577): handleMessage TAP
+11-08 15:24:45.535 I/GestureDetector(31577): handleMessage TAP
+11-08 15:24:47.365 I/godot   (31577): LW_HITCH jobs_list.tscn max_frame_ms=129 (first 2000 ms)
+11-08 15:24:53.670 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:24:53.678 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -693919783 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:24:53.678 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -693919783 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:24:53.683 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -17512141
+11-08 15:24:53.684 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -17512141
+11-08 15:24:54.380 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:24:56.902 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:24:56.904 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -67791795 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:24:56.905 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -67791795 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:24:56.912 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -319947446
+11-08 15:24:56.912 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -319947446
+11-08 15:24:57.613 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:25:04.098 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:25:04.100 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -454699897 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:25:04.101 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -454699897 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:25:04.107 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -216058375
+11-08 15:25:04.107 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -216058375
+11-08 15:25:05.013 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:25:10.859 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:25:10.867 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -497748165 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:25:10.868 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -497748165 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:25:10.871 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:25:10.872 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -819611311
+11-08 15:25:10.873 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -819611311
+11-08 15:25:11.165 I/GestureDetector(31577): handleMessage TAP
+11-08 15:25:11.168 I/GestureDetector(31577): handleMessage TAP
+11-08 15:25:11.274 I/godot   (31577): LW_SCENE job_arrival.tscn tap_ms=383 first_frame_ms=20 static_mb=87 tex_mb=30
+11-08 15:25:11.275 I/godot   (31577): LW_SLOW job_arrival.tscn frame_ms=383 process_ms=21 physics_ms=1
+11-08 15:25:11.967 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 40
+11-08 15:25:13.262 I/godot   (31577): LW_HITCH job_arrival.tscn max_frame_ms=383 (first 2000 ms)
+11-08 15:25:19.387 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:25:19.391 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -871551890 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:25:19.392 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -871551890 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:25:19.393 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:25:19.394 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -867086188
+11-08 15:25:19.394 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -867086188
+11-08 15:25:19.694 I/GestureDetector(31577): handleMessage TAP
+11-08 15:25:19.694 I/GestureDetector(31577): handleMessage TAP
+11-08 15:25:19.696 I/godot   (31577): LW_SCENE job_verify.tscn tap_ms=292 first_frame_ms=11 static_mb=87 tex_mb=138
+11-08 15:25:19.697 I/godot   (31577): LW_SLOW job_verify.tscn frame_ms=292 process_ms=19 physics_ms=2
+11-08 15:25:19.975 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 2728 system_server:high(2084) 36 kworker/6:3H:/(31055) 8
+11-08 15:25:21.699 I/godot   (31577): LW_HITCH job_verify.tscn max_frame_ms=292 (first 2000 ms)
+11-08 15:25:29.360 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:25:29.365 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:25:29.366 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:25:29.366 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:25:29.366 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:25:29.748 I/godot   (31577): LW_SCENE job_arrival.tscn tap_ms=10343 first_frame_ms=5 static_mb=88 tex_mb=59
+11-08 15:25:29.748 I/godot   (31577): LW_SLOW job_arrival.tscn frame_ms=363 process_ms=20 physics_ms=0
+11-08 15:25:30.974 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:25:30.979 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:25:30.980 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:25:30.981 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:25:30.981 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:25:31.111 I/godot   (31577): LW_SCENE jobs_list.tscn tap_ms=11706 first_frame_ms=29 static_mb=91 tex_mb=145
+11-08 15:25:33.083 I/godot   (31577): LW_HITCH jobs_list.tscn max_frame_ms=127 (first 2000 ms)
+11-08 15:25:37.448 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:25:37.449 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -998978117 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:25:37.450 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -998978117 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:25:37.458 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -284237773
+11-08 15:25:37.458 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -284237773
+11-08 15:25:38.349 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:25:44.004 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 88 f2fs_ckpt-254:6:/(3367) 12
+11-08 15:25:44.598 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:25:44.601 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -396484418 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:25:44.603 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -396484418 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:25:44.605 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:25:44.606 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -598913934
+11-08 15:25:44.606 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -598913934
+11-08 15:25:44.795 I/godot   (31577): LW_SCENE job_arrival.tscn tap_ms=166 first_frame_ms=70 static_mb=87 tex_mb=30
+11-08 15:25:44.796 I/godot   (31577): LW_SLOW job_arrival.tscn frame_ms=166 process_ms=18 physics_ms=2
+11-08 15:25:44.900 I/GestureDetector(31577): handleMessage TAP
+11-08 15:25:44.902 I/GestureDetector(31577): handleMessage TAP
+11-08 15:25:46.734 I/godot   (31577): LW_HITCH job_arrival.tscn max_frame_ms=166 (first 2000 ms)
+11-08 15:25:48.009 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 320 roid.apps.turbo:low(32492) 120 roid.apps.turbo:high(32492) 116
+11-08 15:25:50.118 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:25:50.120 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -697882033 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:25:50.121 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -697882033 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:25:50.124 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:25:50.126 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -441509971
+11-08 15:25:50.126 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -441509971
+11-08 15:25:50.208 I/godot   (31577): LW_SCENE job_verify.tscn tap_ms=69 first_frame_ms=19 static_mb=90 tex_mb=44
+11-08 15:25:50.420 I/GestureDetector(31577): handleMessage TAP
+11-08 15:25:50.420 I/GestureDetector(31577): handleMessage TAP
+11-08 15:25:52.014 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 672 hbox:interactor:high(22684) 140
+11-08 15:25:52.201 I/godot   (31577): LW_HITCH job_verify.tscn max_frame_ms=71 (first 2000 ms)
+11-08 15:26:05.037 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:26:05.043 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -176852382 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:26:05.043 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -176852382 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:26:05.045 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:26:05.045 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -647404984
+11-08 15:26:05.045 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -647404984
+11-08 15:26:05.229 I/godot   (31577): LW_SCENE lock_job_dial_safe.tscn tap_ms=175 first_frame_ms=66 static_mb=88 tex_mb=55
+11-08 15:26:05.233 I/godot   (31577): LW_SLOW lock_job_dial_safe.tscn frame_ms=178 process_ms=20 physics_ms=2
+11-08 15:26:05.343 I/GestureDetector(31577): handleMessage TAP
+11-08 15:26:05.344 I/GestureDetector(31577): handleMessage TAP
+11-08 15:26:07.170 I/godot   (31577): LW_HITCH lock_job_dial_safe.tscn max_frame_ms=178 (first 2000 ms)
+11-08 15:26:08.031 D/io_stats(  625): !@ Read_top(KB): c.android.sdhms:high(5755) 608 ames.lockwright:top(31577) 284 m.android.phone:high(3039) 96
+11-08 15:26:28.210 I/SV[46593908 GodotAppLauncher](31577): pST: sr = Rect(0, 0 - 2340, 1080) sw = 2340 sh = 1080
+11-08 15:26:28.211 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mVisible = true mSurface.isValid() = true
+11-08 15:26:28.211 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mSurfaceCreated = true surfaceChanged = false visibleChanged = false
+11-08 15:26:28.211 I/SV[46593908 GodotAppLauncher](31577): surfaceChanged (2340,1080) 1 #5 org.godotengine.godot.GodotVulkanRenderView{2c6f774 VFE...... .F....ID 0,0-2340,1080 aid=1}
+11-08 15:26:28.217 I/SV[46593908 GodotAppLauncher](31577): uSP: rtp = Rect(0, 0 - 2340, 1080) rtsw = 2340 rtsh = 1080
+11-08 15:26:28.217 I/SV[46593908 GodotAppLauncher](31577): onSSPAndSRT: pl = 0 pt = 0 sx = 1.0 sy = 1.0
+11-08 15:26:28.231 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=statusBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:26:28.240 I/SwappyDisplayManager(31577): Terminating looper thread
+11-08 15:26:28.308 I/SwappyDisplayManager(31577): Using internal com/google/androidgamesdk/SwappyDisplayManager class from dex bytes.
+11-08 15:26:28.310 I/SwappyDisplayManager(31577): Starting looper thread
+11-08 15:26:28.472 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=navigationBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:26:38.108 I/SV[46593908 GodotAppLauncher](31577): pST: sr = Rect(0, 0 - 1080, 2340) sw = 1080 sh = 2340
+11-08 15:26:38.109 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mVisible = true mSurface.isValid() = true
+11-08 15:26:38.109 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mSurfaceCreated = true surfaceChanged = false visibleChanged = false
+11-08 15:26:38.109 I/SV[46593908 GodotAppLauncher](31577): surfaceChanged (1080,2340) 1 #5 org.godotengine.godot.GodotVulkanRenderView{2c6f774 VFE...... .F....ID 0,0-1080,2340 aid=1}
+11-08 15:26:38.113 I/SV[46593908 GodotAppLauncher](31577): uSP: rtp = Rect(0, 0 - 1080, 2340) rtsw = 1080 rtsh = 2340
+11-08 15:26:38.113 I/SV[46593908 GodotAppLauncher](31577): onSSPAndSRT: pl = 0 pt = 0 sx = 1.0 sy = 1.0
+11-08 15:26:38.122 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=statusBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:26:38.139 I/SwappyDisplayManager(31577): Terminating looper thread
+11-08 15:26:38.219 I/SwappyDisplayManager(31577): Using internal com/google/androidgamesdk/SwappyDisplayManager class from dex bytes.
+11-08 15:26:38.221 I/SwappyDisplayManager(31577): Starting looper thread
+11-08 15:26:38.358 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=navigationBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:26:41.172 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:26:41.176 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:26:41.177 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:26:41.177 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:26:41.177 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:26:42.836 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:26:42.838 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -173974184 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:26:42.840 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -173974184 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:26:42.842 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:26:42.843 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -207084397
+11-08 15:26:42.843 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -207084397
+11-08 15:26:42.999 I/godot   (31577): LW_SCENE jobs_list.tscn tap_ms=133 first_frame_ms=31 static_mb=92 tex_mb=60
+11-08 15:26:43.138 I/GestureDetector(31577): handleMessage TAP
+11-08 15:26:43.140 I/GestureDetector(31577): handleMessage TAP
+11-08 15:26:44.973 I/godot   (31577): LW_HITCH jobs_list.tscn max_frame_ms=133 (first 2000 ms)
+11-08 15:26:51.494 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:26:51.496 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -1026145374 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:26:51.497 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -1026145374 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:26:51.502 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -253696608
+11-08 15:26:51.502 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -253696608
+11-08 15:26:52.410 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:26:54.745 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:26:54.748 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -421587563 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:26:54.748 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -421587563 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:26:54.758 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -123505939
+11-08 15:26:54.758 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -123505939
+11-08 15:26:55.657 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:26:58.000 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:26:58.002 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -600555751 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:26:58.003 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -600555751 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:26:58.009 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -963518385
+11-08 15:26:58.009 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -963518385
+11-08 15:26:58.909 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:27:01.186 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:27:01.187 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -743426685 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:27:01.187 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -743426685 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:27:01.194 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -835649252
+11-08 15:27:01.194 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -835649252
+11-08 15:27:02.091 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:27:31.471 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:27:31.474 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -472384129 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:27:31.475 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -472384129 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:27:31.484 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -393284411
+11-08 15:27:31.484 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -393284411
+11-08 15:27:32.378 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:27:38.641 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:27:38.643 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -221916975 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:27:38.644 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -221916975 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:27:38.648 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:27:38.651 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -384630265
+11-08 15:27:38.651 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -384630265
+11-08 15:27:38.831 I/godot   (31577): LW_SCENE job_arrival.tscn tap_ms=156 first_frame_ms=16 static_mb=88 tex_mb=30
+11-08 15:27:38.831 I/godot   (31577): LW_SLOW job_arrival.tscn frame_ms=156 process_ms=19 physics_ms=2
+11-08 15:27:38.944 I/GestureDetector(31577): handleMessage TAP
+11-08 15:27:38.944 I/GestureDetector(31577): handleMessage TAP
+11-08 15:27:40.132 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 968
+11-08 15:27:40.829 I/godot   (31577): LW_HITCH job_arrival.tscn max_frame_ms=156 (first 2000 ms)
+11-08 15:27:44.207 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:27:44.209 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -347282104 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:27:44.211 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -347282104 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:27:44.214 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:27:44.216 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -186047559
+11-08 15:27:44.216 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -186047559
+11-08 15:27:44.310 I/godot   (31577): LW_SCENE job_verify.tscn tap_ms=71 first_frame_ms=20 static_mb=91 tex_mb=52
+11-08 15:27:44.509 I/GestureDetector(31577): handleMessage TAP
+11-08 15:27:44.510 I/GestureDetector(31577): handleMessage TAP
+11-08 15:27:46.295 I/godot   (31577): LW_HITCH job_verify.tscn max_frame_ms=72 (first 2000 ms)
+11-08 15:27:48.140 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 232
+11-08 15:27:53.922 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:27:53.924 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -189355409 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:27:53.925 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -189355409 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:27:53.929 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:27:53.930 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -350361664
+11-08 15:27:53.931 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -350361664
+11-08 15:27:54.131 I/godot   (31577): LW_SCENE lock_job_time_lock.tscn tap_ms=181 first_frame_ms=57 static_mb=88 tex_mb=53
+11-08 15:27:54.135 I/godot   (31577): LW_SLOW lock_job_time_lock.tscn frame_ms=186 process_ms=21 physics_ms=2
+11-08 15:27:54.224 I/GestureDetector(31577): handleMessage TAP
+11-08 15:27:54.224 I/GestureDetector(31577): handleMessage TAP
+11-08 15:27:56.080 I/godot   (31577): LW_HITCH lock_job_time_lock.tscn max_frame_ms=186 (first 2000 ms)
+11-08 15:28:08.161 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 200
+11-08 15:28:12.165 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 64 kworker/u32:0:/(30850) 20 gle.android.gms:high(15073) 4
+11-08 15:28:16.142 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:28:16.147 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -43094145 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:28:16.148 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -43094145 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:28:16.250 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -70510117
+11-08 15:28:16.250 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -70510117
+11-08 15:28:24.683 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:28:43.832 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:28:43.833 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -787112296 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:28:43.835 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -787112296 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:28:43.934 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -497269643
+11-08 15:28:43.934 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -497269643
+11-08 15:28:56.870 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:29:17.620 I/SV[46593908 GodotAppLauncher](31577): pST: sr = Rect(0, 0 - 2340, 1080) sw = 2340 sh = 1080
+11-08 15:29:17.621 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mVisible = true mSurface.isValid() = true
+11-08 15:29:17.621 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mSurfaceCreated = true surfaceChanged = false visibleChanged = false
+11-08 15:29:17.621 I/SV[46593908 GodotAppLauncher](31577): surfaceChanged (2340,1080) 1 #5 org.godotengine.godot.GodotVulkanRenderView{2c6f774 VFE...... .F....ID 0,0-2340,1080 aid=1}
+11-08 15:29:17.626 I/SV[46593908 GodotAppLauncher](31577): uSP: rtp = Rect(0, 0 - 2340, 1080) rtsw = 2340 rtsh = 1080
+11-08 15:29:17.626 I/SV[46593908 GodotAppLauncher](31577): onSSPAndSRT: pl = 0 pt = 0 sx = 1.0 sy = 1.0
+11-08 15:29:17.641 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=statusBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:29:17.656 I/SwappyDisplayManager(31577): Terminating looper thread
+11-08 15:29:17.724 I/SwappyDisplayManager(31577): Using internal com/google/androidgamesdk/SwappyDisplayManager class from dex bytes.
+11-08 15:29:17.727 I/SwappyDisplayManager(31577): Starting looper thread
+11-08 15:29:17.841 I/ames.lockwright(31577): Background concurrent mark compact GC freed 6185KB AllocSpace bytes, 0(0B) LOS objects, 67% free, 2936KB/9080KB, paused 320us,2.058ms total 257.955ms
+11-08 15:29:17.844 E/System  (31577): Uncaught exception thrown by finalizer
+11-08 15:29:17.844 E/System  (31577): java.lang.AssertionError: Failed to close dex file in finalizer.
+11-08 15:29:17.844 E/System  (31577): 	at dalvik.system.DexFile.finalize(DexFile.java:388)
+11-08 15:29:17.844 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.doFinalize(Daemons.java:389)
+11-08 15:29:17.844 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.processReference(Daemons.java:369)
+11-08 15:29:17.844 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:341)
+11-08 15:29:17.844 E/System  (31577): 	at java.lang.Daemons$Daemon.run(Daemons.java:135)
+11-08 15:29:17.844 E/System  (31577): 	at java.lang.Thread.run(Thread.java:1572)
+11-08 15:29:17.845 E/System  (31577): Uncaught exception thrown by finalizer
+11-08 15:29:17.845 E/System  (31577): java.lang.AssertionError: Failed to close dex file in finalizer.
+11-08 15:29:17.845 E/System  (31577): 	at dalvik.system.DexFile.finalize(DexFile.java:388)
+11-08 15:29:17.845 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.doFinalize(Daemons.java:389)
+11-08 15:29:17.845 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.processReference(Daemons.java:369)
+11-08 15:29:17.845 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:341)
+11-08 15:29:17.845 E/System  (31577): 	at java.lang.Daemons$Daemon.run(Daemons.java:135)
+11-08 15:29:17.845 E/System  (31577): 	at java.lang.Thread.run(Thread.java:1572)
+11-08 15:29:17.846 E/System  (31577): Uncaught exception thrown by finalizer
+11-08 15:29:17.846 E/System  (31577): java.lang.AssertionError: Failed to close dex file in finalizer.
+11-08 15:29:17.846 E/System  (31577): 	at dalvik.system.DexFile.finalize(DexFile.java:388)
+11-08 15:29:17.846 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.doFinalize(Daemons.java:389)
+11-08 15:29:17.846 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.processReference(Daemons.java:369)
+11-08 15:29:17.846 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:341)
+11-08 15:29:17.846 E/System  (31577): 	at java.lang.Daemons$Daemon.run(Daemons.java:135)
+11-08 15:29:17.846 E/System  (31577): 	at java.lang.Thread.run(Thread.java:1572)
+11-08 15:29:17.905 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=navigationBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:29:22.641 I/SV[46593908 GodotAppLauncher](31577): pST: sr = Rect(0, 0 - 1080, 2340) sw = 1080 sh = 2340
+11-08 15:29:22.642 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mVisible = true mSurface.isValid() = true
+11-08 15:29:22.642 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mSurfaceCreated = true surfaceChanged = false visibleChanged = false
+11-08 15:29:22.642 I/SV[46593908 GodotAppLauncher](31577): surfaceChanged (1080,2340) 1 #5 org.godotengine.godot.GodotVulkanRenderView{2c6f774 VFE...... .F....ID 0,0-1080,2340 aid=1}
+11-08 15:29:22.647 I/SV[46593908 GodotAppLauncher](31577): uSP: rtp = Rect(0, 0 - 1080, 2340) rtsw = 1080 rtsh = 2340
+11-08 15:29:22.647 I/SV[46593908 GodotAppLauncher](31577): onSSPAndSRT: pl = 0 pt = 0 sx = 1.0 sy = 1.0
+11-08 15:29:22.667 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=statusBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:29:22.689 I/SwappyDisplayManager(31577): Terminating looper thread
+11-08 15:29:22.744 I/SwappyDisplayManager(31577): Using internal com/google/androidgamesdk/SwappyDisplayManager class from dex bytes.
+11-08 15:29:22.745 I/SwappyDisplayManager(31577): Starting looper thread
+11-08 15:29:22.939 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=navigationBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:31:00.360 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 196
+11-08 15:31:04.365 D/io_stats(  625): !@ Read_top(KB): system_server:high(2084) 360 vendor.samsung.:normal(1536) 352 ames.lockwright:top(31577) 188
+11-08 15:31:24.391 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 172
+11-08 15:31:30.131 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:31:30.136 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:31:30.137 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:31:30.137 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:31:30.137 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:31:31.769 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:31:31.775 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -582187412 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:31:31.776 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -582187412 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:31:31.778 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:31:31.780 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -908481059
+11-08 15:31:31.780 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -908481059
+11-08 15:31:31.924 I/godot   (31577): LW_SCENE jobs_list.tscn tap_ms=128 first_frame_ms=30 static_mb=93 tex_mb=57
+11-08 15:31:32.075 I/GestureDetector(31577): handleMessage TAP
+11-08 15:31:32.075 I/GestureDetector(31577): handleMessage TAP
+11-08 15:31:33.901 I/godot   (31577): LW_HITCH jobs_list.tscn max_frame_ms=129 (first 2000 ms)
+11-08 15:31:39.620 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:31:39.624 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -293825753 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:31:39.625 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -293825753 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:31:39.631 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -528786835
+11-08 15:31:39.631 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 2 id: -528786835
+11-08 15:31:40.219 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:31:45.977 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:31:45.980 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -304853262 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:31:45.981 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -304853262 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:31:45.983 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:31:45.984 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -77645599
+11-08 15:31:45.984 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -77645599
+11-08 15:31:46.132 I/godot   (31577): LW_SCENE job_arrival.tscn tap_ms=119 first_frame_ms=18 static_mb=90 tex_mb=31
+11-08 15:31:46.280 I/GestureDetector(31577): handleMessage TAP
+11-08 15:31:46.280 I/GestureDetector(31577): handleMessage TAP
+11-08 15:31:48.119 I/godot   (31577): LW_HITCH job_arrival.tscn max_frame_ms=119 (first 2000 ms)
+11-08 15:31:48.418 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 632 f2fs_gc-254:67:/(929) 72
+11-08 15:31:51.717 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:31:51.723 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -791882841 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:31:51.724 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -791882841 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:31:51.727 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:31:51.728 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -811891345
+11-08 15:31:51.728 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -811891345
+11-08 15:31:51.837 I/godot   (31577): LW_SCENE job_verify.tscn tap_ms=92 first_frame_ms=11 static_mb=91 tex_mb=46
+11-08 15:31:52.019 I/GestureDetector(31577): handleMessage TAP
+11-08 15:31:52.023 I/GestureDetector(31577): handleMessage TAP
+11-08 15:31:53.837 I/godot   (31577): LW_HITCH job_verify.tscn max_frame_ms=93 (first 2000 ms)
+11-08 15:32:01.834 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:32:01.840 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -803979901 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:32:01.841 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -803979901 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:32:01.843 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:32:01.844 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -242544627
+11-08 15:32:01.844 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -242544627
+11-08 15:32:02.045 I/godot   (31577): LW_SCENE lock_job_lever_detector.tscn tap_ms=184 first_frame_ms=13 static_mb=91 tex_mb=57
+11-08 15:32:02.048 I/godot   (31577): LW_SLOW lock_job_lever_detector.tscn frame_ms=187 process_ms=22 physics_ms=2
+11-08 15:32:02.137 I/GestureDetector(31577): handleMessage TAP
+11-08 15:32:02.141 I/GestureDetector(31577): handleMessage TAP
+11-08 15:32:04.039 I/godot   (31577): LW_HITCH lock_job_lever_detector.tscn max_frame_ms=187 (first 2000 ms)
+11-08 15:32:04.441 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 156
+11-08 15:32:09.930 I/SV[46593908 GodotAppLauncher](31577): pST: sr = Rect(0, 0 - 2340, 1080) sw = 2340 sh = 1080
+11-08 15:32:09.930 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mVisible = true mSurface.isValid() = true
+11-08 15:32:09.930 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mSurfaceCreated = true surfaceChanged = false visibleChanged = false
+11-08 15:32:09.930 I/SV[46593908 GodotAppLauncher](31577): surfaceChanged (2340,1080) 1 #5 org.godotengine.godot.GodotVulkanRenderView{2c6f774 VFE...... .F....ID 0,0-2340,1080 aid=1}
+11-08 15:32:09.940 I/SV[46593908 GodotAppLauncher](31577): uSP: rtp = Rect(0, 0 - 2340, 1080) rtsw = 2340 rtsh = 1080
+11-08 15:32:09.940 I/SV[46593908 GodotAppLauncher](31577): onSSPAndSRT: pl = 0 pt = 0 sx = 1.0 sy = 1.0
+11-08 15:32:09.955 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=statusBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:32:09.959 I/SwappyDisplayManager(31577): Terminating looper thread
+11-08 15:32:10.016 I/SwappyDisplayManager(31577): Using internal com/google/androidgamesdk/SwappyDisplayManager class from dex bytes.
+11-08 15:32:10.018 I/SwappyDisplayManager(31577): Starting looper thread
+11-08 15:32:10.158 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=navigationBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:32:14.974 I/SV[46593908 GodotAppLauncher](31577): pST: sr = Rect(0, 0 - 1080, 2340) sw = 1080 sh = 2340
+11-08 15:32:14.974 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mVisible = true mSurface.isValid() = true
+11-08 15:32:14.974 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mSurfaceCreated = true surfaceChanged = false visibleChanged = false
+11-08 15:32:14.974 I/SV[46593908 GodotAppLauncher](31577): surfaceChanged (1080,2340) 1 #5 org.godotengine.godot.GodotVulkanRenderView{2c6f774 VFE...... .F....ID 0,0-1080,2340 aid=1}
+11-08 15:32:14.979 I/SV[46593908 GodotAppLauncher](31577): uSP: rtp = Rect(0, 0 - 1080, 2340) rtsw = 1080 rtsh = 2340
+11-08 15:32:14.979 I/SV[46593908 GodotAppLauncher](31577): onSSPAndSRT: pl = 0 pt = 0 sx = 1.0 sy = 1.0
+11-08 15:32:14.991 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=statusBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:32:14.998 I/SwappyDisplayManager(31577): Terminating looper thread
+11-08 15:32:15.065 I/SwappyDisplayManager(31577): Using internal com/google/androidgamesdk/SwappyDisplayManager class from dex bytes.
+11-08 15:32:15.066 I/SwappyDisplayManager(31577): Starting looper thread
+11-08 15:32:15.084 E/System  (31577): Uncaught exception thrown by finalizer
+11-08 15:32:15.084 E/System  (31577): java.lang.AssertionError: Failed to close dex file in finalizer.
+11-08 15:32:15.084 E/System  (31577): 	at dalvik.system.DexFile.finalize(DexFile.java:388)
+11-08 15:32:15.084 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.doFinalize(Daemons.java:389)
+11-08 15:32:15.084 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.processReference(Daemons.java:369)
+11-08 15:32:15.084 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:341)
+11-08 15:32:15.084 E/System  (31577): 	at java.lang.Daemons$Daemon.run(Daemons.java:135)
+11-08 15:32:15.084 E/System  (31577): 	at java.lang.Thread.run(Thread.java:1572)
+11-08 15:32:15.085 E/System  (31577): Uncaught exception thrown by finalizer
+11-08 15:32:15.085 E/System  (31577): java.lang.AssertionError: Failed to close dex file in finalizer.
+11-08 15:32:15.085 E/System  (31577): 	at dalvik.system.DexFile.finalize(DexFile.java:388)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.doFinalize(Daemons.java:389)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.processReference(Daemons.java:369)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:341)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Daemons$Daemon.run(Daemons.java:135)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Thread.run(Thread.java:1572)
+11-08 15:32:15.085 E/System  (31577): Uncaught exception thrown by finalizer
+11-08 15:32:15.085 E/System  (31577): java.lang.AssertionError: Failed to close dex file in finalizer.
+11-08 15:32:15.085 E/System  (31577): 	at dalvik.system.DexFile.finalize(DexFile.java:388)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.doFinalize(Daemons.java:389)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.processReference(Daemons.java:369)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:341)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Daemons$Daemon.run(Daemons.java:135)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Thread.run(Thread.java:1572)
+11-08 15:32:15.085 E/System  (31577): Uncaught exception thrown by finalizer
+11-08 15:32:15.085 E/System  (31577): java.lang.AssertionError: Failed to close dex file in finalizer.
+11-08 15:32:15.085 E/System  (31577): 	at dalvik.system.DexFile.finalize(DexFile.java:388)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.doFinalize(Daemons.java:389)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.processReference(Daemons.java:369)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:341)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Daemons$Daemon.run(Daemons.java:135)
+11-08 15:32:15.085 E/System  (31577): 	at java.lang.Thread.run(Thread.java:1572)
+11-08 15:32:15.224 I/InsetsSourceConsumer(31577): applyRequestedVisibilityToControl: visible=false, type=navigationBars, host=com.woogitsugames.lockwright/com.godot.game.GodotAppLauncher
+11-08 15:32:38.720 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:32:38.729 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:32:38.729 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:32:38.729 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:32:38.729 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:32:40.390 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:32:40.391 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -416734324 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:32:40.391 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -416734324 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:32:40.397 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:32:40.399 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -729440367
+11-08 15:32:40.400 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -729440367
+11-08 15:32:40.550 I/godot   (31577): LW_SCENE jobs_list.tscn tap_ms=132 first_frame_ms=32 static_mb=94 tex_mb=59
+11-08 15:32:40.691 I/GestureDetector(31577): handleMessage TAP
+11-08 15:32:40.691 I/GestureDetector(31577): handleMessage TAP
+11-08 15:32:42.528 I/godot   (31577): LW_HITCH jobs_list.tscn max_frame_ms=133 (first 2000 ms)
+11-08 15:32:43.520 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:32:43.525 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:32:43.527 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:32:43.527 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:32:43.527 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:32:43.581 I/godot   (31577): LW_SCENE main_menu.tscn tap_ms=3163 first_frame_ms=3 static_mb=90 tex_mb=32
+11-08 15:32:44.490 D/io_stats(  625): !@ Read_top(KB): gle.android.gms:high(15073) 52 ames.lockwright:top(31577) 24
+11-08 15:32:45.592 I/godot   (31577): LW_HITCH main_menu.tscn max_frame_ms=44 (first 2000 ms)
+11-08 15:33:01.775 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:33:01.778 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -711404032 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:33:01.779 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -711404032 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:33:01.781 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:33:01.782 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -416726502
+11-08 15:33:01.783 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -416726502
+11-08 15:33:02.078 I/GestureDetector(31577): handleMessage TAP
+11-08 15:33:02.079 I/GestureDetector(31577): handleMessage TAP
+11-08 15:33:02.551 I/godot   (31577): LW_SCENE workshop.tscn tap_ms=752 first_frame_ms=181 static_mb=97 tex_mb=35
+11-08 15:33:02.551 I/godot   (31577): LW_SLOW workshop.tscn frame_ms=568 process_ms=20 physics_ms=3
+11-08 15:33:04.377 I/godot   (31577): LW_HITCH workshop.tscn max_frame_ms=568 (first 2000 ms)
+11-08 15:33:04.512 D/io_stats(  625): !@ Read_top(KB): gle.android.gms:high(15073) 2704 ames.lockwright:top(31577) 2664 location.nsflp2:high(3581) 128
+11-08 15:33:10.333 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:33:10.337 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -806065083 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:33:10.338 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -806065083 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:33:10.340 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:33:10.343 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -713351540
+11-08 15:33:10.344 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -713351540
+11-08 15:33:10.637 I/GestureDetector(31577): handleMessage TAP
+11-08 15:33:10.637 I/GestureDetector(31577): handleMessage TAP
+11-08 15:33:19.226 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:33:19.230 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -310234941 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:33:19.235 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -310234941 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:33:19.237 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:33:19.238 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -623321691
+11-08 15:33:19.238 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -623321691
+11-08 15:33:19.530 I/GestureDetector(31577): handleMessage TAP
+11-08 15:33:19.534 I/GestureDetector(31577): handleMessage TAP
+11-08 15:33:19.730 I/godot   (31577): LW_SCENE lock_job_wafer.tscn tap_ms=394 first_frame_ms=9 static_mb=95 tex_mb=51
+11-08 15:33:19.733 I/godot   (31577): LW_SLOW lock_job_wafer.tscn frame_ms=396 process_ms=20 physics_ms=0
+11-08 15:33:21.730 I/godot   (31577): LW_HITCH lock_job_wafer.tscn max_frame_ms=396 (first 2000 ms)
+11-08 15:33:26.165 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:33:26.169 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:33:26.169 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:33:26.169 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:33:26.169 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:33:29.113 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:33:29.116 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -1032209768 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:33:29.117 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -1032209768 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:33:29.119 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:33:29.120 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -800826778
+11-08 15:33:29.121 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -800826778
+11-08 15:33:29.414 I/GestureDetector(31577): handleMessage TAP
+11-08 15:33:29.416 I/GestureDetector(31577): handleMessage TAP
+11-08 15:33:29.518 I/godot   (31577): LW_SCENE workshop.tscn tap_ms=381 first_frame_ms=57 static_mb=96 tex_mb=60
+11-08 15:33:29.518 I/godot   (31577): LW_SLOW workshop.tscn frame_ms=382 process_ms=33 physics_ms=2
+11-08 15:33:31.462 I/godot   (31577): LW_HITCH workshop.tscn max_frame_ms=382 (first 2000 ms)
+11-08 15:33:45.942 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:33:45.947 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:33:45.947 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:33:45.947 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:33:45.947 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:33:45.992 I/godot   (31577): LW_SCENE main_menu.tscn tap_ms=-1 first_frame_ms=3 static_mb=94 tex_mb=51
+11-08 15:33:48.001 I/godot   (31577): LW_HITCH main_menu.tscn max_frame_ms=38 (first 2000 ms)
+11-08 15:33:49.333 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:33:49.336 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -124977434 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:33:49.337 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -124977434 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:33:49.342 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:33:49.344 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -404014856
+11-08 15:33:49.345 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -404014856
+11-08 15:33:49.612 I/godot   (31577): LW_SCENE jobs_list.tscn tap_ms=262 first_frame_ms=30 static_mb=98 tex_mb=35
+11-08 15:33:49.635 I/GestureDetector(31577): handleMessage TAP
+11-08 15:33:49.637 I/GestureDetector(31577): handleMessage TAP
+11-08 15:33:51.596 I/godot   (31577): LW_HITCH jobs_list.tscn max_frame_ms=133 (first 2000 ms)
+11-08 15:33:56.974 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:33:56.976 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -521187865 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:33:56.977 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -521187865 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:33:56.980 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:33:56.980 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -646618616
+11-08 15:33:56.980 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -646618616
+11-08 15:33:57.119 I/godot   (31577): LW_SCENE job_arrival.tscn tap_ms=110 first_frame_ms=20 static_mb=94 tex_mb=32
+11-08 15:33:57.275 I/GestureDetector(31577): handleMessage TAP
+11-08 15:33:57.277 I/GestureDetector(31577): handleMessage TAP
+11-08 15:33:59.101 I/godot   (31577): LW_HITCH job_arrival.tscn max_frame_ms=110 (first 2000 ms)
+11-08 15:34:00.579 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 324
+11-08 15:34:02.753 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:34:02.755 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -99109102 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:34:02.755 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -99109102 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:34:02.760 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:34:02.761 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -401474146
+11-08 15:34:02.763 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -401474146
+11-08 15:34:02.913 I/godot   (31577): LW_SCENE job_verify.tscn tap_ms=132 first_frame_ms=10 static_mb=96 tex_mb=46
+11-08 15:34:03.054 I/GestureDetector(31577): handleMessage TAP
+11-08 15:34:03.056 I/GestureDetector(31577): handleMessage TAP
+11-08 15:34:04.585 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 300
+11-08 15:34:04.913 I/godot   (31577): LW_HITCH job_verify.tscn max_frame_ms=134 (first 2000 ms)
+11-08 15:34:12.418 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:34:12.422 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -679496203 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:34:12.425 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -679496203 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:34:12.428 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:34:12.430 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -621686660
+11-08 15:34:12.431 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -621686660
+11-08 15:34:12.586 I/godot   (31577): LW_SCENE lock_job_combo.tscn tap_ms=142 first_frame_ms=8 static_mb=94 tex_mb=63
+11-08 15:34:12.593 D/io_stats(  625): !@ Read_top(KB): gle.android.gms:high(15073) 2916 ames.lockwright:top(31577) 44 kworker/0:2H:/(31576) 4
+11-08 15:34:12.720 I/GestureDetector(31577): handleMessage TAP
+11-08 15:34:12.725 I/GestureDetector(31577): handleMessage TAP
+11-08 15:34:14.586 I/godot   (31577): LW_HITCH lock_job_combo.tscn max_frame_ms=146 (first 2000 ms)
+11-08 15:34:40.628 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 24 f2fs_ckpt-254:6:/(3367) 4
+11-08 15:34:44.632 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 88 gle.android.gms:high(15073) 40
+11-08 15:36:41.253 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:36:41.261 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:36:41.262 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:36:41.262 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:36:41.262 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:36:43.904 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:36:43.908 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -397673410 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:36:43.909 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -397673410 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:36:43.912 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:36:43.915 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -618591710
+11-08 15:36:43.915 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -618591710
+11-08 15:36:44.063 I/godot   (31577): LW_SCENE jobs_list.tscn tap_ms=126 first_frame_ms=31 static_mb=98 tex_mb=54
+11-08 15:36:44.206 I/GestureDetector(31577): handleMessage TAP
+11-08 15:36:44.208 I/GestureDetector(31577): handleMessage TAP
+11-08 15:36:46.049 I/godot   (31577): LW_HITCH jobs_list.tscn max_frame_ms=126 (first 2000 ms)
+11-08 15:37:23.816 V/Godot   (31577): OnPause: GodotFragment{a665f14} (69c9a466-6143-4cba-b377-aef11bda88c4 id=0x7f07002c)
+11-08 15:37:23.822 D/AAudio  (31577): AAudioStream_requestStop(s#1) called
+11-08 15:37:23.823 D/AAudioStream(31577): setState(s#1) from 4 to 9
+11-08 15:37:23.824 D/AudioTrack(31577): stop(176): called with 47998720 frames delivered
+11-08 15:37:23.838 D/AAudioStream(31577): setState(s#1) from 9 to 10
+11-08 15:37:23.839 D/AAudio  (31577): AAudioStream_requestStop(s#1) called
+11-08 15:37:23.849 D/AAudio  (31577): AAudioStream_close(s#1) called ---------------
+11-08 15:37:23.854 D/AAudioStream(31577): setState(s#1) from 10 to 11
+11-08 15:37:23.872 D/AAudioStream(31577): setState(s#1) from 11 to 12
+11-08 15:37:23.872 D/AAudioStream(31577): ~AudioStream(s#1) mPlayerBase strongCount = 2
+11-08 15:37:23.875 D/AAudio  (31577): AAudioStream_close(s#1) returned 0 ---------
+11-08 15:37:23.883 D/ames.lockwright(31577): PlayerBase::pause() from IPlayer
+11-08 15:37:23.889 V/VkRenderer(31577): Renderer paused
+11-08 15:37:24.099 I/ImeFocusController(31577): onPreWindowFocus: skipped hasWindowFocus=false mHasImeFocus=true
+11-08 15:37:24.104 I/ImeFocusController(31577): onPostWindowFocus: skipped hasWindowFocus=false mHasImeFocus=true
+11-08 15:37:24.825 I/SV[46593908 GodotAppLauncher](31577): surfaceDestroyed callback.size 1 #2 org.godotengine.godot.GodotVulkanRenderView{2c6f774 VFE...... .F...... 0,0-1080,2340 aid=1}
+11-08 15:37:24.826 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mVisible = false mSurface.isValid() = true
+11-08 15:37:24.893 D/SV[46593908 GodotAppLauncher](31577): updateSurface: surface is not valid
+11-08 15:37:24.894 D/SV[46593908 GodotAppLauncher](31577): updateSurface: surface is not valid
+11-08 15:37:24.925 V/Godot   (31577): OnStop: GodotFragment{a665f14} (69c9a466-6143-4cba-b377-aef11bda88c4 id=0x7f07002c)
+11-08 15:37:24.942 D/SV[46593908 GodotAppLauncher](31577): updateSurface: surface is not valid
+11-08 15:37:24.992 D/BBA2    (31577): setIsFg isFg = false; delayValue 3999ms
+11-08 15:37:38.272 D/BBA2    (31577): setIsFg isFg = true
+11-08 15:37:38.275 V/Godot   (31577): OnStart: GodotFragment{a665f14} (69c9a466-6143-4cba-b377-aef11bda88c4 id=0x7f07002c)
+11-08 15:37:38.285 V/Godot   (31577): OnResume: GodotFragment{a665f14} (69c9a466-6143-4cba-b377-aef11bda88c4 id=0x7f07002c)
+11-08 15:37:38.286 V/VkRenderer(31577): Renderer resumed
+11-08 15:37:38.287 I/OboeAudio(31577): openStreamInternal() OUTPUT -------- OboeVersion1.9.3 --------
+11-08 15:37:38.287 I/AAudio  (31577): AAudioStreamBuilder_openStream() called ----------------------------------------
+11-08 15:37:38.287 I/AudioStreamBuilder(31577): rate   =      0, channels  = 1, channelMask = 0x80000001, format   = 0x5, sharing = EX, dir = OUTPUT
+11-08 15:37:38.287 I/AudioStreamBuilder(31577): devices = AUDIO_PORT_HANDLE_NONE, sessionId = -1, perfMode = 12, callback: ON with frames = 0
+11-08 15:37:38.288 I/AudioStreamBuilder(31577): usage  =     14, contentType = 4, inputPreset = 6, allowedCapturePolicy = 0
+11-08 15:37:38.288 I/AudioStreamBuilder(31577): privacy sensitive = false, opPackageName = (null), attributionTag = (null)
+11-08 15:37:38.288 D/AudioStreamBuilder(31577): build, global mmap policy is 0
+11-08 15:37:38.290 D/AudioStreamBuilder(31577): build, system mmap policy is 1
+11-08 15:37:38.290 D/AudioStreamBuilder(31577): build, final mmap policy is 1
+11-08 15:37:38.301 D/AudioStreamBuilder(31577): build, system mmap exclusive policy is 1
+11-08 15:37:38.301 D/AudioStreamBuilder(31577): build, final mmap exclusive policy is 1
+11-08 15:37:38.301 D/AudioStreamBuilder(31577): build() EXCLUSIVE sharing mode not supported. Use SHARED.
+11-08 15:37:38.301 D/ames.lockwright(31577): PlayerBase::PlayerBase()
+11-08 15:37:38.301 D/AudioStreamTrack(31577): open(), request notificationFrames = -8, frameCount = 0
+11-08 15:37:38.310 I/AudioTrack(31577): createTrack_l(0): AUDIO_OUTPUT_FLAG_FAST successful; frameCount 0 -> 2048
+11-08 15:37:38.313 D/AudioTrack(31577): setVolume(1.000000, 1.000000) pid : 31577
+11-08 15:37:38.320 D/AAudioStream(31577): setState(s#2) from 0 to 2
+11-08 15:37:38.321 I/AAudio  (31577): AAudioStreamBuilder_openStream() got Legacy, devIds = [3], perf = LL, burst = 256
+11-08 15:37:38.321 I/AAudio  (31577): AAudioStreamBuilder_openStream() returns 0 = AAUDIO_OK for s#2 ----------------
+11-08 15:37:38.321 D/AAudio  (31577): AAudioStream_requestStart(s#2) called --------------
+11-08 15:37:38.322 D/AAudioStream(31577): setState(s#2) from 2 to 3
+11-08 15:37:38.326 D/AAudio  (31577): AAudioStream_requestStart(s#2) returned 0 ---------
+11-08 15:37:38.326 I/LWAudio (31577): stream open: api 2, sharing 1, perf 12, rate 48000, burst 256, buffer 512/2048
+11-08 15:37:38.327 D/SV[46593908 GodotAppLauncher](31577): updateSurface: surface is not valid
+11-08 15:37:38.338 D/AudioStreamLegacy(31577): onAudioDeviceUpdate() devices 3 => 3
+11-08 15:37:38.340 D/AAudioStream(31577): setState(s#2) from 3 to 4
+11-08 15:37:38.342 D/BufferQueueConsumer(31577): [](id:7b5900000002,api:0,p:-1,c:31577) connect: controlledByApp=false
+11-08 15:37:38.352 D/BufferQueueConsumer(31577): [](id:7b5900000003,api:0,p:-1,c:31577) connect: controlledByApp=false
+11-08 15:37:38.356 I/SV[46593908 GodotAppLauncher](31577): pST: sr = Rect(0, 0 - 1080, 2340) sw = 1080 sh = 2340
+11-08 15:37:38.357 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mVisible = true mSurface.isValid() = true
+11-08 15:37:38.357 I/SV[46593908 GodotAppLauncher](31577): updateSurface: mSurfaceCreated = false surfaceChanged = true visibleChanged = true
+11-08 15:37:38.357 I/SV[46593908 GodotAppLauncher](31577): surfaceCreated 1 #1 org.godotengine.godot.GodotVulkanRenderView{2c6f774 VFE...... .F...... 0,0-1080,2340 aid=1}
+11-08 15:37:38.357 I/SV[46593908 GodotAppLauncher](31577): surfaceChanged (1080,2340) 1 #1 org.godotengine.godot.GodotVulkanRenderView{2c6f774 VFE...... .F...... 0,0-1080,2340 aid=1}
+11-08 15:37:38.364 I/SV[46593908 GodotAppLauncher](31577): uSP: rtp = Rect(0, 0 - 1080, 2340) rtsw = 1080 rtsh = 2340
+11-08 15:37:38.364 I/SV[46593908 GodotAppLauncher](31577): onSSPAndSRT: pl = 0 pt = 0 sx = 1.0 sy = 1.0
+11-08 15:37:38.379 V/Godot   (31577): OnPause: GodotFragment{a665f14} (69c9a466-6143-4cba-b377-aef11bda88c4 id=0x7f07002c)
+11-08 15:37:38.379 D/AAudio  (31577): AAudioStream_requestStop(s#2) called
+11-08 15:37:38.379 D/AAudioStream(31577): setState(s#2) from 4 to 9
+11-08 15:37:38.379 D/AudioTrack(31577): stop(192): called with 1792 frames delivered
+11-08 15:37:38.385 D/AAudioStream(31577): setState(s#2) from 9 to 10
+11-08 15:37:38.385 D/AAudio  (31577): AAudioStream_requestStop(s#2) called
+11-08 15:37:38.395 D/AAudio  (31577): AAudioStream_close(s#2) called ---------------
+11-08 15:37:38.396 D/AAudioStream(31577): setState(s#2) from 10 to 11
+11-08 15:37:38.407 D/AAudioStream(31577): setState(s#2) from 11 to 12
+11-08 15:37:38.408 D/AAudioStream(31577): ~AudioStream(s#2) mPlayerBase strongCount = 2
+11-08 15:37:38.408 D/AAudio  (31577): AAudioStream_close(s#2) returned 0 ---------
+11-08 15:37:38.417 I/SwappyDisplayManager(31577): Terminating looper thread
+11-08 15:37:38.421 I/godot   (31577): LW_SLOW jobs_list.tscn frame_ms=13602 process_ms=43 physics_ms=8
+11-08 15:37:38.514 I/SwappyDisplayManager(31577): Using internal com/google/androidgamesdk/SwappyDisplayManager class from dex bytes.
+11-08 15:37:38.518 I/SwappyDisplayManager(31577): Starting looper thread
+11-08 15:37:38.531 D/ames.lockwright(31577): PlayerBase::pause() from IPlayer
+11-08 15:37:38.534 V/VkRenderer(31577): Renderer paused
+11-08 15:37:45.849 V/Godot   (31577): OnResume: GodotFragment{a665f14} (69c9a466-6143-4cba-b377-aef11bda88c4 id=0x7f07002c)
+11-08 15:37:45.849 I/OboeAudio(31577): openStreamInternal() OUTPUT -------- OboeVersion1.9.3 --------
+11-08 15:37:45.849 I/AAudio  (31577): AAudioStreamBuilder_openStream() called ----------------------------------------
+11-08 15:37:45.849 I/AudioStreamBuilder(31577): rate   =      0, channels  = 1, channelMask = 0x80000001, format   = 0x5, sharing = EX, dir = OUTPUT
+11-08 15:37:45.849 I/AudioStreamBuilder(31577): devices = AUDIO_PORT_HANDLE_NONE, sessionId = -1, perfMode = 12, callback: ON with frames = 0
+11-08 15:37:45.849 I/AudioStreamBuilder(31577): usage  =     14, contentType = 4, inputPreset = 6, allowedCapturePolicy = 0
+11-08 15:37:45.849 I/AudioStreamBuilder(31577): privacy sensitive = false, opPackageName = (null), attributionTag = (null)
+11-08 15:37:45.849 D/AudioStreamBuilder(31577): build, global mmap policy is 0
+11-08 15:37:45.850 D/AudioStreamBuilder(31577): build, system mmap policy is 1
+11-08 15:37:45.850 D/AudioStreamBuilder(31577): build, final mmap policy is 1
+11-08 15:37:45.850 D/AudioStreamBuilder(31577): build, system mmap exclusive policy is 1
+11-08 15:37:45.850 D/AudioStreamBuilder(31577): build, final mmap exclusive policy is 1
+11-08 15:37:45.850 D/AudioStreamBuilder(31577): build() EXCLUSIVE sharing mode not supported. Use SHARED.
+11-08 15:37:45.850 D/ames.lockwright(31577): PlayerBase::PlayerBase()
+11-08 15:37:45.850 D/AudioStreamTrack(31577): open(), request notificationFrames = -8, frameCount = 0
+11-08 15:37:45.855 V/VkRenderer(31577): Renderer resumed
+11-08 15:37:45.868 I/AudioTrack(31577): createTrack_l(0): AUDIO_OUTPUT_FLAG_FAST successful; frameCount 0 -> 2048
+11-08 15:37:45.871 D/AudioTrack(31577): setVolume(1.000000, 1.000000) pid : 31577
+11-08 15:37:45.879 D/AAudioStream(31577): setState(s#3) from 0 to 2
+11-08 15:37:45.881 I/AAudio  (31577): AAudioStreamBuilder_openStream() got Legacy, devIds = [3], perf = LL, burst = 256
+11-08 15:37:45.881 I/AAudio  (31577): AAudioStreamBuilder_openStream() returns 0 = AAUDIO_OK for s#3 ----------------
+11-08 15:37:45.881 D/AAudio  (31577): AAudioStream_requestStart(s#3) called --------------
+11-08 15:37:45.881 D/AAudioStream(31577): setState(s#3) from 2 to 3
+11-08 15:37:45.889 D/AAudio  (31577): AAudioStream_requestStart(s#3) returned 0 ---------
+11-08 15:37:45.889 I/LWAudio (31577): stream open: api 2, sharing 1, perf 12, rate 48000, burst 256, buffer 512/2048
+11-08 15:37:45.890 D/AAudioStream(31577): setState(s#3) from 3 to 4
+11-08 15:37:45.891 D/AudioStreamLegacy(31577): onAudioDeviceUpdate() devices 3 => 3
+11-08 15:37:48.849 D/io_stats(  625): !@ Read_top(KB): gle.android.gms:high(15073) 3144 system_server:high(2084) 432 ames.lockwright:top(31577) 320
+11-08 15:37:57.348 V/Godot   (31577): OnPause: GodotFragment{a665f14} (69c9a466-6143-4cba-b377-aef11bda88c4 id=0x7f07002c)
+11-08 15:37:57.348 D/AAudio  (31577): AAudioStream_requestStop(s#3) called
+11-08 15:37:57.348 D/AAudioStream(31577): setState(s#3) from 4 to 9
+11-08 15:37:57.348 D/AudioTrack(31577): stop(194): called with 550656 frames delivered
+11-08 15:37:57.349 D/AAudioStream(31577): setState(s#3) from 9 to 10
+11-08 15:37:57.349 D/AAudio  (31577): AAudioStream_requestStop(s#3) called
+11-08 15:37:57.360 D/AAudio  (31577): AAudioStream_close(s#3) called ---------------
+11-08 15:37:57.360 D/AAudioStream(31577): setState(s#3) from 10 to 11
+11-08 15:37:57.361 D/AAudioStream(31577): setState(s#3) from 11 to 12
+11-08 15:37:57.361 D/AAudioStream(31577): ~AudioStream(s#3) mPlayerBase strongCount = 2
+11-08 15:37:57.361 D/AAudio  (31577): AAudioStream_close(s#3) returned 0 ---------
+11-08 15:37:57.371 D/ames.lockwright(31577): PlayerBase::pause() from IPlayer
+11-08 15:37:57.374 V/VkRenderer(31577): Renderer paused
+11-08 15:37:57.427 I/ImeFocusController(31577): onPreWindowFocus: skipped hasWindowFocus=false mHasImeFocus=true
+11-08 15:37:57.428 I/ImeFocusController(31577): onPostWindowFocus: skipped hasWindowFocus=false mHasImeFocus=true
+11-08 15:38:21.789 V/Godot   (31577): OnResume: GodotFragment{a665f14} (69c9a466-6143-4cba-b377-aef11bda88c4 id=0x7f07002c)
+11-08 15:38:21.789 I/OboeAudio(31577): openStreamInternal() OUTPUT -------- OboeVersion1.9.3 --------
+11-08 15:38:21.789 I/AAudio  (31577): AAudioStreamBuilder_openStream() called ----------------------------------------
+11-08 15:38:21.789 I/AudioStreamBuilder(31577): rate   =      0, channels  = 1, channelMask = 0x80000001, format   = 0x5, sharing = EX, dir = OUTPUT
+11-08 15:38:21.789 I/AudioStreamBuilder(31577): devices = AUDIO_PORT_HANDLE_NONE, sessionId = -1, perfMode = 12, callback: ON with frames = 0
+11-08 15:38:21.789 I/AudioStreamBuilder(31577): usage  =     14, contentType = 4, inputPreset = 6, allowedCapturePolicy = 0
+11-08 15:38:21.789 I/AudioStreamBuilder(31577): privacy sensitive = false, opPackageName = (null), attributionTag = (null)
+11-08 15:38:21.789 D/AudioStreamBuilder(31577): build, global mmap policy is 0
+11-08 15:38:21.790 D/AudioStreamBuilder(31577): build, system mmap policy is 1
+11-08 15:38:21.790 D/AudioStreamBuilder(31577): build, final mmap policy is 1
+11-08 15:38:21.790 D/AudioStreamBuilder(31577): build, system mmap exclusive policy is 1
+11-08 15:38:21.790 D/AudioStreamBuilder(31577): build, final mmap exclusive policy is 1
+11-08 15:38:21.790 D/AudioStreamBuilder(31577): build() EXCLUSIVE sharing mode not supported. Use SHARED.
+11-08 15:38:21.790 D/ames.lockwright(31577): PlayerBase::PlayerBase()
+11-08 15:38:21.790 D/AudioStreamTrack(31577): open(), request notificationFrames = -8, frameCount = 0
+11-08 15:38:21.797 I/AudioTrack(31577): createTrack_l(0): AUDIO_OUTPUT_FLAG_FAST successful; frameCount 0 -> 2048
+11-08 15:38:21.798 D/AudioTrack(31577): setVolume(1.000000, 1.000000) pid : 31577
+11-08 15:38:21.798 D/AAudioStream(31577): setState(s#4) from 0 to 2
+11-08 15:38:21.803 I/AAudio  (31577): AAudioStreamBuilder_openStream() got Legacy, devIds = [3], perf = LL, burst = 256
+11-08 15:38:21.803 I/AAudio  (31577): AAudioStreamBuilder_openStream() returns 0 = AAUDIO_OK for s#4 ----------------
+11-08 15:38:21.803 D/AAudio  (31577): AAudioStream_requestStart(s#4) called --------------
+11-08 15:38:21.804 D/AAudioStream(31577): setState(s#4) from 2 to 3
+11-08 15:38:21.804 V/VkRenderer(31577): Renderer resumed
+11-08 15:38:21.845 D/AudioStreamLegacy(31577): onAudioDeviceUpdate() devices 3 => 3
+11-08 15:38:21.845 D/AAudio  (31577): AAudioStream_requestStart(s#4) returned 0 ---------
+11-08 15:38:21.845 I/LWAudio (31577): stream open: api 2, sharing 1, perf 12, rate 48000, burst 256, buffer 512/2048
+11-08 15:38:21.871 D/AAudioStream(31577): setState(s#4) from 3 to 4
+11-08 15:38:57.828 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:38:57.841 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:38:57.841 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:38:57.841 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:38:57.841 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:38:57.935 I/godot   (31577): LW_SCENE main_menu.tscn tap_ms=-1 first_frame_ms=3 static_mb=94 tex_mb=32
+11-08 15:38:59.946 I/godot   (31577): LW_HITCH main_menu.tscn max_frame_ms=62 (first 2000 ms)
+11-08 15:38:59.992 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:39:00.006 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -1006738262 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:39:00.007 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -1006738262 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:39:00.010 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:39:00.014 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -443862419
+11-08 15:39:00.015 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -443862419
+11-08 15:39:00.297 I/GestureDetector(31577): handleMessage TAP
+11-08 15:39:00.306 I/GestureDetector(31577): handleMessage TAP
+11-08 15:39:00.942 D/io_stats(  625): !@ Read_top(KB): ames.lockwright:top(31577) 2240 kworker/u32:4:/(30661) 24 system_server:high(2084) 20
+11-08 15:39:01.011 I/godot   (31577): LW_SCENE showcase.tscn tap_ms=972 first_frame_ms=22 static_mb=105 tex_mb=35
+11-08 15:39:01.011 I/godot   (31577): LW_SLOW showcase.tscn frame_ms=811 process_ms=19 physics_ms=2
+11-08 15:39:02.993 I/godot   (31577): LW_HITCH showcase.tscn max_frame_ms=811 (first 2000 ms)
+11-08 15:39:04.685 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:39:04.691 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:39:04.692 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:39:04.692 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:39:04.692 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:39:04.761 I/godot   (31577): LW_SCENE main_menu.tscn tap_ms=4723 first_frame_ms=3 static_mb=94 tex_mb=64
+11-08 15:39:06.763 I/godot   (31577): LW_HITCH main_menu.tscn max_frame_ms=57 (first 2000 ms)
+11-08 15:39:08.132 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x0, f=0x0, d=0, '97a888e', t=1 
+11-08 15:39:08.134 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -478101040 caller: android.view.ScaleGestureDetector.onTouchEvent:311 org.godotengine.godot.input.GodotInputHandler.onTouchEvent:262 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 
+11-08 15:39:08.135 I/GestureDetector(31577): obtain mCurrentDownEvent. id: -478101040 caller: org.godotengine.godot.input.GodotInputHandler.onTouchEvent:263 org.godotengine.godot.GodotVulkanRenderView.onTouchEvent:131 android.view.View.performOnTouchCallback:17597 
+11-08 15:39:08.138 I/InputDispatcher( 2084): Delivering touch to (31577): action: 0x1, f=0x0, d=0, '97a888e', t=1 
+11-08 15:39:08.139 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -161795174
+11-08 15:39:08.140 I/GestureDetector(31577): obtain mCurrentMotionEventRaw. action: 1 id: -161795174
+11-08 15:39:08.435 I/GestureDetector(31577): handleMessage TAP
+11-08 15:39:08.435 I/GestureDetector(31577): handleMessage TAP
+11-08 15:39:12.403 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:39:12.407 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:39:12.407 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:39:12.407 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:39:12.407 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:39:15.860 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:39:15.867 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:39:15.868 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:39:15.868 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:39:15.868 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
+11-08 15:39:19.240 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x0 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:39:19.245 I/InputDispatcher( 2084): Delivering key to (31577): B action: 0x1 (0), f=0x0, m=0x0, d=0, '97a888e'
+11-08 15:39:19.245 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightHaptics
+11-08 15:39:19.245 V/Godot   (31577): Invoking onMainBackPressed for plugin AndroidRuntime
+11-08 15:39:19.245 V/Godot   (31577): Invoking onMainBackPressed for plugin LockwrightLowLatencyAudio
