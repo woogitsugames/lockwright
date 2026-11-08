@@ -257,3 +257,14 @@ func test_payment_receipt_is_filled_after_a_job_opening() -> void:
 		var l: Label = pay.get_node("Frame/VBox/Receipt/Paper/" + k)
 		assert_true(paper_rect.encloses(Rect2(l.position, l.size).grow(-0.5)), "%s inside the receipt" % k)
 	JobRun.current_job = {}
+
+
+func test_receipt_paper_in_every_ui_language() -> void:
+	# VA-18: a printed receipt per UI language; anything else falls back to the EN paper
+	var pay_script := load("res://scripts/ui/job_payment.gd")
+	for lang in ["pl", "en", "de", "fr", "es"]:
+		var path: String = pay_script.receipt_path(lang)
+		assert_eq(path, "res://assets/ui/gpt/verify/receipt_%s.webp" % lang)
+		assert_true(ResourceLoader.exists(path), "receipt paper %s ships" % lang)
+	assert_eq(pay_script.receipt_path("de_DE"), "res://assets/ui/gpt/verify/receipt_de.webp")
+	assert_eq(pay_script.receipt_path("it"), "res://assets/ui/gpt/verify/receipt_en.webp")

@@ -5,7 +5,8 @@ extends Node
 ## D-58 arrival scene: --job=job.wrong_floor [--time=night] [--reduce=0|1] [--climb-at=SECONDS | --hold=1] [--speaker=teresa].
 ## --lang=pl|en|de|fr|es sets the game language in memory (Settings + I18n, not saved; visual audit 2026-11-07).
 ## --no-day-after=1 drops a queued "day after" scene (in memory) so the job list itself is visible;
-## the debug FPS overlay (Quality) is always hidden in these shots. --targets=1 prints every visible
+## the debug FPS overlay (Quality) is hidden in these shots unless --keep-fps=1 (VA-15: then it shows what a
+## debug build shows by itself, i.e. nothing unless the game was started with --fps=1). --targets=1 prints every visible
 ## button smaller than 48x48 dp ("SMALL <path> <size>").
 ## --press=<button property> presses that button of the scene before the wait (e.g. accept_button on job_verify).
 ## --size=WxH sets the window (as tests/screens.gd); --tab=furnishings opens the workshop's Wyposażenie tab; --tutorial-stage=N sets JobRun.tutorial_stage first; --auto=1 sets Settings auto_tension (not saved).
@@ -19,7 +20,7 @@ func _ready() -> void:
 		var p: PackedStringArray = a["size"].split("x")
 		get_window().size = Vector2i(int(p[0]), int(p[1]))
 		await get_tree().process_frame
-	if Quality._fps_label != null:
+	if Quality._fps_label != null and a.get("keep-fps", "") != "1":
 		Quality._fps_label.visible = false
 	if a.get("no-day-after", "") == "1":
 		Save.data["day_after"] = {}

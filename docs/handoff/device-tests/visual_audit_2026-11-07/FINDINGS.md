@@ -36,13 +36,13 @@ Ekran pauzy nie był zrzucany (należy do innego agenta, zob. VA-13).
 | VA-09 | Zamki: egipski, drewniany, osiowy, czasowy, dźwigniowy | Daleko od poprzeczki renderów. Egipski: drewno na drewnie (kołek/szczelina ~1,8:1, kołek/rama ~2,2:1), zamek ~35% szerokości na czerwonej desce. Drewniany: ~1,8:1. Osiowy: płaskie suwaki (suwak/szczelina ~1,4:1). Czasowy: mosiężne koła na mosiężnej płycie, prawie zero kontrastu, blisko zakazanego „steampunku z martwymi zębatkami”. Dźwignia: płaski pomarańcz jak plastik. Wszystkie poniżej 3:1 metal/tło. `crops/va09_*.jpg` | **GPU / Blender** |
 | VA-10 | Zamki: dimple, magnetyczny | Ten sam przekrój wkładki bębenkowej co pin (`crops/va10_*.jpg`): rodzina bez własnej sylwetki. | **GPU / Blender** |
 | VA-11 | Zamki: tarczowy (disc), szyfrowy (combo), pion | Przekrój kończy się na ~55% wysokości. Między nim a zwijką jest pas drewna/skóry z „wiszącym” wskaźnikiem napięcia (`crops/va11_*.jpg`). Wygląda jak niedokończony kadr. | **naprawione układem** (D-85: zwijka jak na innych ekranach, przekrój do niej, zamek tuż nad zwijką; blat nad płytą odbity). Lepiej: płyty z zamkiem niżej (render, opis w D-85). `fixes/landscape_crop/va11_*` |
-| VA-12 | Wybór sterowania | Jedyna granatowa tabliczka emaliowana w grze („Kontynuuj”, `crops/va12_navy_plate.png`). Reszta przycisków jest kremowa, więc ta wypada z systemu. | decyzja właściciela (zostawione) |
+| VA-12 | Wybór sterowania | Jedyna granatowa tabliczka emaliowana w grze („Kontynuuj”, `crops/va12_navy_plate.png`). Reszta przycisków jest kremowa, więc ta wypada z systemu. | **naprawione** (D-86): „Kontynuuj” na kremowej emalii (`ivory`), jak reszta przycisków |
 | VA-13 | Pauza | Nie zrzucana (inny agent). Do sprawdzenia przy jego przekazaniu: te same kryteria (tło, 48 dp, kontrast). | nie moje |
-| VA-14 | Warsztat — narzędzia | Wiersze narzędzi to sam tekst na ciemnym papierze, bez wizerunku narzędzia, i czyta się to jak lista w aplikacji biurowej. Mapa dzielnicy jest ostra i „płaska” obok fotorealu. | **GPU** (miniatury narzędzi z renderów) |
-| VA-15 | Debug | Zielona nakładka „FPS … frame … ms” w buildach debug (APK testerskie) zasłania „‹ Wstecz” na każdym ekranie i trafia na zrzuty dla właściciela. | zrzuty: ukryta. W grze bez zmian (tylko debug) |
-| VA-16 | Samouczek, poziom | „Wstecz” poniżej krawędzi (trzeba przewinąć). | drobne, bez zmian |
+| VA-14 | Warsztat — narzędzia | Wiersze narzędzi to sam tekst na ciemnym papierze, bez wizerunku narzędzia, i czyta się to jak lista w aplikacji biurowej. Mapa dzielnicy jest ostra i „płaska” obok fotorealu. | **naprawione** (D-86): zdjęcie studyjne każdego z 22 narzędzi w wierszu (Blender, biblioteka zdjęć materiałów), mapa jak papier pod lampą |
+| VA-15 | Debug | Zielona nakładka „FPS … frame … ms” w buildach debug (APK testerskie) zasłania „‹ Wstecz” na każdym ekranie i trafia na zrzuty dla właściciela. | **naprawione** (D-86): w buildach debug domyślnie ukryta; F3, dotyk czterema palcami albo `-- --fps=1` |
+| VA-16 | Samouczek, poziom | „Wstecz” poniżej krawędzi (trzeba przewinąć). | **naprawione** (D-86): „‹ Wstecz” w lewym górnym rogu poza przewijaniem (pion i poziom); w poziomie mniejsze karty, więc „Zacznij ćwiczenie” też bez przewijania. Tryb ciągły miał to już od VA-06 |
 | VA-17 | Menu FR/ES | Wracało do polskiej tablicy (`pick_lang` → PL). | **naprawione** → EN, PL dopiero gdy brak EN |
-| VA-18 | Faktura DE/FR/ES | Papier paragonu jest tylko PL/EN (DE/FR/ES dostają EN). Zrzut w DE bez flagi deweloperskiej pokazywał PL, bo ekran czytał `Settings.language()` zamiast języka UI. | kod naprawiony (język UI). Papiery DE/FR/ES to grafika |
+| VA-18 | Faktura DE/FR/ES | Papier paragonu jest tylko PL/EN (DE/FR/ES dostają EN). Zrzut w DE bez flagi deweloperskiej pokazywał PL, bo ekran czytał `Settings.language()` zamiast języka UI. | **naprawione** (D-86): papiery `receipt_{de,fr,es}.webp` (`art/tools/receipt_i18n.py`, ten sam papier i układ pól co G14), wybór papieru według języka UI dla wszystkich 5 języków |
 
 ## Co naprawiłem (pliki, przed/po)
 
@@ -78,5 +78,21 @@ Ekran pauzy nie był zrzucany (należy do innego agenta, zob. VA-13).
 3. **Disc / combo w pionie (VA-11)**: kadr przekroju do zwijki, bez pasa „pustego” drewna.
 4. **Samouczek (VA-07)**: kadry G11 jako rendery przekroju z ręką/kredą zamiast cienkich szkiców.
 5. **Weryfikacja (VA-08)**: tło (dokumenty na kartce w dłoni przy drzwiach, jak przyjazd); to pod właściciela ekranu.
-6. **Warsztat — narzędzia (VA-14)**: miniatury narzędzi z `art/renders/tray.png` (po jednej na wiersz).
-7. **Paragon DE/FR/ES (VA-18)**: trzy papiery `receipt_<lang>.webp` z tym samym układem pól.
+6. ~~**Warsztat — narzędzia (VA-14)**~~ zrobione (D-86).
+7. ~~**Paragon DE/FR/ES (VA-18)**~~ zrobione (D-86).
+
+## Druga runda (2026-11-08, D-86): VA-12, VA-14, VA-15, VA-16, VA-18
+
+- **VA-14** `art/blender/tool_thumbs.py` (22 narzędzia z `game/data/tools.json`: ostrza `flat_tool` jak w `tray.py`,
+  sonda magnetyczna i chorągiewka z `plates/tool_layers.py`, lupa z `tray.py`, mikroskop i boroskop z `optics.py`;
+  materiały `photo_mat` z `art/textures/photo`; ciemna, matowa skóra jako tło; światło jak `tray.py`) →
+  `art/tools/tool_thumbs_post.py` → `game/assets/ui/tools/<id>.webp` (160 px = 2× miejsca 80 dp, import stratny 0,85).
+  `workshop_screen.gd`: zdjęcie w cienkiej ciemnej oprawie obok nazwy i opisu; narzędzie jeszcze nie twoje jest
+  przyciemnione (stan i tak jest słowami). Mapa: cieplejsza i ciemniejsza, krawędzie w cieniu, ciemne passe-partout.
+  Arkusz: `art/renders/tool_thumbs_contact.jpg`. Przed/po: `before_after/va14_workshop_tools_pl.jpg`, `va14_va18_after_es_land.jpg`.
+- **VA-12** `scenes/control_choice.tscn`: `plate = ivory`. Przed/po: `before_after/va12_control_choice_plate.jpg`.
+- **VA-15** `autoload/quality.gd`: nakładka FPS ukryta domyślnie; F3 / cztery palce / `--fps=1`. `shot_scene.gd --keep-fps=1`
+  pokazuje to, co widzi tester. Przed/po: `before_after/va15_fps_overlay_debug.jpg`.
+- **VA-16** `ui/tutorial.gd`. Przed/po: `before_after/va16_tutorial_back.jpg`.
+- **VA-18** `art/tools/receipt_i18n.py`, `ui/job_payment.gd` (`receipt_path()`). Przed/po: `before_after/va18_invoice_de_fr.jpg`.
+- Testy GUT: `test_ui_layout.gd` (miniatury, płytka, Wstecz), `test_fps_overlay.gd`, `test_flow_after_tutorial.gd` (papier w 5 językach).

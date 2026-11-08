@@ -25,6 +25,9 @@ const CARD_H := 168.0
 const BG := "res://assets/ui/gpt/workshop/03-workshop-evening-portrait.webp"
 const CARD_CROP := Rect2(0.08, 0.14, 0.84, 0.66)  # drawing area of a 1200×1500 card (skip margins)
 
+var _back: Button
+var _back_space: Control
+
 
 func _ready() -> void:
 	Sfx.play_ambience(&"stairwell")
@@ -36,8 +39,19 @@ func _ready() -> void:
 	v.get_node("Title").theme_type_variation = &"MenuTitle"
 	v.get_node("Title").add_theme_font_size_override("font_size", 30)
 	v.get_node("StartButton").pressed.connect(_start_stage)
-	v.get_node("BackButton").text = I18n.t(&"common.back")
-	v.get_node("BackButton").pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+	# VA-16: "‹ Back" top-left like every other screen (run_loop.gd), outside the scroll so it is always
+	# on screen; it sat under the three VA-07 cards, below the fold in portrait and in landscape
+	_back = v.get_node("BackButton")
+	_back.text = "‹ " + I18n.t(&"common.back")
+	_back.custom_minimum_size = Vector2(112, 48)
+	_back.reparent(self)
+	_back.size = _back.get_combined_minimum_size()
+	_back.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+	_back_space = Control.new()
+	_back_space.name = "BackSpace"
+	_back_space.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	v.add_child(_back_space)
+	v.move_child(_back_space, 0)
 	_refresh()
 	resized.connect(_relayout)
 	_relayout()
@@ -48,6 +62,15 @@ func _relayout() -> void:
 	var grid: GridContainer = $Margin/Scroll/VBox/Frames
 	var landscape := size.x > size.y
 	grid.columns = maxi(grid.get_child_count(), 1) if landscape else 1
+	# VA-16: the back plate floats top-left; in portrait the centred two-line title starts below it,
+	# in landscape the one-line title fits beside it
+	var i := ScreenFrame.insets(self)
+	_back.position = Vector2(i.x + ScreenFrame.SIDE, i.y + 8.0)
+	_back_space.custom_minimum_size.y = 0.0 if landscape else 52.0
+	# landscape (412 dp tall): smaller cards, so the note and "Start" stay above the fold too
+	for row in grid.get_children():
+		var pic := row.get_child(0) as Control
+		pic.custom_minimum_size = Vector2(CARD_W, CARD_H) * (0.62 if landscape else 1.0)
 
 
 func frame_captions() -> PackedStringArray:

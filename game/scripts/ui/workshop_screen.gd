@@ -17,6 +17,8 @@ extends Control
 @onready var back_button: Button = $Frame/VBox/Header/BackButton
 
 const TOOLS_PATH := "res://data/tools.json"
+const TOOL_THUMBS := "res://assets/ui/tools"  # VA-14: one studio photo per tool id
+const THUMB_DP := 80.0
 
 # G08 workshop backgrounds by time of day
 const WORKSHOP_BG := {
@@ -64,12 +66,46 @@ func _add_map() -> void:
 	_map.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	_map.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_map.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# VA-14: the flat, bright print sat oddly next to the photoreal backdrop: lamp-lit paper instead
+	# (warmer, a touch darker, edges falling off into shadow, a thin dark mount with a drop shadow)
+	_map.self_modulate = Color(0.88, 0.83, 0.74)
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.06, 0.05, 0.04)
+	sb.set_border_width_all(3)
+	sb.border_color = Color(0.05, 0.04, 0.035)
+	sb.set_corner_radius_all(2)
+	sb.shadow_color = Color(0, 0, 0, 0.5)
+	sb.shadow_size = 6
+	sb.shadow_offset = Vector2(0, 3)
+	frame.add_theme_stylebox_override("panel", sb)
 	frame.add_child(_map)
+	var shade := TextureRect.new()
+	shade.name = "MapShade"
+	shade.texture = map_shade()
+	shade.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	shade.stretch_mode = TextureRect.STRETCH_SCALE
+	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	frame.add_child(shade)
 	$Frame/VBox.add_child(frame)
 	$Frame/VBox.move_child(frame, 3)
 	_map_frame = frame
 	resized.connect(_size_map)
 	_size_map()
+
+
+## VA-14: radial fall-off laid over the district map (clear centre, warm-dark corners), like a lamp above it.
+static func map_shade() -> GradientTexture2D:
+	var g := Gradient.new()
+	g.offsets = PackedFloat32Array([0.0, 0.55, 1.0])
+	g.colors = PackedColorArray([Color(0.08, 0.05, 0.02, 0.0), Color(0.08, 0.05, 0.02, 0.12), Color(0.05, 0.03, 0.015, 0.55)])
+	var t := GradientTexture2D.new()
+	t.gradient = g
+	t.fill = GradientTexture2D.FILL_RADIAL
+	t.fill_from = Vector2(0.45, 0.4)
+	t.fill_to = Vector2(1.05, 1.05)
+	t.width = 256
+	t.height = 128
+	return t
 
 
 func _size_map() -> void:
@@ -374,11 +410,23 @@ func _tool_card(tool: Dictionary, coins: int) -> Control:
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 6)
 	card.add_child(box)
+	# VA-14: the tool itself, a studio photo (art/blender/tool_thumbs.py), beside its name and line
+	var head := HBoxContainer.new()
+	head.add_theme_constant_override("separation", 12)
+	box.add_child(head)
+	var thumb := tool_thumb(id, owned)
+	if thumb != null:
+		head.add_child(thumb)
+	var text_col := VBoxContainer.new()
+	text_col.add_theme_constant_override("separation", 4)
+	text_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	text_col.alignment = BoxContainer.ALIGNMENT_CENTER
+	head.add_child(text_col)
 	var name_label := ScreenFrame.wrap(Label.new())
 	name_label.name = "Name"
 	name_label.text = I18n.t(tool.get("i18n", &"common.close"))
 	name_label.add_theme_font_size_override("font_size", 18)
-	box.add_child(name_label)
+	text_col.add_child(name_label)
 	# T57: one short line on what the tool is for and what feedback it gives
 	var desc_key := StringName("tool.%s.desc" % id)
 	if I18n.has_key(desc_key):
@@ -386,7 +434,7 @@ func _tool_card(tool: Dictionary, coins: int) -> Control:
 		desc_label.name = "Desc"
 		desc_label.theme_type_variation = &"Caption"
 		desc_label.text = I18n.t(desc_key)
-		box.add_child(desc_label)
+		text_col.add_child(desc_label)
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 12)
 	box.add_child(row)
@@ -429,6 +477,39 @@ func _tool_card(tool: Dictionary, coins: int) -> Control:
 	if "accessibility_name" in action:
 		action.set("accessibility_name", "%s: %s. %s" % [action.text, name_label.text, state_label.text])
 	return card
+
+
+## VA-14: the tool's photo (game/assets/ui/tools/<id>.webp, 160 px = 2x the 80 dp slot) in a thin dark
+## frame, as a print laid on the paper; a tool you do not own yet is shown dimmer (its state is also in words).
+## null when there is no picture for the id. Public for tests.
+static func tool_thumb(id: String, owned := true) -> Control:
+	var path := "%s/%s.webp" % [TOOL_THUMBS, id]
+	if not ResourceLoader.exists(path):
+		return null
+	var frame := PanelContainer.new()
+	frame.name = "Thumb"
+	frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	frame.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.05, 0.045, 0.04)
+	sb.set_border_width_all(2)
+	sb.border_color = Color(0.03, 0.026, 0.022, 0.95)
+	sb.set_corner_radius_all(3)
+	sb.shadow_color = Color(0, 0, 0, 0.45)
+	sb.shadow_size = 4
+	sb.shadow_offset = Vector2(0, 2)
+	frame.add_theme_stylebox_override("panel", sb)
+	var pic := TextureRect.new()
+	pic.name = "Picture"
+	pic.texture = load(path)
+	pic.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	pic.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	pic.custom_minimum_size = Vector2(THUMB_DP, THUMB_DP)
+	pic.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	if not owned:
+		pic.modulate = Color(0.68, 0.66, 0.63)
+	frame.add_child(pic)
+	return frame
 
 
 func _buy(tool_id: String, price: int) -> void:

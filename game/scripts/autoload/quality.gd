@@ -3,7 +3,8 @@ extends Node
 ## Quality profiles for cheap phones (task 7): render_scale, MSAA and the plan-B
 ## plate (SubViewport) size. Profile "auto" picks after the first 10 s of play from the
 ## average frame time; the player can override it in Settings. Debug builds get an
-## FPS / frame-time overlay.
+## FPS / frame-time overlay, hidden by default (VA-15: in tester APKs it covered "‹ Wstecz" and landed
+## in every screenshot). Dev switch: launch with `-- --fps=1`, press F3, or tap with four fingers.
 
 signal profile_changed(profile: Dictionary)
 
@@ -32,13 +33,32 @@ func _ready() -> void:
 		_fps_label.add_theme_font_size_override("font_size", 14)
 		_fps_label.position = Vector2(8, 8)
 		_fps_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_fps_label.visible = "--fps=1" in OS.get_cmdline_user_args()
 		# N-67: autoload _ready runs while root is still adding its children ("Parent node is
 		# busy setting up children"), so the overlay joins root on the next idle frame.
 		get_tree().root.add_child.call_deferred(_fps_label)
 
 
-func _process(delta: float) -> void:
+## VA-15: debug builds only; F3 or a four-finger tap shows / hides the FPS overlay (in memory).
+func _input(event: InputEvent) -> void:
+	if _fps_label == null:
+		return
+	var toggle := false
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F3:
+		toggle = true
+	elif event is InputEventScreenTouch and event.pressed and event.index == 3:
+		toggle = true
+	if toggle:
+		set_fps_overlay(not _fps_label.visible)
+
+
+func set_fps_overlay(on: bool) -> void:
 	if _fps_label != null:
+		_fps_label.visible = on
+
+
+func _process(delta: float) -> void:
+	if _fps_label != null and _fps_label.visible:
 		_fps_label.text = "FPS %d  frame %.1f ms" % [Engine.get_frames_per_second(), delta * 1000.0]
 	if Settings.get_value("quality_profile", "auto") == "auto" and not _auto_done:
 		_auto_time += delta

@@ -167,3 +167,46 @@ func test_control_choice_defaults_to_auto_and_saves() -> void:
 	assert_false(scene.auto_selected)
 	Settings.set_value("auto_tension", before_auto)
 	Settings.set_value("control_chosen", before_chosen)
+
+
+func test_every_workshop_tool_has_a_studio_thumbnail() -> void:
+	# VA-14: each tool row shows the tool itself (art/blender/tool_thumbs.py), not just text
+	var tools: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/tools.json"))
+	var ws_script := load("res://scripts/ui/workshop_screen.gd")
+	for tool in tools["tools"]:
+		var thumb: Control = ws_script.tool_thumb(tool["id"])
+		assert_not_null(thumb, "thumbnail for %s" % tool["id"])
+		if thumb != null:
+			var pic: TextureRect = thumb.get_node("Picture")
+			assert_eq(pic.texture.get_width(), 160, "%s: 2x the 80 dp slot" % tool["id"])
+			assert_gte(pic.custom_minimum_size.x, 48.0)
+			thumb.free()
+	var card := _card(tools["tools"][0], 0, true, 100)
+	assert_not_null(card.find_child("Thumb", true, false), "the row carries the picture")
+	assert_null(ws_script.tool_thumb("zz_no_such_tool"), "no picture, no empty frame")
+
+
+func test_control_choice_continue_is_cream_enamel() -> void:
+	# VA-12: no navy plate left on this screen; Continue matches the cream button system
+	var scene := await _open("res://scenes/control_choice.tscn", Vector2i(412, 915))
+	assert_eq(scene.get_node("Frame/VBox/ContinueButton").plate, &"ivory")
+
+
+func test_tutorial_back_is_on_screen_without_scrolling() -> void:
+	# VA-16: "‹ Back" sat below the fold under the tutorial cards
+	for size in [Vector2i(412, 915), Vector2i(360, 800), Vector2i(915, 412)]:
+		var scene := await _open("res://scenes/tutorial.tscn", size)
+		var back: Button = scene.get_node("BackButton")
+		var r := back.get_global_rect()
+		assert_true(Rect2(Vector2.ZERO, Vector2(size)).encloses(r), "%s: back %s on screen" % [size, r])
+		assert_gte(r.size.y, 47.5)
+		var start: Button = scene.get_node("Margin/Scroll/VBox/StartButton")
+		assert_false(r.intersects(start.get_global_rect()), "%s: back does not cover Start" % size)
+		var title: Label = scene.get_node("Margin/Scroll/VBox/Title")
+		var tr := title.get_global_rect()
+		# the title's glyphs must not run under the plate (centred text: check the used width)
+		var text_w := title.get_theme_font("font").get_string_size(title.text, HORIZONTAL_ALIGNMENT_LEFT, -1,
+			title.get_theme_font_size("font_size")).x
+		if text_w < tr.size.x:
+			var left := tr.position.x + (tr.size.x - text_w) * 0.5
+			assert_true(left >= r.end.x or tr.position.y >= r.end.y, "%s: title clear of the back plate" % size)

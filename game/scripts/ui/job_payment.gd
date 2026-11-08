@@ -38,8 +38,7 @@ func _ready() -> void:
 	resized.connect(_orient)
 	_orient()
 	var job: Dictionary = JobRun.current_job
-	var lang := "pl" if I18n.current_language() == "pl" else "en"  # the UI language (DE/FR/ES -> EN paper)
-	paper.texture = load("res://assets/ui/gpt/verify/receipt_%s.webp" % lang)
+	paper.texture = load(receipt_path(I18n.current_language()))
 	var reward := int(job.get("reward_coins", 0))
 	var tip := expected_tip(reward)
 	_fill_receipt(job, reward, tip)
@@ -52,6 +51,13 @@ func _ready() -> void:
 	paper.resized.connect(_layout_fields)
 	_layout_fields()
 	_play_reward_sequence(not JobRun.is_talk(job))  # audio/v2 rewards: door_open -> thanks -> coins (mix README)
+
+
+## VA-18: the receipt paper in the UI language (I18n, not Settings.language()): PL/EN/DE/FR/ES papers,
+## EN for anything else. Public for tests.
+static func receipt_path(lang: String) -> String:
+	var path := "res://assets/ui/gpt/verify/receipt_%s.webp" % lang.substr(0, 2).to_lower()
+	return path if ResourceLoader.exists(path) else "res://assets/ui/gpt/verify/receipt_en.webp"
 
 
 ## VA-04: landscape = receipt on the left at full height, result and Continue beside it
