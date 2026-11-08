@@ -4,13 +4,16 @@ extends Node
 ##   xvfb-run godot --path game --display-driver x11 --rendering-driver opengl3 res://tests/screens.tscn -- --out /tmp/shots --size 412x915
 const SCREENS := ["res://scenes/main_menu.tscn", "res://scenes/jobs_list.tscn", "res://scenes/workshop.tscn", "res://scenes/showcase.tscn", "res://scenes/settings.tscn", "res://scenes/control_choice.tscn", "res://scenes/job_arrival.tscn", "res://scenes/day_after.tscn", "res://scenes/lock.tscn",
 	"res://scenes/workshop.tscn#practice", "res://scenes/lock_job.tscn#practice",
-	"res://scenes/job_verify.tscn#wrong_floor", "res://scenes/job_verify.tscn#kiosk", "res://scenes/lock_job.tscn#pause"]
+	"res://scenes/job_verify.tscn#wrong_floor", "res://scenes/job_verify.tscn#kiosk", "res://scenes/lock_job.tscn#pause",
+	"res://scenes/job_verify.tscn#broth", "res://scenes/job_verify.tscn#bike", "res://scenes/job_verify.tscn#heirs"]
 ## D-79: the Ćwiczenia tab and one practice lock (goal in chalk), with the tutorial done in memory only
 const PRACTICE_LOCK := "t20"
 ## job shown on the arrival screen (N-60: portrait + locksmith line)
 const ARRIVAL_JOB := "job.bike_interview"
 ## N-76: verification (one card + "I need one more thing"; three cards, two shown first)
-const VERIFY_JOBS := {"wrong_floor": "job.wrong_floor", "kiosk": "job.kiosk_shutter"}
+## N-80/N-81: paper props drawn in the game (witness, photo, receipt, deed, inheritance) over the arrival landing
+const VERIFY_JOBS := {"wrong_floor": "job.wrong_floor", "kiosk": "job.kiosk_shutter", "broth": "job.grandma_broth",
+	"bike": "job.bike_interview", "heirs": "job.uncle_safe_heirs"}
 ## V04/D-78: "day after" scene, shown over the job list (one line, main-cast portrait)
 const DAY_AFTER_JOB := "job.cat_bathroom"
 
@@ -83,6 +86,7 @@ func _ready() -> void:
 			_shown.call("_on_pause")  # N-75: the pause panel over the lock
 		for i in 30:
 			await get_tree().process_frame
+		await get_tree().create_timer(0.4).timeout  # the 200 ms entry fades (ScreenFrame.enter) are over
 		var img := get_viewport().get_texture().get_image()
 		var name := base + "_%dx%d.png" % [_size.x, _size.y]
 		if day_after_backup != null:

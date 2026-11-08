@@ -128,6 +128,7 @@ func test_ask_more_without_cards_left_says_so() -> void:
 
 func test_wrong_floor_is_settled_by_asking() -> void:
 	Save.set_value("reputation", 10)
+	Save.set_value("jobs_completed", [])  # N-91: the +4 is for the first time only
 	var v := await _open("job.wrong_floor")
 	assert_false(v.ask_more_button.disabled, "wrong_floor offers 'I need one more thing' (job data)")
 	v.ask_more_button.pressed.emit()
@@ -191,6 +192,7 @@ func test_wrong_floor_accept_unchecked_is_the_wrong_door() -> void:
 
 
 func test_wrong_open_jobs_leave_the_list() -> void:
+	Save.set_value("jobs_completed", [])  # N-91: a job finished honestly before stays on the list
 	Save.set_value("jobs_wrong_open", ["job.wrong_floor"])
 	Save.set_value(DayAfter.PENDING_KEY, [])
 	var vp := SubViewport.new()

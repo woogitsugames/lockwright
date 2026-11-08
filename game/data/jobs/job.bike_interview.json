@@ -26,6 +26,6 @@
     "receipt"
   ],
   "threshold": 3,
-  "place": "apartment",
+  "place": "yard",
   "time": "day"
 }

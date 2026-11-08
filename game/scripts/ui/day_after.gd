@@ -142,10 +142,14 @@ static func show_scene(host: Control, p_job: Dictionary, p_lines: Array[Dictiona
 
 # --- scene --------------------------------------------------------------------------------------
 
-## Place photo for the next day: the G07 arrival picture of the job's place, the daytime one if it has it.
+## Place photo for the next day (N-81): the landing of the job's arrival scene (by day when it has a day
+## version, nobody at the door), else the G07 picture of the arrival itself: the G07 stairwells by day
+## and by evening are different doors (12 and 7), so the time of the arrival wins over daylight.
 static func backdrop_path(p_job: Dictionary) -> String:
-	var by_place: Dictionary = Arrival.ARRIVAL_BG.get(String(p_job.get("place", "apartment")), Arrival.ARRIVAL_BG["apartment"])
-	return "res://assets/ui/gpt/arrival/" + String(by_place.get("day", by_place.get("", "01_apartment_day.jpg")))
+	var still := ArrivalScene.place_still(p_job, "day", false)
+	if not still.is_empty():
+		return String(still[0])
+	return "res://assets/ui/gpt/arrival/" + Arrival.g07_image(p_job)
 
 
 func _reduce_motion() -> bool:

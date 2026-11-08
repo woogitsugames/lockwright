@@ -4,8 +4,13 @@ Lista kluczy `*.line.N` z `game/i18n/content.csv`, w których po nagraniu (D-57;
 
 | klucz | język | było (nagrane) | jest (napis) | źródło |
 |---|---|---|---|---|
+| `job.night_nurse.line.2` | pl | „Pani Agnieszka spod czternastki, zgadza się. …” | „Pani Agnieszka spod piątki, zgadza się. …” | N-81 / D-91: drzwi nr 5 na zdjęciu G07 (noc) |
+| `job.night_nurse.line.2` | en | „Mrs Agnieszka, flat fourteen, that's right. …” | „Mrs Agnieszka, flat five, that's right. …” | N-81 / D-91: drzwi nr 5 na zdjęciu G07 (noc) |
+| `job.night_nurse.line.2` | de | „Frau Agnieszka, Wohnung vierzehn, stimmt. …” | „Frau Agnieszka, Wohnung fünf, stimmt. …” | N-81 / D-91: drzwi nr 5 na zdjęciu G07 (noc) |
+| `job.night_nurse.line.2` | fr | „Madame Agnieszka, appartement quatorze. …” | „Madame Agnieszka, appartement cinq. …” | N-81 / D-91: drzwi nr 5 na zdjęciu G07 (noc) |
+| `job.night_nurse.line.2` | es | „La señora Agnieszka, piso catorce. …” | „La señora Agnieszka, piso cinco. …” | N-81 / D-91: drzwi nr 5 na zdjęciu G07 (noc) |
 
-Razem: **0** plików — oba PL nagrane ponownie 2026-11-06 (tym samym głosem i seedem, wpis w `docs/ASSETS.md`). EN i DE bez zmian słów. Przegląd: `contrib/gpt/REVIEW-T44-T73.md`.
+Razem: **5** plików (2026-11-08, N-81: `job.night_nurse.line.2` we wszystkich językach; PL/EN w grze, DE/FR/ES w paczkach głosów — do czasu nagrania napis mówi „piątka”, głos „czternastka”). Wcześniej: 0 — oba PL nagrane ponownie 2026-11-06 (tym samym głosem i seedem, wpis w `docs/ASSETS.md`). EN i DE bez zmian słów. Przegląd: `contrib/gpt/REVIEW-T44-T73.md`.
 
 ## Sprawdzone po fladze ASR, bez ponownego nagrania (2026-11-06)
 

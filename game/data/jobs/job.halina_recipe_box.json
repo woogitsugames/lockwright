@@ -30,5 +30,6 @@
   "place": "apartment",
   "time": "day",
   "outcome": "open",
-  "source": "contrib/gpt/T09 (D-46; main career since D-71)"
+  "source": "contrib/gpt/T09 (D-46; main career since D-71)",
+  "arrival_from": "job.grandma_broth"
 }

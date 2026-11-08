@@ -30,5 +30,6 @@
   "place": "apartment",
   "time": "day",
   "outcome": "open",
-  "source": "contrib/gpt/T18 (review: contrib/gpt/REVIEW-T18.md)"
+  "source": "contrib/gpt/T18 (review: contrib/gpt/REVIEW-T18.md)",
+  "arrival_from": "job.grandma_broth"
 }

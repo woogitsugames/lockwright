@@ -47,7 +47,7 @@ var go_override: Callable = Callable()
 func _ready() -> void:
 	ScreenFrame.fit(self, $Frame, LANDSCAPE_COLUMN)
 	var job: Dictionary = JobRun.current_job
-	ScreenFrame.backdrop(self, "res://assets/ui/gpt/arrival/" + _arrival_image(job), SHADE)
+	Arrival.place_backdrop(self, job, SHADE)  # N-81: the landing of the arrival (client at the door), else the G07 still
 	title_label.text = I18n.t(&"verify.title")
 	ScreenFrame.fit_title(title_label)  # VA-08: one line when it fits, never clipped in landscape
 	job_label.text = I18n.t(job.get("i18n", {}).get("title", &"jobs.title"))
@@ -61,7 +61,8 @@ func _ready() -> void:
 	_render_cards()
 	Sfx.play_ui(&"paper_turn")  # audio/v2 UI: client lays out the cards
 	# JOBS.md §2: in a refusal job the client has no right to the flat; opening is not an option
-	if is_refusal_job(job):
+	if is_refusal_job(job) or (is_done(job) and not wrong_open_spec(job).is_empty()):
+		# N-91: once the wrong floor was settled by asking, the locksmith knows it is not this door
 		accept_button.visible = false
 	elif JobRun.is_talk(job):
 		accept_button.text = I18n.t(&"job.accept_talk")  # T43: settled on the spot, nothing is opened
@@ -75,14 +76,13 @@ func _ready() -> void:
 	ScreenFrame.enter($Frame/VBox/Scroll)
 
 
+## N-91: a finished job played again changes no reputation (asking, the wrong door): it was settled.
+static func is_done(job: Dictionary) -> bool:
+	return (Save.get_value("jobs_completed", []) as Array).has(String(job.get("id", "")))
+
+
 static func is_refusal_job(job: Dictionary) -> bool:
 	return String(job.get("id", "")).begins_with("job.refuse")
-
-
-static func _arrival_image(job: Dictionary) -> String:
-	var by_place: Dictionary = Arrival.ARRIVAL_BG.get(String(job.get("place", "apartment")), Arrival.ARRIVAL_BG["apartment"])
-	var time := String(job.get("time", "evening"))
-	return String(by_place.get(time, by_place.get("", "02_apartment_evening.jpg")))
 
 
 func _cards() -> Array:
@@ -124,17 +124,78 @@ static func card_image_height(screen: Vector2, n: int, land: bool) -> float:
 	return clampf(h, CARD_IMAGE_H_MIN, CARD_IMAGE_H_MAX)
 
 
-# G14 verification props: card type -> prop image (PL/EN by game language)
+# N-80: every card type has its own prop. G14 photos (PL/EN by game language) where the drawing fits
+# any job; the rest are drawn in the game as paper in the G14 style (PaperProp). The G14 receipt is the
+# locksmith's own Lockwright receipt and the G14 note is Halina's soup note: neither is a client's card.
 const CARD_PROP := {
-	"id": "tenant", "witness": "note", "lease": "lease", "manager": "manager",
-	"job": "job", "envelope": "envelope", "note": "note", "tenant": "tenant", "receipt": "receipt",
+	"id": "tenant", "tenant": "tenant", "lease": "lease", "manager": "manager",
+	"job": "job", "envelope": "envelope", "note": "note",
+}
+## A G14 photo drawn for one particular client: the envelope is addressed to Mrs Halina (Lipowa 14, flat 7).
+const JOB_CARD_PROP := {"job.grandma_broth": {"letter": "envelope"}}
+const CARD_PAPER := {
+	"witness": "note", "institution": "letterhead", "invoice": "invoice", "receipt": "till",
+	"deed": "deed", "inheritance": "deed", "police": "deed", "bailiff": "deed",
+	"resolution": "resolution", "letter": "envelope", "photo": "photo", "address_app": "phone",
+}
+## Paper words per card: [heading key, body key] ("" = none; a missing heading falls back to the card name).
+const PAPER_TEXT := {
+	"witness": ["", "verify.paper.witness.body"],
+	"institution": ["verify.paper.institution.head", "verify.paper.institution.body"],
+	"invoice": ["verify.paper.invoice.head", ""],
+	"receipt": ["verify.paper.receipt.head", ""],
+	"deed": ["verify.paper.deed.head", ""],
+	"inheritance": ["verify.paper.inheritance.head", ""],
+	"resolution": ["verify.paper.resolution.head", ""],
+	"letter": ["verify.paper.letter.head", ""],
+	"address_app": ["verify.paper.address_app.head", ""],
 }
 
 
-func _card_prop(card: String) -> Texture2D:
+## How a card of `job_id` is shown: {kind: "texture", prop} (G14 photo), {kind: "paper", style} or
+## {kind: "default"} (unknown card: the old fallback, the G14 note — tests keep it unused).
+static func card_prop_spec(job_id: String, card: String) -> Dictionary:
+	var per_job: Dictionary = JOB_CARD_PROP.get(job_id, {})
+	if per_job.has(card):
+		return {"kind": "texture", "prop": String(per_job[card])}
+	if CARD_PAPER.has(card):
+		return {"kind": "paper", "style": String(CARD_PAPER[card])}
+	if CARD_PROP.has(card):
+		return {"kind": "texture", "prop": String(CARD_PROP[card])}
+	return {"kind": "default", "prop": "note"}
+
+
+static func prop_texture_path(prop: String) -> String:
 	var lang := "pl" if Settings.language() == "pl" else "en"
-	var prop: String = CARD_PROP.get(card, "note")
-	return load("res://assets/ui/gpt/verify/%s_%s.webp" % [prop, lang])
+	return "res://assets/ui/gpt/verify/%s_%s.webp" % [prop, lang]
+
+
+func _card_prop(card: String) -> Control:
+	var job: Dictionary = JobRun.current_job
+	var jid := String(job.get("id", ""))
+	var spec := card_prop_spec(jid, card)
+	if spec["kind"] == "paper":
+		var words: Array = PAPER_TEXT.get(card, ["", ""])
+		var head := I18n.t(StringName(words[0])) if String(words[0]) != "" else I18n.t(StringName("verify.card." + card)).to_upper()
+		var body_text := I18n.t(StringName(words[1])) if String(words[1]) != "" else ""
+		return PaperProp.create(String(spec["style"]), card, head, body_text, _photo_picture(job) if card == "photo" else null, jid.hash())
+	var pic := TextureRect.new()
+	pic.texture = load(prop_texture_path(String(spec["prop"])))
+	pic.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	pic.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	return pic
+
+
+## The "Photo" card: a print of the client (their G09 / episodic portrait), else of the place.
+static func _photo_picture(job: Dictionary) -> Texture2D:
+	for sp in job.get("lines", []):
+		if String(sp) != Arrival.PLAYER:
+			var t := Arrival.portrait_for(String(sp))
+			if t != null:
+				return t
+	var still := ArrivalScene.place_still(job, "", false)
+	var path := String(still[0]) if not still.is_empty() else "res://assets/ui/gpt/arrival/" + Arrival.g07_image(job)
+	return load(path) as Texture2D if ResourceLoader.exists(path) else null
 
 
 func _render_cards() -> void:
@@ -173,11 +234,8 @@ func _card_tile(card: String) -> Button:
 	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	box.add_theme_constant_override("separation", 4)
 	b.add_child(box)
-	var pic := TextureRect.new()
+	var pic := _card_prop(card)
 	pic.name = "Pic"
-	pic.texture = _card_prop(card)
-	pic.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	pic.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	pic.custom_minimum_size = Vector2(0, CARD_IMAGE_H)
 	pic.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	pic.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -263,7 +321,7 @@ func _ask_more() -> void:
 		return
 	_set_decided()
 	var jid := String(job.get("id", ""))
-	var rep := int(spec.get("reputation", 0))
+	var rep := 0 if is_done(job) else int(spec.get("reputation", 0))  # N-91: once per job
 	var text := "— %s\n— %s" % [I18n.t(StringName(jid + ".ask_more.ask")), I18n.t(StringName(jid + ".ask_more.reply"))]
 	if rep != 0:
 		Save.set_value("reputation", int(Save.get_value("reputation", 0)) + rep)
@@ -334,7 +392,9 @@ func _open_wrong_door() -> void:
 	var spec := wrong_open_spec(job)
 	var loss := absi(int(spec.get("reputation", -25)))
 	var closed: Array = Save.get_value("jobs_wrong_open", [])
-	if not closed.has(jid):  # once per job
+	if is_done(job):  # N-91: a job already settled honestly is never punished nor taken off the list
+		loss = 0
+	elif not closed.has(jid):  # once per job
 		closed.append(jid)
 		Save.set_value("jobs_wrong_open", closed)
 		Save.set_value("reputation", maxi(0, int(Save.get_value("reputation", 0)) - loss))
@@ -349,7 +409,8 @@ func _open_wrong_door() -> void:
 
 func _accept() -> void:
 	if not wrong_open_spec(JobRun.current_job).is_empty():
-		_open_wrong_door()
+		if not is_done(JobRun.current_job):  # N-91: hidden for a settled job; never re-triggered
+			_open_wrong_door()
 		return
 	if JobRun.is_talk(JobRun.current_job):
 		_go("res://scenes/job_payment.tscn")  # T43: no lock scene

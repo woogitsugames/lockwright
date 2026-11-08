@@ -107,6 +107,39 @@ static func has_scene(job: Dictionary) -> bool:
 	return not resolve(job).is_empty()
 
 
+## N-81: the arrival place of a job as a still for the screens after the arrival (verification, "day
+## after"), so their door is the door the player just climbed to. A job without its own scene may name
+## one with `arrival_from` (Mrs Halina's later calls happen at her flat: job.grandma_broth). `p_time`
+## picks that time of day when the scene has it (the day after: "day"). `with_figure`: the hold frame
+## as the arrival shows it (plate + figure); without it a scene with a figure gives its last climb
+## frame — the same landing, nobody standing at the door. [] when there is no scene.
+## Returns [plate_path, figure_path] (figure_path "" when none).
+static func place_still(job: Dictionary, p_time := "", with_figure := true) -> Array:
+	var key := job.duplicate()
+	if resolve(key).is_empty():
+		if String(job.get("arrival_from", "")) == "":
+			return []
+		key = {"id": String(job["arrival_from"]), "time": job.get("time", "")}
+	if p_time != "":
+		var s: Dictionary = data().get("scenes", {}).get(String(key.get("id", "")), {})
+		var t := String(s.get("time_alias", {}).get(p_time, p_time))
+		if (s.get("times", []) as Array).has(t):
+			key["time"] = t
+	var cfg := resolve(key)
+	if cfg.is_empty():
+		return []
+	var hold := String(cfg.get("hold", ""))
+	var l: Array = cfg.get("layers", {}).get(hold, [])
+	if l.is_empty():
+		return []
+	if hold == "" or with_figure:
+		return [String(l[0]), String(l[1]) if with_figure else ""]
+	var frames: Array = cfg.get("frame_paths", [])
+	if not frames.is_empty():
+		return [String(frames[frames.size() - 1]), ""]
+	return [String(l[0]), ""]
+
+
 func setup(p_cfg: Dictionary, p_reduce_motion: bool) -> void:
 	cfg = p_cfg
 	reduce_motion = p_reduce_motion

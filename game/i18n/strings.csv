@@ -57,6 +57,18 @@ verify.card.invoice,Invoice,Faktura,Rechnung,Facture,Factura
 verify.card.address_app,Address shown in app,Adres w aplikacji,Adresse in der App,Adresse dans l'application,Dirección en la aplicación
 verify.card.police,Police call-out,Wezwanie policji,Polizeianruf,Appel à la police,Intervención policial
 verify.card.bailiff,Bailiff,Komornik,Gerichtsvollzieher,Huissier,Agente judicial
+verify.paper.witness.body,I've known this person for years. They live at this address.,Znam tę osobę od lat. Mieszka pod tym adresem.,Ich kenne diese Person seit Jahren. Sie wohnt unter dieser Adresse.,Je connais cette personne depuis des années. Elle habite à cette adresse.,Conozco a esta persona desde hace años. Vive en esta dirección.
+verify.paper.institution.head,AUTHORISATION,UPOWAŻNIENIE,VOLLMACHT,AUTORISATION,AUTORIZACIÓN
+verify.paper.institution.body,We agree to the opening in the presence of our staff.,Zgadzamy się na otwarcie w obecności naszego pracownika.,Wir stimmen der Öffnung in Anwesenheit unserer Mitarbeiter zu.,Nous autorisons l'ouverture en présence de notre personnel.,Autorizamos la apertura en presencia de nuestro personal.
+verify.paper.invoice.head,INVOICE,FAKTURA,RECHNUNG,FACTURE,FACTURA
+verify.paper.total,Total,Razem,Summe,Total,Total
+verify.paper.receipt.head,RECEIPT,PARAGON,KASSENBON,TICKET DE CAISSE,TICKET
+verify.paper.receipt.thanks,Thank you,Dziękujemy,Vielen Dank,Merci,Gracias
+verify.paper.deed.head,NOTARIAL DEED,AKT NOTARIALNY,NOTARIELLE URKUNDE,ACTE NOTARIÉ,ESCRITURA NOTARIAL
+verify.paper.inheritance.head,CERTIFICATE OF INHERITANCE,POŚWIADCZENIE DZIEDZICZENIA,ERBSCHEIN,ACTE DE NOTORIÉTÉ,DECLARACIÓN DE HEREDEROS
+verify.paper.resolution.head,RESOLUTION,UCHWAŁA,BESCHLUSS,DÉCISION,ACUERDO
+verify.paper.letter.head,REGISTERED,POLECONY,EINSCHREIBEN,RECOMMANDÉ,CERTIFICADA
+verify.paper.address_app.head,Delivery address,Adres dostawy,Lieferadresse,Adresse de livraison,Dirección de entrega
 verify.refused,Not enough evidence. I can't open this.,Za mało dowodów. Tego nie otworzę.,Das reicht nicht. Dieses Schloss öffne ich nicht.,Justificatifs insuffisants. Je ne peux pas ouvrir.,No hay pruebas suficientes. No puedo abrir.
 verify.refused_rep,Word gets around: +5 reputation,Słowo się niesie: +5 reputacji,Das spricht sich herum: +5 Ruf,La nouvelle circule : +5 de réputation,La voz corre: +5 de reputación
 tutorial.title,Tutorial — practice lock,Samouczek — zamek ćwiczebny,Einführung – Übungsschloss,Tutoriel : serrure d'essai,Tutorial: cerradura de práctica
@@ -469,6 +481,7 @@ practice.goal_open,Goal still ahead,Cel jeszcze przed tobą,Ziel steht noch aus,
 practice.result_met,Last practice: goal reached.,Ostatnie ćwiczenie: cel osiągnięty.,Letzte Übung: Ziel erreicht.,Dernier exercice : objectif atteint.,Último ejercicio: objetivo cumplido.
 practice.result_open,"Last practice: the lock opened, the goal is still ahead.","Ostatnie ćwiczenie: zamek otwarty, cel jeszcze przed tobą.","Letzte Übung: Schloss offen, das Ziel steht noch aus.","Dernier exercice : serrure ouverte, l'objectif reste à atteindre.","Último ejercicio: cerradura abierta, el objetivo sigue pendiente."
 practice.result_failed,Last practice: the lock won this time. Practice costs nothing.,Ostatnie ćwiczenie: tym razem wygrał zamek. Ćwiczenia nic nie kosztują.,Letzte Übung: Diesmal hat das Schloss gewonnen. Üben kostet nichts.,Dernier exercice : la serrure a gagné cette fois. S'exercer ne coûte rien.,Último ejercicio: esta vez ganó la cerradura. Practicar no cuesta nada.
+practice.result_left,Last practice: stopped. The lock will wait.,Ostatnie ćwiczenie: przerwane. Zamek poczeka.,Letzte Übung: abgebrochen. Das Schloss wartet.,Dernier exercice : interrompu. La serrure attendra.,Último ejercicio: interrumpido. La cerradura esperará.
 family.warded.name,Warded lock,Zamek zapadkowy,Buntbartschloss,Serrure à garniture,Cerradura de guardas
 family.wafer.name,Wafer lock,Wkładka płytkowa,Plättchenschloss,Serrure à paillettes,Cerradura de láminas
 family.pin_tumbler.name,Pin tumbler cylinder,Wkładka bębenkowa,Stiftzylinder,Cylindre à goupilles,Cilindro de pernos

@@ -35,6 +35,9 @@ const ARRIVAL_BG := {
 	"locker": {"": "08_changing_room_locker.jpg"},
 	"gate": {"": "09_courtyard_gate.jpg"},
 	"workshop": {"": "10_workshop_door.jpg"},
+	# N-81: places without their own G07 still borrow the closest one, without a room sign
+	"yard": {"": "09_courtyard_gate.jpg"},      # under the block (bike stand)
+	"museum": {"": "06_cellar.jpg"},            # the museum's vault room below ground
 }
 # G01 room signs per place, PL/EN by game language
 const PLACE_SIGN := {
@@ -101,25 +104,58 @@ static func initial_plate(speaker: String, full_name: String) -> Control:
 	return wrap
 
 
-func _arrival_image(job: Dictionary) -> String:
+## G07 still of the job's place (file name) for its time of day, or `p_time` when given and the place has it.
+static func g07_image(job: Dictionary, p_time := "") -> String:
 	var place: String = job.get("place", "apartment")
-	var time: String = job.get("time", "evening")
+	var time: String = p_time if p_time != "" else String(job.get("time", "evening"))
 	var by_place: Dictionary = ARRIVAL_BG.get(place, ARRIVAL_BG["apartment"])
-	return by_place.get(time, by_place.get("", "02_apartment_evening.jpg"))
+	return by_place.get(time, by_place.get(String(job.get("time", "")), by_place.get("", "02_apartment_evening.jpg")))
+
+
+func _arrival_image(job: Dictionary) -> String:
+	return g07_image(job)
+
+
+## N-81: the door number painted in each G07 stairwell photo; the G01 plate beside the title shows the
+## same number (it was a hash of the job id: plate 13 in front of door 5).
+const G07_DOOR := {"01_apartment_day.jpg": 12, "02_apartment_evening.jpg": 7, "03_apartment_night_timer.jpg": 5, "04_apartment_rainy_evening.jpg": 9}
+
+
+## N-81: the place behind a job screen. The arrival scene's own landing when the job has one (or names one
+## with `arrival_from`), else the G07 still of its place. `with_figure`: the client stands at the door as
+## at the arrival (verification); without (the day after) the landing is empty. Returns the backdrop.
+static func place_backdrop(root: Control, job: Dictionary, shade: float, p_time := "", with_figure := true) -> TextureRect:
+	var still := ArrivalScene.place_still(job, p_time, with_figure)
+	if still.is_empty():
+		return ScreenFrame.backdrop(root, "res://assets/ui/gpt/arrival/" + g07_image(job, p_time), shade)
+	var bg := ScreenFrame.backdrop(root, String(still[0]), shade)
+	if String(still[1]) != "" and ResourceLoader.exists(String(still[1])):
+		var fig := TextureRect.new()  # the figure layer is image-sized like the plate: same cover crop
+		fig.name = "Figure"
+		fig.texture = load(String(still[1]))
+		fig.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		fig.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		fig.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		fig.set_anchors_preset(Control.PRESET_FULL_RECT)
+		bg.add_child(fig)
+	return bg
+
+
+## The G01 plate beside the title: the room sign of a non-flat place, the flat's number (the one in the
+## photo, or the job's `door` when the place has no number in the picture), or "" (scene: the door is
+## in the picture).
+static func plate_path(job: Dictionary, lang: String) -> String:
+	var place: String = job.get("place", "apartment")
+	if place != "apartment":
+		var signs: Array = PLACE_SIGN.get(place, [])
+		return "res://assets/ui/gpt/plates/" + signs[0 if lang == "pl" else 1] if signs.size() == 2 else ""
+	var door := int(job.get("door", G07_DOOR.get(g07_image(job), 0)))
+	return "res://assets/ui/gpt/plates/plate_%02d.png" % door if door >= 1 and door <= 24 else ""
 
 
 func _add_background(job: Dictionary) -> void:
-	ScreenFrame.backdrop(self, "res://assets/ui/gpt/arrival/" + _arrival_image(job), 0.45)
-	var place: String = job.get("place", "apartment")
-	var path := ""
-	if place != "apartment":
-		var signs: Array = PLACE_SIGN.get(place, [])
-		if signs.size() == 2:
-			path = "res://assets/ui/gpt/plates/" + signs[0 if _lang() == "pl" else 1]
-	else:
-		# apartment number plate (G01) from the job id
-		var jid: String = job.get("id", "")
-		path = "res://assets/ui/gpt/plates/plate_%02d.png" % ((jid.hash() % 24 + 24) % 24 + 1)
+	var bg := place_backdrop(self, job, 0.45)
+	var path := "" if bg.texture != null and not ArrivalScene.place_still(job).is_empty() else plate_path(job, _lang())
 	place_plate.texture = _tex(path)
 	place_plate.visible = place_plate.texture != null
 
