@@ -242,6 +242,9 @@ func test_va11_portrait_section_reaches_the_roll() -> void:
 			var lock_bottom := view.plate_to_screen(Vector2(0.0, view.lock_bottom_px())).y
 			assert_lte(lock_bottom, view.section_rect.end.y, tag + ": the lock is whole in the section")
 			assert_gte(lock_bottom, view.section_rect.end.y - 40.0, tag + ": no strip of bare bench under the lock")
+			# D-85: the plate has the lock low, the bench above it is in the plate (no mirrored copy)
+			assert_gte(view._crop.position.y, 0.0, tag + ": the crop starts inside the plate")
+			assert_lte(view._crop.end.y, view.plate_size.y + 0.5, tag + ": the crop ends inside the plate")
 			for i in view.n_wheels:
 				assert_true(view.section_rect.encloses(view.reel_rect_screen(i).grow(-1.0)), tag + ": wheel %d inside" % i)
 	_scene_path = SCENE

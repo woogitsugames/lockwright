@@ -13,3 +13,4 @@ tier = 1
 [node name="View" parent="ViewLayer" index="0"]
 script = ExtResource("3")
 tool = "dimple_flag"
+plate_path = "res://assets/photoreal/plate/plate_dimple_1236x1650.png"

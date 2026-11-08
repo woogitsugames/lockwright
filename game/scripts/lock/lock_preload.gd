@@ -30,9 +30,13 @@ static var _requested: PackedStringArray = []
 static func paths_for(family: StringName, scene_path: String, section_px: float) -> PackedStringArray:
 	var out := PackedStringArray([scene_path])
 	out.append_array(COMMON)
-	if family == &"pin_tumbler":
+	if family in [&"pin_tumbler", &"dimple", &"magnetic"]:
+		# the pin cut-away model; dimple / magnetic have their own static plate (VA-10)
 		for p in PIN_PATHS:
-			out.append(LockPhotorealView.plate_variant(p, section_px) if p.ends_with(".png") else p)
+			var q: String = p
+			if q.ends_with(".png"):
+				q = LockPhotorealView.plate_variant(LockPhotorealView.PLATE_BY_FAMILY.get(family, q), section_px)
+			out.append(q)
 	else:
 		var fam_dir := FAM_ROOT + String(family) + "/"
 		var photo := fam_dir + "photo/"

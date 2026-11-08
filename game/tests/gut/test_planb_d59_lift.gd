@@ -241,6 +241,26 @@ func test_dimple_side_row_variant_is_masked() -> void:
 	assert_true(PinPose.is_spool(LockPinFamilyView.pin_vm(vm)["elements"][0]), "telescoping pin = spool pose")
 
 
+## VA-10: dimple and magnetic have their own static section (side-drilled row / magnet rotors) on the
+## pin cut-away camera; the pin screen keeps the shared plate. A phone loads the 1x sibling (D-87).
+func test_dimple_and_magnetic_load_their_own_plate() -> void:
+	for fam in [&"dimple", &"magnetic"]:
+		JobRun.start(jobs(fam)[0])
+		var scene: Node = await _open_scene(fam, Vector2i(412, 915))
+		var view: LockPinFamilyView = scene.view
+		var want: String = LockPhotorealView.PLATE_BY_FAMILY[fam]
+		assert_eq(view.plate_path, want, "%s: its scene sets its own plate" % fam)
+		assert_ne(view.plate_path, LockPhotorealView.PLATE, "%s: not the pin plate" % fam)
+		var tex: Texture2D = view._plate_mats[0].get_shader_parameter("plate")
+		assert_not_null(tex, "%s: plate loaded" % fam)
+		if tex != null:
+			assert_eq(tex.resource_path, LockPhotorealView.plate_variant(want, view._section_px()), "%s: the variant D-87 picks" % fam)
+		var pre := LockPreload.paths_for(fam, SCENES[fam], 1080.0)
+		assert_has(pre, want.replace(".png", "_1x.png"), "%s: preload warms the 1x plate the phone loads" % fam)
+		assert_has(pre, "res://assets/photoreal/cutaway_baked.glb", "%s: and the pin model" % fam)
+	JobRun.current_job = {}
+
+
 func test_egyptian_jobs_open_in_both_modes() -> void:
 	await _check_family(&"egyptian")
 

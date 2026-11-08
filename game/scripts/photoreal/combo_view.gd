@@ -56,8 +56,6 @@ const BODY_X := Vector2(34.0, 584.0)
 const PORTRAIT_ASPECT := 1.05          # (pre VA-11) section height / width in portrait
 ## VA-11: plate px of bench kept under the lock's lowest part (room for the chalk ticks under the teeth).
 const PORTRAIT_UNDER_PX := 80.0
-## VA-11: lowest plate px of the lock body drawn in the plate itself (measured on plate.png at x = 618).
-const PLATE_BODY_BOTTOM := {"combo": 1011.0, "disc_detainer": 1038.0}
 
 
 func _ready() -> void:
@@ -359,7 +357,8 @@ func _draw_layer(c: CanvasItem, nm: String, xf: Transform2D, shadow: float = 0.4
 
 ## VA-11: lowest plate px of the lock (its body in the plate, front, latch, tooth, plug) — the crop keeps it in.
 func lock_bottom_px() -> float:
-	var b := maxf(_axis_y(), float(PLATE_BODY_BOTTOM.get(String(meta.get("family", "")), 0.0)))
+	# body_bottom_px: the body front's lowest px drawn in the plate (combo_plate.py, layers.json)
+	var b := maxf(_axis_y(), float(meta.get("body_bottom_px", 0.0)))
 	for nm in ["front", "latch", "tooth", "plug"]:
 		var l: Dictionary = meta.get("layers", {}).get(nm, {})
 		if l.has("offset") and l.has("size"):
@@ -371,19 +370,8 @@ func _draw_back() -> void:
 	var s := _vs()
 	_back.draw_set_transform_matrix(_view_xf())
 	var plate: Texture2D = _layers.get("plate")
-	if plate != null and _crop.position.y < 0.0:
-		# VA-11: the crop starts above the plate (portrait, lock low): continue the bench with the
-		# plate's top band mirrored, so the section reaches the roll without a strip of bare bench
-		var ext := minf(-_crop.position.y + 2.0, plate_size.y)
-		_back.draw_set_transform_matrix(_view_xf() * Transform2D(Vector2(1, 0), Vector2(0, -1), Vector2.ZERO))
-		_back.draw_texture_rect_region(plate, Rect2(Vector2.ZERO, Vector2(plate_size.x, ext)), Rect2(Vector2.ZERO, Vector2(plate_size.x, ext)))
-		_back.draw_set_transform_matrix(_view_xf())
 	if plate != null:
 		_back.draw_texture_rect(plate, Rect2(Vector2.ZERO, plate_size), false)
-		if _crop.position.y < 0.0:
-			# a plank joint where the copy meets the plate (as the bench's other joints), no seam
-			_back.draw_rect(Rect2(0.0, -4.0, plate_size.x, 7.0), Color(0.07, 0.045, 0.03, 0.85))
-			_back.draw_rect(Rect2(0.0, 3.0, plate_size.x, 2.0), Color(0.55, 0.38, 0.24, 0.25))
 	else:
 		_back.draw_rect(Rect2(Vector2.ZERO, plate_size), Color(0.2, 0.17, 0.13))
 	if _last_vm.is_empty():
@@ -550,12 +538,13 @@ func _layout() -> void:
 		# the leather roll takes the rest
 		# VA-11: the roll as on every other lock screen (same height, whole width, the loupe not cut)
 		# and the section down to it, the lock resting just above the roll (no strip of empty bench
-		# under it); the bench above the plate's top edge is its top band mirrored (_draw_back)
+		# under it). D-85: the plates have the lock low (axis ~1197 of 1648 px), so the bench above it
+		# is real bench in the plate; the crop never starts above the plate's top edge.
 		var h := minf(r.size.x / SECTION_ASPECT, safe.size.y * 0.72)
 		section_rect = Rect2(r.position, Vector2(r.size.x, safe.position.y - r.position.y + h))
 		var ch := cw * section_rect.size.y / section_rect.size.x
 		var bottom := minf(lock_bottom_px() + PORTRAIT_UNDER_PX, plate_size.y)
-		_crop = Rect2(cx - cw * 0.5, maxf(bottom - ch, -plate_size.y * 0.5), cw, ch)
+		_crop = Rect2(cx - cw * 0.5, maxf(bottom - ch, 0.0), cw, ch)
 		tray_rect = Rect2(Vector2(r.position.x, section_rect.end.y), Vector2(r.size.x, r.end.y - section_rect.end.y))
 		_tray.position = tray_rect.position
 		_tray.size = tray_rect.size

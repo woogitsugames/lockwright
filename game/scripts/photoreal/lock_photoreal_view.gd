@@ -19,6 +19,12 @@ const DIR := "res://assets/photoreal/"
 const SCENE_JSON := DIR + "scene.json"
 const GLB := DIR + "cutaway_baked.glb"
 const PLATE := DIR + "plate/plate_1236x1650.png"
+## VA-10: the static section of the families built on this cut-away (same camera, same moving pins):
+## dimple and magnetic have their own (art/blender/plates/pin_variant_plate.py), set in their scenes.
+const PLATE_BY_FAMILY := {
+	&"dimple": DIR + "plate/plate_dimple_1236x1650.png",
+	&"magnetic": DIR + "plate/plate_magnetic_1236x1650.png",
+}
 const TRAY_FULL := DIR + "tray/tray_full.png"
 const TRAY_EMPTY := DIR + "tray/tray_empty.png"
 # D-48 photo materials (Magnific, _1k versions, lossy import — N-30)
@@ -67,6 +73,8 @@ const ROLL_MARGIN := 14.0             # dp of bare leather right of the roll (no
 @export var dark := false: set = set_dark
 @export_range(0.25, 3.0) var render_scale := 1.0: set = set_render_scale  ## 3D pixels per physical pixel (1.0 = native)
 @export_enum("Disabled", "2x", "4x") var msaa := 1: set = set_msaa
+## VA-10: the 2x master of the static plate (the 1x sibling is picked by plate_variant, D-87).
+@export_file("*.png") var plate_path := PLATE
 ## N-65: the section is rendered at the real on-screen pixel size × render_scale (Quality
 ## planb_scale), capped so a large tablet / foldable does not render more than this many pixels.
 const MAX_VP_PIXELS := 5_400_000
@@ -374,7 +382,7 @@ func _is_moving(node_name: String) -> bool:
 
 
 func _build_materials() -> void:
-	var plate := _tex(PLATE)
+	var plate := _tex(plate_path)
 	var static_mat := _mat("plate.gdshader")
 	static_mat.set_shader_parameter("plate", plate)
 	_plate_mats.append(static_mat)
