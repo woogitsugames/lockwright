@@ -1,0 +1,68 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "museum_time_lock",
+ "time": "day",
+ "kit": "vault",
+ "fps": 12,
+ "frames": 36,
+ "note": "plate-only hold (no client cut-out): anchors are quads [tl,tr,br,bl] normalised 0..1, origin top-left (D-41).",
+ "anchors": {
+  "door": [
+   [
+    0.28775,
+    0.44092
+   ],
+   [
+    0.71953,
+    0.44007
+   ],
+   [
+    0.71953,
+    0.78052
+   ],
+   [
+    0.28775,
+    0.77815
+   ]
+  ],
+  "time_lock": [
+   [
+    0.3704,
+    0.50903
+   ],
+   [
+    0.44484,
+    0.509
+   ],
+   [
+    0.44484,
+    0.551
+   ],
+   [
+    0.3704,
+    0.55097
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   100.0,
+   -1350.0,
+   1560.0
+  ],
+  "lens_mm": 24.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   0.029999999329447746
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   1.5
+  ]
+ }
+}

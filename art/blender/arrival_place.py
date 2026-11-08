@@ -13,6 +13,8 @@
 #             canopy, a galvanised hoop rack with a city bike held by a thumbwheel cable lock (job.bike_interview)
 #   shop      a small pizzeria after closing: tiled counter, chairs up on the tables, brick oven with the last embers,
 #             the back-room door with a mortise (lever) lock (job.pizzeria_pays_pizza)
+#   vault     the museum's vault room under the port warehouse: brick barrel vault, the old savings bank's vault
+#             door with the time-lock movement behind an inspection glass, rope barrier, crate (job.museum_time_lock)
 #   corridor  a developer block's corridor at dawn: porcelain floor, white walls, flat anthracite steel flat doors
 #             with a magnetic-key cylinder, brushed steel numbers, LED downlights (job.night_nurse)
 # 1 unit = 1 mm. Camera looks +y; the hold target sits near the origin; floor z = 0.
@@ -649,6 +651,137 @@ def kit_corridor():
             'cylinder': [(HX - 30, LY - 10, HZ - 150), (HX + 30, LY - 10, HZ - 150), (HX + 30, LY - 10, HZ - 210), (HX - 30, LY - 10, HZ - 210)]}
 
 
+def kit_vault():
+    """The museum's vault room under the port warehouse (job.museum_time_lock): a whitewashed brick barrel vault,
+    polished concrete, exhibition track spots; at the end the old savings bank's vault door (dark green, nickel
+    handwheel and hinges) with the time-lock movement behind a round inspection glass, a rope barrier on steel
+    posts, a transport crate with the curator's cotton gloves and the transfer protocol."""
+    S = J.get('vault', {})
+    FY = 3000; HW_ = S.get('half_width', 1550); X0, X1 = -HW_, HW_; SPRING = S.get('spring', 2350); R0 = (X1 - X0) / 2
+    floor = ph('vault_floor', 'workshop_concrete', scale=1600, metallic=0.0, base=(0.30, 0.29, 0.27), base_mix=0.55,
+               rough_add=-0.25, coat=0.5, bump=0.25, grime=0.8, wear=0.2)
+    bx('floor', X0, X1, -9000, FY, -40, 0, floor)
+    side = brick_wall('vault_side', brick=(0.40, 0.19, 0.11), wash=(0.74, 0.71, 0.64), wash_amt=0.25, seed=3, axis='X')
+    endw = brick_wall('vault_end', brick=(0.40, 0.19, 0.11), wash=(0.74, 0.71, 0.64), wash_amt=0.12, seed=5, axis='Y')
+    bx('lwall', X0 - 400, X0, -9000, FY + 400, 0, SPRING, side)
+    bx('rwall', X1, X1 + 400, -9000, FY + 400, 0, SPRING, side)
+    # barrel vault: a half tube along y, limewashed (brick shows through the wash only on the walls)
+    vm = lime_wall('vault_lime', (0.70, 0.67, 0.60), seed=17, dirt=0.8, cracks=0.6)
+    VL = FY + 400 + 9000; VC = (FY + 400 - 9000) / 2
+    v = cyl('vault', R0 + 300, VL, (0, VC, SPRING), axis='Y', verts=96)
+    cut(v, cyl('vault_in', R0, VL + 200, (0, VC, SPRING), axis='Y', verts=96))
+    cut(v, bx('vault_low', -9000, 9000, -20000, 20000, -9000, SPRING))
+    setmat(v, vm)
+    # end wall with the door opening; the vault door sits in a riveted steel frame
+    DX0, DX1, DZ1 = -760, 760, 2120
+    ew = bx('end_wall', X0, X1, FY, FY + 400, 0, SPRING + R0 + 300, endw)
+    cut(ew, bx('door_hole', DX0 - 160, DX1 + 160, FY - 10, FY + 410, -10, DZ1 + 160))
+    bx('behind', X0, X1, -9100, -9000, 0, SPRING + R0, endw)
+    green = paint('vault_green', tuple(S.get('door', (0.025, 0.07, 0.05))), rough=0.36, metal_col=(0.42, 0.42, 0.40), chip=0.35, grime=0.6)
+    frame_m = paint('vault_frame', (0.03, 0.035, 0.035), rough=0.4, metal_col=(0.45, 0.45, 0.44), chip=0.45, grime=0.7)
+    nickel = metal('vault_nickel', (0.64, 0.63, 0.60), 0.24, marks='turn', marks_axis=(0, 1, 0), wear=0.3, grime=0.5, smudge=0.6)
+    FL = FY - 40
+    for (a, b_, c, d) in ((DX0 - 160, DX0, 0, DZ1 + 160), (DX1, DX1 + 160, 0, DZ1 + 160), (DX0 - 160, DX1 + 160, DZ1, DZ1 + 160)):
+        bx('vframe', a, b_, FL - 30, FY + 40, c, d, frame_m, bev=6)
+    for z in range(120, DZ1 + 100, 160):   # rivets round the frame
+        for x in (DX0 - 80, DX1 + 80):
+            bpy.ops.mesh.primitive_uv_sphere_add(radius=13, segments=16, ring_count=8, location=(x, FL - 30, z)); r_ = bpy.context.object; r_.scale.y = 0.5; setmat(r_, frame_m)
+    for x in range(DX0 - 80, DX1 + 81, 160):
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=13, segments=16, ring_count=8, location=(x, FL - 30, DZ1 + 80)); r_ = bpy.context.object; r_.scale.y = 0.5; setmat(r_, frame_m)
+    # the door: a stepped slab, two framed panels, nickel edge band
+    bx('door_slab', DX0 + 6, DX1 - 6, FL - 140, FL, 6, DZ1 - 6, green, bev=8)
+    bx('door_step', DX0 + 70, DX1 - 70, FL - 175, FL - 140, 70, DZ1 - 70, green, bev=10)
+    for (a, b_, c, d) in ((DX0 + 140, DX1 - 140, 1250, DZ1 - 150), (DX0 + 140, DX1 - 140, 150, 820)):
+        for (p, q, r2, s2) in ((a, b_, d - 22, d), (a, b_, c, c + 22), (a, a + 22, c, d), (b_ - 22, b_, c, d)):
+            bx('panel_bead', p, q, FL - 190, FL - 175, r2, s2, nickel, bev=3)
+    for zc in (380, 1760):   # hinge barrels on the left
+        cyl('hinge', 70, 300, (DX0 - 20, FL - 120, zc), verts=48).data.materials.append(nickel)
+        cyl('hinge_cap', 74, 20, (DX0 - 20, FL - 120, zc + 160), verts=48).data.materials.append(nickel)
+    # handwheel: hub and five spokes with knobs
+    HW = Vector((140, FL - 190, 1040))
+    cyl_y('hub', 70, HW.y - 70, HW.y, HW.x, HW.z, nickel, verts=48, bev=6)
+    cyl_y('hub_boss', 40, HW.y - 110, HW.y - 70, HW.x, HW.z, nickel, verts=32, bev=4)
+    for k in range(5):
+        a = 2 * math.pi * k / 5 + 0.3
+        e = HW + Vector((math.cos(a) * 300, -60, math.sin(a) * 300))
+        tube('spoke', [HW + Vector((0, -60, 0)), e], 14, nickel, res=4, smooth_pts=False)
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=34, segments=24, ring_count=12, location=e); setmat(bpy.context.object, nickel)
+    # the time lock's inspection glass: two movement dials behind a round nickel bezel (left of the handwheel)
+    TL = Vector((-330, FL - 190, 1560))
+    lathe_open('bezel', [(110, 0), (130, 0), (132, -18), (112, -26)], x=0, y=0, seg=64, thick=0, mat=nickel).matrix_world = Matrix.Translation(TL) @ Matrix.Rotation(math.radians(90), 4, 'X')
+    cyl_y('tl_back', 112, TL.y + 5, TL.y + 40, TL.x, TL.z, metal('tl_brass', (0.70, 0.55, 0.32), 0.3, marks='turn', marks_axis=(0, 1, 0), wear=0.3, grime=0.6), verts=64)
+    face = paper('tl_face', (0.82, 0.80, 0.72), seed=12, grime=0.4)
+    for dx in (-48, 48):
+        cyl_y('tl_dial', 40, TL.y - 2, TL.y + 4, TL.x + dx, TL.z, face, verts=48)
+        for k in range(12):
+            a = 2 * math.pi * k / 12
+            t_ = bx('tl_tick', -1.2, 1.2, 0, 1, 30, 37, black_plastic); t_.location = (TL.x + dx, TL.y - 3, TL.z); t_.rotation_euler = (0, a, 0)
+        h_ = bx('tl_hand', -2, 2, 0, 1, 0, 30, black_plastic); h_.location = (TL.x + dx, TL.y - 4, TL.z); h_.rotation_euler = (0, math.radians(200 if dx < 0 else 30), 0)
+    cyl_y('tl_glass', 112, TL.y - 22, TL.y - 20, TL.x, TL.z, glass('tl_glass', (0.95, 0.96, 0.95), rough=0.02, dirt=0.5), verts=64)
+    # keyhole covers and a blank maker's plate (no text)
+    for x in (380, 470):
+        cyl_y('kh_cover', 26, FL - 186, FL - 176, x, 1040, nickel, verts=32, bev=2)
+    bx('maker_plate', -230, 230, FL - 182, FL - 176, 1900, 1990, nickel, bev=3)
+    # rope barrier on steel posts, a transport crate with gloves and the protocol
+    post_m = metal('post_steel', (0.12, 0.12, 0.12), 0.3, marks='turn', marks_axis=(0, 0, 1), wear=0.2, grime=0.4, metallic=0.6)
+    rope_m = plastic('rope', (0.22, 0.03, 0.035), rough=0.75, seed=3, grime=0.3, sheen_scuffs=0.0)
+    rope_m.node_tree.nodes['Principled BSDF'].inputs['Sheen Weight'].default_value = 0.6
+    posts = S.get('posts', [(-350, 1900), (1250, 1900)])
+    for (px, py) in posts:
+        cyl('post_base', 160, 30, (px, py, 15), verts=48).data.materials.append(post_m)
+        cyl('post', 24, 900, (px, py, 470), verts=32).data.materials.append(post_m)
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=36, location=(px, py, 940)); setmat(bpy.context.object, post_m)
+    for (a, b2) in zip(posts, posts[1:]):
+        mid = ((a[0] + b2[0]) / 2, (a[1] + b2[1]) / 2, 700)
+        tube('rope', [(a[0], a[1], 880), mid, (b2[0], b2[1], 880)], 16, rope_m, res=4)
+    crate_w = oak('crate', light=(0.62, 0.50, 0.33), dark=(0.42, 0.32, 0.18), axis='X', seed=61, ring=1.6, coat=0.0, rough=0.8, wear=0.3)
+    CX, CY = S.get('crate', (-1000, 1900))
+    for k in range(4):   # slatted crate
+        bx('crate_slat', CX - 450, CX + 450, CY - 350, CY + 350, k * 150, k * 150 + 130, crate_w, bev=4)
+    bx('crate_lid', CX - 470, CX + 470, CY - 370, CY + 370, 600, 625, crate_w, bev=4)
+    folder = paper('protocol', (0.75, 0.72, 0.62), seed=21, grime=0.2)
+    f_ = bx('protocol', -150, 150, -105, 105, 0, 6, folder, bev=1); f_.matrix_world = Matrix.Translation((CX - 120, CY - 40, 626)) @ Matrix.Rotation(math.radians(12), 4, 'Z')
+    glove = plastic('cotton_glove', (0.86, 0.85, 0.80), rough=0.9, seed=9, grime=0.15, sheen_scuffs=0.0)
+    glove.node_tree.nodes['Principled BSDF'].inputs['Sheen Weight'].default_value = 0.8
+    for k, (gx, gy, ga) in enumerate(((CX + 180, CY - 60, -20), (CX + 250, CY + 70, 25))):
+        parts = [bx('palm', -50, 50, -60, 60, 0, 18, glove, bev=8)]
+        for i in range(4):
+            parts.append(tube('finger', [(-36 + i * 24, 55, 9), (-38 + i * 25, 120 + (i % 3) * 8, 8)], 9, glove, res=3, smooth_pts=False))
+        parts.append(tube('thumb', [(46, 10, 9), (90, 50, 8)], 10, glove, res=3, smooth_pts=False))
+        group('glove', parts, Matrix.Translation((gx, gy, 627)) @ Matrix.Rotation(math.radians(ga), 4, 'Z'))
+    # exhibition track with warm spots on the door; a high basement window with grey daylight on the left
+    track = metal('track', (0.04, 0.04, 0.04), 0.4, marks=None, metallic=0.3)
+    TZ = SPRING + R0 - 180
+    bx('track', -25, 25, -6000, FY - 200, TZ - 25, TZ, track)
+    spot_m = metal('spot_body', (0.05, 0.05, 0.05), 0.35, marks=None, metallic=0.3)
+    for (sy, aimp, w) in S.get('spots', [((FY - 1900), (0, FY, 900), 1.1e8), ((FY - 2900), (-330, FY, 1560), 5e7), (-600, (-1000, 1900, 600), 3e7), (-4200, (0, -2500, 0), 3e7)]):
+        cyl('spot_can', 55, 160, (0, sy, TZ - 120), verts=32).data.materials.append(spot_m)
+        ap = aim('spot_aim', aimp)
+        bpy.ops.object.light_add(type='SPOT', location=(0, sy, TZ - 210)); L = bpy.context.object
+        L.data.energy = w; L.data.color = (1.0, 0.80, 0.58); L.data.spot_size = math.radians(S.get('spot_deg', 40)); L.data.spot_blend = 0.45
+        L.data.shadow_soft_size = 25
+        c = L.constraints.new('TRACK_TO'); c.target = ap; c.track_axis = 'TRACK_NEGATIVE_Z'; c.up_axis = 'UP_Y'
+    # cove: warm LED strips on the springing line wash the limewashed vault from below (museum lighting)
+    for sx in (-1, 1):
+        ap = aim('cove_aim', (-sx * HW_ * 0.4, (FY - 9000) / 2, SPRING + R0))
+        cl = area_light('cove', (sx * (HW_ - 60), (FY - 9000) / 2 + 600, SPRING - 40), ap, 60, S.get('cove_w', 4e7), (1.0, 0.78, 0.52), size_y=11000)
+        cl.data.shape = 'RECTANGLE'; cl.data.size = 60; cl.data.size_y = 11000
+        cl.constraints.clear(); cl.rotation_euler = (0, math.radians(sx * 60), 0)
+        cl.visible_camera = False; cl.visible_glossy = False
+        bx('cove_strip', sx * HW_ - (60 if sx > 0 else -60) - 15, sx * HW_ - (60 if sx > 0 else -60) + 15, -9000, FY, SPRING - 60, SPRING - 30, track)
+    WIN = S.get('window', (-3600, -2200))
+    wcut = bx('bwin_cut', X0 - 500, X0 + 10, WIN[0], WIN[1], SPRING - 700, SPRING - 120)
+    cut(bpy.data.objects['lwall'], wcut)
+    bx('bwin_glass', X0 - 300, X0 - 295, WIN[0], WIN[1], SPRING - 700, SPRING - 120, glass('bwin', (0.7, 0.72, 0.72), rough=0.25, dirt=0.8)).visible_shadow = False
+    bx('bwin_sky', X0 - 3000, X0 - 2990, WIN[0] - 4000, WIN[1] + 4000, SPRING - 3000, SPRING + 3000, emissive('bwin_day', (0.75, 0.80, 0.88), 3.0, (0, 0, 0)))
+    a = aim('aim_bwin', (0, (WIN[0] + WIN[1]) / 2 + 600, 0))
+    wl = area_light('basement_day', (X0 - 900, (WIN[0] + WIN[1]) / 2, SPRING - 400), a, 1400, S.get('day_w', 1.2e8), (0.80, 0.86, 0.96), size_y=600)
+    wl.visible_camera = False; wl.visible_glossy = False
+    world_hdri(0.004, 'interior.exr', sat=0.3)
+    return {'door': [(DX0, FL - 140, DZ1), (DX1, FL - 140, DZ1), (DX1, FL - 140, 0), (DX0, FL - 140, 0)],
+            'time_lock': [(TL.x - 130, TL.y, TL.z + 130), (TL.x + 130, TL.y, TL.z + 130), (TL.x + 130, TL.y, TL.z - 130), (TL.x - 130, TL.y, TL.z - 130)]}
+
+
 # ================================================================ camera, render
 def camera_walk():
     cam = photo_camera((0, 0, 0), lens=CAMC.get('lens', 24.0))
@@ -704,7 +837,7 @@ def base_render(res, spp, out, expo, vig, look):
     # env_common.photo_finish is fixed on main (D-89): no bright centre ellipse any more
 
 
-KITS = {'street': kit_street, 'shop': kit_shop, 'corridor': kit_corridor}
+KITS = {'street': kit_street, 'shop': kit_shop, 'corridor': kit_corridor, 'vault': kit_vault}
 info = KITS[KIT]()
 cam = camera_walk()
 LOOK = J.get('look', {}).get(TIME, {})

@@ -48,6 +48,7 @@ JOBS = {
     'night_nurse': {'night': [(None, 'night_nurse_night_hold.png', [])]},
     'pizzeria_pays_pizza': {'evening': [(None, 'pizzeria_pays_pizza_evening_hold.png', [])]},
     'bike_interview': {'day': [(None, 'bike_interview_day_hold.png', [])]},
+    'museum_time_lock': {'day': [(None, 'museum_time_lock_day_hold.png', [])]},   # D-100: the museum's vault room
 }
 CONTACT_COLS, CONTACT_W = 6, 1080   # arrival_composite.contact() defaults
 IMPORT_TEMPLATE = """[remap]

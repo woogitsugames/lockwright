@@ -4,6 +4,7 @@
 #   tension   the tension wrench in the bottom of the keyway, the plug face            (tutorial.frame_tension)
 #   lift      the hook under a key pin, the pin stack lifted towards the shear line     (tutorial.frame_lift)
 #   set       a set pin: the driver sits on the plug top above the shear line           (tutorial.frame_click)
+#   lift_one, set_one  the same with a single pin stack (S1 is a one-pin lock)
 #   binding   three pin stacks, only the middle one binds against the pick (S2)         (tutorial.s2_intro)
 #   overset   a key pin pushed past the shear line, its spring squeezed solid (S3)      (tutorial.s3_intro)
 # Nothing is written into the picture: arrows or chalk belong to the game (D-83 chalk language).
@@ -77,6 +78,12 @@ for name in CARDS:
     elif name == 'set':       # pin a: driver above the shear line on the plug top, key pin dropped
         show(TOOLS, False)
         frame((PINS_X[0] + 0.3, 0.0, SHEAR + 0.6), 46.0)
+    elif name == 'lift_one':  # S1 is a one-pin lock: only stack c, the hook under it
+        show(STACKS['a'] + STACKS['b'] + STACKS['d'] + STACKS['e'], False)
+        frame((PINS_X[2] + 0.2, 0.0, 4.2), 46.0)
+    elif name == 'set_one':   # S1: the one pin set, nothing beside it
+        show(TOOLS, False); show(STACKS['b'] + STACKS['c'] + STACKS['d'] + STACKS['e'], False)
+        frame((PINS_X[0] + 0.2, 0.0, SHEAR + 0.6), 40.0)
     elif name == 'binding':   # b, c, d: only c binds against the hook; b and d rest (copies of the free stack e)
         if not extra:
             extra += free_copy('e', PINS_X[1] - PINS_X[4], 'b') + free_copy('e', PINS_X[3] - PINS_X[4], 'd')
