@@ -29,6 +29,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: write   # dispatch game-android after the manifest commit (pushes with GITHUB_TOKEN trigger nothing)
 
 jobs:
   build-and-release:
@@ -79,7 +80,11 @@ jobs:
           git commit -m "voice packs: manifest for voice-packs-$VERSION (D-62)"
           git reset -q --hard HEAD   # drop files rewritten by --import (.translation etc.)
           for i in 1 2 3; do
-            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              # the APK must carry the new manifest, or new packs are invisible to the game (2026-11-08: PL pack)
+              GH_TOKEN="${{ github.token }}" gh workflow run game-android.yml --ref main || echo "::warning::could not dispatch game-android"
+              exit 0
+            fi
             sleep 5
           done
           exit 1
