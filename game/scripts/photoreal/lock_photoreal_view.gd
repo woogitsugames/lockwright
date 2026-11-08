@@ -48,6 +48,18 @@ const LOUPE_MIN_DP := 56.0     # N-57: loupe touch target (≥ 48 dp)
 # round the mechanism) | roll column (whole picks and loupe, a margin from the screen edge).
 const LANDSCAPE_ROLL_W := 0.28        # share of the safe width the roll column may take
 const LANDSCAPE_SECTION_MAX := 1.15   # widest section (width / height); the plate is 0.75
+## D-85: the wider frame crops the plate top and bottom (centred, 0.75 / aspect of its height stays).
+## Only families with bench above and below the mechanism may widen that far; where the mechanism
+## fills the plate (pin cutaway springs and plug, lever springs, the dial safe bolt bar, the warded
+## leaf, the time lock clock and barrel) the section stays narrower so no part is cut. Measured from
+## the mechanism's bounding boxes (test_lock_landscape_safe_area.gd checks them at every case).
+## Families not listed: LANDSCAPE_SECTION_MAX. Combo / disc detainer crop round their wheels.
+const LANDSCAPE_MAX_BY_FAMILY := {
+	&"pin_tumbler": 0.94, &"dimple": 0.94, &"magnetic": 0.94,
+	&"warded": 0.88, &"time_lock": 1.02,
+	&"lever": SECTION_ASPECT, &"lever_detector": SECTION_ASPECT, &"dial_safe": SECTION_ASPECT,
+	&"wafer": 1.15, &"egyptian": 1.15, &"axial_slider": 1.15,
+}
 const ROLL_GAP := 12.0                # dp between the section and the roll column
 const ROLL_MARGIN := 14.0             # dp of bare leather right of the roll (no clipped loupe ring)
 
@@ -61,6 +73,8 @@ const MAX_VP_PIXELS := 5_400_000
 
 var viewport: SubViewport
 var section_rect := Rect2()
+## Widest landscape section of this screen (width / height), set per family (D-85).
+var landscape_section_max := LANDSCAPE_SECTION_MAX: set = set_landscape_section_max
 var tray_rect := Rect2()
 
 var _rig: Dictionary
@@ -142,6 +156,17 @@ func set_msaa(v: int) -> void:
 	if viewport:
 		viewport.msaa_3d = [Viewport.MSAA_DISABLED, Viewport.MSAA_2X, Viewport.MSAA_4X][msaa]
 		viewport.screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA if msaa == 0 else Viewport.SCREEN_SPACE_AA_DISABLED
+
+
+## D-85: widest landscape section for a family (width / height).
+static func landscape_max_for(fam: StringName) -> float:
+	return float(LANDSCAPE_MAX_BY_FAMILY.get(fam, LANDSCAPE_SECTION_MAX))
+
+
+func set_landscape_section_max(v: float) -> void:
+	landscape_section_max = clampf(v, SECTION_ASPECT, LANDSCAPE_SECTION_MAX)
+	if viewport and _tray and is_inside_tree():
+		_layout()
 
 
 func set_render_scale(v: float) -> void:
@@ -486,7 +511,7 @@ func _layout() -> void:
 		var left := safe.position.x + PlugFace.size_for(FACE_R_DP).x + 24.0
 		var avail := x0 - ROLL_GAP - left
 		if avail >= sh * SECTION_ASPECT:
-			var sw := minf(avail, sh * LANDSCAPE_SECTION_MAX)
+			var sw := minf(avail, sh * maxf(landscape_section_max, SECTION_ASPECT))
 			section_rect = Rect2(Vector2(left + (avail - sw) * 0.5, r.position.y), Vector2(sw, sh))
 			tray_rect = Rect2(Vector2(x0, safe.position.y), Vector2(col_w, safe.size.y))
 		else:

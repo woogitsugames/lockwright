@@ -85,8 +85,21 @@ func test_every_lock_screen_shows_whole_roll_and_loupe_in_landscape_safe_area() 
 			for p in _mechanism_points(view):
 				assert_true(view.section_rect.grow(-4.0).has_point(p), tag + ": element %s inside section %s" % [p, view.section_rect])
 				assert_false(roll.has_point(p) or face.has_point(p), tag + ": element %s not under the roll / face" % p)
+			# D-85: whole parts, not one point each: every mechanism part's bounding box keeps its top
+			# and bottom inside the (centre-cropped) section, so no spring tip or plug bottom is cut
+			var rects := _mechanism_rects(view, fam)
+			assert_gt(rects.size(), 0, tag + ": mechanism parts found")
+			for pr in rects:
+				# what the full plate shows (an anchored spring end may leave the plate on every screen)
+				var rr: Rect2 = (pr[1] as Rect2).intersection(view._section_display())
+				if rr.size.y <= 0.0:
+					continue
+				assert_true(rr.position.y >= view.section_rect.position.y - 1.0 and rr.end.y <= view.section_rect.end.y + 1.0,
+					tag + ": part %s %s not cut by section %s" % [pr[0], rr, view.section_rect])
 			if ins == Vector4.ZERO and size == Vector2i(915, 412):
-				assert_gte(view.section_rect.size.x, size.y * LockPhotorealView.SECTION_ASPECT * 1.3, tag + ": N-78 section not tiny")
+				# N-78: wider than the old 3:4 where the plate has bench round the mechanism (D-85)
+				var want := minf(LockPhotorealView.landscape_max_for(fam), 1.3 * LockPhotorealView.SECTION_ASPECT)
+				assert_gte(view.section_rect.size.x, size.y * want - 1.0, tag + ": N-78 section not tiny")
 			vp.queue_free()
 			await wait_frames(1)
 
@@ -178,4 +191,46 @@ func _mechanism_points(view: LockPhotorealView) -> Array:
 	else:
 		for i in view._active_stacks:
 			out.append(view.mm_to_screen(Vector3(LockPhotorealView.PINS_X[i], PinPose.SHEAR, 0.0)))
+	return out
+
+
+## D-85: mesh names of the parts the player works on (and the plug / frame round them) per 3D screen;
+## the outer shell, the door, the bench and the tools (pick, wrench) are left out.
+const MECHANISM_MESHES := {
+	&"pin_tumbler": "^(cap(_[0-9]+)?|[a-e]_spr|[a-e]_(key|drv)_live|e_blank|plug)$",
+	&"wafer": "^(wafer[0-9]|wspr[0-9]|bridge[0-9]|plug)$",
+	&"lever": "^(lever[0-9]|spring[0-9]|stump|stud|post|post_head|bolt|detector.*)$",
+	&"warded": "^(tumbler|leaf|lblock|bolt|bit|bit_head|pin|khd|fence[0-9]_(in|out)|staple[0-9]|tstud|tpivot)$",
+}
+const MESH_FAMILY := {&"dimple": &"pin_tumbler", &"magnetic": &"pin_tumbler", &"lever_detector": &"lever"}
+
+
+## [name, screen rect] of each mechanism part: projected mesh bounds (3D screens) or the Cycles
+## layer rects (layer screens; the plate, the tool and the dial safe's door front left out).
+func _mechanism_rects(view: LockPhotorealView, fam: StringName) -> Array:
+	var out := []
+	var layers: Variant = view.get("meta")
+	if layers is Dictionary and (layers as Dictionary).has("layers") and view.has_method("plate_to_screen"):
+		var skip := ["plate", String(view.get("tool_layer")) if view.get("tool_layer") != null else ""]
+		if fam == &"dial_safe":
+			skip.append("front")
+		for nm in (layers["layers"] as Dictionary):
+			if skip.has(String(nm)):
+				continue
+			var l: Dictionary = layers["layers"][nm]
+			var o := Vector2(l["offset"][0], l["offset"][1])
+			var a: Vector2 = view.plate_to_screen(o)
+			var b: Vector2 = view.plate_to_screen(o + Vector2(l["size"][0], l["size"][1]))
+			out.append([nm, Rect2(a, b - a)])
+		return out
+	var re := RegEx.create_from_string(MECHANISM_MESHES.get(MESH_FAMILY.get(fam, fam), "^$"))
+	for n in view.viewport.find_children("*", "VisualInstance3D", true, false):
+		var vi := n as VisualInstance3D
+		if not vi.is_visible_in_tree() or re.search(String(vi.name)) == null:
+			continue
+		var bb := vi.global_transform * vi.get_aabb()
+		var r := Rect2(view.mm_to_screen(bb.position), Vector2.ZERO)
+		for k in 8:
+			r = r.expand(view.mm_to_screen(bb.get_endpoint(k)))
+		out.append([vi.name, r])
 	return out

@@ -92,6 +92,7 @@ func _ready() -> void:
 		_setup_warded(spec_path)
 	elif family == &"lever_detector":
 		control = DetectorControl.new(sampler.auto_tension)
+	view.landscape_section_max = LockPhotorealView.landscape_max_for(family)  # D-85: no cut mechanism
 	view.pause_requested.connect(_on_pause)
 	view.set_lives(int(args.get("lw-lives", "3")))
 	view.set_dark(args.get("lw-dark", "0") == "1")
