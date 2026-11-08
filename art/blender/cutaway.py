@@ -145,7 +145,7 @@ def optics_post(dispersion=0.0, distortion=0.0, vignette=0.0, soft=0.25):
         ld.inputs['Distortion'].default_value = distortion; ld.inputs['Dispersion'].default_value = dispersion
         nt.links.new(img, ld.inputs['Image']); img = ld.outputs['Image']
     if vignette:
-        em = nt.nodes.new('CompositorNodeEllipseMask'); em.width = em.height = 1.0 - soft * 0.6
+        em = nt.nodes.new('CompositorNodeEllipseMask'); em.mask_width = em.mask_height = 1.0 - soft * 0.6   # mask_*, not the node box (was width/height)
         em.inputs['Value'].default_value = 1.0
         bl = nt.nodes.new('CompositorNodeBlur'); bl.filter_type = 'GAUSS'; bl.use_relative = True
         bl.factor_x = bl.factor_y = soft * 100; bl.size_x = bl.size_y = 1

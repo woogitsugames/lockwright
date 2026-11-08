@@ -438,19 +438,30 @@ def write_anchors(path, anchors):
     print('ANCHORS', path)
 
 def photo_finish(vignette=0.22, dispersion=0.006, grain=0.0):
-    """Compositor: a real lens. Slight lateral chromatic aberration toward the corners and a soft vignette."""
+    """Compositor: a real lens. Slight lateral chromatic aberration toward the corners, and the frame scaled by
+    (1 - vignette).
+
+    Until 2026-11-08 this built an EllipseMask vignette but set `em.width/height`, which are the node's box size in
+    the editor, not the mask (`mask_width/mask_height`); with a 0.35 % blur the result was a sharp-edged bright
+    0.2 x 0.1 ellipse at the frame centre on top of a flat (1 - vignette). Every approved render (menu, workshop,
+    stairwell, arrival pilot) was graded with that flat factor, so the fix keeps it and drops the ellipse: no
+    look change outside the oval, and re-renders line up with what was approved. LW_PHOTO_FINISH_LEGACY=1 rebuilds
+    the old graph (before/after comparisons only)."""
     scene.use_nodes = True; nt = scene.node_tree; nt.nodes.clear(); l = nt.links
     rl = nt.nodes.new('CompositorNodeRLayers'); out = nt.nodes.new('CompositorNodeComposite')
     ld = nt.nodes.new('CompositorNodeLensdist'); ld.use_fit = True
     ld.inputs[1].default_value = 0.0; ld.inputs[2].default_value = dispersion
     l.new(rl.outputs['Image'], ld.inputs['Image'])
-    em = nt.nodes.new('CompositorNodeEllipseMask'); em.width = 1.15; em.height = 1.05
-    bl = nt.nodes.new('CompositorNodeBlur'); bl.filter_type = 'FAST_GAUSS'; bl.use_relative = True
-    bl.factor_x = 0.35; bl.factor_y = 0.35; l.new(em.outputs['Mask'], bl.inputs['Image'])
-    mr = nt.nodes.new('CompositorNodeMapRange'); mr.inputs['To Min'].default_value = 1 - vignette; mr.inputs['To Max'].default_value = 1.0
-    l.new(bl.outputs['Image'], mr.inputs['Value'])
     mx = nt.nodes.new('CompositorNodeMixRGB'); mx.blend_type = 'MULTIPLY'; mx.inputs['Fac'].default_value = 1.0
-    l.new(ld.outputs['Image'], mx.inputs[1]); l.new(mr.outputs['Value'], mx.inputs[2])
+    l.new(ld.outputs['Image'], mx.inputs[1])
+    if os.environ.get('LW_PHOTO_FINISH_LEGACY') == '1':
+        em = nt.nodes.new('CompositorNodeEllipseMask'); em.width = 1.15; em.height = 1.05   # (sic: UI box size)
+        bl = nt.nodes.new('CompositorNodeBlur'); bl.filter_type = 'FAST_GAUSS'; bl.use_relative = True
+        bl.factor_x = 0.35; bl.factor_y = 0.35; l.new(em.outputs['Mask'], bl.inputs['Image'])
+        mr = nt.nodes.new('CompositorNodeMapRange'); mr.inputs['To Min'].default_value = 1 - vignette; mr.inputs['To Max'].default_value = 1.0
+        l.new(bl.outputs['Image'], mr.inputs['Value']); l.new(mr.outputs['Value'], mx.inputs[2])
+    else:
+        mx.inputs[2].default_value = (1 - vignette, 1 - vignette, 1 - vignette, 1)
     l.new(mx.outputs['Image'], out.inputs['Image'])
 
 def clipboard(name, M, slip_mat, pad_mat, board_mat, clip_mat, W=176, H=250, sheet=(148, 210), sheets=3, rng=None):

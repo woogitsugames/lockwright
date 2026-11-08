@@ -872,12 +872,7 @@ def base_render(res, spp, out):
     if DEVICE == 'GPU' and arg('--denoiser', 'OIDN').upper() == 'OPTIX': scene.cycles.denoiser = 'OPTIX'
     VIG = {'night': 0.36, 'evening': 0.3}.get(TIME, 0.22)
     photo_finish(VIG)
-    # env_common.photo_finish sets EllipseMask.width/height, which are the node's UI box size, not the mask: the mask
-    # stayed at its 0.2 x 0.1 default, so every frame got a small bright oval at the centre (seen on light painted
-    # doors) and a flat (1 - VIG) everywhere else. A real-size mask shows its edge in 9:16 (the blur is too short),
-    # so the mask is emptied: the flat (1 - VIG) the pilot finals were graded with, without the oval.
-    for n_ in scene.node_tree.nodes:
-        if n_.type == 'ELLIPSEMASK': n_.mask_width, n_.mask_height = 0.0, 0.0
+    # (the centre-oval bug of photo_finish is fixed in env_common since 2026-11-08: flat (1 - VIG), as graded)
     scene.view_settings.look = 'AgX - High Contrast' if TIME == 'night' else 'AgX - Base Contrast'
 
 if MODE in ('seq', 'both'):
