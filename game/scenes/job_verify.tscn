@@ -31,6 +31,7 @@ size_flags_vertical = 0
 [node name="Title" type="Label" parent="Frame/VBox/Header"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 theme_type_variation = &"Title"
 autowrap_mode = 3
 
@@ -39,56 +40,73 @@ layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="Body" type="VBoxContainer" parent="Frame/VBox/Scroll"]
+[node name="Body" type="BoxContainer" parent="Frame/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+vertical = true
+
+[node name="Spacer" type="Control" parent="Frame/VBox/Scroll/Body"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Side" type="VBoxContainer" parent="Frame/VBox/Scroll/Body"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="Intro" type="PanelContainer" parent="Frame/VBox/Scroll/Body"]
+[node name="Intro" type="PanelContainer" parent="Frame/VBox/Scroll/Body/Side"]
 layout_mode = 2
 
-[node name="Texts" type="VBoxContainer" parent="Frame/VBox/Scroll/Body/Intro"]
+[node name="Texts" type="VBoxContainer" parent="Frame/VBox/Scroll/Body/Side/Intro"]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="Job" type="Label" parent="Frame/VBox/Scroll/Body/Intro/Texts"]
+[node name="Job" type="Label" parent="Frame/VBox/Scroll/Body/Side/Intro/Texts"]
 layout_mode = 2
 theme_type_variation = &"Heading"
 autowrap_mode = 3
 
-[node name="Hint" type="Label" parent="Frame/VBox/Scroll/Body/Intro/Texts"]
+[node name="Hint" type="Label" parent="Frame/VBox/Scroll/Body/Side/Intro/Texts"]
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="ResultPanel" type="PanelContainer" parent="Frame/VBox/Scroll/Body/Side"]
+visible = false
+layout_mode = 2
+
+[node name="Result" type="Label" parent="Frame/VBox/Scroll/Body/Side/ResultPanel"]
 layout_mode = 2
 autowrap_mode = 3
 
 [node name="Cards" type="GridContainer" parent="Frame/VBox/Scroll/Body"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="ResultPanel" type="PanelContainer" parent="Frame/VBox/Scroll/Body"]
-visible = false
-layout_mode = 2
-
-[node name="Result" type="Label" parent="Frame/VBox/Scroll/Body/ResultPanel"]
-layout_mode = 2
-autowrap_mode = 3
-
-[node name="Actions" type="VBoxContainer" parent="Frame/VBox"]
+[node name="Actions" type="BoxContainer" parent="Frame/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 10
+vertical = true
 
 [node name="AcceptButton" type="Button" parent="Frame/VBox/Actions"]
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
+size_flags_horizontal = 3
 autowrap_mode = 3
 
 [node name="AskMoreButton" type="Button" parent="Frame/VBox/Actions"]
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
+size_flags_horizontal = 3
 autowrap_mode = 3
 
 [node name="RefuseButton" type="Button" parent="Frame/VBox/Actions"]
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
+size_flags_horizontal = 3
 autowrap_mode = 3

@@ -12,17 +12,30 @@ const Arrival := preload("res://scripts/ui/job_arrival.gd")
 ## Pause before the scene changes after a decision, so its line can be read.
 const DECISION_PAUSE_S := 1.4
 const CARD_IMAGE_H := 132.0
+## VA-08: the props grow with the room left (portrait: one row of cards up to this, landscape: the
+## height beside the texts), never under CARD_IMAGE_H_MIN.
+const CARD_IMAGE_H_MAX := 200.0
+const CARD_IMAGE_H_MIN := 96.0
+const CARD_LABEL_H := 52.0
+## VA-08: landscape uses the width (texts | cards side by side, decisions in one row at the bottom).
+const LANDSCAPE_COLUMN := 880.0
+## The arrival photo stays readable behind the header (the door is the subject of the check).
+const SHADE := 0.5
 
 @onready var title_label: Label = $Frame/VBox/Header/Title
-@onready var job_label: Label = $Frame/VBox/Scroll/Body/Intro/Texts/Job
-@onready var hint_label: Label = $Frame/VBox/Scroll/Body/Intro/Texts/Hint
+@onready var job_label: Label = $Frame/VBox/Scroll/Body/Side/Intro/Texts/Job
+@onready var hint_label: Label = $Frame/VBox/Scroll/Body/Side/Intro/Texts/Hint
 @onready var cards_box: GridContainer = $Frame/VBox/Scroll/Body/Cards
-@onready var result_panel: PanelContainer = $Frame/VBox/Scroll/Body/ResultPanel
-@onready var result_label: Label = $Frame/VBox/Scroll/Body/ResultPanel/Result
+@onready var result_panel: PanelContainer = $Frame/VBox/Scroll/Body/Side/ResultPanel
+@onready var result_label: Label = $Frame/VBox/Scroll/Body/Side/ResultPanel/Result
 @onready var accept_button: Button = $Frame/VBox/Actions/AcceptButton
 @onready var ask_more_button: Button = $Frame/VBox/Actions/AskMoreButton
 @onready var refuse_button: Button = $Frame/VBox/Actions/RefuseButton
 @onready var back_button: Button = $Frame/VBox/Header/BackButton
+@onready var body: BoxContainer = $Frame/VBox/Scroll/Body
+@onready var spacer: Control = $Frame/VBox/Scroll/Body/Spacer
+@onready var side_box: VBoxContainer = $Frame/VBox/Scroll/Body/Side
+@onready var actions: BoxContainer = $Frame/VBox/Actions
 
 var _shown := 0
 var _asked := {}  # card -> how many times the player tapped it (T73 exchange variant)
@@ -32,10 +45,11 @@ var go_override: Callable = Callable()
 
 
 func _ready() -> void:
-	ScreenFrame.fit(self, $Frame)
+	ScreenFrame.fit(self, $Frame, LANDSCAPE_COLUMN)
 	var job: Dictionary = JobRun.current_job
-	ScreenFrame.backdrop(self, "res://assets/ui/gpt/arrival/" + _arrival_image(job), 0.62)
+	ScreenFrame.backdrop(self, "res://assets/ui/gpt/arrival/" + _arrival_image(job), SHADE)
 	title_label.text = I18n.t(&"verify.title")
+	ScreenFrame.fit_title(title_label)  # VA-08: one line when it fits, never clipped in landscape
 	job_label.text = I18n.t(job.get("i18n", {}).get("title", &"jobs.title"))
 	hint_label.text = I18n.t(&"verify.hint")
 	accept_button.text = I18n.t(&"job.accept")
@@ -74,9 +88,39 @@ func _cards() -> Array:
 	return JobRun.current_job.get("cards", ["id"])
 
 
+## VA-08 layout. Portrait: the photo of the door shows under the header, the texts and the cards sit
+## on the table just above the three decisions (bottom 40%), the cards as large as one row allows.
+## Landscape: texts left, all cards in one row right, the decisions in one row at the bottom.
+func is_landscape() -> bool:
+	return size.x > size.y
+
+
 func _relayout() -> void:
-	# portrait: two cards per row; landscape: all on one row
-	cards_box.columns = maxi(cards_box.get_child_count(), 1) if size.x > size.y else 2
+	var land := is_landscape()
+	var n := maxi(cards_box.get_child_count(), 1)
+	cards_box.columns = n if land else mini(n, 2)
+	body.vertical = not land
+	spacer.visible = not land
+	actions.vertical = not land
+	side_box.size_flags_stretch_ratio = 1.0
+	cards_box.size_flags_stretch_ratio = 1.4 if n > 1 else 1.0
+	var img_h := card_image_height(size, n, land)
+	for c in cards_box.get_children():
+		(c as Control).custom_minimum_size.y = img_h + CARD_LABEL_H
+		var pic := c.get_node_or_null("Box/Pic") as Control
+		if pic:
+			pic.custom_minimum_size.y = img_h
+
+
+## Prop picture height (dp) for a screen of `screen` dp with `n` cards (tests).
+static func card_image_height(screen: Vector2, n: int, land: bool) -> float:
+	if land:
+		# header (~64) + decisions row (56) + margins and gaps (~70) + the card's caption
+		return clampf(screen.y - 190.0 - CARD_LABEL_H, CARD_IMAGE_H_MIN, CARD_IMAGE_H_MAX)
+	var rows := ceili(n / 2.0)
+	# portrait: about a fifth of the height for one row; two rows keep the old size
+	var h := screen.y * 0.2 if rows == 1 else (screen.y * 0.36) / rows - CARD_LABEL_H
+	return clampf(h, CARD_IMAGE_H_MIN, CARD_IMAGE_H_MAX)
 
 
 # G14 verification props: card type -> prop image (PL/EN by game language)
@@ -119,6 +163,7 @@ func _card_tile(card: String) -> Button:
 	b.add_theme_stylebox_override("pressed", down)
 	b.add_theme_stylebox_override("hover_pressed", down)
 	var box := VBoxContainer.new()
+	box.name = "Box"
 	box.set_anchors_preset(Control.PRESET_FULL_RECT)
 	box.offset_left = 8
 	box.offset_top = 8
@@ -128,6 +173,7 @@ func _card_tile(card: String) -> Button:
 	box.add_theme_constant_override("separation", 4)
 	b.add_child(box)
 	var pic := TextureRect.new()
+	pic.name = "Pic"
 	pic.texture = _card_prop(card)
 	pic.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	pic.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -246,7 +292,53 @@ func _decision_pause() -> void:
 		await get_tree().create_timer(decision_pause_s).timeout
 
 
+## D-85 (JOBS.md job.wrong_floor): data `wrong_open: {reputation, lines, backdrop}` — opening without
+## checking is the wrong door. No lock: the scene with the person who really lives there, the reputation
+## loss, no coins, and the job leaves the list (Save `jobs_wrong_open`); its kind "day after" never comes.
+static func wrong_open_spec(job: Dictionary) -> Dictionary:
+	var spec: Variant = job.get("wrong_open", {})
+	return spec if spec is Dictionary else {}
+
+
+## The wrong-door scene's lines: speakers from the data, texts `<job_id>.wrong_open.N`.
+static func wrong_open_lines(job: Dictionary) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	var jid := String(job.get("id", ""))
+	var speakers: Array = wrong_open_spec(job).get("lines", [])
+	for i in speakers.size():
+		var key := "%s.wrong_open.%d" % [jid, i + 1]
+		if I18n.has_key(StringName(key)):
+			out.append({"speaker": String(speakers[i]), "key": key, "text": I18n.t(StringName(key))})
+	return out
+
+
+var wrong_scene: DayAfter
+
+
+func _open_wrong_door() -> void:
+	_set_decided()
+	var job: Dictionary = JobRun.current_job
+	var jid := String(job.get("id", ""))
+	var spec := wrong_open_spec(job)
+	var loss := absi(int(spec.get("reputation", -25)))
+	var closed: Array = Save.get_value("jobs_wrong_open", [])
+	if not closed.has(jid):  # once per job
+		closed.append(jid)
+		Save.set_value("jobs_wrong_open", closed)
+		Save.set_value("reputation", maxi(0, int(Save.get_value("reputation", 0)) - loss))
+	DayAfter.mark_seen(jid)  # the thank-you cake for not opening will not come
+	wrong_scene = DayAfter.show_scene(self, job, wrong_open_lines(job), &"wrongopen.title", String(spec.get("backdrop", "")))
+	await wrong_scene.closed
+	_show_result(I18n.t(&"verify.lost_rep") % loss)
+	await _decision_pause()
+	JobRun.current_job = {}
+	_go("res://scenes/jobs_list.tscn")
+
+
 func _accept() -> void:
+	if not wrong_open_spec(JobRun.current_job).is_empty():
+		_open_wrong_door()
+		return
 	if JobRun.is_talk(JobRun.current_job):
 		_go("res://scenes/job_payment.tscn")  # T43: no lock scene
 		return

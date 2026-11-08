@@ -479,3 +479,5 @@ verify.more_card,The client lays one more card on the table.,Klient kładzie na 
 verify.no_more,That's everything I have on me.,"To wszystko, co mam przy sobie.",Mehr habe ich nicht dabei.,C'est tout ce que j'ai sur moi.,Es todo lo que llevo encima.
 verify.asked_rep,Word gets around: +%d reputation,Słowo się niesie: +%d reputacji,Das spricht sich herum: +%d Ruf,La nouvelle circule : +%d de réputation,La voz corre: +%d de reputación
 verify.declined,I'll pass on this one. The call stays on my list.,Tym razem odpuszczam. Zgłoszenie zostaje na liście.,Diesmal passe ich. Der Auftrag bleibt auf meiner Liste.,Je passe mon tour. L'appel reste sur ma liste.,Esta vez paso. El aviso sigue en mi lista.
+wrongopen.title,A minute later,Minutę później,Eine Minute später,Une minute plus tard,Un minuto después
+verify.lost_rep,Word gets around: −%d reputation,Słowo się niesie: −%d reputacji,Das spricht sich herum: −%d Ruf,La nouvelle circule : −%d de réputation,La voz corre: −%d de reputación

@@ -27,6 +27,12 @@ const Arrival := preload("res://scripts/ui/job_arrival.gd")
 static var reduce_motion_override := -1
 
 var job: Dictionary = {}
+## D-85: the same presentation for a scene on the spot (job.wrong_floor opened unchecked: Mrs Teresa):
+## its own lines, header and photo, and it does not touch the "day after" queue.
+var custom_lines: Array[Dictionary] = []
+var title_key: StringName = &"dayafter.title"
+var backdrop_override := ""
+var marks_seen := true
 var lines: Array[Dictionary] = []   # {speaker, key, text}
 var index := -1
 var portrait_speaker := ""
@@ -122,6 +128,18 @@ static func maybe_show(host: Control) -> DayAfter:
 	return da
 
 
+## D-85: plays `p_lines` ([{speaker, key, text}]) over `host` in this presentation, now (not queued).
+static func show_scene(host: Control, p_job: Dictionary, p_lines: Array[Dictionary], p_title: StringName, p_backdrop: String) -> DayAfter:
+	var da: DayAfter = load(SCENE).instantiate()
+	da.job = p_job
+	da.custom_lines = p_lines
+	da.title_key = p_title
+	da.backdrop_override = p_backdrop
+	da.marks_seen = false
+	host.add_child(da)
+	return da
+
+
 # --- scene --------------------------------------------------------------------------------------
 
 ## Place photo for the next day: the G07 arrival picture of the job's place, the daytime one if it has it.
@@ -138,14 +156,15 @@ func _reduce_motion() -> bool:
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP   # the list underneath gets no taps while the scene is up
-	ScreenFrame.backdrop(self, backdrop_path(job), 0.6)
+	var photo := backdrop_override if backdrop_override != "" and ResourceLoader.exists(backdrop_override) else backdrop_path(job)
+	ScreenFrame.backdrop(self, photo, 0.6)
 	ScreenFrame.fit(self, $Frame)
 	player = AudioStreamPlayer.new()
 	player.name = "VoicePlayer"
 	player.bus = Sfx.voice_bus()
 	add_child(player)
-	lines = lines_for(job)
-	title_label.text = I18n.t(&"dayafter.title")
+	lines = custom_lines if not custom_lines.is_empty() else lines_for(job)
+	title_label.text = I18n.t(title_key)
 	var title_key := String(job.get("i18n", {}).get("title", ""))
 	job_title_label.text = I18n.t(StringName(title_key)) if title_key != "" else ""
 	job_title_label.visible = job_title_label.text != ""
@@ -275,7 +294,8 @@ func close() -> void:
 	if _done:
 		return
 	_done = true
-	mark_seen(String(job.get("id", "")))
+	if marks_seen:
+		mark_seen(String(job.get("id", "")))
 	if player.playing:
 		player.stop()
 	Sfx.duck_music_for_voice(false)

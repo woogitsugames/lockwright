@@ -7,6 +7,7 @@ extends Node
 ## --no-day-after=1 drops a queued "day after" scene (in memory) so the job list itself is visible;
 ## the debug FPS overlay (Quality) is always hidden in these shots. --targets=1 prints every visible
 ## button smaller than 48x48 dp ("SMALL <path> <size>").
+## --press=<button property> presses that button of the scene before the wait (e.g. accept_button on job_verify).
 ## --size=WxH sets the window (as tests/screens.gd); --tab=furnishings opens the workshop's Wyposażenie tab; --tutorial-stage=N sets JobRun.tutorial_stage first; --auto=1 sets Settings auto_tension (not saved).
 
 func _ready() -> void:
@@ -65,6 +66,11 @@ func _ready() -> void:
 	if a.has("debug") and "scene" in scene and scene.scene != null:
 		var arr: Control = scene.scene
 		print("ARR size=", arr.size, " canvas=", arr.get_node("Canvas").position, arr.get_node("Canvas").size, " plate=", arr.get_node("Canvas/Plate").texture, arr.get_node("Canvas/Plate").size)
+	if a.has("press"):  # --press=accept_button: presses a button property of the scene first (D-85 shots)
+		await get_tree().process_frame
+		var btn: Variant = scene.get(a["press"])
+		if btn is BaseButton:
+			(btn as BaseButton).pressed.emit()
 	for i in int(a.get("frames", "30")):
 		await get_tree().process_frame
 	if a.has("debug") and scene is Control:

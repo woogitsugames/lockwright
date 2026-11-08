@@ -29,6 +29,15 @@
     "resolves": true,
     "reputation": 4
   },
+  "wrong_open": {
+    "reputation": -25,
+    "lines": [
+      "teresa",
+      "locksmith",
+      "teresa"
+    ],
+    "backdrop": "res://assets/arrival/wrong_floor/night/plate_teresa.webp"
+  },
   "place": "apartment",
   "time": "day"
 }

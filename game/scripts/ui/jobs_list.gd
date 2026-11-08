@@ -63,6 +63,7 @@ func _ready() -> void:
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 	var completed: Array = Save.get_value("jobs_completed", [])
 	var refused: Array = Save.get_value("jobs_refused", [])  # N-15: refused jobs are closed
+	refused = refused + Save.get_value("jobs_wrong_open", [])  # D-85: a wrong door opened leaves the list too
 	var jobs: Array = []
 	for path in DirAccess.get_files_at(JOBS_DIR):
 		if path.ends_with(".json"):
