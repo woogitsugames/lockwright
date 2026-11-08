@@ -1,0 +1,38 @@
+# Odsłuch: 26 kwestii „dzień po” po polsku (D-78)
+
+2026-11-08 · sesja lektora · decyzja właściciela: odsłucha sam i zdecyduje (zostawić / nagrać ponownie innym modelem).
+
+ASR (faster-whisper small i medium) słyszy w tych plikach niewyraźne ł/ś/ą/ę; szczegóły i transkrypcje: `contrib/voice/qa_after_medium.json`, kontekst: `contrib/voice/REVOICE.md`.
+
+**Najszybciej:** otwórz plik z kolumny „plik” (zwykły Ogg, np. w VLC; folder `game/assets/audio/lines/pl/`).
+
+**W grze:** scena „Następnego dnia” pokazuje się przy pierwszym wejściu w listę zleceń po ukończeniu zlecenia (otwarcie / naprawa / rozmowa) albo — przy `job.refuse_*` — po odmowie; gra pokazuje jedną scenkę na wejście (najnowsze zlecenie), każdą tylko raz na zapis. Ponowne zagranie zlecenia nie pokaże jej drugi raz (zapis pamięta „widziane”), więc do powtórnego odsłuchu — plik albo nowy zapis.
+
+| # | rozdz. | zlecenie (tytuł PL) | klucz | mówi | tekst PL | jak dojść w grze | plik |
+|---|---|---|---|---|---|---|---|
+| 1 | 1 | „To przecież też moje” | `job.refuse_ex_partner.after.2` | Pan Stefan | Słyszałem na przystanku. Porządny z pana człowiek. Gazeta? | odmów zlecenia (właściwa odpowiedź), potem lista zleceń | `game/assets/audio/lines/pl/job.refuse_ex_partner.after.2.ogg` |
+| 2 | 1 | Pokój 412 | `job.student_dorm.after.1` | Zuzanna | Zdążyłam na egzamin. Zamki historyczne na piątkę. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.student_dorm.after.1.ogg` |
+| 3 | 2 | Po dwunastu godzinach | `job.night_nurse.after.1` | Agnieszka | Spałam jedenaście godzin. Klucz od razu trafił do miseczki. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.night_nurse.after.1.ogg` |
+| 4 | 3 | Altana pana Zbyszka | `job.allotment_shed.after.1` | Pan Zbyszek | Pomidory zdążyły do ziemi. Dziękują panu. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.allotment_shed.after.1.ogg` |
+| 5 | 3 | Skrzynia dziadka Józefa | `job.grandpa_chest.after.1` | Pani Krystyna | Pamiątki znów są razem. Listy też. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.grandpa_chest.after.1.ogg` |
+| 6 | 3 | Ciotka, która ma się dobrze | `job.refuse_aunt_alive.after.2` | Sąsiadka pani Lucyny | Ulżyło mi, że pan odmówił. Ja bym nie spała. | odmów zlecenia (właściwa odpowiedź), potem lista zleceń | `game/assets/audio/lines/pl/job.refuse_aunt_alive.after.2.ogg` |
+| 7 | 4 | Brama na Kazimierzu | `job.krakow_tenement_gate.after.1` | Pani Wanda | Brama znów służy mieszkańcom. Następny będzie dzwonek. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.krakow_tenement_gate.after.1.ogg` |
+| 8 | 4 | Kłódka czeladnicza pana Władysława | `job.swiatniki_journeyman_padlock.after.1` | Pan Władysław | Kłódka ma jeszcze swoją historię. Teraz ma dwie. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.swiatniki_journeyman_padlock.after.1.ogg` |
+| 9 | 6 | Skrzynia marynarza | `job.finnish_sailor.after.1` | Aino | Wypłynęliśmy na czas. Skrzynia jest już przywiązana. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.finnish_sailor.after.1.ogg` |
+| 10 | 7 | Krzesła na próbę | `job.edek_rehearsal_store.after.1` | Pan Edek, portier | Krzesła są gotowe na zebranie. Policzyłem dwa razy. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.edek_rehearsal_store.after.1.ogg` |
+| 11 | 7 | Puszka na numerki | `job.stefan_book_tin.after.1` | Pan Stefan | Numerki do wypożyczalni wróciły do obiegu. Pierwszy dostała Krysia. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.stefan_book_tin.after.1.ogg` |
+| 12 | 7 | Szuflada katalogowa | `job.zuzanna_catalogue_drawer.after.1` | Zuzanna | Kopie gotowe dla świetlicy. Oryginały zostają w szufladzie. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.zuzanna_catalogue_drawer.after.1.ogg` |
+| 13 | 8 | Suszarnia na ostatnim piętrze | `job.attic_drying_room.after.1` | Pani Teresa | Płaszcze wyschły, chór zaśpiewał. Klucz do suszarni wisi teraz u pana Romana. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.attic_drying_room.after.1.ogg` |
+| 14 | 8 | Kartka w cudzej skrzynce | `job.refuse_wrong_letterbox.after.1` | Elżbieta, zarządczyni | Szesnastka oddała kartkę. Babcia Oskara dostała ją w drugi dzień świąt. | odmów zlecenia (właściwa odpowiedź), potem lista zleceń | `game/assets/audio/lines/pl/job.refuse_wrong_letterbox.after.1.ogg` |
+| 15 | 8 | Ciepła sala dla sąsiadów | `job.warm_room_for_neighbours.after.1` | Marta | Sąsiedzi przespali noc w cieple. Ziemniak obszedł wszystkie koce i żadnego nie zatwierdził. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.warm_room_for_neighbours.after.1.ogg` |
+| 16 | 8 | Rowerownia pod śniegiem | `job.winter_bicycle_cellar.after.1` | Leon | Ostatnia paczka dojechała trzydziestego pierwszego. Kłódka zimuje teraz pod pokrowcem. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.winter_bicycle_cellar.after.1.ogg` |
+| 17 | 9 | Poczta drewnianego miasta | `job.t43_09_03_wooden_postbox.after.1` | Zuzanna | Ktoś napisał, że chciałby tam zamieszkać. Przekazuję tylko tyle. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.t43_09_03_wooden_postbox.after.1.ogg` |
+| 18 | 9 | Paragony pod tarczą | `job.t43_09_05_receipt_safe.after.1` | Pan Stefan | Rachunek od pana dostał osobną przegródkę. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.t43_09_05_receipt_safe.after.1.ogg` |
+| 19 | 10 | Klucze przed rusztowaniem | `job.t43_10_02_scaffold_store.after.1` | Celina | Na odprawie był komplet. Łącznie z kluczem. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.t43_10_02_scaffold_store.after.1.ogg` |
+| 20 | 10 | Tabliczka dla świetlicy | `job.t43_10_04_design_cabinet.after.1` | Marta | Świetlica ma tabliczkę. Ziemniak chciał podpisać się łapą. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.t43_10_04_design_cabinet.after.1.ogg` |
+| 21 | 10 | Nowe drzwi, stara świetlica | `job.t43_10_06_shared_room_entry.after.1` | Janka | Sala pachnie farbą. Herbata już próbuje wygrać. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.t43_10_06_shared_room_entry.after.1.ogg` |
+| 22 | 11 | Przez ścianę stoiska | `job.refuse_t43_11_other_stall.after.1` | Alicja | Oddałam przedłużacz organizatorowi. Sąsiadowi pożyczyłam czajnik. | odmów zlecenia (właściwa odpowiedź), potem lista zleceń | `game/assets/audio/lines/pl/job.refuse_t43_11_other_stall.after.1.ogg` |
+| 23 | 11 | Rower na wystawę | `job.t43_11_02_bicycle_stand.after.1` | Kuba | Borys naprawił mi dzwonek. Rower teraz pierwszy zaczyna rozmowę. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.t43_11_02_bicycle_stand.after.1.ogg` |
+| 24 | 11 | Skrzynia na lądzie | `job.t43_11_04_sailors_stall.after.1` | Aino | Pokaz się udał. Narzędzia wróciły ze mną, klucz jeszcze płynie. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.t43_11_04_sailors_stall.after.1.ogg` |
+| 25 | 11 | Ostatnia próba przed targiem | `job.t43_11_05_rehearsal_chest.after.1` | Pan Edek, portier | Słyszałem koncert. Znam tę perkusistkę, kiedyś zgubiła klucz. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.t43_11_05_rehearsal_chest.after.1.ogg` |
+| 26 | 12 | Miejsce przy stole Henryka | `job.t43_12_08_henryks_bench.after.2` | Ślusarz | Zamknąłem warsztat. Klucz sprawdziłem przed wyjściem. | ukończ zlecenie, potem lista zleceń | `game/assets/audio/lines/pl/job.t43_12_08_henryks_bench.after.2.ogg` |

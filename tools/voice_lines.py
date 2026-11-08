@@ -12,6 +12,8 @@ Subcommands
   python3 tools/voice_lines.py manifest                  # contrib/voice/tts_inputs.json: exact tagged TTS input per file
   python3 tools/voice_lines.py after-manifest            # contrib/voice/tts_inputs_after.json: TTS input for the V04
                                                          #   "day after" lines (`<job_id>.after.N`), NOT generated yet
+  python3 tools/voice_lines.py wrong-open-manifest       # contrib/voice/tts_inputs_wrong_open.json (D-85 penalty scene)
+  python3 tools/voice_lines.py missing [--lang ...]      # voiced keys (line/after/wrong_open) without a clip
   python3 tools/voice_lines.py synth  [--jobs ...] [--lang ...]           # call the API directly (needs ELEVENLABS_API_KEY)
   python3 tools/voice_lines.py finish DIR                # raw PCM/WAV in DIR (<lang>/<key>.pcm) -> normalised .ogg + .import
   python3 tools/voice_lines.py qa [--lang pl,en] [--only .after.] [OUT.json]   # duration/loudness/ASR WER (faster-whisper)
@@ -58,6 +60,7 @@ SEED_OVERRIDES = {
     ('job.t43_11_03_tool_exchange.after.1', 'pl'): 101,
     ('job.t43_12_01_letters_archive.after.1', 'pl'): 101,
     ('job.t43_10_06_shared_room_entry.after.1', 'es'): 101,
+    ('job.wrong_floor.wrong_open.3', 'pl'): 101,            # D-85: default seed read "brzwi"
 }
 
 # Model per (key, lang) where eleven_v4_turbo kept failing the ASR check and the fallback eleven_v4 read better
@@ -169,17 +172,42 @@ def read_csv():
     return {r[0]: dict(zip(hdr[1:], r[1:])) for r in rows[1:] if r}
 
 
+KINDS = ('line', 'after', 'wrong_open')   # every key family the game plays through a voice player
+
+
+def _speakers(d, kind):
+    if kind == 'line':
+        return d.get('lines', [])
+    if kind == 'after':
+        return d.get('after', [])
+    return (d.get('wrong_open') or {}).get('lines', [])   # D-85: wrong_floor "foreign door" scene (DayAfter.show_scene)
+
+
 def inventory(kind='line'):
-    """kind 'line': arrival dialogue (`lines`, `<id>.line.N`); 'after': V04 day-after scene (`after`, `<id>.after.N`)."""
+    """kind 'line': arrival dialogue (`lines`, `<id>.line.N`); 'after': V04 day-after scene (`after`, `<id>.after.N`);
+    'wrong_open': D-85 penalty scene (`wrong_open.lines`, `<id>.wrong_open.N`)."""
     rows = read_csv()
     out = []
-    field = 'lines' if kind == 'line' else 'after'
     for f in sorted(glob.glob(str(GAME / 'data/jobs/*.json'))):
         d = json.load(open(f, encoding='utf-8'))
-        for i, sp in enumerate(d.get(field, [])):
+        for i, sp in enumerate(_speakers(d, kind)):
             key = f"{d['id']}.{kind}.{i + 1}"
             out.append({'job': d['id'], 'key': key, 'speaker': sp, 'text': rows[key]})
     return out
+
+
+def missing(langs=LANGS):
+    """Voiced keys (every KIND) without a clip in game/assets/audio/lines/<lang>/; prints them and returns the list."""
+    res = []
+    for kind in KINDS:
+        for l in inventory(kind):
+            for lang in langs:
+                if not (OUT / lang / f"{l['key']}.ogg").exists():
+                    res.append((kind, lang, l['key'], l['speaker']))
+    for r in res:
+        print(*r)
+    print(len(res), 'clips missing')
+    return res
 
 
 def tts_text(key, lang, text, tags=None):
@@ -426,9 +454,12 @@ def main():
         MANIFEST.write_text(json.dumps(man,
             ensure_ascii=False, indent=1, sort_keys=True) + '\n', encoding='utf-8')
         print(MANIFEST, len(reqs))
-    elif a.cmd == 'after-manifest':
-        reqs = tts_payload(None, langs, kind='after')
-        out = ROOT / 'contrib/voice/tts_inputs_after.json'
+    elif a.cmd == 'missing':
+        missing(langs)
+    elif a.cmd in ('after-manifest', 'wrong-open-manifest'):
+        kind = 'after' if a.cmd == 'after-manifest' else 'wrong_open'
+        reqs = tts_payload(None, langs, kind=kind)
+        out = ROOT / f'contrib/voice/tts_inputs_{kind}.json'
         out.write_text(json.dumps({f"{r['lang']}/{r['key']}.ogg": {k: r[k] for k in (
             'speaker', 'voice_id', 'model_id', 'voice_settings', 'seed', 'text', 'subtitle', 'todo') if k in r}
             for r in reqs}, ensure_ascii=False, indent=1, sort_keys=True) + '\n', encoding='utf-8')

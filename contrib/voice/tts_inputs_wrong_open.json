@@ -1,0 +1,212 @@
+{
+ "de/job.wrong_floor.wrong_open.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1044018,
+  "speaker": "teresa",
+  "subtitle": "Was haben Sie mit meiner Tür gemacht? Ich wohne hier!",
+  "text": "[exasperated] Was haben Sie mit meiner Tür gemacht? Ich wohne hier!",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.wrong_floor.wrong_open.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3907155,
+  "speaker": "locksmith",
+  "subtitle": "Verzeihen Sie bitte. Herr Kazimierz wohnt eine Etage höher. Ich hätte nach der Nummer fragen sollen.",
+  "text": "[sheepish] Verzeihen Sie bitte. Herr Kazimierz wohnt eine Etage höher. Ich hätte nach der Nummer fragen sollen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.wrong_floor.wrong_open.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3686143,
+  "speaker": "teresa",
+  "subtitle": "Sie hätten prüfen müssen, wessen Tür das ist. Dafür sind Sie doch da.",
+  "text": "[firmly] Sie hätten prüfen müssen, wessen Tür das ist. Dafür sind Sie doch da.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.wrong_floor.wrong_open.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1044018,
+  "speaker": "teresa",
+  "subtitle": "What have you done to my door? I live here!",
+  "text": "[exasperated] What have you done to my door? I live here!",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.wrong_floor.wrong_open.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3907155,
+  "speaker": "locksmith",
+  "subtitle": "I'm so sorry, madam. Mr Kazimierz lives one floor up. I should have asked for the number.",
+  "text": "[sheepish] I'm so sorry, madam. Mr Kazimierz lives one floor up. I should have asked for the number.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.wrong_floor.wrong_open.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3686143,
+  "speaker": "teresa",
+  "subtitle": "You were supposed to check whose door it is. That's your job.",
+  "text": "[firmly] You were supposed to check whose door it is. That's your job.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.wrong_floor.wrong_open.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1044018,
+  "speaker": "teresa",
+  "subtitle": "¿Qué le ha hecho a mi puerta? ¡Yo vivo aquí!",
+  "text": "[exasperated] ¿Qué le ha hecho a mi puerta? ¡Yo vivo aquí!",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.wrong_floor.wrong_open.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3907155,
+  "speaker": "locksmith",
+  "subtitle": "Lo siento mucho, señora. El señor Kazimierz vive un piso más arriba. Debería haber preguntado el número.",
+  "text": "[sheepish] Lo siento mucho, señora. El señor Kazimierz vive un piso más arriba. Debería haber preguntado el número.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.wrong_floor.wrong_open.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3686143,
+  "speaker": "teresa",
+  "subtitle": "Usted tenía que comprobar de quién es la puerta. Para eso está.",
+  "text": "[firmly] Usted tenía que comprobar de quién es la puerta. Para eso está.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.wrong_floor.wrong_open.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1044018,
+  "speaker": "teresa",
+  "subtitle": "Qu'avez-vous fait à ma porte ? J'habite ici !",
+  "text": "[exasperated] Qu'avez-vous fait à ma porte ? J'habite ici !",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.wrong_floor.wrong_open.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3907155,
+  "speaker": "locksmith",
+  "subtitle": "Je suis vraiment désolé, madame. Monsieur Kazimierz habite à l'étage au-dessus. J'aurais dû demander le numéro.",
+  "text": "[sheepish] Je suis vraiment désolé, madame. Monsieur Kazimierz habite à l'étage au-dessus. J'aurais dû demander le numéro.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.wrong_floor.wrong_open.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3686143,
+  "speaker": "teresa",
+  "subtitle": "Vous deviez vérifier à qui est cette porte. C'est votre métier.",
+  "text": "[firmly] Vous deviez vérifier à qui est cette porte. C'est votre métier.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.wrong_floor.wrong_open.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1044018,
+  "speaker": "teresa",
+  "subtitle": "Co pan zrobił z moimi drzwiami? Ja tu mieszkam!",
+  "text": "[exasperated] Co pan zrobił z moimi drzwiami? Ja tu mieszkam!",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.wrong_floor.wrong_open.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3907155,
+  "speaker": "locksmith",
+  "subtitle": "Bardzo panią przepraszam. Pan Kazimierz mieszka piętro wyżej. Powinienem był zapytać o numer.",
+  "text": "[sheepish] Bardzo panią przepraszam. Pan Kazimierz mieszka piętro wyżej. Powinienem był zapytać o numer.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.wrong_floor.wrong_open.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 101,
+  "speaker": "teresa",
+  "subtitle": "Miał pan sprawdzić, czyje to drzwi. Od tego pan jest.",
+  "text": "[firmly] Miał pan sprawdzić, czyje to drzwi. Od tego pan jest.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ }
+}

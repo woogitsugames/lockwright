@@ -1,0 +1,161 @@
+{
+ "wer": {
+  "pl": 0.0625,
+  "en": 0.0,
+  "de": 0.0513,
+  "fr": 0.1111,
+  "es": 0.0769
+ },
+ "files": [
+  {
+   "file": "pl/job.wrong_floor.wrong_open.1.ogg",
+   "dur": 3.71,
+   "lufs": -17.3,
+   "lead_ms": 50,
+   "trail_ms": 56,
+   "ref": "Co pan zrobił z moimi drzwiami? Ja tu mieszkam!",
+   "asr": "Co Pan zrobił z moimi drzwiami? Ja tu mieszkam!",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.wrong_floor.wrong_open.2.ogg",
+   "dur": 6.15,
+   "lufs": -18.0,
+   "lead_ms": 47,
+   "trail_ms": 40,
+   "ref": "Bardzo panią przepraszam. Pan Kazimierz mieszka piętro wyżej. Powinienem był zapytać o numer.",
+   "asr": "Bardzo panią przepraszam. Pan Kazimierz mieszka piętro wyżej. Powinienem był zapytać o numer.",
+   "wer": 0.0
+  },
+  {
+   "file": "pl/job.wrong_floor.wrong_open.3.ogg",
+   "dur": 3.86,
+   "lufs": -18.2,
+   "lead_ms": 30,
+   "trail_ms": 34,
+   "ref": "Miał pan sprawdzić, czyje to drzwi. Od tego pan jest.",
+   "asr": "Miał Pan sprawdzić, czy je to drzwi. Od tego Pan jest.",
+   "wer": 0.2
+  },
+  {
+   "file": "en/job.wrong_floor.wrong_open.1.ogg",
+   "dur": 3.37,
+   "lufs": -18.0,
+   "lead_ms": 56,
+   "trail_ms": 57,
+   "ref": "What have you done to my door? I live here!",
+   "asr": "What have you done to my door? I live here!",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.wrong_floor.wrong_open.2.ogg",
+   "dur": 5.8,
+   "lufs": -18.1,
+   "lead_ms": 59,
+   "trail_ms": 14,
+   "ref": "I'm so sorry, madam. Mr Kazimierz lives one floor up. I should have asked for the number.",
+   "asr": "I'm so sorry, madam. Mr. Kazimierz lives one floor up. I should have asked for the number.",
+   "wer": 0.0
+  },
+  {
+   "file": "en/job.wrong_floor.wrong_open.3.ogg",
+   "dur": 3.7,
+   "lufs": -18.0,
+   "lead_ms": 49,
+   "trail_ms": 46,
+   "ref": "You were supposed to check whose door it is. That's your job.",
+   "asr": "You were supposed to check whose door it is. That's your job.",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.wrong_floor.wrong_open.1.ogg",
+   "dur": 3.61,
+   "lufs": -18.1,
+   "lead_ms": 56,
+   "trail_ms": 61,
+   "ref": "Was haben Sie mit meiner Tür gemacht? Ich wohne hier!",
+   "asr": "Was haben Sie mit meiner Tür gemacht? Ich wohne hier!",
+   "wer": 0.0
+  },
+  {
+   "file": "de/job.wrong_floor.wrong_open.2.ogg",
+   "dur": 6.5,
+   "lufs": -18.0,
+   "lead_ms": 47,
+   "trail_ms": 49,
+   "ref": "Verzeihen Sie bitte. Herr Kazimierz wohnt eine Etage höher. Ich hätte nach der Nummer fragen sollen.",
+   "asr": "Verzeihen Sie bitte. Herr Kasimisch wohnt eine Etage höher. Ich hätte nach der Nummer fragen sollen.",
+   "wer": 0.062
+  },
+  {
+   "file": "de/job.wrong_floor.wrong_open.3.ogg",
+   "dur": 4.32,
+   "lufs": -18.1,
+   "lead_ms": 52,
+   "trail_ms": 35,
+   "ref": "Sie hätten prüfen müssen, wessen Tür das ist. Dafür sind Sie doch da.",
+   "asr": "Ihr hätten prüfen müssen, wessen Tür das ist. Dafür sind sie doch da!",
+   "wer": 0.077
+  },
+  {
+   "file": "fr/job.wrong_floor.wrong_open.1.ogg",
+   "dur": 2.76,
+   "lufs": -18.7,
+   "lead_ms": 50,
+   "trail_ms": 42,
+   "ref": "Qu'avez-vous fait à ma porte ? J'habite ici !",
+   "asr": "Qu'avez-vous fait à n'importe ? J'avais ici !",
+   "wer": 0.375
+  },
+  {
+   "file": "fr/job.wrong_floor.wrong_open.2.ogg",
+   "dur": 6.03,
+   "lufs": -18.1,
+   "lead_ms": 59,
+   "trail_ms": 38,
+   "ref": "Je suis vraiment désolé, madame. Monsieur Kazimierz habite à l'étage au-dessus. J'aurais dû demander le numéro.",
+   "asr": "Je suis vraiment désolé, madame. Monsieur Casignac habite à l'étage au-dessus. J'aurais dû demander le numéro.",
+   "wer": 0.059
+  },
+  {
+   "file": "fr/job.wrong_floor.wrong_open.3.ogg",
+   "dur": 3.47,
+   "lufs": -18.1,
+   "lead_ms": 54,
+   "trail_ms": 43,
+   "ref": "Vous deviez vérifier à qui est cette porte. C'est votre métier.",
+   "asr": "Vous deviez vérifier à qui est cette porte. C'est votre métier.",
+   "wer": 0.0
+  },
+  {
+   "file": "es/job.wrong_floor.wrong_open.1.ogg",
+   "dur": 2.85,
+   "lufs": -18.1,
+   "lead_ms": 41,
+   "trail_ms": 50,
+   "ref": "¿Qué le ha hecho a mi puerta? ¡Yo vivo aquí!",
+   "asr": "¿Qué le ha hecho mi puerta? Yo vivo aquí.",
+   "wer": 0.1
+  },
+  {
+   "file": "es/job.wrong_floor.wrong_open.2.ogg",
+   "dur": 6.86,
+   "lufs": -17.9,
+   "lead_ms": 32,
+   "trail_ms": 36,
+   "ref": "Lo siento mucho, señora. El señor Kazimierz vive un piso más arriba. Debería haber preguntado el número.",
+   "asr": "Lo siento mucho, señora. El señor Cassini es vive un piso más arriba. Debería haber preguntado el número.",
+   "wer": 0.118
+  },
+  {
+   "file": "es/job.wrong_floor.wrong_open.3.ogg",
+   "dur": 4.09,
+   "lufs": -18.3,
+   "lead_ms": 57,
+   "trail_ms": 56,
+   "ref": "Usted tenía que comprobar de quién es la puerta. Para eso está.",
+   "asr": "Usted tenía que comprobar de quién es la puerta. ¿Para eso está?",
+   "wer": 0.0
+  }
+ ]
+}

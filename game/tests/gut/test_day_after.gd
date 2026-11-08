@@ -82,6 +82,27 @@ func test_every_after_line_has_audio_in_pl_and_en() -> void:
 	assert_gt(lines, 90)
 
 
+
+## D-85: the wrong_floor "foreign door" scene (`<job_id>.wrong_open.N`, played by DayAfter.show_scene) is voiced too.
+func test_every_wrong_open_line_has_audio_in_pl_and_en() -> void:
+	var lines := 0
+	for f in DirAccess.get_files_at("res://data/jobs"):
+		if not f.ends_with(".json"):
+			continue
+		var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/" + f))
+		var spec: Variant = j.get("wrong_open", {})
+		if typeof(spec) != TYPE_DICTIONARY:
+			continue
+		for i in (spec as Dictionary).get("lines", []).size():
+			var key := "%s.wrong_open.%d" % [j["id"], i + 1]
+			for lang in ["pl", "en"]:
+				var path := Sfx.line_clip_path(key, lang)
+				assert_ne(path, "", "%s: %s clip" % [key, lang])
+				if path != "":
+					assert_not_null(load(path) as AudioStreamOggVorbis, "%s: %s is Ogg Vorbis" % [key, lang])
+			lines += 1
+	assert_gte(lines, 3)
+
 func test_scene_plays_the_line_clip() -> void:
 	var lang := Settings.language()
 	if not lang in ["pl", "en"]:

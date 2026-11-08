@@ -131,3 +131,11 @@ Sprawdzono 91 kwestii `*.after.N` w pięciu językach (455 wejść TTS): gramaty
 | `job.pizzeria_pays_pizza.after.1` | es | Hoy todo estaba listo antes de abrir. La pizza sigue en pie. | Hoy todo estaba listo antes de abrir. La oferta de la pizza sigue en pie. | jak wyżej |
 | `job.t43_10_03_exhibit_clock.after.1` | fr | L'essai sur vingt-quatre heures est terminé. L'horloge marche, et le procès-verbal aussi. | L'essai sur vingt-quatre heures est terminé. L'horloge marche, et le procès-verbal est en règle. | „le procès-verbal marche” nienaturalne; EN „paperwork checks out” |
 | `job.t43_11_07_wrong_delivery.after.1` | de | Der Empfänger hat sich gefreut. Das Paket auch, so leicht wie die Sackkarre war. | Der Empfänger hat sich gefreut. Das Paket auch, nach der leichten Sackkarre zu urteilen. | składnia „so leicht wie … war” niejasna; „nach … zu urteilen” jak PL „sądząc po” |
+
+## Scena „cudze drzwi” w wrong_floor (D-85, 2026-11-08, przed nagraniem)
+
+Sprawdzono 3 kwestie `job.wrong_floor.wrong_open.1–3` (pani Teresa, ślusarz, pani Teresa) w pięciu językach: formy pan/pani, Monsieur/señor, ton (oburzenie, przeprosiny, stanowczość). Jedna poprawka; tagi `[exasperated]`, `[sheepish]`, `[firmly]` w `tags.json`.
+
+| klucz | kol. | było | jest | powód |
+|---|---|---|---|---|
+| `job.wrong_floor.wrong_open.2` | fr | … M. Kazimierz habite à l'étage au-dessus. … | … Monsieur Kazimierz habite à l'étage au-dessus. … | skrót „M.” lektor czyta jak literę; pełne „Monsieur” jak w pozostałych kwestiach FR |
