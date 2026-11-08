@@ -260,3 +260,13 @@ Own Blender 4.2.9 LTS / Cycles OptiX renders on RTX 5070, existing original phot
 | `game/assets/arrival/wrong_floor/*/seq/f_*.webp` | przejazd po schodach w grze (12 fps, 3 s); tymczasowo kafle 178×318 z `wrong_floor_<pora>_final_contact.png` (numer klatki zamalowany dyfuzją) — po eksporcie pełnych klatek GPU (`--master`) 540×960 | własne rendery GPU; `art/tools/arrival_export.py`; WebP q72, import lossy 0,8 | własne projektu |
 | `game/assets/arrival/wrong_floor/*/plate_*.webp`, `game/assets/arrival/wrong_floor/*/figure_*.webp` (Kazimierz: night/evening/day; Teresa: night) | stop-klatka jako dwie warstwy 1080×1920: płyta z cieniem postaci + sama postać (RGBA) do oddechu w grze | `arrival_composite.py --layers-out` przez `art/tools/arrival_export.py`; płyty GPU + wycinki G25 (Kazimierz) i G23 (Teresa); WebP q80/q85, import lossy 0,8, limit 1920 | własne + generowane AI |
 | `docs/handoff/device-tests/fixes/arrival_scene/*.jpg` | zrzuty ekranu przyjazdu ze scenką (Godot, xvfb + opengl3) | `game/tests/shot_scene.gd --job=job.wrong_floor` | własne projektu |
+
+## Scenki przyjazdu dla wczesnych zleceń (D-84) — 2026-11-08
+
+| Plik | Co to | Źródło / narzędzie | Licencja |
+|---|---|---|---|
+| `art/blender/arrival_jobs.json` | dane scenek per zlecenie (drzwi, tabliczka, numer, lamperia, schody, pora, rekwizyty, kamera) | własne (Claude) | własne projektu |
+| `art/renders/arrival/{grandma_broth_day,cat_bathroom_evening,refuse_ex_partner_night,newlyweds_4am_night,refuse_rush_bribe_night}_hold.{png,json}` + `_hold_depth.png` | stop-klatki GPU 1080×1920 (pusty podest z rekwizytami), kotwice, głębia | `arrival_scene.py --job <id> --mode still --device GPU --still-res 1080x1920 --still-spp 512 --hair 1` (OIDN); materiały zdjęciowe `art/textures/photo/` (m.in. `leather_chocolate` na obite drzwi) | własne projektu |
+| `art/renders/arrival/<te same>_final_contact.png` | arkusze 36 klatek przejazdu (128 spp, włosie wycieraczki); pełne klatki tylko lokalnie w `build/local-session/arrival-master/` | `arrival_scene.py --mode seq --device GPU --res 1080x1920 --spp 128 --hair 1`, `arrival_composite.py --contact` | własne projektu |
+| `art/renders/arrival/arrival_early_jobs_board.jpg` | zestawienie pięciu stop-klatek z pilotem `wrong_floor` | Pillow | własne projektu |
+| `game/assets/arrival/{grandma_broth,cat_bathroom,refuse_ex_partner,newlyweds_4am,refuse_rush_bribe}/<pora>/seq/f_*.webp`, `plate.webp` | przejazd 540×960 (36 kl., 12 fps, WebP q72) i stop-klatka 1080×1920 (WebP q80); import stratny 0,8 | `art/tools/arrival_export.py --job <id> --master build/local-session/arrival-master` | własne projektu |

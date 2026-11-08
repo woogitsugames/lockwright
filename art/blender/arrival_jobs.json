@@ -1,0 +1,90 @@
+{
+  "schema": "lockwright.arrival_jobs/1",
+  "note": "Per-job dressing of the D-58 arrival scene (art/blender/arrival_scene.py --job <id>). Missing keys take the wrong_floor defaults in arrival_scene.py (JOB_DEFAULTS). Colours are linear RGB. camera: end = [x, y, z] mm of the hold camera, end_yaw/end_pitch deg, end_shift = lens shift at the hold, start = [x, y, yaw, pitch] of the first frame (the climb keys in between follow the stair). props: see PROPS in arrival_scene.py. No brands, no lock brand names, no readable text.",
+  "jobs": {
+    "wrong_floor": {
+      "times": ["night", "evening", "day"],
+      "number": "19",
+      "door": {"style": "oak", "state": "closed", "chain": true, "ajar_deg": 38},
+      "plate": "brass",
+      "wreath": true,
+      "stair": "wood",
+      "flyer": true,
+      "mailbox": {},
+      "props": [],
+      "slots": {
+        "kazimierz": {"feet": [-690, -470, 0], "height": 1730, "speaker": "kazimierz", "state": "closed"},
+        "teresa": {"feet": [560, 720, 0], "height": 1590, "speaker": "teresa", "state": "ajar"}
+      }
+    },
+    "grandma_broth": {
+      "times": ["day"],
+      "story": "Mrs Halina locked out in slippers, broth on the stove; neighbour Zosia shut the gas at the riser valve on the landing (lever across the pipe), the letter in her mailbox is part of the check.",
+      "number": "7",
+      "door": {"style": "painted", "paint": [0.20, 0.085, 0.040], "state": "closed"},
+      "plate": "enamel",
+      "stair": "wood",
+      "lamperia": [0.16, 0.055, 0.035],
+      "court_seed": 31,
+      "flyer": false,
+      "mailbox": {"letter_out": true},
+      "props": [{"type": "gas_riser", "x": -880, "valve_z": 1180, "closed": true}],
+      "camera": {"end": [-60, -2540, 1580], "end_yaw": 0.5, "end_shift": [0.0, -0.13]}
+    },
+    "cat_bathroom": {
+      "times": ["evening"],
+      "story": "Marta is at home and has opened the door for us; her cat is shut in the bathroom. Through the open door: his bowl and a toy mouse on the runner, claw marks low on the door.",
+      "number": "23",
+      "door": {"style": "painted", "paint": [0.55, 0.53, 0.47], "state": "ajar", "chain": false, "ajar_deg": 62},
+      "plate": "enamel",
+      "stair": "terrazzo",
+      "lamperia": [0.10, 0.14, 0.17],
+      "court_seed": 44,
+      "flyer": false,
+      "mailbox": {},
+      "props": [{"type": "cat_bowl", "at": [250, 640]}, {"type": "toy_mouse", "at": [40, 470, 28]}],
+      "camera": {"end": [-40, -2500, 1560], "end_yaw": 1.0, "end_shift": [0.0, -0.13]}
+    },
+    "refuse_ex_partner": {
+      "times": ["night"],
+      "story": "A man wants into his ex-partner's flat. Only her name on the mailbox; a second, brand-new deadbolt above the old lock and fresh drill dust on the floor under it say she changed things recently.",
+      "number": "4",
+      "door": {"style": "padded", "leather": "leather_chocolate", "state": "closed", "new_deadbolt": true},
+      "plate": "brass",
+      "stair": "terrazzo",
+      "lamperia": [0.07, 0.085, 0.13],
+      "court_seed": 52,
+      "flyer": false,
+      "mailbox": {},
+      "props": [{"type": "drill_dust"}],
+      "camera": {"end": [-100, -2560, 1590], "end_yaw": 1.0, "end_shift": [0.0, -0.11]}
+    },
+    "newlyweds_4am": {
+      "times": ["night"],
+      "story": "4 a.m. after the wedding, keys gone to Kalisz in the maid of honour's bag. The cake box waits on the doormat, rice and rose petals trail up the stairs to the door.",
+      "number": "12",
+      "door": {"style": "oak", "state": "closed"},
+      "plate": "enamel",
+      "stair": "terrazzo",
+      "lamperia": [0.17, 0.12, 0.05],
+      "court_seed": 63,
+      "flyer": false,
+      "mailbox": {},
+      "props": [{"type": "cake_box", "at": [-60, -300]}, {"type": "petals", "n": 70}, {"type": "rice", "n": 900}],
+      "camera": {"end": [-80, -2540, 1570], "end_yaw": 0.8, "end_shift": [0.0, -0.14]}
+    },
+    "refuse_rush_bribe": {
+      "times": ["night"],
+      "story": "1 a.m., a man in a suit wants into his 'sister's' flat while she is abroad. Her mailbox is stuffed, letters and flyers lie on the mat and in the door gap: nobody has been here for weeks.",
+      "number": "8",
+      "door": {"style": "oak", "state": "closed"},
+      "plate": "brass",
+      "stair": "wood",
+      "court_seed": 77,
+      "flyer": true,
+      "mailbox": {"overflow": true},
+      "props": [{"type": "post_pile"}],
+      "camera": {"end": [-20, -2520, 1580], "end_yaw": 0.4, "end_shift": [0.0, -0.14]}
+    }
+  }
+}

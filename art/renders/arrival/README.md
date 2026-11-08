@@ -67,6 +67,30 @@ python3 art/tools/arrival_board.py
   `game/data/arrival_scenes.json`. Bez `--master` przejazd pochodzi z kafli `*_final_contact.png` (tymczasowe, 178×318);
   z `--master build/local-session/arrival-master` z pełnych klatek GPU (540×960). `--shadows` składa z mapami cienia GPU.
 
+## Kolejne zlecenia bez postaci (2026-11-08, D-84)
+
+Pięć wczesnych zleceń dostało scenkę z tego samego zestawu, ubraną danymi z `art/blender/arrival_jobs.json`
+(drzwi, tabliczka, numer, lamperia, schody, pora, rekwizyty, koniec ruchu kamery). Stop-klatka to pusty podest
+(wycinki mają tylko Kazimierz i Teresa); historię opowiadają drzwi i rzeczy pod nimi.
+
+| Zlecenie | Pora | Drzwi / klatka | Rekwizyty (co mówią) |
+|---|---|---|---|
+| `grandma_broth` | dzień | stare, malowane na brąz, emalia nr 7; lamperia bordowa, schody dębowe | żółty pion gazowy z zaworem zakręconym w poprzek (sąsiadka zakręciła gaz), list wystający ze skrzynki („list na panią”) |
+| `cat_bathroom` | wieczór | jasno malowane, uchylone 62° (Marta otworzyła), emalia nr 23; lamperia szaroniebieska, lastryko | miska z karmą i filcowa myszka na chodniku w przedpokoju |
+| `refuse_ex_partner` | noc | obite skajem (wałek, ćwieki, sznurek w romby), mosiądz nr 4; lastryko | drugi, nowiutki zamek nad starym i pył z wiercenia pod nim — ona niedawno coś zmieniła |
+| `newlyweds_4am` | noc | dąb, emalia nr 12; lamperia ochrowa, lastryko | pudło z tortem na wycieraczce, płatki róż i ryż od schodów do drzwi |
+| `refuse_rush_bribe` | noc (zlecenie: „1:00”) | dąb, mosiądz nr 8; schody dębowe | zapchana skrzynka, listy i ulotki na wycieraczce, jeden list wsunięty pod drzwi, ulotki w szparze — od tygodni nikogo nie ma |
+
+```bash
+M=C:/Users/matma/lockwright/build/local-session/arrival-master   # mastery tylko lokalnie
+blender -b -P art/blender/arrival_scene.py -- --job grandma_broth --mode still --device GPU --still-res 1080x1920 --still-spp 512 --hair 1 --out-dir $M
+blender -b -P art/blender/arrival_scene.py -- --job grandma_broth --mode seq --device GPU --res 1080x1920 --spp 128 --hair 1 --out-dir $M
+python art/tools/arrival_export.py --job grandma_broth --master $M     # albo --job all
+```
+`--time` domyślnie bierze pierwszą porę z danych; podgląd: `--still-res 720x1280 --still-spp 64` (ok. 10 s na GPU).
+Pliki tutaj: `<job>_<pora>_hold.{png,json}` + `_hold_depth.png` (finał GPU 512 spp), `<job>_<pora>_final_contact.png`
+(36 klatek 128 spp), `arrival_early_jobs_board.jpg` (pięć stop-klatek obok pilota).
+
 ## Czego potrzebuje gra
 
 1. **Sekwencja** `<job>_<time>_seq/f_####.png` (12 fps, 36 klatek) — odtwarzana raz jako flipbook albo po

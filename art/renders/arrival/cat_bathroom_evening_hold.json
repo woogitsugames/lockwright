@@ -1,0 +1,127 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "cat_bathroom",
+ "time": "evening",
+ "door": "ajar",
+ "fps": 12,
+ "frames": 36,
+ "note": "quads: [tl,tr,br,bl] normalised 0..1, origin top-left (D-41). figures: feet line and height in px of this image.",
+ "anchors": {
+  "namecard": [
+   [
+    0.51387,
+    0.38624
+   ],
+   [
+    0.55806,
+    0.38625
+   ],
+   [
+    0.55806,
+    0.39294
+   ],
+   [
+    0.51387,
+    0.39293
+   ]
+  ],
+  "mailbox_card": [
+   [
+    0.81363,
+    0.49531
+   ],
+   [
+    0.85725,
+    0.4954
+   ],
+   [
+    0.85725,
+    0.50405
+   ],
+   [
+    0.81363,
+    0.50395
+   ]
+  ],
+  "number_plate": [
+   [
+    0.50876,
+    0.24441
+   ],
+   [
+    0.5632,
+    0.2443
+   ],
+   [
+    0.5632,
+    0.26535
+   ],
+   [
+    0.50876,
+    0.26544
+   ]
+  ],
+  "door": [
+   [
+    0.34793,
+    0.24048
+   ],
+   [
+    0.72511,
+    0.23969
+   ],
+   [
+    0.72511,
+    0.73674
+   ],
+   [
+    0.34793,
+    0.73452
+   ]
+  ],
+  "cylinder": [
+   [
+    0.67423,
+    0.47855
+   ],
+   [
+    0.71726,
+    0.47863
+   ],
+   [
+    0.71726,
+    0.52498
+   ],
+   [
+    0.67423,
+    0.52487
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   -40.0,
+   -2500.0,
+   1560.0
+  ],
+  "lens_mm": 22.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   -0.12999999523162842
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   1.0
+  ]
+ },
+ "depth_png": {
+  "file": "cat_bathroom_evening_hold_depth.png",
+  "depth_max_mm": 20000.0,
+  "encoding": "planar camera depth = value/65535*depth_max_mm"
+ }
+}

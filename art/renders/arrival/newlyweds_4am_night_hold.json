@@ -1,0 +1,127 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "newlyweds_4am",
+ "time": "night",
+ "door": "closed",
+ "fps": 12,
+ "frames": 36,
+ "note": "quads: [tl,tr,br,bl] normalised 0..1, origin top-left (D-41). figures: feet line and height in px of this image.",
+ "anchors": {
+  "namecard": [
+   [
+    0.52688,
+    0.37835
+   ],
+   [
+    0.5704,
+    0.37836
+   ],
+   [
+    0.5704,
+    0.38494
+   ],
+   [
+    0.52688,
+    0.38493
+   ]
+  ],
+  "mailbox_card": [
+   [
+    0.82255,
+    0.48567
+   ],
+   [
+    0.86538,
+    0.48573
+   ],
+   [
+    0.86538,
+    0.49423
+   ],
+   [
+    0.82255,
+    0.49416
+   ]
+  ],
+  "number_plate": [
+   [
+    0.52187,
+    0.23867
+   ],
+   [
+    0.57547,
+    0.23859
+   ],
+   [
+    0.57547,
+    0.25932
+   ],
+   [
+    0.52187,
+    0.25938
+   ]
+  ],
+  "door": [
+   [
+    0.36334,
+    0.23472
+   ],
+   [
+    0.73479,
+    0.23412
+   ],
+   [
+    0.73479,
+    0.72326
+   ],
+   [
+    0.36334,
+    0.72153
+   ]
+  ],
+  "cylinder": [
+   [
+    0.68485,
+    0.46921
+   ],
+   [
+    0.72718,
+    0.46927
+   ],
+   [
+    0.72718,
+    0.51487
+   ],
+   [
+    0.68485,
+    0.51479
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   -80.0,
+   -2540.0,
+   1570.0
+  ],
+  "lens_mm": 22.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   -0.14000000059604645
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   0.8
+  ]
+ },
+ "depth_png": {
+  "file": "newlyweds_4am_night_hold_depth.png",
+  "depth_max_mm": 20000.0,
+  "encoding": "planar camera depth = value/65535*depth_max_mm"
+ }
+}

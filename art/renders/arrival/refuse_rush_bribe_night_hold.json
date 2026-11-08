@@ -1,0 +1,127 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "refuse_rush_bribe",
+ "time": "night",
+ "door": "closed",
+ "fps": 12,
+ "frames": 36,
+ "note": "quads: [tl,tr,br,bl] normalised 0..1, origin top-left (D-41). figures: feet line and height in px of this image.",
+ "anchors": {
+  "namecard": [
+   [
+    0.49411,
+    0.38085
+   ],
+   [
+    0.53792,
+    0.38086
+   ],
+   [
+    0.53792,
+    0.38749
+   ],
+   [
+    0.49411,
+    0.38749
+   ]
+  ],
+  "mailbox_card": [
+   [
+    0.78997,
+    0.48893
+   ],
+   [
+    0.83296,
+    0.48897
+   ],
+   [
+    0.83296,
+    0.49751
+   ],
+   [
+    0.78997,
+    0.49748
+   ]
+  ],
+  "number_plate": [
+   [
+    0.49241,
+    0.24179
+   ],
+   [
+    0.53963,
+    0.24176
+   ],
+   [
+    0.53963,
+    0.25931
+   ],
+   [
+    0.49241,
+    0.25934
+   ]
+  ],
+  "door": [
+   [
+    0.32924,
+    0.23602
+   ],
+   [
+    0.70323,
+    0.23572
+   ],
+   [
+    0.70323,
+    0.72785
+   ],
+   [
+    0.32924,
+    0.72697
+   ]
+  ],
+  "cylinder": [
+   [
+    0.65287,
+    0.4723
+   ],
+   [
+    0.6954,
+    0.47233
+   ],
+   [
+    0.6954,
+    0.51822
+   ],
+   [
+    0.65287,
+    0.51818
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   -20.0,
+   -2520.0,
+   1580.0
+  ],
+  "lens_mm": 22.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   -0.14000000059604645
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   0.4
+  ]
+ },
+ "depth_png": {
+  "file": "refuse_rush_bribe_night_hold_depth.png",
+  "depth_max_mm": 20000.0,
+  "encoding": "planar camera depth = value/65535*depth_max_mm"
+ }
+}
