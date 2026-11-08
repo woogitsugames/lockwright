@@ -7,12 +7,12 @@
   ],
   "camera": {
     "position": [
-      98.81238,
-      -51.44272,
-      101.06825
+      109.8522,
+      -60.71323,
+      122.92479
     ],
     "target": [
-      1.0,
+      -6.3,
       -2.0,
       -15.5
     ],
@@ -116,14 +116,14 @@
       "name": "sheen",
       "type": "AREA",
       "position": [
-        -183.36337,
-        104.36122,
-        151.94281
+        -176.08415,
+        105.24438,
+        159.74352
       ],
       "direction": [
-        0.70524,
-        -0.40139,
-        -0.5844
+        0.67725,
+        -0.40479,
+        -0.6144
       ],
       "size": 36.0,
       "energy_w": 9500.0,
@@ -213,12 +213,12 @@
   },
   "timings": {
     "gpu_backend": "OPTIX",
-    "plate_render_s": 7.79,
-    "mesh_prep_uv_s": 2.11,
-    "matcap_render_s": 3.55,
-    "bake_textures_s": 43.66,
-    "export_glb_s": 1.22,
-    "total_s": 58.34
+    "plate_render_s": 10.36,
+    "mesh_prep_uv_s": 1.77,
+    "matcap_render_s": 5.85,
+    "bake_textures_s": 56.47,
+    "export_glb_s": 0.74,
+    "total_s": 75.21
   },
   "pivot": [
     -22.0,

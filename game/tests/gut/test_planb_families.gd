@@ -383,3 +383,35 @@ func test_one_pin_tutorial_text_has_no_sideways() -> void:
 	assert_eq(c.text_key(), &"tutorial.s1_pick_one", "S1 has one pin: no \"sideways to choose\"")
 	c.update({"elements": [{"state": &"free"}, {"state": &"free"}, {"state": &"free"}]}, {}, [], false, false, 0.01)
 	assert_eq(c.text_key(), &"tutorial.s1_pick")
+
+
+## N-87: the five-lever pack was rendered with its pivot (x = -22 mm) and the levers' tails outside the
+## frame. Every leaf, the pivot post and its spacers are now inside the shown section, portrait and
+## landscape, with a margin (projected through the camera from scene.json).
+func test_lever_detector_whole_pack_and_pivot_in_frame() -> void:
+	if not JobRun.planb_ready(&"lever_detector"):
+		pending("lever_detector waits for a 5-lever plan-B model")
+		return
+	JobRun.start(_jobs(&"lever_detector")[0])
+	var re := RegEx.create_from_string("^(lever[0-9]|post|post_head|spacer[0-9])$")
+	for size in [Vector2i(412, 915), Vector2i(360, 800), Vector2i(915, 412), Vector2i(892, 412)]:
+		var scene: Node = await _open_scene(&"lever_detector", size)
+		var view: LockLeverView = scene.view
+		assert_eq(view.lever_count(), 5, "five leaves in the model")
+		var found := 0
+		var pivot: Vector2 = view.mm_to_screen(view.PIVOT)
+		var sec: Rect2 = view.section_rect
+		var margin := sec.size.x * 0.02
+		assert_true(sec.grow(-margin).has_point(pivot), "%s: pivot %s inside section %s" % [size, pivot, sec])
+		for n in view.viewport.find_children("*", "VisualInstance3D", true, false):
+			var vi := n as VisualInstance3D
+			if re.search(String(vi.name)) == null:
+				continue
+			found += 1
+			var bb := vi.global_transform * vi.get_aabb()
+			var r := Rect2(view.mm_to_screen(bb.position), Vector2.ZERO)
+			for k in 8:
+				r = r.expand(view.mm_to_screen(bb.get_endpoint(k)))
+			assert_true(r.position.x >= sec.position.x + margin, "%s: %s left edge %.0f inside section from %.0f" % [size, vi.name, r.position.x, sec.position.x])
+			assert_true(r.end.x <= sec.end.x - margin, "%s: %s right edge %.0f inside section to %.0f" % [size, vi.name, r.end.x, sec.end.x])
+		assert_gte(found, 12, "%s: 5 levers, post, head and spacers found" % size)

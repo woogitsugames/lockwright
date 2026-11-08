@@ -10,11 +10,15 @@ extends LockLiftLayerView
 ##   run band, the whole train turns (each wheel at its own ratio, alternating direction), the pallet
 ##   rocks with each tick and the dial hand advances with hold_progress (= the run). Nothing turns
 ##   that is not driven (DESIGN.md: no dead gears).
+## N-86: the wheels are cut at one module, so rim / pinion radii are the tooth ratios and the train
+## stays in mesh as it turns. The key turns the barrel in ratchet clicks (layers.json wind_step_deg,
+## a whole number of barrel teeth), so the barrel never stands half a tooth off pinion 0.
 
 var _phase := 0.0      # train turn of the barrel, radians
 var _rock := 0.0
 var _wind := 0.0
 var _ratios: Array[float] = []
+var _wind_step := 0.0  # degrees per ratchet click (0: smooth, plates without the key)
 
 
 func _ready() -> void:
@@ -22,6 +26,7 @@ func _ready() -> void:
 	# gear ratios from the plate: wheel i turns (rim before / own pinion) times the one before
 	var r_prev := float(meta.get("barrel_mm", 12.0))
 	var ratio := 1.0
+	_wind_step = float(meta.get("wind_step_deg", 0.0))
 	var radii: Array = meta.get("radii_mm", [])
 	var pins: Array = meta.get("pinions_mm", [])
 	for i in radii.size():
@@ -67,9 +72,15 @@ func _element_xf(slot: int) -> Transform2D:
 	return Transform2D(0.0, d) * _rot_about(turn + _tilt[slot], _centre(slot))
 
 
+## The barrel's turn in degrees: the key's wind in whole ratchet clicks plus the train's run.
+func barrel_turn_deg() -> float:
+	var w := snappedf(_wind, _wind_step) if _wind_step > 0.0 else _wind
+	return w + rad_to_deg(_phase)
+
+
 func _draw_progress_layer() -> void:
 	var b: Array = meta.get("barrel_px", [0.0, 0.0])
-	_draw_layer("barrel", _rot_about(_wind + rad_to_deg(_phase), Vector2(b[0], b[1])), 0.45)
+	_draw_layer("barrel", _rot_about(barrel_turn_deg(), Vector2(b[0], b[1])), 0.45)
 	var p: Array = meta.get("pallet_px", [0.0, 0.0])
 	_draw_layer("pallet", _rot_about(_rock, Vector2(p[0], p[1])), 0.4)
 

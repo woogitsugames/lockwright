@@ -326,6 +326,33 @@ func test_time_lock_train_turns_only_when_running() -> void:
 	assert_gt(view.train_phase(), p0, "running: the whole train turns")
 
 
+## N-86: the train is cut at one module: every rim / pinion ratio the view turns the train with is the
+## tooth ratio of the plate, and the key turns the barrel in whole teeth, so nothing slips out of mesh.
+func test_time_lock_train_stays_in_mesh() -> void:
+	var meta: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://assets/photoreal_families/time_lock/photo/layers.json"))
+	var module := 2.0 * float(meta["barrel_mm"]) / float(meta["barrel_teeth"])
+	var radii: Array = meta["radii_mm"]
+	var pins: Array = meta["pinions_mm"]
+	for i in pins.size():
+		assert_almost_eq(2.0 * float(pins[i]) / module, float(meta["pinion_leaves"][i]), 1e-6, "pinion %d: leaves = 2 r / module" % i)
+	for i in radii.size() - 1:  # the last wheel is the escape wheel (club teeth, no pinion to drive)
+		assert_almost_eq(2.0 * float(radii[i]) / module, float(meta["teeth"][i]), 1e-6, "wheel %d: teeth = 2 r / module" % i)
+	var tooth := 360.0 / float(meta["barrel_teeth"])
+	var step := float(meta["wind_step_deg"])
+	assert_almost_eq(fposmod(step, tooth), 0.0, 1e-6, "a ratchet click is a whole number of barrel teeth")
+	JobRun.start(jobs(&"time_lock")[0])
+	var scene: Node = await _open_scene(&"time_lock", Vector2i(412, 915))
+	scene.set_physics_process(false)
+	var view: LockTimeLockView = scene.view
+	var el := {"state": &"set", "position": 0.5, "window_lo": 0.45, "window_hi": 0.57, "variant": 0}
+	for t in [0.0, 0.13, 0.37, 0.61, 0.9, 1.0]:
+		for i in 40:
+			view.present({"elements": [el, el, el], "tension": t, "hold_progress": 0.0}, {"tension": t}, 1.0 / 60.0)
+		var off := view.barrel_turn_deg() - rad_to_deg(view.train_phase())
+		var r := fposmod(off, tooth)
+		assert_true(r < 1e-3 or tooth - r < 1e-3, "tension %.2f: the barrel stands %.3f deg off a whole tooth" % [t, r])
+
+
 func test_axial_slider_jobs_open_in_both_modes() -> void:
 	await _check_family(&"axial_slider")
 
