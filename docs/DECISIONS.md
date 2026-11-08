@@ -467,3 +467,12 @@ Lockcore się nie zmienia, bo napięcie to tylko wejście, które podaje warstwa
 - **N-97, time_lock — uzasadnienie zamiast zapadki trzymającej:** zasada gry „napięcie = trzymany kciuk” zostaje (lockcore, wszystkie rodziny, tryb „w ciemności”); kciuk to klucz trzymany na sprężynie przy próbie biegu mechanizmu z podniesioną zapadką, tak jak zegarmistrz zasila mechanizm pod kluczem. Puszczenie to więc spuszczenie sprężyny, nie odbicie: bęben cofa się o jeden ząb zapadki co 150 ms (DESIGN: kroki 100–250 ms), przy ograniczeniu ruchu od razu. Zapadka trzymająca nakręcenie wymagałaby zmiany sterowania (zapamiętane napięcie) i modelu w lockcore — do decyzji właściciela, nie w tej sesji.
 - **N-98, trener:** w lekcjach (D-68) krok przechodzi wyłącznie po działaniu gracza: trener dostaje wejście gracza sprzed autopilota H4 i trzymanego napięcia, a zdarzenia z kroku, w którym ruszał autopilot, nie zaliczają warunku. Po pokazie H4 zamek wraca do gracza (bez trzymanego napięcia) i tekst zostaje przy tym samym kroku. Zastępuje „H4: ręka mistrza wykonuje krok, lekcja idzie dalej” dla lekcji; samouczek pin S1–S3 bez zmian (tam H4 nadal robi krok, test A1 liczy otwarcia bez H4).
 - Testy: `test_job_places_props.gd` (zdjęcie per zlecenie, dowód i zarządca z danych, wymiany, 5 języków, spuszczanie bębna), `test_chalk_hint.gd` (żadna część kredowego kciuka na elementach sterowania, w pionie i poziomie), `test_lessons.gd` (lekcja czeka na gracza po H4).
+## D-96: Profil niski tylko ręcznie, realny budżet pamięci, budżet rozmiaru na AAB, dieta paczki
+2026-11-08 · właściciel („Tylko ręcznie + realny budżet”), wykonanie: agent wydajności · zastępuje automat z D-93 ·
+- **Profil:** „Auto” wybiera z czasu klatki tylko średnią lub wysoką; niska wyłącznie z Ustawień (na SM-A165F nie zmniejszała PSS,
+  a zmiękczała przekrój — POMIARY §11). Metoda wtyczki `device_ram_bytes()` zostaje (log). Ustawienia pokazują „Auto (średnia/wysoka)” (N-99).
+- **Budżet pamięci taniego Androida:** ≤ 400 MB PSS menu, ≤ 600 MB zamek (`budgets.json` → `device`, TECH §8, POMIARY §8/§12).
+- **Rozmiar:** `aab_release_mb` 170/200 MB mierzony w CI na AAB release (`game-android` → `check_budget.py --aab --size-only`);
+  APK debug już nie jest budżetowany.
+- **Paczka:** GLB zamków bez LOD i siatek cieni (−3,9 MB); większe opcje (głosy EN na żądanie −18,4 MB, przekodowanie głosów −7 MB,
+  płyty 2× −3,2 MB, plansze DE −1,3 MB) czekają na decyzję — tabela w POMIARY §12.

@@ -491,6 +491,8 @@ Samsung SM-A165F (Helio G99, Mali-G57 MC2, 4 GB, ekran 60 Hz), scena planu B, 60
 
 Pełna gra (nie spike) na SM-A165F przed i po poprawkach wydajności: `docs/handoff/POMIARY.md` §9, dane `docs/handoff/device-tests/perf_2026-11-08/`. W skrócie: zimny start 4,0 → 3,0 s (przechodzi), zamek w grze 58–60 FPS i 10 min bez dławienia (przechodzi), wejście do zamka 0,65 → 0,35 s, PSS zamka 850–890 → 555–615 MB (nadal ponad 350 MB), zamek bez dotyku nadal 41–44 FPS (taktowanie CPU bez dotyku).
 
+**Budżet pamięci (D-96, właściciel):** dla taniego Androida 400 MB PSS w menu i 600 MB w ekranie zamka (pomiary release w POMIARY §10–11; wcześniejsze 300/350 MB były nieosiągalne bez zmian w silniku). Rozmiar 170/200 MB dotyczy AAB release.
+
 ### 8.2 Werdykt go / no-go dla Godota (warunki zmiany z §1.9), 2026-11-05
 
 **GO, warunkowo: zostajemy przy Godocie 4.7.2.** Żaden z warunków zmiany z §1.9 nie jest spełniony:

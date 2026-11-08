@@ -117,9 +117,9 @@ Mali-G52/G57 lub PowerVR, ekran 720p–1080p, haptyka A0/A1); „średni” = Sa
 | FPS ekranu zamka (plan B) | p95 czasu klatki ≤ 16,7 ms, 1% low ≥ 55 FPS przez 10 min | to samo + ≤ 8,3 ms na 120 Hz (ProMotion) — opcjonalnie | TECH §4 spike 4; haptyka i dźwięk w kroku fizyki 120 Hz nie mogą czekać na klatkę | `planb-perf-apk` (7a), 10 min, bez ładowarki |
 | FPS menu | ≥ 55 FPS, brak przycięć > 50 ms przy przewijaniu list | ≥ 58 FPS | płynność przewijania | ten sam licznik, przewijanie listy zleceń |
 | Logika na krok (lockcore + describe + feedback) | ≤ 0,5 ms (p95) | ≤ 0,25 ms | 8,3 ms budżetu kroku 120 Hz, logika ≤ 6% | GUT `test_perf.gd` (sesja B: 5,7 µs/krok na CI) |
-| Pamięć (PSS całej aplikacji) | ≤ 350 MB w ekranie zamka, ≤ 300 MB w menu | ≤ 450 MB | system ubija aplikacje w tle powyżej ok. 400 MB na 4 GB RAM | `adb shell dumpsys meminfo <pakiet>` / Xcode Memory gauge |
+| Pamięć (PSS całej aplikacji) | **≤ 600 MB w ekranie zamka, ≤ 400 MB w menu** (D-96; wcześniej 350/300) | ≤ 450 MB | realny poziom buildu release na SM-A165F: menu ~360 MB, zamek 525–575 MB (§10–11); 350/300 były nieosiągalne bez zmian w silniku | `adb shell dumpsys meminfo <pakiet>` / Xcode Memory gauge |
 | VRAM / tekstury | ≤ 150 MB | ≤ 250 MB | plan B: 110 MB przy 1320×2868 (LW_PERF) | licznik `vram_mb` w `planb-perf-apk` |
-| Rozmiar APK (pobranie z Google Play, arm64) | **≤ 80 MB** (ostrzeżenie), twardo ≤ 150 MB | — | tanie telefony mają mało miejsca; Play: limit modułu bazowego AAB 200 MB (sprawdzić aktualny) | artefakt `game-android`, `check_budget.py --apk` |
+| Rozmiar AAB release (to, co idzie do sklepu) | ≤ 170 MB ostrzeżenie, ≤ 200 MB błąd (D-96) | — | Play: limit modułu bazowego 200 MB; APK debug (~193 MB, w tym 76 MB biblioteki silnika debug) nie jest już liczony | CI: `game-android` / release-aab → `check_budget.py --aab … --size-only` |
 | Rozmiar IPA (pobranie z App Store) | — | **≤ 100 MB** pobrania | powyżej 200 MB iOS pyta o pobranie przez sieć komórkową | App Store Connect → „App Store File Sizes” |
 | Zasoby gry (pck z presetem Android) | ≤ 120 MB (ostrzeżenie), ≤ 150 MB (błąd CI, D-64) | — | dziś 26,5 MB; większość APK to zasoby + silnik (ok. 15–20 MB skompresowany) | CI: `qa/budget/check_budget.py` |
 | Czas startu do menu (zimny start) | ≤ 4 s (bez 3-sekundowej noty przy pierwszym starcie) | ≤ 2 s | wytyczne Androida: zimny start > 5 s to „wolny” (Android vitals) | `adb shell am start -W` (TotalTime) / Xcode Instruments „App Launch” |
@@ -241,3 +241,31 @@ w tle przy 4 GB) albo zostawić profil niski tylko jako ustawienie ręczne.
 CI nie sprawdza rozmiaru APK (`perf-budget` mierzy tylko pck: 114,7 MB, OK), ostrzega tylko lokalny `build_apk.sh`. Ok. 76 MB APK
 debug to biblioteka silnika w wersji debug; graczom idzie AAB. Propozycja: mierzyć w budżecie AAB release (sklep), a dla APK debug
 przesunąć progi na 200/230 MB; alternatywnie wyłączyć z Androida płyty 2× (Fold, ok. −4 MB) — decyzja właściciela.
+
+
+## 12. Budżet pamięci, profil niski tylko ręcznie, paczka — 2026-11-08 (D-96)
+
+Decyzja właściciela „Tylko ręcznie + realny budżet”:
+- **Budżet pamięci (§8, `qa/budget/budgets.json` → `device`):** tani Android ≤ 400 MB PSS w menu i ≤ 600 MB w zamku, na podstawie
+  pomiarów release z §10–11 (menu ~360 MB, zamek 525–575 MB, warsztat 390 MB z czystego startu). Nie sprawdzane w CI.
+- **Profil niski:** tylko z Ustawień. „Auto” wybiera z czasu klatki średnią albo wysoką (nigdy niską), także na telefonach 4 GB;
+  Ustawienia pokazują, na co „Auto” wypadło, np. „Auto (średnia)” (N-99, 5 języków).
+- **Rozmiar:** budżet 170/200 MB mierzy teraz AAB release w CI (d74aa12: 132,7 MB), nie APK debug.
+
+**Dieta paczki (pck 116,2 MB w CI przy ostrzeżeniu 120 MB).** Zrobione bez zmiany wyglądu:
+- 5 wypieczonych modeli GLB zamków (`cutaway`, `lever`, `lever_detector`, `wafer`, `warded`): bez generowania LOD i siatek cieni
+  (kamera stała, zbliżenie, plan B bez dynamicznych cieni) → 8,6 → 4,8 MB (**−3,9 MB** paczki), mniej pamięci siatek w zamku.
+  Trzy z tych plików `.import` nie były w repo (CI importował je z ustawieniami domyślnymi) — teraz są.
+  Lokalnie pck 112,7 MB po zmianie.
+
+Większy zapas wymaga decyzji (rozmiar w paczce, bez zmiany grafiki):
+
+| Opcja | Oszczędność | Koszt |
+|---|---|---|
+| Kwestie EN (`assets/audio/lines/en`) jako paczka głosów na żądanie (D-63), w APK tylko PL | **−18,4 MB** | gracz EN pobiera głosy przy pierwszym uruchomieniu |
+| Kwestie PL+EN przekodowane Vorbis q1 (dziś mono 48 kHz ~79 kb/s) | ok. −7 MB | lekka utrata jakości głosu; odsłuch QA (LISTEN) |
+| Płyty 2× dla Folda/tabletów wyłączone z Androida (11 plików) | −3,2 MB | Fold/tablety dostają płyty 1x (mniej ostre) |
+| Plansze menu DE (DE tylko za flagą deweloperską) wyłączone z Androida | −1,3 MB | DE w trybie dev pokazuje planszę EN |
+
+Uwaga z przeglądu: natywny mostek kliknięć (Oboe) przyjmuje tylko 32 z 336 próbek (`kMaxSamples = 32` w `click_engine.cpp`);
+pozostałe kliki zamka grają ścieżką silnika (~126 ms opóźnienia zamiast ~52 ms, POMIARY §2). Poza zakresem tej pracy — do zgłoszenia.
