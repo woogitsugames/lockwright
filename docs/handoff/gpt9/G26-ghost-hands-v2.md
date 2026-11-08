@@ -1,4 +1,5 @@
 # Zlecenie G26: dłonie do „widma” v2 (sylwetka czytelna jako płaska wycinanka)
+n> **Anulowane (2026-11-08):** widmo dłoni usunięte (D-83). Zobacz `docs/handoff/gpt10/`.
 
 **Dla:** ChatGPT z generatorem obrazów. Zapis tylko do `contrib/gpt/G26/` (albo ZIP `Lockwright_G26.zip` dla właściciela). Zastępuje G23 część C (D-77).
 

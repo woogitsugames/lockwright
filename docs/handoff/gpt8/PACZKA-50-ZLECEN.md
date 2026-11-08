@@ -1,4 +1,5 @@
 # Paczka 50 zleceń dla ChatGPT (T75–T124), 2026-11-06
+n> **Nieaktualne (2026-11-08):** zastąpione przez `docs/handoff/gpt10/PACZKA-GPT10.md`.
 
 **Repo** `woogitsugames/lockwright`, `main`. **Zapis tylko do `contrib/gpt/<ID>/`**, każde zlecenie osobnym commitem z `README.md` (PL: co zrobione, wątpliwości). Integrację robi sesja A.
 **Zasady:** `CLAUDE.md`; ton ciepły i legalny (ślusarz weryfikuje prawo do lokalu), zero marek i instrukcji do prawdziwych produktów; PL „pin” (kołek tylko drewniany/egipski); UI do gracza na ty/du/tu/tú, postacie per pan/Sie/vous/usted (D-67); limity `tutorial.*`/`lock.*` ≤ 56, `menu.*` ≤ 28; kwestie pod lektora: liczby słownie. Poprawki istniejących tekstów jako tabela `klucz | było | jest | powód`. Obrazy: jeden obraz = jedna wiadomość, bez kolaży, fikcyjne osoby, bez logo. Słowniczek: `docs/GLOSSARY.md`.
