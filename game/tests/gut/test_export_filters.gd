@@ -186,6 +186,8 @@ func test_tutorial_cards_ship() -> void:
 				var p: String = TutorialScreen.CARD_DIR % f[0]
 				assert_true(ResourceLoader.exists(p), p)
 				assert_eq(excluded_by(p, presets[preset]), "", "%s ships %s" % [preset, p])
+		for c in TutorialScreen.ONE_PIN_CARDS.values():
+			assert_eq(excluded_by(TutorialScreen.CARD_DIR % c, presets[preset]), "", "%s ships the one-pin card %s" % [preset, c])
 		for i in range(1, 13):
 			var g := "res://assets/ui/gpt/tutorial/g11-%02d-clean.png" % i
 			assert_ne(excluded_by(g, presets[preset]), "", "%s leaves out the replaced sketch %s" % [preset, g])

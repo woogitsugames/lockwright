@@ -306,6 +306,32 @@
       "anchors": {
         "day": {}
       }
+    },
+    "job.museum_time_lock": {
+      "dir": "res://assets/arrival/museum_time_lock",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "day"
+      ],
+      "default_time": "day",
+      "hold": "",
+      "focus": [
+        0.52,
+        0.55
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          20,
+          26
+        ]
+      },
+      "anchors": {
+        "day": {}
+      }
     }
   }
 }

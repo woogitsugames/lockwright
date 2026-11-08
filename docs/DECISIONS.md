@@ -514,3 +514,11 @@ natywnie (było 5/56), bez xrunów (POMIARY §13). Haptyka D-81 nietknięta.
 - Przy okazji: `LockPreload` nie wczytuje w tle w trybie headless (CI, GUT). Wątkowe wczytywanie tekstur do atrapy renderera
   raz na jakiś czas kończyło się błędem silnika „Parameter "t" is null” — to była przyczyna losowo czerwonych testów lokalnie
   (`test_accessibility` / `test_perf_device`). Lokalny `run_gut.sh`: 374/374.
+
+
+## D-102: Karty jednego pinu w etapie 1 samouczka; scenka przyjazdu do skarbca muzeum
+2026-11-08 · sesja grafiki (worktree `wt-mus`) · uzupełnia D-98, D-94, D-91.
+- **Samouczek:** etap 1 to zamek z jednym pinem, więc karty `lift` i `set` mają warianty `lift_one` / `set_one` (jeden zestaw pinów, puste otwory obok), renderowane tym samym `art/blender/tutorial_cards.py` (`--cards lift_one,set_one`). `tutorial.gd` wybiera je, gdy `difficulty.n_max` etapu z `data/tutorial/sN.json` wynosi 1 (`ONE_PIN_CARDS`, obok podpisów `ONE_PIN_CAPTIONS`). Test `test_one_pin_stage_shows_one_pin_cards`, a `test_tutorial_cards_ship` sprawdza, że trafiają do paczki.
+- **`job.museum_time_lock` (miejsce `museum`):** czwarty zestaw `vault` w `art/blender/arrival_place.py` — sala pod magazynem portowym: bielone ceglane sklepienie kolebkowe z ciepłym światłem z listew LED na linii wezgłowia, ściany z cegły, polerowany beton, szynoprzewód z reflektorami na drzwiach. Na końcu drzwi skarbca dawnej kasy oszczędności (ciemna zieleń, nikiel: koło z pięcioma szprychami, zawiasy, nity ościeżnicy) z okienkiem rewizyjnym, za którym widać dwie tarcze mechanizmu zamka czasowego. Taśma na słupkach, skrzynia transportowa z bawełnianymi rękawiczkami kuratorki i protokołem przekazania. Bez napisów i marek. Stop-klatka bez postaci (`hold: ""`); weryfikacja i „dzień po” pokazują tę salę zamiast pożyczonego zdjęcia piwnicy G07.
+- Finały GPU jak D-94 (stop-klatka 1080×1920 / 512 spp, przejazd 36 × 1080×1920 / 128 spp), eksport `arrival_export.py --job museum_time_lock` w nowej domyślnej jakości D-99 (1080×1920, q80).
+

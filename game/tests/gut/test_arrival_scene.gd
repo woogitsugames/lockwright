@@ -6,9 +6,10 @@ const JOB := "job.wrong_floor"
 const PLAIN_JOB := "job.kiosk_shutter"
 ## early jobs with a plate-only scene (no full-body cut-out of their clients): the door and props tell the story
 const PLATE_JOBS := ["job.grandma_broth", "job.cat_bathroom", "job.refuse_ex_partner", "job.newlyweds_4am", "job.refuse_rush_bribe",
-	"job.night_nurse", "job.pizzeria_pays_pizza", "job.bike_interview"]
+	"job.night_nurse", "job.pizzeria_pays_pizza", "job.bike_interview", "job.museum_time_lock"]
 ## D-94: places that are not a tenement landing (art/blender/arrival_place.py)
-const PLACE_JOBS := {"job.night_nurse": "night", "job.pizzeria_pays_pizza": "evening", "job.bike_interview": "day"}
+const PLACE_JOBS := {"job.night_nurse": "night", "job.pizzeria_pays_pizza": "evening", "job.bike_interview": "day",
+	"job.museum_time_lock": "day"}  # D-102: the museum vault room
 const JobArrival := preload("res://scripts/ui/job_arrival.gd")
 
 
@@ -238,6 +239,7 @@ func test_place_scenes_replace_the_borrowed_photos() -> void:
 		var dawn := ArrivalScene.place_still(job, "day", false)
 		assert_eq(dawn.size(), 2, "%s: the day after shows the same place" % jid)
 	assert_eq(String(JobRun.job_by_id("job.bike_interview")["place"]), "yard")
+	assert_eq(String(JobRun.job_by_id("job.museum_time_lock")["place"]), "museum")
 
 
 func test_climb_streams_frames_instead_of_holding_all() -> void:

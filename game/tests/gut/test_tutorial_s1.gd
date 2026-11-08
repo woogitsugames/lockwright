@@ -251,3 +251,17 @@ func test_axial_slider_texts_match_the_upward_drag() -> void:
 	TranslationServer.set_locale("en")
 	var lesson: Dictionary = TutorialCoach.load_lesson(&"axial_slider")
 	assert_eq(String(lesson.get("right", "")), "lift", "the slider moves with the right thumb's lift (up)")
+
+
+## D-102: S1's cards show one pin stack (the lock has one); later stages keep the several-pin cards.
+func test_one_pin_stage_shows_one_pin_cards() -> void:
+	var tut: GDScript = load("res://scripts/ui/tutorial.gd")
+	for auto in [false, true]:
+		var cards: Array = tut.frames_for(0, auto).map(func(f: Array) -> StringName: return f[0])
+		assert_false(cards.has(&"lift") or cards.has(&"set"), "S1 auto=%s: %s" % [auto, cards])
+		assert_true(cards.has(&"lift_one") and cards.has(&"set_one"), "S1 auto=%s: %s" % [auto, cards])
+		for c in cards:
+			assert_true(ResourceLoader.exists(tut.CARD_DIR % c), "card %s exists" % c)
+	assert_eq(tut.frames_for(1, false)[0][0], &"binding")
+	assert_eq(tut.frames_for(2, false)[0][0], &"overset")
+

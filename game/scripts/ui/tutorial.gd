@@ -18,6 +18,8 @@ const FRAMES := [
 ]
 const FRAMES_AUTO_S1 := [[&"lift", &"tutorial.frame_lift_auto"], [&"set", &"tutorial.frame_click"]]
 ## HANDOVER §5.3: a one-pin lock (S1) has nothing to choose "sideways"; these captions say so.
+## ...and these cards show one pin stack instead of several (D-102).
+const ONE_PIN_CARDS := {&"lift": &"lift_one", &"set": &"set_one"}
 const ONE_PIN_CAPTIONS := {
 	&"tutorial.frame_lift": &"tutorial.frame_lift_one",
 	&"tutorial.frame_lift_auto": &"tutorial.frame_lift_auto_one",
@@ -166,7 +168,7 @@ static func frames_for(stage: int, auto: bool) -> Array:
 		frames = FRAMES_AUTO_S1
 	if stage_pins(stage) != 1:
 		return frames
-	return frames.map(func(f: Array) -> Array: return [f[0], ONE_PIN_CAPTIONS.get(f[1], f[1])])
+	return frames.map(func(f: Array) -> Array: return [ONE_PIN_CARDS.get(f[0], f[0]), ONE_PIN_CAPTIONS.get(f[1], f[1])])
 
 
 func _start_stage() -> void:

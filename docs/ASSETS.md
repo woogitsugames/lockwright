@@ -329,3 +329,11 @@ Own Blender 4.2.9 LTS / Cycles OptiX renders (RTX 5070), procedural and photo ma
 | `game/assets/ui/tutorial/card_{tension,lift,set,binding,overset}.webp`, masters `art/renders/tutorial_cards/card_*.png` | own Blender 4.2.9 LTS / Cycles OptiX render (RTX 5070) of `art/blender/cutaway.py` (photo materials, no AI): `LW_DEVICE=GPU blender -b -P art/blender/tutorial_cards.py -- --out-dir art/renders/tutorial_cards --res 480x592 --samples 256`, WebP q82 (Pillow), lossy import 0.85 |
 
 > **D-100 (2026-11-08):** kwestie PL (`game/assets/audio/lines/pl/`) nie wchodzą już do paczki gry — są pakowane w `voice_pl.pck` (GitHub Release `voice-packs-<version>`) tak jak DE/FR/ES; w paczce zostają tylko kwestie EN.
+
+## Museum vault arrival and one-pin tutorial cards — 2026-11-08 (D-102)
+
+| Assets | Script and parameters |
+|---|---|
+| `game/assets/arrival/museum_time_lock/day/plate.webp`, `game/assets/arrival/museum_time_lock/day/seq/*.webp`, `art/renders/arrival/museum_time_lock_day_{hold.png,hold.json,final_contact.png}` | own Blender 4.2.9 LTS / Cycles OptiX render (RTX 5070), `art/blender/arrival_place.py --job museum_time_lock` (kit `vault`; hold `--still-res 1080x1920 --still-spp 512`, walk `--mode seq --res 1080x1920 --spp 128`), procedural + photo materials, no AI; exported with `art/tools/arrival_export.py --job museum_time_lock --master <dir>` (1080x1920 WebP q80, lossy import 0.8) |
+| `game/assets/ui/tutorial/card_{lift_one,set_one}.webp`, masters `art/renders/tutorial_cards/card_{lift_one,set_one}.png` | `LW_DEVICE=GPU blender -b -P art/blender/tutorial_cards.py -- --out-dir art/renders/tutorial_cards --res 480x592 --samples 256 --cards lift_one,set_one`, WebP q82, lossy import 0.85 |
+
