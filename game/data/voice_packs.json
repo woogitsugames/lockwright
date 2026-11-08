@@ -1,5 +1,5 @@
 {
-  "base_url": "https://github.com/woogitsugames/lockwright/releases/download/voice-packs-2b305cb00025",
+  "base_url": "https://github.com/woogitsugames/lockwright/releases/download/voice-packs-5ad01b8a79d2",
   "packs": {
     "de": {
       "file": "voice_de.pck",
@@ -7,7 +7,7 @@
       "lines": 426,
       "sha256": "90dc4cc075077ab9176818cabec5449556a1e5025778a1c82d943960a89f6483",
       "size": 20266604,
-      "url": "https://github.com/woogitsugames/lockwright/releases/download/voice-packs-2b305cb00025/voice_de.pck"
+      "url": "https://github.com/woogitsugames/lockwright/releases/download/voice-packs-5ad01b8a79d2/voice_de.pck"
     },
     "es": {
       "file": "voice_es.pck",
@@ -15,7 +15,7 @@
       "lines": 426,
       "sha256": "eddb5345732c66ace7b1e0a70dbb9fb1b7b3309e88761f02163a36c227e908b5",
       "size": 19897740,
-      "url": "https://github.com/woogitsugames/lockwright/releases/download/voice-packs-2b305cb00025/voice_es.pck"
+      "url": "https://github.com/woogitsugames/lockwright/releases/download/voice-packs-5ad01b8a79d2/voice_es.pck"
     },
     "fr": {
       "file": "voice_fr.pck",
@@ -23,9 +23,17 @@
       "lines": 426,
       "sha256": "3b913dc1f9ffd37d5364e803363ebe499bcffaa60125bdb55edb2ad207333071",
       "size": 18224460,
-      "url": "https://github.com/woogitsugames/lockwright/releases/download/voice-packs-2b305cb00025/voice_fr.pck"
+      "url": "https://github.com/woogitsugames/lockwright/releases/download/voice-packs-5ad01b8a79d2/voice_fr.pck"
+    },
+    "pl": {
+      "file": "voice_pl.pck",
+      "godot": "4.7",
+      "lines": 426,
+      "sha256": "1ecc2ada6a87953fb4ee3e8f0a223c1573359f1b892b7266f1ab85d5c8b7b0fc",
+      "size": 18967052,
+      "url": "https://github.com/woogitsugames/lockwright/releases/download/voice-packs-5ad01b8a79d2/voice_pl.pck"
     }
   },
   "schema": 1,
-  "version": "2b305cb00025"
+  "version": "5ad01b8a79d2"
 }
