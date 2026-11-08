@@ -229,6 +229,21 @@ PNG imports in game use lossy quality 0.85. Evidence: `docs/handoff/device-tests
 
 All rows of this table: Blender 4.2.9 LTS, Cycles GPU on the owner's PC, published in commit `4766aac` (GPU batch). N-72 (session B): the nine 2472×3300 masters over the 8 MB lint limit (`photoreal/plate/plate_1236x1650.png`, `lever/photo/{parts,parts_detector,plate}.png`, `wafer/photo/{parts,plate}.png`, `warded/photo/{parts,plate,wards}.png`) were fully opaque RGBA; they are re-saved as 8-bit RGB PNG (alpha dropped, every RGB pixel verified identical, zlib level 9): 5.0–6.6 MB each. The shaders read only `.rgb`; imports stay lossy 0.85.
 
+## VA-09 / VA-10 family re-renders — 2026-11-08
+
+Own Blender 4.2.9 LTS / Cycles OptiX renders on RTX 5070, existing photo materials (`art/textures/photo`, G03 oak), no AI generation. Geometry, cameras and part positions unchanged (layers.json geometry identical; low-spp overlay: mask IoU >= 0.99, centroid shift <= 0.25 px). Grayscale contrast per moving element: `tools/art/plate_contrast.py`; sheets: `docs/handoff/device-tests/fixes/family_rerenders/`.
+
+| Assets | Script and final parameters |
+|---|---|
+| `photoreal_families/egyptian/photo/*.png`, `layers.json` | `egyptian_plate.py --res 1236x1648 --spp 256 --device GPU`; VA-09 look: smoke-blackened inner block, pale ash-like bolt, boxwood-like pegs |
+| `photoreal_families/axial_slider/photo/*.png`, `layers.json` | `axial_slider_plate.py --res 1236x1648 --spp 256 --device GPU`; VA-09 look: dark cavity, blackened steel guides, ground-steel sliders with a mirror softbox sheen |
+| `photoreal_families/time_lock/photo/*.png`, `layers.json` | `time_lock_plate.py --res 1236x1648 --spp 256 --device GPU`; VA-09 look: black japanned back plate (`iron_painted_rust` pulled to black), nickel-bright turned steel wheels, brass barrel, steel pallet |
+| `photoreal_families/lever/photo/{parts,parts_detector,plate}.png` | `photo_plates.py --family lever --res 2472x3300 --samples 128` (+ `--detector 1 --passes parts`); VA-09 lever brass in `art/blender/lever.py` (less colour pull, lower roughness floor) |
+| `photoreal_families/lever_detector/photo/{parts,plate}.png` | `photo_plates.py --family lever --levers 5 --detector 1 --res 1236x1650 --samples 128` (outputs renamed from `*_detector.png`), same lever brass |
+| `game/assets/photoreal/plate/plate_dimple_1236x1650.png`, `plate_magnetic_1236x1650.png` | VA-10: `art/blender/plates/pin_variant_plate.py --variant dimple\|magnetic --res 2472x3300 --samples 128` (`LW_DEVICE=GPU`; scene `art/blender/cutaway.py` unchanged + static side-drilled row / magnet rotors). Not wired yet: needs a `plate_path` export in `lock_photoreal_view.gd` (VA-10 note in `docs/handoff/device-tests/visual_audit_2026-11-07/FINDINGS.md`) |
+
+PNG imports lossy 0.85 (`compress/mode=1`).
+
 ## Local GPU arrival and menu finals — 2026-11-06
 
 Own Blender 4.2.9 LTS / Cycles OptiX renders on RTX 5070, existing original photo materials, no AI generation.
