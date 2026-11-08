@@ -394,6 +394,11 @@ cb = bulb.constraints.new('TRACK_TO'); cb.target = a_b; cb.track_axis = 'TRACK_N
 AIM_T = bpy.data.objects.new('aim_tags', None); scene.collection.objects.link(AIM_T); AIM_T.location = (RX, 0, RZ - 100)
 area_light('window', (RX + 1500, -900, RZ - 300), AIM_T, 900, float(arg('--window', '3.5e6')), (0.72, 0.80, 1.0), size_y=1200)
 area_light('bounce', (BX + 300, -2600, (ZT + ZB) / 2 - 300), AIM, 1600, float(arg('--bounce', '3e4')), (1.0, 0.84, 0.66))
+# Low fill (owner 2026-11-08: lower half of the board and the key tags too dark on the phone). Off by default
+# so older renders stay reproducible; a soft warm spill from below/front, like light from the open door.
+if float(arg('--fill', '0')) > 0:
+    AIM_F = bpy.data.objects.new('aim_fill', None); scene.collection.objects.link(AIM_F); AIM_F.location = (BX, 0, ZB - 60)
+    area_light('fill', (BX - 250, -1500, ZB - 650), AIM_F, 1400, float(arg('--fill', '0')), (1.0, 0.82, 0.62))
 world_hdri(strength=0.012, sat=0.3)
 
 # ---------------------------------------------------------------- camera: slightly from the right and above, 50 mm

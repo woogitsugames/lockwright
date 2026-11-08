@@ -42,6 +42,8 @@ RENDER_ALL = '--render-all' in argv; RENDER_MISSING = '--render-missing' in argv
 # D-66: camera view per orientation. Portrait finals (GPU, 2026-11-06) use --vw 600 (board 798/1080 px = 74% of the width);
 # menu_gate.py's own portrait default (432, the close v2 camera) must never be used for this menu again.
 VIEW_DEFAULT = {'portrait': ('--vw', '600'), 'landscape': ('--vh', '585')}   # landscape: = menu_gate.py default
+# --gate-args "--fill 2e5 --bounce 6e4": extra lighting flags passed to EVERY menu_gate.py call (same light on base + sprites)
+GATE_ARGS = arg('--gate-args', '').split()
 VIEW_CLI = {'portrait': arg('--vw', None), 'landscape': arg('--vh', None)}
 IDS = ['start', 'jobs', 'workshop', 'showcase', 'settings', 'about']
 RES = {'portrait': '1080x2400', 'landscape': '2400x1080'}
@@ -54,7 +56,7 @@ def hits_json(o, lang): return os.path.join(D, 'menu_hits%s%s.json' % ('' if o =
 def sprite_png(o, lang, iid): return os.path.join(D, 'menu_pressed_%s%s%s.png' % (iid, '' if o == 'portrait' else '_landscape', sfx(lang)))
 
 def blender(*a):
-    cmd = [BL, '-b', '-P', os.path.join(ROOT, 'art', 'blender', 'menu_gate.py'), '--'] + list(a) + ['--device', DEVICE]
+    cmd = [BL, '-b', '-P', os.path.join(ROOT, 'art', 'blender', 'menu_gate.py'), '--'] + list(a) + ['--device', DEVICE] + GATE_ARGS
     t = time.time(); print('>>', ' '.join(cmd), flush=True)
     subprocess.run(cmd, check=True, cwd=ROOT, stdout=subprocess.DEVNULL)
     print('   %.0f s' % (time.time() - t), flush=True)
