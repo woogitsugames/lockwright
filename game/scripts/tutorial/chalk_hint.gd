@@ -112,6 +112,25 @@ func play_gesture(from_dp: Vector2, to_dp: Vector2, duration_s: float, repeats :
 	queue_redraw()
 
 
+## H1 (N-83): only the chalk touch ring where the thumb goes, for `seconds` (then it fades). Replaces
+## the dark thumb_dent imprint, which in landscape lay as a loose dark blob beside the moved chalk.
+func show_touch(at_dp: Vector2, seconds: float) -> void:
+	_fit_parent()
+	_from = at_dp
+	_to = at_dp
+	_shift = fit_shift(at_dp, at_dp)
+	alpha = 0.0
+	_holding = false
+	mode = Mode.STATIC
+	_phase = _Phase.FADE_IN
+	_t = 0.0
+	_static_s = maxf(seconds, 0.0)
+	touch_point = place(at_dp)
+	trail = PackedVector2Array([touch_point])
+	set_process(true)
+	queue_redraw()
+
+
 ## H4: the master hand starts; the ring follows the virtual touch point from follow().
 ## from/to: the planned path (drawn whole under Reduce Motion).
 func begin_follow(from_dp: Vector2, to_dp: Vector2) -> void:

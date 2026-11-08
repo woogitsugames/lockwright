@@ -66,6 +66,9 @@ static var _grain: ShaderMaterial
 
 var level := Level.OFF
 var marks := {}            # see LockPhotorealView._update_chalk()
+## N-90: while the hint ladder's chalk gesture plays (H1 ring, H2 gesture, H4 follow), it is THE thumb
+## hint: the static chalk thumbs and arrows step aside instead of drawing a second ring and arrow.
+var hide_thumbs := false
 var text := "": set = set_text  # current handwritten line (already translated)
 var _spoken := ""          # D-90: last line given to the screen reader
 var _shown_text := ""
@@ -124,9 +127,54 @@ func safe_rect() -> Rect2:
 ## Thumb hints drawn now: [{kind, anchor, rect}], anchors already clamped (tests, N-73).
 func hint_marks() -> Array:
 	var out := []
-	if level == Level.OFF or marks.is_empty():
+	if level == Level.OFF or marks.is_empty() or hide_thumbs:
 		return out
 	var safe := safe_rect()
+	var avoid := _avoid_rects()
+	if not avoid.is_empty():
+		for m in _hint_marks_raw(safe):
+			out.append(_off_avoid(m, safe, avoid))
+		return out
+	return _hint_marks_raw(safe)
+
+
+## N-90: rects the static thumb hints keep clear of: the loupe on the roll (the right thumb's arrow lay
+## on its brass ring on the combo screen). Layer coordinates = the view's.
+func _avoid_rects() -> Array[Rect2]:
+	var out: Array[Rect2] = []
+	var p := get_parent()
+	if p != null and p.has_method("loupe_rect"):
+		var lr: Rect2 = p.call("loupe_rect")
+		if lr.size.x > 0.0:
+			out.append(lr.grow(4.0))
+	return out
+
+
+## A thumb hint moved the shortest way off the avoid rects, staying inside the safe area.
+static func _off_avoid(m: Dictionary, safe: Rect2, avoid: Array[Rect2]) -> Dictionary:
+	var a: Vector2 = m["anchor"]
+	var kind := String(m["kind"])
+	var inner := safe.grow(-SAFE_MARGIN + 0.5)
+	for r in avoid:
+		var hr := hint_rect(a, kind)
+		if not hr.intersects(r):
+			continue
+		var best := a
+		var bd := INF
+		for off: Vector2 in [Vector2(0, r.position.y - hr.end.y), Vector2(0, r.end.y - hr.position.y),
+				Vector2(r.position.x - hr.end.x, 0), Vector2(r.end.x - hr.position.x, 0)]:
+			var moved := Rect2(hr.position + off, hr.size)
+			if not inner.encloses(moved):
+				continue
+			if off.length() < bd:
+				bd = off.length()
+				best = a + off
+		a = best
+	return {"kind": kind, "anchor": a, "rect": hint_rect(a, kind)}
+
+
+func _hint_marks_raw(safe: Rect2) -> Array:
+	var out := []
 	if marks.get("hint_vertical", false) and marks.has("right_anchor"):
 		out.append(_hint("vertical", marks["right_anchor"], safe))
 	if marks.get("hint_left", false) and marks.has("left_anchor"):

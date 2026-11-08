@@ -25,6 +25,7 @@ const FALSE_DIP_MM := 0.5
 const SLOT_HALF_TURN := 0.045 # the gate slot shows in the cut within this turn of 6 o'clock
 const BAR_SLIDE_MM := 3.0
 const PLUG_OUT_MM := 6.0
+const PLUG_SLACK := 0.12      # share of PLUG_OUT_MM the cable gives under full pull while shut
 const SHADOW_MM := Vector2(0.18, 0.26)
 
 var meta := {}
@@ -284,7 +285,9 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	_chatter = 1.0 if slipping else 0.0
 	var core := clampf(float(vm.get("core_rotation", 0.0)), 0.0, 1.0)
 	var bar_t := BAR_SLIDE_MM * (1.0 if _opened else core)
-	var plug_t := PLUG_OUT_MM * (1.0 if _opened else 0.0)
+	# N-90: pulling the cable (left thumb, or the H2 chalk gesture's preview tension) takes up its slack:
+	# the plug moves out a little with the pull, so the tension reads on the lock itself, not only on the gauge
+	var plug_t := PLUG_OUT_MM * (1.0 if _opened else PLUG_SLACK * clampf(tension, 0.0, 1.0))
 	_bar_dx = bar_t if snap else lerpf(_bar_dx, bar_t, k)
 	_plug_dx = plug_t if snap else lerpf(_plug_dx, plug_t, k)
 	_last_vm = vm

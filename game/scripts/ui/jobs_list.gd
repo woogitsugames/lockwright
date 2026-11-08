@@ -63,7 +63,9 @@ func _ready() -> void:
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 	var completed: Array = Save.get_value("jobs_completed", [])
 	var refused: Array = Save.get_value("jobs_refused", [])  # N-15: refused jobs are closed
-	refused = refused + Save.get_value("jobs_wrong_open", [])  # D-85: a wrong door opened leaves the list too
+	for jid in Save.get_value("jobs_wrong_open", []):  # D-85: a wrong door opened leaves the list too,
+		if not completed.has(jid):  # N-91: unless it had been settled honestly before (old saves)
+			refused = refused + [jid]
 	var jobs: Array = []
 	for path in DirAccess.get_files_at(JOBS_DIR):
 		if path.ends_with(".json"):
@@ -91,15 +93,37 @@ func _ready() -> void:
 		if completed.has(jid):
 			b.text += " — " + I18n.t(&"ui.job_done")
 			b.theme_type_variation = &"DonePlate"  # VA-05: done = laid-down plate (shape + value), open = raised enamel
+		b.name = "Job_" + jid.trim_prefix("job.")
+		if jid == last_job_id:
+			_focus_button = b
 		b.pressed.connect(func() -> void:
+			last_job_id = jid  # N-85: coming back (pause "Exit", Back) the list opens at this job
 			JobRun.start(job)
 			get_tree().change_scene_to_file("res://scenes/job_arrival.tscn"))
 		row.add_child(b)
 		list.add_child(row)
 	ScreenFrame.enter($Frame/VBox/Scroll)
+	if _focus_button != null:
+		_scroll_to_focus.call_deferred()
 	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
 	day_after = DayAfter.maybe_show(self)  # V04/D-78: one follow-up of a recently finished job
 	LockPreload.release()  # perf 2026-11-08: a job left at the verify screen drops its warmed-up lock
+
+
+## N-85: the job the player opened last; the list comes back scrolled to it (it used to jump to the top
+## or stay wherever it was, so the next job had to be looked for again).
+static var last_job_id := ""
+var _focus_button: Button
+
+
+func _scroll_to_focus() -> void:
+	await get_tree().process_frame  # wrapped titles have their final height after one frame
+	if is_instance_valid(_focus_button):
+		($Frame/VBox/Scroll as ScrollContainer).ensure_control_visible(_focus_button)
+
+
+func focus_button() -> Button:
+	return _focus_button
 
 
 ## Nav (Back): the "day after" scene closes first.

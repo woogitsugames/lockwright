@@ -105,6 +105,9 @@ func tick(vm: Dictionary, input: Dictionary, events: Array, left_down: bool, rig
 	_last_input = input
 	ladder.dark_mode = view.dark
 	chalk_hint.visible = not view.dark  # chalk is a picture: none in the dark (H4 lights the scene)
+	var chalk = view.get("_chalk")
+	if chalk is ChalkLayer:  # N-90: one thumb hint at a time
+		chalk.hide_thumbs = chalk_hint.visible and chalk_hint.is_playing()
 	view.tick_hint_dent(delta)
 	if _light_s > 0.0:
 		_light_s -= delta
@@ -304,7 +307,8 @@ func _on_level(level: int, _step_id: StringName) -> void:
 	match level:
 		1:
 			if ch["visual"]:
-				view.show_hint_dent(g[0], 2.0)
+				chalk_hint.avoid = _avoid_rects()
+				chalk_hint.show_touch(g[0], 2.0)  # N-83 / D-83: a chalk ring, no dark imprint
 				view._set_flash = 1.0  # the plug face nudges (≈ 1.5°)
 		2:
 			if ch["visual"]:

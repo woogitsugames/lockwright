@@ -154,7 +154,8 @@ static func note_events(events: Array) -> bool:
 static func finish(opened: bool, quit := false) -> void:
 	if opened and met_now and not current.is_empty():
 		Save.set_value("practice/%s/goal" % current["id"], true)
-	last_result = &"" if quit else (&"failed" if not opened else (&"met" if met_now else &"open"))
+	# N-84 / D-79: leaving through the pause gets its line too ("left"), like an opening or a failure
+	last_result = &"left" if quit else (&"failed" if not opened else (&"met" if met_now else &"open"))
 	current = {}
 	met_now = false
 	JobRun.mode = &"job"

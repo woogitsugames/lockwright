@@ -608,7 +608,15 @@ func _on_quit() -> void:
 		Practice.finish(false, true)
 		get_tree().change_scene_to_file(Events.WORKSHOP)
 		return
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file(quit_target())
+
+
+## N-85: "Exit" from the pause of a job goes back to the job list (the list scrolls to that job); the
+## tutorial and the endless shift go back to the main menu as before.
+static func quit_target() -> String:
+	if JobRun.mode == &"job" and not JobRun.current_job.is_empty():
+		return "res://scenes/jobs_list.tscn"
+	return "res://scenes/main_menu.tscn"
 
 
 # ------------------------------------------------------------------ shots and perf

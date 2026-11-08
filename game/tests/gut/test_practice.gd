@@ -8,7 +8,7 @@ const LANGS := ["en", "pl", "de", "fr", "es"]
 ## warded GLB: ward0..2). A practice lock with more elements would hide some of them.
 const CAPACITY := {&"pin_tumbler": 5, &"wafer": 5, &"warded": 3, &"lever": 3, &"lever_detector": 5}
 const UI_KEYS := ["workshop.tab_practice", "practice.note", "practice.start", "practice.locked", "practice.goal_met",
-	"practice.goal_open", "practice.result_met", "practice.result_open", "practice.result_failed"]
+	"practice.goal_open", "practice.result_met", "practice.result_open", "practice.result_failed", "practice.result_left"]
 
 var _save_backup: Dictionary
 
@@ -174,7 +174,7 @@ func test_goal_saved_on_target_event() -> void:
 	assert_eq(Practice.last_result, &"open")
 	Practice.start(Practice.entry("t09"))
 	Practice.finish(false, true)
-	assert_eq(Practice.last_result, &"", "leaving through the pause says nothing")
+	assert_eq(Practice.last_result, &"left", "N-84: leaving through the pause has its line too (D-79)")
 
 
 func test_open_and_fail_go_back_to_workshop() -> void:

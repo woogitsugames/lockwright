@@ -38,7 +38,9 @@ func _ready() -> void:
 	_overlay = Control.new()
 	_overlay.name = "ToolLayer"
 	_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	# N-82: the tool is part of the cut-away: clipped to the section like the 3D pick, so in landscape
+	# the probe / flag never runs out over the leather column, the tension wrench and the chalk thumb
+	_overlay.clip_contents = true
 	_overlay.draw.connect(_draw_tool)
 	add_child(_overlay)
 	move_child(_overlay, _section.get_index() + 1)
@@ -68,7 +70,20 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	_probe = lerpf(_probe, maxf(float(input.get("pick_lift", 0.0)), 0.0), k)
 	super.present(pin_vm(vm), input, delta)
 	if _overlay:
+		_fit_overlay()
 		_overlay.queue_redraw()
+
+
+## The tool layer covers exactly the section (view coordinates are drawn with this offset).
+func _fit_overlay() -> void:
+	if section_rect.size.x > 0.0 and (_overlay.position != section_rect.position or _overlay.size != section_rect.size):
+		_overlay.position = section_rect.position
+		_overlay.size = section_rect.size
+
+
+## Tests: the rect the tool layer clips to (view coordinates).
+func tool_clip_rect() -> Rect2:
+	return Rect2(_overlay.position, _overlay.size) if _overlay else Rect2()
 
 
 func field_lift() -> float:
@@ -91,6 +106,8 @@ func _tool_tip_mm() -> float:
 func _draw_tool() -> void:
 	if dark or _last_vm.is_empty():
 		return
+	var o := -_overlay.position  # view -> layer coordinates
+	_overlay.draw_set_transform(o, 0.0, Vector2.ONE)
 	var tip := tool_tip_screen()
 	var one := mm_to_screen(Vector3(_pick_x + 1.0, _tool_tip_mm(), 0.0)) - tip
 	var ppm := absf(one.x)
@@ -100,15 +117,16 @@ func _draw_tool() -> void:
 		_draw_field(tip, ppm)
 	_draw_side_rows(ppm)
 	if _tool_tex == null:
+		_overlay.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 		return
 	var tp: Array = _tool_meta.get("tip_px", [0.0, 0.0])
 	var sc := ppm / float(_tool_meta.get("ppmm", 24.0))
 	var at := tip - Vector2(tp[0], tp[1]) * sc
 	if _broken:
 		at.y += 0.6 * ppm
-	_overlay.draw_set_transform(at + Vector2(0.5, 0.8) * ppm * 0.4, 0.0, Vector2(sc, sc))
+	_overlay.draw_set_transform(o + at + Vector2(0.5, 0.8) * ppm * 0.4, 0.0, Vector2(sc, sc))
 	_overlay.draw_texture(_tool_tex, Vector2.ZERO, Color(0, 0, 0, 0.35))
-	_overlay.draw_set_transform(at, 0.0, Vector2(sc, sc))
+	_overlay.draw_set_transform(o + at, 0.0, Vector2(sc, sc))
 	_overlay.draw_texture(_tool_tex, Vector2.ZERO)
 	_overlay.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
