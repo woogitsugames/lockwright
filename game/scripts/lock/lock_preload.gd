@@ -58,6 +58,11 @@ static func paths_for(family: StringName, scene_path: String, section_px: float)
 ## Starts the background loads for the current job's lock screen (no-op for talk-only jobs).
 static func start(family: StringName, scene_path: String, section_px: float) -> int:
 	release()
+	# Headless (CI, GUT) has no GPU to warm up, and threaded texture loads into the dummy renderer
+	# intermittently hit "Parameter t is null" (texture_2d_initialize) when a test loads the same
+	# texture on the main thread at the same time.
+	if DisplayServer.get_name() == "headless":
+		return 0
 	var n := 0
 	for p in paths_for(family, scene_path, section_px):
 		if ResourceLoader.has_cached(p):

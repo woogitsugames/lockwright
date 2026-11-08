@@ -156,3 +156,26 @@ func test_large_lock_and_menu_textures_are_gpu_compressed() -> void:
 			"res://assets/photoreal/tray/tray_full.png", "res://assets/ui/menu/menu_portrait_pl.webp",
 			"res://assets/ui/workshop/workshop_base.webp"]:
 		assert_eq(_import_param(p, "compress/mode"), "4", "%s: Basis Universal" % p)
+
+
+func test_native_click_bank_holds_every_lock_click() -> void:
+	# D-101: the Oboe bridge had 32 slots for 336 clicks; most clicks took Godot's ~126 ms path
+	var n: int = Sfx._native_candidates().size()
+	assert_gt(n, 32, "more clicks than the old 32 slots")
+	var header := ProjectSettings.globalize_path("res://").path_join("../platform/android/lockwright-click-audio/src/main/cpp/click_engine.h")
+	var f := FileAccess.open(header, FileAccess.READ)
+	if f == null:
+		pass_test("plugin sources not next to the project")
+		return
+	var m := RegEx.create_from_string("kMaxSamples[ ]*=[ ]*([0-9]+)").search(f.get_as_text())
+	assert_not_null(m, "kMaxSamples in click_engine.h")
+	if m != null:
+		assert_gte(int(m.get_string(1)), n, "every lock click (%d) fits the native bank" % n)
+
+
+func test_click_path_counts_engine_without_bridge() -> void:
+	var before: Dictionary = Sfx.click_path_counts()
+	Sfx.play(&"set", &"brass")
+	var after: Dictionary = Sfx.click_path_counts()
+	assert_eq(int(after["engine"]), int(before["engine"]) + 1, "desktop: AudioServer path counted")
+	Sfx.stop_all_one_shots()

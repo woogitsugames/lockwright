@@ -51,7 +51,7 @@ class LockwrightLowLatencyAudio(godot: Godot) : GodotPlugin(godot) {
         val r = NativeBridge.nativeStatsReal()
         val keys = arrayOf("sampleRate", "framesPerBurst", "bufferSize", "bufferCapacity", "channelCount",
             "performanceMode", "sharingMode", "audioApi", "xRunCount", "opens", "droppedTriggers",
-            "voicesStolen", "plays")
+            "voicesStolen", "plays", "samplesLoaded", "sampleBytes")
         for (k in keys.indices) d[keys[k]] = i[k]
         d["performanceModeName"] = when (i[5].toInt()) { 12 -> "LowLatency"; 11 -> "PowerSaving"; 10 -> "None"; else -> i[5].toString() }
         d["sharingModeName"] = if (i[6].toInt() == 0) "Exclusive" else "Shared"

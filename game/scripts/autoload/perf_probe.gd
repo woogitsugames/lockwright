@@ -47,6 +47,7 @@ var _gpu_root_sum := 0.0
 var _cpu_render_sum := 0.0
 var _measured: Array[RID] = []
 var _day_after_job := ""
+var _click_scan := false
 
 
 func _enter_tree() -> void:
@@ -59,6 +60,8 @@ func _enter_tree() -> void:
 	frames_enabled = FileAccess.file_exists(FLAG_FILE) or OS.get_cmdline_user_args().has("--lw-perf")
 	if FileAccess.file_exists(FLAG_FILE):
 		for line in FileAccess.get_file_as_string(FLAG_FILE).split("\n"):
+			if line.strip_edges() == "click_scan=1":
+				_click_scan = true
 			if line.strip_edges().begins_with("day_after="):
 				_day_after_job = line.strip_edges().substr(10)
 	_tree_ms = Time.get_ticks_msec()
@@ -124,6 +127,8 @@ func _on_scene_changed() -> void:
 	print("LW_SCENE %s tap_ms=%d first_frame_ms=%d static_mb=%.0f tex_mb=%.0f" % [
 		_scene_path.get_file(), tap, now - _scene_enter_ms, _mb(Performance.MEMORY_STATIC),
 		_mb(Performance.RENDER_TEXTURE_MEM_USED)])
+	if _click_scan and _scene_path.get_file().begins_with("lock_job"):
+		_run_click_scan()
 	if _day_after_job != "" and _scene_path.ends_with("jobs_list.tscn"):
 		_show_day_after(scene, _day_after_job)
 		_day_after_job = ""
@@ -132,6 +137,21 @@ func _on_scene_changed() -> void:
 	_reset_window(now)
 	if frames_enabled:
 		_measure_viewports.call_deferred()
+
+
+## D-101 device check (flag line `click_scan=1`): every L2 event x material once through Sfx.play at
+## -60 dB in a lock screen, then the native / engine path counts (which clicks have a native slot).
+func _run_click_scan() -> void:
+	_click_scan = false
+	await get_tree().create_timer(2.0).timeout
+	var before: Dictionary = Sfx.click_path_counts()
+	for e in Sfx.EVENTS:
+		for m in Sfx.MATERIALS:
+			Sfx.play(e, m, -60.0)
+			await get_tree().create_timer(0.03).timeout
+	var after: Dictionary = Sfx.click_path_counts()
+	print("LW_CLICK_SCAN %d plays: native=%d engine=%d" % [Sfx.EVENTS.size() * Sfx.MATERIALS.size(),
+		int(after["native"]) - int(before["native"]), int(after["engine"]) - int(before["engine"])])
 
 
 func _show_day_after(host: Node, jid: String) -> void:
@@ -221,6 +241,14 @@ func _print_window(now: int) -> void:
 		Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME),
 		_mb(Performance.MEMORY_STATIC), _mb(Performance.RENDER_TEXTURE_MEM_USED),
 		_mb(Performance.RENDER_BUFFER_MEM_USED), _mb(Performance.RENDER_VIDEO_MEM_USED)])
+	if Sfx.has_method(&"click_path_counts"):
+		var c: Dictionary = Sfx.click_path_counts()
+		if int(c["native"]) + int(c["engine"]) > 0:
+			var st: Dictionary = Sfx.native_stats()
+			print("LW_CLICKS native=%d engine=%d bridge_samples=%s oboe_latency_ms=%s call_to_mix_p95_ms=%s xruns=%s stolen=%s engine_out_latency_ms=%.1f" % [
+				c["native"], c["engine"], st.get("samplesLoaded", "-"), st.get("estimatedLatencyMs", "-"),
+				st.get("callToMixP95Ms", "-"), st.get("xRunCount", "-"), st.get("voicesStolen", "-"),
+				AudioServer.get_output_latency() * 1000.0])
 	_reset_window(now)
 
 

@@ -17,22 +17,6 @@ static int64_t now_ns() {
   return static_cast<int64_t>(ts.tv_sec) * 1000000000LL + ts.tv_nsec;
 }
 
-// Cubic-free, allocation-at-load-time resampler (linear is enough for 1-3 ms clicks at 44.1/48 kHz).
-static std::vector<float> convert(const std::vector<int16_t>& in, int32_t src_rate, int32_t dst_rate) {
-  if (in.empty() || src_rate <= 0 || dst_rate <= 0) return {};
-  const double ratio = static_cast<double>(src_rate) / dst_rate;
-  const auto n = static_cast<size_t>(std::floor((in.size() - 1) / ratio)) + 1;
-  std::vector<float> out(n);
-  for (size_t i = 0; i < n; ++i) {
-    const double p = i * ratio;
-    const auto k = static_cast<size_t>(p);
-    const double f = p - k;
-    const float a = in[k] / 32768.f, b = in[std::min(k + 1, in.size() - 1)] / 32768.f;
-    out[i] = static_cast<float>(a + (b - a) * f);
-  }
-  return out;
-}
-
 bool ClickEngine::open_stream(oboe::SharingMode mode) {
   oboe::AudioStreamBuilder b;
   b.setDirection(oboe::Direction::Output)
@@ -54,12 +38,7 @@ bool ClickEngine::open_stream(oboe::SharingMode mode) {
   // Two bursts: the usual lowest glitch-free setting; the callback adapts on xruns.
   stream_->setBufferSizeInFrames(stream_->getFramesPerBurst() * 2);
   const int32_t rate = stream_->getSampleRate();
-  if (rate != rate_.load()) {
-    rate_ = rate;
-    for (int i = 0; i < kMaxSamples; ++i) {  // stream is not started yet: safe to rebuild the bank
-      if (!src_pcm_[i].empty()) bank_[i] = convert(src_pcm_[i], src_rate_[i], rate);
-    }
-  }
+  rate_ = rate;  // voices resample from each sample's own rate (step), nothing to rebuild
   r = stream_->requestStart();
   if (r != oboe::Result::OK) {
     error_ = std::string("requestStart: ") + oboe::convertToText(r);
@@ -94,14 +73,25 @@ void ClickEngine::stop() {
 bool ClickEngine::load_sample(int32_t id, const int16_t* pcm, size_t frames, int32_t rate) {
   if (id < 0 || id >= kMaxSamples || pcm == nullptr || frames == 0) return false;
   std::lock_guard<std::mutex> lock(open_mutex_);
+  if (rate <= 0 || frames < 2) return false;
   ready_[id].store(false, std::memory_order_release);
-  // A voice may still read the old buffer: silence it by waiting one burst cycle is overkill for a
-  // spike; samples are loaded once at start before any play().
-  src_pcm_[id].assign(pcm, pcm + frames);
+  // Samples are loaded once at start, before any play() of that id.
+  pcm_[id].assign(pcm, pcm + frames);
   src_rate_[id] = rate;
-  bank_[id] = convert(src_pcm_[id], rate, rate_.load());
   ready_[id].store(true, std::memory_order_release);
   return true;
+}
+
+int32_t ClickEngine::loaded_count() const {
+  int32_t n = 0;
+  for (int i = 0; i < kMaxSamples; ++i) n += ready_[i].load(std::memory_order_acquire) ? 1 : 0;
+  return n;
+}
+
+size_t ClickEngine::loaded_bytes() const {
+  size_t n = 0;
+  for (int i = 0; i < kMaxSamples; ++i) n += pcm_[i].size() * sizeof(int16_t);
+  return n;
 }
 
 bool ClickEngine::play(int32_t id, float gain, float pitch) {
@@ -129,21 +119,23 @@ oboe::DataCallbackResult ClickEngine::onAudioReady(oboe::AudioStream* s, void* d
         slot = v;
         break;
       }
-      const double left = bank_[voices_[v].sample].size() - voices_[v].pos;
+      const double left = pcm_[voices_[v].sample].size() - voices_[v].pos;
       if (slot < 0 || left < best) {
         slot = v;
         best = left;
       }
     }
     if (voices_[slot].sample >= 0) stolen_++;
-    voices_[slot] = Voice{t.sample, 0.0, t.gain, t.pitch};
+    const float step = t.pitch * static_cast<float>(src_rate_[t.sample]) / static_cast<float>(rate_.load());
+    voices_[slot] = Voice{t.sample, 0.0, t.gain, step};
     const uint32_t k = c2m_count_.fetch_add(1) % call_to_mix_ms_.size();
     call_to_mix_ms_[k] = static_cast<float>((t0 - t.t_call_ns) / 1e6);
   }
   for (auto& v : voices_) {
     if (v.sample < 0) continue;
-    const std::vector<float>& b = bank_[v.sample];
+    const std::vector<int16_t>& b = pcm_[v.sample];
     const double end = static_cast<double>(b.size() - 1);
+    const float g = v.gain / 32768.f;
     for (int32_t i = 0; i < frames; ++i) {
       if (v.pos >= end) {
         v.sample = -1;
@@ -151,7 +143,7 @@ oboe::DataCallbackResult ClickEngine::onAudioReady(oboe::AudioStream* s, void* d
       }
       const auto k = static_cast<size_t>(v.pos);
       const float f = static_cast<float>(v.pos - k);
-      out[i] += (b[k] + (b[k + 1] - b[k]) * f) * v.gain;
+      out[i] += (b[k] + (b[k + 1] - b[k]) * f) * g;
       v.pos += v.step;
     }
   }

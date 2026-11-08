@@ -67,13 +67,17 @@ struct Stats {
 
 class ClickEngine : public oboe::AudioStreamDataCallback, public oboe::AudioStreamErrorCallback {
  public:
-  static constexpr int kMaxSamples = 32;
+  // D-101: every L2 lock click the game offers (14 events x 4 materials x 6 variants = 336 today) fits;
+  // with 32 slots only the first events were native and the rest took Godot's ~126 ms path.
+  static constexpr int kMaxSamples = 512;
   static constexpr int kMaxVoices = 16;
 
   bool start();
   void stop();
-  // Called on a loading thread: converts int16 PCM at `rate` to float at the stream rate.
+  // Called on a loading thread: keeps the int16 PCM as is (resampled while mixing, no float copy).
   bool load_sample(int32_t id, const int16_t* pcm, size_t frames, int32_t rate);
+  int32_t loaded_count() const;
+  size_t loaded_bytes() const;
   // Real-time safe from the game thread: no allocation, no lock.
   bool play(int32_t id, float gain, float pitch);
   Stats stats();
@@ -87,11 +91,12 @@ class ClickEngine : public oboe::AudioStreamDataCallback, public oboe::AudioStre
   std::shared_ptr<oboe::AudioStream> stream_;
   std::mutex open_mutex_;
   std::atomic<int32_t> rate_{48000};
-  // Sample bank: written only before the slot is published (ready flag), read in the callback.
-  std::array<std::vector<float>, kMaxSamples> bank_;
+  // Sample bank (D-101): 16-bit mono PCM at its own rate, written only before the slot is published
+  // (ready flag), read in the callback; the voice step folds in src_rate / stream rate, so a stream
+  // rate change needs no rebuild and memory is 2 bytes per frame (336 clicks ~ a few MB).
+  std::array<std::vector<int16_t>, kMaxSamples> pcm_;
   std::array<std::atomic<bool>, kMaxSamples> ready_{};
   std::array<int32_t, kMaxSamples> src_rate_{};
-  std::array<std::vector<int16_t>, kMaxSamples> src_pcm_;  // kept to re-convert after a rate change
   SpscRing<Trigger, 256> queue_;
   std::array<Voice, kMaxVoices> voices_{};
   // Statistics written by the callback, read by stats() (approximate, lock-free).

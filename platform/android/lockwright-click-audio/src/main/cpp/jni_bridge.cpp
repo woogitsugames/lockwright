@@ -36,7 +36,8 @@ JNIEXPORT jlongArray JNICALL FN(nativeStatsInt)(JNIEnv* env, jclass) {
   const lwaudio::Stats s = engine().stats();
   const jlong v[] = {s.sample_rate, s.frames_per_burst, s.buffer_size, s.buffer_capacity, s.channels,
                      s.performance_mode, s.sharing_mode, s.audio_api, s.xruns, s.opens, s.dropped_triggers,
-                     s.voices_stolen, s.plays};
+                     s.voices_stolen, s.plays, engine().loaded_count(),
+                     static_cast<jlong>(engine().loaded_bytes())};
   jlongArray a = env->NewLongArray(sizeof(v) / sizeof(v[0]));
   env->SetLongArrayRegion(a, 0, sizeof(v) / sizeof(v[0]), v);
   return a;

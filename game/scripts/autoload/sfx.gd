@@ -50,6 +50,7 @@ var _native_loaded: Dictionary = {}  # "event/material/n" -> true
 var _native_fails := 0
 var _native_enabled := false
 var _native_plays := 0
+var _engine_clicks := 0  # L2 lock clicks that went through AudioServer (no native slot / bridge off)
 var _native_skipped := 0
 ## Tests: id -> AudioStreamWAV offered to the bridge instead of the shipped clicks.
 var native_test_samples: Dictionary = {}
@@ -222,6 +223,23 @@ func use_native_click(bridge: Object, name: String = "") -> void:
 	print("Sfx: native click bridge %s play=%s load_sample=%s samples=%d/%d (skipped non-PCM16/stereo %d) -> %s in %d ms" % [
 		name, can_play, can_load, _native_loaded.size(), total, _native_skipped,
 		"native" if _native_enabled else "AudioServer fallback", Time.get_ticks_msec() - t0])
+	if _native_enabled and native_click_has(&"stats"):
+		var st: Variant = bridge.call(&"stats")
+		if st is Dictionary and st.has("samplesLoaded"):
+			print("Sfx: bridge holds %d samples, %.1f MB PCM16" % [int(st["samplesLoaded"]), int(st["sampleBytes"]) / 1048576.0])
+
+
+## D-101: how many L2 lock clicks took each path since start (PerfProbe, device tests).
+func click_path_counts() -> Dictionary:
+	return {"native": _native_plays, "engine": _engine_clicks}
+
+
+## D-101: the native bridge's own statistics (Oboe latency, xruns, call-to-mix), {} without a bridge.
+func native_stats() -> Dictionary:
+	if _native_click == null or not native_click_has(&"stats"):
+		return {}
+	var st: Variant = _native_click.call(&"stats")
+	return st if st is Dictionary else {}
 
 
 ## Same JNISingleton rule as Haptics.native_has(): Android plugin methods are visible only
@@ -313,6 +331,8 @@ func play(event: StringName, material: StringName = &"brass", volume_db: float =
 	var stream := _stream_for(event, material)
 	if stream == null:
 		return
+	if not LOOPS.has(event):
+		_engine_clicks += 1
 	var p := _take_player()
 	if p == null:
 		return
