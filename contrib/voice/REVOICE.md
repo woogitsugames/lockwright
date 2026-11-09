@@ -9,17 +9,9 @@ Razem: **0** plików — `job.night_nurse.line.2` (N-81 / D-91, „spod czternas
 
 ## Zmiana słów do nagrania — audyt treści 2026-11-09 (`docs/handoff/CONTENT-AUDIT-2026-11-09.md`)
 
-Napis w `game/i18n/content.csv` **jeszcze się nie zmienił** (zostaje zgodny z nagraniem). Sesja lektora: wpisać nowy tekst do `content.csv` we wszystkich 5 językach, nagrać ponownie tym samym głosem (`elzbieta`, ustawienia jak w `contrib/voice/tts_inputs.json`), sprawdzić ASR i usunąć wiersze stąd.
+Załatwione 2026-11-09: `job.christmas_eve_heat.line.4` („Ciepło wróci przed kolacją…” — kwestia pada przed otwarciem szafki) wpisane do `content.csv` we wszystkich 5 językach i nagrane ponownie tym samym głosem (`LW elzbieta`), seedem i ustawieniami; ASR (faster-whisper medium) bez błędów we wszystkich językach. EN w paczce gry, PL/DE/FR/ES w paczkach głosów (D-100). Skan tekst-vs-nagranie: 0 innych zmian słów; `tools/voice_lines.py missing`: 0. Pozostałe sprzeczności z audytu (zdjęcie Krystyny „z nim” w l.2, wąs Borysa w l.3–4) rozwiązano napisami przy kartach, bez zmiany nagrań.
 
-| klucz | język | obecnie (napis = nagranie) | nowy tekst | powód |
-|---|---|---|---|---|
-| `job.christmas_eve_heat.line.4` | pl | Grzejniki znowu są ciepłe. Przy stole nadal czeka na pana miejsce. | Ciepło wróci przed kolacją. Przy stole nadal czeka na pana miejsce. | Kwestia pada na przyjeździe, przed otwarciem szafki: Paweł (l.2) dopiero „po otwarciu sprawdzi ogrzewanie”, a Elżbieta już mówi, że grzejniki są ciepłe. „Dzień po” („Kaloryfery grzały całą noc”) zostaje bez zmian. |
-| `job.christmas_eve_heat.line.4` | en | The radiators are warm again. And there's still a place for you at the table. | The heat will be back before supper. And there's still a place for you at the table. | j.w. |
-| `job.christmas_eve_heat.line.4` | de | Die Heizkörper sind wieder warm. Und am Tisch wartet noch ein Platz auf Sie. | Bis zum Abendessen ist es wieder warm. Und am Tisch wartet noch ein Platz auf Sie. | j.w. |
-| `job.christmas_eve_heat.line.4` | fr | Les radiateurs sont de nouveau chauds. Et une place vous attend toujours à table. | La chaleur sera revenue avant le dîner. Et une place vous attend toujours à table. | j.w. |
-| `job.christmas_eve_heat.line.4` | es | Los radiadores vuelven a estar calientes. Y en la mesa aún le espera un sitio. | El calor volverá antes de la cena. Y en la mesa aún le espera un sitio. | j.w. |
-
-Razem: **5** plików. Pozostałe sprzeczności z audytu (zdjęcie Krystyny „z nim” w l.2, wąs Borysa w l.3–4) rozwiązano napisami przy kartach, bez zmiany nagrań.
+Razem do nagrania: **0** plików.
 
 ## Sprawdzone po fladze ASR, bez ponownego nagrania (2026-11-06)
 
