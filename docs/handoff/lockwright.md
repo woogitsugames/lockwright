@@ -1,5 +1,7 @@
 # Lockwright — prompt startowy dla nowej sesji A (koordynator)
 
+> **Aktualizacja 2026-11-09 (najnowsza): użyj `docs/handoff/START-PROMPT.md`** — aktualny prompt startowy (także dla sesji w chmurze).
+>
 > **Aktualizacja 2026-11-09:** najnowszy stan i sposób pracy są w `docs/handoff/SESSION-A-HANDOVER.md` **§14** (sesja lokalna na PC właściciela z RTX 5070, maks. 3 agentów Opus, decyzje do D-108). Czytaj §14 przed resztą tego pliku; ostatnia decyzja to D-108, nie D-77.
 
 

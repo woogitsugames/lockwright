@@ -1,0 +1,31 @@
+{
+  "id": "job.spring_cellar_halina",
+  "chapter": 13,
+  "district": "?r?dmie?cie",
+  "family": "lever",
+  "tier": 2,
+  "verification": "?wiadek pani Zosia potwierdza, ?e piwnica nale?y do Haliny; list do Haliny wskazuje ten sam adres. Pr?g 2.",
+  "reward_coins": 85,
+  "tone": "ciep?y, wiosenny",
+  "i18n": {
+    "title": "job.spring_cellar_halina.title",
+    "client": "job.spring_cellar_halina.client",
+    "situation": "job.spring_cellar_halina.situation"
+  },
+  "lines": [
+    "halina",
+    "zosia",
+    "locksmith",
+    "halina"
+  ],
+  "after": [
+    "halina"
+  ],
+  "cards": [
+    "witness",
+    "letter"
+  ],
+  "threshold": 2,
+  "place": "cellar",
+  "time": "day"
+}
