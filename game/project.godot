@@ -6,7 +6,7 @@ config_version=5
 [application]
 
 config/name="Lockwright"
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 config/description="Lockwright: Emergency Locksmith — premium mobile game. This is a game, not a course."
 run/main_scene="res://scenes/boot.tscn"
 config/features=PackedStringArray("4.7", "Mobile")

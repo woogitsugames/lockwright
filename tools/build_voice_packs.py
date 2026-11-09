@@ -42,7 +42,7 @@ BUNDLED = ("en",)   # D-100: only EN ships in the game package; PL is a pack lik
 DEFAULT_BASE_URL = "https://github.com/woogitsugames/lockwright/releases/download/voice-packs-{version}"
 HOUSEKEEPING = {
     "res://project.binary",
-    "res://icon.svg",
+    "res://icon.png",
     "res://.godot/uid_cache.bin",
     "res://.godot/global_script_class_cache.cfg",
 }

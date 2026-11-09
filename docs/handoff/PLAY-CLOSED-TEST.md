@@ -143,7 +143,7 @@ Oczekiwany wynik: **PEGI 3 / ESRB E / USK 0 / IARC 3+** (z zastrzeżeniem warian
 
 Wymagane pola (wymiary według Play Console): nazwa (≤ 30), krótki opis (≤ 80), pełny opis (≤ 4000), ikona 512×512 PNG
 (≤ 1 MB), grafika promocyjna 1024×500, min. 2 zrzuty z telefonu. Stan materiałów (bez nowej pracy marketingowej):
-teksty PL/EN w `store/listing.md` (`store/tools/check_lengths.py` OK), ikona `site/assets/icon-512.png` (G12 v2, D-50),
+teksty PL/EN w `store/listing.md` (`store/tools/check_lengths.py` OK), ikona `store/icon/play-icon-512.png` (G12 v2 #01, D-50/D-109),
 grafika promocyjna i zrzuty — `RELEASE-CHECKLIST.md` S2/S8. Test wewnętrzny działa bez kompletu tych materiałów.
 
 Do uzupełnienia przez właściciela (nie trafia do repo jako dane osobowe ani hasła): nazwa wydawcy, kontakt e-mail,
@@ -156,8 +156,8 @@ domena i publikacja `site/` (D-51), data i administrator w polityce prywatności
 |---|---|---|
 | D-06 otwarte | wybór Free/Paid przy tworzeniu aplikacji jest jednokierunkowy | zdecydować przed pkt 4 §5 |
 | Brak sekretów klucza uploadu | AAB z CI niepodpisany → Play odrzuca | §1 |
-| Ikona w telefonie (launcher) to zastępczy `game/icon.svg` (złoty klucz na ciemnym tle — sprzeczne z listą zakazów CLAUDE.md); zatwierdzona ikona G12 nie jest podpięta w presecie (`launcher_icons/*` puste) | testerzy widzą zastępczą ikonę; ikona adaptacyjna wymaga wersji 432×432 z marginesem | przygotować `launcher_icons/main_192x192` i `adaptive_foreground_432x432` z G12 (grafika A) |
-| Nazwa pod ikoną: `package/name="Lockwright: Locksmith on Call"` (inna niż EN z CLAUDE.md „Emergency Locksmith”; w launcherze zostanie ucięta) | kosmetyka | właściciel: np. `Lockwright` |
+| ~~Ikona w telefonie: zastępczy `game/icon.svg`~~ — **zamknięte (D-109):** G12 v2 #01 w presecie (adaptacyjna + monochromatyczna + 192), plansza masek `device-tests/fixes/icon/masks.png` | — | ikona do Play Console: `store/icon/play-icon-512.png` |
+| ~~Nazwa pod ikoną „Lockwright: Locksmith on Call”~~ — **zamknięte (D-109):** `package/name="Lockwright"` we wszystkich językach; pełny tytuł w grze i sklepie | — | — |
 | Auto Backup wyłączony (`allowBackup=false`) | postęp nie przechodzi na nowy telefon przez kopię Google | decyzja właściciela; włączenie wymaga wykluczenia `user://voice_packs/` (limit 25 MB) |
 | Pobieranie głosów w tle bez pytania (D-100) na danych komórkowych | Play: dozwolone (treść, nie kod); Apple 4.2.3 przy iOS — osobna ocena | rozmiar jest pokazywany; ewentualnie ograniczyć do Wi-Fi |
 | Hosting głosów na GitHub Releases | dostępność i limity GitHub; zmiana hostingu = zmiana polityki (znacznik 1) | Cloudflare po sygnale właściciela (D-51), `VOICE_PACKS_BASE_URL` |

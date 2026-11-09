@@ -348,3 +348,15 @@ Own Blender 4.2.9 LTS / Cycles OptiX renders (RTX 5070), procedural and photo ma
 | `game/assets/arrival/{krakow_tenement_gate/rainy,ghent_beguinage/rainy,charleroi_letters/evening,liege_bakery/night}/{plate.webp,seq/*.webp}` | `art/blender/arrival_place.py --job <id>` (kits `facade` / `shop` style `bakery`; hold `--mode still --still-res 1080x1920 --still-spp 512 --device GPU`, walk `--mode seq --res 1080x1920 --spp 128`, OIDN; masters in `build/local-session/arrival-master/`), exported with `art/tools/arrival_export.py --job <id> --master <dir>` (1080x1920 WebP q80, lossy import 0.8) |
 | `game/assets/arrival/{uncle_safe_heirs/evening,dollhouse_wooden_lock/day,widow_bureau/evening,t43_09_08_spare_key_hook/day}/{plate.webp,seq/*.webp}` | `art/blender/arrival_scene.py --job <id> --hair 1` (stairwell kit, props `obituary`, `suitcase`, `shoes`, `scooter`, `plank`, `book_stack`), same render and export settings |
 | `art/renders/arrival/<job>_<time>_{hold.png,hold.json,final_contact.png}` (+ `_hold_depth.png` for stairwell jobs), `arrival_ch3_6_board.jpg` | same renders; contact sheets via `arrival_composite.py --contact`, board with Pillow (incl. two rejected 64-spp look-dev previews) |
+
+## App icon set — 2026-11-09 (D-109)
+
+Source: approved G12 v2 #01 enamel "L" plate (D-50; AI-generated, ChatGPT, prompts and provenance in `contrib/gpt/G12/v2/ASSETS.md`, tool terms per D-42). Derived files made with `python tools/build_app_icon.py` (Pillow/NumPy: scaling, alpha masks, no new generation); `--check` verifies sizes, modes, the 66 dp safe zone and the Play 1 MiB limit.
+
+| Files | What / processing |
+|---|---|
+| `game/assets/icon/android/{foreground_432,background_432,monochrome_432,main_192}.png` | Android adaptive layers (foreground = G12 v2 foreground ×0.882 so plate + shadow stay inside the 66 dp circle; background = G12 v2 background; monochrome = plate silhouette with the "L" cut out, from the foreground alpha and the navy enamel colour) and legacy 192 launcher icon (G12 v2 1024 scaled, rounded square). Excluded from the game pck; lossy import 0.8 |
+| `game/assets/icon/ios/icon_1024.png` | iOS / App Store icon, copy of `contrib/gpt/G12/v2/ios/01_enamel_l_1024.png` (opaque RGB) |
+| `game/icon.png` | project / window icon, 128 px rounded square from the same 1024 (lossy import 0.8) |
+| `store/icon/play-icon-512.png` | Google Play listing icon 512×512, opaque, from the same 1024 |
+| `docs/handoff/device-tests/fixes/icon/masks.png` | preview sheet: circle / squircle / rounded square / teardrop masks, safe zone, themed icon, launcher sizes (not in the game) |
