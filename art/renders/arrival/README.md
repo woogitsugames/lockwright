@@ -91,6 +91,29 @@ python art/tools/arrival_export.py --job grandma_broth --master $M     # albo --
 Pliki tutaj: `<job>_<pora>_hold.{png,json}` + `_hold_depth.png` (finał GPU 512 spp), `<job>_<pora>_final_contact.png`
 (36 klatek 128 spp), `arrival_early_jobs_board.jpg` (pięć stop-klatek obok pilota).
 
+## Rozdziały 3–6 (2026-11-09, D-105)
+
+Siedem zleceń z rozdz. 3–6 i drzwi 21 pana Kazimierza (rozdz. 9) dostały scenkę zamiast pożyczonego zdjęcia G07 (część wybrana po audycie D-104: wieczorne drzwi 7 to numer pani Haliny, „Administracja” przy beginażu, drzwi 12 zamiast 21). Arkusz: `arrival_ch3_6_board.jpg`
+(finały obok pizzerii i muzeum + dwa odrzucone podglądy 720×1280 / 64 spp).
+
+| Zlecenie | Zestaw | Pora | Co opowiada |
+|---|---|---|---|
+| `krakow_tenement_gate` | `facade` / `tenement_gate` | deszcz | brama z 1890 r. (konserwator: ani jednej dziury), lampa w łuku, zamek skrzynkowy z kluczem, który utknął, kartka lokatorów ze strzałką na sąsiednie podwórko, odbojniki, mokra kostka |
+| `ghent_beguinage` | `facade` / `beguinage` | deszcz | bielony dom beginażu, smołowany cokół, zielone drzwi ze starym szyldem zamka, rower brata Pietera z wiklinowym koszykiem |
+| `liege_bakery` | `shop` / `bakery` | noc (3:50) | pęk 30 kluczy wujka na złym kluczu w zamku zaplecza, ciasto rośnie pod lnem, pusta ściana na pieczywo, zegar 3:50 |
+| `uncle_safe_heirs` | klatka | wieczór | drzwi nr 16 uchylone przez spadkobierców, klepsydra wujka przy drzwiach, walizka i buty w przedpokoju |
+| `dollhouse_wooden_lock` | klatka | dzień | drzwi nr 11, hulajnoga Hani, dębowa deska na nowy drewniany klucz |
+| `widow_bureau` | klatka | wieczór | ciemnozielone drzwi nr 2 (nie 7), dwa stosy książek męża przewiązane sznurkiem |
+| `charleroi_letters` | `facade` / `beguinage` (czerwona cegła) | wieczór | górniczy dom szeregowy pani Martine, nr 38 |
+| `t43_09_08_spare_key_hook` | klatka | dzień | drzwi pana Kazimierza nr 21, ta sama kamienica co 19 pani Teresy, bez wianka |
+
+Odrzucone: `brussels_townhouse` (styl `townhouse` zostaje w zestawie jako look-dev) i `allotment_shed` (zestaw usunięty) —
+nie trzymały poziomu klatki/pizzerii. Polecenia jak wyżej (`arrival_place.py` dla zestawów, `arrival_scene.py --hair 1`
+dla klatki), pora `rainy` jest własną porą scenki. Czasy na RTX 5070: stop-klatka 512 spp / przejazd 36 × 128 spp (z budową sceny):
+krakow 129 s / 906 s, ghent 202 s / 1133 s, charleroi 122 s / 980 s, liege 47 s / 550 s, uncle 75 s / 713 s, widow 74 s / 706 s,
+dollhouse 69 s / 680 s, spare_key_hook 66 s / 639 s (mgła w deszczu dokłada ok. 30 %). Eksport: 1,4–1,7 MB na zlecenie
+(charleroi 2,7 MB — drobna cegła), razem 14 MB.
+
 ## Czego potrzebuje gra
 
 1. **Sekwencja** `<job>_<time>_seq/f_####.png` (12 fps, 36 klatek) — odtwarzana raz jako flipbook albo po
