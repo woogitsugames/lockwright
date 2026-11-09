@@ -30,6 +30,7 @@
   "threshold": 2,
   "place": "locker",
   "time": "evening",
+  "arrival_from": "job.drummer_locker",
   "outcome": "open",
   "source": "contrib/gpt/T09 (D-46; main career since D-71)",
   "card_detail": {

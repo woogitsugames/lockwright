@@ -296,3 +296,36 @@ func test_chapter_3_to_6_scenes_replace_the_g07_photo() -> void:
 	# D-104 audit: the evening G07 photo's door 7 is Mrs Halina's; these evening flats now show their own doors
 	for jid: String in ["job.uncle_safe_heirs", "job.widow_bureau", "job.charleroi_letters"]:
 		assert_false(ArrivalScene.place_still(JobRun.job_by_id(jid)).is_empty(), "%s: own door, not G07's 7" % jid)
+
+
+## D-110: the remaining wrong placeholders (D-104 audit). Four places get a scene; jobs in the same place reach
+## it through `arrival_from`, so no job there shows the evening G07 door 7, the "Pralnia" sign or the
+## locksmith-workshop sign any more; Borys's photo card is his own bike, not the bike_interview frame.
+const D110_SCENES := {"job.shared_room_door": "evening", "job.student_dorm": "night", "job.drummer_locker": "evening",
+	"job.gosia_workbench_drawer": "day"}
+const D110_SHARED := {"job.shared_room_door": ["job.carol_singers_chest", "job.refuse_t43_12_surprise_key",
+	"job.warm_room_for_neighbours", "job.wigilia_table_drawer", "job.t43_09_02_blanket_cupboard", "job.t43_09_04_choir_case",
+	"job.t43_12_03_community_store", "job.t43_12_04_school_box", "job.t43_12_05_tea_fund_case"],
+	"job.drummer_locker": ["job.edek_rehearsal_store", "job.t43_11_05_rehearsal_chest"],
+	"job.student_dorm": ["job.t43_10_05_porters_drawer"], "job.gosia_workbench_drawer": ["job.bramah_bureau"]}
+
+
+func test_placeholder_places_get_their_own_scene() -> void:
+	for jid: String in D110_SCENES:
+		var r := ArrivalScene.resolve(JobRun.job_by_id(jid))
+		assert_eq(String(r.get("time", "")), String(D110_SCENES[jid]), "%s plays its own scene" % jid)
+		var plate := "%s/%s/plate.webp" % [jid.trim_prefix("job."), D110_SCENES[jid]]
+		for other: String in D110_SHARED[jid]:
+			var job := JobRun.job_by_id(other)
+			assert_eq(String(job.get("arrival_from", "")), jid, other)
+			assert_true(ArrivalScene.resolve(job).is_empty(), "%s has no climb of its own" % other)
+			var still := ArrivalScene.place_still(job)
+			assert_eq(still.size(), 2, other)
+			if still.size() == 2:
+				assert_true(String(still[0]).ends_with(plate), "%s shows %s" % [other, plate])
+	for other: String in ["job.t43_09_04_choir_case", "job.bramah_bureau"]:
+		var scene := await _open(JobRun.job_by_id(other), true)
+		assert_false(scene.place_plate.visible, "%s: no borrowed sign / door plate beside the title" % other)
+	var photo: Dictionary = JobRun.job_by_id("job.t43_11_02_bicycle_stand")["card_detail"]["photo"]
+	assert_false(String(photo["image"]).contains("bike_interview"), "Borys's photo is his own bike")
+	assert_true(ResourceLoader.exists(String(photo["image"])))

@@ -34,7 +34,7 @@
   "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)",
   "card_detail": {
     "photo": {
-      "image": "res://assets/arrival/bike_interview/day/plate.webp",
+      "image": "res://assets/ui/cards/photo_borys_bike_before.webp",
       "focus": [
         0.5,
         0.6

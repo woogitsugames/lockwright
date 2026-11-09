@@ -30,6 +30,7 @@
   "threshold": 2,
   "place": "locker",
   "time": "day",
+  "arrival_from": "job.shared_room_door",
   "outcome": "open",
   "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
 }

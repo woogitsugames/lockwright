@@ -114,7 +114,7 @@ krakow 129 s / 906 s, ghent 202 s / 1133 s, charleroi 122 s / 980 s, liege 47 s 
 dollhouse 69 s / 680 s, spare_key_hook 66 s / 639 s (mgła w deszczu dokłada ok. 30 %). Eksport: 1,4–1,7 MB na zlecenie
 (charleroi 2,7 MB — drobna cegła), razem 14 MB.
 
-## Miejsca zastępcze z audytu (2026-11-09, D-109)
+## Miejsca zastępcze z audytu (2026-11-09, D-110)
 
 Cztery miejsca, które pokazywały złe zdjęcie zastępcze (drzwi 7 pani Haliny, „Pralnia”, „Warsztat ślusarski”), dostały
 scenkę; inne zlecenia w tym samym miejscu biorą jej stop-klatkę przez `arrival_from`. Arkusz: `arrival_placeholders_board.jpg`.

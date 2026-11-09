@@ -58,6 +58,11 @@ JOBS = {
     'widow_bureau': {'evening': [(None, 'widow_bureau_evening_hold.png', [])]},          # door 2, not G07's 7 (Mrs Halina's)
     't43_09_08_spare_key_hook': {'day': [(None, 't43_09_08_spare_key_hook_day_hold.png', [])]},   # Mr Kazimierz's own door 21
     'charleroi_letters': {'evening': [(None, 'charleroi_letters_evening_hold.png', [])]},
+    # D-110: places that had a wrong placeholder (others reach them through `arrival_from` in the job data)
+    'shared_room_door': {'evening': [(None, 'shared_room_door_evening_hold.png', [])]},       # the community room's own door
+    'student_dorm': {'night': [(None, 'student_dorm_night_hold.png', [])]},                  # dorm corridor, room 412
+    'drummer_locker': {'evening': [(None, 'drummer_locker_evening_hold.png', [])]},          # campus rehearsal room, locker 8
+    'gosia_workbench_drawer': {'day': [(None, 'gosia_workbench_drawer_day_hold.png', [])]},  # Gosia's restoration workshop
 }
 CONTACT_COLS, CONTACT_W = 6, 1080   # arrival_composite.contact() defaults
 IMPORT_TEMPLATE = """[remap]

@@ -293,7 +293,7 @@ def bike(S, RY):
     wheel and frame held to the hoop by a coiled cable lock with four thumbwheels."""
     B = S.get('bike', {})
     frame = paint('bike_paint', tuple(B.get('color', (0.035, 0.11, 0.075))), rough=B.get('rough', 0.32), metal_col=(0.5, 0.5, 0.5), chip=B.get('chip', 0.4), grime=B.get('grime', 0.5))
-    if B.get('rust'):   # D-109: Borys's bike before the restoration: paint gone to rust bloom
+    if B.get('rust'):   # D-110: Borys's bike before the restoration: paint gone to rust bloom
         frame = iron('bike_rust', rust=B['rust'], base=tuple(B.get('color', (0.12, 0.08, 0.06))), polish=0.1, seed=5, scale=0.7)
     chrome_free = metal('bike_steel', (0.52, 0.52, 0.51), 0.3, marks='turn', marks_axis=(0, 1, 0), wear=0.3, grime=0.6)
     rim_m = metal('rim_alu', (0.66, 0.66, 0.65), 0.3, marks='turn', marks_axis=(0, 1, 0), wear=0.2, grime=0.5)
@@ -507,7 +507,7 @@ def bakery_props(S, FY, LY, HX, HZ, CX1, shelf_m):
 
 
 def atelier_wall(S, FY):
-    """Gosia's restoration workshop at the port (D-109): instead of the oven, a pegboard tool wall with clamps,
+    """Gosia's restoration workshop at the port (D-110): instead of the oven, a pegboard tool wall with clamps,
     chisels, a coping saw and a mallet on its hooks, a shelf of glue pots and brushes above it."""
     peg = ph('pegboard', 'pegboard_brown', scale=900, metallic=0.0, rough_add=0.05, bump=0.8, grime=0.8)
     PX0, PX1 = S.get('peg_x', (-3050, -1300)); y = FY - 20
@@ -802,7 +802,7 @@ def kit_corridor():
     ceil = lime_wall('corr_ceiling', (0.80, 0.80, 0.78), seed=22, dirt=0.1, cracks=0.0)
     accent = ph('veneer', 'g03:oak_satin', scale=2400, rot=0, metallic=0.0, base=tuple(S.get('veneer', (0.55, 0.40, 0.26))), base_mix=0.45, rough_add=0.08, coat=0.15, bump=0.15, grime=0.1)
     DX0, DX1, DTOP = -450, 450, 2080
-    back = bx('end_wall', X0, X1, FY, FY + 250, 0, CEIL, wall if S.get('dorm') else accent)   # D-109: the dorm's end wall is painted
+    back = bx('end_wall', X0, X1, FY, FY + 250, 0, CEIL, wall if S.get('dorm') else accent)   # D-110: the dorm's end wall is painted
     cut(back, bx('hole', DX0 - 40, DX1 + 40, FY - 10, FY + 260, -10, DTOP + 40))
     WIN = S.get('window', (1900, 500))     # side window in the left wall near the door (y range): dawn rakes across the floor
     lwall = bx('left_wall', X0 - 200, X0, -9000, FY + 250, 0, CEIL, wall)
@@ -889,7 +889,7 @@ def kit_corridor():
         tube('umb_shaft', [(0, 0, -40), (0, 0, 900)], 6, metal('umb_steel', (0.5, 0.5, 0.5), 0.3, marks=None), smooth_pts=False).parent = u
         tube('umb_handle', [(0, 0, 900), (0, 0, 1000), (0, 30, 1040), (0, 60, 1000)], 11, black_plastic).parent = u
         u.matrix_world = Matrix.Translation((X1 - 60, yc + 540, 40)) @ Matrix.Rotation(math.radians(-8), 4, 'Y')
-    if S.get('dorm'):   # D-109: a campus dorm, not a developer block: whiteboard and stickers on the door, a drying rack
+    if S.get('dorm'):   # D-110: a campus dorm, not a developer block: whiteboard and stickers on the door, a drying rack
         wb = plastic('whiteboard', (0.86, 0.86, 0.84), rough=0.15, grime=0.3, sheen_scuffs=0.3)
         bx('wb', -260, 60, LY - 4, LY - 1, 1180, 1520, wb, bev=2)
         bx('wb_frame', -268, 68, LY - 3, LY - 0.5, 1172, 1528, plastic('wb_frame', (0.55, 0.55, 0.56), rough=0.3))
@@ -1699,7 +1699,7 @@ def kit_facade():
     return {'door': door_quad, 'lock': lock_quad}
 
 
-# ================================================================ lockers kit (campus rehearsal room, D-109)
+# ================================================================ lockers kit (campus rehearsal room, D-110)
 def kit_lockers():
     """The campus rehearsal room after hours (job.drummer_locker): a row of grey steel lockers with louvres and
     tubular cam locks (Iga's is number 8), acoustic panels, a drum hardware case, an amp, a music stand and cables

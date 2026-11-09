@@ -790,7 +790,7 @@ def P_book_stack(c):
 
 def P_notice_board(c):
     """The community room's cork notice board by its door: pinned sheets (unreadable bars), a child's drawing, a
-    sign-up sheet with a pen on a string, coloured pins (D-109)."""
+    sign-up sheet with a pen on a string, coloured pins (D-110)."""
     x0, z0 = c.get('at', (560, 1150)); W, H = c.get('size', (520, 400))
     frame = oak('board_frame', light=(0.45, 0.32, 0.18), dark=(0.25, 0.16, 0.08), axis='X', seed=121, coat=0.5, coat_rough=0.4, wear=0.6, grime=0.8)
     cork = plastic('cork', (0.42, 0.28, 0.15), rough=0.9, seed=9, grime=0.4, sheen_scuffs=0.0)
@@ -843,7 +843,7 @@ PROPS = {'gas_riser': P_gas_riser, 'cat_bowl': P_cat_bowl, 'toy_mouse': P_toy_mo
          'obituary': P_obituary, 'suitcase': P_suitcase, 'shoes': P_shoes,   # D-108: job.uncle_safe_heirs
          'scooter': P_scooter, 'plank': P_plank,
          'book_stack': P_book_stack,   # D-108: job.widow_bureau
-         'notice_board': P_notice_board, 'folding_chairs': P_folding_chairs}   # D-109: the community room (job.shared_room_door)       # D-108: job.dollhouse_wooden_lock
+         'notice_board': P_notice_board, 'folding_chairs': P_folding_chairs}   # D-110: the community room (job.shared_room_door)       # D-108: job.dollhouse_wooden_lock
 # mailbox: a letter sticking out of the slot (grandma: "the letter in the mailbox is addressed to you"),
 # or stuffed full (nobody has emptied it for weeks)
 mb_items = 1 if MAILBOX.get('letter_out') else (5 if MAILBOX.get('overflow') else 0)

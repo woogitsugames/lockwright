@@ -30,6 +30,7 @@
   "threshold": 2,
   "place": "apartment",
   "time": "evening",
+  "arrival_from": "job.shared_room_door",
   "outcome": "open",
   "source": "contrib/gpt/T18 (review: contrib/gpt/REVIEW-T18.md)",
   "card_detail": {

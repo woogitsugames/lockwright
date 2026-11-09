@@ -29,6 +29,7 @@
   "threshold": 2,
   "place": "apartment",
   "time": "day",
+  "arrival_from": "job.gosia_workbench_drawer",
   "card_detail": {
     "photo": {
       "image": "res://assets/ui/gpt/cast/episodic/portrait_gosia.webp",

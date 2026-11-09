@@ -546,6 +546,110 @@
       "anchors": {
         "evening": {}
       }
+    },
+    "job.shared_room_door": {
+      "dir": "res://assets/arrival/shared_room_door",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "evening"
+      ],
+      "default_time": "evening",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          21,
+          27
+        ]
+      },
+      "anchors": {
+        "evening": {}
+      }
+    },
+    "job.student_dorm": {
+      "dir": "res://assets/arrival/student_dorm",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "night"
+      ],
+      "default_time": "night",
+      "hold": "",
+      "focus": [
+        0.55,
+        0.55
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          20,
+          26
+        ]
+      },
+      "anchors": {
+        "night": {}
+      }
+    },
+    "job.drummer_locker": {
+      "dir": "res://assets/arrival/drummer_locker",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "evening"
+      ],
+      "default_time": "evening",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.5
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          20,
+          26
+        ]
+      },
+      "anchors": {
+        "evening": {}
+      }
+    },
+    "job.gosia_workbench_drawer": {
+      "dir": "res://assets/arrival/gosia_workbench_drawer",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "day"
+      ],
+      "default_time": "day",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.55
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          20,
+          26
+        ]
+      },
+      "anchors": {
+        "day": {}
+      }
     }
   }
 }

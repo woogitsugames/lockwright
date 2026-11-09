@@ -360,3 +360,14 @@ Source: approved G12 v2 #01 enamel "L" plate (D-50; AI-generated, ChatGPT, promp
 | `game/icon.png` | project / window icon, 128 px rounded square from the same 1024 (lossy import 0.8) |
 | `store/icon/play-icon-512.png` | Google Play listing icon 512×512, opaque, from the same 1024 |
 | `docs/handoff/device-tests/fixes/icon/masks.png` | preview sheet: circle / squircle / rounded square / teardrop masks, safe zone, themed icon, launcher sizes (not in the game) |
+
+## Placeholder places replaced — 2026-11-09 (D-110)
+
+Own Blender 4.2.9 LTS / Cycles OptiX renders (RTX 5070), procedural and photo materials from `art/textures/photo` (workshop_concrete, pegboard_brown, cement_tiles, terrazzo_grey_red, steel_cast_grey_paint, wall_lime_plaster, G03 oak), no AI generation, no brands, no readable text except door and locker numbers.
+
+| Assets | Script and final parameters |
+|---|---|
+| `game/assets/arrival/{student_dorm/night,drummer_locker/evening,gosia_workbench_drawer/day}/{plate.webp,seq/*.webp}` | `art/blender/arrival_place.py --job <id>` (kits `corridor` with `dorm`, new `lockers`, `shop` style `atelier`; hold 1080x1920 / 512 spp, walk 36 × 1080x1920 / 128 spp, OIDN), `art/tools/arrival_export.py --job <id> --master <dir>` (WebP q80, lossy import 0.8) |
+| `game/assets/arrival/shared_room_door/evening/{plate.webp,seq/*.webp}` | `art/blender/arrival_scene.py --job shared_room_door --hair 1` (stairwell kit, props `notice_board`, `folding_chairs`), same settings |
+| `game/assets/ui/cards/photo_borys_bike_before.webp` | `art/blender/arrival_place.py --job t43_11_02_bicycle_stand_before --mode still --still-res 1080x1920 --still-spp 512` (kit `facade`, rusted bike), WebP q80 with Pillow, lossy import 0.8 |
+| `art/renders/arrival/<job>_<time>_{hold.png,hold.json,final_contact.png}`, `t43_11_02_bicycle_stand_before_day_hold.png`, `arrival_placeholders_board.jpg` | same renders; contact sheets via `arrival_composite.py --contact`, board with Pillow |
