@@ -1,0 +1,68 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "drummer_locker",
+ "time": "evening",
+ "kit": "lockers",
+ "fps": 12,
+ "frames": 36,
+ "note": "plate-only hold (no client cut-out): anchors are quads [tl,tr,br,bl] normalised 0..1, origin top-left (D-41).",
+ "anchors": {
+  "door": [
+   [
+    0.44298,
+    0.35397
+   ],
+   [
+    0.56641,
+    0.35377
+   ],
+   [
+    0.56526,
+    0.68771
+   ],
+   [
+    0.44397,
+    0.68702
+   ]
+  ],
+  "lock": [
+   [
+    0.5392,
+    0.49827
+   ],
+   [
+    0.55572,
+    0.4983
+   ],
+   [
+    0.55569,
+    0.50755
+   ],
+   [
+    0.53918,
+    0.50752
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   80.0,
+   -1700.0,
+   1560.0
+  ],
+  "lens_mm": 24.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   -0.05000000074505806
+  ],
+  "rotation_euler_deg": [
+   88.0,
+   -0.0,
+   1.5
+  ]
+ }
+}

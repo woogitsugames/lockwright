@@ -1,0 +1,68 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "gosia_workbench_drawer",
+ "time": "day",
+ "kit": "shop",
+ "fps": 12,
+ "frames": 36,
+ "note": "plate-only hold (no client cut-out): anchors are quads [tl,tr,br,bl] normalised 0..1, origin top-left (D-41).",
+ "anchors": {
+  "door": [
+   [
+    0.42058,
+    0.33749
+   ],
+   [
+    0.64691,
+    0.33658
+   ],
+   [
+    0.6436,
+    0.62539
+   ],
+   [
+    0.42235,
+    0.62254
+   ]
+  ],
+  "lock": [
+   [
+    0.61643,
+    0.47419
+   ],
+   [
+    0.63154,
+    0.47425
+   ],
+   [
+    0.63123,
+    0.50367
+   ],
+   [
+    0.61616,
+    0.50358
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   200.0,
+   -1700.0,
+   1580.0
+  ],
+  "lens_mm": 24.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   -0.05999999865889549
+  ],
+  "rotation_euler_deg": [
+   87.0,
+   -0.0,
+   4.0
+  ]
+ }
+}

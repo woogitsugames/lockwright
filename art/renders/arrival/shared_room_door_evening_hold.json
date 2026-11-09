@@ -1,0 +1,127 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "shared_room_door",
+ "time": "evening",
+ "door": "closed",
+ "fps": 12,
+ "frames": 36,
+ "note": "quads: [tl,tr,br,bl] normalised 0..1, origin top-left (D-41). figures: feet line and height in px of this image.",
+ "anchors": {
+  "namecard": [
+   [
+    0.50446,
+    0.38834
+   ],
+   [
+    0.54795,
+    0.38835
+   ],
+   [
+    0.54795,
+    0.39493
+   ],
+   [
+    0.50446,
+    0.39492
+   ]
+  ],
+  "mailbox_card": [
+   [
+    0.79859,
+    0.49545
+   ],
+   [
+    0.84127,
+    0.4955
+   ],
+   [
+    0.84127,
+    0.50398
+   ],
+   [
+    0.79859,
+    0.50393
+   ]
+  ],
+  "number_plate": [
+   [
+    0.50279,
+    0.25034
+   ],
+   [
+    0.54966,
+    0.2503
+   ],
+   [
+    0.54966,
+    0.26772
+   ],
+   [
+    0.50279,
+    0.26776
+   ]
+  ],
+  "door": [
+   [
+    0.34088,
+    0.24465
+   ],
+   [
+    0.71207,
+    0.24428
+   ],
+   [
+    0.71207,
+    0.7328
+   ],
+   [
+    0.34088,
+    0.73172
+   ]
+  ],
+  "cylinder": [
+   [
+    0.66212,
+    0.4791
+   ],
+   [
+    0.70435,
+    0.47913
+   ],
+   [
+    0.70435,
+    0.52468
+   ],
+   [
+    0.66212,
+    0.52463
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   -40.0,
+   -2540.0,
+   1570.0
+  ],
+  "lens_mm": 22.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   -0.12999999523162842
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   0.5
+  ]
+ },
+ "depth_png": {
+  "file": "shared_room_door_evening_hold_depth.png",
+  "depth_max_mm": 20000.0,
+  "encoding": "planar camera depth = value/65535*depth_max_mm"
+ }
+}

@@ -1,0 +1,68 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "t43_11_02_bicycle_stand_before",
+ "time": "day",
+ "kit": "facade",
+ "fps": 12,
+ "frames": 36,
+ "note": "plate-only hold (no client cut-out): anchors are quads [tl,tr,br,bl] normalised 0..1, origin top-left (D-41).",
+ "anchors": {
+  "door": [
+   [
+    0.17114,
+    0.07732
+   ],
+   [
+    0.58221,
+    0.07732
+   ],
+   [
+    0.57767,
+    0.56115
+   ],
+   [
+    0.18931,
+    0.56115
+   ]
+  ],
+  "lock": [
+   [
+    0.48993,
+    0.30024
+   ],
+   [
+    0.53422,
+    0.30024
+   ],
+   [
+    0.53399,
+    0.35895
+   ],
+   [
+    0.49,
+    0.35895
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   300.0,
+   -2200.0,
+   1250.0
+  ],
+  "lens_mm": 32.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   -0.11999999731779099
+  ],
+  "rotation_euler_deg": [
+   84.0,
+   -0.0,
+   0.0
+  ]
+ }
+}

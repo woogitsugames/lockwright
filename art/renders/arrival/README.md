@@ -114,6 +114,21 @@ krakow 129 s / 906 s, ghent 202 s / 1133 s, charleroi 122 s / 980 s, liege 47 s 
 dollhouse 69 s / 680 s, spare_key_hook 66 s / 639 s (mgła w deszczu dokłada ok. 30 %). Eksport: 1,4–1,7 MB na zlecenie
 (charleroi 2,7 MB — drobna cegła), razem 14 MB.
 
+## Miejsca zastępcze z audytu (2026-11-09, D-109)
+
+Cztery miejsca, które pokazywały złe zdjęcie zastępcze (drzwi 7 pani Haliny, „Pralnia”, „Warsztat ślusarski”), dostały
+scenkę; inne zlecenia w tym samym miejscu biorą jej stop-klatkę przez `arrival_from`. Arkusz: `arrival_placeholders_board.jpg`.
+
+| Zlecenie (scena) | Zestaw | Pora | Wspólne z |
+|---|---|---|---|
+| `shared_room_door` — drzwi świetlicy, tablica korkowa, składane krzesła | klatka | wieczór | 9 zleceń świetlicy (rozdz. 7–12) |
+| `student_dorm` — korytarz akademika, drzwi 412 z tablicą i naklejkami, suszarka | `corridor` + `dorm` | noc | `t43_10_05_porters_drawer` |
+| `drummer_locker` — sala prób, szafka nr 8, panele akustyczne, werbel, wzmacniacz | `lockers` (nowy) | wieczór | `edek_rehearsal_store`, `t43_11_05_rehearsal_chest` |
+| `gosia_workbench_drawer` — pracownia renowacji, stół z zamkniętą szufladą | `shop` / `atelier` | dzień | `bramah_bureau` |
+
+Zdjęcie na karcie roweru Borysa: `t43_11_02_bicycle_stand_before_day_hold.png` (sama stop-klatka, `--job
+t43_11_02_bicycle_stand_before`), w grze `game/assets/ui/cards/photo_borys_bike_before.webp`. Czasy (RTX 5070, stop-klatka 512 spp / przejazd 36 × 128 spp): świetlica 77 s / 721 s, akademik 59 s / 619 s, sala prób 48 s / 514 s, pracownia 45 s / 520 s; zdjęcie roweru 248 s (budowa kostki + 512 spp).
+
 ## Czego potrzebuje gra
 
 1. **Sekwencja** `<job>_<time>_seq/f_####.png` (12 fps, 36 klatek) — odtwarzana raz jako flipbook albo po

@@ -1236,6 +1236,473 @@
           "agx": "AgX - Medium High Contrast"
         }
       }
+    },
+    "shared_room_door": {
+      "times": [
+        "evening"
+      ],
+      "story": "The old community room (swietlica) of the Srodmiescie tenement, ground floor, after the residents' vote: its own double-glazed door (not a flat, no number), the cork notice board beside it with sign-up sheets and a child's drawing, folding chairs stacked against the wall for the first meeting.",
+      "number": "",
+      "door": {
+        "style": "painted",
+        "paint": [
+          0.32,
+          0.38,
+          0.4
+        ],
+        "state": "closed"
+      },
+      "plate": "brass",
+      "stair": "terrazzo",
+      "lamperia": [
+        0.3,
+        0.2,
+        0.1
+      ],
+      "court_seed": 91,
+      "flyer": false,
+      "mailbox": {},
+      "props": [
+        {
+          "type": "notice_board",
+          "at": [
+            575,
+            1300
+          ],
+          "size": [
+            330,
+            380
+          ],
+          "sheets": [
+            [
+              30,
+              190,
+              130,
+              160,
+              -4
+            ],
+            [
+              175,
+              215,
+              120,
+              110,
+              3
+            ],
+            [
+              40,
+              40,
+              150,
+              130,
+              2
+            ],
+            [
+              190,
+              60,
+              110,
+              140,
+              -3
+            ]
+          ]
+        },
+        {
+          "type": "folding_chairs",
+          "x": -930,
+          "n": 4
+        }
+      ],
+      "camera": {
+        "end": [
+          -40,
+          -2540,
+          1570
+        ],
+        "end_yaw": 0.5,
+        "end_shift": [
+          0.0,
+          -0.13
+        ]
+      }
+    },
+    "student_dorm": {
+      "kit": "corridor",
+      "times": [
+        "night"
+      ],
+      "story": "The campus dorm at night: room 412 at the end of the fourth-floor corridor, Zuzanna's key inside, her roommate away on placement in Torun. Institutional corridor: yellowed walls, grey speckled floor tiles, the motion-sensor lights, a neighbour's shoes and umbrella.",
+      "number": "412",
+      "corridor": {
+        "door": [
+          0.3,
+          0.24,
+          0.16
+        ],
+        "wall": [
+          0.7,
+          0.66,
+          0.52
+        ],
+        "floor": [
+          0.3,
+          0.31,
+          0.3
+        ],
+        "veneer": [
+          0.66,
+          0.62,
+          0.5
+        ],
+        "neighbours": [
+          1500,
+          -4200
+        ],
+        "window": [
+          1300,
+          -600
+        ],
+        "dawn_w": 20000000.0,
+        "spot_deg": 95,
+        "downlights": [
+          2250,
+          400,
+          -1500,
+          -3400,
+          -5300
+        ],
+        "led_near": 1.3,
+        "dorm": true,
+        "rack_y": 1900
+      },
+      "camera": {
+        "lens": 24.0,
+        "end_shift": [
+          0.0,
+          0.02
+        ],
+        "keys": [
+          [
+            0.0,
+            300,
+            -7800,
+            1610,
+            4.0,
+            -1.0
+          ],
+          [
+            0.4,
+            250,
+            -5600,
+            1600,
+            2.0,
+            -0.5
+          ],
+          [
+            0.75,
+            150,
+            -3000,
+            1570,
+            4.0,
+            0.0
+          ],
+          [
+            1.0,
+            160,
+            -1150,
+            1550,
+            5.0,
+            0.0
+          ]
+        ]
+      },
+      "look": {
+        "night": {
+          "exposure": 0.0,
+          "vignette": 0.25,
+          "agx": "AgX - Medium High Contrast"
+        }
+      }
+    },
+    "drummer_locker": {
+      "kit": "lockers",
+      "times": [
+        "evening"
+      ],
+      "story": "The campus rehearsal room an hour before Iga's gig: her sticks, in-ears and set list are behind locker 8 with its tubular cam lock. Grey steel lockers with louvres, acoustic panels, the drum hardware case on castors, an amp, a music stand, cables on the rubber floor, one fluorescent tube out.",
+      "lockers": {
+        "target": 8,
+        "first": 3,
+        "bank_x": -2200,
+        "stand_at": [
+          1150,
+          700
+        ],
+        "snare_at": [
+          -950,
+          500
+        ],
+        "amp_at": [
+          1450,
+          1500
+        ],
+        "fluo_w": 4500000.0,
+        "rug_at": [
+          -500,
+          600
+        ]
+      },
+      "camera": {
+        "lens": 24.0,
+        "end_shift": [
+          0.0,
+          -0.05
+        ],
+        "keys": [
+          [
+            0.0,
+            600,
+            -6200,
+            1620,
+            6.0,
+            -2.0
+          ],
+          [
+            0.4,
+            450,
+            -4600,
+            1610,
+            4.0,
+            -2.0
+          ],
+          [
+            0.75,
+            200,
+            -2800,
+            1580,
+            2.0,
+            -2.0
+          ],
+          [
+            1.0,
+            80,
+            -1700,
+            1560,
+            1.5,
+            -2.0
+          ]
+        ]
+      },
+      "look": {
+        "evening": {
+          "exposure": 0.5,
+          "vignette": 0.26,
+          "agx": "AgX - Medium High Contrast"
+        }
+      }
+    },
+    "gosia_workbench_drawer": {
+      "kit": "shop",
+      "times": [
+        "day"
+      ],
+      "story": "Gosia's furniture-restoration workshop at the port, daytime: the old workbench she bought, its drawer locked (brass escutcheon facing us), to go to the community room unmarked. Pegboard with clamps and chisels, glue pots, a chair stripped to bare wood on sawhorses, a cabinet under a dust sheet, shavings by the bench leg.",
+      "shop": {
+        "style": "atelier",
+        "counter": false,
+        "tables": [],
+        "door": [
+          0.22,
+          0.25,
+          0.22
+        ],
+        "upper": [
+          0.64,
+          0.6,
+          0.52
+        ],
+        "lower": [
+          0.46,
+          0.43,
+          0.38
+        ],
+        "dust": [
+          0.66,
+          0.56,
+          0.4
+        ],
+        "pendant": [
+          300,
+          600,
+          2150
+        ],
+        "pendant_w": 10000000.0,
+        "street_w": 240000000.0,
+        "shelf_x": [
+          1500,
+          2700
+        ],
+        "bench_at": [
+          0,
+          1600
+        ],
+        "bench_light": [
+          0.3,
+          0.2,
+          0.1
+        ],
+        "chair_at": [
+          1250,
+          900
+        ],
+        "sheet_at": [
+          -2400,
+          -200
+        ]
+      },
+      "camera": {
+        "lens": 24.0,
+        "end_shift": [
+          0.0,
+          -0.06
+        ],
+        "keys": [
+          [
+            0.0,
+            700,
+            -5200,
+            1620,
+            6.0,
+            -2.0
+          ],
+          [
+            0.4,
+            500,
+            -3700,
+            1610,
+            5.0,
+            -2.5
+          ],
+          [
+            0.75,
+            200,
+            -2000,
+            1580,
+            3.0,
+            -3.0
+          ],
+          [
+            1.0,
+            200,
+            -1700,
+            1580,
+            4.0,
+            -3.0
+          ]
+        ]
+      },
+      "look": {
+        "day": {
+          "exposure": 0.3,
+          "vignette": 0.26,
+          "agx": "AgX - Medium High Contrast"
+        }
+      }
+    },
+    "t43_11_02_bicycle_stand_before": {
+      "kit": "facade",
+      "times": [
+        "day"
+      ],
+      "story": "Photo card of job.t43_11_02_bicycle_stand (still only, not an arrival scene; D-109): Borys's bike before the restoration, rusted, in a backyard against a brick wall - it replaces the reused bike_interview frame.",
+      "number": "",
+      "facade": {
+        "style": "beguinage",
+        "fy": 1600,
+        "pavement": 0,
+        "settle": 6.0,
+        "wash": [
+          0.5,
+          0.46,
+          0.4
+        ],
+        "wash_amt": 0.25,
+        "door": [
+          0.2,
+          0.12,
+          0.08
+        ],
+        "tar": 0,
+        "windows": [
+          [
+            -1900,
+            false
+          ],
+          [
+            2600,
+            false
+          ]
+        ],
+        "up_windows": [],
+        "wall_x": [
+          -9000,
+          9000
+        ],
+        "sky": 0.55,
+        "sun": 2.5,
+        "sun_elev": 35.0,
+        "sun_az": 250.0,
+        "bike": {
+          "at": [
+            300,
+            1220,
+            0
+          ],
+          "yaw": 0.0,
+          "lean": -5.0,
+          "color": [
+            0.16,
+            0.1,
+            0.07
+          ],
+          "rust": 0.85,
+          "guard": [
+            0.12,
+            0.07,
+            0.05
+          ],
+          "cable": false
+        }
+      },
+      "camera": {
+        "lens": 32.0,
+        "end_shift": [
+          0.0,
+          -0.12
+        ],
+        "keys": [
+          [
+            0.0,
+            300,
+            -3200,
+            1300,
+            0.0,
+            -6.0
+          ],
+          [
+            1.0,
+            300,
+            -2200,
+            1250,
+            0.0,
+            -6.0
+          ]
+        ]
+      },
+      "look": {
+        "day": {
+          "exposure": -0.5,
+          "vignette": 0.3,
+          "agx": "AgX - Medium High Contrast"
+        }
+      }
     }
   }
 }

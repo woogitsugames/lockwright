@@ -788,11 +788,62 @@ def P_book_stack(c):
         tube('twine_b', [(cx, cy - 145, -1), (cx, cy - 145, z + 3), (cx, cy + 145, z + 3), (cx, cy + 145, -1)], 1.4, twine, smooth_pts=False)
         tube('twine_knot', [(cx - 8, cy - 4, z + 3), (cx + 12, cy - 14, z + 9), (cx + 26, cy - 34, z + 4)], 1.6, twine)
 
+def P_notice_board(c):
+    """The community room's cork notice board by its door: pinned sheets (unreadable bars), a child's drawing, a
+    sign-up sheet with a pen on a string, coloured pins (D-109)."""
+    x0, z0 = c.get('at', (560, 1150)); W, H = c.get('size', (520, 400))
+    frame = oak('board_frame', light=(0.45, 0.32, 0.18), dark=(0.25, 0.16, 0.08), axis='X', seed=121, coat=0.5, coat_rough=0.4, wear=0.6, grime=0.8)
+    cork = plastic('cork', (0.42, 0.28, 0.15), rough=0.9, seed=9, grime=0.4, sheen_scuffs=0.0)
+    y = -2
+    bx('board_frame', x0, x0 + W, y - 22, y, z0, z0 + H, frame, bev=4)
+    bx('board_cork', x0 + 22, x0 + W - 22, y - 26, y - 22, z0 + 22, z0 + H - 22, cork)
+    cols = [(0.85, 0.84, 0.80), (0.86, 0.80, 0.55), (0.70, 0.80, 0.86), (0.84, 0.70, 0.72), (0.86, 0.85, 0.82)]
+    ink = plastic('notice_ink', (0.12, 0.12, 0.13), rough=0.6, grime=0.0, sheen_scuffs=0.0)
+    pins = [plastic('pin%d' % i, col, rough=0.3, seed=i) for i, col in enumerate(((0.7, 0.05, 0.05), (0.05, 0.25, 0.6), (0.85, 0.65, 0.05), (0.1, 0.5, 0.15)))]
+    sheets = c.get('sheets', ((40, 200, 150, 180, -4), (205, 230, 150, 120, 3), (370, 170, 120, 170, -2), (60, 40, 170, 130, 2), (250, 50, 200, 140, -3)))
+    for k, (sx, sz, sw, sh, rot) in enumerate(sheets):
+        M = Matrix.Translation((x0 + sx + sw / 2, 0, z0 + sz + sh / 2)) @ Matrix.Rotation(math.radians(rot), 4, 'Y')
+        parts = [bx('sheet', -sw / 2, sw / 2, y - 27.5 - 0.1 * k, y - 27 - 0.1 * k, -sh / 2, sh / 2, paper('sheet%d' % k, cols[k % 5], seed=k, grime=0.2))]
+        if k != 1:   # print lines (no text)
+            for i in range(int(sh / 18) - 1):
+                w = sw * PRNG.uniform(0.5, 0.85)
+                parts.append(bx('sheet_line', -sw / 2 + 12, -sw / 2 + 12 + w, y - 28 - 0.1 * k, y - 27.7 - 0.1 * k, sh / 2 - 22 - i * 16, sh / 2 - 19 - i * 16, ink))
+        else:        # a child's drawing: a house and a sun in crayon strokes
+            cr = [plastic('crayon%d' % i, col, rough=0.8) for i, col in enumerate(((0.75, 0.15, 0.1), (0.9, 0.7, 0.05), (0.1, 0.4, 0.15)))]
+            parts += [bx('draw', -40, 20, y - 28.2, y - 27.7, -45, -5, cr[0]), bx('draw', -50, 30, y - 28.2, y - 27.7, -6, 4, cr[0]),
+                      bx('draw', 35, 55, y - 28.2, y - 27.7, 20, 40, cr[1]), bx('draw', -70, 70, y - 28.2, y - 27.7, -52, -46, cr[2])]
+        pz = PRNG.randrange(4)
+        cyl_ = cyl('pin', 5, 6, (0, y - 31 - 0.1 * k, sh / 2 - 10), axis='Y', verts=16); cyl_.data.materials.append(pins[pz]); parts.append(cyl_)
+        for o in parts:
+            o.matrix_world = M @ o.matrix_world
+    tube('pen_string', [(x0 + W - 40, y - 28, z0 + 60), (x0 + W - 30, y - 40, z0 - 120), (x0 + W - 20, y - 36, z0 - 260)], 1.0, ink)
+    tube('pen', [(x0 + W - 20, y - 36, z0 - 260), (x0 + W - 18, y - 38, z0 - 400)], 4.5, plastic('pen_body', (0.05, 0.12, 0.45), rough=0.3), smooth_pts=False)
+
+
+def P_folding_chairs(c):
+    """Folding chairs waiting for the first meeting, leaned against the wall in a stack (steel frame, pale plywood)."""
+    x0 = c.get('x', -900); n = int(c.get('n', 5)); ang = math.radians(c.get('lean', 14))
+    frame = paint('chair_frame', tuple(c.get('color', (0.12, 0.16, 0.20))), rough=0.35, metal_col=(0.55, 0.55, 0.55), chip=0.4, grime=0.5)
+    ply = oak('chair_ply', light=(0.62, 0.48, 0.30), dark=(0.45, 0.32, 0.18), axis='X', seed=131, ring=1.0, coat=0.7, coat_rough=0.3, wear=0.6, grime=0.6)
+    for k in range(n):
+        parts = []
+        for sx in (-200, 200):
+            parts.append(tube('cf_leg', [(sx, 0, 0), (sx, 0, 880)], 11, frame, smooth_pts=False))
+        parts.append(bx('cf_seat', -190, 190, -16, 10, 330, 640, ply, bev=6))   # folded seat, a gap under the back
+        parts.append(bx('cf_back', -205, 205, -10, 12, 700, 875, ply, bev=6))
+        parts.append(tube('cf_bar', [(-200, 0, 300), (200, 0, 300)], 8, frame, smooth_pts=False))
+        for sx in (-185, 185):   # the rear legs folded flat against the front ones
+            parts.append(tube('cf_rear', [(sx, 16, 20), (sx, 14, 640)], 9, frame, smooth_pts=False))
+        M = Matrix.Translation((x0 + k * 22, -60 - 46 * k - 880 * math.sin(ang), 0)) @ Matrix.Rotation(-ang, 4, 'X')
+        for o in parts:
+            o.matrix_world = M @ o.matrix_world
+
 PROPS = {'gas_riser': P_gas_riser, 'cat_bowl': P_cat_bowl, 'toy_mouse': P_toy_mouse, 'drill_dust': P_drill_dust,
          'cake_box': P_cake_box, 'petals': P_petals, 'rice': P_rice, 'post_pile': P_post_pile,
          'obituary': P_obituary, 'suitcase': P_suitcase, 'shoes': P_shoes,   # D-108: job.uncle_safe_heirs
          'scooter': P_scooter, 'plank': P_plank,
-         'book_stack': P_book_stack}   # D-108: job.widow_bureau       # D-108: job.dollhouse_wooden_lock
+         'book_stack': P_book_stack,   # D-108: job.widow_bureau
+         'notice_board': P_notice_board, 'folding_chairs': P_folding_chairs}   # D-109: the community room (job.shared_room_door)       # D-108: job.dollhouse_wooden_lock
 # mailbox: a letter sticking out of the slot (grandma: "the letter in the mailbox is addressed to you"),
 # or stuffed full (nobody has emptied it for weeks)
 mb_items = 1 if MAILBOX.get('letter_out') else (5 if MAILBOX.get('overflow') else 0)

@@ -292,7 +292,9 @@ def bike(S, RY):
     """A city bike (diamond frame, mudguards, chain guard, rear carrier) leaning on the middle hoop, its front
     wheel and frame held to the hoop by a coiled cable lock with four thumbwheels."""
     B = S.get('bike', {})
-    frame = paint('bike_paint', tuple(B.get('color', (0.035, 0.11, 0.075))), rough=0.32, metal_col=(0.5, 0.5, 0.5), chip=0.4, grime=0.5)
+    frame = paint('bike_paint', tuple(B.get('color', (0.035, 0.11, 0.075))), rough=B.get('rough', 0.32), metal_col=(0.5, 0.5, 0.5), chip=B.get('chip', 0.4), grime=B.get('grime', 0.5))
+    if B.get('rust'):   # D-109: Borys's bike before the restoration: paint gone to rust bloom
+        frame = iron('bike_rust', rust=B['rust'], base=tuple(B.get('color', (0.12, 0.08, 0.06))), polish=0.1, seed=5, scale=0.7)
     chrome_free = metal('bike_steel', (0.52, 0.52, 0.51), 0.3, marks='turn', marks_axis=(0, 1, 0), wear=0.3, grime=0.6)
     rim_m = metal('rim_alu', (0.66, 0.66, 0.65), 0.3, marks='turn', marks_axis=(0, 1, 0), wear=0.2, grime=0.5)
     spoke_m = metal('spoke', (0.6, 0.6, 0.6), 0.28, marks=None, grime=0.4)
@@ -504,13 +506,136 @@ def bakery_props(S, FY, LY, HX, HZ, CX1, shelf_m):
     stain_decal('flour_rack', 'Z', 0.5, (rx - 900, rx + 900, ry - 900, ry + 700), [(rx, ry, 600, 500, 0.35)], color=(0.80, 0.78, 0.72), rough=0.95, noise_scale=0.02)
 
 
+def atelier_wall(S, FY):
+    """Gosia's restoration workshop at the port (D-109): instead of the oven, a pegboard tool wall with clamps,
+    chisels, a coping saw and a mallet on its hooks, a shelf of glue pots and brushes above it."""
+    peg = ph('pegboard', 'pegboard_brown', scale=900, metallic=0.0, rough_add=0.05, bump=0.8, grime=0.8)
+    PX0, PX1 = S.get('peg_x', (-3050, -1300)); y = FY - 20
+    bx('pegboard', PX0, PX1, y - 12, y, 900, 2200, peg)
+    for (a, b_) in ((PX0 - 30, PX0), (PX1, PX1 + 30)):
+        bx('peg_batten', a, b_, y - 30, y, 880, 2220, oak('peg_batten', light=(0.50, 0.38, 0.22), dark=(0.30, 0.20, 0.10), axis='Z', seed=151, coat=0.0, rough=0.7), bev=3)
+    iron_c = paint('clamp_red', (0.45, 0.05, 0.03), rough=0.4, metal_col=(0.5, 0.5, 0.5), chip=0.5, grime=0.6)
+    bar = metal('clamp_bar', (0.55, 0.55, 0.54), 0.35, marks='grind', marks_axis=(0, 0, 1), wear=0.5, grime=0.7)
+    handle = oak('tool_handle', light=(0.62, 0.45, 0.25), dark=(0.40, 0.26, 0.12), axis='Z', seed=153, coat=0.3, rough=0.5, wear=0.8, grime=0.8)
+    rt = random.Random(77)
+    x = PX0 + 120
+    for k in range(5):   # F-clamps hanging from their bars
+        L = rt.uniform(500, 800)
+        tube('clamp_bar', [(x, y - 40, 2050), (x, y - 40, 2050 - L)], 9, bar, smooth_pts=False)
+        bx('clamp_jaw', x - 10, x + 90, y - 60, y - 22, 2010, 2060, iron_c, bev=4)
+        bx('clamp_jaw2', x - 10, x + 90, y - 60, y - 22, 2050 - L * 0.6, 2050 - L * 0.6 + 50, iron_c, bev=4)
+        tube('clamp_screw', [(x + 70, y - 41, 2050 - L * 0.6), (x + 70, y - 41, 2050 - L * 0.6 - 140)], 6, bar, smooth_pts=False)
+        tube('clamp_grip', [(x + 70, y - 41, 2050 - L * 0.6 - 140), (x + 70, y - 41, 2050 - L * 0.6 - 260)], 16, handle, smooth_pts=False)
+        x += rt.uniform(110, 150)
+    x += 60
+    for k in range(6):   # chisels in a rack
+        bx('chisel_rack', x - 20, x + 400, y - 70, y - 20, 1500, 1530, handle, bev=3)
+        tube('chisel_handle', [(x + k * 65, y - 45, 1640), (x + k * 65, y - 45, 1520)], 13, handle, smooth_pts=False)
+        bx('chisel_blade', x + k * 65 - 6 - k * 1.5, x + k * 65 + 6 + k * 1.5, y - 48, y - 42, 1330, 1500, bar)
+    tube('mallet_head', [(x + 60, y - 70, 1150), (x + 260, y - 70, 1150)], 45, handle, smooth_pts=False)
+    tube('mallet_handle', [(x + 160, y - 70, 1150), (x + 160, y - 70, 900)], 13, handle, smooth_pts=False)
+    shelf = oak('atelier_shelf', light=(0.48, 0.36, 0.22), dark=(0.28, 0.19, 0.10), axis='X', seed=155, coat=0.0, rough=0.7, wear=0.6, grime=1.0)
+    bx('glue_shelf', PX0 - 30, PX1 + 30, y - 260, y, 2260, 2290, shelf, bev=3)
+    tins = [metal('tin%d' % i, c, 0.35, marks=None, wear=0.6, grime=1.0) for i, c in enumerate(((0.55, 0.55, 0.53), (0.45, 0.20, 0.10), (0.20, 0.30, 0.40)))]
+    xx = PX0 + 40
+    while xx < PX1 - 150:
+        r = rt.uniform(55, 95); h = rt.uniform(110, 190)
+        cyl('tin', r, h, (xx + r, y - 130, 2290 + h / 2), verts=32).data.materials.append(tins[rt.randrange(3)])
+        if rt.random() < 0.5:
+            tube('brush', [(xx + r, y - 130, 2290 + h - 10), (xx + r + 30, y - 140, 2290 + h + 180)], 8, handle, smooth_pts=False)
+        xx += 2 * r + rt.uniform(15, 60)
+
+
+def atelier_props(S, FY, shelf_m, SX0, SX1):
+    """The old workbench Gosia bought (the drawer is the job), a chair stripped to bare wood on sawhorses, a cabinet
+    under a dust sheet, tins and jars on the steel shelf, shavings and sawdust on the floor."""
+    rt = random.Random(78)
+    bench = oak('old_bench', light=tuple(S.get('bench_light', (0.48, 0.34, 0.19))), dark=(0.24, 0.15, 0.07), axis='X', seed=161, ring=2.6, coat=0.1, rough=0.7, wear=1.0, grime=1.0)
+    BX, BY = S.get('bench_at', (0, 1500)); BW, BD, BH = 1900, 700, 880
+    bx('bench_top', BX - BW / 2, BX + BW / 2, BY - BD / 2, BY + BD / 2, BH - 90, BH, bench, bev=6)
+    for dx in (-BW / 2 + 60, BW / 2 - 150):
+        for dy in (-BD / 2 + 50, BD / 2 - 140):
+            bx('bench_leg', BX + dx, BX + dx + 90, BY + dy, BY + dy + 90, 0, BH - 90, bench, bev=5)
+    bx('bench_stretcher', BX - BW / 2 + 60, BX + BW / 2 - 60, BY - BD / 2 + 60, BY - BD / 2 + 120, 150, 230, bench, bev=4)
+    bx('bench_apron', BX - BW / 2 + 60, BX + BW / 2 - 60, BY - BD / 2 + 20, BY - BD / 2 + 45, BH - 260, BH - 90, bench, bev=3)
+    # the locked drawer in the apron, its brass escutcheon facing us
+    DX0, DX1 = BX - 330, BX + 330; DY = BY - BD / 2 + 15
+    bx('drawer_front', DX0, DX1, DY - 8, DY + 10, BH - 245, BH - 105, bench, bev=4)
+    brass_e = metal('drawer_brass', (0.72, 0.54, 0.28), 0.32, marks='stamp', wear=0.7, grime=0.9, patina=0.6)
+    bx('drawer_escutcheon', BX - 22, BX + 22, DY - 11, DY - 8, BH - 210, BH - 140, brass_e, bev=2)
+    bx('drawer_keyhole', BX - 4, BX + 4, DY - 11.6, DY - 10.9, BH - 195, BH - 168, dark); cyl_y('drawer_kh_top', 6, DY - 11.6, DY - 10.9, BX, BH - 165, dark, verts=16)
+    # front vice on the left end
+    vice_m = paint('vice_iron', (0.06, 0.08, 0.07), rough=0.45, metal_col=(0.45, 0.45, 0.45), chip=0.6, grime=0.8)
+    bx('vice_jaw', BX - BW / 2 + 40, BX - BW / 2 + 300, BY - BD / 2 - 60, BY - BD / 2 - 10, BH - 220, BH, bench, bev=4)
+    tube('vice_screw', [(BX - BW / 2 + 170, BY - BD / 2 - 10, BH - 120), (BX - BW / 2 + 170, BY - BD / 2 - 160, BH - 120)], 14, vice_m, smooth_pts=False)
+    tube('vice_tommy', [(BX - BW / 2 + 70, BY - BD / 2 - 165, BH - 120), (BX - BW / 2 + 270, BY - BD / 2 - 165, BH - 120)], 9, vice_m, smooth_pts=False)
+    # on the bench: a hand plane, a block of beeswax, rags, the collection photo of the bench face down
+    plane_m = paint('plane_body', (0.05, 0.10, 0.20), rough=0.35, metal_col=(0.55, 0.55, 0.55), chip=0.6, grime=0.6)
+    bx('hand_plane', BX + 250, BX + 500, BY - 80, BY - 10, BH, BH + 70, plane_m, bev=8)
+    tube('plane_knob', [(BX + 470, BY - 45, BH + 70), (BX + 470, BY - 45, BH + 140)], 18, oak('knob', light=(0.45, 0.20, 0.10), dark=(0.30, 0.10, 0.05), axis='Z', seed=163, coat=0.8), smooth_pts=False)
+    bx('rag', BX - 200, BX + 50, BY + 30, BY + 230, BH, BH + 22, plastic('rag', (0.62, 0.55, 0.45), rough=0.95, seed=7, grime=0.9), bev=10)
+    bx('photo_print', BX + 600, BX + 760, BY + 40, BY + 160, BH, BH + 1.2, paper('print_back', (0.80, 0.79, 0.74), seed=8, grime=0.3))
+    # a chair stripped to bare wood upside down on two sawhorses, right of the bench
+    horse = oak('sawhorse', light=(0.58, 0.45, 0.28), dark=(0.38, 0.27, 0.14), axis='X', seed=165, coat=0.0, rough=0.8, wear=0.7, grime=1.0)
+    CX, CY = S.get('chair_at', (1500, 600))
+    for dy in (-260, 260):
+        bx('horse_beam', CX - 450, CX + 450, CY + dy - 40, CY + dy + 40, 640, 720, horse, bev=4)
+        for sx in (-1, 1):
+            for sy in (-1, 1):
+                tube('horse_leg', [(CX + sx * 380, CY + dy, 680), (CX + sx * 430, CY + dy + sy * 160, 0)], 22, horse, res=3, smooth_pts=False)
+    bare = oak('bare_beech', light=(0.72, 0.58, 0.40), dark=(0.58, 0.44, 0.28), axis='Z', seed=167, coat=0.0, rough=0.75, wear=0.3, grime=0.3)
+    parts = [bx('cs_seat', -220, 220, -220, 220, 0, 35, bare, bev=6)]
+    for (lx, ly) in ((-190, -190), (190, -190), (-190, 190), (190, 190)):
+        parts.append(tube('cs_leg', [(lx, ly, 35), (lx * 1.08, ly * 1.08, 470)], 17, bare, res=3, smooth_pts=False))
+    parts.append(tube('cs_back', [(-190, 190, 0), (-200, 205, -430), (200, 205, -430), (190, 190, 0)], 15, bare, res=3, smooth_pts=False))
+    group('stripped_chair', parts, Matrix.Translation((CX, CY, 760)) @ Matrix.Rotation(math.radians(12), 4, 'Z'))
+    # a cabinet waiting under a dust sheet (soft box), against the left wall in front
+    sheet = plastic('dust_sheet', (0.74, 0.71, 0.64), rough=0.95, seed=9, grime=0.6, sheen_scuffs=0.0)
+    QX, QY = S.get('sheet_at', (-2300, 300))
+    bx('sheeted', QX - 450, QX + 450, QY - 300, QY + 300, 0, 1700, sheet, bev=90, seg=4)
+    bx('sheet_hem', QX - 480, QX + 480, QY - 330, QY + 330, 0, 120, sheet, bev=40, seg=3)
+    # tins and jars on the steel shelf instead of boxes
+    tins = [metal('shelf_tin%d' % i, c, 0.35, marks=None, wear=0.6, grime=1.0) for i, c in enumerate(((0.55, 0.55, 0.53), (0.35, 0.12, 0.06), (0.18, 0.25, 0.32)))]
+    for z0 in (180, 730, 1280):
+        x = SX0 + 50
+        while x < SX1 - 200:
+            r = rt.uniform(70, 120); h = rt.uniform(130, 260)
+            cyl('stin', r, h, (x + r, FY - 300 + rt.uniform(-60, 60), z0 + h / 2), verts=32).data.materials.append(tins[rt.randrange(3)])
+            x += 2 * r + rt.uniform(10, 50)
+    # boards leaning on the back wall between the door and the shelf, a bureau waiting its turn by the pegboard
+    for k in range(5):
+        w = rt.uniform(140, 260); L = rt.uniform(1700, 2300); x = 750 + k * 120
+        bd = oak('lean_board%d' % k, light=(0.52 - 0.04 * k, 0.38, 0.22), dark=(0.32, 0.21, 0.10), axis='Z', seed=171 + k, coat=0.0, rough=0.8, wear=0.3, grime=0.6)
+        o_ = bx('lean_board', -w / 2, w / 2, -12, 12, 0, L, bd, bev=2)
+        o_.matrix_world = Matrix.Translation((x, FY - 120 - k * 30, 0)) @ Matrix.Rotation(math.radians(-6 - k), 4, 'X') @ Matrix.Rotation(math.radians(rt.uniform(-3, 3)), 4, 'Y')
+    bur = oak('bureau_wood', light=(0.36, 0.18, 0.08), dark=(0.18, 0.08, 0.03), axis='X', seed=181, coat=0.6, coat_rough=0.35, wear=0.9, grime=0.9)
+    UX, UY = S.get('bureau_at', (-1700, 1900))
+    bx('bureau', UX - 450, UX + 450, UY - 250, UY + 250, 0, 780, bur, bev=4)
+    sl_ = bx('bureau_lid', UX - 450, UX + 450, -10, 10, 0, 420, bur, bev=4); sl_.matrix_world = Matrix.Translation((UX, UY - 250, 780)) @ Matrix.Rotation(math.radians(-38), 4, 'X')
+    bx('bureau_top', UX - 450, UX + 450, UY + 80, UY + 250, 780, 1110, bur, bev=4)
+    for z in (180, 420, 620):
+        bx('bureau_drawer', UX - 400, UX + 400, UY - 258, UY - 250, z, z + 170, bur, bev=3)
+    # shavings swept into a heap by the bench leg, sawdust round it
+    shav = plastic('shaving_pile', (0.70, 0.55, 0.34), rough=0.7, seed=10, grime=0.1, sheen_scuffs=0.0)
+    items = []
+    for i in range(500):
+        a_ = rt.uniform(0, 6.3); r = abs(rt.gauss(0, 140)); s = rt.uniform(10, 22)
+        M = Matrix.Translation((BX + BW / 2 + 150 + r * math.cos(a_), BY - 300 + r * math.sin(a_) * 0.7, max(0, 60 - r * 0.35) * rt.random())) @ \
+            Matrix.Rotation(rt.uniform(0, 6.3), 4, 'Z') @ Matrix.Rotation(rt.uniform(0, 6.3), 4, 'X') @ Matrix.Diagonal((s, s * 0.6, s * 0.15, 1))
+        items.append((leaf_maker, M, 0))
+    scatter('shavings', items, [shav])
+
+
 def kit_shop():
     """A small pizzeria after closing (23:30): the back-room door at the end of the counter, the dining room dark."""
     S = J.get('shop', {})
     FY = 3000; X0, X1 = -3200, 3000; CEIL = 3050
-    floor = ph('shop_floor', 'cement_tiles', scale=S.get('floor_scale', 300), metallic=0.0, base=(0.30, 0.22, 0.17), base_mix=0.45, tint=(0.85, 0.80, 0.74), rough_add=0.1, bump=0.3, grime=1.0, wear=0.6)
+    floor = (ph('shop_floor', 'workshop_concrete', scale=1400, metallic=0.0, base=(0.34, 0.32, 0.29), base_mix=0.5, rough_add=0.1, bump=0.8, grime=1.0, wear=0.5)
+             if S.get('style') == 'atelier' else ph('shop_floor', 'cement_tiles', scale=S.get('floor_scale', 300), metallic=0.0, base=(0.30, 0.22, 0.17), base_mix=0.45, tint=(0.85, 0.80, 0.74), rough_add=0.1, bump=0.3, grime=1.0, wear=0.6))
     bx('floor', X0, X1, -6000, FY, -40, 0, floor)
-    wall_t = tiles('wall_tiles', (0.82, 0.81, 0.77), grout=(0.42, 0.40, 0.37), w=150, h=75, rough=0.08)
+    STYLE = S.get('style', 'pizzeria')
+    wall_t = tiles('wall_tiles', (0.82, 0.81, 0.77), grout=(0.42, 0.40, 0.37), w=150, h=75, rough=0.08) if STYLE != 'atelier' else \
+        lime_wall('shop_lower', tuple(S.get('lower', (0.50, 0.46, 0.40))), seed=14, dirt=1.0, cracks=0.6)
     upper = lime_wall('shop_upper', tuple(S.get('upper', (0.62, 0.46, 0.28))), seed=11, dirt=0.6, cracks=0.3)
     ceil = lime_wall('shop_ceiling', (0.66, 0.62, 0.55), seed=12, dirt=0.4, cracks=0.3)
     DX0, DX1, DTOP = -450, 450, 2060
@@ -520,7 +645,8 @@ def kit_shop():
         cut(o, bx('hole', DX0 - 60, DX1 + 60, FY - 10, FY + 210, -10, DTOP + 60))
         bx('side_' + nm, X1, X1 + 200, -6000, FY + 200, z0, z1, m_)
         bx('lside_' + nm, X0 - 200, X0, -6000, FY + 200, z0, z1, m_)
-    bx('tile_cap', X0, X1, FY - 12, FY, TILE_TOP - 4, TILE_TOP + 22, tiles('cap', (0.20, 0.30, 0.22), w=150, h=26, rough=0.1), bev=4)
+    if STYLE != 'atelier':
+        bx('tile_cap', X0, X1, FY - 12, FY, TILE_TOP - 4, TILE_TOP + 22, tiles('cap', (0.20, 0.30, 0.22), w=150, h=26, rough=0.1), bev=4)
     bx('ceiling', X0 - 200, X1 + 200, -6000, FY + 200, CEIL, CEIL + 100, ceil)
     bx('behind', X0, X1, -6100, -6000, 0, CEIL, upper)
     # the back-room door: painted timber in a painted frame, aluminium kick plate, mortise lever lock (brass)
@@ -544,16 +670,17 @@ def kit_shop():
     tube('handle', [(HX, LY - 6, HZ), (HX, LY - 60, HZ), (HX - 120, LY - 62, HZ - 4)], 10, brass_m, res=4)
     # flour: a dusty hand print by the handle, a drift on the floor in front of the threshold
     stain_decal('flour_hand', 'Y', LY - 7.5, (HX - 260, HX - 20, HZ - 200, HZ + 200), [(HX - 150, HZ + 40, 50, 70, 0.45), (HX - 120, HZ - 60, 90, 60, 0.25)],
-                color=(0.82, 0.80, 0.74), rough=0.95, noise_scale=0.05)
+                color=tuple(S.get('dust', (0.82, 0.80, 0.74))), rough=0.95, noise_scale=0.05)
     stain_decal('flour_floor', 'Z', 0.4, (DX0 - 300, DX1 + 400, FY - 900, FY - 10), [(80, FY - 300, 420, 260, 0.55), (360, FY - 120, 200, 120, 0.5)],
-                color=(0.80, 0.78, 0.72), rough=0.95, noise_scale=0.03)
+                color=tuple(S.get('dust', (0.80, 0.78, 0.72))), rough=0.95, noise_scale=0.03)
     # counter on the left: tiled front, terrazzo top, the brick oven in the corner behind it
     CX1 = S.get('counter_end', -1250)
-    ctl = tiles('counter_tiles', (0.12, 0.26, 0.20), grout=(0.5, 0.48, 0.44), w=100, h=100, offset=0.0, rough=0.08, axis='X')
-    bx('counter_front', -3200, CX1, -2600, -1950, 0, 1000, ctl)
-    bx('counter_end', CX1 - 30, CX1, -2600, S.get('counter_y1', 850), 0, 1000, ctl)
-    marble = ph('counter_top', 'terrazzo_grey_red', scale=900, metallic=0.0, rough_add=-0.05, coat=0.4, bump=0.1, grime=0.3)
-    bx('counter_top', -3200, CX1 + 40, -2650, S.get('counter_y1', 850) + 50, 1000, 1040, marble, bev=6)
+    if S.get('counter', True):
+        ctl = tiles('counter_tiles', (0.12, 0.26, 0.20), grout=(0.5, 0.48, 0.44), w=100, h=100, offset=0.0, rough=0.08, axis='X')
+        bx('counter_front', -3200, CX1, -2600, -1950, 0, 1000, ctl)
+        bx('counter_end', CX1 - 30, CX1, -2600, S.get('counter_y1', 850), 0, 1000, ctl)
+        marble = ph('counter_top', 'terrazzo_grey_red', scale=900, metallic=0.0, rough_add=-0.05, coat=0.4, bump=0.1, grime=0.3)
+        bx('counter_top', -3200, CX1 + 40, -2650, S.get('counter_y1', 850) + 50, 1000, 1040, marble, bev=6)
     PIZZA = S.get('style', 'pizzeria') == 'pizzeria'
     if PIZZA:   # brick oven with the last embers in the corner, plates on the counter
         brick = brick_wall('oven_brick', brick=(0.40, 0.17, 0.09), wash=(0.62, 0.58, 0.52), wash_amt=0.15, seed=9, axis='Y')
@@ -592,8 +719,10 @@ def kit_shop():
         plate_m = plastic('plates', (0.80, 0.79, 0.75), rough=0.12, grime=0.2, sheen_scuffs=0.1)
         for i in range(9):
             cyl('plate', 130, 14, (CX1 - 250 + R.uniform(-3, 3), 420 + R.uniform(-3, 3), 1047 + i * 15), verts=48).data.materials.append(plate_m)
-    else:
+    elif STYLE == 'bakery':
         bakery_wall(S, FY, CX1)
+    else:
+        atelier_wall(S, FY)
     tray = oak('dough_tray', light=(0.55, 0.42, 0.26), dark=(0.36, 0.25, 0.13), axis='X', seed=51, ring=1.5, coat=0.0, rough=0.7, wear=0.4)
     for i in range(3):
         bx('dough_tray', CX1 - 1100, CX1 - 450, -700 - i * 4, 0 - i * 4, 1040 + i * 95, 1130 + i * 95, tray, bev=6)
@@ -606,11 +735,11 @@ def kit_shop():
         for y in (FY - 520, FY - 50):
             bx('upright', x, x + 30, y, y + 30, 0, 1900, shelf_m, bev=2)
     kraft = paper('kraft', (0.50, 0.36, 0.22), fibre=1.4, seed=4, grime=0.3)
-    for k, (x, z0, n) in enumerate(((SX0 + 60, 180, 9), (SX0 + 420, 180, 6), (SX0 + 60, 730, 12), (SX0 + 450, 730, 4))):
+    for k, (x, z0, n) in enumerate(() if STYLE == 'atelier' else ((SX0 + 60, 180, 9), (SX0 + 420, 180, 6), (SX0 + 60, 730, 12), (SX0 + 450, 730, 4))):
         for i in range(n):
             dx = R.uniform(-8, 8); bx('pbox', x + dx, x + dx + 340, FY - 470, FY - 130, z0 + i * 42, z0 + i * 42 + 40, kraft, bev=2)
     sack = plastic('flour_sack', (0.74, 0.70, 0.60), rough=0.85, seed=6, grime=0.4, sheen_scuffs=0.0)
-    for k, x in enumerate((SX0 + 120, SX0 + 560)):   # paper flour sacks, slumped (beveled blocks, a fold on top)
+    for k, x in enumerate(() if STYLE == 'atelier' else (SX0 + 120, SX0 + 560)):   # paper flour sacks, slumped (beveled blocks, a fold on top)
         sk = bx('sack', x, x + 400, FY - 470, FY - 150, 1280, 1280 + 330 - 40 * k, sack, bev=60, seg=4)
         sk.rotation_euler.z = math.radians(R.uniform(-6, 6))
         bx('sack_fold', x + 20, x + 380, FY - 330, FY - 290, 1280 + 300 - 40 * k, 1280 + 345 - 40 * k, sack, bev=15)
@@ -641,8 +770,10 @@ def kit_shop():
         t_.rotation_euler = (0, a, 0)
     for (ln, ang, w_) in ((100, S.get('clock', (345, 255))[0], 6), (70, S.get('clock', (345, 255))[1], 8)):   # minute, hour (deg clockwise from 12)
         h_ = bx('hand', -w_ / 2, w_ / 2, 0, 2, 0, ln, black_plastic); h_.location = (clk.x, clk.y - 44, clk.z); h_.rotation_euler = (0, math.radians(ang), 0)
-    if not PIZZA:
+    if STYLE == 'bakery':
         bakery_props(S, FY, LY, HX, HZ, CX1, shelf_m)
+    elif STYLE == 'atelier':
+        atelier_props(S, FY, shelf_m, SX0, SX1)
     # light: one pendant left on over the end of the counter, the street lamp through the shop window behind us
     shade = metal('pendant', (0.08, 0.09, 0.08), 0.35, marks=None, grime=0.3, metallic=0.0)
     PL = Vector(S.get('pendant', (-1700, 300, 2250)))
@@ -671,7 +802,7 @@ def kit_corridor():
     ceil = lime_wall('corr_ceiling', (0.80, 0.80, 0.78), seed=22, dirt=0.1, cracks=0.0)
     accent = ph('veneer', 'g03:oak_satin', scale=2400, rot=0, metallic=0.0, base=tuple(S.get('veneer', (0.55, 0.40, 0.26))), base_mix=0.45, rough_add=0.08, coat=0.15, bump=0.15, grime=0.1)
     DX0, DX1, DTOP = -450, 450, 2080
-    back = bx('end_wall', X0, X1, FY, FY + 250, 0, CEIL, accent)
+    back = bx('end_wall', X0, X1, FY, FY + 250, 0, CEIL, wall if S.get('dorm') else accent)   # D-109: the dorm's end wall is painted
     cut(back, bx('hole', DX0 - 40, DX1 + 40, FY - 10, FY + 260, -10, DTOP + 40))
     WIN = S.get('window', (1900, 500))     # side window in the left wall near the door (y range): dawn rakes across the floor
     lwall = bx('left_wall', X0 - 200, X0, -9000, FY + 250, 0, CEIL, wall)
@@ -758,6 +889,32 @@ def kit_corridor():
         tube('umb_shaft', [(0, 0, -40), (0, 0, 900)], 6, metal('umb_steel', (0.5, 0.5, 0.5), 0.3, marks=None), smooth_pts=False).parent = u
         tube('umb_handle', [(0, 0, 900), (0, 0, 1000), (0, 30, 1040), (0, 60, 1000)], 11, black_plastic).parent = u
         u.matrix_world = Matrix.Translation((X1 - 60, yc + 540, 40)) @ Matrix.Rotation(math.radians(-8), 4, 'Y')
+    if S.get('dorm'):   # D-109: a campus dorm, not a developer block: whiteboard and stickers on the door, a drying rack
+        wb = plastic('whiteboard', (0.86, 0.86, 0.84), rough=0.15, grime=0.3, sheen_scuffs=0.3)
+        bx('wb', -260, 60, LY - 4, LY - 1, 1180, 1520, wb, bev=2)
+        bx('wb_frame', -268, 68, LY - 3, LY - 0.5, 1172, 1528, plastic('wb_frame', (0.55, 0.55, 0.56), rough=0.3))
+        mk = [plastic('marker%d' % i, col, rough=0.5) for i, col in enumerate(((0.05, 0.1, 0.45), (0.6, 0.05, 0.05), (0.05, 0.3, 0.1)))]
+        rk = random.Random(412)
+        for i in range(9):   # marker scribbles (no letters: loops and dashes)
+            x = rk.uniform(-235, -20); z = rk.uniform(1210, 1490); m_ = mk[rk.randrange(3)]
+            pts = [(x + t * 14, LY - 4.5, z + 9 * math.sin(t * 1.7 + i)) for t in range(rk.randint(4, 8))]
+            tube('scribble', pts, 1.6, m_)
+        for i in range(6):   # stickers, a timetable sheet
+            x = rk.uniform(-380, 300); z = rk.uniform(700, 1100)
+            col = rk.choice(((0.85, 0.75, 0.10), (0.15, 0.45, 0.70), (0.80, 0.25, 0.30), (0.20, 0.60, 0.35), (0.9, 0.9, 0.88)))
+            st_ = bx('sticker', -35, 35, LY - 1.2, LY - 0.8, -25, 25, plastic('sticker%d' % i, col, rough=0.3)); st_.location = (x, 0, z); st_.rotation_euler.y = math.radians(rk.uniform(-25, 25))
+        bx('timetable', 120, 330, LY - 1.5, LY - 1.0, 1200, 1490, paper('timetable', (0.86, 0.85, 0.80), seed=4, grime=0.2, lines=(14.0, 'Z', (0.3, 0.3, 0.35))))
+        # folding drying rack with towels against the left wall
+        rack = metal('rack_steel', (0.80, 0.80, 0.78), 0.3, marks=None, grime=0.4)
+        RX, RY = X0 + 260, S.get('rack_y', -1900)
+        for dy in (-420, 420):
+            tube('rack_leg', [(RX - 220, RY + dy, 0), (RX, RY + dy, 1000), (RX + 220, RY + dy, 0)], 7, rack, smooth_pts=False)
+        for k in range(-3, 4):
+            tube('rack_bar', [(RX + k * 30, RY - 430, 1000 - abs(k) * 120), (RX + k * 30, RY + 430, 1000 - abs(k) * 120)], 4, rack, smooth_pts=False)
+        towel = [plastic('towel%d' % i, col, rough=0.95, seed=i, grime=0.2, sheen_scuffs=0.0) for i, col in enumerate(((0.55, 0.15, 0.12), (0.12, 0.25, 0.45), (0.80, 0.78, 0.70)))]
+        for i, (k, y0, y1) in enumerate(((0, -380, -40), (-2, 0, 380), (2, -300, 200))):
+            zt = 1000 - abs(k) * 120
+            bx('towel', RX + k * 30 - 6, RX + k * 30 + 6, RY + y0, RY + y1, zt - 520, zt + 4, towel[i], bev=3)
     # LED downlights (motion sensor: on at this hour) and the dawn through the window
     led = emissive('led_disc', (1.0, 0.94, 0.86), 60.0)
     trim = plastic('led_trim', (0.85, 0.85, 0.84), rough=0.3, grime=0.1)
@@ -1308,7 +1465,7 @@ def kit_facade():
         blue = granite('bluestone', base=(0.17, 0.17, 0.18), seed=41, rough=0.5, pink=0.0)
         wall = bx('wall', W0, W1, FY, FY + 450, 0, H, wash_m)
         bx('tar_band', W0, W1, FY - 6, FY + 450, -40, S.get('tar', 520), tar_m, bev=2)
-        DX0, DX1, DTOP = S.get('door_x', (-500, 500)) + (2150,)
+        DX0, DX1 = S.get('door_x', (-500, 500)); DTOP = 2150
         cut(wall, bx('door_cut', DX0 - 10, DX1 + 10, FY - 400, FY + 500, -50, DTOP + 520))
         cut(bpy.data.objects['tar_band'], bx('door_cut2', DX0 - 10, DX1 + 10, FY - 400, FY + 500, -50, DTOP + 520))
         LY = FY + 160
@@ -1334,9 +1491,10 @@ def kit_facade():
         bx('keyhole', LX - 7, LX + 7, LY - 21, LY - 19.9, LZ - 95, LZ - 45, dark); cyl_y('keyhole_top', 11, LY - 21, LY - 19.9, LX, LZ - 40, dark, verts=20)
         tube('door_knob', [(LX, LY - 14, LZ + 40), (LX, LY - 60, LZ + 40)], 10, rivet_m, smooth_pts=False)
         bpy.ops.mesh.primitive_uv_sphere_add(radius=32, location=(LX, LY - 72, LZ + 40)); setmat(bpy.context.object, rivet_m)
-        bpy.ops.mesh.primitive_torus_add(major_radius=70, minor_radius=11, location=(0, LY - 34, 1560), rotation=(math.radians(90), 0, 0))
+        KCX = (DX0 + DX1) / 2
+        bpy.ops.mesh.primitive_torus_add(major_radius=70, minor_radius=11, location=(KCX, LY - 34, 1560), rotation=(math.radians(90), 0, 0))
         setmat(bpy.context.object, rivet_m)
-        cyl_y('knock_boss', 30, LY - 22, LY - 14, 0, 1630, rivet_m, verts=24)
+        cyl_y('knock_boss', 30, LY - 22, LY - 14, KCX, 1630, rivet_m, verts=24)
         # windows left (and right) of the door: white frames, small panes, green shutters folded back
         glass_m = glass('old_glass', (0.75, 0.77, 0.77), rough=0.03, dirt=0.5)
         fr_m = oil_paint('win_white', (0.80, 0.79, 0.75), rough=0.3, chips=0.3, scuffs=0.2, seed=9)
@@ -1541,6 +1699,142 @@ def kit_facade():
     return {'door': door_quad, 'lock': lock_quad}
 
 
+# ================================================================ lockers kit (campus rehearsal room, D-109)
+def kit_lockers():
+    """The campus rehearsal room after hours (job.drummer_locker): a row of grey steel lockers with louvres and
+    tubular cam locks (Iga's is number 8), acoustic panels, a drum hardware case, an amp, a music stand and cables
+    on the rubber floor; fluorescent battens, one of them flickered off."""
+    S = J.get('lockers', {})
+    rr = random.Random(S.get('seed', 8))
+    FY = S.get('fy', 2400); X0, X1 = -2200, 2200; CEIL = 2900
+    floor = ph('rubber_floor', 'workshop_concrete', scale=1200, metallic=0.0, base=(0.09, 0.09, 0.095), base_mix=0.8, rough_add=0.15, bump=0.3, grime=0.8, wear=0.4)
+    bx('floor', X0 - 500, X1 + 500, -9000, FY + 300, -40, 0, floor)
+    wall = lime_wall('rr_wall', tuple(S.get('wall', (0.62, 0.62, 0.58))), seed=31, dirt=0.5, cracks=0.2)
+    for nm, a, b_ in (('lw', X0 - 200, X0), ('rw', X1, X1 + 200)):
+        bx(nm, a, b_, -9000, FY + 300, 0, CEIL, wall)
+    bx('back', X0, X1, FY, FY + 200, 0, CEIL, wall)
+    bx('ceiling', X0 - 300, X1 + 300, -9000, FY + 300, CEIL, CEIL + 100, lime_wall('rr_ceil', (0.70, 0.70, 0.67), seed=32, dirt=0.3, cracks=0.1))
+    bx('behind', X0, X1, -9100, -9000, 0, CEIL, wall)
+    # acoustic panels on both side walls: fabric-covered slabs, a few dented and stained
+    fab = [plastic('felt%d' % i, c, rough=0.95, seed=i, grime=0.5, sheen_scuffs=0.0) for i, c in enumerate(((0.10, 0.10, 0.11), (0.14, 0.13, 0.12), (0.08, 0.09, 0.11)))]
+    for sx, xw in ((-1, X0), (1, X1)):
+        for k, y in enumerate(range(-5600, FY - 400, 1250)):
+            for z0 in (600, 1850):
+                a, b_ = (xw, xw + 60) if sx < 0 else (xw - 60, xw)
+                o = bx('acoustic', a, b_, y, y + 1180, z0, z0 + 1180, fab[rr.randrange(3)], bev=12)
+                o.rotation_euler.x = math.radians(rr.uniform(-0.6, 0.6))
+    # the lockers: a bank of 8 against the back wall, number 8 nearest the centre-right
+    grey = paint('locker_grey', tuple(S.get('locker', (0.36, 0.38, 0.38))), rough=0.38, metal_col=(0.55, 0.55, 0.55), chip=0.35, grime=0.7)
+    steel_l = metal('cam_lock', (0.66, 0.66, 0.64), 0.25, marks='turn', marks_axis=(0, 1, 0), wear=0.4, grime=0.5)
+    LW, LD, LH = 400, 500, 1850
+    n = S.get('count', 8); xs = S.get('bank_x', -2200); first = S.get('first', 3)
+    bx('locker_plinth', xs - 10, xs + n * LW + 10, FY - LD - 10, FY, 0, 120, dark_mat('plinth_black', (0.03, 0.03, 0.03), 0.6))
+    target = None
+    for k in range(n):
+        x0 = xs + k * LW; num = first + k
+        bx('locker_body', x0 + 2, x0 + LW - 2, FY - LD, FY, 120, 120 + LH, grey, bev=3)
+        DY = FY - LD - 14
+        door = bx('locker_door', x0 + 14, x0 + LW - 14, DY, DY + 14, 140, 100 + LH, grey, bev=3)
+        for z in range(1500, 1800, 45):   # louvres
+            bx('louvre', x0 + 90, x0 + LW - 90, DY - 6, DY, z, z + 14, grey, bev=2)
+        for z in range(300, 600, 45):
+            bx('louvre', x0 + 90, x0 + LW - 90, DY - 6, DY, z, z + 14, grey, bev=2)
+        cyl_y('cam_rose', 17, DY - 6, DY, x0 + LW - 70, 1150, steel_l, verts=32)
+        bx('cam_key', x0 + LW - 73, x0 + LW - 67, DY - 6.6, DY - 5.9, 1140, 1160, dark)
+        bx('pull', x0 + LW - 100, x0 + LW - 40, DY - 26, DY - 6, 1220, 1236, steel_l, bev=3)
+        np_ = bx('num_plate', x0 + LW / 2 - 50, x0 + LW / 2 + 50, DY - 2, DY, 1880, 1930, plastic('num_plate', (0.82, 0.81, 0.76), rough=0.3, grime=0.4))
+        t = text_obj('lnum', str(num), 40, font='Lato-Regular.ttf', extrude=0.4, mat=plastic('num_ink', (0.05, 0.05, 0.05), rough=0.4))
+        t.rotation_euler = (math.radians(90), 0, 0); t.location = (x0 + LW / 2, DY - 2.5, 1905)
+        if rr.random() < 0.6:   # dents and scuffs low on the doors
+            stain_decal('locker_scuff', 'Y', DY - 0.6, (x0 + 20, x0 + LW - 20, 140, 700), [(x0 + rr.uniform(60, 340), rr.uniform(200, 600), 90, 60, 0.4)],
+                        color=(0.12, 0.12, 0.12), rough=0.6, noise_scale=0.05)
+        if num == int(S.get('target', 8)):
+            target = (x0, DY)
+            # a band sticker and a strip of gaffer tape with a name in marker strokes (no letters)
+            bx('gaffer', x0 + 70, x0 + LW - 70, DY - 1.2, DY - 0.6, 1300, 1345, plastic('gaffer', (0.06, 0.06, 0.06), rough=0.7))
+            tube('gaffer_name', [(x0 + 100 + i * 25, DY - 1.6, 1322 + 7 * math.sin(i * 1.9)) for i in range(8)], 2.0, plastic('silver_marker', (0.7, 0.7, 0.72), rough=0.3))
+            bx('band_sticker', x0 + 120, x0 + 280, DY - 1.0, DY - 0.6, 900, 1010, plastic('band_sticker', (0.75, 0.30, 0.10), rough=0.4))
+    # rehearsal kit on the floor: hardware case, amp, music stand, cables
+    case_m = plastic('case_black', (0.025, 0.025, 0.027), rough=0.55, seed=3, grime=0.5, sheen_scuffs=0.4)
+    alu = metal('case_alu', (0.70, 0.70, 0.68), 0.3, marks='grind', marks_axis=(1, 0, 0), wear=0.4, grime=0.5)
+    HX, HY = S.get('case_at', (-1250, 1500))
+    bx('hw_case', HX - 520, HX + 520, HY - 200, HY + 200, 60, 400, case_m, bev=12)
+    for (a, b_) in ((HX - 530, HX + 530),):
+        for z in (60, 390):
+            bx('case_edge', a, b_, HY - 210, HY - 195, z, z + 15, alu, bev=2)
+    for x in (HX - 520, HX + 505):
+        bx('case_corner', x, x + 15, HY - 210, HY + 210, 50, 410, alu, bev=2)
+    for x in (HX - 400, HX + 400):
+        cyl('case_wheel', 40, 30, (x, HY, 40), axis='Y', verts=24).data.materials.append(rubber('case_wheel'))
+    amp = plastic('amp_tolex', (0.03, 0.03, 0.03), rough=0.6, seed=4, grime=0.6, sheen_scuffs=0.5)
+    grille = tiles('amp_grille', (0.20, 0.19, 0.17), grout=(0.05, 0.05, 0.05), w=6, h=6, offset=0.0, rough=0.8, mortar=1.5, axis='Y', var=0.1, bump=0.5)
+    AX, AY = S.get('amp_at', (1500, 1250))
+    bx('amp', AX - 330, AX + 330, AY - 130, AY + 130, 0, 560, amp, bev=10)
+    bx('amp_grille', AX - 290, AX + 290, AY - 133, AY - 129, 40, 420, grille)
+    bx('amp_panel', AX - 300, AX + 300, AY - 120, AY + 120, 430, 540, alu, bev=3)
+    for i in range(6):
+        cyl_y('amp_knob', 12, AY - 140, AY - 120, AX - 220 + i * 80, 485, case_m, verts=16)
+    # music stand with a set list clipped (bars, no text)
+    MX, MY = S.get('stand_at', (300, 900))
+    stand = paint('stand_black', (0.02, 0.02, 0.02), rough=0.4, chip=0.3, grime=0.4)
+    tube('stand_post', [(MX, MY, 0), (MX, MY, 1050)], 10, stand, smooth_pts=False)
+    for a in (0, 120, 240):
+        tube('stand_leg', [(MX, MY, 280), (MX + 300 * math.cos(math.radians(a)), MY + 300 * math.sin(math.radians(a)), 0)], 8, stand, smooth_pts=False)
+    desk = bx('stand_desk', MX - 250, MX + 250, MY - 8, MY, 1000, 1330, stand, bev=3); desk.rotation_euler.x = math.radians(-18)
+    sl = bx('setlist', MX - 105, MX + 105, MY - 12, MY - 9, 1040, 1310, paper('setlist', (0.86, 0.85, 0.80), seed=3, grime=0.3, lines=(22.0, 'Z', (0.15, 0.15, 0.15))))
+    sl.rotation_euler.x = math.radians(-18)
+    cable = plastic('cable', (0.02, 0.02, 0.02), rough=0.35, grime=0.4)
+    pts = [(AX - 200, AY - 100, 4.5)] + [(AX - 400 - i * 250, AY - 600 + 250 * math.sin(i * 1.2), 4.5) for i in range(9)]
+    tube('floor_cable', pts, 4.5, cable)
+    tube('floor_cable2', [(MX + 200, MY + 300, 4), (MX - 300, MY - 200, 4), (MX - 900, MY + 100, 4), (HX + 300, HY - 400, 4)], 4, cable)
+    # the rehearsal-room rug under the kit (worn, red and indigo bands) and a guitar case leaning on the wall
+    rug = plastic('rug', (0.26, 0.055, 0.045), rough=0.97, seed=11, grime=0.9, sheen_scuffs=0.0)
+    rug.node_tree.nodes['Principled BSDF'].inputs['Sheen Weight'].default_value = 0.6
+    band = plastic('rug_band', (0.07, 0.06, 0.16), rough=0.97, seed=12, grime=0.8, sheen_scuffs=0.0)
+    rx_, ry_ = S.get('rug_at', (-700, 700))
+    parts = [bx('rug', -1200, 1200, -800, 800, 0, 8, rug, bev=2)]
+    for (a_, b2, c_, d_) in ((-1120, 1120, 640, 700), (-1120, 1120, -700, -640), (-1120, -1060, -700, 700), (1060, 1120, -700, 700)):
+        parts.append(bx('rug_band', a_, b2, c_, d_, 8, 8.6, band))
+    group('rug_g', parts, Matrix.Translation((rx_, ry_, 0)) @ Matrix.Rotation(math.radians(-4), 4, 'Z'))
+    stain_decal('rug_wear', 'Z', 9.0, (rx_ - 1200, rx_ + 1200, ry_ - 800, ry_ + 800), [(rx_ - 300, ry_, 500, 300, 0.4)], color=(0.15, 0.10, 0.08), rough=0.97, noise_scale=0.01)
+    gc = plastic('guitar_case', (0.04, 0.035, 0.03), rough=0.5, seed=6, grime=0.6, sheen_scuffs=0.5)
+    g_ = lathe('guitar_case', [(0.1, 0), (170, 0), (180, 200), (150, 420), (190, 650), (175, 820), (70, 900), (60, 1180), (0.1, 1190)], 0, 0, seg=32)
+    g_.data.materials.append(gc); g_.scale.y = 0.35
+    g_.matrix_world = Matrix.Translation((X1 - 170, S.get('guitar_y', 900), 0)) @ Matrix.Rotation(math.radians(-12), 4, 'Y') @ Matrix.Diagonal((1, 0.35, 1, 1))
+    # a snare on its stand and a drum stool left out
+    chrome = metal('drum_chrome', (0.75, 0.75, 0.74), 0.15, marks='turn', marks_axis=(0, 0, 1), wear=0.3, grime=0.4)
+    SX, SY = S.get('snare_at', (-700, 600))
+    for a in (30, 150, 270):
+        tube('snare_leg', [(SX, SY, 300), (SX + 280 * math.cos(math.radians(a)), SY + 280 * math.sin(math.radians(a)), 0)], 7, chrome, smooth_pts=False)
+    tube('snare_post', [(SX, SY, 0), (SX, SY, 600)], 9, chrome, smooth_pts=False)
+    shell = paint('snare_wrap', (0.35, 0.05, 0.05), rough=0.2, metal_col=(0.6, 0.6, 0.6), chip=0.2, grime=0.3)
+    cyl('snare_shell', 180, 140, (SX, SY, 680), verts=64).data.materials.append(shell)
+    cyl('snare_head', 182, 4, (SX, SY, 752), verts=64).data.materials.append(plastic('drum_head', (0.80, 0.78, 0.72), rough=0.6, seed=2, grime=0.6))
+    for z in (610, 752):
+        bpy.ops.mesh.primitive_torus_add(major_radius=185, minor_radius=6, location=(SX, SY, z)); setmat(bpy.context.object, chrome)
+    tube('stick_a', [(SX - 60, SY - 40, 756), (SX + 260, SY - 160, 760)], 7, oak('stick', light=(0.70, 0.55, 0.35), dark=(0.55, 0.40, 0.22), axis='X', seed=141, coat=0.4, rough=0.5), smooth_pts=False)
+    cyl('stool_seat', 190, 80, (SX + 600, SY + 500, 520), verts=48).data.materials.append(plastic('stool_vinyl', (0.03, 0.03, 0.03), rough=0.45, grime=0.5, sheen_scuffs=0.5))
+    tube('stool_post', [(SX + 600, SY + 500, 0), (SX + 600, SY + 500, 480)], 14, chrome, smooth_pts=False)
+    for a in (0, 120, 240):
+        tube('stool_leg', [(SX + 600, SY + 500, 200), (SX + 600 + 260 * math.cos(math.radians(a)), SY + 500 + 260 * math.sin(math.radians(a)), 0)], 9, chrome, smooth_pts=False)
+    # light: fluorescent battens (one off), cool; a warm exit-sign-free corridor glow through the door behind us
+    tubeglow = emissive('fluo', (0.92, 0.96, 1.0), 25.0)
+    housing = plastic('batten', (0.80, 0.80, 0.78), rough=0.4, grime=0.5)
+    for k, y in enumerate(S.get('battens', (1700, -400, -2600))):
+        for xx in (-700, 700):
+            bx('batten', xx - 650, xx + 650, y - 60, y + 60, CEIL - 70, CEIL - 2, housing, bev=4)
+            on = not (k == 1 and xx > 0)
+            bx('fluo', xx - 620, xx + 620, y - 20, y + 20, CEIL - 85, CEIL - 70, tubeglow if on else plastic('fluo_off', (0.75, 0.75, 0.73), rough=0.3))
+            if on:
+                bpy.ops.object.light_add(type='AREA', location=(xx, y, CEIL - 90)); L = bpy.context.object; L.name = 'fluo_light'
+                L.data.shape = 'RECTANGLE'; L.data.size = 1240; L.data.size_y = 60; L.data.energy = S.get('fluo_w', 3.0e6); L.data.color = (0.90, 0.95, 1.0)
+                L.rotation_euler = (math.pi, 0, 0); L.visible_camera = False; L.visible_glossy = False
+    world_hdri(0.004, 'interior.exr', sat=0.3)
+    x0, DY = target
+    return {'door': [(x0 + 14, DY, 100 + LH), (x0 + LW - 14, DY, 100 + LH), (x0 + LW - 14, DY, 140), (x0 + 14, DY, 140)],
+            'lock': [(x0 + LW - 95, DY - 6, 1175), (x0 + LW - 45, DY - 6, 1175), (x0 + LW - 45, DY - 6, 1125), (x0 + LW - 95, DY - 6, 1125)]}
+
+
 # ================================================================ camera, render
 def camera_walk():
     cam = photo_camera((0, 0, 0), lens=CAMC.get('lens', 24.0))
@@ -1596,7 +1890,7 @@ def base_render(res, spp, out, expo, vig, look):
     # env_common.photo_finish is fixed on main (D-89): no bright centre ellipse any more
 
 
-KITS = {'street': kit_street, 'shop': kit_shop, 'corridor': kit_corridor, 'vault': kit_vault, 'facade': kit_facade}
+KITS = {'street': kit_street, 'shop': kit_shop, 'corridor': kit_corridor, 'vault': kit_vault, 'facade': kit_facade, 'lockers': kit_lockers}
 info = KITS[KIT]()
 cam = camera_walk()
 LOOK = J.get('look', {}).get(TIME, {})
