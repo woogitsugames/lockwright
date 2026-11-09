@@ -44,6 +44,10 @@ func after_all() -> void:
 	I18n.apply_language(_lang)
 
 
+func before_each() -> void:
+	Settings._cfg["text_scale_system"] = false  # D-107: these tests drive the own size
+
+
 func after_each() -> void:
 	UiA11y.screen_reader_override = -1
 	UiA11y.reduce_motion_override = -1
@@ -81,7 +85,7 @@ func _walk(n: Node, out: Array) -> void:
 
 ## Rows where a trimmed one-line plate is accepted at 200 % (workshop tab plates: fit_button_text
 ## shrinks them first; the full text stays the plate's accessible name).
-const TRUNCATE_OK_PARENTS := ["Tabs"]
+const TRUNCATE_OK_PARENTS := []  # D-107: workshop tabs stack instead of trimming
 
 
 ## A one-line Label/Button whose text does not fit (ellipsis or clipped).

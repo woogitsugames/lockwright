@@ -1,5 +1,8 @@
 class_name InputSampler
 extends Node
+
+## D-107 tension lock latched / released (lock scene: clamp on the wrench, tuk, TalkBack line).
+signal latch_changed(on: bool)
 ## Touch → InputFrame sampler (ARCHITECTURE.md §8). Left zone = tension (vertical),
 ## right zone = pick 2D (depth = x, lift = y); families using rotate/push read them
 ## from the right-zone gestures (R-01). Sampled every physics step (120 Hz); dead zone
@@ -14,6 +17,12 @@ extends Node
 ## tension (auto_level, the lock scene may tune it per lock state) and the right thumb
 ## alone drives the pick. A short tap on the left zone releases tension for RELEASE_S,
 ## which clears an overset without dropping set pins (drop grace ≥ 350 ms in every tier).
+##
+## D-107 "tension lock" (HUD.md §9.2, motor; Settings `tension_lock`, two-thumb mode only): after the
+## tension thumb lets go, T is held for LATCH_GRACE_S; a double tap on the tension half inside that
+## time latches it (the thumb can rest). While latched, a drag on the tension half still changes T
+## (relative, it stays latched at the new value) and a single tap lets go (T -> 0: an overset is
+## fixed the usual way). Without the option nothing changes.
 ##
 ## D-90 "swap thumbs" (HUD.md §9.2, left-handed): Settings `swap_thumbs` puts tension on the right
 ## half and the pick on the left half. The picture does not mirror (the lock has its side): depth
@@ -50,6 +59,16 @@ var release_left := 0.0
 var frozen := false
 ## D-90: tension zone on the right, pick zone on the left.
 var swap_thumbs := false
+## D-107 tension lock (see above).
+const LATCH_GRACE_S := 0.45
+var tension_lock := false
+var latched := false
+var latched_t := 0.0
+var _grace_left := 0.0      # T held after the thumb let go (time for the double tap)
+var _grace_t := 0.0
+var _grace_taps := 0
+var _latch_base := 0.0      # latched T when the current drag started
+var _tension_moved := false # the current tension touch moved past the dead zone (not a tap)
 
 var _touch_tension := -1
 var _touch_pick := -1
@@ -69,6 +88,7 @@ var _tension_down_ms := 0
 func _ready() -> void:
 	auto_tension = bool(Settings.get_value(&"auto_tension", false))
 	swap_thumbs = bool(Settings.get_value(&"swap_thumbs", false))
+	tension_lock = bool(Settings.get_value(&"tension_lock", false))
 
 
 func left_down() -> bool:
@@ -100,6 +120,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				_tension_start = event.position
 				_tension_down_ms = Time.get_ticks_msec()
 				_tension_raw = 0.0
+				_tension_moved = false
+				_latch_base = latched_t
 				_update_tension(event.position)
 			else:
 				_touch_pick = event.index
@@ -109,11 +131,15 @@ func _unhandled_input(event: InputEvent) -> void:
 				_update_pick(event.position)
 		else:
 			if event.index == _touch_tension:
+				var was_tap := not _tension_moved and Time.get_ticks_msec() - _tension_down_ms <= int(TAP_MAX_S * 1000.0)
+				var held_t := tension
 				_touch_tension = -1
 				_tension_raw = 0.0
 				_signed_raw = 0.0
-				if auto_tension and Time.get_ticks_msec() - _tension_down_ms <= int(TAP_MAX_S * 1000.0):
+				if auto_tension and was_tap:
 					release_tension()
+				elif lock_active():
+					_on_tension_up(was_tap, held_t)
 			elif event.index == _touch_pick:  # R-02: elif, not nested — right thumb release must reset
 				_touch_pick = -1
 				_lift_raw = 0.0
@@ -139,12 +165,51 @@ func release_tension(seconds: float = RELEASE_S) -> void:
 	tension = 0.0
 
 
+## D-107: the tension lock works only with two thumbs (auto tension already holds T).
+func lock_active() -> bool:
+	return tension_lock and not auto_tension
+
+
+func _on_tension_up(was_tap: bool, held_t: float) -> void:
+	if latched:
+		if was_tap:
+			set_latched(false)  # a single tap lets go
+		return  # a drag while latched: stays latched at the new T
+	if not was_tap:
+		_grace_t = held_t  # the thumb let go after holding: a double tap now latches this T
+		_grace_left = LATCH_GRACE_S
+		_grace_taps = 0
+	elif _grace_left > 0.0:
+		_grace_taps += 1
+		_grace_left = LATCH_GRACE_S
+		if _grace_taps >= 2:
+			latched_t = _grace_t
+			set_latched(true)
+
+
+func set_latched(on: bool) -> void:
+	if on == latched:
+		return
+	latched = on
+	_grace_left = 0.0
+	_grace_taps = 0
+	if not on:
+		latched_t = 0.0
+	latch_changed.emit(on)
+
+
 func _update_tension(pos: Vector2) -> void:
 	# D-24: drag up from the touch-down point = tension; the touch point itself is always 0
 	var t := clampf((_tension_start.y - pos.y) / TENSION_FULL_DP, 0.0, 1.0)
 	var sg := clampf((_tension_start.y - pos.y) / TENSION_FULL_DP, -1.0, 1.0)
 	if absf(sg) * TENSION_FULL_DP <= _dead_zone() * 0.5:
 		sg = 0.0
+	elif absf(sg) * TENSION_FULL_DP > _dead_zone():
+		if not _tension_moved and _grace_left > 0.0 and not latched:
+			_grace_left = 0.0  # a real drag during the grace: plain two-thumb control again
+		_tension_moved = true
+	if latched:
+		latched_t = clampf(_latch_base + sg, 0.0, 1.0)  # "Zmiana T dalej działa przesunięciem"
 	_signed_raw = sg
 	if absf(t - _tension_raw) * TENSION_FULL_DP > _dead_zone() * 0.5 or t == 0.0:
 		_tension_raw = t
@@ -166,6 +231,12 @@ func _physics_process(delta: float) -> void:
 	var target_t := _tension_raw
 	if auto_tension:
 		target_t = auto_level
+	elif latched:
+		target_t = latched_t
+	elif _grace_left > 0.0:
+		_grace_left -= delta
+		if _touch_tension < 0 or not _tension_moved:
+			target_t = _grace_t  # taps of the double tap do not drop the held tension
 	if release_left > 0.0:
 		release_left -= delta
 		target_t = 0.0

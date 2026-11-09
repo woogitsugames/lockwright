@@ -38,6 +38,7 @@ var gauge := false       # D-52 / S1: chalk tension scale beside the arm tip
 var gauge_band := Vector2(0.25, 0.45)
 var tension := 0.0
 var opened := false
+var clamp := false       # D-107 tension lock: a clamp (two jaws and a screw) on the arm
 
 
 func _init() -> void:
@@ -110,6 +111,8 @@ func _draw() -> void:
 	draw_polyline(line, C_STEEL_EDGE, r * 0.16 + 2.0, true)
 	draw_polyline(line, C_STEEL, r * 0.16, true)
 	_draw_cracks(line, r)
+	if clamp:
+		_draw_clamp(line, r)
 	# foot bent into the keyway (the short leg of the L)
 	draw_line(foot + dir * 2.0, foot + Vector2(0, -r * 0.20).rotated(rot), C_STEEL_EDGE, r * 0.16 + 2.0)
 	draw_line(foot + dir * 2.0, foot + Vector2(0, -r * 0.20).rotated(rot), C_STEEL, r * 0.16)
@@ -128,6 +131,22 @@ func _draw_cracks(line: PackedVector2Array, r: float) -> void:
 		var nn := Vector2(-d.y, d.x)
 		var p := a + d * (k - (n - 1) * 0.5) * r * 0.14
 		draw_line(p - nn * r * 0.11, p + nn * r * 0.11, C_KEYWAY, 2.0)
+
+
+## D-107 / HUD.md §9.2: the latched tension reads as a clamp on the arm near the plug: a dark block
+## across the arm with two light jaw lines and a screw head - a shape, so it reads in grayscale.
+func _draw_clamp(line: PackedVector2Array, r: float) -> void:
+	var a := line[2]
+	var d := (line[3] - line[1]).normalized()
+	var n := Vector2(-d.y, d.x)
+	var hw := r * 0.13
+	var hh := r * 0.24
+	var quad := PackedVector2Array([a - d * hw - n * hh, a + d * hw - n * hh, a + d * hw + n * hh, a - d * hw + n * hh])
+	draw_colored_polygon(quad, C_STEEL_EDGE)
+	draw_line(a - d * hw * 0.55 - n * hh * 0.9, a - d * hw * 0.55 + n * hh * 0.9, C_STEEL, 2.0)
+	draw_line(a + d * hw * 0.55 - n * hh * 0.9, a + d * hw * 0.55 + n * hh * 0.9, C_STEEL, 2.0)
+	draw_circle(a - n * (hh + r * 0.07), r * 0.07, C_STEEL)
+	draw_circle(a - n * (hh + r * 0.07), r * 0.07 - 1.5, C_STEEL_EDGE)
 
 
 ## Cracks shown for a tremor (stress above 0.6, 0..1): none, then 1, 2, 3.

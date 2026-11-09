@@ -99,13 +99,19 @@ Kontrast metal/tło planu B (7,8:1) i tekstu menu (≥ 7:1) — bez zmian od aud
 
 ## 4. Rozmiar tekstu
 
-Ustawienia → Dostępność → „Rozmiar tekstu” 100–200 % (krok 25). `UiA11y` skaluje **każdy** rozmiar fontu motywu
+Ustawienia → Dostępność → „Rozmiar tekstu” 100–200 % (krok 25). **Domyślnie jak w systemie** (D-107): przełącznik
+„Jak w systemie (N%)” pod suwakiem bierze rozmiar czcionki Androida (`Configuration.fontScale` przez wtyczkę
+`LockwrightHaptics.font_scale()`, Godot nie ma na to API), zaokrąglony do kroku suwaka (85 % → 100 %, 130 % → 125 %,
+powyżej 200 % → 200 %), odświeżany po powrocie do gry. Przesunięcie suwaka = własny rozmiar (przełącznik się wyłącza).
+Gracz, który wcześniej ustawił własny rozmiar inny niż 100 %, go zachowuje. Na desktopie i iOS (Dynamic Type jeszcze
+nieczytany) system = 100 %. `UiA11y` skaluje **każdy** rozmiar fontu motywu
 (Label, Button, CheckButton, OptionButton, PopupMenu, Caption, Heading, Title, MenuTitle — wcześniej tylko trzy),
 a kod, który ustawia własny rozmiar, używa `UiA11y.fs()` (tytuły `fit_title`, zakładki `fit_button_text`, wybór
 sterowania, pauza, samouczek, Warsztat). Przy dużym tekście listy wyboru (język, jakość) i tabliczki akcji Warsztatu
 łamią tekst zamiast poszerzać ekran. Nagłówek każdego ekranu menu (`ScreenFrame._fit_header`): „‹ Wstecz” rośnie do
 swojego tekstu, tytuł zmniejsza się i najwyżej łamie na dwie linie (wcześniej przy 150–200 % było „‹ Ws” i
-„Ustawie…”). Jedyny dopuszczony skrót: zakładki Warsztatu przy 200 % („Furnishi…”, pełna nazwa zostaje dla czytnika).
+„Ustawie…”). Zakładki Warsztatu (D-107): obok siebie, dopóki ich słowa mieszczą się w jednej trzeciej rzędu w najmniejszym
+rozmiarze zakładki; inaczej jedna pod drugą na całą szerokość (np. 200 % na 360 dp) — bez skrótów „Furnishi…”.
 
 Nie skalujemy: tekstu na zdjęciach przedmiotów (paragon, kartki — D-25/D-41; HUD §9.2: przewijają się, nie rosną),
 kredy na zamku (Caveat 26 dp, część obrazu) i dużych inicjałów na portretach.
@@ -136,7 +142,17 @@ tekst nie jest ucięty (poza zakładkami Warsztatu) i żadna etykieta nie zapada
   a teksty sterowania (`tutorial.*`, `lock.*`, `ui.controls.*`, opis ekranu zamka) mówią o drugim kciuku — zamiana słów
   lewy↔prawy we wszystkich 5 językach (`I18n.swap_hands`, z regułą rodzaju w FR; test sprawdza każdy klucz w obie
   strony). Razem z napięciem automatycznym to tryb „jeden lewy kciuk”.
-- Nie ma jeszcze „blokady napięcia” z HUD §9.2 (podwójne stuknięcie zatrzaskuje T w trybie dwóch kciuków).
+- **Blokada napięcia** (HUD §9.2, D-107, Ustawienia → Sterowanie, domyślnie wył.; tylko przy dwóch kciukach — w trybie
+  automatycznym gra i tak trzyma napięcie, a stuknięcie lewej połowy dalej je puszcza). Po puszczeniu kciuka napięcia T
+  zostaje przez 0,45 s; dwa stuknięcia lewej połowy (prawej przy zamianie kciuków) w tym czasie zatrzaskują je i kciuk
+  może odpocząć. Zatrzaśnięte T zmienia się przesunięciem (względnie, zostaje zatrzaśnięte). Jedno stuknięcie puszcza
+  (T → 0) — tak samo wychodzi się z overset; złamanie kończy zamek jak zawsze. Bez opcji wszystko po staremu (T spada od
+  razu). Trzy kanały: na ramieniu napinacza (czoło rdzenia) pojawia się zacisk — ciemny klocek ze szczękami i śrubą,
+  czytelny w szarości; miękki „tuk” i haptyka przy zatrzaśnięciu i puszczeniu; czytnik ekranu mówi „Napięcie
+  zablokowane” / „puszczone”, a opis ekranu zamka (też przez most TalkBack D-97) mówi, jak blokada działa. Z TalkBack
+  blokada pomaga szczególnie: gest przekazania dotyku daje jeden palec naraz, więc napięcie można zatrzasnąć i potem
+  prowadzić wytrych. Kreda wskazówek bez zmian (zatrzaśnięte T liczy się jak trzymane). Warded: obrót sondy (napięcie ze
+  znakiem) blokada nie trzyma.
 
 ## 7. Jak testujemy
 
@@ -147,4 +163,4 @@ tekst nie jest ucięty (poza zakładkami Warsztatu) i żadna etykieta nie zapada
 | Zrzuty stanów + raport szarość/daltonizm | `game/tests/a11y_state_shots.tscn` → `qa/a11y/state_report.py` (GPU ok. 1 min) |
 | Zrzuty ekranów z dużym tekstem / opcjami | `game/tests/shot_scene.tscn -- --text-scale=1.5 --setting=sound_captions:1` |
 | Most TalkBack (D-97) | `game/tests/gut/test_android_a11y_bridge.gd` (atrapa wtyczki: węzły, role, stany, aktywacja, suwaki, pauza, ogłoszenia); na telefonie `uiautomator dump` z włączonym TalkBack + `logcat -s LockwrightA11y` |
-| Ręcznie na telefonie (do zrobienia) | TalkBack palcem: podwójne stuknięcie na przyciskach, stany zamka, gest przekazania dotyku; VoiceOver: przejście menu → zlecenie → zamek tylko czytnikiem; systemowe „usuń animacje”; Dynamic Type / rozmiar czcionki systemu (gra ma własny suwak, nie czyta systemowego) |
+| Ręcznie na telefonie (do zrobienia) | TalkBack palcem: podwójne stuknięcie na przyciskach, stany zamka, gest przekazania dotyku; VoiceOver: przejście menu → zlecenie → zamek tylko czytnikiem; systemowe „usuń animacje”; rozmiar czcionki Androida jako domyślny (D-107, nie sprawdzony na telefonie — był zablokowany); blokada napięcia palcem; Dynamic Type na iOS (nieczytany) |

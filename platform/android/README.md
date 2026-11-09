@@ -8,6 +8,10 @@ Godot as `Engine.get_singleton("LockwrightHaptics")` with methods
 `has_java_method()` — `has_method()` is false for every plugin method of a JNISingleton (N-70).
 All vibrations use `USAGE_MEDIA` (API 33+) / `USAGE_GAME` audio attributes, not the implicit TOUCH usage.
 
+## System font scale (D-107)
+
+`font_scale()` returns `Configuration.fontScale` (1.0 = default); UiA11y uses it as the default in-game text size.
+
 ## TalkBack bridge (D-97)
 
 Godot 4.7.2 has no AccessKit on Android, so the plugin also adds `A11yBridge` (a transparent view over the render

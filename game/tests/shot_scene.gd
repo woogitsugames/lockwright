@@ -38,6 +38,7 @@ func _ready() -> void:
 			var p2 := kv.split(":")
 			Settings._cfg[p2[0]] = (p2[1] == "1" or p2[1] == "true") if p2[1] in ["0", "1", "true", "false"] else float(p2[1])
 	if a.has("text-scale"):
+		Settings._cfg["text_scale_system"] = false
 		Settings._cfg["text_scale"] = float(a["text-scale"])
 		UiA11y._apply_text_scale()
 	# D-71 furnishings: --coins=N, --furnish=all|id,id (owned + shown), --chapter=N; in memory only (not saved)

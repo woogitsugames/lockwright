@@ -60,6 +60,7 @@ func _ready() -> void:
 			for fs_name in _theme.get_font_size_list(type):
 				_base_sizes["%s/%s" % [type, fs_name]] = _theme.get_font_size(fs_name, type)
 	_refresh_os_flags()
+	_refresh_system_scale()
 	_build_live_region()
 	Settings.changed.connect(_apply_text_scale)
 	_apply_text_scale()
@@ -69,6 +70,7 @@ func _ready() -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_FOCUS_IN:
 		_refresh_os_flags()  # the player may have changed the system setting meanwhile
+		_refresh_system_scale()
 
 
 func _refresh_os_flags() -> void:
@@ -79,7 +81,39 @@ func _refresh_os_flags() -> void:
 
 # ------------------------------------------------------------------ text scale
 func text_scale() -> float:
+	if bool(Settings.get_value("text_scale_system", true)):
+		return system_text_scale()
 	return clampf(float(Settings.get_value("text_scale", 1.0)), 1.0, 2.0)
+
+
+## D-107: the system font scale snapped to the slider's steps (100-200 %, 25 % apart); 1.0 where the
+## platform does not tell (desktop, iOS: Dynamic Type not read yet). Tests: system_scale_override.
+var system_scale_override := -1.0
+var _system_scale := 1.0
+
+
+func system_text_scale() -> float:
+	return snap_scale(system_scale_override if system_scale_override > 0.0 else _system_scale)
+
+
+func raw_system_scale() -> float:
+	return system_scale_override if system_scale_override > 0.0 else _system_scale
+
+
+static func snap_scale(s: float) -> float:
+	return clampf(roundf(s * 4.0) / 4.0, 1.0, 2.0)
+
+
+func _refresh_system_scale() -> void:
+	var before := _system_scale
+	_system_scale = 1.0
+	if Engine.has_singleton(BRIDGE_SINGLETON):
+		var p := Engine.get_singleton(BRIDGE_SINGLETON)
+		var has_m: bool = bool(p.call(&"has_java_method", &"font_scale")) if p.has_method(&"has_java_method") else p.has_method(&"font_scale")
+		if has_m:
+			_system_scale = maxf(float(p.call(&"font_scale")), 0.5)
+	if not is_equal_approx(before, _system_scale) and _theme != null:
+		_apply_text_scale()
 
 
 ## A font size from code (overrides) at the current text scale.

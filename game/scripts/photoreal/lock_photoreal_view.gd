@@ -236,6 +236,14 @@ func set_lives(n: int) -> void:
 		_tray.queue_redraw()
 
 
+## D-107 tension lock: the wrench arm carries a clamp while T is latched.
+func set_tension_clamp(on: bool) -> void:
+	if _face:
+		_face.clamp = on
+		_face.queue_redraw()
+	_name_controls()
+
+
 ## "In the dark" (HUD.md §10): the stair-light timer goes off; only sound and haptics remain.
 func set_dark(on: bool) -> void:
 	dark = on
@@ -544,7 +552,12 @@ func _name_controls() -> void:
 	UiA11y.name_button(_loupe_btn, I18n.t(&"a11y.loupe"), toggle_loupe)
 	set("accessibility_name", I18n.t(&"a11y.lock_screen"))
 	var auto := bool(Settings.get_value(&"auto_tension", true))
-	set("accessibility_description", I18n.t(&"a11y.lock_screen_auto" if auto else &"a11y.lock_screen_manual"))
+	var desc := I18n.t(&"a11y.lock_screen_auto" if auto else &"a11y.lock_screen_manual")
+	if not auto and bool(Settings.get_value(&"tension_lock", false)):
+		desc += " " + I18n.t(&"a11y.lock_screen_latch")  # D-107
+		if _face and _face.clamp:
+			desc += " " + I18n.t(&"a11y.tension_latched")
+	set("accessibility_description", desc)
 
 
 # ------------------------------------------------------------------ layout

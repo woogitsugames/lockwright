@@ -94,6 +94,7 @@ func _ready() -> void:
 		control = DetectorControl.new(sampler.auto_tension)
 	view.landscape_section_max = LockPhotorealView.landscape_max_for(family)  # D-85: no cut mechanism
 	view.pause_requested.connect(_on_pause)
+	sampler.latch_changed.connect(_on_tension_latch)  # D-107 tension lock
 	view.set_lives(int(args.get("lw-lives", "3")))
 	view.set_dark(args.get("lw-dark", "0") == "1")
 	_build_pause_cover()
@@ -660,3 +661,14 @@ func _print_perf() -> void:
 		Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME),
 		Performance.get_monitor(Performance.RENDER_TOTAL_PRIMITIVES_IN_FRAME),
 		Performance.get_monitor(Performance.RENDER_VIDEO_MEM_USED) / 1048576.0, view.viewport.size])
+
+
+## D-107 tension lock: clamp drawn on the wrench arm, a soft tuk + haptic (never haptics alone),
+## and a line for the screen reader.
+func _on_tension_latch(on: bool) -> void:
+	view.set_tension_clamp(on)
+	Sfx.play(&"gate_align", &"steel", -6.0)
+	Haptics.play(&"gate_align" if on else &"contact", 0.6, &"steel")
+	if UiA11y.screen_reader_active():
+		UiA11y.announce(I18n.t(&"a11y.tension_latched" if on else &"a11y.tension_released"))
+

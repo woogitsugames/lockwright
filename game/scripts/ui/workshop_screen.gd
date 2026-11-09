@@ -153,9 +153,14 @@ func _add_backdrop() -> void:
 
 func _add_tabs() -> void:
 	# D-71: two enamel plates, >= 48 dp, the pressed one reads as pressed (toggle) and is named for TalkBack
-	var row := HBoxContainer.new()
+	# D-107: a grid, not an HBox: three plates side by side while their words fit, one under another at
+	# large text (200 %: "Wyposażenie" no longer fits a third of 360 dp even at the smallest size)
+	var row := GridContainer.new()
 	row.name = "Tabs"
-	row.add_theme_constant_override("separation", 8)  # D-79: three plates must fit 412 dp without trimming
+	row.columns = 3
+	row.add_theme_constant_override("h_separation", 8)  # D-79: three plates must fit 412 dp without trimming
+	row.add_theme_constant_override("v_separation", 6)
+	row.resized.connect(_fit_tabs.bind(row))
 	var group := ButtonGroup.new()
 	_tab_tools = _tab_button("TabTools", I18n.t(&"workshop.tab_tools"), group, "tools")
 	_tab_furn = _tab_button("TabFurnishings", I18n.t(&"workshop.tab_furnishings"), group, "furnishings")
@@ -166,6 +171,28 @@ func _add_tabs() -> void:
 	$Frame/VBox.add_child(row)
 	$Frame/VBox.move_child(row, 2)
 	_tab_tools.button_pressed = true
+	_fit_tabs.call_deferred(row)
+
+
+## D-107: 3 columns when every tab's longest word fits a third of the row at the smallest tab size
+## (fit_button_text shrinks to it), else 1 column (each plate full width, full size).
+func _fit_tabs(row: GridContainer) -> void:
+	if not is_instance_valid(row) or row.size.x <= 1.0:
+		return
+	row.columns = tab_columns(row.size.x, [_tab_tools, _tab_furn, _tab_practice])
+
+
+static func tab_columns(width: float, tabs: Array) -> int:
+	var cell := (width - 8.0 * 2.0) / 3.0
+	for b: Button in tabs:
+		if b == null:
+			continue
+		var sb := b.get_theme_stylebox(&"normal")
+		var pad := (sb.get_margin(SIDE_LEFT) + sb.get_margin(SIDE_RIGHT)) if sb else 12.0
+		var w := b.get_theme_font(&"font").get_string_size(b.text, HORIZONTAL_ALIGNMENT_LEFT, -1, UiA11y.fs(13)).x
+		if w + pad + 2.0 > cell:
+			return 1
+	return 3
 
 
 func _tab_button(node_name: String, text: String, group: ButtonGroup, tab: String) -> Button:

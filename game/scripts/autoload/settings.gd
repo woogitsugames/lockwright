@@ -22,7 +22,9 @@ const DEFAULTS := {
 	"reduce_motion": false,
 	"swap_thumbs": false,           # HUD.md §9.2 left-handed: tension right, pick left (D-90)
 	"announce_lock_events": true,   # HUD.md §9.2: screen reader announces lock states (D-90)
-	"sound_captions": false,        # HUD.md §9.1 (3): caption strip for gameplay sounds (D-90)
+	"sound_captions": false,
+	"tension_lock": false,          # HUD.md §9.2: double tap latches T, single tap lets go (D-107)
+	"text_scale_system": true,      # D-107: in-game text size follows the system font scale (Android)        # HUD.md §9.1 (3): caption strip for gameplay sounds (D-90)
 	"continuous_resistance": true,
 	"calibrated": false,
 	"calibration": "",  # "" | "two" | "one" | "none" (TECH.md §2.3 first-run test)
@@ -47,6 +49,9 @@ func load_settings() -> void:
 		for key in DEFAULTS:
 			if file.has_section_key("settings", key):
 				_cfg[key] = file.get_value("settings", key)
+		# D-107: a player who already picked a text size keeps it (the system size is only a default)
+		if not file.has_section_key("settings", "text_scale_system") and file.has_section_key("settings", "text_scale"):
+			_cfg["text_scale_system"] = is_equal_approx(float(file.get_value("settings", "text_scale")), 1.0)
 
 
 func save_settings() -> void:

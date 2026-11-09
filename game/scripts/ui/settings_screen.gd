@@ -54,6 +54,7 @@ func _ready() -> void:
 	_build_voice_pack_block()
 	_build_help_captions()
 	_build_a11y_toggles()
+	_build_system_text()
 	_pass_mouse($Frame/VBox/Scroll/Sections)
 	_load_values()
 	_refresh_texts()
@@ -82,7 +83,9 @@ func _load_values() -> void:
 	reading_aid_check.set_pressed_no_signal(Settings.get_value("reading_aid"))
 	wide_windows_check.set_pressed_no_signal(Settings.get_value("wide_windows"))
 	continuous_check.set_pressed_no_signal(Settings.get_value("continuous_resistance"))
-	text_scale_slider.set_value_no_signal(float(Settings.get_value("text_scale", 1.0)) * 100.0)
+	text_scale_slider.set_value_no_signal(UiA11y.text_scale() * 100.0)  # D-107: the size in use (system or own)
+	if _system_text != null:
+		_system_text.set_pressed_no_signal(bool(Settings.get_value("text_scale_system", true)))
 	reduce_motion_check.set_pressed_no_signal(Settings.get_value("reduce_motion"))
 	for key in A11Y_TOGGLES:
 		(_toggles[key] as CheckButton).set_pressed_no_signal(bool(Settings.get_value(key)))
@@ -154,7 +157,15 @@ func _wire() -> void:
 	wide_windows_check.toggled.connect(func(on: bool) -> void: Settings.set_value("wide_windows", on))
 	continuous_check.toggled.connect(func(on: bool) -> void: Settings.set_value("continuous_resistance", on))
 	text_scale_slider.value_changed.connect(func(v: float) -> void:
+		Settings.set_value("text_scale_system", false)  # D-107: an own size stops following the system
 		Settings.set_value("text_scale", v / 100.0)
+		_system_text.set_pressed_no_signal(false)
+		_update_values())
+	_system_text.toggled.connect(func(on: bool) -> void:
+		Settings.set_value("text_scale_system", on)
+		if not on:
+			Settings.set_value("text_scale", UiA11y.system_text_scale())  # start from what is shown
+		text_scale_slider.set_value_no_signal(UiA11y.text_scale() * 100.0)
 		_update_values())
 	reduce_motion_check.toggled.connect(func(on: bool) -> void: Settings.set_value("reduce_motion", on))
 	for key in A11Y_TOGGLES:
@@ -236,6 +247,8 @@ func _refresh_texts() -> void:
 	_vp_note.text = I18n.t(&"settings.voice_pack.note")
 	for cap_name in HELP:
 		(_help[cap_name] as Label).text = I18n.t(HELP[cap_name][1])
+	_system_text.text = I18n.t(&"settings.text_scale_system").format(
+		{"pct": roundi(UiA11y.raw_system_scale() * 100.0)})
 	for key in A11Y_TOGGLES:
 		(_toggles[key] as CheckButton).text = I18n.t(A11Y_TOGGLES[key][2])
 		(_toggles[key].get_meta(&"help") as Label).text = I18n.t(A11Y_TOGGLES[key][3])
@@ -280,6 +293,7 @@ func _build_help_captions() -> void:
 ## Settings key -> [section box, insert after (node path in Sections), i18n label, i18n help]
 const A11Y_TOGGLES := {
 	"swap_thumbs": ["Controls/Box", "Controls/Box/ContinuousCheck", &"settings.swap_thumbs", &"settings.help.swap_thumbs"],
+	"tension_lock": ["Controls/Box", "Controls/Box/ContinuousCheck", &"settings.tension_lock", &"settings.help.tension_lock"],
 	"announce_lock_events": ["Access/Box", "Access/Box/MotionHelp", &"settings.announce_lock", &"settings.help.announce_lock"],
 	"sound_captions": ["Access/Box", "Access/Box/MotionHelp", &"settings.sound_captions", &"settings.help.sound_captions"],
 }
@@ -307,6 +321,21 @@ func _build_a11y_toggles() -> void:
 		box.move_child(cap, cb.get_index() + 1)
 		cb.set_meta(&"help", cap)
 		_toggles[key] = cb
+
+
+# --- D-107: "as in the system" switch under the text size slider ------------------------------
+var _system_text: CheckButton
+
+
+func _build_system_text() -> void:
+	_system_text = CheckButton.new()
+	_system_text.name = "SystemTextCheck"
+	_system_text.custom_minimum_size = Vector2(0, 48)
+	_system_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_system_text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var box := text_scale_slider.get_parent()
+	box.add_child(_system_text)
+	box.move_child(_system_text, text_scale_slider.get_index() + 1)
 
 
 ## The slider placed right after a "<X>Row" label row (IntensityRow -> IntensitySlider).

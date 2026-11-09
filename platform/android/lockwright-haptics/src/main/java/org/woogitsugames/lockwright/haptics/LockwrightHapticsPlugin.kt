@@ -51,6 +51,14 @@ class LockwrightHapticsPlugin(godot: Godot) : GodotPlugin(godot) {
         runOnUiThread { b.setNodes(json) }
     }
 
+    /** D-107: the system font size (Settings > Display > Font size), 1.0 = default; Godot has no API for it. */
+    @UsedByGodot
+    fun font_scale(): Double = try {
+        getContext().resources.configuration.fontScale.toDouble()
+    } catch (e: Exception) {
+        1.0
+    }
+
     /** D-97: spoken by TalkBack (lock states, hints). */
     @UsedByGodot
     fun a11y_announce(text: String) {
