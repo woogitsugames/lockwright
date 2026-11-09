@@ -670,8 +670,129 @@ def P_post_pile(c):
             Matrix.Rotation(math.radians(90), 4, 'X')
         flyer('gap_fly%d' % i, M, cols[(i + 1) % len(cols)], size=(100, 150))
 
+def P_obituary(c):
+    """Uncle Bogdan's death notice (klepsydra) taped to the landing wall: white card, black border, a small cross,
+    the name and the funeral lines as unreadable grey bars (no text)."""
+    x0, z0 = c.get('at', (548, 1330)); W, H = c.get('size', (230, 165))
+    card = paper('obit_card', (0.84, 0.83, 0.79), fibre=0.8, seed=12, grime=0.12)
+    ink = plastic('obit_ink', (0.015, 0.015, 0.015), rough=0.6, grime=0.0, sheen_scuffs=0.0)
+    grey = plastic('obit_print', (0.18, 0.18, 0.18), rough=0.6, grime=0.0, sheen_scuffs=0.0)
+    y = -1.2; tilt = math.radians(c.get('tilt', -1.5))
+    parts = [bx('obit', 0, W, y - 0.4, y, 0, H, card)]
+    b = 9
+    for (a, b_, cc, d) in ((0, W, 0, b), (0, W, H - b, H), (0, b, 0, H), (W - b, W, 0, H)):
+        parts.append(bx('obit_border', a, b_, y - 0.6, y - 0.4, cc, d, ink))
+    cx = W / 2
+    parts.append(bx('obit_cross_v', cx - 1.6, cx + 1.6, y - 0.6, y - 0.4, H - 38, H - 16, ink))
+    parts.append(bx('obit_cross_h', cx - 6, cx + 6, y - 0.6, y - 0.4, H - 25, H - 22, ink))
+    for (w, z, h) in ((150, H - 62, 11), (110, H - 80, 4), (170, 58, 3.5), (160, 48, 3.5), (120, 38, 3.5), (90, 24, 3)):
+        parts.append(bx('obit_line', cx - w / 2, cx + w / 2, y - 0.6, y - 0.4, z, z + h, ink if h > 8 else grey))
+    tape = plastic('obit_tape', (0.80, 0.78, 0.70), rough=0.25, grime=0.1)
+    tape.node_tree.nodes['Principled BSDF'].inputs['Transmission Weight'].default_value = 0.5
+    for (tx, tz, a) in ((8, H - 6, 35), (W - 8, H - 6, -35)):
+        t_ = bx('obit_tape', -24, 24, y - 1.0, y - 0.6, -8, 8, tape); t_.location = (tx, 0, tz); t_.rotation_euler.y = math.radians(a)
+        parts.append(t_)
+    M = Matrix.Translation((x0, 0, z0)) @ Matrix.Rotation(tilt, 4, 'Y')
+    for o in parts:
+        o.matrix_world = M @ o.matrix_world
+
+
+def P_suitcase(c):
+    """A wheeled suitcase standing in the hall, handle still up: one of the heirs came straight from the train."""
+    x, y = c.get('at', (700, 1000)); yaw = math.radians(c.get('yaw', -20))
+    shell = plastic('case_shell', tuple(c.get('color', (0.04, 0.06, 0.10))), rough=0.35, seed=3, grime=0.4, sheen_scuffs=0.4)
+    alu_h = metal('case_handle', (0.55, 0.55, 0.54), 0.3, marks='grind', marks_axis=(0, 0, 1), wear=0.3, grime=0.4)
+    W, D, H = 420, 250, 640
+    parts = [bx('case', -W / 2, W / 2, -D / 2, D / 2, 60, 60 + H, shell, bev=40, seg=4)]
+    for k in range(-2, 3):   # moulded ribs
+        parts.append(bx('case_rib', k * 70 - 8, k * 70 + 8, -D / 2 - 3, -D / 2 + 2, 120, H, shell, bev=4))
+    for sx in (-1, 1):
+        parts.append(tube('case_tube', [(sx * 90, D / 2 - 20, 60 + H), (sx * 90, D / 2 - 20, 60 + H + 420)], 9, alu_h, smooth_pts=False))
+        parts.append(cyl('case_wheel', 30, 26, (sx * (W / 2 - 50), D / 2 - 50, 30), axis='X', verts=24))
+        parts[-1].data.materials.append(rubber('case_wheel_r'))
+    parts.append(bx('case_grip', -110, 110, D / 2 - 40, D / 2, 60 + H + 400, 60 + H + 440, plastic('case_grip_p', (0.03, 0.03, 0.03), rough=0.5), bev=8))
+    M = Matrix.Translation((x, y, 0)) @ Matrix.Rotation(yaw, 4, 'Z')
+    for o in parts:
+        o.matrix_world = M @ o.matrix_world
+
+
+def P_shoes(c):
+    """Shoes taken off inside the door, as one does: pairs on the hall floor (men's leather, a pair of boots)."""
+    shoe_ms = [plastic('shoe_leather%d' % i, col, rough=0.35, seed=i, grime=0.3, sheen_scuffs=0.4) for i, col in
+               enumerate(((0.035, 0.022, 0.014), (0.012, 0.012, 0.012), (0.10, 0.055, 0.03)))]
+    sole = rubber('shoe_sole', (0.06, 0.05, 0.045), 0.7)
+    for k, (x, y, a, size) in enumerate(c.get('pairs', ((-260, 520, 12, 1.0), (60, 470, -8, 1.05)))):
+        for s_ in (-1, 1):
+            M = Matrix.Translation((x + s_ * 62, y + PRNG.uniform(-20, 20), 0)) @ Matrix.Rotation(math.radians(a + 90 + PRNG.uniform(-6, 6)), 4, 'Z') @ Matrix.Diagonal((size, size, size, 1))
+            m_ = shoe_ms[k % len(shoe_ms)]
+            parts = [bx('shoe_sole', -140, 140, -48, 48, 0, 22, sole, bev=10), bx('shoe_upper', -130, 50, -44, 44, 18, 105, m_, bev=32),
+                     bx('shoe_toe', 30, 136, -42, 42, 18, 62, m_, bev=26), bx('shoe_heel', -140, -80, -44, 44, 0, 34, sole, bev=6)]
+            for o in parts:
+                o.matrix_world = M @ o.matrix_world
+
+def P_scooter(c):
+    """Hania's kick scooter left on the landing: deck with grip tape, two small wheels, the T-bar, a ribbon on the grip."""
+    x, y = c.get('at', (-640, -420)); yaw = math.radians(c.get('yaw', 70)); lean = math.radians(c.get('lean', 0))
+    frame_p = paint('scooter_paint', tuple(c.get('color', (0.55, 0.12, 0.25))), rough=0.3, metal_col=(0.6, 0.6, 0.6), chip=0.4, grime=0.5)
+    alu = metal('scooter_alu', (0.66, 0.66, 0.65), 0.3, marks='grind', marks_axis=(0, 0, 1), wear=0.4, grime=0.5)
+    grip = plastic('grip_tape', (0.03, 0.03, 0.03), rough=0.9, seed=2, grime=0.6, sheen_scuffs=0.0)
+    wheel = plastic('scooter_wheel', (0.75, 0.70, 0.55), rough=0.4, seed=3, grime=0.6)
+    parts = [bx('deck', -260, 260, -55, 55, 70, 95, frame_p, bev=10), bx('deck_grip', -240, 240, -48, 48, 95, 96.5, grip)]
+    for wx in (-320, 300):
+        w = cyl('sc_wheel', 60, 24, (wx, 0, 60), axis='Y', verts=32); setmat(w, wheel); parts.append(w)
+        parts.append(cyl('sc_hub', 18, 30, (wx, 0, 60), axis='Y', verts=16)); parts[-1].data.materials.append(alu)
+    parts.append(tube('sc_fork', [(300, 0, 60), (300, 0, 150), (290, 0, 220)], 14, frame_p, smooth_pts=False))
+    parts.append(tube('sc_stem', [(290, 0, 220), (270, 0, 760)], 15, alu, smooth_pts=False))
+    parts.append(tube('sc_bar', [(270, -230, 770), (270, 230, 770)], 13, alu, smooth_pts=False))
+    for s_ in (-1, 1):
+        parts.append(tube('sc_handgrip', [(270, s_ * 120, 770), (270, s_ * 235, 770)], 17, plastic('sc_grip_p', (0.80, 0.30, 0.45), rough=0.6, seed=4), smooth_pts=False))
+    parts.append(tube('sc_ribbon', [(270, 236, 770), (265, 245, 720), (275, 250, 660), (262, 258, 610)], 3, plastic('ribbon', (0.85, 0.80, 0.30), rough=0.4), res=2))
+    parts.append(bx('sc_rear_guard', -360, -250, -40, 40, 112, 120, frame_p, bev=3))
+    M = Matrix.Translation((x, y, 0)) @ Matrix.Rotation(yaw, 4, 'Z') @ Matrix.Rotation(lean, 4, 'X')
+    for o in parts:
+        o.matrix_world = M @ o.matrix_world
+
+
+def P_plank(c):
+    """Tomasz's oak board for the new wooden key, leaning by the door, and a few curls of shaving on the mat."""
+    x = c.get('x', 640); W = c.get('w', 150); L = c.get('len', 1150)
+    board = oak('key_plank', light=(0.62, 0.46, 0.28), dark=(0.40, 0.27, 0.13), axis='Z', seed=101, ring=2.0, coat=0.0, rough=0.7, wear=0.2, grime=0.2)
+    p_ = bx('plank', -W / 2, W / 2, -12, 12, 0, L, board, bev=1.5)
+    p_.matrix_world = Matrix.Translation((x, -70, 0)) @ Matrix.Rotation(math.radians(-8), 4, 'X') @ Matrix.Rotation(math.radians(4), 4, 'Y')
+    shav = plastic('shaving', (0.78, 0.62, 0.40), rough=0.6, seed=6, grime=0.0, sheen_scuffs=0.0)
+    shav.node_tree.nodes['Principled BSDF'].inputs['Subsurface Weight'].default_value = 0.3
+    for i in range(int(c.get('shavings', 0))):   # 0: curls read as letters at this distance (D-105)
+        cx, cy = PRNG.uniform(-300, 300) * 0.6 + x * 0.25, PRNG.uniform(-420, -120); r = PRNG.uniform(5, 9); a0 = PRNG.uniform(0, 6.3)
+        pts = [(cx + r * (1 + 0.25 * t) * math.cos(a0 + t), cy + 2.5 * t, floor_z(cx, cy) + r * 1.2 + r * (1 + 0.25 * t) * math.sin(a0 + t)) for t in [k * 0.4 for k in range(22)]]
+        o = tube('shaving', pts, 0.0, shav, res=1)
+        o.data.bevel_depth = 0.0; o.data.extrude = PRNG.uniform(3.5, 6.0); o.data.use_fill_caps = False   # a thin ribbon, not a wire
+
+def P_book_stack(c):
+    """Mrs Irena sorts her late husband's books: two stacks tied with twine by the door, for the library sale."""
+    x0, y0 = c.get('at', (-650, -260))
+    cols = [(0.22, 0.06, 0.05), (0.08, 0.12, 0.09), (0.32, 0.24, 0.13), (0.06, 0.07, 0.11), (0.45, 0.38, 0.26), (0.14, 0.08, 0.05)]
+    mats = [plastic('book_cloth%d' % i, col, rough=0.6, seed=i, grime=0.4, sheen_scuffs=0.2) for i, col in enumerate(cols)]
+    pages = paper('book_pages', (0.78, 0.74, 0.62), fibre=1.0, seed=7, grime=0.3)
+    twine = plastic('book_twine', (0.55, 0.45, 0.30), rough=0.9, grime=0.2, sheen_scuffs=0.0)
+    for s, (dx, dy, n) in enumerate(((0, 0, 7), (300, 40, 5))):
+        z = 0.0
+        for i in range(n):
+            w = PRNG.uniform(150, 210); d = PRNG.uniform(220, 280); h = PRNG.uniform(22, 48); a = math.radians(PRNG.uniform(-7, 7))
+            M = Matrix.Translation((x0 + dx, y0 + dy, z)) @ Matrix.Rotation(a, 4, 'Z')
+            for o in (bx('book', -w / 2, w / 2, -d / 2, d / 2, 0, h, mats[PRNG.randrange(len(mats))], bev=2),
+                      bx('book_pages', -w / 2 + 6, w / 2 + 1, -d / 2 + 4, d / 2 - 4, 3, h - 3, pages)):
+                o.matrix_world = M @ o.matrix_world
+            z += h
+        cx, cy = x0 + dx, y0 + dy
+        tube('twine_a', [(cx - 115, cy, -1), (cx - 115, cy, z + 2), (cx + 115, cy, z + 2), (cx + 115, cy, -1)], 1.4, twine, smooth_pts=False)
+        tube('twine_b', [(cx, cy - 145, -1), (cx, cy - 145, z + 3), (cx, cy + 145, z + 3), (cx, cy + 145, -1)], 1.4, twine, smooth_pts=False)
+        tube('twine_knot', [(cx - 8, cy - 4, z + 3), (cx + 12, cy - 14, z + 9), (cx + 26, cy - 34, z + 4)], 1.6, twine)
+
 PROPS = {'gas_riser': P_gas_riser, 'cat_bowl': P_cat_bowl, 'toy_mouse': P_toy_mouse, 'drill_dust': P_drill_dust,
-         'cake_box': P_cake_box, 'petals': P_petals, 'rice': P_rice, 'post_pile': P_post_pile}
+         'cake_box': P_cake_box, 'petals': P_petals, 'rice': P_rice, 'post_pile': P_post_pile,
+         'obituary': P_obituary, 'suitcase': P_suitcase, 'shoes': P_shoes,   # D-105: job.uncle_safe_heirs
+         'scooter': P_scooter, 'plank': P_plank,
+         'book_stack': P_book_stack}   # D-105: job.widow_bureau       # D-105: job.dollhouse_wooden_lock
 # mailbox: a letter sticking out of the slot (grandma: "the letter in the mailbox is addressed to you"),
 # or stuffed full (nobody has emptied it for weeks)
 mb_items = 1 if MAILBOX.get('letter_out') else (5 if MAILBOX.get('overflow') else 0)

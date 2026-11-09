@@ -1,0 +1,68 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "liege_bakery",
+ "time": "night",
+ "kit": "shop",
+ "fps": 12,
+ "frames": 36,
+ "note": "plate-only hold (no client cut-out): anchors are quads [tl,tr,br,bl] normalised 0..1, origin top-left (D-41).",
+ "anchors": {
+  "door": [
+   [
+    0.33033,
+    0.37857
+   ],
+   [
+    0.63138,
+    0.37812
+   ],
+   [
+    0.63138,
+    0.76676
+   ],
+   [
+    0.33033,
+    0.76549
+   ]
+  ],
+  "lock": [
+   [
+    0.59289,
+    0.56122
+   ],
+   [
+    0.61307,
+    0.56124
+   ],
+   [
+    0.61307,
+    0.60091
+   ],
+   [
+    0.59289,
+    0.60088
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   120.0,
+   -500.0,
+   1520.0
+  ],
+  "lens_mm": 24.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   -0.019999999552965164
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   1.0
+  ]
+ }
+}

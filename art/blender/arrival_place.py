@@ -17,13 +17,19 @@
 #             door with the time-lock movement behind an inspection glass, rope barrier, crate (job.museum_time_lock)
 #   corridor  a developer block's corridor at dawn: porcelain floor, white walls, flat anthracite steel flat doors
 #             with a magnetic-key cylinder, brushed steel numbers, LED downlights (job.night_nurse)
+#   facade    old-town street fronts (D-105), `facade.style`: "tenement_gate" (an 1890 Kraków tenement's oak carriage
+#             gate with the stuck key and the residents' notice: job.krakow_tenement_gate), "beguinage" (a whitewashed
+#             Ghent beguinage house, green door, brother Pieter's bike: job.ghent_beguinage), "townhouse" (Saint-Gilles,
+#             balcony with geraniums: look-dev only, not shipped). Wet setts with puddles and a damp-air volume for rain.
+#   shop      `shop.style: "bakery"`: the same room as a Liège bakery at 3:50 (bread wall, proving rack under linen, the
+#             uncle's bunch of keys hanging from the wrong key in the lock: job.liege_bakery)
 # 1 unit = 1 mm. Camera looks +y; the hold target sits near the origin; floor z = 0.
 import bpy, bmesh, math, os, sys, json, random
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from env_common import *
 from env_common import _bev, _new, _sep, _math, _bump
-from lw_common import _noise, _mix, _maprange
+from lw_common import _noise, _mix, _maprange, _cavity_mask
 from mathutils import Vector, Matrix
 
 arg = cli()
@@ -340,6 +346,20 @@ def bike(S, RY):
         e = BB + Vector((170 * math.cos(math.radians(ang)), sy, 170 * math.sin(math.radians(ang))))
         parts.append(tube('crank', [BB + Vector((0, sy, 0)), e], 12, chrome_free, res=3, smooth_pts=False))
         parts.append(bx('pedal', e.x - 50, e.x + 50, e.y + (10 if sy > 0 else -110), e.y + (110 if sy > 0 else -10), e.z - 12, e.z + 12, black_plastic, bev=3))
+    if B.get('basket'):   # wicker basket on a front carrier over the wheel (brother Pieter's bike, D-105)
+        wick = tiles('wicker', (0.42, 0.28, 0.13), grout=(0.16, 0.10, 0.05), w=18, h=9, offset=0.5, rough=0.7, mortar=1.6, axis='X', var=0.25, bump=1.2)
+        wick2 = tiles('wicker_f', (0.42, 0.28, 0.13), grout=(0.16, 0.10, 0.05), w=18, h=9, offset=0.5, rough=0.7, mortar=1.6, axis='Y', var=0.25, bump=1.2)
+        bc = FA + Vector((40, 0, WR + 330))
+        bk = lathe_open('basket', [(150, 0), (165, 60), (180, 160), (188, 230)], x=bc.x, y=bc.y, seg=48, thick=8, mat=wick)
+        bk.location.z = bc.z; parts.append(bk)
+        parts.append(cyl('basket_floor', 150, 10, (bc.x, bc.y, bc.z + 5), verts=48)); parts[-1].data.materials.append(wick2)
+        parts.append(tube('basket_rim', arc(0, 0, 190, 0, 360, 48), 10, wick, smooth_pts=False))
+        parts[-1].rotation_euler.x = math.radians(90); parts[-1].location = (bc.x, bc.y, bc.z + 232)
+        for sy in (-60, 60):
+            parts.append(tube('basket_stay', [FA + Vector((0, sy, 0)), bc + Vector((-20, sy, 5))], 6, chrome_free, res=3, smooth_pts=False))
+    if not B.get('cable', True):
+        M = Matrix.Translation(Vector(B.get('at', (-640, RY - 160, 0)))) @ Matrix.Rotation(math.radians(B.get('yaw', 0.0)), 4, 'Z') @ Matrix.Rotation(math.radians(B.get('lean', 4.0)), 4, 'X')
+        group('bike', parts, M); return
     # the cable lock: coiled cable through the front wheel and round the hoop, the thumbwheel body on top
     L = S.get('lock', {})
     hoop_x = L.get('hoop_x', 320)   # in bike space, the hoop leg the bike leans on
@@ -384,6 +404,104 @@ def tiles(name, color, grout=(0.55, 0.54, 0.50), w=150.0, h=75.0, offset=0.5, ro
     hgt = _math(nt, 'SUBTRACT', _math(nt, 'MULTIPLY', wave, 0.15), br.outputs['Fac'])
     l.new(_bump(nt, hgt, bump, 1.5), b.inputs['Normal'])
     return m
+
+
+def bakery_wall(S, FY, CX1):
+    """Bakery (job.liege_bakery, D-105): instead of the oven, the bread wall behind the counter: timber shelving with
+    slanted wicker bread trays, empty at 3:50 but for three rolls left from yesterday; a glass display on the counter."""
+    shelf_w = oak('bread_shelf', light=(0.46, 0.33, 0.19), dark=(0.26, 0.17, 0.08), axis='X', seed=57, ring=1.6, coat=0.5, coat_rough=0.4, wear=0.7, grime=0.8)
+    wick = tiles('bread_wicker', (0.44, 0.30, 0.14), grout=(0.16, 0.10, 0.05), w=16, h=8, offset=0.5, rough=0.7, mortar=1.4, axis='Z', var=0.25, bump=1.0)
+    X0w, X1w = S.get('bread_x', (-3150, -1500)); Yb = FY - 30
+    for x in (X0w, X1w - 40):
+        bx('bread_upright', x, x + 40, Yb - 520, Yb, 0, 2500, shelf_w, bev=3)
+    crust = plastic('crust', (0.36, 0.17, 0.05), rough=0.55, seed=3, grime=0.1, sheen_scuffs=0.0)
+    for k, z in enumerate((1150, 1500, 1850, 2200)):
+        tr_ = bx('bread_tray', X0w + 45, X1w - 45, -480, 0, 0, 18, wick, bev=4)
+        tr_.matrix_world = Matrix.Translation((0, Yb, z)) @ Matrix.Rotation(math.radians(14), 4, 'X')
+        lip = bx('bread_lip', X0w + 45, X1w - 45, -500, -470, 0, 90, shelf_w, bev=3)
+        lip.matrix_world = tr_.matrix_world
+        if k == 1:   # three rolls left from yesterday
+            for i in range(3):
+                bpy.ops.mesh.primitive_uv_sphere_add(radius=1, location=(X0w + 300 + i * 190, Yb - 300, z + 18 + 40 - 300 * math.tan(math.radians(14))))
+                o = bpy.context.object; o.scale = (80, 55, 40); o.rotation_euler = (math.radians(14), 0, R.uniform(-0.3, 0.3)); setmat(o, crust)
+    # glass display case on the counter, empty trays
+    gl = glass('display_glass', (0.92, 0.94, 0.93), rough=0.01, dirt=0.5)
+    DX0_, DX1_ = -3000, CX1 - 120
+    for (a, b_, c, d, e_, f_) in ((DX0_, DX1_, -2560, -2552, 1040, 1420), (DX0_, DX1_, -2560, -2200, 1412, 1420)):
+        bx('display_glass', a, b_, c, d, e_, f_, gl).visible_shadow = False
+    tray_m = metal('display_tray', (0.66, 0.66, 0.64), 0.28, marks='grind', marks_axis=(1, 0, 0), wear=0.3, grime=0.5)
+    for i in range(3):
+        bx('display_tray', DX0_ + 60 + i * 600, DX0_ + 580 + i * 600, -2500, -2240, 1045, 1060, tray_m, bev=3)
+
+
+def bakery_props(S, FY, LY, HX, HZ, CX1, shelf_m):
+    """The story at the back-room door: the uncle's bunch of thirty unlabelled keys still hanging from the wrong key
+    in the lock; a proving rack of dough under linen in front of it; flour everywhere."""
+    key_ms = [metal('key_brass', (0.74, 0.58, 0.32), 0.3, marks='stamp', wear=0.6, grime=0.6, patina=0.3),
+              metal('key_steel', (0.62, 0.62, 0.60), 0.3, marks='stamp', wear=0.5, grime=0.6),
+              metal('key_nickel', (0.70, 0.69, 0.66), 0.25, marks='stamp', wear=0.4, grime=0.5)]
+    KY = LY - 7; KZ = HZ - 100
+    tube('wrong_key_shank', [(HX, KY, KZ), (HX, KY - 55, KZ)], 4, key_ms[1], smooth_pts=False)
+    bx('wrong_key_bow', HX - 22, HX + 22, KY - 62, KY - 55, KZ - 18, KZ + 18, key_ms[1], bev=3)
+    RC = Vector((HX, KY - 66, KZ - 60))   # the ring hangs from the bow's hole
+    bpy.ops.mesh.primitive_torus_add(major_radius=40, minor_radius=2.4, major_segments=48, minor_segments=8, location=RC, rotation=(0, math.radians(90), 0))
+    setmat(bpy.context.object, key_ms[1])
+    rk = random.Random(30)
+    for i in range(int(S.get('keys', 30))):
+        a = math.radians(rk.uniform(205, 335))       # where on the ring (its lower arc, in the y-z plane)
+        p0 = RC + Vector((0, 40 * math.cos(a), 40 * math.sin(a)))
+        swing = math.radians(rk.gauss(0, 16)); L = rk.uniform(46, 76)
+        d = Vector((rk.uniform(-0.25, 0.25), math.sin(swing) - 0.15, -math.cos(swing))).normalized()
+        m_ = key_ms[rk.randrange(3)]
+        bow_c = p0 + d * 15
+        side = d.cross(Vector((1, 0, 0)))
+        side = side.normalized() if side.length > 1e-3 else Vector((0, 1, 0))
+        rot = Matrix((side, d, side.cross(d))).transposed().to_4x4()   # local x = side, y = along the key, z = face normal
+        bw = cyl('key_bow', 13, 2.2, (0, 0, 0), axis='Z', verts=24); bw.matrix_world = Matrix.Translation(bow_c) @ rot; setmat(bw, m_)
+        tube('key_blade', [tuple(bow_c + d * 10), tuple(bow_c + d * (10 + L))], 2.6, m_, res=2, smooth_pts=False)
+        bt = bx('key_bit', -5, 5, -7, 7, -1.2, 1.2, m_); bt.matrix_world = Matrix.Translation(bow_c + d * (4 + L) + side * 5) @ rot
+    # proving rack: steel frame on castors, trays of dough rounds under linen
+    rx, ry = S.get('rack', (900, 1400))
+    for (dx, dy) in ((-330, -230), (330, -230), (-330, 230), (330, 230)):
+        bx('rack_post', rx + dx - 12, rx + dx + 12, ry + dy - 12, ry + dy + 12, 90, 1750, shelf_m, bev=2)
+        cyl('castor', 38, 30, (rx + dx, ry + dy, 40), axis='X', verts=24).data.materials.append(black_plastic)
+    dough = plastic('dough', (0.80, 0.70, 0.52), rough=0.6, seed=6, grime=0.0, sheen_scuffs=0.0)
+    dough.node_tree.nodes['Principled BSDF'].inputs['Subsurface Weight'].default_value = 0.25
+    linen = plastic('linen', (0.78, 0.76, 0.70), rough=0.92, seed=7, grime=0.25, sheen_scuffs=0.0)
+    linen.node_tree.nodes['Principled BSDF'].inputs['Sheen Weight'].default_value = 0.5
+    items = []
+    for k, z in enumerate((260, 520, 780, 1040, 1300, 1560)):
+        bx('rack_tray', rx - 320, rx + 320, ry - 220, ry + 220, z, z + 14, shelf_m, bev=2)
+        if k < 5:
+            for i in range(4):
+                for j in range(3):
+                    s = R.uniform(52, 60) * (1.0 + 0.12 * k / 5)
+                    items.append((lambda bm: bmesh.ops.create_uvsphere(bm, u_segments=20, v_segments=12, radius=1.0),
+                                  Matrix.Translation((rx - 230 + i * 155, ry - 140 + j * 140, z + 14 + s * 0.4)) @ Matrix.Diagonal((s, s, s * 0.65, 1)), 0))
+    scatter('dough_rounds', items, [dough])
+    # linen over the top tray, falling over the front edge in soft folds (a grid draped by hand: sag + folds)
+    bm = bmesh.new(); NU, NV = 48, 40; rows = []
+    for j in range(NV + 1):
+        t = j / NV; row = []
+        for i in range(NU + 1):
+            u = i / NU; x = rx - 350 + 700 * u
+            if t < 0.55:   # across the top, back to front, a slight sag between the dough rows
+                y = ry + 245 - 500 * (t / 0.55); z = 1652 + 28 * math.sin(math.pi * u * 4) ** 2 * (t / 0.55) - 6
+                yo = 0
+            else:          # over the edge and down, folds deepening towards the hem
+                s = (t - 0.55) / 0.45
+                y = ry - 255 - 40 * math.sin(math.pi * s * 0.8); z = 1652 - 430 * s
+                yo = -(18 + 26 * s) * (0.5 + 0.5 * math.sin(x * 0.045 + 1.3 * math.sin(x * 0.011)))
+            row.append(bm.verts.new((x, y + yo, z)))
+        rows.append(row)
+    for j in range(NV):
+        for i in range(NU):
+            bm.faces.new((rows[j][i], rows[j][i + 1], rows[j + 1][i + 1], rows[j + 1][i]))
+    me = bpy.data.meshes.new('linen'); bm.to_mesh(me); bm.free()
+    lo = bpy.data.objects.new('linen', me); bpy.context.collection.objects.link(lo); lo.data.materials.append(linen)
+    for p_ in me.polygons: p_.use_smooth = True
+    sol = lo.modifiers.new('sol', 'SOLIDIFY'); sol.thickness = 2.0
+    stain_decal('flour_rack', 'Z', 0.5, (rx - 900, rx + 900, ry - 900, ry + 700), [(rx, ry, 600, 500, 0.35)], color=(0.80, 0.78, 0.72), rough=0.95, noise_scale=0.02)
 
 
 def kit_shop():
@@ -436,48 +554,52 @@ def kit_shop():
     bx('counter_end', CX1 - 30, CX1, -2600, S.get('counter_y1', 850), 0, 1000, ctl)
     marble = ph('counter_top', 'terrazzo_grey_red', scale=900, metallic=0.0, rough_add=-0.05, coat=0.4, bump=0.1, grime=0.3)
     bx('counter_top', -3200, CX1 + 40, -2650, S.get('counter_y1', 850) + 50, 1000, 1040, marble, bev=6)
-    brick = brick_wall('oven_brick', brick=(0.40, 0.17, 0.09), wash=(0.62, 0.58, 0.52), wash_amt=0.15, seed=9, axis='Y')
-    oc = Vector(S.get('oven', (-2550, 2050, 1040)))
-    bx('oven_base', oc.x - S.get('oven_r', 720) - 30, oc.x + S.get('oven_r', 720) + 30, oc.y - S.get('oven_r', 720) - 30, FY, 0, 1040, brick, bev=6)
-    bpy.ops.mesh.primitive_uv_sphere_add(radius=1, segments=64, ring_count=32, location=oc)
-    OR = S.get('oven_r', 720)
-    dome = bpy.context.object; dome.name = 'oven_dome'; dome.scale = (OR, OR, OR * 0.86)
-    setmat(dome, lime_wall('oven_plaster', (0.34, 0.29, 0.24), seed=13, dirt=1.0, cracks=0.9))
-    bpy.ops.object.transform_apply(scale=True)
-    cut(dome, bx('below', -5000, 5000, -5000, 5000, -5000, oc.z))
-    cut(dome, bx('mouth_cut', oc.x - 240, oc.x + 240, oc.y - OR - 200, oc.y - OR + 300, oc.z, oc.z + 250))
-    cut(dome, bx('mouth_cut_top', oc.x - 160, oc.x + 160, oc.y - OR - 200, oc.y - OR + 300, oc.z, oc.z + 320))
-    arch_pts = [(oc.x - 300, 0, oc.z)] + [(oc.x + 300 * math.cos(math.radians(180 - 180 * k / 12)), 0, oc.z + 120 + 230 * math.sin(math.radians(180 * k / 12))) for k in range(13)] + [(oc.x + 300, 0, oc.z)]
-    for k in range(len(arch_pts) - 1):
-        a_, b2 = Vector(arch_pts[k]), Vector(arch_pts[k + 1])
-        br_ = bx('arch_brick', -60, 60, -110, 0, -35, 35, brick, bev=4)
-        mid = (a_ + b2) / 2; ang = math.atan2(b2.z - a_.z, b2.x - a_.x)
-        br_.matrix_world = Matrix.Translation((mid.x, oc.y - OR + 70, mid.z)) @ Matrix.Rotation(-ang, 4, 'Y')
-    bpy.ops.mesh.primitive_uv_sphere_add(radius=1, segments=48, ring_count=24, location=oc)
-    inner = bpy.context.object; inner.name = 'oven_inner'; inner.scale = (OR - 80, OR - 80, OR * 0.86 - 80); setmat(inner, dark_mat('soot', (0.015, 0.012, 0.01), 0.9))
-    bpy.ops.object.transform_apply(scale=True)
-    cut(inner, bx('below2', -5000, 5000, -5000, 5000, -5000, oc.z))
-    cut(inner, bx('mouth_cut2', oc.x - 240, oc.x + 240, oc.y - OR - 200, oc.y - OR + 400, oc.z, oc.z + 250))
-    cut(inner, bx('mouth_cut2t', oc.x - 160, oc.x + 160, oc.y - OR - 200, oc.y - OR + 400, oc.z, oc.z + 320))
-    bx('oven_floor', oc.x - OR + 90, oc.x + OR - 90, oc.y - OR + 90, oc.y + OR - 90, oc.z - 10, oc.z, dark_mat('hearth', (0.05, 0.035, 0.025), 0.9))
-    ember = emissive('embers', (1.0, 0.32, 0.06), S.get('embers', 6.0) if TIME != 'day' else 0.0, (0.03, 0.02, 0.015))
-    items = []
-    for i in range(160):
-        a = R.uniform(0, 6.3); rr = R.uniform(0, OR * 0.5); s = R.uniform(12, 35)
-        M = Matrix.Translation((oc.x + rr * math.cos(a) * 0.7, oc.y - OR * 0.25 + rr * math.sin(a) * 0.6, oc.z + 6)) @ Matrix.Diagonal((s, s * 0.8, s * 0.6, 1))
-        items.append((lambda bm: bmesh.ops.create_icosphere(bm, subdivisions=1, radius=1.0), M, 0 if R.random() < 0.35 else 1))
-    scatter('ember_bed', items, [ember, dark_mat('ash', (0.06, 0.055, 0.05), 0.9)])
-    if TIME != 'day':
-        point_lamp('ember_light', (oc.x, oc.y - OR * 0.2, oc.z + 90), S.get('ember_w', 3.5e7), (1.0, 0.36, 0.08), size=180)
-    plate_m = plastic('plates', (0.80, 0.79, 0.75), rough=0.12, grime=0.2, sheen_scuffs=0.1)
-    for i in range(9):
-        cyl('plate', 130, 14, (CX1 - 250 + R.uniform(-3, 3), 420 + R.uniform(-3, 3), 1047 + i * 15), verts=48).data.materials.append(plate_m)
+    PIZZA = S.get('style', 'pizzeria') == 'pizzeria'
+    if PIZZA:   # brick oven with the last embers in the corner, plates on the counter
+        brick = brick_wall('oven_brick', brick=(0.40, 0.17, 0.09), wash=(0.62, 0.58, 0.52), wash_amt=0.15, seed=9, axis='Y')
+        oc = Vector(S.get('oven', (-2550, 2050, 1040)))
+        bx('oven_base', oc.x - S.get('oven_r', 720) - 30, oc.x + S.get('oven_r', 720) + 30, oc.y - S.get('oven_r', 720) - 30, FY, 0, 1040, brick, bev=6)
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=1, segments=64, ring_count=32, location=oc)
+        OR = S.get('oven_r', 720)
+        dome = bpy.context.object; dome.name = 'oven_dome'; dome.scale = (OR, OR, OR * 0.86)
+        setmat(dome, lime_wall('oven_plaster', (0.34, 0.29, 0.24), seed=13, dirt=1.0, cracks=0.9))
+        bpy.ops.object.transform_apply(scale=True)
+        cut(dome, bx('below', -5000, 5000, -5000, 5000, -5000, oc.z))
+        cut(dome, bx('mouth_cut', oc.x - 240, oc.x + 240, oc.y - OR - 200, oc.y - OR + 300, oc.z, oc.z + 250))
+        cut(dome, bx('mouth_cut_top', oc.x - 160, oc.x + 160, oc.y - OR - 200, oc.y - OR + 300, oc.z, oc.z + 320))
+        arch_pts = [(oc.x - 300, 0, oc.z)] + [(oc.x + 300 * math.cos(math.radians(180 - 180 * k / 12)), 0, oc.z + 120 + 230 * math.sin(math.radians(180 * k / 12))) for k in range(13)] + [(oc.x + 300, 0, oc.z)]
+        for k in range(len(arch_pts) - 1):
+            a_, b2 = Vector(arch_pts[k]), Vector(arch_pts[k + 1])
+            br_ = bx('arch_brick', -60, 60, -110, 0, -35, 35, brick, bev=4)
+            mid = (a_ + b2) / 2; ang = math.atan2(b2.z - a_.z, b2.x - a_.x)
+            br_.matrix_world = Matrix.Translation((mid.x, oc.y - OR + 70, mid.z)) @ Matrix.Rotation(-ang, 4, 'Y')
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=1, segments=48, ring_count=24, location=oc)
+        inner = bpy.context.object; inner.name = 'oven_inner'; inner.scale = (OR - 80, OR - 80, OR * 0.86 - 80); setmat(inner, dark_mat('soot', (0.015, 0.012, 0.01), 0.9))
+        bpy.ops.object.transform_apply(scale=True)
+        cut(inner, bx('below2', -5000, 5000, -5000, 5000, -5000, oc.z))
+        cut(inner, bx('mouth_cut2', oc.x - 240, oc.x + 240, oc.y - OR - 200, oc.y - OR + 400, oc.z, oc.z + 250))
+        cut(inner, bx('mouth_cut2t', oc.x - 160, oc.x + 160, oc.y - OR - 200, oc.y - OR + 400, oc.z, oc.z + 320))
+        bx('oven_floor', oc.x - OR + 90, oc.x + OR - 90, oc.y - OR + 90, oc.y + OR - 90, oc.z - 10, oc.z, dark_mat('hearth', (0.05, 0.035, 0.025), 0.9))
+        ember = emissive('embers', (1.0, 0.32, 0.06), S.get('embers', 6.0) if TIME != 'day' else 0.0, (0.03, 0.02, 0.015))
+        items = []
+        for i in range(160):
+            a = R.uniform(0, 6.3); rr = R.uniform(0, OR * 0.5); s = R.uniform(12, 35)
+            M = Matrix.Translation((oc.x + rr * math.cos(a) * 0.7, oc.y - OR * 0.25 + rr * math.sin(a) * 0.6, oc.z + 6)) @ Matrix.Diagonal((s, s * 0.8, s * 0.6, 1))
+            items.append((lambda bm: bmesh.ops.create_icosphere(bm, subdivisions=1, radius=1.0), M, 0 if R.random() < 0.35 else 1))
+        scatter('ember_bed', items, [ember, dark_mat('ash', (0.06, 0.055, 0.05), 0.9)])
+        if TIME != 'day':
+            point_lamp('ember_light', (oc.x, oc.y - OR * 0.2, oc.z + 90), S.get('ember_w', 3.5e7), (1.0, 0.36, 0.08), size=180)
+        plate_m = plastic('plates', (0.80, 0.79, 0.75), rough=0.12, grime=0.2, sheen_scuffs=0.1)
+        for i in range(9):
+            cyl('plate', 130, 14, (CX1 - 250 + R.uniform(-3, 3), 420 + R.uniform(-3, 3), 1047 + i * 15), verts=48).data.materials.append(plate_m)
+    else:
+        bakery_wall(S, FY, CX1)
     tray = oak('dough_tray', light=(0.55, 0.42, 0.26), dark=(0.36, 0.25, 0.13), axis='X', seed=51, ring=1.5, coat=0.0, rough=0.7, wear=0.4)
     for i in range(3):
         bx('dough_tray', CX1 - 1100, CX1 - 450, -700 - i * 4, 0 - i * 4, 1040 + i * 95, 1130 + i * 95, tray, bev=6)
     # stacked plain pizza boxes and flour sacks on a steel shelf to the right of the door
     shelf_m = metal('shelf_steel', (0.64, 0.64, 0.62), 0.3, marks='grind', marks_axis=(1, 0, 0), wear=0.3, grime=0.6, smudge=0.7)
-    SX0, SX1 = 800, 1900
+    SX0, SX1 = S.get('shelf_x', (800, 1900))
     for z in (150, 700, 1250, 1800):
         bx('shelf', SX0, SX1, FY - 520, FY - 20, z, z + 30, shelf_m, bev=2)
     for x in (SX0, SX1 - 30):
@@ -517,8 +639,10 @@ def kit_shop():
         a = 2 * math.pi * k / 12; L_ = 22 if k % 3 == 0 else 12
         t_ = bx('tick', -3, 3, 0, 1, 0, L_, black_plastic); t_.location = (clk.x + 128 * math.sin(a), clk.y - 42, clk.z + 128 * math.cos(a) - L_ / 2)
         t_.rotation_euler = (0, a, 0)
-    for (ln, ang, w_) in ((100, 345, 6), (70, 255, 8)):   # 23:30
+    for (ln, ang, w_) in ((100, S.get('clock', (345, 255))[0], 6), (70, S.get('clock', (345, 255))[1], 8)):   # minute, hour (deg clockwise from 12)
         h_ = bx('hand', -w_ / 2, w_ / 2, 0, 2, 0, ln, black_plastic); h_.location = (clk.x, clk.y - 44, clk.z); h_.rotation_euler = (0, math.radians(ang), 0)
+    if not PIZZA:
+        bakery_props(S, FY, LY, HX, HZ, CX1, shelf_m)
     # light: one pendant left on over the end of the counter, the street lamp through the shop window behind us
     shade = metal('pendant', (0.08, 0.09, 0.08), 0.35, marks=None, grime=0.3, metallic=0.0)
     PL = Vector(S.get('pendant', (-1700, 300, 2250)))
@@ -782,6 +906,641 @@ def kit_vault():
             'time_lock': [(TL.x - 130, TL.y, TL.z + 130), (TL.x + 130, TL.y, TL.z + 130), (TL.x + 130, TL.y, TL.z - 130), (TL.x - 130, TL.y, TL.z - 130)]}
 
 
+# ================================================================ facade kit (old-town street fronts, D-105)
+def granite(name, base=(0.36, 0.35, 0.34), rough=0.55, seed=0.0, pink=0.25):
+    """Grey granite: quartz/feldspar/mica speckle at grain scale, a cloudy tone over the stone, sawn-and-worn top."""
+    m, nt, l, b, P = _new(name)
+    big = _noise(nt, P, 0.006 + seed * 0.0003, detail=4, rough=0.6)
+    col = _mix(nt, (*[c * 0.82 for c in base], 1), (*[min(1, c * 1.12) for c in base], 1), big)
+    sp1 = _maprange(nt, _noise(nt, P, 0.35 + seed * 0.01, detail=2, rough=0.4), 0.62, 0.66)      # black mica
+    sp2 = _maprange(nt, _noise(nt, P, 0.22 + seed * 0.01, detail=2, rough=0.4), 0.30, 0.34, 1, 0)  # white quartz
+    sp3 = _maprange(nt, _noise(nt, P, 0.15 + seed * 0.02, detail=2, rough=0.4), 0.64, 0.70, 0, pink)
+    col = _mix(nt, col, (0.05, 0.05, 0.05, 1), sp1)
+    col = _mix(nt, col, (0.72, 0.71, 0.68, 1), _math(nt, 'MULTIPLY', sp2, 0.6))
+    col = _mix(nt, col, (0.55, 0.33, 0.26, 1), sp3)
+    cm = _maprange(nt, _cavity_mask(nt, 6.0, 0.4, 0.95), 0, 1, 0, 0.6)
+    col = _mix(nt, col, (0.05, 0.045, 0.04, 1), cm)
+    l.new(col, b.inputs['Base Color'])
+    l.new(_maprange(nt, big, 0.3, 0.7, rough * 0.85, rough * 1.15), b.inputs['Roughness'])
+    h = _mix(nt, _noise(nt, P, 0.08, detail=6, rough=0.7), sp1, 0.2, dtype='FLOAT')
+    l.new(_bump(nt, h, 0.35, 0.8), b.inputs['Normal'])
+    return m
+
+
+def wetten(mat, rough_k=0.45, dark=0.72):
+    """Rain: darker albedo and a glossier surface (scales whatever already drives Base Color / Roughness)."""
+    if not mat or not mat.use_nodes or 'Principled BSDF' not in mat.node_tree.nodes: return mat
+    nt = mat.node_tree; b = nt.nodes['Principled BSDF']
+    for sock, k, kind in ((b.inputs['Roughness'], rough_k, 'FLOAT'), (b.inputs['Base Color'], dark, 'RGBA')):
+        if kind == 'FLOAT':
+            mm = nt.nodes.new('ShaderNodeMath'); mm.operation = 'MULTIPLY'; mm.inputs[1].default_value = k
+            if sock.is_linked:
+                src = sock.links[0].from_socket; nt.links.new(src, mm.inputs[0])
+            else:
+                mm.inputs[0].default_value = sock.default_value
+            nt.links.new(mm.outputs[0], sock)
+        else:
+            mm = nt.nodes.new('ShaderNodeMix'); mm.data_type = 'RGBA'; mm.blend_type = 'MULTIPLY'; mm.inputs['Factor'].default_value = 1.0
+            mm.inputs[7].default_value = (dark, dark, dark, 1)
+            if sock.is_linked:
+                nt.links.new(sock.links[0].from_socket, mm.inputs[6])
+            else:
+                mm.inputs[6].default_value = sock.default_value
+            nt.links.new(mm.outputs[2], sock)
+    return mat
+
+
+def puddles(mat, scale=0.0009, cover=0.5, seed=0.0):
+    """Puddles on a wet surface: a world-space noise mask; inside it the surface goes mirror-smooth, darker and flat."""
+    if not mat or not mat.use_nodes or 'Principled BSDF' not in mat.node_tree.nodes: return mat
+    nt = mat.node_tree; b = nt.nodes['Principled BSDF']; l = nt.links
+    tc = nt.nodes.new('ShaderNodeTexCoord')
+    mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Location'].default_value = (seed * 13.1, seed * 7.7, 0); l.new(tc.outputs['Object'], mp.inputs['Vector'])
+    nz = nt.nodes.new('ShaderNodeTexNoise'); nz.inputs['Scale'].default_value = scale; nz.inputs['Detail'].default_value = 6; nz.inputs['Roughness'].default_value = 0.62
+    l.new(mp.outputs['Vector'], nz.inputs['Vector'])
+    mask = _maprange(nt, nz.outputs['Fac'], 1.0 - cover * 0.55, 1.0 - cover * 0.55 + 0.035)
+    for sock, val in ((b.inputs['Roughness'], 0.015),):
+        mx = nt.nodes.new('ShaderNodeMix'); mx.data_type = 'FLOAT'; l.new(mask, mx.inputs['Factor'])
+        if sock.is_linked: l.new(sock.links[0].from_socket, mx.inputs[2])
+        else: mx.inputs[2].default_value = sock.default_value
+        mx.inputs[3].default_value = val; l.new(mx.outputs[0], sock)
+    sc = b.inputs['Base Color']
+    mc = nt.nodes.new('ShaderNodeMix'); mc.data_type = 'RGBA'; mc.blend_type = 'MULTIPLY'; l.new(mask, mc.inputs['Factor'])
+    if sc.is_linked: l.new(sc.links[0].from_socket, mc.inputs[6])
+    else: mc.inputs[6].default_value = sc.default_value
+    mc.inputs[7].default_value = (0.45, 0.45, 0.45, 1); l.new(mc.outputs[2], sc)
+    if b.inputs['Normal'].is_linked:   # still water is flat: the bump fades out inside the puddle
+        nm = nt.nodes.new('ShaderNodeMix'); nm.data_type = 'VECTOR'; l.new(mask, nm.inputs['Factor'])
+        l.new(b.inputs['Normal'].links[0].from_socket, nm.inputs[4])
+        geo = nt.nodes.new('ShaderNodeNewGeometry'); l.new(geo.outputs['Normal'], nm.inputs[5]); l.new(nm.outputs[1], b.inputs['Normal'])
+    b.inputs['Coat Weight'].default_value = max(b.inputs['Coat Weight'].default_value, 0.0)
+    return mat
+
+
+def water_mat(name='rain_water'):
+    m = bpy.data.materials.new(name); m.use_nodes = True; b = m.node_tree.nodes['Principled BSDF']
+    b.inputs['Base Color'].default_value = (0.02, 0.022, 0.024, 1); b.inputs['Roughness'].default_value = 0.025
+    b.inputs['Transmission Weight'].default_value = 1.0; b.inputs['IOR'].default_value = 1.33
+    return m
+
+
+def height_field(x, y, seed, amp):
+    """Settled paving: a smooth, seeded low-frequency field (mm, <= 0), so puddles gather in patches."""
+    s = seed * 0.37
+    f = (math.sin(x * 0.0011 + s) * math.cos(y * 0.0009 - s * 1.3) + 0.6 * math.sin(x * 0.0023 - y * 0.0017 + s * 2.1)
+         + 0.4 * math.cos(x * 0.0041 + y * 0.0033 + s))
+    return -amp * max(0.0, f * 0.5 + 0.15)
+
+
+def setts(name, x0, x1, y0, y1, mats, size=(105, 105), gap=8, seed=1, settle=9.0, fan=0.0):
+    """Granite setts in courses along x (half-bond), each stone with its own height, tilt and size, joints filled
+    with dark sand; `settle` mm: depth of the settled patches (puddles stand there when it rains)."""
+    rr = random.Random(seed); items = []
+    w0, d0 = size; y = y0; row = 0
+    while y < y1:
+        d = d0 * rr.uniform(0.9, 1.1); x = x0 - (w0 * 0.5 if row % 2 else 0) - rr.uniform(0, 30)
+        while x < x1:
+            w = w0 * rr.uniform(0.7, 1.35)
+            cx, cy = x + w / 2, y + d / 2
+            top = height_field(cx, cy, seed, settle) + rr.uniform(-2.5, 2.5)
+            M = (Matrix.Translation((cx, cy, top - 45)) @ Matrix.Rotation(rr.uniform(-0.09, 0.09), 4, 'Z') @
+                 Matrix.Rotation(rr.uniform(-0.05, 0.05), 4, 'X') @ Matrix.Rotation(rr.uniform(-0.05, 0.05), 4, 'Y') @
+                 Matrix.Diagonal(((w - gap) * 0.5, (d - gap) * 0.5, 45, 1)))
+            items.append((lambda bm: bmesh.ops.create_cube(bm, size=2.0), M, rr.randrange(len(mats))))
+            x += w
+        y += d; row += 1
+    o = scatter(name, items, mats)
+    md = o.modifiers.new('bev', 'BEVEL'); md.width = 7; md.segments = 2; md.limit_method = 'ANGLE'; md.angle_limit = math.radians(40)
+    return o
+
+
+def flags_slabs(name, x0, x1, y0, y1, mats, size=(600, 400), gap=7, seed=2, settle=4.0):
+    rr = random.Random(seed); items = []
+    w, d = size; y = y0; row = 0
+    while y < y1:
+        x = x0 - (w * 0.5 if row % 2 else 0)
+        while x < x1:
+            cx, cy = x + w / 2, y + d / 2
+            top = height_field(cx, cy, seed, settle) + rr.uniform(-1.5, 1.0)
+            M = (Matrix.Translation((cx, cy, top - 30)) @ Matrix.Rotation(rr.uniform(-0.004, 0.004), 4, 'Z') @
+                 Matrix.Diagonal(((w - gap) * 0.5, (d - gap) * 0.5, 30, 1)))
+            items.append((lambda bm: bmesh.ops.create_cube(bm, size=2.0), M, rr.randrange(len(mats))))
+            x += w
+        y += d; row += 1
+    o = scatter(name, items, mats)
+    md = o.modifiers.new('bev', 'BEVEL'); md.width = 4; md.segments = 2; md.limit_method = 'ANGLE'; md.angle_limit = math.radians(40)
+    return o
+
+
+def panel_leaf(name, x0, x1, y, z0, z1, mat, panels, depth=50, bead=22, proud=12):
+    """A framed-and-panelled timber leaf: the slab plus raised panel fields with mouldings (stiles/rails proud)."""
+    out = [bx(name, x0, x1, y, y + depth, z0, z1, mat, bev=3)]
+    for (a, b_, c, d) in panels:
+        for (p, q, r_, s_) in ((a, b_, d - bead, d), (a, b_, c, c + bead), (a, a + bead, c, d), (b_ - bead, b_, c, d)):
+            out.append(bx(name + '_bead', p, q, y - proud, y, r_, s_, mat, bev=4))
+        out.append(bx(name + '_field', a + bead + 25, b_ - bead - 25, y - proud * 0.6, y, c + bead + 25, d - bead - 25, mat, bev=8))
+    return out
+
+
+def window(wall, x0, x1, z0, z1, FY, depth, frame_m, glass_m, lit, rr, panes=(2, 3), sill_m=None, room_c=(1.0, 0.70, 0.40),
+           curtain=None, bars=None, hood=None, glow=1.4):
+    """Window in a cut opening: reveal, timber frame with casements and glazing bars, glass, a room behind it
+    (warm and lit, or dark) with a sheer curtain, stone sill; optional iron bars and a moulded hood."""
+    cut(wall, bx('wcut', x0, x1, FY - 400, FY + 1200, z0, z1))
+    fy = FY + depth * 0.45
+    for (a, b_, c, d) in ((x0, x0 + 70, z0, z1), (x1 - 70, x1, z0, z1), (x0, x1, z0, z0 + 80), (x0, x1, z1 - 70, z1)):
+        bx('wframe', a, b_, fy, fy + 70, c, d, frame_m, bev=4)
+    cx = (x0 + x1) / 2
+    bx('wmull', cx - 30, cx + 30, fy - 10, fy + 60, z0 + 80, z1 - 70, frame_m, bev=3)
+    tz = z1 - 70 - (z1 - z0) * 0.24
+    bx('wtransom', x0 + 70, x1 - 70, fy - 10, fy + 60, tz - 30, tz + 30, frame_m, bev=3)
+    nx, nz = panes
+    for side in ((x0 + 70, cx - 30), (cx + 30, x1 - 70)):
+        for k in range(1, nx):
+            xx = side[0] + (side[1] - side[0]) * k / nx
+            bx('wbar', xx - 12, xx + 12, fy + 15, fy + 45, z0 + 80, tz - 30, frame_m, bev=2)
+        for k in range(1, nz):
+            zz = z0 + 80 + (tz - 30 - z0 - 80) * k / nz
+            bx('wbar', side[0], side[1], fy + 15, fy + 45, zz - 12, zz + 12, frame_m, bev=2)
+    g = bx('wglass', x0 + 60, x1 - 60, fy + 30, fy + 34, z0 + 70, z1 - 60, glass_m); g.visible_shadow = False
+    if lit:   # a lit room: a lamp-side glow falling off across the back wall, a dark piece of furniture in front of it
+        room_m = bpy.data.materials.new('room_lit'); room_m.use_nodes = True; nt = room_m.node_tree; nt.nodes.clear()
+        tc = nt.nodes.new('ShaderNodeTexCoord'); gr = nt.nodes.new('ShaderNodeTexGradient'); gr.gradient_type = 'SPHERICAL'
+        mpp = nt.nodes.new('ShaderNodeMapping'); s_ = 1.0 / ((x1 - x0) * 1.3)
+        mpp.inputs['Scale'].default_value = (s_, s_, s_); mpp.inputs['Location'].default_value = (-(x0 + rr.uniform(0.1, 0.9) * (x1 - x0)) * s_, 0, -(z1 - 200) * s_)
+        nt.links.new(tc.outputs['Object'], mpp.inputs['Vector']); nt.links.new(mpp.outputs['Vector'], gr.inputs['Vector'])
+        em = nt.nodes.new('ShaderNodeEmission'); em.inputs['Color'].default_value = (*room_c, 1)
+        mm = nt.nodes.new('ShaderNodeMath'); mm.operation = 'MULTIPLY'; mm.inputs[1].default_value = glow * rr.uniform(1.2, 2.0)
+        pw = nt.nodes.new('ShaderNodeMath'); pw.operation = 'POWER'; pw.inputs[1].default_value = 1.6
+        nt.links.new(gr.outputs['Fac'], pw.inputs[0]); nt.links.new(pw.outputs[0], mm.inputs[0]); nt.links.new(mm.outputs[0], em.inputs['Strength'])
+        out = nt.nodes.new('ShaderNodeOutputMaterial'); nt.links.new(em.outputs[0], out.inputs['Surface'])
+        if rr.random() < 0.7:
+            fx = rr.uniform(x0, x1 - 500)
+            bx('wfurniture', fx, fx + rr.uniform(400, 900), fy + 600, fy + 700, z0 - 300, z0 + rr.uniform(300, 1500), dark_mat('furn', (0.03, 0.025, 0.02), 0.8))
+    else:
+        room_m = dark_mat('room_dark', (0.025, 0.024, 0.024), 0.9)
+    bx('wroom', x0 - 400, x1 + 400, fy + 900, fy + 920, z0 - 300, z1 + 300, room_m)
+    if curtain is not None:   # sheers drawn to the sides, a gap in the middle
+        gap = rr.uniform(0.15, 0.4) * (x1 - x0)
+        mid = (x0 + x1) / 2 + rr.uniform(-0.1, 0.1) * (x1 - x0)
+        bx('wcurtain', x0 + 80, mid - gap / 2, fy + 120, fy + 124, z0 + 90, z1 - 80, curtain)
+        bx('wcurtain', mid + gap / 2, x1 - 80, fy + 130, fy + 134, z0 + 90, z1 - 80, curtain)
+    if sill_m:
+        bx('wsill', x0 - 60, x1 + 60, FY - 70, fy + 10, z0 - 60, z0, sill_m, bev=6)
+    if bars:
+        for k in range(5):
+            xx = x0 + 60 + (x1 - x0 - 120) * (k + 0.5) / 5
+            tube('wbar_iron', [(xx, FY - 40, z0 + 20), (xx, FY - 40, z1 - 20)], 11, bars, smooth_pts=False)
+        for zz in (z0 + 300, z1 - 300):
+            bx('wbar_h', x0 + 40, x1 - 40, FY - 55, FY - 30, zz - 15, zz + 15, bars, bev=3)
+    if hood:
+        bx('whood', x0 - 120, x1 + 120, FY - 90, FY, z1 + 40, z1 + 150, hood, bev=12)
+        bx('whood_top', x0 - 160, x1 + 160, FY - 130, FY, z1 + 150, z1 + 200, hood, bev=12)
+        for xx in (x0 - 120, x1 + 50):
+            bx('wear', xx, xx + 70, FY - 50, FY, z0 - 20, z1 + 40, hood, bev=8)
+
+
+def lantern(name, x, y, z, glow, iron_m, arm=380, hang=0):
+    """A wall lantern on a wrought bracket (or, hang > 0, hung on a rod of that length from a vault/arch crown):
+    four-sided cage, opal panes, a warm lamp inside."""
+    if hang:
+        cx, cy, cz = x, y, z
+        tube(name + '_rod', [(cx, cy, cz + 300), (cx, cy, cz + 300 + hang)], 10, iron_m, smooth_pts=False)
+        bpy.ops.mesh.primitive_torus_add(major_radius=30, minor_radius=6, location=(cx, cy, cz + 300), rotation=(math.radians(90), 0, 0))
+        setmat(bpy.context.object, iron_m)
+    else:
+        tube(name + '_arm', [(x, y, z + 300), (x, y - arm * 0.6, z + 330), (x, y - arm, z + 260), (x, y - arm, z + 180)], 12, iron_m)
+        tube(name + '_brace', [(x, y, z), (x, y - arm * 0.55, z + 250)], 9, iron_m)
+        bx(name + '_plate', x - 60, x + 60, y - 12, y, z - 40, z + 340, iron_m, bev=4)
+        cx, cy, cz = x, y - arm, z - 30
+    bx(name + '_cap', cx - 120, cx + 120, cy - 120, cy + 120, cz + 180, cz + 210, iron_m, bev=6)
+    bpy.ops.mesh.primitive_cone_add(vertices=4, radius1=150, radius2=20, depth=110, location=(cx, cy, cz + 265), rotation=(0, 0, math.pi / 4))
+    setmat(bpy.context.object, iron_m)
+    bx(name + '_base', cx - 95, cx + 95, cy - 95, cy + 95, cz - 210, cz - 185, iron_m, bev=4)
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            bx(name + '_post', cx + sx * 95 - 9, cx + sx * 95 + 9, cy + sy * 95 - 9, cy + sy * 95 + 9, cz - 200, cz + 185, iron_m)
+    pane = opal_glass(name + '_opal', glow=glow, color=(1.0, 0.78, 0.48))
+    for (a, b_, c, d) in ((cx - 92, cx + 92, cy - 94, cy - 90), (cx - 92, cx + 92, cy + 90, cy + 94)):
+        bx(name + '_pane', a, b_, c, d, cz - 185, cz + 180, pane)
+    for (a, b_) in ((cx - 94, cx - 90), (cx + 90, cx + 94)):
+        bx(name + '_pane', a, b_, cy - 92, cy + 92, cz - 185, cz + 180, pane)
+    for ob in bpy.data.objects:   # the lamp inside shines through the opal panes and the open bottom (no shadow from them)
+        if ob.name.startswith((name + '_pane', name + '_base')): ob.visible_shadow = False
+    return Vector((cx, cy, cz))
+
+
+def kit_facade():
+    """Old-town street fronts (D-105), one builder dressed per job: `facade.style` = "tenement_gate" (an 1890 Kraków
+    tenement, its carriage gate under conservator protection: job.krakow_tenement_gate), "beguinage" (a whitewashed
+    house in a Ghent beguinage: job.ghent_beguinage), "townhouse" (a Saint-Gilles townhouse with the balcony above
+    the door: job.brussels_townhouse). Facade plane y = FY, street towards the camera (-y)."""
+    S = J.get('facade', {}); ST = S.get('style', 'tenement_gate')
+    WET = TIME == 'rainy' or S.get('wet', False)
+    rr = random.Random(S.get('seed', 7))
+    FY = S.get('fy', 1600)
+    iron_m = paint('wrought_iron', (0.025, 0.025, 0.025), rough=0.45, metal_col=(0.30, 0.28, 0.26), chip=0.35, grime=0.6)
+    gran = [granite('sett%d' % i, base=c, seed=i, rough=0.5) for i, c in
+            enumerate(((0.26, 0.25, 0.24), (0.20, 0.20, 0.20), (0.31, 0.28, 0.26), (0.23, 0.24, 0.26), (0.16, 0.155, 0.15), (0.29, 0.27, 0.27)))]
+    sand = dark_mat('joint_sand', (0.05, 0.045, 0.035), 0.95)
+    # ---------------------------------------------------------------- ground
+    PW = S.get('pavement', 1900)                     # pavement depth in front of the facade (0: a cobbled lane)
+    bx('sand_bed', -9000, 9000, -14000, FY + 200, -80, -14, sand)
+    if PW:
+        pav = [ph('flag%d' % i, 'workshop_concrete', scale=1300 + 110 * i, rot=23 * i, metallic=0.0, base=c, base_mix=0.5, tint=(1.0, 0.98, 0.95),
+                  rough_add=0.1, bump=1.0, grime=1.0, wear=0.4) for i, c in enumerate(S.get('flag_cols', ((0.36, 0.35, 0.33), (0.31, 0.30, 0.29), (0.40, 0.39, 0.37), (0.27, 0.27, 0.26))))]
+        flags_slabs('pavement', -7000, 7000, FY - PW, FY, pav, size=tuple(S.get('flag', (500, 500))), seed=3, settle=S.get('flag_settle', 9.0))
+        kerb = granite('kerb', base=(0.38, 0.37, 0.36), seed=21, rough=0.45)
+        bx('kerb', -9000, 9000, FY - PW - 220, FY - PW, -200, 20, kerb, bev=12)
+        setts('road', -6500, 6500, -13000, FY - PW - 220, gran, size=tuple(S.get('sett', (150, 120))), seed=5, settle=S.get('settle', 11.0))
+        bx('road_gutter', -9000, 9000, FY - PW - 520, FY - PW - 220, -120, -16, sand)
+    else:
+        setts('lane', -6500, 6500, -13000, FY, gran, size=tuple(S.get('sett', (105, 105))), seed=5, settle=S.get('settle', 11.0))
+    if WET:
+        for k, m_ in enumerate(list(gran) + ([*pav, kerb] if PW else [])):
+            wetten(m_, 0.35, 0.62); puddles(m_, S.get('puddle_scale', 0.0008), S.get('puddle_cover', 0.5), seed=S.get('seed', 7))
+        wl = bx('water', -9000, 9000, -14000, FY + 100, S.get('water_z', -7.0) - 2, S.get('water_z', -7.0), water_mat())
+        wl.visible_shadow = False
+    # ---------------------------------------------------------------- facade wall per style
+    W0, W1 = S.get('wall_x', (-7000, 7000))
+    H = S.get('height', 9000)
+    if ST == 'tenement_gate':
+        render_m = ph('render', 'wall_lime_plaster', scale=1500, metallic=0.0, base=tuple(S.get('render', (0.56, 0.45, 0.30))), base_mix=S.get('base_mix', 0.5),
+                      rough_add=0.05, bump=1.2, grime=1.0, wear=0.2)
+        rust_m = ph('rustic', 'wall_lime_plaster', scale=1300, rot=90, metallic=0.0, base=tuple(S.get('rustic', (0.44, 0.40, 0.33))), base_mix=S.get('base_mix', 0.5),
+                    rough_add=0.05, bump=1.3, grime=1.0, wear=0.3)
+        stone = granite('plinth_stone', base=(0.30, 0.29, 0.28), seed=31, rough=0.6, pink=0.05)
+        GF = 4300                                     # ground floor height (rusticated)
+        wall = bx('wall_up', W0, W1, FY, FY + 600, GF, H, render_m)
+        gwall = bx('wall_gf', W0, W1, FY - 20, FY + 600, 0, GF, rust_m)
+        for z in range(650, GF, 380):                 # rustication grooves
+            cut(gwall, bx('groove', W0 - 10, W1 + 10, FY - 40, FY - 2, z - 14, z + 14))
+        bx('plinth', W0, W1, FY - 50, FY + 600, -40, 600, stone, bev=10)
+        # where the render has spalled off: brick behind, broken edges
+        brick_m = brick_wall('core_brick', brick=(0.40, 0.17, 0.09), wash=(0.55, 0.50, 0.42), wash_amt=0.1, seed=12)
+        for (px, pz, pw, ph_) in S.get('spalls', ((2150, 900, 520, 330),)):
+            bx('spall_brick', px - pw, px + pw, FY - 8, FY + 40, pz - ph_, pz + ph_, brick_m)
+            for k in range(3):
+                c_ = bx('spall_cut', -pw * 0.55, pw * 0.55, -60, 18, -ph_ * 0.5, ph_ * 0.5)
+                c_.location = (px + (k - 1) * pw * 0.35, FY - 20, pz + (k % 2 - 0.5) * ph_ * 0.4); c_.rotation_euler.y = math.radians(17 * k - 15)
+                cut(gwall if pz < GF else wall, c_)
+        # cornice band over the ground floor and a sill band
+        for (z0, z1, d) in ((GF - 40, GF + 60, 90), (GF + 60, GF + 170, 150), (GF + 170, GF + 210, 190), (GF + 1050, GF + 1110, 70)):
+            bx('cornice', W0, W1, FY - d, FY, z0, z1, render_m, bev=10)
+        # the carriage gate: arched opening, deep reveal, two panelled oak leaves, a fanlight grille
+        GX0, GX1 = S.get('gate_x', (-1300, 1300)); SPR = S.get('spring', 2700); GR = (GX1 - GX0) / 2; GC = (GX0 + GX1) / 2
+        arch_cut = bx('gate_cut', GX0, GX1, FY - 400, FY + 700, -50, SPR)
+        cyl_cut = cyl('gate_arch_cut', GR, 1100, (GC, FY + 150, SPR), axis='Y', verts=96)
+        for w_ in (gwall,):
+            cut(w_, arch_cut); cut(w_, cyl_cut)
+        cut(bpy.data.objects['plinth'], bx('gate_cut2', GX0, GX1, FY - 400, FY + 700, -50, SPR))
+        # stone surround: voussoir band round the arch and jamb blocks
+        sur = ph('surround', 'wall_lime_plaster', scale=1600, metallic=0.0, base=(0.62, 0.58, 0.50), base_mix=0.8, rough_add=0.05, bump=0.7, grime=1.0, wear=0.4)
+        for k in range(15):
+            a0, a1 = 180 - 180 * k / 15, 180 - 180 * (k + 1) / 15
+            am = math.radians((a0 + a1) / 2)
+            vb = bx('voussoir', -95, 95, -40, 0, 0, 260, sur, bev=8)
+            vb.matrix_world = Matrix.Translation((GC + (GR + 5) * math.cos(am), FY - 1, SPR + (GR + 5) * math.sin(am))) @ Matrix.Rotation(-(am - math.pi / 2), 4, 'Y')
+        bx('keystone', GC - 140, GC + 140, FY - 70, FY, SPR + GR - 20, SPR + GR + 330, sur, bev=10)
+        for (a, b_) in ((GX0 - 260, GX0), (GX1, GX1 + 260)):
+            for z in range(0, SPR, 400):
+                bx('jamb_block', a + (20 if (z // 400) % 2 else 0), b_ - (0 if (z // 400) % 2 else 20), FY - 40, FY + 20, z + 600 if z == 0 else z, z + 392, sur, bev=8)
+        # reveal lining (plaster) and the leaves 450 mm in
+        LY = FY + 450
+        bx('reveal_l', GX0 - 5, GX0, FY - 20, LY + 100, 0, SPR, render_m); bx('reveal_r', GX1, GX1 + 5, FY - 20, LY + 100, 0, SPR, render_m)
+        gate_wood = oak('gate_oak', light=tuple(S.get('wood_light', (0.22, 0.14, 0.075))), dark=tuple(S.get('wood_dark', (0.08, 0.045, 0.022))), axis='Z', seed=71,
+                        ring=3.0, coat=0.35, coat_rough=0.45, wear=1.0, grime=1.0)
+        half = (GX1 - GX0) / 2
+        for k, (a, b_) in enumerate(((GX0 + 4, GC - 3), (GC + 3, GX1 - 4))):
+            panel_leaf('gate_leaf%d' % k, a, b_, LY, 10, SPR - 4, gate_wood,
+                       [(a + 90, b_ - 90, 1500, SPR - 120), (a + 90, b_ - 90, 160, 1300)], depth=80, bead=36, proud=22)
+            # iron studs in a grid on the lower panel frame
+            for z in range(240, 1300, 260):
+                for x in (a + 50, b_ - 50):
+                    bpy.ops.mesh.primitive_uv_sphere_add(radius=16, segments=16, ring_count=8, location=(x, LY - 4, z)); o = bpy.context.object; o.scale.y = 0.5; setmat(o, iron_m)
+        bx('meeting_stile', GC - 45, GC + 45, LY - 30, LY, 10, SPR - 4, gate_wood, bev=6)
+        for (a, b_) in ((GX0 + 4, GC - 3), (GC + 3, GX1 - 4)):
+            bx('kick_strap', a + 10, b_ - 10, LY - 30, LY - 22, 40, 150, iron_m, bev=3)
+        stain_decal('gate_weather', 'Y', LY - 31, (GX0, GX1, 0, 900), [(GC, 120, 1500, 380, 0.55), (GC - 600, 500, 300, 400, 0.2)],
+                    color=(0.16, 0.15, 0.13), rough=0.9, noise_scale=0.01)
+        stain_decal('gate_hands', 'Y', LY - 31, (GC - 400, GC + 500, 800, 1500), [(GC - 180, 1200, 120, 260, 0.35), (GC + 260, 1150, 160, 180, 0.3)],
+                    color=(0.03, 0.025, 0.02), rough=0.35, noise_scale=0.03)
+        # a phone cable on clips across the facade over the gate, dipping into the reveal
+        cab_m = plastic('cable_black', (0.02, 0.02, 0.02), rough=0.35, grime=0.4)
+        tube('facade_cable', [(W0, FY - 14, GF - 260), (GX0 - 500, FY - 14, GF - 240), (GX0 - 280, FY - 14, SPR + 300), (GX0 - 280, FY - 14, 1900),
+                              (GX0 - 280, FY + 200, 1880)], 6, cab_m, smooth_pts=False)
+        for z in range(2000, int(SPR + 300), 400):
+            bx('cable_clip', GX0 - 292, GX0 - 268, FY - 22, FY - 2, z, z + 14, cab_m)
+        # fanlight: dark glass behind a sunburst iron grille in the half-round
+        fan = cyl('fan_glass', GR - 10, 10, (GC, LY + 40, SPR), axis='Y', verts=96); setmat(fan, dark_mat('fan_dark', (0.02, 0.02, 0.022), 0.3))
+        cut(fan, bx('fan_low', GX0 - 50, GX1 + 50, LY, LY + 80, SPR - 2000, SPR))
+        bx('fan_transom', GX0, GX1, LY - 20, LY + 40, SPR - 40, SPR + 50, gate_wood, bev=6)
+        for k in range(1, 12):
+            am = math.radians(180 * k / 12)
+            tube('fan_ray', [(GC + 120 * math.cos(am), LY + 10, SPR + 50 + 120 * math.sin(am)), (GC + (GR - 20) * math.cos(am), LY + 10, SPR + (GR - 20) * math.sin(am))], 9, iron_m, smooth_pts=False)
+        tube('fan_hub', arc(GC, SPR + 50, 120, 0, 180, 24, LY + 10), 12, iron_m)
+        tube('fan_ring', arc(GC, SPR, GR * 0.62, 0, 180, 32, LY + 10), 10, iron_m)
+        tube('fan_rim', arc(GC, SPR, GR - 20, 0, 180, 48, LY + 10), 14, iron_m)
+        # the big box lock on the right leaf, the old key stuck in it (its bow out, the bit inside)
+        LX, LZ = GC + 260, 1150
+        lockbox = bx('box_lock', LX - 20, LX + 260, LY - 60, LY - 22, LZ - 110, LZ + 110, iron_m, bev=6)
+        rivet_m = metal('lock_iron', (0.30, 0.29, 0.27), 0.45, marks='stamp', wear=0.6, grime=0.9)
+        for (x, z) in ((LX, LZ - 90), (LX, LZ + 90), (LX + 240, LZ - 90), (LX + 240, LZ + 90)):
+            cyl_y('lock_rivet', 11, LY - 66, LY - 60, x, z, rivet_m, verts=16)
+        bx('keyhole_plate', LX + 70, LX + 150, LY - 64, LY - 60, LZ - 80, LZ + 20, rivet_m, bev=3)
+        key_m = metal('old_key', (0.36, 0.34, 0.31), 0.42, marks='stamp', wear=0.8, grime=0.8, patina=0.2)
+        KX, KZ = LX + 110, LZ - 30
+        tube('key_shank', [(KX, LY - 64, KZ), (KX, LY - 172, KZ)], 10, key_m, smooth_pts=False)
+        bx('key_collar', KX - 14, KX + 14, LY - 150, LY - 135, KZ - 14, KZ + 14, key_m, bev=3)
+        bpy.ops.mesh.primitive_torus_add(major_radius=52, minor_radius=10, major_segments=48, minor_segments=12, location=(KX, LY - 222, KZ))
+        k_ = bpy.context.object; k_.name = 'key_bow'; setmat(k_, key_m)
+        k_.rotation_euler = (0, math.radians(90), 0)   # ring in the vertical plane of the shank
+        tube('gate_handle', [(GC - 180, LY - 22, 1050), (GC - 180, LY - 90, 1060), (GC - 180, LY - 90, 1400), (GC - 180, LY - 22, 1410)], 15, iron_m)
+        # the residents' notice taped to the left leaf: "use the next tenement's courtyard" (an arrow, no words)
+        note_m = paper('notice', (0.80, 0.79, 0.74) if not WET else (0.66, 0.66, 0.62), fibre=1.0, seed=3, grime=0.3, lines=(9.0, 'Z', (0.22, 0.22, 0.25)))
+        NX, NZ = GC - 660, 1620
+        nt_ = bx('notice', NX - 105, NX + 105, LY - 25, LY - 23.5, NZ - 148, NZ + 148, note_m)
+        nt_.rotation_euler.y = math.radians(-2.5)
+        tape = plastic('tape', (0.75, 0.74, 0.68), rough=0.25, grime=0.2)
+        tape.node_tree.nodes['Principled BSDF'].inputs['Transmission Weight'].default_value = 0.5
+        for (dx, dz, a) in ((-95, 140, 35), (95, 140, -35), (-95, -140, -30), (95, -140, 30)):
+            t_ = bx('tape', -40, 40, LY - 26, LY - 25, -12, 12, tape); t_.location = (NX + dx, 0, NZ + dz); t_.rotation_euler.y = math.radians(a)
+        ink = plastic('marker_ink', (0.02, 0.025, 0.05), rough=0.4, grime=0.0, sheen_scuffs=0.0)
+        tube('arrow', [(NX + 70, LY - 26.5, NZ - 70), (NX - 10, LY - 26.5, NZ - 60), (NX - 70, LY - 26.5, NZ - 72)], 4.5, ink)
+        tube('arrow_head', [(NX - 40, LY - 26.5, NZ - 48), (NX - 74, LY - 26.5, NZ - 72), (NX - 42, LY - 26.5, NZ - 94)], 4.5, ink, smooth_pts=False)
+        # wheel guards (odbojniki): worn stone cones at both jambs
+        for x in (GX0 + 160, GX1 - 160):
+            g_ = lathe('wheel_guard', [(0.1, 0), (230, 0), (215, 150), (185, 380), (150, 560), (105, 680), (60, 730), (0.1, 742)], x, FY + 60, seg=24, tilt=math.radians(-3 if x < 0 else 2))
+            setmat(g_, granite('guard_stone', base=(0.30, 0.29, 0.28), seed=33, rough=0.75))
+            g_.modifiers['bev'].width = 4
+            stain_decal('guard_dirt', 'Z', 0.5, (x - 400, x + 400, FY - 400, FY + 50), [(x, FY - 120, 330, 220, 0.5)], color=(0.04, 0.035, 0.03), rough=0.4, noise_scale=0.02)
+        # windows: ground floor (barred) and two upper storeys, a few lit
+        glass_m = glass('old_glass', (0.75, 0.77, 0.77), rough=0.03, dirt=0.4)
+        fr_m = oil_paint('win_frame', tuple(S.get('frame', (0.62, 0.60, 0.54))), rough=0.35, chips=0.5, scuffs=0.2, seed=8, edge_chips=1.0)
+        cur = plastic('sheer', (0.75, 0.72, 0.64), rough=0.8, seed=2, grime=0.2, sheen_scuffs=0.0)
+        cur.node_tree.nodes['Principled BSDF'].inputs['Subsurface Weight'].default_value = 0.4
+        cur.node_tree.nodes['Principled BSDF'].inputs['Transmission Weight'].default_value = 0.6
+        for x, lit in S.get('gf_windows', ((-3500, True), (3500, False))):
+            window(gwall, x - 650, x + 650, 1000, 3300, FY, 450, fr_m, glass_m, lit, rr, panes=(2, 3), bars=iron_m, curtain=cur, glow=S.get('gf_glow', 1.6))
+            stain_decal('sill_streak', 'Y', FY - 3, (x - 900, x + 900, 600, 1000), [(x - 600, 800, 70, 260, 0.4), (x + 600, 800, 70, 260, 0.4)],
+                        color=(0.10, 0.09, 0.07), rough=0.6, noise_scale=0.01)
+        for s_, z0 in enumerate((GF + 1110, GF + 1110 + 3500)):
+            for x in S.get('up_windows', (-4200, -1500, 1500, 4200)):
+                lit = rr.random() < S.get('lit', 0.45)
+                window(wall, x - 640, x + 640, z0, z0 + 2350, FY, 420, fr_m, glass_m, lit, rr, panes=(1, 3), curtain=cur if rr.random() < 0.7 else None,
+                       sill_m=sur, hood=sur, glow=1.2)
+        lamp_at = lantern('lantern', GC, FY + 160, SPR + GR - 760, 6.0 if TIME != 'day' else 0.0, iron_m, hang=440)   # hung in the gate arch
+        # rain runs: grey streaks down from the cornice and the upper sills, a damp band over the plinth
+        stain_decal('cornice_runs', 'Y', FY - 22, (W0, W1, GF - 1400, GF - 40), [(x, GF - 500, 90 + 60 * (k % 3), 700, 0.35) for k, x in enumerate(range(int(W0) + 300, int(W1), 520))],
+                    color=(0.16, 0.14, 0.11), rough=0.85, noise_scale=0.004)
+        stain_decal('damp_band', 'Y', FY - 52, (W0, W1, 500, 1400), [(x, 650, 900, 420, 0.45) for x in range(int(W0), int(W1) + 1, 900)],
+                    color=(0.12, 0.11, 0.09), rough=0.5, noise_scale=0.004)
+        num_x, num_z = S.get('num_at', (GX0 - 520, 2550))
+        # downpipe at the party wall
+        tube('downpipe', [(W1 - 600, FY - 110, -10), (W1 - 600, FY - 110, H)], 55, metal('zinc', (0.42, 0.43, 0.42), 0.45, marks=None, grime=0.8, wear=0.2), smooth_pts=False)
+        door_quad = [(GX0, LY - 22, SPR), (GX1, LY - 22, SPR), (GX1, LY - 22, 0), (GX0, LY - 22, 0)]
+        PLANES = [(FY - 21.5, 600, GF - 40), (FY - 1, GF + 210, H)]
+        AVOID = [(GX0 - 300, GX1 + 300, 0, SPR + GR + 400)] + [(x - 700, x + 700, 950, 3350) for x, _ in S.get('gf_windows', ((-3500, True), (3500, False)))] +                 [(x - 700, x + 700, z, z + 2600) for z in (GF + 1110, GF + 4610) for x in S.get('up_windows', (-4200, -1500, 1500, 4200))]
+        lock_quad = [(LX - 20, LY - 60, LZ + 110), (LX + 260, LY - 60, LZ + 110), (LX + 260, LY - 60, LZ - 110), (LX - 20, LY - 60, LZ - 110)]
+    elif ST == 'beguinage':
+        wash_m = brick_wall('whitewash', brick=(0.40, 0.20, 0.12), wash=tuple(S.get('wash', (0.84, 0.83, 0.79))), wash_amt=S.get('wash_amt', 0.9), seed=3)
+        tar_m = paint('tar_plinth', (0.025, 0.025, 0.027), rough=0.35, metal_col=(0.40, 0.20, 0.12), chip=0.5, grime=0.4)
+        blue = granite('bluestone', base=(0.17, 0.17, 0.18), seed=41, rough=0.5, pink=0.0)
+        wall = bx('wall', W0, W1, FY, FY + 450, 0, H, wash_m)
+        bx('tar_band', W0, W1, FY - 6, FY + 450, -40, S.get('tar', 520), tar_m, bev=2)
+        DX0, DX1, DTOP = S.get('door_x', (-500, 500)) + (2150,)
+        cut(wall, bx('door_cut', DX0 - 10, DX1 + 10, FY - 400, FY + 500, -50, DTOP + 520))
+        cut(bpy.data.objects['tar_band'], bx('door_cut2', DX0 - 10, DX1 + 10, FY - 400, FY + 500, -50, DTOP + 520))
+        LY = FY + 160
+        bx('step', DX0 - 140, DX1 + 140, FY - 300, FY + 20, -40, 160, blue, bev=10)
+        bx('threshold', DX0, DX1, FY + 20, LY + 80, -40, 175, blue, bev=6)
+        for (a, b_, c, d) in ((DX0 - 10, DX0 + 60, 175, DTOP + 510), (DX1 - 60, DX1 + 10, 175, DTOP + 510), (DX0 - 10, DX1 + 10, DTOP, DTOP + 80),
+                              (DX0 - 10, DX1 + 10, DTOP + 440, DTOP + 510)):
+            bx('dframe', a, b_, LY - 30, LY + 60, c, d, oil_paint('door_frame_w', (0.78, 0.77, 0.72), rough=0.3, chips=0.3, seed=4), bev=4)
+        dg = oil_paint('door_green', tuple(S.get('door', (0.025, 0.075, 0.045))), rough=0.25, under=(0.30, 0.10, 0.06), base=(0.32, 0.22, 0.12),
+                       chips=0.6, scuffs=0.5, strokes='Z', seed=12, edge_chips=1.2)
+        panel_leaf('door', DX0 + 62, DX1 - 62, LY, 178, DTOP - 2, dg, [(DX0 + 130, DX1 - 130, 1240, DTOP - 90), (DX0 + 130, DX1 - 130, 280, 1120)], depth=55, bead=24, proud=14)
+        # transom light: four panes, dark hall behind
+        tg = glass('transom_glass', (0.7, 0.72, 0.72), rough=0.03, dirt=0.6)
+        bx('transom_glass', DX0 + 60, DX1 - 60, LY + 20, LY + 24, DTOP + 80, DTOP + 440, tg).visible_shadow = False
+        bx('transom_hall', DX0 - 100, DX1 + 100, LY + 600, LY + 620, DTOP - 200, DTOP + 700, emissive('hall_dim', (1.0, 0.72, 0.42), 0.25, (0.02, 0.02, 0.02)))
+        for k in range(1, 4):
+            xx = DX0 + 60 + (DX1 - DX0 - 120) * k / 4
+            bx('transom_bar', xx - 14, xx + 14, LY - 10, LY + 30, DTOP + 80, DTOP + 440, bpy.data.materials['door_frame_w'], bev=3)
+        # old iron lock plate with the keyhole, a ring knocker, a bell pull
+        rivet_m = metal('lock_iron', (0.30, 0.29, 0.27), 0.45, marks='stamp', wear=0.6, grime=0.9)
+        LX, LZ = DX1 - 170, 1080
+        lp = bx('lock_plate', LX - 55, LX + 55, LY - 20, LY - 14, LZ - 150, LZ + 110, rivet_m, bev=4)
+        bx('keyhole', LX - 7, LX + 7, LY - 21, LY - 19.9, LZ - 95, LZ - 45, dark); cyl_y('keyhole_top', 11, LY - 21, LY - 19.9, LX, LZ - 40, dark, verts=20)
+        tube('door_knob', [(LX, LY - 14, LZ + 40), (LX, LY - 60, LZ + 40)], 10, rivet_m, smooth_pts=False)
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=32, location=(LX, LY - 72, LZ + 40)); setmat(bpy.context.object, rivet_m)
+        bpy.ops.mesh.primitive_torus_add(major_radius=70, minor_radius=11, location=(0, LY - 34, 1560), rotation=(math.radians(90), 0, 0))
+        setmat(bpy.context.object, rivet_m)
+        cyl_y('knock_boss', 30, LY - 22, LY - 14, 0, 1630, rivet_m, verts=24)
+        # windows left (and right) of the door: white frames, small panes, green shutters folded back
+        glass_m = glass('old_glass', (0.75, 0.77, 0.77), rough=0.03, dirt=0.5)
+        fr_m = oil_paint('win_white', (0.80, 0.79, 0.75), rough=0.3, chips=0.3, scuffs=0.2, seed=9)
+        cur = plastic('lace', (0.80, 0.78, 0.72), rough=0.8, seed=2, grime=0.1, sheen_scuffs=0.0)
+        cur.node_tree.nodes['Principled BSDF'].inputs['Subsurface Weight'].default_value = 0.4
+        for x, lit in S.get('windows', ((-1900, True), (1900, False))):
+            window(wall, x - 560, x + 560, 900, 2300, FY, 330, fr_m, glass_m, lit, rr, panes=(2, 3), curtain=cur, sill_m=blue, glow=1.0)
+            for sx in ((-1, 1) if S.get('shutters', False) else ()):   # shutters folded back against the wall
+                sh = panel_leaf('shutter', x + sx * 560 + (0 if sx > 0 else -560), x + sx * 560 + (560 if sx > 0 else 0), FY - 50, 900, 2300, dg,
+                                [(x + sx * 560 + (60 if sx > 0 else -500), x + sx * 560 + (500 if sx > 0 else -60), 980, 2220)], depth=40, bead=18, proud=8)
+        for x in S.get('up_windows', (-1900, 1900)):
+            window(wall, x - 500, x + 500, 3300, 4500, FY, 330, fr_m, glass_m, rr.random() < 0.5, rr, panes=(2, 2), curtain=cur, sill_m=blue, glow=0.9)
+        # eaves: a timber gutter board and the tiled roof edge above the frame top
+        bx('eaves', W0, W1, FY - 380, FY + 100, 5200, 5380, oil_paint('eaves', (0.06, 0.06, 0.06), rough=0.4, seed=3), bev=6)
+        tube('gutter', [(W0, FY - 330, 5180), (W1, FY - 330, 5180)], 70, metal('zinc', (0.42, 0.43, 0.42), 0.45, marks=None, grime=0.8), smooth_pts=False)
+        tube('downpipe', [(W1 - 900, FY - 90, -10), (W1 - 900, FY - 90, 5180), (W1 - 900, FY - 330, 5180)], 45, bpy.data.materials['zinc'])
+        lamp_at = lantern('lantern', DX1 + 520, FY - 10, 2550, 6.0 if TIME != 'day' else 0.0, iron_m, arm=300)
+        if S.get('bike'):
+            bike(S, FY - 300)
+        num_x, num_z = DX0 - 300, 1900
+        door_quad = [(DX0, LY, DTOP), (DX1, LY, DTOP), (DX1, LY, 0), (DX0, LY, 0)]
+        PLANES = [(FY - 1, S.get('tar', 520), H)]
+        AVOID = [(DX0 - 100, DX1 + 100, 0, DTOP + 600)] + [(x - 3000 if False else x - 1150, x + 1150, 850, 2350) for x, _ in S.get('windows', ((-1900, True), (1900, False)))] +                 [(x - 560, x + 560, 3250, 4550) for x in S.get('up_windows', (-1900, 1900))]
+        lock_quad = [(LX - 55, LY - 20, LZ + 110), (LX + 55, LY - 20, LZ + 110), (LX + 55, LY - 20, LZ - 150), (LX - 55, LY - 20, LZ - 150)]
+    else:   # townhouse (Saint-Gilles): brick and stone, front door up two steps, the balcony with geraniums above
+        brick_m = brick_wall('red_brick', brick=tuple(S.get('brick', (0.36, 0.13, 0.07))), wash=(0.55, 0.52, 0.46), wash_amt=0.02, seed=6)
+        stone = ph('blue_stone', 'workshop_concrete', scale=1500, metallic=0.0, base=(0.30, 0.31, 0.32), base_mix=0.75, rough_add=0.1, bump=0.8, grime=1.0, wear=0.2)
+        white = ph('white_stone', 'wall_lime_plaster', scale=1600, metallic=0.0, base=(0.70, 0.67, 0.60), base_mix=0.8, rough_add=0.05, bump=0.6, grime=1.0, wear=0.3)
+        GF = 1100
+        wall = bx('wall', W0, W1, FY, FY + 450, GF, H, brick_m)
+        gwall = bx('wall_gf', W0, W1, FY - 30, FY + 450, -40, GF, stone, bev=8)
+        for z in (2600, 4000, 6100):
+            bx('band', W0, W1, FY - 30, FY, z, z + 160, white, bev=6)
+        DX0, DX1 = S.get('door_x', (-620, 620)); DTOP = 3000
+        for w_ in (wall, gwall):
+            cut(w_, bx('door_cut', DX0 - 20, DX1 + 20, FY - 400, FY + 500, -50, DTOP + 500))
+        LY = FY + 260
+        for k, (z0, dy) in enumerate(((-40, 520), (150, 260))):   # two bluestone steps
+            bx('step%d' % k, DX0 - 200 + k * 60, DX1 + 200 - k * 60, FY - dy, FY + 300, z0, z0 + 190, granite('step_stone', base=(0.20, 0.20, 0.21), seed=51, rough=0.45, pink=0.0), bev=8)
+        Z0 = 340
+        dw = oak('front_door', light=(0.30, 0.17, 0.08), dark=(0.11, 0.05, 0.02), axis='Z', seed=81, ring=2.2, coat=1.0, coat_rough=0.18, wear=0.6, grime=0.7)
+        for (a, b_, c, d) in ((DX0 - 20, DX0 + 70, Z0, DTOP + 480), (DX1 - 70, DX1 + 20, Z0, DTOP + 480), (DX0 - 20, DX1 + 20, DTOP, DTOP + 110)):
+            bx('dframe', a, b_, LY - 40, LY + 60, c, d, dw, bev=5)
+        CXd = (DX0 + DX1) / 2
+        for k, (a, b_) in enumerate(((DX0 + 72, CXd - 2), (CXd + 2, DX1 - 72))):
+            panel_leaf('leaf%d' % k, a, b_, LY, Z0, DTOP - 2, dw, [(a + 80, b_ - 80, Z0 + 120, 1250)], depth=55, bead=24, proud=16)
+            # glazed upper panel behind a wrought-iron grille
+            gl = bx('leaf_glass', a + 90, b_ - 90, LY + 20, LY + 24, 1400, DTOP - 120, glass('door_glass', (0.72, 0.73, 0.72), rough=0.04, dirt=0.4)); gl.visible_shadow = False
+            cut(bpy.data.objects['leaf%d' % k], bx('glass_cut', a + 90, b_ - 90, LY - 30, LY + 80, 1400, DTOP - 120))
+            for x in range(int(a + 140), int(b_ - 100), 90):
+                tube('grille', [(x, LY - 10, 1420), (x, LY - 10, DTOP - 140)], 7, iron_m, smooth_pts=False)
+            for z in (1700, 2200, 2650):
+                tube('grille_c', [(a + 100, LY - 12, z), ((a + b_) / 2, LY - 12, z + 80), (b_ - 100, LY - 12, z)], 8, iron_m)
+        bx('hall_glow', DX0 - 200, DX1 + 200, LY + 900, LY + 920, Z0, DTOP + 600, emissive('hall_lamp', (1.0, 0.70, 0.40), S.get('hall_glow', 0.3), (0.03, 0.03, 0.03)))
+        tg = glass('transom_glass', (0.7, 0.72, 0.72), rough=0.03, dirt=0.4)
+        bx('transom', DX0 + 70, DX1 - 70, LY + 20, LY + 24, DTOP + 110, DTOP + 470, tg).visible_shadow = False
+        brass_m = bpy.data.materials.get('ph_brass') or metal('door_brass', (0.74, 0.56, 0.30), 0.3, marks='turn', marks_axis=(0, 1, 0), wear=0.6, grime=0.7, patina=0.5)
+        cyl_y('knob', 34, LY - 60, LY - 10, CXd, 1200, brass_m, verts=40, bev=6)
+        LX, LZ = CXd + 150, 1050
+        bx('lock_rose', LX - 22, LX + 22, LY - 14, LY - 6, LZ - 70, LZ + 70, brass_m, bev=4)
+        cyl_y('lock_cyl', 15, LY - 20, LY - 14, LX, LZ - 30, brass_m, verts=32)
+        bx('cyl_slot', LX - 2, LX + 2, LY - 21, LY - 20, LZ - 42, LZ - 18, dark)
+        # bell panel with four blank name slots and buttons (multi-flat house)
+        steel_p = metal('bell_plate', (0.66, 0.65, 0.62), 0.26, marks='grind', marks_axis=(1, 0, 0), wear=0.3, grime=0.6, smudge=0.6)
+        PX = DX1 + 260
+        bx('bell_plate', PX, PX + 170, FY - 36, FY - 30, 1180, 1620, steel_p, bev=4)
+        for j in range(4):
+            bx('name_slot', PX + 20, PX + 115, FY - 38, FY - 36, 1230 + j * 95, 1290 + j * 95, paper('slot_card', (0.78, 0.76, 0.70), seed=j, grime=0.3))
+            cyl_y('bell_btn', 14, FY - 44, FY - 36, PX + 140, 1260 + j * 95, steel_p, verts=24)
+        # balcony over the door: stone slab on consoles, wrought railing, geranium pots, a watering can
+        BZ = S.get('balcony_z', 3650)
+        BX0, BX1 = DX0 - 400, DX1 + 400
+        bx('balcony_slab', BX0, BX1, FY - 850, FY, BZ - 140, BZ, white, bev=12)
+        for x in (BX0 + 120, BX1 - 220):
+            bx('console', x, x + 100, FY - 700, FY, BZ - 480, BZ - 140, white, bev=10)
+        cut(wall, bx('fw_cut', DX0 + 20, DX1 - 20, FY - 400, FY + 500, BZ, BZ + 2500))
+        for (a, b_, c, d) in ((DX0 + 20, DX0 + 100, BZ, BZ + 2500), (DX1 - 100, DX1 - 20, BZ, BZ + 2500), (DX0 + 20, DX1 - 20, BZ + 2420, BZ + 2500),
+                              (CXd - 35, CXd + 35, BZ, BZ + 2420), (DX0 + 20, DX1 - 20, BZ, BZ + 90)):
+            bx('fw_frame', a, b_, FY + 150, FY + 220, c, d, oil_paint('fw_paint', (0.75, 0.74, 0.70), rough=0.3, seed=5), bev=4)
+        g2 = bx('fw_glass', DX0 + 90, DX1 - 90, FY + 180, FY + 184, BZ + 90, BZ + 2420, glass('fw_glass', (0.72, 0.73, 0.72), rough=0.03)); g2.visible_shadow = False
+        bx('fw_room', DX0 - 300, DX1 + 300, FY + 1300, FY + 1320, BZ - 200, BZ + 2800, emissive('magda_room', (1.0, 0.72, 0.44), S.get('room_glow', 0.5), (0.03, 0.03, 0.03)))
+        fwc = plastic('fw_sheer', (0.80, 0.77, 0.70), rough=0.8, seed=5, grime=0.1, sheen_scuffs=0.0)
+        fwc.node_tree.nodes['Principled BSDF'].inputs['Transmission Weight'].default_value = 0.6
+        bx('fw_curtain', DX0 + 100, CXd - 120, FY + 300, FY + 304, BZ + 100, BZ + 2400, fwc)
+        ml = point_lamp('magda_lamp', (DX1 - 200, FY + 900, BZ + 1400), S.get('magda_w', 6e6), (1.0, 0.68, 0.38), size=120)
+        ml.visible_camera = False; ml.visible_transmission = False; ml.visible_glossy = False
+        rail_y = FY - 830
+        tube('rail_top', [(BX0 + 30, FY - 10, BZ + 950), (BX0 + 30, rail_y, BZ + 950), (BX1 - 30, rail_y, BZ + 950), (BX1 - 30, FY - 10, BZ + 950)], 16, iron_m, smooth_pts=False)
+        tube('rail_bot', [(BX0 + 30, FY - 10, BZ + 90), (BX0 + 30, rail_y, BZ + 90), (BX1 - 30, rail_y, BZ + 90), (BX1 - 30, FY - 10, BZ + 90)], 10, iron_m, smooth_pts=False)
+        for x in range(int(BX0 + 90), int(BX1 - 40), 115):
+            tube('baluster', [(x, rail_y, BZ), (x, rail_y, BZ + 950)], 8, iron_m, smooth_pts=False)
+            if (x // 115) % 2:
+                tube('scroll', [(x, rail_y, BZ + 600), (x + 40, rail_y, BZ + 660), (x + 57, rail_y, BZ + 740), (x + 30, rail_y, BZ + 780), (x + 10, rail_y, BZ + 740)], 6, iron_m)
+        terra = plastic('terracotta', (0.42, 0.16, 0.08), rough=0.85, seed=7, grime=0.6, sheen_scuffs=0.0)
+        soil = dark_mat('pot_soil', (0.04, 0.03, 0.02), 0.95)
+        leaf_m = plastic('geranium_leaf', (0.07, 0.16, 0.04), rough=0.55, seed=3, grime=0.1, sheen_scuffs=0.0)
+        flower_m = plastic('geranium_red', (0.62, 0.03, 0.03), rough=0.5, seed=4, grime=0.0, sheen_scuffs=0.0)
+        for m_ in (leaf_m, flower_m):
+            m_.node_tree.nodes['Principled BSDF'].inputs['Subsurface Weight'].default_value = 0.3
+        pots = []
+        for k, px in enumerate(S.get('pots', (-900, -520, 380, 820))):
+            py = rail_y + 170
+            lathe('pot', [(0.1, BZ), (95, BZ), (125, BZ + 230), (135, BZ + 240), (135, BZ + 262), (0.1, BZ + 262)], px, py, seg=40).data.materials.append(terra)
+            cyl('soil', 122, 6, (px, py, BZ + 240), verts=40).data.materials.append(soil)
+            pots.append((px, py))
+        items = []; fl = []
+        for (px, py) in pots:
+            for i in range(26):   # round scalloped leaves in a mound
+                a = rr.uniform(0, 6.3); r = rr.uniform(10, 150); s = rr.uniform(40, 62)
+                M = (Matrix.Translation((px + r * math.cos(a), py + r * math.sin(a) * 0.8, BZ + 270 + rr.uniform(0, 160) * (1 - r / 220))) @
+                     Matrix.Rotation(a, 4, 'Z') @ Matrix.Rotation(rr.uniform(0.2, 0.8), 4, 'Y') @ Matrix.Diagonal((s, s, s * 0.3, 1)))
+                items.append((leaf_maker, M, 0))
+            for c in range(rr.randint(3, 5)):   # flower umbels on stalks
+                a = rr.uniform(0, 6.3); r = rr.uniform(0, 100)
+                hx, hy, hz = px + r * math.cos(a), py + r * math.sin(a), BZ + 420 + rr.uniform(0, 160)
+                fl.append(tube('stalk', [(px + r * 0.4 * math.cos(a), py + r * 0.4 * math.sin(a), BZ + 300), (hx, hy, hz)], 3, leaf_m))
+                for i in range(30):
+                    u = Vector((rr.gauss(0, 1), rr.gauss(0, 1), abs(rr.gauss(0, 0.8)))).normalized() * rr.uniform(20, 48)
+                    s = rr.uniform(9, 14)
+                    items.append((lambda bm: bmesh.ops.create_icosphere(bm, subdivisions=1, radius=1.0),
+                                  Matrix.Translation((hx + u.x, hy + u.y, hz + u.z)) @ Matrix.Diagonal((s, s, s * 0.55, 1)), 1))
+        scatter('geraniums', items, [leaf_m, flower_m])
+        # the watering can she came out with, left on the balcony floor; water dripping off the slab onto the pavement
+        zinc = metal('can_zinc', (0.55, 0.56, 0.55), 0.38, marks='stamp', wear=0.3, grime=0.6, smudge=0.3)
+        cx_, cy_ = 120, rail_y + 230
+        lathe('can_body', [(0.1, BZ), (120, BZ), (120, BZ + 260), (110, BZ + 280), (0.1, BZ + 280)], cx_, cy_, seg=40).data.materials.append(zinc)
+        tube('can_spout', [(cx_ + 100, cy_, BZ + 60), (cx_ + 260, cy_, BZ + 250), (cx_ + 320, cy_, BZ + 330)], 16, zinc, smooth_pts=False)
+        tube('can_handle', [(cx_ - 110, cy_, BZ + 80), (cx_ - 170, cy_, BZ + 200), (cx_ - 110, cy_, BZ + 330), (cx_ + 20, cy_, BZ + 330)], 12, zinc)
+        stain_decal('drip_wet', 'Z', 0.6, (BX0 - 200, BX1 + 200, FY - 1300, FY - 520), [(-300, FY - 900, 380, 160, 0.5), (500, FY - 870, 260, 120, 0.4)],
+                    color=(0.04, 0.04, 0.045), rough=0.08, noise_scale=0.01)
+        glass_m = glass('old_glass', (0.75, 0.77, 0.77), rough=0.03, dirt=0.4)
+        fr_m = oil_paint('win_white', (0.76, 0.75, 0.71), rough=0.3, chips=0.3, seed=9)
+        cur = plastic('sheer', (0.78, 0.75, 0.68), rough=0.8, seed=2, grime=0.1, sheen_scuffs=0.0)
+        cur.node_tree.nodes['Principled BSDF'].inputs['Subsurface Weight'].default_value = 0.4
+        for x in S.get('windows', (-2700, 2700)):
+            window(wall, x - 650, x + 650, BZ, BZ + 2400, FY, 420, fr_m, glass_m, rr.random() < S.get('lit', 0.6), rr, panes=(1, 3), curtain=cur, sill_m=white, hood=white, glow=1.0)
+            window(wall, x - 650, x + 650, 1400, 3300, FY, 420, fr_m, glass_m, rr.random() < S.get('lit', 0.5), rr, panes=(1, 3), curtain=cur, sill_m=white, glow=0.9)
+            cut(gwall, bx('gw_cut', x - 650, x + 650, FY - 400, FY + 500, 1400, 3300))
+        lamp_at = None
+        num_x, num_z = DX1 + 345, 2150
+        door_quad = [(DX0, LY, DTOP), (DX1, LY, DTOP), (DX1, LY, Z0), (DX0, LY, Z0)]
+        PLANES = [(FY - 1, GF, H)]
+        AVOID = [(DX0 - 100, DX1 + 100, 0, BZ + 2600)] + [(x - 700, x + 700, z, z + 2500) for z in (1400, BZ) for x in S.get('windows', (-2700, 2700))]
+        lock_quad = [(LX - 22, LY - 14, LZ + 70), (LX + 22, LY - 14, LZ + 70), (LX + 22, LY - 14, LZ - 70), (LX - 22, LY - 14, LZ - 70)]
+    # weathering over the whole front: soot and damp patches, lighter patch repairs (decals on the wall planes,
+    # kept off the openings, which are recessed behind the decal planes)
+    wr = random.Random(S.get('seed', 7) + 5)
+    def free(x, z, r):
+        return not any(a0 - r < x < a1 + r and b0 - r < z < b1 + r for (a0, a1, b0, b1) in AVOID)
+    for k, (yy, z0, z1) in enumerate(PLANES):
+        sp = []
+        while len(sp) < int(30 * (z1 - z0) / H) + 4:
+            x, z = wr.uniform(W0, W1), wr.uniform(z0, z1)
+            if free(x, z, 250): sp.append((x, z, wr.uniform(300, 1300), wr.uniform(200, 800), wr.uniform(0.15, 0.4)))
+        stain_decal('front_soot', 'Y', yy, (W0, W1, z0, z1), sp, color=tuple(S.get('soot', (0.10, 0.09, 0.075))), rough=0.85, noise_scale=0.003)
+        sp = []
+        while len(sp) < int(10 * (z1 - z0) / H) + 2:
+            x, z = wr.uniform(W0, W1), wr.uniform(z0, z1)
+            if free(x, z, 400): sp.append((x, z, wr.uniform(200, 600), wr.uniform(150, 400), wr.uniform(0.25, 0.5)))
+        stain_decal('front_repair', 'Y', yy - 0.3, (W0, W1, z0, z1), sp, color=tuple(S.get('repair', (0.62, 0.58, 0.50))), rough=0.9, noise_scale=0.006)
+    # house number: a small enamel plate (digits only)
+    num = str(J.get('number', ''))
+    if num:
+        enam = enamel('num_enamel', tuple(S.get('num_col', (0.03, 0.10, 0.30))), chip=0.5)
+        wide = 140 + 70 * len(num)
+        bx('num_plate', num_x - wide / 2, num_x + wide / 2, FY - 45, FY - 30, num_z - 110, num_z + 110, enam, bev=8)
+        nw = plastic('num_white', (0.82, 0.81, 0.76), rough=0.15, grime=0.1, sheen_scuffs=0.0)
+        for k, ch in enumerate(num):
+            t = text_obj('hnum' + ch, ch, 150, font='Lato-Regular.ttf', extrude=0.6, mat=nw)
+            t.rotation_euler = (math.radians(90), 0, 0); t.location = (num_x + (k - (len(num) - 1) / 2) * 82, FY - 46, num_z)
+    # the next house along on either side (a slightly different render, the party-wall step) and the street behind us
+    for sx in (-1, 1):
+        nb = ph('next_house%d' % sx, 'wall_lime_plaster', scale=2400, metallic=0.0, base=tuple(S.get('next_house', (0.50, 0.47, 0.42))), base_mix=0.75, rough_add=0.05, bump=0.7, grime=1.0)
+        a, b_ = (W1, W1 + 9000) if sx > 0 else (W0 - 9000, W0)
+        bx('next_house', a, b_, FY - 120 * (1 if sx > 0 else 0.5), FY + 600, 0, H + 1500, nb)
+    # light
+    if TIME in ('evening', 'rainy', 'night'):
+        sky_world(S.get('sky', 0.18 if TIME == 'rainy' else 0.25), S.get('sun_elev', -3.0), S.get('sun_az', 200.0))
+        if lamp_at is not None:
+            point_lamp('lantern_bulb', tuple(lamp_at), S.get('lantern_w', 2.2e7), (1.0, 0.70, 0.40), size=60)
+        a = aim('aim_street', (0, FY, 1200))
+        sl = area_light('street_lamp', tuple(S.get('street_lamp', (-2600, -6500, 6200))), a, 600, S.get('street_w', 1.4e8), tuple(S.get('street_col', (0.75, 0.82, 1.0))))
+        sl.visible_camera = False; sl.visible_glossy = S.get('street_glossy', True)
+        if S.get('fill_w'):
+            af = aim('aim_fill', (0, FY, 1500))
+            fl_ = area_light('sky_fill', (0, -4000, 9000), af, 9000, S['fill_w'], (0.55, 0.65, 0.85)); fl_.visible_camera = False; fl_.visible_glossy = False
+    else:
+        elev, az = S.get('sun_elev', 22.0), S.get('sun_az', 230.0)
+        d = Vector((math.cos(math.radians(az)) * math.cos(math.radians(elev)), math.sin(math.radians(az)) * math.cos(math.radians(elev)), math.sin(math.radians(elev))))
+        sky_world(S.get('sky', 0.5), elev, az + 90); sun_lamp(-d, S.get('sun', 3.5), (1.0, 0.88, 0.72))
+    # damp air: a thin scattering volume between us and the front, so lamps get a halo and depth falls off
+    if S.get('mist', 0.0) > 0:
+        vm = bpy.data.materials.new('mist'); vm.use_nodes = True; nt = vm.node_tree; nt.nodes.remove(nt.nodes['Principled BSDF'])
+        pv = nt.nodes.new('ShaderNodeVolumePrincipled'); pv.inputs['Density'].default_value = S['mist']; pv.inputs['Anisotropy'].default_value = S.get('mist_g', 0.55)
+        pv.inputs['Color'].default_value = (0.85, 0.88, 0.92, 1)
+        nt.links.new(pv.outputs[0], nt.nodes['Material Output'].inputs['Volume'])
+        mb = bx('mist_box', -12000, 12000, -16000, FY - 60, -100, H + 2000, vm); mb.visible_shadow = False
+    # rain: streaks of splash grime low on the wall, a wet sheen on the wall foot
+    if WET:
+        stain_decal('splash', 'Y', FY - 52, (W0, W1, 0, 900), [(x, 120, 700, 420, 0.5) for x in range(int(W0), int(W1) + 1, 1100)],
+                    color=(0.05, 0.045, 0.04), rough=0.3, noise_scale=0.006)
+    return {'door': door_quad, 'lock': lock_quad}
+
+
 # ================================================================ camera, render
 def camera_walk():
     cam = photo_camera((0, 0, 0), lens=CAMC.get('lens', 24.0))
@@ -837,7 +1596,7 @@ def base_render(res, spp, out, expo, vig, look):
     # env_common.photo_finish is fixed on main (D-89): no bright centre ellipse any more
 
 
-KITS = {'street': kit_street, 'shop': kit_shop, 'corridor': kit_corridor, 'vault': kit_vault}
+KITS = {'street': kit_street, 'shop': kit_shop, 'corridor': kit_corridor, 'vault': kit_vault, 'facade': kit_facade}
 info = KITS[KIT]()
 cam = camera_walk()
 LOOK = J.get('look', {}).get(TIME, {})

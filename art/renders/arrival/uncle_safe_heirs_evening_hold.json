@@ -1,0 +1,127 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "uncle_safe_heirs",
+ "time": "evening",
+ "door": "ajar",
+ "fps": 12,
+ "frames": 36,
+ "note": "quads: [tl,tr,br,bl] normalised 0..1, origin top-left (D-41). figures: feet line and height in px of this image.",
+ "anchors": {
+  "namecard": [
+   [
+    0.50439,
+    0.38624
+   ],
+   [
+    0.54855,
+    0.38624
+   ],
+   [
+    0.54855,
+    0.39293
+   ],
+   [
+    0.50439,
+    0.39293
+   ]
+  ],
+  "mailbox_card": [
+   [
+    0.80338,
+    0.495
+   ],
+   [
+    0.84678,
+    0.49504
+   ],
+   [
+    0.84678,
+    0.50367
+   ],
+   [
+    0.80338,
+    0.50362
+   ]
+  ],
+  "number_plate": [
+   [
+    0.50268,
+    0.24608
+   ],
+   [
+    0.55029,
+    0.24604
+   ],
+   [
+    0.55029,
+    0.26373
+   ],
+   [
+    0.50268,
+    0.26377
+   ]
+  ],
+  "door": [
+   [
+    0.33825,
+    0.24031
+   ],
+   [
+    0.71524,
+    0.23992
+   ],
+   [
+    0.71524,
+    0.73609
+   ],
+   [
+    0.33825,
+    0.73498
+   ]
+  ],
+  "cylinder": [
+   [
+    0.66452,
+    0.47841
+   ],
+   [
+    0.70742,
+    0.47844
+   ],
+   [
+    0.70742,
+    0.52471
+   ],
+   [
+    0.66452,
+    0.52466
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   -40.0,
+   -2500.0,
+   1560.0
+  ],
+  "lens_mm": 22.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   -0.12999999523162842
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   0.5
+  ]
+ },
+ "depth_png": {
+  "file": "uncle_safe_heirs_evening_hold_depth.png",
+  "depth_max_mm": 20000.0,
+  "encoding": "planar camera depth = value/65535*depth_max_mm"
+ }
+}

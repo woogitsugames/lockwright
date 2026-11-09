@@ -1,0 +1,68 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "ghent_beguinage",
+ "time": "rainy",
+ "kit": "facade",
+ "fps": 12,
+ "frames": 36,
+ "note": "plate-only hold (no client cut-out): anchors are quads [tl,tr,br,bl] normalised 0..1, origin top-left (D-41).",
+ "anchors": {
+  "door": [
+   [
+    0.26784,
+    0.46561
+   ],
+   [
+    0.48892,
+    0.46334
+   ],
+   [
+    0.48892,
+    0.7427
+   ],
+   [
+    0.26784,
+    0.7367
+   ]
+  ],
+  "lock": [
+   [
+    0.43705,
+    0.58793
+   ],
+   [
+    0.46194,
+    0.58809
+   ],
+   [
+    0.46194,
+    0.62189
+   ],
+   [
+    0.43705,
+    0.62161
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   1350.0,
+   -3300.0,
+   1560.0
+  ],
+  "lens_mm": 24.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   0.03999999910593033
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   9.0
+  ]
+ }
+}

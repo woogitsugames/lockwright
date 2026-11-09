@@ -1,0 +1,68 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "krakow_tenement_gate",
+ "time": "rainy",
+ "kit": "facade",
+ "fps": 12,
+ "frames": 36,
+ "note": "plate-only hold (no client cut-out): anchors are quads [tl,tr,br,bl] normalised 0..1, origin top-left (D-41).",
+ "anchors": {
+  "door": [
+   [
+    0.35154,
+    0.43109
+   ],
+   [
+    0.83633,
+    0.44109
+   ],
+   [
+    0.83633,
+    0.72272
+   ],
+   [
+    0.35154,
+    0.73641
+   ]
+  ],
+  "lock": [
+   [
+    0.65036,
+    0.59251
+   ],
+   [
+    0.70156,
+    0.59223
+   ],
+   [
+    0.70156,
+    0.61587
+   ],
+   [
+    0.65036,
+    0.61635
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   -1700.0,
+   -3900.0,
+   1560.0
+  ],
+  "lens_mm": 24.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   0.05999999865889549
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   -11.0
+  ]
+ }
+}

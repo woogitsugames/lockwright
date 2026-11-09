@@ -1,6 +1,6 @@
 {
   "schema": "lockwright.arrival_jobs/1",
-  "note": "Per-job dressing of the D-58 arrival scene (art/blender/arrival_scene.py --job <id>). Missing keys take the wrong_floor defaults in arrival_scene.py (JOB_DEFAULTS). Colours are linear RGB. camera: end = [x, y, z] mm of the hold camera, end_yaw/end_pitch deg, end_shift = lens shift at the hold, start = [x, y, yaw, pitch] of the first frame (the climb keys in between follow the stair). props: see PROPS in arrival_scene.py. No brands, no lock brand names, no readable text. kit: \"street\" | \"shop\" | \"corridor\" | \"vault\" builds the job in art/blender/arrival_place.py instead of the stairwell (D-94); camera.keys = [t, x, y, z, yaw, pitch] of the walk.",
+  "note": "Per-job dressing of the D-58 arrival scene (art/blender/arrival_scene.py --job <id>). Missing keys take the wrong_floor defaults in arrival_scene.py (JOB_DEFAULTS). Colours are linear RGB. camera: end = [x, y, z] mm of the hold camera, end_yaw/end_pitch deg, end_shift = lens shift at the hold, start = [x, y, yaw, pitch] of the first frame (the climb keys in between follow the stair). props: see PROPS in arrival_scene.py. No brands, no lock brand names, no readable text. kit: \"street\" | \"shop\" | \"corridor\" | \"vault\" | \"facade\" builds the job in art/blender/arrival_place.py instead of the stairwell (D-94; facade and shop.style \"bakery\": D-105); camera.keys = [t, x, y, z, yaw, pitch] of the walk.",
   "jobs": {
     "wrong_floor": {
       "times": [
@@ -580,6 +580,658 @@
       "look": {
         "day": {
           "exposure": 0.4,
+          "vignette": 0.28,
+          "agx": "AgX - Medium High Contrast"
+        }
+      }
+    },
+    "krakow_tenement_gate": {
+      "kit": "facade",
+      "times": [
+        "rainy"
+      ],
+      "story": "Kazimierz, an 1890 tenement under the conservator's protection: the lock of the oak carriage gate seized after the rain and the only old key is stuck in it (its bow still out). Tenants go round through the next courtyard: a taped notice with an arrow on the gate. Wet setts, the wall lantern lit, rainy evening.",
+      "number": "21",
+      "facade": {
+        "style": "tenement_gate",
+        "fy": 1600,
+        "pavement": 1900,
+        "settle": 16.0,
+        "water_z": -11.0,
+        "lit": 0.5,
+        "lantern_w": 40000000.0,
+        "street_lamp": [
+          -6500,
+          -1200,
+          5200
+        ],
+        "street_w": 100000000.0,
+        "street_col": [
+          0.7,
+          0.8,
+          1.0
+        ],
+        "gf_windows": [
+          [
+            -2850,
+            true
+          ],
+          [
+            3500,
+            false
+          ],
+          [
+            -6300,
+            false
+          ],
+          [
+            6800,
+            true
+          ]
+        ],
+        "gf_glow": 8.0,
+        "flag_settle": 3.0,
+        "puddle_cover": 0.75,
+        "render": [
+          0.42,
+          0.34,
+          0.23
+        ],
+        "rustic": [
+          0.34,
+          0.31,
+          0.26
+        ],
+        "sky": 0.35,
+        "mist": 2.5e-05,
+        "wall_x": [
+          -9000,
+          9000
+        ],
+        "up_windows": [
+          -7000,
+          -4200,
+          -1500,
+          1500,
+          4200,
+          7000
+        ]
+      },
+      "camera": {
+        "lens": 24.0,
+        "end_shift": [
+          0.0,
+          0.06
+        ],
+        "keys": [
+          [
+            0.0,
+            -3400,
+            -9800,
+            1610,
+            -16.0,
+            -1.0
+          ],
+          [
+            0.4,
+            -2900,
+            -7800,
+            1600,
+            -14.0,
+            -0.5
+          ],
+          [
+            0.75,
+            -2100,
+            -5600,
+            1570,
+            -12.0,
+            0.0
+          ],
+          [
+            1.0,
+            -1700,
+            -3900,
+            1560,
+            -11.0,
+            0.0
+          ]
+        ]
+      },
+      "look": {
+        "rainy": {
+          "exposure": 0.0,
+          "vignette": 0.28,
+          "agx": "AgX - Medium High Contrast"
+        }
+      }
+    },
+    "ghent_beguinage": {
+      "kit": "facade",
+      "times": [
+        "rainy"
+      ],
+      "story": "Ghent beguinage, rainy evening: the whitewashed community house with its tarred plinth, the dark green door whose cupboard of parish books nobody has opened in decades; brother Pieter's black bike with the wicker basket against the wall under the window. Cobbled lane, wet.",
+      "number": "3",
+      "facade": {
+        "style": "beguinage",
+        "fy": 1600,
+        "pavement": 0,
+        "settle": 12.0,
+        "water_z": -7.0,
+        "windows": [
+          [
+            -1900,
+            true
+          ],
+          [
+            1900,
+            false
+          ],
+          [
+            -4300,
+            false
+          ],
+          [
+            4300,
+            true
+          ]
+        ],
+        "bike": {
+          "at": [
+            1700,
+            1180,
+            0
+          ],
+          "yaw": 0.0,
+          "lean": -5.0,
+          "color": [
+            0.02,
+            0.02,
+            0.02
+          ],
+          "basket": true,
+          "cable": false
+        },
+        "mist": 2.5e-05,
+        "wall_x": [
+          -9000,
+          9000
+        ],
+        "up_windows": [
+          -4300,
+          -1900,
+          1900,
+          4300
+        ],
+        "sett": [
+          125,
+          110
+        ],
+        "puddle_cover": 0.6
+      },
+      "camera": {
+        "lens": 24.0,
+        "end_shift": [
+          0.0,
+          0.04
+        ],
+        "keys": [
+          [
+            0.0,
+            2900,
+            -8600,
+            1610,
+            14.0,
+            -1.0
+          ],
+          [
+            0.4,
+            2400,
+            -6800,
+            1600,
+            12.0,
+            -0.5
+          ],
+          [
+            0.75,
+            1700,
+            -4700,
+            1570,
+            10.0,
+            0.0
+          ],
+          [
+            1.0,
+            1350,
+            -3300,
+            1560,
+            9.0,
+            0.0
+          ]
+        ]
+      },
+      "look": {
+        "rainy": {
+          "exposure": 0.0,
+          "vignette": 0.28,
+          "agx": "AgX - Medium High Contrast"
+        }
+      }
+    },
+    "liege_bakery": {
+      "kit": "shop",
+      "times": [
+        "night"
+      ],
+      "story": "Liège, 3:50: Nadia took over her uncle's bakery; the lever lock of the back room sensed a wrong key from his unlabelled bunch of thirty and blocked. The bunch still hangs from that key in the lock, the dough proves on the rack under linen, flour on the door and the floor, the bread wall still empty, the clock at ten to four.",
+      "shop": {
+        "style": "bakery",
+        "door": [
+          0.3,
+          0.07,
+          0.05
+        ],
+        "upper": [
+          0.66,
+          0.58,
+          0.44
+        ],
+        "tables": [],
+        "pendant": [
+          -520,
+          700,
+          2120
+        ],
+        "counter_end": -950,
+        "counter_y1": 1000,
+        "clock": [
+          300,
+          115
+        ],
+        "rack": [
+          820,
+          1950
+        ],
+        "keys": 30,
+        "floor_scale": 260,
+        "street_w": 60000000.0,
+        "bread_x": [
+          -1980,
+          -640
+        ],
+        "pictures": [
+          [
+            1250,
+            2150,
+            360,
+            300
+          ],
+          [
+            2150,
+            2050,
+            300,
+            300
+          ]
+        ],
+        "shelf_x": [
+          1700,
+          2800
+        ]
+      },
+      "camera": {
+        "lens": 24.0,
+        "end_shift": [
+          0.0,
+          -0.02
+        ],
+        "keys": [
+          [
+            0.0,
+            700,
+            -5200,
+            1620,
+            6.0,
+            -1.0
+          ],
+          [
+            0.4,
+            500,
+            -3700,
+            1610,
+            5.0,
+            -0.5
+          ],
+          [
+            0.75,
+            200,
+            -1900,
+            1560,
+            3.0,
+            0.0
+          ],
+          [
+            1.0,
+            120,
+            -500,
+            1520,
+            1.0,
+            0.0
+          ]
+        ]
+      },
+      "look": {
+        "night": {
+          "exposure": 0.2,
+          "vignette": 0.3,
+          "agx": "AgX - Medium High Contrast"
+        }
+      }
+    },
+    "uncle_safe_heirs": {
+      "times": [
+        "evening"
+      ],
+      "story": "Uncle Bogdan's flat a few weeks after the funeral: his death notice still taped by the door, the door left open by the heirs inside (Marek came first, Piotr straight from the train, his suitcase in the hall), their shoes on the hall floor; Ewa is still an hour away.",
+      "number": "16",
+      "door": {
+        "style": "painted",
+        "paint": [
+          0.5,
+          0.46,
+          0.36
+        ],
+        "state": "ajar",
+        "chain": false,
+        "ajar_deg": 48
+      },
+      "plate": "brass",
+      "stair": "terrazzo",
+      "lamperia": [
+        0.09,
+        0.12,
+        0.08
+      ],
+      "court_seed": 52,
+      "flyer": false,
+      "mailbox": {},
+      "props": [
+        {
+          "type": "obituary",
+          "at": [
+            548,
+            1330
+          ]
+        },
+        {
+          "type": "suitcase",
+          "at": [
+            560,
+            1350
+          ],
+          "yaw": -25
+        },
+        {
+          "type": "shoes",
+          "pairs": [
+            [
+              250,
+              430,
+              -12,
+              1.0
+            ],
+            [
+              300,
+              760,
+              6,
+              1.05
+            ]
+          ]
+        }
+      ],
+      "camera": {
+        "end": [
+          -40,
+          -2500,
+          1560
+        ],
+        "end_yaw": 0.5,
+        "end_shift": [
+          0.0,
+          -0.13
+        ]
+      }
+    },
+    "dollhouse_wooden_lock": {
+      "times": [
+        "day"
+      ],
+      "story": "Hania (7) and her father Tomasz, a third-generation joiner: the doll is locked in great-grandfather's dollhouse since Tuesday. At their door: her scooter and rubber boots, and the oak board Tomasz brought up for the new wooden key, a few shavings already on the mat.",
+      "number": "11",
+      "door": {
+        "style": "oak",
+        "state": "closed"
+      },
+      "plate": "brass",
+      "stair": "wood",
+      "lamperia": [
+        0.13,
+        0.1,
+        0.06
+      ],
+      "court_seed": 71,
+      "flyer": false,
+      "mailbox": {},
+      "props": [
+        {
+          "type": "scooter",
+          "at": [
+            -640,
+            -170
+          ],
+          "yaw": 180,
+          "lean": 9
+        },
+        {
+          "type": "plank",
+          "x": 640,
+          "len": 880,
+          "shavings": 0
+        }
+      ],
+      "camera": {
+        "end": [
+          -60,
+          -2540,
+          1580
+        ],
+        "end_yaw": 0.5,
+        "end_shift": [
+          0.0,
+          -0.13
+        ]
+      }
+    },
+    "widow_bureau": {
+      "times": [
+        "evening"
+      ],
+      "story": "Mrs Irena, a retired librarian widowed a year ago: her flat in Srodmiescie (door 2, not Mrs Halina's 7). By the door two stacks of her husband's books tied with twine for the library sale; the bureau inside is still his.",
+      "number": "2",
+      "door": {
+        "style": "painted",
+        "paint": [
+          0.07,
+          0.12,
+          0.09
+        ],
+        "state": "closed"
+      },
+      "plate": "brass",
+      "stair": "wood",
+      "lamperia": [
+        0.16,
+        0.13,
+        0.08
+      ],
+      "court_seed": 83,
+      "flyer": false,
+      "mailbox": {},
+      "props": [
+        {
+          "type": "book_stack",
+          "at": [
+            -640,
+            -300
+          ]
+        }
+      ],
+      "camera": {
+        "end": [
+          -60,
+          -2540,
+          1580
+        ],
+        "end_yaw": 0.5,
+        "end_shift": [
+          0.0,
+          -0.13
+        ]
+      }
+    },
+    "t43_09_08_spare_key_hook": {
+      "times": [
+        "day"
+      ],
+      "story": "Mr Kazimierz's own door, one floor above Mrs Teresa's 19 (job.wrong_floor): number 21, the same tenement and oak doors, no wreath. This time the right floor.",
+      "number": "21",
+      "door": {
+        "style": "oak",
+        "state": "closed"
+      },
+      "plate": "brass",
+      "wreath": false,
+      "stair": "wood",
+      "flyer": true,
+      "mailbox": {},
+      "props": [],
+      "camera": {
+        "end": [
+          -60,
+          -2540,
+          1580
+        ],
+        "end_yaw": 0.5,
+        "end_shift": [
+          0.0,
+          -0.13
+        ]
+      }
+    },
+    "charleroi_letters": {
+      "kit": "facade",
+      "times": [
+        "evening"
+      ],
+      "story": "Near Charleroi at dusk: Mrs Martine's red-brick miner's terrace house at the address from grandfather Jozef's letters (she found his iron casket in the cellar). Bluestone step, a dark door, the lamp beside it lit.",
+      "number": "38",
+      "facade": {
+        "style": "beguinage",
+        "fy": 1600,
+        "pavement": 1500,
+        "flag": [
+          400,
+          400
+        ],
+        "settle": 5.0,
+        "wash": [
+          0.55,
+          0.5,
+          0.44
+        ],
+        "wash_amt": 0.12,
+        "door": [
+          0.1,
+          0.05,
+          0.035
+        ],
+        "windows": [
+          [
+            -1900,
+            true
+          ],
+          [
+            1900,
+            true
+          ],
+          [
+            -4300,
+            false
+          ],
+          [
+            4300,
+            false
+          ]
+        ],
+        "up_windows": [
+          -4300,
+          -1900,
+          1900,
+          4300
+        ],
+        "sky": 0.25,
+        "sun_elev": -2.0,
+        "mist": 1.5e-05,
+        "wall_x": [
+          -9000,
+          9000
+        ],
+        "tar": 420
+      },
+      "camera": {
+        "lens": 24.0,
+        "end_shift": [
+          0.0,
+          0.04
+        ],
+        "keys": [
+          [
+            0.0,
+            2900,
+            -8600,
+            1610,
+            14.0,
+            -1.0
+          ],
+          [
+            0.4,
+            2400,
+            -6800,
+            1600,
+            12.0,
+            -0.5
+          ],
+          [
+            0.75,
+            1700,
+            -4700,
+            1570,
+            10.0,
+            0.0
+          ],
+          [
+            1.0,
+            1350,
+            -3300,
+            1560,
+            9.0,
+            0.0
+          ]
+        ]
+      },
+      "look": {
+        "evening": {
+          "exposure": 0.1,
           "vignette": 0.28,
           "agx": "AgX - Medium High Contrast"
         }
