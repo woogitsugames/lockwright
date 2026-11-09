@@ -8,6 +8,11 @@ on:
       - 'platform/android/**'
       - '.github/workflows/game-android.yml'
   workflow_dispatch:
+    inputs:
+      version_code:
+        description: 'Override versionCode of the release AAB (default 10000 + run number, D-106). Must be higher than any upload to Play.'
+        required: false
+        default: ''
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -167,16 +172,22 @@ jobs:
           path: game/build/lockwright-debug.apk
 
   release-aab:
-    # Task 8: gradle release + AAB. Signs with GitHub Secrets when present
-    # (ANDROID_KEYSTORE_BASE64, ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS,
-    # ANDROID_KEY_PASSWORD); without them the step is skipped without failing.
+    # Release AAB for Google Play (D-106, docs/handoff/PLAY-CLOSED-TEST.md). Signed with the upload key from
+    # GitHub Secrets when present (ANDROID_KEYSTORE_BASE64, ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS;
+    # optional ANDROID_KEY_PASSWORD must equal the store password - Godot's Gradle template uses one password).
+    # Without secrets the AAB is unsigned (Play rejects it, but the build and all gates still run).
+    # versionCode = 10000 + run number (monotonic; override via workflow_dispatch input), versionName from
+    # the latest v* tag (+ "-ci.<run>" when HEAD is not that tag).
     runs-on: ubuntu-latest
     timeout-minutes: 60
     needs: plugin-aar
+    env:
+      BUNDLETOOL_VERSION: 1.18.3
+      BUNDLETOOL_SHA256: a099cfa1543f55593bc2ed16a70a7c67fe54b1747bb7301f37fdfd6d91028e29
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # version comes from the tag
+          fetch-depth: 0  # versionName comes from the latest v* tag
 
       - uses: actions/setup-java@v4
         with:
@@ -247,7 +258,7 @@ jobs:
           mkdir -p ~/.config/godot
           printf '[gd_resource type="EditorSettings" format=3]\n\n[resource]\nexport/android/android_sdk_path = "%s"\nexport/android/java_sdk_path = "%s"\n' "$ANDROID_HOME" "$JAVA_HOME" > ~/.config/godot/editor_settings-4.7.tres
 
-      - name: Release keystore from GitHub Secrets (skipped when absent)
+      - name: Release keystore from GitHub Secrets (unsigned AAB when absent)
         env:
           ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
@@ -255,48 +266,64 @@ jobs:
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: |
           if [ -z "$ANDROID_KEYSTORE_BASE64" ]; then
-            echo "No ANDROID_KEYSTORE_BASE64 secret - release signing skipped (unsigned AAB)."
+            echo "::warning::No ANDROID_KEYSTORE_BASE64 secret - unsigned AAB (Play Console will not accept it). See docs/handoff/PLAY-CLOSED-TEST.md section 1."
             echo "HAS_KEYSTORE=0" >> $GITHUB_ENV
             exit 0
           fi
-          echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > /tmp/release.keystore
-          echo "HAS_KEYSTORE=1" >> $GITHUB_ENV
-          echo "KEYSTORE_PATH=/tmp/release.keystore" >> $GITHUB_ENV
-
-      - name: Release preset (version from tag, AAB, signing when keystore present)
-        run: |
-          TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.1.0")
-          VER=${TAG#v}
-          CODE=$(git rev-list --count "$TAG..HEAD" 2>/dev/null || echo 1); CODE=$((1000 + CODE))
-          # N-30 bis: same include/exclude filters as preset.0 "Android" (one source of truth)
-          INC=$(awk -F'"' '/^\[preset.0\]/{f=1} f&&/^include_filter=/{print $2; exit}' game/export_presets.cfg)
-          EXCL=$(awk -F'"' '/^\[preset.0\]/{f=1} f&&/^exclude_filter=/{print $2; exit}' game/export_presets.cfg)
-          test -n "$EXCL" || { echo "::error::preset.0 exclude_filter not found"; exit 1; }
-          KS_LINE=""
-          SIGNED="false"
-          if [ "$HAS_KEYSTORE" = "1" ]; then
-            KS_LINE="keystore/release=\"$KEYSTORE_PATH\"\nkeystore/release_user=\"$ANDROID_KEY_ALIAS\"\nkeystore/release_password=\"$ANDROID_KEYSTORE_PASSWORD\"\n"
-            SIGNED="true"
+          for v in ANDROID_KEYSTORE_PASSWORD ANDROID_KEY_ALIAS; do
+            [ -n "${!v}" ] || { echo "::error::secret $v is missing (needed with ANDROID_KEYSTORE_BASE64)"; exit 1; }
+          done
+          if [ -n "$ANDROID_KEY_PASSWORD" ] && [ "$ANDROID_KEY_PASSWORD" != "$ANDROID_KEYSTORE_PASSWORD" ]; then
+            echo "::error::ANDROID_KEY_PASSWORD differs from ANDROID_KEYSTORE_PASSWORD; Godot signs with one password for store and key. Use a PKCS12 keystore (same password) - PLAY-CLOSED-TEST.md section 1."
+            exit 1
           fi
-          printf '\n[preset.3]\nname="AndroidRelease"\nplatform="Android"\nrunnable=false\nexport_filter="all_resources"\ninclude_filter="'"$INC"'"\nexclude_filter="'"$EXCL"'"\nexport_path="build/lockwright-release.aab"\nencrypt_pck=false\nencrypt_directory=false\n\n[preset.3.options]\ngradle_build/use_gradle_build=true\ngradle_build/export_format=1\ngradle_build/min_sdk="30"\ngradle_build/target_sdk="36"\narchitectures/arm64-v8a=true\narchitectures/armeabi-v7a=false\narchitectures/x86=false\narchitectures/x86_64=false\nkeystore/debug=""\nkeystore/debug_user=""\nkeystore/debug_password=""\n'"$KS_LINE"'package/signed='"$SIGNED"'\nversion/code='"$CODE"'\nversion/name="'"$VER"'"\npackage/unique_name="com.woogitsugames.lockwright"\npackage/name="Lockwright: Locksmith on Call"\ngraphics/opengl_debug=false\nxr_features/xr_mode=0\npermissions/vibrate=true\n' >> game/export_presets.cfg
-          # N-55: the release preset must keep VIBRATE (haptics), like preset.0
-          awk '/^\[preset.3.options\]/{f=1} f&&/^permissions\/vibrate=true/{ok=1} END{exit !ok}' game/export_presets.cfg
-          echo "version: $VER (code $CODE), keystore: $HAS_KEYSTORE (package/signed=$SIGNED - unsigned AAB when no release secrets)"
+          echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/upload.keystore"
+          keytool -list -keystore "$RUNNER_TEMP/upload.keystore" -storepass "$ANDROID_KEYSTORE_PASSWORD" -alias "$ANDROID_KEY_ALIAS" > /dev/null || { echo "::error::keystore does not open with ANDROID_KEYSTORE_PASSWORD / ANDROID_KEY_ALIAS"; exit 1; }
+          echo "HAS_KEYSTORE=1" >> $GITHUB_ENV
+          echo "KEYSTORE_PATH=$RUNNER_TEMP/upload.keystore" >> $GITHUB_ENV
+
+      - name: Version (versionCode = 10000 + run number, versionName from v* tag) and release preset
+        env:
+          VERSION_CODE_INPUT: ${{ inputs.version_code }}
+        run: |
+          RUN=${{ github.run_number }}
+          CODE=${VERSION_CODE_INPUT:-$((10000 + RUN))}
+          TAG=$(git describe --tags --match 'v[0-9]*' --abbrev=0 2>/dev/null || echo "v0.1.0")
+          BASE=${TAG#v}
+          if git describe --tags --exact-match --match 'v[0-9]*' HEAD > /dev/null 2>&1; then VER="$BASE"; else VER="$BASE-ci.$RUN"; fi
+          SIGNED_FLAG=""; [ "$HAS_KEYSTORE" = "1" ] && SIGNED_FLAG="--signed"
+          # one source of truth: copy of preset.0 "Android" (filters, VIBRATE + INTERNET, orientation), next free index
+          python3 tools/release/android_release_preset.py --version-code "$CODE" --version-name "$VER" $SIGNED_FLAG
+          echo "VERSION_CODE=$CODE" >> $GITHUB_ENV
+          echo "VERSION_NAME=$VER" >> $GITHUB_ENV
+          echo "version: $VER (code $CODE), signed: $HAS_KEYSTORE"
 
       - name: Import + export release AAB
+        env:
+          # Godot reads these when the preset's keystore fields are empty; passwords never go into a file.
+          GODOT_ANDROID_KEYSTORE_RELEASE_PATH: ${{ env.KEYSTORE_PATH }}
+          GODOT_ANDROID_KEYSTORE_RELEASE_USER: ${{ secrets.ANDROID_KEY_ALIAS }}
+          GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
         run: |
           mkdir -p game/build
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path game --import
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path game --export-release "AndroidRelease" build/lockwright-release.aab
+          test -f game/build/lockwright-release.aab || { echo "::error::AAB export failed"; exit 1; }
+          git checkout -- game/export_presets.cfg
 
-      - name: Assert AAB manifest has VIBRATE (N-55)
+      - name: Release gate - manifest, permissions allowlist, 64-bit only, 16 KB pages, signing (D-106)
         run: |
-          # base/manifest/AndroidManifest.xml in an AAB is protobuf; permission names are plain UTF-8
-          unzip -p game/build/lockwright-release.aab base/manifest/AndroidManifest.xml > /tmp/aab-manifest.pb
-          grep -aq "android.permission.VIBRATE" /tmp/aab-manifest.pb || { echo "::error::android.permission.VIBRATE missing from AAB manifest (N-55)"; exit 1; }
-          echo "AAB manifest: android.permission.VIBRATE present"
+          curl -sL -o "$RUNNER_TEMP/bundletool.jar" "https://github.com/google/bundletool/releases/download/$BUNDLETOOL_VERSION/bundletool-all-$BUNDLETOOL_VERSION.jar"
+          echo "$BUNDLETOOL_SHA256  $RUNNER_TEMP/bundletool.jar" | sha256sum -c -
+          REQ=""; [ "$HAS_KEYSTORE" = "1" ] && REQ="--require-signed"
+          python3 tools/release/check_aab.py --aab game/build/lockwright-release.aab --bundletool "$RUNNER_TEMP/bundletool.jar" --version-code "$VERSION_CODE" --version-name "$VERSION_NAME" $REQ --summary "$GITHUB_STEP_SUMMARY"
+          if [ "$HAS_KEYSTORE" = "1" ]; then
+            jarsigner -verify game/build/lockwright-release.aab > /dev/null || { echo "::error::jarsigner -verify failed"; exit 1; }
+            echo "### Upload certificate (register in Play Console as the upload key)" >> $GITHUB_STEP_SUMMARY
+            keytool -printcert -jarfile game/build/lockwright-release.aab | grep -E "Owner:|SHA256:" | sed 's/^/    /' >> $GITHUB_STEP_SUMMARY
+          fi
 
-      - name: AAB size budget (D-96, qa/budget/budgets.json aab_release_mb)
+      - name: AAB size budget (D-96/D-99, qa/budget/budgets.json aab_release_mb)
         run: python3 qa/budget/check_budget.py --aab game/build/lockwright-release.aab --size-only
 
       - name: Package size report

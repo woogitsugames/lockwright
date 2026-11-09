@@ -10,7 +10,7 @@ Odpowiedzialni: **A** (lockcore, art, mockups, `game/*/photoreal/`), **B** (`gam
 | # | Punkt | Próg / wymaganie | Stan | Odp. | Dowód |
 |---|---|---|---|---|---|
 | T1 | CI zielone na `main` (game-tests, game-android, game-ios, game-screens, lockcore, qa-career, perf-budget, spike-determinism*) | wszystkie zielone na commicie wydania | ❌ game-tests, game-android, game-ios, game-screens czerwone | B | `SESSION-C-REVIEW.md` N-19, N-21…N-24 |
-| T2 | Build wydaniowy Android: AAB podpisany kluczem z sekretów | AAB w artefakcie, `versionCode` rośnie | ❌ AAR nie kompiluje się (N-23) | B, W (klucz) | `SESSION-B-PROMPT-4.md` §8, `TESTY-SKLEPY.md` §A.3 |
+| T2 | Build wydaniowy Android: AAB podpisany kluczem z sekretów | AAB w artefakcie, `versionCode` rośnie | 🟡 AAB z bramką Play (D-106: uprawnienia, 16 KB, 64-bit, wersja 10000+run); ⏸ sekrety klucza uploadu | B, W (klucz) | `PLAY-CLOSED-TEST.md` §1, `tools/release/check_aab.py` |
 | T3 | Build wydaniowy iOS: IPA podpisany → TestFlight | `game-ios-release.yml` z sekretami | ❌ build iOS nie kompiluje się (N-24); sekrety ⏸ | B, W | `TESTY-SKLEPY.md` §B |
 | T4 | Rozmiar APK / IPA | APK ≤ 80 MB (twardo 150), IPA ≤ 100 MB pobrania | 🟡 zasoby 26,5 MB (pck), APK do zmierzenia po T2 | C | `POMIARY.md` §8, `perf-budget` |
 | T5 | Start do menu | tani ≤ 4 s, średni ≤ 2 s (zimny) | 🟡 headless 0,36 s (proxy); telefon niezmierzony | C, W | `POMIARY.md` §8 |

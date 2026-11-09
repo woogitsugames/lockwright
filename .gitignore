@@ -15,3 +15,8 @@ game/addons/lockcore_gd/bin/
 qa/out/
 platform/android/.gradle/
 art/renders/workshop_layers/raw/
+# D-106: release/upload keys never go into git (debug.keystore above is the public debug key only)
+*.jks
+*.p12
+upload*.b64
+lockwright-upload*

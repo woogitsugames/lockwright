@@ -18,6 +18,7 @@
 # Usage (Git Bash): tools/local/build_apk.sh [--aab] [--release] [--skip-aar] [--skip-lockcore] [--skip-import]
 #   --release: also build/local/lockwright-release.apk = release template (not debuggable), signed with the
 #   same debug key, so `adb install -r` over a CI APK keeps the save (perf checks on a release-like build, D-88)
+#   (versionCode = commit count, higher than the debug APK's 1: going back to a debug APK needs `adb install -r -d`)
 # Env overrides: JAVA_HOME_W, ANDROID_SDK_W, GRADLE, GODOT, GODOT_CPP, SCONS, JOBS.
 # Note: sets the Android SDK/Java paths in %APPDATA%\Godot\editor_settings-4.7.tres (original kept once as .bak-local).
 set -euo pipefail
@@ -155,24 +156,14 @@ if [ ! -f game/build/lockwright-debug.apk ]; then
 fi
 cp -f game/build/lockwright-debug.apk "$OUT/lockwright-debug.apk"
 
+# Local version: never upload a local AAB to Play (CI owns versionCode = 10000 + run number, D-106).
+LOCAL_CODE=$(git rev-list --count HEAD)
+LOCAL_NAME="$(git describe --tags --match 'v[0-9]*' --abbrev=0 2>/dev/null || echo v0.1.0)"; LOCAL_NAME="${LOCAL_NAME#v}-local.$(git rev-parse --short HEAD)"
+
 if [ $DO_AAB -eq 1 ]; then
-  echo "== export release AAB (unsigned, like CI without release secrets)"
+  echo "== export release AAB (unsigned, like CI without release secrets; preset = copy of preset.0)"
   cp -f "$PRESETS" "$OUT/export_presets.cfg.orig"
-  TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.1.0"); VER=${TAG#v}
-  CODE=$(git rev-list --count "$TAG..HEAD" 2>/dev/null || echo 1); CODE=$((1000 + CODE))
-  INC=$(awk -F'"' '/^\[preset.0\]/{f=1} f&&/^include_filter=/{print $2; exit}' "$PRESETS")
-  EXCL=$(awk -F'"' '/^\[preset.0\]/{f=1} f&&/^exclude_filter=/{print $2; exit}' "$PRESETS")
-  {
-    printf '\n[preset.3]\nname="AndroidRelease"\nplatform="Android"\nrunnable=false\nexport_filter="all_resources"\n'
-    printf 'include_filter="%s"\nexclude_filter="%s"\n' "$INC" "$EXCL"
-    printf 'export_path="build/lockwright-release.aab"\nencrypt_pck=false\nencrypt_directory=false\n\n[preset.3.options]\n'
-    printf 'gradle_build/use_gradle_build=true\ngradle_build/export_format=1\ngradle_build/min_sdk="30"\ngradle_build/target_sdk="36"\n'
-    printf 'architectures/arm64-v8a=true\narchitectures/armeabi-v7a=false\narchitectures/x86=false\narchitectures/x86_64=false\n'
-    printf 'keystore/debug=""\nkeystore/debug_user=""\nkeystore/debug_password=""\npackage/signed=false\n'
-    printf 'version/code=%s\nversion/name="%s"\n' "$CODE" "$VER"
-    printf 'package/unique_name="com.woogitsugames.lockwright"\npackage/name="Lockwright: Locksmith on Call"\n'
-    printf 'graphics/opengl_debug=false\nxr_features/xr_mode=0\npermissions/vibrate=true\n'
-  } >> "$PRESETS"
+  python tools/release/android_release_preset.py --presets "$PRESETS" --version-code "$LOCAL_CODE" --version-name "$LOCAL_NAME" > /dev/null
   rm -f game/build/lockwright-release.aab
   "$GODOT" --headless --path game --export-release "AndroidRelease" build/lockwright-release.aab > "$OUT/export-aab.log" 2>&1 || true
   mv -f "$OUT/export_presets.cfg.orig" "$PRESETS"
@@ -183,48 +174,11 @@ if [ $DO_AAB -eq 1 ]; then
 fi
 
 if [ $DO_REL -eq 1 ]; then
-  echo "== export release APK (release template, debug key)"
+  echo "== export release APK (release template, debug key; preset = copy of preset.0)"
   cp -f "$PRESETS" "$OUT/export_presets.cfg.orig"
-  INC=$(awk -F'"' '/^\[preset.0\]/{f=1} f&&/^include_filter=/{print $2; exit}' "$PRESETS")
-  EXCL=$(awk -F'"' '/^\[preset.0\]/{f=1} f&&/^exclude_filter=/{print $2; exit}' "$PRESETS")
-  KS="$(cygpath -m "$REPO/platform/android/debug.keystore")"
-  N=$(grep -c '^\[preset\.[0-9]*\]' "$PRESETS")  # presets must be numbered without gaps
-  cat >> "$PRESETS" <<PRESET
-
-[preset.$N]
-name="AndroidReleaseApk"
-platform="Android"
-runnable=false
-export_filter="all_resources"
-include_filter="$INC"
-exclude_filter="$EXCL"
-export_path="build/lockwright-release.apk"
-encrypt_pck=false
-encrypt_directory=false
-
-[preset.$N.options]
-gradle_build/use_gradle_build=true
-gradle_build/export_format=0
-gradle_build/min_sdk="30"
-gradle_build/target_sdk="36"
-architectures/arm64-v8a=true
-architectures/armeabi-v7a=false
-architectures/x86=false
-architectures/x86_64=false
-keystore/release="$KS"
-keystore/release_user="androiddebugkey"
-keystore/release_password="android"
-package/signed=true
-version/code=1
-version/name="0.1.0"
-package/unique_name="com.woogitsugames.lockwright"
-package/name="Lockwright: Locksmith on Call"
-graphics/opengl_debug=false
-xr_features/xr_mode=0
-permissions/vibrate=true
-PRESET
+  python tools/release/android_release_preset.py --presets "$PRESETS" --version-code "$LOCAL_CODE" --version-name "$LOCAL_NAME"     --signed --format apk --name AndroidReleaseApk --export-path build/lockwright-release.apk > /dev/null
   rm -f game/build/lockwright-release.apk
-  "$GODOT" --headless --path game --export-release "AndroidReleaseApk" build/lockwright-release.apk > "$OUT/export-rel.log" 2>&1 || true
+  GODOT_ANDROID_KEYSTORE_RELEASE_PATH="$(cygpath -m "$REPO/platform/android/debug.keystore")"   GODOT_ANDROID_KEYSTORE_RELEASE_USER=androiddebugkey GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD=android     "$GODOT" --headless --path game --export-release "AndroidReleaseApk" build/lockwright-release.apk > "$OUT/export-rel.log" 2>&1 || true
   mv -f "$OUT/export_presets.cfg.orig" "$PRESETS"
   if [ ! -f game/build/lockwright-release.apk ]; then
     echo "release APK export failed, see build/local/export-rel.log" >&2; tail -30 "$OUT/export-rel.log" >&2; exit 1

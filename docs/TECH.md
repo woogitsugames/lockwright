@@ -348,7 +348,7 @@ Wspólne: build release, jasność 50%, tryb samolotowy, naładowane > 50%, 3 se
 | Gradle / AGP | wrapper 8.11.1 / AGP 8.6.1 (z szablonu Godota 4.7.2; nie podbijać osobno) |
 | CMake / SCons | CMake 3.30+ (lockcore), SCons 4.x (godot-cpp) |
 
-Kroki: `godot --headless --import` → build GDExtension (`scons platform=android arch=arm64 target=template_release`) → build AAR pluginów (Gradle) → `godot --headless --export-release "Android" build/lockwright.aab`. Keystore uploadu w sekretach (base64) z `export_presets.cfg` czytanym ze zmiennych środowiskowych (`GODOT_ANDROID_KEYSTORE_RELEASE_*`). Cache: `~/.gradle`, `.godot/imported`.
+Kroki: `godot --headless --import` → build GDExtension (`scons platform=android arch=arm64 target=template_release`) → build AAR pluginów (Gradle) → `godot --headless --export-release "Android" build/lockwright.aab`. Keystore uploadu w sekretach (base64) z `export_presets.cfg` czytanym ze zmiennych środowiskowych (`GODOT_ANDROID_KEYSTORE_RELEASE_*`). Stan wdrożenia (D-106): preset release generuje `tools/release/android_release_preset.py` (kopia `preset.0`), bramka `tools/release/check_aab.py`, instrukcja dla właściciela `docs/handoff/PLAY-CLOSED-TEST.md`. Cache: `~/.gradle`, `.godot/imported`.
 
 ### 5.2 Testy logiki na Linuksie
 - lockcore: CMake + doctest, ASan/UBSan, libFuzzer (nocą 30 min), golden replays (spike 5) przy każdym PR. Czas < 5 min.
