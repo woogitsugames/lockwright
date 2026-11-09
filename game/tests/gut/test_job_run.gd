@@ -1,6 +1,18 @@
 extends GutTest
 ## N-05/N-06/N-09: job filtering, FNV-1a seed, tutorial mode never pays out.
 
+## D-105: this script writes to the save; the scripts after it get it back unchanged.
+var _save_backup: Dictionary
+
+
+func before_all() -> void:
+	_save_backup = Save.data.duplicate(true)
+
+
+func after_all() -> void:
+	Save.data = _save_backup
+	Save.save()
+
 func test_unimplemented_families_hidden() -> void:
 	assert_false(JobRun.is_playable({"family": "safe_wheels"}))  # a family without a lockcore module
 	assert_true(JobRun.is_playable({"family": "dial_safe"}))  # D-59 plan-B screen shipped

@@ -7,15 +7,17 @@ extends GutTest
 const HZ := 120
 var _save_backup: Dictionary
 var _rm_before: Variant
+var _auto_before: Variant
 
 
 func before_all() -> void:
 	_save_backup = Save.data.duplicate(true)
 	_rm_before = Settings.get_value("reduce_motion", false)
+	_auto_before = Settings.get_value(&"auto_tension", false)
 
 
 func after_all() -> void:
-	Settings.set_value(&"auto_tension", false)
+	Settings.set_value(&"auto_tension", _auto_before)
 	Settings.set_value("reduce_motion", _rm_before)
 	Save.data = _save_backup
 	Save.save()

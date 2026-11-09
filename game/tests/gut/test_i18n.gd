@@ -1,5 +1,17 @@
 extends GutTest
 
+## D-105: this script writes to the save; the scripts after it get it back unchanged.
+var _save_backup: Dictionary
+
+
+func before_all() -> void:
+	_save_backup = Save.data.duplicate(true)
+
+
+func after_all() -> void:
+	Save.data = _save_backup
+	Save.save()
+
 const UI_KEYS := ["menu.title", "menu.play", "menu.workshop", "menu.showcase", "menu.settings", "menu.about",
 	"settings.title", "settings.haptics", "settings.haptics_enabled", "settings.haptics_intensity",
 	"settings.haptics_test", "settings.haptics_calibration", "settings.continuous_resistance",

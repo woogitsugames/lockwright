@@ -4,6 +4,18 @@ extends GutTest
 
 const T43_IDS_PREFIX := ["job.t43_", "job.refuse_t43_"]
 
+## D-105: this script writes to the save; the scripts after it get it back unchanged.
+var _save_backup: Dictionary
+
+
+func before_all() -> void:
+	_save_backup = Save.data.duplicate(true)
+
+
+func after_all() -> void:
+	Save.data = _save_backup
+	Save.save()
+
 
 func _t43_jobs() -> Array:
 	var out := []

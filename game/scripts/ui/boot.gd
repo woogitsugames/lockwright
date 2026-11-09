@@ -40,6 +40,9 @@ func _ready() -> void:
 ## and the menu scene load on worker threads during the boot's own wait; change_scene_to_file() and
 ## the menu's load() pick them up (or wait for them) instead of decoding in the first menu frame.
 func _preload_menu() -> void:
+	# D-105: no worker-thread texture loads headless (dummy renderer race, "Parameter t is null").
+	if DisplayServer.get_name() == "headless":
+		return
 	var paths := [MAIN_MENU]
 	var layout := MenuScript.load_layout()
 	var vp := get_viewport_rect().size

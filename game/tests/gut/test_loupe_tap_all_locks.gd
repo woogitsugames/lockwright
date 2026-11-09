@@ -15,6 +15,18 @@ extends GutTest
 
 const SIZES := [Vector2i(412, 915), Vector2i(915, 412)]
 
+## D-105: this script writes to the save; the scripts after it get it back unchanged.
+var _save_backup: Dictionary
+
+
+func before_all() -> void:
+	_save_backup = Save.data.duplicate(true)
+
+
+func after_all() -> void:
+	Save.data = _save_backup
+	Save.save()
+
 
 func before_each() -> void:
 	JobRun.current_job = {}

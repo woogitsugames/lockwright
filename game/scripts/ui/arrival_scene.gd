@@ -52,6 +52,11 @@ var _frames: Array[Texture2D] = []   # sparse: only a small window around the pl
 var _paths: PackedStringArray = []
 const AHEAD := 6   # frames requested in the background ahead of the playhead
 const SYNC_FIRST := 3   # loaded up front so the climb starts without a hitch
+## Background (worker-thread) frame loads. Off headless (CI, GUT): threaded texture loads into the dummy
+## renderer race with textures created on the main thread and intermittently fail with the engine error
+## "Parameter t is null" (texture_2d_initialize), see D-101/D-105. Without threads every frame is loaded
+## on demand by _frame_tex(): the same streaming window, only synchronous. Tests may flip it.
+static var threaded_loads := DisplayServer.get_name() != "headless"
 var _t := 0.0
 var _breath_t := 0.0
 var _img_size := Vector2(1080, 1920)
@@ -218,6 +223,8 @@ func image_to_stage(p: Vector2) -> Vector2:
 
 
 func _request_ahead(from: int) -> void:
+	if not threaded_loads:
+		return
 	for i in range(from, mini(from + AHEAD, _paths.size())):
 		if _frames[i] == null and ResourceLoader.load_threaded_get_status(_paths[i]) == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
 			ResourceLoader.load_threaded_request(_paths[i], "Texture2D")

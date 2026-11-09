@@ -8,13 +8,12 @@ const LOCK_JOB := "res://scenes/lock_job.tscn"
 const RUN_LOOP := "res://scenes/run_loop.tscn"
 const MAIN_MENU := "res://scenes/main_menu.tscn"
 
-var _save_keys := {}
+var _save_backup: Dictionary
 var _settings_keys := {}
 
 
 func before_each() -> void:
-	for k in ["tutorial_done", "coins", "jobs_completed", "stats/locks_opened", "stats/locks_broken", "stats/runs_finished"]:
-		_save_keys[k] = Save.get_value(k, null)
+	_save_backup = Save.data.duplicate(true)   # whole save: keys a test adds (tutorial_done, achievements) go too
 	for k in [&"control_chosen", &"auto_tension"]:
 		_settings_keys[k] = Settings.get_value(k, null)
 	Events.change_scenes = false
@@ -26,9 +25,8 @@ func after_each() -> void:
 	Events.change_scenes = true
 	Events.scene_override = null
 	Events._fail_scene = null
-	for k in _save_keys:
-		if _save_keys[k] != null:
-			Save.set_value(k, _save_keys[k])
+	Save.data = _save_backup.duplicate(true)
+	Save.save()
 	for k in _settings_keys:
 		if _settings_keys[k] != null:
 			Settings.set_value(k, _settings_keys[k])

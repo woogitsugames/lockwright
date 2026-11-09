@@ -33,6 +33,11 @@ func _open(job: Dictionary, reduce: bool, size := Vector2i(412, 915)) -> Control
 	add_child_autofree(vp)
 	var scene: Control = load("res://scenes/job_arrival.tscn").instantiate()
 	vp.add_child(scene)
+	# The climb starts in _ready(); the tests drive its clock with arr._process(dt). Without this the
+	# real frames below advance it by wall-clock time (a slow first frame on a busy machine is 0.2-3 s),
+	# so "12 fps after 1 s" or "still climbing" depended on how loaded the machine was.
+	if scene.scene != null:
+		scene.scene.set_process(false)
 	await get_tree().process_frame
 	await get_tree().process_frame
 	return scene
@@ -256,3 +261,9 @@ func test_climb_streams_frames_instead_of_holding_all() -> void:
 		peak = maxi(peak, resident)
 	assert_gt(arr.frame, 20, "the climb advanced")
 	assert_lte(peak, ArrivalScene.AHEAD + ArrivalScene.SYNC_FIRST, "only a small window of frames is resident")
+	if DisplayServer.get_name() == "headless":
+		# D-105: no worker-thread texture loads headless; one left running races the next test's
+		# main-thread textures in the dummy renderer ("Parameter t is null").
+		assert_false(ArrivalScene.threaded_loads)
+		for p: String in arr._paths:
+			assert_eq(ResourceLoader.load_threaded_get_status(p), ResourceLoader.THREAD_LOAD_INVALID_RESOURCE, p)

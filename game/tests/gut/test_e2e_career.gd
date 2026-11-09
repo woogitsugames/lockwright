@@ -1,6 +1,22 @@
 extends GutTest
 ## Task 14: end-to-end career — bot lockcore clears tutorial + all playable jobs,
 ## buys tools, reads showcase; save is written and reloaded after every step.
+## The career runs on a copy of the save: every job completed and 100 000 coins must not reach the
+## scripts that run after this one (nor, through user://save.json, the next run).
+
+var _save_backup: Dictionary
+
+
+func before_all() -> void:
+	_save_backup = Save.data.duplicate(true)
+
+
+func after_all() -> void:
+	Save.data = _save_backup
+	Save.save()
+	JobRun.mode = &"job"
+	JobRun.current_job = {}
+
 
 func _solve_replay(family: StringName, seed: int, tier: int) -> bool:
 	var report: Dictionary = LockcoreSession.solve(family, seed, tier)
