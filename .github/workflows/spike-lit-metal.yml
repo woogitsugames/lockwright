@@ -30,7 +30,7 @@ jobs:
         run: |
           SDK=$RUNNER_TEMP/android-sdk
           mkdir -p $SDK/cmdline-tools
-          curl -sL -o /tmp/cmdtools.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+          curl -fsSL --retry 6 --retry-delay 15 --retry-all-errors -o /tmp/cmdtools.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
           unzip -q /tmp/cmdtools.zip -d $SDK/cmdline-tools && mv $SDK/cmdline-tools/cmdline-tools $SDK/cmdline-tools/latest
           yes | $SDK/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null
           $SDK/cmdline-tools/latest/bin/sdkmanager "platforms;android-36" "build-tools;36.1.0" "platform-tools" > /dev/null
@@ -38,9 +38,9 @@ jobs:
       - name: Godot 4.7.2 + templates + editor settings
         run: |
           mkdir -p /tmp/godot && cd /tmp/godot
-          curl -sL -o godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/$GODOT.zip
+          curl -fsSL --retry 6 --retry-delay 15 --retry-all-errors -o godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/$GODOT.zip
           unzip -q godot.zip && chmod +x $GODOT
-          curl -sL -o templates.tpz https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz
+          curl -fsSL --retry 6 --retry-delay 15 --retry-all-errors -o templates.tpz https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz
           T=~/.local/share/godot/export_templates/4.7.2.stable
           mkdir -p $T && unzip -q templates.tpz -d /tmp/tpl && mv /tmp/tpl/templates/* $T/
           mkdir -p ~/.config/godot
