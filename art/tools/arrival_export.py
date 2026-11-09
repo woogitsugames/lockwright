@@ -49,6 +49,15 @@ JOBS = {
     'pizzeria_pays_pizza': {'evening': [(None, 'pizzeria_pays_pizza_evening_hold.png', [])]},
     'bike_interview': {'day': [(None, 'bike_interview_day_hold.png', [])]},
     'museum_time_lock': {'day': [(None, 'museum_time_lock_day_hold.png', [])]},   # D-102: the museum's vault room
+    # D-108: chapters 3-6 (facade kit: Kraków gate, Ghent beguinage; shop kit as a bakery; stairwell with new props)
+    'krakow_tenement_gate': {'rainy': [(None, 'krakow_tenement_gate_rainy_hold.png', [])]},
+    'ghent_beguinage': {'rainy': [(None, 'ghent_beguinage_rainy_hold.png', [])]},
+    'liege_bakery': {'night': [(None, 'liege_bakery_night_hold.png', [])]},
+    'uncle_safe_heirs': {'evening': [(None, 'uncle_safe_heirs_evening_hold.png', [])]},
+    'dollhouse_wooden_lock': {'day': [(None, 'dollhouse_wooden_lock_day_hold.png', [])]},
+    'widow_bureau': {'evening': [(None, 'widow_bureau_evening_hold.png', [])]},          # door 2, not G07's 7 (Mrs Halina's)
+    't43_09_08_spare_key_hook': {'day': [(None, 't43_09_08_spare_key_hook_day_hold.png', [])]},   # Mr Kazimierz's own door 21
+    'charleroi_letters': {'evening': [(None, 'charleroi_letters_evening_hold.png', [])]},
 }
 CONTACT_COLS, CONTACT_W = 6, 1080   # arrival_composite.contact() defaults
 IMPORT_TEMPLATE = """[remap]

@@ -338,3 +338,13 @@ Own Blender 4.2.9 LTS / Cycles OptiX renders (RTX 5070), procedural and photo ma
 | `game/assets/arrival/museum_time_lock/day/plate.webp`, `game/assets/arrival/museum_time_lock/day/seq/*.webp`, `art/renders/arrival/museum_time_lock_day_{hold.png,hold.json,final_contact.png}` | own Blender 4.2.9 LTS / Cycles OptiX render (RTX 5070), `art/blender/arrival_place.py --job museum_time_lock` (kit `vault`; hold `--still-res 1080x1920 --still-spp 512`, walk `--mode seq --res 1080x1920 --spp 128`), procedural + photo materials, no AI; exported with `art/tools/arrival_export.py --job museum_time_lock --master <dir>` (1080x1920 WebP q80, lossy import 0.8) |
 | `game/assets/ui/tutorial/card_{lift_one,set_one}.webp`, masters `art/renders/tutorial_cards/card_{lift_one,set_one}.png` | `LW_DEVICE=GPU blender -b -P art/blender/tutorial_cards.py -- --out-dir art/renders/tutorial_cards --res 480x592 --samples 256 --cards lift_one,set_one`, WebP q82, lossy import 0.85 |
 
+
+## Arrival scenes for chapters 3–6 — 2026-11-09 (D-108)
+
+Own Blender 4.2.9 LTS / Cycles OptiX renders (RTX 5070), procedural and photo materials from `art/textures/photo` (G03 oak, workshop_concrete, cement_tiles, terrazzo_grey_red, wall_lime_plaster, steel_cast_grey_paint), Blender's bundled CC0 studio HDRI / Nishita sky, no AI generation, no brands, no readable text except door and house numbers.
+
+| Assets | Script and final parameters |
+|---|---|
+| `game/assets/arrival/{krakow_tenement_gate/rainy,ghent_beguinage/rainy,charleroi_letters/evening,liege_bakery/night}/{plate.webp,seq/*.webp}` | `art/blender/arrival_place.py --job <id>` (kits `facade` / `shop` style `bakery`; hold `--mode still --still-res 1080x1920 --still-spp 512 --device GPU`, walk `--mode seq --res 1080x1920 --spp 128`, OIDN; masters in `build/local-session/arrival-master/`), exported with `art/tools/arrival_export.py --job <id> --master <dir>` (1080x1920 WebP q80, lossy import 0.8) |
+| `game/assets/arrival/{uncle_safe_heirs/evening,dollhouse_wooden_lock/day,widow_bureau/evening,t43_09_08_spare_key_hook/day}/{plate.webp,seq/*.webp}` | `art/blender/arrival_scene.py --job <id> --hair 1` (stairwell kit, props `obituary`, `suitcase`, `shoes`, `scooter`, `plank`, `book_stack`), same render and export settings |
+| `art/renders/arrival/<job>_<time>_{hold.png,hold.json,final_contact.png}` (+ `_hold_depth.png` for stairwell jobs), `arrival_ch3_6_board.jpg` | same renders; contact sheets via `arrival_composite.py --contact`, board with Pillow (incl. two rejected 64-spp look-dev previews) |

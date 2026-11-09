@@ -332,6 +332,220 @@
       "anchors": {
         "day": {}
       }
+    },
+    "job.krakow_tenement_gate": {
+      "dir": "res://assets/arrival/krakow_tenement_gate",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "rainy"
+      ],
+      "default_time": "rainy",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.55
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          20,
+          26
+        ]
+      },
+      "anchors": {
+        "rainy": {}
+      }
+    },
+    "job.ghent_beguinage": {
+      "dir": "res://assets/arrival/ghent_beguinage",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "rainy"
+      ],
+      "default_time": "rainy",
+      "hold": "",
+      "focus": [
+        0.45,
+        0.55
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          20,
+          26
+        ]
+      },
+      "anchors": {
+        "rainy": {}
+      }
+    },
+    "job.liege_bakery": {
+      "dir": "res://assets/arrival/liege_bakery",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "night"
+      ],
+      "default_time": "night",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.55
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          20,
+          26
+        ]
+      },
+      "anchors": {
+        "night": {}
+      }
+    },
+    "job.uncle_safe_heirs": {
+      "dir": "res://assets/arrival/uncle_safe_heirs",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "evening"
+      ],
+      "default_time": "evening",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          21,
+          27
+        ]
+      },
+      "anchors": {
+        "evening": {}
+      }
+    },
+    "job.dollhouse_wooden_lock": {
+      "dir": "res://assets/arrival/dollhouse_wooden_lock",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "day"
+      ],
+      "default_time": "day",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "steps": {
+        "step_wood": [
+          2,
+          8,
+          14
+        ],
+        "step_terrazzo": [
+          21,
+          27
+        ]
+      },
+      "anchors": {
+        "day": {}
+      }
+    },
+    "job.widow_bureau": {
+      "dir": "res://assets/arrival/widow_bureau",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "evening"
+      ],
+      "default_time": "evening",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "steps": {
+        "step_wood": [
+          2,
+          8,
+          14
+        ],
+        "step_terrazzo": [
+          21,
+          27
+        ]
+      },
+      "anchors": {
+        "evening": {}
+      }
+    },
+    "job.t43_09_08_spare_key_hook": {
+      "dir": "res://assets/arrival/t43_09_08_spare_key_hook",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "day"
+      ],
+      "default_time": "day",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "steps": {
+        "step_wood": [
+          2,
+          8,
+          14
+        ],
+        "step_terrazzo": [
+          21,
+          27
+        ]
+      },
+      "anchors": {
+        "day": {}
+      }
+    },
+    "job.charleroi_letters": {
+      "dir": "res://assets/arrival/charleroi_letters",
+      "fps": 12,
+      "frames": 36,
+      "times": [
+        "evening"
+      ],
+      "default_time": "evening",
+      "hold": "",
+      "focus": [
+        0.45,
+        0.55
+      ],
+      "steps": {
+        "step_terrazzo": [
+          2,
+          8,
+          14,
+          20,
+          26
+        ]
+      },
+      "anchors": {
+        "evening": {}
+      }
     }
   }
 }

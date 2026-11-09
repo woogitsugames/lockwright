@@ -761,7 +761,7 @@ def P_plank(c):
     p_.matrix_world = Matrix.Translation((x, -70, 0)) @ Matrix.Rotation(math.radians(-8), 4, 'X') @ Matrix.Rotation(math.radians(4), 4, 'Y')
     shav = plastic('shaving', (0.78, 0.62, 0.40), rough=0.6, seed=6, grime=0.0, sheen_scuffs=0.0)
     shav.node_tree.nodes['Principled BSDF'].inputs['Subsurface Weight'].default_value = 0.3
-    for i in range(int(c.get('shavings', 0))):   # 0: curls read as letters at this distance (D-105)
+    for i in range(int(c.get('shavings', 0))):   # 0: curls read as letters at this distance (D-108)
         cx, cy = PRNG.uniform(-300, 300) * 0.6 + x * 0.25, PRNG.uniform(-420, -120); r = PRNG.uniform(5, 9); a0 = PRNG.uniform(0, 6.3)
         pts = [(cx + r * (1 + 0.25 * t) * math.cos(a0 + t), cy + 2.5 * t, floor_z(cx, cy) + r * 1.2 + r * (1 + 0.25 * t) * math.sin(a0 + t)) for t in [k * 0.4 for k in range(22)]]
         o = tube('shaving', pts, 0.0, shav, res=1)
@@ -790,9 +790,9 @@ def P_book_stack(c):
 
 PROPS = {'gas_riser': P_gas_riser, 'cat_bowl': P_cat_bowl, 'toy_mouse': P_toy_mouse, 'drill_dust': P_drill_dust,
          'cake_box': P_cake_box, 'petals': P_petals, 'rice': P_rice, 'post_pile': P_post_pile,
-         'obituary': P_obituary, 'suitcase': P_suitcase, 'shoes': P_shoes,   # D-105: job.uncle_safe_heirs
+         'obituary': P_obituary, 'suitcase': P_suitcase, 'shoes': P_shoes,   # D-108: job.uncle_safe_heirs
          'scooter': P_scooter, 'plank': P_plank,
-         'book_stack': P_book_stack}   # D-105: job.widow_bureau       # D-105: job.dollhouse_wooden_lock
+         'book_stack': P_book_stack}   # D-108: job.widow_bureau       # D-108: job.dollhouse_wooden_lock
 # mailbox: a letter sticking out of the slot (grandma: "the letter in the mailbox is addressed to you"),
 # or stuffed full (nobody has emptied it for weeks)
 mb_items = 1 if MAILBOX.get('letter_out') else (5 if MAILBOX.get('overflow') else 0)

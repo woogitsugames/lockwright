@@ -17,7 +17,7 @@
 #             door with the time-lock movement behind an inspection glass, rope barrier, crate (job.museum_time_lock)
 #   corridor  a developer block's corridor at dawn: porcelain floor, white walls, flat anthracite steel flat doors
 #             with a magnetic-key cylinder, brushed steel numbers, LED downlights (job.night_nurse)
-#   facade    old-town street fronts (D-105), `facade.style`: "tenement_gate" (an 1890 Kraków tenement's oak carriage
+#   facade    old-town street fronts (D-108), `facade.style`: "tenement_gate" (an 1890 Kraków tenement's oak carriage
 #             gate with the stuck key and the residents' notice: job.krakow_tenement_gate), "beguinage" (a whitewashed
 #             Ghent beguinage house, green door, brother Pieter's bike: job.ghent_beguinage), "townhouse" (Saint-Gilles,
 #             balcony with geraniums: look-dev only, not shipped). Wet setts with puddles and a damp-air volume for rain.
@@ -346,7 +346,7 @@ def bike(S, RY):
         e = BB + Vector((170 * math.cos(math.radians(ang)), sy, 170 * math.sin(math.radians(ang))))
         parts.append(tube('crank', [BB + Vector((0, sy, 0)), e], 12, chrome_free, res=3, smooth_pts=False))
         parts.append(bx('pedal', e.x - 50, e.x + 50, e.y + (10 if sy > 0 else -110), e.y + (110 if sy > 0 else -10), e.z - 12, e.z + 12, black_plastic, bev=3))
-    if B.get('basket'):   # wicker basket on a front carrier over the wheel (brother Pieter's bike, D-105)
+    if B.get('basket'):   # wicker basket on a front carrier over the wheel (brother Pieter's bike, D-108)
         wick = tiles('wicker', (0.42, 0.28, 0.13), grout=(0.16, 0.10, 0.05), w=18, h=9, offset=0.5, rough=0.7, mortar=1.6, axis='X', var=0.25, bump=1.2)
         wick2 = tiles('wicker_f', (0.42, 0.28, 0.13), grout=(0.16, 0.10, 0.05), w=18, h=9, offset=0.5, rough=0.7, mortar=1.6, axis='Y', var=0.25, bump=1.2)
         bc = FA + Vector((40, 0, WR + 330))
@@ -407,7 +407,7 @@ def tiles(name, color, grout=(0.55, 0.54, 0.50), w=150.0, h=75.0, offset=0.5, ro
 
 
 def bakery_wall(S, FY, CX1):
-    """Bakery (job.liege_bakery, D-105): instead of the oven, the bread wall behind the counter: timber shelving with
+    """Bakery (job.liege_bakery, D-108): instead of the oven, the bread wall behind the counter: timber shelving with
     slanted wicker bread trays, empty at 3:50 but for three rolls left from yesterday; a glass display on the counter."""
     shelf_w = oak('bread_shelf', light=(0.46, 0.33, 0.19), dark=(0.26, 0.17, 0.08), axis='X', seed=57, ring=1.6, coat=0.5, coat_rough=0.4, wear=0.7, grime=0.8)
     wick = tiles('bread_wicker', (0.44, 0.30, 0.14), grout=(0.16, 0.10, 0.05), w=16, h=8, offset=0.5, rough=0.7, mortar=1.4, axis='Z', var=0.25, bump=1.0)
@@ -906,7 +906,7 @@ def kit_vault():
             'time_lock': [(TL.x - 130, TL.y, TL.z + 130), (TL.x + 130, TL.y, TL.z + 130), (TL.x + 130, TL.y, TL.z - 130), (TL.x - 130, TL.y, TL.z - 130)]}
 
 
-# ================================================================ facade kit (old-town street fronts, D-105)
+# ================================================================ facade kit (old-town street fronts, D-108)
 def granite(name, base=(0.36, 0.35, 0.34), rough=0.55, seed=0.0, pink=0.25):
     """Grey granite: quartz/feldspar/mica speckle at grain scale, a cloudy tone over the stone, sawn-and-worn top."""
     m, nt, l, b, P = _new(name)
@@ -1131,7 +1131,7 @@ def lantern(name, x, y, z, glow, iron_m, arm=380, hang=0):
 
 
 def kit_facade():
-    """Old-town street fronts (D-105), one builder dressed per job: `facade.style` = "tenement_gate" (an 1890 Kraków
+    """Old-town street fronts (D-108), one builder dressed per job: `facade.style` = "tenement_gate" (an 1890 Kraków
     tenement, its carriage gate under conservator protection: job.krakow_tenement_gate), "beguinage" (a whitewashed
     house in a Ghent beguinage: job.ghent_beguinage), "townhouse" (a Saint-Gilles townhouse with the balcony above
     the door: job.brussels_townhouse). Facade plane y = FY, street towards the camera (-y)."""

@@ -6,10 +6,17 @@ const JOB := "job.wrong_floor"
 const PLAIN_JOB := "job.kiosk_shutter"
 ## early jobs with a plate-only scene (no full-body cut-out of their clients): the door and props tell the story
 const PLATE_JOBS := ["job.grandma_broth", "job.cat_bathroom", "job.refuse_ex_partner", "job.newlyweds_4am", "job.refuse_rush_bribe",
-	"job.night_nurse", "job.pizzeria_pays_pizza", "job.bike_interview", "job.museum_time_lock"]
+	"job.night_nurse", "job.pizzeria_pays_pizza", "job.bike_interview", "job.museum_time_lock",
+	"job.krakow_tenement_gate", "job.ghent_beguinage", "job.liege_bakery", "job.uncle_safe_heirs", "job.dollhouse_wooden_lock",
+	"job.widow_bureau", "job.t43_09_08_spare_key_hook", "job.charleroi_letters"]
 ## D-94: places that are not a tenement landing (art/blender/arrival_place.py)
 const PLACE_JOBS := {"job.night_nurse": "night", "job.pizzeria_pays_pizza": "evening", "job.bike_interview": "day",
-	"job.museum_time_lock": "day"}  # D-102: the museum vault room
+	"job.museum_time_lock": "day",  # D-102: the museum vault room
+	"job.krakow_tenement_gate": "rainy", "job.ghent_beguinage": "rainy", "job.liege_bakery": "night"}  # D-108
+## D-108: chapter 3-6 jobs whose arrival scene replaces the borrowed G07 photo (scene time = the job's time)
+const D108_JOBS := {"job.krakow_tenement_gate": "rainy", "job.ghent_beguinage": "rainy", "job.liege_bakery": "night",
+	"job.uncle_safe_heirs": "evening", "job.dollhouse_wooden_lock": "day", "job.widow_bureau": "evening",
+	"job.t43_09_08_spare_key_hook": "day", "job.charleroi_letters": "evening"}
 const JobArrival := preload("res://scripts/ui/job_arrival.gd")
 
 
@@ -267,3 +274,25 @@ func test_climb_streams_frames_instead_of_holding_all() -> void:
 		assert_false(ArrivalScene.threaded_loads)
 		for p: String in arr._paths:
 			assert_eq(ResourceLoader.load_threaded_get_status(p), ResourceLoader.THREAD_LOAD_INVALID_RESOURCE, p)
+
+
+## D-108: the chapter 3-6 scenes play with the job's own time, the verification and the day after show
+## that place, and the screen drops the borrowed photo's room sign / door plate (the door is in the picture).
+func test_chapter_3_to_6_scenes_replace_the_g07_photo() -> void:
+	for jid: String in D108_JOBS:
+		var job := JobRun.job_by_id(jid)
+		assert_false(job.is_empty(), jid)
+		assert_eq(String(job.get("time")), String(D108_JOBS[jid]), "%s: the scene keeps the job's time" % jid)
+		var r := ArrivalScene.resolve(job)
+		assert_eq(String(r.get("time", "")), String(D108_JOBS[jid]), jid)
+		var still := ArrivalScene.place_still(job)
+		assert_eq(still.size(), 2, jid)
+		if still.size() == 2:
+			assert_true(String(still[0]).ends_with("%s/%s/plate.webp" % [jid.trim_prefix("job."), D108_JOBS[jid]]), "%s: verification shows the scene" % jid)
+		assert_eq(ArrivalScene.place_still(job, "day", false).size(), 2, "%s: the day after shows the same place" % jid)
+	var scene := await _open(JobRun.job_by_id("job.krakow_tenement_gate"), true)
+	assert_not_null(scene.scene, "the gate job plays its scene")
+	assert_false(scene.place_plate.visible, "no borrowed administration sign beside the title")
+	# D-104 audit: the evening G07 photo's door 7 is Mrs Halina's; these evening flats now show their own doors
+	for jid: String in ["job.uncle_safe_heirs", "job.widow_bureau", "job.charleroi_letters"]:
+		assert_false(ArrivalScene.place_still(JobRun.job_by_id(jid)).is_empty(), "%s: own door, not G07's 7" % jid)

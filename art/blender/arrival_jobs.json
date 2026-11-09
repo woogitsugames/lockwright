@@ -1,6 +1,6 @@
 {
   "schema": "lockwright.arrival_jobs/1",
-  "note": "Per-job dressing of the D-58 arrival scene (art/blender/arrival_scene.py --job <id>). Missing keys take the wrong_floor defaults in arrival_scene.py (JOB_DEFAULTS). Colours are linear RGB. camera: end = [x, y, z] mm of the hold camera, end_yaw/end_pitch deg, end_shift = lens shift at the hold, start = [x, y, yaw, pitch] of the first frame (the climb keys in between follow the stair). props: see PROPS in arrival_scene.py. No brands, no lock brand names, no readable text. kit: \"street\" | \"shop\" | \"corridor\" | \"vault\" | \"facade\" builds the job in art/blender/arrival_place.py instead of the stairwell (D-94; facade and shop.style \"bakery\": D-105); camera.keys = [t, x, y, z, yaw, pitch] of the walk.",
+  "note": "Per-job dressing of the D-58 arrival scene (art/blender/arrival_scene.py --job <id>). Missing keys take the wrong_floor defaults in arrival_scene.py (JOB_DEFAULTS). Colours are linear RGB. camera: end = [x, y, z] mm of the hold camera, end_yaw/end_pitch deg, end_shift = lens shift at the hold, start = [x, y, yaw, pitch] of the first frame (the climb keys in between follow the stair). props: see PROPS in arrival_scene.py. No brands, no lock brand names, no readable text. kit: \"street\" | \"shop\" | \"corridor\" | \"vault\" | \"facade\" builds the job in art/blender/arrival_place.py instead of the stairwell (D-94; facade and shop.style \"bakery\": D-108); camera.keys = [t, x, y, z, yaw, pitch] of the walk.",
   "jobs": {
     "wrong_floor": {
       "times": [

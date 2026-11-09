@@ -91,7 +91,7 @@ python art/tools/arrival_export.py --job grandma_broth --master $M     # albo --
 Pliki tutaj: `<job>_<pora>_hold.{png,json}` + `_hold_depth.png` (finał GPU 512 spp), `<job>_<pora>_final_contact.png`
 (36 klatek 128 spp), `arrival_early_jobs_board.jpg` (pięć stop-klatek obok pilota).
 
-## Rozdziały 3–6 (2026-11-09, D-105)
+## Rozdziały 3–6 (2026-11-09, D-108)
 
 Siedem zleceń z rozdz. 3–6 i drzwi 21 pana Kazimierza (rozdz. 9) dostały scenkę zamiast pożyczonego zdjęcia G07 (część wybrana po audycie D-104: wieczorne drzwi 7 to numer pani Haliny, „Administracja” przy beginażu, drzwi 12 zamiast 21). Arkusz: `arrival_ch3_6_board.jpg`
 (finały obok pizzerii i muzeum + dwa odrzucone podglądy 720×1280 / 64 spp).
