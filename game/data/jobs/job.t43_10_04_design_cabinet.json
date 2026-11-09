@@ -28,8 +28,8 @@
     "invoice"
   ],
   "threshold": 3,
-  "place": "workshop",
-  "time": "evening",
+  "place": "apartment",
+  "time": "day",
   "outcome": "open",
   "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
 }

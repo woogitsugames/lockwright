@@ -28,7 +28,7 @@
     "institution"
   ],
   "threshold": 2,
-  "place": "apartment",
+  "place": "museum",
   "time": "day",
   "outcome": "open",
   "source": "contrib/gpt/T09 (D-46; main career since D-71)",
@@ -37,5 +37,6 @@
       "issuer": "museum",
       "purpose": "custody"
     }
-  }
+  },
+  "arrival_from": "job.museum_time_lock"
 }

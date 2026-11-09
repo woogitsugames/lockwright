@@ -28,5 +28,11 @@
   ],
   "threshold": 2,
   "place": "apartment",
-  "time": "evening"
+  "time": "evening",
+  "card_detail": {
+    "witness": {
+      "ask": "job.brussels_townhouse.witness.ask",
+      "reply": "job.brussels_townhouse.witness.reply"
+    }
+  }
 }

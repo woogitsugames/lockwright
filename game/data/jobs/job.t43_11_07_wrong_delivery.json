@@ -31,5 +31,15 @@
   "place": "kiosk",
   "time": "day",
   "outcome": "talk",
-  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)",
+  "card_detail": {
+    "invoice": {
+      "ask": "job.t43_11_07_wrong_delivery.invoice.ask",
+      "reply": "job.t43_11_07_wrong_delivery.invoice.reply"
+    },
+    "witness": {
+      "ask": "job.t43_11_07_wrong_delivery.witness.ask",
+      "reply": "job.t43_11_07_wrong_delivery.witness.reply"
+    }
+  }
 }

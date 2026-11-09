@@ -33,7 +33,9 @@
     "manager": {
       "issuer": "estate",
       "purpose": "resident",
-      "unit": "5"
+      "unit": "5",
+      "ask": "job.night_nurse.manager.ask",
+      "reply": "job.night_nurse.manager.reply"
     },
     "id": {
       "doc": "id",

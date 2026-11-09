@@ -26,7 +26,7 @@
     "manager"
   ],
   "threshold": 2,
-  "place": "apartment",
+  "place": "yard",
   "time": "day",
   "card_detail": {
     "manager": {

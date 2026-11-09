@@ -26,6 +26,12 @@
     "deed"
   ],
   "threshold": 2,
-  "place": "apartment",
-  "time": "evening"
+  "place": "attic",
+  "time": "evening",
+  "card_detail": {
+    "deed": {
+      "ask": "job.grandpa_chest.deed.ask",
+      "reply": "job.grandpa_chest.deed.reply"
+    }
+  }
 }

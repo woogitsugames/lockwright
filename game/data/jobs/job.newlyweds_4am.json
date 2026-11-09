@@ -34,6 +34,10 @@
     "id": {
       "doc": "id",
       "holder": "Bartłomiej"
+    },
+    "witness": {
+      "ask": "job.newlyweds_4am.witness.ask",
+      "reply": "job.newlyweds_4am.witness.reply"
     }
   }
 }

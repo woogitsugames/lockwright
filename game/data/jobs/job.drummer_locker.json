@@ -23,6 +23,7 @@
     "iga"
   ],
   "cards": [
+    "manager",
     "id"
   ],
   "threshold": 2,
@@ -35,6 +36,12 @@
         1
       ],
       "holder": "Iga"
+    },
+    "manager": {
+      "issuer": "venue",
+      "purpose": "storage",
+      "ask": "job.drummer_locker.manager.ask",
+      "reply": "job.drummer_locker.manager.reply"
     }
   }
 }

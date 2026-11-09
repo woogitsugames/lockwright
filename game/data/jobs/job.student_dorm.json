@@ -24,7 +24,7 @@
   ],
   "cards": [
     "id",
-    "witness",
+    "manager",
     "letter"
   ],
   "threshold": 2,
@@ -32,11 +32,18 @@
   "time": "night",
   "card_detail": {
     "id": {
-      "doc": "student",
+      "doc": "id",
       "exchange": [
         1
       ],
       "holder": "Zuzanna"
+    },
+    "manager": {
+      "issuer": "dorm",
+      "purpose": "resident",
+      "unit": "412",
+      "ask": "job.student_dorm.manager.ask",
+      "reply": "job.student_dorm.manager.reply"
     }
   }
 }

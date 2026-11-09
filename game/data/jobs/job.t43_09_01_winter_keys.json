@@ -36,7 +36,9 @@
     "manager": {
       "issuer": "estate",
       "purpose": "resident",
-      "unit": "5"
+      "unit": "5",
+      "ask": "job.t43_09_01_winter_keys.manager.ask",
+      "reply": "job.t43_09_01_winter_keys.manager.reply"
     },
     "id": {
       "doc": "id",

@@ -24,8 +24,7 @@
     "stefan"
   ],
   "cards": [
-    "id",
-    "witness"
+    "id"
   ],
   "threshold": 2,
   "place": "apartment",

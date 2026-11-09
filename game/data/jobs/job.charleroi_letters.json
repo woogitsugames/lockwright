@@ -27,5 +27,11 @@
   ],
   "threshold": 2,
   "place": "apartment",
-  "time": "evening"
+  "time": "evening",
+  "card_detail": {
+    "letter": {
+      "ask": "job.charleroi_letters.letter.ask",
+      "reply": "job.charleroi_letters.letter.reply"
+    }
+  }
 }

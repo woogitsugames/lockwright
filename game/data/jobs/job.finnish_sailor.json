@@ -26,12 +26,14 @@
     "manager"
   ],
   "threshold": 2,
-  "place": "apartment",
+  "place": "yard",
   "time": "night",
   "card_detail": {
     "manager": {
       "issuer": "ship",
-      "purpose": "custody"
+      "purpose": "custody",
+      "ask": "job.finnish_sailor.manager.ask",
+      "reply": "job.finnish_sailor.manager.reply"
     }
   }
 }

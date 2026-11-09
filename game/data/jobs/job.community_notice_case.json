@@ -25,7 +25,7 @@
   ],
   "cards": [
     "manager",
-    "institution",
+    "resolution",
     "witness"
   ],
   "threshold": 2,

@@ -24,7 +24,7 @@
     "gosia"
   ],
   "cards": [
-    "receipt",
+    "invoice",
     "photo"
   ],
   "threshold": 2,

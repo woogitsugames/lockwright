@@ -28,5 +28,11 @@
   ],
   "threshold": 2,
   "place": "apartment",
-  "time": "evening"
+  "time": "evening",
+  "card_detail": {
+    "witness": {
+      "ask": "job.pizzeria_pays_pizza.witness.ask",
+      "reply": "job.pizzeria_pays_pizza.witness.reply"
+    }
+  }
 }

@@ -39,6 +39,10 @@
         1
       ],
       "holder": "Karol"
+    },
+    "letter": {
+      "ask": "job.refuse_unapproved_repair.letter.ask",
+      "reply": "job.refuse_unapproved_repair.letter.reply"
     }
   }
 }

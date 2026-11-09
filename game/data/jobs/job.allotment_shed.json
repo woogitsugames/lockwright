@@ -36,6 +36,10 @@
         1
       ],
       "holder": "Zbigniew"
+    },
+    "witness": {
+      "ask": "job.allotment_shed.witness.ask",
+      "reply": "job.allotment_shed.witness.reply"
     }
   }
 }

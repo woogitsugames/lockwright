@@ -40,6 +40,10 @@
       "zoom": 1.0,
       "ask": "job.kiosk_shutter.photo.ask",
       "reply": "job.kiosk_shutter.photo.reply"
+    },
+    "witness": {
+      "ask": "job.kiosk_shutter.witness.ask",
+      "reply": "job.kiosk_shutter.witness.reply"
     }
   }
 }

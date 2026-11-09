@@ -36,6 +36,10 @@
     "id": {
       "doc": "id",
       "holder": "Kazimierz"
+    },
+    "witness": {
+      "ask": "job.t43_09_08_spare_key_hook.witness.ask",
+      "reply": "job.t43_09_08_spare_key_hook.witness.reply"
     }
   }
 }

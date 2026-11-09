@@ -31,7 +31,9 @@
   "card_detail": {
     "id": {
       "doc": "id",
-      "holder": "Marta"
+      "holder": "Marta",
+      "ask": "job.cat_bathroom.id.ask",
+      "reply": "job.cat_bathroom.id.reply"
     }
   }
 }

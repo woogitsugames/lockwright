@@ -23,18 +23,21 @@
     "hania"
   ],
   "cards": [
-    "id"
+    "photo"
   ],
   "threshold": 2,
   "place": "apartment",
   "time": "day",
   "card_detail": {
-    "id": {
-      "doc": "id",
-      "exchange": [
-        1
+    "photo": {
+      "image": "res://assets/ui/gpt/cast/episodic/portrait_hania.webp",
+      "focus": [
+        0.5,
+        0.5
       ],
-      "holder": "Hanna"
+      "zoom": 1.0,
+      "ask": "job.dollhouse_wooden_lock.photo.ask",
+      "reply": "job.dollhouse_wooden_lock.photo.reply"
     }
   }
 }

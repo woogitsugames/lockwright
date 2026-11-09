@@ -32,5 +32,15 @@
   "place": "workshop",
   "time": "evening",
   "outcome": "open",
-  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)",
+  "card_detail": {
+    "deed": {
+      "ask": "job.t43_12_08_henryks_bench.deed.ask",
+      "reply": "job.t43_12_08_henryks_bench.deed.reply"
+    },
+    "witness": {
+      "ask": "job.t43_12_08_henryks_bench.witness.ask",
+      "reply": "job.t43_12_08_henryks_bench.witness.reply"
+    }
+  }
 }

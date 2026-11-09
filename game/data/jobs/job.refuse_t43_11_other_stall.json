@@ -31,5 +31,11 @@
   "place": "kiosk",
   "time": "day",
   "outcome": "open",
-  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)"
+  "source": "contrib/gpt/T43 (review: contrib/gpt/REVIEW-T43.md)",
+  "card_detail": {
+    "lease": {
+      "ask": "job.refuse_t43_11_other_stall.lease.ask",
+      "reply": "job.refuse_t43_11_other_stall.lease.reply"
+    }
+  }
 }
