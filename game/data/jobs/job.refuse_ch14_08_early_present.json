@@ -1,0 +1,48 @@
+{
+  "id": "job.refuse_ch14_08_early_present",
+  "chapter": 14,
+  "order": 8,
+  "district": "Willowa Górka",
+  "family": "warded",
+  "tier": 2,
+  "verification": "Hania chce zajrzeć do zamkniętej szafki taty, w której czeka jej prezent urodzinowy, i prosi, żeby tacie nie mówić. Ma tylko legitymację szkolną. Odmowa: prezent jest jej dopiero wtedy, gdy tata go da; ślusarz proponuje zapytać tatę. Brak oskarżeń.",
+  "verify_kind": "object",
+  "reward_coins": 0,
+  "tone": "ciepły, dziecięco poważny; odmowa z uśmiechem",
+  "i18n": {
+    "title": "job.refuse_ch14_08_early_present.title",
+    "client": "job.refuse_ch14_08_early_present.client",
+    "situation": "job.refuse_ch14_08_early_present.situation"
+  },
+  "lines": [
+    "hania",
+    "locksmith",
+    "hania",
+    "locksmith"
+  ],
+  "after": [
+    "tomasz",
+    "hania"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2,
+  "place": "apartment",
+  "time": "day",
+  "arrival_from": "job.dollhouse_wooden_lock",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-119: chapter 14 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": "Hania",
+      "ask": "job.refuse_ch14_08_early_present.id.ask",
+      "reply": "job.refuse_ch14_08_early_present.id.reply"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "id": "job.ch14_10_holiday_keys",
+  "chapter": 14,
+  "order": 10,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 5,
+  "verification": "Uchwała wspólnoty o przechowywaniu zapasowych kluczy w świetlicy (3) i potwierdzenie zarządu, że szafka po portierni jest pod opieką wspólnoty (2). Zarządczyni obecna. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "shared",
+  "reward_coins": 220,
+  "tone": "spokojny, ciepły, wakacyjny",
+  "i18n": {
+    "title": "job.ch14_10_holiday_keys.title",
+    "client": "job.ch14_10_holiday_keys.client",
+    "situation": "job.ch14_10_holiday_keys.situation"
+  },
+  "lines": [
+    "elzbieta",
+    "halina",
+    "locksmith",
+    "elzbieta"
+  ],
+  "after": [
+    "halina",
+    "locksmith"
+  ],
+  "cards": [
+    "resolution",
+    "manager"
+  ],
+  "threshold": 3,
+  "place": "apartment",
+  "time": "evening",
+  "arrival_from": "job.shared_room_door",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-119: chapter 14 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "resolution": {
+      "ask": "job.ch14_10_holiday_keys.resolution.ask",
+      "reply": "job.ch14_10_holiday_keys.resolution.reply"
+    },
+    "manager": {
+      "issuer": "community",
+      "purpose": "custody"
+    }
+  }
+}
