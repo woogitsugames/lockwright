@@ -20,3 +20,6 @@ art/renders/workshop_layers/raw/
 *.p12
 upload*.b64
 lockwright-upload*
+
+# Agent worktrees (Claude Code)
+.claude/worktrees/
