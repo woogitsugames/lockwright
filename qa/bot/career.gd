@@ -318,6 +318,10 @@ func _run() -> void:
 const FAMILY_TIER_RANGE := {
 	"pin_tumbler": [2, 7], "ring_combo": [2, 3], "lever": [3, 5], "lever_detector": [5, 6],
 	"wafer": [1, 3], "warded": [1, 2], "wooden_pin": [1, 1],
+	# D-111: the plan-B families too (replay_tool: "<family> has tiers a..b"), so a job whose data tier is
+	# above the family's top one does not stop the feel/clumsy profiles
+	"combo": [1, 4], "dial_safe": [1, 3], "magnetic": [1, 2], "dimple": [1, 3], "disc_detainer": [1, 3],
+	"egyptian": [1, 2], "time_lock": [1, 2], "axial_slider": [1, 3],
 }
 
 

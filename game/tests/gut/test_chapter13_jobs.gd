@@ -13,6 +13,12 @@ const PLACES := ["apartment", "gate", "cellar", "locker", "workshop", "kiosk", "
 const TIMES := ["day", "evening", "night"]
 const CARDS := ["id", "lease", "manager", "witness", "institution", "invoice", "receipt", "deed", "inheritance", "resolution",
 	"letter", "photo", "address_app"]
+## Tiers each lockcore family really has (lockcore/src/families/*: min_tier/max_tier; `replay_tool record` says
+## "<family> has tiers a..b"). The game clamps a job's tier silently, so a tier outside the range would promise
+## a harder lock than the one played, and it stopped the QA career's feel/clumsy profiles.
+const LOCKCORE_TIERS := {"pin_tumbler": [2, 7], "warded": [1, 2], "wafer": [1, 3], "lever": [3, 5], "lever_detector": [5, 6],
+	"dial_safe": [1, 3], "combo": [1, 4], "magnetic": [1, 2], "dimple": [1, 3], "disc_detainer": [1, 3], "egyptian": [1, 2],
+	"time_lock": [1, 2], "axial_slider": [1, 3]}
 const LIMITS := {"title": 32, "client": 40, "situation": 140}
 const LINE_LIMIT := 160
 const Verify := preload("res://scripts/ui/job_verify.gd")
@@ -102,6 +108,8 @@ func test_ten_jobs_follow_the_spec() -> void:
 		assert_true(JobRun.is_playable(j), "%s (%s) is hidden on the list" % [jid, fam])
 		families[fam] = int(families.get(fam, 0)) + 1
 		assert_between(int(j["tier"]), 2, 4, "%s tier" % jid)
+		var tiers: Array = LOCKCORE_TIERS[fam]
+		assert_between(int(j["tier"]), int(tiers[0]), int(tiers[1]), "%s: a tier lockcore has for %s" % [jid, fam])
 		assert_has(PLACES, String(j["place"]), jid)
 		assert_has(TIMES, String(j["time"]), jid)
 		assert_has(JobRun.VERIFY_KINDS, String(j["verify_kind"]), jid)
