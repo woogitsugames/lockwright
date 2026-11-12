@@ -4,6 +4,20 @@ extends GutTest
 ## the profile, FXAA when MSAA is off.
 
 
+## D-105: the "auto" profile is picked from the frame time of the first 10 s (Quality._process); on a
+## loaded machine a full GUT run picks "medium" and every size here is x0.75. The sizes are tested for "high".
+var _profile: Dictionary
+
+
+func before_each() -> void:
+	_profile = Quality.current
+	Quality.current = Quality.PROFILES["high"]
+
+
+func after_each() -> void:
+	Quality.current = _profile
+
+
 func _open(path: String, size: Vector2i) -> Node:
 	var vp := SubViewport.new()
 	vp.size = size
