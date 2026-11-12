@@ -52,4 +52,6 @@ build się zatrzyma z komunikatem — wydanej wersji nie nadpisujemy. Gracze po 
   `game/scripts/autoload/content_packs.gd` i `min_game` w paczce. Starsza gra pokaże wtedy „wymaga nowszej wersji gry”.
 - **Hosting:** adres bazowy można zmienić bez kodu (zmienna repo `CONTENT_PACKS_BASE_URL`, np. Cloudflare — D-51).
 - **Głosy:** kwestie zleceń z paczki zostają w paczkach głosów (EN w bazie).
+- **Walidatory (D-115):** `data/tools/validate.py`, `data/tools/loc_qa.py`, `tools/i18n_lint.py` i `tools/voice_lines.py`
+  czytają też `game/packs/<id>/` — teksty i zlecenia paczki są sprawdzane tak samo jak w bazie, także przed wydaniem paczki.
 - **Budżet:** po przeniesieniu rozdziału sprawdzić `qa/budget` — AAB powinien spaść o rozmiar klatek scenek.
