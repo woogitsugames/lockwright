@@ -149,7 +149,7 @@ Przycisk na przyjeździe (`job.verify`) i tytuł weryfikacji (`verify.title`) m�
 
 Klucze: `premises` → `job.verify`, `verify.title` (bez zmian); pozostałe → `job.verify.<kind>`, `verify.title.<kind>`. Ten sam przyrostek (`JobRun.verify_key`) wybiera wariant notatki świadka (`verify.paper.witness.body.<kind>`) i ogólnych wymian przy kartach (`verify.ask/reply.<karta>.<n>.<kind>`: świadek, akt, faktura i list instytucji), gdy taki klucz istnieje. Odmowy mają rodzaj tego, o co klient prosi. Brak pola = `premises`.
 
-Klasyfikacja 83 zleceń (26 × premises, 24 × object, 33 × shared):
+Klasyfikacja 93 zleceń (27 × premises, 29 × object, 37 × shared; rozdział 13 dodany w D-111):
 
 | Zlecenie | `verify_kind` | Dlaczego |
 |---|---|---|
@@ -160,6 +160,14 @@ Klasyfikacja 83 zleceń (26 × premises, 24 × object, 33 × shared):
 | `job.brussels_townhouse` | premises | jej mieszkanie w Saint-Gilles; najem i sąsiad |
 | `job.carol_singers_chest` | shared | skrzynia świetlicy; zgoda zarządczyni i uchwała, Mila nie decyduje |
 | `job.cat_bathroom` | premises | łazienka we własnym mieszkaniu Marty |
+| `job.ch13_01_balcony_boxes` | premises | komórka piwniczna pani Haliny; wykaz użytkowników i pani Zosia |
+| `job.ch13_02_first_ice_cream` | object | zamrażarka Stefana przed kioskiem; faktura i pani Krysia |
+| `job.ch13_03_allotment_gate` | shared | wspólna brama ogródków; uchwała zarządu ogrodu i gospodarz |
+| `job.ch13_05_planted_key` | object | skrzynka Hani na nasiona; zdjęcie i tata, który ją zrobił |
+| `job.ch13_06_bike_repair_stand` | shared | szafka z narzędziami pod opieką administracji osiedla; Borys jako wykonawca |
+| `job.ch13_07_museum_night_case` | shared | gablota muzeum przed Nocą Muzeów; pismo dyrekcji |
+| `job.ch13_09_pizzeria_terrace` | object | mały sejf Renaty w jej pizzerii; najem i faktura |
+| `job.ch13_10_courtyard_door` | shared | tylne drzwi świetlicy na podwórko; jednogłośna uchwała i zarząd |
 | `job.charleroi_letters` | object | żelazna kasetka; znalazczyni przekazuje ją rodzinie |
 | `job.christmas_eve_heat` | shared | szafka kontrolna we wspólnej kotłowni; zgoda zarządczyni |
 | `job.community_notice_case` | shared | wspólna gablota ogłoszeń; zarządczyni i uchwała |
@@ -186,6 +194,8 @@ Klasyfikacja 83 zleceń (26 × premises, 24 × object, 33 × shared):
 | `job.night_nurse` | premises | mieszkanie Agnieszki; zarządca i dowód |
 | `job.pizzeria_pays_pizza` | premises | zaplecze pizzerii Renaty; najem i sąsiad |
 | `job.refuse_aunt_alive` | premises | odmowa: mieszkanie ciotki, która żyje |
+| `job.refuse_ch13_04_winter_bike` | object | odmowa: cudzy rower „niczyj”, przypięty od jesieni przy stojaku |
+| `job.refuse_ch13_08_found_cashbox` | object | odmowa: znaleziona w piwnicy cudza kasetka („znalezione nie kradzione”) |
 | `job.refuse_ex_partner` | premises | odmowa: mieszkanie byłej partnerki |
 | `job.refuse_rush_bribe` | premises | odmowa: mieszkanie siostry, dopłata za brak pytań |
 | `job.refuse_sisters_flat` | premises | odmowa: mieszkanie siostry bez jej zgody |
