@@ -23,3 +23,5 @@ lockwright-upload*
 
 # Agent worktrees (Claude Code)
 .claude/worktrees/
+# D-112: made from the pack CSV by Godot --import (like game/i18n/*.translation)
+game/packs/*/i18n/*.translation

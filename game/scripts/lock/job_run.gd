@@ -134,15 +134,36 @@ static func tier_for(job: Dictionary) -> int:
 	return maxi(1, int(job.get("tier", 1)))
 
 
+## Every job that can be played now: the base game's and those of the content packs on the phone
+## (D-112). The one place the job files are read from.
+static func all_jobs() -> Array:
+	var out: Array = []
+	for path in ContentPacks.job_paths():
+		var j: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+		if typeof(j) == TYPE_DICTIONARY:
+			out.append(j)
+	return out
+
+
+## The job, or {} when there is no such job on the phone (unknown id, or its content pack is not
+## downloaded / was removed: D-112). Callers treat {} as "no job".
 static func job_by_id(jid: String) -> Dictionary:
-	for dir in ["res://data/jobs"]:
-		for f in DirAccess.get_files_at(dir):
-			if not f.ends_with(".json"):
-				continue
-			var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(dir + "/" + f))
-			if j.get("id", "") == jid:
-				return j
+	var path: String = ContentPacks.job_path(jid)
+	if path != "":
+		var named: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+		if typeof(named) == TYPE_DICTIONARY and named.get("id", "") == jid:
+			return named
+	for j: Dictionary in all_jobs():  # a file not named after its id
+		if j.get("id", "") == jid:
+			return j
 	return {}
+
+
+## Chapter, family and tier of a job for progress read from the save: the job itself, or the stub
+## the app keeps for a job whose content pack is not on the phone (D-112). {} for an unknown id.
+static func job_meta(jid: String) -> Dictionary:
+	var j := job_by_id(jid)
+	return j if not j.is_empty() else ContentPacks.stub(jid)
 
 
 static func start(job: Dictionary) -> void:

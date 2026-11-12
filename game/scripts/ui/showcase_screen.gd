@@ -54,7 +54,7 @@ func _note_unlocked(note: Dictionary) -> bool:
 	re.compile("`([^`]+)`")
 	var max_tier := 0
 	for j in completed:
-		max_tier = maxi(max_tier, JobRun.tier_for(JobRun.job_by_id(j)))
+		max_tier = maxi(max_tier, JobRun.tier_for(JobRun.job_meta(j)))  # D-112: also jobs of a pack that is not on the phone
 	for m in re.search_all(unlocks):
 		var token := m.get_string(1)
 		if token.begins_with("job."):

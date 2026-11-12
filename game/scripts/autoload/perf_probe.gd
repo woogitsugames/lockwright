@@ -155,8 +155,8 @@ func _run_click_scan() -> void:
 
 
 func _show_day_after(host: Node, jid: String) -> void:
-	var path := "res://data/jobs/%s.json" % jid
-	if host == null or not FileAccess.file_exists(path):
+	var path: String = ContentPacks.job_path(jid)
+	if host == null or path == "":
 		return
 	var da: Node = load("res://scenes/day_after.tscn").instantiate()
 	da.set("job", JSON.parse_string(FileAccess.get_file_as_string(path)))

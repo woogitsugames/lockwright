@@ -30,39 +30,53 @@ func _ready() -> void:
 
 func _load_csv_translations() -> void:
 	for path in CSV_FILES:
-		var rows := _parse_csv(path)
-		if rows.is_empty():
-			# R-28: in an exported pck the raw .csv is remapped away; load the compiled
-			# .translation resources (stored next to the source in the pck) instead.
-			if not _load_compiled_translations(path):
-				push_error("I18n: cannot parse %s" % path)
+		_load_csv(path)
+
+
+## D-112: texts of a content pack (res://packs/<id>/i18n/content.csv), added to the loaded ones.
+## False (and silent) when the file is not there, e.g. a pack without texts of its own.
+func add_csv(path: String) -> bool:
+	if not FileAccess.file_exists(path) and not ResourceLoader.exists("%s.%s.translation" % [path.get_basename(), FALLBACK]):
+		return false
+	return _load_csv(path)
+
+
+func _load_csv(path: String) -> bool:
+	var rows := _parse_csv(path)
+	if rows.is_empty():
+		# R-28: in an exported pck the raw .csv is remapped away; load the compiled
+		# .translation resources (stored next to the source in the pck) instead.
+		if not _load_compiled_translations(path):
+			push_error("I18n: cannot parse %s" % path)
+			return false
+		return true
+	var header: PackedStringArray = rows[0]
+	if header.is_empty() or header[0] != "keys":
+		push_error("I18n: %s must start with 'keys' header" % path)
+		return false
+	var locales: Array = header.slice(1)
+	var per_locale: Dictionary = {}
+	for locale in locales:
+		var tr := Translation.new()
+		tr.locale = locale
+		per_locale[locale] = tr
+	for row in rows.slice(1):
+		if row.is_empty() or row[0] == "":
 			continue
-		var header: PackedStringArray = rows[0]
-		if header.is_empty() or header[0] != "keys":
-			push_error("I18n: %s must start with 'keys' header" % path)
-			continue
-		var locales: Array = header.slice(1)
-		var per_locale: Dictionary = {}
-		for locale in locales:
-			var tr := Translation.new()
-			tr.locale = locale
-			per_locale[locale] = tr
-		for row in rows.slice(1):
-			if row.is_empty() or row[0] == "":
-				continue
-			_keys[row[0]] = true
-			for i in range(1, min(row.size(), header.size())):
-				var locale: String = header[i]
-				# empty cell (fr/es not translated yet): no message, TranslationServer falls back to en
-				if per_locale.has(locale) and row[i] != "":
-					per_locale[locale].add_message(row[0], row[i])
-		for locale in per_locale:
-			if not _translations.has(locale):
-				_translations[locale] = per_locale[locale]
-			else:
-				for key in per_locale[locale].get_message_list():
-					_translations[locale].add_message(key, per_locale[locale].get_message(key))
-			TranslationServer.add_translation(per_locale[locale])
+		_keys[row[0]] = true
+		for i in range(1, min(row.size(), header.size())):
+			var locale: String = header[i]
+			# empty cell (fr/es not translated yet): no message, TranslationServer falls back to en
+			if per_locale.has(locale) and row[i] != "":
+				per_locale[locale].add_message(row[0], row[i])
+	for locale in per_locale:
+		if not _translations.has(locale):
+			_translations[locale] = per_locale[locale]
+		else:
+			for key in per_locale[locale].get_message_list():
+				_translations[locale].add_message(key, per_locale[locale].get_message(key))
+		TranslationServer.add_translation(per_locale[locale])
+	return true
 
 
 func _load_compiled_translations(path: String) -> bool:

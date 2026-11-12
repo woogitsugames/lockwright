@@ -67,7 +67,18 @@ static func data() -> Dictionary:
 	if _data.is_empty():
 		var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(DATA_PATH))
 		_data = parsed if typeof(parsed) == TYPE_DICTIONARY else {"scenes": {}}
+		# D-112: scenes of the content packs on the phone (their files live under res://packs/<id>/)
+		var packs: Node = (Engine.get_main_loop() as SceneTree).root.get_node_or_null("ContentPacks")
+		if packs != null and _data.get("scenes") is Dictionary:
+			for jid: String in packs.arrival_scenes():
+				if not _data["scenes"].has(jid):
+					_data["scenes"][jid] = packs.arrival_scenes()[jid]
 	return _data
+
+
+## D-112: a content pack came or went; data() is read again on the next use.
+static func forget_data() -> void:
+	_data = {}
 
 
 ## The scene for a job, resolved for its time of day, or {} (no entry, or its hold is missing).

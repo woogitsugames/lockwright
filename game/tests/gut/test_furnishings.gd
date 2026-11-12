@@ -76,13 +76,9 @@ func test_chapter_lock() -> void:
 	assert_false(Furnishings.buy(late["id"]), "locked until its chapter")
 	# a completed job of that chapter unlocks it
 	var jid := ""
-	for dir in Furnishings.JOB_DIRS:
-		if not DirAccess.dir_exists_absolute(dir):
-			continue
-		for file in DirAccess.get_files_at(dir):
-			var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(dir + "/" + file))
-			if int(j.get("chapter", 0)) == int(late["chapter"]):
-				jid = j["id"]
+	for j: Dictionary in JobRun.all_jobs():
+		if int(j.get("chapter", 0)) == int(late["chapter"]):
+			jid = j["id"]
 	assert_ne(jid, "")
 	Save.set_value("jobs_completed", [jid])
 	assert_true(Furnishings.unlocked(late))

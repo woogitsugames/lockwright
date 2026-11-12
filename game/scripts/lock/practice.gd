@@ -14,7 +14,6 @@ extends RefCounted
 ## Saved as `practice/<id>/goal`.
 
 const DIR := "res://data/practice"
-const JOB_DIR := "res://data/jobs"
 ## Family sub-events a lesson_target can name (lockcore FamilyModule::event_name: base kind + sub).
 ## Base kinds ("set", "overset", "false_set", ...) match by name; a base kind also matches its
 ## sub-events, as in check_locks ("false_set" counts a serration).
@@ -94,15 +93,18 @@ static func family_met(fam: StringName) -> bool:
 	if TutorialCoach.lesson_done(fam):
 		return true
 	if _job_family.is_empty():
-		for f in DirAccess.get_files_at(JOB_DIR):
-			if f.ends_with(".json"):
-				var j: Variant = JSON.parse_string(FileAccess.get_file_as_string(JOB_DIR + "/" + f))
-				if typeof(j) == TYPE_DICTIONARY:
-					_job_family[String(j.get("id", ""))] = JobRun.family_for(j)
+		# D-112: jobs of content packs count too, also when the pack is not on the phone (stubs)
+		for j: Dictionary in JobRun.all_jobs() + ContentPacks.stubs():
+			_job_family[String(j.get("id", ""))] = JobRun.family_for(j)
 	for jid in Save.get_value("jobs_completed", []):
 		if _job_family.get(String(jid), &"") == fam:
 			return true
 	return false
+
+
+## D-112: a content pack came or went; the job -> family map is built again on the next use.
+static func forget_jobs() -> void:
+	_job_family = {}
 
 
 static func unlocked(e: Dictionary) -> bool:

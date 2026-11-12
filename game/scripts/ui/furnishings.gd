@@ -8,7 +8,6 @@ extends RefCounted
 ## with the base at any size as long as every TextureRect uses the same rect and stretch mode.
 
 const PATH := "res://data/furnishings.json"
-const JOB_DIRS := ["res://data/jobs", "res://data/jobs_ch7"]
 
 static var _data: Dictionary = {}
 static var _job_chapter: Dictionary = {}
@@ -44,18 +43,19 @@ static func shown(id: String) -> bool:
 ## (or the "chapter" save key used by dev saves). At least 1.
 static func reached_chapter() -> int:
 	if _job_chapter.is_empty():
-		for dir in JOB_DIRS:
-			if not DirAccess.dir_exists_absolute(dir):
-				continue
-			for f in DirAccess.get_files_at(dir):
-				if f.ends_with(".json"):
-					var j: Variant = JSON.parse_string(FileAccess.get_file_as_string(dir + "/" + f))
-					if typeof(j) == TYPE_DICTIONARY:
-						_job_chapter[j.get("id", "")] = int(j.get("chapter", 1))
+		# D-112: jobs of content packs count too, also when the pack is not on the phone (stubs):
+		# removing a pack does not take the reached chapter back
+		for j: Dictionary in JobRun.all_jobs() + ContentPacks.stubs():
+			_job_chapter[j.get("id", "")] = int(j.get("chapter", 1))
 	var ch := maxi(1, int(Save.get_value("chapter", 1)))
 	for jid in Save.get_value("jobs_completed", []) + Save.get_value("jobs_refused", []):
 		ch = maxi(ch, int(_job_chapter.get(jid, 1)))
 	return ch
+
+
+## D-112: a content pack came or went; the job -> chapter map is built again on the next use.
+static func forget_jobs() -> void:
+	_job_chapter = {}
 
 
 static func unlocked(f: Dictionary) -> bool:
