@@ -1,0 +1,3712 @@
+{
+ "de/job.ch14_01_summer_storage.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 152660,
+  "speaker": "zuzanna",
+  "subtitle": "Zum Praktikum kam ich pünktlich. Der Schlüssel kam per Post zurück, mit einem Zettel von Mama: Binde ihn dir um.",
+  "text": "Zum Praktikum kam ich pünktlich. Der Schlüssel kam per Post zurück, mit einem Zettel von Mama: Binde ihn dir um.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_01_summer_storage.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14772205,
+  "speaker": "zuzanna",
+  "subtitle": "Prüfungen bestanden, Zimmer abgegeben. Nur mein Lagerfach will mich nicht in die Ferien lassen.",
+  "text": "Prüfungen bestanden, Zimmer abgegeben. Nur mein Lagerfach will mich nicht in die Ferien lassen.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_01_summer_storage.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6153688,
+  "speaker": "edek",
+  "subtitle": "Wilk, Zuzanna, Fach vierzehn. Steht auf meiner Liste und in meinem Kopf.",
+  "text": "Wilk, Zuzanna, Fach vierzehn. Steht auf meiner Liste und in meinem Kopf.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_01_summer_storage.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12492036,
+  "speaker": "locksmith",
+  "subtitle": "Liste und Studentenausweis stimmen überein. Hundertfünfzig Münzen.",
+  "text": "Liste und Studentenausweis stimmen überein. Hundertfünfzig Münzen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_01_summer_storage.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 170691,
+  "speaker": "zuzanna",
+  "subtitle": "Einverstanden. Der Schlüssel fuhr im Koffer nach Hause. Der Koffer hat die Prüfung in Selbstständigkeit besser bestanden als ich.",
+  "text": "Einverstanden. Der Schlüssel fuhr im Koffer nach Hause. Der Koffer hat die Prüfung in Selbstständigkeit besser bestanden als ich.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_02_ship_time.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12061343,
+  "speaker": "aino",
+  "subtitle": "Dreihundert Leute kamen. Die Uhr läuft wieder, und im Buch hat jemand eine Katze mit Kapitänsmütze gezeichnet.",
+  "text": "Dreihundert Leute kamen. Die Uhr läuft wieder, und im Buch hat jemand eine Katze mit Kapitänsmütze gezeichnet.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_02_ship_time.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10566925,
+  "speaker": "captain",
+  "subtitle": "Mittags lassen wir Besucher an Bord. Das Gästebuch liegt in der Kiste, und die Uhr der Kiste glaubt, es sei Februar.",
+  "text": "Mittags lassen wir Besucher an Bord. Das Gästebuch liegt in der Kiste, und die Uhr der Kiste glaubt, es sei Februar.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_02_ship_time.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7730746,
+  "speaker": "aino",
+  "subtitle": "Das Schloss öffnet nach Bordzeit. Die Uhr blieb im Winter stehen, und seitdem ist es immer zu früh.",
+  "text": "Das Schloss öffnet nach Bordzeit. Die Uhr blieb im Winter stehen, und seitdem ist es immer zu früh.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_02_ship_time.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8155600,
+  "speaker": "locksmith",
+  "subtitle": "Die Bestätigung des Kapitäns stimmt. Hundertfünfundsechzig Münzen. Ich repariere das Gangwerk, die Öffnungszeit rühre ich nicht an.",
+  "text": "Die Bestätigung des Kapitäns stimmt. Hundertfünfundsechzig Münzen. Ich repariere das Gangwerk, die Öffnungszeit rühre ich nicht an.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_02_ship_time.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10095113,
+  "speaker": "captain",
+  "subtitle": "Einverstanden. Die Kiste soll sich mittags öffnen. Der erste Eintrag im Buch gehört Ihnen.",
+  "text": "Einverstanden. Die Kiste soll sich mittags öffnen. Der erste Eintrag im Buch gehört Ihnen.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_03_books_under_linden.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11921550,
+  "speaker": "irena",
+  "subtitle": "Der Bücherschrank steht unter der Linde. Den ersten Krimi hat Zosia ausgeliehen. Die Rückgabefrist habe ich ihr mit Bleistift eingetragen.",
+  "text": "Der Bücherschrank steht unter der Linde. Den ersten Krimi hat Zosia ausgeliehen. Die Rückgabefrist habe ich ihr mit Bleistift eingetragen.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_03_books_under_linden.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13954972,
+  "speaker": "irena",
+  "subtitle": "Ich gebe den Bücherschrank meines Mannes für die Leseecke unter der Linde. Nur hat er ihn abgeschlossen, ein für alle Mal.",
+  "text": "Ich gebe den Bücherschrank meines Mannes für die Leseecke unter der Linde. Nur hat er ihn abgeschlossen, ein für alle Mal.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_03_books_under_linden.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10752457,
+  "speaker": "zosia",
+  "subtitle": "Das ist der Bücherschrank ihres Mannes, er steht seit jeher bei Irena. Ich habe mir daraus Krimis geliehen.",
+  "text": "Das ist der Bücherschrank ihres Mannes, er steht seit jeher bei Irena. Ich habe mir daraus Krimis geliehen.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_03_books_under_linden.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12691832,
+  "speaker": "locksmith",
+  "subtitle": "Ihr Ausweis und Frau Zosias Wort genügen mir. Hundertfünfundsiebzig Münzen, ohne Bohren.",
+  "text": "Ihr Ausweis und Frau Zosias Wort genügen mir. Hundertfünfundsiebzig Münzen, ohne Bohren.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_03_books_under_linden.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10095095,
+  "speaker": "irena",
+  "subtitle": "Einverstanden. Als Bibliothekarin weiß ich eines: Ein Buch hinter Schloss und Riegel ist ein ungelesenes Buch.",
+  "text": "Einverstanden. Als Bibliothekarin weiß ich eines: Ein Buch hinter Schloss und Riegel ist ein ungelesenes Buch.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_05_cat_passport.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11386130,
+  "speaker": "marta",
+  "subtitle": "Wir sind gefahren. Kartoffel verschlief die Fahrt im Koffer, begutachtete das Meer und hat es nicht genehmigt.",
+  "text": "Wir sind gefahren. Kartoffel verschlief die Fahrt im Koffer, begutachtete das Meer und hat es nicht genehmigt.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_05_cat_passport.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8566719,
+  "speaker": "marta",
+  "subtitle": "Wir fahren ans Meer. Kartoffels Impfpass liegt im Koffer, und der Koffer ist anderer Meinung.",
+  "text": "Wir fahren ans Meer. Kartoffels Impfpass liegt im Koffer, und der Koffer ist anderer Meinung.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_05_cat_passport.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6036668,
+  "speaker": "gosia",
+  "subtitle": "Ich arbeite ihn seit einer Woche für Marta auf. Das Schloss ist alt und stur, und einen Schlüssel gab es von Anfang an nicht.",
+  "text": "Ich arbeite ihn seit einer Woche für Marta auf. Das Schloss ist alt und stur, und einen Schlüssel gab es von Anfang an nicht.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_05_cat_passport.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7184934,
+  "speaker": "locksmith",
+  "subtitle": "Der Kassenbon vom Markt passt. Hundertachtzig Münzen, und der Kater kann reisen.",
+  "text": "Der Kassenbon vom Markt passt. Hundertachtzig Münzen, und der Kater kann reisen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_05_cat_passport.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 228531,
+  "speaker": "marta",
+  "subtitle": "Einverstanden. Kartoffel will gar nicht ans Meer. Er will, dass der Koffer offen bleibt, weil er darin schläft.",
+  "text": "Einverstanden. Kartoffel will gar nicht ans Meer. Er will, dass der Koffer offen bleibt, weil er darin schläft.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_06_suitcase_flew_on.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11904526,
+  "speaker": "bartek",
+  "subtitle": "Der Koffer kam nach drei Tagen zurück, brauner gebrannt als wir. Den Ersatzschlüssel hat jetzt der Nachbar.",
+  "text": "Der Koffer kam nach drei Tagen zurück, brauner gebrannt als wir. Den Ersatzschlüssel hat jetzt der Nachbar.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_06_suitcase_flew_on.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6855137,
+  "speaker": "bartek",
+  "subtitle": "Vor einem Jahr fuhren unsere Schlüssel mit der Tante nach Kalisz. Heute flogen sie mit dem Koffer in eine andere Stadt.",
+  "text": "Vor einem Jahr fuhren unsere Schlüssel mit der Tante nach Kalisz. Heute flogen sie mit dem Koffer in eine andere Stadt.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_06_suitcase_flew_on.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14249600,
+  "speaker": "neighbour_robe",
+  "subtitle": "Ich kenne die beiden. Vor einem Jahr war es vier Uhr früh. Heute ist es erst Mitternacht, sie machen Fortschritte.",
+  "text": "Ich kenne die beiden. Vor einem Jahr war es vier Uhr früh. Heute ist es erst Mitternacht, sie machen Fortschritte.",
+  "voice_id": "LAUe05BIFsJhkhztiDlc",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_06_suitcase_flew_on.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1738198,
+  "speaker": "locksmith",
+  "subtitle": "Ausweis, Adresse in der App und ein Nachbar. Alles beisammen, wie vor einem Jahr. Hundertfünfundachtzig Münzen.",
+  "text": "Ausweis, Adresse in der App und ein Nachbar. Alles beisammen, wie vor einem Jahr. Hundertfünfundachtzig Münzen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_06_suitcase_flew_on.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8757119,
+  "speaker": "bartek",
+  "subtitle": "Einverstanden. Nach der Hochzeit hat Kasia ein solideres Schloss einbauen lassen. Jetzt hält es uns sehr solide draußen.",
+  "text": "Einverstanden. Nach der Hochzeit hat Kasia ein solideres Schloss einbauen lassen. Jetzt hält es uns sehr solide draußen.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_07_prize_cupboard.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3826128,
+  "speaker": "ola",
+  "subtitle": "Jedes Kind bekam ein Buch. Frau Jadwiga fand den Code später: Er stand auf einem Lesezeichen in einem der Preise.",
+  "text": "Jedes Kind bekam ein Buch. Frau Jadwiga fand den Code später: Er stand auf einem Lesezeichen in einem der Preise.",
+  "voice_id": "wu1DtvHldVyojBw205MB",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_07_prize_cupboard.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 726479,
+  "speaker": "jadwiga",
+  "subtitle": "Die Preise zum Schuljahresende habe ich im Spind eingeschlossen. Den Code habe ich an einem sicheren Ort notiert, demselben wie immer.",
+  "text": "Die Preise zum Schuljahresende habe ich im Spind eingeschlossen. Den Code habe ich an einem sicheren Ort notiert, demselben wie immer.",
+  "voice_id": "XDA0joI4xCH8unjaVH78",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_07_prize_cupboard.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1591596,
+  "speaker": "headteacher",
+  "subtitle": "Also weiß niemand, wo. Der Spind gehört der Schule, die Zustimmung haben Sie schriftlich, und die Feier beginnt um zehn.",
+  "text": "Also weiß niemand, wo. Der Spind gehört der Schule, die Zustimmung haben Sie schriftlich, und die Feier beginnt um zehn.",
+  "voice_id": "DvT0A47h9AXl1dwoWgyE",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_07_prize_cupboard.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6983701,
+  "speaker": "locksmith",
+  "subtitle": "Das Schreiben der Schule stimmt. Hundertneunzig Münzen, und ich öffne in Ihrem Beisein.",
+  "text": "Das Schreiben der Schule stimmt. Hundertneunzig Münzen, und ich öffne in Ihrem Beisein.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_07_prize_cupboard.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7362881,
+  "speaker": "jadwiga",
+  "subtitle": "Einverstanden. Der Code war ein Datum, das weiß ich sicher. Nur weiß ich wieder nicht, wessen.",
+  "text": "Einverstanden. Der Code war ein Datum, das weiß ich sicher. Nur weiß ich wieder nicht, wessen.",
+  "voice_id": "XDA0joI4xCH8unjaVH78",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_09_summer_cinema.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10291090,
+  "speaker": "iga",
+  "subtitle": "Der Film lief um zehn an. Wir haben vor der Vorstellung gespielt, laut, und niemand ist gegangen.",
+  "text": "Der Film lief um zehn an. Wir haben vor der Vorstellung gespielt, laut, und niemand ist gegangen.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_09_summer_cinema.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15376912,
+  "speaker": "hall_manager",
+  "subtitle": "Das Sommerkino startet heute bei Einbruch der Dunkelheit. Der Projektor steht in der Kabine, und das Kabinenschloss ist beleidigt.",
+  "text": "Das Sommerkino startet heute bei Einbruch der Dunkelheit. Der Projektor steht in der Kabine, und das Kabinenschloss ist beleidigt.",
+  "voice_id": "RY3T4wJNr948hKf9RLlp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_09_summer_cinema.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16370185,
+  "speaker": "iga",
+  "subtitle": "Er hat drei Schlüssel vom Bund probiert. Beim vierten hat das Schloss aufgehört, mit ihm zu reden.",
+  "text": "Er hat drei Schlüssel vom Bund probiert. Beim vierten hat das Schloss aufgehört, mit ihm zu reden.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_09_summer_cinema.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1553839,
+  "speaker": "locksmith",
+  "subtitle": "Die Zustimmung des Proberaums und das Schreiben der Hochschule passen. Zweihundert Münzen. Bei so einem Schloss arbeitet man ohne Eile.",
+  "text": "Die Zustimmung des Proberaums und das Schreiben der Hochschule passen. Zweihundert Münzen. Bei so einem Schloss arbeitet man ohne Eile.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_09_summer_cinema.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5229278,
+  "speaker": "hall_manager",
+  "subtitle": "Einverstanden. Die Vorstellung beginnt mit der Dämmerung, und im Juni ist die Dämmerung geduldig.",
+  "text": "Einverstanden. Die Vorstellung beginnt mit der Dämmerung, und im Juni ist die Dämmerung geduldig.",
+  "voice_id": "RY3T4wJNr948hKf9RLlp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_10_holiday_keys.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1647640,
+  "speaker": "halina",
+  "subtitle": "Alle sind verreist, die Blumen sind gegossen. Ich bin geblieben, mein Junge. Jemand muss auf die Umschläge und die Brühe aufpassen.",
+  "text": "Alle sind verreist, die Blumen sind gegossen. Ich bin geblieben, mein Junge. Jemand muss auf die Umschläge und die Brühe aufpassen.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_10_holiday_keys.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16272566,
+  "speaker": "locksmith",
+  "subtitle": "Im Kasten hängen zwölf Schlüssel. Wenn der Sommer gut wird, muss ich keine einzige dieser Türen öffnen.",
+  "text": "Im Kasten hängen zwölf Schlüssel. Wenn der Sommer gut wird, muss ich keine einzige dieser Türen öffnen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_10_holiday_keys.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14791234,
+  "speaker": "elzbieta",
+  "subtitle": "Der Beschluss steht: Ersatzschlüssel bleiben über die Ferien im Gemeinschaftsraum, in verschlossenen Umschlägen.",
+  "text": "Der Beschluss steht: Ersatzschlüssel bleiben über die Ferien im Gemeinschaftsraum, in verschlossenen Umschlägen.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_10_holiday_keys.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10394432,
+  "speaker": "halina",
+  "subtitle": "Der Kasten hing ein halbes Jahrhundert in der Pförtnerloge, mein Junge. Er hat fremde Schlüssel so gut gehütet, dass er den eigenen verlor.",
+  "text": "Der Kasten hing ein halbes Jahrhundert in der Pförtnerloge, mein Junge. Er hat fremde Schlüssel so gut gehütet, dass er den eigenen verlor.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_10_holiday_keys.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6071949,
+  "speaker": "locksmith",
+  "subtitle": "Beschluss und Zustimmung der Verwaltung liegen vor. Zweihundertzwanzig Münzen für einen Schlüsselkasten ohne Schlüssel.",
+  "text": "Beschluss und Zustimmung der Verwaltung liegen vor. Zweihundertzwanzig Münzen für einen Schlüsselkasten ohne Schlüssel.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch14_10_holiday_keys.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13727415,
+  "speaker": "elzbieta",
+  "subtitle": "Einverstanden. Zwölf Umschläge warten schon, jeder über der Klappe unterschrieben.",
+  "text": "Einverstanden. Zwölf Umschläge warten schon, jeder über der Klappe unterschrieben.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch14_04_paid_week.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8203749,
+  "speaker": "elzbieta",
+  "subtitle": "Der Vermieter war auf der Hochzeit seines Sohnes. Er kam noch in derselben Nacht, mit den Schlüsseln und einem Stück Torte als Entschuldigung.",
+  "text": "Der Vermieter war auf der Hochzeit seines Sohnes. Er kam noch in derselben Nacht, mit den Schlüsseln und einem Stück Torte als Entschuldigung.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch14_04_paid_week.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12928700,
+  "speaker": "magda",
+  "subtitle": "Ich habe geschlafen wie in Brüssel, nur ruhiger. Monsieur Jacques wird nicht glauben, dass man mich so höflich abgewiesen hat.",
+  "text": "Ich habe geschlafen wie in Brüssel, nur ruhiger. Monsieur Jacques wird nicht glauben, dass man mich so höflich abgewiesen hat.",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch14_04_paid_week.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15175062,
+  "speaker": "magda",
+  "subtitle": "Ich habe die Woche im Voraus bezahlt. Bis Sonntag ist das meine Wohnung, n'est-ce pas?",
+  "text": "Ich habe die Woche im Voraus bezahlt. Bis Sonntag ist das meine Wohnung, n'est-ce pas?",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch14_04_paid_week.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9871199,
+  "speaker": "locksmith",
+  "subtitle": "Bezahlt haben Sie den Vermieter, und er hat die Schlüssel. Fragen wir Frau Elżbieta, sie kennt den Eigentümer.",
+  "text": "Bezahlt haben Sie den Vermieter, und er hat die Schlüssel. Fragen wir Frau Elżbieta, sie kennt den Eigentümer.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch14_04_paid_week.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1843938,
+  "speaker": "magda",
+  "subtitle": "Ich bin seit vierzehn Stunden unterwegs. Öffnen Sie einfach, dem Vermieter erkläre ich es morgen früh.",
+  "text": "Ich bin seit vierzehn Stunden unterwegs. Öffnen Sie einfach, dem Vermieter erkläre ich es morgen früh.",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch14_04_paid_week.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12716998,
+  "speaker": "locksmith",
+  "subtitle": "Hier öffne ich nicht. Ohne den Vermieter ist es immer noch eine fremde Tür. Frau Elżbieta hat seine zweite Nummer.",
+  "text": "Hier öffne ich nicht. Ohne den Vermieter ist es immer noch eine fremde Tür. Frau Elżbieta hat seine zweite Nummer.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch14_08_early_present.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4831164,
+  "speaker": "tomasz",
+  "subtitle": "Am Samstag hat sie den Schrank selbst geöffnet, mit meinem Schlüssel. Darin wartete ihre erste Werkzeugkiste.",
+  "text": "Am Samstag hat sie den Schrank selbst geöffnet, mit meinem Schlüssel. Darin wartete ihre erste Werkzeugkiste.",
+  "voice_id": "kmrKRziyBLKhbqe5EalT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch14_08_early_present.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7677199,
+  "speaker": "hania",
+  "subtitle": "Meine Kiste hat ein Schloss und einen Schlüssel. Diesen Schlüssel pflanze ich nicht ein, das habe ich Lala versprochen.",
+  "text": "Meine Kiste hat ein Schloss und einen Schlüssel. Diesen Schlüssel pflanze ich nicht ein, das habe ich Lala versprochen.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch14_08_early_present.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13352645,
+  "speaker": "hania",
+  "subtitle": "Das Geschenk ist für mich, also gehört es mir. Es ist nur noch in Papas Schrank eingeschlossen.",
+  "text": "Das Geschenk ist für mich, also gehört es mir. Es ist nur noch in Papas Schrank eingeschlossen.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch14_08_early_present.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2573526,
+  "speaker": "locksmith",
+  "subtitle": "Es gehört dir, sobald dein Papa es dir gibt. Komm, wir fragen ihn, er ist in der Werkstatt.",
+  "text": "Es gehört dir, sobald dein Papa es dir gibt. Komm, wir fragen ihn, er ist in der Werkstatt.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch14_08_early_present.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10725510,
+  "speaker": "hania",
+  "subtitle": "Nein, dann sagt er, Geburtstag ist am Samstag. Ich gucke nur kurz, und wir schließen gleich wieder zu.",
+  "text": "Nein, dann sagt er, Geburtstag ist am Samstag. Ich gucke nur kurz, und wir schließen gleich wieder zu.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch14_08_early_present.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1403636,
+  "speaker": "locksmith",
+  "subtitle": "Hier öffne ich nicht. Bis Samstag ist es Papas Schrank und seine Überraschung. Drei Tage sind kürzer, als du denkst.",
+  "text": "Hier öffne ich nicht. Bis Samstag ist es Papas Schrank und seine Überraschung. Drei Tage sind kürzer, als du denkst.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_01_summer_storage.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 152660,
+  "speaker": "zuzanna",
+  "subtitle": "I made it to my placement on time. The key came back by mail, with a note from Mom: tie it to yourself.",
+  "text": "I made it to my placement on time. The key came back by mail, with a note from Mom: tie it to yourself.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_01_summer_storage.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14772205,
+  "speaker": "zuzanna",
+  "subtitle": "Exams passed, room handed back. Only my storage locker won't let me leave for the summer.",
+  "text": "Exams passed, room handed back. Only my storage locker won't let me leave for the summer.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_01_summer_storage.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6153688,
+  "speaker": "edek",
+  "subtitle": "Zuzanna Wilk, locker fourteen. On my list and in my head.",
+  "text": "Zuzanna Wilk, locker fourteen. On my list and in my head.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_01_summer_storage.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12492036,
+  "speaker": "locksmith",
+  "subtitle": "The list and the student card match. One hundred and fifty coins.",
+  "text": "The list and the student card match. One hundred and fifty coins.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_01_summer_storage.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 170691,
+  "speaker": "zuzanna",
+  "subtitle": "Agreed. The key went home in my suitcase. The suitcase passed its independence exam better than I did.",
+  "text": "Agreed. The key went home in my suitcase. The suitcase passed its independence exam better than I did.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_02_ship_time.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12061343,
+  "speaker": "aino",
+  "subtitle": "Three hundred people came. The clock is running again, and someone drew a cat in a captain's cap in the book.",
+  "text": "Three hundred people came. The clock is running again, and someone drew a cat in a captain's cap in the book.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_02_ship_time.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10566925,
+  "speaker": "captain",
+  "subtitle": "We let visitors aboard at noon. The guest book is in the box, and the box's clock thinks it's February.",
+  "text": "We let visitors aboard at noon. The guest book is in the box, and the box's clock thinks it's February.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_02_ship_time.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7730746,
+  "speaker": "aino",
+  "subtitle": "The lock opens on ship's time. Its clock stopped in winter, and ever since it has always been too early.",
+  "text": "The lock opens on ship's time. Its clock stopped in winter, and ever since it has always been too early.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_02_ship_time.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8155600,
+  "speaker": "locksmith",
+  "subtitle": "The Captain's confirmation checks out. One hundred and sixty-five coins. I repair the movement; the opening hour stays as set.",
+  "text": "The Captain's confirmation checks out. One hundred and sixty-five coins. I repair the movement; the opening hour stays as set.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_02_ship_time.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10095113,
+  "speaker": "captain",
+  "subtitle": "Agreed. The box is set to open at noon. The first entry in the book is yours.",
+  "text": "Agreed. The box is set to open at noon. The first entry in the book is yours.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_03_books_under_linden.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11921550,
+  "speaker": "irena",
+  "subtitle": "The bookcase stands under the linden. Zosia borrowed the first mystery. I wrote her due date in pencil.",
+  "text": "The bookcase stands under the linden. Zosia borrowed the first mystery. I wrote her due date in pencil.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_03_books_under_linden.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13954972,
+  "speaker": "irena",
+  "subtitle": "I'm giving my husband's bookcase to the reading corner under the linden. Only he locked it, once and for all.",
+  "text": "I'm giving my husband's bookcase to the reading corner under the linden. Only he locked it, once and for all.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_03_books_under_linden.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10752457,
+  "speaker": "zosia",
+  "subtitle": "It's her husband's bookcase; it has stood at Irena's forever. I used to borrow mysteries from it.",
+  "text": "It's her husband's bookcase; it has stood at Irena's forever. I used to borrow mysteries from it.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_03_books_under_linden.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12691832,
+  "speaker": "locksmith",
+  "subtitle": "Your ID and Mrs Zosia's word will do. One hundred and seventy-five coins, and no drilling.",
+  "text": "Your ID and Mrs Zosia's word will do. One hundred and seventy-five coins, and no drilling.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_03_books_under_linden.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10095095,
+  "speaker": "irena",
+  "subtitle": "Agreed. As a librarian I know one thing: a book under lock and key is a book unread.",
+  "text": "Agreed. As a librarian I know one thing: a book under lock and key is a book unread.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_05_cat_passport.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11386130,
+  "speaker": "marta",
+  "subtitle": "We went. Potato slept the whole way in the case, inspected the sea and did not approve it.",
+  "text": "We went. Potato slept the whole way in the case, inspected the sea and did not approve it.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_05_cat_passport.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8566719,
+  "speaker": "marta",
+  "subtitle": "We're off to the seaside. Potato's health booklet is in the case, and the case has a dissenting opinion.",
+  "text": "We're off to the seaside. Potato's health booklet is in the case, and the case has a dissenting opinion.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_05_cat_passport.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6036668,
+  "speaker": "gosia",
+  "subtitle": "I've been restoring it for Marta for a week. The lock is old and stubborn, and there was never a key.",
+  "text": "I've been restoring it for Marta for a week. The lock is old and stubborn, and there was never a key.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_05_cat_passport.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7184934,
+  "speaker": "locksmith",
+  "subtitle": "The market receipt matches. One hundred and eighty coins, and the cat can travel.",
+  "text": "The market receipt matches. One hundred and eighty coins, and the cat can travel.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_05_cat_passport.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 228531,
+  "speaker": "marta",
+  "subtitle": "Agreed. Potato doesn't want the seaside at all. He wants the case left open, because he sleeps in it.",
+  "text": "Agreed. Potato doesn't want the seaside at all. He wants the case left open, because he sleeps in it.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_06_suitcase_flew_on.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11904526,
+  "speaker": "bartek",
+  "subtitle": "The suitcase came back three days later, more tanned than we were. The neighbor keeps our spare key now.",
+  "text": "The suitcase came back three days later, more tanned than we were. The neighbor keeps our spare key now.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_06_suitcase_flew_on.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6855137,
+  "speaker": "bartek",
+  "subtitle": "A year ago our keys went to Kalisz with an aunt. Today they flew to another city with the suitcase.",
+  "text": "A year ago our keys went to Kalisz with an aunt. Today they flew to another city with the suitcase.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_06_suitcase_flew_on.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14249600,
+  "speaker": "neighbour_robe",
+  "subtitle": "I know them. Last year it was four in the morning. Tonight it's only midnight; they're improving.",
+  "text": "I know them. Last year it was four in the morning. Tonight it's only midnight; they're improving.",
+  "voice_id": "LAUe05BIFsJhkhztiDlc",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_06_suitcase_flew_on.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1738198,
+  "speaker": "locksmith",
+  "subtitle": "ID, the address in the app and a neighbor. A full set, same as last year. One hundred and eighty-five coins.",
+  "text": "ID, the address in the app and a neighbor. A full set, same as last year. One hundred and eighty-five coins.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_06_suitcase_flew_on.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8757119,
+  "speaker": "bartek",
+  "subtitle": "Agreed. After the wedding Kasia had a sturdier lock put in. Now it keeps us out very sturdily.",
+  "text": "Agreed. After the wedding Kasia had a sturdier lock put in. Now it keeps us out very sturdily.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_07_prize_cupboard.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3826128,
+  "speaker": "ola",
+  "subtitle": "Every child got a book. Mrs Jadwiga found the code later: she had written it on a bookmark inside one of the prizes.",
+  "text": "Every child got a book. Mrs Jadwiga found the code later: she had written it on a bookmark inside one of the prizes.",
+  "voice_id": "wu1DtvHldVyojBw205MB",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_07_prize_cupboard.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 726479,
+  "speaker": "jadwiga",
+  "subtitle": "I locked the end-of-year prizes in the locker. I wrote the code down somewhere safe, the same place as always.",
+  "text": "I locked the end-of-year prizes in the locker. I wrote the code down somewhere safe, the same place as always.",
+  "voice_id": "XDA0joI4xCH8unjaVH78",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_07_prize_cupboard.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1591596,
+  "speaker": "headteacher",
+  "subtitle": "Meaning nobody knows where. The locker is the school's, you have our consent in writing, and the assembly starts at ten.",
+  "text": "Meaning nobody knows where. The locker is the school's, you have our consent in writing, and the assembly starts at ten.",
+  "voice_id": "DvT0A47h9AXl1dwoWgyE",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_07_prize_cupboard.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6983701,
+  "speaker": "locksmith",
+  "subtitle": "The school's letter checks out. One hundred and ninety coins, and I open it with you both present.",
+  "text": "The school's letter checks out. One hundred and ninety coins, and I open it with you both present.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_07_prize_cupboard.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7362881,
+  "speaker": "jadwiga",
+  "subtitle": "Agreed. The code was a date, that much I know. I just don't know whose, again.",
+  "text": "Agreed. The code was a date, that much I know. I just don't know whose, again.",
+  "voice_id": "XDA0joI4xCH8unjaVH78",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_09_summer_cinema.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10291090,
+  "speaker": "iga",
+  "subtitle": "The film started at ten. We played before the show, loudly, and nobody left.",
+  "text": "The film started at ten. We played before the show, loudly, and nobody left.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_09_summer_cinema.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15376912,
+  "speaker": "hall_manager",
+  "subtitle": "The summer cinema opens tonight at dusk. The projector is in the booth, and the booth's lock has taken offense at me.",
+  "text": "The summer cinema opens tonight at dusk. The projector is in the booth, and the booth's lock has taken offense at me.",
+  "voice_id": "RY3T4wJNr948hKf9RLlp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_09_summer_cinema.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16370185,
+  "speaker": "iga",
+  "subtitle": "He tried three keys from the bunch. At the fourth, the lock stopped talking to him.",
+  "text": "He tried three keys from the bunch. At the fourth, the lock stopped talking to him.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_09_summer_cinema.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1553839,
+  "speaker": "locksmith",
+  "subtitle": "The room's consent and the university's letter match. Two hundred coins. A lock like this is not to be hurried.",
+  "text": "The room's consent and the university's letter match. Two hundred coins. A lock like this is not to be hurried.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_09_summer_cinema.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5229278,
+  "speaker": "hall_manager",
+  "subtitle": "Agreed. The show starts at dusk, and in June dusk is patient.",
+  "text": "Agreed. The show starts at dusk, and in June dusk is patient.",
+  "voice_id": "RY3T4wJNr948hKf9RLlp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_10_holiday_keys.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1647640,
+  "speaker": "halina",
+  "subtitle": "Everyone has left, and the plants are watered. I stayed, son. Someone has to mind the envelopes and the broth.",
+  "text": "Everyone has left, and the plants are watered. I stayed, son. Someone has to mind the envelopes and the broth.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_10_holiday_keys.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16272566,
+  "speaker": "locksmith",
+  "subtitle": "Twelve keys hang in the cabinet. If the summer goes well, I won't have to open a single one of those doors.",
+  "text": "Twelve keys hang in the cabinet. If the summer goes well, I won't have to open a single one of those doors.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_10_holiday_keys.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14791234,
+  "speaker": "elzbieta",
+  "subtitle": "The resolution is passed: over the summer, spare keys stay in the common room, in sealed envelopes.",
+  "text": "The resolution is passed: over the summer, spare keys stay in the common room, in sealed envelopes.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_10_holiday_keys.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10394432,
+  "speaker": "halina",
+  "subtitle": "That cabinet hung in the porter's lodge for half a century, son. It guarded everyone's keys so well it lost its own.",
+  "text": "That cabinet hung in the porter's lodge for half a century, son. It guarded everyone's keys so well it lost its own.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_10_holiday_keys.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6071949,
+  "speaker": "locksmith",
+  "subtitle": "The resolution and the board's consent are here. Two hundred and twenty coins for a key cabinet without a key.",
+  "text": "The resolution and the board's consent are here. Two hundred and twenty coins for a key cabinet without a key.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch14_10_holiday_keys.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13727415,
+  "speaker": "elzbieta",
+  "subtitle": "Agreed. Twelve envelopes are waiting, each one signed across the flap.",
+  "text": "Agreed. Twelve envelopes are waiting, each one signed across the flap.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch14_04_paid_week.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8203749,
+  "speaker": "elzbieta",
+  "subtitle": "The host was at his son's wedding. He came that same night, with the keys and a slice of cake to apologize.",
+  "text": "The host was at his son's wedding. He came that same night, with the keys and a slice of cake to apologize.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch14_04_paid_week.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12928700,
+  "speaker": "magda",
+  "subtitle": "I slept like in Brussels, only quieter. Monsieur Jacques won't believe I was turned down so politely.",
+  "text": "I slept like in Brussels, only quieter. Monsieur Jacques won't believe I was turned down so politely.",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch14_04_paid_week.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15175062,
+  "speaker": "magda",
+  "subtitle": "I paid for the week up front. Until Sunday it's my apartment, n'est-ce pas?",
+  "text": "I paid for the week up front. Until Sunday it's my apartment, n'est-ce pas?",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch14_04_paid_week.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9871199,
+  "speaker": "locksmith",
+  "subtitle": "You paid the host, and he has the keys. Let's ask Elżbieta; she knows the owner.",
+  "text": "You paid the host, and he has the keys. Let's ask Elżbieta; she knows the owner.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch14_04_paid_week.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1843938,
+  "speaker": "magda",
+  "subtitle": "I've been traveling for fourteen hours. Just open it; I'll explain to the host in the morning.",
+  "text": "I've been traveling for fourteen hours. Just open it; I'll explain to the host in the morning.",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch14_04_paid_week.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12716998,
+  "speaker": "locksmith",
+  "subtitle": "I can't open this one. Without the host it's still someone else's door. Elżbieta has his other number.",
+  "text": "I can't open this one. Without the host it's still someone else's door. Elżbieta has his other number.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch14_08_early_present.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4831164,
+  "speaker": "tomasz",
+  "subtitle": "On Saturday she opened the cabinet herself, with my key. Her first toolbox was waiting inside.",
+  "text": "On Saturday she opened the cabinet herself, with my key. Her first toolbox was waiting inside.",
+  "voice_id": "kmrKRziyBLKhbqe5EalT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch14_08_early_present.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7677199,
+  "speaker": "hania",
+  "subtitle": "My toolbox has a lock and a key. I won't plant this key; I promised Lala.",
+  "text": "My toolbox has a lock and a key. I won't plant this key; I promised Lala.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch14_08_early_present.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13352645,
+  "speaker": "hania",
+  "subtitle": "It's a present for me, so it's mine. It's just still locked in Dad's cabinet.",
+  "text": "It's a present for me, so it's mine. It's just still locked in Dad's cabinet.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch14_08_early_present.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2573526,
+  "speaker": "locksmith",
+  "subtitle": "It'll be yours when your dad gives it to you. Come on, let's ask him; he's in the workshop.",
+  "text": "It'll be yours when your dad gives it to you. Come on, let's ask him; he's in the workshop.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch14_08_early_present.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10725510,
+  "speaker": "hania",
+  "subtitle": "No, because he'll say my birthday is on Saturday. I'll just peek, and we'll lock it right back.",
+  "text": "No, because he'll say my birthday is on Saturday. I'll just peek, and we'll lock it right back.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch14_08_early_present.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1403636,
+  "speaker": "locksmith",
+  "subtitle": "I can't open this one. Until Saturday it's your dad's cabinet and his surprise. Three days is shorter than you think.",
+  "text": "I can't open this one. Until Saturday it's your dad's cabinet and his surprise. Three days is shorter than you think.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_01_summer_storage.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 152660,
+  "speaker": "zuzanna",
+  "subtitle": "Llegué a tiempo a las prácticas. La llave volvió por correo, con una nota de mamá: átatela a la muñeca.",
+  "text": "Llegué a tiempo a las prácticas. La llave volvió por correo, con una nota de mamá: átatela a la muñeca.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_01_summer_storage.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14772205,
+  "speaker": "zuzanna",
+  "subtitle": "Exámenes aprobados, habitación entregada. Solo mi taquilla no me deja irme de vacaciones.",
+  "text": "Exámenes aprobados, habitación entregada. Solo mi taquilla no me deja irme de vacaciones.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_01_summer_storage.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6153688,
+  "speaker": "edek",
+  "subtitle": "Zuzanna Wilk, taquilla catorce. En mi lista y en mi cabeza.",
+  "text": "Zuzanna Wilk, taquilla catorce. En mi lista y en mi cabeza.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_01_summer_storage.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12492036,
+  "speaker": "locksmith",
+  "subtitle": "La lista y el carné de estudiante coinciden. Ciento cincuenta monedas.",
+  "text": "La lista y el carné de estudiante coinciden. Ciento cincuenta monedas.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_01_summer_storage.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 170691,
+  "speaker": "zuzanna",
+  "subtitle": "De acuerdo. La llave se fue a casa en la maleta. La maleta aprobó el examen de autonomía mejor que yo.",
+  "text": "De acuerdo. La llave se fue a casa en la maleta. La maleta aprobó el examen de autonomía mejor que yo.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_02_ship_time.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12061343,
+  "speaker": "aino",
+  "subtitle": "Vinieron trescientas personas. El reloj vuelve a andar, y alguien dibujó en el libro un gato con gorra de capitán.",
+  "text": "Vinieron trescientas personas. El reloj vuelve a andar, y alguien dibujó en el libro un gato con gorra de capitán.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_02_ship_time.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10566925,
+  "speaker": "captain",
+  "subtitle": "A mediodía suben los visitantes. El libro de visitas está en la caja, y el reloj de la caja cree que es febrero.",
+  "text": "A mediodía suben los visitantes. El libro de visitas está en la caja, y el reloj de la caja cree que es febrero.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_02_ship_time.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7730746,
+  "speaker": "aino",
+  "subtitle": "La cerradura se abre con la hora de a bordo. El reloj se paró en invierno y desde entonces siempre es demasiado pronto.",
+  "text": "La cerradura se abre con la hora de a bordo. El reloj se paró en invierno y desde entonces siempre es demasiado pronto.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_02_ship_time.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8155600,
+  "speaker": "locksmith",
+  "subtitle": "La confirmación del capitán coincide. Ciento sesenta y cinco monedas. Reparo la marcha; la hora de apertura no la toco.",
+  "text": "La confirmación del capitán coincide. Ciento sesenta y cinco monedas. Reparo la marcha; la hora de apertura no la toco.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_02_ship_time.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10095113,
+  "speaker": "captain",
+  "subtitle": "De acuerdo. La caja debe abrirse a mediodía. La primera anotación del libro es suya.",
+  "text": "De acuerdo. La caja debe abrirse a mediodía. La primera anotación del libro es suya.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_03_books_under_linden.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11921550,
+  "speaker": "irena",
+  "subtitle": "La librería está bajo el tilo. Zosia se llevó la primera novela policiaca. Le apunté la fecha de devolución a lápiz.",
+  "text": "La librería está bajo el tilo. Zosia se llevó la primera novela policiaca. Le apunté la fecha de devolución a lápiz.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_03_books_under_linden.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13954972,
+  "speaker": "irena",
+  "subtitle": "Dono la librería de mi marido al rincón de lectura bajo el tilo. Solo que la cerró con llave, de una vez por todas.",
+  "text": "Dono la librería de mi marido al rincón de lectura bajo el tilo. Solo que la cerró con llave, de una vez por todas.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_03_books_under_linden.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10752457,
+  "speaker": "zosia",
+  "subtitle": "Es la librería de su marido; siempre ha estado en casa de Irena. Yo le pedía prestadas novelas policiacas.",
+  "text": "Es la librería de su marido; siempre ha estado en casa de Irena. Yo le pedía prestadas novelas policiacas.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_03_books_under_linden.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12691832,
+  "speaker": "locksmith",
+  "subtitle": "Su documento y la palabra de la señora Zosia me bastan. Ciento setenta y cinco monedas, sin taladrar.",
+  "text": "Su documento y la palabra de la señora Zosia me bastan. Ciento setenta y cinco monedas, sin taladrar.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_03_books_under_linden.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10095095,
+  "speaker": "irena",
+  "subtitle": "De acuerdo. Como bibliotecaria sé una cosa: un libro bajo llave es un libro sin leer.",
+  "text": "De acuerdo. Como bibliotecaria sé una cosa: un libro bajo llave es un libro sin leer.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_05_cat_passport.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11386130,
+  "speaker": "marta",
+  "subtitle": "Nos fuimos. Patata durmió todo el viaje en el maletín, inspeccionó el mar y no le dio el visto bueno.",
+  "text": "Nos fuimos. Patata durmió todo el viaje en el maletín, inspeccionó el mar y no le dio el visto bueno.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_05_cat_passport.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8566719,
+  "speaker": "marta",
+  "subtitle": "Nos vamos al mar. La cartilla de Patata está en el maletín, y el maletín opina otra cosa.",
+  "text": "Nos vamos al mar. La cartilla de Patata está en el maletín, y el maletín opina otra cosa.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_05_cat_passport.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6036668,
+  "speaker": "gosia",
+  "subtitle": "Llevo una semana restaurándolo para Marta. La cerradura es vieja y terca, y nunca hubo llave.",
+  "text": "Llevo una semana restaurándolo para Marta. La cerradura es vieja y terca, y nunca hubo llave.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_05_cat_passport.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7184934,
+  "speaker": "locksmith",
+  "subtitle": "El tique del mercado coincide. Ciento ochenta monedas, y el gato puede viajar.",
+  "text": "El tique del mercado coincide. Ciento ochenta monedas, y el gato puede viajar.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_05_cat_passport.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 228531,
+  "speaker": "marta",
+  "subtitle": "De acuerdo. Patata no quiere ir al mar. Quiere que el maletín se quede abierto, porque duerme dentro.",
+  "text": "De acuerdo. Patata no quiere ir al mar. Quiere que el maletín se quede abierto, porque duerme dentro.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_06_suitcase_flew_on.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11904526,
+  "speaker": "bartek",
+  "subtitle": "La maleta volvió a los tres días, más morena que nosotros. Ahora el vecino guarda la llave de repuesto.",
+  "text": "La maleta volvió a los tres días, más morena que nosotros. Ahora el vecino guarda la llave de repuesto.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_06_suitcase_flew_on.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6855137,
+  "speaker": "bartek",
+  "subtitle": "Hace un año las llaves se fueron a Kalisz con una tía. Hoy han volado a otra ciudad con la maleta.",
+  "text": "Hace un año las llaves se fueron a Kalisz con una tía. Hoy han volado a otra ciudad con la maleta.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_06_suitcase_flew_on.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14249600,
+  "speaker": "neighbour_robe",
+  "subtitle": "Los conozco. Hace un año eran las cuatro de la mañana. Hoy solo es medianoche; van mejorando.",
+  "text": "Los conozco. Hace un año eran las cuatro de la mañana. Hoy solo es medianoche; van mejorando.",
+  "voice_id": "LAUe05BIFsJhkhztiDlc",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_06_suitcase_flew_on.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1738198,
+  "speaker": "locksmith",
+  "subtitle": "Documento, dirección en la aplicación y un vecino. Todo completo, como hace un año. Ciento ochenta y cinco monedas.",
+  "text": "Documento, dirección en la aplicación y un vecino. Todo completo, como hace un año. Ciento ochenta y cinco monedas.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_06_suitcase_flew_on.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8757119,
+  "speaker": "bartek",
+  "subtitle": "De acuerdo. Después de la boda, Kasia puso una cerradura más seria. Ahora nos deja fuera muy seriamente.",
+  "text": "De acuerdo. Después de la boda, Kasia puso una cerradura más seria. Ahora nos deja fuera muy seriamente.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_07_prize_cupboard.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3826128,
+  "speaker": "ola",
+  "subtitle": "Cada niño recibió un libro. La señora Jadwiga encontró luego la clave: la había apuntado en un marcapáginas, dentro de uno de los premios.",
+  "text": "Cada niño recibió un libro. La señora Jadwiga encontró luego la clave: la había apuntado en un marcapáginas, dentro de uno de los premios.",
+  "voice_id": "wu1DtvHldVyojBw205MB",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_07_prize_cupboard.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 726479,
+  "speaker": "jadwiga",
+  "subtitle": "Guardé los premios de fin de curso en la taquilla. Apunté la clave en un lugar seguro, el mismo de siempre.",
+  "text": "Guardé los premios de fin de curso en la taquilla. Apunté la clave en un lugar seguro, el mismo de siempre.",
+  "voice_id": "XDA0joI4xCH8unjaVH78",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_07_prize_cupboard.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1591596,
+  "speaker": "headteacher",
+  "subtitle": "O sea, nadie sabe dónde. La taquilla es de la escuela, tiene nuestro permiso por escrito y el acto empieza a las diez.",
+  "text": "O sea, nadie sabe dónde. La taquilla es de la escuela, tiene nuestro permiso por escrito y el acto empieza a las diez.",
+  "voice_id": "DvT0A47h9AXl1dwoWgyE",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_07_prize_cupboard.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6983701,
+  "speaker": "locksmith",
+  "subtitle": "La carta de la escuela coincide. Ciento noventa monedas, y abro en su presencia.",
+  "text": "La carta de la escuela coincide. Ciento noventa monedas, y abro en su presencia.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_07_prize_cupboard.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7362881,
+  "speaker": "jadwiga",
+  "subtitle": "De acuerdo. La clave era una fecha, de eso estoy segura. Solo que otra vez no sé de quién.",
+  "text": "De acuerdo. La clave era una fecha, de eso estoy segura. Solo que otra vez no sé de quién.",
+  "voice_id": "XDA0joI4xCH8unjaVH78",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_09_summer_cinema.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10291090,
+  "speaker": "iga",
+  "subtitle": "La película empezó a las diez. Tocamos antes de la sesión, fuerte, y no se fue nadie.",
+  "text": "La película empezó a las diez. Tocamos antes de la sesión, fuerte, y no se fue nadie.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_09_summer_cinema.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15376912,
+  "speaker": "hall_manager",
+  "subtitle": "El cine de verano empieza hoy al anochecer. El proyector está en la cabina, y la cerradura de la cabina se ha ofendido conmigo.",
+  "text": "El cine de verano empieza hoy al anochecer. El proyector está en la cabina, y la cerradura de la cabina se ha ofendido conmigo.",
+  "voice_id": "RY3T4wJNr948hKf9RLlp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_09_summer_cinema.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16370185,
+  "speaker": "iga",
+  "subtitle": "Probó tres llaves del manojo. A la cuarta, la cerradura dejó de hablarle.",
+  "text": "Probó tres llaves del manojo. A la cuarta, la cerradura dejó de hablarle.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_09_summer_cinema.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1553839,
+  "speaker": "locksmith",
+  "subtitle": "El permiso del local y la carta de la universidad coinciden. Doscientas monedas. Con una cerradura así se trabaja sin prisa.",
+  "text": "El permiso del local y la carta de la universidad coinciden. Doscientas monedas. Con una cerradura así se trabaja sin prisa.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_09_summer_cinema.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5229278,
+  "speaker": "hall_manager",
+  "subtitle": "De acuerdo. La sesión empieza al anochecer, y en junio el anochecer tiene paciencia.",
+  "text": "De acuerdo. La sesión empieza al anochecer, y en junio el anochecer tiene paciencia.",
+  "voice_id": "RY3T4wJNr948hKf9RLlp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_10_holiday_keys.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1647640,
+  "speaker": "halina",
+  "subtitle": "Todos se han ido y las plantas están regadas. Yo me quedé, hijo. Alguien tiene que cuidar los sobres y el caldo.",
+  "text": "Todos se han ido y las plantas están regadas. Yo me quedé, hijo. Alguien tiene que cuidar los sobres y el caldo.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_10_holiday_keys.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16272566,
+  "speaker": "locksmith",
+  "subtitle": "En el armario cuelgan doce llaves. Si el verano va bien, no tendré que abrir ninguna de esas puertas.",
+  "text": "En el armario cuelgan doce llaves. Si el verano va bien, no tendré que abrir ninguna de esas puertas.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_10_holiday_keys.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14791234,
+  "speaker": "elzbieta",
+  "subtitle": "El acuerdo está tomado: en vacaciones, las llaves de repuesto se guardan en la sala común, en sobres cerrados.",
+  "text": "El acuerdo está tomado: en vacaciones, las llaves de repuesto se guardan en la sala común, en sobres cerrados.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_10_holiday_keys.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10394432,
+  "speaker": "halina",
+  "subtitle": "Ese armario estuvo medio siglo en la portería, hijo. Guardó tan bien las llaves ajenas que perdió la suya.",
+  "text": "Ese armario estuvo medio siglo en la portería, hijo. Guardó tan bien las llaves ajenas que perdió la suya.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_10_holiday_keys.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6071949,
+  "speaker": "locksmith",
+  "subtitle": "El acuerdo y el permiso de la administración están aquí. Doscientas veinte monedas por un armario de llaves sin llave.",
+  "text": "El acuerdo y el permiso de la administración están aquí. Doscientas veinte monedas por un armario de llaves sin llave.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch14_10_holiday_keys.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13727415,
+  "speaker": "elzbieta",
+  "subtitle": "De acuerdo. Ya esperan doce sobres, cada uno firmado sobre la solapa.",
+  "text": "De acuerdo. Ya esperan doce sobres, cada uno firmado sobre la solapa.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch14_04_paid_week.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8203749,
+  "speaker": "elzbieta",
+  "subtitle": "El anfitrión estaba en la boda de su hijo. Vino esa misma noche, con las llaves y un trozo de tarta para disculparse.",
+  "text": "El anfitrión estaba en la boda de su hijo. Vino esa misma noche, con las llaves y un trozo de tarta para disculparse.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch14_04_paid_week.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12928700,
+  "speaker": "magda",
+  "subtitle": "Dormí como en Bruselas, pero con más silencio. Monsieur Jacques no va a creer que me dijeran que no con tanta educación.",
+  "text": "Dormí como en Bruselas, pero con más silencio. Monsieur Jacques no va a creer que me dijeran que no con tanta educación.",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch14_04_paid_week.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15175062,
+  "speaker": "magda",
+  "subtitle": "Pagué la semana por adelantado. Hasta el domingo es mi piso, ¿n'est-ce pas?",
+  "text": "Pagué la semana por adelantado. Hasta el domingo es mi piso, ¿n'est-ce pas?",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch14_04_paid_week.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9871199,
+  "speaker": "locksmith",
+  "subtitle": "Usted pagó al anfitrión, y las llaves las tiene él. Preguntemos a la señora Elżbieta; conoce al dueño.",
+  "text": "Usted pagó al anfitrión, y las llaves las tiene él. Preguntemos a la señora Elżbieta; conoce al dueño.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch14_04_paid_week.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1843938,
+  "speaker": "magda",
+  "subtitle": "Llevo catorce horas de viaje. Usted solo abra; al anfitrión se lo explico por la mañana.",
+  "text": "Llevo catorce horas de viaje. Usted solo abra; al anfitrión se lo explico por la mañana.",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch14_04_paid_week.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12716998,
+  "speaker": "locksmith",
+  "subtitle": "Aquí no voy a abrir. Sin el anfitrión sigue siendo la puerta de otro. La señora Elżbieta tiene su otro número.",
+  "text": "Aquí no voy a abrir. Sin el anfitrión sigue siendo la puerta de otro. La señora Elżbieta tiene su otro número.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch14_08_early_present.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4831164,
+  "speaker": "tomasz",
+  "subtitle": "El sábado abrió el armario ella misma, con mi llave. Dentro la esperaba su primera caja de herramientas.",
+  "text": "El sábado abrió el armario ella misma, con mi llave. Dentro la esperaba su primera caja de herramientas.",
+  "voice_id": "kmrKRziyBLKhbqe5EalT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch14_08_early_present.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7677199,
+  "speaker": "hania",
+  "subtitle": "Mi caja tiene cerradura y llave. Esta llave no la voy a plantar; se lo prometí a Lala.",
+  "text": "Mi caja tiene cerradura y llave. Esta llave no la voy a plantar; se lo prometí a Lala.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch14_08_early_present.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13352645,
+  "speaker": "hania",
+  "subtitle": "Es un regalo para mí, así que es mío. Solo que sigue encerrado en el armario de papá.",
+  "text": "Es un regalo para mí, así que es mío. Solo que sigue encerrado en el armario de papá.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch14_08_early_present.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2573526,
+  "speaker": "locksmith",
+  "subtitle": "Será tuyo cuando tu papá te lo dé. Ven, vamos a preguntarle; está en el taller.",
+  "text": "Será tuyo cuando tu papá te lo dé. Ven, vamos a preguntarle; está en el taller.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch14_08_early_present.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10725510,
+  "speaker": "hania",
+  "subtitle": "No, porque dirá que el cumpleaños es el sábado. Solo miro y cerramos enseguida.",
+  "text": "No, porque dirá que el cumpleaños es el sábado. Solo miro y cerramos enseguida.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch14_08_early_present.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1403636,
+  "speaker": "locksmith",
+  "subtitle": "Aquí no voy a abrir. Hasta el sábado es el armario de tu papá y su sorpresa. Tres días pasan antes de lo que crees.",
+  "text": "Aquí no voy a abrir. Hasta el sábado es el armario de tu papá y su sorpresa. Tres días pasan antes de lo que crees.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_01_summer_storage.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 152660,
+  "speaker": "zuzanna",
+  "subtitle": "Je suis arrivée à l'heure au stage. La clé est revenue par la poste, avec un mot de maman : attache-la à ton poignet.",
+  "text": "Je suis arrivée à l'heure au stage. La clé est revenue par la poste, avec un mot de maman : attache-la à ton poignet.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_01_summer_storage.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14772205,
+  "speaker": "zuzanna",
+  "subtitle": "Examens réussis, chambre rendue. Il n'y a que mon casier qui refuse de me laisser partir en vacances.",
+  "text": "Examens réussis, chambre rendue. Il n'y a que mon casier qui refuse de me laisser partir en vacances.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_01_summer_storage.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6153688,
+  "speaker": "edek",
+  "subtitle": "Zuzanna Wilk, casier quatorze. Sur ma liste et dans ma tête.",
+  "text": "Zuzanna Wilk, casier quatorze. Sur ma liste et dans ma tête.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_01_summer_storage.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12492036,
+  "speaker": "locksmith",
+  "subtitle": "La liste et la carte d'étudiante concordent. Cent cinquante pièces.",
+  "text": "La liste et la carte d'étudiante concordent. Cent cinquante pièces.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_01_summer_storage.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 170691,
+  "speaker": "zuzanna",
+  "subtitle": "D'accord. La clé est rentrée chez moi en valise. La valise a mieux réussi son examen d'autonomie que moi.",
+  "text": "D'accord. La clé est rentrée chez moi en valise. La valise a mieux réussi son examen d'autonomie que moi.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_02_ship_time.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12061343,
+  "speaker": "aino",
+  "subtitle": "Trois cents personnes sont venues. L'horloge remarche, et quelqu'un a dessiné dans le livre un chat en casquette de capitaine.",
+  "text": "Trois cents personnes sont venues. L'horloge remarche, et quelqu'un a dessiné dans le livre un chat en casquette de capitaine.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_02_ship_time.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10566925,
+  "speaker": "captain",
+  "subtitle": "À midi, nous accueillons les visiteurs. Le livre d'or est dans le coffret, et l'horloge du coffret se croit en février.",
+  "text": "À midi, nous accueillons les visiteurs. Le livre d'or est dans le coffret, et l'horloge du coffret se croit en février.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_02_ship_time.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7730746,
+  "speaker": "aino",
+  "subtitle": "La serrure s'ouvre à l'heure du bord. L'horloge s'est arrêtée cet hiver, et depuis il est toujours trop tôt.",
+  "text": "La serrure s'ouvre à l'heure du bord. L'horloge s'est arrêtée cet hiver, et depuis il est toujours trop tôt.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_02_ship_time.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8155600,
+  "speaker": "locksmith",
+  "subtitle": "La confirmation du capitaine est en ordre. Cent soixante-cinq pièces. Je répare la marche, je ne touche pas à l'heure d'ouverture.",
+  "text": "La confirmation du capitaine est en ordre. Cent soixante-cinq pièces. Je répare la marche, je ne touche pas à l'heure d'ouverture.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_02_ship_time.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10095113,
+  "speaker": "captain",
+  "subtitle": "D'accord. Le coffret doit s'ouvrir à midi. La première ligne du livre d'or est pour vous.",
+  "text": "D'accord. Le coffret doit s'ouvrir à midi. La première ligne du livre d'or est pour vous.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_03_books_under_linden.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11921550,
+  "speaker": "irena",
+  "subtitle": "La bibliothèque est sous le tilleul. Zosia a emprunté le premier roman policier. Je lui ai noté la date de retour au crayon.",
+  "text": "La bibliothèque est sous le tilleul. Zosia a emprunté le premier roman policier. Je lui ai noté la date de retour au crayon.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_03_books_under_linden.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13954972,
+  "speaker": "irena",
+  "subtitle": "Je donne la bibliothèque de mon mari au coin lecture, sous le tilleul. Seulement, il l'a fermée à clé, une fois pour toutes.",
+  "text": "Je donne la bibliothèque de mon mari au coin lecture, sous le tilleul. Seulement, il l'a fermée à clé, une fois pour toutes.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_03_books_under_linden.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10752457,
+  "speaker": "zosia",
+  "subtitle": "C'est la bibliothèque de son mari, elle a toujours été chez Irena. J'y empruntais des romans policiers.",
+  "text": "C'est la bibliothèque de son mari, elle a toujours été chez Irena. J'y empruntais des romans policiers.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_03_books_under_linden.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12691832,
+  "speaker": "locksmith",
+  "subtitle": "Votre pièce d'identité et la parole de Madame Zosia me suffisent. Cent soixante-quinze pièces, sans perçage.",
+  "text": "Votre pièce d'identité et la parole de Madame Zosia me suffisent. Cent soixante-quinze pièces, sans perçage.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_03_books_under_linden.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10095095,
+  "speaker": "irena",
+  "subtitle": "D'accord. En tant que bibliothécaire, je sais une chose : un livre sous clé est un livre que personne ne lit.",
+  "text": "D'accord. En tant que bibliothécaire, je sais une chose : un livre sous clé est un livre que personne ne lit.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_05_cat_passport.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11386130,
+  "speaker": "marta",
+  "subtitle": "Nous sommes partis. Patate a dormi tout le trajet dans la mallette, a inspecté la mer et ne l'a pas validée.",
+  "text": "Nous sommes partis. Patate a dormi tout le trajet dans la mallette, a inspecté la mer et ne l'a pas validée.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_05_cat_passport.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8566719,
+  "speaker": "marta",
+  "subtitle": "Nous partons à la mer. Le carnet de santé de Patate est dans la mallette, et la mallette n'est pas d'accord.",
+  "text": "Nous partons à la mer. Le carnet de santé de Patate est dans la mallette, et la mallette n'est pas d'accord.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_05_cat_passport.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6036668,
+  "speaker": "gosia",
+  "subtitle": "Je la restaure pour Marta depuis une semaine. La serrure est vieille et têtue, et il n'y a jamais eu de clé.",
+  "text": "Je la restaure pour Marta depuis une semaine. La serrure est vieille et têtue, et il n'y a jamais eu de clé.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_05_cat_passport.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7184934,
+  "speaker": "locksmith",
+  "subtitle": "Le ticket du marché correspond. Cent quatre-vingts pièces, et le chat peut partir.",
+  "text": "Le ticket du marché correspond. Cent quatre-vingts pièces, et le chat peut partir.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_05_cat_passport.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 228531,
+  "speaker": "marta",
+  "subtitle": "D'accord. Patate ne veut pas du tout aller à la mer. Il veut que la mallette reste ouverte, parce qu'il dort dedans.",
+  "text": "D'accord. Patate ne veut pas du tout aller à la mer. Il veut que la mallette reste ouverte, parce qu'il dort dedans.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_06_suitcase_flew_on.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11904526,
+  "speaker": "bartek",
+  "subtitle": "La valise est revenue trois jours plus tard, plus bronzée que nous. Le voisin garde maintenant notre double.",
+  "text": "La valise est revenue trois jours plus tard, plus bronzée que nous. Le voisin garde maintenant notre double.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_06_suitcase_flew_on.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6855137,
+  "speaker": "bartek",
+  "subtitle": "Il y a un an, nos clés sont parties à Kalisz avec une tante. Aujourd'hui, elles ont pris l'avion avec la valise pour une autre ville.",
+  "text": "Il y a un an, nos clés sont parties à Kalisz avec une tante. Aujourd'hui, elles ont pris l'avion avec la valise pour une autre ville.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_06_suitcase_flew_on.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14249600,
+  "speaker": "neighbour_robe",
+  "subtitle": "Je les connais. L'an dernier, il était quatre heures du matin. Ce soir, il n'est que minuit : ils progressent.",
+  "text": "Je les connais. L'an dernier, il était quatre heures du matin. Ce soir, il n'est que minuit : ils progressent.",
+  "voice_id": "LAUe05BIFsJhkhztiDlc",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_06_suitcase_flew_on.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1738198,
+  "speaker": "locksmith",
+  "subtitle": "Pièce d'identité, adresse dans l'application et un voisin. Tout y est, comme l'an dernier. Cent quatre-vingt-cinq pièces.",
+  "text": "Pièce d'identité, adresse dans l'application et un voisin. Tout y est, comme l'an dernier. Cent quatre-vingt-cinq pièces.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_06_suitcase_flew_on.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8757119,
+  "speaker": "bartek",
+  "subtitle": "D'accord. Après le mariage, Kasia a fait poser une serrure plus sérieuse. Maintenant, elle nous laisse dehors très sérieusement.",
+  "text": "D'accord. Après le mariage, Kasia a fait poser une serrure plus sérieuse. Maintenant, elle nous laisse dehors très sérieusement.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_07_prize_cupboard.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3826128,
+  "speaker": "ola",
+  "subtitle": "Chaque enfant a reçu un livre. Madame Jadwiga a retrouvé le code ensuite : elle l'avait noté sur un marque-page, dans l'un des prix.",
+  "text": "Chaque enfant a reçu un livre. Madame Jadwiga a retrouvé le code ensuite : elle l'avait noté sur un marque-page, dans l'un des prix.",
+  "voice_id": "wu1DtvHldVyojBw205MB",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_07_prize_cupboard.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 726479,
+  "speaker": "jadwiga",
+  "subtitle": "J'ai enfermé les prix de fin d'année dans le casier. J'ai noté le code en lieu sûr, le même que d'habitude.",
+  "text": "J'ai enfermé les prix de fin d'année dans le casier. J'ai noté le code en lieu sûr, le même que d'habitude.",
+  "voice_id": "XDA0joI4xCH8unjaVH78",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_07_prize_cupboard.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1591596,
+  "speaker": "headteacher",
+  "subtitle": "Autrement dit, personne ne sait où. Le casier est à l'école, vous avez notre accord écrit, et la cérémonie commence à dix heures.",
+  "text": "Autrement dit, personne ne sait où. Le casier est à l'école, vous avez notre accord écrit, et la cérémonie commence à dix heures.",
+  "voice_id": "DvT0A47h9AXl1dwoWgyE",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_07_prize_cupboard.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6983701,
+  "speaker": "locksmith",
+  "subtitle": "La lettre de l'école est en ordre. Cent quatre-vingt-dix pièces, et j'ouvre en votre présence.",
+  "text": "La lettre de l'école est en ordre. Cent quatre-vingt-dix pièces, et j'ouvre en votre présence.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_07_prize_cupboard.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7362881,
+  "speaker": "jadwiga",
+  "subtitle": "D'accord. Le code était une date, ça j'en suis sûre. Seulement, encore une fois, je ne sais plus laquelle.",
+  "text": "D'accord. Le code était une date, ça j'en suis sûre. Seulement, encore une fois, je ne sais plus laquelle.",
+  "voice_id": "XDA0joI4xCH8unjaVH78",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_09_summer_cinema.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10291090,
+  "speaker": "iga",
+  "subtitle": "Le film a commencé à dix heures. Nous avons joué avant la séance, fort, et personne n'est parti.",
+  "text": "Le film a commencé à dix heures. Nous avons joué avant la séance, fort, et personne n'est parti.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_09_summer_cinema.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15376912,
+  "speaker": "hall_manager",
+  "subtitle": "Le cinéma d'été commence ce soir, à la tombée de la nuit. Le projecteur est dans la cabine, et la serrure de la cabine s'est vexée.",
+  "text": "Le cinéma d'été commence ce soir, à la tombée de la nuit. Le projecteur est dans la cabine, et la serrure de la cabine s'est vexée.",
+  "voice_id": "RY3T4wJNr948hKf9RLlp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_09_summer_cinema.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16370185,
+  "speaker": "iga",
+  "subtitle": "Il a essayé trois clés du trousseau. À la quatrième, la serrure a cessé de lui parler.",
+  "text": "Il a essayé trois clés du trousseau. À la quatrième, la serrure a cessé de lui parler.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_09_summer_cinema.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1553839,
+  "speaker": "locksmith",
+  "subtitle": "L'accord de la salle et la lettre de l'université concordent. Deux cents pièces. Avec une serrure pareille, on travaille sans se presser.",
+  "text": "L'accord de la salle et la lettre de l'université concordent. Deux cents pièces. Avec une serrure pareille, on travaille sans se presser.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_09_summer_cinema.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5229278,
+  "speaker": "hall_manager",
+  "subtitle": "D'accord. La séance commence à la tombée de la nuit, et en juin la nuit est patiente.",
+  "text": "D'accord. La séance commence à la tombée de la nuit, et en juin la nuit est patiente.",
+  "voice_id": "RY3T4wJNr948hKf9RLlp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_10_holiday_keys.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1647640,
+  "speaker": "halina",
+  "subtitle": "Tout le monde est parti, les plantes sont arrosées. Moi, je suis restée, mon petit. Il faut bien quelqu'un pour veiller sur les enveloppes et le bouillon.",
+  "text": "Tout le monde est parti, les plantes sont arrosées. Moi, je suis restée, mon petit. Il faut bien quelqu'un pour veiller sur les enveloppes et le bouillon.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_10_holiday_keys.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16272566,
+  "speaker": "locksmith",
+  "subtitle": "Douze clés sont accrochées dans l'armoire. Si l'été se passe bien, je n'aurai à ouvrir aucune de ces portes.",
+  "text": "Douze clés sont accrochées dans l'armoire. Si l'été se passe bien, je n'aurai à ouvrir aucune de ces portes.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_10_holiday_keys.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14791234,
+  "speaker": "elzbieta",
+  "subtitle": "La décision est prise : pendant les vacances, les doubles restent dans la salle commune, sous enveloppes scellées.",
+  "text": "La décision est prise : pendant les vacances, les doubles restent dans la salle commune, sous enveloppes scellées.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_10_holiday_keys.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10394432,
+  "speaker": "halina",
+  "subtitle": "Cette armoire est restée un demi-siècle dans la loge, mon petit. Elle a si bien gardé les clés des autres qu'elle a perdu la sienne.",
+  "text": "Cette armoire est restée un demi-siècle dans la loge, mon petit. Elle a si bien gardé les clés des autres qu'elle a perdu la sienne.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_10_holiday_keys.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6071949,
+  "speaker": "locksmith",
+  "subtitle": "La décision et l'accord de la gérance sont là. Deux cent vingt pièces pour une armoire à clés sans clé.",
+  "text": "La décision et l'accord de la gérance sont là. Deux cent vingt pièces pour une armoire à clés sans clé.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch14_10_holiday_keys.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13727415,
+  "speaker": "elzbieta",
+  "subtitle": "D'accord. Douze enveloppes attendent déjà, chacune signée sur le rabat.",
+  "text": "D'accord. Douze enveloppes attendent déjà, chacune signée sur le rabat.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch14_04_paid_week.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8203749,
+  "speaker": "elzbieta",
+  "subtitle": "L'hôte était au mariage de son fils. Il est venu la nuit même, avec les clés et une part de gâteau pour s'excuser.",
+  "text": "L'hôte était au mariage de son fils. Il est venu la nuit même, avec les clés et une part de gâteau pour s'excuser.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch14_04_paid_week.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12928700,
+  "speaker": "magda",
+  "subtitle": "J'ai dormi comme à Bruxelles, mais au calme. Monsieur Jacques ne croira jamais qu'on m'a dit non si poliment.",
+  "text": "J'ai dormi comme à Bruxelles, mais au calme. Monsieur Jacques ne croira jamais qu'on m'a dit non si poliment.",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch14_04_paid_week.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15175062,
+  "speaker": "magda",
+  "subtitle": "J'ai payé la semaine d'avance. Jusqu'à dimanche, c'est mon appartement, n'est-ce pas ?",
+  "text": "J'ai payé la semaine d'avance. Jusqu'à dimanche, c'est mon appartement, n'est-ce pas ?",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch14_04_paid_week.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9871199,
+  "speaker": "locksmith",
+  "subtitle": "Vous avez payé l'hôte, et c'est lui qui a les clés. Demandons à Madame Elżbieta, elle connaît le propriétaire.",
+  "text": "Vous avez payé l'hôte, et c'est lui qui a les clés. Demandons à Madame Elżbieta, elle connaît le propriétaire.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch14_04_paid_week.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1843938,
+  "speaker": "magda",
+  "subtitle": "Je voyage depuis quatorze heures. Ouvrez seulement, j'expliquerai tout à l'hôte demain matin.",
+  "text": "Je voyage depuis quatorze heures. Ouvrez seulement, j'expliquerai tout à l'hôte demain matin.",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch14_04_paid_week.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12716998,
+  "speaker": "locksmith",
+  "subtitle": "Ici, je n'ouvrirai pas. Sans l'hôte, c'est encore la porte de quelqu'un d'autre. Madame Elżbieta a son autre numéro.",
+  "text": "Ici, je n'ouvrirai pas. Sans l'hôte, c'est encore la porte de quelqu'un d'autre. Madame Elżbieta a son autre numéro.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch14_08_early_present.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4831164,
+  "speaker": "tomasz",
+  "subtitle": "Samedi, elle a ouvert l'armoire elle-même, avec ma clé. Sa première boîte à outils l'attendait dedans.",
+  "text": "Samedi, elle a ouvert l'armoire elle-même, avec ma clé. Sa première boîte à outils l'attendait dedans.",
+  "voice_id": "kmrKRziyBLKhbqe5EalT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch14_08_early_present.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7677199,
+  "speaker": "hania",
+  "subtitle": "Ma boîte a une serrure et une clé. Cette clé-là, je ne la planterai pas, je l'ai promis à Lala.",
+  "text": "Ma boîte a une serrure et une clé. Cette clé-là, je ne la planterai pas, je l'ai promis à Lala.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch14_08_early_present.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13352645,
+  "speaker": "hania",
+  "subtitle": "C'est un cadeau pour moi, donc il est à moi. Il est juste encore enfermé dans l'armoire de papa.",
+  "text": "C'est un cadeau pour moi, donc il est à moi. Il est juste encore enfermé dans l'armoire de papa.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch14_08_early_present.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2573526,
+  "speaker": "locksmith",
+  "subtitle": "Il sera à toi quand ton papa te le donnera. Viens, on va lui demander, il est à l'atelier.",
+  "text": "Il sera à toi quand ton papa te le donnera. Viens, on va lui demander, il est à l'atelier.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch14_08_early_present.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10725510,
+  "speaker": "hania",
+  "subtitle": "Non, il dira que mon anniversaire, c'est samedi. Je regarde juste, et on referme tout de suite.",
+  "text": "Non, il dira que mon anniversaire, c'est samedi. Je regarde juste, et on referme tout de suite.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch14_08_early_present.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1403636,
+  "speaker": "locksmith",
+  "subtitle": "Ici, je n'ouvrirai pas. Jusqu'à samedi, c'est l'armoire de ton papa et sa surprise. Trois jours, c'est plus court que tu ne crois.",
+  "text": "Ici, je n'ouvrirai pas. Jusqu'à samedi, c'est l'armoire de ton papa et sa surprise. Trois jours, c'est plus court que tu ne crois.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_01_summer_storage.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 152660,
+  "speaker": "zuzanna",
+  "subtitle": "Na praktyki zdążyłam. Kluczyk wrócił pocztą, z kartką od mamy: przywiąż go sobie.",
+  "text": "Na praktyki zdążyłam. Kluczyk wrócił pocztą, z kartką od mamy: przywiąż go sobie.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_01_summer_storage.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14772205,
+  "speaker": "zuzanna",
+  "subtitle": "Sesja zdana, pokój oddany. Tylko schowek w przechowalni nie chce mnie wypuścić na wakacje.",
+  "text": "Sesja zdana, pokój oddany. Tylko schowek w przechowalni nie chce mnie wypuścić na wakacje.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_01_summer_storage.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6153688,
+  "speaker": "edek",
+  "subtitle": "Wilk Zuzanna, schowek czternaście. Mam na liście i mam w głowie.",
+  "text": "Wilk Zuzanna, schowek czternaście. Mam na liście i mam w głowie.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_01_summer_storage.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12492036,
+  "speaker": "locksmith",
+  "subtitle": "Wykaz i legitymacja się zgadzają. Sto pięćdziesiąt monet.",
+  "text": "Wykaz i legitymacja się zgadzają. Sto pięćdziesiąt monet.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_01_summer_storage.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 170691,
+  "speaker": "zuzanna",
+  "subtitle": "Zgoda. Kluczyk pojechał do domu w walizce. Walizka zdała egzamin z samodzielności lepiej ode mnie.",
+  "text": "Zgoda. Kluczyk pojechał do domu w walizce. Walizka zdała egzamin z samodzielności lepiej ode mnie.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_02_ship_time.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12061343,
+  "speaker": "aino",
+  "subtitle": "Przyszło trzysta osób. Zegar znów chodzi, a w księdze ktoś narysował kota w kapitańskiej czapce.",
+  "text": "Przyszło trzysta osób. Zegar znów chodzi, a w księdze ktoś narysował kota w kapitańskiej czapce.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_02_ship_time.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10566925,
+  "speaker": "captain",
+  "subtitle": "W południe wpuszczamy zwiedzających. Księga gości leży w skrzynce, a zegar skrzynki myśli, że jest luty.",
+  "text": "W południe wpuszczamy zwiedzających. Księga gości leży w skrzynce, a zegar skrzynki myśli, że jest luty.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_02_ship_time.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7730746,
+  "speaker": "aino",
+  "subtitle": "Zamek otwiera się według czasu okrętowego. Zegar stanął zimą i od tej pory zawsze jest za wcześnie.",
+  "text": "Zamek otwiera się według czasu okrętowego. Zegar stanął zimą i od tej pory zawsze jest za wcześnie.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_02_ship_time.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8155600,
+  "speaker": "locksmith",
+  "subtitle": "Potwierdzenie kapitana się zgadza. Sto sześćdziesiąt pięć monet. Naprawiam chód, godziny otwarcia nie ruszam.",
+  "text": "Potwierdzenie kapitana się zgadza. Sto sześćdziesiąt pięć monet. Naprawiam chód, godziny otwarcia nie ruszam.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_02_ship_time.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10095113,
+  "speaker": "captain",
+  "subtitle": "Zgoda. Skrzynka ma się otworzyć w południe. Pierwszy wpis w księdze należy do pana.",
+  "text": "Zgoda. Skrzynka ma się otworzyć w południe. Pierwszy wpis w księdze należy do pana.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_03_books_under_linden.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11921550,
+  "speaker": "irena",
+  "subtitle": "Biblioteczka stoi pod lipą. Pierwszy kryminał wypożyczyła Zosia. Termin zwrotu wpisałam jej ołówkiem.",
+  "text": "Biblioteczka stoi pod lipą. Pierwszy kryminał wypożyczyła Zosia. Termin zwrotu wpisałam jej ołówkiem.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_03_books_under_linden.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13954972,
+  "speaker": "irena",
+  "subtitle": "Oddaję biblioteczkę męża pod lipę, na letnią czytelnię. Tylko że zamknął ją na klucz i na amen.",
+  "text": "Oddaję biblioteczkę męża pod lipę, na letnią czytelnię. Tylko że zamknął ją na klucz i na amen.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_03_books_under_linden.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10752457,
+  "speaker": "zosia",
+  "subtitle": "To biblioteczka jej męża, stoi u Ireny od zawsze. Pożyczałam z niej kryminały.",
+  "text": "To biblioteczka jej męża, stoi u Ireny od zawsze. Pożyczałam z niej kryminały.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_03_books_under_linden.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12691832,
+  "speaker": "locksmith",
+  "subtitle": "Dokument i słowo pani Zosi mi wystarczą. Sto siedemdziesiąt pięć monet, bez wiercenia.",
+  "text": "Dokument i słowo pani Zosi mi wystarczą. Sto siedemdziesiąt pięć monet, bez wiercenia.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_03_books_under_linden.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10095095,
+  "speaker": "irena",
+  "subtitle": "Zgoda. Jako bibliotekarka wiem jedno: książka zamknięta na klucz to książka nieprzeczytana.",
+  "text": "Zgoda. Jako bibliotekarka wiem jedno: książka zamknięta na klucz to książka nieprzeczytana.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_05_cat_passport.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11386130,
+  "speaker": "marta",
+  "subtitle": "Pojechaliśmy. Ziemniak przespał drogę w kuferku, obejrzał morze i go nie zatwierdził.",
+  "text": "Pojechaliśmy. Ziemniak przespał drogę w kuferku, obejrzał morze i go nie zatwierdził.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_05_cat_passport.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8566719,
+  "speaker": "marta",
+  "subtitle": "Wyjeżdżamy nad morze. Książeczka zdrowia Ziemniaka jest w kuferku, a kuferek ma zdanie odrębne.",
+  "text": "Wyjeżdżamy nad morze. Książeczka zdrowia Ziemniaka jest w kuferku, a kuferek ma zdanie odrębne.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_05_cat_passport.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6036668,
+  "speaker": "gosia",
+  "subtitle": "Odnawiam go dla Marty od tygodnia. Zamek stary i uparty, a kluczyka nie było od początku.",
+  "text": "Odnawiam go dla Marty od tygodnia. Zamek stary i uparty, a kluczyka nie było od początku.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_05_cat_passport.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7184934,
+  "speaker": "locksmith",
+  "subtitle": "Paragon z targu się zgadza. Sto osiemdziesiąt monet i kot może jechać.",
+  "text": "Paragon z targu się zgadza. Sto osiemdziesiąt monet i kot może jechać.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_05_cat_passport.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 228531,
+  "speaker": "marta",
+  "subtitle": "Zgoda. Ziemniak wcale nie chce nad morze. Chce, żeby kuferek został otwarty, bo w nim sypia.",
+  "text": "Zgoda. Ziemniak wcale nie chce nad morze. Chce, żeby kuferek został otwarty, bo w nim sypia.",
+  "voice_id": "UpHDEwuYo5vRFJ26v2Mp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_06_suitcase_flew_on.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11904526,
+  "speaker": "bartek",
+  "subtitle": "Walizka wróciła po trzech dniach, bardziej opalona niż my. Zapasowy klucz ma teraz sąsiad.",
+  "text": "Walizka wróciła po trzech dniach, bardziej opalona niż my. Zapasowy klucz ma teraz sąsiad.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_06_suitcase_flew_on.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6855137,
+  "speaker": "bartek",
+  "subtitle": "Rok temu klucze pojechały z ciocią do Kalisza. Dziś poleciały z walizką do innego miasta.",
+  "text": "Rok temu klucze pojechały z ciocią do Kalisza. Dziś poleciały z walizką do innego miasta.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_06_suitcase_flew_on.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14249600,
+  "speaker": "neighbour_robe",
+  "subtitle": "Znam ich. Rok temu była czwarta rano. Dziś dopiero północ, robią postępy.",
+  "text": "Znam ich. Rok temu była czwarta rano. Dziś dopiero północ, robią postępy.",
+  "voice_id": "LAUe05BIFsJhkhztiDlc",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_06_suitcase_flew_on.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1738198,
+  "speaker": "locksmith",
+  "subtitle": "Dowód, adres w aplikacji i sąsiad. Komplet, jak rok temu. Sto osiemdziesiąt pięć monet.",
+  "text": "Dowód, adres w aplikacji i sąsiad. Komplet, jak rok temu. Sto osiemdziesiąt pięć monet.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_06_suitcase_flew_on.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8757119,
+  "speaker": "bartek",
+  "subtitle": "Zgoda. Po ślubie Kasia wymieniła zamek na porządniejszy. Teraz porządnie nas nie wpuszcza.",
+  "text": "Zgoda. Po ślubie Kasia wymieniła zamek na porządniejszy. Teraz porządnie nas nie wpuszcza.",
+  "voice_id": "NWW6ApfRPY8mEF56oOTJ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_07_prize_cupboard.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3826128,
+  "speaker": "ola",
+  "subtitle": "Każde dziecko dostało książkę. Pani Jadwiga znalazła potem kod: zapisała go na zakładce w jednej z nagród.",
+  "text": "Każde dziecko dostało książkę. Pani Jadwiga znalazła potem kod: zapisała go na zakładce w jednej z nagród.",
+  "voice_id": "wu1DtvHldVyojBw205MB",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_07_prize_cupboard.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 726479,
+  "speaker": "jadwiga",
+  "subtitle": "Nagrody na koniec roku zamknęłam w szafce. Kod zapisałam w bezpiecznym miejscu, tym samym co zawsze.",
+  "text": "Nagrody na koniec roku zamknęłam w szafce. Kod zapisałam w bezpiecznym miejscu, tym samym co zawsze.",
+  "voice_id": "XDA0joI4xCH8unjaVH78",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_07_prize_cupboard.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1591596,
+  "speaker": "headteacher",
+  "subtitle": "Czyli nikt nie wie gdzie. Szafka jest szkolna, zgodę ma pan na piśmie, a apel zaczyna się o dziesiątej.",
+  "text": "Czyli nikt nie wie gdzie. Szafka jest szkolna, zgodę ma pan na piśmie, a apel zaczyna się o dziesiątej.",
+  "voice_id": "DvT0A47h9AXl1dwoWgyE",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_07_prize_cupboard.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6983701,
+  "speaker": "locksmith",
+  "subtitle": "Pismo szkoły się zgadza. Sto dziewięćdziesiąt monet, otwieram przy paniach.",
+  "text": "Pismo szkoły się zgadza. Sto dziewięćdziesiąt monet, otwieram przy paniach.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_07_prize_cupboard.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7362881,
+  "speaker": "jadwiga",
+  "subtitle": "Zgoda. Kodem była jakaś data, to wiem na pewno. Tylko znowu nie wiem czyja.",
+  "text": "Zgoda. Kodem była jakaś data, to wiem na pewno. Tylko znowu nie wiem czyja.",
+  "voice_id": "XDA0joI4xCH8unjaVH78",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_09_summer_cinema.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10291090,
+  "speaker": "iga",
+  "subtitle": "Film ruszył o dziesiątej. Zagraliśmy przed seansem, głośno, i nikt nie wyszedł.",
+  "text": "Film ruszył o dziesiątej. Zagraliśmy przed seansem, głośno, i nikt nie wyszedł.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_09_summer_cinema.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15376912,
+  "speaker": "hall_manager",
+  "subtitle": "Kino letnie rusza dziś o zmroku. Projektor jest w kabinie, a zamek kabiny się na mnie obraził.",
+  "text": "Kino letnie rusza dziś o zmroku. Projektor jest w kabinie, a zamek kabiny się na mnie obraził.",
+  "voice_id": "RY3T4wJNr948hKf9RLlp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_09_summer_cinema.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16370185,
+  "speaker": "iga",
+  "subtitle": "Próbował trzech kluczy z pęku. Przy czwartym zamek przestał z nim rozmawiać.",
+  "text": "Próbował trzech kluczy z pęku. Przy czwartym zamek przestał z nim rozmawiać.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_09_summer_cinema.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1553839,
+  "speaker": "locksmith",
+  "subtitle": "Zgoda sali i pismo uczelni się zgadzają. Dwieście monet. Z takim zamkiem pracuje się bez pośpiechu.",
+  "text": "Zgoda sali i pismo uczelni się zgadzają. Dwieście monet. Z takim zamkiem pracuje się bez pośpiechu.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_09_summer_cinema.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5229278,
+  "speaker": "hall_manager",
+  "subtitle": "Zgoda. Seans zaczyna się o zmroku, a zmrok w czerwcu jest cierpliwy.",
+  "text": "Zgoda. Seans zaczyna się o zmroku, a zmrok w czerwcu jest cierpliwy.",
+  "voice_id": "RY3T4wJNr948hKf9RLlp",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_10_holiday_keys.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1647640,
+  "speaker": "halina",
+  "subtitle": "Wszyscy wyjechali, kwiaty podlane. Ja zostałam, synku. Ktoś musi pilnować kopert i rosołu.",
+  "text": "Wszyscy wyjechali, kwiaty podlane. Ja zostałam, synku. Ktoś musi pilnować kopert i rosołu.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_10_holiday_keys.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16272566,
+  "speaker": "locksmith",
+  "subtitle": "W szafce wisi dwanaście kluczy. Jeśli lato będzie dobre, żadnych z tych drzwi nie będę musiał otwierać.",
+  "text": "W szafce wisi dwanaście kluczy. Jeśli lato będzie dobre, żadnych z tych drzwi nie będę musiał otwierać.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_10_holiday_keys.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14791234,
+  "speaker": "elzbieta",
+  "subtitle": "Uchwała jest: zapasowe klucze na czas wakacji trzymamy w świetlicy, w zaklejonych kopertach.",
+  "text": "Uchwała jest: zapasowe klucze na czas wakacji trzymamy w świetlicy, w zaklejonych kopertach.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_10_holiday_keys.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10394432,
+  "speaker": "halina",
+  "subtitle": "Szafka wisiała w portierni pół wieku, synku. Pilnowała cudzych kluczy tak dobrze, że swój zgubiła.",
+  "text": "Szafka wisiała w portierni pół wieku, synku. Pilnowała cudzych kluczy tak dobrze, że swój zgubiła.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_10_holiday_keys.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6071949,
+  "speaker": "locksmith",
+  "subtitle": "Uchwała i zgoda zarządu są. Dwieście dwadzieścia monet za szafkę na klucze bez klucza.",
+  "text": "Uchwała i zgoda zarządu są. Dwieście dwadzieścia monet za szafkę na klucze bez klucza.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch14_10_holiday_keys.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13727415,
+  "speaker": "elzbieta",
+  "subtitle": "Zgoda. Dwanaście kopert już czeka, każda podpisana na zakładce.",
+  "text": "Zgoda. Dwanaście kopert już czeka, każda podpisana na zakładce.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch14_04_paid_week.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8203749,
+  "speaker": "elzbieta",
+  "subtitle": "Gospodarz był na weselu syna. Przyjechał jeszcze tej nocy, z kluczami i z kawałkiem tortu na przeprosiny.",
+  "text": "Gospodarz był na weselu syna. Przyjechał jeszcze tej nocy, z kluczami i z kawałkiem tortu na przeprosiny.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch14_04_paid_week.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12928700,
+  "speaker": "magda",
+  "subtitle": "Spałam jak w Brukseli, tylko ciszej. Monsieur Jacques nie uwierzy, że odmówiono mi tak uprzejmie.",
+  "text": "Spałam jak w Brukseli, tylko ciszej. Monsieur Jacques nie uwierzy, że odmówiono mi tak uprzejmie.",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch14_04_paid_week.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15175062,
+  "speaker": "magda",
+  "subtitle": "Zapłaciłam za tydzień z góry. Do niedzieli to moje mieszkanie, n'est-ce pas?",
+  "text": "Zapłaciłam za tydzień z góry. Do niedzieli to moje mieszkanie, n'est-ce pas?",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch14_04_paid_week.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9871199,
+  "speaker": "locksmith",
+  "subtitle": "Zapłaciła pani gospodarzowi, a klucze ma on. Zapytajmy panią Elżbietę, zna właściciela.",
+  "text": "Zapłaciła pani gospodarzowi, a klucze ma on. Zapytajmy panią Elżbietę, zna właściciela.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch14_04_paid_week.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1843938,
+  "speaker": "magda",
+  "subtitle": "Jadę od czternastu godzin. Proszę tylko otworzyć, gospodarzowi wytłumaczę rano.",
+  "text": "Jadę od czternastu godzin. Proszę tylko otworzyć, gospodarzowi wytłumaczę rano.",
+  "voice_id": "bZ7gVhxp9RlXhEjkneSr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch14_04_paid_week.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12716998,
+  "speaker": "locksmith",
+  "subtitle": "Tu nie otworzę. Bez gospodarza to wciąż cudze drzwi. Pani Elżbieta ma jego drugi numer.",
+  "text": "Tu nie otworzę. Bez gospodarza to wciąż cudze drzwi. Pani Elżbieta ma jego drugi numer.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch14_08_early_present.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4831164,
+  "speaker": "tomasz",
+  "subtitle": "W sobotę otworzyła szafkę sama, moim kluczem. W środku czekała jej pierwsza skrzynka na narzędzia.",
+  "text": "W sobotę otworzyła szafkę sama, moim kluczem. W środku czekała jej pierwsza skrzynka na narzędzia.",
+  "voice_id": "kmrKRziyBLKhbqe5EalT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch14_08_early_present.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7677199,
+  "speaker": "hania",
+  "subtitle": "Moja skrzynka ma zamek i klucz. Tego klucza nie zasadzę, obiecałam Lali.",
+  "text": "Moja skrzynka ma zamek i klucz. Tego klucza nie zasadzę, obiecałam Lali.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch14_08_early_present.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13352645,
+  "speaker": "hania",
+  "subtitle": "To prezent dla mnie, więc jest mój. Tylko jeszcze zamknięty w szafce taty.",
+  "text": "To prezent dla mnie, więc jest mój. Tylko jeszcze zamknięty w szafce taty.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch14_08_early_present.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2573526,
+  "speaker": "locksmith",
+  "subtitle": "Będzie twój, kiedy tata ci go da. Chodź, zapytamy go, jest w warsztacie.",
+  "text": "Będzie twój, kiedy tata ci go da. Chodź, zapytamy go, jest w warsztacie.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch14_08_early_present.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10725510,
+  "speaker": "hania",
+  "subtitle": "Nie, bo powie, że urodziny są w sobotę. Ja tylko zajrzę i zaraz zamkniemy.",
+  "text": "Nie, bo powie, że urodziny są w sobotę. Ja tylko zajrzę i zaraz zamkniemy.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch14_08_early_present.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1403636,
+  "speaker": "locksmith",
+  "subtitle": "Tu nie otworzę. Do soboty to szafka taty i jego niespodzianka. Trzy dni to krócej, niż myślisz.",
+  "text": "Tu nie otworzę. Do soboty to szafka taty i jego niespodzianka. Trzy dni to krócej, niż myślisz.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ }
+}

@@ -3,13 +3,13 @@
 Zlecenia z polem `"voice_pending": true` w `game/data/jobs/*.json` nie mają jeszcze nagranych kwestii (`*.line.N`,
 `*.after.N`). Gra pokazuje wtedy same napisy: rozmowa na przyjeździe wyświetla wszystkie kwestie od razu
 (`DialoguePlayer`: brak klipu = brak odtwarzania), a „dzień po” przechodzi po tapnięciu (`DayAfter._play_clip`).
-Reakcje bez słów (S03) działają, bo wszystkie postacie rozdziału 13 mają już głos.
+Reakcje bez słów (S03) działają, bo wszystkie postacie rozdziałów 13 i 14 mają już głos.
 
 **Po nagraniu:** `python3 tools/voice_lines.py tts-payload --jobs <id,…> --lang en,pl,de,fr,es` → `finish`, potem
-usuń `voice_pending` z pliku zlecenia (test `test_chapter13_jobs.gd` przypomni: zlecenie z klipami nie może mieć
-tego pola) i wiersze z tej listy. Dokładne wejście TTS (głos, seed, ustawienia) dla każdego pliku:
-`contrib/voice/tts_inputs_ch13.json` (wygenerowane tym samym kodem co `tts_inputs.json`; nagranych manifestów nie
-ruszano). Kontrola: `python3 tools/voice_lines.py missing` (dziś: 265 = 53 klucze × 5 języków, wszystkie z rozdziału 13).
+usuń `voice_pending` z pliku zlecenia (testy `test_chapter13_jobs.gd` i `test_chapter14_jobs.gd` przypomną: zlecenie z
+klipami nie może mieć tego pola) i wiersze z tej listy. Dokładne wejście TTS (głos, seed, ustawienia) dla każdego pliku:
+`contrib/voice/tts_inputs_ch13.json` i `contrib/voice/tts_inputs_ch14.json` (wygenerowane tym samym kodem co `tts_inputs.json`; nagranych manifestów nie
+ruszano). Kontrola: `python3 tools/voice_lines.py missing` (dziś: 530 = 106 kluczy × 5 języków: po 53 klucze z rozdziałów 13 i 14).
 
 ## Rozdział 13 „Wiosenne porządki” (D-111) — 53 klucze × EN/PL/DE/FR/ES = 265 plików
 
@@ -68,5 +68,65 @@ ruszano). Kontrola: `python3 tools/voice_lines.py missing` (dziś: 265 = 53 kluc
 | `job.ch13_10_courtyard_door.line.4` | elzbieta | Zgoda. Marta już powiesiła plakat: stół zaczyna się w sali, a kończy pod lipą. | Agreed. Marta has already put up the poster: the table starts in the room and ends under the linden tree. |
 | `job.ch13_10_courtyard_door.after.1` | halina | Stół sięgał aż pod lipę. Rosołu wystarczyło, bo gotowałam w dwóch garnkach. | The table reached all the way to the linden tree. There was enough broth; I cooked it in two pots. |
 | `job.ch13_10_courtyard_door.after.2` | locksmith | Drzwi na podwórko zostają otwarte do jesieni. Nowy klucz wisi w świetlicy, podpisany. | The courtyard door stays open until autumn. The new key hangs in the common room, labeled. |
+
+Razem: **53** kluczy.
+
+## Rozdział 14 „Lato za progiem” (D-119) — 53 klucze × EN/PL/DE/FR/ES = 265 plików
+
+| klucz | mówca | PL | EN |
+|---|---|---|---|
+| `job.ch14_01_summer_storage.line.1` | zuzanna | Sesja zdana, pokój oddany. Tylko schowek w przechowalni nie chce mnie wypuścić na wakacje. | Exams passed, room handed back. Only my storage locker won't let me leave for the summer. |
+| `job.ch14_01_summer_storage.line.2` | edek | Wilk Zuzanna, schowek czternaście. Mam na liście i mam w głowie. | Zuzanna Wilk, locker fourteen. On my list and in my head. |
+| `job.ch14_01_summer_storage.line.3` | locksmith | Wykaz i legitymacja się zgadzają. Sto pięćdziesiąt monet. | The list and the student card match. One hundred and fifty coins. |
+| `job.ch14_01_summer_storage.line.4` | zuzanna | Zgoda. Kluczyk pojechał do domu w walizce. Walizka zdała egzamin z samodzielności lepiej ode mnie. | Agreed. The key went home in my suitcase. The suitcase passed its independence exam better than I did. |
+| `job.ch14_01_summer_storage.after.1` | zuzanna | Na praktyki zdążyłam. Kluczyk wrócił pocztą, z kartką od mamy: przywiąż go sobie. | I made it to my placement on time. The key came back by mail, with a note from Mom: tie it to yourself. |
+| `job.ch14_02_ship_time.line.1` | captain | W południe wpuszczamy zwiedzających. Księga gości leży w skrzynce, a zegar skrzynki myśli, że jest luty. | We let visitors aboard at noon. The guest book is in the box, and the box's clock thinks it's February. |
+| `job.ch14_02_ship_time.line.2` | aino | Zamek otwiera się według czasu okrętowego. Zegar stanął zimą i od tej pory zawsze jest za wcześnie. | The lock opens on ship's time. Its clock stopped in winter, and ever since it has always been too early. |
+| `job.ch14_02_ship_time.line.3` | locksmith | Potwierdzenie kapitana się zgadza. Sto sześćdziesiąt pięć monet. Naprawiam chód, godziny otwarcia nie ruszam. | The Captain's confirmation checks out. One hundred and sixty-five coins. I repair the movement; the opening hour stays as set. |
+| `job.ch14_02_ship_time.line.4` | captain | Zgoda. Skrzynka ma się otworzyć w południe. Pierwszy wpis w księdze należy do pana. | Agreed. The box is set to open at noon. The first entry in the book is yours. |
+| `job.ch14_02_ship_time.after.1` | aino | Przyszło trzysta osób. Zegar znów chodzi, a w księdze ktoś narysował kota w kapitańskiej czapce. | Three hundred people came. The clock is running again, and someone drew a cat in a captain's cap in the book. |
+| `job.ch14_03_books_under_linden.line.1` | irena | Oddaję biblioteczkę męża pod lipę, na letnią czytelnię. Tylko że zamknął ją na klucz i na amen. | I'm giving my husband's bookcase to the reading corner under the linden. Only he locked it, once and for all. |
+| `job.ch14_03_books_under_linden.line.2` | zosia | To biblioteczka jej męża, stoi u Ireny od zawsze. Pożyczałam z niej kryminały. | It's her husband's bookcase; it has stood at Irena's forever. I used to borrow mysteries from it. |
+| `job.ch14_03_books_under_linden.line.3` | locksmith | Dokument i słowo pani Zosi mi wystarczą. Sto siedemdziesiąt pięć monet, bez wiercenia. | Your ID and Mrs Zosia's word will do. One hundred and seventy-five coins, and no drilling. |
+| `job.ch14_03_books_under_linden.line.4` | irena | Zgoda. Jako bibliotekarka wiem jedno: książka zamknięta na klucz to książka nieprzeczytana. | Agreed. As a librarian I know one thing: a book under lock and key is a book unread. |
+| `job.ch14_03_books_under_linden.after.1` | irena | Biblioteczka stoi pod lipą. Pierwszy kryminał wypożyczyła Zosia. Termin zwrotu wpisałam jej ołówkiem. | The bookcase stands under the linden. Zosia borrowed the first mystery. I wrote her due date in pencil. |
+| `job.refuse_ch14_04_paid_week.line.1` | magda | Zapłaciłam za tydzień z góry. Do niedzieli to moje mieszkanie, n'est-ce pas? | I paid for the week up front. Until Sunday it's my apartment, n'est-ce pas? |
+| `job.refuse_ch14_04_paid_week.line.2` | locksmith | Zapłaciła pani gospodarzowi, a klucze ma on. Zapytajmy panią Elżbietę, zna właściciela. | You paid the host, and he has the keys. Let's ask Elżbieta; she knows the owner. |
+| `job.refuse_ch14_04_paid_week.line.3` | magda | Jadę od czternastu godzin. Proszę tylko otworzyć, gospodarzowi wytłumaczę rano. | I've been traveling for fourteen hours. Just open it; I'll explain to the host in the morning. |
+| `job.refuse_ch14_04_paid_week.line.4` | locksmith | Tu nie otworzę. Bez gospodarza to wciąż cudze drzwi. Pani Elżbieta ma jego drugi numer. | I can't open this one. Without the host it's still someone else's door. Elżbieta has his other number. |
+| `job.refuse_ch14_04_paid_week.after.1` | elzbieta | Gospodarz był na weselu syna. Przyjechał jeszcze tej nocy, z kluczami i z kawałkiem tortu na przeprosiny. | The host was at his son's wedding. He came that same night, with the keys and a slice of cake to apologize. |
+| `job.refuse_ch14_04_paid_week.after.2` | magda | Spałam jak w Brukseli, tylko ciszej. Monsieur Jacques nie uwierzy, że odmówiono mi tak uprzejmie. | I slept like in Brussels, only quieter. Monsieur Jacques won't believe I was turned down so politely. |
+| `job.ch14_05_cat_passport.line.1` | marta | Wyjeżdżamy nad morze. Książeczka zdrowia Ziemniaka jest w kuferku, a kuferek ma zdanie odrębne. | We're off to the seaside. Potato's health booklet is in the case, and the case has a dissenting opinion. |
+| `job.ch14_05_cat_passport.line.2` | gosia | Odnawiam go dla Marty od tygodnia. Zamek stary i uparty, a kluczyka nie było od początku. | I've been restoring it for Marta for a week. The lock is old and stubborn, and there was never a key. |
+| `job.ch14_05_cat_passport.line.3` | locksmith | Paragon z targu się zgadza. Sto osiemdziesiąt monet i kot może jechać. | The market receipt matches. One hundred and eighty coins, and the cat can travel. |
+| `job.ch14_05_cat_passport.line.4` | marta | Zgoda. Ziemniak wcale nie chce nad morze. Chce, żeby kuferek został otwarty, bo w nim sypia. | Agreed. Potato doesn't want the seaside at all. He wants the case left open, because he sleeps in it. |
+| `job.ch14_05_cat_passport.after.1` | marta | Pojechaliśmy. Ziemniak przespał drogę w kuferku, obejrzał morze i go nie zatwierdził. | We went. Potato slept the whole way in the case, inspected the sea and did not approve it. |
+| `job.ch14_06_suitcase_flew_on.line.1` | bartek | Rok temu klucze pojechały z ciocią do Kalisza. Dziś poleciały z walizką do innego miasta. | A year ago our keys went to Kalisz with an aunt. Today they flew to another city with the suitcase. |
+| `job.ch14_06_suitcase_flew_on.line.2` | neighbour_robe | Znam ich. Rok temu była czwarta rano. Dziś dopiero północ, robią postępy. | I know them. Last year it was four in the morning. Tonight it's only midnight; they're improving. |
+| `job.ch14_06_suitcase_flew_on.line.3` | locksmith | Dowód, adres w aplikacji i sąsiad. Komplet, jak rok temu. Sto osiemdziesiąt pięć monet. | ID, the address in the app and a neighbor. A full set, same as last year. One hundred and eighty-five coins. |
+| `job.ch14_06_suitcase_flew_on.line.4` | bartek | Zgoda. Po ślubie Kasia wymieniła zamek na porządniejszy. Teraz porządnie nas nie wpuszcza. | Agreed. After the wedding Kasia had a sturdier lock put in. Now it keeps us out very sturdily. |
+| `job.ch14_06_suitcase_flew_on.after.1` | bartek | Walizka wróciła po trzech dniach, bardziej opalona niż my. Zapasowy klucz ma teraz sąsiad. | The suitcase came back three days later, more tanned than we were. The neighbor keeps our spare key now. |
+| `job.ch14_07_prize_cupboard.line.1` | jadwiga | Nagrody na koniec roku zamknęłam w szafce. Kod zapisałam w bezpiecznym miejscu, tym samym co zawsze. | I locked the end-of-year prizes in the locker. I wrote the code down somewhere safe, the same place as always. |
+| `job.ch14_07_prize_cupboard.line.2` | headteacher | Czyli nikt nie wie gdzie. Szafka jest szkolna, zgodę ma pan na piśmie, a apel zaczyna się o dziesiątej. | Meaning nobody knows where. The locker is the school's, you have our consent in writing, and the assembly starts at ten. |
+| `job.ch14_07_prize_cupboard.line.3` | locksmith | Pismo szkoły się zgadza. Sto dziewięćdziesiąt monet, otwieram przy paniach. | The school's letter checks out. One hundred and ninety coins, and I open it with you both present. |
+| `job.ch14_07_prize_cupboard.line.4` | jadwiga | Zgoda. Kodem była jakaś data, to wiem na pewno. Tylko znowu nie wiem czyja. | Agreed. The code was a date, that much I know. I just don't know whose, again. |
+| `job.ch14_07_prize_cupboard.after.1` | ola | Każde dziecko dostało książkę. Pani Jadwiga znalazła potem kod: zapisała go na zakładce w jednej z nagród. | Every child got a book. Mrs Jadwiga found the code later: she had written it on a bookmark inside one of the prizes. |
+| `job.refuse_ch14_08_early_present.line.1` | hania | To prezent dla mnie, więc jest mój. Tylko jeszcze zamknięty w szafce taty. | It's a present for me, so it's mine. It's just still locked in Dad's cabinet. |
+| `job.refuse_ch14_08_early_present.line.2` | locksmith | Będzie twój, kiedy tata ci go da. Chodź, zapytamy go, jest w warsztacie. | It'll be yours when your dad gives it to you. Come on, let's ask him; he's in the workshop. |
+| `job.refuse_ch14_08_early_present.line.3` | hania | Nie, bo powie, że urodziny są w sobotę. Ja tylko zajrzę i zaraz zamkniemy. | No, because he'll say my birthday is on Saturday. I'll just peek, and we'll lock it right back. |
+| `job.refuse_ch14_08_early_present.line.4` | locksmith | Tu nie otworzę. Do soboty to szafka taty i jego niespodzianka. Trzy dni to krócej, niż myślisz. | I can't open this one. Until Saturday it's your dad's cabinet and his surprise. Three days is shorter than you think. |
+| `job.refuse_ch14_08_early_present.after.1` | tomasz | W sobotę otworzyła szafkę sama, moim kluczem. W środku czekała jej pierwsza skrzynka na narzędzia. | On Saturday she opened the cabinet herself, with my key. Her first toolbox was waiting inside. |
+| `job.refuse_ch14_08_early_present.after.2` | hania | Moja skrzynka ma zamek i klucz. Tego klucza nie zasadzę, obiecałam Lali. | My toolbox has a lock and a key. I won't plant this key; I promised Lala. |
+| `job.ch14_09_summer_cinema.line.1` | hall_manager | Kino letnie rusza dziś o zmroku. Projektor jest w kabinie, a zamek kabiny się na mnie obraził. | The summer cinema opens tonight at dusk. The projector is in the booth, and the booth's lock has taken offense at me. |
+| `job.ch14_09_summer_cinema.line.2` | iga | Próbował trzech kluczy z pęku. Przy czwartym zamek przestał z nim rozmawiać. | He tried three keys from the bunch. At the fourth, the lock stopped talking to him. |
+| `job.ch14_09_summer_cinema.line.3` | locksmith | Zgoda sali i pismo uczelni się zgadzają. Dwieście monet. Z takim zamkiem pracuje się bez pośpiechu. | The room's consent and the university's letter match. Two hundred coins. A lock like this is not to be hurried. |
+| `job.ch14_09_summer_cinema.line.4` | hall_manager | Zgoda. Seans zaczyna się o zmroku, a zmrok w czerwcu jest cierpliwy. | Agreed. The show starts at dusk, and in June dusk is patient. |
+| `job.ch14_09_summer_cinema.after.1` | iga | Film ruszył o dziesiątej. Zagraliśmy przed seansem, głośno, i nikt nie wyszedł. | The film started at ten. We played before the show, loudly, and nobody left. |
+| `job.ch14_10_holiday_keys.line.1` | elzbieta | Uchwała jest: zapasowe klucze na czas wakacji trzymamy w świetlicy, w zaklejonych kopertach. | The resolution is passed: over the summer, spare keys stay in the common room, in sealed envelopes. |
+| `job.ch14_10_holiday_keys.line.2` | halina | Szafka wisiała w portierni pół wieku, synku. Pilnowała cudzych kluczy tak dobrze, że swój zgubiła. | That cabinet hung in the porter's lodge for half a century, son. It guarded everyone's keys so well it lost its own. |
+| `job.ch14_10_holiday_keys.line.3` | locksmith | Uchwała i zgoda zarządu są. Dwieście dwadzieścia monet za szafkę na klucze bez klucza. | The resolution and the board's consent are here. Two hundred and twenty coins for a key cabinet without a key. |
+| `job.ch14_10_holiday_keys.line.4` | elzbieta | Zgoda. Dwanaście kopert już czeka, każda podpisana na zakładce. | Agreed. Twelve envelopes are waiting, each one signed across the flap. |
+| `job.ch14_10_holiday_keys.after.1` | halina | Wszyscy wyjechali, kwiaty podlane. Ja zostałam, synku. Ktoś musi pilnować kopert i rosołu. | Everyone has left, and the plants are watered. I stayed, son. Someone has to mind the envelopes and the broth. |
+| `job.ch14_10_holiday_keys.after.2` | locksmith | W szafce wisi dwanaście kluczy. Jeśli lato będzie dobre, żadnych z tych drzwi nie będę musiał otwierać. | Twelve keys hang in the cabinet. If the summer goes well, I won't have to open a single one of those doors. |
 
 Razem: **53** kluczy.
