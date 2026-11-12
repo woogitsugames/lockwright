@@ -1045,3 +1045,13 @@ Telefon Samsung SM-A165F (4 GB RAM, 1080×2340, Mali-G57), APK z CI dla `a088601
 - **N-97 (info, time_lock, D-92) — po puszczeniu kciuka bęben wraca do zera, choć na płycie jest zapadka.** Pod kciukiem bęben robi jeden skok (12°); dalsze przeciąganie (do 270 px) nie dokłada drugiego. Po puszczeniu bęben wraca do pozycji wyjściowej (`41_tl_wind_barrel_strip.png`: klatki 1 i 4 identyczne). Mechanicznie zapadka trzymałaby nakręcenie. Napięcie = trzymanie kciuka to reguła gry, ale wizualnie kłóci się z narysowaną zapadką — do decyzji sesji renderów/gry.
 - **N-98 (niska, trener) — bez żadnego dotyku tekst trenera po ok. 45 s przechodzi do kroku 2.** Combo: „Lewym kciukiem lekko pociągnij kabłąk” → „Prawy: wybierz kółko, przetocz w górę lub w dół”, ramię napinacza przechylone (podgląd napięcia H2), znak lewego kciuka znika, pojawia się znak prawego. Na time_lock tak samo („Prawym osadzaj koła po kolei”). Gracz, który nie zrobił kroku 1, dostaje instrukcję kroku 2 (`63_combo_idle_7.jpg` → `63_combo_idle_9.jpg`, `44_tl_idle_3.jpg` → `44_tl_idle_4.jpg`). Możliwe, że trener liczy napięcie z podglądu jako wykonany krok.
 - **N-99 (niska, D-93) — „Auto (mierzona)” nie mówi, jaki profil wybrał automat.** Na SM-A165F automat daje „niski”, ale w Ustawieniach widać tylko „Auto (mierzona)”. Gracz nie wie, że ma obniżoną jakość ani dlaczego obraz jest miękki (`03_settings_scroll.jpg`, `04_quality_dropdown.jpg`). Propozycja: „Auto (teraz: niska)” albo linia opisu pod listą.
+
+**Stan N-90…N-99 po przeglądzie kodu (D-113, 2026-11-12):** wszystkie pozycje z tej listy mają już poprawkę i test w repo — sprawdzone w kodzie i pełnym przebiegiem GUT, bez ponownego testu na telefonie.
+- N-90, N-96 (kreda) — D-91 i D-95: `ChalkLayer.hide_thumbs`, `place_hint`, `LockPhotorealView.hint_avoid_rects`; test `test_chalk_hint.gd`.
+- N-91 (ponowne otwarcie `wrong_floor`) — D-91: `JobVerify.is_done`, lista `jobs_list.gd`; testy `test_job_places_props.gd`, `test_job_verify.gd`.
+- N-92 — informacja o lokalnym buildzie, bez zmian w kodzie.
+- N-93 (TalkBack) — D-97: most `A11yBridge` we wtyczce Androida; test `test_android_a11y_bridge.gd`. Do sprawdzenia palcem na telefonie.
+- N-94, N-95 (karty) — D-95, D-103, D-104: `card_detail` w danych zleceń; test `test_job_places_props.gd`.
+- N-97 (bęben time_lock) — D-95: spuszczanie sprężyny po zębie; zapadka trzymająca nakręcenie czeka na decyzję właściciela.
+- N-98 (trener) — D-95: krok lekcji przechodzi tylko po działaniu gracza; test `test_lessons.gd`.
+- N-99 („Auto”) — D-96: „Auto (średnia/wysoka)”; D-113: wpis odświeża się, gdy pomiar kończy się przy otwartych Ustawieniach; testy `test_quality_ram.gd`, `test_system_text_ios.gd`.

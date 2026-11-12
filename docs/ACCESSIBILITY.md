@@ -103,8 +103,11 @@ Ustawienia → Dostępność → „Rozmiar tekstu” 100–200 % (krok 25). **D
 „Jak w systemie (N%)” pod suwakiem bierze rozmiar czcionki Androida (`Configuration.fontScale` przez wtyczkę
 `LockwrightHaptics.font_scale()`, Godot nie ma na to API), zaokrąglony do kroku suwaka (85 % → 100 %, 130 % → 125 %,
 powyżej 200 % → 200 %), odświeżany po powrocie do gry. Przesunięcie suwaka = własny rozmiar (przełącznik się wyłącza).
-Gracz, który wcześniej ustawił własny rozmiar inny niż 100 %, go zachowuje. Na desktopie i iOS (Dynamic Type jeszcze
-nieczytany) system = 100 %. `UiA11y` skaluje **każdy** rozmiar fontu motywu
+Gracz, który wcześniej ustawił własny rozmiar inny niż 100 %, go zachowuje. Na iOS (D-113) ten sam przełącznik
+czyta Dynamic Type: `LockwrightHaptics.font_scale()` w GDExtension iOS zwraca rozmiar tekstu podstawowego dla
+kategorii wybranej w systemie podzielony przez domyślne 17 pt (xSmall–Large → 100 %, xxLarge i xxxLarge → 125 %,
+pierwszy rozmiar dostępności 28 pt → 175 %, większe → 200 %). Po powrocie z ustawień systemu otwarte Ustawienia gry
+od razu pokazują nowy procent (`UiA11y.system_scale_changed`). Na desktopie system = 100 %. `UiA11y` skaluje **każdy** rozmiar fontu motywu
 (Label, Button, CheckButton, OptionButton, PopupMenu, Caption, Heading, Title, MenuTitle — wcześniej tylko trzy),
 a kod, który ustawia własny rozmiar, używa `UiA11y.fs()` (tytuły `fit_title`, zakładki `fit_button_text`, wybór
 sterowania, pauza, samouczek, Warsztat). Przy dużym tekście listy wyboru (język, jakość) i tabliczki akcji Warsztatu
@@ -163,4 +166,4 @@ tekst nie jest ucięty (poza zakładkami Warsztatu) i żadna etykieta nie zapada
 | Zrzuty stanów + raport szarość/daltonizm | `game/tests/a11y_state_shots.tscn` → `qa/a11y/state_report.py` (GPU ok. 1 min) |
 | Zrzuty ekranów z dużym tekstem / opcjami | `game/tests/shot_scene.tscn -- --text-scale=1.5 --setting=sound_captions:1` |
 | Most TalkBack (D-97) | `game/tests/gut/test_android_a11y_bridge.gd` (atrapa wtyczki: węzły, role, stany, aktywacja, suwaki, pauza, ogłoszenia); na telefonie `uiautomator dump` z włączonym TalkBack + `logcat -s LockwrightA11y` |
-| Ręcznie na telefonie (do zrobienia) | TalkBack palcem: podwójne stuknięcie na przyciskach, stany zamka, gest przekazania dotyku; VoiceOver: przejście menu → zlecenie → zamek tylko czytnikiem; systemowe „usuń animacje”; rozmiar czcionki Androida jako domyślny (D-107, nie sprawdzony na telefonie — był zablokowany); blokada napięcia palcem; Dynamic Type na iOS (nieczytany) |
+| Ręcznie na telefonie (do zrobienia) | TalkBack palcem: podwójne stuknięcie na przyciskach, stany zamka, gest przekazania dotyku; VoiceOver: przejście menu → zlecenie → zamek tylko czytnikiem; systemowe „usuń animacje”; rozmiar czcionki Androida jako domyślny (D-107, nie sprawdzony na telefonie — był zablokowany); blokada napięcia palcem; Dynamic Type na iOS (D-113: kod zbudowany w CI `game-ios`, na iPhonie nie sprawdzony) |
