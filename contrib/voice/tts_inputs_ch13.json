@@ -1,0 +1,3712 @@
+{
+ "de/job.ch13_01_balcony_boxes.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7692970,
+  "speaker": "halina",
+  "subtitle": "Die Geranien stehen auf dem Balkon. Zosia sagt, schief. Also wachsen sie auf meine Art.",
+  "text": "Die Geranien stehen auf dem Balkon. Zosia sagt, schief. Also wachsen sie auf meine Art.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_01_balcony_boxes.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12001218,
+  "speaker": "halina",
+  "subtitle": "Die Geranien haben im Keller überwintert, mein Junge. Das Schloss auch, nur hat es das schlechter vertragen.",
+  "text": "Die Geranien haben im Keller überwintert, mein Junge. Das Schloss auch, nur hat es das schlechter vertragen.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_01_balcony_boxes.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14909649,
+  "speaker": "zosia",
+  "subtitle": "Abteil Nummer sieben gehört Halina. Meins liegt seit vierzig Jahren daneben.",
+  "text": "Abteil Nummer sieben gehört Halina. Meins liegt seit vierzig Jahren daneben.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_01_balcony_boxes.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12837964,
+  "speaker": "locksmith",
+  "subtitle": "Die Liste stimmt. Hundertfünfzig Münzen, und die Geranien kommen zurück in die Sonne.",
+  "text": "Die Liste stimmt. Hundertfünfzig Münzen, und die Geranien kommen zurück in die Sonne.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_01_balcony_boxes.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7511099,
+  "speaker": "halina",
+  "subtitle": "Einverstanden. Zosia trägt die Gießkanne, und ich lade Sie zur Suppe ein.",
+  "text": "Einverstanden. Zosia trägt die Gießkanne, und ich lade Sie zur Suppe ein.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_02_first_ice_cream.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6288239,
+  "speaker": "krysia",
+  "subtitle": "Sahne, wie jedes Jahr. Stefan hat den Schlüssel mit einer Schnur an die Truhe gebunden.",
+  "text": "Sahne, wie jedes Jahr. Stefan hat den Schlüssel mit einer Schnur an die Truhe gebunden.",
+  "voice_id": "MAdUcSYw2pgceDixE8xr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_02_first_ice_cream.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3243322,
+  "speaker": "stefan",
+  "subtitle": "Das Eis ist da, der Schlüssel nicht. Der hatte einen besseren Winter als ich, er ist bis heute nicht zurück.",
+  "text": "Das Eis ist da, der Schlüssel nicht. Der hatte einen besseren Winter als ich, er ist bis heute nicht zurück.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_02_first_ice_cream.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15284382,
+  "speaker": "krysia",
+  "subtitle": "Das ist seine Truhe. Von Mai bis September stehe ich jeden Tag daneben.",
+  "text": "Das ist seine Truhe. Von Mai bis September stehe ich jeden Tag daneben.",
+  "voice_id": "MAdUcSYw2pgceDixE8xr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_02_first_ice_cream.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8284540,
+  "speaker": "locksmith",
+  "subtitle": "Die Rechnung passt. Hundertfünfundfünfzig Münzen, bevor das Eis weich wird.",
+  "text": "Die Rechnung passt. Hundertfünfundfünfzig Münzen, bevor das Eis weich wird.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_02_first_ice_cream.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9020545,
+  "speaker": "stefan",
+  "subtitle": "Einverstanden. Die erste Waffel bekommt Frau Krysia, die zweite Sie.",
+  "text": "Einverstanden. Die erste Waffel bekommt Frau Krysia, die zweite Sie.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_03_allotment_gate.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6909597,
+  "speaker": "zbyszek",
+  "subtitle": "Das Tor ist offen, die Tomaten sind in der Erde. Waldek trägt den Schlüssel jetzt um den Hals.",
+  "text": "Das Tor ist offen, die Tomaten sind in der Erde. Waldek trägt den Schlüssel jetzt um den Hals.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_03_allotment_gate.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12031453,
+  "speaker": "zbyszek",
+  "subtitle": "Heute beginnt die Saison, und das Tor glaubt, es sei noch Winter.",
+  "text": "Heute beginnt die Saison, und das Tor glaubt, es sei noch Winter.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_03_allotment_gate.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16133251,
+  "speaker": "waldek",
+  "subtitle": "Der Schlüssel hat in meiner Laube überwintert. Die Laube steht hinter dem Tor. Meine eigene Idee.",
+  "text": "Der Schlüssel hat in meiner Laube überwintert. Die Laube steht hinter dem Tor. Meine eigene Idee.",
+  "voice_id": "6ECEPYinwnizS5hjagZQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_03_allotment_gate.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9967738,
+  "speaker": "locksmith",
+  "subtitle": "Der Vorstandsbeschluss liegt vor. Hundertsechzig Münzen, ich öffne in Ihrem Beisein.",
+  "text": "Der Vorstandsbeschluss liegt vor. Hundertsechzig Münzen, ich öffne in Ihrem Beisein.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_03_allotment_gate.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5138704,
+  "speaker": "zbyszek",
+  "subtitle": "Einverstanden. Die Tomatensetzlinge warten im Kofferraum und werden ungeduldig.",
+  "text": "Einverstanden. Die Tomatensetzlinge warten im Kofferraum und werden ungeduldig.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_05_planted_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3560052,
+  "speaker": "hania",
+  "subtitle": "Die Radieschen sind gewachsen, der Schlüssel nicht. Papa hat einen neuen gemacht, und den darf ich nicht gießen.",
+  "text": "Die Radieschen sind gewachsen, der Schlüssel nicht. Papa hat einen neuen gemacht, und den darf ich nicht gießen.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_05_planted_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5761248,
+  "speaker": "hania",
+  "subtitle": "Ich habe den Schlüssel eingepflanzt. Ich gieße ihn jeden Tag, aber es wächst noch nichts.",
+  "text": "Ich habe den Schlüssel eingepflanzt. Ich gieße ihn jeden Tag, aber es wächst noch nichts.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_05_planted_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16369995,
+  "speaker": "tomasz",
+  "subtitle": "Die Kiste gehört Hania, ich habe sie selbst gebaut. Der Schlüssel liegt irgendwo unter den Radieschen.",
+  "text": "Die Kiste gehört Hania, ich habe sie selbst gebaut. Der Schlüssel liegt irgendwo unter den Radieschen.",
+  "voice_id": "kmrKRziyBLKhbqe5EalT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_05_planted_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13741795,
+  "speaker": "locksmith",
+  "subtitle": "Das Foto und Papas Wort genügen mir. Hundertvierzig Münzen, und das Beet bleibt in Ruhe.",
+  "text": "Das Foto und Papas Wort genügen mir. Hundertvierzig Münzen, und das Beet bleibt in Ruhe.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_05_planted_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5927835,
+  "speaker": "hania",
+  "subtitle": "Einverstanden. Die Samen gehen morgen in die Schule, und der Schlüssel darf weiterwachsen.",
+  "text": "Einverstanden. Die Samen gehen morgen in die Schule, und der Schlüssel darf weiterwachsen.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_06_bike_repair_stand.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16192877,
+  "speaker": "kuba",
+  "subtitle": "Ich habe vor der Arbeit die Reifen aufgepumpt. Zum ersten Mal war ich irgendwo zu früh.",
+  "text": "Ich habe vor der Arbeit die Reifen aufgepumpt. Zum ersten Mal war ich irgendwo zu früh.",
+  "voice_id": "VkZzWHJdAdVjOsFVZT0o",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_06_bike_repair_stand.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4935723,
+  "speaker": "borys",
+  "subtitle": "Pumpe, Schlüssel, Flicken. Alles ist bereit, nur der Schrank macht nicht mit.",
+  "text": "Pumpe, Schlüssel, Flicken. Alles ist bereit, nur der Schrank macht nicht mit.",
+  "voice_id": "az6GBWlKR4L8xiChUKyG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_06_bike_repair_stand.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3841242,
+  "speaker": "roman",
+  "subtitle": "Der Schrank gehört der Verwaltung. Borys soll ihn bestücken, so steht es im Auftrag.",
+  "text": "Der Schrank gehört der Verwaltung. Borys soll ihn bestücken, so steht es im Auftrag.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_06_bike_repair_stand.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8405222,
+  "speaker": "locksmith",
+  "subtitle": "Die Bestätigung stimmt. Hundertsiebzig Münzen.",
+  "text": "Die Bestätigung stimmt. Hundertsiebzig Münzen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_06_bike_repair_stand.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13439698,
+  "speaker": "borys",
+  "subtitle": "Einverstanden. Das erste Aufpumpen geht bei mir aufs Haus.",
+  "text": "Einverstanden. Das erste Aufpumpen geht bei mir aufs Haus.",
+  "voice_id": "az6GBWlKR4L8xiChUKyG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_07_museum_night_case.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14455034,
+  "speaker": "zuzanna",
+  "subtitle": "Vierhundert Leute kamen. Der Schlüssel hat jetzt ein eigenes Band und eine Inventarnummer.",
+  "text": "Vierhundert Leute kamen. Der Schlüssel hat jetzt ein eigenes Band und eine Inventarnummer.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_07_museum_night_case.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6942168,
+  "speaker": "rygiel",
+  "subtitle": "Der Schlüssel ist sicher. Er liegt in der Vitrine, die er öffnen sollte.",
+  "text": "Der Schlüssel ist sicher. Er liegt in der Vitrine, die er öffnen sollte.",
+  "voice_id": "BH6sElg13tTrLskAMLVY",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_07_museum_night_case.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15058276,
+  "speaker": "locksmith",
+  "subtitle": "Das Schreiben der Direktion ist geprüft. Hundertachtzig Münzen, ich arbeite mit Handschuhen.",
+  "text": "Das Schreiben der Direktion ist geprüft. Hundertachtzig Münzen, ich arbeite mit Handschuhen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_07_museum_night_case.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2425880,
+  "speaker": "zuzanna",
+  "subtitle": "Ich habe ihn dort hingelegt. Auf dem Samt sah er aus wie ein Exponat.",
+  "text": "Ich habe ihn dort hingelegt. Auf dem Samt sah er aus wie ein Exponat.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_07_museum_night_case.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1555854,
+  "speaker": "rygiel",
+  "subtitle": "Einverstanden. Zuzanna trägt den Schlüssel ins Protokoll ein, aber nicht in die Ausstellung.",
+  "text": "Einverstanden. Zuzanna trägt den Schlüssel ins Protokoll ein, aber nicht in die Ausstellung.",
+  "voice_id": "BH6sElg13tTrLskAMLVY",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_09_pizzeria_terrace.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8216990,
+  "speaker": "renata",
+  "subtitle": "Die Terrasse ist seit dem ersten Abend voll. Den neuen Code kennt auch Herr Mietek, für alle Fälle.",
+  "text": "Die Terrasse ist seit dem ersten Abend voll. Den neuen Code kennt auch Herr Mietek, für alle Fälle.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_09_pizzeria_terrace.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4309799,
+  "speaker": "renata",
+  "subtitle": "Im Winter habe ich einen leichteren Code eingestellt. So leicht, dass er mir sofort entfallen ist.",
+  "text": "Im Winter habe ich einen leichteren Code eingestellt. So leicht, dass er mir sofort entfallen ist.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_09_pizzeria_terrace.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5441109,
+  "speaker": "mietek",
+  "subtitle": "Der Tresor gehört ihr, ich habe ihn mit hineingetragen. Mein Kreuz erinnert sich bis heute.",
+  "text": "Der Tresor gehört ihr, ich habe ihn mit hineingetragen. Mein Kreuz erinnert sich bis heute.",
+  "voice_id": "zMbLG1cGSAY2FkRf79h1",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_09_pizzeria_terrace.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9374994,
+  "speaker": "locksmith",
+  "subtitle": "Mietvertrag und Rechnung passen. Hundertfünfundachtzig Münzen.",
+  "text": "Mietvertrag und Rechnung passen. Hundertfünfundachtzig Münzen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_09_pizzeria_terrace.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1630999,
+  "speaker": "renata",
+  "subtitle": "Einverstanden. Diesmal zahle ich mit Münzen, und die Pizza gibt es obendrauf.",
+  "text": "Einverstanden. Diesmal zahle ich mit Münzen, und die Pizza gibt es obendrauf.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_10_courtyard_door.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8559617,
+  "speaker": "halina",
+  "subtitle": "Der Tisch reichte bis unter die Linde. Die Suppe hat gereicht, ich habe in zwei Töpfen gekocht.",
+  "text": "Der Tisch reichte bis unter die Linde. Die Suppe hat gereicht, ich habe in zwei Töpfen gekocht.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_10_courtyard_door.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7567804,
+  "speaker": "locksmith",
+  "subtitle": "Die Hoftür bleibt bis zum Herbst offen. Der neue Schlüssel hängt im Gemeinschaftsraum, beschriftet.",
+  "text": "Die Hoftür bleibt bis zum Herbst offen. Der neue Schlüssel hängt im Gemeinschaftsraum, beschriftet.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_10_courtyard_door.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6447732,
+  "speaker": "elzbieta",
+  "subtitle": "Der Beschluss war einstimmig. Diese Tür geht zum ersten Mal seit dreißig Jahren auf.",
+  "text": "Der Beschluss war einstimmig. Diese Tür geht zum ersten Mal seit dreißig Jahren auf.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_10_courtyard_door.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1303971,
+  "speaker": "halina",
+  "subtitle": "Der Tisch passt nicht in den Saal, mein Junge. Ich habe ein paar Gäste mehr eingeladen.",
+  "text": "Der Tisch passt nicht in den Saal, mein Junge. Ich habe ein paar Gäste mehr eingeladen.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_10_courtyard_door.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11946514,
+  "speaker": "locksmith",
+  "subtitle": "Die Zustimmung der Gemeinschaft liegt vor. Zweihundert Münzen und etwas Geduld für ein altes Schloss.",
+  "text": "Die Zustimmung der Gemeinschaft liegt vor. Zweihundert Münzen und etwas Geduld für ein altes Schloss.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch13_10_courtyard_door.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6989330,
+  "speaker": "elzbieta",
+  "subtitle": "Einverstanden. Marta hat das Plakat schon aufgehängt: Der Tisch beginnt im Saal und endet unter der Linde.",
+  "text": "Einverstanden. Marta hat das Plakat schon aufgehängt: Der Tisch beginnt im Saal und endet unter der Linde.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch13_04_winter_bike.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1269742,
+  "speaker": "roman",
+  "subtitle": "Der Zettel hing drei Tage. Das Rad gehört Frau Teresa, sie hatte im Winter das Bein in Gips.",
+  "text": "Der Zettel hing drei Tage. Das Rad gehört Frau Teresa, sie hatte im Winter das Bein in Gips.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch13_04_winter_bike.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8088175,
+  "speaker": "teresa",
+  "subtitle": "Ich fahre wieder. Gut, dass das Schloss an einen vernünftigen Menschen geraten ist.",
+  "text": "Ich fahre wieder. Gut, dass das Schloss an einen vernünftigen Menschen geraten ist.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch13_04_winter_bike.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12630829,
+  "speaker": "marek",
+  "subtitle": "Es steht seit November hier. Wenn es keiner anrührt, gehört es keinem.",
+  "text": "Es steht seit November hier. Wenn es keiner anrührt, gehört es keinem.",
+  "voice_id": "Zg4IlQjJwRWlWADvYnPS",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch13_04_winter_bike.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15054903,
+  "speaker": "locksmith",
+  "subtitle": "Oder es gehört jemandem mit Geduld. Fragen wir Herrn Roman, er kennt den Ständer.",
+  "text": "Oder es gehört jemandem mit Geduld. Fragen wir Herrn Roman, er kennt den Ständer.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch13_04_winter_bike.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3950537,
+  "speaker": "marek",
+  "subtitle": "Wozu gleich der Verwalter. Sie nehmen das Schloss ab, und fertig.",
+  "text": "Wozu gleich der Verwalter. Sie nehmen das Schloss ab, und fertig.",
+  "voice_id": "Zg4IlQjJwRWlWADvYnPS",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch13_04_winter_bike.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2748203,
+  "speaker": "locksmith",
+  "subtitle": "Hier öffne ich nicht. Herr Roman hängt einen Zettel daran. Wer es vermisst, meldet sich.",
+  "text": "Hier öffne ich nicht. Herr Roman hängt einen Zettel daran. Wer es vermisst, meldet sich.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch13_08_found_cashbox.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10568680,
+  "speaker": "elzbieta",
+  "subtitle": "Die Kassette gehört Frau Janka, sie suchte sie seit dem Umzug. Darin lagen ihre Hochzeitsfotos.",
+  "text": "Die Kassette gehört Frau Janka, sie suchte sie seit dem Umzug. Darin lagen ihre Hochzeitsfotos.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch13_08_found_cashbox.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16108232,
+  "speaker": "oskar",
+  "subtitle": "Ich habe Finderlohn bekommen: ein Glas Gurken und den Titel ehrlicher Finder.",
+  "text": "Ich habe Finderlohn bekommen: ein Glas Gurken und den Titel ehrlicher Finder.",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch13_08_found_cashbox.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1416809,
+  "speaker": "oskar",
+  "subtitle": "Sie stand hinter einem alten Schrank. Gefunden ist nicht gestohlen, oder?",
+  "text": "Sie stand hinter einem alten Schrank. Gefunden ist nicht gestohlen, oder?",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch13_08_found_cashbox.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15619788,
+  "speaker": "locksmith",
+  "subtitle": "Gefundenes gehört immer noch jemandem. Bringen wir sie zu Frau Elżbieta.",
+  "text": "Gefundenes gehört immer noch jemandem. Bringen wir sie zu Frau Elżbieta.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch13_08_found_cashbox.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1310673,
+  "speaker": "oskar",
+  "subtitle": "Und wenn ein Schatz drin ist? Erst nachsehen, dann Bescheid sagen.",
+  "text": "Und wenn ein Schatz drin ist? Erst nachsehen, dann Bescheid sagen.",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch13_08_found_cashbox.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 84406,
+  "speaker": "locksmith",
+  "subtitle": "Hier öffne ich nicht. Frau Elżbieta hängt einen Aushang auf, dann meldet sich der Besitzer.",
+  "text": "Hier öffne ich nicht. Frau Elżbieta hängt einen Aushang auf, dann meldet sich der Besitzer.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_01_balcony_boxes.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7692970,
+  "speaker": "halina",
+  "subtitle": "The geraniums are on the balcony. Zosia says they're crooked, so they're growing my way.",
+  "text": "The geraniums are on the balcony. Zosia says they're crooked, so they're growing my way.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_01_balcony_boxes.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12001218,
+  "speaker": "halina",
+  "subtitle": "The geraniums wintered in the cellar, son. So did the padlock, but it took it harder.",
+  "text": "The geraniums wintered in the cellar, son. So did the padlock, but it took it harder.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_01_balcony_boxes.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14909649,
+  "speaker": "zosia",
+  "subtitle": "Storage number seven is Halina's. Mine has been next to it for forty years.",
+  "text": "Storage number seven is Halina's. Mine has been next to it for forty years.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_01_balcony_boxes.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12837964,
+  "speaker": "locksmith",
+  "subtitle": "The list checks out. One hundred and fifty coins, and the geraniums go back in the sun.",
+  "text": "The list checks out. One hundred and fifty coins, and the geraniums go back in the sun.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_01_balcony_boxes.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7511099,
+  "speaker": "halina",
+  "subtitle": "Agreed. Zosia will carry the watering can, and I'll have you over for broth.",
+  "text": "Agreed. Zosia will carry the watering can, and I'll have you over for broth.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_02_first_ice_cream.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6288239,
+  "speaker": "krysia",
+  "subtitle": "Vanilla, same as every year. Stefan has tied the key to the freezer with string.",
+  "text": "Vanilla, same as every year. Stefan has tied the key to the freezer with string.",
+  "voice_id": "MAdUcSYw2pgceDixE8xr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_02_first_ice_cream.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3243322,
+  "speaker": "stefan",
+  "subtitle": "The ice cream is here, the key isn't. It had a better winter than me; it still hasn't come back.",
+  "text": "The ice cream is here, the key isn't. It had a better winter than me; it still hasn't come back.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_02_first_ice_cream.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15284382,
+  "speaker": "krysia",
+  "subtitle": "It's his freezer. From May to September I stand next to it every day.",
+  "text": "It's his freezer. From May to September I stand next to it every day.",
+  "voice_id": "MAdUcSYw2pgceDixE8xr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_02_first_ice_cream.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8284540,
+  "speaker": "locksmith",
+  "subtitle": "The invoice matches. One hundred and fifty-five coins, before the ice cream goes soft.",
+  "text": "The invoice matches. One hundred and fifty-five coins, before the ice cream goes soft.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_02_first_ice_cream.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9020545,
+  "speaker": "stefan",
+  "subtitle": "Agreed. The first cone goes to Mrs Krysia, the second to you.",
+  "text": "Agreed. The first cone goes to Mrs Krysia, the second to you.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_03_allotment_gate.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6909597,
+  "speaker": "zbyszek",
+  "subtitle": "The gate is open and the tomatoes are in the ground. Waldek wears the key around his neck now.",
+  "text": "The gate is open and the tomatoes are in the ground. Waldek wears the key around his neck now.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_03_allotment_gate.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12031453,
+  "speaker": "zbyszek",
+  "subtitle": "The season starts today, and the gate thinks it's still winter.",
+  "text": "The season starts today, and the gate thinks it's still winter.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_03_allotment_gate.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16133251,
+  "speaker": "waldek",
+  "subtitle": "The key spent the winter in my shed. The shed is behind the gate. My own idea.",
+  "text": "The key spent the winter in my shed. The shed is behind the gate. My own idea.",
+  "voice_id": "6ECEPYinwnizS5hjagZQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_03_allotment_gate.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9967738,
+  "speaker": "locksmith",
+  "subtitle": "The board's resolution is here. One hundred and sixty coins, and I open it with you both present.",
+  "text": "The board's resolution is here. One hundred and sixty coins, and I open it with you both present.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_03_allotment_gate.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5138704,
+  "speaker": "zbyszek",
+  "subtitle": "Agreed. The tomato seedlings are waiting in the trunk, and they're getting impatient.",
+  "text": "Agreed. The tomato seedlings are waiting in the trunk, and they're getting impatient.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_05_planted_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3560052,
+  "speaker": "hania",
+  "subtitle": "The radishes came up, the key didn't. Dad made a new one and won't let me water it.",
+  "text": "The radishes came up, the key didn't. Dad made a new one and won't let me water it.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_05_planted_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5761248,
+  "speaker": "hania",
+  "subtitle": "I planted the key. I water it every day, but nothing has come up yet.",
+  "text": "I planted the key. I water it every day, but nothing has come up yet.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_05_planted_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16369995,
+  "speaker": "tomasz",
+  "subtitle": "The box is Hania's; I made it myself. The key is somewhere under the radishes.",
+  "text": "The box is Hania's; I made it myself. The key is somewhere under the radishes.",
+  "voice_id": "kmrKRziyBLKhbqe5EalT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_05_planted_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13741795,
+  "speaker": "locksmith",
+  "subtitle": "The photo and your dad's word will do. One hundred and forty coins, and the garden bed stays undisturbed.",
+  "text": "The photo and your dad's word will do. One hundred and forty coins, and the garden bed stays undisturbed.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_05_planted_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5927835,
+  "speaker": "hania",
+  "subtitle": "Agreed. The seeds go to school tomorrow, and the key can keep growing.",
+  "text": "Agreed. The seeds go to school tomorrow, and the key can keep growing.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_06_bike_repair_stand.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16192877,
+  "speaker": "kuba",
+  "subtitle": "I pumped up my tires before work. For the first time I got somewhere early.",
+  "text": "I pumped up my tires before work. For the first time I got somewhere early.",
+  "voice_id": "VkZzWHJdAdVjOsFVZT0o",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_06_bike_repair_stand.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4935723,
+  "speaker": "borys",
+  "subtitle": "Pump, wrenches, patches. Everything is ready; only the cabinet won't cooperate.",
+  "text": "Pump, wrenches, patches. Everything is ready; only the cabinet won't cooperate.",
+  "voice_id": "az6GBWlKR4L8xiChUKyG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_06_bike_repair_stand.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3841242,
+  "speaker": "roman",
+  "subtitle": "The cabinet belongs to the estate office. Borys is to stock it; it's in the order.",
+  "text": "The cabinet belongs to the estate office. Borys is to stock it; it's in the order.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_06_bike_repair_stand.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8405222,
+  "speaker": "locksmith",
+  "subtitle": "The confirmation checks out. One hundred and seventy coins.",
+  "text": "The confirmation checks out. One hundred and seventy coins.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_06_bike_repair_stand.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13439698,
+  "speaker": "borys",
+  "subtitle": "Agreed. Your first pump-up is on the house.",
+  "text": "Agreed. Your first pump-up is on the house.",
+  "voice_id": "az6GBWlKR4L8xiChUKyG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_07_museum_night_case.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14455034,
+  "speaker": "zuzanna",
+  "subtitle": "Four hundred people came. The key now has its own lanyard and an inventory number.",
+  "text": "Four hundred people came. The key now has its own lanyard and an inventory number.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_07_museum_night_case.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6942168,
+  "speaker": "rygiel",
+  "subtitle": "The key is safe. It is lying in the display case it was meant to open.",
+  "text": "The key is safe. It is lying in the display case it was meant to open.",
+  "voice_id": "BH6sElg13tTrLskAMLVY",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_07_museum_night_case.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15058276,
+  "speaker": "locksmith",
+  "subtitle": "The directorate's letter checks out. One hundred and eighty coins, and I'll work in gloves.",
+  "text": "The directorate's letter checks out. One hundred and eighty coins, and I'll work in gloves.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_07_museum_night_case.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2425880,
+  "speaker": "zuzanna",
+  "subtitle": "I put it there. On the velvet it looked like an exhibit.",
+  "text": "I put it there. On the velvet it looked like an exhibit.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_07_museum_night_case.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1555854,
+  "speaker": "rygiel",
+  "subtitle": "Agreed. Zuzanna will add the key to the record, but not to the exhibition.",
+  "text": "Agreed. Zuzanna will add the key to the record, but not to the exhibition.",
+  "voice_id": "BH6sElg13tTrLskAMLVY",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_09_pizzeria_terrace.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8216990,
+  "speaker": "renata",
+  "subtitle": "The terrace has been full since the first evening. Mr Mietek knows the new code too, just in case.",
+  "text": "The terrace has been full since the first evening. Mr Mietek knows the new code too, just in case.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_09_pizzeria_terrace.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4309799,
+  "speaker": "renata",
+  "subtitle": "In winter I changed the code to an easier one. So easy it slipped my mind at once.",
+  "text": "In winter I changed the code to an easier one. So easy it slipped my mind at once.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_09_pizzeria_terrace.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5441109,
+  "speaker": "mietek",
+  "subtitle": "The safe is hers; I helped her carry it in. My back remembers it to this day.",
+  "text": "The safe is hers; I helped her carry it in. My back remembers it to this day.",
+  "voice_id": "zMbLG1cGSAY2FkRf79h1",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_09_pizzeria_terrace.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9374994,
+  "speaker": "locksmith",
+  "subtitle": "The lease and the invoice match. One hundred and eighty-five coins.",
+  "text": "The lease and the invoice match. One hundred and eighty-five coins.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_09_pizzeria_terrace.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1630999,
+  "speaker": "renata",
+  "subtitle": "Agreed. This time I'm paying in coins, and the pizza comes on top.",
+  "text": "Agreed. This time I'm paying in coins, and the pizza comes on top.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_10_courtyard_door.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8559617,
+  "speaker": "halina",
+  "subtitle": "The table reached all the way to the linden tree. There was enough broth; I cooked it in two pots.",
+  "text": "The table reached all the way to the linden tree. There was enough broth; I cooked it in two pots.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_10_courtyard_door.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7567804,
+  "speaker": "locksmith",
+  "subtitle": "The courtyard door stays open until autumn. The new key hangs in the common room, labeled.",
+  "text": "The courtyard door stays open until autumn. The new key hangs in the common room, labeled.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_10_courtyard_door.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6447732,
+  "speaker": "elzbieta",
+  "subtitle": "The resolution was unanimous. This door will open for the first time in thirty years.",
+  "text": "The resolution was unanimous. This door will open for the first time in thirty years.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_10_courtyard_door.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1303971,
+  "speaker": "halina",
+  "subtitle": "The table won't fit in the room, son. I invited a few more guests.",
+  "text": "The table won't fit in the room, son. I invited a few more guests.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_10_courtyard_door.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11946514,
+  "speaker": "locksmith",
+  "subtitle": "The residents' consent is here. Two hundred coins, and a little patience for an old lock.",
+  "text": "The residents' consent is here. Two hundred coins, and a little patience for an old lock.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch13_10_courtyard_door.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6989330,
+  "speaker": "elzbieta",
+  "subtitle": "Agreed. Marta has already put up the poster: the table starts in the room and ends under the linden tree.",
+  "text": "Agreed. Marta has already put up the poster: the table starts in the room and ends under the linden tree.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch13_04_winter_bike.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1269742,
+  "speaker": "roman",
+  "subtitle": "The notice was up for three days. The bicycle is Mrs Teresa's; her leg was in a cast all winter.",
+  "text": "The notice was up for three days. The bicycle is Mrs Teresa's; her leg was in a cast all winter.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch13_04_winter_bike.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8088175,
+  "speaker": "teresa",
+  "subtitle": "I'm riding again. A good thing the lock met a sensible man.",
+  "text": "I'm riding again. A good thing the lock met a sensible man.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch13_04_winter_bike.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12630829,
+  "speaker": "marek",
+  "subtitle": "It's been here since November. If nobody touches it, it's nobody's.",
+  "text": "It's been here since November. If nobody touches it, it's nobody's.",
+  "voice_id": "Zg4IlQjJwRWlWADvYnPS",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch13_04_winter_bike.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15054903,
+  "speaker": "locksmith",
+  "subtitle": "Or somebody's, and patient. Let's ask Mr Roman; he knows this stand.",
+  "text": "Or somebody's, and patient. Let's ask Mr Roman; he knows this stand.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch13_04_winter_bike.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3950537,
+  "speaker": "marek",
+  "subtitle": "No need to drag the manager into it. Take the lock off and we're done.",
+  "text": "No need to drag the manager into it. Take the lock off and we're done.",
+  "voice_id": "Zg4IlQjJwRWlWADvYnPS",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch13_04_winter_bike.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2748203,
+  "speaker": "locksmith",
+  "subtitle": "I can't open this one. Mr Roman will tag it with a notice. Whoever misses it will speak up.",
+  "text": "I can't open this one. Mr Roman will tag it with a notice. Whoever misses it will speak up.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch13_08_found_cashbox.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10568680,
+  "speaker": "elzbieta",
+  "subtitle": "The cashbox is Mrs Janka's; she'd been looking for it since she moved. Her wedding photos were inside.",
+  "text": "The cashbox is Mrs Janka's; she'd been looking for it since she moved. Her wedding photos were inside.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch13_08_found_cashbox.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16108232,
+  "speaker": "oskar",
+  "subtitle": "I got a finder's reward: a jar of pickles and the title of honest finder.",
+  "text": "I got a finder's reward: a jar of pickles and the title of honest finder.",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch13_08_found_cashbox.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1416809,
+  "speaker": "oskar",
+  "subtitle": "It was behind an old dresser. Finders keepers, right?",
+  "text": "It was behind an old dresser. Finders keepers, right?",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch13_08_found_cashbox.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15619788,
+  "speaker": "locksmith",
+  "subtitle": "Found things still belong to someone. Let's take it to Elżbieta.",
+  "text": "Found things still belong to someone. Let's take it to Elżbieta.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch13_08_found_cashbox.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1310673,
+  "speaker": "oskar",
+  "subtitle": "What if there's treasure inside? Let's look first and tell them after.",
+  "text": "What if there's treasure inside? Let's look first and tell them after.",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch13_08_found_cashbox.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 84406,
+  "speaker": "locksmith",
+  "subtitle": "I can't open this one. Elżbieta will post a notice, and the owner will turn up.",
+  "text": "I can't open this one. Elżbieta will post a notice, and the owner will turn up.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_01_balcony_boxes.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7692970,
+  "speaker": "halina",
+  "subtitle": "Los geranios ya están en el balcón. Zosia dice que torcidos, así que crecen a mi manera.",
+  "text": "Los geranios ya están en el balcón. Zosia dice que torcidos, así que crecen a mi manera.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_01_balcony_boxes.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12001218,
+  "speaker": "halina",
+  "subtitle": "Los geranios pasaron el invierno en el sótano, hijo. El candado también, pero lo llevó peor.",
+  "text": "Los geranios pasaron el invierno en el sótano, hijo. El candado también, pero lo llevó peor.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_01_balcony_boxes.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14909649,
+  "speaker": "zosia",
+  "subtitle": "El trastero número siete es de Halina. El mío lleva cuarenta años al lado.",
+  "text": "El trastero número siete es de Halina. El mío lleva cuarenta años al lado.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_01_balcony_boxes.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12837964,
+  "speaker": "locksmith",
+  "subtitle": "La lista coincide. Ciento cincuenta monedas y los geranios vuelven al sol.",
+  "text": "La lista coincide. Ciento cincuenta monedas y los geranios vuelven al sol.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_01_balcony_boxes.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7511099,
+  "speaker": "halina",
+  "subtitle": "De acuerdo. Zosia llevará la regadera y yo le invito a un caldo.",
+  "text": "De acuerdo. Zosia llevará la regadera y yo le invito a un caldo.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_02_first_ice_cream.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6288239,
+  "speaker": "krysia",
+  "subtitle": "De nata, como cada año. Stefan ha atado la llave al congelador con un cordel.",
+  "text": "De nata, como cada año. Stefan ha atado la llave al congelador con un cordel.",
+  "voice_id": "MAdUcSYw2pgceDixE8xr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_02_first_ice_cream.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3243322,
+  "speaker": "stefan",
+  "subtitle": "Los helados han llegado, la llave no. Pasó mejor invierno que yo: todavía no ha vuelto.",
+  "text": "Los helados han llegado, la llave no. Pasó mejor invierno que yo: todavía no ha vuelto.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_02_first_ice_cream.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15284382,
+  "speaker": "krysia",
+  "subtitle": "Es su congelador. De mayo a septiembre estoy a su lado todos los días.",
+  "text": "Es su congelador. De mayo a septiembre estoy a su lado todos los días.",
+  "voice_id": "MAdUcSYw2pgceDixE8xr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_02_first_ice_cream.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8284540,
+  "speaker": "locksmith",
+  "subtitle": "La factura coincide. Ciento cincuenta y cinco monedas, antes de que se ablanden los helados.",
+  "text": "La factura coincide. Ciento cincuenta y cinco monedas, antes de que se ablanden los helados.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_02_first_ice_cream.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9020545,
+  "speaker": "stefan",
+  "subtitle": "De acuerdo. El primer cucurucho es para la señora Krysia; el segundo, para usted.",
+  "text": "De acuerdo. El primer cucurucho es para la señora Krysia; el segundo, para usted.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_03_allotment_gate.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6909597,
+  "speaker": "zbyszek",
+  "subtitle": "La puerta está abierta y los tomates, en la tierra. Waldek lleva ahora la llave colgada al cuello.",
+  "text": "La puerta está abierta y los tomates, en la tierra. Waldek lleva ahora la llave colgada al cuello.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_03_allotment_gate.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12031453,
+  "speaker": "zbyszek",
+  "subtitle": "La temporada empieza hoy y la puerta cree que todavía es invierno.",
+  "text": "La temporada empieza hoy y la puerta cree que todavía es invierno.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_03_allotment_gate.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16133251,
+  "speaker": "waldek",
+  "subtitle": "La llave pasó el invierno en mi cobertizo. El cobertizo está detrás de la puerta. Idea mía.",
+  "text": "La llave pasó el invierno en mi cobertizo. El cobertizo está detrás de la puerta. Idea mía.",
+  "voice_id": "6ECEPYinwnizS5hjagZQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_03_allotment_gate.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9967738,
+  "speaker": "locksmith",
+  "subtitle": "El acuerdo de la junta está aquí. Ciento sesenta monedas, y abro delante de ustedes.",
+  "text": "El acuerdo de la junta está aquí. Ciento sesenta monedas, y abro delante de ustedes.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_03_allotment_gate.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5138704,
+  "speaker": "zbyszek",
+  "subtitle": "De acuerdo. Los plantones de tomate esperan en el maletero y se impacientan.",
+  "text": "De acuerdo. Los plantones de tomate esperan en el maletero y se impacientan.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_05_planted_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3560052,
+  "speaker": "hania",
+  "subtitle": "Los rabanitos salieron, la llave no. Papá hizo otra nueva y no me deja regarla.",
+  "text": "Los rabanitos salieron, la llave no. Papá hizo otra nueva y no me deja regarla.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_05_planted_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5761248,
+  "speaker": "hania",
+  "subtitle": "Planté la llave. La riego todos los días, pero todavía no ha salido nada.",
+  "text": "Planté la llave. La riego todos los días, pero todavía no ha salido nada.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_05_planted_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16369995,
+  "speaker": "tomasz",
+  "subtitle": "La caja es de Hania; la hice yo mismo. La llave está en algún sitio debajo de los rabanitos.",
+  "text": "La caja es de Hania; la hice yo mismo. La llave está en algún sitio debajo de los rabanitos.",
+  "voice_id": "kmrKRziyBLKhbqe5EalT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_05_planted_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13741795,
+  "speaker": "locksmith",
+  "subtitle": "Me bastan la foto y la palabra de tu papá. Ciento cuarenta monedas, y el huerto se queda tranquilo.",
+  "text": "Me bastan la foto y la palabra de tu papá. Ciento cuarenta monedas, y el huerto se queda tranquilo.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_05_planted_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5927835,
+  "speaker": "hania",
+  "subtitle": "De acuerdo. Las semillas van mañana al cole, y la llave que siga creciendo.",
+  "text": "De acuerdo. Las semillas van mañana al cole, y la llave que siga creciendo.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_06_bike_repair_stand.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16192877,
+  "speaker": "kuba",
+  "subtitle": "Inflé las ruedas antes del trabajo. Por primera vez llegué pronto a algún sitio.",
+  "text": "Inflé las ruedas antes del trabajo. Por primera vez llegué pronto a algún sitio.",
+  "voice_id": "VkZzWHJdAdVjOsFVZT0o",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_06_bike_repair_stand.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4935723,
+  "speaker": "borys",
+  "subtitle": "Bomba, llaves, parches. Todo está listo; solo el armario no colabora.",
+  "text": "Bomba, llaves, parches. Todo está listo; solo el armario no colabora.",
+  "voice_id": "az6GBWlKR4L8xiChUKyG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_06_bike_repair_stand.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3841242,
+  "speaker": "roman",
+  "subtitle": "El armario es de la administración. Borys debe equiparlo; consta en el encargo.",
+  "text": "El armario es de la administración. Borys debe equiparlo; consta en el encargo.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_06_bike_repair_stand.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8405222,
+  "speaker": "locksmith",
+  "subtitle": "La confirmación coincide. Ciento setenta monedas.",
+  "text": "La confirmación coincide. Ciento setenta monedas.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_06_bike_repair_stand.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13439698,
+  "speaker": "borys",
+  "subtitle": "De acuerdo. El primer inflado corre de mi cuenta.",
+  "text": "De acuerdo. El primer inflado corre de mi cuenta.",
+  "voice_id": "az6GBWlKR4L8xiChUKyG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_07_museum_night_case.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14455034,
+  "speaker": "zuzanna",
+  "subtitle": "Vinieron cuatrocientas personas. La llave tiene ahora su propia cinta y un número de inventario.",
+  "text": "Vinieron cuatrocientas personas. La llave tiene ahora su propia cinta y un número de inventario.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_07_museum_night_case.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6942168,
+  "speaker": "rygiel",
+  "subtitle": "La llave está a salvo. Está dentro de la vitrina que debía abrir.",
+  "text": "La llave está a salvo. Está dentro de la vitrina que debía abrir.",
+  "voice_id": "BH6sElg13tTrLskAMLVY",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_07_museum_night_case.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15058276,
+  "speaker": "locksmith",
+  "subtitle": "La carta de la dirección está comprobada. Ciento ochenta monedas, y trabajo con guantes.",
+  "text": "La carta de la dirección está comprobada. Ciento ochenta monedas, y trabajo con guantes.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_07_museum_night_case.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2425880,
+  "speaker": "zuzanna",
+  "subtitle": "La puse yo ahí. Sobre el terciopelo parecía una pieza de la exposición.",
+  "text": "La puse yo ahí. Sobre el terciopelo parecía una pieza de la exposición.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_07_museum_night_case.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1555854,
+  "speaker": "rygiel",
+  "subtitle": "De acuerdo. Zuzanna añadirá la llave al acta, pero no a la exposición.",
+  "text": "De acuerdo. Zuzanna añadirá la llave al acta, pero no a la exposición.",
+  "voice_id": "BH6sElg13tTrLskAMLVY",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_09_pizzeria_terrace.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8216990,
+  "speaker": "renata",
+  "subtitle": "La terraza está llena desde la primera noche. El señor Mietek también sabe el código nuevo, por si acaso.",
+  "text": "La terraza está llena desde la primera noche. El señor Mietek también sabe el código nuevo, por si acaso.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_09_pizzeria_terrace.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4309799,
+  "speaker": "renata",
+  "subtitle": "En invierno puse un código más fácil. Tan fácil que se me fue de la cabeza enseguida.",
+  "text": "En invierno puse un código más fácil. Tan fácil que se me fue de la cabeza enseguida.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_09_pizzeria_terrace.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5441109,
+  "speaker": "mietek",
+  "subtitle": "La caja fuerte es suya; la metí yo con ella. Mi espalda aún se acuerda.",
+  "text": "La caja fuerte es suya; la metí yo con ella. Mi espalda aún se acuerda.",
+  "voice_id": "zMbLG1cGSAY2FkRf79h1",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_09_pizzeria_terrace.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9374994,
+  "speaker": "locksmith",
+  "subtitle": "El contrato y la factura coinciden. Ciento ochenta y cinco monedas.",
+  "text": "El contrato y la factura coinciden. Ciento ochenta y cinco monedas.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_09_pizzeria_terrace.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1630999,
+  "speaker": "renata",
+  "subtitle": "De acuerdo. Esta vez pago con monedas, y la pizza va de regalo.",
+  "text": "De acuerdo. Esta vez pago con monedas, y la pizza va de regalo.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_10_courtyard_door.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8559617,
+  "speaker": "halina",
+  "subtitle": "La mesa llegaba hasta el tilo. Hubo caldo para todos: lo hice en dos ollas.",
+  "text": "La mesa llegaba hasta el tilo. Hubo caldo para todos: lo hice en dos ollas.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_10_courtyard_door.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7567804,
+  "speaker": "locksmith",
+  "subtitle": "La puerta del patio queda abierta hasta el otoño. La llave nueva cuelga en la sala común, con su etiqueta.",
+  "text": "La puerta del patio queda abierta hasta el otoño. La llave nueva cuelga en la sala común, con su etiqueta.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_10_courtyard_door.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6447732,
+  "speaker": "elzbieta",
+  "subtitle": "El acuerdo fue unánime. Esta puerta se abrirá por primera vez en treinta años.",
+  "text": "El acuerdo fue unánime. Esta puerta se abrirá por primera vez en treinta años.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_10_courtyard_door.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1303971,
+  "speaker": "halina",
+  "subtitle": "La mesa no cabe en la sala, hijo. He invitado a unos cuantos más.",
+  "text": "La mesa no cabe en la sala, hijo. He invitado a unos cuantos más.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_10_courtyard_door.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11946514,
+  "speaker": "locksmith",
+  "subtitle": "El permiso de la comunidad está aquí. Doscientas monedas y un poco de paciencia con una cerradura vieja.",
+  "text": "El permiso de la comunidad está aquí. Doscientas monedas y un poco de paciencia con una cerradura vieja.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch13_10_courtyard_door.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6989330,
+  "speaker": "elzbieta",
+  "subtitle": "De acuerdo. Marta ya ha colgado el cartel: la mesa empieza en la sala y termina bajo el tilo.",
+  "text": "De acuerdo. Marta ya ha colgado el cartel: la mesa empieza en la sala y termina bajo el tilo.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch13_04_winter_bike.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1269742,
+  "speaker": "roman",
+  "subtitle": "El aviso estuvo tres días. La bici es de la señora Teresa; pasó el invierno con la pierna escayolada.",
+  "text": "El aviso estuvo tres días. La bici es de la señora Teresa; pasó el invierno con la pierna escayolada.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch13_04_winter_bike.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8088175,
+  "speaker": "teresa",
+  "subtitle": "Ya vuelvo a pedalear. Menos mal que el candado dio con un hombre sensato.",
+  "text": "Ya vuelvo a pedalear. Menos mal que el candado dio con un hombre sensato.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch13_04_winter_bike.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12630829,
+  "speaker": "marek",
+  "subtitle": "Lleva aquí desde noviembre. Si nadie la toca, es que no es de nadie.",
+  "text": "Lleva aquí desde noviembre. Si nadie la toca, es que no es de nadie.",
+  "voice_id": "Zg4IlQjJwRWlWADvYnPS",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch13_04_winter_bike.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15054903,
+  "speaker": "locksmith",
+  "subtitle": "O es de alguien con paciencia. Preguntemos al señor Roman; él conoce este aparcabicis.",
+  "text": "O es de alguien con paciencia. Preguntemos al señor Roman; él conoce este aparcabicis.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch13_04_winter_bike.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3950537,
+  "speaker": "marek",
+  "subtitle": "No hace falta meter al administrador. Quite el candado y listo.",
+  "text": "No hace falta meter al administrador. Quite el candado y listo.",
+  "voice_id": "Zg4IlQjJwRWlWADvYnPS",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch13_04_winter_bike.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2748203,
+  "speaker": "locksmith",
+  "subtitle": "Aquí no voy a abrir. El señor Roman le colgará un aviso. Quien la eche de menos dirá algo.",
+  "text": "Aquí no voy a abrir. El señor Roman le colgará un aviso. Quien la eche de menos dirá algo.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch13_08_found_cashbox.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10568680,
+  "speaker": "elzbieta",
+  "subtitle": "La caja es de la señora Janka; la buscaba desde la mudanza. Dentro estaban sus fotos de boda.",
+  "text": "La caja es de la señora Janka; la buscaba desde la mudanza. Dentro estaban sus fotos de boda.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch13_08_found_cashbox.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16108232,
+  "speaker": "oskar",
+  "subtitle": "Me dieron mi recompensa: un tarro de pepinillos y el título de hallador honrado.",
+  "text": "Me dieron mi recompensa: un tarro de pepinillos y el título de hallador honrado.",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch13_08_found_cashbox.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1416809,
+  "speaker": "oskar",
+  "subtitle": "Estaba detrás de un aparador viejo. Lo encontrado no es robado, ¿no?",
+  "text": "Estaba detrás de un aparador viejo. Lo encontrado no es robado, ¿no?",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch13_08_found_cashbox.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15619788,
+  "speaker": "locksmith",
+  "subtitle": "Lo encontrado sigue siendo de alguien. Llevémosla a la señora Elżbieta.",
+  "text": "Lo encontrado sigue siendo de alguien. Llevémosla a la señora Elżbieta.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch13_08_found_cashbox.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1310673,
+  "speaker": "oskar",
+  "subtitle": "¿Y si dentro hay un tesoro? Primero miramos y luego ya lo diremos.",
+  "text": "¿Y si dentro hay un tesoro? Primero miramos y luego ya lo diremos.",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch13_08_found_cashbox.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 84406,
+  "speaker": "locksmith",
+  "subtitle": "Aquí no voy a abrir. La señora Elżbieta pondrá un aviso y aparecerá el dueño.",
+  "text": "Aquí no voy a abrir. La señora Elżbieta pondrá un aviso y aparecerá el dueño.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_01_balcony_boxes.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7692970,
+  "speaker": "halina",
+  "subtitle": "Les géraniums sont sur le balcon. Zosia dit qu'ils sont de travers, donc ils poussent à ma façon.",
+  "text": "Les géraniums sont sur le balcon. Zosia dit qu'ils sont de travers, donc ils poussent à ma façon.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_01_balcony_boxes.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12001218,
+  "speaker": "halina",
+  "subtitle": "Les géraniums ont passé l'hiver à la cave, mon petit. Le cadenas aussi, mais il l'a moins bien supporté.",
+  "text": "Les géraniums ont passé l'hiver à la cave, mon petit. Le cadenas aussi, mais il l'a moins bien supporté.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_01_balcony_boxes.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14909649,
+  "speaker": "zosia",
+  "subtitle": "Le box numéro sept est à Halina. Le mien est juste à côté depuis quarante ans.",
+  "text": "Le box numéro sept est à Halina. Le mien est juste à côté depuis quarante ans.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_01_balcony_boxes.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12837964,
+  "speaker": "locksmith",
+  "subtitle": "La liste est en ordre. Cent cinquante pièces, et les géraniums retrouvent le soleil.",
+  "text": "La liste est en ordre. Cent cinquante pièces, et les géraniums retrouvent le soleil.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_01_balcony_boxes.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7511099,
+  "speaker": "halina",
+  "subtitle": "D'accord. Zosia portera l'arrosoir, et moi je vous invite pour un bouillon.",
+  "text": "D'accord. Zosia portera l'arrosoir, et moi je vous invite pour un bouillon.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_02_first_ice_cream.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6288239,
+  "speaker": "krysia",
+  "subtitle": "À la crème, comme chaque année. Stefan a attaché la clé au congélateur avec une ficelle.",
+  "text": "À la crème, comme chaque année. Stefan a attaché la clé au congélateur avec une ficelle.",
+  "voice_id": "MAdUcSYw2pgceDixE8xr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_02_first_ice_cream.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3243322,
+  "speaker": "stefan",
+  "subtitle": "Les glaces sont arrivées, pas la clé. Elle a passé un meilleur hiver que moi : elle n'est toujours pas rentrée.",
+  "text": "Les glaces sont arrivées, pas la clé. Elle a passé un meilleur hiver que moi : elle n'est toujours pas rentrée.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_02_first_ice_cream.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15284382,
+  "speaker": "krysia",
+  "subtitle": "C'est son congélateur. De mai à septembre, je suis devant tous les jours.",
+  "text": "C'est son congélateur. De mai à septembre, je suis devant tous les jours.",
+  "voice_id": "MAdUcSYw2pgceDixE8xr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_02_first_ice_cream.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8284540,
+  "speaker": "locksmith",
+  "subtitle": "La facture correspond. Cent cinquante-cinq pièces, avant que les glaces ramollissent.",
+  "text": "La facture correspond. Cent cinquante-cinq pièces, avant que les glaces ramollissent.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_02_first_ice_cream.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9020545,
+  "speaker": "stefan",
+  "subtitle": "D'accord. Le premier cornet est pour Madame Krysia, le deuxième pour vous.",
+  "text": "D'accord. Le premier cornet est pour Madame Krysia, le deuxième pour vous.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_03_allotment_gate.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6909597,
+  "speaker": "zbyszek",
+  "subtitle": "Le portail est ouvert, les tomates sont en terre. Waldek porte maintenant la clé autour du cou.",
+  "text": "Le portail est ouvert, les tomates sont en terre. Waldek porte maintenant la clé autour du cou.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_03_allotment_gate.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12031453,
+  "speaker": "zbyszek",
+  "subtitle": "La saison commence aujourd'hui, et le portail se croit encore en hiver.",
+  "text": "La saison commence aujourd'hui, et le portail se croit encore en hiver.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_03_allotment_gate.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16133251,
+  "speaker": "waldek",
+  "subtitle": "La clé a passé l'hiver dans mon abri. L'abri est derrière le portail. C'était mon idée.",
+  "text": "La clé a passé l'hiver dans mon abri. L'abri est derrière le portail. C'était mon idée.",
+  "voice_id": "6ECEPYinwnizS5hjagZQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_03_allotment_gate.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9967738,
+  "speaker": "locksmith",
+  "subtitle": "La décision du bureau est là. Cent soixante pièces, et j'ouvre en votre présence.",
+  "text": "La décision du bureau est là. Cent soixante pièces, et j'ouvre en votre présence.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_03_allotment_gate.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5138704,
+  "speaker": "zbyszek",
+  "subtitle": "D'accord. Les plants de tomates attendent dans le coffre et s'impatientent.",
+  "text": "D'accord. Les plants de tomates attendent dans le coffre et s'impatientent.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_05_planted_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3560052,
+  "speaker": "hania",
+  "subtitle": "Les radis ont poussé, pas la clé. Papa en a fait une neuve et il ne veut pas que je l'arrose.",
+  "text": "Les radis ont poussé, pas la clé. Papa en a fait une neuve et il ne veut pas que je l'arrose.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_05_planted_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5761248,
+  "speaker": "hania",
+  "subtitle": "J'ai planté la clé. Je l'arrose tous les jours, mais rien n'a encore poussé.",
+  "text": "J'ai planté la clé. Je l'arrose tous les jours, mais rien n'a encore poussé.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_05_planted_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16369995,
+  "speaker": "tomasz",
+  "subtitle": "La boîte est à Hania, je l'ai faite moi-même. La clé est quelque part sous les radis.",
+  "text": "La boîte est à Hania, je l'ai faite moi-même. La clé est quelque part sous les radis.",
+  "voice_id": "kmrKRziyBLKhbqe5EalT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_05_planted_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13741795,
+  "speaker": "locksmith",
+  "subtitle": "La photo et la parole de ton papa me suffisent. Cent quarante pièces, et on laisse le potager tranquille.",
+  "text": "La photo et la parole de ton papa me suffisent. Cent quarante pièces, et on laisse le potager tranquille.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_05_planted_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5927835,
+  "speaker": "hania",
+  "subtitle": "D'accord. Les graines vont à l'école demain, et la clé peut continuer à pousser.",
+  "text": "D'accord. Les graines vont à l'école demain, et la clé peut continuer à pousser.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_06_bike_repair_stand.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16192877,
+  "speaker": "kuba",
+  "subtitle": "J'ai gonflé mes pneus avant le travail. Pour la première fois, je suis arrivé en avance quelque part.",
+  "text": "J'ai gonflé mes pneus avant le travail. Pour la première fois, je suis arrivé en avance quelque part.",
+  "voice_id": "VkZzWHJdAdVjOsFVZT0o",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_06_bike_repair_stand.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4935723,
+  "speaker": "borys",
+  "subtitle": "Pompe, clés, rustines. Tout est prêt, sauf l'armoire qui refuse de coopérer.",
+  "text": "Pompe, clés, rustines. Tout est prêt, sauf l'armoire qui refuse de coopérer.",
+  "voice_id": "az6GBWlKR4L8xiChUKyG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_06_bike_repair_stand.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3841242,
+  "speaker": "roman",
+  "subtitle": "L'armoire est à la gérance. Borys doit la garnir, c'est dans la commande.",
+  "text": "L'armoire est à la gérance. Borys doit la garnir, c'est dans la commande.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_06_bike_repair_stand.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8405222,
+  "speaker": "locksmith",
+  "subtitle": "La confirmation est en ordre. Cent soixante-dix pièces.",
+  "text": "La confirmation est en ordre. Cent soixante-dix pièces.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_06_bike_repair_stand.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13439698,
+  "speaker": "borys",
+  "subtitle": "D'accord. Le premier gonflage, c'est moi qui vous l'offre.",
+  "text": "D'accord. Le premier gonflage, c'est moi qui vous l'offre.",
+  "voice_id": "az6GBWlKR4L8xiChUKyG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_07_museum_night_case.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14455034,
+  "speaker": "zuzanna",
+  "subtitle": "Quatre cents personnes sont venues. La clé a maintenant son cordon et un numéro d'inventaire.",
+  "text": "Quatre cents personnes sont venues. La clé a maintenant son cordon et un numéro d'inventaire.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_07_museum_night_case.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6942168,
+  "speaker": "rygiel",
+  "subtitle": "La clé est en sécurité. Elle est dans la vitrine qu'elle devait ouvrir.",
+  "text": "La clé est en sécurité. Elle est dans la vitrine qu'elle devait ouvrir.",
+  "voice_id": "BH6sElg13tTrLskAMLVY",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_07_museum_night_case.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15058276,
+  "speaker": "locksmith",
+  "subtitle": "La lettre de la direction est vérifiée. Cent quatre-vingts pièces, et je travaille avec des gants.",
+  "text": "La lettre de la direction est vérifiée. Cent quatre-vingts pièces, et je travaille avec des gants.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_07_museum_night_case.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2425880,
+  "speaker": "zuzanna",
+  "subtitle": "C'est moi qui l'ai posée là. Sur le velours, on aurait dit une pièce de collection.",
+  "text": "C'est moi qui l'ai posée là. Sur le velours, on aurait dit une pièce de collection.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_07_museum_night_case.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1555854,
+  "speaker": "rygiel",
+  "subtitle": "D'accord. Zuzanna ajoutera la clé au procès-verbal, mais pas à l'exposition.",
+  "text": "D'accord. Zuzanna ajoutera la clé au procès-verbal, mais pas à l'exposition.",
+  "voice_id": "BH6sElg13tTrLskAMLVY",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_09_pizzeria_terrace.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8216990,
+  "speaker": "renata",
+  "subtitle": "La terrasse est pleine depuis le premier soir. Monsieur Mietek connaît aussi le nouveau code, au cas où.",
+  "text": "La terrasse est pleine depuis le premier soir. Monsieur Mietek connaît aussi le nouveau code, au cas où.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_09_pizzeria_terrace.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4309799,
+  "speaker": "renata",
+  "subtitle": "Cet hiver, j'ai mis un code plus simple. Si simple qu'il m'est sorti de la tête aussitôt.",
+  "text": "Cet hiver, j'ai mis un code plus simple. Si simple qu'il m'est sorti de la tête aussitôt.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_09_pizzeria_terrace.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5441109,
+  "speaker": "mietek",
+  "subtitle": "Le coffre est à elle, je l'ai porté avec elle. Mon dos s'en souvient encore.",
+  "text": "Le coffre est à elle, je l'ai porté avec elle. Mon dos s'en souvient encore.",
+  "voice_id": "zMbLG1cGSAY2FkRf79h1",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_09_pizzeria_terrace.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9374994,
+  "speaker": "locksmith",
+  "subtitle": "Le bail et la facture correspondent. Cent quatre-vingt-cinq pièces.",
+  "text": "Le bail et la facture correspondent. Cent quatre-vingt-cinq pièces.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_09_pizzeria_terrace.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1630999,
+  "speaker": "renata",
+  "subtitle": "D'accord. Cette fois, je paie en pièces, et la pizza vient en supplément.",
+  "text": "D'accord. Cette fois, je paie en pièces, et la pizza vient en supplément.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_10_courtyard_door.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8559617,
+  "speaker": "halina",
+  "subtitle": "La table allait jusqu'au tilleul. Il y a eu assez de bouillon : j'en avais fait deux marmites.",
+  "text": "La table allait jusqu'au tilleul. Il y a eu assez de bouillon : j'en avais fait deux marmites.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_10_courtyard_door.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7567804,
+  "speaker": "locksmith",
+  "subtitle": "La porte de la cour reste ouverte jusqu'à l'automne. La nouvelle clé est accrochée dans la salle commune, étiquetée.",
+  "text": "La porte de la cour reste ouverte jusqu'à l'automne. La nouvelle clé est accrochée dans la salle commune, étiquetée.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_10_courtyard_door.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6447732,
+  "speaker": "elzbieta",
+  "subtitle": "La décision a été unanime. Cette porte va s'ouvrir pour la première fois en trente ans.",
+  "text": "La décision a été unanime. Cette porte va s'ouvrir pour la première fois en trente ans.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_10_courtyard_door.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1303971,
+  "speaker": "halina",
+  "subtitle": "La table ne tient pas dans la salle, mon petit. J'ai invité quelques personnes de plus.",
+  "text": "La table ne tient pas dans la salle, mon petit. J'ai invité quelques personnes de plus.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_10_courtyard_door.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11946514,
+  "speaker": "locksmith",
+  "subtitle": "L'accord de la copropriété est là. Deux cents pièces, et un peu de patience pour une vieille serrure.",
+  "text": "L'accord de la copropriété est là. Deux cents pièces, et un peu de patience pour une vieille serrure.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch13_10_courtyard_door.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6989330,
+  "speaker": "elzbieta",
+  "subtitle": "D'accord. Marta a déjà posé l'affiche : la table commence dans la salle et finit sous le tilleul.",
+  "text": "D'accord. Marta a déjà posé l'affiche : la table commence dans la salle et finit sous le tilleul.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch13_04_winter_bike.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1269742,
+  "speaker": "roman",
+  "subtitle": "Le mot est resté trois jours. Le vélo est à Madame Teresa, elle a eu la jambe dans le plâtre cet hiver.",
+  "text": "Le mot est resté trois jours. Le vélo est à Madame Teresa, elle a eu la jambe dans le plâtre cet hiver.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch13_04_winter_bike.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8088175,
+  "speaker": "teresa",
+  "subtitle": "Je roule de nouveau. Heureusement que l'antivol est tombé sur quelqu'un de raisonnable.",
+  "text": "Je roule de nouveau. Heureusement que l'antivol est tombé sur quelqu'un de raisonnable.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch13_04_winter_bike.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12630829,
+  "speaker": "marek",
+  "subtitle": "Il est là depuis novembre. Si personne n'y touche, c'est qu'il n'est à personne.",
+  "text": "Il est là depuis novembre. Si personne n'y touche, c'est qu'il n'est à personne.",
+  "voice_id": "Zg4IlQjJwRWlWADvYnPS",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch13_04_winter_bike.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15054903,
+  "speaker": "locksmith",
+  "subtitle": "Ou alors à quelqu'un de patient. Demandons à Monsieur Roman, il connaît ce râtelier.",
+  "text": "Ou alors à quelqu'un de patient. Demandons à Monsieur Roman, il connaît ce râtelier.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch13_04_winter_bike.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3950537,
+  "speaker": "marek",
+  "subtitle": "Pas besoin du gérant. Vous enlevez l'antivol et on n'en parle plus.",
+  "text": "Pas besoin du gérant. Vous enlevez l'antivol et on n'en parle plus.",
+  "voice_id": "Zg4IlQjJwRWlWADvYnPS",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch13_04_winter_bike.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2748203,
+  "speaker": "locksmith",
+  "subtitle": "Ici, je n'ouvrirai pas. Monsieur Roman y accrochera un mot. Celui à qui il manque se manifestera.",
+  "text": "Ici, je n'ouvrirai pas. Monsieur Roman y accrochera un mot. Celui à qui il manque se manifestera.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch13_08_found_cashbox.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10568680,
+  "speaker": "elzbieta",
+  "subtitle": "Le coffret est à Madame Janka, elle le cherchait depuis son déménagement. Il contenait ses photos de mariage.",
+  "text": "Le coffret est à Madame Janka, elle le cherchait depuis son déménagement. Il contenait ses photos de mariage.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch13_08_found_cashbox.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16108232,
+  "speaker": "oskar",
+  "subtitle": "J'ai eu ma récompense : un bocal de cornichons et le titre d'honnête trouveur.",
+  "text": "J'ai eu ma récompense : un bocal de cornichons et le titre d'honnête trouveur.",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch13_08_found_cashbox.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1416809,
+  "speaker": "oskar",
+  "subtitle": "Il était derrière un vieux buffet. Trouvé, ce n'est pas volé, non ?",
+  "text": "Il était derrière un vieux buffet. Trouvé, ce n'est pas volé, non ?",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch13_08_found_cashbox.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15619788,
+  "speaker": "locksmith",
+  "subtitle": "Ce qu'on trouve appartient encore à quelqu'un. Portons-le à Madame Elżbieta.",
+  "text": "Ce qu'on trouve appartient encore à quelqu'un. Portons-le à Madame Elżbieta.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch13_08_found_cashbox.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1310673,
+  "speaker": "oskar",
+  "subtitle": "Et s'il y a un trésor dedans ? On regarde d'abord, on préviendra après.",
+  "text": "Et s'il y a un trésor dedans ? On regarde d'abord, on préviendra après.",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch13_08_found_cashbox.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 84406,
+  "speaker": "locksmith",
+  "subtitle": "Ici, je n'ouvrirai pas. Madame Elżbieta mettra une annonce, et le propriétaire se manifestera.",
+  "text": "Ici, je n'ouvrirai pas. Madame Elżbieta mettra une annonce, et le propriétaire se manifestera.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_01_balcony_boxes.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7692970,
+  "speaker": "halina",
+  "subtitle": "Pelargonie stoją na balkonie. Zosia mówi, że krzywo, więc rosną po mojemu.",
+  "text": "Pelargonie stoją na balkonie. Zosia mówi, że krzywo, więc rosną po mojemu.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_01_balcony_boxes.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12001218,
+  "speaker": "halina",
+  "subtitle": "Pelargonie przezimowały w piwnicy, synku. Kłódka też, tylko gorzej to zniosła.",
+  "text": "Pelargonie przezimowały w piwnicy, synku. Kłódka też, tylko gorzej to zniosła.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_01_balcony_boxes.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14909649,
+  "speaker": "zosia",
+  "subtitle": "Komórka numer siedem, Halinki. Moja jest obok, od czterdziestu lat.",
+  "text": "Komórka numer siedem, Halinki. Moja jest obok, od czterdziestu lat.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_01_balcony_boxes.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12837964,
+  "speaker": "locksmith",
+  "subtitle": "Wykaz się zgadza. Sto pięćdziesiąt monet i pelargonie wracają na słońce.",
+  "text": "Wykaz się zgadza. Sto pięćdziesiąt monet i pelargonie wracają na słońce.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_01_balcony_boxes.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7511099,
+  "speaker": "halina",
+  "subtitle": "Zgoda. Zosia poniesie konewkę, a ja zapraszam pana na rosół.",
+  "text": "Zgoda. Zosia poniesie konewkę, a ja zapraszam pana na rosół.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_02_first_ice_cream.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6288239,
+  "speaker": "krysia",
+  "subtitle": "Śmietankowe, jak co roku. Stefan przywiązał kluczyk do zamrażarki sznurkiem.",
+  "text": "Śmietankowe, jak co roku. Stefan przywiązał kluczyk do zamrażarki sznurkiem.",
+  "voice_id": "MAdUcSYw2pgceDixE8xr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_02_first_ice_cream.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3243322,
+  "speaker": "stefan",
+  "subtitle": "Lody przyjechały, kluczyk nie. Zimował lepiej ode mnie, bo do dziś nie wrócił.",
+  "text": "Lody przyjechały, kluczyk nie. Zimował lepiej ode mnie, bo do dziś nie wrócił.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_02_first_ice_cream.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15284382,
+  "speaker": "krysia",
+  "subtitle": "To jego zamrażarka. Od maja do września stoję przy niej codziennie.",
+  "text": "To jego zamrażarka. Od maja do września stoję przy niej codziennie.",
+  "voice_id": "MAdUcSYw2pgceDixE8xr",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_02_first_ice_cream.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8284540,
+  "speaker": "locksmith",
+  "subtitle": "Faktura pasuje. Sto pięćdziesiąt pięć monet, zanim lody zmiękną.",
+  "text": "Faktura pasuje. Sto pięćdziesiąt pięć monet, zanim lody zmiękną.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_02_first_ice_cream.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9020545,
+  "speaker": "stefan",
+  "subtitle": "Zgoda. Pierwszy rożek jest dla pani Krysi, drugi dla pana.",
+  "text": "Zgoda. Pierwszy rożek jest dla pani Krysi, drugi dla pana.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_03_allotment_gate.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6909597,
+  "speaker": "zbyszek",
+  "subtitle": "Brama otwarta, pomidory w ziemi. Waldek nosi teraz klucz na szyi.",
+  "text": "Brama otwarta, pomidory w ziemi. Waldek nosi teraz klucz na szyi.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_03_allotment_gate.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12031453,
+  "speaker": "zbyszek",
+  "subtitle": "Sezon zaczyna się dziś, a brama myśli, że jeszcze jest zima.",
+  "text": "Sezon zaczyna się dziś, a brama myśli, że jeszcze jest zima.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_03_allotment_gate.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16133251,
+  "speaker": "waldek",
+  "subtitle": "Klucz zimował w mojej altanie. Altana jest za bramą. Sam to wymyśliłem.",
+  "text": "Klucz zimował w mojej altanie. Altana jest za bramą. Sam to wymyśliłem.",
+  "voice_id": "6ECEPYinwnizS5hjagZQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_03_allotment_gate.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9967738,
+  "speaker": "locksmith",
+  "subtitle": "Uchwała zarządu jest. Sto sześćdziesiąt monet, otwieram przy panach.",
+  "text": "Uchwała zarządu jest. Sto sześćdziesiąt monet, otwieram przy panach.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_03_allotment_gate.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5138704,
+  "speaker": "zbyszek",
+  "subtitle": "Zgoda. Rozsada pomidorów czeka w bagażniku i się niecierpliwi.",
+  "text": "Zgoda. Rozsada pomidorów czeka w bagażniku i się niecierpliwi.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_05_planted_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3560052,
+  "speaker": "hania",
+  "subtitle": "Rzodkiewka wyrosła, klucz nie. Tata zrobił nowy i nie pozwala go podlewać.",
+  "text": "Rzodkiewka wyrosła, klucz nie. Tata zrobił nowy i nie pozwala go podlewać.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_05_planted_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5761248,
+  "speaker": "hania",
+  "subtitle": "Zasadziłam klucz. Podlewam go codziennie, ale jeszcze nic nie wyrosło.",
+  "text": "Zasadziłam klucz. Podlewam go codziennie, ale jeszcze nic nie wyrosło.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_05_planted_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16369995,
+  "speaker": "tomasz",
+  "subtitle": "Skrzynka jest Hani, sam ją zrobiłem. Klucz jest gdzieś pod rzodkiewką.",
+  "text": "Skrzynka jest Hani, sam ją zrobiłem. Klucz jest gdzieś pod rzodkiewką.",
+  "voice_id": "kmrKRziyBLKhbqe5EalT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_05_planted_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13741795,
+  "speaker": "locksmith",
+  "subtitle": "Zdjęcie i słowo taty mi wystarczą. Sto czterdzieści monet, a grządka zostaje w spokoju.",
+  "text": "Zdjęcie i słowo taty mi wystarczą. Sto czterdzieści monet, a grządka zostaje w spokoju.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_05_planted_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5927835,
+  "speaker": "hania",
+  "subtitle": "Zgoda. Nasiona idą jutro do szkoły, a klucz niech sobie rośnie.",
+  "text": "Zgoda. Nasiona idą jutro do szkoły, a klucz niech sobie rośnie.",
+  "voice_id": "JzWU21284iaFaYfZncvD",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_06_bike_repair_stand.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16192877,
+  "speaker": "kuba",
+  "subtitle": "Napompowałem koła przed pracą. Pierwszy raz byłem gdzieś przed czasem.",
+  "text": "Napompowałem koła przed pracą. Pierwszy raz byłem gdzieś przed czasem.",
+  "voice_id": "VkZzWHJdAdVjOsFVZT0o",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_06_bike_repair_stand.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4935723,
+  "speaker": "borys",
+  "subtitle": "Pompka, klucze, łatki. Wszystko gotowe, tylko szafka nie chce współpracować.",
+  "text": "Pompka, klucze, łatki. Wszystko gotowe, tylko szafka nie chce współpracować.",
+  "voice_id": "az6GBWlKR4L8xiChUKyG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_06_bike_repair_stand.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3841242,
+  "speaker": "roman",
+  "subtitle": "Szafka administracji. Borys ma ją wyposażyć, jest w zleceniu.",
+  "text": "Szafka administracji. Borys ma ją wyposażyć, jest w zleceniu.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_06_bike_repair_stand.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8405222,
+  "speaker": "locksmith",
+  "subtitle": "Potwierdzenie się zgadza. Sto siedemdziesiąt monet.",
+  "text": "Potwierdzenie się zgadza. Sto siedemdziesiąt monet.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_06_bike_repair_stand.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13439698,
+  "speaker": "borys",
+  "subtitle": "Zgoda. Pierwsze pompowanie ma pan u mnie za darmo.",
+  "text": "Zgoda. Pierwsze pompowanie ma pan u mnie za darmo.",
+  "voice_id": "az6GBWlKR4L8xiChUKyG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_07_museum_night_case.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14455034,
+  "speaker": "zuzanna",
+  "subtitle": "Przyszło czterysta osób. Klucz ma teraz własną smycz i numer w inwentarzu.",
+  "text": "Przyszło czterysta osób. Klucz ma teraz własną smycz i numer w inwentarzu.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_07_museum_night_case.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6942168,
+  "speaker": "rygiel",
+  "subtitle": "Klucz jest bezpieczny. Leży w gablocie, którą miał otwierać.",
+  "text": "Klucz jest bezpieczny. Leży w gablocie, którą miał otwierać.",
+  "voice_id": "BH6sElg13tTrLskAMLVY",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_07_museum_night_case.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15058276,
+  "speaker": "locksmith",
+  "subtitle": "Pismo dyrekcji sprawdzone. Sto osiemdziesiąt monet, pracuję w rękawiczkach.",
+  "text": "Pismo dyrekcji sprawdzone. Sto osiemdziesiąt monet, pracuję w rękawiczkach.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_07_museum_night_case.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2425880,
+  "speaker": "zuzanna",
+  "subtitle": "To ja go tam położyłam. Na aksamicie wyglądał jak eksponat.",
+  "text": "To ja go tam położyłam. Na aksamicie wyglądał jak eksponat.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_07_museum_night_case.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1555854,
+  "speaker": "rygiel",
+  "subtitle": "Zgoda. Zuzanna dopisze klucz do protokołu, ale nie do wystawy.",
+  "text": "Zgoda. Zuzanna dopisze klucz do protokołu, ale nie do wystawy.",
+  "voice_id": "BH6sElg13tTrLskAMLVY",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_09_pizzeria_terrace.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8216990,
+  "speaker": "renata",
+  "subtitle": "Ogródek pełny od pierwszego wieczoru. Nowy kod zna też pan Mietek, na wszelki wypadek.",
+  "text": "Ogródek pełny od pierwszego wieczoru. Nowy kod zna też pan Mietek, na wszelki wypadek.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_09_pizzeria_terrace.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4309799,
+  "speaker": "renata",
+  "subtitle": "Zimą zmieniłam kod na łatwiejszy. Tak łatwy, że od razu wyleciał mi z głowy.",
+  "text": "Zimą zmieniłam kod na łatwiejszy. Tak łatwy, że od razu wyleciał mi z głowy.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_09_pizzeria_terrace.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5441109,
+  "speaker": "mietek",
+  "subtitle": "Sejf jest jej, sam go z nią wnosiłem. Krzyż pamięta to do dziś.",
+  "text": "Sejf jest jej, sam go z nią wnosiłem. Krzyż pamięta to do dziś.",
+  "voice_id": "zMbLG1cGSAY2FkRf79h1",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_09_pizzeria_terrace.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9374994,
+  "speaker": "locksmith",
+  "subtitle": "Umowa i faktura pasują. Sto osiemdziesiąt pięć monet.",
+  "text": "Umowa i faktura pasują. Sto osiemdziesiąt pięć monet.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_09_pizzeria_terrace.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1630999,
+  "speaker": "renata",
+  "subtitle": "Zgoda. Tym razem płacę monetami, a pizzę dostanie pan na dokładkę.",
+  "text": "Zgoda. Tym razem płacę monetami, a pizzę dostanie pan na dokładkę.",
+  "voice_id": "lQgZWwf6S5C9kjabD9rm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_10_courtyard_door.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8559617,
+  "speaker": "halina",
+  "subtitle": "Stół sięgał aż pod lipę. Rosołu wystarczyło, bo gotowałam w dwóch garnkach.",
+  "text": "Stół sięgał aż pod lipę. Rosołu wystarczyło, bo gotowałam w dwóch garnkach.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_10_courtyard_door.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7567804,
+  "speaker": "locksmith",
+  "subtitle": "Drzwi na podwórko zostają otwarte do jesieni. Nowy klucz wisi w świetlicy, podpisany.",
+  "text": "Drzwi na podwórko zostają otwarte do jesieni. Nowy klucz wisi w świetlicy, podpisany.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_10_courtyard_door.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6447732,
+  "speaker": "elzbieta",
+  "subtitle": "Uchwała jest jednogłośna. Te drzwi otworzą się pierwszy raz od trzydziestu lat.",
+  "text": "Uchwała jest jednogłośna. Te drzwi otworzą się pierwszy raz od trzydziestu lat.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_10_courtyard_door.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1303971,
+  "speaker": "halina",
+  "subtitle": "Stół się w sali nie mieści, synku. Zaprosiłam trochę więcej gości.",
+  "text": "Stół się w sali nie mieści, synku. Zaprosiłam trochę więcej gości.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_10_courtyard_door.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11946514,
+  "speaker": "locksmith",
+  "subtitle": "Zgoda wspólnoty jest. Dwieście monet i trochę cierpliwości dla starego zamka.",
+  "text": "Zgoda wspólnoty jest. Dwieście monet i trochę cierpliwości dla starego zamka.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch13_10_courtyard_door.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6989330,
+  "speaker": "elzbieta",
+  "subtitle": "Zgoda. Marta już powiesiła plakat: stół zaczyna się w sali, a kończy pod lipą.",
+  "text": "Zgoda. Marta już powiesiła plakat: stół zaczyna się w sali, a kończy pod lipą.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch13_04_winter_bike.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1269742,
+  "speaker": "roman",
+  "subtitle": "Kartka wisiała trzy dni. Rower jest pani Teresy, zimą miała nogę w gipsie.",
+  "text": "Kartka wisiała trzy dni. Rower jest pani Teresy, zimą miała nogę w gipsie.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch13_04_winter_bike.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8088175,
+  "speaker": "teresa",
+  "subtitle": "Już jeżdżę. Dobrze, że kłódka trafiła na rozsądnego człowieka.",
+  "text": "Już jeżdżę. Dobrze, że kłódka trafiła na rozsądnego człowieka.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch13_04_winter_bike.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12630829,
+  "speaker": "marek",
+  "subtitle": "Stoi tu od listopada. Jak nikt nie rusza, to znaczy, że niczyj.",
+  "text": "Stoi tu od listopada. Jak nikt nie rusza, to znaczy, że niczyj.",
+  "voice_id": "Zg4IlQjJwRWlWADvYnPS",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch13_04_winter_bike.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15054903,
+  "speaker": "locksmith",
+  "subtitle": "Może czyjś, tylko cierpliwy. Zapytajmy pana Romana, on zna ten stojak.",
+  "text": "Może czyjś, tylko cierpliwy. Zapytajmy pana Romana, on zna ten stojak.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch13_04_winter_bike.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3950537,
+  "speaker": "marek",
+  "subtitle": "Po co zaraz administrator. Zdejmie pan kłódkę i po sprawie.",
+  "text": "Po co zaraz administrator. Zdejmie pan kłódkę i po sprawie.",
+  "voice_id": "Zg4IlQjJwRWlWADvYnPS",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch13_04_winter_bike.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2748203,
+  "speaker": "locksmith",
+  "subtitle": "Tu nie otworzę. Pan Roman powiesi na nim kartkę. Kto tęskni, ten się odezwie.",
+  "text": "Tu nie otworzę. Pan Roman powiesi na nim kartkę. Kto tęskni, ten się odezwie.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch13_08_found_cashbox.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10568680,
+  "speaker": "elzbieta",
+  "subtitle": "Kasetka jest pani Janki, szukała jej od przeprowadzki. W środku były zdjęcia ślubne.",
+  "text": "Kasetka jest pani Janki, szukała jej od przeprowadzki. W środku były zdjęcia ślubne.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch13_08_found_cashbox.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16108232,
+  "speaker": "oskar",
+  "subtitle": "Dostałem znaleźne: słoik ogórków i tytuł uczciwego znalazcy.",
+  "text": "Dostałem znaleźne: słoik ogórków i tytuł uczciwego znalazcy.",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch13_08_found_cashbox.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1416809,
+  "speaker": "oskar",
+  "subtitle": "Stała za starym kredensem. Znalezione nie kradzione, prawda?",
+  "text": "Stała za starym kredensem. Znalezione nie kradzione, prawda?",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch13_08_found_cashbox.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15619788,
+  "speaker": "locksmith",
+  "subtitle": "Znalezione jest dalej czyjeś. Zanieśmy ją do pani Elżbiety.",
+  "text": "Znalezione jest dalej czyjeś. Zanieśmy ją do pani Elżbiety.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch13_08_found_cashbox.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1310673,
+  "speaker": "oskar",
+  "subtitle": "A jeśli w środku jest skarb? Najpierw zajrzyjmy, potem się powie.",
+  "text": "A jeśli w środku jest skarb? Najpierw zajrzyjmy, potem się powie.",
+  "voice_id": "o0zMTBjmTREnNgwg9Lx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch13_08_found_cashbox.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 84406,
+  "speaker": "locksmith",
+  "subtitle": "Tu nie otworzę. Pani Elżbieta wywiesi ogłoszenie i właściciel się znajdzie.",
+  "text": "Tu nie otworzę. Pani Elżbieta wywiesi ogłoszenie i właściciel się znajdzie.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ }
+}
