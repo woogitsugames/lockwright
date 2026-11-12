@@ -1,0 +1,43 @@
+{
+  "id": "job.ch13_07_museum_night_case",
+  "chapter": 13,
+  "order": 7,
+  "district": "Port",
+  "family": "magnetic",
+  "tier": 3,
+  "verification": "Pisemne zlecenie dyrekcji muzeum (3) i potwierdzenie opieki nad gablotą (2). Kuratorka obecna przy otwarciu. Zgoda na otwarcie, próg 3. Wycena zaakceptowana.",
+  "verify_kind": "shared",
+  "reward_coins": 180,
+  "tone": "pedantyczny, lekko zabawny",
+  "i18n": {
+    "title": "job.ch13_07_museum_night_case.title",
+    "client": "job.ch13_07_museum_night_case.client",
+    "situation": "job.ch13_07_museum_night_case.situation"
+  },
+  "lines": [
+    "rygiel",
+    "locksmith",
+    "zuzanna",
+    "rygiel"
+  ],
+  "after": [
+    "zuzanna"
+  ],
+  "cards": [
+    "institution",
+    "manager"
+  ],
+  "threshold": 3,
+  "place": "museum",
+  "time": "evening",
+  "arrival_from": "job.museum_time_lock",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-111: chapter 13 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "manager": {
+      "issuer": "museum",
+      "purpose": "custody"
+    }
+  }
+}

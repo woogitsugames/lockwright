@@ -1,0 +1,45 @@
+{
+  "id": "job.refuse_ch13_08_found_cashbox",
+  "chapter": 13,
+  "order": 8,
+  "district": "Śródmieście",
+  "family": "lever",
+  "tier": 3,
+  "verification": "Oskar znalazł we wspólnej piwnicy cudzą zamkniętą kasetkę i chce do niej zajrzeć, zanim ktokolwiek się dowie. Ma tylko własny dowód. Odmowa: kasetka trafia do zarządczyni, która szuka właściciela ogłoszeniem. Brak oskarżeń.",
+  "verify_kind": "object",
+  "reward_coins": 0,
+  "tone": "ciepły, lekko zabawny; odmowa bez dramatu",
+  "i18n": {
+    "title": "job.refuse_ch13_08_found_cashbox.title",
+    "client": "job.refuse_ch13_08_found_cashbox.client",
+    "situation": "job.refuse_ch13_08_found_cashbox.situation"
+  },
+  "lines": [
+    "oskar",
+    "locksmith",
+    "oskar",
+    "locksmith"
+  ],
+  "after": [
+    "elzbieta",
+    "oskar"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2,
+  "place": "cellar",
+  "time": "evening",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-111: chapter 13 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": "Oskar"
+    }
+  }
+}

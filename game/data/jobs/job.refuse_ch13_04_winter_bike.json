@@ -1,0 +1,46 @@
+{
+  "id": "job.refuse_ch13_04_winter_bike",
+  "chapter": 13,
+  "order": 4,
+  "district": "Osiedle Słoneczne",
+  "family": "combo",
+  "tier": 3,
+  "verification": "Marek chce zdjąć kłódkę z cudzego roweru, który od jesieni stoi przy stojaku („niczyj”). Ma tylko własny dowód i nie chce pytać administratora. Odmowa: pan Roman wiesza kartkę i szuka właściciela. Brak oskarżeń.",
+  "verify_kind": "object",
+  "reward_coins": 0,
+  "tone": "spokojny, z suchym humorem; odmowa bez oskarżeń",
+  "i18n": {
+    "title": "job.refuse_ch13_04_winter_bike.title",
+    "client": "job.refuse_ch13_04_winter_bike.client",
+    "situation": "job.refuse_ch13_04_winter_bike.situation"
+  },
+  "lines": [
+    "marek",
+    "locksmith",
+    "marek",
+    "locksmith"
+  ],
+  "after": [
+    "roman",
+    "teresa"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2,
+  "place": "yard",
+  "time": "evening",
+  "arrival_from": "job.bike_interview",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-111: chapter 13 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": "Marek"
+    }
+  }
+}

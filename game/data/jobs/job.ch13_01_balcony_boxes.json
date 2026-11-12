@@ -1,0 +1,46 @@
+{
+  "id": "job.ch13_01_balcony_boxes",
+  "chapter": 13,
+  "order": 1,
+  "district": "Śródmieście",
+  "family": "warded",
+  "tier": 2,
+  "verification": "Wykaz użytkowników komórek piwnicznych od wspólnoty (2), pani Zosia potwierdza komórkę nr 7 (2). Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "premises",
+  "reward_coins": 150,
+  "tone": "ciepły, domowy, z suchym humorem",
+  "i18n": {
+    "title": "job.ch13_01_balcony_boxes.title",
+    "client": "job.ch13_01_balcony_boxes.client",
+    "situation": "job.ch13_01_balcony_boxes.situation"
+  },
+  "lines": [
+    "halina",
+    "zosia",
+    "locksmith",
+    "halina"
+  ],
+  "after": [
+    "halina"
+  ],
+  "cards": [
+    "manager",
+    "witness"
+  ],
+  "threshold": 3,
+  "place": "cellar",
+  "time": "day",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-111: chapter 13 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "manager": {
+      "issuer": "community",
+      "purpose": "storage"
+    },
+    "witness": {
+      "ask": "job.ch13_01_balcony_boxes.witness.ask",
+      "reply": "job.ch13_01_balcony_boxes.witness.reply"
+    }
+  }
+}

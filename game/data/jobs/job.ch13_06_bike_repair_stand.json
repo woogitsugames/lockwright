@@ -1,0 +1,52 @@
+{
+  "id": "job.ch13_06_bike_repair_stand",
+  "chapter": 13,
+  "order": 6,
+  "district": "Osiedle Słoneczne",
+  "family": "disc_detainer",
+  "tier": 3,
+  "verification": "Potwierdzenie administracji osiedla: szafka pod jej opieką, Borys wpisany jako wykonawca (3), dowód Borysa (1). Pan Roman obecny. Zgoda na otwarcie, próg 3. Wycena zaakceptowana.",
+  "verify_kind": "shared",
+  "reward_coins": 170,
+  "tone": "rzeczowy, pogodny",
+  "i18n": {
+    "title": "job.ch13_06_bike_repair_stand.title",
+    "client": "job.ch13_06_bike_repair_stand.client",
+    "situation": "job.ch13_06_bike_repair_stand.situation"
+  },
+  "lines": [
+    "borys",
+    "roman",
+    "locksmith",
+    "borys"
+  ],
+  "after": [
+    "kuba"
+  ],
+  "cards": [
+    "manager",
+    "id"
+  ],
+  "threshold": 3,
+  "place": "yard",
+  "time": "day",
+  "arrival_from": "job.bike_interview",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-111: chapter 13 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "manager": {
+      "issuer": "estate",
+      "purpose": "custody",
+      "ask": "job.ch13_06_bike_repair_stand.manager.ask",
+      "reply": "job.ch13_06_bike_repair_stand.manager.reply"
+    },
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": "Borys"
+    }
+  }
+}

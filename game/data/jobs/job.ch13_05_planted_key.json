@@ -1,0 +1,53 @@
+{
+  "id": "job.ch13_05_planted_key",
+  "chapter": 13,
+  "order": 5,
+  "district": "Willowa Górka",
+  "family": "egyptian",
+  "tier": 2,
+  "verification": "Zdjęcie Hani z lalką Lalą, która „pilnuje skrzynki” (1), tata Tomasz potwierdza, że sam ją zrobił dla córki (2). Rzecz w posiadaniu, próg 2. Płaci tata; wycena zaakceptowana.",
+  "verify_kind": "object",
+  "reward_coins": 140,
+  "tone": "ciepły, dziecięco poważny",
+  "i18n": {
+    "title": "job.ch13_05_planted_key.title",
+    "client": "job.ch13_05_planted_key.client",
+    "situation": "job.ch13_05_planted_key.situation"
+  },
+  "lines": [
+    "hania",
+    "tomasz",
+    "locksmith",
+    "hania"
+  ],
+  "after": [
+    "hania"
+  ],
+  "cards": [
+    "photo",
+    "witness"
+  ],
+  "threshold": 2,
+  "place": "apartment",
+  "time": "day",
+  "arrival_from": "job.dollhouse_wooden_lock",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-111: chapter 13 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "photo": {
+      "image": "res://assets/ui/gpt/cast/episodic/portrait_hania.webp",
+      "focus": [
+        0.5,
+        0.5
+      ],
+      "zoom": 1.0,
+      "ask": "job.ch13_05_planted_key.photo.ask",
+      "reply": "job.ch13_05_planted_key.photo.reply"
+    },
+    "witness": {
+      "ask": "job.ch13_05_planted_key.witness.ask",
+      "reply": "job.ch13_05_planted_key.witness.reply"
+    }
+  }
+}

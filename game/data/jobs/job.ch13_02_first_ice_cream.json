@@ -1,0 +1,42 @@
+{
+  "id": "job.ch13_02_first_ice_cream",
+  "chapter": 13,
+  "order": 2,
+  "district": "Osiedle Słoneczne",
+  "family": "wafer",
+  "tier": 2,
+  "verification": "Faktura na zamrażarkę wystawiona na Stefana (2), pani Krysia potwierdza, że zamrażarka jest jego (2). Rzecz w posiadaniu, próg 2. Wycena zaakceptowana.",
+  "verify_kind": "object",
+  "reward_coins": 155,
+  "tone": "gawędziarski, pogodny",
+  "i18n": {
+    "title": "job.ch13_02_first_ice_cream.title",
+    "client": "job.ch13_02_first_ice_cream.client",
+    "situation": "job.ch13_02_first_ice_cream.situation"
+  },
+  "lines": [
+    "stefan",
+    "krysia",
+    "locksmith",
+    "stefan"
+  ],
+  "after": [
+    "krysia"
+  ],
+  "cards": [
+    "invoice",
+    "witness"
+  ],
+  "threshold": 2,
+  "place": "kiosk",
+  "time": "day",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-111: chapter 13 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "witness": {
+      "ask": "job.ch13_02_first_ice_cream.witness.ask",
+      "reply": "job.ch13_02_first_ice_cream.witness.reply"
+    }
+  }
+}

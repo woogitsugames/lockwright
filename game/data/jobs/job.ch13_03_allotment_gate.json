@@ -1,0 +1,46 @@
+{
+  "id": "job.ch13_03_allotment_gate",
+  "chapter": 13,
+  "order": 3,
+  "district": "Ogródki działkowe",
+  "family": "lever",
+  "tier": 3,
+  "verification": "Uchwała zarządu ogrodu o otwarciu wspólnej bramy (3), pan Waldek, gospodarz ogrodu, potwierdza na miejscu (2). Zgoda na otwarcie, próg 3. Wycena zaakceptowana.",
+  "verify_kind": "shared",
+  "reward_coins": 160,
+  "tone": "pogodny, działkowy, rzeczowy",
+  "i18n": {
+    "title": "job.ch13_03_allotment_gate.title",
+    "client": "job.ch13_03_allotment_gate.client",
+    "situation": "job.ch13_03_allotment_gate.situation"
+  },
+  "lines": [
+    "zbyszek",
+    "waldek",
+    "locksmith",
+    "zbyszek"
+  ],
+  "after": [
+    "zbyszek"
+  ],
+  "cards": [
+    "resolution",
+    "witness"
+  ],
+  "threshold": 3,
+  "place": "yard",
+  "time": "day",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-111: chapter 13 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "resolution": {
+      "ask": "job.ch13_03_allotment_gate.resolution.ask",
+      "reply": "job.ch13_03_allotment_gate.resolution.reply"
+    },
+    "witness": {
+      "ask": "job.ch13_03_allotment_gate.witness.ask",
+      "reply": "job.ch13_03_allotment_gate.witness.reply"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "job.ch13_09_pizzeria_terrace",
+  "chapter": 13,
+  "order": 9,
+  "district": "Nocny Rynek",
+  "family": "dial_safe",
+  "tier": 3,
+  "verification": "Umowa najmu lokalu pizzerii na Renatę (2) i faktura na sejf (2). Sejf stoi w jej lokalu. Rzecz w posiadaniu, próg 2. Wycena zaakceptowana.",
+  "verify_kind": "object",
+  "reward_coins": 185,
+  "tone": "szybki, serdeczny, zabawny",
+  "i18n": {
+    "title": "job.ch13_09_pizzeria_terrace.title",
+    "client": "job.ch13_09_pizzeria_terrace.client",
+    "situation": "job.ch13_09_pizzeria_terrace.situation"
+  },
+  "lines": [
+    "renata",
+    "mietek",
+    "locksmith",
+    "renata"
+  ],
+  "after": [
+    "renata"
+  ],
+  "cards": [
+    "lease",
+    "invoice"
+  ],
+  "threshold": 2,
+  "place": "apartment",
+  "time": "evening",
+  "arrival_from": "job.pizzeria_pays_pizza",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-111: chapter 13 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)"
+}

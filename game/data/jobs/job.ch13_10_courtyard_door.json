@@ -1,0 +1,48 @@
+{
+  "id": "job.ch13_10_courtyard_door",
+  "chapter": 13,
+  "order": 10,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 4,
+  "verification": "Jednogłośna uchwała wspólnoty o otwarciu tylnych drzwi świetlicy (3) i pisemna zgoda zarządu na dostęp (2). Zarządczyni obecna. Zgoda na otwarcie, próg 3. Wycena zaakceptowana.",
+  "verify_kind": "shared",
+  "reward_coins": 200,
+  "tone": "spokojny, ciepły, odświętny",
+  "i18n": {
+    "title": "job.ch13_10_courtyard_door.title",
+    "client": "job.ch13_10_courtyard_door.client",
+    "situation": "job.ch13_10_courtyard_door.situation"
+  },
+  "lines": [
+    "elzbieta",
+    "halina",
+    "locksmith",
+    "elzbieta"
+  ],
+  "after": [
+    "halina",
+    "locksmith"
+  ],
+  "cards": [
+    "resolution",
+    "manager"
+  ],
+  "threshold": 3,
+  "place": "apartment",
+  "time": "day",
+  "arrival_from": "job.shared_room_door",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-111: chapter 13 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "resolution": {
+      "ask": "job.ch13_10_courtyard_door.resolution.ask",
+      "reply": "job.ch13_10_courtyard_door.resolution.reply"
+    },
+    "manager": {
+      "issuer": "community",
+      "purpose": "access"
+    }
+  }
+}
