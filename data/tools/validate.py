@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Content data validator: JSON schemas, i18n completeness (PL+EN), unique ids,
-reference integrity (family <-> tool <-> job). Exits non-zero on any problem.
+reference integrity (family <-> tool <-> job), job tiers inside the lockcore tier range of
+their family (D-118). Exits non-zero on any problem.
 
 Covers the base game (game/data, game/i18n/content.csv) and every content pack (D-112):
 game/packs/<id>/jobs/*.json, game/packs/<id>/i18n/content.csv, game/packs/<id>/arrival_scenes.json,
@@ -17,6 +18,10 @@ import os
 import sys
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+# Tier range of every lockcore family: written by `lockcore/build/verify_seeds --tiers` from the
+# families' min_tier() / max_tier() and kept equal to them by ctest `tiers_json_in_sync` (D-118).
+# Always the file of this checkout, also when main() validates another root (tests).
+TIERS_JSON = os.path.join(ROOT, "lockcore", "tiers.json")
 
 failures = []
 
@@ -71,6 +76,36 @@ def check_arrival_scenes(path: str, job_ids: set, ctx: str) -> None:
             fail(f"{ctx}: scene for unknown job {jid}")
 
 
+def load_tier_ranges(path: str = TIERS_JSON) -> dict:
+    """{lockcore family: (min tier, max tier)} from lockcore/tiers.json; empty (and a failure) when unreadable."""
+    try:
+        families = load_json(path)["families"]
+        return {fam: (int(r["min"]), int(r["max"])) for fam, r in families.items()}
+    except Exception as e:
+        fail(f"{path}: cannot read lockcore tier ranges: {e}")
+        return {}
+
+
+def check_job_tier(job: dict, ranges: dict, ctx: str) -> None:
+    """D-118: `tier` is the lockcore tier. The game passes it through (JobRun.tier_for) and lockcore clamps a
+    value outside the family's range without a word, so the data would promise a lock the player never gets.
+    A job without `family` (no lock scene yet) is not checked; a family lockcore does not have is an error."""
+    fam = job.get("family")
+    if fam in (None, ""):
+        return
+    if fam not in ranges:
+        fail(f"{ctx}: family {fam!r} is not a lockcore family ({', '.join(sorted(ranges))})")
+        return
+    tier = job.get("tier")
+    if isinstance(tier, bool) or not isinstance(tier, int):
+        fail(f"{ctx}: tier must be an integer, got {tier!r}")
+        return
+    lo, hi = ranges[fam]
+    if not lo <= tier <= hi:
+        fail(f"{ctx}: tier {tier} is outside the lockcore range of {fam} (t{lo}-t{hi}); "
+             f"the game would play t{min(max(tier, lo), hi)}")
+
+
 def check_i18n(keys: dict, required: list, ctx: str) -> None:
     for key in required:
         if key not in keys:
@@ -97,6 +132,7 @@ def main(root: str = ROOT) -> int:
         if not os.path.exists(path):
             fail(f"missing data file: {path}")
 
+    tier_ranges = load_tier_ranges()
     job_ids = set()
     ids_by_dir = {}  # folder holding jobs/ (game/data or a pack folder) -> its job ids
     for path in jobs:
@@ -114,6 +150,8 @@ def main(root: str = ROOT) -> int:
         ids_by_dir.setdefault(os.path.dirname(os.path.dirname(path)), set()).add(jid)
         required = [f"{jid}.title", f"{jid}.client"]
         check_i18n(i18n, required, f"job {jid}")
+        if tier_ranges:
+            check_job_tier(job, tier_ranges, f"job {jid}")
 
     base_scenes = os.path.join(game_data, "arrival_scenes.json")
     if os.path.exists(base_scenes):

@@ -130,7 +130,8 @@ static func seed_for(job: Dictionary) -> int:
 
 
 static func tier_for(job: Dictionary) -> int:
-	# N-05: pass the tier from data through; lockcore clamps to the family range itself
+	# N-05: pass the tier from data through; lockcore clamps to the family range itself.
+	# D-118: data/tools/validate.py rejects a job tier outside that range (lockcore/tiers.json).
 	return maxi(1, int(job.get("tier", 1)))
 
 
