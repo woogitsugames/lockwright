@@ -39,7 +39,15 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
   std::deque<LockEvent> perceived;  // events waiting for the reaction latency
   // Heavy hand (D-118): lifts on each plan step that ended stuck at the lift cap, counted
   // apart for the binding lift and for the false gate (the hand is too heavy in both).
+  // The wrench is eased only once the pick is back down (ease_step / ease_gate remember
+  // which count to raise), so the measure is the load on the tool and not an element
+  // that jumps when the tension lets go under a pressing pick. in_gate: elements the
+  // hand knows to be caught in a false gate; the next lift on one goes on in the gate.
+  const bool is_heavy = lim.tension_over > 0;
   std::vector<std::int32_t> stuck(plan.steps.size(), 0), stuck_gate(plan.steps.size(), 0);
+  std::vector<char> in_gate(static_cast<std::size_t>(n_elem), 0);
+  int ease_step = -1;
+  bool ease_gate = false;
   auto heavy = [&](const std::vector<std::int32_t>& count, int step_index, q16 tension) -> q16 {
     if (lim.tension_over <= 0) return tension;
     const std::int64_t eased = static_cast<std::int64_t>(lim.tension_ease) * count[static_cast<std::size_t>(step_index)];
@@ -91,6 +99,7 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
       const int cur_elem = ci >= 0 ? plan.steps[static_cast<std::size_t>(ci)].element : -1;
       if (ph == Phase::reset && e.kind == EventKind::drop) {
         // Detector reset done (family event mapped on drop): every lever is loose.
+        for (auto& g : in_gate) g = 0;
         for (auto& b : believed) b = 0;
         set_order.clear();
         go(Phase::lower, t);
@@ -106,18 +115,23 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
         case EventKind::set:
           if (e.element >= 0 && e.element < n_elem && !believed[static_cast<std::size_t>(e.element)]) {
             believed[static_cast<std::size_t>(e.element)] = 1;
+            in_gate[static_cast<std::size_t>(e.element)] = 0;
             set_order.push_back(e.element);
             if (e.element == cur_elem && ph != Phase::release) go(Phase::lower, t);
           }
           break;
         case EventKind::false_set:
+          if (e.element >= 0 && e.element < n_elem) in_gate[static_cast<std::size_t>(e.element)] = 1;
           if (e.element == cur_elem && ph != Phase::release) go(Phase::spool, t);
           break;
         case EventKind::near_shear:
           if (e.element == cur_elem) felt_near = true;
           break;
         case EventKind::overset:
-          if (e.element >= 0 && e.element < n_elem) forget(e.element);
+          if (e.element >= 0 && e.element < n_elem) {
+            forget(e.element);
+            in_gate[static_cast<std::size_t>(e.element)] = 0;
+          }
           if (lim.adaptive) {
             const q16 floor = q16_per_step(q16_milli(100));
             slow_rate = q_max(floor, slow_rate - slow_rate / 4);
@@ -126,6 +140,7 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
           go(Phase::release, t);
           break;
         case EventKind::drop:
+          for (auto& g : in_gate) g = 0;  // the tension let go: nothing stays caught
           if (plan.drop_all) {
             for (auto& b : believed) b = 0;
             set_order.clear();
@@ -168,7 +183,13 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
         case Phase::lower:
           target_t = work_t;
           target_l = 0;
-          if (hand_l == 0 && t - phase_t >= lim.min_hold_steps) go(Phase::travel, t);
+          if (hand_l == 0 && t - phase_t >= lim.min_hold_steps) {
+            if (ease_step >= 0) {  // heavy hand: the pick is down, now ease the wrench
+              ++(ease_gate ? stuck_gate : stuck)[static_cast<std::size_t>(ease_step)];
+              ease_step = -1;
+            }
+            go(Phase::travel, t);
+          }
           break;
         case Phase::travel:
           target_t = work_t;
@@ -181,7 +202,7 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
           target_t = work_t;
           target_d = st.depth;
           target_l = st.approach_from;
-          if (hand_l >= st.approach_from) go(Phase::slow, t);
+          if (hand_l >= st.approach_from) go(is_heavy && in_gate[static_cast<std::size_t>(st.element)] ? Phase::spool : Phase::slow, t);
           break;
         case Phase::slow:
         case Phase::spool: {
@@ -196,13 +217,10 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
             if (mark_t < 0) mark_t = t;
             if (t - mark_t > lim.latency_steps + lim.min_hold_steps) {
               ++rep.retries;
-              if (lim.tension_over > 0 && spool) {
-                // Still caught in the false gate: ease the wrench and keep pressing.
-                ++stuck_gate[static_cast<std::size_t>(ci)];
-                mark_t = -1;
-                break;
+              if (is_heavy) {  // it did not move: pick down first, then ease the wrench
+                ease_step = ci;
+                ease_gate = spool;
               }
-              if (lim.tension_over > 0) ++stuck[static_cast<std::size_t>(ci)];  // it did not move: ease the wrench
               go(Phase::lower, t);
             }
           }

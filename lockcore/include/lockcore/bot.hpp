@@ -38,11 +38,11 @@ struct HumanLimits {
 HumanLimits clumsy_human_limits();
 
 // The "heavy hand" (D-118): the clumsy player (who already lifts past the window, with no
-// overset knowledge) who also pulls the tension wrench 0.30 too hard on every new element
+// overset knowledge) who also pulls the tension wrench 0.20 too hard on every new element
 // and never reacts to `stress`. It eases the wrench by 0.10 only after an element did not
 // move. Soft metric for tool breakage (break rate, peak S / S_max per tier); never part
 // of a gate.
-inline constexpr q16 HEAVY_TENSION_OVER = q16_milli(300);
+inline constexpr q16 HEAVY_TENSION_OVER = q16_milli(200);
 HumanLimits heavy_human_limits(q16 tension_over = HEAVY_TENSION_OVER);
 
 // Human precision assumed by the oracle (LOCKS.md §1.7, §1.9).

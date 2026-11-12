@@ -11,12 +11,12 @@
 // signals; its success rate and time per tier calibrate difficulty (--feel N
 // limits it to the first N seeds; default all).
 //
-// Heavy hand (D-118, report only): the clumsy bot holding 0.30 too much tension, eased
+// Heavy hand (D-118, report only): the clumsy bot holding 0.20 too much tension, eased
 // by 0.10 only after an element did not move, with no reaction to `stress`; its break rate
 // and peak S / S_max per tier calibrate tool breakage (--heavy N: first N seeds only).
 //
 //   verify_seeds [--seeds N] [--family ID] [--tier T] [--csv FILE] [--replays N] [--feel N] [--heavy N]
-//                [--heavy-over MILLI]   # heavy hand: tension above the plan in 1/1000 (default 300)
+//                [--heavy-over MILLI]   # heavy hand: tension above the plan in 1/1000 (default 200)
 //   verify_seeds --tiers     # the tier range of every family as JSON (lockcore/tiers.json)
 #include <algorithm>
 #include <chrono>
@@ -84,7 +84,7 @@ int main(int argc, char** argv) {
   std::int64_t n_replays = 100;
   std::int64_t n_feel = -1;  // default: every seed
   std::int64_t n_heavy = -1;  // default: every seed
-  std::int64_t heavy_over = 300;  // 1/1000 of full tension
+  std::int64_t heavy_over = 200;  // 1/1000 of full tension
   std::string only_family;
   int only_tier = -1;
   std::string csv_path;

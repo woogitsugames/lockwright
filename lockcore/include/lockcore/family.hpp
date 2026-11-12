@@ -117,7 +117,7 @@ struct SolveReport {
 struct SolveOptions {
   std::uint64_t bot_seed = 1;
   bool record_inputs = false;
-  // BotKind::heavy only (D-118): tension held above the plan's; 0 = the default 0.30.
+  // BotKind::heavy only (D-118): tension held above the plan's; 0 = the default 0.20.
   q16 heavy_over = 0;
 };
 

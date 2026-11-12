@@ -7,7 +7,7 @@ library itself builds and tests natively on Linux, macOS, Android NDK and iOS.
 Status: **v0.6** — core + families `pin_tumbler`, `wafer`, `wooden_pin`, `warded`,
 `lever`, `lever_detector`, `ring_combo` and the D-59 families (`dial_safe`, `combo`, `dimple`,
 `disc_detainer`, `egyptian`, `axial_slider`, `time_lock`, `magnetic`; see v0.6 below),
-verifier with three bots, replays, light fuzzing.
+verifier with three bots plus the heavy-hand bot for tool breakage (D-118), replays, light fuzzing.
 Balance per tier (feeling / clumsy bot): [`BALANCE.md`](BALANCE.md).
 
 ## Build and test
@@ -31,8 +31,10 @@ Tools:
 
 ```bash
 lockcore/build/verify_seeds [--seeds N] [--family warded] [--tier 2] [--replays N] [--feel N] [--csv FILE]
+lockcore/build/verify_seeds --seeds 1000 --heavy 200 --heavy-over 300   # heavy hand on the first 200 seeds, 0.30 over the plan
+lockcore/build/verify_seeds --tiers > lockcore/tiers.json     # tier range of every family (ctest tiers_json_in_sync)
 lockcore/build/replay_tool lock pin_tumbler 4 123             # print a generated lockwright.lock/1
-lockcore/build/replay_tool record wafer 2 77 out.replay.json  # record the bot's run [--clumsy|--feel]
+lockcore/build/replay_tool record wafer 2 77 out.replay.json  # record the bot's run [--clumsy|--feel|--heavy]
 lockcore/build/replay_tool play lockcore/tests/golden/wafer_t2_s77.replay.json
 lockcore/build/replay_tool trace lockcore/tests/golden/wafer_t2_s77.replay.json out.trace.json  # per-step trace
 lockcore/build/check_locks [--feel N] [--csv FILE] lockcore/practice/*.json   # authored locks: parse, format, all bots
@@ -202,7 +204,17 @@ the set flags go). `gate_feel` = 1 − `noise` scales the cues (t2 0.7, t3 0.45)
    The **clumsy bot** (tremor ±0.06, faster lifting, 250 ms reaction, no knowledge of the
    overset limit) stays as a second soft metric.
 
-`FamilyModule::run_bot(kind, ...)` runs any of the three bots; the default serves lift-based
+4. **Heavy hand** (D-118, `BotKind::heavy`, report only): the clumsy bot that also holds the
+   tension 0.20 above the plan's on every new element (`--heavy-over` changes it), eases it by 0.10
+   only after a lift ended at the cap with nothing moved (apart for the binding lift and for a false
+   gate), and never reacts to `stress`. It opens with any peak stress (no 0.8 S_max gate). Its break
+   rate and the p50 / p90 of peak S / S_max per tier calibrate tool breakage, which no other bot
+   reaches (they break 0 tools). `warded` eases while pressing against the bolt. Families whose tool
+   is never loaded (`ring_combo`, `combo`, `disc_detainer`, `dial_safe`; `wooden_pin` and `egyptian`
+   load nothing either) run the clumsy bot, so their row reads 0 breaks by construction.
+   `replay_tool record ... --heavy` writes the replay also when the tool broke (`expected.open` false).
+
+`FamilyModule::run_bot(kind, ...)` runs any of the bots; the default serves lift-based
 families (`run_plan_bot` / `run_feel_bot`), `warded` and `ring_combo` override it (and `solver()`).
 
 Results (10 000 seeds per tier, scripted gate: 0 failures in every family and tier; full table
@@ -239,6 +251,23 @@ continuous signals in [0, 1], view positions / stress / rotation in [0, 1], wind
 S >= 0. CI runs it under ASan + UBSan with `-fno-sanitize-recover=undefined` and a 300 s timeout.
 
 ## API changes
+
+### D-118 (heavy hand, tier table, 2026-11-12)
+
+Additive; rules, generators, hashes and goldens unchanged (the new `HumanLimits` fields are off by default).
+
+- `family.hpp`: `BotKind::heavy`; `SolveOptions::heavy_over` (Q16, 0 = default 0.20).
+- `bot.hpp`: `HumanLimits::tension_over`, `tension_ease`, `stress_gate`; `heavy_human_limits(q16 over = HEAVY_TENSION_OVER)`.
+  `run_plan_bot` adds `tension_over` (minus `tension_ease` per stuck lift of that plan step) to the plan's tension
+  and stays in a false gate when stuck there; with `tension_over == 0` it behaves exactly as before.
+- `verify_seeds`: `--heavy N` (first N seeds, default all), `--heavy-over MILLI` (default 200), a "heavy hand"
+  section in the report, CSV columns at the end of the row: `heavy_runs`, `heavy_ok`, `heavy_breaks`,
+  `heavy_timeouts`, `heavy_trips`, `heavy_p50`, `heavy_p90` (steps, opened runs), `heavy_peak_p50_q16`,
+  `heavy_peak_p90_q16` (peak S / S_max over all runs), `heavy_drops`, `heavy_oversets`.
+- `verify_seeds --tiers` prints `{"schema": "lockcore.tiers/1", "families": {id: {min, max}}}`; the checked-in
+  copy `lockcore/tiers.json` is read by `data/tools/validate.py` (a job tier outside the range is an error) and
+  ctest `tiers_json_in_sync` fails when it differs from the families' `min_tier()` / `max_tier()`.
+- `replay_tool record <family> <tier> <seed> <out> --heavy`.
 
 ### D-116 (balance audit, 2026-11-12)
 
