@@ -131,6 +131,22 @@ func _update_values() -> void:
 	get_node(S + "Access/Box/TextScaleRow/Value").text = "%d%%" % int(text_scale_slider.value)
 
 
+## N-99 (D-113): the 10 s frame-time measurement can end while Settings is open; "Auto (…)" then names
+## the profile just picked, not the one from the last run.
+func _on_quality_profile(_profile: Dictionary) -> void:
+	if quality_option.item_count > 0:
+		quality_option.set_item_text(0, Quality.auto_label())
+
+
+## D-113: the player came back from the system settings with another text size (Android font scale,
+## iOS Dynamic Type): the switch names it and the slider shows the size in use.
+func _on_system_scale(_scale: float) -> void:
+	_system_text.text = I18n.t(&"settings.text_scale_system").format(
+		{"pct": roundi(UiA11y.raw_system_scale() * 100.0)})
+	text_scale_slider.set_value_no_signal(UiA11y.text_scale() * 100.0)
+	_update_values()
+
+
 func _wire() -> void:
 	_wired = true
 	haptics_check.toggled.connect(func(on: bool) -> void: Settings.set_value("haptics_enabled", on))
@@ -183,6 +199,10 @@ func _wire() -> void:
 	quality_option.item_selected.connect(func(idx: int) -> void:
 		Settings.set_value("quality_profile", ["auto", "high", "medium", "low"][idx])
 		Quality.apply_profile(["auto", "high", "medium", "low"][idx]))
+	# D-113: what is shown follows what changed behind the screen's back (methods, so the
+	# connections end with this screen)
+	Quality.profile_changed.connect(_on_quality_profile)
+	UiA11y.system_scale_changed.connect(_on_system_scale)
 	test_button.pressed.connect(func() -> void:
 		Haptics.test_pulse()  # N-70: one long, clearly felt pulse (a 19 ms `set` was not)
 		Sfx.play(&"set", &"brass"))

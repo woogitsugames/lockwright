@@ -26,6 +26,11 @@ public:
 	void end_continuous(const godot::StringName &id);
 	godot::Dictionary capabilities() const;
 	void stop_all();
+	// D-113: Dynamic Type as a factor of the default text size (1.0 = "Large", the iOS default);
+	// same contract as the Android plugin's font_scale() (Configuration.fontScale).
+	double font_scale() const;
+	// Pure mapping, kept apart for clarity: body point size at the user's category / 17 pt.
+	static double scale_for_body_points(double points);
 };
 
 } // namespace lockwright

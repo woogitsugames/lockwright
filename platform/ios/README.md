@@ -9,6 +9,9 @@ zostaje jako fallback, gdyby eksport GDExtension na iOS w 4.7 zawodził (spike 1
 - Most wystawia singleton `LockwrightHaptics` z metodami 1:1 jak `HapticsBridge`
   (TECH.md §2.5): `play(event, intensity, material)`, `begin_continuous(id)`,
   `update_continuous(id, intensity, sharpness)`, `end_continuous(id)`, `capabilities()`, `stop_all()`.
+- `font_scale()` (D-113): Dynamic Type jako mnożnik — rozmiar `UIFontTextStyleBody` dla
+  `UIApplication.preferredContentSizeCategory` / 17 pt; ta sama umowa co `font_scale()` wtyczki Androida
+  (`Configuration.fontScale`). Gra pyta przy starcie i po każdym powrocie do aplikacji (`UiA11y`).
 - Core Haptics (H3): opór ciągły jako `CHHapticAdvancedPatternPlayer` w pętli +
   `CHHapticDynamicParameter` (`hapticIntensityControl`/`hapticSharpnessControl`)
   wysyłane co klatkę (≤ 60 Hz, `sendParameters`); kliknięcia jako transienty w

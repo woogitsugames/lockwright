@@ -15,6 +15,8 @@ extends Node
 ## - name_button(): a localized name + role for controls without visible text.
 
 signal announced(text: String)
+## D-113: the system text size (Android fontScale / iOS Dynamic Type) changed while the game was away.
+signal system_scale_changed(scale: float)
 
 ## Theme type -> font size at 100 % (read from theme/main.tres once, before any scaling).
 var _base_sizes := {}
@@ -87,7 +89,8 @@ func text_scale() -> float:
 
 
 ## D-107: the system font scale snapped to the slider's steps (100-200 %, 25 % apart); 1.0 where the
-## platform does not tell (desktop, iOS: Dynamic Type not read yet). Tests: system_scale_override.
+## platform does not tell (desktop). Android: Configuration.fontScale; iOS (D-113): Dynamic Type, the
+## body text size of the user's category over the default 17 pt. Tests: system_scale_override.
 var system_scale_override := -1.0
 var _system_scale := 1.0
 
@@ -104,16 +107,32 @@ static func snap_scale(s: float) -> float:
 	return clampf(roundf(s * 4.0) / 4.0, 1.0, 2.0)
 
 
-func _refresh_system_scale() -> void:
+## `native`: the plugin singleton, or a test double of it.
+func _refresh_system_scale(native: Object = null) -> void:
 	var before := _system_scale
-	_system_scale = 1.0
-	if Engine.has_singleton(BRIDGE_SINGLETON):
-		var p := Engine.get_singleton(BRIDGE_SINGLETON)
-		var has_m: bool = bool(p.call(&"has_java_method", &"font_scale")) if p.has_method(&"has_java_method") else p.has_method(&"font_scale")
-		if has_m:
-			_system_scale = maxf(float(p.call(&"font_scale")), 0.5)
-	if not is_equal_approx(before, _system_scale) and _theme != null:
-		_apply_text_scale()
+	if native == null and Engine.has_singleton(BRIDGE_SINGLETON):
+		native = Engine.get_singleton(BRIDGE_SINGLETON)
+	_system_scale = bridge_font_scale(native)
+	if not is_equal_approx(before, _system_scale):
+		if _theme != null:
+			_apply_text_scale()
+		system_scale_changed.emit(_system_scale)
+
+
+## The system text size as a factor, asked from the native singleton `LockwrightHaptics`: the Android
+## plugin (a JNISingleton: has_java_method) or the iOS GDExtension node (D-113, a bound method).
+## 1.0 when the build has no such method (an older AAR / xcframework) or it answers nonsense.
+static func bridge_font_scale(p: Object) -> float:
+	if p == null:
+		return 1.0
+	var has_m: bool = bool(p.call(&"has_java_method", &"font_scale")) if p.has_method(&"has_java_method") else p.has_method(&"font_scale")
+	if not has_m:
+		return 1.0
+	var v: Variant = p.call(&"font_scale")
+	if typeof(v) != TYPE_FLOAT and typeof(v) != TYPE_INT:
+		return 1.0
+	var f := float(v)
+	return 1.0 if is_nan(f) or f <= 0.0 else maxf(f, 0.5)
 
 
 ## A font size from code (overrides) at the current text scale.

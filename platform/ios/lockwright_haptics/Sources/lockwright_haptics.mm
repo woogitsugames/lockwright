@@ -180,6 +180,7 @@ void LockwrightHaptics::_bind_methods() {
 	godot::ClassDB::bind_method(godot::D_METHOD("end_continuous", "id"), &LockwrightHaptics::end_continuous);
 	godot::ClassDB::bind_method(godot::D_METHOD("capabilities"), &LockwrightHaptics::capabilities);
 	godot::ClassDB::bind_method(godot::D_METHOD("stop_all"), &LockwrightHaptics::stop_all);
+	godot::ClassDB::bind_method(godot::D_METHOD("font_scale"), &LockwrightHaptics::font_scale);
 }
 
 LockwrightHaptics::LockwrightHaptics() {
@@ -225,6 +226,25 @@ godot::Dictionary LockwrightHaptics::capabilities() const {
 
 void LockwrightHaptics::stop_all() {
 	[(__bridge LockwrightHapticsImpl *)engine_impl stopAll];
+}
+
+// Body text is 17 pt at the default category ("Large"); xSmall 14 ... xxxLarge 23, the
+// accessibility categories 28-53. The game snaps the factor to its own 100-200 % steps.
+double LockwrightHaptics::scale_for_body_points(double points) {
+	return points > 0.0 ? points / 17.0 : 1.0;
+}
+
+// D-113: Dynamic Type (Settings > Display & Brightness > Text Size, and Accessibility > Larger Text).
+// Godot 4.7 has no API for it. Read from the application's content size category, so it does not
+// depend on any view's trait collection; UiA11y asks again on every application focus-in.
+double LockwrightHaptics::font_scale() const {
+	UIContentSizeCategory category = UIApplication.sharedApplication.preferredContentSizeCategory;
+	if (category == nil || [category isEqualToString:UIContentSizeCategoryUnspecified]) {
+		return 1.0;
+	}
+	UITraitCollection *traits = [UITraitCollection traitCollectionWithPreferredContentSizeCategory:category];
+	UIFont *body = [UIFont preferredFontForTextStyle:UIFontTextStyleBody compatibleWithTraitCollection:traits];
+	return scale_for_body_points(body != nil ? (double)body.pointSize : 0.0);
 }
 
 } // namespace lockwright

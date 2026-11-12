@@ -24,7 +24,7 @@ const DEFAULTS := {
 	"announce_lock_events": true,   # HUD.md §9.2: screen reader announces lock states (D-90)
 	"sound_captions": false,
 	"tension_lock": false,          # HUD.md §9.2: double tap latches T, single tap lets go (D-107)
-	"text_scale_system": true,      # D-107: in-game text size follows the system font scale (Android)        # HUD.md §9.1 (3): caption strip for gameplay sounds (D-90)
+	"text_scale_system": true,      # D-107: in-game text size follows the system font scale (Android fontScale, iOS Dynamic Type D-113)        # HUD.md §9.1 (3): caption strip for gameplay sounds (D-90)
 	"continuous_resistance": true,
 	"calibrated": false,
 	"calibration": "",  # "" | "two" | "one" | "none" (TECH.md §2.3 first-run test)
