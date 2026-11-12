@@ -127,6 +127,8 @@ jobs:
         run: python3 data/tools/validate.py
       - name: Localization QA
         run: python3 data/tools/loc_qa.py
+      - name: Content pack sources (D-112, game/packs/<id>/)
+        run: python3 tools/build_content_packs.py --check
       - name: Haptics budget validator (haptics/validate.py, task 4)
         run: python3 haptics/validate.py
       - name: Haptics detail files in game match haptics/out

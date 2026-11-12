@@ -1,0 +1,107 @@
+name: content-packs
+
+# D-112 (D-99): chapters beyond the base game are downloaded on demand. This builds one data-only pck
+# per game/packs/<id>/ (tools/build_content_packs.py), publishes each as the GitHub Release
+# `content-<id>-v<version>` (version from the pack's pack.json) and commits the matching
+# game/data/content_packs.json, so the next app build pins the size and SHA-256 of exactly the
+# uploaded files. A released version is never rebuilt (pck bytes are not reproducible across
+# commits): a pack whose sources changed needs a higher `version`, or the build fails.
+# Same hosting and privacy as the voice packs (voice-packs.yml): a plain HTTPS GET of a static file.
+# The URL base is configurable (input base_url or repo variable CONTENT_PACKS_BASE_URL, `{tag}` allowed).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'game/packs/**'
+      - 'tools/build_content_packs.py'
+      - '.github/workflows/content-packs.yml'
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: 'URL base for the packs (default: this repo''s GitHub Release; may contain {tag})'
+        required: false
+        default: ''
+
+concurrency:
+  group: content-packs
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: write   # dispatch game-android after the manifest commit (pushes with GITHUB_TOKEN trigger nothing)
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GODOT: /tmp/godot/Godot_v4.7.2-stable_linux.x86_64
+      GH_TOKEN: ${{ github.token }}
+      CONTENT_PACKS_BASE_URL: ${{ inputs.base_url || vars.CONTENT_PACKS_BASE_URL || format('https://github.com/{0}/releases/download/{{tag}}', github.repository) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate the pack sources (no Godot needed)
+        run: |
+          python3 tools/build_content_packs.py --check
+          python3 tools/build_content_packs.py --list | tee "$RUNNER_TEMP/packs.txt"
+
+      - name: Fetch the entries of versions that are already released
+        run: |
+          mkdir -p "$RUNNER_TEMP/released"
+          while read -r ID VERSION TAG; do
+            [ -n "$ID" ] || continue
+            if gh release view "$TAG" >/dev/null 2>&1; then
+              echo "$TAG exists: keep its file"
+              gh release download "$TAG" -p "content_$ID.json" -D "$RUNNER_TEMP/released" --clobber
+            fi
+          done < "$RUNNER_TEMP/packs.txt"
+
+      - name: Install Godot 4.7.2 (editor only; a pck export needs no templates)
+        if: hashFiles('game/packs/*/pack.json') != ''
+        run: |
+          mkdir -p /tmp/godot
+          curl -fsSL --retry 6 --retry-delay 15 --retry-all-errors -o /tmp/godot/godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/godot/godot.zip -d /tmp/godot && chmod +x "$GODOT"
+
+      - name: Build content packs (data-only check inside the tool)
+        if: hashFiles('game/packs/*/pack.json') != ''
+        run: |
+          python3 tools/build_content_packs.py --godot "$GODOT" --import --released "$RUNNER_TEMP/released" --out "$RUNNER_TEMP/content"
+          ls -l "$RUNNER_TEMP/content"
+
+      - name: Create one release per new pack version
+        if: hashFiles('game/packs/*/pack.json') != ''
+        run: |
+          while read -r ID VERSION TAG; do
+            [ -n "$ID" ] || continue
+            PCK="$RUNNER_TEMP/content/content_$ID.pck"
+            if [ -f "$PCK" ]; then
+              gh release create "$TAG" "$PCK" "$RUNNER_TEMP/content/content_$ID.json" \
+                --title "Content pack $ID v$VERSION" --target "$GITHUB_SHA" --latest=false \
+                --notes "Downloadable chapter (D-112), a data-only Godot pack. Built from ${GITHUB_SHA}. The game checks size and SHA-256 from game/data/content_packs.json."
+            fi
+          done < "$RUNNER_TEMP/packs.txt"
+
+      - name: Commit the game manifest if it changed
+        if: hashFiles('game/packs/*/pack.json') != ''
+        run: |
+          cp "$RUNNER_TEMP/content/content_packs.json" game/data/content_packs.json
+          if git diff --quiet -- game/data/content_packs.json; then
+            echo "game/data/content_packs.json already matches the releases"; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add game/data/content_packs.json
+          git commit -m "content packs: manifest for $(cut -d' ' -f3 "$RUNNER_TEMP/packs.txt" | paste -sd' ') (D-112)"
+          git reset -q --hard HEAD   # drop files rewritten by --import (.translation etc.)
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              # the app must carry the new manifest, or the packs are invisible to the game
+              GH_TOKEN="${{ github.token }}" gh workflow run game-android.yml --ref main || echo "::warning::could not dispatch game-android"
+              exit 0
+            fi
+            sleep 5
+          done
+          exit 1
