@@ -1,0 +1,3 @@
+{"id": "job.fixture_cellar", "chapter": 77, "family": "wafer", "tier": 2,
+ "i18n": {"title": "job.fixture_cellar.title", "client": "job.fixture_cellar.client"},
+ "lines": ["client", "locksmith"], "after": ["client"]}

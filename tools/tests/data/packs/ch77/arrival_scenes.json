@@ -1,0 +1,2 @@
+{"schema": "lockwright.arrival_scenes/1",
+ "scenes": {"job.fixture_cellar": {"dir": "res://packs/ch77/arrival/fixture_cellar", "times": ["evening"]}}}

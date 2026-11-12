@@ -2,7 +2,8 @@
 """Voiced dialogue lines for jobs (D-57): cast, TTS, normalisation, .import files.
 
 Source of truth for the TEXT is game/i18n/content.csv (`<job_id>.line.N`, columns en/pl/de/fr/es); the SPEAKER of each line
-is `lines[N-1]` in game/data/jobs/<job_id>.json. Every speaker has one fixed, fictional ElevenLabs voice (designed
+is `lines[N-1]` in game/data/jobs/<job_id>.json. Jobs and texts of content packs (D-112: game/packs/<id>/jobs,
+game/packs/<id>/i18n/content.csv) are read the same way; their clips stay in the voice packs. Every speaker has one fixed, fictional ElevenLabs voice (designed
 from a text description with Voice Design, never cloned) that reads both languages; see game/data/voice_cast.json.
 
 Subcommands
@@ -165,11 +166,26 @@ FILLER = {
 }
 
 
-def read_csv():
-    with open(GAME / 'i18n/content.csv', encoding='utf-8', newline='') as f:
-        rows = list(csv.reader(f))
-    hdr = rows[0]
-    return {r[0]: dict(zip(hdr[1:], r[1:])) for r in rows[1:] if r}
+def content_csvs(game=None):
+    """Base content.csv plus every content pack's i18n/content.csv (D-112: game/packs/<id>/)."""
+    game = pathlib.Path(game or GAME)
+    return [game / 'i18n/content.csv'] + sorted(game.glob('packs/*/i18n/content.csv'))
+
+
+def job_files(game=None):
+    """Job JSONs of the base game and of every content pack, base first."""
+    game = pathlib.Path(game or GAME)
+    return sorted(game.glob('data/jobs/*.json')) + sorted(game.glob('packs/*/jobs/*.json'))
+
+
+def read_csv(game=None):
+    out = {}
+    for path in content_csvs(game):
+        with open(path, encoding='utf-8', newline='') as f:
+            rows = list(csv.reader(f))
+        hdr = rows[0]
+        out.update({r[0]: dict(zip(hdr[1:], r[1:])) for r in rows[1:] if r})
+    return out
 
 
 KINDS = ('line', 'after', 'wrong_open')   # every key family the game plays through a voice player
@@ -183,12 +199,12 @@ def _speakers(d, kind):
     return (d.get('wrong_open') or {}).get('lines', [])   # D-85: wrong_floor "foreign door" scene (DayAfter.show_scene)
 
 
-def inventory(kind='line'):
+def inventory(kind='line', game=None):
     """kind 'line': arrival dialogue (`lines`, `<id>.line.N`); 'after': V04 day-after scene (`after`, `<id>.after.N`);
     'wrong_open': D-85 penalty scene (`wrong_open.lines`, `<id>.wrong_open.N`)."""
-    rows = read_csv()
+    rows = read_csv(game)
     out = []
-    for f in sorted(glob.glob(str(GAME / 'data/jobs/*.json'))):
+    for f in job_files(game):
         d = json.load(open(f, encoding='utf-8'))
         for i, sp in enumerate(_speakers(d, kind)):
             key = f"{d['id']}.{kind}.{i + 1}"

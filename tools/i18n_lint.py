@@ -4,6 +4,8 @@
 Checks game/i18n/strings.csv and game/i18n/content.csv (header `keys,en,pl,de[,fr,es]`, UTF-8,
 comma-separated with quoted fields). en/pl/de are required; fr/es (T41, behind the dev flag)
 are optional: an empty value falls back to en at runtime, but a filled one is checked like the rest.
+Content packs (D-112) are linted the same way: every game/packs/<id>/i18n/content.csv, plus an error
+when a pack key is already defined in another file (base game or another pack).
 
   errors:
     1. malformed CSV rows, wrong header, duplicate keys, empty en/pl/de values
@@ -22,6 +24,7 @@ are optional: an empty value falls back to en at runtime, but a filled one is ch
 Usage: python tools/i18n_lint.py   (from the repo root; exit code 1 only on errors)
 """
 import csv
+import glob
 import os
 import re
 import sys
@@ -32,6 +35,7 @@ OPTIONAL_LANGUAGES = ("fr", "es")        # T41: may be empty (runtime falls back
 ALL_LANGUAGES = LANGUAGES + OPTIONAL_LANGUAGES
 EXPECTED_HEADER = ["keys"] + list(LANGUAGES)  # minimal header; optional columns may follow in order
 CSV_FILES = ("game/i18n/strings.csv", "game/i18n/content.csv")
+PACK_CSV_GLOB = ("game", "packs", "*", "i18n", "content.csv")   # content packs (D-112)
 
 LENGTH_LIMITS = (("tutorial.", 56), ("lock.", 56), ("menu.", 28))
 
@@ -59,6 +63,12 @@ class CsvRow:
 
 def repo_root():
     return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def pack_csv_files(root):
+    """Repo-relative paths (forward slashes) of every content pack's i18n/content.csv, sorted."""
+    found = glob.glob(os.path.join(root, *PACK_CSV_GLOB))
+    return sorted(os.path.relpath(p, root).replace(os.sep, "/") for p in found)
 
 
 def read_csv(path, display, findings):
@@ -236,12 +246,19 @@ def run_lint(root):
     """Run all checks under root. Returns (findings, csv_key_count)."""
     findings = []
     all_rows = []
-    for rel in CSV_FILES:
+    owner = {}  # key -> file that defined it first
+    packs = pack_csv_files(root)
+    for rel in list(CSV_FILES) + packs:
         path = os.path.join(root, rel)
         if not os.path.isfile(path):
             findings.append(Finding("ERROR", rel, "", "CSV file not found"))
             continue
         rows = read_csv(path, rel, findings)
+        for row in rows:
+            first = owner.setdefault(row.key, rel)
+            if rel in packs and first != rel:
+                findings.append(Finding(
+                    "ERROR", f"{rel}:{row.lineno}", row.key, f"pack key already defined in {first}"))
         check_duplicates_and_empty(rel, rows, findings)
         check_placeholders(rel, rows, findings)
         check_length_limits(rel, rows, findings)

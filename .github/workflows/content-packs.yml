@@ -47,6 +47,15 @@ jobs:
           python3 tools/build_content_packs.py --check
           python3 tools/build_content_packs.py --list | tee "$RUNNER_TEMP/packs.txt"
 
+      # D-115: the same content validators as game-tests.yml / lint.yml, run here as well because this
+      # workflow publishes a release on its own; all of them read game/packs/<id>/ next to the base game.
+      - name: Validate content data, texts and voiced lines (base game + packs)
+        run: |
+          python3 data/tools/validate.py
+          python3 data/tools/loc_qa.py
+          python3 tools/i18n_lint.py
+          python3 tools/voice_lines.py inventory > /dev/null
+
       - name: Fetch the entries of versions that are already released
         run: |
           mkdir -p "$RUNNER_TEMP/released"

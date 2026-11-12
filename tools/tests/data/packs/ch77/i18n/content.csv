@@ -1,0 +1,6 @@
+keys,en,pl,de,fr,es
+job.fixture_cellar.title,Cellar padlock,Kłódka w piwnicy,Kellerschloss,Cadenas de cave,Candado del sótano
+job.fixture_cellar.client,Mrs Fixture,pani Próbna,Frau Muster,Mme Modèle,Sra. Muestra
+job.fixture_cellar.line.1,"The key snapped, {n} days ago.","Klucz pękł, {n} dni temu.","Der Schlüssel brach, vor {n} Tagen.","La clé a cassé, il y a {n} jours.","La llave se partió, hace {n} días."
+job.fixture_cellar.line.2,Let me see the lease first.,Najpierw poproszę umowę najmu.,Zuerst bitte den Mietvertrag.,D'abord le bail.,Primero el contrato.
+job.fixture_cellar.after.1,The jam survived.,Dżem przetrwał.,Die Marmelade hat überlebt.,La confiture a survécu.,La mermelada sobrevivió.
