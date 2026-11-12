@@ -68,6 +68,10 @@ func test_every_after_line_has_audio_in_pl_and_en() -> void:
 		if not f.ends_with(".json"):
 			continue
 		var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/" + f))
+		# D-111: a job whose lines are not recorded yet says so (`voice_pending`, contrib/voice/PENDING.md) and
+		# plays subtitle-only; test_chapter13_jobs.gd checks that the flag is true to the files.
+		if bool(j.get("voice_pending", false)):
+			continue
 		for line in DayAfter.lines_for(j):
 			for lang in ["pl", "en"]:
 				var path := Sfx.line_clip_path(String(line["key"]), lang)

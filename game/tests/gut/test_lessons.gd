@@ -48,7 +48,10 @@ static func _jobs(fam: StringName) -> Array:
 				var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(dir + "/" + f))
 				if JobRun.family_for(j) == fam:
 					out.append(j)
-	out.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return String(a["id"]) < String(b["id"]))
+	# career order (chapter, order, id), as the job list shows them: the family's first job is the one the
+	# player meets first (D-111: sorting by id put a chapter 13 tier-3 lock in front of chapter 2's)
+	var list_script: GDScript = load("res://scripts/ui/jobs_list.gd")
+	out.sort_custom(list_script.job_before)
 	return out
 
 
