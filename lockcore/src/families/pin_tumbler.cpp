@@ -645,7 +645,7 @@ class Module final : public FamilyModule {
     static constexpr Row rows[] = {
         {4, 4, 140, 300, 120, 1000, 0, 0, 0, 0, 300, 90},     // t1
         {4, 5, 120, 260, 100, 900, 0, 1, 1, 50, 250, 120},    // t2
-        {5, 6, 100, 220, 80, 700, 50, 1, 2, 80, 220, 120},    // t3
+        {5, 6, 100, 220, 80, 700, 50, 1, 2, 80, 250, 120},    // t3 (grace 250 ms, D-116; was 220)
     };
     const int t = std::clamp(tier, 1, 3);
     const Row& r = rows[t - 1];

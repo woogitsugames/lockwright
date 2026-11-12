@@ -98,7 +98,7 @@ class Module final : public FamilyModule {
     };
     static constexpr Row detector_rows[] = {
         {5, 5, 90, 180, 80, 1, 1, 200, 150},
-        {6, 6, 80, 160, 80, 1, 2, 170, 180},
+        {6, 6, 85, 160, 80, 1, 2, 170, 180},  // gate 8.5 % (D-116; was 8 %)
     };
     // axial_slider (new-families.md §6): 4 -> 6 sliders, false notches from t2.
     static constexpr Row slider_rows[] = {
