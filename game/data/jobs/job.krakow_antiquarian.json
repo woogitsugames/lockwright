@@ -3,7 +3,7 @@
   "chapter": 4,
   "district": "Kraków",
   "family": "dial_safe",
-  "tier": 1,
+  "tier": 2,
   "verification": "umowa najmu (2), świadek (2) i posiadanie (1). Haczyk: **częściowa odmowa**. Kasetka cudzego klienta to osobna decyzja: otwarcie jej daje −10 rep, odmowa +3 rep.",
   "verify_kind": "object",
   "reward_coins": 120,

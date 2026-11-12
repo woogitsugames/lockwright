@@ -306,6 +306,9 @@ Miasto jest **fikcyjne**, polskie i średniej wielkości (robocza nazwa: **Zamec
 
 Format: **id** · tytuł PL / EN · klient · sytuacja · scena (PL, EN) · zamek (rodzina, tier) · weryfikacja · presja · nagroda · rozdział, dzielnica · ton.
 Tier: T1 wprowadzenie, T2 rozwinięcie, T3 mistrzowski. Nagrody w monetach podane orientacyjnie, według wzoru z rozdz. 3.
+T1–T3 to skala fabularna tego dokumentu (i cennika). Pole `tier` w `game/data/jobs/*.json` to **tier lockcore** danej
+rodziny i musi mieścić się w jej zakresie z `lockcore/tiers.json` (D-118, pilnuje tego `data/tools/validate.py`):
+np. „dźwigniowy, T1” to w danych `lever` 3, „zapadkowy, T3” to `warded` 2, „dźwigniowy z detektorem, T2” to `lever_detector` 5.
 
 ### Rozdział 1 — Pierwsza zmiana
 
@@ -502,7 +505,7 @@ Tier: T1 wprowadzenie, T2 rozwinięcie, T3 mistrzowski. Nagrody w monetach podan
 - **Scena:**
   - PL — **Marek:** Pan otworzy, ja popatrzę i powiem reszcie. / **Ślusarz:** Otworzę, kiedy wszyscy spadkobiercy będą przy stole albo dadzą zgodę na piśmie. / **Piotr:** Ewa będzie za godzinę. / **Marek:** …No dobra. Kawy? / **Ewa (później):** Wujek by się śmiał, że my się o to kłócimy.
   - EN — **Marek:** You open it, I'll take a look and tell the others. / **Locksmith:** I'll open it when all the heirs are at the table, or have agreed in writing. / **Piotr:** Ewa's an hour away. / **Marek:** …Fine. Coffee? / **Ewa (later):** Uncle would laugh at us fighting over this.
-- **Zamek:** sejf z tarczami, T2.
+- **Zamek:** sejf z tarczami, T1 (pierwszy sejf w grze; do D-118 T2).
 - **Weryfikacja:** postanowienie o stwierdzeniu nabycia spadku albo akt poświadczenia dziedziczenia (3), w scenie jako karta „dokument od notariusza”. Haczyk: zgrzyt „niepełny skład”. Wybór „Poproszę o coś jeszcze” (czekamy na Ewę) daje najlepszy wynik. Otwarcie przy samym Marku to −8 rep i kłótnia w rodzinie, w której gracz zostaje świadkiem.
 - **Presja:** brak.
 - **Nagroda:** 120 monet i dodatkowe 20 za czekanie (wycena „za godzinę oczekiwania”, uczciwie podana z góry). W sejfie jest klaser ze znaczkami i kartka „Dla całej trójki po równo. Nie kłóćcie się. B.”
@@ -602,7 +605,7 @@ Tier: T1 wprowadzenie, T2 rozwinięcie, T3 mistrzowski. Nagrody w monetach podan
 - **Scena:**
   - PL — **Leopold:** Kasa moja, wynajem mam od miasta, sąsiadka z kawiarni potwierdzi. / **Ślusarz:** Kasę otworzę. Kasetki nie. Niech właściciel przyjdzie sam. / **Leopold:** Ma pan rację. Starzeję się, robię się niecierpliwy. / **Leopold:** W nagrodę opowiem panu o cechu ślusarzy i zegarmistrzów.
   - EN — **Leopold:** The strongbox is mine, I lease from the city, the café lady next door will confirm. / **Locksmith:** I'll open the strongbox. Not the casket. Its owner can come in himself. / **Leopold:** You're right. I'm getting old and impatient. / **Leopold:** As a reward, I'll tell you about the locksmiths' and clockmakers' guild.
-- **Zamek:** sejf z tarczami, T1.
+- **Zamek:** sejf z tarczami, T2 (drugi sejf, rozdział później niż sejf wujka; do D-118 T1).
 - **Weryfikacja:** umowa najmu (2), świadek (2) i posiadanie (1). Haczyk: **częściowa odmowa**. Kasetka cudzego klienta to osobna decyzja: otwarcie jej daje −10 rep, odmowa +3 rep.
 - **Presja:** brak.
 - **Nagroda:** 120 monet i stara mapa Krakowa (przedmiot do warsztatu).

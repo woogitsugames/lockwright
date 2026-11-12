@@ -3,7 +3,7 @@
   "chapter": 2,
   "district": "Osiedle Słoneczne",
   "family": "pin_tumbler",
-  "tier": 1,
+  "tier": 2,
   "verification": "zgrzyty `flag.contradiction` (inne nazwisko na skrzynce) i szczegół (wieniec). Najlepszy wynik daje „Poproszę o coś jeszcze”. Gdy gracz otworzy drzwi, ma −25 rep i scenę „to nie było jego mieszkanie”: mieszkająca tu pani Teresa jest w szoku.",
   "verify_kind": "premises",
   "reward_coins": 20,

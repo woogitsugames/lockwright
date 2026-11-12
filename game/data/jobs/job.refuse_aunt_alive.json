@@ -3,7 +3,7 @@
   "chapter": 3,
   "district": "Willowa Górka",
   "family": "lever",
-  "tier": 2,
+  "tier": 3,
   "verification": "dowód (1). Zgrzyty: `flag.neighbour_denies`, `flag.absent_owner`.",
   "verify_kind": "premises",
   "reward_coins": 90,
