@@ -39,6 +39,11 @@ var _vp_label: Label
 var _vp_rows: VBoxContainer
 var _vp_auto: CheckButton
 var _vp_note: Label
+# D-112: downloadable chapters (content packs), a block in the last section; absent when the game has none
+var _cp_box: VBoxContainer
+var _cp_label: Label
+var _cp_rows: VBoxContainer
+var _cp_note: Label
 
 
 func _ready() -> void:
@@ -52,6 +57,7 @@ func _ready() -> void:
 		ob.fit_to_longest_item = false
 		ob.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_build_voice_pack_block()
+	_build_content_pack_block()
 	_build_help_captions()
 	_build_a11y_toggles()
 	_build_system_text()
@@ -92,6 +98,7 @@ func _load_values() -> void:
 	_fill_options()
 	_update_values()
 	_update_voice_pack()
+	_update_content_packs()
 
 
 func _fill_options() -> void:
@@ -196,6 +203,8 @@ func _wire() -> void:
 		_update_voice_pack())
 	VoicePacks.state_changed.connect(_on_voice_pack_event)
 	VoicePacks.progress.connect(_on_voice_pack_progress)
+	ContentPacks.state_changed.connect(_on_content_pack_event)
+	ContentPacks.progress.connect(_on_content_pack_progress)
 	quality_option.item_selected.connect(func(idx: int) -> void:
 		Settings.set_value("quality_profile", ["auto", "high", "medium", "low"][idx])
 		Quality.apply_profile(["auto", "high", "medium", "low"][idx]))
@@ -265,6 +274,9 @@ func _refresh_texts() -> void:
 	_vp_label.text = I18n.t(&"settings.voice_pack.header")
 	_vp_auto.text = I18n.t(&"settings.voice_pack.auto")
 	_vp_note.text = I18n.t(&"settings.voice_pack.note")
+	if _cp_box != null:
+		_cp_label.text = I18n.t(&"settings.content.header")
+		_cp_note.text = I18n.t(&"settings.content.note")
 	for cap_name in HELP:
 		(_help[cap_name] as Label).text = I18n.t(HELP[cap_name][1])
 	_system_text.text = I18n.t(&"settings.text_scale_system").format(
@@ -284,6 +296,7 @@ func _refresh_texts() -> void:
 	_fill_options()
 	_update_values()
 	_update_voice_pack()
+	_update_content_packs()
 
 
 # --- T60: one help line (Caption) under a control ------------------------------------
@@ -476,3 +489,110 @@ func _on_voice_pack_event(_lang: String) -> void:
 
 func _on_voice_pack_progress(_lang: String, _received: int, _total: int) -> void:
 	_update_voice_pack()
+
+
+# --- D-112: content packs (downloadable chapters) -------------------------------------------
+# The same plain rows as the voices: "Chapter 13 · name: 84,2 MB" + Download / Stop / Remove /
+# Try again (plates >= 48 dp), and a note that removing a chapter keeps the progress. The block
+# exists only when the game knows at least one pack.
+
+func _build_content_pack_block() -> void:
+	var ids: Array = ContentPacks.ids()
+	if ids.is_empty():
+		return
+	var box: VBoxContainer = get_node(S + "Other/Box")
+	_cp_box = VBoxContainer.new()
+	_cp_box.name = "ContentPacks"
+	_cp_box.add_theme_constant_override("separation", 8)
+	_cp_label = Label.new()
+	_cp_label.name = "ContentPacksLabel"
+	_cp_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_cp_box.add_child(_cp_label)
+	_cp_rows = VBoxContainer.new()
+	_cp_rows.name = "ContentPackRows"
+	_cp_rows.add_theme_constant_override("separation", 8)
+	_cp_box.add_child(_cp_rows)
+	for id: String in ids:
+		var row := HBoxContainer.new()
+		row.name = "Row_" + id
+		row.add_theme_constant_override("separation", 12)
+		var label := Label.new()
+		label.name = "Label"
+		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		row.add_child(label)
+		var action := Button.new()
+		action.name = "Action"
+		action.custom_minimum_size = Vector2(132, 52)
+		action.pressed.connect(_on_content_pack_pressed.bind(id))
+		row.add_child(action)
+		_cp_rows.add_child(row)
+	_cp_note = Label.new()
+	_cp_note.name = "ContentPacksNote"
+	_cp_note.theme_type_variation = &"Caption"
+	_cp_note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_cp_box.add_child(_cp_note)
+	box.add_child(_cp_box)
+	box.move_child(_cp_box, reset_button.get_index())
+
+
+func _update_content_packs() -> void:
+	if _cp_box == null:
+		return
+	for row in _cp_rows.get_children():
+		var id := String(row.name).trim_prefix("Row_")
+		var label: Label = row.get_node("Label")
+		var action: Button = row.get_node("Action")
+		var st: String = ContentPacks.state(id)
+		var info: String = ContentPacks.size_text(ContentPacks.pack_size(id), I18n.current_language())
+		var extra := ""
+		action.visible = true
+		match st:
+			"bundled":
+				info = I18n.t(&"settings.voice_pack.builtin")
+				action.visible = false
+			"installed":
+				info = I18n.t(&"settings.content.ready")
+				action.text = I18n.t(&"settings.voice_pack.remove")
+			"downloading":
+				info = I18n.t(&"settings.voice_pack.progress").format(
+					{"pct": roundi(ContentPacks.progress_ratio(id) * 100.0)})
+				action.text = I18n.t(&"settings.voice_pack.stop")
+			"verifying":
+				info = I18n.t(&"settings.voice_pack.verifying")
+				action.visible = false
+			"failed":
+				var why := "offline" if ContentPacks.last_error(id) in ["offline", "timeout", "interrupted"] else "failed"
+				extra = I18n.t(StringName("pack.row." + why))
+				action.text = I18n.t(&"settings.voice_pack.retry")
+			"update":
+				extra = I18n.t(&"pack.row.update")
+				action.visible = false
+			_:
+				action.text = I18n.t(&"settings.voice_pack.download")
+		var line := I18n.t(&"settings.voice_pack.line").format({"title": ContentPacks.title(id), "state": info})
+		if extra != "":
+			line += "\n" + extra
+		label.text = line
+
+
+func _on_content_pack_pressed(id: String) -> void:
+	match ContentPacks.state(id):
+		"downloading":
+			ContentPacks.cancel(id)
+		"installed":
+			ContentPacks.remove(id)
+		"bundled", "verifying", "update":
+			pass
+		_:
+			ContentPacks.ensure(id)
+	_update_content_packs()
+
+
+func _on_content_pack_event(_id: String) -> void:
+	_update_content_packs()
+
+
+func _on_content_pack_progress(_id: String, _received: int, _total: int) -> void:
+	_update_content_packs()

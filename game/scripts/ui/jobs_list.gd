@@ -4,7 +4,6 @@ extends Control
 @onready var list: VBoxContainer = $Frame/VBox/Scroll/JobsList
 @onready var back_button: Button = $Frame/VBox/Header/BackButton
 
-const JOBS_DIR := "res://data/jobs"
 
 var day_after: DayAfter  # V04/D-78: the "day after" scene over the list, or null
 
@@ -61,18 +60,47 @@ func _ready() -> void:
 	$Frame/VBox/Header/Title.text = I18n.t(&"jobs.title")
 	back_button.text = "‹ " + I18n.t(&"common.back")
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+	_build_list()
+	ScreenFrame.enter($Frame/VBox/Scroll)
+	if _focus_button != null:
+		_scroll_to_focus.call_deferred()
+	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
+	day_after = DayAfter.maybe_show(self)  # V04/D-78: one follow-up of a recently finished job
+	# D-112: a content pack arrived or was removed -> the list is rebuilt; progress only updates its row
+	ContentPacks.registry_changed.connect(_on_registry_changed)
+	ContentPacks.state_changed.connect(_on_pack_event)
+	ContentPacks.progress.connect(_on_pack_progress)
+	LockPreload.release()  # perf 2026-11-08: a job left at the verify screen drops its warmed-up lock
+
+
+## Fills the list: chapter headers, the jobs that can be played, and one row per chapter whose content
+## pack is not on the phone (D-112).
+func _build_list() -> void:
+	for c in list.get_children():
+		list.remove_child(c)
+		c.queue_free()
+	_pack_rows.clear()
+	_focus_button = null
 	var completed: Array = Save.get_value("jobs_completed", [])
 	var refused: Array = Save.get_value("jobs_refused", [])  # N-15: refused jobs are closed
 	for jid in Save.get_value("jobs_wrong_open", []):  # D-85: a wrong door opened leaves the list too,
 		if not completed.has(jid):  # N-91: unless it had been settled honestly before (old saves)
 			refused = refused + [jid]
-	var jobs: Array = []
-	for path in DirAccess.get_files_at(JOBS_DIR):
-		if path.ends_with(".json"):
-			jobs.append(JSON.parse_string(FileAccess.get_file_as_string(JOBS_DIR + "/" + path)))
+	var jobs: Array = JobRun.all_jobs()  # D-112: the base game and the content packs on the phone
+	for offer: Dictionary in ContentPacks.offers():  # a chapter that is not on the phone: one row to fetch it
+		jobs.append({"chapter": offer["chapter"], "order": -1, "id": "", "_pack": offer["pack"]})
 	jobs.sort_custom(job_before)  # D-71: chapters 1-12 in one career (7 and 8 no longer post-release)
 	var shown_chapter := -1
 	for job in jobs:
+		if job.has("_pack"):
+			var pch := int(job["chapter"])
+			if pch != shown_chapter:
+				shown_chapter = pch
+				list.add_child(chapter_header(pch))
+			var prow := pack_row(String(job["_pack"]), pch)
+			_pack_rows.append(prow)
+			list.add_child(prow)
+			continue
 		if not JobRun.is_playable(job):
 			continue  # N-05: hide jobs whose family is not implemented in lockcore
 		var jid: String = job.get("id", "")
@@ -102,12 +130,97 @@ func _ready() -> void:
 			get_tree().change_scene_to_file("res://scenes/job_arrival.tscn"))
 		row.add_child(b)
 		list.add_child(row)
-	ScreenFrame.enter($Frame/VBox/Scroll)
-	if _focus_button != null:
-		_scroll_to_focus.call_deferred()
-	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
-	day_after = DayAfter.maybe_show(self)  # V04/D-78: one follow-up of a recently finished job
-	LockPreload.release()  # perf 2026-11-08: a job left at the verify screen drops its warmed-up lock
+	_update_pack_rows()
+
+
+func _on_registry_changed() -> void:
+	if is_inside_tree():
+		_build_list()
+
+
+# --- D-112: a chapter that is not on the phone -------------------------------------------
+# A plain block under the chapter header (no card): what it is and how big ("6 jobs · 84,2 MB"),
+# one line of advice (Wi-Fi; it stays on the phone until removed in Settings), and one plate >= 48 dp:
+# Download / Stop / Try again. The tap is the consent; nothing is fetched on its own. While it
+# downloads the line shows the percentage; offline or failed says so in words and keeps the plate.
+
+var _pack_rows: Array = []
+
+
+func pack_row(pack: String, ch: int) -> VBoxContainer:
+	var box := VBoxContainer.new()
+	box.name = "Pack_%s_%d" % [pack, ch]
+	box.set_meta(&"pack", pack)
+	box.add_theme_constant_override("separation", 6)
+	var info := Label.new()
+	info.name = "Info"
+	info.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	box.add_child(info)
+	var note := Label.new()
+	note.name = "Note"
+	note.theme_type_variation = &"Caption"
+	note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	box.add_child(note)
+	var action := Button.new()
+	action.name = "Action"
+	action.custom_minimum_size = Vector2(0, 52)
+	action.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	action.mouse_filter = Control.MOUSE_FILTER_PASS
+	action.pressed.connect(_on_pack_pressed.bind(pack))
+	box.add_child(action)
+	return box
+
+
+func _update_pack_rows() -> void:
+	for box: VBoxContainer in _pack_rows:
+		if not is_instance_valid(box):
+			continue
+		var pack := String(box.get_meta(&"pack"))
+		var info: Label = box.get_node("Info")
+		var note: Label = box.get_node("Note")
+		var action: Button = box.get_node("Action")
+		var st: String = ContentPacks.state(pack)
+		var size: String = ContentPacks.size_text(ContentPacks.pack_size(pack), I18n.current_language())
+		info.text = I18n.t(&"pack.row.info").format({"n": ContentPacks.job_count(pack), "size": size})
+		note.text = I18n.t(&"pack.row.note")
+		action.visible = true
+		action.disabled = false
+		match st:
+			"downloading":
+				info.text = I18n.t(&"pack.row.downloading").format(
+					{"pct": roundi(ContentPacks.progress_ratio(pack) * 100.0), "size": size})
+				action.text = I18n.t(&"settings.voice_pack.stop")
+			"verifying":
+				info.text = I18n.t(&"pack.row.verifying")
+				action.visible = false
+			"failed":
+				var why := "offline" if ContentPacks.last_error(pack) in ["offline", "timeout", "interrupted"] else "failed"
+				note.text = I18n.t(StringName("pack.row." + why))
+				action.text = I18n.t(&"settings.voice_pack.retry")
+			"update":
+				note.text = I18n.t(&"pack.row.update")
+				action.visible = false
+			_:
+				action.text = I18n.t(&"settings.voice_pack.download")
+
+
+func _on_pack_event(_pack: String) -> void:
+	_update_pack_rows()
+
+
+func _on_pack_progress(_pack: String, _received: int, _total: int) -> void:
+	_update_pack_rows()
+
+
+func _on_pack_pressed(pack: String) -> void:
+	match ContentPacks.state(pack):
+		"downloading":
+			ContentPacks.cancel(pack)
+		"verifying", "update", "installed", "bundled":
+			pass
+		_:
+			ContentPacks.ensure(pack)
+	_update_pack_rows()
 
 
 ## N-85: the job the player opened last; the list comes back scrolled to it (it used to jump to the top
