@@ -471,9 +471,9 @@ Trzy zlecenia dostają inny zamek:
 
 | zlecenie | rozdz. | było (w grze) | jest | czujący p50 / niezdarny p50 tieru | ten zamek: skrypt. / czujący / niezdarny |
 |---|---|---|---|---|---|
-| `uncle_safe_heirs` | 3 | `dial_safe` t2 | `dial_safe` t1 | 9,3 s / 9,8 s | 11,1 s / 15,7 s / 10,3 s |
+| `uncle_safe_heirs` | 3 | `dial_safe` t2 | `dial_safe` t1 | 9,3 s / 9,8 s | 11,7 s / 16,5 s / 10,7 s |
 | `krakow_antiquarian` | 4 | `dial_safe` t1 | `dial_safe` t2 | 20,2 s / 13,6 s | 15,7 s / 20,6 s / 13,8 s |
-| `edek_rehearsal_store` | 7 (7. z 12) | `lever_detector` t5 | `lever` t3 | 12,5 s / 3,0 s | 5,6 s / 12,5 s / 3,1 s |
+| `edek_rehearsal_store` | 7 (7. z 12) | `lever_detector` t5 | `lever` t3 | 12,5 s / 3,0 s | 5,8 s / 13,8 s / 3,0 s |
 
 - **`dial_safe`: t1 przed t2.** Pierwszy sejf w grze (sejf wujka, rozdz. 3) jest teraz łatwiejszy niż drugi
   (kasa antykwariusza, rozdz. 4). Żadna kwestia nie mówi o liczbie kół ani o trudności, więc tekstów nie ruszano.
@@ -584,8 +584,9 @@ Narzędzie nie jest obciążane (bot = niezdarny, 0 pęknięć z konstrukcji): `
 3. **Tiery bez fałszywych bramek wybaczają rękę do +0,20**: `pin_tumbler` t2–t3, `wafer`, `lever` t3, `magnetic`,
    `dimple` t1, `axial_slider` t1, `time_lock` (szczyt ≤ 0,26 S_max w 90 % przebiegów). Z nich składają się
    rozdz. 1–2 i większość rozdz. 7–9.
-4. **`warded` t2 to pierwsze narzędzie, które można złamać w karierze** (26 % przy +0,20, 99,97 % przy +0,25):
-   `grandpa_chest` w rozdz. 3. Bez fałszywej bramki; tu ładuje samo dociskanie rygla ponad limit bitu.
+4. **`warded` t2 to pierwszy tier kariery, na którym narzędzie da się złamać** (26 % przy +0,20, 99,97 % przy
+   +0,25): występuje od rozdz. 3 (`grandpa_chest`), a na seedach zleceń pierwsze złamanie wypada w rozdz. 5
+   (`ghent_beguinage`). Bez fałszywej bramki; tu ładuje samo dociskanie rygla ponad limit bitu.
 5. **`time_lock`**: 0 % do +0,20, potem t2 99,7 % już przy +0,25. Sprężyna nakręcona ponad `τ_safe` ładuje się w
    każdym kroku, także bez dotykania zapadek, więc głuchy bot nie ma kiedy poluzować. To zamierzona mechanika
    („przekręcona sprężyna”), ale najbardziej stroma krzywa w tabeli.
@@ -594,24 +595,24 @@ Narzędzie nie jest obciążane (bot = niezdarny, 0 pęknięć z konstrukcji): `
    detektora (19 i 67 na 10 000).
 
 **Te same zamki, co w zleceniach** (`replay_tool record <rodzina> <tier> <seed> out.json --heavy`, seed zlecenia,
-+0,20; dane po 8.1). Ciężka ręka otwiera 57 z 70 zamków kariery i łamie narzędzie na 13:
++0,20; dane po 8.1; seed jak w `JobRun.seed_for`). Ciężka ręka otwiera 59 z 70 zamków kariery i łamie narzędzie na 11:
 
 | rozdz. | zamków | złamane | które | otwarte ze szczytem ≥ 0,6 S_max |
 |---|---|---|---|---|
-| 1 | 5 | 0 | – | `cat_bathroom` 0,78, `grandma_broth` 0,89 |
+| 1 | 5 | 0 | – | `cat_bathroom` 0,89, `grandma_broth` 0,89 |
 | 2 | 5 | 0 | – | – |
-| 3 | 5 | 1 | `grandpa_chest` (`warded` t2) | – |
-| 4 | 3 | 1 | `swiatniki_journeyman_padlock` (`warded` t2) | `krakow_tenement_gate` 0,91 |
-| 5 | 4 | 1 | `brussels_townhouse` (`dimple` t2) | `ghent_beguinage` 0,91, `liege_bakery` 0,97 |
+| 3 | 5 | 0 | – | `grandpa_chest` 0,78 |
+| 4 | 3 | 0 | – | `krakow_tenement_gate` 0,90, `swiatniki_journeyman_padlock` 0,68 |
+| 5 | 4 | 2 | `brussels_townhouse` (`dimple` t2), `ghent_beguinage` (`warded` t2) | `liege_bakery` 0,97 |
 | 6 | 4 | 1 | `bramah_bureau` (`axial_slider` t2) | – |
-| 7 | 10 | 0 | – | `halina_recipe_box` 0,89, `community_notice_case` 0,85 |
-| 8 | 10 | 1 | `christmas_eve_heat` (`lever_detector` t5) | `halina_christmas_tin` 0,73 |
-| 9 | 6 | 0 | – | `t43_09_06_draughty_hall` 0,89 |
+| 7 | 10 | 0 | – | `halina_recipe_box` 0,89, `community_notice_case` 0,70 |
+| 8 | 10 | 1 | `christmas_eve_heat` (`lever_detector` t5) | `halina_christmas_tin` 0,89 |
+| 9 | 6 | 0 | – | `t43_09_06_draughty_hall` 0,96 |
 | 10 | 6 | 2 | `t43_10_01_renovator_bureau` (`axial_slider` t2), `t43_10_06_shared_room_entry` (`dimple` t3) | – |
 | 11 | 5 | 2 | `t43_11_03_tool_exchange` (`axial_slider` t3), `t43_11_05_rehearsal_chest` (`lever` t4) | – |
-| 12 | 7 | 4 | `t43_12_02_detective_cabinet` (`lever_detector` t5), `t43_12_03_community_store` (`pin_tumbler` t5), `t43_12_04_school_box` (`lever` t5), `t43_12_08_henryks_bench` (`pin_tumbler` t6) | – |
+| 12 | 7 | 3 | `t43_12_02_detective_cabinet` (`lever_detector` t5), `t43_12_04_school_box` (`lever` t5), `t43_12_08_henryks_bench` (`pin_tumbler` t6) | – |
 
-W rozdz. 1–2, 7 i 9 nie łamie się nic; pierwsze złamanie to rozdz. 3, a od rozdz. 10 łamią się 2–4 zamki na rozdział.
+W rozdz. 1–4, 7 i 9 nie łamie się nic; pierwsze złamanie to rozdz. 5, a od rozdz. 10 łamią się 2–3 zamki na rozdział.
 Krzywa „kary za siłę” rośnie więc razem z karierą, z jednym garbem: rozdz. 5–6 mają już tiery, które łamią w
 71–94 % przebiegów (`dimple` t2, `lever_detector` t5, `axial_slider` t2), a rozdz. 7 i 9 nie mają żadnego.
 
