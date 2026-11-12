@@ -1,5 +1,10 @@
 # lockcore balance (v0.3, D-34)
 
+> **D-116 (2026-11-12):** two rows below are superseded — `lever_detector` t6 (clumsy 42.5 % → 75.4 %) and
+> `dimple` t3 (clumsy drops 1.72 → 0.89 per lock). See [D-116](#d-116-difficulty-curve-audit-2026-11-12) at the
+> end; the full current tables per family, tier and chapter are in
+> [`docs/research/difficulty-curve-2026-11.md`](../docs/research/difficulty-curve-2026-11.md).
+
 `verify_seeds --seeds 10000` (all bots on every seed), 2026-11-05. Scripted bot (hard gate):
 **0 failures** in every family and tier. Feeling bot = events and continuous signals only, budget =
 tier time limit. Clumsy bot = oracle plan with tremor ±0.06, fast lifting, 250 ms reaction and no
@@ -109,3 +114,44 @@ the feeling bot's time is the calibration figure. 10 000-seed numbers come from 
 
 Open calibration point: every new family is at 100 % for the feeling bot, so the tiers are separated
 only by time. Human playtests should decide whether t2/t3 need narrower windows or more false notches.
+
+## D-116: difficulty-curve audit (2026-11-12)
+
+`verify_seeds --seeds 10000`, all bots on every seed, scripted gate 0 failures in all 41 family × tier rows.
+The audit read the tables against the chapters that use each tier (`game/data/jobs`) and changed two numbers
+in the tier tables. Rules, generators and `rules_version` are untouched, so every golden replay keeps its hash
+(a replay carries its own difficulty vector).
+
+| family | tier | parameter | was | now |
+|---|---|---|---|---|
+| `dimple` | t3 | `drop_grace_ms` | 220 | 250 (same as t2) |
+| `lever_detector` | t6 | gate window (`win_shear`) | 0.080 | 0.085 |
+
+| family | tier | bot | before | after |
+|---|---|---|---|---|
+| `dimple` | t3 | clumsy | 100 %, p50 18.1 s, p90 30.7 s, drops 1.72, oversets 3.04 per lock | 100 %, p50 15.5 s, p90 24.9 s, drops 0.89, oversets 3.03 |
+| | | feeling | 99.96 %, p50 22.4 s, p90 28.2 s | 99.96 %, p50 22.4 s, p90 28.3 s |
+| `lever_detector` | t6 | clumsy | 42.4 %, p50 21.9 s, 5755 blocked locks | 75.4 %, p50 20.2 s, 2458 blocked locks |
+| | | feeling | 99.96 %, p50 29.1 s, p90 36.7 s | 99.95 %, p50 29.1 s, p90 36.5 s |
+
+Why these two:
+
+- **`lever_detector` t5 → t6** was the largest cliff in the data (clumsy 99.9 % → 42 %, feeling bot unchanged)
+  and a threshold, not a slope: a set lever follows the lifter at 0.6/s, 250 ms of reaction is 0.15 of travel plus
+  tremor, and the t6 headroom (gate 0.08 + detector margin 0.083) was 0.163. Gate width alone moves the clumsy bot
+  42 % (0.080) → 64 % (0.083) → 75 % (0.085) → 86 % (0.087) → 93.5 % (0.090, the t5 value). 0.085 keeps every t6
+  parameter at or below t5 and leaves the detector margin above the overset margin (D-34).
+- **`dimple` t3** (chapter 10) was rougher for the clumsy bot than `pin_tumbler` t5 (chapter 12; 14.0 s, 1.67
+  drops, 2.44 oversets) while its chapter neighbours sit at 3–10 s and 0 drops. Every dimple security pin is
+  telescoping (spool rule), t3 has 1–2 of them, and the generator's "drop every stack" rule starts at tier 3. With
+  220 ms of grace an overset fix (tension below `t_release`) always cost the whole lock for a hand that reacts in
+  250 ms. 250 ms halves the drops; the feeling bot is unchanged, so the tier is not easier for a careful player.
+
+Left alone on purpose: `pin_tumbler` t7 (clumsy 36 %, not used by any job or by the endless run), the wafer time
+limit (flat 60 s; raising it changed no result and the game does not enforce it), and the 28 rows where the
+clumsy bot pays nothing at all — there the bots cannot say which way to tune (neither bot over-tensions: 0 clumsy
+breaks in 410 000 runs). Chapter-level outliers that need a content decision (`lever_detector` t5 in chapter 5,
+job tiers outside the family range, `disc_detainer` times) are listed in the research note, §6.
+
+New in the `verify_seeds` report and CSV (appended columns): false sets and oversets per lock for both soft bots,
+clumsy p90, failure reasons (time-outs, tool at ≥ 0.8 S_max, blocked detector), exact success counts.

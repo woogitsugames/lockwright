@@ -126,7 +126,8 @@ which is above `t_hold`, so fixing it costs no drop.
 Generator constants (Q16 thousandths): pin `t_hold 0.10`, `t_release 0.05`,
 `band_lo 0.20..0.25`, `tau_safe = max t_stick + 0.06`, `cr 0.12..0.21`, stress gain 0.095,
 bound pin speed 2/s, spool 0.6/s. Wafer: `t_hold 0.08`, `t_release 0.16`, `band_lo 0.22..0.26`.
-Tier tables: `pin_tumbler` t2–t7 per LOCKS.md §2.6 (t5 5–6 stacks, t7 overset 5.5 %, D-34); `wafer` t1–t3 (D-17).
+Tier tables: `pin_tumbler` t2–t7 per LOCKS.md §2.6 (t5 5–6 stacks, t7 overset 5.5 %, D-34); `wafer` t1–t3 (D-17);
+`dimple` t3 drop grace 250 ms and `lever_detector` t6 gate 8.5 % (D-116).
 
 ## Families (v0.2)
 
@@ -208,7 +209,7 @@ Results (10 000 seeds per tier, scripted gate: 0 failures in every family and ti
 in [`BALANCE.md`](BALANCE.md)). Feeling bot success is 99.9–100 % everywhere since v0.3; its time
 p50 rises with every tier: `pin_tumbler` t2–t7 11–27 s, `wafer` 12–22 s, `wooden_pin` 16 s,
 `warded` 15–19 s, `lever` 13–23 s, `lever_detector` 23–29 s, `ring_combo` 25–34 s. Clumsy bot on
-the top tiers: `pin_tumbler` t6 93.7 % → t7 36.0 %, `lever_detector` t5 99.9 % → t6 42.5 %.
+the top tiers: `pin_tumbler` t6 93.7 % → t7 36.0 %, `lever_detector` t5 99.9 % → t6 75.4 % (42.5 % before D-116).
 
 `generate()` retries up to 16 times (`seed' = hash(seed, attempt)`) until the oracle accepts.
 Per seed `verify_seeds` also checks `validate()`, the lock-file round trip (bit-exact) and,
@@ -238,6 +239,21 @@ continuous signals in [0, 1], view positions / stress / rotation in [0, 1], wind
 S >= 0. CI runs it under ASan + UBSan with `-fno-sanitize-recover=undefined` and a 300 s timeout.
 
 ## API changes
+
+### D-116 (balance audit, 2026-11-12)
+
+No API change; hashes and goldens unchanged (two tier-table numbers, and a replay carries its own vector).
+
+- `difficulty_for_tier`: `dimple` t3 `drop_grace_ms` 220 → 250, `lever_detector` t6 `win_shear` 0.080 → 0.085.
+  Locks generated for these two tiers get the new value; everything else in them is identical.
+- `verify_seeds`: clumsy and feeling lines also print p90 (clumsy), false sets and oversets per lock and the
+  failure reasons (`timeouts`, `overstress` = opened with the tool at ≥ 0.8 S_max, `trips` = blocked detector).
+  CSV gains columns at the end of the row: `clumsy_p50`, `clumsy_p90`, `clumsy_drops`, `clumsy_oversets`,
+  `clumsy_false_sets`, `clumsy_breaks`, `clumsy_timeouts`, `clumsy_overstress`, `clumsy_trips`, `feel_drops`,
+  `feel_oversets`, `feel_false_sets`, `feel_breaks`, `feel_timeouts`, `feel_trips`, `time_limit_steps`,
+  `clumsy_ok`, `feel_ok` (totals over that bot's runs; times in steps).
+- `ring_combo` / `combo` / `disc_detainer` bots count `combo.slip` and `disc.overturn` in `SolveReport::oversets`
+  (report only).
 
 ### v0.6 (D-59 families)
 

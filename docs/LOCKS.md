@@ -604,6 +604,7 @@ blokuje zamek i sygnalizuje właścicielowi próbę manipulacji.
 |---|---|---|---|
 | `n_elem` | 5–6 | dźwignie | 5 → 6 |
 | `detector_margin` | 10–8,3 | % nad bramką | maleje (D-34; było 12–6) |
+| `win_gate` | 9–8,5 | % skoku | maleje (t6: D-116; było 8) |
 | `false_gates` | 1–2 | — | rośnie |
 | `reset_time` | 1,5–2,5 | s | rośnie |
 
@@ -1185,6 +1186,8 @@ wspólny model napięcia §1.5, kolejność wiązania, overset, zrzut, łamanie 
 | t1 | 4 | 0,14 | 0,30 | 0,12 | 0 | 90 s |
 | t2 | 4–5 | 0,12 | 0,26 | 0,10 | 1 | 120 s |
 | t3 | 5–6 | 0,10 | 0,22 | 0,08 | 1–2 | 120 s |
+
+Czas łaski zrzutu (`drop_grace`): 300 / 250 / 250 ms (t3: D-116; było 220 ms).
 
 **ViewModel.** Jak `pin_tumbler` (pozycja kołka, okno, stany free/bound/near/set/false_set/overset, `stress`),
 plus bit rzędu w `variant`.
