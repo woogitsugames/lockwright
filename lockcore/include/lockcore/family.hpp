@@ -117,14 +117,19 @@ struct SolveReport {
 struct SolveOptions {
   std::uint64_t bot_seed = 1;
   bool record_inputs = false;
+  // BotKind::heavy only (D-118): tension held above the plan's; 0 = the default 0.30.
+  q16 heavy_over = 0;
 };
 
 // Verifier bots (LOCKS.md §1.9), v0.2 (additive).
 //  scripted: stage 2, the hard gate (same as solver());
 //  clumsy:   oracle plan with worse human limits and no overset knowledge (soft metric);
 //  feeling:  stage 3, sees only events and the continuous signals, never the state
-//            or the spec (soft metric for difficulty calibration).
-enum class BotKind : std::uint8_t { scripted, clumsy, feeling };
+//            or the spec (soft metric for difficulty calibration);
+//  heavy:    D-118, the clumsy plan with too much tension and no reaction to `stress`
+//            (soft metric for tool breakage). Families whose tool is never loaded
+//            (ring_combo / combo / disc_detainer, dial_safe) run the clumsy bot.
+enum class BotKind : std::uint8_t { scripted, clumsy, feeling, heavy };
 
 class FamilyModule {
  public:
@@ -158,8 +163,8 @@ class FamilyModule {
   virtual OracleReport oracle(const LockSpec& spec, const ToolSet& tools) const = 0;
   virtual SolveReport solver(const LockSpec& spec, const ToolSet& tools,
                              const SolveOptions& opt = {}) const;
-  // v0.2 (additive). Budget: scripted = half the tier time limit, clumsy and
-  // feeling = the full tier time limit. The default serves lift-based families
+  // v0.2 (additive). Budget: scripted = half the tier time limit, clumsy,
+  // feeling and heavy = the full tier time limit. The default serves lift-based families
   // (run_plan_bot / run_feel_bot); other families override it.
   virtual SolveReport run_bot(BotKind kind, const LockSpec& spec, const ToolSet& tools,
                               const SolveOptions& opt = {}) const;

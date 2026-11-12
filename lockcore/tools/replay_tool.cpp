@@ -1,6 +1,6 @@
 // replay_tool: record, play and inspect replays and lock files.
 //
-//   replay_tool record <family> <tier> <seed> <out.replay.json> [--clumsy|--feel]
+//   replay_tool record <family> <tier> <seed> <out.replay.json> [--clumsy|--feel|--heavy]
 //     --clumsy: record the clumsy bot (no overset knowledge), which exercises
 //     overset / drop / counter-rotation paths
 //     --feel: record the feeling bot (events and continuous signals only)
@@ -25,7 +25,7 @@ namespace {
 
 int usage() {
   std::fprintf(stderr,
-               "usage:\n  replay_tool record <family> <tier> <seed> <out> [--clumsy|--feel]\n  replay_tool play <file>\n"
+               "usage:\n  replay_tool record <family> <tier> <seed> <out> [--clumsy|--feel|--heavy]\n  replay_tool play <file>\n"
                "  replay_tool lock <family> <tier> <seed>\n"
                "  replay_tool trace <file> <out.trace.json>\n");
   return 2;
@@ -218,7 +218,8 @@ int main(int argc, char** argv) {
 
   const bool clumsy = argc == 7 && std::string(argv[6]) == "--clumsy";
   const bool feel = argc == 7 && std::string(argv[6]) == "--feel";
-  if ((cmd == "record" && (argc == 6 || clumsy || feel)) || (cmd == "lock" && argc == 5)) {
+  const bool heavy = argc == 7 && std::string(argv[6]) == "--heavy";
+  if ((cmd == "record" && (argc == 6 || clumsy || feel || heavy)) || (cmd == "lock" && argc == 5)) {
     const FamilyModule* fam = reg.find(argv[2]);
     if (fam == nullptr) {
       std::fprintf(stderr, "unknown family %s\n", argv[2]);
@@ -251,10 +252,14 @@ int main(int argc, char** argv) {
       r = fam->run_bot(BotKind::clumsy, spec, fam->required_tools(spec), opt);
     } else if (feel) {
       r = fam->run_bot(BotKind::feeling, spec, fam->required_tools(spec), opt);
+    } else if (heavy) {
+      r = fam->run_bot(BotKind::heavy, spec, fam->required_tools(spec), opt);
     } else {
       r = fam->solver(spec, fam->required_tools(spec), opt);
     }
-    if (!r.ok) {
+    // The heavy hand (D-118) is recorded whatever the outcome: a broken tool is the point.
+    const bool keep_failed = heavy && !r.inputs.empty();
+    if (!r.ok && !keep_failed) {
       std::fprintf(stderr, "solver failed: %s\n", r.reason.c_str());
       return 1;
     }
@@ -266,10 +271,15 @@ int main(int argc, char** argv) {
     rp.inputs = r.inputs;
     rp.expected_hash = r.event_hash;
     rp.expected_steps = r.steps;
-    rp.expected_open = true;
+    rp.expected_open = r.ok;
     if (!write_file(argv[5], replay_to_json(rp))) return 1;
     std::printf("%s: %lld steps, %d drops, %d oversets, %d false sets, hash %s\n", argv[5],
                 static_cast<long long>(r.steps), r.drops, r.oversets, r.false_sets, hash_hex(r.event_hash).c_str());
+    if (heavy) {
+      std::printf("heavy hand: %s, peak S/S_max %lld.%02lld\n", r.ok ? "open" : r.reason.c_str(),
+                  static_cast<long long>(r.peak_stress / Q16_ONE),
+                  static_cast<long long>((static_cast<std::int64_t>(r.peak_stress % Q16_ONE) * 100) / Q16_ONE));
+    }
     return 0;
   }
 

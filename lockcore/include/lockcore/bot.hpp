@@ -23,11 +23,27 @@ struct HumanLimits {
   q16 tension_noise = q16_milli(30);    // +- (human holds about +-0.04)
   q16 lift_noise = q16_milli(10);
   std::int32_t max_retries = 40;
+  // Heavy hand (D-118, report only). The bot holds the plan's tension plus tension_over
+  // and takes tension_ease off after every lift on one element that ended at the lift
+  // cap with nothing felt (the element stuck). 0 = off: the other bots are unchanged.
+  q16 tension_over = 0;
+  q16 tension_ease = 0;
+  // An open lock with the tool at >= BOT_MAX_STRESS counts as a failure (hard gate).
+  // The heavy hand turns it off: it is there to measure stress, not to pass a gate.
+  bool stress_gate = true;
 };
 
 // A less careful player for soft metrics and golden replays that exercise
 // overset / drop paths: more tremor, faster lifting, 250 ms reaction.
 HumanLimits clumsy_human_limits();
+
+// The "heavy hand" (D-118): the clumsy player (who already lifts past the window, with no
+// overset knowledge) who also pulls the tension wrench 0.30 too hard on every new element
+// and never reacts to `stress`. It eases the wrench by 0.10 only after an element did not
+// move. Soft metric for tool breakage (break rate, peak S / S_max per tier); never part
+// of a gate.
+inline constexpr q16 HEAVY_TENSION_OVER = q16_milli(300);
+HumanLimits heavy_human_limits(q16 tension_over = HEAVY_TENSION_OVER);
 
 // Human precision assumed by the oracle (LOCKS.md §1.7, §1.9).
 inline constexpr q16 HUMAN_TENSION_BAND = q16_milli(80);   // delta_human

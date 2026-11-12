@@ -1,0 +1,20 @@
+{
+  "schema": "lockcore.tiers/1",
+  "families": {
+    "pin_tumbler": {"min": 2, "max": 7},
+    "wafer": {"min": 1, "max": 3},
+    "wooden_pin": {"min": 1, "max": 1},
+    "lever": {"min": 3, "max": 5},
+    "lever_detector": {"min": 5, "max": 6},
+    "ring_combo": {"min": 2, "max": 3},
+    "warded": {"min": 1, "max": 2},
+    "dial_safe": {"min": 1, "max": 3},
+    "combo": {"min": 1, "max": 4},
+    "dimple": {"min": 1, "max": 3},
+    "disc_detainer": {"min": 1, "max": 3},
+    "egyptian": {"min": 1, "max": 2},
+    "axial_slider": {"min": 1, "max": 3},
+    "time_lock": {"min": 1, "max": 2},
+    "magnetic": {"min": 1, "max": 2}
+  }
+}

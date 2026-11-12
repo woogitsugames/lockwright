@@ -200,13 +200,87 @@ TEST_CASE("session: refuses missing tools, missing / foreign params (T25-01/02/1
     renamed.family = "something_else";
     CHECK(!LockSession(*fam, renamed, need).valid());
     // Every bot reports the rejection instead of running (feeling included).
-    for (BotKind k : {BotKind::scripted, BotKind::clumsy, BotKind::feeling}) {
+    for (BotKind k : {BotKind::scripted, BotKind::clumsy, BotKind::feeling, BotKind::heavy}) {
       const SolveReport r = fam->run_bot(k, spec, ToolSet{0});
       CHECK(!r.ok);
       const SolveReport rb = fam->run_bot(k, bare, need);
       CHECK(!rb.ok);
     }
   }
+}
+
+TEST_CASE("bot: heavy hand (D-118)") {
+  // Off by default: the scripted, clumsy and feeling bots are not touched.
+  CHECK(HumanLimits{}.tension_over == 0);
+  CHECK(HumanLimits{}.stress_gate);
+  CHECK(clumsy_human_limits().tension_over == 0);
+  CHECK(feeling_human_limits().tension_over == 0);
+  CHECK(heavy_human_limits().tension_over == HEAVY_TENSION_OVER);
+  CHECK(heavy_human_limits(q16_milli(150)).tension_over == q16_milli(150));
+  CHECK(!heavy_human_limits().stress_gate);
+
+  const FamilyRegistry& reg = FamilyRegistry::builtin();
+  for (const FamilyModule* fam : reg.all()) {
+    for (int tier = fam->min_tier(); tier <= fam->max_tier(); ++tier) {
+      const LockSpec spec = fam->generate(5, fam->difficulty_for_tier(tier));
+      const ToolSet tools = fam->required_tools(spec);
+      SolveOptions opt;
+      opt.bot_seed = 4;
+      opt.record_inputs = true;
+      const SolveReport a = fam->run_bot(BotKind::heavy, spec, tools, opt);
+      const SolveReport b = fam->run_bot(BotKind::heavy, spec, tools, opt);
+      // Deterministic, and a failed run still carries its inputs (replay_tool record --heavy).
+      CHECK(a.event_hash == b.event_hash);
+      CHECK(a.steps == b.steps);
+      CHECK(a.inputs == b.inputs);
+      CHECK(!a.inputs.empty());
+      CHECK(a.ok || !a.reason.empty());
+      // Its inputs replay to the same hash, open or broken.
+      Replay rp;
+      rp.family = std::string(fam->id());
+      rp.rules_version = fam->rules_version();
+      rp.seed = 5;
+      rp.difficulty = spec.difficulty;
+      rp.inputs = a.inputs;
+      const ReplayResult rr = run_replay(reg, rp);
+      CHECK(rr.ok);
+      CHECK(rr.hash == a.event_hash);
+      CHECK(rr.open == a.ok);
+    }
+  }
+
+  // The tool is never loaded in these families: the heavy hand is the clumsy bot.
+  for (const char* id : {"ring_combo", "combo", "disc_detainer", "dial_safe"}) {
+    const FamilyModule* fam = reg.find(id);
+    REQUIRE(fam != nullptr);
+    const LockSpec spec = fam->generate(9, fam->difficulty_for_tier(fam->max_tier()));
+    const SolveReport h = fam->run_bot(BotKind::heavy, spec, fam->required_tools(spec));
+    const SolveReport c = fam->run_bot(BotKind::clumsy, spec, fam->required_tools(spec));
+    CHECK(h.event_hash == c.event_hash);
+    CHECK(h.peak_stress == 0);
+  }
+
+  // More tension, more stress: 0.05 over the plan stays inside the safe band of a t2
+  // cylinder, 0.45 over breaks the pick on a t5 one.
+  const FamilyModule* pin = reg.find("pin_tumbler");
+  REQUIRE(pin != nullptr);
+  int light_breaks = 0, hard_breaks = 0;
+  for (std::uint64_t seed = 1; seed <= 20; ++seed) {
+    SolveOptions light;
+    light.heavy_over = q16_milli(50);
+    const LockSpec easy = pin->generate(seed, pin->difficulty_for_tier(2));
+    const SolveReport l = pin->run_bot(BotKind::heavy, easy, pin->required_tools(easy), light);
+    CHECK(l.ok);
+    CHECK(l.peak_stress == 0);
+    light_breaks += l.reason.find("failure break") != std::string::npos ? 1 : 0;
+    SolveOptions hard;
+    hard.heavy_over = q16_milli(450);
+    const LockSpec tough = pin->generate(seed, pin->difficulty_for_tier(5));
+    const SolveReport h = pin->run_bot(BotKind::heavy, tough, pin->required_tools(tough), hard);
+    hard_breaks += h.reason.find("failure break") != std::string::npos ? 1 : 0;
+  }
+  CHECK(light_breaks == 0);
+  CHECK(hard_breaks == 20);
 }
 
 TEST_CASE("components: add_wear keeps the stress history (T25-15)") {

@@ -449,6 +449,7 @@ class Module final : public FamilyModule {
     switch (kind) {
       case BotKind::scripted: return plan_bot(spec, tools, HumanLimits{}, full / 2, opt, false);
       case BotKind::clumsy: return plan_bot(spec, tools, clumsy_human_limits(), full, opt, true);
+      case BotKind::heavy: return plan_bot(spec, tools, heavy_human_limits(opt.heavy_over), full, opt, true);  // D-118
       case BotKind::feeling: return feel_bot(spec, tools, feeling_human_limits(), full, opt);
     }
     return {};
@@ -606,6 +607,7 @@ class Module final : public FamilyModule {
     q16 est = 0, hand_t = 0, hand_d = 0, hand_l = wp.height.empty() ? 0 : wp.height.front();
     q16 noise_t = 0, noise_l = 0;
     std::int64_t turned_out = -1;
+    std::int32_t eased_n = 0;
     const q16 turn_in = clumsy ? q16_milli(900) : q16_milli(600);
     const q16 depth_in = q16_milli(950);
     auto go = [&](Ph p, std::int64_t t) {
@@ -613,7 +615,11 @@ class Module final : public FamilyModule {
       phase_t = t;
     };
     for (std::int64_t t = 0; t < budget; ++t) {
-      q16 target_t = wp.tension, target_d = hand_d, target_l = hand_l, rot = 0;
+      // tension_over: the heavy hand (D-118) leans on the probe and eases it by tension_ease
+      // whenever the turn ended without the open (the bolt does not lift above the bit's limit).
+      const std::int64_t eased = static_cast<std::int64_t>(lim.tension_ease) * eased_n;
+      const q16 over = eased >= lim.tension_over ? 0 : lim.tension_over - static_cast<q16>(eased);
+      q16 target_t = q_min(Q16_ONE, wp.tension + over), target_d = hand_d, target_l = hand_l, rot = 0;
       switch (ph) {
         case Ph::select:
           target_d = 0;
@@ -622,7 +628,7 @@ class Module final : public FamilyModule {
         case Ph::insert:
           target_d = depth_in;
           target_l = wp.height[0];
-          if (hand_d == depth_in && hand_l == wp.height[0] && q_abs(hand_t - wp.tension) <= q16_milli(10) &&
+          if (hand_d == depth_in && hand_l == wp.height[0] && q_abs(hand_t - target_t) <= q16_milli(10) &&
               t - phase_t >= lim.min_hold_steps) {
             j = 1;
             go(Ph::turn, t);
@@ -643,7 +649,10 @@ class Module final : public FamilyModule {
             rot = turn_in;
             if (est >= Q16_ONE) {
               if (turned_out < 0) turned_out = t;
-              if (t - turned_out > lim.latency_steps + SIM_HZ) {
+              if (over > 0 && t - turned_out > lim.latency_steps + lim.min_hold_steps) {
+                ++eased_n;  // still pressing against the bolt: ease the hand and keep turning
+                turned_out = t;
+              } else if (t - turned_out > lim.latency_steps + SIM_HZ) {
                 // The open never came: turn all the way back and try again.
                 ++rep.retries;
                 turned_out = -1;
@@ -692,7 +701,7 @@ class Module final : public FamilyModule {
     rep.event_hash = session.event_hash();
     rep.peak_stress = session.state().tool.peak_ratio();
     if (session.is_open()) {
-      if (rep.peak_stress >= BOT_MAX_STRESS) rep.reason = "bot: stress reached 0.8 S_max";
+      if (lim.stress_gate && rep.peak_stress >= BOT_MAX_STRESS) rep.reason = "bot: stress reached 0.8 S_max";
       else rep.ok = true;
     } else if (session.failure() != FailureKind::none) {
       rep.reason = std::string("bot: failure ") + std::string(failure_name(session.failure()));

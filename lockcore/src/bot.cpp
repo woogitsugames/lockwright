@@ -37,6 +37,15 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
   std::vector<char> believed(static_cast<std::size_t>(n_elem), 0);
   std::vector<int> set_order;
   std::deque<LockEvent> perceived;  // events waiting for the reaction latency
+  // Heavy hand (D-118): lifts on each plan step that ended stuck at the lift cap, counted
+  // apart for the binding lift and for the false gate (the hand is too heavy in both).
+  std::vector<std::int32_t> stuck(plan.steps.size(), 0), stuck_gate(plan.steps.size(), 0);
+  auto heavy = [&](const std::vector<std::int32_t>& count, int step_index, q16 tension) -> q16 {
+    if (lim.tension_over <= 0) return tension;
+    const std::int64_t eased = static_cast<std::int64_t>(lim.tension_ease) * count[static_cast<std::size_t>(step_index)];
+    const q16 over = eased >= lim.tension_over ? 0 : lim.tension_over - static_cast<q16>(eased);
+    return q_min(Q16_ONE, tension + over);
+  };
 
   Phase ph = Phase::lower;
   std::int64_t phase_t = 0;
@@ -154,21 +163,22 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
     } else {
       all_set_since = -1;
       const PlanStep& st = plan.steps[static_cast<std::size_t>(ci)];
+      const q16 work_t = heavy(stuck, ci, st.tension);
       switch (ph) {
         case Phase::lower:
-          target_t = st.tension;
+          target_t = work_t;
           target_l = 0;
           if (hand_l == 0 && t - phase_t >= lim.min_hold_steps) go(Phase::travel, t);
           break;
         case Phase::travel:
-          target_t = st.tension;
+          target_t = work_t;
           target_l = 0;
           target_d = st.depth;
-          if (hand_d == st.depth && q_abs(hand_t - st.tension) <= tol && t - phase_t >= lim.min_hold_steps)
+          if (hand_d == st.depth && q_abs(hand_t - work_t) <= tol && t - phase_t >= lim.min_hold_steps)
             go(Phase::fast, t);
           break;
         case Phase::fast:
-          target_t = st.tension;
+          target_t = work_t;
           target_d = st.depth;
           target_l = st.approach_from;
           if (hand_l >= st.approach_from) go(Phase::slow, t);
@@ -177,14 +187,22 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
         case Phase::spool: {
           target_d = st.depth;
           const bool spool = ph == Phase::spool;
-          target_t = spool ? st.cr_tension : st.tension;
+          const q16 spool_t = heavy(stuck_gate, ci, st.cr_tension);
+          target_t = spool ? spool_t : work_t;
           const q16 rate = spool ? lim.spool_rate : (felt_near ? q_min(fine_rate, slow_rate) : slow_rate);
-          const bool tension_ready = !spool || q_abs(hand_t - st.cr_tension) <= tol;
+          const bool tension_ready = !spool || q_abs(hand_t - spool_t) <= tol;
           target_l = tension_ready ? q_min(hand_l + rate, st.lift_cap) : hand_l;
           if (hand_l >= st.lift_cap) {
             if (mark_t < 0) mark_t = t;
             if (t - mark_t > lim.latency_steps + lim.min_hold_steps) {
               ++rep.retries;
+              if (lim.tension_over > 0 && spool) {
+                // Still caught in the false gate: ease the wrench and keep pressing.
+                ++stuck_gate[static_cast<std::size_t>(ci)];
+                mark_t = -1;
+                break;
+              }
+              if (lim.tension_over > 0) ++stuck[static_cast<std::size_t>(ci)];  // it did not move: ease the wrench
               go(Phase::lower, t);
             }
           }
@@ -236,7 +254,7 @@ SolveReport run_plan_bot(const FamilyModule& family, const LockSpec& spec, const
   rep.event_hash = session.event_hash();
   rep.peak_stress = session.state().tool.peak_ratio();
   if (session.is_open()) {
-    if (rep.peak_stress >= BOT_MAX_STRESS) {
+    if (lim.stress_gate && rep.peak_stress >= BOT_MAX_STRESS) {
       rep.reason = "bot: stress reached 0.8 S_max";
     } else {
       rep.ok = true;
@@ -258,6 +276,15 @@ HumanLimits clumsy_human_limits() {
   h.spool_rate = q16_per_step(q16_milli(500));
   h.latency_steps = ms_to_steps(250);
   h.adaptive = true;
+  return h;
+}
+
+HumanLimits heavy_human_limits(q16 tension_over) {
+  HumanLimits h = clumsy_human_limits();
+  h.tension_over = tension_over > 0 ? tension_over : HEAVY_TENSION_OVER;
+  h.tension_ease = q16_milli(100);
+  h.max_retries = 120;  // up to three stuck lifts per element are part of the profile
+  h.stress_gate = false;
   return h;
 }
 
@@ -588,6 +615,17 @@ SolveReport FamilyModule::run_bot(BotKind kind, const LockSpec& spec, const Tool
       return run_plan_bot(*this, spec, tools, o.plan, clumsy_human_limits(), full, opt);
     }
     case BotKind::feeling: return run_feel_bot(*this, spec, tools, feeling_human_limits(), full, opt);
+    case BotKind::heavy: {
+      OracleReport o = oracle(spec, tools);
+      if (!o.ok) {
+        SolveReport r;
+        r.reason = "oracle: " + o.reason;
+        return r;
+      }
+      // The clumsy bot's plan (no overset knowledge), held with too much tension.
+      for (auto& ps : o.plan.steps) ps.lift_cap = q16_milli(980);
+      return run_plan_bot(*this, spec, tools, o.plan, heavy_human_limits(opt.heavy_over), full, opt);
+    }
   }
   return {};
 }

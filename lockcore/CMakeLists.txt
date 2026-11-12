@@ -90,6 +90,9 @@ if(LOCKCORE_BUILD_TESTS)
             -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/no_float.cmake)
   if(LOCKCORE_BUILD_TOOLS)
     add_test(NAME verify_seeds_smoke COMMAND verify_seeds --seeds 200 --feel 50)
+    # The checked-in tier ranges (read by data/tools/validate.py, D-118) equal the registry's.
+    add_test(NAME tiers_json_in_sync COMMAND ${CMAKE_COMMAND} -DTOOL=$<TARGET_FILE:verify_seeds>
+             -DFILE=${CMAKE_CURRENT_SOURCE_DIR}/tiers.json -P ${CMAKE_CURRENT_SOURCE_DIR}/tests/tiers_in_sync.cmake)
     # A run that checks nothing, or a bad argument, must not pass (T25-10/11).
     add_test(NAME verify_seeds_rejects_zero COMMAND verify_seeds --seeds 0)
     add_test(NAME verify_seeds_rejects_text COMMAND verify_seeds --seeds 12x)

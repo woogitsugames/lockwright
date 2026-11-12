@@ -11,7 +11,13 @@
 // signals; its success rate and time per tier calibrate difficulty (--feel N
 // limits it to the first N seeds; default all).
 //
-//   verify_seeds [--seeds N] [--family ID] [--tier T] [--csv FILE] [--replays N] [--feel N]
+// Heavy hand (D-118, report only): the clumsy bot holding 0.30 too much tension, eased
+// by 0.10 only after an element did not move, with no reaction to `stress`; its break rate
+// and peak S / S_max per tier calibrate tool breakage (--heavy N: first N seeds only).
+//
+//   verify_seeds [--seeds N] [--family ID] [--tier T] [--csv FILE] [--replays N] [--feel N] [--heavy N]
+//                [--heavy-over MILLI]   # heavy hand: tension above the plan in 1/1000 (default 300)
+//   verify_seeds --tiers     # the tier range of every family as JSON (lockcore/tiers.json)
 #include <algorithm>
 #include <chrono>
 #include <cstdio>
@@ -44,6 +50,11 @@ struct Stats {
   std::int64_t f_oversets = 0, f_false_sets = 0, f_timeouts = 0, f_trips = 0;
   std::vector<std::int64_t> f_steps;
   std::vector<std::string> f_fail_samples;
+  // heavy hand (D-118, report only)
+  std::int64_t h_ok = 0, h_runs = 0, h_breaks = 0, h_timeouts = 0, h_trips = 0, h_drops = 0, h_oversets = 0;
+  std::vector<std::int64_t> h_steps;
+  std::vector<q16> h_peak;  // peak S / S_max of every run
+  std::vector<std::string> h_fail_samples;
 };
 
 
@@ -72,6 +83,8 @@ int main(int argc, char** argv) {
   std::int64_t n_seeds = 10000;
   std::int64_t n_replays = 100;
   std::int64_t n_feel = -1;  // default: every seed
+  std::int64_t n_heavy = -1;  // default: every seed
+  std::int64_t heavy_over = 300;  // 1/1000 of full tension
   std::string only_family;
   int only_tier = -1;
   std::string csv_path;
@@ -100,13 +113,28 @@ int main(int argc, char** argv) {
     else if (a == "--tier") only_tier = static_cast<int>(std::min<std::int64_t>(count(0), 1000));
     else if (a == "--csv") csv_path = next();
     else if (a == "--feel") n_feel = count(0);
-    else {
-      std::fprintf(stderr, "usage: verify_seeds [--seeds N] [--family ID] [--tier T] [--csv FILE] [--replays N] [--feel N]\n");
+    else if (a == "--heavy") n_heavy = count(0);
+    else if (a == "--heavy-over") heavy_over = std::min<std::int64_t>(count(1), 1000);
+    else if (a == "--tiers" && argc == 2) {
+      // Single source of truth for tools outside lockcore (data/tools/validate.py reads the
+      // checked-in copy lockcore/tiers.json; ctest tiers_json_in_sync keeps it equal to this).
+      std::printf("{\n  \"schema\": \"lockcore.tiers/1\",\n  \"families\": {\n");
+      const auto fams = FamilyRegistry::builtin().all();
+      for (std::size_t k = 0; k < fams.size(); ++k) {
+        std::printf("    \"%s\": {\"min\": %d, \"max\": %d}%s\n", std::string(fams[k]->id()).c_str(), fams[k]->min_tier(),
+                    fams[k]->max_tier(), k + 1 < fams.size() ? "," : "");
+      }
+      std::printf("  }\n}\n");
+      return 0;
+    } else {
+      std::fprintf(stderr, "usage: verify_seeds [--seeds N] [--family ID] [--tier T] [--csv FILE] [--replays N] [--feel N] [--heavy N] [--heavy-over MILLI]\n"
+                           "       verify_seeds --tiers\n");
       return 2;
     }
   }
 
   if (n_feel < 0) n_feel = n_seeds;
+  if (n_heavy < 0) n_heavy = n_seeds;
   const FamilyRegistry& reg = FamilyRegistry::builtin();
   // An unknown family or tier must not pass with nothing run (T25-11).
   if (!only_family.empty() && reg.find(only_family) == nullptr) {
@@ -134,13 +162,17 @@ int main(int argc, char** argv) {
            // D-116: appended columns (totals over all runs of that bot; *_p50/_p90 in steps).
            "clumsy_p50,clumsy_p90,clumsy_drops,clumsy_oversets,clumsy_false_sets,clumsy_breaks,clumsy_timeouts,"
            "clumsy_overstress,clumsy_trips,feel_drops,feel_oversets,feel_false_sets,feel_breaks,feel_timeouts,feel_trips,"
-           "time_limit_steps,clumsy_ok,feel_ok\n";
+           "time_limit_steps,clumsy_ok,feel_ok,"
+           // D-118: heavy hand (report only). heavy_peak_*: peak S / S_max over all runs, Q16.
+           "heavy_runs,heavy_ok,heavy_breaks,heavy_timeouts,heavy_trips,heavy_p50,heavy_p90,heavy_peak_p50_q16,"
+           "heavy_peak_p90_q16,heavy_drops,heavy_oversets\n";
   }
 
   const auto t0 = std::chrono::steady_clock::now();
   int total_failures = 0;
   std::vector<std::string> clumsy;
   std::vector<std::string> feeling;
+  std::vector<std::string> heavy;
   std::printf("%-12s %4s %7s %5s | %8s %8s %8s | %6s %5s %5s | %7s %7s %6s %6s\n", "family", "tier", "seeds",
               "fail", "t_p50", "t_p90", "t_max", "drop/l", "d_p90", "d_max", "overset", "f_set", "retry", "S_pk");
   for (const FamilyModule* fam : reg.all()) {
@@ -233,6 +265,22 @@ int main(int argc, char** argv) {
           if (f.ok) st.f_steps.push_back(f.steps);
           if (!f.ok && st.f_fail_samples.size() < 3) st.f_fail_samples.push_back("seed " + std::to_string(seed) + ": " + f.reason);
         }
+        if (i < n_heavy) {
+          SolveOptions hopt;
+          hopt.bot_seed = 4;
+          hopt.heavy_over = q16_milli(static_cast<std::int32_t>(heavy_over));
+          const SolveReport h = fam->run_bot(BotKind::heavy, spec, fam->required_tools(spec), hopt);
+          ++st.h_runs;
+          st.h_ok += h.ok ? 1 : 0;
+          st.h_breaks += h.reason.find("failure break") != std::string::npos ? 1 : 0;
+          st.h_timeouts += h.reason.find("budget exhausted") != std::string::npos ? 1 : 0;
+          st.h_trips += h.reason.find("failure detector_trip") != std::string::npos ? 1 : 0;
+          st.h_drops += h.drops;
+          st.h_oversets += h.oversets;
+          st.h_peak.push_back(h.peak_stress);
+          if (h.ok) st.h_steps.push_back(h.steps);
+          if (!h.ok && st.h_fail_samples.size() < 3) st.h_fail_samples.push_back("seed " + std::to_string(seed) + ": " + h.reason);
+        }
         st.steps.push_back(r.steps);
         st.drops.push_back(r.drops);
         st.oversets += r.oversets;
@@ -304,6 +352,29 @@ int main(int argc, char** argv) {
         feeling.push_back(line);
         for (const auto& f : st.f_fail_samples) feeling.push_back("    e.g. " + f);
       }
+      if (st.h_runs > 0) {
+        const std::int64_t ok_x1000 = (st.h_ok * 1000) / st.h_runs;
+        const std::int64_t br_x1000 = (st.h_breaks * 1000) / st.h_runs;
+        const std::int64_t d_x100 = (st.h_drops * 100) / st.h_runs;
+        const std::int64_t o_x100 = (st.h_oversets * 100) / st.h_runs;
+        const std::int64_t p50 = (static_cast<std::int64_t>(pct(st.h_peak, 50)) * 100) / Q16_ONE;
+        const std::int64_t p90 = (static_cast<std::int64_t>(pct(st.h_peak, 90)) * 100) / Q16_ONE;
+        char line[384];
+        std::snprintf(line, sizeof line,
+                      "%s t%d: %lld runs, open %lld.%01lld%%, breaks %lld (%lld.%01lld%%), peak S/S_max p50 %lld.%02lld p90 %lld.%02lld, "
+                      "t_p50 %s, t_p90 %s, drops/lock %lld.%02lld, oversets/lock %lld.%02lld, timeouts %lld, trips %lld",
+                      std::string(fam->id()).c_str(), tier, static_cast<long long>(st.h_runs),
+                      static_cast<long long>(ok_x1000 / 10), static_cast<long long>(ok_x1000 % 10),
+                      static_cast<long long>(st.h_breaks), static_cast<long long>(br_x1000 / 10),
+                      static_cast<long long>(br_x1000 % 10), static_cast<long long>(p50 / 100),
+                      static_cast<long long>(p50 % 100), static_cast<long long>(p90 / 100), static_cast<long long>(p90 % 100),
+                      ms(pct(st.h_steps, 50)).c_str(), ms(pct(st.h_steps, 90)).c_str(),
+                      static_cast<long long>(d_x100 / 100), static_cast<long long>(d_x100 % 100),
+                      static_cast<long long>(o_x100 / 100), static_cast<long long>(o_x100 % 100),
+                      static_cast<long long>(st.h_timeouts), static_cast<long long>(st.h_trips));
+        heavy.push_back(line);
+        for (const auto& f : st.h_fail_samples) heavy.push_back("    e.g. " + f);
+      }
       if (csv.is_open()) {
         csv << fam->id() << "," << tier << "," << n_seeds << "," << st.failures << "," << pct(st.steps, 50) << ","
             << pct(st.steps, 90) << "," << smax << "," << drops_x100 << "," << pct(st.drops, 90) << "," << drop_max
@@ -313,7 +384,10 @@ int main(int argc, char** argv) {
             << "," << st.c_oversets << "," << st.c_false_sets << "," << st.c_breaks << "," << st.c_timeouts << ","
             << st.c_overstress << "," << st.c_trips << "," << st.f_drops << "," << st.f_oversets << ","
             << st.f_false_sets << "," << st.f_breaks << "," << st.f_timeouts << "," << st.f_trips << ","
-            << static_cast<std::int64_t>(d.time_limit_s) * SIM_HZ << "," << st.c_ok << "," << st.f_ok << "\n";
+            << static_cast<std::int64_t>(d.time_limit_s) * SIM_HZ << "," << st.c_ok << "," << st.f_ok << ","
+            << st.h_runs << "," << st.h_ok << "," << st.h_breaks << "," << st.h_timeouts << "," << st.h_trips << ","
+            << pct(st.h_steps, 50) << "," << pct(st.h_steps, 90) << "," << pct(st.h_peak, 50) << ","
+            << pct(st.h_peak, 90) << "," << st.h_drops << "," << st.h_oversets << "\n";
       }
       total_failures += st.failures;
     }
@@ -322,6 +396,12 @@ int main(int argc, char** argv) {
   for (const auto& c : clumsy) std::printf("  %s\n", c.c_str());
   std::printf("\nfeeling bot (stage 3, soft metric: events + continuous signals only, tremor +-0.04, 220 ms reaction, budget = tier time limit):\n");
   for (const auto& f : feeling) std::printf("  %s\n", f.c_str());
+  if (!heavy.empty()) {
+    std::printf("\nheavy hand (D-118, soft metric: clumsy limits, tension 0.%03lld over the plan eased 0.10 per stuck lift, "
+                "no reaction to stress; families without tool stress run the clumsy bot):\n",
+                static_cast<long long>(heavy_over % 1000));
+    for (const auto& h : heavy) std::printf("  %s\n", h.c_str());
+  }
   const auto secs = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - t0).count();
   std::printf("total failures: %d (%lld ms)\n", total_failures, static_cast<long long>(secs));
   if (csv.is_open()) {

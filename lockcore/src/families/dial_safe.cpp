@@ -498,7 +498,9 @@ class Module final : public FamilyModule {
     const std::int64_t full = static_cast<std::int64_t>(spec.difficulty.time_limit_s) * SIM_HZ;
     switch (kind) {
       case BotKind::scripted: return plan_bot(spec, tools, o.plan, HumanLimits{}, full / 2, opt, false);
-      case BotKind::clumsy: return plan_bot(spec, tools, o.plan, clumsy_human_limits(), full, opt, true);
+      case BotKind::clumsy:
+      case BotKind::heavy:  // the tool is never loaded here: nothing for a heavy hand to break (D-118)
+        return plan_bot(spec, tools, o.plan, clumsy_human_limits(), full, opt, true);
       case BotKind::feeling: return feel_bot(spec, tools, feeling_human_limits(), full, opt);
     }
     return {};
