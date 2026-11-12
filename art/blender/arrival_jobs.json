@@ -1,6 +1,6 @@
 {
   "schema": "lockwright.arrival_jobs/1",
-  "note": "Per-job dressing of the D-58 arrival scene (art/blender/arrival_scene.py --job <id>). Missing keys take the wrong_floor defaults in arrival_scene.py (JOB_DEFAULTS). Colours are linear RGB. camera: end = [x, y, z] mm of the hold camera, end_yaw/end_pitch deg, end_shift = lens shift at the hold, start = [x, y, yaw, pitch] of the first frame (the climb keys in between follow the stair). props: see PROPS in arrival_scene.py. No brands, no lock brand names, no readable text. kit: \"street\" | \"shop\" | \"corridor\" | \"vault\" | \"facade\" builds the job in art/blender/arrival_place.py instead of the stairwell (D-94; facade and shop.style \"bakery\": D-108); camera.keys = [t, x, y, z, yaw, pitch] of the walk.",
+  "note": "Per-job dressing of the D-58 arrival scene (art/blender/arrival_scene.py --job <id>). Missing keys take the wrong_floor defaults in arrival_scene.py (JOB_DEFAULTS). Colours are linear RGB. camera: end = [x, y, z] mm of the hold camera, end_yaw/end_pitch deg, end_shift = lens shift at the hold, start = [x, y, yaw, pitch] of the first frame (the climb keys in between follow the stair). props: see PROPS in arrival_scene.py. mailbox.letter_color: colour of the letter in the slot (D-117). No brands, no lock brand names, no readable text. kit: \"street\" | \"shop\" | \"corridor\" | \"vault\" | \"facade\" builds the job in art/blender/arrival_place.py instead of the stairwell (D-94; facade and shop.style \"bakery\": D-108); camera.keys = [t, x, y, z, yaw, pitch] of the walk.",
   "jobs": {
     "wrong_floor": {
       "times": [
@@ -1702,6 +1702,139 @@
           "vignette": 0.3,
           "agx": "AgX - Medium High Contrast"
         }
+      }
+    },
+    "krystyna_wooden_album": {
+      "times": [
+        "evening"
+      ],
+      "story": "Mrs Krystyna's flat on Villa Hill, evening: she and her daughter Ola are choosing family prints to lend to the community room display. Framed photographs lean against the landing wall and stand in an open cardboard box by the door; the wooden photo box her father Jozef made is inside. Door 14 (not G07's 7, Mrs Halina's number; D-117).",
+      "number": "14",
+      "door": {
+        "style": "oak",
+        "state": "closed"
+      },
+      "plate": "enamel",
+      "stair": "wood",
+      "lamperia": [
+        0.3,
+        0.21,
+        0.07
+      ],
+      "court_seed": 34,
+      "flyer": false,
+      "mailbox": {},
+      "props": [
+        {
+          "type": "photo_frames",
+          "x": -700,
+          "box": [
+            -830,
+            -590
+          ]
+        }
+      ],
+      "camera": {
+        "end": [
+          -170,
+          -2560,
+          1570
+        ],
+        "end_yaw": 1.2,
+        "end_shift": [
+          0.0,
+          -0.13
+        ]
+      }
+    },
+    "refuse_wrong_letterbox": {
+      "times": [
+        "evening"
+      ],
+      "story": "Christmas week in a Srodmiescie tenement: Oskar dropped his card with a gift voucher into the letterbox of flat 16 instead of 18, and the neighbours are away until New Year. Their door is shut, the red envelope's corner still shows in the slot of their box. Nothing is forced or damaged: a refusal (secrecy of correspondence), not a break-in. (Uncle Bogdan's 16 in job.uncle_safe_heirs is another house on Villa Hill; the number here comes from the dialogue.)",
+      "number": "16",
+      "door": {
+        "style": "painted",
+        "paint": [
+          0.05,
+          0.075,
+          0.13
+        ],
+        "state": "closed"
+      },
+      "plate": "brass",
+      "stair": "wood",
+      "lamperia": [
+        0.21,
+        0.07,
+        0.05
+      ],
+      "court_seed": 16,
+      "flyer": false,
+      "mailbox": {
+        "letter_out": true,
+        "letter_color": [
+          0.58,
+          0.04,
+          0.035
+        ]
+      },
+      "props": [],
+      "camera": {
+        "end": [
+          30,
+          -2380,
+          1550
+        ],
+        "end_yaw": -1.5,
+        "end_shift": [
+          0.0,
+          -0.12
+        ]
+      }
+    },
+    "refuse_t43_09_empty_flat": {
+      "times": [
+        "evening"
+      ],
+      "story": "Osiedle Sloneczne, evening: Oskar wants to leave a parcel in his relative's hall because her windows are dark. The tenant is simply out; her padded door 34 is shut, the parcel in brown paper and twine sits on the doormat. Nothing is forced: a calm refusal, the visit gets arranged for Saturday.",
+      "number": "34",
+      "door": {
+        "style": "padded",
+        "leather": "leather_brown_worn",
+        "state": "closed"
+      },
+      "plate": "enamel",
+      "stair": "terrazzo",
+      "lamperia": [
+        0.1,
+        0.15,
+        0.14
+      ],
+      "court_seed": 43,
+      "flyer": false,
+      "mailbox": {},
+      "props": [
+        {
+          "type": "parcel",
+          "at": [
+            70,
+            -300
+          ],
+          "yaw": 14
+        }
+      ],
+      "camera": {
+        "end": [
+          -60,
+          -2520,
+          1570
+        ],
+        "end_yaw": 0.6,
+        "end_shift": [
+          0.0,
+          -0.12
+        ]
       }
     }
   }

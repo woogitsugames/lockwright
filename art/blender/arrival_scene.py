@@ -513,10 +513,11 @@ def walk_path(t, rng_, spread):
 PRNG = random.Random(hash(JOB) & 0xffff)
 envelope_cols = [(0.84, 0.82, 0.76), (0.80, 0.74, 0.58), (0.86, 0.85, 0.82), (0.70, 0.76, 0.80), (0.78, 0.70, 0.62)]
 
-def envelope(name, M, col_i, size=(220, 110)):
+def envelope(name, M, col_i, size=(220, 110), col=None):
     """A closed envelope: card slab with a shallow flap ridge (no print, no stamps with text)."""
     w, h = size
-    m_ = paper('env_%d' % col_i, envelope_cols[col_i % len(envelope_cols)], fibre=1.2, seed=col_i, grime=0.25)
+    m_ = (paper('env_%s' % name, tuple(col), fibre=1.2, seed=col_i, grime=0.15) if col else
+          paper('env_%d' % col_i, envelope_cols[col_i % len(envelope_cols)], fibre=1.2, seed=col_i, grime=0.25))
     e = slab(name, rounded_rect(w, h, 1.5), 0.6, m_, bev=0.2)
     flap = tube(name + '_flap', [(-w / 2 + 2, h / 2 - 2, 0.62), (0, h * 0.02, 0.62), (w / 2 - 2, h / 2 - 2, 0.62)], 0.35, m_, res=1, smooth_pts=False)
     for o in (e, flap): o.matrix_world = M @ o.matrix_world
@@ -838,12 +839,95 @@ def P_folding_chairs(c):
         for o in parts:
             o.matrix_world = M @ o.matrix_world
 
+def P_photo_frames(c):
+    """Krystyna and Ola are choosing family prints for the community room display: framed photographs leaning
+    against the landing wall by the door and a cardboard box with more frames standing in it. The prints are
+    soft tonal smudges under glass (no faces, no text)."""
+    x0 = c.get('x', -700)
+    woods = [oak('frame_wood%d' % i, light=l, dark=d, axis='X', seed=120 + i, ring=1.6, coat=0.35, rough=0.4, wear=0.3, grime=0.3)
+             for i, (l, d) in enumerate((((0.20, 0.11, 0.055), (0.07, 0.035, 0.02)), ((0.40, 0.27, 0.14), (0.20, 0.12, 0.06)),
+                                         ((0.10, 0.08, 0.06), (0.03, 0.025, 0.02))))]
+    mount = paper('frame_mount', (0.80, 0.76, 0.66), fibre=0.6, seed=31, grime=0.25)
+    back = paper('frame_back', (0.36, 0.27, 0.17), fibre=1.4, seed=32, grime=0.4)
+    def print_mat(k):
+        m = bpy.data.materials.new('frame_print%d' % k); m.use_nodes = True; nt = m.node_tree; pb = nt.nodes['Principled BSDF']
+        tc = nt.nodes.new('ShaderNodeTexCoord'); mp = nt.nodes.new('ShaderNodeMapping'); mp.inputs['Location'].default_value = (k * 3.7, k * 1.3, 0)
+        nt.links.new(tc.outputs['Object'], mp.inputs['Vector'])
+        no = nt.nodes.new('ShaderNodeTexNoise'); no.inputs['Scale'].default_value = 0.011 + 0.002 * k; no.inputs['Detail'].default_value = 2.5
+        no.inputs['Roughness'].default_value = 0.45; nt.links.new(mp.outputs['Vector'], no.inputs['Vector'])
+        rp = nt.nodes.new('ShaderNodeValToRGB'); e = rp.color_ramp.elements
+        e[0].position = 0.34; e[0].color = (0.035, 0.03, 0.026, 1); e[1].position = 0.68; e[1].color = (0.50, 0.47, 0.41, 1)
+        nt.links.new(no.outputs['Fac'], rp.inputs['Fac']); nt.links.new(rp.outputs['Color'], pb.inputs['Base Color'])
+        pb.inputs['Roughness'].default_value = 0.5
+        return m
+    def glaze(m):   # the glass over print and mount: a clear coat instead of a pane (no extra transmission noise)
+        pb = m.node_tree.nodes['Principled BSDF']; pb.inputs['Coat Weight'].default_value = 1.0; pb.inputs['Coat Roughness'].default_value = 0.04
+        return m
+    glaze(mount)
+    def frame(name, W, H, mould, wood, k, border):
+        """Frame in the XZ plane, front towards -y, origin at the bottom centre of its back."""
+        parts = [bx(name + '_back', -W / 2 + 2, W / 2 - 2, -3, 0, 2, H - 2, back)]
+        for (a, b_, c_, d) in ((-W / 2, W / 2, 0, mould), (-W / 2, W / 2, H - mould, H), (-W / 2, -W / 2 + mould, mould, H - mould), (W / 2 - mould, W / 2, mould, H - mould)):
+            parts.append(bx(name + '_mould', a, b_, -22, 0, c_, d, wood, bev=3))
+        parts.append(bx(name + '_mount', -W / 2 + mould - 2, W / 2 - mould + 2, -9, -7, mould - 2, H - mould + 2, mount))
+        parts.append(bx(name + '_print', -W / 2 + mould + border, W / 2 - mould - border, -9.6, -9, mould + border, H - mould - border, glaze(print_mat(k))))
+        return parts
+    def lean(parts, x, y, deg, yaw=0.0, roll=0.0):
+        M = Matrix.Translation((x, y, 0)) @ Matrix.Rotation(math.radians(yaw), 4, 'Z') @ Matrix.Rotation(math.radians(-deg), 4, 'X') @ Matrix.Rotation(math.radians(roll), 4, 'Y')
+        for o in parts: o.matrix_world = M @ o.matrix_world
+    lean(frame('pf_big', 420, 540, 34, woods[0], 1, 46), x0 - 170, -128, 12, yaw=-3)
+    lean(frame('pf_mid', 300, 240, 24, woods[1], 2, 26), x0 + 40, -185, 15, yaw=5)
+    # cardboard box, flaps open, frames standing in it (tops out)
+    cb = paper('pf_carton', (0.46, 0.34, 0.20), fibre=1.6, seed=33, grime=0.35)
+    bxx, bxy = c.get('box', (x0 + 60, -520)); BW, BD, BH, T = 400, 290, 230, 5
+    M = Matrix.Translation((bxx, bxy, 0)) @ Matrix.Rotation(math.radians(c.get('box_yaw', -14)), 4, 'Z')
+    parts = [bx('pf_box_bottom', -BW / 2, BW / 2, -BD / 2, BD / 2, 0, T, cb),
+             bx('pf_box_f', -BW / 2, BW / 2, -BD / 2, -BD / 2 + T, 0, BH, cb, bev=1), bx('pf_box_b', -BW / 2, BW / 2, BD / 2 - T, BD / 2, 0, BH, cb, bev=1),
+             bx('pf_box_l', -BW / 2, -BW / 2 + T, -BD / 2, BD / 2, 0, BH, cb, bev=1), bx('pf_box_r', BW / 2 - T, BW / 2, -BD / 2, BD / 2, 0, BH, cb, bev=1)]
+    for o in parts: o.matrix_world = M @ o.matrix_world
+    for (sx, ang) in ((-1, 62), (1, 48)):   # side flaps folded out and down
+        f = bx('pf_flap', 0, 140, -BD / 2, BD / 2, 0, T - 1, cb, bev=0.8)
+        f.matrix_world = M @ Matrix.Translation((sx * BW / 2, 0, BH)) @ Matrix.Rotation(math.radians(ang if sx > 0 else 180 - ang), 4, 'Y') @ f.matrix_world
+    for (sy, ang) in ((-1, 70), (1, -18)):  # front flap hangs down, back flap stands
+        f = bx('pf_flap', -BW / 2, BW / 2, 0, 140, 0, T - 1, cb, bev=0.8)
+        f.matrix_world = M @ Matrix.Translation((0, sy * BD / 2, BH)) @ Matrix.Rotation(math.radians(-ang if sy < 0 else 180 - ang), 4, 'X') @ f.matrix_world
+    for i, (W, H, yy, dg) in enumerate(((300, 330, 60, 7), (260, 300, -10, 9), (230, 290, -70, 6))):
+        ps = frame('pf_in%d' % i, W, H, 20, woods[(i + 1) % 3], 3 + i, 24)
+        Mi = M @ Matrix.Translation((PRNG.uniform(-25, 25), yy, T)) @ Matrix.Rotation(math.radians(-dg), 4, 'X') @ Matrix.Rotation(math.radians(PRNG.uniform(-3, 3)), 4, 'Y')
+        for o in ps: o.matrix_world = Mi @ o.matrix_world
+
+def P_parcel(c):
+    """A parcel in brown paper tied with twine, set down on the doormat: the visitor wants it left inside while the
+    tenant is out. Blank address label (grey bars, no text)."""
+    x, y = c.get('at', (60, -300)); z0 = floor_z(x, y); yaw = math.radians(c.get('yaw', 14))
+    W, D, H = c.get('size', (360, 260, 170))
+    kraft = paper('parcel_kraft', (0.40, 0.28, 0.16), fibre=1.8, seed=41, grime=0.3)
+    twine = plastic('parcel_twine', (0.62, 0.52, 0.36), rough=0.9, grime=0.2, sheen_scuffs=0.0)
+    label = paper('parcel_label', (0.84, 0.82, 0.76), fibre=0.6, seed=42, grime=0.15)
+    bars = plastic('parcel_print', (0.16, 0.16, 0.17), rough=0.6, grime=0.0, sheen_scuffs=0.0)
+    tape = plastic('parcel_tape', (0.50, 0.38, 0.22), rough=0.22, grime=0.1, sheen_scuffs=0.2)
+    M = Matrix.Translation((x, y, z0)) @ Matrix.Rotation(yaw, 4, 'Z')
+    parts = [bx('parcel', -W / 2, W / 2, -D / 2, D / 2, 0, H, kraft, bev=5, seg=3),
+             bx('parcel_tape', -W / 2 - 0.4, W / 2 + 0.4, -24, 24, H * 0.25, H + 0.5, tape),
+             bx('parcel_label', -W / 2 + 40, -W / 2 + 170, -D / 2 + 30, -D / 2 + 115, H + 0.5, H + 1.0, label)]
+    for k, (w_, yy) in enumerate(((95, 95), (80, 80), (100, 65), (60, 50))):
+        parts.append(bx('parcel_bar', -W / 2 + 52, -W / 2 + 52 + w_, -D / 2 + yy, -D / 2 + yy + (7 if k == 0 else 3.5), H + 1.0, H + 1.3, bars))
+    r = 1.8; e = r + 0.5
+    parts.append(tube('parcel_twine_a', [(-W / 2 - e, 30, 0), (-W / 2 - e, 30, H + e), (W / 2 + e, 30, H + e), (W / 2 + e, 30, 0)], r, twine, smooth_pts=False))
+    parts.append(tube('parcel_twine_b', [(40, -D / 2 - e, 0), (40, -D / 2 - e, H + e), (40, D / 2 + e, H + e), (40, D / 2 + e, 0)], r, twine, smooth_pts=False))
+    for (dx, dy) in ((34, -30), (-30, -22)):   # bow loops and one loose end
+        parts.append(tube('parcel_bow', [(40, 30, H + e), (40 + dx, 30 + dy, H + 14), (40 + dx * 1.7, 30 + dy * 0.4, H + 5), (40, 30, H + e + 1)], r, twine))
+    parts.append(tube('parcel_end', [(40, 30, H + e), (62, 52, H + 6), (95, 60, H + 3)], r, twine))
+    for o in parts: o.matrix_world = M @ o.matrix_world
+
 PROPS = {'gas_riser': P_gas_riser, 'cat_bowl': P_cat_bowl, 'toy_mouse': P_toy_mouse, 'drill_dust': P_drill_dust,
          'cake_box': P_cake_box, 'petals': P_petals, 'rice': P_rice, 'post_pile': P_post_pile,
          'obituary': P_obituary, 'suitcase': P_suitcase, 'shoes': P_shoes,   # D-108: job.uncle_safe_heirs
          'scooter': P_scooter, 'plank': P_plank,
          'book_stack': P_book_stack,   # D-108: job.widow_bureau
-         'notice_board': P_notice_board, 'folding_chairs': P_folding_chairs}   # D-110: the community room (job.shared_room_door)       # D-108: job.dollhouse_wooden_lock
+         'notice_board': P_notice_board, 'folding_chairs': P_folding_chairs,
+         'photo_frames': P_photo_frames, 'parcel': P_parcel}   # D-117: job.krystyna_wooden_album, job.refuse_t43_09_empty_flat
+#   # D-110: the community room (job.shared_room_door)       # D-108: job.dollhouse_wooden_lock
 # mailbox: a letter sticking out of the slot (grandma: "the letter in the mailbox is addressed to you"),
 # or stuffed full (nobody has emptied it for weeks)
 mb_items = 1 if MAILBOX.get('letter_out') else (5 if MAILBOX.get('overflow') else 0)
@@ -851,7 +935,7 @@ for i in range(mb_items):
     out = 85 + 20 * (i % 3); tilt = 38 - 7 * (i % 4) + 4 * (i // 4); dx = (i - 2) * 9 if i else 0   # drooping out of the slot
     M = (Matrix.Translation(((MBX0 + MBX1) / 2 + dx, -84, MBZ1 - 46 + 2 * i)) @ Matrix.Rotation(math.radians(tilt), 4, 'X') @
          Matrix.Translation((0, -(out - 60) / 2, 0)) @ Matrix.Rotation(math.radians(PRNG.uniform(-6, 6)), 4, 'Z') @ Matrix.Rotation(math.radians(90), 4, 'Z'))
-    envelope('mb_letter%d' % i, M, i + 1, size=(out + 60, 98 - 6 * (i % 2)))
+    envelope('mb_letter%d' % i, M, i + 1, size=(out + 60, 98 - 6 * (i % 2)), col=MAILBOX.get('letter_color') if i == 0 else None)
 if MAILBOX.get('overflow'):
     x, y = MBX0 + 40, -170
     envelope('mb_fallen', Matrix.Translation((x, y, 0.4)) @ Matrix.Rotation(math.radians(24), 4, 'Z'), 4)

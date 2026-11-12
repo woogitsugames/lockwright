@@ -14,6 +14,8 @@
 #   plate_<figure>.webp         the GPU hold frame with the figure's 2D shadow, no figure (1080x1920)
 #   figure_<figure>.webp        the figure alone, full-frame RGBA, so plate + figure stack 1:1 in any TextureRect
 #                               with the same stretch mode; the game scales it about the feet for a breathing loop
+#   (STILL_ONLY jobs have no seq/: only plate.webp, `frames: 0` in the data; with --master holding their climb they
+#    export like every other job - then set `frames` back to 36 in arrival_scenes.json)
 #   plate.webp                  plate-only jobs (no full-body cut-out of the client: everyone but Kazimierz and
 #                               Teresa): the GPU hold frame itself, no figure layer, no anchors (`hold: ""` in the data)
 # and updates the job's `anchors` in game/data/arrival_scenes.json (feet/head 0..1 per time and figure).
@@ -63,7 +65,13 @@ JOBS = {
     'student_dorm': {'night': [(None, 'student_dorm_night_hold.png', [])]},                  # dorm corridor, room 412
     'drummer_locker': {'evening': [(None, 'drummer_locker_evening_hold.png', [])]},          # campus rehearsal room, locker 8
     'gosia_workbench_drawer': {'day': [(None, 'gosia_workbench_drawer_day_hold.png', [])]},  # Gosia's restoration workshop
+    # D-117: the last evening flats on G07's door 7 (Mrs Halina's number). Still only (`frames: 0` in the data, see STILL_ONLY)
+    'krystyna_wooden_album': {'evening': [(None, 'krystyna_wooden_album_evening_hold.png', [])]},        # door 14, family prints
+    'refuse_wrong_letterbox': {'evening': [(None, 'refuse_wrong_letterbox_evening_hold.png', [])]},      # door 16, card in their box
+    'refuse_t43_09_empty_flat': {'evening': [(None, 'refuse_t43_09_empty_flat_evening_hold.png', [])]},  # door 34, parcel on the mat
 }
+# scenes without a climb: only the hold frame was rendered (CPU session, D-117); the game shows the hold at once
+STILL_ONLY = {'krystyna_wooden_album', 'refuse_wrong_letterbox', 'refuse_t43_09_empty_flat'}
 CONTACT_COLS, CONTACT_W = 6, 1080   # arrival_composite.contact() defaults
 IMPORT_TEMPLATE = """[remap]
 
@@ -141,9 +149,18 @@ def export_job(o, job, data):
     scene = data['scenes']['job.' + job]; anchors = scene.setdefault('anchors', {})
     tmp = tempfile.mkdtemp(prefix='arrival_export_')
     for t in (o.times or list(cfg)):
-        td = os.path.join(dst, t); os.makedirs(os.path.join(td, 'seq'), exist_ok=True)
+        td = os.path.join(dst, t)
         # --- sequence
         mdir = os.path.join(o.master, '%s_%s_seq' % (job, t)) if o.master else ''
+        if job in STILL_ONLY and not (mdir and os.path.isdir(mdir)):
+            os.makedirs(td, exist_ok=True); scene['frames'] = 0
+            for fig, plate, extra in cfg[t]:
+                p = os.path.join(td, 'plate.webp')
+                Image.open(os.path.join(A, plate)).convert('RGB').save(p, 'WEBP', quality=o.hold_q, method=6); ensure_import(p)
+                anchors[t] = {}
+            print('HOLD', job, t, 'plate only, no climb (still-only scene)')
+            continue
+        os.makedirs(os.path.join(td, 'seq'), exist_ok=True)
         if mdir and os.path.isdir(mdir):
             fs = sorted(f for f in os.listdir(mdir) if f.endswith('.png'))
             frames = [Image.open(os.path.join(mdir, f)).convert('RGB') for f in fs]
