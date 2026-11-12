@@ -182,3 +182,4 @@ Wszystko na `main`. Trigger godzinny wyłączony; wznowienie przypomnieniem ok. 
 1. Rozdział 13 (10 zleceń) piszemy sami według specyfikacji G10A (`docs/handoff/gpt10/PACZKA-GPT10.md`), na razie w grze bazowej, samodzielny zestaw plików — D-111.
 2. Mechanizm paczek treści do pobrania (D-99), na wzór paczek głosów (D-100) — D-112.
 3. Błędy z telefonu N-90…N-99 i iOS Dynamic Type (D-107) — D-113.
+- **Decyzje właściciela 2026-11-12 (pytania klikalne):** D-06 model biznesowy — „jeszcze nie wiem” (aplikacji w Play nie tworzymy); rozdziały 13+ jako płatne/darmowe — „zdecyduję później” (paczki treści budujemy neutralnie, bez płatności); N-97 — zostaje jak w D-92 (bez zapadki trzymającej); znaczniki prawne w polityce prywatności — później (nie blokują testu zamkniętego). Do wpisania w DECISIONS.md po pushach agentów (unikamy konfliktów).
