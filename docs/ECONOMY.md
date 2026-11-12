@@ -5,12 +5,12 @@ Wygenerowane przez `python3 tools/econ_sim.py` (200 karier na profil i scenarius
 ## 1. Wnioski w skrócie
 
 1. **D-62: tańsze narzędzia, nigdy blokada zlecenia.** Ceny w `tools.json` (C) spadły z 10100 do 2820 monet za wszystkie 14 płatne narzędzia, a z 6400 do 1790 za te, które mają użycie w zleceniach (9 szt.). Suma nagród 83 zleceń to 8143 monet, plus napiwki. Gra nie sprawdza narzędzi przy przyjęciu zlecenia; model C też nie: brak narzędzia daje wolniejszy zamek (×1.15) i słabszy feedback, ale nie grind.
-2. **Przed (D, stare ceny, narzędzie bramką):** zablokowanych zleceń careful/average/clumsy 0/0/0; sesji grindu 7/8/11; dochód ze zleceń 9721/8914/8328 + grind 4252/4478/5840 monet wobec 6400/6400/6400 wydanych na narzędzia.
-3. **Po (C, nowe ceny, narzędzia opcjonalne):** zablokowanych 0/0/0; sesji grindu 0/0/0; dochód ze zleceń 9728/8909/8353 monet, wydane na narzędzia 2320/2320/2320 (kupione: 13/13/13 z 13 osiągalnych płatnych); monety niewydane na koniec kariery 637/1347/615; zamków granych bez własnego narzędzia 4/4/5.
+2. **Przed (D, stare ceny, narzędzie bramką):** zablokowanych zleceń careful/average/clumsy 0/0/0; sesji grindu 7/8/11; dochód ze zleceń 9724/8910/8328 + grind 4252/4478/5840 monet wobec 6400/6400/6400 wydanych na narzędzia.
+3. **Po (C, nowe ceny, narzędzia opcjonalne):** zablokowanych 0/0/0; sesji grindu 0/0/0; dochód ze zleceń 9728/8907/8354 monet, wydane na narzędzia 2320/2320/2320 (kupione: 13/13/13 z 13 osiągalnych płatnych); monety niewydane na koniec kariery 641/1342/624; zamków granych bez własnego narzędzia 4/4/5.
 4. **Dochód a koszt narzędzi (C):** dochód ze zleceń / łączny koszt wszystkich płatnych narzędzi (2820) = 345%/316%/296% (careful/average/clumsy); wobec stanu sprzed D-62: 96%/88%/82%.
-5. **Naprawy (C):** 0/86/267 monet (careful/average/clumsy), złamań 0/2/7; naprawa liczy się od ceny, więc tańsze narzędzia tańsze też w serwisie.
-6. **Czas gry:** ścieżka zleceń (C, bez grindu, bo go nie ma) trwa careful/average/clumsy 177/135/108 min (83 zleceń, rozdz. 1–12, D-71; cel ok. 2 h dla average). Długość regulujemy liczbą zleceń, nie cenami. Tryb Ciągły (sesja 8 min, start) daje 375/402/385 monet i pozostaje dodatkiem, nie warunkiem postępu.
-7. **Wyposażenie (D-71):** 10 przedmiotów kosmetycznych za 6750 monet; careful/average/clumsy kupują 10/9/9 z 10 do końca rozdz. 12, wydają 6750/5150/5150 i zostaje im 637/1347/615 monet (sekcja 6a).
+5. **Naprawy (C):** 0/86/271 monet (careful/average/clumsy), złamań 0/2/7; naprawa liczy się od ceny, więc tańsze narzędzia tańsze też w serwisie.
+6. **Czas gry:** ścieżka zleceń (C, bez grindu, bo go nie ma) trwa careful/average/clumsy 176/135/107 min (83 zleceń, rozdz. 1–12, D-71; cel ok. 2 h dla average). Długość regulujemy liczbą zleceń, nie cenami. Tryb Ciągły (sesja 8 min, start) daje 375/402/385 monet i pozostaje dodatkiem, nie warunkiem postępu.
+7. **Wyposażenie (D-71):** 10 przedmiotów kosmetycznych za 6750 monet; careful/average/clumsy kupują 10/9/9 z 10 do końca rozdz. 12, wydają 6750/5150/5150 i zostaje im 641/1342/624 monet (sekcja 6a).
 
 ## 2. Scenariusze i profile
 
@@ -31,18 +31,18 @@ Wygenerowane przez `python3 tools/econ_sim.py` (200 karier na profil i scenarius
 
 | Scen. | Profil | zlecenia zablok. | dochód ze zleceń | dochód z grindu | sesje grindu | grind [h] | czas zleceń [min] | naprawy | narzędzia | złamania |
 |---|---|---|---|---|---|---|---|---|---|---|
-| A | careful | 2 / 83 | 9495 | 10718 | 22 | 3.1 | 167.9 | 60 | 1610 | 3 |
-| A | average | 3 / 83 | 8558 | 12895 | 31 | 4.3 | 125.1 | 338 | 1610 | 17 |
-| A | clumsy | 3 / 83 | 8022 | 10612 | 31 | 4.3 | 99.7 | 762 | 1610 | 36 |
-| B | careful | 2 / 83 | 9500 | 10708 | 22 | 3.1 | 169.0 | 60 | 1790 | 3 |
-| B | average | 3 / 83 | 8556 | 12888 | 31 | 4.3 | 126.5 | 326 | 1790 | 16 |
-| B | clumsy | 3 / 83 | 8034 | 10610 | 31 | 4.3 | 100.1 | 692 | 1790 | 33 |
-| C | careful | 0 / 83 | 9728 | 0 | 0 | 0.0 | 177.0 | 0 | 2320 | 0 |
-| C | average | 0 / 83 | 8909 | 0 | 0 | 0.0 | 135.3 | 86 | 2320 | 2 |
-| C | clumsy | 0 / 83 | 8353 | 0 | 0 | 0.0 | 107.7 | 267 | 2320 | 7 |
-| D | careful | 0 / 83 | 9721 | 4252 | 7 | 1.0 | 174.1 | 50 | 6400 | 1 |
-| D | average | 0 / 83 | 8914 | 4478 | 8 | 1.1 | 132.5 | 428 | 6400 | 8 |
-| D | clumsy | 0 / 83 | 8328 | 5840 | 11 | 1.5 | 104.2 | 1561 | 6400 | 23 |
+| A | careful | 0 / 83 | 9711 | 255 | 1 | 0.1 | 176.2 | 18 | 1610 | 1 |
+| A | average | 0 / 83 | 8897 | 270 | 1 | 0.1 | 134.0 | 126 | 1610 | 3 |
+| A | clumsy | 0 / 83 | 8340 | 250 | 1 | 0.1 | 107.0 | 433 | 1610 | 10 |
+| B | careful | 2 / 83 | 9500 | 10708 | 22 | 3.1 | 168.5 | 60 | 1790 | 3 |
+| B | average | 3 / 83 | 8558 | 12888 | 31 | 4.3 | 126.1 | 320 | 1790 | 16 |
+| B | clumsy | 3 / 83 | 8034 | 10610 | 31 | 4.3 | 99.7 | 690 | 1790 | 33 |
+| C | careful | 0 / 83 | 9728 | 0 | 0 | 0.0 | 176.4 | 0 | 2320 | 0 |
+| C | average | 0 / 83 | 8907 | 0 | 0 | 0.0 | 134.9 | 86 | 2320 | 2 |
+| C | clumsy | 0 / 83 | 8354 | 0 | 0 | 0.0 | 107.2 | 271 | 2320 | 7 |
+| D | careful | 0 / 83 | 9724 | 4252 | 7 | 1.0 | 173.6 | 50 | 6400 | 1 |
+| D | average | 0 / 83 | 8910 | 4478 | 8 | 1.1 | 132.0 | 428 | 6400 | 8 |
+| D | clumsy | 0 / 83 | 8328 | 5840 | 11 | 1.5 | 103.8 | 1564 | 6400 | 22 |
 
 Grind = sesje Trybu Ciągłego (8 min), które gracz musi rozegrać, zanim kupi narzędzie potrzebne do następnego zlecenia. Po 60 sesjach na jedno zlecenie liczymy je jako zablokowane i idziemy dalej.
 
@@ -87,54 +87,54 @@ Grind = sesje Trybu Ciągłego (8 min), które gracz musi rozegrać, zanim kupi 
 | 33 | `zuzanna_catalogue_drawer` | 7 | lever T3 | 1.4 | 124 | 0 | 244 | ok |
 | 34 | `refuse_sisters_flat` | 7 | pin_tumbler T2 | 1.0 | 0 | 0 | 196 | odmowa/bez zamka |
 | 35 | `stefan_book_tin` | 7 | combo T3 | 2.5 | 171 | 0 | 358 | ok |
-| 36 | `edek_rehearsal_store` | 7 | lever_detector T5 | 1.9 | 124 | 0 | 424 | ok |
-| 37 | `krystyna_wooden_album` | 7 | egyptian T1 | 1.8 | 89 | 0 | 182 | ok |
+| 36 | `edek_rehearsal_store` | 7 | lever T3 | 1.4 | 124 | 0 | 428 | ok |
+| 37 | `krystyna_wooden_album` | 7 | egyptian T1 | 1.8 | 89 | 0 | 181 | ok |
 | 38 | `refuse_unapproved_stockroom` | 7 | wafer T2 | 1.0 | 0 | 0 | 166 | odmowa/bez zamka |
-| 39 | `gosia_workbench_drawer` | 7 | lever T3 | 1.4 | 171 | 0 | 321 | ok |
-| 40 | `community_notice_case` | 7 | warded T2 | 1.5 | 105 | 0 | 424 | ok |
-| 41 | `shared_room_door` | 7 | pin_tumbler T3 | 1.5 | 171 | 0 | 320 | ok |
-| 42 | `frozen_cellar_padlock` | 8 | combo T2 | 1.9 | 118 | 0 | 336 | ok |
-| 43 | `halina_christmas_tin` | 8 | warded T1 | 1.4 | 75 | 0 | 412 | ok |
-| 44 | `carol_singers_chest` | 8 | egyptian T1 | 1.7 | 89 | 0 | 498 | ok |
-| 45 | `refuse_wrong_letterbox` | 8 | wafer T1 | 1.0 | 0 | 0 | 496 | odmowa/bez zamka |
-| 46 | `wigilia_table_drawer` | 8 | lever T3 | 1.4 | 171 | 0 | 653 | ok |
-| 47 | `heating_service_cupboard` | 8 | pin_tumbler T3 | 1.4 | 158 | 0 | 332 | ok |
-| 48 | `refuse_unapproved_repair` | 8 | wafer T2 | 1.0 | 0 | 0 | 220 | odmowa/bez zamka |
-| 49 | `warm_room_for_neighbours` | 8 | pin_tumbler T3 | 1.4 | 171 | 0 | 380 | ok |
-| 50 | `winter_bicycle_cellar` | 8 | combo T3 | 2.1 | 171 | 0 | 531 | ok |
-| 51 | `wooden_winter_village` | 8 | egyptian T1 | 1.7 | 89 | 0 | 613 | ok |
-| 52 | `attic_drying_room` | 8 | lever T3 | 1.4 | 171 | 0 | 768 | ok |
-| 53 | `christmas_eve_heat` | 8 | lever_detector T5 | 1.8 | 248 | 0 | 961 | ok |
-| 54 | `t43_09_01_winter_keys` | 9 | pin_tumbler T2 | 1.3 | 47 | 0 | 160 | ok |
-| 55 | `t43_09_02_blanket_cupboard` | 9 | magnetic T2 | 1.9 | 59 | 0 | 210 | ok |
-| 56 | `t43_09_03_wooden_postbox` | 9 | egyptian T2 | 1.8 | 71 | 0 | 275 | ok |
-| 57 | `t43_09_04_choir_case` | 9 | combo T2 | 1.8 | 70 | 0 | 349 | ok |
+| 39 | `gosia_workbench_drawer` | 7 | lever T3 | 1.4 | 171 | 0 | 322 | ok |
+| 40 | `community_notice_case` | 7 | warded T2 | 1.5 | 105 | 0 | 425 | ok |
+| 41 | `shared_room_door` | 7 | pin_tumbler T3 | 1.5 | 171 | 0 | 319 | ok |
+| 42 | `frozen_cellar_padlock` | 8 | combo T2 | 1.9 | 118 | 0 | 338 | ok |
+| 43 | `halina_christmas_tin` | 8 | warded T1 | 1.4 | 75 | 0 | 416 | ok |
+| 44 | `carol_singers_chest` | 8 | egyptian T1 | 1.7 | 89 | 0 | 502 | ok |
+| 45 | `refuse_wrong_letterbox` | 8 | wafer T1 | 1.0 | 0 | 0 | 500 | odmowa/bez zamka |
+| 46 | `wigilia_table_drawer` | 8 | lever T3 | 1.3 | 171 | 0 | 658 | ok |
+| 47 | `heating_service_cupboard` | 8 | pin_tumbler T3 | 1.4 | 145 | 0 | 328 | ok |
+| 48 | `refuse_unapproved_repair` | 8 | wafer T2 | 1.0 | 0 | 0 | 223 | odmowa/bez zamka |
+| 49 | `warm_room_for_neighbours` | 8 | pin_tumbler T3 | 1.4 | 171 | 0 | 382 | ok |
+| 50 | `winter_bicycle_cellar` | 8 | combo T3 | 2.1 | 171 | 0 | 536 | ok |
+| 51 | `wooden_winter_village` | 8 | egyptian T1 | 1.7 | 89 | 0 | 618 | ok |
+| 52 | `attic_drying_room` | 8 | lever T3 | 1.3 | 171 | 0 | 770 | ok |
+| 53 | `christmas_eve_heat` | 8 | lever_detector T5 | 1.9 | 229 | 0 | 961 | ok |
+| 54 | `t43_09_01_winter_keys` | 9 | pin_tumbler T2 | 1.3 | 47 | 0 | 164 | ok |
+| 55 | `t43_09_02_blanket_cupboard` | 9 | magnetic T2 | 1.9 | 59 | 0 | 212 | ok |
+| 56 | `t43_09_03_wooden_postbox` | 9 | egyptian T2 | 1.8 | 71 | 0 | 276 | ok |
+| 57 | `t43_09_04_choir_case` | 9 | combo T2 | 1.8 | 70 | 0 | 348 | ok |
 | 58 | `t43_09_05_receipt_safe` | 9 | dial_safe T2 | 1.9 | 95 | 0 | 418 | ok |
-| 59 | `t43_09_06_draughty_hall` | 9 | dimple T2 | 1.9 | 98 | 0 | 502 | ok |
-| 60 | `refuse_t43_09_empty_flat` | 9 | pin_tumbler T3 | 1.0 | 0 | 0 | 148 | odmowa/bez zamka |
-| 61 | `t43_09_08_spare_key_hook` | 9 | pin_tumbler T2 | 1.0 | 40 | 0 | 188 | odmowa/bez zamka |
-| 62 | `t43_10_01_renovator_bureau` | 10 | axial_slider T2 | 1.9 | 118 | 0 | 246 | ok |
-| 63 | `t43_10_02_scaffold_store` | 10 | disc_detainer T2 | 2.0 | 130 | 0 | 356 | ok |
-| 64 | `t43_10_03_exhibit_clock` | 10 | time_lock T2 | 1.9 | 142 | 0 | 480 | ok |
-| 65 | `t43_10_04_design_cabinet` | 10 | magnetic T2 | 1.8 | 154 | 0 | 626 | ok |
-| 66 | `t43_10_05_porters_drawer` | 10 | lever T3 | 1.3 | 165 | 0 | 769 | ok |
-| 67 | `t43_10_06_shared_room_entry` | 10 | dimple T3 | 2.1 | 177 | 0 | 922 | ok |
-| 68 | `refuse_t43_10_early_clearance` | 10 | lever T3 | 1.0 | 0 | 0 | 180 | odmowa/bez zamka |
-| 69 | `t43_11_01_wooden_market` | 11 | egyptian T2 | 1.8 | 177 | 0 | 345 | ok |
-| 70 | `t43_11_02_bicycle_stand` | 11 | combo T3 | 2.0 | 189 | 0 | 454 | ok |
+| 59 | `t43_09_06_draughty_hall` | 9 | dimple T2 | 1.9 | 90 | 0 | 504 | ok |
+| 60 | `refuse_t43_09_empty_flat` | 9 | pin_tumbler T3 | 1.0 | 0 | 0 | 142 | odmowa/bez zamka |
+| 61 | `t43_09_08_spare_key_hook` | 9 | pin_tumbler T2 | 1.0 | 40 | 0 | 182 | odmowa/bez zamka |
+| 62 | `t43_10_01_renovator_bureau` | 10 | axial_slider T2 | 1.9 | 118 | 0 | 245 | ok |
+| 63 | `t43_10_02_scaffold_store` | 10 | disc_detainer T2 | 1.9 | 130 | 0 | 357 | ok |
+| 64 | `t43_10_03_exhibit_clock` | 10 | time_lock T2 | 1.9 | 142 | 0 | 486 | ok |
+| 65 | `t43_10_04_design_cabinet` | 10 | magnetic T2 | 1.8 | 154 | 0 | 632 | ok |
+| 66 | `t43_10_05_porters_drawer` | 10 | lever T3 | 1.3 | 165 | 0 | 774 | ok |
+| 67 | `t43_10_06_shared_room_entry` | 10 | dimple T3 | 2.1 | 177 | 0 | 923 | ok |
+| 68 | `refuse_t43_10_early_clearance` | 10 | lever T3 | 1.0 | 0 | 0 | 181 | odmowa/bez zamka |
+| 69 | `t43_11_01_wooden_market` | 11 | egyptian T2 | 1.8 | 177 | 0 | 348 | ok |
+| 70 | `t43_11_02_bicycle_stand` | 11 | combo T3 | 2.0 | 189 | 0 | 456 | ok |
 | 71 | `t43_11_03_tool_exchange` | 11 | axial_slider T3 | 2.1 | 201 | 0 | 648 | ok |
-| 72 | `t43_11_04_sailors_stall` | 11 | disc_detainer T3 | 2.2 | 180 | 0 | 830 | ok |
-| 73 | `t43_11_05_rehearsal_chest` | 11 | lever T4 | 1.5 | 219 | 0 | 1028 | ok |
-| 74 | `refuse_t43_11_other_stall` | 11 | wafer T3 | 1.0 | 0 | 0 | 1025 | odmowa/bez zamka |
-| 75 | `t43_11_07_wrong_delivery` | 11 | pin_tumbler T3 | 1.0 | 40 | 0 | 1065 | odmowa/bez zamka |
-| 76 | `t43_12_01_letters_archive` | 12 | dial_safe T3 | 2.0 | 202 | 0 | 1254 | ok |
-| 77 | `t43_12_02_detective_cabinet` | 12 | lever_detector T5 | 1.7 | 225 | 0 | 456 | ok |
-| 78 | `t43_12_03_community_store` | 12 | pin_tumbler T5 | 1.6 | 230 | 0 | 496 | ok |
-| 79 | `t43_12_04_school_box` | 12 | lever T5 | 1.6 | 234 | 0 | 694 | ok |
-| 80 | `t43_12_05_tea_fund_case` | 12 | combo T4 | 2.1 | 236 | 0 | 912 | ok |
-| 81 | `refuse_t43_12_surprise_key` | 12 | pin_tumbler T6 | 1.0 | 0 | 0 | 912 | odmowa/bez zamka |
-| 82 | `t43_12_07_clock_back_home` | 12 | time_lock T2 | 1.9 | 236 | 0 | 1135 | ok |
-| 83 | `t43_12_08_henryks_bench` | 12 | pin_tumbler T6 | 1.6 | 236 | 0 | 1347 | ok |
+| 72 | `t43_11_04_sailors_stall` | 11 | disc_detainer T3 | 2.2 | 180 | 0 | 826 | ok |
+| 73 | `t43_11_05_rehearsal_chest` | 11 | lever T4 | 1.5 | 219 | 0 | 1025 | ok |
+| 74 | `refuse_t43_11_other_stall` | 11 | wafer T3 | 1.0 | 0 | 0 | 1022 | odmowa/bez zamka |
+| 75 | `t43_11_07_wrong_delivery` | 11 | pin_tumbler T3 | 1.0 | 40 | 0 | 1062 | odmowa/bez zamka |
+| 76 | `t43_12_01_letters_archive` | 12 | dial_safe T3 | 2.0 | 202 | 0 | 1251 | ok |
+| 77 | `t43_12_02_detective_cabinet` | 12 | lever_detector T5 | 1.8 | 225 | 0 | 463 | ok |
+| 78 | `t43_12_03_community_store` | 12 | pin_tumbler T5 | 1.6 | 230 | 0 | 494 | ok |
+| 79 | `t43_12_04_school_box` | 12 | lever T5 | 1.6 | 234 | 0 | 693 | ok |
+| 80 | `t43_12_05_tea_fund_case` | 12 | combo T4 | 2.1 | 236 | 0 | 908 | ok |
+| 81 | `refuse_t43_12_surprise_key` | 12 | pin_tumbler T6 | 1.0 | 0 | 0 | 908 | odmowa/bez zamka |
+| 82 | `t43_12_07_clock_back_home` | 12 | time_lock T2 | 1.9 | 200 | 0 | 1132 | ok |
+| 83 | `t43_12_08_henryks_bench` | 12 | pin_tumbler T6 | 1.6 | 236 | 0 | 1342 | ok |
 
 ### Scenariusz D
 
@@ -175,7 +175,7 @@ Grind = sesje Trybu Ciągłego (8 min), które gracz musi rozegrać, zanim kupi 
 | 33 | `zuzanna_catalogue_drawer` | 7 | lever T3 | 1.3 | 124 | 0 | 848 | ok |
 | 34 | `refuse_sisters_flat` | 7 | pin_tumbler T2 | 1.0 | 0 | 0 | 848 | odmowa/bez zamka |
 | 35 | `stefan_book_tin` | 7 | combo T3 | 2.5 | 171 | 0 | 1004 | ok |
-| 36 | `edek_rehearsal_store` | 7 | lever_detector T5 | 1.9 | 124 | 0 | 1098 | ok |
+| 36 | `edek_rehearsal_store` | 7 | lever T3 | 1.3 | 124 | 0 | 1098 | ok |
 | 37 | `krystyna_wooden_album` | 7 | egyptian T1 | 1.8 | 89 | 0 | 1186 | ok |
 | 38 | `refuse_unapproved_stockroom` | 7 | wafer T2 | 1.0 | 0 | 0 | 1186 | odmowa/bez zamka |
 | 39 | `gosia_workbench_drawer` | 7 | lever T3 | 1.3 | 171 | 0 | 1328 | ok |
@@ -185,14 +185,14 @@ Grind = sesje Trybu Ciągłego (8 min), które gracz musi rozegrać, zanim kupi 
 | 43 | `halina_christmas_tin` | 8 | warded T1 | 1.4 | 89 | 0 | 1791 | ok |
 | 44 | `carol_singers_chest` | 8 | egyptian T1 | 1.7 | 75 | 0 | 1872 | ok |
 | 45 | `refuse_wrong_letterbox` | 8 | wafer T1 | 1.0 | 0 | 0 | 1872 | odmowa/bez zamka |
-| 46 | `wigilia_table_drawer` | 8 | lever T3 | 1.3 | 171 | 0 | 2017 | ok |
-| 47 | `heating_service_cupboard` | 8 | pin_tumbler T3 | 1.4 | 171 | 0 | 2176 | ok |
-| 48 | `refuse_unapproved_repair` | 8 | wafer T2 | 1.0 | 0 | 0 | 2176 | odmowa/bez zamka |
-| 49 | `warm_room_for_neighbours` | 8 | pin_tumbler T3 | 1.4 | 171 | 0 | 2336 | ok |
-| 50 | `winter_bicycle_cellar` | 8 | combo T3 | 2.1 | 171 | 0 | 2503 | ok |
-| 51 | `wooden_winter_village` | 8 | egyptian T1 | 1.6 | 89 | 0 | 2582 | ok |
+| 46 | `wigilia_table_drawer` | 8 | lever T3 | 1.3 | 171 | 0 | 2022 | ok |
+| 47 | `heating_service_cupboard` | 8 | pin_tumbler T3 | 1.4 | 171 | 0 | 2186 | ok |
+| 48 | `refuse_unapproved_repair` | 8 | wafer T2 | 1.0 | 0 | 0 | 2186 | odmowa/bez zamka |
+| 49 | `warm_room_for_neighbours` | 8 | pin_tumbler T3 | 1.4 | 171 | 0 | 2340 | ok |
+| 50 | `winter_bicycle_cellar` | 8 | combo T3 | 2.1 | 171 | 0 | 2507 | ok |
+| 51 | `wooden_winter_village` | 8 | egyptian T1 | 1.6 | 89 | 0 | 2589 | ok |
 | 52 | `attic_drying_room` | 8 | lever T3 | 1.3 | 171 | 0 | 2744 | ok |
-| 53 | `christmas_eve_heat` | 8 | lever_detector T5 | 1.8 | 248 | 0 | 2960 | ok |
+| 53 | `christmas_eve_heat` | 8 | lever_detector T5 | 1.9 | 248 | 0 | 2960 | ok |
 | 54 | `t43_09_01_winter_keys` | 9 | pin_tumbler T2 | 1.3 | 47 | 0 | 3000 | ok |
 | 55 | `t43_09_02_blanket_cupboard` | 9 | magnetic T2 | 1.9 | 59 | 0 | 3058 | ok |
 | 56 | `t43_09_03_wooden_postbox` | 9 | egyptian T2 | 1.8 | 71 | 0 | 3127 | ok |
@@ -208,21 +208,21 @@ Grind = sesje Trybu Ciągłego (8 min), które gracz musi rozegrać, zanim kupi 
 | 66 | `t43_10_05_porters_drawer` | 10 | lever T3 | 1.3 | 165 | 0 | 4022 | ok |
 | 67 | `t43_10_06_shared_room_entry` | 10 | dimple T3 | 2.1 | 150 | 0 | 4186 | ok |
 | 68 | `refuse_t43_10_early_clearance` | 10 | lever T3 | 1.0 | 0 | 0 | 4186 | odmowa/bez zamka |
-| 69 | `t43_11_01_wooden_market` | 11 | egyptian T2 | 1.8 | 177 | 0 | 4346 | ok |
-| 70 | `t43_11_02_bicycle_stand` | 11 | combo T3 | 2.0 | 189 | 0 | 4516 | ok |
+| 69 | `t43_11_01_wooden_market` | 11 | egyptian T2 | 1.8 | 177 | 0 | 4356 | ok |
+| 70 | `t43_11_02_bicycle_stand` | 11 | combo T3 | 2.0 | 189 | 0 | 4526 | ok |
 | 71 | `t43_11_03_tool_exchange` | 11 | axial_slider T3 | 2.1 | 201 | 0 | 4701 | ok |
 | 72 | `t43_11_04_sailors_stall` | 11 | disc_detainer T3 | 2.1 | 213 | 0 | 4884 | ok |
-| 73 | `t43_11_05_rehearsal_chest` | 11 | lever T4 | 1.4 | 185 | 0 | 5080 | ok |
-| 74 | `refuse_t43_11_other_stall` | 11 | wafer T3 | 1.0 | 0 | 0 | 5080 | odmowa/bez zamka |
-| 75 | `t43_11_07_wrong_delivery` | 11 | pin_tumbler T3 | 1.0 | 40 | 0 | 5120 | odmowa/bez zamka |
-| 76 | `t43_12_01_letters_archive` | 12 | dial_safe T3 | 2.1 | 185 | 0 | 5321 | ok |
-| 77 | `t43_12_02_detective_cabinet` | 12 | lever_detector T5 | 1.7 | 190 | 0 | 5518 | ok |
+| 73 | `t43_11_05_rehearsal_chest` | 11 | lever T4 | 1.4 | 185 | 0 | 5084 | ok |
+| 74 | `refuse_t43_11_other_stall` | 11 | wafer T3 | 1.0 | 0 | 0 | 5084 | odmowa/bez zamka |
+| 75 | `t43_11_07_wrong_delivery` | 11 | pin_tumbler T3 | 1.0 | 40 | 0 | 5124 | odmowa/bez zamka |
+| 76 | `t43_12_01_letters_archive` | 12 | dial_safe T3 | 2.1 | 185 | 0 | 5328 | ok |
+| 77 | `t43_12_02_detective_cabinet` | 12 | lever_detector T5 | 1.8 | 190 | 0 | 5518 | ok |
 | 78 | `t43_12_03_community_store` | 12 | pin_tumbler T5 | 1.5 | 230 | 0 | 5738 | ok |
-| 79 | `t43_12_04_school_box` | 12 | lever T5 | 1.6 | 216 | 0 | 5920 | ok |
-| 80 | `t43_12_05_tea_fund_case` | 12 | combo T4 | 2.1 | 236 | 0 | 6134 | ok |
-| 81 | `refuse_t43_12_surprise_key` | 12 | pin_tumbler T6 | 1.0 | 0 | 0 | 6134 | odmowa/bez zamka |
-| 82 | `t43_12_07_clock_back_home` | 12 | time_lock T2 | 1.9 | 236 | 0 | 6358 | ok |
-| 83 | `t43_12_08_henryks_bench` | 12 | pin_tumbler T6 | 1.6 | 200 | 0 | 6570 | ok |
+| 79 | `t43_12_04_school_box` | 12 | lever T5 | 1.6 | 234 | 0 | 5936 | ok |
+| 80 | `t43_12_05_tea_fund_case` | 12 | combo T4 | 2.1 | 236 | 0 | 6140 | ok |
+| 81 | `refuse_t43_12_surprise_key` | 12 | pin_tumbler T6 | 1.0 | 0 | 0 | 6140 | odmowa/bez zamka |
+| 82 | `t43_12_07_clock_back_home` | 12 | time_lock T2 | 1.9 | 236 | 0 | 6360 | ok |
+| 83 | `t43_12_08_henryks_bench` | 12 | pin_tumbler T6 | 1.6 | 200 | 0 | 6582 | ok |
 
 ## 5. Krzywa odblokowań (narzędzie kupione po zleceniu nr, mediana; — = nigdy)
 
@@ -304,9 +304,9 @@ Warunki odblokowania bez zmian (tylko pacing sklepu; zlecenie nigdy nie wymaga n
 
 | Profil | monety przed wyposażeniem (koniec rozdz. 12) | wydane na wyposażenie | kupione (mediana) | wszystkie 10/10 [% karier] | monety zostają |
 |---|---|---|---|---|---|
-| careful | 7387 | 6750 | 10 / 10 | 100% | 637 |
-| average | 6497 | 5150 | 9 / 10 | 0% | 1347 |
-| clumsy | 5765 | 5150 | 9 / 10 | 0% | 615 |
+| careful | 7391 | 6750 | 10 / 10 | 100% | 641 |
+| average | 6492 | 5150 | 9 / 10 | 0% | 1342 |
+| clumsy | 5774 | 5150 | 9 / 10 | 0% | 624 |
 
 | przedmiot | cena | od rozdz. | kupiony po zleceniu nr (careful) | kupiony po zleceniu nr (average) | kupiony po zleceniu nr (clumsy) |
 |---|---|---|---|---|---|

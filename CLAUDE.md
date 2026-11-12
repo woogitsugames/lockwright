@@ -51,6 +51,8 @@ lockcore/build/verify_seeds --seeds 1000 --family warded     # jedna rodzina (wo
 lockcore/build/verify_seeds --seeds 10000 --feel 1000       # bot czujący (etap 3, raport) tylko na 1000 pierwszych seedów
 lockcore/build/replay_tool record ring_combo 3 11 out.replay.json --feel   # nagraj bota czującego (--clumsy: niezdarny)
 lockcore/build/lockcore_tests fuzz                          # fuzzing: 100k losowych kroków na rodzinę (pod ASan: build-asan)
+lockcore/build/verify_seeds --seeds 3000 --feel 0 --heavy-over 250   # bot „ciężkiej ręki” (D-118, raport pęknięć narzędzi; domyślnie +0,20)
+lockcore/build/verify_seeds --tiers > lockcore/tiers.json   # zakresy tierów rodzin; czyta je data/tools/validate.py (tier zlecenia w zakresie)
 python3 tools/build_content_packs.py --check               # paczki treści (D-112): walidacja game/packs/<id>/; --sync, --godot <godot> buduje pck
 ```
 

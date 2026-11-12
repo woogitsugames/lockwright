@@ -1,6 +1,6 @@
 # Krzywa trudności: audyt rodzin i tierów (2026-11)
 
-Status: 2026-11-12, D-116. Dane: `lockcore/build/verify_seeds --seeds 10000` (41 par rodzina × tier, trzy boty na
+Status: 2026-11-12, D-116; §8 dopisany w D-118 (dane zleceń, walidator, bot „ciężkiej ręki”). Dane: `lockcore/build/verify_seeds --seeds 10000` (41 par rodzina × tier, trzy boty na
 każdym seedzie, 0 porażek bramki A3) po zmianach z §5; wartości „przed” pochodzą z tego samego przebiegu na kodzie
 sprzed zmian. Zlecenia: `game/data/jobs/*.json` (83 pliki, 70 z zamkiem), tryb ciągły: `game/data/progression.json`
 i `game/scripts/ui/run_state.gd`.
@@ -179,6 +179,9 @@ obu botów miękkich.
 ## 3. Kontekst progresji
 
 ### 3.1 Tier ze zlecenia a tier w grze
+
+> Stan sprzed D-118. Zapisy z tej tabeli poprawiono (tier w danych = tier w grze), a trzy zlecenia dostały inny
+> zamek: §8.1.
 
 `JobRun.tier_for()` przekazuje `tier` z pliku zlecenia, a lockcore przycina go do zakresu rodziny. W 8 zleceniach
 z zamkiem (i jednej odmowie) gracz dostaje więc inny tier niż zapisany:
@@ -443,3 +446,201 @@ Kolumny CSV dopisane w D-116: `clumsy_p50`, `clumsy_p90`, `clumsy_drops`, `clums
 `clumsy_breaks`, `clumsy_timeouts`, `clumsy_overstress`, `clumsy_trips`, `feel_drops`, `feel_oversets`,
 `feel_false_sets`, `feel_breaks`, `feel_timeouts`, `feel_trips`, `time_limit_steps`, `clumsy_ok`, `feel_ok`
 (sumy po wszystkich przebiegach danego bota; czasy w krokach 1/120 s).
+
+## 8. Po audycie: dane zleceń, walidator i bot „ciężkiej ręki” (D-118)
+
+Stan: 2026-11-12, po D-116. Rozdziały 1–12; zleceń rozdz. 13 ten krok nie dotyka. §3 opisuje dane **sprzed** tych
+poprawek, poniżej jest stan po nich.
+
+### 8.1 Tier w danych = tier lockcore
+
+Pole `tier` w `game/data/jobs/*.json` znaczy teraz dokładnie to, co gracz dostaje. Osiem zleceń i jedna odmowa
+(§3.1) miały zapis spoza zakresu rodziny; gra i tak grała tier przycięty, więc **dla siedmiu z nich w grze nie
+zmienia się nic** (ten sam seed, ten sam zamek):
+
+| zlecenie | rozdz. | było | jest | w grze |
+|---|---|---|---|---|
+| `student_dorm`, `wrong_floor` | 1, 2 | `pin_tumbler` 1 | `pin_tumbler` 2 | bez zmian |
+| `pizzeria_pays_pizza` | 2 | `lever` 1 | `lever` 3 | bez zmian |
+| `widow_bureau`, odmowa `refuse_aunt_alive` | 3 | `lever` 2 | `lever` 3 | bez zmian |
+| `grandpa_chest` | 3 | `warded` 3 | `warded` 2 | bez zmian |
+| `krakow_tenement_gate`, `swiatniki_journeyman_padlock` | 4 | `warded` 3 | `warded` 2 | bez zmian |
+| `liege_bakery` | 5 | `lever_detector` 2 | `lever_detector` 5 | bez zmian |
+
+Trzy zlecenia dostają inny zamek:
+
+| zlecenie | rozdz. | było (w grze) | jest | czujący p50 / niezdarny p50 tieru | ten zamek: skrypt. / czujący / niezdarny |
+|---|---|---|---|---|---|
+| `uncle_safe_heirs` | 3 | `dial_safe` t2 | `dial_safe` t1 | 9,3 s / 9,8 s | 11,1 s / 15,7 s / 10,3 s |
+| `krakow_antiquarian` | 4 | `dial_safe` t1 | `dial_safe` t2 | 20,2 s / 13,6 s | 15,7 s / 20,6 s / 13,8 s |
+| `edek_rehearsal_store` | 7 (7. z 12) | `lever_detector` t5 | `lever` t3 | 12,5 s / 3,0 s | 5,6 s / 12,5 s / 3,1 s |
+
+- **`dial_safe`: t1 przed t2.** Pierwszy sejf w grze (sejf wujka, rozdz. 3) jest teraz łatwiejszy niż drugi
+  (kasa antykwariusza, rozdz. 4). Żadna kwestia nie mówi o liczbie kół ani o trudności, więc tekstów nie ruszano.
+- **Dołek w rozdz. 4 zniknął bez nowego tieru.** Rozdział miał `dial_safe` t1 i dwa `warded` „t3” (w grze t2),
+  czyli najłatwiejszy zamek czującego w całej karierze (9,3 s) po 20,2 s w rozdz. 3. Po zamianie sejfów:
+
+  | rozdz. | czujący p50: min – mediana – max | niezdarny p50: min – mediana – max |
+  |---|---|---|
+  | 3 (było) | 12,5 – 16,8 – 20,2 s | 2,5 – 3,9 – 13,6 s |
+  | 3 (jest) | 9,3 – 13,4 – 18,8 s | 2,5 – 3,9 – 9,8 s |
+  | 4 (było) | 9,3 – 18,8 – 18,8 s | 2,5 – 2,5 – 9,8 s |
+  | 4 (jest) | 18,8 – 18,8 – 20,2 s | 2,5 – 2,5 – 13,6 s |
+  | 7 (było) | 11,0 – 15,0 – 29,3 s | 2,3 – 3,4 – 11,3 s |
+  | 7 (jest) | 11,0 – 14,0 – 29,3 s | 2,3 – 3,0 – 7,3 s |
+
+  Mediany czującego w rozdz. 1–5 idą teraz 14,6 – 11,0 – 13,4 – 18,8 – 18,3 s (było 14,6 – 11,0 – 16,8 – 18,8 – 18,3).
+  `warded` t3 nie istnieje w lockcore (zakres t1–t2); dopisanie go to zmiana balansu i treści, nie danych.
+- **`edek_rehearsal_store`: `lever_detector` t5 → `lever` t3.** Żadna kwestia, sytuacja ani notatka w żadnym z pięciu
+  języków nie wspomina o detektorze („magazynek po starym teatrze”, krzesła na zebranie). Stary zamek dźwigniowy
+  pasuje do miejsca, używa tej samej korby co detektor (ekonomia narzędzi bez zmian) i ma ciąg dalszy: skrzynia w
+  tej samej sali prób w rozdz. 11 (`t43_11_05_rehearsal_chest`) to `lever` t4. Rozdz. 7 ma teraz trzy `lever` t3 na
+  dziesięć zamków (pozycje 4, 7, 10) i żadnej kary dla szorstkiej ręki (`lever_detector` t5: średnio 1,91 zrzutu
+  i oversetu na zamek).
+- **`liege_bakery` zostaje przy `lever_detector`, tier 5.** Tu detektor *jest* fabułą: sytuacja („zamek »coś wyczuł«
+  i się zablokował”), kwestia 2, notatka i gablota `showcase.chubb_detector` (odblokowywana tym zleceniem). t5 to
+  najniższy tier rodziny, więc łagodniej się nie da bez nowego tieru w lockcore. Zlecenie pozostaje pierwszym
+  trudnym zamkiem kariery, siedem rozdziałów przed `lever` t5 — teraz jest to zapisane wprost, a nie ukryte za
+  „tier 2”. Jeśli w testach z graczami okaże się ścianą: nowy `lever_detector` t4 (3–4 dźwignie, bez fałszywych
+  bramek, sam detektor) to osobna decyzja o zakresie.
+- **Poza zakresem tej poprawki:** `christmas_eve_heat` (`lever_detector` t5, finał rozdz. 8) — po `liege_bakery`
+  gracz zna już detektor, a to ostatnie zlecenie rozdziału.
+
+### 8.2 Walidator danych
+
+`python3 data/tools/validate.py` zgłasza teraz błąd, gdy `tier` zlecenia (także z paczki `game/packs/<id>/`) jest
+poza zakresem jego rodziny, gdy rodziny nie ma w lockcore albo gdy `tier` nie jest liczbą całkowitą. Zakresy nie są
+przepisane do walidatora: czyta `lockcore/tiers.json`, który wypisuje `lockcore/build/verify_seeds --tiers` z
+`min_tier()` / `max_tier()` rodzin, a test `ctest` `tiers_json_in_sync` nie przechodzi, gdy plik odbiega od kodu.
+Testy: `tools/tests/test_validate_job_tiers.py` (m.in. wszystkie zapisy z tabeli 8.1 jako przypadki błędne i sprawdzenie
+wszystkich wydanych zleceń).
+
+### 8.3 Bot „ciężkiej ręki”
+
+D-116 stwierdziło, że żaden z trzech botów nie łamie narzędzia (niezdarny: 0 na 410 000 przebiegów), więc
+`S_max`, przyrost naprężenia i „złamane wytrychy” były niezmierzone. Czwarty bot (`BotKind::heavy`):
+
+- to **bot niezdarny** (ten sam plan wyroczni, drżenie ±0,06, szybkie podnoszenie, reakcja 250 ms, brak wiedzy o
+  oversecie), który na każdym nowym elemencie trzyma napięcie o `+0,20` ponad plan;
+- luzuje napięcie o 0,10 dopiero po podniesieniu, w którym element się nie ruszył (osobno dla zwykłego podniesienia
+  i dla fałszywej bramki), i najpierw opuszcza wytrych — inaczej element „strzelał” pod dociśniętym wytrychem i
+  bot mierzył przeskok, a nie obciążenie narzędzia (pierwsza wersja blokowała detektor w 99,9 % przebiegów);
+- **nie reaguje na `stress`** i nie ma bramki 0,8 S_max: otwiera z dowolnym naprężeniem albo łamie;
+- w `warded` luzuje, gdy rygiel nie idzie; w rodzinach, w których narzędzie nie jest obciążane, jest botem niezdarnym.
+
+To górna granica: gracz słyszy i czuje `stress` (od 0,6 S_max), bot nie. Tylko raport, nigdy bramka.
+
+`+0,20` nie jest przypadkowe: plan trzyma środek pasma elementu, a `τ_safe` leży co najmniej pół pasma + 0,06
+wyżej, czyli 0,20 ponad plan w `pin_tumbler` t2 i 0,12 w t7. Ręka o 0,20 za ciężka jest więc dokładnie na granicy bezpieczeństwa
+najłatwiejszej wkładki i coraz dalej za nią w kolejnych tierach.
+
+**Odsetek złamanych narzędzi.** Kolumna `+0,20` (domyślna): 10 000 seedów, pełny przebieg z wszystkimi botami, 0
+porażek bramki A3. Pozostałe poziomy napięcia: 3 000 seedów (`--heavy-over 100|150|250|300 --feel 0`). Szczyt
+naprężenia, „otwarte” i czasy dotyczą `+0,20`; czas ciężkiej ręki to mediana przebiegów zakończonych otwarciem.
+
+| rodzina | tier | +0,10 | +0,15 | **+0,20** | +0,25 | +0,30 | szczyt S/S_max p50 / p90 | otwarte | czas p50 (ciężka / niezdarny) | limit czasu / blokada detektora |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `pin_tumbler` | t2 | 0 % | 0 % | **0 %** | 0 % | 5,0 % | 0,04 / 0,06 | 100 % | 8,8 / 2,9 s | 0 / 0 |
+|  | t3 | 0 % | 0 % | **0 %** | 38,4 % | 95,3 % | 0,09 / 0,15 | 100 % | 11,8 / 3,8 s | 0 / 0 |
+|  | t4 | 0 % | 4,1 % | **30,4 %** | 61,3 % | 100 % | 0,64 / 1,00 | 69,6 % | 22,8 / 5,0 s | 0 / 0 |
+|  | t5 | 0 % | 0,6 % | **47,5 %** | 67,1 % | 100 % | 0,96 / 1,00 | 52,4 % | 29,5 / 14,0 s | 12 / 0 |
+|  | t6 | 0 % | 0,4 % | **91,2 %** | 99,1 % | 100 % | 1,00 / 1,00 | 6,7 % | 42,6 / 33,1 s | 206 / 0 |
+|  | t7 | 0 % | 0,3 % | **85,6 %** | 99,5 % | 100 % | 1,00 / 1,00 | 0,5 % | 44,4 / 56,9 s | 1394 / 0 |
+| `wafer` | t1 | 0 % | 0 % | **0 %** | 0 % | 16,5 % | 0,03 / 0,04 | 99,91 % | 9,2 / 3,1 s | 9 / 0 |
+|  | t2 | 0 % | 0 % | **0 %** | 2,0 % | 57,6 % | 0,06 / 0,10 | 100 % | 11,9 / 3,9 s | 0 / 0 |
+|  | t3 | 0 % | 0 % | **0 %** | 75,6 % | 100 % | 0,16 / 0,26 | 99,9 % | 17,5 / 4,7 s | 11 / 0 |
+| `lever` | t3 | 0 % | 0 % | **0 %** | 0 % | 60,0 % | 0,06 / 0,09 | 100 % | 9,1 / 3,0 s | 0 / 0 |
+|  | t4 | 0 % | 32,7 % | **80,9 %** | 93,0 % | 100 % | 1,00 / 1,00 | 19,1 % | 16,4 / 4,7 s | 0 / 0 |
+|  | t5 | 0,1 % | 32,1 % | **99,3 %** | 100 % | 100 % | 1,00 / 1,00 | 0,7 % | 37,4 / 12,1 s | 0 / 0 |
+| `lever_detector` | t5 | 0 % | 4,1 % | **94,3 %** | 99,8 % | 100 % | 1,00 / 1,00 | 5,5 % | 36,8 / 11,3 s | 0 / 19 |
+|  | t6 | 0,1 % | 14,3 % | **98,3 %** | 99,7 % | 100 % | 1,00 / 1,00 | 1,0 % | 45,9 / 20,2 s | 0 / 67 |
+| `warded` | t1 | 0 % | 0 % | **0 %** | 0 % | 0 % | 0,90 / 0,90 | 100 % | 3,3 / 2,3 s | 0 / 0 |
+|  | t2 | 0 % | 0 % | **26,0 %** | 99,97 % | 100 % | 0,90 / 1,00 | 74,0 % | 3,5 / 2,5 s | 0 / 0 |
+| `dimple` | t1 | 0 % | 0 % | **0 %** | 0 % | 20,8 % | 0,03 / 0,04 | 99,99 % | 12,4 / 4,2 s | 1 / 0 |
+|  | t2 | 0 % | 32,3 % | **71,3 %** | 98,8 % | 100 % | 1,00 / 1,00 | 28,7 % | 18,8 / 7,9 s | 0 / 0 |
+|  | t3 | 0 % | 25,7 % | **74,9 %** | 99,8 % | 100 % | 1,00 / 1,00 | 25,1 % | 25,8 / 15,5 s | 1 / 0 |
+| `axial_slider` | t1 | 0 % | 0 % | **0 %** | 0 % | 7,1 % | 0,04 / 0,06 | 100 % | 12,2 / 4,2 s | 0 / 0 |
+|  | t2 | 0 % | 57,4 % | **90,4 %** | 97,0 % | 99,93 % | 1,00 / 1,00 | 9,6 % | 19,5 / 6,1 s | 0 / 0 |
+|  | t3 | 0 % | 21,9 % | **99,4 %** | 100 % | 100 % | 1,00 / 1,00 | 0,6 % | 43,9 / 8,7 s | 0 / 0 |
+| `time_lock` | t1 | 0 % | 0 % | **0 %** | 5,3 % | 100 % | 0,06 / 0,09 | 86,6 % | 11,2 / 5,0 s | 1344 / 0 |
+|  | t2 | 0 % | 0 % | **0 %** | 99,7 % | 100 % | 0,15 / 0,25 | 99,99 % | 17,4 / 7,0 s | 1 / 0 |
+| `magnetic` | t1 | 0 % | 0 % | **0 %** | 0 % | 20,9 % | 0,03 / 0,04 | 99,99 % | 9,5 / 3,0 s | 1 / 0 |
+|  | t2 | 0 % | 0 % | **0 %** | 1,7 % | 92,5 % | 0,06 / 0,10 | 100 % | 12,0 / 4,0 s | 0 / 0 |
+
+Narzędzie nie jest obciążane (bot = niezdarny, 0 pęknięć z konstrukcji): `wooden_pin` t1 (otwarte 100 %, 12,8 s); `ring_combo` t2 (otwarte 100 %, 6,4 s); `ring_combo` t3 (otwarte 100 %, 8,2 s); `dial_safe` t1 (otwarte 100 %, 9,8 s); `dial_safe` t2 (otwarte 100 %, 13,6 s); `dial_safe` t3 (otwarte 100 %, 15,2 s); `combo` t1 (otwarte 100 %, 5,6 s); `combo` t2 (otwarte 100 %, 6,4 s); `combo` t3 (otwarte 100 %, 7,3 s); `combo` t4 (otwarte 100 %, 8,2 s); `disc_detainer` t1 (otwarte 100 %, 7,8 s); `disc_detainer` t2 (otwarte 100 %, 9,7 s); `disc_detainer` t3 (otwarte 100 %, 10,5 s); `egyptian` t1 (otwarte 100 %, 10,8 s); `egyptian` t2 (otwarte 100 %, 15,6 s).
+`warded` t1 z założenia nie łamie sondy (naprężenie zatrzymuje się na 0,90 S_max).
+
+Łącznie przy `+0,20`: 98 947 pęknięć na 410 000 przebiegów (24,1 %); przy `+0,10`: 7 na 123 000.
+
+**Odczyt.**
+
+1. **Próg jest ostry i leży między +0,10 a +0,20–0,25.** Przy +0,10 nie pęka praktycznie nic (7 na 123 000); przy
+   +0,30 pęka wszystko poza tierami wprowadzającymi. Zapas `τ_safe` działa jak przełącznik, nie jak pokrętło.
+2. **Uskok wyznacza pierwszy tier z fałszywą bramką, nie numer tieru.** Przy +0,20: `lever` t3 0 % → t4 80,9 %,
+   `axial_slider` t1 0 % → t2 90,4 %, `dimple` t1 0 % → t2 71,3 %, `pin_tumbler` t3 0 % → t4 30,4 %. W fałszywej
+   bramce bezpieczne jest tylko wąskie pasmo kontrrotacji, a każde podniesienie ponad nim ładuje narzędzie do
+   czasu poluzowania. Moduł `lever` (`lever` t4, `axial_slider` t2) łamie na pierwszym takim tierze 2,7–3 razy
+   częściej niż `pin_tumbler` t4, mimo że fałszywą bramkę ma tam najwyżej jedna dźwignia na dwie.
+3. **Tiery bez fałszywych bramek wybaczają rękę do +0,20**: `pin_tumbler` t2–t3, `wafer`, `lever` t3, `magnetic`,
+   `dimple` t1, `axial_slider` t1, `time_lock` (szczyt ≤ 0,26 S_max w 90 % przebiegów). Z nich składają się
+   rozdz. 1–2 i większość rozdz. 7–9.
+4. **`warded` t2 to pierwsze narzędzie, które można złamać w karierze** (26 % przy +0,20, 99,97 % przy +0,25):
+   `grandpa_chest` w rozdz. 3. Bez fałszywej bramki; tu ładuje samo dociskanie rygla ponad limit bitu.
+5. **`time_lock`**: 0 % do +0,20, potem t2 99,7 % już przy +0,25. Sprężyna nakręcona ponad `τ_safe` ładuje się w
+   każdym kroku, także bez dotykania zapadek, więc głuchy bot nie ma kiedy poluzować. To zamierzona mechanika
+   („przekręcona sprężyna”), ale najbardziej stroma krzywa w tabeli.
+6. **Kolumna „limit czasu”** to artefakt skoku luzowania 0,10 (bot utyka tuż nad pasmem), nie sygnał balansu:
+   `time_lock` t1 13 % przy +0,20, `pin_tumbler` t6–t7. Przy `lever_detector` część przebiegów kończy blokada
+   detektora (19 i 67 na 10 000).
+
+**Te same zamki, co w zleceniach** (`replay_tool record <rodzina> <tier> <seed> out.json --heavy`, seed zlecenia,
++0,20; dane po 8.1). Ciężka ręka otwiera 57 z 70 zamków kariery i łamie narzędzie na 13:
+
+| rozdz. | zamków | złamane | które | otwarte ze szczytem ≥ 0,6 S_max |
+|---|---|---|---|---|
+| 1 | 5 | 0 | – | `cat_bathroom` 0,78, `grandma_broth` 0,89 |
+| 2 | 5 | 0 | – | – |
+| 3 | 5 | 1 | `grandpa_chest` (`warded` t2) | – |
+| 4 | 3 | 1 | `swiatniki_journeyman_padlock` (`warded` t2) | `krakow_tenement_gate` 0,91 |
+| 5 | 4 | 1 | `brussels_townhouse` (`dimple` t2) | `ghent_beguinage` 0,91, `liege_bakery` 0,97 |
+| 6 | 4 | 1 | `bramah_bureau` (`axial_slider` t2) | – |
+| 7 | 10 | 0 | – | `halina_recipe_box` 0,89, `community_notice_case` 0,85 |
+| 8 | 10 | 1 | `christmas_eve_heat` (`lever_detector` t5) | `halina_christmas_tin` 0,73 |
+| 9 | 6 | 0 | – | `t43_09_06_draughty_hall` 0,89 |
+| 10 | 6 | 2 | `t43_10_01_renovator_bureau` (`axial_slider` t2), `t43_10_06_shared_room_entry` (`dimple` t3) | – |
+| 11 | 5 | 2 | `t43_11_03_tool_exchange` (`axial_slider` t3), `t43_11_05_rehearsal_chest` (`lever` t4) | – |
+| 12 | 7 | 4 | `t43_12_02_detective_cabinet` (`lever_detector` t5), `t43_12_03_community_store` (`pin_tumbler` t5), `t43_12_04_school_box` (`lever` t5), `t43_12_08_henryks_bench` (`pin_tumbler` t6) | – |
+
+W rozdz. 1–2, 7 i 9 nie łamie się nic; pierwsze złamanie to rozdz. 3, a od rozdz. 10 łamią się 2–4 zamki na rozdział.
+Krzywa „kary za siłę” rośnie więc razem z karierą, z jednym garbem: rozdz. 5–6 mają już tiery, które łamią w
+71–94 % przebiegów (`dimple` t2, `lever_detector` t5, `axial_slider` t2), a rozdz. 7 i 9 nie mają żadnego.
+
+**Zmiany balansu z tego pomiaru: żadnych.** Nie ma pojedynczego wiersza, który odstaje od własnej rodziny: uskoki
+są wszędzie w tym samym miejscu (pierwsza fałszywa bramka) i mają tę samą przyczynę. Ruszenie jednej liczby
+(np. `S_max` albo `stress_gain` jednego tieru) przesunęłoby jeden wiersz, a nie mechanizm, i wymagałoby wiedzy,
+jak często prawdziwy gracz reaguje na `stress` — tego bot nie mierzy. Złote powtórki nietknięte (29 plików, te same
+hashe): nowe pola `HumanLimits` są domyślnie wyłączone, reguły, generator i `rules_version` bez zmian.
+
+**Do testów z graczami / decyzji:**
+
+1. Czy ostrzeżenie `stress` (0,6 S_max, powtarzane co 0,1 s) wystarcza w fałszywej bramce. Jeśli gracze łamią tam
+   narzędzia mimo ostrzeżenia, kandydaci w kolejności od najmniej inwazyjnego: mniejszy `stress_gain` w fałszywej
+   bramce (jedna stała na rodzinę modułu `lever`), potem `S_max` rosnące z tierem.
+2. `axial_slider` t2 (rozdz. 6 i 10) i `dimple` t2 (rozdz. 5) jako pierwsze zamki z fałszywą bramką w karierze:
+   zmierzyć pęknięcia na tych zleceniach w pierwszej kolejności.
+3. `time_lock`: czy stroma krzywa nad `τ_safe` jest czytelna dla gracza naprawiającego zegar (rozdz. 6, 10, 12).
+
+### 8.4 Jak powtórzyć
+
+```bash
+lockcore/build/verify_seeds --seeds 10000 --csv out.csv                    # sekcja „heavy hand” + kolumny heavy_*
+lockcore/build/verify_seeds --seeds 3000 --feel 0 --heavy-over 250 --csv out250.csv   # inny poziom napięcia
+lockcore/build/verify_seeds --seeds 10000 --heavy 1000                     # ciężka ręka tylko na 1000 pierwszych seedów
+lockcore/build/replay_tool record dimple 2 <seed> out.replay.json --heavy   # jeden zamek; zapisuje też złamanie
+lockcore/build/verify_seeds --tiers                                         # zakresy tierów (lockcore/tiers.json)
+python3 data/tools/validate.py && python3 -m pytest tools/tests -q
+```
+
+Kolumny CSV dopisane w D-118 (na końcu wiersza): `heavy_runs`, `heavy_ok`, `heavy_breaks`, `heavy_timeouts`,
+`heavy_trips`, `heavy_p50`, `heavy_p90` (kroki 1/120 s, przebiegi otwarte), `heavy_peak_p50_q16`,
+`heavy_peak_p90_q16` (szczyt S/S_max po wszystkich przebiegach, Q16), `heavy_drops`, `heavy_oversets`.

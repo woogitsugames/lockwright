@@ -155,3 +155,52 @@ job tiers outside the family range, `disc_detainer` times) are listed in the res
 
 New in the `verify_seeds` report and CSV (appended columns): false sets and oversets per lock for both soft bots,
 clumsy p90, failure reasons (time-outs, tool at ≥ 0.8 S_max, blocked detector), exact success counts.
+
+## D-118: heavy hand (2026-11-12)
+
+No balance change. A fourth bot measures what the other three cannot: tool breakage. `BotKind::heavy` is the
+clumsy bot holding the tension 0.20 above the plan on every new element, easing it by 0.10 only after a lift in
+which nothing moved (pick down first), and deaf to `stress`. Report only, never a gate; an upper bound, since a
+player hears and feels `stress` from 0.6 S_max.
+
+`verify_seeds --seeds 10000` (scripted gate: 0 failures), heavy hand at the default +0.20. Families whose tool is
+never loaded (`wooden_pin`, `egyptian`, `ring_combo`, `combo`, `disc_detainer`, `dial_safe`) are left out: 0 breaks
+by construction.
+
+| family | tier | heavy breaks | peak S/S_max p50 / p90 | heavy open |
+|---|---|---|---|---|
+| `pin_tumbler` | t2 | 0.0 % | 0.04 / 0.06 | 100.0 % |
+|  | t3 | 0.0 % | 0.09 / 0.15 | 100.0 % |
+|  | t4 | 30.4 % | 0.64 / 1.00 | 69.6 % |
+|  | t5 | 47.5 % | 0.96 / 1.00 | 52.4 % |
+|  | t6 | 91.2 % | 1.00 / 1.00 | 6.7 % |
+|  | t7 | 85.6 % | 1.00 / 1.00 | 0.5 % |
+| `wafer` | t1 | 0.0 % | 0.03 / 0.04 | 99.9 % |
+|  | t2 | 0.0 % | 0.06 / 0.10 | 100.0 % |
+|  | t3 | 0.0 % | 0.16 / 0.26 | 99.9 % |
+| `lever` | t3 | 0.0 % | 0.06 / 0.09 | 100.0 % |
+|  | t4 | 80.9 % | 1.00 / 1.00 | 19.1 % |
+|  | t5 | 99.3 % | 1.00 / 1.00 | 0.7 % |
+| `lever_detector` | t5 | 94.3 % | 1.00 / 1.00 | 5.5 % |
+|  | t6 | 98.3 % | 1.00 / 1.00 | 1.0 % |
+| `warded` | t1 | 0.0 % | 0.90 / 0.90 | 100.0 % |
+|  | t2 | 26.0 % | 0.90 / 1.00 | 74.0 % |
+| `dimple` | t1 | 0.0 % | 0.03 / 0.04 | 100.0 % |
+|  | t2 | 71.3 % | 1.00 / 1.00 | 28.7 % |
+|  | t3 | 74.9 % | 1.00 / 1.00 | 25.1 % |
+| `axial_slider` | t1 | 0.0 % | 0.04 / 0.06 | 100.0 % |
+|  | t2 | 90.4 % | 1.00 / 1.00 | 9.6 % |
+|  | t3 | 99.4 % | 1.00 / 1.00 | 0.6 % |
+| `time_lock` | t1 | 0.0 % | 0.06 / 0.09 | 86.6 % |
+|  | t2 | 0.0 % | 0.15 / 0.25 | 100.0 % |
+| `magnetic` | t1 | 0.0 % | 0.03 / 0.04 | 100.0 % |
+|  | t2 | 0.0 % | 0.06 / 0.10 | 100.0 % |
+
+- The step is sharp: at +0.10 nothing breaks (7 of 123 000 runs), at +0.30 everything but the introductory tiers
+  does. Break rates at +0.10 / +0.15 / +0.25 / +0.30, the same locks as the jobs of chapters 1–12 and the reading
+  are in [`docs/research/difficulty-curve-2026-11.md`](../docs/research/difficulty-curve-2026-11.md) §8.3.
+- The jump sits at the first tier with a false gate (`lever` t4, `axial_slider` t2, `dimple` t2, `pin_tumbler` t4),
+  not at a tier number: above the narrow counter-rotation band every lift loads the tool until the hand eases.
+- `warded` t1 cannot break by design (stress stops at 0.90 S_max); `warded` t2 is the first breakable tool of the
+  career (chapter 3).
+- The first-table rows above are unchanged by D-118 (same rules, generators and tier tables).
