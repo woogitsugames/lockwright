@@ -92,3 +92,93 @@ Jedyne przekroczenie +15%: `a11y.lock.open` FR „Ouvert” → „Ouverte” (j
 ## Sprawdzenie
 
 `python3 tools/i18n_lint.py` (0 błędów), `python3 data/tools/loc_qa.py` (OK), `python3 data/tools/validate.py` (OK). Testy GUT nie porównują żadnego ze zmienionych tekstów (przeszukane `game/**/*.gd`, `*.json`, `*.tscn`).
+
+## Dopisek z 12 listopada (D-115): francuskie „tu” i nazwy rodzin — 63 zmian
+
+Wykonane dwa pierwsze punkty z listy „Zauważone, nie zmienione”. Konsoli Play jeszcze nie ma, więc opisy osiągnięć można było zmienić bez skutków w sklepie. Zmieniono tylko komórki fr istniejących wierszy (60 w `content.csv`, 3 w `strings.csv`); nagrane kwestie (`job.*.line.*`, `job.*.after.*`, `job.*.wrong_open.*`) nietknięte, `contrib/voice/REVOICE.md` bez nowych wpisów.
+
+### Rejestr „vous” → „tu” (osiągnięcia, porady, zasady w notesie) — 53 zmian
+
+W 5 opisach osiągnięć przy okazji poprawiona nazwa rodziny („serrure à leviers” → „serrure à gorges”, „serrure à plaquettes” → „serrure à paillettes”). Nazwa osiągnięcia `steel_warning` dostała formę bezosobową („Alerte entendue”), jak PL „Usłyszany sygnał” i EN „Heard the Warning”.
+
+| klucz | było | jest |
+|---|---|---|
+| `notebook.rule.1` | Demandez d'abord à qui cela appartient. Ensuite, regardez la serrure. | Demande d'abord à qui cela appartient. Ensuite, regarde la serrure. |
+| `notebook.rule.4` | Annoncez le devis avant l'intervention. Pas de surprises sur la facture. | Annonce le devis avant l'intervention. Pas de surprises sur la facture. |
+| `ach.achievement.first_set.desc` | Effectuez votre premier placement net hors du tutoriel. | Effectue ton premier placement net hors du tutoriel. |
+| `ach.achievement.first_open.desc` | Terminez votre première serrure en mode Service continu. | Termine ta première serrure en mode Service continu. |
+| `ach.achievement.pin_school.desc` | Terminez les trois leçons sur les serrures à goupilles. | Termine les trois leçons sur les serrures à goupilles. |
+| `ach.achievement.wafer_school.desc` | Terminez les trois leçons sur les serrures à plaquettes. | Termine les trois leçons sur les serrures à paillettes. |
+| `ach.achievement.false_note.desc` | Ouvrez une serrure à goupilles après avoir entendu un faux placement. | Ouvre une serrure à goupilles après avoir entendu un faux placement. |
+| `ach.achievement.after_drop.desc` | Récupérez après une chute et ouvrez sans casser de crochet. | Récupère après une chute et ouvre sans casser de crochet. |
+| `ach.achievement.after_overset.desc` | Ouvrez après une surélévation sans casser de crochet. | Ouvre après une surélévation sans casser de crochet. |
+| `ach.achievement.counter_sense.desc` | Terminez une serrure après avoir ressenti sa contre-rotation. | Termine une serrure après avoir ressenti sa contre-rotation. |
+| `ach.achievement.steel_warning.name` | Vous avez entendu l'alerte | Alerte entendue |
+| `ach.achievement.steel_warning.desc` | Ouvrez après un avertissement de tension sans casser de crochet. | Ouvre après un avertissement de tension sans casser de crochet. |
+| `ach.achievement.clean_receipt.desc` | Obtenez le tampon « travail soigné » : aucune chute, aucun crochet cassé. | Obtiens le tampon « travail soigné » : aucune chute, aucun crochet cassé. |
+| `ach.achievement.hard_clean.desc` | Ouvrez une serrure de niveau 5 ou plus sans chute ni crochet cassé. | Ouvre une serrure de niveau 5 ou plus sans chute ni crochet cassé. |
+| `ach.achievement.pin_master.desc` | Terminez la cinquième serrure à goupilles de maître sans casser de crochet. | Termine la cinquième serrure à goupilles de maître sans casser de crochet. |
+| `ach.achievement.wafer_master.desc` | Terminez la troisième serrure à plaquettes de maître sans casser de crochet. | Termine la troisième serrure à paillettes de maître sans casser de crochet. |
+| `ach.achievement.wafer_clean.desc` | Ouvrez une serrure à plaquettes sans chute ni crochet cassé. | Ouvre une serrure à paillettes sans chute ni crochet cassé. |
+| `ach.achievement.pin_plain.desc` | Ouvrez une serrure à goupilles de niveau 3 sans faux placement ni surélévation. | Ouvre une serrure à goupilles de niveau 3 sans faux placement ni surélévation. |
+| `ach.achievement.first_gate.desc` | Ouvrez une serrure à leviers en alignant la vraie encoche. | Ouvre une serrure à gorges en alignant la vraie encoche. |
+| `ach.achievement.detector_return.desc` | Ouvrez une serrure à détecteur après son déclenchement et une remise à zéro réussie. | Ouvre une serrure à détecteur après son déclenchement et une remise à zéro réussie. |
+| `ach.achievement.ring_false.desc` | Ouvrez une serrure à anneaux après un faux placement. | Ouvre une serrure à anneaux après un faux placement. |
+| `ach.achievement.wooden_creak.desc` | Ouvrez une serrure à goupilles en bois après avoir entendu son grincement. | Ouvre une serrure à goupilles en bois après avoir entendu son grincement. |
+| `ach.achievement.iron_no_drop.desc` | Ouvrez une serrure à garnitures sans faire tomber de pièce. | Ouvre une serrure à garnitures sans faire tomber de pièce. |
+| `ach.achievement.lever_true.desc` | Ouvrez une serrure à leviers sans faux placement. | Ouvre une serrure à gorges sans faux placement. |
+| `ach.achievement.first_dark.desc` | Terminez votre première serrure dans le noir. | Termine ta première serrure dans le noir. |
+| `ach.achievement.dark_clean.desc` | Ouvrez dans le noir sans chute ni crochet cassé. | Ouvre dans le noir sans chute ni crochet cassé. |
+| `ach.achievement.one_pick.desc` | Terminez un défi « Un seul crochet » sans perdre votre unique crochet. | Termine un défi « Un seul crochet » sans perdre ton unique crochet. |
+| `ach.achievement.daily_lock.desc` | Terminez une fois la serrure du jour. Pas besoin de série. | Termine une fois la serrure du jour. Pas besoin de série. |
+| `ach.achievement.timed_care.desc` | Terminez un défi chronométré sans casser de crochet. | Termine un défi chronométré sans casser de crochet. |
+| `ach.achievement.bench_stop.desc` | Atteignez la première halte à l'atelier d'un service continu. | Atteins la première halte à l'atelier d'un service continu. |
+| `ach.achievement.tool_care.desc` | Réparez un outil usé à l'atelier pour la première fois. | Répare un outil usé à l'atelier pour la première fois. |
+| `ach.achievement.permission.desc` | Vérifiez le droit d'accès avant votre première ouverture sous contrat. | Vérifie le droit d'accès avant ta première ouverture sous contrat. |
+| `ach.achievement.witness.desc` | Terminez une intervention après confirmation de l'accès par un témoin indépendant. | Termine une intervention après confirmation de l'accès par un témoin indépendant. |
+| `ach.achievement.first_no.desc` | Refusez une intervention sans droit d'accès confirmé. | Refuse une intervention sans droit d'accès confirmé. |
+| `ach.achievement.ex_partner.desc` | Résolvez l'affaire de l'ex-partenaire sans ouvrir la porte. | Résous l'affaire de l'ex-partenaire sans ouvrir la porte. |
+| `ach.achievement.bribe.desc` | Refusez le supplément proposé pour éviter les vérifications. | Refuse le supplément proposé pour éviter les vérifications. |
+| `ach.achievement.aunt_alive.desc` | Terminez l'affaire de la tante sans ouvrir son logement. | Termine l'affaire de la tante sans ouvrir son logement. |
+| `ach.achievement.wrong_floor.desc` | Résolvez une erreur d'étage sans ouvrir de porte. | Résous une erreur d'étage sans ouvrir de porte. |
+| `ach.achievement.heirs.desc` | Attendez tous les héritiers habilités avant d'ouvrir le coffre. | Attends tous les héritiers habilités avant d'ouvrir le coffre. |
+| `ach.achievement.partial_refusal.desc` | Ouvrez le coffret du client, mais refusez la cassette d'un tiers. | Ouvre le coffret du client, mais refuse la cassette d'un tiers. |
+| `ach.achievement.museum_papers.desc` | Ouvrez le coffre du musée après autorisation de l'établissement. | Ouvre le coffre du musée après autorisation de l'établissement. |
+| `ach.achievement.kazimierz.desc` | Terminez l'intervention documentée sur le portail de Kazimierz. | Termine l'intervention documentée sur le portail de Kazimierz. |
+| `ach.achievement.capsule.desc` | Ouvrez la capsule temporelle de l'école avec son autorisation. | Ouvre la capsule temporelle de l'école avec son autorisation. |
+| `tip.ethics_01` | Demandez d'abord à qui appartient la porte. Le mécanisme peut attendre. | Demande d'abord à qui appartient la porte. Le mécanisme peut attendre. |
+| `tip.ethics_07` | Si l'histoire ne tient pas debout, proposez d'appeler le gestionnaire. | Si l'histoire ne tient pas debout, propose d'appeler le gestionnaire. |
+| `tip.ethics_10` | Convenez du prix d'abord. Laissez les surprises à la bouilloire. | Conviens du prix d'abord. Laisse les surprises à la bouilloire. |
+| `tip.feel_08` | Trois traces de frottement sont un indice du jeu, pas une note sur votre bulletin. | Trois traces de frottement sont un indice du jeu, pas une note sur ton bulletin. |
+| `tip.workshop_02` | Les outils gardent le souvenir de chaque service. Examinez leurs bords après l'intervention. | Les outils gardent le souvenir de chaque service. Examine leurs bords après l'intervention. |
+| `tip.dark_07` | Le silence n'est pas vide. Écoutez combien de temps il dure. | Le silence n'est pas vide. Écoute combien de temps il dure. |
+| `tip.dark_08` | Vous pouvez rallumer. Il n'y a pas de médaille pour les yeux fatigués. | Tu peux rallumer. Il n'y a pas de médaille pour les yeux fatigués. |
+| `tip.people_02` | La version des faits d'un chat aide rarement. Demandez au propriétaire. | La version des faits d'un chat aide rarement. Demande au propriétaire. |
+| `tip.people_08` | Chaque porte a deux côtés. Pensez à la personne de l'autre. | Chaque porte a deux côtés. Pense à la personne de l'autre. |
+| `tip.calm_10` | Le travail fini, laissez les gens reprendre leur journée. | Le travail fini, laisse les gens reprendre leur journée. |
+
+### Nazwy rodzin i części poza osiągnięciami — 10 zmian
+
+Rodzina dźwigniowa to po francusku „serrure à gorges”, jej części „gorges”; rodzina płytkowa „serrure à paillettes”, części „paillettes” (tak w `family.*.name`, `lock.*`, `receipt.service.*`, `tool.pk_lever.desc`). Poprawione pozostałe miejsca, które mówiły „leviers” / „plaquettes” (długie teksty skrócone w tabeli; zmienione jest tylko to słowo).
+
+| klucz | było | jest |
+|---|---|---|
+| `practice.t18.goal` | Attends le clic juste du levier. | Attends le clic juste de la gorge. |
+| `practice.t19.goal` | Laisse tomber le levier ; retiens l'effet du ressort. | Laisse tomber la gorge ; retiens l'effet du ressort. |
+| `practice.t24.goal` | Compte les encoches des leviers, sans sauter. | Compte les encoches des gorges, sans sauter. |
+| `showcase.barron_1778.body` | En 1778, le serrurier londonien Robert Barron fit breveter une amélioration majeure de la serrure à leviers. Dans son modèle, le pêne restait bloqu… | En 1778, le serrurier londonien Robert Barron fit breveter une amélioration majeure de la serrure à gorges. Dans son modèle, le pêne restait bloqué… |
+| `showcase.chubb_detector.body` | En 1818, Jeremiah Chubb fit breveter une serrure à leviers munie d'un détecteur capable de signaler une tentative de manipulation. Il n'était pas l… | En 1818, Jeremiah Chubb fit breveter une serrure à gorges munie d'un détecteur capable de signaler une tentative de manipulation. Il n'était pas le… |
+| `tool.pk_lever.name` | Manivelle à leviers | Manivelle à gorges |
+| `notebook.extra.wafer_rattle` | Les plaquettes ont tinté comme des couverts dans un tiroir. La porte s'est finalement ouverte. | Les paillettes ont tinté comme des couverts dans un tiroir. La porte s'est finalement ouverte. |
+| `notebook.extra.wafer_overset` | Un choc sourd des plaquettes, sans cascade ensuite. J'ai noté la différence. | Un choc sourd des paillettes, sans cascade ensuite. J'ai noté la différence. |
+| `notebook.extra.lever_false` | Les leviers ont donné deux réponses incertaines. L'histoire n'était pas finie. | Les gorges ont donné deux réponses incertaines. L'histoire n'était pas finie. |
+| `job.t43_12_02_detective_cabinet.situation` | Un coffre de démonstration à serrure à leviers avec détecteur doit aller à la salle commune. Rygiel commande l'ouverture de l'accessoire vide avant… | Un coffre de démonstration à serrure à gorges avec détecteur doit aller à la salle commune. Rygiel commande l'ouverture de l'accessoire vide avant … |
+
+### Zostawione
+
+- `ach.achievement.ex_partner.name` „Ce ne sont pas vos clés”: to słowa ślusarza do klienta, a ślusarz mówi do klientów per „vous” — rejestr poprawny.
+- `notebook.rule.3`, `notebook.rule.5` i pozostałe porady: bezosobowe albo w pierwszej osobie, bez zmian.
+- Historyczne pliki wejściowe `contrib/gpt/T12`, `contrib/gpt/T31` (stare wersje tych tekstów) nie są źródłem gry — bez zmian.
+- Apostrofy typograficzne w 18 starszych kluczach i pozostałe punkty listy powyżej: nadal otwarte.
+
+Sprawdzenie: `python3 tools/i18n_lint.py` (0 błędów), `python3 data/tools/loc_qa.py` (OK), `python3 data/tools/validate.py` (OK), `python3 -m pytest tools/tests` (64 testy). Żaden ze zmienionych tekstów nie występuje w `game/**/*.gd`, `*.json`, `*.tscn`.
