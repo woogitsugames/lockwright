@@ -1,6 +1,6 @@
 # Google Play — Data safety, uprawnienia, pobierane treści (szkic odpowiedzi)
 
-Stan na 2026-11-09 · inżynier wydania (D-106). Opisuje **build release z `game-android` → `release-aab`**, nie plany.
+Stan na 2026-11-09 · inżynier wydania (D-106); uzupełnione 2026-11-12 o paczki treści (D-112). Opisuje **build release z `game-android` → `release-aab`**, nie plany.
 Źródła prawdy: `store/privacy.md` (polityka PL/EN i stan faktyczny), `docs/TECH.md` §9 (paczki głosów),
 `tools/release/check_aab.py` (co CI sprawdza w każdym AAB). To nie jest porada prawna — punkty oznaczone
 **[PRAWNIK]** rozstrzyga właściciel z osobą znającą RODO.
@@ -13,16 +13,24 @@ Stan na 2026-11-09 · inżynier wydania (D-106). Opisuje **build release z `game
 | Ustawienia | `user://settings.cfg` (`settings.gd`) | **Nie.** |
 | Log błędów (5 plików × 512 KB, rotacja) | `user://logs/` (`error_log.gd`) | **Nie.** „Zgłoś problem” w Ustawieniach tylko kopiuje log do schowka; wysyła go sam gracz, jeśli chce (to nie jest zbieranie przez aplikację). |
 | Paczki głosów (PL/DE/FR/ES, 18–20 MB każda) | `user://voice_packs/` | Pobierane **do** urządzenia (niżej). |
-| Analityka, reklamy, raporty awarii, konta, identyfikatory | — | **Brak.** Żadnego SDK firm trzecich (grep: brak Firebase/Sentry/Crashlytics/analytics w `game/`; jedyny kod sieciowy to `voice_packs.gd`). Brak `AD_ID` w manifeście. |
+| Paczki treści — rozdziały do pobrania (D-112) | `user://content_packs/` | Pobierane **do** urządzenia, wyłącznie po stuknięciu „Pobierz” przy rozdziale (niżej). **Dziś `game/data/content_packs.json` nie zawiera żadnej paczki** — build niczego takiego nie pobiera. |
+| Analityka, reklamy, raporty awarii, konta, identyfikatory | — | **Brak.** Żadnego SDK firm trzecich (grep: brak Firebase/Sentry/Crashlytics/analytics w `game/`; jedyny kod sieciowy to `pack_store.gd`, wspólny dla `voice_packs.gd` i `content_packs.gd`). Brak `AD_ID` w manifeście. |
 
-**Ruch sieciowy (jedyny):** `game/scripts/autoload/voice_packs.gd` → `HTTPClient` z `TLSOptions.client()` (HTTPS z weryfikacją
-certyfikatu), `GET` na adresy z `game/data/voice_packs.json`:
+**Ruch sieciowy (jedyny):** `game/scripts/autoload/pack_store.gd` (pobieranie wspólne dla `voice_packs.gd` i `content_packs.gd`)
+→ `HTTPClient` z `TLSOptions.client()` (HTTPS z weryfikacją certyfikatu), `GET` na adresy z `game/data/voice_packs.json`:
 `https://github.com/woogitsugames/lockwright/releases/download/voice-packs-<wersja>/voice_<język>.pck`
 (GitHub przekierowuje na swój CDN w domenie `*.githubusercontent.com`). Nagłówki: `Accept: application/octet-stream`
 i przy wznowieniu `Range: bytes=N-`. Bez ciasteczek, identyfikatorów, danych gry. Kiedy: przy pierwszym uruchomieniu
 dla języka gry ≠ EN (w tle, bez pytania, z notką o rozmiarze — D-100), ponowne próby przy braku sieci, oraz ręcznie
 w Ustawieniach → Głosy postaci (tam też wyłączenie automatu i usuwanie). Plik jest sprawdzany SHA-256 z manifestu
 w podpisanej aplikacji.
+
+**Paczki treści (D-112) — ten sam kod, te same nagłówki, ten sam hosting:** `GET` na adresy z `game/data/content_packs.json`:
+`https://github.com/woogitsugames/lockwright/releases/download/content-<id>-v<wersja>/content_<id>.pck`.
+Kiedy: **nigdy samoczynnie** — tylko gdy gracz stuknie „Pobierz” przy rozdziale na liście zleceń albo w Ustawieniach →
+Rozdziały do pobrania (przy przycisku widać rozmiar i radę „najlepiej przez Wi-Fi”; gra nie sprawdza rodzaju sieci, bo
+nie ma `ACCESS_NETWORK_STATE`). Nic nie jest wysyłane: żadnych danych o postępie, identyfikatorów ani ciasteczek.
+Usuwanie: Ustawienia → Rozdziały do pobrania → Usuń (zapis gry zostaje). SHA-256 i rozmiar jak przy głosach.
 
 ## 2. Uprawnienia w manifeście release (pełna lista)
 
@@ -32,7 +40,7 @@ Po D-106 CI przerywa build, jeśli lista różni się od tej tabeli (`tools/rele
 | Uprawnienie | Poziom | Po co | Uwagi |
 |---|---|---|---|
 | `android.permission.VIBRATE` | normal (bez okna) | haptyka zamka — rdzeń gry, nigdy jedyny kanał (XAG 103/110) | z wtyczki `lockwright-haptics` i `permissions/vibrate=true` |
-| `android.permission.INTERNET` | normal (bez okna) | wyłącznie pobieranie paczek głosów (D-62/D-63/D-100) | **Do D-106 brakowało go w AAB release** (preset release był pisany ręcznie bez `permissions/internet`), więc w wersji ze sklepu głosy PL/DE/FR/ES by się nie pobrały. Naprawione: preset release = kopia `preset.0`. |
+| `android.permission.INTERNET` | normal (bez okna) | wyłącznie pobieranie paczek głosów (D-62/D-63/D-100) i paczek treści (D-112) | **Do D-106 brakowało go w AAB release** (preset release był pisany ręcznie bez `permissions/internet`), więc w wersji ze sklepu głosy PL/DE/FR/ES by się nie pobrały. Naprawione: preset release = kopia `preset.0`. |
 
 Nie ma: `ACCESS_NETWORK_STATE`, `AD_ID`, lokalizacji, kamery, mikrofonu, kontaktów, pamięci zewnętrznej,
 `POST_NOTIFICATIONS`, `FOREGROUND_SERVICE`. W manifeście są komponenty AndroidX bez uprawnień użytkownika:
@@ -55,9 +63,28 @@ i do tej tabeli **przed** wydaniem.
     skryptu ani sceny z paczki głównej) i tylko po zgodności SHA-256 z manifestem zaszytym w podpisanej aplikacji.
   - Uwaga: `global_script_class_cache.cfg` i `project.binary` to pliki konfiguracyjne Godota (lista klas / ustawienia),
     nie kod wykonywalny; przy `replace_files=false` nie nadpisują wersji z aplikacji.
-- **Wniosek:** zgodne z polityką (dodatkowe treści nie-wykonywalne, HTTPS, gra działa bez nich — napisy).
-  Play Asset Delivery odrzucone w D-63 (brak wsparcia w Godot 4.7); limit modułu bazowego 200 MB (D-99) jest pilnowany
-  budżetem `aab_release_mb` 185/198 MB, obecnie **124,9 MB**.
+- **Paczki treści (D-112) to wyłącznie dane rozdziału** (zlecenia JSON, teksty, klatki i plansze scenek przyjazdu):
+  - preset „Content <id>” jest generowany na czas budowania przez `tools/build_content_packs.py`: `export_filter="resources"`
+    bez wybranych plików, `include_filter="packs/<id>/*"`, `exclude_filter` na `*.gd`, shadery, `*.gdextension`, sceny i zasoby
+    `.tscn/.scn/.tres/.res`; źródła paczki (`game/packs/<id>/`) mogą zawierać tylko `.json`, `.csv`, `.webp/.png/.jpg`, `.ogg`
+    i ich `.import` — skrypt albo scena w folderze paczki przerywa build (`check_source`);
+  - `check_data_only()` czyta katalog gotowego pck i odrzuca każdy plik poza `res://packs/<id>/…` z rozszerzeniem danych,
+    zaimportowaną postacią **plików tej paczki** w `res://.godot/imported/` (nazwa i MD5 ścieżki muszą się zgadzać)
+    i czterema plikami porządkowymi Godota; build w `content-packs.yml` pada przed publikacją w GitHub Release;
+  - gra montuje paczkę z `replace_files=false` (paczka może tylko dodać `res://packs/<id>/…`), po zgodności SHA-256
+    z manifestem w podpisanej aplikacji, i dodatkowo sprawdza, że `pack.json` w środku ma ten sam identyfikator, wersję
+    i zlecenia co manifest; wpis manifestu z błędem (zły hash, adres bez HTTPS, brak pól) jest pomijany w całości.
+- **Wniosek:** zgodne z polityką (dodatkowe treści nie-wykonywalne, HTTPS, gra działa bez nich — napisy; bez paczki treści
+  rozdział jest po prostu „do pobrania”).
+  Play Asset Delivery odrzucone w D-63 i ponownie w D-112 (brak wsparcia w Godot 4.7: wymagałoby własnej wtyczki
+  Android/Gradle z Play Core i nie działa poza Google Play — APK testowe, iOS); limit modułu bazowego 200 MB (D-99)
+  jest pilnowany budżetem `aab_release_mb` 185/198 MB, obecnie **124,9 MB**.
+- **Przed wydaniem pierwszej paczki treści (dla właściciela):** tekst publiczny polityki (`store/privacy.md` §2 → `store/legal/`
+  → `site/`) mówi dziś „jedyne połączenie z siecią to pobranie paczki głosów”. Dopóki manifest paczek treści jest pusty, to
+  prawda. Razem z pierwszą paczką trzeba dopisać rozdziały, np. PL: „…to pobranie paczki głosów albo dodatkowego rozdziału,
+  gdy sam o to poprosisz”, EN: “…downloading voice packs, or an extra chapter when you ask for it”, i w akapicie
+  „Pobieranie głosów” zdanie, że rozdziały pobierają się tylko po stuknięciu „Pobierz” i usuwa się je w Ustawieniach.
+  Odpowiedzi Data safety (§4) się nie zmieniają: nadal nic nie opuszcza urządzenia.
 
 ## 4. Data safety — odpowiedzi do formularza (Play Console → Zasady → Zawartość aplikacji → Bezpieczeństwo danych)
 
@@ -65,7 +92,7 @@ i do tej tabeli **przed** wydaniem.
 |---|---|---|
 | Does your app collect or share any of the required user data types? | **No** | Aplikacja nie przesyła poza urządzenie żadnych danych użytkownika; zapis, ustawienia i logi są lokalne (§1). |
 | Is all of the user data collected by your app encrypted in transit? | (nie pojawia się przy „No”) — gdyby pytało: **Yes** | Jedyny ruch to HTTPS z weryfikacją certyfikatu. |
-| Do you provide a way for users to request that their data is deleted? | (nie pojawia się przy „No”) — gdyby pytało: dane są tylko na urządzeniu; usuwa je odinstalowanie lub „Wyczyść dane”; paczki głosów — Ustawienia → Głosy postaci → Usuń | Brak kont, więc URL usuwania danych nie jest wymagany. |
+| Do you provide a way for users to request that their data is deleted? | (nie pojawia się przy „No”) — gdyby pytało: dane są tylko na urządzeniu; usuwa je odinstalowanie lub „Wyczyść dane”; paczki głosów — Ustawienia → Głosy postaci → Usuń; pobrane rozdziały — Ustawienia → Rozdziały do pobrania → Usuń | Brak kont, więc URL usuwania danych nie jest wymagany. |
 | Independent security review | **No** | |
 | Privacy policy URL | **wymagane** — `https://<domena>/en/privacy.html` (PL: `/privacy.html`), strona gotowa w `site/` | Publikacja strony czeka na właściciela (D-51). |
 
