@@ -771,6 +771,8 @@ class Module final : public FamilyModule {
       if (opt.record_inputs) rep.inputs.push_back(in);
       for (const auto& e : out.events) {
         perceived.push_back(e);
+        // Report only (D-116): combo.slip and disc.overturn are oversets with a sub-id.
+        if (e.kind == EventKind::overset) ++rep.oversets;
         if (e.sub != 0) continue;
         if (e.kind == EventKind::drop) ++rep.drops;
         if (e.kind == EventKind::false_set) ++rep.false_sets;
@@ -914,6 +916,7 @@ class Module final : public FamilyModule {
       if (opt.record_inputs) rep.inputs.push_back(in);
       for (const auto& e : out.events) {
         perceived.push_back(e);
+        if (e.kind == EventKind::overset) ++rep.oversets;  // report only (D-116), any sub-id
         if (e.sub == 0 && e.kind == EventKind::drop) ++rep.drops;
         if (e.sub == 0 && e.kind == EventKind::false_set) ++rep.false_sets;
       }

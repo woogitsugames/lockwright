@@ -36,10 +36,12 @@ struct Stats {
   std::vector<std::string> failure_samples;
   // clumsy bot
   std::int64_t c_ok = 0, c_runs = 0, c_drops = 0, c_oversets = 0, c_breaks = 0;
+  std::int64_t c_false_sets = 0, c_timeouts = 0, c_overstress = 0, c_trips = 0;
   std::vector<std::int64_t> c_steps;
   std::vector<std::string> c_fail_samples;
   // feeling bot (stage 3, report only)
   std::int64_t f_ok = 0, f_runs = 0, f_drops = 0, f_breaks = 0;
+  std::int64_t f_oversets = 0, f_false_sets = 0, f_timeouts = 0, f_trips = 0;
   std::vector<std::int64_t> f_steps;
   std::vector<std::string> f_fail_samples;
 };
@@ -128,7 +130,11 @@ int main(int argc, char** argv) {
       return 2;
     }
     csv << "family,tier,seeds,failures,steps_p50,steps_p90,steps_max,drops_mean_x100,drops_p90,drops_max,"
-           "oversets,false_sets,retries,peak_stress_q16,clumsy_ok_x1000,feel_runs,feel_ok_x1000,feel_p50,feel_p90\n";
+           "oversets,false_sets,retries,peak_stress_q16,clumsy_ok_x1000,feel_runs,feel_ok_x1000,feel_p50,feel_p90,"
+           // D-116: appended columns (totals over all runs of that bot; *_p50/_p90 in steps).
+           "clumsy_p50,clumsy_p90,clumsy_drops,clumsy_oversets,clumsy_false_sets,clumsy_breaks,clumsy_timeouts,"
+           "clumsy_overstress,clumsy_trips,feel_drops,feel_oversets,feel_false_sets,feel_breaks,feel_timeouts,feel_trips,"
+           "time_limit_steps,clumsy_ok,feel_ok\n";
   }
 
   const auto t0 = std::chrono::steady_clock::now();
@@ -203,6 +209,12 @@ int main(int argc, char** argv) {
           st.c_drops += c.drops;
           st.c_oversets += c.oversets;
           st.c_breaks += c.reason.find("failure break") != std::string::npos ? 1 : 0;
+          st.c_false_sets += c.false_sets;
+          // Why the clumsy bot failed (D-116): out of time, opened with the tool at >= 0.8 S_max
+          // (counted as a failure by run_plan_bot), or a blocked detector.
+          st.c_timeouts += c.reason.find("budget exhausted") != std::string::npos ? 1 : 0;
+          st.c_overstress += c.reason.find("stress reached") != std::string::npos ? 1 : 0;
+          st.c_trips += c.reason.find("failure detector_trip") != std::string::npos ? 1 : 0;
           if (c.ok) st.c_steps.push_back(c.steps);
           if (!c.ok && st.c_fail_samples.size() < 3) st.c_fail_samples.push_back("seed " + std::to_string(seed) + ": " + c.reason);
         }
@@ -214,6 +226,10 @@ int main(int argc, char** argv) {
           st.f_ok += f.ok ? 1 : 0;
           st.f_drops += f.drops;
           st.f_breaks += f.reason.find("failure break") != std::string::npos ? 1 : 0;
+          st.f_oversets += f.oversets;
+          st.f_false_sets += f.false_sets;
+          st.f_timeouts += f.reason.find("budget exhausted") != std::string::npos ? 1 : 0;
+          st.f_trips += f.reason.find("failure detector_trip") != std::string::npos ? 1 : 0;
           if (f.ok) st.f_steps.push_back(f.steps);
           if (!f.ok && st.f_fail_samples.size() < 3) st.f_fail_samples.push_back("seed " + std::to_string(seed) + ": " + f.reason);
         }
@@ -247,15 +263,20 @@ int main(int argc, char** argv) {
         const std::int64_t ok_x1000 = (st.c_ok * 1000) / runs;
         const std::int64_t d_x100 = (st.c_drops * 100) / runs;
         const std::int64_t o_x100 = (st.c_oversets * 100) / runs;
-        char line[256];
+        const std::int64_t fs_x100 = (st.c_false_sets * 100) / runs;
+        char line[384];
         std::snprintf(line, sizeof line,
-                      "%s t%d: success %lld.%01lld%% (%lld/%lld), drops/lock %lld.%02lld, oversets/lock %lld.%02lld, breaks %lld, t_p50 %s",
+                      "%s t%d: success %lld.%01lld%% (%lld/%lld), drops/lock %lld.%02lld, oversets/lock %lld.%02lld, breaks %lld, t_p50 %s, "
+                      "t_p90 %s, false_sets/lock %lld.%02lld, timeouts %lld, overstress %lld, trips %lld",
                       std::string(fam->id()).c_str(), tier, static_cast<long long>(ok_x1000 / 10),
                       static_cast<long long>(ok_x1000 % 10), static_cast<long long>(st.c_ok),
                       static_cast<long long>(st.c_runs), static_cast<long long>(d_x100 / 100),
                       static_cast<long long>(d_x100 % 100), static_cast<long long>(o_x100 / 100),
                       static_cast<long long>(o_x100 % 100), static_cast<long long>(st.c_breaks),
-                      ms(pct(st.c_steps, 50)).c_str());
+                      ms(pct(st.c_steps, 50)).c_str(), ms(pct(st.c_steps, 90)).c_str(),
+                      static_cast<long long>(fs_x100 / 100), static_cast<long long>(fs_x100 % 100),
+                      static_cast<long long>(st.c_timeouts), static_cast<long long>(st.c_overstress),
+                      static_cast<long long>(st.c_trips));
         clumsy.push_back(line);
       }
       for (const auto& f : st.c_fail_samples) clumsy.push_back("    e.g. " + f);
@@ -265,15 +286,21 @@ int main(int argc, char** argv) {
         const std::int64_t runs = st.f_runs ? st.f_runs : 1;
         const std::int64_t d_x100 = (st.f_drops * 100) / runs;
         const std::int64_t limit = static_cast<std::int64_t>(d.time_limit_s) * SIM_HZ;
-        char line[256];
+        const std::int64_t o_x100 = (st.f_oversets * 100) / runs;
+        const std::int64_t fs_x100 = (st.f_false_sets * 100) / runs;
+        char line[384];
         std::snprintf(line, sizeof line,
-                      "%s t%d: %lld runs, success %lld.%01lld%% (%lld ok), t_p50 %s, t_p90 %s (limit %s), drops/lock %lld.%02lld, breaks %lld",
+                      "%s t%d: %lld runs, success %lld.%01lld%% (%lld ok), t_p50 %s, t_p90 %s (limit %s), drops/lock %lld.%02lld, breaks %lld, "
+                      "oversets/lock %lld.%02lld, false_sets/lock %lld.%02lld, timeouts %lld, trips %lld",
                       std::string(fam->id()).c_str(), tier, static_cast<long long>(st.f_runs),
                       static_cast<long long>(f_ok_x1000 / 10), static_cast<long long>(f_ok_x1000 % 10),
                       static_cast<long long>(st.f_ok),
                       ms(pct(st.f_steps, 50)).c_str(), ms(pct(st.f_steps, 90)).c_str(), ms(limit).c_str(),
                       static_cast<long long>(d_x100 / 100), static_cast<long long>(d_x100 % 100),
-                      static_cast<long long>(st.f_breaks));
+                      static_cast<long long>(st.f_breaks), static_cast<long long>(o_x100 / 100),
+                      static_cast<long long>(o_x100 % 100), static_cast<long long>(fs_x100 / 100),
+                      static_cast<long long>(fs_x100 % 100), static_cast<long long>(st.f_timeouts),
+                      static_cast<long long>(st.f_trips));
         feeling.push_back(line);
         for (const auto& f : st.f_fail_samples) feeling.push_back("    e.g. " + f);
       }
@@ -282,7 +309,11 @@ int main(int argc, char** argv) {
             << pct(st.steps, 90) << "," << smax << "," << drops_x100 << "," << pct(st.drops, 90) << "," << drop_max
             << "," << st.oversets << "," << st.false_sets << "," << st.retries << "," << st.peak_stress << ","
             << c_ok_x1000 << "," << st.f_runs << "," << f_ok_x1000 << "," << pct(st.f_steps, 50) << ","
-            << pct(st.f_steps, 90) << "\n";
+            << pct(st.f_steps, 90) << "," << pct(st.c_steps, 50) << "," << pct(st.c_steps, 90) << "," << st.c_drops
+            << "," << st.c_oversets << "," << st.c_false_sets << "," << st.c_breaks << "," << st.c_timeouts << ","
+            << st.c_overstress << "," << st.c_trips << "," << st.f_drops << "," << st.f_oversets << ","
+            << st.f_false_sets << "," << st.f_breaks << "," << st.f_timeouts << "," << st.f_trips << ","
+            << static_cast<std::int64_t>(d.time_limit_s) * SIM_HZ << "," << st.c_ok << "," << st.f_ok << "\n";
       }
       total_failures += st.failures;
     }
