@@ -149,7 +149,7 @@ Przycisk na przyjeździe (`job.verify`) i tytuł weryfikacji (`verify.title`) m�
 
 Klucze: `premises` → `job.verify`, `verify.title` (bez zmian); pozostałe → `job.verify.<kind>`, `verify.title.<kind>`. Ten sam przyrostek (`JobRun.verify_key`) wybiera wariant notatki świadka (`verify.paper.witness.body.<kind>`) i ogólnych wymian przy kartach (`verify.ask/reply.<karta>.<n>.<kind>`: świadek, akt, faktura i list instytucji), gdy taki klucz istnieje. Odmowy mają rodzaj tego, o co klient prosi. Brak pola = `premises`.
 
-Klasyfikacja 113 zleceń (32 × premises, 36 × object, 45 × shared; rozdział 13 dodany w D-111, rozdział 14 w D-119, rozdział 15 w D-123):
+Klasyfikacja 123 zleceń (36 × premises, 38 × object, 49 × shared; rozdział 13 dodany w D-111, rozdział 14 w D-119, rozdział 15 w D-123, rozdział 16 w D-126):
 
 | Zlecenie | `verify_kind` | Dlaczego |
 |---|---|---|
@@ -184,6 +184,14 @@ Klasyfikacja 113 zleceń (32 × premises, 36 × object, 45 × shared; rozdział 
 | `job.ch15_07_skeleton_cupboard` | shared | szkolna szafa ze szkieletem z pracowni biologicznej; pismo dyrekcji i dokument Oli |
 | `job.ch15_09_key_board` | shared | gablota z kluczami w portierni akademika; zgoda administracji i dokument portiera |
 | `job.ch15_10_exam_lock` | object | zamek zrobiony przez Zuzannę na praktykach; legitymacja i pan Władysław |
+| `job.ch16_01_bookmark_key` | object | kasetka pani Ireny z kartami czytelników biblioteczki spod lipy; dokument i pani Halina |
+| `job.ch16_02_auction_safe` | object | sejf kupiony przez Gosię na licytacji, sprzedany zamknięty; faktura z licytacji i zdjęcie |
+| `job.ch16_03_spare_in_the_lake` | premises | mieszkanie pani Teresy; dowód i pan Kazimierz z piętra wyżej |
+| `job.ch16_05_wrong_padlock` | shared | schowek Igi w przechowalni akademika z cudzą kłódką; wykaz ze zgodą administracji i legitymacja |
+| `job.ch16_06_salt_before_frost` | shared | osiedlowa szopa z solą i łopatami; zgoda administracji i faktura na kłódkę |
+| `job.ch16_07_hour_back` | shared | drzwiczki mechanizmu zegara nad bramą kamienicy; uchwała wspólnoty i zgoda zarządu |
+| `job.ch16_09_almost_right_key` | shared | szafka z dokumentami statku; zgoda armatora przy kapitanie i Aino |
+| `job.ch16_10_thirteenth_envelope` | premises | warsztat ślusarza: uczennica sprawdza mistrza; pani Halina i list polecony na adres warsztatu |
 | `job.charleroi_letters` | object | żelazna kasetka; znalazczyni przekazuje ją rodzinie |
 | `job.christmas_eve_heat` | shared | szafka kontrolna we wspólnej kotłowni; zgoda zarządczyni |
 | `job.community_notice_case` | shared | wspólna gablota ogłoszeń; zarządczyni i uchwała |
@@ -216,6 +224,8 @@ Klasyfikacja 113 zleceń (32 × premises, 36 × object, 45 × shared; rozdział 
 | `job.refuse_ch14_08_early_present` | object | odmowa: szafka taty z prezentem, którego Hania jeszcze nie dostała |
 | `job.refuse_ch15_04_closed_attic` | shared | odmowa: strych zamknięty przez zarządczynię do czasu usunięcia gniazda szerszeni |
 | `job.refuse_ch15_08_no_answer` | premises | odmowa: mieszkanie sąsiadki, która nie otwiera („martwię się, więc otwierać”) |
+| `job.refuse_ch16_04_borrowed_barrow` | premises | odmowa: cudza altana, w której stoi własna, pożyczona taczka („wezmę tylko swoje”) |
+| `job.refuse_ch16_08_roommates_room` | premises | odmowa: zamknięty pokój współlokatora we wspólnie wynajmowanym mieszkaniu |
 | `job.refuse_ex_partner` | premises | odmowa: mieszkanie byłej partnerki |
 | `job.refuse_rush_bribe` | premises | odmowa: mieszkanie siostry, dopłata za brak pytań |
 | `job.refuse_sisters_flat` | premises | odmowa: mieszkanie siostry bez jej zgody |

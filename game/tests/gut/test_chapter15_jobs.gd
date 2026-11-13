@@ -5,7 +5,7 @@ extends GutTest
 ## what the people say (D-104), arrival places borrowed from existing scenes (D-91/D-110/D-117, no new renders)
 ## and the subtitle-only path while the lines are not recorded (`voice_pending`, contrib/voice/PENDING.md).
 ## The chapter is self-contained: every file and text key of it carries "ch15" (it can move to a content pack).
-## As the newest chapter this test also keeps the totals of the whole career.
+## The totals of the whole career are kept by the newest chapter's test (test_chapter16_jobs.gd).
 
 const LANGS := ["en", "pl", "de", "fr", "es"]
 const CHAPTER := 15
@@ -77,13 +77,14 @@ func _texts(key: String) -> Array:
 	return out
 
 
-func test_career_has_113_jobs_in_15_chapters() -> void:
+func test_career_has_chapter_15() -> void:
 	var per_chapter := {}
 	for j: Dictionary in _all_jobs():
 		var ch := int(j.get("chapter", 0))
 		per_chapter[ch] = int(per_chapter.get(ch, 0)) + 1
-	assert_eq(_all_jobs().size(), 113, "83 jobs of chapters 1-12 + 10 each of chapters 13, 14 and 15")
-	assert_eq(per_chapter.size(), 15, "chapters 1-15")
+	# the totals of the whole career are checked by the newest chapter's test (test_chapter16_jobs.gd)
+	assert_gte(_all_jobs().size(), 113, "83 jobs of chapters 1-12 + 10 each of chapters 13, 14 and 15")
+	assert_gte(per_chapter.size(), 15, "chapters 1-15")
 	assert_eq(int(per_chapter.get(CHAPTER, 0)), 10)
 	for ch in range(1, 16):
 		assert_gt(int(per_chapter.get(ch, 0)), 0, "chapter %d has jobs" % ch)
@@ -277,9 +278,6 @@ func test_voice_pending_jobs_play_subtitle_only() -> void:
 		else:
 			assert_eq(clips, keys.size(), "%s: every line has its EN clip, or the job says voice_pending" % jid)
 	assert_eq(pending, 10, "the whole chapter waits for its recordings")
-	for j: Dictionary in _all_jobs():
-		if bool(j.get("voice_pending", false)):
-			assert_has([13, 14, 15], int(j.get("chapter", 0)), "%s: only chapters 13-15 wait for recordings" % j["id"])
 	# arrival: every line is on the screen at once, nothing waits for a clip
 	var job: Dictionary = _chapter_jobs()[0]
 	JobArrival.reduce_motion_override = 1
@@ -346,4 +344,4 @@ func test_refusal_and_payment_paths() -> void:
 	JobRun.complete()
 	assert_eq(int(Save.get_value("coins", 0)), 300, "240 coins + 25% tip for a clean opening")
 	assert_true((Save.get_value("jobs_completed", []) as Array).has("job.ch15_10_exam_lock"))
-	assert_eq(Furnishings.reached_chapter(), 15, "the career reaches chapter 15")
+	assert_gte(Furnishings.reached_chapter(), 15, "the career reaches chapter 15")
