@@ -5,7 +5,7 @@
   "district": "Śródmieście",
   "family": "pin_tumbler",
   "tier": 5,
-  "verification": "Uchwała wspólnoty o przechowywaniu zapasowych kluczy w świetlicy (3) i potwierdzenie zarządu, że szafka po portierni jest pod opieką wspólnoty (2). Zarządczyni obecna. Próg 3. Wycena zaakceptowana.",
+  "verification": "Uchwała wspólnoty o przechowywaniu zapasowych kluczy w świetlicy (3) i pisemna zgoda zarządu wspólnoty na otwarcie szafki po portierni (2). Zarządczyni obecna. Próg 3. Wycena zaakceptowana.",
   "verify_kind": "shared",
   "reward_coins": 220,
   "tone": "spokojny, ciepły, wakacyjny",
@@ -42,7 +42,7 @@
     },
     "manager": {
       "issuer": "community",
-      "purpose": "custody"
+      "purpose": "access"
     }
   }
 }

@@ -73,13 +73,14 @@ func _texts(key: String) -> Array:
 	return out
 
 
-func test_career_has_93_jobs_in_13_chapters() -> void:
+func test_career_has_chapter_13() -> void:
 	var per_chapter := {}
 	for j: Dictionary in _all_jobs():
 		var ch := int(j.get("chapter", 0))
 		per_chapter[ch] = int(per_chapter.get(ch, 0)) + 1
-	assert_eq(_all_jobs().size(), 93, "83 jobs of chapters 1-12 + 10 of chapter 13")
-	assert_eq(per_chapter.size(), 13, "chapters 1-13")
+	# the totals of the whole career are checked by the newest chapter's test (test_chapter14_jobs.gd)
+	assert_gte(_all_jobs().size(), 93, "83 jobs of chapters 1-12 + 10 of chapter 13")
+	assert_gte(per_chapter.size(), 13, "chapters 1-13")
 	assert_eq(int(per_chapter.get(CHAPTER, 0)), 10)
 	for ch in range(1, 14):
 		assert_gt(int(per_chapter.get(ch, 0)), 0, "chapter %d has jobs" % ch)
@@ -240,7 +241,7 @@ func test_arrival_places_reuse_existing_scenes() -> void:
 ## clip in any language, and the arrival and the "day after" run on subtitles alone.
 func test_voice_pending_jobs_play_subtitle_only() -> void:
 	var pending := 0
-	for j: Dictionary in _all_jobs():
+	for j: Dictionary in _chapter_jobs():
 		var jid := String(j["id"])
 		var keys := []
 		for i in (j.get("lines", []) as Array).size():
@@ -256,7 +257,7 @@ func test_voice_pending_jobs_play_subtitle_only() -> void:
 			assert_eq(clips, 0, "%s is recorded: remove voice_pending (and its rows in contrib/voice/PENDING.md)" % jid)
 		else:
 			assert_eq(clips, keys.size(), "%s: every line has its EN clip, or the job says voice_pending" % jid)
-	assert_eq(pending, 10, "only chapter 13 waits for its recordings")
+	assert_eq(pending, 10, "the whole chapter waits for its recordings")
 	# arrival: every line is on the screen at once, nothing waits for a clip
 	var job: Dictionary = _chapter_jobs()[0]
 	JobArrival.reduce_motion_override = 1

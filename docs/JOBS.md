@@ -149,7 +149,7 @@ Przycisk na przyjeździe (`job.verify`) i tytuł weryfikacji (`verify.title`) m�
 
 Klucze: `premises` → `job.verify`, `verify.title` (bez zmian); pozostałe → `job.verify.<kind>`, `verify.title.<kind>`. Ten sam przyrostek (`JobRun.verify_key`) wybiera wariant notatki świadka (`verify.paper.witness.body.<kind>`) i ogólnych wymian przy kartach (`verify.ask/reply.<karta>.<n>.<kind>`: świadek, akt, faktura i list instytucji), gdy taki klucz istnieje. Odmowy mają rodzaj tego, o co klient prosi. Brak pola = `premises`.
 
-Klasyfikacja 93 zleceń (27 × premises, 29 × object, 37 × shared; rozdział 13 dodany w D-111):
+Klasyfikacja 103 zleceń (30 × premises, 32 × object, 41 × shared; rozdział 13 dodany w D-111, rozdział 14 w D-119):
 
 | Zlecenie | `verify_kind` | Dlaczego |
 |---|---|---|
@@ -168,6 +168,14 @@ Klasyfikacja 93 zleceń (27 × premises, 29 × object, 37 × shared; rozdział 1
 | `job.ch13_07_museum_night_case` | shared | gablota muzeum przed Nocą Muzeów; pismo dyrekcji |
 | `job.ch13_09_pizzeria_terrace` | object | mały sejf Renaty w jej pizzerii; najem i faktura |
 | `job.ch13_10_courtyard_door` | shared | tylne drzwi świetlicy na podwórko; jednogłośna uchwała i zarząd |
+| `job.ch14_01_summer_storage` | premises | schowek Zuzanny w przechowalni akademika; wykaz portiera i legitymacja |
+| `job.ch14_02_ship_time` | shared | skrzynka statku z księgą gości; potwierdzenie kapitana i Aino (naprawa chodu zegara) |
+| `job.ch14_03_books_under_linden` | object | biblioteczka męża pani Ireny; dokument i pani Zosia |
+| `job.ch14_05_cat_passport` | object | kuferek Marty z targu, odnawiany u Gosi; paragon i Gosia |
+| `job.ch14_06_suitcase_flew_on` | premises | mieszkanie Kasi i Bartka; dowód, adres w aplikacji i sąsiad |
+| `job.ch14_07_prize_cupboard` | shared | szkolna szafka z nagrodami; pismo dyrekcji i potwierdzenie sekretariatu |
+| `job.ch14_09_summer_cinema` | shared | kabina projektora przy sali prób, własność uczelni; zgoda kierownika sali i pismo uczelni |
+| `job.ch14_10_holiday_keys` | shared | szafka na zapasowe klucze w świetlicy; uchwała wspólnoty i zarząd |
 | `job.charleroi_letters` | object | żelazna kasetka; znalazczyni przekazuje ją rodzinie |
 | `job.christmas_eve_heat` | shared | szafka kontrolna we wspólnej kotłowni; zgoda zarządczyni |
 | `job.community_notice_case` | shared | wspólna gablota ogłoszeń; zarządczyni i uchwała |
@@ -196,6 +204,8 @@ Klasyfikacja 93 zleceń (27 × premises, 29 × object, 37 × shared; rozdział 1
 | `job.refuse_aunt_alive` | premises | odmowa: mieszkanie ciotki, która żyje |
 | `job.refuse_ch13_04_winter_bike` | object | odmowa: cudzy rower „niczyj”, przypięty od jesieni przy stojaku |
 | `job.refuse_ch13_08_found_cashbox` | object | odmowa: znaleziona w piwnicy cudza kasetka („znalezione nie kradzione”) |
+| `job.refuse_ch14_04_paid_week` | premises | odmowa: opłacone z góry wynajęte mieszkanie bez gospodarza („zapłaciłam, więc moje”) |
+| `job.refuse_ch14_08_early_present` | object | odmowa: szafka taty z prezentem, którego Hania jeszcze nie dostała |
 | `job.refuse_ex_partner` | premises | odmowa: mieszkanie byłej partnerki |
 | `job.refuse_rush_bribe` | premises | odmowa: mieszkanie siostry, dopłata za brak pytań |
 | `job.refuse_sisters_flat` | premises | odmowa: mieszkanie siostry bez jej zgody |
