@@ -1,0 +1,47 @@
+{
+  "id": "job.ch16_10_thirteenth_envelope",
+  "chapter": 16,
+  "order": 10,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 6,
+  "verification": "Odwrócona weryfikacja: uczennica sprawdza mistrza, bo zasada z pierwszej strony zeszytu dotyczy także własnych drzwi. Pani Halina jako świadek, że to warsztat ślusarza (2), i list polecony adresowany na pogotowie zamkowe pod tym adresem (2). Stary zamek mistrza Henryka nie przyjmuje już zużytego klucza. Próg 3. Wycena zaakceptowana (z kieszeni do szuflady).",
+  "verify_kind": "premises",
+  "reward_coins": 260,
+  "tone": "ciepły, z autoironią; Zuzanna poważna i rozbawiona naraz, pani Halina gospodarna",
+  "i18n": {
+    "title": "job.ch16_10_thirteenth_envelope.title",
+    "client": "job.ch16_10_thirteenth_envelope.client",
+    "situation": "job.ch16_10_thirteenth_envelope.situation"
+  },
+  "lines": [
+    "zuzanna",
+    "halina",
+    "locksmith",
+    "zuzanna"
+  ],
+  "after": [
+    "halina",
+    "locksmith"
+  ],
+  "cards": [
+    "witness",
+    "letter"
+  ],
+  "threshold": 3,
+  "place": "workshop",
+  "time": "evening",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-126: chapter 16 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "witness": {
+      "ask": "job.ch16_10_thirteenth_envelope.witness.ask",
+      "reply": "job.ch16_10_thirteenth_envelope.witness.reply"
+    },
+    "letter": {
+      "ask": "job.ch16_10_thirteenth_envelope.letter.ask",
+      "reply": "job.ch16_10_thirteenth_envelope.letter.reply"
+    }
+  }
+}

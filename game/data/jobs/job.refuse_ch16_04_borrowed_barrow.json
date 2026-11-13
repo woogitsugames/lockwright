@@ -1,0 +1,45 @@
+{
+  "id": "job.refuse_ch16_04_borrowed_barrow",
+  "chapter": 16,
+  "order": 4,
+  "district": "Ogródki działkowe",
+  "family": "egyptian",
+  "tier": 2,
+  "verification": "Pan Zbyszek chce otwarcia zamkniętej altany pana Waldka, żeby zabrać własną taczkę, pożyczoną w maju; nie chce dzwonić do właściciela altany. Ma tylko legitymację działkowca. Odmowa: rzecz jest jego, ale altana i zamek są cudze; pożyczone wraca przez właściciela zamka. Droga: wspólna taczka ogrodu na dziś i wiadomość do pana Waldka. Brak oskarżeń.",
+  "verify_kind": "premises",
+  "reward_coins": 0,
+  "tone": "niecierpliwy, swojski; odmowa spokojna, bez oskarżeń",
+  "i18n": {
+    "title": "job.refuse_ch16_04_borrowed_barrow.title",
+    "client": "job.refuse_ch16_04_borrowed_barrow.client",
+    "situation": "job.refuse_ch16_04_borrowed_barrow.situation"
+  },
+  "lines": [
+    "zbyszek",
+    "locksmith",
+    "zbyszek",
+    "locksmith"
+  ],
+  "after": [
+    "waldek",
+    "zbyszek"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2,
+  "place": "yard",
+  "time": "day",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-126: chapter 16 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "id": {
+      "doc": "allotment",
+      "exchange": [
+        1
+      ],
+      "holder": "Zbigniew"
+    }
+  }
+}

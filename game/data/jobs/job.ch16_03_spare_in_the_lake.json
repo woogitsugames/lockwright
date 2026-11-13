@@ -1,0 +1,50 @@
+{
+  "id": "job.ch16_03_spare_in_the_lake",
+  "chapter": 16,
+  "order": 3,
+  "district": "Osiedle Słoneczne",
+  "family": "dimple",
+  "tier": 3,
+  "verification": "Dowód pani Teresy (2) i pan Kazimierz, sąsiad z piętra wyżej, jako świadek (2). Drzwi zatrzaśnięte; zapasowy klucz przepadł w jeziorze razem z kluczami świadka (rozdz. 15). Otwarcie bez wiercenia. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "premises",
+  "reward_coins": 185,
+  "tone": "rzeczowy, z ciepłą ironią; Kazimierz skruszony, ale gadatliwy",
+  "i18n": {
+    "title": "job.ch16_03_spare_in_the_lake.title",
+    "client": "job.ch16_03_spare_in_the_lake.client",
+    "situation": "job.ch16_03_spare_in_the_lake.situation"
+  },
+  "lines": [
+    "teresa",
+    "kazimierz",
+    "locksmith",
+    "teresa"
+  ],
+  "after": [
+    "kazimierz"
+  ],
+  "cards": [
+    "id",
+    "witness"
+  ],
+  "threshold": 3,
+  "place": "apartment",
+  "time": "day",
+  "arrival_from": "job.wrong_floor",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-126: chapter 16 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": "Teresa"
+    },
+    "witness": {
+      "ask": "job.ch16_03_spare_in_the_lake.witness.ask",
+      "reply": "job.ch16_03_spare_in_the_lake.witness.reply"
+    }
+  }
+}

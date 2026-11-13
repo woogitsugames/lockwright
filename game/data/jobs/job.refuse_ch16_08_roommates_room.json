@@ -1,0 +1,45 @@
+{
+  "id": "job.refuse_ch16_08_roommates_room",
+  "chapter": 16,
+  "order": 8,
+  "district": "Śródmieście",
+  "family": "warded",
+  "tier": 2,
+  "verification": "Iga, od tygodnia współlokatorka Leona, chce otwarcia jego zamkniętego pokoju, żeby zresetować router; nie chce do niego dzwonić. Ma tylko legitymację. Odmowa: wspólne mieszkanie nie obejmuje pokoju, który współlokator zamknął; droga to wspólny telefon do Leona. Brak oskarżeń.",
+  "verify_kind": "premises",
+  "reward_coins": 0,
+  "tone": "zestresowany terminem, szczery; odmowa spokojna, bez oskarżeń",
+  "i18n": {
+    "title": "job.refuse_ch16_08_roommates_room.title",
+    "client": "job.refuse_ch16_08_roommates_room.client",
+    "situation": "job.refuse_ch16_08_roommates_room.situation"
+  },
+  "lines": [
+    "iga",
+    "locksmith",
+    "iga",
+    "locksmith"
+  ],
+  "after": [
+    "leon",
+    "iga"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2,
+  "place": "apartment",
+  "time": "rainy",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-126: chapter 16 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "id": {
+      "doc": "student",
+      "exchange": [
+        1
+      ],
+      "holder": "Iga"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "job.ch16_02_auction_safe",
+  "chapter": 16,
+  "order": 2,
+  "district": "Port",
+  "family": "dial_safe",
+  "tier": 3,
+  "verification": "Faktura z licytacji na Gosię i jej pracownię (3) oraz zdjęcie z licytacji (1). Sejf kupiony zamknięty, szyfru nie znał już nikt; otwarcie w pracowni właścicielki, przy niej. Zuzanna jedzie jako uczennica i pierwsza pyta, czyje to. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "object",
+  "reward_coins": 180,
+  "tone": "ciekawski, rzeczowy; Zuzanna szybka, z zeszytem w ręku",
+  "i18n": {
+    "title": "job.ch16_02_auction_safe.title",
+    "client": "job.ch16_02_auction_safe.client",
+    "situation": "job.ch16_02_auction_safe.situation"
+  },
+  "lines": [
+    "gosia",
+    "zuzanna",
+    "locksmith",
+    "gosia"
+  ],
+  "after": [
+    "gosia"
+  ],
+  "cards": [
+    "invoice",
+    "photo"
+  ],
+  "threshold": 3,
+  "place": "workshop",
+  "time": "day",
+  "arrival_from": "job.gosia_workbench_drawer",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-126: chapter 16 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "invoice": {
+      "ask": "job.ch16_02_auction_safe.invoice.ask",
+      "reply": "job.ch16_02_auction_safe.invoice.reply"
+    },
+    "photo": {
+      "image": "res://assets/ui/gpt/cast/episodic/portrait_gosia.webp",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "zoom": 1.0,
+      "ask": "job.ch16_02_auction_safe.photo.ask",
+      "reply": "job.ch16_02_auction_safe.photo.reply"
+    }
+  }
+}

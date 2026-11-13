@@ -1,0 +1,52 @@
+{
+  "id": "job.ch16_05_wrong_padlock",
+  "chapter": 16,
+  "order": 5,
+  "district": "Kampus",
+  "family": "combo",
+  "tier": 4,
+  "verification": "Wykaz przechowalni akademika: schowek 8 na Igę, ze zgodą administracji na zdjęcie cudzej kłódki (3), i legitymacja Igi (2). Portier obecny. Kłódka należy do innego studenta, który pomylił schowki: otwarcie bez niszczenia, kłódka czeka w portierni na właściciela. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "shared",
+  "reward_coins": 195,
+  "tone": "w biegu, z humorem; pan Edek porządny i spokojny",
+  "i18n": {
+    "title": "job.ch16_05_wrong_padlock.title",
+    "client": "job.ch16_05_wrong_padlock.client",
+    "situation": "job.ch16_05_wrong_padlock.situation"
+  },
+  "lines": [
+    "iga",
+    "edek",
+    "locksmith",
+    "iga"
+  ],
+  "after": [
+    "edek"
+  ],
+  "cards": [
+    "manager",
+    "id"
+  ],
+  "threshold": 3,
+  "place": "locker",
+  "time": "day",
+  "arrival_from": "job.student_dorm",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-126: chapter 16 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "manager": {
+      "issuer": "dorm",
+      "purpose": "storage",
+      "ask": "job.ch16_05_wrong_padlock.manager.ask",
+      "reply": "job.ch16_05_wrong_padlock.manager.reply"
+    },
+    "id": {
+      "doc": "student",
+      "exchange": [
+        1
+      ],
+      "holder": "Iga"
+    }
+  }
+}

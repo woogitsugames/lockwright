@@ -1,0 +1,50 @@
+{
+  "id": "job.ch16_01_bookmark_key",
+  "chapter": 16,
+  "order": 1,
+  "district": "Śródmieście",
+  "family": "axial_slider",
+  "tier": 3,
+  "verification": "Dokument pani Ireny (2) i pani Halina, czytelniczka biblioteczki spod lipy, jako świadek (2). Kasetka z kartami czytelników jest pani Ireny; otwarcie przy niej, bez czytania kart. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "object",
+  "reward_coins": 170,
+  "tone": "pogodny, lekko zawstydzony; bibliotekarka złapana na własnym bałaganie",
+  "i18n": {
+    "title": "job.ch16_01_bookmark_key.title",
+    "client": "job.ch16_01_bookmark_key.client",
+    "situation": "job.ch16_01_bookmark_key.situation"
+  },
+  "lines": [
+    "irena",
+    "halina",
+    "locksmith",
+    "irena"
+  ],
+  "after": [
+    "zosia"
+  ],
+  "cards": [
+    "id",
+    "witness"
+  ],
+  "threshold": 3,
+  "place": "apartment",
+  "time": "evening",
+  "arrival_from": "job.widow_bureau",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-126: chapter 16 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": "Irena"
+    },
+    "witness": {
+      "ask": "job.ch16_01_bookmark_key.witness.ask",
+      "reply": "job.ch16_01_bookmark_key.witness.reply"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "job.ch16_09_almost_right_key",
+  "chapter": 16,
+  "order": 9,
+  "district": "Port",
+  "family": "lever_detector",
+  "tier": 5,
+  "verification": "Pisemna zgoda armatora na otwarcie szafki z dokumentami statku w obecności kapitana (3) i Aino, oficer mechanik, jako świadek (2). Kapitan obecny. Zamek zablokował się po niedokładnie dorobionym kluczu i nie przyjmuje oryginału. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "shared",
+  "reward_coins": 230,
+  "tone": "oszczędny, z godnością; Aino sucha i rozbawiona",
+  "i18n": {
+    "title": "job.ch16_09_almost_right_key.title",
+    "client": "job.ch16_09_almost_right_key.client",
+    "situation": "job.ch16_09_almost_right_key.situation"
+  },
+  "lines": [
+    "captain",
+    "aino",
+    "locksmith",
+    "captain"
+  ],
+  "after": [
+    "zuzanna"
+  ],
+  "cards": [
+    "institution",
+    "witness"
+  ],
+  "threshold": 3,
+  "place": "yard",
+  "time": "evening",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-126: chapter 16 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "institution": {
+      "ask": "job.ch16_09_almost_right_key.institution.ask",
+      "reply": "job.ch16_09_almost_right_key.institution.reply"
+    },
+    "witness": {
+      "ask": "job.ch16_09_almost_right_key.witness.ask",
+      "reply": "job.ch16_09_almost_right_key.witness.reply"
+    }
+  }
+}

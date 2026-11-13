@@ -1,0 +1,49 @@
+{
+  "id": "job.ch16_06_salt_before_frost",
+  "chapter": 16,
+  "order": 6,
+  "district": "Osiedle Słoneczne",
+  "family": "disc_detainer",
+  "tier": 3,
+  "verification": "Pisemna zgoda administracji osiedla na otwarcie szopy z solą, piaskiem i łopatami (3) i faktura na kłódkę wystawiona na administrację (2). Administrator obecny. Jedyny klucz zabrała z parapetu sroka (nagranie z kamery). Kłódka zostaje cała. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "shared",
+  "reward_coins": 205,
+  "tone": "suchy, urzędowy humor pana Romana; pan Stefan gawędzi",
+  "i18n": {
+    "title": "job.ch16_06_salt_before_frost.title",
+    "client": "job.ch16_06_salt_before_frost.client",
+    "situation": "job.ch16_06_salt_before_frost.situation"
+  },
+  "lines": [
+    "roman",
+    "stefan",
+    "locksmith",
+    "roman"
+  ],
+  "after": [
+    "stefan"
+  ],
+  "cards": [
+    "manager",
+    "invoice"
+  ],
+  "threshold": 3,
+  "place": "yard",
+  "time": "evening",
+  "arrival_from": "job.bike_interview",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-126: chapter 16 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "manager": {
+      "issuer": "estate",
+      "purpose": "access",
+      "ask": "job.ch16_06_salt_before_frost.manager.ask",
+      "reply": "job.ch16_06_salt_before_frost.manager.reply"
+    },
+    "invoice": {
+      "ask": "job.ch16_06_salt_before_frost.invoice.ask",
+      "reply": "job.ch16_06_salt_before_frost.invoice.reply"
+    }
+  }
+}

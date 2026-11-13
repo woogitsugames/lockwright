@@ -1,0 +1,46 @@
+{
+  "id": "job.ch16_07_hour_back",
+  "chapter": 16,
+  "order": 7,
+  "district": "Śródmieście",
+  "family": "lever",
+  "tier": 5,
+  "verification": "Uchwała wspólnoty o zegarze nad bramą (3) i pisemna zgoda zarządu na otwarcie drzwiczek mechanizmu (3). Zarządczyni obecna. Klucz nosił przy sobie mistrz Henryk, poprzedni ślusarz (wpisy w zeszycie). Ślusarz otwiera drzwiczki; zegar przestawia osoba wskazana przez zarząd. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "shared",
+  "reward_coins": 215,
+  "tone": "rzeczowy, z nutą wspomnienia o Henryku; Zuzanna czyta z zeszytu",
+  "i18n": {
+    "title": "job.ch16_07_hour_back.title",
+    "client": "job.ch16_07_hour_back.client",
+    "situation": "job.ch16_07_hour_back.situation"
+  },
+  "lines": [
+    "elzbieta",
+    "zuzanna",
+    "locksmith",
+    "elzbieta"
+  ],
+  "after": [
+    "zosia"
+  ],
+  "cards": [
+    "resolution",
+    "manager"
+  ],
+  "threshold": 3,
+  "place": "gate",
+  "time": "evening",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-126: chapter 16 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "resolution": {
+      "ask": "job.ch16_07_hour_back.resolution.ask",
+      "reply": "job.ch16_07_hour_back.resolution.reply"
+    },
+    "manager": {
+      "issuer": "community",
+      "purpose": "access"
+    }
+  }
+}
