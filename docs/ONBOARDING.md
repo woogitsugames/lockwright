@@ -217,6 +217,20 @@ Zamiast pierwotnego S3 płytkowej („falownik kontra haczyk”, D-22). W warszt
 
 Przy zakupie w warsztacie: mikroskop stoi na blacie obok imadła. Pierwsze użycie pokazuje zadziory na grocie własnego wytrycha (zużycie, `TOOLS.md` §2) i talię szpulki w powiększeniu. Wziernik pojawia się z pierwszą rodziną głębokiego kanału (dźwigniowa) i ma lekcję wtrąconą w samouczku tej rodziny. Oba działają jak lupa (§6.2): zamrażają wytrych, napięcie działa dalej, w ciemności są niedostępne. Role, ceny i co dokładnie pokazują: `TOOLS.md` §3.4a, `HUD.md` §4.1 (D-35).
 
+### 9.4 Przestroga o narzędziu: pierwszy zamek z fałszywą bramką (D-120)
+
+Bot „ciężkiej ręki” (D-118) pokazał, że narzędzia zaczynają pękać nagle, na pierwszym tierze rodziny z fałszywą bramką: `pin_tumbler` t4, `lever` t4, `lever_detector` t5, `dimple` t2, `axial_slider` t2, a w `warded` na t2 (pierwsza sonda, która może pęknąć). Tabela: `game/data/tool_caution.json`.
+
+- **Kiedy:** pierwszy zamek rodziny na tym tierze lub wyższym, w zleceniach i w trybie ciągłym (nie w samouczku ani w ćwiczeniach). Jednorazowo: zapis `lessons/<rodzina>/caution` po otwarciu zamka; złamane narzędzie i porażka nie kasują przestrogi, pojawi się przy następnej próbie.
+- **Co widać (kreda trenera, ten sam `TutorialCoach` i ta sama linia co lekcje, także przy wyłączonej „Warstwie kredy”):**
+  1. od początku do pierwszego ustawienia (i nie krócej niż 3 s): „Trudniejszy zamek. Tu siła łamie narzędzie.” (`lock.caution_intro`; `warded`: `lock.caution_warded`);
+  2. gdy element siedzi w fałszywym ustawieniu (i 2 s dłużej): „Głuchy podwójny klik? Pułapka. Odpuść, nie dociskaj.” (`lock.caution_false_set`);
+  3. gdy narzędzie się wygina (`stress` ≥ 0,6 S_max, próg zdarzenia `stress` w lockcore; linia zostaje 2 s po odpuszczeniu): „Narzędzie się wygina. Odpuść.” (`lock.caution_stress`) i **kredowa strzałka „w dół” przy napinaczu** (znak z kroku przepchnięcia, H3 z §2.1). Przy napięciu automatycznym sama linia, bez strzałki (napinacz trzyma gra).
+- **Kanały stanu `stress` bez zmian** (`DESIGN.md` §1): ugięcie wytrycha i napinacza, 1→3 poprzeczne rysy, drżenie od 90 % (znika przy ograniczeniu ruchu), jęk metalu, narastające drżenie haptyczne, napis dźwięku `[jęk metalu]`, komunikat czytnika ekranu. Przestroga dokłada do obrazu trzeci, nieruchomy znak (strzałkę) i zdanie; nie ma paska ani koloru.
+- **Lekcja rodziny ma pierwszeństwo.** `dimple` i `axial_slider` trafiają na ten tier już w pierwszym zleceniu, czyli w lekcji z §8/T42. Lekcja zostawia swoje linie (jej pułapka uczy fałszywego ustawienia: „Odpuść lekko…”), a przestroga dokłada tylko linię i strzałkę wyginania.
+- **Bez drabiny H1–H4:** gracz zna rodzinę; trener istnieje wtedy wyłącznie dla przestrogi i nie pokazuje linii pierwszych zleceń.
+- Ćwiczenia, które utrwalają to samo: t15 (przepchnięcie), t20, t21, t23 (fałszywe ustawienie, kontrrotacja, ząbki), t27–t28 (detektor).
+
 ## 10. Wzór samouczka dla każdej rodziny
 
 Każdy dodatek dostarcza S1–S3 według tego szablonu (uzupełnia `PROGRESSION.md` §1 i §6):
