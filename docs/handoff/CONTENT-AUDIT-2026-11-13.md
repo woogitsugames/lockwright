@@ -79,7 +79,7 @@ Legenda jak w audycie D-104: **OK** = bez sprzeczności. **Poprawione** = zmiana
 | `ch15_01_wrong_envelope` | Poprawione | Patrz wyżej, pkt 2. EN klient: *back from the lakes* → *straight from the lake*. |
 | `ch15_02_apple_press` | OK | Klucz „na szyi” pana Waldka od rozdz. 13. |
 | `ch15_03_charleroi_box` | OK | Kasetka z piwnicy (rozdz. 5) i szkatułka ze strychu rozróżnione w kwestii pani Martine; drzwi nr 14 (D-117); pani Krystyna to córka Józefa, Ola wnuczka. |
-| `refuse_ch15_04_closed_attic` | OK | Leon wynajmuje u pani Elżbiety (rozdz. 8), więc strych zamyka ona. Odmowa jest rzeczowa: zamknięcia dla bezpieczeństwa nie zdejmuje ślusarz, a ślusarz od razu proponuje przyspieszenie terminu. Uwaga niżej o strażakach. |
+| `refuse_ch15_04_closed_attic` | OK | Leon wynajmuje u pani Elżbiety (rozdz. 8), więc strych zamyka ona. Odmowa jest rzeczowa: zamknięcia dla bezpieczeństwa nie zdejmuje ślusarz, a ślusarz od razu proponuje przyspieszenie terminu. Po audycie (D-127): firma od gniazd zamiast strażaków, 10 komórek. |
 | `ch15_05_first_vacation` | OK | „Nowy sejf” obok małego sejfu z rozdz. 9 się nie gryzie. |
 | `ch15_06_bike_by_train` | Poprawione | PL: „wróciła z urlopu na rowerze. Rower wrócił pociągiem” czytało się jak sprzeczność. → „wróciła z rowerowego urlopu. Rower przyjechał pociągiem…”, klient „prosto z rowerowego urlopu”; FR i ES tak samo. |
 | `ch15_07_skeleton_cupboard` | Poprawione | EN *caretaker* (brytyjskie) → *janitor* (3 komórki). Dokument na „Ola” → `holder: Aleksandra`. |
@@ -105,6 +105,9 @@ Legenda jak w audycie D-104: **OK** = bez sprzeczności. **Poprawione** = zmiana
   (w innych przypadkach zarządca zamawia firmę), a „termin na czwartek” brzmi bardziej jak firma. Gracz to przyjmie,
   a scena mówi rzecz ważniejszą (zamknięcie zdejmuje ten, kto je założył). Zmiana na „firmę od gniazd” to 10 komórek
   i inne słowa w DE (szerszenie pod ochroną, przenosiny gniazda). Do decyzji przy nagraniach.
+  **Rozstrzygnięte 2026-11-13 (właściciel, D-127): firma od gniazd.** `line.4` i `after.1` w pięciu językach
+  (PL „firma od gniazd”, EN *pest control*, DE *Fachfirma*, gniazdo *umgesiedelt*, FR *le désinsectiseur*,
+  ES *la empresa de control de plagas*); wejścia TTS i `PENDING.md` zsynchronizowane.
 - **Marek** (`refuse_ch13_04`) to brat ze „Sejfu wujka Bogdana” (rozdz. 3): ten sam pośpiech, ale tu „upatrzył sobie”
   cudzy rower. Scena go nie oskarża, a w „dniu po” nie wraca. Zostaje.
 - **Motyw „zapomniany kod / szyfr”** wraca trzy razy w trzech rozdziałach (Renata, pani Jadwiga, pan Stefan), a
