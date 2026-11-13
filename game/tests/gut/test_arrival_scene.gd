@@ -329,3 +329,47 @@ func test_placeholder_places_get_their_own_scene() -> void:
 	var photo: Dictionary = JobRun.job_by_id("job.t43_11_02_bicycle_stand")["card_detail"]["photo"]
 	assert_false(String(photo["image"]).contains("bike_interview"), "Borys's photo is his own bike")
 	assert_true(ResourceLoader.exists(String(photo["image"])))
+
+
+## D-117: the last evening flats that showed the borrowed G07 photo (its door 7 is Mrs Halina's number, D-104 audit)
+## have their own door. Only the hold frame was rendered (`frames: 0`): the arrival shows it at once, without a climb,
+## and the verification and the day after show the same landing.
+const D117_STILLS := ["job.krystyna_wooden_album", "job.refuse_wrong_letterbox", "job.refuse_t43_09_empty_flat"]
+
+
+func test_last_door_7_flats_have_their_own_still() -> void:
+	for jid: String in D117_STILLS:
+		var job := JobRun.job_by_id(jid)
+		assert_false(job.is_empty(), jid)
+		assert_eq(String(job.get("arrival_from", "")), "", "%s: its own door, not another job's" % jid)
+		var r := ArrivalScene.resolve(job)
+		assert_false(r.is_empty(), "%s has a scene" % jid)
+		assert_eq(String(r.get("time", "")), "evening", jid)
+		assert_eq(String(r.get("hold", "x")), "", "%s plate only" % jid)
+		assert_eq((r.get("frame_paths", ["x"]) as Array).size(), 0, "%s: still only, no climb" % jid)
+		var plate := "%s/evening/plate.webp" % jid.trim_prefix("job.")
+		var still := ArrivalScene.place_still(job)
+		assert_eq(still.size(), 2, jid)
+		if still.size() == 2:
+			assert_true(String(still[0]).ends_with(plate), "%s: verification shows its own door" % jid)
+			assert_true(ResourceLoader.exists(String(still[0])), jid)
+		assert_eq(ArrivalScene.place_still(job, "day", false).size(), 2, "%s: the day after shows the same landing" % jid)
+		var scene := await _open(job, false)
+		var arr: ArrivalScene = scene.scene
+		assert_not_null(arr, "%s plays its scene" % jid)
+		if arr == null:
+			continue
+		assert_eq(arr.phase, &"hold", "%s: no climb frames, straight to the hold" % jid)
+		assert_true(scene.get_node("Frame").visible, "%s: the dialogue is not waiting for a climb" % jid)
+		assert_true(String(arr.get_node("Canvas/Plate").texture.resource_path).ends_with(plate))
+		assert_false(scene.place_plate.visible, "%s: no door plate 7 beside the title" % jid)
+
+
+## D-117: Aino's chest at the neighbours' fair is outdoors (like her first job in the port), so the screen no
+## longer shows the "Pralnia" / "Laundry" room sign of the borrowed changing-room photo.
+func test_fair_stall_has_no_laundry_sign() -> void:
+	var job := JobRun.job_by_id("job.t43_11_04_sailors_stall")
+	assert_eq(String(job.get("place")), "yard")
+	for lang: String in ["pl", "en"]:
+		assert_eq(JobArrival.plate_path(job, lang), "", "no room sign (%s)" % lang)
+	assert_false(JobArrival.g07_image(job).contains("changing_room"), "not the changing-room photo")

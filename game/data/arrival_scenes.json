@@ -1,6 +1,6 @@
 {
   "schema": "lockwright.arrival_scenes/1",
-  "note": "D-58 arrival scenes per job. Assets: game/assets/arrival/<job>/<time>/{seq/f_NN.webp, plate_<figure>.webp, figure_<figure>.webp} or, for a plate-only hold (`hold: \"\"`, no full-body cut-out of the client), plate.webp; made by art/tools/arrival_export.py (which also rewrites `anchors`). Scene dressing per job: art/blender/arrival_jobs.json. Jobs without an entry (or without its files) keep the plain arrival screen (G07 still).",
+  "note": "D-58 arrival scenes per job. Assets: game/assets/arrival/<job>/<time>/{seq/f_NN.webp, plate_<figure>.webp, figure_<figure>.webp} or, for a plate-only hold (`hold: \"\"`, no full-body cut-out of the client), plate.webp; made by art/tools/arrival_export.py (which also rewrites `anchors`). Scene dressing per job: art/blender/arrival_jobs.json. Jobs without an entry (or without its files) keep the plain arrival screen (G07 still). A scene with `frames: 0` has no climb (only the hold was rendered, D-117): the arrival shows the hold at once.",
   "scenes": {
     "job.wrong_floor": {
       "dir": "res://assets/arrival/wrong_floor",
@@ -649,6 +649,60 @@
       },
       "anchors": {
         "day": {}
+      }
+    },
+    "job.krystyna_wooden_album": {
+      "dir": "res://assets/arrival/krystyna_wooden_album",
+      "fps": 12,
+      "frames": 0,
+      "times": [
+        "evening"
+      ],
+      "default_time": "evening",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "steps": {},
+      "anchors": {
+        "evening": {}
+      }
+    },
+    "job.refuse_wrong_letterbox": {
+      "dir": "res://assets/arrival/refuse_wrong_letterbox",
+      "fps": 12,
+      "frames": 0,
+      "times": [
+        "evening"
+      ],
+      "default_time": "evening",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "steps": {},
+      "anchors": {
+        "evening": {}
+      }
+    },
+    "job.refuse_t43_09_empty_flat": {
+      "dir": "res://assets/arrival/refuse_t43_09_empty_flat",
+      "fps": 12,
+      "frames": 0,
+      "times": [
+        "evening"
+      ],
+      "default_time": "evening",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "steps": {},
+      "anchors": {
+        "evening": {}
       }
     }
   }
