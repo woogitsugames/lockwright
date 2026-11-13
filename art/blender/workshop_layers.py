@@ -3,11 +3,19 @@
 
     blender -b -P art/blender/workshop.py -- --layers art/renders/workshop_layers/raw --res 810x1440 --samples 32
     python3 art/blender/workshop_layers.py                       # raw/ -> masters + game WebPs + compare sheet
+    python3 art/blender/workshop_layers.py --only id,id          # D-127: just these items; base and the other layers untouched
 
 Every variant is rendered with the same camera, settings and seed as raw/base.png, with exactly one furnishing
 shown. The overlay keeps the variant's pixels where it differs from the base (the object, its shadow and the
 light it adds), with a soft alpha edge; elsewhere it is transparent. The game stacks the base and the owned
 overlays in `z` order (game/data/furnishings.json), all full-frame, so alignment is exact by construction.
+
+D-127: an item of furnishings.json without raw/<id>.png is skipped (the game keeps it out of the shop until its
+layer exists). After the layers are written, the masks of object layers (z >= 20) are compared in pairs: where
+two overlays cover the same pixels, the upper one hides the lower one's object or shadow (each was rendered
+without the other item). Light layers (z 10: shelf_light, case_velvet) lie under the objects on purpose and are
+not compared. A pair above --max-overlap per cent of the smaller mask is printed as OVERLAP (the ten D-71 layers
+reach 19 % for plant / clock, shadows only); --strict turns such a line into exit status 1.
 
 Outputs:
   art/renders/workshop_layers/base.png, furn_<id>.png       masters (RGBA PNG)
@@ -38,6 +46,24 @@ def overlay(base, var, thr, grow, soft):
     return out, (np.asarray(m) > 8).mean()
 
 
+def overlaps(layers, limit, only=()):
+    """Pairs of object overlays (z >= 20) whose masks share more than `limit` % of the smaller mask: [text], D-127.
+    With `only`, pairs of two untouched layers are not reported (they shipped that way)."""
+    masks = [(fid, np.asarray(ov.getchannel("A")) > 128) for z, fid, ov in layers if z >= 20]
+    out = []
+    for i, (a_id, a_m) in enumerate(masks):
+        for b_id, b_m in masks[i + 1:]:
+            if only and a_id not in only and b_id not in only:
+                continue
+            small = min(a_m.sum(), b_m.sum())
+            if small == 0:
+                continue
+            share = (a_m & b_m).sum() * 100.0 / small
+            if share > limit:
+                out.append("%s / %s: %.1f %% of the smaller mask" % (a_id, b_id, share))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--raw", default=os.path.join(ROOT, "art", "renders", "workshop_layers", "raw"))
@@ -47,16 +73,40 @@ def main():
     ap.add_argument("--grow", type=int, default=5, help="mask dilation, px (odd)")
     ap.add_argument("--soft", type=float, default=1.5, help="mask feather, px")
     ap.add_argument("--quality", type=int, default=82, help="WebP quality of the game layers")
+    ap.add_argument("--only", default="", help="comma-separated ids: write only these layers (base.png must be the base they were rendered with)")
+    ap.add_argument("--max-overlap", type=float, default=10.0, help="overlap of two object masks worth a line, %% of the smaller one")
+    ap.add_argument("--strict", action="store_true", help="exit 1 when a pair is above --max-overlap")
     a = ap.parse_args()
+    only = [i for i in a.only.split(",") if i]
     data = json.load(open(os.path.join(ROOT, "game", "data", "furnishings.json"), encoding="utf-8"))
     os.makedirs(a.out, exist_ok=True)
     os.makedirs(a.game, exist_ok=True)
     base = Image.open(os.path.join(a.raw, "base.png")).convert("RGB")
-    base.save(os.path.join(a.out, "base.png"))
-    base.save(os.path.join(a.game, data["base"]), "WEBP", quality=a.quality, method=6)
+    if not only:
+        base.save(os.path.join(a.out, "base.png"))
+        base.save(os.path.join(a.game, data["base"]), "WEBP", quality=a.quality, method=6)
+    unknown = [i for i in only if i not in [f["id"] for f in data["furnishings"]]]
+    if unknown:
+        raise SystemExit("not in furnishings.json: %s" % ", ".join(unknown))
     layers = []
     for f in data["furnishings"]:
-        var = Image.open(os.path.join(a.raw, f["id"] + ".png")).convert("RGB")
+        raw = os.path.join(a.raw, f["id"] + ".png")
+        master = os.path.join(a.out, "furn_%s.png" % f["id"])
+        if only and f["id"] not in only:
+            if os.path.exists(master):   # kept as it is; still on the compare sheet and in the overlap check
+                ov = Image.open(master).convert("RGBA")
+                if ov.size != base.size:
+                    ov = ov.resize(base.size, Image.LANCZOS)
+                layers.append((f.get("z", 20), f["id"], ov))
+            continue
+        if not os.path.exists(raw):
+            if only:
+                raise SystemExit("missing %s" % raw)
+            print("%-14s skipped: no %s (item stays out of the shop, D-127)" % (f["id"], raw))
+            continue
+        var = Image.open(raw).convert("RGB")
+        if var.size != base.size:
+            raise SystemExit("%s is %dx%d, base is %dx%d: render it with the settings of the base" % ((raw,) + var.size + base.size))
         ov, cover = overlay(base, var, a.thr, a.grow, a.soft)
         ov.save(os.path.join(a.out, "furn_%s.png" % f["id"]))
         ov.save(os.path.join(a.game, f["layer"]), "WEBP", quality=a.quality, alpha_quality=90, method=6)
@@ -75,7 +125,12 @@ def main():
     sheet.paste(masks.convert("RGB"), (2 * w, 0))
     sheet.thumbnail((1800, 1800))
     sheet.save(os.path.join(a.out, "compare.jpg"), quality=85)
+    bad = overlaps(layers, a.max_overlap, only)
+    for line in bad:
+        print("OVERLAP", line)
     print("base webp %.1f KB, compare.jpg written" % (os.path.getsize(os.path.join(a.game, data["base"])) / 1024))
+    if bad and a.strict:
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":
