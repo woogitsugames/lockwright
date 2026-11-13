@@ -1,6 +1,6 @@
 # Google Play — Data safety, uprawnienia, pobierane treści (szkic odpowiedzi)
 
-Stan na 2026-11-09 · inżynier wydania (D-106); uzupełnione 2026-11-12 o paczki treści (D-112). Opisuje **build release z `game-android` → `release-aab`**, nie plany.
+Stan na 2026-11-09 · inżynier wydania (D-106); uzupełnione 2026-11-12 o paczki treści (D-112) i 2026-11-13 o zmianę tekstu polityki przed pierwszą paczką (D-128). Opisuje **build release z `game-android` → `release-aab`**, nie plany.
 Źródła prawdy: `store/privacy.md` (polityka PL/EN i stan faktyczny), `docs/TECH.md` §9 (paczki głosów),
 `tools/release/check_aab.py` (co CI sprawdza w każdym AAB). To nie jest porada prawna — punkty oznaczone
 **[PRAWNIK]** rozstrzyga właściciel z osobą znającą RODO.
@@ -13,7 +13,7 @@ Stan na 2026-11-09 · inżynier wydania (D-106); uzupełnione 2026-11-12 o paczk
 | Ustawienia | `user://settings.cfg` (`settings.gd`) | **Nie.** |
 | Log błędów (5 plików × 512 KB, rotacja) | `user://logs/` (`error_log.gd`) | **Nie.** „Zgłoś problem” w Ustawieniach tylko kopiuje log do schowka; wysyła go sam gracz, jeśli chce (to nie jest zbieranie przez aplikację). |
 | Paczki głosów (PL/DE/FR/ES, 18–20 MB każda) | `user://voice_packs/` | Pobierane **do** urządzenia (niżej). |
-| Paczki treści — rozdziały do pobrania (D-112) | `user://content_packs/` | Pobierane **do** urządzenia, wyłącznie po stuknięciu „Pobierz” przy rozdziale (niżej). **Dziś `game/data/content_packs.json` nie zawiera żadnej paczki** — build niczego takiego nie pobiera. |
+| Paczki treści — rozdziały do pobrania (D-112) | `user://content_packs/` | Pobierane **do** urządzenia, wyłącznie po stuknięciu „Pobierz” przy rozdziale (niżej). Stan na 2026-11-13: `game/data/content_packs.json` jest jeszcze pusty; rozdziały 13+ przechodzą do paczek (decyzja właściciela z 2026-11-13, D-128), tekst polityki już to opisuje. |
 | Analityka, reklamy, raporty awarii, konta, identyfikatory | — | **Brak.** Żadnego SDK firm trzecich (grep: brak Firebase/Sentry/Crashlytics/analytics w `game/`; jedyny kod sieciowy to `pack_store.gd`, wspólny dla `voice_packs.gd` i `content_packs.gd`). Brak `AD_ID` w manifeście. |
 
 **Ruch sieciowy (jedyny):** `game/scripts/autoload/pack_store.gd` (pobieranie wspólne dla `voice_packs.gd` i `content_packs.gd`)
@@ -79,19 +79,30 @@ i do tej tabeli **przed** wydaniem.
   Play Asset Delivery odrzucone w D-63 i ponownie w D-112 (brak wsparcia w Godot 4.7: wymagałoby własnej wtyczki
   Android/Gradle z Play Core i nie działa poza Google Play — APK testowe, iOS); limit modułu bazowego 200 MB (D-99)
   jest pilnowany budżetem `aab_release_mb` 185/198 MB, obecnie **124,9 MB**.
-- **Przed wydaniem pierwszej paczki treści (dla właściciela):** tekst publiczny polityki (`store/privacy.md` §2 → `store/legal/`
-  → `site/`) mówi dziś „jedyne połączenie z siecią to pobranie paczki głosów”. Dopóki manifest paczek treści jest pusty, to
-  prawda. Razem z pierwszą paczką trzeba dopisać rozdziały, np. PL: „…to pobranie paczki głosów albo dodatkowego rozdziału,
-  gdy sam o to poprosisz”, EN: “…downloading voice packs, or an extra chapter when you ask for it”, i w akapicie
-  „Pobieranie głosów” zdanie, że rozdziały pobierają się tylko po stuknięciu „Pobierz” i usuwa się je w Ustawieniach.
-  Odpowiedzi Data safety (§4) się nie zmieniają: nadal nic nie opuszcza urządzenia.
+- **Tekst publiczny polityki — zrobione 2026-11-13 (D-128), przed pierwszą paczką treści:** `store/privacy.md` §1/§2 →
+  `store/legal/privacy_{pl,en}.md` → `site/public/{,en/}privacy.html` nie mówią już, że jedynym pobraniem są głosy. „W skrócie”:
+  gra korzysta z sieci tylko po to, żeby pobrać własne pliki — paczki głosów i dodatkowe rozdziały, o które gracz sam poprosi.
+  Akapit nazywa się teraz „Pobieranie głosów i rozdziałów (jedyne użycie sieci)” i mówi, że rozdział pobiera się wyłącznie po
+  stuknięciu „Pobierz” (lista zleceń albo Ustawienia), tym samym zwykłym żądaniem HTTPS do tego samego serwera co głosy, bez
+  identyfikatorów, i że usuwa się go w Ustawieniach bez utraty postępów. Poprawione też: „Twoje prawa” (hosting plików gry,
+  nie tylko głosów), strona „Jak gramy uczciwie” (`site/build.py`), opis sklepowy (`store/listing.md`), FAQ testerów.
+  Trzy znaczniki z §5 zostały bez zmian (właściciel je odłożył).
+- **Czy odpowiedzi Data safety (§4) dalej są prawdziwe — sprawdzone w kodzie 2026-11-13: tak.** (1) Jedyny kod sieciowy w
+  `game/scripts` to nadal `pack_store.gd` (grep `HTTPClient`/`HTTPRequest`/`WebSocket`: tylko ten plik); paczki treści
+  dziedziczą po nim bez własnego kodu sieciowego. (2) Żądanie paczki treści to `GET` z nagłówkiem `Accept` i przy wznowieniu
+  `Range` — bez ciała, ciasteczek, identyfikatora, danych o postępie. (3) `ContentPacks.ensure()` wołają tylko przyciski
+  (`jobs_list.gd`, `settings_screen.gd`); nic nie pobiera się samo. (4) Nie ma zapytania o listę paczek: manifest z adresami
+  i SHA-256 jest w aplikacji. (5) Uprawnienia bez zmian (`VIBRATE`, `INTERNET`). Pobranie rozdziału nie jest więc „collected”
+  ani „shared” bardziej niż pobranie głosów; jedyna otwarta kwestia to ta sama co przy głosach — adres IP w logach hostingu
+  (znacznik 3 w §5). Gdyby kiedyś paczki treści trafiły na **inny** host niż głosy albo gra zaczęła pytać serwer o listę
+  paczek, zdanie „ten sam serwer” w polityce trzeba poprawić przed wydaniem.
 
 ## 4. Data safety — odpowiedzi do formularza (Play Console → Zasady → Zawartość aplikacji → Bezpieczeństwo danych)
 
 | Pytanie | Odpowiedź | Uzasadnienie |
 |---|---|---|
 | Does your app collect or share any of the required user data types? | **No** | Aplikacja nie przesyła poza urządzenie żadnych danych użytkownika; zapis, ustawienia i logi są lokalne (§1). |
-| Is all of the user data collected by your app encrypted in transit? | (nie pojawia się przy „No”) — gdyby pytało: **Yes** | Jedyny ruch to HTTPS z weryfikacją certyfikatu. |
+| Is all of the user data collected by your app encrypted in transit? | (nie pojawia się przy „No”) — gdyby pytało: **Yes** | Jedyny ruch (głosy i rozdziały) to HTTPS z weryfikacją certyfikatu. |
 | Do you provide a way for users to request that their data is deleted? | (nie pojawia się przy „No”) — gdyby pytało: dane są tylko na urządzeniu; usuwa je odinstalowanie lub „Wyczyść dane”; paczki głosów — Ustawienia → Głosy postaci → Usuń; pobrane rozdziały — Ustawienia → Rozdziały do pobrania → Usuń | Brak kont, więc URL usuwania danych nie jest wymagany. |
 | Independent security review | **No** | |
 | Privacy policy URL | **wymagane** — `https://<domena>/en/privacy.html` (PL: `/privacy.html`), strona gotowa w `site/` | Publikacja strony czeka na właściciela (D-51). |
@@ -115,7 +126,7 @@ Polityka: `store/privacy.md` §1/§2 → kopie `store/legal/privacy_{pl,en}.md` 
 wersji językowej; trzeci siedzi w deklaracjach sklepowych (`store/privacy.md` §3 „Identifiers” i §4 „Do weryfikacji (D-63)”).
 Proponowane neutralne brzmienia poniżej — **do decyzji właściciela/prawnika**, w plikach znaczniki zostają.
 
-### Znacznik 1 — rola dostawcy hostingu i logi (akapit „Pobieranie głosów”)
+### Znacznik 1 — rola dostawcy hostingu i logi (akapit „Pobieranie głosów i rozdziałów”)
 Obecnie: `[DO WERYFIKACJI PRAWNEJ: rola dostawcy (odrębny administrator czy podmiot przetwarzający), podstawa prawna i cel logów, okres przechowywania, lokalizacje i transfery poza EOG.]`
 
 Propozycja PL:
@@ -133,6 +144,7 @@ Propozycja EN:
 > the content you requested (Art. 6(1)(f) GDPR). Data may be transferred to the USA under [the EU–US Data Privacy
 > Framework / standard contractual clauses]. Log retention is set by the provider; we do not retrieve those logs.
 
+Uwaga (D-128): propozycje pisano przed paczkami treści — przy wstawianiu zamienić „Pliki głosów” / “Voice files” na „Pliki gry (głosy i rozdziały)” / “The game's files (voices and chapters)”.
 Do rozstrzygnięcia: wybór wariantów w nawiasach; czy po przejściu na Cloudflare (D-51) zmienia się rola i lokalizacja.
 
 ### Znacznik 2 — zakres praw wobec logów hostingu (akapit „Twoje prawa”)

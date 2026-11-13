@@ -69,7 +69,7 @@ Co robisz
 Dla każdego
 • Haptyka nigdy nie jest jedynym sygnałem. To, co czujesz, także słyszysz i widzisz, więc da się grać z wyłączoną haptyką, również na iPadzie.
 • Opcjonalne znaki kredą na przekroju pomagają odczytać stan każdego kołka.
-• Bez reklam, bez energii, bez konta. Gra działa offline (opcjonalnie pobierasz głosy w innych językach). Monet nie da się kupić za pieniądze.
+• Bez reklam, bez energii, bez konta. Gra działa offline (opcjonalnie pobierasz głosy w innych językach i dodatkowe rozdziały). Monet nie da się kupić za pieniądze.
 • Nikt cię nie pogania. Timer jest tylko w osobnym wyzwaniu, jeśli go chcesz.
 
 Uczciwie
@@ -137,7 +137,7 @@ What you do
 For everyone
 • Haptics are never the only signal. What you feel, you can also hear and see, so the game plays fine with haptics off, iPad included.
 • Optional chalk marks on the cutaway help you read each pin's state.
-• No ads, no energy, no account. Plays offline (optional voice downloads for other languages). Coins can't be bought with money.
+• No ads, no energy, no account. Plays offline (optional downloads: voices for other languages and extra chapters). Coins can't be bought with money.
 • Nobody's rushing you. There's a timer only in a separate challenge, if you want one.
 
 The honest part
@@ -218,16 +218,16 @@ słów kluczowych w bajtach, więc polskie znaki (ś, ł, ó…) zajmują po 2.
 |---|---|---|---|---|
 | as.pl.name | 30 | 29 | 29 | tak |
 | as.pl.subtitle | 30 | 26 | 26 | tak |
-| as.pl.promo | 170 | 160 | 173 | tak |
+| as.pl.promo | 170 | 160 | 171 | tak |
 | as.pl.keywords | 100 bytes | 92 | 99 | tak |
-| as.pl.description | 4000 | 1814 | 1937 | tak |
+| as.pl.description | 4000 | 1888 | 2014 | tak |
 | as.pl.variant_a | 4000 | 101 | 105 | tak |
 | as.pl.whatsnew | 4000 | 118 | 120 | tak |
 | as.en.name | 30 | 29 | 29 | tak |
 | as.en.subtitle | 30 | 28 | 28 | tak |
 | as.en.promo | 170 | 150 | 150 | tak |
 | as.en.keywords | 100 bytes | 99 | 99 | tak |
-| as.en.description | 4000 | 1861 | 1883 | tak |
+| as.en.description | 4000 | 1929 | 1951 | tak |
 | as.en.variant_a | 4000 | 106 | 106 | tak |
 | as.en.whatsnew | 4000 | 118 | 118 | tak |
 | gp.pl.title | 30 | 29 | 29 | tak |
@@ -236,13 +236,13 @@ słów kluczowych w bajtach, więc polskie znaki (ś, ł, ó…) zajmują po 2.
 | gp.en.short | 80 | 73 | 73 | tak |
 | gp.pl.haptics_line | 4000 | 186 | 199 | tak |
 | gp.en.haptics_line | 4000 | 190 | 192 | tak |
-| gp.pl.description | 4000 | 1858 | 1980 | tak |
-| as.pl.description+A | 4000 | 1917 | 2044 | tak |
-| gp.pl.description+A | 4000 | 1961 | 2087 | tak |
+| gp.pl.description | 4000 | 1932 | 2057 | tak |
+| as.pl.description+A | 4000 | 1991 | 2121 | tak |
+| gp.pl.description+A | 4000 | 2035 | 2164 | tak |
 | gp.pl.whatsnew | 500 | 118 | 120 | tak |
-| gp.en.description | 4000 | 1917 | 1939 | tak |
-| as.en.description+A | 4000 | 1969 | 1991 | tak |
-| gp.en.description+A | 4000 | 2025 | 2047 | tak |
+| gp.en.description | 4000 | 1985 | 2007 | tak |
+| as.en.description+A | 4000 | 2037 | 2059 | tak |
+| gp.en.description+A | 4000 | 2093 | 2115 | tak |
 | gp.en.whatsnew | 500 | 118 | 118 | tak |
 <!-- table:end -->
 

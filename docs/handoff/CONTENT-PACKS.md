@@ -46,8 +46,9 @@ build się zatrzyma z komunikatem — wydanej wersji nie nadpisujemy. Gracze po 
 
 ## O czym pamiętać
 
-- **Polityka prywatności:** przed pierwszą paczką dopisać rozdziały do tekstu publicznego (dziś mówi tylko o głosach) —
-  gotowe brzmienie w `docs/handoff/PLAY-DATA-SAFETY.md` §3. Odpowiedzi Data safety się nie zmieniają.
+- **Polityka prywatności:** tekst publiczny mówi już o rozdziałach do pobrania (zrobione 2026-11-13, D-128; opis w
+  `docs/handoff/PLAY-DATA-SAFETY.md` §3). Odpowiedzi Data safety się nie zmieniają. Polityka zakłada **ten sam host co głosy**
+  i pobranie **tylko po stuknięciu „Pobierz”** — zmiana któregoś z tych dwóch wymaga poprawki tekstu przed wydaniem.
 - **Nowy rodzaj treści wymagający kodu** (np. nowa rodzina zamka): podnieść `GAME_LEVEL` w
   `game/scripts/autoload/content_packs.gd` i `min_game` w paczce. Starsza gra pokaże wtedy „wymaga nowszej wersji gry”.
 - **Hosting:** adres bazowy można zmienić bez kodu (zmienna repo `CONTENT_PACKS_BASE_URL`, np. Cloudflare — D-51).

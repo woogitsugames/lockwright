@@ -1,6 +1,6 @@
 # Lockwright — FAQ dla testerów (test zamknięty) / Tester FAQ (closed test)
 
-Stan: 2026-11-12. Dokument dla 5–8 osób w teście zamkniętym Google Play. Nie jest to tekst marketingowy.
+Stan: 2026-11-13. Dokument dla 5–8 osób w teście zamkniętym Google Play. Nie jest to tekst marketingowy.
 Źródła faktów: `docs/ACCESSIBILITY.md`, `docs/HUD.md`, `docs/handoff/PLAY-DATA-SAFETY.md`, `store/privacy.md`,
 `game/i18n/strings.csv`. Gdy gra się zmieni, poprawić tutaj (nazwy przycisków jak w `strings.csv`).
 
@@ -54,9 +54,12 @@ Auto dobiera profil po pierwszych sekundach gry. Napisz nam, jaki profil wybrał
 - **Wysoki kontrast, Napisy dźwięków, Szersze okna** — w sekcji **Język i dostępność**.
 
 **Co gra wysyła do internetu? Reklamy?**
-Bez reklam, bez konta, bez analityki i śledzenia. Jedyne użycie sieci to pobranie plików gry (głosy, a później
-paczki z nowymi rozdziałami) zwykłym żądaniem HTTPS, bez identyfikatora i bez danych o grze. Serwer z plikami,
-jak każdy serwer, widzi adres IP. Szczegóły: polityka prywatności.
+Bez reklam, bez konta, bez analityki i śledzenia. Gra nic nie wysyła. Z sieci korzysta tylko po to, żeby
+pobrać własne pliki: głosy (w języku gry sama, w tle, przy pierwszym uruchomieniu) i dodatkowe rozdziały (od 13.
+wzwyż; tylko gdy stukniesz **Pobierz** przy rozdziale na liście zleceń albo w **Ustawieniach**, w sekcji
+**Rozdziały do pobrania**; tam też je usuniesz, postępy zostają). Oba pobrania to zwykłe żądanie HTTPS do tego samego
+serwera, bez identyfikatora i bez danych o grze. Serwer z plikami, jak każdy serwer, widzi adres IP. Szczegóły:
+polityka prywatności.
 
 **Jak zgłosić błąd?**
 **Ustawienia → Zgłoś problem** kopiuje log do schowka (nic nie wysyła się samo). Wklej go do wiadomości razem z:
@@ -113,9 +116,11 @@ picks a profile after the first seconds of play. Tell us which profile your phon
 - **High contrast, Sound captions, Wider windows** — under **Language and accessibility**.
 
 **What does the game send online? Ads?**
-No ads, no account, no analytics or tracking. The only network use is downloading game files (voices, later packs
-with new chapters) with a plain HTTPS request, without identifiers or gameplay data. Like any server, the file host
-sees your IP address. Details: privacy policy.
+No ads, no account, no analytics or tracking. The game sends nothing. It goes online only to download its
+own files: voices (for the game language, by itself, in the background on first launch) and extra chapters (13 and
+up; only when you tap **Download** next to a chapter in the job list or under **Settings → Chapters to download**,
+where you can also remove them; your progress stays). Both are plain HTTPS requests to the same server, without
+identifiers or gameplay data. Like any server, the file host sees your IP address. Details: privacy policy.
 
 **How do I report a bug?**
 **Settings → Report a problem** copies the log to the clipboard (nothing is sent automatically). Paste it into your
