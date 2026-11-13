@@ -1,0 +1,3712 @@
+{
+ "de/job.ch16_01_bookmark_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10460842,
+  "speaker": "zosia",
+  "subtitle": "Das Buch hatte ich, seit August. Den Schlüssel habe ich mit zurückgegeben. Als Lesezeichen war er unbequem, aber das sage ich Irena nicht.",
+  "text": "Das Buch hatte ich, seit August. Den Schlüssel habe ich mit zurückgegeben. Als Lesezeichen war er unbequem, aber das sage ich Irena nicht.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_01_bookmark_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16164251,
+  "speaker": "irena",
+  "subtitle": "Der Schlüssel der Kassette diente mir als Lesezeichen. Jemand hat das Buch ausgeliehen. Wer, steht auf einer Karte. Und die Karten liegen in der Kassette.",
+  "text": "Der Schlüssel der Kassette diente mir als Lesezeichen. Jemand hat das Buch ausgeliehen. Wer, steht auf einer Karte. Und die Karten liegen in der Kassette.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_01_bookmark_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14419311,
+  "speaker": "halina",
+  "subtitle": "Die Kassette gehört Irena, mein Junge. Sie brachte sie im Juni unter die Linde, mit den Büchern ihres Mannes. Ich habe selbst eine Karte darin, Nummer drei.",
+  "text": "Die Kassette gehört Irena, mein Junge. Sie brachte sie im Juni unter die Linde, mit den Büchern ihres Mannes. Ich habe selbst eine Karte darin, Nummer drei.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_01_bookmark_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1998030,
+  "speaker": "locksmith",
+  "subtitle": "Ihr Ausweis und Frau Halinas Wort passen zusammen. Hundertsiebzig Münzen. Die Kassette bleibt heil, und was auf den Karten steht, ist nicht meine Lektüre.",
+  "text": "Ihr Ausweis und Frau Halinas Wort passen zusammen. Hundertsiebzig Münzen. Die Kassette bleibt heil, und was auf den Karten steht, ist nicht meine Lektüre.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_01_bookmark_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5301660,
+  "speaker": "irena",
+  "subtitle": "Einverstanden. Mein ganzes Berufsleben habe ich fremde Rückgabefristen überwacht. Auf den eigenen Schlüssel habe ich nicht aufgepasst. Bitte nicht aufschreiben.",
+  "text": "Einverstanden. Mein ganzes Berufsleben habe ich fremde Rückgabefristen überwacht. Auf den eigenen Schlüssel habe ich nicht aufgepasst. Bitte nicht aufschreiben.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_02_auction_safe.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12638321,
+  "speaker": "gosia",
+  "subtitle": "Drinnen waren Knöpfe. Dreitausend Perlmuttknöpfe und keine einzige Münze. Mein bester Kauf des Jahres. Krapfen gab es.",
+  "text": "Drinnen waren Knöpfe. Dreitausend Perlmuttknöpfe und keine einzige Münze. Mein bester Kauf des Jahres. Krapfen gab es.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_02_auction_safe.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8045369,
+  "speaker": "gosia",
+  "subtitle": "Ich habe ihn verschlossen gekauft, so stand es im Katalog: Tresor aus einem Kurzwarenladen, Kombination unbekannt. Drei Leute boten. Zwei aus Neugier.",
+  "text": "Ich habe ihn verschlossen gekauft, so stand es im Katalog: Tresor aus einem Kurzwarenladen, Kombination unbekannt. Drei Leute boten. Zwei aus Neugier.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_02_auction_safe.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5223902,
+  "speaker": "zuzanna",
+  "subtitle": "Zuerst frage ich, wem es gehört. So steht es auf Seite eins im Heft, und seit September führe ich darin meine eigene Spalte. Die Rechnung, bitte.",
+  "text": "Zuerst frage ich, wem es gehört. So steht es auf Seite eins im Heft, und seit September führe ich darin meine eigene Spalte. Die Rechnung, bitte.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_02_auction_safe.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1733717,
+  "speaker": "locksmith",
+  "subtitle": "Auktionsrechnung und Foto passen zusammen. Hundertachtzig Münzen. Zuzanna hütet das Heft, ich höre auf die Scheibe.",
+  "text": "Auktionsrechnung und Foto passen zusammen. Hundertachtzig Münzen. Zuzanna hütet das Heft, ich höre auf die Scheibe.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_02_auction_safe.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2742608,
+  "speaker": "gosia",
+  "subtitle": "Einverstanden. Ist ein Schatz drin, gebe ich Krapfen aus. Ist er leer, gebe ich auch welche aus, zum Trost.",
+  "text": "Einverstanden. Ist ein Schatz drin, gebe ich Krapfen aus. Ist er leer, gebe ich auch welche aus, zum Trost.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_03_spare_in_the_lake.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13654640,
+  "speaker": "kazimierz",
+  "subtitle": "Frau Teresa hat von mir einen neuen Ersatzschlüssel. Er hängt bei mir im Flur am Nagel. Zum Angeln nehme ich nur noch einen Schlüssel mit. An einer Schnur.",
+  "text": "Frau Teresa hat von mir einen neuen Ersatzschlüssel. Er hängt bei mir im Flur am Nagel. Zum Angeln nehme ich nur noch einen Schlüssel mit. An einer Schnur.",
+  "voice_id": "pX3C8X5pB5Ord4v3sYQy",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_03_spare_in_the_lake.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3086344,
+  "speaker": "teresa",
+  "subtitle": "Ich war nur am Briefkasten, in Pantoffeln. Die Tür fiel zu. Und mein Ersatzschlüssel liegt im See, neben den Schlüsseln von Herrn Kazimierz.",
+  "text": "Ich war nur am Briefkasten, in Pantoffeln. Die Tür fiel zu. Und mein Ersatzschlüssel liegt im See, neben den Schlüsseln von Herrn Kazimierz.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_03_spare_in_the_lake.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1656596,
+  "speaker": "kazimierz",
+  "subtitle": "Ich trug ihn bei meinen, um ihn nicht zu verlieren. Das ist ihre Tür, sie wohnt unter mir. Den Kranz daran hat sie selbst gebunden, den kenne ich nur zu gut.",
+  "text": "Ich trug ihn bei meinen, um ihn nicht zu verlieren. Das ist ihre Tür, sie wohnt unter mir. Den Kranz daran hat sie selbst gebunden, den kenne ich nur zu gut.",
+  "voice_id": "pX3C8X5pB5Ord4v3sYQy",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_03_spare_in_the_lake.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4637731,
+  "speaker": "locksmith",
+  "subtitle": "Ihr Ausweis und Herrn Kazimierz' Wort passen zusammen. Hundertfünfundachtzig Münzen, ohne Bohren. Die Pantoffeln werden nicht einmal kalt.",
+  "text": "Ihr Ausweis und Herrn Kazimierz' Wort passen zusammen. Hundertfünfundachtzig Münzen, ohne Bohren. Die Pantoffeln werden nicht einmal kalt.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_03_spare_in_the_lake.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13908525,
+  "speaker": "teresa",
+  "subtitle": "Einverstanden. Im August habe ich für ihn gebürgt, heute er für mich. Dafür ist ein Treppenhaus da. Hefekuchen gibt es auf beiden Etagen.",
+  "text": "Einverstanden. Im August habe ich für ihn gebürgt, heute er für mich. Dafür ist ein Treppenhaus da. Hefekuchen gibt es auf beiden Etagen.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_05_wrong_padlock.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2310660,
+  "speaker": "edek",
+  "subtitle": "Das Schloss wartete mit Zettel in der Pförtnerloge. Der Erstsemester holte es ab, rot bis über die Ohren. Im Heft steht er jetzt: Fach achtzehn, unterstrichen.",
+  "text": "Das Schloss wartete mit Zettel in der Pförtnerloge. Der Erstsemester holte es ab, rot bis über die Ohren. Im Heft steht er jetzt: Fach achtzehn, unterstrichen.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_05_wrong_padlock.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16572422,
+  "speaker": "iga",
+  "subtitle": "Ich ziehe heute aus, der Transporter wartet am Tor. An meinem Fach hängt ein Schloss, das ich noch nie gesehen habe. Mein Schlagzeug ist drin.",
+  "text": "Ich ziehe heute aus, der Transporter wartet am Tor. An meinem Fach hängt ein Schloss, das ich noch nie gesehen habe. Mein Schlagzeug ist drin.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_05_wrong_padlock.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 733738,
+  "speaker": "edek",
+  "subtitle": "Fach acht, Iga, steht auf der Liste und in meinem Kopf. Das Schloss hat ein Erstsemester von Fach achtzehn hingehängt. Er ist auf Kennenlernfahrt, ohne Netz.",
+  "text": "Fach acht, Iga, steht auf der Liste und in meinem Kopf. Das Schloss hat ein Erstsemester von Fach achtzehn hingehängt. Er ist auf Kennenlernfahrt, ohne Netz.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_05_wrong_padlock.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13647944,
+  "speaker": "locksmith",
+  "subtitle": "Liste und Studentenausweis passen zusammen. Hundertfünfundneunzig Münzen. Das Schloss gehört jemandem, also schneide ich es nicht auf: Es geht heil zurück.",
+  "text": "Liste und Studentenausweis passen zusammen. Hundertfünfundneunzig Münzen. Das Schloss gehört jemandem, also schneide ich es nicht auf: Es geht heil zurück.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_05_wrong_padlock.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10212599,
+  "speaker": "iga",
+  "subtitle": "Einverstanden. Lassen Sie ihm bitte einen Zettel da: Acht ist nicht achtzehn. Und Grüße vom Schlagzeug, das seinetwegen zu spät zur Probe kommt.",
+  "text": "Einverstanden. Lassen Sie ihm bitte einen Zettel da: Acht ist nicht achtzehn. Und Grüße vom Schlagzeug, das seinetwegen zu spät zur Probe kommt.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_06_salt_before_frost.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9830778,
+  "speaker": "stefan",
+  "subtitle": "Um sechs war gestreut, niemand ist gestürzt. Und die Elster ließ den Schlüssel auf meinem Kioskdach liegen. Herr Roman hat ihn zurück. Gegen Quittung.",
+  "text": "Um sechs war gestreut, niemand ist gestürzt. Und die Elster ließ den Schlüssel auf meinem Kioskdach liegen. Herr Roman hat ihn zurück. Gegen Quittung.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_06_salt_before_frost.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12654543,
+  "speaker": "roman",
+  "subtitle": "Frost ab Mitternacht. Das Salz ist im Schuppen, das Schloss am Schuppen, den Schlüssel hat eine Elster geholt. Vom Fensterbrett. Gefilmt. Reklamation abgelehnt.",
+  "text": "Frost ab Mitternacht. Das Salz ist im Schuppen, das Schloss am Schuppen, den Schlüssel hat eine Elster geholt. Vom Fensterbrett. Gefilmt. Reklamation abgelehnt.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_06_salt_before_frost.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15898896,
+  "speaker": "stefan",
+  "subtitle": "Die Elster kenne ich. Seit Jahren stibitzt sie mir Kronkorken am Kiosk. Und ohne Salz ist die Haltestelle um sechs eine Eisbahn, das weiß ich seit 1994.",
+  "text": "Die Elster kenne ich. Seit Jahren stibitzt sie mir Kronkorken am Kiosk. Und ohne Salz ist die Haltestelle um sechs eine Eisbahn, das weiß ich seit 1994.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_06_salt_before_frost.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8467497,
+  "speaker": "locksmith",
+  "subtitle": "Die Zustimmung der Verwaltung und die Rechnung für das Schloss passen. Zweihundertfünf Münzen. So ein Schloss hat seine Scheiben, vor Mitternacht ist es offen.",
+  "text": "Die Zustimmung der Verwaltung und die Rechnung für das Schloss passen. Zweihundertfünf Münzen. So ein Schloss hat seine Scheiben, vor Mitternacht ist es offen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_06_salt_before_frost.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6407766,
+  "speaker": "roman",
+  "subtitle": "Einverstanden. Der neue Schlüssel hängt künftig in der Verwaltung, im geschlossenen Kasten. Die Elster bekommt Hausverbot. Schriftlich.",
+  "text": "Einverstanden. Der neue Schlüssel hängt künftig in der Verwaltung, im geschlossenen Kasten. Die Elster bekommt Hausverbot. Schriftlich.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_07_hour_back.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7050186,
+  "speaker": "zosia",
+  "subtitle": "Die Uhr geht jetzt wie das Radio. Halina sagt, früher war es ihr lieber: Sie hatte eine Stunde Vorsprung. Der neue Schlüssel hängt im Saal, beschriftet.",
+  "text": "Die Uhr geht jetzt wie das Radio. Halina sagt, früher war es ihr lieber: Sie hatte eine Stunde Vorsprung. Der neue Schlüssel hängt im Saal, beschriftet.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_07_hour_back.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14010707,
+  "speaker": "elzbieta",
+  "subtitle": "Der Beschluss steht: Die Uhr soll mit der Stadt gehen. Heute wird umgestellt, und sie hängt seit Jahren in der Sommerzeit. Zum Türchen fehlt der Schlüssel.",
+  "text": "Der Beschluss steht: Die Uhr soll mit der Stadt gehen. Heute wird umgestellt, und sie hängt seit Jahren in der Sommerzeit. Zum Türchen fehlt der Schlüssel.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_07_hour_back.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6467626,
+  "speaker": "zuzanna",
+  "subtitle": "In Herrn Henryks Heft steht jedes halbe Jahr: Uhr über dem Tor, eine Stunde vor, eine Stunde zurück. Dann enden die Einträge. Den Schlüssel trug er bei sich.",
+  "text": "In Herrn Henryks Heft steht jedes halbe Jahr: Uhr über dem Tor, eine Stunde vor, eine Stunde zurück. Dann enden die Einträge. Den Schlüssel trug er bei sich.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_07_hour_back.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14317622,
+  "speaker": "locksmith",
+  "subtitle": "Beschluss und Zustimmung des Vorstands passen. Zweihundertfünfzehn Münzen. Altes Schloss, das Uhrwerk gleich dahinter: in Ruhe. Heute gibt es eine Stunde mehr.",
+  "text": "Beschluss und Zustimmung des Vorstands passen. Zweihundertfünfzehn Münzen. Altes Schloss, das Uhrwerk gleich dahinter: in Ruhe. Heute gibt es eine Stunde mehr.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_07_hour_back.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9699421,
+  "speaker": "elzbieta",
+  "subtitle": "Einverstanden. Unter dieser Uhr verabreden sich die Nachbarn seit einem halben Jahrhundert. Das halbe Jahr pünktlich, das andere eine Stunde zu früh. Es reicht.",
+  "text": "Einverstanden. Unter dieser Uhr verabreden sich die Nachbarn seit einem halben Jahrhundert. Das halbe Jahr pünktlich, das andere eine Stunde zu früh. Es reicht.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_09_almost_right_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2872332,
+  "speaker": "zuzanna",
+  "subtitle": "Abnahme bestanden. Der Kapitän bekam von uns drei ordentliche Schlüssel. Und der Werkstattschlüssel geht neuerdings immer schwerer hinein. Notiert: Verschleiß.",
+  "text": "Abnahme bestanden. Der Kapitän bekam von uns drei ordentliche Schlüssel. Und der Werkstattschlüssel geht neuerdings immer schwerer hinein. Notiert: Verschleiß.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_09_almost_right_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16403654,
+  "speaker": "captain",
+  "subtitle": "Morgen um acht ist Abnahme. Die Papiere liegen im Schrank. Ich ließ am Bahnhof einen Schlüssel nachmachen, in fünf Minuten. Er ging hinein. Gut ging es nicht.",
+  "text": "Morgen um acht ist Abnahme. Die Papiere liegen im Schrank. Ich ließ am Bahnhof einen Schlüssel nachmachen, in fünf Minuten. Er ging hinein. Gut ging es nicht.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_09_almost_right_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14412087,
+  "speaker": "aino",
+  "subtitle": "Er passte fast. Für dieses Schloss macht fast einen Unterschied: Es blockiert und nimmt nicht einmal das Original. Der Kapitän hat gegen einen Schrank verloren.",
+  "text": "Er passte fast. Für dieses Schloss macht fast einen Unterschied: Es blockiert und nimmt nicht einmal das Original. Der Kapitän hat gegen einen Schrank verloren.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_09_almost_right_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5165593,
+  "speaker": "locksmith",
+  "subtitle": "Das Schreiben der Reederei und Ainos Wort passen. Zweihundertdreißig Münzen. Ein nachtragendes Schloss will langsam versöhnt werden. Bis acht schaffe ich es.",
+  "text": "Das Schreiben der Reederei und Ainos Wort passen. Zweihundertdreißig Münzen. Ein nachtragendes Schloss will langsam versöhnt werden. Bis acht schaffe ich es.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_09_almost_right_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12362857,
+  "speaker": "captain",
+  "subtitle": "Einverstanden. Ins Logbuch schreibe ich: Schrank blockiert, Schuld des Kapitäns. Dreißig Jahre auf See, und besiegt hat mich eine Schlüsselbude.",
+  "text": "Einverstanden. Ins Logbuch schreibe ich: Schrank blockiert, Schuld des Kapitäns. Dreißig Jahre auf See, und besiegt hat mich eine Schlüsselbude.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_10_thirteenth_envelope.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12051453,
+  "speaker": "halina",
+  "subtitle": "Bis Mitternacht floss Wachs durch Henryks Schlüssel, mein Junge. Bei mir wurde es ein Topf. Bei Zuzanna ein Schlüssel, Ehrenwort. Bei Ihnen nichts: Brühe.",
+  "text": "Bis Mitternacht floss Wachs durch Henryks Schlüssel, mein Junge. Bei mir wurde es ein Topf. Bei Zuzanna ein Schlüssel, Ehrenwort. Bei Ihnen nichts: Brühe.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_10_thirteenth_envelope.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6550484,
+  "speaker": "locksmith",
+  "subtitle": "Henryks Schloss ruht auf dem Regal über der Werkbank, in der Tür arbeitet Zuzannas. Und im Saal hängt ein dreizehnter Umschlag. Benannte Person: Zuzanna Wilk.",
+  "text": "Henryks Schloss ruht auf dem Regal über der Werkbank, in der Tür arbeitet Zuzannas. Und im Saal hängt ein dreizehnter Umschlag. Benannte Person: Zuzanna Wilk.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_10_thirteenth_envelope.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11637582,
+  "speaker": "zuzanna",
+  "subtitle": "Der Schlüssel geht hinein und rührt sich nicht. Das ist Verschleiß, kein Charakter. Aber zuerst: Wem gehört es? Heute sind Sie der Kunde. Ihre Nachweise, bitte.",
+  "text": "Der Schlüssel geht hinein und rührt sich nicht. Das ist Verschleiß, kein Charakter. Aber zuerst: Wem gehört es? Heute sind Sie der Kunde. Ihre Nachweise, bitte.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_10_thirteenth_envelope.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7198989,
+  "speaker": "halina",
+  "subtitle": "Ich bürge für ihn, Kind. Seit der ersten Brühe weiß ich, wessen Werkstatt das ist. Die Nachbarn warten, aber Ordnung muss sein. Henryk hätte gelacht.",
+  "text": "Ich bürge für ihn, Kind. Seit der ersten Brühe weiß ich, wessen Werkstatt das ist. Die Nachbarn warten, aber Ordnung muss sein. Henryk hätte gelacht.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_10_thirteenth_envelope.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3455318,
+  "speaker": "locksmith",
+  "subtitle": "Frau Halinas Wort und ein Einschreiben an die Werkstatt. Zweihundertsechzig Münzen, aus meiner Tasche in meine Kasse. Erst der Preis, auch bei mir selbst.",
+  "text": "Frau Halinas Wort und ein Einschreiben an die Werkstatt. Zweihundertsechzig Münzen, aus meiner Tasche in meine Kasse. Erst der Preis, auch bei mir selbst.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.ch16_10_thirteenth_envelope.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9001,
+  "speaker": "zuzanna",
+  "subtitle": "Alles stimmt. Der Kunde ist auch einverstanden, denn der Kunde sind Sie. Öffnen Sie bitte, Meister. Das Heft halte ich, und das Wachs wird kalt.",
+  "text": "Alles stimmt. Der Kunde ist auch einverstanden, denn der Kunde sind Sie. Öffnen Sie bitte, Meister. Das Heft halte ich, und das Wachs wird kalt.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch16_04_borrowed_barrow.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5479409,
+  "speaker": "waldek",
+  "subtitle": "Die Nachricht las ich bei meiner Tochter. Am Sonntag war ich zurück und habe die Karre selbst hinübergeschoben. Mit einem Kürbis drin. Das sind die Zinsen.",
+  "text": "Die Nachricht las ich bei meiner Tochter. Am Sonntag war ich zurück und habe die Karre selbst hinübergeschoben. Mit einem Kürbis drin. Das sind die Zinsen.",
+  "voice_id": "6ECEPYinwnizS5hjagZQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch16_04_borrowed_barrow.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13449696,
+  "speaker": "zbyszek",
+  "subtitle": "Das Laub fuhr ich mit der Gartenkarre weg. Meine verleihe ich ab jetzt nur gegen Eintrag im Heft, wie Waldek die Presse. Der Kürbis wurde Suppe für uns beide.",
+  "text": "Das Laub fuhr ich mit der Gartenkarre weg. Meine verleihe ich ab jetzt nur gegen Eintrag im Heft, wie Waldek die Presse. Der Kürbis wurde Suppe für uns beide.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch16_04_borrowed_barrow.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1668586,
+  "speaker": "zbyszek",
+  "subtitle": "Die Schubkarre gehört mir, ich habe sie Waldek im Mai geliehen. Sie steht in seiner Laube, er ist bis Sonntag bei der Tochter. Öffnen Sie, ich nehme nur meins.",
+  "text": "Die Schubkarre gehört mir, ich habe sie Waldek im Mai geliehen. Sie steht in seiner Laube, er ist bis Sonntag bei der Tochter. Öffnen Sie, ich nehme nur meins.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch16_04_borrowed_barrow.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8865840,
+  "speaker": "locksmith",
+  "subtitle": "Die Schubkarre gehört Ihnen, das glaube ich. Aber die Laube gehört Herrn Waldek. Rufen wir ihn an, dafür haben Sie seine Nummer.",
+  "text": "Die Schubkarre gehört Ihnen, das glaube ich. Aber die Laube gehört Herrn Waldek. Rufen wir ihn an, dafür haben Sie seine Nummer.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch16_04_borrowed_barrow.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13908381,
+  "speaker": "zbyszek",
+  "subtitle": "Ich störe ihn doch nicht wegen einer Schubkarre. Bei den Enkeln hört er das Telefon sowieso nicht. Wir kennen uns dreißig Jahre, er hätte nichts dagegen.",
+  "text": "Ich störe ihn doch nicht wegen einer Schubkarre. Bei den Enkeln hört er das Telefon sowieso nicht. Wir kennen uns dreißig Jahre, er hätte nichts dagegen.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch16_04_borrowed_barrow.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5009863,
+  "speaker": "locksmith",
+  "subtitle": "Hier öffne ich nicht. Geliehenes kommt über den Besitzer des Schlosses zurück, nicht über den Schlosser. Nehmen Sie die Gartenkarre; Herrn Waldek schreiben wir.",
+  "text": "Hier öffne ich nicht. Geliehenes kommt über den Besitzer des Schlosses zurück, nicht über den Schlosser. Nehmen Sie die Gartenkarre; Herrn Waldek schreiben wir.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch16_08_roommates_room.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13427501,
+  "speaker": "leon",
+  "subtitle": "Ich ging auf dem Wanderweg ans Telefon. Es reichte, die Sicherung im Flur aus- und einzuschalten, die zweite von links. Der Router hängt mit meinem Zimmer dran.",
+  "text": "Ich ging auf dem Wanderweg ans Telefon. Es reichte, die Sicherung im Flur aus- und einzuschalten, die zweite von links. Der Router hängt mit meinem Zimmer dran.",
+  "voice_id": "8eWXyjbVpcTbRDzlc0tF",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch16_08_roommates_room.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 809552,
+  "speaker": "iga",
+  "subtitle": "Die Aufnahme ging zwanzig Minuten vor Mitternacht raus. Der Router steht jetzt im Flur, Leon hat ihn selbst umgestellt. Er bekam Ohrstöpsel. Ein fairer Tausch.",
+  "text": "Die Aufnahme ging zwanzig Minuten vor Mitternacht raus. Der Router steht jetzt im Flur, Leon hat ihn selbst umgestellt. Er bekam Ohrstöpsel. Ein fairer Tausch.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch16_08_roommates_room.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4789378,
+  "speaker": "iga",
+  "subtitle": "Wir mieten die Wohnung seit einer Woche zusammen. Der Router steht in Leons Zimmer und blinkt rot. Leon ist in den Bergen, und um Mitternacht ist meine Abgabe.",
+  "text": "Wir mieten die Wohnung seit einer Woche zusammen. Der Router steht in Leons Zimmer und blinkt rot. Leon ist in den Bergen, und um Mitternacht ist meine Abgabe.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch16_08_roommates_room.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13523179,
+  "speaker": "locksmith",
+  "subtitle": "Die Wohnung ist gemeinsam, aber dieses Zimmer hat Leon abgeschlossen. Rufen wir ihn an. Vielleicht reicht es, wenn er sagt, wo die Sicherung ist.",
+  "text": "Die Wohnung ist gemeinsam, aber dieses Zimmer hat Leon abgeschlossen. Rufen wir ihn an. Vielleicht reicht es, wenn er sagt, wo die Sicherung ist.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch16_08_roommates_room.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2575023,
+  "speaker": "iga",
+  "subtitle": "Ich wohne eine Woche hier und habe ihn schon dreimal um etwas gebeten. So eine Mitbewohnerin will ich nicht sein. Nur der Stecker: raus, rein, mehr nicht.",
+  "text": "Ich wohne eine Woche hier und habe ihn schon dreimal um etwas gebeten. So eine Mitbewohnerin will ich nicht sein. Nur der Stecker: raus, rein, mehr nicht.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "de/job.refuse_ch16_08_roommates_room.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8022116,
+  "speaker": "locksmith",
+  "subtitle": "Hier öffne ich nicht. Die Wohnung ist gemeinsam, ein abgeschlossenes Zimmer nicht. Eine vierte Bitte kostet weniger als eine ungefragt geöffnete Tür. Anrufen.",
+  "text": "Hier öffne ich nicht. Die Wohnung ist gemeinsam, ein abgeschlossenes Zimmer nicht. Eine vierte Bitte kostet weniger als eine ungefragt geöffnete Tür. Anrufen.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_01_bookmark_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10460842,
+  "speaker": "zosia",
+  "subtitle": "I had the book, since August. I returned the key along with it. As a bookmark it was uncomfortable, but I won't tell Irena that.",
+  "text": "I had the book, since August. I returned the key along with it. As a bookmark it was uncomfortable, but I won't tell Irena that.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_01_bookmark_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16164251,
+  "speaker": "irena",
+  "subtitle": "I used the box key as a bookmark. Someone borrowed the book. Who it was, I wrote on a card. And the cards are in the box.",
+  "text": "I used the box key as a bookmark. Someone borrowed the book. Who it was, I wrote on a card. And the cards are in the box.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_01_bookmark_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14419311,
+  "speaker": "halina",
+  "subtitle": "The box is Irena's, son. She brought it under the linden in June, along with her husband's books. I have a card in it myself, number three.",
+  "text": "The box is Irena's, son. She brought it under the linden in June, along with her husband's books. I have a card in it myself, number three.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_01_bookmark_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1998030,
+  "speaker": "locksmith",
+  "subtitle": "Your ID and Mrs Halina's word match. One hundred and seventy coins. The box stays whole, and what's on the cards is not my reading.",
+  "text": "Your ID and Mrs Halina's word match. One hundred and seventy coins. The box stays whole, and what's on the cards is not my reading.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_01_bookmark_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5301660,
+  "speaker": "irena",
+  "subtitle": "Agreed. All my working life I kept track of other people's due dates. My own key got away from me. Please don't write that down.",
+  "text": "Agreed. All my working life I kept track of other people's due dates. My own key got away from me. Please don't write that down.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_02_auction_safe.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12638321,
+  "speaker": "gosia",
+  "subtitle": "Inside were buttons. Three thousand mother-of-pearl buttons and not a single coin. My best purchase this year. There were doughnuts.",
+  "text": "Inside were buttons. Three thousand mother-of-pearl buttons and not a single coin. My best purchase this year. There were doughnuts.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_02_auction_safe.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8045369,
+  "speaker": "gosia",
+  "subtitle": "I bought it locked, just as the catalog said: safe from a sewing shop, combination unknown. Three people bid. Two out of curiosity.",
+  "text": "I bought it locked, just as the catalog said: safe from a sewing shop, combination unknown. Three people bid. Two out of curiosity.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_02_auction_safe.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5223902,
+  "speaker": "zuzanna",
+  "subtitle": "First I ask whose it is. That's on page one of the notebook, and since September I keep my own column in it. The invoice, please.",
+  "text": "First I ask whose it is. That's on page one of the notebook, and since September I keep my own column in it. The invoice, please.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_02_auction_safe.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1733717,
+  "speaker": "locksmith",
+  "subtitle": "The auction invoice and the photo match. One hundred and eighty coins. Zuzanna minds the notebook; I listen to the dial.",
+  "text": "The auction invoice and the photo match. One hundred and eighty coins. Zuzanna minds the notebook; I listen to the dial.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_02_auction_safe.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2742608,
+  "speaker": "gosia",
+  "subtitle": "Agreed. If there's treasure inside, the doughnuts are on me. If it's empty, they're still on me, as consolation.",
+  "text": "Agreed. If there's treasure inside, the doughnuts are on me. If it's empty, they're still on me, as consolation.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_03_spare_in_the_lake.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13654640,
+  "speaker": "kazimierz",
+  "subtitle": "I had a new spare cut for Mrs Teresa. It hangs on a nail in my hallway. I go fishing with a single key now. On a string.",
+  "text": "I had a new spare cut for Mrs Teresa. It hangs on a nail in my hallway. I go fishing with a single key now. On a string.",
+  "voice_id": "pX3C8X5pB5Ord4v3sYQy",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_03_spare_in_the_lake.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3086344,
+  "speaker": "teresa",
+  "subtitle": "I only went down to the mailbox, in my slippers. The door latched. And my spare key is lying in the lake, next to Mr Kazimierz's keys.",
+  "text": "I only went down to the mailbox, in my slippers. The door latched. And my spare key is lying in the lake, next to Mr Kazimierz's keys.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_03_spare_in_the_lake.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1656596,
+  "speaker": "kazimierz",
+  "subtitle": "I kept it with mine so I wouldn't lose it. It's her door; she lives one floor below me. She made that wreath herself. I know it all too well.",
+  "text": "I kept it with mine so I wouldn't lose it. It's her door; she lives one floor below me. She made that wreath herself. I know it all too well.",
+  "voice_id": "pX3C8X5pB5Ord4v3sYQy",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_03_spare_in_the_lake.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4637731,
+  "speaker": "locksmith",
+  "subtitle": "Your ID and Mr Kazimierz's word match. One hundred and eighty-five coins, and no drilling. Your slippers won't have time to get cold.",
+  "text": "Your ID and Mr Kazimierz's word match. One hundred and eighty-five coins, and no drilling. Your slippers won't have time to get cold.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_03_spare_in_the_lake.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13908525,
+  "speaker": "teresa",
+  "subtitle": "Agreed. In August I vouched for him; today he vouches for me. That's what a stairwell is for. There'll be yeast cake on both floors.",
+  "text": "Agreed. In August I vouched for him; today he vouches for me. That's what a stairwell is for. There'll be yeast cake on both floors.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_05_wrong_padlock.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2310660,
+  "speaker": "edek",
+  "subtitle": "The padlock waited at the porter's lodge with a note. The freshman picked it up red to the ears. I put him in the notebook: cubby eighteen, underlined.",
+  "text": "The padlock waited at the porter's lodge with a note. The freshman picked it up red to the ears. I put him in the notebook: cubby eighteen, underlined.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_05_wrong_padlock.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16572422,
+  "speaker": "iga",
+  "subtitle": "I'm moving out today; the van is waiting at the gate. There's a padlock on my cubby that I've never seen in my life. My drums are inside.",
+  "text": "I'm moving out today; the van is waiting at the gate. There's a padlock on my cubby that I've never seen in my life. My drums are inside.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_05_wrong_padlock.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 733738,
+  "speaker": "edek",
+  "subtitle": "Cubby eight, Iga: on my list and in my head. The padlock was hung by a freshman from cubby eighteen. He's away at orientation camp, with no signal.",
+  "text": "Cubby eight, Iga: on my list and in my head. The padlock was hung by a freshman from cubby eighteen. He's away at orientation camp, with no signal.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_05_wrong_padlock.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13647944,
+  "speaker": "locksmith",
+  "subtitle": "The list and the student card match. One hundred and ninety-five coins. The padlock is somebody's, so I won't cut it: it goes back to its owner whole.",
+  "text": "The list and the student card match. One hundred and ninety-five coins. The padlock is somebody's, so I won't cut it: it goes back to its owner whole.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_05_wrong_padlock.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10212599,
+  "speaker": "iga",
+  "subtitle": "Agreed. Please leave him a note: eight is not eighteen. And greetings from the drum kit that will be late for rehearsal because of him.",
+  "text": "Agreed. Please leave him a note: eight is not eighteen. And greetings from the drum kit that will be late for rehearsal because of him.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_06_salt_before_frost.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9830778,
+  "speaker": "stefan",
+  "subtitle": "By six the sidewalk was salted and nobody slipped. And the magpie left the key on the roof of my kiosk. I returned it to Mr Roman. He gave me a receipt.",
+  "text": "By six the sidewalk was salted and nobody slipped. And the magpie left the key on the roof of my kiosk. I returned it to Mr Roman. He gave me a receipt.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_06_salt_before_frost.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12654543,
+  "speaker": "roman",
+  "subtitle": "Frost from midnight. The salt is in the shed, the padlock on the shed, and a magpie took the key. Off my windowsill. It's on camera. She took no complaints.",
+  "text": "Frost from midnight. The salt is in the shed, the padlock on the shed, and a magpie took the key. Off my windowsill. It's on camera. She took no complaints.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_06_salt_before_frost.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15898896,
+  "speaker": "stefan",
+  "subtitle": "I know that magpie. She's been lifting bottle caps from my kiosk for years. And without salt the bus stop at six a.m. is a skating rink. I've known since 1994.",
+  "text": "I know that magpie. She's been lifting bottle caps from my kiosk for years. And without salt the bus stop at six a.m. is a skating rink. I've known since 1994.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_06_salt_before_frost.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8467497,
+  "speaker": "locksmith",
+  "subtitle": "The estate's consent and the padlock invoice match. Two hundred and five coins. A padlock like this has its discs; I'll be done well before midnight.",
+  "text": "The estate's consent and the padlock invoice match. Two hundred and five coins. A padlock like this has its discs; I'll be done well before midnight.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_06_salt_before_frost.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6407766,
+  "speaker": "roman",
+  "subtitle": "Agreed. The new key will hang in the office, in a closed cabinet. The magpie is banned from the premises. In writing.",
+  "text": "Agreed. The new key will hang in the office, in a closed cabinet. The magpie is banned from the premises. In writing.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_07_hour_back.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7050186,
+  "speaker": "zosia",
+  "subtitle": "The clock shows the same time as the radio. Halina says she liked it better before: she had an hour to spare. The new key hangs in the common room, labeled.",
+  "text": "The clock shows the same time as the radio. Halina says she liked it better before: she had an hour to spare. The new key hangs in the common room, labeled.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_07_hour_back.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14010707,
+  "speaker": "elzbieta",
+  "subtitle": "The resolution says the clock keeps the city's time. The clocks go back tonight, and ours has been stuck on summer time for years. I have no key to its door.",
+  "text": "The resolution says the clock keeps the city's time. The clocks go back tonight, and ours has been stuck on summer time for years. I have no key to its door.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_07_hour_back.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6467626,
+  "speaker": "zuzanna",
+  "subtitle": "Mr Henryk's notebook has an entry every six months: clock over the gate, an hour forward, an hour back. Then the entries stop. He carried the key on him.",
+  "text": "Mr Henryk's notebook has an entry every six months: clock over the gate, an hour forward, an hour back. Then the entries stop. He carried the key on him.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_07_hour_back.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14317622,
+  "speaker": "locksmith",
+  "subtitle": "The resolution and the board's consent match. Two hundred and fifteen coins. An old lock with clockwork right behind it, so no hurry. We gain an hour tonight.",
+  "text": "The resolution and the board's consent match. Two hundred and fifteen coins. An old lock with clockwork right behind it, so no hurry. We gain an hour tonight.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_07_hour_back.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9699421,
+  "speaker": "elzbieta",
+  "subtitle": "Agreed. Neighbors have been meeting under this clock for half a century. Half the year they're on time; the other half, an hour early. That's enough.",
+  "text": "Agreed. Neighbors have been meeting under this clock for half a century. Half the year they're on time; the other half, an hour early. That's enough.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_09_almost_right_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2872332,
+  "speaker": "zuzanna",
+  "subtitle": "The inspection passed. We cut the Captain three keys, properly. And the workshop key has been going in harder and harder lately. I wrote down: wear.",
+  "text": "The inspection passed. We cut the Captain three keys, properly. And the workshop key has been going in harder and harder lately. I wrote down: wear.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_09_almost_right_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16403654,
+  "speaker": "captain",
+  "subtitle": "Inspection tomorrow at eight. The ship's papers are in the locker. I had a spare key cut at a booth by the station, in five minutes. It went in. It went badly.",
+  "text": "Inspection tomorrow at eight. The ship's papers are in the locker. I had a spare key cut at a booth by the station, in five minutes. It went in. It went badly.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_09_almost_right_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14412087,
+  "speaker": "aino",
+  "subtitle": "It almost fit. This lock believes almost makes a difference: it blocked itself and won't take even the original now. The Captain's first defeat by a locker.",
+  "text": "It almost fit. This lock believes almost makes a difference: it blocked itself and won't take even the original now. The Captain's first defeat by a locker.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_09_almost_right_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5165593,
+  "speaker": "locksmith",
+  "subtitle": "The shipowner's letter and Aino's word match. Two hundred and thirty coins. A lock that holds a grudge takes a slow apology. I'll be done before eight.",
+  "text": "The shipowner's letter and Aino's word match. Two hundred and thirty coins. A lock that holds a grudge takes a slow apology. I'll be done before eight.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_09_almost_right_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12362857,
+  "speaker": "captain",
+  "subtitle": "Agreed. I'll enter it in the log: locker blocked through the Captain's fault. Thirty years at sea, and I was beaten by a key booth.",
+  "text": "Agreed. I'll enter it in the log: locker blocked through the Captain's fault. Thirty years at sea, and I was beaten by a key booth.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_10_thirteenth_envelope.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12051453,
+  "speaker": "halina",
+  "subtitle": "We poured wax through Henryk's key until midnight, son. Mine came out as a pot. Zuzanna's as a key, I swear. Yours as nothing: you were busy with the broth.",
+  "text": "We poured wax through Henryk's key until midnight, son. Mine came out as a pot. Zuzanna's as a key, I swear. Yours as nothing: you were busy with the broth.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_10_thirteenth_envelope.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6550484,
+  "speaker": "locksmith",
+  "subtitle": "Henryk's lock rests on the shelf above the bench; Zuzanna's works in the door now. A thirteenth envelope hangs in the common room. Named on it: Zuzanna Wilk.",
+  "text": "Henryk's lock rests on the shelf above the bench; Zuzanna's works in the door now. A thirteenth envelope hangs in the common room. Named on it: Zuzanna Wilk.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_10_thirteenth_envelope.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11637582,
+  "speaker": "zuzanna",
+  "subtitle": "The key goes in and won't budge. That's not character anymore, that's wear. But first I ask whose it is. Tonight you are the client, so: your proof, please.",
+  "text": "The key goes in and won't budge. That's not character anymore, that's wear. But first I ask whose it is. Tonight you are the client, so: your proof, please.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_10_thirteenth_envelope.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7198989,
+  "speaker": "halina",
+  "subtitle": "I vouch for him, dear. Since the first bowl of broth I've known whose workshop this is. The neighbors are waiting, but rules are rules. Henryk would laugh.",
+  "text": "I vouch for him, dear. Since the first bowl of broth I've known whose workshop this is. The neighbors are waiting, but rules are rules. Henryk would laugh.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_10_thirteenth_envelope.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3455318,
+  "speaker": "locksmith",
+  "subtitle": "Mrs Halina's word, and a registered letter addressed to the workshop. Two hundred and sixty coins, from my pocket to my own till. Quote first, even at home.",
+  "text": "Mrs Halina's word, and a registered letter addressed to the workshop. Two hundred and sixty coins, from my pocket to my own till. Quote first, even at home.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.ch16_10_thirteenth_envelope.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9001,
+  "speaker": "zuzanna",
+  "subtitle": "It all matches. The client agrees too, since the client is you. Please open it, master. I've got the notebook, and the wax is cooling.",
+  "text": "It all matches. The client agrees too, since the client is you. Please open it, master. I've got the notebook, and the wax is cooling.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch16_04_borrowed_barrow.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5479409,
+  "speaker": "waldek",
+  "subtitle": "I read the message at my daughter's. I came back on Sunday and wheeled the barrow over myself. With a pumpkin in it. That's the interest.",
+  "text": "I read the message at my daughter's. I came back on Sunday and wheeled the barrow over myself. With a pumpkin in it. That's the interest.",
+  "voice_id": "6ECEPYinwnizS5hjagZQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch16_04_borrowed_barrow.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13449696,
+  "speaker": "zbyszek",
+  "subtitle": "I hauled the leaves in the shared barrow. From now on I lend mine by the notebook, the way Waldek lends the press. The pumpkin became soup for us both.",
+  "text": "I hauled the leaves in the shared barrow. From now on I lend mine by the notebook, the way Waldek lends the press. The pumpkin became soup for us both.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch16_04_borrowed_barrow.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1668586,
+  "speaker": "zbyszek",
+  "subtitle": "The wheelbarrow is mine; I lent it to Waldek in May. It's in his shed, and he's at his daughter's until Sunday. Open it, please. I'll take only what's mine.",
+  "text": "The wheelbarrow is mine; I lent it to Waldek in May. It's in his shed, and he's at his daughter's until Sunday. Open it, please. I'll take only what's mine.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch16_04_borrowed_barrow.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8865840,
+  "speaker": "locksmith",
+  "subtitle": "The wheelbarrow is yours; I believe you. But the shed is Mr Waldek's. Let's call him. That's what you have his number for.",
+  "text": "The wheelbarrow is yours; I believe you. But the shed is Mr Waldek's. Let's call him. That's what you have his number for.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch16_04_borrowed_barrow.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13908381,
+  "speaker": "zbyszek",
+  "subtitle": "I'm not bothering him over a wheelbarrow. With the grandkids around he can't hear his phone anyway. We go back thirty years; he wouldn't mind.",
+  "text": "I'm not bothering him over a wheelbarrow. With the grandkids around he can't hear his phone anyway. We go back thirty years; he wouldn't mind.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch16_04_borrowed_barrow.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5009863,
+  "speaker": "locksmith",
+  "subtitle": "I can't open this one. Borrowed things come back through the lock's owner, not through a locksmith. The garden has a shared barrow; let's text Mr Waldek.",
+  "text": "I can't open this one. Borrowed things come back through the lock's owner, not through a locksmith. The garden has a shared barrow; let's text Mr Waldek.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch16_08_roommates_room.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13427501,
+  "speaker": "leon",
+  "subtitle": "I picked up on the trail. All it took was flipping the breaker in the hallway off and on, second from the left. The router shares it with my room.",
+  "text": "I picked up on the trail. All it took was flipping the breaker in the hallway off and on, second from the left. The router shares it with my room.",
+  "voice_id": "8eWXyjbVpcTbRDzlc0tF",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch16_08_roommates_room.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 809552,
+  "speaker": "iga",
+  "subtitle": "The recording went out twenty minutes before midnight. The router now lives in the hallway; Leon moved it himself. I gave him earplugs. A fair trade.",
+  "text": "The recording went out twenty minutes before midnight. The router now lives in the hallway; Leon moved it himself. I gave him earplugs. A fair trade.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch16_08_roommates_room.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4789378,
+  "speaker": "iga",
+  "subtitle": "We've rented the apartment together for a week. The router is in Leon's room, blinking red. Leon is in the mountains, and my recording is due by midnight.",
+  "text": "We've rented the apartment together for a week. The router is in Leon's room, blinking red. Leon is in the mountains, and my recording is due by midnight.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch16_08_roommates_room.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13523179,
+  "speaker": "locksmith",
+  "subtitle": "The apartment is shared, but Leon locked that room. Let's call him. Maybe all it takes is for him to say where the breaker is.",
+  "text": "The apartment is shared, but Leon locked that room. Let's call him. Maybe all it takes is for him to say where the breaker is.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch16_08_roommates_room.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2575023,
+  "speaker": "iga",
+  "subtitle": "I've lived here a week and already asked him for three favors. I don't want to be that roommate. It's just a plug: out, in. You wouldn't even step inside.",
+  "text": "I've lived here a week and already asked him for three favors. I don't want to be that roommate. It's just a plug: out, in. You wouldn't even step inside.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "en/job.refuse_ch16_08_roommates_room.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8022116,
+  "speaker": "locksmith",
+  "subtitle": "I can't open this one. A shared apartment doesn't make a locked room shared. A fourth favor costs less than a door opened without asking. We call him together.",
+  "text": "I can't open this one. A shared apartment doesn't make a locked room shared. A fourth favor costs less than a door opened without asking. We call him together.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_01_bookmark_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10460842,
+  "speaker": "zosia",
+  "subtitle": "El libro lo tenía yo, desde agosto. Devolví la llave con él. Como marcapáginas era incómoda, pero eso no se lo diré a Irena.",
+  "text": "El libro lo tenía yo, desde agosto. Devolví la llave con él. Como marcapáginas era incómoda, pero eso no se lo diré a Irena.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_01_bookmark_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16164251,
+  "speaker": "irena",
+  "subtitle": "La llave de la caja me servía de marcapáginas. Alguien se llevó el libro prestado. Quién, lo apunté en una ficha. Y las fichas están en la caja.",
+  "text": "La llave de la caja me servía de marcapáginas. Alguien se llevó el libro prestado. Quién, lo apunté en una ficha. Y las fichas están en la caja.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_01_bookmark_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14419311,
+  "speaker": "halina",
+  "subtitle": "La caja es de Irena, hijo. La trajo bajo el tilo en junio, con los libros de su marido. Yo misma tengo ficha dentro, la número tres.",
+  "text": "La caja es de Irena, hijo. La trajo bajo el tilo en junio, con los libros de su marido. Yo misma tengo ficha dentro, la número tres.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_01_bookmark_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1998030,
+  "speaker": "locksmith",
+  "subtitle": "Su documento y la palabra de la señora Halina coinciden. Ciento setenta monedas. La caja quedará entera, y lo que digan las fichas no es lectura mía.",
+  "text": "Su documento y la palabra de la señora Halina coinciden. Ciento setenta monedas. La caja quedará entera, y lo que digan las fichas no es lectura mía.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_01_bookmark_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5301660,
+  "speaker": "irena",
+  "subtitle": "De acuerdo. Toda mi vida vigilé los plazos de devolución ajenos. Mi propia llave no supe vigilarla. No lo apunte, por favor.",
+  "text": "De acuerdo. Toda mi vida vigilé los plazos de devolución ajenos. Mi propia llave no supe vigilarla. No lo apunte, por favor.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_02_auction_safe.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12638321,
+  "speaker": "gosia",
+  "subtitle": "Dentro había botones. Tres mil botones de nácar y ni una sola moneda. Mi mejor compra del año. Hubo rosquillas.",
+  "text": "Dentro había botones. Tres mil botones de nácar y ni una sola moneda. Mi mejor compra del año. Hubo rosquillas.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_02_auction_safe.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8045369,
+  "speaker": "gosia",
+  "subtitle": "La compré cerrada, tal como decía el catálogo: caja fuerte de mercería, clave desconocida. Pujaron tres personas. Dos por curiosidad.",
+  "text": "La compré cerrada, tal como decía el catálogo: caja fuerte de mercería, clave desconocida. Pujaron tres personas. Dos por curiosidad.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_02_auction_safe.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5223902,
+  "speaker": "zuzanna",
+  "subtitle": "Primero pregunto de quién es. Lo dice la primera página del cuaderno, y desde septiembre llevo en él mi propia columna. La factura, por favor.",
+  "text": "Primero pregunto de quién es. Lo dice la primera página del cuaderno, y desde septiembre llevo en él mi propia columna. La factura, por favor.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_02_auction_safe.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1733717,
+  "speaker": "locksmith",
+  "subtitle": "La factura de la subasta y la foto coinciden. Ciento ochenta monedas. Zuzanna cuida el cuaderno; yo escucho el dial.",
+  "text": "La factura de la subasta y la foto coinciden. Ciento ochenta monedas. Zuzanna cuida el cuaderno; yo escucho el dial.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_02_auction_safe.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2742608,
+  "speaker": "gosia",
+  "subtitle": "De acuerdo. Si dentro hay un tesoro, invito a rosquillas. Si está vacía, invito igual, de consuelo.",
+  "text": "De acuerdo. Si dentro hay un tesoro, invito a rosquillas. Si está vacía, invito igual, de consuelo.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_03_spare_in_the_lake.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13654640,
+  "speaker": "kazimierz",
+  "subtitle": "Le encargué a la señora Teresa una llave de repuesto nueva. Cuelga de un clavo en mi recibidor. A pescar voy ahora con una sola llave. Atada a un cordel.",
+  "text": "Le encargué a la señora Teresa una llave de repuesto nueva. Cuelga de un clavo en mi recibidor. A pescar voy ahora con una sola llave. Atada a un cordel.",
+  "voice_id": "pX3C8X5pB5Ord4v3sYQy",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_03_spare_in_the_lake.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3086344,
+  "speaker": "teresa",
+  "subtitle": "Solo bajé al buzón, en zapatillas. La puerta se cerró. Y mi llave de repuesto está en el lago, junto a las llaves del señor Kazimierz.",
+  "text": "Solo bajé al buzón, en zapatillas. La puerta se cerró. Y mi llave de repuesto está en el lago, junto a las llaves del señor Kazimierz.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_03_spare_in_the_lake.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1656596,
+  "speaker": "kazimierz",
+  "subtitle": "La llevaba con las mías para no perderla. Es su puerta, vive debajo de mí. La corona la trenzó ella misma, la conozco demasiado bien.",
+  "text": "La llevaba con las mías para no perderla. Es su puerta, vive debajo de mí. La corona la trenzó ella misma, la conozco demasiado bien.",
+  "voice_id": "pX3C8X5pB5Ord4v3sYQy",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_03_spare_in_the_lake.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4637731,
+  "speaker": "locksmith",
+  "subtitle": "Su documento y la palabra del señor Kazimierz coinciden. Ciento ochenta y cinco monedas, sin taladrar. Las zapatillas no llegarán a enfriarse.",
+  "text": "Su documento y la palabra del señor Kazimierz coinciden. Ciento ochenta y cinco monedas, sin taladrar. Las zapatillas no llegarán a enfriarse.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_03_spare_in_the_lake.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13908525,
+  "speaker": "teresa",
+  "subtitle": "De acuerdo. En agosto respondí yo por él; hoy responde él por mí. Para eso está una escalera. Habrá bizcocho en los dos pisos.",
+  "text": "De acuerdo. En agosto respondí yo por él; hoy responde él por mí. Para eso está una escalera. Habrá bizcocho en los dos pisos.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_05_wrong_padlock.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2310660,
+  "speaker": "edek",
+  "subtitle": "El candado esperó en portería con una nota. El de primero vino a recogerlo, rojo hasta las orejas. Lo apunté en el cuaderno: trastero dieciocho, subrayado.",
+  "text": "El candado esperó en portería con una nota. El de primero vino a recogerlo, rojo hasta las orejas. Lo apunté en el cuaderno: trastero dieciocho, subrayado.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_05_wrong_padlock.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16572422,
+  "speaker": "iga",
+  "subtitle": "Me mudo hoy, la furgoneta espera en la verja. En mi trastero cuelga un candado que no he visto en mi vida. Mi batería está dentro.",
+  "text": "Me mudo hoy, la furgoneta espera en la verja. En mi trastero cuelga un candado que no he visto en mi vida. Mi batería está dentro.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_05_wrong_padlock.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 733738,
+  "speaker": "edek",
+  "subtitle": "Trastero ocho, Iga: lo tengo en la lista y en la cabeza. El candado lo colgó uno de primero, el del dieciocho. Está de convivencia, sin cobertura.",
+  "text": "Trastero ocho, Iga: lo tengo en la lista y en la cabeza. El candado lo colgó uno de primero, el del dieciocho. Está de convivencia, sin cobertura.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_05_wrong_padlock.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13647944,
+  "speaker": "locksmith",
+  "subtitle": "La lista y el carné de estudiante coinciden. Ciento noventa y cinco monedas. El candado es de alguien, así que no lo corto: volverá entero a su dueño.",
+  "text": "La lista y el carné de estudiante coinciden. Ciento noventa y cinco monedas. El candado es de alguien, así que no lo corto: volverá entero a su dueño.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_05_wrong_padlock.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10212599,
+  "speaker": "iga",
+  "subtitle": "De acuerdo. Déjele una nota, por favor: ocho no es dieciocho. Y saludos de la batería, que por su culpa llegará tarde al ensayo.",
+  "text": "De acuerdo. Déjele una nota, por favor: ocho no es dieciocho. Y saludos de la batería, que por su culpa llegará tarde al ensayo.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_06_salt_before_frost.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9830778,
+  "speaker": "stefan",
+  "subtitle": "A las seis la acera tenía sal y nadie resbaló. Y la urraca dejó la llave en el tejado de mi quiosco. Se la devolví al señor Roman. Con recibo.",
+  "text": "A las seis la acera tenía sal y nadie resbaló. Y la urraca dejó la llave en el tejado de mi quiosco. Se la devolví al señor Roman. Con recibo.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_06_salt_before_frost.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12654543,
+  "speaker": "roman",
+  "subtitle": "Helada desde medianoche. La sal está en el cobertizo, el candado también, y la llave se la llevó una urraca. Del alféizar. Está grabado. No admite quejas.",
+  "text": "Helada desde medianoche. La sal está en el cobertizo, el candado también, y la llave se la llevó una urraca. Del alféizar. Está grabado. No admite quejas.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_06_salt_before_frost.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15898896,
+  "speaker": "stefan",
+  "subtitle": "Conozco a esa urraca. Lleva años quitándome chapas del quiosco. Y sin sal, la parada a las seis de la mañana es una pista de hielo. Lo sé desde 1994.",
+  "text": "Conozco a esa urraca. Lleva años quitándome chapas del quiosco. Y sin sal, la parada a las seis de la mañana es una pista de hielo. Lo sé desde 1994.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_06_salt_before_frost.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8467497,
+  "speaker": "locksmith",
+  "subtitle": "El permiso de la administración y la factura del candado coinciden. Doscientas cinco monedas. Un candado así tiene sus discos; acabaré antes de medianoche.",
+  "text": "El permiso de la administración y la factura del candado coinciden. Doscientas cinco monedas. Un candado así tiene sus discos; acabaré antes de medianoche.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_06_salt_before_frost.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6407766,
+  "speaker": "roman",
+  "subtitle": "De acuerdo. La llave nueva colgará en la oficina, en un armario cerrado. La urraca tiene prohibida la entrada. Por escrito.",
+  "text": "De acuerdo. La llave nueva colgará en la oficina, en un armario cerrado. La urraca tiene prohibida la entrada. Por escrito.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_07_hour_back.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7050186,
+  "speaker": "zosia",
+  "subtitle": "El reloj marca la misma hora que la radio. Halina dice que le gustaba más antes: tenía una hora de margen. La llave nueva cuelga en la sala, con etiqueta.",
+  "text": "El reloj marca la misma hora que la radio. Halina dice que le gustaba más antes: tenía una hora de margen. La llave nueva cuelga en la sala, con etiqueta.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_07_hour_back.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14010707,
+  "speaker": "elzbieta",
+  "subtitle": "Hay acuerdo: el reloj debe ir con la ciudad. Esta noche cambia la hora, y él lleva años en el horario de verano. La portezuela está cerrada y no tengo llave.",
+  "text": "Hay acuerdo: el reloj debe ir con la ciudad. Esta noche cambia la hora, y él lleva años en el horario de verano. La portezuela está cerrada y no tengo llave.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_07_hour_back.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6467626,
+  "speaker": "zuzanna",
+  "subtitle": "El cuaderno del señor Henryk tiene una nota cada seis meses: reloj del portal, una hora adelante, una hora atrás. Luego, nada. La llave la llevaba encima.",
+  "text": "El cuaderno del señor Henryk tiene una nota cada seis meses: reloj del portal, una hora adelante, una hora atrás. Luego, nada. La llave la llevaba encima.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_07_hour_back.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14317622,
+  "speaker": "locksmith",
+  "subtitle": "El acuerdo y el permiso de la junta coinciden. Doscientas quince monedas. Cerradura vieja y maquinaria justo detrás: con calma. Hoy tenemos una hora de más.",
+  "text": "El acuerdo y el permiso de la junta coinciden. Doscientas quince monedas. Cerradura vieja y maquinaria justo detrás: con calma. Hoy tenemos una hora de más.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_07_hour_back.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9699421,
+  "speaker": "elzbieta",
+  "subtitle": "De acuerdo. Los vecinos quedan bajo este reloj desde hace medio siglo. Medio año llegan puntuales; el otro medio, una hora antes. Ya basta.",
+  "text": "De acuerdo. Los vecinos quedan bajo este reloj desde hace medio siglo. Medio año llegan puntuales; el otro medio, una hora antes. Ya basta.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_09_almost_right_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2872332,
+  "speaker": "zuzanna",
+  "subtitle": "Inspección superada. Le hicimos al capitán tres llaves, bien hechas. Y la llave del taller entra cada vez peor últimamente. Apunté: desgaste.",
+  "text": "Inspección superada. Le hicimos al capitán tres llaves, bien hechas. Y la llave del taller entra cada vez peor últimamente. Apunté: desgaste.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_09_almost_right_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16403654,
+  "speaker": "captain",
+  "subtitle": "Mañana a las ocho, inspección. Los papeles del barco están en el armario. Encargué una copia de la llave en la estación, en cinco minutos. Entró. No salió bien.",
+  "text": "Mañana a las ocho, inspección. Los papeles del barco están en el armario. Encargué una copia de la llave en la estación, en cinco minutos. Entró. No salió bien.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_09_almost_right_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14412087,
+  "speaker": "aino",
+  "subtitle": "Casi encajaba. Esta cerradura opina que el casi importa: se bloqueó y ya no acepta ni la original. Es la primera vez que el capitán pierde contra un armario.",
+  "text": "Casi encajaba. Esta cerradura opina que el casi importa: se bloqueó y ya no acepta ni la original. Es la primera vez que el capitán pierde contra un armario.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_09_almost_right_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5165593,
+  "speaker": "locksmith",
+  "subtitle": "La carta del armador y la palabra de Aino coinciden. Doscientas treinta monedas. A una cerradura rencorosa se le pide perdón despacio. Estará antes de las ocho.",
+  "text": "La carta del armador y la palabra de Aino coinciden. Doscientas treinta monedas. A una cerradura rencorosa se le pide perdón despacio. Estará antes de las ocho.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_09_almost_right_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12362857,
+  "speaker": "captain",
+  "subtitle": "De acuerdo. Lo anotaré en el diario de a bordo: armario bloqueado por culpa del capitán. Treinta años en el mar, y me ha vencido un puesto de llaves.",
+  "text": "De acuerdo. Lo anotaré en el diario de a bordo: armario bloqueado por culpa del capitán. Treinta años en el mar, y me ha vencido un puesto de llaves.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_10_thirteenth_envelope.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12051453,
+  "speaker": "halina",
+  "subtitle": "La cera pasó por la llave de Henryk hasta medianoche, hijo. A mí me salió una olla. A Zuzanna, una llave, palabra. A usted, nada: estaba tomando caldo.",
+  "text": "La cera pasó por la llave de Henryk hasta medianoche, hijo. A mí me salió una olla. A Zuzanna, una llave, palabra. A usted, nada: estaba tomando caldo.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_10_thirteenth_envelope.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6550484,
+  "speaker": "locksmith",
+  "subtitle": "La cerradura de Henryk descansa en el estante; en la puerta trabaja la de Zuzanna. En la sala común cuelga un sobre número trece. A nombre de Zuzanna Wilk.",
+  "text": "La cerradura de Henryk descansa en el estante; en la puerta trabaja la de Zuzanna. En la sala común cuelga un sobre número trece. A nombre de Zuzanna Wilk.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_10_thirteenth_envelope.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11637582,
+  "speaker": "zuzanna",
+  "subtitle": "La llave entra y no se mueve. Eso ya no es carácter, es desgaste. Pero primero pregunto de quién es. Esta noche el cliente es usted: sus pruebas, por favor.",
+  "text": "La llave entra y no se mueve. Eso ya no es carácter, es desgaste. Pero primero pregunto de quién es. Esta noche el cliente es usted: sus pruebas, por favor.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_10_thirteenth_envelope.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7198989,
+  "speaker": "halina",
+  "subtitle": "Yo respondo por él, hija. Desde el primer caldo sé de quién es este taller. Los vecinos esperan, pero las normas son las normas. Henryk se habría reído.",
+  "text": "Yo respondo por él, hija. Desde el primer caldo sé de quién es este taller. Los vecinos esperan, pero las normas son las normas. Henryk se habría reído.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_10_thirteenth_envelope.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3455318,
+  "speaker": "locksmith",
+  "subtitle": "La palabra de la señora Halina y una carta certificada dirigida al taller. Doscientas sesenta monedas, de mi bolsillo a mi cajón. Primero el precio, siempre.",
+  "text": "La palabra de la señora Halina y una carta certificada dirigida al taller. Doscientas sesenta monedas, de mi bolsillo a mi cajón. Primero el precio, siempre.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.ch16_10_thirteenth_envelope.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9001,
+  "speaker": "zuzanna",
+  "subtitle": "Todo coincide. El cliente también está de acuerdo, porque el cliente es usted. Abra, maestro. Yo sostengo el cuaderno, y la cera se enfría.",
+  "text": "Todo coincide. El cliente también está de acuerdo, porque el cliente es usted. Abra, maestro. Yo sostengo el cuaderno, y la cera se enfría.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch16_04_borrowed_barrow.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5479409,
+  "speaker": "waldek",
+  "subtitle": "Leí el mensaje en casa de mi hija. Volví el domingo y llevé la carretilla yo mismo. Con una calabaza dentro. Son los intereses.",
+  "text": "Leí el mensaje en casa de mi hija. Volví el domingo y llevé la carretilla yo mismo. Con una calabaza dentro. Son los intereses.",
+  "voice_id": "6ECEPYinwnizS5hjagZQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch16_04_borrowed_barrow.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13449696,
+  "speaker": "zbyszek",
+  "subtitle": "Saqué las hojas con la carretilla común. La mía la presto ahora apuntándola en un cuaderno, como Waldek la prensa. La calabaza acabó en sopa para los dos.",
+  "text": "Saqué las hojas con la carretilla común. La mía la presto ahora apuntándola en un cuaderno, como Waldek la prensa. La calabaza acabó en sopa para los dos.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch16_04_borrowed_barrow.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1668586,
+  "speaker": "zbyszek",
+  "subtitle": "La carretilla es mía, se la presté a Waldek en mayo. Está en su caseta, y él con su hija hasta el domingo. Abra, por favor; solo me llevaré lo mío.",
+  "text": "La carretilla es mía, se la presté a Waldek en mayo. Está en su caseta, y él con su hija hasta el domingo. Abra, por favor; solo me llevaré lo mío.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch16_04_borrowed_barrow.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8865840,
+  "speaker": "locksmith",
+  "subtitle": "La carretilla es suya, le creo. Pero la caseta es del señor Waldek. Llamémoslo, para eso tiene usted su número.",
+  "text": "La carretilla es suya, le creo. Pero la caseta es del señor Waldek. Llamémoslo, para eso tiene usted su número.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch16_04_borrowed_barrow.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13908381,
+  "speaker": "zbyszek",
+  "subtitle": "No voy a molestarlo por una carretilla. Con los nietos tampoco oye el teléfono. Nos conocemos desde hace treinta años; a él no le importaría.",
+  "text": "No voy a molestarlo por una carretilla. Con los nietos tampoco oye el teléfono. Nos conocemos desde hace treinta años; a él no le importaría.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch16_04_borrowed_barrow.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5009863,
+  "speaker": "locksmith",
+  "subtitle": "Aquí no voy a abrir. Lo prestado vuelve por el dueño de la cerradura, no por el cerrajero. Los huertos tienen una carretilla común; escribamos al señor Waldek.",
+  "text": "Aquí no voy a abrir. Lo prestado vuelve por el dueño de la cerradura, no por el cerrajero. Los huertos tienen una carretilla común; escribamos al señor Waldek.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch16_08_roommates_room.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13427501,
+  "speaker": "leon",
+  "subtitle": "Contesté en el sendero. Bastaba con bajar y subir el interruptor del recibidor, el segundo por la izquierda. El router va en él, con mi cuarto.",
+  "text": "Contesté en el sendero. Bastaba con bajar y subir el interruptor del recibidor, el segundo por la izquierda. El router va en él, con mi cuarto.",
+  "voice_id": "8eWXyjbVpcTbRDzlc0tF",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch16_08_roommates_room.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 809552,
+  "speaker": "iga",
+  "subtitle": "La grabación salió veinte minutos antes de medianoche. El router está ahora en el recibidor; lo cambió Leon. Yo le regalé tapones para los oídos. Trato justo.",
+  "text": "La grabación salió veinte minutos antes de medianoche. El router está ahora en el recibidor; lo cambió Leon. Yo le regalé tapones para los oídos. Trato justo.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch16_08_roommates_room.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4789378,
+  "speaker": "iga",
+  "subtitle": "Alquilamos el piso juntos desde hace una semana. El router está en el cuarto de Leon y parpadea en rojo. Él está en la montaña, y mi grabación sale hoy.",
+  "text": "Alquilamos el piso juntos desde hace una semana. El router está en el cuarto de Leon y parpadea en rojo. Él está en la montaña, y mi grabación sale hoy.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch16_08_roommates_room.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13523179,
+  "speaker": "locksmith",
+  "subtitle": "El piso es común, pero ese cuarto lo cerró Leon. Llamémoslo. Quizá baste con que diga dónde está el interruptor.",
+  "text": "El piso es común, pero ese cuarto lo cerró Leon. Llamémoslo. Quizá baste con que diga dónde está el interruptor.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch16_08_roommates_room.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2575023,
+  "speaker": "iga",
+  "subtitle": "Llevo una semana aquí y ya le he pedido tres favores. No quiero ser esa compañera de piso. Es solo un enchufe: quitar y poner, usted ni siquiera entrará.",
+  "text": "Llevo una semana aquí y ya le he pedido tres favores. No quiero ser esa compañera de piso. Es solo un enchufe: quitar y poner, usted ni siquiera entrará.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "es/job.refuse_ch16_08_roommates_room.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8022116,
+  "speaker": "locksmith",
+  "subtitle": "Aquí no voy a abrir. El piso es común; un cuarto cerrado con llave, no. Un cuarto favor cuesta menos que una puerta abierta sin preguntar. Llamamos juntos.",
+  "text": "Aquí no voy a abrir. El piso es común; un cuarto cerrado con llave, no. Un cuarto favor cuesta menos que una puerta abierta sin preguntar. Llamamos juntos.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_01_bookmark_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10460842,
+  "speaker": "zosia",
+  "subtitle": "Le livre, c'est moi qui l'avais, depuis août. J'ai rendu la clé avec. Comme marque-page, elle était incommode, mais je ne le dirai pas à Irena.",
+  "text": "Le livre, c'est moi qui l'avais, depuis août. J'ai rendu la clé avec. Comme marque-page, elle était incommode, mais je ne le dirai pas à Irena.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_01_bookmark_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16164251,
+  "speaker": "irena",
+  "subtitle": "La clé du coffret me servait de marque-page. Quelqu'un a emprunté le livre. Qui, je l'ai noté sur une fiche. Et les fiches sont dans le coffret.",
+  "text": "La clé du coffret me servait de marque-page. Quelqu'un a emprunté le livre. Qui, je l'ai noté sur une fiche. Et les fiches sont dans le coffret.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_01_bookmark_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14419311,
+  "speaker": "halina",
+  "subtitle": "Le coffret est à Irena, mon petit. Elle l'a apporté sous le tilleul en juin, avec les livres de son mari. J'y ai moi-même une fiche, la numéro trois.",
+  "text": "Le coffret est à Irena, mon petit. Elle l'a apporté sous le tilleul en juin, avec les livres de son mari. J'y ai moi-même une fiche, la numéro trois.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_01_bookmark_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1998030,
+  "speaker": "locksmith",
+  "subtitle": "Votre pièce d'identité et la parole de Madame Halina concordent. Cent soixante-dix pièces. Le coffret restera intact, et les fiches ne sont pas ma lecture.",
+  "text": "Votre pièce d'identité et la parole de Madame Halina concordent. Cent soixante-dix pièces. Le coffret restera intact, et les fiches ne sont pas ma lecture.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_01_bookmark_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5301660,
+  "speaker": "irena",
+  "subtitle": "D'accord. Toute ma carrière, j'ai surveillé les dates de retour des autres. Ma propre clé, je ne l'ai pas surveillée. Ne le notez pas, s'il vous plaît.",
+  "text": "D'accord. Toute ma carrière, j'ai surveillé les dates de retour des autres. Ma propre clé, je ne l'ai pas surveillée. Ne le notez pas, s'il vous plaît.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_02_auction_safe.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12638321,
+  "speaker": "gosia",
+  "subtitle": "Dedans, il y avait des boutons. Trois mille boutons de nacre et pas une seule pièce. Mon meilleur achat de l'année. Il y a eu des beignets.",
+  "text": "Dedans, il y avait des boutons. Trois mille boutons de nacre et pas une seule pièce. Mon meilleur achat de l'année. Il y a eu des beignets.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_02_auction_safe.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8045369,
+  "speaker": "gosia",
+  "subtitle": "Je l'ai acheté fermé, comme l'annonçait le catalogue : coffre de mercerie, code inconnu. Trois personnes ont enchéri. Deux par curiosité.",
+  "text": "Je l'ai acheté fermé, comme l'annonçait le catalogue : coffre de mercerie, code inconnu. Trois personnes ont enchéri. Deux par curiosité.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_02_auction_safe.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5223902,
+  "speaker": "zuzanna",
+  "subtitle": "D'abord, je demande à qui c'est. C'est écrit en première page du carnet, et depuis septembre j'y tiens ma propre colonne. La facture, s'il vous plaît.",
+  "text": "D'abord, je demande à qui c'est. C'est écrit en première page du carnet, et depuis septembre j'y tiens ma propre colonne. La facture, s'il vous plaît.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_02_auction_safe.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1733717,
+  "speaker": "locksmith",
+  "subtitle": "La facture des enchères et la photo concordent. Cent quatre-vingts pièces. Zuzanna veille sur le carnet, moi j'écoute le cadran.",
+  "text": "La facture des enchères et la photo concordent. Cent quatre-vingts pièces. Zuzanna veille sur le carnet, moi j'écoute le cadran.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_02_auction_safe.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2742608,
+  "speaker": "gosia",
+  "subtitle": "D'accord. S'il y a un trésor dedans, j'offre les beignets. S'il est vide, je les offre aussi, pour nous consoler.",
+  "text": "D'accord. S'il y a un trésor dedans, j'offre les beignets. S'il est vide, je les offre aussi, pour nous consoler.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_03_spare_in_the_lake.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13654640,
+  "speaker": "kazimierz",
+  "subtitle": "J'ai fait refaire un double pour Madame Teresa. Il est accroché à un clou dans mon entrée. À la pêche, je n'emporte plus qu'une clé. Au bout d'une ficelle.",
+  "text": "J'ai fait refaire un double pour Madame Teresa. Il est accroché à un clou dans mon entrée. À la pêche, je n'emporte plus qu'une clé. Au bout d'une ficelle.",
+  "voice_id": "pX3C8X5pB5Ord4v3sYQy",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_03_spare_in_the_lake.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3086344,
+  "speaker": "teresa",
+  "subtitle": "Je suis juste descendue à la boîte aux lettres, en pantoufles. La porte a claqué. Et mon double est au fond du lac, avec les clés de Monsieur Kazimierz.",
+  "text": "Je suis juste descendue à la boîte aux lettres, en pantoufles. La porte a claqué. Et mon double est au fond du lac, avec les clés de Monsieur Kazimierz.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_03_spare_in_the_lake.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1656596,
+  "speaker": "kazimierz",
+  "subtitle": "Je le gardais avec les miennes pour ne pas le perdre. C'est sa porte, elle habite sous chez moi. Sa couronne, elle l'a tressée elle-même, je la connais bien.",
+  "text": "Je le gardais avec les miennes pour ne pas le perdre. C'est sa porte, elle habite sous chez moi. Sa couronne, elle l'a tressée elle-même, je la connais bien.",
+  "voice_id": "pX3C8X5pB5Ord4v3sYQy",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_03_spare_in_the_lake.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4637731,
+  "speaker": "locksmith",
+  "subtitle": "Votre pièce d'identité et la parole de Monsieur Kazimierz concordent. Cent quatre-vingt-cinq pièces, sans perçage. Vos pantoufles n'auront pas froid.",
+  "text": "Votre pièce d'identité et la parole de Monsieur Kazimierz concordent. Cent quatre-vingt-cinq pièces, sans perçage. Vos pantoufles n'auront pas froid.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_03_spare_in_the_lake.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13908525,
+  "speaker": "teresa",
+  "subtitle": "D'accord. En août, j'ai répondu de lui ; aujourd'hui, il répond de moi. C'est à ça que sert une cage d'escalier. Il y aura de la brioche aux deux étages.",
+  "text": "D'accord. En août, j'ai répondu de lui ; aujourd'hui, il répond de moi. C'est à ça que sert une cage d'escalier. Il y aura de la brioche aux deux étages.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_05_wrong_padlock.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2310660,
+  "speaker": "edek",
+  "subtitle": "Le cadenas attendait à la loge, avec un mot. Le première année l'a repris, rouge jusqu'aux oreilles. Je l'ai noté au carnet : casier dix-huit, souligné.",
+  "text": "Le cadenas attendait à la loge, avec un mot. Le première année l'a repris, rouge jusqu'aux oreilles. Je l'ai noté au carnet : casier dix-huit, souligné.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_05_wrong_padlock.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16572422,
+  "speaker": "iga",
+  "subtitle": "Je déménage aujourd'hui, la camionnette attend devant la grille. Sur mon casier, il y a un cadenas que je n'ai jamais vu de ma vie. Ma batterie est dedans.",
+  "text": "Je déménage aujourd'hui, la camionnette attend devant la grille. Sur mon casier, il y a un cadenas que je n'ai jamais vu de ma vie. Ma batterie est dedans.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_05_wrong_padlock.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 733738,
+  "speaker": "edek",
+  "subtitle": "Casier huit, Iga : c'est sur ma liste et dans ma tête. Le cadenas, c'est un première année du casier dix-huit. Il est en week-end d'intégration, sans réseau.",
+  "text": "Casier huit, Iga : c'est sur ma liste et dans ma tête. Le cadenas, c'est un première année du casier dix-huit. Il est en week-end d'intégration, sans réseau.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_05_wrong_padlock.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13647944,
+  "speaker": "locksmith",
+  "subtitle": "La liste et la carte d'étudiante concordent. Cent quatre-vingt-quinze pièces. Ce cadenas est à quelqu'un, donc je ne le coupe pas : il reviendra entier.",
+  "text": "La liste et la carte d'étudiante concordent. Cent quatre-vingt-quinze pièces. Ce cadenas est à quelqu'un, donc je ne le coupe pas : il reviendra entier.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_05_wrong_padlock.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10212599,
+  "speaker": "iga",
+  "subtitle": "D'accord. Laissez-lui un mot, s'il vous plaît : huit, ce n'est pas dix-huit. Et le bonjour de la batterie, en retard à la répétition à cause de lui.",
+  "text": "D'accord. Laissez-lui un mot, s'il vous plaît : huit, ce n'est pas dix-huit. Et le bonjour de la batterie, en retard à la répétition à cause de lui.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_06_salt_before_frost.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9830778,
+  "speaker": "stefan",
+  "subtitle": "À six heures, le trottoir était salé, personne n'a glissé. Et la pie a laissé la clé sur le toit de mon kiosque. Je l'ai rendue à Monsieur Roman. Contre reçu.",
+  "text": "À six heures, le trottoir était salé, personne n'a glissé. Et la pie a laissé la clé sur le toit de mon kiosque. Je l'ai rendue à Monsieur Roman. Contre reçu.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_06_salt_before_frost.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12654543,
+  "speaker": "roman",
+  "subtitle": "Gel dès minuit. Le sel est dans la remise, le cadenas sur la remise, et la clé, une pie l'a prise. Sur le rebord du bureau. C'est filmé. Réclamation refusée.",
+  "text": "Gel dès minuit. Le sel est dans la remise, le cadenas sur la remise, et la clé, une pie l'a prise. Sur le rebord du bureau. C'est filmé. Réclamation refusée.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_06_salt_before_frost.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15898896,
+  "speaker": "stefan",
+  "subtitle": "Cette pie, je la connais. Elle me chipe des capsules au kiosque depuis des années. Sans sel, l'arrêt de bus à six heures est une patinoire. Depuis 1994.",
+  "text": "Cette pie, je la connais. Elle me chipe des capsules au kiosque depuis des années. Sans sel, l'arrêt de bus à six heures est une patinoire. Depuis 1994.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_06_salt_before_frost.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8467497,
+  "speaker": "locksmith",
+  "subtitle": "L'accord de la gérance et la facture du cadenas concordent. Deux cent cinq pièces. Un cadenas pareil a ses disques ; j'aurai fini bien avant minuit.",
+  "text": "L'accord de la gérance et la facture du cadenas concordent. Deux cent cinq pièces. Un cadenas pareil a ses disques ; j'aurai fini bien avant minuit.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_06_salt_before_frost.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6407766,
+  "speaker": "roman",
+  "subtitle": "D'accord. La nouvelle clé sera au bureau, dans une armoire fermée. La pie est interdite d'accès. Par écrit.",
+  "text": "D'accord. La nouvelle clé sera au bureau, dans une armoire fermée. La pie est interdite d'accès. Par écrit.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_07_hour_back.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7050186,
+  "speaker": "zosia",
+  "subtitle": "L'horloge donne la même heure que la radio. Halina préférait avant : elle avait une heure d'avance. La nouvelle clé est dans la salle commune, étiquetée.",
+  "text": "L'horloge donne la même heure que la radio. Halina préférait avant : elle avait une heure d'avance. La nouvelle clé est dans la salle commune, étiquetée.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_07_hour_back.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14010707,
+  "speaker": "elzbieta",
+  "subtitle": "La décision est prise : l'horloge doit marcher avec la ville. On change d'heure cette nuit, et elle est restée à l'heure d'été. Je n'ai pas la clé de sa trappe.",
+  "text": "La décision est prise : l'horloge doit marcher avec la ville. On change d'heure cette nuit, et elle est restée à l'heure d'été. Je n'ai pas la clé de sa trappe.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_07_hour_back.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6467626,
+  "speaker": "zuzanna",
+  "subtitle": "Dans le carnet de Monsieur Henryk, tous les six mois : horloge du porche, une heure en avant, une heure en arrière. Puis plus rien. Il gardait la clé sur lui.",
+  "text": "Dans le carnet de Monsieur Henryk, tous les six mois : horloge du porche, une heure en avant, une heure en arrière. Puis plus rien. Il gardait la clé sur lui.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_07_hour_back.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14317622,
+  "speaker": "locksmith",
+  "subtitle": "La décision et l'accord du conseil concordent. Deux cent quinze pièces. Vieille serrure, mécanisme derrière : doucement. Cette nuit, on a une heure de plus.",
+  "text": "La décision et l'accord du conseil concordent. Deux cent quinze pièces. Vieille serrure, mécanisme derrière : doucement. Cette nuit, on a une heure de plus.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_07_hour_back.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9699421,
+  "speaker": "elzbieta",
+  "subtitle": "D'accord. Les voisins se donnent rendez-vous sous cette horloge depuis un demi-siècle. La moitié de l'année à l'heure, l'autre une heure trop tôt. Ça suffit.",
+  "text": "D'accord. Les voisins se donnent rendez-vous sous cette horloge depuis un demi-siècle. La moitié de l'année à l'heure, l'autre une heure trop tôt. Ça suffit.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_09_almost_right_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2872332,
+  "speaker": "zuzanna",
+  "subtitle": "Visite réussie. Nous avons fait trois clés au capitaine, dans les règles. Et la clé de l'atelier entre de plus en plus mal, ces temps-ci. J'ai noté : usure.",
+  "text": "Visite réussie. Nous avons fait trois clés au capitaine, dans les règles. Et la clé de l'atelier entre de plus en plus mal, ces temps-ci. J'ai noté : usure.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_09_almost_right_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16403654,
+  "speaker": "captain",
+  "subtitle": "Visite demain à huit heures. Les papiers du navire sont dans le coffre. J'ai fait faire un double à la gare, en cinq minutes. Il est entré. Mal lui en a pris.",
+  "text": "Visite demain à huit heures. Les papiers du navire sont dans le coffre. J'ai fait faire un double à la gare, en cinq minutes. Il est entré. Mal lui en a pris.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_09_almost_right_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14412087,
+  "speaker": "aino",
+  "subtitle": "Elle allait presque. Pour cette serrure, presque, ça compte : elle s'est bloquée et refuse même l'originale. Première défaite du capitaine face à un coffre.",
+  "text": "Elle allait presque. Pour cette serrure, presque, ça compte : elle s'est bloquée et refuse même l'originale. Première défaite du capitaine face à un coffre.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_09_almost_right_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5165593,
+  "speaker": "locksmith",
+  "subtitle": "La lettre de l'armateur et la parole d'Aino concordent. Deux cent trente pièces. Une serrure rancunière, ça s'apaise lentement. Ce sera prêt avant huit heures.",
+  "text": "La lettre de l'armateur et la parole d'Aino concordent. Deux cent trente pièces. Une serrure rancunière, ça s'apaise lentement. Ce sera prêt avant huit heures.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_09_almost_right_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12362857,
+  "speaker": "captain",
+  "subtitle": "D'accord. Je l'écrirai au journal de bord : coffre bloqué par la faute du capitaine. Trente ans de mer, et c'est un kiosque à clés qui m'a vaincu.",
+  "text": "D'accord. Je l'écrirai au journal de bord : coffre bloqué par la faute du capitaine. Trente ans de mer, et c'est un kiosque à clés qui m'a vaincu.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_10_thirteenth_envelope.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12051453,
+  "speaker": "halina",
+  "subtitle": "La cire a coulé par la clé d'Henryk jusqu'à minuit, mon petit. Moi, j'ai eu une marmite. Zuzanna, une clé, parole. Vous, rien : vous mangiez le bouillon.",
+  "text": "La cire a coulé par la clé d'Henryk jusqu'à minuit, mon petit. Moi, j'ai eu une marmite. Zuzanna, une clé, parole. Vous, rien : vous mangiez le bouillon.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_10_thirteenth_envelope.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6550484,
+  "speaker": "locksmith",
+  "subtitle": "La serrure d'Henryk se repose sur l'étagère ; celle de Zuzanna travaille dans la porte. Une treizième enveloppe pend dans la salle commune. Au nom de Zuzanna.",
+  "text": "La serrure d'Henryk se repose sur l'étagère ; celle de Zuzanna travaille dans la porte. Une treizième enveloppe pend dans la salle commune. Au nom de Zuzanna.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_10_thirteenth_envelope.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11637582,
+  "speaker": "zuzanna",
+  "subtitle": "La clé entre et ne bouge plus. Ce n'est plus du caractère, c'est de l'usure. Mais d'abord : à qui est-ce ? Ce soir, le client, c'est vous. Vos preuves.",
+  "text": "La clé entre et ne bouge plus. Ce n'est plus du caractère, c'est de l'usure. Mais d'abord : à qui est-ce ? Ce soir, le client, c'est vous. Vos preuves.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_10_thirteenth_envelope.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7198989,
+  "speaker": "halina",
+  "subtitle": "Je réponds de lui, mon enfant. Depuis le premier bouillon, je sais à qui est cet atelier. Les voisins attendent, mais la règle est la règle. Henryk aurait ri.",
+  "text": "Je réponds de lui, mon enfant. Depuis le premier bouillon, je sais à qui est cet atelier. Les voisins attendent, mais la règle est la règle. Henryk aurait ri.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_10_thirteenth_envelope.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3455318,
+  "speaker": "locksmith",
+  "subtitle": "La parole de Madame Halina et un recommandé adressé à l'atelier. Deux cent soixante pièces, de ma poche à mon tiroir. Le devis avant le travail, même chez moi.",
+  "text": "La parole de Madame Halina et un recommandé adressé à l'atelier. Deux cent soixante pièces, de ma poche à mon tiroir. Le devis avant le travail, même chez moi.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.ch16_10_thirteenth_envelope.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9001,
+  "speaker": "zuzanna",
+  "subtitle": "Tout concorde. Le client est d'accord aussi, puisque le client, c'est vous. Ouvrez, maître. Je tiens le carnet, et la cire refroidit.",
+  "text": "Tout concorde. Le client est d'accord aussi, puisque le client, c'est vous. Ouvrez, maître. Je tiens le carnet, et la cire refroidit.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch16_04_borrowed_barrow.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5479409,
+  "speaker": "waldek",
+  "subtitle": "J'ai lu le message chez ma fille. Je suis rentré dimanche et j'ai ramené la brouette moi-même. Avec une citrouille dedans. Ce sont les intérêts.",
+  "text": "J'ai lu le message chez ma fille. Je suis rentré dimanche et j'ai ramené la brouette moi-même. Avec une citrouille dedans. Ce sont les intérêts.",
+  "voice_id": "6ECEPYinwnizS5hjagZQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch16_04_borrowed_barrow.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13449696,
+  "speaker": "zbyszek",
+  "subtitle": "J'ai évacué les feuilles avec la brouette commune. La mienne, je la prête désormais contre signature, comme Waldek le pressoir. La citrouille a fini en soupe.",
+  "text": "J'ai évacué les feuilles avec la brouette commune. La mienne, je la prête désormais contre signature, comme Waldek le pressoir. La citrouille a fini en soupe.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch16_04_borrowed_barrow.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1668586,
+  "speaker": "zbyszek",
+  "subtitle": "La brouette est à moi, je l'ai prêtée à Waldek en mai. Elle est dans son abri, et lui chez sa fille jusqu'à dimanche. Ouvrez, je ne prendrai que mon bien.",
+  "text": "La brouette est à moi, je l'ai prêtée à Waldek en mai. Elle est dans son abri, et lui chez sa fille jusqu'à dimanche. Ouvrez, je ne prendrai que mon bien.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch16_04_borrowed_barrow.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8865840,
+  "speaker": "locksmith",
+  "subtitle": "La brouette est à vous, je vous crois. Mais l'abri est à Monsieur Waldek. Appelons-le, vous avez son numéro pour ça.",
+  "text": "La brouette est à vous, je vous crois. Mais l'abri est à Monsieur Waldek. Appelons-le, vous avez son numéro pour ça.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch16_04_borrowed_barrow.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13908381,
+  "speaker": "zbyszek",
+  "subtitle": "Je ne vais pas le déranger pour une brouette. Avec ses petits-enfants, il n'entend pas son téléphone. Trente ans qu'on se connaît, il ne dirait rien.",
+  "text": "Je ne vais pas le déranger pour une brouette. Avec ses petits-enfants, il n'entend pas son téléphone. Trente ans qu'on se connaît, il ne dirait rien.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch16_04_borrowed_barrow.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5009863,
+  "speaker": "locksmith",
+  "subtitle": "Ici, je n'ouvrirai pas. Un objet prêté revient par le propriétaire de la serrure, pas par le serrurier. Prenez la brouette commune ; écrivons à Monsieur Waldek.",
+  "text": "Ici, je n'ouvrirai pas. Un objet prêté revient par le propriétaire de la serrure, pas par le serrurier. Prenez la brouette commune ; écrivons à Monsieur Waldek.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch16_08_roommates_room.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13427501,
+  "speaker": "leon",
+  "subtitle": "J'ai décroché sur le sentier. Il suffisait de couper et de remettre le disjoncteur de l'entrée, le deuxième à gauche. Le routeur est dessus, avec ma chambre.",
+  "text": "J'ai décroché sur le sentier. Il suffisait de couper et de remettre le disjoncteur de l'entrée, le deuxième à gauche. Le routeur est dessus, avec ma chambre.",
+  "voice_id": "8eWXyjbVpcTbRDzlc0tF",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch16_08_roommates_room.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 809552,
+  "speaker": "iga",
+  "subtitle": "L'enregistrement est parti vingt minutes avant minuit. Le routeur est dans l'entrée, Leon l'a déplacé. Je lui ai offert des bouchons d'oreilles. Bon échange.",
+  "text": "L'enregistrement est parti vingt minutes avant minuit. Le routeur est dans l'entrée, Leon l'a déplacé. Je lui ai offert des bouchons d'oreilles. Bon échange.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch16_08_roommates_room.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4789378,
+  "speaker": "iga",
+  "subtitle": "Nous louons l'appartement à deux depuis une semaine. Le routeur clignote en rouge dans la chambre de Leon. Il est à la montagne, et j'ai un rendu à minuit.",
+  "text": "Nous louons l'appartement à deux depuis une semaine. Le routeur clignote en rouge dans la chambre de Leon. Il est à la montagne, et j'ai un rendu à minuit.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch16_08_roommates_room.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13523179,
+  "speaker": "locksmith",
+  "subtitle": "L'appartement est commun, mais cette chambre, c'est Leon qui l'a fermée. Appelons-le. Il suffira peut-être qu'il dise où est le disjoncteur.",
+  "text": "L'appartement est commun, mais cette chambre, c'est Leon qui l'a fermée. Appelons-le. Il suffira peut-être qu'il dise où est le disjoncteur.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch16_08_roommates_room.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2575023,
+  "speaker": "iga",
+  "subtitle": "J'habite ici depuis une semaine et je lui ai déjà demandé trois services. Je ne veux pas être cette colocataire-là. Juste une prise à débrancher, sans entrer.",
+  "text": "J'habite ici depuis une semaine et je lui ai déjà demandé trois services. Je ne veux pas être cette colocataire-là. Juste une prise à débrancher, sans entrer.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "fr/job.refuse_ch16_08_roommates_room.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8022116,
+  "speaker": "locksmith",
+  "subtitle": "Ici, je n'ouvrirai pas. L'appartement est commun, pas une chambre fermée à clé. Un quatrième service coûte moins qu'une porte ouverte sans demander. Appelons.",
+  "text": "Ici, je n'ouvrirai pas. L'appartement est commun, pas une chambre fermée à clé. Un quatrième service coûte moins qu'une porte ouverte sans demander. Appelons.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_01_bookmark_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10460842,
+  "speaker": "zosia",
+  "subtitle": "Książkę miałam ja, od sierpnia. Kluczyk oddałam razem z nią. Jako zakładka był niewygodny, ale Irenie tego nie powiem.",
+  "text": "Książkę miałam ja, od sierpnia. Kluczyk oddałam razem z nią. Jako zakładka był niewygodny, ale Irenie tego nie powiem.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_01_bookmark_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16164251,
+  "speaker": "irena",
+  "subtitle": "Kluczyk do kasetki służył mi za zakładkę. Książkę ktoś wypożyczył. Kto, zapisałam na karcie. A karty są w kasetce.",
+  "text": "Kluczyk do kasetki służył mi za zakładkę. Książkę ktoś wypożyczył. Kto, zapisałam na karcie. A karty są w kasetce.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_01_bookmark_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14419311,
+  "speaker": "halina",
+  "subtitle": "Kasetka jest Ireny, synku. Przyniosła ją pod lipę w czerwcu, razem z książkami męża. Sama mam w niej kartę, numer trzy.",
+  "text": "Kasetka jest Ireny, synku. Przyniosła ją pod lipę w czerwcu, razem z książkami męża. Sama mam w niej kartę, numer trzy.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_01_bookmark_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1998030,
+  "speaker": "locksmith",
+  "subtitle": "Dokument i słowo pani Haliny się zgadzają. Sto siedemdziesiąt monet. Kasetka zostanie cała, a co jest na kartach, to nie moja lektura.",
+  "text": "Dokument i słowo pani Haliny się zgadzają. Sto siedemdziesiąt monet. Kasetka zostanie cała, a co jest na kartach, to nie moja lektura.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_01_bookmark_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5301660,
+  "speaker": "irena",
+  "subtitle": "Zgoda. Całe życie pilnowałam cudzych terminów zwrotu. Własnego kluczyka nie upilnowałam. Proszę tego nie zapisywać.",
+  "text": "Zgoda. Całe życie pilnowałam cudzych terminów zwrotu. Własnego kluczyka nie upilnowałam. Proszę tego nie zapisywać.",
+  "voice_id": "RaTmDcBJbEyaCxlm1tSb",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_02_auction_safe.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12638321,
+  "speaker": "gosia",
+  "subtitle": "W środku były guziki. Trzy tysiące guzików z masy perłowej i ani jednej monety. Najlepszy zakup w tym roku. Pączki były.",
+  "text": "W środku były guziki. Trzy tysiące guzików z masy perłowej i ani jednej monety. Najlepszy zakup w tym roku. Pączki były.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_02_auction_safe.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8045369,
+  "speaker": "gosia",
+  "subtitle": "Kupiłam go zamkniętego, tak stało w katalogu: sejf po pasmanterii, szyfr nieznany. Licytowały trzy osoby. Dwie z ciekawości.",
+  "text": "Kupiłam go zamkniętego, tak stało w katalogu: sejf po pasmanterii, szyfr nieznany. Licytowały trzy osoby. Dwie z ciekawości.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_02_auction_safe.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5223902,
+  "speaker": "zuzanna",
+  "subtitle": "Najpierw pytam, czyje to. Tak jest na pierwszej stronie zeszytu, a od września prowadzę w nim własną rubrykę. Poproszę fakturę.",
+  "text": "Najpierw pytam, czyje to. Tak jest na pierwszej stronie zeszytu, a od września prowadzę w nim własną rubrykę. Poproszę fakturę.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_02_auction_safe.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1733717,
+  "speaker": "locksmith",
+  "subtitle": "Faktura z licytacji i zdjęcie się zgadzają. Sto osiemdziesiąt monet. Pani Zuzanna pilnuje zeszytu, ja słucham tarczy.",
+  "text": "Faktura z licytacji i zdjęcie się zgadzają. Sto osiemdziesiąt monet. Pani Zuzanna pilnuje zeszytu, ja słucham tarczy.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_02_auction_safe.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2742608,
+  "speaker": "gosia",
+  "subtitle": "Zgoda. Jeśli w środku jest skarb, stawiam pączki. Jeśli pusto, też stawiam, na pocieszenie.",
+  "text": "Zgoda. Jeśli w środku jest skarb, stawiam pączki. Jeśli pusto, też stawiam, na pocieszenie.",
+  "voice_id": "eGqeVQe69NEvejLmfrFG",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_03_spare_in_the_lake.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13654640,
+  "speaker": "kazimierz",
+  "subtitle": "Dorobiłem pani Teresie nowy zapasowy. Wisi u mnie na gwoździu w przedpokoju. Na ryby jeżdżę teraz z jednym kluczem. Na sznurku.",
+  "text": "Dorobiłem pani Teresie nowy zapasowy. Wisi u mnie na gwoździu w przedpokoju. Na ryby jeżdżę teraz z jednym kluczem. Na sznurku.",
+  "voice_id": "pX3C8X5pB5Ord4v3sYQy",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_03_spare_in_the_lake.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3086344,
+  "speaker": "teresa",
+  "subtitle": "Zeszłam tylko do skrzynki, w kapciach. Drzwi się zatrzasnęły. A mój zapasowy klucz leży w jeziorze, obok kluczy pana Kazimierza.",
+  "text": "Zeszłam tylko do skrzynki, w kapciach. Drzwi się zatrzasnęły. A mój zapasowy klucz leży w jeziorze, obok kluczy pana Kazimierza.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_03_spare_in_the_lake.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1656596,
+  "speaker": "kazimierz",
+  "subtitle": "Nosiłem go przy swoich, żeby nie zgubić. To jej drzwi, mieszka piętro pode mną. Wieniec na drzwiach wiła sama, znam go aż za dobrze.",
+  "text": "Nosiłem go przy swoich, żeby nie zgubić. To jej drzwi, mieszka piętro pode mną. Wieniec na drzwiach wiła sama, znam go aż za dobrze.",
+  "voice_id": "pX3C8X5pB5Ord4v3sYQy",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_03_spare_in_the_lake.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4637731,
+  "speaker": "locksmith",
+  "subtitle": "Dowód i słowo pana Kazimierza się zgadzają. Sto osiemdziesiąt pięć monet, bez wiercenia. Kapcie nie zdążą zmarznąć.",
+  "text": "Dowód i słowo pana Kazimierza się zgadzają. Sto osiemdziesiąt pięć monet, bez wiercenia. Kapcie nie zdążą zmarznąć.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_03_spare_in_the_lake.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13908525,
+  "speaker": "teresa",
+  "subtitle": "Zgoda. W sierpniu ja ręczyłam za niego, dziś on za mnie. Na tym polega klatka schodowa. Drożdżowe będzie na obu piętrach.",
+  "text": "Zgoda. W sierpniu ja ręczyłam za niego, dziś on za mnie. Na tym polega klatka schodowa. Drożdżowe będzie na obu piętrach.",
+  "voice_id": "NlZzdor9EYJTsLVG9YyZ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_05_wrong_padlock.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2310660,
+  "speaker": "edek",
+  "subtitle": "Kłódka czekała w portierni z karteczką. Pierwszoroczny odebrał ją czerwony po uszy. Wpisałem go do zeszytu: schowek osiemnaście, podkreślone.",
+  "text": "Kłódka czekała w portierni z karteczką. Pierwszoroczny odebrał ją czerwony po uszy. Wpisałem go do zeszytu: schowek osiemnaście, podkreślone.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_05_wrong_padlock.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16572422,
+  "speaker": "iga",
+  "subtitle": "Wyprowadzam się dziś, bus czeka pod bramą. Na moim schowku wisi kłódka, której w życiu nie widziałam. Perkusja jest w środku.",
+  "text": "Wyprowadzam się dziś, bus czeka pod bramą. Na moim schowku wisi kłódka, której w życiu nie widziałam. Perkusja jest w środku.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_05_wrong_padlock.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 733738,
+  "speaker": "edek",
+  "subtitle": "Schowek ósmy, Iga, mam na liście i mam w głowie. Kłódkę powiesił pierwszoroczny z osiemnastki. Jest na obozie integracyjnym, bez zasięgu.",
+  "text": "Schowek ósmy, Iga, mam na liście i mam w głowie. Kłódkę powiesił pierwszoroczny z osiemnastki. Jest na obozie integracyjnym, bez zasięgu.",
+  "voice_id": "pgdV0sGVYZWYRML1xwQm",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_05_wrong_padlock.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13647944,
+  "speaker": "locksmith",
+  "subtitle": "Wykaz i legitymacja się zgadzają. Sto dziewięćdziesiąt pięć monet. Kłódka jest czyjaś, więc jej nie przecinam: wróci do właściciela cała.",
+  "text": "Wykaz i legitymacja się zgadzają. Sto dziewięćdziesiąt pięć monet. Kłódka jest czyjaś, więc jej nie przecinam: wróci do właściciela cała.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_05_wrong_padlock.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 10212599,
+  "speaker": "iga",
+  "subtitle": "Zgoda. Proszę mu zostawić kartkę: osiem to nie osiemnaście. I pozdrowienia od perkusji, która przez niego spóźni się na próbę.",
+  "text": "Zgoda. Proszę mu zostawić kartkę: osiem to nie osiemnaście. I pozdrowienia od perkusji, która przez niego spóźni się na próbę.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_06_salt_before_frost.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9830778,
+  "speaker": "stefan",
+  "subtitle": "O szóstej chodnik był posypany, nikt się nie przewrócił. A sroka zostawiła klucz na dachu mojego kiosku. Oddałem go panu Romanowi. Za pokwitowaniem.",
+  "text": "O szóstej chodnik był posypany, nikt się nie przewrócił. A sroka zostawiła klucz na dachu mojego kiosku. Oddałem go panu Romanowi. Za pokwitowaniem.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_06_salt_before_frost.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12654543,
+  "speaker": "roman",
+  "subtitle": "Mróz od północy. Sól jest w szopie, kłódka na szopie, a klucz zabrała sroka. Z parapetu administracji. Mam nagranie, reklamacji nie przyjęła.",
+  "text": "Mróz od północy. Sól jest w szopie, kłódka na szopie, a klucz zabrała sroka. Z parapetu administracji. Mam nagranie, reklamacji nie przyjęła.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_06_salt_before_frost.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 15898896,
+  "speaker": "stefan",
+  "subtitle": "Znam tę srokę. Od lat podbiera mi kapsle spod kiosku. A bez soli przystanek o szóstej rano to lodowisko, wiem coś o tym od 1994 roku.",
+  "text": "Znam tę srokę. Od lat podbiera mi kapsle spod kiosku. A bez soli przystanek o szóstej rano to lodowisko, wiem coś o tym od 1994 roku.",
+  "voice_id": "i9blRzX2OigtFeDos6xu",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_06_salt_before_frost.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8467497,
+  "speaker": "locksmith",
+  "subtitle": "Zgoda administracji i faktura na kłódkę się zgadzają. Dwieście pięć monet. Taka kłódka ma swoje tarcze, do północy zdążę z zapasem.",
+  "text": "Zgoda administracji i faktura na kłódkę się zgadzają. Dwieście pięć monet. Taka kłódka ma swoje tarcze, do północy zdążę z zapasem.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_06_salt_before_frost.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6407766,
+  "speaker": "roman",
+  "subtitle": "Zgoda. Nowy klucz zawiśnie w administracji, w zamkniętej szafce. Sroka dostaje zakaz wstępu. Na piśmie.",
+  "text": "Zgoda. Nowy klucz zawiśnie w administracji, w zamkniętej szafce. Sroka dostaje zakaz wstępu. Na piśmie.",
+  "voice_id": "uoWh0DSJDyHUtcd90cVQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_07_hour_back.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7050186,
+  "speaker": "zosia",
+  "subtitle": "Zegar pokazuje tę samą godzinę co radio. Halinka mówi, że wolała po staremu: miała godzinę zapasu. Nowy kluczyk wisi w świetlicy, podpisany.",
+  "text": "Zegar pokazuje tę samą godzinę co radio. Halinka mówi, że wolała po staremu: miała godzinę zapasu. Nowy kluczyk wisi w świetlicy, podpisany.",
+  "voice_id": "Zc9e9mQ0U2BpzzeoBzOe",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_07_hour_back.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14010707,
+  "speaker": "elzbieta",
+  "subtitle": "Uchwała jest: zegar ma chodzić z miastem. Dziś w nocy zmiana czasu, a on od lat tkwi w letnim. Drzwiczki mechanizmu są zamknięte, klucza nie mam.",
+  "text": "Uchwała jest: zegar ma chodzić z miastem. Dziś w nocy zmiana czasu, a on od lat tkwi w letnim. Drzwiczki mechanizmu są zamknięte, klucza nie mam.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_07_hour_back.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6467626,
+  "speaker": "zuzanna",
+  "subtitle": "W zeszycie pana Henryka jest wpis co pół roku: zegar nad bramą, godzina w przód, godzina w tył. Potem wpisy się kończą. Klucz nosił przy sobie.",
+  "text": "W zeszycie pana Henryka jest wpis co pół roku: zegar nad bramą, godzina w przód, godzina w tył. Potem wpisy się kończą. Klucz nosił przy sobie.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_07_hour_back.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14317622,
+  "speaker": "locksmith",
+  "subtitle": "Uchwała i zgoda zarządu się zgadzają. Dwieście piętnaście monet. Stary zamek, a zaraz za nim mechanizm, więc spokojnie. Czasu mamy dziś o godzinę więcej.",
+  "text": "Uchwała i zgoda zarządu się zgadzają. Dwieście piętnaście monet. Stary zamek, a zaraz za nim mechanizm, więc spokojnie. Czasu mamy dziś o godzinę więcej.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_07_hour_back.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9699421,
+  "speaker": "elzbieta",
+  "subtitle": "Zgoda. Sąsiedzi umawiają się pod tym zegarem od pół wieku. Pół roku przychodzą punktualnie, pół roku godzinę za wcześnie. Wystarczy.",
+  "text": "Zgoda. Sąsiedzi umawiają się pod tym zegarem od pół wieku. Pół roku przychodzą punktualnie, pół roku godzinę za wcześnie. Wystarczy.",
+  "voice_id": "2piNECYafWT1gDGsSsFT",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_09_almost_right_key.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2872332,
+  "speaker": "zuzanna",
+  "subtitle": "Przegląd zaliczony. Kapitan dostał od nas trzy klucze, dorobione porządnie. A klucz do warsztatu wchodzi ostatnio coraz ciężej. Zapisałam: zużycie.",
+  "text": "Przegląd zaliczony. Kapitan dostał od nas trzy klucze, dorobione porządnie. A klucz do warsztatu wchodzi ostatnio coraz ciężej. Zapisałam: zużycie.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_09_almost_right_key.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 16403654,
+  "speaker": "captain",
+  "subtitle": "Jutro o ósmej przegląd przed zimowaniem. Dokumenty statku są w szafce. Dorobiłem zapasowy klucz, w budce przy dworcu, w pięć minut. Wszedł. Dobrze nie wyszło.",
+  "text": "Jutro o ósmej przegląd przed zimowaniem. Dokumenty statku są w szafce. Dorobiłem zapasowy klucz, w budce przy dworcu, w pięć minut. Wszedł. Dobrze nie wyszło.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_09_almost_right_key.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 14412087,
+  "speaker": "aino",
+  "subtitle": "Prawie pasował. Ten zamek uważa, że prawie robi różnicę: zablokował się i nie przyjmuje już nawet oryginału. Kapitan pierwszy raz przegrał z szafką.",
+  "text": "Prawie pasował. Ten zamek uważa, że prawie robi różnicę: zablokował się i nie przyjmuje już nawet oryginału. Kapitan pierwszy raz przegrał z szafką.",
+  "voice_id": "2mwew8QSRrmgW29vxku2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_09_almost_right_key.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5165593,
+  "speaker": "locksmith",
+  "subtitle": "Pismo armatora i słowo pani Aino się zgadzają. Dwieście trzydzieści monet. Pamiętliwy zamek trzeba przepraszać powoli. Do ósmej zdążę.",
+  "text": "Pismo armatora i słowo pani Aino się zgadzają. Dwieście trzydzieści monet. Pamiętliwy zamek trzeba przepraszać powoli. Do ósmej zdążę.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_09_almost_right_key.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12362857,
+  "speaker": "captain",
+  "subtitle": "Zgoda. W dzienniku zapiszę: szafka zablokowana z winy kapitana. Trzydzieści lat na morzu, a pokonała mnie budka z kluczami.",
+  "text": "Zgoda. W dzienniku zapiszę: szafka zablokowana z winy kapitana. Trzydzieści lat na morzu, a pokonała mnie budka z kluczami.",
+  "voice_id": "rTcoqGyZPOHbwg1vrdx2",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_10_thirteenth_envelope.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 12051453,
+  "speaker": "halina",
+  "subtitle": "Wosk lał się przez klucz Henryka do północy, synku. Mnie wyszedł garnek. Zuzannie klucz, słowo daję. A panu nic nie wyszło, bo pan jadł rosół.",
+  "text": "Wosk lał się przez klucz Henryka do północy, synku. Mnie wyszedł garnek. Zuzannie klucz, słowo daję. A panu nic nie wyszło, bo pan jadł rosół.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_10_thirteenth_envelope.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 6550484,
+  "speaker": "locksmith",
+  "subtitle": "Zamek Henryka odpoczywa na półce nad stołem, w drzwiach pracuje zamek Zuzanny. A w szafce w świetlicy wisi trzynasta koperta. Osoba wskazana: Zuzanna Wilk.",
+  "text": "Zamek Henryka odpoczywa na półce nad stołem, w drzwiach pracuje zamek Zuzanny. A w szafce w świetlicy wisi trzynasta koperta. Osoba wskazana: Zuzanna Wilk.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_10_thirteenth_envelope.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 11637582,
+  "speaker": "zuzanna",
+  "subtitle": "Klucz wchodzi i ani drgnie. To już nie charakter, tylko zużycie. Ale najpierw pytam, czyje to. Dziś klientem jest pan, więc poproszę o dowody.",
+  "text": "Klucz wchodzi i ani drgnie. To już nie charakter, tylko zużycie. Ale najpierw pytam, czyje to. Dziś klientem jest pan, więc poproszę o dowody.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_10_thirteenth_envelope.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 7198989,
+  "speaker": "halina",
+  "subtitle": "Ja za niego ręczę, dziecko. Od pierwszego rosołu wiem, czyj to warsztat. Sąsiedzi czekają z woskiem, ale porządek musi być. Henryk by się uśmiał.",
+  "text": "Ja za niego ręczę, dziecko. Od pierwszego rosołu wiem, czyj to warsztat. Sąsiedzi czekają z woskiem, ale porządek musi być. Henryk by się uśmiał.",
+  "voice_id": "1EOyola3ckh8FmKtCkGI",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_10_thirteenth_envelope.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 3455318,
+  "speaker": "locksmith",
+  "subtitle": "Słowo pani Haliny i polecony adresowany na warsztat. Dwieście sześćdziesiąt monet, z kieszeni do szuflady. Wycena przed robotą, nawet u siebie.",
+  "text": "Słowo pani Haliny i polecony adresowany na warsztat. Dwieście sześćdziesiąt monet, z kieszeni do szuflady. Wycena przed robotą, nawet u siebie.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.ch16_10_thirteenth_envelope.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 9001,
+  "speaker": "zuzanna",
+  "subtitle": "Zgadza się. Zgoda klienta też jest, bo klient to pan. Proszę otwierać, mistrzu. Zeszyt trzymam ja, a wosk stygnie.",
+  "text": "Zgadza się. Zgoda klienta też jest, bo klient to pan. Proszę otwierać, mistrzu. Zeszyt trzymam ja, a wosk stygnie.",
+  "voice_id": "crgAGBFvKhsJa8stJ7Zv",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch16_04_borrowed_barrow.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5479409,
+  "speaker": "waldek",
+  "subtitle": "Wiadomość przeczytałem u córki. Wróciłem w niedzielę i taczkę odwiozłem sam. Z dynią w środku. To odsetki.",
+  "text": "Wiadomość przeczytałem u córki. Wróciłem w niedzielę i taczkę odwiozłem sam. Z dynią w środku. To odsetki.",
+  "voice_id": "6ECEPYinwnizS5hjagZQ",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch16_04_borrowed_barrow.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13449696,
+  "speaker": "zbyszek",
+  "subtitle": "Liście wywiozłem wspólną taczką. Swoją pożyczam odtąd na zeszyt, jak Waldek prasę. Dynia poszła na zupę dla nas obu.",
+  "text": "Liście wywiozłem wspólną taczką. Swoją pożyczam odtąd na zeszyt, jak Waldek prasę. Dynia poszła na zupę dla nas obu.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch16_04_borrowed_barrow.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 1668586,
+  "speaker": "zbyszek",
+  "subtitle": "Taczka jest moja, pożyczyłem ją Waldkowi w maju. Stoi w jego altanie, a on siedzi u córki do niedzieli. Niech pan otworzy, wezmę tylko swoje.",
+  "text": "Taczka jest moja, pożyczyłem ją Waldkowi w maju. Stoi w jego altanie, a on siedzi u córki do niedzieli. Niech pan otworzy, wezmę tylko swoje.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch16_04_borrowed_barrow.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8865840,
+  "speaker": "locksmith",
+  "subtitle": "Taczka jest pana, wierzę. Ale altana jest pana Waldka. Zadzwońmy do niego, od tego ma pan jego numer.",
+  "text": "Taczka jest pana, wierzę. Ale altana jest pana Waldka. Zadzwońmy do niego, od tego ma pan jego numer.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch16_04_borrowed_barrow.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13908381,
+  "speaker": "zbyszek",
+  "subtitle": "Będę mu głowę zawracał o taczkę. U wnuków i tak nie słyszy telefonu. Znamy się trzydzieści lat, on by nie miał nic przeciwko.",
+  "text": "Będę mu głowę zawracał o taczkę. U wnuków i tak nie słyszy telefonu. Znamy się trzydzieści lat, on by nie miał nic przeciwko.",
+  "voice_id": "hq0jNMW6Bv0VF5iHZsKC",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch16_04_borrowed_barrow.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 5009863,
+  "speaker": "locksmith",
+  "subtitle": "Tu nie otworzę. Pożyczona rzecz wraca przez właściciela zamka, nie przez ślusarza. Ogród ma wspólną taczkę, a do pana Waldka napiszmy wiadomość.",
+  "text": "Tu nie otworzę. Pożyczona rzecz wraca przez właściciela zamka, nie przez ślusarza. Ogród ma wspólną taczkę, a do pana Waldka napiszmy wiadomość.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch16_08_roommates_room.after.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13427501,
+  "speaker": "leon",
+  "subtitle": "Odebrałem na szlaku. Wystarczyło wyłączyć i włączyć bezpiecznik w przedpokoju, drugi od lewej. Router ma go razem z moim pokojem.",
+  "text": "Odebrałem na szlaku. Wystarczyło wyłączyć i włączyć bezpiecznik w przedpokoju, drugi od lewej. Router ma go razem z moim pokojem.",
+  "voice_id": "8eWXyjbVpcTbRDzlc0tF",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch16_08_roommates_room.after.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 809552,
+  "speaker": "iga",
+  "subtitle": "Nagranie poszło dwadzieścia minut przed północą. Router stoi teraz w przedpokoju, Leon sam go przeniósł. Dostał ode mnie zatyczki do uszu. Uczciwa wymiana.",
+  "text": "Nagranie poszło dwadzieścia minut przed północą. Router stoi teraz w przedpokoju, Leon sam go przeniósł. Dostał ode mnie zatyczki do uszu. Uczciwa wymiana.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch16_08_roommates_room.line.1.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 4789378,
+  "speaker": "iga",
+  "subtitle": "Mieszkanie wynajmujemy razem, od tygodnia. Router stoi w pokoju Leona i mruga na czerwono. Leon jest w górach, a ja do północy wysyłam nagranie.",
+  "text": "Mieszkanie wynajmujemy razem, od tygodnia. Router stoi w pokoju Leona i mruga na czerwono. Leon jest w górach, a ja do północy wysyłam nagranie.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch16_08_roommates_room.line.2.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 13523179,
+  "speaker": "locksmith",
+  "subtitle": "Mieszkanie jest wspólne, ale ten pokój zamknął pan Leon. Zadzwońmy do niego. Może wystarczy, że powie, gdzie jest bezpiecznik.",
+  "text": "Mieszkanie jest wspólne, ale ten pokój zamknął pan Leon. Zadzwońmy do niego. Może wystarczy, że powie, gdzie jest bezpiecznik.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch16_08_roommates_room.line.3.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 2575023,
+  "speaker": "iga",
+  "subtitle": "Mieszkam tu tydzień i już trzy razy go o coś prosiłam. Nie chcę być taką współlokatorką. To tylko wtyczka: wyjąć, włożyć, pan nawet nie wejdzie.",
+  "text": "Mieszkam tu tydzień i już trzy razy go o coś prosiłam. Nie chcę być taką współlokatorką. To tylko wtyczka: wyjąć, włożyć, pan nawet nie wejdzie.",
+  "voice_id": "sUC8b6b9kS49IQ7N8gz5",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ },
+ "pl/job.refuse_ch16_08_roommates_room.line.4.ogg": {
+  "model_id": "eleven_v4_turbo",
+  "seed": 8022116,
+  "speaker": "locksmith",
+  "subtitle": "Tu nie otworzę. Wspólne mieszkanie nie robi wspólnym pokoju, który ktoś zamknął. Czwarta prośba kosztuje mniej niż drzwi otwarte bez pytania. Dzwonimy razem.",
+  "text": "Tu nie otworzę. Wspólne mieszkanie nie robi wspólnym pokoju, który ktoś zamknął. Czwarta prośba kosztuje mniej niż drzwi otwarte bez pytania. Dzwonimy razem.",
+  "voice_id": "ykajA4eRsyhUXXnAEPjK",
+  "voice_settings": {
+   "similarity_boost": 0.8,
+   "stability": 0.5,
+   "style": 0.0,
+   "use_speaker_boost": true
+  }
+ }
+}
