@@ -1,0 +1,50 @@
+{
+  "id": "job.ch15_10_exam_lock",
+  "chapter": 15,
+  "order": 10,
+  "district": "Śródmieście",
+  "family": "pin_tumbler",
+  "tier": 6,
+  "verification": "Legitymacja studencka Zuzanny, która sama zrobiła zamek (2), i pan Władysław, opiekun jej letnich praktyk, jako świadek (2). Właścicielka zgadza się na otwarcie i jest obecna. Próg 3. Opłata za egzamin zaakceptowana.",
+  "verify_kind": "object",
+  "reward_coins": 240,
+  "tone": "skupiony, uroczysty bez patosu; Władysław krótko, z błyskiem",
+  "i18n": {
+    "title": "job.ch15_10_exam_lock.title",
+    "client": "job.ch15_10_exam_lock.client",
+    "situation": "job.ch15_10_exam_lock.situation"
+  },
+  "lines": [
+    "zuzanna",
+    "wladyslaw",
+    "locksmith",
+    "zuzanna"
+  ],
+  "after": [
+    "zuzanna",
+    "locksmith"
+  ],
+  "cards": [
+    "id",
+    "witness"
+  ],
+  "threshold": 3,
+  "place": "workshop",
+  "time": "evening",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-123: chapter 15 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "id": {
+      "doc": "student",
+      "exchange": [
+        1
+      ],
+      "holder": "Zuzanna Wilk"
+    },
+    "witness": {
+      "ask": "job.ch15_10_exam_lock.witness.ask",
+      "reply": "job.ch15_10_exam_lock.witness.reply"
+    }
+  }
+}

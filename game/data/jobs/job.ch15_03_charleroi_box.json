@@ -1,0 +1,47 @@
+{
+  "id": "job.ch15_03_charleroi_box",
+  "chapter": 15,
+  "order": 3,
+  "district": "Willowa Górka",
+  "family": "axial_slider",
+  "tier": 3,
+  "verification": "Dokument dziedziczenia po ojcu na panią Krystynę (3) i pani Martine, która znalazła szkatułkę i przywiozła ją nieotwartą, jako świadek (2). Otwarcie przy właścicielce. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "object",
+  "reward_coins": 175,
+  "tone": "cichy, dokładny, z francuskimi wtrąceniami pani Martine",
+  "i18n": {
+    "title": "job.ch15_03_charleroi_box.title",
+    "client": "job.ch15_03_charleroi_box.client",
+    "situation": "job.ch15_03_charleroi_box.situation"
+  },
+  "lines": [
+    "krystyna",
+    "martine",
+    "locksmith",
+    "krystyna"
+  ],
+  "after": [
+    "ola"
+  ],
+  "cards": [
+    "inheritance",
+    "witness"
+  ],
+  "threshold": 3,
+  "place": "apartment",
+  "time": "evening",
+  "arrival_from": "job.krystyna_wooden_album",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-123: chapter 15 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "inheritance": {
+      "ask": "job.ch15_03_charleroi_box.inheritance.ask",
+      "reply": "job.ch15_03_charleroi_box.inheritance.reply"
+    },
+    "witness": {
+      "ask": "job.ch15_03_charleroi_box.witness.ask",
+      "reply": "job.ch15_03_charleroi_box.witness.reply"
+    }
+  }
+}

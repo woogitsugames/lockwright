@@ -1,0 +1,46 @@
+{
+  "id": "job.refuse_ch15_08_no_answer",
+  "chapter": 15,
+  "order": 8,
+  "district": "Śródmieście",
+  "family": "warded",
+  "tier": 2,
+  "verification": "Pani Zosia martwi się o sąsiadkę, która nie otwiera, i chce otwarcia bez zgody lokatorki; nie chce iść do zarządczyni po zapasowy klucz. Ma tylko własny dokument. Odmowa: niepokój to nie zgoda; zapasowy klucz z koperty, na której jest wskazana, jest szybszy, a ślusarz idzie z nią z telefonem w ręku. Brak oskarżeń.",
+  "verify_kind": "premises",
+  "reward_coins": 0,
+  "tone": "zaniepokojony, czuły; odmowa spokojna, bez oskarżeń",
+  "i18n": {
+    "title": "job.refuse_ch15_08_no_answer.title",
+    "client": "job.refuse_ch15_08_no_answer.client",
+    "situation": "job.refuse_ch15_08_no_answer.situation"
+  },
+  "lines": [
+    "zosia",
+    "locksmith",
+    "zosia",
+    "locksmith"
+  ],
+  "after": [
+    "halina",
+    "zosia"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2,
+  "place": "apartment",
+  "time": "day",
+  "arrival_from": "job.grandma_broth",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-123: chapter 15 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": "Zosia"
+    }
+  }
+}

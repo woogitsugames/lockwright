@@ -1,0 +1,46 @@
+{
+  "id": "job.ch15_05_first_vacation",
+  "chapter": 15,
+  "order": 5,
+  "district": "Osiedle Słoneczne",
+  "family": "dial_safe",
+  "tier": 3,
+  "verification": "Faktura na sejf wystawiona na pana Stefana (2) i pani Krysia, stała klientka, która widziała dostawę, jako świadek (2). Sejf stoi w jego kiosku. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "object",
+  "reward_coins": 185,
+  "tone": "gawędziarski, wypoczęty, lekko zawstydzony",
+  "i18n": {
+    "title": "job.ch15_05_first_vacation.title",
+    "client": "job.ch15_05_first_vacation.client",
+    "situation": "job.ch15_05_first_vacation.situation"
+  },
+  "lines": [
+    "stefan",
+    "krysia",
+    "locksmith",
+    "stefan"
+  ],
+  "after": [
+    "stefan"
+  ],
+  "cards": [
+    "invoice",
+    "witness"
+  ],
+  "threshold": 3,
+  "place": "kiosk",
+  "time": "day",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-123: chapter 15 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "invoice": {
+      "ask": "job.ch15_05_first_vacation.invoice.ask",
+      "reply": "job.ch15_05_first_vacation.invoice.reply"
+    },
+    "witness": {
+      "ask": "job.ch15_05_first_vacation.witness.ask",
+      "reply": "job.ch15_05_first_vacation.witness.reply"
+    }
+  }
+}

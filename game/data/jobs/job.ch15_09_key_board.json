@@ -1,0 +1,52 @@
+{
+  "id": "job.ch15_09_key_board",
+  "chapter": 15,
+  "order": 9,
+  "district": "Kampus",
+  "family": "lever_detector",
+  "tier": 5,
+  "verification": "Pisemna zgoda administracji akademika na otwarcie gabloty z kluczami (3) i dokument pana Edka, portiera (2). Portier obecny. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "shared",
+  "reward_coins": 205,
+  "tone": "porządny, lekko zawstydzony; Zuzanna szybka i ciekawa",
+  "i18n": {
+    "title": "job.ch15_09_key_board.title",
+    "client": "job.ch15_09_key_board.client",
+    "situation": "job.ch15_09_key_board.situation"
+  },
+  "lines": [
+    "edek",
+    "zuzanna",
+    "locksmith",
+    "edek"
+  ],
+  "after": [
+    "edek"
+  ],
+  "cards": [
+    "manager",
+    "id"
+  ],
+  "threshold": 3,
+  "place": "locker",
+  "time": "night",
+  "arrival_from": "job.student_dorm",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-123: chapter 15 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "manager": {
+      "issuer": "dorm",
+      "purpose": "access",
+      "ask": "job.ch15_09_key_board.manager.ask",
+      "reply": "job.ch15_09_key_board.manager.reply"
+    },
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": "Edek"
+    }
+  }
+}

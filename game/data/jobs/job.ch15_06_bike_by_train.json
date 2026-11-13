@@ -1,0 +1,49 @@
+{
+  "id": "job.ch15_06_bike_by_train",
+  "chapter": 15,
+  "order": 6,
+  "district": "Osiedle Słoneczne",
+  "family": "disc_detainer",
+  "tier": 3,
+  "verification": "Paragon na rower i zapięcie z numerem ramy (2) i rejestr rowerów administracji osiedla, w którym pan Roman ma ten numer (2). Rzecz w posiadaniu, pan Roman potwierdza przez domofon. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "object",
+  "reward_coins": 190,
+  "tone": "wypoczęty, pogodny; Roman sucho przez domofon",
+  "i18n": {
+    "title": "job.ch15_06_bike_by_train.title",
+    "client": "job.ch15_06_bike_by_train.client",
+    "situation": "job.ch15_06_bike_by_train.situation"
+  },
+  "lines": [
+    "agnieszka",
+    "roman",
+    "locksmith",
+    "agnieszka"
+  ],
+  "after": [
+    "agnieszka"
+  ],
+  "cards": [
+    "receipt",
+    "manager"
+  ],
+  "threshold": 3,
+  "place": "yard",
+  "time": "day",
+  "arrival_from": "job.bike_interview",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-123: chapter 15 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "receipt": {
+      "ask": "job.ch15_06_bike_by_train.receipt.ask",
+      "reply": "job.ch15_06_bike_by_train.receipt.reply"
+    },
+    "manager": {
+      "issuer": "estate",
+      "purpose": "storage",
+      "ask": "job.ch15_06_bike_by_train.manager.ask",
+      "reply": "job.ch15_06_bike_by_train.manager.reply"
+    }
+  }
+}

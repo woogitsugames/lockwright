@@ -1,0 +1,45 @@
+{
+  "id": "job.refuse_ch15_04_closed_attic",
+  "chapter": 15,
+  "order": 4,
+  "district": "Śródmieście",
+  "family": "lever",
+  "tier": 4,
+  "verification": "Leon ma własny boks na strychu, ale drzwi strychu zamknęła zarządczyni do czasu usunięcia gniazda szerszeni; Leon nie chce jej pytać. Ma tylko własny dokument. Odmowa: zamknięcia dla bezpieczeństwa nie zdejmuje ślusarz, tylko ten, kto je założył. Brak oskarżeń.",
+  "verify_kind": "shared",
+  "reward_coins": 0,
+  "tone": "niecierpliwy, sympatyczny; odmowa bez oskarżeń",
+  "i18n": {
+    "title": "job.refuse_ch15_04_closed_attic.title",
+    "client": "job.refuse_ch15_04_closed_attic.client",
+    "situation": "job.refuse_ch15_04_closed_attic.situation"
+  },
+  "lines": [
+    "leon",
+    "locksmith",
+    "leon",
+    "locksmith"
+  ],
+  "after": [
+    "elzbieta",
+    "leon"
+  ],
+  "cards": [
+    "id"
+  ],
+  "threshold": 2,
+  "place": "attic",
+  "time": "day",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-123: chapter 15 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": "Leon"
+    }
+  }
+}

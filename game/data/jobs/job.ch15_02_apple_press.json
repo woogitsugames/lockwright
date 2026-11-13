@@ -1,0 +1,46 @@
+{
+  "id": "job.ch15_02_apple_press",
+  "chapter": 15,
+  "order": 2,
+  "district": "Ogródki działkowe",
+  "family": "egyptian",
+  "tier": 2,
+  "verification": "Faktura za prasę wystawiona na ogród działkowy (2) i pan Waldek, gospodarz ogrodu, jako świadek (2). Otwarcie przy obu, drewniany zamek bez uszkodzeń. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "shared",
+  "reward_coins": 165,
+  "tone": "działkowy, rzeczowy, z dumą z własnych jabłek",
+  "i18n": {
+    "title": "job.ch15_02_apple_press.title",
+    "client": "job.ch15_02_apple_press.client",
+    "situation": "job.ch15_02_apple_press.situation"
+  },
+  "lines": [
+    "zbyszek",
+    "waldek",
+    "locksmith",
+    "zbyszek"
+  ],
+  "after": [
+    "waldek"
+  ],
+  "cards": [
+    "invoice",
+    "witness"
+  ],
+  "threshold": 3,
+  "place": "yard",
+  "time": "day",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-123: chapter 15 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "invoice": {
+      "ask": "job.ch15_02_apple_press.invoice.ask",
+      "reply": "job.ch15_02_apple_press.invoice.reply"
+    },
+    "witness": {
+      "ask": "job.ch15_02_apple_press.witness.ask",
+      "reply": "job.ch15_02_apple_press.witness.reply"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "id": "job.ch15_07_skeleton_cupboard",
+  "chapter": 15,
+  "order": 7,
+  "district": "Śródmieście",
+  "family": "lever",
+  "tier": 5,
+  "verification": "Pisemna zgoda dyrekcji szkoły na otwarcie szafy z pracowni biologicznej (3) i dokument Oli, nauczycielki biologii (2). Dyrektorka obecna. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "shared",
+  "reward_coins": 195,
+  "tone": "szkolny, pogodny, z humorem nauczycielki biologii",
+  "i18n": {
+    "title": "job.ch15_07_skeleton_cupboard.title",
+    "client": "job.ch15_07_skeleton_cupboard.client",
+    "situation": "job.ch15_07_skeleton_cupboard.situation"
+  },
+  "lines": [
+    "ola",
+    "headteacher",
+    "locksmith",
+    "ola"
+  ],
+  "after": [
+    "ola"
+  ],
+  "cards": [
+    "institution",
+    "id"
+  ],
+  "threshold": 3,
+  "place": "locker",
+  "time": "day",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-123: chapter 15 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "institution": {
+      "ask": "job.ch15_07_skeleton_cupboard.institution.ask",
+      "reply": "job.ch15_07_skeleton_cupboard.institution.reply"
+    },
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": "Ola"
+    }
+  }
+}

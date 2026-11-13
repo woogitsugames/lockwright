@@ -1,0 +1,50 @@
+{
+  "id": "job.ch15_01_wrong_envelope",
+  "chapter": 15,
+  "order": 1,
+  "district": "Osiedle Słoneczne",
+  "family": "dimple",
+  "tier": 3,
+  "verification": "Dowód pana Kazimierza (2) i pani Teresa, sąsiadka z piętra niżej, jako świadek (2). Otwarcie bez wiercenia. Próg 3. Wycena zaakceptowana.",
+  "verify_kind": "premises",
+  "reward_coins": 160,
+  "tone": "pogodny, gawędziarski, z ciepłą ironią sąsiadki",
+  "i18n": {
+    "title": "job.ch15_01_wrong_envelope.title",
+    "client": "job.ch15_01_wrong_envelope.client",
+    "situation": "job.ch15_01_wrong_envelope.situation"
+  },
+  "lines": [
+    "kazimierz",
+    "teresa",
+    "locksmith",
+    "kazimierz"
+  ],
+  "after": [
+    "teresa"
+  ],
+  "cards": [
+    "id",
+    "witness"
+  ],
+  "threshold": 3,
+  "place": "apartment",
+  "time": "day",
+  "arrival_from": "job.t43_09_08_spare_key_hook",
+  "outcome": "open",
+  "voice_pending": true,
+  "source": "D-123: chapter 15 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
+  "card_detail": {
+    "id": {
+      "doc": "id",
+      "exchange": [
+        1
+      ],
+      "holder": "Kazimierz"
+    },
+    "witness": {
+      "ask": "job.ch15_01_wrong_envelope.witness.ask",
+      "reply": "job.ch15_01_wrong_envelope.witness.reply"
+    }
+  }
+}
