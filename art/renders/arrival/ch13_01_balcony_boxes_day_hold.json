@@ -1,0 +1,50 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "ch13_01_balcony_boxes",
+ "time": "day",
+ "kit": "cellar",
+ "fps": 12,
+ "frames": 36,
+ "note": "plate-only hold (no client cut-out): anchors are quads [tl,tr,br,bl] normalised 0..1, origin top-left (D-41).",
+ "anchors": {
+  "door": [
+   [
+    0.32649,
+    0.39026
+   ],
+   [
+    0.66093,
+    0.39
+   ],
+   [
+    0.65551,
+    0.82316
+   ],
+   [
+    0.33232,
+    0.82238
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   40.0,
+   150.0,
+   1460.0
+  ],
+  "lens_mm": 24.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   0.029999999329447746
+  ],
+  "rotation_euler_deg": [
+   87.0,
+   -0.0,
+   0.5
+  ]
+ }
+}
