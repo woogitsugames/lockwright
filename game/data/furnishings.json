@@ -1,6 +1,6 @@
 {
   "schema": "lockwright.furnishings/1",
-  "source": "D-71 (cosmetic workshop furnishings, no gameplay effect); prices: tools/econ_sim.py, docs/ECONOMY.md",
+  "source": "D-71 (cosmetic workshop furnishings, no gameplay effect), D-127 (five more for chapters 13-15; an item whose layer file is not in the build yet stays out of the shop); prices: tools/econ_sim.py, docs/ECONOMY.md",
   "render": "art/blender/workshop.py --layers + art/blender/workshop_layers.py",
   "layer_dir": "res://assets/ui/workshop",
   "base": "workshop_base.webp",
@@ -14,6 +14,11 @@
     {"id": "clock", "price": 800, "chapter": 6, "i18n": "furnishing.clock.name", "desc": "furnishing.clock.desc", "layer": "furn_clock.webp", "z": 20},
     {"id": "thanks_cards", "price": 450, "chapter": 9, "i18n": "furnishing.thanks_cards.name", "desc": "furnishing.thanks_cards.desc", "layer": "furn_thanks_cards.webp", "z": 20},
     {"id": "vise", "price": 1200, "chapter": 10, "i18n": "furnishing.vise.name", "desc": "furnishing.vise.desc", "layer": "furn_vise.webp", "z": 30},
-    {"id": "exhibit_shelf", "price": 1600, "chapter": 11, "i18n": "furnishing.exhibit_shelf.name", "desc": "furnishing.exhibit_shelf.desc", "layer": "furn_exhibit_shelf.webp", "z": 20}
+    {"id": "exhibit_shelf", "price": 1600, "chapter": 11, "i18n": "furnishing.exhibit_shelf.name", "desc": "furnishing.exhibit_shelf.desc", "layer": "furn_exhibit_shelf.webp", "z": 20},
+    {"id": "enamel_mugs", "price": 500, "chapter": 13, "i18n": "furnishing.enamel_mugs.name", "desc": "furnishing.enamel_mugs.desc", "layer": "furn_enamel_mugs.webp", "z": 20},
+    {"id": "neighbours_photo", "price": 800, "chapter": 13, "i18n": "furnishing.neighbours_photo.name", "desc": "furnishing.neighbours_photo.desc", "layer": "furn_neighbours_photo.webp", "z": 20},
+    {"id": "postcards", "price": 700, "chapter": 14, "i18n": "furnishing.postcards.name", "desc": "furnishing.postcards.desc", "layer": "furn_postcards.webp", "z": 20},
+    {"id": "key_cabinet", "price": 1200, "chapter": 14, "i18n": "furnishing.key_cabinet.name", "desc": "furnishing.key_cabinet.desc", "layer": "furn_key_cabinet.webp", "z": 20},
+    {"id": "exam_lock", "price": 1600, "chapter": 15, "i18n": "furnishing.exam_lock.name", "desc": "furnishing.exam_lock.desc", "layer": "furn_exam_lock.webp", "z": 20}
   ]
 }

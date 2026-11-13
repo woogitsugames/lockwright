@@ -6,10 +6,15 @@ extends RefCounted
 ## Picture: the Blender workshop render (base) with one full-frame transparent overlay per item,
 ## stacked by z (art/blender/workshop.py --layers + art/blender/workshop_layers.py), so the layers line up
 ## with the base at any size as long as every TextureRect uses the same rect and stretch mode.
+## D-127: an item can be in the data before its overlay is rendered. Such an item is in catalog() only:
+## all() leaves it out, so the shop has no row for it, it cannot be bought and the picture has no layer for it.
+## It shows up by itself in the build that ships its layer file.
 
 const PATH := "res://data/furnishings.json"
 
 static var _data: Dictionary = {}
+static var _offered: Array = []
+static var _offered_ready := false
 static var _job_chapter: Dictionary = {}
 
 
@@ -20,8 +25,30 @@ static func data() -> Dictionary:
 	return _data
 
 
-static func all() -> Array:
+## Every item in the data, also the ones still waiting for their picture (D-127).
+static func catalog() -> Array:
 	return data().get("furnishings", [])
+
+
+## D-127: the overlay of this item is in the build.
+static func has_art(f: Dictionary) -> bool:
+	var file := String(f.get("layer", ""))
+	return file != "" and ResourceLoader.exists(layer_path(file))
+
+
+## The items the game offers: the catalog without the items whose overlay is not in the build (D-127).
+static func all() -> Array:
+	if not _offered_ready:
+		_offered = catalog().filter(has_art)
+		_offered_ready = true
+	return _offered
+
+
+## Tests: other data (or {} for the file again); the offered list is worked out again on the next use.
+static func use_data(d: Dictionary) -> void:
+	_data = d
+	_offered = []
+	_offered_ready = false
 
 
 static func by_id(id: String) -> Dictionary:
