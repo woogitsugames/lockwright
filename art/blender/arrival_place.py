@@ -1,7 +1,7 @@
 # Lockwright — D-58 arrival scenes for jobs that do not happen on a tenement landing (D-94): small environment kits
 # in the same material library and lighting approach as the stairwell kit (art/blender/stairwell.py,
 # arrival_scene.py), dressed by the job's entry in art/blender/arrival_jobs.json (`"kit": "street" | "shop" |
-# "corridor"`). Outputs use the arrival_scene.py names, so art/tools/arrival_export.py --job works unchanged:
+# "corridor" | ...`). Outputs use the arrival_scene.py names, so art/tools/arrival_export.py --job works unchanged:
 #   <job>_<time>_seq/f_####.png  the walk in (36 frames @ 12 fps, motion blur)
 #   <job>_<time>_hold.png/.json  the hold still (plate only: these clients have no full-body cut-out)
 #
@@ -23,6 +23,10 @@
 #             balcony with geraniums: look-dev only, not shipped). Wet setts with puddles and a damp-air volume for rain.
 #   shop      `shop.style: "bakery"`: the same room as a Liège bakery at 3:50 (bread wall, proving rack under linen, the
 #             uncle's bunch of keys hanging from the wrong key in the lock: job.liege_bakery)
+#   cellar    the shared cellar of the Srodmiescie tenement (D-122): brick corridor under a brick barrel vault, a slat
+#             partition with the storage doors 6, 7, 8 on strap hinges and padlocks, Mrs Halina's geraniums behind the
+#             slats of 7 under the cellar window, an old dresser, a watering can (job.ch13_01_balcony_boxes; the found
+#             cashbox job.refuse_ch13_08_found_cashbox shows the same still through `arrival_from`)
 # 1 unit = 1 mm. Camera looks +y; the hold target sits near the origin; floor z = 0.
 import bpy, bmesh, math, os, sys, json, random
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -1063,6 +1067,287 @@ def kit_vault():
             'time_lock': [(TL.x - 130, TL.y, TL.z + 130), (TL.x + 130, TL.y, TL.z + 130), (TL.x + 130, TL.y, TL.z - 130), (TL.x - 130, TL.y, TL.z - 130)]}
 
 
+# ================================================================ cellar kit (tenement storage cellar, D-122)
+def kit_cellar():
+    """The shared cellar of the Srodmiescie tenement (job.ch13_01_balcony_boxes; job.refuse_ch13_08_found_cashbox comes
+    here through `arrival_from`): a brick corridor under a limewashed barrel vault, closed by a rough-sawn slat
+    partition with the tenants' storage doors 6, 7 and 8 on strap hinges, hasps and padlocks (7 is Mrs Halina's,
+    its padlock rusted; 8 is Mrs Zosia's). Behind the slats of 7 her geraniums in their balcony boxes have spent the
+    winter under the cellar window; an old dresser stands by the wall, a watering can and clay pots wait by the door."""
+    S = J.get('cellar', {})
+    FY = 3000; HW_ = S.get('half_width', 1250); X0, X1 = -HW_, HW_; SPRING = S.get('spring', 1300); R0 = float(HW_)
+    BY = FY + S.get('depth', 2400)                       # back wall of the storage rooms
+    rng = random.Random(S.get('seed', 7))
+    floor = ph('cellar_floor', 'workshop_concrete', scale=1500, metallic=0.0, base=(0.22, 0.20, 0.17), base_mix=0.6,
+               rough_add=0.15, bump=0.6, grime=1.0, wear=0.5)
+    bx('floor', X0, X1, -9000, BY, -40, 0, floor)
+    side = brick_wall('cellar_side', brick=(0.36, 0.17, 0.10), wash=(0.66, 0.62, 0.54), wash_amt=0.45, seed=3, axis='X')
+    endw = brick_wall('cellar_end', brick=(0.36, 0.17, 0.10), wash=(0.66, 0.62, 0.54), wash_amt=0.30, seed=5, axis='Y')
+    bx('lwall', X0 - 400, X0, -9000, BY + 500, 0, SPRING, side)
+    bx('rwall', X1, X1 + 400, -9000, BY + 500, 0, SPRING, side)
+    # the vault is brick too, under worn limewash: courses run along the corridor, rows follow the arc
+    vm = brick_wall('cellar_vault', brick=(0.36, 0.17, 0.10), wash=(0.50, 0.47, 0.40), wash_amt=S.get('vault_wash', 0.32), seed=11, axis='X')
+    nt = vm.node_tree; cb = next(n for n in nt.nodes if n.type == 'COMBXYZ')
+    wp = nt.nodes.new('ShaderNodeSeparateXYZ'); nt.links.new(nt.nodes.new('ShaderNodeNewGeometry').outputs['Position'], wp.inputs[0])   # world mm
+    zc = _math(nt, 'SUBTRACT', wp.outputs[2], SPRING)
+    nt.links.new(wp.outputs[1], cb.inputs[0])
+    nt.links.new(_math(nt, 'MULTIPLY', _math(nt, 'ARCTAN2', wp.outputs[0], zc), R0), cb.inputs[1])
+    VL = BY + 500 + 9000; VC = (BY + 500 - 9000) / 2
+    v = cyl('vault', R0 + 300, VL, (0, VC, SPRING), axis='Y', verts=96)
+    cut(v, cyl('vault_in', R0, VL + 200, (0, VC, SPRING), axis='Y', verts=96))
+    cut(v, bx('vault_low', -9000, 9000, -20000, 20000, -9000, SPRING))
+    setmat(v, vm)
+    for p_ in v.data.polygons: p_.use_smooth = True
+    v.modifiers.new('wn', 'WEIGHTED_NORMAL').keep_sharp = True
+    def vz(x): return SPRING + math.sqrt(max(0.0, R0 * R0 - x * x))
+    bx('behind', X0, X1, -9100, -9000, 0, SPRING + R0, endw)
+    # back wall with the cellar window of storage 7 (light well outside): deep reveal, iron bars, dusty glass
+    bw = bx('back_wall', X0 - 400, X1 + 400, BY, BY + 500, 0, SPRING + R0 + 300, endw)
+    WX0, WX1, WZ0, WZ1 = -330, 330, S.get('win_z', 1700), S.get('win_z', 1700) + 470
+    cut(bw, bx('win_hole', WX0, WX1, BY - 10, BY + 510, WZ0, WZ1))
+    cut(bw, bx('win_well', WX0 - 60, WX1 + 60, BY + 320, BY + 510, WZ0 - 20, WZ1 + 500))   # the light well widens outwards
+    bar_m = iron('cellar_bar', rust=0.8, seed=4)
+    for k in range(4):
+        x = WX0 + (WX1 - WX0) * (k + 0.5) / 4
+        tube('win_bar', [(x, BY + 380, WZ0 - 10), (x, BY + 380, WZ1 + 10)], 9, bar_m, smooth_pts=False)
+    g_ = bx('win_glass', WX0, WX1, BY + 300, BY + 304, WZ0, WZ1, glass('cellar_glass', (0.80, 0.82, 0.80), rough=0.3, dirt=1.0)); g_.visible_shadow = False
+    bx('win_sky', -6000, 6000, BY + 5000, BY + 5010, -2000, 14000, emissive('cellar_day', (0.80, 0.86, 0.95), S.get('sky_e', 5.0), (0, 0, 0))).visible_shadow = False
+    wa = aim('aim_win', (0, FY + 300, 500))
+    wl = area_light('cellar_day', (0, BY + 250, (WZ0 + WZ1) / 2), wa, WX1 - WX0, S.get('day_w', 9e7), (0.82, 0.88, 0.98), size_y=WZ1 - WZ0)
+    wl.visible_camera = False; wl.visible_glossy = False
+    sun_lamp(tuple(S.get('sun_dir', (0.10, -1.0, -0.60))), S.get('sun_e', 9.0), (1.0, 0.93, 0.80), angle=0.8)
+
+    # ---- timber: rough-sawn, grey with age; a few boards replaced later (paler)
+    TONES = [((0.200, 0.165, 0.125), (0.085, 0.068, 0.050)), ((0.170, 0.150, 0.125), (0.075, 0.064, 0.052)),
+             ((0.230, 0.180, 0.125), (0.100, 0.075, 0.050)), ((0.40, 0.32, 0.21), (0.24, 0.18, 0.11))]
+    beam_m = oak('cellar_beam', light=(0.17, 0.14, 0.10), dark=(0.07, 0.055, 0.04), axis='Z', seed=61, ring=3.0, coat=0.0, rough=0.9, wear=0.6, grime=1.0, contrast=0.5, center=(300, 3200, 0))
+    rail_m = oak('cellar_rail', light=(0.19, 0.155, 0.115), dark=(0.08, 0.065, 0.045), axis='X', seed=67, ring=2.2, coat=0.0, rough=0.9, wear=0.5, grime=1.0, contrast=0.5, center=(0, 3150, 900))
+    iron_m = iron('cellar_iron', rust=0.55, seed=2)
+    rust_m = iron('cellar_rust', rust=1.0, base=(0.13, 0.10, 0.08), rough=0.75, polish=0.1, seed=9)
+    nail_m = iron('cellar_nail', rust=0.7, seed=5)
+
+    def board(name, x0, x1, y0, y1, z0, z1):
+        """One sawn board: its own tone, a little twist."""
+        cx, cy, cz = (x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2
+        lt, dk = TONES[3] if rng.random() < 0.06 else TONES[rng.randrange(3)]
+        k = rng.uniform(0.85, 1.12)      # each board from its own log: the pith sits behind the board, never shared
+        m = oak('slat_%d' % len(bpy.data.materials), light=tuple(c * k for c in lt), dark=tuple(c * k for c in dk), axis='Z', seed=rng.uniform(0, 99),
+                ring=rng.uniform(2.2, 4.0), coat=0.0, rough=0.88, wear=0.5, grime=1.0, contrast=0.45,
+                center=(cx + rng.uniform(-60, 60), cy + rng.uniform(40, 160), cz + rng.uniform(-400, 400)))
+        o = bx(name, x0, x1, y0, y1, z0, z1, m, bev=2.5, seg=2)
+        Rm = Matrix.Rotation(math.radians(rng.uniform(-0.5, 0.5)), 4, 'Y') @ Matrix.Rotation(math.radians(rng.uniform(-0.8, 0.8)), 4, 'Z')
+        o.data.transform(Matrix.Translation((cx, cy, cz)) @ Rm @ Matrix.Translation((-cx, -cy, -cz)))
+        return o
+
+    def slats(name, xa, xb, y, z0, ztop, w=80, gap=40, thick=22, nails=()):
+        n = max(1, int(round((xb - xa + gap) / (w + gap)))); pitch = (xb - xa + gap) / n
+        for k in range(n):
+            x = xa + k * pitch; ww = pitch - gap + rng.uniform(-5, 5)
+            zt = ztop(x + ww / 2) if callable(ztop) else ztop
+            board(name, x, x + ww, y - thick + rng.uniform(-2, 2), y, z0 + rng.uniform(0, 14), zt - rng.uniform(0, 18))
+            for nz in nails:
+                for dx in (ww * 0.3, ww * 0.7):
+                    screw_head('nail', (x + dx + rng.uniform(-4, 4), y - thick - 0.5, nz + rng.uniform(-8, 8)), 3.6, 1.6, axis='-Y', slot=False, kind='dome', mat=nail_m)
+
+    POST = 90; DH = 1900
+    doors = S.get('doors', [(-1205, -485, '6'), (-395, 395, '7'), (485, 1205, '8')])
+    # posts and header; fixed slats above the header up to the vault
+    for (px0, px1) in ((X0, X0 + 40), (-485, -395), (395, 485), (X1 - 40, X1)):
+        bx('post', px0, px1, FY - 30, FY + 70, 0, vz((px0 + px1) / 2 * 0.98) - 6, beam_m, bev=5)
+    bx('header', X0 + 20, X1 - 20, FY - 26, FY + 60, DH + 14, DH + 104, rail_m, bev=5)
+    slats('top_slat', X0 + 60, X1 - 60, FY - 26, DH + 112, lambda x: vz(x) - 12, nails=(DH + 150,))
+    enam = enamel('cellar_enamel', (0.80, 0.78, 0.70), chip=0.7)
+    ink = plastic('cellar_digit', (0.04, 0.04, 0.045), rough=0.25, grime=0.2, sheen_scuffs=0.0)
+    locks = {'6': metal('padlock_brass', (0.62, 0.47, 0.24), 0.35, marks='stamp', wear=0.5, grime=0.8, patina=0.7),
+             '7': rust_m, '8': metal('padlock_steel', (0.42, 0.42, 0.41), 0.4, marks='stamp', wear=0.4, grime=0.8)}
+    quad = None
+    for (dx0, dx1, num) in doors:
+        slats('door%s' % num, dx0 + 8, dx1 - 8, FY - 2, 38, DH, nails=(385, 1535))
+        for z in (385, 1535):        # ledges behind the boards and the strap hinges in front
+            bx('ledge', dx0 + 20, dx1 - 20, FY - 2, FY + 30, z - 55, z + 55, rail_m, bev=3)
+            bx('strap', dx0 - 70, dx0 + 330, FY - 30, FY - 24, z - 21, z + 21, iron_m, bev=1.5)
+            cyl('hinge_pin', 11, 70, (dx0 - 2, FY - 34, z), verts=24).data.materials.append(iron_m)
+            for sx in (-45, 60, 170, 290):
+                screw_head('strap_bolt', (dx0 + sx, FY - 30.5, z), 7, 3, axis='-Y', slot=False, kind='dome', mat=iron_m)
+        br = bx('brace', -52, 52, 0, 28, -640, 640, rail_m, bev=3)   # the diagonal brace of a ledged door
+        ang = math.atan2((dx1 - dx0) - 160, 1040)
+        br.matrix_world = Matrix.Translation(((dx0 + dx1) / 2, FY - 1, 960)) @ Matrix.Rotation(-ang, 4, 'Y')
+        # hasp over a staple, the padlock hanging in it
+        hz = 1040; hx = dx1 - 20
+        bx('hasp', hx - 150, hx + 55, FY - 31, FY - 25, hz - 19, hz + 19, iron_m, bev=1.5)
+        cyl('hasp_knuckle', 8, 44, (hx - 152, FY - 33, hz), verts=20).data.materials.append(iron_m)
+        tube('staple', [(hx + 25, FY - 26, hz - 9), (hx + 25, FY - 58, hz - 9), (hx + 25, FY - 58, hz + 9), (hx + 25, FY - 26, hz + 9)], 4.5, iron_m, smooth_pts=False)
+        lm = locks.get(num, iron_m); big = 1.25 if num == '7' else 1.0
+        bw_, bh_ = 56 * big, 46 * big; tilt = rng.uniform(-7, 7)
+        sh = tube('shackle', [(-bw_ * 0.3, 0, 0), (-bw_ * 0.3, 0, 26 * big), (-bw_ * 0.15, 0, 40 * big), (bw_ * 0.15, 0, 40 * big), (bw_ * 0.3, 0, 26 * big), (bw_ * 0.3, 0, 0)],
+                  5.2 * big, rust_m if num == '7' else steel, res=4)
+        body = bx('padlock', -bw_ / 2, bw_ / 2, -11 * big, 11 * big, -bh_, 2, lm, bev=5)
+        group('padlock%s' % num, [sh, body], Matrix.Translation((hx + 25, FY - 56, hz - 44 * big)) @ Matrix.Rotation(math.radians(tilt), 4, 'Y'))
+        # number plate: a small chipped enamel plate nailed to the boards (digits only)
+        nx = (dx0 + dx1) / 2; nz = 1640
+        bx('num_plate%s' % num, nx - 62, nx + 62, FY - 30, FY - 24, nz - 52, nz + 52, enam, bev=10)
+        t = text_obj('num%s' % num, num, 82, font='Lato-Regular.ttf', extrude=0.5, mat=ink)
+        t.rotation_euler = (math.radians(90), 0, 0); t.location = (nx, FY - 30.6, nz)
+        for sx in (-50, 50):
+            screw_head('plate_nail', (nx + sx, FY - 30.5, nz), 3.5, 1.6, axis='-Y', slot=False, kind='dome', mat=nail_m)
+        if num == '7':
+            quad = [(dx0, FY - 24, DH), (dx1, FY - 24, DH), (dx1, FY - 24, 38), (dx0, FY - 24, 38)]
+    # slat partitions between the storage rooms (seen through the gaps)
+    for px in (-440, 440):
+        n = int((BY - FY - 80) / 125)
+        for k in range(n):
+            y = FY + 80 + k * 125
+            board('part_slat', px - 11, px + 11, y, y + 92, 10, vz(px) - 20)
+        bx('part_rail', px - 30, px + 30, FY + 60, BY, 1000, 1080, rail_m, bev=3)
+
+    # ---- storage 7: Mrs Halina's balcony boxes on a low bench under the window, a shelf of jars
+    terr = plastic('trough_terracotta', (0.42, 0.17, 0.09), rough=0.6, seed=3, grime=0.8, sheen_scuffs=0.2)
+    green_box = plastic('trough_green', (0.07, 0.16, 0.09), rough=0.5, seed=5, grime=0.8, sheen_scuffs=0.3)
+    soil = plastic('soil', (0.035, 0.028, 0.02), rough=0.95, seed=8, grime=0.0, sheen_scuffs=0.0)
+    def leaf_mat(name, col, trans=0.35):
+        m = plastic(name, col, rough=0.55, seed=len(name), grime=0.15, sheen_scuffs=0.0); nt = m.node_tree
+        out = next(n for n in nt.nodes if n.type == 'OUTPUT_MATERIAL'); src = out.inputs['Surface'].links[0].from_socket
+        tr = nt.nodes.new('ShaderNodeBsdfTranslucent'); tr.inputs['Color'].default_value = (col[0] * 1.6, col[1] * 1.8, col[2] * 0.8, 1)
+        mx = nt.nodes.new('ShaderNodeMixShader'); mx.inputs['Fac'].default_value = trans
+        nt.links.new(src, mx.inputs[1]); nt.links.new(tr.outputs['BSDF'], mx.inputs[2]); nt.links.new(mx.outputs['Shader'], out.inputs['Surface'])
+        return m
+    leaves = [leaf_mat('pel_leaf', (0.10, 0.22, 0.06)), leaf_mat('pel_leaf_pale', (0.24, 0.33, 0.10)), leaf_mat('pel_leaf_dry', (0.33, 0.24, 0.10), 0.2)]
+    stem_m = plastic('pel_stem', (0.20, 0.22, 0.10), rough=0.7, seed=2, grime=0.3, sheen_scuffs=0.0)
+    stem_w = plastic('pel_stem_woody', (0.20, 0.14, 0.08), rough=0.85, seed=4, grime=0.3, sheen_scuffs=0.0)
+    def pel_leaf(bm):   # a round, scalloped, slightly cupped pelargonium leaf
+        ret = bmesh.ops.create_circle(bm, cap_ends=True, cap_tris=True, segments=14, radius=1.0)
+        for v in ret['verts']:
+            r = math.hypot(v.co.x, v.co.y)
+            if r > 0.5:
+                a = math.atan2(v.co.y, v.co.x); k = 1.0 + 0.10 * math.cos(7 * a)
+                if abs(a + math.pi / 2) < 0.35: k *= 0.45      # the notch at the stalk
+                v.co.x *= k; v.co.y *= k
+            v.co.z = 0.20 * r * r + 0.05 * math.sin(5 * v.co.x)
+        return ret
+    def trough(x, y, z, L=640, W=170, H=150, mat=terr, yaw=0.0, plants=6, lush=1.0):
+        M = Matrix.Translation((x, y, z)) @ Matrix.Rotation(math.radians(yaw), 4, 'Z')
+        body = bx('trough', -L / 2, L / 2, -W / 2, W / 2, 0, H, mat, bev=9)
+        rim = bx('trough_rim', -L / 2 - 7, L / 2 + 7, -W / 2 - 7, W / 2 + 7, H - 22, H, mat, bev=5)
+        so = bx('trough_soil', -L / 2 + 8, L / 2 - 8, -W / 2 + 8, W / 2 - 8, H - 30, H + 3, soil)
+        for o in (body, rim, so): o.matrix_world = M
+        items = []
+        for p in range(plants):
+            bx_ = -L / 2 + L * (p + 0.5) / plants + rng.uniform(-25, 25); by_ = rng.uniform(-35, 35)
+            for s_ in range(rng.randint(3, 5)):     # leggy winter shoots reaching for the window
+                hgt = rng.uniform(170, 420) * lush; lean = Vector((rng.uniform(-90, 90), rng.uniform(-30, 110), 0)) * (hgt / 300)
+                p0 = Vector((bx_, by_, H)); p1 = p0 + Vector((lean.x * 0.25, lean.y * 0.2, hgt * 0.55)); p2 = p0 + Vector((lean.x, lean.y, hgt))
+                st = tube('pel_stem', [p0, p1, p2], rng.uniform(3.0, 4.6), stem_w if rng.random() < 0.4 else stem_m, res=2)
+                st.matrix_world = M
+                nl = rng.randint(4, 8)
+                for q in range(nl):
+                    t_ = min(1.0, 0.45 + 0.55 * (q + rng.random() * 0.6) / nl)
+                    base = p0.lerp(p1, t_ / 0.5) if t_ < 0.5 else p1.lerp(p2, (t_ - 0.5) / 0.5)
+                    az = rng.uniform(0, 2 * math.pi); out_ = rng.uniform(35, 75); sc = rng.uniform(32, 58) * (0.7 + 0.3 * lush)
+                    lp = base + Vector((math.cos(az) * out_, math.sin(az) * out_, rng.uniform(5, 40)))
+                    st2 = tube('pel_stalk', [base, lp], 1.5, stem_m, res=1, smooth_pts=False); st2.matrix_world = M
+                    Lm = (M @ Matrix.Translation(lp) @ Matrix.Rotation(az + math.pi / 2, 4, 'Z') @ Matrix.Rotation(math.radians(rng.uniform(-35, 35)), 4, 'X') @
+                          Matrix.Rotation(math.radians(rng.uniform(-30, 30)), 4, 'Y') @ Matrix.Scale(sc, 4))
+                    mi = 0 if rng.random() < 0.55 else (1 if rng.random() < 0.7 else 2)
+                    items.append((pel_leaf, Lm, mi))
+        if items: scatter('pel_leaves', items, leaves)
+    bench_m = oak('cellar_bench', light=(0.40, 0.31, 0.21), dark=(0.20, 0.15, 0.10), axis='X', seed=71, ring=2.0, coat=0.0, rough=0.85, wear=0.5, grime=0.9)
+    BZ = S.get('bench_z', 470); BY0 = FY + 130
+    bx('bench_top', -400, 400, BY0, BY0 + 420, BZ - 32, BZ, bench_m, bev=3)
+    for (lx, ly) in ((-370, BY0 + 30), (370, BY0 + 30), (-370, BY0 + 390), (370, BY0 + 390)):
+        bx('bench_leg', lx - 28, lx + 28, ly - 28, ly + 28, 0, BZ - 32, bench_m, bev=3)
+    trough(-20, BY0 + 110, BZ, L=700, mat=terr, plants=7)
+    trough(30, BY0 + 310, BZ, L=640, mat=green_box, plants=6, yaw=2)
+    trough(-60, BY0 + 720, 0, L=660, mat=terr, plants=5, yaw=-6, lush=0.8)
+    # shelf at the back with preserving jars
+    bx('shelf7', -400, 400, BY - 330, BY - 20, 1150, 1178, bench_m, bev=2)
+    for sx in (-380, 380): bx('shelf7_br', sx - 14, sx + 14, BY - 330, BY - 20, 0, 1150, bench_m)
+    jar_g = glass('jar_glass', (0.86, 0.92, 0.88), rough=0.03, dirt=0.6)
+    lid_m = metal('jar_lid', (0.62, 0.50, 0.26), 0.4, marks='stamp', wear=0.5, grime=0.8)
+    fills = [plastic('jar_fill%d' % i, c, rough=0.4, grime=0.0, sheen_scuffs=0.0) for i, c in enumerate(((0.30, 0.34, 0.10), (0.45, 0.10, 0.05), (0.50, 0.33, 0.08), (0.33, 0.06, 0.08)))]
+    def jar(x, y, z, r=46, h=150):
+        cyl('jar', r, h, (x, y, z + h / 2), verts=28).data.materials.append(jar_g)
+        cyl('jar_fill', r - 4, h * 0.78, (x, y, z + 4 + h * 0.39), verts=20).data.materials.append(fills[rng.randrange(4)])
+        cyl('jar_lid', r * 0.9, 14, (x, y, z + h + 5), verts=28).data.materials.append(lid_m)
+    for k in range(7): jar(-330 + k * 108 + rng.uniform(-8, 8), BY - 170 + rng.uniform(-40, 40), 1178, r=rng.uniform(40, 50), h=rng.uniform(120, 170))
+    card = paper('cellar_card', (0.50, 0.38, 0.24), fibre=1.5, seed=4, grime=0.6)
+    for (kx0, kx1, ky0, hgt) in ((-1180, -700, FY + 300, 420), (-1150, -640, FY + 900, 600), (560, 1100, FY + 350, 520), (620, 1180, FY + 1000, 380)):
+        bx('box', kx0, kx1, ky0, ky0 + 420, 0, hgt, card, bev=4)
+        bx('box2', kx0 + 40, kx1 - 60, ky0 + 30, ky0 + 380, hgt, hgt + rng.uniform(180, 320), card, bev=4)
+
+    # ---- the corridor: an old dresser by the right wall, pipes on the left, watering can and clay pots by door 7
+    cream = oak('dresser_wood', light=(0.22, 0.13, 0.065), dark=(0.085, 0.045, 0.022), axis='Z', seed=31, ring=2.2, coat=0.55, coat_rough=0.45,
+                rough=0.55, wear=0.9, grime=1.0)   # dark-stained, the varnish worn dull
+    top_m = oak('dresser_top', light=(0.24, 0.15, 0.08), dark=(0.10, 0.06, 0.03), axis='Y', seed=83, coat=0.3, coat_rough=0.5, rough=0.6, wear=0.8, grime=0.9)
+    knob_m = metal('dresser_knob', (0.60, 0.46, 0.25), 0.4, marks='turn', marks_axis=(1, 0, 0), wear=0.6, grime=0.8, patina=0.7)
+    DX1 = X1 - 12; DXF = DX1 - 470; DY0, DY1 = S.get('dresser_y', (1450, 2600))
+    bx('dr_plinth', DXF + 25, DX1, DY0 + 15, DY1 - 15, 0, 90, cream, bev=3)
+    bx('dr_carcass', DXF + 18, DX1, DY0, DY1, 90, 860, cream, bev=4)
+    bx('dr_top', DXF - 14, DX1, DY0 - 22, DY1 + 22, 860, 896, top_m, bev=5)
+    DL = (DY1 - DY0) / 2
+    for k in range(2):
+        a = DY0 + k * DL + 18; b_ = DY0 + (k + 1) * DL - 18
+        bx('dr_drawer', DXF + 2, DXF + 20, a, b_, 700, 836, cream, bev=4)
+        cyl('dr_knob', 17, 26, (DXF - 10, (a + b_) / 2, 768), axis='X', verts=24).data.materials.append(knob_m)
+        for (p, q, r2, s2) in ((a, b_, 596, 676), (a, b_, 112, 192), (a, a + 80, 112, 676), (b_ - 80, b_, 112, 676)):   # frame-and-panel door
+            bx('dr_door_frame', DXF, DXF + 20, p, q, r2, s2, cream, bev=3)
+        bx('dr_door_panel', DXF + 9, DXF + 20, a + 70, b_ - 70, 182, 606, cream, bev=6)
+        cyl('dr_knob', 14, 24, (DXF - 9, b_ - 40 if k == 0 else a + 40, 420), axis='X', verts=24).data.materials.append(knob_m)
+    UX = DX1 - 250   # upper part: open shelves, a back of boards, jars
+    for sy in (DY0 + 10, DY1 - 40):
+        bx('dr_side', UX, DX1, sy, sy + 30, 896, 1700, cream, bev=3)
+    bx('dr_back', DX1 - 14, DX1, DY0 + 10, DY1 - 10, 896, 1700, cream)
+    for z in (1180, 1450, 1690):
+        bx('dr_shelf', UX - (20 if z > 1600 else 0), DX1, DY0 + (0 if z > 1600 else 40), DY1 - (0 if z > 1600 else 40), z, z + 24, cream, bev=3)
+    for z in (896, 1204, 1474):
+        y = DY0 + 110
+        while y < DY1 - 110:
+            if rng.random() < 0.75: jar(DX1 - 120 + rng.uniform(-30, 30), y, z, r=rng.uniform(38, 52), h=rng.uniform(110, 190))
+            y += rng.uniform(115, 190)
+    # pipes along the left wall: a lagged heating pipe and a rusty water pipe with a valve
+    pipe_m = paint('cellar_pipe', (0.34, 0.30, 0.22), rough=0.5, metal_col=(0.30, 0.20, 0.12), chip=0.8, grime=0.9)
+    lag_m = plastic('pipe_lagging', (0.50, 0.47, 0.40), rough=0.9, seed=6, grime=0.9, sheen_scuffs=0.0)
+    PXL = X0 + 75
+    tube('pipe_hot', [(PXL, -9000, 1120), (PXL, FY - 60, 1120)], 46, lag_m, smooth_pts=False)
+    tube('pipe_cold', [(PXL - 10, -9000, 950), (PXL - 10, 2300, 950), (PXL - 10, 2300, 0)], 17, pipe_m, smooth_pts=False)
+    for y in range(-8000, FY - 200, 1150):
+        bx('pipe_clip', X0, PXL + 52, y - 14, y + 14, 1060, 1074, iron_m)
+        tube('lag_band', [(PXL + 47 * math.cos(k * math.pi / 8), y + 300, 1120 + 47 * math.sin(k * math.pi / 8)) for k in range(17)], 2.2, iron_m, res=1, smooth_pts=False)
+    cyl('valve_body', 30, 70, (PXL - 10, 1700, 950), axis='Y', verts=24).data.materials.append(pipe_m)
+    tube('valve_stem', [(PXL - 10, 1700, 950), (PXL + 70, 1700, 950)], 6, iron_m, smooth_pts=False)
+    bpy.ops.mesh.primitive_torus_add(major_radius=42, minor_radius=6, location=(PXL + 70, 1700, 950), rotation=(0, math.radians(90), 0))
+    setmat(bpy.context.object, paint('valve_wheel', (0.45, 0.06, 0.04), rough=0.45, metal_col=(0.3, 0.2, 0.12), chip=0.7, grime=0.8))
+    # the watering can (galvanised) and stacked clay pots by the posts of door 7
+    zinc = metal('zinc_can', (0.52, 0.54, 0.54), 0.45, marks='stamp', wear=0.4, grime=0.9, smudge=0.5, seed=11)
+    WCx, WCy = S.get('can', (640, FY - 330))
+    parts = [lathe_open('can_body', [(0.1, 0), (118, 0), (122, 6), (112, 250), (116, 256)], seg=48, thick=1.6, mat=zinc)]
+    parts.append(tube('can_spout', [(100, 0, 60), (250, 0, 215), (345, 0, 300)], 15, zinc, res=4))
+    c_ = cyl('can_rose', 44, 26, (0, 0, 0), axis='X', verts=32); c_.matrix_world = Matrix.Translation((356, 0, 310)) @ Matrix.Rotation(math.radians(-42), 4, 'Y'); c_.data.materials.append(zinc); parts.append(c_)
+    parts.append(tube('can_handle', [(-112, 0, 60), (-215, 0, 120), (-225, 0, 225), (-116, 0, 245)], 8, zinc, res=3))
+    parts.append(tube('can_bail', [(0, -105, 250), (0, -70, 335), (0, 70, 335), (0, 105, 250)], 7, zinc, res=3))
+    group('watering_can', parts, Matrix.Translation((WCx, WCy, 0)) @ Matrix.Rotation(math.radians(S.get('can_yaw', 200)), 4, 'Z'))
+    clay = plastic('clay_pot', (0.50, 0.22, 0.11), rough=0.85, seed=13, grime=0.7, sheen_scuffs=0.0)
+    PX_, PY_ = S.get('pots', (-640, FY - 260))
+    for k in range(4):
+        lathe_open('pot', [(0.1, 0), (62, 0), (88, 120), (96, 122), (98, 150), (90, 150)], x=PX_ + k * 2.5, y=PY_, seg=40, thick=6, mat=clay).location.z = k * 38
+    lathe_open('pot_single', [(0.1, 0), (75, 0), (105, 145), (114, 147), (116, 180), (107, 180)], x=PX_ + 230, y=PY_ + 70, seg=40, thick=7, mat=clay)
+
+    # ---- light: a bulkhead lamp on the vault crown; conduit along the crown
+    LYp = S.get('lamp_y', 1750); LZ = SPRING + R0
+    cage_m = paint('lamp_cage', (0.10, 0.11, 0.10), rough=0.5, metal_col=(0.35, 0.33, 0.30), chip=0.6, grime=0.8)
+    cyl('lamp_base', 85, 40, (0, LYp, LZ - 22), verts=40).data.materials.append(cage_m)
+    tube('conduit', [(0, -9000, LZ - 14), (0, LYp, LZ - 14)], 9, cage_m, smooth_pts=False)
+    gl = lathe_open('lamp_glass', [(70, 0), (72, -60), (60, -120), (30, -150), (0.1, -156)], seg=40, mat=opal_glass('cellar_bulb', glow=S.get('glow', 1.2)))
+    gl.location = (0, LYp, LZ - 42); gl.visible_shadow = False
+    for k in range(8):
+        a = 2 * math.pi * k / 8
+        tube('cage_wire', [(84 * math.cos(a), LYp + 84 * math.sin(a), LZ - 42), (86 * math.cos(a), LYp + 86 * math.sin(a), LZ - 120), (50 * math.cos(a), LYp + 50 * math.sin(a), LZ - 185), (0, LYp, LZ - 200)], 2.4, cage_m, res=2).visible_shadow = False
+    for z in (LZ - 80, LZ - 135):
+        bpy.ops.mesh.primitive_torus_add(major_radius=85 if z > LZ - 100 else 78, minor_radius=2.4, location=(0, LYp, z)); o = bpy.context.object; setmat(o, cage_m); o.visible_shadow = False
+    point_lamp('cellar_bulb', (0, LYp, LZ - 120), S.get('bulb_w', 2.6e7), (1.0, 0.70, 0.42), size=45)
+    world_hdri(0.004, 'interior.exr', sat=0.3)
+    return {'door': quad}
+
+
 # ================================================================ facade kit (old-town street fronts, D-108)
 def granite(name, base=(0.36, 0.35, 0.34), rough=0.55, seed=0.0, pink=0.25):
     """Grey granite: quartz/feldspar/mica speckle at grain scale, a cloudy tone over the stone, sawn-and-worn top."""
@@ -1890,7 +2175,7 @@ def base_render(res, spp, out, expo, vig, look):
     # env_common.photo_finish is fixed on main (D-89): no bright centre ellipse any more
 
 
-KITS = {'street': kit_street, 'shop': kit_shop, 'corridor': kit_corridor, 'vault': kit_vault, 'facade': kit_facade, 'lockers': kit_lockers}
+KITS = {'street': kit_street, 'shop': kit_shop, 'corridor': kit_corridor, 'vault': kit_vault, 'facade': kit_facade, 'lockers': kit_lockers, 'cellar': kit_cellar}
 info = KITS[KIT]()
 cam = camera_walk()
 LOOK = J.get('look', {}).get(TIME, {})

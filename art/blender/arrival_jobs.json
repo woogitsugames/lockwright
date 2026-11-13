@@ -1836,6 +1836,125 @@
           -0.12
         ]
       }
+    },
+    "ch13_01_balcony_boxes": {
+      "kit": "cellar",
+      "times": [
+        "day"
+      ],
+      "story": "Spring in the Srodmiescie tenement's cellar: Mrs Halina's geraniums wintered in her storage room 7 and the padlock has rusted shut. Brick corridor under a limewashed vault, slat doors 6, 7 and 8 (Mrs Zosia's is next door), the balcony boxes behind the slats under the cellar window, a watering can and clay pots by the door, an old dresser by the wall (job.refuse_ch13_08_found_cashbox: Oskar finds the cashbox behind it; that job shows this still through arrival_from). D-122.",
+      "cellar": {},
+      "camera": {
+        "lens": 24.0,
+        "end_shift": [
+          0.0,
+          0.03
+        ],
+        "keys": [
+          [
+            0.0,
+            250,
+            -7000,
+            1560,
+            3.0,
+            -1.0
+          ],
+          [
+            0.4,
+            180,
+            -4800,
+            1550,
+            2.0,
+            -1.0
+          ],
+          [
+            0.75,
+            80,
+            -1400,
+            1500,
+            1.0,
+            -2.0
+          ],
+          [
+            1.0,
+            40,
+            150,
+            1460,
+            0.5,
+            -3.0
+          ]
+        ]
+      },
+      "look": {
+        "day": {
+          "exposure": 0.9,
+          "vignette": 0.28,
+          "agx": "AgX - Medium High Contrast"
+        }
+      }
+    },
+    "ch13_10_courtyard_door": {
+      "times": [
+        "day"
+      ],
+      "story": "Neighbours' Day in the Srodmiescie tenement: the community room's back door to the courtyard has not been opened for thirty years and nobody recalls a key. Old cream paint, two upper lights of dusty glass with the daylight and the linden behind them, a rolled blanket still lying against its foot; the long table waits in pieces (board tops and folded trestles against the wall) and Marta's poster hangs by the door: the table starts in the room and ends under the linden. Same building as job.shared_room_door (lamperia, terrazzo). D-122.",
+      "number": "",
+      "door": {
+        "style": "painted",
+        "paint": [
+          0.46,
+          0.42,
+          0.32
+        ],
+        "state": "closed",
+        "glazed": true
+      },
+      "plate": "none",
+      "stair": "terrazzo",
+      "lamperia": [
+        0.3,
+        0.2,
+        0.1
+      ],
+      "court_seed": 91,
+      "flyer": false,
+      "mailbox": {},
+      "drop": [
+        "mat_",
+        "fibre_bed",
+        "mailbox",
+        "mb_",
+        "nameframe",
+        "namecard",
+        "np_screw"
+      ],
+      "props": [
+        {
+          "type": "trestle_tables",
+          "x": -930,
+          "n": 2
+        },
+        {
+          "type": "poster",
+          "at": [
+            720,
+            1300
+          ],
+          "scale": 0.86
+        }
+      ],
+      "camera": {
+        "end": [
+          -60,
+          -2540,
+          1570
+        ],
+        "end_yaw": 0.6,
+        "end_shift": [
+          0.0,
+          -0.13
+        ]
+      }
     }
   }
 }

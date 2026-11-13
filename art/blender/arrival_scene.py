@@ -235,6 +235,15 @@ elif STYLE == 'padded':  # PRL "obite drzwi": leatherette over wadding, rolled e
             if (round(x + dx), round(z + dz)) in nail_set:
                 pts = [(x + dx * q / 6, LY - 2 - tuft(x + dx * q / 6, z + dz * q / 6) - 1.2, z + dz * q / 6) for q in range(7)]
                 tube('pad_cord', pts, 1.6, cord_m, res=2)
+if DOORC.get('glazed'):   # D-122: a back door to the courtyard - the two upper panels are old glass on glazing bars
+    drop('panel0', 'panel1', 'peep')
+    bar_m = bpy.data.materials.get('leaf_paint') or door_wood('X', 90)
+    yard_glass = glass('yard_glass', (0.84, 0.88, 0.82), rough=DOORC.get('glass_rough', 0.2), dirt=0.8)
+    for i, (x0, x1, z0, z1) in enumerate(g('panels')[:2]):
+        gp = bx('glaze%d' % i, x0, x1, LY + 16, LY + 20, z0, z1, yard_glass); gp.visible_shadow = False
+        for k in (1, 2):
+            zc = z0 + (z1 - z0) * k / 3
+            bx('glaze_bar%d' % i, x0, x1, LY + 2, LY + 30, zc - 11, zc + 11, bar_m, bev=4)
 if DOORC.get('new_deadbolt'):   # a second, brand-new lock above the old one: bright rose, crisp plug, no grime yet
     new_steel = metal('new_steel', (0.72, 0.72, 0.70), 0.16, marks='turn', marks_axis=(0, 1, 0), wear=0.0, grime=0.0, bevel_r=0.4)
     new_brass = metal('new_brass', (0.86, 0.66, 0.36), 0.2, marks='turn', marks_axis=(0, 1, 0), wear=0.0, grime=0.05, bevel_r=0.3)
@@ -474,6 +483,22 @@ hl = lathe('hall_lamp', [(0.1, 2150), (70, 2160), (95, 2230), (80, 2300), (40, 2
 setmat(hl, opal_glass('hall_opal', glow=3.0 if TIME != 'day' else 0.0))
 bpy.ops.object.light_add(type='POINT', location=(600, 3060, 2240)); hlamp = bpy.context.object; hlamp.name = 'hall_bulb'
 hlamp.data.energy = (1.6e7 if TIME != 'day' else 0.0); hlamp.data.color = (1.0, 0.64, 0.36); hlamp.data.shadow_soft_size = 40
+
+if DOORC.get('glazed'):   # D-122: daylight and the linden in the courtyard behind the old glass (soft shapes only)
+    drop('hall_', 'runner', 'hook_rail', 'coat', 'shelf_hat', 'shoe_cabinet', 'photo')
+    yr = random.Random(13)
+    bx('yard_sky', -4000, 4000, 3000, 3010, -1000, 6000, emissive('yard_sky', (0.86, 0.92, 1.0), DOORC.get('yard_sky', 4.5), (0, 0, 0))).visible_shadow = False
+    bx('yard_wall', -4000, 4000, 2900, 2990, -1000, 1500, emissive('yard_wall', (0.62, 0.50, 0.40), 1.6, (0, 0, 0)))
+    bx('yard_ground', -4000, 4000, 130, 2900, -60, -20, plastic('yard_ground', (0.30, 0.28, 0.24), rough=0.9, grime=0.3))
+    lf = [emissive('linden%d' % i, c, e, (0, 0, 0)) for i, (c, e) in enumerate((((0.20, 0.42, 0.08), 0.9), ((0.34, 0.58, 0.14), 1.5), ((0.10, 0.26, 0.05), 0.5)))]
+    bx('linden_trunk', 200, 330, 900, 1000, 0, 2000, emissive('linden_trunk', (0.10, 0.08, 0.06), 0.6, (0, 0, 0)))
+    for i in range(46):
+        a = yr.uniform(0, 6.28); r_ = yr.uniform(0, 1) ** 0.6 * 700
+        o_ = cyl('linden_leafmass', yr.uniform(110, 260), 8, (260 + r_ * math.cos(a), 900 + yr.uniform(-200, 200), 2150 + r_ * 0.6 * math.sin(a)), axis='Y', verts=14)
+        o_.data.materials.append(lf[yr.randrange(3)]); o_.visible_shadow = False
+    ya = bpy.data.objects.new('aim_yard', None); scene.collection.objects.link(ya); ya.location = (-150, -900, 0)
+    yl = area_light('yard_light', (250, 900, 2300), ya, 1400, DOORC.get('yard_w', 1.6e8), (1.0, 0.96, 0.86), size_y=1400)
+    yl.visible_camera = False; yl.visible_glossy = False
 
 # ---------------------------------------------------------------- 4e. stair finish and the job's story props (arrival_jobs.json)
 # Osiedle blocks have cast terrazzo flights instead of the tenement's oak treads (the kit's right-hand flight too).
@@ -839,6 +864,74 @@ def P_folding_chairs(c):
         for o in parts:
             o.matrix_world = M @ o.matrix_world
 
+def P_trestle_tables(c):
+    """D-122, Neighbours' Day: the long table waits in pieces - board table tops leaned against the wall and the
+    folded trestles in front of them."""
+    x0 = c.get('x', -1230); n = int(c.get('n', 2)); L = c.get('length', 1850); Wd = c.get('width', 680); ang = math.radians(c.get('lean', 7))
+    for k in range(n):
+        cx = x0 + k * 46
+        top = oak('table_top%d' % k, light=(0.42, 0.33, 0.22), dark=(0.24, 0.175, 0.105), axis='Z', seed=141 + k, ring=2.6, coat=0.25, coat_rough=0.5,
+                  rough=0.6, wear=0.7, grime=0.7, contrast=0.6, center=(cx + 90, 160, 500))
+        batten = oak('table_batten%d' % k, light=(0.36, 0.28, 0.18), dark=(0.20, 0.145, 0.085), axis='X', seed=151 + k, ring=2.2, coat=0.0, rough=0.8, wear=0.5, grime=0.8, contrast=0.5)
+        parts = []
+        nb = 5; bw = Wd / nb
+        for b_ in range(nb):   # the top is five boards, the underside with its battens faces the landing
+            parts.append(bx('tt_board', -Wd / 2 + b_ * bw + 1.5, -Wd / 2 + (b_ + 1) * bw - 1.5, -28, 0, PRNG.uniform(0, 5), L - PRNG.uniform(0, 5), top, bev=2))
+        for z in (L * 0.14, L * 0.5, L * 0.86):
+            parts.append(bx('tt_batten', -Wd / 2 + 30, Wd / 2 - 30, -56, -28, z - 38, z + 38, batten, bev=3))
+            for b_ in range(nb):
+                sh_ = screw_head('tt_screw', (-Wd / 2 + (b_ + 0.5) * bw, -56.5, z), 4.5, 1.6, axis='-Y', slot=True, mat=steel, rot=PRNG.uniform(0, 3)); parts.append(sh_)
+        M = Matrix.Translation((cx, -24 - 64 * k - L * math.sin(ang), 0)) @ Matrix.Rotation(-ang, 4, 'X') @ Matrix.Rotation(math.radians(PRNG.uniform(-0.8, 0.8)), 4, 'Y')
+        for o in parts:
+            o.matrix_world = M @ o.matrix_world
+    # two folded trestles (A-frames closed flat) leaning in front
+    tw = oak('trestle_wood', light=(0.38, 0.30, 0.20), dark=(0.21, 0.155, 0.095), axis='Z', seed=161, ring=2.4, coat=0.0, rough=0.8, wear=0.6, grime=0.8, contrast=0.5)
+    twx = oak('trestle_wood_x', light=(0.38, 0.30, 0.20), dark=(0.21, 0.155, 0.095), axis='X', seed=163, ring=2.4, coat=0.0, rough=0.8, wear=0.6, grime=0.8, contrast=0.5)
+    hinge_m = metal('trestle_hinge', (0.50, 0.50, 0.48), 0.4, marks='stamp', wear=0.4, grime=0.8)
+    tx = c.get('trestle_x', x0 - 100); TH, TWd = 760, 520; ta = math.radians(c.get('trestle_lean', 9))
+    for k in range(int(c.get('trestles', 2))):
+        parts = []
+        for sx in (-1, 1):
+            parts.append(bx('tr_leg', sx * TWd / 2 - 22 * (1 + sx), sx * TWd / 2 + 22 * (1 - sx), -40, 0, 0, TH, tw, bev=3))
+            parts.append(bx('tr_leg_b', sx * TWd / 2 - 22 * (1 + sx), sx * TWd / 2 + 22 * (1 - sx), -84, -44, 30, TH, tw, bev=3))
+            parts.append(bx('tr_hinge', sx * (TWd / 2 - 110) - 30, sx * (TWd / 2 - 110) + 30, -90, -86, TH - 50, TH + 30, hinge_m, bev=1))
+        parts.append(bx('tr_rail', -TWd / 2 + 44, TWd / 2 - 44, -80, -48, 170, 240, twx, bev=3))
+        parts.append(bx('tr_head', -TWd / 2 - 30, TWd / 2 + 30, -88, 0, TH, TH + 44, twx, bev=4))
+        M = Matrix.Translation((tx + c.get('trestle_dx', 250) * k, c.get('trestle_y', -330) - 20 * k - TH * math.sin(ta), 0)) @ Matrix.Rotation(-ta, 4, 'X') @ Matrix.Rotation(math.radians(3.0 * k - 1.5), 4, 'Y')
+        for o in parts:
+            o.matrix_world = M @ o.matrix_world
+
+
+def P_poster(c):
+    """D-122: Marta's hand-made poster for Neighbours' Day taped to the wall: a long table that starts at a door and
+    ends under a tree (cut paper and felt pen, bars instead of words)."""
+    x0, z0 = c.get('at', (590, 1290)); W_, H_ = 420, 594; y = -1.0   # drawn on a 420 x 594 sheet, `scale` resizes it
+    sheet = paper('poster_sheet', tuple(c.get('paper', (0.78, 0.74, 0.60))), fibre=0.8, seed=41, grime=0.15)
+    cols = {'table': (0.50, 0.16, 0.11), 'cloth': (0.80, 0.78, 0.72), 'tree': (0.20, 0.34, 0.16), 'trunk': (0.28, 0.19, 0.12), 'ink': (0.09, 0.10, 0.14),
+            'door': (0.26, 0.32, 0.35), 'sun': (0.78, 0.56, 0.16)}
+    pm = {k: paper('poster_' + k, v, fibre=0.6, seed=50 + i, grime=0.05) for i, (k, v) in enumerate(cols.items())}
+    parts = [bx('poster', 0, W_, y - 0.6, y, 0, H_, sheet)]
+    def sh(name, a, b_, c_, d, mat, rot=0.0, lift=0.3):
+        o = bx('poster_' + name, -(b_ - a) / 2, (b_ - a) / 2, y - 0.6 - lift, y - 0.6, -(d - c_) / 2, (d - c_) / 2, pm[mat])
+        o.matrix_world = Matrix.Translation(((a + b_) / 2, 0, (c_ + d) / 2)) @ Matrix.Rotation(math.radians(rot), 4, 'Y'); parts.append(o)
+    sh('door', 40, 118, 250, 400, 'door', lift=0.35)
+    sh('table', 96, 330, 268, 306, 'table', rot=9, lift=0.5)
+    for k in range(5): sh('plate', 112 + k * 46, 136 + k * 46, 284 - k * 7.2, 292 - k * 7.2, 'cloth', rot=9, lift=0.7)
+    sh('trunk', 322, 344, 250, 400, 'trunk', lift=0.4)
+    for k, (dx, dz, r_) in enumerate(((0, 0, 78), (-52, -28, 50), (55, -22, 54), (-20, 48, 52), (38, 44, 46))):
+        o = cyl('poster_tree', r_, 0.4, (333 + dx, y - 1.3 - 0.05 * k, 440 + dz), axis='Y', verts=40); o.data.materials.append(pm['tree']); parts.append(o)
+    o = cyl('poster_sun', 30, 0.4, (86, y - 1.2, 520), axis='Y', verts=32); o.data.materials.append(pm['sun']); parts.append(o)
+    for k, wd in enumerate((300, 250, 190)):   # the words: felt-pen bars
+        sh('line%d' % k, 60, 60 + wd, 172 - k * 44, 190 - k * 44, 'ink', lift=0.15)
+    sh('date', 150, 270, 40, 52, 'ink', lift=0.15)
+    tape = plastic('poster_tape', (0.78, 0.72, 0.52), rough=0.25, grime=0.1, sheen_scuffs=0.0)
+    for (tx_, tz_, tr_) in ((6, H_ - 8, 40), (W_ - 6, H_ - 8, -42), (8, 8, -38), (W_ - 8, 6, 44)):
+        o = bx('poster_tape', -26, 26, y - 1.4, y - 1.1, -9, 9, tape); o.matrix_world = Matrix.Translation((tx_, 0, tz_)) @ Matrix.Rotation(math.radians(tr_), 4, 'Y'); parts.append(o)
+    M = Matrix.Translation((x0, 0, z0)) @ Matrix.Rotation(math.radians(c.get('rot', -1.5)), 4, 'Y') @ Matrix.Diagonal((c.get('scale', 1.0), 1, c.get('scale', 1.0), 1))
+    for o in parts:
+        o.matrix_world = M @ o.matrix_world
+
+
 def P_photo_frames(c):
     """Krystyna and Ola are choosing family prints for the community room display: framed photographs leaning
     against the landing wall by the door and a cardboard box with more frames standing in it. The prints are
@@ -926,7 +1019,8 @@ PROPS = {'gas_riser': P_gas_riser, 'cat_bowl': P_cat_bowl, 'toy_mouse': P_toy_mo
          'scooter': P_scooter, 'plank': P_plank,
          'book_stack': P_book_stack,   # D-108: job.widow_bureau
          'notice_board': P_notice_board, 'folding_chairs': P_folding_chairs,
-         'photo_frames': P_photo_frames, 'parcel': P_parcel}   # D-117: job.krystyna_wooden_album, job.refuse_t43_09_empty_flat
+         'photo_frames': P_photo_frames, 'parcel': P_parcel,
+         'trestle_tables': P_trestle_tables, 'poster': P_poster}   # D-122: job.ch13_10_courtyard_door   # D-117: job.krystyna_wooden_album, job.refuse_t43_09_empty_flat
 #   # D-110: the community room (job.shared_room_door)       # D-108: job.dollhouse_wooden_lock
 # mailbox: a letter sticking out of the slot (grandma: "the letter in the mailbox is addressed to you"),
 # or stuffed full (nobody has emptied it for weeks)
@@ -939,6 +1033,7 @@ for i in range(mb_items):
 if MAILBOX.get('overflow'):
     x, y = MBX0 + 40, -170
     envelope('mb_fallen', Matrix.Translation((x, y, 0.4)) @ Matrix.Rotation(math.radians(24), 4, 'Z'), 4)
+if J.get('drop'): drop(*J['drop'])   # kit pieces this place does not have (a back door: no doormat, mailbox, name card)
 for pc in PROPS_CFG:
     if pc['type'] not in PROPS: sys.exit('arrival_scene: unknown prop %s' % pc['type'])
     PROPS[pc['type']](pc)
