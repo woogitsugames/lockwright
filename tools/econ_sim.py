@@ -771,7 +771,7 @@ def FURNISHINGS(results, jobs, furnishings):
             idxs = [next((i for i, fid in x.furn if fid == f["id"]), NEVER) for x in c[prof]]
             share = sum(1 for i in idxs if i <= end12) / len(idxs)
             m = med(idxs)
-            cells.append("—" if m >= NEVER else f"{m:.0f} ({jobs[int(m) - 1]['chapter']}; {share:.0%})")
+            cells.append("—" if m > len(jobs) else f"{m:.0f} ({jobs[int(m) - 1]['chapter']}; {share:.0%})")
         L.append(f"| `{f['id']}` | {f['price']} | {f['chapter']} | " + " | ".join(cells) + " |")
     L += ["", f"Komórka: mediana numeru zlecenia, po którym przedmiot jest kupiony (rozdział; odsetek karier, w których "
           f"kupiono go do końca rozdz. {D71_CHAPTER}; — = mediana: nie kupiony). Cel D-71: przeciętny gracz kupuje większość do końca "
