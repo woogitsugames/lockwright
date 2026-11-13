@@ -1319,8 +1319,8 @@
   "model_id": "eleven_v4_turbo",
   "seed": 1269742,
   "speaker": "roman",
-  "subtitle": "The notice was up for three days. The bicycle is Mrs Teresa's; her leg was in a cast all winter.",
-  "text": "The notice was up for three days. The bicycle is Mrs Teresa's; her leg was in a cast all winter.",
+  "subtitle": "The notice was up for three days. The bicycle is Mrs Teresa's; she had her leg in a cast this winter.",
+  "text": "The notice was up for three days. The bicycle is Mrs Teresa's; she had her leg in a cast this winter.",
   "voice_id": "uoWh0DSJDyHUtcd90cVQ",
   "voice_settings": {
    "similarity_boost": 0.8,
@@ -2061,8 +2061,8 @@
   "model_id": "eleven_v4_turbo",
   "seed": 1269742,
   "speaker": "roman",
-  "subtitle": "El aviso estuvo tres días. La bici es de la señora Teresa; pasó el invierno con la pierna escayolada.",
-  "text": "El aviso estuvo tres días. La bici es de la señora Teresa; pasó el invierno con la pierna escayolada.",
+  "subtitle": "El aviso estuvo tres días. La bici es de la señora Teresa; este invierno tuvo la pierna escayolada.",
+  "text": "El aviso estuvo tres días. La bici es de la señora Teresa; este invierno tuvo la pierna escayolada.",
   "voice_id": "uoWh0DSJDyHUtcd90cVQ",
   "voice_settings": {
    "similarity_boost": 0.8,
