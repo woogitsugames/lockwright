@@ -1,0 +1,13 @@
+{
+  "schema": "lockwright.tool_caution/1",
+  "note": "D-120: the first lockcore tier of each family at which a heavy hand starts to break the tool (the first tier with a false gate; warded: the first probe that can break). The first lock played at or above it carries the tool caution of TutorialCoach.",
+  "source": "docs/research/difficulty-curve-2026-11.md 8.3 (D-118, heavy-hand bot)",
+  "families": {
+    "pin_tumbler": {"tier": 4, "intro": "lock.caution_intro", "trap": "lock.caution_false_set"},
+    "lever": {"tier": 4, "intro": "lock.caution_intro", "trap": "lock.caution_false_set"},
+    "lever_detector": {"tier": 5, "intro": "lock.caution_intro", "trap": "lock.caution_false_set"},
+    "dimple": {"tier": 2, "intro": "lock.caution_intro", "trap": "lock.caution_false_set"},
+    "axial_slider": {"tier": 2, "intro": "lock.caution_intro", "trap": "lock.caution_false_set"},
+    "warded": {"tier": 2, "intro": "lock.caution_warded", "trap": ""}
+  }
+}

@@ -22,6 +22,7 @@ extends Node
 ##   --lw-auto 1         D-52 auto tension
 ##   --lw-lesson 1|0     force the family's first lesson on (or off) whatever the save says (T42)
 ##   --lw-lesson-step N  start the lesson at step N (screenshots; steps + 1 = the closing line)
+##   --lw-caution 1|0    force the tool caution on (or off) whatever the save and the tier say (D-120)
 ##   --lw-lang pl        UI language for this run (screenshots)
 ##   --lw-loupe 1        open the eyepiece (N-57)
 ##   --lw-pose blender   show the five stack states of art/renders/section.png (set, false set,
@@ -172,6 +173,7 @@ func _setup_guidance() -> void:
 		if done < 3:
 			coach = TutorialCoach.new(0, false, auto)  # N-63: family lines for the first jobs
 			coach.family = family
+		_setup_caution(auto)
 		view.coach = coach
 		view.loupe_toggled.connect(func(on: bool) -> void: sampler.frozen = on)
 		_setup_hints()
@@ -214,6 +216,8 @@ func _setup_guidance() -> void:
 		level = {"off": ChalkLayer.Level.OFF, "reduced": ChalkLayer.Level.REDUCED, "full": ChalkLayer.Level.FULL}.get(args["lw-chalk"], level)
 	if coach != null:
 		coach.family = family  # N-63: wafer / lever get their own lines (no pin wording)
+	if not tutorial:
+		_setup_caution(auto)
 	view.chalk_level = level
 	view.chalk_gauge = (auto or (tutorial and stage == 0)) and lesson.is_empty()
 	view.coach = coach
@@ -253,10 +257,35 @@ static func lesson_for_job(fam: StringName, a: Dictionary) -> Dictionary:
 	return TutorialCoach.load_lesson(fam)
 
 
+## D-120: the first lock of the family at the tier where a heavy hand starts to break tools gets the
+## tool caution (TutorialCoach, data/tool_caution.json) - in jobs and in the continuous run, not in
+## the tutorial or practice. Without a coach of its own the lock gets one that only cautions.
+## --lw-caution 1/0 forces it on/off (dev, screenshots).
+func _setup_caution(auto: bool) -> void:
+	var entry := caution_for_lock(family, tier, args)
+	if entry.is_empty():
+		return
+	if coach == null:
+		coach = TutorialCoach.new(0, false, auto)
+		coach.family = family
+		coach.caution_only = true
+	coach.set_caution(entry)
+
+
+static func caution_for_lock(fam: StringName, tr: int, a: Dictionary) -> Dictionary:
+	if a.get("lw-caution", "") == "0":
+		return {}
+	if a.get("lw-caution", "") == "1":
+		return TutorialCoach.caution_table().get(String(fam), {})
+	if JobRun.current_job.is_empty() or TutorialCoach.caution_done(fam):
+		return {}  # a lock outside a job or the run (dev scenes, screenshots) has none
+	return TutorialCoach.caution_for(fam, tr)
+
+
 ## ONBOARDING §2: hint ladder H0–H4 + chalk gesture hints (D-80) wherever a coach runs (S1–S3, first jobs).
 ## Off for scripted dev / CI runs (frozen sessions, screenshots of a stage).
 func _setup_hints() -> void:
-	if coach == null or args.has("lw-stage") or args.has("lw-sim") or args.has("lw-pose") or args.get("lw-hints", "1") == "0":
+	if coach == null or coach.caution_only or args.has("lw-stage") or args.has("lw-sim") or args.has("lw-pose") or args.get("lw-hints", "1") == "0":
 		return
 	hints = TutorialHints.new()
 	hints.name = "TutorialHints"
@@ -413,6 +442,8 @@ func _on_open() -> void:
 
 ## T42: the lesson is done once its lock opens; later jobs of the family count towards the fade.
 func _note_lesson_open() -> void:
+	if coach != null and coach.has_caution() and not args.has("lw-caution") and not JobRun.current_job.is_empty():
+		TutorialCoach.mark_caution_done(family)  # D-120
 	if args.has("lw-lesson") or JobRun.mode != &"job" or JobRun.current_job.is_empty():
 		return
 	if coach != null and coach.has_lesson() and not coach.lesson_quiet:

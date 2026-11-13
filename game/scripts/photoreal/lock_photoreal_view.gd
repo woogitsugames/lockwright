@@ -1008,16 +1008,41 @@ var goal_line := ""
 
 
 ## Chalk layer off in a practice run: draw only the goal line, no marks. True when it did.
+## D-120: the same for the tool caution (its line and the strain arrow at the wrench).
 func _goal_only(delta: float) -> bool:
-	if goal_line == "" or _chalk == null:
+	if _chalk == null:
+		return false
+	var line := _caution_text()
+	var marks := {}
+	_caution_marks(marks)
+	if line == "":
+		line = goal_line
+	if line == "" and marks.is_empty():
 		return false
 	var m := {}
 	_coach_text(m)  # the text rect
+	marks["text_rect"] = m["text_rect"]
 	_chalk.level = ChalkLayer.Level.REDUCED
-	_chalk.marks = {"text_rect": m["text_rect"]}
-	_chalk.text = goal_line
+	_chalk.marks = marks
+	_chalk.text = line
 	_chalk.tick(delta)
 	return true
+
+
+## D-120 tool caution (TutorialCoach): its chalk line now, "" when none.
+func _caution_text() -> String:
+	if coach == null:
+		return ""
+	var key := coach.caution_key()
+	return I18n.t(key) if key != &"" else ""
+
+
+## D-120 / DESIGN §1 "stress": while the tool bends in a cautioned lock, a chalk arrow "ease off" at the
+## wrench (the mark of the overset step; two thumbs only - in auto tension the game holds the wrench).
+func _caution_marks(m: Dictionary) -> void:
+	if coach != null and coach.strain and not coach.auto_tension and _face != null:
+		m["hint_down"] = true
+		m["wrench_tip"] = _face.position + _face.arm_tip()
 
 
 ## The coach line (already translated) and its rect; shared by the family views. Without a coach
@@ -1041,6 +1066,7 @@ func _apply_hint_marks(m: Dictionary, right_mark: String = "hint_right") -> void
 		m[right_mark] = true
 	if hint_arrows != "":
 		m["friction"] = true
+	_caution_marks(m)
 
 
 ## T42 lessons (TutorialCoach.set_lesson): chalk thumb + arrows on the zone of the thumb that works in
@@ -1055,6 +1081,9 @@ func _lesson_chalk(m: Dictionary, fallback: String, right_mark: String = "hint_r
 		if not coach.lesson_quiet:
 			var key := coach.text_key()
 			line = I18n.t(key) if key != &"" else ""
+	var caution := _caution_text()
+	if caution != "":
+		line = caution
 	_apply_hint_marks(m, right_mark)
 	return line
 
@@ -1173,7 +1202,8 @@ func _update_chalk(elements: Array, default_target: float, delta: float) -> void
 			m["hint_right"] = coach.lesson_thumb() == "right"
 	_apply_hint_marks(m)
 	_chalk.marks = m
-	_chalk.text = _chalk_line(elements, text if text != "" else goal_line)
+	var caution := _caution_text()
+	_chalk.text = caution if caution != "" else _chalk_line(elements, text if text != "" else goal_line)
 	_chalk.tick(delta)
 
 

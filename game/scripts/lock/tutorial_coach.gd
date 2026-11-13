@@ -55,6 +55,9 @@ func _init(p_stage: int = 0, p_guided: bool = true, p_auto: bool = false) -> voi
 
 
 func text_key() -> StringName:
+	var ck := caution_key()  # D-120: the tool caution goes first
+	if ck != &"" or caution_only:
+		return ck
 	if has_lesson():
 		return _lesson_text_key()
 	match step:
@@ -125,6 +128,9 @@ static func _any(els: Array, state: String) -> bool:
 
 
 func update(vm: Dictionary, input: Dictionary, events: Array, left_down: bool, right_down: bool, delta: float) -> void:
+	_update_caution(vm, events, delta)
+	if caution_only:
+		return
 	if has_lesson():
 		_update_lesson(vm, input, events, left_down, right_down, delta)
 		return
@@ -443,3 +449,122 @@ func _update_lesson(vm: Dictionary, input: Dictionary, events: Array, left_down:
 			_lost_s = 0.0
 			lesson_trap = false
 			_lesson_go(0)
+
+
+# ------------------------------------------------------------------ D-120 tool caution (data-driven)
+## A heavy hand starts to break tools at the first tier of a family that has a false gate (heavy-hand
+## bot, D-118; warded: the first probe that can break). The first lock played at or above that tier
+## (res://data/tool_caution.json) carries a caution, in the coach's chalk handwriting:
+##   intro   one line from the start until the first set (and CAUTION_MIN_S, so it can be read)
+##   trap    while an element sits in a false set: "ease off, don't push"
+##   strain  while the tool bends (stress >= STRAIN_ON, lockcore's `stress` event threshold): the
+##           line, and `strain` for the chalk arrow at the wrench - the third picture of DESIGN §1
+##           "stress" next to the bend and the cracks; sound and haptics are the event's own
+## A guided lesson keeps its own lines (dimple and axial_slider meet the tier in their first job, and
+## the lesson's trap already teaches the false set): there only the strain line and arrow are added.
+## Done once the lock opens (Save lessons/<family>/caution); nothing is lost by seeing it again.
+
+const CAUTION_PATH := "res://data/tool_caution.json"
+const CAUTION_SCHEMA := "lockwright.tool_caution/1"
+const STRAIN_ON := 0.6
+const CAUTION_MIN_S := 3.0
+const CAUTION_KEEP_S := 2.0
+const CAUTION_STRESS_KEY := &"lock.caution_stress"
+
+static var _caution_table: Dictionary = {}
+
+var caution := {}                 # the family's entry {tier, intro, trap}; {} = no caution in this lock
+## The coach exists only for the caution (no first-jobs lines, no hint ladder).
+var caution_only := false
+var strain := false               # the tool bends now: chalk arrow at the wrench
+var caution_history: Array[StringName] = []   # lines in the order they were shown (GUT)
+var _c_intro := true
+var _c_intro_s := 0.0
+var _c_set := false
+var _c_trap_left := 0.0
+var _c_strain_left := 0.0
+var _c_last := &""
+
+
+static func caution_table() -> Dictionary:
+	if _caution_table.is_empty() and FileAccess.file_exists(CAUTION_PATH):
+		var d: Variant = JSON.parse_string(FileAccess.get_file_as_string(CAUTION_PATH))
+		if typeof(d) == TYPE_DICTIONARY and d.get("schema", "") == CAUTION_SCHEMA:
+			_caution_table = d.get("families", {})
+		else:
+			push_warning("tool caution: %s is not a %s file" % [CAUTION_PATH, CAUTION_SCHEMA])
+	return _caution_table
+
+
+## The family's caution entry when `tier` is at or above its first risky tier, else {}.
+static func caution_for(fam: StringName, tier: int) -> Dictionary:
+	var e: Dictionary = caution_table().get(String(fam), {})
+	if e.is_empty() or tier < int(e.get("tier", 99)):
+		return {}
+	return e
+
+
+static func caution_done(fam: StringName) -> bool:
+	return bool(Save.get_value("lessons/%s/caution" % fam, false))
+
+
+static func mark_caution_done(fam: StringName) -> void:
+	Save.set_value("lessons/%s/caution" % fam, true)
+
+
+func set_caution(entry: Dictionary) -> void:
+	caution = entry
+	strain = false
+	caution_history.clear()
+	_c_intro = true
+	_c_intro_s = 0.0
+	_c_set = false
+	_c_trap_left = 0.0
+	_c_strain_left = 0.0
+	_c_last = &""
+
+
+func has_caution() -> bool:
+	return not caution.is_empty()
+
+
+## The caution line to write now (&"" = none; the coach's other lines show).
+func caution_key() -> StringName:
+	if caution.is_empty():
+		return &""
+	if _c_strain_left > 0.0:
+		return CAUTION_STRESS_KEY
+	if has_lesson() and not lesson_quiet:
+		return &""
+	if _c_trap_left > 0.0:
+		return StringName(caution.get("trap", ""))
+	if _c_intro:
+		return StringName(caution.get("intro", ""))
+	return &""
+
+
+func _update_caution(vm: Dictionary, events: Array, delta: float) -> void:
+	if caution.is_empty():
+		return
+	if bool(vm.get("open", false)):
+		strain = false
+		_c_intro = false
+		_c_trap_left = 0.0
+		_c_strain_left = 0.0
+		return
+	var kinds := _ev_kinds(events)
+	var els: Array = vm.get("elements", [])
+	strain = float(vm.get("stress", 0.0)) >= STRAIN_ON
+	_c_strain_left = CAUTION_KEEP_S if strain or kinds.has("stress") else maxf(_c_strain_left - delta, 0.0)
+	if String(caution.get("trap", "")) != "":
+		_c_trap_left = CAUTION_KEEP_S if _any(els, "false_set") or kinds.has("false_set") else maxf(_c_trap_left - delta, 0.0)
+	if _c_intro:
+		_c_intro_s += delta
+		_c_set = _c_set or kinds.has("set") or _any(els, "set")
+		if _c_set and _c_intro_s >= CAUTION_MIN_S:
+			_c_intro = false
+	var k := caution_key()
+	if k != _c_last:
+		_c_last = k
+		if k != &"":
+			caution_history.append(k)

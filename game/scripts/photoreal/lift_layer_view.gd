@@ -301,6 +301,8 @@ func _update_l_chalk(els: Array, delta: float) -> void:
 		return
 	_chalk.level = chalk_level
 	if chalk_level == ChalkLayer.Level.OFF or _last_vm.is_empty():
+		if not _last_vm.is_empty() and _goal_only(delta):  # D-120 tool caution
+			return
 		_chalk.marks = {}
 		_chalk.text = ""
 		_chalk.tick(delta)
