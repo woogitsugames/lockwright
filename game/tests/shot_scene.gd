@@ -10,6 +10,11 @@ extends Node
 ## button smaller than 48x48 dp ("SMALL <path> <size>").
 ## --press=<button property> presses that button of the scene before the wait (e.g. accept_button on job_verify).
 ## D-90: --text-scale=1.5 sets the UI text scale, --setting=sound_captions:1,swap_thumbs:1 sets Settings keys (memory only).
+## Visual QA 2026-11-13 (D-129): --inset=l,t,r,b lays the screen out round a notch / gesture bar (SafeArea.override_dp, dp);
+## --scroll=N|end scrolls every visible ScrollContainer before the shot; --call=method[,method] calls scene methods
+## after the wait; --show=NodePath[,NodePath] makes nodes of the scene visible; --done=N|all marks the first N jobs
+## (list order) as completed, in memory only; --press-child=NodePath presses the first button under a node; --wait=SECONDS waits in real time after the frames; --day-after=<job id> queues a "day after" scene; --first-run=1 shows boot as on a first launch; --pack-row=N adds the row of a chapter N that is not on the phone to the job list; --overflow=1 prints every visible Label / Button whose text is cut
+## ("CUT <path> <text>") or that sticks out of the window ("OUT <path> <rect>").
 ## --size=WxH sets the window (as tests/screens.gd); --tab=furnishings opens the workshop's Wyposażenie tab; --tutorial-stage=N sets JobRun.tutorial_stage first; --auto=1 sets Settings auto_tension (not saved).
 
 func _ready() -> void:
@@ -23,9 +28,28 @@ func _ready() -> void:
 		await get_tree().process_frame
 	if Quality._fps_label != null and a.get("keep-fps", "") != "1":
 		Quality._fps_label.visible = false
+	if a.has("inset"):
+		var q: PackedStringArray = String(a["inset"]).split(",")
+		SafeArea.override_dp = Vector4(float(q[0]), float(q[1]), float(q[2]), float(q[3]))
+	if a.has("done"):
+		var jobs: Array = JobRun.all_jobs()
+		jobs.sort_custom(load("res://scripts/ui/jobs_list.gd").job_before)
+		var ids := []
+		for j: Dictionary in jobs:
+			if a["done"] == "all" or ids.size() < int(a["done"]):
+				ids.append(j.get("id", ""))
+		Save.data["jobs_completed"] = ids
+	if a.get("first-run", "") == "1":  # boot: the notice card, then the two-tap calibration
+		Save.data["seen_notice"] = false
+		Settings._cfg["calibrated"] = false
 	if a.get("no-day-after", "") == "1":
 		Save.data["day_after"] = {}
+	if a.has("day-after"):  # --day-after=job.cat_bathroom: queues that job's "day after" scene (jobs_list shows it)
+		Save.data["day_after"] = {}
+		DayAfter.note_finished(JobRun.job_by_id(a["day-after"]))
 	if a.has("lang"):
+		if a["lang"] in ["de", "fr", "es"]:
+			Save.data["dev_mode"] = true  # T03/T41: these languages are behind the developer flag
 		Settings._cfg["language"] = a["lang"]
 		I18n.apply_language(a["lang"])
 	if a.has("tutorial-stage"):
@@ -84,6 +108,48 @@ func _ready() -> void:
 			(btn as BaseButton).pressed.emit()
 	for i in int(a.get("frames", "30")):
 		await get_tree().process_frame
+	if a.has("wait"):  # --wait=3.5: real seconds (timers of the scene), after the frames
+		await get_tree().create_timer(float(a["wait"])).timeout
+	if a.has("pack-row") and scene.has_method("pack_row"):  # D-112 row of a chapter that is not on the phone
+		var lst: Node = scene.get_node("Frame/VBox/Scroll/JobsList")
+		var ch := int(a["pack-row"])
+		var row: Control = scene.pack_row("demo", ch)
+		scene._pack_rows.append(row)
+		lst.add_child(row)
+		lst.move_child(row, 0)
+		var head: Control = scene.chapter_header(ch)
+		lst.add_child(head)
+		lst.move_child(head, 0)
+		scene._update_pack_rows()
+		for i in 6:
+			await get_tree().process_frame
+	if a.has("press-child"):  # --press-child=Frame/VBox/Scroll/Body/Cards: presses the first button under that node
+		await get_tree().process_frame
+		var holder := scene.get_node_or_null(a["press-child"])
+		if holder:
+			for c in holder.find_children("*", "BaseButton", true, false):
+				(c as BaseButton).pressed.emit()
+				break
+	if a.has("call"):
+		for m in String(a["call"]).split(",", false):
+			scene.call(m)
+	if a.has("show"):
+		for np in String(a["show"]).split(",", false):
+			var shown := scene.get_node_or_null(np) as CanvasItem
+			if shown:
+				shown.visible = true
+	if a.has("scroll"):
+		for i in 3:
+			await get_tree().process_frame
+		for n in find_children("*", "ScrollContainer", true, false):
+			var sc := n as ScrollContainer
+			if sc.is_visible_in_tree():
+				sc.scroll_vertical = int(sc.get_v_scroll_bar().max_value) if a["scroll"] == "end" else int(a["scroll"])
+	if a.has("call") or a.has("show") or a.has("scroll"):
+		for i in 12:
+			await get_tree().process_frame
+	if a.get("overflow", "") == "1":
+		_report_overflow()
 	if a.has("debug") and scene is Control:
 		for n in scene.find_children("*", "Control", true, false):
 			var c := n as Control
@@ -98,3 +164,39 @@ func _ready() -> void:
 	img.save_png(a.get("out", "/tmp/shot.png"))
 	print("SHOT ", a.get("out", ""), " ", img.get_size())
 	get_tree().quit()
+
+
+## Visual QA (D-129): text that does not fit its control, and controls that stick out of the window.
+func _report_overflow() -> void:
+	var win := Rect2(Vector2.ZERO, get_viewport().get_visible_rect().size).grow(0.5)
+	for n in find_children("*", "Control", true, false):
+		var c := n as Control
+		if not c.is_visible_in_tree() or c.size.x < 1.0:
+			continue
+		var clipped := false
+		var p := c.get_parent()
+		while p != null:  # inside a scroll list: off-window is normal
+			if p is ScrollContainer:
+				clipped = true
+			p = p.get_parent()
+		var text := ""
+		if c is Label:
+			var l := c as Label
+			text = l.text
+			var cut := l.get_visible_line_count() < l.get_line_count()
+			if l.autowrap_mode == TextServer.AUTOWRAP_OFF and l.get_minimum_size().x > l.size.x + 1.0:
+				cut = true
+			if l.clip_text and l.get_theme_font(&"font").get_string_size(l.text, HORIZONTAL_ALIGNMENT_LEFT, -1, l.get_theme_font_size(&"font_size")).x > l.size.x + 1.0:
+				cut = true
+			if cut and text != "":
+				print("CUT ", c.get_path(), " ", text.left(40))
+		elif c is Button:
+			var b := c as Button
+			text = b.text
+			if text != "" and b.autowrap_mode == TextServer.AUTOWRAP_OFF:
+				var sb := b.get_theme_stylebox(&"normal")
+				var avail := b.size.x - (sb.get_margin(SIDE_LEFT) + sb.get_margin(SIDE_RIGHT) if sb else 0.0)
+				if b.get_theme_font(&"font").get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, b.get_theme_font_size(&"font_size")).x > avail + 1.0:
+					print("CUT ", c.get_path(), " ", text.left(40))
+		if not clipped and (c is Label or c is BaseButton) and not win.encloses(c.get_global_rect()):
+			print("OUT ", c.get_path(), " ", c.get_global_rect())

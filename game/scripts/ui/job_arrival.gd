@@ -6,6 +6,7 @@ extends Control
 ## The locksmith (the player) has no avatar or plate: his lines sit on the right
 ## on a light enamel card, like the other side of a conversation.
 
+const HEADER_BAND_ALPHA := 0.78
 const T := "Frame/VBox/Scroll/Body/"
 const PLAYER := "locksmith"
 const DialoguePlayer := preload("res://scripts/ui/dialogue_player.gd")
@@ -287,9 +288,11 @@ func _add_scene(cfg: Dictionary) -> void:
 	scroll.size_flags_stretch_ratio = 1.0
 	$Frame.visible = false
 	# flat dark band behind the header: the title stays >= 4.5:1 over a bright daytime wall
+	# D-129: 0.62 let a ceiling lamp of the photo glow through the title (job.night_nurse); 0.78 keeps the
+	# title >= 7:1 over pure white
 	var band := ColorRect.new()
 	band.name = "HeaderBand"
-	band.color = Color(0.06, 0.045, 0.035, 0.62)
+	band.color = Color(0.06, 0.045, 0.035, HEADER_BAND_ALPHA)
 	band.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	band.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
 	add_child(band)

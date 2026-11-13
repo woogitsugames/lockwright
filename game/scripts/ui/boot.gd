@@ -16,6 +16,7 @@ var _preloaded: Array[String] = []
 
 
 const MAIN_MENU := "res://scenes/main_menu.tscn"
+const PANEL_W := 360.0
 const MenuScript := preload("res://scripts/ui/main_menu.gd")
 
 
@@ -23,6 +24,9 @@ func _ready() -> void:
 	I18n.apply_language(Settings.language())
 	_preload_menu()
 	notice_label.text = I18n.t(&"about.notice")
+	($NoticePanel/VBox as VBoxContainer).alignment = BoxContainer.ALIGNMENT_CENTER  # D-129: text in the middle of its card
+	resized.connect(_fit_panels)
+	_fit_panels()
 	var first_run: bool = not Save.get_value("seen_notice", false)
 	notice.visible = first_run
 	if first_run:
@@ -34,6 +38,22 @@ func _ready() -> void:
 	if first_run and not Settings.get_value("calibrated", false):
 		await _run_calibration()
 	get_tree().change_scene_to_file(MAIN_MENU)
+
+
+## D-129: both cards keep 16 dp to the screen edges and the safe area (the 400 dp calibration card left
+## 6 dp at 412 dp and stuck out at 360 dp); at most 360 dp wide.
+func _fit_panels() -> void:
+	var vp := get_viewport_rect().size
+	var i := SafeArea.insets(self)
+	var half := panel_half_width(vp.x, i.x, i.z)
+	var shift := (i.x - i.z) * 0.5
+	for p: Control in [notice, calib]:
+		p.offset_left = shift - half
+		p.offset_right = shift + half
+
+
+static func panel_half_width(screen_w: float, inset_left: float, inset_right: float) -> float:
+	return minf(PANEL_W * 0.5, (screen_w - inset_left - inset_right - 32.0) * 0.5)
 
 
 ## Perf pass 2026-11-08: the menu board (1080x2400 lossy WebP, ~200 ms to decode on a budget phone)

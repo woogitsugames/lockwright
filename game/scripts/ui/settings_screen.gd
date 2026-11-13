@@ -61,6 +61,7 @@ func _ready() -> void:
 	_build_help_captions()
 	_build_a11y_toggles()
 	_build_system_text()
+	_place_dark_note()
 	_pass_mouse($Frame/VBox/Scroll/Sections)
 	_load_values()
 	_refresh_texts()
@@ -356,6 +357,15 @@ func _build_a11y_toggles() -> void:
 		_toggles[key] = cb
 
 
+## D-129: the tip about playing in the dark sat last in the section, under "As in the system", and read
+## as that switch's caption. It follows the sound-captions caption (the one that mentions the dark).
+func _place_dark_note() -> void:
+	var note := get_node_or_null(S + "Access/Box/DarkNote") as Control
+	var cap := get_node_or_null(S + "Access/Box/SoundCaptionsHelp") as Control
+	if note != null and cap != null:
+		note.get_parent().move_child(note, cap.get_index() + 1)
+
+
 # --- D-107: "as in the system" switch under the text size slider ------------------------------
 var _system_text: CheckButton
 
@@ -400,7 +410,8 @@ func _build_voice_pack_block() -> void:
 	_vp_rows.add_theme_constant_override("separation", 8)
 	_vp_box.add_child(_vp_rows)
 	for lang in VoicePacks.languages():
-		var row := HBoxContainer.new()
+		var row := BoxContainer.new()
+		row.vertical = stack_pack_rows()  # D-129: large text: the size line above its plate
 		row.name = "Row_" + lang
 		row.add_theme_constant_override("separation", 12)
 		var label := Label.new()
@@ -427,6 +438,12 @@ func _build_voice_pack_block() -> void:
 	_vp_box.add_child(_vp_note)
 	box.add_child(_vp_box)
 	box.move_child(_vp_box, language_option.get_index() + 1)
+
+
+## D-129: from 150 % text the "Polish voices: 19,0 MB" line and its plate no longer fit side by side
+## (at 200 % the line was squeezed into a 60 dp column, one syllable per row): the row is stacked.
+static func stack_pack_rows() -> bool:
+	return UiA11y.text_scale() >= 1.5
 
 
 static func _voice_title(lang: String) -> String:
@@ -513,7 +530,8 @@ func _build_content_pack_block() -> void:
 	_cp_rows.add_theme_constant_override("separation", 8)
 	_cp_box.add_child(_cp_rows)
 	for id: String in ids:
-		var row := HBoxContainer.new()
+		var row := BoxContainer.new()
+		row.vertical = stack_pack_rows()  # D-129: large text: the size line above its plate
 		row.name = "Row_" + id
 		row.add_theme_constant_override("separation", 12)
 		var label := Label.new()

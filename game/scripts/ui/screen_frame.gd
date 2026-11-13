@@ -189,7 +189,16 @@ static func title_size(font: Font, text: String, width: float, max_fs: int, min_
 		var h := font.get_multiline_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, width, fs).y
 		if h <= font.get_height(fs) * 2.2:
 			return fs
-	return min_fs
+	# D-129: a word longer than the row even at min_fs ("Einstellungen" at 200 % text on a phone) used
+	# to be broken inside the word; shrink further, down to 60 % of min_fs, until the longest word fits
+	var floor_fs := maxi(10, roundi(min_fs * 0.6))
+	for fs in range(min_fs, floor_fs - 1, -1):
+		var longest := 0.0
+		for w in words:
+			longest = maxf(longest, font.get_string_size(w, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x)
+		if longest <= width:
+			return fs
+	return floor_fs
 
 
 ## VA-01: a one-line plate label (tab) that shrinks down to `min_fs` before the ellipsis trims it.

@@ -19,6 +19,10 @@ extends Control
 const TOOLS_PATH := "res://data/tools.json"
 const TOOL_THUMBS := "res://assets/ui/tools"  # VA-14: one studio photo per tool id
 const THUMB_DP := 80.0
+## D-129: 0.55 left the brass headings of the Practice tab at about 2:1 where they crossed a lit sheet of
+## paper of the furnished workshop; 0.70 keeps headings and captions >= 4.5:1 (the Furnishings tab still
+## shows the picture undimmed in its frame).
+const BACKDROP_SHADE := 0.70
 
 # G08 workshop backgrounds by time of day
 const WORKSHOP_BG := {
@@ -89,7 +93,6 @@ func _add_map() -> void:
 	$Frame/VBox.add_child(frame)
 	$Frame/VBox.move_child(frame, 3)
 	_map_frame = frame
-	resized.connect(_size_map)
 	_size_map()
 
 
@@ -112,8 +115,34 @@ func _size_map() -> void:
 	if _map == null:
 		return
 	var vp := get_viewport_rect().size
-	# portrait: 30% of the height at most; landscape: a short strip (list stays usable)
-	_map.custom_minimum_size.y = roundf(vp.y * (0.24 if vp.x < vp.y else 0.2))
+	_map.custom_minimum_size.y = roundf(vp.y * 0.24)  # portrait only (_relayout hides it in landscape)
+
+
+## D-129: landscape (412 dp tall) left the list about 150 dp under the header, the coins line, the tabs
+## and the map strip - one row at a time. There the coins sit in the header row and the map is not
+## shown, so the list gets every dp under the tabs. Portrait is unchanged.
+func _relayout() -> void:
+	var vp := get_viewport_rect().size
+	var landscape := vp.x > vp.y
+	var header: HBoxContainer = $Frame/VBox/Header
+	var column: VBoxContainer = $Frame/VBox
+	if landscape and coins_label.get_parent() != header:
+		coins_label.reparent(header, false)
+		coins_label.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		coins_label.text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING  # keeps its width beside the title
+	elif not landscape and coins_label.get_parent() != column:
+		coins_label.reparent(column, false)
+		column.move_child(coins_label, 1)
+		coins_label.size_flags_vertical = Control.SIZE_FILL
+		coins_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	_size_map()
+	if _map_frame != null:
+		_map_frame.visible = _tab == "tools" and not landscape
+
+
+func is_landscape() -> bool:
+	var vp := get_viewport_rect().size
+	return vp.x > vp.y
 
 
 func _ready() -> void:
@@ -128,12 +157,29 @@ func _ready() -> void:
 	back_button.text = "‹ " + I18n.t(&"common.back")
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 	$Frame/VBox/Scroll.scroll_deadzone = 12
+	resized.connect(_relayout)
+	_relayout()
 	_refresh()
 	if Practice.last_result != &"":
 		show_tab("practice")  # D-79: back from a practice lock
 	Save.changed.connect(_refresh)
 	ScreenFrame.enter($Frame/VBox/Scroll)
 	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
+
+
+## D-129: at large text a one-word plate ("Üben", "Kaufen") broke inside the word on the fixed 112 dp
+## plate ("Übe / n"). The plate is as wide as its longest word (112-220 dp); only word gaps wrap.
+static func fit_action_plate(b: Button) -> void:
+	if b.autowrap_mode == TextServer.AUTOWRAP_OFF or b.text == "":
+		return
+	var font := b.get_theme_font(&"font")
+	var fs := b.get_theme_font_size(&"font_size")
+	var sb := b.get_theme_stylebox(&"normal")
+	var pad := (sb.get_margin(SIDE_LEFT) + sb.get_margin(SIDE_RIGHT)) if sb else 24.0
+	var longest := 0.0
+	for w in b.text.split(" ", false):
+		longest = maxf(longest, font.get_string_size(w, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x)
+	b.custom_minimum_size.x = clampf(ceilf(longest + pad + 4.0), 112.0, 220.0)
 
 
 static func repair_cost(price: int, integrity: int) -> int:
@@ -143,9 +189,9 @@ static func repair_cost(price: int, integrity: int) -> int:
 func _add_backdrop() -> void:
 	# D-71: the Blender workshop with the owned furnishings; G08 photos by time of day only as a fallback
 	if not Furnishings.has_picture():
-		ScreenFrame.backdrop(self, "res://assets/ui/gpt/workshop/" + WORKSHOP_BG[_day_part()], 0.55)
+		ScreenFrame.backdrop(self, "res://assets/ui/gpt/workshop/" + WORKSHOP_BG[_day_part()], BACKDROP_SHADE)
 		return
-	var bg := ScreenFrame.backdrop(self, "", 0.55)
+	var bg := ScreenFrame.backdrop(self, "", BACKDROP_SHADE)
 	_backdrop_scene = Furnishings.build_scene(TextureRect.STRETCH_KEEP_ASPECT_COVERED)
 	_backdrop_scene.name = "BackdropPicture"
 	bg.add_child(_backdrop_scene)
@@ -224,7 +270,7 @@ func show_tab(tab: String) -> void:
 		_tab_tools.set_pressed_no_signal(tab == "tools")
 		_tab_practice.set_pressed_no_signal(tab == "practice")
 	if _map_frame != null:
-		_map_frame.visible = tab == "tools"
+		_map_frame.visible = tab == "tools" and not is_landscape()
 	$Frame/VBox/Scroll.scroll_vertical = 0
 	_preview = null
 	_refresh()
@@ -291,6 +337,9 @@ func _refresh_practice() -> void:
 		head.name = "Family_" + String(fam)
 		head.theme_type_variation = &"Heading"
 		head.text = I18n.t(StringName("family.%s.name" % fam))
+		var air := StyleBoxEmpty.new()  # D-129: a family starts with air above it, like a chapter (VA-05)
+		air.content_margin_top = 8
+		head.add_theme_stylebox_override(&"normal", air)
 		tools_list.add_child(head)
 		for e in Practice.entries():
 			if e["family"] == fam:
@@ -338,6 +387,7 @@ func _practice_card(e: Dictionary) -> Control:
 		action.pressed.connect(_start_practice.bind(e))
 	if "accessibility_name" in action:
 		action.set("accessibility_name", "%s: %s. %s" % [action.text, goal.text, state.text])
+	fit_action_plate(action)
 	return card
 
 
@@ -356,7 +406,9 @@ func _preview_frame() -> Control:
 	var holder := Control.new()
 	holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var vp := get_viewport_rect().size
-	holder.custom_minimum_size.y = roundf(clampf(vp.y * (0.42 if vp.x < vp.y else 0.8), 200.0, 520.0))
+	# D-129: landscape 0.8 of the height was taller than the list itself (the picture was always cut);
+	# 0.5 shows the whole photo with the first row peeking under it
+	holder.custom_minimum_size.y = roundf(clampf(vp.y * (0.42 if vp.x < vp.y else 0.5), 200.0, 520.0))
 	frame.add_child(holder)
 	var pic := Furnishings.build_scene(TextureRect.STRETCH_KEEP_ASPECT_CENTERED)
 	holder.add_child(pic)
@@ -425,6 +477,7 @@ func _furnishing_card(f: Dictionary, coins: int) -> Control:
 		action.pressed.connect(func() -> void: Furnishings.buy(id))
 	if "accessibility_name" in action:
 		action.set("accessibility_name", "%s: %s. %s" % [action.text, name_label.text, state_label.text])
+	fit_action_plate(action)
 	return card
 
 
@@ -509,6 +562,7 @@ func _tool_card(tool: Dictionary, coins: int) -> Control:
 	# T70: several plates read "Buy"/"Repair"; the screen reader also hears which tool and its state
 	if "accessibility_name" in action:
 		action.set("accessibility_name", "%s: %s. %s" % [action.text, name_label.text, state_label.text])
+	fit_action_plate(action)
 	return card
 
 

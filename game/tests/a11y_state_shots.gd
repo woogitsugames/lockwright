@@ -6,7 +6,7 @@ extends Node
 ## qa/a11y/state_report.py turns them into grayscale / deuteranopia / protanopia sheets and a
 ## per-pair difference table (are the states told apart without colour?).
 ##   godot --path game --rendering-driver opengl3 res://tests/a11y_state_shots.tscn -- \
-##     --out=C:/path/dir [--size=412x915] [--families=pin_tumbler,wafer] [--reduce=1] [--captions=1]
+##     --out=C:/path/dir [--size=412x915] [--families=pin_tumbler,wafer] [--reduce=1] [--captions=1] [--inset=l,t,r,b]
 ## Uses the GPU for a short while (about 2 s per family).
 
 const STATES := {
@@ -44,6 +44,9 @@ func _ready() -> void:
 		Quality._fps_label.visible = false
 	if a.has("reduce"):
 		UiA11y.reduce_motion_override = int(a["reduce"])
+	if a.has("inset"):  # D-129: lay the lock out round a notch / gesture bar (dp: left,top,right,bottom)
+		var q: PackedStringArray = String(a["inset"]).split(",")
+		SafeArea.override_dp = Vector4(float(q[0]), float(q[1]), float(q[2]), float(q[3]))
 	Settings._cfg["sound_captions"] = false
 	var scenes := {&"pin_tumbler": "res://scenes/lock_job.tscn"}
 	scenes.merge(JobRun.PLANB_SCENES)

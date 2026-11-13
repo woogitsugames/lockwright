@@ -9,6 +9,11 @@ const BG := "res://assets/ui/gpt/workshop/02-key-cutter-afternoon-portrait.webp"
 # G19 sketches (pencil on paper; contrib/gpt/G19), ~112 dp next to each plate
 const SKETCH_AUTO := "res://assets/ui/controls/controls_auto.png"
 const SKETCH_MANUAL := "res://assets/ui/controls/controls_two_thumbs.png"
+const SKETCH_PORTRAIT := 112.0
+const SKETCH_LANDSCAPE := 84.0
+const SKETCH_LARGE_TEXT := 72.0
+## D-129: landscape column (two cards side by side need more than ScreenFrame's 640 dp)
+const LANDSCAPE_COLUMN := 880.0
 
 var auto_selected := true
 var _options := {}
@@ -16,13 +21,15 @@ var _options := {}
 
 func _ready() -> void:
 	ScreenFrame.backdrop(self, BG, 0.6)
-	ScreenFrame.fit(self, $Frame)
+	ScreenFrame.fit(self, $Frame, LANDSCAPE_COLUMN)
 	auto_selected = bool(Settings.get_value("auto_tension", true)) if Settings.get_value("control_chosen", false) else true
 	_options[true] = _make_option(true, SKETCH_AUTO, &"ui.controls.auto", &"ui.controls.auto_desc")
 	_options[false] = _make_option(false, SKETCH_MANUAL, &"ui.controls.manual", &"ui.controls.manual_desc")
 	$Frame/VBox/Title.text = I18n.t(&"ui.controls.title")
 	$Frame/VBox/Note.text = I18n.t(&"ui.controls.note")
 	$Frame/VBox/ContinueButton.text = I18n.t(&"common.continue")
+	# D-129: the scene's fixed 22 px ignored the text scale (smaller than the body text at 150 %)
+	$Frame/VBox/ContinueButton.add_theme_font_size_override("font_size", UiA11y.fs(22))
 	$Frame/VBox/ContinueButton.pressed.connect(confirm)
 	resized.connect(_relayout)
 	_relayout()
@@ -33,7 +40,26 @@ func _ready() -> void:
 
 func _relayout() -> void:
 	var vp := get_viewport_rect().size
-	$Frame/VBox/Scroll/Options.vertical = vp.x < vp.y
+	var portrait := vp.x < vp.y
+	$Frame/VBox/Scroll/Options.vertical = portrait
+	# D-129: in landscape (412 dp tall) both cards must show their whole text without scrolling: a
+	# wider column and smaller sketches (they were cut mid-line under the 640 dp cap)
+	var side := sketch_side(portrait, UiA11y.text_scale())
+	for panel: PanelContainer in _options.values():
+		var sketch := panel.find_child("Sketch", true, false) as Control
+		if sketch:
+			sketch.visible = side > 0.0
+			sketch.custom_minimum_size = Vector2(side, side)
+
+
+## Sketch size beside the card text. Large text needs the width: at 150 % the sketch is smaller, from
+## 175 % it is left out, so the card title never breaks inside a word ("Automatisc / he", D-129).
+static func sketch_side(portrait: bool, text_scale: float) -> float:
+	if text_scale >= 1.75:
+		return 0.0
+	if text_scale >= 1.3:
+		return SKETCH_LARGE_TEXT
+	return SKETCH_PORTRAIT if portrait else SKETCH_LANDSCAPE
 
 
 func _make_option(is_auto: bool, sketch_path: String, title_key: StringName, desc_key: StringName) -> PanelContainer:
@@ -48,7 +74,8 @@ func _make_option(is_auto: bool, sketch_path: String, title_key: StringName, des
 	sketch.texture = load(sketch_path) if ResourceLoader.exists(sketch_path) else null
 	sketch.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	sketch.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	sketch.custom_minimum_size = Vector2(112, 112)
+	sketch.name = "Sketch"
+	sketch.custom_minimum_size = Vector2(SKETCH_PORTRAIT, SKETCH_PORTRAIT)
 	sketch.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	sketch.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	row.add_child(sketch)

@@ -9,6 +9,7 @@ extends Control
 ## - pressed state: the baked pressed sprite is drawn at the item's rect for PRESS_MS, with the
 ##   plate click sound (ScreenFrame.wire_sounds) and a light haptic tap, then the menu navigates.
 
+const ABOUT_SHEET_ALPHA := 1.0
 const LAYOUT_PATH := "res://assets/ui/menu/menu_layout.json"
 const MENU_DIR := "res://assets/ui/menu/"
 const FALLBACK_LANG := "en"  # unrendered UI language (FR/ES) -> the English board, not Polish
@@ -68,6 +69,12 @@ func _ready() -> void:
 		b.pressed.connect(_on_zone.bind(z[1]))
 	_wire_focus_order()
 	$AboutPanel/VBox/CloseButton.pressed.connect(func() -> void: about_panel.visible = false)
+	# D-129: the sheet is opaque paper. At the theme's 80 % the board letters behind it showed through
+	# the text ("ZLECENIA" between the lines of the story).
+	var sheet := about_panel.get_theme_stylebox(&"panel").duplicate() as StyleBoxFlat
+	if sheet != null:
+		sheet.bg_color.a = ABOUT_SHEET_ALPHA
+		about_panel.add_theme_stylebox_override(&"panel", sheet)
 	notice_label.gui_input.connect(_on_about_input)  # 5 taps = dev flag "po premierze" (task 11)
 	I18n.language_changed.connect(_refresh)
 	resized.connect(_relayout)

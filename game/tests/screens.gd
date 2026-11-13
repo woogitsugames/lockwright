@@ -48,6 +48,9 @@ func _ready() -> void:
 		Save.set_value("tools/pk_ward/owned", false)
 		Save.set_value("tools/tw_bar/owned", false)
 		Save.set_value("tools/tl_shackle/owned", false)
+	# D-129: under xvfb (1000x1000 screen) a 915 dp wide window hangs off the screen and SafeArea took the
+	# hidden part for a cut-out (about 209 dp on the right: every landscape shot was laid out off-centre)
+	SafeArea.override_dp = Vector4.ZERO
 	get_window().size = _size
 	await get_tree().process_frame
 	for entry: String in SCREENS:

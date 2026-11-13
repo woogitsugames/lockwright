@@ -14,24 +14,79 @@ func _show_notebook_entry() -> void:
 			keys.append(k)
 	if keys.is_empty():
 		return
-	var panel := PanelContainer.new()
-	var card := VBoxContainer.new()
-	panel.add_child(card)
-	var lbl := ScreenFrame.wrap(Label.new())
-	lbl.text = I18n.t(&"showcase.notebook_prefix") + " " + I18n.t(keys[randi() % keys.size()])
-	card.add_child(lbl)
-	# G10 notebook page (PL/EN by game language), only if it is in the build
-	var lang := "pl" if Settings.language() == "pl" else "en"
-	var path := "res://assets/ui/gpt/notebook/%s-five-rules-%s.jpg" % ["03" if lang == "pl" else "04", lang]
-	var page: Texture2D = load(path) if ResourceLoader.exists(path) else null
-	if page != null:
-		var tex := TextureRect.new()
-		tex.texture = page
-		tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-		tex.custom_minimum_size = Vector2(0, 160)
-		card.add_child(tex)
-	notes_list.add_child(panel)
+	# D-129: the entry is written on a blank page of the master's notebook (G10 lined paper, Caveat on
+	# the rulings). It used to be a label above a cropped photo of the "five rules" page: other words
+	# than the entry, cut mid-line, and Polish or English handwriting whatever the game language.
+	var strip := NotebookStrip.new()
+	strip.name = "Notebook"
+	strip.setup(I18n.t(&"showcase.notebook_prefix"), I18n.t(keys[randi() % keys.size()]))
+	notes_list.add_child(strip)
+
+
+## A strip of the blank lined notebook page with a handwritten entry sitting on its rulings.
+class NotebookStrip extends Control:
+	const PAGE := "res://assets/ui/gpt/notebook/15-blank-lined.jpg"
+	const HAND := "res://assets/fonts/Caveat-wght.ttf"
+	# measured on the 1600x2200 page: first ruling, ruling pitch, red margin line, usable paper
+	const FIRST_RULE := 194.0
+	const PITCH := 68.5
+	const MARGIN_X := 243.0
+	const PAPER_X0 := 120.0
+	const PAPER_X1 := 1500.0
+	const INK := Color(0.16, 0.13, 0.17)
+	var label: Label
+	var _page: Texture2D
+	var _pitch := 26
+	var _rule_y := 22.0  # where the first ruling is drawn (under the first baseline)
+
+	func setup(prefix: String, entry: String) -> void:
+		_page = load(PAGE) if ResourceLoader.exists(PAGE) else null
+		size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		mouse_filter = Control.MOUSE_FILTER_PASS
+		clip_contents = true
+		label = Label.new()
+		label.name = "Entry"
+		label.text = prefix + "\n" + entry
+		label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		if ResourceLoader.exists(HAND):
+			label.add_theme_font_override(&"font", load(HAND))
+		label.add_theme_color_override(&"font_color", INK)
+		label.add_theme_color_override(&"font_shadow_color", Color(0, 0, 0, 0))
+		add_child(label)
+		resized.connect(_fit)
+		_fit()
+
+	## Screen pixels per page pixel: the rulings land `_pitch` dp apart (26 dp, more on a wide column
+	## and with large text), so the handwriting stays readable in portrait and landscape.
+	func page_scale() -> float:
+		return _pitch / PITCH
+
+	func _fit() -> void:
+		var w := maxf(size.x, 200.0)
+		_pitch = clampi(roundi(maxf(26.0, PITCH * w / (PAPER_X1 - PAPER_X0)) * UiA11y.text_scale()), 26, 52)
+		var k := page_scale()
+		var font := label.get_theme_font(&"font")
+		var fs := maxi(12, roundi(_pitch * 0.92))
+		label.add_theme_font_size_override(&"font_size", fs)
+		label.add_theme_constant_override(&"line_spacing", _pitch - int(font.get_height(fs)))
+		var left := (MARGIN_X - PAPER_X0) * k + 10.0
+		var text_w := maxf(w - left - 12.0, 80.0)
+		var lines := maxi(1, roundi(font.get_multiline_string_size(label.text, HORIZONTAL_ALIGNMENT_LEFT, text_w, fs).y / font.get_height(fs)))
+		# the first baseline sits a hair above the first ruling shown
+		label.position = Vector2(left, 4.0)
+		label.size = Vector2(text_w, lines * _pitch)
+		_rule_y = label.position.y + font.get_ascent(fs) + 2.0
+		custom_minimum_size.y = roundf(label.position.y + label.size.y + 4.0)
+		queue_redraw()
+
+	func _draw() -> void:
+		if _page == null:
+			draw_rect(Rect2(Vector2.ZERO, size), Color(0.86, 0.80, 0.68))
+			return
+		var k := page_scale()
+		var src := Rect2(PAPER_X0, FIRST_RULE - _rule_y / k, size.x / k, size.y / k)
+		draw_texture_rect_region(_page, Rect2(Vector2.ZERO, size), src, Color(0.94, 0.92, 0.88))
 
 
 func _exhibit_photo(nid: String) -> Texture2D:
@@ -105,7 +160,8 @@ func _ready() -> void:
 		var title := Button.new()
 		title.text = I18n.t(note.get("i18n", {}).get("title", &"showcase.title"))
 		if not unlocked:
-			title.text += " — " + I18n.t(&"showcase.locked")
+			# D-129: the name on its own line, the lock note under it ("X — Locked — unlock it…" read as one run-on)
+			title.text += "\n" + I18n.t(&"showcase.locked")
 			title.disabled = true
 		title.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART  # N-59

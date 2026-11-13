@@ -37,11 +37,16 @@ func _ready() -> void:
 	Sfx.play_ambience(&"stairwell")
 	$Bg.visible = false
 	ScreenFrame.backdrop(self, BG, 0.72)
-	SafeArea.apply(self)
+	# D-129: the root stays full-rect (the photo also fills the notch and gesture-bar bands) and the
+	# safe area goes into the content margins (_relayout). SafeArea.apply(self) inset the whole screen:
+	# flat dark bands round the photo, and the back plate - placed by the same insets again - sat on
+	# the title on every phone with a cut-out.
 	var v := $Margin/Scroll/VBox
 	v.get_node("Title").text = I18n.t(&"tutorial.title")
 	v.get_node("Title").theme_type_variation = &"MenuTitle"
-	v.get_node("Title").add_theme_font_size_override("font_size", UiA11y.fs(30))
+	# D-129: fit_title instead of a fixed 30 px: at 200 % the German title broke inside a word
+	# ("Übungsschlo / ss"); it now shrinks until its longest word fits (never under 17 px x scale)
+	ScreenFrame.fit_title(v.get_node("Title"), 30, 17, 30)
 	v.get_node("StartButton").pressed.connect(_start_stage)
 	# VA-16: "‹ Back" top-left like every other screen (run_loop.gd), outside the scroll so it is always
 	# on screen; it sat under the three VA-07 cards, below the fold in portrait and in landscape
@@ -69,8 +74,14 @@ func _relayout() -> void:
 	# VA-16: the back plate floats top-left; in portrait the centred two-line title starts below it,
 	# in landscape the one-line title fits beside it
 	var i := ScreenFrame.insets(self)
+	var margin: MarginContainer = $Margin
+	margin.add_theme_constant_override("margin_left", int(i.x + ScreenFrame.SIDE))
+	margin.add_theme_constant_override("margin_top", int(i.y + ScreenFrame.SIDE))
+	margin.add_theme_constant_override("margin_right", int(i.z + ScreenFrame.SIDE))
+	margin.add_theme_constant_override("margin_bottom", int(i.w + ScreenFrame.SIDE))
 	_back.position = Vector2(i.x + ScreenFrame.SIDE, i.y + 8.0)
-	_back_space.custom_minimum_size.y = 0.0 if landscape else 52.0
+	# D-129: with large text the landscape title no longer fits beside the plate (it ran under it)
+	_back_space.custom_minimum_size.y = 0.0 if landscape and UiA11y.text_scale() < 1.25 else maxf(52.0, _back.size.y + 4.0)
 	# landscape (412 dp tall): smaller cards, so the note and "Start" stay above the fold too
 	for row in grid.get_children():
 		var pic := row.get_child(0) as Control
