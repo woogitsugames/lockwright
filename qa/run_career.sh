@@ -13,6 +13,7 @@ OUT=${QA_OUT:-$HERE/out}
 rm -rf "$WORK" && cp -r "${QA_GAME:-$ROOT/game}" "$WORK" && rm -rf "$WORK/.godot"
 mkdir -p "$WORK/qa_bot" "$OUT"
 cp "$HERE/bot/"*.gd "$WORK/qa_bot/"
+cp "$ROOT/lockcore/tiers.json" "$WORK/qa_bot/tiers.json"  # D-118/D-120: the bot clamps job tiers to lockcore's ranges
 # fresh user:// (custom user dir name) so every run starts a new career
 python3 - "$WORK/project.godot" <<'PY'
 import sys

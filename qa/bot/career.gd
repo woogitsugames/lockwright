@@ -313,24 +313,31 @@ func _run() -> void:
 
 # ------------------------------------------------------------------ lock scenes
 ## Inputs of lockcore's "feel" (average player) or "clumsy" bot for this lock, as rows of floats (1/256 units, RLE).
-# lockcore family tier ranges (lockcore/src/families/* min_tier/max_tier); the game clamps
-# internally, replay_tool record validates strictly, so clamp here the same way
-const FAMILY_TIER_RANGE := {
-	"pin_tumbler": [2, 7], "ring_combo": [2, 3], "lever": [3, 5], "lever_detector": [5, 6],
-	"wafer": [1, 3], "warded": [1, 2], "wooden_pin": [1, 1],
-	# D-111: the plan-B families too (replay_tool: "<family> has tiers a..b"), so a job whose data tier is
-	# above the family's top one does not stop the feel/clumsy profiles
-	"combo": [1, 4], "dial_safe": [1, 3], "magnetic": [1, 2], "dimple": [1, 3], "disc_detainer": [1, 3],
-	"egyptian": [1, 2], "time_lock": [1, 2], "axial_slider": [1, 3],
-}
+# lockcore family tier ranges: the game clamps internally, replay_tool record validates strictly, so clamp
+# here the same way. Read from lockcore/tiers.json (D-118: the one checked-in copy, kept equal to the
+# families' min_tier()/max_tier() by ctest `tiers_json_in_sync`); qa/run_career.sh puts it next to the bot.
+const TIERS_JSON := "res://qa_bot/tiers.json"
+var _tier_ranges := {}
+
+
+func _family_tier_range(fam: String) -> Array:
+	if _tier_ranges.is_empty():
+		var d: Variant = JSON.parse_string(FileAccess.get_file_as_string(TIERS_JSON)) if FileAccess.file_exists(TIERS_JSON) else null
+		if typeof(d) == TYPE_DICTIONARY:
+			for f: String in d.get("families", {}):
+				_tier_ranges[f] = [int(d["families"][f]["min"]), int(d["families"][f]["max"])]
+		if _tier_ranges.is_empty():
+			printerr("QA_TIERS_JSON_MISSING %s (tiers are passed to replay_tool as they are)" % TIERS_JSON)
+			_tier_ranges = {"": []}
+	return _tier_ranges.get(fam, [])
 
 
 func _profile_rows(fam: String, seed: int, tier: int, profile: String) -> Array:
 	var tool := OS.get_environment("QA_REPLAY_TOOL")
 	if tool == "":
 		return []
-	var rng: Array = FAMILY_TIER_RANGE.get(fam, [1, 7])
-	var rec_tier: int = clampi(tier, int(rng[0]), int(rng[1]))
+	var rng := _family_tier_range(fam)
+	var rec_tier: int = clampi(tier, int(rng[0]), int(rng[1])) if rng.size() == 2 else tier
 	var tmp := OS.get_user_data_dir().path_join("qa_profile_%s_%d_%d.json" % [fam, seed, rec_tier])
 	var out := []
 	var rc := OS.execute(tool, ["record", fam, str(rec_tier), str(seed), tmp, "--" + profile], out, true)
