@@ -1086,8 +1086,9 @@ def kit_cellar():
     bx('lwall', X0 - 400, X0, -9000, BY + 500, 0, SPRING, side)
     bx('rwall', X1, X1 + 400, -9000, BY + 500, 0, SPRING, side)
     # the vault is brick too, under worn limewash: courses run along the corridor, rows follow the arc
-    vm = brick_wall('cellar_vault', brick=(0.36, 0.17, 0.10), wash=(0.50, 0.47, 0.40), wash_amt=S.get('vault_wash', 0.32), seed=11, axis='X')
+    vm = brick_wall('cellar_vault', brick=(0.36, 0.17, 0.10), wash=(0.33, 0.30, 0.25), wash_amt=S.get('vault_wash', 0.30), seed=11, axis='X')
     nt = vm.node_tree; cb = next(n for n in nt.nodes if n.type == 'COMBXYZ')
+    bt_ = next(n for n in nt.nodes if n.type == 'TEX_BRICK'); bt_.inputs['Scale'].default_value = 0.0125; bt_.inputs['Mortar'].default_value = (0.30, 0.27, 0.22, 1)
     wp = nt.nodes.new('ShaderNodeSeparateXYZ'); nt.links.new(nt.nodes.new('ShaderNodeNewGeometry').outputs['Position'], wp.inputs[0])   # world mm
     zc = _math(nt, 'SUBTRACT', wp.outputs[2], SPRING)
     nt.links.new(wp.outputs[1], cb.inputs[0])
@@ -1343,7 +1344,13 @@ def kit_cellar():
         tube('cage_wire', [(84 * math.cos(a), LYp + 84 * math.sin(a), LZ - 42), (86 * math.cos(a), LYp + 86 * math.sin(a), LZ - 120), (50 * math.cos(a), LYp + 50 * math.sin(a), LZ - 185), (0, LYp, LZ - 200)], 2.4, cage_m, res=2).visible_shadow = False
     for z in (LZ - 80, LZ - 135):
         bpy.ops.mesh.primitive_torus_add(major_radius=85 if z > LZ - 100 else 78, minor_radius=2.4, location=(0, LYp, z)); o = bpy.context.object; setmat(o, cage_m); o.visible_shadow = False
-    point_lamp('cellar_bulb', (0, LYp, LZ - 120), S.get('bulb_w', 2.6e7), (1.0, 0.70, 0.42), size=45)
+    # an enamel reflector over the lamp: the light falls on the floor and the partition, the vault keeps only the bounce
+    sh_m = enamel('lamp_shade', (0.10, 0.13, 0.11), chip=0.6)
+    lathe_open('lamp_shade', [(60, LZ - 30), (150, LZ - 62), (215, LZ - 110), (222, LZ - 118)], x=0, y=LYp, seg=48, thick=2.0, mat=sh_m)
+    bpy.ops.object.light_add(type='SPOT', location=(0, LYp, LZ - 125)); sp_ = bpy.context.object; sp_.name = 'cellar_bulb'
+    sp_.data.energy = S.get('bulb_w', 5.0e7); sp_.data.color = (1.0, 0.70, 0.42); sp_.data.shadow_soft_size = 45
+    sp_.data.spot_size = math.radians(S.get('lamp_cone', 150)); sp_.data.spot_blend = 0.5
+    point_lamp('cellar_bulb_spill', (0, LYp, LZ - 125), S.get('spill_w', 5.0e6), (1.0, 0.70, 0.42), size=45)
     world_hdri(0.004, 'interior.exr', sat=0.3)
     return {'door': quad}
 

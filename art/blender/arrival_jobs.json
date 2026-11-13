@@ -1887,7 +1887,7 @@
       },
       "look": {
         "day": {
-          "exposure": 0.9,
+          "exposure": 1.2,
           "vignette": 0.28,
           "agx": "AgX - Medium High Contrast"
         }
@@ -1937,10 +1937,10 @@
         {
           "type": "poster",
           "at": [
-            720,
-            1300
+            695,
+            1330
           ],
-          "scale": 0.86
+          "scale": 0.8
         }
       ],
       "camera": {
