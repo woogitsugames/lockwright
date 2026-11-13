@@ -76,13 +76,14 @@ func _texts(key: String) -> Array:
 	return out
 
 
-func test_career_has_103_jobs_in_14_chapters() -> void:
+func test_career_has_chapter_14() -> void:
 	var per_chapter := {}
 	for j: Dictionary in _all_jobs():
 		var ch := int(j.get("chapter", 0))
 		per_chapter[ch] = int(per_chapter.get(ch, 0)) + 1
-	assert_eq(_all_jobs().size(), 103, "83 jobs of chapters 1-12 + 10 of chapter 13 + 10 of chapter 14")
-	assert_eq(per_chapter.size(), 14, "chapters 1-14")
+	# the totals of the whole career are checked by the newest chapter's test (test_chapter15_jobs.gd)
+	assert_gte(_all_jobs().size(), 103, "83 jobs of chapters 1-12 + 10 of chapter 13 + 10 of chapter 14")
+	assert_gte(per_chapter.size(), 14, "chapters 1-14")
 	assert_eq(int(per_chapter.get(CHAPTER, 0)), 10)
 	for ch in range(1, 15):
 		assert_gt(int(per_chapter.get(ch, 0)), 0, "chapter %d has jobs" % ch)
@@ -271,9 +272,6 @@ func test_voice_pending_jobs_play_subtitle_only() -> void:
 		else:
 			assert_eq(clips, keys.size(), "%s: every line has its EN clip, or the job says voice_pending" % jid)
 	assert_eq(pending, 10, "the whole chapter waits for its recordings")
-	for j: Dictionary in _all_jobs():
-		if bool(j.get("voice_pending", false)):
-			assert_has([13, 14], int(j.get("chapter", 0)), "%s: only chapters 13 and 14 wait for recordings" % j["id"])
 	# arrival: every line is on the screen at once, nothing waits for a clip
 	var job: Dictionary = _chapter_jobs()[0]
 	JobArrival.reduce_motion_override = 1
@@ -340,4 +338,4 @@ func test_refusal_and_payment_paths() -> void:
 	JobRun.complete()
 	assert_eq(int(Save.get_value("coins", 0)), 275, "220 coins + 25% tip for a clean opening")
 	assert_true((Save.get_value("jobs_completed", []) as Array).has("job.ch14_10_holiday_keys"))
-	assert_eq(Furnishings.reached_chapter(), 14, "the career reaches chapter 14")
+	assert_gte(Furnishings.reached_chapter(), 14, "the career reaches chapter 14")

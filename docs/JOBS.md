@@ -149,7 +149,7 @@ Przycisk na przyjeździe (`job.verify`) i tytuł weryfikacji (`verify.title`) m�
 
 Klucze: `premises` → `job.verify`, `verify.title` (bez zmian); pozostałe → `job.verify.<kind>`, `verify.title.<kind>`. Ten sam przyrostek (`JobRun.verify_key`) wybiera wariant notatki świadka (`verify.paper.witness.body.<kind>`) i ogólnych wymian przy kartach (`verify.ask/reply.<karta>.<n>.<kind>`: świadek, akt, faktura i list instytucji), gdy taki klucz istnieje. Odmowy mają rodzaj tego, o co klient prosi. Brak pola = `premises`.
 
-Klasyfikacja 103 zleceń (30 × premises, 32 × object, 41 × shared; rozdział 13 dodany w D-111, rozdział 14 w D-119):
+Klasyfikacja 113 zleceń (32 × premises, 36 × object, 45 × shared; rozdział 13 dodany w D-111, rozdział 14 w D-119, rozdział 15 w D-123):
 
 | Zlecenie | `verify_kind` | Dlaczego |
 |---|---|---|
@@ -176,6 +176,14 @@ Klasyfikacja 103 zleceń (30 × premises, 32 × object, 41 × shared; rozdział 
 | `job.ch14_07_prize_cupboard` | shared | szkolna szafka z nagrodami; pismo dyrekcji i potwierdzenie sekretariatu |
 | `job.ch14_09_summer_cinema` | shared | kabina projektora przy sali prób, własność uczelni; zgoda kierownika sali i pismo uczelni |
 | `job.ch14_10_holiday_keys` | shared | szafka na zapasowe klucze w świetlicy; uchwała wspólnoty i zarząd |
+| `job.ch15_01_wrong_envelope` | premises | mieszkanie pana Kazimierza; dowód i pani Teresa z piętra niżej |
+| `job.ch15_02_apple_press` | shared | skrzynia z prasą do soku ogrodu działkowego; faktura na ogród i gospodarz ogrodu |
+| `job.ch15_03_charleroi_box` | object | szkatułka dziadka Józefa przywieziona z Charleroi; dokument dziedziczenia i pani Martine |
+| `job.ch15_05_first_vacation` | object | nowy sejf pana Stefana w jego kiosku; faktura i pani Krysia |
+| `job.ch15_06_bike_by_train` | object | rower Agnieszki z zapięciem bez kluczyka; paragon z numerem ramy i rejestr osiedla |
+| `job.ch15_07_skeleton_cupboard` | shared | szkolna szafa ze szkieletem z pracowni biologicznej; pismo dyrekcji i dokument Oli |
+| `job.ch15_09_key_board` | shared | gablota z kluczami w portierni akademika; zgoda administracji i dokument portiera |
+| `job.ch15_10_exam_lock` | object | zamek zrobiony przez Zuzannę na praktykach; legitymacja i pan Władysław |
 | `job.charleroi_letters` | object | żelazna kasetka; znalazczyni przekazuje ją rodzinie |
 | `job.christmas_eve_heat` | shared | szafka kontrolna we wspólnej kotłowni; zgoda zarządczyni |
 | `job.community_notice_case` | shared | wspólna gablota ogłoszeń; zarządczyni i uchwała |
@@ -206,6 +214,8 @@ Klasyfikacja 103 zleceń (30 × premises, 32 × object, 41 × shared; rozdział 
 | `job.refuse_ch13_08_found_cashbox` | object | odmowa: znaleziona w piwnicy cudza kasetka („znalezione nie kradzione”) |
 | `job.refuse_ch14_04_paid_week` | premises | odmowa: opłacone z góry wynajęte mieszkanie bez gospodarza („zapłaciłam, więc moje”) |
 | `job.refuse_ch14_08_early_present` | object | odmowa: szafka taty z prezentem, którego Hania jeszcze nie dostała |
+| `job.refuse_ch15_04_closed_attic` | shared | odmowa: strych zamknięty przez zarządczynię do czasu usunięcia gniazda szerszeni |
+| `job.refuse_ch15_08_no_answer` | premises | odmowa: mieszkanie sąsiadki, która nie otwiera („martwię się, więc otwierać”) |
 | `job.refuse_ex_partner` | premises | odmowa: mieszkanie byłej partnerki |
 | `job.refuse_rush_bribe` | premises | odmowa: mieszkanie siostry, dopłata za brak pytań |
 | `job.refuse_sisters_flat` | premises | odmowa: mieszkanie siostry bez jej zgody |

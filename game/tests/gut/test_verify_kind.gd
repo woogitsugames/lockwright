@@ -60,7 +60,7 @@ func _open(scene_path: String, job_id: String, size: Vector2i) -> Control:
 
 func test_every_job_has_a_valid_verify_kind() -> void:
 	var jobs := _all_jobs()
-	assert_gte(jobs.size(), 103, "all jobs of game/data/jobs (chapters 1-14, D-111, D-119)")
+	assert_gte(jobs.size(), 113, "all jobs of game/data/jobs (chapters 1-15, D-111, D-119, D-123)")
 	var count := {}
 	for j: Dictionary in jobs:
 		assert_true(j.has("verify_kind"), "%s has verify_kind" % j["id"])
