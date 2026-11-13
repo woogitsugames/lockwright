@@ -1,9 +1,9 @@
 {
   "schema": "lockwright.tool_caution/1",
-  "note": "D-120: the first lockcore tier of each family at which a heavy hand starts to break the tool (the first tier with a false gate; warded: the first probe that can break). The first lock played at or above it carries the tool caution of TutorialCoach.",
+  "note": "D-120: the first lockcore tier of each family at which a heavy hand starts to break the tool (the first tier with a false gate; warded: the first probe that can break). The first lock played at or above it carries the tool caution of TutorialCoach. D-121: lesson names a security lesson (data/lessons/<id>.json) played once, on its own lock, before that first lock.",
   "source": "docs/research/difficulty-curve-2026-11.md 8.3 (D-118, heavy-hand bot)",
   "families": {
-    "pin_tumbler": {"tier": 4, "intro": "lock.caution_intro", "trap": "lock.caution_false_set"},
+    "pin_tumbler": {"tier": 4, "intro": "lock.caution_intro", "trap": "lock.caution_false_set", "lesson": "pin_tumbler_spool"},
     "lever": {"tier": 4, "intro": "lock.caution_intro", "trap": "lock.caution_false_set"},
     "lever_detector": {"tier": 5, "intro": "lock.caution_intro", "trap": "lock.caution_false_set"},
     "dimple": {"tier": 2, "intro": "lock.caution_intro", "trap": "lock.caution_false_set"},

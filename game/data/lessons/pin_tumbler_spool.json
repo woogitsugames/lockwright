@@ -1,0 +1,63 @@
+{
+  "schema": "lockwright.lesson/1",
+  "family": "pin_tumbler",
+  "spec": "docs/ONBOARDING.md 9.1, docs/LEVELS.md 2.4 (D-121)",
+  "note": "Security lesson, not a family lesson: played once on its own lock (three stacks, the middle one a spool) before the first pin_tumbler lock at the tier where security pins start (data/tool_caution.json). The first pin sets with a clean click; the spool gives a dull double click and the core turns too far (false set); the way out is to ease the tension into the counter-rotation band and keep lifting.",
+  "lock": "res://data/tutorial/l_spool.json",
+  "right": "lift",
+  "tension": 0.32,
+  "material": "brass",
+  "lift_speed": 0.2,
+  "steps": [
+    {
+      "id": "hold",
+      "text": "tutorial.spool.step1",
+      "text_auto": "tutorial.spool.step1_auto",
+      "thumb": "left",
+      "until": {
+        "tension_s": 0.5
+      },
+      "until_auto": {
+        "right_down": true
+      }
+    },
+    {
+      "id": "first",
+      "text": "tutorial.spool.step2",
+      "thumb": "right",
+      "until": {
+        "events": [
+          "set"
+        ]
+      }
+    },
+    {
+      "id": "spool",
+      "text": "tutorial.spool.step3",
+      "thumb": "right",
+      "until": {
+        "events": [
+          "false_set"
+        ]
+      }
+    }
+  ],
+  "trap": {
+    "id": "false_set",
+    "text": "tutorial.spool.trap",
+    "text_auto": "tutorial.spool.trap_auto",
+    "states": [
+      "false_set"
+    ],
+    "events": [
+      "false_set"
+    ],
+    "hold_s": 0.3,
+    "after": 1,
+    "ghost": "ease",
+    "master": "ease",
+    "ease_level": 0.17,
+    "keep_lift": true
+  },
+  "done": "tutorial.spool.done"
+}

@@ -48,6 +48,11 @@ var _bench_left := -1.0
 var _frame_ms: PackedFloat32Array = []
 var _pose_vm := {}  # fixed ViewModel for --lw-pose
 var coach: TutorialCoach
+## D-121: the security lesson this screen plays instead of the job's lock ({} = none). The lesson has
+## its own authored lock; once it opens (or is skipped in the pause) the screen loads again and
+## plays the job's lock. Nothing in the lesson counts: no coins, no stats, no lost tool.
+var pre_lesson := {}
+var _pre_failed := false
 ## N-63: families with their own thumb mapping (warded probe: turn, reach, bit). null = pins.
 var control = null  # WardedControl | DetectorControl
 var hints: TutorialHints
@@ -85,6 +90,9 @@ func _ready() -> void:
 	seed = int(args.get("lw-seed", seed))
 	tier = int(args.get("lw-tier", tier))
 	var spec_path := String(JobRun.current_job.get("lock_spec", ""))
+	pre_lesson = pre_lesson_for(family, tier, args) if spec_path == "" and not args.has("lw-spec") else {}
+	if not pre_lesson.is_empty():
+		spec_path = String(pre_lesson["lock"])
 	if args.has("lw-tutorial"):
 		spec_path = JobRun.TUTORIAL_SPECS[clampi(int(args["lw-tutorial"]), 0, JobRun.TUTORIAL_SPECS.size() - 1)]
 	spec_path = String(args.get("lw-spec", spec_path))
@@ -193,6 +201,8 @@ func _setup_guidance() -> void:
 	var jobs_done: int = (Save.get_value("jobs_completed", []) as Array).size()
 	var level := ChalkLayer.Level.OFF
 	var lesson := {} if tutorial else lesson_for_job(family, args)
+	if not pre_lesson.is_empty():
+		lesson = pre_lesson  # D-121: the security lesson runs like a family lesson, on its own lock
 	if not lesson.is_empty():
 		# T42 / ONBOARDING §8: the family's first job is a guided lesson (full chalk, H0–H4, both modes)
 		level = ChalkLayer.Level.FULL
@@ -255,6 +265,20 @@ func _note_practice(events: Array) -> void:
 
 ## T42: the lesson of this job's family, or {} — only the family's first job (lesson not done in
 ## the save), in the job mode; --lw-lesson 1/0 forces it on/off (dev, screenshots).
+## D-121 / ONBOARDING §9.1: the security lesson to play before this lock ({} = none): the first lock
+## of the family at its first tier with a false gate, in jobs and in the continuous run (never in
+## the tutorial, in practice or on a dev scene without a job), and only on real lockcore (the lesson
+## lock is an authored file). --lw-spool 1/0 forces it on/off (dev, screenshots).
+static func pre_lesson_for(fam: StringName, tr: int, a: Dictionary) -> Dictionary:
+	if a.get("lw-spool", "") == "0" or not ClassDB.class_exists("LockcoreSession"):
+		return {}
+	if a.get("lw-spool", "") == "1":
+		return TutorialCoach.load_lesson(TutorialCoach.security_lesson_id(fam))
+	if not JobRun.mode in [&"job", &"run"] or JobRun.current_job.is_empty():
+		return {}
+	return TutorialCoach.security_lesson_for(fam, tr)
+
+
 static func lesson_for_job(fam: StringName, a: Dictionary) -> Dictionary:
 	if a.get("lw-lesson", "") == "0":
 		return {}
@@ -270,6 +294,8 @@ static func lesson_for_job(fam: StringName, a: Dictionary) -> Dictionary:
 ## --lw-caution 1/0 forces it on/off (dev, screenshots).
 func _setup_caution(auto: bool) -> void:
 	var entry := caution_for_lock(family, tier, args)
+	if not pre_lesson.is_empty() and entry.is_empty() and args.get("lw-caution", "") != "0":
+		entry = TutorialCoach.caution_table().get(String(family), {})  # forced lesson: the strain line all the same
 	if entry.is_empty():
 		return
 	if coach == null:
@@ -354,13 +380,13 @@ func _physics_process(delta: float) -> void:
 	if session.finished():
 		_present(session.describe(), _last_input, delta)
 		if not session.is_open():
-			Events.lock_failed.emit(StringName(session.failure()))  # N-64: never a dead lock (Events ignores repeats)
+			_lock_failed(StringName(session.failure()))  # N-64: never a dead lock (Events ignores repeats)
 		if coach != null:
 			coach.update(session.describe(), _last_input, [], false, false, delta)
 		if _open_pending > 0.0:
 			_open_pending -= delta
 			if _open_pending <= 0.0:
-				Events.lock_opened.emit()
+				_lock_opened()
 		return
 	var input := sampler.sample()
 	var events: Array
@@ -386,7 +412,7 @@ func _physics_process(delta: float) -> void:
 		if e["kind"] == &"open":
 			_on_open()
 		if e["kind"] == &"break":
-			Events.lock_failed.emit(&"break")
+			_lock_failed(&"break")
 	var vm: Dictionary = session.describe()
 	if control == null:
 		_no_tension_cues(vm, input)
@@ -444,11 +470,46 @@ func _on_open() -> void:
 	if coach != null and coach.guided:
 		_open_pending = 1.8
 	else:
+		_lock_opened()
+
+
+## The lock is open and the screen may move on: the game's routes (Events), or after a security
+## lesson the job's own lock.
+func _lock_opened() -> void:
+	if pre_lesson.is_empty():
 		Events.lock_opened.emit()
+	else:
+		_finish_pre_lesson()
+
+
+func _lock_failed(reason: StringName) -> void:
+	if pre_lesson.is_empty():
+		Events.lock_failed.emit(reason)
+	elif not _pre_failed:
+		# D-121: a tool broken in the lesson costs nothing; the broken pick stays on screen as after
+		# any break (N-64), then the lesson lock starts again
+		_pre_failed = true
+		get_tree().create_timer(Events.FAIL_DELAY_S, true).timeout.connect(_restart_pre_lesson)
+
+
+func _restart_pre_lesson() -> void:
+	Events.go(JobRun.lock_scene_path())
+
+
+## D-121: the lesson lock is open (or the player skipped the lesson in the pause): recorded, and the
+## same screen loads again with the job's lock. The job starts clean: nothing done in the lesson
+## counts against its tip.
+func _finish_pre_lesson() -> void:
+	TutorialCoach.mark_lesson_done(TutorialCoach.security_lesson_id(family))
+	JobRun.clean = true
+	JobRun.lives = 3
+	Events.go(JobRun.lock_scene_path())
 
 
 ## T42: the lesson is done once its lock opens; later jobs of the family count towards the fade.
 func _note_lesson_open() -> void:
+	if not pre_lesson.is_empty():
+		return  # D-121: the lesson lock is not the job's: the caution and the family counters wait for it
 	if coach != null and coach.has_caution() and not args.has("lw-caution") and not JobRun.current_job.is_empty():
 		TutorialCoach.mark_caution_done(family)  # D-120
 	if args.has("lw-lesson") or JobRun.mode != &"job" or JobRun.current_job.is_empty():
@@ -494,7 +555,8 @@ func _no_tension_cues(vm: Dictionary, input: Dictionary) -> void:
 
 ## N-62 screenshots: drive a scripted two-thumb input to a moment of the opening, then freeze.
 ##   rest: nothing; tension: T 0.35 held, a stack binds; lift: the binding stack lifted to just
-##   under its window; set: lifted until it sets, then the pick lowered (the set stays).
+##   under its window; set: lifted until it sets, then the pick lowered (the set stays);
+##   false_set (D-121): pins set in binding order until a spool is caught, the pick left pressing.
 func _simulate_stage(stage: String) -> void:
 	var t := 0.35
 	var feed := func(tt: float, depth: float, lift: float) -> Array:
@@ -511,6 +573,30 @@ func _simulate_stage(stage: String) -> void:
 	for i in 90:
 		feed.call(t, 0.5, 0.0)
 	if stage == "tension":
+		return
+	if stage == "false_set":
+		for k in 8:
+			var cur: Array = session.describe()["elements"]
+			var bi := -1
+			for j in cur.size():
+				if String(cur[j]["state"]) in ["bound", "near"]:
+					bi = j
+					break
+			if bi < 0:
+				return
+			var d := (float(bi) + 0.5) / float(cur.size())
+			var up := 0.0
+			while up < 1.0:
+				up += 0.004
+				var evs: Array = feed.call(t, d, up)
+				if evs.any(func(e: Dictionary) -> bool: return e["kind"] in [&"set", &"false_set"]):
+					break
+			if _has_state(session.describe(), "false_set"):
+				for i in 60:
+					feed.call(t, d, up)
+				return
+			for i in 40:
+				feed.call(t, d, maxf(up - i * 0.02, 0.0))
 		return
 	var els: Array = session.describe()["elements"]
 	var b := 0
@@ -621,10 +707,13 @@ func _build_pause_cover() -> void:
 	# N-75: centred dark-paper panel with enamel plates inside the safe area (PausePanel)
 	pause_cover.visible = false
 	pause_cover.process_mode = Node.PROCESS_MODE_ALWAYS
-	var buttons := PausePanel.build(pause_cover as ColorRect, [
+	var entries := [
 		[&"pause.resume", _on_resume, &"primary_navy"],
 		[&"pause.dark_mode", _on_dark, &"navy"],
-		[&"pause.quit", _on_quit, &"burgundy"]])
+		[&"pause.quit", _on_quit, &"burgundy"]]
+	if not pre_lesson.is_empty():
+		entries.insert(2, [&"pause.skip_lesson", _on_skip_lesson, &"navy"])  # D-121: the lesson is optional
+	var buttons := PausePanel.build(pause_cover as ColorRect, entries)
 	_pause_dark_button = buttons[&"pause.dark_mode"]
 
 
@@ -640,6 +729,11 @@ func _on_resume() -> void:
 	_paused = false
 	pause_cover.visible = false
 	get_tree().paused = false
+
+
+func _on_skip_lesson() -> void:
+	get_tree().paused = false
+	_finish_pre_lesson()
 
 
 func _on_dark() -> void:

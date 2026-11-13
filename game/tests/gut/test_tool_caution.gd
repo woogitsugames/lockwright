@@ -35,8 +35,18 @@ func after_all() -> void:
 
 func before_each() -> void:
 	Save.data.erase("lessons")
+	_past_security_lessons()
 	Save.set_value("jobs_completed", ["a", "b", "c", "d", "e", "f", "g"])  # past the first-jobs coach
 	Settings.set_value("reduce_motion", false)
+
+
+## D-121: these tests are about the job's own lock; the security lesson played before the first risky
+## pin_tumbler lock (ONBOARDING §9.1, test_spool_lesson.gd) is behind the player.
+func _past_security_lessons() -> void:
+	for fam: String in TutorialCoach.caution_table():
+		var id := TutorialCoach.security_lesson_id(StringName(fam))
+		if id != &"":
+			TutorialCoach.mark_lesson_done(id)
 
 
 func _vm(states: Array, stress: float = 0.0, open: bool = false) -> Dictionary:
@@ -214,6 +224,7 @@ func test_first_risky_job_of_each_family_carries_the_caution() -> void:
 			gut.p("%s: no job at the risky tier yet (the continuous run reaches it)" % fam)
 			continue
 		Save.data.erase("lessons")
+		_past_security_lessons()
 		var scene: Node = await _open(job)
 		var coach: TutorialCoach = scene.coach
 		var tag := "%s (%s)" % [fam, job["id"]]

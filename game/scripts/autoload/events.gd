@@ -53,6 +53,12 @@ func _go(path: String) -> void:
 	get_tree().change_scene_to_file(path)
 
 
+## A lock screen that moves on by itself (D-121: lesson lock -> the job's lock). Goes through the
+## same switch as the routes below, so tests record the target instead of changing the scene.
+func go(path: String) -> void:
+	_go(path)
+
+
 func _on_lock_opened() -> void:
 	# N-13: the photoreal lock screen emits lock_opened but never completes the job;
 	# lock.tscn handles its own navigation, so handle the rest here

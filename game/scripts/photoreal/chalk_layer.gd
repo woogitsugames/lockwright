@@ -353,6 +353,21 @@ func _draw() -> void:
 			"set":
 				# the ledge: a short underline under the driver, on the shear line
 				stroke(Vector2(x - w * 0.5, y + 4), Vector2(x + w * 0.5, y + 4), 3.0)
+			"false_set":
+				# DESIGN §1 "false set": the outline goes dashed. A dashed frame around the waist caught
+				# on the shear line (D-121); by shape unlike the solid ledge of a set and the solid
+				# bracket of an overset, so it reads in greyscale. Still picture, no motion.
+				var fx0 := x - w * 0.7
+				var fx1 := x + w * 0.7
+				var fy0 := y - 16.0
+				var fy1 := y + 16.0
+				for k in 3:
+					var u0 := k / 3.0
+					var u1 := u0 + 0.2
+					stroke(Vector2(lerpf(fx0, fx1, u0), fy0), Vector2(lerpf(fx0, fx1, u1), fy0), 2.5)
+					stroke(Vector2(lerpf(fx0, fx1, u0), fy1), Vector2(lerpf(fx0, fx1, u1), fy1), 2.5)
+					stroke(Vector2(fx0, lerpf(fy0, fy1, u0)), Vector2(fx0, lerpf(fy0, fy1, u1)), 2.5)
+					stroke(Vector2(fx1, lerpf(fy0, fy1, u0)), Vector2(fx1, lerpf(fy0, fy1, u1)), 2.5)
 			"overset", "jammed":
 				# bracket over the chamber: "this one is too high"
 				var top: float = st.get("top_y", y - 80.0)

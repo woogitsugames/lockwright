@@ -252,7 +252,8 @@ static func has_lesson_for(fam: StringName) -> bool:
 	return FileAccess.file_exists(lesson_path(fam))
 
 
-## The lesson of a family ({} when it has none or the file is not a lesson).
+## The lesson of a family ({} when it has none or the file is not a lesson). The same call loads a
+## security lesson by its id (D-121, security_lesson_id()): the id is the file name.
 static func load_lesson(fam: StringName) -> Dictionary:
 	if not has_lesson_for(fam):
 		return {}
@@ -279,6 +280,25 @@ static func jobs_after_lesson(fam: StringName) -> int:
 
 static func count_job_after_lesson(fam: StringName) -> void:
 	Save.set_value("lessons/%s/after" % fam, jobs_after_lesson(fam) + 1)
+
+
+## D-121 / ONBOARDING §9.1: a security lesson is not a family lesson. The family is known; what is
+## new is its first security element (pin_tumbler: the spool and its false set). It is played once,
+## on its own authored lock (the lesson's "lock"), right before the first lock of the family at the
+## tier where a false gate first appears: the tool-caution table names it (`lesson`). Same data
+## format, same coach, same save place (lessons/<id>/done) as a family lesson.
+static func security_lesson_id(fam: StringName) -> StringName:
+	return StringName(caution_table().get(String(fam), {}).get("lesson", ""))
+
+
+## The security lesson due before a lock of `fam` at `tier`: {} below the family's first risky tier,
+## for a family without one, once it was done (or skipped), or when its file or lock is missing.
+static func security_lesson_for(fam: StringName, tier: int) -> Dictionary:
+	var id := security_lesson_id(fam)
+	if id == &"" or caution_for(fam, tier).is_empty() or lesson_done(id):
+		return {}
+	var d := load_lesson(id)
+	return d if FileAccess.file_exists(String(d.get("lock", ""))) else {}
 
 
 ## Make this coach run a lesson (guided; quiet = the faded coach of the later jobs).
