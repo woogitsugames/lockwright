@@ -44,3 +44,20 @@ def test_furnishing_gates_are_chapters_of_the_career():
     chapters = set(econ_sim.chapter_ends(jobs))
     for f in econ_sim.load_furnishings():
         assert f["chapter"] in chapters, f["id"]
+
+
+def test_coins_after_chapter_12_have_a_goal():
+    """D-127: five furnishings gated by chapters 13-15; the report says which ones still wait for their picture."""
+    jobs, furnishings, results, text = build_report()
+    late = [f for f in furnishings if f["chapter"] > econ_sim.D71_CHAPTER]
+    assert len(late) == 5 and sum(f["price"] for f in late) == 4800
+    assert [f["id"] for f in furnishings[:10]] == ["plant", "rug", "shelf_light", "radio", "certificate", "case_velvet",
+                                                   "clock", "thanks_cards", "vise", "exhibit_shelf"], "D-71 items first, unchanged"
+    assert "mają cel (D-127)" in text and "1000000" not in text
+    waiting = econ_sim.pending_art(furnishings)
+    assert set(waiting) <= {f["id"] for f in late}, "the ten D-71 items have their layers"
+    assert ("Czeka na grafikę" in text) == bool(waiting)
+    # the last chapter of the career brings a purchase for the careful profile: coins are spent, not piled up
+    last = max(econ_sim.chapter_ends(jobs))
+    if last <= max(f["chapter"] for f in late) + 1:
+        assert any(len(c.furn) > 10 for c in results["C"]["careful"])

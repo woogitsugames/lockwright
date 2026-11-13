@@ -173,6 +173,12 @@ def load_furnishings():
     return json.load(open(path, encoding="utf-8"))["furnishings"]
 
 
+def pending_art(furnishings):
+    """D-127: ids whose layer picture is not in the repo yet; the game keeps them out of the shop until it is."""
+    d = os.path.join(ROOT, "game", "assets", "ui", "workshop")
+    return [f["id"] for f in furnishings if not os.path.exists(os.path.join(d, f.get("layer", "")))]
+
+
 def unlock_ok(cond, st):
     if cond in ("start", "after_tutorial_t1", "with_tl_cup"):
         return True
@@ -496,15 +502,30 @@ def report(results, jobs, tools, prog, cont, careers, furnishings=()):
         ends = chapter_ends(jobs)
         last_ch, end12 = max(ends), ends.get(D71_CHAPTER, len(jobs))
         prices = {f["id"]: f["price"] for f in furnishings}
-        w(f"7. **Wyposażenie (D-71):** {n} przedmiotów kosmetycznych za {sum(prices.values())} monet; "
-          f"careful/average/clumsy kupują {trio(lambda x: snapshot(x, end12, prices)[1])} z {n} do końca rozdz. {D71_CHAPTER} "
+        n12 = sum(1 for f in furnishings if f["chapter"] <= D71_CHAPTER)
+        late = [f for f in furnishings if f["chapter"] > D71_CHAPTER]
+        w(f"7. **Wyposażenie (D-71, D-127):** {n} przedmiotów kosmetycznych za {sum(prices.values())} monet; "
+          f"careful/average/clumsy kupują {trio(lambda x: snapshot(x, end12, prices)[1])} z {n12} dostępnych do końca rozdz. {D71_CHAPTER} "
           f"(zostaje im {trio(lambda x: snapshot(x, end12, prices)[0])} monet) i {trio(lambda x: len(x.furn))} z {n} do końca "
           f"rozdz. {last_ch}, wydają {trio(lambda x: x.totals['furnishings'])} (sekcja 6a).")
-        if last_ch > D71_CHAPTER:
+        nr = lambda v: "—" if v >= NEVER else f"{v:.0f}"
+        last = "/".join(nr(med([last_purchase(x, n) for x in c[p]])) for p in PROFILES)
+        if last_ch > D71_CHAPTER and late:
+            w(f"8. **Monety po rozdz. {D71_CHAPTER} mają cel (D-127):** {len(late)} przedmiotów za "
+              f"{sum(f['price'] for f in late)} monet odblokowują rozdz. {min(f['chapter'] for f in late)}–{max(f['chapter'] for f in late)}; "
+              f"ostatni zakup wypada po zleceniu nr {last} z {len(jobs)} (— = mediana: coś zostaje do kupienia po ostatnim "
+              f"zleceniu), a na koniec rozdz. {last_ch} zostaje {trio(lambda x: x.st['coins'])} monet (careful/average/clumsy). "
+              f"Przebieg rozdział po rozdziale: sekcja 6b.")
+        elif last_ch > D71_CHAPTER:
             w(f"8. **Po rozdz. {D71_CHAPTER} sklep się kończy (D-124):** ostatni zakup (narzędzie albo wyposażenie) wypada po zleceniu nr "
-              f"{trio(lambda x: last_purchase(x, n))} z {len(jobs)}; potem nie ma już nic do kupienia poza naprawami, a na koniec "
+              f"{last} z {len(jobs)}; potem nie ma już nic do kupienia poza naprawami, a na koniec "
               f"rozdz. {last_ch} zostaje {trio(lambda x: x.st['coins'])} monet (careful/average/clumsy). Przebieg rozdział po "
               f"rozdziale: sekcja 6b.")
+        wait = pending_art(furnishings)
+        if wait:
+            w(f"9. **Czeka na grafikę (D-127):** {len(wait)} z {n} przedmiotów nie ma jeszcze nakładki w `game/assets/ui/workshop/` "
+              f"({', '.join('`%s`' % i for i in wait)}); gra nie pokazuje ich w sklepie, dopóki plik nie dojdzie "
+              f"(`docs/handoff/LOCAL-GPU-TASKS.md`). Liczby w tym raporcie opisują stan docelowy, z kompletem przedmiotów.")
     w("")
     w("## 2. Scenariusze i profile")
     w("")
@@ -727,19 +748,20 @@ def FURNISHINGS(results, jobs, furnishings):
     ends = chapter_ends(jobs)
     last_ch = max(ends)
     marks = [D71_CHAPTER] + ([last_ch] if last_ch > D71_CHAPTER else [])
-    L = ["## 6a. Wyposażenie warsztatu (D-71, `game/data/furnishings.json`, scenariusz C)", "",
+    at = lambda ch: sum(1 for f in furnishings if f["chapter"] <= ch)   # items the shop can offer by the end of chapter ch
+    L = ["## 6a. Wyposażenie warsztatu (D-71, D-127, `game/data/furnishings.json`, scenariusz C)", "",
          f"{n} przedmiotów kosmetycznych (bez wpływu na trudność), razem {total} monet. Gracz w modelu kupuje je po narzędziach: "
          f"każdy przedmiot z osiągniętego rozdziału, najpierw starsze rozdziały i tańsze, z rezerwą {BUY_RESERVE} monet na naprawy. "
          f"Ostatni przedmiot odblokowuje rozdz. {max(f['chapter'] for f in furnishings)}.", "",
-         f"| Profil | stan na koniec rozdz. | monety przed wyposażeniem | wydane na wyposażenie | kupione (mediana) | wszystkie {n}/{n} [% karier] | monety zostają |",
+         f"| Profil | stan na koniec rozdz. | monety przed wyposażeniem | wydane na wyposażenie | kupione (mediana) / dostępne | wszystkie dostępne [% karier] | monety zostają |",
          "|---|---|---|---|---|---|---|"]
     for prof in PROFILES:
         res = c[prof]
         for ch in marks:
             snaps = [snapshot(x, ends.get(ch, len(jobs)), prices) for x in res]
-            allp = sum(1 for sn in snaps if sn[1] == n) / len(snaps)
+            allp = sum(1 for sn in snaps if sn[1] == at(ch)) / len(snaps)
             L.append(f"| {prof} | {ch} | {med([sn[0] + sn[2] for sn in snaps]):.0f} | {med([sn[2] for sn in snaps]):.0f} | "
-                     f"{med([sn[1] for sn in snaps]):.0f} / {n} | {allp:.0%} | {med([sn[0] for sn in snaps]):.0f} |")
+                     f"{med([sn[1] for sn in snaps]):.0f} / {at(ch)} | {allp:.0%} | {med([sn[0] for sn in snaps]):.0f} |")
     L += ["", "| przedmiot | cena | od rozdz. | " + " | ".join(f"kupiony po zleceniu nr ({p})" for p in PROFILES) + " |",
           "|---|---|---|" + "---|" * len(PROFILES)]
     end12 = ends.get(D71_CHAPTER, len(jobs))
@@ -753,7 +775,8 @@ def FURNISHINGS(results, jobs, furnishings):
         L.append(f"| `{f['id']}` | {f['price']} | {f['chapter']} | " + " | ".join(cells) + " |")
     L += ["", f"Komórka: mediana numeru zlecenia, po którym przedmiot jest kupiony (rozdział; odsetek karier, w których "
           f"kupiono go do końca rozdz. {D71_CHAPTER}; — = mediana: nie kupiony). Cel D-71: przeciętny gracz kupuje większość do końca "
-          f"rozdz. {D71_CHAPTER}, staranny wszystko, a najdroższa półka zostaje celem na końcówkę."]
+          f"rozdz. {D71_CHAPTER}, staranny wszystko, a najdroższa półka zostaje celem na końcówkę. D-127: to samo dla przedmiotów "
+          f"z rozdz. {D71_CHAPTER + 1}+ na koniec kariery (staranny kupuje komplet, pozostałym zostaje najdroższy)."]
     return L
 
 
