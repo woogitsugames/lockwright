@@ -69,9 +69,13 @@ JOBS = {
     'krystyna_wooden_album': {'evening': [(None, 'krystyna_wooden_album_evening_hold.png', [])]},        # door 14, family prints
     'refuse_wrong_letterbox': {'evening': [(None, 'refuse_wrong_letterbox_evening_hold.png', [])]},      # door 16, card in their box
     'refuse_t43_09_empty_flat': {'evening': [(None, 'refuse_t43_09_empty_flat_evening_hold.png', [])]},  # door 34, parcel on the mat
+    # D-122: chapter 13 places (still only). The cellar also serves job.refuse_ch13_08_found_cashbox through `arrival_from`
+    'ch13_01_balcony_boxes': {'day': [(None, 'ch13_01_balcony_boxes_day_hold.png', [])]},     # tenement cellar, storage 7 (arrival_place.py, kit `cellar`)
+    'ch13_10_courtyard_door': {'day': [(None, 'ch13_10_courtyard_door_day_hold.png', [])]},   # the community room's back door to the yard
 }
-# scenes without a climb: only the hold frame was rendered (CPU session, D-117); the game shows the hold at once
-STILL_ONLY = {'krystyna_wooden_album', 'refuse_wrong_letterbox', 'refuse_t43_09_empty_flat'}
+# scenes without a climb: only the hold frame was rendered (CPU sessions, D-117, D-122); the game shows the hold at once
+STILL_ONLY = {'krystyna_wooden_album', 'refuse_wrong_letterbox', 'refuse_t43_09_empty_flat',
+              'ch13_01_balcony_boxes', 'ch13_10_courtyard_door'}   # D-122
 CONTACT_COLS, CONTACT_W = 6, 1080   # arrival_composite.contact() defaults
 IMPORT_TEMPLATE = """[remap]
 

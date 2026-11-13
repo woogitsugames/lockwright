@@ -1,7 +1,7 @@
 extends GutTest
 ## D-111 (chapter 13 "Spring Cleaning", spec docs/handoff/gpt10/PACZKA-GPT10.md G10A): ten jobs after the
 ## chapter 12 finale. Data integrity, the limits of the spec, texts in five languages, cards that say what
-## the people say (D-104), arrival places borrowed from existing scenes (D-91/D-110, no new renders) and
+## the people say (D-104), arrival places borrowed from existing scenes (D-91/D-110) or their own stills (D-122) and
 ## the subtitle-only path while the lines are not recorded (`voice_pending`, contrib/voice/PENDING.md).
 ## The chapter is self-contained: every file and text key of it carries "ch13" (it can move to a content pack).
 
@@ -214,15 +214,23 @@ func test_every_card_has_an_exchange_and_a_prop() -> void:
 				paper.free()
 
 
-## No new renders: a job happens either at a place that already has a scene (`arrival_from`) or at the
-## G07 still of its place. The borrowed scene exists and gives a still for verification and the day after.
+## A job happens at a place that already has a scene (`arrival_from`), at its own still (D-122: the cellar and
+## the community room's back door, `frames: 0`) or at the G07 still of its place. The borrowed scene exists and
+## gives a still for verification and the day after.
+const OWN_STILLS := ["job.ch13_01_balcony_boxes", "job.ch13_10_courtyard_door"]
+
+
 func test_arrival_places_reuse_existing_scenes() -> void:
 	var scenes: Dictionary = ArrivalScene.data().get("scenes", {})
 	var borrowed := 0
 	for j: Dictionary in _chapter_jobs():
 		var jid := String(j["id"])
-		assert_false(scenes.has(jid), "%s has no scene of its own" % jid)
+		assert_eq(scenes.has(jid), OWN_STILLS.has(jid), "%s: a scene of its own only where one was rendered" % jid)
 		var from := String(j.get("arrival_from", ""))
+		if OWN_STILLS.has(jid):
+			assert_eq(from, "", "%s plays its own still" % jid)
+			assert_eq(ArrivalScene.place_still(j).size(), 2, "%s still" % jid)
+			continue
 		if from == "":
 			assert_true(ResourceLoader.exists("res://assets/ui/gpt/arrival/" + JobArrival.g07_image(j)), "%s G07 still" % jid)
 			continue

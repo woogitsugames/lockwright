@@ -704,6 +704,42 @@
       "anchors": {
         "evening": {}
       }
+    },
+    "job.ch13_01_balcony_boxes": {
+      "dir": "res://assets/arrival/ch13_01_balcony_boxes",
+      "fps": 12,
+      "frames": 0,
+      "times": [
+        "day"
+      ],
+      "default_time": "day",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.52
+      ],
+      "steps": {},
+      "anchors": {
+        "day": {}
+      }
+    },
+    "job.ch13_10_courtyard_door": {
+      "dir": "res://assets/arrival/ch13_10_courtyard_door",
+      "fps": 12,
+      "frames": 0,
+      "times": [
+        "day"
+      ],
+      "default_time": "day",
+      "hold": "",
+      "focus": [
+        0.5,
+        0.45
+      ],
+      "steps": {},
+      "anchors": {
+        "day": {}
+      }
     }
   }
 }

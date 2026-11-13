@@ -373,3 +373,52 @@ func test_fair_stall_has_no_laundry_sign() -> void:
 	for lang: String in ["pl", "en"]:
 		assert_eq(JobArrival.plate_path(job, lang), "", "no room sign (%s)" % lang)
 	assert_false(JobArrival.g07_image(job).contains("changing_room"), "not the changing-room photo")
+
+
+## D-122: two chapter 13 places have their own still (CPU render, `frames: 0`, no climb): the tenement cellar with
+## storage 7 (the balcony boxes; the found cashbox is in the same cellar and reaches it through `arrival_from`,
+## although that job happens in the evening) and the community room's back door to the courtyard (the finale no
+## longer borrows the room's front door from job.shared_room_door).
+const D122_STILLS := ["job.ch13_01_balcony_boxes", "job.ch13_10_courtyard_door"]
+
+
+func test_chapter_13_places_have_their_own_still() -> void:
+	for jid: String in D122_STILLS:
+		var job := JobRun.job_by_id(jid)
+		assert_false(job.is_empty(), jid)
+		assert_eq(String(job.get("arrival_from", "")), "", "%s: its own place" % jid)
+		var r := ArrivalScene.resolve(job)
+		assert_false(r.is_empty(), "%s has a scene" % jid)
+		assert_eq(String(r.get("time", "")), "day", jid)
+		assert_eq(String(r.get("hold", "x")), "", "%s plate only" % jid)
+		assert_eq((r.get("frame_paths", ["x"]) as Array).size(), 0, "%s: still only, no climb" % jid)
+		var plate := "%s/day/plate.webp" % jid.trim_prefix("job.")
+		var still := ArrivalScene.place_still(job)
+		assert_eq(still.size(), 2, jid)
+		if still.size() == 2:
+			assert_true(String(still[0]).ends_with(plate), "%s: verification shows its own place" % jid)
+			assert_true(ResourceLoader.exists(String(still[0])), jid)
+		assert_eq(ArrivalScene.place_still(job, "day", false).size(), 2, "%s: the day after shows the same place" % jid)
+		var scene := await _open(job, false)
+		var arr: ArrivalScene = scene.scene
+		assert_not_null(arr, "%s plays its scene" % jid)
+		if arr == null:
+			continue
+		assert_eq(arr.phase, &"hold", "%s: no climb frames, straight to the hold" % jid)
+		assert_true(scene.get_node("Frame").visible, "%s: the dialogue is not waiting for a climb" % jid)
+		assert_true(String(arr.get_node("Canvas/Plate").texture.resource_path).ends_with(plate))
+		assert_false(scene.place_plate.visible, "%s: no borrowed sign beside the title" % jid)
+	# the refusal in the same cellar: no scene of its own, the cellar's still at every step (its evening falls back to "day")
+	var cashbox := JobRun.job_by_id("job.refuse_ch13_08_found_cashbox")
+	assert_eq(String(cashbox.get("arrival_from", "")), "job.ch13_01_balcony_boxes")
+	assert_true(ArrivalScene.resolve(cashbox).is_empty(), "the cashbox job has no scene entry")
+	for t: String in ["", "day"]:
+		var st := ArrivalScene.place_still(cashbox, t, t == "")
+		assert_eq(st.size(), 2, "cashbox still (%s)" % t)
+		if st.size() == 2:
+			assert_true(String(st[0]).ends_with("ch13_01_balcony_boxes/day/plate.webp"), "the cashbox is found in the same cellar")
+	var cb_scene := await _open(cashbox, false)
+	assert_false(cb_scene.place_plate.visible, "cashbox: no room sign beside the title")
+	# the finale shows the back door, not the room's front door
+	var finale := ArrivalScene.place_still(JobRun.job_by_id("job.ch13_10_courtyard_door"))
+	assert_false(String(finale[0]).contains("shared_room_door"), "the finale has its own door")
