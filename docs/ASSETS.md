@@ -380,3 +380,13 @@ Own Blender 4.2.9 LTS / Cycles **CPU** renders (cloud container, no GPU; 1080x19
 |---|---|
 | `game/assets/arrival/{krystyna_wooden_album,refuse_wrong_letterbox,refuse_t43_09_empty_flat}/evening/plate.webp` | `art/blender/arrival_scene.py --job <id> --mode still --still-res 1080x1920 --still-spp 48 --hair 1` (props `photo_frames`, `parcel`, `mailbox.letter_color`), `art/tools/arrival_export.py --job <id>` (still only, no climb frames; WebP q80, lossy import 0.8) |
 | `art/renders/arrival/{krystyna_wooden_album,refuse_wrong_letterbox,refuse_t43_09_empty_flat}_evening_{hold.png,hold.json,hold_depth.png}`, `arrival_door7_board.jpg` | same renders; board with Pillow (three new stills next to `widow_bureau` and `refuse_ex_partner`) |
+
+## Chapter 13 places — 2026-11-13 (D-122)
+
+Own Blender 4.2.9 LTS / Cycles **CPU** renders (cloud container, no GPU; 1080x1920, 48 spp + OIDN — to be re-rendered at 512 spp on the owner's GPU), procedural and photo materials from `art/textures/photo` as D-94/D-108/D-117, no AI generation, no brands, no readable text except the storage numbers 6, 7, 8.
+
+| Assets | Script and final parameters |
+|---|---|
+| `game/assets/arrival/ch13_01_balcony_boxes/day/plate.webp` (also shown by `job.refuse_ch13_08_found_cashbox` through `arrival_from`) | `art/blender/arrival_place.py --job ch13_01_balcony_boxes --mode still --still-res 1080x1920 --still-spp 48` (new kit `cellar`), `art/tools/arrival_export.py --job ch13_01_balcony_boxes` (still only, no climb frames; WebP q80, lossy import 0.8) |
+| `game/assets/arrival/ch13_10_courtyard_door/day/plate.webp` | `art/blender/arrival_scene.py --job ch13_10_courtyard_door --mode still --still-res 1080x1920 --still-spp 48` (`door.glazed`, `drop`, props `trestle_tables`, `poster`), `art/tools/arrival_export.py --job ch13_10_courtyard_door` (still only) |
+| `art/renders/arrival/ch13_01_balcony_boxes_day_{hold.png,hold.json}`, `ch13_10_courtyard_door_day_{hold.png,hold.json,hold_depth.png}`, `arrival_ch13_board.jpg` | same renders; board with Pillow (two new stills next to `museum_time_lock` and `dollhouse_wooden_lock`) |
