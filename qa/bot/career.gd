@@ -427,25 +427,33 @@ func _play_lock() -> bool:
 	sampler.set_script(load("res://qa_bot/qa_sampler.gd"))
 	sampler.rows = rows
 	sampler.raw = true  # the frames are lockcore input already (warded rotate/tool, detector reset)
-	if String(_jr().current_job.get("lock_spec", "")) != "":
-		# authored lock (tutorial S1-S3): solve() replays the generated lock of the seed, not this one
+	# D-121: a security lesson (the spool lesson before the first hard pin tumbler) is played on its own
+	# authored lock by the same screen; once it opens the screen loads again with the job's lock
+	var lesson: Dictionary = current_scene.get("pre_lesson") if current_scene.get("pre_lesson") is Dictionary else {}
+	if String(_jr().current_job.get("lock_spec", "")) != "" or not lesson.is_empty():
+		# authored lock (tutorial S1-S3, lesson lock): solve() replays the generated lock of the seed, not this one
 		sampler.patient = true
 		entry["profile"] = "patient"
+	if not lesson.is_empty():
+		entry["lesson"] = String(lesson.get("lock", "")).get_file()
+	var lock_node: Node = current_scene
 	entry["bot_steps"] = sampler.rows.size()
 	var t_start := _sim
-	while _scene_name() == sc and _sim - t_start < LOCK_SIM_LIMIT_S:
+	while _scene_name() == sc and current_scene == lock_node and _sim - t_start < LOCK_SIM_LIMIT_S:
 		await _wait_frames(30)
+		if current_scene != lock_node:
+			break  # the lesson lock handed over to the job's lock (same scene file, new screen)
 		var s: Variant = current_scene.get("session") if current_scene else null
 		if s != null and s.has_method("finished") and s.finished():
 			entry["opened"] = s.is_open()
 			# the screen may hold on purpose before it moves on (tutorial praise: 1.8 s, N-61 step 6);
 			# give it 2.5 s of game time before calling it stuck
 			var waited := 0
-			while _scene_name() == sc and waited < POST_FINISH_FRAMES:
+			while _scene_name() == sc and current_scene == lock_node and waited < POST_FINISH_FRAMES:
 				await _wait_frames(30)
 				waited += 30
 			# opened locks without a job stay on the lock screen: press any forward/back button
-			if _scene_name() == sc:
+			if _scene_name() == sc and current_scene == lock_node:
 				var b := _find_button(FORWARD_NAMES + ["Quit", "Back", "Menu"])
 				if b == null:
 					# pause menu is the documented exit (D-12)
@@ -475,6 +483,8 @@ func _play_lock() -> bool:
 			break
 	entry["sim_s"] = snappedf(_sim - t_start, 0.1)
 	entry["events"] = _ev_counts.duplicate()
+	if not lesson.is_empty() and current_scene != lock_node and _scene_name() == sc:
+		entry["opened"] = true  # lesson done: the same screen now shows the job's lock, played by the next call
 	if not entry.has("opened") and _scene_name() != sc:
 		# job locks switch to job_payment in the same physics step that opens them
 		entry["opened"] = _scene_name().get_file() in ["job_payment.tscn", "tutorial.tscn"]  # job -> payment, tutorial stage -> next stage
@@ -482,7 +492,7 @@ func _play_lock() -> bool:
 	if sess != null and sess.has_method("t_step"):
 		entry["session_t_step"] = sess.t_step()
 		entry["sampler_rows_used"] = sampler.i if is_instance_valid(sampler) else -1
-	if _scene_name() == sc and _sim - t_start >= LOCK_SIM_LIMIT_S:
+	if _scene_name() == sc and current_scene == lock_node and _sim - t_start >= LOCK_SIM_LIMIT_S:
 		entry["error"] = "not opened within %d s (bot)" % int(LOCK_SIM_LIMIT_S)
 		report["locks"].append(entry)
 		report["softlocks"].append({"scene": sc, "reason": entry["error"], "job": entry["job"]})

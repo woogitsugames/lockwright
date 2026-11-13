@@ -3,12 +3,14 @@ extends InputSampler
 ##   rows    the inputs of lockcore's scripted bot (LockcoreSession.solve), one row per physics step;
 ##   patient no rows (authored locks, e.g. tutorial S1-S3 from lockwright.lock/1 files, which solve()
 ##           cannot replay): a patient player that reads the session each step - tension held,
-##           the binding element lifted slowly until it sets, tension let go on an overset.
+##           the binding element lifted slowly until it sets, tension let go on an overset, and
+##           eased into the counter-rotation band while a spool sits in a false set (D-121 lesson lock).
 ## sample() is a pure getter like the real sampler (the lock scene calls it more than once per
 ## step); the state advances once per physics tick. raw = true: the lock scene feeds the frame
 ## straight to lockcore. Injected by career.gd into a COPY of game/.
 
 const T_HOLD := 0.36
+const T_EASED := 0.17  # inside the counter-rotation band of the authored locks (cr 0.12-0.21)
 const LIFT_SPEED := 0.35  # per second
 
 var rows: Array = []
@@ -46,10 +48,13 @@ func _physics_process(delta: float) -> void:
 			_lift = 0.0
 			_target = -1
 			return
+	var caught := false
+	for e in els:
+		caught = caught or String(e.get("state", "")) == "false_set"
 	if _target < 0 or _target >= els.size() or String(els[_target].get("state", "")) == "set":
 		_target = -1
 		for k in els.size():
-			if String(els[k].get("state", "")) in ["bound", "near"]:
+			if String(els[k].get("state", "")) in ["bound", "near", "false_set"]:
 				_target = k
 				break
 		if _target < 0:
@@ -62,7 +67,7 @@ func _physics_process(delta: float) -> void:
 	if _lift > 1.1:
 		_lift = 0.0
 		_target = (_target + 1) % n
-	_frame = {"tension": T_HOLD, "pick_depth": (maxi(_target, 0) + 0.5) / n, "pick_lift": _lift}
+	_frame = {"tension": T_EASED if caught else T_HOLD, "pick_depth": (maxi(_target, 0) + 0.5) / n, "pick_lift": _lift}
 
 
 func sample() -> Dictionary:
