@@ -144,20 +144,32 @@ static func _wire_button(b: BaseButton) -> void:
 static func fit_title(label: Label, max_fs := 28, min_fs := 17, one_line_min := 22) -> void:
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	label.custom_minimum_size.x = 0
-	var apply := func() -> void:
-		# D-90: the sizes follow the player's text scale (UiA11y), the fitting rule stays
-		var fs := title_size(label.get_theme_font(&"font"), label.text, label.size.x,
-			UiA11y.fs(max_fs), UiA11y.fs(min_fs), UiA11y.fs(one_line_min))
-		if fs > 0 and fs != label.get_theme_font_size(&"font_size"):
-			label.add_theme_font_size_override(&"font_size", fs)
-		if fs > 0:
-			# D-90: an autowrapped label in an HBox (header) does not grow its row by itself
-			var f := label.get_theme_font(&"font")
-			label.custom_minimum_size.y = ceilf(f.get_multiline_string_size(label.text, HORIZONTAL_ALIGNMENT_LEFT, label.size.x, fs).y)
+	# The label goes in by id, never as a captured object: the deferred first fit can run after the
+	# label was freed (a screen closed in the same frame), and calling a lambda whose captured object
+	# is gone is a script error (D-121). `resized` is the label's own signal and goes with it.
+	var id := label.get_instance_id()
+	var apply := func() -> void: _fit_title_now(id, max_fs, min_fs, one_line_min)
 	if not label.has_meta(&"fit_title"):
 		label.set_meta(&"fit_title", true)
 		label.resized.connect(apply)
 	apply.call_deferred()
+
+
+static func _fit_title_now(label_id: int, max_fs: int, min_fs: int, one_line_min: int) -> void:
+	if not is_instance_id_valid(label_id):
+		return
+	var label := instance_from_id(label_id) as Label
+	if label == null or label.is_queued_for_deletion():
+		return
+	# D-90: the sizes follow the player's text scale (UiA11y), the fitting rule stays
+	var fs := title_size(label.get_theme_font(&"font"), label.text, label.size.x,
+		UiA11y.fs(max_fs), UiA11y.fs(min_fs), UiA11y.fs(one_line_min))
+	if fs > 0 and fs != label.get_theme_font_size(&"font_size"):
+		label.add_theme_font_size_override(&"font_size", fs)
+	if fs > 0:
+		# D-90: an autowrapped label in an HBox (header) does not grow its row by itself
+		var f := label.get_theme_font(&"font")
+		label.custom_minimum_size.y = ceilf(f.get_multiline_string_size(label.text, HORIZONTAL_ALIGNMENT_LEFT, label.size.x, fs).y)
 
 
 ## Font size for fit_title (static, for tests). 0 = width unknown yet.
@@ -182,18 +194,27 @@ static func title_size(font: Font, text: String, width: float, max_fs: int, min_
 
 ## VA-01: a one-line plate label (tab) that shrinks down to `min_fs` before the ellipsis trims it.
 static func fit_button_text(b: Button, max_fs := 16, min_fs := 13) -> void:
-	var apply := func() -> void:
-		var sb := b.get_theme_stylebox(&"normal")
-		var avail := b.size.x - (sb.get_margin(SIDE_LEFT) + sb.get_margin(SIDE_RIGHT) if sb else 0.0) - 2.0
-		if avail <= 1.0:
-			return
-		var font := b.get_theme_font(&"font")
-		var fs := UiA11y.fs(max_fs)  # D-90: text scale
-		while fs > UiA11y.fs(min_fs) and font.get_string_size(b.text, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x > avail:
-			fs -= 1
-		if fs != b.get_theme_font_size(&"font_size"):
-			b.add_theme_font_size_override(&"font_size", fs)
+	var id := b.get_instance_id()  # by id: the deferred first fit may outlive the button (see fit_title)
+	var apply := func() -> void: _fit_button_now(id, max_fs, min_fs)
 	if not b.has_meta(&"fit_text"):
 		b.set_meta(&"fit_text", true)
 		b.resized.connect(apply)
 	apply.call_deferred()
+
+
+static func _fit_button_now(button_id: int, max_fs: int, min_fs: int) -> void:
+	if not is_instance_id_valid(button_id):
+		return
+	var b := instance_from_id(button_id) as Button
+	if b == null or b.is_queued_for_deletion():
+		return
+	var sb := b.get_theme_stylebox(&"normal")
+	var avail := b.size.x - (sb.get_margin(SIDE_LEFT) + sb.get_margin(SIDE_RIGHT) if sb else 0.0) - 2.0
+	if avail <= 1.0:
+		return
+	var font := b.get_theme_font(&"font")
+	var fs := UiA11y.fs(max_fs)  # D-90: text scale
+	while fs > UiA11y.fs(min_fs) and font.get_string_size(b.text, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x > avail:
+		fs -= 1
+	if fs != b.get_theme_font_size(&"font_size"):
+		b.add_theme_font_size_override(&"font_size", fs)
