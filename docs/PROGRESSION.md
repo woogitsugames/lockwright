@@ -51,7 +51,7 @@ Start: napinacz kątowy, podważka kołkowa i haczyk (egipski, wkładka t2, pły
 ### 2.4 Ekonomia MVP (orientacyjnie)
 - Średni dochód: ok. 40 monet na zamek w środkowej części serii, czyli ok. 300 monet na sesję 8 minut.
 - **Ceny narzędzi (D-62, `game/data/tools.json`):** ciągadło 60, korba 120, napinacz listwowy 150, koronka 180, sonda biegunowa 200, klin 200, falownik 110, chorągiewka 240, trzpień 260, obrotnik tarcz 280, słuchawka 300, piórko 500, mikroskop 90, wziernik 130 (przed D-62: 150, 300, 450, 600, 700, 700, 350, 900, 1000, 1100, 1200, 2000, 250, 400). Razem 2 820 monet (było 10 100); narzędzia do rodzin ze zleceń (9 szt.) 1 790 (było 6 400).
-- Główna kariera (29 zleceń, `econ_sim.py` C): dochód ze zleceń ok. 2 400–2 800 monet, czyli 85–99 % ceny wszystkich narzędzi; gracz average kupuje 13 z 13 osiągalnych płatnych, bez sesji Trybu Ciągłego i bez zablokowanego zlecenia. Tryb Ciągły (ok. 400 monet na sesję 8 min) jest dodatkiem, nie warunkiem postępu.
+- Główna kariera (103 zlecenia, rozdz. 1–14, `econ_sim.py` C; liczby zawsze w `docs/ECONOMY.md` §1, §6a i §6b): dochód ze zleceń ok. 11 200–13 100 monet wobec 2 820 za wszystkie narzędzia i 6 750 za wyposażenie warsztatu (D-71); gracz average kupuje 13 z 13 osiągalnych płatnych narzędzi, bez sesji Trybu Ciągłego i bez zablokowanego zlecenia. Tryb Ciągły (ok. 400 monet na sesję 8 min) jest dodatkiem, nie warunkiem postępu. Po rozdz. 12 sklep się kończy (D-124, §8).
 - Pełna wersja odblokowuje rodziny i tryby, a nie monety.
 - Monet **nie można kupić za pieniądze** (bez pay-to-win).
 
@@ -120,3 +120,14 @@ Dopisane 2026-11-04 po `ONBOARDING.md`, `LEVELS.md` i `HUD.md`. Powyższe sekcje
 6. **„W ciemności” (§5):** dostępne po S3, ale gracz poznaje je raz, w skryptowanej scenie (minutnik gaśnie w drugim zamku serii, `ONBOARDING.md` §7). Potem włącznik minutnika przed każdym zamkiem.
 7. **Mistrz rodziny (§5):** `pin_tumbler` ma 5 zamków mistrzowskich (`pin.m1`–`pin.m5`), `wafer` 3 (`wafer.m1`–`wafer.m3`, wbrew „nie dotyczy” w `LOCKS.md` §2.4). Zamek mistrzowski odblokowuje się po ukończeniu profilu tego samego tieru.
 8. **Przegrana w samouczku i lekcjach wtrąconych** nie kosztuje wytrycha (bez zmian), a dotyczy też `wafer.s3`, gdzie złamanie jest częścią lekcji.
+
+## 8. Stan w grze po rozdziale 14 (D-124)
+
+Przegląd z 2026-11-13: co w grze naprawdę zależy od rozdziału i liczby zleceń. Sekcja 3 opisuje projekt (reputacja odsłania dzielnice); gra robi dziś mniej i to jest stan obowiązujący, dopóki właściciel nie zdecyduje inaczej.
+
+1. **Rozdziały nie mają progów.** Lista zleceń pokazuje wszystkie rozdziały od początku, w kolejności `chapter` / `order`; nie ma progu reputacji, monet ani liczby zleceń. Nowy rozdział (13, 14, kolejne) jest grywalny od razu po dodaniu danych i niczego nie trzeba dopisywać w `progression.json` (plik opisuje Tryb Ciągły, nie rozdziały).
+2. **Reputacja** jest tylko licznikiem w zapisie (odmowa +5, pole `reputation` zlecenia, złe drzwi −25). Nic jej nie czyta: nie odblokowuje i nie jest pokazywana.
+3. **Osiągnięcia** (48) nie liczą zleceń ani rozdziałów, więc żadne nie zmieniło warunku po rozdz. 13–14. Gra przyznaje dziś tylko te z wyzwalaczem `result=open` i `event=` (31); pozostałych 17 (12 zleceniowych `result=job_completed / job_refused / job_resolved`, 3 wyzwania, 2 szkoły samouczka) ma dane i teksty, ale nic ich nie przyznaje. Żaden ekran gry nie pokazuje jeszcze osiągnięć.
+4. **Gablota:** 23 notki, wszystkie odblokowują zlecenia z rozdz. 1–6 (albo tier ≥ 3). Rozdziały 7–14 nie dodają notek.
+5. **Wyposażenie warsztatu:** ostatni przedmiot odblokowuje rozdz. 11. Rozdziały 13–14 niczego nie odblokowują, a monety z nich (ok. 3 000) nie mają celu: `docs/ECONOMY.md` §6b. Propozycja pięciu przedmiotów na rozdz. 13–15 czeka na sesję z grafiką (D-124).
+6. **Mapa dzielnicy w warsztacie** czyta klucz zapisu `chapter`, którego gra nie ustawia, więc zawsze pokazuje mapę rozdziału 1 (mapy są dla rozdz. 1–6).
