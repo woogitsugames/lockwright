@@ -33,7 +33,13 @@ const DEFAULTS := {
 	"auto_tension": true,       # D-52: tension held by the game; one thumb picks
 	"control_chosen": false,    # D-52: first-launch control choice done
 	"voice_download": "auto",   # D-62/D-100: game-language voice pack: "auto" (old "ask" = auto) | "manual"
+	"adpf_hint": false,        # D-91 FrameHint opt-in, no UI (D-121: the key was read but not known here, so a settings file could not turn it on)
 }
+
+## D-121: names a setting had before, read once from an old settings.cfg when the current key is
+## not there yet. "chalk_layer" is what the lock screen asked for while the Settings screen wrote
+## "reading_aid" (the "Chalk markings" switch); the switch and the lock now share "reading_aid".
+const LEGACY_KEYS := {"chalk_layer": "reading_aid"}
 
 var _cfg := {}
 
@@ -42,13 +48,18 @@ func _ready() -> void:
 	load_settings()
 
 
-func load_settings() -> void:
+func load_settings(path: String = PATH) -> void:
 	_cfg = DEFAULTS.duplicate(true)
 	var file := ConfigFile.new()
-	if file.load(PATH) == OK:
+	if file.load(path) == OK:
 		for key in DEFAULTS:
 			if file.has_section_key("settings", key):
 				_cfg[key] = file.get_value("settings", key)
+		for old: String in LEGACY_KEYS:
+			var key: String = LEGACY_KEYS[old]
+			if file.has_section_key("settings", old) and not file.has_section_key("settings", key) \
+					and typeof(file.get_value("settings", old)) == typeof(DEFAULTS[key]):
+				_cfg[key] = file.get_value("settings", old)
 		# D-107: a player who already picked a text size keeps it (the system size is only a default)
 		if not file.has_section_key("settings", "text_scale_system") and file.has_section_key("settings", "text_scale"):
 			_cfg["text_scale_system"] = is_equal_approx(float(file.get_value("settings", "text_scale")), 1.0)

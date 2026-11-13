@@ -153,6 +153,13 @@ static func make_spec_session(path: String, fam: StringName, sd: int, tr: int) -
 	return make_session(fam, sd, tr)
 
 
+## The player's "Chalk markings" switch (Settings screen, key "reading_aid"; D-121: the lock screen
+## used to ask for a key Settings never had, so the switch did nothing). Coach lines, the practice
+## goal and the tool caution (D-120) do not depend on it.
+static func chalk_layer_on() -> bool:
+	return bool(Settings.get_value(&"reading_aid", false))
+
+
 ## Tutorial chalk + guided steps (N-61), first-jobs chalk and the no-tension hint (N-58, D-53).
 func _setup_guidance() -> void:
 	if args.has("lw-auto"):
@@ -164,7 +171,7 @@ func _setup_guidance() -> void:
 	if control != null:
 		control.auto = auto
 		var done: int = (Save.get_value("jobs_completed", []) as Array).size()
-		var lvl := ChalkLayer.Level.REDUCED if done < 3 or bool(Settings.get_value(&"chalk_layer", false)) else ChalkLayer.Level.OFF
+		var lvl := ChalkLayer.Level.REDUCED if done < 3 or chalk_layer_on() else ChalkLayer.Level.OFF
 		if args.has("lw-chalk"):
 			lvl = {"off": ChalkLayer.Level.OFF, "reduced": ChalkLayer.Level.REDUCED, "full": ChalkLayer.Level.FULL}.get(args["lw-chalk"], lvl)
 		view.chalk_level = lvl
@@ -202,14 +209,14 @@ func _setup_guidance() -> void:
 		coach.set_lesson(TutorialCoach.load_lesson(family), true)
 	elif TutorialCoach.has_lesson_for(family) and not tutorial:
 		# lesson families after the fade: no pin coach (its gestures are not theirs)
-		if bool(Settings.get_value(&"chalk_layer", false)):
+		if chalk_layer_on():
 			level = ChalkLayer.Level.REDUCED
 	elif tutorial:
 		level = ChalkLayer.Level.FULL if stage == 0 else ChalkLayer.Level.REDUCED
 		fb_gain = [1.5, 1.3, 1.15][clampi(stage, 0, 2)]
 		coach = TutorialCoach.new(stage, stage == 0, auto)
 	else:
-		if jobs_done < 3 or bool(Settings.get_value(&"chalk_layer", false)):
+		if jobs_done < 3 or chalk_layer_on():
 			level = ChalkLayer.Level.REDUCED
 		coach = TutorialCoach.new(0, false, auto) if jobs_done < 3 else null
 	if args.has("lw-chalk"):
@@ -230,7 +237,7 @@ func _setup_guidance() -> void:
 func _setup_practice(auto: bool) -> void:
 	if control != null:
 		control.auto = auto
-	var level := ChalkLayer.Level.REDUCED if bool(Settings.get_value(&"chalk_layer", false)) else ChalkLayer.Level.OFF
+	var level := ChalkLayer.Level.REDUCED if chalk_layer_on() else ChalkLayer.Level.OFF
 	if args.has("lw-chalk"):
 		level = {"off": ChalkLayer.Level.OFF, "reduced": ChalkLayer.Level.REDUCED, "full": ChalkLayer.Level.FULL}.get(args["lw-chalk"], level)
 	coach = null
