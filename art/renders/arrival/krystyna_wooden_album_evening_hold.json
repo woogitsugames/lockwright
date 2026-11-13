@@ -1,0 +1,127 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "krystyna_wooden_album",
+ "time": "evening",
+ "door": "closed",
+ "fps": 12,
+ "frames": 36,
+ "note": "quads: [tl,tr,br,bl] normalised 0..1, origin top-left (D-41). figures: feet line and height in px of this image.",
+ "anchors": {
+  "namecard": [
+   [
+    0.57177,
+    0.38822
+   ],
+   [
+    0.61505,
+    0.38824
+   ],
+   [
+    0.61505,
+    0.39478
+   ],
+   [
+    0.57177,
+    0.39476
+   ]
+  ],
+  "mailbox_card": [
+   [
+    0.86832,
+    0.495
+   ],
+   [
+    0.91106,
+    0.4951
+   ],
+   [
+    0.91106,
+    0.50356
+   ],
+   [
+    0.86832,
+    0.50345
+   ]
+  ],
+  "number_plate": [
+   [
+    0.56682,
+    0.24949
+   ],
+   [
+    0.62012,
+    0.24937
+   ],
+   [
+    0.62012,
+    0.26996
+   ],
+   [
+    0.56682,
+    0.27007
+   ]
+  ],
+  "door": [
+   [
+    0.40934,
+    0.24569
+   ],
+   [
+    0.77873,
+    0.2448
+   ],
+   [
+    0.77873,
+    0.73129
+   ],
+   [
+    0.40934,
+    0.72873
+   ]
+  ],
+  "cylinder": [
+   [
+    0.72925,
+    0.47857
+   ],
+   [
+    0.77142,
+    0.47866
+   ],
+   [
+    0.77142,
+    0.52402
+   ],
+   [
+    0.72925,
+    0.52389
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   -170.0,
+   -2560.0,
+   1570.0
+  ],
+  "lens_mm": 22.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   -0.12999999523162842
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   1.2
+  ]
+ },
+ "depth_png": {
+  "file": "krystyna_wooden_album_evening_hold_depth.png",
+  "depth_max_mm": 20000.0,
+  "encoding": "planar camera depth = value/65535*depth_max_mm"
+ }
+}

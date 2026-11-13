@@ -217,3 +217,10 @@ już nie mleczne. Dzień: słońce wpada przez okno i kładzie jasną plamę z c
 - **Światło na postaci:** żarówka wisi za panem Kazimierzem, więc jest on podświetlony od tyłu, a cień pada do przodu.
   Prompt D1/D2 powinien prosić o ciepłe światło z góry i z tyłu po lewej oraz miękkie wypełnienie z przodu.
 - Pozycja postaci (po lewej od drzwi) i kąt uchylenia (38°) zatwierdzone przez koordynatora.
+
+## Ostatnie drzwi 7 (2026-11-12, D-117) — same stop-klatki z CPU
+
+`krystyna_wooden_album` (drzwi 14, ramki ze zdjęciami i karton), `refuse_wrong_letterbox` (drzwi 16, czerwona koperta
+w skrzynce), `refuse_t43_09_empty_flat` (drzwi 34, paczka na wycieraczce): `*_evening_hold.{png,json}` + `_hold_depth.png`,
+1080×1920, Cycles CPU 48 spp + OIDN (kontener bez GPU). Przejazdu 36 klatek nie ma (`frames: 0` w grze).
+Arkusz: `arrival_door7_board.jpg`. Finały GPU (512 spp + przejazd 128 spp): polecenie w `docs/DECISIONS.md` D-117.

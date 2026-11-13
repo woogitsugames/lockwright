@@ -1,0 +1,127 @@
+{
+ "width": 1080,
+ "height": 1920,
+ "job": "refuse_wrong_letterbox",
+ "time": "evening",
+ "door": "closed",
+ "fps": 12,
+ "frames": 36,
+ "note": "quads: [tl,tr,br,bl] normalised 0..1, origin top-left (D-41). figures: feet line and height in px of this image.",
+ "anchors": {
+  "namecard": [
+   [
+    0.43497,
+    0.39455
+   ],
+   [
+    0.48136,
+    0.39453
+   ],
+   [
+    0.48136,
+    0.40155
+   ],
+   [
+    0.43497,
+    0.40157
+   ]
+  ],
+  "mailbox_card": [
+   [
+    0.74531,
+    0.50775
+   ],
+   [
+    0.79012,
+    0.50761
+   ],
+   [
+    0.79012,
+    0.5166
+   ],
+   [
+    0.74531,
+    0.51675
+   ]
+  ],
+  "number_plate": [
+   [
+    0.43315,
+    0.2473
+   ],
+   [
+    0.48315,
+    0.24746
+   ],
+   [
+    0.48315,
+    0.26602
+   ],
+   [
+    0.43315,
+    0.26588
+   ]
+  ],
+  "door": [
+   [
+    0.25928,
+    0.24049
+   ],
+   [
+    0.6552,
+    0.24181
+   ],
+   [
+    0.6552,
+    0.75939
+   ],
+   [
+    0.25928,
+    0.76302
+   ]
+  ],
+  "cylinder": [
+   [
+    0.60232,
+    0.4908
+   ],
+   [
+    0.64691,
+    0.49068
+   ],
+   [
+    0.64691,
+    0.53898
+   ],
+   [
+    0.60232,
+    0.53915
+   ]
+  ]
+ },
+ "figures": {},
+ "camera": {
+  "location_mm": [
+   30.0,
+   -2380.0,
+   1550.0
+  ],
+  "lens_mm": 22.0,
+  "sensor_height_mm": 36.0,
+  "sensor_fit": "VERTICAL",
+  "shift": [
+   0.0,
+   -0.11999999731779099
+  ],
+  "rotation_euler_deg": [
+   90.0,
+   -0.0,
+   -1.5
+  ]
+ },
+ "depth_png": {
+  "file": "refuse_wrong_letterbox_evening_hold_depth.png",
+  "depth_max_mm": 20000.0,
+  "encoding": "planar camera depth = value/65535*depth_max_mm"
+ }
+}
