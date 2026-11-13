@@ -154,3 +154,12 @@ func test_workshop_tab_and_backdrop() -> void:
 	assert_true(b.disabled)
 	assert_eq(b.text, I18n.t(&"workshop.not_enough"))
 	assert_lte(ws.get_combined_minimum_size().x, 412.0, "no sideways scroll")
+
+
+func test_every_chapter_gate_has_jobs() -> void:
+	# D-124: an item gated by a chapter without jobs (base game or a content pack) could never be bought
+	var chapters := {}
+	for j: Dictionary in JobRun.all_jobs() + ContentPacks.stubs():
+		chapters[int(j.get("chapter", 0))] = true
+	for f in Furnishings.all():
+		assert_true(chapters.has(int(f["chapter"])), "%s: chapter %d has jobs" % [f["id"], int(f["chapter"])])

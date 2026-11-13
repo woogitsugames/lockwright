@@ -2,7 +2,8 @@
 """Career economy simulator for Lockwright (Jobs mode + Continuous-mode grinding).
 
 Plain Python stdlib. Reads game/data (read only) and lockcore/BALANCE.md, simulates
-all jobs in game/data/jobs (JOBS.md order, then T43 chapters 9-12) for three player profiles under three scenarios and writes docs/ECONOMY.md.
+all jobs in game/data/jobs (JOBS.md order, then every later chapter by chapter / order) for three player profiles
+under four scenarios and writes docs/ECONOMY.md.
 
     python3 tools/econ_sim.py                 # writes docs/ECONOMY.md
     python3 tools/econ_sim.py --careers 400 --out /tmp/eco.md
@@ -20,7 +21,9 @@ Model (all assumptions are listed in the report, section "Model"):
   triggers grinding.
 - furnishings (D-71, game/data/furnishings.json, scenario C only): cosmetic, no effect on play. After the tools,
   the player buys every furnishing whose chapter is reached, oldest chapter / cheapest first, keeping the same
-  repair reserve; the report shows what each profile owns and the coins left at the end of chapter 12.
+  repair reserve; the report shows what each profile owns and the coins left at the end of chapter 12 (the career
+  D-71 sized them for) and at the end of the career as it is now, and section 6b follows the coins chapter by
+  chapter (D-124: where the shop runs out).
 """
 import argparse
 import glob
@@ -118,6 +121,8 @@ BUY_RESERVE = 50       # optional tools: coins kept back for repairs when buying
 STALE_CAP = 10  # grinding sessions without tier progress before a job counts as blocked
 GRIND_CAP_SESSIONS = 60  # after this many grinding sessions for one job, the job is "blocked"
 SESSION_S = 8 * 60
+NEVER = 10 ** 6  # "not bought" index in the unlock tables (was 99: lower than the last job since chapter 13)
+D71_CHAPTER = 12  # D-71 sized the furnishings for a career of chapters 1-12
 LOCK_OVERHEAD_S = 8  # Continuous mode: transition between locks
 
 
@@ -136,7 +141,7 @@ def load_balance():
     return out
 
 
-# Jobs added after JOBS.md (T43, chapters 9-12): family from the JSON, tier = lockcore tier as written in the
+# Jobs added after JOBS.md (chapters 7 and up): family from the JSON, tier = lockcore tier as written in the
 # JSON (the game passes it through, N-05). Stored as ("lt", n) so lock_stats() skips the JOBS.md tier map.
 LOCKCORE_DIRECT = {"pin_tumbler", "wafer", "warded", "lever", "lever_detector"}
 
@@ -423,6 +428,7 @@ class Career:
                             and self.st["coins"] >= t["price"] + BUY_RESERVE):
                         self.try_buy(idx, [tid])
                 self.buy_furnishings(idx, furnishings)
+            row["coins_end"] = self.st["coins"]  # after the purchases that follow the job (D-124)
         return self
 
 
@@ -487,9 +493,18 @@ def report(results, jobs, tools, prog, cont, careers, furnishings=()):
         c = results["C"]
         n = len(furnishings)
         trio = lambda f: "/".join("{:.0f}".format(med([f(x) for x in c[p]])) for p in PROFILES)
-        w(f"7. **Wyposażenie (D-71):** {n} przedmiotów kosmetycznych za {sum(f['price'] for f in furnishings)} monet; "
-          f"careful/average/clumsy kupują {trio(lambda x: len(x.furn))} z {n} do końca rozdz. 12, wydają "
-          f"{trio(lambda x: x.totals['furnishings'])} i zostaje im {trio(lambda x: x.st['coins'])} monet (sekcja 6a).")
+        ends = chapter_ends(jobs)
+        last_ch, end12 = max(ends), ends.get(D71_CHAPTER, len(jobs))
+        prices = {f["id"]: f["price"] for f in furnishings}
+        w(f"7. **Wyposażenie (D-71):** {n} przedmiotów kosmetycznych za {sum(prices.values())} monet; "
+          f"careful/average/clumsy kupują {trio(lambda x: snapshot(x, end12, prices)[1])} z {n} do końca rozdz. {D71_CHAPTER} "
+          f"(zostaje im {trio(lambda x: snapshot(x, end12, prices)[0])} monet) i {trio(lambda x: len(x.furn))} z {n} do końca "
+          f"rozdz. {last_ch}, wydają {trio(lambda x: x.totals['furnishings'])} (sekcja 6a).")
+        if last_ch > D71_CHAPTER:
+            w(f"8. **Po rozdz. {D71_CHAPTER} sklep się kończy (D-124):** ostatni zakup (narzędzie albo wyposażenie) wypada po zleceniu nr "
+              f"{trio(lambda x: last_purchase(x, n))} z {len(jobs)}; potem nie ma już nic do kupienia poza naprawami, a na koniec "
+              f"rozdz. {last_ch} zostaje {trio(lambda x: x.st['coins'])} monet (careful/average/clumsy). Przebieg rozdział po "
+              f"rozdziale: sekcja 6b.")
     w("")
     w("## 2. Scenariusze i profile")
     w("")
@@ -551,9 +566,9 @@ def report(results, jobs, tools, prog, cont, careers, furnishings=()):
                 idxs = []
                 for x in results[s][prof]:
                     got = [i for i, t in x.unlock_curve if t == tid]
-                    idxs.append(got[0] if got else 99)
+                    idxs.append(got[0] if got else NEVER)
                 m = med(idxs)
-                cells.append("—" if m >= 99 else f"{m:.0f}")
+                cells.append("—" if m >= NEVER else f"{m:.0f}")
         old = SCENARIOS["D"]["changes"]["price"].get(tid, tools[tid]["price"])
         w(f"| `{tid}` | {old} / {tools[tid]['price']} | {tools[tid]['unlock']} | " + " | ".join(cells) + " |")
     w("")
@@ -589,9 +604,12 @@ def report(results, jobs, tools, prog, cont, careers, furnishings=()):
     for line in FURNISHINGS(results, jobs, furnishings):
         w(line)
     w("")
+    for line in CHAPTERS(results, jobs, furnishings):
+        w(line)
+    w("")
     w("## 7. Model i założenia")
     w("")
-    w("- Kolejność zleceń jak w `docs/JOBS.md`. Odmowy (`refuse_*`) i `wrong_floor` grane najlepszą ścieżką, bez zamka.")
+    w("- Kolejność zleceń jak w `docs/JOBS.md` (rozdz. 1–6), dalsze rozdziały wg pól `chapter` i `order` w danych. Odmowy (`refuse_*`) i `wrong_floor` grane najlepszą ścieżką, bez zamka.")
     w("- Rodzina i tier zlecenia → lockcore: wkładka T1/T2/T3 → t2/t3/t4, płytkowy → t1/t2/t3, zapadkowy → t1/t2/t2 "
       "(lockcore nie ma t3), dźwigniowy → t3/t4/t5, z detektorem → t5, szyfrowa → `ring_combo` t2/t2/t3, egipski → `wooden_pin` t1.")
     w(f"- Rodziny bez modułu lockcore (magnetic, tubular, dial_safe, time_lock, dimple, axial_slider, disc_detainer): "
@@ -633,6 +651,9 @@ def FINDINGS(results, jobs, tools, prog, cont):
     cost_all_old = sum(SCENARIOS["D"]["changes"]["price"].get(t["id"], t["price"]) for t in paid)
     job_sum = sum(j["reward_coins"] for j in jobs)
     cont_c = {p: inc for s, p, inc, _ in cont if s == "C"}
+    ends = chapter_ends(jobs)
+    last_ch = max(ends)
+    end12 = ends.get(D71_CHAPTER, len(jobs))
     out = [
         f"1. **D-62: tańsze narzędzia, nigdy blokada zlecenia.** Ceny w `tools.json` (C) spadły z {cost_all_old} do {cost_all} monet "
         f"za wszystkie {len(paid)} płatne narzędzia, a z {cost_need_old} do {cost_need} za te, które mają użycie w zleceniach "
@@ -655,7 +676,8 @@ def FINDINGS(results, jobs, tools, prog, cont):
         f"5. **Naprawy (C):** {trio(c, lambda x: x.totals['repair'])} monet (careful/average/clumsy), złamań "
         f"{trio(c, lambda x: x.totals['breaks'])}; naprawa liczy się od ceny, więc tańsze narzędzia tańsze też w serwisie.",
         f"6. **Czas gry:** ścieżka zleceń (C, bez grindu, bo go nie ma) trwa careful/average/clumsy "
-        f"{trio(c, lambda x: x.totals['job_time'] / 60)} min ({len(jobs)} zleceń, rozdz. 1–12, D-71; cel ok. 2 h dla average). Długość "
+        f"{trio(c, lambda x: x.totals['job_time'] / 60)} min ({len(jobs)} zleceń, rozdz. 1–{last_ch}; do końca rozdz. {D71_CHAPTER}: "
+        f"{trio(c, lambda x: sum(r['time'] for r in x.log[:end12]) / 60)} min przy celu D-71 ok. 2 h dla average). Długość "
         f"regulujemy liczbą zleceń, nie cenami. Tryb Ciągły (sesja 8 min, start) daje {cont_c['careful']:.0f}/{cont_c['average']:.0f}/"
         f"{cont_c['clumsy']:.0f} monet i pozostaje dodatkiem, nie warunkiem postępu.",
     ]
@@ -673,42 +695,91 @@ def PROPOSALS(tools):
     return L
 
 
+def chapter_ends(jobs):
+    """chapter -> 1-based index of its last job in the career order."""
+    out = {}
+    for i, j in enumerate(jobs, 1):
+        out[int(j["chapter"])] = i
+    return out
+
+
+def snapshot(x, idx, prices):
+    """Career x after job idx and the purchases that follow it: (coins, furnishings owned, coins spent on them)."""
+    got = [f for i, f in x.furn if i <= idx]
+    return x.log[idx - 1]["coins_end"], len(got), sum(prices[f] for f in got)
+
+
+def last_purchase(x, n_furnishings):
+    """Job index of the last tool / furnishing bought, when nothing is left to buy afterwards; else NEVER."""
+    if len(x.furn) < n_furnishings:
+        return NEVER
+    return max([i for i, _ in x.furn] + [i for i, _ in x.unlock_curve] + [0])
+
+
 def FURNISHINGS(results, jobs, furnishings):
     """D-71: cosmetic furnishings bought from career coins (scenario C = the game as shipped)."""
     if not furnishings:
         return []
     c = results["C"]
-    total = sum(f["price"] for f in furnishings)
+    prices = {f["id"]: f["price"] for f in furnishings}
+    total = sum(prices.values())
     n = len(furnishings)
+    ends = chapter_ends(jobs)
+    last_ch = max(ends)
+    marks = [D71_CHAPTER] + ([last_ch] if last_ch > D71_CHAPTER else [])
     L = ["## 6a. Wyposażenie warsztatu (D-71, `game/data/furnishings.json`, scenariusz C)", "",
          f"{n} przedmiotów kosmetycznych (bez wpływu na trudność), razem {total} monet. Gracz w modelu kupuje je po narzędziach: "
-         f"każdy przedmiot z osiągniętego rozdziału, najpierw starsze rozdziały i tańsze, z rezerwą {BUY_RESERVE} monet na naprawy.", "",
-         f"| Profil | monety przed wyposażeniem (koniec rozdz. 12) | wydane na wyposażenie | kupione (mediana) | wszystkie {n}/{n} [% karier] | monety zostają |",
-         "|---|---|---|---|---|---|"]
+         f"każdy przedmiot z osiągniętego rozdziału, najpierw starsze rozdziały i tańsze, z rezerwą {BUY_RESERVE} monet na naprawy. "
+         f"Ostatni przedmiot odblokowuje rozdz. {max(f['chapter'] for f in furnishings)}.", "",
+         f"| Profil | stan na koniec rozdz. | monety przed wyposażeniem | wydane na wyposażenie | kupione (mediana) | wszystkie {n}/{n} [% karier] | monety zostają |",
+         "|---|---|---|---|---|---|---|"]
     for prof in PROFILES:
         res = c[prof]
-        spent = med([x.totals["furnishings"] for x in res])
-        cnt = med([len(x.furn) for x in res])
-        allp = sum(1 for x in res if len(x.furn) == n) / len(res)
-        left = med([x.st["coins"] for x in res])
-        before = med([x.st["coins"] + x.totals["furnishings"] for x in res])
-        L.append(f"| {prof} | {before:.0f} | {spent:.0f} | {cnt:.0f} / {n} | {allp:.0%} | {left:.0f} |")
+        for ch in marks:
+            snaps = [snapshot(x, ends.get(ch, len(jobs)), prices) for x in res]
+            allp = sum(1 for sn in snaps if sn[1] == n) / len(snaps)
+            L.append(f"| {prof} | {ch} | {med([sn[0] + sn[2] for sn in snaps]):.0f} | {med([sn[2] for sn in snaps]):.0f} | "
+                     f"{med([sn[1] for sn in snaps]):.0f} / {n} | {allp:.0%} | {med([sn[0] for sn in snaps]):.0f} |")
     L += ["", "| przedmiot | cena | od rozdz. | " + " | ".join(f"kupiony po zleceniu nr ({p})" for p in PROFILES) + " |",
           "|---|---|---|" + "---|" * len(PROFILES)]
+    end12 = ends.get(D71_CHAPTER, len(jobs))
     for f in furnishings:
         cells = []
         for prof in PROFILES:
-            idxs = []
-            for x in c[prof]:
-                got = [i for i, fid in x.furn if fid == f["id"]]
-                idxs.append(got[0] if got else 999)
+            idxs = [next((i for i, fid in x.furn if fid == f["id"]), NEVER) for x in c[prof]]
+            share = sum(1 for i in idxs if i <= end12) / len(idxs)
             m = med(idxs)
-            share = sum(1 for v in idxs if v < 999) / len(idxs)
-            cells.append("—" if m >= 999 else f"{m:.0f} ({jobs[int(m) - 1]['chapter']}; {share:.0%})")
+            cells.append("—" if m >= NEVER else f"{m:.0f} ({jobs[int(m) - 1]['chapter']}; {share:.0%})")
         L.append(f"| `{f['id']}` | {f['price']} | {f['chapter']} | " + " | ".join(cells) + " |")
-    L += ["", "Komórka: mediana numeru zlecenia, po którym przedmiot jest kupiony (rozdział; odsetek karier, w których "
-          "kupiono go do końca rozdz. 12; — = mediana: nie kupiony). Cel D-71: przeciętny gracz kupuje większość do końca "
-          "rozdz. 12, staranny wszystko, a najdroższa półka zostaje celem na końcówkę."]
+    L += ["", f"Komórka: mediana numeru zlecenia, po którym przedmiot jest kupiony (rozdział; odsetek karier, w których "
+          f"kupiono go do końca rozdz. {D71_CHAPTER}; — = mediana: nie kupiony). Cel D-71: przeciętny gracz kupuje większość do końca "
+          f"rozdz. {D71_CHAPTER}, staranny wszystko, a najdroższa półka zostaje celem na końcówkę."]
+    return L
+
+
+def CHAPTERS(results, jobs, furnishings):
+    """D-124: coins chapter by chapter (scenario C), to see where the shop runs out."""
+    c = results["C"]
+    prices = {f["id"]: f["price"] for f in furnishings}
+    n = len(furnishings)
+    ends = chapter_ends(jobs)
+    trio = lambda f: " / ".join("{:.0f}".format(med([f(x) for x in c[p]])) for p in PROFILES)
+    L = ["## 6b. Monety rozdział po rozdziale (scenariusz C, careful / average / clumsy, mediany)", "",
+         "| rozdz. | zleceń | suma nagród | dochód z napiwkami | wydane w rozdziale (narzędzia, wyposażenie, naprawy) | "
+         f"monety na koniec | wyposażenie posiadane (z {n}) |",
+         "|---|---|---|---|---|---|---|"]
+    start = 0
+    for ch in sorted(ends):
+        end = ends[ch]
+        rows = jobs[start:end]
+        earned = lambda x, a=start, b=end: sum(r["earned"] for r in x.log[a:b])
+        spent = lambda x, a=start, b=end: ((x.log[a - 1]["coins_end"] if a else 0) + sum(r["earned"] for r in x.log[a:b])
+                                           - x.log[b - 1]["coins_end"])
+        L.append(f"| {ch} | {len(rows)} | {sum(j['reward_coins'] for j in rows)} | {trio(earned)} | {trio(spent)} | "
+                 f"{trio(lambda x, b=end: x.log[b - 1]['coins_end'])} | {trio(lambda x, b=end: snapshot(x, b, prices)[1])} |")
+        start = end
+    L += ["", "Rozdział, w którym „wydane” spada do kosztu napraw, a „monety na koniec” rosną o cały dochód, to rozdział bez celu "
+          "dla monet: wszystkie narzędzia i całe wyposażenie są już kupione."]
     return L
 
 
