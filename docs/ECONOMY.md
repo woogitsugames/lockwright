@@ -4,14 +4,14 @@ Wygenerowane przez `python3 tools/econ_sim.py` (200 karier na profil i scenarius
 
 ## 1. Wnioski w skrócie
 
-1. **D-62: tańsze narzędzia, nigdy blokada zlecenia.** Ceny w `tools.json` (C) spadły z 10100 do 2820 monet za wszystkie 14 płatne narzędzia, a z 6400 do 1790 za te, które mają użycie w zleceniach (9 szt.). Suma nagród 113 zleceń to 12463 monet, plus napiwki. Gra nie sprawdza narzędzi przy przyjęciu zlecenia; model C też nie: brak narzędzia daje wolniejszy zamek (×1.15) i słabszy feedback, ale nie grind.
-2. **Przed (D, stare ceny, narzędzie bramką):** zablokowanych zleceń careful/average/clumsy 0/0/0; sesji grindu 7/8/11; dochód ze zleceń 14896/13638/12766 + grind 4252/4478/5840 monet wobec 6400/6400/6400 wydanych na narzędzia.
-3. **Po (C, nowe ceny, narzędzia opcjonalne):** zablokowanych 0/0/0; sesji grindu 0/0/0; dochód ze zleceń 14914/13634/12786 monet, wydane na narzędzia 2320/2320/2320 (kupione: 13/13/13 z 13 osiągalnych płatnych); monety niewydane na koniec kariery 991/1210/265; zamków granych bez własnego narzędzia 4/4/5.
-4. **Dochód a koszt narzędzi (C):** dochód ze zleceń / łączny koszt wszystkich płatnych narzędzi (2820) = 529%/483%/453% (careful/average/clumsy); wobec stanu sprzed D-62: 147%/135%/126%.
-5. **Naprawy (C):** 23/136/430 monet (careful/average/clumsy), złamań 1/4/10; naprawa liczy się od ceny, więc tańsze narzędzia tańsze też w serwisie.
-6. **Czas gry:** ścieżka zleceń (C, bez grindu, bo go nie ma) trwa careful/average/clumsy 240/183/146 min (113 zleceń, rozdz. 1–15; do końca rozdz. 12: 176/135/107 min przy celu D-71 ok. 2 h dla average). Długość regulujemy liczbą zleceń, nie cenami. Tryb Ciągły (sesja 8 min, start) daje 375/402/385 monet i pozostaje dodatkiem, nie warunkiem postępu.
-7. **Wyposażenie (D-71, D-127):** 15 przedmiotów kosmetycznych za 11550 monet; careful/average/clumsy kupują 10/9/9 z 10 dostępnych do końca rozdz. 12 (zostaje im 641/1342/624 monet) i 15/14/14 z 15 do końca rozdz. 15, wydają 11550/9950/9950 (sekcja 6a).
-8. **Monety po rozdz. 12 mają cel (D-127):** 5 przedmiotów za 4800 monet odblokowują rozdz. 13–15; ostatni zakup wypada po zleceniu nr 109/—/— z 113 (— = mediana: coś zostaje do kupienia po ostatnim zleceniu), a na koniec rozdz. 15 zostaje 991/1210/265 monet (careful/average/clumsy). Przebieg rozdział po rozdziale: sekcja 6b.
+1. **D-62: tańsze narzędzia, nigdy blokada zlecenia.** Ceny w `tools.json` (C) spadły z 10100 do 2820 monet za wszystkie 14 płatne narzędzia, a z 6400 do 1790 za te, które mają użycie w zleceniach (9 szt.). Suma nagród 123 zleceń to 14103 monet, plus napiwki. Gra nie sprawdza narzędzi przy przyjęciu zlecenia; model C też nie: brak narzędzia daje wolniejszy zamek (×1.15) i słabszy feedback, ale nie grind.
+2. **Przed (D, stare ceny, narzędzie bramką):** zablokowanych zleceń careful/average/clumsy 0/0/0; sesji grindu 7/8/11; dochód ze zleceń 16855/15444/14438 + grind 4252/4478/5840 monet wobec 6400/6400/6400 wydanych na narzędzia.
+3. **Po (C, nowe ceny, narzędzia opcjonalne):** zablokowanych 0/0/0; sesji grindu 0/0/0; dochód ze zleceń 16867/15428/14462 monet, wydane na narzędzia 2320/2320/2320 (kupione: 13/13/13 z 13 osiągalnych płatnych); monety niewydane na koniec kariery 2949/1388/319; zamków granych bez własnego narzędzia 4/4/5.
+4. **Dochód a koszt narzędzi (C):** dochód ze zleceń / łączny koszt wszystkich płatnych narzędzi (2820) = 598%/547%/513% (careful/average/clumsy); wobec stanu sprzed D-62: 167%/153%/143%.
+5. **Naprawy (C):** 28/165/554 monet (careful/average/clumsy), złamań 1/4/12; naprawa liczy się od ceny, więc tańsze narzędzia tańsze też w serwisie.
+6. **Czas gry:** ścieżka zleceń (C, bez grindu, bo go nie ma) trwa careful/average/clumsy 263/200/159 min (123 zleceń, rozdz. 1–16; do końca rozdz. 12: 176/135/107 min przy celu D-71 ok. 2 h dla average). Długość regulujemy liczbą zleceń, nie cenami. Tryb Ciągły (sesja 8 min, start) daje 375/402/385 monet i pozostaje dodatkiem, nie warunkiem postępu.
+7. **Wyposażenie (D-71, D-127):** 15 przedmiotów kosmetycznych za 11550 monet; careful/average/clumsy kupują 10/9/9 z 10 dostępnych do końca rozdz. 12 (zostaje im 641/1342/624 monet) i 15/15/15 z 15 do końca rozdz. 16, wydają 11550/11550/11550 (sekcja 6a).
+8. **Monety po rozdz. 12 mają cel (D-127):** 5 przedmiotów za 4800 monet odblokowują rozdz. 13–15; ostatni zakup wypada po zleceniu nr 109/116/123 z 123 (— = mediana: coś zostaje do kupienia po ostatnim zleceniu), a na koniec rozdz. 16 zostaje 2949/1388/319 monet (careful/average/clumsy). Przebieg rozdział po rozdziale: sekcja 6b.
 9. **Czeka na grafikę (D-127):** 5 z 15 przedmiotów nie ma jeszcze nakładki w `game/assets/ui/workshop/` (`enamel_mugs`, `neighbours_photo`, `postcards`, `key_cabinet`, `exam_lock`); gra nie pokazuje ich w sklepie, dopóki plik nie dojdzie (`docs/handoff/LOCAL-GPU-TASKS.md`). Liczby w tym raporcie opisują stan docelowy, z kompletem przedmiotów.
 
 ## 2. Scenariusze i profile
@@ -33,18 +33,18 @@ Wygenerowane przez `python3 tools/econ_sim.py` (200 karier na profil i scenarius
 
 | Scen. | Profil | zlecenia zablok. | dochód ze zleceń | dochód z grindu | sesje grindu | grind [h] | czas zleceń [min] | naprawy | narzędzia | złamania |
 |---|---|---|---|---|---|---|---|---|---|---|
-| A | careful | 0 / 113 | 14890 | 255 | 1 | 0.1 | 239.8 | 44 | 1610 | 1 |
-| A | average | 0 / 113 | 13612 | 270 | 1 | 0.1 | 182.3 | 208 | 1610 | 4 |
-| A | clumsy | 0 / 113 | 12767 | 250 | 1 | 0.1 | 145.8 | 685 | 1610 | 15 |
-| B | careful | 2 / 113 | 14671 | 10708 | 22 | 3.1 | 232.4 | 72 | 1790 | 3 |
-| B | average | 3 / 113 | 13296 | 12888 | 31 | 4.3 | 174.7 | 366 | 1790 | 17 |
-| B | clumsy | 3 / 113 | 12474 | 10610 | 31 | 4.3 | 138.4 | 858 | 1790 | 36 |
-| C | careful | 0 / 113 | 14914 | 0 | 0 | 0.0 | 240.3 | 23 | 2320 | 1 |
-| C | average | 0 / 113 | 13634 | 0 | 0 | 0.0 | 183.4 | 136 | 2320 | 4 |
-| C | clumsy | 0 / 113 | 12786 | 0 | 0 | 0.0 | 145.9 | 430 | 2320 | 10 |
-| D | careful | 0 / 113 | 14896 | 4252 | 7 | 1.0 | 237.5 | 55 | 6400 | 2 |
-| D | average | 0 / 113 | 13638 | 4478 | 8 | 1.1 | 180.4 | 652 | 6400 | 9 |
-| D | clumsy | 0 / 113 | 12766 | 5840 | 11 | 1.5 | 142.3 | 2219 | 6400 | 26 |
+| A | careful | 0 / 123 | 16861 | 255 | 1 | 0.1 | 261.8 | 46 | 1610 | 1 |
+| A | average | 0 / 123 | 15420 | 270 | 1 | 0.1 | 199.0 | 253 | 1610 | 5 |
+| A | clumsy | 0 / 123 | 14438 | 250 | 1 | 0.1 | 159.3 | 830 | 1610 | 17 |
+| B | careful | 2 / 123 | 16616 | 10708 | 22 | 3.1 | 254.6 | 82 | 1790 | 3 |
+| B | average | 3 / 123 | 15096 | 12888 | 31 | 4.3 | 191.6 | 405 | 1790 | 18 |
+| B | clumsy | 3 / 123 | 14150 | 10610 | 31 | 4.3 | 151.9 | 961 | 1790 | 38 |
+| C | careful | 0 / 123 | 16867 | 0 | 0 | 0.0 | 262.6 | 28 | 2320 | 1 |
+| C | average | 0 / 123 | 15428 | 0 | 0 | 0.0 | 200.1 | 165 | 2320 | 4 |
+| C | clumsy | 0 / 123 | 14462 | 0 | 0 | 0.0 | 159.3 | 554 | 2320 | 12 |
+| D | careful | 0 / 123 | 16855 | 4252 | 7 | 1.0 | 259.5 | 80 | 6400 | 2 |
+| D | average | 0 / 123 | 15444 | 4478 | 8 | 1.1 | 197.1 | 712 | 6400 | 9 |
+| D | clumsy | 0 / 123 | 14438 | 5840 | 11 | 1.5 | 155.7 | 2618 | 6400 | 27 |
 
 Grind = sesje Trybu Ciągłego (8 min), które gracz musi rozegrać, zanim kupi narzędzie potrzebne do następnego zlecenia. Po 60 sesjach na jedno zlecenie liczymy je jako zablokowane i idziemy dalej.
 
@@ -167,6 +167,16 @@ Grind = sesje Trybu Ciągłego (8 min), które gracz musi rozegrać, zanim kupi 
 | 111 | `refuse_ch15_08_no_answer` | 15 | warded T2 | 1.0 | 0 | 0 | 749 | odmowa/bez zamka |
 | 112 | `ch15_09_key_board` | 15 | lever_detector T5 | 1.7 | 205 | 0 | 958 | ok |
 | 113 | `ch15_10_exam_lock` | 15 | pin_tumbler T6 | 1.6 | 240 | 0 | 1212 | ok |
+| 114 | `ch16_01_bookmark_key` | 16 | axial_slider T3 | 2.0 | 170 | 0 | 1393 | ok |
+| 115 | `ch16_02_auction_safe` | 16 | dial_safe T3 | 1.9 | 213 | 0 | 1575 | ok |
+| 116 | `ch16_03_spare_in_the_lake` | 16 | dimple T3 | 2.0 | 219 | 0 | 1562 | ok |
+| 117 | `refuse_ch16_04_borrowed_barrow` | 16 | egyptian T2 | 1.0 | 0 | 0 | 288 | odmowa/bez zamka |
+| 118 | `ch16_05_wrong_padlock` | 16 | combo T4 | 2.0 | 230 | 0 | 503 | ok |
+| 119 | `ch16_06_salt_before_frost` | 16 | disc_detainer T3 | 2.0 | 205 | 0 | 646 | ok |
+| 120 | `ch16_07_hour_back` | 16 | lever T5 | 1.6 | 254 | 0 | 858 | ok |
+| 121 | `refuse_ch16_08_roommates_room` | 16 | warded T2 | 1.0 | 0 | 0 | 858 | odmowa/bez zamka |
+| 122 | `ch16_09_almost_right_key` | 16 | lever_detector T5 | 1.6 | 272 | 0 | 1108 | ok |
+| 123 | `ch16_10_thirteenth_envelope` | 16 | pin_tumbler T6 | 1.6 | 307 | 0 | 1388 | ok |
 
 ### Scenariusz D
 
@@ -285,6 +295,16 @@ Grind = sesje Trybu Ciągłego (8 min), które gracz musi rozegrać, zanim kupi 
 | 111 | `refuse_ch15_08_no_answer` | 15 | warded T2 | 1.0 | 0 | 0 | 10618 | odmowa/bez zamka |
 | 112 | `ch15_09_key_board` | 15 | lever_detector T5 | 1.7 | 205 | 0 | 10804 | ok |
 | 113 | `ch15_10_exam_lock` | 15 | pin_tumbler T6 | 1.6 | 240 | 0 | 11069 | ok |
+| 114 | `ch16_01_bookmark_key` | 16 | axial_slider T3 | 2.0 | 201 | 0 | 11232 | ok |
+| 115 | `ch16_02_auction_safe` | 16 | dial_safe T3 | 1.9 | 213 | 0 | 11436 | ok |
+| 116 | `ch16_03_spare_in_the_lake` | 16 | dimple T3 | 1.9 | 185 | 0 | 11620 | ok |
+| 117 | `refuse_ch16_04_borrowed_barrow` | 16 | egyptian T2 | 1.0 | 0 | 0 | 11620 | odmowa/bez zamka |
+| 118 | `ch16_05_wrong_padlock` | 16 | combo T4 | 2.0 | 230 | 0 | 11838 | ok |
+| 119 | `ch16_06_salt_before_frost` | 16 | disc_detainer T3 | 2.0 | 205 | 0 | 12032 | ok |
+| 120 | `ch16_07_hour_back` | 16 | lever T5 | 1.6 | 254 | 0 | 12253 | ok |
+| 121 | `refuse_ch16_08_roommates_room` | 16 | warded T2 | 1.0 | 0 | 0 | 12253 | odmowa/bez zamka |
+| 122 | `ch16_09_almost_right_key` | 16 | lever_detector T5 | 1.6 | 272 | 0 | 12495 | ok |
+| 123 | `ch16_10_thirteenth_envelope` | 16 | pin_tumbler T6 | 1.6 | 307 | 0 | 12768 | ok |
 
 ## 5. Krzywa odblokowań (narzędzie kupione po zleceniu nr, mediana; — = nigdy)
 
@@ -367,11 +387,11 @@ Warunki odblokowania bez zmian (tylko pacing sklepu; zlecenie nigdy nie wymaga n
 | Profil | stan na koniec rozdz. | monety przed wyposażeniem | wydane na wyposażenie | kupione (mediana) / dostępne | wszystkie dostępne [% karier] | monety zostają |
 |---|---|---|---|---|---|---|
 | careful | 12 | 7391 | 6750 | 10 / 10 | 100% | 641 |
-| careful | 15 | 12541 | 11550 | 15 / 15 | 100% | 991 |
+| careful | 16 | 14499 | 11550 | 15 / 15 | 100% | 2949 |
 | average | 12 | 6492 | 5150 | 9 / 10 | 0% | 1342 |
-| average | 15 | 11162 | 9950 | 14 / 15 | 1% | 1210 |
+| average | 16 | 12938 | 11550 | 15 / 15 | 100% | 1388 |
 | clumsy | 12 | 5774 | 5150 | 9 / 10 | 0% | 624 |
-| clumsy | 15 | 10034 | 9950 | 14 / 15 | 0% | 265 |
+| clumsy | 16 | 11603 | 11550 | 15 / 15 | 52% | 319 |
 
 | przedmiot | cena | od rozdz. | kupiony po zleceniu nr (careful) | kupiony po zleceniu nr (average) | kupiony po zleceniu nr (clumsy) |
 |---|---|---|---|---|---|
@@ -389,7 +409,7 @@ Warunki odblokowania bez zmian (tylko pacing sklepu; zlecenie nigdy nie wymaga n
 | `neighbours_photo` | 800 | 13 | 88 (13; 0%) | 84 (13; 0%) | 89 (13; 0%) |
 | `postcards` | 700 | 14 | 94 (14; 0%) | 98 (14; 0%) | 94 (14; 0%) |
 | `key_cabinet` | 1200 | 14 | 99 (14; 0%) | 105 (15; 0%) | 103 (14; 0%) |
-| `exam_lock` | 1600 | 15 | 109 (15; 0%) | — | — |
+| `exam_lock` | 1600 | 15 | 109 (15; 0%) | 116 (16; 0%) | 123 (16; 0%) |
 
 Komórka: mediana numeru zlecenia, po którym przedmiot jest kupiony (rozdział; odsetek karier, w których kupiono go do końca rozdz. 12; — = mediana: nie kupiony). Cel D-71: przeciętny gracz kupuje większość do końca rozdz. 12, staranny wszystko, a najdroższa półka zostaje celem na końcówkę. D-127: to samo dla przedmiotów z rozdz. 13+ na koniec kariery (staranny kupuje komplet, pozostałym zostaje najdroższy).
 
@@ -412,6 +432,7 @@ Komórka: mediana numeru zlecenia, po którym przedmiot jest kupiony (rozdział;
 | 13 | 10 | 1340 | 1598 / 1468 / 1378 | 1300 / 1305 / 1310 | 928 / 1456 / 654 | 12 / 11 / 11 |
 | 14 | 10 | 1465 | 1777 / 1602 / 1506 | 1900 / 1921 / 1918 | 792 / 960 / 276 | 14 / 13 / 13 |
 | 15 | 10 | 1515 | 1812 / 1653 / 1554 | 1618 / 1291 / 1605 | 991 / 1210 / 265 | 15 / 14 / 14 |
+| 16 | 10 | 1640 | 1959 / 1790 / 1671 | 0 / 1609 / 1698 | 2949 / 1388 / 319 | 15 / 15 / 15 |
 
 Rozdział, w którym „wydane” spada do kosztu napraw, a „monety na koniec” rosną o cały dochód, to rozdział bez celu dla monet: wszystkie narzędzia i całe wyposażenie są już kupione.
 
