@@ -14,12 +14,10 @@ const PLACES := ["apartment", "gate", "cellar", "locker", "workshop", "kiosk", "
 const TIMES := ["day", "evening", "night"]
 const CARDS := ["id", "lease", "manager", "witness", "institution", "invoice", "receipt", "deed", "inheritance", "resolution",
 	"letter", "photo", "address_app"]
-## Tiers each lockcore family really has (lockcore/src/families/*: min_tier/max_tier; `replay_tool record` says
-## "<family> has tiers a..b"). The game clamps a job's tier silently, so a tier outside the range would promise
-## a harder lock than the one played, and it stopped the QA career's feel/clumsy profiles.
-const LOCKCORE_TIERS := {"pin_tumbler": [2, 7], "warded": [1, 2], "wafer": [1, 3], "lever": [3, 5], "lever_detector": [5, 6],
-	"dial_safe": [1, 3], "combo": [1, 4], "magnetic": [1, 2], "dimple": [1, 3], "disc_detainer": [1, 3], "egyptian": [1, 2],
-	"time_lock": [1, 2], "axial_slider": [1, 3]}
+## Tiers each lockcore family really has: lockcore/tiers.json (D-118), read through LockcoreTiers
+## (tests/lockcore_tiers.gd), no copy here (D-120). The game clamps a job's tier silently, so a tier outside
+## the range would promise a harder lock than the one played.
+const LockcoreTiers := preload("res://tests/lockcore_tiers.gd")
 ## The highest tier of each family among the chapter 13 locks (families it did not use: 0).
 const CH13_TOP_TIER := {"warded": 2, "wafer": 2, "lever": 3, "egyptian": 2, "disc_detainer": 3, "magnetic": 2, "dial_safe": 3,
 	"pin_tumbler": 4}
@@ -96,6 +94,9 @@ func test_career_has_103_jobs_in_14_chapters() -> void:
 func test_ten_jobs_follow_the_spec() -> void:
 	var jobs := _chapter_jobs()
 	assert_eq(jobs.size(), 10)
+	var tiers: Dictionary = LockcoreTiers.ranges()
+	if DirAccess.dir_exists_absolute(LockcoreTiers.path().get_base_dir()):
+		assert_gt(tiers.size(), 10, "lockcore/tiers.json read")
 	var families := {}
 	var refusals := 0
 	var orders := []
@@ -117,8 +118,10 @@ func test_ten_jobs_follow_the_spec() -> void:
 		# the curve after chapter 13 (docs/research/difficulty-curve-2026-11.md): no cliff tiers
 		assert_false(fam == "lever_detector" and int(j["tier"]) >= 6, "%s: lever_detector t6 stays out of the jobs" % jid)
 		assert_false(fam == "pin_tumbler" and int(j["tier"]) >= 7, "%s: pin_tumbler t7 stays out of the jobs" % jid)
-		var tiers: Array = LOCKCORE_TIERS[fam]
-		assert_between(int(j["tier"]), int(tiers[0]), int(tiers[1]), "%s: a tier lockcore has for %s" % [jid, fam])
+		if not tiers.is_empty():  # {} only in an exported pack, where lockcore/ is not reachable
+			assert_has(tiers, fam, "%s: %s is a lockcore family" % [jid, fam])
+			var rng: Array = tiers.get(fam, [1, 1])
+			assert_between(int(j["tier"]), int(rng[0]), int(rng[1]), "%s: a tier lockcore has for %s" % [jid, fam])
 		assert_has(PLACES, String(j["place"]), jid)
 		assert_has(TIMES, String(j["time"]), jid)
 		assert_has(JobRun.VERIFY_KINDS, String(j["verify_kind"]), jid)
