@@ -8,8 +8,8 @@ extends "res://scripts/lock/lock_job.gd"
 ##
 ## Family sub-events arrive as their nearest base event (`kind`), with `sub` for the detail:
 ## dial_safe safe.detent / safe.fence_bounce = contact, safe.pickup = bind, safe.fence_drop = set;
-## combo combo.detent = contact, combo.slip = overset. Detent ticks are played quieter, the rest
-## through the base event's sound and haptic.
+## combo combo.detent = contact, combo.slip = overset. LockFeel (res://data/lock_feel.json, D-130)
+## gives the detents, the pickup and the fence drop their own sound and haptic level.
 
 var fam_control: RefCounted  # DialSafeControl | ComboControl
 
@@ -54,8 +54,8 @@ func _physics_process(delta: float) -> void:
 		input = hints.drive(input, session.describe(), delta)  # H4: the master hand (T42 lessons)
 	var events: Array = session.step(input["tension"], input["pick_depth"], input["pick_lift"])
 	_last_input = input
+	LockFeel.play_step(family, events, fb_gain)  # D-130 (detents, pickup, fence drop: lock_feel.json)
 	for e in events:
-		play_event(e, fb_gain)
 		view.on_event(e)
 		Events.lock_event.emit(e)
 		if e["kind"] == &"open":
@@ -74,26 +74,6 @@ func _physics_process(delta: float) -> void:
 ## replay of LockcoreSession.solve) already speaks lockcore's frame, so the thumb mapping is skipped.
 static func is_raw_source(s: Node) -> bool:
 	return s != null and s.get("rows") is Array
-
-
-## One lockcore event through the existing sounds and haptics (nearest base event).
-static func play_event(e: Dictionary, gain: float = 1.0) -> void:
-	var kind: StringName = e["kind"]
-	var sub := int(e.get("sub", 0))
-	var vol := 0.0 if gain <= 1.0 else 2.0
-	var pitch := 1.0
-	var inten := minf(float(e["intensity"]) * gain, 1.0)
-	if kind == &"contact" and sub == 1:  # safe.detent / combo.detent: one tick per division
-		vol -= 8.0
-		pitch = 1.25
-		inten *= 0.6
-	elif kind == &"bind" and sub == 2:   # safe.pickup: a lower "tok" for wheels nearer the dial
-		pitch = 0.85 + 0.05 * clampi(int(e.get("element", 0)), 0, 4)
-	elif kind == &"set" and sub == 3:    # safe.fence_drop: a heavy fall
-		pitch = 0.7
-		inten = 1.0
-	Haptics.play(kind, inten, e["material"])
-	Sfx.play(kind, e["material"], vol, pitch)
 
 
 # ------------------------------------------------------------------ screenshots / tests

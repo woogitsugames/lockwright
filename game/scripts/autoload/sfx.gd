@@ -7,7 +7,16 @@ extends Node
 
 const EVENTS := [&"contact", &"bind", &"near_shear", &"set", &"false_set", &"counter_rotate", &"overset", &"drop", &"stress", &"break", &"wear", &"gate_align", &"detector_trip", &"open"]
 const MATERIALS := [&"brass", &"steel", &"iron", &"wood"]
+## Family sub-event clicks of audio/v2 (README "Zdarzenia dodatkowe"), played through LockFeel
+## (res://data/lock_feel.json). Not every one ships in all four materials: see material_for().
+const EXTRA_EVENTS := [&"spring", &"lever", &"lever_fall", &"ratchet", &"ring_detent", &"ward_scrape"]
 const LOOPS := [&"tension_resistance", &"pick_drag"]
+## D-130 variation of one-shot lock sounds, so a clip heard twice in a row never sounds stamped:
+## the same variant is not picked twice running, pitch moves by at most +-3 %, level by +-0.75 dB.
+const PITCH_JITTER := 0.03
+const GAIN_JITTER_DB := 0.75
+## Order in which another material stands in when a sound has no clip in the asked one.
+const MATERIAL_FALLBACK := [&"brass", &"steel", &"iron", &"wood"]
 const POOL_SIZE := 12
 const VARIANTS := 6  # FEEL F-09: audio/v2 ships 6 variants
 const SFX_ROOT := "res://assets/audio/sfx"
@@ -62,6 +71,10 @@ var _music: AudioStreamPlayer = null
 var _music_name: StringName = &""
 var _voice_duck_tween: Tween = null
 var _busy: Array[AudioStreamPlayer] = []  # pool players in use, oldest first (voice stealing)
+var _last_variant: Dictionary = {}  # "event/material" -> variant played last (no immediate repeat)
+var _has_material: Dictionary = {}  # "event/material" -> bool (a clip exists)
+## Tests: the last one-shot lock sound as played {event, material, variant, pitch, volume_db, native}.
+var last_play: Dictionary = {}
 
 
 func _ready() -> void:
@@ -86,12 +99,13 @@ func _ready() -> void:
 ## _process() collects them a few per frame and attaches the native bridge (N-03) once all are in.
 ## A click asked for before that loads on the spot (_cached), so no sound is ever dropped.
 func _preload_lock() -> void:
-	for event in EVENTS + LOOPS:
+	for event in EVENTS + EXTRA_EVENTS + LOOPS:
 		for material in MATERIALS:
 			for n in range(1, VARIANTS + 1):
 				var path := "%s/%s/%s_%d.wav" % [SFX_ROOT, event, material, n]
 				if ResourceLoader.exists(path):
 					var key := "%s/%s/%d" % [event, material, n]
+					_has_material["%s/%s" % [event, material]] = true
 					_warm[key] = path
 					ResourceLoader.load_threaded_request(path)
 	set_process(true)
@@ -296,7 +310,7 @@ func _preload_native() -> int:
 
 func _native_candidates() -> Dictionary:
 	var out := {}
-	for event in EVENTS:
+	for event in EVENTS + EXTRA_EVENTS:
 		for material in MATERIALS:
 			for n in range(1, VARIANTS + 1):
 				var path := "%s/%s/%s_%d.wav" % [SFX_ROOT, event, material, n]
@@ -305,8 +319,43 @@ func _native_candidates() -> Dictionary:
 	return out
 
 
-func _stream_for(event: StringName, material: StringName) -> AudioStream:
-	var n := _rng.randi_range(1, VARIANTS)
+## The material a sound is played in: the asked one when a clip exists, else the first of
+## MATERIAL_FALLBACK that has one (the sub-event clicks ship in two or three materials only).
+func material_for(event: StringName, material: StringName) -> StringName:
+	if _has_material.has("%s/%s" % [event, material]):
+		return material
+	for m in MATERIAL_FALLBACK:
+		if _has_material.has("%s/%s" % [event, m]):
+			return m
+	return material
+
+
+## A variant 1..count that differs from `last` (0 = none played yet) whenever count > 1.
+static func pick_variant(rng: RandomNumberGenerator, last: int, count: int) -> int:
+	if count <= 1:
+		return 1
+	if last < 1 or last > count:
+		return rng.randi_range(1, count)
+	var n := rng.randi_range(1, count - 1)
+	return n + 1 if n >= last else n
+
+
+## {pitch, gain_db}: the small random offsets of one one-shot (bounds: PITCH_JITTER, GAIN_JITTER_DB).
+static func vary(rng: RandomNumberGenerator) -> Dictionary:
+	return {"pitch": rng.randf_range(1.0 - PITCH_JITTER, 1.0 + PITCH_JITTER),
+		"gain_db": rng.randf_range(-GAIN_JITTER_DB, GAIN_JITTER_DB)}
+
+
+func _next_variant(event: StringName, material: StringName) -> int:
+	var key := "%s/%s" % [event, material]
+	var n := pick_variant(_rng, int(_last_variant.get(key, 0)), VARIANTS)
+	_last_variant[key] = n
+	return n
+
+
+func _stream_for(event: StringName, material: StringName, n: int = 0) -> AudioStream:
+	if n <= 0:
+		n = _rng.randi_range(1, VARIANTS)
 	var key := "%s/%s/%d" % [event, material, n]
 	var s := _cached(key)
 	if s != null:
@@ -321,14 +370,22 @@ func play(event: StringName, material: StringName = &"brass", volume_db: float =
 		duck_ambience(-12.0, 300.0)
 	elif not LOOPS.has(event):
 		duck_ambience(-6.0, 50.0)
+	material = material_for(event, material)
+	var n := _next_variant(event, material)
+	# D-130: the same small variation on both paths (the native bridge used to play every click at
+	# exactly the asked pitch and level)
+	var v := vary(_rng)
+	var out_pitch := pitch * float(v["pitch"])
+	var out_db := volume_db + float(v["gain_db"])
+	last_play = {"event": event, "material": material, "variant": n, "pitch": out_pitch, "volume_db": out_db, "native": false}
 	# R-20: L2 clicks prefer the native low-latency bridge (Oboe/AAudio, AVAudioEngine);
 	# AudioServer pool is the fallback (and the only path on desktop/editor).
 	if _native_enabled:
-		var n := _rng.randi_range(1, VARIANTS)
-		var gain := db_to_linear(volume_db) * float(Settings.get_value("volume_sfx")) * float(Settings.get_value("volume_master"))
-		if _play_native("%s/%s/%d" % [event, material, n], gain, pitch):
+		var gain := db_to_linear(out_db) * float(Settings.get_value("volume_sfx")) * float(Settings.get_value("volume_master"))
+		if _play_native("%s/%s/%d" % [event, material, n], gain, out_pitch):
+			last_play["native"] = true
 			return
-	var stream := _stream_for(event, material)
+	var stream := _stream_for(event, material, n)
 	if stream == null:
 		return
 	if not LOOPS.has(event):
@@ -338,10 +395,19 @@ func play(event: StringName, material: StringName = &"brass", volume_db: float =
 		return
 	p.stream = stream
 	p.bus = "Sfx"
-	p.volume_db = volume_db + linear_to_db(Settings.get_value("volume_sfx") * Settings.get_value("volume_master"))
-	p.pitch_scale = pitch * _rng.randf_range(0.97, 1.03)
+	p.volume_db = out_db + linear_to_db(Settings.get_value("volume_sfx") * Settings.get_value("volume_master"))
+	p.pitch_scale = out_pitch
 	p.play()
 	p.finished.connect(_on_player_finished.bind(p), CONNECT_ONE_SHOT)  # R-26
+
+
+## A one-shot lock sound `delay_ms` later (the second knock of a false gate, the levers falling
+## after a detector reset). The timer stops with the tree, so a paused game does not click.
+func play_delayed(event: StringName, material: StringName, delay_ms: int, volume_db: float = 0.0, pitch: float = 1.0) -> void:
+	if delay_ms <= 0 or not is_inside_tree():
+		play(event, material, volume_db, pitch)
+		return
+	get_tree().create_timer(delay_ms / 1000.0, false).timeout.connect(play.bind(event, material, volume_db, pitch))
 
 
 func _on_player_finished(p: AudioStreamPlayer) -> void:

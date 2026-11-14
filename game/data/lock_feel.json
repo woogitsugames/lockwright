@@ -1,0 +1,130 @@
+{
+  "schema": "lockwright.feel/1",
+  "source": "docs/FEEL.md §2-3, docs/DESIGN.md §1, docs/handoff/LOCK-FEEL-2026-11-13.md (D-130)",
+  "note": "Runtime routing of lock events to sound, haptics and announcements (LockFeel). Haptic patterns themselves stay in haptics_patterns.json; a sub-event plays a base pattern at its own intensity, because the native bridges know base events only (D-81).",
+  "intensity_gain": {
+    "note": "Sound level follows the event intensity for these base kinds: 0 dB at intensity 1, floor_db at 0. Essential clicks (set, false_set, overset, open, break, detector_trip) always play at full level.",
+    "floor_db": -6.0,
+    "kinds": ["contact", "bind", "gate_align", "counter_rotate", "drop"]
+  },
+  "fold": {
+    "note": "Two events of one physics step that are one physical moment: the second is folded into the first (FEEL §3.5, §3.7). The folded event keeps its sound as a quiet layer and sends no haptic, so two transients never land in the same millisecond.",
+    "gate_align_under_set_db": -6.0
+  },
+  "open": {
+    "note": "Open payoff timeline, ms from the open event. The open clip has its cam at ~300 ms and the bolt at ~380 ms, the haptic click lands at 300 ms: the picture holds, then throws in step with them. The screen stays on the open lock for payoff_ms before it moves on.",
+    "hold_ms": 60,
+    "throw_ms": 220,
+    "payoff_ms": 850
+  },
+  "motion": {
+    "note": "Event micro-motion, all within DESIGN §1 (100-250 ms, out-cubic, no overshoot).",
+    "set_nudge_ms": 200,
+    "drop_stagger_ms": 40,
+    "drop_fall_ms": 120,
+    "break_recoil_ms": 120
+  },
+  "subs": {
+    "pin.serration": {
+      "sounds": [{"id": "ratchet", "gain_db": -6.0}],
+      "haptic": "contact", "haptic_intensity": 0.6,
+      "announce": false, "caption": "a11y.sfx.serration", "min_gap_ms": 30
+    },
+    "pin.spring_bounce": {
+      "sounds": [{"id": "spring"}],
+      "haptic": "contact", "haptic_intensity": 0.4,
+      "announce": false, "caption": ""
+    },
+    "wafer.rattle": {
+      "sounds": [{"id": "contact", "gain_db": -4.0, "pitch": 1.08}],
+      "haptic": "contact", "haptic_intensity": 0.33,
+      "announce": false, "caption": "a11y.sfx.wafer_rattle", "min_gap_ms": 160
+    },
+    "time.rattle": {
+      "sounds": [{"id": "contact", "gain_db": -4.0, "pitch": 1.08}],
+      "haptic": "contact", "haptic_intensity": 0.33,
+      "announce": false, "caption": "", "min_gap_ms": 160
+    },
+    "time.tick": {
+      "sounds": [{"id": "ratchet", "gain_db": -9.0, "pitch_cycle": [1.1, 0.94]}],
+      "haptic": "contact", "haptic_intensity": 0.5,
+      "announce": false, "caption": ""
+    },
+    "wood.creak": {
+      "sounds": [{"id": "stress", "material": "wood", "pitch": 0.8}],
+      "haptic": "stress",
+      "announce": true, "caption": "a11y.sfx.wood_creak", "min_gap_ms": 160
+    },
+    "ward.scrape": {
+      "sounds": [{"id": "ward_scrape", "gain_db": -4.0}],
+      "haptic": "contact", "haptic_intensity": 0.5,
+      "announce": false, "caption": "a11y.sfx.ward_scrape", "min_gap_ms": 120
+    },
+    "lever.false_gate": {
+      "sounds": [{"id": "lever_fall", "gain_db": -2.0, "delay_ms": 40}],
+      "haptic": "",
+      "announce": false, "caption": ""
+    },
+    "slider.false_notch": {
+      "sounds": [{"id": "lever_fall", "gain_db": -2.0, "pitch": 1.12, "delay_ms": 40}],
+      "haptic": "",
+      "announce": false, "caption": ""
+    },
+    "detector.reset": {
+      "sounds": [
+        {"id": "lever_fall", "gain_db": -3.0, "delay_ms": 120},
+        {"id": "lever_fall", "gain_db": -4.0, "delay_ms": 200},
+        {"id": "lever_fall", "gain_db": -5.0, "delay_ms": 260}
+      ],
+      "haptic": "drop", "haptic_intensity": 0.6,
+      "announce": true, "caption": "a11y.sfx.drop"
+    },
+    "ring.detent": {
+      "sounds": [{"id": "ring_detent", "gain_db": -10.0}],
+      "haptic": "contact", "haptic_scale": 0.6,
+      "announce": false, "caption": "", "min_gap_ms": 40
+    },
+    "combo.detent": {
+      "sounds": [{"id": "ring_detent", "gain_db": -10.0, "pitch": 1.1}],
+      "haptic": "contact", "haptic_scale": 0.6,
+      "announce": false, "caption": "", "min_gap_ms": 40
+    },
+    "disc.detent": {
+      "sounds": [{"id": "ring_detent", "gain_db": -10.0, "pitch": 0.92}],
+      "haptic": "contact", "haptic_scale": 0.6,
+      "announce": false, "caption": "", "min_gap_ms": 40
+    },
+    "safe.detent": {
+      "sounds": [{"id": "ring_detent", "material": "steel", "gain_db": -10.0, "pitch": 0.85}],
+      "haptic": "contact", "haptic_scale": 0.6,
+      "announce": false, "caption": "", "min_gap_ms": 40
+    },
+    "safe.pickup": {
+      "sounds": [{"id": "bind", "pitch": 0.85, "pitch_per_element": 0.05}],
+      "haptic": "bind",
+      "announce": true, "caption": "a11y.sfx.bind"
+    },
+    "safe.fence_drop": {
+      "sounds": [{"id": "set", "pitch": 0.7}, {"id": "lever_fall", "gain_db": -3.0, "pitch": 0.8, "delay_ms": 50}],
+      "haptic": "set", "haptic_intensity": 1.0,
+      "announce": true, "caption": "a11y.sfx.set"
+    }
+  },
+  "routes": {
+    "pin_tumbler": {"false_set.1": "pin.serration", "contact.2": "pin.spring_bounce"},
+    "dimple": {"false_set.1": "pin.serration", "contact.2": "pin.spring_bounce"},
+    "magnetic": {"false_set.1": "pin.serration", "contact.2": "pin.spring_bounce"},
+    "wafer": {"contact.1": "wafer.rattle"},
+    "time_lock": {"contact.1": "time.rattle", "contact.2": "time.tick"},
+    "wooden_pin": {"stress.1": "wood.creak"},
+    "egyptian": {"stress.1": "wood.creak"},
+    "warded": {"contact.1": "ward.scrape"},
+    "lever": {"false_set.1": "lever.false_gate"},
+    "lever_detector": {"false_set.1": "lever.false_gate", "drop.2": "detector.reset"},
+    "axial_slider": {"false_set.1": "slider.false_notch"},
+    "ring_combo": {"contact.1": "ring.detent"},
+    "combo": {"contact.1": "combo.detent"},
+    "disc_detainer": {"contact.1": "disc.detent"},
+    "dial_safe": {"contact.1": "safe.detent", "bind.2": "safe.pickup", "set.3": "safe.fence_drop"}
+  }
+}

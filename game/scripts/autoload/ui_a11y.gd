@@ -229,6 +229,8 @@ func _on_lock_event(e: Dictionary) -> void:
 	var kind := StringName(e.get("kind", &""))
 	if not LOCK_LINES.has(kind):
 		return
+	if e.get("announce", true) == false:
+		return  # D-130: a sub-event that is not its base state (a serration tick is not a false set)
 	var k := "%s/%d" % [kind, int(e.get("element", -1))]
 	var now := Time.get_ticks_msec()
 	if _last_said.has(k) and now - int(_last_said[k]) < int(float(REPEAT_S.get(kind, 0.25)) * 1000.0):

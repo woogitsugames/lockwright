@@ -222,6 +222,11 @@ func test_real_run_lock_opens_and_counts() -> void:
 					break
 	assert_ne(depth_seen, 0.5, "the pick follows the right thumb")
 	assert_true(lock.session.is_open(), "the run lock opens with plain thumb input")
+	assert_false(opened[0], "D-130: the open lock stays on screen for the payoff")
+	for f in int(LockFeel.open_payoff_s() * 120.0) + 12:
+		if opened[0]:
+			break
+		await get_tree().physics_frame
 	assert_true(opened[0], "lock_opened emitted")
 	assert_eq(Events.last_target, RUN_LOOP)
 	assert_eq(RunState.n, 1)

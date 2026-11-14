@@ -67,7 +67,11 @@ func enabled() -> bool:
 
 
 static func caption_key(e: Dictionary) -> StringName:
-	var nm := String(e.get("name", ""))
+	# D-130: LockFeel tags routed sub-events with their caption key ("" = no caption): lockcore's own
+	# `name` is "<kind>.<sub>" ("false_set.1"), so the family names below never matched it
+	if e.has("caption") and e["caption"] is String:
+		return StringName(e["caption"])
+	var nm := String(e.get("feel", e.get("name", "")))
 	if KEYS.has(nm):
 		return KEYS[nm]
 	return KEYS.get(String(e.get("kind", "")), &"")

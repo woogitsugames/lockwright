@@ -58,6 +58,8 @@ var control = null  # WardedControl | DetectorControl
 var hints: TutorialHints
 var fb_gain := 1.0  # ONBOARDING §4: S1 ×1.5, S2 ×1.3, S3 ×1.15
 var _open_pending := -1.0
+## D-130: seconds the open lock stays on screen before the game moves on (0 = at once; tests).
+var open_payoff_s := LockFeel.open_payoff_s()
 # N-58: quiet contact / spring cues while lifting with no tension
 var _cue_lift := 0.0
 var _cue_peak := 0.0
@@ -404,9 +406,8 @@ func _physics_process(delta: float) -> void:
 	_last_input = input
 	if Practice.active():
 		_note_practice(events)  # before the loop: an "open" event leaves the practice run at once
+	LockFeel.play_step(family, events, fb_gain)  # D-130: sub-events, folds, level from intensity
 	for e in events:
-		Haptics.play(e["kind"], minf(e["intensity"] * fb_gain, 1.0), e["material"])
-		Sfx.play(e["kind"], e["material"], 0.0 if fb_gain <= 1.0 else 2.0, 1.0)
 		view.on_event(e)
 		Events.lock_event.emit(e)
 		if e["kind"] == &"open":
@@ -469,6 +470,11 @@ func _on_open() -> void:
 	# tutorial: let the plug turn and the praise show before the stage screen (N-61 step 6)
 	if coach != null and coach.guided:
 		_open_pending = 1.8
+	elif open_payoff_s > 0.0:
+		# D-130: the screen used to leave in the very step the lock opened, so the plug's turn, the
+		# bolt in the open clip (~380 ms) and the haptic click (300 ms) played over the next screen.
+		# The open lock stays for the payoff, input ignored (the session is finished).
+		_open_pending = open_payoff_s
 	else:
 		_lock_opened()
 
