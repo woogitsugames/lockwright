@@ -53,7 +53,7 @@ lockcore/build/replay_tool record ring_combo 3 11 out.replay.json --feel   # nag
 lockcore/build/lockcore_tests fuzz                          # fuzzing: 100k losowych kroków na rodzinę (pod ASan: build-asan)
 lockcore/build/verify_seeds --seeds 3000 --feel 0 --heavy-over 250   # bot „ciężkiej ręki” (D-118, raport pęknięć narzędzi; domyślnie +0,20)
 lockcore/build/verify_seeds --tiers > lockcore/tiers.json   # zakresy tierów rodzin; czyta je data/tools/validate.py (tier zlecenia w zakresie)
-python3 tools/build_content_packs.py --check               # paczki treści (D-112): walidacja game/packs/<id>/; --sync, --godot <godot> buduje pck
+python3 tools/build_content_packs.py --check               # paczki treści (D-112, D-131: rozdz. 13–16 = game/packs/ch13…ch16): walidacja; --sync, --godot <godot> buduje pck
 ```
 
 ## Mapa dokumentów

@@ -1,6 +1,7 @@
 # Kwestie czekające na nagranie (lektor AI, D-57 / D-100)
 
-Zlecenia z polem `"voice_pending": true` w `game/data/jobs/*.json` nie mają jeszcze nagranych kwestii (`*.line.N`,
+Zlecenia z polem `"voice_pending": true` (dziś rozdziały 13–16, od D-131 w paczkach treści:
+`game/packs/ch13…ch16/jobs/*.json`; w bazie byłyby w `game/data/jobs/*.json`) nie mają jeszcze nagranych kwestii (`*.line.N`,
 `*.after.N`). Gra pokazuje wtedy same napisy: rozmowa na przyjeździe wyświetla wszystkie kwestie od razu
 (`DialoguePlayer`: brak klipu = brak odtwarzania), a „dzień po” przechodzi po tapnięciu (`DayAfter._play_clip`).
 Reakcje bez słów (S03) działają, bo wszystkie postacie rozdziałów 13–16 mają już głos.

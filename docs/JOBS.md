@@ -139,7 +139,7 @@ Zasady:
 - Rosół, piekarnik czy wanna to **liczniki fabularne**: zmieniają dialog i najwyżej napiwek, nigdy nie przegrywasz przez nie poziomu. Domyślnie są włączone, a ustawienie „Spokojne zlecenia” je wyłącza.
 
 ### 2.7 Co sprawdzamy: lokal, rzecz czy zgoda (`verify_kind`, D-103)
-Przycisk na przyjeździe (`job.verify`) i tytuł weryfikacji (`verify.title`) mówią, **co** ślusarz sprawdza — zależnie od tego, co otwiera. Pole danych `verify_kind` w każdym `game/data/jobs/*.json`:
+Przycisk na przyjeździe (`job.verify`) i tytuł weryfikacji (`verify.title`) mówią, **co** ślusarz sprawdza — zależnie od tego, co otwiera. Pole danych `verify_kind` w każdym `game/data/jobs/*.json` (rozdziały 13+: `game/packs/<id>/jobs/*.json`, D-131):
 
 | `verify_kind` | Kiedy | PL | EN | DE | FR | ES |
 |---|---|---|---|---|---|---|
@@ -336,7 +336,7 @@ Miasto jest **fikcyjne**, polskie i średniej wielkości (robocza nazwa: **Zamec
 
 Format: **id** · tytuł PL / EN · klient · sytuacja · scena (PL, EN) · zamek (rodzina, tier) · weryfikacja · presja · nagroda · rozdział, dzielnica · ton.
 Tier: T1 wprowadzenie, T2 rozwinięcie, T3 mistrzowski. Nagrody w monetach podane orientacyjnie, według wzoru z rozdz. 3.
-T1–T3 to skala fabularna tego dokumentu (i cennika). Pole `tier` w `game/data/jobs/*.json` to **tier lockcore** danej
+T1–T3 to skala fabularna tego dokumentu (i cennika). Pole `tier` w `game/data/jobs/*.json` (i w paczkach `game/packs/<id>/jobs/*.json`) to **tier lockcore** danej
 rodziny i musi mieścić się w jej zakresie z `lockcore/tiers.json` (D-118, pilnuje tego `data/tools/validate.py`):
 np. „dźwigniowy, T1” to w danych `lever` 3, „zapadkowy, T3” to `warded` 2, „dźwigniowy z detektorem, T2” to `lever_detector` 5.
 

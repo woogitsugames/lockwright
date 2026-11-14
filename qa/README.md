@@ -1,6 +1,8 @@
 # qa/ — automat kariery (sesja C, etap 3, zadanie 3)
 
-Bot przechodzi całą karierę w Godocie headless: samouczek, wszystkie zlecenia z `data/jobs` (przez listę → przyjazd →
+Bot przechodzi całą karierę w Godocie headless: samouczek, wszystkie zlecenia — rozdziały 1–12 z `data/jobs` i rozdziały
+13+ z paczek treści (D-131: `run_career.sh` buduje paczki z kopii gry i usuwa ich foldery, bot zaczyna bez nich i pobiera
+każdy rozdział tabliczką „Pobierz” na liście zleceń; `QA_PACKS=bundled` zostawia foldery jak w edytorze) (przez listę → przyjazd →
 weryfikację → zamek → zapłatę), zakupy w warsztacie i gablotę. Zamki rozwiązuje skryptowany bot lockcore
 (`LockcoreSession.solve(family, seed, tier)` z GDExtension), którego wejścia są podawane scenie zamka przez podmieniony
 `InputSampler` — jeden wiersz na krok fizyki 120 Hz, czyli dokładnie tą samą drogą co dotyk gracza.
