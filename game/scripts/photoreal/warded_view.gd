@@ -248,7 +248,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	var theta := float(vm.get("core_rotation", 0.0))
 	var tension := float(vm.get("tension", input.get("tension", 0.0)))
 	_stress = clampf(float(vm.get("stress", 0.0)), 0.0, 1.0)
-	_opened = bool(vm.get("open", false)) or _opened
+	_feel_tick(vm, delta)
 	var k := 1.0 - exp(-delta / SMOOTH_S)
 	var bolt: Dictionary = els[els.size() - 1] if els.size() > 0 else {}
 	var bolt_state := String(bolt.get("state", "free"))
@@ -257,7 +257,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	var shake := 0.0
 	if _stress >= 0.6 and not UiA11y.reduce_motion():  # D-90: bend stays, tremor goes
 		shake = (_stress - 0.6) * 2.5 * sin(Time.get_ticks_msec() * 0.09)  # ≤ 1° tremor near the limit
-	_angle = lerpf(_angle, turn_deg(1.0 if _opened else theta), k)
+	_angle = _open_blend(&"angle", _angle, turn_deg(1.0)) if _opened else lerpf(_angle, turn_deg(theta), k)  # D-130 timed throw
 	var h := float(vm.get("pick_lift", input.get("pick_lift", 0.5)))
 	_reach = lerpf(_reach, reach_mm(h), k)
 	# tumbler: down on the bolt until the bit lifts it (bound → set), bolt thrown from set to open
@@ -270,7 +270,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 		lift_target = LIFT_REST + 0.3
 		dx_target = -BOLT_THROW
 	_tumb_lift = lerpf(_tumb_lift, lift_target, k)
-	_bolt_dx = lerpf(_bolt_dx, dx_target, k)
+	_bolt_dx = _open_blend(&"bolt", _bolt_dx, dx_target) if _opened else lerpf(_bolt_dx, dx_target, k)
 	# D-90 / DESIGN.md §1 stress: a still cue in the section too - the probe shaft is held back by up to
 	# STRAIN_DEG against the ward as the stress nears the limit (reads in grayscale and with reduce motion)
 	_pose_parts(shake - clampf((_stress - 0.6) / 0.4, 0.0, 1.0) * STRAIN_DEG)

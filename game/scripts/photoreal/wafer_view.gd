@@ -129,9 +129,9 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	_active_stacks = _n
 	var tension := float(vm.get("tension", input.get("tension", 0.0)))
 	_stress = clampf(float(vm.get("stress", 0.0)), 0.0, 1.0)
-	_opened = bool(vm.get("open", false)) or _opened
+	_feel_tick(vm, delta)
 	var k := 1.0 - exp(-delta / SMOOTH_S)
-	_plug_deg = lerpf(_plug_deg, _plug_target(vm, tension), k)
+	_plug_deg = _plug_step(vm, tension, k)
 	_wrench_deg = lerpf(_wrench_deg, _plug_deg + WRENCH_MAX_DEG * clampf(tension, 0.0, 1.0), k)
 	_apply_plug_and_wrench()
 	var plug := Transform3D(_plug_basis(_plug_deg), Vector3.ZERO)
@@ -170,7 +170,7 @@ func _pose_w_pick(vm: Dictionary, input: Dictionary, els: Array, k: float) -> vo
 		y = float(wafer_pose(els[idx])["dz"])
 	_pick_x = lerpf(_pick_x, x, k)
 	_pick_tip = lerpf(_pick_tip, y, k)
-	var off := Vector3(_pick_x - W_PICK_REST_X, _pick_tip - (0.6 if _broken else 0.0), 0)
+	var off := Vector3(_pick_x - W_PICK_REST_X, _pick_tip - 0.6 * break_p(), 0)
 	var plug := Transform3D(_plug_basis(_plug_deg * 0.5), Vector3.ZERO)
 	for nm in PARTS:
 		if _by.has(nm):

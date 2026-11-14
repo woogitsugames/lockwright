@@ -235,7 +235,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	var k := 1.0 - exp(-delta / SMOOTH_S)
 	var snap := delta >= 0.5
 	var tension := float(vm.get("tension", input.get("tension", 0.0)))
-	_opened = bool(vm.get("open", false)) or _opened
+	_feel_tick(vm, delta)
 	var pulled := tension >= 0.1 or _opened
 	_picked = int(vm.get("pick_element", -1))
 	if absf(float(input.get("pick_lift", 0.0))) > 0.0:
@@ -288,8 +288,12 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	# N-90: pulling the cable (left thumb, or the H2 chalk gesture's preview tension) takes up its slack:
 	# the plug moves out a little with the pull, so the tension reads on the lock itself, not only on the gauge
 	var plug_t := PLUG_OUT_MM * (1.0 if _opened else PLUG_SLACK * clampf(tension, 0.0, 1.0))
-	_bar_dx = bar_t if snap else lerpf(_bar_dx, bar_t, k)
-	_plug_dx = plug_t if snap else lerpf(_plug_dx, plug_t, k)
+	if _opened and not snap:  # D-130 timed throw: the bar and the plug slide out on the shared timeline
+		_bar_dx = _open_blend(&"bar", _bar_dx, bar_t)
+		_plug_dx = _open_blend(&"plug_out", _plug_dx, plug_t)
+	else:
+		_bar_dx = bar_t if snap else lerpf(_bar_dx, bar_t, k)
+		_plug_dx = plug_t if snap else lerpf(_plug_dx, plug_t, k)
 	_last_vm = vm
 	_last_input = input
 	_place_reels()
@@ -445,7 +449,7 @@ func _update_c_face(tension: float, res: float, delta: float) -> void:
 	_set_flash = maxf(_set_flash - delta / 0.2, 0.0)
 	var k := 1.0 - exp(-delta / SMOOTH_S)
 	var face := (90.0 if _opened else 0.0) + _set_flash * 1.5
-	_face.face_deg = lerpf(_face.face_deg, face, k)
+	_face.face_deg = _open_blend(&"face", _face.face_deg, face) if _opened else lerpf(_face.face_deg, face, k)
 	_face.arm_deg = lerpf(_face.arm_deg, face + PlugFace.ARM_MAX_DEG * t, k)
 	_face.bow = clampf(res, 0.0, 1.0)
 	_face.tremor = _chatter

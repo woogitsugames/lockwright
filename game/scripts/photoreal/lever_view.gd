@@ -165,7 +165,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	_active_stacks = _n
 	var tension := float(vm.get("tension", input.get("tension", 0.0)))
 	_stress = clampf(float(vm.get("stress", 0.0)), 0.0, 1.0)
-	_opened = bool(vm.get("open", false)) or _opened
+	_feel_tick(vm, delta)
 	var k := 1.0 - exp(-delta / SMOOTH_S)
 	var min_dx := 0.0
 	var idx := clampi(int(vm.get("pick_element", -1)), -1, _mesh_levers - 1)
@@ -198,7 +198,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	var det_target := DET_TRIP_DEG * (1.0 - clampf(float(vm.get("reset_progress", 0.0)), 0.0, 1.0)) if tripped else 0.0
 	_det_deg = lerpf(_det_deg, det_target, k)
 	_xf("detector", Transform3D(Basis(Vector3.BACK, deg_to_rad(_det_deg)), DET_PIVOT) * Transform3D(Basis.IDENTITY, -DET_PIVOT))
-	_bolt_dx = lerpf(_bolt_dx, dx, k)
+	_bolt_dx = _open_blend(&"bolt", _bolt_dx, dx) if _opened else lerpf(_bolt_dx, dx, k)  # D-130 timed throw
 	var bolt := Transform3D(Basis.IDENTITY, Vector3(_bolt_dx, 0, 0))
 	for nm in BOLT_NODES + ["stump"]:
 		_xf(nm, bolt)
@@ -208,7 +208,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	_xf("tension", trot)
 	_xf("tension_shaft", trot)
 	var lift := float(input.get("pick_lift", 0.0))
-	_lift_deg = lerpf(_lift_deg, (active_rot * 1.35 if idx >= 0 else minf(lift, 0.0) * 8.0) - (6.0 if _broken else 0.0), k)
+	_lift_deg = lerpf(_lift_deg, (active_rot * 1.35 if idx >= 0 else minf(lift, 0.0) * 8.0) - 6.0 * break_p(), k)
 	var depth := clampf(float(input.get("pick_depth", 0.5)), 0.0, 1.0)
 	var mid: float = LEVER_DEPTH[(_mesh_levers - 1) / 2]
 	var y0: float = LEVER_DEPTH[idx] if idx >= 0 else lerpf(LEVER_DEPTH[0], LEVER_DEPTH[_mesh_levers - 1], depth)

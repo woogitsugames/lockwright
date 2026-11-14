@@ -128,7 +128,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 		first_slot = _first_slot_for(n)
 	var k := 1.0 - exp(-delta / SMOOTH_S)
 	var snap := delta >= 0.5
-	_opened = bool(vm.get("open", false)) or _opened
+	_feel_tick(vm, delta)
 	_stress = clampf(float(vm.get("stress", 0.0)), 0.0, 1.0)
 	var tension := float(vm.get("tension", input.get("tension", 0.0)))
 	if absf(float(input.get("pick_lift", 0.0))) > 0.02:

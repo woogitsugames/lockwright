@@ -134,6 +134,12 @@ var _blanks: Array[MeshInstance3D] = []  # N-56: plugged chambers when the lock 
 var _last_vm := {}
 var _last_input := {}
 var _set_flash := 0.0                 # short plug-face nudge on each set (fb, ≤ 250 ms)
+# D-130 event micro-motion (LockFeel timings, DESIGN.md §1: 100-250 ms, out-cubic, no overshoot)
+var _open_s := -1.0                   # seconds since the lock opened (-1 = closed)
+var _open_from := {}                  # value name -> where it stood when the lock opened
+var _break_s := -1.0                  # seconds since the pick snapped (-1 = whole)
+var _fall: Array = []                 # per stack: {key, drv, t} while a dropped stack falls back
+var _shown: Array = []                # per stack: [key_bottom, driver_bottom] as last posed
 ## Tutorial / first-jobs chalk (D-53): set by the lock scene.
 var chalk_level := ChalkLayer.Level.OFF
 var chalk_gauge := false              # chalk tension scale on the wrench (S1, D-52 auto)
@@ -196,9 +202,9 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 		_set_active_stacks(n)
 	var tension: float = float(vm.get("tension", input.get("tension", 0.0)))
 	_stress = clampf(float(vm.get("stress", 0.0)), 0.0, 1.0)
-	_opened = bool(vm.get("open", false)) or _opened
+	_feel_tick(vm, delta)
 	var k := 1.0 - exp(-delta / SMOOTH_S)
-	_plug_deg = lerpf(_plug_deg, _plug_target(vm, tension), k)
+	_plug_deg = _plug_step(vm, tension, k)
 	_wrench_deg = lerpf(_wrench_deg, _plug_deg + WRENCH_MAX_DEG * clampf(tension, 0.0, 1.0), k)
 	_apply_plug_and_wrench()
 	_occ.resize(_stacks.size())
@@ -228,6 +234,71 @@ func on_event(e: Dictionary) -> void:
 			_opened = true
 		&"set":
 			_set_flash = 1.0
+		&"drop":
+			_start_drop()
+
+
+## D-130: per-frame clocks of the event micro-motion. Call first in present() (it also latches
+## `_opened`). A snapshot present (delta >= 0.5: screenshots, tests) lands every motion at once.
+func _feel_tick(vm: Dictionary, delta: float) -> void:
+	_opened = bool(vm.get("open", false)) or _opened
+	if _opened:
+		_open_s = maxf(_open_s, 0.0) + delta
+	if _broken:
+		_break_s = maxf(_break_s, 0.0) + delta
+	for f in _fall:
+		if f is Dictionary:
+			f["t"] = float(f["t"]) + delta
+
+
+## 0..1 of the opening throw (LockFeel.open_progress: a short hold, then out-cubic), 0 while closed.
+func open_p() -> float:
+	return LockFeel.open_progress(_open_s) if _opened else 0.0
+
+
+## 0..1 of the broken tool's recoil.
+func break_p() -> float:
+	return LockFeel.motion_progress(_break_s, LockFeel.motion_s("break_recoil_ms")) if _broken else 0.0
+
+
+## A value on its way from where it stood at the open event to its open `target`, on the shared
+## timeline: the picture lands with the haptic click and the cam/bolt of the open clip instead of
+## ~150 ms before them.
+func _open_blend(key: StringName, current: float, target: float) -> float:
+	if not _open_from.has(key):
+		_open_from[key] = current
+	return lerpf(float(_open_from[key]), target, open_p())
+
+
+## Plug angle for this frame: critically damped follow while picking, the timed throw once open.
+func _plug_step(vm: Dictionary, tension: float, k: float) -> float:
+	var target := _plug_target(vm, tension)
+	if _opened:
+		return _open_blend(&"plug", _plug_deg, target)
+	return lerpf(_plug_deg, target, k)
+
+
+## DESIGN.md §1 "drop": the set stacks fall back one after another (40 ms apart, ~120 ms each)
+## instead of all jumping to rest in one frame. Reduce motion keeps the instant change.
+func _start_drop() -> void:
+	if UiA11y.reduce_motion():
+		return
+	var els: Array = _last_vm.get("elements", _last_vm.get("pins", []))
+	var stagger := LockFeel.motion_s("drop_stagger_ms", 40.0)
+	_fall.resize(_stacks.size())
+	var order := 0
+	for i in mini(mini(els.size(), _stacks.size()), _shown.size()):
+		if String(els[i].get("state", "")) in ["set", "false_set"] and _shown[i] is Array:
+			_fall[i] = {"key": _shown[i][0], "drv": _shown[i][1], "t": -order * stagger}
+			order += 1
+
+
+## True while a dropped stack is still on its way down (tests).
+func is_dropping() -> bool:
+	for f in _fall:
+		if f is Dictionary:
+			return true
+	return false
 
 
 func set_lives(n: int) -> void:
@@ -688,6 +759,17 @@ func _apply_plug_and_wrench() -> void:
 func _pose_stack(i: int, el: Dictionary, default_target: float) -> void:
 	var st: Dictionary = _stacks[i]
 	var pose := PinPose.pose(el, default_target, _drv_len)
+	if i < _fall.size() and _fall[i] is Dictionary:
+		# D-130 drop cascade: blend from the pose the stack had when it was released
+		var f: Dictionary = _fall[i]
+		var u := LockFeel.motion_progress(float(f["t"]), LockFeel.motion_s("drop_fall_ms"))
+		pose["key_bottom"] = lerpf(float(f["key"]), float(pose["key_bottom"]), u)
+		pose["driver_bottom"] = maxf(lerpf(float(f["drv"]), float(pose["driver_bottom"]), u), float(pose["key_bottom"]) + float(pose["key_len"]))
+		if u >= 1.0:
+			_fall[i] = null
+	if _shown.size() < _stacks.size():
+		_shown.resize(_stacks.size())
+	_shown[i] = [pose["key_bottom"], pose["driver_bottom"]]
 	var plug := Transform3D(_plug_basis(_plug_deg), Vector3.ZERO)
 	# key pin: e_key mesh, scaled about its tip to the cut length, moved under chamber i; turns with the plug
 	var s: float = pose["key_len"] / _key_len_mesh
@@ -740,7 +822,7 @@ func _pose_pick(vm: Dictionary, input: Dictionary, elements: Array, default_targ
 	_pick_tip = lerpf(_pick_tip, tip, k)
 	var off := Vector3(_pick_x - PICK_REST_X, _pick_tip - PICK_REST_TIP, 0.0)
 	if _broken:
-		off.y -= 0.6  # snapped: the handle drops away (HUD.md §3 "break")
+		off.y -= 0.6 * break_p()  # snapped: the handle drops away (HUD.md §3 "break"), ~120 ms
 	var plug := Transform3D(_plug_basis(_plug_deg * 0.5), Vector3.ZERO)
 	_pick.transform = plug * Transform3D(Basis.IDENTITY, off) * _rest[_pick]
 	if _pick_handle:
@@ -1136,7 +1218,7 @@ func _update_face(vm: Dictionary, tension: float, delta: float) -> void:
 	if _opened:
 		face = 90.0
 	var k := 1.0 - exp(-delta / SMOOTH_S)
-	_face.face_deg = lerpf(_face.face_deg, face, k)
+	_face.face_deg = _open_blend(&"face", _face.face_deg, face) if _opened else lerpf(_face.face_deg, face, k)
 	_face.arm_deg = lerpf(_face.arm_deg, (_face.face_deg if _opened else face) + PlugFace.ARM_MAX_DEG * t, k)
 	_face.bow = clampf(float(vm.get("tension_resistance", 0.0)), 0.0, 1.0)
 	_face.tremor = clampf((_stress - 0.6) / 0.4, 0.0, 1.0)

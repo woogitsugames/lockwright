@@ -21,6 +21,13 @@ var _ratios: Array[float] = []
 var _wind_step := 0.0  # degrees per ratchet click (0: smooth, plates without the key)
 var _letdown_s := 0.0
 const LETDOWN_S := 0.15  # one ratchet tooth back per step while the key lets the spring down
+## D-130: the pallet and the key follow with a time constant, not "20 % per present()": the picture
+## is refreshed per physics step in the editor and per rendered frame on the phone (D-88), so the
+## same motion used to be twice as slow on the device.
+const FOLLOW_S := 0.04
+var _tooth := 0        # ratchet tooth the click sits in (D-130: one click sound per tooth)
+## Tests: ratchet clicks played since start.
+var ratchet_clicks := 0
 
 
 func _ready() -> void:
@@ -42,19 +49,20 @@ func _first_slot_for(_n: int) -> int:
 
 
 func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> void:
+	var kf := 1.0 - exp(-delta / FOLLOW_S)
 	var running := float(vm.get("hold_progress", 0.0)) > 0.0 and not bool(vm.get("open", false)) or (_opened and not vm.is_empty())
 	if running and delta < 0.5:
 		_phase += delta * 0.05          # barrel: slow; the escape wheel follows at its ratio
 		_rock = 6.0 * signf(sin(Time.get_ticks_msec() * 0.0157))  # 2.5 ticks a second
 	else:
-		_rock = lerpf(_rock, 0.0, 0.2)
+		_rock = lerpf(_rock, 0.0, kf)
 	var t := clampf(float(vm.get("tension", input.get("tension", 0.0))), 0.0, 1.0)
 	var target := 25.0 * t
 	if delta >= 0.5 or _wind_step <= 0.0 or UiA11y.reduce_motion():
-		_wind = target if delta >= 0.5 or _wind_step > 0.0 else lerpf(_wind, target, 0.2)
+		_wind = target if delta >= 0.5 or _wind_step > 0.0 else lerpf(_wind, target, kf)
 		_letdown_s = 0.0
 	elif target >= _wind - 0.01:
-		_wind = lerpf(_wind, target, 0.2)  # winding: the key turns the barrel, the click drops into each tooth
+		_wind = lerpf(_wind, target, kf)  # winding: the key turns the barrel, the click drops into each tooth
 		_letdown_s = 0.0
 	else:
 		# N-97: letting go is a let-down, not a spring-back: the thumb is the key held against the spring
@@ -64,7 +72,25 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 		if _letdown_s >= LETDOWN_S:
 			_letdown_s = 0.0
 			_wind = maxf(target, snappedf(_wind, _wind_step) - _wind_step)
+	_ratchet_click(delta)
 	super.present(vm, input, delta)
+
+
+## D-130: the barrel turns in whole ratchet teeth; each tooth the click drops into (or is let back
+## over) is heard and lightly felt. Winding had a stepped picture and no sound of its own.
+func _ratchet_click(delta: float) -> void:
+	if _wind_step <= 0.0:
+		return
+	var tooth := int(round(snappedf(_wind, _wind_step) / _wind_step))
+	if tooth == _tooth:
+		return
+	var up := tooth > _tooth
+	_tooth = tooth
+	if delta >= 0.5:
+		return  # a snapshot present: no sound
+	ratchet_clicks += 1
+	Sfx.play(&"ratchet", &"brass", -8.0, 1.0 if up else 0.88)
+	Haptics.play(&"contact", 0.4, &"brass")
 
 
 func is_running() -> bool:

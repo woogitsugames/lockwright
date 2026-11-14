@@ -166,7 +166,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	var k := 1.0 - exp(-delta / SMOOTH_S)
 	var tension := float(vm.get("tension", input.get("tension", 0.0)))
 	var res := float(vm.get("tension_resistance", 0.0))
-	_opened = bool(vm.get("open", false)) or _opened
+	_feel_tick(vm, delta)
 	var hold := 1.0 if _opened else clampf(float(vm.get("hold_progress", vm.get("core_rotation", 0.0))), 0.0, 1.0)
 	var jammed := false
 	for e in els:
