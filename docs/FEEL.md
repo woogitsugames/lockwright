@@ -340,6 +340,8 @@ tyk co 60 ms limitowany do 10/s), `lever_detector` (reset 1,5–2,5 s + tyki co 
 
 ## 7. Uwagi dla sesji B (stan `feedback_director.gd` / `haptics.gd` / `sfx.gd`, tylko odczyt)
 
+> Stan na 2026-11-13 (D-130): pod-zdarzenia, złożenia kroku, dodatkowe dźwięki (uwagi 2 i 6) i oś czasu otwarcia realizuje `LockFeel` (`game/data/lock_feel.json`); macierz tego, co faktycznie gra, i lista braków: `docs/handoff/LOCK-FEEL-2026-11-13.md`.
+
 1. **Odwrócony warunek przerwania:** przy przekroczonym limicie `if priority >= 3: pop_front()` przepuszcza zdarzenia
    o *niskiej* ważności (3–15), a odrzuca `break`/`open`/`detector_trip` (1–2). Powinno być `priority <= 3`
    (`mix_rules.interrupt_priority_max`).
