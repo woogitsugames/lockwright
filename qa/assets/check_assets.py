@@ -8,7 +8,8 @@ The mappings are read from the game itself (no copies here, so the check follows
     AMBIENCES and the *_ROOT dirs
   - lock event sounds              from game/data/haptics_patterns.json (events.<id>.sfx.{id,variants})
   - one-shot sounds                from every Sfx.play_<kind>(&"name") call in game/scripts
-  - jobs                           game/data/jobs/*.json (chapters 1-12, D-71) (place, time, lines)
+  - jobs                           game/data/jobs/*.json (chapters 1-12, D-71) and game/packs/<id>/jobs/*.json
+                                   (chapters 13+, content packs, D-131) (place, time, lines)
 
     python3 qa/assets/check_assets.py [--out qa/out/assets]     -> report.md, report.json; exit 0 (findings are ⚠)
 """
@@ -74,6 +75,10 @@ def main():
             j = json.loads(f.read_text())
             j['_file'] = f'{d}/{f.name}'
             jobs.append(j)
+    for f in sorted((GAME / 'packs').glob('*/jobs/*.json')):  # D-131: chapters 13+ are content packs
+        j = json.loads(f.read_text())
+        j['_file'] = f'packs/{f.parent.parent.name}/jobs/{f.name}'
+        jobs.append(j)
 
     # 1) G07 background for every arrival (same resolution rule as job_arrival.gd::_arrival_image)
     arrivals = []

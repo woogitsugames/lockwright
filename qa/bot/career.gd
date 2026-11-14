@@ -1,6 +1,8 @@
 extends SceneTree
 ## QA career bot (session C, stage 3, task 3). Runs the game headless and plays the whole career:
-## tutorial, every job in res://data/jobs, workshop purchases, showcase. In lock scenes it feeds the
+## tutorial, every job the game lists (the base game's and, D-131, the content packs' — chapters 13+
+## are fetched through the job list's Download plate from QA_PACKS_DIR, see _fetch_pack), workshop
+## purchases, showcase. In lock scenes it feeds the
 ## inputs of lockcore's scripted bot; elsewhere it presses buttons with a per-screen policy and a generic
 ## fallback. Reports soft-locks, screens without an exit, unknown screens and timings as JSON
 ## (stdout line "QA_REPORT {...}" + user://qa_report.json). Log analysis (crashes, missing i18n keys) is
@@ -15,7 +17,7 @@ const FORWARD_NAMES := ["Continue", "Accept", "Start", "Verify", "Next", "Ok", "
 var report := {
 	"schema": "lockwright.qa/1", "jobs_total": 0, "jobs_completed": [], "tutorial_done": false,
 	"scenes": {}, "unknown_scenes": [], "softlocks": [], "dead_ends": [], "locks": [],
-	"purchases": 0, "showcase_opened": 0, "profile_expected": {}, "not_listed": [], "arrival": {}, "audio_missing": [], "decisions": 0, "sim_seconds": 0.0, "wall_seconds": 0.0, "finished": false,
+	"packs": {}, "purchases": 0, "showcase_opened": 0, "profile_expected": {}, "not_listed": [], "arrival": {}, "audio_missing": [], "decisions": 0, "sim_seconds": 0.0, "wall_seconds": 0.0, "finished": false,
 }
 var _jobs: Array = []
 var _attempts := {}          # job id -> tries
@@ -32,19 +34,62 @@ var _last_change_sim := 0.0
 
 func _initialize() -> void:
 	_t0 = Time.get_ticks_msec()
-	_load_jobs()
-	report["jobs_total"] = _jobs.size()
 	change_scene_to_file(ProjectSettings.get_setting("application/run/main_scene"))
 	_run()
 
 
+## D-131: the jobs the game can play now — the base game's and the content packs on the "phone"
+## (ContentPacks.job_paths()). Called again whenever a pack arrives.
 func _load_jobs() -> void:
-	var dir := "res://data/jobs"
-	for f in DirAccess.get_files_at(dir):
-		if f.ends_with(".json"):
-			var j: Variant = JSON.parse_string(FileAccess.get_file_as_string(dir + "/" + f))
-			if typeof(j) == TYPE_DICTIONARY:
-				_jobs.append(j)
+	_jobs = []
+	for path in _al("ContentPacks").job_paths():
+		var j: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+		if typeof(j) == TYPE_DICTIONARY:
+			_jobs.append(j)
+	report["jobs_total"] = _jobs.size()
+
+
+## D-131: chapters 13+ are content packs. qa/run_career.sh builds them from the game copy, removes
+## their source folders (as in an exported build) and passes the folder with the pck files as
+## QA_PACKS_DIR; the game's own list in the copy pins their real size and SHA-256. The bot then
+## starts the career without them and "downloads" each through the job list (a file copy instead
+## of HTTPS: pack_store.gd's base_url_override), so the download row, the hash check, the mount and
+## the rebuilt list are all the game's own code. Without QA_PACKS_DIR (a plain editor run) the
+## source folders count as part of the game and nothing is fetched.
+func _setup_packs() -> void:
+	var cp := _al("ContentPacks")
+	var dir := OS.get_environment("QA_PACKS_DIR")
+	if dir != "":
+		cp.set("base_url_override", "file://" + dir)
+	cp.connect("registry_changed", _load_jobs)
+	_load_jobs()
+	for id in cp.call("ids"):
+		report["packs"][id] = {"at_start": cp.call("state", id), "size": cp.call("pack_size", id),
+				"jobs": cp.call("job_count", id), "chapters": cp.call("chapters", id)}
+	report["packs_offered_at_start"] = (cp.call("offers") as Array).size()
+	report["jobs_at_start"] = _jobs.size()
+
+
+## Presses the Download plate of the first chapter that is not on the phone (job list). True when a
+## download is running or was started, false when there is nothing to fetch.
+func _fetch_pack() -> bool:
+	var cp := _al("ContentPacks")
+	for offer: Dictionary in cp.call("offers"):
+		var id := String(offer["pack"])
+		var st: String = cp.call("state", id)
+		if st in ["downloading", "verifying"]:
+			return true
+		if st == "update" or _attempts.get("pack:" + id, 0) >= 2:
+			continue
+		var row := current_scene.find_child("Pack_%s_%d" % [id, int(offer["chapter"])], true, false)
+		var action := row.get_node_or_null("Action") as BaseButton if row != null else null
+		if action == null or not action.is_visible_in_tree() or action.disabled:
+			continue
+		_attempts["pack:" + id] = _attempts.get("pack:" + id, 0) + 1
+		_same_press = 0  # one plate per pack: not a dead button
+		_press(action, "download pack " + id)
+		return true
+	return false
 
 
 func _jr() -> GDScript:
@@ -107,6 +152,7 @@ func _check_arrival() -> void:
 		return
 	var bg := ""
 	var portraits := []
+	var pack_art := []
 	for n in _all_nodes(current_scene):
 		if n is TextureRect and n.texture != null:
 			var path: String = n.texture.resource_path
@@ -114,6 +160,8 @@ func _check_arrival() -> void:
 				bg = path.get_file()
 			elif path.contains("/gpt/cast/"):
 				portraits.append(path.get_base_dir().get_file())
+			elif path.begins_with("res://packs/"):  # D-131: a picture that came with a downloaded chapter
+				pack_art.append(path)
 	# G09 covers the fixed cast (CLIENTS.md §3, the game's CAST_SLOT); one-off clients have no portrait by design
 	var cast: Dictionary = _cast_slots()
 	var speakers := []
@@ -127,6 +175,8 @@ func _check_arrival() -> void:
 		else:
 			episodic.append(id)
 	var rec := {"background": bg, "speakers": speakers, "episodic": episodic, "portraits": portraits}
+	if not pack_art.is_empty():
+		rec["pack_art"] = pack_art
 	if bg == "":
 		rec["problem"] = "no G07 background"
 	else:
@@ -188,13 +238,10 @@ func _check_audio() -> void:
 		if not ok:
 			missing.append({"call": "Sfx.play_%s(&\"%s\")" % [kind, name], "in": calls[c]})
 	var speakers := {}
-	for dir in ["res://data/jobs"]:
-		for f in _list_files(dir, ".json"):
-			var j: Variant = JSON.parse_string(FileAccess.get_file_as_string(f))
-			if typeof(j) == TYPE_DICTIONARY:
-				for sp in j.get("lines", []):
-					if _cast_slots().has(String(sp)):  # S03 voices exist only for the fixed cast
-						speakers[String(sp)] = true
+	for j: Dictionary in _jobs:  # the jobs playable at the start (packs fetched later reuse the same cast)
+		for sp in j.get("lines", []):
+			if _cast_slots().has(String(sp)):  # S03 voices exist only for the fixed cast
+				speakers[String(sp)] = true
 	var vroot: String = sfx.get("VOICE_ROOT")
 	var vdir: Dictionary = sfx.get("VOICE_DIR")  # N-48: shared folders (ola/krystyna -> ola_krystyna)
 	for sp in speakers:
@@ -238,6 +285,16 @@ func _finish(reason: String) -> void:
 	report["sim_seconds"] = snappedf(_sim, 0.1)
 	report["wall_seconds"] = snappedf((Time.get_ticks_msec() - _t0) / 1000.0, 0.1)
 	report["scenes"] = _visited
+	var cp := _al("ContentPacks")
+	for id in cp.call("ids"):
+		var rec: Dictionary = report["packs"].get(id, {})
+		rec["at_end"] = cp.call("state", id)
+		if cp.call("last_error", id) != "":
+			rec["error"] = cp.call("last_error", id)
+		report["packs"][id] = rec
+		if not cp.call("is_ready", id) and not cp.call("needs_update", id):
+			report["softlocks"].append({"scene": "jobs_list", "reason": "content pack %s was not installed (%s %s)" % [id, rec["at_end"], rec.get("error", "")]})
+			report["finished"] = false
 	var f := FileAccess.open("user://qa_report.json", FileAccess.WRITE)
 	if f:
 		f.store_string(JSON.stringify(report, "  "))
@@ -258,6 +315,16 @@ func _pending_jobs() -> Array:
 	return out
 
 
+## A chapter is still to be fetched through the job list (D-131).
+func _packs_to_fetch() -> bool:
+	var cp := _al("ContentPacks")
+	for offer: Dictionary in cp.call("offers"):
+		var id := String(offer["pack"])
+		if cp.call("state", id) != "update" and _attempts.get("pack:" + id, 0) < 2:
+			return true
+	return false
+
+
 # ------------------------------------------------------------------ main loop
 func _run() -> void:
 	await _wait_frames(5)
@@ -269,6 +336,7 @@ func _run() -> void:
 	report["profile"] = OS.get_environment("QA_PROFILE") if OS.get_environment("QA_PROFILE") != "" else "solver"
 	report["dark"] = OS.get_environment("QA_DARK") == "1"
 	_al("Events").connect("lock_event", _on_lock_event)
+	_setup_packs()
 	_check_audio()
 	while report["decisions"] < MAX_DECISIONS:
 		var sc := _scene_name()
@@ -510,7 +578,7 @@ func _act_ui(base: String) -> Variant:
 		"main_menu", "workshop_menu":
 			if not bool(_al("Save").get_value("tutorial_done", false)) and _visited.get("tutorial", 0) < 4:
 				return _press_named(["PlayButton", "Play", "Tutorial"], "tutorial")
-			if not _pending_jobs().is_empty():
+			if not _pending_jobs().is_empty() or _packs_to_fetch():
 				return _press_named(["JobsButton", "Jobs", "Phone"], "jobs")
 			for target in [["WorkshopButton", "Workshop", "Shop"], ["ShowcaseButton", "Showcase"], ["SettingsButton", "Settings"]]:
 				if not _done_once.has(target[0]):
@@ -523,6 +591,9 @@ func _act_ui(base: String) -> Variant:
 		"jobs_list":
 			var pending := _pending_jobs()
 			if pending.is_empty():
+				if _fetch_pack():  # D-131: the next chapter is a download
+					_last_change_sim = _sim
+					return true
 				return _press_named(["BackButton", "Back"], "no jobs left")
 			for want in pending:
 				var title: String = _al("I18n").t(want.get("i18n", {}).get("title", &"jobs.title"))
@@ -535,6 +606,9 @@ func _act_ui(base: String) -> Variant:
 				if not report["not_listed"].has(want["id"]):
 					report["not_listed"].append(want["id"])
 				_attempts[want["id"]] = 99
+			if _fetch_pack():
+				_last_change_sim = _sim
+				return true
 			return _press_named(["BackButton", "Back"], "no listed jobs left")
 		"job_arrival":
 			_check_arrival()

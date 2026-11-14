@@ -1,11 +1,16 @@
 name: content-packs
 
 # D-112 (D-99): chapters beyond the base game are downloaded on demand. This builds one data-only pck
-# per game/packs/<id>/ (tools/build_content_packs.py), publishes each as the GitHub Release
-# `content-<id>-v<version>` (version from the pack's pack.json) and commits the matching
-# game/data/content_packs.json, so the next app build pins the size and SHA-256 of exactly the
-# uploaded files. A released version is never rebuilt (pck bytes are not reproducible across
-# commits): a pack whose sources changed needs a higher `version`, or the build fails.
+# per game/packs/<id>/ (tools/build_content_packs.py). Run by hand (workflow_dispatch) it also
+# publishes each new pack version as the GitHub Release `content-<id>-v<version>` (version from the
+# pack's pack.json) and commits the matching game/data/content_packs.json, so the next app build
+# pins the size and SHA-256 of exactly the uploaded files. A released version is never rebuilt
+# (pck bytes are not reproducible across commits): a pack whose sources changed needs a higher
+# `version`, or the build fails.
+# D-131: a push only validates and builds (a dry run, the pck files are kept as a workflow artifact
+# for 7 days); publishing is a decision, so releases are made only by workflow_dispatch. Until
+# then the game's list holds the packs as pending entries (no url / sha256), which the game never
+# offers to the player.
 # Same hosting and privacy as the voice packs (voice-packs.yml): a plain HTTPS GET of a static file.
 # The URL base is configurable (input base_url or repo variable CONTENT_PACKS_BASE_URL, `{tag}` allowed).
 
@@ -79,9 +84,24 @@ jobs:
         run: |
           python3 tools/build_content_packs.py --godot "$GODOT" --import --released "$RUNNER_TEMP/released" --out "$RUNNER_TEMP/content"
           ls -l "$RUNNER_TEMP/content"
+          {
+            echo "### Content packs (${{ github.event_name == 'workflow_dispatch' && 'publishing' || 'dry run: nothing is released on a push, run this workflow by hand to publish' }})"
+            echo '```'
+            (cd "$RUNNER_TEMP/content" && ls -l *.pck 2>/dev/null && sha256sum *.pck 2>/dev/null) || echo "no new pack version to build"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Keep the built packs of a dry run (push) for inspection
+        if: github.event_name != 'workflow_dispatch' && hashFiles('game/packs/*/pack.json') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: content-packs-dry-run
+          path: ${{ runner.temp }}/content/
+          retention-days: 7
+          if-no-files-found: ignore
 
       - name: Create one release per new pack version
-        if: hashFiles('game/packs/*/pack.json') != ''
+        if: github.event_name == 'workflow_dispatch' && hashFiles('game/packs/*/pack.json') != ''
         run: |
           while read -r ID VERSION TAG; do
             [ -n "$ID" ] || continue
@@ -94,7 +114,7 @@ jobs:
           done < "$RUNNER_TEMP/packs.txt"
 
       - name: Commit the game manifest if it changed
-        if: hashFiles('game/packs/*/pack.json') != ''
+        if: github.event_name == 'workflow_dispatch' && hashFiles('game/packs/*/pack.json') != ''
         run: |
           cp "$RUNNER_TEMP/content/content_packs.json" game/data/content_packs.json
           if git diff --quiet -- game/data/content_packs.json; then

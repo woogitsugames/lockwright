@@ -2,7 +2,8 @@
 """Career economy simulator for Lockwright (Jobs mode + Continuous-mode grinding).
 
 Plain Python stdlib. Reads game/data (read only) and lockcore/BALANCE.md, simulates
-all jobs in game/data/jobs (JOBS.md order, then every later chapter by chapter / order) for three player profiles
+all jobs in game/data/jobs and in the content packs game/packs/<id>/jobs (D-112, D-131: chapters 13+; JOBS.md order,
+then every later chapter by chapter / order) for three player profiles
 under four scenarios and writes docs/ECONOMY.md.
 
     python3 tools/econ_sim.py                 # writes docs/ECONOMY.md
@@ -148,7 +149,9 @@ LOCKCORE_DIRECT = {"pin_tumbler", "wafer", "warded", "lever", "lever_detector"}
 
 def load_data():
     jobs = {}
-    for f in glob.glob(os.path.join(ROOT, "game", "data", "jobs", "*.json")):
+    # D-131: chapters 13+ are content packs; the career is the base game plus every pack
+    for f in sorted(glob.glob(os.path.join(ROOT, "game", "data", "jobs", "*.json"))) + \
+            sorted(glob.glob(os.path.join(ROOT, "game", "packs", "*", "jobs", "*.json"))):
         d = json.load(open(f, encoding="utf-8"))
         jobs[d["id"]] = d
     order = list(JOBS_MD_FAMILY)  # JOBS.md order (chapters 1-6)
@@ -478,7 +481,8 @@ def report(results, jobs, tools, prog, cont, careers, furnishings=()):
     w("# Ekonomia kariery — symulacja (tools/econ_sim.py)")
     w("")
     w(f"Wygenerowane przez `python3 tools/econ_sim.py` ({careers} karier na profil i scenariusz, "
-      "seed deterministyczny). Dane wejściowe: `game/data/jobs/*.json`, `game/data/tools.json`, "
+      "seed deterministyczny). Dane wejściowe: `game/data/jobs/*.json` i `game/packs/<id>/jobs/*.json` "
+      "(rozdziały 13+ w paczkach do pobrania, D-131), `game/data/tools.json`, "
       "`game/data/progression.json`, `lockcore/BALANCE.md`, `docs/JOBS.md`. Scenariusz C = dane gry "
       "bez zmian (ceny D-62); D = zamrożone ceny sprzed D-62 z narzędziem jako bramką zlecenia; A i B to diagnostyka starej krzywej.")
     w("")

@@ -19,6 +19,9 @@
 #   plate.webp                  plate-only jobs (no full-body cut-out of the client: everyone but Kazimierz and
 #                               Teresa): the GPU hold frame itself, no figure layer, no anchors (`hold: ""` in the data)
 # and updates the job's `anchors` in game/data/arrival_scenes.json (feet/head 0..1 per time and figure).
+# A job that lives in a content pack (D-131: chapters 13+): pass --data game/packs/<id>/arrival_scenes.json; the
+# files are then written under the scene's `dir` (game/packs/<id>/arrival/<job>/<t>/). Commit the new .import
+# files of a pack (git add -f) and raise `version` in its pack.json if the pack is already released.
 # The layers come from art/blender/arrival_composite.py --layers-out with the same settings as the reviewed
 # composites (art/renders/arrival/README.md), so plate + figure == wrong_floor_<t>_<figure>.png.
 #
@@ -147,10 +150,14 @@ def frames_from_contact(path, n=36):
 
 
 def export_job(o, job, data):
-    cfg = JOBS[job]; dst = os.path.join(ROOT, 'game', 'assets', 'arrival', job)
+    cfg = JOBS[job]
     if 'job.' + job not in data['scenes']:
         sys.exit('add job.%s to %s first (dir, times, hold, steps, ...)' % (job, o.data))
     scene = data['scenes']['job.' + job]; anchors = scene.setdefault('anchors', {})
+    # the files go where the scene's `dir` points: game/assets/arrival/<job>, or, for a job of a content pack
+    # (D-112/D-131: --data game/packs/<id>/arrival_scenes.json), game/packs/<id>/arrival/<job>
+    res_dir = str(scene.get('dir', 'res://assets/arrival/' + job))
+    dst = os.path.join(ROOT, 'game', *res_dir[len('res://'):].split('/'))
     tmp = tempfile.mkdtemp(prefix='arrival_export_')
     for t in (o.times or list(cfg)):
         td = os.path.join(dst, t)

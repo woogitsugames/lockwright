@@ -41,6 +41,12 @@ L.append('| Miara | Wartość |')
 L.append('|---|---|')
 L.append(f"| Zlecenia ukończone / wszystkie | {len(bot.get('jobs_completed', []))} / {bot.get('jobs_total', '?')} |")
 L.append(f"| Zlecenia odmówione przy weryfikacji (N-15) | {len(bot.get('jobs_refused', []))} |")
+packs = bot.get('packs', {})
+if packs:  # D-131: chapters 13+ are content packs, fetched by the bot through the job list
+    L.append(f"| Zlecenia w grze na starcie (bez paczek) | {bot.get('jobs_at_start', '?')} · wiersze „do pobrania”: {bot.get('packs_offered_at_start', '?')} |")
+    L.append('| Paczki treści: stan na starcie → na końcu | ' + '; '.join(
+        f"`{k}` {v.get('at_start', '?')} → {v.get('at_end', '?')} ({v.get('jobs', '?')} zleceń, {v.get('size', 0) / 1e6:.2f} MB)"
+        + (f" błąd: {v['error']}" if v.get('error') else '') for k, v in sorted(packs.items())) + ' |')
 L.append(f"| Samouczek ukończony | {bot.get('tutorial_done')} |")
 L.append(f"| Zakupy w warsztacie (akcje) | {bot.get('purchases', 0)} |")
 L.append(f"| Gablota: otwarte notki | {bot.get('showcase_opened', 0)} |")
