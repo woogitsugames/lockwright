@@ -1,0 +1,61 @@
+{
+  "schema": "lockwright.content_pack/1",
+  "id": "ch13",
+  "version": 1,
+  "min_game": 1,
+  "chapters": [
+    13
+  ],
+  "jobs": {
+    "job.ch13_01_balcony_boxes": {
+      "chapter": 13,
+      "family": "warded",
+      "tier": 2
+    },
+    "job.ch13_02_first_ice_cream": {
+      "chapter": 13,
+      "family": "wafer",
+      "tier": 2
+    },
+    "job.ch13_03_allotment_gate": {
+      "chapter": 13,
+      "family": "lever",
+      "tier": 3
+    },
+    "job.ch13_05_planted_key": {
+      "chapter": 13,
+      "family": "egyptian",
+      "tier": 2
+    },
+    "job.ch13_06_bike_repair_stand": {
+      "chapter": 13,
+      "family": "disc_detainer",
+      "tier": 3
+    },
+    "job.ch13_07_museum_night_case": {
+      "chapter": 13,
+      "family": "magnetic",
+      "tier": 2
+    },
+    "job.ch13_09_pizzeria_terrace": {
+      "chapter": 13,
+      "family": "dial_safe",
+      "tier": 3
+    },
+    "job.ch13_10_courtyard_door": {
+      "chapter": 13,
+      "family": "pin_tumbler",
+      "tier": 4
+    },
+    "job.refuse_ch13_04_winter_bike": {
+      "chapter": 13,
+      "family": "combo",
+      "tier": 3
+    },
+    "job.refuse_ch13_08_found_cashbox": {
+      "chapter": 13,
+      "family": "lever",
+      "tier": 3
+    }
+  }
+}

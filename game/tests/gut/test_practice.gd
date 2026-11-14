@@ -79,7 +79,7 @@ func test_entries_and_copies_match_lockcore() -> void:
 		if not f.ends_with(".json"):
 			continue
 		var d: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(src.path_join(f)))
-		var id := f.get_basename()
+		var id := f.get_file().get_basename()
 		var fam := StringName(d["family"])
 		var fits := JobRun.planb_ready(fam) and Practice.element_count(d) <= int(CAPACITY.get(fam, 0))
 		assert_eq(not Practice.entry(id).is_empty(), fits, "%s (%s, %d elements): shipped iff its screen draws it" % [id, fam, Practice.element_count(d)])
@@ -120,8 +120,8 @@ func _first_of(fam: StringName) -> Dictionary:
 
 
 func _job_of(fam: StringName) -> String:
-	for f in DirAccess.get_files_at("res://data/jobs"):
-		var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/" + f))
+	for f in preload("res://tests/job_dirs.gd").files():
+		var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(f))
 		if JobRun.family_for(j) == fam:
 			return j["id"]
 	return ""

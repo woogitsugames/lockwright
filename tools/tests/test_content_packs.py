@@ -196,3 +196,54 @@ def test_mobile_presets_exclude_pack_sources():
 def test_repo_packs_are_valid():
     for pid in cp.discover():
         assert cp.check_source(pid, os.path.join(cp.PACKS, pid)) == [], pid
+
+
+# --- D-131: the game's list names every pack; unreleased ones as pending entries ---------------
+
+def pack_json(tmp_path, pack):
+    return json.loads((pack / "pack.json").read_text(encoding="utf-8"))
+
+
+def test_sync_manifest_writes_pending_entries_and_keeps_released_ones(tmp_path):
+    pack, _base_jobs, _base_csv = make_pack(tmp_path)
+    data = pack_json(tmp_path, pack)
+    path = str(tmp_path / "content_packs.json")
+    released = {"file": "content_old.pck", "url": "https://example.invalid/content_old.pck", "size": 10,
+                "sha256": "0" * 64, "version": 1, "min_game": 1, "chapters": [70], "jobs": {}}
+    (tmp_path / "content_packs.json").write_text(json.dumps(
+        {"schema": 1, "packs": {"old": released, "gone": cp.pending_entry("gone", data)}}), encoding="utf-8")
+    assert cp.sync_manifest({PID: data}, path) is True
+    manifest = cp.read_game_manifest(path)
+    entry = manifest["packs"][PID]
+    assert cp.is_pending(entry) and entry["url"] == "" and entry["sha256"] == "" and entry["size"] == 0
+    assert entry["file"] == "content_%s.pck" % PID and entry["jobs"] == data["jobs"] and entry["chapters"] == [77]
+    assert manifest["packs"]["old"] == released          # only the release workflow writes released entries
+    assert "gone" not in manifest["packs"]               # a pending entry without its source folder is dropped
+    assert cp.sync_manifest({PID: data}, path) is False  # already in step
+    assert cp.check_manifest({PID: data}, manifest) == []
+
+
+def test_check_manifest_rules(tmp_path):
+    pack, _base_jobs, _base_csv = make_pack(tmp_path)
+    data = pack_json(tmp_path, pack)
+    assert any("no entry" in e for e in cp.check_manifest({PID: data}, {"packs": {}}))
+    stale = cp.pending_entry(PID, data)
+    stale["jobs"] = {}
+    assert any("--sync" in e for e in cp.check_manifest({PID: data}, {"packs": {PID: stale}}))
+    assert any("has no game/packs" in e for e in cp.check_manifest({}, {"packs": {PID: cp.pending_entry(PID, data)}}))
+    released = dict(cp.pending_entry(PID, data), url="https://example.invalid/content_ch77.pck", size=10, sha256="0" * 64)
+    assert not cp.is_pending(released)
+    assert cp.check_manifest({PID: data}, {"packs": {PID: released}}) == []
+    newer = dict(data, version=2, jobs={})  # the next version waits for its release: fine
+    assert cp.check_manifest({PID: newer}, {"packs": {PID: released}}) == []
+    changed = dict(data, jobs={})           # same version, other jobs: the release would not match
+    assert any("raise `version`" in e for e in cp.check_manifest({PID: changed}, {"packs": {PID: released}}))
+    older = dict(data, version=1)
+    assert any("released as version 2" in e
+               for e in cp.check_manifest({PID: older}, {"packs": {PID: dict(released, version=2)}}))
+
+
+def test_repo_manifest_names_every_pack():
+    packs = {pid: cp.load_pack(pid) for pid in cp.discover()}
+    assert cp.check_manifest(packs, cp.read_game_manifest()) == []
+    assert {"ch13", "ch14", "ch15", "ch16"} <= set(packs)  # D-131

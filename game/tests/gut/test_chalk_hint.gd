@@ -168,11 +168,11 @@ func _open_lesson(fam: StringName, auto: bool, size: Vector2i) -> Node:
 	Settings.set_value(&"auto_tension", auto)
 	Save.data.erase("lessons")
 	var job := {}
-	var files := Array(DirAccess.get_files_at("res://data/jobs"))
+	var files := Array(preload("res://tests/job_dirs.gd").files())
 	files.sort()
 	for f in files:
 		if String(f).ends_with(".json"):
-			var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/" + f))
+			var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(f))
 			if JobRun.family_for(j) == fam and (job.is_empty() or String(j["id"]) < String(job["id"])):
 				job = j
 	JobRun.start(job)

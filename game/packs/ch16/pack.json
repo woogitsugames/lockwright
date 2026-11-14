@@ -1,0 +1,61 @@
+{
+  "schema": "lockwright.content_pack/1",
+  "id": "ch16",
+  "version": 1,
+  "min_game": 1,
+  "chapters": [
+    16
+  ],
+  "jobs": {
+    "job.ch16_01_bookmark_key": {
+      "chapter": 16,
+      "family": "axial_slider",
+      "tier": 3
+    },
+    "job.ch16_02_auction_safe": {
+      "chapter": 16,
+      "family": "dial_safe",
+      "tier": 3
+    },
+    "job.ch16_03_spare_in_the_lake": {
+      "chapter": 16,
+      "family": "dimple",
+      "tier": 3
+    },
+    "job.ch16_05_wrong_padlock": {
+      "chapter": 16,
+      "family": "combo",
+      "tier": 4
+    },
+    "job.ch16_06_salt_before_frost": {
+      "chapter": 16,
+      "family": "disc_detainer",
+      "tier": 3
+    },
+    "job.ch16_07_hour_back": {
+      "chapter": 16,
+      "family": "lever",
+      "tier": 5
+    },
+    "job.ch16_09_almost_right_key": {
+      "chapter": 16,
+      "family": "lever_detector",
+      "tier": 5
+    },
+    "job.ch16_10_thirteenth_envelope": {
+      "chapter": 16,
+      "family": "pin_tumbler",
+      "tier": 6
+    },
+    "job.refuse_ch16_04_borrowed_barrow": {
+      "chapter": 16,
+      "family": "egyptian",
+      "tier": 2
+    },
+    "job.refuse_ch16_08_roommates_room": {
+      "chapter": 16,
+      "family": "warded",
+      "tier": 2
+    }
+  }
+}

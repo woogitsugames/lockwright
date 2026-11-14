@@ -25,6 +25,12 @@ extends "res://scripts/autoload/pack_store.gd"
 ##
 ## In the editor (not an exported build) every game/packs/<id>/ folder on disk counts as part of
 ## the game ("bundled"): the content is playable without building or downloading anything.
+##
+## D-131: a pack whose release does not exist yet has a *pending* entry in the list (`url` and
+## `sha256` empty, `size` 0; written by `build_content_packs.py --sync`, replaced by the real entry
+## when .github/workflows/content-packs.yml publishes the release). There is nothing to download, so
+## a pending pack is never offered (no row in the job list or in Settings); its `jobs` still count
+## for progress read from the save, exactly as for a pack that is not on the phone.
 
 signal registry_changed
 
@@ -49,6 +55,7 @@ var use_local_sources := not OS.has_feature("template")
 
 var _local := {}        # id -> info of a source folder on disk (editor)
 var _invalid := {}      # id -> why its manifest entry was dropped
+var _pending := {}      # id -> manifest entry of a pack that is not released yet (D-131)
 var _job_paths := PackedStringArray()
 var _job_path_of := {}  # job id -> path (base and ready packs)
 var _job_pack := {}     # job id -> pack id (every valid pack, ready or not)
@@ -72,6 +79,7 @@ func _ready() -> void:
 func reload() -> void:
 	_local = {}
 	_invalid = {}
+	_pending = {}
 	super.reload()
 	if use_local_sources:
 		_scan_local()
@@ -90,6 +98,8 @@ func _read_manifest() -> Dictionary:
 			var why := validate_entry(str(id), packs[id])
 			if why == "":
 				good[str(id)] = packs[id]
+			elif is_pending_entry(str(id), packs[id]):
+				_pending[str(id)] = packs[id]  # known, not downloadable yet: never offered
 			else:
 				_invalid[str(id)] = why
 				push_warning("ContentPacks: pack '%s' ignored: %s" % [id, why])
@@ -113,6 +123,17 @@ static func validate_entry(id: String, e: Variant) -> String:
 	if not RegEx.create_from_string("^[0-9a-f]{64}$").search(str(e.get("sha256", ""))):
 		return "sha256 must be 64 lowercase hex digits"
 	return ""
+
+
+## D-131: `e` describes pack `id` (file, version, chapters, jobs) but its release does not exist
+## yet: `url` and `sha256` are empty and `size` is 0. Anything half-filled is a broken entry.
+static func is_pending_entry(id: String, e: Variant) -> bool:
+	if not e is Dictionary or validate_pack(id, e) != "":
+		return false
+	if str(e.get("file", "")) != "content_%s.pck" % id:
+		return false
+	return str(e.get("url", "")) == "" and str(e.get("sha256", "")) == "" \
+			and _is_whole(e.get("size", 0)) and int(e.get("size", 0)) == 0
 
 
 ## The part shared by a manifest entry and a pack's own pack.json: id, version, min_game,
@@ -166,7 +187,14 @@ func file_name(id: String) -> String:
 	return "content_%s.pck" % id
 
 
-## Every pack the game knows (manifest and, in the editor, source folders), by first chapter.
+## The pack is in the app's list but its release does not exist yet (D-131): not offered, not
+## downloadable. False once its source folder is on disk (editor: bundled).
+func is_pending(id: String) -> bool:
+	return _pending.has(id) and not _local.has(id)
+
+
+## Every pack the player can have (manifest and, in the editor, source folders), by first chapter.
+## Pending packs (D-131) are not here: see is_pending() and stubs().
 func ids() -> Array:
 	var out := []
 	var packs: Dictionary = _manifest.get("packs", {})
@@ -186,6 +214,8 @@ func ids() -> Array:
 func info(id: String) -> Dictionary:
 	if _local.has(id):
 		return _local[id]
+	if _pending.has(id):
+		return _pending[id]
 	return _entry(id)
 
 
@@ -251,7 +281,7 @@ func pack_of_job(jid: String) -> String:
 ## For progress derived from the save only; such a job cannot be started.
 func stubs() -> Array:
 	var out := []
-	for id: String in ids():
+	for id: String in _known_ids():
 		if is_ready(id):
 			continue
 		var jobs: Dictionary = info(id).get("jobs", {})
@@ -315,6 +345,15 @@ func remove(id: String) -> bool:
 
 
 # --- internals -----------------------------------------------------------------------
+
+## ids() plus the pending packs (D-131): every pack whose jobs the save may name.
+func _known_ids() -> Array:
+	var out := ids()
+	for id: String in _pending:
+		if not out.has(id):
+			out.append(id)
+	return out
+
 
 func pack_dir(id: String) -> String:
 	return packs_root.path_join(id)
@@ -404,7 +443,7 @@ func _rebuild() -> void:
 			if f.ends_with(".json"):
 				_job_paths.append(BASE_JOBS_DIR.path_join(f))
 				_job_path_of[f.trim_suffix(".json")] = BASE_JOBS_DIR.path_join(f)
-	for id: String in ids():
+	for id: String in _known_ids():
 		var jobs: Dictionary = info(id).get("jobs", {})
 		for jid: String in jobs:
 			if not _job_path_of.has(jid):  # a base job always wins over a pack's

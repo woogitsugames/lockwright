@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://tu6kkuvoxspc"
+
+[deps]
+
+files=["res://packs/ch14/i18n/content.en.translation", "res://packs/ch14/i18n/content.pl.translation", "res://packs/ch14/i18n/content.de.translation", "res://packs/ch14/i18n/content.fr.translation", "res://packs/ch14/i18n/content.es.translation"]
+
+source_file="res://packs/ch14/i18n/content.csv"
+dest_files=["res://packs/ch14/i18n/content.en.translation", "res://packs/ch14/i18n/content.pl.translation", "res://packs/ch14/i18n/content.de.translation", "res://packs/ch14/i18n/content.fr.translation", "res://packs/ch14/i18n/content.es.translation"]
+
+[params]
+
+compress=0
+delimiter=0
+unescape_keys=false
+unescape_translations=true

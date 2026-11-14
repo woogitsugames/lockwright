@@ -28,9 +28,20 @@ reproducible across game commits, so a released version is never rebuilt: pass t
 existing releases with --released DIR (content_<id>.json files); a pack whose sources changed
 without a new `version` in pack.json is an error.
 
+The game's list (game/data/content_packs.json) always names every pack (D-131). Until a pack's
+release exists its entry is *pending*: file, version, min_game, chapters and jobs as in pack.json,
+`url` and `sha256` empty, `size` 0. The game never offers a pending pack (nothing to download) but
+knows its jobs, so a save that names them keeps its progress. `--sync` writes the pending entries,
+`--check` fails when one is missing or out of step; the release workflow replaces them with the
+real entries (--released + the fresh builds).
+
+`--game DIR` works on another copy of game/ (the QA career bot builds the packs of its own copy
+and plays them as downloads: qa/run_career.sh).
+
 Usage (from the repo root):
   python3 tools/build_content_packs.py --check                 # validate the sources (no Godot)
   python3 tools/build_content_packs.py --sync                  # rewrite `jobs` in every pack.json
+                                                               # and the pending entries of the game's list
   python3 tools/build_content_packs.py --list                  # "<id> <version> <tag>" per pack
   python3 tools/build_content_packs.py --godot G [--import] [--packs ch13] [--out game/build/content]
       [--released DIR] [--base-url URL] [--write-game-manifest]
@@ -90,11 +101,23 @@ binary_format/embed_pck=false
 '''
 
 
+def use_game_dir(game):
+    """Point the tool at another copy of game/ (--game)."""
+    global GAME, PACKS, PRESETS, GAME_MANIFEST, BASE_JOBS, BASE_CSV
+    GAME = os.path.abspath(game)
+    PACKS = os.path.join(GAME, "packs")
+    PRESETS = os.path.join(GAME, "export_presets.cfg")
+    GAME_MANIFEST = os.path.join(GAME, "data", "content_packs.json")
+    BASE_JOBS = os.path.join(GAME, "data", "jobs")
+    BASE_CSV = [os.path.join(GAME, "i18n", "strings.csv"), os.path.join(GAME, "i18n", "content.csv")]
+
+
 def tag_for(pack_id, version):
     return "content-%s-v%d" % (pack_id, version)
 
 
-def discover(packs_dir=PACKS):
+def discover(packs_dir=None):
+    packs_dir = PACKS if packs_dir is None else packs_dir
     if not os.path.isdir(packs_dir):
         return []
     return sorted(d for d in os.listdir(packs_dir)
@@ -141,8 +164,10 @@ def csv_keys(path):
     return (rows[0] if rows else []), [r[0] for r in rows[1:] if r and r[0]]
 
 
-def check_source(pack_id, pack_dir, base_jobs=BASE_JOBS, base_csv=BASE_CSV):
+def check_source(pack_id, pack_dir, base_jobs=None, base_csv=None):
     """Errors in a pack source folder (empty list: it can be built)."""
+    base_jobs = BASE_JOBS if base_jobs is None else base_jobs
+    base_csv = BASE_CSV if base_csv is None else base_csv
     errors = []
     if not ID_RE.match(pack_id):
         return ["%s: bad pack id (a-z, 0-9, _; starts with a letter; at most 32)" % pack_id]
@@ -273,6 +298,83 @@ def fix_csv_import(pack_dir):
     return True
 
 
+def pending_entry(pack_id, pack):
+    """The game's entry of a pack whose release does not exist yet (D-131): nothing to download."""
+    return {"file": "content_%s.pck" % pack_id, "url": "", "size": 0, "sha256": "",
+            "version": pack["version"], "min_game": pack["min_game"],
+            "chapters": sorted(pack["chapters"]), "jobs": pack["jobs"]}
+
+
+def is_pending(entry):
+    return isinstance(entry, dict) and entry.get("url", "") == "" and entry.get("sha256", "") == "" \
+        and entry.get("size", 0) == 0
+
+
+def read_game_manifest(path=None):
+    path = GAME_MANIFEST if path is None else path
+    try:
+        with open(path, encoding="utf-8") as f:
+            m = json.load(f)
+    except (OSError, ValueError):
+        m = {}
+    if not isinstance(m, dict) or not isinstance(m.get("packs"), dict):
+        m = {"schema": SCHEMA, "packs": {}}
+    return m
+
+
+def manifest_text(manifest):
+    return json.dumps(manifest, indent=2, sort_keys=True) + "\n"
+
+
+def sync_manifest(packs, path=None):
+    """Writes the pending entries of the game's list: one for every pack in `packs` ({id: pack.json})
+    that has no released entry; pending entries of packs that are gone are dropped. Released
+    entries are never touched (only the release workflow writes them). True when the file changed."""
+    path = GAME_MANIFEST if path is None else path
+    manifest = read_game_manifest(path)
+    before = manifest_text(manifest)
+    entries = manifest["packs"]
+    for pid in [p for p in entries if p not in packs and is_pending(entries[p])]:
+        del entries[pid]
+    for pid, pack in packs.items():
+        if pid not in entries or is_pending(entries[pid]):
+            entries[pid] = pending_entry(pid, pack)
+    manifest.setdefault("schema", SCHEMA)
+    after = manifest_text(manifest)
+    if after == before and os.path.exists(path):
+        return False
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(after)
+    return True
+
+
+def check_manifest(packs, manifest):
+    """Errors when the game's list and the pack sources ({id: pack.json}) are out of step."""
+    errors = []
+    entries = manifest.get("packs", {})
+    for pid, pack in sorted(packs.items()):
+        entry = entries.get(pid)
+        if entry is None:
+            errors.append("game/data/content_packs.json: no entry for pack %s (run with --sync)" % pid)
+        elif is_pending(entry):
+            if entry != pending_entry(pid, pack):
+                errors.append("game/data/content_packs.json: pending entry of %s does not match its pack.json "
+                              "(run with --sync)" % pid)
+        elif not isinstance(entry.get("version"), int) or entry["version"] > pack["version"]:
+            errors.append("game/data/content_packs.json: %s is released as version %s, pack.json says %d"
+                          % (pid, entry.get("version"), pack["version"]))
+        elif entry["version"] == pack["version"] and (
+                entry.get("jobs") != pack["jobs"] or entry.get("chapters") != sorted(pack["chapters"])
+                or entry.get("min_game") != pack["min_game"]):
+            errors.append("%s: its jobs, chapters or min_game changed since release %s; raise `version` in "
+                          "game/packs/%s/pack.json" % (pid, tag_for(pid, pack["version"]), pid))
+    for pid, entry in sorted(entries.items()):
+        if pid not in packs and is_pending(entry):
+            errors.append("game/data/content_packs.json: pending entry of %s has no game/packs/%s/ (run with --sync)"
+                          % (pid, pid))
+    return errors
+
+
 def content_hash(pack_dir, engine=""):
     """Hash of the pack's source files and the engine major.minor (.translation files are made
     from the CSV by Godot's import and are not sources)."""
@@ -346,14 +448,22 @@ def main(argv=None):
     ap.add_argument("--base-url", default=os.environ.get("CONTENT_PACKS_BASE_URL", DEFAULT_BASE_URL))
     ap.add_argument("--write-game-manifest", action="store_true", help="also write game/data/content_packs.json")
     ap.add_argument("--check", action="store_true", help="validate the pack sources and stop")
-    ap.add_argument("--sync", action="store_true", help="rewrite `jobs` in every pack.json and stop")
+    ap.add_argument("--sync", action="store_true",
+                    help="rewrite `jobs` in every pack.json and the pending entries of the game's list, and stop")
+    ap.add_argument("--game", default="", help="work on this copy of game/ instead of the repository's")
     ap.add_argument("--list", action="store_true", help='print "<id> <version> <tag>" per pack and stop')
     args = ap.parse_args(argv)
+    if args.game:
+        use_game_dir(args.game)
 
+    every = not [p for p in args.packs.split(",") if p]  # the game's list is checked for the whole set only
     ids = [p for p in args.packs.split(",") if p] or discover()
     if args.sync:
         for pid in ids:
             print("%s: %s" % (pid, "pack.json / imports updated" if sync_jobs(os.path.join(PACKS, pid)) else "up to date"))
+        if every:
+            changed = sync_manifest({pid: load_pack(pid) for pid in ids})
+            print("%s: %s" % (os.path.relpath(GAME_MANIFEST, ROOT), "pending entries updated" if changed else "up to date"))
         return
     errors = []
     for pid in ids:
@@ -366,10 +476,15 @@ def main(argv=None):
             if jid in seen:
                 errors.append("%s: job %s is also in pack %s" % (pid, jid, seen[jid]))
             seen[jid] = pid
+    if not errors and every:
+        errors += check_manifest({pid: load_pack(pid) for pid in ids}, read_game_manifest())
     if errors:
         sys.exit("\n".join(errors))
     if args.check:
+        pending = [pid for pid in ids if is_pending(read_game_manifest()["packs"].get(pid))]
         print("content packs OK: %s" % (", ".join(ids) if ids else "none"))
+        if pending:
+            print("not released yet (pending in the game's list, not offered to players): %s" % ", ".join(pending))
         return
     if args.list:
         for pid in ids:
@@ -445,7 +560,7 @@ def main(argv=None):
                 f.write(original)
     if errors:
         sys.exit("\n".join(errors))
-    text = json.dumps(manifest, indent=2, sort_keys=True) + "\n"
+    text = manifest_text(manifest)
     with open(os.path.join(out, "content_packs.json"), "w", encoding="utf-8") as f:
         f.write(text)
     if args.write_game_manifest:

@@ -36,10 +36,10 @@ func _open(job_id: String) -> Control:
 
 
 func _job_with_cards(n: int) -> String:
-	for f in DirAccess.get_files_at("res://data/jobs"):
+	for f in preload("res://tests/job_dirs.gd").files():
 		if not f.ends_with(".json"):
 			continue
-		var j := JobRun.job_by_id(f.get_basename())
+		var j := JobRun.job_by_id(f.get_file().get_basename())
 		if j.get("cards", []).size() == n and not String(j.get("id", "")).begins_with("job.refuse") and not j.has("ask_more"):
 			return String(j["id"])
 	return ""

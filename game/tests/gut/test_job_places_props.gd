@@ -26,9 +26,9 @@ func after_each() -> void:
 
 func _jobs() -> Array:
 	var out := []
-	for f in DirAccess.get_files_at("res://data/jobs"):
+	for f in preload("res://tests/job_dirs.gd").files():
 		if f.ends_with(".json"):
-			out.append(JobRun.job_by_id(f.get_basename()))
+			out.append(JobRun.job_by_id(f.get_file().get_basename()))
 	return out
 
 

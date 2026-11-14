@@ -213,7 +213,10 @@ func test_shipped_manifest_and_sources_are_valid() -> void:
 	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(ContentPacksScript.MANIFEST_PATH))
 	assert_true(parsed is Dictionary and parsed.get("packs") is Dictionary, "res://data/content_packs.json has `packs`")
 	for id: String in parsed["packs"]:
-		assert_eq(ContentPacksScript.validate_entry(id, parsed["packs"][id]), "", "manifest entry " + id)
+		var e: Variant = parsed["packs"][id]
+		# D-131: an entry is either complete (its release exists) or pending (no url, sha256, size)
+		assert_true(ContentPacksScript.validate_entry(id, e) == "" or ContentPacksScript.is_pending_entry(id, e),
+				"manifest entry %s is released or pending: %s" % [id, ContentPacksScript.validate_entry(id, e)])
 	# pack sources in the project (game/packs/<id>/): pack.json matches the job files
 	if DirAccess.dir_exists_absolute(ContentPacksScript.ROOT):
 		for id in DirAccess.get_directories_at(ContentPacksScript.ROOT):
@@ -230,6 +233,14 @@ func test_shipped_manifest_and_sources_are_valid() -> void:
 			var listed: Array = (p.get("jobs", {}) as Dictionary).keys()
 			listed.sort()
 			assert_eq(listed, on_disk, "%s: `jobs` in pack.json lists jobs/*.json (tools/build_content_packs.py --sync)" % id)
+			# D-131: the app's list names every pack, so a save with its jobs keeps its progress
+			assert_true((parsed["packs"] as Dictionary).has(id), "%s has an entry in res://data/content_packs.json (--sync)" % id)
+			var entry: Dictionary = (parsed["packs"] as Dictionary).get(id, {})
+			if ContentPacksScript.is_pending_entry(id, entry):
+				var entry_jobs: Array = (entry.get("jobs", {}) as Dictionary).keys()
+				entry_jobs.sort()
+				assert_eq(entry_jobs, on_disk, "%s: the pending entry lists the pack's jobs (--sync)" % id)
+				assert_eq(int(entry.get("version", 0)), int(p.get("version", 0)), "%s: pending entry version" % id)
 
 
 func test_mobile_presets_do_not_ship_pack_sources() -> void:
@@ -242,6 +253,176 @@ func test_mobile_presets_do_not_ship_pack_sources() -> void:
 			var filters := String(cfg.get_value(section, "exclude_filter", "")).split(",", false)
 			assert_true(filters.has("packs/*"), "%s excludes packs/* (packs are downloaded, D-112)" % cfg.get_value(section, "name"))
 	assert_eq(checked, 2)
+
+
+# --- pending: in the app's list, release not made yet (D-131) -------------------------
+
+func _pending_entry() -> Dictionary:
+	return {"file": "content_%s.pck" % _id, "url": "", "size": 0, "sha256": "", "version": 1, "min_game": 1,
+			"chapters": [CHAPTER], "jobs": _jobs_meta()}
+
+
+func test_pending_entry_is_told_from_a_broken_one() -> void:
+	var pending := _pending_entry()
+	assert_true(ContentPacksScript.is_pending_entry(_id, pending))
+	assert_ne(ContentPacksScript.validate_entry(_id, pending), "", "a pending entry is not downloadable")
+	assert_false(ContentPacksScript.is_pending_entry(_id, _entry(1000, GOOD_SHA)), "a released entry is not pending")
+	# half-filled entries are mistakes, not pending packs
+	for half: Dictionary in [{"url": "https://example.invalid/content.pck"}, {"sha256": GOOD_SHA}, {"size": 1000},
+			{"file": "other.pck"}, {"jobs": {}}, {"chapters": []}, {"version": 0}]:
+		var e := pending.duplicate(true)
+		e.merge(half, true)
+		assert_false(ContentPacksScript.is_pending_entry(_id, e), "not pending: %s" % [half])
+	assert_false(ContentPacksScript.is_pending_entry(_id, "x"))
+	var cp := _make_cp({_id: pending.merged({"url": "https://example.invalid/content.pck"}, true)})
+	assert_ne(cp.invalid_reason(_id), "", "a half-filled entry is dropped with its reason")
+	assert_false(cp.is_pending(_id))
+	assert_eq(cp.stub(_jid), {})
+
+
+func test_pending_pack_is_never_offered_or_downloaded() -> void:
+	var cp := _make_cp({_id: _pending_entry()})
+	assert_engine_error_count(0)
+	assert_true(cp.is_pending(_id))
+	assert_eq(cp.invalid_reason(_id), "", "pending is not an error")
+	assert_eq(cp.ids(), [], "the player has nothing to see")
+	assert_eq(cp.offers(), [], "no download row for a release that does not exist")
+	assert_eq(cp.state(_id), "none")
+	assert_false(cp.has_pack(_id))
+	assert_false(cp.ensure(_id), "nothing to download")
+	assert_eq(cp.state(_id), "none", "and no failed download either")
+	assert_false(cp.is_ready(_id))
+	assert_eq(cp.job_path(_jid), "", "its job cannot be played")
+	assert_eq(cp.pack_of_job(_jid), _id, "but the app knows whose job it is")
+	var stub: Dictionary = cp.stub(_jid)
+	assert_eq(int(stub.get("chapter", 0)), CHAPTER)
+	assert_eq(String(stub.get("family", "")), "wafer")
+	assert_eq(cp.chapters(_id), [CHAPTER])
+	assert_eq(cp.job_count(_id), 1)
+
+
+func test_pending_pack_shows_no_row_and_keeps_the_save() -> void:
+	_use_autoload({_id: _pending_entry()})
+	# a save from a build that had the chapter (in the base game, or as a pack): progress stays
+	Save.set_value("jobs_completed", ["job.cat_bathroom", _jid])
+	assert_eq(JobRun.job_by_id(_jid), {}, "the job is not on the phone")
+	assert_eq(int(JobRun.job_meta(_jid).get("chapter", 0)), CHAPTER)
+	assert_eq(Furnishings.reached_chapter(), CHAPTER, "the reached chapter does not go back")
+	assert_true(Practice.family_met(&"wafer"), "practice unlocked by the job stays unlocked")
+	var list: Control = load("res://scenes/jobs_list.tscn").instantiate()
+	add_child_autofree(list)
+	await get_tree().process_frame
+	assert_null(list.find_child("Pack_%s_%d" % [_id, CHAPTER], true, false), "no download row before the release exists")
+	assert_null(list.find_child("Chapter%d" % CHAPTER, true, false), "and no empty chapter header")
+	assert_null(list.find_child("Job_cp_" + _tag, true, false))
+	assert_not_null(list.find_child("Job_cat_bathroom", true, false), "the base game's jobs are there")
+	var settings: Control = load("res://scenes/settings.tscn").instantiate()
+	add_child_autofree(settings)
+	await get_tree().process_frame
+	assert_null(settings.find_child("ContentPacks", true, false), "Settings has no chapters block for pending packs")
+	var showcase: Control = load("res://scenes/showcase.tscn").instantiate()
+	add_child_autofree(showcase)
+	await get_tree().process_frame
+	Save.save()
+	Save.load_save()
+	ContentPacks.reload()
+	assert_true((Save.get_value("jobs_completed", []) as Array).has(_jid), "the save keeps the job after a restart")
+	assert_engine_error_count(0)
+
+
+## The game as it ships today, without the pack source folders (an exported build): chapters 1-12
+## play, chapters 13+ are either offered with their size (released) or not shown at all (pending),
+## and a save that already holds chapter 13+ progress stays whole. Holds before and after the
+## release workflow replaces the pending entries.
+func test_shipped_game_without_packs_starts_and_keeps_chapter_13_progress() -> void:
+	_autoload_used = true
+	ContentPacks.manifest_path = ContentPacksScript.MANIFEST_PATH
+	ContentPacks.dir = _work + "/store"
+	ContentPacks.use_local_sources = false
+	ContentPacks.reload()
+	assert_engine_error_count(0)
+	var shipped: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(ContentPacksScript.MANIFEST_PATH))["packs"]
+	assert_gt(shipped.size(), 0, "chapters 13+ are content packs (D-131)")
+	var pack_jobs := []
+	var offered := {}
+	for o: Dictionary in ContentPacks.offers():
+		offered[String(o["pack"])] = true
+	for id: String in shipped:
+		assert_eq(ContentPacks.invalid_reason(id), "", "entry %s is usable" % id)
+		assert_false(ContentPacks.is_ready(id), "%s is not on the phone" % id)
+		if ContentPacks.is_pending(id):
+			assert_false(offered.has(id), "%s: no release yet, so no download row" % id)
+			assert_false(ContentPacks.ids().has(id))
+		else:
+			assert_true(offered.has(id), "%s is offered" % id)
+			assert_gt(ContentPacks.pack_size(id), 0, "%s: the row can name its size" % id)
+			assert_true(ContentPacks.pack_url(id).begins_with("https://"))
+		for jid: String in shipped[id]["jobs"]:
+			pack_jobs.append(jid)
+			assert_eq(ContentPacks.job_path(jid), "", "%s cannot be played without its pack" % jid)
+			assert_eq(ContentPacks.pack_of_job(jid), id)
+			assert_gte(int(JobRun.job_meta(jid).get("chapter", 0)), 13, "%s: chapter known from the app's list" % jid)
+	for j: Dictionary in JobRun.all_jobs():
+		assert_lt(int(j.get("chapter", 0)), 13, "%s: the base game ends with chapter 12" % j.get("id", ""))
+		assert_false(pack_jobs.has(String(j.get("id", ""))))
+	assert_eq(JobRun.all_jobs().size(), 83, "the base game: 83 jobs of chapters 1-12")
+	# a save that finished chapter 13 jobs before they moved to a pack
+	var done := ["job.cat_bathroom"] + pack_jobs.slice(0, 3)
+	Save.set_value("jobs_completed", done)
+	assert_gte(Furnishings.reached_chapter(), 13, "the reached chapter does not go back")
+	var list: Control = load("res://scenes/jobs_list.tscn").instantiate()
+	add_child_autofree(list)
+	await get_tree().process_frame
+	assert_not_null(list.find_child("Job_cat_bathroom", true, false))
+	for id: String in shipped:
+		for ch: int in ContentPacks.chapters(id):
+			var row := list.find_child("Pack_%s_%d" % [id, ch], true, false)
+			if ContentPacks.is_pending(id):
+				assert_null(row, "%s: no row before its release" % id)
+			else:
+				assert_not_null(row, "%s: a row with the size" % id)
+				if row != null:
+					assert_string_contains((row.get_node("Info") as Label).text,
+							ContentPacks.size_text(ContentPacks.pack_size(id), I18n.current_language()))
+					assert_true((row.get_node("Action") as Button).visible)
+	for scene in ["res://scenes/workshop.tscn", "res://scenes/showcase.tscn", "res://scenes/settings.tscn"]:
+		if ResourceLoader.exists(scene):
+			var node: Node = load(scene).instantiate()
+			add_child_autofree(node)
+			await get_tree().process_frame
+	Save.save()
+	Save.load_save()
+	assert_eq(Save.get_value("jobs_completed", []), done, "the save is untouched")
+	assert_engine_error_count(0)
+
+
+## D-131: chapters 13-16 are one content pack each; the chapter's name and description stay in
+## the base game, so the header can be shown before the download.
+func test_chapters_13_to_16_are_one_pack_each() -> void:
+	for ch in [13, 14, 15, 16]:
+		var id := "ch%d" % ch
+		var p: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://packs/%s/pack.json" % id))
+		assert_true(p is Dictionary, "res://packs/%s/pack.json" % id)
+		if not p is Dictionary:
+			continue
+		assert_eq(p["chapters"], [float(ch)], "%s holds chapter %d only" % [id, ch])
+		assert_eq((p["jobs"] as Dictionary).size(), 10)
+		for jid: String in p["jobs"]:
+			assert_false(FileAccess.file_exists("res://data/jobs/%s.json" % jid), "%s left the base game" % jid)
+			assert_true(FileAccess.file_exists("res://packs/%s/jobs/%s.json" % [id, jid]))
+		var base_rows := {}
+		for r in (I18n._parse_csv("res://i18n/content.csv") as Array).slice(1):
+			base_rows[String(r[0])] = true
+		assert_true(base_rows.has("chapter.%d.name" % ch) and base_rows.has("chapter.%d.desc" % ch),
+				"chapter %d: name and description stay in the base game" % ch)
+		for key: String in base_rows:
+			assert_false(key.begins_with("job.ch%d_" % ch) or key.begins_with("job.refuse_ch%d_" % ch),
+					"%s belongs to pack %s" % [key, id])
+	assert_false(ArrivalScene.data()["scenes"].is_empty())
+	var base_scenes: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/arrival_scenes.json"))["scenes"]
+	for jid: String in base_scenes:
+		assert_false(jid.contains("ch13_"), "%s: the scene moved to pack ch13" % jid)
+		assert_true(FileAccess.file_exists("res://data/jobs/%s.json" % jid), "%s: base scenes belong to base jobs" % jid)
 
 
 # --- missing / offered ---------------------------------------------------------------

@@ -40,9 +40,9 @@ func test_tutorial_stages_open() -> void:
 
 func test_all_playable_jobs_open_and_save_roundtrip() -> void:
 	var jobs: Array = []
-	for path in DirAccess.get_files_at("res://data/jobs"):
+	for path in preload("res://tests/job_dirs.gd").files():
 		if path.ends_with(".json"):
-			jobs.append(JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/" + path)))
+			jobs.append(JSON.parse_string(FileAccess.get_file_as_string(path)))
 	var playable := 0
 	for job in jobs:
 		if not JobRun.is_playable(job):

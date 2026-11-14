@@ -1,4 +1,257 @@
 {
-  "packs": {},
+  "packs": {
+    "ch13": {
+      "chapters": [
+        13
+      ],
+      "file": "content_ch13.pck",
+      "jobs": {
+        "job.ch13_01_balcony_boxes": {
+          "chapter": 13,
+          "family": "warded",
+          "tier": 2
+        },
+        "job.ch13_02_first_ice_cream": {
+          "chapter": 13,
+          "family": "wafer",
+          "tier": 2
+        },
+        "job.ch13_03_allotment_gate": {
+          "chapter": 13,
+          "family": "lever",
+          "tier": 3
+        },
+        "job.ch13_05_planted_key": {
+          "chapter": 13,
+          "family": "egyptian",
+          "tier": 2
+        },
+        "job.ch13_06_bike_repair_stand": {
+          "chapter": 13,
+          "family": "disc_detainer",
+          "tier": 3
+        },
+        "job.ch13_07_museum_night_case": {
+          "chapter": 13,
+          "family": "magnetic",
+          "tier": 2
+        },
+        "job.ch13_09_pizzeria_terrace": {
+          "chapter": 13,
+          "family": "dial_safe",
+          "tier": 3
+        },
+        "job.ch13_10_courtyard_door": {
+          "chapter": 13,
+          "family": "pin_tumbler",
+          "tier": 4
+        },
+        "job.refuse_ch13_04_winter_bike": {
+          "chapter": 13,
+          "family": "combo",
+          "tier": 3
+        },
+        "job.refuse_ch13_08_found_cashbox": {
+          "chapter": 13,
+          "family": "lever",
+          "tier": 3
+        }
+      },
+      "min_game": 1,
+      "sha256": "",
+      "size": 0,
+      "url": "",
+      "version": 1
+    },
+    "ch14": {
+      "chapters": [
+        14
+      ],
+      "file": "content_ch14.pck",
+      "jobs": {
+        "job.ch14_01_summer_storage": {
+          "chapter": 14,
+          "family": "wafer",
+          "tier": 3
+        },
+        "job.ch14_02_ship_time": {
+          "chapter": 14,
+          "family": "time_lock",
+          "tier": 2
+        },
+        "job.ch14_03_books_under_linden": {
+          "chapter": 14,
+          "family": "lever",
+          "tier": 4
+        },
+        "job.ch14_05_cat_passport": {
+          "chapter": 14,
+          "family": "axial_slider",
+          "tier": 3
+        },
+        "job.ch14_06_suitcase_flew_on": {
+          "chapter": 14,
+          "family": "dimple",
+          "tier": 3
+        },
+        "job.ch14_07_prize_cupboard": {
+          "chapter": 14,
+          "family": "combo",
+          "tier": 4
+        },
+        "job.ch14_09_summer_cinema": {
+          "chapter": 14,
+          "family": "lever_detector",
+          "tier": 5
+        },
+        "job.ch14_10_holiday_keys": {
+          "chapter": 14,
+          "family": "pin_tumbler",
+          "tier": 5
+        },
+        "job.refuse_ch14_04_paid_week": {
+          "chapter": 14,
+          "family": "dimple",
+          "tier": 3
+        },
+        "job.refuse_ch14_08_early_present": {
+          "chapter": 14,
+          "family": "warded",
+          "tier": 2
+        }
+      },
+      "min_game": 1,
+      "sha256": "",
+      "size": 0,
+      "url": "",
+      "version": 1
+    },
+    "ch15": {
+      "chapters": [
+        15
+      ],
+      "file": "content_ch15.pck",
+      "jobs": {
+        "job.ch15_01_wrong_envelope": {
+          "chapter": 15,
+          "family": "dimple",
+          "tier": 3
+        },
+        "job.ch15_02_apple_press": {
+          "chapter": 15,
+          "family": "egyptian",
+          "tier": 2
+        },
+        "job.ch15_03_charleroi_box": {
+          "chapter": 15,
+          "family": "axial_slider",
+          "tier": 3
+        },
+        "job.ch15_05_first_vacation": {
+          "chapter": 15,
+          "family": "dial_safe",
+          "tier": 3
+        },
+        "job.ch15_06_bike_by_train": {
+          "chapter": 15,
+          "family": "disc_detainer",
+          "tier": 3
+        },
+        "job.ch15_07_skeleton_cupboard": {
+          "chapter": 15,
+          "family": "lever",
+          "tier": 5
+        },
+        "job.ch15_09_key_board": {
+          "chapter": 15,
+          "family": "lever_detector",
+          "tier": 5
+        },
+        "job.ch15_10_exam_lock": {
+          "chapter": 15,
+          "family": "pin_tumbler",
+          "tier": 6
+        },
+        "job.refuse_ch15_04_closed_attic": {
+          "chapter": 15,
+          "family": "lever",
+          "tier": 4
+        },
+        "job.refuse_ch15_08_no_answer": {
+          "chapter": 15,
+          "family": "warded",
+          "tier": 2
+        }
+      },
+      "min_game": 1,
+      "sha256": "",
+      "size": 0,
+      "url": "",
+      "version": 1
+    },
+    "ch16": {
+      "chapters": [
+        16
+      ],
+      "file": "content_ch16.pck",
+      "jobs": {
+        "job.ch16_01_bookmark_key": {
+          "chapter": 16,
+          "family": "axial_slider",
+          "tier": 3
+        },
+        "job.ch16_02_auction_safe": {
+          "chapter": 16,
+          "family": "dial_safe",
+          "tier": 3
+        },
+        "job.ch16_03_spare_in_the_lake": {
+          "chapter": 16,
+          "family": "dimple",
+          "tier": 3
+        },
+        "job.ch16_05_wrong_padlock": {
+          "chapter": 16,
+          "family": "combo",
+          "tier": 4
+        },
+        "job.ch16_06_salt_before_frost": {
+          "chapter": 16,
+          "family": "disc_detainer",
+          "tier": 3
+        },
+        "job.ch16_07_hour_back": {
+          "chapter": 16,
+          "family": "lever",
+          "tier": 5
+        },
+        "job.ch16_09_almost_right_key": {
+          "chapter": 16,
+          "family": "lever_detector",
+          "tier": 5
+        },
+        "job.ch16_10_thirteenth_envelope": {
+          "chapter": 16,
+          "family": "pin_tumbler",
+          "tier": 6
+        },
+        "job.refuse_ch16_04_borrowed_barrow": {
+          "chapter": 16,
+          "family": "egyptian",
+          "tier": 2
+        },
+        "job.refuse_ch16_08_roommates_room": {
+          "chapter": 16,
+          "family": "warded",
+          "tier": 2
+        }
+      },
+      "min_game": 1,
+      "sha256": "",
+      "size": 0,
+      "url": "",
+      "version": 1
+    }
+  },
   "schema": 1
 }

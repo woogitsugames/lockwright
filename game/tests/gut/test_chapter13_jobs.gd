@@ -32,8 +32,10 @@ var _rows := {}
 func before_all() -> void:
 	_save_backup = Save.data.duplicate(true)
 	_locale = TranslationServer.get_locale()
-	for r in (I18n._parse_csv("res://i18n/content.csv") as Array).slice(1):
-		_rows[String(r[0])] = r
+	# D-131: the chapter's texts are in its content pack; its name and description stay in the base file
+	for path: String in ["res://i18n/content.csv", "res://packs/ch13/i18n/content.csv"]:
+		for r in (I18n._parse_csv(path) as Array).slice(1):
+			_rows[String(r[0])] = r
 
 
 func after_each() -> void:
@@ -49,9 +51,8 @@ func after_all() -> void:
 
 func _all_jobs() -> Array:
 	var out := []
-	for f in DirAccess.get_files_at("res://data/jobs"):
-		if f.ends_with(".json"):
-			out.append(JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/" + f)))
+	for f: String in preload("res://tests/job_dirs.gd").files():  # D-131: the base game and the content pack sources
+		out.append(JSON.parse_string(FileAccess.get_file_as_string(f)))
 	return out
 
 
@@ -101,7 +102,7 @@ func test_ten_jobs_follow_the_spec() -> void:
 	for j: Dictionary in jobs:
 		var jid := String(j["id"])
 		assert_true(jid.contains("ch13_"), "%s: the chapter's files are identifiable" % jid)
-		assert_true(FileAccess.file_exists("res://data/jobs/%s.json" % jid), "%s: file named after the id" % jid)
+		assert_true(FileAccess.file_exists("res://packs/ch13/jobs/%s.json" % jid), "%s: file named after the id, in pack ch13 (D-131)" % jid)
 		for field in ["district", "family", "tier", "verification", "verify_kind", "reward_coins", "tone", "i18n", "lines",
 				"after", "cards", "threshold", "place", "time"]:
 			assert_true(j.has(field), "%s.%s" % [jid, field])

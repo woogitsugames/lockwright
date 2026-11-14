@@ -1,0 +1,61 @@
+{
+  "schema": "lockwright.content_pack/1",
+  "id": "ch14",
+  "version": 1,
+  "min_game": 1,
+  "chapters": [
+    14
+  ],
+  "jobs": {
+    "job.ch14_01_summer_storage": {
+      "chapter": 14,
+      "family": "wafer",
+      "tier": 3
+    },
+    "job.ch14_02_ship_time": {
+      "chapter": 14,
+      "family": "time_lock",
+      "tier": 2
+    },
+    "job.ch14_03_books_under_linden": {
+      "chapter": 14,
+      "family": "lever",
+      "tier": 4
+    },
+    "job.ch14_05_cat_passport": {
+      "chapter": 14,
+      "family": "axial_slider",
+      "tier": 3
+    },
+    "job.ch14_06_suitcase_flew_on": {
+      "chapter": 14,
+      "family": "dimple",
+      "tier": 3
+    },
+    "job.ch14_07_prize_cupboard": {
+      "chapter": 14,
+      "family": "combo",
+      "tier": 4
+    },
+    "job.ch14_09_summer_cinema": {
+      "chapter": 14,
+      "family": "lever_detector",
+      "tier": 5
+    },
+    "job.ch14_10_holiday_keys": {
+      "chapter": 14,
+      "family": "pin_tumbler",
+      "tier": 5
+    },
+    "job.refuse_ch14_04_paid_week": {
+      "chapter": 14,
+      "family": "dimple",
+      "tier": 3
+    },
+    "job.refuse_ch14_08_early_present": {
+      "chapter": 14,
+      "family": "warded",
+      "tier": 2
+    }
+  }
+}

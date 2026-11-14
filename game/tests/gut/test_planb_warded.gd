@@ -25,7 +25,7 @@ func _native() -> bool:
 
 func _warded_jobs() -> Array:
 	var out: Array = []
-	for dir in ["res://data/jobs"]:
+	for dir: String in preload("res://tests/job_dirs.gd").all():  # D-131: base game + content packs
 		for f in DirAccess.get_files_at(dir):
 			if f.ends_with(".json"):
 				var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(dir + "/" + f))

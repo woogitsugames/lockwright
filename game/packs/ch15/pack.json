@@ -1,0 +1,61 @@
+{
+  "schema": "lockwright.content_pack/1",
+  "id": "ch15",
+  "version": 1,
+  "min_game": 1,
+  "chapters": [
+    15
+  ],
+  "jobs": {
+    "job.ch15_01_wrong_envelope": {
+      "chapter": 15,
+      "family": "dimple",
+      "tier": 3
+    },
+    "job.ch15_02_apple_press": {
+      "chapter": 15,
+      "family": "egyptian",
+      "tier": 2
+    },
+    "job.ch15_03_charleroi_box": {
+      "chapter": 15,
+      "family": "axial_slider",
+      "tier": 3
+    },
+    "job.ch15_05_first_vacation": {
+      "chapter": 15,
+      "family": "dial_safe",
+      "tier": 3
+    },
+    "job.ch15_06_bike_by_train": {
+      "chapter": 15,
+      "family": "disc_detainer",
+      "tier": 3
+    },
+    "job.ch15_07_skeleton_cupboard": {
+      "chapter": 15,
+      "family": "lever",
+      "tier": 5
+    },
+    "job.ch15_09_key_board": {
+      "chapter": 15,
+      "family": "lever_detector",
+      "tier": 5
+    },
+    "job.ch15_10_exam_lock": {
+      "chapter": 15,
+      "family": "pin_tumbler",
+      "tier": 6
+    },
+    "job.refuse_ch15_04_closed_attic": {
+      "chapter": 15,
+      "family": "lever",
+      "tier": 4
+    },
+    "job.refuse_ch15_08_no_answer": {
+      "chapter": 15,
+      "family": "warded",
+      "tier": 2
+    }
+  }
+}

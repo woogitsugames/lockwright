@@ -19,10 +19,10 @@ func after_all() -> void:
 
 func _t43_jobs() -> Array:
 	var out := []
-	for f in DirAccess.get_files_at("res://data/jobs"):
+	for f in preload("res://tests/job_dirs.gd").files():
 		if not f.ends_with(".json"):
 			continue
-		var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/" + f))
+		var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(f))
 		for p in T43_IDS_PREFIX:
 			if String(j.get("id", "")).begins_with(p):
 				out.append(j)
@@ -88,9 +88,9 @@ func test_clock_repair_job_unlocks_clock_achievement() -> void:
 func test_every_career_chapter_has_a_header_with_name_and_description() -> void:
 	# D-75 (T58): the job list shows "Chapter N · name" and a description above each chapter.
 	var chapters := {}
-	for f in DirAccess.get_files_at("res://data/jobs"):
+	for f in preload("res://tests/job_dirs.gd").files():
 		if f.ends_with(".json"):
-			var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/" + f))
+			var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(f))
 			chapters[int(j.get("chapter", 0))] = true
 	var list_script: GDScript = load("res://scripts/ui/jobs_list.gd")
 	for ch: int in chapters:

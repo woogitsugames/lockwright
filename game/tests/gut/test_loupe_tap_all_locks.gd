@@ -45,9 +45,9 @@ func _scenes() -> Dictionary:
 
 
 func _first_job(fam: StringName) -> Dictionary:
-	for f in DirAccess.get_files_at("res://data/jobs"):
+	for f in preload("res://tests/job_dirs.gd").files():
 		if f.ends_with(".json"):
-			var j: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/" + f))
+			var j: Variant = JSON.parse_string(FileAccess.get_file_as_string(f))
 			if j is Dictionary and JobRun.family_for(j) == fam and JobRun.outcome_for(j) != &"talk":
 				return j
 	return {}

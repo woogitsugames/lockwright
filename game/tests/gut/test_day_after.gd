@@ -46,10 +46,10 @@ func _tap(scene: Control) -> void:
 
 func test_every_after_line_has_text_and_a_face() -> void:
 	var jobs := 0
-	for f in DirAccess.get_files_at("res://data/jobs"):
+	for f in preload("res://tests/job_dirs.gd").files():
 		if not f.ends_with(".json"):
 			continue
-		var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/" + f))
+		var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(f))
 		var after: Array = j.get("after", [])
 		assert_false(after.is_empty(), "%s has a day-after speaker" % j["id"])
 		assert_eq(DayAfter.lines_for(j).size(), after.size(), "%s: a text for every after speaker" % j["id"])
@@ -64,10 +64,10 @@ func test_every_after_line_has_text_and_a_face() -> void:
 ## scene plays (`lines/<lang>/<job_id>.after.N.ogg`), loadable as a non-looping Ogg stream.
 func test_every_after_line_has_audio_in_pl_and_en() -> void:
 	var lines := 0
-	for f in DirAccess.get_files_at("res://data/jobs"):
+	for f in preload("res://tests/job_dirs.gd").files():
 		if not f.ends_with(".json"):
 			continue
-		var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/" + f))
+		var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(f))
 		# D-111: a job whose lines are not recorded yet says so (`voice_pending`, contrib/voice/PENDING.md) and
 		# plays subtitle-only; test_chapter13_jobs.gd checks that the flag is true to the files.
 		if bool(j.get("voice_pending", false)):
@@ -90,10 +90,10 @@ func test_every_after_line_has_audio_in_pl_and_en() -> void:
 ## D-85: the wrong_floor "foreign door" scene (`<job_id>.wrong_open.N`, played by DayAfter.show_scene) is voiced too.
 func test_every_wrong_open_line_has_audio_in_pl_and_en() -> void:
 	var lines := 0
-	for f in DirAccess.get_files_at("res://data/jobs"):
+	for f in preload("res://tests/job_dirs.gd").files():
 		if not f.ends_with(".json"):
 			continue
-		var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/jobs/" + f))
+		var j: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(f))
 		var spec: Variant = j.get("wrong_open", {})
 		if typeof(spec) != TYPE_DICTIONARY:
 			continue

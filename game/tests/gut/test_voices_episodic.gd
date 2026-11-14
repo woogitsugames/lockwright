@@ -11,7 +11,7 @@ const S03_PENDING: Array[String] = []
 
 func _speakers() -> Array:
 	var out: Array = []
-	for dir in ["res://data/jobs"]:
+	for dir: String in preload("res://tests/job_dirs.gd").all():  # D-131: base game + content packs
 		for f in DirAccess.get_files_at(dir):
 			if not f.ends_with(".json"):
 				continue
