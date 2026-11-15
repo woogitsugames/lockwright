@@ -23,7 +23,9 @@ const ONE_PIN_CARDS := {&"lift": &"lift_one", &"set": &"set_one"}
 const ONE_PIN_CAPTIONS := {
 	&"tutorial.frame_lift": &"tutorial.frame_lift_one",
 	&"tutorial.frame_lift_auto": &"tutorial.frame_lift_auto_one",
+	&"tutorial.frame_click": &"tutorial.frame_click_one",  # D-134: one pin has no "next one" to find
 }
+const JOBS_LIST := "res://scenes/jobs_list.tscn"
 const CARD_W := 136.0  # VA-07: was 112x140 - the master's sketches were stamp-sized
 const CARD_H := 168.0
 ## VA-07: the practice bench behind the cards instead of a flat brown fill (dimmed for the captions)
@@ -34,6 +36,7 @@ var _back_space: Control
 
 
 func _ready() -> void:
+	JobRun.resume_tutorial_stage()  # D-134: a tutorial left half way goes on where it stopped
 	Sfx.play_ambience(&"stairwell")
 	$Bg.visible = false
 	ScreenFrame.backdrop(self, BG, 0.72)
@@ -42,7 +45,7 @@ func _ready() -> void:
 	# flat dark bands round the photo, and the back plate - placed by the same insets again - sat on
 	# the title on every phone with a cut-out.
 	var v := $Margin/Scroll/VBox
-	v.get_node("Title").text = I18n.t(&"tutorial.title")
+	v.get_node("Title").text = I18n.t(&"tutorial.done_title" if Save.get_value("tutorial_done", false) else &"tutorial.title")
 	v.get_node("Title").theme_type_variation = &"MenuTitle"
 	# D-129: fit_title instead of a fixed 30 px: at 200 % the German title broke inside a word
 	# ("Übungsschlo / ss"); it now shrinks until its longest word fits (never under 17 px x scale)
@@ -151,8 +154,14 @@ func _refresh() -> void:
 	var done: bool = Save.get_value("tutorial_done", false)
 	var v := $Margin/Scroll/VBox
 	if done:
-		v.get_node("Stage").text = I18n.t(&"tutorial.done")
-		v.get_node("StartButton").text = I18n.t(&"common.continue")
+		# D-134: the closing screen names what was done and its one plate leads to the first job.
+		# It used to say "your first real job!" over a "Continue" that led to the main menu, where
+		# "Start shift" (the plate that had started the tutorial) now opened the endless shift.
+		v.get_node("Stage").text = I18n.t(&"tutorial.done_body")
+		(v.get_node("Stage") as Label).autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		(v.get_node("Stage") as Label).add_theme_font_size_override("font_size", UiA11y.fs(19))
+		v.get_node("StartButton").text = I18n.t(&"tutorial.to_jobs")
+		Sfx.play_jingle(&"jingle_new_chapter", -8.0)
 		return
 	v.get_node("Stage").text = I18n.t(&"tutorial.stage").format({"n": stage + 1})
 	v.get_node("StartButton").text = I18n.t(&"tutorial.start")
@@ -184,7 +193,7 @@ static func frames_for(stage: int, auto: bool) -> Array:
 
 func _start_stage() -> void:
 	if Save.get_value("tutorial_done", false):
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		Events.go(JOBS_LIST)  # D-134: the first job, not the main menu
 		return
 	JobRun.start_tutorial(JobRun.tutorial_stage)
 	get_tree().change_scene_to_file(JobRun.lock_scene_path())

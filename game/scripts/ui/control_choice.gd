@@ -15,6 +15,8 @@ const SKETCH_LARGE_TEXT := 72.0
 ## D-129: landscape column (two cards side by side need more than ScreenFrame's 640 dp)
 const LANDSCAPE_COLUMN := 880.0
 
+const MenuScript := preload("res://scripts/ui/main_menu.gd")
+
 var auto_selected := true
 var _options := {}
 
@@ -27,9 +29,11 @@ func _ready() -> void:
 	_options[false] = _make_option(false, SKETCH_MANUAL, &"ui.controls.manual", &"ui.controls.manual_desc")
 	$Frame/VBox/Title.text = I18n.t(&"ui.controls.title")
 	$Frame/VBox/Note.text = I18n.t(&"ui.controls.note")
-	$Frame/VBox/ContinueButton.text = I18n.t(&"common.continue")
+	# D-134: on the first run the plate starts the first practice lock, and says so
+	$Frame/VBox/ContinueButton.text = I18n.t(&"common.continue" if Save.get_value("tutorial_done", false) else &"tutorial.start")
 	# D-129: the scene's fixed 22 px ignored the text scale (smaller than the body text at 150 %)
 	$Frame/VBox/ContinueButton.add_theme_font_size_override("font_size", UiA11y.fs(22))
+	$Frame/VBox/ContinueButton.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART  # FR at 150 % on a 360 dp phone: two lines, not a wider screen
 	$Frame/VBox/ContinueButton.pressed.connect(confirm)
 	resized.connect(_relayout)
 	_relayout()
@@ -142,11 +146,18 @@ func _update() -> void:
 		panel.find_child("Tag", true, false).visible = on
 
 
-## Saves the choice and continues to the tutorial (or the lock, if already done).
+## Saves the choice and continues: on the first run straight into the first practice lock (D-134:
+## its coach says in the lock what the stage screen's cards said before it), a tutorial left half
+## way at its stage screen, after the tutorial wherever "Start shift" leads (N-64).
 func confirm() -> void:
 	Settings.set_value("auto_tension", auto_selected)
 	Settings.set_value("control_chosen", true)
-	if Save.get_value("tutorial_done", false):
-		get_tree().change_scene_to_file("res://scenes/run_loop.tscn")  # N-64
-	else:
-		get_tree().change_scene_to_file("res://scenes/tutorial.tscn")
+	get_tree().change_scene_to_file(next_scene())
+
+
+static func next_scene() -> String:
+	var target := MenuScript.play_target()
+	if target == MenuScript.TUTORIAL and JobRun.resume_tutorial_stage() == 0:
+		JobRun.start_tutorial(0)
+		return JobRun.lock_scene_path()
+	return target

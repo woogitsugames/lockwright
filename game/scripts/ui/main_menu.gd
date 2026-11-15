@@ -19,6 +19,10 @@ const FOCUS_PAD := 8.0  # dp kept free between the focus rect and the safe area
 const CONTROL_CHOICE := "res://scenes/control_choice.tscn"
 const RUN_LOOP := "res://scenes/run_loop.tscn"
 const TUTORIAL := "res://scenes/tutorial.tscn"
+const JOBS_LIST := "res://scenes/jobs_list.tscn"
+## D-134: until this many jobs are done, "Start shift" opens the job list (the first jobs are the
+## rest of the onboarding: verification, new lock families with a coach), not the endless shift.
+const FIRST_JOBS := 3
 const TARGETS := {
 	&"jobs": "res://scenes/jobs_list.tscn",
 	&"workshop": "res://scenes/workshop.tscn",
@@ -353,15 +357,23 @@ func _go(path: String) -> void:
 
 
 func _on_play() -> void:
+	_go(play_target())
+
+
+## Where "Zacznij dyżur" leads now (also used by the control choice once the mode is saved).
+static func play_target() -> String:
 	# D-52: the control mode is chosen once, before the first tutorial
 	if not Settings.get_value("control_chosen", false):
-		_go(CONTROL_CHOICE)
-	elif Save.get_value("tutorial_done", false):
-		# N-64: "Zacznij dyżur" after the tutorial starts the shift (endless run), never a bare
-		# lock without a job (its opening had nowhere to go and the screen froze)
-		_go(RUN_LOOP)
-	else:
-		_go(TUTORIAL)
+		return CONTROL_CHOICE
+	if not Save.get_value("tutorial_done", false):
+		return TUTORIAL
+	# D-134: right after the tutorial the next step is the first real job. The same plate used to
+	# open the endless shift here, while the tutorial had just promised "your first real job".
+	if (Save.get_value("jobs_completed", []) as Array).size() < FIRST_JOBS:
+		return JOBS_LIST
+	# N-64: "Zacznij dyżur" after the tutorial starts the shift (endless run), never a bare
+	# lock without a job (its opening had nowhere to go and the screen froze)
+	return RUN_LOOP
 
 
 # ------------------------------------------------------------------ About sheet

@@ -51,7 +51,7 @@ func _ready() -> void:
 	title_label.text = I18n.t(JobRun.verify_key(&"verify.title", job))  # D-103: flat / thing / consent
 	ScreenFrame.fit_title(title_label)  # VA-08: one line when it fits, never clipped in landscape
 	job_label.text = I18n.t(job.get("i18n", {}).get("title", &"jobs.title"))
-	hint_label.text = I18n.t(&"verify.hint")
+	hint_label.text = I18n.t(hint_key())
 	accept_button.text = I18n.t(&"job.accept")
 	ask_more_button.text = I18n.t(&"verify.ask_more")
 	refuse_button.text = I18n.t(&"job.refuse")
@@ -74,6 +74,15 @@ func _ready() -> void:
 	_relayout()
 	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
 	ScreenFrame.enter($Frame/VBox/Scroll)
+
+
+## D-134: until the player has asked about a card once, the line under the title says how (tap a
+## card); the cards looked like pictures and nothing told a new player they answer questions.
+const CARD_ASKED_KEY := "verify/card_asked"
+
+
+static func hint_key() -> StringName:
+	return &"verify.hint" if bool(Save.get_value(CARD_ASKED_KEY, false)) else &"verify.hint_tap"
 
 
 ## N-91: a finished job played again changes no reputation (asking, the wrong door): it was settled.
@@ -345,6 +354,8 @@ func _ask_about(card: String) -> void:
 	if text == "":
 		return
 	_asked[card] = int(_asked.get(card, 0)) + 1
+	if not bool(Save.get_value(CARD_ASKED_KEY, false)):
+		Save.set_value(CARD_ASKED_KEY, true)
 	_show_result(text)
 	Sfx.play_ui(&"paper_turn")
 

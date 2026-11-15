@@ -588,7 +588,8 @@ func _play_lock() -> bool:
 func _act_ui(base: String) -> Variant:
 	match base:
 		"boot":
-			return false
+			# D-134: the first-run card waits for an answer (it used to go away by itself after 6 s)
+			return _press_named(["TwoButton", "ContinueButton"], "first-run card")
 		"main_menu", "workshop_menu":
 			if not bool(_al("Save").get_value("tutorial_done", false)) and _visited.get("tutorial", 0) < 4:
 				return _press_named(["PlayButton", "Play", "Tutorial"], "tutorial")

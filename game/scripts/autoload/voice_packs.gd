@@ -40,6 +40,7 @@ var _retry_n := {}                # lang -> automatic retries so far
 var _note: Control
 var _note_label: Label
 var _note_pct := -1
+var _note_said := {}              # lang -> true: the "downloading" note was shown for this download
 
 
 func _init() -> void:
@@ -149,9 +150,13 @@ func _update_note(lang: String) -> void:
 	var text := ""
 	match st:
 		"downloading", "verifying":
-			var pct := 100 if st == "verifying" else roundi(progress_ratio(lang) * 100.0)
-			if pct == _note_pct and _note != null and _note.visible:
+			# D-134: said once when the download starts, then it gets out of the way. It used to stay
+			# for the whole download (a minute or more on the first run) over the plate every screen
+			# keeps at the bottom, and over the thumbs on the lock. Progress: Settings -> Voices.
+			if _note_said.has(lang):
 				return
+			_note_said[lang] = true
+			var pct := 100 if st == "verifying" else roundi(progress_ratio(lang) * 100.0)
 			_note_pct = pct
 			text = _tr(&"voicepack.note.downloading").format({"title": _title(lang),
 					"size": size_text(pack_size(lang), _locale()), "pct": pct})
@@ -161,10 +166,20 @@ func _update_note(lang: String) -> void:
 			text = _tr(&"voicepack.note.later").format({"title": _title(lang)})
 		_:
 			return
-	_show_note(text, st in ["installed", "failed"])
+	if st in ["installed", "failed"]:
+		_note_said.erase(lang)
+	_show_note(text, true)
+
+
+## A lock is on screen (its scene has the input sampler): nothing is laid over it.
+func _on_lock_screen() -> bool:
+	var sc := get_tree().current_scene if is_inside_tree() else null
+	return sc != null and sc.get_node_or_null("InputSampler") != null
 
 
 func _show_note(text: String, then_hide: bool) -> void:
+	if _on_lock_screen():
+		return
 	if _note == null:
 		var layer := CanvasLayer.new()
 		layer.name = "VoicePackNoteLayer"
@@ -200,7 +215,8 @@ func _place_note() -> void:
 	var w := minf(r.size.x - 32.0 - ins.x - ins.z, 520.0)
 	_note.custom_minimum_size = Vector2(w, 0)
 	_note.reset_size()
-	_note.position = Vector2(r.position.x + (r.size.x - w) * 0.5, r.end.y - ins.w - 16.0 - _note.size.y)
+	# D-134: at the top, under the status bar: the bottom of every screen is where its main plate is
+	_note.position = Vector2(r.position.x + (r.size.x - w) * 0.5, r.position.y + ins.y + 8.0)
 
 
 func _hide_note() -> void:

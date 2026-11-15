@@ -199,9 +199,9 @@ workshop.not_enough,Not enough coins,Za mało monet,Zu wenig Münzen,Pas assez d
 workshop.price,Price: {0} coins,Cena: {0} monet,Preis: {0} Münzen,Prix : {0} pièces,Precio: {0} monedas
 workshop.reward_hint,Unlocks as you progress,Odblokujesz w trakcie gry,Schaltet sich mit dem Fortschritt frei,Se débloque en avançant,Se desbloquea al avanzar
 arrival.situation,What happened,Co się stało,Was passiert ist,Situation,Qué pasó
-ui.controls.title,How do you want to hold the tension?,Jak chcesz trzymać napięcie?,Wie willst du die Spannung halten?,Comment tenir la tension ?,¿Cómo quieres mantener la tensión?
+ui.controls.title,One thumb or two?,Jeden kciuk czy dwa?,Ein Daumen oder zwei?,Un pouce ou deux ?,¿Un pulgar o dos?
 ui.controls.auto,Automatic tension — for beginners,Napięcie automatyczne — dla zaczynających,Automatische Spannung — für Einsteiger,Tension auto — pour débuter,Tensión automática — para empezar
-ui.controls.auto_desc,The tension holds itself at a safe level; one thumb guides the pick.,"Napięcie trzyma się samo na bezpiecznym poziomie, a ty prowadzisz wytrych jednym kciukiem.",Die Spannung hält sich selbst auf sicherem Niveau; ein Daumen führt den Haken.,La tension reste à un niveau sûr ; un pouce guide le crochet.,La tensión se regula sola; un pulgar guía la ganzúa.
+ui.controls.auto_desc,The game holds the tension. One thumb guides the pick.,Gra trzyma napięcie. Ty prowadzisz wytrych jednym kciukiem.,Das Spiel hält die Spannung. Ein Daumen führt den Haken.,Le jeu maintient la tension. Un pouce guide le crochet.,El juego mantiene la tensión. Un pulgar guía la ganzúa.
 ui.controls.manual,Two thumbs — full feel,Dwa kciuki — pełne wyczucie,Zwei Daumen — volles Gefühl,Deux pouces — tout sentir,Dos pulgares — control total
 ui.controls.manual_desc,"Left thumb holds the tension, right thumb lifts the pins.","Lewy kciuk trzyma napięcie, prawy podnosi piny.","Linker Daumen hält die Spannung, rechter hebt die Stifte.",Le pouce gauche maintient la tension ; le droit lève les goupilles.,Pulgar izquierdo: tensión; derecho: eleva los pernos.
 ui.controls.note,You can change this anytime in Settings → Controls.,Zmienisz to w każdej chwili w Ustawieniach → Sterowanie.,Jederzeit änderbar unter Einstellungen → Steuerung.,"Modifiable dans Réglages → Commandes, à tout moment.",Puedes cambiarlo en Ajustes → Controles cuando quieras.
@@ -245,9 +245,9 @@ tutorial.s1_overset,Too high. Release tension; try more gently.,Za wysoko. Puś�
 tutorial.s1_overset_auto,Too high — tap the left side to let go of the tension,"Za wysoko — stuknij lewą stronę, żeby puścić napięcie","Zu hoch – tipp links, um die Spannung zu lösen",Trop haut : touche à gauche pour relâcher.,Muy alto: toca a la izquierda para soltar tensión.
 tutorial.s1_open,It's open. Nicely done. Steady hands.,"Otwarte. Dobra robota, spokojna ręka.",Offen. Gut gemacht. Ruhige Hand.,"Ouvert. Bravo, la main tranquille.",Abierto. Bien hecho. Mano tranquila.
 tutorial.frame_tension,Left thumb: gently up — tension.,Lewy kciuk: lekko w górę — napięcie.,Linker Daumen: sanft hoch – Spannung.,"Pouce gauche : monte doucement, tension.","Pulgar izquierdo: arriba con suavidad, tensión."
-tutorial.frame_lift,"Right thumb: sideways to select, up to lift.","Prawy: w bok wybór, w górę podnoszenie.","Rechts: seitlich wählen, nach oben heben.","Pouce droit : côté pour choisir, haut pour lever.","Pulgar derecho: al lado eliges, arriba elevas."
+tutorial.frame_lift,"Right thumb: sideways to choose, up to lift.","Prawy kciuk: w bok wybierz, w górę unieś.","Rechter Daumen: seitlich wählen, hochheben.","Pouce droit : côté pour choisir, haut pour lever.","Pulgar derecho: al lado eliges, arriba elevas."
 tutorial.frame_click,Click — pin set. Find the next.,Klik — pin osiadł. Szukaj następnego.,Klick – Stift sitzt. Such den nächsten.,"Clic, goupille posée. À la suivante.",Clic: perno colocado. Sigue con otro.
-tutorial.frame_lift_auto,"Slide to pick a pin, push up. The game holds tension.","W bok wybór pinu, w górę unoszenie. Napięcie trzyma gra.","Seitlich wählen, hoch heben. Spannung hält das Spiel.",Un pouce choisit et lève ; le jeu garde la tension.,Un pulgar elige y eleva; el juego da tensión.
+tutorial.frame_lift_auto,"Slide to pick a pin, push up. The game holds tension.","W bok wybierz pin, w górę unieś. Napięcie trzyma gra.","Seitlich wählen, hoch heben. Spannung hält das Spiel.",Un pouce choisit et lève ; le jeu garde la tension.,Un pulgar elige y eleva; el juego da tensión.
 tutorial.note_game,"A game, not a course. The parts are invented.","To gra, nie kurs. Mechanizmy są wymyślone.","Ein Spiel, kein Kurs. Die Mechanik ist erfunden.","Un jeu, pas un cours. Les pièces sont imaginaires.","Un juego, no un curso. Piezas inventadas."
 lock.zone_tension,tension,napięcie,Spannung,tension,tensión
 lock.flap_pause,pause,pauza,Pause,pause,pausa
@@ -535,8 +535,8 @@ furnishing.exhibit_shelf.name,Exhibit shelf,Półka z eksponatami,Regal mit Expo
 furnishing.exhibit_shelf.desc,"An oak shelf on the pegboard: an old rim lock, a big iron key and a ring padlock.","Dębowa półka na tablicy: stary zamek nawierzchniowy, duży żelazny klucz i kłódka z pierścieniami.","Ein Eichenregal an der Lochwand: ein altes Kastenschloss, ein großer Eisenschlüssel und ein Ringschloss.","Une étagère en chêne sur le panneau : une vieille serrure en applique, une grosse clé en fer et un cadenas à anneaux.","Un estante de roble en el panel: una vieja cerradura de sobreponer, una gran llave de hierro y un candado de anillas."
 jobs.chapter,Chapter {0},Rozdział {0},Kapitel {0},Chapitre {0},Capítulo {0}
 jobs.chapter_named,Chapter {0} · {1},Rozdział {0} · {1},Kapitel {0} · {1},Chapitre {0} · {1},Capítulo {0} · {1}
-tutorial.frame_lift_one,"Right thumb under the pin, up to lift.","Prawy kciuk pod pin, w górę podnoszenie.","Rechter Daumen unter den Stift, nach oben heben.","Pouce droit sous la goupille, monte pour la lever.",Pulgar derecho bajo el perno; sube para elevarlo.
-tutorial.frame_lift_auto_one,"Thumb under the pin, push up. Game holds tension.","Kciuk pod pin, w górę unoszenie. Napięcie trzyma gra.","Daumen unter den Stift, hoch. Spannung hält das Spiel.","Pouce sous la goupille, monte ; le jeu tient la tension.","Pulgar bajo el perno, arriba; el juego da tensión."
+tutorial.frame_lift_one,"Right thumb under the pin, then slowly up.","Prawy kciuk pod pin, potem powoli w górę.","Rechter Daumen unter den Stift, dann langsam hoch.","Pouce droit sous la goupille, puis monte doucement.",Pulgar derecho bajo el perno y luego súbelo despacio.
+tutorial.frame_lift_auto_one,"Thumb under the pin, push up. Game holds tension.","Kciuk pod pin, potem powoli w górę. Napięcie trzyma gra.","Daumen unter den Stift, hoch. Spannung hält das Spiel.","Pouce sous la goupille, monte ; le jeu tient la tension.","Pulgar bajo el perno, arriba; el juego da tensión."
 dayafter.title,The next day,Następnego dnia,Am nächsten Tag,Le lendemain,Al día siguiente
 dayafter.close,Back to work,Wracam do pracy,Zurück an die Arbeit,Retour au travail,De vuelta al trabajo
 workshop.tab_practice,Practice,Ćwiczenia,Übungen,Exercices,Ejercicios
@@ -673,3 +673,10 @@ a11y.expanded,expanded,rozwinięty,aufgeklappt,déplié,desplegado
 a11y.collapsed,collapsed,zwinięty,eingeklappt,replié,plegado
 family.wooden_pin.name,Wooden pin lock,Drewniany zamek kołkowy,Holzstiftschloss,Serrure à chevilles en bois,Cerradura de clavijas de madera
 family.ring_combo.name,Letter-ring lock,Zamek pierścieniowy,Buchstabenringschloss,Cadenas à bagues,Candado de anillos
+boot.calib_again,Again,Jeszcze raz,Noch einmal,Encore une fois,Otra vez
+tutorial.frame_click_one,Click — the pin is set. The lock opens.,Klik — pin osiadł. Zamek się otwiera.,Klick – der Stift sitzt. Das Schloss geht auf.,"Clic, goupille posée. La serrure s'ouvre.",Clic: perno colocado. La cerradura se abre.
+tutorial.done_title,Tutorial complete,Samouczek ukończony,Einführung abgeschlossen,Tutoriel terminé,Tutorial completado
+tutorial.done_body,Three locks open. Now your first real job.,Trzy zamki otwarte. Teraz pierwsze prawdziwe zlecenie.,Drei Schlösser offen. Jetzt der erste echte Auftrag.,Trois serrures ouvertes. Première vraie intervention.,"Tres cerraduras abiertas. Ahora, tu primer encargo real."
+tutorial.to_jobs,First job,Pierwsze zlecenie,Erster Auftrag,Première intervention,Primer encargo
+pause.skip_tutorial,Skip the tutorial,Pomiń samouczek,Einführung überspringen,Passer le tutoriel,Saltar el tutorial
+verify.hint_tap,Tap a card to ask about it. Then decide.,"Stuknij kartę, żeby o nią zapytać. Potem zdecyduj.","Tippe eine Karte an, um nachzufragen. Dann entscheide.",Touche une carte pour poser une question. Puis décide.,Toca una tarjeta para preguntar. Luego decide.

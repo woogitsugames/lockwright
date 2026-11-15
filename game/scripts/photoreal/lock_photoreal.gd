@@ -64,6 +64,7 @@ var open_payoff_s := LockFeel.open_payoff_s()
 var _cue_lift := 0.0
 var _cue_peak := 0.0
 const NO_TENSION := 0.1
+const TUTORIAL_OPEN_JINGLE_DB := -8.0
 const AUTO_SPOOL_LEVEL := 0.17  # D-52: counter-rotation band (cr 0.12–0.21) while a spool is caught
 
 
@@ -467,6 +468,10 @@ func go_back() -> bool:
 
 func _on_open() -> void:
 	_note_lesson_open()
+	if in_tutorial():
+		# D-134: a practice lock has no receipt screen, so its opening was the only one in the game
+		# without the "door open" phrase; it now rings over the plug's turn (music bus, quiet)
+		Sfx.play_jingle(&"jingle_door_open", TUTORIAL_OPEN_JINGLE_DB)
 	# tutorial: let the plug turn and the praise show before the stage screen (N-61 step 6)
 	if coach != null and coach.guided:
 		_open_pending = 1.8
@@ -719,6 +724,8 @@ func _build_pause_cover() -> void:
 		[&"pause.quit", _on_quit, &"burgundy"]]
 	if not pre_lesson.is_empty():
 		entries.insert(2, [&"pause.skip_lesson", _on_skip_lesson, &"navy"])  # D-121: the lesson is optional
+	elif in_tutorial():
+		entries.insert(2, [&"pause.skip_tutorial", _on_skip_tutorial, &"navy"])  # D-134: so is the tutorial
 	var buttons := PausePanel.build(pause_cover as ColorRect, entries)
 	_pause_dark_button = buttons[&"pause.dark_mode"]
 
@@ -740,6 +747,19 @@ func _on_resume() -> void:
 func _on_skip_lesson() -> void:
 	get_tree().paused = false
 	_finish_pre_lesson()
+
+
+## A practice lock of the tutorial S1-S3 started by the game (not the dev switch --lw-tutorial).
+static func in_tutorial() -> bool:
+	return JobRun.mode == &"tutorial" and not JobRun.current_job.is_empty()
+
+
+## D-134: a player who knows the game (a reinstall, a second phone) leaves the tutorial for the job
+## list; the first jobs still carry their coach and the hint ladder.
+func _on_skip_tutorial() -> void:
+	get_tree().paused = false
+	JobRun.skip_tutorial()
+	Events.go(Events.JOBS_LIST)
 
 
 func _on_dark() -> void:

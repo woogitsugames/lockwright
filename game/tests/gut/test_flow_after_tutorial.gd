@@ -62,6 +62,7 @@ func _after_tutorial(mode: StringName) -> void:
 	# S3 opened: JobRun.complete() cleared the job; mode is still "tutorial" in the same
 	# session, or "job" after the app was restarted (static JobRun reset)
 	Save.set_value("tutorial_done", true)
+	Save.set_value("jobs_completed", ["job.a", "job.b", "job.c"])  # D-134: before the first jobs are done "Start shift" opens the job list
 	Settings.set_value(&"control_chosen", true)
 	JobRun.mode = mode
 	JobRun.tutorial_stage = 3 if mode == &"tutorial" else 0

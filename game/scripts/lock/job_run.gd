@@ -186,9 +186,27 @@ static func start_tutorial(stage: int) -> void:
 	last_tip = 0
 
 
+## D-134: the stage reached is saved, so a tutorial left after S1 or S2 goes on from there after the
+## app was closed (the static above starts at 0 again). Returns the stage to play next.
+static func resume_tutorial_stage() -> int:
+	tutorial_stage = clampi(maxi(tutorial_stage, int(Save.get_value("tutorial_stage", 0))), 0, 3)
+	return tutorial_stage
+
+
+## The tutorial is over without playing it to the end (pause -> "Skip the tutorial", D-134).
+static func skip_tutorial() -> void:
+	tutorial_stage = 3
+	Save.set_value("tutorial_stage", 3)
+	Save.set_value("tutorial_done", true)
+	Save.set_value("tutorial_skipped", true)
+	current_job = {}
+	mode = &"job"
+
+
 static func complete() -> void:
 	if mode == &"tutorial":
 		tutorial_stage += 1
+		Save.set_value("tutorial_stage", tutorial_stage)
 		if tutorial_stage >= 3:
 			Save.set_value("tutorial_done", true)
 		current_job = {}

@@ -44,25 +44,43 @@ offset_bottom = 140.0
 
 [node name="VBox" type="VBoxContainer" parent="CalibPanel"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 12
 
 [node name="Question" type="Label" parent="CalibPanel/VBox"]
 layout_mode = 2
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="TwoButton" type="Button" parent="CalibPanel/VBox"]
+[node name="Answers" type="HBoxContainer" parent="CalibPanel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TwoButton" type="Button" parent="CalibPanel/VBox/Answers"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 72)
+
+[node name="OneButton" type="Button" parent="CalibPanel/VBox/Answers"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 72)
+
+[node name="NoneButton" type="Button" parent="CalibPanel/VBox/Answers"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 72)
+
+[node name="AgainButton" type="Button" parent="CalibPanel/VBox"]
 layout_mode = 2
 custom_minimum_size = Vector2(0, 48)
 
-[node name="OneButton" type="Button" parent="CalibPanel/VBox"]
+[node name="ContinueButton" type="Button" parent="CalibPanel/VBox"]
+visible = false
 layout_mode = 2
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 52)
 
-[node name="NoneButton" type="Button" parent="CalibPanel/VBox"]
+[node name="Note" type="Label" parent="CalibPanel/VBox"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 48)
-
-[node name="SkipButton" type="Button" parent="CalibPanel/VBox"]
-layout_mode = 2
-custom_minimum_size = Vector2(0, 48)
+theme_type_variation = &"Caption"
+autowrap_mode = 2
+horizontal_alignment = 1
