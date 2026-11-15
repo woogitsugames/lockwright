@@ -83,6 +83,8 @@ func _fetch_pack() -> bool:
 			continue
 		var row := current_scene.find_child("Pack_%s_%d" % [id, int(offer["chapter"])], true, false)
 		var action := row.get_node_or_null("Action") as BaseButton if row != null else null
+		if action != null and not action.is_visible_in_tree() and _open_chapter(int(offer["chapter"])):
+			return true  # D-132: the row sits in a folded chapter
 		if action == null or not action.is_visible_in_tree() or action.disabled:
 			continue
 		_attempts["pack:" + id] = _attempts.get("pack:" + id, 0) + 1
@@ -90,6 +92,18 @@ func _fetch_pack() -> bool:
 		_press(action, "download pack " + id)
 		return true
 	return false
+
+
+## D-132: taps the header of a folded chapter of the job list. False when there is no such header.
+func _open_chapter(ch: int) -> bool:
+	var header := current_scene.find_child("Chapter%d" % ch, true, false)
+	var toggle := header.find_child("Toggle", true, false) as BaseButton if header != null else null
+	if toggle == null or not toggle.is_visible_in_tree() or _attempts.get("chapter:%d" % ch, 0) >= 3:
+		return false
+	_attempts["chapter:%d" % ch] = _attempts.get("chapter:%d" % ch, 0) + 1
+	_same_press = 0  # one header per chapter: not a dead button
+	_press(toggle, "open chapter %d" % ch)
+	return true
 
 
 func _jr() -> GDScript:
@@ -596,12 +610,15 @@ func _act_ui(base: String) -> Variant:
 					return true
 				return _press_named(["BackButton", "Back"], "no jobs left")
 			for want in pending:
-				var title: String = _al("I18n").t(want.get("i18n", {}).get("title", &"jobs.title"))
-				for b in _buttons():
-					if b is Button and (b.text == title or b.text.ends_with(title)):
-						_attempts[want["id"]] = _attempts.get(want["id"], 0) + 1
-						_press(b, "job " + want["id"])
-						return true
+				# D-132: a plate is the button Job_<id> (its title is drawn on it); a job in a folded
+				# chapter is reached like a player does it: tap the chapter header first
+				var plate := current_scene.find_child("Job_" + String(want["id"]).trim_prefix("job."), true, false) as BaseButton
+				if plate != null and not plate.is_visible_in_tree() and _open_chapter(int(want.get("chapter", 0))):
+					return true
+				if plate != null and plate.is_visible_in_tree() and not plate.disabled:
+					_attempts[want["id"]] = _attempts.get(want["id"], 0) + 1
+					_press(plate, "job " + want["id"])
+					return true
 				# not on the list (hidden by the game, e.g. family not implemented): note once and skip it
 				if not report["not_listed"].has(want["id"]):
 					report["not_listed"].append(want["id"])

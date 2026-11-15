@@ -390,3 +390,12 @@ Own Blender 4.2.9 LTS / Cycles **CPU** renders (cloud container, no GPU; 1080x19
 | `game/packs/ch13/arrival/ch13_01_balcony_boxes/day/plate.webp` (content pack `ch13` since D-131; was `game/assets/arrival/…`; also shown by `job.refuse_ch13_08_found_cashbox` through `arrival_from`) | `art/blender/arrival_place.py --job ch13_01_balcony_boxes --mode still --still-res 1080x1920 --still-spp 48` (new kit `cellar`), `art/tools/arrival_export.py --job ch13_01_balcony_boxes --data game/packs/ch13/arrival_scenes.json` (still only, no climb frames; WebP q80, lossy import 0.8) |
 | `game/packs/ch13/arrival/ch13_10_courtyard_door/day/plate.webp` (content pack `ch13` since D-131) | `art/blender/arrival_scene.py --job ch13_10_courtyard_door --mode still --still-res 1080x1920 --still-spp 48` (`door.glazed`, `drop`, props `trestle_tables`, `poster`), `art/tools/arrival_export.py --job ch13_10_courtyard_door --data game/packs/ch13/arrival_scenes.json` (still only) |
 | `art/renders/arrival/ch13_01_balcony_boxes_day_{hold.png,hold.json}`, `ch13_10_courtyard_door_day_{hold.png,hold.json,hold_depth.png}`, `arrival_ch13_board.jpg` | same renders; board with Pillow (two new stills next to `museum_time_lock` and `dollhouse_wooden_lock`) |
+
+## Job list: lock family signs — 2026-11-15 (D-132)
+
+No image files: the 15 signs are drawn in code (strokes in a unit box, one ink, chalk grain shader of `ChalkLayer`, D-80). Own work of the project; no icon font, no emoji, no third-party glyphs.
+
+| Assets | Source / tool |
+|---|---|
+| `game/scripts/ui/family_mark.gd` (`FamilyMark.strokes()`: 15 line drawings) | written by hand in GDScript; review sheet `game/tests/family_mark_sheet.tscn` |
+| `docs/handoff/device-tests/fixes/joblist/*.jpg` (10) | screenshots of the game (Godot 4.7.2, xvfb + opengl3, `game/tests/shot_scene.gd`), before / after sheets and the greyscale copy of the sign sheet with Pillow; own work of the project |

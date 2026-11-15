@@ -17,6 +17,7 @@ extends Node
 ## ("CUT <path> <text>") or that sticks out of the window ("OUT <path> <rect>").
 ## D-133: --ach=all|N|id,id marks achievements as earned (in memory), --ach-open=<id> opens the card of one on the
 ## Showcase shelf (ids without the "achievement." prefix); --tab=shelf opens the shelf.
+## D-132: --open=1,3 opens those chapters of the job list, --fold=1 folds them (jobs_list.chapter_open, as a tap on the header does).
 ## --size=WxH sets the window (as tests/screens.gd); --tab=furnishings opens the workshop's Wyposażenie tab; --tutorial-stage=N sets JobRun.tutorial_stage first; --auto=1 sets Settings auto_tension (not saved).
 
 func _ready() -> void:
@@ -51,6 +52,9 @@ func _ready() -> void:
 				at[id] = "2026-11-%02d" % (3 + got.size() % 12)
 		Save.data["achievements"] = got
 		Save.data["achievements_at"] = at
+	for flag in ["open", "fold"]:  # D-132: chapters of the job list opened / folded by hand
+		for ch in String(a.get(flag, "")).split(",", false):
+			load("res://scripts/ui/jobs_list.gd").chapter_open[int(ch)] = flag == "open"
 	if a.get("first-run", "") == "1":  # boot: the notice card, then the two-tap calibration
 		Save.data["seen_notice"] = false
 		Settings._cfg["calibrated"] = false

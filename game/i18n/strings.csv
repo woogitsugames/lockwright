@@ -654,3 +654,22 @@ ach.earned,Earned,Zdobyte,Erhalten,Obtenu,Conseguido
 ach.earned_on,Earned on {date},Zdobyte {date},Erhalten am {date},Obtenu le {date},Conseguido el {date}
 ach.not_earned,Not earned yet,Jeszcze niezdobyte,Noch nicht erhalten,Pas encore obtenu,Aún sin conseguir
 ach.date_fmt,{y}-{m}-{d},{d}.{m}.{y},{d}.{m}.{y},{d}/{m}/{y},{d}/{m}/{y}
+jobs.time.day,day,dzień,Tag,jour,día
+jobs.time.evening,evening,wieczór,Abend,soir,tarde
+jobs.time.night,night,noc,Nacht,nuit,noche
+jobs.time.rainy,rainy evening,deszczowy wieczór,Regenabend,soir de pluie,tarde de lluvia
+jobs.place.apartment,stairwell,klatka,Treppenhaus,palier,rellano
+jobs.place.attic,attic,strych,Dachboden,grenier,desván
+jobs.place.cellar,cellar,piwnica,Keller,cave,sótano
+jobs.place.kiosk,kiosk,kiosk,Kiosk,kiosque,quiosco
+jobs.place.locker,back room,zaplecze,Nebenraum,arrière-salle,trastienda
+jobs.place.gate,gate,brama,Hoftor,portail,portón
+jobs.place.workshop,workshop,warsztat,Werkstatt,atelier,taller
+jobs.place.yard,courtyard,podwórko,Hof,cour,patio
+jobs.place.museum,museum,muzeum,Museum,musée,museo
+jobs.meta.coins,{n} coins,{n} monet,{n} Münzen,{n} pièces,{n} monedas
+jobs.chapter_count,{0} of {1},{0} z {1},{0} von {1},{0} sur {1},{0} de {1}
+a11y.expanded,expanded,rozwinięty,aufgeklappt,déplié,desplegado
+a11y.collapsed,collapsed,zwinięty,eingeklappt,replié,plegado
+family.wooden_pin.name,Wooden pin lock,Drewniany zamek kołkowy,Holzstiftschloss,Serrure à chevilles en bois,Cerradura de clavijas de madera
+family.ring_combo.name,Letter-ring lock,Zamek pierścieniowy,Buchstabenringschloss,Cadenas à bagues,Candado de anillos

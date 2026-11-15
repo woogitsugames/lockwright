@@ -720,7 +720,11 @@ func test_job_list_offers_the_chapter_and_shows_its_jobs_after_download() -> voi
 	var plate := list.find_child("Job_cp_" + _tag, true, false) as Button
 	assert_not_null(plate, "the pack's job has its plate")
 	if plate != null:
-		assert_string_contains(plate.text, "Pack job" if I18n.current_language() == "en" else "")
+		# D-132: the title is drawn on the plate (Title), the button itself has no text
+		assert_string_contains((plate.get_parent().find_child("Title", true, false) as Label).text, "Pack job" if I18n.current_language() == "en" else "")
+		if not plate.is_visible_in_tree():  # a chapter further on is folded: a tap on its header opens it
+			(list.find_child("Chapter%d" % CHAPTER, true, false).find_child("Toggle", true, false) as Button).pressed.emit()
+		assert_true(plate.is_visible_in_tree(), "the plate can be reached")
 	assert_engine_error_count(0)
 
 

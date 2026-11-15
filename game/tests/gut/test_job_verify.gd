@@ -202,8 +202,9 @@ func test_wrong_open_jobs_leave_the_list() -> void:
 	vp.add_child(list)
 	await get_tree().process_frame
 	var title := I18n.t(&"job.wrong_floor.title")
-	for b in list.find_children("*", "Button", true, false):
-		assert_false((b as Button).text.begins_with(title), "job.wrong_floor is not on the list")
+	assert_null(list.find_child("Job_wrong_floor", true, false), "job.wrong_floor is not on the list")
+	for l in list.find_children("Title", "Label", true, false):  # D-132: titles are drawn on the plates
+		assert_false((l as Label).text.begins_with(title), "job.wrong_floor is not on the list")
 
 
 func test_declining_a_normal_job_gives_feedback() -> void:

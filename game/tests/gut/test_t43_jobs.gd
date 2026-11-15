@@ -97,6 +97,8 @@ func test_every_career_chapter_has_a_header_with_name_and_description() -> void:
 		assert_true(I18n.has_key(StringName("chapter.%d.name" % ch)), "chapter.%d.name" % ch)
 		assert_true(I18n.has_key(StringName("chapter.%d.desc" % ch)), "chapter.%d.desc" % ch)
 		var header: VBoxContainer = list_script.chapter_header(ch)
-		assert_eq(header.get_child_count(), 2, "name + description")
-		assert_string_contains((header.get_child(0) as Label).text, I18n.t(StringName("chapter.%d.name" % ch)))
+		# D-132: the name sits on the header's fold switch (Head/Toggle), the description under it
+		assert_eq(header.get_child_count(), 2, "name line + description")
+		assert_string_contains((header.find_child("Title", true, false) as Label).text, I18n.t(StringName("chapter.%d.name" % ch)))
+		assert_eq((header.find_child("Desc", true, false) as Label).text, I18n.t(StringName("chapter.%d.desc" % ch)))
 		header.free()
