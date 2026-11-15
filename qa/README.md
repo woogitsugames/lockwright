@@ -62,3 +62,13 @@ Statycznie, na danych i kodzie gry (mapowania czytane z `job_arrival.gd` i `sfx.
 gra go szuka; każdy dźwięk z `data/haptics_patterns.json` (komplet wariantów dla co najmniej jednego materiału),
 z `AMBIENCES` i z każdego wywołania `Sfx.play_*(&"…")` istnieje. Raport: `qa/out/assets/report.md`, w CI krok w
 `qa-career` (ostrzeżenia ⚠, bez czerwonego runu). Lokalnie: `python3 qa/assets/check_assets.py`.
+
+## Przejście onboardingu (D-134)
+
+`qa/run_onboarding.sh [godot] [katalog-wyników]` — świeża instalacja od startu do listy po 3 zleceniach
+(`qa/bot/onboarding.gd`), na `game/` w miejscu (projekt musi być zaimportowany i mieć GDExtension lockcore),
+z pustym katalogiem zapisu. Liczy stuknięcia, ekrany, sekundy czekania, słowa na ekranie i czas do
+pierwszego otwartego zamka; wynik: `report.json`, `walk.txt` i tabela na wyjściu.
+Zmienne: `QA_PROFILE=feel|clumsy|solver`, `QA_LANG=pl|en`, `QA_JOBS=n`, `QA_TWO_THUMBS=1`,
+`QA_REPLAY_TOOL` (domyślnie `lockcore/build/replay_tool`), `QA_SHOTS=katalog` (zrzut każdego ekranu, wymaga `xvfb-run`).
+Audyt z liczbami: `docs/handoff/ONBOARDING-AUDIT-2026-11-15.md`.
