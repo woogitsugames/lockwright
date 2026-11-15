@@ -76,7 +76,6 @@ func _ready() -> void:
 		sheet.bg_color.a = ABOUT_SHEET_ALPHA
 		about_panel.add_theme_stylebox_override(&"panel", sheet)
 	notice_label.gui_input.connect(_on_about_input)  # 5 taps = dev flag "po premierze" (task 11)
-	I18n.language_changed.connect(_refresh)
 	resized.connect(_relayout)
 	_refresh()
 	ScreenFrame.wire_sounds(self)  # S05 plate sounds on every zone
@@ -84,6 +83,19 @@ func _ready() -> void:
 
 
 # ------------------------------------------------------------------ layout / choice
+
+
+## D-133: the menu listens to the language only while it is in the scene tree. A menu taken out of
+## the tree without being freed (a scene change in a test, an orphan) used to answer every settings
+## change with a relayout and an engine error ("!is_inside_tree()", the flaky test of D-130 / D-131).
+func _enter_tree() -> void:
+	if not I18n.language_changed.is_connected(_refresh):
+		I18n.language_changed.connect(_refresh)
+
+
+func _exit_tree() -> void:
+	if I18n.language_changed.is_connected(_refresh):
+		I18n.language_changed.disconnect(_refresh)
 
 
 static func load_layout() -> Dictionary:
@@ -166,6 +178,8 @@ func _refresh() -> void:
 
 
 func _relayout() -> void:
+	if not is_inside_tree():
+		return
 	var vp := get_viewport_rect().size
 	if vp.x <= 0.0 or vp.y <= 0.0:
 		return

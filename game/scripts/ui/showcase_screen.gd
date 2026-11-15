@@ -6,6 +6,79 @@ extends Control
 
 const SHOWCASE_DIR := "res://data/showcase"
 
+## D-133 (VQA-17): two tabs under the header, as in the workshop: the exhibits (historical notes)
+## and the achievement shelf.
+var shelf: AchievementShelf
+var card: AchievementShelf.Card
+var _tabs := {}
+var _shelf_scroll: ScrollContainer
+var _tab := "exhibits"
+
+
+func _build_tabs() -> void:
+	var row := HBoxContainer.new()
+	row.name = "Tabs"
+	row.add_theme_constant_override("separation", 8)
+	$Frame/VBox.add_child(row)
+	$Frame/VBox.move_child(row, $Frame/VBox/Header.get_index() + 1)
+	var group := ButtonGroup.new()
+	for spec: Array in [["exhibits", &"showcase.tab_exhibits"], ["shelf", &"showcase.tab_shelf"]]:
+		var b := Button.new()
+		b.name = "Tab_" + spec[0]
+		b.text = I18n.t(spec[1])
+		b.toggle_mode = true
+		b.button_group = group
+		b.custom_minimum_size = Vector2(0, 48)
+		b.theme_type_variation = &"TabPlate"
+		b.add_theme_font_size_override("font_size", UiA11y.fs(16))
+		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		b.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+		b.clip_text = true
+		ScreenFrame.fit_button_text(b, 16, 11)
+		ScreenFrame.tab_mark(b)
+		var tab: String = spec[0]
+		b.toggled.connect(func(on: bool) -> void:
+			if on:
+				show_tab(tab))
+		row.add_child(b)
+		_tabs[tab] = b
+	_shelf_scroll = ScrollContainer.new()
+	_shelf_scroll.name = "ShelfScroll"
+	_shelf_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_shelf_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	_shelf_scroll.scroll_deadzone = 12
+	_shelf_scroll.visible = false
+	$Frame/VBox.add_child(_shelf_scroll)
+	shelf = AchievementShelf.new()
+	shelf.name = "Shelf"
+	shelf.picked.connect(func(def: Dictionary, spot: Control) -> void: card.open(def, spot))
+	_shelf_scroll.add_child(shelf)
+	card = AchievementShelf.Card.new()
+	add_child(card)
+
+
+## "exhibits" (historical notes) or "shelf" (achievements).
+func show_tab(tab: String) -> void:
+	_tab = tab if _tabs.has(tab) else "exhibits"
+	for t: String in _tabs:
+		(_tabs[t] as Button).set_pressed_no_signal(t == _tab)
+	$Frame/VBox/Scroll.visible = _tab == "exhibits"
+	_shelf_scroll.visible = _tab == "shelf"
+
+
+## The card of one achievement (also for screenshots: shot_scene --ach-open=<id>).
+func show_detail(id: String) -> void:
+	show_tab("shelf")
+	card.open(Achievements.def_by_id(id), shelf.spot_for(id))
+
+
+## Nav (Android Back, Esc): an open card closes first.
+func go_back() -> bool:
+	if card != null and card.visible:
+		card.close()
+		return true
+	return false
+
 
 func _show_notebook_entry() -> void:
 	var keys: Array = []
@@ -137,6 +210,8 @@ func _ready() -> void:
 	$Frame/VBox/Header/Title.text = I18n.t(&"showcase.title")
 	back_button.text = "‹ " + I18n.t(&"common.back")
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
+	_build_tabs()
+	show_tab("exhibits")
 	_show_notebook_entry()  # task 10: master's notebook entries (contrib/gpt/T10 notebook_extra.csv)
 	for path in DirAccess.get_files_at(SHOWCASE_DIR):
 		if not path.ends_with(".json"):

@@ -15,6 +15,8 @@ extends Node
 ## after the wait; --show=NodePath[,NodePath] makes nodes of the scene visible; --done=N|all marks the first N jobs
 ## (list order) as completed, in memory only; --press-child=NodePath presses the first button under a node; --wait=SECONDS waits in real time after the frames; --day-after=<job id> queues a "day after" scene; --first-run=1 shows boot as on a first launch; --pack-row=N adds the row of a chapter N that is not on the phone to the job list; --overflow=1 prints every visible Label / Button whose text is cut
 ## ("CUT <path> <text>") or that sticks out of the window ("OUT <path> <rect>").
+## D-133: --ach=all|N|id,id marks achievements as earned (in memory), --ach-open=<id> opens the card of one on the
+## Showcase shelf (ids without the "achievement." prefix); --tab=shelf opens the shelf.
 ## --size=WxH sets the window (as tests/screens.gd); --tab=furnishings opens the workshop's Wyposażenie tab; --tutorial-stage=N sets JobRun.tutorial_stage first; --auto=1 sets Settings auto_tension (not saved).
 
 func _ready() -> void:
@@ -39,6 +41,16 @@ func _ready() -> void:
 			if a["done"] == "all" or ids.size() < int(a["done"]):
 				ids.append(j.get("id", ""))
 		Save.data["jobs_completed"] = ids
+	if a.has("ach"):  # D-133: --ach=all|N|id,id marks achievements as earned (memory only), dated today and before
+		var got := []
+		var at := {}
+		for d: Dictionary in Achievements.defs:
+			var id := String(d.get("id", ""))
+			if a["ach"] == "all" or (String(a["ach"]).is_valid_int() and got.size() < int(a["ach"]) and Achievements.supported(d)) or id.trim_prefix("achievement.") in String(a["ach"]).split(","):
+				got.append(id)
+				at[id] = "2026-11-%02d" % (3 + got.size() % 12)
+		Save.data["achievements"] = got
+		Save.data["achievements_at"] = at
 	if a.get("first-run", "") == "1":  # boot: the notice card, then the two-tap calibration
 		Save.data["seen_notice"] = false
 		Settings._cfg["calibrated"] = false
@@ -130,6 +142,8 @@ func _ready() -> void:
 			for c in holder.find_children("*", "BaseButton", true, false):
 				(c as BaseButton).pressed.emit()
 				break
+	if a.has("ach-open") and scene.has_method("show_detail"):  # D-133: the card of one achievement
+		scene.show_detail("achievement." + String(a["ach-open"]))
 	if a.has("call"):
 		for m in String(a["call"]).split(",", false):
 			scene.call(m)
@@ -145,7 +159,7 @@ func _ready() -> void:
 			var sc := n as ScrollContainer
 			if sc.is_visible_in_tree():
 				sc.scroll_vertical = int(sc.get_v_scroll_bar().max_value) if a["scroll"] == "end" else int(a["scroll"])
-	if a.has("call") or a.has("show") or a.has("scroll"):
+	if a.has("call") or a.has("show") or a.has("scroll") or a.has("ach-open"):
 		for i in 12:
 			await get_tree().process_frame
 	if a.get("overflow", "") == "1":
@@ -186,7 +200,7 @@ func _report_overflow() -> void:
 			var cut := l.get_visible_line_count() < l.get_line_count()
 			if l.autowrap_mode == TextServer.AUTOWRAP_OFF and l.get_minimum_size().x > l.size.x + 1.0:
 				cut = true
-			if l.clip_text and l.get_theme_font(&"font").get_string_size(l.text, HORIZONTAL_ALIGNMENT_LEFT, -1, l.get_theme_font_size(&"font_size")).x > l.size.x + 1.0:
+			if l.clip_text and l.autowrap_mode == TextServer.AUTOWRAP_OFF and l.get_theme_font(&"font").get_string_size(l.text, HORIZONTAL_ALIGNMENT_LEFT, -1, l.get_theme_font_size(&"font_size")).x > l.size.x + 1.0:
 				cut = true
 			if cut and text != "":
 				print("CUT ", c.get_path(), " ", text.left(40))

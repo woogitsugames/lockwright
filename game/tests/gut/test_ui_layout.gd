@@ -187,9 +187,12 @@ func test_every_workshop_tool_has_a_studio_thumbnail() -> void:
 
 
 func test_control_choice_continue_is_cream_enamel() -> void:
-	# VA-12: no navy plate left on this screen; Continue matches the cream button system
+	# VA-12: no navy plate left on this screen; Continue matches the cream button system.
+	# D-133 (VQA-18): and it is the theme's cream plate, not the G17 photo plate with rust and rivets.
 	var scene := await _open("res://scenes/control_choice.tscn", Vector2i(412, 915))
-	assert_eq(scene.get_node("Frame/VBox/ContinueButton").plate, &"ivory")
+	var b: Button = scene.get_node("Frame/VBox/ContinueButton")
+	assert_false(b is EnamelButton)
+	assert_eq(b.get_theme_stylebox(&"normal"), scene.get_theme_stylebox(&"normal", &"Button"))
 
 
 func test_tutorial_back_is_on_screen_without_scrolling() -> void:

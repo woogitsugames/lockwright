@@ -1,5 +1,8 @@
 class_name EnamelButton
 extends Button
+## D-133 (VQA-18): only the lock pause uses these coloured plates (PausePanel); every other button
+## in the game is the theme's cream plate (theme/build_theme.gd). The cream-with-rust "ivory" plate
+## that "Continue" on the control choice screen wore is gone from this table.
 ## N-54: a menu button painted as a blank enamel plate (G17, contrib/gpt/G17,
 ## 9-slice margins from its manifest.json). The NinePatchRect is drawn at
 ## scale = button height / texture height, so the plate keeps its proportions
@@ -11,11 +14,9 @@ const PLATES := {
 	&"navy": ["res://assets/ui/plates/button_navy_normal.png", "res://assets/ui/plates/button_navy_pressed.png", Vector4(175, 43, 175, 43)],
 	&"bottle_green": ["res://assets/ui/plates/button_bottle_green_normal.png", "res://assets/ui/plates/button_bottle_green_pressed.png", Vector4(175, 43, 175, 43)],
 	&"burgundy": ["res://assets/ui/plates/button_burgundy_normal.png", "res://assets/ui/plates/button_burgundy_pressed.png", Vector4(175, 43, 175, 43)],
-	&"ivory": ["res://assets/ui/plates/button_ivory_normal.png", "res://assets/ui/plates/button_ivory_pressed.png", Vector4(175, 43, 175, 43)],
 	&"primary_navy": ["res://assets/ui/plates/primary_navy_normal.png", "res://assets/ui/plates/primary_navy_pressed.png", Vector4(201, 60, 201, 60)],
 }
 const CREAM := Color(0.96, 0.92, 0.84)
-const INK := Color(0.11, 0.09, 0.07)
 
 @export var plate: StringName = &"navy":
 	set(v):
@@ -61,12 +62,12 @@ func _apply_plate() -> void:
 		p.patch_margin_top = int(m.y)
 		p.patch_margin_right = int(m.z)
 		p.patch_margin_bottom = int(m.w)
-	var text_color := INK if plate == &"ivory" else CREAM
+	var text_color := CREAM
 	for c in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color", "font_hover_pressed_color"]:
 		add_theme_color_override(c, text_color)
 	add_theme_color_override("font_disabled_color", Color(text_color, 0.75))
-	add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.0 if plate == &"ivory" else 0.35))
-	add_theme_constant_override("outline_size", 0 if plate == &"ivory" else 3)
+	add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.35))
+	add_theme_constant_override("outline_size", 3)
 	_layout()
 
 

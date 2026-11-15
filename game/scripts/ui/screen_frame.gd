@@ -227,3 +227,23 @@ static func _fit_button_now(button_id: int, max_fs: int, min_fs: int) -> void:
 		fs -= 1
 	if fs != b.get_theme_font_size(&"font_size"):
 		b.add_theme_font_size_override(&"font_size", fs)
+
+
+## D-133 (VQA-22): the selected tab of a tab row. The pressed plate alone (a shade darker, 2 dp
+## lower) was too quiet; the chosen tab also stands on a brass bar, so the choice reads in grey-scale.
+static func tab_mark(b: Button) -> void:
+	if b.has_node("TabMark"):
+		return
+	var mark := ColorRect.new()
+	mark.name = "TabMark"
+	mark.color = Color(0.83, 0.67, 0.37)
+	mark.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	mark.visible = b.button_pressed
+	b.add_child(mark)
+	var id := mark.get_instance_id()
+	b.draw.connect(func() -> void:
+		if not is_instance_id_valid(id):
+			return
+		mark.visible = b.button_pressed
+		mark.position = Vector2(10.0, b.size.y + 3.0)
+		mark.size = Vector2(maxf(b.size.x - 20.0, 0.0), 3.0))

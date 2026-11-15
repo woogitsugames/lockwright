@@ -641,3 +641,16 @@ furnishing.key_cabinet.name,Neighbors' key cabinet,Szafka na klucze sąsiadów,S
 furnishing.key_cabinet.desc,"A small cabinet with twelve hooks, like the one from the porter's lodge. The hooks are empty: the keys went back to their owners.","Mała szafka z dwunastoma haczykami, jak ta z portierni. Haczyki są puste: klucze wróciły do właścicieli.","Ein kleiner Kasten mit zwölf Haken, wie der aus der Pförtnerloge. Die Haken sind leer: Die Schlüssel sind zurück bei ihren Besitzern.","Une petite armoire à douze crochets, comme celle de la loge. Les crochets sont vides : les clés sont retournées chez leurs propriétaires.","Un armario pequeño con doce ganchos, como el de la portería. Los ganchos están vacíos: las llaves volvieron con sus dueños."
 furnishing.exam_lock.name,Stand for Zuzanna's lock,Podstawka na zamek Zuzanny,Ständer für Zuzannas Schloss,Socle pour la serrure de Zuzanna,Peana para la cerradura de Zuzanna
 furnishing.exam_lock.desc,"An oak stand with a brass plaque. On it, the lock that was made, not bought.","Dębowa podstawka z mosiężną tabliczką. Na niej zamek zrobiony, nie kupiony.","Ein Eichenständer mit Messingschild. Darauf das Schloss: gemacht, nicht gekauft.","Un socle en chêne avec une plaque en laiton. Dessus, la serrure faite, pas achetée.","Una peana de roble con una placa de latón. Encima, la cerradura hecha, no comprada."
+showcase.tab_exhibits,Exhibits,Eksponaty,Exponate,Pièces,Piezas
+showcase.tab_shelf,Achievements,Osiągnięcia,Erfolge,Succès,Logros
+ach.cat.craft,Craft,Rzemiosło,Handwerk,Métier,Oficio
+ach.cat.mode,Modes,Tryby,Modi,Modes,Modos
+ach.cat.ethics,Principles,Zasady,Grundsätze,Principes,Principios
+ach.cat.story,Stories,Historie,Geschichten,Histoires,Historias
+ach.count,{n} of {m},{n} z {m},{n} von {m},{n} sur {m},{n} de {m}
+ach.hidden.name,Hidden,Ukryte,Verborgen,Caché,Oculto
+ach.hidden.desc,You will find this one in the game.,To odkryjesz w grze.,Das entdeckst du im Spiel.,Tu le découvriras en jouant.,Lo descubrirás jugando.
+ach.earned,Earned,Zdobyte,Erhalten,Obtenu,Conseguido
+ach.earned_on,Earned on {date},Zdobyte {date},Erhalten am {date},Obtenu le {date},Conseguido el {date}
+ach.not_earned,Not earned yet,Jeszcze niezdobyte,Noch nicht erhalten,Pas encore obtenu,Aún sin conseguir
+ach.date_fmt,{y}-{m}-{d},{d}.{m}.{y},{d}.{m}.{y},{d}/{m}/{y},{d}/{m}/{y}

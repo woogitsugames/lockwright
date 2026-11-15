@@ -4,7 +4,7 @@ extends RefCounted
 ## The lock stays visible behind a dark leather shade (same shade as ScreenFrame backdrops); the
 ## column sits in the middle of the window's safe area (16 dp sides, ScreenFrame.fit) on a dark-paper
 ## panel (theme PanelContainer, as the "day after" cards) with a title and G17 enamel plates
-## (EnamelButton, as the control choice screen): Resume = primary navy, the rest navy, Leave = burgundy.
+## (EnamelButton; since D-133 the only screen with coloured plates): Resume = primary navy, the rest navy, Leave = burgundy.
 ## Plates are 56 dp high (>= 48 dp), 12 dp apart. No blur, glass or icons.
 
 const SHADE := Color(0.06, 0.045, 0.035, 0.84)

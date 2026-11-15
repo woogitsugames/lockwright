@@ -254,6 +254,7 @@ func _tab_button(node_name: String, text: String, group: ButtonGroup, tab: Strin
 	b.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	b.clip_text = true
 	ScreenFrame.fit_button_text(b, 16, 13)  # FR/ES at 360 dp: shrink before the ellipsis
+	ScreenFrame.tab_mark(b)  # D-133 (VQA-22): brass bar under the chosen tab
 	b.toggled.connect(func(on: bool) -> void:
 		if on:
 			show_tab(tab))
