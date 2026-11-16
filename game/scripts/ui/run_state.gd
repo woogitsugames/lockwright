@@ -10,6 +10,7 @@ const COINS_PER_TIER := 10
 static var n := 0  # locks finished in this run (opened or broken)
 static var opened := 0
 static var breaks_in_row := 0  # rubber band: -1 tier after 2 breaks in a row
+static var streak := 0  # locks opened in a row, no break in between (D-135: achievement.timed_care)
 static var lives := LIVES
 static var coins := 0  # earned in this run
 static var finished := false
@@ -19,6 +20,7 @@ static func reset() -> void:
 	n = 0
 	opened = 0
 	breaks_in_row = 0
+	streak = 0
 	lives = LIVES
 	coins = 0
 	finished = false
@@ -50,12 +52,14 @@ static func lock_finished(was_opened: bool, reward: int) -> void:
 	n += 1
 	if was_opened:
 		opened += 1
+		streak += 1
 		breaks_in_row = 0
 		coins += reward
 		Save.set_value("coins", Save.get_value("coins", 0) + reward)
 		Save.set_value("stats/locks_opened", Save.get_value("stats/locks_opened", 0) + 1)
 	else:
 		breaks_in_row += 1
+		streak = 0
 		lives -= 1
 		Save.set_value("stats/locks_broken", Save.get_value("stats/locks_broken", 0) + 1)
 		if lives <= 0:

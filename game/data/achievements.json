@@ -19,7 +19,7 @@
   },
   {
    "id": "achievement.pin_school",
-   "trigger": "tutorial.completed=pin.s3",
+   "trigger": "event=tutorial_completed;track=pin",
    "phase": "mvp",
    "category": "craft",
    "hidden": false,
@@ -27,7 +27,7 @@
   },
   {
    "id": "achievement.wafer_school",
-   "trigger": "tutorial.completed=wafer.s3",
+   "trigger": "event=lesson_completed",
    "phase": "mvp",
    "category": "craft",
    "hidden": false,
@@ -91,7 +91,7 @@
   },
   {
    "id": "achievement.pin_master",
-   "trigger": "result=open;profile=pin.m5;count(break)=0",
+   "trigger": "event=practice_goal;family=pin_tumbler;family_left=0",
    "phase": "mvp",
    "category": "craft",
    "hidden": false,
@@ -99,7 +99,7 @@
   },
   {
    "id": "achievement.wafer_master",
-   "trigger": "result=open;profile=wafer.m3;count(break)=0",
+   "trigger": "event=practice_goal;family=wafer;family_left=0",
    "phase": "mvp",
    "category": "craft",
    "hidden": false,
@@ -139,7 +139,7 @@
   },
   {
    "id": "achievement.ring_false",
-   "trigger": "result=open;family=ring_combo;count(false_set)>=1",
+   "trigger": "result=open;family=lever;count(false_set)>=1",
    "phase": "extended",
    "category": "craft",
    "hidden": false,
@@ -187,7 +187,7 @@
   },
   {
    "id": "achievement.one_pick",
-   "trigger": "result=challenge_complete;challenge=one_pick;count(break)=0",
+   "trigger": "result=run_lock_opened;lives=1",
    "phase": "mvp",
    "category": "mode",
    "hidden": false,
@@ -195,7 +195,7 @@
   },
   {
    "id": "achievement.daily_lock",
-   "trigger": "result=challenge_complete;challenge=daily",
+   "trigger": "event=practice_goal",
    "phase": "mvp",
    "category": "mode",
    "hidden": false,
@@ -203,7 +203,7 @@
   },
   {
    "id": "achievement.timed_care",
-   "trigger": "result=challenge_complete;challenge=timed;count(break)=0",
+   "trigger": "result=run_lock_opened;streak>=3",
    "phase": "mvp",
    "category": "mode",
    "hidden": false,
@@ -211,7 +211,7 @@
   },
   {
    "id": "achievement.bench_stop",
-   "trigger": "event=workshop_stop;mode=continuous;stop_index=1",
+   "trigger": "result=run_lock_opened;opened>=5",
    "phase": "mvp",
    "category": "mode",
    "hidden": false,
@@ -219,7 +219,7 @@
   },
   {
    "id": "achievement.tool_care",
-   "trigger": "event=tool_repaired;first=true",
+   "trigger": "event=tool_bought",
    "phase": "mvp",
    "category": "mode",
    "hidden": false,
@@ -227,7 +227,7 @@
   },
   {
    "id": "achievement.permission",
-   "trigger": "result=job_completed;verified=true;opened=true;first=true",
+   "trigger": "result=job_completed;verified=true;opened=true",
    "phase": "phase1",
    "category": "ethics",
    "hidden": false,
@@ -283,7 +283,7 @@
   },
   {
    "id": "achievement.heirs",
-   "trigger": "result=job_completed;job=job.uncle_safe_heirs;all_heirs_verified=true",
+   "trigger": "result=job_completed;job=job.uncle_safe_heirs;verified=true;opened=true",
    "phase": "phase1",
    "category": "ethics",
    "hidden": true,
@@ -291,7 +291,7 @@
   },
   {
    "id": "achievement.partial_refusal",
-   "trigger": "result=job_completed;job=job.krakow_antiquarian;partial_refusal=true",
+   "trigger": "result=job_completed;job=job.krakow_antiquarian;verified=true;opened=true",
    "phase": "phase1",
    "category": "ethics",
    "hidden": true,
@@ -315,7 +315,7 @@
   },
   {
    "id": "achievement.capsule",
-   "trigger": "result=job_completed;job=job.time_capsule;verified_by=school",
+   "trigger": "result=job_completed;job=job.time_capsule;verified_by=manager",
    "phase": "phase1",
    "category": "story",
    "hidden": true,

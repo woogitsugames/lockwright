@@ -115,6 +115,15 @@ static func goal_met(id: String) -> bool:
 	return bool(Save.get_value("practice/%s/goal" % id, false))
 
 
+## D-135: practice locks of a family whose goal is still ahead.
+static func goals_left(fam: StringName) -> int:
+	var left := 0
+	for e in entries():
+		if e["family"] == fam and not goal_met(e["id"]):
+			left += 1
+	return left
+
+
 ## Prepares the run (JobRun context); the caller changes to JobRun.lock_scene_path().
 static func start(e: Dictionary) -> void:
 	current = e
@@ -156,6 +165,10 @@ static func note_events(events: Array) -> bool:
 static func finish(opened: bool, quit := false) -> void:
 	if opened and met_now and not current.is_empty():
 		Save.set_value("practice/%s/goal" % current["id"], true)
+		# D-135: a goal met again counts too (a save that already holds every goal of a family earns
+		# the family's plate by repeating any one of them)
+		Events.milestone.emit(&"practice_goal", {"id": String(current["id"]), "family": String(current["family"]),
+				"family_left": goals_left(current["family"])})
 	# N-84 / D-79: leaving through the pause gets its line too ("left"), like an opening or a failure
 	last_result = &"left" if quit else (&"failed" if not opened else (&"met" if met_now else &"open"))
 	current = {}

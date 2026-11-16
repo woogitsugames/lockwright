@@ -23,6 +23,7 @@ func before_each() -> void:
 	Save.data["achievements"] = []
 	Save.data["achievements_at"] = {}
 	Achievements.reset_run_counts()
+	Events.lock_dark = false
 	JobRun.current_job = {}
 	JobRun.mode = &"job"
 
@@ -91,19 +92,17 @@ func test_every_category_in_the_data_has_a_bay() -> void:
 		assert_true(Achievements.CATEGORIES.has(d.get("category", "")), "%s: category %s" % [d["id"], d.get("category")])
 
 
-func test_shelf_lists_only_achievements_the_game_can_award() -> void:
+func test_shelf_lists_every_achievement() -> void:
+	# D-135: all 48 can be earned (test_achievements_d135.gd), so the D-133 filter is gone
 	var shown: Array = Achievements.shelf_defs()
-	assert_gt(shown.size(), 15, "the shelf is not empty")
+	assert_eq(shown.size(), Achievements.defs.size())
 	var ids := shown.map(func(d: Dictionary) -> String: return d["id"])
-	assert_true(ids.has("achievement.first_set"))
-	assert_true(ids.has("achievement.clock_repaired"))
-	assert_true(ids.has("achievement.hard_clean"), "tier>=5 is checked")
-	for id in ["achievement.first_dark", "achievement.one_pick", "achievement.permission", "achievement.pin_master",
-			"achievement.pin_school", "achievement.tool_care", "achievement.ring_false"]:
-		assert_false(ids.has(id), "%s: nobody reports this trigger yet, no empty spot for it" % id)
-	# one the player already holds stays on the shelf whatever its trigger
-	_earn(["achievement.first_dark"])
-	assert_true(Achievements.shelf_defs().any(func(d: Dictionary) -> bool: return d["id"] == "achievement.first_dark"))
+	for id in ["achievement.first_set", "achievement.clock_repaired", "achievement.hard_clean", "achievement.first_dark",
+			"achievement.one_pick", "achievement.permission", "achievement.pin_master", "achievement.pin_school",
+			"achievement.tool_care", "achievement.ring_false"]:
+		assert_true(ids.has(id), id)
+	for d: Dictionary in shown:
+		assert_true(Achievements.supported(d), "%s: a spot that can be filled" % d["id"])
 
 
 # ------------------------------------------------------------------ triggers

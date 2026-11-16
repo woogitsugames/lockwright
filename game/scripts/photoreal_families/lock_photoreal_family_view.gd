@@ -140,6 +140,7 @@ func set_lives(n: int) -> void:
 ## faint touch dent (~1.5:1 contrast) remain visible.
 func set_dark(on: bool) -> void:
 	dark = on
+	Events.lock_dark = on  # D-135: achievements "in the dark" (a new lock screen starts lit)
 	for m in _all_mats:
 		m.set_shader_parameter("exposure", 0.0 if on else 1.0)
 	if _section:

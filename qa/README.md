@@ -25,9 +25,11 @@ Wynik: `qa/out/report.md` (po polsku), `report.json` (`lockwright.qa-report/1`),
 | brakujące klucze i18n | ostrzeżenia `I18n` w logu |
 | błędy skryptów / silnika | `SCRIPT ERROR`, `ERROR:` (zliczone) |
 | czas sesji | czas symulowany (120 Hz) i zegarowy, czas każdego zamka |
+| osiągnięcia (D-135) | które z 48 zdobyła cała kariera i których nie (sekcja „Osiągnięcia zdobyte w karierze”, kolumna w `matrix.md`) |
 
-Polityka bota: przyjmuje każde zlecenie, odmawia zleceniom `job.refuse_*` (JOBS.md §5), każde zlecenie próbuje
-najwyżej 2 razy, w warsztacie naciska każdą akcję raz, w gablocie otwiera do 3 notek, odwiedza ustawienia.
+Polityka bota: przyjmuje każde zlecenie, odmawia zleceniom `job.refuse_*` (JOBS.md §5); przy weryfikacji pyta o
+każdy dokument na stole i prosi o „coś jeszcze”, póki klient ma kolejny (D-135: `job.wrong_floor` rozstrzyga samo
+pytanie), dopiero potem otwiera; każde zlecenie próbuje najwyżej 2 razy, w warsztacie naciska każdą akcję raz, w gablocie otwiera do 3 notek, odwiedza ustawienia.
 Nieznany ekran → przyciski „dalej/OK/Wstecz” i wpis w „Nieznane ekrany” (znak, że trzeba dopisać politykę).
 
 Workflow: `.github/workflows/qa-career.yml` (co noc 02:17 UTC + push do `game/**`, `qa/**`), artefakt `qa-career-report`,

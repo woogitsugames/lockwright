@@ -79,6 +79,13 @@ L.append('|---|---|---|---|---|---|---|')
 for k in locks:
     L.append(f"| {k.get('job') or '—'} | {k.get('family')} | {k.get('tier')} | {k.get('bot_steps', '')} | {k.get('sim_s', '')} | {k.get('opened', '')} | {k.get('error', '')} |")
 L.append('')
+# D-135: achievements a whole career earns
+ach = [a.replace('achievement.', '') for a in bot.get('achievements', [])]
+ach_all = [a.replace('achievement.', '') for a in bot.get('achievements_all', [])]
+L.append(f'## Osiągnięcia zdobyte w karierze ({len(ach)} z {len(ach_all)})')
+L.append('- zdobyte: ' + (', '.join(f'`{a}`' for a in ach) or 'brak'))
+L.append('- niezdobyte w tym przebiegu: ' + (', '.join(f'`{a}`' for a in ach_all if a not in ach) or 'brak'))
+L.append('')
 L.append('## Odwiedzone ekrany')
 L += [f'- `{s}` × {n}' for s, n in sorted(bot.get('scenes', {}).items())]
 (out_dir / 'report.md').write_text('\n'.join(L) + '\n')

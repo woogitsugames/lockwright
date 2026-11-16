@@ -8,7 +8,7 @@ extends VBoxContainer
 ##   hidden   = the same empty place with a "?", no name and no description (no spoilers).
 ## Earned and empty differ in shape and value, not in hue (grey-scale readable). A tap on a spot
 ## asks for its card (`picked`): name, description, the day it was earned.
-## Only achievements the game can award today are listed (Achievements.shelf_defs()).
+## D-135: every achievement has its spot (Achievements.shelf_defs()); each can be earned.
 
 signal picked(def: Dictionary, spot: Control)
 
