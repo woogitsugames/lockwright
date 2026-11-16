@@ -121,6 +121,7 @@ func test_chalk_switch_of_the_settings_screen_reaches_the_lock() -> void:
 			Save.set_value("lessons/%s/done" % fam, true)
 			Save.set_value("lessons/%s/after" % fam, TutorialCoach.FADE_JOBS)
 			Save.set_value("lessons/%s/caution" % fam, true)
+			TutorialCoach.mark_family_met(fam)  # D-137: not the guided first job of the family
 			var fscene: Node = await _lock_for(fjob)
 			assert_eq(fscene.view.chalk_level, want, "%s job, switch %s" % [fam, on])
 	# practice: marks follow the switch, the goal line does not need it

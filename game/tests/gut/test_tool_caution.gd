@@ -225,6 +225,8 @@ func test_first_risky_job_of_each_family_carries_the_caution() -> void:
 			continue
 		Save.data.erase("lessons")
 		_past_security_lessons()
+		# the player has met the family before (D-137: the very first job of a family is guided instead)
+		TutorialCoach.mark_family_met(StringName(fam))
 		var scene: Node = await _open(job)
 		var coach: TutorialCoach = scene.coach
 		var tag := "%s (%s)" % [fam, job["id"]]
