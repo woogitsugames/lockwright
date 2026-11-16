@@ -987,4 +987,5 @@ natywnie (było 5/56), bez xrunów (POMIARY §13). Haptyka D-81 nietknięta.
 - **Koszt:** `AchievementNote` (`game/scripts/ui/achievement_note.gd`) powstaje przy pierwszym zdobytym osiągnięciu — start gry go nie wczytuje (D-136).
 - **Teksty:** `ach.note.one`, `ach.note.many` (5 języków, na końcu `strings.csv`).
 - **Testy:** `game/tests/gut/test_achievement_note_d138.gd` (9: nazwa, wysokość ≥ 48 dp i pozycja u góry, kolejka przy zamku → rachunek, jedna linia dla kilku, znikanie i zdejmowanie przez zamek, stuknięcie na liście → karta, brak stuknięcia na rachunku, Gablota otwiera kartę, backfill nieogłaszany, 5 języków). Narzędzie zrzutów: `shot_scene --ach-note=id[,id]` (zapis gracza nietknięty).
+- **Sprawdzone:** pełny GUT 679 / 679, 0 `SCRIPT ERROR`.
 - **Zrzuty:** `docs/handoff/device-tests/fixes/achievement_note_d138/` (PL 412×915 i 915×412, DE 360×780, warsztat).
