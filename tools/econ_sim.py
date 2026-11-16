@@ -41,9 +41,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # The JSON files carry "lever" for every "zapadkowy" (warded) lock and for the detector
 # lock, and "unknown" for the tubular one; scenario A keeps the JSON as is.
 JOBS_MD_FAMILY = {
-    "job.grandma_broth": ("warded", 1), "job.cat_bathroom": ("warded", 1),
-    "job.bike_interview": ("combo", 1), "job.student_dorm": ("pin_tumbler", 1),
-    "job.kiosk_shutter": ("wafer", 1), "job.refuse_ex_partner": ("pin_tumbler", 2),
+    # chapter 1 in the order of the data (`order`, D-137): the first job is the tutorial's family
+    "job.grandma_broth": ("pin_tumbler", 1), "job.cat_bathroom": ("warded", 1),
+    "job.student_dorm": ("pin_tumbler", 1), "job.kiosk_shutter": ("wafer", 1),
+    "job.bike_interview": ("combo", 1), "job.refuse_ex_partner": ("pin_tumbler", 2),
     "job.newlyweds_4am": ("pin_tumbler", 2), "job.pizzeria_pays_pizza": ("lever", 1),
     "job.night_nurse": ("magnetic", 1), "job.wrong_floor": ("pin_tumbler", 1),
     "job.refuse_rush_bribe": ("pin_tumbler", 2), "job.drummer_locker": ("tubular", 1),
@@ -512,7 +513,7 @@ def report(results, jobs, tools, prog, cont, careers, furnishings=()):
           f"careful/average/clumsy kupują {trio(lambda x: snapshot(x, end12, prices)[1])} z {n12} dostępnych do końca rozdz. {D71_CHAPTER} "
           f"(zostaje im {trio(lambda x: snapshot(x, end12, prices)[0])} monet) i {trio(lambda x: len(x.furn))} z {n} do końca "
           f"rozdz. {last_ch}, wydają {trio(lambda x: x.totals['furnishings'])} (sekcja 6a).")
-        nr = lambda v: "—" if v >= NEVER else f"{v:.0f}"
+        nr = lambda v: "—" if v >= NEVER / 2 else f"{v:.0f}"  # a median of two careers, one of them NEVER, is also "not bought"
         last = "/".join(nr(med([last_purchase(x, n) for x in c[p]])) for p in PROFILES)
         if last_ch > D71_CHAPTER and late:
             w(f"8. **Monety po rozdz. {D71_CHAPTER} mają cel (D-127):** {len(late)} przedmiotów za "

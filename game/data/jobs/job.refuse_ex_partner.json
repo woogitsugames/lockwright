@@ -1,6 +1,7 @@
 {
   "id": "job.refuse_ex_partner",
   "chapter": 1,
+  "order": 6,
   "district": "Osiedle Słoneczne",
   "family": "pin_tumbler",
   "tier": 2,

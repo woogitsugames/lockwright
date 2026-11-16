@@ -1,6 +1,7 @@
 {
   "id": "job.bike_interview",
   "chapter": 1,
+  "order": 5,
   "district": "Osiedle Słoneczne",
   "family": "combo",
   "tier": 1,

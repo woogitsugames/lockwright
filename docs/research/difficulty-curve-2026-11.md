@@ -645,3 +645,33 @@ python3 data/tools/validate.py && python3 -m pytest tools/tests -q
 Kolumny CSV dopisane w D-118 (na końcu wiersza): `heavy_runs`, `heavy_ok`, `heavy_breaks`, `heavy_timeouts`,
 `heavy_trips`, `heavy_p50`, `heavy_p90` (kroki 1/120 s, przebiegi otwarte), `heavy_peak_p50_q16`,
 `heavy_peak_p90_q16` (szczyt S/S_max po wszystkich przebiegach, Q16), `heavy_drops`, `heavy_oversets`.
+
+## 9. Rozdział 1 po D-137: pierwsze zlecenie na rodzinie z samouczka
+
+Stan: 2026-11-16, D-137. §3 i §8 opisują rozdz. 1 w starej kolejności (alfabetycznej: `bike_interview` pierwszy) i z
+`grandma_broth` na `warded` t1. Balansu lockcore i tabel tierów ta zmiana nie dotyka; zmieniły się dane sześciu
+zleceń (pole `order`, rodzina jednego).
+
+| nr | zlecenie | rodzina, tier | czujący p50 (tier) | ten zamek: skrypt. / czujący / niezdarny | ciężka ręka: szczyt S/S_max | prowadzenie |
+|---|---|---|---|---|---|---|
+| 1 | `grandma_broth` | `pin_tumbler` t2 (było `warded` t1) | 11,0 s | 5,2 s / 8,3 s / 2,9 s | 0,04 (było 0,89) | trener pierwszych zleceń |
+| 2 | `cat_bathroom` | `warded` t1 | 14,6 s | 3,2 s / 22,1 s / 2,4 s | 0,89 | linie `lock.warded_*` |
+| 3 | `student_dorm` | `pin_tumbler` t2 | 11,0 s | 5,3 s / 9,7 s / 3,0 s | 0,01 | trener pierwszych zleceń |
+| 4 | `kiosk_shutter` | `wafer` t1 | 12,0 s | 5,3 s / 13,0 s / 3,0 s | 0,02 | `lock.wafer_coach` (pierwsze zlecenie rodziny) |
+| 5 | `bike_interview` | `combo` t1 | 21,1 s | 8,6 s / 25,4 s / 5,9 s | 0,00 | lekcja rodziny |
+| 6 | `refuse_ex_partner` | odmowa | – | – | – | – |
+
+- Wszystkie zamki rozdz. 1 są na najniższym tierze swojej rodziny (`lockcore/tiers.json`); `pin_tumbler` zaczyna się
+  na t2, więc „najniższy tier” pierwszego zlecenia to t2.
+- Pierwszy zamek zlecenia w przejściu `qa/run_onboarding.sh` (PL, napięcie automatyczne): bot czujący 24,9 s
+  (`combo` t1) → 7,8 s (`pin_tumbler` t2), niezdarny 5,5 s → 2,4 s. Najdłuższy zamek rozdziału (kółka z lekcją)
+  jest teraz ostatni, a nie pierwszy.
+- Mediana czującego w rozdz. 1 po tierach: 11,0 – 14,6 – 11,0 – 12,0 – 21,1 s (było 21,1 – 14,6 – 14,6 – 12,0 – 11,0,
+  czyli malejąco).
+- `warded` t1 na zamku kota: bot czujący 22,1 s (sonduje na ślepo; człowiek widzi wycięcia, §1). To jedyny zamek
+  rozdziału, na którym ciężka ręka zbliża się do granicy narzędzia (0,89 S_max, bez złamania); wcześniej takie były
+  dwa z trzech pierwszych.
+
+Jak powtórzyć: `replay_tool record <rodzina> <tier> <seed> out.json [--feel|--clumsy|--heavy]`, seed =
+`fnv1a64(id) % 1 000 000 + 1` (`grandma_broth` 127993, `cat_bathroom` 307846, `student_dorm` 566195,
+`kiosk_shutter` 170496, `bike_interview` 574856).

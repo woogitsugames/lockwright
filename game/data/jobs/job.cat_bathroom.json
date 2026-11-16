@@ -1,11 +1,12 @@
 {
   "id": "job.cat_bathroom",
   "chapter": 1,
+  "order": 2,
   "district": "Osiedle Słoneczne",
   "family": "warded",
   "tier": 1,
   "verification": "próg 0, bo klient jest w swoim mieszkaniu. Zlecenie uczy, że weryfikacja zależy od sytuacji.",
-  "verify_kind": "premises",
+  "verify_kind": "home",
   "reward_coins": 60,
   "tone": "zabawny",
   "i18n": {
@@ -22,18 +23,8 @@
   "after": [
     "marta"
   ],
-  "cards": [
-    "id"
-  ],
-  "threshold": 3,
+  "cards": [],
+  "threshold": 0,
   "place": "apartment",
-  "time": "evening",
-  "card_detail": {
-    "id": {
-      "doc": "id",
-      "holder": "Marta",
-      "ask": "job.cat_bathroom.id.ask",
-      "reply": "job.cat_bathroom.id.reply"
-    }
-  }
+  "time": "evening"
 }
