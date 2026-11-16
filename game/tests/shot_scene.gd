@@ -17,6 +17,7 @@ extends Node
 ## ("CUT <path> <text>") or that sticks out of the window ("OUT <path> <rect>").
 ## D-133: --ach=all|N|id,id marks achievements as earned (in memory), --ach-open=<id> opens the card of one on the
 ## Showcase shelf (ids without the "achievement." prefix); --tab=shelf opens the shelf.
+## D-138: --ach-note=id[,id] earns achievements now (in memory) and waits for the chalk line.
 ## D-132: --open=1,3 opens those chapters of the job list, --fold=1 folds them (jobs_list.chapter_open, as a tap on the header does).
 ## --size=WxH sets the window (as tests/screens.gd); --tab=furnishings opens the workshop's Wyposażenie tab; --tutorial-stage=N sets JobRun.tutorial_stage first; --auto=1 sets Settings auto_tension (not saved).
 
@@ -163,6 +164,18 @@ func _ready() -> void:
 			var sc := n as ScrollContainer
 			if sc.is_visible_in_tree():
 				sc.scroll_vertical = int(sc.get_v_scroll_bar().max_value) if a["scroll"] == "end" else int(a["scroll"])
+	if a.has("ach-note"):  # D-138: the chalk line of achievements earned now (ids without the prefix)
+		Save.path = "user://shot_scene_tmp_save.json"  # memory only for the player's save: unlock() writes
+		var ids: Array = String(a["ach-note"]).split(",", false)
+		var have: Array = Save.data.get("achievements", []).duplicate()
+		for aid in ids:
+			have.erase("achievement." + aid)
+		Save.data["achievements"] = have
+		for aid in ids:
+			Achievements.unlock("achievement." + aid)
+		for i in 30:
+			await get_tree().process_frame
+		await get_tree().create_timer(0.8).timeout
 	if a.has("call") or a.has("show") or a.has("scroll") or a.has("ach-open"):
 		for i in 12:
 			await get_tree().process_frame

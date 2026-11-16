@@ -42,6 +42,12 @@ const MILESTONES := {
 const PROGRESS_KINDS := ["set", "gate_align"]
 
 var defs: Array = []
+## D-138: earned achievements are said at once by a chalk line (AchievementNote, built on first use).
+## Tests and bots switch it off; backfill() never announces (dated = false).
+var announce := true
+var note: Node = null
+## The shelf opens this achievement's card when the Showcase is entered (a tap on the chalk line).
+var open_on_shelf := ""
 var _counts: Dictionary = {}  # event kind / sub-event name -> count on the current lock
 var _last_tick := -1
 ## The lock the counted events belong to. Events (connected before this node) clears JobRun.current_job
@@ -105,7 +111,20 @@ func unlock(id: String, dated := true) -> void:
 		dates[id] = Time.get_date_string_from_system()
 		Save.set_value("achievements_at", dates)
 	unlocked.emit(id)
+	if dated and announce:
+		_announce(id)
 	report_to_platform(id)  # seam for Game Center / Play Games (not wired yet)
+
+
+func _announce(id: String) -> void:
+	if not is_inside_tree():
+		return
+	if note == null:
+		note = load("res://scripts/ui/achievement_note.gd").new()
+		get_tree().root.add_child.call_deferred(note)
+		note.push.call_deferred(id)
+		return
+	note.push(id)
 
 
 func report_to_platform(_id: String) -> void:

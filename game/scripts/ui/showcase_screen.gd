@@ -212,6 +212,10 @@ func _ready() -> void:
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 	_build_tabs()
 	show_tab("exhibits")
+	if Achievements.open_on_shelf != "":  # D-138: a tap on the chalk line of an earned achievement
+		var id := Achievements.open_on_shelf
+		Achievements.open_on_shelf = ""
+		show_detail.call_deferred(id)
 	_show_notebook_entry()  # task 10: master's notebook entries (contrib/gpt/T10 notebook_extra.csv)
 	for path in DirAccess.get_files_at(SHOWCASE_DIR):
 		if not path.ends_with(".json"):

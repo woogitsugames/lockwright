@@ -683,3 +683,5 @@ verify.hint_tap,Tap a card to ask about it. Then decide.,"Stuknij kartę, żeby 
 job.verify.home,Go inside,Wejdź do środka,Hineingehen,Entrer,Entrar
 verify.title.home,In the client's own home,U klienta w domu,In der Wohnung des Kunden,Chez le client,En casa del cliente
 verify.hint.home,Nothing to check here. You decide.,Tu nie ma czego sprawdzać. Ty decydujesz.,Hier gibt es nichts zu prüfen. Du entscheidest.,Rien à vérifier ici. À toi de décider.,Aquí no hay nada que comprobar. Tú decides.
+ach.note.one,Achievement: {name},Osiągnięcie: {name},Erfolg: {name},Succès : {name},Logro: {name}
+ach.note.many,Achievements: {name} and {n} more,Osiągnięcia: {name} i jeszcze {n},Erfolge: {name} und {n} weitere,Succès : {name} et {n} de plus,Logros: {name} y {n} más
