@@ -69,7 +69,7 @@ Waga: **W** wysoka (gracz traci czas albo nie wie, co dalej), **Ś** średnia, *
 | 9 | Ś | Otwarcie zamka ćwiczebnego | Jedyne otwarcie w grze bez frazy „drzwi otwarte” (zlecenia mają ją na rachunku). Koniec samouczka bez żadnego dźwięku. | **Poprawione** (istniejące dżingle, bez nowych plików) |
 | 10 | W | Dane zleceń — kolejność rodzin | Samouczek uczy zamka bębenkowego (3 zamki), a trzy pierwsze zlecenia to zamek z kółkami i dwa z przegrodami. Pierwszy zamek bębenkowy jest piąty–szósty na liście. Każda rodzina ma swoją lekcję, więc gracz sobie poradzi, ale to, czego się właśnie nauczył, nie przydaje się od razu. | **Do decyzji właściciela** (dane zleceń — nie ruszałem) |
 | 11 | W | `job.cat_bathroom` | Ślusarz mówi „Dokumentów tym razem nie trzeba”, po czym przycisk brzmi „Sprawdź prawo do lokalu”, a na stole leży „Dokument tożsamości”. | **Do decyzji właściciela** (dane zlecenia i kwestia nagrana — zmiana słów wymaga nagrania) |
-| 12 | Ś | Lista zleceń | Nowy gracz widzi od razu całą karierę (12 rozdziałów, ponad 80 tabliczek) bez wskazania, od czego zacząć. | **Przekazane** — plik `jobs_list.gd` zmienia równolegle inny agent (kafelki zleceń) |
+| 12 | Ś | Lista zleceń | Nowy gracz widzi od razu całą karierę (12 rozdziałów, ponad 80 tabliczek) bez wskazania, od czego zacząć. | **Poprawione w D-132** (inny agent: kafelki zleceń, zwijane rozdziały) |
 | 13 | N | Rachunek | Kwoty trzy razy: na pokwitowaniu, w „Razem” i pod spodem („Nagroda: 65 monet”, „Napiwek…”). | Zostawione (czytelne, nie blokuje) |
 | 14 | N | Etapy 2 i 3 | Po otwarciu S2 i S3 nie ma zdania pochwały (jest tylko po S1). | Zostawione (to samo zdanie trzy razy byłoby gorsze; S3 kończy ekran „Samouczek ukończony” z dżinglem) |
 | 15 | N | Ekran „Samouczek ukończony” | Pusty: tytuł, zdanie i tabliczka u góry ekranu, poza strefą kciuka. | Zostawione |
@@ -105,9 +105,13 @@ bez zatrzymania w obu trybach sterowania i w obu językach.
    `jingle_new_chapter` — istniejące pliki.
 9. **Bot kariery** naciska odpowiedź na karcie startowej (wcześniej czekał, aż zniknie sama).
 
-Testy: `game/tests/gut/test_onboarding_flow.gd` (16 testów). Pełny GUT: 556 testów, 555 zielonych
-(czerwony tylko znany z D-130 `test_tutorial_hints.gd::test_progress_resets_the_ladder`). Bot kariery
-(`qa/run_career.sh`, profil „feel”): `career_complete`, 103 + 19 ze 123 zleceń, 0 soft-locków.
+Testy: `game/tests/gut/test_onboarding_flow.gd` (16 testów). Pełny GUT po rebase na D-132 i D-133:
+592 / 592 zielone, 74 916 asercji. Bot kariery (`qa/run_career.sh`, profil „feel”): `career_complete`,
+103 + 19 ze 123 zleceń, 0 soft-locków.
+
+Po rebase na D-132 (kafelki listy zleceń niosą więcej tekstu) przejście daje te same czasy, stuknięcia,
+ekrany i czekanie; słów jest więcej tylko na liście zleceń (do pierwszego zamka zlecenia 312 zamiast 298,
+do końca 938 zamiast 882). Tabela w §2 pochodzi sprzed rebase, żeby „przed” i „po” różniły się tylko tą zmianą.
 
 ## 5. Do sprawdzenia na telefonie przez właściciela
 
