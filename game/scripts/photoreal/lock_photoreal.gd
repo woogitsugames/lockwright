@@ -537,6 +537,7 @@ func _note_lesson_open() -> void:
 	TutorialCoach.mark_family_met(family)  # D-137
 	if coach != null and coach.has_lesson() and not coach.lesson_quiet:
 		TutorialCoach.mark_lesson_done(family)
+		Events.milestone.emit(&"lesson_completed", {"family": String(family)})  # D-135: a family lesson (T42), not a security lesson
 	elif TutorialCoach.has_lesson_for(family) and TutorialCoach.lesson_done(family):
 		TutorialCoach.count_job_after_lesson(family)
 

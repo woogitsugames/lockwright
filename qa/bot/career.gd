@@ -9,7 +9,7 @@ extends SceneTree
 ## done by qa/report.py. Run through qa/run_career.sh (a copy of game/ with this directory as res://qa_bot).
 
 const POST_FINISH_FRAMES := 300  # 2.5 s at the fixed 120 FPS step
-const MAX_DECISIONS := 4000
+const MAX_DECISIONS := 6000  # D-135: +3 or so per job (the bot asks about the cards)
 const LOCK_SIM_LIMIT_S := 300.0
 const IDLE_LIMIT_S := 15.0
 const FORWARD_NAMES := ["Continue", "Accept", "Start", "Verify", "Next", "Ok", "Play", "Open", "Done", "Confirm", "Proceed"]
@@ -27,6 +27,8 @@ var _t0 := 0
 var _sim := 0.0
 var _last_scene := ""
 var _refused_visit := -1
+var _verify_visit := -1      # D-135: the job_verify visit the cards below belong to
+var _asked_cards := {}       # card button name -> asked about in this visit
 var _ev_counts := {}         # lock event kind -> count for the current lock
 var _channels := {}          # "kind/material" -> {"audio": bool, "haptic": bool}
 var _last_change_sim := 0.0
@@ -299,6 +301,9 @@ func _finish(reason: String) -> void:
 	report["sim_seconds"] = snappedf(_sim, 0.1)
 	report["wall_seconds"] = snappedf((Time.get_ticks_msec() - _t0) / 1000.0, 0.1)
 	report["scenes"] = _visited
+	# D-135: what a whole career earns (ids from the save; the full list is the game's data)
+	report["achievements"] = (_al("Save").get_value("achievements", []) as Array).duplicate()
+	report["achievements_all"] = (_al("Achievements").get("defs") as Array).map(func(d: Dictionary) -> String: return String(d.get("id", "")))
 	var cp := _al("ContentPacks")
 	for id in cp.call("ids"):
 		var rec: Dictionary = report["packs"].get(id, {})
@@ -639,6 +644,24 @@ func _act_ui(base: String) -> Variant:
 					return false
 				_refused_visit = _visited.get("job_verify", 0)
 				return _press_named(["RefuseButton", "Refuse"], "refuse job")
+			# D-135: a careful locksmith. Ask about every card on the table, ask for one more thing while
+			# the client has more (job.wrong_floor is settled by that question), then open. This is the
+			# path that earns the "Principles" and "Stories" achievements.
+			if _verify_visit != _visited.get("job_verify", 0):
+				_verify_visit = _visited.get("job_verify", 0)
+				_asked_cards = {}
+			for b in _buttons():
+				if String(b.name).begins_with("Card_") and not _asked_cards.has(String(b.name)):
+					_asked_cards[String(b.name)] = true
+					_press(b, "ask about card")
+					return true
+			var more := current_scene.find_child("AskMoreButton", true, false) as BaseButton
+			if more != null and more.is_visible_in_tree() and not more.disabled:
+				_press(more, "one more thing")
+				return true
+			var accept := current_scene.find_child("AcceptButton", true, false) as BaseButton
+			if accept != null and accept.disabled:
+				return false  # decided (settled by the question): the scene leaves after its pause
 			return _press_named(["AcceptButton", "Accept", "Open", "Continue"], "accept job")
 		"job_payment":
 			var talk: bool = _jr().is_talk(_jr().current_job)  # T43: settled without a lock, no lock entry to update

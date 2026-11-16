@@ -9,6 +9,10 @@ static var lives := 3
 static var clean := true  # N-25: no drop/break/overset during the current run
 static var last_tip := 0  # N-25: tip paid by JobRun.complete()
 const DAY_AFTER_SCRIPT := "res://scripts/ui/day_after.gd"
+## D-135: the client's cards the locksmith asked about on the verification screen of this visit
+## (tapped, or laid out by "I need one more thing", which asks at once). Achievements: a job counts
+## as verified when every card of the job is here before the lock is opened.
+static var checked: Array = []
 
 # lockcore families implemented in lockcore (v0.4); jobs with other families are
 # hidden on the list (N-05) instead of silently remapped.
@@ -176,6 +180,24 @@ static func start(job: Dictionary) -> void:
 	lives = 3
 	clean = true
 	last_tip = 0
+	checked = []
+
+
+## D-135: the verification screen reports a card the locksmith asked about.
+static func note_checked(card: String) -> void:
+	if card != "" and not checked.has(card):
+		checked.append(card)
+
+
+## D-135: every card the job's client has was asked about (a job without cards is never "verified").
+static func verified(job: Dictionary) -> bool:
+	var cards: Array = job.get("cards", [])
+	if cards.is_empty():
+		return false
+	for c in cards:
+		if not checked.has(String(c)):
+			return false
+	return true
 
 
 static func start_tutorial(stage: int) -> void:
@@ -187,6 +209,7 @@ static func start_tutorial(stage: int) -> void:
 	lives = 3
 	clean = true
 	last_tip = 0
+	checked = []
 
 
 ## D-134: the stage reached is saved, so a tutorial left after S1 or S2 goes on from there after the
@@ -212,6 +235,7 @@ static func complete() -> void:
 		Save.set_value("tutorial_stage", tutorial_stage)
 		if tutorial_stage >= 3:
 			Save.set_value("tutorial_done", true)
+			Events.milestone.emit(&"tutorial_completed", {"track": "pin"})  # D-135: the three pin lessons S1-S3
 		current_job = {}
 		return
 	Save.hold()  # D-136: the job, the coins, the statistics and the "day after" in one write
@@ -230,5 +254,9 @@ static func complete() -> void:
 	# class: JobRun is compiled at start (Events, Achievements), DayAfter and the arrival screen
 	# behind it (4 scripts, ~1,300 lines) only when a job is first settled or the job list opens.
 	load(DAY_AFTER_SCRIPT).call(&"note_finished", current_job)
+	# D-135: what the achievements of the Principles and Stories bays listen for (inside the one write of D-136)
+	Events.milestone.emit(&"job_completed", {"job": jid, "opened": not talk, "verified": verified(current_job),
+			"verified_by": checked.duplicate()})
 	Save.release()
 	current_job = {}
+	checked = []

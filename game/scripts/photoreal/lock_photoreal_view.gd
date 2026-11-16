@@ -318,6 +318,7 @@ func set_tension_clamp(on: bool) -> void:
 ## "In the dark" (HUD.md §10): the stair-light timer goes off; only sound and haptics remain.
 func set_dark(on: bool) -> void:
 	dark = on
+	Events.lock_dark = on  # D-135: achievements "in the dark" (a new lock screen starts lit)
 	for m in _all_mats:
 		m.set_shader_parameter("exposure", 0.012 if on else 1.0)  # linear: ≈ 13% in sRGB, a faint outline
 	if _bg:

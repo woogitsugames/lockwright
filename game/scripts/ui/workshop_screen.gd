@@ -607,6 +607,7 @@ func _buy(tool_id: String, price: int) -> void:
 	Save.set_value("coins", coins - price)
 	Save.set_value("tools/%s/owned" % tool_id, true)
 	Save.set_value("tools/%s/integrity" % tool_id, 100)
+	Events.milestone.emit(&"tool_bought", {"tool": tool_id})  # D-135
 
 
 func _repair(tool_id: String, price: int) -> void:

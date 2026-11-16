@@ -354,6 +354,7 @@ func _show_result(text: String) -> void:
 ## T73: tapping a card plays a short exchange — the locksmith's question and the client's
 ## answer — in one of two variants, so the check does not repeat word for word.
 func _ask_about(card: String) -> void:
+	JobRun.note_checked(card)  # D-135: the locksmith looked at this paper (achievements: "verified")
 	var text := exchange_text(String(JobRun.current_job.get("id", "")), card, int(_asked.get(card, 0)))
 	if text == "":
 		return
@@ -411,6 +412,7 @@ func _ask_more() -> void:
 		var card := String(_cards()[_shown - 1])
 		var text := exchange_text(String(job.get("id", "")), card, 0)
 		_show_result(text if text != "" else I18n.t(&"verify.more_card"))
+		JobRun.note_checked(card)  # D-135: "one more thing" asks about the new card at once
 		if text != "":
 			_asked[card] = 1
 		Sfx.play_ui(&"paper_turn")
@@ -429,6 +431,7 @@ func _ask_more() -> void:
 		text += "\n\n" + I18n.t(&"verify.asked_rep") % rep
 	_show_result(text)
 	Sfx.play_ui(&"paper_turn")
+	Events.milestone.emit(&"job_resolved", {"job": jid, "opened": false})  # D-135: settled by the question, no door opened
 	await _decision_pause()
 	# settled by talking: a visit fee without a tip, no lock scene (same path as T43 "talk" jobs)
 	var settled := job.duplicate(true)
@@ -531,6 +534,8 @@ func _refuse() -> void:
 			Save.set_value("jobs_refused", refused)
 			Save.set_value("reputation", Save.get_value("reputation", 0) + 5)
 		DayAfter.note_finished(JobRun.current_job)  # V04/D-78: a refusal has its "day after" too
+		# D-135: a refusal job is one where the right to the place or the thing cannot be confirmed
+		Events.milestone.emit(&"job_refused", {"job": jid, "reason": "unverified_access"})
 		_show_result(I18n.t(&"verify.refused_rep"))
 	else:
 		# N-76: a normal job stays on the list (the player may come back to it); say so

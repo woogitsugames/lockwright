@@ -5,6 +5,11 @@ extends Node
 signal lock_event(event: Dictionary)  # {tick, kind, element, intensity, material}
 signal lock_opened
 signal lock_failed(reason: StringName)
+## D-135: something happened outside a lock that the achievements (and later the platform services)
+## may care about. One signal, a kind and plain data; Achievements.MILESTONES lists the kinds and the
+## data each one carries (job_completed, job_refused, job_resolved, tutorial_completed,
+## lesson_completed, practice_goal, run_lock_opened, tool_bought).
+signal milestone(kind: StringName, data: Dictionary)
 # Feedback routing (same frame as lock_event, never waits for render — ARCHITECTURE.md §5)
 signal feedback(event: Dictionary)
 # Scene navigation
@@ -27,6 +32,9 @@ var scene_override: Node = null
 var change_scenes := true
 var last_target := ""
 var _fail_scene: Node = null
+## D-135: the lock on screen is "in the dark" (pause -> the stair light off). Set by the lock views'
+## set_dark(); a new lock screen starts lit. Read by Achievements when a lock event arrives.
+var lock_dark := false
 
 
 func _ready() -> void:
@@ -68,6 +76,7 @@ func _on_lock_opened() -> void:
 	if JobRun.mode == &"run":
 		# N-64: record the result before run_loop.tscn is reloaded (it used to reset each lock)
 		RunState.lock_finished(true, int(JobRun.current_job.get("reward_coins", 0)))
+		milestone.emit(&"run_lock_opened", {"opened": RunState.opened, "streak": RunState.streak, "lives": RunState.lives})
 		JobRun.current_job = {}
 	if scene.scene_file_path == PLACEHOLDER_LOCK:
 		return
