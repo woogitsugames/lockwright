@@ -25,9 +25,11 @@ Uwaga do soaka: headless Godot 4.7.2 sam zwiększa pamięć statyczną o ~29 B n
 
 - Pełny GUT (Godot 4.7.2 headless, GDExtension lockcore) po rebase na D-137: 651 testów, 650 zielonych przy pierwszym przebiegu; jedyny czerwony (`test_content_packs.gd` czytał tytuł płytki w zwiniętym rozdziale, który przy leniwych płytkach jeszcze nie istnieje) poprawiony — test najpierw rozwija rozdział. `test_idle_cost` i `test_soak` zielone w pełnym przebiegu.
 
+- Soak 200 cykli pod xvfb + OpenGL (llvmpipe) na kodzie po scaleniu D-137 + D-136 + D-135: **SOAK OK** — 1800 ekranów, 13 rodzin zamków, 17 min; po rozgrzewce (26 cykli) obiekty, zasoby, węzły, sieroty i połączenia +0; pamięć statyczna +4,6 KB / cykl (limit 24), tekstury i pamięć wideo +0. Szczyty: przyjazd 99 MB statycznej / 76 MB tekstur, lista zleceń 514 węzłów, zamki 33–47 MB tekstur.
+
 ## Zostaje
 
 1. Krok soaka w CI: dodany jako job `soak` w `.github/workflows/perf-budget.yml` (xvfb + llvmpipe, 200 cykli) — pierwszy przebieg na `main` do sprawdzenia.
-2. Czyste pomiary przed/po na nieobciążonej maszynie (lista zleceń, start), soak 200 cykli pod xvfb na końcowym kodzie.
+2. Czyste pomiary przed/po na nieobciążonej maszynie (lista zleceń, start).
 3. Niezbadane: czas klatki ekranu zamka (poza istniejącym `test_perf.gd`), start z paczki eksportowanej (I18n z `.translation`), 91 zasobów zostających po pierwszej wizycie w każdej rodzinie zamka (stałe, nie rosną).
 4. Na telefonie (SM-A165F): `LW_BOOT`, PSS menu/zamek po poprawce przyjazdu, wejście w listę zleceń.

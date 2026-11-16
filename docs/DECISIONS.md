@@ -937,7 +937,7 @@ natywnie (było 5/56), bez xrunów (POMIARY §13). Haptyka D-81 nietknięta.
 - **Lista zleceń:** treść płytki powstaje przy pierwszym rozwinięciu rozdziału — 1159 → 457 węzłów przy wejściu.
 - **Test długiej sesji:** `game/tests/soak.tscn` (`-- --cycles=200`), krótka wersja w GUT (`test_soak.gd`), job `soak` w `perf-budget.yml` (xvfb + llvmpipe, ścisłe limity pamięci tylko z prawdziwym rendererem).
 - **Scalenie:** rebase na D-137; w `boot.gd` zostaje karta startowa D-134, a jej gałąź „nie pierwszy start” czeka na menu (`_wait_for_menu()`). `test_content_packs.gd` najpierw rozwija rozdział, potem czyta tytuł płytki (leniwe płytki).
-- **Sprawdzone:** pełny GUT 651 testów (650 + poprawiony 1), nowe testy: `test_save_robustness` (22), `test_pack_store_robustness` (11), `test_arrival_frame_release` (7), `test_idle_cost` (7), `test_soak`, `test_nav_back` (+).
+- **Sprawdzone:** soak 200 cykli pod xvfb na kodzie po scaleniu z D-135: SOAK OK (liczniki płaskie, pamięć statyczna +4,6 KB/cykl). Pełny GUT 651 testów (650 + poprawiony 1), nowe testy: `test_save_robustness` (22), `test_pack_store_robustness` (11), `test_arrival_frame_release` (7), `test_idle_cost` (7), `test_soak`, `test_nav_back` (+).
 
 
 ## D-135: Wszystkie 48 osiągnięć da się zdobyć — wyniki zleceń i odmów, lekcje, ćwiczenia, Tryb Ciągły, ciemność i warsztat zgłaszają się do osiągnięć; półka pokazuje wszystkie miejsca
