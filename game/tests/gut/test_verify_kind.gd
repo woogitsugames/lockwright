@@ -3,17 +3,19 @@ extends GutTest
 ## flat ("premises"), whose the thing is ("object": the bike padlock, a chest, a tin) or the consent
 ## for a shared or institutional space or item ("shared"). The arrival button, the verification title,
 ## the witness's note and the generic exchanges follow it; the old keys stay for premises.
+## D-137: "home" = the client is inside their own home (the cat in the bathroom): nothing to check.
 
 const LANGS := ["en", "pl", "de", "fr", "es"]
-const KINDS := ["premises", "object", "shared"]
+const KINDS := ["premises", "object", "shared", "home"]
 ## one job of each kind (owner bug 2026-11-08: the bike padlock said "right of entry to the premises")
-const SAMPLE := {"premises": "job.grandma_broth", "object": "job.bike_interview", "shared": "job.shared_room_door"}
+const SAMPLE := {"premises": "job.grandma_broth", "object": "job.bike_interview", "shared": "job.shared_room_door",
+	"home": "job.cat_bathroom"}
 const ARRIVAL := "res://scenes/job_arrival.tscn"
 const VERIFY := "res://scenes/job_verify.tscn"
 const JobArrival := preload("res://scripts/ui/job_arrival.gd")
 const Verify := preload("res://scripts/ui/job_verify.gd")
 ## every key added for the kinds (all five languages, non-empty)
-const NEW_KEYS := ["job.verify.object", "job.verify.shared", "verify.title.object", "verify.title.shared",
+const NEW_KEYS := ["job.verify.home", "verify.title.home", "verify.hint.home", "job.verify.object", "job.verify.shared", "verify.title.object", "verify.title.shared",
 	"verify.paper.witness.body.object", "verify.paper.witness.body.shared",
 	"verify.ask.witness.1.object", "verify.reply.witness.1.object", "verify.ask.witness.2.object", "verify.reply.witness.2.object",
 	"verify.ask.witness.1.shared", "verify.reply.witness.1.shared", "verify.ask.witness.2.shared", "verify.reply.witness.2.shared",
@@ -64,7 +66,7 @@ func test_every_job_has_a_valid_verify_kind() -> void:
 	var count := {}
 	for j: Dictionary in jobs:
 		assert_true(j.has("verify_kind"), "%s has verify_kind" % j["id"])
-		assert_has(KINDS, String(j.get("verify_kind", "")), "%s: verify_kind is premises/object/shared" % j["id"])
+		assert_has(KINDS, String(j.get("verify_kind", "")), "%s: verify_kind is premises/object/shared/home" % j["id"])
 		count[j.get("verify_kind", "")] = int(count.get(j.get("verify_kind", ""), 0)) + 1
 	for k in KINDS:
 		assert_gt(int(count.get(k, 0)), 0, "some jobs are %s" % k)
@@ -83,12 +85,14 @@ func test_sample_jobs_have_the_expected_kind() -> void:
 
 func test_arrival_button_and_verify_title_follow_the_kind() -> void:
 	TranslationServer.set_locale("pl")
-	var expect := {"premises": "Sprawdź prawo do lokalu", "object": "Sprawdź, czyja to rzecz", "shared": "Sprawdź zgodę na otwarcie"}
+	var expect := {"premises": "Sprawdź prawo do lokalu", "object": "Sprawdź, czyja to rzecz", "shared": "Sprawdź zgodę na otwarcie",
+		"home": "Wejdź do środka"}
 	for k in KINDS:
 		var a := await _open(ARRIVAL, SAMPLE[k], Vector2i(412, 915))
 		assert_eq(a.verify_button.text, expect[k], "%s arrival button" % SAMPLE[k])
 		var v := await _open(VERIFY, SAMPLE[k], Vector2i(412, 915))
-		assert_eq(v.title_label.text, expect[k], "%s verification title" % SAMPLE[k])
+		var want_title: String = "U klienta w domu" if k == "home" else expect[k]
+		assert_eq(v.title_label.text, want_title, "%s verification title" % SAMPLE[k])
 	TranslationServer.set_locale("en")
 	var bike := await _open(ARRIVAL, "job.bike_interview", Vector2i(412, 915))
 	assert_eq(bike.verify_button.text, I18n.t(&"job.verify.object"))

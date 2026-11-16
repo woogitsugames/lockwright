@@ -680,3 +680,6 @@ tutorial.done_body,Three locks open. Now your first real job.,Trzy zamki otwarte
 tutorial.to_jobs,First job,Pierwsze zlecenie,Erster Auftrag,Première intervention,Primer encargo
 pause.skip_tutorial,Skip the tutorial,Pomiń samouczek,Einführung überspringen,Passer le tutoriel,Saltar el tutorial
 verify.hint_tap,Tap a card to ask about it. Then decide.,"Stuknij kartę, żeby o nią zapytać. Potem zdecyduj.","Tippe eine Karte an, um nachzufragen. Dann entscheide.",Touche une carte pour poser une question. Puis décide.,Toca una tarjeta para preguntar. Luego decide.
+job.verify.home,Go inside,Wejdź do środka,Hineingehen,Entrer,Entrar
+verify.title.home,In the client's own home,U klienta w domu,In der Wohnung des Kunden,Chez le client,En casa del cliente
+verify.hint.home,Nothing to check here. You decide.,Tu nie ma czego sprawdzać. Ty decydujesz.,Hier gibt es nichts zu prüfen. Du entscheidest.,Rien à vérifier ici. À toi de décider.,Aquí no hay nada que comprobar. Tú decides.

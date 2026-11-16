@@ -51,7 +51,7 @@ func _ready() -> void:
 	title_label.text = I18n.t(JobRun.verify_key(&"verify.title", job))  # D-103: flat / thing / consent
 	ScreenFrame.fit_title(title_label)  # VA-08: one line when it fits, never clipped in landscape
 	job_label.text = I18n.t(job.get("i18n", {}).get("title", &"jobs.title"))
-	hint_label.text = I18n.t(hint_key())
+	hint_label.text = I18n.t(hint_key(job))
 	accept_button.text = I18n.t(&"job.accept")
 	ask_more_button.text = I18n.t(&"verify.ask_more")
 	refuse_button.text = I18n.t(&"job.refuse")
@@ -59,7 +59,8 @@ func _ready() -> void:
 	_shown = mini(2, _cards().size())  # client shows 1-2 cards first
 	_start_preload.call_deferred()
 	_render_cards()
-	Sfx.play_ui(&"paper_turn")  # audio/v2 UI: client lays out the cards
+	if not _cards().is_empty():
+		Sfx.play_ui(&"paper_turn")  # audio/v2 UI: client lays out the cards
 	# JOBS.md §2: in a refusal job the client has no right to the flat; opening is not an option
 	if is_refusal_job(job) or (is_done(job) and not wrong_open_spec(job).is_empty()):
 		# N-91: once the wrong floor was settled by asking, the locksmith knows it is not this door
@@ -81,7 +82,10 @@ func _ready() -> void:
 const CARD_ASKED_KEY := "verify/card_asked"
 
 
-static func hint_key() -> StringName:
+## D-137: a job with nothing to check (verify_kind "home", no cards) says that instead.
+static func hint_key(job: Dictionary = {}) -> StringName:
+	if (job.get("cards", ["id"]) as Array).is_empty():
+		return JobRun.verify_key(&"verify.hint", job)
 	return &"verify.hint" if bool(Save.get_value(CARD_ASKED_KEY, false)) else &"verify.hint_tap"
 
 

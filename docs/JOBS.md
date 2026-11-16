@@ -146,10 +146,11 @@ Przycisk na przyjeździe (`job.verify`) i tytuł weryfikacji (`verify.title`) m�
 | `premises` | czyjeś mieszkanie, pokój, piwnica, altana, kiosk, wynajęty lokal — prawo do miejsca | Sprawdź prawo do lokalu | Check right of entry | Zutrittsrecht prüfen | Vérifier le droit d'accès | Comprobar derecho de entrada |
 | `object` | rzecz: rower, skrzynia, szuflada, sekretarzyk, puszka, sejf, kłódka na przedmiocie — czy należy do klienta | Sprawdź, czyja to rzecz | Check who owns it | Prüfen, wem es gehört | Vérifier le propriétaire | Comprobar de quién es |
 | `shared` | wspólne lub instytucjonalne miejsce albo rzecz otwierana w czyimś imieniu — zgoda, upoważnienie | Sprawdź zgodę na otwarcie | Check permission to open | Erlaubnis zum Öffnen prüfen | Vérifier l'autorisation | Comprobar la autorización |
+| `home` (D-137) | klient jest w środku własnego mieszkania i tam jest zamknięta rzecz (kot w łazience) — nie ma czego sprawdzać; `cards: []` | Wejdź do środka | Go inside | Hineingehen | Entrer | Entrar |
 
-Klucze: `premises` → `job.verify`, `verify.title` (bez zmian); pozostałe → `job.verify.<kind>`, `verify.title.<kind>`. Ten sam przyrostek (`JobRun.verify_key`) wybiera wariant notatki świadka (`verify.paper.witness.body.<kind>`) i ogólnych wymian przy kartach (`verify.ask/reply.<karta>.<n>.<kind>`: świadek, akt, faktura i list instytucji), gdy taki klucz istnieje. Odmowy mają rodzaj tego, o co klient prosi. Brak pola = `premises`.
+Klucze: `premises` → `job.verify`, `verify.title` (bez zmian); pozostałe → `job.verify.<kind>`, `verify.title.<kind>`. Ten sam przyrostek (`JobRun.verify_key`) wybiera wariant notatki świadka (`verify.paper.witness.body.<kind>`) i ogólnych wymian przy kartach (`verify.ask/reply.<karta>.<n>.<kind>`: świadek, akt, faktura i list instytucji), gdy taki klucz istnieje. Odmowy mają rodzaj tego, o co klient prosi. Brak pola = `premises`. `home` ma własny tytuł weryfikacji (`verify.title.home`: „U klienta w domu” / *In the client's own home*) i zdanie pod nim (`verify.hint.home`: „Tu nie ma czego sprawdzać. Ty decydujesz.”); pusty stół i `home` idą zawsze razem (test `test_first_jobs_d137.gd`).
 
-Klasyfikacja 123 zleceń (36 × premises, 38 × object, 49 × shared; rozdział 13 dodany w D-111, rozdział 14 w D-119, rozdział 15 w D-123, rozdział 16 w D-126):
+Klasyfikacja 123 zleceń (35 × premises, 38 × object, 49 × shared, 1 × home; rozdział 13 dodany w D-111, rozdział 14 w D-119, rozdział 15 w D-123, rozdział 16 w D-126):
 
 | Zlecenie | `verify_kind` | Dlaczego |
 |---|---|---|
@@ -159,7 +160,7 @@ Klasyfikacja 123 zleceń (36 × premises, 38 × object, 49 × shared; rozdział 
 | `job.bramah_bureau` | object | sekretarzyk kupiony na aukcji; faktura |
 | `job.brussels_townhouse` | premises | jej mieszkanie w Saint-Gilles; najem i sąsiad |
 | `job.carol_singers_chest` | shared | skrzynia świetlicy; zgoda zarządczyni i uchwała, Mila nie decyduje |
-| `job.cat_bathroom` | premises | łazienka we własnym mieszkaniu Marty |
+| `job.cat_bathroom` | home | łazienka we własnym mieszkaniu Marty; klientka jest w środku, dokumentów nie trzeba (D-137) |
 | `job.ch13_01_balcony_boxes` | premises | komórka piwniczna pani Haliny; wykaz użytkowników i pani Zosia |
 | `job.ch13_02_first_ice_cream` | object | zamrażarka Stefana przed kioskiem; faktura i pani Krysia |
 | `job.ch13_03_allotment_gate` | shared | wspólna brama ogródków; uchwała zarządu ogrodu i gospodarz |
@@ -342,6 +343,8 @@ np. „dźwigniowy, T1” to w danych `lever` 3, „zapadkowy, T3” to `warded`
 
 ### Rozdział 1 — Pierwsza zmiana
 
+Kolejność w grze to pole `order` w danych (D-137): rosół (`pin_tumbler`, to, czego uczy samouczek) → kot (`warded`) → pokój 412 (`pin_tumbler`) → kiosk (`wafer`) → rower (`combo`, z lekcją rodziny) → odmowa. Nowa rodzina wchodzi pojedynczo, a jej pierwsze zlecenie jest prowadzone: lekcją (`game/data/lessons/<rodzina>.json`) albo liniami trenera pierwszych zleceń (`warded`, `wafer`, `lever`).
+
 #### `job.grandma_broth`
 - **Tytuł:** Rosół na gazie / *Broth on the Stove*
 - **Klient:** pani Halina, 81 lat. Wyszła wyrzucić śmieci w kapciach, mówi „synku” i jest pewna, że wszystko pamięta.
@@ -349,7 +352,7 @@ np. „dźwigniowy, T1” to w danych `lever` 3, „zapadkowy, T3” to `warded`
 - **Scena:**
   - PL — **Halina:** Synku, ja tylko na chwilkę wyszłam. / **Zosia:** Gaz zakręciłam, Halinko, nie denerwuj się. / **Ślusarz:** To spokojnie. Pani Zosiu, pani zna sąsiadkę? / **Zosia:** Czterdzieści lat przez ścianę! / **Halina:** Makaron sama robiłam, niech pan zostanie na talerz.
   - EN — **Halina:** I only stepped out for a moment, dear. / **Zosia:** I turned the gas off, Halina, don't fret. / **Locksmith:** Then no rush. Mrs Zosia, you know your neighbour? / **Zosia:** Forty years through the wall! / **Halina:** I made the noodles myself — stay for a bowl.
-- **Zamek:** zapadkowy, T1 (stare drzwi z zamkiem wpuszczanym).
+- **Zamek:** wkładka bębenkowa, T1 (zatrzaśnięte drzwi mieszkania; w danych `pin_tumbler` 2, najniższy tier rodziny). Do D-137 zapadkowy, T1 — pierwsze zlecenie ma używać tego, czego uczy samouczek; żadna kwestia nie nazywa zamka.
 - **Weryfikacja:** sąsiadka-świadek (2) i list na nazwisko w skrzynce (1), do tego szczegół z wnętrza: „na kredensie zdjęcie z wnukiem w mundurku”. Haczyk: brak.
 - **Presja:** licznik fabularny „rosół” w 3 etapach (pyrka, bulgocze, „trochę wyparował”). Nie wpływa na wynik, tylko na dialog. Pierwsza karta „Najpierw 112” pojawia się w tutorialu jako przykład, bo gaz został zakręcony.
 - **Nagroda:** 75 monet (stawka dzienna) i talerz rosołu (przedmiot w warsztacie: termos).
@@ -364,25 +367,11 @@ np. „dźwigniowy, T1” to w danych `lever` 3, „zapadkowy, T3” to `warded`
   - PL — **Marta:** On to zrobił specjalnie. Patrzył mi w oczy. / **Ślusarz:** Koty tak mają. Weryfikacji nie robimy, pani jest w środku. / **Marta:** A jak on się przestraszy? / **Ślusarz:** Niech pani do niego mówi. Ja będę cicho.
   - EN — **Marta:** He did it on purpose. He looked me in the eye. / **Locksmith:** Cats do that. No ID check needed — you're already inside. / **Marta:** What if he panics? / **Locksmith:** Keep talking to him. I'll be quiet.
 - **Zamek:** zapadkowy, T1 (zamek łazienkowy), wariant samouczka.
-- **Weryfikacja:** próg 0, bo klient jest w swoim mieszkaniu. Zlecenie uczy, że weryfikacja zależy od sytuacji.
+- **Weryfikacja:** próg 0, bo klient jest w swoim mieszkaniu. Zlecenie uczy, że weryfikacja zależy od sytuacji. W danych `verify_kind: home`, `cards: []` (D-137): stół jest pusty, bo ślusarz mówi „Dokumentów tym razem nie trzeba”.
 - **Presja:** brak. Miauczenie jest ambientem (z napisami dla niesłyszących).
 - **Nagroda:** 60 monet, rabat sąsiedzki proponowany domyślnie i zdjęcie Ziemniaka na lodówce w warsztacie.
 - **Rozdział / dzielnica:** 1, Osiedle Słoneczne.
 - **Ton:** zabawny.
-
-#### `job.bike_interview`
-- **Tytuł:** Rozmowa o 9:30 / *Interview at 9:30*
-- **Klient:** Kuba, 23 lata, świeżo po studiach, ma pożyczoną marynarkę i jedzie na pierwszą rozmowę o pracę.
-- **Sytuacja:** Zmienił kod w kłódce rowerowej „na bezpieczniejszy” i go zapomniał. Rower stoi przy stojaku pod jego blokiem, a rozmowa jest o 9:30 na drugim końcu miasta.
-- **Scena:**
-  - PL — **Kuba:** Zmieniłem kod wczoraj. Na pewno było tam siedem. Albo dwa. / **Ślusarz:** Ma pan zdjęcie z tym rowerem? / **Kuba:** Mam, z wakacji. I paragon w mailu. / **Ślusarz:** Wystarczy. Niech pan w tym czasie poprawi krawat.
-  - EN — **Kuba:** I changed the code yesterday. There was definitely a seven. Or a two. / **Locksmith:** Got a photo with this bike? / **Kuba:** From the holidays. And the receipt in my email. / **Locksmith:** That'll do. Fix your tie while I work.
-- **Zamek:** kłódka szyfrowa, T1.
-- **Weryfikacja:** zdjęcie (1) i paragon (1), czyli rzecz w posiadaniu, próg 2. Haczyk: brak.
-- **Presja:** licznik „autobus 8:52” (opcjonalny). Gdy się spóźni, Kuba jedzie taksówką i i tak dostaje pracę, tylko z innym dialogiem.
-- **Nagroda:** 65 monet. W rozdziale 3 przychodzi kartka: „Dostałem! Pracuję w biurze projektowym. Kuba.”
-- **Rozdział / dzielnica:** 1, Osiedle Słoneczne.
-- **Ton:** ciepły, zabawny.
 
 #### `job.student_dorm`
 - **Tytuł:** Pokój 412 / *Room 412*
@@ -411,6 +400,20 @@ np. „dźwigniowy, T1” to w danych `lever` 3, „zapadkowy, T3” to `warded`
 - **Nagroda:** 80 monet (stawka nocna do 6:59) i darmowa gazeta co rano w warsztacie (przedmiot).
 - **Rozdział / dzielnica:** 1, Osiedle Słoneczne.
 - **Ton:** ciepły.
+
+#### `job.bike_interview`
+- **Tytuł:** Rozmowa o 9:30 / *Interview at 9:30*
+- **Klient:** Kuba, 23 lata, świeżo po studiach, ma pożyczoną marynarkę i jedzie na pierwszą rozmowę o pracę.
+- **Sytuacja:** Zmienił kod w kłódce rowerowej „na bezpieczniejszy” i go zapomniał. Rower stoi przy stojaku pod jego blokiem, a rozmowa jest o 9:30 na drugim końcu miasta.
+- **Scena:**
+  - PL — **Kuba:** Zmieniłem kod wczoraj. Na pewno było tam siedem. Albo dwa. / **Ślusarz:** Ma pan zdjęcie z tym rowerem? / **Kuba:** Mam, z wakacji. I paragon w mailu. / **Ślusarz:** Wystarczy. Niech pan w tym czasie poprawi krawat.
+  - EN — **Kuba:** I changed the code yesterday. There was definitely a seven. Or a two. / **Locksmith:** Got a photo with this bike? / **Kuba:** From the holidays. And the receipt in my email. / **Locksmith:** That'll do. Fix your tie while I work.
+- **Zamek:** kłódka szyfrowa, T1.
+- **Weryfikacja:** zdjęcie (1) i paragon (1), czyli rzecz w posiadaniu, próg 2. Haczyk: brak.
+- **Presja:** licznik „autobus 8:52” (opcjonalny). Gdy się spóźni, Kuba jedzie taksówką i i tak dostaje pracę, tylko z innym dialogiem.
+- **Nagroda:** 65 monet. W rozdziale 3 przychodzi kartka: „Dostałem! Pracuję w biurze projektowym. Kuba.”
+- **Rozdział / dzielnica:** 1, Osiedle Słoneczne.
+- **Ton:** ciepły, zabawny.
 
 #### `job.refuse_ex_partner` ⚠ do odmowy
 - **Tytuł:** „To przecież też moje” / *"It's Half Mine Anyway"*
@@ -765,10 +768,10 @@ np. „dźwigniowy, T1” to w danych `lever` 3, „zapadkowy, T3” to `warded`
 | Rodzina | Zlecenia |
 |---|---|
 | egipski drewniany | `job.dollhouse_wooden_lock` |
-| zapadkowy | `job.grandma_broth`, `job.cat_bathroom`, `job.grandpa_chest`, `job.krakow_tenement_gate`, `job.swiatniki_journeyman_padlock`, `job.ghent_beguinage` |
+| zapadkowy | `job.cat_bathroom`, `job.grandpa_chest`, `job.krakow_tenement_gate`, `job.swiatniki_journeyman_padlock`, `job.ghent_beguinage` |
 | kłódka szyfrowa | `job.bike_interview`, `job.time_capsule` |
 | płytkowy | `job.kiosk_shutter`, `job.allotment_shed`, `job.charleroi_letters` |
-| wkładka bębenkowa | `job.student_dorm`, `job.newlyweds_4am`, `job.wrong_floor`, `job.refuse_ex_partner`, `job.refuse_rush_bribe` |
+| wkładka bębenkowa | `job.grandma_broth`, `job.student_dorm`, `job.newlyweds_4am`, `job.wrong_floor`, `job.refuse_ex_partner`, `job.refuse_rush_bribe` |
 | dźwigniowy (+ detektor) | `job.pizzeria_pays_pizza`, `job.widow_bureau`, `job.refuse_aunt_alive`, `job.liege_bakery` |
 | rurkowy | `job.drummer_locker` |
 | magnetyczny | `job.night_nurse` |

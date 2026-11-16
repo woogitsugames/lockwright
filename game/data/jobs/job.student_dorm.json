@@ -1,6 +1,7 @@
 {
   "id": "job.student_dorm",
   "chapter": 1,
+  "order": 3,
   "district": "Kampus",
   "family": "pin_tumbler",
   "tier": 2,

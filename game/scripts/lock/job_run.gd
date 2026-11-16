@@ -73,7 +73,9 @@ static func family_for(job: Dictionary) -> StringName:
 ## flat/room/cellar/kiosk, "object" = whose the thing is (bike, chest, tin, safe), "shared" = consent
 ## for a common or institutional space or item opened on someone's behalf. Refusals keep the kind of
 ## what is asked for. Missing or unknown -> "premises" (the old wording).
-const VERIFY_KINDS := ["premises", "object", "shared"]
+## D-137: "home" = the client is inside their own home and the lock is inside it too (the cat in the
+## bathroom): there is nothing to prove, the table stays empty (`cards: []`) and the screen says so.
+const VERIFY_KINDS := ["premises", "object", "shared", "home"]
 
 
 static func verify_kind(job: Dictionary) -> String:

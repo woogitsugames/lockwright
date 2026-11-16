@@ -1,6 +1,7 @@
 {
   "id": "job.kiosk_shutter",
   "chapter": 1,
+  "order": 4,
   "district": "Osiedle Słoneczne",
   "family": "wafer",
   "tier": 1,

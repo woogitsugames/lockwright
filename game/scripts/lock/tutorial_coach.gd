@@ -282,6 +282,20 @@ static func count_job_after_lesson(fam: StringName) -> void:
 	Save.set_value("lessons/%s/after" % fam, jobs_after_lesson(fam) + 1)
 
 
+## D-137: a family without a lesson file (warded, wafer, lever, lever_detector) has only the
+## first-jobs coach (N-63: its own lines, reduced chalk). That coach used to depend on the first
+## three jobs of the career, so a family met later arrived with nothing. Now the family's FIRST job
+## gets it wherever it sits in the career. pin_tumbler is the tutorial's family; a family with a
+## lesson file has the lesson. Save: lessons/<family>/met, written when that job's lock opens.
+static func family_met(fam: StringName) -> bool:
+	return fam == &"pin_tumbler" or has_lesson_for(fam) or bool(Save.get_value("lessons/%s/met" % fam, false))
+
+
+static func mark_family_met(fam: StringName) -> void:
+	if not family_met(fam):
+		Save.set_value("lessons/%s/met" % fam, true)
+
+
 ## D-121 / ONBOARDING §9.1: a security lesson is not a family lesson. The family is known; what is
 ## new is its first security element (pin_tumbler: the spool and its false set). It is played once,
 ## on its own authored lock (the lesson's "lock"), right before the first lock of the family at the

@@ -159,6 +159,23 @@ Po S3 drzwi zaplecza trzaskają (przeciąg), a klucz zostaje w środku. To **wł
 - Wyjście: drzwi się otwierają, gracz widzi swój klucz na haczyku. Pierwszy **rachunek-przedmiot** (`HUD.md` §8) jest wypisany „dla siebie”: 0 zł i dopisek ołówkiem „kawa”. To jedyny żart, a przy okazji pokazuje, jak wygląda rachunek.
 - Potem otwiera się Tryb Ciągły (pierwsza karta zlecenia z bloczka).
 
+### 5.1 Pierwsze zlecenia po samouczku (stan w grze, D-137)
+
+Samouczek uczy wkładki bębenkowej, więc pierwsze zlecenie też ją ma. Kolejność rozdz. 1 jest w danych (`order`):
+
+| nr | zlecenie | zamek (tier lockcore) | co jest nowe | kto prowadzi |
+|---|---|---|---|---|
+| 1 | `job.grandma_broth` | `pin_tumbler` t2 (najniższy tier rodziny) | weryfikacja z kartami | linie trenera pierwszych zleceń, zredukowana kreda |
+| 2 | `job.cat_bathroom` | `warded` t1 | sonda zamiast wytrycha; weryfikacja bez dokumentów | linie `lock.warded_*` |
+| 3 | `job.student_dorm` | `pin_tumbler` t2 | nic — utrwalenie | linie trenera |
+| 4 | `job.kiosk_shutter` | `wafer` t1 | płytki; „Poproszę o coś jeszcze” | `lock.wafer_coach` (pierwsze zlecenie rodziny) |
+| 5 | `job.bike_interview` | `combo` t1 | kółka z cyframi | lekcja rodziny `game/data/lessons/combo.json` |
+| 6 | `job.refuse_ex_partner` | bez zamka | odmowa | — |
+
+- **Jedna nowa rodzina naraz, pierwsze zlecenie rodziny prowadzone.** Rodzina z plikiem lekcji (`game/data/lessons/<rodzina>.json`) gra lekcję na pierwszym zleceniu (T42). Rodzina bez pliku (`warded`, `wafer`, `lever`, `lever_detector`) dostaje na **pierwszym zleceniu rodziny** trenera pierwszych zleceń (N-63: własne linie, zredukowana kreda) — także po trzecim zleceniu kariery; wcześniej trener był tylko w trzech pierwszych zleceniach, więc `lever` w rozdz. 2 przychodził bez słowa. Zapis: `lessons/<rodzina>/met` po otwarciu zamka. Tylko w zleceniach (nie w trybie ciągłym i nie w ćwiczeniach).
+- **Kot (zlecenie 2):** ślusarz mówi „Dokumentów tym razem nie trzeba”, więc stół jest pusty (`verify_kind: home`, `cards: []`): przycisk przyjazdu „Wejdź do środka”, tytuł „U klienta w domu”, zdanie „Tu nie ma czego sprawdzać. Ty decydujesz.”. „Tym razem” ma sens, bo zlecenie 1 miało karty.
+- Pilnuje tego `game/tests/gut/test_first_jobs_d137.gd`.
+
 ## 6. Lupa (D-13)
 
 ### 6.1 Wprowadzenie

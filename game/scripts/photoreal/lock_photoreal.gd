@@ -182,13 +182,14 @@ func _setup_guidance() -> void:
 	if control != null:
 		control.auto = auto
 		var done: int = (Save.get_value("jobs_completed", []) as Array).size()
-		var lvl := ChalkLayer.Level.REDUCED if done < 3 or chalk_layer_on() else ChalkLayer.Level.OFF
+		var intro := done < 3 or family_intro_due(family)  # D-137: also the family's first job
+		var lvl := ChalkLayer.Level.REDUCED if intro or chalk_layer_on() else ChalkLayer.Level.OFF
 		if args.has("lw-chalk"):
 			lvl = {"off": ChalkLayer.Level.OFF, "reduced": ChalkLayer.Level.REDUCED, "full": ChalkLayer.Level.FULL}.get(args["lw-chalk"], lvl)
 		view.chalk_level = lvl
 		view.chalk_gauge = false
 		coach = null
-		if done < 3:
+		if intro:
 			coach = TutorialCoach.new(0, false, auto)  # N-63: family lines for the first jobs
 			coach.family = family
 		_setup_caution(auto)
@@ -229,9 +230,10 @@ func _setup_guidance() -> void:
 		fb_gain = [1.5, 1.3, 1.15][clampi(stage, 0, 2)]
 		coach = TutorialCoach.new(stage, stage == 0, auto)
 	else:
-		if jobs_done < 3 or chalk_layer_on():
+		var intro := jobs_done < 3 or family_intro_due(family)  # D-137: also the family's first job
+		if intro or chalk_layer_on():
 			level = ChalkLayer.Level.REDUCED
-		coach = TutorialCoach.new(0, false, auto) if jobs_done < 3 else null
+		coach = TutorialCoach.new(0, false, auto) if intro else null
 	if args.has("lw-chalk"):
 		level = {"off": ChalkLayer.Level.OFF, "reduced": ChalkLayer.Level.REDUCED, "full": ChalkLayer.Level.FULL}.get(args["lw-chalk"], level)
 	if coach != null:
@@ -264,6 +266,13 @@ func _setup_practice(auto: bool) -> void:
 ## D-79: the lock's lesson_target event; the goal counts once the lock opens (Practice.finish).
 func _note_practice(events: Array) -> void:
 	Practice.note_events(events)
+
+
+## D-137: the first job of a family that has no lesson file gets the first-jobs coach (its own lines,
+## reduced chalk) even after the first three jobs of the career. Jobs only: not the endless shift,
+## practice or a dev scene.
+static func family_intro_due(fam: StringName) -> bool:
+	return JobRun.mode == &"job" and not JobRun.current_job.is_empty() and not TutorialCoach.family_met(fam)
 
 
 ## T42: the lesson of this job's family, or {} — only the family's first job (lesson not done in
@@ -525,6 +534,7 @@ func _note_lesson_open() -> void:
 		TutorialCoach.mark_caution_done(family)  # D-120
 	if args.has("lw-lesson") or JobRun.mode != &"job" or JobRun.current_job.is_empty():
 		return
+	TutorialCoach.mark_family_met(family)  # D-137
 	if coach != null and coach.has_lesson() and not coach.lesson_quiet:
 		TutorialCoach.mark_lesson_done(family)
 	elif TutorialCoach.has_lesson_for(family) and TutorialCoach.lesson_done(family):
