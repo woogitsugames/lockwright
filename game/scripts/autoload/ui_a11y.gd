@@ -409,9 +409,21 @@ func _collect(n: Node, out: Array, vp: Rect2) -> void:
 		_collect(ch, out, vp)
 
 
+## True for the lock's section view (LockPhotorealView and the family views that extend it).
+static func is_lock_view(c: Object) -> bool:
+	var s: Script = c.get_script()
+	while s != null:
+		if s.get_global_name() == &"LockPhotorealView":
+			return true
+		s = s.get_base_script()
+	return false
+
+
 ## Role / name / state of one control for the bridge ({} = not exposed).
 static func describe(c: Control) -> Dictionary:
-	if c is LockPhotorealView:
+	# D-136: by script name, not `is LockPhotorealView`: naming the class here made every start of
+	# the game compile the whole lock view (10 scripts, ~2,500 lines) before the first frame
+	if is_lock_view(c):
 		return {"role": "area", "name": spoken_name(c),
 			"desc": str(c.get("accessibility_description")) + " " + I18n.t(&"a11y.lock_talkback")}
 	if c.mouse_filter == Control.MOUSE_FILTER_IGNORE and not c is Label:

@@ -35,6 +35,12 @@ extends "res://scripts/autoload/pack_store.gd"
 signal registry_changed
 
 const MANIFEST_PATH := "res://data/content_packs.json"
+## Caches built from the job files, dropped when the set of packs on the phone changes: [script, static method].
+const JOB_CACHES := [
+	["res://scripts/lock/practice.gd", &"forget_jobs"],
+	["res://scripts/ui/furnishings.gd", &"forget_jobs"],
+	["res://scripts/ui/arrival_scene.gd", &"forget_data"],
+]
 const DIR := "user://content_packs"
 const ROOT := "res://packs"
 const BASE_JOBS_DIR := "res://data/jobs"
@@ -467,7 +473,9 @@ func _rebuild() -> void:
 		if not _csv_done.has(csv) and get_node_or_null("/root/I18n") != null and I18n.add_csv(csv):
 			_csv_done[csv] = true
 	# caches built from the job files
-	Practice.forget_jobs()
-	Furnishings.forget_jobs()
-	ArrivalScene.forget_data()
+	# D-136: only scripts that are already loaded can hold a cache; naming the classes here made
+	# the start of the game compile the workshop furnishings and the arrival scene for nothing
+	for entry: Array in JOB_CACHES:
+		if ResourceLoader.has_cached(entry[0]):
+			load(entry[0]).call(entry[1])
 	registry_changed.emit()

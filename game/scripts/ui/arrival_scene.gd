@@ -57,6 +57,17 @@ const SYNC_FIRST := 3   # loaded up front so the climb starts without a hitch
 ## "Parameter t is null" (texture_2d_initialize), see D-101/D-105. Without threads every frame is loaded
 ## on demand by _frame_tex(): the same streaming window, only synchronous. Tests may flip it.
 static var threaded_loads := DisplayServer.get_name() != "headless"
+## D-136: frames asked for on worker threads and not taken yet. ResourceLoader keeps a finished
+## background load until load_threaded_get() takes it, so a frame that was requested ahead of the
+## playhead and never shown (a tap skips the climb, Back leaves the screen) stayed in memory for the
+## rest of the session: up to AHEAD frames of 1080x1920 RGBA (8.3 MB each) per arrival. Every request
+## is recorded here and taken back when the climb ends or the scene leaves the tree.
+var _requested := {}                             # path -> true
+## Requests of scenes that are gone whose decode was still running: taken as soon as they finish.
+static var _stray: PackedStringArray = []
+## Tests: stands in for ResourceLoader's background loading: request(path), status(path) -> int
+## (ResourceLoader.THREAD_LOAD_*), take(path) -> Texture2D.
+static var loader_override: Object = null
 var _t := 0.0
 var _breath_t := 0.0
 var _img_size := Vector2(1080, 1920)
@@ -183,9 +194,12 @@ func setup(p_cfg: Dictionary, p_reduce_motion: bool) -> void:
 	for p: String in cfg.get("frame_paths", []):
 		_paths.append(p)
 	_frames.resize(_paths.size())
-	for i in mini(SYNC_FIRST, _paths.size()):
-		_frames[i] = load(_paths[i]) as Texture2D
-	_request_ahead(0)
+	# D-136: reduce motion / a screen reader never plays the climb: no frame is loaded for it
+	# (three frames, 25 MB, used to stay in memory for the whole dialogue)
+	if not reduce_motion:
+		for i in mini(SYNC_FIRST, _paths.size()):
+			_frames[i] = load(_paths[i]) as Texture2D
+		_request_ahead(0)
 	_set_figure(String(cfg.get("hold", "")))
 	if _plate.texture != null:
 		_img_size = _plate.texture.get_size()
@@ -237,21 +251,95 @@ func _request_ahead(from: int) -> void:
 	if not threaded_loads:
 		return
 	for i in range(from, mini(from + AHEAD, _paths.size())):
-		if _frames[i] == null and ResourceLoader.load_threaded_get_status(_paths[i]) == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
-			ResourceLoader.load_threaded_request(_paths[i], "Texture2D")
+		if _frames[i] == null and _status(_paths[i]) == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
+			_stray.erase(_paths[i])  # this scene owns the request from here on
+			if loader_override != null:
+				loader_override.call(&"request", _paths[i])
+			else:
+				ResourceLoader.load_threaded_request(_paths[i], "Texture2D")
+			_requested[_paths[i]] = true
+
+
+static func _status(path: String) -> int:
+	if loader_override != null:
+		return int(loader_override.call(&"status", path))
+	return ResourceLoader.load_threaded_get_status(path)
+
+
+## Takes a background load off the loader (waits for one still running).
+static func _take(path: String) -> Texture2D:
+	if loader_override != null:
+		return loader_override.call(&"take", path) as Texture2D
+	return ResourceLoader.load_threaded_get(path) as Texture2D
 
 
 ## The frame's texture if it is ready (synchronous fallback only when it was never requested).
 func _frame_tex(i: int) -> Texture2D:
 	if _frames[i] != null:
 		return _frames[i]
-	var st := ResourceLoader.load_threaded_get_status(_paths[i])
+	var st := _status(_paths[i])
 	if st == ResourceLoader.THREAD_LOAD_LOADED or st == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 		# in progress: the decode is already under way, finishing it now (a few ms) keeps the climb on time
-		_frames[i] = ResourceLoader.load_threaded_get(_paths[i]) as Texture2D
+		_frames[i] = _take(_paths[i])
+		_requested.erase(_paths[i])
+		_stray.erase(_paths[i])
 	elif st == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE or st == ResourceLoader.THREAD_LOAD_FAILED:
 		_frames[i] = load(_paths[i]) as Texture2D
 	return _frames[i]
+
+
+## D-136: the climb is over (played out, skipped, or the scene is leaving): frames still held and
+## background loads never shown are let go. A load that is still decoding is not waited for; it goes
+## to the stray list and is taken when it finishes (sweep()).
+func _release_frames() -> void:
+	for i in _frames.size():
+		_frames[i] = null
+	for path: String in _requested:
+		if _status(path) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+			if not _stray.has(path):
+				_stray.append(path)
+		elif _status(path) == ResourceLoader.THREAD_LOAD_LOADED:
+			_take(path)
+	_requested.clear()
+	sweep()
+
+
+## Takes (and so frees) the stray background loads that have finished. True when none is left.
+static func sweep() -> bool:
+	var still := PackedStringArray()
+	for path in _stray:
+		var st := _status(path)
+		if st == ResourceLoader.THREAD_LOAD_LOADED:
+			_take(path)
+		elif st == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+			still.append(path)
+	_stray = still
+	return _stray.is_empty()
+
+
+## Background loads no scene will take any more (tests, the soak).
+static func stray_count() -> int:
+	return _stray.size()
+
+
+## Background loads of this scene not taken yet (tests).
+func requested_count() -> int:
+	return _requested.size()
+
+
+func _exit_tree() -> void:
+	_release_frames()
+	if not _stray.is_empty():
+		_sweep_later(20)
+
+
+## The scene is gone but a decode was still running: look again every 0.25 s, 5 s at most (a
+## load stuck longer than that is picked up by the next arrival scene's sweep).
+static func _sweep_later(tries: int) -> void:
+	var tree := Engine.get_main_loop() as SceneTree
+	if tree == null or tries <= 0 or sweep():
+		return
+	tree.create_timer(0.25).timeout.connect(_sweep_later.bind(tries - 1))
 
 
 func play() -> void:
@@ -291,9 +379,12 @@ func _process(delta: float) -> void:
 			_step_sounds(frame)
 		if f >= _frames.size():
 			_show_hold(true)
-	elif phase == &"hold" and not reduce_motion:
-		_breath_t += delta
-		_apply_breath()
+	elif phase == &"hold":
+		if not _stray.is_empty():
+			sweep()
+		if not reduce_motion:
+			_breath_t += delta
+			_apply_breath()
 
 
 func _apply_breath() -> void:
@@ -323,11 +414,19 @@ func _show_hold(fade: bool) -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_breath_t = 0.0
 	_apply_breath()
+	# D-136: the hold needs none of the climb any more; only the frame on screen lives through the
+	# cross-fade (it used to stay loaded, with its neighbour, under the whole dialogue: 17-25 MB)
+	_release_frames()
 	if fade and not reduce_motion and is_inside_tree():
-		create_tween().tween_property(_seq, "modulate:a", 0.0, CROSSFADE_S).finished.connect(func() -> void: _seq.visible = false)
+		create_tween().tween_property(_seq, "modulate:a", 0.0, CROSSFADE_S).finished.connect(_hide_climb)
 	else:
-		_seq.visible = false
+		_hide_climb()
 	climb_finished.emit()
+
+
+func _hide_climb() -> void:
+	_seq.visible = false
+	_seq.texture = null
 
 
 func _set_figure(f: String) -> void:

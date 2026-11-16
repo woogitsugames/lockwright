@@ -17,6 +17,8 @@ var _preloaded: Array[String] = []
 
 const MAIN_MENU := "res://scenes/main_menu.tscn"
 const PANEL_W := 360.0
+const NOTICE_S := 3.0        # first launch: how long the "this is a game" card stays up
+const MENU_WAIT_S := 2.0     # longest wait for the menu's background loads before loading it in place
 const MenuScript := preload("res://scripts/ui/main_menu.gd")
 
 
@@ -31,13 +33,34 @@ func _ready() -> void:
 	notice.visible = first_run
 	if first_run:
 		Save.set_value("seen_notice", true)
-	await get_tree().create_timer(0.1).timeout
 	if notice.visible:
-		await get_tree().create_timer(3.0).timeout  # the card stays readable, never blocks
+		await get_tree().create_timer(NOTICE_S).timeout  # the card stays readable, never blocks
 		notice.visible = false
+	else:
+		await _wait_for_menu()
 	if first_run and not Settings.get_value("calibrated", false):
 		await _run_calibration()
 	get_tree().change_scene_to_file(MAIN_MENU)
+
+
+## D-136: the boot used to wait a fixed 100 ms before the menu on every launch. It now waits only
+## as long as the menu's background loads (the scene and its board, on worker threads) are running:
+## one frame so the dark boot colour is on screen, then until they are done, at most MENU_WAIT_S.
+## Headless (nothing preloaded) and fast phones go straight on; change_scene_to_file() picks the
+## finished loads up from the cache.
+func _wait_for_menu() -> void:
+	await get_tree().process_frame
+	var t0 := Time.get_ticks_msec()
+	while menu_loading() and Time.get_ticks_msec() - t0 < MENU_WAIT_S * 1000.0:
+		await get_tree().process_frame
+
+
+## True while a background load started by _preload_menu() is still running.
+func menu_loading() -> bool:
+	for p in _preloaded:
+		if ResourceLoader.load_threaded_get_status(p) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+			return true
+	return false
 
 
 ## D-129: both cards keep 16 dp to the screen edges and the safe area (the 400 dp calibration card left

@@ -14,6 +14,7 @@ extends RefCounted
 ## Saved as `practice/<id>/goal`.
 
 const DIR := "res://data/practice"
+const COACH_SCRIPT := "res://scripts/lock/tutorial_coach.gd"
 ## Family sub-events a lesson_target can name (lockcore FamilyModule::event_name: base kind + sub).
 ## Base kinds ("set", "overset", "false_set", ...) match by name; a base kind also matches its
 ## sub-events, as in check_locks ("false_set" counts a serration).
@@ -90,7 +91,9 @@ static func families() -> Array:
 static func family_met(fam: StringName) -> bool:
 	if fam == &"pin_tumbler" and bool(Save.get_value("tutorial_done", false)):
 		return true
-	if TutorialCoach.lesson_done(fam):
+	# D-136: loaded here, not named as a class (Practice is compiled at start through Events; the
+	# coach, ~600 lines, only when the workshop or a lock asks)
+	if bool(load(COACH_SCRIPT).call(&"lesson_done", fam)):
 		return true
 	if _job_family.is_empty():
 		# D-112: jobs of content packs count too, also when the pack is not on the phone (stubs)

@@ -190,7 +190,11 @@ static func fit_words(label: Label) -> void:
 
 ## One job: a row (direct child of the list) with the plate button `Job_<id>` under the drawn content.
 ## The button has no text of its own; Title / Meta / Mark are its content.
-static func job_tile(job: Dictionary, done: bool) -> MarginContainer:
+## D-136: `fill` false makes the row and its plate only; fill_tile() adds the content when the row is
+## first shown. The list builds the plates of folded chapters that way: ~110 of 123 plates are
+## folded in a career, and their signs, titles and lines (6 of 8 nodes per plate) were built, themed
+## and laid out on every visit of the list without ever being seen.
+static func job_tile(job: Dictionary, done: bool, fill := true) -> MarginContainer:
 	var jid: String = job.get("id", "")
 	var row := MarginContainer.new()
 	row.name = "Row_" + jid.trim_prefix("job.")
@@ -203,6 +207,19 @@ static func job_tile(job: Dictionary, done: bool) -> MarginContainer:
 	if "accessibility_name" in b:
 		b.set("accessibility_name", job_spoken(job, done))
 	row.add_child(b)
+	row.set_meta(&"job", job)
+	row.set_meta(&"done", done)
+	if fill:
+		fill_tile(row)
+	return row
+
+
+## Adds the drawn content (sign, title, quiet line) to a plate made by job_tile(); once per plate.
+static func fill_tile(row: Control) -> void:
+	if not row.has_meta(&"job") or row.has_node("Content"):
+		return
+	var job: Dictionary = row.get_meta(&"job")
+	var done: bool = row.get_meta(&"done", false)
 	var pad := MarginContainer.new()
 	pad.name = "Content"
 	pad.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -243,7 +260,6 @@ static func job_tile(job: Dictionary, done: bool) -> MarginContainer:
 		meta.add_theme_color_override(&"font_color", INK_QUIET)
 		meta.add_theme_color_override(&"font_shadow_color", Color(0, 0, 0, 0))
 	text.add_child(meta)
-	return row
 
 
 func _ready() -> void:
@@ -297,6 +313,8 @@ func set_chapter_open(ch: int, open: bool, remember := true) -> void:
 		chapter_open[ch] = open
 	set_header_open(_chapter_headers[ch], open)
 	for row: Control in _chapter_rows.get(ch, []):
+		if open:
+			fill_tile(row)  # D-136: a plate gets its content when its chapter is first opened
 		row.visible = open
 		if open and remember and not UiA11y.reduce_motion():
 			row.modulate.a = 0.0
@@ -306,6 +324,20 @@ func set_chapter_open(ch: int, open: bool, remember := true) -> void:
 ## Fills the list: chapter headers, the jobs that can be played, and one row per chapter whose content
 ## pack is not on the phone (D-112).
 func _build_list() -> void:
+	# D-136: the list is filled outside the tree and put back whole. Added one by one to a live
+	# container, each of the ~250 rows and headers entered the tree, took its theme and pushed a new
+	# minimum size up through the scroll area on its own: over half of the time the list took to open.
+	var holder := list.get_parent()
+	var at := list.get_index() if holder != null else -1
+	if holder != null:
+		holder.remove_child(list)
+	_fill_list()
+	if holder != null:
+		holder.add_child(list)
+		holder.move_child(list, at)
+
+
+func _fill_list() -> void:
 	for c in list.get_children():
 		list.remove_child(c)
 		c.queue_free()
@@ -357,6 +389,7 @@ func _build_list() -> void:
 		_chapter_headers[ch] = header
 		_chapter_rows[ch] = []
 		list.add_child(header)
+		var open_now := bool(chapter_open.get(ch, ch == _current_chapter or ch == focus_chapter))
 		for job: Dictionary in shown[ch]:
 			var row: Control
 			if job.has("_pack"):
@@ -364,7 +397,7 @@ func _build_list() -> void:
 				_pack_rows.append(row)
 			else:
 				var jid: String = job.get("id", "")
-				row = job_tile(job, completed.has(jid))
+				row = job_tile(job, completed.has(jid), open_now)
 				var b: Button = row.get_child(0)
 				if jid == last_job_id:
 					_focus_button = b
@@ -374,7 +407,7 @@ func _build_list() -> void:
 					get_tree().change_scene_to_file("res://scenes/job_arrival.tscn"))
 			_chapter_rows[ch].append(row)
 			list.add_child(row)
-		set_chapter_open(ch, bool(chapter_open.get(ch, ch == _current_chapter or ch == focus_chapter)), false)
+		set_chapter_open(ch, open_now, false)
 	_update_pack_rows()
 
 

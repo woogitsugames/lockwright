@@ -113,3 +113,36 @@ func test_main_menu_asks_before_quitting() -> void:
 	_send_back()
 	Nav._quit_dialog.confirmed.emit()
 	assert_eq(Nav.last_target, "quit", "confirming quits")
+
+
+# ------------------------------------------------------------------ D-136: app goes to the background
+
+## The app is sent to the background (a call, Home, screen off) with a lock on the screen: the lock
+## is paused like Back does it, once; coming back does not resume it behind the player's back.
+func test_background_pauses_an_open_lock_once() -> void:
+	for path in ["res://scenes/lock.tscn", "res://scenes/lock_job.tscn"]:
+		var scene := await _open(path)
+		assert_false(bool(scene.get("_paused")), "%s: starts live" % path)
+		Nav.notification(NOTIFICATION_APPLICATION_PAUSED)
+		assert_true(bool(scene.get("_paused")), "%s: paused when the app leaves the screen" % path)
+		Nav.notification(NOTIFICATION_APPLICATION_PAUSED)
+		assert_true(bool(scene.get("_paused")), "%s: a second notification does not toggle it back" % path)
+		Nav.notification(NOTIFICATION_APPLICATION_RESUMED)
+		assert_true(bool(scene.get("_paused")), "%s: still paused when the player returns" % path)
+		assert_eq(_send_back_action(), &"resume", "%s: Back (or Resume) continues" % path)
+		get_tree().paused = false
+		scene.queue_free()
+		await get_tree().process_frame
+
+
+func test_background_leaves_other_screens_alone() -> void:
+	for path: String in SCREENS:
+		await _open(path)
+		assert_eq(Nav.pause_for_background(), &"none", path)
+		assert_eq(Nav.last_target, "", "%s: no scene change" % path)
+		assert_false(Nav.quit_dialog_open(), "%s: no dialog" % path)
+
+
+func _send_back_action() -> StringName:
+	return Nav.handle_back()
+
