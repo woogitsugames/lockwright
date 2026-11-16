@@ -91,7 +91,7 @@ func _ready() -> void:
 		_pool.append(p)
 		_free.append(p)
 	_preload_lock()  # L2 lock events + loops only: cold start must not wait for music/voices (GEM3 BUG-06)
-	_preload_lazy_threaded()
+	_preload_lazy_threaded(MENU_DIRS, true)  # what the menu plays: ambience, music, plate sounds
 
 
 ## Perf pass 2026-11-08: the ~380 lock clicks and the native bridge upload took ~340 ms of the cold
@@ -125,6 +125,9 @@ func _process(_delta: float) -> void:
 			return
 	if _warm.is_empty():
 		set_process(false)
+		if _later_pending:
+			_later_pending = false
+			_preload_lazy_threaded(LATER_DIRS, false, true)
 		if _pending_bridge != null:
 			var bridge := _pending_bridge
 			_pending_bridge = null
@@ -150,19 +153,29 @@ func _cached(key: String) -> AudioStream:
 
 
 # ambience/music/ui/reward/foley/voices warm up off the critical path; the getters
-# fall back to a synchronous load on first use so a sound never silently drops
-func _preload_lazy_threaded() -> void:
-	for amb in AMBIENCES:
-		var apath := "%s/%s.wav" % [AMBIENCE_ROOT, amb]
-		if ResourceLoader.exists(apath):
-			ResourceLoader.load_threaded_request(apath)
-	for dir in [UI_ROOT, REWARD_ROOT, MUSIC_ROOT, FOLEY_ROOT]:
+# fall back to a synchronous load on first use so a sound never silently drops.
+# D-136: in two stages. At start only what the menu plays (ambience, music, plate sounds); the
+# rest (reward, foley, the cast's voice clips: nothing the menu uses) once the lock clicks are in,
+# so the start does not list four more folders and queue ~100 more loads before the first frame.
+const MENU_DIRS := [UI_ROOT, MUSIC_ROOT]
+const LATER_DIRS := [REWARD_ROOT, FOLEY_ROOT]
+var _later_pending := true
+
+
+func _preload_lazy_threaded(dirs: Array, ambience: bool, voices := false) -> void:
+	if ambience:
+		for amb in AMBIENCES:
+			var apath := "%s/%s.wav" % [AMBIENCE_ROOT, amb]
+			if ResourceLoader.exists(apath):
+				ResourceLoader.load_threaded_request(apath)
+	for dir: String in dirs:
 		for f in _audio_files(dir):
 			ResourceLoader.load_threaded_request(dir + "/" + f)
-	for spk in DirAccess.get_directories_at(VOICE_ROOT):
-		for f in _audio_files(VOICE_ROOT + "/" + spk):
-			if f.ends_with(".wav"):  # 12 cast folders only; episodic .ogg load per speaker
-				ResourceLoader.load_threaded_request(VOICE_ROOT + "/" + spk + "/" + f)
+	if voices:
+		for spk in DirAccess.get_directories_at(VOICE_ROOT):
+			for f in _audio_files(VOICE_ROOT + "/" + spk):
+				if f.ends_with(".wav"):  # 12 cast folders only; episodic .ogg load per speaker
+					ResourceLoader.load_threaded_request(VOICE_ROOT + "/" + spk + "/" + f)
 
 
 # .wav/.ogg resources in a folder. ResourceLoader.list_directory (not DirAccess) so an

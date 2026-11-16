@@ -24,6 +24,9 @@ const MIN_STROKE_DP := 2.0
 const GRAIN_STRENGTH := 0.3
 
 static var _grain: ShaderMaterial
+## Tests: how many times a sign was drawn since the start. A sign is drawn when it appears or
+## changes (family, ink, size), never per frame: the engine keeps the drawn commands.
+static var draws := 0
 
 var family := "": set = set_family
 var ink := Color(0.11, 0.09, 0.07): set = set_ink
@@ -56,11 +59,15 @@ static func side_dp() -> float:
 
 
 func set_family(f: String) -> void:
+	if f == family:
+		return
 	family = f
 	queue_redraw()
 
 
 func set_ink(c: Color) -> void:
+	if c == ink:
+		return
 	ink = c
 	queue_redraw()
 
@@ -73,6 +80,7 @@ func _draw() -> void:
 	var side := minf(size.x, size.y)
 	if side <= 0.0:
 		return
+	draws += 1
 	var o := (size - Vector2(side, side)) * 0.5
 	var w := maxf(MIN_STROKE_DP, side * 0.058)
 	for s: Dictionary in strokes(family):

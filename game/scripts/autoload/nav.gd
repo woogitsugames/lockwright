@@ -51,6 +51,22 @@ func _ready() -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		request_back()
+	elif what == NOTIFICATION_APPLICATION_PAUSED:
+		pause_for_background()
+
+
+## D-136: the app goes to the background (a call, the Home button, the screen turns off) while a
+## lock is open on the screen -> the lock is paused exactly like the Back button does it, so the
+## player comes back to the pause flap and not to a live lock under a thumb that is no longer there.
+## Every other screen has nothing running and stays as it is. Returns &"pause" or &"none".
+func pause_for_background() -> StringName:
+	var scene := _current()
+	if scene == null or quit_dialog_open():
+		return &"none"
+	if not (scene.has_method("_on_pause") or scene.has_method("_on_pause_pressed")) or bool(scene.get("_paused")):
+		return &"none"
+	scene.call("_on_pause" if scene.has_method("_on_pause") else "_on_pause_pressed")
+	return &"pause"
 
 
 func _input(event: InputEvent) -> void:

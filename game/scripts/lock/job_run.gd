@@ -8,6 +8,7 @@ static var tutorial_stage := 0
 static var lives := 3
 static var clean := true  # N-25: no drop/break/overset during the current run
 static var last_tip := 0  # N-25: tip paid by JobRun.complete()
+const DAY_AFTER_SCRIPT := "res://scripts/ui/day_after.gd"
 
 # lockcore families implemented in lockcore (v0.4); jobs with other families are
 # hidden on the list (N-05) instead of silently remapped.
@@ -213,6 +214,7 @@ static func complete() -> void:
 			Save.set_value("tutorial_done", true)
 		current_job = {}
 		return
+	Save.hold()  # D-136: the job, the coins, the statistics and the "day after" in one write
 	var jid: String = current_job.get("id", "")
 	var completed: Array = Save.get_value("jobs_completed", [])
 	if not completed.has(jid):
@@ -224,5 +226,9 @@ static func complete() -> void:
 	Save.set_value("coins", Save.get_value("coins", 0) + reward + last_tip)
 	if not talk:  # T43: a visit settled by talking opens no lock
 		Save.set_value("stats/locks_opened", Save.get_value("stats/locks_opened", 0) + 1)
-	DayAfter.note_finished(current_job)  # V04/D-78: its "day after" scene waits for the job list
+	# V04/D-78: its "day after" scene waits for the job list. D-136: loaded here, not named as a
+	# class: JobRun is compiled at start (Events, Achievements), DayAfter and the arrival screen
+	# behind it (4 scripts, ~1,300 lines) only when a job is first settled or the job list opens.
+	load(DAY_AFTER_SCRIPT).call(&"note_finished", current_job)
+	Save.release()
 	current_job = {}

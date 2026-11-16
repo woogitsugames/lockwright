@@ -66,7 +66,7 @@ func set_fps_overlay(on: bool) -> void:
 func _process(delta: float) -> void:
 	if _fps_label != null and _fps_label.visible:
 		_fps_label.text = "FPS %d  frame %.1f ms" % [Engine.get_frames_per_second(), delta * 1000.0]
-	if Settings.get_value("quality_profile", "auto") == "auto" and not _auto_done:
+	if not _auto_done and Settings.get_value("quality_profile", "auto") == "auto":  # D-136: no settings lookup per frame once decided
 		_auto_time += delta
 		_auto_frames += 1
 		if _auto_time >= AUTO_WINDOW_S:

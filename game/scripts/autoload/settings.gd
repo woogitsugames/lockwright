@@ -42,18 +42,29 @@ const DEFAULTS := {
 const LEGACY_KEYS := {"chalk_layer": "reading_aid"}
 
 var _cfg := {}
+## Where save_settings() writes (tests point a private Settings node at their own folder).
+var file_path := PATH
+## True while memory holds settings the disk does not (the last write failed).
+var dirty := false
 
 
 func _ready() -> void:
 	load_settings()
 
 
-func load_settings(path: String = PATH) -> void:
+func load_settings(from: String = "") -> void:
+	var path := from if from != "" else file_path
 	_cfg = DEFAULTS.duplicate(true)
+	SafeFile.drop_stale_tmp(path)
 	var file := ConfigFile.new()
-	if file.load(path) == OK:
+	var err := file.load(path)
+	if (err != OK or not file.has_section("settings")) and FileAccess.file_exists(path + SafeFile.BACKUP_SUFFIX):
+		# D-136: settings.cfg missing, empty, cut or unreadable -> the copy from before the last write
+		file = ConfigFile.new()
+		err = file.load(path + SafeFile.BACKUP_SUFFIX)
+	if err == OK:
 		for key in DEFAULTS:
-			if file.has_section_key("settings", key):
+			if file.has_section_key("settings", key) and _same_kind(file.get_value("settings", key), DEFAULTS[key]):
 				_cfg[key] = file.get_value("settings", key)
 		for old: String in LEGACY_KEYS:
 			var key: String = LEGACY_KEYS[old]
@@ -61,15 +72,35 @@ func load_settings(path: String = PATH) -> void:
 					and typeof(file.get_value("settings", old)) == typeof(DEFAULTS[key]):
 				_cfg[key] = file.get_value("settings", old)
 		# D-107: a player who already picked a text size keeps it (the system size is only a default)
-		if not file.has_section_key("settings", "text_scale_system") and file.has_section_key("settings", "text_scale"):
+		if not file.has_section_key("settings", "text_scale_system") and file.has_section_key("settings", "text_scale") \
+				and _same_kind(file.get_value("settings", "text_scale"), 1.0):
 			_cfg["text_scale_system"] = is_equal_approx(float(file.get_value("settings", "text_scale")), 1.0)
 
 
-func save_settings() -> void:
+## D-136: a value of another kind than the setting's default (a damaged or hand-edited file) is
+## ignored; the default stays. Whole and fractional numbers count as one kind.
+static func _same_kind(a: Variant, b: Variant) -> bool:
+	var ta := typeof(a)
+	var tb := typeof(b)
+	if ta in [TYPE_INT, TYPE_FLOAT] and tb in [TYPE_INT, TYPE_FLOAT]:
+		return true
+	return ta == tb
+
+
+## D-136: replaced atomically (temp file + rename, the previous file stays as settings.cfg.bak), so a
+## full disk or a kill in the middle of the write cannot leave an empty settings file. False when
+## the disk refused: the settings stay in memory and are written with the next change.
+func save_settings() -> bool:
 	var file := ConfigFile.new()
 	for key in _cfg:
 		file.set_value("settings", key, _cfg[key])
-	file.save(PATH)
+	dirty = SafeFile.write_text(file_path, file.encode_to_text(), true) != OK
+	return not dirty
+
+
+func _notification(what: int) -> void:
+	if (what == NOTIFICATION_APPLICATION_PAUSED or what == NOTIFICATION_WM_CLOSE_REQUEST) and dirty:
+		save_settings()
 
 
 func get_value(key: StringName, default: Variant = null) -> Variant:

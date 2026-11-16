@@ -24,6 +24,7 @@ const HASH_STEP := 1 << 20        # bytes hashed per frame while verifying
 const COPY_STEP := 1 << 19        # bytes copied per frame for file:// / res:// sources
 const TIMEOUT_MS := 20000         # no progress for this long -> "timeout"
 const MAX_REDIRECTS := 5          # GitHub release assets redirect to a CDN host
+const SPACE_MARGIN := 8 << 20     # D-136: free space kept beyond the pack itself before a download starts
 
 # Overridable by tests / dev builds before the node enters the tree.
 var manifest_path := ""
@@ -32,6 +33,10 @@ var base_url_override := ""       # replaces the manifest's base_url (file name 
 ## A removed / not installed pack is not used. Exported builds only: in the editor every pack's
 ## source files exist on disk and stay usable for development.
 var enforce := OS.has_feature("template")
+## Tests: free bytes reported for `dir` (-1 = ask the file system).
+var space_left_override := -1
+## Tests: every write to a .part is refused, like a disk that filled up during the download.
+var refuse_writes := false
 
 var _manifest := {}
 var _mounted := {}                # id -> true
@@ -64,6 +69,7 @@ class Job:
 func reload() -> void:
 	_manifest = _read_manifest()
 	DirAccess.make_dir_recursive_absolute(dir)
+	_sweep_strays()
 	_removed = {}
 	for lang in _read_json(REMOVED_FILE, []):
 		_removed[str(lang)] = true
@@ -78,6 +84,32 @@ func reload() -> void:
 			continue
 		if FileAccess.file_exists(path) and not _removed.has(lang):
 			_mount(lang)
+
+
+## D-136: files a cut-off download or write left behind and that no pack of this build can use any
+## more: temp files of the state lists, and .part / .part.json of packs the manifest no longer has
+## (an older build's pack, tens of MB that nothing would ever resume or delete).
+func _sweep_strays() -> void:
+	var known := {}
+	var packs: Variant = _manifest.get("packs", {})
+	if packs is Dictionary:
+		for id: Variant in packs:
+			known[file_name(str(id))] = true
+	for f in DirAccess.get_files_at(dir):
+		var stray := f.ends_with(SafeFile.TMP_SUFFIX)
+		for suffix: String in [".part", ".part.json"]:
+			if f.ends_with(suffix) and not known.has(f.trim_suffix(suffix)):
+				stray = true
+		if stray:
+			DirAccess.remove_absolute(dir.path_join(f))
+
+
+## Free bytes where the packs are stored (0 when the platform cannot tell).
+func space_left() -> int:
+	if space_left_override >= 0:
+		return space_left_override
+	var d := DirAccess.open(dir)
+	return int(d.get_space_left()) if d != null else 0
 
 
 ## The manifest as shipped in the app ({} when missing or unreadable).
@@ -247,9 +279,9 @@ func _read_json(file: String, fallback: Variant) -> Variant:
 
 
 func _write_json(file: String, value: Variant) -> void:
-	var f := FileAccess.open(dir.path_join(file), FileAccess.WRITE)
-	if f != null:
-		f.store_string(JSON.stringify(value))
+	# D-136: replaced atomically; a full disk cannot leave an empty installed.json (= every pack
+	# on the phone forgotten) or removed.json (= a removed pack fetched again)
+	SafeFile.write_text(dir.path_join(file), JSON.stringify(value))
 
 
 func _read_state() -> Dictionary:
@@ -284,6 +316,11 @@ func _start(j: Job) -> void:
 			and FileAccess.get_file_as_string(meta).strip_edges() == j.sha
 	if not resumable:
 		DirAccess.remove_absolute(j.part)
+		# D-136: the finished pack is on the phone but the list of installed packs lost it (damaged
+		# installed.json, a kill between rename and the list): check that file instead of fetching it again
+		var final := pack_path(j.lang)
+		if j.size > 0 and FileAccess.file_exists(final) and _file_size(final) == j.size:
+			DirAccess.rename_absolute(final, j.part)
 		var m := FileAccess.open(meta, FileAccess.WRITE)
 		if m != null:
 			m.store_string(j.sha)
@@ -299,6 +336,11 @@ func _start(j: Job) -> void:
 	j.received = j.out.get_position()
 	if j.received >= j.size and j.size > 0:
 		_begin_verify(j)
+		return
+	# D-136: not enough room for the rest of the pack -> say so now, not after filling the disk
+	var free := space_left()
+	if free > 0 and free < j.size - j.received + SPACE_MARGIN:
+		_fail(j, "storage")
 		return
 	if j.url.begins_with("file://") or j.url.begins_with("res://") or j.url.begins_with("user://"):
 		j.src = FileAccess.open(j.url.trim_prefix("file://"), FileAccess.READ)
@@ -384,7 +426,8 @@ func _step_http(j: Job) -> void:
 	if st == HTTPClient.STATUS_BODY:
 		var chunk := j.client.read_response_body_chunk()
 		if chunk.size() > 0:
-			j.out.store_buffer(chunk)
+			if not _store(j, chunk):
+				return
 			j.received += chunk.size()
 			j.last_ms = Time.get_ticks_msec()
 			progress.emit(j.lang, j.received, j.size)
@@ -444,7 +487,8 @@ static func _range_starts_at(hdr: Dictionary, offset: int) -> bool:
 func _step_copy(j: Job) -> void:
 	var buf := j.src.get_buffer(COPY_STEP)
 	if buf.size() > 0:
-		j.out.store_buffer(buf)
+		if not _store(j, buf):
+			return
 		j.received += buf.size()
 		j.last_ms = Time.get_ticks_msec()
 		progress.emit(j.lang, j.received, j.size)
@@ -454,6 +498,25 @@ func _step_copy(j: Job) -> void:
 			_begin_verify(j)
 		else:
 			_fail(j, "checksum" if j.received > j.size else "interrupted")
+
+
+## D-136: appends to the .part. A write the disk refuses (full) ends the job as "storage"; the bytes
+## already there stay for a resume, cut back to what is known to be whole.
+func _store(j: Job, bytes: PackedByteArray) -> bool:
+	if not refuse_writes and j.out.store_buffer(bytes) and j.out.get_error() == OK:
+		return true
+	j.out.close()
+	j.out = null
+	var keep := FileAccess.open(j.part, FileAccess.READ_WRITE)
+	if keep != null and keep.get_length() > j.received:
+		keep.resize(j.received)
+	_fail(j, "storage")
+	return false
+
+
+static func _file_size(path: String) -> int:
+	var f := FileAccess.open(path, FileAccess.READ)
+	return int(f.get_length()) if f != null else -1
 
 
 func _begin_verify(j: Job) -> void:
