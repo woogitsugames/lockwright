@@ -55,3 +55,11 @@ Nagrane (455 plików, PL/EN/DE/FR/ES), ale ASR (faster-whisper small, potwierdzo
 | `pl/job.warm_room_for_neighbours.after.1.ogg` | Sąsiedzi przespali noc w cieple. Ziemniak obszedł wszystkie koce i żadnego nie zatwierdził. | Sasiedzi przespali noc w cieple, ziemniak oprzedał wszystkie koce i szładnego nie zatwierdzi. | 0.308 |
 | `pl/job.winter_bicycle_cellar.after.1.ogg` | Ostatnia paczka dojechała trzydziestego pierwszego. Kłódka zimuje teraz pod pokrowcem. | Ostatnia paczka dojechała 31. Kółka zimuje teraz pod pokrowcem. | 0.3 |
 | `pl/job.zuzanna_catalogue_drawer.after.1.ogg` | Kopie gotowe dla świetlicy. Oryginały zostają w szufladzie. | Kopie gotowe dla owietlicy. Oryginały zostaje w szufladzie. | 0.25 |
+
+## Onboarding 2026-11-15 (D-134, `docs/handoff/ONBOARDING-AUDIT-2026-11-15.md`)
+
+Zmienione teksty to wyłącznie `game/i18n/strings.csv` (karta startowa, wybór sterowania, podpisy kart samouczka, weryfikacja, pauza). Te klucze nie mają nagrań: głosem nagrane są tylko `*.line.N` i `*.after.N` z `content.csv`, a żaden z nich się nie zmienił.
+
+Razem do nagrania: **0** plików.
+
+Do decyzji właściciela (nie zmienione, bo wymagałoby nagrania i zmiany danych zlecenia): `job.cat_bathroom.line.2` — ślusarz mówi „Dokumentów tym razem nie trzeba”, a ekran weryfikacji pokazuje dokument tożsamości. Jeśli właściciel wybierze zmianę kwestii, trzeba ją nagrać w 5 językach.

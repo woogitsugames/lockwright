@@ -66,6 +66,8 @@ Zasady:
 
 ## 3. Pierwsze uruchomienie
 
+> **Stan w grze (D-134, 2026-11-15):** start → jedna karta (pytanie o haptykę z kropkami ●● / ● / ○ i „Jeszcze raz”, pod nim notka „to gra, nie kurs”; czeka na odpowiedź) → menu → „Zacznij dyżur” → wybór sterowania → od razu zamek S1. Po S3 ekran „Samouczek ukończony” prowadzi do listy zleceń. Pomiar i lista uwag: `docs/handoff/ONBOARDING-AUDIT-2026-11-15.md`; powtórka: `qa/run_onboarding.sh`.
+
 Cel: od dotknięcia ikony do pierwszego dotyku zamka ≤ 25 s. Jedyny tekst przed samouczkiem to nazwa języka, jedno pytanie kalibracji i notka „to gra, nie kurs”. Każdy z nich ma też obraz zrozumiały bez czytania.
 
 ### 3.0 Zimne otwarcie (0–4 s)
