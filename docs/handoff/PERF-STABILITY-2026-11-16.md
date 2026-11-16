@@ -1,6 +1,6 @@
-# WIP D-136 — wydajność i stabilność przed produkcją (przerwane 2026-11-16)
+# D-136 — wydajność i stabilność przed produkcją (2026-11-16)
 
-Gałąź `wip/d136-perf`. **Nie scalać do `main` bez pełnego GUT i bota kariery** — nie zostały uruchomione po zmianach.
+Scalone na `main` 2026-11-16 (wpis D-136 w `docs/DECISIONS.md`). Pełny GUT po rebase na D-137: zielony (patrz D-136).
 Pomiary: kontener chmurowy, Godot 4.7.2, headless albo xvfb + OpenGL (llvmpipe); maszyna była obciążona przez inne sesje, czasy ±20 %.
 
 ## Zrobione (kod + testy w gałęzi)
@@ -21,18 +21,13 @@ Pomiary: kontener chmurowy, Godot 4.7.2, headless albo xvfb + OpenGL (llvmpipe);
 
 Uwaga do soaka: headless Godot 4.7.2 sam zwiększa pamięć statyczną o ~29 B na każdy utworzony `Control` (sprawdzone na pustym projekcie; z OpenGL 0). Dlatego ścisły limit pamięci statycznej i tekstur działa tylko z prawdziwym rendererem (xvfb).
 
-## Stan testów
+## Stan testów (po scaleniu)
 
-- Uruchomione pojedynczo i zielone: `test_save_robustness` (22), `test_pack_store_robustness` (11), `test_nav_back` (6), `test_save`, `test_settings`, `test_arrival_frame_release` (7), `test_arrival_scene` (20), `test_job_list_d132` (16).
-- `test_idle_cost`: 6/7 — jedyny czerwony poprawiony (porównanie nazw auto-numerowanych węzłów), **nieuruchomiony ponownie**; tak samo nie uruchomiono go po zmianie „lista składana poza drzewem”.
-- `test_soak.gd` (GUT): napisany, **nieuruchomiony**.
-- **Pełny GUT: nieuruchomiony. Bot kariery (`qa/run_career.sh`): nieuruchomiony.** Ryzyko: `get_value()` zwraca teraz wartość domyślną przy niezgodnym typie; lista zleceń ma puste płytki w zwiniętych rozdziałach (bot i testy szukają `Job_<id>` — przyciski nadal istnieją).
+- Pełny GUT (Godot 4.7.2 headless, GDExtension lockcore) po rebase na D-137: 651 testów, 650 zielonych przy pierwszym przebiegu; jedyny czerwony (`test_content_packs.gd` czytał tytuł płytki w zwiniętym rozdziale, który przy leniwych płytkach jeszcze nie istnieje) poprawiony — test najpierw rozwija rozdział. `test_idle_cost` i `test_soak` zielone w pełnym przebiegu.
 
 ## Zostaje
 
-1. Pełny GUT + bot kariery, poprawki tego, co wyjdzie.
-2. `docs/handoff/PERF-STABILITY-2026-11-16.md` (pełny raport) i wpis D-136 w `docs/DECISIONS.md` — nienapisane; ta notatka jest ich szkicem.
-3. Krok soaka w `.github/workflows/perf-budget.yml` (xvfb + llvmpipe jak w `game-screens.yml`) — niedodany.
-4. Czyste pomiary przed/po na nieobciążonej maszynie (lista zleceń, start), soak 200 cykli pod xvfb na końcowym kodzie.
-5. Niezbadane: czas klatki ekranu zamka (poza istniejącym `test_perf.gd`), start z paczki eksportowanej (I18n z `.translation`), 91 zasobów zostających po pierwszej wizycie w każdej rodzinie zamka (stałe, nie rosną).
-6. Na telefonie (SM-A165F): `LW_BOOT`, PSS menu/zamek po poprawce przyjazdu, wejście w listę zleceń.
+1. Krok soaka w CI: dodany jako job `soak` w `.github/workflows/perf-budget.yml` (xvfb + llvmpipe, 200 cykli) — pierwszy przebieg na `main` do sprawdzenia.
+2. Czyste pomiary przed/po na nieobciążonej maszynie (lista zleceń, start), soak 200 cykli pod xvfb na końcowym kodzie.
+3. Niezbadane: czas klatki ekranu zamka (poza istniejącym `test_perf.gd`), start z paczki eksportowanej (I18n z `.translation`), 91 zasobów zostających po pierwszej wizycie w każdej rodzinie zamka (stałe, nie rosną).
+4. Na telefonie (SM-A165F): `LW_BOOT`, PSS menu/zamek po poprawce przyjazdu, wejście w listę zleceń.
