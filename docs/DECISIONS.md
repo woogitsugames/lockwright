@@ -1016,3 +1016,9 @@ natywnie (było 5/56), bez xrunów (POMIARY §13). Haptyka D-81 nietknięta.
 - **Sprawdzone:** pełny GUT 687 testów, 686 zielonych, 76 721 / 76 722 asercji, 0 `SCRIPT ERROR`. Jedyny czerwony, `test_visual_qa_d129.gd` → `test_tutorial_respects_the_safe_area`, **nie pochodzi z tej zmiany**: ten sam komunikat na `b2667e4c` z widokami zamków z `HEAD`; zależy od `auto_tension` w `user://settings.cfg` maszyny (przy `false` ekran samouczka ma trzy klatki i „Start” kończy się 7 dp pod bezpiecznym obszarem; przy `true` test przechodzi). Zrzuty po ponownym nałożeniu poprawek: 60 z 64 póz identycznych co do piksela z arkuszami, 4 pozy `wafer` różnią się o 11–104 piksele (kolejność póz).
 - **Zrzuty:** `docs/handoff/device-tests/fixes/lock_states/` (38 arkuszy JPEG, 7,5 MB: 13 rodzin po poprawkach w pionie i w poziomie, 8 rodzin przed, przekrój „blisko złamania” przed / po, fałszywe nacięcie suwaka przed / po; kolor i szarość).
 - **Scalenie (koordynator, 2026-11-17):** rebase na D-140; pełny GUT 692 / 692, 0 `SCRIPT ERROR`. Czerwony u agenta `test_tutorial_respects_the_safe_area` (tryb „dwa kciuki”, „Start” 7 dp pod bezpiecznym obszarem) zamknęła poprawka samouczka z D-140 — test przechodzi przy `auto_tension` false i true.
+
+## D-141: Decyzje właściciela 2026-11-17 — bez stawki na liście zleceń, najpierw dopracować rozdziały 1–16
+2026-11-17 · koordynator · decyzja właściciela (pytania klikalne).
+- **Stawka klienta przed wyjazdem — nie.** Lista zleceń zostaje jak w D-132: otwarta płytka bez kwoty, zapłata po wykonaniu. Pole `offer_coins` nie powstaje.
+- **Rozdział 17 — nie teraz.** Najpierw domykamy rozdziały 1–16 (nagrania kwestii 13–16, test palcem, publikacja paczek 13–16 na decyzję właściciela).
+
