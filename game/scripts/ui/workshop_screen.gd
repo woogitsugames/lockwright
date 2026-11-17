@@ -414,6 +414,15 @@ func _preview_frame() -> Control:
 	frame.add_child(holder)
 	var pic := Furnishings.build_scene(TextureRect.STRETCH_KEEP_ASPECT_CENTERED)
 	holder.add_child(pic)
+	# VQA-26 (D-140): the frame is as wide as the photo at that height (it was the full row: a
+	# portrait photo stood between wide dark bands); never wider than the row
+	var base := pic.get_node_or_null("Base") as TextureRect
+	if base != null and base.texture != null and base.texture.get_height() > 0:
+		var aspect := float(base.texture.get_width()) / float(base.texture.get_height())
+		var pad := frame.get_theme_stylebox("panel").get_minimum_size().x
+		var row_w := vp.x - 2.0 * ScreenFrame.SIDE
+		holder.custom_minimum_size.x = minf(roundf(holder.custom_minimum_size.y * aspect), maxf(row_w - pad, 0.0))
+		frame.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	pic.set_anchors_preset(Control.PRESET_FULL_RECT)
 	pic.name = "WorkshopPicture"
 	if "accessibility_name" in frame:
