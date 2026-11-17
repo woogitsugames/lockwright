@@ -307,11 +307,11 @@ func test_voice_pending_jobs_play_subtitle_only() -> void:
 			assert_eq(clips, 0, "%s is recorded: remove voice_pending (and its rows in contrib/voice/PENDING.md)" % jid)
 		else:
 			assert_eq(clips, keys.size(), "%s: every line has its EN clip, or the job says voice_pending" % jid)
-	assert_eq(pending, 10, "the whole chapter waits for its recordings")
+	assert_eq(pending, 0, "D-142: the whole chapter is recorded")
 	for j: Dictionary in _all_jobs():
 		if bool(j.get("voice_pending", false)):
 			assert_has([13, 14, 15, 16], int(j.get("chapter", 0)), "%s: only chapters 13-16 wait for recordings" % j["id"])
-	# arrival: every line is on the screen at once, nothing waits for a clip
+	# arrival: the recorded lines play (D-142)
 	var job: Dictionary = _chapter_jobs()[0]
 	JobArrival.reduce_motion_override = 1
 	JobRun.start(job)
@@ -323,11 +323,8 @@ func test_voice_pending_jobs_play_subtitle_only() -> void:
 	vp.add_child(arrival)
 	await wait_process_frames(3)
 	assert_not_null(arrival.dialogue)
-	assert_false(arrival.dialogue.has_any_clip(), "no clips")
-	assert_true(arrival.dialogue.is_finished(), "the dialogue does not wait")
-	assert_eq(arrival.lines_box.get_child_count(), (job["lines"] as Array).size(), "every line is shown")
-	assert_true(arrival.verify_button.visible and not arrival.verify_button.disabled, "the player can go on to the check")
-	# day after: the line shows, no stream
+	assert_true(arrival.dialogue.has_any_clip(), "the lines have clips")
+	# day after: the line shows with its recording
 	var host := Control.new()
 	host.size = Vector2(412, 915)
 	add_child_autofree(host)
@@ -336,7 +333,7 @@ func test_voice_pending_jobs_play_subtitle_only() -> void:
 	assert_not_null(scene)
 	if scene != null:
 		assert_eq(scene.text_label.text, I18n.t(StringName("%s.after.1" % job["id"])))
-		assert_false(scene.player.playing, "subtitle only")
+		assert_not_null(scene.player.stream, "with its clip")
 		scene.close()
 
 
