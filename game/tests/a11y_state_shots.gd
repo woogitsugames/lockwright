@@ -2,15 +2,22 @@ extends Node
 ## D-90 colour / grayscale audit: one window, every lock family, every element state.
 ## For each family (pin + every plan-B scene) the real lock screen is opened once and frozen in a
 ## pose where ALL elements share one state (free, bound, near, set, false_set, overset, plus
-## stress 0.95 = near break and open); each pose is saved as <out>/<family>__<state>.png.
+## stress 0.95 = near break and open, and free_lifted = free at the bound height, D-139); each pose is
+## saved as <out>/<family>__<state>.png.
 ## qa/a11y/state_report.py turns them into grayscale / deuteranopia / protanopia sheets and a
 ## per-pair difference table (are the states told apart without colour?).
 ##   godot --path game --rendering-driver opengl3 res://tests/a11y_state_shots.tscn -- \
 ##     --out=C:/path/dir [--size=412x915] [--families=pin_tumbler,wafer] [--reduce=1] [--captions=1] [--inset=l,t,r,b]
+##     [--chalk=off|reduced|full]  (D-139: off = how most jobs are played, no chalk marks, no coach line)
+##     [--states=bound,stress]     (only these poses)
 ## Uses the GPU for a short while (about 2 s per family).
 
 const STATES := {
 	"free": {"state": &"free", "position": 0.0},
+	# D-139: a free element held at the height of the bound pose, so free / bound (and free / false_set)
+	# are compared at one position (in the ring families the position is the digit shown). Shot before
+	# the false_set pose: the ring and dial views remember a false notch once it was found.
+	"free_lifted": {"state": &"free", "position": 0.40},
 	"bound": {"state": &"bound", "position": 0.40},
 	"near": {"state": &"near", "position": 0.50},
 	"set": {"state": &"set", "position": 0.56},
@@ -51,6 +58,7 @@ func _ready() -> void:
 	var scenes := {&"pin_tumbler": "res://scenes/lock_job.tscn"}
 	scenes.merge(JobRun.PLANB_SCENES)
 	var only: Array = String(a.get("families", "")).split(",", false)
+	var only_states: Array = String(a.get("states", "")).split(",", false)
 	await get_tree().process_frame
 	for fam in scenes:
 		if not only.is_empty() and not String(fam) in only:
@@ -61,7 +69,12 @@ func _ready() -> void:
 		await get_tree().process_frame
 		await get_tree().process_frame
 		scene.set("_frozen", true)
+		if a.has("chalk"):
+			scene.view.chalk_level = {"off": ChalkLayer.Level.OFF, "full": ChalkLayer.Level.FULL}.get(a["chalk"], ChalkLayer.Level.REDUCED)
+			scene.view.coach = null
 		for st_name in STATES:
+			if not only_states.is_empty() and not String(st_name) in only_states:
+				continue
 			var vm := _vm(STATES[st_name])
 			scene.set("_pose_vm", vm)
 			scene.set("_last_input", {"tension": 0.35, "pick_depth": 0.5, "pick_lift": 0.3})

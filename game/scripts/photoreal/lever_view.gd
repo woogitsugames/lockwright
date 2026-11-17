@@ -208,7 +208,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	_xf("tension", trot)
 	_xf("tension_shaft", trot)
 	var lift := float(input.get("pick_lift", 0.0))
-	_lift_deg = lerpf(_lift_deg, (active_rot * 1.35 if idx >= 0 else minf(lift, 0.0) * 8.0) - 6.0 * break_p(), k)
+	_lift_deg = lerpf(_lift_deg, (active_rot * 1.35 if idx >= 0 else minf(lift, 0.0) * 8.0) - 6.0 * break_p() - tool_strain_deg(), k)  # D-139: the lifter gives near break
 	var depth := clampf(float(input.get("pick_depth", 0.5)), 0.0, 1.0)
 	var mid: float = LEVER_DEPTH[(_mesh_levers - 1) / 2]
 	var y0: float = LEVER_DEPTH[idx] if idx >= 0 else lerpf(LEVER_DEPTH[0], LEVER_DEPTH[_mesh_levers - 1], depth)

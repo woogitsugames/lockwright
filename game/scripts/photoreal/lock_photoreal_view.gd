@@ -43,6 +43,7 @@ const PLUG_MAX_DEG := 12.0     # visible plug turn while picking (open turns fur
 const PLUG_PLAY_DEG := 1.2     # tension takes up the plug's play before anything sets
 const WRENCH_MAX_DEG := 14.0   # HUD.md §3: wrench arm 0° → 14° for T 0 → 1
 const PICK_BEND_MM := 0.45     # HUD.md §3: shaft bow at stress 1 (≈ 6 dp)
+const TOOL_STRAIN_DEG := 3.0   # D-139: a family's rigid tool stands this far off its line at stress 1
 const SMOOTH_S := 0.06         # critically damped follow, no overshoot (DESIGN.md: 100–250 ms)
 # Tray (art/blender/tray.py, 1080×960): pocket column boundaries as fractions of the image width.
 const TRAY_COLUMNS := [0.0, 0.233, 0.503, 0.76]
@@ -254,6 +255,15 @@ func _feel_tick(vm: Dictionary, delta: float) -> void:
 ## 0..1 of the opening throw (LockFeel.open_progress: a short hold, then out-cubic), 0 while closed.
 func open_p() -> float:
 	return LockFeel.open_progress(_open_s) if _opened else 0.0
+
+
+## D-139 / DESIGN.md §1 "stress": how far a family's rigid tool (flag, probe, lifter, pusher, tweezers,
+## wafer pick) stands off its line near breaking, in degrees about its tip: 0 below stress 0.6 (where
+## the wrench arm gets its first crack), TOOL_STRAIN_DEG at 1. A still pose - shape, no colour and no
+## motion - so near break reads in greyscale, with reduce motion and with the chalk layer off. The pin
+## screen's own hook bows instead (PICK_BEND_MM); the warded probe has STRAIN_DEG (D-90).
+func tool_strain_deg() -> float:
+	return clampf((_stress - 0.6) / 0.4, 0.0, 1.0) * TOOL_STRAIN_DEG
 
 
 ## 0..1 of the broken tool's recoil.

@@ -29,6 +29,7 @@ const BIND_TILT_DEG := 1.4
 const FALSE_TILT_DEG := 2.4
 const BIND_SX := 0.08
 const W_PICK_REST_X := 17.0
+const W_PICK_REST_TIP := 0.42     # scene.json pick_rest_tip: the pick tip in the rest pose (y)
 const STATIC_MOVERS := ["plug", "wrench"]
 const PARTS := ["pick", "pick_handle"]
 
@@ -172,9 +173,12 @@ func _pose_w_pick(vm: Dictionary, input: Dictionary, els: Array, k: float) -> vo
 	_pick_tip = lerpf(_pick_tip, y, k)
 	var off := Vector3(_pick_x - W_PICK_REST_X, _pick_tip - 0.6 * break_p(), 0)
 	var plug := Transform3D(_plug_basis(_plug_deg * 0.5), Vector3.ZERO)
+	# D-139 near break: the pick sags off its line about its tip (handle end down), a still pose
+	var tip := Vector3(_pick_x, W_PICK_REST_TIP + _pick_tip, 0)
+	var sag := Transform3D(Basis(Vector3.BACK, deg_to_rad(tool_strain_deg())), tip) * Transform3D(Basis.IDENTITY, -tip)
 	for nm in PARTS:
 		if _by.has(nm):
-			_by[nm].transform = plug * Transform3D(Basis.IDENTITY, off) * _rest[_by[nm]]
+			_by[nm].transform = plug * sag * Transform3D(Basis.IDENTITY, off) * _rest[_by[nm]]
 
 
 func _update_f_chalk(els: Array, delta: float) -> void:

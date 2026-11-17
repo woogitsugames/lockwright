@@ -20,7 +20,7 @@ import sys
 import numpy as np
 from PIL import Image, ImageDraw
 
-STATES = ["free", "bound", "near", "set", "false_set", "overset", "stress", "open"]
+STATES = ["free", "free_lifted", "bound", "near", "set", "false_set", "overset", "stress", "open"]
 CORE = ["bound", "set", "false_set", "overset", "stress"]  # CLAUDE.md: the five states
 DELTA = 12        # grayscale levels (0-255) that count as a visible change
 MIN_SHARE = 0.25  # % of section pixels that must change for two states to read apart

@@ -241,7 +241,7 @@ func _draw_section() -> void:
 			var d := _tool_at - Vector2(tp[0], tp[1])
 			if _broken:
 				d.y += 4.0
-			_draw_layer(tool_layer, Transform2D(0.0, d), 0.4)
+			_draw_layer(tool_layer, _rot_about(tool_sag_deg(), _tool_at) * Transform2D(0.0, d), 0.4)
 	_draw_layer("front", Transform2D.IDENTITY, 0.5)
 	_draw_extra_front()
 	_canvas.draw_set_transform_matrix(Transform2D.IDENTITY)
@@ -261,6 +261,14 @@ func _draw_elements() -> void:
 		var slot := slot_of(i)
 		var nm := element_layer + (str(slot) if element_layer_per_slot() else "")
 		_draw_layer(nm, _element_xf(slot), 0.45)
+
+
+## D-139 near break: the tool sags off its line about its tip, handle end down (degrees, screen sense).
+func tool_sag_deg() -> float:
+	var tp: Array = meta.get(tool_layer + "_tip_px", [0.0, 0.0])
+	var sz: Array = meta.get("layers", {}).get(tool_layer, {}).get("size", [0, 0])
+	var handle_right := _layer_pos(tool_layer).x + float(sz[0]) * 0.5 > float(tp[0])
+	return tool_strain_deg() * (1.0 if handle_right else -1.0)
 
 
 ## Family hooks (time lock: the train; axial slider: the locking plate).
@@ -285,7 +293,15 @@ func _update_l_face(tension: float, res: float, delta: float) -> void:
 	var t := clampf(tension, 0.0, 1.0)
 	_set_flash = maxf(_set_flash - delta / 0.2, 0.0)
 	var k := 1.0 - exp(-delta / SMOOTH_S)
-	var face := 90.0 * _progress + _set_flash * 1.5
+	# D-139 / DESIGN.md §1: the same state code on the plug face as on the pin, wafer and lever screens:
+	# set = +1 tick, false set (the axial slider's false notch, which has no picture of its own in the
+	# slider layers) = +2 ticks; the hold then turns the face on to 90°
+	var ticks := 0
+	for e in _last_vm.get("elements", []):
+		match String(e.get("state", "")):
+			"set": ticks += 1
+			"false_set": ticks += 2
+	var face := lerpf(minf(ticks * PlugFace.TICK_DEG, 90.0), 90.0, _progress) + _set_flash * 1.5
 	_face.face_deg = lerpf(_face.face_deg, face, k)
 	_face.arm_deg = lerpf(_face.arm_deg, face + PlugFace.ARM_MAX_DEG * t, k)
 	_face.bow = clampf(res, 0.0, 1.0)

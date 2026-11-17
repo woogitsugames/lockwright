@@ -121,12 +121,15 @@ func _draw_tool() -> void:
 		return
 	var tp: Array = _tool_meta.get("tip_px", [0.0, 0.0])
 	var sc := ppm / float(_tool_meta.get("ppmm", 24.0))
-	var at := tip - Vector2(tp[0], tp[1]) * sc
+	var at := o + tip
 	if _broken:
 		at.y += 0.6 * ppm
-	_overlay.draw_set_transform(o + at + Vector2(0.5, 0.8) * ppm * 0.4, 0.0, Vector2(sc, sc))
+	# D-139 near break: the tool sags off its line about its tip (handle end down), a still pose
+	var fit := Transform2D().scaled(Vector2(sc, sc)) * Transform2D(0.0, -Vector2(tp[0], tp[1]))
+	var sag := -deg_to_rad(tool_strain_deg())
+	_overlay.draw_set_transform_matrix(Transform2D(sag, at + Vector2(0.5, 0.8) * ppm * 0.4) * fit)
 	_overlay.draw_texture(_tool_tex, Vector2.ZERO, Color(0, 0, 0, 0.35))
-	_overlay.draw_set_transform(o + at, 0.0, Vector2(sc, sc))
+	_overlay.draw_set_transform_matrix(Transform2D(sag, at) * fit)
 	_overlay.draw_texture(_tool_tex, Vector2.ZERO)
 	_overlay.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
