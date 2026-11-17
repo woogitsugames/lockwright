@@ -31,7 +31,6 @@
   "place": "gate",
   "time": "evening",
   "outcome": "open",
-  "voice_pending": true,
   "source": "D-126: chapter 16 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
   "card_detail": {
     "resolution": {

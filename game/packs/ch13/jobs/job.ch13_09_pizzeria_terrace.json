@@ -32,6 +32,5 @@
   "time": "evening",
   "arrival_from": "job.pizzeria_pays_pizza",
   "outcome": "open",
-  "voice_pending": true,
   "source": "D-111: chapter 13 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)"
 }

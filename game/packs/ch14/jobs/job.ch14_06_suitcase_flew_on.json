@@ -33,7 +33,6 @@
   "time": "night",
   "arrival_from": "job.newlyweds_4am",
   "outcome": "open",
-  "voice_pending": true,
   "source": "D-119: chapter 14 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
   "card_detail": {
     "id": {

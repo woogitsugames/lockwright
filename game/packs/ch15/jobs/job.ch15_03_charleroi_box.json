@@ -32,7 +32,6 @@
   "time": "evening",
   "arrival_from": "job.krystyna_wooden_album",
   "outcome": "open",
-  "voice_pending": true,
   "source": "D-123: chapter 15 written by the Claude session (spec: docs/handoff/gpt10/PACZKA-GPT10.md, G10A)",
   "card_detail": {
     "inheritance": {
