@@ -10,7 +10,7 @@ that report does not know:
     free / bound is not just "the element stands somewhere else";
   - compact contact sheets for the repo: per family one JPEG, rows colour / grayscale, columns states.
 
-  python qa/a11y/state_matrix.py <after_dir> [--before DIR] [--sheets OUT_DIR] [--crop 0,0,1,0.75] [--tag portrait]
+  python qa/a11y/state_matrix.py <after_dir> [--before DIR] [--sheets OUT_DIR] [--crop 0,0,1,0.75] [--tag portrait] [--tile 200]
 """
 import argparse
 import itertools
@@ -103,6 +103,7 @@ def main():
     ap.add_argument("--sheets", default=None)
     ap.add_argument("--crop", default="0.0,0.0,1.0,0.75")
     ap.add_argument("--tag", default="portrait")
+    ap.add_argument("--tile", type=int, default=200, help="sheet tile width in px (landscape shots: 366)")
     args = ap.parse_args()
     crop = [float(v) for v in args.crop.split(",")]
     after = matrix(args.after, crop)
@@ -123,7 +124,7 @@ def main():
         os.makedirs(args.sheets, exist_ok=True)
         for fam in ORDER:
             if path(args.after, fam, "bound"):
-                sheet(args.after, fam, os.path.join(args.sheets, f"{fam}_{args.tag}.jpg"), crop)
+                sheet(args.after, fam, os.path.join(args.sheets, f"{fam}_{args.tag}.jpg"), crop, args.tile)
 
 
 if __name__ == "__main__":

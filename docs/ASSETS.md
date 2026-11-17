@@ -399,3 +399,11 @@ No image files: the 15 signs are drawn in code (strokes in a unit box, one ink, 
 |---|---|
 | `game/scripts/ui/family_mark.gd` (`FamilyMark.strokes()`: 15 line drawings) | written by hand in GDScript; review sheet `game/tests/family_mark_sheet.tscn` |
 | `docs/handoff/device-tests/fixes/joblist/*.jpg` (10) | screenshots of the game (Godot 4.7.2, xvfb + opengl3, `game/tests/shot_scene.gd`), before / after sheets and the greyscale copy of the sign sheet with Pillow; own work of the project |
+
+## Lock state matrix — 2026-11-17 (D-139)
+
+No new game assets: the fixes are poses of existing parts and layers (no new picture, texture or sound).
+
+| Assets | Source / tool |
+|---|---|
+| `docs/handoff/device-tests/fixes/lock_states/*.jpg` (38) | screenshots of the game's lock screens (Godot 4.7.2, xvfb + opengl3 / llvmpipe, `game/tests/a11y_state_shots.tscn -- --chalk=off --reduce=1`), contact sheets colour / grayscale and before / after strips with Pillow (`qa/a11y/state_matrix.py`); own work of the project |

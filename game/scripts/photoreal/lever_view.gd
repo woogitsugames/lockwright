@@ -18,6 +18,9 @@ extends LockPhotorealView
 const FAM_ROOT := "res://assets/photoreal_families/"
 const MAX_LEVERS := 6
 const DET_TRIP_DEG := -18.5
+## D-139 near break: the lifter is about half as long as the flag / probe / pick of the other screens,
+## so it turns twice TOOL_STRAIN_DEG for the same give at its end (towards where it recoils on a break).
+const LIFTER_STRAIN := 2.0
 var PIVOT := Vector3(-22.0, 4.0, 0.0)       # from scene.json "pivot" when present
 var STUMP := Vector3(7.7, 0.0, 0.0)        # from scene.json "stump_x"
 var DET_PIVOT := Vector3(10.2, 5.8, -8.55) # from scene.json "detector_pivot"
@@ -208,7 +211,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	_xf("tension", trot)
 	_xf("tension_shaft", trot)
 	var lift := float(input.get("pick_lift", 0.0))
-	_lift_deg = lerpf(_lift_deg, (active_rot * 1.35 if idx >= 0 else minf(lift, 0.0) * 8.0) - 6.0 * break_p() - tool_strain_deg(), k)  # D-139: the lifter gives near break
+	_lift_deg = lerpf(_lift_deg, (active_rot * 1.35 if idx >= 0 else minf(lift, 0.0) * 8.0) - 6.0 * break_p() - LIFTER_STRAIN * tool_strain_deg(), k)
 	var depth := clampf(float(input.get("pick_depth", 0.5)), 0.0, 1.0)
 	var mid: float = LEVER_DEPTH[(_mesh_levers - 1) / 2]
 	var y0: float = LEVER_DEPTH[idx] if idx >= 0 else lerpf(LEVER_DEPTH[0], LEVER_DEPTH[_mesh_levers - 1], depth)

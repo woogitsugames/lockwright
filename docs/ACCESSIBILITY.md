@@ -95,6 +95,15 @@ tam tylko drżenie, które znika przy ograniczeniu ruchu. Poprawki: rysy 1→3 i
 czole rdzenia, wspólne dla wszystkich rodzin (`PlugFace._draw_cracks`, DESIGN §1 „stress”), oraz w warded sonda
 odchylona o ≤ 3° pod oporem (`STRAIN_DEG`); po nich 0,59 %. Najsłabsze pary pozostałych rodzin: 1,1–4,3 %. Tabela i arkusze: `docs/handoff/device-tests/a11y_2026-11-08/report/`.
 
+**Uzupełnienie 2026-11-17 (D-139, `docs/handoff/LOCK-STATES-2026-11-17.md`):** ten sam pomiar **bez kredy**
+(`--chalk=off`, tak gra się większość zleceń) i z pozą `free_lifted` (swobodny element na wysokości pozy „wiąże”).
+Bez kredy „blisko złamania” w 7 rodzinach planu B było widać tylko na napinaczu (0,18–0,19 %), a fałszywe nacięcie
+zamka suwakowego wyglądało jak swobodny suwak (0,00 %). Poprawki: narzędzie rodziny odchyla się w przekroju o ≤ 3° od
+stresu 0,6 (`LockPhotorealView.tool_strain_deg()`), czoło rdzenia rodzin warstwowych liczy podziałki (+1 ustawiony,
++2 fałszywie ustawiony). Po nich żadna para pięciu stanów nie jest poniżej progu; zostają dwie pary z natury mechanizmu
+(`dial_safe` swobodna / wiąże = ruch tarczy, `warded` swobodna / blisko = położenie sondy). Tabela rodzina × para:
+`qa/a11y/state_matrix.py`.
+
 Kontrast metal/tło planu B (7,8:1) i tekstu menu (≥ 7:1) — bez zmian od audytu 2026-11-05.
 
 ## 4. Rozmiar tekstu
@@ -164,6 +173,7 @@ tekst nie jest ucięty (poza zakładkami Warsztatu) i żadna etykieta nie zapada
 | GUT: nazwy wszystkich kontrolek na 11 ekranach (PL/EN), nazwy i akcje na 13 ekranach zamka, ogłoszenia stanów (filtr, dławik, wyłącznik), kwestie i napisy w 5 językach, napisy dźwięków, ścieżki ograniczenia ruchu, skala tekstu w motywie i układy 3 rozmiarów × 5 języków, zamiana kciuków i tekstów, nowe przełączniki | `game/tests/gut/test_accessibility.gd` |
 | Istniejące: kreda statyczna (Reduce Motion), mówione H2–H4, stop-klatka przyjazdu, „dzień po” bez ruchu, cele ≥ 48 dp | `test_chalk_hint.gd`, `test_tutorial_hints.gd`, `test_arrival_scene.gd`, `test_day_after.gd`, `test_ui_layout.gd` |
 | Zrzuty stanów + raport szarość/daltonizm | `game/tests/a11y_state_shots.tscn` → `qa/a11y/state_report.py` (GPU ok. 1 min) |
+| Macierz stanów rodzina × para, przed / po (D-139) | `a11y_state_shots.tscn -- --chalk=off` → `qa/a11y/state_matrix.py` |
 | Zrzuty ekranów z dużym tekstem / opcjami | `game/tests/shot_scene.tscn -- --text-scale=1.5 --setting=sound_captions:1` |
 | Most TalkBack (D-97) | `game/tests/gut/test_android_a11y_bridge.gd` (atrapa wtyczki: węzły, role, stany, aktywacja, suwaki, pauza, ogłoszenia); na telefonie `uiautomator dump` z włączonym TalkBack + `logcat -s LockwrightA11y` |
 | Ręcznie na telefonie (do zrobienia) | TalkBack palcem: podwójne stuknięcie na przyciskach, stany zamka, gest przekazania dotyku; VoiceOver: przejście menu → zlecenie → zamek tylko czytnikiem; systemowe „usuń animacje”; rozmiar czcionki Androida jako domyślny (D-107, nie sprawdzony na telefonie — był zablokowany); blokada napięcia palcem; Dynamic Type na iOS (D-113: kod zbudowany w CI `game-ios`, na iPhonie nie sprawdzony) |

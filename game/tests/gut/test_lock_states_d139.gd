@@ -98,7 +98,8 @@ func test_lever_lifter_gives_near_break() -> void:
 	view.present(_vm(&"bound", 0.4, 0.5, 3), INPUT, 1.0)
 	assert_almost_eq(view._lift_deg, safe, 0.001, "no change below the first crack")
 	view.present(_vm(&"bound", 0.4, 1.0, 3), INPUT, 1.0)
-	assert_almost_eq(safe - view._lift_deg, LockPhotorealView.TOOL_STRAIN_DEG, 0.01, "the lifter stands off the lever belly")
+	assert_almost_eq(safe - view._lift_deg, LockLeverView.LIFTER_STRAIN * LockPhotorealView.TOOL_STRAIN_DEG, 0.01, "the lifter stands off the lever belly")
+	assert_lt(LockLeverView.LIFTER_STRAIN * LockPhotorealView.TOOL_STRAIN_DEG, 6.01, "never further than the recoil of a broken lifter")
 
 
 func test_wafer_pick_sags_about_its_tip() -> void:
