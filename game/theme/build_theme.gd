@@ -208,9 +208,15 @@ func _init() -> void:
 
 	# --- CheckButton (leather/brass toggle; knob side + check mark, not colour alone)
 	t.set_font_size("font_size", "CheckButton", 17)
+	# VQA-23 (D-140): no left padding, so a switch's label starts on the same line as the labels of the
+	# sliders and the section heading (it sat 4 dp in)
 	for st in ["normal", "pressed", "disabled", "hover_pressed"]:
-		t.set_stylebox(st, "CheckButton", _pad(StyleBoxEmpty.new(), 4, 8))
-	t.set_stylebox("hover", "CheckButton", _pad(_flat(Color(1, 1, 1, 0.05), Color.TRANSPARENT, 0, 4), 4, 8))
+		var cb := _pad(StyleBoxEmpty.new(), 4, 8)
+		cb.content_margin_left = 0
+		t.set_stylebox(st, "CheckButton", cb)
+	var cb_hover := _pad(_flat(Color(1, 1, 1, 0.05), Color.TRANSPARENT, 0, 4), 4, 8)
+	cb_hover.content_margin_left = 0
+	t.set_stylebox("hover", "CheckButton", cb_hover)
 	t.set_stylebox("focus", "CheckButton", _focus_ring())
 	for c in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color", "font_hover_pressed_color"]:
 		t.set_color(c, "CheckButton", CREAM)

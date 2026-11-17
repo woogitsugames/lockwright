@@ -272,6 +272,7 @@ func _ready() -> void:
 	back_button.text = "‹ " + I18n.t(&"common.back")
 	back_button.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main_menu.tscn"))
 	_build_list()
+	ScreenFrame.soft_top_edge($Frame/VBox/Scroll)  # VQA-24: no hard cut under the header
 	ScreenFrame.enter($Frame/VBox/Scroll)
 	if _focus_button != null:
 		_scroll_to_focus.call_deferred()

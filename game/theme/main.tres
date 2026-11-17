@@ -174,7 +174,7 @@ _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"56\" height=\"32\" 
 </svg>"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_co0r0"]
-content_margin_left = 4.0
+content_margin_left = 0.0
 content_margin_top = 8.0
 content_margin_right = 4.0
 content_margin_bottom = 8.0
@@ -198,7 +198,7 @@ expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kb3mc"]
-content_margin_left = 4.0
+content_margin_left = 0.0
 content_margin_top = 8.0
 content_margin_right = 4.0
 content_margin_bottom = 8.0
@@ -210,19 +210,19 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7vxh"]
-content_margin_left = 4.0
+content_margin_left = 0.0
 content_margin_top = 8.0
 content_margin_right = 4.0
 content_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gnm3m"]
-content_margin_left = 4.0
+content_margin_left = 0.0
 content_margin_top = 8.0
 content_margin_right = 4.0
 content_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2gv6v"]
-content_margin_left = 4.0
+content_margin_left = 0.0
 content_margin_top = 8.0
 content_margin_right = 4.0
 content_margin_bottom = 8.0

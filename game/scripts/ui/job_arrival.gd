@@ -219,6 +219,7 @@ func _ready() -> void:
 	Sfx.play_music(&"main_theme")
 	ScreenFrame.fit(self, $Frame)
 	$Frame/VBox/Scroll.scroll_deadzone = 12
+	ScreenFrame.soft_top_edge(scroll)  # VQA-24: no hard cut under the header
 	var job: Dictionary = JobRun.current_job
 	var scene_cfg := ArrivalScene.resolve(job)
 	if scene_cfg.is_empty():

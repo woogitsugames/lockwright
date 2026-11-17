@@ -38,6 +38,7 @@ func _ready() -> void:
 	resized.connect(_relayout)
 	_relayout()
 	_update()
+	ScreenFrame.soft_top_edge($Frame/VBox/Scroll)  # VQA-24: no hard cut under the header
 	ScreenFrame.enter($Frame/VBox/Scroll)
 	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
 

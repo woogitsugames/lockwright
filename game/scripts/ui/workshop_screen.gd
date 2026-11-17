@@ -163,6 +163,7 @@ func _ready() -> void:
 	if Practice.last_result != &"":
 		show_tab("practice")  # D-79: back from a practice lock
 	Save.changed.connect(_refresh)
+	ScreenFrame.soft_top_edge($Frame/VBox/Scroll)  # VQA-24: no hard cut under the header
 	ScreenFrame.enter($Frame/VBox/Scroll)
 	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
 

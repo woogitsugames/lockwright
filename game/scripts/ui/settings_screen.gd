@@ -52,6 +52,7 @@ func _ready() -> void:
 	ScreenFrame.fit(self, $Frame)
 	# N-42: a scroll gesture starting on a control must scroll the list, not press the control
 	$Frame/VBox/Scroll.scroll_deadzone = 12
+	calibration_result.visible = calibration_result.text != ""  # VQA-23: no empty band under "Calibration"
 	# D-90: at 125-200 % text the longest item ("Auto (measured)") must wrap, not widen the screen
 	for ob: OptionButton in [language_option, quality_option]:
 		ob.fit_to_longest_item = false
@@ -67,6 +68,7 @@ func _ready() -> void:
 	_refresh_texts()
 	if not _wired:
 		_wire()
+	ScreenFrame.soft_top_edge($Frame/VBox/Scroll)  # VQA-24: no hard cut under the header
 	ScreenFrame.enter($Frame/VBox/Scroll)
 	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds
 
@@ -243,6 +245,7 @@ func _run_two_click_calibration() -> void:
 	await get_tree().create_timer(0.12).timeout
 	Haptics.play(&"set", 0.9, &"brass")
 	calibration_result.text = I18n.t(&"settings.haptics_calibration_two_clicks")
+	calibration_result.visible = true
 
 
 func _refresh_texts() -> void:

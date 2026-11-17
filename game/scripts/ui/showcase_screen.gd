@@ -46,6 +46,7 @@ func _build_tabs() -> void:
 	_shelf_scroll.name = "ShelfScroll"
 	_shelf_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_shelf_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	ScreenFrame.soft_top_edge(_shelf_scroll)  # VQA-24
 	_shelf_scroll.scroll_deadzone = 12
 	_shelf_scroll.visible = false
 	$Frame/VBox.add_child(_shelf_scroll)
@@ -265,5 +266,6 @@ func _ready() -> void:
 		card.add_child(body)
 		card.add_child(source)
 		notes_list.add_child(panel)
+	ScreenFrame.soft_top_edge($Frame/VBox/Scroll)  # VQA-24: no hard cut under the header
 	ScreenFrame.enter($Frame/VBox/Scroll)
 	ScreenFrame.wire_sounds(self)  # S05 enamel-plate sounds

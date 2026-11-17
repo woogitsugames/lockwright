@@ -32,6 +32,7 @@ const CARD_H := 168.0
 const BG := "res://assets/ui/gpt/workshop/03-workshop-evening-portrait.webp"
 
 var _back: Button
+var _push_down: Control
 var _back_space: Control
 
 
@@ -64,6 +65,13 @@ func _ready() -> void:
 	_back_space.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	v.add_child(_back_space)
 	v.move_child(_back_space, 0)
+	# VQA-29 (D-140): the frames stay at the top and the note + "Start" go down to the thumbs, as the
+	# main plate of every other screen; the bottom third of the portrait screen used to stay empty
+	_push_down = Control.new()
+	_push_down.name = "PushDown"
+	_push_down.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_push_down.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	v.add_child(_push_down)
 	_refresh()
 	resized.connect(_relayout)
 	_relayout()
@@ -72,6 +80,8 @@ func _ready() -> void:
 func _relayout() -> void:
 	# portrait: one frame per row (picture left, caption right); landscape: frames side by side
 	var grid: GridContainer = $Margin/Scroll/VBox/Frames
+	if _push_down != null:
+		$Margin/Scroll/VBox.move_child(_push_down, grid.get_index() + 1)
 	var landscape := size.x > size.y
 	grid.columns = maxi(grid.get_child_count(), 1) if landscape else 1
 	# VA-16: the back plate floats top-left; in portrait the centred two-line title starts below it,

@@ -247,3 +247,44 @@ static func tab_mark(b: Button) -> void:
 		mark.visible = b.button_pressed
 		mark.position = Vector2(10.0, b.size.y + 3.0)
 		mark.size = Vector2(maxf(b.size.x - 20.0, 0.0), 3.0))
+
+
+## VQA-24 (D-140): a scrolled list no longer ends in a hard cut under the header. Once the content is
+## scrolled, its top FADE_DP fade out (the ScrollContainer draws an alpha mask - a 9-slice ramp at the
+## top, opaque below - and clips its children to it with clip_children). At the top of the list
+## nothing is faded, so the first line is never dimmed. The node paths of the screen stay as they are.
+const FADE_DP := 24
+static var _fade_box: StyleBoxTexture
+static var _solid_box: StyleBoxTexture
+
+
+static func soft_top_edge(scroll: ScrollContainer) -> void:
+	if _fade_box == null:
+		_fade_box = _mask_box(true)
+		_solid_box = _mask_box(false)
+	scroll.clip_children = CanvasItem.CLIP_CHILDREN_ONLY
+	var bar := scroll.get_v_scroll_bar()
+	var apply := func(_v: float = 0.0) -> void:
+		scroll.add_theme_stylebox_override("panel", _fade_box if scroll.scroll_vertical > 0 else _solid_box)
+	apply.call()
+	bar.value_changed.connect(apply)
+
+
+## The mask: 1 px wide, FADE_DP ramp (alpha 0 -> 1) on top of FADE_DP opaque rows; the top margin
+## keeps the ramp at FADE_DP whatever the height of the list. No content margins: the layout is unchanged.
+static func _mask_box(fade: bool) -> StyleBoxTexture:
+	var img := Image.create(1, FADE_DP * 2, false, Image.FORMAT_RGBA8)
+	for y in FADE_DP * 2:
+		var a := 1.0
+		if fade and y < FADE_DP:
+			a = smoothstep(0.0, 1.0, float(y) / float(FADE_DP))
+		img.set_pixel(0, y, Color(1, 1, 1, a))
+	var box := StyleBoxTexture.new()
+	box.texture = ImageTexture.create_from_image(img)
+	box.texture_margin_top = FADE_DP
+	box.texture_margin_bottom = FADE_DP
+	box.content_margin_left = 0
+	box.content_margin_right = 0
+	box.content_margin_top = 0
+	box.content_margin_bottom = 0
+	return box
