@@ -997,4 +997,6 @@ natywnie (było 5/56), bez xrunów (POMIARY §13). Haptyka D-81 nietknięta.
 - **VQA-23 — haptyka:** etykieta wyniku kalibracji jest ukryta, dopóki pusta (pusty pas pod „Kalibracja”); przełączniki nie mają lewego marginesu 4 dp w motywie (`build_theme.gd` → `main.tres`, 5 marginesów), więc ich etykiety zaczynają się w jednej linii z etykietami suwaków i nagłówkiem sekcji — dotyczy wszystkich przełączników w grze.
 - **VQA-26 — wyposażenie warsztatu:** ramka podglądu ma szerokość zdjęcia przy swojej wysokości i stoi na środku (pionowe zdjęcie stało między szerokimi ciemnymi pasami); nigdy szersza niż wiersz.
 - **VQA-31 — zostaje:** Atkinson Hyperlegible Next nie ma cechy OpenType `zero` ani zera bez kreski (tylko `zero` i `zero.tf`, oba przekreślone). Zmiana wymagałaby osobnego kroju cyfr — nie teraz.
+- **Przy okazji:** samouczek ukrywa nigdy nieużywaną pustą etykietę `DoneLabel` (22 dp + odstęp), żeby „Zacznij ćwiczenie” na dole mieściła się w bezpiecznym obszarze; test D-129 trzyma wycięcia do końca swoich sprawdzeń.
+- **Sprawdzone:** pełny GUT 684 / 684, 0 `SCRIPT ERROR`.
 - **Testy:** `game/tests/gut/test_vqa_d140.gd` (5: maska tylko po przewinięciu, przezroczysta góra / kryjący dół, ekrany z listą mają maskę, płytka samouczka w dolnej ćwiartce, brak pustego pasa, przełączniki bez lewego marginesu).
