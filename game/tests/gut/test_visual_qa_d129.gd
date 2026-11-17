@@ -280,7 +280,8 @@ func test_tutorial_respects_the_safe_area() -> void:
 		var inset: Vector4 = case[1]
 		SafeArea.override_dp = inset
 		var scene := await _open("res://scenes/tutorial.tscn", size)
-		SafeArea.override_dp = SafeArea.OVERRIDE_OFF
+		# the insets stay for the checks: a phone keeps them, and a relayout after the scene opened
+		# (D-140: "Start" now sits at the bottom) must still see them
 		var full := Rect2(Vector2.ZERO, Vector2(size))
 		assert_eq(scene.get_global_rect(), full, "%s: root is full-rect" % size)
 		assert_eq((scene.get_node("Backdrop") as Control).get_global_rect(), full, "%s: photo fills the bands" % size)
@@ -294,5 +295,6 @@ func test_tutorial_respects_the_safe_area() -> void:
 		var title: Label = scene.get_node("Margin/Scroll/VBox/Title")
 		if size.x < size.y:
 			assert_gte(title.get_global_rect().position.y, back.get_global_rect().end.y - 0.5, "title under the plate")
+		SafeArea.override_dp = SafeArea.OVERRIDE_OFF
 		scene.get_parent().queue_free()
 		await get_tree().process_frame

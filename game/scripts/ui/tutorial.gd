@@ -72,6 +72,7 @@ func _ready() -> void:
 	_push_down.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_push_down.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	v.add_child(_push_down)
+	v.get_node("DoneLabel").visible = false  # never filled (22 dp + a gap of empty line over the note)
 	_refresh()
 	resized.connect(_relayout)
 	_relayout()
