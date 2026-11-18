@@ -103,3 +103,6 @@ uruchomić `--sync`.
   HTTPS, sprawdzenie sumy i montaż robi kod gry). `QA_PACKS=bundled` wyłącza to (foldery jak w edytorze).
 - **Scenki przyjazdu paczki:** `art/tools/arrival_export.py --data game/packs/<id>/arrival_scenes.json` zapisuje
   klatki pod `game/packs/<id>/arrival/…`.
+
+## Publikacja rozdziałów 13–16 a paczki głosów (D-142)
+Kwestie rozdz. 13–16 są nagrane (D-142), ale wydanie `voice-packs` jeszcze ich nie ma (decyzja właściciela 2026-11-18). W dniu publikacji paczek treści: najpierw `voice-packs` (workflow_dispatch) → nowy `game/data/voice_packs.json` → `game-android`, potem `content-packs`. Push zmieniający nagrania PL/DE/FR/ES uruchamia `voice-packs` sam — do tego dnia tylko z `[skip ci]`.
