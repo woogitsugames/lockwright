@@ -228,3 +228,46 @@ Wszystko na `main`. Trigger godzinny wyłączony; wznowienie przypomnieniem ok. 
 - **CI:** wszystko zielone poza `game-ios` — dwa przebiegi anulowane bez winy kodu (brak runnera macOS / przerwany w trakcie godot-cpp). Właściciel ma sprawdzić limit minut macOS w Billing → Actions.
 - **Do zrobienia przez właściciela:** usunąć ręcznie gałęzie `wip/d135-achievements`, `wip/d136-perf`, `wip/d137-early-jobs` (proxy git sesji: 403); test palcem (pauza zamka przy wyjściu z aplikacji, 3° odchylenia narzędzia, odsłuch `pl/job.ch15_06_bike_by_train.line.4`); decyzja o publikacji paczek 13–16.
 - **Nagrania TTS na przyszłość:** nie używać piaskownicy Composio do pętli TTS (zawiesza się); `COMPOSIO_MULTI_EXECUTE_TOOL` po 20 + curl w kontenerze (D-142).
+
+## 19. Przekazanie 2026-11-19 (koniec limitu tygodniowego, koordynator A w chmurze) — pełny stan i co dalej
+
+### 19.1 Co zrobiła ta sesja (2026-11-16 … 11-19), wszystko na `main`
+| Decyzja | Co | Gdzie szczegóły |
+|---|---|---|
+| D-137 | pierwsze zlecenie = zamek bębenkowy (jak samouczek), kolejność rozdz. 1, prowadzony pierwszy zamek każdej rodziny, kot w łazience bez dokumentów (`verify_kind: home`) | DECISIONS D-137 |
+| D-136 | zapis odporny na pełny dysk / zabicie (`SafeFile`, `.bak`), bez wycieku klatek przyjazdu, szybszy start, leniwe płytki listy, soak 200 cykli (job `soak` w `perf-budget.yml`) | `docs/handoff/PERF-STABILITY-2026-11-16.md` |
+| D-135 | wszystkie 48 osiągnięć da się zdobyć (`Events.milestone`), półka 48 miejsc | DECISIONS D-135, zrzuty `fixes/achievements_d135/` |
+| D-138 | zdobyte osiągnięcie: cicha linia kredą pod nagłówkiem, nigdy na zamku; stuknięcie na ekranie „węzłowym” → karta na półce | `game/scripts/ui/achievement_note.gd`, `fixes/achievement_note_d138/` |
+| D-139 | macierz stanów zamka dla 13 rodzin (agent): „blisko złamania” = odchylenie narzędzia 0–3°, fałszywe nacięcie suwaka na czole rdzenia | `docs/handoff/LOCK-STATES-2026-11-17.md` (§7 otwarte sprawy graficzne), `fixes/lock_states/` |
+| D-140 | przegląd wizualny runda 2: miękka górna krawędź przewijanych list (`ScreenFrame.soft_top_edge`), samouczek w strefie kciuka, haptyka bez pustego pasa, przełączniki bez lewego marginesu, ramka wyposażenia = szerokość zdjęcia | `VISUAL-QA-2026-11-13.md` (VQA-23/24/26/29), `fixes/vqa2/` |
+| D-141 | właściciel: bez stawki klienta na liście zleceń; rozdział 17 dopiero po dopracowaniu 1–16 | DECISIONS D-141 |
+| D-142 | nagrania rozdz. 13–16: 1060 klipów (212 kwestii × PL/EN/DE/FR/ES), `voice_pending` zdjęte; paczki głosów przebudować dopiero przy publikacji 13–16 | DECISIONS D-142, `contrib/voice/qa_ch13_16.json`, `CONTENT-PACKS.md` (ostatnia sekcja) |
+
+Testy na końcu: pełny GUT **692 / 692**, 0 `SCRIPT ERROR`; bot kariery 5 profili `career_complete` (104 + 19 ze 123, 105 / 105 zamków, 0 soft-locków); soak 200 cykli xvfb: SOAK OK. CI na `main` (28b1f1cf, uruchomione ręcznie): `game-tests`, `qa-career`, `perf-budget` (z soak), `game-android`, `game-screens`, `lint` zielone.
+
+### 19.2 Decyzje właściciela z tej sesji (zapisane)
+- Pauza zamka przy wyjściu z aplikacji zostaje (D-136). Nazwy „Na warsztacie” / „Nowe narzędzie” zatwierdzone (D-135). Linia kredą przy zdobyciu osiągnięcia (D-138).
+- Bez `offer_coins` (D-141). Rozdział 17 — nie teraz (D-141). Nagrania 13–16 w 5 językach — zrobione (D-142). Paczki głosów — razem z publikacją rozdziałów 13–16 (D-142).
+
+### 19.3 Otwarte — po stronie właściciela
+1. **Usunąć ręcznie na GitHubie** gałęzie `wip/d135-achievements`, `wip/d136-perf`, `wip/d137-early-jobs` (treść w `main`; proxy git sesji odmawia usuwania — 403).
+2. **`game-ios` się nie uruchamia** (2026-11-17: raz bez runnera macOS, raz anulowany w trakcie godot-cpp). Sprawdzić Billing → Actions (minuty macOS / budżet). Poprzedni zielony iOS: D-138 (`b2667e4c`).
+3. **Test palcem** (APK z `game-android`): pauza zamka po wyjściu z aplikacji; czy 3° odchylenia narzędzia czyta się jako „za mocno”; linia kredą osiągnięć; odsłuch `pl/job.ch15_06_bike_by_train.line.4` („Dyżur mam…”, ASR: „I derzuch mał”); stare punkty z §16 (dwa kliknięcia karty startowej, poziomy dźwięków, 850 ms otwarcia, blokada napięcia, TalkBack).
+4. **Publikacja rozdziałów 13–16** — kiedy? Kolejność w dniu publikacji: `voice-packs` (workflow_dispatch) → nowy `game/data/voice_packs.json` → `game-android` → `content-packs` (instrukcja: `docs/handoff/CONTENT-PACKS.md`). Wcześniej NIE uruchamiać `voice-packs` ani `content-packs`.
+5. Grafika z D-139 §7: warstwa zabieraka `dial_safe`, jaśniejszy podnośnik dźwigni, fałszywe nacięcie dorysowane na suwaku osiowym; decyzja, czy rysy na napinaczu mają też znaczyć poślizg kółek / zacięcie sejfu.
+6. Biznes, klucz uploadu, polityka prywatności, sklep — „kolega”, nie koordynator (§16).
+
+### 19.4 Otwarte — dla następnej sesji (rekomendowana kolejność)
+1. Gdy właściciel da sygnał: publikacja 13–16 wg 19.3 p. 4 (najpierw sprawdzić `CONTENT-PACKS.md`).
+2. Poziom (915×412): przekrój `combo` / `disc_detainer` za mały (szczelina „wiąże” ~1,5 dp) — sprawa układu ekranu zamka (D-139 §7 p. 5).
+3. Reszta VISUAL-QA: VQA-27 (pas skóry w poziomie przy dźwigni/sejfie — nie udało się odtworzyć, trzeba ujęcia rodziny `lever`), VQA-28 (pismo paragonu 7–9 px w poziomie), VQA-25, VQA-16/21 (grafika).
+4. `docs/handoff/LOCAL-GPU-TASKS.md` — zadania na sesję lokalną z GPU (nakładki wyposażenia, finały scenek, sceny rozdz. 13–16).
+5. Rozdział 17 — dopiero po zamknięciu 1–16 i decyzji właściciela (D-141).
+
+### 19.5 Uwaga — pułapki tej sesji (żeby nie powtarzać)
+- **`voice-packs` publikuje sam** przy pushu zmieniającym `game/assets/audio/lines/**` poza `en/`. Do publikacji 13–16 zmiany nagrań PL/DE/FR/ES pushować z `[skip ci]`. 2026-11-17 koordynator uruchomił go ręcznie bez zgody — anulowany po 10 s, nic nie powstało.
+- **`[skip ci]` na ostatnim commicie pushu** wyłącza CI dla całego pushu; po takim pushu uruchomić `game-tests`, `qa-career`, `perf-budget`, `game-android` ręcznie (workflow_dispatch) — NIE `voice-packs` / `content-packs`.
+- **TTS przez Composio:** nie przez `COMPOSIO_REMOTE_WORKBENCH` (zawiesza się przy pętlach/wątkach, zrywa po 60 s); przez `COMPOSIO_MULTI_EXECUTE_TOOL` po ≤ 20 `ELEVENLABS_TEXT_TO_SPEECH` + `curl` adresów `s3url` w kontenerze. Połączenie ElevenLabs w Composio (alias „aktualnosci”) ma głosy `LW …` i `eleven_v4_turbo`, `pcm_48000`. Potem `tools/voice_lines.py finish`, `qa` (faster-whisper).
+- **Godot w kontenerze:** pobrać 4.7.2 do scratchpada, zbudować godot-cpp (commit `e103d348…`, `custom_api_file=gdextension/extension_api-4-7.json`) i `game/addons/lockcore_gd` (scons) — ok. 15 min; lockcore `cmake` dla `replay_tool` (bot kariery). Polecenia jak w `.github/workflows/game-tests.yml`. Testy GUT i zrzuty `shot_scene.gd` zapisują `user://settings.cfg` — nie puszczać zrzutów równolegle z GUT (podmieniona skala tekstu).
+- **Bot kariery:** nie odpalać dwóch macierzy naraz ani ręcznie przerywać — przebiegi współdzielą katalogi i liczby wychodzą fałszywie niskie (np. 73/73 zamki).
+- **Agenci w worktree** (limit 2–3): kopiować `game/addons/lockcore_gd/bin/*` do worktree; po scaleniu usuwać worktree (`git worktree remove --force`) — właściciel: „usuń regularnie”.
