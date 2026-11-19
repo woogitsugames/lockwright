@@ -327,7 +327,7 @@ func _update_d_face(tension: float, res: float, delta: float) -> void:
 	_face.face_deg = lerpf(_face.face_deg, face, k)
 	_face.arm_deg = lerpf(_face.arm_deg, face + PlugFace.ARM_MAX_DEG * t, k)
 	_face.bow = clampf(res, 0.0, 1.0)
-	_face.tremor = _jam
+	_face.slip = _jam  # D-144: a jammed handle bends the arm, no cracks (nothing breaks)
 	_face.tension = t
 	_face.gauge = chalk_gauge and chalk_level != ChalkLayer.Level.OFF
 	_face.opened = _opened

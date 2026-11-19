@@ -34,6 +34,10 @@ var face_deg := 0.0      # plug turn (core_rotation + play), clockwise positive
 var arm_deg := 0.0       # wrench arm, clockwise positive (tip up for an arm pointing left)
 var bow := 0.0           # 0..1 arm deflection (tension_resistance)
 var tremor := 0.0        # 0..1 near the limit
+## D-144 (owner 2026-11-19): 0..1 slip / jam where nothing breaks (wheel locks rolled too fast, a safe
+## handle forced): the arm bends and shakes like `tremor`, but draws no cracks - cracks mean only
+## "the tool is about to break".
+var slip := 0.0
 var gauge := false       # D-52 / S1: chalk tension scale beside the arm tip
 var gauge_band := Vector2(0.25, 0.45)
 var tension := 0.0
@@ -101,12 +105,13 @@ func _draw() -> void:
 	var dir := Vector2.LEFT.rotated(deg_to_rad(arm_deg))
 	var nrm := Vector2(-dir.y, dir.x)  # points down for an arm to the left
 	var length := r * ARM_LEN
-	var shake := 0.0 if UiA11y.reduce_motion() else tremor * 1.2 * sin(Time.get_ticks_msec() * 0.09)  # D-90
+	var strain := maxf(tremor, slip)
+	var shake := 0.0 if UiA11y.reduce_motion() else strain * 1.2 * sin(Time.get_ticks_msec() * 0.09)  # D-90
 	var line := PackedVector2Array()
 	for i in 9:
 		var t := i / 8.0
 		# bows toward the plug's resistance; near the tool's limit it bends further (DESIGN.md §1 stress)
-		var sag := (bow * 0.16 + tremor * 0.14) * r * sin(t * PI) * t
+		var sag := (bow * 0.16 + strain * 0.14) * r * sin(t * PI) * t
 		line.append(foot + dir * length * t + nrm * (sag + shake * t))
 	draw_polyline(line, C_STEEL_EDGE, r * 0.16 + 2.0, true)
 	draw_polyline(line, C_STEEL, r * 0.16, true)

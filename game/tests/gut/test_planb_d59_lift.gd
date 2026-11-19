@@ -359,3 +359,32 @@ func test_axial_slider_jobs_open_in_both_modes() -> void:
 
 func test_axial_slider_states_read_by_geometry() -> void:
 	await _layer_states_differ(&"axial_slider")
+
+
+## D-144: a false notch the player found is drawn on the slider itself (axial slider layers have the
+## true notch only); in the false-set pose it sits at the true notch's place, under the locking line.
+func test_axial_slider_false_notch_on_the_slider() -> void:
+	JobRun.start(jobs(&"axial_slider")[0])
+	var scene: Node = await _open_scene(&"axial_slider", Vector2i(412, 915))
+	scene.set_physics_process(false)
+	var view: LockLiftLayerView = scene.view
+	assert_true(view.false_notches, "the axial slider screen draws false notches")
+	var el := func(st: String, pos: float) -> Dictionary:
+		return {"state": StringName(st), "position": pos, "window_lo": 0.5, "window_hi": 0.62, "variant": 1}
+	var other: Dictionary = el.call("free", 0.0)
+	var free_vm := {"elements": [el.call("free", 0.0), other, other], "tension": 0.35}
+	for i in 30:
+		view.present(free_vm, {"tension": 0.35}, 1.0 / 60.0)
+	assert_eq(view.false_notch_offsets(0).size(), 0, "nothing drawn before a false notch is found")
+	var false_vm := {"elements": [el.call("false_set", 0.36), other, other], "tension": 0.35}
+	for i in 90:
+		view.present(false_vm, {"tension": 0.35}, 1.0 / 60.0)
+	var offs := view.false_notch_offsets(0)
+	assert_eq(offs.size(), 1, "the found false notch is remembered")
+	var at := view.false_notch_plate(0, float(offs[0]))
+	var notch: Array = view.meta["notch_px"][view.slot_of(0)]
+	assert_almost_eq(at.x, float(notch[0]), 3.0, "in the false-set pose the false cut sits under the locking line")
+	for i in 90:
+		view.present(free_vm, {"tension": 0.35}, 1.0 / 60.0)
+	assert_eq(view.false_notch_offsets(0).size(), 1, "it stays drawn when the slider moves on")
+	JobRun.current_job = {}

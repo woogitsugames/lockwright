@@ -226,6 +226,10 @@ func test_states_read_by_geometry() -> void:
 		assert_false(seen.has(key), "state %s looks like %s (%s)" % [nm, seen.get(key, ""), key])
 		seen[key] = nm
 	assert_gt(view.feeler_dip(0) + view.fence_dy(), 2.5, "open: the feelers are down in the gates")
+	# D-144: a jammed (clamped) handle bends the arm on the plug face, without cracks (nothing breaks)
+	sig.call(cases["clamped"])
+	assert_gt(view._face.slip, 0.5, "jam: the arm on the plug face strains")
+	assert_eq(PlugFace.crack_count(view._face.tremor), 0, "jam: no cracks on the arm")
 	view._opened = false
 	# the feeler gap when the handle is let go is at least 2 dp on screen (CLAUDE.md division line)
 	sig.call(cases["let go"])

@@ -18,6 +18,13 @@ extends LockPhotorealView
 @export var progress_layer := "bolt"
 @export var bind_tilt_deg := 1.5
 @export var over_tilt_deg := 5.0
+## D-144 (owner 2026-11-19): draw a false notch found by the player on the element itself, a shallow
+## dark cut next to the true notch (`notch_px`), as combo_view does for the wheels' false nicks. The
+## axial slider layers are rendered with the true notch only.
+@export var false_notches := false
+const FALSE_NOTCH_DEPTH := 0.4   # share of the true notch's depth
+const C_NOTCH := Color(0.07, 0.065, 0.06)
+const C_NOTCH_FLOOR := Color(0.36, 0.35, 0.33)
 
 var meta := {}
 var plate_size := Vector2(618, 824)
@@ -31,6 +38,7 @@ var _tilt: Array[float] = []
 var _tool_at := Vector2.ZERO     # plate px of the tool tip
 var _progress := 0.0
 var _moved := false
+var _false_off: Array = []       # per slot: element offsets (position units) where a false notch was found
 
 
 func _ready() -> void:
@@ -50,6 +58,7 @@ func _ready() -> void:
 	for i in slot_count():
 		_off.append(0.0)
 		_tilt.append(0.0)
+		_false_off.append([])
 	_build_overlay()
 	_active_stacks = 1
 	resized.connect(_layout)
@@ -140,6 +149,8 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 		var pos := float(e.get("position", 0.0))
 		var st := String(e.get("state", "free"))
 		var off := pos - target
+		if st == "false_set" and false_notches:
+			_note_false(s, off)
 		if st == "set":
 			off = 0.0
 		var tilt := 0.0
@@ -173,6 +184,32 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 	_update_l_face(tension, float(vm.get("tension_resistance", 0.0)), delta)
 	_update_l_chalk(els, delta)
 	_update_l_eyepiece(vm, delta)
+
+
+func _note_false(slot: int, off: float) -> void:
+	for f in _false_off[slot]:
+		if absf(float(f) - off) < 0.03:
+			return
+	_false_off[slot].append(off)
+
+
+## False notches found on element i (offsets from its gate, position units; tests).
+func false_notch_offsets(i: int) -> Array:
+	return (_false_off[slot_of(i)] as Array).duplicate()
+
+
+## Plate point of a false notch at offset `off` on element i, in the element's current pose (tests).
+func false_notch_plate(i: int, off: float) -> Vector2:
+	var s := slot_of(i)
+	return _element_xf(s) * (_notch_px(s) - travel() * off)
+
+
+func _notch_px(slot: int) -> Vector2:
+	var a: Array = meta.get("notch_px", [])
+	if a.is_empty():
+		return anchor(slot)
+	var p: Array = a[clampi(slot, 0, a.size() - 1)]
+	return Vector2(p[0], p[1])
 
 
 func on_event(e: Dictionary) -> void:
@@ -261,6 +298,26 @@ func _draw_elements() -> void:
 		var slot := slot_of(i)
 		var nm := element_layer + (str(slot) if element_layer_per_slot() else "")
 		_draw_layer(nm, _element_xf(slot), 0.45)
+		if false_notches:
+			_draw_false_notches(slot)
+
+
+## D-144: shallow cuts in the element's top edge, the width of the true notch (about 3.2 mm), 40 % of
+## its depth: dark cavity with a lighter cut floor, so it reads in grayscale next to the bright steel.
+func _draw_false_notches(slot: int) -> void:
+	if (_false_off[slot] as Array).is_empty():
+		return
+	var ppm := float(meta.get("ppm", 17.66))
+	var w := 3.2 * ppm
+	var depth := 1.8 * ppm * FALSE_NOTCH_DEPTH
+	var s := _vs()
+	_canvas.draw_set_transform_matrix(Transform2D().scaled(Vector2(s, s)) * _element_xf(slot))
+	for f in _false_off[slot]:
+		var c := _notch_px(slot) - travel() * float(f)
+		var top := c.y - 4.0  # the slider's top edge (notch_px sits 4 px into the cut)
+		_canvas.draw_rect(Rect2(c.x - w * 0.5, top, w, depth), C_NOTCH)
+		_canvas.draw_line(Vector2(c.x - w * 0.5, top + depth), Vector2(c.x + w * 0.5, top + depth), C_NOTCH_FLOOR, 2.0)
+	_canvas.draw_set_transform_matrix(Transform2D().scaled(Vector2(s, s)))
 
 
 ## D-139 near break: the tool sags off its line about its tip, handle end down (degrees, screen sense).

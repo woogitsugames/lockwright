@@ -289,6 +289,9 @@ func test_states_read_by_geometry() -> void:
 		ys["%.2f" % view.tooth_dip(0)] = true
 		await wait_physics_frames(1)
 	assert_gt(ys.size(), 1, "slip: the tooth chatters")
+	# D-144: the slip bends the cable arm on the plug face but draws no cracks (nothing breaks here)
+	assert_gt(view._face.slip, 0.0, "slip: the arm on the plug face strains")
+	assert_eq(PlugFace.crack_count(view._face.tremor), 0, "slip: no cracks on the arm")
 	# the tooth gap when the cable is let go is at least 2 dp on screen
 	sig.call(cases["let go"])
 	var up := view.tooth_tip_screen(0)
@@ -379,3 +382,23 @@ func test_qa_solver_rows_open_combo_and_dial_safe() -> void:
 			if scene.session.is_open():
 				break
 		assert_true(scene.session.is_open(), "%s opens from the solver rows (QA bot path)" % job["id"])
+
+
+## D-143: free vs binding (tooth off / on its bore) moves the tooth >= HOVER_MIN_DP on screen in every
+## layout, and in landscape the section starts just past the plug face (no 40 dp strip of leather).
+func test_d143_hover_gap_in_dp_and_wider_landscape_section() -> void:
+	for pair in [[SCENE, &"combo"], [DISC_SCENE, &"disc_detainer"]]:
+		_scene_path = pair[0]
+		JobRun.start(DialTest.jobs_of(pair[1])[0])
+		for size in [Vector2i(412, 915), Vector2i(360, 800), Vector2i(915, 412)]:
+			var scene: Node = await _open_scene(size)
+			var view: LockComboView = scene.view
+			var tag := "%s %dx%d" % [pair[1], size.x, size.y]
+			assert_gte(view.hover_mm() * view.dp_per_mm(), LockComboView.HOVER_MIN_DP - 0.01, tag + ": hover gap >= min dp")
+			assert_lt(view.hover_mm(), LockComboView.RETRACT_MM, tag + ": hover stays short of the let-go retract")
+			if size.x > size.y:
+				var face: Control = view._face
+				assert_almost_eq(view.section_rect.position.x - face.get_rect().end.x, LockComboView.LANDSCAPE_FACE_GAP, 0.5, tag + ": section right past the plug face")
+				assert_gte(face.position.x, 0.0, tag + ": plug face on screen")
+	_scene_path = SCENE
+	JobRun.current_job = {}

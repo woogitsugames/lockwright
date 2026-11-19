@@ -21,6 +21,9 @@ const REEL_SHADER := "res://scripts/photoreal/combo_reel.gdshader"
 const SLOTS := 5
 const RETRACT_MM := 0.7       # cable let go: teeth drawn up into the bar
 const HOVER_MM := 0.22        # pulled, wheel not binding: the tooth hovers over the bore
+## D-143: the hover gap (free vs binding: the tooth off / on its bore) is never less than this on screen,
+## whatever the section's scale (landscape draws the lock smaller): DESIGN.md §1 asks 2-3 dp.
+const HOVER_MIN_DP := 3.0
 const FALSE_DIP_MM := 0.5
 const SLOT_HALF_TURN := 0.045 # the gate slot shows in the cut within this turn of 6 o'clock
 const BAR_SLIDE_MM := 3.0
@@ -57,6 +60,7 @@ const BODY_X := Vector2(34.0, 584.0)
 const PORTRAIT_ASPECT := 1.05          # (pre VA-11) section height / width in portrait
 ## VA-11: plate px of bench kept under the lock's lowest part (room for the chalk ticks under the teeth).
 const PORTRAIT_UNDER_PX := 80.0
+const LANDSCAPE_FACE_GAP := 8.0      # D-143: dp between safe edge, plug face and section in landscape
 
 
 func _ready() -> void:
@@ -211,6 +215,21 @@ func tooth_tip_screen(i: int) -> Vector2:
 	return plate_to_screen(Vector2(_slot_x(s), _axis_y() + (float(_sm()["bore_mm"]) + _tdir() * _tooth[s]) * ppm))
 
 
+## Screen dp per mm of the section at the current layout.
+func dp_per_mm() -> float:
+	var ppm := float(_wm()["px_per_mm_section"])
+	return (plate_to_screen(Vector2(ppm, 0)) - plate_to_screen(Vector2.ZERO)).x
+
+
+## D-143: how far a free tooth hovers over its bore (mm): HOVER_MM, or more when the lock is drawn
+## small, so free / binding differ by >= HOVER_MIN_DP on screen; always short of the let-go retract.
+func hover_mm() -> float:
+	var d := dp_per_mm()
+	if d <= 0.0:
+		return HOVER_MM
+	return clampf(HOVER_MIN_DP / d, HOVER_MM, RETRACT_MM * 0.8)
+
+
 ## Tooth width on screen, dp (CLAUDE.md: elements >= 28 dp).
 func tooth_width_screen() -> float:
 	var w := float(_sm()["tooth_w_mm"]) * float(_wm()["px_per_mm_section"])
@@ -274,7 +293,7 @@ func present(vm: Dictionary, input: Dictionary, delta: float = 1.0 / 120.0) -> v
 					target = 0.0
 					slipping = true
 				_:
-					target = -HOVER_MM if not _opened else depth
+					target = -hover_mm() if not _opened else depth
 		if _opened:
 			target = depth
 		_tooth[s] = target if snap else lerpf(_tooth[s], target, k)
@@ -452,7 +471,7 @@ func _update_c_face(tension: float, res: float, delta: float) -> void:
 	_face.face_deg = _open_blend(&"face", _face.face_deg, face) if _opened else lerpf(_face.face_deg, face, k)
 	_face.arm_deg = lerpf(_face.arm_deg, face + PlugFace.ARM_MAX_DEG * t, k)
 	_face.bow = clampf(res, 0.0, 1.0)
-	_face.tremor = _chatter
+	_face.slip = _chatter  # D-144: slipping wheels bend the arm, no cracks (nothing breaks)
 	_face.tension = t
 	_face.gauge = chalk_gauge and chalk_level != ChalkLayer.Level.OFF
 	_face.opened = _opened
@@ -566,7 +585,9 @@ func _layout() -> void:
 		# face and that column. A bottom strip here cropped the picks and hid the loupe.
 		var col_w := landscape_roll_width(safe.size, _roll_size())
 		var x0 := safe.end.x - col_w
-		var left := safe.position.x + PlugFace.size_for(FACE_R_DP).x + 40.0
+		# D-143: the plug face hugs the safe edge (8 dp) and the section starts 8 dp past it, so the
+		# wide, flat lock gets the width (it was 40 dp of bare leather between them)
+		var left := safe.position.x + PlugFace.size_for(FACE_R_DP).x + LANDSCAPE_FACE_GAP * 2.0
 		section_rect = Rect2(Vector2(left, r.position.y), Vector2(maxf(x0 - ROLL_GAP - left, 100.0), r.size.y))
 		var ch := minf(cw * section_rect.size.y / section_rect.size.x, plate_size.y)
 		_crop = Rect2(cx - cw * 0.5, clampf(cy - ch * 0.5, 0.0, plate_size.y - ch), cw, ch)
@@ -576,7 +597,7 @@ func _layout() -> void:
 		_loupe_rect = _compute_loupe_rect()
 		_loupe_btn.position = _loupe_rect.position
 		_loupe_btn.size = _loupe_rect.size
-		_face.position = Vector2(section_rect.position.x - _face.size.x - 16.0, section_rect.position.y + section_rect.size.y * 0.45)
+		_face.position = Vector2(section_rect.position.x - _face.size.x - LANDSCAPE_FACE_GAP, section_rect.position.y + section_rect.size.y * 0.45)
 	_section.position = section_rect.position
 	_section.size = section_rect.size
 	var px := _physical_scale() * render_scale

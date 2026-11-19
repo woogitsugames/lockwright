@@ -267,15 +267,19 @@ Stany, których w ogóle nie widać inaczej niż ruchem albo dźwiękiem, są dw
    dorysować w renderze płytkie nacięcia (1–3 na suwak, wg `false_gates` zamka) albo zgodzić się na rysowane w kodzie
    ciemne wcięcie pod sztabą, jak robi to `combo_view.gd` dla fałszywych nacięć kółek. Nie zrobiłem tego sam, bo to
    już dorabianie grafiki mechanizmu.
+   **Zamknięte 2026-11-19 (D-144, właściciel: rysowane w kodzie):** znalezione fałszywe nacięcie rysowane na suwaku.
 4. **Rysy na napinaczu znaczą dwie rzeczy.** W `combo` / `disc_detainer` (poślizg przy zbyt szybkim kręceniu) i w
    `dial_safe` (zacięcie przy zbyt mocnej klamce) widok ustawia `PlugFace.tremor`, więc na ramieniu pojawiają się te
    same 1→3 rysy, które wszędzie indziej znaczą „narzędzie zaraz pęknie” — a w tych rodzinach nic nie pęka.
    Rekomendacja: zostawić ugięcie ramienia, a rysy zarezerwować dla prawdziwego stresu. To zmiana znaczenia znaku,
    więc pytam, zanim ruszę.
+   **Zamknięte 2026-11-19 (D-144, właściciel: rysy tylko na pękanie):** `PlugFace.slip` — ugięcie i drżenie bez rys.
 5. **Poziom, rodziny z kółkami.** W 915×412 przekrój `combo` / `disc_detainer` jest na tyle mały, że „wiąże” to ok.
    1,5 dp ruchu zęba (§5.3). Czy w poziomie powiększyć przekrój tych dwóch rodzin kosztem skórzanych pól pod kciuki,
    czy przyjąć, że w poziomie wiązanie w tych zamkach jest wyłącznie do usłyszenia i wyczucia? Rekomendacja: powiększyć
    przy najbliższej turze układu poziomego; zmiana układu ekranu to nie jest poprawka „stanu”, więc jej tu nie robiłem.
+   **Zamknięte 2026-11-19 (D-143):** szczelina „wolny ↔ wiąże” min. 3 dp na ekranie w każdej orientacji, przekrój
+   w poziomie szerszy o pas skóry przy czole rdzenia; pola pod kciuki bez zmian.
 6. **Do potwierdzenia na telefonie:** czy 3° odchylenia narzędzia czyta się jako „za mocno”, a nie jako błąd rysunku
    (w `dimple` rękojeść chorągiewki schodzi o ok. 10 dp przy lewej krawędzi przekroju).
 7. **Poza zakresem, ale wyszło w pełnym GUT:** samouczek, etap 1, tryb „dwa kciuki”, 412×915 z paskiem gestów 34 dp —

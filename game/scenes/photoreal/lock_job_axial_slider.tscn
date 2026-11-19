@@ -18,3 +18,4 @@ tool_layer = "pusher"
 bind_tilt_deg = 0.4
 over_tilt_deg = 1.5
 progress_layer = "bolt"
+false_notches = true
