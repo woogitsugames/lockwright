@@ -35,6 +35,7 @@ Mobilna gra premium o ślusarzu z pogotowia zamkowego. iOS wiodący, Android dru
 - Nie kopiujemy kodu, grafik, nazw ani UI cudzych gier.
 - Decyzje właściciela (styl, silnik, zakres, model biznesowy): pytać z rekomendacją. Pozostałe: rozstrzygać i zapisywać w `docs/DECISIONS.md` (D-NN).
 - Agenci: na etapie researchu max 5 równolegle; w dalszym rozwoju max 2–3. Agenci nie uruchamiają kolejnych agentów.
+- **Zapis na bieżąco na wypadek limitu (właściciel 2026-11-19):** sesja może się skończyć w każdej chwili i zostać wznowiona na innym koncie — liczy się tylko to, co jest na GitHubie. Koordynator i każdy agent: commit + push co najwyżej co ok. 30 min pracy albo po każdym skończonym kroku (gotowe i sprawdzone → `main`; niegotowe → gałąź `wip/<temat>` z notatką `docs/handoff/WIP-<temat>.md`: co zrobione, co zostało, jak sprawdzić). Stan sesji (co w toku, decyzje, następne kroki) dopisywać na bieżąco do `docs/handoff/SESSION-A-HANDOVER.md`, a prompt startowy trzymać aktualny w `docs/handoff/SESSION-A-START-PROMPT.md`. Nic ważnego tylko w scratchpadzie / worktree.
 
 ## Komendy
 ```bash
