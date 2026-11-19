@@ -68,7 +68,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install xvfb + Mesa llvmpipe
-        run: sudo apt-get update && sudo apt-get install -y xvfb mesa-utils libgl1-mesa-dri
+        # retries: a flaky mirror (2026-11-19: security.ubuntu.com timeouts) must not fail the job
+        run: |
+          for i in 1 2 3; do
+            sudo apt-get -o Acquire::Retries=5 update && sudo apt-get -o Acquire::Retries=5 install -y --fix-missing xvfb mesa-utils libgl1-mesa-dri && break
+            sleep $((i * 20))
+          done
+          command -v xvfb-run
       - name: Install Godot 4.7.2
         run: |
           mkdir -p /tmp/godot
