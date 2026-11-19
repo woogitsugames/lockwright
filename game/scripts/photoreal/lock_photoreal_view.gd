@@ -666,7 +666,10 @@ func _layout() -> void:
 		var avail := x0 - ROLL_GAP - left
 		if avail >= sh * SECTION_ASPECT:
 			var sw := minf(avail, sh * maxf(landscape_section_max, SECTION_ASPECT))
-			section_rect = Rect2(Vector2(left + (avail - sw) * 0.5, r.position.y), Vector2(sw, sh))
+			# VQA-27 (D-145): a section narrower than the room sits against the roll (ROLL_GAP), the spare
+			# width goes left beside the plug face - centred, it left a strip of darker backdrop leather
+			# between the lock and the roll
+			section_rect = Rect2(Vector2(left + avail - sw, r.position.y), Vector2(sw, sh))
 			tray_rect = Rect2(Vector2(x0, safe.position.y), Vector2(col_w, safe.size.y))
 		else:
 			# narrow landscape (near-square screens): the 3:4 plate in the middle, the roll gets the rest

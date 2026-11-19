@@ -71,6 +71,9 @@ func test_every_lock_screen_shows_whole_roll_and_loupe_in_landscape_safe_area() 
 			var roll := Rect2(view.tray_rect.position + (m[4] as Vector2), (m[2] as Vector2) * float(m[0]))
 			assert_true(safe.grow(1.0).encloses(roll), tag + ": roll %s inside safe %s" % [roll, safe])
 			assert_false(roll.intersects(view.section_rect.grow(-1.0)), tag + ": roll beside the section")
+			# VQA-27 (D-145): no strip of backdrop leather between the section and the roll column
+			assert_gte(view.section_rect.end.x, view.tray_rect.position.x - LockPhotorealView.ROLL_GAP - 1.0,
+				tag + ": section %s against the roll at %.0f" % [view.section_rect, view.tray_rect.position.x])
 			var loupe: Rect2 = view.loupe_rect()
 			assert_gte(loupe.size.x, 48.0, tag + ": loupe target")
 			assert_gte(loupe.size.y, 48.0, tag + ": loupe target")
